@@ -57,6 +57,7 @@ print("+------------------------------------------------------+")
 print("|" + hd1[0] + "|" + hd1[1] + "|")
 print("+------------------------------------------------------+")
 
+# Arrange the lines of code below (titles) from highest selling to lowest 
 c_print(at1) #Mario Kart 8 Deluxe
 c_print(et1) #Animal Crossing: New Horizons
 c_print(jt1) #Super Smash Bros. Ultimate
