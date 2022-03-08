@@ -121,7 +121,7 @@ print("|"  +  rw1[14] +  "|" + ns9[4] + "|" + op9[4] + "|" + opmgx9[7] + "|" + n
 #print forecast revisions
 for i in range(x):
     if ns1[i+6] != 0:
-        print("|"  +  rw1[i+15] +  "|" + ns9[6] + "|" + op9[6] + "|" + opmgx9[i+9] + "|" + np9[6] + "|")
+        print("|"  +  rw1[i+15] +  "|" + ns9[i+6] + "|" + op9[i+6] + "|" + opmgx9[i+9] + "|" + np9[i+6] + "|")
 
 
 if x >=4: #next fiscal year's forecast
