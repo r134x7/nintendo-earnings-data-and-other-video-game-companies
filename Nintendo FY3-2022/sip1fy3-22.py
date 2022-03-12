@@ -26,7 +26,7 @@ pods1 = [46.9, 43.2, 35.3, 66.66, 45.1, 40.2, 33.33] #Input figures, [0] 1st qua
 #Proportion of DL Ver. of Packaged SW Sales
 podlss1 = [52.1, 49.1, 56.3, 66.66, 50.7, 53.1, 33.33] #Input figures, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fiscal year cumulative
 
-def c_print (y, z, a, b, delta, theta): # y: use a1_jp1, a2_jp1, etc, z: use a1_os1, a2_os1, etc, a: use a1_wwfy1, a2_wwfy1, etc, b: use a1_wwltd1, a2_wwltd, etc
+def c_print (y, z, a, b, delta, theta): 
     # variables created inside a function are local and cannot be used outside a function
 
         y1, z1, a1, b1, delta1, theta1 = ['{:}% '.format(elem) for elem in y], ['{:}% '.format(elem) for elem in z], ['{:}% '.format(elem) for elem in a], ['¥{:}B '.format(elem) for elem in b], ['{:}% '.format(elem) for elem in delta], ['{:}% '.format(elem) for elem in theta]
