@@ -2,35 +2,34 @@ hd1 = [ " Nintendo Co., Ltd.", " Net Sales   ", " Operating Income ", " Net Prof
 rw1 = [" 1st Quarter       ", " 2nd Quarter       ",  " 3rd Quarter       ",  " 4th Quarter       ", " 1st Quarter YoY%  ", " 2nd Quarter YoY%  ", " 3rd Quarter YoY%  ", " 4th Quarter YoY%  ", " First Half        ", " First 3 Quarters  ", " FY3/22 Cumulative ", " First Half YoY%   ", " First 3 Qtrs YoY% ", " FY3/22 Cml. YoY%  ", " FY3/22 Forecast   ", " 1st FCST Revision ", " 2nd FCST Revision ", " 3rd FCST Revision ", " FY3/23 Forecast   ",   ] # row names, array length = 19
 lb1 = "###" # line break
 
-x = 3 #Variable used for if statement condition for printing Quarter 1 upto Quarter 4, set the value from 1 to 4.
+x = 3 #Variable used for if statement condition for printing Quarter 1 upto Quarter 4, set the value from 1 to 4 whichever is the current quarter.
 
-#+++++++++++++++++++++++++++++ Input
 #Net Sales (by quarter), variable creates an array (zero-index)
 ns1 = [ 322647, 624272, 1320219, 1320219, 1600000, 1600000, 1600000,  1650000, 0  ] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
-#+++++++++++++++++++++++++++++ Input
+#++++++++++++++++++++++++++++++
 #Net sales array for last fiscal year's numbers
-nsly1= [ 358106, 411418, 634939, 354447, 1758910 ] #[0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative 
-#+++++++++++++++++++++++++++++ Input
+nsly1= [ 358106, 411418, 634939, 354447, 1758910 ] # input [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative 
+#++++++++++++++++++++++++++++++
 #Operating Income (by quarter)
-op1 = [ 119752, 219959, 472551, 472551, 500000, 520000, 520000,  560000, 0  ] #input cumalative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
-#+++++++++++++++++++++++++++++ Input
+op1 = [ 119752, 219959, 472551, 472551, 500000, 520000, 520000,  560000, 0  ] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+#++++++++++++++++++++++++++++++
 #Operating income array for last fiscal year's numbers
-oply1= [ 144737, 146687, 229684, 119526, 640634 ] #[0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative 
-#+++++++++++++++++++++++++++++ Input
+oply1= [ 144737, 146687, 229684, 119526, 640634 ] # input [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative 
+#++++++++++++++++++++++++++++++
 #Net Income (by quarter)
-np1 = [ 92747, 171834, 367387, 367387, 340000, 350000,  350000,  400000, 0 ] #input cumalative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
-#+++++++++++++++++++++++++++++ Input
+np1 = [ 92747, 171834, 367387, 367387, 340000, 350000,  350000,  400000, 0 ] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+#++++++++++++++++++++++++++++++
 #last years numbers
-nply1= [ 106482, 106641, 163542, 103711, 480376 ] #[0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative
+nply1= [ 106482, 106641, 163542, 103711, 480376 ] # input [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative
 #-----------------------------
 
 def convert (y, z): # y: use ns1, op1 or np1. z: use nsly1, oply1 or nply1. (see called function below)
     # variables created inside a function are local and cannot be used outside a function
     y1 = [y[0], y[1] - y[0], y[2] - y[1], y[3] - y[2], y[4], y[5], y[6], y[7], y[8]]  #creates new net sales array which has to calculate quarterly figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 
-    y1.append(y1[0] + y1[1] + y1[2] +y1[3]) #adds fy cumulative to array becomes y1[9]
-    y1.append(y1[0] + y1[1]) #adds fy first half to array y1[10]
-    y1.append(y1[0] + y1[1] + y1[2]) #adds fy three quarters to array y1[11]
+    y1.append(y1[0] + y1[1]) #adds fy first half to array y1[9]
+    y1.append(y1[0] + y1[1] + y1[2]) #adds fy three quarters to array y1[10]
+    y1.append(y1[0] + y1[1] + y1[2] +y1[3]) #adds fy cumulative to array becomes y1[11]
 
     y2 = [ '¥{:,}M '.format(elem) for elem in y1] #formats all integers to string to add ¥ and M
     if y == ns1: #net sales
@@ -42,9 +41,9 @@ def convert (y, z): # y: use ns1, op1 or np1. z: use nsly1, oply1 or nply1. (see
 
     z1 = [ ((y1[0] / z[0]) - 1) * 100, ((y1[1] / z[1]) -1) *100, ((y1[2] / z[2]) - 1) * 100,  ((y1[3] / z[3]) - 1) * 100] #Calculates Year-on-Year percentages for each quarter
 
-    z1.append(((y1[9] / z[4]) - 1) * 100) #Calculates Year-on-Year percentages: fiscal year cumulative, z1[4]
-    z1.append((((y1[0] + y1[1]) / (z[0] + z[1])) - 1) * 100) #Calculates Year-on-Year percentages: fy first half, z1[5]
-    z1.append((((y1[0] + y1[1] + y1[2]) / (z[0] + z[1] + z[2])) - 1) * 100) #Calculates Year-on-Year percentages: fy 1st 3 quarters, z1[6]
+    z1.append((((y1[0] + y1[1]) / (z[0] + z[1])) - 1) * 100) #Calculates Year-on-Year percentages: fy first half, z1[4]
+    z1.append((((y1[0] + y1[1] + y1[2]) / (z[0] + z[1] + z[2])) - 1) * 100) #Calculates Year-on-Year percentages: fy 1st 3 quarters, z1[5]
+    z1.append(((y1[11] / z[4]) - 1) * 100) #Calculates Year-on-Year percentages: fiscal year cumulative, z1[6]
 
     z2 = [ '{:+.2f}% '.format(elem) for elem in z1 ] #format all integers to string to add % and + when needed
     if z == nsly1: #last fiscal year's net sales
@@ -58,19 +57,31 @@ def convert (y, z): # y: use ns1, op1 or np1. z: use nsly1, oply1 or nply1. (see
 
 def op_margin (a, b): # a = ns1, b = op1
 
-    a1 = [a[0], a[1] - a[0], a[2] - a[1], a[3] - a[2], a[4], a[5], a[6], a[7], a[8]]  #creates new net sales array which has to calculate quarterly figures
+    a1 = [a[0], a[1] - a[0], a[2] - a[1], a[3] - a[2], a[4], a[5], a[6], a[7], a[8]]  #creates new net sales array which has to calculate quarterly figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 
-    b1 = [b[0], b[1] - b[0], b[2] - b[1], b[3] - b[2], b[4], b[5], b[6], b[7], b[8]]  #creates new net sales array which has to calculate quarterly figures
+    b1 = [b[0], b[1] - b[0], b[2] - b[1], b[3] - b[2], b[4], b[5], b[6], b[7], b[8]]  #creates new operating income array which has to calculate quarterly figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 
-    if x >= 4:
-        d1 = [((b1[0]) / (a1[0]) ) * 100, ((b1[1]) / (a1[1]) ) * 100, ((b1[2]) / (a1[2]) ) * 100, ((b1[3]) / (a1[3]) ) * 100, ((b1[0] + b1[1] + b1[2] + b1[3]) / (a1[0] + a1[1] + a1[2] +a1[3]) ) * 100, ((b1[0] + b1[1]) / (a1[0] + a1[1]) ) * 100, ((b1[0] + b1[1] + b1[2]) / (a1[0] + a1[1] + a1[2]) ) * 100, ((b[4] / a[4]) ) * 100, ((b[5] / a[5]) ) * 100] #calculates operating margin: [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative, [5] fy first half, [6] fy first three quarters, [7] fy forecast, [8] next fy forecast 
-    elif x == 3:
-        d1 = [((b1[0]) / (a1[0]) ) * 100, ((b1[1]) / (a1[1]) ) * 100, ((b1[2]) / (a1[2]) ) * 100, 0, ((b1[0] + b1[1] + b1[2] + b1[3]) / (a1[0] + a1[1] + a1[2] +a1[3]) ) * 100, ((b1[0] + b1[1]) / (a1[0] + a1[1]) ) * 100, ((b1[0] + b1[1] + b1[2]) / (a1[0] + a1[1] + a1[2]) ) * 100, ((b[4] / a[4]) ) * 100, ((b[5] / a[5]) ) * 100] #calculates operating margin: [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative, [5] fy first half, [6] fy first three quarters, [7] fy forecast, [8] next fy forecast
-    elif x == 2:
-        d1 = [((b1[0]) / (a1[0]) ) * 100, ((b1[1]) / (a1[1]) ) * 100, 0, 0, ((b1[0] + b1[1] + b1[2] + b1[3]) / (a1[0] + a1[1] + a1[2] +a1[3]) ) * 100, ((b1[0] + b1[1]) / (a1[0] + a1[1]) ) * 100, ((b1[0] + b1[1] + b1[2]) / (a1[0] + a1[1] + a1[2]) ) * 100, ((b[4] / a[4]) ) * 100, ((b[5] / a[5]) ) * 100] #calculates operating margin: [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative, [5] fy first half, [6] fy first three quarters, [7] fy forecast, [8] next fy forecast
-    elif x == 1:
-        d1 = [((b1[0]) / (a1[0]) ) * 100, 0, 0, 0, ((b1[0] + b1[1] + b1[2] + b1[3]) / (a1[0] + a1[1] + a1[2] +a1[3]) ) * 100, ((b1[0] + b1[1]) / (a1[0] + a1[1]) ) * 100, ((b1[0] + b1[1] + b1[2]) / (a1[0] + a1[1] + a1[2]) ) * 100, ((b[4] / a[4]) ) * 100, ((b[5] / a[5]) ) * 100] #calculates operating margin: [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative, [5] fy first half, [6] fy first three quarters, [7] fy forecast, [8] next fy forecast
+    d1 = [] # # empty arrays for calculating operating margins, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fy cumulative
 
+    for i in range (4): #for dealing with divide by zeros
+        if a1[i] != 0:
+            d1.append(((b1[i]) / (a1[i]))  * 100) # [0] to [3] quarterly figures
+        else:  d1.append(0)
+    if a1[0] + a1[1] != 0:
+        d1.append(((b1[0] + b1[1]) / (a1[0] + a1[1])) * 100) # [4] fy first half
+    else: d1.append(0)
+    if a1[0] + a1[1] + a1[2] != 0:
+        d1.append(((b1[0] + b1[1] + b1[2]) / (a1[0] + a1[1] + a1[2]) ) * 100) # [5] fy first three quarters
+    else: d1.append(0)
+    if a1[0] + a1[1] + a1[2] + a1[3] != 0:
+        d1.append(((b1[0] + b1[1] + b1[2] + b1[3]) / (a1[0] + a1[1] + a1[2] +a1[3]) ) * 100) # [6] fy cumulative
+    else: d1.append(0)
+    if b[4] and a[4] != 0:
+        d1.append(((b[4] / a[4]) ) * 100) # [7] current fy forecast
+    else: d1.append(0) 
+    if b[5] and a[5] != 0:
+        d1.append(((b[5] / a[5]) ) * 100) # [8] next fy forecast
+    else: d1.append(0) 
     if b[6] and a[6] != 0:
         d1.append(((b[6] / a[6]) ) * 100) #[9] 1st forecast revision
     else: d1.append(0) #[9] 1st forecast revision
@@ -91,46 +102,35 @@ op9,oply9 = convert(op1, oply1)
 np9, nply9 = convert(np1, nply1)
 opmgx9 = op_margin(ns1, op1)
 
-#printing
-print("+------------------------------------------------------------------------------+") #border
+print("+------------------------------------------------------------------------------+") # printing
 print("|" + hd1[0] + "|" + hd1[1] + "|" + hd1[2] + "|" + " Op. Margin " + "|" +  hd1[3] + "|")
-
-#for loop for quarters
-for i in range(x):
+for i in range(x): #for loop for quarters
     print("+------------------------------------------------------------------------------+") #border
     print("|"  +  rw1[i] +  "|" + ns9[i] + "|" + op9[i] + "|" + opmgx9[i] + "|" + np9[i]+  "|" )
     print("|"  +  rw1[i+4] +   "|" + nsly9[i] + "|" + oply9[i] +  "|" + "            " + "|" + nply9[i] + "|"   )
-
 print("+==============================================================================+") #border
-
-#for loop for cumulative first half and 1st three quarters
-for i in range(1, x):
-    print("|"  + rw1[i+7] +  "|" + ns9[i+9] + "|" + op9[i+9] + "|" + opmgx9[i+4] + "|" + np9[i+9] +  "|" )
-    print("|"  + rw1[i+10] +   "|" + nsly9[i+4] + "|" + oply9[i+4] + "|" + "            "  + "|" + nply9[i+4] + "|"  )
+if x >= 2: # first half
+    print("|"  + rw1[8] +  "|" + ns9[9] + "|" + op9[9] + "|" + opmgx9[4] + "|" + np9[9] +  "|" )
+    print("|"  + rw1[11] +   "|" + nsly9[4] + "|" + oply9[4] + "|" + "            "  + "|" + nply9[4] + "|"  )
     print("+------------------------------------------------------------------------------+")
-
-#fy cumulative
-print("|"  +  rw1[10] +  "|" + ns9[9] + "|" + op9[9] + "|" + opmgx9[4] + "|" + np9[9] +  "|" )
+if x >= 3: # first three quarters
+    print("|"  + rw1[9] +  "|" + ns9[10] + "|" + op9[10] + "|" + opmgx9[5] + "|" + np9[10] +  "|" )
+    print("|"  + rw1[12] +   "|" + nsly9[5] + "|" + oply9[5] + "|" + "            "  + "|" + nply9[5] + "|"  )
+    print("+------------------------------------------------------------------------------+")
+print("|"  +  rw1[10] +  "|" + ns9[11] + "|" + op9[11] + "|" + opmgx9[6] + "|" + np9[11] +  "|" ) # fy cumulative
 if x >= 4:
-    print("|"  + rw1[13] +   "|" + nsly9[4] + "|" + oply9[4] + "|" + "            "  + "|" + nply9[4] + "|"  )
-
-#print forecasts
+    print("|"  + rw1[13] +   "|" + nsly9[6] + "|" + oply9[6] + "|" + "            "  + "|" + nply9[6] + "|"  )
 print("+------------------------------------------------------------------------------+") #border
-print("|"  +  rw1[14] +  "|" + ns9[4] + "|" + op9[4] + "|" + opmgx9[7] + "|" + np9[4] + "|")
-
-#print forecast revisions
-for i in range(x):
+print("|"  +  rw1[14] +  "|" + ns9[4] + "|" + op9[4] + "|" + opmgx9[7] + "|" + np9[4] + "|") # print current forecast
+for i in range(x): #print forecast revisions
     if ns1[i+6] != 0:
         print("|"  +  rw1[i+15] +  "|" + ns9[i+6] + "|" + op9[i+6] + "|" + opmgx9[i+9] + "|" + np9[i+6] + "|")
-
-
 if x >=4: #next fiscal year's forecast
     print("+------------------------------------------------------------------------------+") #border
     print("|"  +  rw1[18] +  "|" + ns9[5] + "|" + op9[5] + "|" + opmgx9[8] + "|" + np9[5] + "|")
-
 print("+------------------------------------------------------------------------------+") #border
 
-######################################################################################################################
+###################################################################################################################
 #old code
 # ns2 = [ ns1[0], ns1[1]  - ns1[0], ns1[2] - ns1[1], ns1[3] - ns1[2], ns1[4], ns1[5], ns1[6], ns1[7], ns1[8]] #creates new net sales array which has to calculate quarterly figures
 
@@ -188,7 +188,7 @@ print("+------------------------------------------------------------------------
 
 # #+++++++++++++++++++++++++++++ Input
 # #Operating Income (by quarter)
-# op1 = [ 119752, 219959, 472551, 472551, 500000, 520000, 520000,  560000, 0  ] #input cumalative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+# op1 = [ 119752, 219959, 472551, 472551, 500000, 520000, 520000,  560000, 0  ] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 # #-----------------------------
 # op2 = [ op1[0], op1[1] - op1[0], op1[2] - op1[1], op1[3] - op1[2], op1[4], op1[5], op1[6], op1[7], op1[8]] #creates new operating income array which has to calculate quarterly figures
 
@@ -287,7 +287,7 @@ print("+------------------------------------------------------------------------
 
 # #+++++++++++++++++++++++++++++ Input
 # #Net Income (by quarter)
-# np1 = [ 92747, 171834, 367387, 367387, 340000, 350000,  350000,  400000, 0 ] #input cumalative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+# np1 = [ 92747, 171834, 367387, 367387, 340000, 350000,  350000,  400000, 0 ] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 # #-----------------------------
 # np2 = [ np1[0], np1[1] - np1[0], np1[2] - np1[1], np1[3] - np1[2],  np1[4], np1[5], np1[6], np1[7], np1[8]]
 
