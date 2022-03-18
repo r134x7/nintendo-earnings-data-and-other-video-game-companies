@@ -120,7 +120,7 @@ def c_print (y, z, a, b, delta, ly, lz, la, lb): # y: use japan, z: use the amer
 
     ly1, lz1, la1, lb1 = [], [], [], [] # empty arrays for calculating YoY percentages, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fy cumulative
 
-    for i in range (4):
+    for i in range (4): #for dealing with divide by zeros
             if range (i) == range (0):
                 for i in range (4):
                     if ly[i] != 0: 
@@ -184,7 +184,7 @@ def c_print (y, z, a, b, delta, ly, lz, la, lb): # y: use japan, z: use the amer
 
     d1, e1, f1, g1 = [], [], [], [] # empty arrays for regional percentages, they will become: [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fy cumulative, [7] LTD
 
-    for i in range (4):
+    for i in range (4): #for dealing with divide by zeros
             if range (i) == range (0):
                 for i in range (8):
                     if delta1[i] != 0:
