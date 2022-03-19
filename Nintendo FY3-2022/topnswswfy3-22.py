@@ -1,3 +1,6 @@
+from operator import itemgetter
+
+
 hd1 = [  " Switch - Top Selling Titles              ", "   Units   ",  " Mario Kart 8 Deluxe                      ", " Super Mario Odyssey                      ", " The Legend of Zelda: Breath of the Wild  ", " Splatoon 2                               ", " Animal Crossing: New Horizons            ", " Pokémon Sword/Shield                     ", " Pokémon Let's Go Pikachu/Eevee           ", " Ring Fit Adventure                       ", " Super Mario Party                        ", " Super Smash Bros. Ultimate               ", " Pokémon Brilliant Diamond/Shining Pearl  " ] #header
 rw1 = [" 1st Quarter                              ", " 2nd Quarter                              ", " 3rd Quarter                              ", " 4th Quarter                              ", " FY3/22 Cumulative                        ", " Life-To-Date                             "] # row names
 lb1 = "###" # line break
@@ -57,19 +60,40 @@ print("+------------------------------------------------------+")
 print("|" + hd1[0] + "|" + hd1[1] + "|")
 print("+------------------------------------------------------+")
 
-# Arrange the lines of code below (titles) from highest selling to lowest 
-c_print(at1) #Mario Kart 8 Deluxe
-c_print(et1) #Animal Crossing: New Horizons
-c_print(jt1) #Super Smash Bros. Ultimate
-c_print(ct1) #The Legend of Zelda: Breath of the Wild
-c_print(ft1) #Pokémon Sword/Pokémon Shield
-c_print(bt1) #Super Mario Odyssey
-c_print(it1) #Super Mario Party
-c_print(gt1) #Pokémon: Let's Go, Pikachu!/Pokémon: Let's Go, Eevee!
-c_print(kt1) #Pokémon Brilliant Diamond /Pokémon Shining Pearl
-c_print(ht1) #Ring Fit Adventure
-c_print(dt1) #Splatoon 2
+capture1 = [at1, bt1, ct1, dt1, et1, ft1, gt1, ht1, it1, jt1, kt1] # put all the variables into an array
 
+capture2 = sorted(capture1, reverse=True, key=itemgetter(3)) # sorts the variables in the array by index[3] (the fourth quarter number [3] always contains the biggest value) inside each variable, "reverse" sorts by descending order
+
+for i in range (len(capture2)):
+    c_print(capture2[i])
+
+# Arrange the lines of code below (titles) from highest selling to lowest 
+# c_print(at1) #Mario Kart 8 Deluxe
+# c_print(et1) #Animal Crossing: New Horizons
+# c_print(jt1) #Super Smash Bros. Ultimate
+# c_print(ct1) #The Legend of Zelda: Breath of the Wild
+# c_print(ft1) #Pokémon Sword/Pokémon Shield
+# c_print(bt1) #Super Mario Odyssey
+# c_print(it1) #Super Mario Party
+# c_print(gt1) #Pokémon: Let's Go, Pikachu!/Pokémon: Let's Go, Eevee!
+# c_print(kt1) #Pokémon Brilliant Diamond /Pokémon Shining Pearl
+# c_print(ht1) #Ring Fit Adventure
+# c_print(dt1) #Splatoon 2
+
+# I get the ltd numbers, I sorted them, I need them paired with their 
+# capture = []
+
+# def to_sort (y): # y: use at1, bt1, etc
+#     y1 = [y[0] - y[4], y[1]  - y[0], y[2] - y[1], y[3] - y[2]] #quarterly calculation
+#     y1.append(y[4] + y1[0] + y1[1] + y1[2] + y1[3]) #adds LTD becomes y1[4]
+
+#     return capture.append(y1[4] + tostring(y) )
+
+# to_sort(at1), to_sort(bt1), to_sort(ct1), to_sort(dt1), to_sort(et1), to_sort(ft1), to_sort(gt1), to_sort(ht1), to_sort(it1) 
+
+# print(capture)
+
+# print(sorted(capture, reverse=True))
 
 #Switch SW
 
