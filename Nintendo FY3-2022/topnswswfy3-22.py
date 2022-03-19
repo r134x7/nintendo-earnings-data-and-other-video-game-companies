@@ -1,6 +1,5 @@
 from operator import itemgetter
 
-
 hd1 = [  " Switch - Top Selling Titles              ", "   Units   ",  " Mario Kart 8 Deluxe                      ", " Super Mario Odyssey                      ", " The Legend of Zelda: Breath of the Wild  ", " Splatoon 2                               ", " Animal Crossing: New Horizons            ", " Pokémon Sword/Shield                     ", " Pokémon Let's Go Pikachu/Eevee           ", " Ring Fit Adventure                       ", " Super Mario Party                        ", " Super Smash Bros. Ultimate               ", " Pokémon Brilliant Diamond/Shining Pearl  " ] #header
 rw1 = [" 1st Quarter                              ", " 2nd Quarter                              ", " 3rd Quarter                              ", " 4th Quarter                              ", " FY3/22 Cumulative                        ", " Life-To-Date                             "] # row names
 lb1 = "###" # line break
@@ -31,6 +30,15 @@ jt1= [ 24.77, 25.71, 27.40, 27.40, 23.84, " Super Smash Bros. Ultimate          
 
 kt1= [ 0, 0, 13.97, 13.97, 0, " Pokémon Brilliant Diamond/Shining Pearl  "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
 
+capture1 = [at1, bt1, ct1, dt1, et1, ft1, gt1, ht1, it1, jt1, kt1] # put all the variables into an array
+
+capture2 = sorted(capture1, reverse=True, key=itemgetter(3)) # sorts the variables in the array by index[3] (the fourth quarter number [3] always contains the biggest value) inside each variable, "reverse" sorts by descending order
+
+for i in range (len(capture2)): # for adding in ranks after sorting
+    rank = " Rank " + str(i+1) + " "
+    rank1 = '{0: >11}'.format(rank)
+    capture2[i].append(rank1)
+
 def c_print (y): # y: use at1, bt1, etc
     # variables created inside a function are local and cannot be used outside a function
     y1 = [y[0] - y[4], y[1]  - y[0], y[2] - y[1], y[3] - y[2]] #quarterly calculation
@@ -41,7 +49,7 @@ def c_print (y): # y: use at1, bt1, etc
     y2 = [ '{:.2f}M '.format(elem) for elem in y1] #formats all integers to string to add ¥ and M
     y3 = [ '{0: >11}'.format(elem) for elem in y2] #format width
 
-    print("|" + y[5] + "|" + "           |")
+    print("|" + y[5] + "|" + y[6] + "|")
     print("+------------------------------------------------------+")
     for i in range(x):
         if y1[i] != 0:
@@ -59,10 +67,6 @@ def c_print (y): # y: use at1, bt1, etc
 print("+------------------------------------------------------+")
 print("|" + hd1[0] + "|" + hd1[1] + "|")
 print("+------------------------------------------------------+")
-
-capture1 = [at1, bt1, ct1, dt1, et1, ft1, gt1, ht1, it1, jt1, kt1] # put all the variables into an array
-
-capture2 = sorted(capture1, reverse=True, key=itemgetter(3)) # sorts the variables in the array by index[3] (the fourth quarter number [3] always contains the biggest value) inside each variable, "reverse" sorts by descending order
 
 for i in range (len(capture2)):
     c_print(capture2[i])
