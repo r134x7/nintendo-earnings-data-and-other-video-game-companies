@@ -1,3 +1,5 @@
+from operator import itemgetter
+
 hd1 = [ " Nintendo Switch FY Million-Seller Titles                                                  ", " FY Japan ", " FY Overseas ", " FY Global ", " Global LTD "] #header
 rw1 = [" 1st Quarter (Units)                     ", " 2nd Quarter (Units)                     ", " 3rd Quarter (Units)                     ", " 4th Quarter (Units)                     ", " FY3/22 Cumulative (Units)               ", " FY3/22 Cumulative Area/WW FY, WW FY/LTD "] # row names
 lb1 = "###" # line break
@@ -183,6 +185,27 @@ a22_wwfy1= [ 0 / 100, 0 / 100, 101 / 100, 101 / 100]
 
 a22_wwltd1= [0 / 100, 0 / 100, 101 / 100, 101 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+capture1 = [] # empty array
+
+for i in range(22): # for loop to get 4 variables for each title into an array
+    jp1 = "a" + str(i+1) + "_jp1" # convert to string
+    jp2 = globals()[jp1] # changes the string to a variable
+    os1 = "a" + str(i+1) + "_os1" # convert to string
+    os2 = globals()[os1] # changes the string to a variable
+    wwfy1 = "a"+ str(i+1) +"_wwfy1" # convert to string
+    wwfy2 = globals()[wwfy1] # changes the string to a variable
+    wwltd1 = "a"+ str(i+1) +"_wwltd1" # convert to string
+    wwltd2 = globals()[wwltd1] # changes the string to a variable
+    capture1.append(jp2 + os2 + wwfy2 + wwltd2) # puts the variables together into one index of the array by combining its arrays
+
+capture2 = sorted(capture1, reverse=True, key=itemgetter(12)) # the titles are sorted by the global fy number of the 4th quarter.
+
+for i in range (len(capture2)): # for adding in title numbers to keep track after sorting
+    rank = "[ Title: " + str(i+1) + " ]"
+    rank1 = '{0: <11}'.format(rank)
+    capture2[i].append(rank1)
+
 def c_print (y, z, a, b): # y: use a1_jp1, a2_jp1, etc, z: use a1_os1, a2_os1, etc, a: use a1_wwfy1, a2_wwfy1, etc, b: use a1_wwltd1, a2_wwltd, etc
     # variables created inside a function are local and cannot be used outside a function
     y1, z1, a1, b1 = [y[0], y[1]  - y[0], y[2] - y[1], y[3] - y[2]], [z[0], z[1]  - z[0], z[2] - z[1], z[3] - z[2]], [a[0], a[1]  - a[0], a[2] - a[1], a[3] - a[2]], [b[0], b[1]  - b[0], b[2] - b[1], b[3] - b[2]] #quarterly calculation   
@@ -201,6 +224,7 @@ def c_print (y, z, a, b): # y: use a1_jp1, a2_jp1, etc, z: use a1_os1, a2_os1, e
     d2[0], d2[1], d2[2], d2[3] = '{0: >10}'.format(d2[0]), '{0: >13}'.format(d2[1]), '{0: >11}'.format(d2[2]), '{0: >12}'.format(d2[3]) #format width
 
     if a1 != 0:
+        print(b[4])
         print("+-------------------------------------------------------------------------------------------+")
         print("|" + y[4] + "|" + hd1[1] + "|" + hd1[2] +"|" + hd1[3] + "|" + hd1[4] + "|" )
         print("+-------------------------------------------------------------------------------------------+")
@@ -216,7 +240,6 @@ def c_print (y, z, a, b): # y: use a1_jp1, a2_jp1, etc, z: use a1_os1, a2_os1, e
     if a1 != 0:
         print("|"  +  rw1[5] +  "|" + d2[0] + "|" + d2[1] + "|" + d2[2] +  "|" +  d2[3] + "|"    )
         print("+-------------------------------------------------------------------------------------------+")
-        print(lb1)
 
         return
 
@@ -225,30 +248,36 @@ print("+------------------------------------------------------------------------
 print("|" + hd1[0] + "|")
 print("+-------------------------------------------------------------------------------------------+")
 
-c_print(a1_jp1, a1_os1, a1_wwfy1, a1_wwltd1)
-c_print(a2_jp1, a2_os1, a2_wwfy1, a2_wwltd1)
-c_print(a3_jp1, a3_os1, a3_wwfy1, a3_wwltd1)
-c_print(a4_jp1, a4_os1, a4_wwfy1, a4_wwltd1)
-c_print(a5_jp1, a5_os1, a5_wwfy1, a5_wwltd1)
-c_print(a6_jp1, a6_os1, a6_wwfy1, a6_wwltd1)
-c_print(a7_jp1, a7_os1, a7_wwfy1, a7_wwltd1)
-c_print(a8_jp1, a8_os1, a8_wwfy1, a8_wwltd1)
-c_print(a9_jp1, a9_os1, a9_wwfy1, a9_wwltd1)
-c_print(a10_jp1, a10_os1, a10_wwfy1, a10_wwltd1)
-c_print(a11_jp1, a11_os1, a11_wwfy1, a11_wwltd1)
-c_print(a12_jp1, a12_os1, a12_wwfy1, a12_wwltd1)
-c_print(a13_jp1, a13_os1, a13_wwfy1, a13_wwltd1)
-c_print(a14_jp1, a14_os1, a14_wwfy1, a14_wwltd1)
-c_print(a15_jp1, a15_os1, a15_wwfy1, a15_wwltd1)
-c_print(a16_jp1, a16_os1, a16_wwfy1, a16_wwltd1)
-c_print(a17_jp1, a17_os1, a17_wwfy1, a17_wwltd1)
-c_print(a18_jp1, a18_os1, a18_wwfy1, a18_wwltd1)
-c_print(a19_jp1, a19_os1, a19_wwfy1, a19_wwltd1)
-c_print(a20_jp1, a20_os1, a20_wwfy1, a20_wwltd1)
-c_print(a21_jp1, a21_os1, a21_wwfy1, a21_wwltd1)
-c_print(a22_jp1, a22_os1, a22_wwfy1, a22_wwltd1)
+for i in range(len(capture2)):
+    cut1 = capture2[i][0:5] # to recreate a(i)_jp1
+    cut2 = capture2[i][5:9] # to recreate a(i)_os1
+    cut3 = capture2[i][9:13] # to recreate a(i)_wwfy1
+    cut4 = capture2[i][13:18] # to recreate a(i)_wwltd1
+    c_print(cut1, cut2, cut3, cut4)
 
+print(lb1)
 
+# for i in range (2):
+    # c_print(a1_jp1, a1_os1, a1_wwfy1, a1_wwltd1)
+    # cut1 = slice(capture2[i][0:4])
+    # cut2 = slice(capture2[i][5:8])
+    # cut3 = slice(capture2[i][9:12])
+    # cut4 = slice(capture2[i][13:16])
+    # c_print(cut1, cut2, cut3, cut4)
+
+    # for i in range(22):
+#     test = "a"+ str(i+1) +"_wwfy1"
+#     test1 = globals()[test]
+#     test2 = "a"+ str(i+1) +"_wwltd1"
+#     test3 = globals()[test2]
+#     capture.append(test1)
+#     capture2.append(test3)    
+
+# print(capture)
+# print(capture2)
+
+# if i attach a rank to the global fy arrays... does it make it easier to sort?
+# attach all arrays? sort and then splice?
 
 # Old code+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # #Miitopia
