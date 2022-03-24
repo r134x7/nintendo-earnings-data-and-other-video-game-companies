@@ -1,11 +1,13 @@
 from operator import itemgetter
 
-header_names1 = [  " Capcom - Platinum Titles                    ", " Release Date ", " Platform                                    ", "   Units   ", ] #header
+header_names0 = [  " Capcom - Platinum Titles ", " Title ", " Release Date and Rank ", " Platform ", " Units ", ] #header
+header_names1 = ['{0: <32}'.format(elem) for elem in header_names0] # format width
 row_names0 = [" 1st Quarter ", " 2nd Quarter ", " 3rd Quarter ", " 4th Quarter ", " FY3/22 Cumulative ", " Life-To-Date "] # row names
-row_names1 = ['{0: <106}'.format(elem) for elem in row_names0] # format width
+row_names1 = ['{0: <20}'.format(elem) for elem in row_names0] # format width
 
 x = 3 # current earnings quarter, set to 1, 2, 3, or 4
-x2 = 1 # to print all titles set to 0, to print only titles have figures this fy set to 1.
+x2 = 0 # to print all titles set to 0, to print only titles have figures this fy set to 1.
+x3 = 1 # to print mobile-friendly version set to 1, if not set to 0.
 
 #Input the cumulative figure for each quarter, [0] release date, [1] title name, [2] platforms, [3] Quarter 1, [4] Quarter 2, [5] Quarter 3, [6] Quarter 4, [7] LTD figure at end of the last fiscal year, [8] miscellaneous
 title1   = [" Jan 2018 ", " Monster Hunter: World ", " PS4, Xbox One, PC, DL ", 17.3, 17.5, 17.80, 17.80, 17.10, 1,]
@@ -93,7 +95,7 @@ title82	 = [" Nov 2007 ", " Resident Evil: The Umbrella Chronicles ", " Wii ", 1
 title83	 = [" Mar 2017 ", " Ultimate Marvel vs. Capcom 3 ", " PS4, Xbox One, DL ", 1.20, 1.20, 1.30, 1.30, 1.10, 0,]
 title84	 = [" Feb 2005 ", " Devil May Cry 3 ", " PS2 ", 1.30, 1.30, 1.30, 1.30, 1.30, 0,]
 title85	 = [" Nov 2002 ", " Resident Evil 0 ", " GC ", 1.25, 1.25, 1.25, 1.25, 1.25, 0,]
-title86	 = [" Dec 2016 ", " Dead Rising 4 ", " Xbox One, PC, DL	", 1.20, 1.20, 1.20, 1.20, 1.20, 0,]
+title86	 = [" Dec 2016 ", " Dead Rising 4 ", " Xbox One, PC, DL ", 1.20, 1.20, 1.20, 1.20, 1.20, 0,]
 title87	 = [" Mar 2012 ", " Resident Evil 4 ", " DL (PS3, Xbox 360) ", 1.20, 1.20, 1.20, 1.20, 1.20, 0,]
 title88	 = [" Aug 2015 ", " Mega Man Legacy Collection ", " PS4, Xbox One, DL ", 1.20, 1.20, 1.20, 1.20, 1.20, 0,]
 title89	 = [" Sep 2000 ", " Dino Crisis 2 ", " PS ", 1.20, 1.20, 1.20, 1.20, 1.20, 0,]
@@ -116,14 +118,14 @@ title105 = [" Feb 2014 ", " Strider ", " DL (PS3, PS4, Xbox 360, Xbox One, PC) "
 title106 = [" Dec 1998 ", " Street Fighter Alpha 3 ", " PS ", 1.00, 1.00, 1.00, 1.00, 1.00, 0,]
 title107 = [" Feb 2006 ", " Devil May Cry 3 Special Edition ", " PS2 ", 1.00, 1.00, 1.00, 1.00, 1.00, 0,] 
 
-misc1 = ["* Excludes shipments of Monster Hunter World: Iceborne Master Edition"]
+misc1 = "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)"
 
-misc2 = ["NES: Nintendo Entertainment System, SNES: Super Nintendo Entertainment System,"]
-misc2 = ["GBA: Game Boy Advance, 3DS: Nintendo 3DS, GC: Nintendo GameCube, MD: Mega Drive/Genesis,"]
-misc3 = ["DC: DreamCast, PS: PlayStation®, PS2: PlayStation®2, PS3: PlayStation®3, PS4: PlayStation®4,"]
-misc4 = ["PSP: PSP® (PlayStation®Portable), PSV: PlayStation®Vita, DL: Full-game download, NSW: Nintendo Switch"]
+misc2 = "NES: Nintendo Entertainment System, \nSNES: Super Nintendo Entertainment System,"
+misc3 = "GBA: Game Boy Advance, \n3DS: Nintendo 3DS, \nGC: Nintendo GameCube, \nMD: Mega Drive/Genesis,"
+misc4 = "DC: DreamCast, \nPS: PlayStation®, \nPS2: PlayStation®2, \nPS3: PlayStation®3, \nPS4: PlayStation®4,"
+misc5 = "PSP: PSP® (PlayStation®Portable), \nPSV: PlayStation®Vita, \nDL: Full-game download, \nNSW: Nintendo Switch"
 
-misc5 = ["DL (Full-game download) includes all digital download units for each platform."]
+misc6 = "\n[DL (Full-game download) includes all \ndigital download units for each platform.]"
 
 lb1 = "###" # line break
 
@@ -147,13 +149,29 @@ def c_print (y): # y: use title1, title2, etc
 
     y1.append(y1[0] + y1[1] + y1[2] + y1[3] ) #adds fy cumulative to array becomes y1[4]
     y1.append(y[7] + y1[0] + y1[1] + y1[2] + y1[3]) #adds LTD becomes y1[5]
-    y[0] = '{0: <14}'.format(y[0])
-    y[1] = '{0: <45}'.format(y[1])
-    y[2] = '{0: <45}'.format(y[2])
+
+    if len(y[1]) > 32: # mobile-friendly formatting
+       z = str.split(y[1], maxsplit=2)
+       z = [ ' {0: <30} '.format(elem) for elem in z] #format width
+
+    if len(y[2]) > 32: # mobile-friendly formatting
+       a = str.split(y[2], maxsplit=2)
+       a = [ ' {0: <30} '.format(elem) for elem in a] #format width
+       
+    if x3 == 0: # mobile-friendly formatting
+        y[0] = '{0: <14}'.format(y[0])
+        y[1] = '{0: <45}'.format(y[1])
+        y[2] = '{0: <45}'.format(y[2])
+    else: 
+        y[0] = '{0: <20}'.format(y[0])
+        y[1] = '{0: <32}'.format(y[1])
+        y[2] = '{0: <32}'.format(y[2])
+        y[9] = '{0: <11}'.format(y[9])
+
     y2 = [ '{:.2f}M '.format(elem) for elem in y1] #formats all integers to string to add ¥ and M
     y3 = [ '{0: >11}'.format(elem) for elem in y2] #format width
 
-    if x2 == 0:
+    if x2 == 0 and x3 == 0:
         print("|" + y[1] + "|" + y[0] + "|" + y[2] + "|" + y[9] + "|") # title name and rank
         if y1[4] != 0:
             print("+----------------------------------------------------------------------------------------------------------------------+")
@@ -170,8 +188,7 @@ def c_print (y): # y: use title1, title2, etc
             if y[8] != 0:
                 print(misc1)
                 print("+----------------------------------------------------------------------------------------------------------------------+")
-    
-    if y1[4] != 0 and x2 == 1:
+    elif y1[4] != 0 and x2 == 1 and x3 == 0:
         print("|" + y[1] + "|" + y[0] + "|" + y[2] + "|" + y[9] + "|") # title name and rank
         if y1[4] != 0:
             print("+----------------------------------------------------------------------------------------------------------------------+")
@@ -189,22 +206,96 @@ def c_print (y): # y: use title1, title2, etc
                 print(misc1)
                 print("+----------------------------------------------------------------------------------------------------------------------+")
 
+    if x2 == 0 and x3 == 1:
+        print("+--------------------------------+")
+        if len(y[1]) <= 32:
+            print("|" + y[1] + "|")
+        else:
+            for z in (z):
+                print("|" + z + "|")                
+        print("+--------------------------------+")
+        if len(y[2]) <= 32:
+            print("|" + y[2] + "|")
+        else:
+            for a in (a):
+                print("|" + a + "|")  
+        print("+--------------------------------+")
+        print("|" + y[0] + "|" + y[9] + "|")
+        if y1[4] != 0:
+            print("+--------------------------------+")
+        for i in range(x):
+            if y1[i] != 0:
+                print("|"  +  row_names1[i] +  "|" + y3[i] + "|"   )
+        else:   #print fy cumulative
+            print("+================================+") #border
+            if y1[4] != 0:
+                print("|"  +  row_names1[4] +  "|" + y3[4] + "|"   )
+                        #print ltd
+            print("|"  +  row_names1[5] +  "|" + y3[5] + "|"   )
+            print("+--------------------------------+")
+            if y[8] != 0:
+                print(misc1)
+                print("+--------------------------------+")
+    elif y1[4] != 0 and x2 == 1 and x3 == 1:
+        print("+--------------------------------+")
+        if len(y[1]) <= 32:
+            print("|" + y[1] + "|")
+        else:
+            for z in (z):
+                print("|" + z + "|")                
+        print("+--------------------------------+")
+        if len(y[2]) <= 32:
+            print("|" + y[2] + "|")
+        else:
+            for a in (a):
+                print("|" + a + "|")
+        print("+--------------------------------+")
+        print("|" + y[0] + "|" + y[9] + "|")
+        if y1[4] != 0:
+            print("+--------------------------------+")
+        for i in range(x):
+            if y1[i] != 0:
+                print("|"  +  row_names1[i] +  "|" + y3[i] + "|"   )
+        else:   #print fy cumulative
+            print("+================================+") #border
+            if y1[4] != 0:
+                print("|"  +  row_names1[4] +  "|" + y3[4] + "|"   )
+                        #print ltd
+            print("|"  +  row_names1[5] +  "|" + y3[5] + "|"   )
+            print("+--------------------------------+")
+            if y[8] != 0:
+                print(misc1)
+                print("+--------------------------------+")
 
     return
 
 # print header
-print("+----------------------------------------------------------------------------------------------------------------------+")
-print("|" + header_names1[0] + "|" + header_names1[1] + "|" + header_names1[2] + "|" + header_names1[3] + "|")
-print("+----------------------------------------------------------------------------------------------------------------------+")
+if x3 == 0:
+    print("+----------------------------------------------------------------------------------------------------------------------+")
+    print("|" + header_names1[0] + "|" + header_names1[1] + "|" + header_names1[2] + "|" + header_names1[3] + "|")
+    print("+----------------------------------------------------------------------------------------------------------------------+")
+elif x3 == 1:
+    print("+--------------------------------+")
+    print("|" + header_names1[0] + "|")
+    print("+--------------------------------+")
+    print("|" + header_names1[1] + "|")
+    print("+--------------------------------+")
+    print("|" + header_names1[3] + "|")
+    print("+--------------------------------+")
+    print("|" + header_names1[2] + "|")
+    print("+--------------------------------+")
+    print("|" + header_names1[4] + "|")
+    print("+--------------------------------+")
 
 for i in range (len(capture2)):
     c_print(capture2[i])
-# c_print(capture2[7])
-# c_print(capture2[8])
-# c_print(capture2[9])
+# c_print(capture2[14])
+# c_print(capture2[59])
+# c_print(capture2[93])
 
 print(lb1)
 print(misc2)
 print(misc3)
 print(misc4)
 print(misc5)
+print(misc6)
