@@ -8,24 +8,32 @@ mobile_output = 1 # 1 = on, 0 = off
 if mobile_output != 0:
     header_1 = [ " Nintendo Co., Ltd.", 0, " Net Sales         ", 0, " Operating Income  ", 0, " Operating Margin  ", 0, " Net Profit        ", 0]
 
-net_sales_1 = [ 322647, 624272, 1320219, 1320219, 1600000, 1600000, 1600000,  1650000, 0  ] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+net_sales_1 = [ 322647, 624272, 1320219, 1320219, 1600000, 1600000, 1600000,  1650000, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 
 net_sales_last_fy_1= [ 358106, 411418, 634939, 354447, 1758910 ] # input quarterly calculated figures, [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative 
 
-operating_income_1 = [ 119752, 219959, 472551, 472551, 500000, 520000, 520000,  560000, 0  ] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+operating_income_1 = [ 119752, 219959, 472551, 472551, 500000, 520000, 520000,  560000, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 
-operating_income_last_fy_1= [ 144737, 146687, 229684, 119526, 640634 ] # input quarterly calculated figures, [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative 
+operating_income_last_fy_1= [ 144737, 146687, 229684, 119526, 640634] # input quarterly calculated figures, [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative 
 
-net_income_1 = [ 92747, 171834, 367387, 367387, 340000, 350000,  350000,  400000, 0 ] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+net_income_1 = [ 92747, 171834, 367387, 367387, 340000, 350000,  350000,  400000, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 
-net_income_last_fy_1= [ 106482, 106641, 163542, 103711, 480376 ] # input quarterly calculated figures, [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative
+net_income_last_fy_1= [ 106482, 106641, 163542, 103711, 480376] # input quarterly calculated figures, [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative
 
 net_sales_empty = []
 operating_income_empty = []
 
 def quarterly_calculation (y): # y: use net_sales_1, operating_income_1 or net_income_1.
 
-    y1 = [y[0], y[1] - y[0], y[2] - y[1], y[3] - y[2], y[4], y[5], y[6], y[7], y[8]]  #creates new net sales array which has to calculate quarterly figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+    y1 =[]
+
+    for i in range(4):
+        if i != 0:
+            y1.append(y[i] - y[i-1]) # [0] Q1, [1] Q2, [2] Q3, [3] Q4
+        else: y1.append(y[i])
+    
+    for i in range(5): 
+        y1.append(y[i+4]) # [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 
     def for_operating_margin(y1):
         return y1
@@ -33,9 +41,12 @@ def quarterly_calculation (y): # y: use net_sales_1, operating_income_1 or net_i
     if not net_sales_empty or not operating_income_empty:
         return for_operating_margin(y1)
 
-    y1.append(y1[0] + y1[1]) #adds fy first half to array y1[9]
-    y1.append(y1[0] + y1[1] + y1[2]) #adds fy three quarters to array y1[10]
-    y1.append(y1[0] + y1[1] + y1[2] + y1[3]) #adds fy cumulative to array becomes y1[11]
+    for i in range(3):
+        if i == 0:
+            y1.append(y1[i+1] + y1[i]) # fy first half y1[9]
+        elif i == 1:
+            y1.append(y1[i+1] + y1[i] + y1[i-1]) # fy three quarters y1[10]
+        else: y1.append(y1[i+1] + y1[i] + y1[i-1] + y1[i-2]) # fy cumulative to array becomes y1[11]
 
     if y == net_sales_1:
         return format_to_string_net_sales(y1), year_on_year_calculation(y1, net_sales_last_fy_1)
@@ -46,37 +57,43 @@ def quarterly_calculation (y): # y: use net_sales_1, operating_income_1 or net_i
 
 def format_to_string_net_sales (y1):
 
-    y2 = [ '¥{:,}M '.format(elem) for elem in y1] #formats all integers to string to add ¥, M and commas
+    y2 = ['¥{:,}M '.format(elem) for elem in y1] #formats all integers to string to add ¥, M and commas
     if mobile_output == 0:
-        y3 = [ '{0: >13}'.format(elem) for elem in y2] #format width
+        y3 = ['{0: >13}'.format(elem) for elem in y2] #format width
     else:
-        y3 =  [ '{0: >18}'.format(elem) for elem in y2] #format width
+        y3 =  ['{0: >18}'.format(elem) for elem in y2] #format width
 
     return y3
 
 def format_to_string_operating_income (y1):
 
-    y2 = [ '¥{:,}M '.format(elem) for elem in y1] #formats all integers to string to add ¥, M and commas
-    y3 =  [ '{0: >18}'.format(elem) for elem in y2] #format width
+    y2 = ['¥{:,}M '.format(elem) for elem in y1] #formats all integers to string to add ¥, M and commas
+    y3 =  ['{0: >18}'.format(elem) for elem in y2] #format width
 
     return y3
 
 def format_to_string_net_income (y1):
 
-    y2 = [ '¥{:,}M '.format(elem) for elem in y1] #formats all integers to string to add ¥, M and commas
+    y2 = ['¥{:,}M '.format(elem) for elem in y1] #formats all integers to string to add ¥, M and commas
     if mobile_output == 0:
-        y3 =  [ '{0: >12}'.format(elem) for elem in y2] #format width
+        y3 =  ['{0: >12}'.format(elem) for elem in y2] #format width
     else:
-        y3 =  [ '{0: >18}'.format(elem) for elem in y2] #format width
+        y3 =  ['{0: >18}'.format(elem) for elem in y2] #format width
 
     return y3
 
 def year_on_year_calculation (y1, z): # z: use net_sales_last_fy_1, operating_income_last_fy_1 or net_income_last_fy_1.
 
-    z1 = [ ((y1[0] / z[0]) - 1) * 100, ((y1[1] / z[1]) -1) *100, ((y1[2] / z[2]) - 1) * 100,  ((y1[3] / z[3]) - 1) * 100] #Calculates Year-on-Year percentages for each quarter
+    z1 = []
 
-    z1.append((((y1[0] + y1[1]) / (z[0] + z[1])) - 1) * 100) # fy first half, z1[4]
-    z1.append((((y1[0] + y1[1] + y1[2]) / (z[0] + z[1] + z[2])) - 1) * 100) # fy 1st 3 quarters, z1[5]
+    for i in range(4):
+        z1.append(((y1[i] / z[i]) - 1) * 100) # Calculates Year-on-Year percentages for each quarter, [0] is Q1, [1] Q2, [2] Q3, [3] Q4
+
+    for i in range(2):
+        if i == 0:
+            z1.append((((y1[i] + y1[i+1]) / (z[i] + z[i+1])) - 1) * 100) # fy first half, z1[4]
+        else: z1.append((((y1[i-1] + y1[i] + y1[i+1]) / (z[i-1] + z[i] + z[i+1])) - 1) * 100) # fy 1st 3 quarters, z1[5]
+            
     z1.append(((y1[11] / z[4]) - 1) * 100) # fiscal year cumulative, z1[6]
 
     if z == net_sales_last_fy_1:
@@ -115,36 +132,26 @@ def format_to_string_year_on_year_net_income (z1):
 
 def operating_margin (a1, b1): # a = net_sales_1, b = operating_income_1
 
-    d1 = [] # empty arrays for calculating operating margins, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fy cumulative, [7] current fy forecast, [8] next fy forecast, [9] 1st forecast revision, [10] 2nd revision, [11] 3rd revision
-
-    for i in range (4): #for dealing with divide by zeros
+    d1 = []
+    
+    for i in range (4): 
         if a1[i] != 0:
             d1.append(((b1[i]) / (a1[i]))  * 100) # [0] to [3] quarterly figures
-        else:  d1.append(0)
-    if a1[0] + a1[1] != 0:
-        d1.append(((b1[0] + b1[1]) / (a1[0] + a1[1])) * 100) # [4] fy first half
-    else: d1.append(0)
-    if a1[0] + a1[1] + a1[2] != 0:
-        d1.append(((b1[0] + b1[1] + b1[2]) / (a1[0] + a1[1] + a1[2]) ) * 100) # [5] fy first three quarters
-    else: d1.append(0)
-    if a1[0] + a1[1] + a1[2] + a1[3] != 0:
-        d1.append(((b1[0] + b1[1] + b1[2] + b1[3]) / (a1[0] + a1[1] + a1[2] +a1[3]) ) * 100) # [6] fy cumulative
-    else: d1.append(0)
-    if b1[4] and a1[4] != 0:
-        d1.append(((b1[4] / a1[4]) ) * 100) # [7] current fy forecast
-    else: d1.append(0) 
-    if b1[5] and a1[5] != 0:
-        d1.append(((b1[5] / a1[5]) ) * 100) # [8] next fy forecast
-    else: d1.append(0) 
-    if b1[6] and a1[6] != 0:
-        d1.append(((b1[6] / a1[6]) ) * 100) #[9] 1st forecast revision
-    else: d1.append(0) 
-    if b1[7] and a1[7] != 0:
-        d1.append(((b1[7] / a1[7]) ) * 100) #[10] 2nd revision
-    else: d1.append(0) 
-    if b1[8] and a1[8] != 0:
-        d1.append(((b1[8] / a1[8]) ) * 100) #[11] 3rd revision
-    else: d1.append(0)
+        else:  d1.append(0) #for dealing with divide by zeros
+
+    for i in range(3):
+        if i == 0 and a1[i] + a1[i+1] != 0:
+            d1.append(((b1[i] + b1[i+1]) / (a1[i] + a1[i+1])) * 100) # [4] fy first half
+        elif i == 1 and a1[i-1] + a1[i] + a1[i+1] != 0:
+            d1.append(((b1[i-1] + b1[i] + b1[i+1]) / (a1[i-1] + a1[i] + a1[i+1]) ) * 100) # [5] fy first three quarters
+        elif i == 2 and a1[i-2] + a1[i-1] + a1[i] + a1[i+1] != 0:
+            d1.append(((b1[i-2] + b1[i-1] + b1[i] + b1[i+1]) / (a1[i-2] + a1[i-1] + a1[i] +a1[i+1]) ) * 100) # [6] fy cumulative
+        else: d1.append(0) #for dealing with divide by zeros
+
+    for i in range(5):
+        if b1[i+4] and a1[i+4] != 0:
+            d1.append(((b1[i+4] / a1[i+4]) ) * 100) # [7] current fy forecast, [8] next fy forecast, [9] 1st forecast revision, [10] 2nd revision, [11] 3rd revision
+        else: d1.append(0) #for dealing with divide by zeros
 
     return format_to_string_operating_margin(d1)
 
@@ -260,6 +267,23 @@ if mobile_output != 1:
     print_desktop()
 else: print_mobile()
 
+# discarded method involving how list indexes go to last index when i = -1
+    # y1 =[]
+
+    # for i in range (12):
+        # y1.append(0) # creates an array of length 12, must use 0 integers
+
+    # for i in range(4):
+        # if i != 0:
+            # y1[i] = y[i] - y[i-1] # [0] Q1, [1] Q2, [2] Q3, [3] Q4
+        # else:
+            # y1[i] = y[i]
+    
+    # for i in range(5): 
+        # y1[i+4] = y[i+4] # [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+
+    # for i in range(3):
+        # y1[i+9] = y1[i+1] + y1[i] + y1[i-1] + y1[i-2] # adds fy first half to array y1[9], fy three quarters to array y1[10], fy cumulative to array becomes y1[11]
 
 # def convert (y, z): # y: use net_sales_1, operating_income_1 or net_income_1. z: use net_sales_last_fy_1, operating_income_last_fy_1 or net_income_last_fy_1. 
 
@@ -318,16 +342,16 @@ else: print_mobile()
 #         d1.append(((b[4] / a[4]) ) * 100) # [7] current fy forecast
 #     else: d1.append(0) 
 #     if b[5] and a[5] != 0:
-#         d1.append(((b[5] / a[5]) ) * 100) # [8] next fy forecast
+#         d1.append(((b[5] / a[5]) ) * 100) # [8] next fy forecast 
 #     else: d1.append(0) 
 #     if b[6] and a[6] != 0:
-#         d1.append(((b[6] / a[6]) ) * 100) #[9] 1st forecast revision
+#         d1.append(((b[6] / a[6]) ) * 100) # [9] 1st forecast revision
 #     else: d1.append(0) #[9] 1st forecast revision
 #     if b[7] and a[7] != 0:
-#         d1.append(((b[7] / a[7]) ) * 100) #[10] 2nd revision
+#         d1.append(((b[7] / a[7]) ) * 100) # [10] 2nd revision
 #     else: d1.append(0) #[10] 2nd revision
 #     if b[8] and a[8] != 0:
-#         d1.append(((b[8] / a[8]) ) * 100) #[11] 3rd revision
+#         d1.append(((b[8] / a[8]) ) * 100) # [11] 3rd revision
 #     else: d1.append(0) #[11] 3rd revision
 
 #     d2 =  [ '{:.2f}% '.format(elem) for elem in d1 ] #format all integers to string to add %
