@@ -1,61 +1,114 @@
-hd1 = [ " Nintendo Co., Ltd.", " Net Sales   ", " Operating Income ", " Net Profit "] #header names
-rw1 = [" 1st Quarter       ", " 2nd Quarter       ",  " 3rd Quarter       ",  " 4th Quarter       ", " 1st Quarter YoY%  ", " 2nd Quarter YoY%  ", " 3rd Quarter YoY%  ", " 4th Quarter YoY%  ", " First Half        ", " First 3 Quarters  ", " FY3/22 Cumulative ", " First Half YoY%   ", " First 3 Qtrs YoY% ", " FY3/22 Cml. YoY%  ", " FY3/22 Forecast   ", " 1st FCST Revision ", " 2nd FCST Revision ", " 3rd FCST Revision ", " FY3/23 Forecast   ",   ] # row names, array length = 19
-lb1 = "###" # line break
+header_1 = [ " Nintendo Co., Ltd.", " Net Sales   ", " Operating Income ", " Op. Margin ", " Net Profit "] #header names
+row_1 = [" 1st Quarter       ", " 2nd Quarter       ",  " 3rd Quarter       ",  " 4th Quarter       ", " 1st Quarter YoY%  ", " 2nd Quarter YoY%  ", " 3rd Quarter YoY%  ", " 4th Quarter YoY%  ", " First Half        ", " First 3 Quarters  ", " FY3/22 Cumulative ", " First Half YoY%   ", " First 3 Qtrs YoY% ", " FY3/22 Cml. YoY%  ", " FY3/22 Forecast   ", " 1st FCST Revision ", " 2nd FCST Revision ", " 3rd FCST Revision ", " FY3/23 Forecast   ",   ] # row names, array length = 19
+line_break_1 = "###" 
 
-x = 3 #Variable used for if statement condition for printing Quarter 1 upto Quarter 4, set the value from 1 to 4 whichever is the current quarter.
+current_quarter = 3 # Set to 1, 2, 3 or 4.
+mobile_output = 1 # 1 = on, 0 = off
 
-#Net Sales (by quarter), variable creates an array (zero-index)
-ns1 = [ 322647, 624272, 1320219, 1320219, 1600000, 1600000, 1600000,  1650000, 0  ] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
-#++++++++++++++++++++++++++++++
-#Net sales array for last fiscal year's numbers
-nsly1= [ 358106, 411418, 634939, 354447, 1758910 ] # input [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative 
-#++++++++++++++++++++++++++++++
+if mobile_output != 0:
+    header_1 = [ " Nintendo Co., Ltd.", 0, " Net Sales         ", 0, " Operating Income  ", 0, " Operating Margin  ", 0, " Net Profit        ", 0]
+
+net_sales_1 = [ 322647, 624272, 1320219, 1320219, 1600000, 1600000, 1600000,  1650000, 0  ] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+
+net_sales_last_fy_1= [ 358106, 411418, 634939, 354447, 1758910 ] # input quarterly calculated figures, [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative 
+
 #Operating Income (by quarter)
-op1 = [ 119752, 219959, 472551, 472551, 500000, 520000, 520000,  560000, 0  ] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
-#++++++++++++++++++++++++++++++
-#Operating income array for last fiscal year's numbers
-oply1= [ 144737, 146687, 229684, 119526, 640634 ] # input [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative 
-#++++++++++++++++++++++++++++++
-#Net Income (by quarter)
-np1 = [ 92747, 171834, 367387, 367387, 340000, 350000,  350000,  400000, 0 ] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
-#++++++++++++++++++++++++++++++
-#last years numbers
-nply1= [ 106482, 106641, 163542, 103711, 480376 ] # input [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative
-#-----------------------------
+operating_income_1 = [ 119752, 219959, 472551, 472551, 500000, 520000, 520000,  560000, 0  ] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 
-def convert (y, z): # y: use ns1, op1 or np1. z: use nsly1, oply1 or nply1. (see called function below)
-    # variables created inside a function are local and cannot be used outside a function
+#Operating income array for last fiscal year's numbers
+operating_income_last_fy_1= [ 144737, 146687, 229684, 119526, 640634 ] # input quarterly calculated figures, [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative 
+
+#Net Income (by quarter)
+net_income_1 = [ 92747, 171834, 367387, 367387, 340000, 350000,  350000,  400000, 0 ] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+
+#last years numbers
+net_income_last_fy_1= [ 106482, 106641, 163542, 103711, 480376 ] # input quarterly calculated figures, [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative
+
+def quarterly_calculation (y): # y: use net_sales_1, operating_income_1 or net_income_1.
+
     y1 = [y[0], y[1] - y[0], y[2] - y[1], y[3] - y[2], y[4], y[5], y[6], y[7], y[8]]  #creates new net sales array which has to calculate quarterly figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 
     y1.append(y1[0] + y1[1]) #adds fy first half to array y1[9]
     y1.append(y1[0] + y1[1] + y1[2]) #adds fy three quarters to array y1[10]
-    y1.append(y1[0] + y1[1] + y1[2] +y1[3]) #adds fy cumulative to array becomes y1[11]
+    y1.append(y1[0] + y1[1] + y1[2] + y1[3]) #adds fy cumulative to array becomes y1[11]
 
-    y2 = [ '¥{:,}M '.format(elem) for elem in y1] #formats all integers to string to add ¥ and M
-    if y == ns1: #net sales
+    if y == net_sales_1:
+        return format_to_string_net_sales(y1), year_on_year_calculation(y1, net_sales_last_fy_1)
+    elif y == operating_income_1:
+        return format_to_string_operating_income(y1), year_on_year_calculation(y1, operating_income_last_fy_1)
+    elif y == net_income_1:
+        return format_to_string_net_income(y1), year_on_year_calculation(y1, net_income_last_fy_1)
+
+def format_to_string_net_sales (y1):
+
+    y2 = [ '¥{:,}M '.format(elem) for elem in y1] #formats all integers to string to add ¥, M and commas
+    if mobile_output == 0:
         y3 = [ '{0: >13}'.format(elem) for elem in y2] #format width
-    elif y == op1: #operating income
+    else:
         y3 =  [ '{0: >18}'.format(elem) for elem in y2] #format width
-    elif y == np1: #net profit       
+
+    return y3
+
+def format_to_string_operating_income (y1):
+
+    y2 = [ '¥{:,}M '.format(elem) for elem in y1] #formats all integers to string to add ¥, M and commas
+    y3 =  [ '{0: >18}'.format(elem) for elem in y2] #format width
+
+    return y3
+
+def format_to_string_net_income (y1):
+
+    y2 = [ '¥{:,}M '.format(elem) for elem in y1] #formats all integers to string to add ¥, M and commas
+    if mobile_output == 0:
         y3 =  [ '{0: >12}'.format(elem) for elem in y2] #format width
+    else:
+        y3 =  [ '{0: >18}'.format(elem) for elem in y2] #format width
+
+    return y3
+
+def year_on_year_calculation (y1, z): # z: use net_sales_last_fy_1, operating_income_last_fy_1 or net_income_last_fy_1.
 
     z1 = [ ((y1[0] / z[0]) - 1) * 100, ((y1[1] / z[1]) -1) *100, ((y1[2] / z[2]) - 1) * 100,  ((y1[3] / z[3]) - 1) * 100] #Calculates Year-on-Year percentages for each quarter
 
-    z1.append((((y1[0] + y1[1]) / (z[0] + z[1])) - 1) * 100) #Calculates Year-on-Year percentages: fy first half, z1[4]
-    z1.append((((y1[0] + y1[1] + y1[2]) / (z[0] + z[1] + z[2])) - 1) * 100) #Calculates Year-on-Year percentages: fy 1st 3 quarters, z1[5]
-    z1.append(((y1[11] / z[4]) - 1) * 100) #Calculates Year-on-Year percentages: fiscal year cumulative, z1[6]
+    z1.append((((y1[0] + y1[1]) / (z[0] + z[1])) - 1) * 100) # fy first half, z1[4]
+    z1.append((((y1[0] + y1[1] + y1[2]) / (z[0] + z[1] + z[2])) - 1) * 100) # fy 1st 3 quarters, z1[5]
+    z1.append(((y1[11] / z[4]) - 1) * 100) # fiscal year cumulative, z1[6]
+
+    if z == net_sales_last_fy_1:
+        return format_to_string_year_on_year_net_sales(z1)
+    elif z == operating_income_last_fy_1:
+        return format_to_string_year_on_year_operating_income(z1)
+    elif z == net_income_last_fy_1:
+        return format_to_string_year_on_year_net_income (z1)
+
+def format_to_string_year_on_year_net_sales (z1):
+    
+    z2 = [ '{:+.2f}% '.format(elem) for elem in z1 ] #format all integers to string to add % and + when needed
+    if mobile_output == 0:
+        z3 = [ '{0: >13}'.format(elem) for elem in z2] #format width
+    else:
+        z3 = [ '{0: >18}'.format(elem) for elem in z2] #format width
+
+    return z3
+
+def format_to_string_year_on_year_operating_income (z1):
 
     z2 = [ '{:+.2f}% '.format(elem) for elem in z1 ] #format all integers to string to add % and + when needed
-    if z == nsly1: #last fiscal year's net sales
-        z3 = [ '{0: >13}'.format(elem) for elem in z2] #format width
-    elif z == oply1: #last fiscal year's operating profit
-        z3 = [ '{0: >18}'.format(elem) for elem in z2] #format width
-    elif z == nply1: #last fiscal year's net profit
+    z3 = [ '{0: >18}'.format(elem) for elem in z2] #format width
+
+    return z3
+
+def format_to_string_year_on_year_net_income (z1):
+
+    z2 = [ '{:+.2f}% '.format(elem) for elem in z1 ] #format all integers to string to add % and + when needed
+    if mobile_output == 0:
         z3 = [ '{0: >12}'.format(elem) for elem in z2] #format width
+    else:
+        z3 = [ '{0: >18}'.format(elem) for elem in z2] #format width
 
-    return y3, z3
+    return z3
 
-def op_margin (a, b): # a = ns1, b = op1
+def operating_margin (a, b): # a = net_sales_1, b = operating_income_1
 
     a1 = [a[0], a[1] - a[0], a[2] - a[1], a[3] - a[2], a[4], a[5], a[6], a[7], a[8]]  #creates new net sales array which has to calculate quarterly figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 
@@ -93,42 +146,219 @@ def op_margin (a, b): # a = ns1, b = op1
     else: d1.append(0) #[11] 3rd revision
 
     d2 =  [ '{:.2f}% '.format(elem) for elem in d1 ] #format all integers to string to add %
-    d3 =  [ '{0: >12}'.format(elem) for elem in d2] #format width
+    if mobile_output == 0:
+        d3 =  [ '{0: >12}'.format(elem) for elem in d2] #format width
+    else:
+        d3 =  [ '{0: >18}'.format(elem) for elem in d2] #format width
 
     return d3
 
-ns9,nsly9 = convert(ns1, nsly1)
-op9,oply9 = convert(op1, oply1)
-np9, nply9 = convert(np1, nply1)
-opmgx9 = op_margin(ns1, op1)
+net_sales_2, net_sales_last_fy_2 = quarterly_calculation(net_sales_1)
+operating_income_2, operating_income_last_fy_2 = quarterly_calculation(operating_income_1)
+net_income_2, net_income_last_fy_2 = quarterly_calculation(net_income_1)
 
-print("+------------------------------------------------------------------------------+") # printing
-print("|" + hd1[0] + "|" + hd1[1] + "|" + hd1[2] + "|" + " Op. Margin " + "|" +  hd1[3] + "|")
-for i in range(x): #for loop for quarters
+operating_margin_1 = operating_margin(net_sales_1, operating_income_1)
+
+blank = ["                  ", "                  ", "                  ", "                  ", "                  ", "                  ", "                  ", "                  ", "                  ", "                  ", "                  "]
+
+for_loop_list = [net_sales_2, net_sales_last_fy_2, operating_income_2, operating_income_last_fy_2, operating_margin_1, blank, net_income_2, net_income_last_fy_2]
+
+def print_desktop():
+
+    print("+------------------------------------------------------------------------------+") # printing
+    print("|" + header_1[0] + "|" + header_1[1] + "|" + header_1[2] + "|" + header_1[3] + "|" +  header_1[4] + "|")
+    for i in range(current_quarter): #for loop for quarters
+        print("+------------------------------------------------------------------------------+") #border
+        print("|"  +  row_1[i] +  "|" + net_sales_2[i] + "|" + operating_income_2[i] + "|" + operating_margin_1[i] + "|" + net_income_2[i]+  "|" )
+        print("|"  +  row_1[i+4] +   "|" + net_sales_last_fy_2[i] + "|" + operating_income_last_fy_2[i] +  "|" + "            " + "|" + net_income_last_fy_2[i] + "|"   )
+    print("+==============================================================================+") #border
+    if current_quarter >= 2: # first half
+        print("|"  + row_1[8] +  "|" + net_sales_2[9] + "|" + operating_income_2[9] + "|" + operating_margin_1[4] + "|" + net_income_2[9] +  "|" )
+        print("|"  + row_1[11] +   "|" + net_sales_last_fy_2[4] + "|" + operating_income_last_fy_2[4] + "|" + "            "  + "|" + net_income_last_fy_2[4] + "|"  )
+        print("+------------------------------------------------------------------------------+")
+    if current_quarter >= 3: # first three quarters
+        print("|"  + row_1[9] +  "|" + net_sales_2[10] + "|" + operating_income_2[10] + "|" + operating_margin_1[5] + "|" + net_income_2[10] +  "|" )
+        print("|"  + row_1[12] +   "|" + net_sales_last_fy_2[5] + "|" + operating_income_last_fy_2[5] + "|" + "            "  + "|" + net_income_last_fy_2[5] + "|"  )
+        print("+------------------------------------------------------------------------------+")
+    print("|"  +  row_1[10] +  "|" + net_sales_2[11] + "|" + operating_income_2[11] + "|" + operating_margin_1[6] + "|" + net_income_2[11] +  "|" ) # fy cumulative
+    if current_quarter >= 4:
+        print("|"  + row_1[13] +   "|" + net_sales_last_fy_2[6] + "|" + operating_income_last_fy_2[6] + "|" + "            "  + "|" + net_income_last_fy_2[6] + "|"  )
     print("+------------------------------------------------------------------------------+") #border
-    print("|"  +  rw1[i] +  "|" + ns9[i] + "|" + op9[i] + "|" + opmgx9[i] + "|" + np9[i]+  "|" )
-    print("|"  +  rw1[i+4] +   "|" + nsly9[i] + "|" + oply9[i] +  "|" + "            " + "|" + nply9[i] + "|"   )
-print("+==============================================================================+") #border
-if x >= 2: # first half
-    print("|"  + rw1[8] +  "|" + ns9[9] + "|" + op9[9] + "|" + opmgx9[4] + "|" + np9[9] +  "|" )
-    print("|"  + rw1[11] +   "|" + nsly9[4] + "|" + oply9[4] + "|" + "            "  + "|" + nply9[4] + "|"  )
-    print("+------------------------------------------------------------------------------+")
-if x >= 3: # first three quarters
-    print("|"  + rw1[9] +  "|" + ns9[10] + "|" + op9[10] + "|" + opmgx9[5] + "|" + np9[10] +  "|" )
-    print("|"  + rw1[12] +   "|" + nsly9[5] + "|" + oply9[5] + "|" + "            "  + "|" + nply9[5] + "|"  )
-    print("+------------------------------------------------------------------------------+")
-print("|"  +  rw1[10] +  "|" + ns9[11] + "|" + op9[11] + "|" + opmgx9[6] + "|" + np9[11] +  "|" ) # fy cumulative
-if x >= 4:
-    print("|"  + rw1[13] +   "|" + nsly9[6] + "|" + oply9[6] + "|" + "            "  + "|" + nply9[6] + "|"  )
-print("+------------------------------------------------------------------------------+") #border
-print("|"  +  rw1[14] +  "|" + ns9[4] + "|" + op9[4] + "|" + opmgx9[7] + "|" + np9[4] + "|") # print current forecast
-for i in range(x): #print forecast revisions
-    if ns1[i+6] != 0:
-        print("|"  +  rw1[i+15] +  "|" + ns9[i+6] + "|" + op9[i+6] + "|" + opmgx9[i+9] + "|" + np9[i+6] + "|")
-if x >=4: #next fiscal year's forecast
+    print("|"  +  row_1[14] +  "|" + net_sales_2[4] + "|" + operating_income_2[4] + "|" + operating_margin_1[7] + "|" + net_income_2[4] + "|") # print current forecast
+    for i in range(current_quarter): #print forecast revisions
+        if net_sales_1[i+6] != 0:
+            print("|"  +  row_1[i+15] +  "|" + net_sales_2[i+6] + "|" + operating_income_2[i+6] + "|" + operating_margin_1[i+9] + "|" + net_income_2[i+6] + "|")
+    if current_quarter >=4: #next fiscal year's forecast
+        print("+------------------------------------------------------------------------------+") #border
+        print("|"  +  row_1[18] +  "|" + net_sales_2[5] + "|" + operating_income_2[5] + "|" + operating_margin_1[8] + "|" + net_income_2[5] + "|")
     print("+------------------------------------------------------------------------------+") #border
-    print("|"  +  rw1[18] +  "|" + ns9[5] + "|" + op9[5] + "|" + opmgx9[8] + "|" + np9[5] + "|")
-print("+------------------------------------------------------------------------------+") #border
+
+    return
+
+def print_mobile():
+    print("+--------------------------------------+")
+    print("|" + header_1[0] + "|" + "                  " + "|")
+    
+    for i in range(0, 8, 2):
+        print("+--------------------------------------+")
+        print("|" + header_1[i+2] + "|" + "                  " + "|")
+        for j in range(current_quarter): #for loop for quarters
+            print("+--------------------------------------+")
+            print("|"  +  row_1[j] +  "|" + for_loop_list[i][j] + "|")
+            print("|"  +  row_1[j+4] +   "|" + for_loop_list[i+1][j] + "|")
+        print("+======================================+")
+        if current_quarter >= 2: # first half
+            if i != 4:
+                print("|"  + row_1[8] +  "|" + for_loop_list[i][9] + "|")
+            else:
+                print("|"  + row_1[8] +  "|" + for_loop_list[i][4] + "|")
+            print("|"  + row_1[11] +   "|" + for_loop_list[i+1][4] + "|")
+            print("+--------------------------------------+")
+        if current_quarter >= 3: # first three quarters
+            if i != 4:
+                print("|"  + row_1[9] +  "|" + for_loop_list[i][10] + "|")
+            else:
+                print("|"  + row_1[9] +  "|" + for_loop_list[i][5] + "|")
+            print("|"  + row_1[12] +   "|" + for_loop_list[i+1][5] + "|")
+            print("+--------------------------------------+")
+        if i != 4:
+            print("|"  +  row_1[10] +  "|" + for_loop_list[i][11] + "|")
+        else:
+            print("|"  + row_1[10] +  "|" + for_loop_list[i][6] + "|")
+        if current_quarter >= 4: # fy cumulative
+            print("|"  + row_1[13] +   "|" + for_loop_list[i+1][6])
+        print("+--------------------------------------+")
+        if i != 4:
+            print("|"  +  row_1[14] +  "|" + for_loop_list[i][4] + "|") # print current forecast
+        else:
+            print("|"  +  row_1[14] +  "|" + for_loop_list[i][7] + "|") # print current forecast
+        for j in range(current_quarter): #print forecast revisions
+            if net_sales_1[j+6] != 0 and i != 4:
+                print("|"  +  row_1[j+15] +  "|" + for_loop_list[i][j+6] + "|")
+            elif net_sales_1[j+6] != 0 and i == 4:
+                print("|"  +  row_1[j+15] +  "|" + for_loop_list[i][j+9] + "|")
+        if current_quarter >=4: #next fiscal year's forecast
+            print("+--------------------------------------+")
+            if i != 4: 
+                print("|"  +  row_1[18] +  "|" + for_loop_list[i][5] + "|")
+            else:
+                print("|"  +  row_1[14] +  "|" + for_loop_list[i][8] + "|") # print current forecast
+        print("+--------------------------------------+")
+        print(line_break_1)
+
+    return
+
+if mobile_output != 1:
+    print_desktop()
+else: print_mobile()
+
+
+# def convert (y, z): # y: use net_sales_1, operating_income_1 or net_income_1. z: use net_sales_last_fy_1, operating_income_last_fy_1 or net_income_last_fy_1. 
+
+#     y1 = [y[0], y[1] - y[0], y[2] - y[1], y[3] - y[2], y[4], y[5], y[6], y[7], y[8]]  #creates new net sales array which has to calculate quarterly figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+
+#     y1.append(y1[0] + y1[1]) #adds fy first half to array y1[9]
+#     y1.append(y1[0] + y1[1] + y1[2]) #adds fy three quarters to array y1[10]
+#     y1.append(y1[0] + y1[1] + y1[2] +y1[3]) #adds fy cumulative to array becomes y1[11]
+
+#     y2 = [ '¥{:,}M '.format(elem) for elem in y1] #formats all integers to string to add ¥ and M
+#     if y == net_sales_1: #net sales
+#         y3 = [ '{0: >13}'.format(elem) for elem in y2] #format width
+#     elif y == operating_income_1: #operating income
+#         y3 =  [ '{0: >18}'.format(elem) for elem in y2] #format width
+#     elif y == net_income_1: #net profit       
+#         y3 =  [ '{0: >12}'.format(elem) for elem in y2] #format width
+
+#     z1 = [ ((y1[0] / z[0]) - 1) * 100, ((y1[1] / z[1]) -1) *100, ((y1[2] / z[2]) - 1) * 100,  ((y1[3] / z[3]) - 1) * 100] #Calculates Year-on-Year percentages for each quarter
+
+#     z1.append((((y1[0] + y1[1]) / (z[0] + z[1])) - 1) * 100) #Calculates Year-on-Year percentages: fy first half, z1[4]
+#     z1.append((((y1[0] + y1[1] + y1[2]) / (z[0] + z[1] + z[2])) - 1) * 100) #Calculates Year-on-Year percentages: fy 1st 3 quarters, z1[5]
+#     z1.append(((y1[11] / z[4]) - 1) * 100) #Calculates Year-on-Year percentages: fiscal year cumulative, z1[6]
+
+#     z2 = [ '{:+.2f}% '.format(elem) for elem in z1 ] #format all integers to string to add % and + when needed
+#     if z == net_sales_last_fy_1: #last fiscal year's net sales
+#         z3 = [ '{0: >13}'.format(elem) for elem in z2] #format width
+#     elif z == operating_income_last_fy_1: #last fiscal year's operating profit
+#         z3 = [ '{0: >18}'.format(elem) for elem in z2] #format width
+#     elif z == net_income_last_fy_1: #last fiscal year's net profit
+#         z3 = [ '{0: >12}'.format(elem) for elem in z2] #format width
+
+#     return y3, z3
+
+# def op_margin (a, b): # a = net_sales_1, b = operating_income_1
+
+#     a1 = [a[0], a[1] - a[0], a[2] - a[1], a[3] - a[2], a[4], a[5], a[6], a[7], a[8]]  #creates new net sales array which has to calculate quarterly figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+
+#     b1 = [b[0], b[1] - b[0], b[2] - b[1], b[3] - b[2], b[4], b[5], b[6], b[7], b[8]]  #creates new operating income array which has to calculate quarterly figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+
+#     d1 = [] # # empty arrays for calculating operating margins, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fy cumulative
+
+#     for i in range (4): #for dealing with divide by zeros
+#         if a1[i] != 0:
+#             d1.append(((b1[i]) / (a1[i]))  * 100) # [0] to [3] quarterly figures
+#         else:  d1.append(0)
+#     if a1[0] + a1[1] != 0:
+#         d1.append(((b1[0] + b1[1]) / (a1[0] + a1[1])) * 100) # [4] fy first half
+#     else: d1.append(0)
+#     if a1[0] + a1[1] + a1[2] != 0:
+#         d1.append(((b1[0] + b1[1] + b1[2]) / (a1[0] + a1[1] + a1[2]) ) * 100) # [5] fy first three quarters
+#     else: d1.append(0)
+#     if a1[0] + a1[1] + a1[2] + a1[3] != 0:
+#         d1.append(((b1[0] + b1[1] + b1[2] + b1[3]) / (a1[0] + a1[1] + a1[2] +a1[3]) ) * 100) # [6] fy cumulative
+#     else: d1.append(0)
+#     if b[4] and a[4] != 0:
+#         d1.append(((b[4] / a[4]) ) * 100) # [7] current fy forecast
+#     else: d1.append(0) 
+#     if b[5] and a[5] != 0:
+#         d1.append(((b[5] / a[5]) ) * 100) # [8] next fy forecast
+#     else: d1.append(0) 
+#     if b[6] and a[6] != 0:
+#         d1.append(((b[6] / a[6]) ) * 100) #[9] 1st forecast revision
+#     else: d1.append(0) #[9] 1st forecast revision
+#     if b[7] and a[7] != 0:
+#         d1.append(((b[7] / a[7]) ) * 100) #[10] 2nd revision
+#     else: d1.append(0) #[10] 2nd revision
+#     if b[8] and a[8] != 0:
+#         d1.append(((b[8] / a[8]) ) * 100) #[11] 3rd revision
+#     else: d1.append(0) #[11] 3rd revision
+
+#     d2 =  [ '{:.2f}% '.format(elem) for elem in d1 ] #format all integers to string to add %
+#     d3 =  [ '{0: >12}'.format(elem) for elem in d2] #format width
+
+#     return d3
+
+# ns9,nsly9 = convert(net_sales_1, net_sales_last_fy_1)
+# op9,oply9 = convert(operating_income_1, operating_income_last_fy_1)
+# np9, nply9 = convert(net_income_1, net_income_last_fy_1)
+# opmgx9 = op_margin(net_sales_1, operating_income_1)
+
+# print("+------------------------------------------------------------------------------+") # printing
+# print("|" + header_1[0] + "|" + header_1[1] + "|" + header_1[2] + "|" + header_1[3] + "|" +  header_1[4] + "|")
+# for i in range(current_quarter): #for loop for quarters
+#     print("+------------------------------------------------------------------------------+") #border
+#     print("|"  +  row_1[i] +  "|" + ns9[i] + "|" + op9[i] + "|" + opmgx9[i] + "|" + np9[i]+  "|" )
+#     print("|"  +  row_1[i+4] +   "|" + nsly9[i] + "|" + oply9[i] +  "|" + "            " + "|" + nply9[i] + "|"   )
+# print("+==============================================================================+") #border
+# if current_quarter >= 2: # first half
+#     print("|"  + row_1[8] +  "|" + ns9[9] + "|" + op9[9] + "|" + opmgx9[4] + "|" + np9[9] +  "|" )
+#     print("|"  + row_1[11] +   "|" + nsly9[4] + "|" + oply9[4] + "|" + "            "  + "|" + nply9[4] + "|"  )
+#     print("+------------------------------------------------------------------------------+")
+# if current_quarter >= 3: # first three quarters
+#     print("|"  + row_1[9] +  "|" + ns9[10] + "|" + op9[10] + "|" + opmgx9[5] + "|" + np9[10] +  "|" )
+#     print("|"  + row_1[12] +   "|" + nsly9[5] + "|" + oply9[5] + "|" + "            "  + "|" + nply9[5] + "|"  )
+#     print("+------------------------------------------------------------------------------+")
+# print("|"  +  row_1[10] +  "|" + ns9[11] + "|" + op9[11] + "|" + opmgx9[6] + "|" + np9[11] +  "|" ) # fy cumulative
+# if current_quarter >= 4:
+#     print("|"  + row_1[13] +   "|" + nsly9[6] + "|" + oply9[6] + "|" + "            "  + "|" + nply9[6] + "|"  )
+# print("+------------------------------------------------------------------------------+") #border
+# print("|"  +  row1[14] +  "|" + ns9[4] + "|" + op9[4] + "|" + opmgx9[7] + "|" + np9[4] + "|") # print current forecast
+# for i in range(current_quarter): #print forecast revisions
+#     if ns1[i+6] != 0:
+#         print("|"  +  row1[i+15] +  "|" + ns9[i+6] + "|" + op9[i+6] + "|" + opmgx9[i+9] + "|" + np9[i+6] + "|")
+# if current_quarter >=4: #next fiscal year's forecast
+#     print("+------------------------------------------------------------------------------+") #border
+#     print("|"  +  row1[18] +  "|" + ns9[5] + "|" + op9[5] + "|" + opmgx9[8] + "|" + np9[5] + "|")
+# print("+------------------------------------------------------------------------------+") #border
 
 ###################################################################################################################
 #old code
