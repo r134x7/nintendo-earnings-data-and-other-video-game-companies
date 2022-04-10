@@ -41,12 +41,19 @@ def quarterly_calculation (y): # y: use net_sales_1, operating_income_1 or net_i
     if not net_sales_empty or not operating_income_empty:
         return for_operating_margin(y1)
 
-    for i in range(3):
-        if i == 0:
-            y1.append(y1[i+1] + y1[i]) # fy first half y1[9]
-        elif i == 1:
-            y1.append(y1[i+1] + y1[i] + y1[i-1]) # fy three quarters y1[10]
-        else: y1.append(y1[i+1] + y1[i] + y1[i-1] + y1[i-2]) # fy cumulative to array becomes y1[11]
+    def sum_a(x, i): #recursive function to get: fy first half y1[9], fy three quarters y1[10] fy cumulative y1[11]
+        if x == y1[0]: # Q1 alone is not needed
+            i += 1
+            return sum_a(x + y1[i], i)
+        else:
+            y1.append(x)
+            i += 1
+            if x == (y1[0] + y1[1] + y1[2] + y1[3]) and i == 4: # to end the function correctly
+                return
+            else:
+                return sum_a(x + y1[i], i)
+
+    sum_a(y1[0], 0)
 
     if y == net_sales_1:
         return format_to_string_net_sales(y1), year_on_year_calculation(y1, net_sales_last_fy_1)
@@ -89,12 +96,19 @@ def year_on_year_calculation (y1, z): # z: use net_sales_last_fy_1, operating_in
     for i in range(4):
         z1.append(((y1[i] / z[i]) - 1) * 100) # Calculates Year-on-Year percentages for each quarter, [0] is Q1, [1] Q2, [2] Q3, [3] Q4
 
-    for i in range(2):
-        if i == 0:
-            z1.append((((y1[i] + y1[i+1]) / (z[i] + z[i+1])) - 1) * 100) # fy first half, z1[4]
-        else: z1.append((((y1[i-1] + y1[i] + y1[i+1]) / (z[i-1] + z[i] + z[i+1])) - 1) * 100) # fy 1st 3 quarters, z1[5]
-            
-    z1.append(((y1[11] / z[4]) - 1) * 100) # fiscal year cumulative, z1[6]
+    def sum_b(x, b, i): #recursive function to get: fy first half y1[4], fy three quarters y1[5] fy cumulative y1[6]
+            if x == y1[0] and b == z[0]: # Q1 alone is not needed
+                i += 1
+                return sum_b(x + y1[i], b + z[i], i)
+            else:
+                z1.append(((x / b) - 1) * 100)
+                i += 1
+                if x == (y1[0] + y1[1] + y1[2] + y1[3]) and b == (z[0] + z[1] + z[2] + z[3]) and i == 4: # to end the function correctly
+                    return
+                else:
+                    return sum_b(x + y1[i], b + z[i], i)
+
+    sum_b(y1[0], z[0], 0)
 
     if z == net_sales_last_fy_1:
         return format_to_string_year_on_year_net_sales(z1)
@@ -137,21 +151,31 @@ def operating_margin (a1, b1): # a = net_sales_1, b = operating_income_1
     for i in range (4): 
         if a1[i] != 0:
             d1.append(((b1[i]) / (a1[i]))  * 100) # [0] to [3] quarterly figures
-        else:  d1.append(0) #for dealing with divide by zeros
-
-    for i in range(3):
-        if i == 0 and a1[i] + a1[i+1] != 0:
-            d1.append(((b1[i] + b1[i+1]) / (a1[i] + a1[i+1])) * 100) # [4] fy first half
-        elif i == 1 and a1[i-1] + a1[i] + a1[i+1] != 0:
-            d1.append(((b1[i-1] + b1[i] + b1[i+1]) / (a1[i-1] + a1[i] + a1[i+1]) ) * 100) # [5] fy first three quarters
-        elif i == 2 and a1[i-2] + a1[i-1] + a1[i] + a1[i+1] != 0:
-            d1.append(((b1[i-2] + b1[i-1] + b1[i] + b1[i+1]) / (a1[i-2] + a1[i-1] + a1[i] +a1[i+1]) ) * 100) # [6] fy cumulative
-        else: d1.append(0) #for dealing with divide by zeros
+        else:  d1.append(0) # for dealing with divide by zeros
 
     for i in range(5):
         if b1[i+4] and a1[i+4] != 0:
-            d1.append(((b1[i+4] / a1[i+4]) ) * 100) # [7] current fy forecast, [8] next fy forecast, [9] 1st forecast revision, [10] 2nd revision, [11] 3rd revision
-        else: d1.append(0) #for dealing with divide by zeros
+            d1.append(((b1[i+4] / a1[i+4]) ) * 100) # [4] current fy forecast, [5] next fy forecast, [6] 1st forecast revision, [7] 2nd revision, [8] 3rd revision
+        else: d1.append(0) # for dealing with divide by zeros
+
+    def sum_c(x, y, i): #recursive function to get: fy first half y1[9], fy three quarters y1[10] fy cumulative y1[11]
+        if x == a1[0] and y == b1[0]: # Q1 alone is not needed
+            i += 1
+            return sum_c(x + a1[i], y + b1[i], i)
+        else:
+            if x != 0:
+                d1.append((y / x) * 100)
+                i += 1
+            else:
+                d1.append(0) # for dealing with divide by zeros
+                i += 1  
+
+        if x == (a1[0] + a1[1] + a1[2] + a1[3]) and y == (b1[0] + b1[1] + b1[2] + b1[3]) and i == 4: # to end the function correctly
+            return
+        else:
+            return sum_c(x + a1[i], y + b1[i], i)
+
+    sum_c(a1[0], b1[0], 0)
 
     return format_to_string_operating_margin(d1)
 
@@ -173,9 +197,7 @@ net_sales_2, net_sales_last_fy_2 = quarterly_calculation(net_sales_1)
 operating_income_2, operating_income_last_fy_2 = quarterly_calculation(operating_income_1)
 net_income_2, net_income_last_fy_2 = quarterly_calculation(net_income_1)
 
-blank = []
-
-for_loop_list = [net_sales_2, net_sales_last_fy_2, operating_income_2, operating_income_last_fy_2, operating_margin_1, blank, net_income_2, net_income_last_fy_2]
+for_loop_list = [net_sales_2, net_sales_last_fy_2, operating_income_2, operating_income_last_fy_2, operating_margin_1, "blank", net_income_2, net_income_last_fy_2]
 
 def print_desktop():
 
@@ -187,24 +209,24 @@ def print_desktop():
         print("|"  +  row_1[i+4] +   "|" + net_sales_last_fy_2[i] + "|" + operating_income_last_fy_2[i] +  "|" + "            " + "|" + net_income_last_fy_2[i] + "|"   )
     print("+==============================================================================+") #border
     if current_quarter >= 2: # first half
-        print("|"  + row_1[8] +  "|" + net_sales_2[9] + "|" + operating_income_2[9] + "|" + operating_margin_1[4] + "|" + net_income_2[9] +  "|" )
+        print("|"  + row_1[8] +  "|" + net_sales_2[9] + "|" + operating_income_2[9] + "|" + operating_margin_1[9] + "|" + net_income_2[9] +  "|" )
         print("|"  + row_1[11] +   "|" + net_sales_last_fy_2[4] + "|" + operating_income_last_fy_2[4] + "|" + "            "  + "|" + net_income_last_fy_2[4] + "|"  )
         print("+------------------------------------------------------------------------------+")
     if current_quarter >= 3: # first three quarters
-        print("|"  + row_1[9] +  "|" + net_sales_2[10] + "|" + operating_income_2[10] + "|" + operating_margin_1[5] + "|" + net_income_2[10] +  "|" )
+        print("|"  + row_1[9] +  "|" + net_sales_2[10] + "|" + operating_income_2[10] + "|" + operating_margin_1[10] + "|" + net_income_2[10] +  "|" )
         print("|"  + row_1[12] +   "|" + net_sales_last_fy_2[5] + "|" + operating_income_last_fy_2[5] + "|" + "            "  + "|" + net_income_last_fy_2[5] + "|"  )
         print("+------------------------------------------------------------------------------+")
-    print("|"  +  row_1[10] +  "|" + net_sales_2[11] + "|" + operating_income_2[11] + "|" + operating_margin_1[6] + "|" + net_income_2[11] +  "|" ) # fy cumulative
+    print("|"  +  row_1[10] +  "|" + net_sales_2[11] + "|" + operating_income_2[11] + "|" + operating_margin_1[11] + "|" + net_income_2[11] +  "|" ) # fy cumulative
     if current_quarter >= 4:
         print("|"  + row_1[13] +   "|" + net_sales_last_fy_2[6] + "|" + operating_income_last_fy_2[6] + "|" + "            "  + "|" + net_income_last_fy_2[6] + "|"  )
     print("+------------------------------------------------------------------------------+") #border
-    print("|"  +  row_1[14] +  "|" + net_sales_2[4] + "|" + operating_income_2[4] + "|" + operating_margin_1[7] + "|" + net_income_2[4] + "|") # print current forecast
+    print("|"  +  row_1[14] +  "|" + net_sales_2[4] + "|" + operating_income_2[4] + "|" + operating_margin_1[4] + "|" + net_income_2[4] + "|") # print current forecast
     for i in range(current_quarter): #print forecast revisions
         if net_sales_1[i+6] != 0:
-            print("|"  +  row_1[i+15] +  "|" + net_sales_2[i+6] + "|" + operating_income_2[i+6] + "|" + operating_margin_1[i+9] + "|" + net_income_2[i+6] + "|")
+            print("|"  +  row_1[i+15] +  "|" + net_sales_2[i+6] + "|" + operating_income_2[i+6] + "|" + operating_margin_1[i+6] + "|" + net_income_2[i+6] + "|")
     if current_quarter >=4: #next fiscal year's forecast
         print("+------------------------------------------------------------------------------+") #border
-        print("|"  +  row_1[18] +  "|" + net_sales_2[5] + "|" + operating_income_2[5] + "|" + operating_margin_1[8] + "|" + net_income_2[5] + "|")
+        print("|"  +  row_1[18] +  "|" + net_sales_2[5] + "|" + operating_income_2[5] + "|" + operating_margin_1[5] + "|" + net_income_2[5] + "|")
     print("+------------------------------------------------------------------------------+") #border
 
     return
@@ -223,41 +245,26 @@ def print_mobile():
                 print("|"  +  row_1[j+4] +   "|" + for_loop_list[i+1][j] + "|")
         print("+======================================+")
         if current_quarter >= 2: # first half
+            print("|"  + row_1[8] +  "|" + for_loop_list[i][9] + "|")
             if i != 4:
-                print("|"  + row_1[8] +  "|" + for_loop_list[i][9] + "|")
                 print("|"  + row_1[11] +   "|" + for_loop_list[i+1][4] + "|")
-            else:
-                print("|"  + row_1[8] +  "|" + for_loop_list[i][4] + "|")
             print("+--------------------------------------+")
         if current_quarter >= 3: # first three quarters
+            print("|"  + row_1[9] +  "|" + for_loop_list[i][10] + "|")
             if i != 4:
-                print("|"  + row_1[9] +  "|" + for_loop_list[i][10] + "|")
                 print("|"  + row_1[12] +   "|" + for_loop_list[i+1][5] + "|")
-            else:
-                print("|"  + row_1[9] +  "|" + for_loop_list[i][5] + "|")
             print("+--------------------------------------+")
-        if i != 4:
-            print("|"  +  row_1[10] +  "|" + for_loop_list[i][11] + "|")
-        else:
-            print("|"  + row_1[10] +  "|" + for_loop_list[i][6] + "|")
+            print("|"  + row_1[10] +  "|" + for_loop_list[i][11] + "|")
         if current_quarter >= 4 and i !=4: # fy cumulative
             print("|"  + row_1[13] +   "|" + for_loop_list[i+1][6])
         print("+--------------------------------------+")
-        if i != 4:
-            print("|"  +  row_1[14] +  "|" + for_loop_list[i][4] + "|") # print current forecast
-        else:
-            print("|"  +  row_1[14] +  "|" + for_loop_list[i][7] + "|") # print current forecast
+        print("|"  +  row_1[14] +  "|" + for_loop_list[i][4] + "|") # print current forecast
         for j in range(current_quarter): #print forecast revisions
-            if net_sales_1[j+6] != 0 and i != 4:
+            if net_sales_1[j+6] != 0:    
                 print("|"  +  row_1[j+15] +  "|" + for_loop_list[i][j+6] + "|")
-            elif net_sales_1[j+6] != 0 and i == 4:
-                print("|"  +  row_1[j+15] +  "|" + for_loop_list[i][j+9] + "|")
         if current_quarter >=4: #next fiscal year's forecast
             print("+--------------------------------------+")
-            if i != 4: 
-                print("|"  +  row_1[18] +  "|" + for_loop_list[i][5] + "|")
-            else:
-                print("|"  +  row_1[14] +  "|" + for_loop_list[i][8] + "|") # print current forecast
+            print("|"  +  row_1[18] +  "|" + for_loop_list[i][5] + "|")
         print("+--------------------------------------+")
         print(line_break_1)
 
