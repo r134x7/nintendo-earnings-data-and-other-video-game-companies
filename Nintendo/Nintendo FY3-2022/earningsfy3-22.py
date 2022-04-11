@@ -42,13 +42,15 @@ def quarterly_calculation (y): # y: use net_sales_1, operating_income_1 or net_i
         return for_operating_margin(y1)
 
     def sum_a(x, i): #recursive function to get: fy first half y1[9], fy three quarters y1[10] fy cumulative y1[11]
+        stop_function = [y1[0] + y1[1] + y1[2] + y1[3], 4]
+
         if x == y1[0]: # Q1 alone is not needed
             i += 1
             return sum_a(x + y1[i], i)
         else:
             y1.append(x)
             i += 1
-            if x == (y1[0] + y1[1] + y1[2] + y1[3]) and i == 4: # to end the function correctly
+            if x == stop_function[0] and i == stop_function[1]:
                 return
             else:
                 return sum_a(x + y1[i], i)
@@ -97,16 +99,18 @@ def year_on_year_calculation (y1, z): # z: use net_sales_last_fy_1, operating_in
         z1.append(((y1[i] / z[i]) - 1) * 100) # Calculates Year-on-Year percentages for each quarter, [0] is Q1, [1] Q2, [2] Q3, [3] Q4
 
     def sum_b(x, b, i): #recursive function to get: fy first half y1[4], fy three quarters y1[5] fy cumulative y1[6]
-            if x == y1[0] and b == z[0]: # Q1 alone is not needed
-                i += 1
-                return sum_b(x + y1[i], b + z[i], i)
+        stop_function = [y1[0] + y1[1] + y1[2] + y1[3], z[0] + z[1] + z[2] + z[3], 4]
+
+        if x == y1[0] and b == z[0]: # Q1 alone is not needed
+            i += 1
+            return sum_b(x + y1[i], b + z[i], i)
+        else:
+            z1.append(((x / b) - 1) * 100)
+            i += 1
+            if x == stop_function[0] and b == stop_function[1] and i == stop_function[2]:
+                return
             else:
-                z1.append(((x / b) - 1) * 100)
-                i += 1
-                if x == (y1[0] + y1[1] + y1[2] + y1[3]) and b == (z[0] + z[1] + z[2] + z[3]) and i == 4: # to end the function correctly
-                    return
-                else:
-                    return sum_b(x + y1[i], b + z[i], i)
+                return sum_b(x + y1[i], b + z[i], i)
 
     sum_b(y1[0], z[0], 0)
 
@@ -119,28 +123,28 @@ def year_on_year_calculation (y1, z): # z: use net_sales_last_fy_1, operating_in
 
 def format_to_string_year_on_year_net_sales (z1):
     
-    z2 = [ '{:+.2f}% '.format(elem) for elem in z1 ] #format all integers to string to add % and + when needed
+    z2 = ['{:+.2f}% '.format(elem) for elem in z1] #format all integers to string to add % and + when needed
     if mobile_output == 0:
-        z3 = [ '{0: >13}'.format(elem) for elem in z2] #format width
+        z3 = ['{0: >13}'.format(elem) for elem in z2] #format width
     else:
-        z3 = [ '{0: >18}'.format(elem) for elem in z2] #format width
+        z3 = ['{0: >18}'.format(elem) for elem in z2] #format width
 
     return z3
 
 def format_to_string_year_on_year_operating_income (z1):
 
-    z2 = [ '{:+.2f}% '.format(elem) for elem in z1 ] #format all integers to string to add % and + when needed
-    z3 = [ '{0: >18}'.format(elem) for elem in z2] #format width
+    z2 = ['{:+.2f}% '.format(elem) for elem in z1 ] #format all integers to string to add % and + when needed
+    z3 = ['{0: >18}'.format(elem) for elem in z2] #format width
 
     return z3
 
 def format_to_string_year_on_year_net_income (z1):
 
-    z2 = [ '{:+.2f}% '.format(elem) for elem in z1 ] #format all integers to string to add % and + when needed
+    z2 = ['{:+.2f}% '.format(elem) for elem in z1] #format all integers to string to add % and + when needed
     if mobile_output == 0:
-        z3 = [ '{0: >12}'.format(elem) for elem in z2] #format width
+        z3 = ['{0: >12}'.format(elem) for elem in z2] #format width
     else:
-        z3 = [ '{0: >18}'.format(elem) for elem in z2] #format width
+        z3 = ['{0: >18}'.format(elem) for elem in z2] #format width
 
     return z3
 
@@ -159,6 +163,8 @@ def operating_margin (a1, b1): # a = net_sales_1, b = operating_income_1
         else: d1.append(0) # for dealing with divide by zeros
 
     def sum_c(x, y, i): #recursive function to get: fy first half y1[9], fy three quarters y1[10] fy cumulative y1[11]
+        stop_function = [a1[0] + a1[1] + a1[2] + a1[3], b1[0] + b1[1] + b1[2] + b1[3], 4]
+
         if x == a1[0] and y == b1[0]: # Q1 alone is not needed
             i += 1
             return sum_c(x + a1[i], y + b1[i], i)
@@ -170,7 +176,7 @@ def operating_margin (a1, b1): # a = net_sales_1, b = operating_income_1
                 d1.append(0) # for dealing with divide by zeros
                 i += 1  
 
-        if x == (a1[0] + a1[1] + a1[2] + a1[3]) and y == (b1[0] + b1[1] + b1[2] + b1[3]) and i == 4: # to end the function correctly
+        if x == stop_function[0] and y == stop_function[1] and i == stop_function[2]:
             return
         else:
             return sum_c(x + a1[i], y + b1[i], i)
