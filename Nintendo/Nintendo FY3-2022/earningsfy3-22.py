@@ -11,15 +11,15 @@ mobile_output = 1 # 1 = on, 0 = off
 if mobile_output != 0:
     header_1 = [ " Nintendo Co., Ltd.", 0, " Net Sales         ", 0, " Operating Income  ", 0, " Operating Margin  ", 0, " Net Profit        ", 0]
 
-net_sales_1 = [ 322647, 624272, 1320219, 1320219, 1600000, 1600000, 1600000,  1650000, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+net_sales_1 = [ 322647, 624272, 1320219, 0, 1600000, 1600000, 1600000,  1650000, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 
 net_sales_last_fy_1= [ 358106, 411418, 634939, 354447, 1758910 ] # input quarterly calculated figures, [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative 
 
-operating_income_1 = [ 119752, 219959, 472551, 472551, 500000, 520000, 520000,  560000, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+operating_income_1 = [ 119752, 219959, 472551, 0, 500000, 520000, 520000,  560000, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 
 operating_income_last_fy_1= [ 144737, 146687, 229684, 119526, 640634] # input quarterly calculated figures, [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative 
 
-net_income_1 = [ 92747, 171834, 367387, 367387, 340000, 350000,  350000,  400000, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+net_income_1 = [ 92747, 171834, 367387, 0, 340000, 350000,  350000,  400000, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 
 net_income_last_fy_1= [ 106482, 106641, 163542, 103711, 480376] # input quarterly calculated figures, [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative
 
@@ -30,10 +30,12 @@ def quarterly_calculation (y): # y: use net_sales_1, operating_income_1 or net_i
 
     y1 =[]
 
-    for i in range(4):
+    for i in range(current_quarter):
         if i != 0:
             y1.append(y[i] - y[i-1]) # [0] Q1, [1] Q2, [2] Q3, [3] Q4
         else: y1.append(y[i])
+    else:
+        while len(y1) < 4: y1.append(0) # To simplify inputs
     
     for i in range(5): 
         y1.append(y[i+4]) # [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
@@ -58,7 +60,8 @@ def quarterly_calculation (y): # y: use net_sales_1, operating_income_1 or net_i
             else:
                 return sum_a(x + y1[i], i)
 
-    sum_a(y1[0], 0)
+    if current_quarter >= 2:
+        sum_a(y1[0], 0)
 
     if y == net_sales_1:
         return format_to_string_net_sales(y1), year_on_year_calculation(y1, net_sales_last_fy_1)
@@ -115,7 +118,8 @@ def year_on_year_calculation (y1, z): # z: use net_sales_last_fy_1, operating_in
             else:
                 return sum_b(x + y1[i], b + z[i], i)
 
-    sum_b(y1[0], z[0], 0)
+    if current_quarter >= 2:
+        sum_b(y1[0], z[0], 0)
 
     if z == net_sales_last_fy_1:
         return format_to_string_year_on_year_net_sales(z1)
@@ -184,7 +188,8 @@ def operating_margin (a1, b1): # a = net_sales_1, b = operating_income_1
         else:
             return sum_c(x + a1[i], y + b1[i], i)
 
-    sum_c(a1[0], b1[0], 0)
+    if current_quarter >= 2:
+        sum_c(a1[0], b1[0], 0)
 
     return format_to_string_operating_margin(d1)
 
@@ -225,12 +230,13 @@ def print_original():
         print("|"  + row_1[9] +  "|" + net_sales_2[10] + "|" + operating_income_2[10] + "|" + operating_margin_1[10] + "|" + net_income_2[10] +  "|" )
         print("|"  + row_1[12] +   "|" + net_sales_last_fy_2[5] + "|" + operating_income_last_fy_2[5] + "|" + "            "  + "|" + net_income_last_fy_2[5] + "|"  )
         print(border_line[0])
-    print("|"  +  row_1[10] +  "|" + net_sales_2[11] + "|" + operating_income_2[11] + "|" + operating_margin_1[11] + "|" + net_income_2[11] +  "|" ) # fy cumulative
+    if current_quarter >= 2:
+        print("|"  +  row_1[10] +  "|" + net_sales_2[11] + "|" + operating_income_2[11] + "|" + operating_margin_1[11] + "|" + net_income_2[11] +  "|" ) # fy cumulative
     if current_quarter >= 4:
         print("|"  + row_1[13] +   "|" + net_sales_last_fy_2[6] + "|" + operating_income_last_fy_2[6] + "|" + "            "  + "|" + net_income_last_fy_2[6] + "|"  )
     print(border_line[0]) 
     print("|"  +  row_1[14] +  "|" + net_sales_2[4] + "|" + operating_income_2[4] + "|" + operating_margin_1[4] + "|" + net_income_2[4] + "|") # current forecast
-    for i in range(current_quarter): # forecast revisions
+    for i in range(3): # forecast revisions
         if net_sales_1[i+6] != 0:
             print("|"  +  row_1[i+15] +  "|" + net_sales_2[i+6] + "|" + operating_income_2[i+6] + "|" + operating_margin_1[i+6] + "|" + net_income_2[i+6] + "|")
     if current_quarter >=4: # next fiscal year's forecast
@@ -263,12 +269,13 @@ def print_mobile():
             if i != 4:
                 print("|"  + row_1[12] +   "|" + for_loop_list[i+1][5] + "|")
             print(border_line[1])
-            print("|"  + row_1[10] +  "|" + for_loop_list[i][11] + "|")
-        if current_quarter >= 4 and i !=4: # fy cumulative
-            print("|"  + row_1[13] +   "|" + for_loop_list[i+1][6])
+        if current_quarter >= 2:
+            print("|"  + row_1[10] +  "|" + for_loop_list[i][11] + "|") # fy cumulative
+        if current_quarter >= 4 and i !=4: 
+            print("|"  + row_1[13] + "|" + for_loop_list[i+1][6] + "|")
         print(border_line[1])
         print("|"  +  row_1[14] +  "|" + for_loop_list[i][4] + "|") # print current forecast
-        for j in range(current_quarter): # print forecast revisions
+        for j in range(3): # print forecast revisions
             if net_sales_1[j+6] != 0:    
                 print("|"  +  row_1[j+15] +  "|" + for_loop_list[i][j+6] + "|")
         if current_quarter >=4: #next fiscal year's forecast
