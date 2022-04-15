@@ -49,7 +49,7 @@ def quarterly_calculation (y): # y: use net_sales_1, operating_income_1 or net_i
     def sum_a(x, i): #recursive function to get: fy first half y1[9], fy three quarters y1[10] fy cumulative y1[11]
         stop_function = [y1[0] + y1[1] + y1[2] + y1[3], 4]
 
-        if x == y1[0]: # Q1 alone is not needed
+        if x == y1[0] and i == 0: # Q1 alone is not needed
             i += 1
             return sum_a(x + y1[i], i)
         else:
@@ -60,8 +60,7 @@ def quarterly_calculation (y): # y: use net_sales_1, operating_income_1 or net_i
             else:
                 return sum_a(x + y1[i], i)
 
-    if current_quarter >= 2:
-        sum_a(y1[0], 0)
+    sum_a(y1[0], 0)
 
     if y == net_sales_1:
         return format_to_string_net_sales(y1), year_on_year_calculation(y1, net_sales_last_fy_1)
@@ -107,7 +106,7 @@ def year_on_year_calculation (y1, z): # z: use net_sales_last_fy_1, operating_in
     def sum_b(x, b, i): #recursive function to get: fy first half y1[4], fy three quarters y1[5] fy cumulative y1[6]
         stop_function = [y1[0] + y1[1] + y1[2] + y1[3], z[0] + z[1] + z[2] + z[3], 4]
 
-        if x == y1[0] and b == z[0]: # Q1 alone is not needed
+        if x == y1[0] and b == z[0] and i == 0: # Q1 alone is not needed
             i += 1
             return sum_b(x + y1[i], b + z[i], i)
         else:
@@ -118,8 +117,7 @@ def year_on_year_calculation (y1, z): # z: use net_sales_last_fy_1, operating_in
             else:
                 return sum_b(x + y1[i], b + z[i], i)
 
-    if current_quarter >= 2:
-        sum_b(y1[0], z[0], 0)
+    sum_b(y1[0], z[0], 0)
 
     if z == net_sales_last_fy_1:
         return format_to_string_year_on_year_net_sales(z1)
@@ -172,7 +170,7 @@ def operating_margin (a1, b1): # a = net_sales_1, b = operating_income_1
     def sum_c(x, y, i): #recursive function to get: fy first half y1[9], fy three quarters y1[10] fy cumulative y1[11]
         stop_function = [a1[0] + a1[1] + a1[2] + a1[3], b1[0] + b1[1] + b1[2] + b1[3], 4]
 
-        if x == a1[0] and y == b1[0]: # Q1 alone is not needed
+        if x == a1[0] and y == b1[0] and i == 0: # Q1 alone is not needed
             i += 1
             return sum_c(x + a1[i], y + b1[i], i)
         else:
@@ -188,8 +186,7 @@ def operating_margin (a1, b1): # a = net_sales_1, b = operating_income_1
         else:
             return sum_c(x + a1[i], y + b1[i], i)
 
-    if current_quarter >= 2:
-        sum_c(a1[0], b1[0], 0)
+    sum_c(a1[0], b1[0], 0)
 
     return format_to_string_operating_margin(d1)
 
