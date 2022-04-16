@@ -1,13 +1,13 @@
 from operator import itemgetter
 
-header_1 = [  " Switch - Top Selling Titles    ", " "*4 + " Units "] #header
+header_1 = [  " Switch - Top Selling Titles    ", " "*3 + " Units "] #header
 row_1 = [" 1st Quarter " + " "*19, " 2nd Quarter "  + " "*19, " 3rd Quarter "  + " "*19, " 4th Quarter "  + " "*19, " FY3/22  Cumulative "  + " "*12, " Life-To-Date "  + " "*18] # row names
 line_break_1 = "###" # line break
 
 current_quarter = 3 # Set to 1, 2, 3 or 4.
 
-border_line = border_line = "+" + "-"*44 + "+"
-border_line_double = "+" + "="*44 + "+"
+border_line = border_line = "+" + "-"*43 + "+"
+border_line_double = "+" + "="*43 + "+"
 
 #Switch software - Top selling titles
 title_1 = [ 37.08, 38.74, 43.35, 43.35, 35.39, " Mario Kart 8 Deluxe "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
@@ -38,7 +38,7 @@ for_loop_list_2 = sorted(for_loop_list_1, reverse=True, key=itemgetter(3)) # sor
 
 for i in range (len(for_loop_list_2)): # for adding in ranks after sorting
     rank_1 = " Rank " + str(i+1) + " "
-    rank_2 = '{0: >11}'.format(rank_1)
+    rank_2 = '{0: >10}'.format(rank_1)
     for_loop_list_2[i].append(rank_2)
 
 def quarterly_calculation (y):
@@ -70,14 +70,14 @@ def quarterly_calculation (y):
         else: first_line.append(i + " ")
 
     if second_line:
-        line_join = line_join.join(first_line) + " "*(31-len(line_join.join(first_line))) + "|" + " "*11 + "|" + "\n" + "| " + line_join.join(second_line) + " "*(31-len(line_join.join(second_line)))
+        line_join = line_join.join(first_line) + " "*(31-len(line_join.join(first_line))) + "|" + " "*10 + "|" + "\n" + "| " + line_join.join(second_line) + " "*(31-len(line_join.join(second_line)))
     else: line_join = line_join.join(first_line) + " "*(31-sum(first_line_check))          
 
     return format_to_string(y1, z1, line_join)
 
 def format_to_string (y1, z1, line_join):
     y2 = ['{:.2f}M '.format(elem) for elem in y1]
-    y3 = ['{0: >11}'.format(elem) for elem in y2]
+    y3 = ['{0: >10}'.format(elem) for elem in y2]
 
     return to_print_1 (y3, z1, y1, line_join)
 
