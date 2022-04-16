@@ -1,75 +1,133 @@
 from operator import itemgetter
 
-hd1 = [  " Switch - Top Selling Titles              ", "   Units   ",  " Mario Kart 8 Deluxe                      ", " Super Mario Odyssey                      ", " The Legend of Zelda: Breath of the Wild  ", " Splatoon 2                               ", " Animal Crossing: New Horizons            ", " Pokémon Sword/Shield                     ", " Pokémon Let's Go Pikachu/Eevee           ", " Ring Fit Adventure                       ", " Super Mario Party                        ", " Super Smash Bros. Ultimate               ", " Pokémon Brilliant Diamond/Shining Pearl  " ] #header
-rw1 = [" 1st Quarter                              ", " 2nd Quarter                              ", " 3rd Quarter                              ", " 4th Quarter                              ", " FY3/22 Cumulative                        ", " Life-To-Date                             "] # row names
-lb1 = "###" # line break
+header_1 = [  " Switch - Top Selling Titles    ", " "*4 + " Units "] #header
+row_1 = [" 1st Quarter " + " "*19, " 2nd Quarter "  + " "*19, " 3rd Quarter "  + " "*19, " 4th Quarter "  + " "*19, " FY3/22  Cumulative "  + " "*12, " Life-To-Date "  + " "*18] # row names
+line_break_1 = "###" # line break
 
-x = 3 #x relates to the earnings quarter, set x to 1, 2, 3, or 4
+current_quarter = 3 # Set to 1, 2, 3 or 4.
+
+border_line = border_line = "+" + "-"*44 + "+"
+border_line_double = "+" + "="*44 + "+"
 
 #Switch software - Top selling titles
+title_1 = [ 37.08, 38.74, 43.35, 43.35, 35.39, " Mario Kart 8 Deluxe "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
 
-at1= [ 37.08, 38.74, 43.35, 43.35, 35.39, " Mario Kart 8 Deluxe                      "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
+title_2 = [ 21.40, 21.95, 23.02, 23.02, 20.83, " Super Mario Odyssey "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
 
-bt1= [ 21.40, 21.95, 23.02, 23.02, 20.83, " Super Mario Odyssey                      "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
+title_3 = [ 23.20, 24.13, 25.80, 25.80, 22.28, " The Legend of Zelda: Breath of the Wild "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
 
-ct1= [ 23.20, 24.13, 25.80, 25.80, 22.28, " The Legend of Zelda: Breath of the Wild  "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
+title_4 = [ 12.45, 12.68, 12.68, 12.68, 12.21, " Splatoon 2 "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
 
-dt1= [ 12.45, 12.68, 12.68, 12.68, 12.21, " Splatoon 2                               "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
+title_5 = [ 33.89, 34.85, 37.62, 37.62, 32.63, " Animal Crossing: New Horizons  "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
 
-et1= [ 33.89, 34.85, 37.62, 37.62, 32.63, " Animal Crossing: New Horizons            "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
+title_6 = [ 21.85, 22.64, 23.90, 23.90, 21.10, " Pokémon Sword / Pokémon Shield "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
 
-ft1= [ 21.85, 22.64, 23.90, 23.90, 21.10, " Pokémon Sword/Shield                     "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
+title_7 = [ 13.57, 13.83, 14.33, 14.33, 13.28, " Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
 
-gt1= [ 13.57, 13.83, 14.33, 14.33, 13.28, " Pokémon Let's Go Pikachu/Eevee           "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
+title_8 = [ 11.26, 12.21, 13.53, 13.53, 10.11, " Ring Fit Adventure "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
 
-ht1= [ 11.26, 12.21, 13.53, 13.53, 10.11, " Ring Fit Adventure                       "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
+title_9 = [ 15.72, 16.48, 17.39, 17.39, 14.79, " Super Mario Party "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
 
-it1= [ 15.72, 16.48, 17.39, 17.39, 14.79, " Super Mario Party                        "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
+title_10 = [ 24.77, 25.71, 27.40, 27.40, 23.84, " Super Smash Bros. Ultimate "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
 
-jt1= [ 24.77, 25.71, 27.40, 27.40, 23.84, " Super Smash Bros. Ultimate               "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
+title_11 = [ 0, 0, 13.97, 13.97, 0, " Pokémon Brilliant Diamond / Pokémon Shining Pearl "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
 
-kt1= [ 0, 0, 13.97, 13.97, 0, " Pokémon Brilliant Diamond/Shining Pearl  "] #Input the cumulative figure for each quarter, [0] is Quarter 1, [1] is Quarter 2, [2] is Quarter 3, [3] is Quarter 4, [4] is the LTD figure at end of the last fiscal year, [5] is the name of the title
+for_loop_list_1 = [title_1, title_2, title_3, title_4, title_5, title_6, title_7, title_8, title_9, title_10, title_11] # put all the variables into an array
 
-capture1 = [at1, bt1, ct1, dt1, et1, ft1, gt1, ht1, it1, jt1, kt1] # put all the variables into an array
+for_loop_list_2 = sorted(for_loop_list_1, reverse=True, key=itemgetter(3)) # sorts the variables in the array by index[3] (the fourth quarter number [3] always contains the biggest value) inside each variable, "reverse" sorts by descending order
 
-capture2 = sorted(capture1, reverse=True, key=itemgetter(3)) # sorts the variables in the array by index[3] (the fourth quarter number [3] always contains the biggest value) inside each variable, "reverse" sorts by descending order
+for i in range (len(for_loop_list_2)): # for adding in ranks after sorting
+    rank_1 = " Rank " + str(i+1) + " "
+    rank_2 = '{0: >11}'.format(rank_1)
+    for_loop_list_2[i].append(rank_2)
 
-for i in range (len(capture2)): # for adding in ranks after sorting
-    rank = " Rank " + str(i+1) + " "
-    rank1 = '{0: >11}'.format(rank)
-    capture2[i].append(rank1)
+def quarterly_calculation (y):
 
-def c_print (y): # y: use at1, bt1, etc
-    # variables created inside a function are local and cannot be used outside a function
-    y1 = [y[0] - y[4], y[1]  - y[0], y[2] - y[1], y[3] - y[2]] #quarterly calculation
+    y1 = []
+    z1 = y[6] # rank
 
-    y1.append(y1[0] + y1[1] + y1[2] + y1[3] ) #adds fy cumulative to array becomes y1[4]
-    y1.append(y[4] + y1[0] + y1[1] + y1[2] + y1[3]) #adds LTD becomes y1[5]
+    for i in range(current_quarter):
+        if i != 0:
+            y1.append(y[i] - y[i-1]) # [0] Q1, [1] Q2, [2] Q3, [3] Q4
+        else: y1.append(y[i])
+    else:
+        while len(y1) < 4: y1.append(0) # To simplify inputs
 
-    y2 = [ '{:.2f}M '.format(elem) for elem in y1] #formats all integers to string to add ¥ and M
-    y3 = [ '{0: >11}'.format(elem) for elem in y2] #format width
+    y1.append(y1[0] + y1[1] + y1[2] + y1[3] ) # fy cumulative y1[4]
+    y1.append(y[4] + y1[0] + y1[1] + y1[2] + y1[3]) # LTD y1[5]
 
-    print("|" + y[5] + "|" + y[6] + "|")
-    print("+------------------------------------------------------+")
-    for i in range(x):
+    z2 = str.split(y[5]) # title
+    
+    first_line = []
+    first_line_check = []
+    second_line = []
+    line_join = ""
+
+    for i in z2:
+        first_line_check.append((len(i + " ")))
+        if sum(first_line_check) > 31:
+            second_line.append(i + " ")
+        else: first_line.append(i + " ")
+
+    if second_line:
+        line_join = line_join.join(first_line) + " "*(31-len(line_join.join(first_line))) + "|" + " "*11 + "|" + "\n" + "| " + line_join.join(second_line) + " "*(31-len(line_join.join(second_line)))
+    else: line_join = line_join.join(first_line) + " "*(31-sum(first_line_check))          
+
+    return format_to_string(y1, z1, line_join)
+
+def format_to_string (y1, z1, line_join):
+    y2 = ['{:.2f}M '.format(elem) for elem in y1]
+    y3 = ['{0: >11}'.format(elem) for elem in y2]
+
+    return to_print_1 (y3, z1, y1, line_join)
+
+def to_print_1 (y3, z1, y1, line_join):
+
+    print("| " + line_join + "|" + z1 + "|")
+    print(border_line)
+    for i in range(current_quarter):
         if y1[i] != 0:
-            print("|"  +  rw1[i] +  "|" + y3[i] + "|"   )
+            print("|"  +  row_1[i] +  "|" + y3[i] + "|"   )
     else:   #print fy cumulative
-        print("+======================================================+") #border
-        print("|"  +  rw1[4] +  "|" + y3[4] + "|"   )
+        print(border_line_double) 
+        print("|"  +  row_1[4] +  "|" + y3[4] + "|"   )
                     #print ltd
-        print("|"  +  rw1[5] +  "|" + y3[5] + "|"   )
-        print("+------------------------------------------------------+")
+        print("|"  +  row_1[5] +  "|" + y3[5] + "|"   )
+        print(border_line)
 
     return
 
 # print header
-print("+------------------------------------------------------+")
-print("|" + hd1[0] + "|" + hd1[1] + "|")
-print("+------------------------------------------------------+")
+print(border_line)
+print("|" + header_1[0] + "|" + header_1[1] + "|")
+print(border_line)
 
-for i in range (len(capture2)):
-    c_print(capture2[i])
+for i in range (len(for_loop_list_2)):
+    quarterly_calculation(for_loop_list_2[i])
+
+# def c_print (y): # y: use at1, bt1, etc
+#     # variables created inside a function are local and cannot be used outside a function
+#     y1 = [y[0] - y[4], y[1]  - y[0], y[2] - y[1], y[3] - y[2]] #quarterly calculation
+
+#     y1.append(y1[0] + y1[1] + y1[2] + y1[3] ) #adds fy cumulative to array becomes y1[4]
+#     y1.append(y[4] + y1[0] + y1[1] + y1[2] + y1[3]) #adds LTD becomes y1[5]
+
+#     y2 = [ '{:.2f}M '.format(elem) for elem in y1] #formats all integers to string to add ¥ and M
+#     y3 = [ '{0: >11}'.format(elem) for elem in y2] #format width
+
+#     print("|" + y[5] + "|" + y[6] + "|")
+#     print("+------------------------------------------------------+")
+#     for i in range(x):
+#         if y1[i] != 0:
+#             print("|"  +  row_1[i] +  "|" + y3[i] + "|"   )
+#     else:   #print fy cumulative
+#         print("+======================================================+") #border
+#         print("|"  +  row_1[4] +  "|" + y3[4] + "|"   )
+#                     #print ltd
+#         print("|"  +  row_1[5] +  "|" + y3[5] + "|"   )
+#         print("+------------------------------------------------------+")
+
+#     return
 
 # Arrange the lines of code below (titles) from highest selling to lowest 
 # c_print(at1) #Mario Kart 8 Deluxe
