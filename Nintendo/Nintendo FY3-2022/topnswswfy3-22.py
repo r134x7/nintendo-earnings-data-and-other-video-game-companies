@@ -49,7 +49,7 @@ def quarterly_calculation (y):
     for i in range(current_quarter):
         if i != 0:
             y1.append(y[i] - y[i-1]) # [0] Q1, [1] Q2, [2] Q3, [3] Q4
-        else: y1.append(y[i])
+        else: y1.append(y[i] - y[4])
     else:
         while len(y1) < 4: y1.append(0) # To simplify inputs
 
