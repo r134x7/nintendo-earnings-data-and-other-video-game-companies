@@ -6,7 +6,7 @@ line_break_1 = "###" # line break
 
 current_quarter = 3 # Set to 1, 2, 3 or 4.
 
-border_line = border_line = "+" + "-"*43 + "+"
+border_line = "+" + "-"*43 + "+"
 border_line_double = "+" + "="*43 + "+"
 
 #Switch software - Top selling titles
