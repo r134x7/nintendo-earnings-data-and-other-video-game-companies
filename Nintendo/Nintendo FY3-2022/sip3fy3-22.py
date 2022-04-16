@@ -1,261 +1,407 @@
 from operator import itemgetter
 
-hd1 = [ " Nintendo Switch FY Million-Seller Titles                                                  ", " FY Japan ", " FY Overseas ", " FY Global ", " Global LTD "] #header
-rw1 = [" 1st Quarter (Units)                     ", " 2nd Quarter (Units)                     ", " 3rd Quarter (Units)                     ", " 4th Quarter (Units)                     ", " FY3/22 Cumulative (Units)               ", " FY3/22 Cumulative Area/WW FY, WW FY/LTD "] # row names
-lb1 = "###" # line break
+header_1 = [ " Nintendo Switch FY Million-Seller Titles " + " "*49, " FY Japan ", " FY Overseas ", " FY Global ", " Global LTD "] #header
+row_1 = [" 1st Quarter (Units) " + " "*20, " 2nd Quarter (Units) " + " "*20, " 3rd Quarter (Units) " + " "*20, " 4th Quarter (Units) " + " "*20, " FY3/22 Cumulative (Units) " + " "*14, " FY3/22 Cumulative Area/WW FY, WW FY/LTD "] # row names
+line_break_1 = "###" # line break
 
 game1 = [" Miitopia                                ", " Mario Kart 8 Deluxe                     ", " The Legend of Zelda: Breath of the Wild ", " New Super Mario Bros. U Deluxe          ", " Mario Golf: Super Rush                  ", " Ring Fit Adventure                      ", " Super Mario Party                       ", " Pokémon Sword/Shield                    ", " Super Smash Bros. Ultimate              ", " Super Mario Odyssey                     ", " Animal Crossing: New Horizons           ", " The Legend of Zelda: Skyward Sword HD   ", " Super Mario 3D World + Boswer's Fury    ", " New Pokémon Snap                        ", " Metroid Dread                           ", " Mario Party Superstars                  ", " Pokémon Brilliant Diamond/Shining Pearl ", " Big Brain Academy: Brain vs Brain       ", " Luigi's Mansion 3                       ", " WarioWare: Get It Together!             ", " Pokémon: Let's Go, Pikachu!/Eevee!      ", " Game Builder Garage                     " ]
-# the inputted figures for million seller titles have to be reset to zero at the start of each fiscal year, do not erase the names, make new variables for new million seller titles 
+# the inputted figures for million seller titles have to be reset to zero at the start of each fiscal year, do not erase the names, make new variables for new million seller titles
 
+current_quarter = 3 # set to 1, 2, 3 or 4
+mobile_output = 1 # 1 = on, 0 = off 
+
+border_line = ["+" + "-"*91 + "+", "+" + "-"*42 + "+"]
+border_line_double = ["+" + "="*91 + "+", "+" + "="*42 + "+"]
+
+if mobile_output == 1:
+    header_1 = [" Nintendo Switch FY Million-Seller Titles ", " "*6 + " Japan ", " "*3 + " Overseas ", "   Global FY ", "  Global LTD ", " Area (units) ", " WW (units)   "]
+    row_1 = [" 1st Quarter  ", " 2nd Quarter  ", " 3rd Quarter  ", " 4th Quarter  ", " FY3/22 Cml.  ", " Area/WW FY % ", " WW FY/LTD %  "]
+    
 #Million-seller titles for the FY
 
-a1_jp1= [ 26 / 100, 35 / 100, 38 / 100, 38 / 100, " Miitopia                                "] # Input cumulative figures, Japan: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter, [4] name of title
+title_1_japan = [ 26 / 100, 35 / 100, 38 / 100, 38 / 100, " Miitopia " + " "*31] # Input cumulative figures, Japan: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter, [4] name of title
+title_1_overseas = [ 78 / 100, 102 / 100, 125 / 100, 125 / 100] # Input cumulative figures, Overseas: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 
-a1_os1= [ 78 / 100, 102 / 100, 125 / 100, 125 / 100] # Input cumulative figures, Overseas: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
+title_1_worldwide_fy = [ 104 / 100, 137 / 100, 163 / 100, 163 / 100] # Input cumulative figures, Global FY: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 
-a1_wwfy1= [ 104 / 100, 137 / 100, 163 / 100, 163 / 100] # Input cumulative figures, Global FY: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
-
-a1_wwltd1= [ 104 / 100, 137 / 100, 163 / 100, 163 / 100] # Input cumulative figures, Global LTD: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
+title_1_worldwide_ltd = [ 104 / 100, 137 / 100, 163 / 100, 163 / 100] # Input cumulative figures, Global LTD: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a2_jp1= [ 20 / 100, 46 / 100, 86 / 100, 86 / 100, " Mario Kart 8 Deluxe                     "] # Input cumulative figures, Japan: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter, [4] name of title
+title_2_japan = [ 20 / 100, 46 / 100, 86 / 100, 86 / 100, " Mario Kart 8 Deluxe " + " "*20] # Input cumulative figures, Japan: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter, [4] name of title
+title_2_overseas = [ 150 / 100, 289 / 100, 710 / 100, 710 / 100] # Input cumulative figures, Overseas: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 
-a2_os1= [ 150 / 100, 289 / 100, 710 / 100, 710 / 100] # Input cumulative figures, Overseas: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
+title_2_worldwide_fy = [ 169 / 100, 334 / 100, 796 / 100, 796 / 100] # Input cumulative figures, Global FY: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 
-a2_wwfy1= [ 169 / 100, 334 / 100, 796 / 100, 796 / 100] # Input cumulative figures, Global FY: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
-
-a2_wwltd1= [ 3708 / 100, 3874 / 100, 4335 / 100, 4335 / 100] # Input cumulative figures, Global LTD: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
+title_2_worldwide_ltd = [ 3708 / 100, 3874 / 100, 4335 / 100, 4335 / 100] # Input cumulative figures, Global LTD: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a3_jp1= [ 0 / 100, 16 / 100, 40 / 100, 40 / 100, " The Legend of Zelda: Breath of the Wild "] # Input cumulative figures, Japan: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter, [4] name of title
+title_3_japan = [ 0 / 100, 16 / 100, 40 / 100, 40 / 100, " The Legend of Zelda: Breath of the Wild "] # Input cumulative figures, Japan: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter, [4] name of title
+title_3_overseas = [ 0 / 100, 170 / 100, 311 / 100, 311 / 100] # Input cumulative figures, Overseas: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 
-a3_os1= [ 0 / 100, 170 / 100, 311 / 100, 311 / 100] # Input cumulative figures, Overseas: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
+title_3_worldwide_fy = [ 0 / 100, 185 / 100, 352 / 100, 352 / 100] # Input cumulative figures, Global FY: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 
-a3_wwfy1= [ 0 / 100, 185 / 100, 352 / 100, 352 / 100] # Input cumulative figures, Global FY: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
-
-a3_wwltd1= [ 0 / 100, 2413 / 100, 2580 / 100, 2580 / 100] # Input cumulative figures, Global LTD: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
+title_3_worldwide_ltd = [ 0 / 100, 2413 / 100, 2580 / 100, 2580 / 100] # Input cumulative figures, Global LTD: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a4_jp1= [ 0 / 100, 8 / 100, 14 / 100, 14 / 100, " New Super Mario Bros. U Deluxe          "] # Input cumulative figures, Japan: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter, [4] name of title
+title_4_japan = [ 0 / 100, 8 / 100, 14 / 100, 14 / 100, " New Super Mario Bros. U Deluxe " + " "*9] # Input cumulative figures, Japan: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter, [4] name of title
+title_4_overseas = [ 0 / 100, 96 / 100, 213 / 100, 213 / 100] # Input cumulative figures, Overseas: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 
-a4_os1= [ 0 / 100, 96 / 100, 213 / 100, 213 / 100] # Input cumulative figures, Overseas: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
+title_4_worldwide_fy = [ 0 / 100, 103 / 100, 228 / 100, 228 / 100] # Input cumulative figures, Global FY: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 
-a4_wwfy1= [ 0 / 100, 103 / 100, 228 / 100, 228 / 100] # Input cumulative figures, Global FY: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
-
-a4_wwltd1= [ 0 / 100, 1148 / 100, 1272 / 100, 1272 / 100] # Input cumulative figures, Global LTD: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
+title_4_worldwide_ltd = [ 0 / 100, 1148 / 100, 1272 / 100, 1272 / 100] # Input cumulative figures, Global LTD: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a5_jp1= [ 21 / 100, 29 / 100, 30 / 100, 30 / 100, " Mario Golf: Super Rush                  "] # Input cumulative figures, Japan: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter, [4] name of title
+title_5_japan = [ 21 / 100, 29 / 100, 30 / 100, 30 / 100, " Mario Golf: Super Rush "  + " "*17] # Input cumulative figures, Japan: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter, [4] name of title
+title_5_overseas = [ 113 / 100, 165 / 100, 196 / 100, 196 / 100] # Input cumulative figures, Overseas: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 
-a5_os1= [ 113 / 100, 165 / 100, 196 / 100, 196 / 100] # Input cumulative figures, Overseas: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
+title_5_worldwide_fy = [ 134 / 100, 194 / 100, 226 / 100, 226 / 100] # Input cumulative figures, Global FY: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 
-a5_wwfy1= [ 134 / 100, 194 / 100, 226 / 100, 226 / 100] # Input cumulative figures, Global FY: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
-
-a5_wwltd1= [ 134 / 100, 194 / 100, 226 / 100, 226 / 100] # Input cumulative figures, Global LTD: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
+title_5_worldwide_ltd = [ 134 / 100, 194 / 100, 226 / 100, 226 / 100] # Input cumulative figures, Global LTD: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a6_jp1= [ 25 / 100, 52 / 100, 80 / 100, 80 / 100, " Ring Fit Adventure                      "] # Input cumulative figures, Japan: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter, [4] name of title
+title_6_japan = [ 25 / 100, 52 / 100, 80 / 100, 80 / 100, " Ring Fit Adventure " + " "*21] # Input cumulative figures, Japan: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter, [4] name of title
+title_6_overseas = [ 89 / 100, 158 / 100, 262 / 100, 262 / 100] # Input cumulative figures, Overseas: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 
-a6_os1= [ 89 / 100, 158 / 100, 262 / 100, 262 / 100] # Input cumulative figures, Overseas: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
+title_6_worldwide_fy = [ 115 / 100, 210 / 100, 342 / 100, 342 / 100] # Input cumulative figures, Global FY: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 
-a6_wwfy1= [ 115 / 100, 210 / 100, 342 / 100, 342 / 100] # Input cumulative figures, Global FY: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
-
-a6_wwltd1= [ 1126 / 100, 1221 / 100, 1353 / 100, 1353 / 100] # Input cumulative figures, Global LTD: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
+title_6_worldwide_ltd = [ 1126 / 100, 1221 / 100, 1353 / 100, 1353 / 100] # Input cumulative figures, Global LTD: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a7_jp1= [ 0 / 100, 22 / 100, 29 / 100, 29 / 100, " Super Mario Party                       "]
+title_7_japan = [ 0 / 100, 22 / 100, 29 / 100, 29 / 100, " Super Mario Party " + " "*22]
+title_7_overseas = [ 0 / 100, 147 / 100, 230 / 100, 230 / 100]
 
-a7_os1= [ 0 / 100, 147 / 100, 230 / 100, 230 / 100]
+title_7_worldwide_fy = [ 0 / 100, 168 / 100, 259 / 100, 259 / 100]
 
-a7_wwfy1= [ 0 / 100, 168 / 100, 259 / 100, 259 / 100]
-
-a7_wwltd1= [ 0 / 100, 1648 / 100, 1739 / 100, 1739 / 100]
+title_7_worldwide_ltd = [ 0 / 100, 1648 / 100, 1739 / 100, 1739 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a8_jp1= [ 0 / 100, 19 / 100, 42 / 100, 42 / 100, " Pokémon Sword/Shield                    "]
+title_8_japan = [ 0 / 100, 19 / 100, 42 / 100, 42 / 100, " Pokémon Sword / Pokémon Shield  " + " "*8]
+title_8_overseas = [ 0 / 100, 135 / 100, 238 / 100, 238 / 100]
 
-a8_os1= [ 0 / 100, 135 / 100, 238 / 100, 238 / 100]
+title_8_worldwide_fy = [ 0 / 100, 154 / 100, 280 / 100, 280 / 100]
 
-a8_wwfy1= [ 0 / 100, 154 / 100, 280 / 100, 280 / 100]
-
-a8_wwltd1= [ 0 / 100, 2264 / 100, 2390 / 100, 2390 / 100]
+title_8_worldwide_ltd = [ 0 / 100, 2264 / 100, 2390 / 100, 2390 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a9_jp1= [ 0 / 100, 33 / 100, 77 / 100, 77 / 100, " Super Smash Bros. Ultimate              "]
+title_9_japan = [ 0 / 100, 33 / 100, 77 / 100, 77 / 100, " Super Smash Bros. Ultimate " + " "*13]
+title_9_overseas = [ 0 / 100, 153 / 100, 279 / 100, 279 / 100]
 
-a9_os1= [ 0 / 100, 153 / 100, 279 / 100, 279 / 100]
+title_9_worldwide_fy = [ 0 / 100, 186 / 100, 356 / 100, 356 / 100]
 
-a9_wwfy1= [ 0 / 100, 186 / 100, 356 / 100, 356 / 100]
-
-a9_wwltd1= [ 0 / 100, 2571 / 100, 2740 / 100, 2740 / 100]
+title_9_worldwide_ltd = [ 0 / 100, 2571 / 100, 2740 / 100, 2740 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a10_jp1= [ 0 / 100, 8 / 100, 15 / 100, 15 / 100, " Super Mario Odyssey                     "]
+title_10_japan = [ 0 / 100, 8 / 100, 15 / 100, 15 / 100, " Super Mario Odyssey " + " "*20]
 
-a10_os1= [ 0 / 100, 103 / 100, 204 / 100, 204 / 100]
+title_10_overseas = [ 0 / 100, 103 / 100, 204 / 100, 204 / 100]
 
-a10_wwfy1= [ 0 / 100, 112 / 100, 219 / 100, 219 / 100]
+title_10_worldwide_fy = [ 0 / 100, 112 / 100, 219 / 100, 219 / 100]
 
-a10_wwltd1= [ 0 / 100, 2195 / 100, 2302 / 100, 2302 / 100]
+title_10_worldwide_ltd = [ 0 / 100, 2195 / 100, 2302 / 100, 2302 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a11_jp1= [ 13 / 100, 25 / 100, 70 / 100, 70 / 100, " Animal Crossing: New Horizons           "]
+title_11_japan = [ 13 / 100, 25 / 100, 70 / 100, 70 / 100, " Animal Crossing: New Horizons " + " "*10]
 
-a11_os1= [ 113 / 100, 197 / 100, 430 / 100, 430 / 100]
+title_11_overseas = [ 113 / 100, 197 / 100, 430 / 100, 430 / 100]
 
-a11_wwfy1= [ 126 / 100, 222 / 100, 499 / 100, 499 / 100]
+title_11_worldwide_fy = [ 126 / 100, 222 / 100, 499 / 100, 499 / 100]
 
-a11_wwltd1= [3389 / 100, 3485 / 100, 3762 / 100, 3762 / 100]
+title_11_worldwide_ltd = [3389 / 100, 3485 / 100, 3762 / 100, 3762 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a12_jp1= [ 0 / 100, 42 / 100, 44 / 100, 44 / 100, " The Legend of Zelda: Skyward Sword HD   "]
+title_12_japan = [ 0 / 100, 42 / 100, 44 / 100, 44 / 100, " The Legend of Zelda: Skyward Sword HD   "]
 
-a12_os1= [ 0 / 100, 318 / 100, 340 / 100, 340 / 100]
+title_12_overseas = [ 0 / 100, 318 / 100, 340 / 100, 340 / 100]
 
-a12_wwfy1= [ 0 / 100, 360 / 100, 385 / 100, 385 / 100]
+title_12_worldwide_fy = [ 0 / 100, 360 / 100, 385 / 100, 385 / 100]
 
-a12_wwltd1= [ 0 / 100, 360 / 100, 385 / 100, 385 / 100]
+title_12_worldwide_ltd = [ 0 / 100, 360 / 100, 385 / 100, 385 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a13_jp1= [ 21 / 100, 36 / 100, 54 / 100, 54 / 100, " Super Mario 3D World + Boswer's Fury    "]
+title_13_japan = [ 21 / 100, 36 / 100, 54 / 100, 54 / 100, " Super Mario 3D World + Boswer's Fury    "]
 
-a13_os1= [ 87 / 100, 150 / 100, 272 / 100, 272 / 100]
+title_13_overseas = [ 87 / 100, 150 / 100, 272 / 100, 272 / 100]
 
-a13_wwfy1= [ 109 / 100, 186 / 100, 326 / 100, 326 / 100]
+title_13_worldwide_fy = [ 109 / 100, 186 / 100, 326 / 100, 326 / 100]
 
-a13_wwltd1= [ 668 / 100, 745 / 100, 885 / 100, 885 / 100]
+title_13_worldwide_ltd = [ 668 / 100, 745 / 100, 885 / 100, 885 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a14_jp1= [ 0 / 100, 0 / 100, 0 / 100, 0 / 100, " New Pokémon Snap                        "]
+title_14_japan = [ 0 / 100, 0 / 100, 0 / 100, 0 / 100, " New Pokémon Snap " + " "*23]
 
-a14_os1= [ 207 / 100, 219 / 100, 236 / 100, 236 / 100]
+title_14_overseas = [ 207 / 100, 219 / 100, 236 / 100, 236 / 100]
 
-a14_wwfy1= [ 207 / 100, 219 / 100, 236 / 100, 236 / 100]
+title_14_worldwide_fy = [ 207 / 100, 219 / 100, 236 / 100, 236 / 100]
 
-a14_wwltd1= [207 / 100, 219 / 100, 236 / 100, 236 / 100]
+title_14_worldwide_ltd = [207 / 100, 219 / 100, 236 / 100, 236 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a15_jp1= [ 0 / 100, 0 / 100, 26 / 100, 26 / 100, " Metroid Dread                           "]
+title_15_japan = [ 0 / 100, 0 / 100, 26 / 100, 26 / 100, " Metroid Dread " + " "*26]
 
-a15_os1= [ 0 / 100, 0 / 100, 248 / 100, 248 / 100]
+title_15_overseas = [ 0 / 100, 0 / 100, 248 / 100, 248 / 100]
 
-a15_wwfy1= [ 0 / 100, 0 / 100, 274 / 100, 274 / 100]
+title_15_worldwide_fy = [ 0 / 100, 0 / 100, 274 / 100, 274 / 100]
 
-a15_wwltd1= [0 / 100, 0 / 100, 274 / 100, 274 / 100]
+title_15_worldwide_ltd = [0 / 100, 0 / 100, 274 / 100, 274 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a16_jp1= [ 0 / 100, 0 / 100, 113 / 100, 113 / 100, " Mario Party Superstars                  "]
+title_16_japan = [ 0 / 100, 0 / 100, 113 / 100, 113 / 100, " Mario Party Superstars " + " "*17]
 
-a16_os1= [ 0 / 100, 0 / 100, 430 / 100, 430 / 100]
+title_16_overseas = [ 0 / 100, 0 / 100, 430 / 100, 430 / 100]
 
-a16_wwfy1= [ 0 / 100, 0 / 100, 543 / 100, 543 / 100]
+title_16_worldwide_fy = [ 0 / 100, 0 / 100, 543 / 100, 543 / 100]
 
-a16_wwltd1= [ 0 / 100, 0 / 100, 543 / 100, 543 / 100]
+title_16_worldwide_ltd = [ 0 / 100, 0 / 100, 543 / 100, 543 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a17_jp1= [ 0 / 100, 0 / 100, 379 / 100, 379 / 100, " Pokémon Brilliant Diamond/Shining Pearl "]
+title_17_japan = [ 0 / 100, 0 / 100, 379 / 100, 379 / 100] 
+if mobile_output == 0:
+    title_17_japan.append(" Pokémon Brilliant Diamond/Shining Pearl ")
+else:
+    title_17_japan.append(" Pokémon Brilliant Diamond / Pokémon Shining Pearl ")
 
-a17_os1= [ 0 / 100, 0 / 100, 1018 / 100, 1018 / 100]
+title_17_overseas = [ 0 / 100, 0 / 100, 1018 / 100, 1018 / 100]
 
-a17_wwfy1= [ 0 / 100, 0 / 100, 1397 / 100, 1397 / 100]
+title_17_worldwide_fy = [ 0 / 100, 0 / 100, 1397 / 100, 1397 / 100]
 
-a17_wwltd1= [0 / 100, 0 / 100, 1397 / 100, 1397 / 100]
+title_17_worldwide_ltd = [0 / 100, 0 / 100, 1397 / 100, 1397 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a18_jp1= [ 0 / 100, 0 / 100, 38 / 100, 38 / 100, " Big Brain Academy: Brain vs Brain       "]
+title_18_japan = [ 0 / 100, 0 / 100, 38 / 100, 38 / 100, " Big Brain Academy: Brain vs Brain " + " "*6]
 
-a18_os1= [ 0 / 100, 0 / 100, 90 / 100, 90 / 100]
+title_18_overseas = [ 0 / 100, 0 / 100, 90 / 100, 90 / 100]
 
-a18_wwfy1= [ 0 / 100, 0 / 100, 128 / 100, 128 / 100]
+title_18_worldwide_fy = [ 0 / 100, 0 / 100, 128 / 100, 128 / 100]
 
-a18_wwltd1= [0 / 100, 0 / 100, 128 / 100, 128 / 100]
+title_18_worldwide_ltd = [0 / 100, 0 / 100, 128 / 100, 128 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a19_jp1= [ 0 / 100, 0 / 100, 9 / 100, 9 / 100, " Luigi's Mansion 3                       "]
+title_19_japan = [ 0 / 100, 0 / 100, 9 / 100, 9 / 100, " Luigi's Mansion 3 " + " "*22]
 
-a19_os1= [ 0 / 100, 0 / 100, 136 / 100, 136 / 100]
+title_19_overseas = [ 0 / 100, 0 / 100, 136 / 100, 136 / 100]
 
-a19_wwfy1= [ 0 / 100, 0 / 100, 145 / 100, 145 / 100]
+title_19_worldwide_fy = [ 0 / 100, 0 / 100, 145 / 100, 145 / 100]
 
-a19_wwltd1= [0 / 100, 0 / 100, 1104 / 100, 1104 / 100]
+title_19_worldwide_ltd = [0 / 100, 0 / 100, 1104 / 100, 1104 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a20_jp1= [ 0 / 100, 0 / 100, 30 / 100, 30 / 100, " WarioWare: Get It Together!             "]
+title_20_japan = [ 0 / 100, 0 / 100, 30 / 100, 30 / 100, " WarioWare: Get It Together! " + " "*12]
 
-a20_os1= [ 0 / 100, 0 / 100, 94 / 100, 94 / 100]
+title_20_overseas = [ 0 / 100, 0 / 100, 94 / 100, 94 / 100]
 
-a20_wwfy1= [ 0 / 100, 0 / 100, 124 / 100, 124 / 100]
+title_20_worldwide_fy = [ 0 / 100, 0 / 100, 124 / 100, 124 / 100]
 
-a20_wwltd1= [0 / 100, 0 / 100, 124 / 100, 124 / 100]
+title_20_worldwide_ltd = [0 / 100, 0 / 100, 124 / 100, 124 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a21_jp1= [ 0 / 100, 0 / 100, 3 / 100, 3 / 100, " Pokémon: Let's Go, Pikachu!/Eevee!      "]
+title_21_japan = [ 0 / 100, 0 / 100, 3 / 100, 3 / 100] 
+if mobile_output == 0:
+    title_21_japan.append(" Pokémon: Let's Go, Pikachu!/Eevee! " + " "*5)
+else:
+    title_21_japan.append(" Pokémon: Let's Go, Pikachu! / Pokémon: Let's Go, Eevee! ")
 
-a21_os1= [ 0 / 100, 0 / 100, 102 / 100, 102 / 100]
+title_21_overseas = [ 0 / 100, 0 / 100, 102 / 100, 102 / 100]
 
-a21_wwfy1= [ 0 / 100, 0 / 100, 105 / 100, 105 / 100]
+title_21_worldwide_fy = [ 0 / 100, 0 / 100, 105 / 100, 105 / 100]
 
-a21_wwltd1= [0 / 100, 0 / 100, 1433 / 100, 1433 / 100]
+title_21_worldwide_ltd = [0 / 100, 0 / 100, 1433 / 100, 1433 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-a22_jp1= [ 0 / 100, 0 / 100, 44 / 100, 44 / 100, " Game Builder Garage                     "]
+title_22_japan = [ 0 / 100, 0 / 100, 44 / 100, 44 / 100, " Game Builder Garage " + " "*20]
 
-a22_os1= [ 0 / 100, 0 / 100, 58 / 100, 58 / 100]
+title_22_overseas = [ 0 / 100, 0 / 100, 58 / 100, 58 / 100]
 
-a22_wwfy1= [ 0 / 100, 0 / 100, 101 / 100, 101 / 100]
+title_22_worldwide_fy = [ 0 / 100, 0 / 100, 101 / 100, 101 / 100]
 
-a22_wwltd1= [0 / 100, 0 / 100, 101 / 100, 101 / 100]
+title_22_worldwide_ltd = [0 / 100, 0 / 100, 101 / 100, 101 / 100]
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-capture1 = [] # empty array
+for_loop_list_1 = []
 
 for i in range(22): # for loop to get 4 variables for each title into an array
-    jp1 = "a" + str(i+1) + "_jp1" # convert to string
-    jp2 = globals()[jp1] # changes the string to a variable
-    os1 = "a" + str(i+1) + "_os1" # convert to string
-    os2 = globals()[os1] # changes the string to a variable
-    wwfy1 = "a"+ str(i+1) +"_wwfy1" # convert to string
-    wwfy2 = globals()[wwfy1] # changes the string to a variable
-    wwltd1 = "a"+ str(i+1) +"_wwltd1" # convert to string
-    wwltd2 = globals()[wwltd1] # changes the string to a variable
-    capture1.append(jp2 + os2 + wwfy2 + wwltd2) # puts the variables together into one index of the array by combining its arrays
+    japan_list_1 = "title_" + str(i+1) + "_japan" # convert to string
+    japan_list_2 = globals()[japan_list_1] # changes the string to a variable
+    overseas_list_1 = "title_" + str(i+1) + "_overseas" # convert to string
+    overseas_list_2 = globals()[overseas_list_1] # changes the string to a variable
+    worldwide_fy_list_1 = "title_" + str(i+1) +"_worldwide_fy" # convert to string
+    worldwide_fy_list_2 = globals()[worldwide_fy_list_1] # changes the string to a variable
+    worldwide_ltd_list_1 = "title_" + str(i+1) +"_worldwide_ltd" # convert to string
+    worldwide_ltd_list_2 = globals()[worldwide_ltd_list_1] # changes the string to a variable
+    for_loop_list_1.append(japan_list_2 + overseas_list_2 + worldwide_fy_list_2 + worldwide_ltd_list_2) # puts the variables together into one index of the array by combining its arrays
 
-capture2 = sorted(capture1, reverse=True, key=itemgetter(12)) # the titles are sorted by the global fy number of the 4th quarter.
+for_loop_list_2 = sorted(for_loop_list_1, reverse=True, key=itemgetter(12)) # the titles are sorted by the global fy number of the 4th quarter.
 
-for i in range (len(capture2)): # for adding in title numbers to keep track after sorting
-    rank = "[ Title: " + str(i+1) + " ]"
-    rank1 = '{0: <11}'.format(rank)
-    capture2[i].append(rank1)
+if mobile_output == 0:
+    for i in range (len(for_loop_list_2)): # for adding in title numbers to keep track after sorting
+        rank_1 = "[ Title: " + str(i+1) + " ]"
+        rank_2 = '{0: <11}'.format(rank_1)
+        for_loop_list_2[i].append(rank_2)
+else:
+    for i in range (len(for_loop_list_2)): # for adding in title numbers to keep track after sorting
+        rank_1 = " Rank " + str(i+1)
+        rank_2 = '{0: <9}'.format(rank_1)
+        for_loop_list_2[i].append(rank_2)
 
-def c_print (y, z, a, b): # y: use a1_jp1, a2_jp1, etc, z: use a1_os1, a2_os1, etc, a: use a1_wwfy1, a2_wwfy1, etc, b: use a1_wwltd1, a2_wwltd, etc
-    # variables created inside a function are local and cannot be used outside a function
-    y1, z1, a1, b1 = [y[0], y[1]  - y[0], y[2] - y[1], y[3] - y[2]], [z[0], z[1]  - z[0], z[2] - z[1], z[3] - z[2]], [a[0], a[1]  - a[0], a[2] - a[1], a[3] - a[2]], [b[0], b[1]  - b[0], b[2] - b[1], b[3] - b[2]] #quarterly calculation   
+def quarterly_calculation (y, z, a, b): # y: japan z: overseas a: worldwide fy b: worldwide ltd 
 
-    y1.append(y1[0] + y1[1] + y1[2] + y1[3]), z1.append(z1[0] + z1[1] + z1[2] + z1[3]), a1.append(a1[0] + a1[1] + a1[2] + a1[3]), b1.append(b1[0] + b1[1] + b1[2] + b1[3]) #adds fy cumulative to arrays becomes y1[4], z1[4], a1[4], b1[4]
+    y1, z1, a1, b1 = [], [], [], []
+
+    title_y = y[4]
+    rank_b = b[4]
+
+    for i in range(current_quarter):
+        if i != 0:
+            y1.append(y[i] - y[i-1]), z1.append(z[i] - z[i-1]), a1.append(a[i] - a[i-1]), b1.append(b[i] - b[i-1])  # [0] Q1, [1] Q2, [2] Q3, [3] Q4
+        else: y1.append(y[i]), z1.append(z[i]), a1.append(a[i]), b1.append(b[i])
+    else:
+        while len(y1) < 4: 
+            y1.append(0), z1.append(0), a1.append(0), b1.append(0)  # To simplify inputs
+
+    y1.append(y1[0] + y1[1] + y1[2] + y1[3]), z1.append(z1[0] + z1[1] + z1[2] + z1[3]), a1.append(a1[0] + a1[1] + a1[2] + a1[3]), b1.append(b1[0] + b1[1] + b1[2] + b1[3]) # fy cumulative y1[4], z1[4], a1[4], b1[4]
+
+    d1 = [(y1[4] / a1[4]) * 100 , (z1[4] / a1[4]) * 100, (a1[4] / b1[4]) * 100] # [0] fiscal year comparison percentage Japan/WW, [1] fiscal year comparison percentage Overseas/WW, [2] fiscal year comparison percentage WW FY/LTD 
+
+    d1.append((100 - (d1[2]))) # d1[3] WW LTD comparison percentage to WW FY
+
+    if mobile_output == 0:
+        return format_to_string (y1, z1, a1, b1, d1, title_y, rank_b)
+    else:
+        return mobile_format (y1, z1, a1, b1, d1, title_y, rank_b)
+
+def format_to_string (y1, z1, a1, b1, d1, title_y, rank_b):
     
-    y2, z2, a2, b2 = [ '{:.2f}M '.format(elem) for elem in y1], [ '{:.2f}M '.format(elem) for elem in z1], [ '{:.2f}M '.format(elem) for elem in a1], [ '{:.2f}M '.format(elem) for elem in b1] #formats all integers to string to add ¥ and M
+    y2, z2, a2, b2 = ['{:.2f}M '.format(elem) for elem in y1], ['{:.2f}M '.format(elem) for elem in z1], ['{:.2f}M '.format(elem) for elem in a1], ['{:.2f}M '.format(elem) for elem in b1]
 
-    y3, z3, a3, b3 = [ '{0: >10}'.format(elem) for elem in y2], [ '{0: >13}'.format(elem) for elem in z2], [ '{0: >11}'.format(elem) for elem in a2], [ '{0: >12}'.format(elem) for elem in b2] #format width
+    if mobile_output == 0:
+        y3, z3, a3, b3 = ['{0: >10}'.format(elem) for elem in y2], ['{0: >13}'.format(elem) for elem in z2], ['{0: >11}'.format(elem) for elem in a2], ['{0: >12}'.format(elem) for elem in b2]
+    else:
+        y3, z3, a3, b3 = ['{0: >13}'.format(elem) for elem in y2], ['{0: >13}'.format(elem) for elem in z2], ['{0: >13}'.format(elem) for elem in a2], ['{0: >13}'.format(elem) for elem in b2]
+
+    d2 = ['{:.2f}% '.format(elem) for elem in d1]
+
+    if mobile_output == 0:
+        d2[0], d2[1], d2[2], d2[3] = '{0: >10}'.format(d2[0]), '{0: >13}'.format(d2[1]), '{0: >11}'.format(d2[2]), '{0: >12}'.format(d2[3]) #format width
+    else:
+        d2 = ['{0: >13}'.format(elem) for elem in d2] #format width
+
+    if mobile_output == 0:
+        return to_print_original (y3, z3, a3, b3, d2, a1, title_y, rank_b)
+    else: to_print_mobile (y3, z3, a3, b3, d2, a1, title_y, rank_b)
+
+def mobile_format (y1, z1, a1, b1, d1, title_y, rank_b):
+
+    z2 = str.split(title_y) # title
     
-    d1 = [(y1[4] / a1[4])  * 100 , (z1[4] / a1[4])  * 100, (a1[4] / b1[4])  * 100] # [0] fiscal year comparison percentage Japan/WW, [1] fiscal year comparison percentage Overseas/WW, [2] fiscal year comparison percentage WW FY/LTD 
+    first_line = []
+    first_line_check = []
+    second_line = []
+    line_join = ""
 
-    d1.append((100 - (d1[2]))) # adds [3] WW LTD comparison percentage to WW FY
+    for i in z2:
+        first_line_check.append((len(i + " ")))
+        if sum(first_line_check) > 31:
+            second_line.append(i + " ")
+        else: first_line.append(i + " ")
 
-    d2 = [ '{:.2f}% '.format(elem) for elem in d1] #formats all integers to string to add ¥ and M
-    d2[0], d2[1], d2[2], d2[3] = '{0: >10}'.format(d2[0]), '{0: >13}'.format(d2[1]), '{0: >11}'.format(d2[2]), '{0: >12}'.format(d2[3]) #format width
+    if second_line:
+        line_join = line_join.join(first_line) + " "*(31-len(line_join.join(first_line))) + "|" + " "*9 + "|" + "\n" + "| " + line_join.join(second_line) + " "*(31-len(line_join.join(second_line)))
+    else: line_join = line_join.join(first_line) + " "*(31-sum(first_line_check))
+
+    return format_to_string (y1, z1, a1, b1, d1, line_join, rank_b)
+
+def to_print_original (y3, z3, a3, b3, d2, a1, title_y, rank_b):
 
     if a1 != 0:
-        print(b[4])
-        print("+-------------------------------------------------------------------------------------------+")
-        print("|" + y[4] + "|" + hd1[1] + "|" + hd1[2] +"|" + hd1[3] + "|" + hd1[4] + "|" )
-        print("+-------------------------------------------------------------------------------------------+")
+        print(rank_b)
+        print(border_line[0])
+        print("|" + title_y + "|" + header_1[1] + "|" + header_1[2] +"|" + header_1[3] + "|" + header_1[4] + "|" )
+        print(border_line[0])
     #print quarters
     for i in range(4):        
         if a1[i] != 0:
-            print("|"  +  rw1[i] +  "|" + y3[i] + "|" + z3[i] + "|" + a3[i] +  "|" +  b3[i] + "|"   )
+            print("|"  +  row_1[i] +  "|" + y3[i] + "|" + z3[i] + "|" + a3[i] +  "|" +  b3[i] + "|"   )
     #print fy cumulative
     if a1 != 0:
-        print("+===========================================================================================+")
-        print("|"  +  rw1[4] +  "|" + y3[4] + "|" + z3[4] + "|" + a3[4] +  "|" +  b3[4] + "|"    )
+        print(border_line_double[0])
+        print("|"  +  row_1[4] +  "|" + y3[4] + "|" + z3[4] + "|" + a3[4] +  "|" +  b3[4] + "|"    )
     #print percentages
     if a1 != 0:
-        print("|"  +  rw1[5] +  "|" + d2[0] + "|" + d2[1] + "|" + d2[2] +  "|" +  d2[3] + "|"    )
-        print("+-------------------------------------------------------------------------------------------+")
+        print("|"  +  row_1[5] +  "|" + d2[0] + "|" + d2[1] + "|" + d2[2] +  "|" +  d2[3] + "|"    )
+        print(border_line[0])
 
-        return
+    return
+
+def to_print_mobile (y3, z3, a3, b3, d2, a1, title_y, rank_b):
+
+    for_loop_list_local = [y3, z3, a3, b3]
+
+    if a1 != 0:
+        print(border_line[1])
+        print("| " + title_y + "|" + rank_b + "|")
+        print(border_line[1])
+        for i in range(0, 4, 2):
+            if i == 0:
+                print("|" + header_1[5] + "|" + header_1[1] + "|" + header_1[2] + "|") # japan, overseas
+            else:
+                print("|" + header_1[6] + "|" + header_1[3] + "|" + header_1[4] + "|") # global fy, global ltd
+            print(border_line[1])
+            #print quarters
+            for j in range(4):        
+                if a1[j] != 0:
+                    print("|"  +  row_1[j] +  "|" + for_loop_list_local[i][j] + "|" + for_loop_list_local[i+1][j] + "|")
+            #print fy cumulative
+            if a1 != 0:
+                print(border_line_double[1])
+                print("|"  +  row_1[4] +  "|" + for_loop_list_local[i][4] + "|" + for_loop_list_local[i+1][4] + "|")
+            #print percentages
+            if a1 != 0:
+                if i == 0:
+                    print("|"  +  row_1[5] +  "|" + d2[0] + "|" + d2[1] + "|")
+                else:
+                    print("|"  +  row_1[6] +  "|" + d2[2] + "|" + d2[3] + "|")
+                print(border_line[1])
+
+    return
 
 #printing+++++++++++++++++++++++++++
-print("+-------------------------------------------------------------------------------------------+")
-print("|" + hd1[0] + "|")
-print("+-------------------------------------------------------------------------------------------+")
+if mobile_output == 0:
+    print(border_line[0])
+    print("|" + header_1[0] + "|")
+    print(border_line[0])
+else:
+    print(border_line[1])
+    print("|" + header_1[0] + "|")
+    print(border_line[1])
+    print(border_line[1])
+    print("|" + " Title and Rank " + " "*26 + "|")
+    print(border_line[1])
+    print("|" + " Units " + " "*35 + "|")
+    print(border_line[1])
 
-for i in range(len(capture2)):
-    cut1 = capture2[i][0:5] # to recreate a(i)_jp1
-    cut2 = capture2[i][5:9] # to recreate a(i)_os1
-    cut3 = capture2[i][9:13] # to recreate a(i)_wwfy1
-    cut4 = capture2[i][13:18] # to recreate a(i)_wwltd1
-    c_print(cut1, cut2, cut3, cut4)
+for i in range(len(for_loop_list_2)):
+    list_1 = for_loop_list_2[i][0:5] # to recreate a(i)_jp1
+    list_2 = for_loop_list_2[i][5:9] # to recreate a(i)_os1
+    list_3 = for_loop_list_2[i][9:13] # to recreate a(i)_wwfy1
+    list_4 = for_loop_list_2[i][13:18] # to recreate a(i)_wwltd1
+    quarterly_calculation(list_1, list_2, list_3, list_4)
 
-print(lb1)
+print(line_break_1)
+
+# def c_print (y, z, a, b): # y: use a1_jp1, a2_jp1, etc, z: use a1_os1, a2_os1, etc, a: use a1_wwfy1, a2_wwfy1, etc, b: use a1_wwltd1, a2_wwltd, etc
+#     # variables created inside a function are local and cannot be used outside a function
+#     y1, z1, a1, b1 = [y[0], y[1]  - y[0], y[2] - y[1], y[3] - y[2]], [z[0], z[1]  - z[0], z[2] - z[1], z[3] - z[2]], [a[0], a[1]  - a[0], a[2] - a[1], a[3] - a[2]], [b[0], b[1]  - b[0], b[2] - b[1], b[3] - b[2]] #quarterly calculation   
+
+#     y1.append(y1[0] + y1[1] + y1[2] + y1[3]), z1.append(z1[0] + z1[1] + z1[2] + z1[3]), a1.append(a1[0] + a1[1] + a1[2] + a1[3]), b1.append(b1[0] + b1[1] + b1[2] + b1[3]) #adds fy cumulative to arrays becomes y1[4], z1[4], a1[4], b1[4]
+    
+#     y2, z2, a2, b2 = [ '{:.2f}M '.format(elem) for elem in y1], [ '{:.2f}M '.format(elem) for elem in z1], [ '{:.2f}M '.format(elem) for elem in a1], [ '{:.2f}M '.format(elem) for elem in b1] #formats all integers to string to add ¥ and M
+
+#     y3, z3, a3, b3 = [ '{0: >10}'.format(elem) for elem in y2], [ '{0: >13}'.format(elem) for elem in z2], [ '{0: >11}'.format(elem) for elem in a2], [ '{0: >12}'.format(elem) for elem in b2] #format width
+    
+#     d1 = [(y1[4] / a1[4])  * 100 , (z1[4] / a1[4])  * 100, (a1[4] / b1[4])  * 100] # [0] fiscal year comparison percentage Japan/WW, [1] fiscal year comparison percentage Overseas/WW, [2] fiscal year comparison percentage WW FY/LTD 
+
+#     d1.append((100 - (d1[2]))) # adds [3] WW LTD comparison percentage to WW FY
+
+#     d2 = ['{:.2f}% '.format(elem) for elem in d1] #formats all integers to string to add ¥ and M
+#     d2[0], d2[1], d2[2], d2[3] = '{0: >10}'.format(d2[0]), '{0: >13}'.format(d2[1]), '{0: >11}'.format(d2[2]), '{0: >12}'.format(d2[3]) #format width
+
+#     if a1 != 0:
+#         print(b[4])
+#         print("+-------------------------------------------------------------------------------------------+")
+#         print("|" + y[4] + "|" + header_1[1] + "|" + header_1[2] +"|" + header_1[3] + "|" + header_1[4] + "|" )
+#         print("+-------------------------------------------------------------------------------------------+")
+#     #print quarters
+#     for i in range(4):        
+#         if a1[i] != 0:
+#             print("|"  +  row_1[i] +  "|" + y3[i] + "|" + z3[i] + "|" + a3[i] +  "|" +  b3[i] + "|"   )
+#     #print fy cumulative
+#     if a1 != 0:
+#         print("+===========================================================================================+")
+#         print("|"  +  row_1[4] +  "|" + y3[4] + "|" + z3[4] + "|" + a3[4] +  "|" +  b3[4] + "|"    )
+#     #print percentages
+#     if a1 != 0:
+#         print("|"  +  row_1[5] +  "|" + d2[0] + "|" + d2[1] + "|" + d2[2] +  "|" +  d2[3] + "|"    )
+#         print("+-------------------------------------------------------------------------------------------+")
+
+#         return
 
 # for i in range (2):
     # c_print(a1_jp1, a1_os1, a1_wwfy1, a1_wwltd1)
