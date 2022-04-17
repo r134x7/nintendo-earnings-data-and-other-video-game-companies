@@ -1,259 +1,516 @@
-hd1 = [  "  Japan   ", "The Americas",  "  Europe   ", "   Other   ", " Switch Lite              ", " Switch Hardware          ", " Switch Software          ", " Switch OLED              ", " Switch                   "] #header
-rw1 = [ " 1st Quarter (Units)      ", " 2nd Quarter (Units)      " ,  " 3rd Quarter (Units)      ",   " 4th Quarter (Units)      ", " First Half (Units)       ", " First 3 Quarters (Units) ", " FY3/22 Cumulative (Units)", " 1st Quarter YoY%         ", " 2nd Quarter YoY%         ", " 3rd Quarter YoY%         ", " 4th Quarter YoY%         ", " First Half YoY%          ", " First 3 Qtrs YoY%        ", " FY3/22 Cumulative YoY%   ", " 1st Quarter WW%          ", " 2nd Quarter WW%          ", " 3rd Quarter WW%          ", " 4th Quarter WW%          ", " First Half WW%           ", " First 3 Qtrs WW%         ", " FY3/22 Cumulative WW%    ", " Life-To-Date (Units)     ", " Life-To-Date WW%         " ] # row names, array length 23, [0] to [22]
-linebreak = "###" # line break
+header_1 = [  "  Japan   ", "The Americas",  "  Europe   ", "   Other   ", " Switch Lite              ", " Switch Hardware          ", " Switch Software          ", " Switch OLED              ", " Switch                   "] #header
+row_1 = [ " 1st Quarter (Units)      ", " 2nd Quarter (Units)      " ,  " 3rd Quarter (Units)      ",   " 4th Quarter (Units)      ", " First Half (Units)       ", " First 3 Quarters (Units) ", " FY3/22 Cumulative (Units)", " 1st Quarter YoY%         ", " 2nd Quarter YoY%         ", " 3rd Quarter YoY%         ", " 4th Quarter YoY%         ", " First Half YoY%          ", " First 3 Qtrs YoY%        ", " FY3/22 Cumulative YoY%   ", " 1st Quarter WW%          ", " 2nd Quarter WW%          ", " 3rd Quarter WW%          ", " 4th Quarter WW%          ", " First Half WW%           ", " First 3 Qtrs WW%         ", " FY3/22 Cumulative WW%    ", " Life-To-Date (Units)     ", " Life-To-Date WW%         " ] # row names, array length 23, [0] to [22]
+line_break_1 = "###" # line break
 
-x = 3 # x relates to the current earnings quarter, set to 1, 2, 3 or 4.
+platform_headers = [" Switch " + " "*18, " Switch Lite " + " "*13, " Switch OLED " + " "*13, " Switch Hardware " + " "*9, " Switch Software " + " "*9]
+
+current_quarter = 3 # set to 1, 2, 3 or 4.
+mobile_output = 1 # 1 = on, 0 = off
+
+border_line = ["+" + "-"*74 + "+", "+" + "-"*44 + "+"]
+border_line_double = ["+" + "-"*74 + "+", "+" + "="*44 + "+"]
+
+if mobile_output == 1:
+    header_1 = [" Japan  ", "The     ", " Europe ", " Other  ", "Quarters", "First Half", "First Three Quarters", "FY3/22 Cumulative", "Life-To-Date"]
+    header_2 = [" "*8, "Americas", " "*8, " "*8]
+    row_1 = ["1.", "2.", "3.", "4."]
+    row_2 = [" Units", " YoY% ", " WW%  "]
+    row_3 = [" Units  ", " YoY%   ", " WW%    "]
+    platform_headers = [" Switch "]
+    platform_headers_2 = [" "*8, " Lite   ", " OLED   ", "Hardware", "Software"]
 
 # Worldwide figures
-nswog_ww1= [331 / 100, 645 / 100, 1179 / 100, 1179 / 100, 6989 / 100, " Switch                   "] # Input figures, Worldwide - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
+nintendo_switch_original_model_worldwide_1 = [331 / 100, 645 / 100, 1179 / 100, 1179 / 100, 6989 / 100, " Switch                   "] # Input figures, Worldwide - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
 #+++++++++++++++++++++++++++++
-nswl_ww1= [114 / 100, 182 / 100, 317 / 100, 317 / 100, 1470 / 100, " Switch Lite              "] # Input figures, Worldwide - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
+nintendo_switch_lite_worldwide_1 = [114 / 100, 182 / 100, 317 / 100, 317 / 100, 1470 / 100, " Switch Lite              "] # Input figures, Worldwide - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
 #+++++++++++++++++++++++++++++
-nswoled_ww1= [0 / 100, 0 / 100, 399 / 100, 399 / 100, 0 / 100, " Switch OLED              "] # Input figures, Worldwide - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
+nintendo_switch_oled_model_worldwide_1 = [0 / 100, 0 / 100, 399 / 100, 399 / 100, 0 / 100, " Switch OLED              "] # Input figures, Worldwide - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
 #+++++++++++++++++++++++++++++
-nswhw_ww1= [445 / 100, 828 / 100, 1895 / 100, 1895 / 100, 8459 / 100, " Switch Hardware          "] # Input figures, Worldwide - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
+nintendo_switch_hardware_worldwide_1 = [445 / 100, 828 / 100, 1895 / 100, 1895 / 100, 8459 / 100, " Switch Hardware          "] # Input figures, Worldwide - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
 #+++++++++++++++++++++++++++++
-nswsw_ww1= [4529 / 100, 9389 / 100, 17929 / 100, 17929 / 100, 58713 / 100, " Switch Software          "] # Input figures, Worldwide - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
+nintendo_switch_software_worldwide_1 = [4529 / 100, 9389 / 100, 17929 / 100, 17929 / 100, 58713 / 100, " Switch Software          "] # Input figures, Worldwide - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
 #+++++++++++++++++++++++++++++
 
 # Japan figures
-nswog_jp1= [83 / 100, 158 / 100, 235 / 100, 235 / 100, 1622 / 100] # Input figures, Japan - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year 
+nintendo_switch_original_model_japan_1 = [83 / 100, 158 / 100, 235 / 100, 235 / 100, 1622 / 100] # Input figures, Japan - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year 
 
-nsw_ogjply1= [0.79, 1.14, 2.09, 0.76, 4.78] # Input last fiscal year's figures, Japan - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_original_model_japan_last_fy = [0.79, 1.14, 2.09, 0.76, 4.78] # Input last fiscal year's figures, Japan - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nswl_jp1= [34 / 100, 45 / 100, 91 / 100, 91 / 100, 381 / 100] # Input figures, Japan - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_lite_japan_1 = [34 / 100, 45 / 100, 91 / 100, 91 / 100, 381 / 100] # Input figures, Japan - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_litejply1= [0.36, 0.44, 0.62, 0.39, 1.81 ] # Input last fiscal year's figures, Japan - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_lite_japan_last_fy = [0.36, 0.44, 0.62, 0.39, 1.81 ] # Input last fiscal year's figures, Japan - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nswoled_jp1= [0 / 100, 0 / 100, 107 / 100, 107 / 100, 0 / 100] # Input figures, Japan - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_oled_model_japan_1 = [0 / 100, 0 / 100, 107 / 100, 107 / 100, 0 / 100] # Input figures, Japan - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_oledjply1= [0, 0, 0, 0, 0] # Input last fiscal year's figures, Japan - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_oled_model_japan_last_fy = [0, 0, 0, 0, 0] # Input last fiscal year's figures, Japan - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nswhw_jp1= [116 / 100, 203 / 100, 432 / 100, 432 / 100, 2004 / 100] # Input figures, Japan - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_hardware_japan_1 = [116 / 100, 203 / 100, 432 / 100, 432 / 100, 2004 / 100] # Input figures, Japan - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_hwjply1= [1.15, 1.58, 2.71, 1.16, 6.60 ] # Input last fiscal year's figures, Japan - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_hardware_japan_last_fy = [1.15, 1.58, 2.71, 1.16, 6.60 ] # Input last fiscal year's figures, Japan - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nswsw_jp1= [813 / 100, 1613 / 100, 3098 / 100, 3098 / 100, 11222 / 100] # Input figures, Japan - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year 
+nintendo_switch_software_japan_1 = [813 / 100, 1613 / 100, 3098 / 100, 3098 / 100, 11222 / 100] # Input figures, Japan - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year 
 
-nsw_swjply1= [10.02, 7.76, 13.91, 13.33, 45.02] # Input last fiscal year's figures, Japan - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_software_japan_last_fy = [10.02, 7.76, 13.91, 13.33, 45.02] # Input last fiscal year's figures, Japan - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
 
 # The Americas figures
-nswog_ta1= [110 / 100, 215 / 100, 411 / 100, 411 / 100, 2686 / 100] # Input figures, The Americas - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_original_model_the_americas_1 = [110 / 100, 215 / 100, 411 / 100, 411 / 100, 2686 / 100] # Input figures, The Americas - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_ogtaly1= [0.71, 1.88, 3.01, 1.47, 7.07] # Input last fiscal year's figures, The Americas - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_original_model_the_americas_last_fy = [0.71, 1.88, 3.01, 1.47, 7.07] # Input last fiscal year's figures, The Americas - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nswl_ta1= [48 / 100, 89 / 100, 133 / 100, 133 / 100, 641 / 100] # Input figures, The Americas - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_lite_the_americas_1 = [48 / 100, 89 / 100, 133 / 100, 133 / 100, 641 / 100] # Input figures, The Americas - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_litetaly1= [1.28, 0.59, 1.58, 0.64, 4.09] # Input last fiscal year's figures, The Americas - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_lite_the_americas_last_fy = [1.28, 0.59, 1.58, 0.64, 4.09] # Input last fiscal year's figures, The Americas - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nswoled_ta1= [0 / 100, 0 / 100, 141 / 100, 141 / 100, 0 / 100] # Input figures, The Americas - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_oled_model_the_americas_1 = [0 / 100, 0 / 100, 141 / 100, 141 / 100, 0 / 100] # Input figures, The Americas - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_oledtaly1= [0, 0, 0, 0, 0] # Input figures, The Americas - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_oled_model_the_americas_last_fy = [0, 0, 0, 0, 0] # Input figures, The Americas - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 #+++++++++++++++++++++++++++++
-nswhw_ta1= [159 / 100, 304 / 100, 684 / 100, 684 / 100, 3327 / 100] # Input figures, The Americas - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_hardware_the_americas_1 = [159 / 100, 304 / 100, 684 / 100, 684 / 100, 3327 / 100] # Input figures, The Americas - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_hwtaly1= [1.99, 2.47, 4.59, 2.10, 11.15 ] # Input last fiscal year's figures, The Americas - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_hardware_the_americas_last_fy = [1.99, 2.47, 4.59, 2.10, 11.15 ] # Input last fiscal year's figures, The Americas - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nswsw_ta1= [2235 / 100, 4513 / 100, 8464 / 100, 8464 / 100, 26100 / 100] # Input figures, The Americas - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_software_the_americas_1 = [2235 / 100, 4513 / 100, 8464 / 100, 8464 / 100, 26100 / 100] # Input figures, The Americas - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_swtaly1= [21.49, 24.10, 33.95, 22.88, 102.42] # Input last fiscal year's figures, The Americas - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_software_the_americas_last_fy = [21.49, 24.10, 33.95, 22.88, 102.42] # Input last fiscal year's figures, The Americas - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
 
 # Europe figures
-nswog_eu1= [82 / 100, 163 / 100, 375 / 100, 375 / 100, 1811 / 100] # Input figures, Europe - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_original_model_europe_1 = [82 / 100, 163 / 100, 375 / 100, 375 / 100, 1811 / 100] # Input figures, Europe - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_ogeuly1= [0.83, 1.33, 2.10, 0.76, 5.02] # Input last fiscal year's figures, Europe - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_original_model_europe_last_fy = [0.83, 1.33, 2.10, 0.76, 5.02] # Input last fiscal year's figures, Europe - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nswl_eu1= [26 / 100, 39 / 100, 75 / 100, 75 / 100, 347 / 100] # Input figures, Europe - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_lite_europe_1 = [26 / 100, 39 / 100, 75 / 100, 75 / 100, 347 / 100] # Input figures, Europe - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_liteeuly1= [0.79, 0.35, 0.88, 0.11, 2.13] # Input last fiscal year's figures, Europe - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_lite_europe_last_fy = [0.79, 0.35, 0.88, 0.11, 2.13] # Input last fiscal year's figures, Europe - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nswoled_eu1= [0 / 100, 0 / 100, 91 / 100, 91 / 100, 0 / 100] # Input figures, Europe - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_oled_model_europe_1 = [0 / 100, 0 / 100, 91 / 100, 91 / 100, 0 / 100] # Input figures, Europe - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_oledeuly1= [0, 0, 0, 0, 0] # Input figures, Europe - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_oled_model_europe_last_fy = [0, 0, 0, 0, 0] # Input figures, Europe - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 #+++++++++++++++++++++++++++++
-nswhw_eu1= [108 / 100, 202 / 100, 540 / 100, 540 / 100, 2158 / 100] # Input figures, Europe - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_hardware_europe_1 = [108 / 100, 202 / 100, 540 / 100, 540 / 100, 2158 / 100] # Input figures, Europe - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_hweuly1= [1.61, 1.70, 2.97, 0.87, 7.15] # Input last fiscal year's figures, Europe - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_hardware_europe_last_fy = [1.61, 1.70, 2.97, 0.87, 7.15] # Input last fiscal year's figures, Europe - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nswsw_eu1= [1135 / 100, 2563 / 100, 5085 / 100, 5085 / 100, 17215 / 100] # Input figures, Europe - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_software_europe_1 = [1135 / 100, 2563 / 100, 5085 / 100, 5085 / 100, 17215 / 100] # Input figures, Europe - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_sweuly1= [14.31, 14.22, 23.85, 13.86, 66.24] # Input last fiscal year's figures, Europe - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_software_europe_last_fy = [14.31, 14.22, 23.85, 13.86, 66.24] # Input last fiscal year's figures, Europe - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
 
 # Other figures
-nswog_other1= [56 / 100, 109 / 100, 159 / 100, 159 / 100, 870 / 100] # Input figures, Other - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_original_model_other_1 = [56 / 100, 109 / 100, 159 / 100, 159 / 100, 870 / 100] # Input figures, Other - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_ogotherly1= [0.73, 0.95, 1.21, 0.56, 3.45] # Input last fiscal year's figures, Other - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_original_model_other_last_fy = [0.73, 0.95, 1.21, 0.56, 3.45] # Input last fiscal year's figures, Other - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nswl_other1= [5 / 100, 10 / 100, 18 / 100, 18 / 100, 101 / 100] # Input figures, Other - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_lite_other_1 = [5 / 100, 10 / 100, 18 / 100, 18 / 100, 101 / 100] # Input figures, Other - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_liteotherly1= [0.20, 0.16, 0.09, 0.03, 0.48] # Input last fiscal year's figures, Other - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_lite_other_last_fy = [0.20, 0.16, 0.09, 0.03, 0.48] # Input last fiscal year's figures, Other - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nswoled_other1= [0 / 100, 0 / 100, 61 / 100, 61 / 100, 0 / 100] # Input figures, Other - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_oled_model_other_1 = [0 / 100, 0 / 100, 61 / 100, 61 / 100, 0 / 100] # Input figures, Other - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_oledotherly1= [0, 0, 0, 0, 0] # Input figures, Other - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_oled_model_other_last_fy = [0, 0, 0, 0, 0] # Input figures, Other - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 #+++++++++++++++++++++++++++++
-nswhw_other1= [62 / 100, 119 / 100, 238 / 100, 238 / 100, 971 / 100] # Input figures, Other - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_hardware_other_1 = [62 / 100, 119 / 100, 238 / 100, 238 / 100, 971 / 100] # Input figures, Other - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_hwotherly1= [0.92, 1.12, 1.29, 0.60, 3.93] # Input last fiscal year's figures, Other - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_hardware_other_last_fy = [0.92, 1.12, 1.29, 0.60, 3.93] # Input last fiscal year's figures, Other - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nswsw_other1= [346 / 100, 700 / 100, 1283 / 100, 1283 / 100, 4174 / 100] # Input figures, Other - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_software_other_1 = [346 / 100, 700 / 100, 1283 / 100, 1283 / 100, 4174 / 100] # Input figures, Other - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
-nsw_swotherly1= [4.62, 3.72, 4.16, 4.70, 17.20] # Input last fiscal year's figures, Other - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
+nintendo_switch_software_other_last_fy = [4.62, 3.72, 4.16, 4.70, 17.20] # Input last fiscal year's figures, Other - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
 
-def c_print (y, z, a, b, delta, ly, lz, la, lb): # y: use japan, z: use the americas, a: use europe, b: use other, delta: use worldwide, ly: last fy japan, lz; last fy the americas, la: last fy europe, lb: last fy other
+def quarterly_calculation (y, z, a, j): # region, region last fy, ww. corresponding category.
 
-    y1, z1, a1, b1, delta1 = [y[0], y[1] - y[0], y[2] - y[1], y[3] - y[2]], [z[0], z[1] - z[0], z[2] - z[1], z[3] - z[2]], [a[0], a[1] - a[0], a[2] - a[1], a[3] - a[2]], [b[0], b[1] - b[0], b[2] - b[1], b[3] - b[2]], [delta[0], delta[1] - delta[0], delta[2] - delta[1], delta[3] - delta[2]] #quarterly calculation
+    y1 = []
+    a1 = []
 
-    y1.append(y1[0] + y1[1]), y1.append(y1[0] + y1[1] + y1[2]), y1.append(y1[0] + y1[1] + y1[2] + y1[3]), y1.append(y1[0] + y1[1] + y1[2] + y1[3] + y[4]) # adds [4] first half, [5] first three quarters, [6] fy cumulative, [7] LTD 
-    z1.append(z1[0] + z1[1]), z1.append(z1[0] + z1[1] + z1[2]), z1.append(z1[0] + z1[1] + z1[2] + z1[3]), z1.append(z1[0] + z1[1] + z1[2] + z1[3] + z[4]) # adds [4] first half, [5] first three quarters, [6] fy cumulative, [7] LTD
-    a1.append(a1[0] + a1[1]), a1.append(a1[0] + a1[1] + a1[2]), a1.append(a1[0] + a1[1] + a1[2] + a1[3]), a1.append(a1[0] + a1[1] + a1[2] + a1[3] + a[4]) # adds [4] first half, [5] first three quarters, [6] fy cumulative, [7] LTD 
-    b1.append(b1[0] + b1[1]), b1.append(b1[0] + b1[1] + b1[2]), b1.append(b1[0] + b1[1] + b1[2] + b1[3]), b1.append(b1[0] + b1[1] + b1[2] + b1[3] + b[4]) # adds [4] first half, [5] first three quarters, [6] fy cumulative, [7] LTD 
-    delta1.append(delta1[0] + delta1[1]), delta1.append(delta1[0] + delta1[1] + delta1[2]), delta1.append(delta1[0] + delta1[1] + delta1[2] + delta1[3]), delta1.append(delta1[0] + delta1[1] + delta1[2] + delta1[3] + delta[4]) # adds [4] first half, [5] first three quarters, [6] fy cumulative, [7] LTD 
+    for i in range(current_quarter):
+        if i != 0:
+            y1.append(y[i] - y[i-1]), a1.append(a[i] - a[i-1]) # [0] Q1, [1] Q2, [2] Q3, [3] Q4
+        else: y1.append(y[i]), a1.append(a[i])
+    else:
+        while len(y1) < 4: 
+            y1.append(0), a1.append(0) # To simplify inputs
+    
+    def sum_a(x, z, i): #recursive function to get: fy first half y1[4], fy three quarters y1[5] fy cumulative y1[6], LTD [7]
+        stop_function = [y1[0] + y1[1] + y1[2] + y1[3], a1[0] + a1[1] + a1[2] + a1[3], 4]
 
-    y2, z2, a2, b2 = ['{:.2f}M '.format(elem) for elem in y1], ['{:.2f}M '.format(elem) for elem in z1], ['{:.2f}M '.format(elem) for elem in a1], ['{:.2f}M '.format(elem) for elem in b1] # format
+        if x == y1[0] and z == a1[0] and i == 0: # Q1 alone is not needed
+            i += 1
+            return sum_a(x + y1[i], z + a1[i],  i)
+        else:
+            y1.append(x), a1.append(z)
+            i += 1
+            if x == stop_function[0] and z == stop_function[1] and i == stop_function[2]:
+                return y1.append(y[4] + y1[6]), a1.append(a[4] + a1[6])
+            else:
+                return sum_a(x + y1[i], z + a1[i], i)
 
-    y3, z3, a3, b3 = ['{0: >10}'.format(elem) for elem in y2], ['{0: >12}'.format(elem) for elem in z2], ['{0: >11}'.format(elem) for elem in a2], ['{0: >11}'.format(elem) for elem in b2] # format width
+    sum_a(y1[0], a1[0], 0)
 
-    ly1, lz1, la1, lb1 = [], [], [], [] # empty arrays for calculating YoY percentages, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fy cumulative
+    return year_on_year_calculation(y1, z, a, a1, j)
 
-    for i in range (4): #for dealing with divide by zeros
-            if range (i) == range (0):
-                for i in range (4):
-                    if ly[i] != 0: 
-                        ly1.append(((y1[i] / ly[i]) - 1) * 100)
-                    else: ly1.append(0)
-                if ly[0] + ly[1] != 0:
-                            ly1.append((((y1[0] + y1[1]) / (ly[0] + ly[1])) - 1) * 100)
-                else: ly1.append(0)
-                if ly[0] + ly[1] + ly[2] != 0:
-                            ly1.append((((y1[0] + y1[1] + y1[2]) / (ly[0] + ly[1] + ly[2])) - 1) * 100)
-                else: ly1.append(0)
-                if ly[4] != 0:
-                            ly1.append(((y1[6] / ly[4]) - 1) * 100)
-                else: ly1.append(0)
-            elif range (i) == range (1):
-                for i in range (4):
-                    if lz[i] != 0: 
-                        lz1.append(((z1[i] / lz[i]) - 1) * 100)
-                    else: lz1.append(0)
-                if lz[0] + lz[1] != 0:
-                            lz1.append((((z1[0] + z1[1]) / (lz[0] + lz[1])) - 1) * 100)
-                else: lz1.append(0)
-                if lz[0] + lz[1] + lz[2] != 0:
-                            lz1.append((((z1[0] + z1[1] + z1[2]) / (lz[0] + lz[1] + lz[2])) - 1) * 100)
-                else: lz1.append(0)
-                if lz[4] != 0:
-                            lz1.append(((z1[6] / lz[4]) - 1) * 100)
-                else: lz1.append(0)
-            elif range (i) == range (2):
-                for i in range (4):
-                    if la[i] != 0: 
-                        la1.append(((a1[i] / la[i]) - 1) * 100)
-                    else: la1.append(0)
-                if la[0] + la[1] != 0:
-                            la1.append((((a1[0] + a1[1]) / (la[0] + la[1])) - 1) * 100)
-                else: la1.append(0)
-                if la[0] + la[1] + la[2] != 0:
-                            la1.append((((a1[0] + a1[1] + a1[2]) / (la[0] + la[1] + la[2])) - 1) * 100)
-                else: la1.append(0)
-                if la[4] != 0:
-                            la1.append(((a1[6] / la[4]) - 1) * 100)
-                else: la1.append(0)
-            elif range (i) == range (3):
-                for i in range (4):
-                    if lb[i] != 0: 
-                        lb1.append(((b1[i] / lb[i]) - 1) * 100)
-                    else: lb1.append(0)
-                if lb[0] + lb[1] != 0:
-                            lb1.append((((b1[0] + b1[1]) / (lb[0] + lb[1])) - 1) * 100)
-                else: lb1.append(0)
-                if lb[0] + lb[1] + lb[2] != 0:
-                            lb1.append((((b1[0] + b1[1] + b1[2]) / (lb[0] + lb[1] + lb[2])) - 1) * 100)
-                else: lb1.append(0)
-                if lb[4] != 0:
-                            lb1.append(((b1[6] / lb[4]) - 1) * 100)
-                else: lb1.append(0)
+def year_on_year_calculation (y1, z, a, a1, j): # z: uses last fy variables
 
-    ly2, lz2, la2, lb2 = ['{:+.2f}% '.format(elem) for elem in ly1], ['{:+.2f}% '.format(elem) for elem in lz1], ['{:+.2f}% '.format(elem) for elem in la1], ['{:+.2f}% '.format(elem) for elem in lb1] # format YoY percentages
+    z1 = []
 
-    ly3, lz3, la3, lb3 = ['{0: >10}'.format(elem) for elem in ly2], ['{0: >12}'.format(elem) for elem in lz2], ['{0: >11}'.format(elem) for elem in la2], ['{0: >11}'.format(elem) for elem in lb2] # format width for YoY percentages
+    for i in range(4):
+        if z[i] != 0:
+            z1.append(((y1[i] / z[i]) - 1) * 100) # [0] Q1, [1] Q2, [2] Q3, [3] Q4
+        else: z1.append(0) # for dealing with divide by zeros
 
-    d1, e1, f1, g1 = [], [], [], [] # empty arrays for regional percentages, they will become: [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fy cumulative, [7] LTD
+    def sum_b(x, b, i): #recursive function to get: fy first half y1[4], fy three quarters y1[5] fy cumulative y1[6]
+        stop_function = [y1[0] + y1[1] + y1[2] + y1[3], z[0] + z[1] + z[2] + z[3], 4]
 
-    for i in range (4): #for dealing with divide by zeros
-            if range (i) == range (0):
-                for i in range (8):
-                    if delta1[i] != 0:
-                        d1.append((y1[i] / delta1[i]) * 100)
-                    else:  d1.append(0)
-            elif range (i) == range (1):
-                for i in range (8):
-                    if delta1[i] != 0:
-                        e1.append((z1[i] / delta1[i]) * 100)
-                    else:  e1.append(0)
-            elif range (i) == range (2):
-                for i in range (8):
-                    if delta1[i] != 0:
-                        f1.append((a1[i] / delta1[i]) * 100)
-                    else:  f1.append(0)
-            elif range (i) == range (3):
-                for i in range (8):
-                    if delta1[i] != 0:
-                        g1.append((b1[i] / delta1[i]) * 100)
-                    else:  g1.append(0)
+        if x == y1[0] and b == z[0] and i == 0: # Q1 alone is not needed
+            i += 1
+            return sum_b(x + y1[i], b + z[i], i)
+        else:
+            if b != 0:
+                z1.append(((x / b) - 1) * 100)
+                i += 1
+            else:
+                z1.append(0) # for dealing with divide by zeros
+                i += 1
+            
+        if x == stop_function[0] and b == stop_function[1] and i == stop_function[2]:
+            return
+        else:
+            return sum_b(x + y1[i], b + z[i], i)
 
-    d2, e2, f2, g2 = ['{:.2f}% '.format(elem) for elem in d1], ['{:.2f}% '.format(elem) for elem in e1], ['{:.2f}% '.format(elem) for elem in f1], ['{:.2f}% '.format(elem) for elem in g1] # format percentages of regional percentages
+    sum_b(y1[0], z[0], 0)
 
-    d3, e3, f3, g3 = ['{0: >10}'.format(elem) for elem in d2], ['{0: >12}'.format(elem) for elem in e2], ['{0: >11}'.format(elem) for elem in f2], ['{0: >11}'.format(elem) for elem in g2] # format width of regional percentages
+    return worldwide_percentages(y1, z1, a, a1, j)
 
-    print("+--------------------------------------------------------------------------+")
-    print("|" + delta[5] + "|" + hd1[0] + "|" + hd1[1] +"|" + hd1[2] + "|" + hd1[3] + "|")
-    # print("+--------------------------------------------------------------------------+")
-    for i in range(x):
-        if delta1[i] != 0:
-            print("+--------------------------------------------------------------------------+")
-            print("|"  +  rw1[i] +  "|" + y3[i] + "|" + z3[i] + "|" + a3[i] +  "|" +  b3[i] + "|" )
-        if delta1[i] != 0 and ly1[i] and lz1[i] and la1[i] and lb1[i] != 0:
-            print("|"  +  rw1[i+7] +  "|" + ly3[i] + "|" + lz3[i] + "|" + la3[i] +  "|" +  lb3[i] + "|")
-        if delta1[i] != 0:
-            print("|"  + rw1[i+14] +   "|" + d3[i] + "|" + e3[i] + "|" + f3[i] + "|" + g3[i] + "|")
+def worldwide_percentages (y1, z1, a, a1, j):
+
+    d1 = []
+
+    for i in range (8): # [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fy cumulative, [7] LTD
+        if a1[i] != 0:
+            d1.append((y1[i] / a1[i]) * 100)
+        else:  d1.append(0)
+
+    return format_to_string(y1, z1, a, d1, j)
+
+
+def format_to_string (y1, z1, a, d1, j):
+
+    y2 = ['{:.2f}M '.format(elem) for elem in y1]
+    z2 = ['{:+.2f}% '.format(elem) for elem in z1]
+    d2 = ['{:.2f}% '.format(elem) for elem in d1]
+
+    if j == 0 and mobile_output == 0:
+        y3 = ['{0: >10}'.format(elem) for elem in y2]
+        z3 = ['{0: >10}'.format(elem) for elem in z2]
+        d3 = ['{0: >10}'.format(elem) for elem in d2]
+    elif j == 2 and mobile_output == 0:
+        y3 = ['{0: >12}'.format(elem) for elem in y2]
+        z3 = ['{0: >12}'.format(elem) for elem in z2]
+        d3 = ['{0: >12}'.format(elem) for elem in d2]
+    elif j == 4 or j == 6 and mobile_output == 0:
+        y3 = ['{0: >11}'.format(elem) for elem in y2]
+        z3 = ['{0: >11}'.format(elem) for elem in z2]
+        d3 = ['{0: >11}'.format(elem) for elem in d2]
+    
+    if mobile_output == 1:
+        y3 = ['{0:>8}'.format(elem) for elem in y2]
+        z3 = ['{0:>8}'.format(elem) for elem in z2]
+        d3 = ['{0:>8}'.format(elem) for elem in d2]
+
+    if a == nintendo_switch_original_model_worldwide_1:
+        return return_a1.append(y3), return_a2.append(z3), return_a3.append(d3)
+    elif a == nintendo_switch_lite_worldwide_1:
+        return return_b1.append(y3), return_b2.append(z3), return_b3.append(d3)
+    elif a == nintendo_switch_oled_model_worldwide_1:
+        return return_c1.append(y3), return_c2.append(z3), return_c3.append(d3)
+    elif a == nintendo_switch_hardware_worldwide_1:
+        return return_d1.append(y3), return_d2.append(z3), return_d3.append(d3)
+    elif a == nintendo_switch_software_worldwide_1:
+        return return_e1.append(y3), return_e2.append(z3), return_e3.append(d3)
+
+def to_print_original (region_units, region_yoy, region_ww, number):
+
+    print(border_line[0])
+    print("|" + platform_headers[number] + "|" + header_1[0] + "|" + header_1[1] +"|" + header_1[2] + "|" + header_1[3] + "|")
+    for i in range(current_quarter):
+        if "0.00M" not in region_units[0][i]:
+            print(border_line[0])
+            print("|"  +  row_1[i] +  "|" + region_units[0][i] + "|" + region_units[1][i] + "|" + region_units[2][i] +  "|" +  region_units[3][i] + "|" )
+        if "+0.00%" not in (region_yoy[0][i] and region_yoy[1][i] and region_yoy[2][i] and region_yoy[3][i]):
+            print("|"  +  row_1[i+7] +  "|" + region_yoy[0][i] + "|" + region_yoy[1][i] + "|" + region_yoy[2][i] +  "|" +  region_yoy[3][i] + "|")
+        if "0.00M" not in region_units[0][i]:
+            print("|"  + row_1[i+14] +   "|" + region_ww[0][i] + "|" + region_ww[1][i] + "|" + region_ww[2][i] + "|" + region_ww[3][i] + "|")
     else: 
-        print("+==========================================================================+") #border
-        if x >= 2 and delta1[4] != 0:
-            print("|"  +  rw1[4] +  "|" + y3[4] + "|" + z3[4] + "|" + a3[4] +  "|" +  b3[4] + "|" )
-        if x >= 2 and delta1[4] != 0 and ly1[4] and lz1[4] and la1[4] and lb1[4] != 0:
-            print("|"  +  rw1[11] +  "|" + ly3[4] + "|" + lz3[4] + "|" + la3[4] +  "|" +  lb3[4] + "|")
-        if x >= 2 and delta1[4] != 0:    
-            print("|"  + rw1[18] +   "|" + d3[4] + "|" + e3[4] + "|" + f3[4] + "|" + g3[4] + "|")
-            print("+--------------------------------------------------------------------------+")
-        if x >= 3 and delta1[5] != 0:
-            print("|"  +  rw1[5] +  "|" + y3[5] + "|" + z3[5] + "|" + a3[5] +  "|" +  b3[5] + "|" )
-        if x >= 3 and delta1[5] != 0 and ly1[5] and lz1[5] and la1[5] and lb1[5] != 0:
-            print("|"  +  rw1[12] +  "|" + ly3[5] + "|" + lz3[5] + "|" + la3[5] +  "|" +  lb3[5] + "|")
-        if x >= 3 and delta1[5] != 0:    
-            print("|"  + rw1[19] +   "|" + d3[5] + "|" + e3[5] + "|" + f3[5] + "|" + g3[5] + "|")
-            print("+--------------------------------------------------------------------------+")
-        print("|"  +  rw1[6] +  "|" + y3[6] + "|" + z3[6] + "|" + a3[6] +  "|" +  b3[6] + "|" )
-        if x == 4 and ly1[6] and lz1[6] and la1[6] and lb1[6] != 0:
-            print("|"  +  rw1[13] +  "|" + ly3[6] + "|" + lz3[6] + "|" + la3[6] +  "|" +  lb3[6] + "|")    
-        print("|"  + rw1[20] +   "|" + d3[6] + "|" + e3[6] + "|" + f3[6] + "|" + g3[6] + "|")
-        print("+--------------------------------------------------------------------------+")
-        print("|"  +  rw1[21] +  "|" + y3[7] + "|" + z3[7] + "|" + a3[7] +  "|" +  b3[7] + "|" )
-        print("|"  + rw1[22] +   "|" + d3[7] + "|" + e3[7] + "|" + f3[7] + "|" + g3[7] + "|")
-        print("+--------------------------------------------------------------------------+") #border
-        print(linebreak)
+        print(border_line_double[0])
+        if current_quarter >= 2 and "0.00M" not in region_units[0][4]:
+            print("|"  +  row_1[4] +  "|" + region_units[0][4] + "|" + region_units[1][4] + "|" + region_units[2][4] +  "|" +  region_units[3][4] + "|" )
+        if current_quarter >= 2 and "+0.00%" not in (region_yoy[0][4] and region_yoy[1][4] and region_yoy[2][4] and region_yoy[3][4]):
+            print("|"  +  row_1[11] +  "|" + region_yoy[0][4] + "|" + region_yoy[1][4] + "|" + region_yoy[2][4] +  "|" +  region_yoy[3][4] + "|")
+        if current_quarter >= 2 and "0.00M" not in region_units[0][4]:    
+            print("|"  + row_1[18] +   "|" + region_ww[0][4] + "|" + region_ww[1][4] + "|" + region_ww[2][4] + "|" + region_ww[3][4] + "|")
+            print(border_line[0])
+        if current_quarter >= 3 and "0.00M" not in region_units[0][5]:
+            print("|"  +  row_1[5] +  "|" + region_units[0][5] + "|" + region_units[1][5] + "|" + region_units[2][5] +  "|" +  region_units[3][5] + "|" )
+        if current_quarter >= 3 and "+0.00%" not in (region_yoy[0][5] and region_yoy[1][5] and region_yoy[2][5] and region_yoy[3][5]):
+            print("|"  +  row_1[12] +  "|" + region_yoy[0][5] + "|" + region_yoy[1][5] + "|" + region_yoy[2][5] +  "|" +  region_yoy[3][5] + "|")
+        if current_quarter >= 3 and "0.00M" not in region_units[0][5]:
+            print("|"  + row_1[19] +   "|" + region_ww[0][5] + "|" + region_ww[1][5] + "|" + region_ww[2][5] + "|" + region_ww[3][5] + "|")
+            print(border_line[0])
+        print("|"  +  row_1[6] +  "|" + region_units[0][6] + "|" + region_units[1][6] + "|" + region_units[2][6] +  "|" +  region_units[3][6] + "|" ) # fy cumulative
+        if current_quarter == 4 and "+0.00%" not in (region_yoy[0][6] and region_yoy[1][6] and region_yoy[2][6] and region_yoy[3][6]):
+            print("|"  +  row_1[13] +  "|" + region_yoy[0][6] + "|" + region_yoy[1][6] + "|" + region_yoy[2][6] +  "|" +  region_yoy[3][6] + "|")    
+        print("|"  + row_1[20] +   "|" + region_ww[0][6] + "|" + region_ww[1][6] + "|" + region_ww[2][6] + "|" + region_ww[3][6] + "|")
+        print(border_line[0])
+        print("|"  +  row_1[21] +  "|" + region_units[0][7] + "|" + region_units[1][7] + "|" + region_units[2][7] +  "|" +  region_units[3][7] + "|" ) # ltd
+        print("|"  + row_1[22] +   "|" + region_ww[0][7] + "|" + region_ww[1][7] + "|" + region_ww[2][7] + "|" + region_ww[3][7] + "|")
+        print(border_line[0])
+        print(line_break_1)
 
     return
 
-c_print(nswog_jp1, nswog_ta1, nswog_eu1, nswog_other1, nswog_ww1, nsw_ogjply1, nsw_ogtaly1, nsw_ogeuly1, nsw_ogotherly1)
-c_print(nswl_jp1, nswl_ta1, nswl_eu1, nswl_other1, nswl_ww1, nsw_litejply1, nsw_litetaly1, nsw_liteeuly1, nsw_liteotherly1)
-c_print(nswoled_jp1, nswoled_ta1, nswoled_eu1, nswoled_other1, nswoled_ww1, nsw_oledjply1, nsw_oledtaly1, nsw_oledeuly1, nsw_oledotherly1)
-c_print(nswhw_jp1, nswhw_ta1, nswhw_eu1, nswhw_other1, nswhw_ww1, nsw_hwjply1, nsw_hwtaly1, nsw_hweuly1, nsw_hwotherly1)
-c_print(nswsw_jp1, nswsw_ta1, nswsw_eu1, nswsw_other1, nswsw_ww1, nsw_swjply1, nsw_swtaly1, nsw_sweuly1, nsw_swotherly1)
+def to_print_mobile (region_units, region_yoy, region_ww, number):
+
+    print(border_line[1])
+    print("|" + platform_headers[0] + "|" + header_1[0] + "|" + header_1[1] +"|" + header_1[2] + "|" + header_1[3] + "|")
+    print("|" + platform_headers_2[number] + "|" + header_2[0] + "|" + header_2[1] +"|" + header_2[2] + "|" + header_2[3] + "|")
+    if "0.00M" not in region_units[0][0] and region_units[0][1] and region_units[0][2] and region_units[0][3]:
+        print(border_line[1])
+        print("|" + header_1[4] + "|" + " "*35 + "|")
+    for i in range(current_quarter):
+        if "0.00M" not in region_units[0][i]:
+            print(border_line[1])
+            print("|"  +  row_1[i] + row_2[0] +  "|" + region_units[0][i] + "|" + region_units[1][i] + "|" + region_units[2][i] +  "|" +  region_units[3][i] + "|" )
+        if "+0.00%" not in (region_yoy[0][i] and region_yoy[1][i] and region_yoy[2][i] and region_yoy[3][i]):
+            print("|"  +  row_1[i] + row_2[1] + "|" + region_yoy[0][i] + "|" + region_yoy[1][i] + "|" + region_yoy[2][i] +  "|" +  region_yoy[3][i] + "|")
+        if "0.00M" not in region_units[0][i]:
+            print("|"  + row_1[i] + row_2[2] +  "|" + region_ww[0][i] + "|" + region_ww[1][i] + "|" + region_ww[2][i] + "|" + region_ww[3][i] + "|")
+    else: 
+        print(border_line_double[1])
+        if current_quarter >= 2 and "0.00M" not in region_units[0][4]:
+            print("|" + header_1[5] + " "*34 + "|") # first half
+            print(border_line[1])
+            print("|"  +  row_3[0] +  "|" + region_units[0][4] + "|" + region_units[1][4] + "|" + region_units[2][4] +  "|" +  region_units[3][4] + "|" )
+        if current_quarter >= 2 and "+0.00%" not in (region_yoy[0][4] and region_yoy[1][4] and region_yoy[2][4] and region_yoy[3][4]):
+            print("|"  +  row_3[1] +  "|" + region_yoy[0][4] + "|" + region_yoy[1][4] + "|" + region_yoy[2][4] +  "|" +  region_yoy[3][4] + "|")
+        if current_quarter >= 2 and "0.00M" not in region_units[0][4]:    
+            print("|"  + row_3[2] +   "|" + region_ww[0][4] + "|" + region_ww[1][4] + "|" + region_ww[2][4] + "|" + region_ww[3][4] + "|")
+            print(border_line[1])
+        if current_quarter >= 3 and "0.00M" not in region_units[0][5]:
+            print("|" + header_1[6] + " "*24 + "|") # first three quarters
+            print(border_line[1])
+            print("|"  +  row_3[0] +  "|" + region_units[0][5] + "|" + region_units[1][5] + "|" + region_units[2][5] +  "|" +  region_units[3][5] + "|" )
+        if current_quarter >= 3 and "+0.00%" not in (region_yoy[0][5] and region_yoy[1][5] and region_yoy[2][5] and region_yoy[3][5]):
+            print("|"  +  row_3[1] +  "|" + region_yoy[0][5] + "|" + region_yoy[1][5] + "|" + region_yoy[2][5] +  "|" +  region_yoy[3][5] + "|")
+        if current_quarter >= 3 and "0.00M" not in region_units[0][5]:
+            print("|"  + row_3[2] +   "|" + region_ww[0][5] + "|" + region_ww[1][5] + "|" + region_ww[2][5] + "|" + region_ww[3][5] + "|")
+            print(border_line[1])
+        print("|" + header_1[7] + " "*27 + "|") # fy cumulative
+        print(border_line[1])
+        print("|"  +  row_3[0] +  "|" + region_units[0][6] + "|" + region_units[1][6] + "|" + region_units[2][6] +  "|" +  region_units[3][6] + "|" ) 
+        if current_quarter == 4 and "+0.00%" not in (region_yoy[0][6] and region_yoy[1][6] and region_yoy[2][6] and region_yoy[3][6]):
+            print("|"  +  row_3[1] +  "|" + region_yoy[0][6] + "|" + region_yoy[1][6] + "|" + region_yoy[2][6] +  "|" +  region_yoy[3][6] + "|")    
+        print("|"  + row_3[2] +   "|" + region_ww[0][6] + "|" + region_ww[1][6] + "|" + region_ww[2][6] + "|" + region_ww[3][6] + "|")
+        print(border_line[1])
+        print("|" + header_1[8] + " "*32 + "|") # ltd
+        print(border_line[1])
+        print("|"  +  row_3[0] +  "|" + region_units[0][7] + "|" + region_units[1][7] + "|" + region_units[2][7] +  "|" +  region_units[3][7] + "|" ) 
+        print("|"  + row_3[2] +   "|" + region_ww[0][7] + "|" + region_ww[1][7] + "|" + region_ww[2][7] + "|" + region_ww[3][7] + "|")
+        print(border_line[1])
+        print(line_break_1)
+
+    return
+
+for_loop_list_a = [nintendo_switch_original_model_japan_1, nintendo_switch_original_model_japan_last_fy, nintendo_switch_original_model_the_americas_1, nintendo_switch_original_model_the_americas_last_fy, nintendo_switch_original_model_europe_1, nintendo_switch_original_model_europe_last_fy, nintendo_switch_original_model_other_1, nintendo_switch_original_model_other_last_fy, nintendo_switch_original_model_worldwide_1]
+
+return_a1, return_a2, return_a3 = [], [], []
+
+for_loop_list_b = [nintendo_switch_lite_japan_1, nintendo_switch_lite_japan_last_fy, nintendo_switch_lite_the_americas_1, nintendo_switch_lite_the_americas_last_fy, nintendo_switch_lite_europe_1, nintendo_switch_lite_europe_last_fy, nintendo_switch_lite_other_1, nintendo_switch_lite_other_last_fy, nintendo_switch_lite_worldwide_1]
+
+return_b1, return_b2, return_b3 = [], [], []
+
+for_loop_list_c = [nintendo_switch_oled_model_japan_1, nintendo_switch_oled_model_japan_last_fy, nintendo_switch_oled_model_the_americas_1, nintendo_switch_oled_model_the_americas_last_fy, nintendo_switch_oled_model_europe_1, nintendo_switch_oled_model_europe_last_fy, nintendo_switch_oled_model_other_1, nintendo_switch_oled_model_other_last_fy, nintendo_switch_oled_model_worldwide_1]
+
+return_c1, return_c2, return_c3 = [], [], []
+
+for_loop_list_d = [nintendo_switch_hardware_japan_1, nintendo_switch_hardware_japan_last_fy, nintendo_switch_hardware_the_americas_1, nintendo_switch_hardware_the_americas_last_fy, nintendo_switch_hardware_europe_1, nintendo_switch_hardware_europe_last_fy, nintendo_switch_hardware_other_1, nintendo_switch_hardware_other_last_fy, nintendo_switch_hardware_worldwide_1]
+
+return_d1, return_d2, return_d3 = [], [], []
+
+for_loop_list_e = [nintendo_switch_software_japan_1, nintendo_switch_software_japan_last_fy, nintendo_switch_software_the_americas_1, nintendo_switch_software_the_americas_last_fy, nintendo_switch_software_europe_1, nintendo_switch_software_europe_last_fy, nintendo_switch_software_other_1, nintendo_switch_software_other_last_fy, nintendo_switch_software_worldwide_1]
+
+return_e1, return_e2, return_e3 = [], [], []
+
+for j in range (0, 8, 2):
+    quarterly_calculation(for_loop_list_a[j],for_loop_list_a[j+1],for_loop_list_a[8], j)
+    quarterly_calculation(for_loop_list_b[j],for_loop_list_b[j+1],for_loop_list_b[8], j)
+    quarterly_calculation(for_loop_list_c[j],for_loop_list_c[j+1],for_loop_list_c[8], j)
+    quarterly_calculation(for_loop_list_d[j],for_loop_list_d[j+1],for_loop_list_d[8], j)
+    quarterly_calculation(for_loop_list_e[j],for_loop_list_e[j+1],for_loop_list_e[8], j)
+
+if mobile_output == 0:
+    to_print_original(return_a1, return_a2, return_a3, 0) # original switch model
+    to_print_original(return_b1, return_b2, return_b3, 1) # switch lite
+    to_print_original(return_c1, return_c2, return_c3, 2) # switch oled
+    to_print_original(return_d1, return_d2, return_d3, 3) # hardware
+    to_print_original(return_e1, return_e2, return_e3, 4) # software
+else:
+    to_print_mobile(return_a1, return_a2, return_a3, 0) # original switch model
+    to_print_mobile(return_b1, return_b2, return_b3, 1) # switch lite
+    to_print_mobile(return_c1, return_c2, return_c3, 2) # switch oled
+    to_print_mobile(return_d1, return_d2, return_d3, 3) # hardware
+    to_print_mobile(return_e1, return_e2, return_e3, 4) # software
+
+# def c_print (y, z, a, b, delta, ly, lz, la, lb): # y: use japan, z: use the americas, a: use europe, b: use other, delta: use worldwide, ly: last fy japan, lz; last fy the americas, la: last fy europe, lb: last fy other
+
+#     y1, z1, a1, b1, delta1 = [y[0], y[1] - y[0], y[2] - y[1], y[3] - y[2]], [z[0], z[1] - z[0], z[2] - z[1], z[3] - z[2]], [a[0], a[1] - a[0], a[2] - a[1], a[3] - a[2]], [b[0], b[1] - b[0], b[2] - b[1], b[3] - b[2]], [delta[0], delta[1] - delta[0], delta[2] - delta[1], delta[3] - delta[2]] #quarterly calculation
+
+#     y1.append(y1[0] + y1[1]), y1.append(y1[0] + y1[1] + y1[2]), y1.append(y1[0] + y1[1] + y1[2] + y1[3]), y1.append(y1[0] + y1[1] + y1[2] + y1[3] + y[4]) # adds [4] first half, [5] first three quarters, [6] fy cumulative, [7] LTD 
+#     z1.append(z1[0] + z1[1]), z1.append(z1[0] + z1[1] + z1[2]), z1.append(z1[0] + z1[1] + z1[2] + z1[3]), z1.append(z1[0] + z1[1] + z1[2] + z1[3] + z[4]) # adds [4] first half, [5] first three quarters, [6] fy cumulative, [7] LTD
+#     a1.append(a1[0] + a1[1]), a1.append(a1[0] + a1[1] + a1[2]), a1.append(a1[0] + a1[1] + a1[2] + a1[3]), a1.append(a1[0] + a1[1] + a1[2] + a1[3] + a[4]) # adds [4] first half, [5] first three quarters, [6] fy cumulative, [7] LTD 
+#     b1.append(b1[0] + b1[1]), b1.append(b1[0] + b1[1] + b1[2]), b1.append(b1[0] + b1[1] + b1[2] + b1[3]), b1.append(b1[0] + b1[1] + b1[2] + b1[3] + b[4]) # adds [4] first half, [5] first three quarters, [6] fy cumulative, [7] LTD 
+#     delta1.append(delta1[0] + delta1[1]), delta1.append(delta1[0] + delta1[1] + delta1[2]), delta1.append(delta1[0] + delta1[1] + delta1[2] + delta1[3]), delta1.append(delta1[0] + delta1[1] + delta1[2] + delta1[3] + delta[4]) # adds [4] first half, [5] first three quarters, [6] fy cumulative, [7] LTD 
+
+#     y2, z2, a2, b2 = ['{:.2f}M '.format(elem) for elem in y1], ['{:.2f}M '.format(elem) for elem in z1], ['{:.2f}M '.format(elem) for elem in a1], ['{:.2f}M '.format(elem) for elem in b1] # format
+
+#     y3, z3, a3, b3 = ['{0: >10}'.format(elem) for elem in y2], ['{0: >12}'.format(elem) for elem in z2], ['{0: >11}'.format(elem) for elem in a2], ['{0: >11}'.format(elem) for elem in b2] # format width
+
+#     ly1, lz1, la1, lb1 = [], [], [], [] # empty arrays for calculating YoY percentages, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fy cumulative
+
+#     for i in range (4): #for dealing with divide by zeros
+#             if range (i) == range (0):
+#                 for i in range (4):
+#                     if ly[i] != 0: 
+#                         ly1.append(((y1[i] / ly[i]) - 1) * 100)
+#                     else: ly1.append(0)
+#                 if ly[0] + ly[1] != 0:
+#                             ly1.append((((y1[0] + y1[1]) / (ly[0] + ly[1])) - 1) * 100)
+#                 else: ly1.append(0)
+#                 if ly[0] + ly[1] + ly[2] != 0:
+#                             ly1.append((((y1[0] + y1[1] + y1[2]) / (ly[0] + ly[1] + ly[2])) - 1) * 100)
+#                 else: ly1.append(0)
+#                 if ly[4] != 0:
+#                             ly1.append(((y1[6] / ly[4]) - 1) * 100)
+#                 else: ly1.append(0)
+#             elif range (i) == range (1):
+#                 for i in range (4):
+#                     if lz[i] != 0: 
+#                         lz1.append(((z1[i] / lz[i]) - 1) * 100)
+#                     else: lz1.append(0)
+#                 if lz[0] + lz[1] != 0:
+#                             lz1.append((((z1[0] + z1[1]) / (lz[0] + lz[1])) - 1) * 100)
+#                 else: lz1.append(0)
+#                 if lz[0] + lz[1] + lz[2] != 0:
+#                             lz1.append((((z1[0] + z1[1] + z1[2]) / (lz[0] + lz[1] + lz[2])) - 1) * 100)
+#                 else: lz1.append(0)
+#                 if lz[4] != 0:
+#                             lz1.append(((z1[6] / lz[4]) - 1) * 100)
+#                 else: lz1.append(0)
+#             elif range (i) == range (2):
+#                 for i in range (4):
+#                     if la[i] != 0: 
+#                         la1.append(((a1[i] / la[i]) - 1) * 100)
+#                     else: la1.append(0)
+#                 if la[0] + la[1] != 0:
+#                             la1.append((((a1[0] + a1[1]) / (la[0] + la[1])) - 1) * 100)
+#                 else: la1.append(0)
+#                 if la[0] + la[1] + la[2] != 0:
+#                             la1.append((((a1[0] + a1[1] + a1[2]) / (la[0] + la[1] + la[2])) - 1) * 100)
+#                 else: la1.append(0)
+#                 if la[4] != 0:
+#                             la1.append(((a1[6] / la[4]) - 1) * 100)
+#                 else: la1.append(0)
+#             elif range (i) == range (3):
+#                 for i in range (4):
+#                     if lb[i] != 0: 
+#                         lb1.append(((b1[i] / lb[i]) - 1) * 100)
+#                     else: lb1.append(0)
+#                 if lb[0] + lb[1] != 0:
+#                             lb1.append((((b1[0] + b1[1]) / (lb[0] + lb[1])) - 1) * 100)
+#                 else: lb1.append(0)
+#                 if lb[0] + lb[1] + lb[2] != 0:
+#                             lb1.append((((b1[0] + b1[1] + b1[2]) / (lb[0] + lb[1] + lb[2])) - 1) * 100)
+#                 else: lb1.append(0)
+#                 if lb[4] != 0:
+#                             lb1.append(((b1[6] / lb[4]) - 1) * 100)
+#                 else: lb1.append(0)
+
+#     ly2, lz2, la2, lb2 = ['{:+.2f}% '.format(elem) for elem in ly1], ['{:+.2f}% '.format(elem) for elem in lz1], ['{:+.2f}% '.format(elem) for elem in la1], ['{:+.2f}% '.format(elem) for elem in lb1] # format YoY percentages
+
+#     ly3, lz3, la3, lb3 = ['{0: >10}'.format(elem) for elem in ly2], ['{0: >12}'.format(elem) for elem in lz2], ['{0: >11}'.format(elem) for elem in la2], ['{0: >11}'.format(elem) for elem in lb2] # format width for YoY percentages
+
+#     d1, e1, f1, g1 = [], [], [], [] # empty arrays for regional percentages, they will become: [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fy cumulative, [7] LTD
+
+#     for i in range (4): #for dealing with divide by zeros
+#             if range (i) == range (0):
+#                 for i in range (8):
+#                     if delta1[i] != 0:
+#                         d1.append((y1[i] / delta1[i]) * 100)
+#                     else:  d1.append(0)
+#             elif range (i) == range (1):
+#                 for i in range (8):
+#                     if delta1[i] != 0:
+#                         e1.append((z1[i] / delta1[i]) * 100)
+#                     else:  e1.append(0)
+#             elif range (i) == range (2):
+#                 for i in range (8):
+#                     if delta1[i] != 0:
+#                         f1.append((a1[i] / delta1[i]) * 100)
+#                     else:  f1.append(0)
+#             elif range (i) == range (3):
+#                 for i in range (8):
+#                     if delta1[i] != 0:
+#                         g1.append((b1[i] / delta1[i]) * 100)
+#                     else:  g1.append(0)
+
+#     d2, e2, f2, g2 = ['{:.2f}% '.format(elem) for elem in d1], ['{:.2f}% '.format(elem) for elem in e1], ['{:.2f}% '.format(elem) for elem in f1], ['{:.2f}% '.format(elem) for elem in g1] # format percentages of regional percentages
+
+#     d3, e3, f3, g3 = ['{0: >10}'.format(elem) for elem in d2], ['{0: >12}'.format(elem) for elem in e2], ['{0: >11}'.format(elem) for elem in f2], ['{0: >11}'.format(elem) for elem in g2] # format width of regional percentages
+
+#     print("+--------------------------------------------------------------------------+")
+#     print("|" + delta[5] + "|" + header_1[0] + "|" + header_1[1] +"|" + header_1[2] + "|" + header_1[3] + "|")
+#     # print("+--------------------------------------------------------------------------+")
+#     for i in range(current_quarter):
+#         if delta1[i] != 0:
+#             print("+--------------------------------------------------------------------------+")
+#             print("|"  +  row_1[i] +  "|" + y3[i] + "|" + z3[i] + "|" + a3[i] +  "|" +  b3[i] + "|" )
+#         if delta1[i] != 0 and ly1[i] and lz1[i] and la1[i] and lb1[i] != 0:
+#             print("|"  +  row_1[i+7] +  "|" + ly3[i] + "|" + lz3[i] + "|" + la3[i] +  "|" +  lb3[i] + "|")
+#         if delta1[i] != 0:
+#             print("|"  + row_1[i+14] +   "|" + d3[i] + "|" + e3[i] + "|" + f3[i] + "|" + g3[i] + "|")
+#     else: 
+#         print("+==========================================================================+") #border
+#         if current_quarter >= 2 and delta1[4] != 0:
+#             print("|"  +  row_1[4] +  "|" + y3[4] + "|" + z3[4] + "|" + a3[4] +  "|" +  b3[4] + "|" )
+#         if current_quarter >= 2 and delta1[4] != 0 and ly1[4] and lz1[4] and la1[4] and lb1[4] != 0:
+#             print("|"  +  row_1[11] +  "|" + ly3[4] + "|" + lz3[4] + "|" + la3[4] +  "|" +  lb3[4] + "|")
+#         if current_quarter >= 2 and delta1[4] != 0:    
+#             print("|"  + row_1[18] +   "|" + d3[4] + "|" + e3[4] + "|" + f3[4] + "|" + g3[4] + "|")
+#             print("+--------------------------------------------------------------------------+")
+#         if current_quarter >= 3 and delta1[5] != 0:
+#             print("|"  +  row_1[5] +  "|" + y3[5] + "|" + z3[5] + "|" + a3[5] +  "|" +  b3[5] + "|" )
+#         if current_quarter >= 3 and delta1[5] != 0 and ly1[5] and lz1[5] and la1[5] and lb1[5] != 0:
+#             print("|"  +  row_1[12] +  "|" + ly3[5] + "|" + lz3[5] + "|" + la3[5] +  "|" +  lb3[5] + "|")
+#         if current_quarter >= 3 and delta1[5] != 0:    
+#             print("|"  + row_1[19] +   "|" + d3[5] + "|" + e3[5] + "|" + f3[5] + "|" + g3[5] + "|")
+#             print("+--------------------------------------------------------------------------+")
+#         print("|"  +  row_1[6] +  "|" + y3[6] + "|" + z3[6] + "|" + a3[6] +  "|" +  b3[6] + "|" )
+#         if current_quarter == 4 and ly1[6] and lz1[6] and la1[6] and lb1[6] != 0:
+#             print("|"  +  row_1[13] +  "|" + ly3[6] + "|" + lz3[6] + "|" + la3[6] +  "|" +  lb3[6] + "|")    
+#         print("|"  + row_1[20] +   "|" + d3[6] + "|" + e3[6] + "|" + f3[6] + "|" + g3[6] + "|")
+#         print("+--------------------------------------------------------------------------+")
+#         print("|"  +  row_1[21] +  "|" + y3[7] + "|" + z3[7] + "|" + a3[7] +  "|" +  b3[7] + "|" )
+#         print("|"  + row_1[22] +   "|" + d3[7] + "|" + e3[7] + "|" + f3[7] + "|" + g3[7] + "|")
+#         print("+--------------------------------------------------------------------------+") #border
+#         print(line_break_1)
+
+#     return
+
+# c_print(nintendo_switch_original_model_japan_1, nintendo_switch_original_model_the_americas_1, nintendo_switch_original_model_europe_1, nintendo_switch_original_model_other_1, nintendo_switch_original_model_worldwide_1, nintendo_switch_original_model_japan_last_fy, nintendo_switch_original_model_the_americas_last_fy, nintendo_switch_original_model_europe_last_fy, nintendo_switch_original_model_other_last_fy)
+# c_print(nintendo_switch_lite_japan_1, nintendo_switch_lite_the_americas_1, nintendo_switch_lite_europe_1, nintendo_switch_lite_other_1, nintendo_switch_lite_worldwide_1, nintendo_switch_lite_japan_last_fy, nintendo_switch_lite_the_americas_last_fy, nintendo_switch_lite_europe_last_fy, nintendo_switch_lite_other_last_fy)
+# c_print(nintendo_switch_oled_model_japan_1, nintendo_switch_oled_model_the_americas_1, nintendo_switch_oled_model_europe_1, nintendo_switch_oled_model_other_1, nintendo_switch_oled_model_worldwide_1, nintendo_switch_oled_model_japan_last_fy, nintendo_switch_oled_model_the_americas_last_fy, nintendo_switch_oled_model_europe_last_fy, nintendo_switch_oled_model_other_last_fy)
+# c_print(nintendo_switch_hardware_japan_1, nintendo_switch_hardware_the_americas_1, nintendo_switch_hardware_europe_1, nintendo_switch_hardware_other_1, nintendo_switch_hardware_worldwide_1, nintendo_switch_hardware_last_fy, nintendo_switch_hardware_the_americas_last_fy, nintendo_switch_hardware_europe_last_fy, nintendo_switch_hardware_other_last_fy)
+# c_print(nintendo_switch_software_japan_1, nintendo_switch_software_the_americas_1, nintendo_switch_software_europe_1, nintendo_switch_software_other_1, nintendo_switch_software_worldwide_1, nintendo_switch_software_japan_last_fy, nintendo_switch_software_the_americas_last_fy, nintendo_switch_software_europe_last_fy, nintendo_switch_software_other_last_fy)
 
 # Old code++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # #Worldwide - Switch OG
