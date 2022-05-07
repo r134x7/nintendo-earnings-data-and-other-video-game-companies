@@ -200,6 +200,15 @@ def quarterly_calculation (y):
         line_join_platforms = line_join_platforms.join(first_line_platforms) + " "*(31-len(line_join_platforms.join(first_line_platforms))) + "|" + "\n" + "| " + line_join_platforms.join(second_line_platforms) + " "*(31-len(line_join_platforms.join(second_line_platforms)))
     else: line_join_platforms = line_join_platforms.join(first_line_platforms) + " "*(31-sum(first_line_platforms_check))
 
+    if y1[4] != 0 and current_quarter == 4:
+        if "New!" == a1[0]:
+            new.append(y1[4])
+        elif "+Infinity%" == a1[0]:
+            inf.append(y1[4])
+        else: old.append(y1[4])
+
+    # legometer(y1, a1)
+
     return format_to_string (y1, z1, line_join_title, line_join_platforms, a1)
 
 def format_to_string (y1, z1, line_join_title, line_join_platforms, a1):
@@ -272,17 +281,21 @@ def to_print_fy (y1, z1, y3, line_join_title, line_join_platforms, a3):
 
     return
 
-print("+--------------------------------+")
+print(border_line)
 print("|" + header_names1[0] + "|")
-print("+--------------------------------+")
+print(border_line)
 print("|" + header_names1[1] + "|")
-print("+--------------------------------+")
+print(border_line)
 print("|" + header_names1[3] + "|")
-print("+--------------------------------+")
+print(border_line)
 print("|" + header_names1[2] + "|")
-print("+--------------------------------+")
+print(border_line)
 print("|" + header_names1[4] + "|")
-print("+--------------------------------+")
+print(border_line)
+
+new = []
+old = []
+inf = []
 
 for i in range (len(for_loop_list_2)):
     quarterly_calculation(for_loop_list_2[i])
@@ -293,6 +306,66 @@ print(misc_3)
 print(misc_4)
 print(misc_5)
 print(misc_6)
+print(line_break_1)
+
+if current_quarter == 4:
+
+    fy_title_length = [len(new), len(old), len(inf)]
+    fy_title_length.append(sum(fy_title_length[:]))
+
+    fy_title_length_percentages = [(fy_title_length[0]/fy_title_length[3]) * 100, (fy_title_length[1]/fy_title_length[3]) * 100, (fy_title_length[2]/fy_title_length[3]) * 100]
+
+    fy_title_unit = [sum(new), sum(old), sum(inf)]
+    fy_title_unit.append(sum(fy_title_unit[:]))
+
+    fy_title_unit_percentages = [(fy_title_unit[0] / fy_title_unit[3]) * 100, (fy_title_unit[1] / fy_title_unit[3]) * 100, (fy_title_unit[2] / fy_title_unit[3]) * 100]
+
+    fy_title_length_1 = ['{0:>7} '.format(elem) for elem in fy_title_length]
+
+    fy_title_unit_1 = ['{:.2f}M '.format(elem) for elem in fy_title_unit]
+    fy_title_unit_2 = ['{0:>9}'.format(elem) for elem in fy_title_unit_1]
+
+    fy_title_length_percentages_1 = ['{:.2f}% '.format(elem) for elem in fy_title_length_percentages]
+    fy_title_unit_percentages_1 = ['{:.2f}% '.format(elem) for elem in fy_title_unit_percentages]
+
+    fy_title_length_percentages_2, fy_title_unit_percentages_2 = ['{0:>8}'.format(elem) for elem in fy_title_length_percentages_1], ['{0:>9}'.format(elem) for elem in fy_title_unit_percentages_1]
+
+    print(border_line)
+    print("|" + header_names1[0] + "|")
+    print(border_line)
+    print("| FY3/22 Cml. | Titles |   Units |")
+    print(border_line)
+    print("| New!        |" + fy_title_length_1[0] + "|" + fy_title_unit_2[0] + "|")
+    print("| Recurring   |" + fy_title_length_1[1] + "|" + fy_title_unit_2[1] + "|")
+    print("| Sporadic    |" + fy_title_length_1[2] + "|" + fy_title_unit_2[2] + "|")
+    print(border_line)
+    print("| Percentages | Titles |   Units |")
+    print(border_line)
+    print("| New!        |" + fy_title_length_percentages_2[0] + "|" + fy_title_unit_percentages_2[0] + "|")
+    print("| Recurring   |" + fy_title_length_percentages_2[1] + "|" + fy_title_unit_percentages_2[1] + "|")
+    print("| Sporadic    |" + fy_title_length_percentages_2[2] + "|" + fy_title_unit_percentages_2[2] + "|")
+    print(border_line)
+
+# new_length = len(new)
+# old_length = len(old)
+# inf_length = len(inf)
+# total_length = new_length + old_length + inf_length
+# title_percentages = [(new_length / total_length) * 100, (old_length / total_length) * 100, (inf_length / total_length) * 100]
+
+# new_sum = sum(new)
+# old_sum = sum(old)
+# inf_sum = sum(inf)
+# total_sum = new_sum + old_sum + inf_sum
+# unit_percentages = [(new_sum / total_sum) * 100, (old_sum / total_sum) * 100, (inf_sum / total_sum) * 100]
+
+# new_length, old_length, inf_length = '{0:>7} '.format(new_length), '{0:>7} '.format(old_length), '{0:>7} '.format(inf_length)
+
+# new_sum_1, old_sum_1, inf_sum_1 = '{:.2f}M '.format(new_sum), '{:.2f}M '.format(old_sum), '{:.2f}M '.format(inf_sum)
+# new_sum_1, old_sum_1, inf_sum_1 = '{0:>9}'.format(new_sum_1), '{0:>9}'.format(old_sum_1), '{0:>9}'.format(inf_sum_1)
+
+# title_percentages_1 = ['{:.2f}% '.format(elem) for elem in title_percentages]
+# unit_percentages_1 = ['{:.2f}% '.format(elem) for elem in unit_percentages]
+# title_percentages_1, unit_percentages_1 = ['{0:>8}'.format(elem) for elem in title_percentages_1], ['{0:>9}'.format(elem) for elem in unit_percentages_1]
 
 # def c_print (y): # y: use title1, title2, etc
 
