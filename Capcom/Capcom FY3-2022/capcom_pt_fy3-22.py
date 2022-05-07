@@ -336,6 +336,8 @@ if current_quarter == 4:
     print("| New!        |" + fy_title_length_1[0] + "|" + fy_title_unit_2[0] + "|")
     print("| Recurring   |" + fy_title_length_1[1] + "|" + fy_title_unit_2[1] + "|")
     print("| Sporadic    |" + fy_title_length_1[2] + "|" + fy_title_unit_2[2] + "|")
+    print(border_line_double)
+    print("| Total       |" + fy_title_length_1[3] + "|" + fy_title_unit_2[3] + "|")
     print(border_line)
     print("| Percentages | Titles |   Units |")
     print(border_line)
