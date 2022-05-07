@@ -207,8 +207,6 @@ def quarterly_calculation (y):
             inf.append(y1[4])
         else: old.append(y1[4])
 
-    # legometer(y1, a1)
-
     return format_to_string (y1, z1, line_join_title, line_join_platforms, a1)
 
 def format_to_string (y1, z1, line_join_title, line_join_platforms, a1):
