@@ -513,6 +513,7 @@ if current_quarter == 4:
     to_sum(overseas_new, overseas_old, overseas_inf, " Overseas"+" "*23)
     to_sum(global_fy_new, global_fy_old, global_fy_inf, " Global FY"+" "*22)
     to_sum(global_ltd_new, global_ltd_old, global_ltd_inf, " Global LTD"+" "*21)
+    print(line_break_1)
 
 # def c_print (y, z, a, b): # y: use a1_jp1, a2_jp1, etc, z: use a1_os1, a2_os1, etc, a: use a1_wwfy1, a2_wwfy1, etc, b: use a1_wwltd1, a2_wwltd, etc
 #     # variables created inside a function are local and cannot be used outside a function
