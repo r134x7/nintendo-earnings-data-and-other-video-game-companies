@@ -2,37 +2,40 @@ header_1 = [ " Switch (units)    ", "  Switch  ", "Switch Lite", "Switch OLED", 
 row_1 = [ " 1st Quarter       ", " 2nd Quarter       " ,  " 3rd Quarter       ",   " 4th Quarter       ", " First Half        ", " First 3 Quarters  ", " FY3/22 Cumulative ", " 1st Quarter YoY%  ", " 2nd Quarter YoY%  ", " 3rd Quarter YoY%  ", " 4th Quarter YoY%  ", " First Half YoY%   ", " First 3 Qtrs YoY% ", " FY3/22 Cml. YoY%  ", " Life-To-Date      ", " FY3/22 Forecast   ", " 1st FCST Revision ", " 2nd FCST Revision ", " 3rd FCST Revision ", " FY3/23 Forecast   ", ] # row names, array length 20
 line_break_1 = "###" # line break
 
-border_line = ["+" + "-"*84 + "+", "+" + "-"*33 + "+", "+" + "-"*34 + "+"]
-border_line_double = ["+" + "-"*84 + "+", "+" + "-"*33 + "+", "+" + "="*34 + "+"]
+border_line = ["+" + "-"*84 + "+", "+" + "-"*33 + "+", "+" + "-"*23 + "+", "+" + "-"*30 + "+", "+" + "-"*27 + "+", "+" + "-"*35 + "+"]
+border_line_double = ["+" + "-"*84 + "+", "+" + "="*33 + "+", "+" + "="*23 + "+", "+" + "="*30 + "+", "+" + "="*35 + "+"]
 
-current_quarter = 3 # Set to 1, 2, 3 or 4.
+# border_line = ["+" + "-"*78 + "+", "+" + "-"*38 + "+", "+" + "-"*32 + "+", "+" + "-"*23 + "+", "+" + "-"*27 + "+"]
+# border_line_double = ["+" + "-"*78 + "+", "+" + "="*38 + "+", "+" + "="*32 + "+", "+" + "="*23 + "+"]
+
+current_quarter = 4 # Set to 1, 2, 3 or 4.
 mobile_output = 1 # 1 = on, 0 = off
 
 if mobile_output != 0:
-    header_1 = [ " Switch (units)    ", 0, " Switch" + " "*12, 0, " Switch Lite" + " "*7, 0, " Switch OLED" + " "*7, 0, " Hardware Total" + " "*4, 0, " Software Total" + " "*4, 0, " Mobile, IP related income, etc.  ", 0, " "*5 + " (units) "]
-    row_1 = [" 1st Quarter       ", " 2nd Quarter       ",  " 3rd Quarter       ",  " 4th Quarter       ", " 1st Quarter YoY%  ", " 2nd Quarter YoY%  ", " 3rd Quarter YoY%  ", " 4th Quarter YoY%  ", " First Half        ", " First 3 Quarters  ", " FY3/22 Cumulative ", " First Half YoY%   ", " First 3 Qtrs YoY% ", " FY3/22 Cml. YoY%  ", " FY3/22 Forecast   ", " 1st FCST Revision ", " 2nd FCST Revision ", " 3rd FCST Revision ", " FY3/23 Forecast   ", " LTD               "   ] # row names, array length = 20
+    header_1 = [ " Switch (units)    ", 0, " Switch " + " "*5, 0, " Switch Lite ", 0, " Switch OLED ", 0, " Hardware    ", 0, " Software    ", 0, " Mobile, IP related income, etc.  ", 0, " "*2 + " Units ", "    YoY% ", " Total       ", ]
+    row_1 = [" 1st Quarter ", " 2nd Quarter ",  " 3rd Quarter ",  " 4th Quarter ", " 1st Quarter YoY%  ", " 2nd Quarter YoY%  ", " 3rd Quarter YoY%  ", " 4th Quarter YoY%  ", " First Half  ", " 1st 3 Qtrs  ", " FY3/22 Cml. ", " First Half YoY%   ", " First 3 Qtrs YoY% ", " FY3/22 Cml. YoY%  ", " FY3/22 Forecast ", " FCST Revision 1 ", " FCST Revision 2 ", " FCST Revision 3 ", " FY3/23 Forecast ", " Life-To-Date"] # row names, array length = 20
 
-nintendo_switch_original_model_1 = [331 / 100, 645 / 100, 1179 / 100, 1179 / 100, 6989 / 100] # input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] LTD at end of last fy
+nintendo_switch_original_model_1 = [331 / 100, 645 / 100, 1179 / 100, 1356 / 100, 6989 / 100] # input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] LTD at end of last fy
 
 nintendo_switch_original_model_last_fy_1 = [3.05, 5.31, 8.41, 3.55, 20.32] # [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] last fy cumulative
 
-nintendo_switch_lite_1 = [114 / 100, 182 / 100, 317 / 100, 317 / 100, 1470 / 100] # input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] LTD at end of last fy
+nintendo_switch_lite_1 = [114 / 100, 182 / 100, 317 / 100, 370 / 100, 1470 / 100] # input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] LTD at end of last fy
 
 nintendo_switch_lite_last_fy_1 = [2.62, 1.55, 3.16, 1.18, 8.51] # [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] last fy cumulative
 
-nintendo_switch_oled_model_1 = [ 0 / 100, 0 / 100, 399 / 100, 399 / 100, 0 / 100] # input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] LTD at end of last fy
+nintendo_switch_oled_model_1 = [ 0 / 100, 0 / 100, 399 / 100, 580 / 100, 0 / 100] # input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] LTD at end of last fy
 
 nintendo_switch_oled_model_last_fy_1 = [0, 0, 0, 0, 0] # [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] last fy cumulative
 
-nintendo_switch_hardware_1 = [445 / 100, 828 / 100, 1895 / 100, 1895 / 100, 8459 / 100, 2550 / 100, 2550 / 100, 2400 / 100, 2300 / 100, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] LTD at end of last fy, [5] current fiscal year forecast, [6] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [7] 1st forecast revision, [8] 2nd forecast revision, [9] 3rd forecast revision (unlikely but there just in case)
+nintendo_switch_hardware_1 = [445 / 100, 828 / 100, 1895 / 100, 2306 / 100, 8459 / 100, 2550 / 100, 2100 / 100, 2400 / 100, 2300 / 100, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] LTD at end of last fy, [5] current fiscal year forecast, [6] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [7] 1st forecast revision, [8] 2nd forecast revision, [9] 3rd forecast revision (unlikely but there just in case)
 
 nintendo_switch_hardware_last_fy_1 = [5.68, 6.85, 11.57, 4.73, 28.83] # [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] last fy cumulative
 
-nintendo_switch_software_1 = [4529 / 100, 9389 / 100, 17929 / 100, 17929 / 100, 58712 / 100, 19000 / 100, 20000 / 100, 20000 / 100, 22000 / 100, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] LTD at end of last fy, [5] current fiscal year forecast, [6] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [7] 1st forecast revision, [8] 2nd forecast revision, [9] 3rd forecast revision (unlikely but there just in case)
+nintendo_switch_software_1 = [4529 / 100, 9389 / 100, 17929 / 100, 23507 / 100, 58712 / 100, 19000 / 100, 21000 / 100, 20000 / 100, 22000 / 100, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] LTD at end of last fy, [5] current fiscal year forecast, [6] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [7] 1st forecast revision, [8] 2nd forecast revision, [9] 3rd forecast revision (unlikely but there just in case)
 
 nintendo_switch_software_last_fy_1 = [50.43, 49.82, 75.85, 54.78, 230.88] # [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] last fy cumulative
 
-mobile_ip_etc_income_1 = [13199, 25501, 39825, 39825] # input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4,
+mobile_ip_etc_income_1 = [13199, 25501, 39825, 53342] # input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4,
 
 mobile_ip_etc_income_last_fy_1 = [13278, 13449, 15284, 15069, 57080] # [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] last fy cumulative.
 
@@ -88,7 +91,7 @@ def format_to_string_nintendo_switch_original_model (y1):
     if mobile_output == 0:
         y3 = ['{0: >10}'.format(elem) for elem in y2] #format width
     else:
-        y3 =  ['{0: >14}'.format(elem) for elem in y2] #format width
+        y3 =  ['{0: >9}'.format(elem) for elem in y2] #format width
 
     return y3
 
@@ -98,14 +101,17 @@ def format_to_string_nintendo_switch_lite_or_oled (y1):
     if mobile_output == 0:
         y3 = ['{0: >11}'.format(elem) for elem in y2] #format width
     else:
-        y3 =  ['{0: >14}'.format(elem) for elem in y2] #format width
+        y3 =  ['{0: >9}'.format(elem) for elem in y2] #format width
 
     return y3
 
 def format_to_string_nintendo_switch_hardware_or_software (y1):
 
     y2 = ['{:.2f}M '.format(elem) for elem in y1] #formats all integers to string to add ¥, M and commas
-    y3 = ['{0: >14}'.format(elem) for elem in y2] #format width
+    if mobile_output == 0:
+        y3 = ['{0: >14}'.format(elem) for elem in y2] #format width
+    else:
+        y3 = ['{0: >9}'.format(elem) for elem in y2] #format width
 
     return y3
 
@@ -115,7 +121,7 @@ def format_to_string_mobile_ip_etc (y1):
     if mobile_output == 0:
         y3 = ['{0: >13}'.format(elem) for elem in y2] #format width
     else:
-        y3 =  ['{0: >14}'.format(elem) for elem in y2] #format width
+        y3 =  ['{0: >10}'.format(elem) for elem in y2] #format width
 
     return y3
 
@@ -164,7 +170,7 @@ def format_to_string_year_on_year_nintendo_switch_original_model (z1):
     if mobile_output == 0:
         z3 = ['{0: >10}'.format(elem) for elem in z2] #format width
     else:
-        z3 = ['{0: >14}'.format(elem) for elem in z2] #format width
+        z3 = ['{0: >9}'.format(elem) for elem in z2] #format width
 
     return z3
 
@@ -174,14 +180,14 @@ def format_to_string_year_on_year_nintendo_switch_lite_or_oled (z1):
     if mobile_output == 0:
         z3 = ['{0: >11}'.format(elem) for elem in z2] #format width
     else:
-        z3 = ['{0: >14}'.format(elem) for elem in z2] #format width
+        z3 = ['{0: >9}'.format(elem) for elem in z2] #format width
 
     return z3
 
 def format_to_string_year_on_year_nintendo_switch_hardware_or_software (z1):
     
     z2 = ['{:+.2f}% '.format(elem) for elem in z1] #format all integers to string to add % and + when needed
-    z3 = ['{0: >14}'.format(elem) for elem in z2] #format width
+    z3 = ['{0: >9}'.format(elem) for elem in z2] #format width
 
     return z3
 
@@ -191,7 +197,7 @@ def format_to_string_year_on_year_mobile_ip_etc (z1):
     if mobile_output == 0:
         z3 = ['{0: >13}'.format(elem) for elem in z2] #format width
     else:
-        z3 = ['{0: >14}'.format(elem) for elem in z2] #format width
+        z3 = ['{0: >10}'.format(elem) for elem in z2] #format width
 
     return z3
 
@@ -289,41 +295,82 @@ def print_original():
     return
 
 def print_mobile():
-    # print(border_line[2])
-    # print("|" + header_1[0] + "|" + " "*18 + "|")
+
+    print(border_line[3])
+    print("| Nintendo Switch   | FY3/2022 |")
+    print(border_line[3])
+    print("| Sales Units and Forecast     |")
+    print(border_line[3])
     
     for i in range(0, 12, 2):
-        print(border_line[2])
-        if i != 10:
+        if i == 10:
+            print("+------------------------+")
+            print("| Mobile, IP related     |----------+")
+            print("| income, etc.           |    YoY%  |")
+        elif i == 6 or i == 8:
+            print("+-------------+")
+            print("|" + header_1[i+2] + "|-------------------+")
+            print("|" + header_1[16] + "|" + header_1[14] + "|" + header_1[15] + "|")
+        elif i == 4:
+            print(border_line[2])
             print("|" + header_1[i+2] + "|" + header_1[14] + "|")
         else:
-            print("|" + header_1[i+2] + "|")
+            print(border_line[1])
+            print("|" + header_1[i+2] + "|" + header_1[14] + "|" + header_1[15] + "|")
         for j in range(current_quarter): #for loop for quarters
             if nintendo_switch_oled_model_1[j] != 0 and i == 4:
                 print(border_line[2])
                 print("|"  +  row_1[j] +  "|" + for_loop_list[i][j] + "|")
             elif i != 4:
-                print(border_line[2])
-                print("|"  +  row_1[j] +  "|" + for_loop_list[i][j] + "|")
-                print("|"  +  row_1[j+4] +   "|" + for_loop_list[i+1][j] + "|")
-        print(border_line_double[2])
+                if i == 10:
+                    print(border_line[5])
+                    print("|"  +  row_1[j] +  "|" + for_loop_list[i][j] + "|" + for_loop_list[i+1][j] + "|")
+                else:
+                    print(border_line[1])
+                    print("|"  +  row_1[j] +  "|" + for_loop_list[i][j] + "|" + for_loop_list[i+1][j] + "|")
+        if i == 4:
+            print(border_line_double[2])
+        elif i == 10:
+            print(border_line_double[4])
+        else:
+            print(border_line_double[1])
         if current_quarter >= 2 and i != 4: # first half
-            print("|"  + row_1[8] +  "|" + for_loop_list[i][4] + "|")
-            if i != 4:
-                print("|"  + row_1[11] +   "|" + for_loop_list[i+1][4] + "|")
-            print(border_line[2])
+            if i == 10:
+                print("|"  + row_1[8] + "|" + for_loop_list[i][4] + "|" + for_loop_list[i+1][4] + "|")
+                print(border_line[5])
+            elif i != 4:
+                print("|"  + row_1[8] + "|" + for_loop_list[i][4] + "|" + for_loop_list[i+1][4] + "|")
+                print(border_line[1])
+            else:
+                print("|"  + row_1[8] +  "|" + for_loop_list[i][4] + "|")
+                print(border_line[2])
         if current_quarter >= 3: # first three quarters
-            print("|"  + row_1[9] +  "|" + for_loop_list[i][5] + "|")
-            if i != 4:
-                print("|"  + row_1[12] +   "|" + for_loop_list[i+1][5] + "|")
-            print(border_line[2])
-        if current_quarter >= 2:
+            if i == 10:
+                print("|"  + row_1[9] + "|" + for_loop_list[i][5] + "|" + for_loop_list[i+1][5] + "|")
+                print(border_line[5])
+            elif i != 4:
+                print("|"  + row_1[9] + "|" + for_loop_list[i][5] + "|" + for_loop_list[i+1][5] + "|")
+                print(border_line[1])
+            else:
+                print("|"  + row_1[9] +  "|" + for_loop_list[i][5] + "|")
+                print(border_line[2])
+        if current_quarter <= 3 and i !=4:
             print("|"  + row_1[10] +  "|" + for_loop_list[i][6] + "|") # fy cumulative
-        if current_quarter >= 4 and i !=4: 
-            print("|"  + row_1[13] + "|" + for_loop_list[i+1][6] + "|")
-        print(border_line[2])
+        elif current_quarter >= 4 and i !=4: 
+            print("|"  + row_1[10] + "|" + for_loop_list[i][6] + "|" + for_loop_list[i+1][6] + "|")
+        if i == 4:
+            print("|"  + row_1[10] +  "|" + for_loop_list[i][6] + "|") # fy cumulative
+        if i == 4:
+            print(border_line[2])
+        elif i == 10:
+            print(border_line[5])
+        else:
+            print(border_line[1])
         if i != 10:
             print("|"  + row_1[19] +  "|" + for_loop_list[i][7] + "|") # LTD
+        if i == 6 or i == 8:
+            print(border_line[4])
+        elif i != 10:
             print(border_line[2])
         if i == 6 or i == 8:
             print("|"  +  row_1[14] +  "|" + for_loop_list[i][8] + "|") # print current forecast
@@ -331,10 +378,10 @@ def print_mobile():
             if nintendo_switch_hardware_1[j+7] != 0 and i == 6 or nintendo_switch_software_1[j+7] != 0 and i == 8:    
                 print("|"  +  row_1[j+15] +  "|" + for_loop_list[i][j+10] + "|")
         if current_quarter >=4 and i == 6 or current_quarter >=4 and i == 8: #next fiscal year's forecast
-            print(border_line[2])
+            print(border_line[4])
             print("|"  +  row_1[18] +  "|" + for_loop_list[i][9] + "|")
         if i == 6 or i == 8:
-            print(border_line[2])
+            print(border_line[4])
         if i == 8:
             print("(Software sales units include both ")
             print("packaged and downloadable versions") 

@@ -9,19 +9,19 @@ header = [border_line + ("\n|"  +  header_1[0] + "|") + ("\n+" + "-"*30 + "+"), 
 
 footer = [border_line + ("\n(※ Proportion of overseas (outside of Japan)") + ("\nsales to total sales)"), border_line + ("\n(※ Proportion of hardware \n (including accessories) sales") + ("\nto total dedicated video game platform sales)"), border_line + ("\n(※ Proportion of first-party software sales") + ("\nto total dedicated video game software sales)"), border_line + ("\n(\"※ Digital sales include a) downloadable \nversions of packaged software,") + ("\nb) download-only software, \nc) add-on content and \nd) Nintendo Switch Online, etc.") + ("\n＊\"Downloadable versions of packaged software\" \nindicates the") + ("downloadable version of \nsoftware that is offered both physically \nand digitally.\")"), border_line + ("\n(※ Proportion of digital sales to total \ndedicated ") + ("video game software sales )"), ("+" + "-"*37 + "+") + ("\n(※ Proportion of downloadable versions of \npackaged software sales ") + ("to total digital sales \nas indicated above: a/(a+b+c+d) )")] # [0] Print proportion of overseas sales, [1] print proportion of hardware sales, [2] print Proportion of first party software sales, [3] print Digital Sales, [4] print proportion of digital sales, [5] Print Proportion of DL Ver. of Packaged SW Sales
 
-current_quarter = 3 # Set to 1, 2, 3 or 4.
+current_quarter = 4 # Set to 1, 2, 3 or 4.
 
-proportion_of_overseas_sales = [77.9, 78.7, 79.6, 66.66, 78.3, 79.0, 33.33] #Input figures, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fiscal year cumulative
+proportion_of_overseas_sales = [77.9, 78.7, 79.6, 78.2, 78.3, 79.0, 78.8] #Input figures, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fiscal year cumulative
 
-proportion_of_hardware_sales = [47.6, 45.2, 53.9, 66.66, 46.5, 50.4, 33.33] #Input figures, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fiscal year cumulative
+proportion_of_hardware_sales = [47.6, 45.2, 53.9, 41.5, 46.5, 50.4, 48.4] #Input figures, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fiscal year cumulative
 
-proportion_of_first_party_software_sales = [72.3, 68.9, 84.1, 66.66, 70.6, 77.7, 33.33] #Input figures, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fiscal year cumulative
+proportion_of_first_party_software_sales = [72.3, 68.9, 84.1, 82.3, 70.6, 77.7, 78.8] #Input figures, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fiscal year cumulative
 
-digital_sales = [75.9, 68.2, 110.8, 66.66, 144.2, 255.0, 33.33] #Input figures, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fiscal year cumulative
+digital_sales = [75.9, 68.2, 110.8, 104.6, 144.2, 255.0, 359.6] #Input figures, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fiscal year cumulative
 
-proportion_of_digital_sales = [46.9, 43.2, 35.3, 66.66, 45.1, 40.2, 33.33] #Input figures, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fiscal year cumulative
+proportion_of_digital_sales = [46.9, 43.2, 35.3, 49.5, 45.1, 40.2, 42.6] #Input figures, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fiscal year cumulative
 
-proportion_of_download_version_of_packaged_software_sales = [52.1, 49.1, 56.3, 66.66, 50.7, 53.1, 33.33] #Input figures, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fiscal year cumulative
+proportion_of_download_version_of_packaged_software_sales = [52.1, 49.1, 56.3, 63.9, 50.7, 53.1, 56.2] #Input figures, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] 1st half, [5] first three quarters, [6] fiscal year cumulative
 
 def format_to_string (y, i):
 
@@ -51,10 +51,17 @@ def to_print(y2, i):
 
     return  
 
+print(border_line)
+print("| Nintendo Co., Ltd.| FY3/2022 |")
+print(border_line)
+print("| Key/Digital Sales Indicators |")
+print(border_line)
+
 for_loop_list = [proportion_of_overseas_sales, proportion_of_hardware_sales, proportion_of_first_party_software_sales, digital_sales, proportion_of_digital_sales, proportion_of_download_version_of_packaged_software_sales]
 
 for i in range(len(for_loop_list)):
     format_to_string(for_loop_list[i], i)
+
 
 # def c_print (y, z, a, b, delta, theta): 
 #     # variables created inside a function are local and cannot be used outside a function

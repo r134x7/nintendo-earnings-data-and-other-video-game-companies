@@ -2,24 +2,25 @@ header_1 = [ " Nintendo Co., Ltd.", " Net Sales   ", " Operating Income ", " Op.
 row_1 = [" 1st Quarter       ", " 2nd Quarter       ",  " 3rd Quarter       ",  " 4th Quarter       ", " 1st Quarter YoY%  ", " 2nd Quarter YoY%  ", " 3rd Quarter YoY%  ", " 4th Quarter YoY%  ", " First Half        ", " First 3 Quarters  ", " FY3/22 Cumulative ", " First Half YoY%   ", " First 3 Qtrs YoY% ", " FY3/22 Cml. YoY%  ", " FY3/22 Forecast   ", " 1st FCST Revision ", " 2nd FCST Revision ", " 3rd FCST Revision ", " FY3/23 Forecast   ",   ] # row names, array length = 19
 line_break_1 = "###" 
 
-border_line = ["+" + "-"*78 + "+", "+" + "-"*38 + "+"]
-border_line_double = ["+" + "-"*78 + "+", "+" + "="*38 + "+"]
+border_line = ["+" + "-"*78 + "+", "+" + "-"*38 + "+", "+" + "-"*32 + "+", "+" + "-"*23 + "+", "+" + "-"*27 + "+"]
+border_line_double = ["+" + "-"*78 + "+", "+" + "="*38 + "+", "+" + "="*32 + "+", "+" + "="*23 + "+"]
 
-current_quarter = 3 # Set to 1, 2, 3 or 4.
+current_quarter = 4 # Set to 1, 2, 3 or 4.
 mobile_output = 1 # 1 = on, 0 = off
 
 if mobile_output != 0:
-    header_1 = [ " Nintendo Co., Ltd.", 0, " Net Sales         ", 0, " Operating Income  ", 0, " Operating Margin  ", 0, " Net Profit        ", 0]
+    header_1 = [ " Nintendo Co., Ltd.", 0, " Net Sales " +" "*17, 0, " Operating Income " +" "*10, 0, " Operating Margin " +" "*5, 0, " Net Profit " +" "*16, 0, "    YoY% "]
+    row_1 = [" 1st Quarter ", " 2nd Quarter ",  " 3rd Quarter ",  " 4th Quarter ", " 1st Quarter YoY%  ", " 2nd Quarter YoY%  ", " 3rd Quarter YoY%  ", " 4th Quarter YoY%  ", " First Half  ", " 1st 3 Qtrs  ", " FY3/22 Cml. ", " First Half YoY%   ", " First 3 Qtrs YoY% ", " FY3/22 Cml. YoY%  ", " FY3/22 Forecast ", " FCST Revision 1 ", " FCST Revision 2 ", " FCST Revision 3 ", " FY3/23 Forecast ",   ] # row names, array length = 19
 
-net_sales_1 = [ 322647, 624272, 1320219, 0, 1600000, 1600000, 1600000,  1650000, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+net_sales_1 = [ 322647, 624272, 1320219, 1695344, 1600000, 1600000, 1600000,  1650000, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 
 net_sales_last_fy_1= [ 358106, 411418, 634939, 354447, 1758910 ] # input quarterly calculated figures, [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative 
 
-operating_income_1 = [ 119752, 219959, 472551, 0, 500000, 520000, 520000,  560000, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+operating_income_1 = [ 119752, 219959, 472551, 592760, 500000, 500000, 520000,  560000, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 
 operating_income_last_fy_1= [ 144737, 146687, 229684, 119526, 640634] # input quarterly calculated figures, [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative 
 
-net_income_1 = [ 92747, 171834, 367387, 0, 340000, 350000,  350000,  400000, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
+net_income_1 = [ 92747, 171834, 367387, 477691, 340000, 340000,  350000,  400000, 0] #input cumulative figures, [0] is Q1, [1] Q2, [2] Q3, [3] Q4, [4] current fiscal year forecast, [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results), [6] 1st forecast revision, [7] 2nd forecast revision, [8] 3rd forecast revision (unlikely but there just in case)
 
 net_income_last_fy_1= [ 106482, 106641, 163542, 103711, 480376] # input quarterly calculated figures, [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative
 
@@ -75,14 +76,18 @@ def format_to_string_net_sales (y1):
     if mobile_output == 0:
         y3 = ['{0: >13}'.format(elem) for elem in y2] #format width
     else:
-        y3 =  ['{0: >18}'.format(elem) for elem in y2] #format width
+        y3 =  ['{0: >14}'.format(elem) for elem in y2] #format width
 
     return y3
 
 def format_to_string_operating_income (y1):
 
     y2 = ['¥{:,}M '.format(elem) for elem in y1] #formats all integers to string to add ¥, M and commas
-    y3 =  ['{0: >18}'.format(elem) for elem in y2] #format width
+    if mobile_output == 0:
+        y3 =  ['{0: >18}'.format(elem) for elem in y2] #format width
+    else:
+        y3 =  ['{0: >14}'.format(elem) for elem in y2] #format width
+
 
     return y3
 
@@ -92,7 +97,7 @@ def format_to_string_net_income (y1):
     if mobile_output == 0:
         y3 =  ['{0: >12}'.format(elem) for elem in y2] #format width
     else:
-        y3 =  ['{0: >18}'.format(elem) for elem in y2] #format width
+        y3 =  ['{0: >14}'.format(elem) for elem in y2] #format width
 
     return y3
 
@@ -132,14 +137,17 @@ def format_to_string_year_on_year_net_sales (z1):
     if mobile_output == 0:
         z3 = ['{0: >13}'.format(elem) for elem in z2] #format width
     else:
-        z3 = ['{0: >18}'.format(elem) for elem in z2] #format width
+        z3 = ['{0: >9}'.format(elem) for elem in z2] #format width
 
     return z3
 
 def format_to_string_year_on_year_operating_income (z1):
 
     z2 = ['{:+.2f}% '.format(elem) for elem in z1 ] #format all integers to string to add % and + when needed
-    z3 = ['{0: >18}'.format(elem) for elem in z2] #format width
+    if mobile_output == 0:
+        z3 = ['{0: >18}'.format(elem) for elem in z2] #format width
+    else:
+        z3 = ['{0: >9}'.format(elem) for elem in z2] #format width
 
     return z3
 
@@ -149,7 +157,7 @@ def format_to_string_year_on_year_net_income (z1):
     if mobile_output == 0:
         z3 = ['{0: >12}'.format(elem) for elem in z2] #format width
     else:
-        z3 = ['{0: >18}'.format(elem) for elem in z2] #format width
+        z3 = ['{0: >9}'.format(elem) for elem in z2] #format width
 
     return z3
 
@@ -196,7 +204,7 @@ def format_to_string_operating_margin (d1):
     if mobile_output == 0:
         d3 =  [ '{0: >12}'.format(elem) for elem in d2] #format width
     else:
-        d3 =  [ '{0: >18}'.format(elem) for elem in d2] #format width
+        d3 =  [ '{0: >9}'.format(elem) for elem in d2] #format width
 
     return d3
 
@@ -244,42 +252,75 @@ def print_original():
     return
 
 def print_mobile():
-    print(border_line[1])
-    print("|" + header_1[0] + "|" + " "*18 + "|")
-    
+    print("+" + "-"*34 + "+")
+    print("|" + header_1[0] + " |" + " "*4 + "FY3/2022 " + "|")
+    print("+" + "-"*34 + "+")
+    print("| Consolidated Operating Results   |")
+    print("+" + "-"*34 + "+")
+
     for i in range(0, 8, 2):
-        print(border_line[1])
-        print("|" + header_1[i+2] + "|" + " "*18 + "|")
+        if i !=4:
+            print(border_line[1])
+            print("|" + header_1[i+2] + "|" + header_1[10] + "|")
+        else: # for operating margin
+            print(border_line[3])
+            print("|" + header_1[i+2] + "|")
         for j in range(current_quarter): #for loop for quarters
-            print(border_line[1])
-            print("|"  +  row_1[j] +  "|" + for_loop_list[i][j] + "|")
             if i !=4:
-                print("|"  +  row_1[j+4] +   "|" + for_loop_list[i+1][j] + "|")
-        print(border_line_double[1])
+                print(border_line[1])
+                print("|"  +  row_1[j] +  "|" + for_loop_list[i][j] + "|" + for_loop_list[i+1][j] + "|")
+            else: # for operating margin
+                print(border_line[3])
+                print("|"  +  row_1[j] +   "|" + for_loop_list[i][j] + "|")
+        if i != 4:
+            print(border_line_double[1])
+        else:
+            print(border_line_double[3])
         if current_quarter >= 2: # first half
-            print("|"  + row_1[8] +  "|" + for_loop_list[i][9] + "|")
             if i != 4:
-                print("|"  + row_1[11] +   "|" + for_loop_list[i+1][4] + "|")
-            print(border_line[1])
+                print("|"  + row_1[8] +  "|" + for_loop_list[i][9] + "|" + for_loop_list[i+1][4] + "|")
+                print(border_line[1])
+            else: # for operating margin
+                print("|"  + row_1[8] +  "|" + for_loop_list[i][9] + "|")
+                print(border_line[3])
         if current_quarter >= 3: # first three quarters
-            print("|"  + row_1[9] +  "|" + for_loop_list[i][10] + "|")
             if i != 4:
-                print("|"  + row_1[12] +   "|" + for_loop_list[i+1][5] + "|")
-            print(border_line[1])
-        if current_quarter >= 2:
+                print("|"  + row_1[9] +  "|" + for_loop_list[i][10] + "|" + for_loop_list[i+1][5] + "|")
+                print(border_line[1])
+            else: # for operating margin
+                print("|"  + row_1[9] +  "|" + for_loop_list[i][10] + "|")
+                print(border_line[3])
+        if current_quarter == 2 or current_quarter == 3 and i != 4:
             print("|"  + row_1[10] +  "|" + for_loop_list[i][11] + "|") # fy cumulative
-        if current_quarter >= 4 and i !=4: 
-            print("|"  + row_1[13] + "|" + for_loop_list[i+1][6] + "|")
-        print(border_line[1])
+        elif current_quarter == 4 and i != 4:
+            print("|"  + row_1[10] +  "|" + for_loop_list[i][11] + "|" + for_loop_list[i+1][6] + "|") # fy cumulative
+        if current_quarter >= 2 and i ==4: 
+            print("|"  + row_1[10] +  "|" + for_loop_list[i][11] + "|") # fy cumulative
+        if current_quarter <= 3 and i != 4:
+            print(border_line[2])
+        elif current_quarter == 4 and i != 4:
+            print(border_line[1])
+        else:
+            print(border_line[4])
         print("|"  +  row_1[14] +  "|" + for_loop_list[i][4] + "|") # print current forecast
         for j in range(3): # print forecast revisions
             if net_sales_1[j+6] != 0:    
                 print("|"  +  row_1[j+15] +  "|" + for_loop_list[i][j+6] + "|")
         if current_quarter >=4: #next fiscal year's forecast
-            print(border_line[1])
+            if i != 4:
+                print(border_line[2])
+            else:
+                print(border_line[4])
             print("|"  +  row_1[18] +  "|" + for_loop_list[i][5] + "|")
-        print(border_line[1])
-        print(line_break_1)
+        if i != 4:
+            print(border_line[2])
+        else:
+            print(border_line[4])
+
+        # print(line_break_1)
+    
+    print(line_break_1)
+
 
     return
 

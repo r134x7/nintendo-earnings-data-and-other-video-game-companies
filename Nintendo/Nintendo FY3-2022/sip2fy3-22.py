@@ -4,117 +4,117 @@ line_break_1 = "###" # line break
 
 platform_headers = [" Switch " + " "*18, " Switch Lite " + " "*13, " Switch OLED " + " "*13, " Switch Hardware " + " "*9, " Switch Software " + " "*9]
 
-current_quarter = 3 # set to 1, 2, 3 or 4.
+current_quarter = 4 # set to 1, 2, 3 or 4.
 mobile_output = 1 # 1 = on, 0 = off
 
 border_line = ["+" + "-"*74 + "+", "+" + "-"*44 + "+"]
 border_line_double = ["+" + "-"*74 + "+", "+" + "="*44 + "+"]
 
 if mobile_output == 1:
-    header_1 = [" Japan  ", "The     ", " Europe ", " Other  ", "Quarters", "First Half", "First Three Quarters", "FY3/22 Cumulative", "Life-To-Date"]
+    header_1 = [" Japan  ", "The     ", " Europe ", " Other  ", "Quarters", " First Half", " First Three Quarters", " FY3/22 Cumulative", " Life-To-Date"]
     header_2 = [" "*8, "Americas", " "*8, " "*8]
-    row_1 = ["1.", "2.", "3.", "4."]
+    row_1 = ["Q1", "Q2", "Q3", "Q4"]
     row_2 = [" Units", " YoY% ", " WW%  "]
     row_3 = [" Units  ", " YoY%   ", " WW%    "]
     platform_headers = [" Switch "]
     platform_headers_2 = [" "*8, " Lite   ", " OLED   ", "Hardware", "Software"]
 
 # Worldwide figures
-nintendo_switch_original_model_worldwide_1 = [331 / 100, 645 / 100, 1179 / 100, 1179 / 100, 6989 / 100, " Switch                   "] # Input figures, Worldwide - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
+nintendo_switch_original_model_worldwide_1 = [331 / 100, 645 / 100, 1179 / 100, 1356 / 100, 6989 / 100, " Switch                   "] # Input figures, Worldwide - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
 #+++++++++++++++++++++++++++++
-nintendo_switch_lite_worldwide_1 = [114 / 100, 182 / 100, 317 / 100, 317 / 100, 1470 / 100, " Switch Lite              "] # Input figures, Worldwide - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
+nintendo_switch_lite_worldwide_1 = [114 / 100, 182 / 100, 317 / 100, 370 / 100, 1470 / 100, " Switch Lite              "] # Input figures, Worldwide - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
 #+++++++++++++++++++++++++++++
-nintendo_switch_oled_model_worldwide_1 = [0 / 100, 0 / 100, 399 / 100, 399 / 100, 0 / 100, " Switch OLED              "] # Input figures, Worldwide - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
+nintendo_switch_oled_model_worldwide_1 = [0 / 100, 0 / 100, 399 / 100, 580 / 100, 0 / 100, " Switch OLED              "] # Input figures, Worldwide - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
 #+++++++++++++++++++++++++++++
-nintendo_switch_hardware_worldwide_1 = [445 / 100, 828 / 100, 1895 / 100, 1895 / 100, 8459 / 100, " Switch Hardware          "] # Input figures, Worldwide - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
+nintendo_switch_hardware_worldwide_1 = [445 / 100, 828 / 100, 1895 / 100, 2306 / 100, 8459 / 100, " Switch Hardware          "] # Input figures, Worldwide - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
 #+++++++++++++++++++++++++++++
-nintendo_switch_software_worldwide_1 = [4529 / 100, 9389 / 100, 17929 / 100, 17929 / 100, 58713 / 100, " Switch Software          "] # Input figures, Worldwide - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
+nintendo_switch_software_worldwide_1 = [4529 / 100, 9389 / 100, 17929 / 100, 23507 / 100, 58713 / 100, " Switch Software          "] # Input figures, Worldwide - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year, [5] header title 
 #+++++++++++++++++++++++++++++
 
 # Japan figures
-nintendo_switch_original_model_japan_1 = [83 / 100, 158 / 100, 235 / 100, 235 / 100, 1622 / 100] # Input figures, Japan - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year 
+nintendo_switch_original_model_japan_1 = [83 / 100, 158 / 100, 235 / 100, 256 / 100, 1622 / 100] # Input figures, Japan - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year 
 
 nintendo_switch_original_model_japan_last_fy = [0.79, 1.14, 2.09, 0.76, 4.78] # Input last fiscal year's figures, Japan - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nintendo_switch_lite_japan_1 = [34 / 100, 45 / 100, 91 / 100, 91 / 100, 381 / 100] # Input figures, Japan - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_lite_japan_1 = [34 / 100, 45 / 100, 91 / 100, 102 / 100, 381 / 100] # Input figures, Japan - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_lite_japan_last_fy = [0.36, 0.44, 0.62, 0.39, 1.81 ] # Input last fiscal year's figures, Japan - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nintendo_switch_oled_model_japan_1 = [0 / 100, 0 / 100, 107 / 100, 107 / 100, 0 / 100] # Input figures, Japan - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_oled_model_japan_1 = [0 / 100, 0 / 100, 107 / 100, 161 / 100, 0 / 100] # Input figures, Japan - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_oled_model_japan_last_fy = [0, 0, 0, 0, 0] # Input last fiscal year's figures, Japan - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nintendo_switch_hardware_japan_1 = [116 / 100, 203 / 100, 432 / 100, 432 / 100, 2004 / 100] # Input figures, Japan - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_hardware_japan_1 = [116 / 100, 203 / 100, 432 / 100, 519 / 100, 2004 / 100] # Input figures, Japan - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_hardware_japan_last_fy = [1.15, 1.58, 2.71, 1.16, 6.60 ] # Input last fiscal year's figures, Japan - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nintendo_switch_software_japan_1 = [813 / 100, 1613 / 100, 3098 / 100, 3098 / 100, 11222 / 100] # Input figures, Japan - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year 
+nintendo_switch_software_japan_1 = [813 / 100, 1613 / 100, 3098 / 100, 4214 / 100, 11222 / 100] # Input figures, Japan - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year 
 
 nintendo_switch_software_japan_last_fy = [10.02, 7.76, 13.91, 13.33, 45.02] # Input last fiscal year's figures, Japan - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
 
 # The Americas figures
-nintendo_switch_original_model_the_americas_1 = [110 / 100, 215 / 100, 411 / 100, 411 / 100, 2686 / 100] # Input figures, The Americas - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_original_model_the_americas_1 = [110 / 100, 215 / 100, 411 / 100, 522 / 100, 2686 / 100] # Input figures, The Americas - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_original_model_the_americas_last_fy = [0.71, 1.88, 3.01, 1.47, 7.07] # Input last fiscal year's figures, The Americas - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nintendo_switch_lite_the_americas_1 = [48 / 100, 89 / 100, 133 / 100, 133 / 100, 641 / 100] # Input figures, The Americas - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_lite_the_americas_1 = [48 / 100, 89 / 100, 133 / 100, 159 / 100, 641 / 100] # Input figures, The Americas - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_lite_the_americas_last_fy = [1.28, 0.59, 1.58, 0.64, 4.09] # Input last fiscal year's figures, The Americas - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nintendo_switch_oled_model_the_americas_1 = [0 / 100, 0 / 100, 141 / 100, 141 / 100, 0 / 100] # Input figures, The Americas - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_oled_model_the_americas_1 = [0 / 100, 0 / 100, 141 / 100, 194 / 100, 0 / 100] # Input figures, The Americas - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_oled_model_the_americas_last_fy = [0, 0, 0, 0, 0] # Input figures, The Americas - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 #+++++++++++++++++++++++++++++
-nintendo_switch_hardware_the_americas_1 = [159 / 100, 304 / 100, 684 / 100, 684 / 100, 3327 / 100] # Input figures, The Americas - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_hardware_the_americas_1 = [159 / 100, 304 / 100, 684 / 100, 876 / 100, 3327 / 100] # Input figures, The Americas - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_hardware_the_americas_last_fy = [1.99, 2.47, 4.59, 2.10, 11.15 ] # Input last fiscal year's figures, The Americas - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nintendo_switch_software_the_americas_1 = [2235 / 100, 4513 / 100, 8464 / 100, 8464 / 100, 26100 / 100] # Input figures, The Americas - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_software_the_americas_1 = [2235 / 100, 4513 / 100, 8464 / 100, 10827 / 100, 26100 / 100] # Input figures, The Americas - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_software_the_americas_last_fy = [21.49, 24.10, 33.95, 22.88, 102.42] # Input last fiscal year's figures, The Americas - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
 
 # Europe figures
-nintendo_switch_original_model_europe_1 = [82 / 100, 163 / 100, 375 / 100, 375 / 100, 1811 / 100] # Input figures, Europe - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_original_model_europe_1 = [82 / 100, 163 / 100, 375 / 100, 404 / 100, 1811 / 100] # Input figures, Europe - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_original_model_europe_last_fy = [0.83, 1.33, 2.10, 0.76, 5.02] # Input last fiscal year's figures, Europe - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nintendo_switch_lite_europe_1 = [26 / 100, 39 / 100, 75 / 100, 75 / 100, 347 / 100] # Input figures, Europe - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_lite_europe_1 = [26 / 100, 39 / 100, 75 / 100, 86 / 100, 347 / 100] # Input figures, Europe - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_lite_europe_last_fy = [0.79, 0.35, 0.88, 0.11, 2.13] # Input last fiscal year's figures, Europe - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nintendo_switch_oled_model_europe_1 = [0 / 100, 0 / 100, 91 / 100, 91 / 100, 0 / 100] # Input figures, Europe - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_oled_model_europe_1 = [0 / 100, 0 / 100, 91 / 100, 112 / 100, 0 / 100] # Input figures, Europe - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_oled_model_europe_last_fy = [0, 0, 0, 0, 0] # Input figures, Europe - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 #+++++++++++++++++++++++++++++
-nintendo_switch_hardware_europe_1 = [108 / 100, 202 / 100, 540 / 100, 540 / 100, 2158 / 100] # Input figures, Europe - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_hardware_europe_1 = [108 / 100, 202 / 100, 540 / 100, 602 / 100, 2158 / 100] # Input figures, Europe - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_hardware_europe_last_fy = [1.61, 1.70, 2.97, 0.87, 7.15] # Input last fiscal year's figures, Europe - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nintendo_switch_software_europe_1 = [1135 / 100, 2563 / 100, 5085 / 100, 5085 / 100, 17215 / 100] # Input figures, Europe - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_software_europe_1 = [1135 / 100, 2563 / 100, 5085 / 100, 6578 / 100, 17215 / 100] # Input figures, Europe - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_software_europe_last_fy = [14.31, 14.22, 23.85, 13.86, 66.24] # Input last fiscal year's figures, Europe - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
 
 # Other figures
-nintendo_switch_original_model_other_1 = [56 / 100, 109 / 100, 159 / 100, 159 / 100, 870 / 100] # Input figures, Other - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_original_model_other_1 = [56 / 100, 109 / 100, 159 / 100, 174 / 100, 870 / 100] # Input figures, Other - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_original_model_other_last_fy = [0.73, 0.95, 1.21, 0.56, 3.45] # Input last fiscal year's figures, Other - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nintendo_switch_lite_other_1 = [5 / 100, 10 / 100, 18 / 100, 18 / 100, 101 / 100] # Input figures, Other - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_lite_other_1 = [5 / 100, 10 / 100, 18 / 100, 18 / 100, 22 / 100] # Input figures, Other - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_lite_other_last_fy = [0.20, 0.16, 0.09, 0.03, 0.48] # Input last fiscal year's figures, Other - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nintendo_switch_oled_model_other_1 = [0 / 100, 0 / 100, 61 / 100, 61 / 100, 0 / 100] # Input figures, Other - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_oled_model_other_1 = [0 / 100, 0 / 100, 61 / 100, 113 / 100, 0 / 100] # Input figures, Other - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_oled_model_other_last_fy = [0, 0, 0, 0, 0] # Input figures, Other - Switch OLED, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 #+++++++++++++++++++++++++++++
-nintendo_switch_hardware_other_1 = [62 / 100, 119 / 100, 238 / 100, 238 / 100, 971 / 100] # Input figures, Other - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_hardware_other_1 = [62 / 100, 119 / 100, 238 / 100, 309 / 100, 971 / 100] # Input figures, Other - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_hardware_other_last_fy = [0.92, 1.12, 1.29, 0.60, 3.93] # Input last fiscal year's figures, Other - Switch Hardware, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nintendo_switch_software_other_1 = [346 / 100, 700 / 100, 1283 / 100, 1283 / 100, 4174 / 100] # Input figures, Other - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_software_other_1 = [346 / 100, 700 / 100, 1283 / 100, 1888 / 100, 4174 / 100] # Input figures, Other - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_software_other_last_fy = [4.62, 3.72, 4.16, 4.70, 17.20] # Input last fiscal year's figures, Other - Switch Software, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
@@ -265,7 +265,8 @@ def to_print_original (region_units, region_yoy, region_ww, number):
         print("|"  +  row_1[21] +  "|" + region_units[0][7] + "|" + region_units[1][7] + "|" + region_units[2][7] +  "|" +  region_units[3][7] + "|" ) # ltd
         print("|"  + row_1[22] +   "|" + region_ww[0][7] + "|" + region_ww[1][7] + "|" + region_ww[2][7] + "|" + region_ww[3][7] + "|")
         print(border_line[0])
-        print(line_break_1)
+        
+    # print(line_break_1)
 
     return
 
@@ -274,9 +275,9 @@ def to_print_mobile (region_units, region_yoy, region_ww, number):
     print(border_line[1])
     print("|" + platform_headers[0] + "|" + header_1[0] + "|" + header_1[1] +"|" + header_1[2] + "|" + header_1[3] + "|")
     print("|" + platform_headers_2[number] + "|" + header_2[0] + "|" + header_2[1] +"|" + header_2[2] + "|" + header_2[3] + "|")
-    if "0.00M" not in region_units[0][0] and region_units[0][1] and region_units[0][2] and region_units[0][3]:
-        print(border_line[1])
-        print("|" + header_1[4] + "|" + " "*35 + "|")
+    # if "0.00M" not in region_units[0][0] and region_units[0][1] and region_units[0][2] and region_units[0][3]:
+        # print(border_line[1])
+        # print("|" + header_1[4] + "|" + " "*35 + "|")
     for i in range(current_quarter):
         if "0.00M" not in region_units[0][i]:
             print(border_line[1])
@@ -288,7 +289,7 @@ def to_print_mobile (region_units, region_yoy, region_ww, number):
     else: 
         print(border_line_double[1])
         if current_quarter >= 2 and "0.00M" not in region_units[0][4]:
-            print("|" + header_1[5] + " "*34 + "|") # first half
+            print("|" + header_1[5] + " "*33 + "|") # first half
             print(border_line[1])
             print("|"  +  row_3[0] +  "|" + region_units[0][4] + "|" + region_units[1][4] + "|" + region_units[2][4] +  "|" +  region_units[3][4] + "|" )
         if current_quarter >= 2 and "+0.00%" not in (region_yoy[0][4] and region_yoy[1][4] and region_yoy[2][4] and region_yoy[3][4]):
@@ -297,7 +298,7 @@ def to_print_mobile (region_units, region_yoy, region_ww, number):
             print("|"  + row_3[2] +   "|" + region_ww[0][4] + "|" + region_ww[1][4] + "|" + region_ww[2][4] + "|" + region_ww[3][4] + "|")
             print(border_line[1])
         if current_quarter >= 3 and "0.00M" not in region_units[0][5]:
-            print("|" + header_1[6] + " "*24 + "|") # first three quarters
+            print("|" + header_1[6] + " "*23 + "|") # first three quarters
             print(border_line[1])
             print("|"  +  row_3[0] +  "|" + region_units[0][5] + "|" + region_units[1][5] + "|" + region_units[2][5] +  "|" +  region_units[3][5] + "|" )
         if current_quarter >= 3 and "+0.00%" not in (region_yoy[0][5] and region_yoy[1][5] and region_yoy[2][5] and region_yoy[3][5]):
@@ -305,21 +306,26 @@ def to_print_mobile (region_units, region_yoy, region_ww, number):
         if current_quarter >= 3 and "0.00M" not in region_units[0][5]:
             print("|"  + row_3[2] +   "|" + region_ww[0][5] + "|" + region_ww[1][5] + "|" + region_ww[2][5] + "|" + region_ww[3][5] + "|")
             print(border_line[1])
-        print("|" + header_1[7] + " "*27 + "|") # fy cumulative
+        print("|" + header_1[7] + " "*26 + "|") # fy cumulative
         print(border_line[1])
         print("|"  +  row_3[0] +  "|" + region_units[0][6] + "|" + region_units[1][6] + "|" + region_units[2][6] +  "|" +  region_units[3][6] + "|" ) 
         if current_quarter == 4 and "+0.00%" not in (region_yoy[0][6] and region_yoy[1][6] and region_yoy[2][6] and region_yoy[3][6]):
             print("|"  +  row_3[1] +  "|" + region_yoy[0][6] + "|" + region_yoy[1][6] + "|" + region_yoy[2][6] +  "|" +  region_yoy[3][6] + "|")    
         print("|"  + row_3[2] +   "|" + region_ww[0][6] + "|" + region_ww[1][6] + "|" + region_ww[2][6] + "|" + region_ww[3][6] + "|")
         print(border_line[1])
-        print("|" + header_1[8] + " "*32 + "|") # ltd
+        print("|" + header_1[8] + " "*31 + "|") # ltd
         print(border_line[1])
         print("|"  +  row_3[0] +  "|" + region_units[0][7] + "|" + region_units[1][7] + "|" + region_units[2][7] +  "|" +  region_units[3][7] + "|" ) 
         print("|"  + row_3[2] +   "|" + region_ww[0][7] + "|" + region_ww[1][7] + "|" + region_ww[2][7] + "|" + region_ww[3][7] + "|")
         print(border_line[1])
-        print(line_break_1)
+
+    # print(line_break_1)
 
     return
+
+print(border_line[1])
+print("| Nintendo Switch Regional Data   | FY3/2022 |")
+print(border_line[1])
 
 for_loop_list_a = [nintendo_switch_original_model_japan_1, nintendo_switch_original_model_japan_last_fy, nintendo_switch_original_model_the_americas_1, nintendo_switch_original_model_the_americas_last_fy, nintendo_switch_original_model_europe_1, nintendo_switch_original_model_europe_last_fy, nintendo_switch_original_model_other_1, nintendo_switch_original_model_other_last_fy, nintendo_switch_original_model_worldwide_1]
 
@@ -360,6 +366,8 @@ else:
     to_print_mobile(return_c1, return_c2, return_c3, 2) # switch oled
     to_print_mobile(return_d1, return_d2, return_d3, 3) # hardware
     to_print_mobile(return_e1, return_e2, return_e3, 4) # software
+
+print(line_break_1)
 
 # def c_print (y, z, a, b, delta, ly, lz, la, lb): # y: use japan, z: use the americas, a: use europe, b: use other, delta: use worldwide, ly: last fy japan, lz; last fy the americas, la: last fy europe, lb: last fy other
 
