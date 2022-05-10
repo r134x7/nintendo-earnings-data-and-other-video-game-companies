@@ -59,7 +59,7 @@ title_4_last_fy_totals = [29 / 100, 355 / 100, 384 / 100, 1044 / 100, 660 / 100]
 title_5_japan = [ 21 / 100, 29 / 100, 30 / 100, 31 / 100, " Mario Golf: Super Rush "  + " "*17] # Input cumulative figures, Japan: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter, [4] name of title
 title_5_overseas = [ 113 / 100, 165 / 100, 196 / 100, 203 / 100] # Input cumulative figures, Overseas: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 
-title_5_worldwide_fy = [ 134 / 100, 194 / 100, 235 / 100, 226 / 100] # Input cumulative figures, Global FY: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
+title_5_worldwide_fy = [ 134 / 100, 194 / 100, 226 / 100, 235 / 100] # Input cumulative figures, Global FY: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 
 title_5_worldwide_ltd = [ 134 / 100, 194 / 100, 226 / 100, 235 / 100] # Input cumulative figures, Global LTD: [0] 1st quarter, [1] second quarter, [2] third quarter, [3] fourth quarter
 
