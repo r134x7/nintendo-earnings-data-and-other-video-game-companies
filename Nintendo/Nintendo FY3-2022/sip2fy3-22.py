@@ -102,7 +102,7 @@ nintendo_switch_original_model_other_1 = [56 / 100, 109 / 100, 159 / 100, 174 / 
 
 nintendo_switch_original_model_other_last_fy = [0.73, 0.95, 1.21, 0.56, 3.45] # Input last fiscal year's figures, Other - Switch OG, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
-nintendo_switch_lite_other_1 = [5 / 100, 10 / 100, 18 / 100, 18 / 100, 22 / 100] # Input figures, Other - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
+nintendo_switch_lite_other_1 = [5 / 100, 10 / 100, 18 / 100, 22 / 100, 101 / 100] # Input figures, Other - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] LTD at end of last fiscal year
 
 nintendo_switch_lite_other_last_fy = [0.20, 0.16, 0.09, 0.03, 0.48] # Input last fiscal year's figures, Other - Switch Lite, [0] 1st quarter, [1] 2nd quarter, [2] 3rd quarter, [3] 4th quarter, [4] fy cumulative
 #+++++++++++++++++++++++++++++
