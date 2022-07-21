@@ -100,8 +100,10 @@ def to_print_1 (y3, z1, y1, line_join):
 
 # print header
 print(border_line[1])
-# print("|" + header_1[0] + "|" + header_1[1] + "|")
 print("|" + header_1[0] + "|")
+print(border_line[1])
+print(border_line[1])
+print("|" + header_1[1] + " "*25+ "|")
 print(border_line[1])
 
 for i in range (len(for_loop_list_2)):
