@@ -14,7 +14,7 @@ border_line_double = "+" + "="*32 + "+"
 
 #Input the cumulative figure for each quarter, [0] release date, [1] title name, [2] platforms, [3] Quarter 1, [4] Quarter 2, [5] Quarter 3, [6] Quarter 4, [7] LTD figure at end of the last fiscal year, [8] LTD figure at end of two fiscal years prior, [9] miscellaneous
 title_1   = [" Jan 2018 ", " Monster Hunter: World ", " PS4, Xbox One, PC, DL ",
-             17.3,  # [3] Quarter 1
+             18.3,  # [3] Quarter 1
              17.5,  # [4] Quarter 2
              17.80, # [5] Quarter 3
              18.00, # [6] Quarter 4
@@ -23,7 +23,7 @@ title_1   = [" Jan 2018 ", " Monster Hunter: World ", " PS4, Xbox One, PC, DL ",
              1,     # [9] miscellaneous
             ]
 title_2   = [" Jan 2017 ", " RESIDENT EVIL 7 biohazard ", " PS4, Xbox One, PC, DL ", 
-             9.8, # [3] Quarter 1
+             11.00, # [3] Quarter 1
              10.2, # [4] Quarter 2
              10.60, # [5] Quarter 3
              10.80, # [6] Quarter 4
@@ -32,7 +32,7 @@ title_2   = [" Jan 2017 ", " RESIDENT EVIL 7 biohazard ", " PS4, Xbox One, PC, D
              0, # [9] miscellaneous
             ]
 title_3   = [" Jan 2019 ", " Resident Evil 2 ", " PS4, Xbox One, PC, DL ", 
-             8.6, # [3] Quarter 1
+             9.8, # [3] Quarter 1
              8.9, # [4] Quarter 2
              9.30, # [5] Quarter 3
              9.60, # [6] Quarter 4
@@ -41,7 +41,7 @@ title_3   = [" Jan 2019 ", " Resident Evil 2 ", " PS4, Xbox One, PC, DL ",
              0, # [9] miscellaneous
             ]
 title_4   = [" Sep 2019 ", " Monster Hunter World: Iceborne ", " PS4, Xbox One, PC, DL ", 
-             8.2, # [3] Quarter 1
+             9.5, # [3] Quarter 1
              8.5, # [4] Quarter 2
              8.80, # [5] Quarter 3
              9.20, # [6] Quarter 4
@@ -50,7 +50,7 @@ title_4   = [" Sep 2019 ", " Monster Hunter World: Iceborne ", " PS4, Xbox One, 
              0, # [9] miscellaneous
             ]
 title_5   = [" Mar 2009 ", " Resident Evil 5 ", " PS3, Xbox 360, DL ", 
-             7.9, # [3] Quarter 1
+             8.3, # [3] Quarter 1
              8.0, # [4] Quarter 2
              8.10, # [5] Quarter 3
              8.20, # [6] Quarter 4
@@ -59,7 +59,7 @@ title_5   = [" Mar 2009 ", " Resident Evil 5 ", " PS3, Xbox 360, DL ",
              0, # [9] miscellaneous
             ]
 title_6   = [" Oct 2012 ", " Resident Evil 6 ", " PS3, Xbox 360, DL ", 
-             7.9, # [3] Quarter 1
+             8.3, # [3] Quarter 1
              8.0, # [4] Quarter 2
              8.10, # [5] Quarter 3
              8.20, # [6] Quarter 4
@@ -68,7 +68,7 @@ title_6   = [" Oct 2012 ", " Resident Evil 6 ", " PS3, Xbox 360, DL ",
              0, # [9] miscellaneous
             ]
 title_7   = [" Mar 2021 ", " Monster Hunter Rise ", " NSW, PC, DL ", 
-             7.3, # [3] Quarter 1
+             10.3, # [3] Quarter 1
              7.5, # [4] Quarter 2
              7.70, # [5] Quarter 3
              9.0, # [6] Quarter 4
@@ -77,7 +77,7 @@ title_7   = [" Mar 2021 ", " Monster Hunter Rise ", " NSW, PC, DL ",
              0, # [9] miscellaneous
             ]
 title_9   = [" Feb 2016 ", " Street Fighter V ", " PS4, PC, DL ", 
-             5.8, # [3] Quarter 1
+             6.6, # [3] Quarter 1
              6.0, # [4] Quarter 2
              6.10, # [5] Quarter 3
              6.20, # [6] Quarter 4
@@ -86,7 +86,7 @@ title_9   = [" Feb 2016 ", " Street Fighter V ", " PS4, PC, DL ",
              0, # [9] miscellaneous
             ]
 title_10  = [" May 2021 ", " Resident Evil Village ", " PS4, PS5, Xbox One, XSX, PC, DL ", 
-             4.5, # [3] Quarter 1
+             6.4, # [3] Quarter 1
              4.8, # [4] Quarter 2
              5.70, # [5] Quarter 3
              6.10, # [6] Quarter 4
@@ -95,7 +95,7 @@ title_10  = [" May 2021 ", " Resident Evil Village ", " PS4, PS5, Xbox One, XSX,
              0, # [9] miscellaneous
             ]
 title_12  = [" Apr 2020 ", " Resident Evil 3 ", " PS4, Xbox One, PC, DL ", 
-             4.4, # [3] Quarter 1
+             5.4, # [3] Quarter 1
              4.6, # [4] Quarter 2
              4.90, # [5] Quarter 3
              5.20, # [6] Quarter 4
@@ -113,7 +113,7 @@ title_13  = [" Dec 2010 ", " Monster Hunter Freedom 3 ", " PSP, DL ",
              0, # [9] miscellaneous
             ]
 title_14  = [" Mar 2019 ", " Devil May Cry 5 ", " PS4, Xbox One, PC, DL ", 
-             4.5, # [3] Quarter 1
+             5.7, # [3] Quarter 1
              4.7, # [4] Quarter 2
              4.80, # [5] Quarter 3
              5.00, # [6] Quarter 4
@@ -122,7 +122,7 @@ title_14  = [" Mar 2019 ", " Devil May Cry 5 ", " PS4, Xbox One, PC, DL ",
              0, # [9] miscellaneous
             ]
 title_15  = [" Mar 2017 ", " Monster Hunter Generations Ultimate ", " 3DS, NSW, DL ", 
-             4.3, # [3] Quarter 1
+             4.5, # [3] Quarter 1
              4.3, # [4] Quarter 2
              4.40, # [5] Quarter 3
              4.40, # [6] Quarter 4
@@ -176,7 +176,7 @@ title_22  = [" Feb 2009 ", " Street Fighter IV ", " PS3, Xbox 360, DL ",
              0, # [9] miscellaneous
             ]
 title_23  = [" Nov 2014 ", " Resident Evil ", " PS3, DL ", 
-             3.1, # [3] Quarter 1
+             3.5, # [3] Quarter 1
              3.2, # [4] Quarter 2
              3.30, # [5] Quarter 3
              3.40, # [6] Quarter 4
@@ -185,7 +185,7 @@ title_23  = [" Nov 2014 ", " Resident Evil ", " PS3, DL ",
              0, # [9] miscellaneous
             ]
 title_24  = [" Jan 2016 ", " Resident Evil 0: HD Remaster ", " PS3, PS4, Xbox One, PC, DL ", 
-             3.0, # [3] Quarter 1
+             3.4, # [3] Quarter 1
              3.1, # [4] Quarter 2
              3.20, # [5] Quarter 3
              3.30, # [6] Quarter 4
@@ -212,7 +212,7 @@ title_26  = [" Jan 2008 ", " Devil May Cry 4 ", " PS3, Xbox 360, DL ",
              0, # [9] miscellaneous
             ]
 title_27  = [" Nov 2013 ", " Dead Rising 3 ", " Xbox One, DL ", 
-             2.9, # [3] Quarter 1
+             3.1, # [3] Quarter 1
              3.0, # [4] Quarter 2
              3.00, # [5] Quarter 3
              3.00, # [6] Quarter 4
@@ -221,7 +221,7 @@ title_27  = [" Nov 2013 ", " Dead Rising 3 ", " Xbox One, DL ",
              0, # [9] miscellaneous
             ]
 title_28  = [" Mar 2015 ", " Resident Evil Revelations 2 ", " PS3, PS4, Xbox 360, Xbox One, PC, DL ", 
-             2.8, # [3] Quarter 1
+             2.90, # [3] Quarter 1
              2.8, # [4] Quarter 2
              2.90, # [5] Quarter 3
              2.90, # [6] Quarter 4
@@ -248,7 +248,7 @@ title_31  = [" Mar 2012 ", " Resident Evil: Operation Raccoon City ", " PS3, Xbo
              0, # [9] miscellaneous
             ]
 title_32  = [" Jan 2013 ", " DmC Devil May Cry ", " PS3, Xbox 360, DL ", 
-             2.50, # [3] Quarter 1
+             2.80, # [3] Quarter 1
              2.50, # [4] Quarter 2
              2.60, # [5] Quarter 3
              2.60, # [6] Quarter 4
@@ -257,7 +257,7 @@ title_32  = [" Jan 2013 ", " DmC Devil May Cry ", " PS3, Xbox 360, DL ",
              0, # [9] miscellaneous
             ]
 title_33  = [" Aug 2016 ", " Resident Evil 4 ", " PS4, Xbox One, DL ", 
-             2.30, # [3] Quarter 1
+             2.70, # [3] Quarter 1
              2.4, # [4] Quarter 2
              2.50, # [5] Quarter 3
              2.60, # [6] Quarter 4
@@ -266,7 +266,7 @@ title_33  = [" Aug 2016 ", " Resident Evil 4 ", " PS4, Xbox One, DL ",
              0, # [9] miscellaneous
             ]
 title_35  = [" Jun 2016 ", " Resident Evil 5 ", " PS4, Xbox One, DL ", 
-             2.20, # [3] Quarter 1
+             2.50, # [3] Quarter 1
              2.3, # [4] Quarter 2
              2.40, # [5] Quarter 3
              2.40, # [6] Quarter 4
@@ -293,7 +293,7 @@ title_38  = [" Feb 2010 ", " Resident Evil 5: Gold Edition ", " PS3, Xbox 360, D
              0, # [9] miscellaneous
             ]
 title_40  = [" Apr 2013 ", " Dragon’s Dogma: Dark Arisen ", " PS3, Xbox 360, DL ", 
-             2.20, # [3] Quarter 1
+             2.70, # [3] Quarter 1
              2.20, # [4] Quarter 2
              2.20, # [5] Quarter 3
              2.30, # [6] Quarter 4
@@ -302,7 +302,7 @@ title_40  = [" Apr 2013 ", " Dragon’s Dogma: Dark Arisen ", " PS3, Xbox 360, D
              0, # [9] miscellaneous
             ]
 title_42  = [" May 2013 ", " Resident Evil Revelations ", " PS3, Xbox 360, Wii U, PC, DL ", 
-             2.10, # [3] Quarter 1
+             2.20, # [3] Quarter 1
              2.10, # [4] Quarter 2
              2.20, # [5] Quarter 3
              2.20, # [6] Quarter 4
@@ -311,7 +311,7 @@ title_42  = [" May 2013 ", " Resident Evil Revelations ", " PS3, Xbox 360, Wii U
              0, # [9] miscellaneous
             ]
 title_45  = [" May 2018 ", " Street Fighter 30th Anniversary Collection ", " PS4, Xbox One, NSW, PC, DL ", 
-             1.9, # [3] Quarter 1
+             2.4, # [3] Quarter 1
              2.0, # [4] Quarter 2
              2.10, # [5] Quarter 3
              2.20, # [6] Quarter 4
@@ -365,7 +365,7 @@ title_53  = [" Aug 2006 ", " Dead Rising ", " Xbox 360, DL ",
              0, # [9] miscellaneous
             ]
 title_54  = [" Jun 2015 ", " Devil May Cry 4 Special Edition ", " PS4, Xbox One, DL ",
-             1.70, # [3] Quarter 1
+             2.00, # [3] Quarter 1
              1.80, # [4] Quarter 2
              1.80, # [5] Quarter 3
              1.90, # [6] Quarter 4
@@ -374,7 +374,7 @@ title_54  = [" Jun 2015 ", " Devil May Cry 4 Special Edition ", " PS4, Xbox One,
              0, # [9] miscellaneous
             ]
 title_55  = [" Sep 2017 ", " Marvel vs. Capcom: Infinite ", " PS4, Xbox One, PC, DL ",
-             1.70, # [3] Quarter 1
+             1.90, # [3] Quarter 1
              1.70, # [4] Quarter 2
              1.80, # [5] Quarter 3
              1.90, # [6] Quarter 4
@@ -383,7 +383,7 @@ title_55  = [" Sep 2017 ", " Marvel vs. Capcom: Infinite ", " PS4, Xbox One, PC,
              0, # [9] miscellaneous
             ]
 title_56  = [" Dec 2017 ", " Okami HD ", " PS4, Xbox One, NSW, DL ",
-             1.70, # [3] Quarter 1
+             1.90, # [3] Quarter 1
              1.70, # [4] Quarter 2
              1.80, # [5] Quarter 3
              1.90, # [6] Quarter 4
@@ -392,7 +392,7 @@ title_56  = [" Dec 2017 ", " Okami HD ", " PS4, Xbox One, NSW, DL ",
              0, # [9] miscellaneous
             ]
 title_57  = [" Feb 2014 ", " Resident Evil 4: Ultimate HD Edition ", " PC, DL ",
-             1.60, # [3] Quarter 1
+             2.00, # [3] Quarter 1
              1.70, # [4] Quarter 2
              1.80, # [5] Quarter 3
              1.90, # [6] Quarter 4
@@ -401,7 +401,7 @@ title_57  = [" Feb 2014 ", " Resident Evil 4: Ultimate HD Edition ", " PC, DL ",
              0, # [9] miscellaneous
             ]
 title_58  = [" Oct 2017 ", " Dragon’s Dogma: Dark Arisen ", " PS4, Xbox One, DL ",
-             1.60, # [3] Quarter 1
+             1.80, # [3] Quarter 1
              1.60, # [4] Quarter 2
              1.70, # [5] Quarter 3
              1.70, # [6] Quarter 4
@@ -410,7 +410,7 @@ title_58  = [" Oct 2017 ", " Dragon’s Dogma: Dark Arisen ", " PS4, Xbox One, D
              0, # [9] miscellaneous
             ]
 title_62  = [" Dec 2006 ", " Lost Planet Extreme Condition ", " Xbox 360, DL ",
-             1.60, # [3] Quarter 1
+             1.70, # [3] Quarter 1
              1.60, # [4] Quarter 2
              1.60, # [5] Quarter 3
              1.70, # [6] Quarter 4
@@ -419,7 +419,7 @@ title_62  = [" Dec 2006 ", " Lost Planet Extreme Condition ", " Xbox 360, DL ",
              0, # [9] miscellaneous
             ]
 title_66  = [" Aug 2014 ", " Ultra Street Fighter IV ", " PS3, Xbox 360, PC, DL ",
-             1.50, # [3] Quarter 1
+             1.80, # [3] Quarter 1
              1.50, # [4] Quarter 2
              1.50, # [5] Quarter 3
              1.60, # [6] Quarter 4
@@ -428,7 +428,7 @@ title_66  = [" Aug 2014 ", " Ultra Street Fighter IV ", " PS3, Xbox 360, PC, DL 
              0, # [9] miscellaneous
             ]
 title_67  = [" Nov 2013 ", " DuckTales: Remastered ", " PS3, Xbox 360, Wii U, DL ",
-             1.40, # [3] Quarter 1
+             1.50, # [3] Quarter 1
              1.40, # [4] Quarter 2
              1.50, # [5] Quarter 3
              1.50, # [6] Quarter 4
@@ -437,7 +437,7 @@ title_67  = [" Nov 2013 ", " DuckTales: Remastered ", " PS3, Xbox 360, Wii U, DL
              0, # [9] miscellaneous
             ]
 title_70  = [" Jul 2021 ", " Monster Hunter Stories 2: Wings of Ruin ", " NSW, PC, DL ",
-             0, # [3] Quarter 1
+             1.6, # [3] Quarter 1
              1.30, # [4] Quarter 2
              1.40, # [5] Quarter 3
              1.50, # [6] Quarter 4
@@ -455,7 +455,7 @@ title_71  = [" Oct 2010 ", " Dead Rising 2 Off The Record ", " PS3, Xbox 360, DL
              0, # [9] miscellaneous
             ]
 title_72  = [" Oct 2018 ", " Mega Man 11 ", " PS4, Xbox One, NSW, DL ",
-             1.30, # [3] Quarter 1
+             1.50, # [3] Quarter 1
              1.40, # [4] Quarter 2
              1.40, # [5] Quarter 3
              1.50, # [6] Quarter 4
@@ -464,7 +464,7 @@ title_72  = [" Oct 2018 ", " Mega Man 11 ", " PS4, Xbox One, NSW, DL ",
              0, # [9] miscellaneous
             ]
 title_73  = [" Feb 2019 ", " Phoenix Wright: Ace Attorney Trilogy ", " PS4, NSW, DL ",
-             1.20, # [3] Quarter 1
+             1.70, # [3] Quarter 1
              1.30, # [4] Quarter 2
              1.40, # [5] Quarter 3
              1.60, # [6] Quarter 4
@@ -509,7 +509,7 @@ title_81  = [" Feb 2011 ", " Super Street Fighter IV 3D Edition ", " 3DS, DL ",
              0, # [9] miscellaneous
             ]
 title_83  = [" Mar 2017 ", " Ultimate Marvel vs. Capcom 3 ", " PS4, Xbox One, DL ",
-             1.20, # [3] Quarter 1
+             1.40, # [3] Quarter 1
              1.20, # [4] Quarter 2
              1.30, # [5] Quarter 3
              1.30, # [6] Quarter 4
@@ -518,7 +518,7 @@ title_83  = [" Mar 2017 ", " Ultimate Marvel vs. Capcom 3 ", " PS4, Xbox One, DL
              0, # [9] miscellaneous
             ]
 title_86  = [" Dec 2016 ", " Dead Rising 4 ", " Xbox One, PC, DL ",
-             1.20, # [3] Quarter 1
+             1.30, # [3] Quarter 1
              1.20, # [4] Quarter 2
              1.20, # [5] Quarter 3
              1.30, # [6] Quarter 4
@@ -536,7 +536,7 @@ title_87  = [" Mar 2012 ", " Resident Evil 4 ", " DL (PS3, Xbox 360) ",
              0, # [9] miscellaneous
             ]
 title_88  = [" Aug 2015 ", " Mega Man Legacy Collection ", " PS4, Xbox One, DL ",
-             1.20, # [3] Quarter 1
+             1.30, # [3] Quarter 1
              1.20, # [4] Quarter 2
              1.20, # [5] Quarter 3
              1.20, # [6] Quarter 4
@@ -581,7 +581,7 @@ title_93  = [" Mar 2012 ", " Devil May Cry HD Collection ", " PS3, Xbox 360, DL 
              0, # [9] miscellaneous
             ]
 title_99  = [" Jun 2011 ", " Super Street Fighter IV Arcade Edition ", " PS3, Xbox 360, DL ",
-             1.10, # [3] Quarter 1
+             1.20, # [3] Quarter 1
              1.10, # [4] Quarter 2
              1.10, # [5] Quarter 3
              1.10, # [6] Quarter 4
@@ -590,7 +590,7 @@ title_99  = [" Jun 2011 ", " Super Street Fighter IV Arcade Edition ", " PS3, Xb
              0, # [9] miscellaneous
             ]
 title_100 = [" Jun 2009 ", " Bionic Commando ", " PS3, Xbox 360, PC, DL ",
-             1.10, # [3] Quarter 1
+             1.30, # [3] Quarter 1
              1.10, # [4] Quarter 2
              1.10, # [5] Quarter 3
              1.10, # [6] Quarter 4
@@ -599,7 +599,7 @@ title_100 = [" Jun 2009 ", " Bionic Commando ", " PS3, Xbox 360, PC, DL ",
              0, # [9] miscellaneous
             ]
 title_101 = [" Nov 2017 ", " Resident Evil Revelations Collection ", " NSW, DL ",
-             1.0, # [3] Quarter 1
+             1.20, # [3] Quarter 1
              1.0, # [4] Quarter 2
              1.10, # [5] Quarter 3
              1.10, # [6] Quarter 4
@@ -608,7 +608,7 @@ title_101 = [" Nov 2017 ", " Resident Evil Revelations Collection ", " NSW, DL "
              0, # [9] miscellaneous
             ]
 title_105 = [" Feb 2014 ", " Strider ", " DL (PS3, PS4, Xbox 360, Xbox One, PC) ",
-             1.00, # [3] Quarter 1
+             1.30, # [3] Quarter 1
              1.00, # [4] Quarter 2
              1.00, # [5] Quarter 3
              1.10, # [6] Quarter 4
@@ -616,7 +616,26 @@ title_105 = [" Feb 2014 ", " Strider ", " DL (PS3, PS4, Xbox 360, Xbox One, PC) 
              1.00, # [8] LTD figure at end of two fiscal years prior
              0, # [9] miscellaneous
             ]
+title_113 = [" Jun 2022 ", " Monster Hunter Rise: Sunbreak ", " NSW, PC, DL ",
+             2.50, # [3] Quarter 1
+             2.50, # [4] Quarter 2
+             2.50, # [5] Quarter 3
+             2.50, # [6] Quarter 4
+             0, # [7] LTD figure at end of the last fiscal year
+             0, # [8] LTD figure at end of two fiscal years prior
+             0, # [9] miscellaneous
+            ]
+title_114 = [" Mar 2018 ", " Devil May Cry HD Collection ", " PS4, Xbox One, DL ",
+             1.10, # [3] Quarter 1
+             1.10, # [4] Quarter 2
+             1.10, # [5] Quarter 3
+             1.10, # [6] Quarter 4
+             0, # [7] LTD figure at end of the last fiscal year
+             0, # [8] LTD figure at end of two fiscal years prior
+             0, # [9] miscellaneous
+            ]
 
+# To get the current number of current titles from the site, subtract five.
 # Non-digital titles separated from rest for easier sorting and input
 title_112 = [" Jun 1990 ", " Chip'n Dale Rescue Rangers ", " NES ", 1.20, 1.20, 1.20, 1.20, 1.20, 1.20, 0,]
 title_111 = [" Nov 1992 ", " Magical Quest Starring Mickey ", " SNES ", 1.21, 1.21, 1.21, 1.21, 1.21, 1.21, 0,]
@@ -679,7 +698,7 @@ line_break_1 = "###" # line break
 
 for_loop_list_1 = [] # empty array
 
-for i in range(112): # number of titles
+for i in range(114): # number of titles
     take_1 = "title_" + str(i+1) # convert to string
     take_2 = globals()[take_1] # changes the string to a variable
     for_loop_list_1.append(take_2) # puts the variable into the array
