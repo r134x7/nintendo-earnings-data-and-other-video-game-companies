@@ -23,7 +23,7 @@ if mobile_output == 1:
 # Worldwide figures
 nintendo_switch_original_model_worldwide_1 = [
     # Input cumulative figures, Worldwide - Switch OG:
-    331 / 100, # [0] 1st quarter
+    132 / 100, # [0] 1st quarter
     645 / 100, # [1] 2nd quarter
     1179 / 100, # [2] 3rd quarter
     1356 / 100, # [3] 4th quarter
@@ -33,7 +33,7 @@ nintendo_switch_original_model_worldwide_1 = [
 
 nintendo_switch_lite_worldwide_1 = [
     # Input cumulative figures, Worldwide - Switch Lite:
-    114 / 100, # [0] 1st quarter
+    59 / 100, # [0] 1st quarter
     182 / 100, # [1] 2nd quarter
     317 / 100, # [2] 3rd quarter
     370 / 100, # [3] 4th quarter
@@ -43,7 +43,7 @@ nintendo_switch_lite_worldwide_1 = [
 
 nintendo_switch_oled_model_worldwide_1 = [
     # Input cumulative figures, Worldwide - Switch OLED:
-    0 / 100, # [0] 1st quarter
+    152 / 100, # [0] 1st quarter
     0 / 100, # [1] 2nd quarter
     399 / 100, # [2] 3rd quarter
     580 / 100, # [3] 4th quarter 
@@ -53,7 +53,7 @@ nintendo_switch_oled_model_worldwide_1 = [
 
 nintendo_switch_hardware_worldwide_1 = [
     # Input cumulative figures, Worldwide - Switch Hardware:
-    445 / 100, # [0] 1st quarter
+    343 / 100, # [0] 1st quarter
     828 / 100, # [1] 2nd quarter
     1895 / 100, # [2] 3rd quarter
     2306 / 100, # [3] 4th quarter
@@ -63,7 +63,7 @@ nintendo_switch_hardware_worldwide_1 = [
 
 nintendo_switch_software_worldwide_1 = [
     # Input cumulative figures, Worldwide - Switch Software:
-    4529 / 100, # [0] 1st quarter
+    4141 / 100, # [0] 1st quarter
     9389 / 100, # [1] 2nd quarter
     17929 / 100, # [2] 3rd quarter
     23507 / 100, # [3] 4th quarter
@@ -75,7 +75,7 @@ nintendo_switch_software_worldwide_1 = [
 # Japan figures
 nintendo_switch_original_model_japan_1 = [
     # Input cumulative figures, Japan - Switch OG
-    83 / 100, # [0] 1st quarter
+    22 / 100, # [0] 1st quarter
     158 / 100, # [1] 2nd quarter
     235 / 100, # [2] 3rd quarter
     256 / 100, # [3] 4th quarter
@@ -93,7 +93,7 @@ nintendo_switch_original_model_japan_last_fy = [
 
 nintendo_switch_lite_japan_1 = [
     # Input cumulative figures, Japan - Switch Lite:
-    34 / 100, # [0] 1st quarter
+    10 / 100, # [0] 1st quarter
     45 / 100, # [1] 2nd quarter
     91 / 100, # [2] 3rd quarter
     102 / 100, # [3] 4th quarter
@@ -111,7 +111,7 @@ nintendo_switch_lite_japan_last_fy = [
 
 nintendo_switch_oled_model_japan_1 = [
     # Input cumulative figures, Japan - Switch OLED:
-    0 / 100, # [0] 1st quarter
+    39 / 100, # [0] 1st quarter
     0 / 100, # [1] 2nd quarter
     107 / 100, # [2] 3rd quarter
     161 / 100, # [3] 4th quarter
@@ -129,7 +129,7 @@ nintendo_switch_oled_model_japan_last_fy = [
 
 nintendo_switch_hardware_japan_1 = [
     # Input cumulative figures, Japan - Switch Hardware:
-    116 / 100, # [0] 1st quarter
+    72 / 100, # [0] 1st quarter
     203 / 100, # [1] 2nd quarter
     432 / 100, # [2] 3rd quarter
     519 / 100, # [3] 4th quarter
@@ -147,7 +147,7 @@ nintendo_switch_hardware_japan_last_fy = [
 
 nintendo_switch_software_japan_1 = [
     # Input cumulative figures, Japan - Switch Software:
-    813 / 100, # [0] 1st quarter
+    807 / 100, # [0] 1st quarter
     1613 / 100, # [1] 2nd quarter
     3098 / 100, # [2] 3rd quarter
     4214 / 100, # [3] 4th quarter
@@ -167,7 +167,7 @@ nintendo_switch_software_japan_last_fy = [
 # The Americas figures
 nintendo_switch_original_model_the_americas_1 = [
     # Input cumulative figures, The Americas - Switch OG:
-    110 / 100, # [0] 1st quarter
+    49 / 100, # [0] 1st quarter
     215 / 100, # [1] 2nd quarter
     411 / 100, # [2] 3rd quarter
     522 / 100, # [3] 4th quarter
@@ -185,7 +185,7 @@ nintendo_switch_original_model_the_americas_last_fy = [
     
 nintendo_switch_lite_the_americas_1 = [
     # Input cumulative figures, The Americas - Switch Lite:
-    48 / 100, # [0] 1st quarter
+    33 / 100, # [0] 1st quarter
     89 / 100, # [1] 2nd quarter
     133 / 100, # [2] 3rd quarter
     159 / 100, # [3] 4th quarter
@@ -203,7 +203,7 @@ nintendo_switch_lite_the_americas_last_fy = [
     
 nintendo_switch_oled_model_the_americas_1 = [
     # Input cumulative figures, The Americas - Switch OLED:
-    0 / 100, # [0] 1st quarter
+    46 / 100, # [0] 1st quarter
     0 / 100, # [1] 2nd quarter
     141 / 100, # [2] 3rd quarter
     194 / 100, # [3] 4th quarter
@@ -221,7 +221,7 @@ nintendo_switch_oled_model_the_americas_last_fy = [
     
 nintendo_switch_hardware_the_americas_1 = [
     # Input cumulative figures, The Americas - Switch Hardware:
-    159 / 100, # [0] 1st quarter
+    127 / 100, # [0] 1st quarter
     304 / 100, # [1] 2nd quarter
     684 / 100, # [2] 3rd quarter
     876 / 100, # [3] 4th quarter
@@ -239,7 +239,7 @@ nintendo_switch_hardware_the_americas_last_fy = [
     
 nintendo_switch_software_the_americas_1 = [
     # Input cumulative figures, The Americas - Switch Software:
-    2235 / 100, # [0] 1st quarter
+    1714 / 100, # [0] 1st quarter
     4513 / 100, # [1] 2nd quarter
     8464 / 100, # [2] 3rd quarter
     10827 / 100, # [3] 4th quarter
@@ -259,7 +259,7 @@ nintendo_switch_software_the_americas_last_fy = [
 # Europe figures
 nintendo_switch_original_model_europe_1 = [
     # Input cumulative figures, Europe - Switch OG:
-    82 / 100, # [0] 1st quarter
+    53 / 100, # [0] 1st quarter
     163 / 100, # [1] 2nd quarter
     375 / 100, # [2] 3rd quarter
     404 / 100, # [3] 4th quarter
@@ -277,7 +277,7 @@ nintendo_switch_original_model_europe_last_fy = [
     
 nintendo_switch_lite_europe_1 = [
     # Input cumulative figures, Europe - Switch Lite:
-    26 / 100, # [0] 1st quarter
+    12 / 100, # [0] 1st quarter
     39 / 100, # [1] 2nd quarter
     75 / 100, # [2] 3rd quarter
     86 / 100, # [3] 4th quarter
@@ -295,7 +295,7 @@ nintendo_switch_lite_europe_last_fy = [
     
 nintendo_switch_oled_model_europe_1 = [
     # Input cumulative figures, Europe - Switch OLED:
-    0 / 100, # [0] 1st quarter
+    45 / 100, # [0] 1st quarter
     0 / 100, # [1] 2nd quarter
     91 / 100, # [2] 3rd quarter
     112 / 100, # [3] 4th quarter
@@ -313,7 +313,7 @@ nintendo_switch_oled_model_europe_last_fy = [
     
 nintendo_switch_hardware_europe_1 = [
     # Input cumulative figures, Europe - Switch Hardware:
-    108 / 100, # [0] 1st quarter
+    111 / 100, # [0] 1st quarter
     202 / 100, # [1] 2nd quarter
     540 / 100, # [2] 3rd quarter
     602 / 100, # [3] 4th quarter
@@ -331,7 +331,7 @@ nintendo_switch_hardware_europe_last_fy = [
     
 nintendo_switch_software_europe_1 = [
     # Input cumulative figures, Europe - Switch Software:
-    1135 / 100, # [0] 1st quarter
+    1152 / 100, # [0] 1st quarter
     2563 / 100, # [1] 2nd quarter
     5085 / 100, # [2] 3rd quarter
     6578 / 100, # [3] 4th quarter
@@ -351,7 +351,7 @@ nintendo_switch_software_europe_last_fy = [
 # Other figures
 nintendo_switch_original_model_other_1 = [
     # Input cumulative figures, Other - Switch OG:
-    56 / 100, # [0] 1st quarter
+    8 / 100, # [0] 1st quarter
     109 / 100, # [1] 2nd quarter
     159 / 100, # [2] 3rd quarter
     174 / 100, # [3] 4th quarter
@@ -369,7 +369,7 @@ nintendo_switch_original_model_other_last_fy = [
     
 nintendo_switch_lite_other_1 = [
     # Input cumulative figures, Other - Switch Lite:
-    5 / 100, # [0] 1st quarter
+    4 / 100, # [0] 1st quarter
     10 / 100, # [1] 2nd quarter
     18 / 100, # [2] 3rd quarter
     22 / 100, # [3] 4th quarter
@@ -387,7 +387,7 @@ nintendo_switch_lite_other_last_fy = [
     
 nintendo_switch_oled_model_other_1 = [
     # Input cumulative figures, Other - Switch OLED:
-    0 / 100, # [0] 1st quarter
+    21 / 100, # [0] 1st quarter
     0 / 100, # [1] 2nd quarter
     61 / 100, # [2] 3rd quarter
     113 / 100, # [3] 4th quarter
@@ -405,7 +405,7 @@ nintendo_switch_oled_model_other_last_fy = [
     
 nintendo_switch_hardware_other_1 = [
     # Input cumulative figures, Other - Switch Hardware:
-    62 / 100, # [0] 1st quarter
+    33 / 100, # [0] 1st quarter
     119 / 100, # [1] 2nd quarter
     238 / 100, # [2] 3rd quarter
     309 / 100, # [3] 4th quarter
@@ -423,7 +423,7 @@ nintendo_switch_hardware_other_last_fy = [
     
 nintendo_switch_software_other_1 = [
     # Input cumulative figures, Other - Switch Software:
-    346 / 100, # [0] 1st quarter
+    467 / 100, # [0] 1st quarter
     700 / 100, # [1] 2nd quarter
     1283 / 100, # [2] 3rd quarter
     1888 / 100, # [3] 4th quarter

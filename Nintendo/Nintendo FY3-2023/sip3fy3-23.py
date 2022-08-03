@@ -61,7 +61,7 @@ title_1_last_fy_totals = [
 
 title_2_japan = [ 
     # Input cumulative figures
-    20 / 100, # Japan: [0] 1st quarter
+    30 / 100, # Japan: [0] 1st quarter
     46 / 100, # [1] second quarter
     86 / 100, # [2] third quarter
     116 / 100, # [3] fourth quarter
@@ -70,7 +70,7 @@ title_2_japan = [
 
 title_2_overseas = [ 
     # Input cumulative figures
-    150 / 100, # Overseas:  [0] 1st quarter 
+    118 / 100, # Overseas:  [0] 1st quarter 
     289 / 100, # [1] second quarter
     710 / 100, # [2] third quarter
     878 / 100 # [3] fourth quarter
@@ -78,7 +78,7 @@ title_2_overseas = [
 
 title_2_worldwide_fy = [ 
     # Input cumulative figures
-    0 / 100, # Global FY: [0] 1st quarter 
+    148 / 100, # Global FY: [0] 1st quarter 
     0 / 100, # [1] second quarter
     0 / 100, # [2] third quarter
     0 / 100 # [3] fourth quarter
@@ -86,7 +86,7 @@ title_2_worldwide_fy = [
 
 title_2_worldwide_ltd = [ 
     # Input cumulative figures
-    3874 / 100, # Global LTD: [0] 1st quarter 
+    4682 / 100, # Global LTD: [0] 1st quarter 
     3708 / 100, # [1] second quarter
     4335 / 100, # [2] third quarter
     4533 / 100 # [3] fourth quarter
@@ -884,32 +884,32 @@ title_23_last_fy_totals = [
     ]  
 
 title_24_japan = [ 
-    0 / 100, # Japan: [0] 1st quarter
-    0 / 100, # [1] second quarter
-    0 / 100, # [2] third quarter
-    85 / 100, # [3] fourth quarter
+    41 / 100, # Japan: [0] 1st quarter
+    41 / 100, # [1] second quarter
+    41 / 100, # [2] third quarter
+    41 / 100, # [3] fourth quarter
     " Kirby and the Forgotten Land " + " "*11 # [4] title
     ]
 
 title_24_overseas = [ 
-    0 / 100, # Overseas:  [0] 1st quarter 
-    0 / 100, # [1] second quarter
-    0 / 100, # [2] third quarter
-    180 / 100 # [3] fourth quarter
+    147 / 100, # Overseas:  [0] 1st quarter 
+    147 / 100, # [1] second quarter
+    147 / 100, # [2] third quarter
+    147 / 100 # [3] fourth quarter
     ]
 
 title_24_worldwide_fy = [ 
-    0 / 100, # Global FY: [0] 1st quarter 
-    0 / 100, # [1] second quarter
-    0 / 100, # [2] third quarter
-    0 / 100 # [3] fourth quarter
+    188 / 100, # Global FY: [0] 1st quarter 
+    188 / 100, # [1] second quarter
+    188 / 100, # [2] third quarter
+    188 / 100 # [3] fourth quarter
     ]
 
 title_24_worldwide_ltd = [
-    0 / 100, # Global LTD: [0] 1st quarter 
-    0 / 100, # [1] second quarter
-    0 / 100, # [2] third quarter
-    265 / 100 # [3] fourth quarter
+    453 / 100, # Global LTD: [0] 1st quarter 
+    453 / 100, # [1] second quarter
+    453 / 100, # [2] third quarter
+    453 / 100 # [3] fourth quarter
     ]
 
 title_24_last_fy_totals = [
@@ -995,29 +995,29 @@ title_26_last_fy_totals = [
     ]  
 
 title_27_japan = [ 
-    0 / 100, # Japan: [0] 1st quarter
+    90 / 100, # Japan: [0] 1st quarter
     0 / 100, # [1] second quarter
     0 / 100, # [2] third quarter
     0 / 100, # [3] fourth quarter
-    " placeholder " + " "*11 # [4] title
+    " Nintendo Switch Sports " + " "*11 # [4] title
     ]
 
 title_27_overseas = [ 
-    0 / 100, # Overseas:  [0] 1st quarter 
+    394 / 100, # Overseas:  [0] 1st quarter 
     0 / 100, # [1] second quarter
     0 / 100, # [2] third quarter
     0 / 100 # [3] fourth quarter
     ]
 
 title_27_worldwide_fy = [ 
-    0 / 100, # Global FY: [0] 1st quarter 
+    484 / 100, # Global FY: [0] 1st quarter 
     0 / 100, # [1] second quarter
     0 / 100, # [2] third quarter
     0 / 100 # [3] fourth quarter
     ]
 
 title_27_worldwide_ltd = [
-    0 / 100, # Global LTD: [0] 1st quarter 
+    484 / 100, # Global LTD: [0] 1st quarter 
     0 / 100, # [1] second quarter
     0 / 100, # [2] third quarter
     0 / 100 # [3] fourth quarter
@@ -1031,10 +1031,157 @@ title_27_last_fy_totals = [
     0 / 100 # [4] Global LTD for the FY before last_fy
     ]  
 
+title_28_japan = [ 
+    13 / 100, # Japan: [0] 1st quarter
+    0 / 100, # [1] second quarter
+    0 / 100, # [2] third quarter
+    0 / 100, # [3] fourth quarter
+    " Mario Strikers: Battle League " + " "*11 # [4] title
+    ]
+
+title_28_overseas = [ 
+    179 / 100, # Overseas:  [0] 1st quarter 
+    0 / 100, # [1] second quarter
+    0 / 100, # [2] third quarter
+    0 / 100 # [3] fourth quarter
+    ]
+
+title_28_worldwide_fy = [ 
+    191 / 100, # Global FY: [0] 1st quarter 
+    0 / 100, # [1] second quarter
+    0 / 100, # [2] third quarter
+    0 / 100 # [3] fourth quarter
+    ]
+
+title_28_worldwide_ltd = [
+    191 / 100, # Global LTD: [0] 1st quarter 
+    0 / 100, # [1] second quarter
+    0 / 100, # [2] third quarter
+    0 / 100 # [3] fourth quarter
+    ]
+
+title_28_last_fy_totals = [
+    0 / 100, # Japan [0]      
+    0 / 100, # Overseas [1]      
+    0 / 100, # Global FY [2]     
+    0 / 100, # Global LTD [3]     
+    0 / 100 # [4] Global LTD for the FY before last_fy
+    ]
+
+title_29_japan = [ 
+    0 / 100, # Japan: [0] 1st quarter
+    0 / 100, # [1] second quarter
+    0 / 100, # [2] third quarter
+    0 / 100, # [3] fourth quarter
+    " Fire Emblem Warriors: Three Hopes " + " "*11 # [4] title
+    ]
+
+title_29_overseas = [ 
+    0 / 100, # Overseas:  [0] 1st quarter 
+    0 / 100, # [1] second quarter
+    0 / 100, # [2] third quarter
+    0 / 100 # [3] fourth quarter
+    ]
+
+title_29_worldwide_fy = [ 
+    0 / 100, # Global FY: [0] 1st quarter 
+    0 / 100, # [1] second quarter
+    0 / 100, # [2] third quarter
+    0 / 100 # [3] fourth quarter
+    ]
+
+title_29_worldwide_ltd = [
+    0 / 100, # Global LTD: [0] 1st quarter 
+    0 / 100, # [1] second quarter
+    0 / 100, # [2] third quarter
+    0 / 100 # [3] fourth quarter
+    ]
+
+title_29_last_fy_totals = [
+    0 / 100, # Japan [0]      
+    0 / 100, # Overseas [1]      
+    0 / 100, # Global FY [2]     
+    0 / 100, # Global LTD [3]     
+    0 / 100 # [4] Global LTD for the FY before last_fy
+    ]
+
+title_30_japan = [ 
+    0 / 100, # Japan: [0] 1st quarter
+    0 / 100, # [1] second quarter
+    0 / 100, # [2] third quarter
+    0 / 100, # [3] fourth quarter
+    " placeholder " + " "*11 # [4] title
+    ]
+
+title_30_overseas = [ 
+    0 / 100, # Overseas:  [0] 1st quarter 
+    0 / 100, # [1] second quarter
+    0 / 100, # [2] third quarter
+    0 / 100 # [3] fourth quarter
+    ]
+
+title_30_worldwide_fy = [ 
+    0 / 100, # Global FY: [0] 1st quarter 
+    0 / 100, # [1] second quarter
+    0 / 100, # [2] third quarter
+    0 / 100 # [3] fourth quarter
+    ]
+
+title_30_worldwide_ltd = [
+    0 / 100, # Global LTD: [0] 1st quarter 
+    0 / 100, # [1] second quarter
+    0 / 100, # [2] third quarter
+    0 / 100 # [3] fourth quarter
+    ]
+
+title_30_last_fy_totals = [
+    0 / 100, # Japan [0]      
+    0 / 100, # Overseas [1]      
+    0 / 100, # Global FY [2]     
+    0 / 100, # Global LTD [3]     
+    0 / 100 # [4] Global LTD for the FY before last_fy
+    ]
+
+title_31_japan = [ 
+    0 / 100, # Japan: [0] 1st quarter
+    0 / 100, # [1] second quarter
+    0 / 100, # [2] third quarter
+    0 / 100, # [3] fourth quarter
+    " placeholder " + " "*11 # [4] title
+    ]
+
+title_31_overseas = [ 
+    0 / 100, # Overseas:  [0] 1st quarter 
+    0 / 100, # [1] second quarter
+    0 / 100, # [2] third quarter
+    0 / 100 # [3] fourth quarter
+    ]
+
+title_31_worldwide_fy = [ 
+    0 / 100, # Global FY: [0] 1st quarter 
+    0 / 100, # [1] second quarter
+    0 / 100, # [2] third quarter
+    0 / 100 # [3] fourth quarter
+    ]
+
+title_31_worldwide_ltd = [
+    0 / 100, # Global LTD: [0] 1st quarter 
+    0 / 100, # [1] second quarter
+    0 / 100, # [2] third quarter
+    0 / 100 # [3] fourth quarter
+    ]
+
+title_31_last_fy_totals = [
+    0 / 100, # Japan [0]      
+    0 / 100, # Overseas [1]      
+    0 / 100, # Global FY [2]     
+    0 / 100, # Global LTD [3]     
+    0 / 100 # [4] Global LTD for the FY before last_fy
+    ]
 
 for_loop_list_1 = []
 
-for i in range(26): # for loop to get 4 variables for each title into an array
+for i in range(30): # for loop to get 4 variables for each title into an array
     japan_list_1 = "title_" + str(i+1) + "_japan" # convert to string
     japan_list_2 = globals()[japan_list_1] # changes the string to a variable
     overseas_list_1 = "title_" + str(i+1) + "_overseas" # convert to string
@@ -1058,7 +1205,7 @@ for i in range (len(for_loop_list_2)): # for adding in title numbers to keep tra
 def quarterly_calculation (y, z, a, b, c): # y: japan z: overseas a: worldwide fy b: worldwide ltd c: last fy totals
 
     y1, z1, a1, b1, c1 = [], [], [], [], []
-
+    
     title_y = y[4]
     rank_c = c[5]
 
@@ -1075,7 +1222,7 @@ def quarterly_calculation (y, z, a, b, c): # y: japan z: overseas a: worldwide f
     d1 = [(y1[4] / a1[4]) * 100 , (z1[4] / a1[4]) * 100, (a1[4] / b1[4]) * 100] # [0] fiscal year comparison percentage Japan/WW, [1] fiscal year comparison percentage Overseas/WW, [2] fiscal year comparison percentage WW FY/LTD 
 
     d1.append((100 - (d1[2]))) # d1[3] WW LTD comparison percentage to WW FY
-
+    
     if current_quarter == 4 and c[3] != 0 and c[3] != c[4]:
         c1.append(((y1[4] / c[0]) - 1) * 100)
         c1.append(((z1[4] / c[1]) - 1) * 100)
@@ -1083,7 +1230,7 @@ def quarterly_calculation (y, z, a, b, c): # y: japan z: overseas a: worldwide f
         c1.append(((b1[4] / c[3]) - 1) * 100)
     elif current_quarter == 4 and c[3] != 0 and c[3] == c[4]:
         c1.append("+Infinity%"), c1.append("+Infinity%"), c1.append("+Infinity%"), c1.append("+Infinity%")
-    else:
+    elif current_quarter == 4:
         c1.append("New! "), c1.append("New! "), c1.append("New! "), c1.append("New! ")
 
     if current_quarter == 4:
@@ -1102,26 +1249,32 @@ def quarterly_calculation (y, z, a, b, c): # y: japan z: overseas a: worldwide f
             overseas_old.append(z1[4])
             global_fy_old.append(a1[4])
             global_ltd_old.append(b1[4])
-
-        return mobile_format (y1, z1, a1, b1, d1, title_y, rank_c, c1)
+    
+    return mobile_format (y1, z1, a1, b1, d1, title_y, rank_c, c1)
 
 def format_to_string (y1, z1, a1, b1, d1, title_y, rank_c, c1):
     
     y2, z2, a2, b2 = ['{:.2f}M '.format(elem) for elem in y1], ['{:.2f}M '.format(elem) for elem in z1], ['{:.2f}M '.format(elem) for elem in a1], ['{:.2f}M '.format(elem) for elem in b1]
 
-    if "New! " != c1[0] and "+Infinity%" != c1[0]:
-        c2 = ['{:+.2f}% '.format(elem) for elem in c1]
-    else: c2 = c1
+    if current_quarter == 4:
+        if "New! " != c1[0] and "+Infinity%" != c1[0]:
+            c2 = ['{:+.2f}% '.format(elem) for elem in c1]
+        else: c2 = c1
 
     y3, z3, a3, b3 = ['{0: >9}'.format(elem) for elem in y2], ['{0: >9}'.format(elem) for elem in z2], ['{0: >9}'.format(elem) for elem in a2], ['{0: >9}'.format(elem) for elem in b2]
 
-    c2 = ['{0: >9}'.format(elem) for elem in c2]
+    if current_quarter == 4:
+        c2 = ['{0: >9}'.format(elem) for elem in c2]
 
     d2 = ['{:.2f}% '.format(elem) for elem in d1]
 
     d2 = ['{0: >9}'.format(elem) for elem in d2] #format width
 
-    return to_print_mobile (y3, z3, a3, b3, d2, a1, title_y, rank_c, c2)
+    if current_quarter == 4:
+        return to_print_mobile (y3, z3, a3, b3, d2, a1, title_y, rank_c, c2)
+    else:
+        c2 = ["new", "new", "new", "new" ]    
+        return to_print_mobile (y3, z3, a3, b3, d2, a1, title_y, rank_c, c2)
 
 def mobile_format (y1, z1, a1, b1, d1, title_y, rank_c, c1):
 
@@ -1141,13 +1294,13 @@ def mobile_format (y1, z1, a1, b1, d1, title_y, rank_c, c1):
     if second_line:
         line_join = line_join.join(first_line) + " "*(31-len(line_join.join(first_line))) + "|" + " "*9 + "|" + "\n" + "| " + line_join.join(second_line) + " "*(31-len(line_join.join(second_line)))
     else: line_join = line_join.join(first_line) + " "*(31-sum(first_line_check))
-
+    
     return format_to_string (y1, z1, a1, b1, d1, line_join, rank_c, c1)
 
 def to_print_mobile (y3, z3, a3, b3, d2, a1, title_y, rank_c, c2):
 
     for_loop_list_local = [y3, z3, a3, b3]
-
+    
     if a1 != 0:
         print(border_line[1])
         print("| " + title_y + "|" + rank_c + "|")
@@ -1167,9 +1320,9 @@ def to_print_mobile (y3, z3, a3, b3, d2, a1, title_y, rank_c, c2):
             if a1 != 0:
                 print(border_line_double[1])
                 print("|"  +  row_1[4] +  "|" + for_loop_list_local[i][4] + "|" + for_loop_list_local[i+1][4] + "|")
-                if current_quarter == 4 and i== 0:
+                if current_quarter == 4 and i == 0:
                     print("|"  +  row_1[7] +  "|" + c2[0] + "|" + c2[1] + "|")
-                else:
+                elif current_quarter == 4:
                     print("|"  +  row_1[7] +  "|" + c2[2] + "|" + c2[3] + "|")
             #print percentages
             if a1 != 0:

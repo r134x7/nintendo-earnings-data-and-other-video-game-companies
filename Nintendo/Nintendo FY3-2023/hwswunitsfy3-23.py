@@ -15,7 +15,7 @@ current_quarter = 1 # Set to 1, 2, 3 or 4.
 
 nintendo_switch_original_model_1 = [
     # input cumulative figures
-    331 / 100, # [0] Q1
+    132 / 100, # [0] Q1
     645 / 100, # [1] Q2
     1179 / 100, # [2] Q3
     1356 / 100, # [3] Q4
@@ -32,7 +32,7 @@ nintendo_switch_original_model_last_fy_1 = [
 
 nintendo_switch_lite_1 = [
     # input cumulative figures
-    114 / 100, # [0] Q1
+    59 / 100, # [0] Q1
     182 / 100, # [1] Q2
     317 / 100, # [2] Q3
     370 / 100, # [3] Q4
@@ -49,7 +49,7 @@ nintendo_switch_lite_last_fy_1 = [
 
 nintendo_switch_oled_model_1 = [ 
     # input cumulative figures
-    0 / 100, # [0] Q1
+    152 / 100, # [0] Q1
     0 / 100, # [1] Q2
     399 / 100, # [2] Q3
     580 / 100, # [3] Q4
@@ -66,7 +66,7 @@ nintendo_switch_oled_model_last_fy_1 = [
 
 nintendo_switch_hardware_1 = [
     # input cumulative figures
-    445 / 100, # [0] Q1
+    343 / 100, # [0] Q1
     828 / 100, # [1] Q2
     1895 / 100, # [2] Q3
     2306 / 100, # [3] Q4
@@ -88,7 +88,7 @@ nintendo_switch_hardware_last_fy_1 = [
 
 nintendo_switch_software_1 = [
     # input cumulative figures
-    4529 / 100, # [0] Q1
+    4141 / 100, # [0] Q1
     9389 / 100, # [1] Q2
     17929 / 100, # [2] Q3
     23507 / 100, # [3] Q4
@@ -110,7 +110,7 @@ nintendo_switch_software_last_fy_1 = [
 
 mobile_ip_etc_income_1 = [
     # input cumulative figures
-    13199, # [0] Q1
+    10981, # [0] Q1
     25501, # [1] Q2
     39825, # [2] Q3
     53342 # [3] Q4

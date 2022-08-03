@@ -19,7 +19,7 @@ footer = [
     border_line + ("\n(※ Proportion of overseas (outside of Japan)") + ("\nsales to total sales)"), 
     border_line + ("\n(※ Proportion of hardware \n (including accessories) sales") + ("\nto total dedicated video game platform sales)"), 
     border_line + ("\n(※ Proportion of first-party software sales") + ("\nto total dedicated video game software sales)"), 
-    border_line + ("\n(\"※ Digital sales include a) downloadable \nversions of packaged software,") + ("\nb) download-only software, \nc) add-on content and \nd) Nintendo Switch Online, etc.") + ("\n＊\"Downloadable versions of packaged software\" \nindicates the") + ("downloadable version of \nsoftware that is offered both physically \nand digitally.\")"), 
+    border_line + ("\n(\"※ Digital sales include a) downloadable \nversions of packaged software,") + ("\nb) download-only software, \nc) add-on content and \nd) Nintendo Switch Online, etc.") + ("\n＊\"Downloadable versions of packaged software\" \nindicates the ") + ("downloadable version of \nsoftware that is offered both physically \nand digitally.\")"), 
     border_line + ("\n(※ Proportion of digital sales to total \ndedicated ") + ("video game software sales )"), 
     ("+" + "-"*37 + "+") + ("\n(※ Proportion of downloadable versions of \npackaged software sales ") + ("to total digital sales \nas indicated above: a/(a+b+c+d) )")
     ] # [0] Print proportion of overseas sales, [1] print proportion of hardware sales, [2] print Proportion of first party software sales, [3] print Digital Sales, [4] print proportion of digital sales, [5] Print Proportion of DL Ver. of Packaged SW Sales
@@ -28,7 +28,7 @@ current_quarter = 1 # Set to 1, 2, 3 or 4.
 
 # Input figures
 proportion_of_overseas_sales = [
-    11.2, # [0] 1st quarter 
+    79.9, # [0] 1st quarter 
     11.2, # [1] 2nd quarter
     11.2, # [2] 3rd quarter
     11.2, # [3] 4th quarter
@@ -38,7 +38,7 @@ proportion_of_overseas_sales = [
     ] 
 
 proportion_of_hardware_sales = [
-    33.2, # [0] 1st quarter 
+    43.8, # [0] 1st quarter 
     33.2, # [1] 2nd quarter
     33.2, # [2] 3rd quarter
     33.2, # [3] 4th quarter
@@ -48,7 +48,7 @@ proportion_of_hardware_sales = [
     ]
 
 proportion_of_first_party_software_sales = [
-    44.2, # [0] 1st quarter 
+    76.3, # [0] 1st quarter 
     44.2, # [1] 2nd quarter
     44.2, # [2] 3rd quarter
     44.2, # [3] 4th quarter
@@ -58,7 +58,7 @@ proportion_of_first_party_software_sales = [
     ] 
 
 digital_sales = [
-    22.2, # [0] 1st quarter 
+    88.0, # [0] 1st quarter 
     22.2, # [1] 2nd quarter
     22.2, # [2] 3rd quarter
     22.2, # [3] 4th quarter
@@ -68,7 +68,7 @@ digital_sales = [
     ] 
 
 proportion_of_digital_sales = [
-    66.2, # [0] 1st quarter 
+    53.0, # [0] 1st quarter 
     66.2, # [1] 2nd quarter
     66.2, # [2] 3rd quarter
     66.2, # [3] 4th quarter
@@ -78,7 +78,7 @@ proportion_of_digital_sales = [
     ] 
 
 proportion_of_download_version_of_packaged_software_sales = [
-    88.2, # [0] 1st quarter 
+    52.1, # [0] 1st quarter 
     88.2, # [1] 2nd quarter
     88.2, # [2] 3rd quarter
     88.2, # [3] 4th quarter

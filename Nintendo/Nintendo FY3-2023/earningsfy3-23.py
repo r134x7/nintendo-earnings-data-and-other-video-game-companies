@@ -11,7 +11,7 @@ current_quarter = 1 # Set to 1, 2, 3 or 4.
 
 net_sales_1 = [ 
     # input cumulative figures:
-    322647, # [0] Q1
+    307460, # [0] Q1
     624272, # [1] Q2
     1320219, # [2] Q3
     1695344, # [3] Q4
@@ -33,7 +33,7 @@ net_sales_last_fy_1= [
 
 operating_income_1 = [
     # input cumulative figures:
-    119752, # [0] Q1
+    101647, # [0] Q1
     219959, # [1] Q2
     472551, # [2] Q3
     592760, # [3] Q4
@@ -55,7 +55,7 @@ operating_income_last_fy_1 = [
 
 net_income_1 = [ 
     # input cumulative figures
-    92747, # [0] is Q1
+    118984, # [0] is Q1
     171834, # [1] Q2
     367387, # [2] Q3 
     477691, # [3] Q4
