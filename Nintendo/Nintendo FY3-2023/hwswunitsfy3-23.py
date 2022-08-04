@@ -71,7 +71,7 @@ nintendo_switch_hardware_1 = [
     1895 / 100, # [2] Q3
     2306 / 100, # [3] Q4
     10765 / 100, # [4] LTD at end of last fy
-    2550 / 100, # [5] current fiscal year forecast
+    2100 / 100, # [5] current fiscal year forecast
     0 / 100, # [6] next fiscal year forecast (you wouldn't expect to use this until Q4 results) 
     0 / 100, # [7] 1st forecast revision
     0 / 100, # [8] 2nd forecast revision 
@@ -93,7 +93,7 @@ nintendo_switch_software_1 = [
     17929 / 100, # [2] Q3
     23507 / 100, # [3] Q4
     82219 / 100, # [4] LTD at end of last fy
-    19000 / 100, # [5] current fiscal year forecast
+    21000 / 100, # [5] current fiscal year forecast
     0 / 100, # [6] next fiscal year forecast (you wouldn't expect to use this until Q4 results) 
     0 / 100, # [7] 1st forecast revision
     0 / 100, # [8] 2nd forecast revision 
