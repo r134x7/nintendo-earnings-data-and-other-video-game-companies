@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Text, Button, Space, Collapse, Autocomplete } from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
-import NINTENDO_FY3_22 from "../components/NINTENDO_FY3_22";
 
 const yearsList: any = []; // empty array 
 Array.from({length: 6}, (v, i) => i).map(x => x = 1).reduce((acc, curr) => yearsList.push("FY3/" + (acc + curr + 2016).toString()), 0) // yearsList gets an array containing years from 2017 to 2022
@@ -81,7 +80,7 @@ export default function Nintendo() {
                 value={year} 
                 onChange={setYear}
             />
-            <NINTENDO_FY3_22 />
+            
         </div>
 
     );

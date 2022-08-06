@@ -1,9 +1,23 @@
-import { Code } from "@mantine/core";
+import { useState, useEffect } from "react";
+import { Code, SegmentedControl } from "@mantine/core";
 
 export default function NINTENDO_FY3_22() {
 
     // what should be done is render different data depending on what button is pressed
     // testing code output...
+
+    const [data, setData] = useState("");
+    const [value, setValue] = useState("");
+
+    // console.log(value);
+    
+
+    useEffect(() => {
+        (value === "WW Hardware/Sofware units, Mobile/IP related income")
+            ? setData(nintendoHardwareSoftwareMobile)
+            : setData("");
+
+    }, [value])
 
     const nintendoHardwareSoftwareMobile = `
     +------------------------------+
@@ -145,9 +159,33 @@ export default function NINTENDO_FY3_22() {
     ###
     `;
 
+    // function VALUE_BLOCKS() {
+
+    //     return <SegmentedControl
+    //     value={value}
+    //     onChange={setValue}
+    //     data={["Earnings", "WW Hardware/Sofware units, Mobile/IP related income", "Key/Digital Sales Indicator",
+    //             "FY Million-Seller Titles", "Regional Hardware/Software units", "Top Selling Titles"]}
+    //   />
+    // }
+
     return (
-        <>
-            <Code color="gray" block>{nintendoHardwareSoftwareMobile}</Code>
-        </>
+
+        <div>  
+            <SegmentedControl
+                    fullWidth 
+                    orientation="vertical"
+                    value={value}
+                    onChange={setValue}
+                    data={[ "Earnings", 
+                            "WW Hardware/Sofware units, Mobile/IP related income", 
+                            "Key/Digital Sales Indicator", 
+                            "FY Million-Seller Titles", 
+                            "Regional Hardware/Software units", 
+                            "Top Selling Titles",]}
+            />
+            <Code color="gray" block>{data}</Code>
+        </div>
+        
     );
 }
