@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { Text } from '@mantine/core';
+import { Text, Button, Space, Collapse } from "@mantine/core"
+import "../App.css";
 import { useInterval } from "@mantine/hooks";
-import "../App.css"
 
-const NoMatch = () => {
 
-    const message = "There is no page here... Or is there?...";
+export default function Nintendo() {
+
+    const message = `Welcome, this is where you can find archived Nintendo earnings data.`;
+
     const splitMessage = message.split("");
 
     const [text, setText] = useState("");
@@ -13,7 +15,6 @@ const NoMatch = () => {
 
     const [seconds, setSeconds] = useState(0);
     const interval = useInterval(() => setSeconds((s) => s + 1), 120);
-
 
     useEffect(() => {
         if (seconds === splitMessage.length) {
@@ -28,11 +29,14 @@ const NoMatch = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [seconds])
 
+
+
+
     return (
-        <div className="clamps">
+
+        <div>
             <Text style={{textAlign: "center"}} sx={textColour} size="lg">{text}</Text>
         </div>
-    );
-};
 
-export default NoMatch;
+    );
+}
