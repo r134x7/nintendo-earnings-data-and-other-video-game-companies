@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Text, Button, Space, Collapse } from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
-
+import NINTENDO_FY3_22 from "../components/NINTENDO_FY3_22";
 
 export default function Nintendo() {
 
@@ -36,6 +36,8 @@ export default function Nintendo() {
 
         <div>
             <Text style={{textAlign: "center"}} sx={textColour} size="lg">{text}</Text>
+            <Space />
+            <NINTENDO_FY3_22 />
         </div>
 
     );
