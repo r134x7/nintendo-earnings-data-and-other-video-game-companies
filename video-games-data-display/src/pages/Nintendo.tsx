@@ -1,14 +1,23 @@
 import { useEffect, useState } from "react";
-import { Text, Button, Space, Collapse, Autocomplete } from "@mantine/core"
+import { Text, Button, Space, Collapse, Autocomplete, NativeSelect, ColorPicker } from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
+import { useDispatch } from "react-redux";
+import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import NINTENDO_FY3_22 from "../components/NINTENDO_FY3_2022";
 
 const yearsList: any = []; // empty array 
 Array.from({length: 6}, (v, i) => i).map(x => x = 1).reduce((acc, curr) => yearsList.push("FY3/" + (acc + curr + 2016).toString()), 0) // yearsList gets an array containing years from 2017 to 2022
 
 
+// const coloursList = ["gray", "blue", "cyan", "dark", "grape", "green", "indigo", "lime", "orange", "pink", "red", "teal", "violet", "yellow"]
+const coloursList = ["rgba(52, 58, 64, 0.2)", "#2C2E33"]
+
+
+
 export default function Nintendo() {
+
+    const dispatch = useDispatch();
 
     const message = `Welcome, this is where you can find archived Nintendo earnings data.`;
 
@@ -29,42 +38,27 @@ export default function Nintendo() {
             setText(text + splitMessage[seconds])
         }
 
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [seconds])
 
     const [year, setYear] = useState("");
 
-    const [yearDes, setYearDes] = useState(Number())
+    const [colour, setColour] = useState("rgb(52, 58, 64)")
 
-    // const yearsList = ["FY3/2022", "FY3/2021", "FY3/2020", "FY3/2019", "FY3/2018", "FY3/2017", ];
-    // const yearsList = [2017, 2018].map(x => x + 1
-    // );
+    useEffect(() => {
+        const colourSplitReduce = colour.split("").reduce((acc, curr) => {
+            return (curr === "b")
+                ? acc + "ba"
+                : (curr === ")")
+                ? acc + ", .20)"
+                : acc + curr
+        }, "") // using reduce to create an rgba colour with 20% opacity so that the user only has to use an RGB slider.
+               
+        dispatch(ADD_BACKGROUND_COLOUR({
+            colour: colourSplitReduce
+        }))
 
-    // function yearsList() {
-
-    // }
-
-    // console.log(yearsList);
-
-
-    // const yearsSliced = 
-
-    // console.log(year);
-    
-    // const description = (year: string) => {
-    //         (year.length === 8)
-    //             ? 
-    //             : ;
-    //     }
-    
-
-    // make a function here that will take the year selected and then render the component...
-    function SelectYear() {
-
-    }
-
-
+    }, [colour])
 
     return (
 
@@ -74,14 +68,26 @@ export default function Nintendo() {
                 mb="sm"
                 placeholder="Select"
                 label="Select Fiscal Year"
-                description={`Fiscal Year ending March ${year.slice(4,8)}. (Type in the last two digits of the year to search quicker except 2020.)`}
+                description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
                 radius="xl"
                 size="md"
+                limit={yearsList.length}
                 data={yearsList}
                 value={year} 
                 onChange={setYear}
             />
-            <NINTENDO_FY3_22 />
+
+            <ColorPicker 
+                    mb="sm" 
+                    swatchesPerRow={7} 
+                    format="rgb" 
+                    value={colour} 
+                    onChange={setColour}
+                    />
+
+            {(year === "FY3/2022")
+                ? <NINTENDO_FY3_22 />
+                : null}
         </div>
 
     );

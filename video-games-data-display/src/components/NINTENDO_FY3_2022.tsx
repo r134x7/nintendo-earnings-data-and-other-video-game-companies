@@ -1,10 +1,16 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl } from "@mantine/core";
+import { useSelector } from "react-redux";
 
 export default function NINTENDO_FY3_22() {
 
     const [data, setData] = useState("");
     const [value, setValue] = useState("");
+
+    const state: any = useSelector(state => state);
+
+    console.log(state);
+    
 
     useEffect(() => {
         (value === "Consolidated Operating Results")
@@ -1354,16 +1360,6 @@ export default function NINTENDO_FY3_22() {
     ###
     `;
 
-    // function VALUE_BLOCKS() {
-
-    //     return <SegmentedControl
-    //     value={value}
-    //     onChange={setValue}
-    //     data={["Earnings", "WW Hardware/Software units, Mobile/IP related income", "Key/Digital Sales Indicator",
-    //             "FY Million-Seller Titles", "Regional Hardware/Software units", "Top Selling Titles"]}
-    //   />
-    // }
-
     return (
 
         <div>  
@@ -1379,8 +1375,11 @@ export default function NINTENDO_FY3_22() {
                             "Regional Hardware/Software units", 
                             "Top Selling Titles",]}
             />
-            <Code color="gray" block>{data}</Code>
+            
+            <Code style={{backgroundColor: `${state.colour}`}} block>{data}</Code>
         </div>
         
     );
 }
+// gray rgba(52, 58, 64, 0.2)
+// dark #2C2E33

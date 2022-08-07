@@ -40,10 +40,10 @@ function App() {
        theme={{ colorScheme: colorScheme}}  
        withGlobalStyles withNormalizeCSS>
         <AppShell // the default styles implemented in appShell was overwriting the colorScheme
-          styles={(theme) => ({main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[2] },})}
+          styles={(theme) => ({main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[1] },})}
           navbarOffsetBreakpoint="sm"
         navbar={
-          <Navbar sx={(theme) => ({ backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[2] })} p="xl" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 175, lg: 175 }}>
+          <Navbar sx={(theme) => ({ backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[1] })} p="xl" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 175, lg: 175 }}>
             <Stack spacing="xl">
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/">
                   <Button leftIcon={<Butterfly size={24} strokeWidth={2} color={'#40bfb2'}/>} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Home</Button>
@@ -51,7 +51,7 @@ function App() {
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/search">
                   <Button leftIcon={<SearchIcon size={24} strokeWidth={2} color={'#40bfb2'} />} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Search</Button>
               </NavLink>
-              <Stack spacing="xl" sx={(theme) => ({ backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[2] })}>
+              <Stack spacing="xl" sx={(theme) => ({ backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[1] })}>
                 <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/nintendo">
                     <Button radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Nintendo</Button>
                 </NavLink>
@@ -64,7 +64,7 @@ function App() {
           </Navbar>
         }
         header={
-          <Header sx={(theme) => ({ backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[2] })} height={70} p="md">
+          <Header sx={(theme) => ({ backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[1] })} height={70} p="md">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: "space-between", height: '100%' }}>
               <MediaQuery largerThan="sm" styles={{ display: "none"}}>
                 <Burger

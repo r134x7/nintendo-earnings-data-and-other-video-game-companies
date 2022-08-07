@@ -11,7 +11,7 @@ const backgroundSlice = createSlice({
         ADD_BACKGROUND_COLOUR(state, action) {
             return {
                 ...state,
-                background: action.payload.colour,
+                colour: action.payload.colour,
             };
         }
     }
