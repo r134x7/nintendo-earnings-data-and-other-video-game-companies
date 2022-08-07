@@ -2,6 +2,7 @@
   "name": "video-games-data-display",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://r134x7.github.io/nintendo-earnings-data-and-other-video-game-companies",
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@mantine/core": "^5.0.3",
@@ -17,6 +18,7 @@
     "@types/react-dom": "^18.0.6",
     "chart.js": "^3.9.1",
     "dayjs": "^1.11.4",
+    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^4.3.1",
     "react-dom": "^18.2.0",
