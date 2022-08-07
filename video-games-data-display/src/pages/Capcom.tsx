@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text, Group, Button, Space, Collapse, Autocomplete, NativeSelect, ColorPicker } from "@mantine/core"
+import { Text, Group, Button, Space, Collapse, Autocomplete, NativeSelect, ColorPicker, Stack, Paper, Anchor } from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useDispatch } from "react-redux";
@@ -56,7 +56,19 @@ export default function Capcom() {
     return (
 
         <div>
-            <Text mb="md" style={{textAlign: "center"}} sx={textColour} size="lg">{text}</Text>
+            <Stack mb="md" align="center">
+            <Paper shadow="sm" radius="lg" p="md" withBorder>
+                <Text style={{textAlign: "center"}} sx={textColour} size="lg">{text}</Text>
+            </Paper>
+            </Stack>
+            <Paper mb="md" shadow="sm" radius="xl" p="md" withBorder>
+            <Stack align="center">
+                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">You should head to Install Base where my Capcom Platinum Titles data can be seen.</Text>
+                    <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/forums/threads/capcom-platinum-titles-for-fy3-23-as-of-june-30th-2022-34-109-titles-had-sales-this-quarter-two-new-titles-appear.965/" target="_blank" >
+                    https://www.installbaseforum.com/forums/threads/capcom-platinum-titles-for-fy3-23-as-of-june-30th-2022-34-109-titles-had-sales-this-quarter-two-new-titles-appear.965/
+                    </Anchor>
+            </Stack>
+            </Paper>
         </div>
 
     );

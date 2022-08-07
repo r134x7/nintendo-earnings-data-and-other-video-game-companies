@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text, Group, Button, Space, Collapse, Autocomplete, NativeSelect, ColorPicker } from "@mantine/core"
+import { Text, Group, Button, Space, Collapse, Autocomplete, NativeSelect, ColorPicker, Anchor, Stack, Paper } from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useDispatch } from "react-redux";
@@ -59,7 +59,19 @@ export default function Nintendo() {
     return (
 
         <div>
-            <Text mb="md" style={{textAlign: "center"}} sx={textColour} size="lg">{text}</Text>
+            <Stack mb="md" align="center">
+            <Paper shadow="sm" radius="lg" p="md" withBorder>
+                <Text style={{textAlign: "center"}} sx={textColour} size="lg">{text}</Text>
+            </Paper>
+            </Stack>
+            <Paper mb="md" shadow="sm" radius="xl" p="xs" withBorder>
+            <Stack align="center">
+                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">Don't forget to visit Install Base where it has the latest Nintendo earnings data from me.</Text>
+                    <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/forums/threads/nintendo-fy3-2023-q1-earnings-release-switch-hardware-q1-3-43m-units-22-9-yoy-111-08m-units-ltd.967/" target="_blank" >
+                    https://www.installbaseforum.com/forums/threads/nintendo-fy3-2023-q1-earnings-release-switch-hardware-q1-3-43m-units-22-9-yoy-111-08m-units-ltd.967/
+                    </Anchor>
+            </Stack>
+            </Paper>
             <Group position="center">
 
                 <Autocomplete
@@ -86,9 +98,20 @@ export default function Nintendo() {
 
             </Group>
 
-            {(year === "FY3/2022")
+            {   (year === "FY3/2022")
                 ? <NINTENDO_FY3_22 />
-                : null}
+                : (year === "FY3/2021") 
+                ? <Text>There is no data here yet, search FY3/2022 for data.</Text>
+                : (year === "FY3/2020")
+                ? <Text>There is no data here yet, search FY3/2022 for data.</Text>
+                : (year === "FY3/2019")
+                ? <Text>There is no data here yet, search FY3/2022 for data.</Text>
+                : (year === "FY3/2018")
+                ? <Text>There is no data here yet, search FY3/2022 for data.</Text>
+                : (year === "FY3/2017")
+                ? <Text>There is no data here yet, search FY3/2022 for data.</Text>
+                : null
+            }
         </div>
 
     );
