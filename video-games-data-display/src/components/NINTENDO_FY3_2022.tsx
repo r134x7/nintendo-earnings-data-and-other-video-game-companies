@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { Code, SegmentedControl, Anchor, Text, Stack, Pagination, Group, Space } from "@mantine/core";
+import { Code, SegmentedControl, Anchor, Text, Stack, Pagination, Group, Space, Switch } from "@mantine/core";
 import { useSelector } from "react-redux";
 
-import { Line } from "react-chartjs-2";
+import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
 Chart.register(...registerables); // to get the package working, source: https://www.chartjs.org/docs/next/getting-started/integration.html
 
@@ -15,6 +15,10 @@ export default function NINTENDO_FY3_22() {
     const state: any = useSelector(state => state);
 
     const [activePage, setPage] = useState(1);
+    const [secondDataRef, setSecondDataRef] = useState(2)
+    const [checked, setChecked] = useState(false);
+    const [barChecked, setBarChecked] = useState(false);
+
     
 
     useEffect(() => {
@@ -1525,7 +1529,9 @@ export default function NINTENDO_FY3_22() {
             {sources}
             <Code style={{backgroundColor: `${state.colour}`}} block>{data}</Code>
             <div className="chart">
-                <Line 
+            {(checked === false && barChecked === false)
+                ? (
+                    <Line
                     datasetIdKey="switchTopSellingTitles"
                     data={{
                         labels: ["Q4 Last FY" ,"1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
@@ -1542,6 +1548,7 @@ export default function NINTENDO_FY3_22() {
                             },
                         ], 
                     }}
+
                     options={{
                         scales: {
                             y: {
@@ -1559,8 +1566,135 @@ export default function NINTENDO_FY3_22() {
                             }
                         }}
                      />
+                  )
+                : (checked === true && barChecked === false) ? (
+                     
+                <Line 
+                    datasetIdKey="switchTopSellingTitles"
+                    data={{
+                        labels: ["Q4 Last FY" ,"1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
+                        datasets: [
+                            {
+                                data: Object.values(switchTopSellingTitles[activePage-1]).slice(1),
+                                label: switchTopSellingTitles[activePage-1].title,
+                                borderColor: "indigo",
+                                backgroundColor: "red",
+
+                            },
+                            {
+                                data: Object.values(switchTopSellingTitles[secondDataRef-1]).slice(1),
+                                label: switchTopSellingTitles[secondDataRef-1].title,
+                                borderColor: "orange",
+                                backgroundColor: "black",
+                            },
+                        ], 
+                    }}
+
+                    options={{
+                        scales: {
+                            y: {
+                                title: {
+                                  display: true,
+                                  text: "Units at Life-To-Date (M = 10^6 or M = million)",
+                                },
+                              },
+                              x: {
+                                  title: {
+                                      display: true,
+                                      text: "Q4 FY3/21 and Quarters for Fiscal Year Ending March 2022",
+                                    },
+                                },
+                            }
+                        }}
+                     />
+                )
+                : (checked === false && barChecked === true) ? (
+                    <Bar 
+                    datasetIdKey="switchTopSellingTitles"
+                    data={{
+                        labels: ["Q4 Last FY" ,"1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
+                        datasets: [
+                            {
+                                data: Object.values(switchTopSellingTitles[activePage-1]).slice(1),
+                                label: switchTopSellingTitles[activePage-1].title,
+                                backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                                    return (curr === ".")
+                                            ? acc + ".80)"
+                                            : acc + curr;
+                                }),
+                                borderColor: "black",
+                                borderWidth: 2,
+
+                            },
+                        ], 
+                    }}
+
+                    options={{
+                        scales: {
+                            y: {
+                                title: {
+                                  display: true,
+                                  text: "Units at Life-To-Date (M = 10^6 or M = million)",
+                                },
+                              },
+                              x: {
+                                  title: {
+                                      display: true,
+                                      text: "Q4 FY3/21 and Quarters for Fiscal Year Ending March 2022",
+                                    },
+                                },
+                            }
+                        }}
+                     />
+                  )
+                : (
+                    <Bar 
+                    datasetIdKey="switchTopSellingTitles"
+                    data={{
+                        labels: ["Q4 Last FY" ,"1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
+                        datasets: [
+                            {
+                                data: Object.values(switchTopSellingTitles[activePage-1]).slice(1),
+                                label: switchTopSellingTitles[activePage-1].title,
+                                borderColor: "black",
+                                backgroundColor: "indigo",
+                                borderWidth: 2,
+                            },
+                            {
+                                data: Object.values(switchTopSellingTitles[secondDataRef-1]).slice(1),
+                                label: switchTopSellingTitles[secondDataRef-1].title,
+                                borderColor: "black",
+                                backgroundColor: "orange",
+                                borderWidth: 2,
+                            },
+                        ], 
+                    }}
+
+                    options={{
+                        scales: {
+                            y: {
+                                title: {
+                                  display: true,
+                                  text: "Units at Life-To-Date (M = 10^6 or M = million)",
+                                },
+                              },
+                              x: {
+                                  title: {
+                                      display: true,
+                                      text: "Q4 FY3/21 and Quarters for Fiscal Year Ending March 2022",
+                                    },
+                                },
+                            }
+                        }}
+                     />
+                  )}
                 <Group mt="md" position="center">
-                   <Pagination page={activePage} onChange={setPage} total={switchTopSellingTitles.length} color="teal" size="lg" radius="md" />
+                   <Pagination page={activePage} onChange={setPage} total={switchTopSellingTitles.length} color="teal" size="sm" radius="md" />
+                   <Switch onLabel="BAR" offLabel="BAR" size="md" checked={barChecked} onChange={(event) => setBarChecked(event.currentTarget.checked)} />
+                   <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
+                   {(checked === true) 
+                        ? <Pagination mr="xl" page={secondDataRef} onChange={setSecondDataRef} total={switchTopSellingTitles.length} color="red" size="sm" radius="md" />
+                        : null} 
                 </Group>
             </div>
             <br/>

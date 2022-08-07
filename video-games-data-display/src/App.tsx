@@ -16,12 +16,12 @@ import {
   Stack
 } from '@mantine/core';
 
-import { Settings as SettingsIcon, Search as SearchIcon, UserCircle, Butterfly, Moon, Sun } from 'tabler-icons-react';
+import { DeviceNintendo, Moon, Sun } from 'tabler-icons-react';
 
 import Home from "./pages/Home";
 import NoMatch from "./pages/NoMatch";
 import Nintendo from './pages/Nintendo';
-
+import Capcom from "./pages/Capcom";
 
 
 function App() {
@@ -46,20 +46,15 @@ function App() {
           <Navbar sx={(theme) => ({ backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[1] })} p="xl" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 175, lg: 175 }}>
             <Stack spacing="xl">
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/">
-                  <Button leftIcon={<Butterfly size={24} strokeWidth={2} color={'#40bfb2'}/>} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Home</Button>
+                  <Button leftIcon={<DeviceNintendo size={24} strokeWidth={2} color={'#40bfb2'}/>} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Home</Button>
               </NavLink>
-              <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/search">
-                  <Button leftIcon={<SearchIcon size={24} strokeWidth={2} color={'#40bfb2'} />} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Search</Button>
-              </NavLink>
-              <Stack spacing="xl" sx={(theme) => ({ backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[1] })}>
-                <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/nintendo">
+              <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/nintendo">
                     <Button radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Nintendo</Button>
-                </NavLink>
-                <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/settings">
-                  <Button leftIcon={<SettingsIcon size={24} strokeWidth={2} color={'#40bfb2'} />} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Settings</Button>
-                </NavLink>
-                {/* <FAQModal /> */}
-                </Stack>
+              </NavLink>
+              <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/capcom">
+                    <Button radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Capcom</Button>
+              </NavLink>
+              {/* <FAQModal /> */}
             </Stack>
           </Navbar>
         }
@@ -75,7 +70,7 @@ function App() {
                   mr="xl"
                 />
               </MediaQuery>
-                <Text>S.C.A.L.E. Up!</Text>
+                <Text>ggx2ac and the archives of Nintendo earnings data and other video game companies</Text>
                 <Button leftIcon={(colorScheme === 'dark') 
                                   ? <Sun size={24} strokeWidth={2} color={'yellow'} /> 
                                   : <Moon size={24} strokeWidth={2} color={'#40bfb2'} />} 
@@ -90,6 +85,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/nintendo" element={<Nintendo />} />
+                <Route path="/capcom" element={<Capcom />} />
                 <Route path="*" element={<NoMatch />} />
               </Routes>
           </div>
