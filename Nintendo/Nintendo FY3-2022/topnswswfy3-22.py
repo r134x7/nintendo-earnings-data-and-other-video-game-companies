@@ -1,6 +1,6 @@
 from operator import itemgetter
 
-header_1 = [  " Switch - Top Selling Titles    ", " "*3 + " Units "] #header
+header_1 = [  " Switch - Top Selling Titles    ", " Units "] #header
 row_1 = [" 1st Quarter " + " "*8, " 2nd Quarter "  + " "*8, " 3rd Quarter "  + " "*8, " 4th Quarter "  + " "*8, " FY3/22 Cumulative  "  + " "*1, " Life-To-Date "  + " "*7] # row names
 line_break_1 = "###" # line break
 
