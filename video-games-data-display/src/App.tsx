@@ -83,9 +83,9 @@ function App() {
         >
           <div>
               <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/nintendo" element={<Nintendo />} />
-                <Route path="/capcom" element={<Capcom />} />
+                <Route path="/nintendo-earnings-data-and-other-video-game-companies/" element={<Home />} />
+                <Route path="/nintendo-earnings-data-and-other-video-game-companies/nintendo" element={<Nintendo />} />
+                <Route path="/nintendo-earnings-data-and-other-video-game-companies/capcom" element={<Capcom />} />
                 <Route path="*" element={<NoMatch />} />
               </Routes>
           </div>
