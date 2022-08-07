@@ -7,72 +7,72 @@ line_break_1 = "###"
 border_line = ["+" + "-"*78 + "+", "+" + "-"*38 + "+", "+" + "-"*32 + "+", "+" + "-"*23 + "+", "+" + "-"*27 + "+"]
 border_line_double = ["+" + "-"*78 + "+", "+" + "="*38 + "+", "+" + "="*32 + "+", "+" + "="*23 + "+"]
 
-current_quarter = 1 # Set to 1, 2, 3 or 4.
+current_quarter = 4 # Set to 1, 2, 3 or 4.
 
 net_sales_1 = [ 
     # input cumulative figures:
-    307460, # [0] Q1
-    624272, # [1] Q2
-    1320219, # [2] Q3
-    1695344, # [3] Q4
-    1600000, # [4] current fiscal year forecast
-    0, # [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results)
-    0, # [6] 1st forecast revision
-    0, # [7] 2nd forecast revision
+    61969, # [0] Q1
+    136812, # [1] Q2
+    311121, # [2] Q3
+    489095, # [3] Q4
+    500000, # [4] current fiscal year forecast
+    750000, # [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results)
+    470000, # [6] 1st forecast revision
+    470000, # [7] 2nd forecast revision
     0 # [8] 3rd forecast revision (unlikely but there just in case)
     ]
 
 net_sales_last_fy_1= [ 
     # input quarterly calculated figures:
-    322647, # [0] last Q1
-    301625, # [1] last Q2
-    695947, # [2] last Q3
-    375125, # [3] last Q4
-    1695344 # [4] last fiscal year cumulative
+    90223, # [0] last Q1
+    113959, # [1] last Q2
+    221482, # [2] last Q3
+    78795, # [3] last Q4
+    504459 # [4] last fiscal year cumulative
     ]
 
 operating_income_1 = [
     # input cumulative figures:
-    101647, # [0] Q1
-    219959, # [1] Q2
-    472551, # [2] Q3
-    592760, # [3] Q4
-    500000, # [4] current fiscal year forecast
-    0, # [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results)
-    0, # [6] 1st forecast revision
-    0, # [7] 2nd forecast revision
+    -5134, # [0] Q1
+    -5947, # [1] Q2
+    26315, # [2] Q3
+    29362, # [3] Q4
+    45000, # [4] current fiscal year forecast
+    65000, # [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results)
+    30000, # [6] 1st forecast revision
+    25000, # [7] 2nd forecast revision
     0 # [8] 3rd forecast revision (unlikely but there just in case)
     ]
 
 operating_income_last_fy_1 = [ 
     # input quarterly calculated figures:
-    119752, # [0] last Q1
-    100207, # [1] last Q2
-    252592, # [2] last Q3
-    120209, # [3] last Q4
-    592760 # [4] last fiscal year cumulative
+    1149, # [0] last Q1
+    7828, # [1] last Q2
+    33508, # [2] last Q3
+    -9604, # [3] last Q4
+    32881 # [4] last fiscal year cumulative
     ]
 
 net_income_1 = [ 
     # input cumulative figures
-    118984, # [0] is Q1
-    171834, # [1] Q2
-    367387, # [2] Q3 
-    477691, # [3] Q4
-    340000, # [4] current fiscal year forecast
-    0, # [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results)
-    0, # [6] 1st forecast revision
-    0, # [7] 2nd forecast revision
+    -24534, # [0] is Q1
+    38299, # [1] Q2
+    102969, # [2] Q3 
+    102574, # [3] Q4
+    35000, # [4] current fiscal year forecast
+    45000, # [5] next fiscal year forecast (you wouldn't expect to use this until Q4 results)
+    50000, # [6] 1st forecast revision
+    90000, # [7] 2nd forecast revision
     0 # [8] 3rd forecast revision (unlikely but there just in case)
     ]
 
 net_income_last_fy_1= [ 
     # input quarterly calculated figures
-    92747, # [0] last Q1
-    79087, # [1] last Q2
-    195553, # [2] last Q3
-    110304, # [3] last Q4
-    477691 # [4] last fiscal year cumulative
+    8284, # [0] last Q1
+    3182, # [1] last Q2
+    29092, # [2] last Q3
+    -24053, # [3] last Q4
+    16505 # [4] last fiscal year cumulative
     ] # input quarterly calculated figures, [0] last Q1, [1] last Q2, [2] last Q3, [3] last Q4, [4] last fiscal year cumulative
 
 net_sales_empty = []

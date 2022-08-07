@@ -11,117 +11,117 @@ mobile_headers_rows = ["| Nintendo Switch   | FY3/2023 |", "| Sales Units and Fo
 
 footer = ["(Software sales units include both ", "packaged and downloadable versions", "of software.)", "(Includes income from smart-device", "content and royalty income.)"]
 
-current_quarter = 1 # Set to 1, 2, 3 or 4.
+current_quarter = 4 # Set to 1, 2, 3 or 4.
 
 nintendo_switch_original_model_1 = [
     # input cumulative figures
-    132 / 100, # [0] Q1
-    645 / 100, # [1] Q2
-    1179 / 100, # [2] Q3
-    1356 / 100, # [3] Q4
-    8345 / 100 # [4] LTD at end of last fy
+    0 / 100, # [0] Q1
+    0 / 100, # [1] Q2
+    0 / 100, # [2] Q3
+    274 / 100, # [3] Q4
+    0 / 100 # [4] LTD at end of last fy
     ]
 
 nintendo_switch_original_model_last_fy_1 = [
-    3.31, # [0] Q1
-    3.14, # [1] Q2
-    5.34, # [2] Q3
-    1.77, # [3] Q4
-    13.56 # [4] last fy cumulative
+    0, # [0] Q1
+    0, # [1] Q2
+    0, # [2] Q3
+    0, # [3] Q4
+    0 # [4] last fy cumulative
     ] 
 
 nintendo_switch_lite_1 = [
     # input cumulative figures
-    59 / 100, # [0] Q1
-    182 / 100, # [1] Q2
-    317 / 100, # [2] Q3
-    370 / 100, # [3] Q4
-    1840 / 100 # [4] LTD at end of last fy
+    0 / 100, # [0] Q1
+    0 / 100, # [1] Q2
+    0 / 100, # [2] Q3
+    0 / 100, # [3] Q4
+    0 / 100 # [4] LTD at end of last fy
     ]
 
 nintendo_switch_lite_last_fy_1 = [
-    1.14, # [0] Q1 
-    0.68, # [1] Q2
-    1.35, # [2] Q3
-    0.53, # [3] Q4
-    3.70 # [4] last fy cumulative
+    0, # [0] Q1 
+    0, # [1] Q2
+    0, # [2] Q3
+    0, # [3] Q4
+    0 # [4] last fy cumulative
     ]
 
 nintendo_switch_oled_model_1 = [ 
     # input cumulative figures
-    152 / 100, # [0] Q1
+    0 / 100, # [0] Q1
     0 / 100, # [1] Q2
-    399 / 100, # [2] Q3
-    580 / 100, # [3] Q4
-    580 / 100 # [4] LTD at end of last fy
+    0 / 100, # [2] Q3
+    0 / 100, # [3] Q4
+    0 / 100 # [4] LTD at end of last fy
     ]
 
 nintendo_switch_oled_model_last_fy_1 = [
     0, # [0] Q1
     0, # [1] Q2
-    3.99, # [2] Q3
-    1.81, # [3] Q4
-    580 # [4] last fy cumulative
+    0, # [2] Q3
+    0, # [3] Q4
+    0 # [4] last fy cumulative
     ] 
 
 nintendo_switch_hardware_1 = [
     # input cumulative figures
-    343 / 100, # [0] Q1
-    828 / 100, # [1] Q2
-    1895 / 100, # [2] Q3
-    2306 / 100, # [3] Q4
-    10765 / 100, # [4] LTD at end of last fy
-    2100 / 100, # [5] current fiscal year forecast
-    0 / 100, # [6] next fiscal year forecast (you wouldn't expect to use this until Q4 results) 
+    0 / 100, # [0] Q1
+    0 / 100, # [1] Q2
+    0 / 100, # [2] Q3
+    274 / 100, # [3] Q4
+    0 / 100, # [4] LTD at end of last fy
+    0 / 100, # [5] current fiscal year forecast
+    1000 / 100, # [6] next fiscal year forecast (you wouldn't expect to use this until Q4 results) 
     0 / 100, # [7] 1st forecast revision
     0 / 100, # [8] 2nd forecast revision 
     0 # [9] 3rd forecast revision (unlikely but there just in case)
     ] 
 
 nintendo_switch_hardware_last_fy_1 = [
-    4.45, # [0] Q1
-    3.83, # [1] Q2
-    10.67, # [2] Q3
-    4.11, # [3] Q4
-    23.06 # [4] last fy cumulative
+    0, # [0] Q1
+    0, # [1] Q2
+    0, # [2] Q3
+    0, # [3] Q4
+    0 # [4] last fy cumulative
     ] 
 
 nintendo_switch_software_1 = [
     # input cumulative figures
-    4141 / 100, # [0] Q1
-    9389 / 100, # [1] Q2
-    17929 / 100, # [2] Q3
-    23507 / 100, # [3] Q4
-    82219 / 100, # [4] LTD at end of last fy
-    21000 / 100, # [5] current fiscal year forecast
-    0 / 100, # [6] next fiscal year forecast (you wouldn't expect to use this until Q4 results) 
+    0 / 100, # [0] Q1
+    0 / 100, # [1] Q2
+    0 / 100, # [2] Q3
+    5.46 / 100, # [3] Q4
+    0 / 100, # [4] LTD at end of last fy
+    0 / 100, # [5] current fiscal year forecast
+    3500 / 100, # [6] next fiscal year forecast (you wouldn't expect to use this until Q4 results) 
     0 / 100, # [7] 1st forecast revision
     0 / 100, # [8] 2nd forecast revision 
     0 # [9] 3rd forecast revision (unlikely but there just in case)
     ] 
 
 nintendo_switch_software_last_fy_1 = [
-    45.29, # [0] Q1
-    48.60, # [1] Q2
-    85.40, # [2] Q3
-    55.78, # [3] Q4
-    23.507 # [4] last fy cumulative
+    0, # [0] Q1
+    0, # [1] Q2
+    0, # [2] Q3
+    0, # [3] Q4
+    0 # [4] last fy cumulative
     ] 
 
 mobile_ip_etc_income_1 = [
     # input cumulative figures
-    10981, # [0] Q1
-    25501, # [1] Q2
-    39825, # [2] Q3
-    53342 # [3] Q4
+    1649, # [0] Q1
+    3408, # [1] Q2
+    10683, # [2] Q3
+    24250 # [3] Q4
     ] 
 
 mobile_ip_etc_income_last_fy_1 = [
-    13199, # [0] Q1 
-    12302, # [1] Q2
-    14324, # [2] Q3
-    13517, # [3] Q4
-    53342 # [4] last fy cumulative
+    0, # [0] Q1 
+    0, # [1] Q2
+    0, # [2] Q3
+    0, # [3] Q4
+    0 # [4] last fy cumulative
     ] 
 
 def quarterly_calculation (y): # y: input current fy variables
