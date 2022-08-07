@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text, Button, Space, Collapse, Autocomplete, NativeSelect, ColorPicker } from "@mantine/core"
+import { Text, Group, Button, Space, Collapse, Autocomplete, NativeSelect, ColorPicker } from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useDispatch } from "react-redux";
@@ -9,11 +9,7 @@ import NINTENDO_FY3_22 from "../components/NINTENDO_FY3_2022";
 const yearsList: any = []; // empty array 
 Array.from({length: 6}, (v, i) => i).map(x => x = 1).reduce((acc, curr) => yearsList.push("FY3/" + (acc + curr + 2016).toString()), 0) // yearsList gets an array containing years from 2017 to 2022
 
-
-// const coloursList = ["gray", "blue", "cyan", "dark", "grape", "green", "indigo", "lime", "orange", "pink", "red", "teal", "violet", "yellow"]
-const coloursList = ["rgba(52, 58, 64, 0.2)", "#2C2E33"]
-
-
+// const coloursList = ["rgba(52, 58, 64, 0.2)", "#2C2E33"]
 
 export default function Nintendo() {
 
@@ -63,27 +59,32 @@ export default function Nintendo() {
     return (
 
         <div>
-            <Text mb="sm" style={{textAlign: "center"}} sx={textColour} size="lg">{text}</Text>
-            <Autocomplete
-                mb="sm"
-                placeholder="Select"
-                label="Select Fiscal Year"
-                description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
-                radius="xl"
-                size="md"
-                limit={yearsList.length}
-                data={yearsList}
-                value={year} 
-                onChange={setYear}
-            />
+            <Text mb="md" style={{textAlign: "center"}} sx={textColour} size="lg">{text}</Text>
+            <Group position="center">
 
-            <ColorPicker 
-                    mb="sm" 
-                    swatchesPerRow={7} 
-                    format="rgb" 
-                    value={colour} 
-                    onChange={setColour}
-                    />
+                <Autocomplete
+                    mb="sm"
+                    mr="md"
+                    placeholder="Select"
+                    label="Select Fiscal Year"
+                    description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
+                    radius="xl"
+                    size="md"
+                    limit={yearsList.length}
+                    data={yearsList}
+                    value={year} 
+                    onChange={setYear}
+                />
+
+                <ColorPicker 
+                        mb="sm" 
+                        swatchesPerRow={7} 
+                        format="rgb" 
+                        value={colour} 
+                        onChange={setColour}
+                />
+
+            </Group>
 
             {(year === "FY3/2022")
                 ? <NINTENDO_FY3_22 />
