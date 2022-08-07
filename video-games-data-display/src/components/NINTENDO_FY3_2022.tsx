@@ -6,7 +6,7 @@ export default function NINTENDO_FY3_22() {
 
     const [data, setData] = useState("");
     const [value, setValue] = useState("");
-    const [sources, setSources] = useState(<div></div>)
+    const [sources, setSources] = useState(<></>)
 
     const state: any = useSelector(state => state);
     
@@ -28,7 +28,7 @@ export default function NINTENDO_FY3_22() {
 
         (value === "Data Sources")
             ? setSources(DATA_SOURCES)
-            : setSources(<div></div>)
+            : setSources(<></>)
 
     }, [value])
 
