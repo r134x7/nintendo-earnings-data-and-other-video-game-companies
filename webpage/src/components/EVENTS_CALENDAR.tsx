@@ -40,7 +40,10 @@ export default function EVENTS_CALENDAR() {
         },
     ]
 
-
+    // console.log(dateArray.map(x => {
+    //     return x.eventDate
+    // }));
+    
 
     // need to solve getting the calendar to exclude everything but! the dates that exist...
 
@@ -52,9 +55,16 @@ export default function EVENTS_CALENDAR() {
                 onChange={setValue}
                 // minDate={getFirstDate()}
                 // maxDate={getLastDate()}
-                // excludeDate={(date) => date.getDate() !== new Date("August 8, 2022").getDate() && date.getMonth() !== new Date("August 8, 2022").getMonth() && date.getFullYear() !== new Date("August 8, 2022").getFullYear()}
-                // excludeDate={(date) => date.getMonth() !== new Date("August 8, 2022").getMonth()}
-                excludeDate={(date) => date.toString() !== new Date("August 8, 2022").toString()}
+                // excludeDate={(date) => date.getDay() === 0 || date.getDay() === 6 || date.getDay() === 3}
+                // excludeDate={(date) => date.toString() !== new Date("August 7, 2022").toString()}
+                // excludeDate={(date) => [date.toString()] === dateArray.map(x => new Date(x.eventDate).toString() ) }
+                excludeDate={(date) => 
+                    date.toString() !== new Date(dateArray[0].eventDate).toString() 
+                    && date.toString() !== new Date(dateArray[1].eventDate).toString()
+                    && date.toString() !== new Date(dateArray[2].eventDate).toString()
+                    && date.toString() !== new Date(dateArray[3].eventDate).toString()
+                }
+                // excludeDate={(date) => [date.toString(), date.toString()] !== [new Date("August 7, 2022").toString(), new Date("August 3, 2022").toString()]}
             />
         </>
     );
