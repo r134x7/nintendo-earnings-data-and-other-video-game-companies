@@ -16,7 +16,7 @@ import {
   Stack
 } from '@mantine/core';
 
-import { DeviceNintendo, Moon, Sun } from 'tabler-icons-react';
+import { Calendar, DeviceNintendo, Moon, Sun } from 'tabler-icons-react';
 
 import Home from "./pages/Home";
 import NoMatch from "./pages/NoMatch";
@@ -57,7 +57,7 @@ function App() {
                     <Button radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Capcom</Button>
               </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/nintendo-earnings-data-and-other-video-game-companies/events">
-                    <Button radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Events</Button>
+                    <Button leftIcon={<Calendar size={24} strokeWidth={2} color={'#40bfb2'}/>} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Events</Button>
               </NavLink>
               {/* <FAQModal /> */}
             </Stack>
