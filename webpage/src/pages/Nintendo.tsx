@@ -39,7 +39,7 @@ export default function Nintendo() {
 
     const [year, setYear] = useState("");
 
-    const [colour, setColour] = useState("rgb(52, 58, 64)")
+    const [colour, setColour] = useState("rgb(0, 0, 0)")
 
     useEffect(() => {
         const colourSplitReduce = colour.split("").reduce((acc, curr) => {

@@ -14,7 +14,7 @@ const Home = () => {
 
     const [seconds, setSeconds] = useState(0);
     
-    const interval = useInterval(() => setSeconds((s) => s + 1), 100);
+    const interval = useInterval(() => setSeconds((s) => s + 1), 80);
 
     useEffect(() => {
         
