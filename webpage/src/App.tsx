@@ -22,7 +22,9 @@ import Home from "./pages/Home";
 import NoMatch from "./pages/NoMatch";
 import Nintendo from './pages/Nintendo';
 import Capcom from "./pages/Capcom";
+import Events from "./pages/Events";
 
+// make modal for colour picker...
 
 function App() {
   
@@ -53,6 +55,9 @@ function App() {
               </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/nintendo-earnings-data-and-other-video-game-companies/capcom">
                     <Button radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Capcom</Button>
+              </NavLink>
+              <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/nintendo-earnings-data-and-other-video-game-companies/events">
+                    <Button radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Events</Button>
               </NavLink>
               {/* <FAQModal /> */}
             </Stack>
@@ -86,6 +91,7 @@ function App() {
                 <Route path="/nintendo-earnings-data-and-other-video-game-companies/" element={<Home />} />
                 <Route path="/nintendo-earnings-data-and-other-video-game-companies/nintendo" element={<Nintendo />} />
                 <Route path="/nintendo-earnings-data-and-other-video-game-companies/capcom" element={<Capcom />} />
+                <Route path="/nintendo-earnings-data-and-other-video-game-companies/events" element={<Events />} />
                 <Route path="*" element={<NoMatch />} />
               </Routes>
           </div>

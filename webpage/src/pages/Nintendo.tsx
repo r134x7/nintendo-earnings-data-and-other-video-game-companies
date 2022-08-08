@@ -68,7 +68,7 @@ export default function Nintendo() {
             <Stack align="center">
                 <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">Don't forget to visit Install Base where it has the latest Nintendo earnings data from me.</Text>
                     <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/forums/threads/nintendo-fy3-2023-q1-earnings-release-switch-hardware-q1-3-43m-units-22-9-yoy-111-08m-units-ltd.967/" target="_blank" >
-                    https://www.installbaseforum.com/forums/threads/nintendo-fy3-2023-q1-earnings-release-switch-hardware-q1-3-43m-units-22-9-yoy-111-08m-units-ltd.967/
+                        Nintendo FY3/2023 Q1 Earnings Release, Switch Hardware Q1 - 3.43M units ( -22.9% YoY), 111.08M units LTD
                     </Anchor>
             </Stack>
             </Paper>

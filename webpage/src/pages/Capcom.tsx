@@ -65,7 +65,7 @@ export default function Capcom() {
             <Stack align="center">
                 <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">You should head to Install Base where my Capcom Platinum Titles data can be seen.</Text>
                     <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/forums/threads/capcom-platinum-titles-for-fy3-23-as-of-june-30th-2022-34-109-titles-had-sales-this-quarter-two-new-titles-appear.965/" target="_blank" >
-                    https://www.installbaseforum.com/forums/threads/capcom-platinum-titles-for-fy3-23-as-of-june-30th-2022-34-109-titles-had-sales-this-quarter-two-new-titles-appear.965/
+                    Capcom Platinum Titles for FY3/23 as of June 30th, 2022. 34/109 titles had sales this quarter, two new titles appear.
                     </Anchor>
             </Stack>
             </Paper>
