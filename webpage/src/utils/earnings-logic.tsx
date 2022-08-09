@@ -49,11 +49,10 @@ const netSalesForecasts: Forecasts = {
 // template literals
 quarterlyCalculation(netSales);
 
-const yearsList: string[] = []; // empty array 
-Array.from({length: 6}, (v, i) => i).map(x => x = 1).reduce((acc, curr) => yearsList.push("FY3/" + (acc + curr + 2016).toString()), 0) // yearsList gets an array containing years from 2017 to 2022
-
 export function quarterlyCalculation(quarters: Quarters) {
+
     const test: number[] = Object.values(quarters)
+    const keys: string[] = Object.keys(quarters)
     const test2 = Object.values(quarters).map((x, i) => {
       // console.log(x)
       // console.log(i)
@@ -61,10 +60,18 @@ export function quarterlyCalculation(quarters: Quarters) {
         return x
       } else {
         // x - test[i]
-        let y = x - test[i-1]
+        let y = x - test[i-1] // you need to copy the array to do this since you cannot reference an element's index...
         return y
       }
     })
+
+    const reshape = keys.map((x, i) => {
+        return {
+          [x]: test2[i] 
+        }
+    }).reduce((acc, cur) => ({...acc, ...cur}), {}); // source for solution, but typescript won't let me assing Quarter to it... https://stackoverflow.com/questions/43957032/spread-syntax-not-working-as-expected-with-array-of-objects#:~:text=When%20spreading%20into%20an%20Object%2C%20the%20value%20of,each%20property%20is%20its%20index%20in%20the%20array.
+
+  console.log(reshape)
     // const y = [];
     // const test = Object.values(quarters)
     
