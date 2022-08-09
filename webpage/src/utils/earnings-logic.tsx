@@ -47,7 +47,7 @@ const netSalesForecasts: Forecasts = {
 // try using array.map.filter.reduce
 // rest pararmeters and spread syntax where needed
 // template literals
-quarterlyCalculation(netSales);
+const netSales2: Quarters = quarterlyCalculation(netSales);
 
 export function quarterlyCalculation(quarters: Quarters) {
 
@@ -70,8 +70,12 @@ export function quarterlyCalculation(quarters: Quarters) {
           [x]: test2[i] 
         }
     }).reduce((acc, cur) => ({...acc, ...cur}), {}); // source for solution, but typescript won't let me assing Quarter to it... https://stackoverflow.com/questions/43957032/spread-syntax-not-working-as-expected-with-array-of-objects#:~:text=When%20spreading%20into%20an%20Object%2C%20the%20value%20of,each%20property%20is%20its%20index%20in%20the%20array.
+    console.log(reshape)
+    const test5: Quarters = reshape as Quarters
 
-  console.log(reshape)
+
+
+  return test5
     // const y = [];
     // const test = Object.values(quarters)
     
