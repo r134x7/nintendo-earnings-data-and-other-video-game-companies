@@ -38,10 +38,10 @@ const netSales: Quarters = {
     fourthQuarter: 1695344,
 };
 
-const netSalesForecasts: Forecasts[] = [{
+const netSalesForecasts: Forecasts = {
     currentFiscalYearForecast: 1600000,
     nextFiscalYearForecast: 0,
-}]
+}
 
 // need to avoid using for loops...
 // try using array.map.filter.reduce
@@ -49,48 +49,51 @@ const netSalesForecasts: Forecasts[] = [{
 // template literals
 quarterlyCalculation(netSales);
 
-const yearsList: any = []; // empty array 
+const yearsList: string[] = []; // empty array 
 Array.from({length: 6}, (v, i) => i).map(x => x = 1).reduce((acc, curr) => yearsList.push("FY3/" + (acc + curr + 2016).toString()), 0) // yearsList gets an array containing years from 2017 to 2022
 
 export function quarterlyCalculation(quarters: Quarters) {
-    // let test = quarters.map((quarter, index) => {
-    //     return (index === 1) 
-    //             ? quarter.secondQuarter - quarter.firstQuarter
-    //             : (index === 2)
-    //             ? quarter.thirdQuarter - quarter.secondQuarter
-    //             : (index === 3)
-    //             ? quarter.fourthQuarter - quarter.thirdQuarter
-    //             : quarter.firstQuarter // do nothing
-    // // })
+    const test: number[] = Object.values(quarters)
+    const test2 = Object.values(quarters).map((x, i) => {
+      // console.log(x)
+      // console.log(i)
+      if (i === 0) {
+        return x
+      } else {
+        // x - test[i]
+        let y = x - test[i-1]
+        return y
+      }
+    })
     // const y = [];
     // const test = Object.values(quarters)
     
-    const y: number[] = [];
-    // const test = Object.values(quarters).reduce((acc: number, curr: number, index) => (index === 0) ? y.push(acc) : y.push(curr - acc))
+//     const y: number[] = [];
+//     // const test = Object.values(quarters).reduce((acc: number, curr: number, index) => (index === 0) ? y.push(acc) : y.push(curr - acc))
 
-    const test = Object.values(quarters).reduce((acc: number, curr: number, index) => 
-          y.push(acc + curr) )
-// const test = Object.values(quarters).reduce((acc, curr) => acc + curr, 0)
-// const test = Object.values(quarters).map((x: number[], index) => x )
+//     const test = Object.values(quarters).reduce((acc: number, curr: number, index) => 
+//           y.push(acc + curr) )
+// // const test = Object.values(quarters).reduce((acc, curr) => acc + curr, 0)
+// // const test = Object.values(quarters).map((x: number[], index) => x )
 
-  // const test2 = 
-  const quarterDifference: Quarters = {
-    firstQuarter: quarters.firstQuarter,
-    secondQuarter: quarters.secondQuarter - quarters.firstQuarter,
-    thirdQuarter: quarters.thirdQuarter - quarters.secondQuarter,
-    fourthQuarter: quarters.fourthQuarter - quarters.thirdQuarter,
-  }
+//   // const test2 = 
+//   const quarterDifference: Quarters = {
+//     firstQuarter: quarters.firstQuarter,
+//     secondQuarter: quarters.secondQuarter - quarters.firstQuarter,
+//     thirdQuarter: quarters.thirdQuarter - quarters.secondQuarter,
+//     fourthQuarter: quarters.fourthQuarter - quarters.thirdQuarter,
+//   }
 
-  const mergeQuarters: Quarters = { ...quarters, ...quarterDifference}
+//   const mergeQuarters: Quarters = { ...quarters, ...quarterDifference}
 
-    console.log(mergeQuarters)
-    console.log(y)
-    console.log(quarters)
+//     console.log(mergeQuarters)
+//     console.log(y)
+//     console.log(quarters)
     
     
 
 
-    return console.log(test);
+//     return console.log(test);
 
     
     
