@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import NINTENDO_FY3_22 from "../components/NINTENDO_FY3_2022";
 
-const yearsList: any = []; // empty array 
+const yearsList: string[] = []; // empty array 
 Array.from({length: 6}, (v, i) => i).map(x => x = 1).reduce((acc, curr) => yearsList.push("FY3/" + (acc + curr + 2016).toString()), 0) // yearsList gets an array containing years from 2017 to 2022
 
 // const coloursList = ["rgba(52, 58, 64, 0.2)", "#2C2E33"]
