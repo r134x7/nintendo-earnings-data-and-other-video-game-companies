@@ -3,12 +3,19 @@ interface Quarter {
     quarter: number,
   }
   
-  const netSales: Quarter[] = [
-      {quarter: 307460},
-      {quarter: 624272},
-      {quarter: 1320219},
-      {quarter: 1695344},
-  ]
+const netSales: Quarter[] = [
+    {quarter: 307460},
+    {quarter: 624272},
+    {quarter: 1320219},
+    {quarter: 1695344},
+]
+
+const operatingIncome: Quarter[] = [
+  {quarter: 101647}, 
+  {quarter: 219959}, 
+  {quarter: 472551}, 
+  {quarter: 592760}, 
+]
   
 
 interface Forecasts { // this type might have to change.
@@ -31,13 +38,30 @@ const netSalesForecasts: Forecasts = {
 // rest pararmeters and spread syntax where needed
 // template literals
 
-const netSalesDifference: Quarter[] = quarterlyCalculation(netSales)
+const netSalesDifference: Quarter[] = quarterlyCalculation(netSales);
+
+const operatingIncomeDifference: Quarter[] = quarterlyCalculation(operatingIncome);
+
+const netSalesCumulative: Quarter[] = cumulativeCalculation(netSales)
 
 export function quarterlyCalculation(quarters: Quarter[]) {
     
-    const calc = quarters.map((x,i, array) => {
-         return (i === 0) ? x : { quarter: x.quarter - array[i-1].quarter} // Finally figured out how to do it correctly with its own parameters
+    const calc = quarters.map((elem, index, array) => {
+         return (index === 0) ? elem : { quarter: elem.quarter - array[index-1].quarter} // Finally figured out how to do it correctly with its own parameters
       })
     
     return calc
 }
+
+export function cumulativeCalculation(quarters: Quarter[]) {
+
+    const calc = quarters.filter((elem, index, array) => {
+        return elem !== array[0]
+    })
+
+    console.log(calc);
+
+    return calc
+    
+}
+
