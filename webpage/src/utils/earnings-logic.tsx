@@ -202,6 +202,10 @@ const [operatingMarginQuarters, operatingMarginCumulative] = opMarginCollection.
     }
 })
 
+const opMarginForcasts = operatingMarginForecastCalculation(netSalesForecasts, operatingIncomeForecasts)
+
+// need to make function for forecasts
+
 export function quarterlyCalculation(quarters: Quarter[]) {
     
     const calc = quarters.map((elem, index, array) => {
@@ -236,7 +240,7 @@ export function yearOnYearCalculation(thisFY: Quarter[], lastFY: Quarter[]) {
 export function operatingMarginCalculation(netSalesLocal: Quarter[], opIncomeLocal: Quarter[]) {
 
     const calc = opIncomeLocal.map((elem, index) => {
-        return (netSales[index].quarter !== 0) 
+        return (netSalesLocal[index].quarter !== 0) 
                   ? {quarter: Number(
                         (((elem.quarter / netSalesLocal[index].quarter)) * 100).toFixed(2)
                      )} // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number 
@@ -244,6 +248,26 @@ export function operatingMarginCalculation(netSalesLocal: Quarter[], opIncomeLoc
     })
    
    return calc
+}
+
+export function operatingMarginForecastCalculation(netSalesLocal: Forecasts, opIncomeLocal: Forecasts) {
+
+    const operatingMarginForecasts: Forecasts = {
+        currentFiscalYearForecast: Number(((opIncomeLocal.currentFiscalYearForecast / netSalesLocal.currentFiscalYearForecast) * 100).toFixed(2)),
+        nextFiscalYearForecast: Number(((opIncomeLocal.nextFiscalYearForecast / netSalesLocal.nextFiscalYearForecast) * 100).toFixed(2)),
+        firstForecastRevision: (netSalesLocal.firstForecastRevision !== undefined && opIncomeLocal.firstForecastRevision !== undefined) 
+            ? Number(((opIncomeLocal.firstForecastRevision / netSalesLocal.firstForecastRevision) * 100).toFixed(2))
+            : 0,
+        secondForecastRevision: (netSalesLocal.secondForecastRevision !== undefined && opIncomeLocal.secondForecastRevision !== undefined) 
+            ? Number(((opIncomeLocal.secondForecastRevision / netSalesLocal.secondForecastRevision) * 100).toFixed(2))
+            : 0,
+        thirdForecastRevision: (netSalesLocal.thirdForecastRevision !== undefined && opIncomeLocal.thirdForecastRevision !== undefined) 
+            ? Number(((opIncomeLocal.thirdForecastRevision / netSalesLocal.thirdForecastRevision) * 100).toFixed(2))
+            : 0,
+    }
+
+    return operatingMarginForecasts
+
 }
 
 
