@@ -69,9 +69,9 @@ const [netSalesCumulative, netSalesLastFYCumulative, operatingIncomeCumulative] 
     return cumulativeCalculation(elem)
 })
 
-const yearOnYearNetSales = yearOnYearQuarterCalculation(netSalesDifference, netSalesLastFYDifference)
+const yearOnYearQuarterNetSales = yearOnYearQuarterCalculation(netSalesDifference, netSalesLastFYDifference)
 
-// const netSalesCumulative: Quarter[] = cumulativeCalculation(netSales)
+const yearOnYearCumulativeNetSales = yearOnYearCumulativeCalculation(netSalesCumulative, netSalesLastFYCumulative)
 
 export function quarterlyCalculation(quarters: Quarter[]) {
     
@@ -93,6 +93,18 @@ export function cumulativeCalculation(quarters: Quarter[]) {
 }
 
 export function yearOnYearQuarterCalculation(thisFY: Quarter[], lastFY: Quarter[]) {
+
+    const calc = thisFY.map((elem, index, array) => {
+        return {quarter: Number(
+                        (((elem.quarter / lastFY[index].quarter) -1) * 100).toFixed(2)
+                    )
+                } // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number 
+    })
+   
+   return calc
+}
+
+export function yearOnYearCumulativeCalculation(thisFY: Quarter[], lastFY: Quarter[]) {
 
     const calc = thisFY.map((elem, index, array) => {
         return {quarter: Number(
