@@ -73,7 +73,9 @@ const yearOnYearQuarterNetSales = yearOnYearCalculation(netSalesDifference, netS
 
 const yearOnYearCumulativeNetSales = yearOnYearCalculation(netSalesCumulative, netSalesLastFYCumulative)
 
-const operatingMargin = operatingMarginCalculation(netSalesDifference, operatingIncomeDifference)
+const operatingMarginQuarters = operatingMarginCalculation(netSalesDifference, operatingIncomeDifference)
+
+const operatingMarginCumulative = operatingMarginCalculation(netSalesCumulative, operatingIncomeCumulative)
 
 export function quarterlyCalculation(quarters: Quarter[]) {
     
@@ -118,3 +120,57 @@ export function operatingMarginCalculation(netSalesLocal: Quarter[], opIncomeLoc
    
    return calc
 }
+
+const header_1 = [ " Nintendo Co., Ltd.", " Net Sales ", " Operating Income "," Operating Margin ", " Net Profit ", "    YoY% ", "FY3/2023 ", " Consolidated Operating Results   "]
+
+interface Header {
+    companyName: string,
+    netSales: string,
+    operatingIncome: string,
+    netProfit: string,
+    yearOnYearPercentage: string,
+    fiscalYear: string,
+    title: string,
+}
+
+const header: Header = {
+    companyName: " Nintendo Co., Ltd.",
+    netSales: " Net Sales ",
+    operatingIncome: " Operating Income ",
+    netProfit: " Net Profit ",
+    yearOnYearPercentage: "    YoY% ",
+    fiscalYear: "FY3/2023 ",
+    title: " Consolidated Operating Results   ",
+}
+
+interface Rows {
+    firstQuarter: string,
+    secondQuarter: string,
+    thirdQuarter: string,
+    fourthQuarter: string,
+    firstQuarterYoy: string,
+    secondQuarterYoy: string,
+    thirdQuarterYoy: string,
+    fourthQuarterYoy: string,
+    firstHalf: string,
+    firstThreeQuarters: string,
+    fyCumulative: string,
+    firstHalfYoy: string,
+    firstThreeQuartersYoy: string,
+    fyCumulativeYoy: string,
+    currentFYForecast: string,
+    nextFYForecast: string,
+    forecastRevisionOne: string,
+    forecastRevisionTwo: string,
+    forecastRevisionThree: string,
+    lineBreak: string,
+}
+
+const row_1 = [" 1st Quarter ", " 2nd Quarter ",  " 3rd Quarter ",  " 4th Quarter ", " 1st Quarter YoY%  ", " 2nd Quarter YoY%  ", " 3rd Quarter YoY%  ", " 4th Quarter YoY%  ", " First Half  ", " 1st 3 Qtrs  ", " FY3/23 Cml. ", " First Half YoY%   ", " First 3 Qtrs YoY% ", " FY3/23 Cml. YoY%  ", " FY3/23 Forecast ", " FCST Revision 1 ", " FCST Revision 2 ", " FCST Revision 3 ", " FY3/24 Forecast ",   ] // row names, array length = 19
+
+const line_break_1 = "###" 
+
+const printMobile = `
+    +${"-".repeat(34)}+
+    | 
+`;
