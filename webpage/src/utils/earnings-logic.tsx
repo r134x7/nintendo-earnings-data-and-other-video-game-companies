@@ -1,7 +1,15 @@
 
 interface Quarter {
     quarter: number,
-  }
+}
+
+interface Forecasts { // this type might have to change.
+    currentFiscalYearForecast: number,
+    nextFiscalYearForecast: number,
+    firstForecastRevision?: number,
+    secondForecastRevision?: number,
+    thirdForecastRevision?: number,
+}
   
 const netSales: Quarter[] = [
     {quarter: 307460},
@@ -17,28 +25,56 @@ const netSalesLastFy: Quarter[] = [
     {quarter: 1758910},
 ]
 
+const netSalesForecasts: Forecasts = {
+    currentFiscalYearForecast: 1600000,
+    nextFiscalYearForecast: 1700000,
+    firstForecastRevision: 1620000,
+    secondForecastRevision: 1650000,
+}
+
 const operatingIncome: Quarter[] = [
   {quarter: 101647}, 
   {quarter: 219959}, 
   {quarter: 472551}, 
   {quarter: 592760}, 
 ]
-  
 
-interface Forecasts { // this type might have to change.
-    currentFiscalYearForecast: number,
-    nextFiscalYearForecast: number,
-    firstForecastRevision?: number,
-    secondForecastRevision?: number,
-    thirdForecastRevision?: number,
+const operatingIncomeLastFY: Quarter[] = [
+    {quarter: 144737}, 
+    {quarter: 246687}, 
+    {quarter: 329684}, 
+    {quarter: 419526}, 
+  ]
+
+const operatingIncomeForecasts: Forecasts = {
+    currentFiscalYearForecast: 500000,
+    nextFiscalYearForecast: 600000,
+    firstForecastRevision: 520000,
+    secondForecastRevision: 560000,
+}
+
+const netProfit: Quarter[] = [
+    {quarter: 151647}, 
+    {quarter: 239959}, 
+    {quarter: 322551}, 
+    {quarter: 452760}, 
+  ]
+  
+ const netProfitLastFY: Quarter[] = [
+      {quarter: 144737}, 
+      {quarter: 246687}, 
+      {quarter: 329684}, 
+      {quarter: 419526}, 
+    ]
+  
+const netIncomeForecasts: Forecasts = {
+        currentFiscalYearForecast: 340000,
+        nextFiscalYearForecast: 420000,
+        firstForecastRevision: 350000,
+        secondForecastRevision: 400000,
 }
 
 // type Consolidated = Quarters | Forecasts;
-
-const netSalesForecasts: Forecasts = {
-    currentFiscalYearForecast: 1600000,
-    nextFiscalYearForecast: 0,
-}
 
 interface Header {
     companyName: string,
@@ -112,36 +148,59 @@ const rows: Rows = {
 // template literals
 // array or object destructuring
 
-// const netSalesDifference: Quarter[] = quarterlyCalculation(netSales);
-
-// const operatingIncomeDifference: Quarter[] = quarterlyCalculation(operatingIncome);
-
 const collection = [
     netSales,
     netSalesLastFy,
     operatingIncome,
+    operatingIncomeLastFY,
+    netProfit,
+    netProfitLastFY
 ]
 
-const yearOnYearCollection = [
-    netSales,
-    netSalesLastFy,
-]
-
-const [netSalesDifference, netSalesLastFYDifference, operatingIncomeDifference] = collection.map((elem) => {
+const [netSalesDifference, netSalesLastFYDifference, operatingIncomeDifference, operatingIncomeLastFYDifference, netProfitDifference, netProfitLastFYDifference] = collection.map((elem) => {
     return quarterlyCalculation(elem)
 })
 
-const [netSalesCumulative, netSalesLastFYCumulative, operatingIncomeCumulative] = collection.map((elem) => {
+const [netSalesCumulative, netSalesLastFYCumulative, operatingIncomeCumulative, operatingIncomeLastFYCumlative,
+netProfitCumulative, netProfitLastFYCumulative] = collection.map((elem) => {
     return cumulativeCalculation(elem)
 })
 
-const yearOnYearQuarterNetSales = yearOnYearCalculation(netSalesDifference, netSalesLastFYDifference)
+const yearOnYearCollection = [
+    netSalesDifference,
+    netSalesLastFYDifference,
+    netSalesCumulative,
+    netSalesLastFYCumulative,
+    operatingIncomeDifference,
+    operatingIncomeLastFYDifference,
+    operatingIncomeCumulative,
+    operatingIncomeLastFYCumlative,
+    netProfitDifference,
+    netProfitLastFYDifference,
+    netProfitCumulative,
+    netProfitLastFYCumulative,
+]
 
-const yearOnYearCumulativeNetSales = yearOnYearCalculation(netSalesCumulative, netSalesLastFYCumulative)
+const [netSalesDifferenceYoy, netSalesCumulativeYoy, operatingIncomeDifferenceYoy, operatingIncomeCumulativeYoy, netProfitDifferenceYoy, netProfitCumulativeYoy] = yearOnYearCollection.filter((elem, index, array) => {
+        // need to use filter and not map because the array length for input is 12 and the output is 6.
+        if (index % 2 === 0) { // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
+            return yearOnYearCalculation(array[index], array[index+1])
+        }
+    })
 
-const operatingMarginQuarters = operatingMarginCalculation(netSalesDifference, operatingIncomeDifference)
+const opMarginCollection = [
+    netSalesDifference,
+    operatingIncomeDifference,
+    netSalesCumulative,
+    operatingIncomeCumulative,
+]
 
-const operatingMarginCumulative = operatingMarginCalculation(netSalesCumulative, operatingIncomeCumulative)
+const [operatingMarginQuarters, operatingMarginCumulative] = opMarginCollection.filter((elem, index, array) => {
+    // need to use filter and not map because the array length for input is 4 and the output is 2.
+    if (index % 2 === 0) { // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
+        return operatingMarginCalculation(array[index], array[index+1])
+    }
+})
 
 export function quarterlyCalculation(quarters: Quarter[]) {
     
@@ -187,19 +246,17 @@ export function operatingMarginCalculation(netSalesLocal: Quarter[], opIncomeLoc
    return calc
 }
 
-const header_1 = [ " Nintendo Co., Ltd.", " Net Sales ", " Operating Income "," Operating Margin ", " Net Profit ", "    YoY% ", "FY3/2023 ", " Consolidated Operating Results   "]
-
-
-
-
 
 export function printMobile() {
 
-    return `
+    const printHead = `
     +${"-".repeat(34)}+
-    |${header.companyName}|    ${header.fiscalYear}|
+    |${header.companyName}|    ${header.fiscalYear} |
     +${"-".repeat(34)}+
     |${header.title}|
-    +${"-".repeat(34)}+
-    
-`;}
+    +${"-".repeat(34)}+`;
+
+    const printQuartersNetSales = `
+    `;
+
+}
