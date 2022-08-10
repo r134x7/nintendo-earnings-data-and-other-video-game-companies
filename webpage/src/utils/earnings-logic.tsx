@@ -11,7 +11,7 @@ const netSales: Quarter[] = [
 ]
 
 const netSalesLastFy: Quarter[] = [
-    {quarter: 358106},    
+    {quarter: 322647},    
     {quarter: 769524},
     {quarter: 1404463},
     {quarter: 1758910},
@@ -52,19 +52,26 @@ const netSalesForecasts: Forecasts = {
 
 const collection = [
     netSales,
+    netSalesLastFy,
     operatingIncome,
 ]
 
-const [netSalesDifference, operatingIncomeDifference] = collection.map((elem) => {
+const yearOnYearCollection = [
+    netSales,
+    netSalesLastFy,
+]
+
+const [netSalesDifference, netSalesLastFYDifference, operatingIncomeDifference] = collection.map((elem) => {
     return quarterlyCalculation(elem)
 })
 
-console.log(netSalesDifference);
-console.log(operatingIncomeDifference);
+const [netSalesCumulative, netSalesLastFYCumulative, operatingIncomeCumulative] = collection.map((elem) => {
+    return cumulativeCalculation(elem)
+})
 
+const yearOnYearNetSales = yearOnYearQuarterCalculation(netSalesDifference, netSalesLastFYDifference)
 
-
-const netSalesCumulative: Quarter[] = cumulativeCalculation(netSales)
+// const netSalesCumulative: Quarter[] = cumulativeCalculation(netSales)
 
 export function quarterlyCalculation(quarters: Quarter[]) {
     
@@ -85,3 +92,14 @@ export function cumulativeCalculation(quarters: Quarter[]) {
     
 }
 
+export function yearOnYearQuarterCalculation(thisFY: Quarter[], lastFY: Quarter[]) {
+
+    const calc = thisFY.map((elem, index, array) => {
+        return {quarter: Number(
+                        (((elem.quarter / lastFY[index].quarter) -1) * 100).toFixed(2)
+                    )
+                } // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number 
+    })
+   
+   return calc
+}
