@@ -10,6 +10,13 @@ const netSales: Quarter[] = [
     {quarter: 1695344},
 ]
 
+const netSalesLastFy: Quarter[] = [
+    {quarter: 358106},    
+    {quarter: 769524},
+    {quarter: 1404463},
+    {quarter: 1758910},
+]
+
 const operatingIncome: Quarter[] = [
   {quarter: 101647}, 
   {quarter: 219959}, 
@@ -37,10 +44,25 @@ const netSalesForecasts: Forecasts = {
 // try using array.map.filter.reduce
 // rest pararmeters and spread syntax where needed
 // template literals
+// array or object destructuring
 
-const netSalesDifference: Quarter[] = quarterlyCalculation(netSales);
+// const netSalesDifference: Quarter[] = quarterlyCalculation(netSales);
 
-const operatingIncomeDifference: Quarter[] = quarterlyCalculation(operatingIncome);
+// const operatingIncomeDifference: Quarter[] = quarterlyCalculation(operatingIncome);
+
+const collection = [
+    netSales,
+    operatingIncome,
+]
+
+const [netSalesDifference, operatingIncomeDifference] = collection.map((elem) => {
+    return quarterlyCalculation(elem)
+})
+
+console.log(netSalesDifference);
+console.log(operatingIncomeDifference);
+
+
 
 const netSalesCumulative: Quarter[] = cumulativeCalculation(netSales)
 
@@ -58,8 +80,6 @@ export function cumulativeCalculation(quarters: Quarter[]) {
     const calc = quarters.filter((elem, index, array) => {
         return elem !== array[0]
     })
-
-    console.log(calc);
 
     return calc
     
