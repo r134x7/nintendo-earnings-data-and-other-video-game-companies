@@ -69,9 +69,11 @@ const [netSalesCumulative, netSalesLastFYCumulative, operatingIncomeCumulative] 
     return cumulativeCalculation(elem)
 })
 
-const yearOnYearQuarterNetSales = yearOnYearQuarterCalculation(netSalesDifference, netSalesLastFYDifference)
+const yearOnYearQuarterNetSales = yearOnYearCalculation(netSalesDifference, netSalesLastFYDifference)
 
-const yearOnYearCumulativeNetSales = yearOnYearCumulativeCalculation(netSalesCumulative, netSalesLastFYCumulative)
+const yearOnYearCumulativeNetSales = yearOnYearCalculation(netSalesCumulative, netSalesLastFYCumulative)
+
+const operatingMargin = operatingMarginCalculation(netSalesDifference, operatingIncomeDifference)
 
 export function quarterlyCalculation(quarters: Quarter[]) {
     
@@ -92,9 +94,9 @@ export function cumulativeCalculation(quarters: Quarter[]) {
     
 }
 
-export function yearOnYearQuarterCalculation(thisFY: Quarter[], lastFY: Quarter[]) {
+export function yearOnYearCalculation(thisFY: Quarter[], lastFY: Quarter[]) {
 
-    const calc = thisFY.map((elem, index, array) => {
+    const calc = thisFY.map((elem, index) => {
         return {quarter: Number(
                         (((elem.quarter / lastFY[index].quarter) -1) * 100).toFixed(2)
                     )
@@ -104,13 +106,14 @@ export function yearOnYearQuarterCalculation(thisFY: Quarter[], lastFY: Quarter[
    return calc
 }
 
-export function yearOnYearCumulativeCalculation(thisFY: Quarter[], lastFY: Quarter[]) {
+export function operatingMarginCalculation(netSalesLocal: Quarter[], opIncomeLocal: Quarter[]) {
 
-    const calc = thisFY.map((elem, index, array) => {
-        return {quarter: Number(
-                        (((elem.quarter / lastFY[index].quarter) -1) * 100).toFixed(2)
-                    )
-                } // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number 
+    const calc = opIncomeLocal.map((elem, index) => {
+        return (netSales[index].quarter !== 0) 
+                  ? {quarter: Number(
+                        (((elem.quarter / netSalesLocal[index].quarter)) * 100).toFixed(2)
+                     )} // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number 
+                  : {quarter: 0} // to prevent infinity calculations
     })
    
    return calc
