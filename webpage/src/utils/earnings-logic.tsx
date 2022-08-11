@@ -201,12 +201,12 @@ const yearOnYearCollection = [
 ]
 
 const [netSalesDifferenceYoy, netSalesCumulativeYoy, operatingIncomeDifferenceYoy, operatingIncomeCumulativeYoy, netProfitDifferenceYoy, netProfitCumulativeYoy] = yearOnYearCollection.map((elem, index, array) => {
-    // need to use map and then filter, not the other way around. Input array of length 12, output array of length 6.
-    if (index % 2 === 0) { // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
-        return yearOnYearCalculation(array[index], array[index+1])
-    }
-    }).filter((elem) => elem !== undefined) // map creates undefined elems so filter removes them and then the array destructuring works correctly
+    // need to use map and then filter, not the other way around. Input array of arrays of length 12, output array of arrays of length 12 and then filter to 6.
 
+    return (index % 2 === 0) // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
+            ? yearOnYearCalculation(array[index], array[index+1])
+            : [];
+    }).filter((elem) => elem.length !== 0) // map creates empty arrays so filter removes them and then the array destructuring works correctly, note: elem is used and not array because the array contains 12 arrays! This also removes the issue of variable possibly being undefined had we not put in empty arrays since it would have automatically placed undefined.
 
 const opMarginCollection = [
     netSalesDifference,
@@ -216,11 +216,12 @@ const opMarginCollection = [
 ]
 
 const [operatingMarginQuarters, operatingMarginCumulative] = opMarginCollection.map((elem, index, array) => {
-    // need to use map and then filter. Array length for input is 4 and the output is 2.
-    if (index % 2 === 0) { // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
-        return operatingMarginCalculation(array[index], array[index+1])
-        }
-    }).filter((elem) => elem !== undefined) // map creates undefined elems so filter removes them and then the array destructuring works correctly
+    // Input array of arrays of length 4, output array of arrays of length 4 and then filter to 2.
+
+    return (index % 2 === 0) // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
+            ? operatingMarginCalculation(array[index], array[index+1])
+            : [];
+    }).filter((elem) => elem.length !== 0) // map creates empty arrays so filter removes them and then the array destructuring works correctly, note: elem is used and not array because the array contains 12 arrays! This also removes the issue of variable possibly being undefined had we not put in empty arrays since it would have automatically placed undefined.
 
 const opMarginForcasts = operatingMarginForecastCalculation(netSalesForecasts, operatingIncomeForecasts)
 
@@ -302,7 +303,9 @@ const currentQuarter = 2; // Set to 1, 2, 3 or 4.
     // the array needs to be filtered and then mapped...
     const printQuartersNetSalesDifference = netSalesDifference.filter((elem, index) => index < currentQuarter).map((elem, index) => {
 
-        // let yoy = ;
+        let printNetSalesYoY = (netSalesDifferenceYoy[index].quarter > 0) 
+                                ? `+${netSalesDifferenceYoy[index].quarter}%`
+                                : `${netSalesDifferenceYoy[index].quarter}%`;
         //  let x = `${elem.quarter.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' })}M ` // cannot use currency settings as it creates border misalignment due to ¥ becoming wider. 
         let printNetSales = `¥${elem.quarter.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
         let printQuarterRow = `${rowQuartersApplied[index].quarter}`;  
