@@ -304,21 +304,23 @@ const printHead =
     // the array needs to be filtered and then mapped...
     const printQuartersNetSalesDifference = netSalesDifference.filter((elem, index) => index < currentQuarter).map((elem, index) => {
 
-        let printNetSalesYoY = (netSalesDifferenceYoy[index].quarter > 0) 
+        let printNetSalesYoY: string = (netSalesDifferenceYoy[index].quarter > 0) 
                                 ? `+${netSalesDifferenceYoy[index].quarter}% `
                                 : `${netSalesDifferenceYoy[index].quarter}% `;
-        let printNetSalesYoYFixed = (printNetSalesYoY.length === 9)
+        let printNetSalesYoYFixed: string = (printNetSalesYoY.length === 9)
                                 ? printNetSalesYoY
                                 : " ".repeat(9 - printNetSalesYoY.length) + printNetSalesYoY
         //  let x = `${elem.quarter.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' })}M ` // cannot use currency settings as it creates border misalignment due to ¥ becoming wider. 
-        let printNetSales = `¥${elem.quarter.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
-        let printNetSalesFixed = (printNetSales.length === 14)
+        let printNetSales: string = `¥${elem.quarter.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
+        let printNetSalesFixed: string = (printNetSales.length === 14)
                                   ? printNetSales
                                   : " ".repeat(14 - printNetSales.length) + printNetSales;
         let printQuarterRow = `${rowQuartersApplied[index].quarter}`;  
-        return "|" + printQuarterRow + "|" + printNetSalesFixed + "|" + printNetSalesYoYFixed + "|\n" // must affix a new line \n, was also affixing tabs \t to align but realised I could adjust the template literal 
-    }).reduce((prev, next, index) => {
-        return prev + next
+        return "|" + printQuarterRow + "|" + printNetSalesFixed + "|" + printNetSalesYoYFixed + "|" // old note, used "\n" at end here: must affix a new line \n, was also affixing tabs \t to align but realised I could adjust the template literal 
+    }).reduce((prev, next, index, array) => {
+        return (array[index] === array[currentQuarter -1])
+                  ? prev + `\n+${"-".repeat(38)}+\n` + next
+                  : prev + `\n+${"-".repeat(38)}+\n` + next 
     })   // sources for finding methods to convert numbers to strings with currency symbol and thousands separators: https://stackoverflow.com/questions/3753483/javascript-thousand-separator-string-format?noredirect=1&lq=1
     // mdn source with more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString 
  
@@ -327,7 +329,8 @@ const printQuartersNetSales =
 `+${"-".repeat(38)}+
 |${header.netSales}                 |${header.yearOnYearPercentage}|
 +${"-".repeat(38)}+
-${printQuartersNetSalesDifference}`;
+${printQuartersNetSalesDifference}
++${"=".repeat(38)}+`;
 
 const printAll = 
 `${printHead}
