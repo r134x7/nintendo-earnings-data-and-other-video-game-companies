@@ -306,15 +306,16 @@ export function printMobile() {
     `;
 
     // the array needs to be filtered and then mapped...
-    const printQuartersNetSalesDifference = netSalesDifference.filter((elem, index) => index < currentQuarter).map((elem) => {
+    const printQuartersNetSalesDifference = netSalesDifference.filter((elem, index) => index < currentQuarter).map((elem, index) => {
 
         let x = `${elem.quarter.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' })}M `
-        let y = `${rows.firstQuarter}`;  
+        let y = `${rowQuartersApplied[index].quarter}`;  
         return (x.length === 14) 
                     ? "|" + y + "|" + x + "|" 
                     : "|" + y + "|" + " ".repeat(14 - x.length) + x + "|";
     }) // sources for finding methods to convert numbers to strings with currency symbol and thousands separators: https://stackoverflow.com/questions/3753483/javascript-thousand-separator-string-format?noredirect=1&lq=1
     // mdn source with more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString 
+    console.log(printQuartersNetSalesDifference)
 }
 
 printMobile();
