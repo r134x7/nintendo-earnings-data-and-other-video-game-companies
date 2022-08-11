@@ -304,16 +304,21 @@ const currentQuarter = 2; // Set to 1, 2, 3 or 4.
     const printQuartersNetSalesDifference = netSalesDifference.filter((elem, index) => index < currentQuarter).map((elem, index) => {
 
         let printNetSalesYoY = (netSalesDifferenceYoy[index].quarter > 0) 
-                                ? `+${netSalesDifferenceYoy[index].quarter}%`
-                                : `${netSalesDifferenceYoy[index].quarter}%`;
+                                ? `+${netSalesDifferenceYoy[index].quarter}% `
+                                : `${netSalesDifferenceYoy[index].quarter}% `;
+        let printNetSalesYoYFixed = (printNetSalesYoY.length === 9)
+                                ? printNetSalesYoY
+                                : " ".repeat(9 - printNetSalesYoY.length) + printNetSalesYoY
         //  let x = `${elem.quarter.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' })}M ` // cannot use currency settings as it creates border misalignment due to ¥ becoming wider. 
         let printNetSales = `¥${elem.quarter.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
+        let printNetSalesFixed = (printNetSales.length === 14)
+                                  ? printNetSales
+                                  : " ".repeat(14 - printNetSales.length) + printNetSales;
         let printQuarterRow = `${rowQuartersApplied[index].quarter}`;  
-        return (printNetSales.length === 14) 
-                    ? "|" + printQuarterRow + "|" + printNetSales + "|" 
-                    : "|" + printQuarterRow + "|" + " ".repeat(14 - printNetSales.length) + printNetSales + "|";
+        return "|" + printQuarterRow + "|" + printNetSalesFixed + "|" + printNetSalesYoYFixed + "|"
     }) // sources for finding methods to convert numbers to strings with currency symbol and thousands separators: https://stackoverflow.com/questions/3753483/javascript-thousand-separator-string-format?noredirect=1&lq=1
     // mdn source with more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString 
+ 
 
     const printQuartersNetSales = `+${"-".repeat(38)}+
     |${header.netSales}                 |${header.yearOnYearPercentage}|
