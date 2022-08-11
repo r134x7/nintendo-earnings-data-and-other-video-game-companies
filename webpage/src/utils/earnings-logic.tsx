@@ -101,16 +101,9 @@ interface Rows {
     secondQuarter: string,
     thirdQuarter: string,
     fourthQuarter: string,
-    firstQuarterYoy: string,
-    secondQuarterYoy: string,
-    thirdQuarterYoy: string,
-    fourthQuarterYoy: string,
     firstHalf: string,
     firstThreeQuarters: string,
     fyCumulative: string,
-    firstHalfYoy: string,
-    firstThreeQuartersYoy: string,
-    fyCumulativeYoy: string,
     currentFYForecast: string,
     nextFYForecast: string,
     forecastRevisionOne: string,
@@ -119,21 +112,47 @@ interface Rows {
     lineBreak: string,
 }
 
+interface RowQuarters {
+    quarter: string,
+}
+
+const rowQuartersApplied: RowQuarters[] = [
+    {quarter: " 1st Quarter "},
+    {quarter: " 2nd Quarter "},
+    {quarter: " 3rd Quarter "},
+    {quarter: " 4th Quarter "},
+] 
+
+interface RowCumulatives {
+    cumulative: string,
+}
+
+const rowCumulativesApplied: RowCumulatives[] =[
+    {cumulative: " First Half  "},
+    {cumulative: " 1st 3 Qtrs  "},
+    {cumulative: " FY3/23 Cml. "},
+]
+
+interface RowForecasts {
+    forecast: string,
+}
+
+const rowForecastsApplied: RowForecasts[] = [
+    {forecast: " FY3/23 Forecast "},
+    {forecast: " FY3/24 Forecast "},
+    {forecast: " FCST Revision 1 "},
+    {forecast: " FCST Revision 2 "},
+    {forecast: " FCST Revision 3 "},
+] 
+
 const rows: Rows = {
     firstQuarter: " 1st Quarter ",
     secondQuarter:  " 2nd Quarter ",
     thirdQuarter: " 3rd Quarter ",
     fourthQuarter: " 4th Quarter ",
-    firstQuarterYoy:  " 1st Quarter YoY%  ",
-    secondQuarterYoy: " 2nd Quarter YoY%  ",
-    thirdQuarterYoy: " 3rd Quarter YoY%  ",
-    fourthQuarterYoy:  " 4th Quarter YoY%  ",
     firstHalf: " First Half  ",
     firstThreeQuarters: " 1st 3 Qtrs  ",
     fyCumulative: " FY3/23 Cml. ",
-    firstHalfYoy: " First Half YoY%   ",
-    firstThreeQuartersYoy: " First 3 Qtrs YoY% ",
-    fyCumulativeYoy: " FY3/23 Cml. YoY%  ",
     currentFYForecast: " FY3/23 Forecast ",
     nextFYForecast: " FY3/24 Forecast ",
     forecastRevisionOne: " FCST Revision 1 ",
@@ -283,17 +302,17 @@ export function printMobile() {
     const printQuartersNetSales = `
     +${"-".repeat(38)}+
     |${header.netSales}|${header.yearOnYearPercentage}|
-    
+    ${(currentQuarter < 1)}
     `;
 
     // the array needs to be filtered and then mapped...
-    const printQuartersNetSalesDifference = netSalesDifference.filter((elem, index) => index < currentQuarter).map((elem, index, array) => {
+    const printQuartersNetSalesDifference = netSalesDifference.filter((elem, index) => index < currentQuarter).map((elem) => {
 
-        let x = `${elem.quarter.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' })}M`
-        
+        let x = `${elem.quarter.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' })}M `
+        let y = `${rows.firstQuarter}`;  
         return (x.length === 14) 
-                    ? x 
-                    : " ".repeat(14 - x.length) + x;
+                    ? "|" + y + "|" + x + "|" 
+                    : "|" + y + "|" + " ".repeat(14 - x.length) + x + "|";
     }) // sources for finding methods to convert numbers to strings with currency symbol and thousands separators: https://stackoverflow.com/questions/3753483/javascript-thousand-separator-string-format?noredirect=1&lq=1
     // mdn source with more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString 
 }
