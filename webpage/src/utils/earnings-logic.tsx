@@ -324,22 +324,44 @@ const printHead =
     })   // sources for finding methods to convert numbers to strings with currency symbol and thousands separators: https://stackoverflow.com/questions/3753483/javascript-thousand-separator-string-format?noredirect=1&lq=1
     // mdn source with more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString 
     
-    // filtered this way, the first half correctly appears at quarter 2.
-    const printCumulativeNetSales = netSalesCumulative.filter((elem, index) => (currentQuarter >= 2 && index < currentQuarter -1) )
-
+    const printCumulativeNetSales = () => {
+      
+        if (currentQuarter > 1) {
+          // filtered this way, the first half correctly appears at quarter 2.
+          return  netSalesCumulative.filter((elem, index) => (currentQuarter >= 2 && index < currentQuarter -1)).map((elem, index) => {
+          
+          let printNetSalesCmlYoY: string = (netSalesCumulativeYoy[index].quarter > 0) 
+                                  ? `+${netSalesCumulativeYoy[index].quarter}% `
+                                  : `${netSalesCumulativeYoy[index].quarter}% `;
+          let printNetSalesCmlYoYFixed: string = (printNetSalesCmlYoY.length === 9)
+                                  ? printNetSalesCmlYoY
+                                  : " ".repeat(9 - printNetSalesCmlYoY.length) + printNetSalesCmlYoY
+          let printNetSalesCml: string = `¥${elem.quarter.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
+          let printNetSalesCmlFixed: string = (printNetSalesCml.length === 14)
+                                    ? printNetSalesCml
+                                    : " ".repeat(14 - printNetSalesCml.length) + printNetSalesCml;
+          let printQuarterRow = `${rowCumulativesApplied[index].cumulative}`;  
+          return "|" + printQuarterRow + "|" + printNetSalesCmlFixed + "|" + printNetSalesCmlYoYFixed + "|"
+          }).reduce((prev, next, index, array) => {
+          return (array[index] === array[currentQuarter -2])
+                  ? prev + `\n+${"-".repeat(38)}+\n` + next + `\n+${"-".repeat(38)}+\n`
+                  : prev + `\n+${"-".repeat(38)}+\n` + next 
+        })
+        }
+  };
 
 const printQuartersNetSales = 
 `+${"-".repeat(38)}+
 |${header.netSales}                 |${header.yearOnYearPercentage}|
 +${"-".repeat(38)}+
 ${printQuartersNetSalesDifference}
-+${"=".repeat(38)}+`;
++${(currentQuarter > 1) ? "=".repeat(38)+"+" + "\n" + printCumulativeNetSales() : "=".repeat(38)+"+" }`;
 
 const printAll = 
 `${printHead}
 ${printQuartersNetSales}`;
 
-  console.log(printAll)
+console.log(printAll)
 }
 
 printMobile();
