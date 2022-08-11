@@ -352,7 +352,7 @@ const printHead =
         })
   };
 
-  const printForecastNetSales = netSalesForecasts.filter((elem, index, array) => (currentQuarter < 4) ? !array[-1] : elem).map((elem, index) => {
+  const printForecastNetSales = netSalesForecasts.filter((elem, index, array) => (currentQuarter < 4) ? index !== array.length-1 : elem).map((elem, index) => {
  
         let printForecast: string = `¥${elem.forecast.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
         let printForecastFixed: string = (printForecast.length === 14)
