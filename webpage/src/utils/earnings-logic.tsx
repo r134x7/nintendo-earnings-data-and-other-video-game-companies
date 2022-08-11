@@ -270,7 +270,7 @@ export function operatingMarginForecastCalculation(netSalesLocal: Forecasts, opI
 
 }
 
-
+const currentQuarter = 2; // Set to 1, 2, 3 or 4.
 export function printMobile() {
 
     const printHead = `
@@ -281,6 +281,26 @@ export function printMobile() {
     +${"-".repeat(34)}+`;
 
     const printQuartersNetSales = `
+    +${"-".repeat(38)}+
+    |${header.netSales}|${header.yearOnYearPercentage}|
+    
     `;
 
+    // the array needs to be filtered and then mapped...
+    const printQuartersNetSalesDifference = netSalesDifference.filter((elem, index) => index < currentQuarter).map((elem, index, array) => {
+
+        let x = `${elem.quarter.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' })}M`
+        
+        return (x.length === 14) 
+                    ? x 
+                    : " ".repeat(14 - x.length) + x;
+    }) // sources for finding methods to convert numbers to strings with currency symbol and thousands separators: https://stackoverflow.com/questions/3753483/javascript-thousand-separator-string-format?noredirect=1&lq=1
+    // mdn source with more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString 
 }
+
+printMobile();
+// arrays to reference:
+// [netSalesDifference, netSalesLastFYDifference, operatingIncomeDifference, operatingIncomeLastFYDifference, netProfitDifference, netProfitLastFYDifference]
+// [netSalesDifferenceYoy, netSalesCumulativeYoy, operatingIncomeDifferenceYoy, operatingIncomeCumulativeYoy, netProfitDifferenceYoy, netProfitCumulativeYoy]
+// [operatingMarginQuarters, operatingMarginCumulative]
+// opMarginForcasts
