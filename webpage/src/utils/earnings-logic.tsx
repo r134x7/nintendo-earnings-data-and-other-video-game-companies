@@ -200,12 +200,13 @@ const yearOnYearCollection = [
     netProfitLastFYCumulative,
 ]
 
-const [netSalesDifferenceYoy, netSalesCumulativeYoy, operatingIncomeDifferenceYoy, operatingIncomeCumulativeYoy, netProfitDifferenceYoy, netProfitCumulativeYoy] = yearOnYearCollection.filter((elem, index, array) => {
-        // need to use filter and not map because the array length for input is 12 and the output is 6.
-        if (index % 2 === 0) { // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
-            return yearOnYearCalculation(array[index], array[index+1])
-        }
-    })
+const [netSalesDifferenceYoy, netSalesCumulativeYoy, operatingIncomeDifferenceYoy, operatingIncomeCumulativeYoy, netProfitDifferenceYoy, netProfitCumulativeYoy] = yearOnYearCollection.map((elem, index, array) => {
+    // need to use map and then filter, not the other way around. Input array of length 12, output array of length 6.
+    if (index % 2 === 0) { // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
+        return yearOnYearCalculation(array[index], array[index+1])
+    }
+    }).filter((elem) => elem !== undefined) // map creates undefined elems so filter removes them and then the array destructuring works correctly
+
 
 const opMarginCollection = [
     netSalesDifference,
@@ -214,12 +215,12 @@ const opMarginCollection = [
     operatingIncomeCumulative,
 ]
 
-const [operatingMarginQuarters, operatingMarginCumulative] = opMarginCollection.filter((elem, index, array) => {
-    // need to use filter and not map because the array length for input is 4 and the output is 2.
+const [operatingMarginQuarters, operatingMarginCumulative] = opMarginCollection.map((elem, index, array) => {
+    // need to use map and then filter. Array length for input is 4 and the output is 2.
     if (index % 2 === 0) { // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
         return operatingMarginCalculation(array[index], array[index+1])
-    }
-})
+        }
+    }).filter((elem) => elem !== undefined) // map creates undefined elems so filter removes them and then the array destructuring works correctly
 
 const opMarginForcasts = operatingMarginForecastCalculation(netSalesForecasts, operatingIncomeForecasts)
 
@@ -252,7 +253,7 @@ export function yearOnYearCalculation(thisFY: Quarter[], lastFY: Quarter[]) {
                     )
                 } // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number 
     })
-   
+
    return calc
 }
 
@@ -292,8 +293,7 @@ export function operatingMarginForecastCalculation(netSalesLocal: Forecasts, opI
 const currentQuarter = 2; // Set to 1, 2, 3 or 4.
  function printMobile() {
 
-    const printHead = `
-    +${"-".repeat(34)}+
+    const printHead = `+${"-".repeat(34)}+
     |${header.companyName}|    ${header.fiscalYear} |
     +${"-".repeat(34)}+
     |${header.title}|
@@ -302,17 +302,17 @@ const currentQuarter = 2; // Set to 1, 2, 3 or 4.
     // the array needs to be filtered and then mapped...
     const printQuartersNetSalesDifference = netSalesDifference.filter((elem, index) => index < currentQuarter).map((elem, index) => {
 
-         // let x = `${elem.quarter.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' })}M ` // cannot use currency settings as it creates border misalignment due to ¥ becoming wider. 
-         let x = `¥${elem.quarter.toLocaleString("en")}M ` // this setting allows use of thousands separator ","
-        let y = `${rowQuartersApplied[index].quarter}`;  
-        return (x.length === 14) 
-                    ? "|" + y + "|" + x + "|" 
-                    : "|" + y + "|" + " ".repeat(14 - x.length) + x + "|";
+        // let yoy = ;
+        //  let x = `${elem.quarter.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' })}M ` // cannot use currency settings as it creates border misalignment due to ¥ becoming wider. 
+        let printNetSales = `¥${elem.quarter.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
+        let printQuarterRow = `${rowQuartersApplied[index].quarter}`;  
+        return (printNetSales.length === 14) 
+                    ? "|" + printQuarterRow + "|" + printNetSales + "|" 
+                    : "|" + printQuarterRow + "|" + " ".repeat(14 - printNetSales.length) + printNetSales + "|";
     }) // sources for finding methods to convert numbers to strings with currency symbol and thousands separators: https://stackoverflow.com/questions/3753483/javascript-thousand-separator-string-format?noredirect=1&lq=1
     // mdn source with more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString 
 
-    const printQuartersNetSales = `
-    +${"-".repeat(38)}+
+    const printQuartersNetSales = `+${"-".repeat(38)}+
     |${header.netSales}                 |${header.yearOnYearPercentage}|
     +${"-".repeat(38)}+
     ${printQuartersNetSalesDifference[0]}
@@ -320,8 +320,7 @@ const currentQuarter = 2; // Set to 1, 2, 3 or 4.
     ${(printQuartersNetSalesDifference[2]) ? printQuartersNetSalesDifference[1] : null}
     `;
 
-    const printAll = `
-    ${printHead}
+    const printAll = `${printHead}
     ${printQuartersNetSales}
     `;
 
