@@ -323,7 +323,10 @@ const printHead =
                   : prev + `\n+${"-".repeat(38)}+\n` + next 
     })   // sources for finding methods to convert numbers to strings with currency symbol and thousands separators: https://stackoverflow.com/questions/3753483/javascript-thousand-separator-string-format?noredirect=1&lq=1
     // mdn source with more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString 
- 
+    
+    // filtered this way, the first half correctly appears at quarter 2.
+    const printCumulativeNetSales = netSalesCumulative.filter((elem, index) => (currentQuarter >= 2 && index < currentQuarter -1) )
+
 
 const printQuartersNetSales = 
 `+${"-".repeat(38)}+
