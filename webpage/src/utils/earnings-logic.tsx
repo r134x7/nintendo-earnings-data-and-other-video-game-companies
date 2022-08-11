@@ -3,12 +3,8 @@ interface Quarter {
     quarter: number,
 }
 
-interface Forecasts { // this type might have to change.
-    currentFiscalYearForecast: number,
-    nextFiscalYearForecast: number,
-    firstForecastRevision?: number,
-    secondForecastRevision?: number,
-    thirdForecastRevision?: number,
+interface Forecasts {
+    forecast: number,
 }
   
 const netSales: Quarter[] = [
@@ -25,12 +21,12 @@ const netSalesLastFy: Quarter[] = [
     {quarter: 1758910},
 ]
 
-const netSalesForecasts: Forecasts = {
-    currentFiscalYearForecast: 1600000,
-    nextFiscalYearForecast: 1700000,
-    firstForecastRevision: 1620000,
-    secondForecastRevision: 1650000,
-}
+const netSalesForecasts: Forecasts[] = [ // forecast revisions need to be placed between current and next
+    {forecast: 1600000}, // current Fiscal Year Forecast
+    {forecast: 1620000}, // first forecast revision
+    {forecast: 1650000}, // second forecast revision
+    {forecast: 1700000}, // next Fiscal Year Forecast
+]
 
 const operatingIncome: Quarter[] = [
   {quarter: 101647}, 
@@ -46,12 +42,12 @@ const operatingIncomeLastFY: Quarter[] = [
     {quarter: 419526}, 
   ]
 
-const operatingIncomeForecasts: Forecasts = {
-    currentFiscalYearForecast: 500000,
-    nextFiscalYearForecast: 600000,
-    firstForecastRevision: 520000,
-    secondForecastRevision: 560000,
-}
+const operatingIncomeForecasts: Forecasts[] = [ // forecast revisions need to be placed between current and next
+    {forecast: 500000}, // current Fiscal Year Forecast
+    {forecast : 520000}, // first forecast revision
+    {forecast: 560000}, // second forecast revision
+    {forecast: 600000}, // next Fiscal Year Forecast
+]
 
 const netProfit: Quarter[] = [
     {quarter: 151647}, 
@@ -67,14 +63,12 @@ const netProfit: Quarter[] = [
       {quarter: 419526}, 
     ]
   
-const netIncomeForecasts: Forecasts = {
-        currentFiscalYearForecast: 340000,
-        nextFiscalYearForecast: 420000,
-        firstForecastRevision: 350000,
-        secondForecastRevision: 400000,
-}
-
-// type Consolidated = Quarters | Forecasts;
+const netIncomeForecasts: Forecasts[] = [ // forecast revisions need to be placed between current and next
+        {forecast: 340000}, // current Fiscal Year Forecast
+        {forecast: 350000}, // first forecast revision
+        {forecast: 400000}, // second forecast revision
+        {forecast: 420000}, // next Fiscal Year Forecast
+]
 
 interface Header {
     companyName: string,
@@ -139,10 +133,10 @@ interface RowForecasts {
 
 const rowForecastsApplied: RowForecasts[] = [
     {forecast: " FY3/23 Forecast "},
-    {forecast: " FY3/24 Forecast "},
     {forecast: " FCST Revision 1 "},
     {forecast: " FCST Revision 2 "},
     {forecast: " FCST Revision 3 "},
+    {forecast: " FY3/24 Forecast "},
 ] 
 
 const rows: Rows = {
@@ -223,7 +217,7 @@ const [operatingMarginQuarters, operatingMarginCumulative] = opMarginCollection.
             : [];
     }).filter((elem) => elem.length !== 0) // map creates empty arrays so filter removes them and then the array destructuring works correctly, note: elem is used and not array because the array contains 12 arrays! This also removes the issue of variable possibly being undefined had we not put in empty arrays since it would have automatically placed undefined.
 
-const opMarginForcasts = operatingMarginForecastCalculation(netSalesForecasts, operatingIncomeForecasts)
+const opMarginForecasts = operatingMarginForecastCalculation(netSalesForecasts, operatingIncomeForecasts)
 
 // need to make function for forecasts
 
@@ -271,27 +265,37 @@ export function operatingMarginCalculation(netSalesLocal: Quarter[], opIncomeLoc
    return calc
 }
 
-export function operatingMarginForecastCalculation(netSalesLocal: Forecasts, opIncomeLocal: Forecasts) {
+export function operatingMarginForecastCalculation(netSalesLocal: Forecasts[], opIncomeLocal: Forecasts[]) {
 
-    const operatingMarginForecasts: Forecasts = {
-        currentFiscalYearForecast: Number(((opIncomeLocal.currentFiscalYearForecast / netSalesLocal.currentFiscalYearForecast) * 100).toFixed(2)),
-        nextFiscalYearForecast: Number(((opIncomeLocal.nextFiscalYearForecast / netSalesLocal.nextFiscalYearForecast) * 100).toFixed(2)),
-        firstForecastRevision: (netSalesLocal.firstForecastRevision !== undefined && opIncomeLocal.firstForecastRevision !== undefined) 
-            ? Number(((opIncomeLocal.firstForecastRevision / netSalesLocal.firstForecastRevision) * 100).toFixed(2))
-            : 0,
-        secondForecastRevision: (netSalesLocal.secondForecastRevision !== undefined && opIncomeLocal.secondForecastRevision !== undefined) 
-            ? Number(((opIncomeLocal.secondForecastRevision / netSalesLocal.secondForecastRevision) * 100).toFixed(2))
-            : 0,
-        thirdForecastRevision: (netSalesLocal.thirdForecastRevision !== undefined && opIncomeLocal.thirdForecastRevision !== undefined) 
-            ? Number(((opIncomeLocal.thirdForecastRevision / netSalesLocal.thirdForecastRevision) * 100).toFixed(2))
-            : 0,
-    }
+    // const operatingMarginForecasts: Forecasts = {
+    //     currentFiscalYearForecast: Number(((opIncomeLocal.currentFiscalYearForecast / netSalesLocal.currentFiscalYearForecast) * 100).toFixed(2)),
+    //     nextFiscalYearForecast: Number(((opIncomeLocal.nextFiscalYearForecast / netSalesLocal.nextFiscalYearForecast) * 100).toFixed(2)),
+    //     firstForecastRevision: (netSalesLocal.firstForecastRevision !== undefined && opIncomeLocal.firstForecastRevision !== undefined) 
+    //         ? Number(((opIncomeLocal.firstForecastRevision / netSalesLocal.firstForecastRevision) * 100).toFixed(2))
+    //         : 0,
+    //     secondForecastRevision: (netSalesLocal.secondForecastRevision !== undefined && opIncomeLocal.secondForecastRevision !== undefined) 
+    //         ? Number(((opIncomeLocal.secondForecastRevision / netSalesLocal.secondForecastRevision) * 100).toFixed(2))
+    //         : 0,
+    //     thirdForecastRevision: (netSalesLocal.thirdForecastRevision !== undefined && opIncomeLocal.thirdForecastRevision !== undefined) 
+    //         ? Number(((opIncomeLocal.thirdForecastRevision / netSalesLocal.thirdForecastRevision) * 100).toFixed(2))
+    //         : 0,
+    // }
 
-    return operatingMarginForecasts
+    const calc = opIncomeLocal.map((elem, index) => {
+        return (netSalesLocal[index].forecast !== 0) 
+                  ? {forecast: Number(
+                        (((elem.forecast / netSalesLocal[index].forecast)) * 100).toFixed(2)
+                     )} // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number 
+                  : {forecast: 0} // to prevent infinity calculations
+    })
+
+    return calc
 
 }
 
-const currentQuarter = 2; // Set to 1, 2, 3 or 4.
+const currentQuarter = 3; // Set to 1, 2, 3 or 4.
+const printQuarterRow1 = rowForecastsApplied.filter((elem, index, array) => (currentQuarter < 4) ? !array[-1] : index)
+console.log(printQuarterRow1)
 export function printMobile() {
 
 const printHead = 
@@ -325,8 +329,7 @@ const printHead =
     // mdn source with more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString 
     
     const printCumulativeNetSales = () => {
-      
-        if (currentQuarter > 1) {
+    
           // filtered this way, the first half correctly appears at quarter 2.
           return  netSalesCumulative.filter((elem, index) => (currentQuarter >= 2 && index < currentQuarter -1)).map((elem, index) => {
           
@@ -347,8 +350,26 @@ const printHead =
                   ? prev + `\n+${"-".repeat(38)}+\n` + next + `\n+${"-".repeat(38)}+\n`
                   : prev + `\n+${"-".repeat(38)}+\n` + next 
         })
-        }
   };
+
+  const printForecastNetSales = netSalesForecasts.filter((elem, index, array) => (currentQuarter < 4) ? !array[-1] : elem).map((elem, index) => {
+ 
+        let printForecast: string = `¥${elem.forecast.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
+        let printForecastFixed: string = (printForecast.length === 14)
+                                  ? printForecast
+                                  : " ".repeat(14 - printForecast.length) + printForecast;
+        // let printQuarterRow = (currentQuarter < 4 ) ? `${rowForecastsApplied[index].forecast}` : `${rowForecastsApplied[index+1].forecast}`;  
+        let printQuarterRow = rowForecastsApplied.filter((elem, index, array) => (currentQuarter < 4) ? !array[-1] : elem)
+        let printQuarterRowFixed: string = `${printQuarterRow[index].forecast}`;
+        // console.log(printQuarterRow)
+        return "|" + printQuarterRowFixed + "|" + printForecastFixed + "|"  
+        }).reduce((prev, next, index, array) => {
+        return (array[index] === array[currentQuarter -1])
+                  ? prev + `\n+${"-".repeat(32)}+\n` + next
+                  : prev + `\n+${"-".repeat(32)}+\n` + next 
+    })
+
+  // console.log(printForecastNetSales)
 
 const printQuartersNetSales = 
 `+${"-".repeat(38)}+
@@ -361,7 +382,7 @@ const printAll =
 `${printHead}
 ${printQuartersNetSales}`;
 
-console.log(printAll)
+// console.log(printAll)
 }
 
 printMobile();
@@ -369,4 +390,4 @@ printMobile();
 // [netSalesDifference, netSalesLastFYDifference, operatingIncomeDifference, operatingIncomeLastFYDifference, netProfitDifference, netProfitLastFYDifference]
 // [netSalesDifferenceYoy, netSalesCumulativeYoy, operatingIncomeDifferenceYoy, operatingIncomeCumulativeYoy, netProfitDifferenceYoy, netProfitCumulativeYoy]
 // [operatingMarginQuarters, operatingMarginCumulative]
-// opMarginForcasts
+// opMarginForecasts
