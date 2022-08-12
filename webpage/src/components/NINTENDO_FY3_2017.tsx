@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Pagination, Group, Space, Switch } from "@mantine/core";
 import { useSelector } from "react-redux";
+import { printEarnings } from "../data/nintendo/Nintendo-FY3-2017/earnings-fy3-17";
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
@@ -75,7 +76,7 @@ export default function NINTENDO_FY3_17() {
         )
     };
 
-    const consolidatedOperatingResults = "no data here at this time";
+    const consolidatedOperatingResults = printEarnings;
 
     const nintendoHardwareSoftwareMobile = "no data here at this time";
     

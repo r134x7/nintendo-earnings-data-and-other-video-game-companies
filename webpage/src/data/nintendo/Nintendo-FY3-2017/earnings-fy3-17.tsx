@@ -13,19 +13,10 @@ import {
     printNetIncome,
     printNetSales,
     printOpMargin,
-    printOpMarginCumulative,
-    printOpMarginForecasts,
-    printOpMarginQuarters,
     printOperatingIncome,
-    printSectionCumulative,
-    printSectionDifference,
-    printSectionForecast,
     } from "../../../utils/earnings-logic"
 
-
-export function EARNINGS_FY3_17() {
-
-    const currentQuarter = 2;
+    const currentQuarter = 4;
 
     const netSales: Quarter[] = [
         {quarter: 307460},  // first quarter
@@ -173,6 +164,20 @@ export function EARNINGS_FY3_17() {
 
     const opMarginForecasts = operatingMarginForecastCalculation(netSalesForecasts, operatingIncomeForecasts)
 
-    
+    const printOne = printHead(header)
 
-}
+    const printTwo = printNetSales(header, netSalesDifference, netSalesDifferenceYoy, netSalesCumulative, netSalesCumulativeYoy, netSalesForecasts, rowCumulativesApplied, rowForecastsApplied, currentQuarter)
+
+    const printThree = printOperatingIncome(header, operatingIncomeDifference, operatingIncomeDifferenceYoy, operatingIncomeCumulative, operatingIncomeCumulativeYoy, operatingIncomeForecasts, rowCumulativesApplied, rowForecastsApplied, currentQuarter);
+
+    const printFour = printOpMargin(header, operatingMarginQuarters, operatingMarginCumulative, opMarginForecasts, rowCumulativesApplied, rowForecastsApplied, currentQuarter)
+
+    const printFive = printNetIncome(header, netIncomeDifference, netIncomeDifferenceYoy, netIncomeCumulative, netIncomeCumulativeYoy, netIncomeForecasts, rowCumulativesApplied, rowForecastsApplied, currentQuarter)
+
+export const printEarnings = 
+`${printOne}
+${printTwo}
+${printThree}
+${printFour}
+${printFive}
+###`;
