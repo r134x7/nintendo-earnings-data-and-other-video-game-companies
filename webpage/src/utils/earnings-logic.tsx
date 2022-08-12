@@ -74,6 +74,7 @@ interface Header {
     companyName: string,
     netSales: string,
     operatingIncome: string,
+    operatingMargin: string,
     netProfit: string,
     yearOnYearPercentage: string,
     fiscalYear: string,
@@ -84,6 +85,7 @@ const header: Header = {
     companyName: " Nintendo Co., Ltd.",
     netSales: " Net Sales ",
     operatingIncome: " Operating Income ",
+    operatingMargin: " Operating Margin ",
     netProfit: " Net Profit ",
     yearOnYearPercentage: "    YoY% ",
     fiscalYear: "FY3/2023 ",
@@ -466,12 +468,46 @@ const printSectionForecast = (sectionForecast: Forecasts[]) => {
   +${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts) : printSectionForecast(netSalesForecasts) }
   +${"-".repeat(32)}+`;
 
-// console.log(printNetSales)
+  const printOpMarginQuarters = (sectionMarginQuarters: Quarter[]) => {
 
-const printQuarterOperatingIncome = 
-`+${"-".repeat(38)}+
-|${header.operatingIncome}                 |${header.yearOnYearPercentage}|
-+${"-".repeat(38)}+`;
+    return sectionMarginQuarters.filter((elem, index) => index < currentQuarter).map((elem, index) => {
+  
+          let printSectionMarginQuarters: string = `${elem.quarter}% `;
+          let printSectionMarginQuartersFixed: string = (printSectionMarginQuarters.length === 9)
+                                  ? printSectionMarginQuarters
+                                  : " ".repeat(9 - printSectionMarginQuarters.length) + printSectionMarginQuarters
+          let printQuarterRow = `${rowQuartersApplied[index].quarter}`;  
+          return "|" + printQuarterRow + "|" + printSectionMarginQuartersFixed + "|" // old note, used "\n" at end here: must affix a new line \n, was also affixing tabs \t to align but realised I could adjust the template literal 
+      }).reduce((prev, next, index, array) => {
+          return (array[index] === array[currentQuarter -1])
+                    ? prev + `\n+${"-".repeat(23)}+\n` + next
+                    : prev + `\n+${"-".repeat(23)}+\n` + next 
+      })   // sources for finding methods to convert numbers to strings with currency symbol and thousands separators: https://stackoverflow.com/questions/3753483/javascript-thousand-separator-string-format?noredirect=1&lq=1
+      // mdn source with more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString
+  
+  }
+  
+  const printNetSales = 
+  `+${"-".repeat(38)}+
+  |${header.netSales}                 |${header.yearOnYearPercentage}|
+  +${"-".repeat(38)}+
+  ${printSectionDifference(netSalesDifference, netSalesDifferenceYoy)}
+  +${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts) : printSectionForecast(netSalesForecasts) }
+  +${"-".repeat(32)}+`;
+  
+  const printQuarterOperatingIncome = 
+  `+${"-".repeat(38)}+
+  |${header.operatingIncome}                 |${header.yearOnYearPercentage}|
+  +${"-".repeat(38)}+
+  ${printSectionDifference(netSalesDifference, netSalesDifferenceYoy)}
+  +${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts) : printSectionForecast(netSalesForecasts) }
+  +${"-".repeat(32)}+`;
+  
+  const printOpMargin = 
+  `+${"-".repeat(23)}+
+  |${header.operatingMargin}     |
+  +${"-".repeat(23)}+
+  ${printOpMarginQuarters(operatingMarginQuarters)}`;
 
 const printAll = 
 `${printHead}
