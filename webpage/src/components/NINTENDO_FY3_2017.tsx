@@ -8,6 +8,77 @@ Chart.register(...registerables); // to get the package working, source: https:/
 
 export default function NINTENDO_FY3_17() {
 
+    interface Quarter {
+        quarter: number,
+    }
+    
+    interface Forecasts {
+        forecast: number,
+    }
+
+    const netSales: Quarter[] = [
+        {quarter: 307460},  // first quarter
+        {quarter: 624272},  // second quarter
+        {quarter: 1320219}, // third quarter
+        {quarter: 1695344}, // fourth quarter
+    ]
+
+    const netSalesLastFy: Quarter[] = [
+        {quarter: 322647}, // first quarter
+        {quarter: 769524}, // second quarter
+        {quarter: 1404463}, // third quarter
+        {quarter: 1758910}, // fourth quarter
+    ]
+    
+    const netSalesForecasts: Forecasts[] = [ // any forecast revisions need to be placed between current and next
+        {forecast: 1600000}, // current Fiscal Year Forecast
+        {forecast: 1620000}, // first forecast revision
+        {forecast: 1650000}, // second forecast revision
+        {forecast: 1700000}, // next Fiscal Year Forecast
+    ]
+
+    const operatingIncome: Quarter[] = [
+        {quarter: 101647}, // first quarter
+        {quarter: 219959}, // second quarter
+        {quarter: 472551}, // third quarter
+        {quarter: 592760}, // fourth quarter
+    ]
+      
+    const operatingIncomeLastFY: Quarter[] = [
+          {quarter: 144737}, // first quarter
+          {quarter: 246687}, // second quarter
+          {quarter: 329684}, // third quarter
+          {quarter: 419526}, // fourth quarter
+    ]
+      
+    const operatingIncomeForecasts: Forecasts[] = [ // forecast revisions need to be placed between current and next
+          {forecast: 500000}, // current Fiscal Year Forecast
+          {forecast : 520000}, // first forecast revision
+          {forecast: 560000}, // second forecast revision
+          {forecast: 600000}, // next Fiscal Year Forecast
+    ]
+
+    const netIncome: Quarter[] = [
+        {quarter: 151647}, // first quarter
+        {quarter: 239959}, // second quarter
+        {quarter: 322551}, // third quarter
+        {quarter: 452760}, // fourth quarter
+    ]
+      
+    const netIncomeLastFY: Quarter[] = [
+          {quarter: 144737}, // first quarter
+          {quarter: 246687}, // second quarter
+          {quarter: 329684}, // third quarter
+          {quarter: 419526}, // fourth quarter
+    ]
+      
+    const netIncomeForecasts: Forecasts[] = [ // forecast revisions need to be placed between current and next
+            {forecast: 340000}, // current Fiscal Year Forecast
+            {forecast: 350000}, // first forecast revision
+            {forecast: 400000}, // second forecast revision
+            {forecast: 420000}, // next Fiscal Year Forecast
+    ]
+
     const [data, setData] = useState("");
     const [value, setValue] = useState("");
     const [sources, setSources] = useState(<></>)
@@ -74,6 +145,18 @@ export default function NINTENDO_FY3_17() {
             </Text> 
         )
     };
+
+    const consolidatedOperatingResults = "no data here at this time";
+
+    const nintendoHardwareSoftwareMobile = "no data here at this time";
+    
+    const keyIndicators = "no data here at this time";
+
+    const fyMillionSellers = "no data here at this time";
+
+    const regionalHWSW = "no data here at this time";
+
+    const topSellingTitles = "no data here at this time";
 
     return (
 
