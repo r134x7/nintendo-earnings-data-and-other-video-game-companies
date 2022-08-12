@@ -473,13 +473,14 @@ const printSectionForecast = (sectionForecast: Forecasts[]) => {
           return (array[index] === array[currentQuarter -1])
                     ? prev + `\n+${"-".repeat(23)}+\n` + next
                     : prev + `\n+${"-".repeat(23)}+\n` + next 
-      })
+      })   // sources for finding methods to convert numbers to strings with currency symbol and thousands separators: https://stackoverflow.com/questions/3753483/javascript-thousand-separator-string-format?noredirect=1&lq=1
+      // mdn source with more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString
   
   }
-  
+
   const printOpMarginCumulative = (sectionMarginCumalative: Quarter[]) => {
         
-        return sectionMarginCumalative.filter((elem, index) => index < currentQuarter).map((elem, index) => {
+        return sectionMarginCumalative.filter((elem, index) => (currentQuarter >= 2 && index < currentQuarter -1)).map((elem, index) => {
   
           let printSectionMarginCumulative: string = `${elem.quarter}% `;
           let printSectionMarginCumulativeFixed: string = (printSectionMarginCumulative.length === 9)
@@ -488,11 +489,40 @@ const printSectionForecast = (sectionForecast: Forecasts[]) => {
           let printQuarterRow = `${rowCumulativesApplied[index].cumulative}`;  
           return "|" + printQuarterRow + "|" + printSectionMarginCumulativeFixed + "|" // old note, used "\n" at end here: must affix a new line \n, was also affixing tabs \t to align but realised I could adjust the template literal 
       }).reduce((prev, next, index, array) => {
-          return (array[index] === array[currentQuarter -1])
-                    ? prev + `\n+${"-".repeat(23)}+\n` + next
+          return (array[index] === array[currentQuarter -2])
+                    ? prev + `\n+${"-".repeat(23)}+\n` + next + `\n+${"-".repeat(27)}+\n`
                     : prev + `\n+${"-".repeat(23)}+\n` + next 
       })
   }
+
+const printOpMarginForecasts = (sectionMarginForecasts: Forecasts[]) => {
+
+    return sectionMarginForecasts.filter((elem, index, array) => (currentQuarter < 4) ? index !== array.length-1 : elem).map((elem, index) => {
+   
+      let printForecast: string = `${elem.forecast}% `;
+      let printForecastFixed: string = (printForecast.length === 9)
+                                ? printForecast
+                                : " ".repeat(9 - printForecast.length) + printForecast;
+      let printQuarterRow = rowForecastsApplied.filter((elem, index, array) => 
+              (currentQuarter < 4) 
+                  ? index !== array.length-1 
+                  : (currentQuarter >= 4 && sectionMarginForecasts.length === 2) 
+                  ? index !== 1 && index !== 2 && index !== 3 
+                  : (currentQuarter >= 4 && sectionMarginForecasts.length === 3) 
+                  ? index !== 2 && index !== 3
+                  : (currentQuarter >= 4 && sectionMarginForecasts.length === 4) 
+                  ? index !== 3
+                  : elem)
+      
+      let printQuarterRowFixed: string = `${printQuarterRow[index].forecast}`;
+  
+      return "|" + printQuarterRowFixed + "|" + printForecastFixed + "|"  
+      }).reduce((prev, next, index, array) => {
+      return (array[index] === array[currentQuarter -1])
+                ? prev + `\n+${"-".repeat(27)}+\n` + next
+                : prev + `\n+${"-".repeat(27)}+\n` + next 
+      })
+}
   
 const printNetSales = 
 `+${"-".repeat(38)}+
@@ -515,8 +545,8 @@ const printOpMargin =
 |${header.operatingMargin}     |
 +${"-".repeat(23)}+
 ${printOpMarginQuarters(operatingMarginQuarters)}
-+${(currentQuarter > 1) ? "=".repeat(23)+"+\n" + printOpMarginCumulative(operatingMarginCumulative) : "=".repeat(23)+"+" }
-+${"-".repeat(23)}+`;
++${(currentQuarter > 1) ? "=".repeat(23)+"+\n" + printOpMarginCumulative(operatingMarginCumulative) : "=".repeat(23)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(27)}+\n` + printOpMarginForecasts(opMarginForecasts) : (currentQuarter === 1) ? `\n+${"-".repeat(27)}+\n` + printOpMarginForecasts(opMarginForecasts) : printOpMarginForecasts(opMarginForecasts) }
++${"-".repeat(27)}+`;
 
 console.log(printOpMargin)
 
