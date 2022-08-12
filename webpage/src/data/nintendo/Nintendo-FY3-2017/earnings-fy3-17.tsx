@@ -3,14 +3,23 @@ import {
     cumulativeCalculation, 
     operatingMarginCalculation, operatingMarginForecastCalculation, 
     yearOnYearCalculation,
-    printMobile, 
     Quarter,
     Forecasts,
     Header,
     RowCumulatives,
     RowForecasts,
-    currentQuarter
-
+    printAll,
+    printHead,
+    printNetIncome,
+    printNetSales,
+    printOpMargin,
+    printOpMarginCumulative,
+    printOpMarginForecasts,
+    printOpMarginQuarters,
+    printOperatingIncome,
+    printSectionCumulative,
+    printSectionDifference,
+    printSectionForecast,
     } from "../../../utils/earnings-logic"
 
 
@@ -62,7 +71,7 @@ export function EARNINGS_FY3_17() {
 
     const netIncome: Quarter[] = [
         {quarter: 151647}, // first quarter
-        {quarter: 239959}, // second quarter
+        {quarter: 179959}, // second quarter
         {quarter: 322551}, // third quarter
         {quarter: 452760}, // fourth quarter
     ]
@@ -95,15 +104,15 @@ export function EARNINGS_FY3_17() {
     const rowCumulativesApplied: RowCumulatives[] =[
         {cumulative: " First Half  "},
         {cumulative: " 1st 3 Qtrs  "},
-        {cumulative: " FY3/23 Cml. "},
+        {cumulative: " FY3/17 Cml. "},
     ]
 
     const rowForecastsApplied: RowForecasts[] = [
-        {forecast: " FY3/23 Forecast "},
+        {forecast: " FY3/17 Forecast "},
         {forecast: " FCST Revision 1 "},
         {forecast: " FCST Revision 2 "},
         {forecast: " FCST Revision 3 "},
-        {forecast: " FY3/24 Forecast "},
+        {forecast: " FY3/18 Forecast "},
     ]
 
     const collection = [
