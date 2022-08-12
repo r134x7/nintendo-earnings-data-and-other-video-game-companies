@@ -49,14 +49,14 @@ const operatingIncomeForecasts: Forecasts[] = [ // forecast revisions need to be
     {forecast: 600000}, // next Fiscal Year Forecast
 ]
 
-const netProfit: Quarter[] = [
+const netIncome: Quarter[] = [
     {quarter: 151647}, 
     {quarter: 239959}, 
     {quarter: 322551}, 
     {quarter: 452760}, 
   ]
   
- const netProfitLastFY: Quarter[] = [
+ const netIncomeLastFY: Quarter[] = [
       {quarter: 144737}, 
       {quarter: 246687}, 
       {quarter: 329684}, 
@@ -75,7 +75,7 @@ interface Header {
     netSales: string,
     operatingIncome: string,
     operatingMargin: string,
-    netProfit: string,
+    netIncome: string,
     yearOnYearPercentage: string,
     fiscalYear: string,
     title: string,
@@ -86,7 +86,7 @@ const header: Header = {
     netSales: " Net Sales ",
     operatingIncome: " Operating Income ",
     operatingMargin: " Operating Margin ",
-    netProfit: " Net Profit ",
+    netIncome: " Net Profit ",
     yearOnYearPercentage: "    YoY% ",
     fiscalYear: "FY3/2023 ",
     title: " Consolidated Operating Results   ",
@@ -168,16 +168,16 @@ const collection = [
     netSalesLastFy,
     operatingIncome,
     operatingIncomeLastFY,
-    netProfit,
-    netProfitLastFY
+    netIncome,
+    netIncomeLastFY
 ]
 
-const [netSalesDifference, netSalesLastFYDifference, operatingIncomeDifference, operatingIncomeLastFYDifference, netProfitDifference, netProfitLastFYDifference] = collection.map((elem) => {
+const [netSalesDifference, netSalesLastFYDifference, operatingIncomeDifference, operatingIncomeLastFYDifference, netIncomeDifference, netIncomeLastFYDifference] = collection.map((elem) => {
     return quarterlyCalculation(elem)
 })
 
 const [netSalesCumulative, netSalesLastFYCumulative, operatingIncomeCumulative, operatingIncomeLastFYCumlative,
-netProfitCumulative, netProfitLastFYCumulative] = collection.map((elem) => {
+netIncomeCumulative, netIncomeLastFYCumulative] = collection.map((elem) => {
     return cumulativeCalculation(elem)
 })
 
@@ -190,13 +190,13 @@ const yearOnYearCollection = [
     operatingIncomeLastFYDifference,
     operatingIncomeCumulative,
     operatingIncomeLastFYCumlative,
-    netProfitDifference,
-    netProfitLastFYDifference,
-    netProfitCumulative,
-    netProfitLastFYCumulative,
+    netIncomeDifference,
+    netIncomeLastFYDifference,
+    netIncomeCumulative,
+    netIncomeLastFYCumulative,
 ]
 
-const [netSalesDifferenceYoy, netSalesCumulativeYoy, operatingIncomeDifferenceYoy, operatingIncomeCumulativeYoy, netProfitDifferenceYoy, netProfitCumulativeYoy] = yearOnYearCollection.map((elem, index, array) => {
+const [netSalesDifferenceYoy, netSalesCumulativeYoy, operatingIncomeDifferenceYoy, operatingIncomeCumulativeYoy, netIncomeDifferenceYoy, netIncomeCumulativeYoy] = yearOnYearCollection.map((elem, index, array) => {
     // need to use map and then filter, not the other way around. Input array of arrays of length 12, output array of arrays of length 12 and then filter to 6.
 
     return (index % 2 === 0) // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
@@ -532,12 +532,12 @@ ${printSectionDifference(netSalesDifference, netSalesDifferenceYoy)}
 +${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts) : printSectionForecast(netSalesForecasts) }
 +${"-".repeat(32)}+`;
   
-const printQuarterOperatingIncome = 
+const printOperatingIncome = 
 `+${"-".repeat(38)}+
-|${header.operatingIncome}                 |${header.yearOnYearPercentage}|
+|${header.operatingIncome}          |${header.yearOnYearPercentage}|
 +${"-".repeat(38)}+
-${printSectionDifference(netSalesDifference, netSalesDifferenceYoy)}
-+${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts) : printSectionForecast(netSalesForecasts) }
+${printSectionDifference(operatingIncomeDifference, operatingIncomeDifferenceYoy)}
++${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(operatingIncomeCumulative, operatingIncomeCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(operatingIncomeForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(operatingIncomeForecasts) : printSectionForecast(operatingIncomeForecasts) }
 +${"-".repeat(32)}+`;
   
 const printOpMargin = 
@@ -548,18 +548,26 @@ ${printOpMarginQuarters(operatingMarginQuarters)}
 +${(currentQuarter > 1) ? "=".repeat(23)+"+\n" + printOpMarginCumulative(operatingMarginCumulative) : "=".repeat(23)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(27)}+\n` + printOpMarginForecasts(opMarginForecasts) : (currentQuarter === 1) ? `\n+${"-".repeat(27)}+\n` + printOpMarginForecasts(opMarginForecasts) : printOpMarginForecasts(opMarginForecasts) }
 +${"-".repeat(27)}+`;
 
-console.log(printOpMargin)
+const printNetIncome = 
+`+${"-".repeat(38)}+
+|${header.netIncome}                |${header.yearOnYearPercentage}|
++${"-".repeat(38)}+
+${printSectionDifference(netIncomeDifference, netIncomeDifferenceYoy)}
++${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netIncomeCumulative, netIncomeCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netIncomeForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(netIncomeForecasts) : printSectionForecast(netIncomeForecasts) }
++${"-".repeat(32)}+`;
 
 const printAll = 
 `${printHead}
-${printNetSales}`;
+${printNetSales}
+${printOperatingIncome}
+${printOpMargin}
+${printNetIncome}`;
 
-console.log(printAll)
 }
 
 printMobile();
 // arrays to reference:
-// [netSalesDifference, netSalesLastFYDifference, operatingIncomeDifference, operatingIncomeLastFYDifference, netProfitDifference, netProfitLastFYDifference]
-// [netSalesDifferenceYoy, netSalesCumulativeYoy, operatingIncomeDifferenceYoy, operatingIncomeCumulativeYoy, netProfitDifferenceYoy, netProfitCumulativeYoy]
+// [netSalesDifference, netSalesLastFYDifference, operatingIncomeDifference, operatingIncomeLastFYDifference, netIncomeDifference, netIncomeLastFYDifference]
+// [netSalesDifferenceYoy, netSalesCumulativeYoy, operatingIncomeDifferenceYoy, operatingIncomeCumulativeYoy, netIncomeDifferenceYoy, netIncomeCumulativeYoy]
 // [operatingMarginQuarters, operatingMarginCumulative]
 // opMarginForecasts
