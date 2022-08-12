@@ -1,76 +1,13 @@
 
-interface Quarter {
+export interface Quarter {
     quarter: number,
 }
 
-interface Forecasts {
+export interface Forecasts {
     forecast: number,
 }
-  
-const netSales: Quarter[] = [
-    {quarter: 307460},
-    {quarter: 624272},
-    {quarter: 1320219},
-    {quarter: 1695344},
-]
 
-const netSalesLastFy: Quarter[] = [
-    {quarter: 322647},    
-    {quarter: 769524},
-    {quarter: 1404463},
-    {quarter: 1758910},
-]
-
-const netSalesForecasts: Forecasts[] = [ // forecast revisions need to be placed between current and next
-    {forecast: 1600000}, // current Fiscal Year Forecast
-    {forecast: 1620000}, // first forecast revision
-    {forecast: 1650000}, // second forecast revision
-    {forecast: 1700000}, // next Fiscal Year Forecast
-]
-
-const operatingIncome: Quarter[] = [
-  {quarter: 101647}, 
-  {quarter: 219959}, 
-  {quarter: 472551}, 
-  {quarter: 592760}, 
-]
-
-const operatingIncomeLastFY: Quarter[] = [
-    {quarter: 144737}, 
-    {quarter: 246687}, 
-    {quarter: 329684}, 
-    {quarter: 419526}, 
-  ]
-
-const operatingIncomeForecasts: Forecasts[] = [ // forecast revisions need to be placed between current and next
-    {forecast: 500000}, // current Fiscal Year Forecast
-    {forecast : 520000}, // first forecast revision
-    {forecast: 560000}, // second forecast revision
-    {forecast: 600000}, // next Fiscal Year Forecast
-]
-
-const netIncome: Quarter[] = [
-    {quarter: 151647}, 
-    {quarter: 239959}, 
-    {quarter: 322551}, 
-    {quarter: 452760}, 
-  ]
-  
- const netIncomeLastFY: Quarter[] = [
-      {quarter: 144737}, 
-      {quarter: 246687}, 
-      {quarter: 329684}, 
-      {quarter: 419526}, 
-    ]
-  
-const netIncomeForecasts: Forecasts[] = [ // forecast revisions need to be placed between current and next
-        {forecast: 340000}, // current Fiscal Year Forecast
-        {forecast: 350000}, // first forecast revision
-        {forecast: 400000}, // second forecast revision
-        {forecast: 420000}, // next Fiscal Year Forecast
-]
-
-interface Header {
+export interface Header {
     companyName: string,
     netSales: string,
     operatingIncome: string,
@@ -79,6 +16,18 @@ interface Header {
     yearOnYearPercentage: string,
     fiscalYear: string,
     title: string,
+}
+
+interface RowQuarters {
+    quarter: string,
+}
+
+export interface RowCumulatives {
+    cumulative: string,
+}
+
+export interface RowForecasts {
+    forecast: string,
 }
 
 const header: Header = {
@@ -92,26 +41,6 @@ const header: Header = {
     title: " Consolidated Operating Results   ",
 }
 
-interface Rows {
-    firstQuarter: string,
-    secondQuarter: string,
-    thirdQuarter: string,
-    fourthQuarter: string,
-    firstHalf: string,
-    firstThreeQuarters: string,
-    fyCumulative: string,
-    currentFYForecast: string,
-    nextFYForecast: string,
-    forecastRevisionOne: string,
-    forecastRevisionTwo: string,
-    forecastRevisionThree: string,
-    lineBreak: string,
-}
-
-interface RowQuarters {
-    quarter: string,
-}
-
 const rowQuartersApplied: RowQuarters[] = [
     {quarter: " 1st Quarter "},
     {quarter: " 2nd Quarter "},
@@ -119,19 +48,11 @@ const rowQuartersApplied: RowQuarters[] = [
     {quarter: " 4th Quarter "},
 ] 
 
-interface RowCumulatives {
-    cumulative: string,
-}
-
 const rowCumulativesApplied: RowCumulatives[] =[
     {cumulative: " First Half  "},
     {cumulative: " 1st 3 Qtrs  "},
     {cumulative: " FY3/23 Cml. "},
 ]
-
-interface RowForecasts {
-    forecast: string,
-}
 
 const rowForecastsApplied: RowForecasts[] = [
     {forecast: " FY3/23 Forecast "},
@@ -141,87 +62,63 @@ const rowForecastsApplied: RowForecasts[] = [
     {forecast: " FY3/24 Forecast "},
 ] 
 
-const rows: Rows = {
-    firstQuarter: " 1st Quarter ",
-    secondQuarter:  " 2nd Quarter ",
-    thirdQuarter: " 3rd Quarter ",
-    fourthQuarter: " 4th Quarter ",
-    firstHalf: " First Half  ",
-    firstThreeQuarters: " 1st 3 Qtrs  ",
-    fyCumulative: " FY3/23 Cml. ",
-    currentFYForecast: " FY3/23 Forecast ",
-    nextFYForecast: " FY3/24 Forecast ",
-    forecastRevisionOne: " FCST Revision 1 ",
-    forecastRevisionTwo: " FCST Revision 2 ",
-    forecastRevisionThree: " FCST Revision 3 ",
-    lineBreak: "###",
-}
+// const collection = [
+//     netSales,
+//     netSalesLastFy,
+//     operatingIncome,
+//     operatingIncomeLastFY,
+//     netIncome,
+//     netIncomeLastFY
+// ]
 
-// need to avoid using for loops...
-// try using array.map.filter.reduce
-// rest pararmeters and spread syntax where needed
-// template literals
-// array or object destructuring
+// const [netSalesDifference, netSalesLastFYDifference, operatingIncomeDifference, operatingIncomeLastFYDifference, netIncomeDifference, netIncomeLastFYDifference] = collection.map((elem) => {
+//     return quarterlyCalculation(elem)
+// })
 
-const collection = [
-    netSales,
-    netSalesLastFy,
-    operatingIncome,
-    operatingIncomeLastFY,
-    netIncome,
-    netIncomeLastFY
-]
+// const [netSalesCumulative, netSalesLastFYCumulative, operatingIncomeCumulative, operatingIncomeLastFYCumlative,
+// netIncomeCumulative, netIncomeLastFYCumulative] = collection.map((elem) => {
+//     return cumulativeCalculation(elem)
+// })
 
-const [netSalesDifference, netSalesLastFYDifference, operatingIncomeDifference, operatingIncomeLastFYDifference, netIncomeDifference, netIncomeLastFYDifference] = collection.map((elem) => {
-    return quarterlyCalculation(elem)
-})
+// const yearOnYearCollection = [
+//     netSalesDifference,
+//     netSalesLastFYDifference,
+//     netSalesCumulative,
+//     netSalesLastFYCumulative,
+//     operatingIncomeDifference,
+//     operatingIncomeLastFYDifference,
+//     operatingIncomeCumulative,
+//     operatingIncomeLastFYCumlative,
+//     netIncomeDifference,
+//     netIncomeLastFYDifference,
+//     netIncomeCumulative,
+//     netIncomeLastFYCumulative,
+// ]
 
-const [netSalesCumulative, netSalesLastFYCumulative, operatingIncomeCumulative, operatingIncomeLastFYCumlative,
-netIncomeCumulative, netIncomeLastFYCumulative] = collection.map((elem) => {
-    return cumulativeCalculation(elem)
-})
+// const [netSalesDifferenceYoy, netSalesCumulativeYoy, operatingIncomeDifferenceYoy, operatingIncomeCumulativeYoy, netIncomeDifferenceYoy, netIncomeCumulativeYoy] = yearOnYearCollection.map((elem, index, array) => {
+//     // need to use map and then filter, not the other way around. Input array of arrays of length 12, output array of arrays of length 12 and then filter to 6.
 
-const yearOnYearCollection = [
-    netSalesDifference,
-    netSalesLastFYDifference,
-    netSalesCumulative,
-    netSalesLastFYCumulative,
-    operatingIncomeDifference,
-    operatingIncomeLastFYDifference,
-    operatingIncomeCumulative,
-    operatingIncomeLastFYCumlative,
-    netIncomeDifference,
-    netIncomeLastFYDifference,
-    netIncomeCumulative,
-    netIncomeLastFYCumulative,
-]
+//     return (index % 2 === 0) // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
+//             ? yearOnYearCalculation(array[index], array[index+1])
+//             : [];
+//     }).filter((elem) => elem.length !== 0) // map creates empty arrays so filter removes them and then the array destructuring works correctly, note: elem is used and not array because the array contains 12 arrays! This also removes the issue of variable possibly being undefined had we not put in empty arrays since it would have automatically placed undefined.
 
-const [netSalesDifferenceYoy, netSalesCumulativeYoy, operatingIncomeDifferenceYoy, operatingIncomeCumulativeYoy, netIncomeDifferenceYoy, netIncomeCumulativeYoy] = yearOnYearCollection.map((elem, index, array) => {
-    // need to use map and then filter, not the other way around. Input array of arrays of length 12, output array of arrays of length 12 and then filter to 6.
+// const opMarginCollection = [
+//     netSalesDifference,
+//     operatingIncomeDifference,
+//     netSalesCumulative,
+//     operatingIncomeCumulative,
+// ]
 
-    return (index % 2 === 0) // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
-            ? yearOnYearCalculation(array[index], array[index+1])
-            : [];
-    }).filter((elem) => elem.length !== 0) // map creates empty arrays so filter removes them and then the array destructuring works correctly, note: elem is used and not array because the array contains 12 arrays! This also removes the issue of variable possibly being undefined had we not put in empty arrays since it would have automatically placed undefined.
+// const [operatingMarginQuarters, operatingMarginCumulative] = opMarginCollection.map((elem, index, array) => {
+//     // Input array of arrays of length 4, output array of arrays of length 4 and then filter to 2.
 
-const opMarginCollection = [
-    netSalesDifference,
-    operatingIncomeDifference,
-    netSalesCumulative,
-    operatingIncomeCumulative,
-]
+//     return (index % 2 === 0) // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
+//             ? operatingMarginCalculation(array[index], array[index+1])
+//             : [];
+//     }).filter((elem) => elem.length !== 0) // map creates empty arrays so filter removes them and then the array destructuring works correctly, note: elem is used and not array because the array contains 12 arrays! This also removes the issue of variable possibly being undefined had we not put in empty arrays since it would have automatically placed undefined.
 
-const [operatingMarginQuarters, operatingMarginCumulative] = opMarginCollection.map((elem, index, array) => {
-    // Input array of arrays of length 4, output array of arrays of length 4 and then filter to 2.
-
-    return (index % 2 === 0) // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
-            ? operatingMarginCalculation(array[index], array[index+1])
-            : [];
-    }).filter((elem) => elem.length !== 0) // map creates empty arrays so filter removes them and then the array destructuring works correctly, note: elem is used and not array because the array contains 12 arrays! This also removes the issue of variable possibly being undefined had we not put in empty arrays since it would have automatically placed undefined.
-
-const opMarginForecasts = operatingMarginForecastCalculation(netSalesForecasts, operatingIncomeForecasts)
-
-// need to make function for forecasts
+// const opMarginForecasts = operatingMarginForecastCalculation(netSalesForecasts, operatingIncomeForecasts)
 
 export function quarterlyCalculation(quarters: Quarter[]) {
     
@@ -295,7 +192,7 @@ export function operatingMarginForecastCalculation(netSalesLocal: Forecasts[], o
 
 }
 
-const currentQuarter = 3; // Set to 1, 2, 3 or 4.
+export const currentQuarter = 4; // Set to 1, 2, 3 or 4.
 
 export function printMobile() {
 
@@ -306,80 +203,7 @@ const printHead =
 |${header.title}|
 +${"-".repeat(34)}+`;
 
-    // the array needs to be filtered and then mapped...
-    const printQuartersNetSalesDifference = netSalesDifference.filter((elem, index) => index < currentQuarter).map((elem, index) => {
-
-        let printNetSalesYoY: string = (netSalesDifferenceYoy[index].quarter > 0) 
-                                ? `+${netSalesDifferenceYoy[index].quarter}% `
-                                : `${netSalesDifferenceYoy[index].quarter}% `;
-        let printNetSalesYoYFixed: string = (printNetSalesYoY.length === 9)
-                                ? printNetSalesYoY
-                                : " ".repeat(9 - printNetSalesYoY.length) + printNetSalesYoY
-        //  let x = `${elem.quarter.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' })}M ` // cannot use currency settings as it creates border misalignment due to ¥ becoming wider. 
-        let printNetSales: string = `¥${elem.quarter.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
-        let printNetSalesFixed: string = (printNetSales.length === 14)
-                                  ? printNetSales
-                                  : " ".repeat(14 - printNetSales.length) + printNetSales;
-        let printQuarterRow = `${rowQuartersApplied[index].quarter}`;  
-        return "|" + printQuarterRow + "|" + printNetSalesFixed + "|" + printNetSalesYoYFixed + "|" // old note, used "\n" at end here: must affix a new line \n, was also affixing tabs \t to align but realised I could adjust the template literal 
-    }).reduce((prev, next, index, array) => {
-        return (array[index] === array[currentQuarter -1])
-                  ? prev + `\n+${"-".repeat(38)}+\n` + next
-                  : prev + `\n+${"-".repeat(38)}+\n` + next 
-    })   // sources for finding methods to convert numbers to strings with currency symbol and thousands separators: https://stackoverflow.com/questions/3753483/javascript-thousand-separator-string-format?noredirect=1&lq=1
-    // mdn source with more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString 
-    
-    const printCumulativeNetSales = () => {
-    
-          // filtered this way, the first half correctly appears at quarter 2.
-          return  netSalesCumulative.filter((elem, index) => (currentQuarter >= 2 && index < currentQuarter -1)).map((elem, index) => {
-          
-          let printNetSalesCmlYoY: string = (netSalesCumulativeYoy[index].quarter > 0) 
-                                  ? `+${netSalesCumulativeYoy[index].quarter}% `
-                                  : `${netSalesCumulativeYoy[index].quarter}% `;
-          let printNetSalesCmlYoYFixed: string = (printNetSalesCmlYoY.length === 9)
-                                  ? printNetSalesCmlYoY
-                                  : " ".repeat(9 - printNetSalesCmlYoY.length) + printNetSalesCmlYoY
-          let printNetSalesCml: string = `¥${elem.quarter.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
-          let printNetSalesCmlFixed: string = (printNetSalesCml.length === 14)
-                                    ? printNetSalesCml
-                                    : " ".repeat(14 - printNetSalesCml.length) + printNetSalesCml;
-          let printQuarterRow: string = `${rowCumulativesApplied[index].cumulative}`;  
-          return "|" + printQuarterRow + "|" + printNetSalesCmlFixed + "|" + printNetSalesCmlYoYFixed + "|"
-          }).reduce((prev, next, index, array) => {
-          return (array[index] === array[currentQuarter -2])
-                  ? prev + `\n+${"-".repeat(38)}+\n` + next + `\n+${"-".repeat(38)}+\n`
-                  : prev + `\n+${"-".repeat(38)}+\n` + next 
-        })
-  };
-
-  const printForecastNetSales = netSalesForecasts.filter((elem, index, array) => (currentQuarter < 4) ? index !== array.length-1 : elem).map((elem, index) => {
- 
-    let printForecast: string = `¥${elem.forecast.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
-    let printForecastFixed: string = (printForecast.length === 14)
-                              ? printForecast
-                              : " ".repeat(14 - printForecast.length) + printForecast;
-    let printQuarterRow = rowForecastsApplied.filter((elem, index, array) => 
-            (currentQuarter < 4) 
-                ? index !== array.length-1 
-                : (currentQuarter >= 4 && netSalesForecasts.length === 2) 
-                ? index !== 1 && index !== 2 && index !== 3 
-                : (currentQuarter >= 4 && netSalesForecasts.length === 3) 
-                ? index !== 2 && index !== 3
-                : (currentQuarter >= 4 && netSalesForecasts.length === 4) 
-                ? index !== 3
-                : elem)
-    
-    let printQuarterRowFixed: string = `${printQuarterRow[index].forecast}`;
-
-    return "|" + printQuarterRowFixed + "|" + printForecastFixed + "|"  
-    }).reduce((prev, next, index, array) => {
-    return (array[index] === array[currentQuarter -1])
-              ? prev + `\n+${"-".repeat(32)}+\n` + next
-              : prev + `\n+${"-".repeat(32)}+\n` + next 
-})
-
-const printSectionDifference = (sectionDifference: Quarter[], sectionYoY: Quarter[]) => { // to use Net Sales Difference, Operating Income Difference or Net Profit Difference
+const printSectionDifference = (sectionDifference: Quarter[], sectionYoY: Quarter[], currentQuarter: number) => { // to use Net Sales Difference, Operating Income Difference or Net Profit Difference
 
     return sectionDifference.filter((elem, index) => index < currentQuarter).map((elem, index) => {
 
@@ -405,7 +229,7 @@ const printSectionDifference = (sectionDifference: Quarter[], sectionYoY: Quarte
 
 };
 
-const printSectionCumulative = (sectionCumulative: Quarter[], sectionYoY: Quarter[]) => { // to use Cumulative(Net Sales or Operating Income or Net Profit)
+const printSectionCumulative = (sectionCumulative: Quarter[], sectionYoY: Quarter[], currentQuarter: number) => { // to use Cumulative(Net Sales or Operating Income or Net Profit)
     
     // filtered this way, the first half correctly appears at quarter 2.
     return  sectionCumulative.filter((elem, index) => (currentQuarter >= 2 && index < currentQuarter -1)).map((elem, index) => {
@@ -429,7 +253,7 @@ const printSectionCumulative = (sectionCumulative: Quarter[], sectionYoY: Quarte
   })
 };
 
-const printSectionForecast = (sectionForecast: Forecasts[]) => {
+const printSectionForecast = (sectionForecast: Forecasts[], currentQuarter: number) => {
   
   
     return sectionForecast.filter((elem, index, array) => (currentQuarter < 4) ? index !== array.length-1 : elem).map((elem, index) => {
@@ -459,7 +283,7 @@ const printSectionForecast = (sectionForecast: Forecasts[]) => {
   })
   }
 
-  const printOpMarginQuarters = (sectionMarginQuarters: Quarter[]) => {
+  const printOpMarginQuarters = (sectionMarginQuarters: Quarter[], currentQuarter: number) => {
 
     return sectionMarginQuarters.filter((elem, index) => index < currentQuarter).map((elem, index) => {
   
@@ -478,7 +302,7 @@ const printSectionForecast = (sectionForecast: Forecasts[]) => {
   
   }
 
-  const printOpMarginCumulative = (sectionMarginCumalative: Quarter[]) => {
+  const printOpMarginCumulative = (sectionMarginCumalative: Quarter[], currentQuarter: number) => {
         
         return sectionMarginCumalative.filter((elem, index) => (currentQuarter >= 2 && index < currentQuarter -1)).map((elem, index) => {
   
@@ -495,7 +319,7 @@ const printSectionForecast = (sectionForecast: Forecasts[]) => {
       })
   }
 
-const printOpMarginForecasts = (sectionMarginForecasts: Forecasts[]) => {
+const printOpMarginForecasts = (sectionMarginForecasts: Forecasts[], currentQuarter: number) => {
 
     return sectionMarginForecasts.filter((elem, index, array) => (currentQuarter < 4) ? index !== array.length-1 : elem).map((elem, index) => {
    
@@ -528,8 +352,8 @@ const printNetSales =
 `+${"-".repeat(38)}+
 |${header.netSales}                 |${header.yearOnYearPercentage}|
 +${"-".repeat(38)}+
-${printSectionDifference(netSalesDifference, netSalesDifferenceYoy)}
-+${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts) : printSectionForecast(netSalesForecasts) }
+${printSectionDifference(netSalesDifference, netSalesDifferenceYoy, currentQuarter)}
++${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy, currentQuarter) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts) : printSectionForecast(netSalesForecasts) }
 +${"-".repeat(32)}+`;
   
 const printOperatingIncome = 
@@ -561,13 +385,9 @@ const printAll =
 ${printNetSales}
 ${printOperatingIncome}
 ${printOpMargin}
-${printNetIncome}`;
+${printNetIncome}
+###`;
 
 }
 
 printMobile();
-// arrays to reference:
-// [netSalesDifference, netSalesLastFYDifference, operatingIncomeDifference, operatingIncomeLastFYDifference, netIncomeDifference, netIncomeLastFYDifference]
-// [netSalesDifferenceYoy, netSalesCumulativeYoy, operatingIncomeDifferenceYoy, operatingIncomeCumulativeYoy, netIncomeDifferenceYoy, netIncomeCumulativeYoy]
-// [operatingMarginQuarters, operatingMarginCumulative]
-// opMarginForecasts
