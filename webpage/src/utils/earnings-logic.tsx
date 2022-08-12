@@ -369,7 +369,7 @@ const printHead =
                 ? index !== 3
                 : elem)
     
-    let printQuarterRowFixed = `${printQuarterRow[index].forecast}`;
+    let printQuarterRowFixed: string = `${printQuarterRow[index].forecast}`;
 
     return "|" + printQuarterRowFixed + "|" + printForecastFixed + "|"  
     }).reduce((prev, next, index, array) => {
@@ -378,19 +378,52 @@ const printHead =
               : prev + `\n+${"-".repeat(32)}+\n` + next 
 })
 
+const printSectionDifference = (sectionDifference: Quarter[], sectionYoY: Quarter[]) => { // to use Net Sales Difference, Operating Income Difference or Net Profit Difference
+
+    return sectionDifference.filter((elem, index) => index < currentQuarter).map((elem, index) => {
+
+        let printSectionDifferenceYoY: string = (sectionYoY[index].quarter > 0) 
+                                ? `+${sectionYoY[index].quarter}% `
+                                : `${sectionYoY[index].quarter}% `;
+        let printSectionYoYFixed: string = (printSectionDifferenceYoY.length === 9)
+                                ? printSectionDifferenceYoY
+                                : " ".repeat(9 - printSectionDifferenceYoY.length) + printSectionDifferenceYoY
+        //  let x = `${elem.quarter.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' })}M ` // cannot use currency settings as it creates border misalignment due to ¥ becoming wider. 
+        let printSection: string = `¥${elem.quarter.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
+        let printSectionFixed: string = (printSection.length === 14)
+                                  ? printSection
+                                  : " ".repeat(14 - printSection.length) + printSection;
+        let printQuarterRow = `${rowQuartersApplied[index].quarter}`;  
+        return "|" + printQuarterRow + "|" + printSectionFixed + "|" + printSectionYoYFixed + "|" // old note, used "\n" at end here: must affix a new line \n, was also affixing tabs \t to align but realised I could adjust the template literal 
+    }).reduce((prev, next, index, array) => {
+        return (array[index] === array[currentQuarter -1])
+                  ? prev + `\n+${"-".repeat(38)}+\n` + next
+                  : prev + `\n+${"-".repeat(38)}+\n` + next 
+    })   // sources for finding methods to convert numbers to strings with currency symbol and thousands separators: https://stackoverflow.com/questions/3753483/javascript-thousand-separator-string-format?noredirect=1&lq=1
+    // mdn source with more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString
+
+};
+
 const printQuartersNetSales = 
 `+${"-".repeat(38)}+
 |${header.netSales}                 |${header.yearOnYearPercentage}|
 +${"-".repeat(38)}+
-${printQuartersNetSalesDifference}
-+${(currentQuarter > 1) ? "=".repeat(38)+"+" + "\n" + printCumulativeNetSales() : "=".repeat(38)+"+" }${printForecastNetSales}
+${printSectionDifference(netSalesDifference, netSalesDifferenceYoy)}
++${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printCumulativeNetSales() : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printForecastNetSales : (currentQuarter === 1) ? `\n` + printForecastNetSales : printForecastNetSales }
 +${"-".repeat(32)}+`;
+
+// console.log(printQuartersNetSales)
+
+const printQuarterOperatingIncome = 
+`+${"-".repeat(38)}+
+|${header.operatingIncome}                 |${header.yearOnYearPercentage}|
++${"-".repeat(38)}+`;
 
 const printAll = 
 `${printHead}
 ${printQuartersNetSales}`;
 
-// console.log(printAll)
+console.log(printAll)
 }
 
 printMobile();
