@@ -8,7 +8,6 @@ import {
     Header,
     RowCumulatives,
     RowForecasts,
-    printAll,
     printHead,
     printNetIncome,
     printNetSales,
@@ -19,66 +18,66 @@ import {
     const currentQuarter = 4;
 
     const netSales: Quarter[] = [
-        {quarter: 307460},  // first quarter
-        {quarter: 624272},  // second quarter
-        {quarter: 1320219}, // third quarter
-        {quarter: 1695344}, // fourth quarter
+        {quarter: 61969},  // first quarter
+        {quarter: 136812},  // second quarter
+        {quarter: 311121}, // third quarter
+        {quarter: 489095}, // fourth quarter
     ]
 
     const netSalesLastFy: Quarter[] = [
-        {quarter: 322647}, // first quarter
-        {quarter: 769524}, // second quarter
-        {quarter: 1404463}, // third quarter
-        {quarter: 1758910}, // fourth quarter
+        {quarter: 90223}, // first quarter
+        {quarter: 204182}, // second quarter
+        {quarter: 425664}, // third quarter
+        {quarter: 504459}, // fourth quarter
     ]
 
     const netSalesForecasts: Forecasts[] = [ // any forecast revisions need to be placed between current and next
-        {forecast: 1600000}, // current Fiscal Year Forecast
-        {forecast: 1620000}, // first forecast revision
-        {forecast: 1650000}, // second forecast revision
-        {forecast: 1700000}, // next Fiscal Year Forecast
+        {forecast: 500000}, // current Fiscal Year Forecast
+        {forecast: 470000}, // first forecast revision
+        {forecast: 470000}, // second forecast revision
+        {forecast: 750000}, // next Fiscal Year Forecast
     ]
 
     const operatingIncome: Quarter[] = [
-        {quarter: 101647}, // first quarter
-        {quarter: 219959}, // second quarter
-        {quarter: 472551}, // third quarter
-        {quarter: 592760}, // fourth quarter
+        {quarter: -5134}, // first quarter
+        {quarter: -5947}, // second quarter
+        {quarter: 26315}, // third quarter
+        {quarter: 29362}, // fourth quarter
     ]
     
     const operatingIncomeLastFY: Quarter[] = [
-          {quarter: 144737}, // first quarter
-          {quarter: 246687}, // second quarter
-          {quarter: 329684}, // third quarter
-          {quarter: 419526}, // fourth quarter
+          {quarter: 1149}, // first quarter
+          {quarter: 8977}, // second quarter
+          {quarter: 42485}, // third quarter
+          {quarter: 32881}, // fourth quarter
     ]
     
     const operatingIncomeForecasts: Forecasts[] = [ // forecast revisions need to be placed between current and next
-          {forecast: 500000}, // current Fiscal Year Forecast
-          {forecast : 520000}, // first forecast revision
-          {forecast: 560000}, // second forecast revision
-          {forecast: 600000}, // next Fiscal Year Forecast
+          {forecast: 45000}, // current Fiscal Year Forecast
+          {forecast : 30000}, // first forecast revision
+          {forecast: 20000}, // second forecast revision
+          {forecast: 65000}, // next Fiscal Year Forecast
     ]
 
     const netIncome: Quarter[] = [
-        {quarter: 151647}, // first quarter
-        {quarter: 179959}, // second quarter
-        {quarter: 322551}, // third quarter
-        {quarter: 452760}, // fourth quarter
+        {quarter: -24534}, // first quarter
+        {quarter: 38299}, // second quarter
+        {quarter: 102969}, // third quarter
+        {quarter: 102574}, // fourth quarter
     ]
     
     const netIncomeLastFY: Quarter[] = [
-          {quarter: 144737}, // first quarter
-          {quarter: 246687}, // second quarter
-          {quarter: 329684}, // third quarter
-          {quarter: 419526}, // fourth quarter
+          {quarter: 8284}, // first quarter
+          {quarter: 11466}, // second quarter
+          {quarter: 40558}, // third quarter
+          {quarter: 16505}, // fourth quarter
     ]
     
     const netIncomeForecasts: Forecasts[] = [ // forecast revisions need to be placed between current and next
-            {forecast: 340000}, // current Fiscal Year Forecast
-            {forecast: 350000}, // first forecast revision
-            {forecast: 400000}, // second forecast revision
-            {forecast: 420000}, // next Fiscal Year Forecast
+            {forecast: 35000}, // current Fiscal Year Forecast
+            {forecast: 50000}, // first forecast revision
+            {forecast: 90000}, // second forecast revision
+            {forecast: 45000}, // next Fiscal Year Forecast
     ]
 
     const header: Header = {

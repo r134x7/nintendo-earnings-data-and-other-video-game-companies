@@ -163,7 +163,7 @@ const printSectionDifference = (sectionDifference: Quarter[], sectionYoY: Quarte
         let printSectionDifferenceYoY: string = (sectionYoY[index].quarter > 0) 
                                 ? `+${sectionYoY[index].quarter}% `
                                 : `${sectionYoY[index].quarter}% `;
-        let printSectionYoYFixed: string = (printSectionDifferenceYoY.length === 9)
+        let printSectionYoYFixed: string = (printSectionDifferenceYoY.length >= 9)
                                 ? printSectionDifferenceYoY
                                 : " ".repeat(9 - printSectionDifferenceYoY.length) + printSectionDifferenceYoY
         //  let x = `${elem.quarter.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' })}M ` // cannot use currency settings as it creates border misalignment due to ¥ becoming wider. 
@@ -171,7 +171,7 @@ const printSectionDifference = (sectionDifference: Quarter[], sectionYoY: Quarte
         let printSectionFixed: string = (printSection.length === 14)
                                   ? printSection
                                   : " ".repeat(14 - printSection.length) + printSection;
-        let printQuarterRow = `${rowQuartersApplied[index].quarter}`;  
+        let printQuarterRow: string = `${rowQuartersApplied[index].quarter}`;  
         return "|" + printQuarterRow + "|" + printSectionFixed + "|" + printSectionYoYFixed + "|" // old note, used "\n" at end here: must affix a new line \n, was also affixing tabs \t to align but realised I could adjust the template literal 
     }).reduce((prev, next, index, array) => {
         return (array[index] === array[currentQuarter -1])
@@ -190,7 +190,7 @@ const printSectionCumulative = (sectionCumulative: Quarter[], sectionYoY: Quarte
     let printSectionCmlYoY: string = (sectionYoY[index].quarter > 0) 
                             ? `+${sectionYoY[index].quarter}% `
                             : `${sectionYoY[index].quarter}% `;
-    let printSectionCmlYoYFixed: string = (printSectionCmlYoY.length === 9)
+    let printSectionCmlYoYFixed: string = (printSectionCmlYoY.length >= 9)
                             ? printSectionCmlYoY
                             : " ".repeat(9 - printSectionCmlYoY.length) + printSectionCmlYoY
     let printSectionCml: string = `¥${elem.quarter.toLocaleString("en")}M `; 
@@ -240,7 +240,7 @@ const printOpMarginQuarters = (sectionMarginQuarters: Quarter[], currentQuarter:
     return sectionMarginQuarters.filter((elem, index) => index < currentQuarter).map((elem, index) => {
   
           let printSectionMarginQuarters: string = `${elem.quarter}% `;
-          let printSectionMarginQuartersFixed: string = (printSectionMarginQuarters.length === 9)
+          let printSectionMarginQuartersFixed: string = (printSectionMarginQuarters.length >= 9)
                                   ? printSectionMarginQuarters
                                   : " ".repeat(9 - printSectionMarginQuarters.length) + printSectionMarginQuarters
           let printQuarterRow = `${rowQuartersApplied[index].quarter}`;  
