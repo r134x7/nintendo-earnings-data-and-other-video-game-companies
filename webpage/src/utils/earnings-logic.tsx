@@ -404,15 +404,39 @@ const printSectionDifference = (sectionDifference: Quarter[], sectionYoY: Quarte
 
 };
 
-const printQuartersNetSales = 
+const printSectionCumulative = (sectionCumulative: Quarter[], sectionYoY: Quarter[]) => { // to use Cumulative(Net Sales or Operating Income or Net Profit)
+    
+    // filtered this way, the first half correctly appears at quarter 2.
+    return  sectionCumulative.filter((elem, index) => (currentQuarter >= 2 && index < currentQuarter -1)).map((elem, index) => {
+    
+    let printSectionCmlYoY: string = (sectionYoY[index].quarter > 0) 
+                            ? `+${sectionYoY[index].quarter}% `
+                            : `${sectionYoY[index].quarter}% `;
+    let printSectionCmlYoYFixed: string = (printSectionCmlYoY.length === 9)
+                            ? printSectionCmlYoY
+                            : " ".repeat(9 - printSectionCmlYoY.length) + printSectionCmlYoY
+    let printSectionCml: string = `¥${elem.quarter.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
+    let printSectionCmlFixed: string = (printSectionCml.length === 14)
+                              ? printSectionCml
+                              : " ".repeat(14 - printSectionCml.length) + printSectionCml;
+    let printQuarterRow: string = `${rowCumulativesApplied[index].cumulative}`;  
+    return "|" + printQuarterRow + "|" + printSectionCmlFixed + "|" + printSectionCmlYoYFixed + "|"
+    }).reduce((prev, next, index, array) => {
+    return (array[index] === array[currentQuarter -2])
+            ? prev + `\n+${"-".repeat(38)}+\n` + next + `\n+${"-".repeat(38)}+\n`
+            : prev + `\n+${"-".repeat(38)}+\n` + next 
+  })
+};
+
+const printNetSales = 
 `+${"-".repeat(38)}+
 |${header.netSales}                 |${header.yearOnYearPercentage}|
 +${"-".repeat(38)}+
 ${printSectionDifference(netSalesDifference, netSalesDifferenceYoy)}
-+${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printCumulativeNetSales() : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printForecastNetSales : (currentQuarter === 1) ? `\n` + printForecastNetSales : printForecastNetSales }
++${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printForecastNetSales : (currentQuarter === 1) ? `\n` + printForecastNetSales : printForecastNetSales }
 +${"-".repeat(32)}+`;
 
-// console.log(printQuartersNetSales)
+// console.log(printNetSales)
 
 const printQuarterOperatingIncome = 
 `+${"-".repeat(38)}+
@@ -421,7 +445,7 @@ const printQuarterOperatingIncome =
 
 const printAll = 
 `${printHead}
-${printQuartersNetSales}`;
+${printNetSales}`;
 
 console.log(printAll)
 }
