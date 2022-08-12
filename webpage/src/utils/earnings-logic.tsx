@@ -166,20 +166,6 @@ export function operatingMarginCalculation(netSalesLocal: Quarter[], opIncomeLoc
 
 export function operatingMarginForecastCalculation(netSalesLocal: Forecasts[], opIncomeLocal: Forecasts[]) {
 
-    // const operatingMarginForecasts: Forecasts = {
-    //     currentFiscalYearForecast: Number(((opIncomeLocal.currentFiscalYearForecast / netSalesLocal.currentFiscalYearForecast) * 100).toFixed(2)),
-    //     nextFiscalYearForecast: Number(((opIncomeLocal.nextFiscalYearForecast / netSalesLocal.nextFiscalYearForecast) * 100).toFixed(2)),
-    //     firstForecastRevision: (netSalesLocal.firstForecastRevision !== undefined && opIncomeLocal.firstForecastRevision !== undefined) 
-    //         ? Number(((opIncomeLocal.firstForecastRevision / netSalesLocal.firstForecastRevision) * 100).toFixed(2))
-    //         : 0,
-    //     secondForecastRevision: (netSalesLocal.secondForecastRevision !== undefined && opIncomeLocal.secondForecastRevision !== undefined) 
-    //         ? Number(((opIncomeLocal.secondForecastRevision / netSalesLocal.secondForecastRevision) * 100).toFixed(2))
-    //         : 0,
-    //     thirdForecastRevision: (netSalesLocal.thirdForecastRevision !== undefined && opIncomeLocal.thirdForecastRevision !== undefined) 
-    //         ? Number(((opIncomeLocal.thirdForecastRevision / netSalesLocal.thirdForecastRevision) * 100).toFixed(2))
-    //         : 0,
-    // }
-
     const calc = opIncomeLocal.map((elem, index) => {
         return (netSalesLocal[index].forecast !== 0) 
                   ? {forecast: Number(
@@ -364,30 +350,26 @@ ${printSectionDifference(operatingIncomeDifference, operatingIncomeDifferenceYoy
 +${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(operatingIncomeCumulative, operatingIncomeCumulativeYoy, currentQuarter) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(operatingIncomeForecasts, currentQuarter) : (currentQuarter === 1) ? `\n` + printSectionForecast(operatingIncomeForecasts, currentQuarter) : printSectionForecast(operatingIncomeForecasts, currentQuarter) }
 +${"-".repeat(32)}+`;
   
-const printOpMargin = 
+export const printOpMargin = (header: Header, operatingMarginQuarters: Quarter[], operatingMarginCumulative: Quarter[], opMarginForecasts: Forecasts[], currentQuarter: number) => 
 `+${"-".repeat(23)}+
 |${header.operatingMargin}     |
 +${"-".repeat(23)}+
-${printOpMarginQuarters(operatingMarginQuarters)}
-+${(currentQuarter > 1) ? "=".repeat(23)+"+\n" + printOpMarginCumulative(operatingMarginCumulative) : "=".repeat(23)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(27)}+\n` + printOpMarginForecasts(opMarginForecasts) : (currentQuarter === 1) ? `\n+${"-".repeat(27)}+\n` + printOpMarginForecasts(opMarginForecasts) : printOpMarginForecasts(opMarginForecasts) }
+${printOpMarginQuarters(operatingMarginQuarters, currentQuarter)}
++${(currentQuarter > 1) ? "=".repeat(23)+"+\n" + printOpMarginCumulative(operatingMarginCumulative, currentQuarter) : "=".repeat(23)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(27)}+\n` + printOpMarginForecasts(opMarginForecasts, currentQuarter) : (currentQuarter === 1) ? `\n+${"-".repeat(27)}+\n` + printOpMarginForecasts(opMarginForecasts, currentQuarter) : printOpMarginForecasts(opMarginForecasts, currentQuarter) }
 +${"-".repeat(27)}+`;
 
-const printNetIncome = 
+export const printNetIncome = (header: Header, netIncomeDifference: Quarter[], netIncomeDifferenceYoy: Quarter[], netIncomeCumulative: Quarter[], netIncomeCumulativeYoy: Quarter[], netIncomeForecasts: Forecasts[], currentQuarter: number) => 
 `+${"-".repeat(38)}+
 |${header.netIncome}                |${header.yearOnYearPercentage}|
 +${"-".repeat(38)}+
-${printSectionDifference(netIncomeDifference, netIncomeDifferenceYoy)}
-+${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netIncomeCumulative, netIncomeCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netIncomeForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(netIncomeForecasts) : printSectionForecast(netIncomeForecasts) }
+${printSectionDifference(netIncomeDifference, netIncomeDifferenceYoy, currentQuarter)}
++${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netIncomeCumulative, netIncomeCumulativeYoy, currentQuarter) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netIncomeForecasts, currentQuarter) : (currentQuarter === 1) ? `\n` + printSectionForecast(netIncomeForecasts, currentQuarter) : printSectionForecast(netIncomeForecasts, currentQuarter) }
 +${"-".repeat(32)}+`;
 
-const printAll = 
+export const printAll = () => 
 `${printHead}
 ${printNetSales}
 ${printOperatingIncome}
 ${printOpMargin}
 ${printNetIncome}
 ###`;
-
-// }
-
-// printMobile();
