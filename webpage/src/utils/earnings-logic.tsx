@@ -296,8 +296,7 @@ export function operatingMarginForecastCalculation(netSalesLocal: Forecasts[], o
 }
 
 const currentQuarter = 3; // Set to 1, 2, 3 or 4.
-const printQuarterRow1 = rowForecastsApplied.filter((elem, index, array) => (currentQuarter < 4) ? !array[-1] : index)
-console.log(printQuarterRow1)
+
 export function printMobile() {
 
 const printHead = 
@@ -459,14 +458,6 @@ const printSectionForecast = (sectionForecast: Forecasts[]) => {
                 : prev + `\n+${"-".repeat(32)}+\n` + next 
   })
   }
-  
-  const printNetSales = 
-  `+${"-".repeat(38)}+
-  |${header.netSales}                 |${header.yearOnYearPercentage}|
-  +${"-".repeat(38)}+
-  ${printSectionDifference(netSalesDifference, netSalesDifferenceYoy)}
-  +${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts) : printSectionForecast(netSalesForecasts) }
-  +${"-".repeat(32)}+`;
 
   const printOpMarginQuarters = (sectionMarginQuarters: Quarter[]) => {
 
@@ -482,32 +473,52 @@ const printSectionForecast = (sectionForecast: Forecasts[]) => {
           return (array[index] === array[currentQuarter -1])
                     ? prev + `\n+${"-".repeat(23)}+\n` + next
                     : prev + `\n+${"-".repeat(23)}+\n` + next 
-      })   // sources for finding methods to convert numbers to strings with currency symbol and thousands separators: https://stackoverflow.com/questions/3753483/javascript-thousand-separator-string-format?noredirect=1&lq=1
-      // mdn source with more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString
+      })
   
   }
   
-  const printNetSales = 
-  `+${"-".repeat(38)}+
-  |${header.netSales}                 |${header.yearOnYearPercentage}|
-  +${"-".repeat(38)}+
-  ${printSectionDifference(netSalesDifference, netSalesDifferenceYoy)}
-  +${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts) : printSectionForecast(netSalesForecasts) }
-  +${"-".repeat(32)}+`;
+  const printOpMarginCumulative = (sectionMarginCumalative: Quarter[]) => {
+        
+        return sectionMarginCumalative.filter((elem, index) => index < currentQuarter).map((elem, index) => {
   
-  const printQuarterOperatingIncome = 
-  `+${"-".repeat(38)}+
-  |${header.operatingIncome}                 |${header.yearOnYearPercentage}|
-  +${"-".repeat(38)}+
-  ${printSectionDifference(netSalesDifference, netSalesDifferenceYoy)}
-  +${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts) : printSectionForecast(netSalesForecasts) }
-  +${"-".repeat(32)}+`;
+          let printSectionMarginCumulative: string = `${elem.quarter}% `;
+          let printSectionMarginCumulativeFixed: string = (printSectionMarginCumulative.length === 9)
+                                  ? printSectionMarginCumulative
+                                  : " ".repeat(9 - printSectionMarginCumulative.length) + printSectionMarginCumulative
+          let printQuarterRow = `${rowCumulativesApplied[index].cumulative}`;  
+          return "|" + printQuarterRow + "|" + printSectionMarginCumulativeFixed + "|" // old note, used "\n" at end here: must affix a new line \n, was also affixing tabs \t to align but realised I could adjust the template literal 
+      }).reduce((prev, next, index, array) => {
+          return (array[index] === array[currentQuarter -1])
+                    ? prev + `\n+${"-".repeat(23)}+\n` + next
+                    : prev + `\n+${"-".repeat(23)}+\n` + next 
+      })
+  }
   
-  const printOpMargin = 
-  `+${"-".repeat(23)}+
-  |${header.operatingMargin}     |
-  +${"-".repeat(23)}+
-  ${printOpMarginQuarters(operatingMarginQuarters)}`;
+const printNetSales = 
+`+${"-".repeat(38)}+
+|${header.netSales}                 |${header.yearOnYearPercentage}|
++${"-".repeat(38)}+
+${printSectionDifference(netSalesDifference, netSalesDifferenceYoy)}
++${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts) : printSectionForecast(netSalesForecasts) }
++${"-".repeat(32)}+`;
+  
+const printQuarterOperatingIncome = 
+`+${"-".repeat(38)}+
+|${header.operatingIncome}                 |${header.yearOnYearPercentage}|
++${"-".repeat(38)}+
+${printSectionDifference(netSalesDifference, netSalesDifferenceYoy)}
++${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts) : printSectionForecast(netSalesForecasts) }
++${"-".repeat(32)}+`;
+  
+const printOpMargin = 
+`+${"-".repeat(23)}+
+|${header.operatingMargin}     |
++${"-".repeat(23)}+
+${printOpMarginQuarters(operatingMarginQuarters)}
++${(currentQuarter > 1) ? "=".repeat(23)+"+\n" + printOpMarginCumulative(operatingMarginCumulative) : "=".repeat(23)+"+" }
++${"-".repeat(23)}+`;
+
+console.log(printOpMargin)
 
 const printAll = 
 `${printHead}
