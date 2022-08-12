@@ -194,16 +194,9 @@ export function operatingMarginForecastCalculation(netSalesLocal: Forecasts[], o
 
 export const currentQuarter = 4; // Set to 1, 2, 3 or 4.
 
-export function printMobile() {
+// export function printMobile() {
 
-const printHead = 
-`+${"-".repeat(34)}+
-|${header.companyName}|    ${header.fiscalYear} |
-+${"-".repeat(34)}+
-|${header.title}|
-+${"-".repeat(34)}+`;
-
-const printSectionDifference = (sectionDifference: Quarter[], sectionYoY: Quarter[], currentQuarter: number) => { // to use Net Sales Difference, Operating Income Difference or Net Profit Difference
+export const printSectionDifference = (sectionDifference: Quarter[], sectionYoY: Quarter[], currentQuarter: number) => { // to use Net Sales Difference, Operating Income Difference or Net Profit Difference
 
     return sectionDifference.filter((elem, index) => index < currentQuarter).map((elem, index) => {
 
@@ -229,7 +222,7 @@ const printSectionDifference = (sectionDifference: Quarter[], sectionYoY: Quarte
 
 };
 
-const printSectionCumulative = (sectionCumulative: Quarter[], sectionYoY: Quarter[], currentQuarter: number) => { // to use Cumulative(Net Sales or Operating Income or Net Profit)
+export const printSectionCumulative = (sectionCumulative: Quarter[], sectionYoY: Quarter[], currentQuarter: number) => { // to use Cumulative(Net Sales or Operating Income or Net Profit)
     
     // filtered this way, the first half correctly appears at quarter 2.
     return  sectionCumulative.filter((elem, index) => (currentQuarter >= 2 && index < currentQuarter -1)).map((elem, index) => {
@@ -253,7 +246,7 @@ const printSectionCumulative = (sectionCumulative: Quarter[], sectionYoY: Quarte
   })
 };
 
-const printSectionForecast = (sectionForecast: Forecasts[], currentQuarter: number) => {
+export const printSectionForecast = (sectionForecast: Forecasts[], currentQuarter: number) => {
   
   
     return sectionForecast.filter((elem, index, array) => (currentQuarter < 4) ? index !== array.length-1 : elem).map((elem, index) => {
@@ -283,7 +276,7 @@ const printSectionForecast = (sectionForecast: Forecasts[], currentQuarter: numb
   })
   }
 
-  const printOpMarginQuarters = (sectionMarginQuarters: Quarter[], currentQuarter: number) => {
+export const printOpMarginQuarters = (sectionMarginQuarters: Quarter[], currentQuarter: number) => {
 
     return sectionMarginQuarters.filter((elem, index) => index < currentQuarter).map((elem, index) => {
   
@@ -302,7 +295,7 @@ const printSectionForecast = (sectionForecast: Forecasts[], currentQuarter: numb
   
   }
 
-  const printOpMarginCumulative = (sectionMarginCumalative: Quarter[], currentQuarter: number) => {
+export const printOpMarginCumulative = (sectionMarginCumalative: Quarter[], currentQuarter: number) => {
         
         return sectionMarginCumalative.filter((elem, index) => (currentQuarter >= 2 && index < currentQuarter -1)).map((elem, index) => {
   
@@ -319,7 +312,7 @@ const printSectionForecast = (sectionForecast: Forecasts[], currentQuarter: numb
       })
   }
 
-const printOpMarginForecasts = (sectionMarginForecasts: Forecasts[], currentQuarter: number) => {
+export const printOpMarginForecasts = (sectionMarginForecasts: Forecasts[], currentQuarter: number) => {
 
     return sectionMarginForecasts.filter((elem, index, array) => (currentQuarter < 4) ? index !== array.length-1 : elem).map((elem, index) => {
    
@@ -347,13 +340,20 @@ const printOpMarginForecasts = (sectionMarginForecasts: Forecasts[], currentQuar
                 : prev + `\n+${"-".repeat(27)}+\n` + next 
       })
 }
+
+export const printHead = (header: Header) => 
+`+${"-".repeat(34)}+
+|${header.companyName}|    ${header.fiscalYear} |
++${"-".repeat(34)}+
+|${header.title}|
++${"-".repeat(34)}+`;
   
-const printNetSales = 
+export const printNetSales = (header: Header, netSalesDifference: Quarter[], netSalesDifferenceYoy: Quarter[], netSalesCumulative: Quarter[], netSalesCumulativeYoy: Quarter[], netSalesForecasts: Forecasts[], currentQuarter: number) =>
 `+${"-".repeat(38)}+
 |${header.netSales}                 |${header.yearOnYearPercentage}|
 +${"-".repeat(38)}+
 ${printSectionDifference(netSalesDifference, netSalesDifferenceYoy, currentQuarter)}
-+${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy, currentQuarter) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts) : printSectionForecast(netSalesForecasts) }
++${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy, currentQuarter) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts, currentQuarter) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts, currentQuarter) : printSectionForecast(netSalesForecasts, currentQuarter) }
 +${"-".repeat(32)}+`;
   
 const printOperatingIncome = 
@@ -388,6 +388,6 @@ ${printOpMargin}
 ${printNetIncome}
 ###`;
 
-}
+// }
 
-printMobile();
+// printMobile();
