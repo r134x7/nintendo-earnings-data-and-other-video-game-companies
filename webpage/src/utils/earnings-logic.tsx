@@ -428,13 +428,43 @@ const printSectionCumulative = (sectionCumulative: Quarter[], sectionYoY: Quarte
   })
 };
 
-const printNetSales = 
-`+${"-".repeat(38)}+
-|${header.netSales}                 |${header.yearOnYearPercentage}|
-+${"-".repeat(38)}+
-${printSectionDifference(netSalesDifference, netSalesDifferenceYoy)}
-+${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printForecastNetSales : (currentQuarter === 1) ? `\n` + printForecastNetSales : printForecastNetSales }
-+${"-".repeat(32)}+`;
+const printSectionForecast = (sectionForecast: Forecasts[]) => {
+  
+  
+    return sectionForecast.filter((elem, index, array) => (currentQuarter < 4) ? index !== array.length-1 : elem).map((elem, index) => {
+   
+      let printForecast: string = `¥${elem.forecast.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
+      let printForecastFixed: string = (printForecast.length === 14)
+                                ? printForecast
+                                : " ".repeat(14 - printForecast.length) + printForecast;
+      let printQuarterRow = rowForecastsApplied.filter((elem, index, array) => 
+              (currentQuarter < 4) 
+                  ? index !== array.length-1 
+                  : (currentQuarter >= 4 && sectionForecast.length === 2) 
+                  ? index !== 1 && index !== 2 && index !== 3 
+                  : (currentQuarter >= 4 && sectionForecast.length === 3) 
+                  ? index !== 2 && index !== 3
+                  : (currentQuarter >= 4 && sectionForecast.length === 4) 
+                  ? index !== 3
+                  : elem)
+      
+      let printQuarterRowFixed: string = `${printQuarterRow[index].forecast}`;
+  
+      return "|" + printQuarterRowFixed + "|" + printForecastFixed + "|"  
+      }).reduce((prev, next, index, array) => {
+      return (array[index] === array[currentQuarter -1])
+                ? prev + `\n+${"-".repeat(32)}+\n` + next
+                : prev + `\n+${"-".repeat(32)}+\n` + next 
+  })
+  }
+  
+  const printNetSales = 
+  `+${"-".repeat(38)}+
+  |${header.netSales}                 |${header.yearOnYearPercentage}|
+  +${"-".repeat(38)}+
+  ${printSectionDifference(netSalesDifference, netSalesDifferenceYoy)}
+  +${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts) : printSectionForecast(netSalesForecasts) }
+  +${"-".repeat(32)}+`;
 
 // console.log(printNetSales)
 
