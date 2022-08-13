@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Pagination, Group, Space, Switch } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printEarnings } from "../data/nintendo/Nintendo-FY3-2020/earnings-fy3-20";
+import { printEarnings } from "../data/nintendo/Nintendo-FY3-2021/earnings-fy3-21";
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
 Chart.register(...registerables); // to get the package working, source: https://www.chartjs.org/docs/next/getting-started/integration.html
 
-export default function NINTENDO_FY3_20() {
+export default function NINTENDO_FY3_21() {
 
     const [data, setData] = useState("");
     const [value, setValue] = useState("");
@@ -49,39 +49,39 @@ export default function NINTENDO_FY3_20() {
             <Text>
                 <Stack align="center">
                         1st Quarter Earnings Release: 
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2019/190730e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2019/190730e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2020/200806e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2020/200806e.pdf
                     </Anchor>
-                        1st Quarter Supplementary Information:
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2019/190730_2e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2019/190730_2e.pdf
+                        1st Quarter Financial Results Explanatory Material:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2020/200806_2e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2020/200806_2e.pdf
                     </Anchor>
                 
                         2nd Quarter Earnings Release: 
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2019/191031e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2019/191031e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2020/201105e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2020/201105e.pdf
                     </Anchor>
-                        2nd Quarter Supplementary Information:
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2019/191031_3e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2019/191031_3e.pdf
+                        2nd Quarter Financial Results Explanatory Material:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2020/201105_5e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2020/201105_5e.pdf
                     </Anchor>
                 
                         3rd Quarter Earnings Release: 
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2020/200130e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2020/200130e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2021/210201e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2021/210201e.pdf
                     </Anchor>
-                        3rd Quarter Supplementary Information:
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2020/200130_3e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2020/200130_3e.pdf
+                        3rd Quarter Financial Results Explanatory Material:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2021/210201_4e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2021/210201_4e.pdf
                     </Anchor>
                 
                         4th Quarter Earnings Release: 
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2020/200507e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2020/200507e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2021/210506e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2021/210506e.pdf
                     </Anchor>
                         4th Quarter Financial Results Explanatory Material:
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2020/200507_3e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2020/200507_3e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2021/210506_4e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2021/210506_4e.pdf
                     </Anchor>
                 </Stack>  
             </Text> 
