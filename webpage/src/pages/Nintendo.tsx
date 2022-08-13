@@ -5,6 +5,10 @@ import { useInterval } from "@mantine/hooks";
 import { useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import NINTENDO_FY3_17 from "../components/NINTENDO_FY3_2017";
+import NINTENDO_FY3_18 from "../components/NINTENDO_FY3_2018";
+import NINTENDO_FY3_19 from "../components/NINTENDO_FY3_2019";
+import NINTENDO_FY3_20 from "../components/NINTENDO_FY3_2020";
+import NINTENDO_FY3_21 from "../components/NINTENDO_FY3_2021";
 import NINTENDO_FY3_22 from "../components/NINTENDO_FY3_2022";
 
 const yearsList: string[] = []; // empty array 
@@ -102,13 +106,13 @@ export default function Nintendo() {
             {   (year === "FY3/2022")
                 ? <NINTENDO_FY3_22 />
                 : (year === "FY3/2021") 
-                ? <Text>There is no data here yet, search FY3/2022 for data.</Text>
+                ? <NINTENDO_FY3_21 />
                 : (year === "FY3/2020")
-                ? <Text>There is no data here yet, search FY3/2022 for data.</Text>
+                ? <NINTENDO_FY3_20 />
                 : (year === "FY3/2019")
-                ? <Text>There is no data here yet, search FY3/2022 for data.</Text>
+                ? <NINTENDO_FY3_19 />
                 : (year === "FY3/2018")
-                ? <Text>There is no data here yet, search FY3/2022 for data.</Text>
+                ? <NINTENDO_FY3_18 />
                 : (year === "FY3/2017")
                 ? <NINTENDO_FY3_17 />
                 : null
