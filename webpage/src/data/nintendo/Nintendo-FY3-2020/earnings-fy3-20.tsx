@@ -18,66 +18,66 @@ import {
     const currentQuarter = 4;
 
     const netSales: Quarter[] = [
-        {quarter: 168157},  // first quarter
-        {quarter: 388905},  // second quarter
-        {quarter: 997295}, // third quarter
-        {quarter: 1200560}, // fourth quarter
+        {quarter: 172111},  // first quarter
+        {quarter: 443967},  // second quarter
+        {quarter: 1022668}, // third quarter
+        {quarter: 1308519}, // fourth quarter
     ]
 
     const netSalesLastFy: Quarter[] = [
-        {quarter: 154069}, // first quarter
-        {quarter: 374041},  // second quarter
-        {quarter: 857012},  // third quarter
-        {quarter: 1055682}, // fourth quarter
+        {quarter: 168157}, // first quarter
+        {quarter: 388905},  // second quarter
+        {quarter: 997295},  // third quarter
+        {quarter: 1200560}, // fourth quarter
     ]
 
     const netSalesForecasts: Forecasts[] = [ // any forecast revisions need to be placed between current and next
-        {forecast: 1200000}, // current Fiscal Year Forecast
-        // {forecast: 0}, // first forecast revision
+        {forecast: 1250000}, // current Fiscal Year Forecast
+        {forecast: 1250000}, // first forecast revision
         // {forecast: 0}, // second forecast revision
-        {forecast: 1250000}, // next Fiscal Year Forecast
+        {forecast: 1200000}, // next Fiscal Year Forecast
     ]
 
     const operatingIncome: Quarter[] = [
-        {quarter: 30535}, // first quarter
-        {quarter: 61405}, // second quarter
-        {quarter: 220029}, // third quarter
-        {quarter: 249701}, // fourth quarter
+        {quarter: 27428}, // first quarter
+        {quarter: 94222}, // second quarter
+        {quarter: 262930}, // third quarter
+        {quarter: 352370}, // fourth quarter
     ]
     
     const operatingIncomeLastFY: Quarter[] = [
-          {quarter: 16208},  // first quarter
-          {quarter: 39961},  // second quarter
-          {quarter: 156462}, // third quarter
-          {quarter: 177557}, // fourth quarter
+          {quarter: 30535},  // first quarter
+          {quarter: 61405},  // second quarter
+          {quarter: 220029}, // third quarter
+          {quarter: 249701}, // fourth quarter
     ]
     
     const operatingIncomeForecasts: Forecasts[] = [ // forecast revisions need to be placed between current and next
-          {forecast: 225000}, // current Fiscal Year Forecast
-          // {forecast: 0}, // first forecast revision
+          {forecast: 260000}, // current Fiscal Year Forecast
+          {forecast: 300000}, // first forecast revision
           // {forecast: 0}, // second forecast revision
-          {forecast: 260000}, // next Fiscal Year Forecast
+          {forecast:  300000}, // next Fiscal Year Forecast
     ]
 
     const netIncome: Quarter[] = [
-        {quarter: 30600}, // first quarter
-        {quarter: 64576}, // second quarter
-        {quarter:  168785}, // third quarter
-        {quarter: 194009}, // fourth quarter
+        {quarter: 16604}, // first quarter
+        {quarter: 62018}, // second quarter
+        {quarter: 196389}, // third quarter
+        {quarter: 258641}, // fourth quarter
     ]
     
     const netIncomeLastFY: Quarter[] = [
-          {quarter: 21260}, // first quarter
-          {quarter: 51503},  // second quarter
-          {quarter: 135165}, // third quarter
-          {quarter: 139590}, // fourth quarter
+          {quarter: 30600}, // first quarter
+          {quarter: 64576},  // second quarter
+          {quarter: 168785}, // third quarter
+          {quarter: 194009}, // fourth quarter
     ]
     
     const netIncomeForecasts: Forecasts[] = [ // forecast revisions need to be placed between current and next
-        {forecast: 165000}, // current Fiscal Year Forecast
-        // {forecast: 0}, // first forecast revision
+        {forecast: 180000}, // current Fiscal Year Forecast
+        {forecast: 210000}, // first forecast revision
         // {forecast: 0}, // second forecast revision
-        {forecast: 180000}, // next Fiscal Year Forecast
+        {forecast: 200000}, // next Fiscal Year Forecast
     ]
 
     const header: Header = {
@@ -87,22 +87,22 @@ import {
         operatingMargin: " Operating Margin ",
         netIncome: " Net Profit ",
         yearOnYearPercentage: "    YoY% ",
-        fiscalYear: "FY3/2019 ",
+        fiscalYear: "FY3/2020 ",
         title: " Consolidated Operating Results   ",
     }
 
     const rowCumulativesApplied: RowCumulatives[] =[
         {cumulative: " First Half  "},
         {cumulative: " 1st 3 Qtrs  "},
-        {cumulative: " FY3/19 Cml. "},
+        {cumulative: " FY3/20 Cml. "},
     ]
 
     const rowForecastsApplied: RowForecasts[] = [
-        {forecast: " FY3/19 Forecast "},
+        {forecast: " FY3/20 Forecast "},
         {forecast: " FCST Revision 1 "},
         {forecast: " FCST Revision 2 "},
         {forecast: " FCST Revision 3 "},
-        {forecast: " FY3/20 Forecast "},
+        {forecast: " FY3/21 Forecast "},
     ]
 
     const collection = [
