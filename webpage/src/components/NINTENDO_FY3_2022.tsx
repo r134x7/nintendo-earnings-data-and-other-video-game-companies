@@ -1,7 +1,16 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Pagination, Group, Space, Switch } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printEarnings } from "../data/nintendo/Nintendo-FY3-2022/earnings-fy3-22";
+import { printEarnings,
+    netIncomeDifference,
+    netIncomeLastFYDifference,
+    netSalesDifference,
+    netSalesLastFYDifference,
+    operatingIncomeDifference,
+    operatingIncomeLastFYDifference,
+    operatingMarginQuarters,
+    operatingMarginQuartersLastFY,                        
+    } from "../data/nintendo/Nintendo-FY3-2022/earnings-fy3-22";
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
@@ -16,7 +25,7 @@ export default function NINTENDO_FY3_22() {
     const state: any = useSelector(state => state);
 
     const [activePage, setPage] = useState(1);
-    const [secondDataRef, setSecondDataRef] = useState(2)
+    // const [secondDataRef, setSecondDataRef] = useState(2)
     const [checked, setChecked] = useState(false);
     const [barChecked, setBarChecked] = useState(false);
 
@@ -88,96 +97,140 @@ export default function NINTENDO_FY3_22() {
         )
     };
 
-    const switchTopSellingTitles = [
-        {
-            title: "Mario Kart 8 Deluxe",
-            ltdFigureLastFy: 35.39,
-            firstQuarter: 37.08,
-            secondQuarter: 38.74,
-            thirdQuarter: 43.35,
-            fourthQuarter: 45.33,    
-        },
-        {
-            title: "Super Mario Odyssey",
-            ltdFigureLastFy: 20.83,
-            firstQuarter: 21.40,
-            secondQuarter: 21.95,
-            thirdQuarter: 23.02,
-            fourthQuarter: 23.50, 
-        },
-        {
-            title: "The Legend of Zelda: Breath of the Wild",
-            ltdFigureLastFy: 22.28,
-            firstQuarter: 23.20,
-            secondQuarter: 24.13,
-            thirdQuarter: 25.80,
-            fourthQuarter: 26.55, 
-        },
-        {
-            title: "Animal Crossing: New Horizons",
-            ltdFigureLastFy: 32.63,
-            firstQuarter: 33.89,
-            secondQuarter: 34.85,
-            thirdQuarter: 37.62,
-            fourthQuarter: 38.64,   
-        },
-        {
-            title: "Pokémon Sword / Pokémon Shield",
-            ltdFigureLastFy: 21.10,
-            firstQuarter: 21.85,
-            secondQuarter: 22.64,
-            thirdQuarter: 23.90,
-            fourthQuarter: 24.27, 
-        },
-        {
-            title: "Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee",
-            ltdFigureLastFy: 13.28,
-            firstQuarter: 13.57,    
-            secondQuarter: 13.83,
-            thirdQuarter: 14.33,
-            fourthQuarter: 14.65,
-        },
-        {
-            title: "Ring Fit Adventure",
-            ltdFigureLastFy: 10.11,
-            firstQuarter: 11.26,        
-            secondQuarter: 12.21,
-            thirdQuarter: 13.53,
-            fourthQuarter: 14.09,
-        },
-        {
-            title: "Super Mario Party",
-            ltdFigureLastFy: 14.79,
-            firstQuarter: 15.72,            
-            secondQuarter: 16.48,
-            thirdQuarter: 17.39,
-            fourthQuarter: 17.78,
-        },
-        {
-            title: "Super Smash Bros. Ultimate",
-            ltdFigureLastFy: 23.84,
-            firstQuarter: 24.77,               
-            secondQuarter: 25.71,
-            thirdQuarter: 27.40,
-            fourthQuarter: 28.17,
-        },
-        {
-            title: "Pokémon Brilliant Diamond / Pokémon Shining Pearl",
-            ltdFigureLastFy: 0,
-            firstQuarter: 0,                    
-            secondQuarter: 0,
-            thirdQuarter: 13.97,
-            fourthQuarter: 14.65,
-        },
-        {
-            title: "Splatoon 2",
-            ltdFigureLastFy: 12.21,
-            firstQuarter: 12.45,                        
-            secondQuarter: 12.68,
-            thirdQuarter: 12.68,
-            fourthQuarter: 12.68,
-        },
-    ];
+    interface Labels {
+        currentFY: string,
+        lastFY: string,
+        MarchThisYear: string,
+        MarchLastYear: string,
+    }
+
+    const labels: Labels = {
+        currentFY: "FY3/2022",
+        lastFY: "FY3/2021",
+        MarchThisYear: "March 2022",
+        MarchLastYear: "March 2021"
+    }
+
+    const consolidatedOperatingResults = printEarnings;
+
+    const consolidatedOperatingResultsLabels = [
+        `Net Sales ${labels.currentFY}`,
+        `Operating Income ${labels.currentFY}`,
+        `Operating Margin ${labels.currentFY}`,
+        `Net Income ${labels.currentFY}`,
+    ]
+
+    const consolidatedOperatingResultsLabelsLastFY = [
+        `Net Sales ${labels.lastFY}`,
+        `Operating Income ${labels.lastFY}`,
+        `Operating Margin ${labels.lastFY}`,
+        `Net Income ${labels.lastFY}`,
+    ]
+
+    const consolidatedOperatingResultsGraph = [
+        netSalesDifference.map((elem) => elem.quarter),
+        operatingIncomeDifference.map((elem) => elem.quarter),
+        operatingMarginQuarters.map((elem) => elem.quarter),
+        netIncomeDifference.map((elem) => elem.quarter),
+    ]
+
+    const consolidatedOperatingResultsGraphLastFY = [
+        netSalesLastFYDifference.map((elem) => elem.quarter),
+        operatingIncomeLastFYDifference.map((elem) => elem.quarter),
+        operatingMarginQuartersLastFY.map((elem) => elem.quarter),
+        netIncomeLastFYDifference.map((elem) => elem.quarter),
+    ]
+
+    // const switchTopSellingTitles = [
+    //     {
+    //         title: "Mario Kart 8 Deluxe",
+    //         ltdFigureLastFy: 35.39,
+    //         firstQuarter: 37.08,
+    //         secondQuarter: 38.74,
+    //         thirdQuarter: 43.35,
+    //         fourthQuarter: 45.33,    
+    //     },
+    //     {
+    //         title: "Super Mario Odyssey",
+    //         ltdFigureLastFy: 20.83,
+    //         firstQuarter: 21.40,
+    //         secondQuarter: 21.95,
+    //         thirdQuarter: 23.02,
+    //         fourthQuarter: 23.50, 
+    //     },
+    //     {
+    //         title: "The Legend of Zelda: Breath of the Wild",
+    //         ltdFigureLastFy: 22.28,
+    //         firstQuarter: 23.20,
+    //         secondQuarter: 24.13,
+    //         thirdQuarter: 25.80,
+    //         fourthQuarter: 26.55, 
+    //     },
+    //     {
+    //         title: "Animal Crossing: New Horizons",
+    //         ltdFigureLastFy: 32.63,
+    //         firstQuarter: 33.89,
+    //         secondQuarter: 34.85,
+    //         thirdQuarter: 37.62,
+    //         fourthQuarter: 38.64,   
+    //     },
+    //     {
+    //         title: "Pokémon Sword / Pokémon Shield",
+    //         ltdFigureLastFy: 21.10,
+    //         firstQuarter: 21.85,
+    //         secondQuarter: 22.64,
+    //         thirdQuarter: 23.90,
+    //         fourthQuarter: 24.27, 
+    //     },
+    //     {
+    //         title: "Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee",
+    //         ltdFigureLastFy: 13.28,
+    //         firstQuarter: 13.57,    
+    //         secondQuarter: 13.83,
+    //         thirdQuarter: 14.33,
+    //         fourthQuarter: 14.65,
+    //     },
+    //     {
+    //         title: "Ring Fit Adventure",
+    //         ltdFigureLastFy: 10.11,
+    //         firstQuarter: 11.26,        
+    //         secondQuarter: 12.21,
+    //         thirdQuarter: 13.53,
+    //         fourthQuarter: 14.09,
+    //     },
+    //     {
+    //         title: "Super Mario Party",
+    //         ltdFigureLastFy: 14.79,
+    //         firstQuarter: 15.72,            
+    //         secondQuarter: 16.48,
+    //         thirdQuarter: 17.39,
+    //         fourthQuarter: 17.78,
+    //     },
+    //     {
+    //         title: "Super Smash Bros. Ultimate",
+    //         ltdFigureLastFy: 23.84,
+    //         firstQuarter: 24.77,               
+    //         secondQuarter: 25.71,
+    //         thirdQuarter: 27.40,
+    //         fourthQuarter: 28.17,
+    //     },
+    //     {
+    //         title: "Pokémon Brilliant Diamond / Pokémon Shining Pearl",
+    //         ltdFigureLastFy: 0,
+    //         firstQuarter: 0,                    
+    //         secondQuarter: 0,
+    //         thirdQuarter: 13.97,
+    //         fourthQuarter: 14.65,
+    //     },
+    //     {
+    //         title: "Splatoon 2",
+    //         ltdFigureLastFy: 12.21,
+    //         firstQuarter: 12.45,                        
+    //         secondQuarter: 12.68,
+    //         thirdQuarter: 12.68,
+    //         fourthQuarter: 12.68,
+    //     },
+    // ];
 
     const topSellingTitles = `
     +--------------------------------+
@@ -1269,8 +1322,6 @@ export default function NINTENDO_FY3_22() {
     as indicated above: a/(a+b+c+d) )
     `;
 
-    const consolidatedOperatingResults = printEarnings;
-
     const nintendoHardwareSoftwareMobile = `
     +------------------------------+
     | Nintendo Switch   | FY3/2022 |   
@@ -1434,91 +1485,96 @@ export default function NINTENDO_FY3_22() {
             {(checked === false && barChecked === false)
                 ? (
                     <Line
-                    datasetIdKey="switchTopSellingTitles"
-                    data={{
-                        labels: ["Q4 Last FY" ,"1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
-                        datasets: [
-                            {
-                                data: Object.values(switchTopSellingTitles[activePage-1]).slice(1),
-                                label: switchTopSellingTitles[activePage-1].title,
+                        datasetIdKey="Consolidated Earnings"
+                        data={{
+                            labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
+                            datasets: [
+                                {
+                                data: consolidatedOperatingResultsGraph[activePage-1],
+                                label: consolidatedOperatingResultsLabels[activePage-1],
                                 borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                     return (curr === ".")
                                             ? acc + "1)"
                                             : acc + curr;
-                                }),
+                                    }),
 
-                            },
-                        ], 
-                    }}
+                                },
+                            ], 
+                        }}
 
-                    options={{
-                        scales: {
+                        options={{
+                         scales: {
                             y: {
                                 title: {
                                   display: true,
-                                  text: "Units at Life-To-Date (M = 10^6 or M = million)",
+                                  text: (activePage !== 3)
+                                            ? "Million yen (¥)"
+                                            : "Percentage (%)",
                                 },
                               },
                               x: {
                                   title: {
                                       display: true,
-                                      text: "Q4 FY3/21 and Quarters for Fiscal Year Ending March 2022",
+                                      text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
                                     },
                                 },
                             }
                         }}
-                     />
-                  )
-                : (checked === true && barChecked === false) ? (
-                     
-                <Line 
-                    datasetIdKey="switchTopSellingTitles"
-                    data={{
-                        labels: ["Q4 Last FY" ,"1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
-                        datasets: [
-                            {
-                                data: Object.values(switchTopSellingTitles[activePage-1]).slice(1),
-                                label: switchTopSellingTitles[activePage-1].title,
-                                borderColor: "indigo",
-                                backgroundColor: "red",
-
-                            },
-                            {
-                                data: Object.values(switchTopSellingTitles[secondDataRef-1]).slice(1),
-                                label: switchTopSellingTitles[secondDataRef-1].title,
-                                borderColor: "orange",
-                                backgroundColor: "black",
-                            },
-                        ], 
-                    }}
-
-                    options={{
-                        scales: {
-                            y: {
-                                title: {
-                                  display: true,
-                                  text: "Units at Life-To-Date (M = 10^6 or M = million)",
-                                },
-                              },
-                              x: {
-                                  title: {
-                                      display: true,
-                                      text: "Q4 FY3/21 and Quarters for Fiscal Year Ending March 2022",
-                                    },
-                                },
-                            }
-                        }}
-                     />
+                    />
                 )
-                : (checked === false && barChecked === true) ? (
-                    <Bar 
-                    datasetIdKey="switchTopSellingTitles"
-                    data={{
-                        labels: ["Q4 Last FY" ,"1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
-                        datasets: [
-                            {
-                                data: Object.values(switchTopSellingTitles[activePage-1]).slice(1),
-                                label: switchTopSellingTitles[activePage-1].title,
+                : (checked === true && barChecked === false) 
+                ? (
+                    <Line
+                        datasetIdKey="Consolidated Earnings"
+                        data={{
+                            labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
+                            datasets: [
+                                {
+                                    data: consolidatedOperatingResultsGraph[activePage-1],
+                                    label: consolidatedOperatingResultsLabels[activePage-1],
+                                    borderColor: "indigo",
+                                    backgroundColor: "red",
+
+                                },
+                                {
+                                    data: consolidatedOperatingResultsGraphLastFY[activePage-1],
+                                    label: consolidatedOperatingResultsLabelsLastFY[activePage-1],
+                                    borderColor: "orange",
+                                    backgroundColor: "black",
+                                },
+                            ], 
+                        }}
+
+                        options={{
+                         scales: {
+                            y: {
+                                title: {
+                                  display: true,
+                                  text: (activePage !== 3)
+                                            ? "Million yen (¥)"
+                                            : "Percentage (%)",
+                                },
+                              },
+                              x: {
+                                  title: {
+                                      display: true,
+                                      text: `Quarters for Fiscal Years Ending ${labels.MarchThisYear} and ${labels.MarchLastYear}`,
+                                    },
+                                },
+                            }
+                        }}
+                    />
+                )
+                : (checked === false && barChecked === true) 
+                ? (
+                    <Bar
+                        datasetIdKey="Consolidated Earnings"
+                        data={{
+                            labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
+                            datasets: [
+                                {
+                                data: consolidatedOperatingResultsGraph[activePage-1],
+                                label: consolidatedOperatingResultsLabels[activePage-1],
                                 backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                     return (curr === ".")
                                             ? acc + ".80)"
@@ -1527,44 +1583,47 @@ export default function NINTENDO_FY3_22() {
                                 borderColor: "black",
                                 borderWidth: 2,
 
-                            },
-                        ], 
-                    }}
+                                },
+                            ], 
+                        }}
 
-                    options={{
-                        scales: {
+                        options={{
+                         scales: {
                             y: {
                                 title: {
                                   display: true,
-                                  text: "Units at Life-To-Date (M = 10^6 or M = million)",
+                                  text: (activePage !== 3)
+                                            ? "Million yen (¥)"
+                                            : "Percentage (%)",
                                 },
                               },
                               x: {
                                   title: {
                                       display: true,
-                                      text: "Q4 FY3/21 and Quarters for Fiscal Year Ending March 2022",
+                                      text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
                                     },
                                 },
                             }
                         }}
-                     />
-                  )
+                    />
+                )
                 : (
-                    <Bar 
-                    datasetIdKey="switchTopSellingTitles"
+                    <Bar
+                    datasetIdKey="Consolidated Earnings"
                     data={{
-                        labels: ["Q4 Last FY" ,"1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
+                        labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                                data: Object.values(switchTopSellingTitles[activePage-1]).slice(1),
-                                label: switchTopSellingTitles[activePage-1].title,
+                                data: consolidatedOperatingResultsGraph[activePage-1],
+                                label: consolidatedOperatingResultsLabels[activePage-1],
                                 borderColor: "black",
                                 backgroundColor: "indigo",
                                 borderWidth: 2,
+
                             },
                             {
-                                data: Object.values(switchTopSellingTitles[secondDataRef-1]).slice(1),
-                                label: switchTopSellingTitles[secondDataRef-1].title,
+                                data: consolidatedOperatingResultsGraphLastFY[activePage-1],
+                                label: consolidatedOperatingResultsLabelsLastFY[activePage-1],
                                 borderColor: "black",
                                 backgroundColor: "orange",
                                 borderWidth: 2,
@@ -1573,30 +1632,29 @@ export default function NINTENDO_FY3_22() {
                     }}
 
                     options={{
-                        scales: {
-                            y: {
-                                title: {
+                     scales: {
+                        y: {
+                            title: {
+                              display: true,
+                              text: (activePage !== 3)
+                                            ? "Million yen (¥)"
+                                            : "Percentage (%)",
+                            },
+                          },
+                          x: {
+                              title: {
                                   display: true,
-                                  text: "Units at Life-To-Date (M = 10^6 or M = million)",
+                                  text: `Quarters for Fiscal Years Ending ${labels.MarchThisYear} and ${labels.MarchLastYear}`,
                                 },
-                              },
-                              x: {
-                                  title: {
-                                      display: true,
-                                      text: "Q4 FY3/21 and Quarters for Fiscal Year Ending March 2022",
-                                    },
-                                },
-                            }
-                        }}
-                     />
-                  )}
-                <Group mt="md" position="center">
-                   <Pagination page={activePage} onChange={setPage} total={switchTopSellingTitles.length} color="teal" size="sm" radius="md" />
-                   <Switch onLabel="BAR" offLabel="BAR" size="md" checked={barChecked} onChange={(event) => setBarChecked(event.currentTarget.checked)} />
-                   <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
-                   {(checked === true) 
-                        ? <Pagination mr="xl" page={secondDataRef} onChange={setSecondDataRef} total={switchTopSellingTitles.length} color="red" size="sm" radius="md" />
-                        : null} 
+                            },
+                        }
+                    }}
+                />
+                )}
+                    <Group mt="md" position="center">
+                        <Pagination page={activePage} onChange={setPage} total={consolidatedOperatingResultsGraph.length} color="teal" size="sm" radius="md" />
+                            <Switch onLabel="BAR" offLabel="BAR" size="md" checked={barChecked} onChange={(event) => setBarChecked(event.currentTarget.checked)} />
+                                <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
                 </Group>
             </div>
             <Space h="xl" />
