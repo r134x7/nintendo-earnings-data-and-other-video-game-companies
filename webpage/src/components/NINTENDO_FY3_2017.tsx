@@ -128,32 +128,35 @@ export default function NINTENDO_FY3_17() {
                             "Key/Digital Sales Indicator", 
                             "FY Million-Seller Titles", 
                             "Regional Hardware/Software units", 
-                            "Top Selling Titles",]}
+                            "Top Selling Titles",
+                        ]}
             />
             
             {sources}
             <Code style={{backgroundColor: `${state.colour}`}} block>{data}</Code>
             <div className="chart">
-            <Line
-                    datasetIdKey="Consolidated Earnings"
-                    data={{
-                        labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
-                        datasets: [
-                            {
+            {(checked === false && barChecked === false)
+                ? (
+                    <Line
+                        datasetIdKey="Consolidated Earnings"
+                        data={{
+                            labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
+                            datasets: [
+                                {
                                 data: consolidatedOperatingResultsGraph[activePage-1],
                                 label: consolidatedOperatingResultsLabels[activePage-1],
                                 borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                     return (curr === ".")
                                             ? acc + "1)"
                                             : acc + curr;
-                                }),
+                                    }),
 
-                            },
-                        ], 
-                    }}
+                                },
+                            ], 
+                        }}
 
-                    options={{
-                        scales: {
+                        options={{
+                         scales: {
                             y: {
                                 title: {
                                   display: true,
@@ -168,9 +171,128 @@ export default function NINTENDO_FY3_17() {
                                 },
                             }
                         }}
-                     />
-                     <Group mt="md" position="center">
-                   <Pagination page={activePage} onChange={setPage} total={consolidatedOperatingResultsGraph.length} color="teal" size="sm" radius="md" />
+                    />
+                )
+                : (checked === true && barChecked === false) 
+                ? (
+                    <Line
+                        datasetIdKey="Consolidated Earnings"
+                        data={{
+                            labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
+                            datasets: [
+                                {
+                                data: consolidatedOperatingResultsGraph[activePage-1],
+                                label: consolidatedOperatingResultsLabels[activePage-1],
+                                borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                                    return (curr === ".")
+                                            ? acc + "1)"
+                                            : acc + curr;
+                                    }),
+
+                                },
+                            ], 
+                        }}
+
+                        options={{
+                         scales: {
+                            y: {
+                                title: {
+                                  display: true,
+                                  text: "Million yen (¥)",
+                                },
+                              },
+                              x: {
+                                  title: {
+                                      display: true,
+                                      text: "Quarters for Fiscal Year Ending March 2017",
+                                    },
+                                },
+                            }
+                        }}
+                    />
+                )
+                : (checked === false && barChecked === true) 
+                ? (
+                    <Bar
+                        datasetIdKey="Consolidated Earnings"
+                        data={{
+                            labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
+                            datasets: [
+                                {
+                                data: consolidatedOperatingResultsGraph[activePage-1],
+                                label: consolidatedOperatingResultsLabels[activePage-1],
+                                borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                                    return (curr === ".")
+                                            ? acc + "1)"
+                                            : acc + curr;
+                                    }),
+
+                                },
+                            ], 
+                        }}
+
+                        options={{
+                         scales: {
+                            y: {
+                                title: {
+                                  display: true,
+                                  text: "Million yen (¥)",
+                                },
+                              },
+                              x: {
+                                  title: {
+                                      display: true,
+                                      text: "Quarters for Fiscal Year Ending March 2017",
+                                    },
+                                },
+                            }
+                        }}
+                    />
+                )
+                : (
+                    <Bar
+                    datasetIdKey="Consolidated Earnings"
+                    data={{
+                        labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
+                        datasets: [
+                            {
+                            data: consolidatedOperatingResultsGraph[activePage-1],
+                            label: consolidatedOperatingResultsLabels[activePage-1],
+                            borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                                return (curr === ".")
+                                        ? acc + "1)"
+                                        : acc + curr;
+                                }),
+
+                            },
+                        ], 
+                    }}
+
+                    options={{
+                     scales: {
+                        y: {
+                            title: {
+                              display: true,
+                              text: "Million yen (¥)",
+                            },
+                          },
+                          x: {
+                              title: {
+                                  display: true,
+                                  text: "Quarters for Fiscal Year Ending March 2017",
+                                },
+                            },
+                        }
+                    }}
+                />
+                )}
+                    <Group mt="md" position="center">
+                        <Pagination page={activePage} onChange={setPage} total={consolidatedOperatingResultsGraph.length} color="teal" size="sm" radius="md" />
+                            <Switch onLabel="BAR" offLabel="BAR" size="md" checked={barChecked} onChange={(event) => setBarChecked(event.currentTarget.checked)} />
+                                <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
+                   {(checked === true) 
+                        ? <Pagination mr="xl" page={secondDataRef} onChange={setSecondDataRef} total={consolidatedOperatingResultsGraph.length} color="red" size="sm" radius="md" />
+                        : null} 
                 </Group>
             </div>
         </div>
