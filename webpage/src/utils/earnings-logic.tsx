@@ -118,10 +118,16 @@ export function cumulativeCalculation(quarters: Quarter[]) {
 export function yearOnYearCalculation(thisFY: Quarter[], lastFY: Quarter[]) {
 
     const calc = thisFY.map((elem, index) => {
-        return {quarter: Number(
-                        (((elem.quarter / lastFY[index].quarter) -1) * 100).toFixed(2)
+
+        return (lastFY[index].quarter < 0)
+                ? {quarter: Number(
+                    ((((elem.quarter / lastFY[index].quarter) -1)* -1) * 100).toFixed(2)
                     )
-                } // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number 
+                  }
+                : {quarter: Number(
+                    (((elem.quarter / lastFY[index].quarter) -1) * 100).toFixed(2)
+                    )
+                  }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
     })
 
    return calc
