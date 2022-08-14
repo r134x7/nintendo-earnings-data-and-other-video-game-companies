@@ -97,20 +97,34 @@ export default function NINTENDO_FY3_18() {
         )
     };
 
+    interface Labels {
+        currentFY: string,
+        lastFY: string,
+        MarchThisYear: string,
+        MarchLastYear: string,
+    }
+
+    const labels: Labels = {
+        currentFY: "FY3/2018",
+        lastFY: "FY3/2017",
+        MarchThisYear: "March 2018",
+        MarchLastYear: "March 2017"
+    }
+
     const consolidatedOperatingResults = printEarnings;
 
     const consolidatedOperatingResultsLabels = [
-        "Net Sales FY3/2018",
-        "Operating Income FY3/2018",
-        "Operating Margin FY3/2018",
-        "Net Income FY3/2018",
+        `Net Sales ${labels.currentFY}`,
+        `Operating Income ${labels.currentFY}`,
+        `Operating Margin ${labels.currentFY}`,
+        `Net Income ${labels.currentFY}`,
     ]
 
     const consolidatedOperatingResultsLabelsLastFY = [
-        "Net Sales FY3/2017",
-        "Operating Income FY3/2017",
-        "Operating Margin FY3/2017",
-        "Net Income FY3/2017",
+        `Net Sales ${labels.lastFY}`,
+        `Operating Income ${labels.lastFY}`,
+        `Operating Margin ${labels.lastFY}`,
+        `Net Income ${labels.lastFY}`,
     ]
 
     const consolidatedOperatingResultsGraph = [
@@ -190,7 +204,7 @@ export default function NINTENDO_FY3_18() {
                               x: {
                                   title: {
                                       display: true,
-                                      text: "Quarters for Fiscal Year Ending March 2017",
+                                      text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
                                     },
                                 },
                             }
@@ -233,7 +247,7 @@ export default function NINTENDO_FY3_18() {
                               x: {
                                   title: {
                                       display: true,
-                                      text: "Quarters for Fiscal Years Ending March 2017 and March 2016",
+                                      text: `Quarters for Fiscal Years Ending ${labels.MarchThisYear} and ${labels.MarchLastYear}`,
                                     },
                                 },
                             }
@@ -275,7 +289,7 @@ export default function NINTENDO_FY3_18() {
                               x: {
                                   title: {
                                       display: true,
-                                      text: "Quarters for Fiscal Year Ending March 2017",
+                                      text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
                                     },
                                 },
                             }
@@ -319,7 +333,7 @@ export default function NINTENDO_FY3_18() {
                           x: {
                               title: {
                                   display: true,
-                                  text: "Quarters for Fiscal Years Ending March 2017 and March 2016",
+                                  text: `Quarters for Fiscal Years Ending ${labels.MarchThisYear} and ${labels.MarchLastYear}`,
                                 },
                             },
                         }
@@ -331,7 +345,12 @@ export default function NINTENDO_FY3_18() {
                             <Switch onLabel="BAR" offLabel="BAR" size="md" checked={barChecked} onChange={(event) => setBarChecked(event.currentTarget.checked)} />
                                 <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
                 </Group>
+            
             </div>
+            <Space h="xl" />
+            <Space h="xl" />
+            <Space h="xl" />
+            <Space h="xl" />
         </div>
         
     );

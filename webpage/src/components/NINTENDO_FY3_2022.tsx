@@ -1599,11 +1599,10 @@ export default function NINTENDO_FY3_22() {
                         : null} 
                 </Group>
             </div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+            <Space h="xl" />
+            <Space h="xl" />
+            <Space h="xl" />
+            <Space h="xl" />
         </div>
         
     );

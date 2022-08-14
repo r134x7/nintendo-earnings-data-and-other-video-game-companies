@@ -321,6 +321,10 @@ export default function NINTENDO_FY3_17() {
                                 <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
                 </Group>
             </div>
+            <Space h="xl" />
+            <Space h="xl" />
+            <Space h="xl" />
+            <Space h="xl" />
         </div>
         
     );
