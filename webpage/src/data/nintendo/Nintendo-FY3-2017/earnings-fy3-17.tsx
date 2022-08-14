@@ -85,7 +85,7 @@ import {
         netSales: " Net Sales ",
         operatingIncome: " Operating Income ",
         operatingMargin: " Operating Margin ",
-        netIncome: " Net Profit ",
+        netIncome: " Net Income ",
         yearOnYearPercentage: "    YoY% ",
         fiscalYear: "FY3/2017 ",
         title: " Consolidated Operating Results   ",
@@ -114,7 +114,7 @@ import {
         netIncomeLastFY
     ]
 
-    const [netSalesDifference, netSalesLastFYDifference, operatingIncomeDifference, operatingIncomeLastFYDifference, netIncomeDifference, netIncomeLastFYDifference] = collection.map((elem) => {
+    export const [netSalesDifference, netSalesLastFYDifference, operatingIncomeDifference, operatingIncomeLastFYDifference, netIncomeDifference, netIncomeLastFYDifference] = collection.map((elem) => {
         return quarterlyCalculation(elem)
     })
 

@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Pagination, Group, Space, Switch } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printEarnings } from "../data/nintendo/Nintendo-FY3-2017/earnings-fy3-17";
+import { printEarnings,
+        netIncomeDifference,
+        netIncomeLastFYDifference,
+        netSalesDifference,
+        netSalesLastFYDifference,
+        operatingIncomeDifference,
+        operatingIncomeLastFYDifference, } from "../data/nintendo/Nintendo-FY3-2017/earnings-fy3-17";
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
@@ -78,6 +84,26 @@ export default function NINTENDO_FY3_17() {
 
     const consolidatedOperatingResults = printEarnings;
 
+    const consolidatedOperatingResultsLabels = [
+        "Net Sales",
+        "Operating Income",
+        "Net Income"
+    ]
+
+    const consolidatedOperatingResultsGraph = [
+        netSalesDifference.map((elem) => elem.quarter),
+        operatingIncomeDifference.map((elem) => elem.quarter),
+        netIncomeDifference.map((elem) => elem.quarter),
+    ]
+
+    console.log(netIncomeDifference)
+
+    const consolidatedOperatingResultsGraphLastFY = [
+        netIncomeLastFYDifference,
+        operatingIncomeLastFYDifference,
+        netIncomeLastFYDifference
+    ]
+
     const nintendoHardwareSoftwareMobile = "no data here at this time";
     
     const keyIndicators = "no data here at this time";
@@ -107,6 +133,46 @@ export default function NINTENDO_FY3_17() {
             
             {sources}
             <Code style={{backgroundColor: `${state.colour}`}} block>{data}</Code>
+            <div className="chart">
+            <Line
+                    datasetIdKey="Consolidated Earnings"
+                    data={{
+                        labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
+                        datasets: [
+                            {
+                                data: consolidatedOperatingResultsGraph[activePage-1],
+                                label: consolidatedOperatingResultsLabels[activePage-1],
+                                borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                                    return (curr === ".")
+                                            ? acc + "1)"
+                                            : acc + curr;
+                                }),
+
+                            },
+                        ], 
+                    }}
+
+                    options={{
+                        scales: {
+                            y: {
+                                title: {
+                                  display: true,
+                                  text: "Million yen (¥)",
+                                },
+                              },
+                              x: {
+                                  title: {
+                                      display: true,
+                                      text: "Quarters for Fiscal Year Ending March 2017",
+                                    },
+                                },
+                            }
+                        }}
+                     />
+                     <Group mt="md" position="center">
+                   <Pagination page={activePage} onChange={setPage} total={consolidatedOperatingResultsGraph.length} color="teal" size="sm" radius="md" />
+                </Group>
+            </div>
         </div>
         
     );

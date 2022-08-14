@@ -85,7 +85,7 @@ import {
         netSales: " Net Sales ",
         operatingIncome: " Operating Income ",
         operatingMargin: " Operating Margin ",
-        netIncome: " Net Profit ",
+        netIncome: " Net Income ",
         yearOnYearPercentage: "    YoY% ",
         fiscalYear: "FY3/2020 ",
         title: " Consolidated Operating Results   ",
