@@ -108,8 +108,6 @@ export default function NINTENDO_FY3_17() {
         netIncomeDifference.map((elem) => elem.quarter),
     ]
 
-    console.log(netIncomeDifference)
-
     const consolidatedOperatingResultsGraphLastFY = [
         netSalesLastFYDifference.map((elem) => elem.quarter),
         operatingIncomeLastFYDifference.map((elem) => elem.quarter),

@@ -114,7 +114,7 @@ import {
         netIncomeLastFY
     ]
 
-    const [netSalesDifference, netSalesLastFYDifference, operatingIncomeDifference, operatingIncomeLastFYDifference, netIncomeDifference, netIncomeLastFYDifference] = collection.map((elem) => {
+    export const [netSalesDifference, netSalesLastFYDifference, operatingIncomeDifference, operatingIncomeLastFYDifference, netIncomeDifference, netIncomeLastFYDifference] = collection.map((elem) => {
         return quarterlyCalculation(elem)
     })
 
@@ -151,9 +151,11 @@ import {
             operatingIncomeDifference,
             netSalesCumulative,
             operatingIncomeCumulative,
+            netSalesLastFYDifference,
+            operatingIncomeLastFYDifference,
     ]
 
-    const [operatingMarginQuarters, operatingMarginCumulative] = opMarginCollection.map((elem, index, array) => {
+    export const [operatingMarginQuarters, operatingMarginCumulative, operatingMarginQuartersLastFY] = opMarginCollection.map((elem, index, array) => {
         // Input array of arrays of length 4, output array of arrays of length 4 and then filter to 2.
     
         return (index % 2 === 0) // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
