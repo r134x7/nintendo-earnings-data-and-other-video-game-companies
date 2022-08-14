@@ -7,7 +7,10 @@ import { printEarnings,
         netSalesDifference,
         netSalesLastFYDifference,
         operatingIncomeDifference,
-        operatingIncomeLastFYDifference, } from "../data/nintendo/Nintendo-FY3-2017/earnings-fy3-17";
+        operatingIncomeLastFYDifference,
+        operatingMarginQuarters,
+        operatingMarginQuartersLastFY,                        
+        } from "../data/nintendo/Nintendo-FY3-2017/earnings-fy3-17";
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
@@ -22,7 +25,7 @@ export default function NINTENDO_FY3_17() {
     const state: any = useSelector(state => state);
 
     const [activePage, setPage] = useState(1);
-    const [secondDataRef, setSecondDataRef] = useState(2)
+    // const [secondDataRef, setSecondDataRef] = useState(2)
     const [checked, setChecked] = useState(false);
     const [barChecked, setBarChecked] = useState(false);
 
@@ -85,23 +88,33 @@ export default function NINTENDO_FY3_17() {
     const consolidatedOperatingResults = printEarnings;
 
     const consolidatedOperatingResultsLabels = [
-        "Net Sales",
-        "Operating Income",
-        "Net Income"
+        "Net Sales FY3/2017",
+        "Operating Income FY3/2017",
+        "Operating Margin FY3/2017",
+        "Net Income FY3/2017",
+    ]
+
+    const consolidatedOperatingResultsLabelsLastFY = [
+        "Net Sales FY3/2016",
+        "Operating Income FY3/2016",
+        "Operating Margin FY3/2016",
+        "Net Income FY3/2016",
     ]
 
     const consolidatedOperatingResultsGraph = [
         netSalesDifference.map((elem) => elem.quarter),
         operatingIncomeDifference.map((elem) => elem.quarter),
+        operatingMarginQuarters.map((elem) => elem.quarter),
         netIncomeDifference.map((elem) => elem.quarter),
     ]
 
     console.log(netIncomeDifference)
 
     const consolidatedOperatingResultsGraphLastFY = [
-        netIncomeLastFYDifference,
-        operatingIncomeLastFYDifference,
-        netIncomeLastFYDifference
+        netSalesLastFYDifference.map((elem) => elem.quarter),
+        operatingIncomeLastFYDifference.map((elem) => elem.quarter),
+        operatingMarginQuartersLastFY.map((elem) => elem.quarter),
+        netIncomeLastFYDifference.map((elem) => elem.quarter),
     ]
 
     const nintendoHardwareSoftwareMobile = "no data here at this time";
@@ -160,7 +173,9 @@ export default function NINTENDO_FY3_17() {
                             y: {
                                 title: {
                                   display: true,
-                                  text: "Million yen (¥)",
+                                  text: (activePage !== 3)
+                                            ? "Million yen (¥)"
+                                            : "Percentage (%)",
                                 },
                               },
                               x: {
@@ -181,14 +196,17 @@ export default function NINTENDO_FY3_17() {
                             labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                             datasets: [
                                 {
-                                data: consolidatedOperatingResultsGraph[activePage-1],
-                                label: consolidatedOperatingResultsLabels[activePage-1],
-                                borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
-                                    return (curr === ".")
-                                            ? acc + "1)"
-                                            : acc + curr;
-                                    }),
+                                    data: consolidatedOperatingResultsGraph[activePage-1],
+                                    label: consolidatedOperatingResultsLabels[activePage-1],
+                                    borderColor: "indigo",
+                                    backgroundColor: "red",
 
+                                },
+                                {
+                                    data: consolidatedOperatingResultsGraphLastFY[activePage-1],
+                                    label: consolidatedOperatingResultsLabelsLastFY[activePage-1],
+                                    borderColor: "orange",
+                                    backgroundColor: "black",
                                 },
                             ], 
                         }}
@@ -198,13 +216,15 @@ export default function NINTENDO_FY3_17() {
                             y: {
                                 title: {
                                   display: true,
-                                  text: "Million yen (¥)",
+                                  text: (activePage !== 3)
+                                            ? "Million yen (¥)"
+                                            : "Percentage (%)",
                                 },
                               },
                               x: {
                                   title: {
                                       display: true,
-                                      text: "Quarters for Fiscal Year Ending March 2017",
+                                      text: "Quarters for Fiscal Years Ending March 2017 and March 2016",
                                     },
                                 },
                             }
@@ -221,11 +241,13 @@ export default function NINTENDO_FY3_17() {
                                 {
                                 data: consolidatedOperatingResultsGraph[activePage-1],
                                 label: consolidatedOperatingResultsLabels[activePage-1],
-                                borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                                backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                     return (curr === ".")
-                                            ? acc + "1)"
+                                            ? acc + ".80)"
                                             : acc + curr;
-                                    }),
+                                }),
+                                borderColor: "black",
+                                borderWidth: 2,
 
                                 },
                             ], 
@@ -236,7 +258,9 @@ export default function NINTENDO_FY3_17() {
                             y: {
                                 title: {
                                   display: true,
-                                  text: "Million yen (¥)",
+                                  text: (activePage !== 3)
+                                            ? "Million yen (¥)"
+                                            : "Percentage (%)",
                                 },
                               },
                               x: {
@@ -256,14 +280,19 @@ export default function NINTENDO_FY3_17() {
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                            data: consolidatedOperatingResultsGraph[activePage-1],
-                            label: consolidatedOperatingResultsLabels[activePage-1],
-                            borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
-                                return (curr === ".")
-                                        ? acc + "1)"
-                                        : acc + curr;
-                                }),
+                                data: consolidatedOperatingResultsGraph[activePage-1],
+                                label: consolidatedOperatingResultsLabels[activePage-1],
+                                borderColor: "black",
+                                backgroundColor: "indigo",
+                                borderWidth: 2,
 
+                            },
+                            {
+                                data: consolidatedOperatingResultsGraphLastFY[activePage-1],
+                                label: consolidatedOperatingResultsLabelsLastFY[activePage-1],
+                                borderColor: "black",
+                                backgroundColor: "orange",
+                                borderWidth: 2,
                             },
                         ], 
                     }}
@@ -273,13 +302,15 @@ export default function NINTENDO_FY3_17() {
                         y: {
                             title: {
                               display: true,
-                              text: "Million yen (¥)",
+                              text: (activePage !== 3)
+                                            ? "Million yen (¥)"
+                                            : "Percentage (%)",
                             },
                           },
                           x: {
                               title: {
                                   display: true,
-                                  text: "Quarters for Fiscal Year Ending March 2017",
+                                  text: "Quarters for Fiscal Years Ending March 2017 and March 2016",
                                 },
                             },
                         }
@@ -290,9 +321,6 @@ export default function NINTENDO_FY3_17() {
                         <Pagination page={activePage} onChange={setPage} total={consolidatedOperatingResultsGraph.length} color="teal" size="sm" radius="md" />
                             <Switch onLabel="BAR" offLabel="BAR" size="md" checked={barChecked} onChange={(event) => setBarChecked(event.currentTarget.checked)} />
                                 <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
-                   {(checked === true) 
-                        ? <Pagination mr="xl" page={secondDataRef} onChange={setSecondDataRef} total={consolidatedOperatingResultsGraph.length} color="red" size="sm" radius="md" />
-                        : null} 
                 </Group>
             </div>
         </div>
