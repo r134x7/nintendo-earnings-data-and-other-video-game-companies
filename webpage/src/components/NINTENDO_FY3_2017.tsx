@@ -1,21 +1,8 @@
 import { useState, useEffect } from "react";
-import { Code, SegmentedControl, Anchor, Text, Stack, Pagination, Group, Space, Switch } from "@mantine/core";
+import { Code, SegmentedControl, Anchor, Text, Stack, Space} from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printEarnings,
-        netIncomeDifference,
-        netIncomeLastFYDifference,
-        netSalesDifference,
-        netSalesLastFYDifference,
-        operatingIncomeDifference,
-        operatingIncomeLastFYDifference,
-        operatingMarginQuarters,
-        operatingMarginQuartersLastFY,                        
-        } from "../data/nintendo/Nintendo-FY3-2017/earnings-fy3-17";
+import { printEarnings } from "../data/nintendo/Nintendo-FY3-2017/earnings-fy3-17";
 import GRAPH_NINTENDO_EARNINGS_FY3_17 from "../graphs/nintendo/Nintendo-FY3-2017/GRAPH_NINTENDO_EARNINGS_FY3_17";
-
-import { Line, Bar } from "react-chartjs-2";
-import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
-Chart.register(...registerables); // to get the package working, source: https://www.chartjs.org/docs/next/getting-started/integration.html
 
 export default function NINTENDO_FY3_17() {
 
@@ -24,11 +11,6 @@ export default function NINTENDO_FY3_17() {
     const [sources, setSources] = useState(<></>)
 
     const state: any = useSelector(state => state);
-
-    const [activePage, setPage] = useState(1);
-    // const [secondDataRef, setSecondDataRef] = useState(2)
-    const [checked, setChecked] = useState(false);
-    const [barChecked, setBarChecked] = useState(false);
 
     useEffect(() => {
         (value === "Consolidated Operating Results")
@@ -120,8 +102,6 @@ export default function NINTENDO_FY3_17() {
                 ? <GRAPH_NINTENDO_EARNINGS_FY3_17 />
                 : null
             }
-
-
             <Space h="xl" />
             <Space h="xl" />
             <Space h="xl" />
