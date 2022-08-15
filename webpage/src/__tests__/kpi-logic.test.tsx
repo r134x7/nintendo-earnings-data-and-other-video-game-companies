@@ -14,11 +14,11 @@ const header: Header = {
 
 const footer: Footer = {
     proportionOfOverseasSales: "|(※ Proportion of overseas (outside of Japan)\n| sales to total sales)",
-    proportionOfHardwareSales: "|(※ Proportion of hardware  \n|(including accessories) sales to total \n| dedicated video game platform sales)",
+    proportionOfHardwareSales: "|(※ Proportion of hardware\n|(including accessories) sales to total\n| dedicated video game platform sales)",
     proportionOfFirstPartySoftwareSales: "|(※ Proportion of first-party software sales\n| to total dedicated video game software sales)",
-    digitalSales: "|(\"※ Digital sales include a) downloadable \n| versions of packaged software, \n|b) download-only software,\n|c) add-on content and \n|d) Nintendo Switch Online, etc. \n＊\"Downloadable versions of packaged software\"\n| indicates the downloadable version of\n| software that is offered both physically\n and digitally.\")",
+    digitalSales: "|(\"※ Digital sales include a) downloadable\n| versions of packaged software,\n|b) download-only software,\n|c) add-on content and\n|d) Nintendo Switch Online, etc.\n|＊\"Downloadable versions of packaged software\"\n| indicates the downloadable version of\n| software that is offered both physically\n| and digitally.\")",
     proportionOfDigitalSales: "|(※ Proportion of digital sales to total\n| dedicated video game software sales )",
-    proportionOfDLverPackagedSoftware: "|(※ Proportion of downloadable versions of \n| packaged software sales to total digital \n| sales as indicated above: a/(a+b+c+d) )",
+    proportionOfDLverPackagedSoftware: "|(※ Proportion of downloadable versions of\n| packaged software sales to total digital\n| sales as indicated above: a/(a+b+c+d) )",
 }
 
 const proportionOfOverseasSales: KPIQuarter[] = [
@@ -87,8 +87,16 @@ const printproportionOfOverseasSales = (header: Header, footer: Footer, proporti
 ${printSectionQuarters(proportionOfOverseasSales, currentQuarter)}
 +${"=".repeat(30)+"+"}
 +${"-".repeat(30)+"+"}
-${footer.proportionOfOverseasSales}
-`;
+${footer.proportionOfOverseasSales}`;
+
+const printDigitalSales = (header: Header, footer: Footer, digitalSales: KPIQuarter[], currentQuarter: number) => 
+`+${"-".repeat(30)}+
+|${header.digitalSales}|
++${"-".repeat(30)}+
+${printSectionQuarters(digitalSales, currentQuarter)}
++${"=".repeat(30)+"+"}
++${"-".repeat(30)+"+"}
+${footer.digitalSales}`;
 
 test('Print Section Quarters type A', () => {
     let currentQuarter = 1;
@@ -103,8 +111,33 @@ let pythonOutput =
 +==============================+
 +------------------------------+
 |(※ Proportion of overseas (outside of Japan)
-| sales to total sales)
-`;
+| sales to total sales)`;
   
     expect(typeA).toMatch(pythonOutput);
   });
+
+test("Print Section Quarters type B", () => {
+
+    let currentQuarter = 1;
+
+    const typeB = printDigitalSales(header, footer, digitalSales, currentQuarter)    
+
+let pythonOutput = 
+`+------------------------------+
+| Digital Sales                |
++------------------------------+
+| 1st Quarter       |   ¥79.9B |
++==============================+
++------------------------------+
+|("※ Digital sales include a) downloadable
+| versions of packaged software,
+|b) download-only software,
+|c) add-on content and
+|d) Nintendo Switch Online, etc.
+|＊"Downloadable versions of packaged software"
+| indicates the downloadable version of
+| software that is offered both physically
+| and digitally.")`;
+
+    expect(typeB).toMatch(pythonOutput);
+})
