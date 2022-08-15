@@ -3,6 +3,7 @@ import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/cor
 import { useSelector } from "react-redux";
 import { printEarnings } from "../data/nintendo/Nintendo-FY3-2019/earnings-fy3-19";
 import GRAPH_NINTENDO_EARNINGS_FY3_19 from "../graphs/nintendo/Nintendo-FY3-2019/GRAPH_NINTENDO_EARNINGS_FY3_19";
+import GRAPH_NINTENDO_KPI_FY3_19 from "../graphs/nintendo/Nintendo-FY3-2019/GRAPH_NINTENDO_KPI_FY3_19";
 
 export default function NINTENDO_FY3_19() {
 
@@ -111,6 +112,8 @@ export default function NINTENDO_FY3_19() {
             <Code style={{backgroundColor: `${state.colour}`}} block>{data}</Code>
             {(value === "Consolidated Operating Results")
                 ? <GRAPH_NINTENDO_EARNINGS_FY3_19 />
+                : (value === "Key/Digital Sales Indicator")
+                ? <GRAPH_NINTENDO_KPI_FY3_19 />
                 : null
             }
             <Space h="xl" />
