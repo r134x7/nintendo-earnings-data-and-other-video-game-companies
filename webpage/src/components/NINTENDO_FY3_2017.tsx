@@ -11,6 +11,7 @@ import { printEarnings,
         operatingMarginQuarters,
         operatingMarginQuartersLastFY,                        
         } from "../data/nintendo/Nintendo-FY3-2017/earnings-fy3-17";
+import GRAPH_NINTENDO_EARNINGS_FY3_17 from "../graphs/nintendo/Nintendo-FY3-2017/GRAPH_NINTENDO_EARNINGS_FY3_17";
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
@@ -28,8 +29,6 @@ export default function NINTENDO_FY3_17() {
     // const [secondDataRef, setSecondDataRef] = useState(2)
     const [checked, setChecked] = useState(false);
     const [barChecked, setBarChecked] = useState(false);
-
-    
 
     useEffect(() => {
         (value === "Consolidated Operating Results")
@@ -87,34 +86,6 @@ export default function NINTENDO_FY3_17() {
 
     const consolidatedOperatingResults = printEarnings;
 
-    const consolidatedOperatingResultsLabels = [
-        "Net Sales FY3/2017",
-        "Operating Income FY3/2017",
-        "Operating Margin FY3/2017",
-        "Net Income FY3/2017",
-    ]
-
-    const consolidatedOperatingResultsLabelsLastFY = [
-        "Net Sales FY3/2016",
-        "Operating Income FY3/2016",
-        "Operating Margin FY3/2016",
-        "Net Income FY3/2016",
-    ]
-
-    const consolidatedOperatingResultsGraph = [
-        netSalesDifference.map((elem) => elem.quarter),
-        operatingIncomeDifference.map((elem) => elem.quarter),
-        operatingMarginQuarters.map((elem) => elem.quarter),
-        netIncomeDifference.map((elem) => elem.quarter),
-    ]
-
-    const consolidatedOperatingResultsGraphLastFY = [
-        netSalesLastFYDifference.map((elem) => elem.quarter),
-        operatingIncomeLastFYDifference.map((elem) => elem.quarter),
-        operatingMarginQuartersLastFY.map((elem) => elem.quarter),
-        netIncomeLastFYDifference.map((elem) => elem.quarter),
-    ]
-
     const nintendoHardwareSoftwareMobile = "no data here at this time";
     
     const keyIndicators = "no data here at this time";
@@ -145,182 +116,12 @@ export default function NINTENDO_FY3_17() {
             
             {sources}
             <Code style={{backgroundColor: `${state.colour}`}} block>{data}</Code>
-            <div className="chart">
-            {(checked === false && barChecked === false)
-                ? (
-                    <Line
-                        datasetIdKey="Consolidated Earnings"
-                        data={{
-                            labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
-                            datasets: [
-                                {
-                                data: consolidatedOperatingResultsGraph[activePage-1],
-                                label: consolidatedOperatingResultsLabels[activePage-1],
-                                borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
-                                    return (curr === ".")
-                                            ? acc + "1)"
-                                            : acc + curr;
-                                    }),
+            {(value === "Consolidated Operating Results")
+                ? <GRAPH_NINTENDO_EARNINGS_FY3_17 />
+                : null
+            }
 
-                                },
-                            ], 
-                        }}
 
-                        options={{
-                         scales: {
-                            y: {
-                                title: {
-                                  display: true,
-                                  text: (activePage !== 3)
-                                            ? "Million yen (¥)"
-                                            : "Percentage (%)",
-                                },
-                              },
-                              x: {
-                                  title: {
-                                      display: true,
-                                      text: "Quarters for Fiscal Year Ending March 2017",
-                                    },
-                                },
-                            }
-                        }}
-                    />
-                )
-                : (checked === true && barChecked === false) 
-                ? (
-                    <Line
-                        datasetIdKey="Consolidated Earnings"
-                        data={{
-                            labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
-                            datasets: [
-                                {
-                                    data: consolidatedOperatingResultsGraph[activePage-1],
-                                    label: consolidatedOperatingResultsLabels[activePage-1],
-                                    borderColor: "indigo",
-                                    backgroundColor: "red",
-
-                                },
-                                {
-                                    data: consolidatedOperatingResultsGraphLastFY[activePage-1],
-                                    label: consolidatedOperatingResultsLabelsLastFY[activePage-1],
-                                    borderColor: "orange",
-                                    backgroundColor: "black",
-                                },
-                            ], 
-                        }}
-
-                        options={{
-                         scales: {
-                            y: {
-                                title: {
-                                  display: true,
-                                  text: (activePage !== 3)
-                                            ? "Million yen (¥)"
-                                            : "Percentage (%)",
-                                },
-                              },
-                              x: {
-                                  title: {
-                                      display: true,
-                                      text: "Quarters for Fiscal Years Ending March 2017 and March 2016",
-                                    },
-                                },
-                            }
-                        }}
-                    />
-                )
-                : (checked === false && barChecked === true) 
-                ? (
-                    <Bar
-                        datasetIdKey="Consolidated Earnings"
-                        data={{
-                            labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
-                            datasets: [
-                                {
-                                data: consolidatedOperatingResultsGraph[activePage-1],
-                                label: consolidatedOperatingResultsLabels[activePage-1],
-                                backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
-                                    return (curr === ".")
-                                            ? acc + ".80)"
-                                            : acc + curr;
-                                }),
-                                borderColor: "black",
-                                borderWidth: 2,
-
-                                },
-                            ], 
-                        }}
-
-                        options={{
-                         scales: {
-                            y: {
-                                title: {
-                                  display: true,
-                                  text: (activePage !== 3)
-                                            ? "Million yen (¥)"
-                                            : "Percentage (%)",
-                                },
-                              },
-                              x: {
-                                  title: {
-                                      display: true,
-                                      text: "Quarters for Fiscal Year Ending March 2017",
-                                    },
-                                },
-                            }
-                        }}
-                    />
-                )
-                : (
-                    <Bar
-                    datasetIdKey="Consolidated Earnings"
-                    data={{
-                        labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
-                        datasets: [
-                            {
-                                data: consolidatedOperatingResultsGraph[activePage-1],
-                                label: consolidatedOperatingResultsLabels[activePage-1],
-                                borderColor: "black",
-                                backgroundColor: "indigo",
-                                borderWidth: 2,
-
-                            },
-                            {
-                                data: consolidatedOperatingResultsGraphLastFY[activePage-1],
-                                label: consolidatedOperatingResultsLabelsLastFY[activePage-1],
-                                borderColor: "black",
-                                backgroundColor: "orange",
-                                borderWidth: 2,
-                            },
-                        ], 
-                    }}
-
-                    options={{
-                     scales: {
-                        y: {
-                            title: {
-                              display: true,
-                              text: (activePage !== 3)
-                                            ? "Million yen (¥)"
-                                            : "Percentage (%)",
-                            },
-                          },
-                          x: {
-                              title: {
-                                  display: true,
-                                  text: "Quarters for Fiscal Years Ending March 2017 and March 2016",
-                                },
-                            },
-                        }
-                    }}
-                />
-                )}
-                    <Group mt="md" position="center">
-                        <Pagination page={activePage} onChange={setPage} total={consolidatedOperatingResultsGraph.length} color="teal" size="sm" radius="md" />
-                            <Switch onLabel="BAR" offLabel="BAR" size="md" checked={barChecked} onChange={(event) => setBarChecked(event.currentTarget.checked)} />
-                                <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
-                </Group>
-            </div>
             <Space h="xl" />
             <Space h="xl" />
             <Space h="xl" />
