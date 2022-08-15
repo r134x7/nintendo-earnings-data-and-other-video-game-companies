@@ -23,7 +23,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_17() {
     const [checked, setChecked] = useState(false);
     const [barChecked, setBarChecked] = useState(false);
 
-    interface Labels {
+    type Labels = {
         currentFY: string,
         lastFY: string,
         MarchThisYear: string,
