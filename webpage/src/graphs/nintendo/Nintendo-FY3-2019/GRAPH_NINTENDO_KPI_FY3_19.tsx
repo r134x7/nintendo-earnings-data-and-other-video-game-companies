@@ -58,6 +58,7 @@ export default function GRAPH_NINTENDO_KPI_FY3_19() {
         `Proportion of first party software sales ${labels.lastFY}`,
         `Digital Sales ${labels.lastFY}`,
         `Proportion of Digital Sales ${labels.lastFY}`,
+        `Not Applicable`
     ]
 
     const quartersGraph = [
