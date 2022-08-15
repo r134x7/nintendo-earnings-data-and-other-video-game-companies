@@ -3,7 +3,7 @@ export interface KPIQuarter {
     value: number,
 }
 
-export interface KPICumulatives {
+export interface KPICumulative {
     quarter: string,
     value: number,
 }

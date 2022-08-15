@@ -1,4 +1,4 @@
-import { KPIQuarter, Header, Footer } from "../utils/kpi-logic";
+import { KPIQuarter, KPICumulative, Header, Footer } from "../utils/kpi-logic";
 
 const header: Header = {
     companyName: " Nintendo Co., Ltd.",
@@ -21,7 +21,7 @@ const footer: Footer = {
     proportionOfDLverPackagedSoftware: "|(※ Proportion of downloadable versions of\n| packaged software sales to total digital\n| sales as indicated above: a/(a+b+c+d) )",
 }
 
-const proportionOfOverseasSales: KPIQuarter[] = [
+const proportionOfOverseasSalesQtr: KPIQuarter[] = [
     {
         quarter: " 1st Quarter       ",
         value: 79.9,
@@ -37,6 +37,21 @@ const proportionOfOverseasSales: KPIQuarter[] = [
     {
         quarter: " 4th Quarter       ",
         value: 76.9,
+    },
+]
+
+const proportionOfOverseasSalesCml: KPICumulative[] = [
+    {
+        quarter: " 1st Half          ",
+        value: 72.9,
+    },
+    {
+        quarter: " 1st Three Quarters",
+        value: 71.9,
+    },
+    {
+        quarter: " FY3/22 Cumulative ",
+        value: 70.9,
     },
 ]
 
@@ -59,9 +74,7 @@ const digitalSales: KPIQuarter[] = [
     },
 ]
 
-// const currentQuarter = 1;
-
-const printSectionQuarters = (sectionQuarter: KPIQuarter[], currentQuarter: number) => { // to use Net Sales Difference, Operating Income Difference or Net Profit Difference
+const printSectionQuarters = (sectionQuarter: KPIQuarter[], currentQuarter: number) => { 
 
     return sectionQuarter.filter((elem, index) => index < currentQuarter).map((elem, index) => {
 
@@ -74,10 +87,28 @@ const printSectionQuarters = (sectionQuarter: KPIQuarter[], currentQuarter: numb
         return "|" + elem.quarter + "|" + printSectionFixed + "|"
     }).reduce((prev, next, index, array) => {
         return (array[index] === array[currentQuarter -1])
-                  ? prev + `\n+${"-".repeat(38)}+\n` + next
-                  : prev + `\n+${"-".repeat(38)}+\n` + next 
+                  ? prev + `\n` + next
+                  : prev + `\n` + next 
     })
 
+};
+
+const printSectionCumulative = (sectionCumulative: KPICumulative[], currentQuarter: number) => { 
+    
+    return  sectionCumulative.filter((elem, index) => (currentQuarter >= 2 && index < currentQuarter -1)).map((elem, index) => {
+    
+    let printSectionCml: string = (sectionCumulative === digitalSales) 
+        ? `¥${elem.value}B `
+        : `${elem.value}% `; 
+    let printSectionCmlFixed: string = (printSectionCml.length >= 10)
+                              ? printSectionCml
+                              : " ".repeat(10 - printSectionCml.length) + printSectionCml;
+    return "|" + elem.quarter + "|" + printSectionCmlFixed + "|"
+    }).reduce((prev, next, index, array) => {
+    return (array[index] === array[currentQuarter -2])
+            ? prev + `\n+${"-".repeat(30)}+\n` + next + `\n+${"-".repeat(30)}+\n`
+            : prev + `\n+${"-".repeat(30)}+\n` + next 
+  })
 };
 
 const printproportionOfOverseasSales = (header: Header, footer: Footer, proportionOfOverseasSales: KPIQuarter[], currentQuarter: number) => 
@@ -85,7 +116,7 @@ const printproportionOfOverseasSales = (header: Header, footer: Footer, proporti
 |${header.proportionOfOverseasSales}|
 +${"-".repeat(30)}+
 ${printSectionQuarters(proportionOfOverseasSales, currentQuarter)}
-+${"=".repeat(30)+"+"}
++${(currentQuarter > 1) ? "=".repeat(30)+"+\n" + printSectionCumulative(proportionOfOverseasSalesCml, currentQuarter) : "=".repeat(30)+"+" }
 +${"-".repeat(30)+"+"}
 ${footer.proportionOfOverseasSales}`;
 
@@ -101,7 +132,7 @@ ${footer.digitalSales}`;
 test('Print Section Quarters type A', () => {
     let currentQuarter = 1;
 
-    const typeA = printproportionOfOverseasSales(header, footer, proportionOfOverseasSales, currentQuarter)
+    const typeA = printproportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, currentQuarter)
 
 let pythonOutput = 
 `+------------------------------+
@@ -140,4 +171,24 @@ let pythonOutput =
 | and digitally.")`;
 
     expect(typeB).toMatch(pythonOutput);
+})
+
+test("Print Section Quarters type A Quarter 2", () => {
+    let currentQuarter = 2;
+
+    const typeA = printproportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, currentQuarter)
+
+    let pythonOutput = 
+`+------------------------------+
+| Proportion of overseas sales |
++------------------------------+
+| 1st Quarter       |    79.9% |
+| 2nd Quarter       |    78.9% |
++==============================+
+| 1st Half          |    72.9% |
++------------------------------+
+|(※ Proportion of overseas (outside of Japan)
+| sales to total sales)`;
+
+    expect(typeA).toMatch(pythonOutput);
 })
