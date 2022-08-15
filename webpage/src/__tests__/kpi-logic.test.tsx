@@ -1,92 +1,61 @@
-import { KPIQuarter } from "../utils/kpi-logic";
+import { KPIQuarter, Header, Footer } from "../utils/kpi-logic";
+
+const header: Header = {
+    companyName: " Nintendo Co., Ltd.",
+    proportionOfOverseasSales: " Proportion of overseas sales ",
+    proportionOfHardwareSales: " Proportion of hardware sales ",
+    proportionOfFirstPartySoftwareSales: "| Proportion of first party    |\n| software sales               |",
+    digitalSales: " Digital Sales                ",
+    proportionOfDigitalSales: " Proportion of Digital Sales  ",
+    proportionOfDLverPackagedSoftware: "| Proportion of downloadable   |\n| versions of Packaged         |\n| Software Sales               |",
+    fiscalYear: "FY3/2017 ",
+    title: "   Key/Digital Sales Indicators   ",
+}
+
+const footer: Footer = {
+    proportionOfOverseasSales: "|(※ Proportion of overseas (outside of Japan)\n| sales to total sales)",
+    proportionOfHardwareSales: "|(※ Proportion of hardware  \n|(including accessories) sales to total \n| dedicated video game platform sales)",
+    proportionOfFirstPartySoftwareSales: "|(※ Proportion of first-party software sales\n| to total dedicated video game software sales)",
+    digitalSales: "|(\"※ Digital sales include a) downloadable \n| versions of packaged software, \n|b) download-only software,\n|c) add-on content and \n|d) Nintendo Switch Online, etc. \n＊\"Downloadable versions of packaged software\"\n| indicates the downloadable version of\n| software that is offered both physically\n and digitally.\")",
+    proportionOfDigitalSales: "|(※ Proportion of digital sales to total\n| dedicated video game software sales )",
+    proportionOfDLverPackagedSoftware: "|(※ Proportion of downloadable versions of \n| packaged software sales to total digital \n| sales as indicated above: a/(a+b+c+d) )",
+}
 
 const proportionOfOverseasSales: KPIQuarter[] = [
     {
-        name: " Proportion of overseas sales ",
         quarter: " 1st Quarter ",
-        number: 79.9,
-        footer: `(※ Proportion of overseas (outside of Japan)
-        sales to total sales)`,
+        value: 79.9,
     },
     {
-        name: " Proportion of overseas sales ",
         quarter: " 2nd Quarter ",
-        number: 78.9,
-        footer: `(※ Proportion of overseas (outside of Japan)
-        sales to total sales)`,
+        value: 78.9,
     },
     {
-        name: " Proportion of overseas sales ",
         quarter: " 3rd Quarter ",
-        number: 77.9,
-        footer: `(※ Proportion of overseas (outside of Japan)
-        sales to total sales)`,
+        value: 77.9,
     },
     {
-        name: " Proportion of overseas sales ",
         quarter: " 4th Quarter ",
-        number: 76.9,
-        footer: `(※ Proportion of overseas (outside of Japan)
-        sales to total sales)`,
+        value: 76.9,
     },
 ]
 
 const digitalSales: KPIQuarter[] = [
     {
-        name: " Digital Sales ",
         quarter: " 1st Quarter ",
-        number: 79.9,
-        footer: `("※ Digital sales include a) downloadable
-        versions of packaged software,
-        b) download-only software,
-        c) add-on content and
-        d) Nintendo Switch Online, etc.
-        ＊"Downloadable versions of packaged software"
-        indicates the downloadable version of
-        software that is offered both physically
-        and digitally.")`,
+        value: 79.9,
     },
     {
-        name: " Digital Sales ",
         quarter: " 2nd Quarter ",
-        number: 78.9,
-        footer: `("※ Digital sales include a) downloadable
-        versions of packaged software,
-        b) download-only software,
-        c) add-on content and
-        d) Nintendo Switch Online, etc.
-        ＊"Downloadable versions of packaged software"
-        indicates the downloadable version of
-        software that is offered both physically
-        and digitally.")`,
+        value: 78.9,
     },
     {
-        name: " Digital Sales ",
         quarter: " 3rd Quarter ",
-        number: 77.9,
-        footer: `("※ Digital sales include a) downloadable
-        versions of packaged software,
-        b) download-only software,
-        c) add-on content and
-        d) Nintendo Switch Online, etc.
-        ＊"Downloadable versions of packaged software"
-        indicates the downloadable version of
-        software that is offered both physically
-        and digitally.")`,
+        value: 77.9,
     },
     {
-        name: " Digital Sales ",
         quarter: " 4th Quarter ",
-        number: 76.9,
-        footer: `("※ Digital sales include a) downloadable
-        versions of packaged software,
-        b) download-only software,
-        c) add-on content and
-        d) Nintendo Switch Online, etc.
-        ＊"Downloadable versions of packaged software"
-        indicates the downloadable version of
-        software that is offered both physically
-        and digitally.")`,
+        value: 76.9,
     },
 ]
 
@@ -97,12 +66,12 @@ const printSectionQuarters = (sectionQuarter: KPIQuarter[], currentQuarter: numb
     return sectionQuarter.filter((elem, index) => index < currentQuarter).map((elem, index) => {
 
         let printSection: string = (sectionQuarter === digitalSales) 
-            ? `¥${elem.quarter}B `
-            : `${elem.quarter}% `; 
+            ? `¥${elem.value}B `
+            : `${elem.value}% `; 
         let printSectionFixed: string = (printSection.length >= 10)
                                   ? printSection
                                   : " ".repeat(10 - printSection.length) + printSection;
-        return "|" + elem.name + "|" + printSectionFixed + "|"
+        return "|" + elem.quarter + "|" + printSectionFixed + "|"
     }).reduce((prev, next, index, array) => {
         return (array[index] === array[currentQuarter -1])
                   ? prev + `\n+${"-".repeat(38)}+\n` + next
@@ -110,6 +79,8 @@ const printSectionQuarters = (sectionQuarter: KPIQuarter[], currentQuarter: numb
     })
 
 };
+
+const printproportionOfOverseasSales = 
 
 test('Print Section Quarters type A', () => {
     let currentQuarter = 1;
