@@ -1,13 +1,13 @@
 
-export interface Quarter {
+export type Quarter = {
     quarter: number,
 }
 
-export interface Forecasts {
+export type Forecasts = {
     forecast: number,
 }
 
-export interface Header {
+export type Header = {
     companyName: string,
     netSales: string,
     operatingIncome: string,
@@ -18,15 +18,15 @@ export interface Header {
     title: string,
 }
 
-interface RowQuarters {
+type RowQuarters = {
     quarter: string,
 }
 
-export interface RowCumulatives {
+export type RowCumulatives = {
     cumulative: string,
 }
 
-export interface RowForecasts {
+export type RowForecasts = {
     forecast: string,
 }
 
