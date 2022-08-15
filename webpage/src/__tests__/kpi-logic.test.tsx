@@ -23,18 +23,22 @@ const footer: Footer = {
 
 const proportionOfOverseasSalesQtr: KPIQuarter[] = [
     {
+        type: "percentage",
         quarter: " 1st Quarter       ",
         value: 79.9,
     },
     {
+        type: "percentage",
         quarter: " 2nd Quarter       ",
         value: 78.9,
     },
     {
+        type: "percentage",
         quarter: " 3rd Quarter       ",
         value: 77.9,
     },
     {
+        type: "percentage",
         quarter: " 4th Quarter       ",
         value: 76.9,
     },
@@ -42,14 +46,17 @@ const proportionOfOverseasSalesQtr: KPIQuarter[] = [
 
 const proportionOfOverseasSalesCml: KPICumulative[] = [
     {
+        type: "percentage",
         quarter: " 1st Half          ",
         value: 72.9,
     },
     {
+        type: "percentage",
         quarter: " 1st Three Quarters",
         value: 71.9,
     },
     {
+        type: "percentage",
         quarter: " FY3/22 Cumulative ",
         value: 70.9,
     },
@@ -57,18 +64,22 @@ const proportionOfOverseasSalesCml: KPICumulative[] = [
 
 const proportionOfHardwareSalesQtr: KPIQuarter[] = [
     {
+        type: "percentage",
         quarter: " 1st Quarter       ",
         value: 79.9,
     },
     {
+        type: "percentage",
         quarter: " 2nd Quarter       ",
         value: 78.9,
     },
     {
+        type: "percentage",
         quarter: " 3rd Quarter       ",
         value: 77.9,
     },
     {
+        type: "percentage",
         quarter: " 4th Quarter       ",
         value: 76.9,
     },
@@ -76,14 +87,17 @@ const proportionOfHardwareSalesQtr: KPIQuarter[] = [
 
 const proportionOfHardwareSalesCml: KPICumulative[] = [
     {
+        type: "percentage",
         quarter: " 1st Half          ",
         value: 72.9,
     },
     {
+        type: "percentage",
         quarter: " 1st Three Quarters",
         value: 71.9,
     },
     {
+        type: "percentage",
         quarter: " FY3/22 Cumulative ",
         value: 70.9,
     },
@@ -91,18 +105,22 @@ const proportionOfHardwareSalesCml: KPICumulative[] = [
 
 const proportionOfFirstPartySoftwareSalesQtr: KPIQuarter[] = [
     {
+        type: "percentage",
         quarter: " 1st Quarter       ",
         value: 79.9,
     },
     {
+        type: "percentage",
         quarter: " 2nd Quarter       ",
         value: 78.9,
     },
     {
+        type: "percentage",
         quarter: " 3rd Quarter       ",
         value: 77.9,
     },
     {
+        type: "percentage",
         quarter: " 4th Quarter       ",
         value: 76.9,
     },
@@ -110,14 +128,17 @@ const proportionOfFirstPartySoftwareSalesQtr: KPIQuarter[] = [
 
 const proportionOfFirstPartySoftwareSalesCml: KPICumulative[] = [
     {
+        type: "percentage",
         quarter: " 1st Half          ",
         value: 72.9,
     },
     {
+        type: "percentage",
         quarter: " 1st Three Quarters",
         value: 71.9,
     },
     {
+        type: "percentage",
         quarter: " FY3/22 Cumulative ",
         value: 70.9,
     },
@@ -125,18 +146,22 @@ const proportionOfFirstPartySoftwareSalesCml: KPICumulative[] = [
 
 const digitalSalesQtr: KPIQuarter[] = [
     {
+        type: "currency",
         quarter: " 1st Quarter       ",
         value: 79.9,
     },
     {
+        type: "currency",
         quarter: " 2nd Quarter       ",
         value: 78.9,
     },
     {
+        type: "currency",
         quarter: " 3rd Quarter       ",
         value: 77.9,
     },
     {
+        type: "currency",
         quarter: " 4th Quarter       ",
         value: 76.9,
     },
@@ -144,14 +169,17 @@ const digitalSalesQtr: KPIQuarter[] = [
 
 const digitalSalesCml: KPICumulative[] = [
     {
+        type: "currency",
         quarter: " 1st Half          ",
         value: 72.9,
     },
     {
+        type: "currency",
         quarter: " 1st Three Quarters",
         value: 71.9,
     },
     {
+        type: "currency",
         quarter: " FY3/22 Cumulative ",
         value: 70.9,
     },
@@ -159,18 +187,22 @@ const digitalSalesCml: KPICumulative[] = [
 
 const proportionOfDigitalSalesQtr: KPIQuarter[] = [
     {
+        type: "percentage",
         quarter: " 1st Quarter       ",
         value: 79.9,
     },
     {
+        type: "percentage",
         quarter: " 2nd Quarter       ",
         value: 78.9,
     },
     {
+        type: "percentage",
         quarter: " 3rd Quarter       ",
         value: 77.9,
     },
     {
+        type: "percentage",
         quarter: " 4th Quarter       ",
         value: 76.9,
     },
@@ -178,14 +210,17 @@ const proportionOfDigitalSalesQtr: KPIQuarter[] = [
 
 const proportionOfDigitalSalesCml: KPICumulative[] = [
     {
+        type: "percentage",
         quarter: " 1st Half          ",
         value: 72.9,
     },
     {
+        type: "percentage",
         quarter: " 1st Three Quarters",
         value: 71.9,
     },
     {
+        type: "percentage",
         quarter: " FY3/22 Cumulative ",
         value: 70.9,
     },
@@ -193,18 +228,22 @@ const proportionOfDigitalSalesCml: KPICumulative[] = [
 
 const proportionOfDLverPackagedSoftwareQtr: KPIQuarter[] = [
     {
+        type: "percentage",
         quarter: " 1st Quarter       ",
         value: 79.9,
     },
     {
+        type: "percentage",
         quarter: " 2nd Quarter       ",
         value: 78.9,
     },
     {
+        type: "percentage",
         quarter: " 3rd Quarter       ",
         value: 77.9,
     },
     {
+        type: "percentage",
         quarter: " 4th Quarter       ",
         value: 76.9,
     },
@@ -212,14 +251,17 @@ const proportionOfDLverPackagedSoftwareQtr: KPIQuarter[] = [
 
 const proportionOfDLverPackagedSoftwareCml: KPICumulative[] = [
     {
+        type: "percentage",
         quarter: " 1st Half          ",
         value: 72.9,
     },
     {
+        type: "percentage",
         quarter: " 1st Three Quarters",
         value: 71.9,
     },
     {
+        type: "percentage",
         quarter: " FY3/22 Cumulative ",
         value: 70.9,
     },
