@@ -106,12 +106,13 @@ const printSectionCumulative = (sectionCumulative: KPICumulative[], currentQuart
     return "|" + elem.quarter + "|" + printSectionCmlFixed + "|"
     }).reduce((prev, next, index, array) => {
     return (array[index] === array[currentQuarter -2])
-            ? prev + `\n+${"-".repeat(30)}+\n` + next + `\n+${"-".repeat(30)}+\n`
+            ? prev + `\n` + next 
+            // + `\n+${"-".repeat(30)}+`
             : prev + `\n+${"-".repeat(30)}+\n` + next 
   })
 };
 
-const printproportionOfOverseasSales = (header: Header, footer: Footer, proportionOfOverseasSales: KPIQuarter[], currentQuarter: number) => 
+const printproportionOfOverseasSales = (header: Header, footer: Footer, proportionOfOverseasSales: KPIQuarter[], proportionOfOverseasSalesCml: KPICumulative[], currentQuarter: number) => 
 `+${"-".repeat(30)}+
 |${header.proportionOfOverseasSales}|
 +${"-".repeat(30)}+
@@ -132,7 +133,7 @@ ${footer.digitalSales}`;
 test('Print Section Quarters type A', () => {
     let currentQuarter = 1;
 
-    const typeA = printproportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, currentQuarter)
+    const typeA = printproportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, proportionOfOverseasSalesCml, currentQuarter)
 
 let pythonOutput = 
 `+------------------------------+
@@ -176,7 +177,7 @@ let pythonOutput =
 test("Print Section Quarters type A Quarter 2", () => {
     let currentQuarter = 2;
 
-    const typeA = printproportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, currentQuarter)
+    const typeA = printproportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, proportionOfOverseasSalesCml, currentQuarter)
 
     let pythonOutput = 
 `+------------------------------+
@@ -186,6 +187,28 @@ test("Print Section Quarters type A Quarter 2", () => {
 | 2nd Quarter       |    78.9% |
 +==============================+
 | 1st Half          |    72.9% |
++------------------------------+
+|(※ Proportion of overseas (outside of Japan)
+| sales to total sales)`;
+
+    expect(typeA).toMatch(pythonOutput);
+})
+
+test("Print Section Quarters type A Quarter 3", () => {
+    let currentQuarter = 3;
+
+    const typeA = printproportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, proportionOfOverseasSalesCml, currentQuarter)
+
+    let pythonOutput = 
+`+------------------------------+
+| Proportion of overseas sales |
++------------------------------+
+| 1st Quarter       |    79.9% |
+| 2nd Quarter       |    78.9% |
+| 3rd Quarter       |    77.9% |
++==============================+
+| 1st Half          |    72.9% |
+| 1st Three Quarters|    71.9% |
 +------------------------------+
 |(※ Proportion of overseas (outside of Japan)
 | sales to total sales)`;
