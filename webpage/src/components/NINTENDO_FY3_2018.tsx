@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printEarnings } from "../data/nintendo/Nintendo-FY3-2018/earnings-fy3-18";
+import { printKPI } from "../data/nintendo/Nintendo-FY3-2018/kpi-fy3-18";
 import GRAPH_NINTENDO_EARNINGS_FY3_18 from "../graphs/nintendo/Nintendo-FY3-2018/GRAPH_NINTENDO_EARNINGS_FY3_18";
 import GRAPH_NINTENDO_KPI_FY3_18 from "../graphs/nintendo/Nintendo-FY3-2018/GRAPH_NINTENDO_KPI_FY3_18";
 
@@ -83,7 +84,7 @@ export default function NINTENDO_FY3_18() {
 
     const nintendoHardwareSoftwareMobile = "no data here at this time";
     
-    const keyIndicators = "no data here at this time";
+    const keyIndicators = printKPI;
 
     const fyMillionSellers = "no data here at this time";
 

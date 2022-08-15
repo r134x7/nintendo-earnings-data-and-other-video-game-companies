@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printEarnings } from "../data/nintendo/Nintendo-FY3-2022/earnings-fy3-22";
+import { printKPI } from "../data/nintendo/Nintendo-FY3-2022/kpi-fy3-22";
 import GRAPH_NINTENDO_EARNINGS_FY3_22 from "../graphs/nintendo/Nintendo-FY3-2022/GRAPH_NINTENDO_EARNINGS_FY3_22";
 import GRAPH_NINTENDO_KPI_FY3_22 from "../graphs/nintendo/Nintendo-FY3-2022/GRAPH_NINTENDO_KPI_FY3_22";
 
@@ -1159,108 +1160,7 @@ export default function NINTENDO_FY3_22() {
     ###
     `;
 
-    const keyIndicators = `
-    +------------------------------+
-    | Nintendo Co., Ltd.| FY3/2022 |
-    +------------------------------+
-    | Key/Digital Sales Indicators |
-    +------------------------------+
-    +------------------------------+
-    | Proportion of overseas sales |
-    +------------------------------+
-    | 1st Quarter       |    77.9% |
-    | 2nd Quarter       |    78.7% |
-    | 3rd Quarter       |    79.6% |
-    | 4th Quarter       |    78.2% |
-    +==============================+
-    | 1st Half          |    78.3% |
-    | 1st Three Quarters|    79.0% |
-    | FY3/22 Cumulative |    78.8% |
-    +------------------------------+
-    (※ Proportion of overseas (outside of Japan)
-    sales to total sales)
-    +------------------------------+
-    | Proportion of hardware sales |
-    +------------------------------+
-    | 1st Quarter       |    47.6% |
-    | 2nd Quarter       |    45.2% |
-    | 3rd Quarter       |    53.9% |
-    | 4th Quarter       |    41.5% |
-    +==============================+
-    | 1st Half          |    46.5% |
-    | 1st Three Quarters|    50.4% |
-    | FY3/22 Cumulative |    48.4% |
-    +------------------------------+
-    (※ Proportion of hardware
-     (including accessories) sales
-    to total dedicated video game platform sales)
-    +------------------------------+
-    | Proportion of first party    |
-    | software sales               |
-    +------------------------------+
-    | 1st Quarter       |    72.3% |
-    | 2nd Quarter       |    68.9% |
-    | 3rd Quarter       |    84.1% |
-    | 4th Quarter       |    82.3% |
-    +==============================+
-    | 1st Half          |    70.6% |
-    | 1st Three Quarters|    77.7% |
-    | FY3/22 Cumulative |    78.8% |
-    +------------------------------+
-    (※ Proportion of first-party software sales
-    to total dedicated video game software sales)
-    +------------------------------+
-    | Digital Sales                |
-    +------------------------------+
-    | 1st Quarter       |   ¥75.9B |
-    | 2nd Quarter       |   ¥68.2B |
-    | 3rd Quarter       |  ¥110.8B |
-    | 4th Quarter       |  ¥104.6B |
-    +==============================+
-    | 1st Half          |  ¥144.2B |
-    | 1st Three Quarters|  ¥255.0B |
-    | FY3/22 Cumulative |  ¥359.6B |
-    +------------------------------+
-    ("※ Digital sales include a) downloadable
-    versions of packaged software,
-    b) download-only software,
-    c) add-on content and
-    d) Nintendo Switch Online, etc.
-    ＊"Downloadable versions of packaged software"
-    indicates thedownloadable version of
-    software that is offered both physically
-    and digitally.")
-    +------------------------------+
-    | Proportion of Digital Sales  |
-    +------------------------------+
-    | 1st Quarter       |    46.9% |
-    | 2nd Quarter       |    43.2% |
-    | 3rd Quarter       |    35.3% |
-    | 4th Quarter       |    49.5% |
-    +==============================+
-    | 1st Half          |    45.1% |
-    | 1st Three Quarters|    40.2% |
-    | FY3/22 Cumulative |    42.6% |
-    +------------------------------+
-    (※ Proportion of digital sales to total
-    dedicated video game software sales )
-    +-------------------------------------+
-    | Proportion of downloadable versions |
-    | of Packaged Software Sales          |
-    +-------------------------------------+
-    | 1st Quarter       |           52.1% |
-    | 2nd Quarter       |           49.1% |
-    | 3rd Quarter       |           56.3% |
-    | 4th Quarter       |           63.9% |
-    +=====================================+
-    | 1st Half          |           50.7% |
-    | 1st Three Quarters|           53.1% |
-    | FY3/22 Cumulative |           56.2% |
-    +-------------------------------------+
-    (※ Proportion of downloadable versions of
-    packaged software sales to total digital sales
-    as indicated above: a/(a+b+c+d) )
-    `;
+    const keyIndicators = printKPI;
 
     const nintendoHardwareSoftwareMobile = `
     +------------------------------+
