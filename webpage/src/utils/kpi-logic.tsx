@@ -1,16 +1,16 @@
-export interface KPIQuarter {
+export type KPIQuarter = {
     type: "percentage" | "currency",
     quarter: string,
     value: number,
 }
 
-export interface KPICumulative {
+export type KPICumulative = {
     type: "percentage" | "currency",
     quarter: string,
     value: number,
 }
 
-export interface Header {
+export type Header = {
     companyName: string,
     proportionOfOverseasSales: string,
     proportionOfHardwareSales: string,
@@ -22,7 +22,7 @@ export interface Header {
     title: string,
 }
 
-export interface Footer {
+export type Footer = {
     proportionOfOverseasSales: string,
     proportionOfHardwareSales: string,
     proportionOfFirstPartySoftwareSales: string,
