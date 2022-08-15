@@ -13,16 +13,41 @@ import {
     printNetSales,
     printOpMargin,
     printOperatingIncome,
+    EarningsForecast,
+    EarningsQuarter,
     } from "../../../utils/earnings-logic"
 
     const currentQuarter = 4;
 
-    const netSales: Quarter[] = [
-        {quarter: 61969},  // first quarter
-        {quarter: 136812},  // second quarter
-        {quarter: 311121}, // third quarter
-        {quarter: 489095}, // fourth quarter
+    const netSales: EarningsQuarter[] = [
+        {
+            type: "currency",
+            quarter: " 1st Quarter ",
+            value: 61969
+        },
+        {
+            type: "currency",
+            quarter: " 2nd Quarter ",
+            value: 136812
+        },
+        {
+            type: "currency",
+            quarter: " 3rd Quarter ",
+            value: 311121
+        },
+        {
+            type: "currency",
+            quarter: " 4th Quarter ",
+            value: 489095
+        },
     ]
+
+    // const netSales: Quarter[] = [
+    //     {quarter: 61969},  // first quarter
+    //     {quarter: 136812},  // second quarter
+    //     {quarter: 311121}, // third quarter
+    //     {quarter: 489095}, // fourth quarter
+    // ]
 
     const netSalesLastFy: Quarter[] = [
         {quarter: 90223}, // first quarter

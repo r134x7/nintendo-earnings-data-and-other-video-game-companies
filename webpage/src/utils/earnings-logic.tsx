@@ -1,3 +1,14 @@
+export type EarningsQuarter = {
+    type: "currency" | "percentage",
+    quarter: string,
+    value: number,
+}
+
+export type EarningsForecast = {
+    type: "currency" | "percentage",
+    quarter: string,
+    value: number,    
+}
 
 export type Quarter = {
     quarter: number,
