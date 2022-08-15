@@ -23,43 +23,43 @@ const footer: Footer = {
 
 const proportionOfOverseasSales: KPIQuarter[] = [
     {
-        quarter: " 1st Quarter ",
+        quarter: " 1st Quarter       ",
         value: 79.9,
     },
     {
-        quarter: " 2nd Quarter ",
+        quarter: " 2nd Quarter       ",
         value: 78.9,
     },
     {
-        quarter: " 3rd Quarter ",
+        quarter: " 3rd Quarter       ",
         value: 77.9,
     },
     {
-        quarter: " 4th Quarter ",
+        quarter: " 4th Quarter       ",
         value: 76.9,
     },
 ]
 
 const digitalSales: KPIQuarter[] = [
     {
-        quarter: " 1st Quarter ",
+        quarter: " 1st Quarter       ",
         value: 79.9,
     },
     {
-        quarter: " 2nd Quarter ",
+        quarter: " 2nd Quarter       ",
         value: 78.9,
     },
     {
-        quarter: " 3rd Quarter ",
+        quarter: " 3rd Quarter       ",
         value: 77.9,
     },
     {
-        quarter: " 4th Quarter ",
+        quarter: " 4th Quarter       ",
         value: 76.9,
     },
 ]
 
-// const currentQuarter = 4;
+// const currentQuarter = 1;
 
 const printSectionQuarters = (sectionQuarter: KPIQuarter[], currentQuarter: number) => { // to use Net Sales Difference, Operating Income Difference or Net Profit Difference
 
@@ -80,12 +80,20 @@ const printSectionQuarters = (sectionQuarter: KPIQuarter[], currentQuarter: numb
 
 };
 
-const printproportionOfOverseasSales = 
+const printproportionOfOverseasSales = (header: Header, footer: Footer, proportionOfOverseasSales: KPIQuarter[], currentQuarter: number) => 
+`+${"-".repeat(30)}+
+|${header.proportionOfOverseasSales}|
++${"-".repeat(30)}+
+${printSectionQuarters(proportionOfOverseasSales, currentQuarter)}
++${"=".repeat(30)+"+"}
++${"-".repeat(30)+"+"}
+${footer.proportionOfOverseasSales}
+`;
 
 test('Print Section Quarters type A', () => {
     let currentQuarter = 1;
 
-    const test = printSectionQuarters(proportionOfOverseasSales, currentQuarter)
+    const typeA = printproportionOfOverseasSales(header, footer, proportionOfOverseasSales, currentQuarter)
 
 let pythonOutput = 
 `+------------------------------+
@@ -94,11 +102,9 @@ let pythonOutput =
 | 1st Quarter       |    79.9% |
 +==============================+
 +------------------------------+
-(※ Proportion of overseas (outside of Japan)
-sales to total sales)
+|(※ Proportion of overseas (outside of Japan)
+| sales to total sales)
 `;
-
-    console.log(printSectionQuarters)
   
-    expect(test).toMatch(pythonOutput);
+    expect(typeA).toMatch(pythonOutput);
   });
