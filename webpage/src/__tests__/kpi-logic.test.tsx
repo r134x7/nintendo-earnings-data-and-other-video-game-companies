@@ -107,8 +107,7 @@ const printSectionCumulative = (sectionCumulative: KPICumulative[], currentQuart
     }).reduce((prev, next, index, array) => {
     return (array[index] === array[currentQuarter -2])
             ? prev + `\n` + next 
-            // + `\n+${"-".repeat(30)}+`
-            : prev + `\n+${"-".repeat(30)}+\n` + next 
+            : prev + `\n` + next 
   })
 };
 
@@ -209,6 +208,30 @@ test("Print Section Quarters type A Quarter 3", () => {
 +==============================+
 | 1st Half          |    72.9% |
 | 1st Three Quarters|    71.9% |
++------------------------------+
+|(※ Proportion of overseas (outside of Japan)
+| sales to total sales)`;
+
+    expect(typeA).toMatch(pythonOutput);
+})
+
+test("Print Section Quarters type A Quarter 4", () => {
+    let currentQuarter = 4;
+
+    const typeA = printproportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, proportionOfOverseasSalesCml, currentQuarter)
+
+    let pythonOutput = 
+`+------------------------------+
+| Proportion of overseas sales |
++------------------------------+
+| 1st Quarter       |    79.9% |
+| 2nd Quarter       |    78.9% |
+| 3rd Quarter       |    77.9% |
+| 4th Quarter       |    76.9% |
++==============================+
+| 1st Half          |    72.9% |
+| 1st Three Quarters|    71.9% |
+| FY3/22 Cumulative |    70.9% |
 +------------------------------+
 |(※ Proportion of overseas (outside of Japan)
 | sales to total sales)`;
