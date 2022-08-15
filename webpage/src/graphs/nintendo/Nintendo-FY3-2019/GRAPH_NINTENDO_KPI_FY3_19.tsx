@@ -104,8 +104,8 @@ export default function GRAPH_NINTENDO_KPI_FY3_19() {
                         y: {
                             title: {
                               display: true,
-                              text: (activePage !== 3)
-                                        ? "Million yen (¥)"
+                              text: (activePage === 4)
+                                        ? "Billion yen (¥)"
                                         : "Percentage (%)",
                             },
                           },
@@ -147,8 +147,8 @@ export default function GRAPH_NINTENDO_KPI_FY3_19() {
                         y: {
                             title: {
                               display: true,
-                              text: (activePage !== 3)
-                                        ? "Million yen (¥)"
+                              text: (activePage === 4)
+                                        ? "Billion yen (¥)"
                                         : "Percentage (%)",
                             },
                           },
@@ -189,8 +189,8 @@ export default function GRAPH_NINTENDO_KPI_FY3_19() {
                         y: {
                             title: {
                               display: true,
-                              text: (activePage !== 3)
-                                        ? "Million yen (¥)"
+                              text: (activePage === 4)
+                                        ? "Billion yen (¥)"
                                         : "Percentage (%)",
                             },
                           },
@@ -233,8 +233,8 @@ export default function GRAPH_NINTENDO_KPI_FY3_19() {
                     y: {
                         title: {
                           display: true,
-                          text: (activePage !== 3)
-                                        ? "Million yen (¥)"
+                          text: (activePage === 4)
+                                        ? "Billion yen (¥)"
                                         : "Percentage (%)",
                         },
                       },
