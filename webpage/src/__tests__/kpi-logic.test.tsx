@@ -2,14 +2,14 @@ import { KPIQuarter, KPICumulative, Header, Footer } from "../utils/kpi-logic";
 
 const header: Header = {
     companyName: " Nintendo Co., Ltd.",
-    proportionOfOverseasSales: " Proportion of overseas sales ",
-    proportionOfHardwareSales: " Proportion of hardware sales ",
+    proportionOfOverseasSales: "| Proportion of overseas sales |",
+    proportionOfHardwareSales: "| Proportion of hardware sales |",
     proportionOfFirstPartySoftwareSales: "| Proportion of first party    |\n| software sales               |",
-    digitalSales: " Digital Sales                ",
-    proportionOfDigitalSales: " Proportion of Digital Sales  ",
+    digitalSales: "| Digital Sales                |",
+    proportionOfDigitalSales: "| Proportion of Digital Sales  |",
     proportionOfDLverPackagedSoftware: "| Proportion of downloadable   |\n| versions of Packaged         |\n| Software Sales               |",
-    fiscalYear: "FY3/2017 ",
-    title: "   Key/Digital Sales Indicators   ",
+    fiscalYear: "| FY3/2017 |",
+    title: "| Key/Digital Sales Indicators |",
 }
 
 const footer: Footer = {
@@ -55,7 +55,7 @@ const proportionOfOverseasSalesCml: KPICumulative[] = [
     },
 ]
 
-const digitalSales: KPIQuarter[] = [
+const proportionOfHardwareSalesQtr: KPIQuarter[] = [
     {
         quarter: " 1st Quarter       ",
         value: 79.9,
@@ -74,11 +74,162 @@ const digitalSales: KPIQuarter[] = [
     },
 ]
 
+const proportionOfHardwareSalesCml: KPICumulative[] = [
+    {
+        quarter: " 1st Half          ",
+        value: 72.9,
+    },
+    {
+        quarter: " 1st Three Quarters",
+        value: 71.9,
+    },
+    {
+        quarter: " FY3/22 Cumulative ",
+        value: 70.9,
+    },
+]
+
+const proportionOfFirstPartySoftwareSalesQtr: KPIQuarter[] = [
+    {
+        quarter: " 1st Quarter       ",
+        value: 79.9,
+    },
+    {
+        quarter: " 2nd Quarter       ",
+        value: 78.9,
+    },
+    {
+        quarter: " 3rd Quarter       ",
+        value: 77.9,
+    },
+    {
+        quarter: " 4th Quarter       ",
+        value: 76.9,
+    },
+]
+
+const proportionOfFirstPartySoftwareSalesCml: KPICumulative[] = [
+    {
+        quarter: " 1st Half          ",
+        value: 72.9,
+    },
+    {
+        quarter: " 1st Three Quarters",
+        value: 71.9,
+    },
+    {
+        quarter: " FY3/22 Cumulative ",
+        value: 70.9,
+    },
+]
+
+const digitalSalesQtr: KPIQuarter[] = [
+    {
+        quarter: " 1st Quarter       ",
+        value: 79.9,
+    },
+    {
+        quarter: " 2nd Quarter       ",
+        value: 78.9,
+    },
+    {
+        quarter: " 3rd Quarter       ",
+        value: 77.9,
+    },
+    {
+        quarter: " 4th Quarter       ",
+        value: 76.9,
+    },
+]
+
+const digitalSalesCml: KPICumulative[] = [
+    {
+        quarter: " 1st Half          ",
+        value: 72.9,
+    },
+    {
+        quarter: " 1st Three Quarters",
+        value: 71.9,
+    },
+    {
+        quarter: " FY3/22 Cumulative ",
+        value: 70.9,
+    },
+]
+
+const proportionOfDigitalSalesQtr: KPIQuarter[] = [
+    {
+        quarter: " 1st Quarter       ",
+        value: 79.9,
+    },
+    {
+        quarter: " 2nd Quarter       ",
+        value: 78.9,
+    },
+    {
+        quarter: " 3rd Quarter       ",
+        value: 77.9,
+    },
+    {
+        quarter: " 4th Quarter       ",
+        value: 76.9,
+    },
+]
+
+const proportionOfDigitalSalesCml: KPICumulative[] = [
+    {
+        quarter: " 1st Half          ",
+        value: 72.9,
+    },
+    {
+        quarter: " 1st Three Quarters",
+        value: 71.9,
+    },
+    {
+        quarter: " FY3/22 Cumulative ",
+        value: 70.9,
+    },
+]
+
+const proportionOfDLverPackagedSoftwareQtr: KPIQuarter[] = [
+    {
+        quarter: " 1st Quarter       ",
+        value: 79.9,
+    },
+    {
+        quarter: " 2nd Quarter       ",
+        value: 78.9,
+    },
+    {
+        quarter: " 3rd Quarter       ",
+        value: 77.9,
+    },
+    {
+        quarter: " 4th Quarter       ",
+        value: 76.9,
+    },
+]
+
+const proportionOfDLverPackagedSoftwareCml: KPICumulative[] = [
+    {
+        quarter: " 1st Half          ",
+        value: 72.9,
+    },
+    {
+        quarter: " 1st Three Quarters",
+        value: 71.9,
+    },
+    {
+        quarter: " FY3/22 Cumulative ",
+        value: 70.9,
+    },
+]
+
 const printSectionQuarters = (sectionQuarter: KPIQuarter[], currentQuarter: number) => { 
 
     return sectionQuarter.filter((elem, index) => index < currentQuarter).map((elem, index) => {
 
-        let printSection: string = (sectionQuarter === digitalSales) 
+        let printSection: string = (sectionQuarter === digitalSalesQtr) 
             ? `¥${elem.value}B `
             : `${elem.value}% `; 
         let printSectionFixed: string = (printSection.length >= 10)
@@ -97,7 +248,7 @@ const printSectionCumulative = (sectionCumulative: KPICumulative[], currentQuart
     
     return  sectionCumulative.filter((elem, index) => (currentQuarter >= 2 && index < currentQuarter -1)).map((elem, index) => {
     
-    let printSectionCml: string = (sectionCumulative === digitalSales) 
+    let printSectionCml: string = (sectionCumulative === digitalSalesCml) 
         ? `¥${elem.value}B `
         : `${elem.value}% `; 
     let printSectionCmlFixed: string = (printSectionCml.length >= 10)
@@ -111,28 +262,71 @@ const printSectionCumulative = (sectionCumulative: KPICumulative[], currentQuart
   })
 };
 
-const printproportionOfOverseasSales = (header: Header, footer: Footer, proportionOfOverseasSales: KPIQuarter[], proportionOfOverseasSalesCml: KPICumulative[], currentQuarter: number) => 
+const printHead = (header: Header) => 
 `+${"-".repeat(30)}+
-|${header.proportionOfOverseasSales}|
+|${header.companyName}${header.fiscalYear}
 +${"-".repeat(30)}+
-${printSectionQuarters(proportionOfOverseasSales, currentQuarter)}
+${header.title}
++${"-".repeat(30)}+`;
+
+const printProportionOfOverseasSales = (header: Header, footer: Footer, proportionOfOverseasSalesQtr: KPIQuarter[], proportionOfOverseasSalesCml: KPICumulative[], currentQuarter: number) => 
+`+${"-".repeat(30)}+
+${header.proportionOfOverseasSales}
++${"-".repeat(30)}+
+${printSectionQuarters(proportionOfOverseasSalesQtr, currentQuarter)}
 +${(currentQuarter > 1) ? "=".repeat(30)+"+\n" + printSectionCumulative(proportionOfOverseasSalesCml, currentQuarter) : "=".repeat(30)+"+" }
 +${"-".repeat(30)+"+"}
 ${footer.proportionOfOverseasSales}`;
 
-const printDigitalSales = (header: Header, footer: Footer, digitalSales: KPIQuarter[], currentQuarter: number) => 
+const printProportionOfHardwareSales = (header: Header, footer: Footer, proportionOfHardwareSalesQtr: KPIQuarter[], proportionOfHardwareSalesCml: KPICumulative[], currentQuarter: number) => 
 `+${"-".repeat(30)}+
-|${header.digitalSales}|
+${header.proportionOfHardwareSales}
 +${"-".repeat(30)}+
-${printSectionQuarters(digitalSales, currentQuarter)}
-+${"=".repeat(30)+"+"}
+${printSectionQuarters(proportionOfHardwareSalesQtr, currentQuarter)}
++${(currentQuarter > 1) ? "=".repeat(30)+"+\n" + printSectionCumulative(proportionOfHardwareSalesCml, currentQuarter) : "=".repeat(30)+"+" }
++${"-".repeat(30)+"+"}
+${footer.proportionOfHardwareSales}`;
+
+const printProportionOfFirstPartySoftwareSales = (header: Header, footer: Footer, proportionOfFirstPartySoftwareSalesQtr: KPIQuarter[], proportionOfFirstPartySoftwareSalesCml: KPICumulative[], currentQuarter: number) => 
+`+${"-".repeat(30)}+
+${header.proportionOfFirstPartySoftwareSales}
++${"-".repeat(30)}+
+${printSectionQuarters(proportionOfFirstPartySoftwareSalesQtr, currentQuarter)}
++${(currentQuarter > 1) ? "=".repeat(30)+"+\n" + printSectionCumulative(proportionOfFirstPartySoftwareSalesCml, currentQuarter) : "=".repeat(30)+"+" }
++${"-".repeat(30)+"+"}
+${footer.proportionOfFirstPartySoftwareSales}`;
+
+const printDigitalSales = (header: Header, footer: Footer, digitalSalesQtr: KPIQuarter[], digitalSalesCml: KPICumulative[], currentQuarter: number) => 
+`+${"-".repeat(30)}+
+${header.digitalSales}
++${"-".repeat(30)}+
+${printSectionQuarters(digitalSalesQtr, currentQuarter)}
++${(currentQuarter > 1) ? "=".repeat(30)+"+\n" + printSectionCumulative(digitalSalesCml, currentQuarter) : "=".repeat(30)+"+" }
 +${"-".repeat(30)+"+"}
 ${footer.digitalSales}`;
+
+const printProportionOfDigitalSales = (header: Header, footer: Footer, proportionOfDigitalSalesQtr: KPIQuarter[], proportionOfDigitalSalesCml: KPICumulative[], currentQuarter: number) => 
+`+${"-".repeat(30)}+
+${header.proportionOfDigitalSales}
++${"-".repeat(30)}+
+${printSectionQuarters(proportionOfDigitalSalesQtr, currentQuarter)}
++${(currentQuarter > 1) ? "=".repeat(30)+"+\n" + printSectionCumulative(proportionOfDigitalSalesCml, currentQuarter) : "=".repeat(30)+"+" }
++${"-".repeat(30)+"+"}
+${footer.proportionOfDigitalSales}`;
+
+const printProportionOfDLverPackagedSoftware = (header: Header, footer: Footer, proportionOfDLverPackagedSoftwareQtr: KPIQuarter[], proportionOfDLverPackagedSoftwareCml: KPICumulative[], currentQuarter: number) => 
+`+${"-".repeat(30)}+
+${header.proportionOfDLverPackagedSoftware}
++${"-".repeat(30)}+
+${printSectionQuarters(proportionOfDLverPackagedSoftwareQtr, currentQuarter)}
++${(currentQuarter > 1) ? "=".repeat(30)+"+\n" + printSectionCumulative(proportionOfDLverPackagedSoftwareCml, currentQuarter) : "=".repeat(30)+"+" }
++${"-".repeat(30)+"+"}
+${footer.proportionOfDLverPackagedSoftware}`;
 
 test('Print Section Quarters type A', () => {
     let currentQuarter = 1;
 
-    const typeA = printproportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, proportionOfOverseasSalesCml, currentQuarter)
+    const typeA = printProportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, proportionOfOverseasSalesCml, currentQuarter)
 
 let pythonOutput = 
 `+------------------------------+
@@ -151,7 +345,7 @@ test("Print Section Quarters type B", () => {
 
     let currentQuarter = 1;
 
-    const typeB = printDigitalSales(header, footer, digitalSales, currentQuarter)    
+    const typeB = printDigitalSales(header, footer, digitalSalesQtr, digitalSalesCml, currentQuarter)    
 
 let pythonOutput = 
 `+------------------------------+
@@ -176,7 +370,7 @@ let pythonOutput =
 test("Print Section Quarters type A Quarter 2", () => {
     let currentQuarter = 2;
 
-    const typeA = printproportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, proportionOfOverseasSalesCml, currentQuarter)
+    const typeA = printProportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, proportionOfOverseasSalesCml, currentQuarter)
 
     let pythonOutput = 
 `+------------------------------+
@@ -196,7 +390,7 @@ test("Print Section Quarters type A Quarter 2", () => {
 test("Print Section Quarters type A Quarter 3", () => {
     let currentQuarter = 3;
 
-    const typeA = printproportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, proportionOfOverseasSalesCml, currentQuarter)
+    const typeA = printProportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, proportionOfOverseasSalesCml, currentQuarter)
 
     let pythonOutput = 
 `+------------------------------+
@@ -218,7 +412,7 @@ test("Print Section Quarters type A Quarter 3", () => {
 test("Print Section Quarters type A Quarter 4", () => {
     let currentQuarter = 4;
 
-    const typeA = printproportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, proportionOfOverseasSalesCml, currentQuarter)
+    const typeA = printProportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, proportionOfOverseasSalesCml, currentQuarter)
 
     let pythonOutput = 
 `+------------------------------+
@@ -237,4 +431,34 @@ test("Print Section Quarters type A Quarter 4", () => {
 | sales to total sales)`;
 
     expect(typeA).toMatch(pythonOutput);
+})
+
+test("Print All - No Match, console.log only", () => {
+
+    let currentQuarter = 4;
+
+    const printOne = printHead(header)
+
+    const printTwo = printProportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, proportionOfOverseasSalesCml, currentQuarter)
+
+    const printThree = printProportionOfHardwareSales(header, footer, proportionOfHardwareSalesQtr, proportionOfHardwareSalesCml, currentQuarter)
+
+    const printFour = printProportionOfFirstPartySoftwareSales(header, footer, proportionOfFirstPartySoftwareSalesQtr, proportionOfFirstPartySoftwareSalesCml, currentQuarter)
+
+    const printFive = printDigitalSales(header, footer, digitalSalesQtr, digitalSalesCml, currentQuarter)
+
+    const printSix = printProportionOfDigitalSales(header, footer, proportionOfDigitalSalesQtr, proportionOfDigitalSalesCml, currentQuarter)
+
+    const printSeven = printProportionOfDLverPackagedSoftware(header, footer, proportionOfDLverPackagedSoftwareQtr, proportionOfDLverPackagedSoftwareCml, currentQuarter)
+
+    console.log(
+`${printOne}
+${printTwo}
+${printThree}
+${printFour}
+${printFive}
+${printSix}
+${printSeven}
++${"-".repeat(30)+"+"}
+###`)
 })
