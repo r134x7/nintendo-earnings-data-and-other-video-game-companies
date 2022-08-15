@@ -13,7 +13,7 @@ import {
 
 const currentQuarter = 4;
 
-const proportionOfOverseasSalesQtr: KPIQuarter[] = [
+export const proportionOfOverseasSalesQtr: KPIQuarter[] = [
     {
         type: "percentage",
         quarter: " 1st Quarter       ",
@@ -54,7 +54,7 @@ const proportionOfOverseasSalesCml: KPICumulative[] = [
     },
 ]
 
-const proportionOfHardwareSalesQtr: KPIQuarter[] = [
+export const proportionOfHardwareSalesQtr: KPIQuarter[] = [
     {
         type: "percentage",
         quarter: " 1st Quarter       ",
@@ -95,7 +95,7 @@ const proportionOfHardwareSalesCml: KPICumulative[] = [
     },
 ]
 
-const proportionOfFirstPartySoftwareSalesQtr: KPIQuarter[] = [
+export const proportionOfFirstPartySoftwareSalesQtr: KPIQuarter[] = [
     {
         type: "percentage",
         quarter: " 1st Quarter       ",
@@ -136,7 +136,7 @@ const proportionOfFirstPartySoftwareSalesCml: KPICumulative[] = [
     },
 ]
 
-const digitalSalesQtr: KPIQuarter[] = [
+export const digitalSalesQtr: KPIQuarter[] = [
     {
         type: "currency",
         quarter: " 1st Quarter       ",
@@ -177,7 +177,7 @@ const digitalSalesCml: KPICumulative[] = [
     },
 ]
 
-const proportionOfDigitalSalesQtr: KPIQuarter[] = [
+export const proportionOfDigitalSalesQtr: KPIQuarter[] = [
     {
         type: "percentage",
         quarter: " 1st Quarter       ",

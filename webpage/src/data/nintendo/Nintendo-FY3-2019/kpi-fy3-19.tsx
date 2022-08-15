@@ -14,7 +14,7 @@ import {
 
 const currentQuarter = 4;
 
-const proportionOfOverseasSalesQtr: KPIQuarter[] = [
+export const proportionOfOverseasSalesQtr: KPIQuarter[] = [
     {
         type: "percentage",
         quarter: " 1st Quarter       ",
@@ -50,12 +50,12 @@ const proportionOfOverseasSalesCml: KPICumulative[] = [
     },
     {
         type: "percentage",
-        quarter: " FY3/17 Cumulative ",
+        quarter: " FY3/19 Cumulative ",
         value: 77.9,
     },
 ]
 
-const proportionOfHardwareSalesQtr: KPIQuarter[] = [
+export const proportionOfHardwareSalesQtr: KPIQuarter[] = [
     {
         type: "percentage",
         quarter: " 1st Quarter       ",
@@ -91,12 +91,12 @@ const proportionOfHardwareSalesCml: KPICumulative[] = [
     },
     {
         type: "percentage",
-        quarter: " FY3/17 Cumulative ",
+        quarter: " FY3/19 Cumulative ",
         value: 58.4,
     },
 ]
 
-const proportionOfFirstPartySoftwareSalesQtr: KPIQuarter[] = [
+export const proportionOfFirstPartySoftwareSalesQtr: KPIQuarter[] = [
     {
         type: "percentage",
         quarter: " 1st Quarter       ",
@@ -132,12 +132,12 @@ const proportionOfFirstPartySoftwareSalesCml: KPICumulative[] = [
     },
     {
         type: "percentage",
-        quarter: " FY3/17 Cumulative ",
+        quarter: " FY3/19 Cumulative ",
         value: 83.8,
     },
 ]
 
-const digitalSalesQtr: KPIQuarter[] = [
+export const digitalSalesQtr: KPIQuarter[] = [
     {
         type: "currency",
         quarter: " 1st Quarter       ",
@@ -173,12 +173,12 @@ const digitalSalesCml: KPICumulative[] = [
     },
     {
         type: "currency",
-        quarter: " FY3/17 Cumulative ",
+        quarter: " FY3/19 Cumulative ",
         value: 118.8,
     },
 ]
 
-const proportionOfDigitalSalesQtr: KPIQuarter[] = [
+export const proportionOfDigitalSalesQtr: KPIQuarter[] = [
     {
         type: "percentage",
         quarter: " 1st Quarter       ",
@@ -214,12 +214,12 @@ const proportionOfDigitalSalesCml: KPICumulative[] = [
     },
     {
         type: "percentage",
-        quarter: " FY3/17 Cumulative ",
+        quarter: " FY3/19 Cumulative ",
         value: 24.8,
     },
 ]
 
-const proportionOfDLverPackagedSoftwareQtr: KPIQuarter[] = [
+export const proportionOfDLverPackagedSoftwareQtr: KPIQuarter[] = [
     {
         type: "percentage",
         quarter: " 1st Quarter       ",
@@ -268,7 +268,7 @@ const header: Header = {
     digitalSales: "| Digital Sales                |",
     proportionOfDigitalSales: "| Proportion of Digital Sales  |",
     proportionOfDLverPackagedSoftware: "| Proportion of downloadable   |\n| versions of Packaged         |\n| Software Sales               |",
-    fiscalYear: "| FY3/2017 |",
+    fiscalYear: "| FY3/2019 |",
     title: "| Key/Digital Sales Indicators |",
 }
 
