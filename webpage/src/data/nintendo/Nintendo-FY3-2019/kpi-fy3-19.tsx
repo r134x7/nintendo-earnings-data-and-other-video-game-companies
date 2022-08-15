@@ -9,6 +9,7 @@ import {
     printProportionOfFirstPartySoftwareSales,
     printDigitalSales,
     printProportionOfDigitalSales,
+    printProportionOfDLverPackagedSoftware,
 } from "../../../utils/kpi-logic"
 
 const currentQuarter = 4;
@@ -218,6 +219,47 @@ const proportionOfDigitalSalesCml: KPICumulative[] = [
     },
 ]
 
+const proportionOfDLverPackagedSoftwareQtr: KPIQuarter[] = [
+    {
+        type: "percentage",
+        quarter: " 1st Quarter       ",
+        value: 59.3,
+    },
+    {
+        type: "percentage",
+        quarter: " 2nd Quarter       ",
+        value: 59.1,
+    },
+    {
+        type: "percentage",
+        quarter: " 3rd Quarter       ",
+        value: 78.7,
+    },
+    {
+        type: "percentage",
+        quarter: " 4th Quarter       ",
+        value: 62.6,
+    },
+]
+
+const proportionOfDLverPackagedSoftwareCml: KPICumulative[] = [
+    {
+        type: "percentage",
+        quarter: " 1st Half          ",
+        value: 59.2,
+    },
+    {
+        type: "percentage",
+        quarter: " 1st Three Quarters",
+        value: 69.6,
+    },
+    {
+        type: "percentage",
+        quarter: " FY3/22 Cumulative ",
+        value: 67.6,
+    },
+]
+
 const header: Header = {
     companyName: " Nintendo Co., Ltd.",
     proportionOfOverseasSales: "| Proportion of overseas sales |",
@@ -251,11 +293,14 @@ const footer: Footer = {
 
     const printSix = printProportionOfDigitalSales(header, footer, proportionOfDigitalSalesQtr, proportionOfDigitalSalesCml, currentQuarter)
 
+    const printSeven = printProportionOfDLverPackagedSoftware(header, footer, proportionOfDLverPackagedSoftwareQtr, proportionOfDLverPackagedSoftwareCml, currentQuarter)
+
 export const printKPI = `${printOne}
 ${printTwo}
 ${printThree}
 ${printFour}
 ${printFive}
 ${printSix}
+${printSeven}
 +${"-".repeat(30)+"+"}
 ###`;
