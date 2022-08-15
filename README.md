@@ -39,7 +39,8 @@ Link to deployed application: [https://r134x7.github.io/nintendo-earnings-data-a
 
 # Tests
   
-  None written.
+  Tests written for:
+  - KPI-Logic to get the output of the code to match that of the Python code other than getting the code to work.
 
 # Questions
   
