@@ -1,22 +1,22 @@
-export type EarningsQuarter = {
+export type Earnings = {
     type: "currency" | "percentage",
     quarter: string,
     value: number,
 }
 
-export type EarningsForecast = {
-    type: "currency" | "percentage",
-    quarter: string,
-    value: number,    
-}
+// export type EarningsForecast = {
+//     type: "currency" | "percentage",
+//     quarter: string,
+//     value: number,    
+// }
 
-export type Quarter = {
-    quarter: number,
-}
+// export type Quarter = {
+//     quarter: number,
+// }
 
-export type Forecasts = {
-    forecast: number,
-}
+// export type Forecasts = {
+//     forecast: number,
+// }
 
 export type Header = {
     companyName: string,
@@ -29,36 +29,39 @@ export type Header = {
     title: string,
 }
 
-type RowQuarters = {
-    quarter: string,
-}
+// type RowQuarters = {
+//     quarter: string,
+// }
 
-export type RowCumulatives = {
-    cumulative: string,
-}
+// export type RowCumulatives = {
+//     cumulative: string,
+// }
 
-export type RowForecasts = {
-    forecast: string,
-}
+// export type RowForecasts = {
+//     forecast: string,
+// }
 
 
-const rowQuartersApplied: RowQuarters[] = [
-    {quarter: " 1st Quarter "},
-    {quarter: " 2nd Quarter "},
-    {quarter: " 3rd Quarter "},
-    {quarter: " 4th Quarter "},
-]
+// const rowQuartersApplied: RowQuarters[] = [
+//     {quarter: " 1st Quarter "},
+//     {quarter: " 2nd Quarter "},
+//     {quarter: " 3rd Quarter "},
+//     {quarter: " 4th Quarter "},
+// ]
 
-export function quarterlyCalculation(quarters: Quarter[]) {
+// export function quarterlyCalculation(quarters: Quarter[]) {
+export function quarterlyCalculation(quarters: EarningsQuarter[]) {
     
     const calc = quarters.map((elem, index, array) => {
-         return (index === 0) ? elem : { quarter: elem.quarter - array[index-1].quarter} // Finally figured out how to do it correctly with its own parameters
+         return (index === 0) ? elem : { value: elem.value - array[index-1].value} // Finally figured out how to do it correctly with its own parameters
+        //  return (index === 0) ? elem : { quarter: elem.quarter - array[index-1].quarter} // Finally figured out how to do it correctly with its own parameters
       })
     
     return calc
 }
 
-export function cumulativeCalculation(quarters: Quarter[]) {
+export function cumulativeCalculation(quarters: EarningsQuarter[]) {
+// export function cumulativeCalculation(quarters: Quarter[]) {
 
     const calc = quarters.filter((elem, index, array) => {
         return elem !== array[0]
@@ -68,7 +71,8 @@ export function cumulativeCalculation(quarters: Quarter[]) {
     
 }
 
-export function yearOnYearCalculation(thisFY: Quarter[], lastFY: Quarter[]) {
+// export function yearOnYearCalculation(thisFY: Quarter[], lastFY: Quarter[]) {
+export function yearOnYearCalculation(thisFY: Quarter[], lastFY: EarningsQuarter[]) {
 
     const calc = thisFY.map((elem, index) => {
 
@@ -194,7 +198,8 @@ const printSectionForecast = (sectionForecast: Forecasts[], rowForecastsApplied:
   })
   }
 
-const printOpMarginQuarters = (sectionMarginQuarters: Quarter[], currentQuarter: number) => {
+// const printOpMarginQuarters = (sectionMarginQuarters: Quarter[], currentQuarter: number) => {
+const printOpMarginQuarters = (sectionMarginQuarters: EarningsQuarter[], currentQuarter: number) => {
 
     return sectionMarginQuarters.filter((elem, index) => index < currentQuarter).map((elem, index) => {
   

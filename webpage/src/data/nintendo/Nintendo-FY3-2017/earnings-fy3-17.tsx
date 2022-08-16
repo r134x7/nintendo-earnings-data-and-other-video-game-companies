@@ -65,7 +65,7 @@ import {
         },
     ]
 
-    const netSalesForecasts: EarningsQuarter[] = [
+    const netSalesForecasts: EarningsForecast[] = [
         {
             type: "currency",
             quarter: " FY3/17 Forecast ",
@@ -155,7 +155,7 @@ import {
         },
     ]
 
-    const operatingIncomeForecasts: EarningsQuarter[] = [
+    const operatingIncomeForecasts: EarningsForecast[] = [
         {
             type: "currency",
             quarter: " FY3/17 Forecast ",
@@ -245,7 +245,7 @@ import {
         },
     ]
 
-    const netIncomeForecasts: EarningsQuarter[] = [
+    const netIncomeForecasts: EarningsForecast[] = [
         {
             type: "currency",
             quarter: " FY3/17 Forecast ",
