@@ -100,12 +100,12 @@ export function yearOnYearCalculation(thisFY: Earnings[], lastFY: Earnings[]) {
 // export function operatingMarginCalculation(netSalesLocal: Quarter[], opIncomeLocal: Quarter[]) {
 export function operatingMarginCalculation(netSalesLocal: Earnings[], opIncomeLocal: Earnings[]) {
 
-    const calc = opIncomeLocal.map((elem, index) => {
+    const calc: Earnings[] = opIncomeLocal.map((elem, index) => {
         return (netSalesLocal[index].value !== 0) 
-                  ? {value: Number(
+                  ? {...elem, units: "percentage", value: Number(
                         (((elem.value / netSalesLocal[index].value)) * 100).toFixed(2)
                      )} // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number 
-                  : {value: 0} // to prevent infinity calculations
+                  : {...elem, units: "percentage", value: 0} // to prevent infinity calculations
     })
    
    return calc

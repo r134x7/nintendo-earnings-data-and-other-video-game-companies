@@ -25,17 +25,20 @@ import {
             category: "quarter",
             units: "currency",
             name: " 2nd Quarter ",
+            cmlName: " First Half  ",
             value: 136812
         },
         {
             category: "quarter",
-            units: "currency",           
+            units: "currency", 
+            cmlName: " 1st 3 Qtrs  ",          
             name: " 3rd Quarter ",
             value: 311121
         },
         {
             category: "quarter",
-            units: "currency",           
+            units: "currency", 
+            cmlName: " FY3/17 Cml. ",         
             name: " 4th Quarter ",
             value: 489095
         },
@@ -118,22 +121,26 @@ import {
 
     const operatingIncome: Earnings[] = [
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 1st Quarter ",
             value: -5134
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 2nd Quarter ",
             value: -5947
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 3rd Quarter ",
             value: 26315
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 4th Quarter ",
             value: 29362
         },
@@ -141,22 +148,26 @@ import {
 
     const operatingIncomeLastFY: Earnings[] = [
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 1st Quarter ",
             value: 1149
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 2nd Quarter ",
             value: 8977
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 3rd Quarter ",
             value: 42485
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 4th Quarter ",
             value: 32881
         },
@@ -164,22 +175,26 @@ import {
 
     const operatingIncomeForecasts: Earnings[] = [
         {
-            type: "currency",
+            category: "forecast",
+            units: "currency",
             name: " FY3/17 Forecast ",
             value: 45000
         },
         {
-            type: "currency",
+            category: "forecast",
+            units: "currency",
             name: " FCST Revision 1 ",
             value: 30000
         },
         {
-            type: "currency",
+            category: "forecast",
+            units: "currency",
             name: " FCST Revision 2 ",
             value: 20000
         },
         {
-            type: "currency",
+            category: "forecast",
+            units: "currency",
             name: " FY3/18 Forecast ",
             value: 65000
         },
@@ -208,22 +223,26 @@ import {
 
     const netIncome: Earnings[] = [
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 1st Quarter ",
             value: -24534  
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 2nd Quarter ",
             value: 38299 
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 3rd Quarter ",
             value: 102969
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 4th Quarter ",
             value: 102574
         },
@@ -231,22 +250,26 @@ import {
 
     const netIncomeLastFY: Earnings[] = [
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 1st Quarter ",
             value: 8284 
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 2nd Quarter ",
             value: 11466
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 3rd Quarter ",
             value: 40558
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 4th Quarter ",
             value: 16505
         },
@@ -254,22 +277,26 @@ import {
 
     const netIncomeForecasts: Earnings[] = [
         {
-            type: "currency",
+            category: "forecast",
+            units: "currency",
             name: " FY3/17 Forecast ",
             value: 35000
         },
         {
-            type: "currency",
+            category: "forecast",
+            units: "currency",
             name: " FCST Revision 1 ",
             value: 50000
         },
         {
-            type: "currency",
+            category: "forecast",
+            units: "currency",
             name: " FCST Revision 2 ",
             value: 90000
         },
         {
-            type: "currency",
+            category: "forecast",
+            units: "currency",
             name: " FY3/18 Forecast ",
             value: 45000
         },

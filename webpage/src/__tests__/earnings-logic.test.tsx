@@ -97,7 +97,8 @@ const header: Header = {
 
     function quarterlyCalculation(quarters: Earnings[]) {
         
-        const calc = quarters.map((elem, index, array) => {
+        // calc needs to be defined as earnings to retain its type when making any changes
+        const calc: Earnings[] = quarters.map((elem, index, array) => {
             return (index === 0) 
                     ? elem
                     : {...elem, value: elem.value - array[index-1].value}
@@ -113,14 +114,15 @@ const header: Header = {
 
     function yearOnYearCalculation(thisFY: Earnings[], lastFY: Earnings[]) {
 
-        const calc = thisFY.map((elem, index) => {
+        // calc needs to be defined as earnings to retain its type when making any changes
+        const calc: Earnings[] = thisFY.map((elem, index) => {
 
             return (lastFY[index].value < 0)
-                    ? {...elem, value: Number(
+                    ? {...elem, units: "percentage", value: Number(
                         ((((elem.value / lastFY[index].value) -1)* -1) * 100).toFixed(2)
                         )
                       }
-                    : {...elem, value: Number(
+                    : {...elem, units: "percentage", value: Number(
                         (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
                         )
                       }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
@@ -142,8 +144,8 @@ test("Quarterly Calculation returns type and not number", () => {
         return quarterlyCalculation(elem)
     }) 
 
-    console.log(netSalesDifference);
-    console.log(netSalesLastFYDifference);
+    // console.log(netSalesDifference);
+    // console.log(netSalesLastFYDifference);
 
     let netSalesDifferenceExpected = [
         {
@@ -231,8 +233,8 @@ test("Year on Year calculation returns type and not number", () => {
                 : []
     }).filter((elem) => elem.length !== 0)
 
-    console.log(netSalesDifferenceYoy);
-    console.log(netSalesCumulativeYoy);
+    // console.log(netSalesDifferenceYoy);
+    // console.log(netSalesCumulativeYoy);
     
     let netSalesDifferenceYoyExpected = [
         {
@@ -317,12 +319,12 @@ test("Print Section Net Sales Quarters Quarter 4", () => {
 
     const typeA = printSections(netSalesDifference, netSalesDifferenceYoy, currentQuarter) 
 
-    console.log(typeA);
+    // console.log(typeA);
     
 })
 
 test("print section all of Net Sales Quarter 4", () => {
-    let currentQuarter = 2;
+    let currentQuarter = 4;
 
     const [netSalesDifference, netSalesLastFYDifference] = collection.map((elem) => {
         return quarterlyCalculation(elem)
