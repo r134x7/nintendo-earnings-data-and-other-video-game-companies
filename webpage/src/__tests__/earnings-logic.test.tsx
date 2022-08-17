@@ -239,27 +239,27 @@ test("Year on Year calculation returns type and not number", () => {
     let netSalesDifferenceYoyExpected = [
         {
           category: 'quarter',
-          units: 'currency',
+          units: 'percentage',
           name: ' 1st Quarter ',
           value: -31.32
         },
         {
           category: 'quarter',
-          units: 'currency',
+          units: 'percentage',
           name: ' 2nd Quarter ',
           cmlName: ' First Half  ',
           value: -34.32
         },
         {
           category: 'quarter',
-          units: 'currency',
+          units: 'percentage',
           cmlName: ' 1st 3 Qtrs  ',
           name: ' 3rd Quarter ',
           value: -21.3
         },
         {
           category: 'quarter',
-          units: 'currency',
+          units: 'percentage',
           cmlName: ' FY3/17 Cml. ',
           name: ' 4th Quarter ',
           value: 125.87
@@ -269,21 +269,21 @@ test("Year on Year calculation returns type and not number", () => {
     let netSalesCumulativeYoyExpected =  [
         {
           category: 'cumulative',
-          units: 'currency',
+          units: 'percentage',
           name: ' 2nd Quarter ',
           cmlName: ' First Half  ',
           value: -33
         },
         {
           category: 'cumulative',
-          units: 'currency',
+          units: 'percentage',
           cmlName: ' 1st 3 Qtrs  ',
           name: ' 3rd Quarter ',
           value: -26.91
         },
         {
           category: 'cumulative',
-          units: 'currency',
+          units: 'percentage',
           cmlName: ' FY3/17 Cml. ',
           name: ' 4th Quarter ',
           value: -3.05
