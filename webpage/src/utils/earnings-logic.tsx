@@ -122,7 +122,7 @@ export function operatingMarginCalculation(netSalesLocal: Earnings[], opIncomeLo
 
 // export const currentQuarter = 4; // Set to 1, 2, 3 or 4.
 
-const printSections = (sectionDifference: Earnings[], sectionYoY: Earnings[], currentQuarter: number) => {
+export const printSections = (sectionDifference: Earnings[], sectionYoY: Earnings[], currentQuarter: number) => {
     
     return sectionDifference.filter((elem, index) => {
         return (elem.category === "quarter")
@@ -172,7 +172,28 @@ const printSections = (sectionDifference: Earnings[], sectionYoY: Earnings[], cu
         }
         
     
-})
+    }).reduce((prev, next, index, array) => {
+        if (sectionDifference[index].category === "quarter") {
+
+            return (array[index] === array[currentQuarter -1])
+            ? prev + `\n+${"-".repeat(38)}+\n` + next
+            : prev + `\n+${"-".repeat(38)}+\n` + next 
+            // sources for finding methods to convert numbers to strings with currency symbol and thousands separators: https://stackoverflow.com/questions/3753483/javascript-thousand-separator-string-format?noredirect=1&lq=1
+            // mdn source with more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString
+        } else if (sectionDifference[index].category === "cumulative") {
+
+            return (array[index] === array[currentQuarter -2])
+                ? prev + `\n+${"-".repeat(38)}+\n` + next + `\n+${"-".repeat(38)}+\n`
+                : prev + `\n+${"-".repeat(38)}+\n` + next 
+
+        } else {
+
+            return (array[index] === array[currentQuarter -1])
+            ? prev + `\n+${"-".repeat(32)}+\n` + next
+            : prev + `\n+${"-".repeat(32)}+\n` + next
+        }
+    })
+}
 
 const printSectionDifference = (sectionDifference: Earnings[], sectionYoY: Earnings[], currentQuarter: number) => { // to use Net Sales Difference, Operating Income Difference or Net Profit Difference
 
