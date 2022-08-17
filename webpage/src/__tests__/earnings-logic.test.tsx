@@ -129,6 +129,14 @@ const header: Header = {
        return calc
     }
 
+const printNetSales = (header: Header, netSalesDifference: Earnings[], netSalesDifferenceYoy: Earnings[], netSalesCumulative: Earnings[], netSalesCumulativeYoy: Earnings[], netSalesForecasts: Earnings[], currentQuarter: number) =>
+`+${"-".repeat(38)}+
+|${header.netSales}                 |${header.yearOnYearPercentage}|
++${"-".repeat(38)}+
+${printSections(netSalesDifference, netSalesDifferenceYoy, currentQuarter)}
++${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSections(netSalesCumulative, netSalesCumulativeYoy, currentQuarter) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSections(netSalesForecasts, [], currentQuarter) : (currentQuarter === 1) ? `\n` + printSections(netSalesForecasts, [], currentQuarter) : printSections(netSalesForecasts, [], currentQuarter) }
++${"-".repeat(32)}+`;
+
 test("Quarterly Calculation returns type and not number", () => {
    const [netSalesDifference, netSalesLastFYDifference] = collection.map((elem) => {
         return quarterlyCalculation(elem)
@@ -199,6 +207,7 @@ test("Quarterly Calculation returns type and not number", () => {
     
 })
 
+
 test("Year on Year calculation returns type and not number", () => {
 
     const [netSalesDifference, netSalesLastFYDifference] = collection.map((elem) => {
@@ -215,6 +224,8 @@ test("Year on Year calculation returns type and not number", () => {
     ]
 
     const [netSalesDifferenceYoy, netSalesCumulativeYoy] = yearOnYearCollection.map((elem, index, array) => {
+        console.log(elem);
+        
         return (index % 2 === 0)
                 ? yearOnYearCalculation(array[index], array[index+1])
                 : []
@@ -255,21 +266,21 @@ test("Year on Year calculation returns type and not number", () => {
     
     let netSalesCumulativeYoyExpected =  [
         {
-          category: 'quarter',
+          category: 'cumulative',
           units: 'currency',
           name: ' 2nd Quarter ',
           cmlName: ' First Half  ',
           value: -33
         },
         {
-          category: 'quarter',
+          category: 'cumulative',
           units: 'currency',
           cmlName: ' 1st 3 Qtrs  ',
           name: ' 3rd Quarter ',
           value: -26.91
         },
         {
-          category: 'quarter',
+          category: 'cumulative',
           units: 'currency',
           cmlName: ' FY3/17 Cml. ',
           name: ' 4th Quarter ',
@@ -281,28 +292,59 @@ test("Year on Year calculation returns type and not number", () => {
       expect(netSalesCumulativeYoy).toEqual(netSalesCumulativeYoyExpected) 
 })
 
-// test("Print Section Net Sales Quarter 4", () => {
-//     let currentQuarter = 4;
+test("Print Section Net Sales Quarters Quarter 4", () => {
+    let currentQuarter = 4;
 
-//     const [netSalesDifference, netSalesLastFYDifference] = collection.map((elem) => {
-//         return quarterlyCalculation(elem)
-//     })
-//     const [netSalesCumulative, netSalesLastFYCumulative] = collection.map((elem) => {
-//         return cumulativeCalculation(elem)
-//     })
+    const [netSalesDifference, netSalesLastFYDifference] = collection.map((elem) => {
+        return quarterlyCalculation(elem)
+    })
+    const [netSalesCumulative, netSalesLastFYCumulative] = collection.map((elem) => {
+        return cumulativeCalculation(elem)
+    })
 
-//     const yearOnYearCollection = [
-//         netSalesDifference,
-//         netSalesLastFYDifference,
-//         netSalesCumulative,
-//         netSalesLastFYCumulative
-//     ]
+    const yearOnYearCollection = [
+        netSalesDifference,
+        netSalesLastFYDifference,
+        netSalesCumulative,
+        netSalesLastFYCumulative
+    ]
 
-//     const [netSalesDifferenceYoy, netSalesCumulativeYoy] = yearOnYearCollection.map((elem, index, array) => {
-//         return (index % 2 === 0)
-//                 ? yearOnYearCalculation(array[index], array[index+1])
-//                 : []
-//     }).filter((elem) => elem.length !== 0)
+    const [netSalesDifferenceYoy, netSalesCumulativeYoy] = yearOnYearCollection.map((elem, index, array) => {
+        return (index % 2 === 0)
+                ? yearOnYearCalculation(array[index], array[index+1])
+                : []
+    }).filter((elem) => elem.length !== 0)
 
-//     const typeA = printSections() 
-// })
+    const typeA = printSections(netSalesDifference, netSalesDifferenceYoy, currentQuarter) 
+
+    console.log(typeA);
+    
+})
+
+test("print section all of Net Sales Quarter 4", () => {
+    let currentQuarter = 2;
+
+    const [netSalesDifference, netSalesLastFYDifference] = collection.map((elem) => {
+        return quarterlyCalculation(elem)
+    })
+    const [netSalesCumulative, netSalesLastFYCumulative] = collection.map((elem) => {
+        return cumulativeCalculation(elem)
+    })
+
+    const yearOnYearCollection = [
+        netSalesDifference,
+        netSalesLastFYDifference,
+        netSalesCumulative,
+        netSalesLastFYCumulative
+    ]
+
+    const [netSalesDifferenceYoy, netSalesCumulativeYoy] = yearOnYearCollection.map((elem, index, array) => {
+        return (index % 2 === 0)
+                ? yearOnYearCalculation(array[index], array[index+1])
+                : []
+    }).filter((elem) => elem.length !== 0) 
+
+    const typeB = printNetSales(header, netSalesDifference, netSalesDifferenceYoy, netSalesCumulative, netSalesCumulativeYoy, netSalesForecasts, currentQuarter)
+    
+    console.log(typeB)
+})

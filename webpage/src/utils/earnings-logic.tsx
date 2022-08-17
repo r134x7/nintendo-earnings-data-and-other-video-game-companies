@@ -1,3 +1,5 @@
+import { Elevator } from "tabler-icons-react"
+
 export type Earnings = {
     category: "quarter" | "cumulative" | "forecast",
     units: "currency" | "percentage",
@@ -64,9 +66,12 @@ export function quarterlyCalculation(quarters: Earnings[]) {
 }
 
 export function cumulativeCalculation(quarters: Earnings[]) {
-// export function cumulativeCalculation(quarters: Quarter[]) {
-    const calc = quarters.filter((elem, index, array) => {
+
+    // calc needs to be typed as Earnings[] or else it's not recognised as that type alias and then issues occur with function parameters down the line, source for solution: https://stackoverflow.com/questions/52423842/what-is-not-assignable-to-parameter-of-type-never-error-in-typescript
+    const calc: Earnings[] = quarters.filter((elem, index, array) => { 
         return elem !== array[0]
+    }).map((elem, index) => {
+        return {...elem, category: "cumulative"}
     })
 
     return calc
