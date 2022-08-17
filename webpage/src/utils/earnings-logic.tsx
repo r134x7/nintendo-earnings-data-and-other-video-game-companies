@@ -1,5 +1,6 @@
 export type Earnings = {
-    type: "currency" | "percentage",
+    category: "quarter" | "cumulative" | "forecast",
+    units: "currency" | "percentage",
     name: string,
     value: number,
 }
@@ -120,6 +121,58 @@ export function operatingMarginCalculation(netSalesLocal: Earnings[], opIncomeLo
 // }
 
 // export const currentQuarter = 4; // Set to 1, 2, 3 or 4.
+
+const printSections = (sectionDifference: Earnings[], sectionYoY: Earnings[], currentQuarter: number) => {
+    
+    return sectionDifference.filter((elem, index) => {
+        return (elem.category === "quarter")
+                ? index < currentQuarter
+                : (elem.category === "cumulative")
+                ? currentQuarter >= 2 && index < currentQuarter -1
+                : elem
+    }).map((elem, index) => {
+
+        if (elem.category === "quarter") {
+             let printSectionDifferenceYoY: string = (sectionYoY[index].value > 0) 
+                                ? `+${sectionYoY[index].value}% `
+                                : `${sectionYoY[index].value}% `;
+        let printSectionYoYFixed: string = (printSectionDifferenceYoY.length >= 9)
+                                ? printSectionDifferenceYoY
+                                : " ".repeat(9 - printSectionDifferenceYoY.length) + printSectionDifferenceYoY
+        //  let x = `${elem.quarter.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' })}M ` // cannot use currency settings as it creates border misalignment due to ¥ becoming wider. 
+        let printSection: string = `¥${elem.value.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
+        let printSectionFixed: string = (printSection.length === 14)
+                                  ? printSection
+                                  : " ".repeat(14 - printSection.length) + printSection;
+        // let printQuarterRow: string = `${rowQuartersApplied[index].quarter}`;  
+        return "|" + elem.name + "|" + printSectionFixed + "|" + printSectionYoYFixed + "|" // old note, used "\n" at end here: must affix a new line \n, was also affixing tabs \t to align but realised I could adjust the template literal
+        } else if (elem.category === "cumulative") {
+
+    
+            let printSectionCmlYoY: string = (sectionYoY[index].value > 0) 
+                                    ? `+${sectionYoY[index].value}% `
+                                    : `${sectionYoY[index].value}% `;
+            let printSectionCmlYoYFixed: string = (printSectionCmlYoY.length >= 9)
+                                    ? printSectionCmlYoY
+                                    : " ".repeat(9 - printSectionCmlYoY.length) + printSectionCmlYoY
+            let printSectionCml: string = `¥${elem.value.toLocaleString("en")}M `; 
+            let printSectionCmlFixed: string = (printSectionCml.length === 14)
+                                      ? printSectionCml
+                                      : " ".repeat(14 - printSectionCml.length) + printSectionCml;
+            // let printQuarterRow: string = `${rowCumulativesApplied[index].cumulative}`;  
+            return "|" + elem.name + "|" + printSectionCmlFixed + "|" + printSectionCmlYoYFixed + "|"
+        } else {
+            
+            let printForecast: string = `¥${elem.value.toLocaleString("en")}M `;
+            let printForecastFixed: string = (printForecast.length === 14)
+                                      ? printForecast
+                                      : " ".repeat(14 - printForecast.length) + printForecast;
+
+            return "|" + elem.name + "|" + printForecastFixed + "|"  
+        }
+        
+    
+})
 
 const printSectionDifference = (sectionDifference: Earnings[], sectionYoY: Earnings[], currentQuarter: number) => { // to use Net Sales Difference, Operating Income Difference or Net Profit Difference
 
