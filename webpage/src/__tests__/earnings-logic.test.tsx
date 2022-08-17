@@ -1,4 +1,4 @@
-import { printSections, Earnings, Header, cumulativeCalculation, yearOnYearCalculation } from "../utils/earnings-logic";
+import { printSections, Earnings, Header, cumulativeCalculation } from "../utils/earnings-logic";
 
 const netSales: Earnings[] = [
     {
@@ -111,6 +111,24 @@ const header: Header = {
         netSalesLastFy,
     ]
 
+    function yearOnYearCalculation(thisFY: Earnings[], lastFY: Earnings[]) {
+
+        const calc = thisFY.map((elem, index) => {
+
+            return (lastFY[index].value < 0)
+                    ? {...elem, value: Number(
+                        ((((elem.value / lastFY[index].value) -1)* -1) * 100).toFixed(2)
+                        )
+                      }
+                    : {...elem, value: Number(
+                        (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
+                        )
+                      }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
+        })
+
+       return calc
+    }
+
 test("Quarterly Calculation returns type and not number", () => {
    const [netSalesDifference, netSalesLastFYDifference] = collection.map((elem) => {
         return quarterlyCalculation(elem)
@@ -181,6 +199,88 @@ test("Quarterly Calculation returns type and not number", () => {
     
 })
 
+test("Year on Year calculation returns type and not number", () => {
+
+    const [netSalesDifference, netSalesLastFYDifference] = collection.map((elem) => {
+        return quarterlyCalculation(elem)
+    })
+    const [netSalesCumulative, netSalesLastFYCumulative] = collection.map((elem) => {
+        return cumulativeCalculation(elem)
+    })
+    const yearOnYearCollection = [
+        netSalesDifference,
+        netSalesLastFYDifference,
+        netSalesCumulative,
+        netSalesLastFYCumulative
+    ]
+
+    const [netSalesDifferenceYoy, netSalesCumulativeYoy] = yearOnYearCollection.map((elem, index, array) => {
+        return (index % 2 === 0)
+                ? yearOnYearCalculation(array[index], array[index+1])
+                : []
+    }).filter((elem) => elem.length !== 0)
+
+    console.log(netSalesDifferenceYoy);
+    console.log(netSalesCumulativeYoy);
+    
+    let netSalesDifferenceYoyExpected = [
+        {
+          category: 'quarter',
+          units: 'currency',
+          name: ' 1st Quarter ',
+          value: -31.32
+        },
+        {
+          category: 'quarter',
+          units: 'currency',
+          name: ' 2nd Quarter ',
+          cmlName: ' First Half  ',
+          value: -34.32
+        },
+        {
+          category: 'quarter',
+          units: 'currency',
+          cmlName: ' 1st 3 Qtrs  ',
+          name: ' 3rd Quarter ',
+          value: -21.3
+        },
+        {
+          category: 'quarter',
+          units: 'currency',
+          cmlName: ' FY3/17 Cml. ',
+          name: ' 4th Quarter ',
+          value: 125.87
+        }
+      ]
+    
+    let netSalesCumulativeYoyExpected =  [
+        {
+          category: 'quarter',
+          units: 'currency',
+          name: ' 2nd Quarter ',
+          cmlName: ' First Half  ',
+          value: -33
+        },
+        {
+          category: 'quarter',
+          units: 'currency',
+          cmlName: ' 1st 3 Qtrs  ',
+          name: ' 3rd Quarter ',
+          value: -26.91
+        },
+        {
+          category: 'quarter',
+          units: 'currency',
+          cmlName: ' FY3/17 Cml. ',
+          name: ' 4th Quarter ',
+          value: -3.05
+        }
+      ]
+      
+      expect(netSalesDifferenceYoy).toEqual(netSalesDifferenceYoyExpected)
+      expect(netSalesCumulativeYoy).toEqual(netSalesCumulativeYoyExpected) 
+})
+
 // test("Print Section Net Sales Quarter 4", () => {
 //     let currentQuarter = 4;
 
@@ -198,11 +298,11 @@ test("Quarterly Calculation returns type and not number", () => {
 //         netSalesLastFYCumulative
 //     ]
 
-//     // const [netSalesDifferenceYoy, netSalesCumulativeYoy] = yearOnYearCollection.map((elem, index, array) => {
-//     //     return (index % 2 === 0)
-//     //             ? yearOnYearCalculation(array[index], array[index+1])
-//     //             : []
-//     // }).filter((elem) => elem.length !== 0)
+//     const [netSalesDifferenceYoy, netSalesCumulativeYoy] = yearOnYearCollection.map((elem, index, array) => {
+//         return (index % 2 === 0)
+//                 ? yearOnYearCalculation(array[index], array[index+1])
+//                 : []
+//     }).filter((elem) => elem.length !== 0)
 
-//     // const typeA = printSections() 
+//     const typeA = printSections() 
 // })
