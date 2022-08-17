@@ -310,69 +310,69 @@ const printSectionForecast = (sectionForecast: Earnings[],  currentQuarter: numb
   }
 
 // const printOpMarginQuarters = (sectionMarginQuarters: Quarter[], currentQuarter: number) => {
-const printOpMarginQuarters = (sectionMarginQuarters: Earnings[], currentQuarter: number) => {
+// const printOpMarginQuarters = (sectionMarginQuarters: Earnings[], currentQuarter: number) => {
 
-    return sectionMarginQuarters.filter((elem, index) => index < currentQuarter).map((elem, index) => {
+//     return sectionMarginQuarters.filter((elem, index) => index < currentQuarter).map((elem, index) => {
   
-          let printSectionMarginQuarters: string = `${elem.quarter}% `;
-          let printSectionMarginQuartersFixed: string = (printSectionMarginQuarters.length >= 9)
-                                  ? printSectionMarginQuarters
-                                  : " ".repeat(9 - printSectionMarginQuarters.length) + printSectionMarginQuarters
-          let printQuarterRow = `${rowQuartersApplied[index].quarter}`;  
-          return "|" + printQuarterRow + "|" + printSectionMarginQuartersFixed + "|"
-      }).reduce((prev, next, index, array) => {
-          return (array[index] === array[currentQuarter -1])
-                    ? prev + `\n+${"-".repeat(23)}+\n` + next
-                    : prev + `\n+${"-".repeat(23)}+\n` + next 
-      })
+//           let printSectionMarginQuarters: string = `${elem.quarter}% `;
+//           let printSectionMarginQuartersFixed: string = (printSectionMarginQuarters.length >= 9)
+//                                   ? printSectionMarginQuarters
+//                                   : " ".repeat(9 - printSectionMarginQuarters.length) + printSectionMarginQuarters
+//           let printQuarterRow = `${rowQuartersApplied[index].quarter}`;  
+//           return "|" + printQuarterRow + "|" + printSectionMarginQuartersFixed + "|"
+//       }).reduce((prev, next, index, array) => {
+//           return (array[index] === array[currentQuarter -1])
+//                     ? prev + `\n+${"-".repeat(23)}+\n` + next
+//                     : prev + `\n+${"-".repeat(23)}+\n` + next 
+//       })
   
-  }
+//   }
 
-const printOpMarginCumulative = (sectionMarginCumalative: Quarter[], rowCumulativesApplied: RowCumulatives[], currentQuarter: number) => {
+// const printOpMarginCumulative = (sectionMarginCumalative: Quarter[], rowCumulativesApplied: RowCumulatives[], currentQuarter: number) => {
         
-        return sectionMarginCumalative.filter((elem, index) => (currentQuarter >= 2 && index < currentQuarter -1)).map((elem, index) => {
+//         return sectionMarginCumalative.filter((elem, index) => (currentQuarter >= 2 && index < currentQuarter -1)).map((elem, index) => {
   
-          let printSectionMarginCumulative: string = `${elem.quarter}% `;
-          let printSectionMarginCumulativeFixed: string = (printSectionMarginCumulative.length === 9)
-                                  ? printSectionMarginCumulative
-                                  : " ".repeat(9 - printSectionMarginCumulative.length) + printSectionMarginCumulative
-          let printQuarterRow = `${rowCumulativesApplied[index].cumulative}`;  
-          return "|" + printQuarterRow + "|" + printSectionMarginCumulativeFixed + "|"
-      }).reduce((prev, next, index, array) => {
-          return (array[index] === array[currentQuarter -2])
-                    ? prev + `\n+${"-".repeat(23)}+\n` + next + `\n+${"-".repeat(27)}+\n`
-                    : prev + `\n+${"-".repeat(23)}+\n` + next 
-      })
-  }
+//           let printSectionMarginCumulative: string = `${elem.quarter}% `;
+//           let printSectionMarginCumulativeFixed: string = (printSectionMarginCumulative.length === 9)
+//                                   ? printSectionMarginCumulative
+//                                   : " ".repeat(9 - printSectionMarginCumulative.length) + printSectionMarginCumulative
+//           let printQuarterRow = `${rowCumulativesApplied[index].cumulative}`;  
+//           return "|" + printQuarterRow + "|" + printSectionMarginCumulativeFixed + "|"
+//       }).reduce((prev, next, index, array) => {
+//           return (array[index] === array[currentQuarter -2])
+//                     ? prev + `\n+${"-".repeat(23)}+\n` + next + `\n+${"-".repeat(27)}+\n`
+//                     : prev + `\n+${"-".repeat(23)}+\n` + next 
+//       })
+//   }
 
-const printOpMarginForecasts = (sectionMarginForecasts: Forecasts[], rowForecastsApplied: RowForecasts[], currentQuarter: number) => {
+// const printOpMarginForecasts = (sectionMarginForecasts: Forecasts[], rowForecastsApplied: RowForecasts[], currentQuarter: number) => {
 
-    return sectionMarginForecasts.filter((elem, index, array) => (currentQuarter < 4) ? index !== array.length-1 : elem).map((elem, index) => {
+//     return sectionMarginForecasts.filter((elem, index, array) => (currentQuarter < 4) ? index !== array.length-1 : elem).map((elem, index) => {
    
-      let printForecast: string = `${elem.forecast}% `;
-      let printForecastFixed: string = (printForecast.length === 9)
-                                ? printForecast
-                                : " ".repeat(9 - printForecast.length) + printForecast;
-      let printQuarterRow = rowForecastsApplied.filter((elem, index, array) => 
-              (currentQuarter < 4) 
-                  ? index !== array.length-1 
-                  : (currentQuarter >= 4 && sectionMarginForecasts.length === 2) 
-                  ? index !== 1 && index !== 2 && index !== 3 
-                  : (currentQuarter >= 4 && sectionMarginForecasts.length === 3) 
-                  ? index !== 2 && index !== 3
-                  : (currentQuarter >= 4 && sectionMarginForecasts.length === 4) 
-                  ? index !== 3
-                  : elem)
+//       let printForecast: string = `${elem.forecast}% `;
+//       let printForecastFixed: string = (printForecast.length === 9)
+//                                 ? printForecast
+//                                 : " ".repeat(9 - printForecast.length) + printForecast;
+//       let printQuarterRow = rowForecastsApplied.filter((elem, index, array) => 
+//               (currentQuarter < 4) 
+//                   ? index !== array.length-1 
+//                   : (currentQuarter >= 4 && sectionMarginForecasts.length === 2) 
+//                   ? index !== 1 && index !== 2 && index !== 3 
+//                   : (currentQuarter >= 4 && sectionMarginForecasts.length === 3) 
+//                   ? index !== 2 && index !== 3
+//                   : (currentQuarter >= 4 && sectionMarginForecasts.length === 4) 
+//                   ? index !== 3
+//                   : elem)
       
-      let printQuarterRowFixed: string = `${printQuarterRow[index].forecast}`;
+//       let printQuarterRowFixed: string = `${printQuarterRow[index].forecast}`;
   
-      return "|" + printQuarterRowFixed + "|" + printForecastFixed + "|"  
-      }).reduce((prev, next, index, array) => {
-      return (array[index] === array[currentQuarter -1])
-                ? prev + `\n+${"-".repeat(27)}+\n` + next
-                : prev + `\n+${"-".repeat(27)}+\n` + next 
-      })
-}
+//       return "|" + printQuarterRowFixed + "|" + printForecastFixed + "|"  
+//       }).reduce((prev, next, index, array) => {
+//       return (array[index] === array[currentQuarter -1])
+//                 ? prev + `\n+${"-".repeat(27)}+\n` + next
+//                 : prev + `\n+${"-".repeat(27)}+\n` + next 
+//       })
+// }
 
 export const printHead = (header: Header) => 
 `+${"-".repeat(34)}+
@@ -380,37 +380,45 @@ export const printHead = (header: Header) =>
 +${"-".repeat(34)}+
 |${header.title}|
 +${"-".repeat(34)}+`;
-  
-export const printNetSales = (header: Header, netSalesDifference: Quarter[], netSalesDifferenceYoy: Quarter[], netSalesCumulative: Quarter[], netSalesCumulativeYoy: Quarter[], netSalesForecasts: Forecasts[], rowCumulativesApplied: RowCumulatives[], rowForecastsApplied: RowForecasts[], currentQuarter: number) =>
+
+export const printNetSales = (header: Header, netSalesDifference: Earnings[], netSalesDifferenceYoy: Earnings[], netSalesCumulative: Earnings[], netSalesCumulativeYoy: Earnings[], netSalesForecasts: Earnings[], currentQuarter: number) =>
 `+${"-".repeat(38)}+
 |${header.netSales}                 |${header.yearOnYearPercentage}|
 +${"-".repeat(38)}+
-${printSectionDifference(netSalesDifference, netSalesDifferenceYoy, currentQuarter)}
-+${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy, rowCumulativesApplied, currentQuarter) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts, rowForecastsApplied, currentQuarter) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts, rowForecastsApplied, currentQuarter) : printSectionForecast(netSalesForecasts, rowForecastsApplied, currentQuarter) }
+${printSections(netSalesDifference, netSalesDifferenceYoy, currentQuarter)}
++${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSections(netSalesCumulative, netSalesCumulativeYoy, currentQuarter) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSections(netSalesForecasts, [], currentQuarter) : (currentQuarter === 1) ? `\n` + printSections(netSalesForecasts, [], currentQuarter) : printSections(netSalesForecasts, [], currentQuarter) }
 +${"-".repeat(32)}+`;
   
-export const printOperatingIncome = (header: Header, operatingIncomeDifference: Quarter[], operatingIncomeDifferenceYoy: Quarter[], operatingIncomeCumulative: Quarter[], operatingIncomeCumulativeYoy: Quarter[], operatingIncomeForecasts: Forecasts[], rowCumulativesApplied: RowCumulatives[], rowForecastsApplied: RowForecasts[], currentQuarter: number) =>
+// export const printNetSales = (header: Header, netSalesDifference: Quarter[], netSalesDifferenceYoy: Quarter[], netSalesCumulative: Quarter[], netSalesCumulativeYoy: Quarter[], netSalesForecasts: Forecasts[], rowCumulativesApplied: RowCumulatives[], rowForecastsApplied: RowForecasts[], currentQuarter: number) =>
+// `+${"-".repeat(38)}+
+// |${header.netSales}                 |${header.yearOnYearPercentage}|
+// +${"-".repeat(38)}+
+// ${printSectionDifference(netSalesDifference, netSalesDifferenceYoy, currentQuarter)}
+// +${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netSalesCumulative, netSalesCumulativeYoy, rowCumulativesApplied, currentQuarter) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netSalesForecasts, rowForecastsApplied, currentQuarter) : (currentQuarter === 1) ? `\n` + printSectionForecast(netSalesForecasts, rowForecastsApplied, currentQuarter) : printSectionForecast(netSalesForecasts, rowForecastsApplied, currentQuarter) }
+// +${"-".repeat(32)}+`;
+  
+export const printOperatingIncome = (header: Header, operatingIncomeDifference: Earnings[], operatingIncomeDifferenceYoy: Earnings[], operatingIncomeCumulative: Earnings[], operatingIncomeCumulativeYoy: Earnings[], operatingIncomeForecasts: Earnings[], currentQuarter: number) =>
 `+${"-".repeat(38)}+
 |${header.operatingIncome}          |${header.yearOnYearPercentage}|
 +${"-".repeat(38)}+
-${printSectionDifference(operatingIncomeDifference, operatingIncomeDifferenceYoy, currentQuarter)}
-+${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(operatingIncomeCumulative, operatingIncomeCumulativeYoy, rowCumulativesApplied, currentQuarter) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(operatingIncomeForecasts, rowForecastsApplied, currentQuarter) : (currentQuarter === 1) ? `\n` + printSectionForecast(operatingIncomeForecasts, rowForecastsApplied, currentQuarter) : printSectionForecast(operatingIncomeForecasts, rowForecastsApplied, currentQuarter) }
+${printSections(operatingIncomeDifference, operatingIncomeDifferenceYoy, currentQuarter)}
++${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSections(operatingIncomeCumulative, operatingIncomeCumulativeYoy, currentQuarter) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSections(operatingIncomeForecasts, [], currentQuarter) : (currentQuarter === 1) ? `\n` + printSections(operatingIncomeForecasts, [], currentQuarter) : printSections(operatingIncomeForecasts, [], currentQuarter) }
 +${"-".repeat(32)}+`;
   
-export const printOpMargin = (header: Header, operatingMarginQuarters: Quarter[], operatingMarginCumulative: Quarter[], opMarginForecasts: Forecasts[], rowCumulativesApplied: RowCumulatives[], rowForecastsApplied: RowForecasts[], currentQuarter: number) => 
+export const printOpMargin = (header: Header, operatingMarginQuarters: Earnings[], operatingMarginCumulative: Earnings[], opMarginForecasts: Earnings[], currentQuarter: number) => 
 `+${"-".repeat(23)}+
 |${header.operatingMargin}     |
 +${"-".repeat(23)}+
-${printOpMarginQuarters(operatingMarginQuarters, currentQuarter)}
-+${(currentQuarter > 1) ? "=".repeat(23)+"+\n" + printOpMarginCumulative(operatingMarginCumulative, rowCumulativesApplied, currentQuarter) : "=".repeat(23)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(27)}+\n` + printOpMarginForecasts(opMarginForecasts, rowForecastsApplied, currentQuarter) : (currentQuarter === 1) ? `\n+${"-".repeat(27)}+\n` + printOpMarginForecasts(opMarginForecasts, rowForecastsApplied, currentQuarter) : printOpMarginForecasts(opMarginForecasts, rowForecastsApplied, currentQuarter) }
+${printSections(operatingMarginQuarters, [], currentQuarter)}
++${(currentQuarter > 1) ? "=".repeat(23)+"+\n" + printSections(operatingMarginCumulative, [], currentQuarter) : "=".repeat(23)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(27)}+\n` + printSections(opMarginForecasts, [], currentQuarter) : (currentQuarter === 1) ? `\n+${"-".repeat(27)}+\n` + printSections(opMarginForecasts, [], currentQuarter) : printSections(opMarginForecasts, [], currentQuarter) }
 +${"-".repeat(27)}+`;
 
-export const printNetIncome = (header: Header, netIncomeDifference: Quarter[], netIncomeDifferenceYoy: Quarter[], netIncomeCumulative: Quarter[], netIncomeCumulativeYoy: Quarter[], netIncomeForecasts: Forecasts[], rowCumulativesApplied: RowCumulatives[], rowForecastsApplied: RowForecasts[], currentQuarter: number) => 
+export const printNetIncome = (header: Header, netIncomeDifference: Earnings[], netIncomeDifferenceYoy: Earnings[], netIncomeCumulative: Earnings[], netIncomeCumulativeYoy: Earnings[], netIncomeForecasts: Earnings[], currentQuarter: number) => 
 `+${"-".repeat(38)}+
 |${header.netIncome}                |${header.yearOnYearPercentage}|
 +${"-".repeat(38)}+
-${printSectionDifference(netIncomeDifference, netIncomeDifferenceYoy, currentQuarter)}
-+${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSectionCumulative(netIncomeCumulative, netIncomeCumulativeYoy, rowCumulativesApplied, currentQuarter) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSectionForecast(netIncomeForecasts, rowForecastsApplied, currentQuarter) : (currentQuarter === 1) ? `\n` + printSectionForecast(netIncomeForecasts, rowForecastsApplied, currentQuarter) : printSectionForecast(netIncomeForecasts, rowForecastsApplied, currentQuarter) }
+${printSections(netIncomeDifference, netIncomeDifferenceYoy, currentQuarter)}
++${(currentQuarter > 1) ? "=".repeat(38)+"+\n" + printSections(netIncomeCumulative, netIncomeCumulativeYoy, currentQuarter) : "=".repeat(38)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(38)}+\n` + printSections(netIncomeForecasts, [], currentQuarter) : (currentQuarter === 1) ? `\n` + printSections(netIncomeForecasts, [], currentQuarter) : printSections(netIncomeForecasts, [], currentQuarter) }
 +${"-".repeat(32)}+`;
 
 // export const printAll = ( // this didn't work...
