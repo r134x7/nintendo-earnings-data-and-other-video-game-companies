@@ -1,6 +1,6 @@
 export type Earnings = {
     type: "currency" | "percentage",
-    quarter: string,
+    name: string,
     value: number,
 }
 
@@ -50,8 +50,8 @@ export type Header = {
 // ]
 
 // export function quarterlyCalculation(quarters: Quarter[]) {
-export function quarterlyCalculation(quarters: EarningsQuarter[]) {
-    
+export function quarterlyCalculation(quarters: Earnings[]) {
+
     const calc = quarters.map((elem, index, array) => {
          return (index === 0) ? elem : { value: elem.value - array[index-1].value} // Finally figured out how to do it correctly with its own parameters
         //  return (index === 0) ? elem : { quarter: elem.quarter - array[index-1].quarter} // Finally figured out how to do it correctly with its own parameters
@@ -60,11 +60,12 @@ export function quarterlyCalculation(quarters: EarningsQuarter[]) {
     return calc
 }
 
-export function cumulativeCalculation(quarters: EarningsQuarter[]) {
+export function cumulativeCalculation(quarters: Earnings[]) {
 // export function cumulativeCalculation(quarters: Quarter[]) {
-
     const calc = quarters.filter((elem, index, array) => {
         return elem !== array[0]
+    }).map((elem, index, array) => {
+        return elem.name
     })
 
     return calc
@@ -72,17 +73,17 @@ export function cumulativeCalculation(quarters: EarningsQuarter[]) {
 }
 
 // export function yearOnYearCalculation(thisFY: Quarter[], lastFY: Quarter[]) {
-export function yearOnYearCalculation(thisFY: Quarter[], lastFY: EarningsQuarter[]) {
+export function yearOnYearCalculation(thisFY: Earnings[], lastFY: Earnings[]) {
 
     const calc = thisFY.map((elem, index) => {
 
-        return (lastFY[index].quarter < 0)
-                ? {quarter: Number(
-                    ((((elem.quarter / lastFY[index].quarter) -1)* -1) * 100).toFixed(2)
+        return (lastFY[index].value < 0)
+                ? {value: Number(
+                    ((((elem.value / lastFY[index].value) -1)* -1) * 100).toFixed(2)
                     )
                   }
-                : {quarter: Number(
-                    (((elem.quarter / lastFY[index].quarter) -1) * 100).toFixed(2)
+                : {value: Number(
+                    (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
                     )
                   }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
     })
@@ -90,52 +91,53 @@ export function yearOnYearCalculation(thisFY: Quarter[], lastFY: EarningsQuarter
    return calc
 }
 
-export function operatingMarginCalculation(netSalesLocal: Quarter[], opIncomeLocal: Quarter[]) {
+// export function operatingMarginCalculation(netSalesLocal: Quarter[], opIncomeLocal: Quarter[]) {
+export function operatingMarginCalculation(netSalesLocal: Earnings[], opIncomeLocal: Earnings[]) {
 
     const calc = opIncomeLocal.map((elem, index) => {
-        return (netSalesLocal[index].quarter !== 0) 
-                  ? {quarter: Number(
-                        (((elem.quarter / netSalesLocal[index].quarter)) * 100).toFixed(2)
+        return (netSalesLocal[index].value !== 0) 
+                  ? {value: Number(
+                        (((elem.value / netSalesLocal[index].value)) * 100).toFixed(2)
                      )} // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number 
-                  : {quarter: 0} // to prevent infinity calculations
+                  : {value: 0} // to prevent infinity calculations
     })
    
    return calc
 }
 
-export function operatingMarginForecastCalculation(netSalesLocal: Forecasts[], opIncomeLocal: Forecasts[]) {
+// export function operatingMarginForecastCalculation(netSalesLocal: Forecasts[], opIncomeLocal: Forecasts[]) {
 
-    const calc = opIncomeLocal.map((elem, index) => {
-        return (netSalesLocal[index].forecast !== 0) 
-                  ? {forecast: Number(
-                        (((elem.forecast / netSalesLocal[index].forecast)) * 100).toFixed(2)
-                     )} // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number 
-                  : {forecast: 0} // to prevent infinity calculations
-    })
+//     const calc = opIncomeLocal.map((elem, index) => {
+//         return (netSalesLocal[index].forecast !== 0) 
+//                   ? {forecast: Number(
+//                         (((elem.forecast / netSalesLocal[index].forecast)) * 100).toFixed(2)
+//                      )} // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number 
+//                   : {forecast: 0} // to prevent infinity calculations
+//     })
 
-    return calc
+//     return calc
 
-}
+// }
 
 // export const currentQuarter = 4; // Set to 1, 2, 3 or 4.
 
-const printSectionDifference = (sectionDifference: Quarter[], sectionYoY: Quarter[], currentQuarter: number) => { // to use Net Sales Difference, Operating Income Difference or Net Profit Difference
+const printSectionDifference = (sectionDifference: Earnings[], sectionYoY: Earnings[], currentQuarter: number) => { // to use Net Sales Difference, Operating Income Difference or Net Profit Difference
 
     return sectionDifference.filter((elem, index) => index < currentQuarter).map((elem, index) => {
 
-        let printSectionDifferenceYoY: string = (sectionYoY[index].quarter > 0) 
-                                ? `+${sectionYoY[index].quarter}% `
-                                : `${sectionYoY[index].quarter}% `;
+        let printSectionDifferenceYoY: string = (sectionYoY[index].value > 0) 
+                                ? `+${sectionYoY[index].value}% `
+                                : `${sectionYoY[index].value}% `;
         let printSectionYoYFixed: string = (printSectionDifferenceYoY.length >= 9)
                                 ? printSectionDifferenceYoY
                                 : " ".repeat(9 - printSectionDifferenceYoY.length) + printSectionDifferenceYoY
         //  let x = `${elem.quarter.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' })}M ` // cannot use currency settings as it creates border misalignment due to ¥ becoming wider. 
-        let printSection: string = `¥${elem.quarter.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
+        let printSection: string = `¥${elem.value.toLocaleString("en")}M `; // this setting allows use of thousands separator ","
         let printSectionFixed: string = (printSection.length === 14)
                                   ? printSection
                                   : " ".repeat(14 - printSection.length) + printSection;
-        let printQuarterRow: string = `${rowQuartersApplied[index].quarter}`;  
-        return "|" + printQuarterRow + "|" + printSectionFixed + "|" + printSectionYoYFixed + "|" // old note, used "\n" at end here: must affix a new line \n, was also affixing tabs \t to align but realised I could adjust the template literal 
+        // let printQuarterRow: string = `${rowQuartersApplied[index].quarter}`;  
+        return "|" + elem.name + "|" + printSectionFixed + "|" + printSectionYoYFixed + "|" // old note, used "\n" at end here: must affix a new line \n, was also affixing tabs \t to align but realised I could adjust the template literal 
     }).reduce((prev, next, index, array) => {
         return (array[index] === array[currentQuarter -1])
                   ? prev + `\n+${"-".repeat(38)}+\n` + next
@@ -145,23 +147,23 @@ const printSectionDifference = (sectionDifference: Quarter[], sectionYoY: Quarte
 
 };
 
-const printSectionCumulative = (sectionCumulative: Quarter[], sectionYoY: Quarter[], rowCumulativesApplied: RowCumulatives[], currentQuarter: number) => { // to use Cumulative(Net Sales or Operating Income or Net Profit)
+const printSectionCumulative = (sectionCumulative: Earnings[], sectionYoY: Earnings[], currentQuarter: number) => { // to use Cumulative(Net Sales or Operating Income or Net Profit)
     
     // filtered this way, the first half correctly appears at quarter 2.
     return  sectionCumulative.filter((elem, index) => (currentQuarter >= 2 && index < currentQuarter -1)).map((elem, index) => {
     
-    let printSectionCmlYoY: string = (sectionYoY[index].quarter > 0) 
-                            ? `+${sectionYoY[index].quarter}% `
-                            : `${sectionYoY[index].quarter}% `;
+    let printSectionCmlYoY: string = (sectionYoY[index].value > 0) 
+                            ? `+${sectionYoY[index].value}% `
+                            : `${sectionYoY[index].value}% `;
     let printSectionCmlYoYFixed: string = (printSectionCmlYoY.length >= 9)
                             ? printSectionCmlYoY
                             : " ".repeat(9 - printSectionCmlYoY.length) + printSectionCmlYoY
-    let printSectionCml: string = `¥${elem.quarter.toLocaleString("en")}M `; 
+    let printSectionCml: string = `¥${elem.value.toLocaleString("en")}M `; 
     let printSectionCmlFixed: string = (printSectionCml.length === 14)
                               ? printSectionCml
                               : " ".repeat(14 - printSectionCml.length) + printSectionCml;
-    let printQuarterRow: string = `${rowCumulativesApplied[index].cumulative}`;  
-    return "|" + printQuarterRow + "|" + printSectionCmlFixed + "|" + printSectionCmlYoYFixed + "|"
+    // let printQuarterRow: string = `${rowCumulativesApplied[index].cumulative}`;  
+    return "|" + elem.name + "|" + printSectionCmlFixed + "|" + printSectionCmlYoYFixed + "|"
     }).reduce((prev, next, index, array) => {
     return (array[index] === array[currentQuarter -2])
             ? prev + `\n+${"-".repeat(38)}+\n` + next + `\n+${"-".repeat(38)}+\n`
@@ -169,28 +171,28 @@ const printSectionCumulative = (sectionCumulative: Quarter[], sectionYoY: Quarte
   })
 };
 
-const printSectionForecast = (sectionForecast: Forecasts[], rowForecastsApplied: RowForecasts[], currentQuarter: number) => {
+const printSectionForecast = (sectionForecast: Earnings[],  currentQuarter: number) => {
   
     return sectionForecast.filter((elem, index, array) => (currentQuarter < 4) ? index !== array.length-1 : elem).map((elem, index) => {
    
-      let printForecast: string = `¥${elem.forecast.toLocaleString("en")}M `;
+      let printForecast: string = `¥${elem.value.toLocaleString("en")}M `;
       let printForecastFixed: string = (printForecast.length === 14)
                                 ? printForecast
                                 : " ".repeat(14 - printForecast.length) + printForecast;
-      let printQuarterRow = rowForecastsApplied.filter((elem, index, array) => 
-              (currentQuarter < 4) 
-                  ? index !== array.length-1 
-                  : (currentQuarter >= 4 && sectionForecast.length === 2) 
-                  ? index !== 1 && index !== 2 && index !== 3 
-                  : (currentQuarter >= 4 && sectionForecast.length === 3) 
-                  ? index !== 2 && index !== 3
-                  : (currentQuarter >= 4 && sectionForecast.length === 4) 
-                  ? index !== 3
-                  : elem)
+    //   let printQuarterRow = rowForecastsApplied.filter((elem, index, array) => 
+    //           (currentQuarter < 4) 
+    //               ? index !== array.length-1 
+    //               : (currentQuarter >= 4 && sectionForecast.length === 2) 
+    //               ? index !== 1 && index !== 2 && index !== 3 
+    //               : (currentQuarter >= 4 && sectionForecast.length === 3) 
+    //               ? index !== 2 && index !== 3
+    //               : (currentQuarter >= 4 && sectionForecast.length === 4) 
+    //               ? index !== 3
+    //               : elem)
       
-      let printQuarterRowFixed: string = `${printQuarterRow[index].forecast}`;
+    //   let printQuarterRowFixed: string = `${printQuarterRow[index].forecast}`;
   
-      return "|" + printQuarterRowFixed + "|" + printForecastFixed + "|"  
+      return "|" + elem.name + "|" + printForecastFixed + "|"  
       }).reduce((prev, next, index, array) => {
       return (array[index] === array[currentQuarter -1])
                 ? prev + `\n+${"-".repeat(32)}+\n` + next
@@ -199,7 +201,7 @@ const printSectionForecast = (sectionForecast: Forecasts[], rowForecastsApplied:
   }
 
 // const printOpMarginQuarters = (sectionMarginQuarters: Quarter[], currentQuarter: number) => {
-const printOpMarginQuarters = (sectionMarginQuarters: EarningsQuarter[], currentQuarter: number) => {
+const printOpMarginQuarters = (sectionMarginQuarters: Earnings[], currentQuarter: number) => {
 
     return sectionMarginQuarters.filter((elem, index) => index < currentQuarter).map((elem, index) => {
   
