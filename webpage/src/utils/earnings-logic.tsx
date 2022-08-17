@@ -1,5 +1,3 @@
-import { Elevator } from "tabler-icons-react"
-
 export type Earnings = {
     category: "quarter" | "cumulative" | "forecast",
     units: "currency" | "percentage",
@@ -53,14 +51,14 @@ export type Header = {
 //     {quarter: " 4th Quarter "},
 // ]
 
-// export function quarterlyCalculation(quarters: Quarter[]) {
 export function quarterlyCalculation(quarters: Earnings[]) {
-
-    const calc = quarters.map((elem, index, array) => {
-        //  return (index === 0) ? elem : { quarter: elem.quarter - array[index-1].quarter} // Finally figured out how to do it correctly with its own parameters
-        //  return (index === 0) ? elem : { value: elem.value - array[index-1].value} // Finally figured out how to do it correctly with its own parameters
-         return (index === 0) ? elem : elem.value = elem.value - array[index-1].value // Finally figured out how to do it correctly with its own parameters
-      })
+        
+    // calc needs to be defined as earnings to retain its type when making any changes
+    const calc: Earnings[] = quarters.map((elem, index, array) => {
+        return (index === 0) 
+                ? elem
+                : {...elem, value: elem.value - array[index-1].value}
+    })
     
     return calc
 }
@@ -75,29 +73,27 @@ export function cumulativeCalculation(quarters: Earnings[]) {
     })
 
     return calc
-    
 }
 
-// export function yearOnYearCalculation(thisFY: Quarter[], lastFY: Quarter[]) {
 export function yearOnYearCalculation(thisFY: Earnings[], lastFY: Earnings[]) {
 
-    const calc = thisFY.map((elem, index) => {
+        // calc needs to be defined as earnings to retain its type when making any changes
+        const calc: Earnings[] = thisFY.map((elem, index) => {
 
-        return (lastFY[index].value < 0)
-                ? {value: Number(
-                    ((((elem.value / lastFY[index].value) -1)* -1) * 100).toFixed(2)
-                    )
-                  }
-                : {value: Number(
-                    (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
-                    )
-                  }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
-    })
+            return (lastFY[index].value < 0)
+                    ? {...elem, units: "percentage", value: Number(
+                        ((((elem.value / lastFY[index].value) -1)* -1) * 100).toFixed(2)
+                        )
+                      }
+                    : {...elem, units: "percentage", value: Number(
+                        (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
+                        )
+                      }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
+        })
 
-   return calc
-}
+       return calc
+    }
 
-// export function operatingMarginCalculation(netSalesLocal: Quarter[], opIncomeLocal: Quarter[]) {
 export function operatingMarginCalculation(netSalesLocal: Earnings[], opIncomeLocal: Earnings[]) {
 
     const calc: Earnings[] = opIncomeLocal.map((elem, index) => {
@@ -137,7 +133,7 @@ export const printSections = (sectionDifference: Earnings[], sectionYoY: Earning
                 : elem
     }).map((elem, index) => {
 
-        if (elem.category === "quarter") {
+        if (elem.category === "quarter" && elem.units === "currency") {
              let printSectionDifferenceYoY: string = (sectionYoY[index].value > 0) 
                                 ? `+${sectionYoY[index].value}% `
                                 : `${sectionYoY[index].value}% `;
@@ -149,11 +145,9 @@ export const printSections = (sectionDifference: Earnings[], sectionYoY: Earning
         let printSectionFixed: string = (printSection.length === 14)
                                   ? printSection
                                   : " ".repeat(14 - printSection.length) + printSection;
-        // let printQuarterRow: string = `${rowQuartersApplied[index].quarter}`;  
         return "|" + elem.name + "|" + printSectionFixed + "|" + printSectionYoYFixed + "|" // old note, used "\n" at end here: must affix a new line \n, was also affixing tabs \t to align but realised I could adjust the template literal
-        } else if (elem.category === "cumulative") {
+        } else if (elem.category === "cumulative" && elem.units === "currency") {
 
-    
             let printSectionCmlYoY: string = (sectionYoY[index].value > 0) 
                                     ? `+${sectionYoY[index].value}% `
                                     : `${sectionYoY[index].value}% `;
@@ -164,9 +158,8 @@ export const printSections = (sectionDifference: Earnings[], sectionYoY: Earning
             let printSectionCmlFixed: string = (printSectionCml.length === 14)
                                       ? printSectionCml
                                       : " ".repeat(14 - printSectionCml.length) + printSectionCml;
-            // let printQuarterRow: string = `${rowCumulativesApplied[index].cumulative}`;  
             return "|" + elem.cmlName + "|" + printSectionCmlFixed + "|" + printSectionCmlYoYFixed + "|"
-        } else {
+        } else if (elem.category === "forecast" && elem.units === "currency") {
             
             let printForecast: string = `¥${elem.value.toLocaleString("en")}M `;
             let printForecastFixed: string = (printForecast.length === 14)
@@ -174,6 +167,29 @@ export const printSections = (sectionDifference: Earnings[], sectionYoY: Earning
                                       : " ".repeat(14 - printForecast.length) + printForecast;
 
             return "|" + elem.name + "|" + printForecastFixed + "|"  
+        } else if (elem.category === "quarter" && elem.units === "percentage") {
+
+            let printSectionMarginQuarters: string = `${elem.value}% `;
+          let printSectionMarginQuartersFixed: string = (printSectionMarginQuarters.length >= 9)
+                                  ? printSectionMarginQuarters
+                                  : " ".repeat(9 - printSectionMarginQuarters.length) + printSectionMarginQuarters
+
+          return "|" + elem.name + "|" + printSectionMarginQuartersFixed + "|"
+        } else if (elem.category === "cumulative" && elem.units === "percentage") {
+            
+          let printSectionMarginCumulative: string = `${elem.value}% `;
+          let printSectionMarginCumulativeFixed: string = (printSectionMarginCumulative.length === 9)
+                                  ? printSectionMarginCumulative
+                                  : " ".repeat(9 - printSectionMarginCumulative.length) + printSectionMarginCumulative
+
+          return "|" + elem.cmlName + "|" + printSectionMarginCumulativeFixed + "|"
+        } else {
+            let printForecast: string = `${elem.value}% `;
+            let printForecastFixed: string = (printForecast.length === 9)
+                                ? printForecast
+                                : " ".repeat(9 - printForecast.length) + printForecast;
+            
+            return "|" + elem.name + "|" + printForecastFixed + "|"
         }
         
     
