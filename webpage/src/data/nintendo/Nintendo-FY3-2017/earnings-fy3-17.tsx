@@ -1,7 +1,7 @@
 import { 
     quarterlyCalculation, 
     cumulativeCalculation, 
-    operatingMarginCalculation, operatingMarginForecastCalculation, 
+    operatingMarginCalculation,
     yearOnYearCalculation,
     Header,
     printHead,
@@ -16,22 +16,26 @@ import {
 
     const netSales: Earnings[] = [
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 1st Quarter ",
             value: 61969
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 2nd Quarter ",
             value: 136812
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",           
             name: " 3rd Quarter ",
             value: 311121
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",           
             name: " 4th Quarter ",
             value: 489095
         },
@@ -39,22 +43,26 @@ import {
 
     const netSalesLastFy: Earnings[] = [
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 1st Quarter ",
             value: 90223
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 2nd Quarter ",
             value: 204182
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 3rd Quarter ",
             value: 425664
         },
         {
-            type: "currency",
+            category: "quarter",
+            units: "currency",
             name: " 4th Quarter ",
             value: 504459
         },
@@ -62,22 +70,26 @@ import {
 
     const netSalesForecasts: Earnings[] = [
         {
-            type: "currency",
+            category: "forecast",
+            units: "currency",
             name: " FY3/17 Forecast ",
             value: 500000
         },
         {
-            type: "currency",
+            category: "forecast",
+            units: "currency",
             name: " FCST Revision 1 ",
             value: 470000
         },
         {
-            type: "currency",
+            category: "forecast",
+            units: "currency",
             name: " FCST Revision 2 ",
             value: 470000
         },
         {
-            type: "currency",
+            category: "forecast",
+            units: "currency",
             name: " FY3/18 Forecast ",
             value: 750000
         },

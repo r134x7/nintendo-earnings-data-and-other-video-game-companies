@@ -2,6 +2,7 @@ export type Earnings = {
     category: "quarter" | "cumulative" | "forecast",
     units: "currency" | "percentage",
     name: string,
+    cmlName?: string,
     value: number,
 }
 
@@ -160,7 +161,7 @@ export const printSections = (sectionDifference: Earnings[], sectionYoY: Earning
                                       ? printSectionCml
                                       : " ".repeat(14 - printSectionCml.length) + printSectionCml;
             // let printQuarterRow: string = `${rowCumulativesApplied[index].cumulative}`;  
-            return "|" + elem.name + "|" + printSectionCmlFixed + "|" + printSectionCmlYoYFixed + "|"
+            return "|" + elem.cmlName + "|" + printSectionCmlFixed + "|" + printSectionCmlYoYFixed + "|"
         } else {
             
             let printForecast: string = `¥${elem.value.toLocaleString("en")}M `;
@@ -260,7 +261,7 @@ const printSectionForecast = (sectionForecast: Earnings[],  currentQuarter: numb
     //               ? index !== 1 && index !== 2 && index !== 3 
     //               : (currentQuarter >= 4 && sectionForecast.length === 3) 
     //               ? index !== 2 && index !== 3
-    //               : (currentQuarter >= 4 && sectionForecast.length === 4) 
+    //               : (currentQuarter >= 4gg && sectionForecast.length === 4) 
     //               ? index !== 3
     //               : elem)
       
