@@ -55,8 +55,9 @@ export type Header = {
 export function quarterlyCalculation(quarters: Earnings[]) {
 
     const calc = quarters.map((elem, index, array) => {
-         return (index === 0) ? elem : { value: elem.value - array[index-1].value} // Finally figured out how to do it correctly with its own parameters
         //  return (index === 0) ? elem : { quarter: elem.quarter - array[index-1].quarter} // Finally figured out how to do it correctly with its own parameters
+        //  return (index === 0) ? elem : { value: elem.value - array[index-1].value} // Finally figured out how to do it correctly with its own parameters
+         return (index === 0) ? elem : elem.value = elem.value - array[index-1].value // Finally figured out how to do it correctly with its own parameters
       })
     
     return calc
@@ -66,8 +67,6 @@ export function cumulativeCalculation(quarters: Earnings[]) {
 // export function cumulativeCalculation(quarters: Quarter[]) {
     const calc = quarters.filter((elem, index, array) => {
         return elem !== array[0]
-    }).map((elem, index, array) => {
-        return elem.name
     })
 
     return calc
