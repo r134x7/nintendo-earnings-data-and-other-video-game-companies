@@ -1,83 +1,269 @@
 import { 
     quarterlyCalculation, 
     cumulativeCalculation, 
-    operatingMarginCalculation, operatingMarginForecastCalculation, 
+    operatingMarginCalculation, 
     yearOnYearCalculation,
-    Quarter,
-    Forecasts,
     Header,
-    RowCumulatives,
-    RowForecasts,
     printHead,
     printNetIncome,
     printNetSales,
     printOpMargin,
     printOperatingIncome,
+    Earnings, 
     } from "../../../utils/earnings-logic"
 
     const currentQuarter = 4;
 
-    const netSales: Quarter[] = [
-        {quarter: 154069},  // first quarter
-        {quarter: 374041},  // second quarter
-        {quarter: 857012}, // third quarter
-        {quarter: 1055682}, // fourth quarter
+    const netSales: Earnings[] = [
+        {
+            category: "quarter",
+            units: "currency",
+            name: " 1st Quarter ",
+            value: 154069
+        },
+        {
+            category: "quarter",
+            units: "currency",
+            name: " 2nd Quarter ",
+            cmlName: " First Half  ",
+            value: 374041
+        },  
+        {
+            category: "quarter",
+            units: "currency", 
+            cmlName: " 1st 3 Qtrs  ",          
+            name: " 3rd Quarter ",
+            value: 857012
+        },
+        {
+            category: "quarter",
+            units: "currency", 
+            cmlName: " FY3/17 Cml. ",         
+            name: " 4th Quarter ",
+            value: 1055682
+        }, 
     ]
 
-    const netSalesLastFy: Quarter[] = [
-        {quarter: 61969}, // first quarter
-        {quarter: 136812}, // second quarter
-        {quarter: 311121}, // third quarter
-        {quarter: 489095}, // fourth quarter
+    const netSalesLastFy: Earnings[] = [
+        {
+            category: "quarter",
+            units: "currency",
+            name: " 1st Quarter ",
+            value: 61969
+        }, 
+        {
+            category: "quarter",
+            units: "currency",
+            name: " 2nd Quarter ",
+            value: 136812
+        }, 
+        {
+            category: "quarter",
+            units: "currency",
+            name: " 3rd Quarter ",
+            value: 311121
+        }, 
+        {
+            category: "quarter",
+            units: "currency",
+            name: " 4th Quarter ",
+            value: 489095
+        }, 
     ]
 
-    const netSalesForecasts: Forecasts[] = [ // any forecast revisions need to be placed between current and next
-        {forecast: 750000}, // current Fiscal Year Forecast
-        {forecast: 960000}, // first forecast revision
-        {forecast: 1020000}, // second forecast revision
-        {forecast: 1200000}, // next Fiscal Year Forecast
+    const netSalesForecasts: Earnings[] = [ // any forecast revisions need to be placed between current and next
+        {
+            category: "forecast",
+            units: "currency",
+            name: " FY3/17 Forecast ",
+            value: 750000 
+        }, 
+        {
+            category: "forecast",
+            units: "currency",
+            name: " FCST Revision 1 ",
+            value: 960000 
+        }, 
+        {
+            category: "forecast",
+            units: "currency",
+            name: " FCST Revision 2 ",
+            value: 1020000
+        }, 
+        {
+            category: "forecast",
+            units: "currency",
+            name: " FY3/18 Forecast ",
+            value: 1200000
+        }, 
     ]
 
-    const operatingIncome: Quarter[] = [
-        {quarter: 16208}, // first quarter
-        {quarter: 39961}, // second quarter
-        {quarter: 156462}, // third quarter
-        {quarter: 177557}, // fourth quarter
+    const operatingIncome: Earnings[] = [
+        {
+            category: "quarter",
+            units: "currency",
+            name: " 1st Quarter ",
+            value: 16208 
+        },
+        {
+            category: "quarter",
+            units: "currency",
+            name: " 2nd Quarter ",
+            cmlName: " First Half  ",
+            value: 39961 
+        },
+        {
+            category: "quarter",
+            units: "currency",
+            name: " 3rd Quarter ",
+            cmlName: " 1st 3 Qtrs  ", 
+            value: 156462
+        },
+        {
+            category: "quarter",
+            units: "currency",
+            name: " 4th Quarter ",
+            cmlName: " FY3/18 Cml. ",
+            value: 177557
+        },
     ]
     
-    const operatingIncomeLastFY: Quarter[] = [
-          {quarter: -5134}, // first quarter
-          {quarter: -5947}, // second quarter
-          {quarter: 26315}, // third quarter
-          {quarter: 29362}, // fourth quarter
+    const operatingIncomeLastFY: Earnings[] = [
+          {
+            category: "quarter",
+            units: "currency",
+            name: " 1st Quarter ",
+            value: -5134
+          },
+          {
+            category: "quarter",
+            units: "currency",
+            name: " 2nd Quarter ",
+            value: -5947
+          },
+          {
+            category: "quarter",
+            units: "currency",
+            name: " 3rd Quarter ",
+            value: 26315
+          },
+          {
+            category: "quarter",
+            units: "currency",
+            name: " 4th Quarter ",
+            value: 29362
+          },
     ]
     
-    const operatingIncomeForecasts: Forecasts[] = [ // forecast revisions need to be placed between current and next
-          {forecast: 65000}, // current Fiscal Year Forecast
-          {forecast: 120000}, // first forecast revision
-          {forecast: 160000}, // second forecast revision
-          {forecast: 225000}, // next Fiscal Year Forecast
+    const operatingIncomeForecasts: Earnings[] = [ // forecast revisions need to be placed between current and next
+          {
+            category: "forecast",
+            units: "currency",
+            name: " FY3/18 Forecast ",
+            value: 65000 
+          },  
+          {
+            category: "forecast",
+            units: "currency",
+            name: " FCST Revision 1 ",
+            value: 120000
+          }, 
+          {
+            category: "forecast",
+            units: "currency",
+            name: " FCST Revision 2 ",
+            value: 160000
+          }, 
+          {
+            category: "forecast",
+            units: "currency",
+            name: " FY3/19 Forecast ",
+            value: 225000
+          },  
     ]
 
-    const netIncome: Quarter[] = [
-        {quarter: 21260}, // first quarter
-        {quarter: 51503}, // second quarter
-        {quarter: 135165}, // third quarter
-        {quarter: 139590}, // fourth quarter
+    const netIncome: Earnings[] = [
+        {
+            category: "quarter",
+            units: "currency",
+            name: " 1st Quarter ",
+            value: 21260 
+        },
+        {
+            category: "quarter",
+            units: "currency",
+            name: " 2nd Quarter ",
+            cmlName: " First Half  ",
+            value: 51503 
+        }, 
+        {
+            category: "quarter",
+            units: "currency",
+            name: " 3rd Quarter ",
+            cmlName: " 1st 3 Qtrs  ",
+            value: 135165
+        },
+        {
+            category: "quarter",
+            units: "currency",
+            name: " 4th Quarter ",
+            cmlName: " FY3/18 Cml. ",
+            value: 139590
+        }, 
     ]
     
-    const netIncomeLastFY: Quarter[] = [
-          {quarter: -24534},// first quarter
-          {quarter: 38299},  // second quarter
-          {quarter: 102969}, // third quarter
-          {quarter: 102574}, // fourth quarter
+    const netIncomeLastFY: Earnings[] = [
+          {
+            category: "quarter",
+            units: "currency",
+            name: " 1st Quarter ",
+            value: -24534
+          },// first quarter
+          {
+            category: "quarter",
+            units: "currency",
+            name: " 2nd Quarter ",
+            value: 38299 
+          },  // second quarter
+          {
+            category: "quarter",
+            units: "currency",
+            name: " 3rd Quarter ",
+            value: 102969
+          }, // third quarter
+          {
+            category: "quarter",
+            units: "currency",
+            name: " 4th Quarter ",
+            value: 102574
+          }, // fourth quarter
     ]
     
-    const netIncomeForecasts: Forecasts[] = [ // forecast revisions need to be placed between current and next
-            {forecast: 45000}, // current Fiscal Year Forecast
-            {forecast: 85000}, // first forecast revision
-            {forecast: 120000}, // second forecast revision
-            {forecast: 165000}, // next Fiscal Year Forecast
+    const netIncomeForecasts: Earnings[] = [ // forecast revisions need to be placed between current and next
+            {
+                category: "forecast",
+                units: "currency",
+                name: " FY3/18 Forecast ",
+                value: 45000 
+            },  
+            {
+                category: "forecast",
+                units: "currency",
+                name: " FCST Revision 1 ",
+                value: 85000 
+            }, 
+            {
+                category: "forecast",
+                units: "currency",
+                name: " FCST Revision 2 ",
+                value: 120000
+            }, 
+            {
+                category: "forecast",
+                units: "currency",
+                name: " FY3/19 Forecast ",
+                value: 165000
+            },  
     ]
 
     const header: Header = {
@@ -90,20 +276,6 @@ import {
         fiscalYear: "FY3/2018 ",
         title: " Consolidated Operating Results   ",
     }
-
-    const rowCumulativesApplied: RowCumulatives[] =[
-        {cumulative: " First Half  "},
-        {cumulative: " 1st 3 Qtrs  "},
-        {cumulative: " FY3/18 Cml. "},
-    ]
-
-    const rowForecastsApplied: RowForecasts[] = [
-        {forecast: " FY3/18 Forecast "},
-        {forecast: " FCST Revision 1 "},
-        {forecast: " FCST Revision 2 "},
-        {forecast: " FCST Revision 3 "},
-        {forecast: " FY3/19 Forecast "},
-    ]
 
     const collection = [
         netSales,
@@ -153,9 +325,11 @@ import {
             operatingIncomeCumulative,
             netSalesLastFYDifference,
             operatingIncomeLastFYDifference,
+            netSalesForecasts, 
+            operatingIncomeForecasts,
     ]
 
-    export const [operatingMarginQuarters, operatingMarginCumulative, operatingMarginQuartersLastFY] = opMarginCollection.map((elem, index, array) => {
+    export const [operatingMarginQuarters, operatingMarginCumulative, operatingMarginQuartersLastFY, opMarginForecasts] = opMarginCollection.map((elem, index, array) => {
         // Input array of arrays of length 4, output array of arrays of length 4 and then filter to 2.
     
         return (index % 2 === 0) // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
@@ -163,17 +337,15 @@ import {
                 : [];
         }).filter((elem) => elem.length !== 0) // map creates empty arrays so filter removes them and then the array destructuring works correctly, note: elem is used and not array because the array contains 12 arrays! This also removes the issue of variable possibly being undefined had we not put in empty arrays since it would have automatically placed undefined.
 
-    const opMarginForecasts = operatingMarginForecastCalculation(netSalesForecasts, operatingIncomeForecasts)
-
     const printOne = printHead(header)
 
-    const printTwo = printNetSales(header, netSalesDifference, netSalesDifferenceYoy, netSalesCumulative, netSalesCumulativeYoy, netSalesForecasts, rowCumulativesApplied, rowForecastsApplied, currentQuarter)
+    const printTwo = printNetSales(header, netSalesDifference, netSalesDifferenceYoy, netSalesCumulative, netSalesCumulativeYoy, netSalesForecasts, currentQuarter)
 
-    const printThree = printOperatingIncome(header, operatingIncomeDifference, operatingIncomeDifferenceYoy, operatingIncomeCumulative, operatingIncomeCumulativeYoy, operatingIncomeForecasts, rowCumulativesApplied, rowForecastsApplied, currentQuarter);
+    const printThree = printOperatingIncome(header, operatingIncomeDifference, operatingIncomeDifferenceYoy, operatingIncomeCumulative, operatingIncomeCumulativeYoy, operatingIncomeForecasts, currentQuarter);
 
-    const printFour = printOpMargin(header, operatingMarginQuarters, operatingMarginCumulative, opMarginForecasts, rowCumulativesApplied, rowForecastsApplied, currentQuarter)
+    const printFour = printOpMargin(header, operatingMarginQuarters, operatingMarginCumulative, opMarginForecasts, currentQuarter)
 
-    const printFive = printNetIncome(header, netIncomeDifference, netIncomeDifferenceYoy, netIncomeCumulative, netIncomeCumulativeYoy, netIncomeForecasts, rowCumulativesApplied, rowForecastsApplied, currentQuarter)
+    const printFive = printNetIncome(header, netIncomeDifference, netIncomeDifferenceYoy, netIncomeCumulative, netIncomeCumulativeYoy, netIncomeForecasts, currentQuarter)
 
 export const printEarnings = 
 `${printOne}

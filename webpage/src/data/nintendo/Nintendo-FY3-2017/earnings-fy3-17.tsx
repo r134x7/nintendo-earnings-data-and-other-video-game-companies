@@ -9,8 +9,7 @@ import {
     printNetSales,
     printOpMargin,
     printOperatingIncome,
-    Earnings,
-    printSections
+    Earnings, 
     } from "../../../utils/earnings-logic"
 
     const currentQuarter = 4;
@@ -32,15 +31,15 @@ import {
         {
             category: "quarter",
             units: "currency", 
-            cmlName: " 1st 3 Qtrs  ",          
             name: " 3rd Quarter ",
+            cmlName: " 1st 3 Qtrs  ",          
             value: 311121
         },
         {
             category: "quarter",
             units: "currency", 
-            cmlName: " FY3/17 Cml. ",         
             name: " 4th Quarter ",
+            cmlName: " FY3/17 Cml. ",         
             value: 489095
         },
     ]
@@ -99,27 +98,6 @@ import {
         },
     ]
 
-    // const netSales: Quarter[] = [
-    //     {name: 61969},  // first quarter
-    //     {name: 136812},  // second quarter
-    //     {name: 311121}, // third quarter
-    //     {name: 489095}, // fourth quarter
-    // ]
-
-    // const netSalesLastFy: Quarter[] = [
-    //     {name: 90223}, // first quarter
-    //     {name: 204182}, // second quarter
-    //     {name: 425664}, // third quarter
-    //     {name: 504459}, // fourth quarter
-    // ]
-
-    // const netSalesForecasts: Forecasts[] = [ // any forecast revisions need to be placed between current and next
-    //     {forecast: 500000}, // current Fiscal Year Forecast
-    //     {forecast: 470000}, // first forecast revision
-    //     {forecast: 470000}, // second forecast revision
-    //     {forecast: 750000}, // next Fiscal Year Forecast
-    // ]
-
     const operatingIncome: Earnings[] = [
         {
             category: "quarter",
@@ -131,18 +109,21 @@ import {
             category: "quarter",
             units: "currency",
             name: " 2nd Quarter ",
+            cmlName: " First Half  ",
             value: -5947
         },
         {
             category: "quarter",
             units: "currency",
             name: " 3rd Quarter ",
+            cmlName: " 1st 3 Qtrs  ",          
             value: 26315
         },
         {
             category: "quarter",
             units: "currency",
             name: " 4th Quarter ",
+            cmlName: " FY3/17 Cml. ",         
             value: 29362
         },
     ]
@@ -201,27 +182,6 @@ import {
         },
     ]
 
-    // const operatingIncome: Quarter[] = [
-    //     {name: -5134}, // first quarter
-    //     {name: -5947}, // second quarter
-    //     {name: 26315}, // third quarter
-    //     {name: 29362}, // fourth quarter
-    // ]
-    
-    // const operatingIncomeLastFY: Quarter[] = [
-    //       {name: 1149}, // first quarter
-    //       {name: 8977}, // second quarter
-    //       {name: 42485}, // third quarter
-    //       {name: 32881}, // fourth quarter
-    // ]
-    
-    // const operatingIncomeForecasts: Forecasts[] = [ // forecast revisions need to be placed between current and next
-    //       {forecast: 45000}, // current Fiscal Year Forecast
-    //       {forecast: 30000}, // first forecast revision
-    //       {forecast: 20000}, // second forecast revision
-    //       {forecast: 65000}, // next Fiscal Year Forecast
-    // ]
-
     const netIncome: Earnings[] = [
         {
             category: "quarter",
@@ -233,18 +193,21 @@ import {
             category: "quarter",
             units: "currency",
             name: " 2nd Quarter ",
+            cmlName: " First Half  ",
             value: 38299 
         },
         {
             category: "quarter",
             units: "currency",
             name: " 3rd Quarter ",
+            cmlName: " 1st 3 Qtrs  ",          
             value: 102969
         },
         {
             category: "quarter",
             units: "currency",
             name: " 4th Quarter ",
+            cmlName: " FY3/17 Cml. ",         
             value: 102574
         },
     ]
@@ -303,27 +266,6 @@ import {
         },
     ]
 
-    // const netIncome: Quarter[] = [
-    //     {name: -24534}, // first quarter
-    //     {name: 38299}, // second quarter
-    //     {name: 102969}, // third quarter
-    //     {name: 102574}, // fourth quarter
-    // ]
-    
-    // const netIncomeLastFY: Quarter[] = [
-    //       {name: 8284 }, // first quarter
-    //       {name: 11466}, // second quarter
-    //       {name: 40558}, // third quarter
-    //       {name: 16505}, // fourth quarter
-    // ]
-    
-    // const netIncomeForecasts: Forecasts[] = [ // forecast revisions need to be placed between current and next
-    //         {forecast: 35000}, // current Fiscal Year Forecast
-    //         {forecast: 50000}, // first forecast revision
-    //         {forecast: 90000}, // second forecast revision
-    //         {forecast: 45000}, // next Fiscal Year Forecast
-    // ]
-
     const header: Header = {
         companyName: " Nintendo Co., Ltd.",
         netSales: " Net Sales ",
@@ -334,20 +276,6 @@ import {
         fiscalYear: "FY3/2017 ",
         title: " Consolidated Operating Results   ",
     }
-
-    // const rowCumulativesApplied: RowCumulatives[] =[
-    //     {cumulative: " First Half  "},
-    //     {cumulative: " 1st 3 Qtrs  "},
-    //     {cumulative: " FY3/17 Cml. "},
-    // ]
-
-    // const rowForecastsApplied: RowForecasts[] = [
-    //     {forecast: " FY3/17 Forecast "},
-    //     {forecast: " FCST Revision 1 "},
-    //     {forecast: " FCST Revision 2 "},
-    //     {forecast: " FCST Revision 3 "},
-    //     {forecast: " FY3/18 Forecast "},
-    // ]
 
     const collection = [
         netSales,
@@ -408,8 +336,6 @@ import {
                 ? operatingMarginCalculation(array[index], array[index+1])
                 : [];
         }).filter((elem) => elem.length !== 0) // map creates empty arrays so filter removes them and then the array destructuring works correctly, note: elem is used and not array because the array contains 12 arrays! This also removes the issue of variable possibly being undefined had we not put in empty arrays since it would have automatically placed undefined.
-
-    // const opMarginForecasts = operatingMarginForecastCalculation(netSalesForecasts, operatingIncomeForecasts)
 
     const printOne = printHead(header)
 
