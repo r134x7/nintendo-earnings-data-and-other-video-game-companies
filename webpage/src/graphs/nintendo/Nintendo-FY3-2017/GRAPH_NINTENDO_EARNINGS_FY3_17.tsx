@@ -52,17 +52,17 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_17() {
     ]
 
     const consolidatedOperatingResultsGraph = [
-        netSalesDifference.map((elem) => elem.quarter),
-        operatingIncomeDifference.map((elem) => elem.quarter),
-        operatingMarginQuarters.map((elem) => elem.quarter),
-        netIncomeDifference.map((elem) => elem.quarter),
+        netSalesDifference.map((elem) => elem.value),
+        operatingIncomeDifference.map((elem) => elem.value),
+        operatingMarginQuarters.map((elem) => elem.value),
+        netIncomeDifference.map((elem) => elem.value),
     ]
 
     const consolidatedOperatingResultsGraphLastFY = [
-        netSalesLastFYDifference.map((elem) => elem.quarter),
-        operatingIncomeLastFYDifference.map((elem) => elem.quarter),
-        operatingMarginQuartersLastFY.map((elem) => elem.quarter),
-        netIncomeLastFYDifference.map((elem) => elem.quarter),
+        netSalesLastFYDifference.map((elem) => elem.value),
+        operatingIncomeLastFYDifference.map((elem) => elem.value),
+        operatingMarginQuartersLastFY.map((elem) => elem.value),
+        netIncomeLastFYDifference.map((elem) => elem.value),
     ]
 
     return (
