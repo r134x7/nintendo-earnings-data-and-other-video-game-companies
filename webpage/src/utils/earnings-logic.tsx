@@ -194,24 +194,38 @@ export const printSections = (sectionDifference: Earnings[], sectionYoY: Earning
         
     
     }).reduce((prev, next, index, array) => {
-        if (sectionDifference[index].category === "quarter") {
+        if (sectionDifference[index].category === "quarter" && sectionDifference[index].units === "currency") {
 
             return (array[index] === array[currentQuarter -1])
             ? prev + `\n+${"-".repeat(38)}+\n` + next
             : prev + `\n+${"-".repeat(38)}+\n` + next 
             // sources for finding methods to convert numbers to strings with currency symbol and thousands separators: https://stackoverflow.com/questions/3753483/javascript-thousand-separator-string-format?noredirect=1&lq=1
             // mdn source with more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString
-        } else if (sectionDifference[index].category === "cumulative") {
+        } else if (sectionDifference[index].category === "cumulative" && sectionDifference[index].units === "currency") {
 
             return (array[index] === array[currentQuarter -2])
                 ? prev + `\n+${"-".repeat(38)}+\n` + next + `\n+${"-".repeat(38)}+\n`
                 : prev + `\n+${"-".repeat(38)}+\n` + next 
 
-        } else {
+        } else if (sectionDifference[index].category === "forecast" && sectionDifference[index].units === "currency") {
 
             return (array[index] === array[currentQuarter -1])
             ? prev + `\n+${"-".repeat(32)}+\n` + next
             : prev + `\n+${"-".repeat(32)}+\n` + next
+        } else if (sectionDifference[index].category === "quarter" && sectionDifference[index].units === "percentage") {
+
+            return (array[index] === array[currentQuarter -1])
+                    ? prev + `\n+${"-".repeat(23)}+\n` + next
+                    : prev + `\n+${"-".repeat(23)}+\n` + next 
+        } else if (sectionDifference[index].category === "cumulative" && sectionDifference[index].units === "percentage") {
+            return (array[index] === array[currentQuarter -2])
+                    ? prev + `\n+${"-".repeat(23)}+\n` + next + `\n+${"-".repeat(27)}+\n`
+                    : prev + `\n+${"-".repeat(23)}+\n` + next 
+        } else {
+            
+            return (array[index] === array[currentQuarter -1])
+                ? prev + `\n+${"-".repeat(27)}+\n` + next
+                : prev + `\n+${"-".repeat(27)}+\n` + next
         }
     })
 }
