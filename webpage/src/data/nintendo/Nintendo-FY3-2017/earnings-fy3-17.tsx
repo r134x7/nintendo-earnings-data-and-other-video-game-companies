@@ -268,10 +268,11 @@ import {
 
     const header: Header = {
         companyName: " Nintendo Co., Ltd.",
-        netSales: " Net Sales ",
-        operatingIncome: " Operating Income ",
-        operatingMargin: " Operating Margin ",
-        netIncome: " Net Income ",
+        // netSales: " Net Sales ",
+        // operatingIncome: " Operating Income ",
+        // operatingMargin: " Operating Margin ",
+        // netIncome: " Net Income ",
+        section: " Net Sales ",
         yearOnYearPercentage: "    YoY% ",
         fiscalYear: "FY3/2017 ",
         title: " Consolidated Operating Results   ",
