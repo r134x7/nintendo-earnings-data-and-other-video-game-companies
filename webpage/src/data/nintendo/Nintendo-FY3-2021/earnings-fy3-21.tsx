@@ -265,16 +265,27 @@ import {
 
     const header: Header = {
         companyName: " Nintendo Co., Ltd.",
-        // netSales: " Net Sales ",
-        // operatingIncome: " Operating Income ",
-        // operatingMargin: " Operating Margin ",
-        // netIncome: " Net Profit ",
-        yearOnYearPercentage: "    YoY% ",
+        yearOnYearPercentage: "|    YoY% |",
         fiscalYear: "FY3/2021 ",
         title: " Consolidated Operating Results   ",
-        section: " Net Sales ",
+        section: "| Net Sales                  ",
         borderLineLengthBody: 38,
         borderLineLengthFooter: 32,
+    }
+
+    const headerOperatingIncome: Header = {
+        ...header, section: "| Operating Income           "
+    }
+
+    const headerOpMargin: Header = {
+        ...header, 
+        section: "| Operating Margin      ",
+        borderLineLengthBody: 23, 
+        borderLineLengthFooter: 27,  
+    }
+
+    const headerNetIncome: Header = {
+        ...header, section: "| Net Income                 "
     }
 
     const collection = [
@@ -339,77 +350,51 @@ import {
 
     const printOne = printHead(header)
 
-    const [printTwo, printThree, printFour, printFive] = [0, 1, 2, 3].map((elem, index, array) => {
+    const netSalesArrays = [
+        header, 
+        netSalesDifference,
+        netSalesDifferenceYoy,
+        netSalesCumulative,
+        netSalesCumulativeYoy,
+        netSalesForecasts, 
+        currentQuarter
+    ] as const; // to create read-only tuple
 
+    const operatingIncomeArrays = [
+        headerOperatingIncome,
+        operatingIncomeDifference,
+        operatingIncomeDifferenceYoy,
+        operatingIncomeCumulative,
+        operatingIncomeCumulativeYoy,
+        operatingIncomeForecasts,
+        currentQuarter,
+    ] as const; // to create read-only tuple;
 
+    const opMarginArrays = [
+        headerOpMargin,
+        operatingMarginQuarters,
+        operatingMarginQuarters, // couldn't use empty array, had to duplicate a parameter
+        operatingMarginCumulative,
+        operatingMarginCumulative, // couldn't use empty array, had to duplicate a parameter
+        opMarginForecasts,
+        currentQuarter 
+    ] as const; // to create read-only tuple
 
-        if (index === 0) {
-            // let printHeader: Header = {
-                // ...header, section: " Operating Income " 
-            // }
+    const netIncomeArrays = [
+        headerNetIncome,
+        netIncomeDifference,
+        netIncomeDifferenceYoy,
+        netIncomeCumulative,
+        netIncomeCumulativeYoy,
+        netIncomeForecasts,
+        currentQuarter,
+    ] as const; // to create read-only tuple
 
-            return printBody(
-                header, 
-                netSalesDifference,
-                netSalesDifferenceYoy,
-                netSalesCumulative,
-                netSalesCumulativeYoy,
-                netSalesForecasts, 
-                currentQuarter
-                )
-        } else if (index === 1) {
-            let printHeader: Header = {
-                ...header, section: " Operating Income " 
-            }
+    const [printTwo, printThree, printFour, printFive] = [
+    netSalesArrays, operatingIncomeArrays, opMarginArrays, netIncomeArrays ].map((elem, index, array) => {
 
-            return printBody(
-                printHeader,
-                operatingIncomeDifference,
-                operatingIncomeDifferenceYoy,
-                operatingIncomeCumulative,
-                operatingIncomeCumulativeYoy,
-                operatingIncomeForecasts,
-                currentQuarter,
-            )
-        } else if (index === 2) {
-            let printHeader: Header = {
-                ...header, section: " Operating Margin " 
-            }
-
-            return printBody(
-                printHeader,
-                operatingMarginQuarters,
-                [],
-                operatingMarginCumulative,
-                [],
-                opMarginForecasts,
-                currentQuarter
-            )
-        } else {
-            let printHeader: Header = {
-                ...header, section: " Net Income " 
-            }
-
-            return printBody(
-                printHeader,
-                netIncomeDifference,
-                netIncomeDifferenceYoy,
-                netIncomeCumulative,
-                netIncomeCumulativeYoy,
-                netIncomeForecasts,
-                currentQuarter,
-            )
-        }
+            return printBody(...elem)
     })
-
-    // const printTwo = printNetSales(header, netSalesDifference, netSalesDifferenceYoy, netSalesCumulative, netSalesCumulativeYoy, netSalesForecasts, currentQuarter)
-
-    // const printThree = printOperatingIncome(header, operatingIncomeDifference, operatingIncomeDifferenceYoy, operatingIncomeCumulative, operatingIncomeCumulativeYoy, operatingIncomeForecasts, currentQuarter);
-
-    // const printFour = printOpMargin(header, operatingMarginQuarters, operatingMarginCumulative, opMarginForecasts, currentQuarter)
-
-    // const printFive = printNetIncome(header, netIncomeDifference, netIncomeDifferenceYoy, netIncomeCumulative, netIncomeCumulativeYoy, netIncomeForecasts, currentQuarter)
-
 export const printEarnings = 
 `${printOne}
 ${printTwo}

@@ -278,7 +278,8 @@ import {
     }
 
     const headerOpMargin: Header = {
-        ...header, 
+        ...header,
+        yearOnYearPercentage: "|", 
         section: "| Operating Margin      ",
         borderLineLengthBody: 23, 
         borderLineLengthFooter: 27,  
