@@ -5,10 +5,7 @@ import {
     yearOnYearCalculation,
     Header,
     printHead,
-    printNetIncome,
-    printNetSales,
-    printOpMargin,
-    printOperatingIncome,
+    printBody,
     Earnings, 
     } from "../../../utils/earnings-logic"
 
@@ -272,10 +269,12 @@ import {
         // operatingIncome: " Operating Income ",
         // operatingMargin: " Operating Margin ",
         // netIncome: " Net Income ",
-        section: " Net Sales ",
         yearOnYearPercentage: "    YoY% ",
         fiscalYear: "FY3/2017 ",
         title: " Consolidated Operating Results   ",
+        section: " Net Sales ",
+        borderLineLengthBody: 38,
+        borderLineLengthFooter: 32,
     }
 
     const collection = [
@@ -340,13 +339,125 @@ import {
 
     const printOne = printHead(header)
 
-    const printTwo = printNetSales(header, netSalesDifference, netSalesDifferenceYoy, netSalesCumulative, netSalesCumulativeYoy, netSalesForecasts, currentQuarter)
+    const printTest: Earnings[][] = [
+        operatingIncomeDifference,
+        operatingIncomeDifferenceYoy,
+        operatingIncomeCumulative,
+        operatingIncomeCumulativeYoy,
+        operatingIncomeForecasts,
+        // currentQuarter,    
+    ]
 
-    const printThree = printOperatingIncome(header, operatingIncomeDifference, operatingIncomeDifferenceYoy, operatingIncomeCumulative, operatingIncomeCumulativeYoy, operatingIncomeForecasts, currentQuarter);
+    const printCollection = [
+        [
+            // header,
+            netSalesDifference,
+            netSalesDifferenceYoy,
+            netSalesCumulative,
+            netSalesCumulativeYoy,
+            netSalesForecasts,
+            currentQuarter,
+        ],
+        [
+            // header,
+            operatingIncomeDifference,
+            operatingIncomeDifferenceYoy,
+            operatingIncomeCumulative,
+            operatingIncomeCumulativeYoy,
+            operatingIncomeForecasts,
+            currentQuarter,   
+        ],
+        [
+            // header,
+            operatingMarginQuarters,
+            [],
+            operatingMarginCumulative,
+            [],
+            opMarginForecasts,
+            currentQuarter
+        ],
+        [
+            // header,
+            netIncomeDifference,
+            netIncomeDifferenceYoy,
+            netIncomeCumulative,
+            netIncomeCumulativeYoy,
+            netIncomeForecasts,
+            currentQuarter,
+        ]
+    ]
 
-    const printFour = printOpMargin(header, operatingMarginQuarters, operatingMarginCumulative, opMarginForecasts, currentQuarter)
+    // const [printTwo, printThree, printFour, printFive] = printCollection.map((elem, index, array) => {
+    const [printTwo, printThree, printFour, printFive] = [0, 1, 2, 3].map((elem, index, array) => {
 
-    const printFive = printNetIncome(header, netIncomeDifference, netIncomeDifferenceYoy, netIncomeCumulative, netIncomeCumulativeYoy, netIncomeForecasts, currentQuarter)
+
+
+        if (index === 0) {
+            // let printHeader: Header = {
+                // ...header, section: " Operating Income " 
+            // }
+
+            return printBody(
+                header, 
+                netSalesDifference,
+                netSalesDifferenceYoy,
+                netSalesCumulative,
+                netSalesCumulativeYoy,
+                netSalesForecasts, 
+                currentQuarter
+                )
+        } else if (index === 1) {
+            let printHeader: Header = {
+                ...header, section: " Operating Income " 
+            }
+
+            return printBody(
+                printHeader,
+                operatingIncomeDifference,
+                operatingIncomeDifferenceYoy,
+                operatingIncomeCumulative,
+                operatingIncomeCumulativeYoy,
+                operatingIncomeForecasts,
+                currentQuarter,
+            )
+        } else if (index === 2) {
+            let printHeader: Header = {
+                ...header, section: " Operating Margin " 
+            }
+
+            return printBody(
+                printHeader,
+                operatingMarginQuarters,
+                [],
+                operatingMarginCumulative,
+                [],
+                opMarginForecasts,
+                currentQuarter
+            )
+        } else {
+            let printHeader: Header = {
+                ...header, section: " Net Income " 
+            }
+
+            return printBody(
+                printHeader,
+                netIncomeDifference,
+                netIncomeDifferenceYoy,
+                netIncomeCumulative,
+                netIncomeCumulativeYoy,
+                netIncomeForecasts,
+                currentQuarter,
+            )
+        }
+    })
+
+    // const printTwo = printNetSales(header, netSalesDifference, netSalesDifferenceYoy, netSalesCumulative, netSalesCumulativeYoy, netSalesForecasts, currentQuarter)
+
+    // const printThree = printOperatingIncome(header, operatingIncomeDifference, operatingIncomeDifferenceYoy, operatingIncomeCumulative, operatingIncomeCumulativeYoy, operatingIncomeForecasts, currentQuarter);
+
+    // const printFour = printOpMargin(header, operatingMarginQuarters, operatingMarginCumulative, opMarginForecasts, currentQuarter)
+
+    // const printFive = printNetIncome(header, netIncomeDifference, netIncomeDifferenceYoy, netIncomeCumulative, netIncomeCumulativeYoy, netIncomeForecasts, currentQuarter)
 
 export const printEarnings = 
 `${printOne}
