@@ -7,12 +7,12 @@ export type KPDIndicators = {
 
 export type Header = {
     companyName: string,
-    proportionOfOverseasSales: string,
-    proportionOfHardwareSales: string,
-    proportionOfFirstPartySoftwareSales: string,
-    digitalSales: string,
-    proportionOfDigitalSales: string,
-    proportionOfDLverPackagedSoftware: string,
+    section: "| Proportion of overseas sales |" | 
+    "| Proportion of hardware sales |" | 
+    "| Proportion of first party    |\n| software sales               |" | 
+    "| Digital Sales                |" | 
+    "| Proportion of Digital Sales  |" | 
+    "| Proportion of downloadable   |\n| versions of Packaged         |\n| Software Sales               |",
     fiscalYear: string,
     title: string,
 }
@@ -26,7 +26,7 @@ export type Footer = {
     proportionOfDLverPackagedSoftware: string,
 }
 
-const printSectionQuarters = (sectionDifference: KPDIndicators[], currentQuarter: number) => { 
+const printSections = (sectionDifference: KPDIndicators[], currentQuarter: number) => { 
 
     return sectionDifference.filter((elem, index) => { 
             return (elem.category === "quarterly")
@@ -98,12 +98,12 @@ ${header.title}
 
 export const printBody = (header: Header, footer: Footer, quarter: KPDIndicators[], cumulative: KPDIndicators[], currentQuarter: number) => 
 `+${"-".repeat(30)}+
-${header.proportionOfOverseasSales}
+${header.section}
 +${"-".repeat(30)}+
-${printSectionQuarters(proportionOfOverseasSalesQtr, currentQuarter)}
-+${(currentQuarter > 1) ? "=".repeat(30)+"+\n" + printSectionCumulative(proportionOfOverseasSalesCml, currentQuarter) : "=".repeat(30)+"+" }
+${printSections(quarter, currentQuarter)}
++${(currentQuarter > 1) ? "=".repeat(30)+"+\n" + printSections(cumulative, currentQuarter) : "=".repeat(30)+"+" }
 +${"-".repeat(30)+"+"}
-${footer.proportionOfOverseasSales}`;
+${footer.section}`;
 
 // export const printProportionOfOverseasSales = (header: Header, footer: Footer, proportionOfOverseasSalesQtr: KPIQuarter[], proportionOfOverseasSalesCml: KPICumulative[], currentQuarter: number) => 
 // `+${"-".repeat(30)}+
