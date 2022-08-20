@@ -48,16 +48,16 @@ function App() {
           <Navbar sx={(theme) => ({ backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[1] })} p="xl" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 175, lg: 175 }}>
             <Stack spacing="xl">
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/">
-                  <Button leftIcon={<DeviceNintendo size={24} strokeWidth={2} color={'#40bfb2'}/>} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Home</Button>
+                  <Button aria-label='Home Page' leftIcon={<DeviceNintendo size={24} strokeWidth={2} color={'#40bfb2'}/>} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Home</Button>
               </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/nintendo">
-                    <Button radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Nintendo</Button>
+                    <Button aria-label='Nintendo data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Nintendo</Button>
               </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/capcom">
-                    <Button radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Capcom</Button>
+                    <Button aria-label='Capcom data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Capcom</Button>
               </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/events">
-                    <Button leftIcon={<Calendar size={24} strokeWidth={2} color={'#40bfb2'}/>} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Events</Button>
+                    <Button aria-label='Upcoming events page' leftIcon={<Calendar size={24} strokeWidth={2} color={'#40bfb2'}/>} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Events</Button>
               </NavLink>
               {/* <FAQModal /> */}
             </Stack>
@@ -68,6 +68,7 @@ function App() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: "space-between", height: '100%' }}>
               <MediaQuery largerThan="sm" styles={{ display: "none"}}>
                 <Burger
+                  aria-label='Open or close menu'
                   opened={opened}
                   onClick={() => setOpened((o) => !o)}
                   size="lg"
@@ -76,7 +77,7 @@ function App() {
                 />
               </MediaQuery>
                 <Text>ggx2ac and the archives of Nintendo earnings data and other video game companies</Text>
-                <Button leftIcon={(colorScheme === 'dark') 
+                <Button aria-label='Enable Dark or Light theme' leftIcon={(colorScheme === 'dark') 
                                   ? <Sun size={24} strokeWidth={2} color={'yellow'} /> 
                                   : <Moon size={24} strokeWidth={2} color={'#40bfb2'} />} 
                                     radius="xl" variant='outline' color={colorScheme === "dark" ? "yellow" : "blue"} onClick={() => toggleColorScheme()} title="Toggle mode">
