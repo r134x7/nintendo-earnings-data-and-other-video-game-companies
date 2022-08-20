@@ -1,218 +1,248 @@
 import {
-    KPIQuarter,
-    KPICumulative,
     Header,
     Footer,
     printHead,
-    printProportionOfOverseasSales,
-    printProportionOfHardwareSales,
-    printProportionOfFirstPartySoftwareSales,
-    printDigitalSales,
-    printProportionOfDigitalSales,
+    printBody,
+    KPDIndicators,
 } from "../../../utils/kpi-logic"
 
 const currentQuarter = 4;
 
-export const proportionOfOverseasSalesQtr: KPIQuarter[] = [
+export const proportionOfOverseasSalesQtr: KPDIndicators[] = [
     {
-        type: "percentage",
+        category: "quarterly",
+        units: "percentage",
         quarter: " 1st Quarter       ",
         value: 73.9,
     },
     {
-        type: "percentage",
+        category: "quarterly",
+        units: "percentage",
         quarter: " 2nd Quarter       ",
         value: 72.1,
     },
     {
-        type: "percentage",
+        category: "quarterly",
+        units: "percentage",
         quarter: " 3rd Quarter       ",
         value: 76.1,
     },
     {
-        type: "percentage",
+        category: "quarterly",
+        units: "percentage",
         quarter: " 4th Quarter       ",
         value: 77.8,
     },
 ]
 
-const proportionOfOverseasSalesCml: KPICumulative[] = [
+const proportionOfOverseasSalesCml: KPDIndicators[] = [
     {
-        type: "percentage",
+        category: "cumulative",
+        units: "percentage",
         quarter: " 1st Half          ",
         value: 72.8,
     },
     {
-        type: "percentage",
+        category: "cumulative",
+        units: "percentage",
         quarter: " 1st Three Quarters",
         value: 74.7,
     },
     {
-        type: "percentage",
+        category: "cumulative",
+        units: "percentage",
         quarter: " FY3/18 Cumulative ",
         value: 75.3,
     },
 ]
 
-export const proportionOfHardwareSalesQtr: KPIQuarter[] = [
+export const proportionOfHardwareSalesQtr: KPDIndicators[] = [
     {
-        type: "percentage",
+        category: "quarterly",
+        units: "percentage",
         quarter: " 1st Quarter       ",
         value: 61.0,
     },
     {
-        type: "percentage",
+        category: "quarterly",
+        units: "percentage",
         quarter: " 2nd Quarter       ",
         value: 70.0,
     },
     {
-        type: "percentage",
+        category: "quarterly",
+        units: "percentage",
         quarter: " 3rd Quarter       ",
         value: 66.4,
     },
     {
-        type: "percentage",
+        category: "quarterly",
+        units: "percentage",
         quarter: " 4th Quarter       ",
         value: 61.3,
     },
 ]
 
-const proportionOfHardwareSalesCml: KPICumulative[] = [
+const proportionOfHardwareSalesCml: KPDIndicators[] = [
     {
-        type: "percentage",
+        category: "cumulative",
+        units: "percentage",
         quarter: " 1st Half          ",
         value: 66.3,
     },
     {
-        type: "percentage",
+        category: "cumulative",
+        units: "percentage",
         quarter: " 1st Three Quarters",
         value: 66.3,
     },
     {
-        type: "percentage",
+        category: "cumulative",
+        units: "percentage",
         quarter: " FY3/18 Cumulative ",
         value: 65.4,
     },
 ]
 
-export const proportionOfFirstPartySoftwareSalesQtr: KPIQuarter[] = [
+export const proportionOfFirstPartySoftwareSalesQtr: KPDIndicators[] = [
     {
-        type: "percentage",
+        category: "quarterly",
+        units: "percentage",
         quarter: " 1st Quarter       ",
         value: 87.3,
     },
     {
-        type: "percentage",
+        category: "quarterly",
+        units: "percentage",
         quarter: " 2nd Quarter       ",
         value: 73.6,
     },
     {
-        type: "percentage",
+        category: "quarterly",
+        units: "percentage",
         quarter: " 3rd Quarter       ",
         value: 88.9,
     },
     {
-        type: "percentage",
+        category: "quarterly",
+        units: "percentage",
         quarter: " 4th Quarter       ",
         value: 84.9,
     },
 ]
 
-const proportionOfFirstPartySoftwareSalesCml: KPICumulative[] = [
+const proportionOfFirstPartySoftwareSalesCml: KPDIndicators[] = [
     {
-        type: "percentage",
+        category: "cumulative",
+        units: "percentage",
         quarter: " 1st Half          ",
         value: 80.0,
     },
     {
-        type: "percentage",
+        category: "cumulative",
+        units: "percentage",
         quarter: " 1st Three Quarters",
         value: 85.4,
     },
     {
-        type: "percentage",
+        category: "cumulative",
+        units: "percentage",
         quarter: " FY3/18 Cumulative ",
         value: 85.3,
     },
 ]
 
-export const digitalSalesQtr: KPIQuarter[] = [
+export const digitalSalesQtr: KPDIndicators[] = [
     {
-        type: "currency",
+        category: "quarterly",
+        units: "currency",
         quarter: " 1st Quarter       ",
         value: 11.0,
     },
     {
-        type: "currency",
+        category: "quarterly",
+        units: "currency",
         quarter: " 2nd Quarter       ",
         value: 11.7,
     },
     {
-        type: "currency",
+        category: "quarterly",
+        units: "currency",
         quarter: " 3rd Quarter       ",
         value: 20.3,
     },
     {
-        type: "currency",
+        category: "quarterly",
+        units: "currency",
         quarter: " 4th Quarter       ",
         value: 17.6,
     },
 ]
 
-const digitalSalesCml: KPICumulative[] = [
+const digitalSalesCml: KPDIndicators[] = [
     {
-        type: "currency",
+        category: "cumulative",
+        units: "currency",
         quarter: " 1st Half          ",
         value: 22.8,
     },
     {
-        type: "currency",
+        category: "cumulative",
+        units: "currency",
         quarter: " 1st Three Quarters",
         value: 43.1,
     },
     {
-        type: "currency",
+        category: "cumulative",
+        units: "currency",
         quarter: " FY3/18 Cumulative ",
         value: 60.8,
     },
 ]
 
-export const proportionOfDigitalSalesQtr: KPIQuarter[] = [
+export const proportionOfDigitalSalesQtr: KPDIndicators[] = [
     {
-        type: "percentage",
+        category: "quarterly",
+        units: "percentage",
         quarter: " 1st Quarter       ",
         value: 19.5,
     },
     {
-        type: "percentage",
+        category: "quarterly",
+        units: "percentage",
         quarter: " 2nd Quarter       ",
         value: 18.6,
     },
     {
-        type: "percentage",
+        category: "quarterly",
+        units: "percentage",
         quarter: " 3rd Quarter       ",
         value: 12.8,
     },
     {
-        type: "percentage",
+        category: "quarterly",
+        units: "percentage",
         quarter: " 4th Quarter       ",
         value: 24.2,
     },
 ]
 
-const proportionOfDigitalSalesCml: KPICumulative[] = [
+const proportionOfDigitalSalesCml: KPDIndicators[] = [
     {
-        type: "percentage",
+        category: "cumulative",
+        units: "percentage",
         quarter: " 1st Half          ",
         value: 19.1,
     },
     {
-        type: "percentage",
+        category: "cumulative",
+        units: "percentage",
         quarter: " 1st Three Quarters",
         value: 15.5,
     },
     {
-        type: "percentage",
+        category: "cumulative",
+        units: "percentage",
         quarter: " FY3/18 Cumulative ",
         value: 17.3,
     },
@@ -220,36 +250,96 @@ const proportionOfDigitalSalesCml: KPICumulative[] = [
 
 const header: Header = {
     companyName: " Nintendo Co., Ltd.",
-    proportionOfOverseasSales: "| Proportion of overseas sales |",
-    proportionOfHardwareSales: "| Proportion of hardware sales |",
-    proportionOfFirstPartySoftwareSales: "| Proportion of first party    |\n| software sales               |",
-    digitalSales: "| Digital Sales                |",
-    proportionOfDigitalSales: "| Proportion of Digital Sales  |",
-    proportionOfDLverPackagedSoftware: "| Proportion of downloadable   |\n| versions of Packaged         |\n| Software Sales               |",
+    section: "| Proportion of overseas sales |",
     fiscalYear: "| FY3/2018 |",
     title: "| Key/Digital Sales Indicators |",
 }
 
+const [headerTwo, headerThree, headerFour, headerFive]: Header[] = [
+    {
+        ...header,
+        section: "| Proportion of hardware sales |"
+    },
+    {
+        ...header,
+        section: "| Proportion of first party    |\n| software sales               |"
+    },
+    {
+        ...header,
+        section: "| Digital Sales                |"
+    },
+    {
+        ...header,
+        section: "| Proportion of Digital Sales  |"
+    },
+]
+
 const footer: Footer = {
-    proportionOfOverseasSales: "|(※ Proportion of overseas (outside of Japan)\n| sales to total sales)",
-    proportionOfHardwareSales: "|(※ Proportion of hardware\n|(including accessories) sales to total\n| dedicated video game platform sales)",
-    proportionOfFirstPartySoftwareSales: "|(※ Proportion of first-party software sales\n| to total dedicated video game software sales)",
-    digitalSales: "|(\"※ Digital sales include a) downloadable\n| versions of packaged software,\n|b) download-only software,\n|c) add-on content and\n|d) Nintendo Switch Online, etc.\n|＊\"Downloadable versions of packaged software\"\n| indicates the downloadable version of\n| software that is offered both physically\n| and digitally.\")",
-    proportionOfDigitalSales: "|(※ Proportion of digital sales to total\n| dedicated video game software sales )",
-    proportionOfDLverPackagedSoftware: "|(※ Proportion of downloadable versions of\n| packaged software sales to total digital\n| sales as indicated above: a/(a+b+c+d) )",
+    section: "|(※ Proportion of overseas (outside of Japan)\n| sales to total sales)"
 }
+
+const [footerTwo, footerThree, footerFour, footerFive]: Footer[] = [
+    {
+        section: "|(※ Proportion of hardware\n|(including accessories) sales to total\n| dedicated video game platform sales)"
+    },
+    {
+        section: "|(※ Proportion of first-party software sales\n| to total dedicated video game software sales)" 
+    },
+    {
+        section: "|(\"※ Digital sales include a) downloadable\n| versions of packaged software,\n|b) download-only software,\n|c) add-on content and\n|d) Nintendo Switch Online, etc.\n|＊\"Downloadable versions of packaged software\"\n| indicates the downloadable version of\n| software that is offered both physically\n| and digitally.\")"
+    },
+    {
+        section: "|(※ Proportion of digital sales to total\n| dedicated video game software sales )" 
+    },
+] 
+
+    const proportionOfOverseasSalesArrays = [
+        header, 
+        footer, 
+        proportionOfOverseasSalesQtr,
+        proportionOfOverseasSalesCml, 
+        currentQuarter 
+    ] as const;
+
+    const proportionOfHardwareSalesArrays = [
+        headerTwo,
+        footerTwo,
+        proportionOfHardwareSalesQtr,
+        proportionOfHardwareSalesCml,
+        currentQuarter
+    ] as const;
+
+    const proportionOfFirstPartySoftwareSalesArrays = [
+        headerThree,
+        footerThree,
+        proportionOfFirstPartySoftwareSalesQtr,
+        proportionOfFirstPartySoftwareSalesCml,
+        currentQuarter
+    ] as const;
+
+    const digitalSalesArrays = [
+        headerFour,
+        footerFour,
+        digitalSalesQtr,
+        digitalSalesCml,
+        currentQuarter
+    ] as const;
+
+    const proportionOfDigitalSalesArrays = [
+        headerFive,
+        footerFive,
+        proportionOfDigitalSalesQtr,
+        proportionOfDigitalSalesCml,
+        currentQuarter
+    ] as const;
 
     const printOne = printHead(header)
 
-    const printTwo = printProportionOfOverseasSales(header, footer, proportionOfOverseasSalesQtr, proportionOfOverseasSalesCml, currentQuarter)
+    const [printTwo, printThree, printFour, printFive, printSix] = [
+    proportionOfOverseasSalesArrays, proportionOfHardwareSalesArrays, proportionOfFirstPartySoftwareSalesArrays, digitalSalesArrays, proportionOfDigitalSalesArrays].map((elem, index, array) => {
 
-    const printThree = printProportionOfHardwareSales(header, footer, proportionOfHardwareSalesQtr, proportionOfHardwareSalesCml, currentQuarter)
-
-    const printFour = printProportionOfFirstPartySoftwareSales(header, footer, proportionOfFirstPartySoftwareSalesQtr, proportionOfFirstPartySoftwareSalesCml, currentQuarter)
-
-    const printFive = printDigitalSales(header, footer, digitalSalesQtr, digitalSalesCml, currentQuarter)
-
-    const printSix = printProportionOfDigitalSales(header, footer, proportionOfDigitalSalesQtr, proportionOfDigitalSalesCml, currentQuarter)
+            return printBody(...elem)
+    })
 
 export const printKPI = `${printOne}
 ${printTwo}
