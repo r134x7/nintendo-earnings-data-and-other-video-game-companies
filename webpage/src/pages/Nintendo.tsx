@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Text, Group, Button, Space, Collapse, Autocomplete, NativeSelect, ColorPicker, Anchor, Stack, Paper } from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import NINTENDO_FY3_17 from "../components/NINTENDO_FY3_2017";
 import NINTENDO_FY3_18 from "../components/NINTENDO_FY3_2018";
@@ -43,8 +43,10 @@ export default function Nintendo() {
 
     const [year, setYear] = useState("");
 
-    const [colour, setColour] = useState("#e3170a")
-    console.log(colour)
+    const [colour, setColour] = useState("rgb(0, 255, 255)")
+
+    const state: any = useSelector(state => state);
+    
     useEffect(() => {
         const colourSplitReduce = colour.split("").reduce((acc, curr) => {
             return (curr === "b")
@@ -58,7 +60,7 @@ export default function Nintendo() {
             colour: colourSplitReduce
         }))
 
-    }, [colour])
+    }, [colour, dispatch])
 
     return (
 
@@ -92,15 +94,19 @@ export default function Nintendo() {
                     onChange={setYear}
                 />
                 
+                <Paper style={{backgroundColor: state.colour}} p="xs" radius="xl" withBorder>
+                <Text size="sm" >
+                Colour: {state.colour}
+                </Text>    
                 <ColorPicker 
                         withPicker={false}
                         mb="sm" 
-                        swatchesPerRow={10} 
+                        swatchesPerRow={7} 
                         format="rgb" 
                         swatches={[
                             "rgb(0, 0, 0)", 
                             "rgb(0, 255, 255)", 
-                            "rgb(65, 191, 179)",
+                            "rgb(0, 128, 128)",
                             "rgb(0, 0, 255)", 
                             "rgb(75, 0, 130)", 
                             "rgb(135, 30, 135)", 
@@ -116,12 +122,14 @@ export default function Nintendo() {
                             "rgb(212, 81, 19)", 
                             "rgb(255, 165, 0)", 
                             "rgb(255, 215, 0)",
+                            "rgb(200, 200, 200)",
                             "rgb(255, 196, 235)",
                             "rgb(255, 255, 255)", 
                         ]}
                         value={colour} 
                         onChange={setColour}
-                />
+                        />
+                        </Paper>
 
             </Group>
 
@@ -140,38 +148,51 @@ export default function Nintendo() {
                 : null
             }
             
-            <Group position="center">
-                <ColorPicker 
-                    withPicker={false}
-                    mb="sm" 
-                    swatchesPerRow={10} 
-                    format="rgb" 
-                    swatches={[
-                        "rgb(0, 0, 0)", 
-                        "rgb(0, 255, 255)", 
-                        "rgb(65, 191, 179)",
-                        "rgb(0, 0, 255)", 
-                        "rgb(75, 0, 130)", 
-                        "rgb(135, 30, 135)", 
-                        "rgb(255, 0, 255)", 
-                        "rgb(86, 29, 37)",
-                        "rgb(173, 255, 47)",
-                        "rgb(127, 184, 0)",
-                        "rgb(0, 255, 0)", 
-                        "rgb(128, 128, 128)",
-                        "rgb(255, 0, 0)",
-                        "rgb(227, 24, 9)",
-                        "rgb(220, 20, 60)", 
-                        "rgb(212, 81, 19)", 
-                        "rgb(255, 165, 0)", 
-                        "rgb(255, 215, 0)",
-                        "rgb(255, 196, 235)",
-                        "rgb(255, 255, 255)", 
-                    ]}
-                    value={colour} 
-                    onChange={setColour}
-                />
-            </Group>
+            { (year !== "")
+                ? (
+                <Group position="center">
+                    <Space h="xl" />
+                    <Paper style={{backgroundColor: state.colour}} p="xs" radius="xl" withBorder>
+                        <Text size="sm" >
+                        Colour: {state.colour}
+                        </Text>    
+                    <ColorPicker 
+                        withPicker={false}
+                        mb="sm" 
+                        swatchesPerRow={7} 
+                        format="rgb" 
+                        swatches={[
+                            "rgb(0, 0, 0)", 
+                            "rgb(0, 255, 255)", 
+                            "rgb(0, 128, 128)",
+                            "rgb(0, 0, 255)", 
+                            "rgb(75, 0, 130)", 
+                            "rgb(135, 30, 135)", 
+                            "rgb(255, 0, 255)", 
+                            "rgb(86, 29, 37)",
+                            "rgb(173, 255, 47)",
+                            "rgb(127, 184, 0)",
+                            "rgb(0, 255, 0)", 
+                            "rgb(128, 128, 128)",
+                            "rgb(255, 0, 0)",
+                            "rgb(227, 24, 9)",
+                            "rgb(220, 20, 60)", 
+                            "rgb(212, 81, 19)", 
+                            "rgb(255, 165, 0)", 
+                            "rgb(255, 215, 0)",
+                            "rgb(200, 200, 200)",
+                            "rgb(255, 196, 235)",
+                            "rgb(255, 255, 255)", 
+                        ]}
+                        value={colour} 
+                        onChange={setColour}
+                        />
+                        </Paper>
+                </Group>
+                ) : (
+                    null
+                )
+            }
         </div>
 
     );
