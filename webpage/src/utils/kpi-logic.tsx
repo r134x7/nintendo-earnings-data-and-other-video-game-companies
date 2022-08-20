@@ -18,12 +18,7 @@ export type Header = {
 }
 
 export type Footer = {
-    proportionOfOverseasSales: string,
-    proportionOfHardwareSales: string,
-    proportionOfFirstPartySoftwareSales: string,
-    digitalSales: string,
-    proportionOfDigitalSales: string,
-    proportionOfDLverPackagedSoftware: string,
+   section: "|(※ Proportion of overseas (outside of Japan)\n| sales to total sales)" | "|(※ Proportion of hardware\n|(including accessories) sales to total\n| dedicated video game platform sales)" | "|(※ Proportion of first-party software sales\n| to total dedicated video game software sales)" | "|(\"※ Digital sales include a) downloadable\n| versions of packaged software,\n|b) download-only software,\n|c) add-on content and\n|d) Nintendo Switch Online, etc.\n|＊\"Downloadable versions of packaged software\"\n| indicates the downloadable version of\n| software that is offered both physically\n| and digitally.\")" | "|(※ Proportion of digital sales to total\n| dedicated video game software sales )" | "|(※ Proportion of downloadable versions of\n| packaged software sales to total digital\n| sales as indicated above: a/(a+b+c+d) )", 
 }
 
 const printSections = (sectionDifference: KPDIndicators[], currentQuarter: number) => { 
