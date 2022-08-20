@@ -299,7 +299,7 @@ const proportionOfDLverPackagedSoftwareCml: KPDIndicators[] = [
 const header: Header = {
     companyName: " Nintendo Co., Ltd.",
     section: "| Proportion of overseas sales |",
-    fiscalYear: "| FY3/2022 |",
+    fiscalYear: "| FY3/2020 |",
     title: "| Key/Digital Sales Indicators |",
 }
 
