@@ -247,10 +247,6 @@ import {
 
     const header: Header = {
         companyName: " Nintendo Co., Ltd.",
-        // netSales: " Net Sales ",
-        // operatingIncome: " Operating Income ",
-        // operatingMargin: " Operating Margin ",
-        // netIncome: " Net Income ",
         yearOnYearPercentage: "|    YoY% |",
         fiscalYear: "FY3/2020 ",
         title: " Consolidated Operating Results   ",
@@ -259,21 +255,22 @@ import {
         borderLineLengthFooter: 32,
     }
     
-    const headerOperatingIncome: Header = {
-        ...header, section: "| Operating Income           "
-    }
+    const [headerOperatingIncome, headerOpMargin, headerNetIncome]: Header[] = [
+        {
+            ...header, section: "| Operating Income           "
+        },
+        {
+            ...header,
+            yearOnYearPercentage: "|", 
+            section: "| Operating Margin      ",
+            borderLineLengthBody: 23, 
+            borderLineLengthFooter: 27,  
+        },
+        {
+            ...header, section: "| Net Income                 "
+        },
+    ]
 
-    const headerOpMargin: Header = {
-        ...header,
-        yearOnYearPercentage: "|", 
-        section: "| Operating Margin      ",
-        borderLineLengthBody: 23, 
-        borderLineLengthFooter: 27,  
-    }
-
-    const headerNetIncome: Header = {
-        ...header, section: "| Net Income                 "
-    }
     const collection = [
         netSales,
         netSalesLastFy,

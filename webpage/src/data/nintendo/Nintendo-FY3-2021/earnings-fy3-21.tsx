@@ -273,20 +273,21 @@ import {
         borderLineLengthFooter: 32,
     }
 
-    const headerOperatingIncome: Header = {
-        ...header, section: "| Operating Income           "
-    }
-
-    const headerOpMargin: Header = {
-        ...header, 
-        section: "| Operating Margin      ",
-        borderLineLengthBody: 23, 
-        borderLineLengthFooter: 27,  
-    }
-
-    const headerNetIncome: Header = {
-        ...header, section: "| Net Income                 "
-    }
+    const [headerOperatingIncome, headerOpMargin, headerNetIncome]: Header[] = [
+        {
+            ...header, section: "| Operating Income           "
+        },
+        {
+            ...header,
+            yearOnYearPercentage: "|", 
+            section: "| Operating Margin      ",
+            borderLineLengthBody: 23, 
+            borderLineLengthFooter: 27,  
+        },
+        {
+            ...header, section: "| Net Income                 "
+        },
+    ] 
 
     const collection = [
         netSales,
