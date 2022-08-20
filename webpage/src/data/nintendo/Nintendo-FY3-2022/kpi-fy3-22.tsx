@@ -303,8 +303,75 @@ const header: Header = {
     title: "| Key/Digital Sales Indicators |",
 }
 
+const [headerTwo, headerThree, headerFour, headerFive, headerSix]: Header[] = [
+    {
+        ...header,
+        section: "| Proportion of hardware sales |"
+    },
+    {
+        ...header,
+        section: "| Proportion of first party    |\n| software sales               |"
+    },
+    {
+        ...header,
+        section: "| Digital Sales                |"
+    },
+    {
+        ...header,
+        section: "| Proportion of Digital Sales  |"
+    },
+    {
+        ...header,
+        section: "| Proportion of downloadable   |\n| versions of Packaged         |\n| Software Sales               |"
+    }
+]
+
+// const headerTwo: Header = {
+//     ...header, section: "| Proportion of hardware sales |"
+// }
+
+// const headerThree: Header = {
+//     ...header, section: "| Proportion of first party    |\n| software sales               |"
+// }
+
+// const headerFour: Header = {
+//     ...header, section: "| Proportion of Digital Sales  |" 
+// }
+
+// const headerFive: Header = {
+//     ...header, section: "| Proportion of Digital Sales  |"
+// }
+
+// const headerSix: Header = {
+//     ...header, section: "| Proportion of downloadable   |\n| versions of Packaged         |\n| Software Sales               |"
+// }
+
+// const [headerTwo, headerThree, headerFour, headerFive, headerSix] = Array.from({length: 5}, (elem, index) => header).map((elem: Header, index, array) => {
+//     let x: Header = {...elem, section: "| Digital Sales                |"}
+//     // let x = header.section = "| Digital Sales                |"
+//     return x
+// }) 
+
 const footer: Footer = {
     section: "|(※ Proportion of overseas (outside of Japan)\n| sales to total sales)"
+}
+
+const footerTwo: Footer = {
+    section: "|(※ Proportion of hardware\n|(including accessories) sales to total\n| dedicated video game platform sales)"
+}
+
+const footerThree: Footer = {
+    section: "|(※ Proportion of first-party software sales\n| to total dedicated video game software sales)" 
+}
+const footerFour: Footer = {
+    section: "|(\"※ Digital sales include a) downloadable\n| versions of packaged software,\n|b) download-only software,\n|c) add-on content and\n|d) Nintendo Switch Online, etc.\n|＊\"Downloadable versions of packaged software\"\n| indicates the downloadable version of\n| software that is offered both physically\n| and digitally.\")"
+}
+const footerFive: Footer = {
+    section: "|(※ Proportion of digital sales to total\n| dedicated video game software sales )" 
+}
+
+const footerSix: Footer = {
+    section: "|(※ Proportion of downloadable versions of\n| packaged software sales to total digital\n| sales as indicated above: a/(a+b+c+d) )" 
 }
 
     const proportionOfOverseasSalesArrays = [
@@ -316,40 +383,40 @@ const footer: Footer = {
     ] as const;
 
     const proportionOfHardwareSalesArrays = [
-        header,
-        footer,
+        headerTwo,
+        footerTwo,
         proportionOfHardwareSalesQtr,
         proportionOfHardwareSalesCml,
         currentQuarter
     ] as const;
 
     const proportionOfFirstPartySoftwareSalesArrays = [
-        header,
-        footer,
+        headerThree,
+        footerThree,
         proportionOfFirstPartySoftwareSalesQtr,
         proportionOfFirstPartySoftwareSalesCml,
         currentQuarter
     ] as const;
 
     const digitalSalesArrays = [
-        header,
-        footer,
+        headerFour,
+        footerFour,
         digitalSalesQtr,
         digitalSalesCml,
         currentQuarter
     ] as const;
 
     const proportionOfDigitalSalesArrays = [
-        header,
-        footer,
+        headerFive,
+        footerFive,
         proportionOfDigitalSalesQtr,
         proportionOfDigitalSalesCml,
         currentQuarter
     ] as const;
 
     const proportionOfDLverPackagedSoftwareArrays = [
-        header,
-        footer,
+        headerSix,
+        footerSix,
         proportionOfDLverPackagedSoftwareQtr,
         proportionOfDLverPackagedSoftwareCml,
         currentQuarter
