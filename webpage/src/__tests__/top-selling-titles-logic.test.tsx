@@ -31,29 +31,29 @@ const title1: Titles[] = [
 
 const title2: Titles[] = [
     {
-        title: " Super Mario Odyssey ", 
+        title: " The Legend of Zelda: Breath of the Wild ", 
         period: " 1st Quarter ",
-        value: 21.40,
+        value: 23.20,
     },
     {
-        title: " Super Mario Odyssey ", 
+        title: " The Legend of Zelda: Breath of the Wild ", 
         period: " 2nd Quarter ",
-        value: 21.95,
+        value: 24.13,
     },
     {
-        title: " Super Mario Odyssey ", 
+        title: " The Legend of Zelda: Breath of the Wild ", 
         period: " 3rd Quarter ",
-        value: 23.02,
+        value: 25.80,
     },
     {
-        title: " Super Mario Odyssey ", 
+        title: " The Legend of Zelda: Breath of the Wild ", 
         period: " 4th Quarter ",
-        value: 23.50,
+        value: 26.55,
     },
     {
-        title: " Super Mario Odyssey ", 
+        title: " The Legend of Zelda: Breath of the Wild ", 
         period: " Q4 Last FY ",
-        value: 20.83,
+        value: 22.28,
     },
 ]
 
@@ -116,8 +116,35 @@ test("quarterly calculation for arrays", () => {
     return quarterlyCalculation(elem)
  })
 
- console.log(testOne);
- console.log(testTwo);
+//  console.log(testOne);
+//  console.log(testTwo);
  
+
+})
+
+test("printing...", () => {
+    let currentQuarter = 4;
+
+    const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
+        
+        return titleDifference.filter((elem, index) => {
+            return index < currentQuarter
+        }).map((elem, index) => {
+
+            let printTitleName = (elem.title.length > 31)
+            ? elem.title.split("")
+            : elem.title
+
+            console.log(printTitleName);
+            
+
+            // let printTitleNameFixed
+            // need to reduce the first line of the title up to length 30 and then new line... so see if acc gives length
+        })
+    }
+
+    const [testOne, testTwo] = collection.map((elem) => {
+        return printTitles(elem, currentQuarter)
+    })
 
 })
