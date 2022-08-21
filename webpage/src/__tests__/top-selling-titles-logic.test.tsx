@@ -1,4 +1,3 @@
-import { validateJson } from "@mantine/core";
 import { Titles } from "../utils/top-selling-titles-logic";
 
 const title1: Titles[] = [
@@ -71,6 +70,21 @@ const collection = [
 
 // for using .sort and not mutating the original arrays use mapping sort method, source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 
+function quarterlyCalculation(quarters: Titles[]) {
+       
+   // calc needs to be defined as earnings to retain its type when making any changes
+   const calc: Titles[] = quarters.map((elem, index, array) => {
+       return (index === 0) 
+               ? {...elem, value: Number((elem.value - array[4].value).toFixed(2))
+               } // to subtract from the LTD figure last FY
+               : (index !== 4 && index !== 0)
+               ? {...elem, value: Number((elem.value - array[index-1].value).toFixed(2))}
+               : elem // no changes to LTD figure last FY
+   })
+   
+   return calc
+}
+
 test("Arrays are sorted in descending order using current quarter as reference", () => {
 
     let currentQuarter = 4;
@@ -97,21 +111,6 @@ test("Arrays are sorted in descending order using current quarter as reference",
 
 test("quarterly calculation for arrays", () => {
 
- function quarterlyCalculation(quarters: Titles[]) {
-        
-    // calc needs to be defined as earnings to retain its type when making any changes
-    const calc: Titles[] = quarters.map((elem, index, array) => {
-        return (index === 0) 
-                ? {...elem, value: Number((elem.value - array[4].value).toFixed(2))
-                } // to subtract from the LTD figure last FY
-                : (index !== 4 && index !== 0)
-                ? {...elem, value: Number((elem.value - array[index-1].value).toFixed(2))}
-                : elem // no changes to LTD figure last FY
-    })
-    
-    return calc
- }
-
  const [testOne, testTwo] = collection.map((elem) => {
     return quarterlyCalculation(elem)
  })
@@ -122,7 +121,7 @@ test("quarterly calculation for arrays", () => {
 
 })
 
-test("printing...", () => {
+test("printing titles and quarterly numbers", () => {
     let currentQuarter = 4;
 
     const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
@@ -161,6 +160,30 @@ test("printing...", () => {
     console.log(testOne);
     console.log(testTwo);
     
-    
+})
 
+test("printing fy cumulative and LTD", () => {
+    let currentQuarter = 2;
+
+    const printTitleFYLTD = (titleDifference: Titles[], currentQuarter: number) => {
+
+        return titleDifference.filter((elem, index) => {
+            return index < currentQuarter
+        }).reduce((prev, next) => {
+
+            return {...prev, ...next} // reduces all objects using spread syntax, + operator can't be used.
+        })
+
+    }
+
+    const collectionDifference = collection.map((elem) => {
+        return quarterlyCalculation(elem)
+    })
+    
+    const [testOne, testTwo] = collectionDifference.map((elem) => {
+        return printTitleFYLTD(elem, currentQuarter)
+    })
+
+    console.log(testOne);
+    console.log(testTwo);
 })
