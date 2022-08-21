@@ -1,3 +1,4 @@
+import { Header } from "../utils/earnings-logic";
 import { Titles } from "../utils/top-selling-titles-logic";
 
 const title1: Titles[] = [
@@ -61,13 +62,6 @@ const collection = [
     title2,
 ] as const;
 
-// printing...
-// must check length of title
-// split title if length longer than 31
-// figure out the rest...
-// usual formatting, reference earnings logic
-// 
-
 // for using .sort and not mutating the original arrays use mapping sort method, source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 
 function quarterlyCalculation(quarters: Titles[]) {
@@ -83,6 +77,66 @@ function quarterlyCalculation(quarters: Titles[]) {
    })
    
    return calc
+}
+
+const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
+        
+    return titleDifference.filter((elem, index) => {
+        return index < currentQuarter
+    }).map((elem, index) => {
+
+        let printRank: string = ` Rank ${elem.rank} `
+        let printRankFixed: string = (printRank.length >= 10)
+                ? printRank
+                : " ".repeat(10 - printRank.length) + printRank;
+
+        let printTitleName: string = (elem.title.length > 31)
+        ? elem.title.split("").reduce((prev, next, index, array) => {
+
+            if (prev.length === 31 && next === " ") {
+                return prev + `\n` + next
+            } else {
+                return prev + next
+            }
+        })
+        : elem.title
+
+        let printTitleNameFixed: string = "+"+"-".repeat(43)+"+\n|"+ printTitleName + "|" + printRankFixed + "|"
+
+        let printValue: string = `${elem.value}M `
+        let printValueFixed: string = (printValue.length >= 10)
+            ? printValue
+            : " ".repeat(10 - printValue.length) + printValue;
+        
+        // return "|" + elem.period + "|" + printValueFixed + "|"
+        return (index === 0) 
+                ? printTitleNameFixed + "\n|" + elem.period + "|" + printValueFixed + "|" 
+                : "|" + elem.period + "|" + printValueFixed + "|"
+    })
+}
+
+const printTitleLTD = (titleLTD: Titles[], currentQuarter: number) => {
+
+    // titleLTD[currentQuarter-1]
+
+    let printValue: string = `${titleLTD[currentQuarter-1].value}M `
+    let printValueFixed: string = (printValue.length === 10)
+            ? printValue
+            : " ".repeat(10 - printValue.length) + printValue;
+
+        return "| Life-To-Date        |" + printValueFixed + "|"
+
+}
+
+const printTitleFYCml = (titleDifference: Titles[], currentQuarter: number) => {
+
+    return titleDifference.filter((elem, index) => {
+        return index < currentQuarter
+    }).reduce((prev, next) => {
+
+        return {...prev, ...next} // reduces all objects using spread syntax, + operator can't be used.
+    })
+
 }
 
 test("Arrays are sorted in descending order using current quarter as reference", () => {
@@ -124,33 +178,7 @@ test("quarterly calculation for arrays", () => {
 test("printing titles and quarterly numbers", () => {
     let currentQuarter = 4;
 
-    const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
-        
-        return titleDifference.filter((elem, index) => {
-            return index < currentQuarter
-        }).map((elem, index) => {
-
-            let printTitleName: string = (elem.title.length > 31)
-            ? elem.title.split("").reduce((prev, next, index, array) => {
-
-                if (prev.length === 31 && next === " ") {
-                    return prev + `\n` + next
-                } else {
-                    return prev + next
-                }
-            })
-            : elem.title
-
-            // console.log(printTitleName);
-            
-            let printValue: string = `${elem.value}M `
-            let printValueFixed: string = (printValue.length === 10)
-                ? printValue
-                : " ".repeat(10 - printValue.length) + printValue;
-
-            return "|" + elem.period + "|" + printValueFixed + "|"
-        })
-    }
+    
 //    0.24M  l: 10
 // 1st Quarter     l: 21    
     const [testOne, testTwo] = collection.map((elem) => {
@@ -164,17 +192,6 @@ test("printing titles and quarterly numbers", () => {
 
 test("printing fy cumulative", () => {
     let currentQuarter = 4;
-
-    const printTitleFYCml = (titleDifference: Titles[], currentQuarter: number) => {
-
-        return titleDifference.filter((elem, index) => {
-            return index < currentQuarter
-        }).reduce((prev, next) => {
-
-            return {...prev, ...next} // reduces all objects using spread syntax, + operator can't be used.
-        })
-
-    }
 
     const collectionDifference = collection.map((elem) => {
         return quarterlyCalculation(elem)
@@ -196,19 +213,6 @@ test("printing LTD", () => {
 
 //    const testOne = collection.map((elem, index) => elem[currentQuarter-1]) // map needs to be used to filter through an array of arrays
 
-   const printTitleLTD = (titleLTD: Titles[], currentQuarter: number) => {
-
-        // titleLTD[currentQuarter-1]
-
-        let printValue: string = `${titleLTD[currentQuarter-1].value}M `
-        let printValueFixed: string = (printValue.length === 10)
-                ? printValue
-                : " ".repeat(10 - printValue.length) + printValue;
-
-            return "| Life-To-Date        |" + printValueFixed + "|"
-
-    }
-
     // const [testThree, testFour] = testOne.map((elem) => {
         // return printTitleLTD(elem)
     // })
@@ -219,4 +223,69 @@ test("printing LTD", () => {
     console.log(testThree)
     console.log(testFour);
     
+})
+
+test("print body", () => {
+
+    let currentQuarter = 4;
+
+//line
+// title | rank
+// line
+// quarters
+// double line
+// fy cml
+// ltd
+// no line unless last title
+// looks like I'll run into the issue with titles that aren't on the ranking for four quarters...
+//+-------------------------------------------+
+const printBody = (quarter: Titles[], FYCml: Titles[], LTD: Titles[], currentQuarter: number) => 
+`+${"-".repeat(43)}+
+${printTitles(quarter, currentQuarter)}
++${"=".repeat(43)}+
+${printTitleFYCml(FYCml, currentQuarter)}
+${printTitleLTD(LTD, currentQuarter)}
++${"-".repeat(43)}+`;
+
+ const testCollection = collection.map((elem, index, array) => {
+            return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a[currentQuarter-1].value > b[currentQuarter-1].value)
+            ? 1
+            : (a[currentQuarter-1].value < b[currentQuarter-1].value)
+            ? -1
+            : 0
+    }).map((elem, index) => {
+        // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+        const x: Titles[] = [...elem].map((elemTwo) => {
+            return {...elemTwo, rank: index+1} 
+        })
+        return x // x which is the returned array is now returned to the array of arrays
+    })
+
+   const [testOne, testTwo] = testCollection.map((elem) => {
+        return quarterlyCalculation(elem)
+   }) 
+
+   const [testOneFYCml, testTwoFYCml] = [testOne, testTwo].map((elem) => {
+        return printTitleFYCml(elem, currentQuarter)
+   })
+
+   const [testOneLTD, testTwoLTD] = testCollection.map((elem) => {
+        return printTitleLTD(elem, currentQuarter)
+   })
+
+   const testOneArrays = [
+        testOne,
+        testOneFYCml,
+        testOneLTD,
+        currentQuarter
+   ] as const;
+
+   const testTwoArrays = [
+        testTwo,
+        testTwoFYCml,
+        testTwoLTD,
+        currentQuarter,
+   ] as const;
 })
