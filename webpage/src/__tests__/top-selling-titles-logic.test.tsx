@@ -55,3 +55,23 @@ const title2: Titles[] = [
         value: 20.83,
     },
 ]
+
+// going to need to group the arrays
+// going to need to sort the arrays by the fourth quarter value of the current fy
+// going to need to use sort inside map??? sort mutates
+// create a function to sort then
+// use array destructuring for the output of the function
+// add rank? to the Titles type
+// map rank to each array.........
+// 
+// quarterly calculation...
+// reference earnings logic qc
+// no first halves, no first three quarters used
+// consider using reduce fy cumulative figure
+// 
+// printing...
+// must check length of title
+// split title if length longer than 31
+// figure out the rest...
+// usual formatting, reference earnings logic
+// 
