@@ -82,7 +82,7 @@ test("Arrays are sorted in descending order using current quarter as reference",
 
     const testCollection = collection.map((elem, index, array) => {
             return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
-    }).sort((b, a) => { // (b,a) is ascending order, (a,b) sorts in descending order
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
         return (a[currentQuarter-1].value > b[currentQuarter-1].value)
             ? 1
             : (a[currentQuarter-1].value < b[currentQuarter-1].value)
@@ -96,5 +96,21 @@ test("Arrays are sorted in descending order using current quarter as reference",
         return x // x which is the returned array is now returned to the array of arrays
     })
     
-    console.log(testCollection)
+    // console.log(testCollection)
+})
+
+test("quarterly calculation for arrays", () => {
+
+ function quarterlyCalculation(quarters: Titles[]) {
+        
+    // calc needs to be defined as earnings to retain its type when making any changes
+    const calc: Titles[] = quarters.map((elem, index, array) => {
+        return (index === 0) 
+                ? {...elem, value: elem.value - array[4].value} // to subtract from the LTD figure last FY
+                : {...elem, value: elem.value - array[index-1].value}
+    })
+    
+    return calc
+ }
+
 })
