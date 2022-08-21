@@ -4,22 +4,22 @@ import { Titles } from "../utils/top-selling-titles-logic";
 const title1: Titles[] = [
     {
         title: " Mario Kart 8 Deluxe ",
-        period: " 1st Quarter ",
+        period: " 1st Quarter         ",
         value: 37.08,
     },
     {
         title: " Mario Kart 8 Deluxe ",
-        period: " 2nd Quarter ",
+        period: " 2nd Quarter         ",
         value: 38.74,
     },
     {
         title: " Mario Kart 8 Deluxe ",
-        period: " 3rd Quarter ",
+        period: " 3rd Quarter         ",
         value: 43.35,
     },
     {
         title: " Mario Kart 8 Deluxe ",
-        period: " 4th Quarter ",
+        period: " 4th Quarter         ",
         value: 45.33,
     },
     {
@@ -32,22 +32,22 @@ const title1: Titles[] = [
 const title2: Titles[] = [
     {
         title: " The Legend of Zelda: Breath of the Wild ", 
-        period: " 1st Quarter ",
+        period: " 1st Quarter         ",
         value: 23.20,
     },
     {
         title: " The Legend of Zelda: Breath of the Wild ", 
-        period: " 2nd Quarter ",
+        period: " 2nd Quarter         ",
         value: 24.13,
     },
     {
         title: " The Legend of Zelda: Breath of the Wild ", 
-        period: " 3rd Quarter ",
+        period: " 3rd Quarter         ",
         value: 25.80,
     },
     {
         title: " The Legend of Zelda: Breath of the Wild ", 
-        period: " 4th Quarter ",
+        period: " 4th Quarter         ",
         value: 26.55,
     },
     {
@@ -144,15 +144,23 @@ test("printing...", () => {
 
             console.log(printTitleName);
             
+            let printValue: string = `${elem.value}M `
+            let printValueFixed: string = (printValue.length === 10)
+                ? printValue
+                : " ".repeat(10 - printValue.length) + printValue;
 
-            // let printTitleNameFixed
-            // need to reduce the first line of the title up to length 30 and then new line... so see if acc gives length
-
+            return "|" + elem.period + "|" + printValueFixed + "|"
         })
     }
-
+//    0.24M  l: 10
+// 1st Quarter     l: 21    
     const [testOne, testTwo] = collection.map((elem) => {
         return printTitles(elem, currentQuarter)
     })
+
+    console.log(testOne);
+    console.log(testTwo);
+    
+    
 
 })
