@@ -493,14 +493,14 @@ test("Print All - No Match, console.log only", () => {
 
     const printSeven = printProportionOfDLverPackagedSoftware(header, footer, proportionOfDLverPackagedSoftwareQtr, proportionOfDLverPackagedSoftwareCml, currentQuarter)
 
-    console.log(
-`${printOne}
-${printTwo}
-${printThree}
-${printFour}
-${printFive}
-${printSix}
-${printSeven}
-+${"-".repeat(30)+"+"}
-###`)
+//     console.log(
+// `${printOne}
+// ${printTwo}
+// ${printThree}
+// ${printFour}
+// ${printFive}
+// ${printSix}
+// ${printSeven}
+// +${"-".repeat(30)+"+"}
+// ###`)
 })

@@ -226,7 +226,7 @@ test("Year on Year calculation returns type and not number", () => {
     ]
 
     const [netSalesDifferenceYoy, netSalesCumulativeYoy] = yearOnYearCollection.map((elem, index, array) => {
-        console.log(elem);
+        // console.log(elem);
         
         return (index % 2 === 0)
                 ? yearOnYearCalculation(array[index], array[index+1])
@@ -348,5 +348,5 @@ test("print section all of Net Sales Quarter 4", () => {
 
     const typeB = printNetSales(header, netSalesDifference, netSalesDifferenceYoy, netSalesCumulative, netSalesCumulativeYoy, netSalesForecasts, currentQuarter)
     
-    console.log(typeB)
+    // console.log(typeB)
 })

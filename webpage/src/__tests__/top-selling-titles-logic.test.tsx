@@ -1,4 +1,3 @@
-import { getValue } from "@testing-library/user-event/dist/utils";
 import { Titles } from "../utils/top-selling-titles-logic";
 
 const title1: Titles[] = [
@@ -83,13 +82,36 @@ const title2: Titles[] = [
 
 test("Arrays are sorted in descending order using 4th quarter as reference", () => {
 
-    const testOne = title1.map((elem, index, array) => {
-        return { index, value: elem }
+    let currentQuarter = 4;
+
+    let collection = [
+        title1,
+        title2,
+    ] as const;
+
+    const testCollection = collection.map((elem, index, array) => {
+        // const [testOne, testTwo] = collection.map((elem, index, array) => {
+            let x: Titles[] = [...elem]
+            
+        return x[currentQuarter-1]
+        // return x[index] === x[currentQuarter-1]
     })
+    
+    // const testOne = title1.filter((elem, index) => {
+        // return index === currentQuarter-1
+    // })
+    // .map((elem, index, array) => {
+        // return { index, value: elem.value }
+    // })
 
-    console.log(testOne)
 
-    testOne.sort((a, b) => {
+    // console.log(testOne)
+    // console.log(testTwo)
+    console.log(testCollection)
+
+    
+    // testCollection.sort((a, b) => { // sorts in descending order
+    testCollection.sort((b, a) => { // sorts in ascending order
         return (a.value > b.value) 
             ? 1
             : (a.value < b.value) 
@@ -97,9 +119,14 @@ test("Arrays are sorted in descending order using 4th quarter as reference", () 
             : 0
     })
 
-    console.log(testOne)
+    console.log(testCollection)
 
-    const result = testOne.map((elem) => title1[elem.index])
 
+    const result: Titles[] = testCollection.map((elem, index) => {
+        return {...elem, rank: index+1}
+    })
+    // const result = testCollection.map((elem) => title1[elem.index])
     console.log(result)
+
+    console.log(collection)
 })
