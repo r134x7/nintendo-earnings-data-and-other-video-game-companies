@@ -1,3 +1,4 @@
+import { getValue } from "@testing-library/user-event/dist/utils";
 import { Titles } from "../utils/top-selling-titles-logic";
 
 const title1: Titles[] = [
@@ -75,3 +76,30 @@ const title2: Titles[] = [
 // figure out the rest...
 // usual formatting, reference earnings logic
 // 
+
+// for using .sort and not mutating the original arrays use spread syntax, source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+// eg const sorted = [...array].sort()
+// source also has a mapping sort method
+
+test("Arrays are sorted in descending order using 4th quarter as reference", () => {
+
+    const testOne = title1.map((elem, index, array) => {
+        return { index, value: elem }
+    })
+
+    console.log(testOne)
+
+    testOne.sort((a, b) => {
+        return (a.value > b.value) 
+            ? 1
+            : (a.value < b.value) 
+            ? -1
+            : 0
+    })
+
+    console.log(testOne)
+
+    const result = testOne.map((elem) => title1[elem.index])
+
+    console.log(result)
+})
