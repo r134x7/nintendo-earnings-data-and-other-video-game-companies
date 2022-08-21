@@ -141,7 +141,7 @@ test("printing titles and quarterly numbers", () => {
             })
             : elem.title
 
-            console.log(printTitleName);
+            // console.log(printTitleName);
             
             let printValue: string = `${elem.value}M `
             let printValueFixed: string = (printValue.length === 10)
@@ -157,13 +157,13 @@ test("printing titles and quarterly numbers", () => {
         return printTitles(elem, currentQuarter)
     })
 
-    console.log(testOne);
-    console.log(testTwo);
+    // console.log(testOne);
+    // console.log(testTwo);
     
 })
 
 test("printing fy cumulative and LTD", () => {
-    let currentQuarter = 2;
+    let currentQuarter = 4;
 
     const printTitleFYLTD = (titleDifference: Titles[], currentQuarter: number) => {
 
@@ -184,6 +184,31 @@ test("printing fy cumulative and LTD", () => {
         return printTitleFYLTD(elem, currentQuarter)
     })
 
-    console.log(testOne);
-    console.log(testTwo);
+    const [testThree, testFour] = collection.map((elem, index) => {
+        // console.log(elem[index]);
+        // console.log(elem[currentQuarter-1]);
+        // console.log(elem.length);
+        // if (elem[index] === elem[currentQuarter-1]) {
+        //     return elem[index]
+        // } else {
+        //     return
+        // }
+        return elem[currentQuarter-1]
+        
+        // return elem[1]
+        // return elem.filter((elemTwo, indexTwo) => {
+        //     console.log(elemTwo);
+            
+        //     return elemTwo
+        // })
+        
+    })
+
+    // console.log(testOne);
+    // console.log(testTwo)
+    // console.log(collection);
+    
+    console.log(testThree);
+    console.log(testFour);
+    
 })
