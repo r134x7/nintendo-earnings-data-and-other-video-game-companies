@@ -271,21 +271,30 @@ ${printTitleLTD(LTD, currentQuarter)}
         return printTitleFYCml(elem, currentQuarter)
    })
 
-   const [testOneLTD, testTwoLTD] = testCollection.map((elem) => {
-        return printTitleLTD(elem, currentQuarter)
-   })
+   const [testOneLTD, testTwoLTD] = testCollection.map((elem) => elem)
 
    const testOneArrays = [
         testOne,
-        testOneFYCml,
-        testOneLTD,
+        testOne,
+        testCollection[0],
         currentQuarter
    ] as const;
 
    const testTwoArrays = [
         testTwo,
-        testTwoFYCml,
+        testTwo,
         testTwoLTD,
         currentQuarter,
    ] as const;
+
+   const [printTwo, printThree] = [
+        testOneArrays,
+        testTwoArrays,
+   ].map((elem) => {
+        return printBody(...elem)
+   })
+
+   console.log(printTwo)
+   console.log(printThree);
+   
 })
