@@ -1,3 +1,4 @@
+import { validateJson } from "@mantine/core";
 import { Titles } from "../utils/top-selling-titles-logic";
 
 const title1: Titles[] = [
@@ -91,10 +92,28 @@ test("Arrays are sorted in descending order using 4th quarter as reference", () 
 
     const testCollection = collection.map((elem, index, array) => {
         // const [testOne, testTwo] = collection.map((elem, index, array) => {
-            let x: Titles[] = [...elem]
-            
-        return x[currentQuarter-1]
+            // let x: Titles[] = [...elem]
+            return elem
+        // return x[currentQuarter-1]
         // return x[index] === x[currentQuarter-1]
+    }).sort((a, b) => { // descending currently
+        return (a[currentQuarter-1].value > b[currentQuarter-1].value)
+            ? 1
+            : (a[currentQuarter-1].value < b[currentQuarter-1].value)
+            ? -1
+            : 0
+    }).map((elem, index) => {
+        // let x: Titles[] = [...elem]
+        // console.log(x)
+        // let y: Titles[] = [{...x, rank: index+1}]
+        // })
+        // return y
+        // let x: Titles[] = [...elem]
+        // console.log(elem)
+        const y: Titles[] = [...elem].map((elemTwo, indexTwo) => {
+            return {...elemTwo, rank: index+1} 
+        })
+        return y
     })
     
     // const testOne = title1.filter((elem, index) => {
@@ -111,22 +130,30 @@ test("Arrays are sorted in descending order using 4th quarter as reference", () 
 
     
     // testCollection.sort((a, b) => { // sorts in descending order
-    testCollection.sort((b, a) => { // sorts in ascending order
-        return (a.value > b.value) 
-            ? 1
-            : (a.value < b.value) 
-            ? -1
-            : 0
-    })
+    // testCollection.sort((b, a) => { // sorts in ascending order
+    //     return (a.value > b.value) 
+    //         ? 1
+    //         : (a.value < b.value) 
+    //         ? -1
+    //         : 0
+    // })
 
-    console.log(testCollection)
+    // console.log(testCollection)
 
 
-    const result: Titles[] = testCollection.map((elem, index) => {
-        return {...elem, rank: index+1}
-    })
-    // const result = testCollection.map((elem) => title1[elem.index])
-    console.log(result)
+    // const result: Titles[] = testCollection.map((elem, index) => {
+    //     return {...elem, rank: index+1}
+    // })
+    // // const result = testCollection.map((elem) => title1[elem.index])
+    // console.log(result)
 
-    console.log(collection)
+    // const newCollection = collection.map((elem, index, array) => {
+    //     if (result[index].title === elem[currentQuarter-1].title) {
+    //         return {...elem, rank: result[index].rank}
+    //     } else {
+    //         return elem
+    //     }
+    // })
+
+    // console.log(newCollection)
 })
