@@ -162,10 +162,10 @@ test("printing titles and quarterly numbers", () => {
     
 })
 
-test("printing fy cumulative and LTD", () => {
+test("printing fy cumulative", () => {
     let currentQuarter = 4;
 
-    const printTitleFYLTD = (titleDifference: Titles[], currentQuarter: number) => {
+    const printTitleFYCml = (titleDifference: Titles[], currentQuarter: number) => {
 
         return titleDifference.filter((elem, index) => {
             return index < currentQuarter
@@ -179,36 +179,44 @@ test("printing fy cumulative and LTD", () => {
     const collectionDifference = collection.map((elem) => {
         return quarterlyCalculation(elem)
     })
+
     
     const [testOne, testTwo] = collectionDifference.map((elem) => {
-        return printTitleFYLTD(elem, currentQuarter)
+        return printTitleFYCml(elem, currentQuarter)
     })
-
-    const [testThree, testFour] = collection.map((elem, index) => {
-        // console.log(elem[index]);
-        // console.log(elem[currentQuarter-1]);
-        // console.log(elem.length);
-        // if (elem[index] === elem[currentQuarter-1]) {
-        //     return elem[index]
-        // } else {
-        //     return
-        // }
-        return elem[currentQuarter-1]
-        
-        // return elem[1]
-        // return elem.filter((elemTwo, indexTwo) => {
-        //     console.log(elemTwo);
-            
-        //     return elemTwo
-        // })
-        
-    })
-
-    // console.log(testOne);
-    // console.log(testTwo)
-    // console.log(collection);
     
-    console.log(testThree);
+    // console.log(testOne);
+    // console.log(testTwo);
+    
+})
+
+test("printing LTD", () => {
+
+   let currentQuarter = 3; 
+
+//    const testOne = collection.map((elem, index) => elem[currentQuarter-1]) // map needs to be used to filter through an array of arrays
+
+   const printTitleLTD = (titleLTD: Titles[], currentQuarter: number) => {
+
+        // titleLTD[currentQuarter-1]
+
+        let printValue: string = `${titleLTD[currentQuarter-1].value}M `
+        let printValueFixed: string = (printValue.length === 10)
+                ? printValue
+                : " ".repeat(10 - printValue.length) + printValue;
+
+            return "| Life-To-Date        |" + printValueFixed + "|"
+
+    }
+
+    // const [testThree, testFour] = testOne.map((elem) => {
+        // return printTitleLTD(elem)
+    // })
+    const [testThree, testFour] = collection.map((elem) => {
+        return printTitleLTD(elem, currentQuarter)
+    })
+
+    console.log(testThree)
     console.log(testFour);
     
 })
