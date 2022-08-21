@@ -57,11 +57,11 @@ const title2: Titles[] = [
     },
 ]
 
-// quarterly calculation...
-// reference earnings logic qc
-// no first halves, no first three quarters used
-// consider using reduce fy cumulative figure
-// 
+const collection = [
+    title1,
+    title2,
+] as const;
+
 // printing...
 // must check length of title
 // split title if length longer than 31
@@ -75,10 +75,6 @@ test("Arrays are sorted in descending order using current quarter as reference",
 
     let currentQuarter = 4;
 
-    let collection = [
-        title1,
-        title2,
-    ] as const;
 
     const testCollection = collection.map((elem, index, array) => {
             return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
@@ -106,11 +102,22 @@ test("quarterly calculation for arrays", () => {
     // calc needs to be defined as earnings to retain its type when making any changes
     const calc: Titles[] = quarters.map((elem, index, array) => {
         return (index === 0) 
-                ? {...elem, value: elem.value - array[4].value} // to subtract from the LTD figure last FY
-                : {...elem, value: elem.value - array[index-1].value}
+                ? {...elem, value: Number((elem.value - array[4].value).toFixed(2))
+                } // to subtract from the LTD figure last FY
+                : (index !== 4 && index !== 0)
+                ? {...elem, value: Number((elem.value - array[index-1].value).toFixed(2))}
+                : elem // no changes to LTD figure last FY
     })
     
     return calc
  }
+
+ const [testOne, testTwo] = collection.map((elem) => {
+    return quarterlyCalculation(elem)
+ })
+
+ console.log(testOne);
+ console.log(testTwo);
+ 
 
 })
