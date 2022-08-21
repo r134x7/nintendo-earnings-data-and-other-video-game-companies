@@ -131,8 +131,15 @@ test("printing...", () => {
             return index < currentQuarter
         }).map((elem, index) => {
 
-            let printTitleName = (elem.title.length > 31)
-            ? elem.title.split("")
+            let printTitleName: string = (elem.title.length > 31)
+            ? elem.title.split("").reduce((prev, next, index, array) => {
+
+                if (prev.length === 31 && next === " ") {
+                    return prev + `\n` + next
+                } else {
+                    return prev + next
+                }
+            })
             : elem.title
 
             console.log(printTitleName);
@@ -140,6 +147,7 @@ test("printing...", () => {
 
             // let printTitleNameFixed
             // need to reduce the first line of the title up to length 30 and then new line... so see if acc gives length
+
         })
     }
 
