@@ -1,8 +1,11 @@
 import { 
     Titles,
+    Header,
     quarterlyCalculation,
     printBody,
 } from "../../../utils/top-selling-titles-logic";
+
+const currentQuarter = 4;
 
 const title1: Titles[] = [
     {
@@ -311,3 +314,46 @@ const title11: Titles[] = [
         value: 0
     },
 ]
+
+const header: Header = {
+    switchHeader: "| Switch - Top Selling Titles    |",
+    units: "| Units                          |",
+    fiscalYear: "| FY3/22 Cumulative   |",
+}
+
+const collection = [
+    title1,
+    title2,
+    title3,
+    title4,
+    title5,
+    title6,
+    title7,
+    title8,
+    title9,
+    title10,
+    title11,
+] as const;
+
+const sortedCollection = collection.map((elem, index, array) => {
+            return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a[currentQuarter-1].value > b[currentQuarter-1].value)
+            ? 1
+            : (a[currentQuarter-1].value < b[currentQuarter-1].value)
+            ? -1
+            : 0
+    }).map((elem, index) => {
+        // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+        const x: Titles[] = [...elem].map((elemTwo) => {
+            return {...elemTwo, rank: index+1} 
+        })
+        return x // x which is the returned array is now returned to the array of arrays
+    })
+
+export const [
+    title1Difference, title2Difference, title3Difference, title4Difference, title5Difference, title6Difference, title7Difference, title8Difference, title9Difference, title10Difference, title11Difference,
+] = sortedCollection.map((elem) => {
+    return quarterlyCalculation(elem)
+})
+

@@ -5,6 +5,12 @@ export type Titles = {
     rank?: number,
 }
 
+export type Header = {
+    switchHeader: string,
+    units: string,
+    fiscalYear: string,
+}
+
 export function quarterlyCalculation(quarters: Titles[]) {
        
    const calc: Titles[] = quarters.map((elem, index, array) => {
@@ -71,7 +77,7 @@ const printTitleLTD = (titleLTD: Titles[], currentQuarter: number) => {
 
 }
 
-const printTitleFYCml = (titleDifference: Titles[], currentFY: string, currentQuarter: number) => {
+const printTitleFYCml = (titleDifference: Titles[], currentFY: Header, currentQuarter: number) => {
 
     let reduced = titleDifference.filter((elem, index) => {
         return index < currentQuarter
@@ -85,10 +91,18 @@ const printTitleFYCml = (titleDifference: Titles[], currentFY: string, currentQu
         ? reducedValue
         : " ".repeat(10 - reducedValue.length) + reducedValue; 
 
-    return currentFY + reducedValueFixed + "|"
+    return currentFY.fiscalYear + reducedValueFixed + "|"
 }
 
-export const printBody = (quarter: Titles[], FYCml: Titles[], LTD: Titles[], currentFY: string, currentQuarter: number) => 
+export const printHead = (header: Header) =>
+`+${"-".repeat(32)}+
+${header.switchHeader}
++${"-".repeat(32)}+
++${"-".repeat(32)}+
+${header.units}
++${"-".repeat(32)}+`;
+
+export const printBody = (quarter: Titles[], FYCml: Titles[], LTD: Titles[], currentFY: Header, currentQuarter: number) => 
 `+${"-".repeat(43)}+
 ${printTitles(quarter, currentQuarter)}
 +${"=".repeat(32)}+
