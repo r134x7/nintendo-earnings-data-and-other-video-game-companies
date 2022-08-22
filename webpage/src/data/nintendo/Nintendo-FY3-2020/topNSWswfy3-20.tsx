@@ -296,6 +296,21 @@ const title11: Titles[] = [
     },
     {
         title: " 1-2-Switch ",
+        period: " 2nd Quarter         ",
+        value: 3.01
+    },
+    {
+        title: " 1-2-Switch ",
+        period: " 3rd Quarter         ",
+        value: 3.01
+    },
+    {
+        title: " 1-2-Switch ",
+        period: " 4th Quarter         ",
+        value: 3.01
+    },
+    {
+        title: " 1-2-Switch ",
         period: " Q4 Last FY",
         value: 2.97
     },
@@ -309,6 +324,21 @@ const title12: Titles[] = [
     },
     {
         title: " Mario Tennis Aces ",
+        period: " 2nd Quarter         ",
+        value: 2.75
+    },
+    {
+        title: " Mario Tennis Aces ",
+        period: " 3rd Quarter         ",
+        value: 2.75
+    },
+    {
+        title: " Mario Tennis Aces ",
+        period: " 4th Quarter         ",
+        value: 2.75
+    },
+    {
+        title: " Mario Tennis Aces ",
         period: " Q4 Last FY",
         value: 2.64
     },
@@ -317,7 +347,22 @@ const title12: Titles[] = [
 const title13: Titles[] = [
     {
         title: " The Legend of Zelda: Link's Awakening ",
+        period: " 1st Quarter         ",
+        value: 0
+    },
+    {
+        title: " The Legend of Zelda: Link's Awakening ",
         period: " 2nd Quarter         ",
+        value: 3.13
+    },
+    {
+        title: " The Legend of Zelda: Link's Awakening ",
+        period: " 3rd Quarter         ",
+        value: 3.13
+    },
+    {
+        title: " The Legend of Zelda: Link's Awakening ",
+        period: " 4th Quarter         ",
         value: 3.13
     },
     {
@@ -341,12 +386,12 @@ const title14: Titles[] = [
     {
         title: " Super Mario Maker 2 ",
         period: " 3rd Quarter         ",
-        value: 0
+        value: 3.93
     },
     {
         title: " Super Mario Maker 2 ",
         period: " 4th Quarter         ",
-        value: 0
+        value: 3.93
     },
     {
         title: " Super Mario Maker 2 ",
@@ -374,7 +419,7 @@ const title15: Titles[] = [
     {
         title: " Luigi's Mansion 3 ",
         period: " 4th Quarter         ",
-        value: 0
+        value: 5.37
     },
     {
         title: " Luigi's Mansion 3 ",
