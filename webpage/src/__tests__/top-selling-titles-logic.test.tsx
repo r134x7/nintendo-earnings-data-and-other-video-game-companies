@@ -99,19 +99,23 @@ const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
                 return prev + next
             }
         })
+        : (elem.title.length < 31)
+        ? elem.title + " ".repeat(32 - elem.title.length) 
         : elem.title
 
-        let printTitleNameFixed: string = "+"+"-".repeat(43)+"+\n|"+ printTitleName + "|" + printRankFixed + "|"
+        let printTitleNameFixed: string = "|" + printTitleName + "|" + printRankFixed + "|\n+"+"-".repeat(43)+"+"
 
         let printValue: string = `${elem.value}M `
         let printValueFixed: string = (printValue.length >= 10)
             ? printValue
             : " ".repeat(10 - printValue.length) + printValue;
-        
+
         // return "|" + elem.period + "|" + printValueFixed + "|"
         return (index === 0) 
                 ? printTitleNameFixed + "\n|" + elem.period + "|" + printValueFixed + "|" 
                 : "|" + elem.period + "|" + printValueFixed + "|"
+    }).reduce((prev, next, index, array) => {
+        return prev + "\n" + next
     })
 }
 
@@ -130,12 +134,19 @@ const printTitleLTD = (titleLTD: Titles[], currentQuarter: number) => {
 
 const printTitleFYCml = (titleDifference: Titles[], currentQuarter: number) => {
 
-    return titleDifference.filter((elem, index) => {
+    let reduced = titleDifference.filter((elem, index) => {
         return index < currentQuarter
     }).reduce((prev, next) => {
 
         return {...prev, ...next} // reduces all objects using spread syntax, + operator can't be used.
     })
+
+    let reducedValue: string = `${reduced.value}M `
+    let reducedValueFixed: string = (reducedValue.length >= 10)
+        ? reducedValue
+        : " ".repeat(10 - reducedValue.length) + reducedValue; 
+
+    return "|" + " FY3/22 Cumulative   " + "|" + reducedValueFixed + "|"
 
 }
 
@@ -239,13 +250,14 @@ test("print body", () => {
 // no line unless last title
 // looks like I'll run into the issue with titles that aren't on the ranking for four quarters...
 //+-------------------------------------------+
+//+================================+
 const printBody = (quarter: Titles[], FYCml: Titles[], LTD: Titles[], currentQuarter: number) => 
 `+${"-".repeat(43)}+
 ${printTitles(quarter, currentQuarter)}
-+${"=".repeat(43)}+
++${"=".repeat(32)}+
 ${printTitleFYCml(FYCml, currentQuarter)}
 ${printTitleLTD(LTD, currentQuarter)}
-+${"-".repeat(43)}+`;
++${"-".repeat(32)}+`;
 
  const testCollection = collection.map((elem, index, array) => {
             return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
