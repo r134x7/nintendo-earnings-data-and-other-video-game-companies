@@ -53,7 +53,9 @@ const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
 
         let printTitleNameFixed: string = "|" + printTitleName + "|" + printRankFixed + "|\n+"+"-".repeat(43)+"+"
 
-        let printValue: string = `${elem.value}M `
+        let printValue: string = (elem.value !== 0) 
+            ? `${elem.value}M `
+            : ` N/A `
         let printValueFixed: string = (printValue.length >= 10)
             ? printValue
             : " ".repeat(10 - printValue.length) + printValue;
