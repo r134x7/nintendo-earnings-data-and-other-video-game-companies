@@ -28,7 +28,7 @@ export function quarterlyCalculation(quarters: Titles[]) {
 const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
         
     return titleDifference.filter((elem, index) => {
-        return index < currentQuarter
+        return index < currentQuarter && elem.value !== 0
     }).map((elem, index) => {
 
         let printRank: string = ` Rank ${elem.rank} `
@@ -53,9 +53,10 @@ const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
 
         let printTitleNameFixed: string = "|" + printTitleName + "|" + printRankFixed + "|\n+"+"-".repeat(43)+"+"
 
-        let printValue: string = (elem.value !== 0) 
-            ? `${elem.value}M `
-            : ` N/A `
+        let printValue: string = `${elem.value}M ` 
+        // let printValue: string = (elem.value !== 0) 
+        //     ? `${elem.value}M `
+        //     : ` N/A `
         let printValueFixed: string = (printValue.length >= 10)
             ? printValue
             : " ".repeat(10 - printValue.length) + printValue;

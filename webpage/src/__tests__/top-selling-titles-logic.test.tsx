@@ -147,9 +147,7 @@ const printTitleFYCml = (titleDifference: Titles[], currentQuarter: number) => {
 
     let reducedFixed = Number(reduced.toFixed(2))
 
-    let reducedValue: string = (reducedFixed !== 0) 
-        ? `${reducedFixed}M `
-        : ` N/A `
+    let reducedValue: string = `${reducedFixed}M `
     let reducedValueFixed: string = (reducedValue.length >= 10)
         ? reducedValue
         : " ".repeat(10 - reducedValue.length) + reducedValue; 
