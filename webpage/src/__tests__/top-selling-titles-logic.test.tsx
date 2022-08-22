@@ -1,4 +1,3 @@
-import { Header } from "../utils/earnings-logic";
 import { Titles } from "../utils/top-selling-titles-logic";
 
 const title1: Titles[] = [
