@@ -137,12 +137,15 @@ const printTitleFYCml = (titleDifference: Titles[], currentQuarter: number) => {
 
     let reduced = titleDifference.filter((elem, index) => {
         return index < currentQuarter
+    }).map((elem, index) => {
+
+        return elem.value
     }).reduce((prev, next) => {
 
-        return {...prev, ...next} // reduces all objects using spread syntax, + operator can't be used.
+        return prev + next // reduces all objects using spread syntax, + operator can't be used.
     })
 
-    let reducedValue: string = `${reduced.value}M `
+    let reducedValue: string = `${reduced}M `
     let reducedValueFixed: string = (reducedValue.length >= 10)
         ? reducedValue
         : " ".repeat(10 - reducedValue.length) + reducedValue; 
@@ -280,9 +283,9 @@ ${printTitleLTD(LTD, currentQuarter)}
         return quarterlyCalculation(elem)
    }) 
 
-   const [testOneFYCml, testTwoFYCml] = [testOne, testTwo].map((elem) => {
-        return printTitleFYCml(elem, currentQuarter)
-   })
+//    const [testOneFYCml, testTwoFYCml] = [testOne, testTwo].map((elem) => {
+//         return printTitleFYCml(elem, currentQuarter)
+//    })
 
    const [testOneLTD, testTwoLTD] = testCollection.map((elem) => elem)
 
