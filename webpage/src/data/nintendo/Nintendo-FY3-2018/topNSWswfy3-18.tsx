@@ -122,27 +122,27 @@ const title4: Titles[] = [
 
 const title5: Titles[] = [
     {
-        title: " Mario Tennis Aces ",
+        title: " Xenoblade Chronicles 2 ",
         period: " 1st Quarter         ",
-        value: 1.38
+        value: 0
     },
     {
-        title: " Mario Tennis Aces ",
+        title: " Xenoblade Chronicles 2 ",
         period: " 2nd Quarter         ",
-        value: 2.16
+        value: 0
     },
     {
-        title: " Mario Tennis Aces ",
+        title: " Xenoblade Chronicles 2 ",
         period: " 3rd Quarter         ",
-        value: 2.53
+        value: 1.06
     },
     {
-        title: " Mario Tennis Aces ",
+        title: " Xenoblade Chronicles 2 ",
         period: " 4th Quarter         ",
-        value: 2.64
+        value: 1.31
     },
     {
-        title: " Mario Tennis Aces ",
+        title: " Xenoblade Chronicles 2 ",
         period: " Q4 Last FY",
         value: 0
     },
@@ -232,34 +232,6 @@ const title8: Titles[] = [
     },
 ]
 
-const title9: Titles[] = [
-    {
-        title: " Xenoblade Chronicles 2 ",
-        period: " 1st Quarter         ",
-        value: 0
-    },
-    {
-        title: " Xenoblade Chronicles 2 ",
-        period: " 2nd Quarter         ",
-        value: 0
-    },
-    {
-        title: " Xenoblade Chronicles 2 ",
-        period: " 3rd Quarter         ",
-        value: 1.06
-    },
-    {
-        title: " Xenoblade Chronicles 2 ",
-        period: " 4th Quarter         ",
-        value: 1.31
-    },
-    {
-        title: " Xenoblade Chronicles 2 ",
-        period: " Q4 Last FY",
-        value: 0
-    },
-]
-
 const header: Header = {
     switchHeader: "| Switch - Top Selling Titles    |",
     units: "| Units                          |",
@@ -275,7 +247,6 @@ const collection = [
     title6,
     title7,
     title8,
-    title9,
 ] as const;
 
 const sortedCollection = collection.map((elem, index, array) => {
@@ -295,7 +266,7 @@ const sortedCollection = collection.map((elem, index, array) => {
     })
 
 export const [
-    title1Difference, title2Difference, title3Difference, title4Difference, title5Difference, title6Difference, title7Difference, title8Difference, title9Difference
+    title1Difference, title2Difference, title3Difference, title4Difference, title5Difference, title6Difference, title7Difference, title8Difference, 
 ] = sortedCollection.map((elem) => {
     return quarterlyCalculation(elem)
 })
@@ -366,14 +337,6 @@ const title8arrays = [
     currentQuarter,
 ] as const;
 
-const title9arrays = [
-    title9Difference,
-    title9Difference,
-    sortedCollection[8],
-    header,
-    currentQuarter,
-] as const;
-
 const [printTwo, printThree, printFour, printFive, printSix, printSeven, printEight, printNine, printTen] = [
     title1arrays,
     title2arrays,
@@ -383,7 +346,6 @@ const [printTwo, printThree, printFour, printFive, printSix, printSeven, printEi
     title6arrays,
     title7arrays,
     title8arrays,
-    title9arrays,
 ].map((elem, index, array) => {
     return printBody(...elem)
 })
@@ -397,5 +359,4 @@ ${printFive}
 ${printSix}
 ${printSeven}
 ${printEight}
-${printNine}
-${printTen}`;
+${printNine}`;
