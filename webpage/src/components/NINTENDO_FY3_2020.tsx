@@ -6,6 +6,7 @@ import { printKPI } from "../data/nintendo/Nintendo-FY3-2020/kpi-fy3-20";
 import { printTopSellingSwitchTitles } from "../data/nintendo/Nintendo-FY3-2020/topNSWswfy3-20";
 import GRAPH_NINTENDO_EARNINGS_FY3_20 from "../graphs/nintendo/Nintendo-FY3-2020/GRAPH_NINTENDO_EARNINGS_FY3_20";
 import GRAPH_NINTENDO_KPI_FY3_20 from "../graphs/nintendo/Nintendo-FY3-2020/GRAPH_NINTENDO_KPI_FY3_20";
+import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_20 from "../graphs/nintendo/Nintendo-FY3-2020/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_20";
 
 export default function NINTENDO_FY3_20() {
 
@@ -116,6 +117,8 @@ export default function NINTENDO_FY3_20() {
                 ? <GRAPH_NINTENDO_EARNINGS_FY3_20 />
                 : (value === "Key/Digital Sales Indicator")
                 ? <GRAPH_NINTENDO_KPI_FY3_20 />
+                : (value === "Top Selling Titles")
+                ? <GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_20 />
                 : null
             }
             <Space h="xl" />
