@@ -102,8 +102,7 @@ export default function GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_18() {
                                             ? acc + "1)"
                                             : acc + curr;
                                     }),
-                            fill: true,
-                            pointRadius: 8,
+                            pointRadius: 6,
                             pointBorderColor: "black",
                             pointBorderWidth: 2,
                             },
@@ -120,8 +119,7 @@ export default function GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_18() {
                                             ? acc + ".3)"
                                             : acc + curr;
                                     }),
-                            fill: true,
-                            pointRadius: 8,
+                            pointRadius: 6,
                             pointBorderColor: "black",
                             pointBorderWidth: 2,
                             },
@@ -157,16 +155,43 @@ export default function GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_18() {
                         datasets: [
                             {
                                 data: titleQuarters[activePage-1],
-                                label: titleLabels[activePage-1],
+                                label: `${titleLabels[activePage-1]}[Quarter]`,
                                 borderColor: "indigo",
                                 backgroundColor: "red",
-
+                                pointRadius: 6,
+                                pointBorderColor: "black",
+                                pointBorderWidth: 2,
+                                stack: "stack 0",
                             },
                             {
-                                data: titleQuarters[activePage-1],
-                                label: titleLabels[activePage-1],
+                                data: titleCumulatives[activePage-1],
+                                label: `${titleLabels[activePage-1]}[Cumulative]`,
+                                borderColor: "rgba(75, 0, 130, .30)",
+                                backgroundColor: "red",
+                                pointRadius: 6,
+                                pointBorderColor: "black",
+                                pointBorderWidth: 2,
+                                stack: "stack 0",
+                            },
+                            {
+                                data: titleQuarters[secondDataRef-1],
+                                label: `${titleLabels[secondDataRef-1]}[Quarter]`,
                                 borderColor: "orange",
-                                backgroundColor: "black",
+                                backgroundColor: "cyan",
+                                pointRadius: 6,
+                                pointBorderColor: "black",
+                                pointBorderWidth: 2,
+                                stack: "stack 1",
+                            },
+                            {
+                                data: titleCumulatives[secondDataRef-1],
+                                label: `${titleLabels[secondDataRef-1]}[Cumulative]`,
+                                borderColor: "rgba(255, 165, 0, 0.3)",
+                                backgroundColor: "cyan",
+                                pointRadius: 6,
+                                pointBorderColor: "black",
+                                pointBorderWidth: 2,
+                                stack: "stack 1",
                             },
                         ], 
                     }}
@@ -174,15 +199,17 @@ export default function GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_18() {
                     options={{
                      scales: {
                         y: {
+                            stacked: true,
                             title: {
                               display: true,
                                   text: "Units in Millions",
                             },
                           },
                           x: {
+                            stacked: true,
                               title: {
                                   display: true,
-                                  text: `Quarters for Fiscal Years Ending ${labels.MarchThisYear} and ${labels.MarchLastYear}`,
+                                  text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
                                 },
                             },
                         }
@@ -295,7 +322,7 @@ export default function GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_18() {
                         stacked: true,
                           title: {
                               display: true,
-                              text: `Quarters for Fiscal Years Ending ${labels.MarchThisYear} and ${labels.MarchLastYear}`,
+                              text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
                             },
                         },
                     }
