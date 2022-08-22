@@ -300,7 +300,7 @@ export default function GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_18() {
                         },
                         {
                             data: titleCumulatives[secondDataRef-1],
-                            label: `${titleLabels[activePage-1]}[Cumulative]`,
+                            label: `${titleLabels[secondDataRef-1]}[Cumulative]`,
                             borderColor: "black",
                             backgroundColor: "rgba(255, 165, 0, 0.2)",
                             borderWidth: 2,
