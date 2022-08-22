@@ -12,27 +12,27 @@ const title1: Titles[] = [
     {
         title: " Mario Kart 8 Deluxe ",
         period: " 1st Quarter         ",
-        value: 37.08,
+        value: 17.89,
     },
     {
         title: " Mario Kart 8 Deluxe ",
         period: " 2nd Quarter         ",
-        value: 38.74,
+        value: 19.01,
     },
     {
         title: " Mario Kart 8 Deluxe ",
         period: " 3rd Quarter         ",
-        value: 43.35,
+        value: 22.96,
     },
     {
         title: " Mario Kart 8 Deluxe ",
         period: " 4th Quarter         ",
-        value: 45.33,
+        value: 24.77,
     },
     {
         title: " Mario Kart 8 Deluxe ",
         period: " Q4 Last FY ",
-        value: 35.39,
+        value: 16.69,
     },
 ]
 
@@ -40,27 +40,27 @@ const title2: Titles[] = [
     {
         title: " Super Mario Odyssey ",
         period: " 1st Quarter         ",
-        value: 21.40
+        value: 14.94
     },
     {
         title: " Super Mario Odyssey ",
         period: " 2nd Quarter         ",
-        value: 21.95
+        value: 15.38
     },
     {
         title: " Super Mario Odyssey ",
         period: " 3rd Quarter         ",
-        value: 23.02
+        value: 16.59
     },
     {
         title: " Super Mario Odyssey ",
         period: " 4th Quarter         ",
-        value: 23.50
+        value: 17.41
     },
     {
         title: " Super Mario Odyssey ",
         period: " Q4 Last FY",
-        value: 20.83
+        value: 14.44 
     },
 ]
 
@@ -68,27 +68,27 @@ const title3: Titles[] = [
     {
         title: " The Legend of Zelda: Breath of the Wild ", 
         period: " 1st Quarter         ",
-        value: 23.20,
+        value: 13.61,
     },
     {
         title: " The Legend of Zelda: Breath of the Wild ", 
         period: " 2nd Quarter         ",
-        value: 24.13,
+        value: 14.54,
     },
     {
         title: " The Legend of Zelda: Breath of the Wild ", 
         period: " 3rd Quarter         ",
-        value: 25.80,
+        value: 16.34,
     },
     {
         title: " The Legend of Zelda: Breath of the Wild ", 
         period: " 4th Quarter         ",
-        value: 26.55,
+        value: 17.41,
     },
     {
         title: " The Legend of Zelda: Breath of the Wild ", 
         period: " Q4 Last FY ",
-        value: 22.28,
+        value: 12.77,
     },
 ]
 
@@ -96,27 +96,27 @@ const title4: Titles[] = [
     {
         title: " Splatoon 2 ",
         period: " 1st Quarter         ",
-        value: 12.45
+        value: 9.02
     },
     {
         title: " Splatoon 2 ",
         period: " 2nd Quarter         ",
-        value: 12.68
+        value: 9.28
     },
     {
         title: " Splatoon 2 ",
         period: " 3rd Quarter         ",
-        value: 12.68
+        value: 9.81
     },
     {
         title: " Splatoon 2 ",
         period: " 4th Quarter         ",
-        value: 12.68
+        value: 10.13
     },
     {
         title: " Splatoon 2 ",
         period: " Q4 Last FY",
-        value: 12.21
+        value: 8.70
     },
 ]
 
@@ -124,27 +124,27 @@ const title5: Titles[] = [
     {
         title: " Animal Crossing: New Horizons  ",
         period: " 1st Quarter         ",
-        value: 33.89
+        value: 0
     },
     {
         title: " Animal Crossing: New Horizons  ",
         period: " 2nd Quarter         ",
-        value: 34.85
+        value: 0
     },
     {
         title: " Animal Crossing: New Horizons  ",
         period: " 3rd Quarter         ",
-        value: 37.62
+        value: 0
     },
     {
         title: " Animal Crossing: New Horizons  ",
         period: " 4th Quarter         ",
-        value: 38.64
+        value: 11.77
     },
     {
         title: " Animal Crossing: New Horizons  ",
         period: " Q4 Last FY",
-        value: 32.63 
+        value: 0
     },
 ]
 
@@ -152,27 +152,27 @@ const title6: Titles[] = [
     {
         title: " Pokémon Sword / Pokémon Shield ",
         period: " 1st Quarter         ",
-        value: 21.85
+        value: 0
     },
     {
         title: " Pokémon Sword / Pokémon Shield ",
         period: " 2nd Quarter         ",
-        value: 22.64
+        value: 0
     },
     {
         title: " Pokémon Sword / Pokémon Shield ",
         period: " 3rd Quarter         ",
-        value: 23.90
+        value: 16.06
     },
     {
         title: " Pokémon Sword / Pokémon Shield ",
         period: " 4th Quarter         ",
-        value: 24.27
+        value: 17.37 
     },
     {
         title: " Pokémon Sword / Pokémon Shield ",
         period: " Q4 Last FY",
-        value: 21.10
+        value: 0
     },
 ]
 
@@ -180,55 +180,55 @@ const title7: Titles[] = [
     {
         title: " Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee ",
         period: " 1st Quarter         ",
-        value: 13.57
+        value: 10.98
     },
     {
         title: " Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee ",
         period: " 2nd Quarter         ",
-        value: 13.83
+        value: 11.28
     },
     {
         title: " Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee ",
         period: " 3rd Quarter         ",
-        value: 14.33
+        value: 11.76
     },
     {
         title: " Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee ",
         period: " 4th Quarter         ",
-        value: 14.65
+        value: 11.97
     },
     {
         title: " Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee ",
         period: " Q4 Last FY",
-        value: 13.28
+        value: 10.63
     },
 ]
 
 const title8: Titles[] = [
     {
-        title: " Ring Fit Adventure ",
+        title: " New Super Mario Bros. U Deluxe ",
         period: " 1st Quarter         ",
-        value: 11.26
+        value: 4.10
     },
     {
-        title: " Ring Fit Adventure ",
+        title: " New Super Mario Bros. U Deluxe ",
         period: " 2nd Quarter         ",
-        value: 12.21
+        value: 4.59
     },
     {
-        title: " Ring Fit Adventure ",
+        title: " New Super Mario Bros. U Deluxe ",
         period: " 3rd Quarter         ",
-        value: 13.53
+        value: 5.85
     },
     {
-        title: " Ring Fit Adventure ",
+        title: " New Super Mario Bros. U Deluxe ",
         period: " 4th Quarter         ",
-        value: 14.09
+        value: 6.60
     },
     {
-        title: " Ring Fit Adventure ",
+        title: " New Super Mario Bros. U Deluxe ",
         period: " Q4 Last FY",
-        value: 10.11
+        value: 3.31
     },
 ]
 
@@ -236,27 +236,27 @@ const title9: Titles[] = [
     {
         title: " Super Mario Party ",
         period: " 1st Quarter         ",
-        value: 15.72
+        value: 6.99
     },
     {
         title: " Super Mario Party ",
         period: " 2nd Quarter         ",
-        value: 16.48
+        value: 7.59
     },
     {
         title: " Super Mario Party ",
         period: " 3rd Quarter         ",
-        value: 17.39
+        value: 9.12
     },
     {
         title: " Super Mario Party ",
         period: " 4th Quarter         ",
-        value: 17.78
+        value: 10.10
     },
     {
         title: " Super Mario Party ",
         period: " Q4 Last FY",
-        value: 14.79
+        value: 6.4
     },
 ]
 
@@ -264,53 +264,120 @@ const title10: Titles[] = [
     {
         title: " Super Smash Bros. Ultimate ",
         period: " 1st Quarter         ",
-        value: 24.77
+        value: 14.73
     },
     {
         title: " Super Smash Bros. Ultimate ",
         period: " 2nd Quarter         ",
-        value: 25.71
+        value: 15.71
     },
     {
         title: " Super Smash Bros. Ultimate ",
         period: " 3rd Quarter         ",
-        value: 27.40
+        value: 17.68
     },
     {
         title: " Super Smash Bros. Ultimate ",
         period: " 4th Quarter         ",
-        value: 28.17
+        value: 18.84
     },
     {
         title: " Super Smash Bros. Ultimate ",
         period: " Q4 Last FY",
-        value: 23.84
+        value: 13.81
     },
 ]
 
 const title11: Titles[] = [
     {
-        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        title: " 1-2-Switch ",
+        period: " 1st Quarter         ",
+        value: 3.01
+    },
+    {
+        title: " 1-2-Switch ",
+        period: " Q4 Last FY",
+        value: 2.97
+    },
+]
+
+const title12: Titles[] = [
+    {
+        title: " Mario Tennis Aces ",
+        period: " 1st Quarter         ",
+        value: 2.75
+    },
+    {
+        title: " Mario Tennis Aces ",
+        period: " Q4 Last FY",
+        value: 2.64
+    },
+]
+
+const title13: Titles[] = [
+    {
+        title: " The Legend of Zelda: Link's Awakening ",
+        period: " 2nd Quarter         ",
+        value: 3.13
+    },
+    {
+        title: " The Legend of Zelda: Link's Awakening ",
+        period: " Q4 Last FY",
+        value: 0
+    },
+]
+
+const title14: Titles[] = [
+    {
+        title: " Super Mario Maker 2 ",
+        period: " 1st Quarter         ",
+        value: 2.42
+    },
+    {
+        title: " Super Mario Maker 2 ",
+        period: " 2nd Quarter         ",
+        value: 3.93
+    },
+    {
+        title: " Super Mario Maker 2 ",
+        period: " 3rd Quarter         ",
+        value: 0
+    },
+    {
+        title: " Super Mario Maker 2 ",
+        period: " 4th Quarter         ",
+        value: 0
+    },
+    {
+        title: " Super Mario Maker 2 ",
+        period: " Q4 Last FY",
+        value: 0
+    },
+]
+
+const title15: Titles[] = [
+    {
+        title: " Luigi's Mansion 3 ",
         period: " 1st Quarter         ",
         value: 0
     },
     {
-        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        title: " Luigi's Mansion 3 ",
         period: " 2nd Quarter         ",
+        value: 0 
+    },
+    {
+        title: " Luigi's Mansion 3 ",
+        period: " 3rd Quarter         ",
+        value: 5.37
+    },
+    {
+        title: " Luigi's Mansion 3 ",
+        period: " 4th Quarter         ",
         value: 0
     },
     {
-        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-        period: " 3rd Quarter         ",
-        value: 13.97
-    },
-    {
-        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-        period: " 4th Quarter         ",
-        value: 14.65
-    },
-    {
-        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        title: " Luigi's Mansion 3 ",
         period: " Q4 Last FY",
         value: 0
     },
@@ -319,7 +386,7 @@ const title11: Titles[] = [
 const header: Header = {
     switchHeader: "| Switch - Top Selling Titles    |",
     units: "| Units                          |",
-    fiscalYear: "| FY3/22 Cumulative   |",
+    fiscalYear: "| FY3/20 Cumulative   |",
 }
 
 const collection = [
@@ -334,6 +401,10 @@ const collection = [
     title9,
     title10,
     title11,
+    title12,
+    title13,
+    title14,
+    title15,
 ] as const;
 
 const sortedCollection = collection.map((elem, index, array) => {
@@ -353,7 +424,7 @@ const sortedCollection = collection.map((elem, index, array) => {
     })
 
 export const [
-    title1Difference, title2Difference, title3Difference, title4Difference, title5Difference, title6Difference, title7Difference, title8Difference, title9Difference, title10Difference, title11Difference,
+    title1Difference, title2Difference, title3Difference, title4Difference, title5Difference, title6Difference, title7Difference, title8Difference, title9Difference, title10Difference, title11Difference, title12Difference, title13Difference, title14Difference, title15Difference, 
 ] = sortedCollection.map((elem) => {
     return quarterlyCalculation(elem)
 })
@@ -448,7 +519,40 @@ const title11arrays = [
     currentQuarter,
 ] as const;
 
-const [printTwo, printThree, printFour, printFive, printSix, printSeven, printEight, printNine, printTen, printEleven, printTwelve] = [
+const title12arrays = [
+    title12Difference,
+    title12Difference,
+    sortedCollection[11],
+    header,
+    currentQuarter,
+] as const;
+
+const title13arrays = [
+    title13Difference,
+    title13Difference,
+    sortedCollection[12],
+    header,
+    currentQuarter,
+] as const;
+
+const title14arrays = [
+    title14Difference,
+    title14Difference,
+    sortedCollection[13],
+    header,
+    currentQuarter,
+] as const;
+
+const title15arrays = [
+    title15Difference,
+    title15Difference,
+    sortedCollection[14],
+    header,
+    currentQuarter,
+] as const;
+
+
+const [printTwo, printThree, printFour, printFive, printSix, printSeven, printEight, printNine, printTen, printEleven, printTwelve, printThirteen, printFourteen, printFifteen, printSixteen, ] = [
     title1arrays,
     title2arrays,
     title3arrays,
@@ -459,8 +563,12 @@ const [printTwo, printThree, printFour, printFive, printSix, printSeven, printEi
     title8arrays,
     title9arrays,
     title10arrays,
-    title11arrays
-].map((elem, index, array) => {
+    title11arrays,
+    title12arrays,
+    title13arrays,
+    title14arrays,
+    title15arrays,
+].map((elem) => {
     return printBody(...elem)
 })
 
@@ -476,4 +584,9 @@ ${printEight}
 ${printNine}
 ${printTen}
 ${printEleven}
-${printTwelve}`;
+${printTwelve}
+${printThirteen}
+${printFourteen}
+${printFifteen}
+${printSixteen}`;
+
