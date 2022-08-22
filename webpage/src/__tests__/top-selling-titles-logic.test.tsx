@@ -312,7 +312,106 @@ ${printTitleLTD(LTD, currentQuarter)}
         return printBody(...elem)
    })
 
-   console.log(printTwo)
-   console.log(printThree);
+//    console.log(printTwo)
+//    console.log(printThree);
    
+})
+
+test("fix title edge cases!", () => {
+
+    const titleList = [
+        {
+           title: " Mario Kart 8 Deluxe ",
+           rank: 1
+        },
+        {
+            rank: 2,
+        title: " Super Mario Odyssey ",
+        },
+        {
+            rank: 3,
+        title: " The Legend of Zelda: Breath of the Wild ", 
+        },
+        {
+            rank: 4,
+            title: " Splatoon 2 ",
+        },
+        {
+            rank: 5,
+        title: " Animal Crossing: New Horizons  ",
+        },
+        {
+            rank: 6,
+        title: " Pokémon Sword / Pokémon Shield ",
+        },
+        {
+            rank: 7,
+        title: " Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee ",
+        },
+        {
+        title: " Ring Fit Adventure ",
+        rank: 8,
+        },
+        {
+        title: " Super Mario Party ",
+            rank: 9,
+        },
+        {
+        title: " Super Smash Bros. Ultimate ",
+            rank: 10,
+        },
+        {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+            rank: 11,
+        }
+    ]
+
+    const printTitleEdgeCases = titleList.map((elem, index) => {
+
+        let printRank: string = ` Rank ${elem.rank} `
+        let printRankFixed: string = (printRank.length >= 10)
+                ? printRank
+                : " ".repeat(10 - printRank.length) + printRank;
+
+        let printTitleName: string = (elem.title.length > 32)
+        // ? elem.title.split("").reduce((prev, next, index, array) => {
+        ? elem.title.split(" ").reduce((prev, next, index, array) => {
+            // console.log(index + "<]] index [[> array "  + array.length);
+            let nextCheck = prev + next + " ";
+            //  if (prev.length === 31 && next === " ") {
+            if (nextCheck.length > 31 && prev.length <= 31) {
+                return prev + " ".repeat(32 - prev.length) + `|          |\n| ` + next
+            // } else if (index === elem.title.length-1) { // can no longer use index now that the split is by word and not every character
+            } else if (index === array.length-1) { // compares the array length to the index of the split words to get condition I want
+                // return prev + next + " ".repeat(63 - elem.title.length) // cannot use elem.length here due to split words as well
+                console.log(prev.length + " prev");
+                console.log(next.length + " next");
+                console.log(elem.title.length + " elem");
+                // return prev + next + " ".repeat( 47 - (prev.length - 31)) 
+                return prev + next + " ".repeat( 78 - prev.length)
+            } else {
+                return prev + " " + next
+            }
+//                                     
+            //  if (prev.length === 31 && elem.title.length > 32) {
+                // return prev + ` |          |\n|` + next
+            // } else if (index === elem.title.length-1) {
+            //     return prev + next + " ".repeat(63 - elem.title.length)
+            // } else {
+            //     return prev + next
+            // }
+        })
+        : (elem.title.length < 32)
+        ? elem.title + " ".repeat(32 - elem.title.length) 
+        : elem.title
+
+        let printTitleNameFixed: string = "|" + printTitleName + "|" + printRankFixed + "|\n+"+"-".repeat(43)+"+"
+
+        return printTitleNameFixed
+    }).reduce((prev, next, index, array) => {
+        return prev + "\n" + next
+    })
+
+    console.log(printTitleEdgeCases);
+    
 })
