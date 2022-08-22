@@ -142,10 +142,12 @@ const printTitleFYCml = (titleDifference: Titles[], currentQuarter: number) => {
         return elem.value
     }).reduce((prev, next) => {
 
-        return prev + next // reduces all objects using spread syntax, + operator can't be used.
+        return prev + next 
     })
 
-    let reducedValue: string = `${reduced}M `
+    let reducedFixed = Number(reduced.toFixed(2))
+
+    let reducedValue: string = `${reducedFixed}M `
     let reducedValueFixed: string = (reducedValue.length >= 10)
         ? reducedValue
         : " ".repeat(10 - reducedValue.length) + reducedValue; 
