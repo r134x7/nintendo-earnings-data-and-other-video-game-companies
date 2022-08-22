@@ -353,6 +353,20 @@ const sortedCollection = collection.map((elem, index, array) => {
     })
 
 export const [
+    title1Sorted,
+    title2Sorted,
+    title3Sorted,
+    title4Sorted,
+    title5Sorted,
+    title6Sorted,
+    title7Sorted,
+    title8Sorted,
+    title9Sorted,
+    title10Sorted,
+    title11Sorted,
+] = sortedCollection
+
+export const [
     title1Difference, title2Difference, title3Difference, title4Difference, title5Difference, title6Difference, title7Difference, title8Difference, title9Difference, title10Difference, title11Difference,
 ] = sortedCollection.map((elem) => {
     return quarterlyCalculation(elem)

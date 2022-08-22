@@ -1119,6 +1119,8 @@ export default function NINTENDO_FY3_22() {
                 ? <GRAPH_NINTENDO_EARNINGS_FY3_22 />
                 : (value === "Key/Digital Sales Indicator")
                 ? <GRAPH_NINTENDO_KPI_FY3_22 />
+                : (value === "Top Selling Titles")
+                ? <GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_22 />
                 : null
             }
             <Space h="xl" />
