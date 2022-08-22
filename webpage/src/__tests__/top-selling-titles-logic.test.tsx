@@ -94,7 +94,9 @@ const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
         ? elem.title.split("").reduce((prev, next, index, array) => {
 
             if (prev.length === 31 && next === " ") {
-                return prev + `\n` + next
+                return prev + ` |          |\n|` + next
+            } else if (index === elem.title.length-1) {
+                return prev + next + " ".repeat(63 - elem.title.length)
             } else {
                 return prev + next
             }
