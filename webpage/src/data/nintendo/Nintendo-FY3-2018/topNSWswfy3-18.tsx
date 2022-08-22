@@ -249,7 +249,7 @@ const collection = [
     title8,
 ] as const;
 
-const sortedCollection = collection.map((elem, index, array) => {
+export const sortedCollection = collection.map((elem, index, array) => {
             return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
     }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
         return (a[currentQuarter-1].value > b[currentQuarter-1].value)
@@ -264,6 +264,17 @@ const sortedCollection = collection.map((elem, index, array) => {
         })
         return x // x which is the returned array is now returned to the array of arrays
     })
+
+export const [
+    title1Sorted,
+    title2Sorted,
+    title3Sorted,
+    title4Sorted,
+    title5Sorted,
+    title6Sorted,
+    title7Sorted,
+    title8Sorted,
+] = sortedCollection
 
 export const [
     title1Difference, title2Difference, title3Difference, title4Difference, title5Difference, title6Difference, title7Difference, title8Difference, 
