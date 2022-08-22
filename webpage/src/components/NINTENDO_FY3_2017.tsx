@@ -3,6 +3,7 @@ import { Code, SegmentedControl, Anchor, Text, Stack, Space} from "@mantine/core
 import { useSelector } from "react-redux";
 import { printEarnings } from "../data/nintendo/Nintendo-FY3-2017/earnings-fy3-17";
 import { printKPI } from "../data/nintendo/Nintendo-FY3-2017/kpi-fy3-17";
+import { printTopSellingSwitchTitles } from "../data/nintendo/Nintendo-FY3-2017/topNSWswfy3-17";
 import GRAPH_NINTENDO_EARNINGS_FY3_17 from "../graphs/nintendo/Nintendo-FY3-2017/GRAPH_NINTENDO_EARNINGS_FY3_17";
 import GRAPH_NINTENDO_KPI_FY3_17 from "../graphs/nintendo/Nintendo-FY3-2017/GRAPH_NINTENDO_KPI_FY3_17";
 
@@ -78,7 +79,7 @@ export default function NINTENDO_FY3_17() {
 
     const regionalHWSW = "no data here at this time";
 
-    const topSellingTitles = "no data here at this time";
+    const topSellingTitles = printTopSellingSwitchTitles;
 
     return (
 
