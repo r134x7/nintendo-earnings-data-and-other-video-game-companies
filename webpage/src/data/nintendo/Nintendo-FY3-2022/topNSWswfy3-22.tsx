@@ -369,80 +369,80 @@ const title1arrays = [
 ] as const;
 
 const title2arrays = [
-    title1Difference,
-    title1Difference,
+    title2Difference,
+    title2Difference,
     sortedCollection[1],
     header,
     currentQuarter,
 ] as const;
 
 const title3arrays = [
-    title1Difference,
-    title1Difference,
+    title3Difference,
+    title3Difference,
     sortedCollection[2],
     header,
     currentQuarter,
 ] as const;
 
 const title4arrays = [
-    title1Difference,
-    title1Difference,
+    title4Difference,
+    title4Difference,
     sortedCollection[3],
     header,
     currentQuarter,
 ] as const;
 
 const title5arrays = [
-    title1Difference,
-    title1Difference,
+    title5Difference,
+    title5Difference,
     sortedCollection[4],
     header,
     currentQuarter,
 ] as const;
 
 const title6arrays = [
-    title1Difference,
-    title1Difference,
+    title6Difference,
+    title6Difference,
     sortedCollection[5],
     header,
     currentQuarter,
 ] as const;
 
 const title7arrays = [
-    title1Difference,
-    title1Difference,
+    title7Difference,
+    title7Difference,
     sortedCollection[6],
     header,
     currentQuarter,
 ] as const;
 
 const title8arrays = [
-    title1Difference,
-    title1Difference,
+    title8Difference,
+    title8Difference,
     sortedCollection[7],
     header,
     currentQuarter,
 ] as const;
 
 const title9arrays = [
-    title1Difference,
-    title1Difference,
+    title9Difference,
+    title9Difference,
     sortedCollection[8],
     header,
     currentQuarter,
 ] as const;
 
 const title10arrays = [
-    title1Difference,
-    title1Difference,
+    title10Difference,
+    title10Difference,
     sortedCollection[9],
     header,
     currentQuarter,
 ] as const;
 
 const title11arrays = [
-    title1Difference,
-    title1Difference,
+    title11Difference,
+    title11Difference,
     sortedCollection[10],
     header,
     currentQuarter,
