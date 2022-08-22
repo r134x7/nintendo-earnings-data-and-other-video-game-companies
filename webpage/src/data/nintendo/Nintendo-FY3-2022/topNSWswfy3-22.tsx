@@ -2,6 +2,7 @@ import {
     Titles,
     Header,
     quarterlyCalculation,
+    printHead,
     printBody,
 } from "../../../utils/top-selling-titles-logic";
 
@@ -357,3 +358,122 @@ export const [
     return quarterlyCalculation(elem)
 })
 
+const printOne = printHead(header)
+
+const title1arrays = [
+    title1Difference,
+    title1Difference,
+    sortedCollection[0],
+    header,
+    currentQuarter,
+] as const;
+
+const title2arrays = [
+    title1Difference,
+    title1Difference,
+    sortedCollection[1],
+    header,
+    currentQuarter,
+] as const;
+
+const title3arrays = [
+    title1Difference,
+    title1Difference,
+    sortedCollection[2],
+    header,
+    currentQuarter,
+] as const;
+
+const title4arrays = [
+    title1Difference,
+    title1Difference,
+    sortedCollection[3],
+    header,
+    currentQuarter,
+] as const;
+
+const title5arrays = [
+    title1Difference,
+    title1Difference,
+    sortedCollection[4],
+    header,
+    currentQuarter,
+] as const;
+
+const title6arrays = [
+    title1Difference,
+    title1Difference,
+    sortedCollection[5],
+    header,
+    currentQuarter,
+] as const;
+
+const title7arrays = [
+    title1Difference,
+    title1Difference,
+    sortedCollection[6],
+    header,
+    currentQuarter,
+] as const;
+
+const title8arrays = [
+    title1Difference,
+    title1Difference,
+    sortedCollection[7],
+    header,
+    currentQuarter,
+] as const;
+
+const title9arrays = [
+    title1Difference,
+    title1Difference,
+    sortedCollection[8],
+    header,
+    currentQuarter,
+] as const;
+
+const title10arrays = [
+    title1Difference,
+    title1Difference,
+    sortedCollection[9],
+    header,
+    currentQuarter,
+] as const;
+
+const title11arrays = [
+    title1Difference,
+    title1Difference,
+    sortedCollection[10],
+    header,
+    currentQuarter,
+] as const;
+
+const [printTwo, printThree, printFour, printFive, printSix, printSeven, printEight, printNine, printTen, printEleven, printTwelve] = [
+    title1arrays,
+    title2arrays,
+    title3arrays,
+    title4arrays,
+    title5arrays,
+    title6arrays,
+    title7arrays,
+    title8arrays,
+    title9arrays,
+    title10arrays,
+    title11arrays
+].map((elem, index, array) => {
+    return printBody(...elem)
+})
+
+export const printTopSellingSwitchTitles = 
+`${printOne}
+${printTwo}
+${printThree}
+${printFour}
+${printFive}
+${printSix}
+${printSeven}
+${printEight}
+${printNine}
+${printTen}
+${printEleven}
+${printTwelve}`;
