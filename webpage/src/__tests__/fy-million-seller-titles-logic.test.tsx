@@ -498,15 +498,22 @@ const sortedCollection = collection.map((elem, index, array) => {
         return x // x which is the returned array is now returned to the array of arrays
     })
 
+function decimateCalculation(numbers: Titles[]) {
+
+   const calc: Titles[] = numbers.map((elem, index, array) => {
+       return {...elem, value: Number((elem.value / 100).toFixed(2))}
+   })
+
+   return calc
+}
+
 
 function quarterlyCalculation(quarters: Titles[]) {
        
    const calc: Titles[] = quarters.map((elem, index, array) => {
        return (elem.period !== " 1st Quarter  " && elem.period !== " Last FY Total " && elem.period !== " WW LTD for FY before Last FY Total " && elem.region !== " WW LTD  ")
-               ? {...elem, value: Number(((elem.value / 100) - (array[index-1].value / 100)).toFixed(2))}
-            //    : (currentQuarter === 4 && array[array.length-2].value !== 0 && array[array.length-2].value !== array[array.length-1].value)
-            //    ? {...elem, value: }
-               : {...elem, value: Number((elem.value / 100).toFixed(2))}
+               ? {...elem, value: Number((elem.value - array[index-1].value).toFixed(2))}
+               : elem
    })
    
    return calc
@@ -529,14 +536,14 @@ const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
         return (elem.region === "   Japan ")
                 ? index < currentQuarter && elem.value !== 0
                 : (elem.region === " Overseas")
-                ? index+4 < currentQuarter+4 && elem.value !== 0
+                ? index < currentQuarter+4 && elem.value !== 0
                 : (elem.region === " WW FY   ")
-                ? index+8 < currentQuarter+8 && elem.value !== 0
+                ? index < currentQuarter+8 && elem.value !== 0
                 : (elem.region === " WW LTD  ")
-                ? index+12 < currentQuarter+12 && elem.value !== 0
+                ? index < currentQuarter+12 && elem.value !== 0
                 : elem
-    }).map((elem, index) => {
-
+    }).map((elem, index, array) => {
+        
         let printRank: string = ` Rank ${elem.rank} `
         let printRankFixed: string = (printRank.length >= 10)
                 ? printRank
@@ -585,7 +592,7 @@ test("sort titles by fiscal year cumulative", () => {
 
 test("quarterly calculation", () => {
 
-    console.log(title1.length);
+    // console.log(title1.length);
     const [
         title1Difference,
         title2Difference,
@@ -602,6 +609,24 @@ test("quarterly calculation", () => {
 
 test("print!", () => {
 
+    
+    const [
+        title1Difference,
+        title2Difference,
+        title3Difference,
+    ] = sortedCollection.map((elem) => {
+        return quarterlyCalculation(elem)
+    })
+
+    const [
+        title1Sorted,
+    ] = sortedCollection
+    
+    const test = printTitles(title1Difference, currentQuarter)
+
+    console.log(test);
+    console.log(title1Sorted);
+    
     
     // expect(something...).toMatch(fyMillionSellersToMatch);
 })
