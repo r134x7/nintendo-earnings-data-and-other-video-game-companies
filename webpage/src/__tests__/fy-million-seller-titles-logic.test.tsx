@@ -125,6 +125,252 @@ const title1: Titles[] = [
     },
 ]
 
+const title2: Titles[] = [
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 1st Quarter  ",
+        region: "   Japan ",
+        value: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 2nd Quarter  ",
+        region: "   Japan ",
+        value: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 3rd Quarter  ",
+        region: "   Japan ",
+        value: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 4th Quarter  ",
+        region: "   Japan ",
+        value: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 1st Quarter  ",
+        region: " Overseas",
+        value: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 2nd Quarter  ",
+        region: " Overseas",
+        value: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 3rd Quarter  ",
+        region: " Overseas",
+        value: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 4th Quarter  ",
+        region: " Overseas",
+        value: 917
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 1st Quarter  ",
+        region: " WW FY   ",
+        value: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 2nd Quarter  ",
+        region: " WW FY   ",
+        value: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 3rd Quarter  ",
+        region: " WW FY   ",
+        value: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 4th Quarter  ",
+        region: " WW FY   ",
+        value: 1264
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 1st Quarter  ",
+        region: " WW LTD  ",
+        value: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 2nd Quarter  ",
+        region: " WW LTD  ",
+        value: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 3rd Quarter  ",
+        region: " WW LTD  ",
+        value: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 4th Quarter  ",
+        region: " WW LTD  ",
+        value: 1264
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " Last FY Total ",
+        region: "   Japan ",
+        value: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " Last FY Total ",
+        region: " Overseas",
+        value: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " Last FY Total ",
+        region: " WW FY   ",
+        value: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " Last FY Total ",
+        region: " WW LTD  ",
+        value: 0 
+    },
+]
+
+const title3: Titles[] = [
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 1st Quarter  ",
+        region: "   Japan ",
+        value: 0
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 2nd Quarter  ",
+        region: "   Japan ",
+        value: 0
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 3rd Quarter  ",
+        region: "   Japan ",
+        value: 379
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 4th Quarter  ",
+        region: "   Japan ",
+        value: 385
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 1st Quarter  ",
+        region: " Overseas",
+        value: 0
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 2nd Quarter  ",
+        region: " Overseas",
+        value: 0
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 3rd Quarter  ",
+        region: " Overseas",
+        value: 1018
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 4th Quarter  ",
+        region: " Overseas",
+        value: 1080
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 1st Quarter  ",
+        region: " WW FY   ",
+        value: 0
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 2nd Quarter  ",
+        region: " WW FY   ",
+        value: 0
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 3rd Quarter  ",
+        region: " WW FY   ",
+        value: 1397 
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 4th Quarter  ",
+        region: " WW FY   ",
+        value: 1465
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 1st Quarter  ",
+        region: " WW LTD  ",
+        value: 0
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 2nd Quarter  ",
+        region: " WW LTD  ",
+        value: 0
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 3rd Quarter  ",
+        region: " WW LTD  ",
+        value: 1397
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 4th Quarter  ",
+        region: " WW LTD  ",
+        value: 1465
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " Last FY Total ",
+        region: "   Japan ",
+        value: 0
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " Last FY Total ",
+        region: " Overseas",
+        value: 0
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " Last FY Total ",
+        region: " WW FY   ",
+        value: 0
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " Last FY Total ",
+        region: " WW LTD  ",
+        value: 0
+    },
+]
+
 
 const fyMillionSellersToMatch = `
 +------------------------------------------+
