@@ -1,10 +1,15 @@
 export type Titles = {
     title: string,
-    period: " 1st Quarter  " | " 2nd Quarter  " | " 3rd Quarter  " | " 4th Quarter  " | " Last FY Total " | " WW LTD for FY before Last FY Total ",
-    region: "   Japan " | " Overseas" | " WW FY   " | " WW LTD  ",
-    value: number,
-    rank?: number,
-    label?: "+Infinity%" | "New!", 
+    period: " 1st Quarter  " | " 2nd Quarter  " | " 3rd Quarter  " | " 4th Quarter  " | " Last FY Total ",
+    regionA: "   Japan ", 
+    valueA: number,
+    regionB: " Overseas",
+    valueB: number,
+    regionC: " WW FY   ",
+    valueC: number,
+    regionD: " WW LTD  ",
+    valueD: number,
+    rank?: number, 
 }
 
 export type Header = {
