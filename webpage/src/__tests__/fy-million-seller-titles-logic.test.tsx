@@ -390,7 +390,7 @@ const title3: Titles[] = [
 ]
 
 const header: Header = {
-    switchHeader: " Nintendo Switch FY Million-Seller Titles ",
+    switchHeader: "| Nintendo Switch FY Million-Seller Titles |",
     secondHeader: "| Title and Rank                           |",
     thirdHeader: "| Units                                    |",
     areaHeader: "| Area         |   Japan | Overseas|",
@@ -512,6 +512,71 @@ function quarterlyCalculation(quarters: Titles[]) {
    return calc
 }
 
+const printHead = (header: Header) => 
+`+${"-".repeat(42)}+
+${header.switchHeader}
++${"-".repeat(42)}+
++${"-".repeat(42)}+
+${header.secondHeader}
++${"-".repeat(42)}+
+${header.thirdHeader}
++${"-".repeat(42)}+`;
+
+const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
+        
+    return titleDifference.filter((elem, index) => {
+        // return index < currentQuarter && elem.value !== 0
+        return (elem.region === "   Japan ")
+                ? index < currentQuarter && elem.value !== 0
+                : (elem.region === " Overseas")
+                ? index+4 < currentQuarter+4 && elem.value !== 0
+                : (elem.region === " WW FY   ")
+                ? index+8 < currentQuarter+8 && elem.value !== 0
+                : (elem.region === " WW LTD  ")
+                ? index+12 < currentQuarter+12 && elem.value !== 0
+                : elem
+    }).map((elem, index) => {
+
+        let printRank: string = ` Rank ${elem.rank} `
+        let printRankFixed: string = (printRank.length >= 10)
+                ? printRank
+                : " ".repeat(10 - printRank.length) + printRank;
+
+        let printTitleName: string = (elem.title.length > 32)
+        ? elem.title.split(" ").reduce((prev, next, index, array) => {
+
+            let nextCheck = prev + next + " ";
+            
+            if (nextCheck.length > 31 && prev.length <= 31) {
+                return prev + " ".repeat(32 - prev.length) + `|          |\n| ` + next
+            } else if (index === array.length-1) {
+                return prev + next + " ".repeat(78 - prev.length)
+            } else {
+                return prev + " " + next
+            }
+        })
+        : (elem.title.length < 32)
+        ? elem.title + " ".repeat(32 - elem.title.length) 
+        : elem.title
+
+        let printTitleNameFixed: string = "|" + printTitleName + "|" + printRankFixed + "|\n+"+"-".repeat(43)+"+"
+
+        let printValue: string = `${elem.value}M ` 
+        // let printValue: string = (elem.value !== 0) 
+        //     ? `${elem.value}M `
+        //     : ` N/A `
+        let printValueFixed: string = (printValue.length >= 10)
+            ? printValue
+            : " ".repeat(10 - printValue.length) + printValue;
+
+        return (index === 0) 
+                ? printTitleNameFixed + "\n|" + elem.period + "|" + printValueFixed + "|" 
+                : "|" + elem.period + "|" + printValueFixed + "|"
+    }).reduce((prev, next, index, array) => {
+        return prev + "\n" + next
+    })
+}
+
 test("sort titles by fiscal year cumulative", () => {
 
     // console.log(sortedCollection);
@@ -529,8 +594,14 @@ test("quarterly calculation", () => {
         return quarterlyCalculation(elem)
     })
 
-    console.log(title1Difference);
-    console.log(title2Difference);
-    console.log(title3Difference);
+    // console.log(title1Difference);
+    // console.log(title2Difference);
+    // console.log(title3Difference);
     
 }) 
+
+test("print!", () => {
+
+    
+    // expect(something...).toMatch(fyMillionSellersToMatch);
+})

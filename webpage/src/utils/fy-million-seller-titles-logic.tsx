@@ -4,10 +4,11 @@ export type Titles = {
     region: "   Japan " | " Overseas" | " WW FY   " | " WW LTD  ",
     value: number,
     rank?: number,
+    label?: "+Infinity%" | "New!", 
 }
 
 export type Header = {
-    switchHeader: " Nintendo Switch FY Million-Seller Titles ",
+    switchHeader: "| Nintendo Switch FY Million-Seller Titles |",
     secondHeader: "| Title and Rank                           |",
     thirdHeader: "| Units                                    |",
     fiscalYear: string,
