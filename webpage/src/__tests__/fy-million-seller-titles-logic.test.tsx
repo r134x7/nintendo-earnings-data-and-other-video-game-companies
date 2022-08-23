@@ -450,8 +450,14 @@ function decimateCalculation(numbers: Titles[]) {
 function quarterlyCalculation(quarters: Titles[]) {
        
    const calc: Titles[] = quarters.map((elem, index, array) => {
-       return (elem.period !== " 1st Quarter  " && elem.period !== " Last FY Total " && elem.period !== " WW LTD for FY before Last FY Total " && elem.region !== " WW LTD  ")
-               ? {...elem, value: Number((elem.value - array[index-1].value).toFixed(2))}
+       return (elem.period !== " 1st Quarter  " && elem.period !== " Last FY Total ")
+               ? {
+                ...elem, 
+                valueA: Number((elem.valueA - array[index-1].valueA).toFixed(2)),
+                valueB: Number((elem.valueB - array[index-1].valueB).toFixed(2)),
+                valueC: Number((elem.valueC - array[index-1].valueC).toFixed(2)),
+                valueD: Number((elem.valueD - array[index-1].valueD).toFixed(2)),
+                }
                : elem
    })
    
@@ -471,16 +477,7 @@ ${header.thirdHeader}
 const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
         
     return titleDifference.filter((elem, index) => {
-        // return index < currentQuarter && elem.value !== 0
-        return (elem.region === "   Japan ")
-                ? index < currentQuarter && elem.value !== 0
-                : (elem.region === " Overseas")
-                ? index < currentQuarter+4 && elem.value !== 0
-                : (elem.region === " WW FY   ")
-                ? index < currentQuarter+8 && elem.value !== 0
-                : (elem.region === " WW LTD  ")
-                ? index < currentQuarter+12 && elem.value !== 0
-                : elem
+        return index < currentQuarter && elem.valueC !== 0
     }).map((elem, index, array) => {
         
         let printRank: string = ` Rank ${elem.rank} `
@@ -507,17 +504,21 @@ const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
 
         let printTitleNameFixed: string = "|" + printTitleName + "|" + printRankFixed + "|\n+"+"-".repeat(43)+"+"
 
-        let printValue: string = `${elem.value}M ` 
-        // let printValue: string = (elem.value !== 0) 
-        //     ? `${elem.value}M `
-        //     : ` N/A `
-        let printValueFixed: string = (printValue.length >= 10)
-            ? printValue
-            : " ".repeat(10 - printValue.length) + printValue;
+        let printValueA: string = `${elem.valueA}M ` 
+        let printValueAFixed: string = (printValueA.length >= 9)
+            ? printValueA
+            : " ".repeat(9 - printValueA.length) + printValueA;
+        
+        let printValueB: string = `${elem.valueB}M ` 
+        let printValueBFixed: string = (printValueB.length >= 9)
+            ? printValueB
+            : " ".repeat(9 - printValueB.length) + printValueB;
+
+        let printAreaHeader: string = header.areaHeader + "\n+"+"-".repeat(34)+"+"
 
         return (index === 0) 
-                ? printTitleNameFixed + "\n|" + elem.period + "|" + printValueFixed + "|" 
-                : "|" + elem.period + "|" + printValueFixed + "|"
+                ? printTitleNameFixed + "\n" + printAreaHeader + "\n|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|"
+                : "|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|"
     }).reduce((prev, next, index, array) => {
         return prev + "\n" + next
     })
@@ -569,7 +570,7 @@ test("print!", () => {
     const test = printTitles(title1Difference, currentQuarter)
 
     console.log(test);
-    console.log(title1Sorted);
+    // console.log(title1Sorted);
     
     
     // expect(something...).toMatch(fyMillionSellersToMatch);
