@@ -121,8 +121,14 @@ const title1: Titles[] = [
         title: " Mario Kart 8 Deluxe ",
         period: " Last FY Total ",
         region: " WW LTD  ",
-        value: 2477 
+        value: 3539 
     },
+    {
+        title: " Mario Kart 8 Deluxe ",
+        period: " WW LTD for FY before Last FY Total ",
+        region: " WW LTD  ",
+        value: 2477 
+    }
 ]
 
 const title2: Titles[] = [
@@ -243,6 +249,12 @@ const title2: Titles[] = [
     {
         title: " Pokémon Legends: Arceus ",
         period: " Last FY Total ",
+        region: " WW LTD  ",
+        value: 0 
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " WW LTD for FY before Last FY Total ",
         region: " WW LTD  ",
         value: 0 
     },
@@ -369,6 +381,12 @@ const title3: Titles[] = [
         region: " WW LTD  ",
         value: 0
     },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " WW LTD for FY before Last FY Total ",
+        region: " WW LTD  ",
+        value: 0
+    },
 ]
 
 const header: Header = {
@@ -480,8 +498,39 @@ const sortedCollection = collection.map((elem, index, array) => {
         return x // x which is the returned array is now returned to the array of arrays
     })
 
+
+function quarterlyCalculation(quarters: Titles[]) {
+       
+   const calc: Titles[] = quarters.map((elem, index, array) => {
+       return (elem.period !== " 1st Quarter  " && elem.period !== " Last FY Total " && elem.period !== " WW LTD for FY before Last FY Total " && elem.region !== " WW LTD  ")
+               ? {...elem, value: Number(((elem.value / 100) - (array[index-1].value / 100)).toFixed(2))}
+            //    : (currentQuarter === 4 && array[array.length-2].value !== 0 && array[array.length-2].value !== array[array.length-1].value)
+            //    ? {...elem, value: }
+               : {...elem, value: Number((elem.value / 100).toFixed(2))}
+   })
+   
+   return calc
+}
+
 test("sort titles by fiscal year cumulative", () => {
 
-    console.log(sortedCollection);
+    // console.log(sortedCollection);
     
 })
+
+test("quarterly calculation", () => {
+
+    console.log(title1.length);
+    const [
+        title1Difference,
+        title2Difference,
+        title3Difference,
+    ] = sortedCollection.map((elem) => {
+        return quarterlyCalculation(elem)
+    })
+
+    console.log(title1Difference);
+    console.log(title2Difference);
+    console.log(title3Difference);
+    
+}) 
