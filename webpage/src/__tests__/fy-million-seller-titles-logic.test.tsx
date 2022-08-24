@@ -477,7 +477,8 @@ ${header.thirdHeader}
 const printTitles = (header: Header, titleDifference: Titles[], titleCumulative: Titles[], currentQuarter: number) => {
         
     const regionAB = titleDifference.filter((elem, index) => {
-        return index < currentQuarter && elem.valueC !== 0
+        // return index < currentQuarter && elem.valueC !== 0
+        return index !== 4
     }).map((elem, index, array) => {
         
         let printRank: string = ` Rank ${elem.rank} `
@@ -525,9 +526,9 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
         let printCmlValueBFixed: string = (printCmlValueB.length >= 9)
             ? printCmlValueB
             : " ".repeat(9 - printCmlValueB.length) + printCmlValueB;
-
-        let printFYCml: string = "+" + "=".repeat(34) + "+\n|" + header.fiscalYear + "Cml.  |" + printCmlValueAFixed + "|" + printCmlValueBFixed + "|"
         
+        let printFYCml: string = "+" + "=".repeat(34) + "+\n|" + header.fiscalYear + "Cml.  |" + printCmlValueAFixed + "|" + printCmlValueBFixed + "|"
+
         let printRegionAWWPercentage: string = `${((titleCumulative[currentQuarter-1].valueA / titleCumulative[currentQuarter-1].valueC) * 100).toFixed(2)}% `
         let printRegionAWWPercentageFixed: string = (printRegionAWWPercentage.length >= 9)
             ? printRegionAWWPercentage
@@ -540,27 +541,38 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
 
         let printRegionAYoY: string = (titleCumulative[4].valueA === 0)
             ? ` New! `
-            : `${(((array[array.length-1].valueA / titleCumulative[4].valueA) - 1) * 100)}`
+            : `${(((array[array.length-1].valueA / titleCumulative[4].valueA) - 1) * 100).toFixed(2)}`
         
         let printRegionBYoY: string = (titleCumulative[4].valueB === 0)
             ? ` New! `
-            : `${(((array[array.length-1].valueB / titleCumulative[4].valueB) - 1) * 100)}`
+            : `${(((array[array.length-1].valueB / titleCumulative[4].valueB) - 1) * 100).toFixed(2)}`
 
-        let printRegionCYoY: string = (titleCumulative[4].valueC === 0)
-            ? ` New! `
-            : `${(((array[array.length-1].valueC / titleCumulative[4].valueC) - 1) * 100)}`
-            
-        let printRegionDYoY: string = (titleCumulative[4].valueD === 0)
-            ? ` New! `
-            : `${(((array[array.length-1].valueD / titleCumulative[4].valueD) - 1) * 100)}`
+        let printFYCmlYoY: string = "\n|" + header.fiscalYear + "YoY%  |" + printRegionAYoY + "|" + printRegionBYoY + "|"
 
-        return  (currentQuarter === 1) 
-                ? printAreaHeader + "\n|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|\n" + printFYCml + "\n| Area/WW FY % |" + printRegionAWWPercentageFixed + "|" + printRegionBWWPercentageFixed + "|"
-                : (index === 0) 
-                ? printTitleNameFixed + "\n" + printAreaHeader + "\n|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|"
-                : (index === currentQuarter-1)
-                ?  "|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|\n" + printFYCml + "\n| Area/WW FY % |" + printRegionAWWPercentageFixed + "|" + printRegionBWWPercentageFixed + "|"
-                : "|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|"
+        if (index === 0 && elem.valueC === 0) {
+            return printTitleNameFixed + "\n" + printAreaHeader + "\n"
+        } else if (index !== 0 && elem.valueC === 0) {
+            return [] // array.length 0 filtering
+        } else {
+            return (currentQuarter === 1)
+                    ? printTitleNameFixed + "\n" + printAreaHeader + "\n|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|\n" + printFYCml + "\n| Area/WW FY % |" + printRegionAWWPercentageFixed + "|" + printRegionBWWPercentageFixed + "|"
+                    : (index === 0 && currentQuarter !== 1)
+                    ? printTitleNameFixed + "\n" + printAreaHeader + "\n|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|"
+                    : (index === 3)
+                    ? elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|\n" + printFYCml + printFYCmlYoY + "\n| Area/WW FY % |" + printRegionAWWPercentageFixed + "|" + printRegionBWWPercentageFixed + "|"
+                    : (index === currentQuarter-1 )
+                    ? elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|\n" + printFYCml + "\n| Area/WW FY % |" + printRegionAWWPercentageFixed + "|" + printRegionBWWPercentageFixed + "|"
+                    : "|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|"
+        }
+        // return  (currentQuarter !== 4 && array.length === 1) 
+                // ? printAreaHeader + "\n|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|\n" + printFYCml + "\n| Area/WW FY % |" + printRegionAWWPercentageFixed + "|" + printRegionBWWPercentageFixed + "|"
+        //         : (currentQuarter === 4 && array.length === 1)
+                // ? printAreaHeader + "\n|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|\n" + printFYCml + "\n| Area/WW FY % |" + printRegionAWWPercentageFixed + "|" + printRegionBWWPercentageFixed + "|"
+        //         : (index === 0) 
+                // ? printTitleNameFixed + "\n" + printAreaHeader + "\n|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|"
+        //         : (index === currentQuarter-1)
+        //         ?  "|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|\n" + printFYCml + "\n| Area/WW FY % |" + printRegionAWWPercentageFixed + "|" + printRegionBWWPercentageFixed + "|"
+                // : "|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|"
     }).reduce((prev, next, index, array) => {
         return prev + "\n" + next
     })
@@ -603,6 +615,13 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
             ? printRegionDWWPercentage
             :  " ".repeat(9 - printRegionDWWPercentage.length) + printRegionDWWPercentage;
         
+        let printRegionCYoY: string = (titleCumulative[4].valueC === 0)
+            ? ` New! `
+            : `${(((array[array.length-1].valueC / titleCumulative[4].valueC) - 1) * 100)}`
+            
+        let printRegionDYoY: string = (titleCumulative[4].valueD === 0)
+            ? ` New! `
+            : `${(((array[array.length-1].valueD / titleCumulative[4].valueD) - 1) * 100)}`
         return (currentQuarter === 1) 
                 ? printGlobalHeader + "\n|" + elem.period + "|" + printValueCFixed + "|" + printValueDFixed + "|\n" + printFYCml + "\n| Area/WW FY % |" + printRegionCWWPercentageFixed + "|" + printRegionDWWPercentageFixed + "|"
                 : (index === 0)
