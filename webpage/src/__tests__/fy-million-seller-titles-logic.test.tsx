@@ -537,7 +537,23 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
         let printRegionBWWPercentageFixed: string = (printRegionBWWPercentage.length >= 9)
             ? printRegionBWWPercentage
             :  " ".repeat(9 - printRegionBWWPercentage.length) + printRegionBWWPercentage;
+
+        let printRegionAYoY: string = (titleCumulative[4].valueA === 0)
+            ? ` New! `
+            : `${(((array[array.length-1].valueA / titleCumulative[4].valueA) - 1) * 100)}`
         
+        let printRegionBYoY: string = (titleCumulative[4].valueB === 0)
+            ? ` New! `
+            : `${(((array[array.length-1].valueB / titleCumulative[4].valueB) - 1) * 100)}`
+
+        let printRegionCYoY: string = (titleCumulative[4].valueC === 0)
+            ? ` New! `
+            : `${(((array[array.length-1].valueC / titleCumulative[4].valueC) - 1) * 100)}`
+            
+        let printRegionDYoY: string = (titleCumulative[4].valueD === 0)
+            ? ` New! `
+            : `${(((array[array.length-1].valueD / titleCumulative[4].valueD) - 1) * 100)}`
+
         return  (currentQuarter === 1) 
                 ? printAreaHeader + "\n|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|\n" + printFYCml + "\n| Area/WW FY % |" + printRegionAWWPercentageFixed + "|" + printRegionBWWPercentageFixed + "|"
                 : (index === 0) 
