@@ -197,11 +197,11 @@ const header: Header = {
     areaHeader: "| Area         |   Japan | Overseas|",
     globalHeader: "| Global       |   WW FY |  WW LTD |", 
     fiscalYear: " FY3/22 ",
-    switchSummaryHeader: "| Nintendo Switch FY             |\n| Million-Seller Titles          |",
-    japanSummaryHeader: "| Japan                          |",
-    overseasSummaryHeader: "| Overseas                       |",
-    globalFYSummaryHeader: "| Global FY                      |",
-    globalLTDSummaryHeader: "| Global LTD                     |",
+    switchSummaryHeader: "| Nintendo Switch FY    |\n| Million-Seller Titles |\n",
+    japanSummaryHeader: "| Japan                 |",
+    overseasSummaryHeader: "| Overseas              |",
+    globalFYSummaryHeader: "| Global FY             |",
+    globalLTDSummaryHeader: "| Global LTD            |",
 }
 
 const headerToMatch = 
@@ -607,13 +607,9 @@ function labelTitles(titlesSorted: Titles[]) {
     return calc
 }
 
-function sumTitles(titlesArray: Titles[]) {
+// const printSummary = () => {
 
-}
-
-const printSummary = () => {
-
-}
+// }
 
 test("sort titles by fiscal year cumulative", () => {
 
@@ -855,12 +851,20 @@ test("print summary", () => {
                 : (index === 2)
                 ? secondElem.valueC
                 : secondElem.valueD
-        }).reduce((prev, next) => prev + next).toFixed(2)
+        }).reduce((prev, next) => prev + next)
     })
 
-    // const japanNew = newCollection.map((elem, index) => {
-    //     return elem.valueA
-    // }).reduce((prev, next) => prev + next).toFixed(2)
+    const [japanRecurring, overseasRecurring, wwFYRecurring, wwLTDRecurring] = [recurringCollection, recurringCollection, recurringCollection, recurringCollection].map((elem, index, array) =>  {
+        return elem.map((secondElem) => {
+            return (index === 0)
+                ? secondElem.valueA
+                : (index === 1)
+                ? secondElem.valueB
+                : (index === 2)
+                ? secondElem.valueC
+                : secondElem.valueD
+        }).reduce((prev, next) => prev + next)
+    })
 
     console.log(newCollection.length);
     console.log(recurringCollection.length);
@@ -870,17 +874,45 @@ test("print summary", () => {
     console.log(wwFYNew);
     console.log(wwLTDNew);
     
-
+    console.log(japanRecurring);
+    console.log(overseasRecurring);
+    console.log(wwFYRecurring);
+    console.log(wwLTDRecurring);
+    
 const testData = 
-`+---------------------+
-| Titles              |
-+---------------------+
-| New!      |      12 |
-| Recurring |      12 |
-+---------------------+
+`+-----------------------+
+| Titles                |
++-----------------------+
+| New!        |      12 |
+| Recurring   |      12 |
++=======================+
+| Total       |      24 |
++-----------------------+`
+//| Million-Seller Titles |
+const printSummaryHead = (header: Header, newCollection: Titles[], recurringCollection: Titles[]) => {
 
-`
+    let printNew: string = `${newCollection.length}`
+    let printNewFixed: string = (printNew.length >= 9)
+        ? printNew
+        : " ".repeat(9 - printNew.length) + printNew;
+
+    let printRecurring: string = `${recurringCollection.length}`
+    let printRecurringFixed: string = (printRecurring.length >= 9)
+        ? printRecurring
+        : " ".repeat(9 - printRecurring.length) + printRecurring;
+
+    let printTotal: string = `${newCollection.length + recurringCollection.length}`
+    let printTotalFixed: string = (printTotal.length >= 9)
+    ? printTotal
+    : " ".repeat(9 - printTotal.length) + printTotal;
+
+    let printHeader: string = "+"+"-".repeat(23)+"+\n" + header.switchSummaryHeader + "+"+"-".repeat(23)+"+"
+
+    let printTitles: string = "+"+"-".repeat(23)+"+\n| Titles                |" 
+}
     
-    
+const printSummary = (header: Header, regionNew: number, regionRecurring: number, ) => {
+
+}    
 
 })
