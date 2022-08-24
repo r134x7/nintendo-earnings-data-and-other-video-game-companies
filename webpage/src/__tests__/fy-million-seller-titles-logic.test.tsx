@@ -474,9 +474,9 @@ ${header.secondHeader}
 ${header.thirdHeader}
 +${"-".repeat(42)}+`;
 
-const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
+const printTitles = (header: Header, titleDifference: Titles[], titleCumulative: Titles[], currentQuarter: number) => {
         
-    return titleDifference.filter((elem, index) => {
+    const regionAB = titleDifference.filter((elem, index) => {
         return index < currentQuarter && elem.valueC !== 0
     }).map((elem, index, array) => {
         
@@ -516,12 +516,30 @@ const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
 
         let printAreaHeader: string = header.areaHeader + "\n+"+"-".repeat(34)+"+"
 
+        let printCmlValueA: string =  `${titleCumulative[currentQuarter-1].valueA}M `
+        let printCmlValueAFixed: string = (printCmlValueA.length >= 9)
+            ? printCmlValueA
+            : " ".repeat(9 - printCmlValueA.length) + printCmlValueA;
+
+        let printCmlValueB: string =  `${titleCumulative[currentQuarter-1].valueB}M `
+        let printCmlValueBFixed: string = (printCmlValueB.length >= 9)
+            ? printCmlValueB
+            : " ".repeat(9 - printCmlValueB.length) + printCmlValueB;
+
+        let printFYCml: string = "+" + "=".repeat(34) + "+\n|" + header.fiscalYear + "Cml.  |" + printCmlValueAFixed + "|" + printCmlValueBFixed + "|"
+
         return (index === 0) 
                 ? printTitleNameFixed + "\n" + printAreaHeader + "\n|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|"
+                : (index === currentQuarter-1)
+                ?  "|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|\n" + printFYCml
                 : "|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|"
     }).reduce((prev, next, index, array) => {
         return prev + "\n" + next
     })
+
+    console.log(regionAB);
+    
+
 }
 
 test("sort titles by fiscal year cumulative", () => {
@@ -567,7 +585,7 @@ test("print!", () => {
         return quarterlyCalculation(elem)
     })
     
-    const test = printTitles(title1Difference, currentQuarter)
+    const test = printTitles(header, title1Difference, title1Sorted, currentQuarter)
 
     console.log(test);
     // console.log(title1Sorted);
