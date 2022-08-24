@@ -595,8 +595,12 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
     })
 
     console.log(regionAB);
-    console.log(regionCD)    
+    console.log(regionCD)   
+    
+    const stick = [regionAB, regionCD].reduce((prev, next) => prev + "\n" + next + "\n+"+"-".repeat(34)+"+")
 
+    console.log(stick);
+    
 }
 
 test("sort titles by fiscal year cumulative", () => {
