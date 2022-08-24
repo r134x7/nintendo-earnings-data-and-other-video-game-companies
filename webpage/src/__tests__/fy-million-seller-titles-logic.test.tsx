@@ -197,6 +197,11 @@ const header: Header = {
     areaHeader: "| Area         |   Japan | Overseas|",
     globalHeader: "| Global       |   WW FY |  WW LTD |", 
     fiscalYear: " FY3/22 ",
+    switchSummaryHeader: "| Nintendo Switch FY             |\n| Million-Seller Titles          |",
+    japanSummaryHeader: "| Japan                          |",
+    overseasSummaryHeader: "| Overseas                       |",
+    globalFYSummaryHeader: "| Global FY                      |",
+    globalLTDSummaryHeader: "| Global LTD                     |",
 }
 
 const headerToMatch = 
@@ -590,6 +595,26 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
     
 }
 
+function labelTitles(titlesSorted: Titles[]) {
+
+    const calc: Titles[] = titlesSorted.map((elem, index, array) => {
+
+        return (array[4].valueC === 0)
+                ? {...elem, label: " New! "}
+                : {...elem, label: " Recurring "}
+    })
+
+    return calc
+}
+
+function sumTitles(titlesArray: Titles[]) {
+
+}
+
+const printSummary = () => {
+
+}
+
 test("sort titles by fiscal year cumulative", () => {
 
     // console.log(sortedCollection);
@@ -801,4 +826,29 @@ test("print, match rank 2 title", () => {
     })
     
     expect(printThree).toMatch(rank2TitleToMatch)
+})
+
+test("print summary", () => {
+    
+    const decimatedCollection = sortedCollection.map((elem) => {
+        return decimateCalculation(elem)
+    })
+    
+    const labelCollection = decimatedCollection.map((elem) => {
+        return labelTitles(elem)
+    })
+
+    const newCollection = labelCollection.filter((elem, index) => elem[index].label === " New! ").map((elem, index) => {
+        return elem[3] // 4th quarter
+    })
+    
+    const recurringCollection = labelCollection.filter((elem, index) => elem[index].label === " Recurring ").map((elem, index) => {
+        return elem[3] // 4th quarter
+    })
+
+    console.log(newCollection);
+    console.log(recurringCollection);
+    
+    
+
 })
