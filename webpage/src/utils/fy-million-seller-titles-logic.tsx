@@ -18,7 +18,7 @@ export type Header = {
     thirdHeader: "| Units                                    |",
     fiscalYear: string
     areaHeader: "| Area         |   Japan | Overseas|",
-    globalHeader: "| Global       | WW FY   | WW LTD  |",
+    globalHeader: "| Global       |   WW FY |  WW LTD |",
 }
 
 //| Area         |   Japan | Overseas|
