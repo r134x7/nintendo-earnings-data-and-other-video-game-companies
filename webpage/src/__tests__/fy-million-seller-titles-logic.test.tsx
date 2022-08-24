@@ -527,7 +527,17 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
             : " ".repeat(9 - printCmlValueB.length) + printCmlValueB;
 
         let printFYCml: string = "+" + "=".repeat(34) + "+\n|" + header.fiscalYear + "Cml.  |" + printCmlValueAFixed + "|" + printCmlValueBFixed + "|"
+        
+        let printRegionAWWPercentage: string = `${((titleCumulative[currentQuarter-1].valueA / titleCumulative[currentQuarter-1].valueC) / 100).toFixed(2)}% `
+        let printRegionAWWPercentageFixed: string = (printRegionAWWPercentage.length >= 9)
+            ? printRegionAWWPercentage
+            :  " ".repeat(9 - printRegionAWWPercentage.length) + printRegionAWWPercentage;
 
+        let printRegionBWWPercentage: string = `${((titleCumulative[currentQuarter-1].valueB / titleCumulative[currentQuarter-1].valueC) / 100).toFixed(2)}% `
+        let printRegionBWWPercentageFixed: string = (printRegionBWWPercentage.length >= 9)
+            ? printRegionBWWPercentage
+            :  " ".repeat(9 - printRegionBWWPercentage.length) + printRegionBWWPercentage;
+        
         return (index === 0) 
                 ? printTitleNameFixed + "\n" + printAreaHeader + "\n|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|"
                 : (index === currentQuarter-1)
@@ -587,7 +597,7 @@ test("print!", () => {
     
     const test = printTitles(header, title1Difference, title1Sorted, currentQuarter)
 
-    console.log(test);
+    // console.log(test);
     // console.log(title1Sorted);
     
     
