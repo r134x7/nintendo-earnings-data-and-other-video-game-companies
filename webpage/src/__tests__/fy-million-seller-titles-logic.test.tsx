@@ -64,263 +64,131 @@ const title1: Titles[] = [
     },
 ]
 
-// const title2: Titles[] = [
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " 1st Quarter  ",
-//         region: "   Japan ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " 2nd Quarter  ",
-//         region: "   Japan ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " 3rd Quarter  ",
-//         region: "   Japan ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " 4th Quarter  ",
-//         region: "   Japan ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " 1st Quarter  ",
-//         region: " Overseas",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " 2nd Quarter  ",
-//         region: " Overseas",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " 3rd Quarter  ",
-//         region: " Overseas",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " 4th Quarter  ",
-//         region: " Overseas",
-//         value: 917
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " 1st Quarter  ",
-//         region: " WW FY   ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " 2nd Quarter  ",
-//         region: " WW FY   ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " 3rd Quarter  ",
-//         region: " WW FY   ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " 4th Quarter  ",
-//         region: " WW FY   ",
-//         value: 1264
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " 1st Quarter  ",
-//         region: " WW LTD  ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " 2nd Quarter  ",
-//         region: " WW LTD  ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " 3rd Quarter  ",
-//         region: " WW LTD  ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " 4th Quarter  ",
-//         region: " WW LTD  ",
-//         value: 1264
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " Last FY Total ",
-//         region: "   Japan ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " Last FY Total ",
-//         region: " Overseas",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " Last FY Total ",
-//         region: " WW FY   ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " Last FY Total ",
-//         region: " WW LTD  ",
-//         value: 0 
-//     },
-//     {
-//         title: " Pokémon Legends: Arceus ",
-//         period: " WW LTD for FY before Last FY Total ",
-//         region: " WW LTD  ",
-//         value: 0 
-//     },
-// ]
+const title2: Titles[] = [
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 1st Quarter  ",
+        regionA: "   Japan ",
+        valueA: 0,
+        regionB: " Overseas",
+        valueB: 0,
+        regionC: "   WW FY ",
+        valueC: 0,
+        regionD: "  WW LTD ",
+        valueD: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 2nd Quarter  ",
+        regionA: "   Japan ",
+        valueA: 0,
+        regionB: " Overseas",
+        valueB: 0,
+        regionC: "   WW FY ",
+        valueC: 0,
+        regionD: "  WW LTD ",
+        valueD: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 3rd Quarter  ",
+        regionA: "   Japan ",
+        valueA: 0,
+        regionB: " Overseas",
+        valueB: 0,
+        regionC: "   WW FY ",
+        valueC: 0,
+        regionD: "  WW LTD ",
+        valueD: 0
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " 4th Quarter  ",
+        regionA: "   Japan ",
+        valueA: 346,
+        regionB: " Overseas",
+        valueB: 917,
+        regionC: "   WW FY ",
+        valueC: 1264,
+        regionD: "  WW LTD ",
+        valueD: 1264
+    },
+    {
+        title: " Pokémon Legends: Arceus ",
+        period: " Last FY Total ",
+        regionA: "   Japan ",
+        valueA: 0,
+        regionB: " Overseas",
+        valueB: 0,
+        regionC: "   WW FY ",
+        valueC: 0,
+        regionD: "  WW LTD ",
+        valueD: 0
+    },
+]
 
-// const title3: Titles[] = [
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " 1st Quarter  ",
-//         region: "   Japan ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " 2nd Quarter  ",
-//         region: "   Japan ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " 3rd Quarter  ",
-//         region: "   Japan ",
-//         value: 379
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " 4th Quarter  ",
-//         region: "   Japan ",
-//         value: 385
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " 1st Quarter  ",
-//         region: " Overseas",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " 2nd Quarter  ",
-//         region: " Overseas",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " 3rd Quarter  ",
-//         region: " Overseas",
-//         value: 1018
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " 4th Quarter  ",
-//         region: " Overseas",
-//         value: 1080
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " 1st Quarter  ",
-//         region: " WW FY   ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " 2nd Quarter  ",
-//         region: " WW FY   ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " 3rd Quarter  ",
-//         region: " WW FY   ",
-//         value: 1397 
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " 4th Quarter  ",
-//         region: " WW FY   ",
-//         value: 1465
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " 1st Quarter  ",
-//         region: " WW LTD  ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " 2nd Quarter  ",
-//         region: " WW LTD  ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " 3rd Quarter  ",
-//         region: " WW LTD  ",
-//         value: 1397
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " 4th Quarter  ",
-//         region: " WW LTD  ",
-//         value: 1465
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " Last FY Total ",
-//         region: "   Japan ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " Last FY Total ",
-//         region: " Overseas",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " Last FY Total ",
-//         region: " WW FY   ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " Last FY Total ",
-//         region: " WW LTD  ",
-//         value: 0
-//     },
-//     {
-//         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
-//         period: " WW LTD for FY before Last FY Total ",
-//         region: " WW LTD  ",
-//         value: 0
-//     },
-// ]
+const title3: Titles[] = [
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 1st Quarter  ",
+        regionA: "   Japan ",
+        valueA: 0,
+        regionB: " Overseas",
+        valueB: 0,
+        regionC: "   WW FY ",
+        valueC: 0,
+        regionD: "  WW LTD ",
+        valueD: 0,
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 2nd Quarter  ",
+        regionA: "   Japan ",
+        valueA: 0,
+        regionB: " Overseas",
+        valueB: 0,
+        regionC: "   WW FY ",
+        valueC: 0,
+        regionD: "  WW LTD ",
+        valueD: 0,
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 3rd Quarter  ", 
+        regionA: "   Japan ",
+        valueA: 379,
+        regionB: " Overseas",
+        valueB: 1018,
+        regionC: "   WW FY ",
+        valueC: 1397,
+        regionD: "  WW LTD ",
+        valueD: 1397,
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " 4th Quarter  ",
+        regionA: "   Japan ",
+        valueA: 385,
+        regionB: " Overseas",
+        valueB: 1080,
+        regionC: "   WW FY ",
+        valueC: 1465,
+        regionD: "  WW LTD ",
+        valueD: 1465,
+    },
+    {
+        title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+        period: " Last FY Total ",
+        regionA: "   Japan ",
+        valueA: 0,
+        regionB: " Overseas",
+        valueB: 0,
+        regionC: "   WW FY ",
+        valueC: 0,
+        regionD: "  WW LTD ",
+        valueD: 0,
+    },
+]
 
 const header: Header = {
     switchHeader: "| Nintendo Switch FY Million-Seller Titles |",
@@ -331,8 +199,63 @@ const header: Header = {
     fiscalYear: " FY3/22 ",
 }
 
-const fyMillionSellersToMatch = `
+const headerToMatch = 
+`+------------------------------------------+
+| Nintendo Switch FY Million-Seller Titles |
 +------------------------------------------+
++------------------------------------------+
+| Title and Rank                           |
++------------------------------------------+
+| Units                                    |
++------------------------------------------+`;
+
+const rank1TitleToMatch =
+`+------------------------------------------+
+| Pokémon Brilliant Diamond /    |         |
+| Pokémon Shining Pearl          | Rank 1  |
++------------------------------------------+
+| Area         |   Japan | Overseas|
++----------------------------------+
+| 3rd Quarter  |   3.79M |  10.18M |
+| 4th Quarter  |   0.06M |   0.62M |
++==================================+
+| FY3/22 Cml.  |   3.85M |   10.8M |
+| FY3/22 YoY%  |    New! |    New! |
+| Area/WW FY % |  26.28% |  73.72% |
++----------------------------------+
+| Global       |   WW FY |  WW LTD |
++----------------------------------+
+| 3rd Quarter  |  13.97M |  13.97M |
+| 4th Quarter  |   0.68M |  14.65M |
++==================================+
+| FY3/22 Cml.  |  14.65M |  14.65M |
+| FY3/22 YoY%  |    New! |    New! |
+| WW FY/LTD %  | 100.00% |   0.00% |
++----------------------------------+`;
+
+const rank2TitleToMatch = 
+`+------------------------------------------+
+| Pokémon Legends: Arceus        | Rank 2  |
++------------------------------------------+
+| Area         |   Japan | Overseas|
++----------------------------------+
+| 4th Quarter  |   3.46M |   9.17M |
++==================================+
+| FY3/22 Cml.  |   3.46M |   9.17M |
+| FY3/22 YoY%  |    New! |    New! |
+| Area/WW FY % |  27.37% |  72.55% |
++----------------------------------+
+| Global       |   WW FY |  WW LTD |
++----------------------------------+
+| 4th Quarter  |  12.64M |  12.64M |
++==================================+
+| FY3/22 Cml.  |  12.64M |  12.64M |
+| FY3/22 YoY%  |    New! |    New! |
+| WW FY/LTD %  | 100.00% |   0.00% |
++----------------------------------+`;
+
+const fyMillionSellersToMatch = 
+`+------------------------------------------+
 | Nintendo Switch FY Million-Seller Titles |
 +------------------------------------------+
 +------------------------------------------+
@@ -349,7 +272,7 @@ const fyMillionSellersToMatch = `
 | 3rd Quarter  |   3.79M |  10.18M |
 | 4th Quarter  |   0.06M |   0.62M |
 +==================================+
-| FY3/22 Cml.  |   3.85M |  10.80M |
+| FY3/22 Cml.  |   3.85M |   10.8M |
 | FY3/22 YoY%  |    New! |    New! |
 | Area/WW FY % |  26.28% |  73.72% |
 +----------------------------------+
@@ -386,10 +309,10 @@ const fyMillionSellersToMatch = `
 +------------------------------------------+
 | Area         |   Japan | Overseas|
 +----------------------------------+
-| 1st Quarter  |   0.20M |   1.50M |
+| 1st Quarter  |    0.2M |    1.5M |
 | 2nd Quarter  |   0.26M |   1.39M |
-| 3rd Quarter  |   0.40M |   4.21M |
-| 4th Quarter  |   0.30M |   1.68M |
+| 3rd Quarter  |    0.4M |   4.21M |
+| 4th Quarter  |    0.3M |   1.68M |
 +==================================+
 | FY3/22 Cml.  |   1.16M |   8.78M |
 | FY3/22 YoY%  | -10.77% |  -5.79% |
@@ -409,8 +332,8 @@ const fyMillionSellersToMatch = `
 
 const collection = [
     title1,
-    // title2,
-    // title3,
+    title2,
+    title3,
 ] as const;
 
 const currentQuarter = 4;
@@ -456,7 +379,6 @@ function quarterlyCalculation(quarters: Titles[]) {
                 valueA: Number((elem.valueA - array[index-1].valueA).toFixed(2)),
                 valueB: Number((elem.valueB - array[index-1].valueB).toFixed(2)),
                 valueC: Number((elem.valueC - array[index-1].valueC).toFixed(2)),
-                valueD: Number((elem.valueD - array[index-1].valueD).toFixed(2)),
                 }
                : elem
    })
@@ -482,9 +404,9 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
     }).map((elem, index, array) => {
         
         let printRank: string = ` Rank ${elem.rank} `
-        let printRankFixed: string = (printRank.length >= 10)
+        let printRankFixed: string = (printRank.length >= 9)
                 ? printRank
-                : " ".repeat(10 - printRank.length) + printRank;
+                : printRank + " ".repeat(9 - printRank.length);
 
         let printTitleName: string = (elem.title.length > 32)
         ? elem.title.split(" ").reduce((prev, next, index, array) => {
@@ -492,9 +414,9 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
             let nextCheck = prev + next + " ";
             
             if (nextCheck.length > 31 && prev.length <= 31) {
-                return prev + " ".repeat(32 - prev.length) + `|          |\n| ` + next
+                return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
             } else if (index === array.length-1) {
-                return prev + next + " ".repeat(78 - prev.length)
+                return prev + next + " ".repeat(77 - prev.length)
             } else {
                 return prev + " " + next
             }
@@ -503,7 +425,7 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
         ? elem.title + " ".repeat(32 - elem.title.length) 
         : elem.title
 
-        let printTitleNameFixed: string = "|" + printTitleName + "|" + printRankFixed + "|\n+"+"-".repeat(43)+"+"
+        let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n|" + printTitleName + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
 
         let printValueA: string = `${elem.valueA}M ` 
         let printValueAFixed: string = (printValueA.length >= 9)
@@ -644,13 +566,13 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
             return [] // array.length 0 filtering
         } else {
             return (currentQuarter === 1)
-                    ? printGlobalHeader + "\n|" + elem.period + "|" + printValueCFixed + "|" + printValueDFixed + "|\n" + printFYCml + "\n| Area/WW FY % |" + printRegionCWWPercentageFixed + "|" + printRegionDWWPercentageFixed + "|"
+                    ? printGlobalHeader + "\n|" + elem.period + "|" + printValueCFixed + "|" + printValueDFixed + "|\n" + printFYCml + "\n| WW FY/LTD %  |" + printRegionCWWPercentageFixed + "|" + printRegionDWWPercentageFixed + "|"
                     : (index === 0 && currentQuarter !== 1)
                     ? printGlobalHeader + "\n|" + elem.period + "|" + printValueCFixed + "|" + printValueDFixed + "|"
                     : (index === 3)
-                    ? "|" + elem.period + "|" + printValueCFixed + "|" + printValueDFixed + "|\n" + printFYCml + printFYCmlYoY + "\n| Area/WW FY % |" + printRegionCWWPercentageFixed + "|" + printRegionDWWPercentageFixed + "|"
+                    ? "|" + elem.period + "|" + printValueCFixed + "|" + printValueDFixed + "|\n" + printFYCml + printFYCmlYoY + "\n| WW FY/LTD %  |" + printRegionCWWPercentageFixed + "|" + printRegionDWWPercentageFixed + "|"
                     : (index === currentQuarter-1 )
-                    ? "|" + elem.period + "|" + printValueCFixed + "|" + printValueDFixed + "|\n" + printFYCml + "\n| Area/WW FY % |" + printRegionCWWPercentageFixed + "|" + printRegionDWWPercentageFixed + "|"
+                    ? "|" + elem.period + "|" + printValueCFixed + "|" + printValueDFixed + "|\n" + printFYCml + "\n| WW FY/LTD %  |" + printRegionCWWPercentageFixed + "|" + printRegionDWWPercentageFixed + "|"
                     : "|" + elem.period + "|" + printValueCFixed + "|" + printValueDFixed + "|"
         }
         // (currentQuarter === 1) 
@@ -711,11 +633,172 @@ test("print!", () => {
         return quarterlyCalculation(elem)
     })
     
-    const test = printTitles(header, title1Difference, title1Sorted, currentQuarter)
+    // const test = printTitles(header, title1Difference, title1Sorted, currentQuarter)
+
+    const printOne = printHead(header)
+
+    const title1arrays = [
+        header,
+        title1Difference,
+        title1Sorted,
+        currentQuarter
+    ] as const;
+
+    const title2arrays = [
+        header,
+        title2Difference,
+        title2Sorted,
+        currentQuarter 
+    ] as const;
+
+    const title3arrays = [
+        header,
+        title3Difference,
+        title3Sorted,
+        currentQuarter
+    ] as const;
+
+    const [
+        printTwo,
+        printThree,
+        printFour,
+    ] = [
+        title1arrays,
+        title2arrays,
+        title3arrays,
+    ].map((elem, index, array) => {
+        return printTitles(...elem)
+    })
 
     // console.log(test);
     // console.log(title1Sorted);
+const printFYMillionSellerTitles = 
+`${printOne}
+${printTwo}
+${printThree}
+${printFour}`;
+
+// console.log(printFYMillionSellerTitles);
+
     
+    expect(printFYMillionSellerTitles).toMatch(fyMillionSellersToMatch);
+})
+
+test("print, match header", () => {
+
+    const printOne = printHead(header)
+
+    expect(printOne).toMatch(headerToMatch)
+})
+
+test("print, match rank 1 title", () => {
+
+    const [
+        title1Sorted,
+        title2Sorted,
+        title3Sorted,
+    ] = sortedCollection.map((elem) => {
+        return decimateCalculation(elem)
+    })
     
-    // expect(something...).toMatch(fyMillionSellersToMatch);
+    const [
+        title1Difference,
+        title2Difference,
+        title3Difference,
+    ] = sortedCollection.map((elem) => {
+        return decimateCalculation(elem)
+    }).map((elem) => {
+        return quarterlyCalculation(elem)
+    })
+
+    const title1arrays = [
+        header,
+        title1Difference,
+        title1Sorted,
+        currentQuarter
+    ] as const;
+
+    const title2arrays = [
+        header,
+        title2Difference,
+        title2Sorted,
+        currentQuarter 
+    ] as const;
+
+    const title3arrays = [
+        header,
+        title3Difference,
+        title3Sorted,
+        currentQuarter
+    ] as const;
+
+    const [
+        printTwo,
+        printThree,
+        printFour,
+    ] = [
+        title1arrays,
+        title2arrays,
+        title3arrays,
+    ].map((elem, index, array) => {
+        return printTitles(...elem)
+    })
+    
+    expect(printTwo).toMatch(rank1TitleToMatch)
+})
+
+test("print, match rank 2 title", () => {
+
+    const [
+        title1Sorted,
+        title2Sorted,
+        title3Sorted,
+    ] = sortedCollection.map((elem) => {
+        return decimateCalculation(elem)
+    })
+    
+    const [
+        title1Difference,
+        title2Difference,
+        title3Difference,
+    ] = sortedCollection.map((elem) => {
+        return decimateCalculation(elem)
+    }).map((elem) => {
+        return quarterlyCalculation(elem)
+    })
+
+    const title1arrays = [
+        header,
+        title1Difference,
+        title1Sorted,
+        currentQuarter
+    ] as const;
+
+    const title2arrays = [
+        header,
+        title2Difference,
+        title2Sorted,
+        currentQuarter 
+    ] as const;
+
+    const title3arrays = [
+        header,
+        title3Difference,
+        title3Sorted,
+        currentQuarter
+    ] as const;
+
+    const [
+        printTwo,
+        printThree,
+        printFour,
+    ] = [
+        title1arrays,
+        title2arrays,
+        title3arrays,
+    ].map((elem, index, array) => {
+        return printTitles(...elem)
+    })
+    
+    expect(printThree).toMatch(rank2TitleToMatch)
 })
