@@ -846,8 +846,40 @@ test("print summary", () => {
         return elem[3] // 4th quarter
     })
 
-    console.log(newCollection);
-    console.log(recurringCollection);
+    const [japanNew, overseasNew, wwFYNew, wwLTDNew] = [newCollection, newCollection, newCollection, newCollection].map((elem, index, array) =>  {
+        return elem.map((secondElem) => {
+            return (index === 0)
+                ? secondElem.valueA
+                : (index === 1)
+                ? secondElem.valueB
+                : (index === 2)
+                ? secondElem.valueC
+                : secondElem.valueD
+        }).reduce((prev, next) => prev + next).toFixed(2)
+    })
+
+    // const japanNew = newCollection.map((elem, index) => {
+    //     return elem.valueA
+    // }).reduce((prev, next) => prev + next).toFixed(2)
+
+    console.log(newCollection.length);
+    console.log(recurringCollection.length);
+
+    console.log(japanNew);
+    console.log(overseasNew);
+    console.log(wwFYNew);
+    console.log(wwLTDNew);
+    
+
+const testData = 
+`+---------------------+
+| Titles              |
++---------------------+
+| New!      |      12 |
+| Recurring |      12 |
++---------------------+
+
+`
     
     
 
