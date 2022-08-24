@@ -5,9 +5,9 @@ export type Titles = {
     valueA: number,
     regionB: " Overseas",
     valueB: number,
-    regionC: " WW FY   ",
+    regionC: "   WW FY ",
     valueC: number,
-    regionD: " WW LTD  ",
+    regionD: "  WW LTD ",
     valueD: number,
     rank?: number, 
 }

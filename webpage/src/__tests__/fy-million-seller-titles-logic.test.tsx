@@ -9,9 +9,9 @@ const title1: Titles[] = [
         valueA: 20,
         regionB: " Overseas",
         valueB: 150,
-        regionC: " WW FY   ",
+        regionC: "   WW FY ",
         valueC: 169,
-        regionD: " WW LTD  ",
+        regionD: "  WW LTD ",
         valueD: 3708,
     },
     {
@@ -21,9 +21,9 @@ const title1: Titles[] = [
         valueA: 46,
         regionB: " Overseas",
         valueB: 289,
-        regionC: " WW FY   ",
+        regionC: "   WW FY ",
         valueC: 334,
-        regionD: " WW LTD  ",
+        regionD: "  WW LTD ",
         valueD: 3874,
     },
     {
@@ -33,9 +33,9 @@ const title1: Titles[] = [
         valueA: 86,
         regionB: " Overseas",
         valueB: 710,
-        regionC: " WW FY   ",
+        regionC: "   WW FY ",
         valueC: 796,
-        regionD: " WW LTD  ",
+        regionD: "  WW LTD ",
         valueD: 4335,
     },
     {
@@ -45,9 +45,9 @@ const title1: Titles[] = [
         valueA: 116,
         regionB: " Overseas",
         valueB: 878,
-        regionC: " WW FY   ",
+        regionC: "   WW FY ",
         valueC: 994,
-        regionD: " WW LTD  ",
+        regionD: "  WW LTD ",
         valueD: 4533,
     },
     {
@@ -57,9 +57,9 @@ const title1: Titles[] = [
         valueA: 130,
         regionB: " Overseas",
         valueB: 932,
-        regionC: " WW FY   ",
+        regionC: "   WW FY ",
         valueC: 1062,
-        regionD: " WW LTD  ",
+        regionD: "  WW LTD ",
         valueD: 3539,  
     },
 ]
@@ -353,7 +353,7 @@ const fyMillionSellersToMatch = `
 | FY3/22 YoY%  |    New! |    New! |
 | Area/WW FY % |  26.28% |  73.72% |
 +----------------------------------+
-| Global       | WW FY   | WW LTD  |
+| Global       |   WW FY |  WW LTD |
 +----------------------------------+
 | 3rd Quarter  |  13.97M |  13.97M |
 | 4th Quarter  |   0.68M |  14.65M |
@@ -373,7 +373,7 @@ const fyMillionSellersToMatch = `
 | FY3/22 YoY%  |    New! |    New! |
 | Area/WW FY % |  27.37% |  72.55% |
 +----------------------------------+
-| Global       | WW FY   | WW LTD  |
+| Global       |   WW FY |  WW LTD |
 +----------------------------------+
 | 4th Quarter  |  12.64M |  12.64M |
 +==================================+
@@ -395,7 +395,7 @@ const fyMillionSellersToMatch = `
 | FY3/22 YoY%  | -10.77% |  -5.79% |
 | Area/WW FY % |  11.67% |  88.33% |
 +----------------------------------+
-| Global       | WW FY   | WW LTD  |
+| Global       |   WW FY |  WW LTD |
 +----------------------------------+
 | 1st Quarter  |   1.69M |  37.08M |
 | 2nd Quarter  |   1.65M |  38.74M |
@@ -538,7 +538,9 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
             ? printRegionBWWPercentage
             :  " ".repeat(9 - printRegionBWWPercentage.length) + printRegionBWWPercentage;
         
-        return (index === 0) 
+        return  (currentQuarter === 1) 
+                ? printAreaHeader + "\n|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|\n" + printFYCml + "\n| Area/WW FY % |" + printRegionAWWPercentageFixed + "|" + printRegionBWWPercentageFixed + "|"
+                : (index === 0) 
                 ? printTitleNameFixed + "\n" + printAreaHeader + "\n|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|"
                 : (index === currentQuarter-1)
                 ?  "|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|\n" + printFYCml + "\n| Area/WW FY % |" + printRegionAWWPercentageFixed + "|" + printRegionBWWPercentageFixed + "|"
@@ -585,7 +587,9 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
             ? printRegionDWWPercentage
             :  " ".repeat(9 - printRegionDWWPercentage.length) + printRegionDWWPercentage;
         
-        return (index === 0) 
+        return (currentQuarter === 1) 
+                ? printGlobalHeader + "\n|" + elem.period + "|" + printValueCFixed + "|" + printValueDFixed + "|\n" + printFYCml + "\n| Area/WW FY % |" + printRegionCWWPercentageFixed + "|" + printRegionDWWPercentageFixed + "|"
+                : (index === 0)
                 ? printGlobalHeader + "\n|" + elem.period + "|" + printValueCFixed + "|" + printValueDFixed + "|"
                 : (index === currentQuarter-1)
                 ?  "|" + elem.period + "|" + printValueCFixed + "|" + printValueDFixed + "|\n" + printFYCml + "\n| Area/WW FY % |" + printRegionCWWPercentageFixed + "|" + printRegionDWWPercentageFixed + "|"
