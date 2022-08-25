@@ -252,7 +252,6 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
     // return [regionAB, regionCD].reduce((prev, next) => prev + "\n" + next + "\n+"+"-".repeat(34)+"+")
 
     const penultimateCheck = [regionAB, regionCD].reduce((prev, next) => prev + "\n" + next + "\n+"+"-".repeat(34)+"+")
-    // console.log(titleDifference[0].label);
     
     return (titleDifference[0].miscellaneous)
             ? penultimateCheck + "\n|" + titleDifference[0].miscellaneous + "\n+" + "-".repeat(titleDifference[0].miscellaneous.length-1) + "+"
