@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { printEarnings } from "../data/nintendo/Nintendo-FY3-2017/earnings-fy3-17";
 import { printKPI } from "../data/nintendo/Nintendo-FY3-2017/kpi-fy3-17";
 import { printTopSellingSwitchTitles } from "../data/nintendo/Nintendo-FY3-2017/topNSWswfy3-17";
+import { printFYMillionSellerTitles } from "../data/nintendo/Nintendo-FY3-2017/mst-fy3-17";
 import GRAPH_NINTENDO_EARNINGS_FY3_17 from "../graphs/nintendo/Nintendo-FY3-2017/GRAPH_NINTENDO_EARNINGS_FY3_17";
 import GRAPH_NINTENDO_KPI_FY3_17 from "../graphs/nintendo/Nintendo-FY3-2017/GRAPH_NINTENDO_KPI_FY3_17";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_17 from "../graphs/nintendo/Nintendo-FY3-2017/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_17";
@@ -76,7 +77,7 @@ export default function NINTENDO_FY3_17() {
     
     const keyIndicators = printKPI;
 
-    const fyMillionSellers = "no data here at this time";
+    const fyMillionSellers = printFYMillionSellerTitles; 
 
     const regionalHWSW = "no data here at this time";
 
@@ -108,6 +109,8 @@ export default function NINTENDO_FY3_17() {
                 ? <GRAPH_NINTENDO_KPI_FY3_17 />
                 : (value === "Top Selling Titles")
                 ? <GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_17 />
+                : (value === "FY Million-Seller Titles")
+                ? null
                 : null
 
             }

@@ -123,10 +123,65 @@ export const [
     return quarterlyCalculation(elem)
 })
 
+const decimatedCollection = sortedCollection.map((elem) => {
+        return decimateCalculation(elem)
+    })
+
+const labelCollection = decimatedCollection.map((elem) => {
+        return labelTitles(elem)
+    })
+
+const newCollection = labelCollection.filter((elem, index) => elem[index].label === " New! ").map((elem, index) => {
+        return elem[3] // 4th quarter
+    })
+    
+const recurringCollection = labelCollection.filter((elem, index) => elem[index].label === " Recurring ").map((elem, index) => {
+        return elem[3] // 4th quarter
+    })
+
+const newSummary = [newCollection, newCollection, newCollection, newCollection].map((elem, index, array) =>  {
+    if (elem.length === 0) {
+        return 0
+    }
+    
+        return elem.map((secondElem) => {
+            return (index === 0)
+                ? secondElem.valueA
+                : (index === 1)
+                ? secondElem.valueB
+                : (index === 2)
+                ? secondElem.valueC
+                : secondElem.valueD
+        }).reduce((prev, next) => prev + next)
+    })
+
+const recurringSummary = [recurringCollection, recurringCollection, recurringCollection, recurringCollection].map((elem, index, array) =>  {
+    if (elem.length === 0) {
+        return 0
+    }
+
+        return elem.map((secondElem) => {
+            return (index === 0)
+                ? secondElem.valueA
+                : (index === 1)
+                ? secondElem.valueB
+                : (index === 2)
+                ? secondElem.valueC
+                : secondElem.valueD
+        }).reduce((prev, next) => prev + next)
+    })
+
+
 const printOne = printHead(header)
 
 const printTwo = printTitles(header, title1Difference, title1Sorted, currentQuarter)
 
+const printSummaryOne = printSummaryHead(header, newCollection, recurringCollection)
+
+const printSummaryTwo = printSummary(header, newSummary, recurringSummary)
+
 export const printFYMillionSellerTitles = 
 `${printOne}
-${printTwo}`;
+${printTwo}
+${printSummaryOne}
+${printSummaryTwo}`;
