@@ -3,6 +3,11 @@ import {
     Header,
     decimateCalculation,
     quarterlyCalculation,
+    labelTitles,
+    printHead,
+    printTitles,
+    printSummary,
+    printSummaryHead,
 } from "../../../utils/fy-million-seller-titles-logic";
 
 const currentQuarter = 4;
@@ -70,6 +75,20 @@ const title1: Titles[] = [
     },
 ]
 
+const header: Header = {
+    switchHeader: "| Nintendo Switch FY Million-Seller Titles |",
+    secondHeader: "| Title and Rank                           |",
+    thirdHeader: "| Units                                    |",
+    areaHeader: "| Area         |   Japan | Overseas|",
+    globalHeader: "| Global       |   WW FY |  WW LTD |",
+    fiscalYear: " FY3/17 ",
+    switchSummaryHeader: "| Nintendo Switch FY    |\n| Million-Seller Titles |\n",
+    japanSummaryHeader: "| Japan                           |",
+    overseasSummaryHeader: "| Overseas                        |",
+    globalFYSummaryHeader: "| Global FY                       |",
+    globalLTDSummaryHeader: "| Global LTD                      |",
+}
+
 const collection = [
     title1,
 ] as const;
@@ -98,10 +117,16 @@ export const [
 
 export const [
     title1Difference,
-
 ] = sortedCollection.map((elem) => {
     return decimateCalculation(elem)
 }).map((elem) => {
     return quarterlyCalculation(elem)
 })
 
+const printOne = printHead(header)
+
+const printTwo = printTitles(header, title1Difference, title1Sorted, currentQuarter)
+
+export const printFYMillionSellerTitles = 
+`${printOne}
+${printTwo}`;
