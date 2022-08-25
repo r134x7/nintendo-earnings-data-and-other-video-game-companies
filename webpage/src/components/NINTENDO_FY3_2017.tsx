@@ -109,8 +109,6 @@ export default function NINTENDO_FY3_17() {
                 ? <GRAPH_NINTENDO_KPI_FY3_17 />
                 : (value === "Top Selling Titles")
                 ? <GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_17 />
-                : (value === "FY Million-Seller Titles")
-                ? null
                 : null
 
             }

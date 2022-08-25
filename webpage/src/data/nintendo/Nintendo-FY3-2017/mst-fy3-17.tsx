@@ -63,7 +63,7 @@ const title1: Titles[] = [
     },
     {
         title: " The Legend of Zelda: Breath of the Wild ",
-        period: " 1st Quarter  ",
+        period: " Last FY Total ",
         regionA: "   Japan ",
         valueA: 0,
         regionB: " Overseas",
@@ -143,7 +143,7 @@ const newSummary = [newCollection, newCollection, newCollection, newCollection].
     if (elem.length === 0) {
         return 0
     }
-    
+
         return elem.map((secondElem) => {
             return (index === 0)
                 ? secondElem.valueA

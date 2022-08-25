@@ -135,6 +135,8 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
 
         let printRegionAYoY: string = (titleCumulative[4].valueA === 0)
             ? ` New! `
+            : (titleCumulative[4].valueA > 0)
+            ? `+${(((titleCumulative[3].valueA / titleCumulative[4].valueA) - 1) * 100).toFixed(2)}% ` 
             : `${(((titleCumulative[3].valueA / titleCumulative[4].valueA) - 1) * 100).toFixed(2)}% ` 
         let printRegionAYoYFixed: string = (printRegionAYoY.length >= 9)
             ? printRegionAYoY
@@ -142,6 +144,8 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
 
         let printRegionBYoY: string = (titleCumulative[4].valueB === 0)
             ? ` New! `
+            : (titleCumulative[4].valueB > 0)
+            ? `+${(((titleCumulative[3].valueB / titleCumulative[4].valueB) - 1) * 100).toFixed(2)}% ` 
             : `${(((titleCumulative[3].valueB / titleCumulative[4].valueB) - 1) * 100).toFixed(2)}% `
         let printRegionBYoYFixed: string = (printRegionBYoY.length >= 9)
             ? printRegionBYoY
@@ -208,6 +212,8 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
         
         let printRegionCYoY: string = (titleCumulative[4].valueC === 0)
             ? ` New! `
+            : (titleCumulative[4].valueC > 0)
+            ? `+${(((titleCumulative[3].valueC / titleCumulative[4].valueC) - 1) * 100).toFixed(2)}% ` 
             : `${(((titleCumulative[3].valueC / titleCumulative[4].valueC) - 1) * 100).toFixed(2)}% ` 
         let printRegionCYoYFixed: string = (printRegionCYoY.length >= 9)
             ? printRegionCYoY
@@ -215,6 +221,8 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
 
         let printRegionDYoY: string = (titleCumulative[4].valueD === 0)
             ? ` New! `
+            : (titleCumulative[4].valueD > 0)
+            ? `+${(((titleCumulative[3].valueD / titleCumulative[4].valueD) - 1) * 100).toFixed(2)}% ` 
             : `+${(((titleCumulative[3].valueD / titleCumulative[4].valueD) - 1) * 100).toFixed(2)}% `
         let printRegionDYoYFixed: string = (printRegionDYoY.length >= 9)
             ? printRegionDYoY
@@ -248,12 +256,12 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
 export function labelTitles(titlesSorted: Titles[]) {
 
     const calc: Titles[] = titlesSorted.map((elem, index, array) => {
-
+        
         return (array[4].valueC === 0)
                 ? {...elem, label: " New! "}
                 : {...elem, label: " Recurring "}
     })
-
+    
     return calc
 }
 
