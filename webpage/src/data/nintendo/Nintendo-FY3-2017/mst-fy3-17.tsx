@@ -131,7 +131,7 @@ const labelCollection = decimatedCollection.map((elem) => {
         return labelTitles(elem)
     })
 
-const newCollection = labelCollection.filter((elem, index) => elem[index].label === " New! ").map((elem, index) => {
+const newCollection = labelCollection.filter((elem, index) => elem[index].label === " New! ").map((elem, index) => { // do not use this method on arrays lengths longer than 5, see test for better method.
         return elem[3] // 4th quarter
     })
     

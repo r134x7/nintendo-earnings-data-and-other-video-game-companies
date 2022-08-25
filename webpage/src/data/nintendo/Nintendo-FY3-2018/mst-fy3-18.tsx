@@ -724,52 +724,59 @@ export const [
     title9Difference,
 ] = differenceTitles 
 
-// const labelCollection = sortedTitles.map((elem) => {
-//         return labelTitles(elem)
-//     })
+const newCollection = sortedTitles.map((elem) => {
+        return labelTitles(elem)
+    }).map((elem) => {
+        return elem.filter((secondElem) => {
+            return secondElem.label === " New! "
+        })
+    }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
+    ).map((elem) => {
+        return elem[3] // 4th quarter
+    })
 
-// const newCollection = labelCollection.filter((elem, index) => 
-// { console.log(elem[index].label);
+const recurringCollection = sortedTitles.map((elem) => {
+        return labelTitles(elem)
+    }).map((elem) => {
+        return elem.filter((secondElem) => {
+            return secondElem.label === " Recurring "
+        })
+    }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
+    ).map((elem) => {
+        return elem[3] // 4th quarter
+    })    
 
-//     return elem[index].label === " New! "}).map((elem, index) => {
-//         return elem[3] // 4th quarter
-//     })
+const newSummary = [newCollection, newCollection, newCollection, newCollection].map((elem, index, array) =>  {
+    if (elem.length === 0) {
+        return 0
+    }
     
-// const recurringCollection = labelCollection.filter((elem, index) => elem[index].label === " Recurring ").map((elem, index) => {
-//         return elem[3] // 4th quarter
-//     })
+        return elem.map((secondElem) => {
+            return (index === 0)
+                ? secondElem.valueA
+                : (index === 1)
+                ? secondElem.valueB
+                : (index === 2)
+                ? secondElem.valueC
+                : secondElem.valueD
+        }).reduce((prev, next) => prev + next)
+    })
 
-// const newSummary = [newCollection, newCollection, newCollection, newCollection].map((elem, index, array) =>  {
-//     if (elem.length === 0) {
-//         return 0
-//     }
-    
-//         return elem.map((secondElem) => {
-//             return (index === 0)
-//                 ? secondElem.valueA
-//                 : (index === 1)
-//                 ? secondElem.valueB
-//                 : (index === 2)
-//                 ? secondElem.valueC
-//                 : secondElem.valueD
-//         }).reduce((prev, next) => prev + next)
-//     })
+const recurringSummary = [recurringCollection, recurringCollection, recurringCollection, recurringCollection].map((elem, index, array) =>  {
+    if (elem.length === 0) {
+        return 0
+    }
 
-// const recurringSummary = [recurringCollection, recurringCollection, recurringCollection, recurringCollection].map((elem, index, array) =>  {
-//     if (elem.length === 0) {
-//         return 0
-//     }
-
-//         return elem.map((secondElem) => {
-//             return (index === 0)
-//                 ? secondElem.valueA
-//                 : (index === 1)
-//                 ? secondElem.valueB
-//                 : (index === 2)
-//                 ? secondElem.valueC
-//                 : secondElem.valueD
-//         }).reduce((prev, next) => prev + next)
-//     })
+        return elem.map((secondElem) => {
+            return (index === 0)
+                ? secondElem.valueA
+                : (index === 1)
+                ? secondElem.valueB
+                : (index === 2)
+                ? secondElem.valueC
+                : secondElem.valueD
+        }).reduce((prev, next) => prev + next)
+    })
 
 
 const printOne = printHead(header)
@@ -779,9 +786,9 @@ const [print2, print3, print4, print5, print6, print7, print8, print9, print10] 
     return printTitles(header, elem, sortedTitles[index], currentQuarter)
 })
 
-// const printSummaryOne = printSummaryHead(header, newCollection, recurringCollection)
+const printSummaryOne = printSummaryHead(header, newCollection, recurringCollection)
 
-// const printSummaryTwo = printSummary(header, newSummary, recurringSummary)
+const printSummaryTwo = printSummary(header, newSummary, recurringSummary)
 
 export const printFYMillionSellerTitles = 
 `${printOne}
@@ -793,6 +800,6 @@ ${print6}
 ${print7}
 ${print8}
 ${print9}
-${print10}`;
-// ${printSummaryOne}
-// ${printSummaryTwo}`;
+${print10}
+${printSummaryOne}
+${printSummaryTwo}`;
