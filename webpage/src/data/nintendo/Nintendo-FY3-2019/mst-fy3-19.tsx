@@ -1220,7 +1220,7 @@ const header: Header = {
     thirdHeader: "| Units                                    |",
     areaHeader: "| Area         |   Japan | Overseas|",
     globalHeader: "| Global       |   WW FY |  WW LTD |",
-    fiscalYear: " FY3/18 ",
+    fiscalYear: " FY3/19 ",
     switchSummaryHeader: "| Nintendo Switch FY    |\n| Million-Seller Titles |\n",
     japanSummaryHeader: "| Japan                           |",
     overseasSummaryHeader: "| Overseas                        |",
@@ -1269,40 +1269,39 @@ const sortedCollection = filteredCollection.map((elem, index, array) => {
         return x // x which is the returned array is now returned to the array of arrays
     })
 
-const sortedTitles = sortedCollection.map((elem) => {
+export const sortedTitles = sortedCollection.map((elem) => {
         return decimateCalculation(elem)
     })
 
-export const [
-    title1Sorted,
-    title2Sorted,
-    title3Sorted,
-    title4Sorted,
-    title5Sorted,
-    title6Sorted,
-    title7Sorted,
-    title8Sorted,
-    title9Sorted,
-] = sortedTitles 
+// export const [
+//     title1Sorted,
+//     title2Sorted,
+//     title3Sorted,
+//     title4Sorted,
+//     title5Sorted,
+//     title6Sorted,
+//     title7Sorted,
+//     title8Sorted,
+//     title9Sorted,
+// ] = sortedTitles 
 
-
-const differenceTitles = sortedCollection.map((elem) => {
+export const differenceTitles = sortedCollection.map((elem) => {
     return decimateCalculation(elem)
 }).map((elem) => {
     return quarterlyCalculation(elem)
 })
 
-export const [
-    title1Difference,
-    title2Difference,
-    title3Difference,
-    title4Difference,
-    title5Difference,
-    title6Difference,
-    title7Difference,
-    title8Difference,
-    title9Difference,
-] = differenceTitles 
+// export const [
+//     title1Difference,
+//     title2Difference,
+//     title3Difference,
+//     title4Difference,
+//     title5Difference,
+//     title6Difference,
+//     title7Difference,
+//     title8Difference,
+//     title9Difference,
+// ] = differenceTitles 
 
 const newCollection = sortedTitles.map((elem) => {
         return labelTitles(elem)
@@ -1362,24 +1361,29 @@ const recurringSummary = [recurringCollection, recurringCollection, recurringCol
 const printOne = printHead(header)
 
 // const printTwo = printTitles(header, title1Difference, title1Sorted, currentQuarter)
-const [print2, print3, print4, print5, print6, print7, print8, print9, print10] = differenceTitles.map((elem, index) => {
+// const [print2, print3, print4, print5, print6, print7, print8, print9, print10] = differenceTitles.map((elem, index) => {
+//     return printTitles(header, elem, sortedTitles[index], currentQuarter)
+// })
+const printListedTitles = differenceTitles.map((elem, index) => {
     return printTitles(header, elem, sortedTitles[index], currentQuarter)
-})
+}) as string[];
 
 const printSummaryOne = printSummaryHead(header, newCollection, recurringCollection)
 
 const printSummaryTwo = printSummary(header, newSummary, recurringSummary)
 
-export const printFYMillionSellerTitles = 
-`${printOne}
-${print2}
-${print3}
-${print4}
-${print5}
-${print6}
-${print7}
-${print8}
-${print9}
-${print10}
-${printSummaryOne}
-${printSummaryTwo}`;
+export const printFYMillionSellerTitles = [printOne, ...printListedTitles, printSummaryOne, printSummaryTwo].reduce((prev, next) => prev + "\n" + next )
+
+
+// `${printOne}
+// ${print2}
+// ${print3}
+// ${print4}
+// ${print5}
+// ${print6}
+// ${print7}
+// ${print8}
+// ${print9}
+// ${print10}
+// ${printSummaryOne}
+// ${printSummaryTwo}`;
