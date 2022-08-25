@@ -936,9 +936,11 @@ expect(testHeader).toMatch(testData)
 
 const printSummary = (header: Header, regionNew: number[], regionRecurring: number[], ) => {
 
+    const regionHeaders: string[] = [header.japanSummaryHeader, header.overseasSummaryHeader, header.globalFYSummaryHeader, header.globalLTDSummaryHeader]
+
     return regionNew.map((elem, index, array) => {
 
-        let printRegionHeader: string = "+"+"-".repeat(33)+"+\n|" + header.fiscalYear + "Cml. |   Units |    %    |\n+" + "-".repeat(33) + "+"
+        let printRegionHeader: string = regionHeaders[index] + "+"+"-".repeat(33)+"+\n|" + header.fiscalYear + "Cml. |   Units |    %    |\n+" + "-".repeat(33) + "+"
 
         let TotalUnits: number = Number((elem + regionRecurring[index]).toFixed(2)) 
 
@@ -961,14 +963,19 @@ const printSummary = (header: Header, regionNew: number[], regionRecurring: numb
         let printRecurringUnitsFixed: string = (printRecurringUnits.length)
             ? printRecurringUnits
             : " ".repeat(9 - printRecurringUnits.length) + printRecurringUnits;
+        
+        let printRecurringPercentages: string = `${(regionRecurring[index] / TotalUnits).toFixed(2)}% `
+        let printRecurringPercentagesFixed: string = (printRecurringPercentages.length >= 9)
+            ? printRecurringPercentages
+            : " ".repeat(9 - printRecurringPercentages.length) + printRecurringPercentages;
 
-        let printRows: string = "| New!        |" + printNewUnitsFixed + "|" + printNewPercentages + "|\n| Recurring   |" + printRecurringUnits + "|" + printRecurringPercentages + "|\n+" + "=".repeat(33) + "+\n| Total      |" + printTotalUnits + "|" 
-
-    })
+        let printRows: string = "| New!        |" + printNewUnitsFixed + "|" + printNewPercentagesFixed + "|\n| Recurring   |" + printRecurringUnitsFixed + "|" + printRecurringPercentagesFixed + "|\n+" + "=".repeat(33) + "+\n| Total      |" + printTotalUnitsFixed + "|" 
+        return printRegionHeader + printRows
+    }).reduce((prev, next) => prev + next)
 
 }
 
-// console.log(printSummary(header, japanNew, japanRecurring));
+console.log(printSummary(header, newSummary, recurringSummary));
 
 
 })
