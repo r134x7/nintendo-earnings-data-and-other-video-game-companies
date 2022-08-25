@@ -198,10 +198,10 @@ const header: Header = {
     globalHeader: "| Global       |   WW FY |  WW LTD |", 
     fiscalYear: " FY3/22 ",
     switchSummaryHeader: "| Nintendo Switch FY    |\n| Million-Seller Titles |\n",
-    japanSummaryHeader: "| Japan                 |",
-    overseasSummaryHeader: "| Overseas              |",
-    globalFYSummaryHeader: "| Global FY             |",
-    globalLTDSummaryHeader: "| Global LTD            |",
+    japanSummaryHeader: "| Japan                           |",
+    overseasSummaryHeader: "| Overseas                        |",
+    globalFYSummaryHeader: "| Global FY                       |",
+    globalLTDSummaryHeader: "| Global LTD                      |",
 }
 
 const headerToMatch = 
@@ -940,36 +940,37 @@ const printSummary = (header: Header, regionNew: number[], regionRecurring: numb
 
     return regionNew.map((elem, index, array) => {
 
-        let printRegionHeader: string = regionHeaders[index] + "+"+"-".repeat(33)+"+\n|" + header.fiscalYear + "Cml. |   Units |    %    |\n+" + "-".repeat(33) + "+"
+        let printRegionHeader: string = "+"+"-".repeat(33)+"+\n" + regionHeaders[index] + "\n+"+"-".repeat(33)+"+\n|" + header.fiscalYear + "Cml. |   Units |    %    |\n+" + "-".repeat(33) + "+\n"
 
         let TotalUnits: number = Number((elem + regionRecurring[index]).toFixed(2)) 
 
-        let printTotalUnits: string = `${(elem + regionRecurring[index]).toFixed(2)}`
+        let printTotalUnits: string = `${(elem + regionRecurring[index]).toFixed(2)}M `
         let printTotalUnitsFixed: string = (printTotalUnits.length >= 9)
             ? printTotalUnits
             : " ".repeat(9 - printTotalUnits.length) + printTotalUnits;
         
-        let printNewUnits: string = `${elem.toFixed(2)} `
+        let printNewUnits: string = `${elem.toFixed(2)}M `
         let printNewUnitsFixed: string = (printNewUnits.length >= 9)
                 ? printNewUnits
                 : " ".repeat(9 - printNewUnits.length) + printNewUnits;
 
-        let printNewPercentages: string = `${(elem / TotalUnits).toFixed(2)}% `
+        let printNewPercentages: string = `${((elem / TotalUnits) * 100).toFixed(2)}% `
         let printNewPercentagesFixed: string = (printNewPercentages.length >= 9)
             ? printNewPercentages
             : " ".repeat(9 - printNewPercentages.length) + printNewPercentages;
 
-        let printRecurringUnits: string = `${regionRecurring[index].toFixed(2)} `
-        let printRecurringUnitsFixed: string = (printRecurringUnits.length)
+        let printRecurringUnits: string = `${regionRecurring[index].toFixed(2)}M `
+        let printRecurringUnitsFixed: string = (printRecurringUnits.length >= 9)
             ? printRecurringUnits
             : " ".repeat(9 - printRecurringUnits.length) + printRecurringUnits;
         
-        let printRecurringPercentages: string = `${(regionRecurring[index] / TotalUnits).toFixed(2)}% `
+        let printRecurringPercentages: string = `${((regionRecurring[index] / TotalUnits) * 100).toFixed(2)}% `
         let printRecurringPercentagesFixed: string = (printRecurringPercentages.length >= 9)
             ? printRecurringPercentages
             : " ".repeat(9 - printRecurringPercentages.length) + printRecurringPercentages;
 
-        let printRows: string = "| New!        |" + printNewUnitsFixed + "|" + printNewPercentagesFixed + "|\n| Recurring   |" + printRecurringUnitsFixed + "|" + printRecurringPercentagesFixed + "|\n+" + "=".repeat(33) + "+\n| Total      |" + printTotalUnitsFixed + "|" 
+        let printRows: string = "| New!        |" + printNewUnitsFixed + "|" + printNewPercentagesFixed + "|\n| Recurring   |" + printRecurringUnitsFixed + "|" + printRecurringPercentagesFixed + "|\n+" + "=".repeat(33) + "+\n| Total       |" + printTotalUnitsFixed + "|\n+" + "-".repeat(23) + "+\n" 
+
         return printRegionHeader + printRows
     }).reduce((prev, next) => prev + next)
 

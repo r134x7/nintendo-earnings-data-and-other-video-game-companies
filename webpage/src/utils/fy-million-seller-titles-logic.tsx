@@ -20,11 +20,11 @@ export type Header = {
     fiscalYear: string
     areaHeader: "| Area         |   Japan | Overseas|",
     globalHeader: "| Global       |   WW FY |  WW LTD |",
-    switchSummaryHeader: "| Nintendo Switch FY    |\n| Million-Seller Titles |",
-    japanSummaryHeader: "| Japan                 |",
-    overseasSummaryHeader: "| Overseas              |",
-    globalFYSummaryHeader: "| Global FY             |",
-    globalLTDSummaryHeader: "| Global LTD            |",
+    switchSummaryHeader: "| Nintendo Switch FY    |\n| Million-Seller Titles |\n",
+    japanSummaryHeader: "| Japan                           |",
+    overseasSummaryHeader: "| Overseas                        |",
+    globalFYSummaryHeader: "| Global FY                       |",
+    globalLTDSummaryHeader: "| Global LTD                      |",
 }
 
 //| Area         |   Japan | Overseas|
