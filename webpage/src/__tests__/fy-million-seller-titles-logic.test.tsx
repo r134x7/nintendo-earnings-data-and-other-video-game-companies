@@ -878,39 +878,56 @@ test("print summary", () => {
     console.log(overseasRecurring);
     console.log(wwFYRecurring);
     console.log(wwLTDRecurring);
-    
+
 const testData = 
 `+-----------------------+
+| Nintendo Switch FY    |
+| Million-Seller Titles |
++-----------------------+
++-----------------------+
 | Titles                |
 +-----------------------+
-| New!        |      12 |
-| Recurring   |      12 |
+| New!        |       2 |
+| Recurring   |       1 |
 +=======================+
-| Total       |      24 |
+| Total       |       3 |
 +-----------------------+`
 //| Million-Seller Titles |
 const printSummaryHead = (header: Header, newCollection: Titles[], recurringCollection: Titles[]) => {
 
-    let printNew: string = `${newCollection.length}`
+    let printNew: string = `${newCollection.length} `
     let printNewFixed: string = (printNew.length >= 9)
         ? printNew
         : " ".repeat(9 - printNew.length) + printNew;
 
-    let printRecurring: string = `${recurringCollection.length}`
+    let printRecurring: string = `${recurringCollection.length} `
     let printRecurringFixed: string = (printRecurring.length >= 9)
         ? printRecurring
         : " ".repeat(9 - printRecurring.length) + printRecurring;
 
-    let printTotal: string = `${newCollection.length + recurringCollection.length}`
+    let printTotal: string = `${newCollection.length + recurringCollection.length} `
     let printTotalFixed: string = (printTotal.length >= 9)
     ? printTotal
     : " ".repeat(9 - printTotal.length) + printTotal;
 
     let printHeader: string = "+"+"-".repeat(23)+"+\n" + header.switchSummaryHeader + "+"+"-".repeat(23)+"+"
 
-    let printTitles: string = "+"+"-".repeat(23)+"+\n| Titles                |" 
+    let printTitles: string = "\n+"+"-".repeat(23)+"+\n| Titles                |\n+" + "-".repeat(23)+"+" 
+
+    let printNewRow: string = "\n| New!        |" + printNewFixed + "|"
+
+    let printRecurringRow: string = "\n| Recurring   |" + printRecurringFixed + "|"
+
+    let printTotalRow: string = "\n+"+"=".repeat(23) + "+\n| Total       |" + printTotalFixed + "|\n+"+"-".repeat(23) + "+"
+
+    return printHeader + printTitles + printNewRow + printRecurringRow + printTotalRow
 }
     
+const testHeader = printSummaryHead(header, newCollection, recurringCollection)
+
+expect(testHeader).toMatch(testData)
+
+
 const printSummary = (header: Header, regionNew: number, regionRecurring: number, ) => {
 
 }    
