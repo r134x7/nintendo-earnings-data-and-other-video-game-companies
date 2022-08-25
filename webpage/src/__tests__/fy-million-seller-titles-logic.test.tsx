@@ -842,7 +842,8 @@ test("print summary", () => {
         return elem[3] // 4th quarter
     })
 
-    const [japanNew, overseasNew, wwFYNew, wwLTDNew] = [newCollection, newCollection, newCollection, newCollection].map((elem, index, array) =>  {
+    // const [japanNew, overseasNew, wwFYNew, wwLTDNew] =
+    const newSummary = [newCollection, newCollection, newCollection, newCollection].map((elem, index, array) =>  {
         return elem.map((secondElem) => {
             return (index === 0)
                 ? secondElem.valueA
@@ -854,7 +855,8 @@ test("print summary", () => {
         }).reduce((prev, next) => prev + next)
     })
 
-    const [japanRecurring, overseasRecurring, wwFYRecurring, wwLTDRecurring] = [recurringCollection, recurringCollection, recurringCollection, recurringCollection].map((elem, index, array) =>  {
+    // const [japanRecurring, overseasRecurring, wwFYRecurring, wwLTDRecurring] 
+    const recurringSummary = [recurringCollection, recurringCollection, recurringCollection, recurringCollection].map((elem, index, array) =>  {
         return elem.map((secondElem) => {
             return (index === 0)
                 ? secondElem.valueA
@@ -869,15 +871,19 @@ test("print summary", () => {
     console.log(newCollection.length);
     console.log(recurringCollection.length);
 
-    console.log(japanNew);
-    console.log(overseasNew);
-    console.log(wwFYNew);
-    console.log(wwLTDNew);
+    console.log(newSummary);
+    console.log(recurringSummary);
     
-    console.log(japanRecurring);
-    console.log(overseasRecurring);
-    console.log(wwFYRecurring);
-    console.log(wwLTDRecurring);
+    
+    // console.log(japanNew);
+    // console.log(overseasNew);
+    // console.log(wwFYNew);
+    // console.log(wwLTDNew);
+    
+    // console.log(japanRecurring);
+    // console.log(overseasRecurring);
+    // console.log(wwFYRecurring);
+    // console.log(wwLTDRecurring);
 
 const testData = 
 `+-----------------------+
@@ -928,8 +934,41 @@ const testHeader = printSummaryHead(header, newCollection, recurringCollection)
 expect(testHeader).toMatch(testData)
 
 
-const printSummary = (header: Header, regionNew: number, regionRecurring: number, ) => {
+const printSummary = (header: Header, regionNew: number[], regionRecurring: number[], ) => {
 
-}    
+    return regionNew.map((elem, index, array) => {
+
+        let printRegionHeader: string = "+"+"-".repeat(33)+"+\n|" + header.fiscalYear + "Cml. |   Units |    %    |\n+" + "-".repeat(33) + "+"
+
+        let TotalUnits: number = Number((elem + regionRecurring[index]).toFixed(2)) 
+
+        let printTotalUnits: string = `${(elem + regionRecurring[index]).toFixed(2)}`
+        let printTotalUnitsFixed: string = (printTotalUnits.length >= 9)
+            ? printTotalUnits
+            : " ".repeat(9 - printTotalUnits.length) + printTotalUnits;
+        
+        let printNewUnits: string = `${elem.toFixed(2)} `
+        let printNewUnitsFixed: string = (printNewUnits.length >= 9)
+                ? printNewUnits
+                : " ".repeat(9 - printNewUnits.length) + printNewUnits;
+
+        let printNewPercentages: string = `${(elem / TotalUnits).toFixed(2)}% `
+        let printNewPercentagesFixed: string = (printNewPercentages.length >= 9)
+            ? printNewPercentages
+            : " ".repeat(9 - printNewPercentages.length) + printNewPercentages;
+
+        let printRecurringUnits: string = `${regionRecurring[index].toFixed(2)} `
+        let printRecurringUnitsFixed: string = (printRecurringUnits.length)
+            ? printRecurringUnits
+            : " ".repeat(9 - printRecurringUnits.length) + printRecurringUnits;
+
+        let printRows: string = "| New!        |" + printNewUnitsFixed + "|" + printNewPercentages + "|\n| Recurring   |" + printRecurringUnits + "|" + printRecurringPercentages + "|\n+" + "=".repeat(33) + "+\n| Total      |" + printTotalUnits + "|" 
+
+    })
+
+}
+
+// console.log(printSummary(header, japanNew, japanRecurring));
+
 
 })
