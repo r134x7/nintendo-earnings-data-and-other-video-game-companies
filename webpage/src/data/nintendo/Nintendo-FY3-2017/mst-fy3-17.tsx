@@ -89,7 +89,7 @@ const header: Header = {
     globalLTDSummaryHeader: "| Global LTD                      |",
 }
 
-const collection = [
+export const collection = [
     title1,
 ] as const;
 
