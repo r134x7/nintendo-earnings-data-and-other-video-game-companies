@@ -1151,6 +1151,70 @@ const title18: Titles[] = [
     },
 ]
 
+const title19: Titles[] = [
+    {
+        title: " New Super Mario Bros. Deluxe ",
+        period: " 1st Quarter  ",
+        regionA: "   Japan ",
+        valueA: 0,
+        regionB: " Overseas",
+        valueB: 0,
+        regionC: "   WW FY ",
+        valueC: 0,
+        regionD: "  WW LTD ",
+        valueD: 0,
+    },
+    {
+        title: " New Super Mario Bros. Deluxe ",
+        period: " 2nd Quarter  ",
+        regionA: "   Japan ",
+        valueA: 0,
+        regionB: " Overseas",
+        valueB: 0,
+        regionC: "   WW FY ",
+        valueC: 0,
+        regionD: "  WW LTD ",
+        valueD: 0,
+    },
+    {
+        title: " New Super Mario Bros. Deluxe ",
+        period: " 3rd Quarter  ",
+        regionA: "   Japan ",
+        valueA: 0,
+        regionB: " Overseas",
+        valueB: 0,
+        regionC: "   WW FY ",
+        valueC: 0,
+        regionD: "  WW LTD ",
+        valueD: 0,
+    },
+    {
+        title: " New Super Mario Bros. Deluxe ",
+        period: " 4th Quarter  ",
+        regionA: "   Japan ",
+        valueA: 69,
+        regionB: " Overseas",
+        valueB: 263,
+        regionC: "   WW FY ",
+        valueC: 331,
+        regionD: "  WW LTD ",
+        valueD: 331,
+    },
+    {
+        title: " New Super Mario Bros. Deluxe ",
+        period:" Last FY Total ", 
+        regionA: "   Japan ",
+        valueA: 0,
+        regionB: " Overseas",
+        valueB: 0,
+        regionC: "   WW FY ",
+        valueC: 0,
+        regionD: "  WW LTD ",
+        valueD: 0,
+    },
+]
+
+
 // const title0: Titles[] = [
 //     {
 //         title: "",
@@ -1247,6 +1311,7 @@ const collection = [
     title16,
     title17,
     title18,
+    title19
 ] as const;
 
 const filteredCollection = collection.filter((elem, index, array) => {
