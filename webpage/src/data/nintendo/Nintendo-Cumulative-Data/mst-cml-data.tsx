@@ -277,11 +277,14 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
 
 const printOne = printHead(header)
 
-const printTwo = printTitlesJapan(sortedJapanCollection)
+const divideSortedJapanCollection = decimateCalculation(sortedJapanCollection)
+const printTwo = printTitlesJapan(divideSortedJapanCollection)
 
-const printThree = printTitlesOverseas(sortedOverseasCollection)
+const divideSortedOverseasCollection = decimateCalculation(sortedOverseasCollection)
+const printThree = printTitlesOverseas(divideSortedOverseasCollection)
 
-const printFour = printTitlesGlobal(sortedWWLTDCollection)
+const divideSortedGlobalCollection = decimateCalculation(sortedWWLTDCollection)
+const printFour = printTitlesGlobal(divideSortedGlobalCollection)
 
 export const printJapan =
 `${printOne}

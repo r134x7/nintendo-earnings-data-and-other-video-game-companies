@@ -14,9 +14,9 @@ import NINTENDO_CML from "../components/NINTENDO_CML";
 
 const yearsList = Array.from({length: 7}, (elem, index) => 
                     {
-                      return (index !== 6)
-                            ? "FY3/" + (index + 2017)
-                            : "Special Page"
+                      return (index === 0)
+                            ? "Special Page"
+                            : "FY3/" + (index + 2016)
                     }) // creates an array of length 6 and iterates through the array
 
 // const coloursList = ["rgba(52, 58, 64, 0.2)", "#2C2E33"]
@@ -87,14 +87,15 @@ export default function Nintendo() {
             <Group position="center">
 
                 <Autocomplete
+                    dropdownPosition="bottom"
                     mb="sm"
                     mr="md"
                     placeholder="Select"
-                    label="Select Fiscal Year"
+                    label="Select Fiscal Year from 2017 to 2022, (or visit the special page)."
                     description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
                     radius="xl"
                     size="md"
-                    limit={yearsList.length}
+                    limit={5}
                     data={yearsList}
                     value={year} 
                     onChange={setYear}
