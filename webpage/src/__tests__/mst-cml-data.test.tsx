@@ -16,12 +16,21 @@ test("mapping and filtering one title...", () => {
         fy3_22_collection,
     ] as const;
 
-    const filteredCollection = totalCollection.map((elem, index, array) => {
-        return elem.filter((secondElem, secondIndex, secondArray) => {
-            return array[index][0][0].title === " Super Mario Party "
-        })
-    })
+    // const filteredCollection = totalCollection.map((elem, index, array) => {
+    //     return elem.map((secondElem, secondIndex, secondArray) => {
+            
+    //         return secondElem.filter((thirdElem, thirdIndex, thirdArray) => {
+    //         return thirdElem.title === " Super Mario Party "
+    //         })
+    //     })
+    // }).filter((elem, index) => elem.length !== 0)
 
-    console.log(filteredCollection);
+    const flatCollection = totalCollection.flatMap((elem) => elem).map((elem) => {
+        return elem.filter((secondElem, index, array) => {
+            return secondElem.valueC !== 0 && secondElem.period === " 4th Quarter  "
+        })
+    }).filter((elem) => elem.length !== 0)
+
+    console.log(flatCollection);
     
 })
