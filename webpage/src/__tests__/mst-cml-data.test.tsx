@@ -5,7 +5,7 @@ import { collection as fy3_20_collection } from "../data/nintendo/Nintendo-FY3-2
 import { collection as fy3_21_collection } from "../data/nintendo/Nintendo-FY3-2021/mst-fy3-21";
 import { collection as fy3_22_collection } from "../data/nintendo/Nintendo-FY3-2022/mst-fy3-22";
 
-import { Titles } from "../utils/fy-million-seller-titles-logic"
+import { Titles, decimateCalculation } from "../utils/fy-million-seller-titles-logic"
 
     const totalCollection = [
         fy3_17_collection,
@@ -336,5 +336,71 @@ test("now to rank the titles by each region...", () => {
     })
 
     console.log(sortedWWLTDCollection);
+    
+})
+
+test("checking that everything is decimated...", () => {
+
+    const testingFunction = fy3_22_collection.map((elem, index) => {
+        
+        return sortingArrays(index)
+    })
+
+    const reducedArrays = testingFunction.map((elem) => {
+
+        return accumulate(elem)
+    })
+    
+    const sortedJapanCollection = reducedArrays.map((elem, index, array) => {
+            return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a.valueA > b.valueA)
+            ? 1
+            : (a.valueA < b.valueA)
+            ? -1
+            : 0 // 4th quarter WW FY is index 11
+    }).map((elem, index) => {
+        // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+        // const x: Titles[] = [...elem].map((elemTwo) => {
+        //     return {...elemTwo, rank: index+1} 
+        // })
+        return {...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
+    }).filter((elem) => {
+        return elem.valueA !== 0
+    }) // for filtering out games not published by Nintendo in Japan
+
+    const sortedOverseasCollection = reducedArrays.map((elem, index, array) => {
+            return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a.valueB > b.valueB)
+            ? 1
+            : (a.valueB < b.valueB)
+            ? -1
+            : 0 // 4th quarter WW FY is index 11
+    }).map((elem, index) => {
+        // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+        // const x: Titles[] = [...elem].map((elemTwo) => {
+        //     return {...elemTwo, rank: index+1} 
+        // })
+        return {...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
+    })
+
+    const sortedWWLTDCollection = reducedArrays.map((elem, index, array) => {
+            return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a.valueD > b.valueD)
+            ? 1
+            : (a.valueD < b.valueD)
+            ? -1
+            : 0 // 4th quarter WW FY is index 11
+    }).map((elem, index) => {
+        // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+        // const x: Titles[] = [...elem].map((elemTwo) => {
+        //     return {...elemTwo, rank: index+1} 
+        // })
+        return {...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
+    }) 
+
+    console.log(decimateCalculation(sortedWWLTDCollection));
     
 })
