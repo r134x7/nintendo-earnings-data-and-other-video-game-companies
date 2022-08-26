@@ -300,5 +300,41 @@ test("now to rank the titles by each region...", () => {
 
     console.log(sortedJapanCollection);
     
+    const sortedOverseasCollection = reducedArrays.map((elem, index, array) => {
+            return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a.valueB > b.valueB)
+            ? 1
+            : (a.valueB < b.valueB)
+            ? -1
+            : 0 // 4th quarter WW FY is index 11
+    }).map((elem, index) => {
+        // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+        // const x: Titles[] = [...elem].map((elemTwo) => {
+        //     return {...elemTwo, rank: index+1} 
+        // })
+        return {...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
+    })
 
+    console.log(sortedOverseasCollection);
+    
+
+    const sortedWWLTDCollection = reducedArrays.map((elem, index, array) => {
+            return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a.valueD > b.valueD)
+            ? 1
+            : (a.valueD < b.valueD)
+            ? -1
+            : 0 // 4th quarter WW FY is index 11
+    }).map((elem, index) => {
+        // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+        // const x: Titles[] = [...elem].map((elemTwo) => {
+        //     return {...elemTwo, rank: index+1} 
+        // })
+        return {...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
+    })
+
+    console.log(sortedWWLTDCollection);
+    
 })
