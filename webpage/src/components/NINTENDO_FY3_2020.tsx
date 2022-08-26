@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { printEarnings } from "../data/nintendo/Nintendo-FY3-2020/earnings-fy3-20";
 import { printKPI } from "../data/nintendo/Nintendo-FY3-2020/kpi-fy3-20";
 import { printTopSellingSwitchTitles } from "../data/nintendo/Nintendo-FY3-2020/topNSWswfy3-20";
+import { printFYMillionSellerTitles } from "../data/nintendo/Nintendo-FY3-2020/mst-fy3-20";
 import GRAPH_NINTENDO_EARNINGS_FY3_20 from "../graphs/nintendo/Nintendo-FY3-2020/GRAPH_NINTENDO_EARNINGS_FY3_20";
 import GRAPH_NINTENDO_KPI_FY3_20 from "../graphs/nintendo/Nintendo-FY3-2020/GRAPH_NINTENDO_KPI_FY3_20";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_20 from "../graphs/nintendo/Nintendo-FY3-2020/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_20";
@@ -88,7 +89,7 @@ export default function NINTENDO_FY3_20() {
     
     const keyIndicators = printKPI;
 
-    const fyMillionSellers = "no data here at this time";
+    const fyMillionSellers = printFYMillionSellerTitles;
 
     const regionalHWSW = "no data here at this time";
 

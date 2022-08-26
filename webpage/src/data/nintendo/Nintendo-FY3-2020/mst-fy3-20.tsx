@@ -1877,6 +1877,17 @@ const collection = [
     title16,
     title17,
     title18,
+    title19,
+    title20,
+    title21,
+    title22,
+    title23,
+    title24,
+    title25,
+    title26,
+    title27,
+    title28,
+    title29,
 ] as const;
 
 const filteredCollection = collection.filter((elem, index, array) => {
