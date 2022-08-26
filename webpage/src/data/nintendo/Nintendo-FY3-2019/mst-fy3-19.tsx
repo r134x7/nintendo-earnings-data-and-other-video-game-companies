@@ -1150,8 +1150,8 @@ const title18: Titles[] = [
         valueD: 0,
     },
 ]
-
-const title19: Titles[] = [
+// there are no titles between 18 and 22
+const title22: Titles[] = [
     {
         title: " New Super Mario Bros. Deluxe ",
         period: " 1st Quarter  ",
@@ -1311,7 +1311,7 @@ const collection = [
     title16,
     title17,
     title18,
-    title19
+    title22
 ] as const;
 
 const filteredCollection = collection.filter((elem, index, array) => {
