@@ -407,6 +407,52 @@ test("checking that everything is decimated...", () => {
 
 test("building new print function...", () => {
 
+    const printTitlesOverseas = (titles: Titles[]) => {
+
+        const overseasRank = titles.map((elem, index, array) => {
+
+            let printRank: string = ` Rank ${elem.rank} `
+            let printRankFixed: string = (printRank.length >= 9)
+                    ? printRank
+                    : printRank + " ".repeat(9 - printRank.length);
+    
+            let printTitleName: string = (elem.title.length > 32)
+            ? elem.title.split(" ").reduce((prev, next, index, array) => {
+    
+                let nextCheck = prev + next + " ";
+                
+                if (nextCheck.length > 31 && prev.length <= 31) {
+                    return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
+                } else if (index === array.length-1) {
+                    return prev + next + " ".repeat(77 - prev.length)
+                } else {
+                    return prev + " " + next
+                }
+            })
+            : (elem.title.length < 32)
+            ? elem.title + " ".repeat(32 - elem.title.length) 
+            : elem.title
+    
+            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n|" + printTitleName + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+            
+            let printValueB: string = `${elem.valueB}M ` 
+            let printValueBFixed: string = (printValueB.length >= 9)
+                ? printValueB
+                : " ".repeat(9 - printValueB.length) + printValueB;
+
+            let printValueBRow: string = (elem.miscellaneous)
+                ? "| Overseas - Life-To-Date (Units)|" + printValueBFixed + "|\n+" + "-".repeat(42) + "+\n|" + elem.miscellaneous + "\n+" + "-".repeat(elem.miscellaneous.length-1) + "+"
+                : "| Overseas - Life-To-Date (Units)|" + printValueBFixed + "|\n+" + "-".repeat(42) + "+"
+
+            return printTitleNameFixed + "\n" + printValueBRow
+
+        }).reduce((prev, next) => {
+            return prev + "\n" + next
+        })
+
+        return overseasRank
+
+    }
     const printTitlesJapan = (titles: Titles[]) => {
 
         const japanRank = titles.map((elem, index, array) => {
@@ -512,8 +558,11 @@ test("building new print function...", () => {
     }) 
 
     const testOne = decimateCalculation(sortedJapanCollection)
-    const testOneFixed = printTitlesJapan(testOne)
+    // const testOneFixed = printTitlesJapan(testOne)
+    const testTwo = decimateCalculation(sortedOverseasCollection)
+    const testTwoFixed = printTitlesOverseas(testTwo)
 
-    console.log(testOneFixed);
     
+    // console.log(testOneFixed);
+    console.log(testTwoFixed);
 })
