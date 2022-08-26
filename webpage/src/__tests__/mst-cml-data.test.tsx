@@ -5,7 +5,7 @@ import { collection as fy3_20_collection } from "../data/nintendo/Nintendo-FY3-2
 import { collection as fy3_21_collection } from "../data/nintendo/Nintendo-FY3-2021/mst-fy3-21";
 import { collection as fy3_22_collection } from "../data/nintendo/Nintendo-FY3-2022/mst-fy3-22";
 
-import { Titles, decimateCalculation } from "../utils/fy-million-seller-titles-logic"
+import { Header, Titles, decimateCalculation } from "../utils/fy-million-seller-titles-logic"
 
     const totalCollection = [
         fy3_17_collection,
@@ -298,7 +298,7 @@ test("now to rank the titles by each region...", () => {
         return elem.valueA !== 0
     }) // for filtering out games not published by Nintendo in Japan
 
-    console.log(sortedJapanCollection);
+    // console.log(sortedJapanCollection);
     
     const sortedOverseasCollection = reducedArrays.map((elem, index, array) => {
             return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
@@ -316,7 +316,7 @@ test("now to rank the titles by each region...", () => {
         return {...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
     })
 
-    console.log(sortedOverseasCollection);
+    // console.log(sortedOverseasCollection);
     
 
     const sortedWWLTDCollection = reducedArrays.map((elem, index, array) => {
@@ -335,7 +335,7 @@ test("now to rank the titles by each region...", () => {
         return {...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
     })
 
-    console.log(sortedWWLTDCollection);
+    // console.log(sortedWWLTDCollection);
     
 })
 
@@ -401,6 +401,119 @@ test("checking that everything is decimated...", () => {
         return {...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
     }) 
 
-    console.log(decimateCalculation(sortedWWLTDCollection));
+    // console.log(decimateCalculation(sortedWWLTDCollection));
+    
+})
+
+test("building new print function...", () => {
+
+    const printTitlesJapan = (titles: Titles[]) => {
+
+        const japanRank = titles.map((elem, index, array) => {
+
+            let printRank: string = ` Rank ${elem.rank} `
+            let printRankFixed: string = (printRank.length >= 9)
+                    ? printRank
+                    : printRank + " ".repeat(9 - printRank.length);
+    
+            let printTitleName: string = (elem.title.length > 32)
+            ? elem.title.split(" ").reduce((prev, next, index, array) => {
+    
+                let nextCheck = prev + next + " ";
+                
+                if (nextCheck.length > 31 && prev.length <= 31) {
+                    return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
+                } else if (index === array.length-1) {
+                    return prev + next + " ".repeat(77 - prev.length)
+                } else {
+                    return prev + " " + next
+                }
+            })
+            : (elem.title.length < 32)
+            ? elem.title + " ".repeat(32 - elem.title.length) 
+            : elem.title
+    
+            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n|" + printTitleName + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+            
+            let printValueA: string = `${elem.valueA}M ` 
+            let printValueAFixed: string = (printValueA.length >= 9)
+                ? printValueA
+                : " ".repeat(9 - printValueA.length) + printValueA;
+
+            let printValueARow: string = "| Japan - Life-To-Date (Units)   |" + printValueAFixed + "|\n+" + "-".repeat(42) + "+"
+            
+            return printTitleNameFixed + "\n" + printValueARow
+        }).reduce((prev, next) => {
+            return prev + "\n" + next
+        })
+
+        return japanRank
+
+    }
+
+    const testingFunction = fy3_22_collection.map((elem, index) => {
+        
+        return sortingArrays(index)
+    })
+
+    const reducedArrays = testingFunction.map((elem) => {
+
+        return accumulate(elem)
+    })
+    
+    const sortedJapanCollection = reducedArrays.map((elem, index, array) => {
+            return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a.valueA > b.valueA)
+            ? 1
+            : (a.valueA < b.valueA)
+            ? -1
+            : 0 // 4th quarter WW FY is index 11
+    }).map((elem, index) => {
+        // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+        // const x: Titles[] = [...elem].map((elemTwo) => {
+        //     return {...elemTwo, rank: index+1} 
+        // })
+        return {...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
+    }).filter((elem) => {
+        return elem.valueA !== 0
+    }) // for filtering out games not published by Nintendo in Japan
+
+    const sortedOverseasCollection = reducedArrays.map((elem, index, array) => {
+            return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a.valueB > b.valueB)
+            ? 1
+            : (a.valueB < b.valueB)
+            ? -1
+            : 0 // 4th quarter WW FY is index 11
+    }).map((elem, index) => {
+        // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+        // const x: Titles[] = [...elem].map((elemTwo) => {
+        //     return {...elemTwo, rank: index+1} 
+        // })
+        return {...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
+    })
+
+    const sortedWWLTDCollection = reducedArrays.map((elem, index, array) => {
+            return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a.valueD > b.valueD)
+            ? 1
+            : (a.valueD < b.valueD)
+            ? -1
+            : 0 // 4th quarter WW FY is index 11
+    }).map((elem, index) => {
+        // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+        // const x: Titles[] = [...elem].map((elemTwo) => {
+        //     return {...elemTwo, rank: index+1} 
+        // })
+        return {...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
+    }) 
+
+    const testOne = decimateCalculation(sortedJapanCollection)
+    const testOneFixed = printTitlesJapan(testOne)
+
+    console.log(testOneFixed);
     
 })
