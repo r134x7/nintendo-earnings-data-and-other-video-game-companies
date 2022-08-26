@@ -251,17 +251,54 @@ test("combining all of the above so far...", () => {
 
     const [one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, ...fifteen] = testingFunction
 
-    console.log(fourteen);
+    // console.log(fourteen);
     
-console.log(accumulate(fourteen));
+    // console.log(accumulate(fourteen));
 
-    // const reducedArrays = testingFunction.map((elem) => {
+    const reducedArrays = testingFunction.map((elem) => {
 
-    //     // return accumulate(testingFunction) // accidentally put the whole array of arrays in but... it gave me the totals for Japan and Overseas
+        // return accumulate(testingFunction) // accidentally put the whole array of arrays in but... it gave me the totals for Japan and Overseas // only worked on old function version
 
-    //     return accumulate(elem)
-    // })
+        return accumulate(elem)
+    })
 
     // console.log(reducedArrays);
     
+})
+
+test("now to rank the titles by each region...", () => {
+
+    
+    const testingFunction = fy3_22_collection.map((elem, index) => {
+        
+        return sortingArrays(index)
+    })
+
+    const reducedArrays = testingFunction.map((elem) => {
+
+        return accumulate(elem)
+    })
+
+    
+    const sortedJapanCollection = reducedArrays.map((elem, index, array) => {
+            return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a.valueA > b.valueA)
+            ? 1
+            : (a.valueA < b.valueA)
+            ? -1
+            : 0 // 4th quarter WW FY is index 11
+    }).map((elem, index) => {
+        // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+        // const x: Titles[] = [...elem].map((elemTwo) => {
+        //     return {...elemTwo, rank: index+1} 
+        // })
+        return {...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
+    }).filter((elem) => {
+        return elem.valueA !== 0
+    }) // for filtering out games not published by Nintendo in Japan
+
+    console.log(sortedJapanCollection);
+    
+
 })
