@@ -71,11 +71,30 @@ test("filtering to a title with the same name and then reduce...", () => {
     //             : elem
     // })
 
-    const flatTitle1 = title1.map((elem, index, array) => {
+    const japanTitle1 = title1.map((elem, index, array) => {
         return elem[0].valueA
     }).reduce((prev, next) => prev + next)
 
-    console.log(flatTitle1);
+    
+    const overseasTitle1 = title1.map((elem, index, array) => {
+        return elem[0].valueB
+    }).reduce((prev, next) => prev + next)
+    
+    
+    const title1Flat = title1.flatMap((flat) => flat).reduce((prev, next) => {
+        return {...prev, ...next}
+    })
+
+    const title1Fixed = {...title1Flat, valueA: japanTitle1, valueB: overseasTitle1, valueC: 0}
+    // .map((elem) => {
+    //     return {...elem, valueA: japanTitle1, valueB: overseasTitle1}
+    // })
+
+    console.log(japanTitle1);
+    console.log(overseasTitle1);
+    console.log(title1Fixed);
+    
+    
     // console.log(title1);
     // valueA sum: 122 + 62 + 61 + 33 = 278
         
