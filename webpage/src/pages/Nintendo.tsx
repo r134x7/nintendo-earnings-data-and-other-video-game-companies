@@ -10,8 +10,14 @@ import NINTENDO_FY3_19 from "../components/NINTENDO_FY3_2019";
 import NINTENDO_FY3_20 from "../components/NINTENDO_FY3_2020";
 import NINTENDO_FY3_21 from "../components/NINTENDO_FY3_2021";
 import NINTENDO_FY3_22 from "../components/NINTENDO_FY3_2022";
+import NINTENDO_CML from "../components/NINTENDO_CML";
 
-const yearsList = Array.from({length: 6}, (elem, index) => "FY3/" + (index + 2017)) // creates an array of length 6 and iterates through the array
+const yearsList = Array.from({length: 7}, (elem, index) => 
+                    {
+                      return (index !== 6)
+                            ? "FY3/" + (index + 2017)
+                            : "Special Page"
+                    }) // creates an array of length 6 and iterates through the array
 
 // const coloursList = ["rgba(52, 58, 64, 0.2)", "#2C2E33"]
 
@@ -145,6 +151,8 @@ export default function Nintendo() {
                 ? <NINTENDO_FY3_18 />
                 : (year === "FY3/2017")
                 ? <NINTENDO_FY3_17 />
+                : (year === "Special Page")
+                ? <NINTENDO_CML />
                 : null
             }
             

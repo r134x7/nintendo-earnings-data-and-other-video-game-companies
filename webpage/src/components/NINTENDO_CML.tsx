@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
+import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printJapan, printGlobal, printOverseas } from "../data/nintendo/Nintendo-Cumulative-Data/mst-cml-data";
 
@@ -12,11 +12,11 @@ export default function NINTENDO_CML() {
 
     useEffect(() => {
         (value === "FY Million-Seller Titles - Japan")
-            ? setData(printJapan)
+            ? setData(fyMillionSellersJapan)
             : (value === "FY Million-Seller Titles - Overseas")
-            ? setData(printOverseas)
+            ? setData(fyMillionSellersOverseas)
             : (value === "FY Million-Seller Titles - Global")
-            ? setData(printGlobal)
+            ? setData(fyMillionSellersGlobal)
             : setData("");
 
     }, [value])
