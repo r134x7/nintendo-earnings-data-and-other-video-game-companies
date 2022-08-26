@@ -16,15 +16,39 @@ import { Titles } from "../utils/fy-million-seller-titles-logic"
         fy3_22_collection,
     ] as const;
 
-    function accumulate(title: Titles[][]) {
+
+    function sortingArrays(titleCount: number) {
+
+        const testTitle1 = totalCollection.map((elem, index) => {
+            
+            return (elem[titleCount] === undefined)
+                ? []
+                : elem[titleCount]
+    
+        }).filter((elem) => elem.length !== 0)
+
+        const filterTitle1 = testTitle1.map((elem) => {
+            return elem.filter((secondElem, index, array) => {
+                return secondElem.valueC !== 0 && secondElem.period === " 4th Quarter  "
+            })
+        }).filter((elem) => elem.length !== 0) 
+        
+        return filterTitle1.flat() // return was deeply nested
+    }
+    
+
+    // function accumulate(title: Titles[][]) {
+    function accumulate(title: Titles[]) {
 
         const japanTitle1 = title.map((elem, index, array) => {
-            return elem[0].valueA
+            // return elem[0].valueA
+            return elem.valueA
         }).reduce((prev, next) => prev + next)
     
         
         const overseasTitle1 = title.map((elem, index, array) => {
-            return elem[0].valueB
+            // return elem[0].valueB
+            return elem.valueB
         }).reduce((prev, next) => prev + next)
         
         
@@ -206,37 +230,38 @@ test("sort the titles into separate arrays...", () => {
     
     // console.log(fy3_22_collection.length);
 
-    function sortingArrays(titleCount: number) {
-
-        const testTitle1 = totalCollection.map((elem, index) => {
-            
-            return (elem[titleCount] === undefined)
-                ? []
-                : elem[titleCount]
-    
-        }).filter((elem) => elem.length !== 0)
-
-        // console.log(testTitle1);
-    
-        const filterTitle1 = testTitle1.map((elem) => {
-            return elem.filter((secondElem, index, array) => {
-                return secondElem.valueC !== 0 && secondElem.period === " 4th Quarter  "
-            })
-        }).filter((elem) => elem.length !== 0) 
-
-        // console.log(filterTitle1);
-        
-
-        return filterTitle1.flat() // return was deeply nested
-    }
-    
-    const [one, ...testingFunction] = fy3_22_collection.map((elem, index) => {
-        console.log(index);
+    const testingFunction = fy3_22_collection.map((elem, index) => {
+        // console.log(index);
         
         return sortingArrays(index)
     })
 
-    console.log(testingFunction);
+    // console.log(testingFunction);
     
+    
+})
+
+test("combining all of the above so far...", () => {
+
+
+    const testingFunction = fy3_22_collection.map((elem, index) => {
+        
+        return sortingArrays(index)
+    })
+
+    const [one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, ...fifteen] = testingFunction
+
+    console.log(fourteen);
+    
+console.log(accumulate(fourteen));
+
+    // const reducedArrays = testingFunction.map((elem) => {
+
+    //     // return accumulate(testingFunction) // accidentally put the whole array of arrays in but... it gave me the totals for Japan and Overseas
+
+    //     return accumulate(elem)
+    // })
+
+    // console.log(reducedArrays);
     
 })
