@@ -116,9 +116,9 @@ test("filtering to a title with the same name and then reduce...", () => {
     //     return {...elem, valueA: japanTitle1, valueB: overseasTitle1}
     // })
 
-    console.log(japanTitle1);
-    console.log(overseasTitle1);
-    console.log(title1Fixed);
+    // console.log(japanTitle1);
+    // console.log(overseasTitle1);
+    // console.log(title1Fixed);
     
     
     // console.log(title1);
@@ -164,7 +164,7 @@ test("combine methods into one function", () => {
             }
     } 
 
-    console.log(accumulate(title1));
+    // console.log(accumulate(title1));
     
 
 })
@@ -183,10 +183,12 @@ test("sort the titles into separate arrays...", () => {
 
     // console.log(totalCollection[1][0]);
 
-    const testTitle1 = totalCollection.map((elem, index, array) => {
+    const testTitle1 = totalCollection.map((elem, index) => {
         // console.log(elem[0]);
         
-        return elem[0]
+        return (elem[2] === undefined)
+            ? []
+            : elem[2]
 
     }).filter((elem) => elem.length !== 0)
 
@@ -200,9 +202,41 @@ test("sort the titles into separate arrays...", () => {
 
     console.log(filterTitle1);
     
-    console.log(accumulate(filterTitle1));
+    // console.log(accumulate(filterTitle1));
     
+    // console.log(fy3_22_collection.length);
+
+    function sortingArrays(titleCount: number) {
+
+        const testTitle1 = totalCollection.map((elem, index) => {
+            
+            return (elem[titleCount] === undefined)
+                ? []
+                : elem[titleCount]
     
+        }).filter((elem) => elem.length !== 0)
+
+        // console.log(testTitle1);
+    
+        const filterTitle1 = testTitle1.map((elem) => {
+            return elem.filter((secondElem, index, array) => {
+                return secondElem.valueC !== 0 && secondElem.period === " 4th Quarter  "
+            })
+        }).filter((elem) => elem.length !== 0) 
+
+        // console.log(filterTitle1);
+        
+
+        return filterTitle1.flat() // return was deeply nested
+    }
+    
+    const [one, ...testingFunction] = fy3_22_collection.map((elem, index) => {
+        console.log(index);
+        
+        return sortingArrays(index)
+    })
+
+    console.log(testingFunction);
     
     
 })
