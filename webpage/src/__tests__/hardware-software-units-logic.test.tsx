@@ -100,7 +100,7 @@ const switchToMatch =
 function quarterlyCalculation(quarters: Section[]) {
         
     const calc: Section[] = quarters.map((elem, index, array) => {
-        return (index === 0) 
+        return (index === 0 || index === array.length-1) // 1st Quarter or last FY number
                 ? elem
                 : {...elem, value: elem.value - array[index-1].value}
     })
@@ -136,4 +136,12 @@ ${header.secondHeader}
 test("test to match header...", () => {
 
     expect(printHead(header)).toMatch(headerToMatch);
+})
+
+test("test quarterly calculation...", () => {
+
+    const quarterly = quarterlyCalculation(switchOriginal)
+
+    console.log(quarterly);
+    
 })
