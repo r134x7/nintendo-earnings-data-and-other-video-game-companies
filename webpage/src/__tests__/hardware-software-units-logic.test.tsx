@@ -12,7 +12,7 @@ const header: Header = {
 
 const switchOriginal: Section[] = [
     {
-        name: " Software ",
+        name: " Software Total ",
         period: " 1st Quarter ",
         cmlPeriod: " 1st Quarter ",
         units: "units",
@@ -203,7 +203,12 @@ test("print Section", () => {
 
     const printSections = (sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], sectionForecasts: Section[], currentQuarter: number) => {
 
-        const sectionHeader: string = "+" + "-".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |\n+" + "-".repeat(33) + "+"
+        const sectionHeader: string = (sectionDifference[0].name === " Hardware Total " || sectionDifference[0].name === " Software Total ")
+            ? `+-------------+
+            |${sectionDifference[0].name.slice(0,9)}    |-------------------+
+            | Total       |   Units |    YoY% |
+            +---------------------------------+` 
+            : "+" + "-".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |\n+" + "-".repeat(33) + "+"
 
         const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem, index, array) => {
             return index < currentQuarter && array[index].units !== "NaN"
