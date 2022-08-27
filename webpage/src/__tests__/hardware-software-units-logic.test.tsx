@@ -96,3 +96,33 @@ const switchToMatch =
 +---------------------------------+
 | Life-To-Date|  83.45M |
 +-----------------------+`;
+
+function quarterlyCalculation(quarters: Section[]) {
+        
+    const calc: Section[] = quarters.map((elem, index, array) => {
+        return (index === 0) 
+                ? elem
+                : {...elem, value: elem.value - array[index-1].value}
+    })
+    
+    return calc
+}
+
+function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
+
+        const calc: Section[] = thisFY.map((elem, index) => {
+
+            return (lastFY[index].value < 0)
+                    ? {...elem, units: "percentage", value: Number(
+                        ((((elem.value / lastFY[index].value) -1)* -1) * 100).toFixed(2)
+                        )
+                      }
+                    : {...elem, units: "percentage", value: Number(
+                        (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
+                        )
+                      }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
+        })
+
+       return calc
+    }
+
