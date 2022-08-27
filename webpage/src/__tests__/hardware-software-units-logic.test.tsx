@@ -176,18 +176,22 @@ test("print Section", () => {
 
         const sectionHeader: string = "+" + "-".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |"
 
-        const difference = sectionDifference.filter((elem, index) => {
-            return index < currentQuarter
+        const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem, index, array) => {
+            return index < currentQuarter && array[index].units !== "NaN"
+        })
+
+        const difference = sectionDifference.filter((elem, index, array) => {
+            return index < currentQuarter && array[index].value !== 0
         }).map((elem, index) => {
             
 
-            let printSectionDifferenceYoY: string = (sectionDifferenceYoY[index].units === "NaN")
+            let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed.length === 0)
                 ? "NaN"
                 : (sectionDifferenceYoY[index].value > 0)
                 ? `+${sectionDifferenceYoY[index].value}% `
                 : `${sectionDifferenceYoY[index].value}% `
 
-            let printSectionDifferenceYoYFixed: string = (sectionDifferenceYoY[index].units === "NaN")
+            let printSectionDifferenceYoYFixed: string = (printSectionDifferenceYoY === "NaN")
                 ? printSectionDifferenceYoY
                 : (printSectionDifferenceYoY.length >= 9)
                 ? printSectionDifferenceYoY
@@ -199,10 +203,24 @@ test("print Section", () => {
                 ? printSection
                 : " ".repeat(9 - printSection.length) + printSection;
 
+            let printLine: string = (index === currentQuarter -1)
+                ? "\n+" + "=".repeat(33) + "+"
+                : "\n+" + "-".repeat(33) + "+"
+
             return (printSectionDifferenceYoYFixed === "NaN")
-                    ? "|" + elem.period + "|" + printSectionFixed + "|"
-                    : "|" + elem.period + "|" + printSectionFixed + "|" + printSectionDifferenceYoYFixed + "|"
+                    ? "|" + elem.period + "|" + printSectionFixed + "|" + printLine
+                    : "|" + elem.period + "|" + printSectionFixed + "|" + printSectionDifferenceYoYFixed + "|" + printLine
             
         })
+
+        const cumulative = (currentQuarter >= 2)
+            ? sectionCumulative.filter((elem, index, array) => 
+                currentQuarter >= 2 && index < currentQuarter -1 && array[index].value !== 0
+            ).map((elem, index) => {
+                
+                let printSectionCumulativeYoY: string = (sectionCumulativeYoY[index])
+
+            })
+            : []
     }
 })
