@@ -204,10 +204,12 @@ test("print Section", () => {
     const printSections = (sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], sectionForecasts: Section[], currentQuarter: number) => {
 
         const sectionHeader: string = (sectionDifference[0].name === " Hardware Total " || sectionDifference[0].name === " Software Total ")
-            ? `+-------------+
-            |${sectionDifference[0].name.slice(0,9)}    |-------------------+
-            | Total       |   Units |    YoY% |
-            +---------------------------------+` 
+            ? "+-------------+\n|" + sectionDifference[0].name.split("").slice(0,9).join("") + "    |-------------------+\n| Total       |   Units |    YoY% |\n+---------------------------------+" 
+            : (sectionDifference[0].name === " Mobile ")
+            ? `+------------------------+
+            | Mobile, IP related     |---------+
+            | income, etc.           |    YoY% |
+            +----------------------------------+`
             : "+" + "-".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |\n+" + "-".repeat(33) + "+"
 
         const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem, index, array) => {
