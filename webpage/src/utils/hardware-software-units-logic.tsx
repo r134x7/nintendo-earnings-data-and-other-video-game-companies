@@ -10,4 +10,5 @@ export type Header = {
     switchHeader: "| Nintendo Switch   |",
     secondHeader: "| Sales Units and Forecast     |",
     fiscalYear: string,
+    nextFiscalYear: string,
 }

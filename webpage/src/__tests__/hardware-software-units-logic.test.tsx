@@ -4,6 +4,7 @@ const header: Header = {
     switchHeader: "| Nintendo Switch   |",
     secondHeader:  "| Sales Units and Forecast     |",
     fiscalYear: " FY3/2022 ",
+    nextFiscalYearShort: " FY3/23 ",
 }
 
 // you need... cumulative quarters 1-4, ltd at end of last fy...
@@ -11,7 +12,7 @@ const header: Header = {
 
 const switchOriginal: Section[] = [
     {
-        name: " Switch ",
+        name: " Hardware Total ",
         period: " 1st Quarter ",
         cmlPeriod: " 1st Quarter ",
         units: "units",
@@ -45,6 +46,23 @@ const switchOriginal: Section[] = [
         units: "units",
         value: 6989,
     },
+]
+
+const hardwareTotalForecast: Section[] = [
+    {
+        name: " Hardware Total ",
+        period: "Forecast ",
+        cmlPeriod: " 1st Quarter ",
+        units: "units",
+        value: 3333,
+    },
+    {
+        name: " Hardware Total ",
+        period: "Forecast ",
+        cmlPeriod: "Cml. ",
+        units: "units",
+        value: 5555,
+    }
 ]
 
 const switchOriginalLastFY: Section[] = [
@@ -183,7 +201,7 @@ test("print Section", () => {
 
     const currentQuarter = 4;
 
-    const printSections = (sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], currentQuarter: number) => {
+    const printSections = (sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], sectionForecasts: Section[], currentQuarter: number) => {
 
         const sectionHeader: string = "+" + "-".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |\n+" + "-".repeat(33) + "+"
 
@@ -275,7 +293,30 @@ test("print Section", () => {
         
         const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+"
 
-        const penultimateCheck = [sectionHeader, ...difference, ...cumulative, ltdPrint].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
+        const forecast: string = (sectionDifference[0].name === " Hardware Total " || sectionDifference[0].name === " Software Total ")
+            ? sectionForecasts.map((elem, index, array) => {
+
+                let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+
+                let printValue: string = `${elem.value / 100}M `
+                let printValueFixed: string = (printValue.length >= 9)
+                    ? printValue
+                    : " ".repeat(9 - printValue.length) + printValue
+
+                return (currentQuarter === 4 && array[array.length-1])
+                    ? "|" + header.nextFiscalYearShort + "|" + printValueFixed + "|" 
+                    : (index === 0)
+                    ? "|" + shortFY + elem.name + "|" + printValueFixed + "|"
+                    : "|" + elem.name + "|" + printValueFixed + "|" 
+            })
+            : "shrug"
+
+
+        const penultimateCheck = (sectionDifference[0].name === " Hardware Total " || sectionDifference[0].name === " Software Total ")
+            ?
+            : (sectionDifference[0].name === " Mobile ")
+            ? [sectionHeader, ...difference, ...cumulative, ].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
+            : [sectionHeader, ...difference, ...cumulative, ltdPrint].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
 
         return penultimateCheck // not done yet...
     }
@@ -292,7 +333,7 @@ test("print Section", () => {
 
     const switchOriginalCml = switchOriginal.filter((elem, index, array) => index !== 0)
 
-    const testRun = printSections(quarterly, quarterlyYoY, switchOriginalCml, cumulativeYoY, currentQuarter)
+    const testRun = printSections(quarterly, quarterlyYoY, switchOriginalCml, cumulativeYoY, hardwareTotalForecast, currentQuarter)
 
     // console.log(testRun);
 
