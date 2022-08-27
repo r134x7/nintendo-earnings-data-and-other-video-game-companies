@@ -154,6 +154,16 @@ test("test year on year calculation for quarters...", () => {
 
     const quarterlyYoY = yearOnYearCalculation(quarterly, quarterlyLastFY)
     
-    console.log(quarterlyYoY);
+    // console.log(quarterlyYoY);
+    
+})
+
+test("test year on year calculation for cumulative...", () => {
+
+    const switchOriginalFiltered = switchOriginal.filter((elem, index, array) => index !== array.length-1)
+
+    const cumulativeYoY = yearOnYearCalculation(switchOriginalFiltered, switchOriginalLastFY).filter((elem, index) => index !== 0)
+
+    console.log(cumulativeYoY);
     
 })
