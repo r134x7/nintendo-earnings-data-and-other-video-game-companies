@@ -230,7 +230,9 @@ test("print Section", () => {
                 ? printSectionDifferenceYoY
                 : " ".repeat(9 - printSectionDifferenceYoY.length) + printSectionDifferenceYoY
 
-            let printSection: string = `${(elem.value / 100).toFixed(2)}M `;
+            let printSection: string = (elem.units === "currency")
+                ? `¥${elem.value.toLocaleString("en")}M`
+                : `${(elem.value / 100).toFixed(2)}M `;
 
             let printSectionFixed: string = (printSection.length >= 9)
                 ? printSection
@@ -263,7 +265,9 @@ test("print Section", () => {
                     ? printSectionCumulativeYoY
                     : " ".repeat(9 - printSectionCumulativeYoY.length) + printSectionCumulativeYoY
 
-                let printCumulative: string = `${(elem.value / 100).toFixed(2)}M `;
+                let printCumulative: string = (elem.units === "currency")
+                ? `¥${elem.value.toLocaleString("en")}M`
+                : `${(elem.value / 100).toFixed(2)}M `;
 
                 let printCumulativeFixed: string = (printCumulative.length >= 9)
                     ? printCumulative
@@ -297,7 +301,7 @@ test("print Section", () => {
             ? sectionForecasts.map((elem, index, array) => {
 
                 let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
-
+                
                 let printValue: string = `${elem.value / 100}M `
                 let printValueFixed: string = (printValue.length >= 9)
                     ? printValue
