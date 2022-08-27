@@ -71,10 +71,10 @@ const switchOriginalLastFY: Section[] = [
 
 const headerToMatch = 
 `+------------------------------+
-| Nintendo Switch   | FY3/2022 |   
-+------------------------------+   
-| Sales Units and Forecast     |   
-+------------------------------+ `;
+| Nintendo Switch   | FY3/2022 |
++------------------------------+
+| Sales Units and Forecast     |
++------------------------------+`;
 
 const switchToMatch = 
 `+---------------------------------+
@@ -126,3 +126,14 @@ function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
        return calc
     }
 
+const printHead = (header: Header) => 
+`+${"-".repeat(30)}+
+${header.switchHeader}${header.fiscalYear}|
++${"-".repeat(30)}+
+${header.secondHeader}
++${"-".repeat(30)}+`;
+
+test("test to match header...", () => {
+
+    expect(printHead(header)).toMatch(headerToMatch);
+})
