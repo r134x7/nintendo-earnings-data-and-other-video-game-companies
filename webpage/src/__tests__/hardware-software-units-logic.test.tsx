@@ -100,7 +100,7 @@ const switchToMatch =
 function quarterlyCalculation(quarters: Section[]) {
         
     const calc: Section[] = quarters.map((elem, index, array) => {
-        return (index === 0 || index === array.length-1) // 1st Quarter or last FY number
+        return (index === 0 || quarters[index].period === " Last FY Cumulative ") // 1st Quarter or last FY number
                 ? elem
                 : {...elem, value: elem.value - array[index-1].value}
     })
@@ -142,6 +142,18 @@ test("test quarterly calculation...", () => {
 
     const quarterly = quarterlyCalculation(switchOriginal)
 
-    console.log(quarterly);
+    // console.log(quarterly);
+    
+})
+
+test("test year on year calculation for quarters...", () => {
+
+    const quarterly = quarterlyCalculation(switchOriginal).filter((elem, index, array) => index !== array.length-1)
+
+    const quarterlyLastFY = quarterlyCalculation(switchOriginalLastFY)
+
+    const quarterlyYoY = yearOnYearCalculation(quarterly, quarterlyLastFY)
+    
+    console.log(quarterlyYoY);
     
 })
