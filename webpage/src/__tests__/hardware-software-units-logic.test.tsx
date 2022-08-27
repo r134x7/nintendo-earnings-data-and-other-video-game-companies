@@ -93,13 +93,13 @@ const switchToMatch =
 +---------------------------------+
 | 2nd Quarter |   3.14M | -40.87% |
 +---------------------------------+
-| 3rd Quarter |   5.34M | -36.50% |
+| 3rd Quarter |   5.34M |  -36.5% |
 +---------------------------------+
 | 4th Quarter |   1.77M | -50.14% |
 +=================================+
 | First Half  |   6.45M | -22.85% |
 +---------------------------------+
-| 1st 3 Qtrs  |  11.79M | -29.70% |
+| 1st 3 Qtrs  |  11.79M |  -29.7% |
 +---------------------------------+
 | FY3/22 Cml. |  13.56M | -33.27% |
 +---------------------------------+
@@ -236,8 +236,8 @@ test("print Section", () => {
                 let printSectionCumulativeYoY: string = (sectionCumulativeYoYFixed.length === 0)
                     ? "NaN"
                     : (sectionCumulativeYoYFixed[index].value > 0)
-                    ? `+${sectionDifferenceYoYFixed[index].value}% `
-                    : `${sectionDifferenceYoYFixed[index].value}% `
+                    ? `+${sectionCumulativeYoYFixed[index].value}% `
+                    : `${sectionCumulativeYoYFixed[index].value}% `
 
                 let printSectionCumulativeYoYFixed: string = (printSectionCumulativeYoY === "NaN")
                     ? printSectionCumulativeYoY
@@ -251,17 +251,23 @@ test("print Section", () => {
                     ? printCumulative
                     : " ".repeat(9 - printCumulative.length) + printCumulative;
 
+                let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+                
                 let printLine: string = "\n+" + "-".repeat(33) + "+"
 
+                let printPeriod: string = (currentQuarter === 4 && index === currentQuarter-2)
+                    ? `${shortFY}${elem.cmlPeriod}`
+                    : elem.cmlPeriod
+
                 return (printSectionCumulativeYoYFixed === "NaN")
-                    ?  "|" + elem.cmlPeriod + "|" + printCumulativeFixed + "|" + printLine
-                    : "|" + elem.cmlPeriod + "|" + printCumulativeFixed + "|" + printSectionCumulativeYoYFixed + "|" + printLine
+                    ?  "|" + printPeriod + "|" + printCumulativeFixed + "|" + printLine
+                    : "|" + printPeriod + "|" + printCumulativeFixed + "|" + printSectionCumulativeYoYFixed + "|" + printLine
             })
             : []
 
         const ltd: string = (currentQuarter === 1) 
-                ? `${((sectionDifference[currentQuarter-1].value + sectionDifference[sectionDifference.length-1].value) / 100 ).toFixed(2)}M `
-                : `${((sectionCumulative[currentQuarter-1].value + sectionDifference[sectionDifference.length-1].value) / 100 ).toFixed(2)}M `
+                ? `${((sectionDifference[currentQuarter-1].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M `
+                : `${((sectionCumulative[currentQuarter-2].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M `
 
         const ltdFixed: string = (ltd.length >= 9)
                 ? ltd
@@ -284,9 +290,17 @@ test("print Section", () => {
 
     const cumulativeYoY = yearOnYearCalculation(switchOriginalFiltered, switchOriginalLastFY).filter((elem, index) => index !== 0)
 
-    const testRun = printSections(quarterly, quarterlyYoY, switchOriginal, cumulativeYoY, currentQuarter)
+    const switchOriginalCml = switchOriginal.filter((elem, index, array) => index !== 0)
+
+    const testRun = printSections(quarterly, quarterlyYoY, switchOriginalCml, cumulativeYoY, currentQuarter)
 
     // console.log(testRun);
+
+    // console.log(switchOriginal);
+    // console.log(switchOriginalFiltered);
+    // console.log(cumulativeYoY);
+    // console.log(switchOriginalCml);
+    
     
     expect(testRun).toMatch(switchToMatch)
 })
