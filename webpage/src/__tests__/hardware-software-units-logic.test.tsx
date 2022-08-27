@@ -12,7 +12,7 @@ const header: Header = {
 
 const switchOriginal: Section[] = [
     {
-        name: " Hardware ",
+        name: " Software ",
         period: " 1st Quarter ",
         cmlPeriod: " 1st Quarter ",
         units: "units",
@@ -50,14 +50,14 @@ const switchOriginal: Section[] = [
 
 const hardwareTotalForecast: Section[] = [
     {
-        name: " Hardware ",
+        name: " Software ",
         period: "Forecast ",
         cmlPeriod: " 1st Quarter ",
         units: "units",
         value: 3333,
     },
     {
-        name: " Hardware ",
+        name: " Software ",
         period: "Forecast ",
         cmlPeriod: "Cml. ",
         units: "units",
@@ -319,14 +319,14 @@ test("print Section", () => {
                     ? printValue
                     : " ".repeat(9 - printValue.length) + printValue
 
-                let miscellaneous: string = "|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"
+                // let miscellaneous: string = "|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"
 
                 return (currentQuarter === 4 && index === array.length-1)
                     ? "|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
                     : (index === 0)
                     ? "+" + "-".repeat(27) + "+\n|" + shortFY + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+"
                     : "|" + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
-            }).reduce((prev, next) => prev + "\n" + next)
+            }).concat(["|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"]).reduce((prev, next) => prev + "\n" + next)
             : "shrug"
 
 
