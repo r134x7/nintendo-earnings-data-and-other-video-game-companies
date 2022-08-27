@@ -256,5 +256,17 @@ test("print Section", () => {
                     : "|" + elem.cmlPeriod + "|" + printCumulativeFixed + "|" + printSectionCumulativeYoYFixed + "|" + printLine
             })
             : []
+
+        const ltd: string = (currentQuarter === 1) 
+                ? `${((sectionDifference[currentQuarter-1].value + sectionDifference[sectionDifference.length-1].value) / 100 ).toFixed(2)}M `
+                : `${((sectionCumulative[currentQuarter-1].value + sectionDifference[sectionDifference.length-1].value) / 100 ).toFixed(2)}M `
+
+        const ltdFixed: string = (ltd.length >= 9)
+                ? ltd
+                : " ".repeat(9 - ltd.length) + ltd
+
+        const penultimateCheck = [sectionHeader, difference, cumulative, ltdFixed].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
+
+        return penultimateCheck // not done yet...
     }
 })
