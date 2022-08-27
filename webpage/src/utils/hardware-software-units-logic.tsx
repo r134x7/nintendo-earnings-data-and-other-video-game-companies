@@ -1,5 +1,5 @@
 export type Section = {
-    units: "units" | "percentage" | "currency",
+    units: "units" | "percentage" | "currency" | "NaN" ,
     period: string,
     name: string,
     value: number,

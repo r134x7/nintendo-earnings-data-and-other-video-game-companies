@@ -117,7 +117,9 @@ function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
                         ((((elem.value / lastFY[index].value) -1)* -1) * 100).toFixed(2)
                         )
                       }
-                    : {...elem, units: "percentage", value: Number(
+                    : (lastFY[index].value === 0)
+                    ? {...elem, units: "NaN", value: 0}
+                    :{...elem, units: "percentage", value: Number(
                         (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
                         )
                       }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
@@ -164,6 +166,43 @@ test("test year on year calculation for cumulative...", () => {
 
     const cumulativeYoY = yearOnYearCalculation(switchOriginalFiltered, switchOriginalLastFY).filter((elem, index) => index !== 0)
 
-    console.log(cumulativeYoY);
+    // console.log(cumulativeYoY);
     
+})
+
+test("print Section", () => {
+
+    const printSections = (sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], currentQuarter: number) => {
+
+        const sectionHeader: string = "+" + "-".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |"
+
+        const difference = sectionDifference.filter((elem, index) => {
+            return index < currentQuarter
+        }).map((elem, index) => {
+            
+
+            let printSectionDifferenceYoY: string = (sectionDifferenceYoY[index].units === "NaN")
+                ? "NaN"
+                : (sectionDifferenceYoY[index].value > 0)
+                ? `+${sectionDifferenceYoY[index].value}% `
+                : `${sectionDifferenceYoY[index].value}% `
+
+            let printSectionDifferenceYoYFixed: string = (sectionDifferenceYoY[index].units === "NaN")
+                ? printSectionDifferenceYoY
+                : (printSectionDifferenceYoY.length >= 9)
+                ? printSectionDifferenceYoY
+                : " ".repeat(9 - printSectionDifferenceYoY.length) + printSectionDifferenceYoY
+
+            let printSection: string = `${(elem.value / 100).toFixed(2)}M `;
+
+            let printSectionFixed: string = (printSection.length >= 9)
+                ? printSection
+                : " ".repeat(9 - printSection.length) + printSection;
+
+            return (printSectionDifferenceYoYFixed === "NaN")
+                    ? "|" + elem.period + "|" + printSectionFixed + "|"
+                    : "|" + elem.period + "|" + printSectionFixed + "|" + printSectionDifferenceYoYFixed + "|"
+            
+        })
+    }
 })
