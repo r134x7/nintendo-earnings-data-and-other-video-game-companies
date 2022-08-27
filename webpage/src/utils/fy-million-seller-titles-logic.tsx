@@ -18,7 +18,7 @@ export type Header = {
     switchHeader: "| Nintendo Switch FY Million-Seller Titles |",
     secondHeader: "| Title and Rank                           |",
     thirdHeader: "| Units                                    |",
-    fiscalYear: string
+    fiscalYear: string,
     areaHeader: "| Area         |   Japan | Overseas|",
     globalHeader: "| Global       |   WW FY |  WW LTD |",
     switchSummaryHeader: "| Nintendo Switch FY    |\n| Million-Seller Titles |\n",
