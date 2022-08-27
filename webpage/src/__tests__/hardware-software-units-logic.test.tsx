@@ -165,7 +165,7 @@ test("test year on year calculation for quarters...", () => {
 
     const quarterlyYoY = yearOnYearCalculation(quarterly, quarterlyLastFY)
     
-    // console.log(quarterlyYoY);
+    console.log(quarterlyYoY);
     
 })
 
@@ -175,15 +175,17 @@ test("test year on year calculation for cumulative...", () => {
 
     const cumulativeYoY = yearOnYearCalculation(switchOriginalFiltered, switchOriginalLastFY).filter((elem, index) => index !== 0)
 
-    // console.log(cumulativeYoY);
+    console.log(cumulativeYoY);
     
 })
 
 test("print Section", () => {
 
+    const currentQuarter = 4;
+
     const printSections = (sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], currentQuarter: number) => {
 
-        const sectionHeader: string = "+" + "-".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |"
+        const sectionHeader: string = "+" + "-".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |\n+" + "-".repeat(33) + "+"
 
         const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem, index, array) => {
             return index < currentQuarter && array[index].units !== "NaN"
@@ -264,9 +266,27 @@ test("print Section", () => {
         const ltdFixed: string = (ltd.length >= 9)
                 ? ltd
                 : " ".repeat(9 - ltd.length) + ltd
+        
+        const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+"
 
-        const penultimateCheck = [sectionHeader, difference, cumulative, ltdFixed].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
+        const penultimateCheck = [sectionHeader, ...difference, ...cumulative, ltdPrint].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
 
         return penultimateCheck // not done yet...
     }
+
+    const quarterly = quarterlyCalculation(switchOriginal).filter((elem, index, array) => index !== array.length-1)
+
+    const quarterlyLastFY = quarterlyCalculation(switchOriginalLastFY)
+
+    const quarterlyYoY = yearOnYearCalculation(quarterly, quarterlyLastFY) 
+
+    const switchOriginalFiltered = switchOriginal.filter((elem, index, array) => index !== array.length-1)
+
+    const cumulativeYoY = yearOnYearCalculation(switchOriginalFiltered, switchOriginalLastFY).filter((elem, index) => index !== 0)
+
+    const testRun = printSections(quarterly, quarterlyYoY, switchOriginal, cumulativeYoY, currentQuarter)
+
+    // console.log(testRun);
+    
+    expect(testRun).toMatch(switchToMatch)
 })
