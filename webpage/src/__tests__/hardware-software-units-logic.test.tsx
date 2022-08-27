@@ -13,30 +13,35 @@ const switchOriginal: Section[] = [
     {
         name: " Switch ",
         period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
         units: "units",
         value: 331,
     },
     {
         name: " Switch ",
         period: " 2nd Quarter ",
+        cmlPeriod: " First Half  ",
         units: "units",
         value: 645,
     },
     {
         name: " Switch ",
         period: " 3rd Quarter ",
+        cmlPeriod: " 1st 3 Qtrs  ",
         units: "units",
         value: 1179,
     },
     {
         name: " Switch ",
         period: " 4th Quarter ",
+        cmlPeriod: "Cml. ",
         units: "units",
         value: 1356,
     },
     {
         name: " Switch ",
         period: " Last FY Cumulative ",
+        cmlPeriod: "Cml. ",
         units: "units",
         value: 6989,
     },
@@ -46,24 +51,28 @@ const switchOriginalLastFY: Section[] = [
     {
         name: " Switch ",
         period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
         units: "units",
         value: 305,
     },
     {
         name: " Switch ",
         period: " 2nd Quarter ",
+        cmlPeriod: " First Half  ",
         units: "units",
         value: 836,
     },
     {
         name: " Switch ",
         period: " 3rd Quarter ",
+        cmlPeriod: " 1st 3 Qtrs  ",
         units: "units",
         value: 1677,
     },
     {
         name: " Switch ",
         period: " 4th Quarter ",
+        cmlPeriod: "Cml. ",
         units: "units",
         value: 2032,
     },
@@ -180,6 +189,10 @@ test("print Section", () => {
             return index < currentQuarter && array[index].units !== "NaN"
         })
 
+        const sectionCumulativeYoYFixed = sectionCumulativeYoY.filter((elem, index, array) => {
+                return currentQuarter >= 2 && index < currentQuarter -1 && array[index].units !== "NaN"
+        })
+
         const difference = sectionDifference.filter((elem, index, array) => {
             return index < currentQuarter && array[index].value !== 0
         }).map((elem, index) => {
@@ -187,9 +200,9 @@ test("print Section", () => {
 
             let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed.length === 0)
                 ? "NaN"
-                : (sectionDifferenceYoY[index].value > 0)
-                ? `+${sectionDifferenceYoY[index].value}% `
-                : `${sectionDifferenceYoY[index].value}% `
+                : (sectionDifferenceYoYFixed[index].value > 0)
+                ? `+${sectionDifferenceYoYFixed[index].value}% `
+                : `${sectionDifferenceYoYFixed[index].value}% `
 
             let printSectionDifferenceYoYFixed: string = (printSectionDifferenceYoY === "NaN")
                 ? printSectionDifferenceYoY
@@ -218,8 +231,29 @@ test("print Section", () => {
                 currentQuarter >= 2 && index < currentQuarter -1 && array[index].value !== 0
             ).map((elem, index) => {
                 
-                let printSectionCumulativeYoY: string = (sectionCumulativeYoY[index])
+                let printSectionCumulativeYoY: string = (sectionCumulativeYoYFixed.length === 0)
+                    ? "NaN"
+                    : (sectionCumulativeYoYFixed[index].value > 0)
+                    ? `+${sectionDifferenceYoYFixed[index].value}% `
+                    : `${sectionDifferenceYoYFixed[index].value}% `
 
+                let printSectionCumulativeYoYFixed: string = (printSectionCumulativeYoY === "NaN")
+                    ? printSectionCumulativeYoY
+                    : (printSectionCumulativeYoY.length >= 9)
+                    ? printSectionCumulativeYoY
+                    : " ".repeat(9 - printSectionCumulativeYoY.length) + printSectionCumulativeYoY
+
+                let printCumulative: string = `${(elem.value / 100).toFixed(2)}M `;
+
+                let printCumulativeFixed: string = (printCumulative.length >= 9)
+                    ? printCumulative
+                    : " ".repeat(9 - printCumulative.length) + printCumulative;
+
+                let printLine: string = "\n+" + "-".repeat(33) + "+"
+
+                return (printSectionCumulativeYoYFixed === "NaN")
+                    ?  "|" + elem.cmlPeriod + "|" + printCumulativeFixed + "|" + printLine
+                    : "|" + elem.cmlPeriod + "|" + printCumulativeFixed + "|" + printSectionCumulativeYoYFixed + "|" + printLine
             })
             : []
     }
