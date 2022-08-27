@@ -12,7 +12,7 @@ const header: Header = {
 
 const switchOriginal: Section[] = [
     {
-        name: " Hardware Total ",
+        name: " Hardware ",
         period: " 1st Quarter ",
         cmlPeriod: " 1st Quarter ",
         units: "units",
@@ -50,14 +50,14 @@ const switchOriginal: Section[] = [
 
 const hardwareTotalForecast: Section[] = [
     {
-        name: " Hardware Total ",
+        name: " Hardware ",
         period: "Forecast ",
         cmlPeriod: " 1st Quarter ",
         units: "units",
         value: 3333,
     },
     {
-        name: " Hardware Total ",
+        name: " Hardware ",
         period: "Forecast ",
         cmlPeriod: "Cml. ",
         units: "units",
@@ -293,7 +293,7 @@ test("print Section", () => {
         
         const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+"
 
-        const forecast: string = (sectionDifference[0].name === " Hardware Total " || sectionDifference[0].name === " Software Total ")
+        const forecast: string = (sectionDifference[0].name === " Hardware ")
             ? sectionForecasts.map((elem, index, array) => {
 
                 let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
@@ -303,17 +303,35 @@ test("print Section", () => {
                     ? printValue
                     : " ".repeat(9 - printValue.length) + printValue
 
-                return (currentQuarter === 4 && array[array.length-1])
-                    ? "|" + header.nextFiscalYearShort + "|" + printValueFixed + "|" 
+                return (currentQuarter === 4 && index === array.length-1)
+                    ? "|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
                     : (index === 0)
-                    ? "|" + shortFY + elem.name + "|" + printValueFixed + "|"
-                    : "|" + elem.name + "|" + printValueFixed + "|" 
-            })
+                    ? "+" + "-".repeat(27) + "+\n|" + shortFY + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+"
+                    : "|" + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+            }).reduce((prev, next) => prev + "\n" + next)
+            : (sectionDifference[0].name === " Software ") 
+            ? sectionForecasts.map((elem, index, array) => {
+
+                let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+
+                let printValue: string = `${elem.value / 100}M `
+                let printValueFixed: string = (printValue.length >= 9)
+                    ? printValue
+                    : " ".repeat(9 - printValue.length) + printValue
+
+                let miscellaneous: string = "|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"
+
+                return (currentQuarter === 4 && index === array.length-1)
+                    ? "|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+                    : (index === 0)
+                    ? "+" + "-".repeat(27) + "+\n|" + shortFY + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+"
+                    : "|" + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+            }).reduce((prev, next) => prev + "\n" + next)
             : "shrug"
 
 
-        const penultimateCheck = (sectionDifference[0].name === " Hardware Total " || sectionDifference[0].name === " Software Total ")
-            ?
+        const penultimateCheck = (sectionDifference[0].name === " Hardware " || sectionDifference[0].name === " Software ")
+            ? [sectionHeader, ...difference, ...cumulative, ltdPrint, forecast].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
             : (sectionDifference[0].name === " Mobile ")
             ? [sectionHeader, ...difference, ...cumulative, ].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
             : [sectionHeader, ...difference, ...cumulative, ltdPrint].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
