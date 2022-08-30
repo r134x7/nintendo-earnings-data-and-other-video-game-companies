@@ -350,17 +350,17 @@ test("print Section", () => {
         return penultimateCheck // not done yet...
     }
 
-    const quarterly = quarterlyCalculation(switchOriginal).filter((elem, index, array) => index !== array.length-1)
+    const quarterly = quarterlyCalculation(switchOriginal).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative
 
     const quarterlyLastFY = quarterlyCalculation(switchOriginalLastFY)
 
-    const quarterlyYoY = yearOnYearCalculation(quarterly, quarterlyLastFY) 
+    const quarterlyYoY = yearOnYearCalculation(quarterly, quarterlyLastFY) // uses the above variables 
 
-    const switchOriginalFiltered = switchOriginal.filter((elem, index, array) => index !== array.length-1)
+    const switchOriginalFiltered = switchOriginal.filter((elem, index, array) => index !== array.length-1) // not going through quarterly calculation and filters out last fy cumulative
 
-    const cumulativeYoY = yearOnYearCalculation(switchOriginalFiltered, switchOriginalLastFY).filter((elem, index) => index !== 0)
+    const cumulativeYoY = yearOnYearCalculation(switchOriginalFiltered, switchOriginalLastFY).filter((elem, index) => index !== 0) // filter out the first quarter
 
-    const switchOriginalCml = switchOriginal.filter((elem, index, array) => index !== 0)
+    const switchOriginalCml = switchOriginal.filter((elem, index, array) => index !== 0) // filter out the first quarter for cumulative numbers
 
     const testRun = printSections(quarterly, quarterlyYoY, switchOriginalCml, cumulativeYoY, hardwareTotalForecast, currentQuarter)
 
