@@ -181,9 +181,22 @@ export const quarterlyCollection = [
     nintendoSwitchSoftwareTotalLastFY,
 ] as const;
 
-const [quarterHardwareTotal, quarterHardwareTotalYoY, quarterSoftwareTotal, quarterSoftwareTotalYoY] = quarterlyCollection.map(elem => {
+const filteredCollection = [
+    nintendoSwitchHardwareTotal,
+    nintendoSwitchSoftwareTotal,
+] as const;
+
+const [quarterHardwareTotal, quarterHardwareTotalLastFY, quarterSoftwareTotal, quarterSoftwareTotalLastFY] = quarterlyCollection.map(elem => {
     quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative
 })
+
+const [nintendoSwitchHardwareTotalFiltered, nintendoSwitchSoftwareTotalFiltered] = filteredCollection.map((elem) => {
+    return elem.filter((secondElem, index, array) => {
+        return index !== array.length-1 
+    })
+})
+
+
 
 
 // last FY quarterly calculations here if...
