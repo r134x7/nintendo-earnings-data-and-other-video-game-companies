@@ -209,6 +209,75 @@ const nintendoSwitchSoftwareTotalLastFY: Section[] = [
     },
 ]
 
+const nintendoMobile: Section[] = [
+    {
+        name: " Mobile ",
+        period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
+        units: "currency",
+        value: 9062,
+    },
+    {
+        name: " Mobile ",
+        period: " 2nd Quarter ",
+        cmlPeriod: " First Half  ",
+        units: "currency",
+        value: 17925,
+    },
+    {
+        name: " Mobile ",
+        period: " 3rd Quarter ",
+        cmlPeriod: " 1st 3 Qtrs  ",
+        units: "currency",
+        value: 29101,
+    },
+    {
+        name: " Mobile ",
+        period: " 4th Quarter ",
+        cmlPeriod: "Cml. ",
+        units: "currency",
+        value: 39320,
+    },
+    {
+        name: " Mobile ",
+        period: " Last FY Cumulative ",
+        cmlPeriod: "Cml. ",
+        units: "currency",
+        value: 0, // no value needed for mobile since no LTD
+    },
+]
+
+const nintendoMobileLastFY: Section[] = [
+    {
+        name: " Mobile ",
+        period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
+        units: "currency",
+        value: 1649,
+    },
+    {
+        name: " Mobile ",
+        period: " 2nd Quarter ",
+        cmlPeriod: " First Half  ",
+        units: "currency",
+        value: 3408,
+    },
+    {
+        name: " Mobile ",
+        period: " 3rd Quarter ",
+        cmlPeriod: " 1st 3 Qtrs  ",
+        units: "currency",
+        value: 10683,
+    },
+    {
+        name: " Mobile ",
+        period: " 4th Quarter ",
+        cmlPeriod: "Cml. ",
+        units: "currency",
+        value: 24250,
+    },
+]
+
 const header: Header = {
     fiscalYear: " FY3/2018 ",
     nextFiscalYearShort: " FY3/19 ",
@@ -221,21 +290,24 @@ export const quarterlyCollection = [
     nintendoSwitchHardwareTotalLastFY,
     nintendoSwitchSoftwareTotal,
     nintendoSwitchSoftwareTotalLastFY,
+    nintendoMobile,
+    nintendoMobileLastFY,
 ] as const;
 
 const filteredCollection = [
     nintendoSwitchHardwareTotal,
     nintendoSwitchSoftwareTotal,
+    nintendoMobile,
 ] as const;
 
-const [quarterHardwareTotal, quarterHardwareTotalLastFY, quarterSoftwareTotal, quarterSoftwareTotalLastFY] = quarterlyCollection.map((elem, index) => {
+const [quarterHardwareTotal, quarterHardwareTotalLastFY, quarterSoftwareTotal, quarterSoftwareTotalLastFY, quarterNintendoMobile, quarterNintendoMobileLastFY] = quarterlyCollection.map((elem, index) => {
 
     return (index % 2 === 0)
             ? quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filter out last fy cumulative
             : quarterlyCalculation(elem) // last FY numbers...
 })
 
-const [nintendoSwitchHardwareTotalFiltered, nintendoSwitchSoftwareTotalFiltered] = filteredCollection.map((elem) => {
+const [nintendoSwitchHardwareTotalFiltered, nintendoSwitchSoftwareTotalFiltered, nintendoMobileFiltered] = filteredCollection.map((elem) => {
     return elem.filter((secondElem, index, array) => {
         return index !== array.length-1 
     })
@@ -246,22 +318,27 @@ const yearOnYearCollection = [
     quarterHardwareTotalLastFY,
     quarterSoftwareTotal,
     quarterSoftwareTotalLastFY,
+    quarterNintendoMobile,
+    quarterNintendoMobileLastFY,
     nintendoSwitchHardwareTotalFiltered,
     nintendoSwitchHardwareTotalLastFY,
     nintendoSwitchSoftwareTotalFiltered,
     nintendoSwitchSoftwareTotalLastFY,
+    nintendoMobileFiltered,
+    nintendoMobileLastFY,
 ] as const;
 
-const [quarterlySwitchHardwareTotalYoy, quarterlySwitchSoftwareTotalYoy, cumulativeSwitchHardwareTotalYoy, cumulativeSwitchSoftwareTotalYoy] = yearOnYearCollection.map((elem, index, array) => {
+const [quarterlySwitchHardwareTotalYoy, quarterlySwitchSoftwareTotalYoy, quarterlyMobileYoy,cumulativeSwitchHardwareTotalYoy, cumulativeSwitchSoftwareTotalYoy, cumulativeMobileYoy] = yearOnYearCollection.map((elem, index, array) => {
     return (index % 2 === 0)
             ? yearOnYearCalculation(array[index], array[index+1])
             : [];
 }).filter((elem) => elem.length !== 0) // filter out zero length arrays
 
 
-const [nintendoSwitchHardwareTotalCml, nintendoSwitchSoftwareTotalCml] = [
+const [nintendoSwitchHardwareTotalCml, nintendoSwitchSoftwareTotalCml, nintendoMobileCml] = [
     nintendoSwitchHardwareTotal,
-    nintendoSwitchSoftwareTotal,
+    nintendoSwitchSoftwareTotal, 
+    nintendoMobile,
 ].map((elem) => {
     return elem.filter((secondElem, index, array) => {
         return index !== 0 // filter out first quarters
@@ -274,7 +351,10 @@ const printTwo = printSections(header, quarterHardwareTotal, quarterlySwitchHard
 
 const printThree = printSections(header, quarterSoftwareTotal, quarterlySwitchSoftwareTotalYoy, nintendoSwitchSoftwareTotalCml, cumulativeSwitchSoftwareTotalYoy, nintendoSwitchSoftwareTotalForecast, currentQuarter)
 
+const printFour = printSections(header, quarterNintendoMobile, quarterlyMobileYoy, nintendoMobileCml, cumulativeMobileYoy, nintendoSwitchHardwareTotalForecast, currentQuarter)
+
 export const printHardwareSoftware = 
 `${printOne}
 ${printTwo}
-${printThree}`;
+${printThree}
+${printFour}`;

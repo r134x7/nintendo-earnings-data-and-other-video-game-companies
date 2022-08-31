@@ -65,10 +65,11 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
          return index < currentQuarter 
      })
 
-    const sectionCumulativeYoYFixed = sectionCumulativeYoY.filter((elem, index, array) => {
+    const sectionCumulativeYoYFixed = sectionCumulativeYoY.filter((elem, index) => index !== 0).filter((elem, index, array) => {
+        
             // return currentQuarter >= 2 && index < currentQuarter -1 && array[index].units !== "NaN"
-            return currentQuarter >= 2 && index < currentQuarter -1 
-    })
+            return currentQuarter >= 2 && index < currentQuarter-1
+    }) // had to do two separate filters, first removes first quarter...
     
     const difference = sectionDifference.filter((elem, index, array) => {
         return index < currentQuarter && array[index].value !== 0
