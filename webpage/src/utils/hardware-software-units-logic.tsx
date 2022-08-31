@@ -155,7 +155,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
         
         const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+"
 
-        const forecast: string = (sectionDifference[0].name === " Hardware ")
+        const forecast: string = (sectionDifference[0].name === " Hardware Total ")
             ? sectionForecasts.map((elem, index, array) => {
 
                 let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
@@ -165,13 +165,15 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                     ? printValue
                     : " ".repeat(9 - printValue.length) + printValue
 
-                return (currentQuarter === 4 && index === array.length-1)
+                return (currentQuarter === 4 && index === array.length-1 && array.length === 1)
+                    ? "+" + "-".repeat(27) + "+\n|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+                    : (currentQuarter === 4 && index === array.length-1)
                     ? "|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
                     : (index === 0)
                     ? "+" + "-".repeat(27) + "+\n|" + shortFY + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+"
                     : "|" + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
             }).reduce((prev, next) => prev + "\n" + next)
-            : (sectionDifference[0].name === " Software ") 
+            : (sectionDifference[0].name === " Software Total ") 
             ? sectionForecasts.map((elem, index, array) => {
 
                 let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
@@ -183,7 +185,9 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
 
                 // let miscellaneous: string = "|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"
 
-                return (currentQuarter === 4 && index === array.length-1)
+                return (currentQuarter === 4 && index === array.length-1 && array.length === 1)
+                    ? "+" + "-".repeat(27) + "+\n|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+                    : (currentQuarter === 4 && index === array.length-1)
                     ? "|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
                     : (index === 0)
                     ? "+" + "-".repeat(27) + "+\n|" + shortFY + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+"
@@ -192,7 +196,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             : "shrug"
 
 
-        const penultimateCheck = (sectionDifference[0].name === " Hardware " || sectionDifference[0].name === " Software ")
+        const penultimateCheck = (sectionDifference[0].name === " Hardware Total " || sectionDifference[0].name === " Software Total ")
             ? [sectionHeader, ...difference, ...cumulative, ltdPrint, forecast].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
             : (sectionDifference[0].name === " Mobile ")
             ? [sectionHeader, ...difference, ...cumulative, ].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)

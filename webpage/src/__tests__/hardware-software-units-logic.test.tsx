@@ -306,7 +306,7 @@ test("print Section", () => {
         
         const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+"
 
-        const forecast: string = (sectionDifference[0].name === " Hardware ")
+        const forecast: string = (sectionDifference[0].name === " Hardware Total ")
             ? sectionForecasts.map((elem, index, array) => {
 
                 let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
@@ -322,7 +322,7 @@ test("print Section", () => {
                     ? "+" + "-".repeat(27) + "+\n|" + shortFY + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+"
                     : "|" + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
             }).reduce((prev, next) => prev + "\n" + next)
-            : (sectionDifference[0].name === " Software ") 
+            : (sectionDifference[0].name === " Software Total ") 
             ? sectionForecasts.map((elem, index, array) => {
 
                 let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
@@ -343,7 +343,7 @@ test("print Section", () => {
             : "shrug"
 
 
-        const penultimateCheck = (sectionDifference[0].name === " Hardware " || sectionDifference[0].name === " Software ")
+        const penultimateCheck = (sectionDifference[0].name === " Hardware Total " || sectionDifference[0].name === " Software Total")
             ? [sectionHeader, ...difference, ...cumulative, ltdPrint, forecast].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
             : (sectionDifference[0].name === " Mobile ")
             ? [sectionHeader, ...difference, ...cumulative, ].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
