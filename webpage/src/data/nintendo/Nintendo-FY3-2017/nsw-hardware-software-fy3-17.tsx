@@ -187,7 +187,7 @@ const filteredCollection = [
 ] as const;
 
 const [quarterHardwareTotal, quarterHardwareTotalLastFY, quarterSoftwareTotal, quarterSoftwareTotalLastFY] = quarterlyCollection.map(elem => {
-    quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative
+    return quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative
 })
 
 const [nintendoSwitchHardwareTotalFiltered, nintendoSwitchSoftwareTotalFiltered] = filteredCollection.map((elem) => {
@@ -196,24 +196,49 @@ const [nintendoSwitchHardwareTotalFiltered, nintendoSwitchSoftwareTotalFiltered]
     })
 })
 
-
-
-
-// last FY quarterly calculations here if...
-// quarterly year on year calculations here if...
-
-// filter out original again at last index for cmlYoY calculation if...
-// yoy cml calculation if...
-
-const nintendoSwitchHardwareTotalCml = nintendoSwitchHardwareTotal.filter((elem, index, array) => index !== 0)
-
-const nintendoSwitchSoftwareTotalCml = nintendoSwitchSoftwareTotal.filter((elem, index, array) => index !== 0)
-
-export const cmlCollection = [
-   nintendoSwitchHardwareTotalCml,
-   nintendoSwitchSoftwareTotalCml, 
+const yearOnYearCollection = [
+    quarterHardwareTotal,
+    quarterHardwareTotalLastFY,
+    quarterSoftwareTotal,
+    quarterSoftwareTotalLastFY,
+    nintendoSwitchHardwareTotalFiltered,
+    nintendoSwitchHardwareTotalLastFY,
+    nintendoSwitchSoftwareTotalFiltered,
+    nintendoSwitchSoftwareTotalLastFY,
 ] as const;
+
+const [quarterlySwitchHardwareTotalYoy, quarterlySwitchSoftwareTotalYoy, cumulativeSwitchHardwareTotalYoy, cumulativeSwitchSoftwareTotalYoy] = yearOnYearCollection.map((elem, index, array) => {
+    return (index % 2 === 0)
+            ? yearOnYearCalculation(array[index], array[index+1])
+            : [];
+}).filter((elem) => elem.length !== 0) // filter out zero length arrays
+
+
+// const nintendoSwitchHardwareTotalCml = nintendoSwitchHardwareTotal.filter((elem, index, array) => index !== 0)
+
+// const nintendoSwitchSoftwareTotalCml = nintendoSwitchSoftwareTotal.filter((elem, index, array) => index !== 0)
+
+const [nintendoSwitchHardwareTotalCml, nintendoSwitchSoftwareTotalCml] = [
+    nintendoSwitchHardwareTotal,
+    nintendoSwitchSoftwareTotal,
+].map((elem) => {
+    return elem.filter((secondElem, index, array) => {
+        return index !== 0 // filter out first quarters
+    })
+})
+
+// export const cmlCollection = [
+//    nintendoSwitchHardwareTotalCml,
+//    nintendoSwitchSoftwareTotalCml, 
+// ] as const;
 
 const printOne = printHead(header)
 
-// const printTwo = printSections(header, quarterHardwareTotal, )
+const printTwo = printSections(header, quarterHardwareTotal, quarterlySwitchHardwareTotalYoy, nintendoSwitchHardwareTotalCml, cumulativeSwitchHardwareTotalYoy, nintendoSwitchHardwareTotalForecast, currentQuarter)
+
+const printThree = printSections(header, quarterSoftwareTotal, quarterlySwitchSoftwareTotalYoy, nintendoSwitchSoftwareTotalCml, cumulativeSwitchSoftwareTotalYoy, nintendoSwitchSoftwareTotalForecast, currentQuarter)
+
+export const printHarwareSoftware = 
+`${printOne}
+${printTwo}
+${printThree}`;
