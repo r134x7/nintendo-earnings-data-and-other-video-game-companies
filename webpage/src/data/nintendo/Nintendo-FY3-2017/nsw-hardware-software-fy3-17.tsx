@@ -1,4 +1,3 @@
-import { isArrayLiteralExpression } from "typescript";
 import {
     Section,
     Header,
@@ -191,8 +190,7 @@ const [quarterHardwareTotal, quarterHardwareTotalLastFY, quarterSoftwareTotal, q
 
     return (index % 2 === 0)
             ? quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filter out last fy cumulative
-            : quarterlyCalculation(elem)
-    // return quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative
+            : quarterlyCalculation(elem) // last FY numbers...
 })
 
 const [nintendoSwitchHardwareTotalFiltered, nintendoSwitchSoftwareTotalFiltered] = filteredCollection.map((elem) => {
@@ -219,10 +217,6 @@ const [quarterlySwitchHardwareTotalYoy, quarterlySwitchSoftwareTotalYoy, cumulat
 }).filter((elem) => elem.length !== 0) // filter out zero length arrays
 
 
-// const nintendoSwitchHardwareTotalCml = nintendoSwitchHardwareTotal.filter((elem, index, array) => index !== 0)
-
-// const nintendoSwitchSoftwareTotalCml = nintendoSwitchSoftwareTotal.filter((elem, index, array) => index !== 0)
-
 const [nintendoSwitchHardwareTotalCml, nintendoSwitchSoftwareTotalCml] = [
     nintendoSwitchHardwareTotal,
     nintendoSwitchSoftwareTotal,
@@ -231,11 +225,6 @@ const [nintendoSwitchHardwareTotalCml, nintendoSwitchSoftwareTotalCml] = [
         return index !== 0 // filter out first quarters
     })
 })
-
-// export const cmlCollection = [
-//    nintendoSwitchHardwareTotalCml,
-//    nintendoSwitchSoftwareTotalCml, 
-// ] as const;
 
 const printOne = printHead(header)
 
