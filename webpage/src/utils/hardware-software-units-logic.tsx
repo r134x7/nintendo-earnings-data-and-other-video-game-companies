@@ -73,7 +73,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
     
     const difference = sectionDifference.filter((elem, index, array) => {
         return index < currentQuarter && array[index].value !== 0
-    }).map((elem, index) => {
+    }).map((elem, index, array) => {
 
             // let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed.length === 0)
             let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed[index].units === "NaN")
@@ -96,9 +96,17 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                 ? printSection
                 : " ".repeat(9 - printSection.length) + printSection;
 
-            let printLine: string = (index === currentQuarter -1)
-                ? "\n+" + "=".repeat(33) + "+"
-                : "\n+" + "-".repeat(33) + "+"
+            let printLineCheck = sectionDifferenceYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN"); // checks the next element for whether it is NaN so that printLineLength does a closing line correctly
+
+            let printLineLength: number = 
+            // (printSectionDifferenceYoY === "NaN")
+            (printLineCheck.length === 0 && printSectionDifferenceYoY === "NaN")
+                ? 23
+                : 33    
+            // let printLine: string = (index === currentQuarter -1)
+            let printLine: string = (array[index] === array.at(-1))
+                ? "\n+" + "=".repeat(printLineLength) + "+"
+                : "\n+" + "-".repeat(printLineLength) + "+"
 
             return (printSectionDifferenceYoYFixed === "NaN")
                     ? "|" + elem.period + "|" + printSectionFixed + "|" + printLine
@@ -134,7 +142,14 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
 
                 let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
                 
-                let printLine: string = "\n+" + "-".repeat(33) + "+"
+            let printLineCheck = sectionCumulativeYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN");
+
+            let printLineLength: number = 
+            (printLineCheck.length === 0 && printSectionCumulativeYoY === "NaN")
+                ? 23
+                : 33    
+
+                let printLine: string = "\n+" + "-".repeat(printLineLength) + "+"
 
                 let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
                     ? `${shortFY}${elem.cmlPeriod}`

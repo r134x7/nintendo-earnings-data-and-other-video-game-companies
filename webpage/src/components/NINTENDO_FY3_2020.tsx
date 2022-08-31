@@ -5,6 +5,7 @@ import { printEarnings } from "../data/nintendo/Nintendo-FY3-2020/earnings-fy3-2
 import { printKPI } from "../data/nintendo/Nintendo-FY3-2020/kpi-fy3-20";
 import { printTopSellingSwitchTitles } from "../data/nintendo/Nintendo-FY3-2020/topNSWswfy3-20";
 import { printFYMillionSellerTitles } from "../data/nintendo/Nintendo-FY3-2020/mst-fy3-20";
+import { printHardwareSoftware } from "../data/nintendo/Nintendo-FY3-2020/nsw-hardware-software-fy3-20";
 import GRAPH_NINTENDO_EARNINGS_FY3_20 from "../graphs/nintendo/Nintendo-FY3-2020/GRAPH_NINTENDO_EARNINGS_FY3_20";
 import GRAPH_NINTENDO_KPI_FY3_20 from "../graphs/nintendo/Nintendo-FY3-2020/GRAPH_NINTENDO_KPI_FY3_20";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_20 from "../graphs/nintendo/Nintendo-FY3-2020/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_20";
@@ -85,7 +86,7 @@ export default function NINTENDO_FY3_20() {
 
     const consolidatedOperatingResults = printEarnings;
 
-    const nintendoHardwareSoftwareMobile = "no data here at this time";
+    const nintendoHardwareSoftwareMobile = printHardwareSoftware;
     
     const keyIndicators = printKPI;
 
