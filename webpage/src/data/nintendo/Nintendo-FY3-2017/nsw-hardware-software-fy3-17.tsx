@@ -1,3 +1,4 @@
+import { isArrayLiteralExpression } from "typescript";
 import {
     Section,
     Header,
@@ -186,8 +187,12 @@ const filteredCollection = [
     nintendoSwitchSoftwareTotal,
 ] as const;
 
-const [quarterHardwareTotal, quarterHardwareTotalLastFY, quarterSoftwareTotal, quarterSoftwareTotalLastFY] = quarterlyCollection.map(elem => {
-    return quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative
+const [quarterHardwareTotal, quarterHardwareTotalLastFY, quarterSoftwareTotal, quarterSoftwareTotalLastFY] = quarterlyCollection.map((elem, index) => {
+
+    return (index % 2 === 0)
+            ? quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filter out last fy cumulative
+            : quarterlyCalculation(elem)
+    // return quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative
 })
 
 const [nintendoSwitchHardwareTotalFiltered, nintendoSwitchSoftwareTotalFiltered] = filteredCollection.map((elem) => {

@@ -1,3 +1,4 @@
+import { arrayBuffer } from "stream/consumers";
 import { Header, Section } from "../utils/hardware-software-units-logic";
 
 const header: Header = {
@@ -258,7 +259,7 @@ test("print Section", () => {
         const cumulative = (currentQuarter >= 2)
             ? sectionCumulative.filter((elem, index, array) => 
                 currentQuarter >= 2 && index < currentQuarter -1 && array[index].value !== 0
-            ).map((elem, index) => {
+            ).map((elem, index, array) => {
                 
                 let printSectionCumulativeYoY: string = (sectionCumulativeYoYFixed.length === 0)
                     ? "NaN"
@@ -284,7 +285,8 @@ test("print Section", () => {
                 
                 let printLine: string = "\n+" + "-".repeat(33) + "+"
 
-                let printPeriod: string = (currentQuarter === 4 && index === currentQuarter-2)
+                // let printPeriod: string = (currentQuarter === 4 && index === currentQuarter-2)
+                let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
                     ? `${shortFY}${elem.cmlPeriod}`
                     : elem.cmlPeriod
 
