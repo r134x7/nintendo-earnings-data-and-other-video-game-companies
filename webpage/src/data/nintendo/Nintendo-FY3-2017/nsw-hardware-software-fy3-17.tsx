@@ -232,7 +232,7 @@ const printTwo = printSections(header, quarterHardwareTotal, quarterlySwitchHard
 
 const printThree = printSections(header, quarterSoftwareTotal, quarterlySwitchSoftwareTotalYoy, nintendoSwitchSoftwareTotalCml, cumulativeSwitchSoftwareTotalYoy, nintendoSwitchSoftwareTotalForecast, currentQuarter)
 
-export const printHarwareSoftware = 
+export const printHardwareSoftware = 
 `${printOne}
 ${printTwo}
 ${printThree}`;

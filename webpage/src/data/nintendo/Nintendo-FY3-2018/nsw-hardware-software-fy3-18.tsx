@@ -57,14 +57,14 @@ const nintendoSwitchHardwareTotalForecast: Section[] = [
     },
     {
         name: " Hardware Total ",
-        period: "Forecast ",
+        period: " FCST Revision 1 ",
         cmlPeriod: " First Half  ",
         units: "units",
         value: 1400,
     },
     {
         name: " Hardware Total ",
-        period: "Forecast ",
+        period: " FCST Revision 2 ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "units",
         value: 1500,
@@ -157,14 +157,14 @@ const nintendoSwitchSoftwareTotalForecast: Section[] = [
     },
     {
         name: " Software Total ",
-        period: "Forecast ",
+        period: " FCST Revision 1 ",
         cmlPeriod: " First Half  ",
         units: "units",
         value: 5000,
     },
     {
         name: " Software Total ",
-        period: "Forecast ",
+        period:" FCST Revision 2 ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "units",
         value: 5300,
@@ -210,8 +210,8 @@ const nintendoSwitchSoftwareTotalLastFY: Section[] = [
 ]
 
 const header: Header = {
-    fiscalYear: " FY3/2017 ",
-    nextFiscalYearShort: " FY3/18 ",
+    fiscalYear: " FY3/2018 ",
+    nextFiscalYearShort: " FY3/19 ",
     switchHeader: "| Nintendo Switch   |",
     secondHeader: "| Sales Units and Forecast     |",
 }
@@ -274,7 +274,7 @@ const printTwo = printSections(header, quarterHardwareTotal, quarterlySwitchHard
 
 const printThree = printSections(header, quarterSoftwareTotal, quarterlySwitchSoftwareTotalYoy, nintendoSwitchSoftwareTotalCml, cumulativeSwitchSoftwareTotalYoy, nintendoSwitchSoftwareTotalForecast, currentQuarter)
 
-export const printHarwareSoftware = 
+export const printHardwareSoftware = 
 `${printOne}
 ${printTwo}
 ${printThree}`;

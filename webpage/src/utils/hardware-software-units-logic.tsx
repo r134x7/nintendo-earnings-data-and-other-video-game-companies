@@ -64,19 +64,21 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             : "+" + "-".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |\n+" + "-".repeat(33) + "+"
 
      const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem, index, array) => {
-         return index < currentQuarter && array[index].units !== "NaN"
+        //  return index < currentQuarter && array[index].units !== "NaN"
+         return index < currentQuarter 
      })
 
     const sectionCumulativeYoYFixed = sectionCumulativeYoY.filter((elem, index, array) => {
-            return currentQuarter >= 2 && index < currentQuarter -1 && array[index].units !== "NaN"
+            // return currentQuarter >= 2 && index < currentQuarter -1 && array[index].units !== "NaN"
+            return currentQuarter >= 2 && index < currentQuarter -1 
     })
     
     const difference = sectionDifference.filter((elem, index, array) => {
         return index < currentQuarter && array[index].value !== 0
     }).map((elem, index) => {
-            
 
-            let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed.length === 0)
+            // let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed.length === 0)
+            let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed[index].units === "NaN")
                 ? "NaN"
                 : (sectionDifferenceYoYFixed[index].value > 0)
                 ? `+${sectionDifferenceYoYFixed[index].value}% `
@@ -111,7 +113,8 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                 currentQuarter >= 2 && index < currentQuarter -1 && array[index].value !== 0
             ).map((elem, index, array) => {
                 
-                let printSectionCumulativeYoY: string = (sectionCumulativeYoYFixed.length === 0)
+                // let printSectionCumulativeYoY: string = (sectionCumulativeYoYFixed.length === 0)
+                let printSectionCumulativeYoY: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                     ? "NaN"
                     : (sectionCumulativeYoYFixed[index].value > 0)
                     ? `+${sectionCumulativeYoYFixed[index].value}% `
