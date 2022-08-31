@@ -57,10 +57,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
     const sectionHeader: string = (sectionDifference[0].name === " Hardware Total " || sectionDifference[0].name === " Software Total ")
             ? "+-------------+\n|" + sectionDifference[0].name.split("").slice(0,9).join("") + "    |-------------------+\n| Total       |   Units |    YoY% |\n+---------------------------------+" 
             : (sectionDifference[0].name === " Mobile ")
-            ? `+------------------------+
-            | Mobile, IP related     |---------+
-            | income, etc.           |    YoY% |
-            +----------------------------------+`
+            ? "+-----------------------+\n| Mobile, IP related    |---------+\n| income, etc.          |    YoY% |\n+---------------------------------+"
             : "+" + "-".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |\n+" + "-".repeat(33) + "+"
 
      const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem, index, array) => {
@@ -198,11 +195,12 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             }).concat(["|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"]).reduce((prev, next) => prev + "\n" + next)
             : "shrug"
 
+            const mobileFooter = "|(Includes income from smart-device\n|content and royalty income.)";
 
         const penultimateCheck = (sectionDifference[0].name === " Hardware Total " || sectionDifference[0].name === " Software Total ")
             ? [sectionHeader, ...difference, ...cumulative, ltdPrint, forecast].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
             : (sectionDifference[0].name === " Mobile ")
-            ? [sectionHeader, ...difference, ...cumulative, ].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
+            ? [sectionHeader, ...difference, ...cumulative, mobileFooter].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
             : [sectionHeader, ...difference, ...cumulative, ltdPrint].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
 
         return penultimateCheck 
