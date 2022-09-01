@@ -13,28 +13,28 @@ const nintendoSwitchPlatformSales: Section[] = [
         period: " 1st Quarter ",
         cmlPeriod: " 1st Quarter ",
         units: "currency",
-        value: 120000,
+        value: 1200000,
     },
     {
         name: " Switch Platform ",
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "currency",
-        value: 240000,
+        value: 2400000,
     },
     {
         name: " Switch Platform ",
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "currency",
-        value: 360000,
+        value: 3600000,
     },
     {
         name: " Switch Platform ",
         period: " 4th Quarter ",
         cmlPeriod: "Cml. ",
         units: "currency",
-        value: 480000,
+        value: 4800000,
     },
     {
         name: " Switch Platform ",
@@ -420,7 +420,11 @@ test("sales per hardware unit function...", () => {
 
     const printSalesHardware = (header: Header, sectionSales: Section[], sectionHardwareTotal: Section[], currentQuarter: number) => {
 
-        const sectionHeader: string = "+" + "-".repeat(33) + "+\n| Switch    |-------------------+\n| Platform    |    Sales    |"
+        const sectionHeader: string = "+" + "-".repeat(13) + "+\n| Switch      |-------------+\n| Platform    |    Sales    |\n+" + "-".repeat(27) + "+"
+
+        const sectionHeaderTwo: string = "| Switch      |  Cumulative |\n| Platform    |       Sales |\n+" + "-".repeat(27) + "+"
+
+        const sectionHeaderThree: string = "| Switch      | Sales Per | Hardware |\n| Platform    |  Hardware |    Units |\n|-------------| Unit Cml. |Cumulative|\n+" + "-".repeat(36) + "+"
 
         const sectionHardwareTotalFixed = sectionHardwareTotal.filter((elem, index, array) => {
             return index < currentQuarter && array[index].value !== 0
@@ -445,10 +449,10 @@ test("sales per hardware unit function...", () => {
                     : elem.cmlPeriod
 
            let printLine: string = (array[index] === array.at(-1))
-                ? "\n+" + "=".repeat(33) + "+"
-                : "\n+" + "-".repeat(33) + "+"
+                ? "\n+" + "=".repeat(27) + "+"
+                : "\n+" + "-".repeat(27) + "+"
             
-            return "|" + printPeriod + "|" + printSectionFixed + printLine
+            return "|" + printPeriod + "|" + printSectionFixed + "|" + printLine  
         })
 
         const cumulativeSales = sectionSales.filter((elem, index, array) => {
@@ -468,27 +472,31 @@ test("sales per hardware unit function...", () => {
                     : elem.cmlPeriod
 
            let printLine: string = (array[index] === array.at(-1))
-                ? "\n+" + "=".repeat(33) + "+"
-                : "\n+" + "-".repeat(33) + "+"
+                ? "\n+" + "=".repeat(36) + "+"
+                : "\n+" + "-".repeat(27) + "+"
             
-            return "|" + printPeriod + "|" + printSectionLTDFixed + printLine
+            return "|" + printPeriod + "|" + printSectionLTDFixed + "|" + printLine
         })
 
         const salesPerHardwareUnit = sectionSales.filter((elem, index, array) => {
             return index < currentQuarter && array[index].value !== 0
         }).map((elem, index, array) => { 
 
-            let printSectionSalesPerHardware: string = `¥${((elem.value + sectionSales[sectionSales.length-1].value) / sectionHardwareTotalFixed[index]).toLocaleString("en")} `
+            let calculateSalesPerHardware: number = Number(((elem.value + sectionSales[sectionSales.length-1].value) / sectionHardwareTotalFixed[index]).toFixed(0))
 
-            let printSectionSalesPerHardwareFixed: string = (printSectionSalesPerHardware.length >= 13)
-                ? printSectionSalesPerHardware
-                : " ".repeat(13 - printSectionSalesPerHardware.length) + printSectionSalesPerHardware;
+            // let printSectionSalesPerHardware: string = `¥${((elem.value + sectionSales[sectionSales.length-1].value) / sectionHardwareTotalFixed[index]).toLocaleString("en")} `
+
+            let printSectionSalesPerHardware: string = `¥${calculateSalesPerHardware.toLocaleString("en")} `
             
-            let printHardwareUnits: string = `${sectionHardwareTotalFixed}M `
+            let printSectionSalesPerHardwareFixed: string = (printSectionSalesPerHardware.length >= 11)
+                ? printSectionSalesPerHardware
+                : " ".repeat(11 - printSectionSalesPerHardware.length) + printSectionSalesPerHardware;
+            
+            let printHardwareUnits: string = `${sectionHardwareTotalFixed[index]}M `
 
-            let printHardwareUnitsFixed: string = (printHardwareUnits.length >= 9)
+            let printHardwareUnitsFixed: string = (printHardwareUnits.length >= 10)
                     ? printHardwareUnits
-                    : " ".repeat(9 - printHardwareUnits.length) + printHardwareUnits 
+                    : " ".repeat(10 - printHardwareUnits.length) + printHardwareUnits 
 
             let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
 
@@ -497,17 +505,17 @@ test("sales per hardware unit function...", () => {
                     : elem.cmlPeriod
 
            let printLine: string = (array[index] === array.at(-1))
-                ? "\n+" + "=".repeat(33) + "+"
-                : "\n+" + "-".repeat(33) + "+"
+                ? "\n+" + "=".repeat(36) + "+"
+                : "\n+" + "-".repeat(36) + "+"
             
-            return "|" + printPeriod + "|" + printSectionSalesPerHardwareFixed + "|" + printHardwareUnitsFixed + printLine
+            return "|" + printPeriod + "|" + printSectionSalesPerHardwareFixed + "|" + printHardwareUnitsFixed + "|" + printLine
         })
   
-        const printIt = [sectionHeader, ...sales, ...cumulativeSales, ...salesPerHardwareUnit].reduce((prev, next) => prev + "\n" + next)
+        const printIt = [sectionHeader, ...sales, sectionHeaderTwo, ...cumulativeSales, sectionHeaderThree, ...salesPerHardwareUnit].reduce((prev, next) => prev + "\n" + next)
 
         return printIt
     }
 
     console.log(printSalesHardware(header, nintendoSwitchPlatformSales, switchOriginal, currentQuarter));
-    
+    //
 })
