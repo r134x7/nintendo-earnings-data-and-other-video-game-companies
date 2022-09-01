@@ -1,4 +1,3 @@
-import { arrayBuffer } from "stream/consumers";
 import { Header, Section } from "../utils/hardware-software-units-logic";
 
 const header: Header = {
@@ -8,40 +7,78 @@ const header: Header = {
     nextFiscalYearShort: " FY3/23 ",
 }
 
+const nintendoSwitchPlatformSales: Section[] = [
+    {
+        name: " Switch Platform ",
+        period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
+        units: "currency",
+        value: 120000,
+    },
+    {
+        name: " Switch Platform ",
+        period: " 2nd Quarter ",
+        cmlPeriod: " First Half  ",
+        units: "currency",
+        value: 240000,
+    },
+    {
+        name: " Switch Platform ",
+        period: " 3rd Quarter ",
+        cmlPeriod: " 1st 3 Qtrs  ",
+        units: "currency",
+        value: 360000,
+    },
+    {
+        name: " Switch Platform ",
+        period: " 4th Quarter ",
+        cmlPeriod: "Cml. ",
+        units: "currency",
+        value: 480000,
+    },
+    {
+        name: " Switch Platform ",
+        period: " Last FY Cumulative ",
+        cmlPeriod: "Cml. ",
+        units: "currency",
+        value: 200000,
+    },
+]
+
 // you need... cumulative quarters 1-4, ltd at end of last fy...
 // and last fy numbers: quarters 1-4 check earnings logic for reference
 
 const switchOriginal: Section[] = [
     {
-        name: " Software Total ",
+        name: " Hardware Total ",
         period: " 1st Quarter ",
         cmlPeriod: " 1st Quarter ",
         units: "units",
         value: 331,
     },
     {
-        name: " Switch ",
+        name: " Hardware Total ",
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "units",
         value: 645,
     },
     {
-        name: " Switch ",
+        name: " Hardware Total ",
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "units",
         value: 1179,
     },
     {
-        name: " Switch ",
+        name: " Hardware Total ",
         period: " 4th Quarter ",
         cmlPeriod: "Cml. ",
         units: "units",
         value: 1356,
     },
     {
-        name: " Switch ",
+        name: " Hardware Total ",
         period: " Last FY Cumulative ",
         cmlPeriod: "Cml. ",
         units: "units",
