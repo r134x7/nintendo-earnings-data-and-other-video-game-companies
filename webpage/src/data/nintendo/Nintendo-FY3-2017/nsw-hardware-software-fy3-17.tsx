@@ -9,6 +9,75 @@ import {
 
 const currentQuarter = 4;
 
+const nintendoSwitchPlatformSales: Section[] = [
+    {
+        name: " Switch Platform ",
+        period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
+        units: "currency",
+        value: 0,
+    },
+    {
+        name: " Switch Platform ",
+        period: " 2nd Quarter ",
+        cmlPeriod: " First Half  ",
+        units: "currency",
+        value: 0,
+    },
+    {
+        name: " Switch Platform ",
+        period: " 3rd Quarter ",
+        cmlPeriod: " 1st 3 Qtrs  ",
+        units: "currency",
+        value: 0,
+    },
+    {
+        name: " Switch Platform ",
+        period: " 4th Quarter ",
+        cmlPeriod: "Cml. ",
+        units: "currency",
+        value: 274,
+    },
+    {
+        name: " Switch Platform ",
+        period: " Last FY Cumulative ",
+        cmlPeriod: "Cml. ",
+        units: "currency",
+        value: 0,
+    },
+]
+
+const nintendoSwitchPlatformSalesLastFY: Section[] = [
+    {
+        name: " Switch Platform ",
+        period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
+        units: "currency",
+        value: 0,
+    },
+    {
+        name: " Switch Platform ",
+        period: " 2nd Quarter ",
+        cmlPeriod: " First Half  ",
+        units: "currency",
+        value: 0,
+    },
+    {
+        name: " Switch Platform ",
+        period: " 3rd Quarter ",
+        cmlPeriod: " 1st 3 Qtrs  ",
+        units: "currency",
+        value: 0,
+    },
+    {
+        name: " Switch Platform ",
+        period: " 4th Quarter ",
+        cmlPeriod: "Cml. ",
+        units: "currency",
+        value: 0,
+    },
+]
+
 const nintendoSwitchHardwareTotal: Section[] = [
     {
         name: " Hardware Total ",
