@@ -424,6 +424,8 @@ test("sales per hardware unit function...", () => {
 
         const sectionHardwareTotalFixed = sectionHardwareTotal.filter((elem, index, array) => {
             return index < currentQuarter && array[index].value !== 0
+        }).map((elem, index, array) => {
+            return ((elem.value + sectionHardwareTotal[sectionHardwareTotal.length-1].value) / 100)
         })
 
         const sales = sectionSales.filter((elem, index, array) => {
@@ -472,5 +474,40 @@ test("sales per hardware unit function...", () => {
             return "|" + printPeriod + "|" + printSectionLTDFixed + printLine
         })
 
+        const salesPerHardwareUnit = sectionSales.filter((elem, index, array) => {
+            return index < currentQuarter && array[index].value !== 0
+        }).map((elem, index, array) => { 
+
+            let printSectionSalesPerHardware: string = `¥${((elem.value + sectionSales[sectionSales.length-1].value) / sectionHardwareTotalFixed[index]).toLocaleString("en")} `
+
+            let printSectionSalesPerHardwareFixed: string = (printSectionSalesPerHardware.length >= 13)
+                ? printSectionSalesPerHardware
+                : " ".repeat(13 - printSectionSalesPerHardware.length) + printSectionSalesPerHardware;
+            
+            let printHardwareUnits: string = `${sectionHardwareTotalFixed}M `
+
+            let printHardwareUnitsFixed: string = (printHardwareUnits.length >= 9)
+                    ? printHardwareUnits
+                    : " ".repeat(9 - printHardwareUnits.length) + printHardwareUnits 
+
+            let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+
+            let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
+                    ? `${shortFY}${elem.cmlPeriod}`
+                    : elem.cmlPeriod
+
+           let printLine: string = (array[index] === array.at(-1))
+                ? "\n+" + "=".repeat(33) + "+"
+                : "\n+" + "-".repeat(33) + "+"
+            
+            return "|" + printPeriod + "|" + printSectionSalesPerHardwareFixed + "|" + printHardwareUnitsFixed + printLine
+        })
+  
+        const printIt = [sectionHeader, ...sales, ...cumulativeSales, ...salesPerHardwareUnit].reduce((prev, next) => prev + "\n" + next)
+
+        return printIt
     }
+
+    console.log(printSalesHardware(header, nintendoSwitchPlatformSales, switchOriginal, currentQuarter));
+    
 })
