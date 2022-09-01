@@ -3,11 +3,50 @@ import {
     Header,
     printHead,
     printSections,
+    printSalesHardware,
     quarterlyCalculation,
     yearOnYearCalculation
 } from "../../../utils/hardware-software-units-logic";
 
 const currentQuarter = 4;
+
+const nintendoSwitchPlatformSales: Section[] = [
+    {
+        name: " Switch Platform ",
+        period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
+        units: "currency",
+        value: 300054,
+    },
+    {
+        name: " Switch Platform ",
+        period: " 2nd Quarter ",
+        cmlPeriod: " First Half  ",
+        units: "currency",
+        value: 581808,
+    },
+    {
+        name: " Switch Platform ",
+        period: " 3rd Quarter ",
+        cmlPeriod: " 1st 3 Qtrs  ",
+        units: "currency",
+        value: 1250479,
+    },
+    {
+        name: " Switch Platform ",
+        period: " 4th Quarter ",
+        cmlPeriod: "Cml. ",
+        units: "currency",
+        value: 1602725,
+    },
+    {
+        name: " Switch Platform ",
+        period: " Last FY Cumulative ",
+        cmlPeriod: "Cml. ",
+        units: "currency",
+        value: 4778029,
+    },
+]
 
 const nintendoSwitchOG: Section[] = [
     {
@@ -618,6 +657,8 @@ const [
 
 const printOne = printHead(header)
 
+const printOnePointFive = printSalesHardware(header, nintendoSwitchPlatformSales, nintendoSwitchHardwareTotal, currentQuarter)
+
 const printTwo = printSections(header, quarterSwitchOG, quarterlySwitchOGYoy, nintendoSwitchOGCml, cumulativeSwitchOGYoy, nintendoSwitchHardwareTotalForecast, currentQuarter)
 
 const printThree = printSections(header, quarterSwitchLite, quarterlySwitchLiteYoy, nintendoSwitchLiteCml, cumulativeSwitchLiteYoy, nintendoSwitchHardwareTotalForecast, currentQuarter)
@@ -632,6 +673,7 @@ const printSeven = printSections(header, quarterNintendoMobile, quarterlyMobileY
 
 export const printHardwareSoftware = 
 `${printOne}
+${printOnePointFive}
 ${printTwo}
 ${printThree}
 ${printFour}
