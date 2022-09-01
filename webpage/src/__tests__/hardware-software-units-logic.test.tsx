@@ -413,3 +413,64 @@ test("print Section", () => {
     
     expect(testRun).toMatch(switchToMatch)
 })
+
+test("sales per hardware unit function...", () => {
+
+    const currentQuarter = 4;
+
+    const printSalesHardware = (header: Header, sectionSales: Section[], sectionHardwareTotal: Section[], currentQuarter: number) => {
+
+        const sectionHeader: string = "+" + "-".repeat(33) + "+\n| Switch    |-------------------+\n| Platform    |    Sales    |"
+
+        const sectionHardwareTotalFixed = sectionHardwareTotal.filter((elem, index, array) => {
+            return index < currentQuarter && array[index].value !== 0
+        })
+
+        const sales = sectionSales.filter((elem, index, array) => {
+            return index < currentQuarter && array[index].value !== 0
+        }).map((elem, index, array) => {
+
+            let printSection: string = `¥${elem.value.toLocaleString("en")}M `
+
+            let printSectionFixed: string = (printSection.length >= 13)
+                ? printSection
+                : " ".repeat(13 - printSection.length) + printSection;
+            
+            let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+
+            let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
+                    ? `${shortFY}${elem.cmlPeriod}`
+                    : elem.cmlPeriod
+
+           let printLine: string = (array[index] === array.at(-1))
+                ? "\n+" + "=".repeat(33) + "+"
+                : "\n+" + "-".repeat(33) + "+"
+            
+            return "|" + printPeriod + "|" + printSectionFixed + printLine
+        })
+
+        const cumulativeSales = sectionSales.filter((elem, index, array) => {
+            return index < currentQuarter && array[index].value !== 0
+        }).map((elem, index, array) => { 
+
+            let printSectionLTD: string = `¥${(elem.value + sectionSales[sectionSales.length-1].value).toLocaleString("en")}M `
+
+            let printSectionLTDFixed: string = (printSectionLTD.length >= 13)
+                ? printSectionLTD
+                : " ".repeat(13 - printSectionLTD.length) + printSectionLTD;
+            
+            let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+
+            let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
+                    ? `${shortFY}${elem.cmlPeriod}`
+                    : elem.cmlPeriod
+
+           let printLine: string = (array[index] === array.at(-1))
+                ? "\n+" + "=".repeat(33) + "+"
+                : "\n+" + "-".repeat(33) + "+"
+            
+            return "|" + printPeriod + "|" + printSectionLTDFixed + printLine
+        })
+
+    }
+})
