@@ -3,6 +3,7 @@ import {
     Header,
     printHead,
     printSections,
+    printSalesHardware,
     quarterlyCalculation,
     yearOnYearCalculation
 } from "../../../utils/hardware-software-units-logic";
@@ -343,6 +344,8 @@ const [nintendoSwitchHardwareTotalCml, nintendoSwitchSoftwareTotalCml, nintendoM
 
 const printOne = printHead(header)
 
+const printOnePointFive = printSalesHardware(header, nintendoSwitchPlatformSales, nintendoSwitchHardwareTotal, currentQuarter)
+
 const printTwo = printSections(header, quarterHardwareTotal, quarterlySwitchHardwareTotalYoy, nintendoSwitchHardwareTotalCml, cumulativeSwitchHardwareTotalYoy, nintendoSwitchHardwareTotalForecast, currentQuarter)
 
 const printThree = printSections(header, quarterSoftwareTotal, quarterlySwitchSoftwareTotalYoy, nintendoSwitchSoftwareTotalCml, cumulativeSwitchSoftwareTotalYoy, nintendoSwitchSoftwareTotalForecast, currentQuarter)
@@ -351,6 +354,7 @@ const printFour = printSections(header, quarterNintendoMobile, quarterlyMobileYo
 
 export const printHardwareSoftware = 
 `${printOne}
+${printOnePointFive}
 ${printTwo}
 ${printThree}
 ${printFour}`;
