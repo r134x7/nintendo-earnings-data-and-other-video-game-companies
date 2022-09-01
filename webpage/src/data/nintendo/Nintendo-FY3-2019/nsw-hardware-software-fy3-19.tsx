@@ -3,11 +3,50 @@ import {
     Header,
     printHead,
     printSections,
+    printSalesHardware,
     quarterlyCalculation,
     yearOnYearCalculation
 } from "../../../utils/hardware-software-units-logic";
 
 const currentQuarter = 4;
+
+const nintendoSwitchPlatformSales: Section[] = [
+    {
+        name: " Switch Platform ",
+        period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
+        units: "currency",
+        value: 129587,
+    },
+    {
+        name: " Switch Platform ",
+        period: " 2nd Quarter ",
+        cmlPeriod: " First Half  ",
+        units: "currency",
+        value: 305696,
+    },
+    {
+        name: " Switch Platform ",
+        period: " 3rd Quarter ",
+        cmlPeriod: " 1st 3 Qtrs  ",
+        units: "currency",
+        value: 849994,
+    },
+    {
+        name: " Switch Platform ",
+        period: " 4th Quarter ",
+        cmlPeriod: "Cml. ",
+        units: "currency",
+        value: 1027937,
+    },
+    {
+        name: " Switch Platform ",
+        period: " Last FY Cumulative ",
+        cmlPeriod: "Cml. ",
+        units: "currency",
+        value: 864360,
+    },
+]
 
 const nintendoSwitchHardwareTotal: Section[] = [
     {
@@ -347,6 +386,8 @@ const [nintendoSwitchHardwareTotalCml, nintendoSwitchSoftwareTotalCml, nintendoM
 
 const printOne = printHead(header)
 
+const printOnePointFive = printSalesHardware(header, nintendoSwitchPlatformSales, nintendoSwitchHardwareTotal, currentQuarter)
+
 const printTwo = printSections(header, quarterHardwareTotal, quarterlySwitchHardwareTotalYoy, nintendoSwitchHardwareTotalCml, cumulativeSwitchHardwareTotalYoy, nintendoSwitchHardwareTotalForecast, currentQuarter)
 
 const printThree = printSections(header, quarterSoftwareTotal, quarterlySwitchSoftwareTotalYoy, nintendoSwitchSoftwareTotalCml, cumulativeSwitchSoftwareTotalYoy, nintendoSwitchSoftwareTotalForecast, currentQuarter)
@@ -355,6 +396,7 @@ const printFour = printSections(header, quarterNintendoMobile, quarterlyMobileYo
 
 export const printHardwareSoftware = 
 `${printOne}
+${printOnePointFive}
 ${printTwo}
 ${printThree}
 ${printFour}`;
