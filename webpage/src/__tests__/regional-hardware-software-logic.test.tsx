@@ -99,14 +99,14 @@ const nintendoSwitchOGJapan: Section[] = [
     },
 ]
 
-const nintendoSwitchOGJapan: Section[] = [
+const nintendoSwitchOGJapanLastFY: Section[] = [
     {
         name: " Switch ",
         region: "Japan", 
         period: " 1st Quarter ",
         cmlPeriod: " 1st Quarter ",
         units: "units",
-        value: 100,
+        value: 10,
     },
     {
         name: " Switch ",
@@ -114,7 +114,7 @@ const nintendoSwitchOGJapan: Section[] = [
         period: " 2nd Quarter ", 
         cmlPeriod: " First Half  ",
         units: "units",
-        value: 200,
+        value: 20,
     },
     {
         name: " Switch ",
@@ -122,7 +122,7 @@ const nintendoSwitchOGJapan: Section[] = [
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "units",
-        value: 300,
+        value: 30,
     },
     {
         name: " Switch ",
@@ -130,14 +130,243 @@ const nintendoSwitchOGJapan: Section[] = [
         period: " 4th Quarter ", 
         cmlPeriod: "Cml. ",
         units: "units",
+        value: 40,
+    },
+]
+
+const nintendoSwitchOGAmericas: Section[] = [
+    {
+        name: " Switch ",
+        region: "The Americas", 
+        period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
+        units: "units",
+        value: 100,
+    },
+    {
+        name: " Switch ",
+        region: "The Americas", 
+        period: " 2nd Quarter ", 
+        cmlPeriod: " First Half  ",
+        units: "units",
+        value: 200,
+    },
+    {
+        name: " Switch ",
+        region: "The Americas", 
+        period: " 3rd Quarter ",
+        cmlPeriod: " 1st 3 Qtrs  ",
+        units: "units",
+        value: 300,
+    },
+    {
+        name: " Switch ",
+        region: "The Americas", 
+        period: " 4th Quarter ", 
+        cmlPeriod: "Cml. ",
+        units: "units",
         value: 400,
     },
     {
         name: " Switch ",
-        region: "Japan", 
+        region: "The Americas", 
         period: " Last FY Cumulative ",
         cmlPeriod: "Cml. ",
         units: "units",
         value: 100,
     },
 ]
+
+const nintendoSwitchOGAmericasLastFY: Section[] = [
+    {
+        name: " Switch ",
+        region: "The Americas", 
+        period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
+        units: "units",
+        value: 10,
+    },
+    {
+        name: " Switch ",
+        region: "The Americas", 
+        period: " 2nd Quarter ", 
+        cmlPeriod: " First Half  ",
+        units: "units",
+        value: 20,
+    },
+    {
+        name: " Switch ",
+        region: "The Americas", 
+        period: " 3rd Quarter ",
+        cmlPeriod: " 1st 3 Qtrs  ",
+        units: "units",
+        value: 30,
+    },
+    {
+        name: " Switch ",
+        region: "The Americas", 
+        period: " 4th Quarter ", 
+        cmlPeriod: "Cml. ",
+        units: "units",
+        value: 40,
+    },
+]
+
+
+const nintendoSwitchOGEurope: Section[] = [
+    {
+        name: " Switch ",
+        region: "Europe", 
+        period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
+        units: "units",
+        value: 100,
+    },
+    {
+        name: " Switch ",
+        region: "Europe", 
+        period: " 2nd Quarter ", 
+        cmlPeriod: " First Half  ",
+        units: "units",
+        value: 200,
+    },
+    {
+        name: " Switch ",
+        region: "Europe", 
+        period: " 3rd Quarter ",
+        cmlPeriod: " 1st 3 Qtrs  ",
+        units: "units",
+        value: 300,
+    },
+    {
+        name: " Switch ",
+        region: "Europe", 
+        period: " 4th Quarter ", 
+        cmlPeriod: "Cml. ",
+        units: "units",
+        value: 400,
+    },
+    {
+        name: " Switch ",
+        region: "Europe", 
+        period: " Last FY Cumulative ",
+        cmlPeriod: "Cml. ",
+        units: "units",
+        value: 100,
+    },
+]
+
+const nintendoSwitchOGEuropeLastFY: Section[] = [
+    {
+        name: " Switch ",
+        region: "Europe", 
+        period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
+        units: "units",
+        value: 10,
+    },
+    {
+        name: " Switch ",
+        region: "Europe", 
+        period: " 2nd Quarter ", 
+        cmlPeriod: " First Half  ",
+        units: "units",
+        value: 20,
+    },
+    {
+        name: " Switch ",
+        region: "Europe", 
+        period: " 3rd Quarter ",
+        cmlPeriod: " 1st 3 Qtrs  ",
+        units: "units",
+        value: 30,
+    },
+    {
+        name: " Switch ",
+        region: "Europe", 
+        period: " 4th Quarter ", 
+        cmlPeriod: "Cml. ",
+        units: "units",
+        value: 40,
+    },
+]
+
+
+const nintendoSwitchOGOther: Section[] = [
+    {
+        name: " Switch ",
+        region: "Other", 
+        period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
+        units: "units",
+        value: 100,
+    },
+    {
+        name: " Switch ",
+        region: "Other", 
+        period: " 2nd Quarter ", 
+        cmlPeriod: " First Half  ",
+        units: "units",
+        value: 200,
+    },
+    {
+        name: " Switch ",
+        region: "Other", 
+        period: " 3rd Quarter ",
+        cmlPeriod: " 1st 3 Qtrs  ",
+        units: "units",
+        value: 300,
+    },
+    {
+        name: " Switch ",
+        region: "Other", 
+        period: " 4th Quarter ", 
+        cmlPeriod: "Cml. ",
+        units: "units",
+        value: 400,
+    },
+    {
+        name: " Switch ",
+        region: "Other", 
+        period: " Last FY Cumulative ",
+        cmlPeriod: "Cml. ",
+        units: "units",
+        value: 100,
+    },
+]
+
+const nintendoSwitchOGOtherLastFY: Section[] = [
+    {
+        name: " Switch ",
+        region: "Other", 
+        period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
+        units: "units",
+        value: 10,
+    },
+    {
+        name: " Switch ",
+        region: "Other", 
+        period: " 2nd Quarter ", 
+        cmlPeriod: " First Half  ",
+        units: "units",
+        value: 20,
+    },
+    {
+        name: " Switch ",
+        region: "Other", 
+        period: " 3rd Quarter ",
+        cmlPeriod: " 1st 3 Qtrs  ",
+        units: "units",
+        value: 30,
+    },
+    {
+        name: " Switch ",
+        region: "Other", 
+        period: " 4th Quarter ", 
+        cmlPeriod: "Cml. ",
+        units: "units",
+        value: 40,
+    },
+]
+
