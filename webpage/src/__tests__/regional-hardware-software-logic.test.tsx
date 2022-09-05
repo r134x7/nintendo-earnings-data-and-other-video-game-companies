@@ -524,9 +524,19 @@ ${header.switchHeader}${header.fiscalYear}|
 +${"-".repeat(44)}+`;
 
 // have to print... platform... quarters, cumulatives, ltd, units, yoy, ww%
-const printSection = (header: Header, sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], sectionForecasts: Section[], currentQuarter: number) => {
+// would need to think of using concat() on the regions so that the issue of parameters is avoided... x.concat(y).concat(z) etc... then I should use the names for doing things...
+
+const printSection = (header: Header, sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], sectionGlobal: Section[], currentQuarter: number) => {
 
     const sectionHeader: string = "+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + "| Japan  |The     | Europe | Other  |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
 
-    
+    const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem, index, array) => {
+        return (currentQuarter === 1)
+            ? elem.period === " 1st Quarter "
+            : (currentQuarter === 2)
+            ? elem.period === " 2nd Quarter "
+            : (currentQuarter === 3)
+            ? elem.period === " 3rd Quarter "
+            : elem.period === " 4th Quarter "
+    }) 
 }
