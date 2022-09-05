@@ -530,7 +530,7 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
 
     const sectionHeader: string = "+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + "| Japan  |The     | Europe | Other  |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
 
-    const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem, index, array) => {
+    const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem) => {
         return (currentQuarter === 1)
             ? elem.period === " 1st Quarter "
             : (currentQuarter === 2)
@@ -539,4 +539,28 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
             ? elem.period !== " 4th Quarter " 
             : elem
     }) 
+
+    const sectionCumulativeYoYFixed = sectionCumulativeYoY.filter((elem) => elem.period !== " 1st Quarter ").filter((elem) => {
+
+        if (currentQuarter === 2) {
+            return elem.cmlPeriod === " First Half  "
+        } else if (currentQuarter === 3) {
+            return elem.cmlPeriod !== "Cml. "
+        } else if (currentQuarter === 4) {
+            return elem
+        }
+
+        return // see if this works... it should return an empty array on quarter 1...
+    })
+
+    const difference = sectionDifference.filter((elem, index, array) => {
+        return (currentQuarter === 1 && elem.value !== 0)
+            ? elem.period === " 1st Quarter "
+            : (currentQuarter === 2 && elem.value !== 0)
+            ? elem.period === " 1st Quarter " || elem.period === " 2nd Quarter "
+            : (currentQuarter === 3 && elem.value !== 0)
+            ? elem.period !== " 4th Quarter "
+            : elem
+    })
+
 }
