@@ -11,12 +11,18 @@ export type Header = {
     switchHeader: "| Nintendo Switch Regional Data |",
     fiscalYear: string,
     fiscalYearCml: string,
+    units: "| Units  |",
+    yearOnYear: "| YoY%   |",
+    globalPercentage: "| Global%|",
 }
 
 const header: Header = {
     switchHeader: "| Nintendo Switch Regional Data |",
     fiscalYear: " FY3/2022 ",
     fiscalYearCml: " FY3/22 Cumulative ",
+    globalPercentage: "| Global%|",
+    units: "| Units  |",
+    yearOnYear: "| YoY%   |",
 }
 
 const nintendoSwitchOGWW: Section[] = [
@@ -408,7 +414,7 @@ const oldTableDesign =
 +--------------------------------------------+
 | Units  |  1.58M |  2.15M |  1.63M |  1.09M |
 | YoY%   |-18.13% |-16.99% |-24.54% |-35.12% |
-| WW%    | 24.50% | 33.33% | 25.27% | 16.90% |
+| Global%| 24.50% | 33.33% | 25.27% | 16.90% |
 +--------------------------------------------+
 | First Three Quarters                       |
 +--------------------------------------------+
@@ -514,4 +520,13 @@ function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
 
 const printHead = (header: Header) => 
 `+${"-".repeat(44)}+
-${header.switchHeader}${header.fiscalYear}`;
+${header.switchHeader}${header.fiscalYear}|
++${"-".repeat(44)}+`;
+
+// have to print... platform... quarters, cumulatives, ltd, units, yoy, ww%
+const printSection = (header: Header, sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], sectionForecasts: Section[], currentQuarter: number) => {
+
+    const sectionHeader: string = "+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + "| Japan  |The     | Europe | Other  |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
+
+    
+}
