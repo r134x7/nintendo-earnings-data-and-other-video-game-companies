@@ -534,9 +534,9 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
         return (currentQuarter === 1)
             ? elem.period === " 1st Quarter "
             : (currentQuarter === 2)
-            ? elem.period === " 2nd Quarter "
+            ? elem.period === " 1st Quarter " || elem.period === " 2nd Quarter "
             : (currentQuarter === 3)
-            ? elem.period === " 3rd Quarter "
-            : elem.period === " 4th Quarter "
+            ? elem.period !== " 4th Quarter " 
+            : elem
     }) 
 }
