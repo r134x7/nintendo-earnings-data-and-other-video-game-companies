@@ -656,6 +656,9 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
                 : " ".repeat(9 - ltd.length) + ltd
         
         const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+"
+        
+        const penultimateCheck = [sectionHeader, ...difference, ...cumulative, ltdPrint].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
 
+        return penultimateCheck
 
 }
