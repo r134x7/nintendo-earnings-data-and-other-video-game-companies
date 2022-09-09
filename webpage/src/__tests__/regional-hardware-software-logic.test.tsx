@@ -599,9 +599,63 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
                 ? "|" + elem.period + "|" + printSectionFixed + "|" + printLine
                 : "|" + elem.period + "|" + printSectionFixed + "|" + printSectionDifferenceYoYFixed + "|" + printLine
             
-
-
-
     })
+
+    const cumulative = (currentQuarter >= 2)
+        ? sectionCumulative.filter((elem, index, array) => {
+
+            return (currentQuarter === 2 && elem.value !== 0)
+            ? elem.cmlPeriod === " First Half  "
+            : (currentQuarter === 3 && elem.value !== 0)
+            ? elem.cmlPeriod === " First Half  " || elem.cmlPeriod === " First Three Quarters " 
+            : (currentQuarter === 4 && elem.value !== 0)
+            ? elem.cmlPeriod !== " 1st Quarter "
+            : !elem // should return empty arrays...
+        
+        }).map((elem, index, array) => {
+                
+            let printSectionCumulativeYoY: string = (sectionCumulativeYoYFixed[index].units === "NaN")
+                ? "NaN"
+                : (sectionCumulativeYoYFixed[index].value > 0)
+                ? `+${sectionCumulativeYoYFixed[index].value}% `
+                : `${sectionCumulativeYoYFixed[index].value}% `
+
+            let printSectionCumulativeYoYFixed: string = (printSectionCumulativeYoY === "NaN")
+                ? printSectionCumulativeYoY
+                : (printSectionCumulativeYoY.length >= 9)
+                ? printSectionCumulativeYoY
+                : " ".repeat(9 - printSectionCumulativeYoY.length) + printSectionCumulativeYoY
+
+            let printCumulative: string = `${(elem.value / 100).toFixed(2)}M `;
+
+            let printCumulativeFixed: string = (printCumulative.length >= 9)
+                ? printCumulative
+                : " ".repeat(9 - printCumulative.length) + printCumulative;
+
+            let printLineCheck = sectionCumulativeYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN");
+
+            let printLineLength: number = 
+            (printLineCheck.length === 0 && printSectionCumulativeYoY === "NaN")
+                ? 23
+                : 33    
+
+            let printLine: string = "\n+" + "-".repeat(printLineLength) + "+"
+
+            return (printSectionCumulativeYoYFixed === "NaN")
+                ?  "|" + elem.cmlPeriod + "|" + printCumulativeFixed + "|" + printLine
+                : "|" + elem.cmlPeriod + "|" + printCumulativeFixed + "|" + printSectionCumulativeYoYFixed + "|" + printLine
+            })
+            : []
+
+        const ltd: string = (currentQuarter === 1) 
+                ? `${((sectionDifference[currentQuarter-1].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M `
+                : `${((sectionCumulative[currentQuarter-2].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M `
+
+        const ltdFixed: string = (ltd.length >= 9)
+                ? ltd
+                : " ".repeat(9 - ltd.length) + ltd
+        
+        const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+"
+
 
 }
