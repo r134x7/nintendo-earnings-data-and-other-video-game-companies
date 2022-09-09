@@ -561,6 +561,47 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
             : (currentQuarter === 3 && elem.value !== 0)
             ? elem.period !== " 4th Quarter "
             : elem
+    }).map((elem, index, array) => {
+
+
+        let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed[index].units === "NaN")
+            ? "NaN"
+            : (sectionDifferenceYoYFixed[index].value > 0)
+            ? `+${sectionDifferenceYoYFixed[index].value}% `
+            : `${sectionDifferenceYoYFixed[index].value}% `
+
+        
+        let printSectionDifferenceYoYFixed: string = (printSectionDifferenceYoY === "NaN")
+            ? printSectionDifferenceYoY
+            : (printSectionDifferenceYoY.length >= 9)
+            ? printSectionDifferenceYoY
+            : " ".repeat(9 - printSectionDifferenceYoY.length) + printSectionDifferenceYoY
+
+        let printSection: string = `${(elem.value / 100).toFixed(2)}M `;
+
+        let printSectionFixed: string = (printSection.length >= 9)
+            ? printSection
+            : " ".repeat(9 - printSection.length) + printSection;
+ 
+        let printLineCheck = sectionDifferenceYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN"); // checks the next element for whether it is NaN so that printLineLength does a closing line correctly
+
+        let printLineLength: number = 
+            // (printSectionDifferenceYoY === "NaN")
+        (printLineCheck.length === 0 && printSectionDifferenceYoY === "NaN")
+            ? 23
+            : 33    
+
+        let printLine: string = (array[index] === array.at(-1))
+            ? "\n+" + "=".repeat(printLineLength) + "+"
+            : "\n+" + "-".repeat(printLineLength) + "+"
+
+        return (printSectionDifferenceYoYFixed === "NaN")
+                ? "|" + elem.period + "|" + printSectionFixed + "|" + printLine
+                : "|" + elem.period + "|" + printSectionFixed + "|" + printSectionDifferenceYoYFixed + "|" + printLine
+            
+
+
+
     })
 
 }
