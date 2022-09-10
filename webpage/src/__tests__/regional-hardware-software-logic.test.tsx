@@ -663,21 +663,77 @@ function quarterlyCalculation(quarters: SectionRegions[]) {
    return calc
 }
 
+// function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
 
-function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
+//         const calc: Section[] = thisFY.map((elem, index) => {
 
-        const calc: Section[] = thisFY.map((elem, index) => {
+//             return (lastFY[index].value < 0)
+//                     ? {...elem, units: "percentage", value: Number(
+//                         ((((elem.value / lastFY[index].value) -1)* -1) * 100).toFixed(2)
+//                         )
+//                       }
+//                     : (lastFY[index].value === 0)
+//                     ? {...elem, units: "NaN", value: 0}
+//                     :{...elem, units: "percentage", value: Number(
+//                         (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
+//                         )
+//                       }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
+//         })
 
-            return (lastFY[index].value < 0)
-                    ? {...elem, units: "percentage", value: Number(
-                        ((((elem.value / lastFY[index].value) -1)* -1) * 100).toFixed(2)
-                        )
+//        return calc
+//     }
+
+function yearOnYearCalculation(thisFY: SectionRegions[], lastFY: SectionRegions[]) {
+
+        const calc: SectionRegions[] = thisFY.map((elem, index) => {
+        // this doesn't work if one value is a different sign or is not zero... 
+            return (lastFY[index].valueA < 0)
+                    ? {
+                        ...elem, 
+                        units: "percentage", 
+                        valueA: Number(
+                        ((((elem.valueA / lastFY[index].valueA) -1)* -1) * 100).toFixed(2)),
+                        valueB: Number(
+                        ((((elem.valueB / lastFY[index].valueB) -1)* -1) * 100).toFixed(2)),
+                        valueC: Number(
+                        ((((elem.valueC / lastFY[index].valueC) -1)* -1) * 100).toFixed(2)),
+                        valueD: Number(
+                        ((((elem.valueD / lastFY[index].valueD) -1)* -1) * 100).toFixed(2)),
                       }
-                    : (lastFY[index].value === 0)
-                    ? {...elem, units: "NaN", value: 0}
-                    :{...elem, units: "percentage", value: Number(
-                        (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
-                        )
+                    : (lastFY[index].valueA === 0)
+                    ? {
+                        ...elem, 
+                        units: "NaN", 
+                    }
+                    : (lastFY[index].valueD !== 0)
+                    ? {
+                        ...elem, 
+                        units: "percentage", 
+                        valueA: Number(
+                        (((elem.valueA / lastFY[index].valueA) -1) * 100).toFixed(2)
+                        ),
+                        valueB: Number(
+                        (((elem.valueB / lastFY[index].valueB) -1) * 100).toFixed(2)
+                        ),
+                        valueC: Number(
+                        (((elem.valueC / lastFY[index].valueC) -1) * 100).toFixed(2)
+                        ),
+                        valueD: Number(
+                        (((elem.valueD / lastFY[index].valueD) -1) * 100).toFixed(2)
+                        ),
+                      }
+                    : {
+                        ...elem, 
+                        units: "percentage", 
+                        valueA: Number(
+                        (((elem.valueA / lastFY[index].valueA) -1) * 100).toFixed(2)
+                        ),
+                        valueB: Number(
+                        (((elem.valueB / lastFY[index].valueB) -1) * 100).toFixed(2)
+                        ),
+                        valueC: Number(
+                        (((elem.valueC / lastFY[index].valueC) -1) * 100).toFixed(2)
+                        ),
                       }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
         })
 
