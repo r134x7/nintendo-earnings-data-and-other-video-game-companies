@@ -665,17 +665,17 @@ const alteredTableDesign =
 //     return calc
 // }
 
-function quarterlyCalculation(quarters: SectionRegions[]) {
+function quarterlyCalculation(quarters: Section[]) {
        
-   const calc: SectionRegions[] = quarters.map((elem, index, array) => {
+   const calc: Section[] = quarters.map((elem, index, array) => {
     //    return (elem.period !== " 1st Quarter  " && elem.period !== " Last FY Total ")
        return (elem.period !== " 1st Quarter " && elem.period !== " Last FY Cumulative ")
                ? {
                 ...elem, 
-                valueA: Number((elem.valueA - array[index-1].valueA).toFixed(2)),
                 valueB: Number((elem.valueB - array[index-1].valueB).toFixed(2)),
                 valueC: Number((elem.valueC - array[index-1].valueC).toFixed(2)),
                 valueD: Number((elem.valueD - array[index-1].valueD).toFixed(2)),
+                valueE: Number((elem.valueE - array[index-1].valueE).toFixed(2)),
                 }
                : elem
    })
