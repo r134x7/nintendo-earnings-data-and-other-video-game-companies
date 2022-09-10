@@ -175,7 +175,7 @@ const nintendoSwitchOGRegionsLastFY: Section[] = [
         cmlPeriod: " 1st Quarter ",
         units: "units",
         regionA: "Global", 
-        valueA: 0, // not used
+        valueA: 40,
         regionB: "Japan", 
         valueB: 10,
         regionC: "The Americas", 
@@ -191,7 +191,7 @@ const nintendoSwitchOGRegionsLastFY: Section[] = [
         cmlPeriod: " First Half  ",
         units: "units",
         regionA: "Global", 
-        valueA: 0, // not used
+        valueA: 80,
         regionB: "Japan", 
         valueB: 20,
         regionC: "The Americas", 
@@ -207,7 +207,7 @@ const nintendoSwitchOGRegionsLastFY: Section[] = [
         cmlPeriod: " First Three Quarters ",
         units: "units",
         regionA: "Global", 
-        valueA: 0, // not used
+        valueA: 120,
         regionB: "Japan", 
         valueB: 30,
         regionC: "The Americas", 
@@ -223,7 +223,7 @@ const nintendoSwitchOGRegionsLastFY: Section[] = [
         cmlPeriod: "Cml. ",
         units: "units",
         regionA: "Global", 
-        valueA: 0, // not used
+        valueA: 160,
         regionB: "Japan", 
         valueB: 40,
         regionC: "The Americas", 
@@ -782,6 +782,8 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
             : elem
     }) 
 
+    console.log(sectionCumulativeYoY);
+    
     const sectionCumulativeYoYFixed = sectionCumulativeYoY.filter((elem) => elem.period !== " 1st Quarter ").filter((elem) => {
 
         if (currentQuarter === 2) {
@@ -832,9 +834,9 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
         let [printSectionDifferenceYoYJapanFixed, printSectionDifferenceYoYAmericasFixed, printSectionDifferenceYoYEuropeFixed, printSectionDifferenceYoYOtherFixed]: string[] = [printSectionDifferenceYoYJapan, printSectionDifferenceYoYAmericas, printSectionDifferenceYoYEurope, printSectionDifferenceYoYOther].map((value) => {
             return (value === "NaN")
                 ? value
-                : (value.length >= 9)
+                : (value.length >= 8)
                 ? value
-                : " ".repeat(9 - value.length) + value
+                : " ".repeat(8 - value.length) + value
         })
         
         let printSectionJapan: string = `${(elem.valueB / 100).toFixed(2)}M `;
@@ -846,9 +848,9 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
         let printSectionOther: string = `${(elem.valueE / 100).toFixed(2)}M `;
 
         let [printSectionJapanFixed, printSectionAmericasFixed, printSectionEuropeFixed, printSectionOtherFixed]: string[] = [printSectionJapan, printSectionAmericas, printSectionEurope, printSectionOther].map((value) => {
-            return (value.length >= 9)
+            return (value.length >= 8)
                 ? value 
-                : " ".repeat(9 - value.length) + value;
+                : " ".repeat(8 - value.length) + value;
         })
 
         let printLineCheck = sectionDifferenceYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN"); // checks the next element for whether it is NaN so that printLineLength does a closing line correctly
@@ -889,7 +891,7 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
             // console.log(sectionCumulativeYoYFixed.length);
             // console.log(array.length === sectionCumulativeYoYFixed.length);
             // console.log(array);
-            console.log(elem, index);
+            // console.log(elem, index);
             
             let printSectionCumulativeYoYJapan: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                 ? "NaN"
@@ -918,9 +920,9 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
             let [printSectionCumulativeYoYJapanFixed, printSectionCumulativeYoYAmericasFixed, printSectionCumulativeYoYEuropeFixed, printSectionCumulativeYoYOtherFixed]: string[] = [printSectionCumulativeYoYJapan, printSectionCumulativeYoYAmericas, printSectionCumulativeYoYEurope, printSectionCumulativeYoYOther].map((value) => {
                 return (value === "NaN")
                     ? value
-                    : (value.length >= 9)
+                    : (value.length >= 8)
                     ? value
-                    : " ".repeat(9 - value.length) + value
+                    : " ".repeat(8 - value.length) + value
             })
 
             let printCumulativeJapan: string = `${(elem.valueB / 100).toFixed(2)}M `;
@@ -932,9 +934,9 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
             let printCumulativeOther: string = `${(elem.valueE / 100).toFixed(2)}M `;
 
             let [printCumulativeJapanFixed, printCumulativeAmericasFixed, printCumulativeEuropeFixed, printCumulativeOtherFixed]: string[] = [printCumulativeJapan, printCumulativeAmericas, printCumulativeEurope, printCumulativeOther].map((value) => {
-            return (value.length >= 9)
+            return (value.length >= 8)
                 ? value 
-                : " ".repeat(9 - value.length) + value;
+                : " ".repeat(8 - value.length) + value;
         })
 
             let printLineCheck = sectionCumulativeYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN");
@@ -978,15 +980,15 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
                 : `${((sectionCumulative[currentQuarter-2].valueE + sectionCumulative[sectionCumulative.length-1].valueE) / 100 ).toFixed(2)}M `;
 
     let [ltdJapanFixed, ltdAmericasFixed, ltdEuropeFixed, ltdOtherFixed]: string[] = [ltdJapan, ltdAmericas, ltdEurope, ltdOther].map((value) => {
-            return (value.length >= 9)
+            return (value.length >= 8)
                 ? value 
-                : " ".repeat(9 - value.length) + value;
+                : " ".repeat(8 - value.length) + value;
             })
         
     // const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+";
     const ltdPrint: string = (sectionDifference[currentQuarter-1].valueE !== 0)
-            ? "| Life-To-Date|" + ltdJapanFixed + ltdAmericasFixed + ltdEuropeFixed + ltdOtherFixed + "|\n+" + "-".repeat(23) + "+"
-            : "| Life-To-Date|" + ltdJapanFixed + ltdAmericasFixed + ltdEuropeFixed + "|\n+" + "-".repeat(23) + "+";
+            ? header.units + ltdJapanFixed + ltdAmericasFixed + ltdEuropeFixed + ltdOtherFixed + "|\n+" + "-".repeat(23) + "+"
+            : header.units + ltdJapanFixed + ltdAmericasFixed + ltdEuropeFixed + "|\n+" + "-".repeat(23) + "+";
         
     const penultimateCheck = [sectionHeader, ...difference, ...cumulative, ltdPrint].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
 
@@ -1028,6 +1030,8 @@ test("printing section of Q4...", () => {
     })
 
     const yearOnYearCollection = [
+        quarterSwitchOGRegions,
+        quarterSwitchOGRegionsLastFY,
         nintendoSwitchOGRegionsFiltered,
         nintendoSwitchOGRegionsLastFY,
     ] as const;
@@ -1051,31 +1055,16 @@ test("printing section of Q4...", () => {
         })
     })
 
-    console.log(printSection(header, 
-        [
-            ...quarterSwitchOGJapan, 
-            ...quarterSwitchOGAmericas, 
-            ...quarterSwitchEurope, 
-            ...quarterSwitchOGOther
-        ], 
-        [
-            ...quarterSwitchOGJapanYoy, 
-            ...quarterSwitchOGAmericasYoy, 
-            ...quarterSwitchEuropeYoy, 
-            ...quarterSwitchOGOtherYoy
-        ], 
-        [
-            ...nintendoSwitchOGJapanCml, 
-            ...nintendoSwitchOGAmericasCml, 
-            ...nintendoSwitchOGEuropeCml, 
-            ...nintendoSwitchOGOtherCml
-        ], 
-        [
-            ...cumulativeSwitchOGJapanYoy, 
-            ...cumulativeSwitchOGAmericasYoy, 
-            ...cumulativeSwitchOGEuropeYoy, 
-            ...cumulativeSwitchOGOtherYoy
-        ], 
-        nintendoSwitchOGWW, currentQuarter));
-    
+    // console.log(quarterSwitchOGRegions);
+    // console.log(quarterSwitchOGRegionsYoy);
+    // console.log(nintendoSwitchOGRegionsCml);
+    // console.log(cumulativeSwitchOGRegionsYoy);
+
+    // console.log(printSection(header, quarterSwitchOGRegions, quarterSwitchOGRegionsYoy, nintendoSwitchOGRegionsCml, cumulativeSwitchOGRegionsYoy, currentQuarter));
+
+    const printOne = printSection(header, quarterSwitchOGRegions, quarterSwitchOGRegionsYoy, nintendoSwitchOGRegionsCml, cumulativeSwitchOGRegionsYoy, currentQuarter)
+
+    expect(printOne).toMatch(alteredTableDesign)
+   
+//| Japan  |The     | Europe | Other  |
 })
