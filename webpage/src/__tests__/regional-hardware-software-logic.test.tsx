@@ -1001,34 +1001,18 @@ test("printing section of Q4...", () => {
     const currentQuarter = 4;
 
     const quarterlyCollection = [
-        nintendoSwitchOGJapan,
-        nintendoSwitchOGJapanLastFY,
-        nintendoSwitchOGAmericas,
-        nintendoSwitchOGAmericasLastFY,
-        nintendoSwitchOGEurope,
-        nintendoSwitchOGEuropeLastFY,
-        nintendoSwitchOGOther,
-        nintendoSwitchOGOtherLastFY
+        nintendoSwitchOGRegions,
+        nintendoSwitchOGRegionsLastFY,
     ] as const;
 
     const filteredCollection = [
-        nintendoSwitchOGJapan,
-        nintendoSwitchOGAmericas,
-        nintendoSwitchOGEurope,
-        nintendoSwitchOGOther,
+        nintendoSwitchOGRegions,
     ] as const;
 
     const [
-        quarterSwitchOGJapan,
-        quarterSwitchOGJapanLastFY,
-        quarterSwitchOGAmericas,
-        quarterSwitchOGAmericasLastFY,
-        quarterSwitchEurope,
-        quarterSwitchEuropeLastFY,
-        quarterSwitchOGOther,
-        quarterSwitchOGOtherLastFY,
+        quarterSwitchOGRegions,
+        quarterSwitchOGRegionsLastFY,
     ] = quarterlyCollection.map((elem, index) => {
-
 
         return (index % 2 === 0)
                 ? quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filter out last fy cumulative
@@ -1036,10 +1020,7 @@ test("printing section of Q4...", () => {
     })
 
     const [
-        nintendoSwitchOGJapanFiltered,
-        nintendoSwitchOGAmericasFiltered,
-        nintendoSwitchOGEuropeFiltered,
-        nintendoSwitchOGOtherFiltered,
+        nintendoSwitchOGRegionsFiltered,
     ] = filteredCollection.map((elem) => {
         return elem.filter((secondElem, index, array) => {
             return index !== array.length-1
@@ -1047,33 +1028,13 @@ test("printing section of Q4...", () => {
     })
 
     const yearOnYearCollection = [
-        quarterSwitchOGJapan,
-        quarterSwitchOGJapanLastFY,
-        quarterSwitchOGAmericas,
-        quarterSwitchOGAmericasLastFY,
-        quarterSwitchEurope,
-        quarterSwitchEuropeLastFY,
-        quarterSwitchOGOther,
-        quarterSwitchOGOtherLastFY,
-        nintendoSwitchOGJapanFiltered,
-        nintendoSwitchOGJapanLastFY,
-        nintendoSwitchOGAmericasFiltered,
-        nintendoSwitchOGAmericasLastFY,
-        nintendoSwitchOGEuropeFiltered,
-        nintendoSwitchOGEuropeLastFY,
-        nintendoSwitchOGOtherFiltered,
-        nintendoSwitchOGOtherLastFY
+        nintendoSwitchOGRegionsFiltered,
+        nintendoSwitchOGRegionsLastFY,
     ] as const;
 
     const [
-        quarterSwitchOGJapanYoy,
-        quarterSwitchOGAmericasYoy,
-        quarterSwitchEuropeYoy,
-        quarterSwitchOGOtherYoy,
-        cumulativeSwitchOGJapanYoy,
-        cumulativeSwitchOGAmericasYoy,
-        cumulativeSwitchOGEuropeYoy,
-        cumulativeSwitchOGOtherYoy,
+        quarterSwitchOGRegionsYoy,
+        cumulativeSwitchOGRegionsYoy,
     ] = yearOnYearCollection.map((elem, index, array) => {
     return (index % 2 === 0)
             ? yearOnYearCalculation(array[index], array[index+1])
@@ -1081,15 +1042,9 @@ test("printing section of Q4...", () => {
     }).filter((elem) => elem.length !== 0) // filter out zero length arrays
 
     const [
-        nintendoSwitchOGJapanCml,
-        nintendoSwitchOGAmericasCml,
-        nintendoSwitchOGEuropeCml,
-        nintendoSwitchOGOtherCml,
+        nintendoSwitchOGRegionsCml,
     ] = [
-        nintendoSwitchOGJapan,
-        nintendoSwitchOGAmericas,
-        nintendoSwitchOGEurope,
-        nintendoSwitchOGOther,
+        nintendoSwitchOGRegions,
     ].map((elem) => {
         return elem.filter((secondElem, index, array) => {
             return index !== 0 // filter out first quarters
