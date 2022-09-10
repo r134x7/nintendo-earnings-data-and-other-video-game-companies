@@ -768,7 +768,7 @@ ${header.switchHeader}${header.fiscalYear}|
 // have to print... platform... quarters, cumulatives, ltd, units, yoy, ww%
 // would need to think of using concat() on the regions so that the issue of parameters is avoided... x.concat(y).concat(z) etc... then I should use the names for doing things...
 
-const printSection = (header: Header, sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], sectionGlobal: Section[], currentQuarter: number) => {
+const printSection = (header: Header, sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], currentQuarter: number) => {
 
     const sectionHeader: string = "+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + "| Japan  |The     | Europe | Other  |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
 
@@ -795,39 +795,62 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
         return // see if this works... it should return an empty array on quarter 1...
     })
 
-    console.log(sectionCumulativeYoYFixed);
-    
-
     const difference = sectionDifference.filter((elem, index, array) => {
-        return (currentQuarter === 1 && elem.value !== 0)
+        return (currentQuarter === 1 && elem.valueA !== 0)
             ? elem.period === " 1st Quarter "
-            : (currentQuarter === 2 && elem.value !== 0)
+            : (currentQuarter === 2 && elem.valueA !== 0)
             ? elem.period === " 1st Quarter " || elem.period === " 2nd Quarter "
-            : (currentQuarter === 3 && elem.value !== 0)
+            : (currentQuarter === 3 && elem.valueA !== 0)
             ? elem.period !== " 4th Quarter "
             : elem
     }).map((elem, index, array) => {
 
-
-        let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed[index].units === "NaN")
+        let printSectionDifferenceYoYJapan: string = (sectionDifferenceYoYFixed[index].units === "NaN")
             ? "NaN"
-            : (sectionDifferenceYoYFixed[index].value > 0)
-            ? `+${sectionDifferenceYoYFixed[index].value}% `
-            : `${sectionDifferenceYoYFixed[index].value}% `
+            : (sectionDifferenceYoYFixed[index].valueB > 0)
+            ? `+${sectionDifferenceYoYFixed[index].valueB}% `
+            : `${sectionDifferenceYoYFixed[index].valueB}% `
 
+        let printSectionDifferenceYoYAmericas: string = (sectionDifferenceYoYFixed[index].units === "NaN")
+            ? "NaN"
+            : (sectionDifferenceYoYFixed[index].valueC > 0)
+            ? `+${sectionDifferenceYoYFixed[index].valueC}% `
+            : `${sectionDifferenceYoYFixed[index].valueC}% `
+
+        let printSectionDifferenceYoYEurope: string = (sectionDifferenceYoYFixed[index].units === "NaN")
+            ? "NaN"
+            : (sectionDifferenceYoYFixed[index].valueD > 0)
+            ? `+${sectionDifferenceYoYFixed[index].valueD}% `
+            : `${sectionDifferenceYoYFixed[index].valueD}% `
+
+        let printSectionDifferenceYoYOther: string = (sectionDifferenceYoYFixed[index].units === "NaN")
+            ? "NaN"
+            : (sectionDifferenceYoYFixed[index].valueE > 0)
+            ? `+${sectionDifferenceYoYFixed[index].valueE}% `
+            : `${sectionDifferenceYoYFixed[index].valueE}% `
         
-        let printSectionDifferenceYoYFixed: string = (printSectionDifferenceYoY === "NaN")
-            ? printSectionDifferenceYoY
-            : (printSectionDifferenceYoY.length >= 9)
-            ? printSectionDifferenceYoY
-            : " ".repeat(9 - printSectionDifferenceYoY.length) + printSectionDifferenceYoY
+        let [printSectionDifferenceYoYJapanFixed, printSectionDifferenceYoYAmericasFixed, printSectionDifferenceYoYEuropeFixed, printSectionDifferenceYoYOtherFixed]: string[] = [printSectionDifferenceYoYJapan, printSectionDifferenceYoYAmericas, printSectionDifferenceYoYEurope, printSectionDifferenceYoYOther].map((value) => {
+            return (value === "NaN")
+            ? value
+            : (value.length >= 9)
+            ? value
+            : " ".repeat(9 - value.length) + value
+        })
+        
+        let printSectionJapan: string = `${(elem.valueB / 100).toFixed(2)}M `;
 
-        let printSection: string = `${(elem.value / 100).toFixed(2)}M `;
+        let printSectionAmericas: string = `${(elem.valueC / 100).toFixed(2)}M `;
 
-        let printSectionFixed: string = (printSection.length >= 9)
-            ? printSection
-            : " ".repeat(9 - printSection.length) + printSection;
- 
+        let printSectionEurope: string = `${(elem.valueD / 100).toFixed(2)}M `;
+
+        let printSectionOther: string = `${(elem.valueE / 100).toFixed(2)}M `;
+
+        let [printSectionJapanFixed, printSectionAmericasFixed, printSectionEuropeFixed, printSectionOtherFixed]: string[] = [printSectionJapan, printSectionAmericas, printSectionEurope, printSectionOther].map((value) => {
+            return (value.length >= 9)
+                ? value 
+                : " ".repeat(9 - value.length) + value;
+        })
+
         let printLineCheck = sectionDifferenceYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN"); // checks the next element for whether it is NaN so that printLineLength does a closing line correctly
 
         let printLineLength: number = 
