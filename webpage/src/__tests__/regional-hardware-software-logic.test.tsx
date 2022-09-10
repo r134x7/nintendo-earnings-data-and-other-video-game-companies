@@ -831,10 +831,10 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
         
         let [printSectionDifferenceYoYJapanFixed, printSectionDifferenceYoYAmericasFixed, printSectionDifferenceYoYEuropeFixed, printSectionDifferenceYoYOtherFixed]: string[] = [printSectionDifferenceYoYJapan, printSectionDifferenceYoYAmericas, printSectionDifferenceYoYEurope, printSectionDifferenceYoYOther].map((value) => {
             return (value === "NaN")
-            ? value
-            : (value.length >= 9)
-            ? value
-            : " ".repeat(9 - value.length) + value
+                ? value
+                : (value.length >= 9)
+                ? value
+                : " ".repeat(9 - value.length) + value
         })
         
         let printSectionJapan: string = `${(elem.valueB / 100).toFixed(2)}M `;
@@ -876,11 +876,11 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
     const cumulative = (currentQuarter >= 2)
         ? sectionCumulative.filter((elem, index, array) => {
             // Below: filtering out first quarter and last fy cml or else undefined type errors from arrays below not being equal lengths
-            return (currentQuarter === 2 && elem.value !== 0 && elem.period !== " Last FY Cumulative ")
+            return (currentQuarter === 2 && elem.valueA !== 0 && elem.period !== " Last FY Cumulative ")
             ? elem.cmlPeriod === " First Half  "
-            : (currentQuarter === 3 && elem.value !== 0 && elem.period !== " Last FY Cumulative ")
+            : (currentQuarter === 3 && elem.valueA !== 0 && elem.period !== " Last FY Cumulative ")
             ? elem.cmlPeriod === " First Half  " || elem.cmlPeriod === " First Three Quarters " 
-            : (currentQuarter === 4 && elem.value !== 0 && elem.period !== " Last FY Cumulative ")
+            : (currentQuarter === 4 && elem.valueA !== 0 && elem.period !== " Last FY Cumulative ")
             ? elem.cmlPeriod !== " 1st Quarter "
             : !elem // should return empty arrays...
         
@@ -891,40 +891,73 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
             // console.log(array);
             console.log(elem, index);
             
-            
-            
-            
-                
-            let printSectionCumulativeYoY: string = (sectionCumulativeYoYFixed[index].units === "NaN")
+            let printSectionCumulativeYoYJapan: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                 ? "NaN"
-                : (sectionCumulativeYoYFixed[index].value > 0)
-                ? `+${sectionCumulativeYoYFixed[index].value}% `
-                : `${sectionCumulativeYoYFixed[index].value}% `;
+                : (sectionCumulativeYoYFixed[index].valueB > 0)
+                ? `+${sectionCumulativeYoYFixed[index].valueB}% `
+                : `${sectionCumulativeYoYFixed[index].valueB}% `;
 
-            let printSectionCumulativeYoYFixed: string = (printSectionCumulativeYoY === "NaN")
-                ? printSectionCumulativeYoY
-                : (printSectionCumulativeYoY.length >= 9)
-                ? printSectionCumulativeYoY
-                : " ".repeat(9 - printSectionCumulativeYoY.length) + printSectionCumulativeYoY;
+            let printSectionCumulativeYoYAmericas: string = (sectionCumulativeYoYFixed[index].units === "NaN")
+                ? "NaN"
+                : (sectionCumulativeYoYFixed[index].valueC > 0)
+                ? `+${sectionCumulativeYoYFixed[index].valueC}% `
+                : `${sectionCumulativeYoYFixed[index].valueC}% `;
 
-            let printCumulative: string = `${(elem.value / 100).toFixed(2)}M `;
+            let printSectionCumulativeYoYEurope: string = (sectionCumulativeYoYFixed[index].units === "NaN")
+                ? "NaN"
+                : (sectionCumulativeYoYFixed[index].valueD > 0)
+                ? `+${sectionCumulativeYoYFixed[index].valueD}% `
+                : `${sectionCumulativeYoYFixed[index].valueD}% `;
 
-            let printCumulativeFixed: string = (printCumulative.length >= 9)
-                ? printCumulative
-                : " ".repeat(9 - printCumulative.length) + printCumulative;
+            let printSectionCumulativeYoYOther: string = (sectionCumulativeYoYFixed[index].units === "NaN")
+                ? "NaN"
+                : (sectionCumulativeYoYFixed[index].valueE > 0)
+                ? `+${sectionCumulativeYoYFixed[index].valueE}% `
+                : `${sectionCumulativeYoYFixed[index].valueE}% `;
+
+            let [printSectionCumulativeYoYJapanFixed, printSectionCumulativeYoYAmericasFixed, printSectionCumulativeYoYEuropeFixed, printSectionCumulativeYoYOtherFixed]: string[] = [printSectionCumulativeYoYJapan, printSectionCumulativeYoYAmericas, printSectionCumulativeYoYEurope, printSectionCumulativeYoYOther].map((value) => {
+                return (value === "NaN")
+                    ? value
+                    : (value.length >= 9)
+                    ? value
+                    : " ".repeat(9 - value.length) + value
+            })
+
+            let printCumulativeJapan: string = `${(elem.valueB / 100).toFixed(2)}M `;
+
+            let printCumulativeAmericas: string = `${(elem.valueC / 100).toFixed(2)}M `;
+
+            let printCumulativeEurope: string = `${(elem.valueD / 100).toFixed(2)}M `;
+
+            let printCumulativeOther: string = `${(elem.valueE / 100).toFixed(2)}M `;
+
+            let [printCumulativeJapanFixed, printCumulativeAmericasFixed, printCumulativeEuropeFixed, printCumulativeOtherFixed]: string[] = [printCumulativeJapan, printCumulativeAmericas, printCumulativeEurope, printCumulativeOther].map((value) => {
+            return (value.length >= 9)
+                ? value 
+                : " ".repeat(9 - value.length) + value;
+        })
 
             let printLineCheck = sectionCumulativeYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN");
 
-            let printLineLength: number = 
-            (printLineCheck.length === 0 && printSectionCumulativeYoY === "NaN")
-                ? 23
-                : 33    
+            // let printLineLength: number = 
+            // (printLineCheck.length === 0 && printSectionCumulativeYoY === "NaN")
+            //     ? 23
+            //     : 33    
 
-            let printLine: string = "\n+" + "-".repeat(printLineLength) + "+"
+            let printLine: string = "\n+" + "-".repeat(33) + "+"
 
-            return (printSectionCumulativeYoYFixed === "NaN")
-                ?  "|" + elem.cmlPeriod + "|" + printCumulativeFixed + "|" + printLine
-                : "|" + elem.cmlPeriod + "|" + printCumulativeFixed + "|" + printSectionCumulativeYoYFixed + "|" + printLine
+            // return (printSectionCumulativeYoYFixed === "NaN")
+            //     ?  "|" + elem.cmlPeriod + "|" + printCumulativeFixed + "|" + printLine
+            //     : "|" + elem.cmlPeriod + "|" + printCumulativeFixed + "|" + printSectionCumulativeYoYFixed + "|" + printLine
+
+
+            return (printSectionCumulativeYoYJapanFixed === "NaN" && elem.valueE !== 0)
+                    ? header.units + printCumulativeJapanFixed + "|" + printCumulativeAmericasFixed + "|" + printCumulativeEuropeFixed + "|" + printCumulativeOtherFixed + "|" 
+                    : (printSectionCumulativeYoYJapanFixed === "NaN" && elem.valueE === 0)
+                    ? header.units + printCumulativeJapanFixed + "|" + printCumulativeAmericasFixed + "|" + printCumulativeEuropeFixed + "|"
+                    : (elem.valueE !== 0)
+                    ? header.units + printCumulativeJapanFixed + "|" + printCumulativeAmericasFixed + "|" + printCumulativeEuropeFixed + "|" + printCumulativeOtherFixed + "|" + header.yearOnYear + printSectionCumulativeYoYJapanFixed + "|" + printSectionCumulativeYoYAmericasFixed + "|" + printSectionCumulativeYoYEuropeFixed + "|" + printSectionCumulativeYoYOtherFixed + "|" + printLine
+                    : header.units + printCumulativeJapanFixed + "|" + printCumulativeAmericasFixed + "|" + printCumulativeEuropeFixed + "|" + header.yearOnYear + printSectionCumulativeYoYJapanFixed + "|" + printSectionCumulativeYoYAmericasFixed + "|" + printSectionCumulativeYoYEuropeFixed + "|" + printLine
             })
             : [];
 
