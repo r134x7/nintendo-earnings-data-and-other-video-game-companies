@@ -634,16 +634,35 @@ const alteredTableDesign =
 | WW%    | 22.50% | 38.44% | 26.54% | 12.51% |
 +--------------------------------------------+`;
 
-function quarterlyCalculation(quarters: Section[]) {
+// function quarterlyCalculation(quarters: Section[]) {
         
-    const calc: Section[] = quarters.map((elem, index, array) => {
-        return (index === 0 || quarters[index].period === " Last FY Cumulative ") // 1st Quarter or last FY number
-                ? elem
-                : {...elem, value: elem.value - array[index-1].value}
-    })
+//     const calc: Section[] = quarters.map((elem, index, array) => {
+//         return (index === 0 || quarters[index].period === " Last FY Cumulative ") // 1st Quarter or last FY number
+//                 ? elem
+//                 : {...elem, value: elem.value - array[index-1].value}
+//     })
     
-    return calc
+//     return calc
+// }
+
+function quarterlyCalculation(quarters: SectionRegions[]) {
+       
+   const calc: SectionRegions[] = quarters.map((elem, index, array) => {
+    //    return (elem.period !== " 1st Quarter  " && elem.period !== " Last FY Total ")
+       return (elem.period !== " 1st Quarter " && elem.period !== " Last FY Cumulative ")
+               ? {
+                ...elem, 
+                valueA: Number((elem.valueA - array[index-1].valueA).toFixed(2)),
+                valueB: Number((elem.valueB - array[index-1].valueB).toFixed(2)),
+                valueC: Number((elem.valueC - array[index-1].valueC).toFixed(2)),
+                valueD: Number((elem.valueD - array[index-1].valueD).toFixed(2)),
+                }
+               : elem
+   })
+   
+   return calc
 }
+
 
 function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
 
