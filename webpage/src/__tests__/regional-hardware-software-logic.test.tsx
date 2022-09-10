@@ -15,7 +15,7 @@ export type Section = {
     regionA: "Global",
     regionB: "Japan", 
     regionC: "The Americas",
-    regionD: "Europe",
+    regionD: "Europe" | "Other",
     regionE: "Other",
     valueA: number,
     valueB: number,
@@ -1009,7 +1009,7 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
 
 test("printing section of Q4...", () => {
 
-    const currentQuarter = 4;
+    const currentQuarter = 1;
 
     const quarterlyCollection = [
         nintendoSwitchOGRegions,
