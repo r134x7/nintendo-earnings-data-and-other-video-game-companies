@@ -961,15 +961,32 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
             })
             : [];
 
-    const ltd: string = (currentQuarter === 1) 
-                ? `${((sectionDifference[currentQuarter-1].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M `
-                : `${((sectionCumulative[currentQuarter-2].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M `;
+    const ltdJapan: string = (currentQuarter === 1) 
+                ? `${((sectionDifference[currentQuarter-1].valueB + sectionCumulative[sectionCumulative.length-1].valueB) / 100 ).toFixed(2)}M `
+                : `${((sectionCumulative[currentQuarter-2].valueB + sectionCumulative[sectionCumulative.length-1].valueB) / 100 ).toFixed(2)}M `;
 
-    const ltdFixed: string = (ltd.length >= 9)
-                ? ltd
-                : " ".repeat(9 - ltd.length) + ltd;
+    const ltdAmericas: string = (currentQuarter === 1) 
+                ? `${((sectionDifference[currentQuarter-1].valueC + sectionCumulative[sectionCumulative.length-1].valueC) / 100 ).toFixed(2)}M `
+                : `${((sectionCumulative[currentQuarter-2].valueC + sectionCumulative[sectionCumulative.length-1].valueC) / 100 ).toFixed(2)}M `;
+
+    const ltdEurope: string = (currentQuarter === 1) 
+                ? `${((sectionDifference[currentQuarter-1].valueD + sectionCumulative[sectionCumulative.length-1].valueD) / 100 ).toFixed(2)}M `
+                : `${((sectionCumulative[currentQuarter-2].valueD + sectionCumulative[sectionCumulative.length-1].valueD) / 100 ).toFixed(2)}M `;
+
+    const ltdOther: string = (currentQuarter === 1) 
+                ? `${((sectionDifference[currentQuarter-1].valueE + sectionCumulative[sectionCumulative.length-1].valueE) / 100 ).toFixed(2)}M `
+                : `${((sectionCumulative[currentQuarter-2].valueE + sectionCumulative[sectionCumulative.length-1].valueE) / 100 ).toFixed(2)}M `;
+
+    let [ltdJapanFixed, ltdAmericasFixed, ltdEuropeFixed, ltdOtherFixed]: string[] = [ltdJapan, ltdAmericas, ltdEurope, ltdOther].map((value) => {
+            return (value.length >= 9)
+                ? value 
+                : " ".repeat(9 - value.length) + value;
+            })
         
-    const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+";
+    // const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+";
+    const ltdPrint: string = (sectionDifference[currentQuarter-1].valueE !== 0)
+            ? "| Life-To-Date|" + ltdJapanFixed + ltdAmericasFixed + ltdEuropeFixed + ltdOtherFixed + "|\n+" + "-".repeat(23) + "+"
+            : "| Life-To-Date|" + ltdJapanFixed + ltdAmericasFixed + ltdEuropeFixed + "|\n+" + "-".repeat(23) + "+";
         
     const penultimateCheck = [sectionHeader, ...difference, ...cumulative, ltdPrint].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
 
