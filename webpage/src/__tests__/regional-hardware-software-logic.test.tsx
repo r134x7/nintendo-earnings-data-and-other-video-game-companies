@@ -703,35 +703,32 @@ function quarterlyCalculation(quarters: Section[]) {
 //        return calc
 //     }
 
-function yearOnYearCalculation(thisFY: SectionRegions[], lastFY: SectionRegions[]) {
+function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
 
-        const calc: SectionRegions[] = thisFY.map((elem, index) => {
-        // this doesn't work if one value is a different sign or is not zero... 
+        const calc: Section[] = thisFY.map((elem, index) => {
+        // global number valueA helps to filter down
             return (lastFY[index].valueA < 0)
                     ? {
                         ...elem, 
                         units: "percentage", 
-                        valueA: Number(
-                        ((((elem.valueA / lastFY[index].valueA) -1)* -1) * 100).toFixed(2)),
                         valueB: Number(
                         ((((elem.valueB / lastFY[index].valueB) -1)* -1) * 100).toFixed(2)),
                         valueC: Number(
                         ((((elem.valueC / lastFY[index].valueC) -1)* -1) * 100).toFixed(2)),
                         valueD: Number(
                         ((((elem.valueD / lastFY[index].valueD) -1)* -1) * 100).toFixed(2)),
+                        valueE: Number(
+                        ((((elem.valueE / lastFY[index].valueE) -1)* -1) * 100).toFixed(2)),
                       }
                     : (lastFY[index].valueA === 0)
                     ? {
                         ...elem, 
                         units: "NaN", 
                     }
-                    : (lastFY[index].valueD !== 0)
+                    : (lastFY[index].valueE !== 0)
                     ? {
                         ...elem, 
                         units: "percentage", 
-                        valueA: Number(
-                        (((elem.valueA / lastFY[index].valueA) -1) * 100).toFixed(2)
-                        ),
                         valueB: Number(
                         (((elem.valueB / lastFY[index].valueB) -1) * 100).toFixed(2)
                         ),
@@ -741,18 +738,21 @@ function yearOnYearCalculation(thisFY: SectionRegions[], lastFY: SectionRegions[
                         valueD: Number(
                         (((elem.valueD / lastFY[index].valueD) -1) * 100).toFixed(2)
                         ),
+                        valueE: Number(
+                        (((elem.valueE / lastFY[index].valueE) -1) * 100).toFixed(2)
+                        ),
                       }
                     : {
                         ...elem, 
                         units: "percentage", 
-                        valueA: Number(
-                        (((elem.valueA / lastFY[index].valueA) -1) * 100).toFixed(2)
-                        ),
                         valueB: Number(
                         (((elem.valueB / lastFY[index].valueB) -1) * 100).toFixed(2)
                         ),
                         valueC: Number(
                         (((elem.valueC / lastFY[index].valueC) -1) * 100).toFixed(2)
+                        ),
+                        valueD: Number(
+                        (((elem.valueD / lastFY[index].valueD) -1) * 100).toFixed(2)
                         ),
                       }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
         })
