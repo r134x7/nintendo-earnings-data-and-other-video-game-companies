@@ -1,3 +1,5 @@
+import { current } from "@reduxjs/toolkit"
+
 export type Section = {
     units: "units" | "percentage" | "currency" | "NaN" ,
     period: " 1st Quarter " | " 2nd Quarter " | " 3rd Quarter " | " 4th Quarter " | " Last FY Cumulative "
@@ -661,4 +663,135 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
 
         return penultimateCheck
 
+
+
 }
+
+test("printing section of Q4...", () => {
+
+    const currentQuarter = 4;
+
+    const quarterlyCollection = [
+        nintendoSwitchOGJapan,
+        nintendoSwitchOGJapanLastFY,
+        nintendoSwitchOGAmericas,
+        nintendoSwitchOGAmericasLastFY,
+        nintendoSwitchOGEurope,
+        nintendoSwitchOGEuropeLastFY,
+        nintendoSwitchOGOther,
+        nintendoSwitchOGOtherLastFY
+    ] as const;
+
+    const filteredCollection = [
+        nintendoSwitchOGJapan,
+        nintendoSwitchOGAmericas,
+        nintendoSwitchOGEurope,
+        nintendoSwitchOGOther,
+    ] as const;
+
+    const [
+        quarterSwitchOGJapan,
+        quarterSwitchOGJapanLastFY,
+        quarterSwitchOGAmericas,
+        quarterSwitchOGAmericasLastFY,
+        quarterSwitchEurope,
+        quarterSwitchEuropeLastFY,
+        quarterSwitchOGOther,
+        quarterSwitchOGOtherLastFY,
+    ] = quarterlyCollection.map((elem, index) => {
+
+
+        return (index % 2 === 0)
+                ? quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filter out last fy cumulative
+                : quarterlyCalculation(elem) // last FY numbers...
+    })
+
+    const [
+        nintendoSwitchOGJapanFiltered,
+        nintendoSwitchOGAmericasFiltered,
+        nintendoSwitchOGEuropeFiltered,
+        nintendoSwitchOGOtherFiltered,
+    ] = filteredCollection.map((elem) => {
+        return elem.filter((secondElem, index, array) => {
+            return index !== array.length-1
+        })
+    })
+
+    const yearOnYearCollection = [
+        quarterSwitchOGJapan,
+        quarterSwitchOGJapanLastFY,
+        quarterSwitchOGAmericas,
+        quarterSwitchOGAmericasLastFY,
+        quarterSwitchEurope,
+        quarterSwitchEuropeLastFY,
+        quarterSwitchOGOther,
+        quarterSwitchOGOtherLastFY,
+        nintendoSwitchOGJapanFiltered,
+        nintendoSwitchOGJapanLastFY,
+        nintendoSwitchOGAmericasFiltered,
+        nintendoSwitchOGAmericasLastFY,
+        nintendoSwitchOGEuropeFiltered,
+        nintendoSwitchOGEuropeLastFY,
+        nintendoSwitchOGOtherFiltered,
+        nintendoSwitchOGOtherLastFY
+    ] as const;
+
+    const [
+        quarterSwitchOGJapanYoy,
+        quarterSwitchOGAmericasYoy,
+        quarterSwitchEuropeYoy,
+        quarterSwitchOGOtherYoy,
+        cumulativeSwitchOGJapanYoy,
+        cumulativeSwitchOGAmericasYoy,
+        cumulativeSwitchOGEuropeYoy,
+        cumulativeSwitchOGOtherYoy,
+    ] = yearOnYearCollection.map((elem, index, array) => {
+    return (index % 2 === 0)
+            ? yearOnYearCalculation(array[index], array[index+1])
+            : [];
+    }).filter((elem) => elem.length !== 0) // filter out zero length arrays
+
+    const [
+        nintendoSwitchOGJapanCml,
+        nintendoSwitchOGAmericasCml,
+        nintendoSwitchOGEuropeCml,
+        nintendoSwitchOGOtherCml,
+    ] = [
+        nintendoSwitchOGJapan,
+        nintendoSwitchOGAmericas,
+        nintendoSwitchOGEurope,
+        nintendoSwitchOGOther,
+    ].map((elem) => {
+        return elem.filter((secondElem, index, array) => {
+            return index !== 0 // filter out first quarters
+        })
+    })
+
+    console.log(printSection(header, 
+        [
+            ...quarterSwitchOGJapan, 
+            ...quarterSwitchOGAmericas, 
+            ...quarterSwitchEurope, 
+            ...quarterSwitchOGOther
+        ], 
+        [
+            ...quarterSwitchOGJapanYoy, 
+            ...quarterSwitchOGAmericasYoy, 
+            ...quarterSwitchEuropeYoy, 
+            ...quarterSwitchOGOtherYoy
+        ], 
+        [
+            ...nintendoSwitchOGJapanCml, 
+            ...nintendoSwitchOGAmericasCml, 
+            ...nintendoSwitchOGEuropeCml, 
+            ...nintendoSwitchOGOtherCml
+        ], 
+        [
+            ...cumulativeSwitchOGJapanYoy, 
+            ...cumulativeSwitchOGAmericasYoy, 
+            ...cumulativeSwitchOGEuropeYoy, 
+            ...cumulativeSwitchOGOtherYoy
+        ], 
+        nintendoSwitchOGWW, currentQuarter));
+    
+})
