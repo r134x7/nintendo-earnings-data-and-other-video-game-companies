@@ -1,5 +1,3 @@
-import { current } from "@reduxjs/toolkit"
-
 export type Section = {
     units: "units" | "percentage" | "currency" | "NaN" ,
     period: " 1st Quarter " | " 2nd Quarter " | " 3rd Quarter " | " 4th Quarter " | " Last FY Cumulative "
@@ -7,6 +5,21 @@ export type Section = {
     name: string,
     region: "Japan" | "The Americas" | "Europe" | "Other" | "Global"
     value: number,
+}
+
+export type SectionRegions = {
+    units: "units" | "percentage" | "currency" | "NaN" ,
+    period: " 1st Quarter " | " 2nd Quarter " | " 3rd Quarter " | " 4th Quarter " | " Last FY Cumulative "
+    cmlPeriod: " 1st Quarter " | " First Half  " | " First Three Quarters " | "Cml. ",
+    name: string,
+    regionA: "Japan", 
+    regionB: "The Americas",
+    regionC: "Europe",
+    regionD: "Other",
+    valueA: number,
+    valueB: number,
+    valueC: number,
+    valueD: number,
 }
 
 export type Header = {
@@ -67,6 +80,138 @@ const nintendoSwitchOGWW: Section[] = [
         cmlPeriod: "Cml. ",
         units: "units",
         value: 500,
+    },
+]
+
+const nintendoSwitchOGRegions: SectionRegions[] = [
+    {
+        name: " Switch ",
+        period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
+        units: "units",
+        regionA: "Japan",
+        valueA: 100,
+        regionB: "The Americas",
+        valueB: 100,
+        regionC: "Europe",
+        valueC: 100,
+        regionD: "Other",
+        valueD: 100,
+    },
+    {
+        name: " Switch ",
+        period: " 2nd Quarter ", 
+        cmlPeriod: " First Half  ",
+        units: "units",
+        regionA: "Japan",
+        valueA: 200,
+        regionB: "The Americas",
+        valueB: 200,
+        regionC: "Europe",
+        valueC: 200,
+        regionD: "Other",
+        valueD: 200,
+    },
+    {
+        name: " Switch ",
+        period: " 3rd Quarter ",
+        cmlPeriod: " First Three Quarters ",
+        units: "units",
+        regionA: "Japan",
+        valueA: 300,
+        regionB: "The Americas",
+        valueB: 300,
+        regionC: "Europe",
+        valueC: 300,
+        regionD: "Other",
+        valueD: 300,
+    },
+    {
+        name: " Switch ",
+        period: " 4th Quarter ",
+        cmlPeriod: "Cml. ",
+        units: "units",
+        regionA: "Japan",
+        valueA: 400,
+        regionB: "The Americas",
+        valueB: 400,
+        regionC: "Europe",
+        valueC: 400,
+        regionD: "Other",
+        valueD: 400,
+    },
+    {
+        name: " Switch ",
+        period: " Last FY Cumulative ",
+        cmlPeriod: "Cml. ",
+        units: "units",
+        regionA: "Japan",
+        valueA: 100,
+        regionB: "The Americas",
+        valueB: 100,
+        regionC: "Europe",
+        valueC: 100,
+        regionD: "Other",
+        valueD: 100,
+    },
+]
+
+const nintendoSwitchOGRegionsLastFY: SectionRegions[] = [
+    {
+        name: " Switch ",
+        period: " 1st Quarter ",
+        cmlPeriod: " 1st Quarter ",
+        units: "units",
+        regionA: "Japan",
+        valueA: 10,
+        regionB: "The Americas",
+        valueB: 10,
+        regionC: "Europe",
+        valueC: 10,
+        regionD: "Other",
+        valueD: 10,
+    },
+    {
+        name: " Switch ",
+        period: " 2nd Quarter ", 
+        cmlPeriod: " First Half  ",
+        units: "units",
+        regionA: "Japan",
+        valueA: 20,
+        regionB: "The Americas",
+        valueB: 20,
+        regionC: "Europe",
+        valueC: 20,
+        regionD: "Other",
+        valueD: 20,
+    },
+    {
+        name: " Switch ",
+        period: " 3rd Quarter ",
+        cmlPeriod: " First Three Quarters ",
+        units: "units",
+        regionA: "Japan",
+        valueA: 30,
+        regionB: "The Americas",
+        valueB: 30,
+        regionC: "Europe",
+        valueC: 30,
+        regionD: "Other",
+        valueD: 30,
+    },
+    {
+        name: " Switch ",
+        period: " 4th Quarter ",
+        cmlPeriod: "Cml. ",
+        units: "units",
+        regionA: "Japan",
+        valueA: 40,
+        regionB: "The Americas",
+        valueB: 40,
+        regionC: "Europe",
+        valueC: 40,
+        regionD: "Other",
+        valueD: 40,
     },
 ]
 
@@ -620,8 +765,10 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
         }).map((elem, index, array) => {
             // console.log(array.length);
             // console.log(sectionCumulativeYoYFixed.length);
-            console.log(array.length === sectionCumulativeYoYFixed.length);
+            // console.log(array.length === sectionCumulativeYoYFixed.length);
             // console.log(array);
+            console.log(elem, index);
+            
             
             
             
@@ -630,13 +777,13 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
                 ? "NaN"
                 : (sectionCumulativeYoYFixed[index].value > 0)
                 ? `+${sectionCumulativeYoYFixed[index].value}% `
-                : `${sectionCumulativeYoYFixed[index].value}% `
+                : `${sectionCumulativeYoYFixed[index].value}% `;
 
             let printSectionCumulativeYoYFixed: string = (printSectionCumulativeYoY === "NaN")
                 ? printSectionCumulativeYoY
                 : (printSectionCumulativeYoY.length >= 9)
                 ? printSectionCumulativeYoY
-                : " ".repeat(9 - printSectionCumulativeYoY.length) + printSectionCumulativeYoY
+                : " ".repeat(9 - printSectionCumulativeYoY.length) + printSectionCumulativeYoY;
 
             let printCumulative: string = `${(elem.value / 100).toFixed(2)}M `;
 
@@ -657,21 +804,21 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
                 ?  "|" + elem.cmlPeriod + "|" + printCumulativeFixed + "|" + printLine
                 : "|" + elem.cmlPeriod + "|" + printCumulativeFixed + "|" + printSectionCumulativeYoYFixed + "|" + printLine
             })
-            : []
+            : [];
 
-        const ltd: string = (currentQuarter === 1) 
+    const ltd: string = (currentQuarter === 1) 
                 ? `${((sectionDifference[currentQuarter-1].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M `
-                : `${((sectionCumulative[currentQuarter-2].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M `
+                : `${((sectionCumulative[currentQuarter-2].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M `;
 
-        const ltdFixed: string = (ltd.length >= 9)
+    const ltdFixed: string = (ltd.length >= 9)
                 ? ltd
-                : " ".repeat(9 - ltd.length) + ltd
+                : " ".repeat(9 - ltd.length) + ltd;
         
-        const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+"
+    const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+";
         
-        const penultimateCheck = [sectionHeader, ...difference, ...cumulative, ltdPrint].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
+    const penultimateCheck = [sectionHeader, ...difference, ...cumulative, ltdPrint].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
 
-        return penultimateCheck
+        return penultimateCheck;
 
 
 
