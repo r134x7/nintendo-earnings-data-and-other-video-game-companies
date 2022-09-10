@@ -116,7 +116,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
 
     const cumulative = (currentQuarter >= 2)
             ? sectionCumulative.filter((elem, index, array) => 
-                currentQuarter >= 2 && index < currentQuarter -1 && array[index].value !== 0
+                currentQuarter >= 2 && index < currentQuarter -1 && array[index].value !== 0 // filtering out first quarter and last fy cml or else undefined type errors from arrays below not being equal lengths
             ).map((elem, index, array) => {
                 
                 // let printSectionCumulativeYoY: string = (sectionCumulativeYoYFixed.length === 0)

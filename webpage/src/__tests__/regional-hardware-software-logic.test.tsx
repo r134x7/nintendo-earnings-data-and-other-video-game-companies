@@ -555,6 +555,9 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
         return // see if this works... it should return an empty array on quarter 1...
     })
 
+    console.log(sectionCumulativeYoYFixed);
+    
+
     const difference = sectionDifference.filter((elem, index, array) => {
         return (currentQuarter === 1 && elem.value !== 0)
             ? elem.period === " 1st Quarter "
@@ -605,16 +608,23 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
 
     const cumulative = (currentQuarter >= 2)
         ? sectionCumulative.filter((elem, index, array) => {
-
-            return (currentQuarter === 2 && elem.value !== 0)
+            // Below: filtering out first quarter and last fy cml or else undefined type errors from arrays below not being equal lengths
+            return (currentQuarter === 2 && elem.value !== 0 && elem.period !== " Last FY Cumulative ")
             ? elem.cmlPeriod === " First Half  "
-            : (currentQuarter === 3 && elem.value !== 0)
+            : (currentQuarter === 3 && elem.value !== 0 && elem.period !== " Last FY Cumulative ")
             ? elem.cmlPeriod === " First Half  " || elem.cmlPeriod === " First Three Quarters " 
-            : (currentQuarter === 4 && elem.value !== 0)
+            : (currentQuarter === 4 && elem.value !== 0 && elem.period !== " Last FY Cumulative ")
             ? elem.cmlPeriod !== " 1st Quarter "
             : !elem // should return empty arrays...
         
         }).map((elem, index, array) => {
+            // console.log(array.length);
+            // console.log(sectionCumulativeYoYFixed.length);
+            console.log(array.length === sectionCumulativeYoYFixed.length);
+            // console.log(array);
+            
+            
+            
                 
             let printSectionCumulativeYoY: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                 ? "NaN"
