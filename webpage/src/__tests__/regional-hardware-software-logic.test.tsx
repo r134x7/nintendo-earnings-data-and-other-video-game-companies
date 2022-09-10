@@ -853,19 +853,23 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
 
         let printLineCheck = sectionDifferenceYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN"); // checks the next element for whether it is NaN so that printLineLength does a closing line correctly
 
-        let printLineLength: number = 
-            // (printSectionDifferenceYoY === "NaN")
-        (printLineCheck.length === 0 && printSectionDifferenceYoY === "NaN")
-            ? 23
-            : 33    
+        // let printLineLength: number = 
+        //     // (printSectionDifferenceYoY === "NaN")
+        // (printLineCheck.length === 0 && printSectionDifferenceYoY === "NaN")
+        //     ? 23
+        //     : 33    
 
         let printLine: string = (array[index] === array.at(-1))
-            ? "\n+" + "=".repeat(printLineLength) + "+"
-            : "\n+" + "-".repeat(printLineLength) + "+"
+            ? "\n+" + "=".repeat(33) + "+"
+            : "\n+" + "-".repeat(33) + "+"
 
-        return (printSectionDifferenceYoYFixed === "NaN")
-                ? "|" + elem.period + "|" + printSectionFixed + "|" + printLine
-                : "|" + elem.period + "|" + printSectionFixed + "|" + printSectionDifferenceYoYFixed + "|" + printLine
+        return (printSectionDifferenceYoYJapanFixed === "NaN" && elem.valueE !== 0)
+                ? header.units + printSectionJapanFixed + "|" + printSectionAmericasFixed + "|" + printSectionEuropeFixed + "|" + printSectionOtherFixed + "|" 
+                : (printSectionDifferenceYoYJapanFixed === "NaN" && elem.valueE === 0)
+                ? header.units + printSectionJapanFixed + "|" + printSectionAmericasFixed + "|" + printSectionEuropeFixed + "|"
+                : (elem.valueE !== 0)
+                ? header.units + printSectionJapanFixed + "|" + printSectionAmericasFixed + "|" + printSectionEuropeFixed + "|" + printSectionOtherFixed + "|" + header.yearOnYear + printSectionDifferenceYoYJapanFixed + "|" + printSectionDifferenceYoYAmericasFixed + "|" + printSectionDifferenceYoYEuropeFixed + "|" + printSectionDifferenceYoYOtherFixed + "|" + printLine
+                : header.units + printSectionJapanFixed + "|" + printSectionAmericasFixed + "|" + printSectionEuropeFixed + "|" + header.yearOnYear + printSectionDifferenceYoYJapanFixed + "|" + printSectionDifferenceYoYAmericasFixed + "|" + printSectionDifferenceYoYEuropeFixed + "|" + printLine
             
     })
 
