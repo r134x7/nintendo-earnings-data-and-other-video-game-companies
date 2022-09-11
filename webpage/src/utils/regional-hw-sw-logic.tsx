@@ -136,13 +136,13 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
     })
 
     const difference = sectionDifference.filter((elem, index, array) => {
-        return (currentQuarter === 1 && elem.valueA !== 0)
-            ? elem.period === " 1st Quarter "
-            : (currentQuarter === 2 && elem.valueA !== 0)
-            ? elem.period === " 1st Quarter " || elem.period === " 2nd Quarter "
-            : (currentQuarter === 3 && elem.valueA !== 0)
-            ? elem.period !== " 4th Quarter "
-            : elem
+        return (currentQuarter === 1)
+            ? elem.period === " 1st Quarter " && elem.valueA !== 0 
+            : (currentQuarter === 2 )
+            ? (elem.period === " 1st Quarter " && elem.valueA !== 0) || (elem.period === " 2nd Quarter " && elem.valueA !== 0)
+            : (currentQuarter === 3)
+            ? elem.period !== " 4th Quarter " && elem.valueA !== 0
+            : elem.valueA !== 0
     }).map((elem, index, array) => {
 
         let printSectionDifferenceWWPerJapan: string = `${((elem.valueB / elem.valueA) * 100).toFixed(2)}% `;
@@ -233,12 +233,12 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
     const cumulative = (currentQuarter >= 2)
         ? sectionCumulative.filter((elem, index, array) => {
             // Below: filtering out first quarter and last fy cml or else undefined type errors from arrays below not being equal lengths
-            return (currentQuarter === 2 && elem.valueA !== 0 && elem.period !== " Last FY Cumulative ")
-            ? elem.cmlPeriod === " First Half  "
-            : (currentQuarter === 3 && elem.valueA !== 0 && elem.period !== " Last FY Cumulative ")
-            ? elem.cmlPeriod === " First Half  " || elem.cmlPeriod === " First Three Quarters " 
-            : (currentQuarter === 4 && elem.valueA !== 0 && elem.period !== " Last FY Cumulative ")
-            ? elem.cmlPeriod !== " 1st Quarter "
+            return (currentQuarter === 2 && elem.period !== " Last FY Cumulative ")
+            ? elem.cmlPeriod === " First Half  " && elem.valueA !== 0
+            : (currentQuarter === 3 && elem.period !== " Last FY Cumulative ")
+            ? (elem.cmlPeriod === " First Half  " && elem.valueA !== 0) || (elem.cmlPeriod === " First Three Quarters " && elem.valueA !== 0) 
+            : (currentQuarter === 4 && elem.period !== " Last FY Cumulative ")
+            ? elem.cmlPeriod !== " 1st Quarter " && elem.valueA !== 0
             : !elem // should return empty arrays...
         
         }).map((elem, index, array) => {
