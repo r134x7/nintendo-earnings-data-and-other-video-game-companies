@@ -108,8 +108,8 @@ ${header.switchHeader}${header.fiscalYear}|
 export const printSection = (header: Header, sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], currentQuarter: number) => {
 
     const sectionHeader: string = (sectionDifference[3].valueE !== 0) // 4th quarter [3] is where a non-zero number is most likely to occur 
-        ? "+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + "| Japan  |The     | Europe | Other  |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
-        : "+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + "| Japan  |The     | Other  |        |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
+        ? "+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + " ".repeat(44 - sectionDifference[0].name.length) + "|\n+" + "-".repeat(44) + "+\n|        | Japan  |The     | Europe | Other  |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
+        : "+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + " ".repeat(44 - sectionDifference[0].name.length) + "|\n+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + "| Japan  |The     | Other  |        |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
 
     const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem) => {
         return (currentQuarter === 1)
