@@ -76,7 +76,7 @@ function App() {
                   mr="xl"
                 />
               </MediaQuery>
-                <Text>ggx2ac and the archives of Nintendo earnings data and other video game companies</Text>
+                <Text>ggx2ac + archives: Nintendo earnings data and other video game companies</Text>
                 <Button aria-label='Enable Dark or Light theme' leftIcon={(colorScheme === 'dark') 
                                   ? <Sun size={24} strokeWidth={2} color={'yellow'} /> 
                                   : <Moon size={24} strokeWidth={2} color={'#40bfb2'} />} 
