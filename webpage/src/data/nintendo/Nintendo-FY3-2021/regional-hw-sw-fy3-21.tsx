@@ -238,7 +238,7 @@ const nintendoSwitchLiteRegions: Section[] = [
         regionD: "Europe", 
         valueD: 134,
         regionE: "Other",
-        valueE: 53,
+        valueE: 52, // adjusted by -1 to be consistent with earnings release
     },
 ]
 
