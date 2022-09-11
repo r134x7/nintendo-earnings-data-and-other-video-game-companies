@@ -310,7 +310,7 @@ const nintendoSwitchSoftwareRegionsLastFY: Section[] = [
 ]
 
 const header: Header = {
-    switchHeader: "| Nintendo Switch Regional Data |",
+    switchHeader: "| Nintendo Switch Regional Data   |",
     fiscalYear: " FY3/2018 ",
     fiscalYearCml: " FY3/18 Cumulative ",
     globalPercentage: "| Global%|",

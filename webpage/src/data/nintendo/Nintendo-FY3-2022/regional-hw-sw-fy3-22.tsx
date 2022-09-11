@@ -86,7 +86,7 @@ const nintendoSwitchOGRegions: Section[] = [
         regionC: "The Americas", 
         valueC: 2686,
         regionD: "Europe", 
-        valueD: 1810,
+        valueD: 1811, // adjusted by +1 to be consistent with earnings release
         regionE: "Other",
         valueE: 870,
     },
@@ -760,7 +760,7 @@ const nintendoSwitchSoftwareTotalRegionsLastFY: Section[] = [
 ]
 
 const header: Header = {
-    switchHeader: "| Nintendo Switch Regional Data |",
+    switchHeader: "| Nintendo Switch Regional Data   |",
     fiscalYear: " FY3/2022 ",
     fiscalYearCml: " FY3/22 Cumulative ",
     globalPercentage: "| Global%|",

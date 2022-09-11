@@ -16,7 +16,7 @@ export type Section = {
 }
 
 export type Header = {
-    switchHeader: "| Nintendo Switch Regional Data |",
+    switchHeader: "| Nintendo Switch Regional Data   |",
     fiscalYear: string,
     fiscalYearCml: string,
     units: "| Units  |",
@@ -32,6 +32,7 @@ export function quarterlyCalculation(quarters: Section[]) {
        return (elem.period !== " 1st Quarter " && elem.period !== " Last FY Cumulative ")
                ? {
                 ...elem, 
+                valueA: Number((elem.valueA - array[index-1].valueA).toFixed(2)),
                 valueB: Number((elem.valueB - array[index-1].valueB).toFixed(2)),
                 valueC: Number((elem.valueC - array[index-1].valueC).toFixed(2)),
                 valueD: Number((elem.valueD - array[index-1].valueD).toFixed(2)),
@@ -145,7 +146,8 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
     }).map((elem, index, array) => {
 
         let printSectionDifferenceWWPerJapan: string = `${((elem.valueB / elem.valueA) * 100).toFixed(2)}% `;
-
+        console.log(`Japan: ${elem.valueB}, WW: ${elem.valueA}`);
+        
         let printSectionDifferenceWWPerAmericas: string = `${((elem.valueC / elem.valueA) * 100).toFixed(2)}% `;
 
         let printSectionDifferenceWWPerEurope: string = `${((elem.valueD / elem.valueA) * 100).toFixed(2)}% `;
@@ -331,19 +333,19 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
 
         let printSectionLTDWWPerJapan: string = (currentQuarter === 1) 
                 ? `${(((sectionDifference[currentQuarter-1].valueB + sectionCumulative[sectionCumulative.length-1].valueB)) / ((sectionDifference[currentQuarter-1].valueA + sectionCumulative[sectionCumulative.length-1].valueA)) * 100 ).toFixed(2)}% `
-                : `${(((sectionCumulative[currentQuarter-2].valueB + sectionCumulative[sectionCumulative.length-1].valueB)) / ((sectionDifference[currentQuarter-1].valueA + sectionCumulative[sectionCumulative.length-1].valueA)) * 100 ).toFixed(2)}% `
+                : `${(((sectionCumulative[currentQuarter-2].valueB + sectionCumulative[sectionCumulative.length-1].valueB)) / ((sectionCumulative[currentQuarter-2].valueA + sectionCumulative[sectionCumulative.length-1].valueA)) * 100 ).toFixed(2)}% `;
 
         let printSectionLTDWWPerAmericas: string = (currentQuarter === 1) 
                 ? `${(((sectionDifference[currentQuarter-1].valueC + sectionCumulative[sectionCumulative.length-1].valueC)) / ((sectionDifference[currentQuarter-1].valueA + sectionCumulative[sectionCumulative.length-1].valueA)) * 100 ).toFixed(2)}% `
-                : `${(((sectionCumulative[currentQuarter-2].valueC + sectionCumulative[sectionCumulative.length-1].valueC)) / ((sectionDifference[currentQuarter-1].valueA + sectionCumulative[sectionCumulative.length-1].valueA)) * 100 ).toFixed(2)}% `;
+                : `${(((sectionCumulative[currentQuarter-2].valueC + sectionCumulative[sectionCumulative.length-1].valueC)) / ((sectionCumulative[currentQuarter-2].valueA + sectionCumulative[sectionCumulative.length-1].valueA)) * 100 ).toFixed(2)}% `;
 
         let printSectionLTDWWPerEurope: string = (currentQuarter === 1) 
                 ? `${(((sectionDifference[currentQuarter-1].valueD + sectionCumulative[sectionCumulative.length-1].valueD)) / ((sectionDifference[currentQuarter-1].valueA + sectionCumulative[sectionCumulative.length-1].valueA)) * 100 ).toFixed(2)}% `
-                : `${(((sectionCumulative[currentQuarter-2].valueD + sectionCumulative[sectionCumulative.length-1].valueD)) / ((sectionDifference[currentQuarter-1].valueA + sectionCumulative[sectionCumulative.length-1].valueA)) * 100 ).toFixed(2)}% `;
+                : `${(((sectionCumulative[currentQuarter-2].valueD + sectionCumulative[sectionCumulative.length-1].valueD)) / ((sectionCumulative[currentQuarter-2].valueA + sectionCumulative[sectionCumulative.length-1].valueA)) * 100 ).toFixed(2)}% `;
 
         let printSectionLTDWWPerOther: string = (currentQuarter === 1) 
                 ? `${(((sectionDifference[currentQuarter-1].valueE + sectionCumulative[sectionCumulative.length-1].valueE)) / ((sectionDifference[currentQuarter-1].valueA + sectionCumulative[sectionCumulative.length-1].valueA)) * 100 ).toFixed(2)}% `
-                : `${(((sectionCumulative[currentQuarter-2].valueE + sectionCumulative[sectionCumulative.length-1].valueE)) / ((sectionDifference[currentQuarter-1].valueA + sectionCumulative[sectionCumulative.length-1].valueA)) * 100 ).toFixed(2)}% `;
+                : `${(((sectionCumulative[currentQuarter-2].valueE + sectionCumulative[sectionCumulative.length-1].valueE)) / ((sectionCumulative[currentQuarter-2].valueA + sectionCumulative[sectionCumulative.length-1].valueA)) * 100 ).toFixed(2)}% `;
 
         let [printSectionLTDWWPerJapanFixed, printSectionLTDWWPerAmericasFixed, printSectionLTDWWPerEuropeFixed, printSectionLTDWWPerOtherFixed]: string[] = [printSectionLTDWWPerJapan, printSectionLTDWWPerAmericas, printSectionLTDWWPerEurope, printSectionLTDWWPerOther].map((value) => {                
             return (value.length >= 8)
