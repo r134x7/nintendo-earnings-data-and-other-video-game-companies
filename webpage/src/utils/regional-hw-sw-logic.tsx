@@ -110,7 +110,7 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
 
     const sectionHeader: string = (sectionDifference[3].valueE !== 0) // 4th quarter [3] is where a non-zero number is most likely to occur 
         ? "+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + " ".repeat(44 - sectionDifference[0].name.length) + "|\n+" + "-".repeat(44) + "+\n|        | Japan  |The     | Europe | Other  |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
-        : "+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + " ".repeat(44 - sectionDifference[0].name.length) + "|\n+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + "| Japan  |The     | Other  |        |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
+        : "+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + " ".repeat(44 - sectionDifference[0].name.length) + "|\n+" + "-".repeat(44) + "+\n|        | Japan  |The     | Other  |        |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
 
     const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem) => {
         return (currentQuarter === 1)
@@ -223,7 +223,7 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
         return (printSectionDifferenceYoYJapanFixed === "NaN" && elem.valueE !== 0)
                 ? printPeriod + header.units + printSectionJapanFixed + "|" + printSectionAmericasFixed + "|" + printSectionEuropeFixed + "|" + printSectionOtherFixed + "|\n" + header.globalPercentage +  printSectionDifferenceWWPerJapanFixed + "|" + printSectionDifferenceWWPerAmericasFixed + "|" + printSectionDifferenceWWPerEuropeFixed + "|" + printSectionDifferenceWWPerOtherFixed + "|" + printLine 
                 : (printSectionDifferenceYoYJapanFixed === "NaN" && elem.valueE === 0)
-                ? header.units + printSectionJapanFixed + "|" + printSectionAmericasFixed + "|" + printSectionEuropeFixed + "|\n" + header.globalPercentage +  printSectionDifferenceWWPerJapanFixed + "|" + printSectionDifferenceWWPerAmericasFixed + "|" + printSectionDifferenceWWPerEuropeFixed + "|" + printLine
+                ? printPeriod + header.units + printSectionJapanFixed + "|" + printSectionAmericasFixed + "|" + printSectionEuropeFixed + "|\n" + header.globalPercentage +  printSectionDifferenceWWPerJapanFixed + "|" + printSectionDifferenceWWPerAmericasFixed + "|" + printSectionDifferenceWWPerEuropeFixed + "|" + printLine
                 : (elem.valueE !== 0)
                 ? printPeriod + header.units + printSectionJapanFixed + "|" + printSectionAmericasFixed + "|" + printSectionEuropeFixed + "|" + printSectionOtherFixed + "|\n" + header.yearOnYear + printSectionDifferenceYoYJapanFixed + "|" + printSectionDifferenceYoYAmericasFixed + "|" + printSectionDifferenceYoYEuropeFixed + "|" + printSectionDifferenceYoYOtherFixed + "|\n" + header.globalPercentage +  printSectionDifferenceWWPerJapanFixed + "|" + printSectionDifferenceWWPerAmericasFixed + "|" + printSectionDifferenceWWPerEuropeFixed + "|" + printSectionDifferenceWWPerOtherFixed + "|" + printLine
                 : printPeriod + header.units + printSectionJapanFixed + "|" + printSectionAmericasFixed + "|" + printSectionEuropeFixed + "|\n" + header.yearOnYear + printSectionDifferenceYoYJapanFixed + "|" + printSectionDifferenceYoYAmericasFixed + "|" + printSectionDifferenceYoYEuropeFixed + "|\n" + header.globalPercentage +  printSectionDifferenceWWPerJapanFixed + "|" + printSectionDifferenceWWPerAmericasFixed + "|" + printSectionDifferenceWWPerEuropeFixed + "|" + printLine
@@ -381,7 +381,7 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
     // const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+";
     const ltdPrint: string = (sectionDifference[currentQuarter-1].valueE !== 0)
             ? printLtdHeader + header.units + ltdJapanFixed + "|" + ltdAmericasFixed + "|" + ltdEuropeFixed + "|" + ltdOtherFixed + "|\n" + header.globalPercentage +  printSectionLTDWWPerJapanFixed + "|" + printSectionLTDWWPerAmericasFixed + "|" + printSectionLTDWWPerEuropeFixed + "|" + printSectionLTDWWPerOtherFixed + "|\n+" + "-".repeat(44) + "+"
-            : printLtdHeader + header.units + ltdJapanFixed + "|" + ltdAmericasFixed + "|" + ltdEuropeFixed + "|\n" + header.globalPercentage +  printSectionLTDWWPerJapanFixed + "|" + printSectionLTDWWPerAmericasFixed + "|" + printSectionLTDWWPerEuropeFixed + "|" + printSectionLTDWWPerOtherFixed + "|\n+" + "-".repeat(36) + "+";
+            : printLtdHeader + header.units + ltdJapanFixed + "|" + ltdAmericasFixed + "|" + ltdEuropeFixed + "|\n" + header.globalPercentage +  printSectionLTDWWPerJapanFixed + "|" + printSectionLTDWWPerAmericasFixed + "|" + printSectionLTDWWPerEuropeFixed + "|\n+" + "-".repeat(35) + "+";
         
     const penultimateCheck = [sectionHeader, ...difference, ...cumulative, ltdPrint].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
 
