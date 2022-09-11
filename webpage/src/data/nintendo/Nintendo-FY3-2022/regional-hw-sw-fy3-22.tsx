@@ -238,7 +238,7 @@ const nintendoSwitchLiteRegions: Section[] = [
         regionD: "Europe", 
         valueD: 347,
         regionE: "Other",
-        valueE: 100,
+        valueE: 101, // adjusted by +1 to be consistent with earnings release
     },
 ]
 
@@ -883,7 +883,7 @@ const printOne = printHead(header)
 
 const printOG = printSection(header, quarterSwitchOGRegions, quarterSwitchOGRegionsYoy, nintendoSwitchOGRegionsCml, cumulativeSwitchOGRegionsYoy, currentQuarter)
 
-const printLite = printSection(header, quarterSwitchLiteRegions, quarterSwitchLiteRegionsYoy, nintendoSwitchLiteRegionsCml, cumulativeSwitchOGRegionsYoy, currentQuarter)
+const printLite = printSection(header, quarterSwitchLiteRegions, quarterSwitchLiteRegionsYoy, nintendoSwitchLiteRegionsCml, cumulativeSwitchLiteRegionsYoy, currentQuarter)
 
 const printOLED = printSection(header, quarterSwitchOLEDRegions, quarterSwitchOLEDRegionsYoy, nintendoSwitchOLEDRegionsCml, cumulativeSwitchOLEDRegionsYoy, currentQuarter)
 
