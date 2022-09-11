@@ -25,6 +25,7 @@ const nintendoSwitchHardwareTotalRegions: Section[] = [
         valueD: 31,
         regionE: "Other",
         valueE: 40,
+        dataShift: true,
     },
     {
         name: " Nintendo Switch Hardware Total ",
@@ -41,6 +42,7 @@ const nintendoSwitchHardwareTotalRegions: Section[] = [
         valueD: 119,
         regionE: "Other",
         valueE: 74,
+        dataShift: true,
     },
     {
         name: " Nintendo Switch Hardware Total ",
@@ -57,6 +59,7 @@ const nintendoSwitchHardwareTotalRegions: Section[] = [
         valueD: 396,
         regionE: "Other",
         valueE: 137,
+        dataShift: true,
     },
     {
         name: " Nintendo Switch Hardware Total ",
@@ -73,6 +76,7 @@ const nintendoSwitchHardwareTotalRegions: Section[] = [
         valueD: 455,
         regionE: "Other",
         valueE: 169,
+        dataShift: true,
     },
     {
         name: " Nintendo Switch Hardware Total ",
@@ -89,6 +93,7 @@ const nintendoSwitchHardwareTotalRegions: Section[] = [
         valueD: 454,
         regionE: "Other",
         valueE: 172,
+        dataShift: true,
     },
 ]
 
@@ -108,6 +113,7 @@ const nintendoSwitchHardwareTotalRegionsLastFY: Section[] = [
         valueD: 69,
         regionE: "Other",
         valueE: 0,
+        dataShift: true,
     },
     {
         name: " Nintendo Switch Hardware Total ",
@@ -124,6 +130,7 @@ const nintendoSwitchHardwareTotalRegionsLastFY: Section[] = [
         valueD: 162,
         regionE: "Other",
         valueE: 0,
+        dataShift: true,
     },
     {
         name: " Nintendo Switch Hardware Total ",
@@ -140,6 +147,7 @@ const nintendoSwitchHardwareTotalRegionsLastFY: Section[] = [
         valueD: 426,
         regionE: "Other",
         valueE: 0,
+        dataShift: true,
     },
     {
         name: " Nintendo Switch Hardware Total ",
@@ -156,6 +164,7 @@ const nintendoSwitchHardwareTotalRegionsLastFY: Section[] = [
         valueD: 533,
         regionE: "Other",
         valueE: 0,
+        dataShift: true,
     },
 ]
 
@@ -175,6 +184,7 @@ const nintendoSwitchSoftwareTotalRegions: Section[] = [
         valueD: 524,
         regionE: "Other",
         valueE: 141,
+        dataShift: true,
     },
     {
         name: " Nintendo Switch Software Total ",
@@ -191,6 +201,7 @@ const nintendoSwitchSoftwareTotalRegions: Section[] = [
         valueD: 1284,
         regionE: "Other",
         valueE: 253,
+        dataShift: true,
     },
     {
         name: " Nintendo Switch Software Total ",
@@ -207,6 +218,7 @@ const nintendoSwitchSoftwareTotalRegions: Section[] = [
         valueD: 2786,
         regionE: "Other",
         valueE: 612,
+        dataShift: true,
     },
     {
         name: " Nintendo Switch Software Total ",
@@ -223,6 +235,7 @@ const nintendoSwitchSoftwareTotalRegions: Section[] = [
         valueD: 3516,
         regionE: "Other",
         valueE: 797,
+        dataShift: true,
     },
     {
         name: " Nintendo Switch Software Total ",
@@ -239,6 +252,7 @@ const nintendoSwitchSoftwareTotalRegions: Section[] = [
         valueD: 2059,
         regionE: "Other",
         valueE: 486,
+        dataShift: true,
     },
 ]
 
@@ -258,6 +272,7 @@ const nintendoSwitchSoftwareTotalRegionsLastFY: Section[] = [
         valueD: 295,
         regionE: "Other",
         valueE: 0,
+        dataShift: true,
     },
     {
         name: " Nintendo Switch Software Total ",
@@ -274,6 +289,7 @@ const nintendoSwitchSoftwareTotalRegionsLastFY: Section[] = [
         valueD: 825,
         regionE: "Other",
         valueE: 0,
+        dataShift: true,
     },
     {
         name: " Nintendo Switch Software Total ",
@@ -290,6 +306,7 @@ const nintendoSwitchSoftwareTotalRegionsLastFY: Section[] = [
         valueD: 1739,
         regionE: "Other",
         valueE: 0,
+        dataShift: true,
     },
     {
         name: " Nintendo Switch Software Total ",
@@ -306,6 +323,7 @@ const nintendoSwitchSoftwareTotalRegionsLastFY: Section[] = [
         valueD: 2373,
         regionE: "Other",
         valueE: 0,
+        dataShift: true,
     },
 ]
 

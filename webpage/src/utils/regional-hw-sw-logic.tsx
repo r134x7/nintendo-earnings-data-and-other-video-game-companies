@@ -13,6 +13,7 @@ export type Section = {
     valueC: number,
     valueD: number,
     valueE: number,
+    dataShift?: boolean, // to deal with YoY% for FY3/19...
 }
 
 export type Header = {
@@ -61,7 +62,7 @@ export function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
                         valueE: Number(
                         ((((elem.valueE / lastFY[index].valueE) -1)* -1) * 100).toFixed(2)),
                       }
-                    : (lastFY[index].valueA === 0)
+                    : (lastFY[index].valueA === 0 || lastFY[index].dataShift === true)
                     ? {
                         ...elem, 
                         units: "NaN", 
