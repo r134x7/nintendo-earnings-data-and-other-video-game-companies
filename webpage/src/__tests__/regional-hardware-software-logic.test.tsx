@@ -772,7 +772,9 @@ ${header.switchHeader}${header.fiscalYear}|
 
 const printSection = (header: Header, sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], currentQuarter: number) => {
 
-    const sectionHeader: string = "+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + "| Japan  |The     | Europe | Other  |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
+    const sectionHeader: string = (sectionDifference[3].valueE !== 0) // 4th quarter [3] is where a non-zero number is most likely to occur 
+        ? "+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + "| Japan  |The     | Europe | Other  |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
+        : "+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + "| Japan  |The     | Other  |        |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
 
     const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem) => {
         return (currentQuarter === 1)
@@ -784,8 +786,6 @@ const printSection = (header: Header, sectionDifference: Section[], sectionDiffe
             : elem
     }) 
 
-    console.log(sectionCumulativeYoY);
-    
     const sectionCumulativeYoYFixed = sectionCumulativeYoY.filter((elem) => elem.period !== " 1st Quarter ").filter((elem) => {
 
         if (currentQuarter === 2) {
