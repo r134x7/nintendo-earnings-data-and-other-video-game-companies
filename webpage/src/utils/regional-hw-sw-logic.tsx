@@ -146,7 +146,6 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
     }).map((elem, index, array) => {
 
         let printSectionDifferenceWWPerJapan: string = `${((elem.valueB / elem.valueA) * 100).toFixed(2)}% `;
-        console.log(`Japan: ${elem.valueB}, WW: ${elem.valueA}`);
         
         let printSectionDifferenceWWPerAmericas: string = `${((elem.valueC / elem.valueA) * 100).toFixed(2)}% `;
 
@@ -257,27 +256,34 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
                     : " ".repeat(8 - value.length) + value;
             })
 
-
             let printSectionCumulativeYoYJapan: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                 ? "NaN"
+                : (sectionCumulativeYoYFixed[index].valueB > 999)
+                ? `+${(sectionCumulativeYoYFixed[index].valueB).toFixed(0)}%`
                 : (sectionCumulativeYoYFixed[index].valueB > 0)
                 ? `+${sectionCumulativeYoYFixed[index].valueB}%`
                 : `${sectionCumulativeYoYFixed[index].valueB}%`;
 
             let printSectionCumulativeYoYAmericas: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                 ? "NaN"
+                : (sectionCumulativeYoYFixed[index].valueC > 999)
+                ? `+${(sectionCumulativeYoYFixed[index].valueC).toFixed(0)}%`
                 : (sectionCumulativeYoYFixed[index].valueC > 0)
                 ? `+${sectionCumulativeYoYFixed[index].valueC}%`
                 : `${sectionCumulativeYoYFixed[index].valueC}%`;
 
             let printSectionCumulativeYoYEurope: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                 ? "NaN"
+                : (sectionCumulativeYoYFixed[index].valueD > 999)
+                ? `+${(sectionCumulativeYoYFixed[index].valueD).toFixed(0)}%`
                 : (sectionCumulativeYoYFixed[index].valueD > 0)
                 ? `+${sectionCumulativeYoYFixed[index].valueD}%`
                 : `${sectionCumulativeYoYFixed[index].valueD}%`;
 
             let printSectionCumulativeYoYOther: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                 ? "NaN"
+                : (sectionCumulativeYoYFixed[index].valueE > 999)
+                ? `+${(sectionCumulativeYoYFixed[index].valueE).toFixed(0)}%`
                 : (sectionCumulativeYoYFixed[index].valueE > 0)
                 ? `+${sectionCumulativeYoYFixed[index].valueE}%`
                 : `${sectionCumulativeYoYFixed[index].valueE}%`;
