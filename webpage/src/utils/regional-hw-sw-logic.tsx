@@ -163,33 +163,33 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
         let printSectionDifferenceYoYJapan: string = (sectionDifferenceYoYFixed[index].units === "NaN")
             ? "NaN"
             : (sectionDifferenceYoYFixed[index].valueB > 0)
-            ? `+${sectionDifferenceYoYFixed[index].valueB}% `
-            : `${sectionDifferenceYoYFixed[index].valueB}% `
+            ? `+${sectionDifferenceYoYFixed[index].valueB}%`
+            : `${sectionDifferenceYoYFixed[index].valueB}%`
 
         let printSectionDifferenceYoYAmericas: string = (sectionDifferenceYoYFixed[index].units === "NaN")
             ? "NaN"
             : (sectionDifferenceYoYFixed[index].valueC > 0)
-            ? `+${sectionDifferenceYoYFixed[index].valueC}% `
-            : `${sectionDifferenceYoYFixed[index].valueC}% `
+            ? `+${sectionDifferenceYoYFixed[index].valueC}%`
+            : `${sectionDifferenceYoYFixed[index].valueC}%`
 
         let printSectionDifferenceYoYEurope: string = (sectionDifferenceYoYFixed[index].units === "NaN")
             ? "NaN"
             : (sectionDifferenceYoYFixed[index].valueD > 0)
-            ? `+${sectionDifferenceYoYFixed[index].valueD}% `
-            : `${sectionDifferenceYoYFixed[index].valueD}% `
+            ? `+${sectionDifferenceYoYFixed[index].valueD}%`
+            : `${sectionDifferenceYoYFixed[index].valueD}%`
 
         let printSectionDifferenceYoYOther: string = (sectionDifferenceYoYFixed[index].units === "NaN")
             ? "NaN"
             : (sectionDifferenceYoYFixed[index].valueE > 0)
-            ? `+${sectionDifferenceYoYFixed[index].valueE}% `
-            : `${sectionDifferenceYoYFixed[index].valueE}% `
+            ? `+${sectionDifferenceYoYFixed[index].valueE}%`
+            : `${sectionDifferenceYoYFixed[index].valueE}%`
         
         let [printSectionDifferenceYoYJapanFixed, printSectionDifferenceYoYAmericasFixed, printSectionDifferenceYoYEuropeFixed, printSectionDifferenceYoYOtherFixed]: string[] = [printSectionDifferenceYoYJapan, printSectionDifferenceYoYAmericas, printSectionDifferenceYoYEurope, printSectionDifferenceYoYOther].map((value) => {
             return (value === "NaN")
                 ? value
                 : (value.length >= 8)
                 ? value
-                : " ".repeat(8 - value.length) + value
+                : " ".repeat(7 - value.length) + value + " "
         })
         
         let printSectionJapan: string = `${(elem.valueB / 100).toFixed(2)}M `;
@@ -261,33 +261,33 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
             let printSectionCumulativeYoYJapan: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                 ? "NaN"
                 : (sectionCumulativeYoYFixed[index].valueB > 0)
-                ? `+${sectionCumulativeYoYFixed[index].valueB}% `
-                : `${sectionCumulativeYoYFixed[index].valueB}% `;
+                ? `+${sectionCumulativeYoYFixed[index].valueB}%`
+                : `${sectionCumulativeYoYFixed[index].valueB}%`;
 
             let printSectionCumulativeYoYAmericas: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                 ? "NaN"
                 : (sectionCumulativeYoYFixed[index].valueC > 0)
-                ? `+${sectionCumulativeYoYFixed[index].valueC}% `
-                : `${sectionCumulativeYoYFixed[index].valueC}% `;
+                ? `+${sectionCumulativeYoYFixed[index].valueC}%`
+                : `${sectionCumulativeYoYFixed[index].valueC}%`;
 
             let printSectionCumulativeYoYEurope: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                 ? "NaN"
                 : (sectionCumulativeYoYFixed[index].valueD > 0)
-                ? `+${sectionCumulativeYoYFixed[index].valueD}% `
-                : `${sectionCumulativeYoYFixed[index].valueD}% `;
+                ? `+${sectionCumulativeYoYFixed[index].valueD}%`
+                : `${sectionCumulativeYoYFixed[index].valueD}%`;
 
             let printSectionCumulativeYoYOther: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                 ? "NaN"
                 : (sectionCumulativeYoYFixed[index].valueE > 0)
-                ? `+${sectionCumulativeYoYFixed[index].valueE}% `
-                : `${sectionCumulativeYoYFixed[index].valueE}% `;
+                ? `+${sectionCumulativeYoYFixed[index].valueE}%`
+                : `${sectionCumulativeYoYFixed[index].valueE}%`;
 
             let [printSectionCumulativeYoYJapanFixed, printSectionCumulativeYoYAmericasFixed, printSectionCumulativeYoYEuropeFixed, printSectionCumulativeYoYOtherFixed]: string[] = [printSectionCumulativeYoYJapan, printSectionCumulativeYoYAmericas, printSectionCumulativeYoYEurope, printSectionCumulativeYoYOther].map((value) => {
                 return (value === "NaN")
                     ? value
                     : (value.length >= 8)
                     ? value
-                    : " ".repeat(8 - value.length) + value
+                    : " ".repeat(7 - value.length) + value + " ";
             })
 
             let printCumulativeJapan: string = `${(elem.valueB / 100).toFixed(2)}M `;
