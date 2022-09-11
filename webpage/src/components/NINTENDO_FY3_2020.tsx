@@ -6,6 +6,7 @@ import { printKPI } from "../data/nintendo/Nintendo-FY3-2020/kpi-fy3-20";
 import { printTopSellingSwitchTitles } from "../data/nintendo/Nintendo-FY3-2020/topNSWswfy3-20";
 import { printFYMillionSellerTitles } from "../data/nintendo/Nintendo-FY3-2020/mst-fy3-20";
 import { printHardwareSoftware } from "../data/nintendo/Nintendo-FY3-2020/nsw-hardware-software-fy3-20";
+import { printRegions } from "../data/nintendo/Nintendo-FY3-2020/regional-hw-sw-fy3-20";
 import GRAPH_NINTENDO_EARNINGS_FY3_20 from "../graphs/nintendo/Nintendo-FY3-2020/GRAPH_NINTENDO_EARNINGS_FY3_20";
 import GRAPH_NINTENDO_KPI_FY3_20 from "../graphs/nintendo/Nintendo-FY3-2020/GRAPH_NINTENDO_KPI_FY3_20";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_20 from "../graphs/nintendo/Nintendo-FY3-2020/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_20";
@@ -21,7 +22,7 @@ export default function NINTENDO_FY3_20() {
     useEffect(() => {
         (value === "Consolidated Operating Results")
             ? setData(consolidatedOperatingResults)
-            : (value === "WW Hardware/Software units, Mobile/IP related income")
+            : (value === "Global Hardware/Software units, Mobile/IP related income")
             ? setData(nintendoHardwareSoftwareMobile)
             : (value === "Key/Digital Sales Indicator")
             ? setData(keyIndicators)
@@ -92,7 +93,7 @@ export default function NINTENDO_FY3_20() {
 
     const fyMillionSellers = printFYMillionSellerTitles;
 
-    const regionalHWSW = "no data here at this time";
+    const regionalHWSW = printRegions;
 
     const topSellingTitles = printTopSellingSwitchTitles; 
 
@@ -106,7 +107,7 @@ export default function NINTENDO_FY3_20() {
                     onChange={setValue}
                     data={[ "Data Sources",
                             "Consolidated Operating Results", 
-                            "WW Hardware/Software units, Mobile/IP related income", 
+                            "Global Hardware/Software units, Mobile/IP related income", 
                             "Key/Digital Sales Indicator", 
                             "FY Million-Seller Titles", 
                             "Regional Hardware/Software units", 

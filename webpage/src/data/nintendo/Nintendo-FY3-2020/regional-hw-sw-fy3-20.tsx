@@ -84,11 +84,11 @@ const nintendoSwitchOGRegions: Section[] = [
         regionB: "Japan", 
         valueB: 823,
         regionC: "The Americas", 
-        valueC: 1402,
+        valueC: 1401, // adjusted by -1 to be consistent with earnings release
         regionD: "Europe", 
         valueD: 909,
         regionE: "Other",
-        valueE: 341,
+        valueE: 340, // adjusted by -1 to be consistent with earnings release
     },
 ]
 
@@ -384,7 +384,7 @@ const nintendoSwitchHardwareTotalRegions: Section[] = [
         regionB: "Japan", 
         valueB: 823,
         regionC: "The Americas", 
-        valueC: 1402,
+        valueC: 1401, // adjusted by -1 to be consistent with earnings release
         regionD: "Europe", 
         valueD: 909,
         regionE: "Other",
@@ -392,7 +392,7 @@ const nintendoSwitchHardwareTotalRegions: Section[] = [
     },
 ]
 
-const nintendoSwitchHardwareRegionsLastFY: Section[] = [
+const nintendoSwitchHardwareTotalRegionsLastFY: Section[] = [
     {
         name: " Nintendo Switch Hardware Total ",
         period: " 1st Quarter ",
@@ -532,7 +532,7 @@ const nintendoSwitchSoftwareTotalRegions: Section[] = [
         regionA: "Global", 
         valueA: 18752,
         regionB: "Japan", 
-        valueB: 3463,
+        valueB: 3464, // adjusted by +1 to be consistent with earnings release
         regionC: "The Americas", 
         valueC: 8431,
         regionD: "Europe", 
@@ -542,7 +542,7 @@ const nintendoSwitchSoftwareTotalRegions: Section[] = [
     },
 ]
 
-const nintendoSwitchSoftwareRegionsLastFY: Section[] = [
+const nintendoSwitchSoftwareTotalRegionsLastFY: Section[] = [
     {
         name: " Nintendo Switch Software Total ",
         period: " 1st Quarter ",
@@ -618,3 +618,116 @@ const header: Header = {
     yearOnYear: "| YoY%   |",
     ltd: " Life-To-Date ",
 }
+
+const quarterlyCollection = [
+    nintendoSwitchOGRegions,
+    nintendoSwitchOGRegionsLastFY,
+    nintendoSwitchLiteRegions,
+    nintendoSwitchLiteRegionsLastFY,
+    nintendoSwitchHardwareTotalRegions,
+    nintendoSwitchHardwareTotalRegionsLastFY,
+    nintendoSwitchSoftwareTotalRegions,
+    nintendoSwitchSoftwareTotalRegionsLastFY,
+] as const;
+
+const filteredCollection = [
+    nintendoSwitchOGRegions,
+    nintendoSwitchLiteRegions,
+    nintendoSwitchHardwareTotalRegions,
+    nintendoSwitchSoftwareTotalRegions,
+] as const;
+
+const [
+    quarterSwitchOGRegions,
+    quarterSwitchOGRegionsLastFY,
+    quarterSwitchLiteRegions,
+    quarterSwitchLiteRegionsLastFY,
+    quarterSwitchHardwareTotalRegions,
+    quarterSwitchHardwareTotalRegionsLastFY,
+    quarterSwitchSoftwareTotalRegions,
+    quarterSwitchSoftwareTotalRegionsLastFY,
+] = quarterlyCollection.map((elem, index) => {
+
+        return (index % 2 === 0)
+                ? quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filter out last fy cumulative
+                : quarterlyCalculation(elem) // last FY numbers...
+})
+
+const [
+    nintendoSwitchOGRegionsFiltered,
+    nintendoSwitchLiteRegionsFiltered,
+    nintendoSwitchHardwareTotalRegionsFiltered,
+    nintendoSwitchSoftwareTotalRegionsFiltered,
+] = filteredCollection.map((elem) => {
+        return elem.filter((secondElem, index, array) => {
+            return index !== array.length-1
+        })
+    })
+
+
+const yearOnYearCollection = [
+        quarterSwitchOGRegions,
+        quarterSwitchOGRegionsLastFY,
+        quarterSwitchLiteRegions,
+        quarterSwitchLiteRegionsLastFY,
+        quarterSwitchHardwareTotalRegions,
+        quarterSwitchHardwareTotalRegionsLastFY,
+        quarterSwitchSoftwareTotalRegions,
+        quarterSwitchSoftwareTotalRegionsLastFY,
+        nintendoSwitchOGRegionsFiltered,
+        nintendoSwitchOGRegionsLastFY,
+        nintendoSwitchLiteRegionsFiltered,
+        nintendoSwitchLiteRegionsLastFY,
+        nintendoSwitchHardwareTotalRegionsFiltered,
+        nintendoSwitchHardwareTotalRegionsLastFY,
+        nintendoSwitchSoftwareTotalRegionsFiltered,
+        nintendoSwitchSoftwareTotalRegionsLastFY,
+] as const;
+
+const [
+        quarterSwitchOGRegionsYoy,
+        quarterSwitchLiteRegionsYoy,
+        quarterSwitchHardwareTotalRegionsYoy,
+        quarterSwitchSoftwareTotalRegionsYoy,
+        cumulativeSwitchOGRegionsYoy,
+        cumulativeSwitchLiteRegionsYoy,
+        cumulativeSwitchHardwareTotalRegionsYoy,
+        cumulativeSwitchSoftwareTotalRegionsYoy,
+] = yearOnYearCollection.map((elem, index, array) => {
+    return (index % 2 === 0)
+            ? yearOnYearCalculation(array[index], array[index+1])
+            : [];
+    }).filter((elem) => elem.length !== 0) // filter out zero length arrays... 
+    
+const [
+        nintendoSwitchOGRegionsCml,
+        nintendoSwitchLiteRegionsCml,
+        nintendoSwitchHardwareTotalRegionsCml,
+        nintendoSwitchSoftwareTotalRegionsCml,
+] = [
+        nintendoSwitchOGRegions,
+        nintendoSwitchLiteRegions,
+        nintendoSwitchHardwareTotalRegions,
+        nintendoSwitchSoftwareTotalRegions,
+    ].map((elem) => {
+        return elem.filter((secondElem, index, array) => {
+            return index !== 0 // filter out first quarters
+        })
+    })
+
+const printOne = printHead(header)
+
+const printOG = printSection(header, quarterSwitchOGRegions, quarterSwitchOGRegionsYoy, nintendoSwitchOGRegionsCml, cumulativeSwitchOGRegionsYoy, currentQuarter)
+
+const printLite = printSection(header, quarterSwitchLiteRegions, quarterSwitchLiteRegionsYoy, nintendoSwitchLiteRegionsCml, cumulativeSwitchLiteRegionsYoy, currentQuarter)
+
+const printHardware = printSection(header, quarterSwitchHardwareTotalRegions, quarterSwitchHardwareTotalRegionsYoy, nintendoSwitchHardwareTotalRegionsCml, cumulativeSwitchHardwareTotalRegionsYoy, currentQuarter)
+
+const printSoftware = printSection(header, quarterSwitchSoftwareTotalRegions, quarterSwitchSoftwareTotalRegionsYoy, nintendoSwitchSoftwareTotalRegionsCml, cumulativeSwitchSoftwareTotalRegionsYoy, currentQuarter)
+
+export const printRegions = 
+`${printOne}
+${printOG}
+${printLite}
+${printHardware}
+${printSoftware}`;
