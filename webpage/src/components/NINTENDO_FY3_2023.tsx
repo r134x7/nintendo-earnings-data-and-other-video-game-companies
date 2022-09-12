@@ -7,6 +7,7 @@ import { printTopSellingSwitchTitles } from "../data/nintendo/Nintendo-FY3-2023/
 import { printFYMillionSellerTitles } from "../data/nintendo/Nintendo-FY3-2023/mst-fy3-23";
 import { printHardwareSoftware } from "../data/nintendo/Nintendo-FY3-2023/nsw-hardware-software-fy3-23";
 import { printRegions } from "../data/nintendo/Nintendo-FY3-2023/regional-hw-sw-fy3-23";
+import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_23 from "../graphs/nintendo/Nintendo-FY3-2023/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_23";
 
 export default function NINTENDO_FY3_23() {
 
