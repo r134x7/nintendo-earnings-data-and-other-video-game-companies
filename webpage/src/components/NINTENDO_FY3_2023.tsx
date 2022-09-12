@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
+import { printEarnings } from "../data/nintendo/Nintendo-FY3-2023/earnings-fy3-23";
+import { printKPI } from "../data/nintendo/Nintendo-FY3-2023/kpi-fy3-23";
+import { printTopSellingSwitchTitles } from "../data/nintendo/Nintendo-FY3-2023/topNSWswfy3-23";
+import { printFYMillionSellerTitles } from "../data/nintendo/Nintendo-FY3-2023/mst-fy3-23";
+import { printHardwareSoftware } from "../data/nintendo/Nintendo-FY3-2023/nsw-hardware-software-fy3-23";
+import { printRegions } from "../data/nintendo/Nintendo-FY3-2023/regional-hw-sw-fy3-23";
 
 export default function NINTENDO_FY3_23() {
 

@@ -10,14 +10,15 @@ import NINTENDO_FY3_19 from "../components/NINTENDO_FY3_2019";
 import NINTENDO_FY3_20 from "../components/NINTENDO_FY3_2020";
 import NINTENDO_FY3_21 from "../components/NINTENDO_FY3_2021";
 import NINTENDO_FY3_22 from "../components/NINTENDO_FY3_2022";
+import NINTENDO_FY3_23 from "../components/NINTENDO_FY3_2023";
 import NINTENDO_CML from "../components/NINTENDO_CML";
 
-const yearsList = Array.from({length: 7}, (elem, index) => 
+const yearsList = Array.from({length: 8}, (elem, index) => 
                     {
                       return (index === 0)
                             ? "Special Page"
                             : "FY3/" + (index + 2016)
-                    }) // creates an array of length 6 and iterates through the array
+                    }) // FY3/2017 to FY3/2023 at length: 8
 
 // const coloursList = ["rgba(52, 58, 64, 0.2)", "#2C2E33"]
 
@@ -78,9 +79,9 @@ export default function Nintendo() {
             </Stack>
             <Paper mb="md" shadow="sm" radius="xl" p="xs" withBorder>
             <Stack align="center">
-                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">Don't forget to visit Install Base where it has the latest Nintendo earnings data from me.</Text>
-                    <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/forums/threads/nintendo-fy3-2023-q1-earnings-release-switch-hardware-q1-3-43m-units-22-9-yoy-111-08m-units-ltd.967/" target="_blank" >
-                        Nintendo FY3/2023 Q1 Earnings Release, Switch Hardware Q1 - 3.43M units ( -22.9% YoY), 111.08M units LTD
+                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">For more in-depth historical data, visit Install Base and look at Celine's thread:</Text>
+                    <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/forums/threads/nintendo-software-and-hardware-sales-data-from-1983-to-present.170/" target="_blank" >
+                     [ Install Base ]: Nintendo software and hardware sales data from 1983 to present
                     </Anchor>
             </Stack>
             </Paper>
@@ -140,7 +141,9 @@ export default function Nintendo() {
 
             </Group>
 
-            {   (year === "FY3/2022")
+            {   (year === "FY3/2023")
+                ? <NINTENDO_FY3_23 />
+                : (year === "FY3/2022")
                 ? <NINTENDO_FY3_22 />
                 : (year === "FY3/2021") 
                 ? <NINTENDO_FY3_21 />
