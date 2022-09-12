@@ -3365,7 +3365,7 @@ export const collection = [
 
 const filteredCollection = collection.filter((elem, index, array) => {
     return array[index][3].valueC !== 0
-}) // to make sure things are accurate and that it works, all titles that sold units this FY must not have zero units for the remaining quarters. (ignore Last FY Cml.)
+}) // to make sure things are accurate and that it works, all titles that sold units this FY must not have zero units for the remaining quarters. (ignore Last FY Cml.) Tried using [currentQuarter -1] and not [3] but bugs occurred, oh well.
 
 const sortedCollection = filteredCollection.map((elem, index, array) => {
             return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
