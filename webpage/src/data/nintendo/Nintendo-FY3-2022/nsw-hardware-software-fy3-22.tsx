@@ -86,7 +86,7 @@ const nintendoSwitchOG: Section[] = [
     },
 ]
 
-const nintendoSwitchOGLastFY: Section[] = [
+export const nintendoSwitchOGLastFY: Section[] = [
     {
         name: " Switch ",
         period: " 1st Quarter ",
@@ -155,7 +155,7 @@ const nintendoSwitchLite: Section[] = [
     },
 ]
 
-const nintendoSwitchLiteLastFY: Section[] = [
+export const nintendoSwitchLiteLastFY: Section[] = [
     {
         name: " Switch Lite ",
         period: " 1st Quarter ",
@@ -224,7 +224,7 @@ const nintendoSwitchOLED: Section[] = [
     },
 ]
 
-const nintendoSwitchOLEDLastFY: Section[] = [
+export const nintendoSwitchOLEDLastFY: Section[] = [
     {
         name: " Switch OLED ",
         period: " 1st Quarter ",
@@ -324,7 +324,7 @@ const nintendoSwitchHardwareTotalForecast: Section[] = [
     },
 ]
 
-const nintendoSwitchHardwareTotalLastFY: Section[] = [
+export const nintendoSwitchHardwareTotalLastFY: Section[] = [
     {
         name: " Hardware Total ",
         period: " 1st Quarter ",
@@ -424,7 +424,7 @@ const nintendoSwitchSoftwareTotalForecast: Section[] = [
     }
 ]
 
-const nintendoSwitchSoftwareTotalLastFY: Section[] = [
+export const nintendoSwitchSoftwareTotalLastFY: Section[] = [
     {
         name: " Software Total ",
         period: " 1st Quarter ",
@@ -493,7 +493,7 @@ const nintendoMobile: Section[] = [
     },
 ]
 
-const nintendoMobileLastFY: Section[] = [
+export const nintendoMobileLastFY: Section[] = [
     {
         name: " Mobile ",
         period: " 1st Quarter ",
@@ -555,7 +555,7 @@ const filteredCollection = [
     nintendoMobile,
 ] as const;
 
-const [
+export const [
     quarterSwitchOG, 
     quarterSwitchOGLastFY, 
     quarterSwitchLite, 
@@ -575,7 +575,7 @@ const [
             : quarterlyCalculation(elem) // last FY numbers...
 })
 
-const [ 
+export const [ 
     nintendoSwitchOGFiltered, 
     nintendoSwitchLiteFiltered,
     nintendoSwitchOLEDFiltered, 
@@ -585,7 +585,7 @@ const [
 ] = filteredCollection.map((elem) => {
     return elem.filter((secondElem, index, array) => {
         return index !== array.length-1 
-    })
+    }) // removes last FY cml.
 })
 
 const yearOnYearCollection = [
