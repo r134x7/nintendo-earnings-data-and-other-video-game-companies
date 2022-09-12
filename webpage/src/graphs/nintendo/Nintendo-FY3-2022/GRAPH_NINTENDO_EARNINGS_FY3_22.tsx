@@ -77,10 +77,13 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_22() {
         netSales.map((elem, index) => elem.value - netSalesDifference[index].value),
         operatingIncome.map((elem, index) => elem.value - operatingIncomeDifference[index].value),
         [operatingMarginQuarters[0] , ...operatingMarginCumulative].map((elem, index) => {
-            return (elem.value > operatingMarginQuarters[index].value)
-            ? elem.value - operatingMarginQuarters[index].value
-            // : - elem.value + operatingMarginQuarters[index].value
-            : 0 // the least worst result to ensure accuracy
+            return elem.value
+            // return (index === 0)
+            // ? 0
+            // : (elem.value > operatingMarginQuarters[index].value)
+            // ? elem.value - operatingMarginQuarters[index].value
+            // // : - elem.value + operatingMarginQuarters[index].value
+            // : - elem.value + operatingMarginQuarters[index].value // the least worst result to ensure accuracy
         }),
         netIncome.map((elem, index) => elem.value - netIncomeDifference[index].value),
     ]
@@ -147,7 +150,9 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_22() {
                     options={{
                      scales: {
                         y: {
-                            stacked: true,
+                            stacked: (activePage !== 3)
+                                        ? true
+                                        : false,
                             title: {
                               display: true,
                               text: (activePage !== 3)
@@ -156,7 +161,9 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_22() {
                             },
                           },
                           x: {
-                              stacked: true,
+                            stacked: (activePage !== 3)
+                                        ? true
+                                        : false,
                               title: {
                                   display: true,
                                   text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
@@ -273,7 +280,9 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_22() {
                     options={{
                      scales: {
                         y: {
-                            stacked: true,
+                            stacked: (activePage !== 3)
+                                        ? true
+                                        : false,
                             title: {
                               display: true,
                               text: (activePage !== 3)
@@ -282,7 +291,9 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_22() {
                             },
                           },
                           x: {
-                              stacked: true,
+                            stacked: (activePage !== 3)
+                                        ? true
+                                        : false,
                               title: {
                                   display: true,
                                   text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,

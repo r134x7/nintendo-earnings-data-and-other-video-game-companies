@@ -8,6 +8,12 @@ import {
     proportionOfHardwareSalesQtr as proportionOfHardwareSalesQtrLastFY,
     proportionOfOverseasSalesQtr as proportionOfOverseasSalesQtrLastFY,
     proportionOfDLverPackagedSoftwareQtr as proportionOfDLverPackagedSoftwareQtrLastFY, 
+    digitalSalesCml as digitalSalesCmlLastFY,
+    proportionOfDLverPackagedSoftwareCml as proportionOfDLverPackagedSoftwareCmlLastFY,
+    proportionOfDigitalSalesCml as proportionOfDigitalSalesCmlLastFY,
+    proportionOfFirstPartySoftwareSalesCml as proportionOfFirstPartySoftwareSalesCmlLastFY,
+    proportionOfHardwareSalesCml as proportionOfHardwareSalesCmlLastFY,
+    proportionOfOverseasSalesCml as proportionOfOverseasSalesCmlLastFY, 
    } from "../../../data/nintendo/Nintendo-FY3-2021/kpi-fy3-21"
 import {
         digitalSalesQtr,
@@ -16,6 +22,12 @@ import {
         proportionOfHardwareSalesQtr,
         proportionOfOverseasSalesQtr,
         proportionOfDLverPackagedSoftwareQtr,
+        digitalSalesCml,
+        proportionOfDigitalSalesCml,
+        proportionOfFirstPartySoftwareSalesCml,
+        proportionOfHardwareSalesCml,
+        proportionOfOverseasSalesCml,
+        proportionOfDLverPackagedSoftwareCml,
        } from "../../../data/nintendo/Nintendo-FY3-2022/kpi-fy3-22"
 
 import { Line, Bar } from "react-chartjs-2";
@@ -62,7 +74,7 @@ export default function GRAPH_NINTENDO_KPI_FY3_22() {
         `Proportion of downloadable versions of Packaged Software Sales ${labels.lastFY}`,
     ]
 
-    const quartersGraph = [
+    const graphQuarters = [
         proportionOfOverseasSalesQtr.map((elem) => elem.value),
         proportionOfHardwareSalesQtr.map((elem) => elem.value),
         proportionOfFirstPartySoftwareSalesQtr.map((elem) => elem.value),
@@ -71,7 +83,7 @@ export default function GRAPH_NINTENDO_KPI_FY3_22() {
         proportionOfDLverPackagedSoftwareQtr.map((elem) => elem.value),
     ]
 
-    const quartersGraphLastFY = [
+    const graphQuartersLastFY = [
         proportionOfOverseasSalesQtrLastFY.map((elem) => elem.value),
         proportionOfHardwareSalesQtrLastFY.map((elem) => elem.value),
         proportionOfFirstPartySoftwareSalesQtrLastFY.map((elem) => elem.value),
@@ -79,6 +91,28 @@ export default function GRAPH_NINTENDO_KPI_FY3_22() {
         proportionOfDigitalSalesQtrLastFY.map((elem) => elem.value),
         proportionOfDLverPackagedSoftwareQtrLastFY.map((elem) => elem.value),
     ]
+
+    // const graphCumulative = [
+    //     netSales.map((elem, index) => elem.value - netSalesDifference[index].value),
+    //     operatingIncome.map((elem, index) => elem.value - operatingIncomeDifference[index].value),
+    //     [operatingMarginQuarters[0] , ...operatingMarginCumulative].map((elem, index) => {
+    //         return (elem.value > operatingMarginQuarters[index].value)
+    //         ? elem.value - operatingMarginQuarters[index].value
+    //         // : - elem.value + operatingMarginQuarters[index].value
+    //         : 0 // the least worst result to ensure accuracy
+    //     }),
+    //     netIncome.map((elem, index) => elem.value - netIncomeDifference[index].value),
+    // ]
+
+    // const graphCumulativeLastFY = [
+    //     netSalesLastFY.map((elem, index) => elem.value - netSalesLastFYDifference[index].value),
+    //     operatingIncomeLastFY.map((elem, index) => elem.value - operatingIncomeLastFYDifference[index].value),
+    //     [operatingMarginQuartersLastFY[0], ...operatingMarginCumulativeLastFY].map((elem, index) =>{
+    //         return (elem.value > operatingMarginQuartersLastFY[index].value)
+    //         ? elem.value - operatingMarginQuartersLastFY[index].value
+    //         // : - elem.value + operatingMarginQuarters[index].value
+    //         : 0 // the least worst result to ensure accuracy
+    //     }),
 
     return (
         <div className="chart">
@@ -90,7 +124,7 @@ export default function GRAPH_NINTENDO_KPI_FY3_22() {
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                            data: quartersGraph[activePage-1],
+                            data: graphQuarters[activePage-1],
                             label: kpiLabels[activePage-1],
                             borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
@@ -130,14 +164,14 @@ export default function GRAPH_NINTENDO_KPI_FY3_22() {
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                                data: quartersGraph[activePage-1],
+                                data: graphQuarters[activePage-1],
                                 label: kpiLabels[activePage-1],
                                 borderColor: "indigo",
                                 backgroundColor: "red",
 
                             },
                             {
-                                data: quartersGraphLastFY[activePage-1],
+                                data: graphQuartersLastFY[activePage-1],
                                 label: kpiLabelsLastFY[activePage-1],
                                 borderColor: "orange",
                                 backgroundColor: "black",
@@ -173,7 +207,7 @@ export default function GRAPH_NINTENDO_KPI_FY3_22() {
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                            data: quartersGraph[activePage-1],
+                            data: graphQuarters[activePage-1],
                             label: kpiLabels[activePage-1],
                             backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
@@ -214,7 +248,7 @@ export default function GRAPH_NINTENDO_KPI_FY3_22() {
                     labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                     datasets: [
                         {
-                            data: quartersGraph[activePage-1],
+                            data: graphQuarters[activePage-1],
                             label: kpiLabels[activePage-1],
                             borderColor: "black",
                             backgroundColor: "indigo",
@@ -222,7 +256,7 @@ export default function GRAPH_NINTENDO_KPI_FY3_22() {
 
                         },
                         {
-                            data: quartersGraphLastFY[activePage-1],
+                            data: graphQuartersLastFY[activePage-1],
                             label: kpiLabelsLastFY[activePage-1],
                             borderColor: "black",
                             backgroundColor: "orange",
@@ -252,7 +286,7 @@ export default function GRAPH_NINTENDO_KPI_FY3_22() {
             />
             )}
                 <Group mt="md" position="center">
-                    <Pagination page={activePage} onChange={setPage} total={quartersGraph.length} color="teal" size="sm" radius="md" />
+                    <Pagination page={activePage} onChange={setPage} total={graphQuarters.length} color="teal" size="sm" radius="md" />
                         <Switch onLabel="BAR" offLabel="BAR" size="md" checked={barChecked} onChange={(event) => setBarChecked(event.currentTarget.checked)} />
                             <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
             </Group>
