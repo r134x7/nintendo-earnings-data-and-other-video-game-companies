@@ -54,58 +54,58 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
         MarchLastYear: "March 2021"
     }
 
-    const kpiLabels = [
-        `Proportion of overseas sales ${labels.currentFY}`,
-        `Proportion of hardware sales ${labels.currentFY}`,
-        `Proportion of first party software sales ${labels.currentFY}`,
-        `Digital Sales ${labels.currentFY}`,
-        `Proportion of Digital Sales ${labels.currentFY}`,
-        `Proportion of downloadable versions of Packaged Software Sales ${labels.currentFY}`,
+    const headerLabels = [
+        `Switch ${labels.currentFY}`,
+        `Switch Lite ${labels.currentFY}`,
+        `Switch OLED ${labels.currentFY}`,
+        `Switch Hardware Total ${labels.currentFY}`,
+        `Switch Software Total ${labels.currentFY}`,
+        `Mobile, IP related income, etc. ${labels.currentFY}`,
     ]
 
-    const kpiLabelsLastFY = [
-        `Proportion of overseas sales ${labels.lastFY}`,
-        `Proportion of hardware sales ${labels.lastFY}`,
-        `Proportion of first party software sales ${labels.lastFY}`,
-        `Digital Sales ${labels.lastFY}`,
-        `Proportion of Digital Sales ${labels.lastFY}`,
-        `Proportion of downloadable versions of Packaged Software Sales ${labels.lastFY}`,
+    const headerLabelsLastFY = [
+        `Switch ${labels.lastFY}`,
+        `Switch Lite ${labels.lastFY}`,
+        `Switch OLED ${labels.lastFY}`,
+        `Switch Hardware Total ${labels.lastFY}`,
+        `Switch Software Total ${labels.lastFY}`,
+        `Mobile, IP related income, etc. ${labels.lastFY}`,
     ]
 
     const graphQuarters = [
-        proportionOfOverseasSalesQtr.map((elem) => elem.value),
-        proportionOfHardwareSalesQtr.map((elem) => elem.value),
-        proportionOfFirstPartySoftwareSalesQtr.map((elem) => elem.value),
-        digitalSalesQtr.map((elem) => elem.value),
-        proportionOfDigitalSalesQtr.map((elem) => elem.value),
-        proportionOfDLverPackagedSoftwareQtr.map((elem) => elem.value),
+        quarterSwitchOG.map((elem) => (elem.value / 100).toFixed(2)),
+        quarterSwitchLite.map((elem) => (elem.value / 100).toFixed(2)),
+        quarterSwitchOLED.map((elem) => (elem.value / 100).toFixed(2)),
+        quarterHardwareTotal.map((elem) => (elem.value / 100).toFixed(2)),
+        quarterSoftwareTotal.map((elem) => (elem.value / 100).toFixed(2)),
+        quarterNintendoMobile.map((elem) => elem.value),
     ]
 
     const graphQuartersLastFY = [
-        proportionOfOverseasSalesQtrLastFY.map((elem) => elem.value),
-        proportionOfHardwareSalesQtrLastFY.map((elem) => elem.value),
-        proportionOfFirstPartySoftwareSalesQtrLastFY.map((elem) => elem.value),
-        digitalSalesQtrLastFY.map((elem) => elem.value),
-        proportionOfDigitalSalesQtrLastFY.map((elem) => elem.value),
-        proportionOfDLverPackagedSoftwareQtrLastFY.map((elem) => elem.value),
+        quarterSwitchOGLastFY.map((elem) => (elem.value / 100).toFixed(2)),
+        quarterSwitchLiteLastFY.map((elem) => (elem.value / 100).toFixed(2)),
+        quarterSwitchOLEDLastFY.map((elem) => (elem.value / 100).toFixed(2)),
+        quarterHardwareTotalLastFY.map((elem) => (elem.value / 100).toFixed(2)),
+        quarterSoftwareTotalLastFY.map((elem) => (elem.value / 100).toFixed(2)),
+        quarterNintendoMobileLastFY.map((elem) => elem.value),
     ]
 
     const graphCumulative = [
-        [proportionOfOverseasSalesQtr[0], ...proportionOfOverseasSalesCml].map((elem) => elem.value),
-        [proportionOfHardwareSalesQtr[0], ...proportionOfHardwareSalesCml].map((elem) => elem.value),
-        [proportionOfFirstPartySoftwareSalesQtr[0], ...proportionOfFirstPartySoftwareSalesCml].map((elem) => elem.value),
-        [digitalSalesQtr[0], ...digitalSalesCml].map((elem, index) => elem.value - digitalSalesQtr[index].value),
-        [proportionOfDigitalSalesQtr[0], ...proportionOfDigitalSalesCml].map((elem) => elem.value),
-        [proportionOfDLverPackagedSoftwareQtr[0], ...proportionOfDLverPackagedSoftwareCml].map((elem) => elem.value),
+        nintendoSwitchOGFiltered.map((elem) => (elem.value / 100).toFixed(2)),
+        nintendoSwitchLiteFiltered.map((elem) => (elem.value / 100).toFixed(2)),
+        nintendoSwitchOLEDFiltered.map((elem) => (elem.value / 100).toFixed(2)),
+        nintendoSwitchHardwareTotalFiltered.map((elem) => (elem.value / 100).toFixed(2)),
+        nintendoSwitchSoftwareTotalFiltered.map((elem) => (elem.value / 100).toFixed(2)),
+        nintendoMobileFiltered.map((elem) => elem.value),
     ]
 
     const graphCumulativeLastFY = [
-        [proportionOfOverseasSalesQtrLastFY[0], ...proportionOfOverseasSalesCmlLastFY].map((elem) => elem.value),
-        [proportionOfHardwareSalesQtrLastFY[0], ...proportionOfHardwareSalesCmlLastFY].map((elem) => elem.value),
-        [proportionOfFirstPartySoftwareSalesQtrLastFY[0], ...proportionOfFirstPartySoftwareSalesCmlLastFY].map((elem) => elem.value),
-        [digitalSalesQtrLastFY[0], ...digitalSalesCmlLastFY].map((elem, index) => elem.value - digitalSalesQtrLastFY[index].value),
-        [proportionOfDigitalSalesQtrLastFY[0], ...proportionOfDigitalSalesCmlLastFY].map((elem) => elem.value),
-        [proportionOfDLverPackagedSoftwareQtrLastFY[0], ...proportionOfDLverPackagedSoftwareCmlLastFY].map((elem) => elem.value),
+        nintendoSwitchOGLastFY.map((elem, index) => ((elem.value - quarterSwitchOGLastFY[index].value) / 100).toFixed(2)),
+        nintendoSwitchLiteLastFY.map((elem, index) => ((elem.value - quarterSwitchOGLastFY[index].value) / 100).toFixed(2)),
+        nintendoSwitchOLEDLastFY.map((elem, index) => ((elem.value - quarterSwitchOGLastFY[index].value) / 100).toFixed(2)),
+        nintendoSwitchHardwareTotalLastFY.map((elem, index) => ((elem.value - quarterSwitchOGLastFY[index].value) / 100).toFixed(2)),
+        nintendoSwitchSoftwareTotalLastFY.map((elem) => (elem.value / 100).toFixed(2)),
+        nintendoMobileLastFY.map((elem) => elem.value),
     ]
 
     return (
@@ -119,7 +119,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                         datasets: [
                             {
                             data: graphQuarters[activePage-1],
-                            label: `${kpiLabels[activePage-1]}[Quarter]`,
+                            label: `${headerLabels[activePage-1]}[Quarter]`,
                             borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + "1)"
@@ -136,7 +136,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                             },
                             {
                             data: graphCumulative[activePage-1],
-                            label: `${kpiLabels[activePage-1]}[Cumulative]`,
+                            label: `${headerLabels[activePage-1]}[Cumulative]`,
                             borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".3)"
@@ -189,7 +189,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                         datasets: [
                             {
                                 data: graphQuarters[activePage-1],
-                                label: `${kpiLabels[activePage-1]}[Quarter]`,
+                                label: `${headerLabels[activePage-1]}[Quarter]`,
                                 borderColor: "indigo",
                                 backgroundColor: "red",
                                 pointRadius: 6,
@@ -199,7 +199,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                             },
                             {
                                 data: graphCumulative[activePage-1],
-                                label: `${kpiLabels[activePage-1]}[Cumulative]`,
+                                label: `${headerLabels[activePage-1]}[Cumulative]`,
                                 borderColor: "rgba(75, 0, 130, .30)",
                                 backgroundColor: "red",
                                 pointRadius: 6,
@@ -209,7 +209,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                             },
                             {
                                 data: graphQuartersLastFY[activePage-1],
-                                label: `${kpiLabelsLastFY[activePage-1]}[Quarter]`,
+                                label: `${headerLabelsLastFY[activePage-1]}[Quarter]`,
                                 borderColor: "orange",
                                 backgroundColor: "cyan",
                                 pointRadius: 6,
@@ -219,7 +219,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                             },
                             {
                                 data: graphCumulativeLastFY[activePage-1],
-                                label: `${kpiLabelsLastFY[activePage-1]}[Cumulative]`,
+                                label: `${headerLabelsLastFY[activePage-1]}[Cumulative]`,
                                 borderColor: "rgba(255, 165, 0, 0.3)",
                                 backgroundColor: "cyan",
                                 pointRadius: 6,
@@ -265,7 +265,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                         datasets: [
                             {
                             data: graphQuarters[activePage-1],
-                            label: `${kpiLabels[activePage-1]}[Quarter]`,
+                            label: `${headerLabels[activePage-1]}[Quarter]`,
                             backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".80)"
@@ -276,7 +276,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                             },
                             {
                             data: graphCumulative[activePage-1],
-                            label: `${kpiLabels[activePage-1]}[Cumulative]`,
+                            label: `${headerLabels[activePage-1]}[Cumulative]`,
                             backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".20)"
@@ -322,7 +322,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                     datasets: [
                         {
                             data: graphQuarters[activePage-1],
-                            label: `${kpiLabels[activePage-1]}[Quarter]`,
+                            label: `${headerLabels[activePage-1]}[Quarter]`,
                             borderColor: "black",
                             backgroundColor: "indigo",
                             borderWidth: 2,
@@ -332,7 +332,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                         },
                         {
                             data: graphCumulative[activePage-1],
-                            label: `${kpiLabels[activePage-1]}[Cumulative]`,
+                            label: `${headerLabels[activePage-1]}[Cumulative]`,
                             borderColor: "black",
                             backgroundColor: "rgba(75, 0, 130, .20)",
                             borderWidth: 2,
@@ -342,7 +342,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                         },
                         {
                             data: graphQuartersLastFY[activePage-1],
-                            label: `${kpiLabelsLastFY[activePage-1]}[Quarter]`,
+                            label: `${headerLabelsLastFY[activePage-1]}[Quarter]`,
                             borderColor: "black",
                             backgroundColor: "orange",
                             borderWidth: 2,
@@ -352,7 +352,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                         },
                         {
                             data: graphCumulativeLastFY[activePage-1],
-                            label: `${kpiLabelsLastFY[activePage-1]}[Cumulative]`,
+                            label: `${headerLabelsLastFY[activePage-1]}[Cumulative]`,
                             borderColor: "black",
                             backgroundColor: "rgba(255, 165, 0, 0.2)",
                             borderWidth: 2,

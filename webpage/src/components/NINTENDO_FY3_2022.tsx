@@ -10,6 +10,7 @@ import { printRegions } from "../data/nintendo/Nintendo-FY3-2022/regional-hw-sw-
 import GRAPH_NINTENDO_EARNINGS_FY3_22 from "../graphs/nintendo/Nintendo-FY3-2022/GRAPH_NINTENDO_EARNINGS_FY3_22";
 import GRAPH_NINTENDO_KPI_FY3_22 from "../graphs/nintendo/Nintendo-FY3-2022/GRAPH_NINTENDO_KPI_FY3_22";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_22 from "../graphs/nintendo/Nintendo-FY3-2022/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_22";
+import GRAPH_NINTENDO_NSW_HW_SW_FY3_22 from "../graphs/nintendo/Nintendo-FY3-2022/GRAPH_NINTENDO_NSW_HW_SW_FY3_22";
 
 export default function NINTENDO_FY3_22() {
 
@@ -118,6 +119,8 @@ export default function NINTENDO_FY3_22() {
             <Code style={{backgroundColor: `${state.colour}`}} block>{data}</Code>
             {(value === "Consolidated Operating Results")
                 ? <GRAPH_NINTENDO_EARNINGS_FY3_22 />
+                : (value === "Global Hardware/Software units, Mobile/IP related income")
+                ? <GRAPH_NINTENDO_NSW_HW_SW_FY3_22 />
                 : (value === "Key/Digital Sales Indicator")
                 ? <GRAPH_NINTENDO_KPI_FY3_22 />
                 : (value === "Top Selling Titles")
