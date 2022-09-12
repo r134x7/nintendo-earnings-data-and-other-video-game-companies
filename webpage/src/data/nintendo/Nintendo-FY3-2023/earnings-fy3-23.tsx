@@ -9,7 +9,7 @@ import {
     Earnings,
     } from "../../../utils/earnings-logic"
 
-    const currentQuarter = 4;
+    const currentQuarter = 1;
 
     const netSales: Earnings[] = [
         {
