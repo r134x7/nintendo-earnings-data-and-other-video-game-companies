@@ -88,7 +88,13 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_22() {
     const graphCumulativeLastFY = [
         netSalesLastFY.map((elem, index) => elem.value - netSalesLastFYDifference[index].value),
         operatingIncomeLastFY.map((elem, index) => elem.value - operatingIncomeLastFYDifference[index].value),
-        [operatingMarginQuartersLastFY[0], ...operatingMarginCumulativeLastFY].map((elem, index) => elem.value - operatingMarginQuartersLastFY[index].value),
+        [operatingMarginQuartersLastFY[0], ...operatingMarginCumulativeLastFY].map((elem, index) =>{
+            return (elem.value > operatingMarginQuartersLastFY[index].value)
+            ? elem.value - operatingMarginQuartersLastFY[index].value
+            // : - elem.value + operatingMarginQuarters[index].value
+            : 0 // the least worst result to ensure accuracy
+        }),
+
         netIncomeLastFY.map((elem, index) => elem.value - netIncomeLastFYDifference[index].value),
     ]
 
