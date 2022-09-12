@@ -91,21 +91,22 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
     ]
 
     const graphCumulative = [
-        nintendoSwitchOGFiltered.map((elem) => (elem.value / 100).toFixed(2)),
-        nintendoSwitchLiteFiltered.map((elem) => (elem.value / 100).toFixed(2)),
-        nintendoSwitchOLEDFiltered.map((elem) => (elem.value / 100).toFixed(2)),
-        nintendoSwitchHardwareTotalFiltered.map((elem) => (elem.value / 100).toFixed(2)),
-        nintendoSwitchSoftwareTotalFiltered.map((elem) => (elem.value / 100).toFixed(2)),
-        nintendoMobileFiltered.map((elem) => elem.value),
+        nintendoSwitchOGFiltered.map((elem, index) => ((elem.value - quarterSwitchOG[index].value) / 100).toFixed(2)),
+        nintendoSwitchLiteFiltered.map((elem, index) => ((elem.value - quarterSwitchLite[index].value) / 100).toFixed(2)),
+        nintendoSwitchOLEDFiltered.map((elem, index) => ((elem.value - quarterSwitchOLED[index].value) / 100).toFixed(2)),
+        nintendoSwitchHardwareTotalFiltered.map((elem, index) => ((elem.value - quarterHardwareTotal[index].value) / 100).toFixed(2)),
+        nintendoSwitchSoftwareTotalFiltered.map((elem, index) => ((elem.value - quarterSoftwareTotal[index].value) / 100).toFixed(2)),
+        nintendoMobileFiltered.map((elem, index) => ((elem.value - quarterNintendoMobile[index].value) / 100).toFixed(2)),
     ]
 
     const graphCumulativeLastFY = [
         nintendoSwitchOGLastFY.map((elem, index) => ((elem.value - quarterSwitchOGLastFY[index].value) / 100).toFixed(2)),
-        nintendoSwitchLiteLastFY.map((elem, index) => ((elem.value - quarterSwitchOGLastFY[index].value) / 100).toFixed(2)),
-        nintendoSwitchOLEDLastFY.map((elem, index) => ((elem.value - quarterSwitchOGLastFY[index].value) / 100).toFixed(2)),
-        nintendoSwitchHardwareTotalLastFY.map((elem, index) => ((elem.value - quarterSwitchOGLastFY[index].value) / 100).toFixed(2)),
-        nintendoSwitchSoftwareTotalLastFY.map((elem) => (elem.value / 100).toFixed(2)),
-        nintendoMobileLastFY.map((elem) => elem.value),
+        nintendoSwitchLiteLastFY.map((elem, index) => ((elem.value - quarterSwitchLiteLastFY[index].value) / 100).toFixed(2)),
+        nintendoSwitchOLEDLastFY.map((elem, index) => ((elem.value - quarterSwitchOLEDLastFY[index].value) / 100).toFixed(2)),
+        nintendoSwitchHardwareTotalLastFY.map((elem, index) => ((elem.value - quarterHardwareTotalLastFY[index].value) / 100).toFixed(2)),
+        nintendoSwitchSoftwareTotalLastFY.map((elem, index) => ((elem.value - quarterSoftwareTotalLastFY[index].value) / 100).toFixed(2)),
+        nintendoMobileLastFY.map((elem, index) => ((elem.value - quarterNintendoMobileLastFY[index].value) / 100).toFixed(2)),
+
     ]
 
     return (
@@ -113,7 +114,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
         {(checked === false && barChecked === false)
             ? (
                 <Line
-                    datasetIdKey="Key/Digital Sales Indicator"
+                    datasetIdKey="Global HW/SW Sales Units"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
@@ -157,20 +158,16 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                     options={{
                      scales: {
                         y: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: true,
                             title: {
                               display: true,
-                              text: (activePage === 4)
-                                        ? "Billion yen (¥)"
-                                        : "Percentage (%)",
+                              text: (activePage === 6)
+                                        ? "Million yen (¥)"
+                                        : "Units in Millions",
                             },
                           },
                           x: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: true,
                               title: {
                                   display: true,
                                   text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
@@ -183,7 +180,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
             : (checked === true && barChecked === false) 
             ? (
                 <Line
-                    datasetIdKey="Key/Digital Sales Indicator"
+                    datasetIdKey="Global HW/SW Sales Units"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
@@ -233,20 +230,16 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                     options={{
                      scales: {
                         y: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: true,
                             title: {
                               display: true,
-                              text: (activePage === 4)
-                                        ? "Billion yen (¥)"
-                                        : "Percentage (%)",
+                              text: (activePage === 6)
+                                        ? "Million yen (¥)"
+                                        : "Units in Millions",
                             },
                           },
                           x: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: true,
                               title: {
                                   display: true,
                                   text: `Quarters for Fiscal Years Ending ${labels.MarchThisYear} and ${labels.MarchLastYear}`,
@@ -259,7 +252,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
             : (checked === false && barChecked === true) 
             ? (
                 <Bar
-                    datasetIdKey="Key/Digital Sales Indicator"
+                    datasetIdKey="Global HW/SW Sales Units"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
@@ -291,20 +284,16 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                     options={{
                      scales: {
                         y: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: true,
                             title: {
                               display: true,
-                              text: (activePage === 4)
-                                        ? "Billion yen (¥)"
-                                        : "Percentage (%)",
+                              text: (activePage === 6)
+                                        ? "Million yen (¥)"
+                                        : "Units in Millions",
                             },
                           },
                           x: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: true,
                               title: {
                                   display: true,
                                   text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
@@ -316,7 +305,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
             )
             : (
                 <Bar
-                datasetIdKey="Key/Digital Sales Indicator"
+                datasetIdKey="Global HW/SW Sales Units"
                 data={{
                     labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                     datasets: [
@@ -326,9 +315,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                             borderColor: "black",
                             backgroundColor: "indigo",
                             borderWidth: 2,
-                            stack: (activePage === 4)
-                                    ? "stack 0"
-                                    : "0",
+                            stack: "stack 0"
                         },
                         {
                             data: graphCumulative[activePage-1],
@@ -336,9 +323,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                             borderColor: "black",
                             backgroundColor: "rgba(75, 0, 130, .20)",
                             borderWidth: 2,
-                            stack: (activePage === 4)
-                                    ? "stack 0"
-                                    : "1",
+                            stack: "stack 0"
                         },
                         {
                             data: graphQuartersLastFY[activePage-1],
@@ -346,9 +331,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                             borderColor: "black",
                             backgroundColor: "orange",
                             borderWidth: 2,
-                            stack: (activePage === 4)
-                                    ? "stack 1"
-                                    : "2",
+                            stack: "stack 1"
                         },
                         {
                             data: graphCumulativeLastFY[activePage-1],
@@ -356,9 +339,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                             borderColor: "black",
                             backgroundColor: "rgba(255, 165, 0, 0.2)",
                             borderWidth: 2,
-                            stack: (activePage === 4)
-                                    ? "stack 1"
-                                    : "3",
+                            stack: "stack 1"
                         },
                     ], 
                 }}
@@ -366,20 +347,16 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                 options={{
                  scales: {
                     y: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: true,
                         title: {
                           display: true,
-                          text: (activePage === 4)
-                                        ? "Billion yen (¥)"
-                                        : "Percentage (%)",
+                          text: (activePage === 6)
+                                        ? "Million yen (¥)"
+                                        : "Units in Millions",
                         },
                       },
                       x: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: true,
                           title: {
                               display: true,
                               text: `Quarters for Fiscal Years Ending ${labels.MarchThisYear} and ${labels.MarchLastYear}`,
