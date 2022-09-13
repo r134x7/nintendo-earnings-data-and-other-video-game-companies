@@ -689,7 +689,7 @@ const sortedCollection = collection.map((elem, index, array) => {
         return x // x which is the returned array is now returned to the array of arrays
     })
 
-const sortedTitles = sortedCollection.map((elem) => {
+export const sortedTitles = sortedCollection.map((elem) => {
         return decimateCalculation(elem)
     })
 
@@ -706,7 +706,7 @@ export const [
 ] = sortedTitles 
 
 
-const differenceTitles = sortedCollection.map((elem) => {
+export const differenceTitles = sortedCollection.map((elem) => {
     return decimateCalculation(elem)
 }).map((elem) => {
     return quarterlyCalculation(elem)
