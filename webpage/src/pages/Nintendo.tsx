@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text, Group, Button, Space, Collapse, Autocomplete, NativeSelect, ColorPicker, Anchor, Stack, Paper } from "@mantine/core"
+import { Text, Group, Space, SegmentedControl, Autocomplete, ColorPicker, Anchor, Stack, Paper} from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,12 +13,10 @@ import NINTENDO_FY3_22 from "../components/NINTENDO_FY3_2022";
 import NINTENDO_FY3_23 from "../components/NINTENDO_FY3_2023";
 import NINTENDO_CML from "../components/NINTENDO_CML";
 
-const yearsList = Array.from({length: 8}, (elem, index) => 
+const yearsList = Array.from({length: 7}, (elem, index) => 
                     {
-                      return (index === 0)
-                            ? "Special Page"
-                            : "FY3/" + (index + 2016)
-                    }) // FY3/2017 to FY3/2023 at length: 8
+                            return "FY3/" + (2023 - index)
+                    }) // FY3/2017 to FY3/2023 at length: 7
 
 // const coloursList = ["rgba(52, 58, 64, 0.2)", "#2C2E33"]
 
@@ -34,7 +32,7 @@ export default function Nintendo() {
     const [textColour, setTextColour] = useState({})
 
     const [seconds, setSeconds] = useState(0);
-    const interval = useInterval(() => setSeconds((s) => s + 1), 120);
+    const interval = useInterval(() => setSeconds((s) => s + 1), 80);
 
     useEffect(() => {
         if (seconds === splitMessage.length) {
@@ -48,6 +46,7 @@ export default function Nintendo() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [seconds])
 
+    const [value, setValue] = useState("");
     const [year, setYear] = useState("");
 
     const [colour, setColour] = useState("rgb(0, 255, 255)")
@@ -85,6 +84,18 @@ export default function Nintendo() {
                     </Anchor>
             </Stack>
             </Paper>
+            <SegmentedControl 
+                mb="sm"
+                mt="sm"
+                fullWidth
+                orientation="horizontal"
+                value={value}
+                onChange={setValue}
+                data={[
+                    "Data by Fiscal Year",
+                    "Special Page",
+                ]}
+            />
             <Group position="center">
 
                 <Autocomplete
@@ -92,7 +103,7 @@ export default function Nintendo() {
                     mb="sm"
                     mr="md"
                     placeholder="Select"
-                    label="Select Fiscal Year from 2017 to 2022, (or visit the special page)."
+                    label="Select Fiscal Year from 2017 to 2023."
                     description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
                     radius="xl"
                     size="md"
@@ -108,6 +119,7 @@ export default function Nintendo() {
                 </Text>    
                 <ColorPicker 
                         withPicker={false}
+                        size="lg"
                         mb="sm" 
                         swatchesPerRow={7} 
                         format="rgb" 
@@ -170,6 +182,7 @@ export default function Nintendo() {
                         </Text>    
                     <ColorPicker 
                         withPicker={false}
+                        size="lg"
                         mb="sm" 
                         swatchesPerRow={7} 
                         format="rgb" 
