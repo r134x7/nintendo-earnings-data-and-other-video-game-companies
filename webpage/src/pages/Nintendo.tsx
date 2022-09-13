@@ -46,7 +46,7 @@ export default function Nintendo() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [seconds])
 
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState("Data by Fiscal Year");
     const [year, setYear] = useState("");
 
     const [colour, setColour] = useState("rgb(0, 255, 255)")
@@ -96,6 +96,10 @@ export default function Nintendo() {
                     "Special Page",
                 ]}
             />
+
+            {
+                (value === "Data by Fiscal Year")
+                ? 
             <Group position="center">
 
                 <Autocomplete
@@ -107,7 +111,7 @@ export default function Nintendo() {
                     description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
                     radius="xl"
                     size="md"
-                    limit={5}
+                    limit={3}
                     data={yearsList}
                     value={year} 
                     onChange={setYear}
@@ -152,27 +156,27 @@ export default function Nintendo() {
                         </Paper>
 
             </Group>
+                : <NINTENDO_CML />
+            }
 
-            {   (year === "FY3/2023")
+            {   (year === "FY3/2023" && value === "Data by Fiscal Year")
                 ? <NINTENDO_FY3_23 />
-                : (year === "FY3/2022")
+                : (year === "FY3/2022" && value === "Data by Fiscal Year")
                 ? <NINTENDO_FY3_22 />
-                : (year === "FY3/2021") 
+                : (year === "FY3/2021" && value === "Data by Fiscal Year") 
                 ? <NINTENDO_FY3_21 />
-                : (year === "FY3/2020")
+                : (year === "FY3/2020" && value === "Data by Fiscal Year")
                 ? <NINTENDO_FY3_20 />
-                : (year === "FY3/2019")
+                : (year === "FY3/2019" && value === "Data by Fiscal Year")
                 ? <NINTENDO_FY3_19 />
-                : (year === "FY3/2018")
+                : (year === "FY3/2018" && value === "Data by Fiscal Year")
                 ? <NINTENDO_FY3_18 />
-                : (year === "FY3/2017")
+                : (year === "FY3/2017" && value === "Data by Fiscal Year")
                 ? <NINTENDO_FY3_17 />
-                : (year === "Special Page")
-                ? <NINTENDO_CML />
                 : null
             }
             
-            { (year !== "")
+            { (year !== "" && value === "Data by Fiscal Year")
                 ? (
                 <Group position="center">
                     <Space h="xl" />
