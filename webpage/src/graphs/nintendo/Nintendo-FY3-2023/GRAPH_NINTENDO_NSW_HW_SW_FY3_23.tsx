@@ -32,7 +32,7 @@ import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
 Chart.register(...registerables); // to get the package working, source: https://www.chartjs.org/docs/next/getting-started/integration.html
 
-export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
+export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_23() {
 
     const state: any = useSelector(state => state);
 
