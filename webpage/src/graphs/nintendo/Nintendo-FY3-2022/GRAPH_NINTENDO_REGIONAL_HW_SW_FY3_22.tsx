@@ -86,7 +86,7 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
         quarterSwitchSoftwareTotalRegions,
     ].map((elem) => {
         return elem.map((secondElem, secondIndex) => {
-            return secondElem.valueB
+            return secondElem.valueB / 100
         })
     }) 
 
@@ -98,7 +98,7 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
         quarterSwitchSoftwareTotalRegions,
     ].map((elem) => {
         return elem.map((secondElem, secondIndex) => {
-            return secondElem.valueC
+            return secondElem.valueC / 100
         })
     }) 
 
@@ -110,7 +110,7 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
         quarterSwitchSoftwareTotalRegions,
     ].map((elem) => {
         return elem.map((secondElem, secondIndex) => {
-            return secondElem.valueD
+            return secondElem.valueD / 100
         })
     }) 
 
@@ -122,7 +122,7 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
         quarterSwitchSoftwareTotalRegions,
     ].map((elem) => {
         return elem.map((secondElem, secondIndex) => {
-            return secondElem.valueE
+            return secondElem.valueE / 100
         })
     }) 
 
@@ -174,6 +174,102 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
         })
     }) 
 
+    const graphCumulativeRegionB = [
+        nintendoSwitchOGRegionsFiltered,
+        nintendoSwitchLiteRegionsFiltered,
+        nintendoSwitchOLEDRegionsFiltered,
+        nintendoSwitchHardwareTotalRegionsFiltered,
+        nintendoSwitchSoftwareTotalRegionsFiltered,
+    ].map((elem) => {
+        return elem.map((secondElem, secondIndex) => {
+            return secondElem.valueB
+        })
+    })
+
+    const graphCumulativeRegionC = [
+        nintendoSwitchOGRegionsFiltered,
+        nintendoSwitchLiteRegionsFiltered,
+        nintendoSwitchOLEDRegionsFiltered,
+        nintendoSwitchHardwareTotalRegionsFiltered,
+        nintendoSwitchSoftwareTotalRegionsFiltered,
+    ].map((elem) => {
+        return elem.map((secondElem, secondIndex) => {
+            return secondElem.valueC
+        })
+    })
+
+    const graphCumulativeRegionD = [
+        nintendoSwitchOGRegionsFiltered,
+        nintendoSwitchLiteRegionsFiltered,
+        nintendoSwitchOLEDRegionsFiltered,
+        nintendoSwitchHardwareTotalRegionsFiltered,
+        nintendoSwitchSoftwareTotalRegionsFiltered,
+    ].map((elem) => {
+        return elem.map((secondElem, secondIndex) => {
+            return secondElem.valueD
+        })
+    })
+
+    const graphCumulativeRegionE = [
+        nintendoSwitchOGRegionsFiltered,
+        nintendoSwitchLiteRegionsFiltered,
+        nintendoSwitchOLEDRegionsFiltered,
+        nintendoSwitchHardwareTotalRegionsFiltered,
+        nintendoSwitchSoftwareTotalRegionsFiltered,
+    ].map((elem) => {
+        return elem.map((secondElem, secondIndex) => {
+            return secondElem.valueE
+        })
+    })
+
+    const graphCumulativeRegionBLastFY = [
+        nintendoSwitchOGRegionsLastFY,
+        nintendoSwitchLiteRegionsLastFY,
+        nintendoSwitchOLEDRegionsLastFY,
+        nintendoSwitchHardwareTotalRegionsLastFY,
+        nintendoSwitchSoftwareTotalRegionsLastFY,
+    ].map((elem) => {
+        return elem.map((secondElem, secondIndex) => {
+            return secondElem.valueB
+        })
+    })
+
+    const graphCumulativeRegionCLastFY = [
+        nintendoSwitchOGRegionsLastFY,
+        nintendoSwitchLiteRegionsLastFY,
+        nintendoSwitchOLEDRegionsLastFY,
+        nintendoSwitchHardwareTotalRegionsLastFY,
+        nintendoSwitchSoftwareTotalRegionsLastFY,
+    ].map((elem) => {
+        return elem.map((secondElem, secondIndex) => {
+            return secondElem.valueC
+        })
+    })
+
+    const graphCumulativeRegionDLastFY = [
+        nintendoSwitchOGRegionsLastFY,
+        nintendoSwitchLiteRegionsLastFY,
+        nintendoSwitchOLEDRegionsLastFY,
+        nintendoSwitchHardwareTotalRegionsLastFY,
+        nintendoSwitchSoftwareTotalRegionsLastFY,
+    ].map((elem) => {
+        return elem.map((secondElem, secondIndex) => {
+            return secondElem.valueD
+        })
+    })
+
+    const graphCumulativeRegionELastFY = [
+        nintendoSwitchOGRegionsLastFY,
+        nintendoSwitchLiteRegionsLastFY,
+        nintendoSwitchOLEDRegionsLastFY,
+        nintendoSwitchHardwareTotalRegionsLastFY,
+        nintendoSwitchSoftwareTotalRegionsLastFY,
+    ].map((elem) => {
+        return elem.map((secondElem, secondIndex) => {
+            return secondElem.valueE
+        })
+    })
+
     return (
         <div className="chart">
         {(checked === false && barChecked === false)
@@ -184,8 +280,8 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                            data: graphQuarters[activePage-1],
-                            label: `${headerLabels[activePage-1]}[Quarter]`,
+                            data: graphQuartersRegionB[activePage-1],
+                            label: `${headerLabels[activePage-1]}[Japan]`,
                             borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + "1)"
@@ -201,8 +297,8 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
                             pointBorderWidth: 2,
                             },
                             {
-                            data: graphCumulative[activePage-1],
-                            label: `${headerLabels[activePage-1]}[Cumulative]`,
+                            data: graphQuartersRegionC[activePage-1],
+                            label: `${headerLabels[activePage-1]}[The Americas]`,
                             borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".3)"
@@ -214,7 +310,41 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
                                             : acc + curr;
                                     }),
                             pointRadius: 6,
-                            pointBorderColor: "black",
+                            pointBorderColor: "red",
+                            pointBorderWidth: 2,
+                            },
+                            {
+                            data: graphQuartersRegionD[activePage-1],
+                            label: `${headerLabels[activePage-1]}[Europe]`,
+                            borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                                return (curr === ".")
+                                        ? acc + ".3)"
+                                        : acc + curr;
+                                }),
+                            backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                                    return (curr === ".")
+                                            ? acc + ".3)"
+                                            : acc + curr;
+                                    }),
+                            pointRadius: 6,
+                            pointBorderColor: "blue",
+                            pointBorderWidth: 2,
+                            },
+                            {
+                            data: graphQuartersRegionE[activePage-1],
+                            label: `${headerLabels[activePage-1]}[Other]`,
+                            borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                                return (curr === ".")
+                                        ? acc + ".3)"
+                                        : acc + curr;
+                                }),
+                            backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                                    return (curr === ".")
+                                            ? acc + ".3)"
+                                            : acc + curr;
+                                    }),
+                            pointRadius: 6,
+                            pointBorderColor: "green",
                             pointBorderWidth: 2,
                             },
                         ], 
@@ -224,11 +354,10 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
                      scales: {
                         y: {
                             stacked: true,
+                            type: "logarithmic",
                             title: {
                               display: true,
-                              text: (activePage === 6)
-                                        ? "Million yen (¥)"
-                                        : "Units in Millions",
+                              text: "Units in Millions",
                             },
                           },
                           x: {
@@ -250,7 +379,7 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                                data: graphQuarters[activePage-1],
+                                data: graphQuartersRegionB[activePage-1],
                                 label: `${headerLabels[activePage-1]}[Quarter]`,
                                 borderColor: "indigo",
                                 backgroundColor: "red",
@@ -260,7 +389,7 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
                                 stack: "stack 0",
                             },
                             {
-                                data: graphCumulative[activePage-1],
+                                data: graphQuartersRegionC[activePage-1],
                                 label: `${headerLabels[activePage-1]}[Cumulative]`,
                                 borderColor: "rgba(75, 0, 130, .30)",
                                 backgroundColor: "red",
@@ -270,7 +399,7 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
                                 stack: "stack 0",
                             },
                             {
-                                data: graphQuartersLastFY[activePage-1],
+                                data: graphQuartersRegionBLastFY[activePage-1],
                                 label: `${headerLabelsLastFY[activePage-1]}[Quarter]`,
                                 borderColor: "orange",
                                 backgroundColor: "cyan",
@@ -280,7 +409,7 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
                                 stack: "stack 1",
                             },
                             {
-                                data: graphCumulativeLastFY[activePage-1],
+                                data: graphQuartersRegionCLastFY[activePage-1],
                                 label: `${headerLabelsLastFY[activePage-1]}[Cumulative]`,
                                 borderColor: "rgba(255, 165, 0, 0.3)",
                                 backgroundColor: "cyan",
@@ -322,7 +451,7 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                            data: graphQuarters[activePage-1],
+                            data: graphQuartersRegionB[activePage-1],
                             label: `${headerLabels[activePage-1]}[Quarter]`,
                             backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
@@ -333,7 +462,7 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
                             borderWidth: 2,
                             },
                             {
-                            data: graphCumulative[activePage-1],
+                            data: graphQuartersRegionC[activePage-1],
                             label: `${headerLabels[activePage-1]}[Cumulative]`,
                             backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
@@ -375,7 +504,7 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
                     labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                     datasets: [
                         {
-                            data: graphQuarters[activePage-1],
+                            data: graphQuartersRegionB[activePage-1],
                             label: `${headerLabels[activePage-1]}[Quarter]`,
                             borderColor: "black",
                             backgroundColor: "indigo",
@@ -383,7 +512,7 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
                             stack: "stack 0"
                         },
                         {
-                            data: graphCumulative[activePage-1],
+                            data: graphQuartersRegionC[activePage-1],
                             label: `${headerLabels[activePage-1]}[Cumulative]`,
                             borderColor: "black",
                             backgroundColor: "rgba(75, 0, 130, .20)",
@@ -391,7 +520,7 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
                             stack: "stack 0"
                         },
                         {
-                            data: graphQuartersLastFY[activePage-1],
+                            data: graphQuartersRegionBLastFY[activePage-1],
                             label: `${headerLabelsLastFY[activePage-1]}[Quarter]`,
                             borderColor: "black",
                             backgroundColor: "orange",
@@ -399,7 +528,7 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
                             stack: "stack 1"
                         },
                         {
-                            data: graphCumulativeLastFY[activePage-1],
+                            data: graphQuartersRegionCLastFY[activePage-1],
                             label: `${headerLabelsLastFY[activePage-1]}[Cumulative]`,
                             borderColor: "black",
                             backgroundColor: "rgba(255, 165, 0, 0.2)",
@@ -432,7 +561,7 @@ export default function GRAPH_NINTENDO_REGIONAL_HW_SW_FY3_22() {
             />
             )}
                 <Group mt="md" position="center">
-                    <Pagination page={activePage} onChange={setPage} total={graphQuarters.length} color="teal" size="sm" radius="md" />
+                    <Pagination page={activePage} onChange={setPage} total={headerLabels.length} color="teal" size="sm" radius="md" />
                         <Switch onLabel="BAR" offLabel="BAR" size="md" checked={barChecked} onChange={(event) => setBarChecked(event.currentTarget.checked)} />
                             <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
             </Group>
