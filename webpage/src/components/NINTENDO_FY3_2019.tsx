@@ -10,6 +10,8 @@ import { printRegions } from "../data/nintendo/Nintendo-FY3-2019/regional-hw-sw-
 import GRAPH_NINTENDO_EARNINGS_FY3_19 from "../graphs/nintendo/Nintendo-FY3-2019/GRAPH_NINTENDO_EARNINGS_FY3_19";
 import GRAPH_NINTENDO_KPI_FY3_19 from "../graphs/nintendo/Nintendo-FY3-2019/GRAPH_NINTENDO_KPI_FY3_19";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_19 from "../graphs/nintendo/Nintendo-FY3-2019/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_19";
+import GRAPH_NINTENDO_MST_FY3_19 from "../graphs/nintendo/Nintendo-FY3-2019/GRAPH_NINTENDO_MST_FY3_19";
+import GRAPH_NINTENDO_NSW_HW_SW_FY3_19 from "../graphs/nintendo/Nintendo-FY3-2019/GRAPH_NINTENDO_NSW_HW_SW_FY3_19";
 
 export default function NINTENDO_FY3_19() {
 
@@ -24,7 +26,7 @@ export default function NINTENDO_FY3_19() {
             ? setData(consolidatedOperatingResults)
             : (value === "Global Hardware/Software units, Mobile/IP related income")
             ? setData(nintendoHardwareSoftwareMobile)
-            : (value === "Key/Digital Sales Indicator")
+            : (value === "Key/Digital Sales Indicators")
             ? setData(keyIndicators)
             : (value === "FY Million-Seller Titles")
             ? setData(fyMillionSellers)
@@ -108,7 +110,7 @@ export default function NINTENDO_FY3_19() {
                     data={[ "Data Sources",
                             "Consolidated Operating Results", 
                             "Global Hardware/Software units, Mobile/IP related income", 
-                            "Key/Digital Sales Indicator", 
+                            "Key/Digital Sales Indicators", 
                             "FY Million-Seller Titles", 
                             "Regional Hardware/Software units", 
                             "Top Selling Titles",]}
@@ -118,8 +120,12 @@ export default function NINTENDO_FY3_19() {
             <Code style={{backgroundColor: `${state.colour}`}} block>{data}</Code>
             {(value === "Consolidated Operating Results")
                 ? <GRAPH_NINTENDO_EARNINGS_FY3_19 />
-                : (value === "Key/Digital Sales Indicator")
+                : (value === "Global Hardware/Software units, Mobile/IP related income")
+                ? <GRAPH_NINTENDO_NSW_HW_SW_FY3_19 />
+                : (value === "Key/Digital Sales Indicators")
                 ? <GRAPH_NINTENDO_KPI_FY3_19 />
+                : (value === "FY Million-Seller Titles")
+                ? <GRAPH_NINTENDO_MST_FY3_19 /> 
                 : (value === "Top Selling Titles")
                 ? <GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_19 />
                 : null
