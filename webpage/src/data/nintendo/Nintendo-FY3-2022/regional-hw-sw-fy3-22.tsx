@@ -92,7 +92,7 @@ const nintendoSwitchOGRegions: Section[] = [
     },
 ]
 
-const nintendoSwitchOGRegionsLastFY: Section[] = [
+export const nintendoSwitchOGRegionsLastFY: Section[] = [
     {
         name: " Switch ",
         period: " 1st Quarter ",
@@ -242,7 +242,7 @@ const nintendoSwitchLiteRegions: Section[] = [
     },
 ]
 
-const nintendoSwitchLiteRegionsLastFY: Section[] = [
+export const nintendoSwitchLiteRegionsLastFY: Section[] = [
     {
         name: " Switch Lite ",
         period: " 1st Quarter ",
@@ -392,7 +392,7 @@ const nintendoSwitchOLEDRegions: Section[] = [
     },
 ]
 
-const nintendoSwitchOLEDRegionsLastFY: Section[] = [
+export const nintendoSwitchOLEDRegionsLastFY: Section[] = [
     {
         name: " Switch OLED ",
         period: " 1st Quarter ",
@@ -542,7 +542,7 @@ const nintendoSwitchHardwareTotalRegions: Section[] = [
     },
 ]
 
-const nintendoSwitchHardwareTotalRegionsLastFY: Section[] = [
+export const nintendoSwitchHardwareTotalRegionsLastFY: Section[] = [
     {
         name: " Nintendo Switch Hardware Total ",
         period: " 1st Quarter ",
@@ -692,7 +692,7 @@ const nintendoSwitchSoftwareTotalRegions: Section[] = [
     },
 ]
 
-const nintendoSwitchSoftwareTotalRegionsLastFY: Section[] = [
+export const nintendoSwitchSoftwareTotalRegionsLastFY: Section[] = [
     {
         name: " Nintendo Switch Software Total ",
         period: " 1st Quarter ",
@@ -790,7 +790,7 @@ const filteredCollection = [
     nintendoSwitchSoftwareTotalRegions,
 ] as const;
 
-const [
+export const [
     quarterSwitchOGRegions,
     quarterSwitchOGRegionsLastFY,
     quarterSwitchLiteRegions,
@@ -808,7 +808,7 @@ const [
                 : quarterlyCalculation(elem) // last FY numbers...
 })
 
-const [
+export const [
     nintendoSwitchOGRegionsFiltered,
     nintendoSwitchLiteRegionsFiltered,
     nintendoSwitchOLEDRegionsFiltered,
