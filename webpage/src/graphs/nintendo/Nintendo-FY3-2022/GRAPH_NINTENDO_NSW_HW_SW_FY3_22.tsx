@@ -96,7 +96,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
         nintendoSwitchOLEDFiltered.map((elem, index) => ((elem.value - quarterSwitchOLED[index].value) / 100).toFixed(2)),
         nintendoSwitchHardwareTotalFiltered.map((elem, index) => ((elem.value - quarterHardwareTotal[index].value) / 100).toFixed(2)),
         nintendoSwitchSoftwareTotalFiltered.map((elem, index) => ((elem.value - quarterSoftwareTotal[index].value) / 100).toFixed(2)),
-        nintendoMobileFiltered.map((elem, index) => ((elem.value - quarterNintendoMobile[index].value) / 100).toFixed(2)),
+        nintendoMobileFiltered.map((elem, index) => ((elem.value - quarterNintendoMobile[index].value)).toFixed(2)),
     ]
 
     const graphCumulativeLastFY = [
@@ -105,7 +105,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
         nintendoSwitchOLEDLastFY.map((elem, index) => ((elem.value - quarterSwitchOLEDLastFY[index].value) / 100).toFixed(2)),
         nintendoSwitchHardwareTotalLastFY.map((elem, index) => ((elem.value - quarterHardwareTotalLastFY[index].value) / 100).toFixed(2)),
         nintendoSwitchSoftwareTotalLastFY.map((elem, index) => ((elem.value - quarterSoftwareTotalLastFY[index].value) / 100).toFixed(2)),
-        nintendoMobileLastFY.map((elem, index) => ((elem.value - quarterNintendoMobileLastFY[index].value) / 100).toFixed(2)),
+        nintendoMobileLastFY.map((elem, index) => ((elem.value - quarterNintendoMobileLastFY[index].value)).toFixed(2)),
 
     ]
 
@@ -347,7 +347,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_22() {
                 options={{
                  scales: {
                     y: {
-                            stacked: true,
+                        stacked: true,
                         title: {
                           display: true,
                           text: (activePage === 6)

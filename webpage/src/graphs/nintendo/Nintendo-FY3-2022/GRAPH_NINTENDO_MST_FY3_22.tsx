@@ -122,6 +122,7 @@ export default function GRAPH_NINTENDO_MST_FY3_22() {
                      scales: {
                         y: {
                             stacked: true,
+                            type: "logarithmic",
                             title: {
                               display: true,
                               text: "Units in Millions",
@@ -192,6 +193,7 @@ export default function GRAPH_NINTENDO_MST_FY3_22() {
                      scales: {
                         y: {
                             stacked: true,
+                            type: "logarithmic",
                             title: {
                               display: true,
                               text: "Units in Millions",
@@ -244,7 +246,7 @@ export default function GRAPH_NINTENDO_MST_FY3_22() {
                      scales: {
                         y: {
                             stacked: true,
-                            // max: graphQuartersRegionC[activePage-1],
+                            type: "logarithmic",
                             title: {
                               display: true,
                               text: "Units in Millions",
@@ -306,6 +308,7 @@ export default function GRAPH_NINTENDO_MST_FY3_22() {
                  scales: {
                     y: {
                             stacked: true,
+                            type: "logarithmic",
                         title: {
                           display: true,
                               text: "Units in Millions",
