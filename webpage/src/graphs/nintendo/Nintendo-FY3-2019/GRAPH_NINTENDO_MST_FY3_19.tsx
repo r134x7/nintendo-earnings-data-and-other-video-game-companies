@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import {
         differenceTitles,
         sortedTitles,
-} from "../../../data/nintendo/Nintendo-FY3-2020/mst-fy3-20";
+} from "../../../data/nintendo/Nintendo-FY3-2019/mst-fy3-19";
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
 Chart.register(...registerables); // to get the package working, source: https://www.chartjs.org/docs/next/getting-started/integration.html
