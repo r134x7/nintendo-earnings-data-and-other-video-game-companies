@@ -140,6 +140,7 @@ export default function GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_21() {
                      scales: {
                         y: {
                             stacked: true,
+                            type: "logarithmic",
                             title: {
                               display: true,
                                   text: "Units in Millions",
@@ -210,6 +211,7 @@ export default function GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_21() {
                      scales: {
                         y: {
                             stacked: true,
+                            type: "logarithmic",
                             title: {
                               display: true,
                                   text: "Units in Millions",
@@ -262,6 +264,7 @@ export default function GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_21() {
                      scales: {
                         y: {
                             stacked: true,
+                            type: "logarithmic",
                             title: {
                               display: true,
                                   text: "Units in Millions",
@@ -323,6 +326,7 @@ export default function GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_21() {
                  scales: {
                     y: {
                         stacked: true,
+                        type: "logarithmic",
                         title: {
                           display: true,
                                   text: "Units in Millions",
