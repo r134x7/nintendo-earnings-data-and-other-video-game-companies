@@ -74,22 +74,17 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_17() {
     ]
 
     const graphCumulative = [
-        netSales.map((elem, index) => elem.value - netSalesDifference[index].value),
-        operatingIncome.map((elem, index) => elem.value - operatingIncomeDifference[index].value),
-        [operatingMarginQuarters[0] , ...operatingMarginCumulative].map((elem, index) => {
-            return elem.value
-        }),
-        netIncome.map((elem, index) => elem.value - netIncomeDifference[index].value),
+        netSales.map((elem, index) => elem.value),
+        operatingIncome.map((elem, index) => elem.value),
+        [operatingMarginQuarters[0] , ...operatingMarginCumulative].map((elem, index) => elem.value),
+        netIncome.map((elem, index) => elem.value),
     ]
 
     const graphCumulativeLastFY = [
-        netSalesLastFY.map((elem, index) => elem.value - netSalesLastFYDifference[index].value),
-        operatingIncomeLastFY.map((elem, index) => elem.value - operatingIncomeLastFYDifference[index].value),
-        [operatingMarginQuartersLastFY[0], ...operatingMarginCumulativeLastFY].map((elem, index) => {
-            return elem.value
-        }),
-
-        netIncomeLastFY.map((elem, index) => elem.value - netIncomeLastFYDifference[index].value),
+        netSalesLastFY.map((elem, index) => elem.value),
+        operatingIncomeLastFY.map((elem, index) => elem.value),
+        [operatingMarginQuartersLastFY[0], ...operatingMarginCumulativeLastFY].map((elem, index) => elem.value),
+        netIncomeLastFY.map((elem, index) => elem.value),
     ]
 
     return (
@@ -141,9 +136,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_17() {
                     options={{
                      scales: {
                         y: {
-                            stacked: (activePage !== 3)
-                                        ? true
-                                        : false,
+                            stacked: false,
                             title: {
                               display: true,
                               text: (activePage !== 3)
@@ -152,9 +145,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_17() {
                             },
                           },
                           x: {
-                            stacked: (activePage !== 3)
-                                        ? true
-                                        : false,
+                            stacked: false,
                               title: {
                                   display: true,
                                   text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
@@ -217,9 +208,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_17() {
                     options={{
                      scales: {
                         y: {
-                            stacked: (activePage !== 3)
-                                        ? true
-                                        : false,
+                            stacked: false,
                             title: {
                               display: true,
                               text: (activePage !== 3)
@@ -228,9 +217,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_17() {
                             },
                           },
                           x: {
-                            stacked: (activePage !== 3)
-                                        ? true
-                                        : false,
+                            stacked: false,
                               title: {
                                   display: true,
                                   text: `Quarters for Fiscal Years Ending ${labels.MarchThisYear} and ${labels.MarchLastYear}`,
@@ -275,9 +262,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_17() {
                     options={{
                      scales: {
                         y: {
-                            stacked: (activePage !== 3)
-                                        ? true
-                                        : false,
+                            stacked: false,
                             title: {
                               display: true,
                               text: (activePage !== 3)
@@ -286,9 +271,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_17() {
                             },
                           },
                           x: {
-                            stacked: (activePage !== 3)
-                                        ? true
-                                        : false,
+                            stacked: false,
                               title: {
                                   display: true,
                                   text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
@@ -310,9 +293,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_17() {
                             borderColor: "black",
                             backgroundColor: "indigo",
                             borderWidth: 2,
-                            stack: (activePage !== 3)
-                                    ? "stack 0"
-                                    : "0",
+                            stack: "0",
                         },
                         {
                             data: graphCumulative[activePage-1],
@@ -320,9 +301,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_17() {
                             borderColor: "black",
                             backgroundColor: "rgba(75, 0, 130, .20)",
                             borderWidth: 2,
-                            stack: (activePage !== 3)
-                                    ? "stack 0"
-                                    : "1",
+                            stack: "1",
                         },
                         {
                             data: graphQuartersLastFY[activePage-1],
@@ -330,9 +309,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_17() {
                             borderColor: "black",
                             backgroundColor: "orange",
                             borderWidth: 2,
-                            stack: (activePage !== 3)
-                                    ? "stack 1"
-                                    : "2",
+                            stack: "2",
                         },
                         {
                             data: graphCumulativeLastFY[activePage-1],
@@ -340,9 +317,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_17() {
                             borderColor: "black",
                             backgroundColor: "rgba(255, 165, 0, 0.2)",
                             borderWidth: 2,
-                            stack: (activePage !== 3)
-                                    ? "stack 1"
-                                    : "3",
+                            stack: "3",
                         },
                     ], 
                 }}
@@ -350,9 +325,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_17() {
                 options={{
                  scales: {
                     y: {
-                            stacked: (activePage !== 3)
-                                        ? true
-                                        : false,
+                        stacked: false,
                         title: {
                           display: true,
                           text: (activePage !== 3)
@@ -361,9 +334,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_17() {
                         },
                       },
                     x: {
-                            stacked: (activePage !== 3)
-                                        ? true
-                                        : false,
+                        stacked: false,
                           title: {
                               display: true,
                               text: `Quarters for Fiscal Years Ending ${labels.MarchThisYear} and ${labels.MarchLastYear}`,
