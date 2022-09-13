@@ -35,7 +35,7 @@ export const proportionOfOverseasSalesQtr: KPDIndicators[] = [
     },
 ]
 
-const proportionOfOverseasSalesCml: KPDIndicators[] = [
+export const proportionOfOverseasSalesCml: KPDIndicators[] = [
     {
         category: "cumulative",
         units: "percentage",
@@ -83,7 +83,7 @@ export const proportionOfHardwareSalesQtr: KPDIndicators[] = [
     },
 ]
 
-const proportionOfHardwareSalesCml: KPDIndicators[] = [
+export const proportionOfHardwareSalesCml: KPDIndicators[] = [
     {
         category: "cumulative",
         units: "percentage",
@@ -131,7 +131,7 @@ export const proportionOfFirstPartySoftwareSalesQtr: KPDIndicators[] = [
     },
 ]
 
-const proportionOfFirstPartySoftwareSalesCml: KPDIndicators[] = [
+export const proportionOfFirstPartySoftwareSalesCml: KPDIndicators[] = [
     {
         category: "cumulative",
         units: "percentage",
@@ -179,7 +179,7 @@ export const digitalSalesQtr: KPDIndicators[] = [
     },
 ]
 
-const digitalSalesCml: KPDIndicators[] = [
+export const digitalSalesCml: KPDIndicators[] = [
     {
         category: "cumulative",
         units: "currency",
@@ -227,7 +227,7 @@ export const proportionOfDigitalSalesQtr: KPDIndicators[] = [
     },
 ]
 
-const proportionOfDigitalSalesCml: KPDIndicators[] = [
+export const proportionOfDigitalSalesCml: KPDIndicators[] = [
     {
         category: "cumulative",
         units: "percentage",
@@ -275,7 +275,7 @@ export const proportionOfDLverPackagedSoftwareQtr: KPDIndicators[] = [
     },
 ]
 
-const proportionOfDLverPackagedSoftwareCml: KPDIndicators[] = [
+export const proportionOfDLverPackagedSoftwareCml: KPDIndicators[] = [
     {
         category: "cumulative",
         units: "percentage",
