@@ -4,6 +4,7 @@ import { collection as fy3_19_collection } from "../Nintendo-FY3-2019/mst-fy3-19
 import { collection as fy3_20_collection } from "../Nintendo-FY3-2020/mst-fy3-20";
 import { collection as fy3_21_collection } from "../Nintendo-FY3-2021/mst-fy3-21";
 import { collection as fy3_22_collection } from "../Nintendo-FY3-2022/mst-fy3-22";
+import { collection as fy3_23_collection } from "../Nintendo-FY3-2023/mst-fy3-23";
 
 import { Header, Titles, decimateCalculation, printHead } from "../../../utils/fy-million-seller-titles-logic"
 
@@ -14,7 +15,16 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
         fy3_20_collection,
         fy3_21_collection,
         fy3_22_collection,
+        fy3_23_collection,
     ] as const;
+
+    // latestFYcollection is where the latest FY collection needs to be placed.
+    const latestFYcollection = fy3_23_collection.map((elem, index) => {
+        
+        return sortingArrays(index)
+    })
+
+    const dateLabel = "| Latest data as of June 30th, 2022        |\n+" + "-".repeat(42) + "+"
 
     const header: Header = {
     switchHeader: "| Nintendo Switch FY Million-Seller Titles |",
@@ -22,7 +32,7 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
     thirdHeader: "| Units                                    |",
     areaHeader: "| Area         |   Japan | Overseas|",
     globalHeader: "| Global       |   WW FY |  WW LTD |",
-    fiscalYear: " FY3/22 ",
+    fiscalYear: " FY3/23 ",
     switchSummaryHeader: "| Nintendo Switch FY    |\n| Million-Seller Titles |\n",
     japanSummaryHeader: "| Japan                           |",
     overseasSummaryHeader: "| Overseas                        |",
@@ -214,12 +224,7 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
 
     }
 
-    const testingFunction = fy3_22_collection.map((elem, index) => {
-        
-        return sortingArrays(index)
-    })
-
-    const reducedArrays = testingFunction.map((elem) => {
+    const reducedArrays = latestFYcollection.map((elem) => {
 
         return accumulate(elem)
     })
@@ -288,12 +293,15 @@ const printFour = printTitlesGlobal(divideSortedGlobalCollection)
 
 export const printJapan =
 `${printOne}
+${dateLabel}
 ${printTwo}`;
 
 export const printOverseas = 
 `${printOne}
+${dateLabel}
 ${printThree}`;
 
 export const printGlobal = 
 `${printOne}
+${dateLabel}
 ${printFour}`;
