@@ -311,7 +311,7 @@ import {
         return quarterlyCalculation(elem)
     })
 
-    export const [netSalesCumulative, netSalesLastFYCumulative, operatingIncomeCumulative, operatingIncomeLastFYCumlative,
+    export const [netSalesCumulative, netSalesLastFYCumulative, operatingIncomeCumulative, operatingIncomeLastFYCumulative,
         netIncomeCumulative, netIncomeLastFYCumulative] = collection.map((elem) => {
             return cumulativeCalculation(elem)
     })
@@ -324,7 +324,7 @@ import {
         operatingIncomeDifference,
         operatingIncomeLastFYDifference,
         operatingIncomeCumulative,
-        operatingIncomeLastFYCumlative,
+        operatingIncomeLastFYCumulative,
         netIncomeDifference,
         netIncomeLastFYDifference,
         netIncomeCumulative,
@@ -346,6 +346,8 @@ import {
             operatingIncomeCumulative,
             netSalesLastFYDifference,
             operatingIncomeLastFYDifference,
+            netSalesLastFYCumulative,
+            operatingIncomeLastFYCumulative,
             netSalesForecasts,
             operatingIncomeForecasts,
     ]
