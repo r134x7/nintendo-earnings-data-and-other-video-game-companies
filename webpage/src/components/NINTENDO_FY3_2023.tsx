@@ -8,6 +8,10 @@ import { printFYMillionSellerTitles } from "../data/nintendo/Nintendo-FY3-2023/m
 import { printHardwareSoftware } from "../data/nintendo/Nintendo-FY3-2023/nsw-hardware-software-fy3-23";
 import { printRegions } from "../data/nintendo/Nintendo-FY3-2023/regional-hw-sw-fy3-23";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_23 from "../graphs/nintendo/Nintendo-FY3-2023/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_23";
+import GRAPH_NINTENDO_EARNINGS_FY3_23 from "../graphs/nintendo/Nintendo-FY3-2023/GRAPH_NINTENDO_EARNINGS_FY3_23";
+import GRAPH_NINTENDO_KPI_FY3_23 from "../graphs/nintendo/Nintendo-FY3-2023/GRAPH_NINTENDO_KPI_FY3_23";
+import GRAPH_NINTENDO_MST_FY3_23 from "../graphs/nintendo/Nintendo-FY3-2023/GRAPH_NINTENDO_MST_FY3_23";
+import GRAPH_NINTENDO_NSW_HW_SW_FY3_23 from "../graphs/nintendo/Nintendo-FY3-2023/GRAPH_NINTENDO_NSW_HW_SW_FY3_23";
 
 export default function NINTENDO_FY3_23() {
 
@@ -22,7 +26,7 @@ export default function NINTENDO_FY3_23() {
             ? setData(consolidatedOperatingResults)
             : (value === "Global Hardware/Software units, Mobile/IP related income")
             ? setData(nintendoHardwareSoftwareMobile)
-            : (value === "Key/Digital Sales Indicator")
+            : (value === "Key/Digital Sales Indicators")
             ? setData(keyIndicators)
             : (value === "FY Million-Seller Titles")
             ? setData(fyMillionSellers)
@@ -106,7 +110,7 @@ export default function NINTENDO_FY3_23() {
                     data={[ "Data Sources",
                             "Consolidated Operating Results", 
                             "Global Hardware/Software units, Mobile/IP related income", 
-                            "Key/Digital Sales Indicator", 
+                            "Key/Digital Sales Indicators", 
                             "FY Million-Seller Titles", 
                             "Regional Hardware/Software units", 
                             "Top Selling Titles",]}
@@ -114,14 +118,18 @@ export default function NINTENDO_FY3_23() {
             
             {sources}
             <Code style={{backgroundColor: `${state.colour}`}} block>{data}</Code>
-            {/* {(value === "Consolidated Operating Results")
+            {(value === "Consolidated Operating Results")
                 ? <GRAPH_NINTENDO_EARNINGS_FY3_23 />
-                : (value === "Key/Digital Sales Indicator")
+                : (value === "Global Hardware/Software units, Mobile/IP related income")
+                ? <GRAPH_NINTENDO_NSW_HW_SW_FY3_23 />
+                : (value === "Key/Digital Sales Indicators")
                 ? <GRAPH_NINTENDO_KPI_FY3_23 />
+                : (value === "FY Million-Seller Titles")
+                ? <GRAPH_NINTENDO_MST_FY3_23 /> 
                 : (value === "Top Selling Titles")
                 ? <GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_23 />
                 : null
-            } */}
+            }
             <Space h="xl" />
             <Space h="xl" />
             <Space h="xl" />
