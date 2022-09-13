@@ -4,12 +4,12 @@ import { useSelector } from "react-redux";
 import {
         differenceTitles,
         sortedTitles,
-} from "../../../data/nintendo/Nintendo-FY3-2022/mst-fy3-22";
+} from "../../../data/nintendo/Nintendo-FY3-2021/mst-fy3-21";
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
 Chart.register(...registerables); // to get the package working, source: https://www.chartjs.org/docs/next/getting-started/integration.html
 
-export default function GRAPH_NINTENDO_MST_FY3_22() {
+export default function GRAPH_NINTENDO_MST_FY3_21() {
 
     const state: any = useSelector(state => state);
 
@@ -26,10 +26,10 @@ export default function GRAPH_NINTENDO_MST_FY3_22() {
     }
 
     const labels: Labels = {
-        currentFY: "FY3/2022",
-        lastFY: "FY3/2021",
-        MarchThisYear: "March 2022",
-        MarchLastYear: "March 2021"
+        currentFY: "FY3/2021",
+        lastFY: "FY3/2020",
+        MarchThisYear: "March 2021",
+        MarchLastYear: "March 2020"
     }
 
     const headerLabels = sortedTitles.map((elem) => {
