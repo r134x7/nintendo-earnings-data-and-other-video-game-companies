@@ -11,7 +11,7 @@ import {
 
     const currentQuarter = 4;
 
-    const netSales: Earnings[] = [
+    export const netSales: Earnings[] = [
         {
             category: "quarter",
             units: "currency",
@@ -41,7 +41,7 @@ import {
         },
     ]
 
-    const netSalesLastFy: Earnings[] = [
+    export const netSalesLastFY: Earnings[] = [
         {
             category: "quarter",
             units: "currency",
@@ -89,7 +89,7 @@ import {
         },
     ]
 
-    const operatingIncome: Earnings[] = [
+    export const operatingIncome: Earnings[] = [
         {
             category: "quarter",
             units: "currency",
@@ -119,7 +119,7 @@ import {
         }, 
     ]
     
-    const operatingIncomeLastFY: Earnings[] = [
+    export const operatingIncomeLastFY: Earnings[] = [
         {
             category: "quarter",
             units: "currency",
@@ -167,7 +167,7 @@ import {
         }, // next Fiscal Year Forecast
     ]
 
-    const netIncome: Earnings[] = [
+    export const netIncome: Earnings[] = [
         {
             category: "quarter",
             units: "currency",
@@ -197,7 +197,7 @@ import {
         }, // fourth quarter
     ]
     
-    const netIncomeLastFY: Earnings[] = [
+    export const netIncomeLastFY: Earnings[] = [
         {
             category: "quarter",
             units: "currency",
@@ -273,7 +273,7 @@ import {
 
     const collection = [
         netSales,
-        netSalesLastFy,
+        netSalesLastFY,
         operatingIncome,
         operatingIncomeLastFY,
         netIncome,
@@ -323,7 +323,13 @@ import {
             operatingIncomeForecasts
     ]
 
-    export const [operatingMarginQuarters, operatingMarginCumulative, operatingMarginQuartersLastFY, opMarginForecasts] = opMarginCollection.map((elem, index, array) => {
+    export const [
+        operatingMarginQuarters, 
+        operatingMarginCumulative,
+        operatingMarginQuartersLastFY,
+        operatingMarginCumulativeLastFY,
+        opMarginForecasts
+    ] = opMarginCollection.map((elem, index, array) => {
         // Input array of arrays of length 4, output array of arrays of length 4 and then filter to 2.
     
         return (index % 2 === 0) // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
