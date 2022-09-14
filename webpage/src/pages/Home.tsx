@@ -45,18 +45,23 @@ const Home = () => {
                     </Anchor>
             </Stack>
             </Paper>        
-            <Paper shadow="sm" radius="xl" p="md" withBorder>
+            <Paper mt="sm" shadow="sm" radius="xl" p="md" withBorder>
             <Stack align="center">
                 <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">Status</Text>
                 <List listStyleType="disc">
-                    <List.Item>Nintendo -</List.Item>
+                    {/* <List.Item>Nintendo -</List.Item> */}
+                    <Text>Nintendo -</Text>
                     <List withPadding listStyleType="disc">
                         <List.Item>Latest update: Earnings release data from 1st Quarter FY3/2023.</List.Item>
                         <List.Item>Future update planned: FAQ section.</List.Item>
                     </List>
-                    <List.Item>Capcom -</List.Item>
+                    <Text>Capcom -</Text>
                     <List withPadding listStyleType="disc">
                         <List.Item>Page update: Work in progress.</List.Item>
+                    </List>
+                    <Text>Events -</Text>
+                    <List withPadding listStyleType="disc">
+                        <List.Item>Future update planned: Waiting to update with next round of earnings release dates.</List.Item>
                     </List>
                 </List>
             </Stack>
