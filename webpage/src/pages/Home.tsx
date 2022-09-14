@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Text, Anchor, Stack, Paper } from '@mantine/core';
+import { Text, Anchor, Stack, Paper, List } from '@mantine/core';
 import { useInterval } from "@mantine/hooks";
 import "../App.css" // have to import the css to get it to work
 
 const Home = () => {
 
-    const one = "Welcome to ggx2ac and the archives of Nintendo earnings data and other video game companies";
+    const one = "Welcome to ggx2ac + archives: Nintendo earnings data and other video game companies";
     const splitOne = one.split("");
 
     const [text, setText] = useState("");
@@ -39,10 +39,26 @@ const Home = () => {
             </Stack>
             <Paper shadow="sm" radius="xl" p="md" withBorder>
             <Stack align="center">
-                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">Also visit Install Base, it's a place to discuss and elaborate on the business side of the game industry.</Text>
+                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">Also visit Install Base, it's a place to discuss and elaborate on the business side of the video game industry.</Text>
                     <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/" target="_blank" >
                         https://www.installbaseforum.com/
                     </Anchor>
+            </Stack>
+            </Paper>        
+            <Paper shadow="sm" radius="xl" p="md" withBorder>
+            <Stack align="center">
+                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">Status</Text>
+                <List listStyleType="disc">
+                    <List.Item>Nintendo -</List.Item>
+                    <List withPadding listStyleType="disc">
+                        <List.Item>Latest update: Earnings release data from 1st Quarter FY3/2023.</List.Item>
+                        <List.Item>Future update planned: FAQ section.</List.Item>
+                    </List>
+                    <List.Item>Capcom -</List.Item>
+                    <List withPadding listStyleType="disc">
+                        <List.Item>Page update: Work in progress.</List.Item>
+                    </List>
+                </List>
             </Stack>
             </Paper>        
         </div>
