@@ -123,3 +123,17 @@ const title2: Titles[] = [
         miscellaneous: "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)",
     },
 ]
+
+function quarterlyCalculation(quarters: Titles[]) {
+       
+   const calc: Titles[] = quarters.map((elem, index, array) => {
+       return (elem.period !== " 1st Quarter  " && elem.period !== " Last FY Total " && elem.period !== " Total at Two FYs prior ")
+               ? {
+                ...elem, 
+                valueA: Number((elem.value - array[index-1].value).toFixed(2)),
+                }
+               : elem
+   })
+   
+   return calc
+}
