@@ -241,7 +241,7 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
     });
 
 
-    const FYCmlFigure = titleCumulative.filter((elem, index) => {
+    const FYCmlFigure = titleDifference.filter((elem, index) => {
         return index < currentQuarter
     }).map((elem, index) => elem.value).reduce((prev, next) => prev + next)
 
