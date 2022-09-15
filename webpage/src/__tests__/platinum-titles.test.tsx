@@ -257,7 +257,17 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
         return header.fiscalYear + reducedValueFixed + "|"
     })
 
+    const printFYCmlYoY = (currentQuarter === 4 && titleCumulative[4].value === 0)
+        ? " New! "
+        : ((titleCumulative[3].value - titleCumulative[4].value) > (titleCumulative[4].value - titleCumulative[5].value))
+        ? `+${((
+            ((titleCumulative[3].value - titleCumulative[4].value) / (titleCumulative[4].value - titleCumulative[5].value)) - 1) * 100).toFixed(2)}% ` 
+        : (titleCumulative[3].value < (titleCumulative[4].value - titleCumulative[5].value))
+        ? `${((
+            ((titleCumulative[3].value - titleCumulative[4].value) / (titleCumulative[4].value - titleCumulative[5].value)) - 1) * 100).toFixed(2)}% ` 
+        : "NaN"
 
+                
 
 };
 
