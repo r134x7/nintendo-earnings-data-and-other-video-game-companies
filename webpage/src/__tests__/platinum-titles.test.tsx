@@ -20,7 +20,7 @@ export type Header = {
     ltd: "| Life-To-Date       |",
 }
 
-const currentQuarter = 4;
+const currentQuarter = 3;
 
 const title1: Titles[] = [
     {
@@ -169,7 +169,7 @@ const header: Header = {
     thirdHeader: "| Platform                       |",
     fourthHeader: "| Release Date and Rank          |",
     fifthHeader: "| Units                          |",
-    fiscalYear: "| FY3/23 Cumulative  |",
+    fiscalYear: "| FY3/22 Cumulative  |",
     fiscalYearYoY: "| FY3/22 Cml. YoY%   |",
     ltd: "| Life-To-Date       |",
 }
@@ -314,25 +314,24 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
     const quartersPrint = titleDifference.filter((elem, index) => {
         return index < currentQuarter && elem.value !== 0
     }).map((elem, index) => {
-        // if (!elem) {
-        //     return []
-        // } // need to prevent never type...
 
         let printValue: string = `${elem.value}M ` 
-        let printValueFixed: string = (printValue.length >= 10)
+        let printValueFixed: string = (printValue.length >= 11)
             ? printValue
-            : " ".repeat(10 - printValue.length) + printValue;
+            : " ".repeat(11 - printValue.length) + printValue;
 
-        return "|" + elem.period + "|" + printValueFixed + "|"
+        let printPeriodFixed: string = elem.period + " ".repeat(6)
+
+        return "|" + printPeriodFixed + "|" + printValueFixed + "|"
     });
 
     const printLTD = [""].map((elem, index, array) => {
 
        let printValue: string = `${titleCumulative[currentQuarter-1].value}M `
        
-       let printValueFixed: string = (printValue.length === 10)
+       let printValueFixed: string = (printValue.length >= 11)
             ? printValue
-            : " ".repeat(10 - printValue.length) + printValue;
+            : " ".repeat(11 - printValue.length) + printValue;
 
         let printLine: string = "|\n+" + "-".repeat(32) + "+";
 
@@ -343,14 +342,14 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
         return index < currentQuarter
     }).map((elem, index) => elem.value).reduce((prev, next) => prev + next)
 
-    const printFYCml = [""].map((elem) => {
+    const printFYCml = [FYCmlFigure].filter(elem => elem !== 0).map((elem) => {
 
-        let reducedFixed = Number(FYCmlFigure.toFixed(2))
+        let reducedFixed = Number(elem.toFixed(2))
 
         let reducedValue: string = `${reducedFixed}M `
-        let reducedValueFixed: string = (reducedValue.length >= 10)
+        let reducedValueFixed: string = (reducedValue.length >= 11)
             ? reducedValue
-            : " ".repeat(10 - reducedValue.length) + reducedValue; 
+            : " ".repeat(11 - reducedValue.length) + reducedValue; 
 
         return header.fiscalYear + reducedValueFixed + "|"
     })
@@ -363,13 +362,27 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
         : (currentQuarter === 4 && (titleCumulative[3].value - titleCumulative[4].value) < (titleCumulative[4].value - titleCumulative[5].value))
         ? `${((
             ((titleCumulative[3].value - titleCumulative[4].value) / (titleCumulative[4].value - titleCumulative[5].value)) - 1) * 100).toFixed(2)}% ` 
-        : [] 
+        : "NaN" 
+    
+    const printFYCmlYoYFixed: string | never[] = (printFYCmlYoY === "NaN")
+            ? []
+            : (printFYCmlYoY.length >= 11 
+                ? header.fiscalYearYoY + printFYCmlYoY + "|"
+                : header.fiscalYearYoY + " ".repeat(11 - printFYCmlYoY.length) + printFYCmlYoY + "|"
+                )
+
+    let printLine: string | never[] = (quartersPrint.length === 0) 
+            ? [] 
+            : "+" + "-".repeat(32) + "+";
+    let printDoubleLine: string = "+" + "=".repeat(32) + "+";
 
     const lastCheck = [
-        titleHeader, 
-        quartersPrint,
+        titleHeader,
+        printLine, 
+        ...quartersPrint,
+        printDoubleLine,
         printFYCml,
-        printFYCmlYoY,
+        printFYCmlYoYFixed,
         printLTD,
     ].filter(elem => elem.length !== 0)
      .reduce((prev, next) => {
@@ -388,7 +401,8 @@ test("print titles...", () => {
 
     const collection = [
         title1,
-        title2
+        title2,
+        title3,
     ] as const;
 
     // forgetting to sort beforehand...
