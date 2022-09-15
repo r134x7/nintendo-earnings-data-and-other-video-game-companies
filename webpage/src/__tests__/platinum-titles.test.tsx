@@ -241,7 +241,22 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
     });
 
 
-    const printFYCml = titleCumulative
+    const FYCmlFigure = titleCumulative.filter((elem, index) => {
+        return index < currentQuarter
+    }).map((elem, index) => elem.value).reduce((prev, next) => prev + next)
+
+    const printFYCml = [""].map((elem) => {
+
+        let reducedFixed = Number(FYCmlFigure.toFixed(2))
+
+        let reducedValue: string = `${reducedFixed}M `
+        let reducedValueFixed: string = (reducedValue.length >= 10)
+            ? reducedValue
+            : " ".repeat(10 - reducedValue.length) + reducedValue; 
+
+        return header.fiscalYear + reducedValueFixed + "|"
+    })
+
 
 
 };
