@@ -170,17 +170,17 @@ function labelTitles(titlesSorted: Titles[]) {
 
 
 const printHead = (header: Header) => 
-`+${"-".repeat(42)}+
+`+${"-".repeat(32)}+
 ${header.capcomHeader}
-+${"-".repeat(42)}+
++${"-".repeat(32)}+
 ${header.secondHeader}
-+${"-".repeat(42)}+
++${"-".repeat(32)}+
 ${header.thirdHeader}
-+${"-".repeat(42)}+
++${"-".repeat(32)}+
 ${header.fourthHeader}
-+${"-".repeat(42)}+
++${"-".repeat(32)}+
 ${header.fifthHeader}
-+${"-".repeat(42)}+`;
++${"-".repeat(32)}+`;
 
 const printTitles = (header: Header, titleDifference: Titles[], titleCumulative: Titles[], currentQuarter: number) => {
 
