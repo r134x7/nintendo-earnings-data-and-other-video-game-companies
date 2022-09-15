@@ -124,6 +124,17 @@ const title2: Titles[] = [
     },
 ]
 
+const header: Header = {
+    capcomHeader: "| Capcom - Platinum Titles       |",
+    secondHeader: "| Title                          |",
+    thirdHeader: "| Platform                       |",
+    fourthHeader: "| Release Date and Rank          |",
+    fifthHeader: "| Units                          |",
+    fiscalYear: "| FY3/23 Cumulative  |",
+    fiscalYearYoY: "| FY3/22 Cml. YoY%   |",
+    ltd: "| Life-To-Date       |",
+}
+
 function quarterlyCalculation(quarters: Titles[]) {
        
    const calc: Titles[] = quarters.map((elem, index, array) => {
@@ -143,16 +154,20 @@ function quarterlyCalculation(quarters: Titles[]) {
    return calc
 }
 
-const header: Header = {
-    capcomHeader: "| Capcom - Platinum Titles       |",
-    secondHeader: "| Title                          |",
-    thirdHeader: "| Platform                       |",
-    fourthHeader: "| Release Date and Rank          |",
-    fifthHeader: "| Units                          |",
-    fiscalYear: "| FY3/23 Cumulative  |",
-    fiscalYearYoY: "| FY3/22 Cml. YoY%   |",
-    ltd: "| Life-To-Date       |",
+function labelTitles(titlesSorted: Titles[]) {
+
+    const calc: Titles[] = titlesSorted.map((elem, index, array) => {
+        // need to check cumulative figure, if the cumulative figure doesn't match the Last FY Total 
+        return (array[4].value === 0 && array[5].value === 0) 
+                ? {...elem, label: " New! "}
+                : (array[4].value !== 0 && array[4].value !== array[5].value)
+                ? {...elem, label: " Recurring "}
+                : {...elem, label: " Sporadic "}
+    })
+    
+    return calc
 }
+
 
 const printHead = (header: Header) => 
 `+${"-".repeat(42)}+
