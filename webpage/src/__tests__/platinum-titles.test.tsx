@@ -20,7 +20,7 @@ export type Header = {
     ltd: "| Life-To-Date       |",
 }
 
-const currentQuarter = 4;
+const currentQuarter = 1;
 
 const title1: Titles[] = [
     {
@@ -217,9 +217,9 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
     const quartersPrint = titleDifference.filter((elem, index) => {
         return index < currentQuarter && elem.value !== 0
     }).map((elem, index) => {
-        if (!elem) {
-            return []
-        }
+        // if (!elem) {
+        //     return []
+        // } // need to prevent never type...
 
         let printValue: string = `${elem.value}M ` 
         let printValueFixed: string = (printValue.length >= 10)
@@ -229,7 +229,7 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
         return "|" + elem.period + "|" + printValueFixed + "|"
     });
 
-    const printLTD = titleCumulative.filter((elem, index) => index === 0).map((elem, index, array) => {
+    const printLTD = [""].map((elem, index, array) => {
 
        let printValue: string = `${titleCumulative[currentQuarter-1].value}M `
        
@@ -239,7 +239,6 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
 
         return header.ltd + printValueFixed + "|"
     });
-
 
     const FYCmlFigure = titleDifference.filter((elem, index) => {
         return index < currentQuarter
@@ -265,11 +264,23 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
         : (titleCumulative[3].value < (titleCumulative[4].value - titleCumulative[5].value))
         ? `${((
             ((titleCumulative[3].value - titleCumulative[4].value) / (titleCumulative[4].value - titleCumulative[5].value)) - 1) * 100).toFixed(2)}% ` 
-        : "NaN"
+        : [] 
 
+    const lastCheck = [
+        titleHeader, 
+        quartersPrint,
+        printFYCml,
+        printFYCmlYoY,
+        printLTD,
+    ].filter(elem => elem.length !== 0)
+     .reduce((prev, next) => {
+        return prev + "\n" + next
+     })
 
-
+    return lastCheck
 };
 
+test("print header...", () => {
 
-
+    console.log(printHead(header));
+})
