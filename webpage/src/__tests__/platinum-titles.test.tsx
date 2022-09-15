@@ -20,7 +20,7 @@ export type Header = {
     ltd: "| Life-To-Date       |",
 }
 
-const currentQuarter = 1;
+const currentQuarter = 4;
 
 const title1: Titles[] = [
     {
@@ -28,7 +28,7 @@ const title1: Titles[] = [
         releaseDate: " Jan 2018 ",
         platforms: " PS4, Xbox One, PC, DL ",
         period: " 1st Quarter  ",
-        value: 18.3,
+        value: 17.3,
         miscellaneous: "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)",
     },
     {
@@ -60,7 +60,7 @@ const title1: Titles[] = [
         releaseDate: " Jan 2018 ",
         platforms: " PS4, Xbox One, PC, DL ",
         period: " Last FY Total ",
-        value: 18.0,
+        value: 17.1,
         miscellaneous: "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)",
     },
     {
@@ -68,59 +68,98 @@ const title1: Titles[] = [
         releaseDate: " Jan 2018 ",
         platforms: " PS4, Xbox One, PC, DL ",
         period: " Total at Two FYs prior ",
-        value: 17.10,
+        value: 15.70,
         miscellaneous: "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)",
+    },
+]
+
+const title3: Titles[] = [
+    {
+        title: " Ghosts’n Goblins ",
+        releaseDate: " Jun 1986 ",
+        platforms: " NES ",
+        period: " 1st Quarter  ",
+        value: 1.64,
+    },
+    {
+        title: " Ghosts’n Goblins ",
+        releaseDate: " Jun 1986 ",
+        platforms: " NES ",
+        period: " 2nd Quarter  ",
+        value: 1.64,
+    },
+    {
+        title: " Ghosts’n Goblins ",
+        releaseDate: " Jun 1986 ",
+        platforms: " NES ",
+        period: " 3rd Quarter  ",
+        value: 1.64,
+    },
+    {
+        title: " Ghosts’n Goblins ",
+        releaseDate: " Jun 1986 ",
+        platforms: " NES ",
+        period: " 4th Quarter  ",
+        value: 1.64,
+    },
+    {
+        title: " Ghosts’n Goblins ",
+        releaseDate: " Jun 1986 ",
+        platforms: " NES ",
+        period: " Last FY Total ",
+        value: 1.64,
+    },
+    {
+        title: " Ghosts’n Goblins ",
+        releaseDate: " Jun 1986 ",
+        platforms: " NES ",
+        period: " Total at Two FYs prior ",
+        value: 1.64,
     },
 ]
 
 const title2: Titles[] = [
     {
         title: " RESIDENT EVIL 7 biohazard ",
-        releaseDate: " Jan 2018 ",
+        releaseDate: " Jun 1986 ",
         platforms: " PS4, Xbox One, PC, DL ",
         period: " 1st Quarter  ",
-        value: 11.0,
-        miscellaneous: "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)",
+        value: 9.8,
     },
     {
         title: " RESIDENT EVIL 7 biohazard ",
-        releaseDate: " Jan 2018 ",
+        releaseDate: " Jun 1986 ",
         platforms: " PS4, Xbox One, PC, DL ",
         period: " 2nd Quarter  ",
         value: 10.2,
-        miscellaneous: "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)",
     },
     {
         title: " RESIDENT EVIL 7 biohazard ",
-        releaseDate: " Jan 2018 ",
+        releaseDate: " Jun 1986 ",
         platforms: " PS4, Xbox One, PC, DL ",
         period: " 3rd Quarter  ",
         value: 10.6,
-        miscellaneous: "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)",
     },
     {
         title: " RESIDENT EVIL 7 biohazard ",
-        releaseDate: " Jan 2018 ",
+        releaseDate: " Jun 1986 ",
         platforms: " PS4, Xbox One, PC, DL ",
         period: " 4th Quarter  ",
-        value: 10.6,
-        miscellaneous: "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)",
+        value: 10.8,
     },
     {
         title: " RESIDENT EVIL 7 biohazard ",
-        releaseDate: " Jan 2018 ",
+        releaseDate: " Jun 1986 ",
         platforms: " PS4, Xbox One, PC, DL ",
         period: " Last FY Total ",
-        value: 10.8,
-        miscellaneous: "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)",
+        value: 9.0,
     },
     {
         title: " RESIDENT EVIL 7 biohazard ",
-        releaseDate: " Jan 2018 ",
+        releaseDate: " Jun 1986 ",
         platforms: " PS4, Xbox One, PC, DL ",
         period: " Total at Two FYs prior ",
-        value: 9.0,
-        miscellaneous: "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)",
+        value: 7.5,
     },
 ]
 
@@ -225,9 +264,9 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
     const titleHeader = titleDifference.filter((elem, index) => index === 0).map((elem, index, array) => {
 
         let printRank: string = ` Rank ${elem.rank} `
-        let printRankFixed: string = (printRank.length >= 9)
+        let printRankFixed: string = (printRank.length >= 11)
                 ? printRank
-                : printRank + " ".repeat(9 - printRank.length);
+                : printRank + " ".repeat(11 - printRank.length);
 
         let printTitleName: string = (elem.title.length > 32)
         ? elem.title.split(" ").reduce((prev, next, index, array) => {
@@ -263,8 +302,10 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
         ? elem.platforms + " ".repeat(32 - elem.platforms.length) 
         : elem.platforms
 
+        let printReleaseDateFixed: string = elem.releaseDate + " ".repeat(10)
 
-        let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printPlatforms + "|\n+" + "-".repeat(32) + "+\n|" + elem.releaseDate + "|" + printRankFixed  
+
+        let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printPlatforms + "|\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
 
         return printTitleNameFixed
         
@@ -293,7 +334,9 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
             ? printValue
             : " ".repeat(10 - printValue.length) + printValue;
 
-        return header.ltd + printValueFixed + "|"
+        let printLine: string = "|\n+" + "-".repeat(32) + "+";
+
+        return header.ltd + printValueFixed + printLine
     });
 
     const FYCmlFigure = titleDifference.filter((elem, index) => {
@@ -314,10 +357,10 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
 
     const printFYCmlYoY = (currentQuarter === 4 && titleCumulative[4].value === 0)
         ? " New! "
-        : ((titleCumulative[3].value - titleCumulative[4].value) > (titleCumulative[4].value - titleCumulative[5].value))
+        : (currentQuarter === 4 && (titleCumulative[3].value - titleCumulative[4].value) > (titleCumulative[4].value - titleCumulative[5].value))
         ? `+${((
             ((titleCumulative[3].value - titleCumulative[4].value) / (titleCumulative[4].value - titleCumulative[5].value)) - 1) * 100).toFixed(2)}% ` 
-        : (titleCumulative[3].value < (titleCumulative[4].value - titleCumulative[5].value))
+        : (currentQuarter === 4 && (titleCumulative[3].value - titleCumulative[4].value) < (titleCumulative[4].value - titleCumulative[5].value))
         ? `${((
             ((titleCumulative[3].value - titleCumulative[4].value) / (titleCumulative[4].value - titleCumulative[5].value)) - 1) * 100).toFixed(2)}% ` 
         : [] 
@@ -332,9 +375,6 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
      .reduce((prev, next) => {
         return prev + "\n" + next
      })
-
-    console.log(lastCheck);
-    
 
     return lastCheck
 };
