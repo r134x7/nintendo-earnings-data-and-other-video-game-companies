@@ -135,6 +135,44 @@ const header: Header = {
     ltd: "| Life-To-Date       |",
 }
 
+const exampleTable = 
+`+--------------------------------+
+| Monster Hunter: World          |
++--------------------------------+
+| PS4, Xbox One, PC, DL          |
++--------------------------------+
+| Jan 2018           | Rank 1    |
++--------------------------------+
+| 1st Quarter        |     0.20M |
+| 2nd Quarter        |     0.20M |
+| 3rd Quarter        |     0.30M |
+| 4th Quarter        |     0.20M |
++================================+
+| FY3/22 Cumulative  |     0.90M |
+| FY3/22 Cml. YoY%   |   -35.71% |
+| Life-To-Date       |    18.00M |
++--------------------------------+
+|(* Excludes shipments of
+| Monster Hunter World:
+| Iceborne Master Edition)
++--------------------------------+
++--------------------------------+
+| RESIDENT EVIL 7 biohazard      |
++--------------------------------+
+| PS4, Xbox One, PC, DL          |
++--------------------------------+
+| Jan 2017           | Rank 2    |
++--------------------------------+
+| 1st Quarter        |     0.80M |
+| 2nd Quarter        |     0.40M |
+| 3rd Quarter        |     0.40M |
+| 4th Quarter        |     0.20M |
++================================+
+| FY3/22 Cumulative  |     1.80M |
+| FY3/22 Cml. YoY%   |   +20.00% |
+| Life-To-Date       |    10.80M |
++--------------------------------+`;
+
 function quarterlyCalculation(quarters: Titles[]) {
        
    const calc: Titles[] = quarters.map((elem, index, array) => {
@@ -208,7 +246,25 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
         ? elem.title + " ".repeat(32 - elem.title.length) 
         : elem.title
 
-        let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + titleDifference[0].platforms + "|\n+" + "-".repeat(32) + "+\n|" + titleDifference[0].releaseDate + "|" + printRankFixed  
+        let printPlatforms: string = (elem.platforms.length > 32)
+        ? elem.platforms.split(" ").reduce((prev, next, index, array) => {
+
+            let nextCheck = prev + next + " ";
+            
+            if (nextCheck.length > 31 && prev.length <= 31) {
+                return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
+            } else if (index === array.length-1) {
+                return prev + next + " ".repeat(77 - prev.length)
+            } else {
+                return prev + " " + next
+            }
+        })
+        : (elem.platforms.length < 32)
+        ? elem.platforms + " ".repeat(32 - elem.platforms.length) 
+        : elem.platforms
+
+
+        let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printPlatforms + "|\n+" + "-".repeat(32) + "+\n|" + elem.releaseDate + "|" + printRankFixed  
 
         return printTitleNameFixed
         
@@ -277,6 +333,9 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
         return prev + "\n" + next
      })
 
+    console.log(lastCheck);
+    
+
     return lastCheck
 };
 
@@ -313,12 +372,15 @@ test("print titles...", () => {
         return quarterlyCalculation(elem)
     })
 
-
     const printListedTitles = differenceTitles.map((elem, index) => {
         return printTitles(header, elem, sortedCollection[index], currentQuarter)
     }) as string[];
 
-    console.log(printListedTitles);
+    const printOne = printHead(header);
+
+    const reducePrint = [printOne, ...printListedTitles].reduce((prev, next) => prev + "\n" + next)
+
+    console.log(reducePrint);
     
 
 })
