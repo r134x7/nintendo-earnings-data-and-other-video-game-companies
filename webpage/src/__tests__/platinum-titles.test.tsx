@@ -208,9 +208,9 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
         ? elem.title + " ".repeat(32 - elem.title.length) 
         : elem.title
 
-        let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n|" + printTitleName + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+        let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + titleDifference[0].platforms + "|\n+" + "-".repeat(32) + "+\n|" + titleDifference[0].releaseDate + "|" + printRankFixed  
 
-        
+        return printTitleNameFixed
         
     })
 
@@ -267,7 +267,7 @@ const printTitles = (header: Header, titleDifference: Titles[], titleCumulative:
             ((titleCumulative[3].value - titleCumulative[4].value) / (titleCumulative[4].value - titleCumulative[5].value)) - 1) * 100).toFixed(2)}% ` 
         : "NaN"
 
-                
+
 
 };
 
