@@ -254,6 +254,78 @@ function labelTitles(titlesSorted: Titles[]) {
     return calc
 }
 
+const printSummaryHead = (header: Header, newCollection: Titles[], recurringCollection: Titles[]) => {
+
+    let printNew: string = `${newCollection.length} `
+    let printNewFixed: string = (printNew.length >= 9)
+        ? printNew
+        : " ".repeat(9 - printNew.length) + printNew;
+
+    let printRecurring: string = `${recurringCollection.length} `
+    let printRecurringFixed: string = (printRecurring.length >= 9)
+        ? printRecurring
+        : " ".repeat(9 - printRecurring.length) + printRecurring;
+
+    let printTotal: string = `${newCollection.length + recurringCollection.length} `
+    let printTotalFixed: string = (printTotal.length >= 9)
+    ? printTotal
+    : " ".repeat(9 - printTotal.length) + printTotal;
+
+    let printHeader: string = "+"+"-".repeat(23)+"+\n" + header.switchSummaryHeader + "+"+"-".repeat(23)+"+"
+
+    let printTitles: string = "\n+"+"-".repeat(23)+"+\n| Titles      |   Count |\n+" + "-".repeat(23)+"+" 
+
+    let printNewRow: string = "\n| New!        |" + printNewFixed + "|"
+
+    let printRecurringRow: string = "\n| Recurring   |" + printRecurringFixed + "|"
+
+    let printTotalRow: string = "\n+"+"=".repeat(23) + "+\n| Total       |" + printTotalFixed + "|\n+"+"-".repeat(23) + "+"
+
+    return printHeader + printTitles + printNewRow + printRecurringRow + printTotalRow
+}
+    
+export const printSummary = (header: Header, regionNew: number[], regionRecurring: number[], ) => {
+
+    const regionHeaders: string[] = [header.japanSummaryHeader, header.overseasSummaryHeader, header.globalFYSummaryHeader, header.globalLTDSummaryHeader]
+
+    return regionNew.map((elem, index, array) => {
+
+        let printRegionHeader: string = "+"+"-".repeat(33)+"+\n" + regionHeaders[index] + "\n+"+"-".repeat(33)+"+\n|" + header.fiscalYear + "Cml. |   Units |    %    |\n+" + "-".repeat(33) + "+\n"
+
+        let TotalUnits: number = Number((elem + regionRecurring[index]).toFixed(2)) 
+
+        let printTotalUnits: string = `${(elem + regionRecurring[index]).toFixed(2)}M `
+        let printTotalUnitsFixed: string = (printTotalUnits.length >= 9)
+            ? printTotalUnits
+            : " ".repeat(9 - printTotalUnits.length) + printTotalUnits;
+        
+        let printNewUnits: string = `${elem.toFixed(2)}M `
+        let printNewUnitsFixed: string = (printNewUnits.length >= 9)
+                ? printNewUnits
+                : " ".repeat(9 - printNewUnits.length) + printNewUnits;
+
+        let printNewPercentages: string = `${((elem / TotalUnits) * 100).toFixed(2)}% `
+        let printNewPercentagesFixed: string = (printNewPercentages.length >= 9)
+            ? printNewPercentages
+            : " ".repeat(9 - printNewPercentages.length) + printNewPercentages;
+
+        let printRecurringUnits: string = `${regionRecurring[index].toFixed(2)}M `
+        let printRecurringUnitsFixed: string = (printRecurringUnits.length >= 9)
+            ? printRecurringUnits
+            : " ".repeat(9 - printRecurringUnits.length) + printRecurringUnits;
+        
+        let printRecurringPercentages: string = `${((regionRecurring[index] / TotalUnits) * 100).toFixed(2)}% `
+        let printRecurringPercentagesFixed: string = (printRecurringPercentages.length >= 9)
+            ? printRecurringPercentages
+            : " ".repeat(9 - printRecurringPercentages.length) + printRecurringPercentages;
+
+        let printRows: string = "| New!        |" + printNewUnitsFixed + "|" + printNewPercentagesFixed + "|\n| Recurring   |" + printRecurringUnitsFixed + "|" + printRecurringPercentagesFixed + "|\n+" + "=".repeat(33) + "+\n| Total       |" + printTotalUnitsFixed + "|\n+" + "-".repeat(23) + "+\n" 
+
+        return printRegionHeader + printRows
+    }).reduce((prev, next) => prev + next)
+
+}
+
 
 const printHead = (header: Header) => 
 `+${"-".repeat(32)}+
