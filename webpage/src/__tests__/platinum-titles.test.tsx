@@ -20,7 +20,7 @@ export type Header = {
     ltd: "| Life-To-Date       |",
 }
 
-const currentQuarter = 3;
+const currentQuarter = 4;
 
 const title1: Titles[] = [
     {
@@ -173,6 +173,15 @@ const header: Header = {
     fiscalYearYoY: "| FY3/22 Cml. YoY%   |",
     ltd: "| Life-To-Date       |",
 }
+
+const miscInfo: string[] = [
+    "###",
+    "NES: Nintendo Entertainment System, \nGB: Game Boy, \nSNES: Super Nintendo Entertainment System,",
+    "GBA: Game Boy Advance, \n3DS: Nintendo 3DS, \nGC: Nintendo GameCube, \nMD: Mega Drive/Genesis,",
+    "DC: DreamCast, \nPS: PlayStation®, \nPS2: PlayStation®2, \nPS3: PlayStation®3, \nPS4: PlayStation®4,",
+    "PSP: PSP® (PlayStation®Portable), \nPSV: PlayStation®Vita, \nDL: Full-game download, \nNSW: Nintendo Switch",
+    "\n[DL (Full-game download) includes all \ndigital download units for each platform.]",
+]
 
 const exampleTable = 
 `+--------------------------------+
@@ -432,7 +441,7 @@ test("print titles...", () => {
 
     const printOne = printHead(header);
 
-    const reducePrint = [printOne, ...printListedTitles].reduce((prev, next) => prev + "\n" + next)
+    const reducePrint = [printOne, ...printListedTitles, ...miscInfo].reduce((prev, next) => prev + "\n" + next)
 
     console.log(reducePrint);
     
