@@ -278,7 +278,7 @@ const printSummaryHead = (header: Header, newCollection: Titles[], recurringColl
     ? printTotal
     : " ".repeat(9 - printTotal.length) + printTotal;
 
-    let printHeader: string = "+"+"-".repeat(23)+"+\n" + header.switchSummaryHeader + "+"+"-".repeat(23)+"+"
+    let printHeader: string = "+"+"-".repeat(23)+"+\n" + header.summaryHeader + "+"+"-".repeat(23)+"+"
 
     let printTitles: string = "\n+"+"-".repeat(23)+"+\n| Titles      |   Count |\n+" + "-".repeat(23)+"+" 
 
@@ -293,11 +293,11 @@ const printSummaryHead = (header: Header, newCollection: Titles[], recurringColl
     
 export const printSummary = (header: Header, regionNew: number[], regionRecurring: number[], ) => {
 
-    const regionHeaders: string[] = [header.japanSummaryHeader, header.overseasSummaryHeader, header.globalFYSummaryHeader, header.globalLTDSummaryHeader]
+    // const regionHeaders: string[] = [header.japanSummaryHeader, header.overseasSummaryHeader, header.globalFYSummaryHeader, header.globalLTDSummaryHeader]
 
     return regionNew.map((elem, index, array) => {
 
-        let printRegionHeader: string = "+"+"-".repeat(33)+"+\n" + regionHeaders[index] + "\n+"+"-".repeat(33)+"+\n|" + header.fiscalYear + "Cml. |   Units |    %    |\n+" + "-".repeat(33) + "+\n"
+        let printRegionHeader: string = "\n+"+"-".repeat(33)+"+\n|" + header.summaryHeader + "\n+" + "-".repeat(33) + "+\n"
 
         let TotalUnits: number = Number((elem + regionRecurring[index]).toFixed(2)) 
 

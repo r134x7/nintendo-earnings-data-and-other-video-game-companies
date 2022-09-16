@@ -3419,7 +3419,7 @@ const newSummary = [newCollection, newCollection, newCollection, newCollection].
     if (elem.length === 0) {
         return 0
     }
-    
+   // I really should have left notes here... I am guessing that I am putting all the values into the array and then I reduce it to get the summation of that region... 
         return elem.map((secondElem) => {
             return (index === 0)
                 ? secondElem.valueA
@@ -3436,6 +3436,7 @@ const recurringSummary = [recurringCollection, recurringCollection, recurringCol
         return 0
     }
 
+   // I really should have left notes here... I am guessing that I am putting all the values into the array and then I reduce it to get the summation of that region... 
         return elem.map((secondElem) => {
             return (index === 0)
                 ? secondElem.valueA
