@@ -3401,7 +3401,7 @@ const newCollection = sortedTitles.map((elem) => {
         })
     }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
     ).map((elem) => {
-        return elem[3] // 4th quarter
+        return elem[3] // 4th quarter, I can't remember but I assume I just wanted only that quarter with cumulative data...
     })
 
 const recurringCollection = sortedTitles.map((elem) => {

@@ -18,6 +18,7 @@ export type Header = {
     fiscalYear: string,
     fiscalYearYoY: string,
     ltd: "| Life-To-Date       |",
+    summaryHeader: string,
 }
 
 const currentQuarter = 4;
@@ -172,6 +173,7 @@ const header: Header = {
     fiscalYear: "| FY3/22 Cumulative  |",
     fiscalYearYoY: "| FY3/22 Cml. YoY%   |",
     ltd: "| Life-To-Date       |",
+    summaryHeader: "| FY3/22 Cml. |   Units |    %    |",
 }
 
 const miscInfo: string[] = [
@@ -253,6 +255,11 @@ function labelTitles(titlesSorted: Titles[]) {
     
     return calc
 }
+
+// newCollection, recurringCollection, sporadicCollection...
+// use the sorted titles, label them, map the New/.../... titles, filter out zero length arrays... map again...
+// when mapping again, need to return elem[3] - elem[4] to get FY cumulative number
+// then create a summary by reducing to sum up the units
 
 const printSummaryHead = (header: Header, newCollection: Titles[], recurringCollection: Titles[]) => {
 
