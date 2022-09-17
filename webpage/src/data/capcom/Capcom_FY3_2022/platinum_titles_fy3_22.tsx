@@ -331,7 +331,7 @@ const title7: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title9: Titles[] = [
     {
         title: " Street Fighter V ", 
         releaseDate: " Feb 2016 ",
@@ -376,7 +376,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title10: Titles[] = [
     {
         title: " Resident Evil Village ", 
         releaseDate: " May 2021 ",
@@ -421,7 +421,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title12: Titles[] = [
     {
         title: " Resident Evil 3 ", 
         releaseDate: " Apr 2020 ",
@@ -466,7 +466,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title13: Titles[] = [
     {
         title: " Monster Hunter Freedom 3 ", 
         releaseDate: " Dec 2010 ",
@@ -511,7 +511,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title14: Titles[] = [
     {
         title: " Devil May Cry 5 ", 
         releaseDate: " Mar 2019 ",
@@ -556,7 +556,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title15: Titles[] = [
     {
         title: " Monster Hunter Generations Ultimate ", 
         releaseDate: " Mar 2017 ",
@@ -601,7 +601,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title16: Titles[] = [
     {
         title: " Monster Hunter Generations ", 
         releaseDate: " Nov 2015 ",
@@ -646,7 +646,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title17: Titles[] = [
     {
         title: " Monster Hunter 4 Ultimate ", 
         releaseDate: " Oct 2014 ",
@@ -691,7 +691,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title18: Titles[] = [
     {
         title: " Monster Hunter 4 ", 
         releaseDate: " Sep 2013 ",
@@ -736,7 +736,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title20: Titles[] = [
     {
         title: " Monster Hunter Freedom Unite ", 
         releaseDate: " Mar 2008 ",
@@ -781,7 +781,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title22: Titles[] = [
     {
         title: " Street Fighter IV ", 
         releaseDate: "Feb 2009 ",
@@ -826,7 +826,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title23: Titles[] = [
     {
         title: " Resident Evil ", 
         releaseDate: " Nov 2014 ",
@@ -871,7 +871,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title24: Titles[] = [
     {
         title: " Resident Evil 0: HD Remaster ", 
         releaseDate: " Jan 2016 ",
@@ -916,7 +916,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title25: Titles[] = [
     {
         title: " Dead Rising 2 ", 
         releaseDate: " Sep 2010 ",
@@ -961,7 +961,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title26: Titles[] = [
     {
         title: " Devil May Cry 4 ", 
         releaseDate: " Jan 2008 ",
@@ -1006,7 +1006,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title27: Titles[] = [
     {
         title: " Dead Rising 3 ", 
         releaseDate: " Nov 2013 ",
@@ -1051,7 +1051,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title28: Titles[] = [
     {
         title: " Resident Evil Relevations 2 ", 
         releaseDate: " Mar 2015 ",
@@ -1096,7 +1096,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title30: Titles[] = [
     {
         title: " Monster Hunter 3 Ultimate ", 
         releaseDate: " Dec 2011 ",
@@ -1141,7 +1141,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title31: Titles[] = [
     {
         title: " Resident Evil: Operation Raccoon City ", 
         releaseDate: " Mar 2012 ",
@@ -1186,7 +1186,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title32: Titles[] = [
     {
         title: " DmC Devil May Cry ", 
         releaseDate: " Jan 2013 ",
@@ -1231,7 +1231,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title33: Titles[] = [
     {
         title: " Resident Evil 4 ", 
         releaseDate: " Aug 2016 ",
@@ -1276,7 +1276,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title35: Titles[] = [
     {
         title: " Resident Evil 5 ", 
         releaseDate: " Jun 2016",
@@ -1321,7 +1321,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title37: Titles[] = [
     {
         title: " Resident Evil 6 ", 
         releaseDate: " Mar 2016 ",
@@ -1366,7 +1366,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title38: Titles[] = [
     {
         title: " Resident Evil 5: Gold Edition ", 
         releaseDate: " Feb 2010 ",
@@ -1411,7 +1411,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title40: Titles[] = [
     {
         title: " Dragon’s Dogma: Dark Arisen ", 
         releaseDate: " Apr 2013 ",
@@ -1456,7 +1456,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title41: Titles[] = [
     {
         title: " Marvel vs. Capcom 3: Fate of Two Worlds ", 
         releaseDate: " Feb 2011 ",
@@ -1501,7 +1501,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title42: Titles[] = [
     {
         title: " Resident Evil Revelations ", 
         releaseDate: " May 2013 ",
@@ -1546,7 +1546,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title45: Titles[] = [
     {
         title: " Street Fighter 30th Anniversary Collection ", 
         releaseDate: " May 2018 ",
@@ -1591,7 +1591,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title46: Titles[] = [
     {
         title: " Lost Planet 2 ", 
         releaseDate: " May 2010 ",
@@ -1636,7 +1636,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title48: Titles[] = [
     {
         title: " Resident Evil 4 Wii edition ",
         releaseDate: " May 2007 ",
@@ -1681,7 +1681,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title51: Titles[] = [
     {
         title: " Super Street Fighter IV ", 
         releaseDate: " Apr 2010 ",
@@ -1726,7 +1726,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title52: Titles[] = [
     {
         title: " Street Fighter X Tekken ", 
         releaseDate: " Mar 2012 ",
@@ -1771,7 +1771,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title53: Titles[] = [
     {
         title: " Dead Rising ", 
         releaseDate: " Aug 2006 ",
@@ -1816,7 +1816,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title54: Titles[] = [
     {
         title: " Devil May Cry 4 Special Edition ", 
         releaseDate: " Jun 2015 ",
@@ -1861,7 +1861,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title55: Titles[] = [
     {
         title: " Marvel vs. Capcom: Infinite ", 
         releaseDate: " Sep 2017 ",
@@ -1906,7 +1906,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title56: Titles[] = [
     {
         title: " Okami HD ", 
         releaseDate: " Dec 2017 ",
@@ -1951,7 +1951,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title57: Titles[] = [
     {
         title: " Resident Evil 4: Ultimate HD Edition ", 
         releaseDate: " Feb 2014 ",
@@ -1996,7 +1996,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title58: Titles[] = [
     {
         title: " Dragon’s Dogma: Dark Arisen ", 
         releaseDate: " Oct 2017 ",
@@ -2041,7 +2041,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title62: Titles[] = [
     {
         title: " Lost Planet Extreme Condition ", 
         releaseDate: " Dec 2006 ",
@@ -2086,7 +2086,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title66: Titles[] = [
     {
         title: " Ultra Street Fighter IV ", 
         releaseDate: " Aug 2014 ",
@@ -2131,7 +2131,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title67: Titles[] = [
     {
         title: " DuckTales: Remastered ", 
         releaseDate: " Nov 2013 ", 
@@ -2176,7 +2176,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title70: Titles[] = [
     {
         title: " Monster Hunter Stories 2: Wings of Ruin ", 
         releaseDate: " Jul 2021 ",
@@ -2221,7 +2221,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title71: Titles[] = [
     {
         title: " Dead Rising 2 Off The Record ", 
         releaseDate: " Oct 2010 ",
@@ -2266,7 +2266,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title72: Titles[] = [
     {
         title: " Mega Man 11 ", 
         releaseDate: " Oct 2018 ",
@@ -2311,7 +2311,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title73: Titles[] = [
     {
         title: " Phoenix Wright: Ace Attorney Trilogy ", 
         releaseDate: " Feb 2019 ",
@@ -2356,7 +2356,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title74: Titles[] = [
     {
         title: " Marvel vs. Capcom 2: New Age Of Heroes ", 
         releaseDate: " Jul 2009 ",
@@ -2401,7 +2401,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title79: Titles[] = [
     {
         title: " Monster Hunter Freedom ", 
         releaseDate: " Dec 2005 ",
@@ -2446,7 +2446,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title80: Titles[] = [
     {
         title: " Remember Me ", 
         releaseDate: " Jun 2013 ",
@@ -2491,7 +2491,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title81: Titles[] = [
     {
         title: " Super Street Fighter IV 3D ", 
         releaseDate: " Feb 2011 ",
@@ -2536,7 +2536,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title83: Titles[] = [
     {
         title: " Ultimate Marvel vs. Capcom 3 ", 
         releaseDate: " Mar 2017 ",
@@ -2581,7 +2581,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title86: Titles[] = [
     {
         title: " Dead Rising 4 ", 
         releaseDate: " Dec 2016 ",
@@ -2626,7 +2626,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title87: Titles[] = [
     {
         title: " Resident Evil 4 ", 
         releaseDate: " Mar 2012 ",
@@ -2671,7 +2671,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title88: Titles[] = [
     {
         title: " Mega Man Legacy Collection ", 
         releaseDate: " Aug 2015 ",
@@ -2716,7 +2716,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title90: Titles[] = [
     {
         title: " Ultimate Marvel vs. Capcom 3 ", 
         releaseDate: " Nov 2011 ",
@@ -2761,7 +2761,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title91: Titles[] = [
     {
         title: " Dead Rising ", 
         releaseDate: " Sep 2016 ",
@@ -2806,7 +2806,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title92: Titles[] = [
     {
         title: " DMC Devil May Cry Definitive Edition ", 
         releaseDate: " Mar 2015 ",
@@ -2851,7 +2851,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title93: Titles[] = [
     {
         title: " Devil May Cry HD Collection ", 
         releaseDate: " Mar 2012 ",
@@ -2896,52 +2896,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
-    {
-        title: " Devil May Cry HD Collection ", 
-        releaseDate: " Mar 2012 ",
-        platforms: " PS3, Xbox 360, DL ",
-        period: " 1st Quarter  ",
-        value: 1.2,
-    },
-    {
-        title: " Devil May Cry HD Collection ", 
-        releaseDate: " Mar 2012 ",
-        platforms: " PS3, Xbox 360, DL ",
-        period: " 2nd Quarter  ",
-        value: 1.2,
-    },
-    {
-        title: " Devil May Cry HD Collection ", 
-        releaseDate: " Mar 2012 ",
-        platforms: " PS3, Xbox 360, DL ",
-        period: " 3rd Quarter  ",
-        value: 1.2,
-    },
-    {
-        title: " Devil May Cry HD Collection ", 
-        releaseDate: " Mar 2012 ",
-        platforms: " PS3, Xbox 360, DL ",
-        period: " 4th Quarter  ",
-        value: 1.2,
-    },
-    {
-        title: " Devil May Cry HD Collection ", 
-        releaseDate: " Mar 2012 ",
-        platforms: " PS3, Xbox 360, DL ",
-        period: " Last FY Total ",
-        value: 1.2,
-    },
-    {
-        title: " Devil May Cry HD Collection ", 
-        releaseDate: " Mar 2012 ",
-        platforms: " PS3, Xbox 360, DL ",
-        period: " Total at Two FYs prior ",
-        value: 1.2,
-    },
-]
-
-const title0: Titles[] = [
+const title99: Titles[] = [
     {
         title: " Super Street Fighter IV Arcade Edition ", 
         releaseDate: " Jun 2011 ",
@@ -2986,7 +2941,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title100: Titles[] = [
     {
         title: " Bionic Commando ", 
         releaseDate: " Jun 2009 ",
@@ -3031,7 +2986,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title101: Titles[] = [
     {
         title: " Resident Evil Revelations Collection ", 
         releaseDate: " Nov 2017 ",
@@ -3076,7 +3031,7 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
+const title105: Titles[] = [
     {
         title: " Strider ", 
         releaseDate: " Feb 2014 ",
@@ -3121,1757 +3076,47 @@ const title0: Titles[] = [
     },
 ]
 
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
-
-const title0: Titles[] = [
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 1st Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 2nd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 3rd Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " 4th Quarter  ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Last FY Total ",
-        value: 0,
-    },
-    {
-        title: "", 
-        releaseDate: "",
-        platforms: "",
-        period: " Total at Two FYs prior ",
-        value: 0,
-    },
-]
+// const title0: Titles[] = [
+//     {
+//         title: "", 
+//         releaseDate: "",
+//         platforms: "",
+//         period: " 1st Quarter  ",
+//         value: 0,
+//     },
+//     {
+//         title: "", 
+//         releaseDate: "",
+//         platforms: "",
+//         period: " 2nd Quarter  ",
+//         value: 0,
+//     },
+//     {
+//         title: "", 
+//         releaseDate: "",
+//         platforms: "",
+//         period: " 3rd Quarter  ",
+//         value: 0,
+//     },
+//     {
+//         title: "", 
+//         releaseDate: "",
+//         platforms: "",
+//         period: " 4th Quarter  ",
+//         value: 0,
+//     },
+//     {
+//         title: "", 
+//         releaseDate: "",
+//         platforms: "",
+//         period: " Last FY Total ",
+//         value: 0,
+//     },
+//     {
+//         title: "", 
+//         releaseDate: "",
+//         platforms: "",
+//         period: " Total at Two FYs prior ",
+//         value: 0,
+//     },
+// ]
