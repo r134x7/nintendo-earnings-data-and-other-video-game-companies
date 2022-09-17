@@ -4,14 +4,14 @@ import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
-import NINTENDO_FY3_17 from "../components/NINTENDO_FY3_2017";
-import NINTENDO_FY3_18 from "../components/NINTENDO_FY3_2018";
-import NINTENDO_FY3_19 from "../components/NINTENDO_FY3_2019";
-import NINTENDO_FY3_20 from "../components/NINTENDO_FY3_2020";
-import NINTENDO_FY3_21 from "../components/NINTENDO_FY3_2021";
-import NINTENDO_FY3_22 from "../components/NINTENDO_FY3_2022";
-import NINTENDO_FY3_23 from "../components/NINTENDO_FY3_2023";
-import NINTENDO_CML from "../components/NINTENDO_CML";
+import NINTENDO_FY3_17 from "../components/nintendo/NINTENDO_FY3_2017";
+import NINTENDO_FY3_18 from "../components/nintendo/NINTENDO_FY3_2018";
+import NINTENDO_FY3_19 from "../components/nintendo/NINTENDO_FY3_2019";
+import NINTENDO_FY3_20 from "../components/nintendo/NINTENDO_FY3_2020";
+import NINTENDO_FY3_21 from "../components/nintendo/NINTENDO_FY3_2021";
+import NINTENDO_FY3_22 from "../components/nintendo/NINTENDO_FY3_2022";
+import NINTENDO_FY3_23 from "../components/nintendo/NINTENDO_FY3_2023";
+import NINTENDO_CML from "../components/nintendo/NINTENDO_CML";
 
 const yearsList = Array.from({length: 7}, (elem, index) => 
                     {

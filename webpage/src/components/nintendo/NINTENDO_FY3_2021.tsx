@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printEarnings } from "../data/nintendo/Nintendo_FY3_2022/earnings_fy3_22";
-import { printKPI } from "../data/nintendo/Nintendo_FY3_2022/kpi_fy3_22";
-import { printTopSellingSwitchTitles } from "../data/nintendo/Nintendo_FY3_2022/top_NSW_sw_fy3_22";
-import { printFYMillionSellerTitles } from "../data/nintendo/Nintendo_FY3_2022/mst_fy3_22";
-import { printHardwareSoftware } from "../data/nintendo/Nintendo_FY3_2022/nsw_hardware_software_fy3_22";
-import { printRegions } from "../data/nintendo/Nintendo_FY3_2022/regional_hw_sw_fy3_22";
-import GRAPH_NINTENDO_EARNINGS_FY3_22 from "../graphs/nintendo/Nintendo_FY3_2022/GRAPH_NINTENDO_EARNINGS_FY3_22";
-import GRAPH_NINTENDO_KPI_FY3_22 from "../graphs/nintendo/Nintendo_FY3_2022/GRAPH_NINTENDO_KPI_FY3_22";
-import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_22 from "../graphs/nintendo/Nintendo_FY3_2022/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_22";
-import GRAPH_NINTENDO_NSW_HW_SW_FY3_22 from "../graphs/nintendo/Nintendo_FY3_2022/GRAPH_NINTENDO_NSW_HW_SW_FY3_22";
-import GRAPH_NINTENDO_MST_FY3_22 from "../graphs/nintendo/Nintendo_FY3_2022/GRAPH_NINTENDO_MST_FY3_22";
+import { printEarnings } from "../../data/nintendo/Nintendo_FY3_2021/earnings_fy3_21";
+import { printKPI } from "../../data/nintendo/Nintendo_FY3_2021/kpi_fy3_21";
+import { printTopSellingSwitchTitles } from "../../data/nintendo/Nintendo_FY3_2021/top_NSW_sw_fy3_21";
+import { printFYMillionSellerTitles } from "../../data/nintendo/Nintendo_FY3_2021/mst_fy3_21";
+import { printHardwareSoftware } from "../../data/nintendo/Nintendo_FY3_2021/nsw_hardware_software_fy3_21";
+import { printRegions } from "../../data/nintendo/Nintendo_FY3_2021/regional_hw_sw_fy3_21";
+import GRAPH_NINTENDO_EARNINGS_FY3_21 from "../../graphs/nintendo/Nintendo_FY3_2021/GRAPH_NINTENDO_EARNINGS_FY3_21";
+import GRAPH_NINTENDO_KPI_FY3_21 from "../../graphs/nintendo/Nintendo_FY3_2021/GRAPH_NINTENDO_KPI_FY3_21";
+import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_21 from "../../graphs/nintendo/Nintendo_FY3_2021/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_21";
+import GRAPH_NINTENDO_MST_FY3_21 from "../../graphs/nintendo/Nintendo_FY3_2021/GRAPH_NINTENDO_MST_FY3_21";
+import GRAPH_NINTENDO_NSW_HW_SW_FY3_21 from "../../graphs/nintendo/Nintendo_FY3_2021/GRAPH_NINTENDO_NSW_HW_SW_FY3_21";
 
-export default function NINTENDO_FY3_22() {
+export default function NINTENDO_FY3_21() {
 
     const [data, setData] = useState("");
     const [value, setValue] = useState("");
@@ -48,39 +48,39 @@ export default function NINTENDO_FY3_22() {
             <Text>
                 <Stack align="center">
                         1st Quarter Earnings Release: 
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2021/210805e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2021/210805e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2020/200806e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2020/200806e.pdf
                     </Anchor>
                         1st Quarter Financial Results Explanatory Material:
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2021/210805_3e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2021/210805_3e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2020/200806_2e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2020/200806_2e.pdf
                     </Anchor>
                 
                         2nd Quarter Earnings Release: 
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2021/211104e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2021/211104e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2020/201105e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2020/201105e.pdf
                     </Anchor>
                         2nd Quarter Financial Results Explanatory Material:
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2021/211104_4e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2021/211104_4e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2020/201105_5e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2020/201105_5e.pdf
                     </Anchor>
                 
                         3rd Quarter Earnings Release: 
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2022/220203e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2022/220203e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2021/210201e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2021/210201e.pdf
                     </Anchor>
                         3rd Quarter Financial Results Explanatory Material:
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2022/220203_4e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2022/220203_4e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2021/210201_4e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2021/210201_4e.pdf
                     </Anchor>
                 
                         4th Quarter Earnings Release: 
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2022/220510e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2022/220510e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2021/210506e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2021/210506e.pdf
                     </Anchor>
                         4th Quarter Financial Results Explanatory Material:
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2022/220510_7e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2022/220510_7e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2021/210506_4e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2021/210506_4e.pdf
                     </Anchor>
                 </Stack>  
             </Text> 
@@ -89,15 +89,15 @@ export default function NINTENDO_FY3_22() {
 
     const consolidatedOperatingResults = printEarnings;
 
-    const topSellingTitles = printTopSellingSwitchTitles;
-
-    const regionalHWSW = printRegions;
+    const nintendoHardwareSoftwareMobile = printHardwareSoftware;
+    
+    const keyIndicators = printKPI;
 
     const fyMillionSellers = printFYMillionSellerTitles;
 
-    const keyIndicators = printKPI;
+    const regionalHWSW = printRegions;
 
-    const nintendoHardwareSoftwareMobile = printHardwareSoftware;
+    const topSellingTitles = printTopSellingSwitchTitles; 
 
     return (
 
@@ -119,15 +119,15 @@ export default function NINTENDO_FY3_22() {
             {sources}
             <Code style={{backgroundColor: `${state.colour}`}} block>{data}</Code>
             {(value === "Consolidated Operating Results")
-                ? <GRAPH_NINTENDO_EARNINGS_FY3_22 />
+                ? <GRAPH_NINTENDO_EARNINGS_FY3_21 />
                 : (value === "Global Hardware/Software units, Mobile/IP related income")
-                ? <GRAPH_NINTENDO_NSW_HW_SW_FY3_22 />
+                ? <GRAPH_NINTENDO_NSW_HW_SW_FY3_21 />
                 : (value === "Key/Digital Sales Indicators")
-                ? <GRAPH_NINTENDO_KPI_FY3_22 />
+                ? <GRAPH_NINTENDO_KPI_FY3_21 />
                 : (value === "FY Million-Seller Titles")
-                ? <GRAPH_NINTENDO_MST_FY3_22 /> 
+                ? <GRAPH_NINTENDO_MST_FY3_21 /> 
                 : (value === "Top Selling Titles")
-                ? <GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_22 />
+                ? <GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_21 />
                 : null
             }
             <Space h="xl" />
@@ -135,6 +135,5 @@ export default function NINTENDO_FY3_22() {
             <Space h="xl" />
             <Space h="xl" />
         </div>
-        
     );
 }

@@ -1,25 +1,25 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printEarnings } from "../data/nintendo/Nintendo_FY3_2018/earnings_fy3_18";
-import { printKPI } from "../data/nintendo/Nintendo_FY3_2018/kpi_fy3_18";
-import { printTopSellingSwitchTitles } from "../data/nintendo/Nintendo_FY3_2018/top_NSW_sw_fy3_18";
-import { printFYMillionSellerTitles } from "../data/nintendo/Nintendo_FY3_2018/mst_fy3_18";
-import { printHardwareSoftware } from "../data/nintendo/Nintendo_FY3_2018/nsw_hardware_software_fy3_18";
-import { printRegions } from "../data/nintendo/Nintendo_FY3_2018/regional_hw_sw_fy3_18";
-import GRAPH_NINTENDO_EARNINGS_FY3_18 from "../graphs/nintendo/Nintendo_FY3_2018/GRAPH_NINTENDO_EARNINGS_FY3_18";
-import GRAPH_NINTENDO_KPI_FY3_18 from "../graphs/nintendo/Nintendo_FY3_2018/GRAPH_NINTENDO_KPI_FY3_18";
-import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_18 from "../graphs/nintendo/Nintendo_FY3_2018/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_18";
-import GRAPH_NINTENDO_MST_FY3_18 from "../graphs/nintendo/Nintendo_FY3_2018/GRAPH_NINTENDO_MST_FY3_18";
-import GRAPH_NINTENDO_NSW_HW_SW_FY3_18 from "../graphs/nintendo/Nintendo_FY3_2018/GRAPH_NINTENDO_NSW_HW_SW_FY3_18";
+import { printEarnings } from "../../data/nintendo/Nintendo_FY3_2019/earnings_fy3_19";
+import { printKPI } from "../../data/nintendo/Nintendo_FY3_2019/kpi_fy3_19";
+import { printTopSellingSwitchTitles } from "../../data/nintendo/Nintendo_FY3_2019/top_NSW_sw_fy3_19";
+import { printFYMillionSellerTitles } from "../../data/nintendo/Nintendo_FY3_2019/mst_fy3_19";
+import { printHardwareSoftware } from "../../data/nintendo/Nintendo_FY3_2019/nsw_hardware_software_fy3_19";
+import { printRegions } from "../../data/nintendo/Nintendo_FY3_2019/regional_hw_sw_fy3_19";
+import GRAPH_NINTENDO_EARNINGS_FY3_19 from "../../graphs/nintendo/Nintendo_FY3_2019/GRAPH_NINTENDO_EARNINGS_FY3_19";
+import GRAPH_NINTENDO_KPI_FY3_19 from "../../graphs/nintendo/Nintendo_FY3_2019/GRAPH_NINTENDO_KPI_FY3_19";
+import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_19 from "../../graphs/nintendo/Nintendo_FY3_2019/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_19";
+import GRAPH_NINTENDO_MST_FY3_19 from "../../graphs/nintendo/Nintendo_FY3_2019/GRAPH_NINTENDO_MST_FY3_19";
+import GRAPH_NINTENDO_NSW_HW_SW_FY3_19 from "../../graphs/nintendo/Nintendo_FY3_2019/GRAPH_NINTENDO_NSW_HW_SW_FY3_19";
 
-export default function NINTENDO_FY3_18() {
-
-    const state: any = useSelector(state => state);
+export default function NINTENDO_FY3_19() {
 
     const [data, setData] = useState("");
     const [value, setValue] = useState("");
     const [sources, setSources] = useState(<></>)
+
+    const state: any = useSelector(state => state);
 
     useEffect(() => {
         (value === "Consolidated Operating Results")
@@ -48,39 +48,39 @@ export default function NINTENDO_FY3_18() {
             <Text>
                 <Stack align="center">
                         1st Quarter Earnings Release: 
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2017/170726e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2017/170726e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2018/180731e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2018/180731e.pdf
                     </Anchor>
                         1st Quarter Supplementary Information:
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2017/170726_2e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2017/170726_2e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2018/180731_2e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2018/180731_2e.pdf
                     </Anchor>
                 
                         2nd Quarter Earnings Release: 
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2017/171030e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2017/171030e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2018/181030e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2018/181030e.pdf
                     </Anchor>
                         2nd Quarter Supplementary Information:
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2017/171030_4e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2017/171030_4e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2018/181030_3e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2018/181030_3e.pdf
                     </Anchor>
                 
                         3rd Quarter Earnings Release: 
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2018/180131e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2018/180131e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2019/190131e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2019/190131e.pdf
                     </Anchor>
                         3rd Quarter Supplementary Information:
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2018/180131_3e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2018/180131_3e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2019/190131_2e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2019/190131_2e.pdf
                     </Anchor>
                 
                         4th Quarter Earnings Release: 
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2018/180426e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2018/180426e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2019/190425e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2019/190425e.pdf
                     </Anchor>
                         4th Quarter Supplementary Information:
-                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2018/180426_4e.pdf" target="_blank" >
-                        https://www.nintendo.co.jp/ir/pdf/2018/180426_4e.pdf
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2019/190425_3e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2019/190425_3e.pdf
                     </Anchor>
                 </Stack>  
             </Text> 
@@ -93,7 +93,7 @@ export default function NINTENDO_FY3_18() {
     
     const keyIndicators = printKPI;
 
-    const fyMillionSellers = printFYMillionSellerTitles;
+    const fyMillionSellers = printFYMillionSellerTitles; 
 
     const regionalHWSW = printRegions;
 
@@ -119,15 +119,15 @@ export default function NINTENDO_FY3_18() {
             {sources}
             <Code style={{backgroundColor: `${state.colour}`}} block>{data}</Code>
             {(value === "Consolidated Operating Results")
-                ? <GRAPH_NINTENDO_EARNINGS_FY3_18 />
+                ? <GRAPH_NINTENDO_EARNINGS_FY3_19 />
                 : (value === "Global Hardware/Software units, Mobile/IP related income")
-                ? <GRAPH_NINTENDO_NSW_HW_SW_FY3_18 />
+                ? <GRAPH_NINTENDO_NSW_HW_SW_FY3_19 />
                 : (value === "Key/Digital Sales Indicators")
-                ? <GRAPH_NINTENDO_KPI_FY3_18 />
+                ? <GRAPH_NINTENDO_KPI_FY3_19 />
                 : (value === "FY Million-Seller Titles")
-                ? <GRAPH_NINTENDO_MST_FY3_18 /> 
+                ? <GRAPH_NINTENDO_MST_FY3_19 /> 
                 : (value === "Top Selling Titles")
-                ? <GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_18 />
+                ? <GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_19 />
                 : null
             }
             <Space h="xl" />

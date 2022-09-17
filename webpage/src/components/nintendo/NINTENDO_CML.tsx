@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printJapan, printGlobal, printOverseas } from "../data/nintendo/Nintendo_Cumulative_Data/mst_cml_data";
+import { printJapan, printGlobal, printOverseas } from "../../data/nintendo/Nintendo_Cumulative_Data/mst_cml_data";
 
 export default function NINTENDO_CML() {
 
