@@ -141,7 +141,7 @@ export const printSummary = (header: Header, newSumLocal: number, recurringSumLo
 
 }
 
-const printHead = (header: Header) => 
+export const printHead = (header: Header) => 
 `+${"-".repeat(32)}+
 ${header.capcomHeader}
 +${"-".repeat(32)}+
