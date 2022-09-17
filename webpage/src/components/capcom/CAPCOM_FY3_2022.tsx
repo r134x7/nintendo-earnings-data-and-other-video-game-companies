@@ -12,7 +12,7 @@ export default function CAPCOM_FY3_22() {
     const state: any = useSelector(state => state);
 
     useEffect(() => {
-        (value === "Platinum Titles")
+        (value === "FY Platinum Titles")
             ? setData(platinumTitles)
             : setData("");
 
@@ -47,7 +47,7 @@ export default function CAPCOM_FY3_22() {
                     value={value}
                     onChange={setValue}
                     data={[ "Data Sources",
-                            "Platinum Titles",
+                            "FY Platinum Titles",
                         ]}
             />
             
