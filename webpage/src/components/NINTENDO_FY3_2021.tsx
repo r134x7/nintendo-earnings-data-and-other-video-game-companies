@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printEarnings } from "../data/nintendo/Nintendo-FY3-2021/earnings-fy3-21";
-import { printKPI } from "../data/nintendo/Nintendo-FY3-2021/kpi-fy3-21";
-import { printTopSellingSwitchTitles } from "../data/nintendo/Nintendo-FY3-2021/topNSWswfy3-21";
-import { printFYMillionSellerTitles } from "../data/nintendo/Nintendo-FY3-2021/mst-fy3-21";
-import { printHardwareSoftware } from "../data/nintendo/Nintendo-FY3-2021/nsw-hardware-software-fy3-21";
-import { printRegions } from "../data/nintendo/Nintendo-FY3-2021/regional-hw-sw-fy3-21";
-import GRAPH_NINTENDO_EARNINGS_FY3_21 from "../graphs/nintendo/Nintendo-FY3-2021/GRAPH_NINTENDO_EARNINGS_FY3_21";
-import GRAPH_NINTENDO_KPI_FY3_21 from "../graphs/nintendo/Nintendo-FY3-2021/GRAPH_NINTENDO_KPI_FY3_21";
-import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_21 from "../graphs/nintendo/Nintendo-FY3-2021/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_21";
-import GRAPH_NINTENDO_MST_FY3_21 from "../graphs/nintendo/Nintendo-FY3-2021/GRAPH_NINTENDO_MST_FY3_21";
-import GRAPH_NINTENDO_NSW_HW_SW_FY3_21 from "../graphs/nintendo/Nintendo-FY3-2021/GRAPH_NINTENDO_NSW_HW_SW_FY3_21";
+import { printEarnings } from "../data/nintendo/Nintendo_FY3_2021/earnings_fy3_21";
+import { printKPI } from "../data/nintendo/Nintendo_FY3_2021/kpi_fy3_21";
+import { printTopSellingSwitchTitles } from "../data/nintendo/Nintendo_FY3_2021/top_NSW_sw_fy3_21";
+import { printFYMillionSellerTitles } from "../data/nintendo/Nintendo_FY3_2021/mst_fy3_21";
+import { printHardwareSoftware } from "../data/nintendo/Nintendo_FY3_2021/nsw_hardware_software_fy3_21";
+import { printRegions } from "../data/nintendo/Nintendo_FY3_2021/regional_hw_sw_fy3_21";
+import GRAPH_NINTENDO_EARNINGS_FY3_21 from "../graphs/nintendo/Nintendo_FY3_2021/GRAPH_NINTENDO_EARNINGS_FY3_21";
+import GRAPH_NINTENDO_KPI_FY3_21 from "../graphs/nintendo/Nintendo_FY3_2021/GRAPH_NINTENDO_KPI_FY3_21";
+import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_21 from "../graphs/nintendo/Nintendo_FY3_2021/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_21";
+import GRAPH_NINTENDO_MST_FY3_21 from "../graphs/nintendo/Nintendo_FY3_2021/GRAPH_NINTENDO_MST_FY3_21";
+import GRAPH_NINTENDO_NSW_HW_SW_FY3_21 from "../graphs/nintendo/Nintendo_FY3_2021/GRAPH_NINTENDO_NSW_HW_SW_FY3_21";
 
 export default function NINTENDO_FY3_21() {
 

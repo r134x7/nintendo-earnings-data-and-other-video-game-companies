@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space} from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printEarnings } from "../data/nintendo/Nintendo-FY3-2017/earnings-fy3-17";
-import { printKPI } from "../data/nintendo/Nintendo-FY3-2017/kpi-fy3-17";
-import { printTopSellingSwitchTitles } from "../data/nintendo/Nintendo-FY3-2017/topNSWswfy3-17";
-import { printFYMillionSellerTitles } from "../data/nintendo/Nintendo-FY3-2017/mst-fy3-17";
-import { printHardwareSoftware } from "../data/nintendo/Nintendo-FY3-2017/nsw-hardware-software-fy3-17";
-import { printRegions } from "../data/nintendo/Nintendo-FY3-2017/regional-hw-sw-fy3-17";
-import GRAPH_NINTENDO_EARNINGS_FY3_17 from "../graphs/nintendo/Nintendo-FY3-2017/GRAPH_NINTENDO_EARNINGS_FY3_17";
-import GRAPH_NINTENDO_KPI_FY3_17 from "../graphs/nintendo/Nintendo-FY3-2017/GRAPH_NINTENDO_KPI_FY3_17";
-import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_17 from "../graphs/nintendo/Nintendo-FY3-2017/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_17";
+import { printEarnings } from "../data/nintendo/Nintendo_FY3_2017/earnings_fy3_17";
+import { printKPI } from "../data/nintendo/Nintendo_FY3_2017/kpi_fy3_17";
+import { printTopSellingSwitchTitles } from "../data/nintendo/Nintendo_FY3_2017/top_NSW_sw_fy3_17";
+import { printFYMillionSellerTitles } from "../data/nintendo/Nintendo_FY3_2017/mst_fy3_17";
+import { printHardwareSoftware } from "../data/nintendo/Nintendo_FY3_2017/nsw_hardware_software_fy3_17";
+import { printRegions } from "../data/nintendo/Nintendo_FY3_2017/regional_hw_sw_fy3_17";
+import GRAPH_NINTENDO_EARNINGS_FY3_17 from "../graphs/nintendo/Nintendo_FY3_2017/GRAPH_NINTENDO_EARNINGS_FY3_17";
+import GRAPH_NINTENDO_KPI_FY3_17 from "../graphs/nintendo/Nintendo_FY3_2017/GRAPH_NINTENDO_KPI_FY3_17";
+import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_17 from "../graphs/nintendo/Nintendo_FY3_2017/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_17";
 
 export default function NINTENDO_FY3_17() {
 
