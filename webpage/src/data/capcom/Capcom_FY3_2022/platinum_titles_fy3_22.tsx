@@ -3209,8 +3209,9 @@ const collection = [
     title105,
 ] as const;
 
-export const sortedCollection = collection.map((elem, index, array) => {
-            return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+export const sortedCollection = collection.filter((elem, index, array) => {
+            return elem[3].value - elem[4].value !== 0
+            // we need to create a new array that is identical to the original due to sort's mutating properties. filter titles that sold units this FY
     }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
         return (a[currentQuarter-1].value > b[currentQuarter-1].value)
             ? 1
@@ -3224,6 +3225,22 @@ export const sortedCollection = collection.map((elem, index, array) => {
         })
         return x // x which is the returned array is now returned to the array of arrays
     })
+
+// export const sortedCollection = collection.map((elem, index, array) => {
+//             return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+//     }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+//         return (a[currentQuarter-1].value > b[currentQuarter-1].value)
+//             ? 1
+//             : (a[currentQuarter-1].value < b[currentQuarter-1].value)
+//             ? -1
+//             : 0
+//     }).map((elem, index) => {
+//         // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+//         const x: Titles[] = [...elem].map((elemTwo) => {
+//             return {...elemTwo, rank: index+1} 
+//         })
+//         return x // x which is the returned array is now returned to the array of arrays
+//     })
 
 const differenceTitles = sortedCollection.map((elem) => {
         return quarterlyCalculation(elem)
