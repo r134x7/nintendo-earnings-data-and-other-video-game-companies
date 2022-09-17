@@ -3417,7 +3417,7 @@ const recurringCollection = sortedTitles.map((elem) => {
 
 const newSummary = [newCollection, newCollection, newCollection, newCollection].map((elem, index, array) =>  {
     if (elem.length === 0) {
-        return 0
+        return 0 // so that's why this isn't a never type...
     }
    // I really should have left notes here... I am guessing that I am putting all the values into the array and then I reduce it to get the summation of that region... 
         return elem.map((secondElem) => {

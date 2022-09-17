@@ -526,3 +526,70 @@ test("print titles...", () => {
     
 
 })
+
+test("print summary...", () => {
+
+    const collection = [
+        title1,
+        title2,
+        title3,
+    ] as const;
+
+    // forgetting to sort beforehand...
+    const sortedCollection = collection.map((elem, index, array) => {
+            return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a[currentQuarter-1].value > b[currentQuarter-1].value)
+            ? 1
+            : (a[currentQuarter-1].value < b[currentQuarter-1].value)
+            ? -1
+            : 0
+    }).map((elem, index) => {
+        // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+        const x: Titles[] = [...elem].map((elemTwo) => {
+            return {...elemTwo, rank: index+1} 
+        })
+        return x // x which is the returned array is now returned to the array of arrays
+    })
+
+    const newTitles = sortedCollection.map((elem) => {
+            return labelTitles(elem)
+        }).map((elem) => {
+            return elem.filter((secondElem) => {
+                return secondElem.label === " New! "
+            })
+        }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
+        ).map((elem) => {
+        return elem[3].value // 4th quarter, new titles would not have last FY numbers, therefore can be summed up. 
+        })
+
+    const newSum = newTitles.reduce((prev, next) => prev + next);        
+
+    const recurringTitles = sortedCollection.map((elem) => {
+            return labelTitles(elem)
+        }).map((elem) => {
+            return elem.filter((secondElem) => {
+                return secondElem.label === " Recurring "
+            })
+        }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
+        ).map((elem) => {
+            return elem[3].value - elem[4].value // to get FY cml. number
+        })
+
+    const recurringSum = recurringTitles.reduce((prev, next) => prev + next)    
+
+    const sporadicTitles = sortedCollection.map((elem) => {
+            return labelTitles(elem)
+        }).map((elem) => {
+            return elem.filter((secondElem) => {
+                return secondElem.label === " Sporadic " 
+            })
+        }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
+        ).map((elem) => {
+            return elem[3].value - elem[4].value // to get FY cml. number
+        })
+
+    const sporadicSum = sporadicTitles.reduce((prev, next) => prev + next)    
+
+
+})
