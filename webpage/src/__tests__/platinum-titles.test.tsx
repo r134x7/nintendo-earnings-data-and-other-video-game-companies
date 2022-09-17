@@ -250,6 +250,8 @@ function labelTitles(titlesSorted: Titles[]) {
                 ? {...elem, label: " New! "}
                 : (array[4].value !== 0 && array[4].value !== array[5].value)
                 ? {...elem, label: " Recurring "}
+                : (array[3].value === array[4].value)
+                ? elem // titles that haven't made sales this FY
                 : {...elem, label: " Sporadic "}
     })
     
@@ -261,7 +263,7 @@ function labelTitles(titlesSorted: Titles[]) {
 // when mapping again, need to return elem[3] - elem[4] to get FY cumulative number
 // then create a summary by reducing to sum up the units
 
-const printSummaryHead = (header: Header, newTitlesLocal: Titles[], recurringTitlesLocal: Titles[], sporadicTitlesLocal: Titles[]) => {
+const printSummaryHead = (header: Header, newTitlesLocal: number[], recurringTitlesLocal: number[], sporadicTitlesLocal: number[]) => {
 
     let printNew: string = `${newTitlesLocal.length} `
     let printNewFixed: string = (printNew.length >= 9)
@@ -283,71 +285,70 @@ const printSummaryHead = (header: Header, newTitlesLocal: Titles[], recurringTit
     ? printTotal
     : " ".repeat(9 - printTotal.length) + printTotal;
 
-    let printHeader: string = "+"+"-".repeat(23)+"+\n" + header.summaryHeader + "+"+"-".repeat(23)+"+"
+    let printHeader: string = "+"+"-".repeat(32)+"+\n" + header.capcomHeader
 
-    let printTitles: string = "\n+"+"-".repeat(23)+"+\n| Titles      |   Count |\n+" + "-".repeat(23)+"+" 
+    let printTitles: string = "\n+"+"-".repeat(32)+"+\n| FY Titles    |   Count |\n+" + "-".repeat(23)+"+" 
 
     let printNewRow: string = "\n| New!        |" + printNewFixed + "|";
 
     let printRecurringRow: string = "\n| Recurring   |" + printRecurringFixed + "|";
 
-    let printSporadicRow: string = "\n| Sporadic    |" + printRecurringFixed + "|";
+    let printSporadicRow: string = "\n| Sporadic    |" + printSporadicFixed + "|";
 
     let printTotalRow: string = "\n+"+"=".repeat(23) + "+\n| Total       |" + printTotalFixed + "|\n+"+"-".repeat(23) + "+"
 
     return printHeader + printTitles + printNewRow + printRecurringRow + printSporadicRow + printTotalRow
 }
     
-export const printSummary = (header: Header, newSumLocal: number[], recurringSumLocal: number[], sporadicSumLocal: number[]) => {
+export const printSummary = (header: Header, newSumLocal: number, recurringSumLocal: number, sporadicSumLocal: number) => {
 
     // const regionHeaders: string[] = [header.japanSummaryHeader, header.overseasSummaryHeader, header.globalFYSummaryHeader, header.globalLTDSummaryHeader]
 
-    return newSumLocal.map((elem, index, array) => {
+    // return newSumLocal.map((elem, index, array) => {
 
-        let printRegionHeader: string = "\n+"+"-".repeat(33)+"+\n|" + header.summaryHeader + "\n+" + "-".repeat(33) + "+\n"
+        let printSummaryHeader: string = "\n+"+"-".repeat(33)+"+\n" + header.summaryHeader + "\n+" + "-".repeat(33) + "+\n"
 
-        let TotalUnits: number = Number((elem + recurringSumLocal[index] + sporadicSumLocal[index]).toFixed(2)) 
+        let TotalUnits: number = Number((newSumLocal + recurringSumLocal + sporadicSumLocal).toFixed(2)) 
 
-        let printTotalUnits: string = `${(elem + recurringSumLocal[index] + sporadicSumLocal[index]).toFixed(2)}M `
+        let printTotalUnits: string = `${(newSumLocal + recurringSumLocal + sporadicSumLocal).toFixed(2)}M `
         let printTotalUnitsFixed: string = (printTotalUnits.length >= 9)
             ? printTotalUnits
             : " ".repeat(9 - printTotalUnits.length) + printTotalUnits;
         
-        let printNewUnits: string = `${elem.toFixed(2)}M `
+        let printNewUnits: string = `${newSumLocal.toFixed(2)}M `
         let printNewUnitsFixed: string = (printNewUnits.length >= 9)
                 ? printNewUnits
                 : " ".repeat(9 - printNewUnits.length) + printNewUnits;
 
-        let printNewPercentages: string = `${((elem / TotalUnits) * 100).toFixed(2)}% `
+        let printNewPercentages: string = `${((newSumLocal / TotalUnits) * 100).toFixed(2)}% `
         let printNewPercentagesFixed: string = (printNewPercentages.length >= 9)
             ? printNewPercentages
             : " ".repeat(9 - printNewPercentages.length) + printNewPercentages;
 
-        let printRecurringUnits: string = `${recurringSumLocal[index].toFixed(2)}M `
+        let printRecurringUnits: string = `${recurringSumLocal.toFixed(2)}M `
         let printRecurringUnitsFixed: string = (printRecurringUnits.length >= 9)
             ? printRecurringUnits
             : " ".repeat(9 - printRecurringUnits.length) + printRecurringUnits;
         
-        let printRecurringPercentages: string = `${((recurringSumLocal[index] / TotalUnits) * 100).toFixed(2)}% `
+        let printRecurringPercentages: string = `${((recurringSumLocal / TotalUnits) * 100).toFixed(2)}% `
         let printRecurringPercentagesFixed: string = (printRecurringPercentages.length >= 9)
             ? printRecurringPercentages
             : " ".repeat(9 - printRecurringPercentages.length) + printRecurringPercentages;
 
-        let printSporadicUnits: string = `${sporadicSumLocal[index].toFixed(2)}M `;
+        let printSporadicUnits: string = `${sporadicSumLocal.toFixed(2)}M `;
 
         let printSporadicUnitsFixed: string = (printSporadicUnits.length >= 9)
             ? printSporadicUnits
             : " ".repeat(9 - printSporadicUnits.length) + printSporadicUnits;
         
-        let printSporadicPercentages: string = `${((sporadicSumLocal[index] / TotalUnits) * 100).toFixed(2)}% `
+        let printSporadicPercentages: string = `${((sporadicSumLocal / TotalUnits) * 100).toFixed(2)}% `
         let printSporadicPercentagesFixed: string = (printSporadicPercentages.length >= 9)
             ? printSporadicPercentages
             : " ".repeat(9 - printSporadicPercentages.length) + printSporadicPercentages;
 
         let printRows: string = "| New!        |" + printNewUnitsFixed + "|" + printNewPercentagesFixed + "|\n| Recurring   |" + printRecurringUnitsFixed + "|" + printRecurringPercentagesFixed + "|\n| Sporadic    |" + printSporadicUnitsFixed + "|" + printSporadicPercentagesFixed + "|\n+" + "=".repeat(33) + "+\n| Total       |" + printTotalUnitsFixed + "|\n+" + "-".repeat(23) + "+\n" 
 
-        return printRegionHeader + printRows
-    }).reduce((prev, next) => prev + next)
+        return printSummaryHeader + printRows
 
 }
 
@@ -581,7 +582,7 @@ test("print summary...", () => {
         return elem[3].value // 4th quarter, new titles would not have last FY numbers, therefore can be summed up. 
         })
 
-    const newSum = newTitles.reduce((prev, next) => prev + next);        
+    const newSum = newTitles.reduce((prev, next) => prev + next, 0);        
 
     const recurringTitles = sortedCollection.map((elem) => {
             return labelTitles(elem)
@@ -594,7 +595,7 @@ test("print summary...", () => {
             return elem[3].value - elem[4].value // to get FY cml. number
         })
 
-    const recurringSum = recurringTitles.reduce((prev, next) => prev + next)    
+    const recurringSum = recurringTitles.reduce((prev, next) => prev + next, 0)    
 
     const sporadicTitles = sortedCollection.map((elem) => {
             return labelTitles(elem)
@@ -607,7 +608,11 @@ test("print summary...", () => {
             return elem[3].value - elem[4].value // to get FY cml. number
         })
 
-    const sporadicSum = sporadicTitles.reduce((prev, next) => prev + next)    
+    const sporadicSum = sporadicTitles.reduce((prev, next) => prev + next, 0)    
 
+    console.log(printSummaryHead(header, newTitles, recurringTitles, sporadicTitles));
 
+    console.log(printSummary(header, newSum, recurringSum, sporadicSum));
+    
+    
 })
