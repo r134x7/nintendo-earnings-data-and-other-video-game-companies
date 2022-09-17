@@ -46,7 +46,7 @@ export function labelTitles(titlesSorted: Titles[]) {
         // need to check cumulative figure, if the cumulative figure doesn't match the Last FY Total 
         return (array[4].value === 0 && array[5].value === 0) 
                 ? {...elem, label: " New! "}
-                : (array[4].value !== 0 && array[4].value !== array[5].value)
+                : (array[3].value !== array[4].value && array[4].value !== 0 && array[4].value !== array[5].value)
                 ? {...elem, label: " Recurring "}
                 : (array[3].value === array[4].value)
                 ? elem // titles that haven't made sales this FY
@@ -80,7 +80,7 @@ export const printSummaryHead = (header: Header, newTitlesLocal: number[], recur
 
     let printHeader: string = "+"+"-".repeat(32)+"+\n" + header.capcomHeader
 
-    let printTitles: string = "\n+"+"-".repeat(32)+"+\n| FY Titles    |   Count |\n+" + "-".repeat(23)+"+" 
+    let printTitles: string = "\n+"+"-".repeat(32)+"+\n| FY Titles   |   Count |\n+" + "-".repeat(23)+"+" 
 
     let printNewRow: string = "\n| New!        |" + printNewFixed + "|";
 

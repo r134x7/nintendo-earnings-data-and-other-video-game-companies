@@ -4,6 +4,7 @@ import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
+import CAPCOM_FY3_22 from "../components/capcom/CAPCOM_FY3_2022";
 
 const yearsList = Array.from({length: 2}, (elem, index) => 
                     {
@@ -132,6 +133,59 @@ export default function Capcom() {
 
             </Group>
 
+            {   (year === "FY3/2023" && value === "Data by Fiscal Year")
+                ? <CAPCOM_FY3_22 />
+                // : (year === "FY3/2022" && value === "Data by Fiscal Year")
+                // ? <NINTENDO_FY3_22 />
+                : null
+            }
+            
+            { (year !== "" && value === "Data by Fiscal Year")
+                ? (
+                <Group position="center">
+                    <Space h="xl" />
+                    <Paper style={{backgroundColor: state.colour}} p="xs" radius="xl" withBorder>
+                        <Text size="sm" >
+                        Colour: {state.colour}
+                        </Text>    
+                    <ColorPicker 
+                        withPicker={false}
+                        size="lg"
+                        mb="sm" 
+                        swatchesPerRow={7} 
+                        format="rgb" 
+                        swatches={[
+                            "rgb(0, 0, 0)", 
+                            "rgb(0, 255, 255)", 
+                            "rgb(0, 128, 128)",
+                            "rgb(0, 0, 255)", 
+                            "rgb(75, 0, 130)", 
+                            "rgb(135, 30, 135)", 
+                            "rgb(255, 0, 255)", 
+                            "rgb(86, 29, 37)",
+                            "rgb(173, 255, 47)",
+                            "rgb(127, 184, 0)",
+                            "rgb(0, 255, 0)", 
+                            "rgb(128, 128, 128)",
+                            "rgb(255, 0, 0)",
+                            "rgb(227, 24, 9)",
+                            "rgb(220, 20, 60)", 
+                            "rgb(212, 81, 19)", 
+                            "rgb(255, 165, 0)", 
+                            "rgb(255, 215, 0)",
+                            "rgb(200, 200, 200)",
+                            "rgb(255, 196, 235)",
+                            "rgb(255, 255, 255)", 
+                        ]}
+                        value={colour} 
+                        onChange={setColour}
+                        />
+                        </Paper>
+                </Group>
+                ) : (
+                    null
+                )
+            }
         </div>
 
     );
