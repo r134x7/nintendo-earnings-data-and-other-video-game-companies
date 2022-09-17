@@ -261,19 +261,24 @@ function labelTitles(titlesSorted: Titles[]) {
 // when mapping again, need to return elem[3] - elem[4] to get FY cumulative number
 // then create a summary by reducing to sum up the units
 
-const printSummaryHead = (header: Header, newCollection: Titles[], recurringCollection: Titles[]) => {
+const printSummaryHead = (header: Header, newTitlesLocal: Titles[], recurringTitlesLocal: Titles[], sporadicTitlesLocal: Titles[]) => {
 
-    let printNew: string = `${newCollection.length} `
+    let printNew: string = `${newTitlesLocal.length} `
     let printNewFixed: string = (printNew.length >= 9)
         ? printNew
         : " ".repeat(9 - printNew.length) + printNew;
 
-    let printRecurring: string = `${recurringCollection.length} `
+    let printRecurring: string = `${recurringTitlesLocal.length} `
     let printRecurringFixed: string = (printRecurring.length >= 9)
         ? printRecurring
         : " ".repeat(9 - printRecurring.length) + printRecurring;
 
-    let printTotal: string = `${newCollection.length + recurringCollection.length} `
+    let printSporadic: string = `${sporadicTitlesLocal.length} `
+    let printSporadicFixed: string = (printSporadic.length >= 9)
+        ? printSporadic
+        : " ".repeat(9 - printSporadic.length) + printSporadic;
+
+    let printTotal: string = `${newTitlesLocal.length + recurringTitlesLocal.length + sporadicTitlesLocal.length} `
     let printTotalFixed: string = (printTotal.length >= 9)
     ? printTotal
     : " ".repeat(9 - printTotal.length) + printTotal;
@@ -282,26 +287,28 @@ const printSummaryHead = (header: Header, newCollection: Titles[], recurringColl
 
     let printTitles: string = "\n+"+"-".repeat(23)+"+\n| Titles      |   Count |\n+" + "-".repeat(23)+"+" 
 
-    let printNewRow: string = "\n| New!        |" + printNewFixed + "|"
+    let printNewRow: string = "\n| New!        |" + printNewFixed + "|";
 
-    let printRecurringRow: string = "\n| Recurring   |" + printRecurringFixed + "|"
+    let printRecurringRow: string = "\n| Recurring   |" + printRecurringFixed + "|";
+
+    let printSporadicRow: string = "\n| Sporadic    |" + printRecurringFixed + "|";
 
     let printTotalRow: string = "\n+"+"=".repeat(23) + "+\n| Total       |" + printTotalFixed + "|\n+"+"-".repeat(23) + "+"
 
-    return printHeader + printTitles + printNewRow + printRecurringRow + printTotalRow
+    return printHeader + printTitles + printNewRow + printRecurringRow + printSporadicRow + printTotalRow
 }
     
-export const printSummary = (header: Header, regionNew: number[], regionRecurring: number[], ) => {
+export const printSummary = (header: Header, newSumLocal: number[], recurringSumLocal: number[], sporadicSumLocal: number[]) => {
 
     // const regionHeaders: string[] = [header.japanSummaryHeader, header.overseasSummaryHeader, header.globalFYSummaryHeader, header.globalLTDSummaryHeader]
 
-    return regionNew.map((elem, index, array) => {
+    return newSumLocal.map((elem, index, array) => {
 
         let printRegionHeader: string = "\n+"+"-".repeat(33)+"+\n|" + header.summaryHeader + "\n+" + "-".repeat(33) + "+\n"
 
-        let TotalUnits: number = Number((elem + regionRecurring[index]).toFixed(2)) 
+        let TotalUnits: number = Number((elem + recurringSumLocal[index] + sporadicSumLocal[index]).toFixed(2)) 
 
-        let printTotalUnits: string = `${(elem + regionRecurring[index]).toFixed(2)}M `
+        let printTotalUnits: string = `${(elem + recurringSumLocal[index] + sporadicSumLocal[index]).toFixed(2)}M `
         let printTotalUnitsFixed: string = (printTotalUnits.length >= 9)
             ? printTotalUnits
             : " ".repeat(9 - printTotalUnits.length) + printTotalUnits;
@@ -316,17 +323,28 @@ export const printSummary = (header: Header, regionNew: number[], regionRecurrin
             ? printNewPercentages
             : " ".repeat(9 - printNewPercentages.length) + printNewPercentages;
 
-        let printRecurringUnits: string = `${regionRecurring[index].toFixed(2)}M `
+        let printRecurringUnits: string = `${recurringSumLocal[index].toFixed(2)}M `
         let printRecurringUnitsFixed: string = (printRecurringUnits.length >= 9)
             ? printRecurringUnits
             : " ".repeat(9 - printRecurringUnits.length) + printRecurringUnits;
         
-        let printRecurringPercentages: string = `${((regionRecurring[index] / TotalUnits) * 100).toFixed(2)}% `
+        let printRecurringPercentages: string = `${((recurringSumLocal[index] / TotalUnits) * 100).toFixed(2)}% `
         let printRecurringPercentagesFixed: string = (printRecurringPercentages.length >= 9)
             ? printRecurringPercentages
             : " ".repeat(9 - printRecurringPercentages.length) + printRecurringPercentages;
 
-        let printRows: string = "| New!        |" + printNewUnitsFixed + "|" + printNewPercentagesFixed + "|\n| Recurring   |" + printRecurringUnitsFixed + "|" + printRecurringPercentagesFixed + "|\n+" + "=".repeat(33) + "+\n| Total       |" + printTotalUnitsFixed + "|\n+" + "-".repeat(23) + "+\n" 
+        let printSporadicUnits: string = `${sporadicSumLocal[index].toFixed(2)}M `;
+
+        let printSporadicUnitsFixed: string = (printSporadicUnits.length >= 9)
+            ? printSporadicUnits
+            : " ".repeat(9 - printSporadicUnits.length) + printSporadicUnits;
+        
+        let printSporadicPercentages: string = `${((sporadicSumLocal[index] / TotalUnits) * 100).toFixed(2)}% `
+        let printSporadicPercentagesFixed: string = (printSporadicPercentages.length >= 9)
+            ? printSporadicPercentages
+            : " ".repeat(9 - printSporadicPercentages.length) + printSporadicPercentages;
+
+        let printRows: string = "| New!        |" + printNewUnitsFixed + "|" + printNewPercentagesFixed + "|\n| Recurring   |" + printRecurringUnitsFixed + "|" + printRecurringPercentagesFixed + "|\n| Sporadic    |" + printSporadicUnitsFixed + "|" + printSporadicPercentagesFixed + "|\n+" + "=".repeat(33) + "+\n| Total       |" + printTotalUnitsFixed + "|\n+" + "-".repeat(23) + "+\n" 
 
         return printRegionHeader + printRows
     }).reduce((prev, next) => prev + next)
