@@ -23,6 +23,7 @@ import NoMatch from "./pages/NoMatch";
 import Nintendo from './pages/Nintendo';
 import Capcom from "./pages/Capcom";
 import Events from "./pages/Events";
+import Sega from "./pages/Sega";
 
 // make modal for colour picker...
 
@@ -55,6 +56,9 @@ function App() {
               </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/capcom">
                     <Button aria-label='Capcom data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Capcom</Button>
+              </NavLink>
+              <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/sega">
+                    <Button aria-label='Sega data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Sega</Button>
               </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/events">
                     <Button aria-label='Upcoming events page' leftIcon={<Calendar size={24} strokeWidth={2} color={'#40bfb2'}/>} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Events</Button>
@@ -92,6 +96,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/nintendo" element={<Nintendo />} />
                 <Route path="/capcom" element={<Capcom />} />
+                <Route path="/sega" element={<Sega />} />
                 <Route path="/events" element={<Events />} />
                 <Route path="*" element={<NoMatch />} />
               </Routes>
