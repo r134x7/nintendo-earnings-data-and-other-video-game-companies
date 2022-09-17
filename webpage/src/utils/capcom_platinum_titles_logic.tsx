@@ -169,9 +169,9 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
             let nextCheck = prev + next + " ";
             
             if (nextCheck.length > 31 && prev.length <= 31) {
-                return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
+                return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
             } else if (index === array.length-1) {
-                return prev + next + " ".repeat(77 - prev.length)
+                return prev + next + " ".repeat(67 - prev.length)
             } else {
                 return prev + " " + next
             }
@@ -186,9 +186,9 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
             let nextCheck = prev + next + " ";
             
             if (nextCheck.length > 31 && prev.length <= 31) {
-                return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
+                return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
             } else if (index === array.length-1) {
-                return prev + next + " ".repeat(77 - prev.length)
+                return prev + next + " ".repeat(67 - prev.length)
             } else {
                 return prev + " " + next
             }
@@ -271,6 +271,10 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
             : "+" + "-".repeat(32) + "+";
     let printDoubleLine: string = "+" + "=".repeat(32) + "+";
 
+    let printMiscellaneous: string | never[] = (titleDifference[0].miscellaneous)
+                ? titleDifference[0].miscellaneous
+                : []
+
     const lastCheck = [
         titleHeader,
         printLine, 
@@ -279,6 +283,7 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
         printFYCml,
         printFYCmlYoYFixed,
         printLTD,
+        printMiscellaneous,
     ].filter(elem => elem.length !== 0)
      .reduce((prev, next) => {
         return prev + "\n" + next

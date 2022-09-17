@@ -22,7 +22,7 @@ const title1: Titles[] = [
         platforms: " PS4, Xbox One, PC, DL ",
         period: " 1st Quarter  ",
         value: 17.3,
-        miscellaneous: "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)",
+        miscellaneous: "|(* Excludes shipments of \n|Monster Hunter World: \n|Iceborne Master Edition)",
     },
     {
         title: " Monster Hunter: World ",
@@ -30,7 +30,7 @@ const title1: Titles[] = [
         platforms: " PS4, Xbox One, PC, DL ",
         period: " 2nd Quarter  ",
         value: 17.5,
-        miscellaneous: "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)",
+        miscellaneous: "|(* Excludes shipments of \n|Monster Hunter World: \n|Iceborne Master Edition)",
     },
     {
         title: " Monster Hunter: World ",
@@ -38,7 +38,7 @@ const title1: Titles[] = [
         platforms: " PS4, Xbox One, PC, DL ",
         period: " 3rd Quarter  ",
         value: 17.8,
-        miscellaneous: "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)",
+        miscellaneous: "|(* Excludes shipments of \n|Monster Hunter World: \n|Iceborne Master Edition)",
     },
     {
         title: " Monster Hunter: World ",
@@ -46,7 +46,7 @@ const title1: Titles[] = [
         platforms: " PS4, Xbox One, PC, DL ",
         period: " 4th Quarter  ",
         value: 18.0,
-        miscellaneous: "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)",
+        miscellaneous: "|(* Excludes shipments of \n|Monster Hunter World: \n|Iceborne Master Edition)",
     },
     {
         title: " Monster Hunter: World ",
@@ -54,7 +54,7 @@ const title1: Titles[] = [
         platforms: " PS4, Xbox One, PC, DL ",
         period: " Last FY Total ",
         value: 17.1,
-        miscellaneous: "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)",
+        miscellaneous: "|(* Excludes shipments of \n|Monster Hunter World: \n|Iceborne Master Edition)",
     },
     {
         title: " Monster Hunter: World ",
@@ -62,7 +62,7 @@ const title1: Titles[] = [
         platforms: " PS4, Xbox One, PC, DL ",
         period: " Total at Two FYs prior ",
         value: 15.70,
-        miscellaneous: "(* Excludes shipments of \n Monster Hunter World: \n Iceborne Master Edition)",
+        miscellaneous: "|(* Excludes shipments of \n|Monster Hunter World: \n|Iceborne Master Edition)",
     },
 ]
 
@@ -789,42 +789,42 @@ const title20: Titles[] = [
 const title22: Titles[] = [
     {
         title: " Street Fighter IV ", 
-        releaseDate: "Feb 2009 ",
+        releaseDate: " Feb 2009 ",
         platforms: " PS3, Xbox 360, DL ",
         period: " 1st Quarter  ",
         value: 3.4,
     },
     {
         title: " Street Fighter IV ", 
-        releaseDate: "Feb 2009 ",
+        releaseDate: " Feb 2009 ",
         platforms: " PS3, Xbox 360, DL ",
         period: " 2nd Quarter  ",
         value: 3.4,
     },
     {
         title: " Street Fighter IV ", 
-        releaseDate: "Feb 2009 ",
+        releaseDate: " Feb 2009 ",
         platforms: " PS3, Xbox 360, DL ",
         period: " 3rd Quarter  ",
         value: 3.4,
     },
     {
         title: " Street Fighter IV ", 
-        releaseDate: "Feb 2009 ",
+        releaseDate: " Feb 2009 ",
         platforms: " PS3, Xbox 360, DL ",
         period: " 4th Quarter  ",
         value: 3.4,
     },
     {
         title: " Street Fighter IV ", 
-        releaseDate: "Feb 2009 ",
+        releaseDate: " Feb 2009 ",
         platforms: " PS3, Xbox 360, DL ",
         period: " Last FY Total ",
         value: 3.4,
     },
     {
         title: " Street Fighter IV ", 
-        releaseDate: "Feb 2009 ",
+        releaseDate: " Feb 2009 ",
         platforms: " PS3, Xbox 360, DL ",
         period: " Total at Two FYs prior ",
         value: 3.4,
