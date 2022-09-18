@@ -12,13 +12,15 @@ export type Series = {
 }
 
 export type Header = {
-    segaHeader: "| Sega Sammy - IP Series Data |",
-    secondHeader: "| Title                          |",
-    thirdHeader: "| Platform                       |",
-    fourthHeader: "| Release Date and Rank          |",
-    fifthHeader: "| Units                          |",
+    segaHeader: "| Sega Sammy - IP Series Data    |",
+    secondHeader: "| IP Title                          |",
+    thirdHeader: "| Platforms                      |",
+    fourthHeader: "| Total Editions                 |"
+    fifthHeader: "| First Appearance and Rank         |",
+    sixthHeader: "| Units                          |",
     fiscalYear: string,
     fiscalYearYoY: string,
     ltd: "| Life-To-Date       |",
     summaryHeader: string,
 }
+
