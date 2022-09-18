@@ -24,3 +24,16 @@ export type Header = {
     summaryHeader: string,
 }
 
+// not going to need quarters...
+
+const series1: Series[] = [
+    {
+        title: " Persona ",
+        firstReleaseYear: " 1992 ",
+        platforms: " Pachislot and Pachinko Machines, Consumer Games, Amusement Machines, Toys, etc ",
+        totalEditions: 18,
+        ipType: " Acquired IP ",
+        units: " Units and Downloads ",
+        value: 17.7,
+    }
+]
