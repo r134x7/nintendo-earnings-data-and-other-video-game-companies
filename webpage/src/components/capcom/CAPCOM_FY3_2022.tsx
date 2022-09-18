@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printPlatinumTitles } from "../../data/capcom/Capcom_FY3_2022/platinum_titles_fy3_22";
+import { printFYPlatinumTitles } from "../../data/capcom/Capcom_FY3_2022/platinum_titles_fy3_22";
 
 export default function CAPCOM_FY3_22() {
 
@@ -13,7 +13,7 @@ export default function CAPCOM_FY3_22() {
 
     useEffect(() => {
         (value === "FY Platinum Titles")
-            ? setData(platinumTitles)
+            ? setData(platinumTitlesFY)
             : setData("");
 
         (value === "Data Sources")
@@ -36,7 +36,7 @@ export default function CAPCOM_FY3_22() {
         )
     };
 
-    const platinumTitles = printPlatinumTitles;
+    const platinumTitlesFY = printFYPlatinumTitles;
 
     return (
 

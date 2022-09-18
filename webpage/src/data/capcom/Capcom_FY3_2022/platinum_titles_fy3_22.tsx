@@ -3163,7 +3163,7 @@ const collection = [
     title105,
 ] as const;
 
-export const sortedCollection = collection.filter((elem, index, array) => {
+export const sortedFYCollection = collection.filter((elem, index, array) => {
             return elem[3].value - elem[4].value !== 0
             // we need to create a new array that is identical to the original due to sort's mutating properties. filter titles that sold units this FY
     }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
@@ -3180,7 +3180,7 @@ export const sortedCollection = collection.filter((elem, index, array) => {
         return x // x which is the returned array is now returned to the array of arrays
     })
 
-// export const sortedCollection = collection.map((elem, index, array) => {
+// export const sortedFYCollection = collection.map((elem, index, array) => {
 //             return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
 //     }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
 //         return (a[currentQuarter-1].value > b[currentQuarter-1].value)
@@ -3196,16 +3196,16 @@ export const sortedCollection = collection.filter((elem, index, array) => {
 //         return x // x which is the returned array is now returned to the array of arrays
 //     })
 
-const differenceTitles = sortedCollection.map((elem) => {
+const differenceTitles = sortedFYCollection.map((elem) => {
         return quarterlyCalculation(elem)
     })
 
 const printListedTitlesFY = differenceTitles.map((elem, index) => {
-        return printTitles(header, elem, sortedCollection[index], currentQuarter)
+        return printTitles(header, elem, sortedFYCollection[index], currentQuarter)
     }) as string[];
 
 
-const newTitles = sortedCollection.map((elem) => {
+const newTitles = sortedFYCollection.map((elem) => {
         return labelTitles(elem)
     }).map((elem) => {
         return elem.filter((secondElem) => {
@@ -3218,7 +3218,7 @@ const newTitles = sortedCollection.map((elem) => {
 
 const newSum = newTitles.reduce((prev, next) => prev + next, 0);        
 
-const recurringTitles = sortedCollection.map((elem) => {
+const recurringTitles = sortedFYCollection.map((elem) => {
         return labelTitles(elem)
     }).map((elem) => {
         return elem.filter((secondElem) => {
@@ -3231,7 +3231,7 @@ const recurringTitles = sortedCollection.map((elem) => {
 
 const recurringSum = recurringTitles.reduce((prev, next) => prev + next, 0)    
 
-const sporadicTitles = sortedCollection.map((elem) => {
+const sporadicTitles = sortedFYCollection.map((elem) => {
         return labelTitles(elem)
     }).map((elem) => {
         return elem.filter((secondElem) => {
@@ -3251,7 +3251,7 @@ const printSummaryOne = printSummaryHead(header, newTitles, recurringTitles, spo
 
 const printSummaryTwo = printSummary(header, newSum, recurringSum, sporadicSum)
 
-export const printPlatinumTitles = (currentQuarter !== 4)
+export const printFYPlatinumTitles = (currentQuarter !== 4)
     ? [printOne, ...printListedTitlesFY].reduce((prev, next) => prev + "\n" + next )
     : [printOne, ...printListedTitlesFY, printSummaryOne, printSummaryTwo].reduce((prev, next) => prev + "\n" + next )
 

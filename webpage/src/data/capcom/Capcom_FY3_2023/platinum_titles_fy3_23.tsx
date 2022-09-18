@@ -1467,7 +1467,7 @@ const title42: Titles[] = [
         releaseDate: " May 2013 ",
         platforms: " PS3, Xbox 360, Wii U, PC, DL ",
         period: " 1st Quarter  ",
-        value: 2.1,
+        value: 2.2,
     },
     {
         title: " Resident Evil Revelations ", 
@@ -1495,14 +1495,14 @@ const title42: Titles[] = [
         releaseDate: " May 2013 ",
         platforms: " PS3, Xbox 360, Wii U, PC, DL ",
         period: " Last FY Total ",
-        value: 2.1,
+        value: 2.2,
     },
     {
         title: " Resident Evil Revelations ", 
         releaseDate: " May 2013 ",
         platforms: " PS3, Xbox 360, Wii U, PC, DL ",
         period: " Total at Two FYs prior ",
-        value: 2.0,
+        value: 2.1,
     },
 ]
 
@@ -1512,7 +1512,7 @@ const title45: Titles[] = [
         releaseDate: " May 2018 ",
         platforms: " PS4, Xbox One, NSW, PC, DL ",
         period: " 1st Quarter  ",
-        value: 1.9,
+        value: 2.4,
     },
     {
         title: " Street Fighter 30th Anniversary Collection ", 
@@ -1540,14 +1540,14 @@ const title45: Titles[] = [
         releaseDate: " May 2018 ",
         platforms: " PS4, Xbox One, NSW, PC, DL ",
         period: " Last FY Total ",
-        value: 1.8,
+        value: 2.2,
     },
     {
         title: " Street Fighter 30th Anniversary Collection ", 
         releaseDate: " May 2018 ",
         platforms: " PS4, Xbox One, NSW, PC, DL ",
         period: " Total at Two FYs prior ",
-        value: 1.2,
+        value: 1.8,
     },
 ]
 
@@ -1585,7 +1585,7 @@ const title46: Titles[] = [
         releaseDate: " May 2010 ",
         platforms: " PS3, Xbox 360, DL ",
         period: " Last FY Total ",
-        value: 2.0,
+        value: 2.1,
     },
     {
         title: " Lost Planet 2 ", 
@@ -1720,7 +1720,7 @@ const title52: Titles[] = [
         releaseDate: " Mar 2012 ",
         platforms: " PS3, Xbox 360, DL ",
         period: " Last FY Total ",
-        value: 1.8,
+        value: 1.9,
     },
     {
         title: " Street Fighter X Tekken ", 
@@ -1782,7 +1782,7 @@ const title54: Titles[] = [
         releaseDate: " Jun 2015 ",
         platforms: " PS4, Xbox One, DL ",
         period: " 1st Quarter  ",
-        value: 1.7,
+        value: 2.0,
     },
     {
         title: " Devil May Cry 4 Special Edition ", 
@@ -1810,14 +1810,14 @@ const title54: Titles[] = [
         releaseDate: " Jun 2015 ",
         platforms: " PS4, Xbox One, DL ",
         period: " Last FY Total ",
-        value: 1.6,
+        value: 1.9,
     },
     {
         title: " Devil May Cry 4 Special Edition ", 
         releaseDate: " Jun 2015 ",
         platforms: " PS4, Xbox One, DL ",
         period: " Total at Two FYs prior ",
-        value: 1.5,
+        value: 1.6,
     },
 ]
 
@@ -1827,7 +1827,7 @@ const title55: Titles[] = [
         releaseDate: " Sep 2017 ",
         platforms: " PS4, Xbox One, PC, DL ",
         period: " 1st Quarter  ",
-        value: 1.7,
+        value: 1.9,
     },
     {
         title: " Marvel vs. Capcom: Infinite ", 
@@ -1855,14 +1855,14 @@ const title55: Titles[] = [
         releaseDate: " Sep 2017 ",
         platforms: " PS4, Xbox One, PC, DL ",
         period: " Last FY Total ",
-        value: 1.7,
+        value: 1.9,
     },
     {
         title: " Marvel vs. Capcom: Infinite ", 
         releaseDate: " Sep 2017 ",
         platforms: " PS4, Xbox One, PC, DL ",
         period: " Total at Two FYs prior ",
-        value: 1.4,
+        value: 1.7,
     },
 ]
 
@@ -1872,7 +1872,7 @@ const title56: Titles[] = [
         releaseDate: " Dec 2017 ",
         platforms: " PS4, Xbox One, NSW, DL ",
         period: " 1st Quarter  ",
-        value: 1.7,
+        value: 1.9,
     },
     {
         title: " Okami HD ", 
@@ -1900,14 +1900,14 @@ const title56: Titles[] = [
         releaseDate: " Dec 2017 ",
         platforms: " PS4, Xbox One, NSW, DL ",
         period: " Last FY Total ",
-        value: 1.6,
+        value: 1.9,
     },
     {
         title: " Okami HD ", 
         releaseDate: " Dec 2017 ",
         platforms: " PS4, Xbox One, NSW, DL ",
         period: " Total at Two FYs prior ",
-        value: 1.2,
+        value: 1.6,
     },
 ]
 
@@ -1917,7 +1917,7 @@ const title57: Titles[] = [
         releaseDate: " Feb 2014 ",
         platforms: " PC, DL ",
         period: " 1st Quarter  ",
-        value: 1.6,
+        value: 2.0,
     },
     {
         title: " Resident Evil 4: Ultimate HD Edition ", 
@@ -1945,14 +1945,14 @@ const title57: Titles[] = [
         releaseDate: " Feb 2014 ",
         platforms: " PC, DL ",
         period: " Last FY Total ",
-        value: 1.4,
+        value: 1.9,
     },
     {
         title: " Resident Evil 4: Ultimate HD Edition ", 
         releaseDate: " Feb 2014 ",
         platforms: " PC, DL ",
         period: " Total at Two FYs prior ",
-        value: 1.1,
+        value: 1.4,
     },
 ]
 
@@ -1962,7 +1962,7 @@ const title58: Titles[] = [
         releaseDate: " Oct 2017 ",
         platforms: " PS4, Xbox One, DL ",
         period: " 1st Quarter  ",
-        value: 1.6,
+        value: 1.8,
     },
     {
         title: " Dragon’s Dogma: Dark Arisen ", 
@@ -1990,14 +1990,14 @@ const title58: Titles[] = [
         releaseDate: " Oct 2017 ",
         platforms: " PS4, Xbox One, DL ",
         period: " Last FY Total ",
-        value: 1.6,
+        value: 1.7,
     },
     {
         title: " Dragon’s Dogma: Dark Arisen ", 
         releaseDate: " Oct 2017 ",
         platforms: " PS4, Xbox One, DL ",
         period: " Total at Two FYs prior ",
-        value: 1.0,
+        value: 1.6,
     },
 ]
 
@@ -2007,7 +2007,7 @@ const title62: Titles[] = [
         releaseDate: " Dec 2006 ",
         platforms: " Xbox 360, DL ",
         period: " 1st Quarter  ",
-        value: 1.6,
+        value: 1.7,
     },
     {
         title: " Lost Planet Extreme Condition ", 
@@ -2035,7 +2035,7 @@ const title62: Titles[] = [
         releaseDate: " Dec 2006 ",
         platforms: " Xbox 360, DL ",
         period: " Last FY Total ",
-        value: 1.6,
+        value: 1.7,
     },
     {
         title: " Lost Planet Extreme Condition ", 
@@ -2052,7 +2052,7 @@ const title66: Titles[] = [
         releaseDate: " Aug 2014 ",
         platforms: " PS3, Xbox 360, PC, DL ",
         period: " 1st Quarter  ",
-        value: 1.5,
+        value: 1.8,
     },
     {
         title: " Ultra Street Fighter IV ", 
@@ -2080,14 +2080,14 @@ const title66: Titles[] = [
         releaseDate: " Aug 2014 ",
         platforms: " PS3, Xbox 360, PC, DL ",
         period: " Last FY Total ",
-        value: 1.5,
+        value: 1.6,
     },
     {
         title: " Ultra Street Fighter IV ", 
         releaseDate: " Aug 2014 ",
         platforms: " PS3, Xbox 360, PC, DL ",
         period: " Total at Two FYs prior ",
-        value: 1.4,
+        value: 1.5,
     },
 ]
 
@@ -2097,7 +2097,7 @@ const title67: Titles[] = [
         releaseDate: " Nov 2013 ", 
         platforms: " PS3, Xbox 360, Wii U, DL ",
         period: " 1st Quarter  ",
-        value: 1.4,
+        value: 1.5,
     },
     {
         title: " DuckTales: Remastered ", 
@@ -2125,7 +2125,7 @@ const title67: Titles[] = [
         releaseDate: " Nov 2013 ", 
         platforms: " PS3, Xbox 360, Wii U, DL ",
         period: " Last FY Total ",
-        value: 1.4,
+        value: 1.5,
     },
     {
         title: " DuckTales: Remastered ", 
@@ -2142,7 +2142,7 @@ const title70: Titles[] = [
         releaseDate: " Jul 2021 ",
         platforms: " NSW, PC, DL ",
         period: " 1st Quarter  ",
-        value: 0,
+        value: 1.6,
     },
     {
         title: " Monster Hunter Stories 2: Wings of Ruin ", 
@@ -2170,7 +2170,7 @@ const title70: Titles[] = [
         releaseDate: " Jul 2021 ",
         platforms: " NSW, PC, DL ",
         period: " Last FY Total ",
-        value: 0,
+        value: 1.5,
     },
     {
         title: " Monster Hunter Stories 2: Wings of Ruin ", 
@@ -2232,7 +2232,7 @@ const title72: Titles[] = [
         releaseDate: " Oct 2018 ",
         platforms: " PS4, Xbox One, NSW, DL ",
         period: " 1st Quarter  ",
-        value: 1.3,
+        value: 1.5,
     },
     {
         title: " Mega Man 11 ", 
@@ -2260,14 +2260,14 @@ const title72: Titles[] = [
         releaseDate: " Oct 2018 ",
         platforms: " PS4, Xbox One, NSW, DL ",
         period: " Last FY Total ",
-        value: 1.3,
+        value: 1.5,
     },
     {
         title: " Mega Man 11 ", 
         releaseDate: " Oct 2018 ",
         platforms: " PS4, Xbox One, NSW, DL ",
         period: " Total at Two FYs prior ",
-        value: 1.2,
+        value: 1.3,
     },
 ]
 
@@ -2277,7 +2277,7 @@ const title73: Titles[] = [
         releaseDate: " Feb 2019 ",
         platforms: " PS4, NSW, DL ",
         period: " 1st Quarter  ",
-        value: 1.2,
+        value: 1.7,
     },
     {
         title: " Phoenix Wright: Ace Attorney Trilogy ", 
@@ -2305,14 +2305,14 @@ const title73: Titles[] = [
         releaseDate: " Feb 2019 ",
         platforms: " PS4, NSW, DL ",
         period: " Last FY Total ",
-        value: 1.1,
+        value: 1.6,
     },
     {
         title: " Phoenix Wright: Ace Attorney Trilogy ", 
         releaseDate: " Feb 2019 ",
         platforms: " PS4, NSW, DL ",
         period: " Total at Two FYs prior ",
-        value: 0,
+        value: 1.1,
     },
 ]
 
@@ -2447,7 +2447,7 @@ const title80: Titles[] = [
         releaseDate: " Jun 2013 ",
         platforms: " PS3, Xbox 360, PC, DL ",
         period: " Total at Two FYs prior ",
-        value: 1.2,
+        value: 1.3,
     },
 ]
 
@@ -2502,7 +2502,7 @@ const title83: Titles[] = [
         releaseDate: " Mar 2017 ",
         platforms: " PS4, Xbox One, DL ",
         period: " 1st Quarter  ",
-        value: 1.2,
+        value: 1.4,
     },
     {
         title: " Ultimate Marvel vs. Capcom 3 ", 
@@ -2530,14 +2530,14 @@ const title83: Titles[] = [
         releaseDate: " Mar 2017 ",
         platforms: " PS4, Xbox One, DL ",
         period: " Last FY Total ",
-        value: 1.1,
+        value: 1.3,
     },
     {
         title: " Ultimate Marvel vs. Capcom 3 ", 
         releaseDate: " Mar 2017 ",
         platforms: " PS4, Xbox One, DL ",
         period: " Total at Two FYs prior ",
-        value: 0,
+        value: 1.1,
     },
 ]
 
@@ -2547,7 +2547,7 @@ const title86: Titles[] = [
         releaseDate: " Dec 2016 ",
         platforms: " Xbox One, PC, DL ",
         period: " 1st Quarter  ",
-        value: 1.2,
+        value: 1.3,
     },
     {
         title: " Dead Rising 4 ", 
@@ -2575,14 +2575,14 @@ const title86: Titles[] = [
         releaseDate: " Dec 2016 ",
         platforms: " Xbox One, PC, DL ",
         period: " Last FY Total ",
-        value: 1.2,
+        value: 1.3,
     },
     {
         title: " Dead Rising 4 ", 
         releaseDate: " Dec 2016 ",
         platforms: " Xbox One, PC, DL ",
         period: " Total at Two FYs prior ",
-        value: 1.0,
+        value: 1.2,
     },
 ]
 
@@ -2627,7 +2627,7 @@ const title87: Titles[] = [
         releaseDate: " Mar 2012 ",
         platforms: " DL (PS3, Xbox 360) ",
         period: " Total at Two FYs prior ",
-        value: 0,
+        value: 1.2,
     },
 ]
 
@@ -2637,7 +2637,7 @@ const title88: Titles[] = [
         releaseDate: " Aug 2015 ",
         platforms: " PS4, Xbox One, DL ",
         period: " 1st Quarter  ",
-        value: 1.2,
+        value: 1.3,
     },
     {
         title: " Mega Man Legacy Collection ", 
@@ -2672,7 +2672,7 @@ const title88: Titles[] = [
         releaseDate: " Aug 2015 ",
         platforms: " PS4, Xbox One, DL ",
         period: " Total at Two FYs prior ",
-        value: 1.1,
+        value: 1.2,
     },
 ]
 
@@ -2755,14 +2755,14 @@ const title91: Titles[] = [
         releaseDate: " Sep 2016 ",
         platforms: " PS4, Xbox One, DL ",
         period: " Last FY Total ",
-        value: 1.1,
+        value: 1.2,
     },
     {
         title: " Dead Rising ", 
         releaseDate: " Sep 2016 ",
         platforms: " PS4, Xbox One, DL ",
         period: " Total at Two FYs prior ",
-        value: 0,
+        value: 1.1,
     },
 ]
 
@@ -2800,14 +2800,14 @@ const title92: Titles[] = [
         releaseDate: " Mar 2015 ",
         platforms: " PS4, Xbox One, DL ",
         period: " Last FY Total ",
-        value: 1.1,
+        value: 1.2,
     },
     {
         title: " DMC Devil May Cry Definitive Edition ", 
         releaseDate: " Mar 2015 ",
         platforms: " PS4, Xbox One, DL ",
         period: " Total at Two FYs prior ",
-        value: 0,
+        value: 1.1,
     },
 ]
 
@@ -2862,7 +2862,7 @@ const title99: Titles[] = [
         releaseDate: " Jun 2011 ",
         platforms: " PS3, Xbox 360, DL ",
         period: " 1st Quarter  ",
-        value: 1.1,
+        value: 1.2,
     },
     {
         title: " Super Street Fighter IV Arcade Edition ", 
@@ -2907,7 +2907,7 @@ const title100: Titles[] = [
         releaseDate: " Jun 2009 ",
         platforms: " PS3, Xbox 360, PC, DL ",
         period: " 1st Quarter  ",
-        value: 1.1,
+        value: 1.3,
     },
     {
         title: " Bionic Commando ", 
@@ -2952,7 +2952,7 @@ const title101: Titles[] = [
         releaseDate: " Nov 2017 ",
         platforms: " NSW, DL ",
         period: " 1st Quarter  ",
-        value: 1.0,
+        value: 1.2,
     },
     {
         title: " Resident Evil Revelations Collection ", 
@@ -2980,7 +2980,7 @@ const title101: Titles[] = [
         releaseDate: " Nov 2017 ",
         platforms: " NSW, DL ",
         period: " Last FY Total ",
-        value: 0,
+        value: 1.1,
     },
     {
         title: " Resident Evil Revelations Collection ", 
@@ -2997,7 +2997,7 @@ const title105: Titles[] = [
         releaseDate: " Feb 2014 ",
         platforms: " DL (PS3, PS4, Xbox 360, Xbox One, PC) ",
         period: " 1st Quarter  ",
-        value: 1.0,
+        value: 1.3,
     },
     {
         title: " Strider ", 
@@ -3025,12 +3025,102 @@ const title105: Titles[] = [
         releaseDate: " Feb 2014 ",
         platforms: " DL (PS3, PS4, Xbox 360, Xbox One, PC) ",
         period: " Last FY Total ",
-        value: 1.0,
+        value: 1.1,
     },
     {
         title: " Strider ", 
         releaseDate: " Feb 2014 ",
         platforms: " DL (PS3, PS4, Xbox 360, Xbox One, PC) ",
+        period: " Total at Two FYs prior ",
+        value: 1.0,
+    },
+]
+
+const title113: Titles[] = [
+    {
+        title: " Monster Hunter Rise: Sunbreak ", 
+        releaseDate: " Jun 2022 ",
+        platforms: " NSW, PC, DL ",
+        period: " 1st Quarter  ",
+        value: 2.5,
+    },
+    {
+        title: " Monster Hunter Rise: Sunbreak ", 
+        releaseDate: " Jun 2022 ",
+        platforms: " NSW, PC, DL ",
+        period: " 2nd Quarter  ",
+        value: 2.5,
+    },
+    {
+        title: " Monster Hunter Rise: Sunbreak ", 
+        releaseDate: " Jun 2022 ",
+        platforms: " NSW, PC, DL ",
+        period: " 3rd Quarter  ",
+        value: 2.5,
+    },
+    {
+        title: " Monster Hunter Rise: Sunbreak ", 
+        releaseDate: " Jun 2022 ",
+        platforms: " NSW, PC, DL ",
+        period: " 4th Quarter  ",
+        value: 2.5,
+    },
+    {
+        title: " Monster Hunter Rise: Sunbreak ", 
+        releaseDate: " Jun 2022 ",
+        platforms: " NSW, PC, DL ",
+        period: " Last FY Total ",
+        value: 0,
+    },
+    {
+        title: " Monster Hunter Rise: Sunbreak ", 
+        releaseDate: " Jun 2022 ",
+        platforms: " NSW, PC, DL ",
+        period: " Total at Two FYs prior ",
+        value: 0,
+    },
+]
+
+const title114: Titles[] = [
+    {
+        title: " Devil May Cry HD Collection ", 
+        releaseDate: " Mar 2018 ",
+        platforms: " PS4, Xbox One, DL ",
+        period: " 1st Quarter  ",
+        value: 1.1,
+    },
+    {
+        title: " Devil May Cry HD Collection ", 
+        releaseDate: " Mar 2018 ",
+        platforms: " PS4, Xbox One, DL ",
+        period: " 2nd Quarter  ",
+        value: 1.1,
+    },
+    {
+        title: " Devil May Cry HD Collection ", 
+        releaseDate: " Mar 2018 ",
+        platforms: " PS4, Xbox One, DL ",
+        period: " 3rd Quarter  ",
+        value: 1.1,
+    },
+    {
+        title: " Devil May Cry HD Collection ", 
+        releaseDate: " Mar 2018 ",
+        platforms: " PS4, Xbox One, DL ",
+        period: " 4th Quarter  ",
+        value: 1.1,
+    },
+    {
+        title: " Devil May Cry HD Collection ", 
+        releaseDate: " Mar 2018 ",
+        platforms: " PS4, Xbox One, DL ",
+        period: " Last FY Total ",
+        value: 0,
+    },
+    {
+        title: " Devil May Cry HD Collection ", 
+        releaseDate: " Mar 2018 ",
+        platforms: " PS4, Xbox One, DL ",
         period: " Total at Two FYs prior ",
         value: 0,
     },
@@ -3087,10 +3177,10 @@ const header: Header = {
     thirdHeader: "| Platform                       |",
     fourthHeader: "| Release Date and Rank          |",
     fifthHeader: "| Units                          |",
-    fiscalYear: "| FY3/22 Cumulative  |",
-    fiscalYearYoY: "| FY3/22 Cml. YoY%   |",
+    fiscalYear: "| FY3/23 Cumulative  |",
+    fiscalYearYoY: "| FY3/23 Cml. YoY%   |",
     ltd: "| Life-To-Date       |",
-    summaryHeader: "| FY3/22 Cml. |   Units |    %    |",
+    summaryHeader: "| FY3/23 Cml. |   Units |    %    |",
 }
 
 const collection = [
@@ -3126,7 +3216,6 @@ const collection = [
     title37,
     title38,
     title40,
-    title41,
     title42,
     title45,
     title46,
@@ -3162,9 +3251,11 @@ const collection = [
     title100,
     title101,
     title105,
+    title113,
+    title114,
 ] as const;
 
-export const sortedCollection = collection.filter((elem, index, array) => {
+export const sortedFYCollection = collection.filter((elem, index, array) => {
             return elem[3].value - elem[4].value !== 0
             // we need to create a new array that is identical to the original due to sort's mutating properties. filter titles that sold units this FY
     }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
@@ -3181,7 +3272,7 @@ export const sortedCollection = collection.filter((elem, index, array) => {
         return x // x which is the returned array is now returned to the array of arrays
     })
 
-// export const sortedCollection = collection.map((elem, index, array) => {
+// export const sortedFYCollection = collection.map((elem, index, array) => {
 //             return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
 //     }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
 //         return (a[currentQuarter-1].value > b[currentQuarter-1].value)
@@ -3197,16 +3288,16 @@ export const sortedCollection = collection.filter((elem, index, array) => {
 //         return x // x which is the returned array is now returned to the array of arrays
 //     })
 
-const differenceTitles = sortedCollection.map((elem) => {
+const differenceTitles = sortedFYCollection.map((elem) => {
         return quarterlyCalculation(elem)
     })
 
 const printListedTitlesFY = differenceTitles.map((elem, index) => {
-        return printTitles(header, elem, sortedCollection[index], currentQuarter)
+        return printTitles(header, elem, sortedFYCollection[index], currentQuarter)
     }) as string[];
 
 
-const newTitles = sortedCollection.map((elem) => {
+const newTitles = sortedFYCollection.map((elem) => {
         return labelTitles(elem)
     }).map((elem) => {
         return elem.filter((secondElem) => {
@@ -3219,7 +3310,7 @@ const newTitles = sortedCollection.map((elem) => {
 
 const newSum = newTitles.reduce((prev, next) => prev + next, 0);        
 
-const recurringTitles = sortedCollection.map((elem) => {
+const recurringTitles = sortedFYCollection.map((elem) => {
         return labelTitles(elem)
     }).map((elem) => {
         return elem.filter((secondElem) => {
@@ -3232,7 +3323,7 @@ const recurringTitles = sortedCollection.map((elem) => {
 
 const recurringSum = recurringTitles.reduce((prev, next) => prev + next, 0)    
 
-const sporadicTitles = sortedCollection.map((elem) => {
+const sporadicTitles = sortedFYCollection.map((elem) => {
         return labelTitles(elem)
     }).map((elem) => {
         return elem.filter((secondElem) => {
@@ -3252,7 +3343,7 @@ const printSummaryOne = printSummaryHead(header, newTitles, recurringTitles, spo
 
 const printSummaryTwo = printSummary(header, newSum, recurringSum, sporadicSum)
 
-export const printPlatinumTitles = (currentQuarter !== 4)
+export const printFYPlatinumTitles = (currentQuarter === 1)
     ? [printOne, ...printListedTitlesFY].reduce((prev, next) => prev + "\n" + next )
     : [printOne, ...printListedTitlesFY, printSummaryOne, printSummaryTwo].reduce((prev, next) => prev + "\n" + next )
 
