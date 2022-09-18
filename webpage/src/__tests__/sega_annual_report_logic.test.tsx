@@ -136,7 +136,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
             ? printValue
             : " ".repeat(11 - printValue.length) + printValue;
 
-       const printFYCmlYoY = (seriesIP.valueLastFY === 0)
+        let printFYCmlYoY = (seriesIP.valueLastFY === 0)
                 ? " New! "
                 : ((seriesIP.value - seriesIP.valueLastFY) >  (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs))
                 ? `+${((
@@ -144,12 +144,12 @@ const printSeries = (header: Header, seriesIP: Series) => {
                 : `${((
                     ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.value - seriesIP.value)) - 1) * 100).toFixed(2)}% ` 
 
-    const printFYCmlYoYFixed: string =        (printFYCmlYoY.length >= 11) 
+        let printFYCmlYoYFixed: string = (printFYCmlYoY.length >= 11) 
                 ? header.fiscalYearYoY + printFYCmlYoY + "|"
                 : header.fiscalYearYoY + " ".repeat(11 - printFYCmlYoY.length) + printFYCmlYoY + "|"
                 
-    let printLine: string = "+" + "-".repeat(32) + "+";
-    let printDoubleLine: string = "+" + "=".repeat(32) + "+";
+        let printLine: string = "+" + "-".repeat(32) + "+";
+        let printDoubleLine: string = "+" + "=".repeat(32) + "+";
 
-
+    return printTitleNameFixed + "\n" + printValueFixed + "\n" + printFYCmlYoYFixed
 }
