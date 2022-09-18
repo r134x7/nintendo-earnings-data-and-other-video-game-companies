@@ -14,10 +14,10 @@ export type Series = {
 
 export type Header = {
     segaHeader: "| Sega Sammy - IP Series Data    |",
-    secondHeader: "| IP Title                          |",
+    secondHeader: "| IP Title                       |",
     thirdHeader: "| Platforms                      |",
     fourthHeader: "| Total Editions                 |"
-    fifthHeader: "| First Appearance and Rank         |",
+    fifthHeader: "| First Appearance and Rank      |",
     sixthHeader: "| Units                          |",
     fiscalYear: string,
     fiscalYearYoY: string,
@@ -57,16 +57,21 @@ const series2: Series =
 
 const header: Header = {
     segaHeader: "| Sega Sammy - IP Series Data    |",
-    secondHeader: "| IP Title                          |",
+    secondHeader: "| IP Title                       |",
     thirdHeader: "| Platforms                      |",
     fourthHeader: "| Total Editions                 |",
-    fifthHeader: "| First Appearance and Rank         |",
+    fifthHeader: "| First Appearance and Rank      |",
     sixthHeader: "| Units                          |",
     summaryHeader: " Placeholder ",
     fiscalYear:  "| FY3/22 Cumulative  |", 
     fiscalYearYoY: "| FY3/22 Cml. YoY%   |",
     ltd: "| Life-To-Date       |",
 }
+
+const collection = [
+    series1,
+    series2,
+] as const;
 
 const printHead = (header: Header) =>
 `+${"-".repeat(32)}+
@@ -108,15 +113,19 @@ const printSeries = (header: Header, seriesIP: Series) => {
         ? seriesIP.title + " ".repeat(32 - seriesIP.title.length) 
         : seriesIP.title
 
+        console.log(seriesIP.platforms.length);
+        
         let printPlatforms: string = (seriesIP.platforms.length > 32)
         ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
         {
             let nextCheck = prev + next + " ";
             
             if (nextCheck.length > 31 && prev.length <= 31) {
-                return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
+                return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+            } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+                return prev + " ".repeat(32*2 - prev.length) + `|\n| ` + next
             } else if (index === array.length-1) {
-                return prev + next + " ".repeat(77 - prev.length)
+                return prev + next + " ".repeat(95 - prev.length)
             } else {
                 return prev + " " + next
             }
@@ -153,3 +162,32 @@ const printSeries = (header: Header, seriesIP: Series) => {
 
     return printTitleNameFixed + "\n" + printValueFixed + "\n" + printFYCmlYoYFixed
 }
+
+test("testing printHead function...", () => {
+
+    console.log(printHead(header));
+    
+})
+
+test("testing printSeries function...", () => {
+
+    const sortedFYCollection: Series[] = collection.filter((elem, index, array) => {
+            return elem.value - elem.valueLastFY !== 0
+            // we need to create a new array that is identical to the original due to sort's mutating properties. filter titles that sold units this FY
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a.value - a.valueLastFY > b.value - b.valueLastFY)
+            ? 1
+            : (a.value - a.valueLastFY < b.value - b.valueLastFY)
+            ? -1
+            : 0
+    }).map((elem, index) => {
+        return {...elem, rank: index+1}
+    })
+
+    let x = sortedFYCollection.map((elem) => {
+        return printSeries(header, elem)
+    })
+
+    console.log(x.reduce((prev, next) => prev + next));
+    
+})
