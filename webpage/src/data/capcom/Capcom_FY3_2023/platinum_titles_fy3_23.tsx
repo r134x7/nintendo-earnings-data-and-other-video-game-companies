@@ -3347,3 +3347,4 @@ export const printFYPlatinumTitles = (currentQuarter === 1)
     ? [printOne, ...printListedTitlesFY].reduce((prev, next) => prev + "\n" + next )
     : [printOne, ...printListedTitlesFY, printSummaryOne, printSummaryTwo].reduce((prev, next) => prev + "\n" + next )
 
+export const printAllPlatinumTitles = [printOne, ...printListedTitlesFY].reduce((prev, next) => prev + "\n" + next )

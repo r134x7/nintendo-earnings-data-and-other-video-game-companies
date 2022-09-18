@@ -2092,7 +2092,6 @@ export const legacyCollection = [
     title84,
     title82,
     title78,
-    title78,
     title77,
     title76,
     title75,
