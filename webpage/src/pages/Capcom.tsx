@@ -5,6 +5,7 @@ import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import CAPCOM_FY3_22 from "../components/capcom/CAPCOM_FY3_2022";
+import CAPCOM_FY3_23 from "../components/capcom/CAPCOM_FY3_2023";
 
 const yearsList = Array.from({length: 2}, (elem, index) => 
                     {
@@ -134,9 +135,9 @@ export default function Capcom() {
             </Group>
 
             {   (year === "FY3/2023" && value === "Data by Fiscal Year")
+                ? <CAPCOM_FY3_23 />
+                : (year === "FY3/2022" && value === "Data by Fiscal Year")
                 ? <CAPCOM_FY3_22 />
-                // : (year === "FY3/2022" && value === "Data by Fiscal Year")
-                // ? <NINTENDO_FY3_22 />
                 : null
             }
             

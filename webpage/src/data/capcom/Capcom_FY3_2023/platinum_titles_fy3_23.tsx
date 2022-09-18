@@ -3341,7 +3341,7 @@ const differenceAllTitles = sortedAllCollection.map((elem) => {
     })
 
 const printListedTitlesAll = differenceAllTitles.map((elem, index) => {
-        return printTitles(header, elem, sortedFYCollection[index], currentQuarter)
+        return printTitles(header, elem, sortedAllCollection[index], currentQuarter)
     }) as string[];
 
 const differenceFYTitles = sortedFYCollection.map((elem) => {
