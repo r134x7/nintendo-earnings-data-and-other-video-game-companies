@@ -5,6 +5,8 @@ export type Series = {
     totalEditions: number,
     units: string,
     value: number,
+    valueLastFY: number,
+    valueLastTwoFYs: number,
     ipType: " Acquired IP " | " Developed in-house IP " | " Licensed third party IP ",
     rank?: number,
     miscellaneous?: string,
@@ -34,6 +36,8 @@ const series1: Series =
         ipType: " Acquired IP ",
         units: "(Units and downloads)",
         value: 15.0,
+        valueLastFY: 13.1,
+        valueLastTwoFYs: 10.2,
     };
 
 
@@ -46,6 +50,8 @@ const series2: Series =
         ipType: " Developed in-house IP ",
         units: "(Units and downloads)(Full games and F2P total)",
         value: 1380.0,
+        valueLastFY: 1140.0,
+        valueLastTwoFYs: 920.0,
     };
 
 
@@ -124,6 +130,8 @@ const printSeries = (header: Header, seriesIP: Series) => {
 
         let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printPlatforms + "|\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
 
-        
+       const printFYCmlYoY = (seriesIP.lastFYValue === 0)
+                ? " New! "
+                : 
 
 }
