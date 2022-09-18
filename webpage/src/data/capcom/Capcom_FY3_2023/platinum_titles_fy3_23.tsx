@@ -3307,9 +3307,9 @@ export const sortedFYCollection = collection.filter((elem, index, array) => {
             return elem[3].value - elem[4].value !== 0
             // we need to create a new array that is identical to the original due to sort's mutating properties. filter titles that sold units this FY
     }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
-        return (a[currentQuarter-1].value > b[currentQuarter-1].value)
+        return (a[currentQuarter-1].value - a[4].value > b[currentQuarter-1].value - b[4].value)
             ? 1
-            : (a[currentQuarter-1].value < b[currentQuarter-1].value)
+            : (a[currentQuarter-1].value - a[4].value < b[currentQuarter-1].value - b[4].value)
             ? -1
             : 0
     }).map((elem, index) => {
