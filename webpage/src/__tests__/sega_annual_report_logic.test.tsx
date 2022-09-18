@@ -127,8 +127,14 @@ const printSeries = (header: Header, seriesIP: Series) => {
 
         let printReleaseDateFixed: string = seriesIP.firstReleaseYear + " ".repeat(10)
 
-
         let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printPlatforms + "|\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
+
+    
+        let printValue: string = `${seriesIP.value}M `
+       
+        let printValueFixed: string = (printValue.length >= 11)
+            ? printValue
+            : " ".repeat(11 - printValue.length) + printValue;
 
        const printFYCmlYoY = (seriesIP.valueLastFY === 0)
                 ? " New! "
@@ -137,5 +143,13 @@ const printSeries = (header: Header, seriesIP: Series) => {
                     ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.value - seriesIP.value)) - 1) * 100).toFixed(2)}% ` 
                 : `${((
                     ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.value - seriesIP.value)) - 1) * 100).toFixed(2)}% ` 
+
+    const printFYCmlYoYFixed: string =        (printFYCmlYoY.length >= 11) 
+                ? header.fiscalYearYoY + printFYCmlYoY + "|"
+                : header.fiscalYearYoY + " ".repeat(11 - printFYCmlYoY.length) + printFYCmlYoY + "|"
+                
+    let printLine: string = "+" + "-".repeat(32) + "+";
+    let printDoubleLine: string = "+" + "=".repeat(32) + "+";
+
 
 }
