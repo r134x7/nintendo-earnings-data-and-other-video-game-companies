@@ -1197,7 +1197,7 @@ const title32: Titles[] = [
         releaseDate: " Jan 2013 ",
         platforms: " PS3, Xbox 360, DL ",
         period: " 1st Quarter  ",
-        value: 2.5,
+        value: 2.8,
     },
     {
         title: " DmC Devil May Cry ", 
@@ -1225,14 +1225,14 @@ const title32: Titles[] = [
         releaseDate: " Jan 2013 ",
         platforms: " PS3, Xbox 360, DL ",
         period: " Last FY Total ",
-        value: 2.5,
+        value: 2.6,
     },
     {
         title: " DmC Devil May Cry ", 
         releaseDate: " Jan 2013 ",
         platforms: " PS3, Xbox 360, DL ",
         period: " Total at Two FYs prior ",
-        value: 2.4,
+        value: 2.5,
     },
 ]
 
@@ -1242,7 +1242,7 @@ const title33: Titles[] = [
         releaseDate: " Aug 2016 ",
         platforms: " PS4, Xbox One, DL ",
         period: " 1st Quarter  ",
-        value: 2.3,
+        value: 2.7,
     },
     {
         title: " Resident Evil 4 ", 
@@ -1270,14 +1270,14 @@ const title33: Titles[] = [
         releaseDate: " Aug 2016 ",
         platforms: " PS4, Xbox One, DL ",
         period: " Last FY Total ",
-        value: 2.2,
+        value: 2.6,
     },
     {
         title: " Resident Evil 4 ", 
         releaseDate: " Aug 2016 ",
         platforms: " PS4, Xbox One, DL ",
         period: " Total at Two FYs prior ",
-        value: 1.7,
+        value: 2.2,
     },
 ]
 
@@ -1287,7 +1287,7 @@ const title35: Titles[] = [
         releaseDate: " Jun 2016",
         platforms: " PS4, Xbox One, DL ",
         period: " 1st Quarter  ",
-        value: 2.2,
+        value: 2.5,
     },
     {
         title: " Resident Evil 5 ", 
@@ -1315,14 +1315,14 @@ const title35: Titles[] = [
         releaseDate: " Jun 2016",
         platforms: " PS4, Xbox One, DL ",
         period: " Last FY Total ",
-        value: 2.1,
+        value: 2.4,
     },
     {
         title: " Resident Evil 5 ", 
         releaseDate: " Jun 2016",
         platforms: " PS4, Xbox One, DL ",
         period: " Total at Two FYs prior ",
-        value: 1.7,
+        value: 2.1,
     },
 ]
 
@@ -1367,7 +1367,7 @@ const title37: Titles[] = [
         releaseDate: " Mar 2016 ",
         platforms: " PS4, Xbox One, DL ",
         period: " Total at Two FYs prior ",
-        value: 2.0,
+        value: 2.3,
     },
 ]
 
@@ -1422,7 +1422,7 @@ const title40: Titles[] = [
         releaseDate: " Apr 2013 ",
         platforms: " PS3, Xbox 360, DL ",
         period: " 1st Quarter  ",
-        value: 2.2,
+        value: 2.7,
     },
     {
         title: " Dragon’s Dogma: Dark Arisen ", 
@@ -1450,7 +1450,7 @@ const title40: Titles[] = [
         releaseDate: " Apr 2013 ",
         platforms: " PS3, Xbox 360, DL ",
         period: " Last FY Total ",
-        value: 2.1,
+        value: 2.3,
     },
     {
         title: " Dragon’s Dogma: Dark Arisen ", 
@@ -1458,51 +1458,6 @@ const title40: Titles[] = [
         platforms: " PS3, Xbox 360, DL ",
         period: " Total at Two FYs prior ",
         value: 2.1,
-    },
-]
-
-const title41: Titles[] = [
-    {
-        title: " Marvel vs. Capcom 3: Fate of Two Worlds ", 
-        releaseDate: " Feb 2011 ",
-        platforms: " PS3, Xbox 360 ",
-        period: " 1st Quarter  ",
-        value: 2.2,
-    },
-    {
-        title: " Marvel vs. Capcom 3: Fate of Two Worlds ", 
-        releaseDate: " Feb 2011 ",
-        platforms: " PS3, Xbox 360 ",
-        period: " 2nd Quarter  ",
-        value: 2.2,
-    },
-    {
-        title: " Marvel vs. Capcom 3: Fate of Two Worlds ", 
-        releaseDate: " Feb 2011 ",
-        platforms: " PS3, Xbox 360 ",
-        period: " 3rd Quarter  ",
-        value: 2.2,
-    },
-    {
-        title: " Marvel vs. Capcom 3: Fate of Two Worlds ", 
-        releaseDate: " Feb 2011 ",
-        platforms: " PS3, Xbox 360 ",
-        period: " 4th Quarter  ",
-        value: 2.2,
-    },
-    {
-        title: " Marvel vs. Capcom 3: Fate of Two Worlds ", 
-        releaseDate: " Feb 2011 ",
-        platforms: " PS3, Xbox 360 ",
-        period: " Last FY Total ",
-        value: 2.2,
-    },
-    {
-        title: " Marvel vs. Capcom 3: Fate of Two Worlds ", 
-        releaseDate: " Feb 2011 ",
-        platforms: " PS3, Xbox 360 ",
-        period: " Total at Two FYs prior ",
-        value: 2.2,
     },
 ]
 

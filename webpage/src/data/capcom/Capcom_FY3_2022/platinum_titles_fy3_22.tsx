@@ -1461,51 +1461,6 @@ const title40: Titles[] = [
     },
 ]
 
-const title41: Titles[] = [
-    {
-        title: " Marvel vs. Capcom 3: Fate of Two Worlds ", 
-        releaseDate: " Feb 2011 ",
-        platforms: " PS3, Xbox 360 ",
-        period: " 1st Quarter  ",
-        value: 2.2,
-    },
-    {
-        title: " Marvel vs. Capcom 3: Fate of Two Worlds ", 
-        releaseDate: " Feb 2011 ",
-        platforms: " PS3, Xbox 360 ",
-        period: " 2nd Quarter  ",
-        value: 2.2,
-    },
-    {
-        title: " Marvel vs. Capcom 3: Fate of Two Worlds ", 
-        releaseDate: " Feb 2011 ",
-        platforms: " PS3, Xbox 360 ",
-        period: " 3rd Quarter  ",
-        value: 2.2,
-    },
-    {
-        title: " Marvel vs. Capcom 3: Fate of Two Worlds ", 
-        releaseDate: " Feb 2011 ",
-        platforms: " PS3, Xbox 360 ",
-        period: " 4th Quarter  ",
-        value: 2.2,
-    },
-    {
-        title: " Marvel vs. Capcom 3: Fate of Two Worlds ", 
-        releaseDate: " Feb 2011 ",
-        platforms: " PS3, Xbox 360 ",
-        period: " Last FY Total ",
-        value: 2.2,
-    },
-    {
-        title: " Marvel vs. Capcom 3: Fate of Two Worlds ", 
-        releaseDate: " Feb 2011 ",
-        platforms: " PS3, Xbox 360 ",
-        period: " Total at Two FYs prior ",
-        value: 2.2,
-    },
-]
-
 const title42: Titles[] = [
     {
         title: " Resident Evil Revelations ", 
@@ -3171,7 +3126,6 @@ const collection = [
     title37,
     title38,
     title40,
-    title41,
     title42,
     title45,
     title46,
