@@ -130,8 +130,12 @@ const printSeries = (header: Header, seriesIP: Series) => {
 
         let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printPlatforms + "|\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
 
-       const printFYCmlYoY = (seriesIP.lastFYValue === 0)
+       const printFYCmlYoY = (seriesIP.valueLastFY === 0)
                 ? " New! "
-                : 
+                : ((seriesIP.value - seriesIP.valueLastFY) >  (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs))
+                ? `+${((
+                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.value - seriesIP.value)) - 1) * 100).toFixed(2)}% ` 
+                : `${((
+                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.value - seriesIP.value)) - 1) * 100).toFixed(2)}% ` 
 
 }
