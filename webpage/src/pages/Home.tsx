@@ -53,11 +53,16 @@ const Home = () => {
                     <Text>Nintendo -</Text>
                     <List withPadding listStyleType="disc">
                         <List.Item>Latest update: Earnings release data from 1st Quarter FY3/2023.</List.Item>
-                        <List.Item>Future update planned: FAQ section.</List.Item>
+                        <List.Item>Future update planned: Notes section.</List.Item>
                     </List>
                     <Text>Capcom -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Page update: Work in progress.</List.Item>
+                        <List.Item>Latest update: Platinum Titles data from 1st Quarter FY3/2023.</List.Item>
+                        <List.Item>Future update planned: Notes section.</List.Item>
+                    </List>
+                    <Text>Sega -</Text>
+                    <List withPadding listStyleType="disc">
+                        <List.Item>Page update: Planning stage.</List.Item>
                     </List>
                     <Text>Events -</Text>
                     <List withPadding listStyleType="disc">
