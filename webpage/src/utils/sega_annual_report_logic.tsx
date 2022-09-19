@@ -11,6 +11,7 @@ export type Series = {
     rank?: number,
     miscellaneous1?: string,
     miscellaneous2?: string,
+    miscellaneous3?: string,
 }
 
 export type Header = {
@@ -96,22 +97,70 @@ export const printSeries = (header: Header, seriesIP: Series) => {
 
         let printUnits: string = "|" + seriesIP.units + " ".repeat(32 - seriesIP.units.length) + "|";
 
+        // let printMisc1: string | never[] = (!seriesIP.miscellaneous1)
+        //     ? []
+        //     : (seriesIP.miscellaneous1.length > 32 && seriesIP.miscellaneous1.length < 65)
+        //     ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
+        //     {
+        //         let nextCheck = prev + next + " ";
+            
+        //         if (nextCheck.length > 31 && prev.length <= 31) {
+        //             return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+        //         } else if (index === array.length-1) {
+        //             return prev + next + " ".repeat(77 - prev.length)
+        //         } else {
+        //             return prev + " " + next
+        //     }}, "|")
+        //     : (seriesIP.miscellaneous1.length > 64 && seriesIP.miscellaneous1.length < 97)
+        //     ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
+        //     {
+        //         let nextCheck = prev + next + " ";
+            
+        //         if (nextCheck.length > 31 && prev.length <= 31) {
+        //             return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+        //         } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+        //             return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
+        //         } else if (index === array.length-1) {
+        //             return prev + next + " ".repeat(98 - prev.length)
+        //         } else {
+        //             return prev + " " + next
+        //     }}, "|")
+        //     : (seriesIP.miscellaneous1.length > 96 && seriesIP.miscellaneous1.length < 129)
+        //     ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
+        //     {
+        //         let nextCheck = prev + next + " ";
+            
+        //         if (nextCheck.length > 31 && prev.length <= 31) {
+        //             return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+        //         } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+        //             return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
+        //         } else if (index === array.length-1) {
+        //             return prev + next + " ".repeat(98 - prev.length)
+        //         } else {
+        //             return prev + " " + next
+        //     }}, "|")
+        //     : (seriesIP.miscellaneous1.length < 32)
+        //     ? "|" + seriesIP.miscellaneous1 + " ".repeat(32 - seriesIP.miscellaneous1.length) + "|"
+        //     : "|" + seriesIP.miscellaneous1 + "|"
+
         let printMisc1: string | never[] = (!seriesIP.miscellaneous1)
-            ? []
+            ? [] 
             : (seriesIP.miscellaneous1.length > 32 && seriesIP.miscellaneous1.length < 65)
             ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
             {
                 let nextCheck = prev + next + " ";
             
                 if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+                    // return prev + " ".repeat(33 - prev.length) + `|\n| ` + next
+                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
                 } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(77 - prev.length)
+                    return prev + next + " ".repeat(68 - prev.length) + "|"
+                    // return prev + next + " ".repeat(68 - prev.length) + "|"
                 } else {
                     return prev + " " + next
-            }}, "|")
+            }})
             : (seriesIP.miscellaneous1.length > 64 && seriesIP.miscellaneous1.length < 97)
-            ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
+            ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
             {
                 let nextCheck = prev + next + " ";
             
@@ -120,7 +169,7 @@ export const printSeries = (header: Header, seriesIP: Series) => {
                 } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
                     return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
                 } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(98 - prev.length)
+                    return prev + next + " ".repeat(98 - prev.length) + "|"
                 } else {
                     return prev + " " + next
             }}, "|")
@@ -134,13 +183,30 @@ export const printSeries = (header: Header, seriesIP: Series) => {
                 } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
                     return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
                 } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(98 - prev.length)
+                    return prev + next + " ".repeat(150 - prev.length) + "|"
+                } else {
+                    return prev + " " + next
+            }}, "|")
+            : (seriesIP.miscellaneous1.length > 128 && seriesIP.miscellaneous1.length < 161)
+            ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
+            {
+                let nextCheck = prev + next + " ";
+            
+                if (nextCheck.length > 31 && prev.length <= 31) {
+                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
+                } else if (nextCheck.length > 31*3 && prev.length <= 31*3) {
+                    return prev + " ".repeat(99 - prev.length) + `|\n| ` + next
+                } else if (index === array.length-1) {
+                    return prev + next + " ".repeat(128 - prev.length) + "|"
                 } else {
                     return prev + " " + next
             }}, "|")
             : (seriesIP.miscellaneous1.length < 32)
-            ? "|" + seriesIP.miscellaneous1 + " ".repeat(32 - seriesIP.miscellaneous1.length) + "|"
-            : "|" + seriesIP.miscellaneous1 + "|"
+            ? "|" + seriesIP.miscellaneous1 + " ".repeat(32 - seriesIP.miscellaneous1.length) + "|" 
+            : "|" + seriesIP.miscellaneous1 + "|";
+
 
         let printMisc2: string | never[] = (!seriesIP.miscellaneous2)
             ? [] 

@@ -78,7 +78,7 @@ const series5: Series =
 const series6: Series = 
     {
         title: " Puyo Puyo ",
-        firstReleaseYear: " 1991** ",
+        firstReleaseYear: "1991**",
         platforms: " Pachislot and Pachinko Machines, Consumer Games, Amusement Machines, Toys, etc.",
         totalEditions: 0,
         ipType: " Developed in-house IP ",
@@ -86,8 +86,8 @@ const series6: Series =
         value: 35.0,
         valueLastFY: 32.0,
         valueLastTwoFYs: 29.0,
-        miscellaneous1: "(Full games and F2P, Amusement Machines-registered IDs total (Total for registrations after IP acquisition))",
-        miscellaneous2: "*Including downloads of free-to-play titles, **SEGA CORPORATION acquired the rights in 1998. Figures for cumulative unit sales are the totals for titles that SEGA sold after acquiring the rights. ",
+        miscellaneous2: "*Including downloads of free-to-play titles",
+        miscellaneous3: "|(Full games and F2P, Amusement Machines-registered IDs total (Total for registrations after IP acquisition)),\n|**SEGA CORPORATION acquired the rights in 1998. Figures for cumulative unit sales are the totals for titles that SEGA sold after acquiring the rights. ",
     };
 
 const series7: Series = 
@@ -111,7 +111,7 @@ const series8: Series =
         platforms: " Pachislot and Pachinko Machines, Consumer Games, Toys, etc.",
         totalEditions: 164,
         ipType: " Developed in-house IP ",
-        units: " units ",
+        units: "(units)",
         value: 17.0,
         valueLastFY: 14.0,
         valueLastTwoFYs: 12.0,
@@ -139,11 +139,11 @@ const series10: Series =
         platforms: " Pachislot and Pachinko Machines, Consumer Games, Toys, etc.",
         totalEditions: 14,
         ipType: " Developed in-house IP ",
-        units: " units ",
+        units: "(units)",
         value: 0.56,
         valueLastFY: 0.56,
         valueLastTwoFYs: 0.57,
-        miscellaneous1: "(pachislot and pachinko machines and amusement machines total)",
+        miscellaneous3: "(pachislot and pachinko machines and amusement machines total)",
     };
 
 const series11: Series = 
@@ -153,13 +153,12 @@ const series11: Series =
         platforms: " Pachislot and Pachinko Machines, Consumer Games, Toys, etc.",
         totalEditions: 15,
         ipType: " Developed in-house IP ",
-        units: " units ",
+        units: "(units)",
         value: 0.51,
         valueLastFY: 0.51,
         valueLastTwoFYs: 0.50,
-        miscellaneous1: "(pachislot and pachinko machines and amusement machines total)",
+        miscellaneous3: "(pachislot and pachinko machines and amusement machines total)",
     };
-
 
 const series12: Series = 
     {
@@ -168,11 +167,11 @@ const series12: Series =
         platforms: " Pachislot and Pachinko Machines, Consumer Games, Toys, etc.",
         totalEditions: 0,
         ipType: " Developed in-house IP ",
-        units: " users ",
+        units: "(users)",
         value: 9.0,
         valueLastFY: 5.5,
         valueLastTwoFYs: 5.5,
-        miscellaneous1: "Total for domestic and overseas versions of PHANTASY STAR ONLINE 2 and PHANTASY STAR ONLINE 2 NEW GENESIS",
+        miscellaneous3: "Total for domestic and overseas versions of PHANTASY STAR ONLINE 2 and PHANTASY STAR ONLINE 2 NEW GENESIS",
     };
 
 const series13: Series = 
@@ -211,11 +210,11 @@ const series15: Series =
         platforms: " Pachislot and Pachinko Machines, Consumer Games, Amusement Machines, Toys, etc.",
         totalEditions: 35,
         ipType:  " Licensed third party IP ",
-        units: " units ",
+        units: "(units)",
         value: 2.99,
         valueLastFY: 2.97,
         valueLastTwoFYs: 2.88,
-        miscellaneous1: "(pachislot and pachinko machines total)",
+        miscellaneous3: "(pachislot and pachinko machines total)",
     };
 
 const series16: Series = 
@@ -225,11 +224,11 @@ const series16: Series =
         platforms: " Pachislot and Pachinko Machines, Consumer Games, Toys, etc.",
         totalEditions: 13,
         ipType: " Licensed third party IP ",
-        units: " units ",
+        units: "(units)",
         value: 0.48,
         valueLastFY: 0.48,
         valueLastTwoFYs: 0.47,
-        miscellaneous1: "(pachislot and pachinko machines total)",
+        miscellaneous3: "(pachislot and pachinko machines total)",
     };
 
 const header: Header = {

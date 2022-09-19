@@ -119,24 +119,72 @@ const printSeries = (header: Header, seriesIP: Series) => {
         ? seriesIP.title + " ".repeat(32 - seriesIP.title.length) 
         : seriesIP.title
 
-        let printPlatforms: string = (seriesIP.platforms.length > 32)
-        ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
-        {
-            let nextCheck = prev + next + " ";
+        // let printPlatforms: string = (seriesIP.platforms.length > 32)
+        // ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
+        // {
+        //     let nextCheck = prev + next + " ";
             
-            if (nextCheck.length > 31 && prev.length <= 31) {
-                return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-            } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-                return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-            } else if (index === array.length-1) {
-                return prev + next + " ".repeat(98 - prev.length)
-            } else {
-                return prev + " " + next
-            }
-        })
-        : (seriesIP.platforms.length < 32)
-        ? seriesIP.platforms + " ".repeat(32 - seriesIP.platforms.length) 
-        : seriesIP.platforms
+        //     if (nextCheck.length > 31 && prev.length <= 31) {
+        //         return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+        //     } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+        //         return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
+        //     } else if (index === array.length-1) {
+        //         return prev + next + " ".repeat(98 - prev.length)
+        //     } else {
+        //         return prev + " " + next
+        //     }
+        // })
+        // : (seriesIP.platforms.length < 32)
+        // ? seriesIP.platforms + " ".repeat(32 - seriesIP.platforms.length) 
+        // : seriesIP.platforms
+
+        let printPlatforms: string = 
+            (seriesIP.platforms.length > 32 && seriesIP.platforms.length < 65)
+            ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
+            {
+                let nextCheck = prev + next + " ";
+            
+                if (nextCheck.length > 31 && prev.length <= 31) {
+                    // return prev + " ".repeat(33 - prev.length) + `|\n| ` + next
+                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+                } else if (index === array.length-1) {
+                    return prev + next + " ".repeat(68 - prev.length) + "|"
+                    // return prev + next + " ".repeat(68 - prev.length) + "|"
+                } else {
+                    return prev + " " + next
+            }})
+            : (seriesIP.platforms.length > 64 && seriesIP.platforms.length < 97)
+            ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
+            {
+                let nextCheck = prev + next + " ";
+            
+                if (nextCheck.length > 31 && prev.length <= 31) {
+                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
+                } else if (index === array.length-1) {
+                    return prev + next + " ".repeat(98 - prev.length) + "|"
+                } else {
+                    return prev + " " + next
+            }})
+            : (seriesIP.platforms.length > 96 && seriesIP.platforms.length < 129)
+            ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
+            {
+                let nextCheck = prev + next + " ";
+            
+                if (nextCheck.length > 31 && prev.length <= 31) {
+                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
+                } else if (index === array.length-1) {
+                    return prev + next + " ".repeat(98 - prev.length) + "|"
+                } else {
+                    return prev + " " + next
+            }})
+            : (seriesIP.platforms.length < 32)
+            ? "|" + seriesIP.platforms + " ".repeat(32 - seriesIP.platforms.length) + "|" 
+            : "|" + seriesIP.platforms + "|";
+
 
         let printReleaseDateFixed: string = (seriesIP.totalEditions !== 0)
             ? " Total Editions: " + seriesIP.totalEditions + "             |\n+" + "-".repeat(32) + "+\n| 1st Year:" + seriesIP.firstReleaseYear + " ".repeat(4)
@@ -144,55 +192,58 @@ const printSeries = (header: Header, seriesIP: Series) => {
         
         let printIPType: string = seriesIP.ipType + " ".repeat(32 - seriesIP.ipType.length)
 
-        let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printIPType + "|\n+" + "-".repeat(32) + "+\n|" + printPlatforms + "|\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
+        let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printIPType + "|\n+" + "-".repeat(32) + "+\n" + printPlatforms + "\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
 
         let printUnits: string = "|" + seriesIP.units + " ".repeat(32 - seriesIP.units.length) + "|";
 
         let printMisc1: string | never[] = (!seriesIP.miscellaneous1)
-            ? []
+            ? [] 
             : (seriesIP.miscellaneous1.length > 32 && seriesIP.miscellaneous1.length < 65)
             ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
             {
                 let nextCheck = prev + next + " ";
             
                 if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+                    // return prev + " ".repeat(33 - prev.length) + `|\n| ` + next
+                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
                 } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(77 - prev.length)
+                    return prev + next + " ".repeat(68 - prev.length) + "|"
+                    // return prev + next + " ".repeat(68 - prev.length) + "|"
                 } else {
                     return prev + " " + next
-            }}, "|")
+            }})
             : (seriesIP.miscellaneous1.length > 64 && seriesIP.miscellaneous1.length < 97)
-            ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
+            ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
             {
                 let nextCheck = prev + next + " ";
             
                 if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
                 } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
                     return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
                 } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(98 - prev.length)
+                    return prev + next + " ".repeat(98 - prev.length) + "|"
                 } else {
                     return prev + " " + next
-            }}, "|")
+            }})
             : (seriesIP.miscellaneous1.length > 96 && seriesIP.miscellaneous1.length < 129)
             ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
             {
                 let nextCheck = prev + next + " ";
             
                 if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
                 } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
                     return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
                 } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(98 - prev.length)
+                    return prev + next + " ".repeat(98 - prev.length) + "|"
                 } else {
                     return prev + " " + next
-            }}, "|")
+            }})
             : (seriesIP.miscellaneous1.length < 32)
-            ? "|" + seriesIP.miscellaneous1 + " ".repeat(32 - seriesIP.miscellaneous1.length) + "|"
-            : "|" + seriesIP.miscellaneous1 + "|"
+            ? "|" + seriesIP.miscellaneous1 + " ".repeat(32 - seriesIP.miscellaneous1.length) + "|" 
+            : "|" + seriesIP.miscellaneous1 + "|";
+
 
         let printMisc2: string | never[] = (!seriesIP.miscellaneous2)
             ? [] 
@@ -216,28 +267,28 @@ const printSeries = (header: Header, seriesIP: Series) => {
                 let nextCheck = prev + next + " ";
             
                 if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
                 } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
                     return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
                 } else if (index === array.length-1) {
                     return prev + next + " ".repeat(98 - prev.length) + "|"
                 } else {
                     return prev + " " + next
-            }}, "|")
+            }})
             : (seriesIP.miscellaneous2.length > 96 && seriesIP.miscellaneous2.length < 129)
             ? seriesIP.miscellaneous2.split(" ").reduce((prev, next, index, array) => 
             {
                 let nextCheck = prev + next + " ";
             
                 if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
                 } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
                     return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
                 } else if (index === array.length-1) {
                     return prev + next + " ".repeat(98 - prev.length) + "|"
                 } else {
                     return prev + " " + next
-            }}, "|")
+            }})
             : (seriesIP.miscellaneous2.length < 32)
             ? "|" + seriesIP.miscellaneous2 + " ".repeat(32 - seriesIP.miscellaneous2.length) + "|" 
             : "|" + seriesIP.miscellaneous2 + "|";
