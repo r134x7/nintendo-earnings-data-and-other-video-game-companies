@@ -146,10 +146,10 @@ const printSeries = (header: Header, seriesIP: Series) => {
 
         let printUnits: string = "|" + " ".repeat(32 - seriesIP.units.length) + seriesIP.units + "|";
 
-        let printMisc1: string = (!seriesIP.miscellaneous1)
-            ? ""
+        let printMisc1: string | never[] = (!seriesIP.miscellaneous1)
+            ? []
             : (seriesIP.miscellaneous1.length > 32 && seriesIP.miscellaneous1.length < 65)
-            ? seriesIP.title.split(" ").reduce((prev, next, index, array) => 
+            ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
             {
                 let nextCheck = prev + next + " ";
             
@@ -175,7 +175,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
                     return prev + " " + next
             }})
             : (seriesIP.miscellaneous1.length > 96 && seriesIP.miscellaneous1.length < 129)
-            ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
+            ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
             {
                 let nextCheck = prev + next + " ";
             
@@ -192,9 +192,61 @@ const printSeries = (header: Header, seriesIP: Series) => {
             ? seriesIP.miscellaneous1 + " ".repeat(32 - seriesIP.miscellaneous1.length) 
             : seriesIP.miscellaneous1
 
+        let printMisc2: string | never[] = (!seriesIP.miscellaneous2)
+            ? [] 
+            : (seriesIP.miscellaneous2.length > 32 && seriesIP.miscellaneous2.length < 65)
+            ? seriesIP.miscellaneous2.split(" ").reduce((prev, next, index, array) => 
+            {
+                let nextCheck = prev + next + " ";
+            
+                if (nextCheck.length > 31 && prev.length <= 31) {
+                    return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
+                } else if (index === array.length-1) {
+                    return prev + next + " ".repeat(77 - prev.length)
+                } else {
+                    return prev + " " + next
+            }})
+            : (seriesIP.miscellaneous2.length > 64 && seriesIP.miscellaneous2.length < 97)
+            ? seriesIP.miscellaneous2.split(" ").reduce((prev, next, index, array) => 
+            {
+                let nextCheck = prev + next + " ";
+            
+                if (nextCheck.length > 31 && prev.length <= 31) {
+                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
+                } else if (index === array.length-1) {
+                    return prev + next + " ".repeat(98 - prev.length)
+                } else {
+                    return prev + " " + next
+            }})
+            : (seriesIP.miscellaneous2.length > 96 && seriesIP.miscellaneous2.length < 129)
+            ? seriesIP.miscellaneous2.split(" ").reduce((prev, next, index, array) => 
+            {
+                let nextCheck = prev + next + " ";
+            
+                if (nextCheck.length > 31 && prev.length <= 31) {
+                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
+                } else if (index === array.length-1) {
+                    return prev + next + " ".repeat(98 - prev.length)
+                } else {
+                    return prev + " " + next
+            }})
+            : (seriesIP.miscellaneous2.length < 32)
+            ? seriesIP.miscellaneous2 + " ".repeat(32 - seriesIP.miscellaneous2.length) 
+            : seriesIP.miscellaneous2
+
+        let printMiscFixed: string[] = [printMisc1, printMisc2].flatMap((elem) => elem)
+        // .reduce((prev, next) => prev + "\n" + next)
+
+        let printUnitsFixed: string = (!printMiscFixed)
+            ? printUnits
+            : printUnits + printMiscFixed
 
         let printCmlValue: string = `${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M `
-       
+
         let printCmlValueFixed: string = (printCmlValue.length >= 11)
             ? printCmlValue
             : " ".repeat(11 - printCmlValue.length) + printCmlValue;
@@ -221,7 +273,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
         let printLine: string = "+" + "-".repeat(32) + "+";
         let printDoubleLine: string = "+" + "=".repeat(32) + "+";
 
-    return printTitleNameFixed + "\n" + printDoubleLine + "\n" + printUnits + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|\n" + printLine
+    return printTitleNameFixed + "\n" + printDoubleLine + "\n" + printUnitsFixed + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|\n" + printLine
 }
 
 test("testing printHead function...", () => {
