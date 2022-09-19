@@ -15,10 +15,11 @@ export type Series = {
 export type Header = {
     segaHeader: "| Sega Sammy - IP Series Data    |",
     secondHeader: "| IP Title                       |",
-    thirdHeader: "| Platforms                      |",
-    fourthHeader: "| Total Editions                 |"
-    fifthHeader: "| First Appearance and Rank      |",
-    sixthHeader: "| Units                          |",
+    thirdHeader: "| IP Type                        |",
+    fourthHeader: "| Platforms                      |",
+    fifthHeader: "| Total Editions                 |"
+    sixthHeader: "| First Appearance and Rank      |",
+    seventhHeader: "| Units                          |",
     fiscalYear: string,
     fiscalYearYoY: string,
     ltd: "| Life-To-Date       |",
@@ -58,10 +59,11 @@ const series2: Series =
 const header: Header = {
     segaHeader: "| Sega Sammy - IP Series Data    |",
     secondHeader: "| IP Title                       |",
-    thirdHeader: "| Platforms                      |",
-    fourthHeader: "| Total Editions                 |",
-    fifthHeader: "| First Appearance and Rank      |",
-    sixthHeader: "| Units                          |",
+    thirdHeader: "| IP Type                        |",
+    fourthHeader: "| Platforms                      |",
+    fifthHeader: "| Total Editions                 |",
+    sixthHeader: "| First Appearance and Rank      |",
+    seventhHeader: "| Units                          |",
     summaryHeader: " Placeholder ",
     fiscalYear:  "| FY3/21 Cumulative  |", 
     fiscalYearYoY: "| FY3/21 Cml. YoY%   |",
@@ -113,8 +115,6 @@ const printSeries = (header: Header, seriesIP: Series) => {
         ? seriesIP.title + " ".repeat(32 - seriesIP.title.length) 
         : seriesIP.title
 
-        console.log(seriesIP.platforms.length);
-        
         let printPlatforms: string = (seriesIP.platforms.length > 32)
         ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
         {
@@ -137,8 +137,10 @@ const printSeries = (header: Header, seriesIP: Series) => {
         let printReleaseDateFixed: string = (seriesIP.totalEditions !== 0)
             ? " Total Editions: " + seriesIP.totalEditions + "             |\n+" + "-".repeat(32) + "+\n| 1st Year:" + seriesIP.firstReleaseYear + " ".repeat(4)
             : " 1st Year:" + seriesIP.firstReleaseYear + " ".repeat(4)
+        
+        let printIPType: string = seriesIP.ipType + " ".repeat(32 - seriesIP.ipType.length)
 
-        let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printPlatforms + "|\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
+        let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printIPType + "|\n+" + "-".repeat(32) + "+\n|" + printPlatforms + "|\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
 
     
         let printCmlValue: string = `${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M `
@@ -169,7 +171,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
         let printLine: string = "+" + "-".repeat(32) + "+";
         let printDoubleLine: string = "+" + "=".repeat(32) + "+";
 
-    return printTitleNameFixed + "\n" + printDoubleLine + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|\n" + printLine + "\n"
+    return printTitleNameFixed + "\n" + printDoubleLine + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|\n" + printLine
 }
 
 test("testing printHead function...", () => {
