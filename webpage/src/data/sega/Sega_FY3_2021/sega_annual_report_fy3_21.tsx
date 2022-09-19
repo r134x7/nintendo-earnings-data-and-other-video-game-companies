@@ -246,7 +246,7 @@ const header: Header = {
     ltd: "| Life-To-Date       |",
 }
 
-const collection = [
+export const collection = [
     series1,
     series2,
     series3,

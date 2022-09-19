@@ -1,3 +1,5 @@
+import { collection as collection2021 } from "../data/sega/Sega_FY3_2021/sega_annual_report_fy3_21";
+
 export type Series = {
     title: string,
     firstReleaseYear: string,
@@ -303,5 +305,28 @@ test("testing printSeries function...", () => {
     })
 
     console.log(x.reduce((prev, next) => prev + "\n" + next));
+    
+})
+
+test("testing printSeries with all FY3/21 data...", () => {
+
+    const sortedFYCollection: Series[] = collection2021.filter((elem, index, array) => {
+            return elem.value - elem.valueLastFY 
+            // we need to create a new array that is identical to the original due to sort's mutating properties. filter titles that sold units this FY
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a.value - a.valueLastFY > b.value - b.valueLastFY)
+            ? 1
+            : (a.value - a.valueLastFY < b.value - b.valueLastFY)
+            ? -1
+            : 0
+    }).map((elem, index) => {
+        return {...elem, rank: index+1}
+    })
+
+    let x = sortedFYCollection.map((elem) => {
+        return printSeries(header, elem)
+    }).reduce((prev, next) => prev + "\n" + next);
+
+    console.log(x);
     
 })
