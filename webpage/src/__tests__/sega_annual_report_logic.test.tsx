@@ -134,7 +134,9 @@ const printSeries = (header: Header, seriesIP: Series) => {
         ? seriesIP.platforms + " ".repeat(32 - seriesIP.platforms.length) 
         : seriesIP.platforms
 
-        let printReleaseDateFixed: string = seriesIP.firstReleaseYear + " ".repeat(10)
+        let printReleaseDateFixed: string = (seriesIP.totalEditions !== 0)
+            ?  "\n 1st Year:" + seriesIP.firstReleaseYear + " ".repeat(4)
+            : " 1st Year:" + seriesIP.firstReleaseYear + " ".repeat(4)
 
         let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printPlatforms + "|\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
 
@@ -149,9 +151,9 @@ const printSeries = (header: Header, seriesIP: Series) => {
                 ? " New! "
                 : ((seriesIP.value - seriesIP.valueLastFY) >  (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs))
                 ? `+${((
-                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.value - seriesIP.value)) - 1) * 100).toFixed(2)}% ` 
+                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
                 : `${((
-                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.value - seriesIP.value)) - 1) * 100).toFixed(2)}% ` 
+                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
 
         let printFYCmlYoYFixed: string = (printFYCmlYoY.length >= 11) 
                 ? header.fiscalYearYoY + printFYCmlYoY + "|"
@@ -167,7 +169,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
         let printLine: string = "+" + "-".repeat(32) + "+";
         let printDoubleLine: string = "+" + "=".repeat(32) + "+";
 
-    return printTitleNameFixed + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "\n"
+    return printTitleNameFixed + "\n" + printLine + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|"
 }
 
 test("testing printHead function...", () => {
