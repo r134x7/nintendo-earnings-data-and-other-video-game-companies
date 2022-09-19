@@ -9,7 +9,8 @@ export type Series = {
     valueLastTwoFYs: number,
     ipType: " Acquired IP " | " Developed in-house IP " | " Licensed third party IP ",
     rank?: number,
-    miscellaneous?: string,
+    miscellaneous1?: string,
+    miscellaneous2?: string,
 }
 
 export type Header = {
@@ -41,7 +42,7 @@ const series1: Series =
         valueLastTwoFYs: 10.2,
     };
 
-
+//(Full games and F2P, Amusement Machines-registered IDs total (Total for registrations after IP acquisition))
 const series2: Series = 
     {
         title: " Sonic the Hedgehog ",
@@ -49,12 +50,13 @@ const series2: Series =
         platforms: " Pachislot and Pachinko Machines, Consumer Games, Amusement Machines, Toys, etc.",
         totalEditions: 0,
         ipType: " Developed in-house IP ",
-        units: "(Units and downloads)(Full games and F2P total)",
+        units: "(Units and downloads*)",
         value: 1380.0,
         valueLastFY: 1140.0,
         valueLastTwoFYs: 920.0,
+        miscellaneous1: "(Full games and F2P total)",
+        miscellaneous2: "*Including downloads of free-to-play titles",
     };
-
 
 const header: Header = {
     segaHeader: "| Sega Sammy - IP Series Data    |",
@@ -142,7 +144,55 @@ const printSeries = (header: Header, seriesIP: Series) => {
 
         let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printIPType + "|\n+" + "-".repeat(32) + "+\n|" + printPlatforms + "|\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
 
-    
+        let printUnits: string = "|" + " ".repeat(32 - seriesIP.units.length) + seriesIP.units + "|";
+
+        let printMisc1: string = (!seriesIP.miscellaneous1)
+            ? ""
+            : (seriesIP.miscellaneous1.length > 32 && seriesIP.miscellaneous1.length < 65)
+            ? seriesIP.title.split(" ").reduce((prev, next, index, array) => 
+            {
+                let nextCheck = prev + next + " ";
+            
+                if (nextCheck.length > 31 && prev.length <= 31) {
+                    return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
+                } else if (index === array.length-1) {
+                    return prev + next + " ".repeat(77 - prev.length)
+                } else {
+                    return prev + " " + next
+            }})
+            : (seriesIP.miscellaneous1.length > 64 && seriesIP.miscellaneous1.length < 97)
+            ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
+            {
+                let nextCheck = prev + next + " ";
+            
+                if (nextCheck.length > 31 && prev.length <= 31) {
+                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
+                } else if (index === array.length-1) {
+                    return prev + next + " ".repeat(98 - prev.length)
+                } else {
+                    return prev + " " + next
+            }})
+            : (seriesIP.miscellaneous1.length > 96 && seriesIP.miscellaneous1.length < 129)
+            ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
+            {
+                let nextCheck = prev + next + " ";
+            
+                if (nextCheck.length > 31 && prev.length <= 31) {
+                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
+                } else if (index === array.length-1) {
+                    return prev + next + " ".repeat(98 - prev.length)
+                } else {
+                    return prev + " " + next
+            }})
+            : (seriesIP.miscellaneous1.length < 32)
+            ? seriesIP.miscellaneous1 + " ".repeat(32 - seriesIP.miscellaneous1.length) 
+            : seriesIP.miscellaneous1
+
+
         let printCmlValue: string = `${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M `
        
         let printCmlValueFixed: string = (printCmlValue.length >= 11)
@@ -171,7 +221,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
         let printLine: string = "+" + "-".repeat(32) + "+";
         let printDoubleLine: string = "+" + "=".repeat(32) + "+";
 
-    return printTitleNameFixed + "\n" + printDoubleLine + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|\n" + printLine
+    return printTitleNameFixed + "\n" + printDoubleLine + "\n" + printUnits + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|\n" + printLine
 }
 
 test("testing printHead function...", () => {
