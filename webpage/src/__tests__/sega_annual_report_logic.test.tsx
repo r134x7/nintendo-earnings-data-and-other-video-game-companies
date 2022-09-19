@@ -63,8 +63,8 @@ const header: Header = {
     fifthHeader: "| First Appearance and Rank      |",
     sixthHeader: "| Units                          |",
     summaryHeader: " Placeholder ",
-    fiscalYear:  "| FY3/22 Cumulative  |", 
-    fiscalYearYoY: "| FY3/22 Cml. YoY%   |",
+    fiscalYear:  "| FY3/21 Cumulative  |", 
+    fiscalYearYoY: "| FY3/21 Cml. YoY%   |",
     ltd: "| Life-To-Date       |",
 }
 
@@ -135,13 +135,13 @@ const printSeries = (header: Header, seriesIP: Series) => {
         : seriesIP.platforms
 
         let printReleaseDateFixed: string = (seriesIP.totalEditions !== 0)
-            ?  "\n 1st Year:" + seriesIP.firstReleaseYear + " ".repeat(4)
+            ? " Total Editions: " + seriesIP.totalEditions + "             |\n+" + "-".repeat(32) + "+\n| 1st Year:" + seriesIP.firstReleaseYear + " ".repeat(4)
             : " 1st Year:" + seriesIP.firstReleaseYear + " ".repeat(4)
 
         let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printPlatforms + "|\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
 
     
-        let printCmlValue: string = `${seriesIP.value}M `
+        let printCmlValue: string = `${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M `
        
         let printCmlValueFixed: string = (printCmlValue.length >= 11)
             ? printCmlValue
@@ -169,7 +169,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
         let printLine: string = "+" + "-".repeat(32) + "+";
         let printDoubleLine: string = "+" + "=".repeat(32) + "+";
 
-    return printTitleNameFixed + "\n" + printLine + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|"
+    return printTitleNameFixed + "\n" + printDoubleLine + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|\n" + printLine + "\n"
 }
 
 test("testing printHead function...", () => {
