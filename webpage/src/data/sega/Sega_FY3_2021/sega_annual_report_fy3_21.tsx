@@ -249,10 +249,25 @@ const header: Header = {
 const collection = [
     series1,
     series2,
+    series3,
+    series4,
+    series5,
+    series6,
+    series7,
+    series8,
+    series9,
+    series10,
+    series11,
+    series12,
+    series13,
+    series14,
+    series15,
+    series16,
 ] as const;
 
 const sortedFYCollection: Series[] = collection.filter((elem, index, array) => {
-            return elem.value - elem.valueLastFY !== 0
+            // return elem.value - elem.valueLastFY !== 0 // probably shouldn't make two separate tables for FY and ALL...
+            return elem.value - elem.valueLastFY
             // we need to create a new array that is identical to the original due to sort's mutating properties. filter titles that sold units this FY
     }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
         return (a.value - a.valueLastFY > b.value - b.valueLastFY)
@@ -267,3 +282,9 @@ const sortedFYCollection: Series[] = collection.filter((elem, index, array) => {
     let printedSeries = sortedFYCollection.map((elem) => {
         return printSeries(header, elem)
     }).reduce((prev, next) => prev + "\n" + next)
+
+    let printOne = printHead(header);
+
+export const printSeriesFY =
+`${printOne}
+${printedSeries}`;
