@@ -144,7 +144,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
 
         let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printIPType + "|\n+" + "-".repeat(32) + "+\n|" + printPlatforms + "|\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
 
-        let printUnits: string = "|" + " ".repeat(32 - seriesIP.units.length) + seriesIP.units + "|";
+        let printUnits: string = "|" + seriesIP.units + " ".repeat(32 - seriesIP.units.length) + "|";
 
         let printMisc1: string | never[] = (!seriesIP.miscellaneous1)
             ? []
@@ -189,7 +189,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
                     return prev + " " + next
             }}, "|")
             : (seriesIP.miscellaneous1.length < 32)
-            ? "|" + " ".repeat(32 - seriesIP.miscellaneous1.length) + seriesIP.miscellaneous1 + "|"
+            ? "|" + seriesIP.miscellaneous1 + " ".repeat(32 - seriesIP.miscellaneous1.length) + "|"
             : "|" + seriesIP.miscellaneous1 + "|"
 
         let printMisc2: string | never[] = (!seriesIP.miscellaneous2)
@@ -200,12 +200,14 @@ const printSeries = (header: Header, seriesIP: Series) => {
                 let nextCheck = prev + next + " ";
             
                 if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+                    // return prev + " ".repeat(33 - prev.length) + `|\n| ` + next
+                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
                 } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(77 - prev.length)
+                    return prev + next + " ".repeat(68 - prev.length) + "|"
+                    // return prev + next + " ".repeat(68 - prev.length) + "|"
                 } else {
                     return prev + " " + next
-            }}, "|")
+            }})
             : (seriesIP.miscellaneous2.length > 64 && seriesIP.miscellaneous2.length < 97)
             ? seriesIP.miscellaneous2.split(" ").reduce((prev, next, index, array) => 
             {
@@ -216,7 +218,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
                 } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
                     return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
                 } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(98 - prev.length)
+                    return prev + next + " ".repeat(98 - prev.length) + "|"
                 } else {
                     return prev + " " + next
             }}, "|")
@@ -230,13 +232,13 @@ const printSeries = (header: Header, seriesIP: Series) => {
                 } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
                     return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
                 } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(98 - prev.length)
+                    return prev + next + " ".repeat(98 - prev.length) + "|"
                 } else {
                     return prev + " " + next
             }}, "|")
             : (seriesIP.miscellaneous2.length < 32)
-            ? seriesIP.miscellaneous2 + " ".repeat(32 - seriesIP.miscellaneous2.length) 
-            : seriesIP.miscellaneous2
+            ? "|" + seriesIP.miscellaneous2 + " ".repeat(32 - seriesIP.miscellaneous2.length) + "|" 
+            : "|" + seriesIP.miscellaneous2 + "|";
 
         let printMiscFlatFilter: string[] = [printMisc1, printMisc2].filter(elem => elem.length !== 0).flat()
 
@@ -272,7 +274,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
         let printLine: string = "+" + "-".repeat(32) + "+";
         let printDoubleLine: string = "+" + "=".repeat(32) + "+";
 
-    return printTitleNameFixed + "\n" + printDoubleLine + "\n" + printUnitsFixed + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|\n" + printLine
+    return printTitleNameFixed + "\n" + printDoubleLine + "\n" + printUnitsFixed + "\n" + printLine + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|\n" + printLine
 }
 
 test("testing printHead function...", () => {
