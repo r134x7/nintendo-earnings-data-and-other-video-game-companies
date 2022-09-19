@@ -123,9 +123,9 @@ const printSeries = (header: Header, seriesIP: Series) => {
             if (nextCheck.length > 31 && prev.length <= 31) {
                 return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
             } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-                return prev + " ".repeat(32*2 - prev.length) + `|\n| ` + next
+                return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
             } else if (index === array.length-1) {
-                return prev + next + " ".repeat(95 - prev.length)
+                return prev + next + " ".repeat(98 - prev.length)
             } else {
                 return prev + " " + next
             }
