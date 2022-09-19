@@ -55,7 +55,7 @@ const series2: Series =
         valueLastFY: 1140.0,
         valueLastTwoFYs: 920.0,
         miscellaneous1: "(Full games and F2P total)",
-        miscellaneous2: "*Including downloads of free-to-play titles",
+        miscellaneous2: "*Including downloads of free-to-play titles ",
     };
 
 const header: Header = {
@@ -106,9 +106,9 @@ const printSeries = (header: Header, seriesIP: Series) => {
             let nextCheck = prev + next + " ";
             
             if (nextCheck.length > 31 && prev.length <= 31) {
-                return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
+                return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
             } else if (index === array.length-1) {
-                return prev + next + " ".repeat(77 - prev.length)
+                return prev + next + " ".repeat(67 - prev.length)
             } else {
                 return prev + " " + next
             }
@@ -154,12 +154,12 @@ const printSeries = (header: Header, seriesIP: Series) => {
                 let nextCheck = prev + next + " ";
             
                 if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
+                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
                 } else if (index === array.length-1) {
                     return prev + next + " ".repeat(77 - prev.length)
                 } else {
                     return prev + " " + next
-            }})
+            }}, "|")
             : (seriesIP.miscellaneous1.length > 64 && seriesIP.miscellaneous1.length < 97)
             ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
             {
@@ -173,7 +173,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
                     return prev + next + " ".repeat(98 - prev.length)
                 } else {
                     return prev + " " + next
-            }})
+            }}, "|")
             : (seriesIP.miscellaneous1.length > 96 && seriesIP.miscellaneous1.length < 129)
             ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
             {
@@ -187,10 +187,10 @@ const printSeries = (header: Header, seriesIP: Series) => {
                     return prev + next + " ".repeat(98 - prev.length)
                 } else {
                     return prev + " " + next
-            }})
+            }}, "|")
             : (seriesIP.miscellaneous1.length < 32)
-            ? seriesIP.miscellaneous1 + " ".repeat(32 - seriesIP.miscellaneous1.length) 
-            : seriesIP.miscellaneous1
+            ? "|" + " ".repeat(32 - seriesIP.miscellaneous1.length) + seriesIP.miscellaneous1 + "|"
+            : "|" + seriesIP.miscellaneous1 + "|"
 
         let printMisc2: string | never[] = (!seriesIP.miscellaneous2)
             ? [] 
@@ -200,12 +200,12 @@ const printSeries = (header: Header, seriesIP: Series) => {
                 let nextCheck = prev + next + " ";
             
                 if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
+                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
                 } else if (index === array.length-1) {
                     return prev + next + " ".repeat(77 - prev.length)
                 } else {
                     return prev + " " + next
-            }})
+            }}, "|")
             : (seriesIP.miscellaneous2.length > 64 && seriesIP.miscellaneous2.length < 97)
             ? seriesIP.miscellaneous2.split(" ").reduce((prev, next, index, array) => 
             {
@@ -219,7 +219,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
                     return prev + next + " ".repeat(98 - prev.length)
                 } else {
                     return prev + " " + next
-            }})
+            }}, "|")
             : (seriesIP.miscellaneous2.length > 96 && seriesIP.miscellaneous2.length < 129)
             ? seriesIP.miscellaneous2.split(" ").reduce((prev, next, index, array) => 
             {
@@ -233,17 +233,16 @@ const printSeries = (header: Header, seriesIP: Series) => {
                     return prev + next + " ".repeat(98 - prev.length)
                 } else {
                     return prev + " " + next
-            }})
+            }}, "|")
             : (seriesIP.miscellaneous2.length < 32)
             ? seriesIP.miscellaneous2 + " ".repeat(32 - seriesIP.miscellaneous2.length) 
             : seriesIP.miscellaneous2
 
-        let printMiscFixed: string[] = [printMisc1, printMisc2].flatMap((elem) => elem)
-        // .reduce((prev, next) => prev + "\n" + next)
+        let printMiscFlatFilter: string[] = [printMisc1, printMisc2].filter(elem => elem.length !== 0).flat()
 
-        let printUnitsFixed: string = (!printMiscFixed)
+        let printUnitsFixed: string = (printMiscFlatFilter.length === 0)
             ? printUnits
-            : printUnits + printMiscFixed
+            : printUnits + "\n" + printMiscFlatFilter.reduce((prev, next) => prev + "\n" + next);
 
         let printCmlValue: string = `${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M `
 
