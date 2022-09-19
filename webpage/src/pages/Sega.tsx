@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
-import { Text, Group, Button, Space, Collapse, Autocomplete, NativeSelect, ColorPicker, Stack, Paper, Anchor } from "@mantine/core"
+import { Text, Group, Space, Autocomplete, ColorPicker, Anchor, Stack, Paper} from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
+import SEGA_FY3_2021 from "../components/sega/SEGA_FY3_2021";
 
-const yearsList: any = []; // empty array 
-Array.from({length: 6}, (v, i) => i).map(x => x = 1).reduce((acc, curr) => yearsList.push("FY3/" + (acc + curr + 2016).toString()), 0) // yearsList gets an array containing years from 2017 to 2022
+const yearsList = Array.from({length: 1}, (elem, index) => 
+                    {
+                            return "FY3/" + (2021 - index)
+                    }) 
 
 export default function Sega() {
 
     const dispatch = useDispatch();
 
-    const message = `Welcome, this is where you can find archived Sega data... when it becomes available.`;
+    const message = `Welcome, this is where you can find archived Sega Series IP data.`;
 
     const splitMessage = message.split("");
 
@@ -34,9 +37,12 @@ export default function Sega() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [seconds])
 
+    const [value, setValue] = useState("Data by Fiscal Year");
     const [year, setYear] = useState("");
 
-    const [colour, setColour] = useState("rgb(52, 58, 64)")
+    const [colour, setColour] = useState("rgb(0, 255, 255)")
+
+    const state: any = useSelector(state => state);
 
     useEffect(() => {
         const colourSplitReduce = colour.split("").reduce((acc, curr) => {
@@ -51,7 +57,7 @@ export default function Sega() {
             colour: colourSplitReduce
         }))
 
-    }, [colour])
+    }, [colour, dispatch])
 
     return (
 
@@ -69,6 +75,115 @@ export default function Sega() {
                     </Anchor>
             </Stack>
             </Paper>
+
+            <Group position="center">
+
+                <Autocomplete
+                    dropdownPosition="bottom"
+                    mb="sm"
+                    mr="md"
+                    placeholder="Select"
+                    label="Select Fiscal Year 2021..."
+                    description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
+                    radius="xl"
+                    size="md"
+                    limit={1}
+                    data={yearsList}
+                    value={year} 
+                    onChange={setYear}
+                />
+                
+                <Paper style={{backgroundColor: state.colour}} p="xs" radius="xl" withBorder>
+                <Text size="sm" >
+                Colour: {state.colour}
+                </Text>    
+                <ColorPicker 
+                        withPicker={false}
+                        size="lg"
+                        mb="sm" 
+                        swatchesPerRow={7} 
+                        format="rgb" 
+                        swatches={[
+                            "rgb(0, 0, 0)", 
+                            "rgb(0, 255, 255)", 
+                            "rgb(0, 128, 128)",
+                            "rgb(0, 0, 255)", 
+                            "rgb(75, 0, 130)", 
+                            "rgb(135, 30, 135)", 
+                            "rgb(255, 0, 255)", 
+                            "rgb(86, 29, 37)",
+                            "rgb(173, 255, 47)",
+                            "rgb(127, 184, 0)",
+                            "rgb(0, 255, 0)", 
+                            "rgb(128, 128, 128)",
+                            "rgb(255, 0, 0)",
+                            "rgb(227, 24, 9)",
+                            "rgb(220, 20, 60)", 
+                            "rgb(212, 81, 19)", 
+                            "rgb(255, 165, 0)", 
+                            "rgb(255, 215, 0)",
+                            "rgb(200, 200, 200)",
+                            "rgb(255, 196, 235)",
+                            "rgb(255, 255, 255)", 
+                        ]}
+                        value={colour} 
+                        onChange={setColour}
+                        />
+                        </Paper>
+
+            </Group>
+
+            {   (year === "FY3/2021" && value === "Data by Fiscal Year")
+                ? <SEGA_FY3_2021 />
+                : null
+            }
+            
+            { (year !== "" && value === "Data by Fiscal Year")
+                ? (
+                <Group position="center">
+                    <Space h="xl" />
+                    <Paper style={{backgroundColor: state.colour}} p="xs" radius="xl" withBorder>
+                        <Text size="sm" >
+                        Colour: {state.colour}
+                        </Text>    
+                    <ColorPicker 
+                        withPicker={false}
+                        size="lg"
+                        mb="sm" 
+                        swatchesPerRow={7} 
+                        format="rgb" 
+                        swatches={[
+                            "rgb(0, 0, 0)", 
+                            "rgb(0, 255, 255)", 
+                            "rgb(0, 128, 128)",
+                            "rgb(0, 0, 255)", 
+                            "rgb(75, 0, 130)", 
+                            "rgb(135, 30, 135)", 
+                            "rgb(255, 0, 255)", 
+                            "rgb(86, 29, 37)",
+                            "rgb(173, 255, 47)",
+                            "rgb(127, 184, 0)",
+                            "rgb(0, 255, 0)", 
+                            "rgb(128, 128, 128)",
+                            "rgb(255, 0, 0)",
+                            "rgb(227, 24, 9)",
+                            "rgb(220, 20, 60)", 
+                            "rgb(212, 81, 19)", 
+                            "rgb(255, 165, 0)", 
+                            "rgb(255, 215, 0)",
+                            "rgb(200, 200, 200)",
+                            "rgb(255, 196, 235)",
+                            "rgb(255, 255, 255)", 
+                        ]}
+                        value={colour} 
+                        onChange={setColour}
+                        />
+                        </Paper>
+                </Group>
+                ) : (
+                    null
+                )
+            }
         </div>
 
     );
