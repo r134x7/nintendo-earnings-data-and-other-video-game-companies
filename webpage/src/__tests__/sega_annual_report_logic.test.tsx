@@ -152,34 +152,36 @@ const printSeries = (header: Header, seriesIP: Series) => {
         ? seriesIP.title + " ".repeat(44 - seriesIP.title.length) 
         : seriesIP.title
 
-        let platformSplit: string[] = seriesIP.platforms.split(" ");
+        // let platformSplit: string[] = seriesIP.platforms.split(" ");
         
-        let arrayCheckPlatform = 0; // a mutating variable for splicing platformSplit below in platformReduce
+        // let arrayCheckPlatform = 0; // a mutating variable for splicing platformSplit below in platformReduce
 
-        let printPlatforms: string = Array.from({length:Math.ceil(seriesIP.platforms.length/44)}, (v,i) => {
+        // let printPlatforms: string = Array.from({length:Math.ceil(seriesIP.platforms.length/44)}, (v,i) => {
 
-            let platformSplice = (platformSplit.at(arrayCheckPlatform) === platformSplit.at(-1)) 
-                ? platformSplit.slice(arrayCheckPlatform-1)
-                : platformSplit.slice(arrayCheckPlatform);
+        //     let platformSplice = (platformSplit.at(arrayCheckPlatform) === platformSplit.at(-1)) 
+        //         ? platformSplit.slice(arrayCheckPlatform-1)
+        //         : platformSplit.slice(arrayCheckPlatform);
             
-            let platformReduce = platformSplice.reduce((prev, next) => 
-            {
-                let nextCheck = prev + next + " ";
+        //     let platformReduce = platformSplice.reduce((prev, next) => 
+        //     {
+        //         let nextCheck = prev + next + " ";
 
-                if (nextCheck.length > 43 && prev.length <= 43) {
-                    return prev // repeat prev reduce finishes
-                } else {
-                    arrayCheckPlatform++ 
-                    return prev + " " + next
-                }
-            }, "")
+        //         if (nextCheck.length > 43 && prev.length <= 43) {
+        //             return prev // repeat prev reduce finishes
+        //         } else {
+        //             arrayCheckPlatform++ 
+        //             return prev + " " + next
+        //         }
+        //     }, "")
 
-            let platformFixed = (platformReduce.length >= 44)
-                ? platformReduce
-                : platformReduce + " ".repeat(44 - platformReduce.length)
+        //     let platformFixed = (platformReduce.length >= 44)
+        //         ? platformReduce
+        //         : platformReduce + " ".repeat(44 - platformReduce.length)
 
-            return "|" + platformFixed + "|"
-        }).reduce((prev, next) => prev + "\n" + next)
+        //     return "|" + platformFixed + "|"
+        // }).reduce((prev, next) => prev + "\n" + next)
+        
+        let printPlatforms: string = printTextBlock(seriesIP.platforms, 44)
 
         let printFirstYear: string = "| First Year:" + seriesIP.firstReleaseYear
         
@@ -191,55 +193,59 @@ const printSeries = (header: Header, seriesIP: Series) => {
 
         let printTitleNameFixed: string = "+"+"-".repeat(44)+"+\n|" + printTitleName + "|\n+" + "-".repeat(44) + "+\n|" + printIPType + "|\n+" + "-".repeat(44) + "+\n" + printPlatforms + "\n+" + "-".repeat(44) + "+\n" + printReleaseDateFixed + printRankFixed + "|"
 
-        let printUnits: string = "|" + seriesIP.units + " ".repeat(32 - seriesIP.units.length) + "|";
+        let printUnits: string = "|" + seriesIP.units + " ".repeat(44 - seriesIP.units.length) + "|";
 
         let printMisc1: string | never[] = (!seriesIP.miscellaneous1)
             ? [] 
-            : (seriesIP.miscellaneous1.length > 32 && seriesIP.miscellaneous1.length < 65)
-            ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
-            {
-                let nextCheck = prev + next + " ";
+            : printTextBlock(seriesIP.miscellaneous1, 44)
+
+        // let printMisc1: string | never[] = (!seriesIP.miscellaneous1)
+        //     ? [] 
+        //     : (seriesIP.miscellaneous1.length > 32 && seriesIP.miscellaneous1.length < 65)
+        //     ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
+        //     {
+        //         let nextCheck = prev + next + " ";
             
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    // return prev + " ".repeat(33 - prev.length) + `|\n| ` + next
-                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(68 - prev.length) + "|"
-                    // return prev + next + " ".repeat(68 - prev.length) + "|"
-                } else {
-                    return prev + " " + next
-            }})
-            : (seriesIP.miscellaneous1.length > 64 && seriesIP.miscellaneous1.length < 97)
-            ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
-            {
-                let nextCheck = prev + next + " ";
+        //         if (nextCheck.length > 31 && prev.length <= 31) {
+        //             // return prev + " ".repeat(33 - prev.length) + `|\n| ` + next
+        //             return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+        //         } else if (index === array.length-1) {
+        //             return prev + next + " ".repeat(68 - prev.length) + "|"
+        //             // return prev + next + " ".repeat(68 - prev.length) + "|"
+        //         } else {
+        //             return prev + " " + next
+        //     }})
+        //     : (seriesIP.miscellaneous1.length > 64 && seriesIP.miscellaneous1.length < 97)
+        //     ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
+        //     {
+        //         let nextCheck = prev + next + " ";
             
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(98 - prev.length) + "|"
-                } else {
-                    return prev + " " + next
-            }})
-            : (seriesIP.miscellaneous1.length > 96 && seriesIP.miscellaneous1.length < 129)
-            ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
-            {
-                let nextCheck = prev + next + " ";
+        //         if (nextCheck.length > 31 && prev.length <= 31) {
+        //             return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+        //         } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+        //             return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
+        //         } else if (index === array.length-1) {
+        //             return prev + next + " ".repeat(98 - prev.length) + "|"
+        //         } else {
+        //             return prev + " " + next
+        //     }})
+        //     : (seriesIP.miscellaneous1.length > 96 && seriesIP.miscellaneous1.length < 129)
+        //     ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
+        //     {
+        //         let nextCheck = prev + next + " ";
             
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(298 - prev.length) + "|"
-                } else {
-                    return prev + " " + next
-            }})
-            : (seriesIP.miscellaneous1.length < 32)
-            ? "|" + seriesIP.miscellaneous1 + " ".repeat(32 - seriesIP.miscellaneous1.length) + "|" 
-            : "|" + seriesIP.miscellaneous1 + "|";
+        //         if (nextCheck.length > 31 && prev.length <= 31) {
+        //             return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+        //         } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+        //             return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
+        //         } else if (index === array.length-1) {
+        //             return prev + next + " ".repeat(298 - prev.length) + "|"
+        //         } else {
+        //             return prev + " " + next
+        //     }})
+        //     : (seriesIP.miscellaneous1.length < 32)
+        //     ? "|" + seriesIP.miscellaneous1 + " ".repeat(32 - seriesIP.miscellaneous1.length) + "|" 
+        //     : "|" + seriesIP.miscellaneous1 + "|";
 
 
         let printMisc2: string | never[] = (!seriesIP.miscellaneous2)
