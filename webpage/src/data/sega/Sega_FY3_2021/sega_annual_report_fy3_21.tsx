@@ -75,7 +75,7 @@ const series5: Series =
         miscellaneous2: "*Including downloads of free-to-play titles ",
     };
 
-export const series6: Series = 
+const series6: Series = 
     {
         title: " Puyo Puyo ",
         firstReleaseYear: " 1991** ",
@@ -90,7 +90,7 @@ export const series6: Series =
         miscellaneous2: "(Full games and F2P, Amusement Machines-registered IDs total (Total for registrations after IP acquisition)), **SEGA CORPORATION acquired the rights in 1998. Figures for cumulative unit sales are the totals for titles that SEGA sold after acquiring the rights.",
     };
 
-export const series7: Series = 
+const series7: Series = 
     {
         title: " Sakura Wars ",
         firstReleaseYear: " 1996 ",

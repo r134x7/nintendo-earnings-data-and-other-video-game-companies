@@ -42,6 +42,50 @@ ${header.fifthHeader}
 ${header.sixthHeader}
 +${"-".repeat(32)}+`;
 
+const printTextBlock = (text: string, blockLength: number) => {
+
+        let textSplit: string[] = text.split(" ");
+         
+        let arrayCheckText = 0; // a mutating variable for splicing textSplit below in textReduce
+
+        let printText: string | never[] = Array.from({length:Math.ceil((text.length + textSplit.length)/blockLength)}, (v,i) => {
+
+            let textSplice = textSplit.slice(arrayCheckText)
+
+            let nextCheckAlert = false;
+            
+            let textReduce = textSplice.reduce((prev, next) => 
+            {
+                if (nextCheckAlert) { // if this isn't here and next is small enough to pass the next if statement then words end up missing due to the arrayCheckText + increment
+                    return prev
+                }
+
+                let nextCheck = prev + " " + next + " ";
+                
+                if (nextCheck.length > blockLength) {
+                    nextCheckAlert = true;
+                    return prev // repeat prev until reduce finishes
+                } 
+                
+                arrayCheckText++ 
+
+                return prev + " " + next
+                
+            }, "")
+
+            let textFixed = (textReduce.length >= blockLength || textReduce.length === 0) // latter condition is to return an empty array
+                ? textReduce
+                : textReduce + " ".repeat(blockLength - textReduce.length)
+
+            return (textFixed.length === 0) 
+                ? []
+                : "|" + textFixed + "|"
+
+        }).filter(elem => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
+        
+        return printText
+};
+
 export const printSeries = (header: Header, seriesIP: Series) => {
 
         let printRank: string = ` Rank ${seriesIP.rank} `
@@ -49,211 +93,45 @@ export const printSeries = (header: Header, seriesIP: Series) => {
                 ? printRank
                 : printRank + " ".repeat(11 - printRank.length);
 
-        let printTitleName: string = (seriesIP.title.length > 32)
+        let printTitleName: string = (seriesIP.title.length > 44)
         ? seriesIP.title.split(" ").reduce((prev, next, index, array) => 
         {
 
             let nextCheck = prev + next + " ";
             
-            if (nextCheck.length > 31 && prev.length <= 31) {
-                return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+            if (nextCheck.length > 43 && prev.length <= 43) {
+                return prev + " ".repeat(44 - prev.length) + `|\n| ` + next
             } else if (index === array.length-1) {
-                return prev + next + " ".repeat(67 - prev.length)
+                return prev + next + " ".repeat(89 - prev.length)
             } else {
                 return prev + " " + next
             }
         })
-        : (seriesIP.title.length < 32)
-        ? seriesIP.title + " ".repeat(32 - seriesIP.title.length) 
+        : (seriesIP.title.length < 44)
+        ? seriesIP.title + " ".repeat(44 - seriesIP.title.length) 
         : seriesIP.title
 
-        let printPlatforms: string = (seriesIP.platforms.length > 32)
-        ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
-        {
-            let nextCheck = prev + next + " ";
-            
-            if (nextCheck.length > 31 && prev.length <= 31) {
-                return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-            } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-                return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-            } else if (index === array.length-1) {
-                return prev + next + " ".repeat(98 - prev.length)
-            } else {
-                return prev + " " + next
-            }
-        })
-        : (seriesIP.platforms.length < 32)
-        ? seriesIP.platforms + " ".repeat(32 - seriesIP.platforms.length) 
-        : seriesIP.platforms
+        let printPlatforms: string | never[] = printTextBlock(seriesIP.platforms, 44)
 
-        let printReleaseDateFixed: string = (seriesIP.totalEditions !== 0)
-            ? " Total Editions: " + seriesIP.totalEditions + "             |\n+" + "-".repeat(32) + "+\n| 1st Year:" + seriesIP.firstReleaseYear + " ".repeat(4)
-            : " 1st Year:" + seriesIP.firstReleaseYear + " ".repeat(4)
+        let printFirstYear: string = "| First Year:" + seriesIP.firstReleaseYear
         
-        let printIPType: string = seriesIP.ipType + " ".repeat(32 - seriesIP.ipType.length)
+        let printReleaseDateFixed: string = (seriesIP.totalEditions !== 0)
+            ? "| Total Editions: " + seriesIP.totalEditions +  " ".repeat(44 - (seriesIP.totalEditions.toString().length + " Total Editions: ".length)) + "|\n+" + "-".repeat(44) + "+\n" + printFirstYear + " ".repeat(33 - printFirstYear.length) + "|"
+            : printFirstYear + " ".repeat(33 - printFirstYear.length) + "|"
+        
+        let printIPType: string = seriesIP.ipType + " ".repeat(44 - seriesIP.ipType.length)
 
-        let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printIPType + "|\n+" + "-".repeat(32) + "+\n|" + printPlatforms + "|\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
+        let printTitleNameFixed: string = "+"+"-".repeat(44)+"+\n|" + printTitleName + "|\n+" + "-".repeat(44) + "+\n|" + printIPType + "|\n+" + "-".repeat(44) + "+\n" + printPlatforms + "\n+" + "-".repeat(44) + "+\n" + printReleaseDateFixed + printRankFixed + "|"
 
-        let printUnits: string = "|" + seriesIP.units + " ".repeat(32 - seriesIP.units.length) + "|";
-
-        // let printMisc1: string | never[] = (!seriesIP.miscellaneous1)
-        //     ? []
-        //     : (seriesIP.miscellaneous1.length > 32 && seriesIP.miscellaneous1.length < 65)
-        //     ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
-        //     {
-        //         let nextCheck = prev + next + " ";
-            
-        //         if (nextCheck.length > 31 && prev.length <= 31) {
-        //             return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-        //         } else if (index === array.length-1) {
-        //             return prev + next + " ".repeat(77 - prev.length)
-        //         } else {
-        //             return prev + " " + next
-        //     }}, "|")
-        //     : (seriesIP.miscellaneous1.length > 64 && seriesIP.miscellaneous1.length < 97)
-        //     ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
-        //     {
-        //         let nextCheck = prev + next + " ";
-            
-        //         if (nextCheck.length > 31 && prev.length <= 31) {
-        //             return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-        //         } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-        //             return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-        //         } else if (index === array.length-1) {
-        //             return prev + next + " ".repeat(98 - prev.length)
-        //         } else {
-        //             return prev + " " + next
-        //     }}, "|")
-        //     : (seriesIP.miscellaneous1.length > 96 && seriesIP.miscellaneous1.length < 129)
-        //     ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
-        //     {
-        //         let nextCheck = prev + next + " ";
-            
-        //         if (nextCheck.length > 31 && prev.length <= 31) {
-        //             return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-        //         } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-        //             return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-        //         } else if (index === array.length-1) {
-        //             return prev + next + " ".repeat(98 - prev.length)
-        //         } else {
-        //             return prev + " " + next
-        //     }}, "|")
-        //     : (seriesIP.miscellaneous1.length < 32)
-        //     ? "|" + seriesIP.miscellaneous1 + " ".repeat(32 - seriesIP.miscellaneous1.length) + "|"
-        //     : "|" + seriesIP.miscellaneous1 + "|"
+        let printUnits: string = "| " + seriesIP.units + " ".repeat(43 - seriesIP.units.length) + "|";
 
         let printMisc1: string | never[] = (!seriesIP.miscellaneous1)
             ? [] 
-            : (seriesIP.miscellaneous1.length > 32 && seriesIP.miscellaneous1.length < 65)
-            ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
-            {
-                let nextCheck = prev + next + " ";
-            
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    // return prev + " ".repeat(33 - prev.length) + `|\n| ` + next
-                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(68 - prev.length) + "|"
-                    // return prev + next + " ".repeat(68 - prev.length) + "|"
-                } else {
-                    return prev + " " + next
-            }})
-            : (seriesIP.miscellaneous1.length > 64 && seriesIP.miscellaneous1.length < 97)
-            ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
-            {
-                let nextCheck = prev + next + " ";
-            
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(98 - prev.length) + "|"
-                } else {
-                    return prev + " " + next
-            }}, "|")
-            : (seriesIP.miscellaneous1.length > 96 && seriesIP.miscellaneous1.length < 129)
-            ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
-            {
-                let nextCheck = prev + next + " ";
-            
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(150 - prev.length) + "|"
-                } else {
-                    return prev + " " + next
-            }}, "|")
-            : (seriesIP.miscellaneous1.length > 128 && seriesIP.miscellaneous1.length < 161)
-            ? seriesIP.miscellaneous1.split(" ").reduce((prev, next, index, array) => 
-            {
-                let nextCheck = prev + next + " ";
-            
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-                } else if (nextCheck.length > 31*3 && prev.length <= 31*3) {
-                    return prev + " ".repeat(99 - prev.length) + `|\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(128 - prev.length) + "|"
-                } else {
-                    return prev + " " + next
-            }}, "|")
-            : (seriesIP.miscellaneous1.length < 32)
-            ? "|" + seriesIP.miscellaneous1 + " ".repeat(32 - seriesIP.miscellaneous1.length) + "|" 
-            : "|" + seriesIP.miscellaneous1 + "|";
-
+            : printTextBlock(seriesIP.miscellaneous1, 44)
 
         let printMisc2: string | never[] = (!seriesIP.miscellaneous2)
             ? [] 
-            : (seriesIP.miscellaneous2.length > 32 && seriesIP.miscellaneous2.length < 65)
-            ? seriesIP.miscellaneous2.split(" ").reduce((prev, next, index, array) => 
-            {
-                let nextCheck = prev + next + " ";
-            
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    // return prev + " ".repeat(33 - prev.length) + `|\n| ` + next
-                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(68 - prev.length) + "|"
-                    // return prev + next + " ".repeat(68 - prev.length) + "|"
-                } else {
-                    return prev + " " + next
-            }})
-            : (seriesIP.miscellaneous2.length > 64 && seriesIP.miscellaneous2.length < 97)
-            ? seriesIP.miscellaneous2.split(" ").reduce((prev, next, index, array) => 
-            {
-                let nextCheck = prev + next + " ";
-            
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(98 - prev.length) + "|"
-                } else {
-                    return prev + " " + next
-            }}, "|")
-            : (seriesIP.miscellaneous2.length > 96 && seriesIP.miscellaneous2.length < 129)
-            ? seriesIP.miscellaneous2.split(" ").reduce((prev, next, index, array) => 
-            {
-                let nextCheck = prev + next + " ";
-            
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(98 - prev.length) + "|"
-                } else {
-                    return prev + " " + next
-            }}, "|")
-            : (seriesIP.miscellaneous2.length < 32)
-            ? "|" + seriesIP.miscellaneous2 + " ".repeat(32 - seriesIP.miscellaneous2.length) + "|" 
-            : "|" + seriesIP.miscellaneous2 + "|";
+            : printTextBlock(seriesIP.miscellaneous2, 44)
 
         let printMiscFlatFilter: string[] = [printMisc1, printMisc2].filter(elem => elem.length !== 0).flat()
 
@@ -269,7 +147,7 @@ export const printSeries = (header: Header, seriesIP: Series) => {
 
         let printFYCmlYoY = (seriesIP.valueLastFY === 0)
                 ? " New! "
-                : ((seriesIP.value - seriesIP.valueLastFY) >  (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs))
+                : ((seriesIP.value - seriesIP.valueLastFY) >=  (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs))
                 ? `+${((
                     ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
                 : `${((
@@ -286,8 +164,9 @@ export const printSeries = (header: Header, seriesIP: Series) => {
             ? printLTDValue
             : " ".repeat(11 - printLTDValue.length) + printLTDValue;
 
-        let printLine: string = "+" + "-".repeat(32) + "+";
-        let printDoubleLine: string = "+" + "=".repeat(32) + "+";
+        let printLine: string = "+" + "-".repeat(44) + "+";
+        let printLineEnd: string = "+" + "-".repeat(32) + "+";
+        let printDoubleLine: string = "+" + "=".repeat(44) + "+";
 
-    return printTitleNameFixed + "\n" + printDoubleLine + "\n" + printUnitsFixed + "\n" + printLine + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|\n" + printLine
+    return printTitleNameFixed + "\n" + printDoubleLine + "\n" + printUnitsFixed + "\n" + printLine + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|\n" + printLineEnd
 }

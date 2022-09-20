@@ -1,4 +1,4 @@
-import { collection as collection2021, series7, series6 } from "../data/sega/Sega_FY3_2021/sega_annual_report_fy3_21";
+import { collection as collection2021 } from "../data/sega/Sega_FY3_2021/sega_annual_report_fy3_21";
 
 export type Series = {
     title: string,
@@ -133,7 +133,6 @@ const printTextBlock = (text: string, blockLength: number) => {
                 : "|" + textFixed + "|"
 
         }).filter(elem => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
-        // console.log(`textLength: ${text.length} , equal? ${nextCount === textSplit.length}, nextCount: ${nextCount}, textSplit.length: ${textSplit.length}, arrayTextCheck: ${arrayCheckText}, `);
         
         return printText
 };
