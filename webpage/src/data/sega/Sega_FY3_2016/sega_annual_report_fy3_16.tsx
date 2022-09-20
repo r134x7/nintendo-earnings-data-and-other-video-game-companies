@@ -68,7 +68,7 @@ const series6: Series =
         platforms: "Pachislot and Pachinko Machines, Digital Games, Packaged Games, Amusement Machines, Toys",
         totalEditions: 0,
         ipType: " Developed in-house IP ",
-        units: "(Units and downloads/IDs)",
+        units: "(Units and downloads)",
         value: 22.0,
         valueLastFY: 16.0,
         valueLastTwoFYs: 13.5,
