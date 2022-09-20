@@ -62,6 +62,10 @@ const Home = () => {
                     </List>
                     <Text>Sega -</Text>
                     <List withPadding listStyleType="disc">
+                        <List.Item>Latest update: Series IP data from FY3/2017 to FY3/2021.</List.Item>
+                    </List>
+                    <Text>Bandai Namco -</Text>
+                    <List withPadding listStyleType="disc">
                         <List.Item>Page update: Planning stage.</List.Item>
                     </List>
                     <Text>Events -</Text>

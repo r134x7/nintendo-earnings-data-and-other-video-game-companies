@@ -23,7 +23,7 @@ export default function Sega() {
 
     const dispatch = useDispatch();
 
-    const message = `Sega (They publish Hatsune Miku games) page, this is where you can find archived Sega Series IP data.`;
+    const message = `Sega (They publish Hatsune Miku games), this is where you can find archived Sega Series IP data.`;
 
     const splitMessage = message.split("");
 

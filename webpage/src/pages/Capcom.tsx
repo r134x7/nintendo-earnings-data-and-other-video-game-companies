@@ -16,7 +16,7 @@ export default function Capcom() {
 
     const dispatch = useDispatch();
 
-    const message = `Welcome, this is where you can find archived Capcom Platinum Titles data.`;
+    const message = `Capcom (They publish Remember Me), this is where you can find archived Capcom Platinum Titles data.`;
 
     const splitMessage = message.split("");
 

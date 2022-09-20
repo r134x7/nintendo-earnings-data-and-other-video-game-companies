@@ -24,7 +24,7 @@ export default function Nintendo() {
 
     const dispatch = useDispatch();
 
-    const message = `Welcome, this is where you can find archived Nintendo earnings data.`;
+    const message = `Nintendo (They publish playing cards), this is where you can find archived Nintendo earnings data.`;
 
     const splitMessage = message.split("");
 

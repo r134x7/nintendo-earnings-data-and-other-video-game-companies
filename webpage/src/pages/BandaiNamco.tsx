@@ -14,7 +14,7 @@ export default function BandaiNamco() {
 
     const dispatch = useDispatch();
 
-    const message = `Bandai Namco (They publish Dark Souls) page, this is where you can find archived data... when it becomes available.`;
+    const message = `Bandai Namco (They publish Dark Souls), this is where you can find archived data... when it becomes available.`;
 
     const splitMessage = message.split("");
 
