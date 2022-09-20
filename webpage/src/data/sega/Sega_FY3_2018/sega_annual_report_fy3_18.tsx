@@ -149,7 +149,7 @@ const series12: Series =
     {
         title: " Phantasy Star ",
         firstReleaseYear: " 1987 ",
-        platforms: "Pachislot and Pachinko Machines, Digital Games, Packaged Games, Toys, etc.",
+        platforms: "Digital Games, Packaged Games, Toys, etc.",
         totalEditions: 0,
         ipType: " Developed in-house IP ",
         units: "(users)",
