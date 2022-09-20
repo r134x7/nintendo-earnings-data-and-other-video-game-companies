@@ -75,7 +75,7 @@ const series5: Series =
         miscellaneous2: "*Including downloads of free-to-play titles ",
     };
 
-const series6: Series = 
+export const series6: Series = 
     {
         title: " Puyo Puyo ",
         firstReleaseYear: " 1991** ",
@@ -87,14 +87,14 @@ const series6: Series =
         valueLastFY: 32.0,
         valueLastTwoFYs: 29.0,
         miscellaneous1: "*Including downloads of free-to-play titles",
-        miscellaneous2: "(Full games and F2P, Amusement Machines-registered IDs total (Total for registrations after IP acquisition)), **SEGA CORPORATION acquired the rights in 1998. Figures for cumulative unit sales are the totals for titles that SEGA sold after acquiring the rights. ",
+        miscellaneous2: "(Full games and F2P, Amusement Machines-registered IDs total (Total for registrations after IP acquisition)), **SEGA CORPORATION acquired the rights in 1998. Figures for cumulative unit sales are the totals for titles that SEGA sold after acquiring the rights.",
     };
 
-const series7: Series = 
+export const series7: Series = 
     {
         title: " Sakura Wars ",
         firstReleaseYear: " 1996 ",
-        platforms: "Pachislot and Pachinko Machines, Consumer Games, Amusement Machines ",
+        platforms: "Pachislot and Pachinko Machines, Consumer Games, Amusement Machines",
         totalEditions: 0,
         ipType: " Developed in-house IP ",
         units: "(Units and downloads)",

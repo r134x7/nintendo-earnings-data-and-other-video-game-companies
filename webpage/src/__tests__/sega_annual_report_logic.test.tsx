@@ -1,4 +1,4 @@
-import { collection as collection2021 } from "../data/sega/Sega_FY3_2021/sega_annual_report_fy3_21";
+import { collection as collection2021, series7, series6 } from "../data/sega/Sega_FY3_2021/sega_annual_report_fy3_21";
 
 export type Series = {
     title: string,
@@ -96,20 +96,40 @@ ${header.sixthHeader}
 
 const printTextBlock = (text: string, blockLength: number) => {
         let textSplit: string[] = text.split(" ");
-        
+         
         let arrayCheckText = 0; // a mutating variable for splicing textSplit below in textReduce
 
-        let printText: string = Array.from({length:Math.ceil(text.length/blockLength)}, (v,i) => {
+        let nextCount = 0;
 
-            let textSplice = (textSplit.at(arrayCheckText) === textSplit.at(-1)) 
-                ? textSplit.slice(arrayCheckText-1)
-                : textSplit.slice(arrayCheckText);
+        let printText: string = Array.from({length:Math.ceil((text.length + textSplit.length)/blockLength)}, (v,i) => {
+
+            // let textSplice = (arrayCheckText !== 0 && textSplit.at(arrayCheckText-1) === textSplit.at(-1)) 
+            //     ? textSplit.slice(arrayCheckText-1)
+            //     : textSplit.slice(arrayCheckText);
+            
+            // let textSplice = (arrayCheckText === 0)
+            //     ? textSplit.slice(arrayCheckText) 
+            //     : textSplit.slice(textSplit.length-1-arrayCheckText);
+
+            // let textSplice = (textSplit.length !== arrayCheckText && arrayCheckText !== 0)
+            //     ? textSplit.slice(textSplit.length + arrayCheckText - textSplit.length)
+            //     : textSplit.slice(arrayCheckText);
+
+            // let textSplice = (nextCount !== 0)
+                // ? textSplit.slice(())
+                // : textSplit.slice(0)
+            let textSplice = textSplit.slice(arrayCheckText)
+            console.log(textSplice);
+            console.log(textSplice.length);
+            console.log(arrayCheckText);
             
             let textReduce = textSplice.reduce((prev, next) => 
             {
-                let nextCheck = prev + next + " ";
+                // let nextCheck = prev + next + " ";
+                let nextCheck = prev + " " + next + " ";
+                // if (nextCheck.length > blockLength-1 && prev.length <= blockLength-1) {
+                if (nextCheck.length > blockLength) {
 
-                if (nextCheck.length > blockLength-1 && prev.length <= blockLength-1) {
                     return prev // repeat prev until reduce finishes
                 } else {
                     arrayCheckText++ 
@@ -123,7 +143,8 @@ const printTextBlock = (text: string, blockLength: number) => {
 
             return "|" + textFixed + "|"
         }).reduce((prev, next) => prev + "\n" + next)
-
+        // console.log(`textLength: ${text.length} , equal? ${nextCount === textSplit.length}, nextCount: ${nextCount}, textSplit.length: ${textSplit.length}, arrayTextCheck: ${arrayCheckText}, `);
+        
         return printText
 };
 
@@ -193,7 +214,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
 
         let printTitleNameFixed: string = "+"+"-".repeat(44)+"+\n|" + printTitleName + "|\n+" + "-".repeat(44) + "+\n|" + printIPType + "|\n+" + "-".repeat(44) + "+\n" + printPlatforms + "\n+" + "-".repeat(44) + "+\n" + printReleaseDateFixed + printRankFixed + "|"
 
-        let printUnits: string = "|" + seriesIP.units + " ".repeat(44 - seriesIP.units.length) + "|";
+        let printUnits: string = "| " + seriesIP.units + " ".repeat(43 - seriesIP.units.length) + "|";
 
         let printMisc1: string | never[] = (!seriesIP.miscellaneous1)
             ? [] 
@@ -314,7 +335,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
 
         let printFYCmlYoY = (seriesIP.valueLastFY === 0)
                 ? " New! "
-                : ((seriesIP.value - seriesIP.valueLastFY) >  (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs))
+                : ((seriesIP.value - seriesIP.valueLastFY) >=  (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs))
                 ? `+${((
                     ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
                 : `${((
@@ -331,15 +352,16 @@ const printSeries = (header: Header, seriesIP: Series) => {
             ? printLTDValue
             : " ".repeat(11 - printLTDValue.length) + printLTDValue;
 
-        let printLine: string = "+" + "-".repeat(32) + "+";
-        let printDoubleLine: string = "+" + "=".repeat(32) + "+";
+        let printLine: string = "+" + "-".repeat(44) + "+";
+        let printLineEnd: string = "+" + "-".repeat(32) + "+";
+        let printDoubleLine: string = "+" + "=".repeat(44) + "+";
 
-    return printTitleNameFixed + "\n" + printDoubleLine + "\n" + printUnitsFixed + "\n" + printLine + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|\n" + printLine
+    return printTitleNameFixed + "\n" + printDoubleLine + "\n" + printUnitsFixed + "\n" + printLine + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|\n" + printLineEnd
 }
 
 test("testing printHead function...", () => {
 
-    console.log(printHead(header));
+    // console.log(printHead(header));
     
 })
 
@@ -362,7 +384,7 @@ test("testing printSeries function...", () => {
         return printSeries(header, elem)
     })
 
-    console.log(x.reduce((prev, next) => prev + "\n" + next));
+    // console.log(x.reduce((prev, next) => prev + "\n" + next));
     
 })
 
@@ -381,10 +403,28 @@ test("testing printSeries with all FY3/21 data...", () => {
         return {...elem, rank: index+1}
     })
 
-    let x = sortedFYCollection.map((elem) => {
-        return printSeries(header, elem)
-    }).reduce((prev, next) => prev + "\n" + next);
+    // let x = sortedFYCollection.map((elem) => {
+    //     return printSeries(header, elem)
+    // }).reduce((prev, next) => prev + "\n" + next);
 
-    console.log(x);
+    // console.log(x);
+
+    console.log(printSeries(header, series6));
+    
     
 })
+
+const abc = `+============================================+
+| (Units and downloads*/IDs/users)           |
+| *Including downloads of free-to-play       |
+| titles                                     |
+| (Full games and F2P, Amusement IDs total   |
+| total (Total for registrations after IP in |
+| **SEGA CORPORATION acquired the rights in  |
+| 1998. Figures for cumulative unit sales    |
+| are the totals for titles that SEGA sold   |
+| after acquiring the rights.                |
+|                                            |
++--------------------------------------------+`
+//(Full games and F2P, Amusement Machines-registered IDs total 
+//total (Total for registrations after IP acquisition)), 
