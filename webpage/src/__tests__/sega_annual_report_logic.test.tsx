@@ -140,7 +140,58 @@ const printSeries = (header: Header, seriesIP: Series) => {
 //+--------------------------------------------+ // 1 44 1
         let lineCheck = 1;
 
-        let printPlatforms: string =  seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
+        let splitCheck = seriesIP.platforms.split(" ")
+
+            /* .............................. 
+            need to... combine the arrays...... 
+            where the length of the string is not longer
+            than 44 and then a new array is made to hold
+            another string that is 44 characters long... 
+            and repeats.
+
+            let's see... I take the string length, example 99
+            and then I divide it by 44 and I have to round it up? and then create that many arrays
+            */
+        let s = seriesIP.platforms.split(" ");
+        
+        let arrayCheck = 0;
+
+        let x = Array.from({length:Math.ceil(seriesIP.platforms.length/44)}, (v,i) => {
+
+            let t = (s.at(arrayCheck) === s.at(-1)) 
+                ? s.slice(arrayCheck-1)
+                : s.slice(arrayCheck);
+            
+            let y = t.reduce((prev, next, index, array) => 
+            {
+                let nextCheck = prev + next + " ";
+
+                // if (nextCheck.length >= 44 && prev.length < 44) {
+                if (nextCheck.length > 43 && prev.length <= 43) {
+                    return prev
+                } 
+                // else if (prev === " " && prev.length === 1) {
+                //     arrayCheck++
+                //     return prev + next
+                // } 
+                else {
+                    arrayCheck++
+                    // return (prev.length === 1) ? prev + next : prev + " " + next
+                    return prev + " " + next
+                }
+            }, "")
+
+            let z = (y.length >= 44)
+                ? y
+                : y + " ".repeat(44 - y.length)
+
+            return "|" + z + "|"
+        }).reduce((prev, next) => prev + "\n" + next)
+        console.log(x);
+        
+
+        let printPlatforms: string = (seriesIP.platforms.length > 44) 
+        ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
         {
             let nextCheck = prev + next + " ";
 
@@ -157,7 +208,10 @@ const printSeries = (header: Header, seriesIP: Series) => {
                 return prev + " " + next
             }
 
-        }, "|");
+        }, "|")
+        : (seriesIP.platforms.length < 44)
+        ? "| " + seriesIP.platforms + " ".repeat(43 - seriesIP.platforms.length) + "|" 
+        : "| " + seriesIP.platforms + "|"
 
         // let printPlatforms: string = 
         //     (seriesIP.platforms.length > 32 && seriesIP.platforms.length < 65)
@@ -399,6 +453,6 @@ test("testing printSeries with all FY3/21 data...", () => {
         return printSeries(header, elem)
     }).reduce((prev, next) => prev + "\n" + next);
 
-    console.log(x);
+    // console.log(x);
     
 })
