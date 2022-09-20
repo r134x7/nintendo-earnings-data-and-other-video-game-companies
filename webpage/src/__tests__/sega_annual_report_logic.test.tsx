@@ -137,53 +137,74 @@ const printSeries = (header: Header, seriesIP: Series) => {
         // : (seriesIP.platforms.length < 32)
         // ? seriesIP.platforms + " ".repeat(32 - seriesIP.platforms.length) 
         // : seriesIP.platforms
+//+--------------------------------------------+ // 1 44 1
+        let lineCheck = 1;
 
-        let printPlatforms: string = 
-            (seriesIP.platforms.length > 32 && seriesIP.platforms.length < 65)
-            ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
-            {
-                let nextCheck = prev + next + " ";
+        let printPlatforms: string =  seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
+        {
+            let nextCheck = prev + next + " ";
+
+            if (nextCheck.length > 43*lineCheck && prev.length <= 43*lineCheck) {
+
+                lineCheck++
+
+                return prev + " ".repeat(45*(lineCheck-1) - prev.length) + "|\n| " + next
+            } else if (index === array.length-1) {
+                return prev + next 
+                + " ".repeat(45*(lineCheck) - prev.length-2) 
+                + "|"
+            } else {
+                return prev + " " + next
+            }
+
+        }, "|");
+
+        // let printPlatforms: string = 
+        //     (seriesIP.platforms.length > 32 && seriesIP.platforms.length < 65)
+        //     ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
+        //     {
+        //         let nextCheck = prev + next + " ";
             
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    // return prev + " ".repeat(33 - prev.length) + `|\n| ` + next
-                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(68 - prev.length) + "|"
-                    // return prev + next + " ".repeat(68 - prev.length) + "|"
-                } else {
-                    return prev + " " + next
-            }})
-            : (seriesIP.platforms.length > 64 && seriesIP.platforms.length < 97)
-            ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
-            {
-                let nextCheck = prev + next + " ";
+        //         if (nextCheck.length > 31 && prev.length <= 31) {
+        //             // return prev + " ".repeat(33 - prev.length) + `|\n| ` + next
+        //             return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+        //         } else if (index === array.length-1) {
+        //             return prev + next + " ".repeat(68 - prev.length) + "|"
+        //             // return prev + next + " ".repeat(68 - prev.length) + "|"
+        //         } else {
+        //             return prev + " " + next
+        //     }})
+        //     : (seriesIP.platforms.length > 64 && seriesIP.platforms.length < 97)
+        //     ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
+        //     {
+        //         let nextCheck = prev + next + " ";
             
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(98 - prev.length) + "|"
-                } else {
-                    return prev + " " + next
-            }})
-            : (seriesIP.platforms.length > 96 && seriesIP.platforms.length < 129)
-            ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
-            {
-                let nextCheck = prev + next + " ";
+        //         if (nextCheck.length > 31 && prev.length <= 31) {
+        //             return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+        //         } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+        //             return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
+        //         } else if (index === array.length-1) {
+        //             return prev + next + " ".repeat(98 - prev.length) + "|"
+        //         } else {
+        //             return prev + " " + next
+        //     }})
+        //     : (seriesIP.platforms.length > 96 && seriesIP.platforms.length < 129)
+        //     ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
+        //     {
+        //         let nextCheck = prev + next + " ";
             
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(98 - prev.length) + "|"
-                } else {
-                    return prev + " " + next
-            }})
-            : (seriesIP.platforms.length < 32)
-            ? "|" + seriesIP.platforms + " ".repeat(32 - seriesIP.platforms.length) + "|" 
-            : "|" + seriesIP.platforms + "|";
+        //         if (nextCheck.length > 31 && prev.length <= 31) {
+        //             return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+        //         } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+        //             return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
+        //         } else if (index === array.length-1) {
+        //             return prev + next + " ".repeat(98 - prev.length) + "|"
+        //         } else {
+        //             return prev + " " + next
+        //     }})
+        //     : (seriesIP.platforms.length < 32)
+        //     ? "|" + seriesIP.platforms + " ".repeat(32 - seriesIP.platforms.length) + "|" 
+        //     : "|" + seriesIP.platforms + "|";
 
 
         let printReleaseDateFixed: string = (seriesIP.totalEditions !== 0)
@@ -192,7 +213,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
         
         let printIPType: string = seriesIP.ipType + " ".repeat(32 - seriesIP.ipType.length)
 
-        let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printIPType + "|\n+" + "-".repeat(32) + "+\n" + printPlatforms + "\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
+        let printTitleNameFixed: string = "+"+"-".repeat(44)+"+\n|" + printTitleName + "|\n+" + "-".repeat(44) + "+\n|" + printIPType + "|\n+" + "-".repeat(44) + "+\n" + printPlatforms + "\n+" + "-".repeat(44) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
 
         let printUnits: string = "|" + seriesIP.units + " ".repeat(32 - seriesIP.units.length) + "|";
 
@@ -236,7 +257,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
                 } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
                     return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
                 } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(98 - prev.length) + "|"
+                    return prev + next + " ".repeat(298 - prev.length) + "|"
                 } else {
                     return prev + " " + next
             }})
@@ -361,8 +382,8 @@ test("testing printSeries function...", () => {
 
 test("testing printSeries with all FY3/21 data...", () => {
 
-    const sortedFYCollection: Series[] = collection2021.filter((elem, index, array) => {
-            return elem.value - elem.valueLastFY 
+    const sortedFYCollection: Series[] = collection2021.map((elem, index, array) => {
+            return elem // forgot this is a filter...
             // we need to create a new array that is identical to the original due to sort's mutating properties. filter titles that sold units this FY
     }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
         return (a.value - a.valueLastFY > b.value - b.valueLastFY)
