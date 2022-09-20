@@ -101,166 +101,53 @@ const printSeries = (header: Header, seriesIP: Series) => {
                 ? printRank
                 : printRank + " ".repeat(11 - printRank.length);
 
-        let printTitleName: string = (seriesIP.title.length > 32)
+        let printTitleName: string = (seriesIP.title.length > 44)
         ? seriesIP.title.split(" ").reduce((prev, next, index, array) => 
         {
 
             let nextCheck = prev + next + " ";
             
-            if (nextCheck.length > 31 && prev.length <= 31) {
-                return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+            if (nextCheck.length > 43 && prev.length <= 43) {
+                return prev + " ".repeat(44 - prev.length) + `|\n| ` + next
             } else if (index === array.length-1) {
-                return prev + next + " ".repeat(67 - prev.length)
+                return prev + next + " ".repeat(89 - prev.length)
             } else {
                 return prev + " " + next
             }
         })
-        : (seriesIP.title.length < 32)
-        ? seriesIP.title + " ".repeat(32 - seriesIP.title.length) 
+        : (seriesIP.title.length < 44)
+        ? seriesIP.title + " ".repeat(44 - seriesIP.title.length) 
         : seriesIP.title
 
-        // let printPlatforms: string = (seriesIP.platforms.length > 32)
-        // ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
-        // {
-        //     let nextCheck = prev + next + " ";
-            
-        //     if (nextCheck.length > 31 && prev.length <= 31) {
-        //         return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-        //     } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-        //         return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-        //     } else if (index === array.length-1) {
-        //         return prev + next + " ".repeat(98 - prev.length)
-        //     } else {
-        //         return prev + " " + next
-        //     }
-        // })
-        // : (seriesIP.platforms.length < 32)
-        // ? seriesIP.platforms + " ".repeat(32 - seriesIP.platforms.length) 
-        // : seriesIP.platforms
-//+--------------------------------------------+ // 1 44 1
-        let lineCheck = 1;
-
-        let splitCheck = seriesIP.platforms.split(" ")
-
-            /* .............................. 
-            need to... combine the arrays...... 
-            where the length of the string is not longer
-            than 44 and then a new array is made to hold
-            another string that is 44 characters long... 
-            and repeats.
-
-            let's see... I take the string length, example 99
-            and then I divide it by 44 and I have to round it up? and then create that many arrays
-            */
-        let s = seriesIP.platforms.split(" ");
+        let platformSplit: string[] = seriesIP.platforms.split(" ");
         
-        let arrayCheck = 0;
+        let arrayCheckPlatform = 0; // a mutating variable for splicing platformSplit below in platformReduce
 
-        let x = Array.from({length:Math.ceil(seriesIP.platforms.length/44)}, (v,i) => {
+        let printPlatforms: string = Array.from({length:Math.ceil(seriesIP.platforms.length/44)}, (v,i) => {
 
-            let t = (s.at(arrayCheck) === s.at(-1)) 
-                ? s.slice(arrayCheck-1)
-                : s.slice(arrayCheck);
+            let platformSplice = (platformSplit.at(arrayCheckPlatform) === platformSplit.at(-1)) 
+                ? platformSplit.slice(arrayCheckPlatform-1)
+                : platformSplit.slice(arrayCheckPlatform);
             
-            let y = t.reduce((prev, next, index, array) => 
+            let platformReduce = platformSplice.reduce((prev, next) => 
             {
                 let nextCheck = prev + next + " ";
 
-                // if (nextCheck.length >= 44 && prev.length < 44) {
                 if (nextCheck.length > 43 && prev.length <= 43) {
-                    return prev
-                } 
-                // else if (prev === " " && prev.length === 1) {
-                //     arrayCheck++
-                //     return prev + next
-                // } 
-                else {
-                    arrayCheck++
-                    // return (prev.length === 1) ? prev + next : prev + " " + next
+                    return prev // repeat prev reduce finishes
+                } else {
+                    arrayCheckPlatform++ 
                     return prev + " " + next
                 }
             }, "")
 
-            let z = (y.length >= 44)
-                ? y
-                : y + " ".repeat(44 - y.length)
+            let platformFixed = (platformReduce.length >= 44)
+                ? platformReduce
+                : platformReduce + " ".repeat(44 - platformReduce.length)
 
-            return "|" + z + "|"
+            return "|" + platformFixed + "|"
         }).reduce((prev, next) => prev + "\n" + next)
-        console.log(x);
         
-
-        let printPlatforms: string = (seriesIP.platforms.length > 44) 
-        ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
-        {
-            let nextCheck = prev + next + " ";
-
-            if (nextCheck.length > 43*lineCheck && prev.length <= 43*lineCheck) {
-
-                lineCheck++
-
-                return prev + " ".repeat(45*(lineCheck-1) - prev.length) + "|\n| " + next
-            } else if (index === array.length-1) {
-                return prev + next 
-                + " ".repeat(45*(lineCheck) - prev.length-2) 
-                + "|"
-            } else {
-                return prev + " " + next
-            }
-
-        }, "|")
-        : (seriesIP.platforms.length < 44)
-        ? "| " + seriesIP.platforms + " ".repeat(43 - seriesIP.platforms.length) + "|" 
-        : "| " + seriesIP.platforms + "|"
-
-        // let printPlatforms: string = 
-        //     (seriesIP.platforms.length > 32 && seriesIP.platforms.length < 65)
-        //     ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
-        //     {
-        //         let nextCheck = prev + next + " ";
-            
-        //         if (nextCheck.length > 31 && prev.length <= 31) {
-        //             // return prev + " ".repeat(33 - prev.length) + `|\n| ` + next
-        //             return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-        //         } else if (index === array.length-1) {
-        //             return prev + next + " ".repeat(68 - prev.length) + "|"
-        //             // return prev + next + " ".repeat(68 - prev.length) + "|"
-        //         } else {
-        //             return prev + " " + next
-        //     }})
-        //     : (seriesIP.platforms.length > 64 && seriesIP.platforms.length < 97)
-        //     ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
-        //     {
-        //         let nextCheck = prev + next + " ";
-            
-        //         if (nextCheck.length > 31 && prev.length <= 31) {
-        //             return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-        //         } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-        //             return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-        //         } else if (index === array.length-1) {
-        //             return prev + next + " ".repeat(98 - prev.length) + "|"
-        //         } else {
-        //             return prev + " " + next
-        //     }})
-        //     : (seriesIP.platforms.length > 96 && seriesIP.platforms.length < 129)
-        //     ? seriesIP.platforms.split(" ").reduce((prev, next, index, array) => 
-        //     {
-        //         let nextCheck = prev + next + " ";
-            
-        //         if (nextCheck.length > 31 && prev.length <= 31) {
-        //             return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-        //         } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-        //             return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-        //         } else if (index === array.length-1) {
-        //             return prev + next + " ".repeat(98 - prev.length) + "|"
-        //         } else {
-        //             return prev + " " + next
-        //     }})
-        //     : (seriesIP.platforms.length < 32)
-        //     ? "|" + seriesIP.platforms + " ".repeat(32 - seriesIP.platforms.length) + "|" 
-        //     : "|" + seriesIP.platforms + "|";
-
-
         let printReleaseDateFixed: string = (seriesIP.totalEditions !== 0)
             ? " Total Editions: " + seriesIP.totalEditions + "             |\n+" + "-".repeat(32) + "+\n| 1st Year:" + seriesIP.firstReleaseYear + " ".repeat(4)
             : " 1st Year:" + seriesIP.firstReleaseYear + " ".repeat(4)
@@ -453,6 +340,6 @@ test("testing printSeries with all FY3/21 data...", () => {
         return printSeries(header, elem)
     }).reduce((prev, next) => prev + "\n" + next);
 
-    // console.log(x);
+    console.log(x);
     
 })
