@@ -103,38 +103,27 @@ const printTextBlock = (text: string, blockLength: number) => {
 
         let printText: string = Array.from({length:Math.ceil((text.length + textSplit.length)/blockLength)}, (v,i) => {
 
-            // let textSplice = (arrayCheckText !== 0 && textSplit.at(arrayCheckText-1) === textSplit.at(-1)) 
-            //     ? textSplit.slice(arrayCheckText-1)
-            //     : textSplit.slice(arrayCheckText);
-            
-            // let textSplice = (arrayCheckText === 0)
-            //     ? textSplit.slice(arrayCheckText) 
-            //     : textSplit.slice(textSplit.length-1-arrayCheckText);
-
-            // let textSplice = (textSplit.length !== arrayCheckText && arrayCheckText !== 0)
-            //     ? textSplit.slice(textSplit.length + arrayCheckText - textSplit.length)
-            //     : textSplit.slice(arrayCheckText);
-
-            // let textSplice = (nextCount !== 0)
-                // ? textSplit.slice(())
-                // : textSplit.slice(0)
             let textSplice = textSplit.slice(arrayCheckText)
-            console.log(textSplice);
-            console.log(textSplice.length);
-            console.log(arrayCheckText);
-            
-            let textReduce = textSplice.reduce((prev, next) => 
-            {
-                // let nextCheck = prev + next + " ";
-                let nextCheck = prev + " " + next + " ";
-                // if (nextCheck.length > blockLength-1 && prev.length <= blockLength-1) {
-                if (nextCheck.length > blockLength) {
 
-                    return prev // repeat prev until reduce finishes
-                } else {
-                    arrayCheckText++ 
-                    return prev + " " + next
+            let nextCheckAlert = false;
+            
+            let textReduce = textSplice.reduce((prev, next, index) => 
+            {
+                if (nextCheckAlert) { // if this isn't here and next is small enough to pass the next if statement then words end up missing due to the arrayCheckText + increment
+                    return prev
                 }
+
+                let nextCheck = prev + " " + next;
+                
+                if (nextCheck.length > blockLength) {
+                    nextCheckAlert = true;
+                    return prev // repeat prev until reduce finishes
+                } 
+                
+                arrayCheckText++ 
+
+                return prev + " " + next
+                
             }, "")
 
             let textFixed = (textReduce.length >= blockLength)
