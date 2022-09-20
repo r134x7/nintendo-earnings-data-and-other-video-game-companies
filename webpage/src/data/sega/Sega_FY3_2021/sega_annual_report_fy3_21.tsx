@@ -5,21 +5,7 @@ import {
     printSeries,
 } from "../../../utils/sega_annual_report_logic";
 
-
 const series1: Series = 
-    {
-        title: " Persona ",
-        firstReleaseYear: " 1992 ",
-        platforms: "Pachislot and Pachinko Machines, Consumer Games, Toys, etc.",
-        totalEditions: 18,
-        ipType: " Acquired IP ",
-        units: "(Units and downloads)",
-        value: 15.0,
-        valueLastFY: 13.1,
-        valueLastTwoFYs: 10.2,
-    };
-
-const series2: Series = 
     {
         title: " Shin Megami Tensei ",
         firstReleaseYear: " 1992 ",
@@ -34,10 +20,23 @@ const series2: Series =
         miscellaneous2: "*Including downloads of free-to-play titles ",
     };
 
+const series2: Series = 
+    {
+        title: " Persona ",
+        firstReleaseYear: " 1996 ",
+        platforms: "Pachislot and Pachinko Machines, Consumer Games, Toys, etc.",
+        totalEditions: 18,
+        ipType: " Acquired IP ",
+        units: "(Units and downloads)",
+        value: 15.0,
+        valueLastFY: 13.1,
+        valueLastTwoFYs: 10.2,
+    };
+
 const series3: Series = 
     {
         title: " Total War ",
-        firstReleaseYear: " 1996 ",
+        firstReleaseYear: " 2000 ",
         platforms: "Consumer Games ",
         totalEditions: 0,
         ipType: " Acquired IP ",
