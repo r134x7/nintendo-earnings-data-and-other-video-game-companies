@@ -199,6 +199,10 @@ const printSeries = (header: Header, seriesIP: Series) => {
             ? [] 
             : printTextBlock(seriesIP.miscellaneous1, 44)
 
+        let printMisc2: string | never[] = (!seriesIP.miscellaneous2)
+            ? [] 
+            : printTextBlock(seriesIP.miscellaneous2, 44)
+
         // let printMisc1: string | never[] = (!seriesIP.miscellaneous1)
         //     ? [] 
         //     : (seriesIP.miscellaneous1.length > 32 && seriesIP.miscellaneous1.length < 65)
@@ -248,53 +252,53 @@ const printSeries = (header: Header, seriesIP: Series) => {
         //     : "|" + seriesIP.miscellaneous1 + "|";
 
 
-        let printMisc2: string | never[] = (!seriesIP.miscellaneous2)
-            ? [] 
-            : (seriesIP.miscellaneous2.length > 32 && seriesIP.miscellaneous2.length < 65)
-            ? seriesIP.miscellaneous2.split(" ").reduce((prev, next, index, array) => 
-            {
-                let nextCheck = prev + next + " ";
+        // let printMisc2: string | never[] = (!seriesIP.miscellaneous2)
+        //     ? [] 
+        //     : (seriesIP.miscellaneous2.length > 32 && seriesIP.miscellaneous2.length < 65)
+        //     ? seriesIP.miscellaneous2.split(" ").reduce((prev, next, index, array) => 
+        //     {
+        //         let nextCheck = prev + next + " ";
             
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    // return prev + " ".repeat(33 - prev.length) + `|\n| ` + next
-                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(68 - prev.length) + "|"
-                    // return prev + next + " ".repeat(68 - prev.length) + "|"
-                } else {
-                    return prev + " " + next
-            }})
-            : (seriesIP.miscellaneous2.length > 64 && seriesIP.miscellaneous2.length < 97)
-            ? seriesIP.miscellaneous2.split(" ").reduce((prev, next, index, array) => 
-            {
-                let nextCheck = prev + next + " ";
+        //         if (nextCheck.length > 31 && prev.length <= 31) {
+        //             // return prev + " ".repeat(33 - prev.length) + `|\n| ` + next
+        //             return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+        //         } else if (index === array.length-1) {
+        //             return prev + next + " ".repeat(68 - prev.length) + "|"
+        //             // return prev + next + " ".repeat(68 - prev.length) + "|"
+        //         } else {
+        //             return prev + " " + next
+        //     }})
+        //     : (seriesIP.miscellaneous2.length > 64 && seriesIP.miscellaneous2.length < 97)
+        //     ? seriesIP.miscellaneous2.split(" ").reduce((prev, next, index, array) => 
+        //     {
+        //         let nextCheck = prev + next + " ";
             
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(98 - prev.length) + "|"
-                } else {
-                    return prev + " " + next
-            }})
-            : (seriesIP.miscellaneous2.length > 96 && seriesIP.miscellaneous2.length < 129)
-            ? seriesIP.miscellaneous2.split(" ").reduce((prev, next, index, array) => 
-            {
-                let nextCheck = prev + next + " ";
+        //         if (nextCheck.length > 31 && prev.length <= 31) {
+        //             return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+        //         } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+        //             return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
+        //         } else if (index === array.length-1) {
+        //             return prev + next + " ".repeat(98 - prev.length) + "|"
+        //         } else {
+        //             return prev + " " + next
+        //     }})
+        //     : (seriesIP.miscellaneous2.length > 96 && seriesIP.miscellaneous2.length < 129)
+        //     ? seriesIP.miscellaneous2.split(" ").reduce((prev, next, index, array) => 
+        //     {
+        //         let nextCheck = prev + next + " ";
             
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-                } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
-                    return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(98 - prev.length) + "|"
-                } else {
-                    return prev + " " + next
-            }})
-            : (seriesIP.miscellaneous2.length < 32)
-            ? "|" + seriesIP.miscellaneous2 + " ".repeat(32 - seriesIP.miscellaneous2.length) + "|" 
-            : "|" + seriesIP.miscellaneous2 + "|";
+        //         if (nextCheck.length > 31 && prev.length <= 31) {
+        //             return "|" + prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+        //         } else if (nextCheck.length > 31*2 && prev.length <= 31*2) {
+        //             return prev + " ".repeat(67 - prev.length) + `|\n| ` + next
+        //         } else if (index === array.length-1) {
+        //             return prev + next + " ".repeat(98 - prev.length) + "|"
+        //         } else {
+        //             return prev + " " + next
+        //     }})
+        //     : (seriesIP.miscellaneous2.length < 32)
+        //     ? "|" + seriesIP.miscellaneous2 + " ".repeat(32 - seriesIP.miscellaneous2.length) + "|" 
+        //     : "|" + seriesIP.miscellaneous2 + "|";
 
         let printMiscFlatFilter: string[] = [printMisc1, printMisc2].filter(elem => elem.length !== 0).flat()
 
