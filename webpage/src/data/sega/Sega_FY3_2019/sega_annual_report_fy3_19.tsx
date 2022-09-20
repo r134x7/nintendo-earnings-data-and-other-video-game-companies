@@ -164,7 +164,7 @@ const series13: Series =
     {
         title: " Chain Chronicle ",
         firstReleaseYear: " 2013 ",
-        platforms: "Pachislot and Pachinko Machines, Consumer Games ",
+        platforms: "Pachislot and Pachinko Machines, Digital Games, Packaged Games",
         totalEditions: 3,
         ipType: " Developed in-house IP ",
         units: "(Units and downloads*)",
