@@ -10,7 +10,7 @@ const yearsList = Array.from({length: 1}, (elem, index) =>
                             return "FY3/" + (2021 - index)
                     }) 
 
-export default function Sega() {
+export default function BandaiNamco() {
 
     const dispatch = useDispatch();
 
