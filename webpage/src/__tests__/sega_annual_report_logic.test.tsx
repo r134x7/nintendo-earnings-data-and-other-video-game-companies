@@ -99,21 +99,19 @@ const printTextBlock = (text: string, blockLength: number) => {
          
         let arrayCheckText = 0; // a mutating variable for splicing textSplit below in textReduce
 
-        let nextCount = 0;
-
-        let printText: string = Array.from({length:Math.ceil((text.length + textSplit.length)/blockLength)}, (v,i) => {
+        let printText: string | never[] = Array.from({length:Math.ceil((text.length + textSplit.length)/blockLength)}, (v,i) => {
 
             let textSplice = textSplit.slice(arrayCheckText)
 
             let nextCheckAlert = false;
             
-            let textReduce = textSplice.reduce((prev, next, index) => 
+            let textReduce = textSplice.reduce((prev, next) => 
             {
                 if (nextCheckAlert) { // if this isn't here and next is small enough to pass the next if statement then words end up missing due to the arrayCheckText + increment
                     return prev
                 }
 
-                let nextCheck = prev + " " + next;
+                let nextCheck = prev + " " + next + " ";
                 
                 if (nextCheck.length > blockLength) {
                     nextCheckAlert = true;
@@ -126,12 +124,15 @@ const printTextBlock = (text: string, blockLength: number) => {
                 
             }, "")
 
-            let textFixed = (textReduce.length >= blockLength)
+            let textFixed = (textReduce.length >= blockLength || textReduce.length === 0) // latter condition is to return an empty array
                 ? textReduce
                 : textReduce + " ".repeat(blockLength - textReduce.length)
 
-            return "|" + textFixed + "|"
-        }).reduce((prev, next) => prev + "\n" + next)
+            return (textFixed.length === 0) 
+                ? []
+                : "|" + textFixed + "|"
+
+        }).filter(elem => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
         // console.log(`textLength: ${text.length} , equal? ${nextCount === textSplit.length}, nextCount: ${nextCount}, textSplit.length: ${textSplit.length}, arrayTextCheck: ${arrayCheckText}, `);
         
         return printText
@@ -191,7 +192,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
         //     return "|" + platformFixed + "|"
         // }).reduce((prev, next) => prev + "\n" + next)
         
-        let printPlatforms: string = printTextBlock(seriesIP.platforms, 44)
+        let printPlatforms: string | never[] = printTextBlock(seriesIP.platforms, 44)
 
         let printFirstYear: string = "| First Year:" + seriesIP.firstReleaseYear
         
@@ -392,28 +393,13 @@ test("testing printSeries with all FY3/21 data...", () => {
         return {...elem, rank: index+1}
     })
 
-    // let x = sortedFYCollection.map((elem) => {
-    //     return printSeries(header, elem)
-    // }).reduce((prev, next) => prev + "\n" + next);
+    let x = sortedFYCollection.map((elem) => {
+        return printSeries(header, elem)
+    }).reduce((prev, next) => prev + "\n" + next);
 
-    // console.log(x);
+    console.log(x);
 
-    console.log(printSeries(header, series6));
+    // console.log(printSeries(header, series6));
     
     
 })
-
-const abc = `+============================================+
-| (Units and downloads*/IDs/users)           |
-| *Including downloads of free-to-play       |
-| titles                                     |
-| (Full games and F2P, Amusement IDs total   |
-| total (Total for registrations after IP in |
-| **SEGA CORPORATION acquired the rights in  |
-| 1998. Figures for cumulative unit sales    |
-| are the totals for titles that SEGA sold   |
-| after acquiring the rights.                |
-|                                            |
-+--------------------------------------------+`
-//(Full games and F2P, Amusement Machines-registered IDs total 
-//total (Total for registrations after IP acquisition)), 
