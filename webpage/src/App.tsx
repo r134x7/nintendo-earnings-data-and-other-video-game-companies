@@ -62,7 +62,8 @@ function App() {
                     <Button aria-label='Sega data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Sega</Button>
               </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/bandai-namco">
-                    <Button aria-label='Sega data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Bandai Namco</Button>
+                    <Button aria-label='Sega data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">
+                      <Text size='xs' >Bandai Namco</Text></Button>
               </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/events">
                     <Button aria-label='Upcoming events page' leftIcon={<Calendar size={24} strokeWidth={2} color={'#40bfb2'}/>} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Events</Button>
