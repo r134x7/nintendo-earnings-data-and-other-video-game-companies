@@ -78,7 +78,7 @@ const series5: Series =
 const series6: Series = 
     {
         title: " Puyo Puyo ",
-        firstReleaseYear: "1991**",
+        firstReleaseYear: " 1991** ",
         platforms: "Pachislot and Pachinko Machines, Consumer Games, Amusement Machines, Toys, etc.",
         totalEditions: 0,
         ipType: " Developed in-house IP ",

@@ -147,14 +147,16 @@ const printSeries = (header: Header, seriesIP: Series) => {
 
             return "|" + platformFixed + "|"
         }).reduce((prev, next) => prev + "\n" + next)
+
+        let printFirstYear: string = "| First Year:" + seriesIP.firstReleaseYear
         
         let printReleaseDateFixed: string = (seriesIP.totalEditions !== 0)
-            ? " Total Editions: " + seriesIP.totalEditions + "             |\n+" + "-".repeat(32) + "+\n| 1st Year:" + seriesIP.firstReleaseYear + " ".repeat(4)
-            : " 1st Year:" + seriesIP.firstReleaseYear + " ".repeat(4)
+            ? "| Total Editions: " + seriesIP.totalEditions +  " ".repeat(44 - (seriesIP.totalEditions.toString().length + " Total Editions: ".length)) + "|\n+" + "-".repeat(44) + "+\n" + printFirstYear + " ".repeat(33 - printFirstYear.length) + "|"
+            : printFirstYear + " ".repeat(33 - printFirstYear.length) + "|"
         
-        let printIPType: string = seriesIP.ipType + " ".repeat(32 - seriesIP.ipType.length)
+        let printIPType: string = seriesIP.ipType + " ".repeat(44 - seriesIP.ipType.length)
 
-        let printTitleNameFixed: string = "+"+"-".repeat(44)+"+\n|" + printTitleName + "|\n+" + "-".repeat(44) + "+\n|" + printIPType + "|\n+" + "-".repeat(44) + "+\n" + printPlatforms + "\n+" + "-".repeat(44) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
+        let printTitleNameFixed: string = "+"+"-".repeat(44)+"+\n|" + printTitleName + "|\n+" + "-".repeat(44) + "+\n|" + printIPType + "|\n+" + "-".repeat(44) + "+\n" + printPlatforms + "\n+" + "-".repeat(44) + "+\n" + printReleaseDateFixed + printRankFixed + "|"
 
         let printUnits: string = "|" + seriesIP.units + " ".repeat(32 - seriesIP.units.length) + "|";
 
