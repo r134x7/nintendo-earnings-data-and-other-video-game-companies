@@ -94,6 +94,39 @@ ${header.fifthHeader}
 ${header.sixthHeader}
 +${"-".repeat(32)}+`;
 
+const printTextBlock = (text: string, blockLength: number) => {
+        let textSplit: string[] = text.split(" ");
+        
+        let arrayCheckText = 0; // a mutating variable for splicing textSplit below in textReduce
+
+        let printText: string = Array.from({length:Math.ceil(text.length/blockLength)}, (v,i) => {
+
+            let textSplice = (textSplit.at(arrayCheckText) === textSplit.at(-1)) 
+                ? textSplit.slice(arrayCheckText-1)
+                : textSplit.slice(arrayCheckText);
+            
+            let textReduce = textSplice.reduce((prev, next) => 
+            {
+                let nextCheck = prev + next + " ";
+
+                if (nextCheck.length > blockLength-1 && prev.length <= blockLength-1) {
+                    return prev // repeat prev until reduce finishes
+                } else {
+                    arrayCheckText++ 
+                    return prev + " " + next
+                }
+            }, "")
+
+            let textFixed = (textReduce.length >= blockLength)
+                ? textReduce
+                : textReduce + " ".repeat(blockLength - textReduce.length)
+
+            return "|" + textFixed + "|"
+        }).reduce((prev, next) => prev + "\n" + next)
+
+        return printText
+};
+
 const printSeries = (header: Header, seriesIP: Series) => {
 
         let printRank: string = ` Rank ${seriesIP.rank} `
