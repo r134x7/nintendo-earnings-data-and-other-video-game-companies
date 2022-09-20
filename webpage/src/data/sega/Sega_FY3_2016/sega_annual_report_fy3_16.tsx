@@ -38,7 +38,7 @@ const series9: Series =
         title: " Etrian Odyssey ",
         firstReleaseYear: " 2007 ",
         platforms: "Digital Games, Packaged Games, Toys",
-        totalEditions: 0,
+        totalEditions: 7,
         ipType: " Acquired IP ",
         units: "(units)",
         value: 1.5,

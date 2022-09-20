@@ -38,7 +38,7 @@ const series9: Series =
         title: " Etrian Odyssey ",
         firstReleaseYear: " 2007 ",
         platforms: "Digital Games, Packaged Games, Toys",
-        totalEditions: 0,
+        totalEditions: 5,
         ipType: " Acquired IP ",
         units: "(units)",
         value: 1.2,
@@ -99,7 +99,7 @@ const series10: Series =
         ipType: " Developed in-house IP ",
         units: "(units)",
         value: 0.57,
-        valueLastFY: 0.57,
+        valueLastFY: 0.49,
         valueLastTwoFYs: 0,
         miscellaneous1: "(pachislot and pachinko machines and amusement machines total)",
     };
