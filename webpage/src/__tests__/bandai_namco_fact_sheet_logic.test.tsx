@@ -40,6 +40,13 @@ const printRank = (seriesIP: Series, blockLength: number) => {
             : ranking + " ".repeat(blockLength - ranking.length);
 }
 
+const printReleaseDate = (seriesIP: Series, blockLength: number) => {
+    let releaseDate: string = seriesIP.releaseDate + " to " + seriesIP.fyEndMonth;
+    return (releaseDate.length >= blockLength)
+        ? releaseDate
+        : releaseDate + " ".repeat(blockLength - releaseDate.length);
+}
+
 const printSeries = (header: Header, seriesIP: Series) => {
 
         let rank: string = printRank(seriesIP, 11); 
