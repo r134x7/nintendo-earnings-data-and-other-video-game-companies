@@ -47,18 +47,22 @@ const printReleaseDate = (seriesIP: Series, blockLength: number) => {
         : releaseDate + " ".repeat(blockLength - releaseDate.length);
 }
 
+const printSeriesName = (seriesIP: Series, blockLength: number) => {
+    return "+"+"-".repeat(blockLength)+"+\n|" + printTextBlock(seriesIP.title, blockLength) + "|\n+" + "-".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP, blockLength) + "|\n+" + "-".repeat(blockLength) + "+" 
+
+}
+
 const printSeries = (header: Header, seriesIP: Series) => {
 
         let rank: string = printRank(seriesIP, 11); 
     
-        let printSeriesName: string | never[] = printTextBlock(seriesIP.title, 38);
+        // let printSeriesName: string | never[] = printTextBlock(seriesIP.title, 38);
 
-        let printReleaseDate: string = seriesIP.releaseDate + " to " + seriesIP.fyEndMonth; 
+        // let releaseDate: string = printReleaseDate(seriesIP, 38);
         
-        let printReleaseDateFixed: string = 
-             "|" + printReleaseDate + " ".repeat(38 - printReleaseDate.length) + "|"
+        // let printTitleNameFixed: string = "+"+"-".repeat(44)+"+\n|" + printSeriesName + "|\n+" + "-".repeat(44) + "+\n|" + releaseDate + "|\n+" + "-".repeat(44) + "+"
         
-        let printTitleNameFixed: string = "+"+"-".repeat(44)+"+\n|" + printTitleName + "|\n+" + "-".repeat(44) + "+\n|" + printIPType + "|\n+" + "-".repeat(44) + "+\n" + printPlatforms + "\n+" + "-".repeat(44) + "+\n" + printReleaseDateFixed + printRankFixed + "|"
+        let printTitleName: string = printSeriesName(seriesIP, 38);
 
         let printUnits: string = "| " + seriesIP.units + " ".repeat(43 - seriesIP.units.length) + "|";
 
