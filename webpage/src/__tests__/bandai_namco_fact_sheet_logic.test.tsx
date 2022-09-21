@@ -52,6 +52,31 @@ const printSeriesName = (seriesIP: Series, blockLength: number) => {
 
 }
 
+const printCmlValue = (seriesIP: Series, blockLength: number) => {
+        let CmlValue: string = `${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M `
+
+        return (CmlValue.length >= blockLength)
+            ? CmlValue
+            : " ".repeat(blockLength - CmlValue.length) + CmlValue;
+}
+
+const printCmlYoY = (seriesIP: Series, blockLength: number) => {
+
+        let FYCmlYoY = (seriesIP.valueLastFY === 0)
+                ? " New! "
+                : ((seriesIP.value - seriesIP.valueLastFY) >=  (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) && !((seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) < 0))
+                ? `+${((
+                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
+                : `${((
+                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
+
+        return (header: Header) => {
+            return (FYCmlYoY.length >= blockLength) 
+                ? header.fiscalYearYoY + FYCmlYoY + "|"
+                : header.fiscalYearYoY + " ".repeat(blockLength - FYCmlYoY.length) + FYCmlYoY + "|"
+        }
+    }
+
 const printSeries = (header: Header, seriesIP: Series) => {
 
         let rank: string = printRank(seriesIP, 11); 
@@ -64,39 +89,38 @@ const printSeries = (header: Header, seriesIP: Series) => {
         
         let printTitleName: string = printSeriesName(seriesIP, 38);
 
-        let printUnits: string = "| " + seriesIP.units + " ".repeat(43 - seriesIP.units.length) + "|";
-
-        let printMisc1: string | never[] = (!seriesIP.miscellaneous1)
+        let printMisc1: string | never[] = (!seriesIP.miscellaneous)
             ? [] 
-            : printTextBlock(seriesIP.miscellaneous1, 44)
+            : printTextBlock(seriesIP.miscellaneous, 44)
 
-        let printMisc2: string | never[] = (!seriesIP.miscellaneous2)
-            ? [] 
-            : printTextBlock(seriesIP.miscellaneous2, 44)
+        let printMiscFlatFilter: string[] = [printMisc1].filter(elem => elem.length !== 0).flat()
 
-        let printMiscFlatFilter: string[] = [printMisc1, printMisc2].filter(elem => elem.length !== 0).flat()
+        // let printUnitsFixed: string = (printMiscFlatFilter.length === 0)
+        //     ? printUnits
+        //     : printUnits + "\n" + printMiscFlatFilter.reduce((prev, next) => prev + "\n" + next);
 
-        let printUnitsFixed: string = (printMiscFlatFilter.length === 0)
-            ? printUnits
-            : printUnits + "\n" + printMiscFlatFilter.reduce((prev, next) => prev + "\n" + next);
+        let CmlValue: string = printCmlValue(seriesIP, 11);
 
-        let printCmlValue: string = `${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M `
+        let CmlYoY = printCmlYoY(seriesIP, 11)
+        CmlYoY(header) // so..... 
+        
+        // let printCmlValue: string = `${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M `
 
-        let printCmlValueFixed: string = (printCmlValue.length >= 11)
-            ? printCmlValue
-            : " ".repeat(11 - printCmlValue.length) + printCmlValue;
+        // let printCmlValueFixed: string = (printCmlValue.length >= 11)
+            // ? printCmlValue
+            // : " ".repeat(11 - printCmlValue.length) + printCmlValue;
 
-        let printFYCmlYoY = (seriesIP.valueLastFY === 0)
-                ? " New! "
-                : ((seriesIP.value - seriesIP.valueLastFY) >=  (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) && !((seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) < 0))
-                ? `+${((
-                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
-                : `${((
-                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
+        // let printFYCmlYoY = (seriesIP.valueLastFY === 0)
+        //         ? " New! "
+        //         : ((seriesIP.value - seriesIP.valueLastFY) >=  (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) && !((seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) < 0))
+        //         ? `+${((
+        //             ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
+        //         : `${((
+        //             ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
 
-        let printFYCmlYoYFixed: string = (printFYCmlYoY.length >= 11) 
-                ? header.fiscalYearYoY + printFYCmlYoY + "|"
-                : header.fiscalYearYoY + " ".repeat(11 - printFYCmlYoY.length) + printFYCmlYoY + "|"
+        // let printFYCmlYoYFixed: string = (printFYCmlYoY.length >= 11) 
+        //         ? header.fiscalYearYoY + printFYCmlYoY + "|"
+        //         : header.fiscalYearYoY + " ".repeat(11 - printFYCmlYoY.length) + printFYCmlYoY + "|"
                 
         
         let printLTDValue: string = `${seriesIP.value}M `
