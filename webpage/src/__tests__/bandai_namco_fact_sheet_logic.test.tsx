@@ -1,5 +1,3 @@
-import { printTextBlock } from "../utils/sega_annual_report_logic";
-
 export type Series = {
     title: string,
     releaseDate: string,
@@ -33,24 +31,84 @@ ${header.thirdHeader}
 ${header.fourthHeader}
 +${"-".repeat(32)}+`;
 
-const printRank = (seriesIP: Series, blockLength: number) => {
+const printRank = (seriesIP: Series) => {
+
     let ranking: string = ` Rank ${seriesIP.rank} `;
-    return (ranking.length >= blockLength)
+
+    return (blockLength: number) => {
+
+        return (ranking.length >= blockLength)
             ? ranking
-            : ranking + " ".repeat(blockLength - ranking.length);
-}
+            : ranking + " ".repeat(blockLength - ranking.length); 
+    }; 
+};
 
-const printReleaseDate = (seriesIP: Series, blockLength: number) => {
+const printTextBlock = (text: string) => {
+
+    return (blockLength: number) => {
+
+        let textSplit: string[] = text.split(" ");
+         
+        let arrayCheckText = 0; // a mutating variable for splicing textSplit below in textReduce
+
+        let printText: string | never[] = Array.from({length:Math.ceil((text.length + textSplit.length)/blockLength)}, (v,i) => {
+
+            let textSplice = textSplit.slice(arrayCheckText)
+
+            let nextCheckAlert = false;
+            
+            let textReduce = textSplice.reduce((prev, next) => 
+            {
+                if (nextCheckAlert) { // if this isn't here and next is small enough to pass the next if statement then words end up missing due to the arrayCheckText + increment
+                    return prev
+                }
+
+                let nextCheck = prev + " " + next + " ";
+                
+                if (nextCheck.length > blockLength) {
+                    nextCheckAlert = true;
+                    return prev // repeat prev until reduce finishes
+                } 
+                
+                arrayCheckText++ 
+
+                return prev + " " + next
+                
+            }, "")
+
+            let textFixed = (textReduce.length >= blockLength || textReduce.length === 0) // latter condition is to return an empty array
+                ? textReduce
+                : textReduce + " ".repeat(blockLength - textReduce.length)
+
+            return (textFixed.length === 0) 
+                ? []
+                : "|" + textFixed + "|"
+
+        }).filter(elem => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
+        
+        return printText
+    }
+};
+
+const printReleaseDate = (seriesIP: Series) => {
+
     let releaseDate: string = seriesIP.releaseDate + " to " + seriesIP.fyEndMonth;
-    return (releaseDate.length >= blockLength)
-        ? releaseDate
-        : releaseDate + " ".repeat(blockLength - releaseDate.length);
-}
 
-const printSeriesName = (seriesIP: Series, blockLength: number) => {
-    return "+"+"-".repeat(blockLength)+"+\n|" + printTextBlock(seriesIP.title, blockLength) + "|\n+" + "-".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP, blockLength) + "|\n+" + "-".repeat(blockLength) + "+" 
+    return (blockLength: number) => {
 
-}
+        return (releaseDate.length >= blockLength)
+            ? releaseDate
+            : releaseDate + " ".repeat(blockLength - releaseDate.length);
+    };
+};
+
+const printSeriesName = (seriesIP: Series) => {
+
+    return (blockLength: number) => {
+       return "+"+"-".repeat(blockLength)+"+\n|" + printTextBlock(seriesIP.title) + "|\n+" + "-".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP) + "|\n+" + "-".repeat(blockLength) + "+" 
+
+    };
+};
 
 const printCmlValue = (seriesIP: Series) => {
 
@@ -87,7 +145,7 @@ const printCmlYoY = (seriesIP: Series) => {
 
 const printSeries = (header: Header, seriesIP: Series) => {
 
-        let rank: string = printRank(seriesIP, 11); 
+        let rank: string = printRank(seriesIP)(11); 
     
         // let printSeriesName: string | never[] = printTextBlock(seriesIP.title, 38);
 
@@ -95,13 +153,13 @@ const printSeries = (header: Header, seriesIP: Series) => {
         
         // let printTitleNameFixed: string = "+"+"-".repeat(44)+"+\n|" + printSeriesName + "|\n+" + "-".repeat(44) + "+\n|" + releaseDate + "|\n+" + "-".repeat(44) + "+"
         
-        let printTitleName: string = printSeriesName(seriesIP, 38);
+        let printTitleName: string = printSeriesName(seriesIP)(38);
 
         let printMisc1: string | never[] = (!seriesIP.miscellaneous)
             ? [] 
-            : printTextBlock(seriesIP.miscellaneous, 44)
+            : printTextBlock(seriesIP.miscellaneous)(44);
 
-        let printMiscFlatFilter: string[] = [printMisc1].filter(elem => elem.length !== 0).flat()
+        let printMiscFlatFilter: string[] = [printMisc1].filter(elem => elem.length !== 0).flat();
 
         // let printUnitsFixed: string = (printMiscFlatFilter.length === 0)
         //     ? printUnits
