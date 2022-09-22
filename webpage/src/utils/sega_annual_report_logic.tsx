@@ -42,7 +42,7 @@ ${header.fifthHeader}
 ${header.sixthHeader}
 +${"-".repeat(32)}+`;
 
-export const printTextBlock = (text: string, blockLength: number) => {
+const printTextBlock = (text: string, blockLength: number) => {
 
         let textSplit: string[] = text.split(" ");
          
