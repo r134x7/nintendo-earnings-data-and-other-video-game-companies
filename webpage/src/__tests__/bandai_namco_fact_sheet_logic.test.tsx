@@ -1,3 +1,5 @@
+import { collection } from "../data/bandaiNamco/Bandai_Namco_FY3_2021/bandai_namco_annual_report_fy3_21";
+
 export type Series = {
     title: string,
     releaseDate: string,
@@ -105,7 +107,7 @@ const printReleaseDate = (seriesIP: Series) => {
 const printSeriesName = (seriesIP: Series) => {
 
     return (blockLength: number) => {
-       return "+"+"-".repeat(blockLength)+"+\n|" + printTextBlock(seriesIP.title) + "|\n+" + "-".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP) + "|\n+" + "-".repeat(blockLength) + "+" 
+       return "+"+"-".repeat(blockLength)+"+\n|" + printTextBlock(seriesIP.title)(blockLength) + "|\n+" + "-".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|\n+" + "-".repeat(blockLength) + "+" 
 
     };
 };
@@ -132,15 +134,13 @@ const printCmlYoY = (seriesIP: Series) => {
                 : `${((
                     ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
 
-        return (blockLength: number) => {
-
-            return (header: Header) => {
+        return (blockLength: number) =>
+               (header: Header) => {
 
                 return (FYCmlYoY.length >= blockLength) 
                     ? header.fiscalYearYoY + FYCmlYoY + "|"
                     : header.fiscalYearYoY + " ".repeat(blockLength - FYCmlYoY.length) + FYCmlYoY + "|"
             };
-        };
     };
 
 const printLTDValue = (seriesIP: Series) => {
@@ -169,7 +169,7 @@ const printSeriesOutput = (seriesIP: Series) => {
 
 const printLine = (lineLength: number) => "+" + "-".repeat(lineLength) + "+"; 
 
-const printDoubleLine = (lineLength: number) => "+" + "-".repeat(lineLength) + "+"; 
+const printDoubleLine = (lineLength: number) => "+" + "=".repeat(lineLength) + "+"; 
 
 const printSeries = (header: Header, seriesIP: Series) => {
 
@@ -185,3 +185,23 @@ const printSeries = (header: Header, seriesIP: Series) => {
 
     return printSeriesOutput(seriesIP)(header)(38)(11)(32);
 }
+
+test("quick test...", () => {
+
+const header: Header = {
+    bandaiNamcoHeader: "| Bandai Namco - IP Series Data  |",
+    secondHeader: "| First Appearance to recent FY |",
+    thirdHeader: "| Rank                           |",
+    fourthHeader: "| Units                          |",
+    ltd: "| Life-To-Date       |",
+    fiscalYear:  "| FY3/21 Cumulative  |",
+    fiscalYearYoY: "| FY3/21 Cml. YoY%   |",
+    summaryHeader: " Placeholder ",
+}
+    let x = collection.map((elem) => {
+        return printSeries(header, elem)
+    })
+
+    console.log(x[0]);
+    
+})

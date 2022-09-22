@@ -50,3 +50,11 @@ const series5: Series =
         valueLastTwoFYs: 22.19,
         miscellaneous: "Note: Total for overseas sales for which BANDAI NAMCO Entertainment Inc. was the original seller (excluding domestic sales by FromSoftware, Inc.)",
     };
+
+export const collection = [
+    series1,
+    series2,
+    series3,
+    series4,
+    series5,
+] as const;
