@@ -2,7 +2,7 @@ import { Series, Header } from "../../../__tests__/bandai_namco_fact_sheet_logic
 
 const series1: Series = 
     {
-        title: " Super Robot Wars ",
+        title: "Super Robot Wars",
         releaseDate: " April 1991 ",
         fyEndMonth: " March 2021 ",
         value: 19.24,
@@ -12,7 +12,7 @@ const series1: Series =
 
 const series2: Series = 
     {
-        title: " Tekken ",
+        title: "Tekken",
         releaseDate: " March 1995 ",
         fyEndMonth: " March 2021 ",
         value: 52.51,
@@ -22,7 +22,7 @@ const series2: Series =
 
 const series3: Series = 
     {
-        title: " Tales... of ",
+        title: "Tales... of",
         releaseDate: " December 1995 ",
         fyEndMonth: " March 2021 ",
         value: 24.84,
@@ -32,7 +32,7 @@ const series3: Series =
 
 const series4: Series = 
     {
-        title: " Ultimate Ninja Storm ",
+        title: "Ultimate Ninja Storm",
         releaseDate: " January 2009 ",
         fyEndMonth: " March 2021 ",
         value: 20.80,
@@ -42,7 +42,7 @@ const series4: Series =
 
 const series5: Series = 
     {
-        title: " Dark Souls ",
+        title: "Dark Souls",
         releaseDate: " September 2011 ",
         fyEndMonth: " March 2021 ",
         value: 29.34,

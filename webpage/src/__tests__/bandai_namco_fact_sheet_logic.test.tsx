@@ -94,21 +94,13 @@ const printTextBlock = (text: string) => {
 
 const printReleaseDate = (seriesIP: Series) => {
 
-    let releaseDate: string = seriesIP.releaseDate + " to " + seriesIP.fyEndMonth;
+    let releaseDate: string = seriesIP.releaseDate + "to" + seriesIP.fyEndMonth;
 
     return (blockLength: number) => {
 
         return (releaseDate.length >= blockLength)
             ? releaseDate
             : releaseDate + " ".repeat(blockLength - releaseDate.length);
-    };
-};
-
-const printSeriesName = (seriesIP: Series) => {
-
-    return (blockLength: number) => {
-       return "+"+"-".repeat(blockLength)+"+\n|" + printTextBlock(seriesIP.title)(blockLength) + "|\n+" + "-".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|\n+" + "-".repeat(blockLength) + "+" 
-
     };
 };
 
@@ -156,6 +148,15 @@ const printLTDValue = (seriesIP: Series) => {
         };
 };
 
+const printSeriesName = (seriesIP: Series) => {
+
+    return (blockLength: number) => {
+       return (!seriesIP.miscellaneous) 
+            ? "+"+"-".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title)(blockLength) + "\n+" + "-".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|"
+            : "+"+"-".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title)(blockLength) + "\n+" + "-".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|\n+" + "-".repeat(blockLength) + "+\n" + printTextBlock(seriesIP.miscellaneous)(blockLength);
+    };
+};
+
 const printSeriesOutput = (seriesIP: Series) => {
 
     return (header: Header) =>
@@ -175,15 +176,8 @@ const printSeries = (header: Header, seriesIP: Series) => {
 
         let rank: string = printRank(seriesIP)(11); 
     
-        let printTitleName: string = printSeriesName(seriesIP)(38);
 
-        let printMisc1: string | never[] = (!seriesIP.miscellaneous)
-            ? [] 
-            : printTextBlock(seriesIP.miscellaneous)(44);
-
-        let printMiscFlatFilter: string[] = [printMisc1].filter(elem => elem.length !== 0).flat();
-
-    return printSeriesOutput(seriesIP)(header)(38)(11)(32);
+    return printSeriesOutput(seriesIP)(header)(42)(11)(32);
 }
 
 test("quick test...", () => {
@@ -200,8 +194,9 @@ const header: Header = {
 }
     let x = collection.map((elem) => {
         return printSeries(header, elem)
-    })
+    }).reduce((acc, next) => acc + "\n" + next);
 
-    console.log(x[0]);
+    console.log(x);
     
 })
+//| September 1991 to March 2021 | Rank 1    |
