@@ -52,13 +52,17 @@ const printSeriesName = (seriesIP: Series, blockLength: number) => {
 
 }
 
-const printCmlValue = (seriesIP: Series, blockLength: number) => {
+const printCmlValue = (seriesIP: Series) => {
+
         let CmlValue: string = `${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M `
 
-        return (CmlValue.length >= blockLength)
-            ? CmlValue
-            : " ".repeat(blockLength - CmlValue.length) + CmlValue;
-}
+        return (blockLength: number) => {
+
+            return (CmlValue.length >= blockLength)
+                ? CmlValue
+                : " ".repeat(blockLength - CmlValue.length) + CmlValue;
+        };
+};
 
 const printCmlYoY = (seriesIP: Series) => {
 
@@ -77,9 +81,9 @@ const printCmlYoY = (seriesIP: Series) => {
                 return (FYCmlYoY.length >= blockLength) 
                     ? header.fiscalYearYoY + FYCmlYoY + "|"
                     : header.fiscalYearYoY + " ".repeat(blockLength - FYCmlYoY.length) + FYCmlYoY + "|"
-            }
-        }
-    }
+            };
+        };
+    };
 
 const printSeries = (header: Header, seriesIP: Series) => {
 
@@ -103,7 +107,7 @@ const printSeries = (header: Header, seriesIP: Series) => {
         //     ? printUnits
         //     : printUnits + "\n" + printMiscFlatFilter.reduce((prev, next) => prev + "\n" + next);
 
-        let CmlValue: string = printCmlValue(seriesIP, 11);
+        let CmlValue: string = printCmlValue(seriesIP)(11); // composition
 
         let CmlYoY: string = printCmlYoY(seriesIP)(11)(header); // composition
 
