@@ -60,7 +60,7 @@ const printCmlValue = (seriesIP: Series, blockLength: number) => {
             : " ".repeat(blockLength - CmlValue.length) + CmlValue;
 }
 
-const printCmlYoY = (seriesIP: Series, blockLength: number) => {
+const printCmlYoY = (seriesIP: Series) => {
 
         let FYCmlYoY = (seriesIP.valueLastFY === 0)
                 ? " New! "
@@ -70,10 +70,14 @@ const printCmlYoY = (seriesIP: Series, blockLength: number) => {
                 : `${((
                     ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
 
-        return (header: Header) => {
-            return (FYCmlYoY.length >= blockLength) 
-                ? header.fiscalYearYoY + FYCmlYoY + "|"
-                : header.fiscalYearYoY + " ".repeat(blockLength - FYCmlYoY.length) + FYCmlYoY + "|"
+        return (blockLength: number) => {
+
+            return (header: Header) => {
+
+                return (FYCmlYoY.length >= blockLength) 
+                    ? header.fiscalYearYoY + FYCmlYoY + "|"
+                    : header.fiscalYearYoY + " ".repeat(blockLength - FYCmlYoY.length) + FYCmlYoY + "|"
+            }
         }
     }
 
@@ -101,9 +105,8 @@ const printSeries = (header: Header, seriesIP: Series) => {
 
         let CmlValue: string = printCmlValue(seriesIP, 11);
 
-        let CmlYoY = printCmlYoY(seriesIP, 11)
-        CmlYoY(header) // so..... 
-        
+        let CmlYoY: string = printCmlYoY(seriesIP)(11)(header); // composition
+
         // let printCmlValue: string = `${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M `
 
         // let printCmlValueFixed: string = (printCmlValue.length >= 11)
