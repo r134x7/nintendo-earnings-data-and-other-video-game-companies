@@ -114,11 +114,11 @@ const printCmlValue = (seriesIP: Series) => {
 
         let CmlValue: string = `${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M `
 
-        return (blockLength: number) => {
-
-            return (CmlValue.length >= blockLength)
-                ? CmlValue
-                : " ".repeat(blockLength - CmlValue.length) + CmlValue;
+        return (blockLength: number) => 
+               (header: Header) => {
+                    return (CmlValue.length >= blockLength)
+                        ? header.fiscalYear + CmlValue + "|"
+                        : header.fiscalYear + " ".repeat(blockLength - CmlValue.length) + CmlValue + "|";
         };
 };
 
@@ -143,16 +143,22 @@ const printCmlYoY = (seriesIP: Series) => {
         };
     };
 
+const printLTDValue = (seriesIP: Series) => {
+
+        let printLTDValue: string = `${seriesIP.value}M `
+       
+        return (blockLength: number) => {
+
+            return (printLTDValue.length >= blockLength)
+            ? printLTDValue
+            : " ".repeat(blockLength - printLTDValue.length) + printLTDValue;
+        };
+};
+
 const printSeries = (header: Header, seriesIP: Series) => {
 
         let rank: string = printRank(seriesIP)(11); 
     
-        // let printSeriesName: string | never[] = printTextBlock(seriesIP.title, 38);
-
-        // let releaseDate: string = printReleaseDate(seriesIP, 38);
-        
-        // let printTitleNameFixed: string = "+"+"-".repeat(44)+"+\n|" + printSeriesName + "|\n+" + "-".repeat(44) + "+\n|" + releaseDate + "|\n+" + "-".repeat(44) + "+"
-        
         let printTitleName: string = printSeriesName(seriesIP)(38);
 
         let printMisc1: string | never[] = (!seriesIP.miscellaneous)
@@ -165,38 +171,32 @@ const printSeries = (header: Header, seriesIP: Series) => {
         //     ? printUnits
         //     : printUnits + "\n" + printMiscFlatFilter.reduce((prev, next) => prev + "\n" + next);
 
-        let CmlValue: string = printCmlValue(seriesIP)(11); // composition
+        let CmlValue: string = printCmlValue(seriesIP)(11)(header); // composition
 
         let CmlYoY: string = printCmlYoY(seriesIP)(11)(header); // composition
 
-        // let printCmlValue: string = `${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M `
+        let ltdValue: string = printLTDValue(seriesIP)(11);
 
-        // let printCmlValueFixed: string = (printCmlValue.length >= 11)
-            // ? printCmlValue
-            // : " ".repeat(11 - printCmlValue.length) + printCmlValue;
+        const printSeriesOutput = (seriesIP: Series) => {
 
-        // let printFYCmlYoY = (seriesIP.valueLastFY === 0)
-        //         ? " New! "
-        //         : ((seriesIP.value - seriesIP.valueLastFY) >=  (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) && !((seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) < 0))
-        //         ? `+${((
-        //             ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
-        //         : `${((
-        //             ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
+            return  (header: Header) =>
+                    // (blockLength: number) =>
+                    // (valueLength: number) =>
+                    // (longLine: number) => 
+                    // (shortLine: number) => 
+                    {
+                        return printSeriesName(seriesIP)(38) + "\n" + printDoubleLine(44) + "\n" + header.fiscalYear + printCmlValue(seriesIP)(11) + "\n" + header.
+                    }
+            }
+        };
 
-        // let printFYCmlYoYFixed: string = (printFYCmlYoY.length >= 11) 
-        //         ? header.fiscalYearYoY + printFYCmlYoY + "|"
-        //         : header.fiscalYearYoY + " ".repeat(11 - printFYCmlYoY.length) + printFYCmlYoY + "|"
-                
-        
-        let printLTDValue: string = `${seriesIP.value}M `
-       
-        let printLTDValueFixed: string = (printLTDValue.length >= 11)
-            ? printLTDValue
-            : " ".repeat(11 - printLTDValue.length) + printLTDValue;
+        const printLine = (lineLength: number) => "+" + "-".repeat(lineLength) + "+"; 
 
-        let printLine: string = "+" + "-".repeat(44) + "+";
+        const printDoubleLine = (lineLength: number) => "+" + "-".repeat(lineLength) + "+"; 
+
+        // let printLine: string = "+" + "-".repeat(44) + "+";
         let printLineEnd: string = "+" + "-".repeat(32) + "+";
-        let printDoubleLine: string = "+" + "=".repeat(44) + "+";
+        // let printDoubleLine: string = "+" + "=".repeat(44) + "+";
 
-    return printTitleNameFixed + "\n" + printDoubleLine + "\n" + printUnitsFixed + "\n" + printLine + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|\n" + printLineEnd
+    return printTitleNameFixed + "\n" + printDoubleLine + "\n" + header.fiscalYear + printCmlValueFixed + "|\n" + printFYCmlYoYFixed + "\n" + header.ltd + printLTDValueFixed + "|\n" + printLineEnd
 }
