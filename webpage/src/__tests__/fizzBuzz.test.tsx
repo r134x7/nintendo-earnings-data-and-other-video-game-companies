@@ -1,16 +1,15 @@
-export const fizzBuzz = (...arr: number[]) => {
-    let [x] = arr;
+export const fizzBuzz = (index: number) => {
     return (Fizz: number) => {
         return (Buzz: number) => {
-            return (x % Fizz === 0 && x % Buzz === 0)
+            return (index % Fizz === 0 && index % Buzz === 0)
                     ? console.log("Fizz Buzz")
-                    : (x % Buzz === 0)
+                    : (index % Buzz === 0)
                     ? console.log("Buzz")
-                    : console.log("Fizz");
+                    : (index % Fizz === 0)
+                    ? console.log("Fizz")
+                    : console.log(index);
         }
     }
 }
 
-const arr: number[] = Array.from({length: 100},(v,k) => k)
-
-fizzBuzz(...arr)(3)(5)
+Array.from({length: 100},(v,k) => fizzBuzz(k+1)(3)(5))
