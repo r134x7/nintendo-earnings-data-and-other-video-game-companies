@@ -99,8 +99,8 @@ const printReleaseDate = (seriesIP: Series) => {
     return (blockLength: number) => {
 
         return (releaseDate.length >= blockLength)
-            ? releaseDate
-            : releaseDate + " ".repeat(blockLength - releaseDate.length);
+            ? releaseDate + "|" + printRank(seriesIP)(11)
+            : releaseDate + " ".repeat(blockLength - releaseDate.length - printRank(seriesIP)(11).length - 1) + "|" + printRank(seriesIP)(11);
     };
 };
 
@@ -174,9 +174,6 @@ const printDoubleLine = (lineLength: number) => "+" + "=".repeat(lineLength) + "
 
 const printSeries = (header: Header, seriesIP: Series) => {
 
-        let rank: string = printRank(seriesIP)(11); 
-    
-
     return printSeriesOutput(seriesIP)(header)(42)(11)(32);
 }
 
@@ -192,11 +189,26 @@ const header: Header = {
     fiscalYearYoY: "| FY3/21 Cml. YoY%   |",
     summaryHeader: " Placeholder ",
 }
-    let x = collection.map((elem) => {
-        return printSeries(header, elem)
-    }).reduce((acc, next) => acc + "\n" + next);
+const sortedFYCollection: Series[] = collection.filter((elem, index, array) => {
+            // return elem.value - elem.valueLastFY !== 0 // probably shouldn't make two separate tables for FY and ALL...
+            return elem // forgetting filter doesn't do anything here...
+            // we need to create a new array that is identical to the original due to sort's mutating properties. filter titles that sold units this FY
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a.value - a.valueLastFY > b.value - b.valueLastFY)
+            ? 1
+            : (a.value - a.valueLastFY < b.value - b.valueLastFY)
+            ? -1
+            : 0
+    }).map((elem, index) => {
+        return {...elem, rank: index+1}
+    })
 
-    console.log(x);
+    let printedSeries = sortedFYCollection.map((elem) => {
+        return printSeries(header, elem)
+    }).reduce((prev, next) => prev + "\n" + next)
+
+
+    console.log(printedSeries);
     
 })
 //| September 1991 to March 2021 | Rank 1    |
