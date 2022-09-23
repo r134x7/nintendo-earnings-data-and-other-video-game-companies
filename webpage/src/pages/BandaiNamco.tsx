@@ -4,8 +4,11 @@ import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
+import BANDAI_NAMCO_FY3_2019 from "../components/bandaiNamco/BANDAI_NAMCO_FY3_2019";
+import BANDAI_NAMCO_FY3_2020 from "../components/bandaiNamco/BANDAI_NAMCO_FY3_2020";
+import BANDAI_NAMCO_FY3_2021 from "../components/bandaiNamco/BANDAI_NAMCO_FY3_2021";
 
-const yearsList = Array.from({length: 1}, (elem, index) => 
+const yearsList = Array.from({length: 3}, (elem, index) => 
                     {
                             return "FY3/" + (2021 - index)
                     }) 
@@ -75,6 +78,118 @@ export default function BandaiNamco() {
             </Stack>
             </Paper>
 
+            <Group position="center">
+
+                <Autocomplete
+                    dropdownPosition="bottom"
+                    mb="sm"
+                    mr="md"
+                    placeholder="Select"
+                    label="Select Fiscal Year from 2019 to 2021."
+                    description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
+                    radius="xl"
+                    size="md"
+                    limit={5}
+                    data={yearsList}
+                    value={year} 
+                    onChange={setYear}
+                />
+                
+                <Paper style={{backgroundColor: state.colour}} p="xs" radius="xl" withBorder>
+                <Text size="sm" >
+                Colour: {state.colour}
+                </Text>    
+                <ColorPicker 
+                        withPicker={false}
+                        size="lg"
+                        mb="sm" 
+                        swatchesPerRow={7} 
+                        format="rgb" 
+                        swatches={[
+                            "rgb(0, 0, 0)", 
+                            "rgb(0, 255, 255)", 
+                            "rgb(0, 128, 128)",
+                            "rgb(0, 0, 255)", 
+                            "rgb(75, 0, 130)", 
+                            "rgb(135, 30, 135)", 
+                            "rgb(255, 0, 255)", 
+                            "rgb(86, 29, 37)",
+                            "rgb(173, 255, 47)",
+                            "rgb(127, 184, 0)",
+                            "rgb(0, 255, 0)", 
+                            "rgb(128, 128, 128)",
+                            "rgb(255, 0, 0)",
+                            "rgb(227, 24, 9)",
+                            "rgb(220, 20, 60)", 
+                            "rgb(212, 81, 19)", 
+                            "rgb(255, 165, 0)", 
+                            "rgb(255, 215, 0)",
+                            "rgb(200, 200, 200)",
+                            "rgb(255, 196, 235)",
+                            "rgb(255, 255, 255)", 
+                        ]}
+                        value={colour} 
+                        onChange={setColour}
+                        />
+                        </Paper>
+
+            </Group>
+
+            {   (year === "FY3/2021" && value === "Data by Fiscal Year")
+                ? <BANDAI_NAMCO_FY3_2021 />
+                : (year === "FY3/2020" && value === "Data by Fiscal Year")
+                ? <BANDAI_NAMCO_FY3_2020 />
+                : (year === "FY3/2019" && value === "Data by Fiscal Year") 
+                ? <BANDAI_NAMCO_FY3_2019 />
+                : null
+            }
+            
+            { (year !== "" && value === "Data by Fiscal Year")
+                ? (
+                <Group position="center">
+                    <Space h="xl" />
+                    <Paper style={{backgroundColor: state.colour}} p="xs" radius="xl" withBorder>
+                        <Text size="sm" >
+                        Colour: {state.colour}
+                        </Text>    
+                    <ColorPicker 
+                        withPicker={false}
+                        size="lg"
+                        mb="sm" 
+                        swatchesPerRow={7} 
+                        format="rgb" 
+                        swatches={[
+                            "rgb(0, 0, 0)", 
+                            "rgb(0, 255, 255)", 
+                            "rgb(0, 128, 128)",
+                            "rgb(0, 0, 255)", 
+                            "rgb(75, 0, 130)", 
+                            "rgb(135, 30, 135)", 
+                            "rgb(255, 0, 255)", 
+                            "rgb(86, 29, 37)",
+                            "rgb(173, 255, 47)",
+                            "rgb(127, 184, 0)",
+                            "rgb(0, 255, 0)", 
+                            "rgb(128, 128, 128)",
+                            "rgb(255, 0, 0)",
+                            "rgb(227, 24, 9)",
+                            "rgb(220, 20, 60)", 
+                            "rgb(212, 81, 19)", 
+                            "rgb(255, 165, 0)", 
+                            "rgb(255, 215, 0)",
+                            "rgb(200, 200, 200)",
+                            "rgb(255, 196, 235)",
+                            "rgb(255, 255, 255)", 
+                        ]}
+                        value={colour} 
+                        onChange={setColour}
+                        />
+                        </Paper>
+                </Group>
+                ) : (
+                    null
+                )
+            }
         </div>
 
     );
