@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, Card, Grid, Stack, Indicator } from "@mantine/core";
+import { Text, Card, Grid, Stack, Indicator, Anchor } from "@mantine/core";
 import { Calendar, isSameDate } from "@mantine/dates";
 
 export default function EVENTS_CALENDAR() {
@@ -56,13 +56,141 @@ export default function EVENTS_CALENDAR() {
             timeZone: "France, CEST, UTC +2 Hours",
             irPage: "https://www.ubisoft.com/en-us/company/about-us/investors",
         },
+        // {
+        //     id: 6,
+        //     companyName: "DeNA",
+        //     eventName: "2nd Quarter Earnings Results",
+        //     eventDate: "",
+        //     timeZone: "Japan, JST, UTC +9 Hours",
+        //     irPage: "https://dena.com/intl/ir/",
+        // },
+        // {
+        //     id: 7,
+        //     companyName: "Koei Tecmo",
+        //     eventName: "2nd Quarter Earnings Results",
+        //     eventDate: "",
+        //     timeZone: "Japan, JST, UTC +9 Hours",
+        //     irPage: "https://www.koeitecmo.co.jp/e/ir/",
+        // },
         {
-            id: 6,
-            companyName: "DeNA",
-            eventName: "1st Quarter Earnings Results",
-            eventDate: "August 10, 2022",
+            id: 8,
+            companyName: "EA",
+            eventName: "2nd Quarter Earnings Results",
+            eventDate: "November 1, 2022",
+            timeZone: "US, PST, UTC -8 Hours",
+            irPage: "https://ir.ea.com/home/default.aspx",
+        },
+        {
+            id: 9,
+            companyName: "CyberAgent",
+            eventName: "4th Quarter Earnings Results",
+            eventDate: "October 26, 2022",
             timeZone: "Japan, JST, UTC +9 Hours",
-            irPage: "https://dena.com/intl/ir/",
+            irPage: "https://www.cyberagent.co.jp/en/ir/",
+        },
+        // {
+        //     id: 10,
+        //     companyName: "GungHo",
+        //     eventName: "3rd Quarter Earnings Results",
+        //     eventDate: "November ??, 2022",
+        //     timeZone: "Japan, JST, UTC +9 Hours",
+        //     irPage: "https://www.gungho.co.jp/en/ir/",
+        // },
+        // {
+        //     id: 11,
+        //     companyName: "Square Enix",
+        //     eventName: "2nd Quarter Earnings Results",
+        //     eventDate: "November ??, 2022",
+        //     timeZone: "Japan, JST, UTC +9 Hours",
+        //     irPage: "https://www.hd.square-enix.com/eng/ir/",
+        // },
+        // {
+        //     id: 12,
+        //     companyName: "Sega Sammy",
+        //     eventName: "2nd Quarter Earnings Results",
+        //     eventDate: "November ??, 2022",
+        //     timeZone: "Japan, JST, UTC +9 Hours",
+        //     irPage: "https://www.segasammy.co.jp/english/ir/",
+        // },
+        // {
+        //     id: 13,
+        //     companyName: "Konami",
+        //     eventName: "2nd Quarter Earnings Results",
+        //     eventDate: "November ??, 2022",
+        //     timeZone: "Japan, JST, UTC +9 Hours",
+        //     irPage: "https://www.konami.com/ir/en/",
+        // },
+        {
+            id: 14,
+            companyName: "Marvelous",
+            eventName: "2nd Quarter Earnings Results",
+            eventDate: "October 31, 2022",
+            timeZone: "Japan, JST, UTC +9 Hours",
+            irPage: "https://corp.marv.jp/english/",
+        },
+        // {
+        //     id: 15,
+        //     companyName: "Activision Blizzard",
+        //     eventName: "2nd Quarter Earnings Results",
+        //     eventDate: "",
+        //     timeZone: "",
+        //     irPage: "https://investor.activision.com/",
+        // },
+        // {
+        //     id: 16,
+        //     companyName: "Take-Two",
+        //     eventName: "2nd Quarter Earnings Results",
+        //     eventDate: "November ??, 2022",
+        //     timeZone: "Japan, JST, UTC +9 Hours",
+        //     irPage: "https://www.take2games.com/ir",
+        // },
+        // {
+        //     id: 17,
+        //     companyName: "GREE",
+        //     eventName: "1st Quarter Earnings Results",
+        //     eventDate: "November ??, 2022",
+        //     timeZone: "Japan, JST, UTC +9 Hours",
+        //     irPage: "http://www.gree.co.jp/jp/en/ir/",
+        // },
+        // {
+        //     id: 18,
+        //     companyName: "Bandai Namco",
+        //     eventName: "2nd Quarter Earnings Results",
+        //     eventDate: "November ??, 2022",
+        //     timeZone: "Japan, JST, UTC +9 Hours",
+        //     irPage: "https://www.bandainamco.co.jp/en/ir/index.html",
+        // },
+        // {
+        //     id: 19,
+        //     companyName: "Kadokawa",
+        //     eventName: "2nd Quarter Earnings Results",
+        //     eventDate: "November ??, 2022",
+        //     timeZone: "Japan, JST, UTC +9 Hours",
+        //     irPage: "https://group.kadokawa.co.jp/global/ir/",
+        // },
+        {
+            id: 20,
+            companyName: "Falcom",
+            eventName: "4th Quarter Earnings Results",
+            eventDate: "November 10, 2022",
+            timeZone: "Japan, JST, UTC +9 Hours",
+            irPage: "https://www.falcom.co.jp/ir",
+        },
+        // {
+        //     id: 21,
+        //     companyName: "NIS",
+        //     eventName: "2nd Quarter Earnings Results",
+        //     eventDate: "November ??, 2022",
+        //     timeZone: "Japan, JST, UTC +9 Hours",
+        //     irPage: "https://www.nippon1.co.jp/ir/ir.html",
+        // },
+        {
+            id: 22,
+            companyName: "Embracer Group",
+            eventName: "2nd Quarter Earnings Results",
+            eventDate: "November 17, 2022",
+            timeZone: "Sweden, CET, UTC +1 Hour",
+            irPage: "https://embracer.com/investors/",
         },
     ]
 
@@ -73,8 +201,9 @@ export default function EVENTS_CALENDAR() {
                   let selectEventCompany = (data.companyName) ? `Company: ${data.companyName}` : null;
                   let selectEventName = `Event: ${data.eventName}`;
                   let selectEventDate = `Date: ${data.eventDate}`;
-                  let selectTimeZone = `TimeZone: ${data.timeZone}`
-  
+                  let selectTimeZone = `Time Zone: ${data.timeZone}`;
+                  let selectIRPage = `IR Page: ${data.irPage}`;
+                  let anchorLink = data.irPage;
   
                   return <Card key={data.id} shadow="sm" p="sm" radius="md" withBorder style={{margin: "1em"}} >
                       <Stack >
@@ -90,6 +219,9 @@ export default function EVENTS_CALENDAR() {
                           <Text >
                               {selectTimeZone}
                           </Text>
+                          <Anchor href={anchorLink} target="_blank">
+                              {selectIRPage}
+                          </Anchor>
                       </Stack>
                   </Card>
               } else {
@@ -116,6 +248,9 @@ export default function EVENTS_CALENDAR() {
                             && date.toString() !== new Date(dateArray[3].eventDate).toString()
                             && date.toString() !== new Date(dateArray[4].eventDate).toString()
                             && date.toString() !== new Date(dateArray[5].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[6].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[7].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[8].eventDate).toString()
                         }
                         renderDay={(date) => {
                             const day = date.getDate();
@@ -129,6 +264,9 @@ export default function EVENTS_CALENDAR() {
                                 && fullDate !== new Date(dateArray[3].eventDate).toString()
                                 && fullDate !== new Date(dateArray[4].eventDate).toString()
                                 && fullDate !== new Date(dateArray[5].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[6].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[7].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[8].eventDate).toString() 
                                 }
                               >
                                 <div>{day}</div>
