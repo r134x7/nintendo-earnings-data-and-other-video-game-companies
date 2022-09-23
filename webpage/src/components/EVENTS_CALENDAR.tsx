@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Text, Card, Grid, Stack, Indicator } from "@mantine/core";
 import { Calendar, isSameDate } from "@mantine/dates";
 
-
 export default function EVENTS_CALENDAR() {
 
     const [value, setValue] = useState<Date | null>(null); 
@@ -13,6 +12,7 @@ export default function EVENTS_CALENDAR() {
         eventName: string;
         eventDate: string;
         timeZone: string;
+        irPage: string;
     }
 
     const dateArray: EventDate[] = [
@@ -22,32 +22,39 @@ export default function EVENTS_CALENDAR() {
             eventName: "1st Quarter Earnings Results",
             eventDate: "July 26, 2022",
             timeZone: "Japan, JST, UTC +9 Hours",
+            irPage: "https://www.capcom.co.jp/ir/english/",
         },
         {
             id: 2,
             companyName: "Nintendo",
-            eventName: "1st Quarter Earnings Results",
-            eventDate: "August 3, 2022",
+            eventName: "2nd Quarter Earnings Results",
+            eventDate: "November 8, 2022",
             timeZone: "Japan, JST, UTC +9 Hours",
+            irPage: "https://www.nintendo.co.jp/ir/en/",
         },
         {
             id: 3,
-            eventName: "BitSummit X-Roads - Day 1",
-            eventDate: "August 6, 2022",
+            companyName: "Sony",
+            eventName: "2nd Quarter Earnings Results",
+            eventDate: "November 1, 2022",
             timeZone: "Japan, JST, UTC +9 Hours",
+            irPage: "https://www.sony.com/en/SonyInfo/IR/",
         },
-        {
-            id: 4,
-            eventName: "BitSummit X-Roads - Day 2",
-            eventDate: "August 7, 2022",
-            timeZone: "Japan, JST, UTC +9 Hours",
-        },
+        // {
+        //     id: 4,
+        //     companyName: "Microsoft",
+        //     eventName: "1st Quarter Earnings Results",
+        //     eventDate: "",
+        //     timeZone: "US, PST, UTC -8 Hours",
+        //     irPage: "https://www.microsoft.com/en-us/Investor",
+        // },
         {
             id: 5,
-            companyName: "Nintendo",
-            eventName: "Splatoon 3 Direct",
-            eventDate: "August 10, 2022",
-            timeZone: "Japan, JST, UTC +9 Hours",
+            companyName: "Ubisoft",
+            eventName: "2nd Quarter Earnings Results",
+            eventDate: "October 27, 2022",
+            timeZone: "France, CEST, UTC +2 Hours",
+            irPage: "https://www.ubisoft.com/en-us/company/about-us/investors",
         },
         {
             id: 6,
@@ -55,6 +62,7 @@ export default function EVENTS_CALENDAR() {
             eventName: "1st Quarter Earnings Results",
             eventDate: "August 10, 2022",
             timeZone: "Japan, JST, UTC +9 Hours",
+            irPage: "https://dena.com/intl/ir/",
         },
     ]
 
