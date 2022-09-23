@@ -62,15 +62,16 @@ const Home = () => {
                     </List>
                     <Text>Sega -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Series IP data from FY3/2017 to FY3/2021.</List.Item>
+                        <List.Item>Latest update: Series IP data from FY3/2013 to FY3/2021.</List.Item>
+                        <List.Item>Future update planned: Notes section.</List.Item>
                     </List>
                     <Text>Bandai Namco -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Page update: Planning stage.</List.Item>
+                        <List.Item>Latest update: Series IP data from FY3/2019 to FY3/2021.</List.Item>
                     </List>
                     <Text>Events -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Future update planned: Waiting to update with next round of earnings release dates.</List.Item>
+                        <List.Item>Page update: Updated calendar for some companies from October to November 2022.</List.Item>
                     </List>
                 </List>
             </Stack>
