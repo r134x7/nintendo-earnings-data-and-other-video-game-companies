@@ -172,10 +172,10 @@ const printLine = (lineLength: number) => "+" + "-".repeat(lineLength) + "+";
 
 const printDoubleLine = (lineLength: number) => "+" + "=".repeat(lineLength) + "+"; 
 
-const printSeries = (header: Header, seriesIP: Series) => {
+// const printSeries = (header: Header, seriesIP: Series) => {
 
-    return printSeriesOutput(seriesIP)(header)(42)(11)(32);
-}
+//     return printSeriesOutput(seriesIP)(header)(42)(11)(32);
+// }
 
 test("quick test...", () => {
 
@@ -204,11 +204,10 @@ const sortedFYCollection: Series[] = collection.filter((elem, index, array) => {
     })
 
     let printedSeries = sortedFYCollection.map((elem) => {
-        return printSeries(header, elem)
+        return printSeriesOutput(elem)(header)(42)(11)(32);
     }).reduce((prev, next) => prev + "\n" + next)
 
 
     console.log(printedSeries);
     
-})
-//| September 1991 to March 2021 | Rank 1    |
+});
