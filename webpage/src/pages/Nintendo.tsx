@@ -78,9 +78,7 @@ export default function Nintendo() {
             <Stack mb="md" align="center">
             <Paper shadow="sm" radius="lg" p="md" withBorder>
                 <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
-                <Text 
-                // style={{textAlign: "left"}} 
-                sx={textColour} size="lg">{text}</Text>
+                <Text sx={textColour} size="lg">{text}</Text>
                 <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
             </Paper>
             </Stack>
