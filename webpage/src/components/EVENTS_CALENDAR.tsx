@@ -19,8 +19,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 1,
             companyName: "Capcom",
-            eventName: "1st Quarter Earnings Results",
-            eventDate: "July 26, 2022",
+            eventName: "2nd Quarter Earnings Results",
+            eventDate: "October 26, 2022",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.capcom.co.jp/ir/english/",
         },
