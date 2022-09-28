@@ -12,7 +12,7 @@ const Home = () => {
     const splitTwo = two.split("");
 
     const [text, setText] = useState("");
-    const [border, setBorder] = useState("");
+    // const [border, setBorder] = useState("");
 
     const [textColour, setTextColour] = useState({});
     const [borderColour, setBorderColour] = useState({});
@@ -24,13 +24,15 @@ const Home = () => {
     useEffect(() => {
         
         if (seconds >= splitOne.length) { // LINE ONE
-            setTextColour({ color: 'crimson', fontSize: 18, lineHeight: 1.4 });
+            setTextColour({ color: 'crimson', fontSize: 18, lineHeight: 1.4, textAlign: "center" });
             setBorderColour({ color: 'crimson', fontSize: 21, lineHeight: 1.4 });
             interval.stop();
         } else if (seconds <= splitOne.length + 1) {
             interval.start();
-            setBorder(border + splitTwo[seconds])
-            setText(text + splitOne[seconds])
+            // setBorder(border + splitTwo[seconds])
+            setText(text + splitOne[seconds] 
+                // + " ".repeat(86 - seconds)
+                )
         }
         
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -41,9 +43,11 @@ const Home = () => {
         <div>
             <Stack mb="md" align="center">
             <Paper shadow="sm" radius="lg" p="md" withBorder>
-                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
-                <Text style={{textAlign: "center"}} sx={textColour} size="lg">{text}</Text>
-                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
+                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{two}</Text> 
+                <Text 
+                // style={{textAlign: "center" }} 
+                sx={textColour} size="lg">{text}</Text>
+                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{two}</Text> 
             </Paper>
             </Stack>
             <Paper shadow="sm" radius="xl" p="md" withBorder>

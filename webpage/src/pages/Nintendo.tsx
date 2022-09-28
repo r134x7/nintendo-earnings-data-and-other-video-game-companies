@@ -24,19 +24,23 @@ export default function Nintendo() {
 
     const dispatch = useDispatch();
 
-    const message = `Nintendo (They publish playing cards), this is where you can find archived Nintendo earnings data.`;
+    const message = `| Nintendo (They publish playing cards), this is where you can find archived Nintendo earnings data. |`;
+
+    const border = "+" + "-".repeat(93) + "+";
 
     const splitMessage = message.split("");
 
     const [text, setText] = useState("");
-    const [textColour, setTextColour] = useState({})
+    const [textColour, setTextColour] = useState({});
+    const [borderColour, setBorderColour] = useState({});
 
     const [seconds, setSeconds] = useState(0);
     const interval = useInterval(() => setSeconds((s) => s + 1), 80);
 
     useEffect(() => {
         if (seconds === splitMessage.length) {
-            setTextColour({ color: 'crimson', fontSize: 18, lineHeight: 1.4 });
+            setTextColour({ color: 'crimson', fontSize: 18, lineHeight: 1.4, textAlign: "center" });
+            setBorderColour({ color: 'crimson', fontSize: 21, lineHeight: 1.4 });
             interval.stop();
         } else {
             interval.start();
@@ -73,7 +77,11 @@ export default function Nintendo() {
         <div>
             <Stack mb="md" align="center">
             <Paper shadow="sm" radius="lg" p="md" withBorder>
-                <Text style={{textAlign: "center"}} sx={textColour} size="lg">{text}</Text>
+                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
+                <Text 
+                // style={{textAlign: "left"}} 
+                sx={textColour} size="lg">{text}</Text>
+                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
             </Paper>
             </Stack>
             <Paper mb="md" shadow="sm" radius="xl" p="xs" withBorder>
