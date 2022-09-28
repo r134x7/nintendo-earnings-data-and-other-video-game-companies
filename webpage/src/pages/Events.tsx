@@ -6,12 +6,15 @@ import EVENTS_CALENDAR from "../components/EVENTS_CALENDAR";
 
 const Home = () => {
 
-    const one = "Welcome, this is where you can use the calendar to find any listed upcoming events.";
+    const one = "| Welcome, this is where you can use the calendar to find some upcoming events. |";
     const splitOne = one.split("");
+
+    const border = "+" + "-".repeat(76) + "+";
 
     const [text, setText] = useState("");
 
-    const [textColour, setTextColour] = useState({})
+    const [textColour, setTextColour] = useState({});
+    const [borderColour, setBorderColour] = useState({});
 
     const [seconds, setSeconds] = useState(0);
     
@@ -20,7 +23,8 @@ const Home = () => {
     useEffect(() => {
         
         if (seconds >= splitOne.length) { // LINE ONE
-            setTextColour({ color: 'crimson', fontSize: 18, lineHeight: 1.4 });
+            setTextColour({ color: 'crimson', fontSize: 18, lineHeight: 1.4, textAlign: "center" });
+            setBorderColour({ color: 'crimson', fontSize: 21, lineHeight: 1.4 });
             interval.stop();
         } else if (seconds <= splitOne.length + 1) {
             interval.start();
@@ -35,7 +39,9 @@ const Home = () => {
         <div>
             <Stack mb="md" align="center">
             <Paper shadow="sm" radius="lg" p="md" withBorder>
-                <Text style={{textAlign: "center"}} sx={textColour} size="lg">{text}</Text>
+                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
+                <Text sx={textColour} size="lg">{text}</Text>
+                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
             </Paper>
             </Stack>
             <Paper shadow="sm" radius="xl" p="md" withBorder>
