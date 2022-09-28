@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text, Group, Space, SegmentedControl, Autocomplete, ColorPicker, Anchor, Stack, Paper} from "@mantine/core"
+import { Text, Group, Space, SegmentedControl, Autocomplete, ColorPicker, Anchor, Stack, Paper, Code} from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
@@ -24,23 +24,23 @@ export default function Nintendo() {
 
     const dispatch = useDispatch();
 
-    const message = `| Nintendo (They publish playing cards), this is where you can find archived Nintendo earnings data. |`;
+    const message = `Nintendo (They publish playing cards), this is where you can find archived Nintendo earnings data.`;
 
-    const border = "+" + "-".repeat(93) + "+";
+    // const border = "+" + "-".repeat(93) + "+";
 
     const splitMessage = message.split("");
 
     const [text, setText] = useState("");
-    const [textColour, setTextColour] = useState({});
-    const [borderColour, setBorderColour] = useState({});
+    // const [textColour, setTextColour] = useState({});
+    // const [borderColour, setBorderColour] = useState({});
 
     const [seconds, setSeconds] = useState(0);
     const interval = useInterval(() => setSeconds((s) => s + 1), 80);
 
     useEffect(() => {
         if (seconds === splitMessage.length) {
-            setTextColour({ color: 'crimson', fontSize: 18, lineHeight: 1.4, textAlign: "center" });
-            setBorderColour({ color: 'crimson', fontSize: 21, lineHeight: 1.4 });
+            // setTextColour({ color: 'crimson', fontSize: 18, lineHeight: 1.4, textAlign: "center" });
+            // setBorderColour({ color: 'crimson', fontSize: 21, lineHeight: 1.4 });
             interval.stop();
         } else {
             interval.start();
@@ -76,11 +76,12 @@ export default function Nintendo() {
 
         <div>
             <Stack mb="md" align="center">
-            <Paper shadow="sm" radius="lg" p="md" withBorder>
-                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
+            {/* <Paper shadow="sm" radius="lg" p="md" withBorder> */}
+                {/* <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
                 <Text sx={textColour} size="lg">{text}</Text>
-                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
-            </Paper>
+                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text>  */}
+            {/* </Paper> */}
+            <Code style={{backgroundColor: `${state.colour}`}} >{text}</Code>
             </Stack>
             <Paper mb="md" shadow="sm" radius="xl" p="xs" withBorder>
             <Stack align="center">
