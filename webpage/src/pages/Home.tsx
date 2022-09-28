@@ -5,12 +5,17 @@ import "../App.css" // have to import the css to get it to work
 
 const Home = () => {
 
-    const one = "Welcome to ggx2ac + archives: Nintendo earnings data and other video game companies";
+    const one = "| Welcome to ggx2ac + archives: Nintendo earnings data and other video game companies |";
     const splitOne = one.split("");
 
-    const [text, setText] = useState("");
+    const two = "+" + "-".repeat(85) + "+";
+    const splitTwo = two.split("");
 
-    const [textColour, setTextColour] = useState({})
+    const [text, setText] = useState("");
+    const [border, setBorder] = useState("");
+
+    const [textColour, setTextColour] = useState({});
+    const [borderColour, setBorderColour] = useState({});
 
     const [seconds, setSeconds] = useState(0);
     
@@ -20,9 +25,11 @@ const Home = () => {
         
         if (seconds >= splitOne.length) { // LINE ONE
             setTextColour({ color: 'crimson', fontSize: 18, lineHeight: 1.4 });
+            setBorderColour({ color: 'crimson', fontSize: 21, lineHeight: 1.4 });
             interval.stop();
         } else if (seconds <= splitOne.length + 1) {
             interval.start();
+            setBorder(border + splitTwo[seconds])
             setText(text + splitOne[seconds])
         }
         
@@ -34,7 +41,9 @@ const Home = () => {
         <div>
             <Stack mb="md" align="center">
             <Paper shadow="sm" radius="lg" p="md" withBorder>
+                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
                 <Text style={{textAlign: "center"}} sx={textColour} size="lg">{text}</Text>
+                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
             </Paper>
             </Stack>
             <Paper shadow="sm" radius="xl" p="md" withBorder>
