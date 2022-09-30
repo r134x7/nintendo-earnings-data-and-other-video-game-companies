@@ -7,10 +7,11 @@ import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import BANDAI_NAMCO_FY3_2019 from "../components/bandaiNamco/BANDAI_NAMCO_FY3_2019";
 import BANDAI_NAMCO_FY3_2020 from "../components/bandaiNamco/BANDAI_NAMCO_FY3_2020";
 import BANDAI_NAMCO_FY3_2021 from "../components/bandaiNamco/BANDAI_NAMCO_FY3_2021";
+import BANDAI_NAMCO_FY3_2022 from "../components/bandaiNamco/BANDAI_NAMCO_FY3_2022";
 
-const yearsList = Array.from({length: 3}, (elem, index) => 
+const yearsList = Array.from({length: 4}, (elem, index) => 
                     {
-                            return "FY3/" + (2021 - index)
+                            return "FY3/" + (2022 - index)
                     }) 
 
 export default function BandaiNamco() {
@@ -92,7 +93,7 @@ export default function BandaiNamco() {
                     mb="sm"
                     mr="md"
                     placeholder="Select"
-                    label="Select Fiscal Year from 2019 to 2021."
+                    label="Select Fiscal Year from 2019 to 2022."
                     description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
                     radius="xl"
                     size="md"
@@ -142,7 +143,9 @@ export default function BandaiNamco() {
 
             </Group>
 
-            {   (year === "FY3/2021" && value === "Data by Fiscal Year")
+            {    (year === "FY3/2022" && value === "Data by Fiscal Year")
+                ? <BANDAI_NAMCO_FY3_2022 /> 
+                : (year === "FY3/2021" && value === "Data by Fiscal Year")
                 ? <BANDAI_NAMCO_FY3_2021 />
                 : (year === "FY3/2020" && value === "Data by Fiscal Year")
                 ? <BANDAI_NAMCO_FY3_2020 />
