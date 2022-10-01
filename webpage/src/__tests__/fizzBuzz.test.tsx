@@ -1,22 +1,24 @@
-export const fizzBuzz = (index: number) => {
-    let output: string = "";
+export {}
+// export const fizzBuzz = (list: [string, number][]) => {
+//     return (integer: number): string => {
 
-    function helper(tuple: [string, number]) {
-        let [str, num] = tuple;
+//     let output: string = "";
+
+//     function helper(tuple: [string, number]) {
+//         let [str, num] = tuple;
         
-        if (index % num === 0) {
-            return output += str;
-        } else { 
-            return 
-        };
-    };
+//         if (integer % num === 0) {
+//             return output += str;
+//         } else { 
+//             return 
+//         };
+//     };
 
-    return (list: [string, number][]) => {
-        list.map(elem => helper(elem));
-
-        return (!output) ? index : output;
-    };
-};
+//         list.map(elem => helper(elem));
+//         // toString() avoids implicit type conversion: string + number
+//         return (!output) ? integer.toString() : output;
+//     };
+// };
 
 test("fizz...", () => {
     let tupleList: [string, number][] = [
@@ -24,10 +26,36 @@ test("fizz...", () => {
         ["Buzz", 5],
         ["Bazz", 7],
     ];
+    const fizzBuzz = (list: [string, number][]) => {
+        return (integer: number): string => {
+        if (integer === 0) { return "something??"}
+    
+        let output: string = "";
+    
+        function helper(tuple: [string, number]) {
+            let [str, num] = tuple;
+            
+            if (integer % num === 0) {
+                return output += str;
+            } else { 
+                return 
+            };
+        };
+    
+            list.map(elem => helper(elem));
+            // toString() avoids implicit type conversion: string + number
+            return (!output) ? integer.toString() + inputValue(integer-1) : output + inputValue(integer-1);
+        };
+    };
+    // function currying
+    const inputValue = fizzBuzz(tupleList);
 
-    let x = Array.from({length: 100},(v,index) => fizzBuzz(index+1)(tupleList))
-                 .reduce((acc, next) => acc + "\n" + next);
+    const result = inputValue(10);
+    // Array.length 100, 
+    // let result = Array.from({length: 100},(v,i) => 
+    //               inputValue(i+1))
+    //              .reduce((acc, next) => acc + "\n" + next);
 
-    console.log(x);
+    console.log(result);
     
 })
