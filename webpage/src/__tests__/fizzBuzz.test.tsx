@@ -28,10 +28,11 @@ test("fizz...", () => {
     ];
 
     const fizzBuzz = (list: [string, number][]) => {
-        let foo: string = "";
+        let total: string = "";
+        let minValue: number = 1;
         return (integer: number): string => {
-        if (integer === 0) { 
-            return foo
+        if (integer < minValue) { 
+            return total
         } // end recursion
     
         let output: string = "";
@@ -39,19 +40,19 @@ test("fizz...", () => {
         function helper(tuple: [string, number]) {
             let [str, num] = tuple;
             
-            if (integer % num === 0) {
+            if (minValue % num === 0) {
                 return output += str;
             } else { 
                 return 
             };
         };
-    
+            
             list.map(elem => helper(elem));
+        
+            (!output) ? total += minValue.toString() + "\n" : total += output + "\n";
 
-            (!output) ? foo += integer.toString() + "\n" : foo += output + "\n";
-
-            // return (!output) ? `${integer.toString()}\n` + maxValue(integer-1) : `${output}\n` + maxValue(integer-1); 
-            return maxValue(integer-1)
+            minValue++
+            return maxValue(integer)
         };
     };
     // function currying
@@ -60,6 +61,7 @@ test("fizz...", () => {
     const result = maxValue(15);
     console.log(result);
     
+            // return (!output) ? `${integer.toString()}\n` + maxValue(integer-1) : `${output}\n` + maxValue(integer-1); 
     // Array.length 100, 
     // let result = Array.from({length: 100},(v,i) => 
     //               inputValue(i+1))
