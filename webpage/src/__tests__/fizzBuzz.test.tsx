@@ -28,7 +28,7 @@ test("fizz...", () => {
     ];
     const fizzBuzz = (list: [string, number][]) => {
         return (integer: number): string => {
-        if (integer === 0) { return "something??"}
+        if (integer === 0) { return "" } 
     
         let output: string = "";
     
@@ -44,18 +44,18 @@ test("fizz...", () => {
     
             list.map(elem => helper(elem));
             // toString() avoids implicit type conversion: string + number
-            return (!output) ? integer.toString() + inputValue(integer-1) : output + inputValue(integer-1);
+            return (!output) ? `${integer.toString()}\n` + maxValue(integer-1) : `${output}\n` + maxValue(integer-1);
         };
     };
     // function currying
-    const inputValue = fizzBuzz(tupleList);
+    const maxValue= fizzBuzz(tupleList);
 
-    const result = inputValue(10);
+    const result = maxValue(15);
+    console.log(result);
+    
     // Array.length 100, 
     // let result = Array.from({length: 100},(v,i) => 
     //               inputValue(i+1))
     //              .reduce((acc, next) => acc + "\n" + next);
 
-    console.log(result);
-    
 })
