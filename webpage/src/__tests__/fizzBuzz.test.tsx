@@ -28,8 +28,11 @@ test("fizz...", () => {
     ];
 
     const fizzBuzz = (list: [string, number][]) => {
+        let foo: string = "";
         return (integer: number): string => {
-        if (integer === 0) { return "" } // end recursion
+        if (integer === 0) { 
+            return foo
+        } // end recursion
     
         let output: string = "";
     
@@ -45,7 +48,10 @@ test("fizz...", () => {
     
             list.map(elem => helper(elem));
 
-            return (!output) ? `${integer.toString()}\n` + maxValue(integer-1) : `${output}\n` + maxValue(integer-1);
+            (!output) ? foo += integer.toString() + "\n" : foo += output + "\n";
+
+            // return (!output) ? `${integer.toString()}\n` + maxValue(integer-1) : `${output}\n` + maxValue(integer-1); 
+            return maxValue(integer-1)
         };
     };
     // function currying
