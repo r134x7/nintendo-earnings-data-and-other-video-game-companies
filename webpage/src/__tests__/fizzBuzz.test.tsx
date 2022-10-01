@@ -26,9 +26,10 @@ test("fizz...", () => {
         ["Buzz", 5],
         ["Bazz", 7],
     ];
+
     const fizzBuzz = (list: [string, number][]) => {
         return (integer: number): string => {
-        if (integer === 0) { return "" } 
+        if (integer === 0) { return "" } // end recursion
     
         let output: string = "";
     
@@ -43,7 +44,7 @@ test("fizz...", () => {
         };
     
             list.map(elem => helper(elem));
-            // toString() avoids implicit type conversion: string + number
+
             return (!output) ? `${integer.toString()}\n` + maxValue(integer-1) : `${output}\n` + maxValue(integer-1);
         };
     };
