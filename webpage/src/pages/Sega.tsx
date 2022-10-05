@@ -4,6 +4,7 @@ import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
+import SEGA_FY3_2022 from "../components/sega/SEGA_FY3_2022";
 import SEGA_FY3_2021 from "../components/sega/SEGA_FY3_2021";
 import SEGA_FY3_2020 from "../components/sega/SEGA_FY3_2020";
 import SEGA_FY3_2019 from "../components/sega/SEGA_FY3_2019";
@@ -14,9 +15,9 @@ import SEGA_FY3_2015 from "../components/sega/SEGA_FY3_2015";
 import SEGA_FY3_2014 from "../components/sega/SEGA_FY3_2014";
 import SEGA_FY3_2013 from "../components/sega/SEGA_FY3_2013";
 
-const yearsList = Array.from({length: 8}, (elem, index) => 
+const yearsList = Array.from({length: 9}, (elem, index) => 
                     {
-                            return "FY3/" + (2021 - index)
+                            return "FY3/" + (2022 - index)
                     }) 
 
 export default function Sega() {
@@ -98,7 +99,7 @@ export default function Sega() {
                     mb="sm"
                     mr="md"
                     placeholder="Select"
-                    label="Select Fiscal Year from 2013 to 2021."
+                    label="Select Fiscal Year from 2013 to 2022."
                     description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
                     radius="xl"
                     size="md"
@@ -148,7 +149,9 @@ export default function Sega() {
 
             </Group>
 
-            {   (year === "FY3/2021" && value === "Data by Fiscal Year")
+            {   (year === "FY3/2022" && value === "Data by Fiscal Year")
+                ? <SEGA_FY3_2022 />
+                : (year === "FY3/2021" && value === "Data by Fiscal Year")
                 ? <SEGA_FY3_2021 />
                 : (year === "FY3/2020" && value === "Data by Fiscal Year")
                 ? <SEGA_FY3_2020 />

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text, Anchor, Stack, Paper, List, Code } from '@mantine/core';
+import { Text, Anchor, Stack, Paper, List} from '@mantine/core';
 import { useInterval } from "@mantine/hooks";
 import "../App.css" // have to import the css to get it to work
 
@@ -15,7 +15,7 @@ const Home = () => {
     // const [border, setBorder] = useState("");
 
     const [textColour, setTextColour] = useState({});
-    const [borderColour, setBorderColour] = useState({});
+    // const [borderColour, setBorderColour] = useState({});
 
     const [seconds, setSeconds] = useState(0);
     
@@ -72,7 +72,7 @@ const Home = () => {
                     </List>
                     <Text>Sega -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Series IP data from FY3/2013 to FY3/2021.</List.Item>
+                        <List.Item>Latest update: Series IP data from FY3/2013 to FY3/2022.</List.Item>
                         <List.Item>Future update planned: Notes section.</List.Item>
                     </List>
                     <Text>Bandai Namco -</Text>
@@ -81,7 +81,7 @@ const Home = () => {
                     </List>
                     <Text>Events -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Page update: Updated calendar for some companies from October to November 2022.</List.Item>
+                        <List.Item>Page update: Updated calendar for most companies from October to November 2022.</List.Item>
                     </List>
                 </List>
             </Stack>
