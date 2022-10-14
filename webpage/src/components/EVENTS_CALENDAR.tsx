@@ -96,14 +96,14 @@ export default function EVENTS_CALENDAR() {
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.gungho.co.jp/en/ir/",
         },
-        // {
-        //     id: 11,
-        //     companyName: "Square Enix",
-        //     eventName: "2nd Quarter Earnings Results",
-        //     eventDate: "November ??, 2022",
-        //     timeZone: "Japan, JST, UTC +9 Hours",
-        //     irPage: "https://www.hd.square-enix.com/eng/ir/",
-        // },
+        {
+            id: 11,
+            companyName: "Square Enix",
+            eventName: "1st Quarter Earnings Results",
+            eventDate: "August 4, 2022",
+            timeZone: "Japan, JST, UTC +9 Hours",
+            irPage: "https://www.hd.square-enix.com/eng/ir/",
+        },
         {
             id: 12,
             companyName: "Sega Sammy",
@@ -176,14 +176,14 @@ export default function EVENTS_CALENDAR() {
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.falcom.co.jp/ir",
         },
-        // {
-        //     id: 21,
-        //     companyName: "NIS",
-        //     eventName: "2nd Quarter Earnings Results",
-        //     eventDate: "November ??, 2022",
-        //     timeZone: "Japan, JST, UTC +9 Hours",
-        //     irPage: "https://www.nippon1.co.jp/ir/ir.html",
-        // },
+        {
+            id: 21,
+            companyName: "NIS",
+            eventName: "1st Quarter Earnings Results",
+            eventDate: "August 10, 2022",
+            timeZone: "Japan, JST, UTC +9 Hours",
+            irPage: "https://www.nippon1.co.jp/ir/ir.html",
+        },
         {
             id: 22,
             companyName: "Embracer Group",
@@ -251,6 +251,20 @@ export default function EVENTS_CALENDAR() {
                             && date.toString() !== new Date(dateArray[6].eventDate).toString()
                             && date.toString() !== new Date(dateArray[7].eventDate).toString()
                             && date.toString() !== new Date(dateArray[8].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[9].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[10].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[11].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[12].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[13].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[14].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[15].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[16].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[17].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[18].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[19].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[20].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[21].eventDate).toString()
+                            && date.toString() !== new Date(dateArray[22].eventDate).toString()
                         }
                         renderDay={(date) => {
                             const day = date.getDate();
@@ -267,6 +281,20 @@ export default function EVENTS_CALENDAR() {
                                 && fullDate !== new Date(dateArray[6].eventDate).toString() 
                                 && fullDate !== new Date(dateArray[7].eventDate).toString() 
                                 && fullDate !== new Date(dateArray[8].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[9].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[10].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[11].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[12].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[13].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[14].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[15].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[16].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[17].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[18].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[19].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[20].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[21].eventDate).toString() 
+                                && fullDate !== new Date(dateArray[22].eventDate).toString() 
                                 }
                               >
                                 <div>{day}</div>

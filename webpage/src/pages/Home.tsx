@@ -81,7 +81,7 @@ const Home = () => {
                     </List>
                     <Text>Events -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Page update: Updated calendar for most companies from October to November 2022.</List.Item>
+                        <List.Item>Page update: Updated calendar for 20 of 22 companies from October to November 2022.</List.Item>
                     </List>
                 </List>
             </Stack>
