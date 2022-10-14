@@ -264,7 +264,6 @@ export default function EVENTS_CALENDAR() {
                             && date.toString() !== new Date(dateArray[19].eventDate).toString()
                             && date.toString() !== new Date(dateArray[20].eventDate).toString()
                             && date.toString() !== new Date(dateArray[21].eventDate).toString()
-                            && date.toString() !== new Date(dateArray[22].eventDate).toString()
                         }
                         renderDay={(date) => {
                             const day = date.getDate();
@@ -294,7 +293,6 @@ export default function EVENTS_CALENDAR() {
                                 && fullDate !== new Date(dateArray[19].eventDate).toString() 
                                 && fullDate !== new Date(dateArray[20].eventDate).toString() 
                                 && fullDate !== new Date(dateArray[21].eventDate).toString() 
-                                && fullDate !== new Date(dateArray[22].eventDate).toString() 
                                 }
                               >
                                 <div>{day}</div>
