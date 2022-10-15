@@ -1,11 +1,12 @@
 import { Field } from "../../classes/Field";
 import { Unit } from "../../classes/Unit";
-import { useState, useEffect } from "react";
-import { Code } from "@mantine/core";
+import { useState, useEffect, useMemo } from "react";
+import { Code, Button } from "@mantine/core";
 
 export default function GAME_ONE() {
 
     const field = new Field(2,2);
+
     const playerOne = new Unit(field, 0, 0, 100, 10, "X");
     const playerTwo = new Unit(field, field.getX, field.getY, 100, 10, "O");
 
@@ -30,7 +31,7 @@ export default function GAME_ONE() {
     const playerOnePosition = ifPlayerPositionXY(playerOne);
     const playerTwoPosition = ifPlayerPositionXY(playerTwo);
 
-const visualField = 
+const visualField = () =>
 `-------------------------------
 |${playerOnePosition(0,0)}|${playerOnePosition(1,0)}|${playerOnePosition(2,0)}|
 |${playerTwoPosition(0,0)}|${playerTwoPosition(1,0)}|${playerTwoPosition(2,0)}|
@@ -42,7 +43,7 @@ const visualField =
 |${playerTwoPosition(0,2)}|${playerTwoPosition(1,2)}|${playerTwoPosition(2,2)}|
 -------------------------------`;
 
-const displayHP = 
+const displayHP = () => 
 `------------------------------
 | Player One: ${playerOne.getHitPoints}HP${" ".repeat(29 - (16 + playerOne.getHitPoints.toString().length))}|
 | Player Two: ${playerTwo.getHitPoints}HP${" ".repeat(29 - (16 + playerTwo.getHitPoints.toString().length))}|
@@ -53,10 +54,35 @@ const displayHP =
 
     const [hitPoints, setHitPoints] = useState(displayHP);
 
+
+    const right = () => {
+            playerOne.incrementPositionXPlus()
+            console.log(playerOne.getCurrentPositionX);
+            setPlayerField(visualField);
+    }
+
+    const left = () => {
+            playerOne.incrementPositionXMinus()
+            console.log(playerOne.getCurrentPositionX);
+            setPlayerField(visualField);
+    }
+
+    const up = () => {
+            playerOne.incrementPositionYPlus()
+            console.log(playerOne.getCurrentPositionX);
+            setPlayerField(visualField);
+    }
+
+    const down = () => {
+            playerOne.incrementPositionYMinus()
+            console.log(playerOne.getCurrentPositionX);
+            setPlayerField(visualField);
+    }
     // useEffect(() => {
 
-    // }, [value]) 
+    // }, [visualField, displayHP]) 
     // create buttons to move player
+    // check the useCallback hook
 
     return (
         <div>
@@ -65,6 +91,18 @@ const displayHP =
                 <br />
                 {hitPoints}
             </Code>
+            <Button variant="outline" radius={"lg"} color="red" onClick={left}>
+               Left 
+            </Button>
+            <Button variant="outline" radius={"lg"} color="red" onClick={up}>
+                Up
+            </Button>
+            <Button variant="outline" radius={"lg"} color="red" onClick={right}>
+                Right
+            </Button>
+            <Button variant="outline" radius={"lg"} color="red" onClick={down}>
+                Down
+            </Button>
         </div>
     )
 }
