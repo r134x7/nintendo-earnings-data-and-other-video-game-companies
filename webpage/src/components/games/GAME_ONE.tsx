@@ -12,9 +12,9 @@ export default function GAME_ONE() {
     // need to think how to set up a field visually...
     // need to think how to put the players on the field...
 
-    const ifPlayerOnePositionX = Array.from({length:field.getX+1}, (v,i) => i);
-    const ifPlayerOnePositionY = Array.from({length:field.getY+1}, (v,i) => i);
-    console.log([ifPlayerOnePositionX[0], ifPlayerOnePositionY[2]]);
+    // const ifPlayerOnePositionX = Array.from({length:field.getX+1}, (v,i) => i);
+    // const ifPlayerOnePositionY = Array.from({length:field.getY+1}, (v,i) => i);
+    // console.log([ifPlayerOnePositionX[0], ifPlayerOnePositionY[2]]);
 
     const ifPlayerPositionXY = 
         // (xGrid: number[]) => 
@@ -42,11 +42,29 @@ const visualField =
 |${playerTwoPosition(0,2)}|${playerTwoPosition(1,2)}|${playerTwoPosition(2,2)}|
 -------------------------------`;
 
+const displayHP = 
+`------------------------------
+| Player One: ${playerOne.getHitPoints}HP${" ".repeat(29 - (16 + playerOne.getHitPoints.toString().length))}|
+| Player Two: ${playerTwo.getHitPoints}HP${" ".repeat(29 - (16 + playerTwo.getHitPoints.toString().length))}|
+------------------------------
+`;
+
     const [playerField, setPlayerField] = useState(visualField);
+
+    const [hitPoints, setHitPoints] = useState(displayHP);
+
+    // useEffect(() => {
+
+    // }, [value]) 
+    // create buttons to move player
 
     return (
         <div>
-            <Code block>{playerField}</Code>
+            <Code block>
+                {playerField}
+                <br />
+                {hitPoints}
+            </Code>
         </div>
     )
 }
