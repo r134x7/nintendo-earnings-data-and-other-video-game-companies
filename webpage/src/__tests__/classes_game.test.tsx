@@ -120,6 +120,35 @@ class X {
                 ? console.log("Not done yet...")
                 : this.incrementPositionYMinus();
     }
+
+    moveAttackMinusY(opponent: X) {
+        this.incrementPositionYMinus();
+        this.attackOpponent(opponent);
+
+        return (opponent.hitPoints === 0)
+                ? console.log("Not done yet...")
+                : this.incrementPositionYPlus();
+    }
+
+    moveAttackPlusX(opponent: X) {
+        this.incrementPositionXPlus();
+        this.attackOpponent(opponent);
+
+        return (opponent.hitPoints === 0)
+                ? console.log("Not done yet...")
+                : this.incrementPositionXMinus();
+    }
+
+    moveAttackMinusX(opponent: X) {
+        this.incrementPositionXMinus();
+        this.attackOpponent(opponent);
+
+        return (opponent.hitPoints === 0)
+                ? console.log("Not done yet...")
+                : this.incrementPositionXPlus();
+    }
+
+
 }
 
 test("make field and get...", () => {
