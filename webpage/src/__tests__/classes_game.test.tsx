@@ -1,22 +1,25 @@
 export {}
 
 class Field {
-    private xPosition: number[] = [0, 1, 2];
-    private yPosition: number[] = [0, 1, 2];
+    // private xPosition: number[] = [0, 1, 2];
+    // private yPosition: number[] = [0, 1, 2];
     // private currentPositionX: number;
     // private currentPositionY: number;
     
-    // constructor(currentPositionX: number, currentPositionY: number) {
-    //     this.currentPositionX = currentPositionX;
-    //     this.currentPositionY = currentPositionY;
-    // }
+    private xLength: number;
+    private yLength: number;
+
+    constructor(xLength: number, yLength: number) {
+        this.xLength = xLength;
+        this.yLength = yLength;
+    }
 
     get getX() {
-        return this.xPosition;
+        return this.xLength;
     }
 
     get getY() {
-        return this.yPosition;
+        return this.yLength;
     }
 }
 
@@ -65,8 +68,8 @@ class X {
 
 test("make field and get...", () => {
 
-        // const field = new Field(0,2);
-        const field = new Field();
+        const field = new Field(0,2);
+        // const field = new Field();
         console.log(field.getX);
         console.log(field.getY);
         // console.log(field.getCurrentPositionX);
@@ -76,8 +79,8 @@ test("make field and get...", () => {
 
 test("make X, set and get", () => {
 
-    const field = new Field();
-    const person = new X(field, 10, 10);
+    const field = new Field(2,2);
+    const person = new X(field, field.getX, field.getY);
     console.log(person.getCurrentPositionX);
     console.log(person.getCurrentPositionY);
     console.log(person.setCurrentPositionX = 20);
@@ -87,4 +90,9 @@ test("make X, set and get", () => {
     console.log(person.getFieldBoundaries.getX);
     console.log(person.getFieldBoundaries.getY);
     console.log(person.getFieldBoundaries);
+})
+
+test("make X move only within its field", () => {
+
+    const field = new Field()
 })
