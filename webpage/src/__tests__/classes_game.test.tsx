@@ -66,8 +66,26 @@ class X {
     }
 
     incrementPositionYPlus() {
+        return (this.getCurrentPositionY < this.fieldBoundaries.getY) 
+                ? this.currentPositionY++
+                : this.currentPositionY
+    }
+
+    incrementPositionYMinus() {
+        return (this.getCurrentPositionY > 0)
+                ? this.currentPositionY--
+                : this.currentPositionY
+    }
+
+    incrementPositionXPlus() {
         return (this.getCurrentPositionX < this.fieldBoundaries.getX) 
                 ? this.currentPositionX++
+                : this.currentPositionX
+    }
+
+    incrementPositionXMinus() {
+        return (this.getCurrentPositionX > 0)
+                ? this.currentPositionX--
                 : this.currentPositionX
     }
 }
@@ -106,9 +124,13 @@ test("make X move only within its field", () => {
 
     console.log(person.incrementPositionYPlus())
     console.log(personTwo.incrementPositionYPlus())
-    console.log(personTwo.getCurrentPositionX);
+    console.log(personTwo.getCurrentPositionY);
     console.log(personTwo.incrementPositionYPlus())
-    console.log(personTwo.getCurrentPositionX);
+    console.log(personTwo.getCurrentPositionY);
+    console.log(personTwo.incrementPositionYMinus());
+    console.log(personTwo.getCurrentPositionY);
+    
+    
 
     // need to set boundaries so that person only moves to 0 or 1
 
