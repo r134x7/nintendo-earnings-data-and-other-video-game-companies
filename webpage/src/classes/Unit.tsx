@@ -24,6 +24,10 @@ export class Unit {
         this.avatar = avatar;
     }
 
+    get getAvatar() {
+        return this.avatar
+    }
+
     get getCurrentPositionX() {
         return this.currentPositionX
     }
