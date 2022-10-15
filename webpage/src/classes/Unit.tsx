@@ -6,6 +6,7 @@ export class Unit {
     private currentPositionY: number;
     private hitPoints: number;
     private attackPoints: number;
+    private avatar: string;
 
     constructor(
         fieldBoundaries: Field,
@@ -13,12 +14,14 @@ export class Unit {
         currentPositionY: number,
         hitPoints: number,
         attackPoints: number,
+        avatar: string,
     ) {
         this.fieldBoundaries = fieldBoundaries;
         this.currentPositionX = currentPositionX;
         this.currentPositionY = currentPositionY;
         this.hitPoints = hitPoints;
         this.attackPoints = attackPoints;
+        this.avatar = avatar;
     }
 
     get getCurrentPositionX() {
