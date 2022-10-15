@@ -1,5 +1,8 @@
 import { Field } from "../../classes/Field";
 import { Unit } from "../../classes/Unit";
+import { useState, useEffect } from "react";
+import { Code } from "@mantine/core";
+
 
 export default function GAME_ONE() {
 
@@ -9,9 +12,20 @@ export default function GAME_ONE() {
 
     // need to think how to set up a field visually...
 
+const visualField = `
+------------------------------
+|         |         |        |
+------------------------------
+|         |         |        |
+------------------------------
+|         |         |        |
+------------------------------`;
+
+    const [playerField, setPlayerField] = useState(visualField);
+
     return (
         <div>
-            test...
+            <Code >{playerField}</Code>
         </div>
     )
 }

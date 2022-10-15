@@ -11,7 +11,7 @@ export type Series = {
 
 export type Header = {
     bandaiNamcoHeader: "| Bandai Namco - IP Series Data  |",
-    secondHeader: "| First appearance to recent FY |",
+    secondHeader: "| First appearance to recent FY  |",
     thirdHeader: "| Rank                           |",
     fourthHeader: "| Units                          |",
     fiscalYear: string,
