@@ -40,9 +40,9 @@ class X {
     ) {
         // this.moveX = moveX;
         // this.moveY = moveY;
+        this.fieldBoundaries = fieldBoundaries;
         this.currentPositionX = currentPositionX;
         this.currentPositionY = currentPositionY;
-        this.fieldBoundaries = fieldBoundaries;
     }
 
     get getCurrentPositionX() {
@@ -64,14 +64,20 @@ class X {
     get getFieldBoundaries() {
         return this.fieldBoundaries
     }
+
+    incrementPositionYPlus() {
+        return (this.getCurrentPositionX < this.fieldBoundaries.getX) 
+                ? this.currentPositionX++
+                : this.currentPositionX
+    }
 }
 
 test("make field and get...", () => {
 
         const field = new Field(0,2);
         // const field = new Field();
-        console.log(field.getX);
-        console.log(field.getY);
+        // console.log(field.getX);
+        // console.log(field.getY);
         // console.log(field.getCurrentPositionX);
         // console.log(field.getCurrentPositionY);
         
@@ -81,18 +87,29 @@ test("make X, set and get", () => {
 
     const field = new Field(2,2);
     const person = new X(field, field.getX, field.getY);
-    console.log(person.getCurrentPositionX);
-    console.log(person.getCurrentPositionY);
-    console.log(person.setCurrentPositionX = 20);
-    console.log(person.getCurrentPositionX);
-    console.log(person.setCurrrentPositionY = 0);
-    console.log(person.getCurrentPositionY);
-    console.log(person.getFieldBoundaries.getX);
-    console.log(person.getFieldBoundaries.getY);
-    console.log(person.getFieldBoundaries);
+    // console.log(person.getCurrentPositionX);
+    // console.log(person.getCurrentPositionY);
+    // console.log(person.setCurrentPositionX = 20);
+    // console.log(person.getCurrentPositionX);
+    // console.log(person.setCurrrentPositionY = 0);
+    // console.log(person.getCurrentPositionY);
+    // console.log(person.getFieldBoundaries.getX);
+    // console.log(person.getFieldBoundaries.getY);
+    // console.log(person.getFieldBoundaries);
 })
 
 test("make X move only within its field", () => {
 
-    const field = new Field()
+    const field = new Field(1,1);
+    const person = new X(field, field.getX,field.getY);
+    const personTwo = new X(field, 0, 0);
+
+    console.log(person.incrementPositionYPlus())
+    console.log(personTwo.incrementPositionYPlus())
+    console.log(personTwo.getCurrentPositionX);
+    console.log(personTwo.incrementPositionYPlus())
+    console.log(personTwo.getCurrentPositionX);
+
+    // need to set boundaries so that person only moves to 0 or 1
+
 })
