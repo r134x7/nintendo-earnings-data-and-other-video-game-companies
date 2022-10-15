@@ -111,6 +111,15 @@ class X {
                 : console.log("You're not in range...");
                 
     }
+
+    moveAttackPlusY(opponent: X) {
+        this.incrementPositionYPlus();
+        this.attackOpponent(opponent);
+
+        return (opponent.hitPoints === 0)
+                ? console.log("Not done yet...")
+                : this.incrementPositionYMinus();
+    }
 }
 
 test("make field and get...", () => {
@@ -192,4 +201,22 @@ test("personOne has to get in range of personTwo to fight", () => {
 
     expect(x).toBe(90);
 
+})
+
+test("moving automatically leads to attack and changing position on condition", () => {
+
+    const field = new Field(1,1);
+    const personOne = new X(field, 0, 0, 100, 10);
+    const personTwo = new X(field, field.getX,field.getY, 100, 10);
+
+    personOne.incrementPositionXPlus();
+    personOne.attackOpponent(personTwo);
+    
+    personOne.moveAttackPlusY(personTwo);
+
+    const x = personTwo.getHitPoints;
+    const yPosition = personOne.getCurrentPositionY;
+
+    expect(x).toBe(90);
+    expect(yPosition).toBe(0);
 })
