@@ -3,4 +3,9 @@ import { Unit } from "../../classes/Unit";
 
 export default function GAME_ONE() {
 
+    return (
+        <div>
+            test...
+        </div>
+    )
 }
