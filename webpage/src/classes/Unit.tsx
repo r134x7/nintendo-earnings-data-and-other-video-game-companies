@@ -36,13 +36,13 @@ export class Unit {
         return this.currentPositionY
     }
 
-    set setCurrentPositionX(x: number) {
-        this.currentPositionX = x;
-    }
+    // set setCurrentPositionX(x: number) {
+    //     this.currentPositionX = x;
+    // }
 
-    set setCurrrentPositionY(y: number) {
-        this.currentPositionY = y;
-    }
+    // set setCurrrentPositionY(y: number) {
+    //     this.currentPositionY = y;
+    // }
 
     get getFieldBoundaries() {
         return this.fieldBoundaries
@@ -69,15 +69,18 @@ export class Unit {
     }
 
     incrementPositionXPlus() {
-        return (this.getCurrentPositionX < this.fieldBoundaries.getX) 
-                ? this.currentPositionX++
-                : this.currentPositionX
+        if(this.getCurrentPositionX < this.fieldBoundaries.getX) { return this.currentPositionX++ } 
+
+        // return (this.getCurrentPositionX < this.fieldBoundaries.getX) 
+        //         ? this.currentPositionX++
+        //         : this.currentPositionX
     }
 
     incrementPositionXMinus() {
-        return (this.getCurrentPositionX > 0)
-                ? this.currentPositionX--
-                : this.currentPositionX
+        if(this.getCurrentPositionX > 0) { return this.currentPositionX-- } 
+        // return (this.getCurrentPositionX > 0)
+        //         ? this.currentPositionX--
+        //         : this.currentPositionX
     }
 
     attackOpponent(opponent: Unit) {

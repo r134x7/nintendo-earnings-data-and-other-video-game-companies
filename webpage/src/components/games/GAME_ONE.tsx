@@ -18,15 +18,15 @@ export default function GAME_ONE() {
     // console.log([ifPlayerOnePositionX[0], ifPlayerOnePositionY[2]]);
 
     const ifPlayerPositionXY = 
-        // (xGrid: number[]) => 
-        // (yGrid: number[]) => 
-        (player: Unit) => 
-        (xPosition: number, yPosition: number) => {
-            return (xPosition === player.getCurrentPositionX && yPosition === player.getCurrentPositionY)
+        (player: Unit) => {
+            return (xPosition: number, yPosition: number) => {
+                
+                return (xPosition === player.getCurrentPositionX && yPosition === player.getCurrentPositionY)
                 ? "    " + player.getAvatar + "    "
                 : "         "
+            }
         }
-
+            
     
     const playerOnePosition = ifPlayerPositionXY(playerOne);
     const playerTwoPosition = ifPlayerPositionXY(playerTwo);
@@ -54,33 +54,41 @@ const displayHP = () =>
 
     const [hitPoints, setHitPoints] = useState(displayHP);
 
-
+    const thisPosition = () => console.log(`x: ${playerOne.getCurrentPositionX}, y: ${playerOne.getCurrentPositionY}`);
+    
     const right = () => {
             playerOne.incrementPositionXPlus()
-            console.log(playerOne.getCurrentPositionX);
+            thisPosition()
+            // setClicked((o) => !o)
             setPlayerField(visualField);
     }
 
     const left = () => {
             playerOne.incrementPositionXMinus()
-            console.log(playerOne.getCurrentPositionX);
+            thisPosition()
+            // setClicked((o) => !o)
             setPlayerField(visualField);
     }
 
     const up = () => {
-            playerOne.incrementPositionYPlus()
-            console.log(playerOne.getCurrentPositionX);
-            setPlayerField(visualField);
+            playerOne.incrementPositionYMinus()
+            thisPosition()
+            // setClicked((o) => !o)
+            // setPlayerField(visualField);
     }
 
     const down = () => {
-            playerOne.incrementPositionYMinus()
-            console.log(playerOne.getCurrentPositionX);
-            setPlayerField(visualField);
+            playerOne.incrementPositionYPlus()
+            thisPosition()
+            // setClicked((o) => !o)
+            // setPlayerField(visualField);
     }
-    // useEffect(() => {
 
-    // }, [visualField, displayHP]) 
+    // const [clicked, setClicked] = useState(false)
+
+    useEffect(() => {
+
+    }, [playerField, hitPoints]) 
     // create buttons to move player
     // check the useCallback hook
 
