@@ -103,7 +103,13 @@ class X {
     }
 
     attackOpponent(opponent: X) {
-        return opponent.hitPoints -= this.attackPoints;
+        return (
+            (this.getCurrentPositionX && this.getCurrentPositionY) ===
+            (opponent.getCurrentPositionX && opponent.getCurrentPositionY)
+        ) 
+                ? opponent.hitPoints -= this.attackPoints
+                : console.log("You're not in range...");
+                
     }
 }
 
@@ -153,10 +159,10 @@ test("make X move only within its field", () => {
 
 })
 
-test("personOne fights personTwo", () => {
+test("personOne fights personTwo but not in range", () => {
 
     const field = new Field(1,1);
-    const person = new X(field, field.getX,field.getY, 100, 10);
+    const person = new X(field, field.getX, field.getY, 100, 10);
     const personTwo = new X(field, 0, 0, 100, 10);
 
     person.attackOpponent(personTwo);
@@ -164,8 +170,26 @@ test("personOne fights personTwo", () => {
     person.attackOpponent(personTwo);
     person.attackOpponent(personTwo);
     person.attackOpponent(personTwo);
-    console.log(personTwo.getHitPoints);
-    
 
+    const x = personTwo.getHitPoints;
+
+    expect(x).toBe(100);
+})
+
+test("personOne has to get in range of personTwo to fight", () => {
+
+    const field = new Field(1,1);
+    const personOne = new X(field, 0, 0, 100, 10);
+    const personTwo = new X(field, field.getX,field.getY, 100, 10);
+
+    personOne.incrementPositionYPlus();
+    personOne.attackOpponent(personTwo);
+    
+    personOne.incrementPositionXPlus();
+    personOne.attackOpponent(personTwo);
+
+    const x = personTwo.getHitPoints;
+
+    expect(x).toBe(90);
 
 })
