@@ -24,12 +24,13 @@ class Field {
 }
 
 class X {
-
     // private moveX: number;
     // private moveY: number;
     private fieldBoundaries: Field;
     private currentPositionX: number;
     private currentPositionY: number;
+    private hitPoints: number;
+    private attackPoints: number;
 
     constructor(
         // moveX: number,
@@ -37,12 +38,16 @@ class X {
         fieldBoundaries: Field,
         currentPositionX: number,
         currentPositionY: number,
+        hitPoints: number,
+        attackPoints: number,
     ) {
         // this.moveX = moveX;
         // this.moveY = moveY;
         this.fieldBoundaries = fieldBoundaries;
         this.currentPositionX = currentPositionX;
         this.currentPositionY = currentPositionY;
+        this.hitPoints = hitPoints;
+        this.attackPoints = attackPoints;
     }
 
     get getCurrentPositionX() {
@@ -63,6 +68,14 @@ class X {
 
     get getFieldBoundaries() {
         return this.fieldBoundaries
+    }
+
+    get getHitPoints() {
+        return this.hitPoints
+    }
+
+    get getAttackPoints() {
+        return this.attackPoints
     }
 
     incrementPositionYPlus() {
@@ -88,6 +101,10 @@ class X {
                 ? this.currentPositionX--
                 : this.currentPositionX
     }
+
+    attackOpponent(opponent: X) {
+        return opponent.hitPoints -= this.attackPoints;
+    }
 }
 
 test("make field and get...", () => {
@@ -104,7 +121,7 @@ test("make field and get...", () => {
 test("make X, set and get", () => {
 
     const field = new Field(2,2);
-    const person = new X(field, field.getX, field.getY);
+    const person = new X(field, field.getX, field.getY, 100, 10);
     // console.log(person.getCurrentPositionX);
     // console.log(person.getCurrentPositionY);
     // console.log(person.setCurrentPositionX = 20);
@@ -119,19 +136,36 @@ test("make X, set and get", () => {
 test("make X move only within its field", () => {
 
     const field = new Field(1,1);
-    const person = new X(field, field.getX,field.getY);
-    const personTwo = new X(field, 0, 0);
+    const person = new X(field, field.getX,field.getY, 100, 10);
+    const personTwo = new X(field, 0, 0, 100, 10);
 
-    console.log(person.incrementPositionYPlus())
-    console.log(personTwo.incrementPositionYPlus())
-    console.log(personTwo.getCurrentPositionY);
-    console.log(personTwo.incrementPositionYPlus())
-    console.log(personTwo.getCurrentPositionY);
-    console.log(personTwo.incrementPositionYMinus());
-    console.log(personTwo.getCurrentPositionY);
+    // console.log(person.incrementPositionYPlus())
+    // console.log(personTwo.incrementPositionYPlus())
+    // console.log(personTwo.getCurrentPositionY);
+    // console.log(personTwo.incrementPositionYPlus())
+    // console.log(personTwo.getCurrentPositionY);
+    // console.log(personTwo.incrementPositionYMinus());
+    // console.log(personTwo.getCurrentPositionY);
     
     
 
     // need to set boundaries so that person only moves to 0 or 1
+
+})
+
+test("personOne fights personTwo", () => {
+
+    const field = new Field(1,1);
+    const person = new X(field, field.getX,field.getY, 100, 10);
+    const personTwo = new X(field, 0, 0, 100, 10);
+
+    person.attackOpponent(personTwo);
+    person.attackOpponent(personTwo);
+    person.attackOpponent(personTwo);
+    person.attackOpponent(personTwo);
+    person.attackOpponent(personTwo);
+    console.log(personTwo.getHitPoints);
+    
+
 
 })
