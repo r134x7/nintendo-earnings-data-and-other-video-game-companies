@@ -17,9 +17,6 @@ export default function GAME_ONE() {
     // const playerOne = new Unit(field, 0, 0, 100, 10, "X");
     // const playerTwo = new Unit(field, field.getX, field.getY, 100, 10, "O");
 
-    // need to think how to set up a field visually...
-    // need to think how to put the players on the field...
-
     // const ifPlayerOnePositionX = Array.from({length:field.getX+1}, (v,i) => i);
     // const ifPlayerOnePositionY = Array.from({length:field.getY+1}, (v,i) => i);
     // console.log([ifPlayerOnePositionX[0], ifPlayerOnePositionY[2]]);
@@ -105,11 +102,17 @@ const displayHP = () =>
             setHitPoints(displayHP);
     }
 
+const gameOver = 
+`--------------------------------
+| You won?                     |
+| Game Over                    |
+--------------------------------`; 
+
 
     return (
         <div>
             <Code block>
-                {playerField}
+                {(playerOne.getHitPoints <= 0 || playerTwo.getHitPoints <= 0) ? gameOver : playerField}
                 <br />
                 {hitPoints}
             </Code>
