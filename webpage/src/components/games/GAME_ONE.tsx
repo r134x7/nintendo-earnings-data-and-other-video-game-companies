@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Code, Button } from "@mantine/core";
 import { useHotkeys } from "@mantine/hooks";
 
-
+    // Objects need to be placed outside the function to retain state...
     const field = new Field(2,2);
 
     const playerOne = new Unit(field, 0, 0, 100, 10, "X");
@@ -55,8 +55,8 @@ const visualField = () =>
 
 const displayHP = () => 
 `------------------------------
-| Player One: ${playerOne.getHitPoints}HP${" ".repeat(29 - (16 + playerOne.getHitPoints.toString().length))}|
-| Player Two: ${playerTwo.getHitPoints}HP${" ".repeat(29 - (16 + playerTwo.getHitPoints.toString().length))}|
+| Player X: ${playerOne.getHitPoints}HP${" ".repeat(31 - (16 + playerOne.getHitPoints.toString().length))}|
+| CPU O: ${playerTwo.getHitPoints}HP${" ".repeat(34 - (16 + playerTwo.getHitPoints.toString().length))}|
 ------------------------------
 `;
 
@@ -71,6 +71,9 @@ const displayHP = () =>
             playerOne.incrementPositionXPlus()
             thisPosition()
             playerOne.attackOpponent(playerTwo)
+            cpu()
+            cpu()
+            cpu()
             setPlayerField(visualField)
             setHitPoints(displayHP);
     }
@@ -80,6 +83,9 @@ const displayHP = () =>
             playerOne.incrementPositionXMinus()
             thisPosition()
             playerOne.attackOpponent(playerTwo)
+            cpu()
+            cpu()
+            cpu()
             setPlayerField(visualField)
             setHitPoints(displayHP);
     }
@@ -89,6 +95,9 @@ const displayHP = () =>
             playerOne.incrementPositionYMinus()
             thisPosition()
             playerOne.attackOpponent(playerTwo)
+            cpu()
+            cpu()
+            cpu()
             setPlayerField(visualField)
             setHitPoints(displayHP);
     }
@@ -98,8 +107,26 @@ const displayHP = () =>
             playerOne.incrementPositionYPlus()
             thisPosition()
             playerOne.attackOpponent(playerTwo)
+            cpu()
+            cpu()
+            cpu()
             setPlayerField(visualField)
             setHitPoints(displayHP);
+    }
+
+    const cpu = () => {
+
+        let x = Math.floor(Math.random() * 4);
+
+        (x === 0) 
+        ? playerTwo.incrementPositionXMinus()
+        : (x === 1)
+        ? playerTwo.incrementPositionYMinus()
+        : (x === 2)
+        ? playerTwo.incrementPositionXPlus()
+        : playerTwo.incrementPositionYPlus()
+
+        playerTwo.attackOpponent(playerOne)
     }
 
 const gameOver = 
