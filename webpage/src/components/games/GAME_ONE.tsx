@@ -141,18 +141,24 @@ const displayHP = () =>
         playerTwo.attackOpponent(playerOne)
     }
 
-const gameOver = 
+const gameOverOne = 
 `--------------------------------
-| You won?                     |
+| You struggled and lost.      |
 |                              |
 | Game Over                    |
 --------------------------------`; 
 
+const gameOverTwo = 
+`--------------------------------
+| You struggled to win.        |
+|                              |
+| Game Over!                   |
+--------------------------------`; 
 
     return (
         <div>
             <Code block>
-                {(playerOne.getHitPoints <= 0 || playerTwo.getHitPoints <= 0) ? gameOver : playerField}
+                {(playerTwo.getHitPoints <= 0) ? gameOverTwo : (playerOne.getHitPoints <= 0) ? gameOverOne : playerField}
                 <br />
                 {hitPoints}
             </Code>
