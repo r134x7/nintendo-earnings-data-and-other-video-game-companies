@@ -1,6 +1,6 @@
 import { Field } from "../../classes/Field";
 import { Unit } from "../../classes/Unit";
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState } from "react";
 import { Code, Button } from "@mantine/core";
 
 
@@ -49,12 +49,6 @@ const visualField = () =>
 |${playerTwoPosition(0,2)}|${playerTwoPosition(1,2)}|${playerTwoPosition(2,2)}|
 -------------------------------`;
 
-// const visualField = () =>
-// `-------------------------------
-// |${playerOnePosition(0,0)}|${playerOnePosition(1,0)}|${playerOnePosition(2,0)}|
-// -------------------------------
-// `;
-
 const displayHP = () => 
 `------------------------------
 | Player One: ${playerOne.getHitPoints}HP${" ".repeat(29 - (16 + playerOne.getHitPoints.toString().length))}|
@@ -69,58 +63,41 @@ const displayHP = () =>
     const thisPosition = () => console.log(`x: ${playerOne.getCurrentPositionX}, y: ${playerOne.getCurrentPositionY}`);
     
     const right = () => {
-            playerOne.moveAttackPlusX(playerTwo)
+            // playerOne.moveAttackPlusX(playerTwo)
+            playerOne.incrementPositionXPlus()
             thisPosition()
-            // setClicked((o) => !o)
-            let x = visualField()
-            setPlayerField(x);
-            let y = displayHP()
-            setHitPoints(y);
+            playerOne.attackOpponent(playerTwo)
+            setPlayerField(visualField)
+            setHitPoints(displayHP);
     }
 
     const left = () => {
-            playerOne.moveAttackMinusX(playerTwo)
+            // playerOne.moveAttackMinusX(playerTwo)
+            playerOne.incrementPositionXMinus()
             thisPosition()
             playerOne.attackOpponent(playerTwo)
-            // setClicked((o) => !o)
-            let x = visualField()
-            setPlayerField(x);
-            let y = displayHP()
-            setHitPoints(y);
+            setPlayerField(visualField)
+            setHitPoints(displayHP);
     }
 
     const up = () => {
-            playerOne.moveAttackMinusY(playerTwo)
+            // playerOne.moveAttackMinusY(playerTwo)
+            playerOne.incrementPositionYMinus()
             thisPosition()
             playerOne.attackOpponent(playerTwo)
-            // setClicked((o) => !o)
-            let x = visualField()
-            setPlayerField(x);
-            let y = displayHP()
-            setHitPoints(y);
+            setPlayerField(visualField)
+            setHitPoints(displayHP);
     }
 
     const down = () => {
-            playerOne.moveAttackPlusY(playerTwo)
+            // playerOne.moveAttackPlusY(playerTwo)
+            playerOne.incrementPositionYPlus()
             thisPosition()
             playerOne.attackOpponent(playerTwo)
-            // setClicked((o) => !o)
-            let x = visualField();
-            setPlayerField(x);
-            let y = displayHP()
-            setHitPoints(y);
+            setPlayerField(visualField)
+            setHitPoints(displayHP);
     }
 
-    // const [clicked, setClicked] = useState(false)
-
-    // useEffect(() => {
-    //     setPlayerField(visualField)
-    // }, [visualField]) 
-    // useCallback(() => {
-    //     visualField();
-    // }, [visualField])
-    // create buttons to move player
-    // check the useCallback hook
 
     return (
         <div>
