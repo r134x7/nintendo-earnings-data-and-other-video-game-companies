@@ -72,7 +72,7 @@ const displayHP = () =>
         }
             // playerOne.moveAttackPlusX(playerTwo)
             playerOne.incrementPositionXPlus()
-            thisPosition()
+            // thisPosition()
             playerOne.attackOpponent(playerTwo)
             cpu()
             cpu()
@@ -87,7 +87,7 @@ const displayHP = () =>
             return
         }
             playerOne.incrementPositionXMinus()
-            thisPosition()
+            // thisPosition()
             playerOne.attackOpponent(playerTwo)
             cpu()
             cpu()
@@ -102,7 +102,7 @@ const displayHP = () =>
             return
         }
             playerOne.incrementPositionYMinus()
-            thisPosition()
+            // thisPosition()
             playerOne.attackOpponent(playerTwo)
             cpu()
             cpu()
@@ -117,7 +117,7 @@ const displayHP = () =>
             return
         }
             playerOne.incrementPositionYPlus()
-            thisPosition()
+            // thisPosition()
             playerOne.attackOpponent(playerTwo)
             cpu()
             cpu()

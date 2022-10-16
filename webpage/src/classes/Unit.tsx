@@ -84,14 +84,18 @@ export class Unit {
     }
 
     attackOpponent(opponent: Unit) {
-        return (
-            // (this.getCurrentPositionX && this.getCurrentPositionY) ===
-            // (opponent.getCurrentPositionX && opponent.getCurrentPositionY)
-            (this.getCurrentPositionX === opponent.getCurrentPositionX) && 
-            (this.getCurrentPositionY === opponent.getCurrentPositionY)
-        ) 
-                ? opponent.hitPoints -= this.attackPoints
-                : console.log("You're not in range...");
+        if((this.getCurrentPositionX === opponent.getCurrentPositionX) && 
+            (this.getCurrentPositionY === opponent.getCurrentPositionY)) {
+                return opponent.hitPoints -= this.attackPoints 
+            }
+        // return (
+        //     // (this.getCurrentPositionX && this.getCurrentPositionY) ===
+        //     // (opponent.getCurrentPositionX && opponent.getCurrentPositionY)
+            // (this.getCurrentPositionX === opponent.getCurrentPositionX) && 
+            // (this.getCurrentPositionY === opponent.getCurrentPositionY)
+        // ) 
+        //         ? opponent.hitPoints -= this.attackPoints
+        //         : console.log("You're not in range...");
                 
     }
 
