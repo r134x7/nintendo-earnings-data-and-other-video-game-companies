@@ -2,6 +2,7 @@ import { Field } from "../../classes/Field";
 import { Unit } from "../../classes/Unit";
 import { useState } from "react";
 import { Code, Button } from "@mantine/core";
+import { useHotkeys } from "@mantine/hooks";
 
 
     const field = new Field(2,2);
@@ -22,6 +23,12 @@ export default function GAME_ONE() {
     // const ifPlayerOnePositionX = Array.from({length:field.getX+1}, (v,i) => i);
     // const ifPlayerOnePositionY = Array.from({length:field.getY+1}, (v,i) => i);
     // console.log([ifPlayerOnePositionX[0], ifPlayerOnePositionY[2]]);
+    useHotkeys([
+        ["ArrowDown", () => down()],
+        ["ArrowUp", () => up()],
+        ["ArrowLeft", () => left()],
+        ["ArrowRight", () => right()],
+    ]);
 
     const ifPlayerPositionXY = 
         (player: Unit) => {
@@ -109,7 +116,7 @@ const displayHP = () =>
             <Button variant="outline" radius={"lg"} color="red" onClick={left}>
                Left 
             </Button>
-            <Button variant="outline" radius={"lg"} color="red" onClick={up}>
+            <Button variant="outline" radius={"lg"} color="red"  onClick={up}>
                 Up
             </Button>
             <Button variant="outline" radius={"lg"} color="red" onClick={right}>
