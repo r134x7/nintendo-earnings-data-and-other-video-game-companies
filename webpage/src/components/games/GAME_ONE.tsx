@@ -1,7 +1,7 @@
 import { Field } from "../../classes/Field";
 import { Unit } from "../../classes/Unit";
 import { useState } from "react";
-import { Code, Button } from "@mantine/core";
+import { Code, Button, SimpleGrid } from "@mantine/core";
 import { useHotkeys } from "@mantine/hooks";
 
     // Objects need to be placed outside the function to retain state...
@@ -67,6 +67,9 @@ const displayHP = () =>
     const thisPosition = () => console.log(`x: ${playerOne.getCurrentPositionX}, y: ${playerOne.getCurrentPositionY}`);
     
     const right = () => {
+        if (playerOne.getHitPoints <= 0 || playerTwo.getHitPoints <= 0) {
+            return
+        }
             // playerOne.moveAttackPlusX(playerTwo)
             playerOne.incrementPositionXPlus()
             thisPosition()
@@ -80,6 +83,9 @@ const displayHP = () =>
 
     const left = () => {
             // playerOne.moveAttackMinusX(playerTwo)
+        if (playerOne.getHitPoints <= 0 || playerTwo.getHitPoints <= 0) {
+            return
+        }
             playerOne.incrementPositionXMinus()
             thisPosition()
             playerOne.attackOpponent(playerTwo)
@@ -92,6 +98,9 @@ const displayHP = () =>
 
     const up = () => {
             // playerOne.moveAttackMinusY(playerTwo)
+        if (playerOne.getHitPoints <= 0 || playerTwo.getHitPoints <= 0) {
+            return
+        }
             playerOne.incrementPositionYMinus()
             thisPosition()
             playerOne.attackOpponent(playerTwo)
@@ -104,6 +113,9 @@ const displayHP = () =>
 
     const down = () => {
             // playerOne.moveAttackPlusY(playerTwo)
+        if (playerOne.getHitPoints <= 0 || playerTwo.getHitPoints <= 0) {
+            return
+        }
             playerOne.incrementPositionYPlus()
             thisPosition()
             playerOne.attackOpponent(playerTwo)
@@ -132,6 +144,7 @@ const displayHP = () =>
 const gameOver = 
 `--------------------------------
 | You won?                     |
+|                              |
 | Game Over                    |
 --------------------------------`; 
 
@@ -143,18 +156,23 @@ const gameOver =
                 <br />
                 {hitPoints}
             </Code>
-            <Button variant="outline" radius={"lg"} color="red" onClick={left}>
-               Left 
-            </Button>
-            <Button variant="outline" radius={"lg"} color="red"  onClick={up}>
+            { (playerOne.getHitPoints <= 0 || playerTwo.getHitPoints <= 0) ?
+            <></>
+            : <SimpleGrid cols={2}>
+            <Button variant="outline" radius={"lg"} color="red"  onClick={up} fullWidth>
                 Up
             </Button>
-            <Button variant="outline" radius={"lg"} color="red" onClick={right}>
-                Right
-            </Button>
-            <Button variant="outline" radius={"lg"} color="red" onClick={down}>
+            <Button variant="outline" radius={"lg"} color="red" onClick={down} fullWidth>
                 Down
             </Button>
+            <Button variant="outline" radius={"lg"} color="red" onClick={left} fullWidth>
+               Left 
+            </Button>
+            <Button variant="outline" radius={"lg"} color="red" onClick={right} fullWidth>
+                Right
+            </Button>
+            </SimpleGrid>
+            }
         </div>
     )
 }
