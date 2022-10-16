@@ -97,7 +97,8 @@ export class Unit {
         this.incrementPositionYPlus();
         this.attackOpponent(opponent);
 
-        return (opponent.hitPoints === 0)
+        return (opponent.hitPoints !== 0 && (this.getCurrentPositionX && this.getCurrentPositionY) !==
+            (opponent.getCurrentPositionX && opponent.getCurrentPositionY))
                 ? console.log("Not done yet...")
                 : this.incrementPositionYMinus();
     }
@@ -106,7 +107,8 @@ export class Unit {
         this.incrementPositionYMinus();
         this.attackOpponent(opponent);
 
-        return (opponent.hitPoints === 0)
+        return (opponent.hitPoints !== 0 && (this.getCurrentPositionX && this.getCurrentPositionY) !==
+            (opponent.getCurrentPositionX && opponent.getCurrentPositionY))
                 ? console.log("Not done yet...")
                 : this.incrementPositionYPlus();
     }
@@ -115,7 +117,8 @@ export class Unit {
         this.incrementPositionXPlus();
         this.attackOpponent(opponent);
 
-        return (opponent.hitPoints === 0)
+        return (opponent.hitPoints !== 0 && (this.getCurrentPositionX && this.getCurrentPositionY) !==
+            (opponent.getCurrentPositionX && opponent.getCurrentPositionY))
                 ? console.log("Not done yet...")
                 : this.incrementPositionXMinus();
     }
@@ -124,7 +127,8 @@ export class Unit {
         this.incrementPositionXMinus();
         this.attackOpponent(opponent);
 
-        return (opponent.hitPoints === 0)
+        return (opponent.hitPoints !== 0 && (this.getCurrentPositionX && this.getCurrentPositionY) !==
+            (opponent.getCurrentPositionX && opponent.getCurrentPositionY))
                 ? console.log("Not done yet...")
                 : this.incrementPositionXPlus();
     }
