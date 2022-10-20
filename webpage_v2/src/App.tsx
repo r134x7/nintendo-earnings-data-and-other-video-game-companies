@@ -50,7 +50,7 @@ function App() {
         navbar={
           <Navbar sx={(theme) => ({ backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[1] })} p="xl" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 175, lg: 175 }}>
             <Stack spacing="xl">
-              <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/">
+              <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/" end>
                   <Button aria-label='Home Page' leftIcon={<DeviceNintendo size={24} strokeWidth={2} color={'#40bfb2'}/>} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Home</Button>
               </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/nintendo">
