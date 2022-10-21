@@ -9,11 +9,12 @@ function ball() {
     return new Unit(objectField, 0, 3, 1, 0, "Pizza")
 }
 
-const objectField = new Field(3,3);
+const objectField = new Field(2,3);
 const field = new Field(2,0);
 const playerOne = new Unit(field, 0, 0, 3, 1, "X=----=O")
 
-let makeBall = ball();
+// const makeBall = ball();
+const makeBall = new Unit(objectField, 0, 0, 1, 0, "Pizza")
 // this is where I need to think about holding an array of objects
 
 export default function GAME_TWO() {
@@ -56,12 +57,16 @@ export default function GAME_TWO() {
     const playerPosY = ifPlayerOnePositionX(playerOne);
     const playerPosX = playerPosY(0);
 
+    const ballPos = ifPlayerOnePositionX(makeBall);
+    const ballPosZero = ballPos(0);
+    const ballPosOne = ballPos(1);
+    const ballPosTwo = ballPos(2);
 
 const visualField = () =>
-`_|
-_|
-_|
-_|
+`_|${ballPosZero(3)}|${ballPosOne(3)}|${ballPosTwo(3)}|
+_|${ballPosZero(2)}|${ballPosOne(2)}|${ballPosTwo(2)}|
+_|${ballPosZero(1)}|${ballPosOne(1)}|${ballPosTwo(1)}|
+_|${ballPosZero(0)}|${ballPosOne(0)}|${ballPosTwo(0)}|
 _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}|
 ----------------------------------------`;
 
