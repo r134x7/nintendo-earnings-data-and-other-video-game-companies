@@ -5,15 +5,19 @@ import { Field } from "../../classes/Field";
 import { Unit } from "../../classes/Unit";
 
 // need to try making a function here that spawns objects...
-function ball() {
-    return new Unit(objectField, 0, 4, 1, 0, "Pizza")
+function ball(x: number, y: number) {
+    // return new Unit(objectField, 0, 4, 1, 0, "Pizza")
+    return new Unit(objectField, x, y, 1, 0, "Pizza")
 }
 
 const objectField = new Field(6,4);
 const field = new Field(2,0);
 const playerOne = new Unit(field, 0, 0, 3, 1, "X=----=O")
 
-const makeBall = ball();
+// const makeBall: Unit[] = Array.from({length: 7}, (elem, index) => {
+//     return ball(index, 0)
+// }) 
+const makeBall = ball(0,4);
 // const makeBall = new Unit(objectField, 0, 3, 1, 0, "Pizza")
 // this is where I need to think about holding an array of objects
 
