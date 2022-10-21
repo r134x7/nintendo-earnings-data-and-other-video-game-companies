@@ -1,6 +1,6 @@
 import { Code, Button, SimpleGrid } from "@mantine/core";
 import { useHotkeys, useInterval } from "@mantine/hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Field } from "../../classes/Field";
 import { Unit } from "../../classes/Unit";
 
@@ -78,6 +78,32 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}| PINEAPPLE
 ----------------------------------------`;
 
     const [playerField, setPlayerField] = useState(visualField);
+
+    const [seconds, setSeconds] = useState(0);
+
+    const interval = useInterval(() => setSeconds((s) => s + 1), 1000);
+
+    useEffect(() => {
+        if (playerOne.getHitPoints === 0) {
+            return interval.stop();
+        } else {
+            interval.start();
+            console.log(seconds);
+            objectPathX1();
+        }
+    }, [playerOne.getHitPoints, seconds])
+
+    // need to create object path...
+    const objectPathX1 = () => {
+        // if it gets to zero and it matches player position then it goes up...
+        // on each second it uses...
+        makeBall.incrementPositionYMinus()
+        console.log(`x: ${makeBall.getCurrentPositionX}, y: ${makeBall.getCurrentPositionY}`);
+    }
+
+    const objectPathX2 = () => {
+        makeBall.incrementPositionYPlus()
+    }
 
     return (
         <div>
