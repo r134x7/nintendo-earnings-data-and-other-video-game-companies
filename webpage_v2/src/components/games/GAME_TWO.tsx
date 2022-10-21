@@ -1,5 +1,6 @@
 import { Code, Button, SimpleGrid } from "@mantine/core";
 import { useHotkeys } from "@mantine/hooks";
+import { useState } from "react";
 import { Field } from "../../classes/Field";
 import { Unit } from "../../classes/Unit";
 
@@ -15,8 +16,8 @@ export default function GAME_TWO() {
         //     return
         // }
 
-            // playerOne.incrementPositionXPlus()
-            // setPlayerField(visualField)
+            playerOne.incrementPositionXPlus()
+            setPlayerField(visualField)
             // setHitPoints(displayHP);
     }
 
@@ -25,8 +26,8 @@ export default function GAME_TWO() {
         //     return
         // }
 
-        //     playerOne.incrementPositionXMinus()
-        //     setPlayerField(visualField)
+            playerOne.incrementPositionXMinus()
+            setPlayerField(visualField)
         //     setHitPoints(displayHP);
     }
 
@@ -35,10 +36,30 @@ export default function GAME_TWO() {
         ["ArrowRight", () => right()],
     ]);
 
+    const ifPlayerOnePositionX =
+        (player: Unit) =>
+        (yPosition: number) =>
+        (xPosition: number) => {
+
+            return (xPosition === player.getCurrentPositionX && yPosition === player.getCurrentPositionY)
+            ? " " + player.getAvatar + " "
+            : "          "
+        }
+
+    const playerPosY = ifPlayerOnePositionX(playerOne);
+    const playerPosX = playerPosY(0);
+
+
+const visualField = () =>
+`|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}|
+----------------------------------------`;
+
+    const [playerField, setPlayerField] = useState(visualField);
+
     return (
         <div>
             <Code block>
-                something
+                {playerField}
             </Code>
             <SimpleGrid cols={2}>
                 <Button variant="outline" radius={"lg"} color="red"  fullWidth>
