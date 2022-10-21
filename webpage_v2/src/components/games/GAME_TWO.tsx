@@ -7,7 +7,7 @@ import { Unit } from "../../classes/Unit";
 // need to try making a function here that spawns objects...
 function ball(x: number, y: number) {
     // return new Unit(objectField, 0, 4, 1, 0, "Pizza")
-    return new Unit(objectField, x, y, 1, 0, "Pizza")
+    return new Unit(objectField, x, y, 1, 0, (Math.floor(Math.random() * 2) === 1) ? "o" : "x")
 }
 
 const objectField = new Field(6,4);
@@ -53,10 +53,16 @@ export default function GAME_TWO() {
         (yPosition: number) =>
         (xPosition: number) => {
 
+        if (player.getAvatar === "X=----=O") {
             return (xPosition === player.getCurrentPositionX && yPosition === player.getCurrentPositionY)
             ? " " + player.getAvatar + " ".repeat(10 - (player.getAvatar.length + 1))
-            : "          "
+            : "          ";
+        } else {
+            return (xPosition === player.getCurrentPositionX && yPosition === player.getCurrentPositionY)
+            ? " " + player.getAvatar + " "
+            : "   ";
         }
+    }
 
     const playerPosY = ifPlayerOnePositionX(playerOne);
     const playerPosX = playerPosY(0);
@@ -68,12 +74,21 @@ export default function GAME_TWO() {
     const ballPosThreeX = ballPos(3);
     const ballPosFourX = ballPos(4);
 
+// const visualField = () =>
+// `_|${ballPosFourX(0)}       ${ballPosFourX(1)}
+// _| ${ballPosThreeX(0)}   ${ballPosThreeX(1)}  ${ballPosThreeX(2)}    ${ballPosThreeX(3)}
+// _|  ${ballPosTwoX(0)}   ${ballPosTwoX(1)}      ${ballPosTwoX(2)}    ${ballPosTwoX(3)}  ${ballPosTwoX(4)}   ${ballPosTwoX(5)}
+// _|   ${ballPosOneX(0)} ${ballPosOneX(1)}        ${ballPosOneX(2)} ${ballPosOneX(3)}  ${ballPosOneX(4)}   ${ballPosOneX(5)} ${ballPosOneX(6)}
+// _|    ${ballPosZeroX(0)}  ${ballPosZeroX(1)}  ${ballPosZeroX(2)}                      ${ballPosZeroX(4)}
+// _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}| PINEAPPLE
+// ----------------------------------------`;
+
 const visualField = () =>
-`_|${ballPosFourX(0)}       ${ballPosFourX(1)}
-_| ${ballPosThreeX(0)}   ${ballPosThreeX(1)}  ${ballPosThreeX(2)}    ${ballPosThreeX(3)}
-_|  ${ballPosTwoX(0)}   ${ballPosTwoX(1)}      ${ballPosTwoX(2)}    ${ballPosTwoX(3)}  ${ballPosTwoX(4)}   ${ballPosTwoX(5)}
-_|   ${ballPosOneX(0)} ${ballPosOneX(1)}        ${ballPosOneX(2)} ${ballPosOneX(3)}  ${ballPosOneX(4)}   ${ballPosOneX(5)} ${ballPosOneX(6)}
-_|    ${ballPosZeroX(0)}  ${ballPosZeroX(1)}  ${ballPosZeroX(2)}                      ${ballPosZeroX(4)}
+`_|${ballPosFourX(0)}${ballPosFourX(1)}
+_|${ballPosThreeX(0)}${ballPosThreeX(1)}${ballPosThreeX(2)}${ballPosThreeX(3)}
+_|${ballPosTwoX(0)}${ballPosTwoX(1)}${ballPosTwoX(2)}${ballPosTwoX(3)}${ballPosTwoX(4)}${ballPosTwoX(5)}
+_|${ballPosOneX(0)}${ballPosOneX(1)}${ballPosOneX(2)}${ballPosOneX(3)}${ballPosOneX(4)}${ballPosOneX(5)}${ballPosOneX(6)}
+_|${ballPosZeroX(0)}${ballPosZeroX(1)}${ballPosZeroX(2)}${ballPosZeroX(4)}
 _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}| PINEAPPLE
 ----------------------------------------`;
 
@@ -89,16 +104,21 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}| PINEAPPLE
         } else {
             interval.start();
             console.log(seconds);
-            objectPathX1();
+            setPlayerField(visualField)
         }
     }, [playerOne.getHitPoints, seconds])
 
     // need to create object path...
     const objectPathX1 = () => {
+        if (makeBall.getCurrentPositionY === 0 && playerOne.getCurrentPositionX === 0) {
+            makeBall.incrementPositionXPlus()
+            return objectPathX2()
+        }
         // if it gets to zero and it matches player position then it goes up...
         // on each second it uses...
         makeBall.incrementPositionYMinus()
         console.log(`x: ${makeBall.getCurrentPositionX}, y: ${makeBall.getCurrentPositionY}`);
+
     }
 
     const objectPathX2 = () => {
