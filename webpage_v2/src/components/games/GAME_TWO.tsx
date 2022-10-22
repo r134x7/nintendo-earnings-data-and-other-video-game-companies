@@ -244,7 +244,7 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}|###|
 
 const displayHP = () => 
 `------------------------------
-| Player X: ${playerOne.getHitPoints}HP${" ".repeat(31 - (16 + playerOne.getHitPoints.toString().length))}|
+| Player: ${playerOne.getHitPoints}HP${" ".repeat(31 - (14 + playerOne.getHitPoints.toString().length))}|
 | Score: ${score} points${" ".repeat(31- (18 + score.toString().length))}|
 | Speed: ${speed}${" ".repeat(20-(speed.length))}|
 ------------------------------
