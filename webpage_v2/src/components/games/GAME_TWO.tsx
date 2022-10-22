@@ -96,9 +96,16 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}| PINEAPPLE
 
     const [seconds, setSeconds] = useState(0);
 
-    const interval = useInterval(() => setSeconds((s) => s + 1), 1000);
+    const speedTimer = (seconds === 6) ? 200 : 800
+
+    const interval = useInterval(() => setSeconds((s) => s + 1), speedTimer);
 
     useEffect(() => {
+        if (seconds === 6) {
+            interval.toggle()
+            interval.toggle()
+        } 
+
         if (playerOne.getHitPoints === 0) {
             return interval.stop();
         } else {
