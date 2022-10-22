@@ -18,6 +18,8 @@ const playerOne = new Unit(field, 0, 0, 3, 1, "X=----=O")
 // }) 
 var makeBall = ball(0,4);
 
+var score = 0;
+
 export default function GAME_TWO() {
 
     const right = () => {
@@ -105,8 +107,8 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}|###|
                 : (seconds > 200 && seconds <= 400)
                 ? 80
                 : (seconds > 400 && seconds <= 800)
-                ? 40
-                : 20 
+                ? 60
+                : 40 
     }
 
     const interval = useInterval(() => setSeconds((s) => s + 1), speedTimer());
@@ -114,18 +116,19 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}|###|
     useEffect(() => {
         if (seconds === 0) {
             interval.start();
-        } else {
+        } else if (seconds > 0 && playerOne.getHitPoints > 0) {
             interval.toggle()
             interval.start()
         } 
 
         if (playerOne.getHitPoints === 0) {
+            console.log(seconds);
             return interval.stop();
         } else {
             // interval.start();
             objectPathSet();
             console.log(seconds);
-            console.log(`x: ${makeBall.getCurrentPositionX}, y: ${makeBall.getCurrentPositionY}`);
+            // console.log(`x: ${makeBall.getCurrentPositionX}, y: ${makeBall.getCurrentPositionY}`);
             setPlayerField(visualField);
             setHitPoints(displayHP);
         }
@@ -216,17 +219,34 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}|###|
         } else if (makeBall.getCurrentPositionX === 5) {
             return objectPathUp3()
         } else {
-            makeBall.incrementPositionYPlus()
+            makeBall.incrementPositionYPlus();
+            score += 10;
             return makeBall = ball(0,4)
         }
 
     }
 
+    const speed = (speedTimer() === 750)
+                    ? "Slowest"
+                    : (speedTimer() === 500)  
+                    ? "Slower"
+                    : (speedTimer() === 250)
+                    ? "Slow"
+                    : (speedTimer() === 100)
+                    ? "Not Slow"
+                    : (speedTimer() === 80)
+                    ? "Fast"
+                    : (speedTimer() === 60)
+                    ? "Faster"
+                    : "Fastest"
+
+
 
 const displayHP = () => 
 `------------------------------
 | Player X: ${playerOne.getHitPoints}HP${" ".repeat(31 - (16 + playerOne.getHitPoints.toString().length))}|
-| 
+| Score: ${score} points${" ".repeat(31- (18 + score.toString().length))}|
+| Speed: ${speed}${" ".repeat(20-(speed.length))}|
 ------------------------------
 `;
 
