@@ -6,7 +6,6 @@ import { Unit } from "../../classes/Unit";
 
 // need to try making a function here that spawns objects...
 function ball(x: number, y: number) {
-    // return new Unit(objectField, 0, 4, 1, 0, "Pizza")
     return new Unit(objectField, x, y, 1, 0, (Math.floor(Math.random() * 2) === 1) ? "o" : "x")
 }
 
@@ -18,8 +17,6 @@ const playerOne = new Unit(field, 0, 0, 3, 1, "X=----=O")
 //     return ball(index, 0)
 // }) 
 var makeBall = ball(0,4);
-// const makeBall = new Unit(objectField, 0, 3, 1, 0, "Pizza")
-// this is where I need to think about holding an array of objects
 
 export default function GAME_TWO() {
 
@@ -89,23 +86,37 @@ _| ${ballPosThreeX(0)}    ${ballPosThreeX(1)}${ballPosThreeX(2)}     ${ballPosTh
 _|  ${ballPosTwoX(0)}  ${ballPosTwoX(1)}  ${ballPosTwoX(2)}   ${ballPosTwoX(3)}  ${ballPosTwoX(4)}    ${ballPosTwoX(5)} 
 _|   ${ballPosOneX(0)}${ballPosOneX(1)}    ${ballPosOneX(2)} ${ballPosOneX(3)}    ${ballPosOneX(4)} ${ballPosOneX(5)}  ${ballPosOneX(6)} 
 _|    ${ballPosZeroX(0)}       ${ballPosZeroX(2)}        ${ballPosZeroX(4)}
-_|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}| PINEAPPLE
+_|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}|###|
 ----------------------------------------`;
 
     const [playerField, setPlayerField] = useState(visualField);
 
     const [seconds, setSeconds] = useState(0);
 
-    const speedTimer = (seconds === 6) ? 400 : 800
+    const speedTimer = () => {
+        return (seconds <= 30)
+                ? 750
+                : (seconds > 30 && seconds <= 60)
+                ? 500
+                : (seconds > 60 && seconds <= 90)
+                ? 250
+                : (seconds > 90 && seconds <= 180)
+                ? 100
+                : (seconds > 180 && seconds <= 360)
+                ? 80
+                : (seconds > 360 && seconds <= 720)
+                ? 40
+                : 20 
+    }
 
-    const interval = useInterval(() => setSeconds((s) => s + 1), speedTimer);
+    const interval = useInterval(() => setSeconds((s) => s + 1), speedTimer());
 
     useEffect(() => {
-        if (seconds === 6) {
-            interval.stop()
-            interval.start()
-        } else if (seconds === 0) {
+        if (seconds === 0) {
             interval.start();
+        } else {
+            interval.toggle()
+            interval.start()
         } 
 
         if (playerOne.getHitPoints === 0) {
@@ -129,7 +140,6 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}| PINEAPPLE
         // if it gets to zero and it matches player position then it goes up...
         // on each second it uses...
         return makeBall.incrementPositionYMinus()
-
     }
 
     const objectPathUp1 = () => {
