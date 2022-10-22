@@ -96,15 +96,15 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}|###|
     const speedTimer = () => {
         return (seconds <= 30)
                 ? 750
-                : (seconds > 30 && seconds <= 60)
+                : (seconds > 25 && seconds <= 50)
                 ? 500
-                : (seconds > 60 && seconds <= 90)
+                : (seconds > 50 && seconds <= 100)
                 ? 250
-                : (seconds > 90 && seconds <= 180)
+                : (seconds > 100 && seconds <= 200)
                 ? 100
-                : (seconds > 180 && seconds <= 360)
+                : (seconds > 200 && seconds <= 400)
                 ? 80
-                : (seconds > 360 && seconds <= 720)
+                : (seconds > 400 && seconds <= 800)
                 ? 40
                 : 20 
     }
@@ -127,6 +127,7 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}|###|
             console.log(seconds);
             console.log(`x: ${makeBall.getCurrentPositionX}, y: ${makeBall.getCurrentPositionY}`);
             setPlayerField(visualField);
+            setHitPoints(displayHP);
         }
     }, [playerOne.getHitPoints, seconds])
 
@@ -212,11 +213,40 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}|###|
 
     }
 
+
+const displayHP = () => 
+`------------------------------
+| Player X: ${playerOne.getHitPoints}HP${" ".repeat(31 - (16 + playerOne.getHitPoints.toString().length))}|
+| 
+------------------------------
+`;
+
+const [hitPoints, setHitPoints] = useState(displayHP);
+
+const gameOverOne = 
+`--------------------------------
+| You struggled.               |
+|                              |
+| Game Over                    |
+--------------------------------`; 
+
+const gameOverTwo =
+`--------------------------------
+| You struggled against time.  |
+|                              |
+| Game Over!                   |
+--------------------------------`; 
+
     return (
         <div>
             <Code block>
-                {playerField}
+                {(playerOne.getHitPoints <= 0 && seconds > 800) ? gameOverTwo : (playerOne.getHitPoints <= 0) ? gameOverOne : playerField}
+                <br />
+                {hitPoints}
             </Code>
+            {(playerOne.getHitPoints <= 0)
+            ? <></>
+            :
             <SimpleGrid cols={2}>
                 <Button variant="outline" radius={"lg"} color="red" onClick={left} fullWidth>
                    Left 
@@ -225,6 +255,7 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}|###|
                     Right
                 </Button>
             </SimpleGrid>
+            }
         </div>
     )
 }
