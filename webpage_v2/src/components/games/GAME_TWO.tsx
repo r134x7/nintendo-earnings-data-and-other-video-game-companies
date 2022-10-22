@@ -17,7 +17,7 @@ const playerOne = new Unit(field, 0, 0, 3, 1, "X=----=O")
 // const makeBall: Unit[] = Array.from({length: 7}, (elem, index) => {
 //     return ball(index, 0)
 // }) 
-const makeBall = ball(0,4);
+var makeBall = ball(0,4);
 // const makeBall = new Unit(objectField, 0, 3, 1, 0, "Pizza")
 // this is where I need to think about holding an array of objects
 
@@ -195,6 +195,9 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}| PINEAPPLE
             return objectPathDown3()
         } else if (makeBall.getCurrentPositionX === 5) {
             return objectPathUp3()
+        } else {
+            makeBall.incrementPositionYPlus()
+            return makeBall = ball(0,4)
         }
 
     }
