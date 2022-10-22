@@ -161,6 +161,9 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}|###|
             makeBall.incrementPositionXPlus()
             makeBall.incrementPositionYPlus()
             return
+        } else if (makeBall.getCurrentPositionY === 0 && playerOne.getCurrentPositionX !== 1) {
+            playerOne.attackOpponent(playerOne)
+            return makeBall = ball(0,4)
         }
 
         return makeBall.incrementPositionYMinus()
@@ -181,6 +184,9 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}|###|
             makeBall.incrementPositionXPlus()
             makeBall.incrementPositionYPlus()
             return
+        } else if (makeBall.getCurrentPositionY === 0 && playerOne.getCurrentPositionX !== 2) {
+            playerOne.attackOpponent(playerOne)
+            return makeBall = ball(0,4)
         }
 
         return makeBall.incrementPositionYMinus()
