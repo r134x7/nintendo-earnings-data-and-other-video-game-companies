@@ -84,11 +84,11 @@ export default function GAME_TWO() {
 // ----------------------------------------`;
 
 const visualField = () =>
-`_|${ballPosFourX(0)}/down ${ballPosFourX(1)} /up
-_|${ballPosThreeX(0)}- ${ballPosThreeX(1)}+ ${ballPosThreeX(2)} /down ${ballPosThreeX(3)} /up
-_|${ballPosTwoX(0)}- ${ballPosTwoX(1)}+ ${ballPosTwoX(2)}- ${ballPosTwoX(3)} +${ballPosTwoX(4)} /down${ballPosTwoX(5)} /up
-_|${ballPosOneX(0)}- ${ballPosOneX(1)}+ ${ballPosOneX(2)}- ${ballPosOneX(3)} + ${ballPosOneX(4)} - ${ballPosOneX(5)}+ ${ballPosOneX(6)} /down
-_|${ballPosZeroX(0)}-bounce ${ballPosZeroX(1)}+ ${ballPosZeroX(2)}-bounce ${ballPosZeroX(4)}-bounce
+`_|${ballPosFourX(0)}      ${ballPosFourX(1)} 
+_| ${ballPosThreeX(0)}    ${ballPosThreeX(1)}${ballPosThreeX(2)}     ${ballPosThreeX(3)} 
+_|  ${ballPosTwoX(0)}  ${ballPosTwoX(1)}  ${ballPosTwoX(2)}   ${ballPosTwoX(3)}  ${ballPosTwoX(4)}    ${ballPosTwoX(5)} 
+_|   ${ballPosOneX(0)}${ballPosOneX(1)}    ${ballPosOneX(2)} ${ballPosOneX(3)}    ${ballPosOneX(4)} ${ballPosOneX(5)}  ${ballPosOneX(6)} 
+_|    ${ballPosZeroX(0)}       ${ballPosZeroX(2)}        ${ballPosZeroX(4)}
 _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}| PINEAPPLE
 ----------------------------------------`;
 
@@ -113,7 +113,9 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}| PINEAPPLE
     // need to create object path...
     const objectPathDown1 = () => {
         if (makeBall.getCurrentPositionY === 0 && playerOne.getCurrentPositionX === 0) {
-            return makeBall.incrementPositionXPlus()
+            makeBall.incrementPositionXPlus()
+            makeBall.incrementPositionYPlus()
+            return
         }
         // if it gets to zero and it matches player position then it goes up...
         // on each second it uses...
@@ -151,6 +153,26 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}| PINEAPPLE
         return makeBall.incrementPositionYPlus()
     }
 
+    const objectPathDown3 = () => {
+        if (makeBall.getCurrentPositionY === 0 && playerOne.getCurrentPositionX === 2) {
+            makeBall.incrementPositionXPlus()
+            makeBall.incrementPositionYPlus()
+            return
+        }
+
+        return makeBall.incrementPositionYMinus()
+    }
+
+    const objectPathUp3 = () => {
+        if (makeBall.getCurrentPositionY === 2) {
+            makeBall.incrementPositionXPlus()
+            makeBall.incrementPositionYMinus()
+            return
+        }
+
+        return makeBall.incrementPositionYPlus()
+    }
+
     const objectPathSet = () => {
         if (makeBall.getCurrentPositionX === 0) {
             return objectPathDown1()
@@ -160,6 +182,10 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}| PINEAPPLE
             return objectPathDown2()
         } else if (makeBall.getCurrentPositionX === 3) {
             return objectPathUp2()
+        } else if (makeBall.getCurrentPositionX === 4) {
+            return objectPathDown3()
+        } else if (makeBall.getCurrentPositionX === 5) {
+            return objectPathUp3()
         }
 
     }
