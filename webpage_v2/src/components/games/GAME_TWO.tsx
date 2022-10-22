@@ -103,26 +103,41 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}| PINEAPPLE
             return interval.stop();
         } else {
             interval.start();
+            objectPathSet();
             console.log(seconds);
-            setPlayerField(visualField)
+            console.log(`x: ${makeBall.getCurrentPositionX}, y: ${makeBall.getCurrentPositionY}`);
+            setPlayerField(visualField);
         }
     }, [playerOne.getHitPoints, seconds])
 
     // need to create object path...
-    const objectPathX1 = () => {
+    const objectPathDown1 = () => {
         if (makeBall.getCurrentPositionY === 0 && playerOne.getCurrentPositionX === 0) {
-            makeBall.incrementPositionXPlus()
-            return objectPathX2()
+            return makeBall.incrementPositionXPlus()
         }
         // if it gets to zero and it matches player position then it goes up...
         // on each second it uses...
         makeBall.incrementPositionYMinus()
-        console.log(`x: ${makeBall.getCurrentPositionX}, y: ${makeBall.getCurrentPositionY}`);
 
     }
 
-    const objectPathX2 = () => {
+    const objectPathUp1 = () => {
+        if (makeBall.getCurrentPositionY === 4) {
+            makeBall.incrementPositionXPlus()
+            makeBall.incrementPositionYMinus()
+            return
+        }
+
         makeBall.incrementPositionYPlus()
+    }
+
+    const objectPathSet = () => {
+        if (makeBall.getCurrentPositionX === 0) {
+            return objectPathDown1()
+        } else if (makeBall.getCurrentPositionX === 1) {
+            return objectPathUp1()
+        }
+
     }
 
     return (
