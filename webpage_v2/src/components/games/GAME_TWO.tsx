@@ -96,20 +96,22 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}| PINEAPPLE
 
     const [seconds, setSeconds] = useState(0);
 
-    const speedTimer = (seconds === 6) ? 200 : 800
+    const speedTimer = (seconds === 6) ? 400 : 800
 
     const interval = useInterval(() => setSeconds((s) => s + 1), speedTimer);
 
     useEffect(() => {
         if (seconds === 6) {
-            interval.toggle()
-            interval.toggle()
+            interval.stop()
+            interval.start()
+        } else if (seconds === 0) {
+            interval.start();
         } 
 
         if (playerOne.getHitPoints === 0) {
             return interval.stop();
         } else {
-            interval.start();
+            // interval.start();
             objectPathSet();
             console.log(seconds);
             console.log(`x: ${makeBall.getCurrentPositionX}, y: ${makeBall.getCurrentPositionY}`);
