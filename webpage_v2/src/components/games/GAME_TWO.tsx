@@ -137,6 +137,9 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}|###|
             makeBall.incrementPositionXPlus()
             makeBall.incrementPositionYPlus()
             return
+        } else if (makeBall.getCurrentPositionY === 0 && playerOne.getCurrentPositionX !== 0) {
+            playerOne.attackOpponent(playerOne)
+            return makeBall = ball(0,4)
         }
         // if it gets to zero and it matches player position then it goes up...
         // on each second it uses...
