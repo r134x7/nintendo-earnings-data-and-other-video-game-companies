@@ -1,25 +1,25 @@
-import { collection as fy3_17_collection } from "../Nintendo_FY3_2017/mst_fy3_17";
-import { collection as fy3_18_collection } from "../Nintendo_FY3_2018/mst_fy3_18";
-import { collection as fy3_19_collection } from "../Nintendo_FY3_2019/mst_fy3_19";
-import { collection as fy3_20_collection } from "../Nintendo_FY3_2020/mst_fy3_20";
-import { collection as fy3_21_collection } from "../Nintendo_FY3_2021/mst_fy3_21";
-import { collection as fy3_22_collection } from "../Nintendo_FY3_2022/mst_fy3_22";
-import { collection as fy3_23_collection } from "../Nintendo_FY3_2023/mst_fy3_23";
+import { collection as fy3_2017_collection } from "../Nintendo_FY3_2017/mst_fy3_2017";
+import { collection as fy3_2018_collection } from "../Nintendo_FY3_2018/mst_fy3_2018";
+import { collection as fy3_2019_collection } from "../Nintendo_FY3_2019/mst_fy3_2019";
+import { collection as fy3_2020_collection } from "../Nintendo_FY3_2020/mst_fy3_2020";
+import { collection as fy3_2021_collection } from "../Nintendo_FY3_2021/mst_fy3_2021";
+import { collection as fy3_2022_collection } from "../Nintendo_FY3_2022/mst_fy3_2022";
+import { collection as fy3_2023_collection } from "../Nintendo_FY3_2023/mst_fy3_2023";
 
 import { Header, Titles, decimateCalculation, printHead } from "../../../utils/fy_million_seller_titles_logic"
 
     const totalCollection = [
-        fy3_17_collection,
-        fy3_18_collection,
-        fy3_19_collection,
-        fy3_20_collection,
-        fy3_21_collection,
-        fy3_22_collection,
-        fy3_23_collection,
+        fy3_2017_collection,
+        fy3_2018_collection,
+        fy3_2019_collection,
+        fy3_2020_collection,
+        fy3_2021_collection,
+        fy3_2022_collection,
+        fy3_2023_collection,
     ] as const;
 
     // latestFYcollection is where the latest FY collection needs to be placed.
-    const latestFYcollection = fy3_23_collection.map((elem, index) => {
+    const latestFYcollection = fy3_2023_collection.map((elem, index) => {
         
         return sortingArrays(index)
     })

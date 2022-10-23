@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printEarnings } from "../../data/nintendo/Nintendo_FY3_2019/earnings_fy3_19";
-import { printKPI } from "../../data/nintendo/Nintendo_FY3_2019/kpi_fy3_19";
-import { printTopSellingSwitchTitles } from "../../data/nintendo/Nintendo_FY3_2019/top_NSW_sw_fy3_19";
-import { printFYMillionSellerTitles } from "../../data/nintendo/Nintendo_FY3_2019/mst_fy3_19";
-import { printHardwareSoftware } from "../../data/nintendo/Nintendo_FY3_2019/nsw_hardware_software_fy3_19";
-import { printRegions } from "../../data/nintendo/Nintendo_FY3_2019/regional_hw_sw_fy3_19";
+import { printEarnings } from "../../data/nintendo/Nintendo_FY3_2019/earnings_fy3_2019";
+import { printKPI } from "../../data/nintendo/Nintendo_FY3_2019/kpi_fy3_2019";
+import { printTopSellingSwitchTitles } from "../../data/nintendo/Nintendo_FY3_2019/top_NSW_sw_fy3_2019";
+import { printFYMillionSellerTitles } from "../../data/nintendo/Nintendo_FY3_2019/mst_fy3_2019";
+import { printHardwareSoftware } from "../../data/nintendo/Nintendo_FY3_2019/nsw_hardware_software_fy3_2019";
+import { printRegions } from "../../data/nintendo/Nintendo_FY3_2019/regional_hw_sw_fy3_2019";
 import GRAPH_NINTENDO_EARNINGS_FY3_19 from "../../graphs/nintendo/Nintendo_FY3_2019/GRAPH_NINTENDO_EARNINGS_FY3_19";
 import GRAPH_NINTENDO_KPI_FY3_19 from "../../graphs/nintendo/Nintendo_FY3_2019/GRAPH_NINTENDO_KPI_FY3_19";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_19 from "../../graphs/nintendo/Nintendo_FY3_2019/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_19";
 import GRAPH_NINTENDO_MST_FY3_19 from "../../graphs/nintendo/Nintendo_FY3_2019/GRAPH_NINTENDO_MST_FY3_19";
 import GRAPH_NINTENDO_NSW_HW_SW_FY3_19 from "../../graphs/nintendo/Nintendo_FY3_2019/GRAPH_NINTENDO_NSW_HW_SW_FY3_19";
 
-export default function NINTENDO_FY3_19() {
+export default function NINTENDO_FY3_2019() {
 
     const [data, setData] = useState("");
     const [value, setValue] = useState("");

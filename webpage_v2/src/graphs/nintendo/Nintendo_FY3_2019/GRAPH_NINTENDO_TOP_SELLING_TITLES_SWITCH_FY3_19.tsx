@@ -29,7 +29,7 @@ import { title1Difference,
          title12Sorted,
          title13Sorted,
          title14Sorted,
-        } from "../../../data/nintendo/Nintendo_FY3_2019/top_NSW_sw_fy3_19";
+        } from "../../../data/nintendo/Nintendo_FY3_2019/top_NSW_sw_fy3_2019";
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work

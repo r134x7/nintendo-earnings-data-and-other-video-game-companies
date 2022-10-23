@@ -12,7 +12,7 @@ import {
     proportionOfFirstPartySoftwareSalesCml as proportionOfFirstPartySoftwareSalesCmlLastFY,
     proportionOfHardwareSalesCml as proportionOfHardwareSalesCmlLastFY,
     proportionOfOverseasSalesCml as proportionOfOverseasSalesCmlLastFY, 
-   } from "../../../data/nintendo/Nintendo_FY3_2017/kpi_fy3_17"
+   } from "../../../data/nintendo/Nintendo_FY3_2017/kpi_fy3_2017"
 import {
         digitalSalesQtr,
         proportionOfDigitalSalesQtr,
@@ -24,7 +24,7 @@ import {
         proportionOfFirstPartySoftwareSalesCml,
         proportionOfHardwareSalesCml,
         proportionOfOverseasSalesCml,
-       } from "../../../data/nintendo/Nintendo_FY3_2018/kpi_fy3_18"
+       } from "../../../data/nintendo/Nintendo_FY3_2018/kpi_fy3_2018"
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work

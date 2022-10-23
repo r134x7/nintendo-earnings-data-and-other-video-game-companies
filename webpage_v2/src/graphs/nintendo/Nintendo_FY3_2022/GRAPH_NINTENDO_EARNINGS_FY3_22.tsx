@@ -17,7 +17,7 @@ import { netIncomeDifference,
          netSalesLastFY,
          operatingIncome,
          operatingIncomeLastFY,
-        } from "../../../data/nintendo/Nintendo_FY3_2022/earnings_fy3_22"
+        } from "../../../data/nintendo/Nintendo_FY3_2022/earnings_fy3_2022"
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work

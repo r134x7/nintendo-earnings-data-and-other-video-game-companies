@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printEarnings } from "../../data/nintendo/Nintendo_FY3_2018/earnings_fy3_18";
-import { printKPI } from "../../data/nintendo/Nintendo_FY3_2018/kpi_fy3_18";
-import { printTopSellingSwitchTitles } from "../../data/nintendo/Nintendo_FY3_2018/top_NSW_sw_fy3_18";
-import { printFYMillionSellerTitles } from "../../data/nintendo/Nintendo_FY3_2018/mst_fy3_18";
-import { printHardwareSoftware } from "../../data/nintendo/Nintendo_FY3_2018/nsw_hardware_software_fy3_18";
-import { printRegions } from "../../data/nintendo/Nintendo_FY3_2018/regional_hw_sw_fy3_18";
+import { printEarnings } from "../../data/nintendo/Nintendo_FY3_2018/earnings_fy3_2018";
+import { printKPI } from "../../data/nintendo/Nintendo_FY3_2018/kpi_fy3_2018";
+import { printTopSellingSwitchTitles } from "../../data/nintendo/Nintendo_FY3_2018/top_NSW_sw_fy3_2018";
+import { printFYMillionSellerTitles } from "../../data/nintendo/Nintendo_FY3_2018/mst_fy3_2018";
+import { printHardwareSoftware } from "../../data/nintendo/Nintendo_FY3_2018/nsw_hardware_software_fy3_2018";
+import { printRegions } from "../../data/nintendo/Nintendo_FY3_2018/regional_hw_sw_fy3_2018";
 import GRAPH_NINTENDO_EARNINGS_FY3_18 from "../../graphs/nintendo/Nintendo_FY3_2018/GRAPH_NINTENDO_EARNINGS_FY3_18";
 import GRAPH_NINTENDO_KPI_FY3_18 from "../../graphs/nintendo/Nintendo_FY3_2018/GRAPH_NINTENDO_KPI_FY3_18";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_18 from "../../graphs/nintendo/Nintendo_FY3_2018/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_18";
 import GRAPH_NINTENDO_MST_FY3_18 from "../../graphs/nintendo/Nintendo_FY3_2018/GRAPH_NINTENDO_MST_FY3_18";
 import GRAPH_NINTENDO_NSW_HW_SW_FY3_18 from "../../graphs/nintendo/Nintendo_FY3_2018/GRAPH_NINTENDO_NSW_HW_SW_FY3_18";
 
-export default function NINTENDO_FY3_18() {
+export default function NINTENDO_FY3_2018() {
 
     const state: any = useSelector(state => state);
 

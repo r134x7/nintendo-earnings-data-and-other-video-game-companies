@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Pagination, Group, Switch } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { title1Difference,
-        } from "../../../data/nintendo/Nintendo_FY3_2017/top_NSW_sw_fy3_17";
+        } from "../../../data/nintendo/Nintendo_FY3_2017/top_NSW_sw_fy3_2017";
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
 Chart.register(...registerables); // to get the package working, source: https://www.chartjs.org/docs/next/getting-started/integration.html
 
-export default function GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_17() {
+export default function GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_2017() {
 
 
     const state: any = useSelector(state => state);
