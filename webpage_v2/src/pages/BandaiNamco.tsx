@@ -67,14 +67,14 @@ export default function BandaiNamco() {
 
     // const selectYear = (yearUsed: string, tuples: [string, JSX.Element][]): JSX.Element => {
     const selectYearComponent = (objList: {year: string, component: JSX.Element}[]) => 
-    (yearUsed: string): JSX.Element => {
+    (yearUsed: string): JSX.Element | null => {
         // let [tupleYear, tupleComponent] = tuples.filter(elem => yearUsed === elem[0]).flat() // remember it returns a shallow copy...
 
         // return tupleComponent as JSX.Element
 
         let [yearSelected] = objList.filter(elem => yearUsed === elem.year)
 
-        return yearSelected.component
+        return (yearSelected) ? yearSelected.component : null
     }
 
     // const tupleList: [string, JSX.Element][] = [
@@ -182,12 +182,11 @@ export default function BandaiNamco() {
 
             </Group>
 
-            {   (!year)
-                ? null
-                : selectYear(year)
+            {   
+                selectYear(year)
             }
             
-            { (year !== "")
+            { (selectYear(year) !== null)
                 ? (
                 <Group position="center">
                     <Space h="xl" />
