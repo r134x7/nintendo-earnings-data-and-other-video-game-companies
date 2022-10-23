@@ -83,11 +83,31 @@ export default function Nintendo() {
     const componentList = [
         {
             year: "FY3/2023",
-            component: <CAPCOM_FY3_2023 />
+            component: <NINTENDO_FY3_2023 />
         },
         {
             year: "FY3/2022",
-            component: <CAPCOM_FY3_2022 />
+            component: <NINTENDO_FY3_2022 />
+        },
+        {
+            year: "FY3/2021",
+            component: <NINTENDO_FY3_2021 />
+        },
+        {
+            year: "FY3/2020",
+            component: <NINTENDO_FY3_2020 />
+        },
+        {
+            year: "FY3/2019",
+            component: <NINTENDO_FY3_2019 />
+        },
+        {
+            year: "FY3/2018",
+            component: <NINTENDO_FY3_2018 />
+        },
+        {
+            year: "FY3/2017",
+            component: <NINTENDO_FY3_2017 />
         },
     ];
 
@@ -188,24 +208,12 @@ export default function Nintendo() {
                 : <NINTENDO_CML />
             }
 
-            {   (year === "FY3/2023" && value === "Data by Fiscal Year")
-                ? <NINTENDO_FY3_23 />
-                : (year === "FY3/2022" && value === "Data by Fiscal Year")
-                ? <NINTENDO_FY3_22 />
-                : (year === "FY3/2021" && value === "Data by Fiscal Year") 
-                ? <NINTENDO_FY3_21 />
-                : (year === "FY3/2020" && value === "Data by Fiscal Year")
-                ? <NINTENDO_FY3_20 />
-                : (year === "FY3/2019" && value === "Data by Fiscal Year")
-                ? <NINTENDO_FY3_19 />
-                : (year === "FY3/2018" && value === "Data by Fiscal Year")
-                ? <NINTENDO_FY3_18 />
-                : (year === "FY3/2017" && value === "Data by Fiscal Year")
-                ? <NINTENDO_FY3_17 />
+            {   (value === "Data by Fiscal Year")
+                ? selectYear(year)
                 : null
             }
             
-            { (year !== "" && value === "Data by Fiscal Year")
+            { (selectYear(year) !== null && value === "Data by Fiscal Year")
                 ? (
                 <Group position="center">
                     <Space h="xl" />
