@@ -65,20 +65,25 @@ export default function BandaiNamco() {
 
     }, [colour, dispatch])
 
-    const selectYear = (yearUsed: string, tuples: [string, JSX.Element][]): JSX.Element => {
-        let [tupleYear, tupleComponent] = tuples.filter(elem => yearUsed === elem[0]).flat() // remember it returns a shallow copy...
+    // const selectYear = (yearUsed: string, tuples: [string, JSX.Element][]): JSX.Element => {
+    const selectYear = (yearUsed: string, objList: {year: string, component: JSX.Element}[]): JSX.Element => {
+        // let [tupleYear, tupleComponent] = tuples.filter(elem => yearUsed === elem[0]).flat() // remember it returns a shallow copy...
 
-        return tupleComponent as JSX.Element
+        // return tupleComponent as JSX.Element
+
+        let [yearSelected] = objList.filter(elem => yearUsed === elem.year)
+
+        return yearSelected.component
     }
 
-    const tupleList: [string, JSX.Element][] = [
-        ["FY3/2022", <BANDAI_NAMCO_FY3_2022 />],
-        ["FY3/2021", <BANDAI_NAMCO_FY3_2021 />],
-        ["FY3/2020", <BANDAI_NAMCO_FY3_2020 />],
-        ["FY3/2019", <BANDAI_NAMCO_FY3_2019 />],
-    ];
+    // const tupleList: [string, JSX.Element][] = [
+    //     ["FY3/2022", <BANDAI_NAMCO_FY3_2022 />],
+    //     ["FY3/2021", <BANDAI_NAMCO_FY3_2021 />],
+    //     ["FY3/2020", <BANDAI_NAMCO_FY3_2020 />],
+    //     ["FY3/2019", <BANDAI_NAMCO_FY3_2019 />],
+    // ];
 
-    const objectList = [
+    const componentList = [
         {
             year: "FY3/2022", 
             component: <BANDAI_NAMCO_FY3_2022 />
@@ -176,7 +181,7 @@ export default function BandaiNamco() {
 
             {   (!year)
                 ? null
-                : null
+                : selectYear(year, componentList)
             }
             
             { (year !== "")

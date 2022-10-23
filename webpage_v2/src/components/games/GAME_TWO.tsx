@@ -122,12 +122,12 @@ _|${playerPosX(0)}|${playerPosX(1)}|${playerPosX(2)}|###|
         } 
 
         if (playerOne.getHitPoints === 0) {
-            console.log(seconds);
+            // console.log(seconds);
             return interval.stop();
         } else {
             // interval.start();
             objectPathSet();
-            console.log(seconds);
+            // console.log(seconds);
             // console.log(`x: ${makeBall.getCurrentPositionX}, y: ${makeBall.getCurrentPositionY}`);
             setPlayerField(visualField);
             setHitPoints(displayHP);
