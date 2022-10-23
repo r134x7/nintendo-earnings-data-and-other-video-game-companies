@@ -4,8 +4,8 @@ import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
-import CAPCOM_FY3_22 from "../components/capcom/CAPCOM_FY3_2022";
-import CAPCOM_FY3_23 from "../components/capcom/CAPCOM_FY3_2023";
+import CAPCOM_FY3_2022 from "../components/capcom/CAPCOM_FY3_2022";
+import CAPCOM_FY3_2023 from "../components/capcom/CAPCOM_FY3_2023";
 
 const yearsList = Array.from({length: 2}, (elem, index) => 
                     {
@@ -63,6 +63,27 @@ export default function Capcom() {
         }))
 
     }, [colour, dispatch])
+
+    const selectYearComponent = (objList: {year: string, component: JSX.Element}[]) => 
+    (yearUsed: string): JSX.Element | null => {
+
+        let [yearSelected] = objList.filter(elem => yearUsed === elem.year)
+
+        return (yearSelected) ? yearSelected.component : null
+    }
+
+    const componentList = [
+        {
+            year: "FY3/2023",
+            component: <CAPCOM_FY3_2023 />
+        },
+        {
+            year: "FY3/2022",
+            component: <CAPCOM_FY3_2022 />
+        },
+    ];
+
+    const selectYear = selectYearComponent(componentList);
 
     return (
 
@@ -141,14 +162,11 @@ export default function Capcom() {
 
             </Group>
 
-            {   (year === "FY3/2023" && value === "Data by Fiscal Year")
-                ? <CAPCOM_FY3_23 />
-                : (year === "FY3/2022" && value === "Data by Fiscal Year")
-                ? <CAPCOM_FY3_22 />
-                : null
+            {  
+                selectYear(year)
             }
             
-            { (year !== "" && value === "Data by Fiscal Year")
+            { (selectYear(year) !== null)
                 ? (
                 <Group position="center">
                     <Space h="xl" />

@@ -3,7 +3,7 @@ import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/cor
 import { useSelector } from "react-redux";
 import { printFYPlatinumTitles, printAllPlatinumTitles } from "../../data/capcom/Capcom_FY3_2022/platinum_titles_fy3_22";
 
-export default function CAPCOM_FY3_22() {
+export default function CAPCOM_FY3_2022() {
 
     const [data, setData] = useState("");
     const [value, setValue] = useState("");
