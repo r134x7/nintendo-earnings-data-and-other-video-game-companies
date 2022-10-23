@@ -44,7 +44,6 @@ export default function BandaiNamco() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [seconds])
 
-    const [value, setValue] = useState("Data by Fiscal Year");
     const [year, setYear] = useState("");
 
     const [colour, setColour] = useState("rgb(0, 255, 255)")
@@ -65,6 +64,21 @@ export default function BandaiNamco() {
         }))
 
     }, [colour, dispatch])
+
+    const something = (year: string, tuples: [string, JSX.Element][]) => {
+        return tuples.filter(elem => {
+            if (year === elem[0]) {
+                return elem[1]
+            }
+        })
+    }
+
+    const tupleList: [string, JSX.Element][] = [
+        ["FY3/2022", <BANDAI_NAMCO_FY3_2022 />],
+        ["FY3/2021", <BANDAI_NAMCO_FY3_2021 />],
+        ["FY3/2020", <BANDAI_NAMCO_FY3_2020 />],
+        ["FY3/2022", <BANDAI_NAMCO_FY3_2019 />],
+    ];
 
     return (
 
@@ -143,18 +157,18 @@ export default function BandaiNamco() {
 
             </Group>
 
-            {    (year === "FY3/2022" && value === "Data by Fiscal Year")
+            {    (year === "FY3/2022")
                 ? <BANDAI_NAMCO_FY3_2022 /> 
-                : (year === "FY3/2021" && value === "Data by Fiscal Year")
+                : (year === "FY3/2021")
                 ? <BANDAI_NAMCO_FY3_2021 />
-                : (year === "FY3/2020" && value === "Data by Fiscal Year")
+                : (year === "FY3/2020")
                 ? <BANDAI_NAMCO_FY3_2020 />
-                : (year === "FY3/2019" && value === "Data by Fiscal Year") 
+                : (year === "FY3/2019") 
                 ? <BANDAI_NAMCO_FY3_2019 />
                 : null
             }
             
-            { (year !== "" && value === "Data by Fiscal Year")
+            { (year !== "")
                 ? (
                 <Group position="center">
                     <Space h="xl" />
