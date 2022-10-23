@@ -72,6 +72,59 @@ export default function Sega() {
 
     }, [colour, dispatch])
 
+    const selectYearComponent = (objList: {year: string, component: JSX.Element}[]) => 
+    (yearUsed: string): JSX.Element | null => {
+
+        let [yearSelected] = objList.filter(elem => yearUsed === elem.year)
+
+        return (yearSelected) ? yearSelected.component : null
+    }
+
+    const componentList = [
+        {
+            year: "FY3/2022",
+            component: <SEGA_FY3_2022 />
+        },
+        {
+            year: "FY3/2021",
+            component: <SEGA_FY3_2021 />
+        },
+        {
+            year: "FY3/2020",
+            component: <SEGA_FY3_2020 />
+        },
+        {
+            year: "FY3/2019",
+            component: <SEGA_FY3_2019 />
+        },
+        {
+            year: "FY3/2018",
+            component: <SEGA_FY3_2018 />
+        },
+        {
+            year: "FY3/2017",
+            component: <SEGA_FY3_2017 />
+        },
+        {
+            year: "FY3/2016",
+            component: <SEGA_FY3_2016 />
+        },
+        {
+            year: "FY3/2015",
+            component: <SEGA_FY3_2015 />
+        },
+        {
+            year: "FY3/2014",
+            component: <SEGA_FY3_2014 />
+        },
+        {
+            year: "FY3/2013",
+            component: <SEGA_FY3_2013 />
+        },
+    ]
+
+    const selectYear = selectYearComponent(componentList);
+
     return (
 
         <div>
@@ -149,30 +202,11 @@ export default function Sega() {
 
             </Group>
 
-            {   (year === "FY3/2022" && value === "Data by Fiscal Year")
-                ? <SEGA_FY3_2022 />
-                : (year === "FY3/2021" && value === "Data by Fiscal Year")
-                ? <SEGA_FY3_2021 />
-                : (year === "FY3/2020" && value === "Data by Fiscal Year")
-                ? <SEGA_FY3_2020 />
-                : (year === "FY3/2019" && value === "Data by Fiscal Year") 
-                ? <SEGA_FY3_2019 />
-                : (year === "FY3/2018" && value === "Data by Fiscal Year")
-                ? <SEGA_FY3_2018 />
-                : (year === "FY3/2017" && value === "Data by Fiscal Year")
-                ? <SEGA_FY3_2017 />
-                : (year === "FY3/2016" && value === "Data by Fiscal Year")
-                ? <SEGA_FY3_2016 />
-                : (year === "FY3/2015" && value === "Data by Fiscal Year")
-                ? <SEGA_FY3_2015 />
-                : (year === "FY3/2014" && value === "Data by Fiscal Year")
-                ? <SEGA_FY3_2014 />
-                : (year === "FY3/2013" && value === "Data by Fiscal Year")
-                ? <SEGA_FY3_2013 />
-                : null
+            {   
+                selectYear(year)
             }
             
-            { (year !== "" && value === "Data by Fiscal Year")
+            { (selectYear(year) !== null)
                 ? (
                 <Group position="center">
                     <Space h="xl" />
