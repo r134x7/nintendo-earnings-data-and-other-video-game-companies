@@ -50,7 +50,6 @@ export default function Sega() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [seconds])
 
-    const [value, setValue] = useState("Data by Fiscal Year");
     const [year, setYear] = useState("");
 
     const [colour, setColour] = useState("rgb(0, 255, 255)")
