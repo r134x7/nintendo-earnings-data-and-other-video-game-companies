@@ -1,29 +1,40 @@
 import { useState } from "react";
 import { Pagination, Group, Switch } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { netIncomeDifference,
-         netIncomeLastFYDifference,
-         netSalesDifference,
-         netSalesLastFYDifference,
-         operatingIncomeDifference,
-         operatingIncomeLastFYDifference,
-         operatingMarginQuarters,
-         operatingMarginQuartersLastFY,
-         operatingMarginCumulative,
-         operatingMarginCumulativeLastFY,
-         netIncome,
-         netIncomeLastFY,
-         netSales,
-         netSalesLastFY,
-         operatingIncome,
-         operatingIncomeLastFY,
-        } from "../../../data/nintendo/Nintendo_FY3_2019/earnings_fy3_2019"
+import {
+    digitalSalesQtr as digitalSalesQtrLastFY,
+    proportionOfDigitalSalesQtr as proportionOfDigitalSalesQtrLastFY,
+    proportionOfFirstPartySoftwareSalesQtr as proportionOfFirstPartySoftwareSalesQtrLastFY,
+    proportionOfHardwareSalesQtr as proportionOfHardwareSalesQtrLastFY,
+    proportionOfOverseasSalesQtr as proportionOfOverseasSalesQtrLastFY,
+    proportionOfDLverPackagedSoftwareQtr as proportionOfDLverPackagedSoftwareQtrLastFY, 
+    digitalSalesCml as digitalSalesCmlLastFY,
+    proportionOfDLverPackagedSoftwareCml as proportionOfDLverPackagedSoftwareCmlLastFY,
+    proportionOfDigitalSalesCml as proportionOfDigitalSalesCmlLastFY,
+    proportionOfFirstPartySoftwareSalesCml as proportionOfFirstPartySoftwareSalesCmlLastFY,
+    proportionOfHardwareSalesCml as proportionOfHardwareSalesCmlLastFY,
+    proportionOfOverseasSalesCml as proportionOfOverseasSalesCmlLastFY, 
+   } from "../../../data/nintendo/Nintendo_FY3_2019/kpi_fy3_2019"
+import {
+        digitalSalesQtr,
+        proportionOfDigitalSalesQtr,
+        proportionOfFirstPartySoftwareSalesQtr,
+        proportionOfHardwareSalesQtr,
+        proportionOfOverseasSalesQtr,
+        proportionOfDLverPackagedSoftwareQtr,
+        digitalSalesCml,
+        proportionOfDigitalSalesCml,
+        proportionOfFirstPartySoftwareSalesCml,
+        proportionOfHardwareSalesCml,
+        proportionOfOverseasSalesCml,
+        proportionOfDLverPackagedSoftwareCml,
+       } from "../../../data/nintendo/Nintendo_FY3_2020/kpi_fy3_2020"
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
 Chart.register(...registerables); // to get the package working, source: https://www.chartjs.org/docs/next/getting-started/integration.html
 
-export default function GRAPH_NINTENDO_EARNINGS_FY3_19() {
+export default function GRAPH_NINTENDO_KPI_FY3_2020() {
 
     const state: any = useSelector(state => state);
 
@@ -39,57 +50,64 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_19() {
     }
 
     const labels: Labels = {
-        currentFY: "FY3/2019",
-        lastFY: "FY3/2018",
-        MarchThisYear: "March 2019",
-        MarchLastYear: "March 2018"
+        currentFY: "FY3/2020",
+        lastFY: "FY3/2019",
+        MarchThisYear: "March 2020",
+        MarchLastYear: "March 2019"
     }
 
-    const consolidatedOperatingResultsLabels = [
-        `Net Sales ${labels.currentFY}`,
-        `Operating Income ${labels.currentFY}`,
-        `Operating Margin ${labels.currentFY}`,
-        `Net Income ${labels.currentFY}`,
+    const kpiLabels = [
+        `Proportion of overseas sales ${labels.currentFY}`,
+        `Proportion of hardware sales ${labels.currentFY}`,
+        `Proportion of first party software sales ${labels.currentFY}`,
+        `Digital Sales ${labels.currentFY}`,
+        `Proportion of Digital Sales ${labels.currentFY}`,
+        `Proportion of downloadable versions of Packaged Software Sales ${labels.currentFY}`,
     ]
 
-    const consolidatedOperatingResultsLabelsLastFY = [
-        `Net Sales ${labels.lastFY}`,
-        `Operating Income ${labels.lastFY}`,
-        `Operating Margin ${labels.lastFY}`,
-        `Net Income ${labels.lastFY}`,
+    const kpiLabelsLastFY = [
+        `Proportion of overseas sales ${labels.lastFY}`,
+        `Proportion of hardware sales ${labels.lastFY}`,
+        `Proportion of first party software sales ${labels.lastFY}`,
+        `Digital Sales ${labels.lastFY}`,
+        `Proportion of Digital Sales ${labels.lastFY}`,
+        `Proportion of downloadable versions of Packaged Software Sales ${labels.lastFY}`,
     ]
 
     const graphQuarters = [
-        netSalesDifference.map((elem) => elem.value),
-        operatingIncomeDifference.map((elem) => elem.value),
-        operatingMarginQuarters.map((elem) => elem.value),
-        netIncomeDifference.map((elem) => elem.value),
+        proportionOfOverseasSalesQtr.map((elem) => elem.value),
+        proportionOfHardwareSalesQtr.map((elem) => elem.value),
+        proportionOfFirstPartySoftwareSalesQtr.map((elem) => elem.value),
+        digitalSalesQtr.map((elem) => elem.value),
+        proportionOfDigitalSalesQtr.map((elem) => elem.value),
+        proportionOfDLverPackagedSoftwareQtr.map((elem) => elem.value),
     ]
 
     const graphQuartersLastFY = [
-        netSalesLastFYDifference.map((elem) => elem.value),
-        operatingIncomeLastFYDifference.map((elem) => elem.value),
-        operatingMarginQuartersLastFY.map((elem) => elem.value),
-        netIncomeLastFYDifference.map((elem) => elem.value),
+        proportionOfOverseasSalesQtrLastFY.map((elem) => elem.value),
+        proportionOfHardwareSalesQtrLastFY.map((elem) => elem.value),
+        proportionOfFirstPartySoftwareSalesQtrLastFY.map((elem) => elem.value),
+        digitalSalesQtrLastFY.map((elem) => elem.value),
+        proportionOfDigitalSalesQtrLastFY.map((elem) => elem.value),
+        proportionOfDLverPackagedSoftwareQtrLastFY.map((elem) => elem.value),
     ]
 
     const graphCumulative = [
-        netSales.map((elem, index) => elem.value - netSalesDifference[index].value),
-        operatingIncome.map((elem, index) => elem.value - operatingIncomeDifference[index].value),
-        [operatingMarginQuarters[0] , ...operatingMarginCumulative].map((elem, index) => {
-            return elem.value
-        }),
-        netIncome.map((elem, index) => elem.value - netIncomeDifference[index].value),
+        [proportionOfOverseasSalesQtr[0], ...proportionOfOverseasSalesCml].map((elem) => elem.value),
+        [proportionOfHardwareSalesQtr[0], ...proportionOfHardwareSalesCml].map((elem) => elem.value),
+        [proportionOfFirstPartySoftwareSalesQtr[0], ...proportionOfFirstPartySoftwareSalesCml].map((elem) => elem.value),
+        [digitalSalesQtr[0], ...digitalSalesCml].map((elem, index) => elem.value - digitalSalesQtr[index].value),
+        [proportionOfDigitalSalesQtr[0], ...proportionOfDigitalSalesCml].map((elem) => elem.value),
+        [proportionOfDLverPackagedSoftwareQtr[0], ...proportionOfDLverPackagedSoftwareCml].map((elem) => elem.value),
     ]
 
     const graphCumulativeLastFY = [
-        netSalesLastFY.map((elem, index) => elem.value - netSalesLastFYDifference[index].value),
-        operatingIncomeLastFY.map((elem, index) => elem.value - operatingIncomeLastFYDifference[index].value),
-        [operatingMarginQuartersLastFY[0], ...operatingMarginCumulativeLastFY].map((elem, index) => {
-            return elem.value
-        }),
-
-        netIncomeLastFY.map((elem, index) => elem.value - netIncomeLastFYDifference[index].value),
+        [proportionOfOverseasSalesQtrLastFY[0], ...proportionOfOverseasSalesCmlLastFY].map((elem) => elem.value),
+        [proportionOfHardwareSalesQtrLastFY[0], ...proportionOfHardwareSalesCmlLastFY].map((elem) => elem.value),
+        [proportionOfFirstPartySoftwareSalesQtrLastFY[0], ...proportionOfFirstPartySoftwareSalesCmlLastFY].map((elem) => elem.value),
+        [digitalSalesQtrLastFY[0], ...digitalSalesCmlLastFY].map((elem, index) => elem.value - digitalSalesQtrLastFY[index].value),
+        [proportionOfDigitalSalesQtrLastFY[0], ...proportionOfDigitalSalesCmlLastFY].map((elem) => elem.value),
+        [proportionOfDLverPackagedSoftwareQtrLastFY[0], ...proportionOfDLverPackagedSoftwareCmlLastFY].map((elem) => elem.value),
     ]
 
     return (
@@ -97,13 +115,13 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_19() {
         {(checked === false && barChecked === false)
             ? (
                 <Line
-                    datasetIdKey="Consolidated Earnings"
+                    datasetIdKey="Key/Digital Sales Indicator"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
                             data: graphQuarters[activePage-1],
-                            label: `${consolidatedOperatingResultsLabels[activePage-1]}[Quarter]`,
+                            label: `${kpiLabels[activePage-1]}[Quarter]`,
                             borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + "1)"
@@ -120,7 +138,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_19() {
                             },
                             {
                             data: graphCumulative[activePage-1],
-                            label: `${consolidatedOperatingResultsLabels[activePage-1]}[Cumulative]`,
+                            label: `${kpiLabels[activePage-1]}[Cumulative]`,
                             borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".3)"
@@ -141,18 +159,18 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_19() {
                     options={{
                      scales: {
                         y: {
-                            stacked: (activePage !== 3)
+                            stacked: (activePage === 4)
                                         ? true
                                         : false,
                             title: {
                               display: true,
-                              text: (activePage !== 3)
-                                        ? "Million yen (¥)"
+                              text: (activePage === 4)
+                                        ? "Billion yen (¥)"
                                         : "Percentage (%)",
                             },
                           },
                           x: {
-                            stacked: (activePage !== 3)
+                            stacked: (activePage === 4)
                                         ? true
                                         : false,
                               title: {
@@ -167,13 +185,13 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_19() {
             : (checked === true && barChecked === false) 
             ? (
                 <Line
-                    datasetIdKey="Consolidated Earnings"
+                    datasetIdKey="Key/Digital Sales Indicator"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
                                 data: graphQuarters[activePage-1],
-                                label: `${consolidatedOperatingResultsLabels[activePage-1]}[Quarter]`,
+                                label: `${kpiLabels[activePage-1]}[Quarter]`,
                                 borderColor: "indigo",
                                 backgroundColor: "red",
                                 pointRadius: 6,
@@ -183,7 +201,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_19() {
                             },
                             {
                                 data: graphCumulative[activePage-1],
-                                label: `${consolidatedOperatingResultsLabels[activePage-1]}[Cumulative]`,
+                                label: `${kpiLabels[activePage-1]}[Cumulative]`,
                                 borderColor: "rgba(75, 0, 130, .30)",
                                 backgroundColor: "red",
                                 pointRadius: 6,
@@ -193,7 +211,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_19() {
                             },
                             {
                                 data: graphQuartersLastFY[activePage-1],
-                                label: `${consolidatedOperatingResultsLabelsLastFY[activePage-1]}[Quarter]`,
+                                label: `${kpiLabelsLastFY[activePage-1]}[Quarter]`,
                                 borderColor: "orange",
                                 backgroundColor: "cyan",
                                 pointRadius: 6,
@@ -203,7 +221,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_19() {
                             },
                             {
                                 data: graphCumulativeLastFY[activePage-1],
-                                label: `${consolidatedOperatingResultsLabelsLastFY[activePage-1]}[Cumulative]`,
+                                label: `${kpiLabelsLastFY[activePage-1]}[Cumulative]`,
                                 borderColor: "rgba(255, 165, 0, 0.3)",
                                 backgroundColor: "cyan",
                                 pointRadius: 6,
@@ -217,18 +235,18 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_19() {
                     options={{
                      scales: {
                         y: {
-                            stacked: (activePage !== 3)
+                            stacked: (activePage === 4)
                                         ? true
                                         : false,
                             title: {
                               display: true,
-                              text: (activePage !== 3)
-                                        ? "Million yen (¥)"
+                              text: (activePage === 4)
+                                        ? "Billion yen (¥)"
                                         : "Percentage (%)",
                             },
                           },
                           x: {
-                            stacked: (activePage !== 3)
+                            stacked: (activePage === 4)
                                         ? true
                                         : false,
                               title: {
@@ -243,13 +261,13 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_19() {
             : (checked === false && barChecked === true) 
             ? (
                 <Bar
-                    datasetIdKey="Consolidated Earnings"
+                    datasetIdKey="Key/Digital Sales Indicator"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
                             data: graphQuarters[activePage-1],
-                            label: `${consolidatedOperatingResultsLabels[activePage-1]}[Quarter]`,
+                            label: `${kpiLabels[activePage-1]}[Quarter]`,
                             backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".80)"
@@ -260,7 +278,7 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_19() {
                             },
                             {
                             data: graphCumulative[activePage-1],
-                            label: `${consolidatedOperatingResultsLabels[activePage-1]}[Cumulative]`,
+                            label: `${kpiLabels[activePage-1]}[Cumulative]`,
                             backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".20)"
@@ -275,18 +293,18 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_19() {
                     options={{
                      scales: {
                         y: {
-                            stacked: (activePage !== 3)
+                            stacked: (activePage === 4)
                                         ? true
                                         : false,
                             title: {
                               display: true,
-                              text: (activePage !== 3)
-                                        ? "Million yen (¥)"
+                              text: (activePage === 4)
+                                        ? "Billion yen (¥)"
                                         : "Percentage (%)",
                             },
                           },
                           x: {
-                            stacked: (activePage !== 3)
+                            stacked: (activePage === 4)
                                         ? true
                                         : false,
                               title: {
@@ -300,47 +318,47 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_19() {
             )
             : (
                 <Bar
-                datasetIdKey="Consolidated Earnings"
+                datasetIdKey="Key/Digital Sales Indicator"
                 data={{
                     labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                     datasets: [
                         {
                             data: graphQuarters[activePage-1],
-                            label: `${consolidatedOperatingResultsLabels[activePage-1]}[Quarter]`,
+                            label: `${kpiLabels[activePage-1]}[Quarter]`,
                             borderColor: "black",
                             backgroundColor: "indigo",
                             borderWidth: 2,
-                            stack: (activePage !== 3)
+                            stack: (activePage === 4)
                                     ? "stack 0"
                                     : "0",
                         },
                         {
                             data: graphCumulative[activePage-1],
-                            label: `${consolidatedOperatingResultsLabels[activePage-1]}[Cumulative]`,
+                            label: `${kpiLabels[activePage-1]}[Cumulative]`,
                             borderColor: "black",
                             backgroundColor: "rgba(75, 0, 130, .20)",
                             borderWidth: 2,
-                            stack: (activePage !== 3)
+                            stack: (activePage === 4)
                                     ? "stack 0"
                                     : "1",
                         },
                         {
                             data: graphQuartersLastFY[activePage-1],
-                            label: `${consolidatedOperatingResultsLabelsLastFY[activePage-1]}[Quarter]`,
+                            label: `${kpiLabelsLastFY[activePage-1]}[Quarter]`,
                             borderColor: "black",
                             backgroundColor: "orange",
                             borderWidth: 2,
-                            stack: (activePage !== 3)
+                            stack: (activePage === 4)
                                     ? "stack 1"
                                     : "2",
                         },
                         {
                             data: graphCumulativeLastFY[activePage-1],
-                            label: `${consolidatedOperatingResultsLabelsLastFY[activePage-1]}[Cumulative]`,
+                            label: `${kpiLabelsLastFY[activePage-1]}[Cumulative]`,
                             borderColor: "black",
                             backgroundColor: "rgba(255, 165, 0, 0.2)",
                             borderWidth: 2,
-                            stack: (activePage !== 3)
+                            stack: (activePage === 4)
                                     ? "stack 1"
                                     : "3",
                         },
@@ -350,18 +368,18 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_19() {
                 options={{
                  scales: {
                     y: {
-                            stacked: (activePage !== 3)
+                            stacked: (activePage === 4)
                                         ? true
                                         : false,
                         title: {
                           display: true,
-                          text: (activePage !== 3)
-                                        ? "Million yen (¥)"
+                          text: (activePage === 4)
+                                        ? "Billion yen (¥)"
                                         : "Percentage (%)",
                         },
                       },
-                    x: {
-                            stacked: (activePage !== 3)
+                      x: {
+                            stacked: (activePage === 4)
                                         ? true
                                         : false,
                           title: {

@@ -1,20 +1,33 @@
 import { useState } from "react";
 import { Pagination, Group, Switch } from "@mantine/core";
 import { useSelector } from "react-redux";
-import {
-        differenceTitles,
-        sortedTitles,
-} from "../../../data/nintendo/Nintendo_FY3_2023/mst_fy3_2023";
+import { netIncomeDifference,
+         netIncomeLastFYDifference,
+         netSalesDifference,
+         netSalesLastFYDifference,
+         operatingIncomeDifference,
+         operatingIncomeLastFYDifference,
+         operatingMarginQuarters,
+         operatingMarginQuartersLastFY,
+         operatingMarginCumulative,
+         operatingMarginCumulativeLastFY,
+         netIncome,
+         netIncomeLastFY,
+         netSales,
+         netSalesLastFY,
+         operatingIncome,
+         operatingIncomeLastFY,
+        } from "../../../data/nintendo/Nintendo_FY3_2022/earnings_fy3_2022"
+
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
 Chart.register(...registerables); // to get the package working, source: https://www.chartjs.org/docs/next/getting-started/integration.html
 
-export default function GRAPH_NINTENDO_MST_FY3_23() {
+export default function GRAPH_NINTENDO_EARNINGS_FY3_2022() {
 
     const state: any = useSelector(state => state);
 
     const [activePage, setPage] = useState(1);
-    const [secondDataRef, setSecondDataRef] = useState(2);
     const [checked, setChecked] = useState(false);
     const [barChecked, setBarChecked] = useState(false);
 
@@ -26,44 +39,81 @@ export default function GRAPH_NINTENDO_MST_FY3_23() {
     }
 
     const labels: Labels = {
-        currentFY: "FY3/2023",
-        lastFY: "FY3/2022",
-        MarchThisYear: "March 2023",
-        MarchLastYear: "March 2022"
+        currentFY: "FY3/2022",
+        lastFY: "FY3/2021",
+        MarchThisYear: "March 2022",
+        MarchLastYear: "March 2021"
     }
 
-    const headerLabels = sortedTitles.map((elem) => {
-        return elem.map((secondElem, secondIndex) => {
-            return (secondIndex === 0) 
-                    ? `${secondElem.title} ${labels.currentFY}`
-                    : []
-        }).filter((elem) => elem.length !== 0)
-    }) // trying to not have to manually list many titles...
+    const consolidatedOperatingResultsLabels = [
+        `Net Sales ${labels.currentFY}`,
+        `Operating Income ${labels.currentFY}`,
+        `Operating Margin ${labels.currentFY}`,
+        `Net Income ${labels.currentFY}`,
+    ]
 
-    const graphQuartersRegionA = differenceTitles.map((elem) => {
-        return elem.map((secondElem, secondIndex) => {
-            return secondElem.valueA
-        })
-    })
+    const consolidatedOperatingResultsLabelsLastFY = [
+        `Net Sales ${labels.lastFY}`,
+        `Operating Income ${labels.lastFY}`,
+        `Operating Margin ${labels.lastFY}`,
+        `Net Income ${labels.lastFY}`,
+    ]
 
-    const graphQuartersRegionB = differenceTitles.map((elem) => {
-        return elem.map((secondElem, secondIndex) => {
-            return secondElem.valueB
-        })
-    })
+    const graphQuarters = [
+        netSalesDifference.map((elem) => elem.value),
+        operatingIncomeDifference.map((elem) => elem.value),
+        operatingMarginQuarters.map((elem) => elem.value),
+        netIncomeDifference.map((elem) => elem.value),
+    ]
+
+    const graphQuartersLastFY = [
+        netSalesLastFYDifference.map((elem) => elem.value),
+        operatingIncomeLastFYDifference.map((elem) => elem.value),
+        operatingMarginQuartersLastFY.map((elem) => elem.value),
+        netIncomeLastFYDifference.map((elem) => elem.value),
+    ]
+
+    const graphCumulative = [
+        netSales.map((elem, index) => elem.value - netSalesDifference[index].value),
+        operatingIncome.map((elem, index) => elem.value - operatingIncomeDifference[index].value),
+        [operatingMarginQuarters[0] , ...operatingMarginCumulative].map((elem, index) => {
+            return elem.value
+            // return (index === 0)
+            // ? 0
+            // : (elem.value > operatingMarginQuarters[index].value)
+            // ? elem.value - operatingMarginQuarters[index].value
+            // // : - elem.value + operatingMarginQuarters[index].value
+            // : - elem.value + operatingMarginQuarters[index].value // the least worst result to ensure accuracy
+        }),
+        netIncome.map((elem, index) => elem.value - netIncomeDifference[index].value),
+    ]
+
+    const graphCumulativeLastFY = [
+        netSalesLastFY.map((elem, index) => elem.value - netSalesLastFYDifference[index].value),
+        operatingIncomeLastFY.map((elem, index) => elem.value - operatingIncomeLastFYDifference[index].value),
+        [operatingMarginQuartersLastFY[0], ...operatingMarginCumulativeLastFY].map((elem, index) => {
+            return elem.value
+            // return (elem.value > operatingMarginQuartersLastFY[index].value)
+            // ? elem.value - operatingMarginQuartersLastFY[index].value
+            // // : - elem.value + operatingMarginQuarters[index].value
+            // : 0 // the least worst result to ensure accuracy
+        }),
+
+        netIncomeLastFY.map((elem, index) => elem.value - netIncomeLastFYDifference[index].value),
+    ]
 
     return (
         <div className="chart">
         {(checked === false && barChecked === false)
             ? (
                 <Line
-                    datasetIdKey="FY Million-Seller Titles"
+                    datasetIdKey="Consolidated Earnings"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                            data: graphQuartersRegionA[activePage-1],
-                            label: `${headerLabels[activePage-1]}[Japan]`,
+                            data: graphQuarters[activePage-1],
+                            label: `${consolidatedOperatingResultsLabels[activePage-1]}[Quarter]`,
                             borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + "1)"
@@ -79,8 +129,8 @@ export default function GRAPH_NINTENDO_MST_FY3_23() {
                             pointBorderWidth: 2,
                             },
                             {
-                            data: graphQuartersRegionB[activePage-1],
-                            label: `${headerLabels[activePage-1]}[Overseas]`,
+                            data: graphCumulative[activePage-1],
+                            label: `${consolidatedOperatingResultsLabels[activePage-1]}[Cumulative]`,
                             borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".3)"
@@ -101,15 +151,20 @@ export default function GRAPH_NINTENDO_MST_FY3_23() {
                     options={{
                      scales: {
                         y: {
-                            stacked: true,
-                            type: "logarithmic",
+                            stacked: (activePage !== 3)
+                                        ? true
+                                        : false,
                             title: {
                               display: true,
-                              text: "Units in Millions",
+                              text: (activePage !== 3)
+                                        ? "Million yen (¥)"
+                                        : "Percentage (%)",
                             },
                           },
                           x: {
-                            stacked: true,
+                            stacked: (activePage !== 3)
+                                        ? true
+                                        : false,
                               title: {
                                   display: true,
                                   text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
@@ -122,13 +177,13 @@ export default function GRAPH_NINTENDO_MST_FY3_23() {
             : (checked === true && barChecked === false) 
             ? (
                 <Line
-                    datasetIdKey="FY Million-Seller Titles"
+                    datasetIdKey="Consolidated Earnings"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                                data: graphQuartersRegionA[activePage-1],
-                                label: `${headerLabels[activePage-1]}[Japan]`,
+                                data: graphQuarters[activePage-1],
+                                label: `${consolidatedOperatingResultsLabels[activePage-1]}[Quarter]`,
                                 borderColor: "indigo",
                                 backgroundColor: "red",
                                 pointRadius: 6,
@@ -137,8 +192,8 @@ export default function GRAPH_NINTENDO_MST_FY3_23() {
                                 stack: "stack 0",
                             },
                             {
-                                data: graphQuartersRegionB[activePage-1],
-                                label: `${headerLabels[activePage-1]}[Overseas]`,
+                                data: graphCumulative[activePage-1],
+                                label: `${consolidatedOperatingResultsLabels[activePage-1]}[Cumulative]`,
                                 borderColor: "rgba(75, 0, 130, .30)",
                                 backgroundColor: "red",
                                 pointRadius: 6,
@@ -147,8 +202,8 @@ export default function GRAPH_NINTENDO_MST_FY3_23() {
                                 stack: "stack 0",
                             },
                             {
-                                data: graphQuartersRegionA[secondDataRef-1],
-                                label: `${headerLabels[secondDataRef-1]}[Japan]`,
+                                data: graphQuartersLastFY[activePage-1],
+                                label: `${consolidatedOperatingResultsLabelsLastFY[activePage-1]}[Quarter]`,
                                 borderColor: "orange",
                                 backgroundColor: "cyan",
                                 pointRadius: 6,
@@ -157,8 +212,8 @@ export default function GRAPH_NINTENDO_MST_FY3_23() {
                                 stack: "stack 1",
                             },
                             {
-                                data: graphQuartersRegionB[secondDataRef-1],
-                                label: `${headerLabels[secondDataRef-1]}[Overseas]`,
+                                data: graphCumulativeLastFY[activePage-1],
+                                label: `${consolidatedOperatingResultsLabelsLastFY[activePage-1]}[Cumulative]`,
                                 borderColor: "rgba(255, 165, 0, 0.3)",
                                 backgroundColor: "cyan",
                                 pointRadius: 6,
@@ -172,15 +227,20 @@ export default function GRAPH_NINTENDO_MST_FY3_23() {
                     options={{
                      scales: {
                         y: {
-                            stacked: true,
-                            type: "logarithmic",
+                            stacked: (activePage !== 3)
+                                        ? true
+                                        : false,
                             title: {
                               display: true,
-                              text: "Units in Millions",
+                              text: (activePage !== 3)
+                                        ? "Million yen (¥)"
+                                        : "Percentage (%)",
                             },
                           },
                           x: {
-                            stacked: true,
+                            stacked: (activePage !== 3)
+                                        ? true
+                                        : false,
                               title: {
                                   display: true,
                                   text: `Quarters for Fiscal Years Ending ${labels.MarchThisYear} and ${labels.MarchLastYear}`,
@@ -193,13 +253,13 @@ export default function GRAPH_NINTENDO_MST_FY3_23() {
             : (checked === false && barChecked === true) 
             ? (
                 <Bar
-                    datasetIdKey="FY Million-Seller Titles"
+                    datasetIdKey="Consolidated Earnings"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                            data: graphQuartersRegionA[activePage-1],
-                            label: `${headerLabels[activePage-1]}[Japan]`,
+                            data: graphQuarters[activePage-1],
+                            label: `${consolidatedOperatingResultsLabels[activePage-1]}[Quarter]`,
                             backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".80)"
@@ -209,8 +269,8 @@ export default function GRAPH_NINTENDO_MST_FY3_23() {
                             borderWidth: 2,
                             },
                             {
-                            data: graphQuartersRegionB[activePage-1],
-                            label: `${headerLabels[activePage-1]}[Overseas]`,
+                            data: graphCumulative[activePage-1],
+                            label: `${consolidatedOperatingResultsLabels[activePage-1]}[Cumulative]`,
                             backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".20)"
@@ -225,15 +285,20 @@ export default function GRAPH_NINTENDO_MST_FY3_23() {
                     options={{
                      scales: {
                         y: {
-                            stacked: true,
-                            type: "logarithmic",
+                            stacked: (activePage !== 3)
+                                        ? true
+                                        : false,
                             title: {
                               display: true,
-                              text: "Units in Millions",
+                              text: (activePage !== 3)
+                                        ? "Million yen (¥)"
+                                        : "Percentage (%)",
                             },
                           },
                           x: {
-                            stacked: true,
+                            stacked: (activePage !== 3)
+                                        ? true
+                                        : false,
                               title: {
                                   display: true,
                                   text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
@@ -245,41 +310,49 @@ export default function GRAPH_NINTENDO_MST_FY3_23() {
             )
             : (
                 <Bar
-                datasetIdKey="FY Million-Seller Titles"
+                datasetIdKey="Consolidated Earnings"
                 data={{
                     labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                     datasets: [
                         {
-                            data: graphQuartersRegionA[activePage-1],
-                            label: `${headerLabels[activePage-1]}[Japan]`,
+                            data: graphQuarters[activePage-1],
+                            label: `${consolidatedOperatingResultsLabels[activePage-1]}[Quarter]`,
                             borderColor: "black",
                             backgroundColor: "indigo",
                             borderWidth: 2,
-                            stack: "stack 0"
+                            stack: (activePage !== 3)
+                                    ? "stack 0"
+                                    : "0",
                         },
                         {
-                            data: graphQuartersRegionB[activePage-1],
-                            label: `${headerLabels[activePage-1]}[Overseas]`,
+                            data: graphCumulative[activePage-1],
+                            label: `${consolidatedOperatingResultsLabels[activePage-1]}[Cumulative]`,
                             borderColor: "black",
                             backgroundColor: "rgba(75, 0, 130, .20)",
                             borderWidth: 2,
-                            stack: "stack 0"
+                            stack: (activePage !== 3)
+                                    ? "stack 0"
+                                    : "1",
                         },
                         {
-                            data: graphQuartersRegionA[secondDataRef-1],
-                            label: `${headerLabels[secondDataRef-1]}[Japan]`,
+                            data: graphQuartersLastFY[activePage-1],
+                            label: `${consolidatedOperatingResultsLabelsLastFY[activePage-1]}[Quarter]`,
                             borderColor: "black",
                             backgroundColor: "orange",
                             borderWidth: 2,
-                            stack: "stack 1"
+                            stack: (activePage !== 3)
+                                    ? "stack 1"
+                                    : "2",
                         },
                         {
-                            data: graphQuartersRegionB[secondDataRef-1],
-                            label: `${headerLabels[secondDataRef-1]}[Overseas]`,
+                            data: graphCumulativeLastFY[activePage-1],
+                            label: `${consolidatedOperatingResultsLabelsLastFY[activePage-1]}[Cumulative]`,
                             borderColor: "black",
                             backgroundColor: "rgba(255, 165, 0, 0.2)",
                             borderWidth: 2,
-                            stack: "stack 1"
+                            stack: (activePage !== 3)
+                                    ? "stack 1"
+                                    : "3",
                         },
                     ], 
                 }}
@@ -287,15 +360,20 @@ export default function GRAPH_NINTENDO_MST_FY3_23() {
                 options={{
                  scales: {
                     y: {
-                            stacked: true,
-                            type: "logarithmic",
+                            stacked: (activePage !== 3)
+                                        ? true
+                                        : false,
                         title: {
                           display: true,
-                              text: "Units in Millions",
+                          text: (activePage !== 3)
+                                        ? "Million yen (¥)"
+                                        : "Percentage (%)",
                         },
                       },
-                      x: {
-                            stacked: true,
+                    x: {
+                            stacked: (activePage !== 3)
+                                        ? true
+                                        : false,
                           title: {
                               display: true,
                               text: `Quarters for Fiscal Years Ending ${labels.MarchThisYear} and ${labels.MarchLastYear}`,
@@ -306,12 +384,9 @@ export default function GRAPH_NINTENDO_MST_FY3_23() {
             />
             )}
                 <Group mt="md" position="center">
-                    <Pagination page={activePage} onChange={setPage} total={headerLabels.length} color="teal" size="sm" radius="md" />
+                    <Pagination page={activePage} onChange={setPage} total={graphQuarters.length} color="teal" size="sm" radius="md" />
                         <Switch onLabel="BAR" offLabel="BAR" size="md" checked={barChecked} onChange={(event) => setBarChecked(event.currentTarget.checked)} />
                             <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
-                        {(checked === true) 
-                        ? <Pagination mr="xl" page={secondDataRef} onChange={setSecondDataRef} total={headerLabels.length} color="red" size="sm" radius="md" />
-                        : null}
             </Group>
         </div>
 

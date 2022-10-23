@@ -17,13 +17,13 @@ import { netIncomeDifference,
          netSalesLastFY,
          operatingIncome,
          operatingIncomeLastFY,
-        } from "../../../data/nintendo/Nintendo_FY3_2020/earnings_fy3_2020"
+        } from "../../../data/nintendo/Nintendo_FY3_2019/earnings_fy3_2019"
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
 Chart.register(...registerables); // to get the package working, source: https://www.chartjs.org/docs/next/getting-started/integration.html
 
-export default function GRAPH_NINTENDO_EARNINGS_FY3_20() {
+export default function GRAPH_NINTENDO_EARNINGS_FY3_2019() {
 
     const state: any = useSelector(state => state);
 
@@ -39,10 +39,10 @@ export default function GRAPH_NINTENDO_EARNINGS_FY3_20() {
     }
 
     const labels: Labels = {
-        currentFY: "FY3/2020",
-        lastFY: "FY3/2019",
-        MarchThisYear: "March 2020",
-        MarchLastYear: "March 2019"
+        currentFY: "FY3/2019",
+        lastFY: "FY3/2018",
+        MarchThisYear: "March 2019",
+        MarchLastYear: "March 2018"
     }
 
     const consolidatedOperatingResultsLabels = [

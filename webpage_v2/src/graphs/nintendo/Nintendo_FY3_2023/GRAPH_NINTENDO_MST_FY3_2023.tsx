@@ -2,29 +2,19 @@ import { useState } from "react";
 import { Pagination, Group, Switch } from "@mantine/core";
 import { useSelector } from "react-redux";
 import {
-        nintendoMobileFiltered,
-        nintendoMobileLastFY,
-        nintendoSwitchHardwareTotalFiltered,
-        nintendoSwitchHardwareTotalLastFY,
-        nintendoSwitchSoftwareTotalFiltered,
-        nintendoSwitchSoftwareTotalLastFY,
-        quarterHardwareTotal,
-        quarterHardwareTotalLastFY,
-        quarterNintendoMobile,
-        quarterNintendoMobileLastFY,
-        quarterSoftwareTotal,
-        quarterSoftwareTotalLastFY,
-} from "../../../data/nintendo/Nintendo_FY3_2019/nsw_hardware_software_fy3_2019"
-
+        differenceTitles,
+        sortedTitles,
+} from "../../../data/nintendo/Nintendo_FY3_2023/mst_fy3_2023";
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
 Chart.register(...registerables); // to get the package working, source: https://www.chartjs.org/docs/next/getting-started/integration.html
 
-export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_19() {
+export default function GRAPH_NINTENDO_MST_FY3_2023() {
 
     const state: any = useSelector(state => state);
 
     const [activePage, setPage] = useState(1);
+    const [secondDataRef, setSecondDataRef] = useState(2);
     const [checked, setChecked] = useState(false);
     const [barChecked, setBarChecked] = useState(false);
 
@@ -36,65 +26,44 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_19() {
     }
 
     const labels: Labels = {
-        currentFY: "FY3/2019",
-        lastFY: "FY3/2018",
-        MarchThisYear: "March 2019",
-        MarchLastYear: "March 2018"
+        currentFY: "FY3/2023",
+        lastFY: "FY3/2022",
+        MarchThisYear: "March 2023",
+        MarchLastYear: "March 2022"
     }
 
-    const headerLabels = [
-        `Switch ${labels.currentFY}`,
-        `Switch Lite ${labels.currentFY}`,
-        `Switch Hardware Total ${labels.currentFY}`,
-        `Switch Software Total ${labels.currentFY}`,
-        `Mobile, IP related income, etc. ${labels.currentFY}`,
-    ]
+    const headerLabels = sortedTitles.map((elem) => {
+        return elem.map((secondElem, secondIndex) => {
+            return (secondIndex === 0) 
+                    ? `${secondElem.title} ${labels.currentFY}`
+                    : []
+        }).filter((elem) => elem.length !== 0)
+    }) // trying to not have to manually list many titles...
 
-    const headerLabelsLastFY = [
-        `Switch ${labels.lastFY}`,
-        `Switch Lite ${labels.lastFY}`,
-        `Switch Hardware Total ${labels.lastFY}`,
-        `Switch Software Total ${labels.lastFY}`,
-        `Mobile, IP related income, etc. ${labels.lastFY}`,
-    ]
+    const graphQuartersRegionA = differenceTitles.map((elem) => {
+        return elem.map((secondElem, secondIndex) => {
+            return secondElem.valueA
+        })
+    })
 
-    const graphQuarters = [
-        quarterHardwareTotal.map((elem) => (elem.value / 100).toFixed(2)),
-        quarterSoftwareTotal.map((elem) => (elem.value / 100).toFixed(2)),
-        quarterNintendoMobile.map((elem) => elem.value),
-    ]
-
-    const graphQuartersLastFY = [
-        quarterHardwareTotalLastFY.map((elem) => (elem.value / 100).toFixed(2)),
-        quarterSoftwareTotalLastFY.map((elem) => (elem.value / 100).toFixed(2)),
-        quarterNintendoMobileLastFY.map((elem) => elem.value),
-    ]
-
-    const graphCumulative = [
-        nintendoSwitchHardwareTotalFiltered.map((elem, index) => ((elem.value - quarterHardwareTotal[index].value) / 100).toFixed(2)),
-        nintendoSwitchSoftwareTotalFiltered.map((elem, index) => ((elem.value - quarterSoftwareTotal[index].value) / 100).toFixed(2)),
-        nintendoMobileFiltered.map((elem, index) => ((elem.value - quarterNintendoMobile[index].value)).toFixed(2)),
-    ]
-
-    const graphCumulativeLastFY = [
-        nintendoSwitchHardwareTotalLastFY.map((elem, index) => ((elem.value - quarterHardwareTotalLastFY[index].value) / 100).toFixed(2)),
-        nintendoSwitchSoftwareTotalLastFY.map((elem, index) => ((elem.value - quarterSoftwareTotalLastFY[index].value) / 100).toFixed(2)),
-        nintendoMobileLastFY.map((elem, index) => ((elem.value - quarterNintendoMobileLastFY[index].value)).toFixed(2)),
-
-    ]
+    const graphQuartersRegionB = differenceTitles.map((elem) => {
+        return elem.map((secondElem, secondIndex) => {
+            return secondElem.valueB
+        })
+    })
 
     return (
         <div className="chart">
         {(checked === false && barChecked === false)
             ? (
                 <Line
-                    datasetIdKey="Global HW/SW Sales Units"
+                    datasetIdKey="FY Million-Seller Titles"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                            data: graphQuarters[activePage-1],
-                            label: `${headerLabels[activePage-1]}[Quarter]`,
+                            data: graphQuartersRegionA[activePage-1],
+                            label: `${headerLabels[activePage-1]}[Japan]`,
                             borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + "1)"
@@ -110,8 +79,8 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_19() {
                             pointBorderWidth: 2,
                             },
                             {
-                            data: graphCumulative[activePage-1],
-                            label: `${headerLabels[activePage-1]}[Cumulative]`,
+                            data: graphQuartersRegionB[activePage-1],
+                            label: `${headerLabels[activePage-1]}[Overseas]`,
                             borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".3)"
@@ -133,11 +102,10 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_19() {
                      scales: {
                         y: {
                             stacked: true,
+                            type: "logarithmic",
                             title: {
                               display: true,
-                              text: (activePage === 6)
-                                        ? "Million yen (¥)"
-                                        : "Units in Millions",
+                              text: "Units in Millions",
                             },
                           },
                           x: {
@@ -154,13 +122,13 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_19() {
             : (checked === true && barChecked === false) 
             ? (
                 <Line
-                    datasetIdKey="Global HW/SW Sales Units"
+                    datasetIdKey="FY Million-Seller Titles"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                                data: graphQuarters[activePage-1],
-                                label: `${headerLabels[activePage-1]}[Quarter]`,
+                                data: graphQuartersRegionA[activePage-1],
+                                label: `${headerLabels[activePage-1]}[Japan]`,
                                 borderColor: "indigo",
                                 backgroundColor: "red",
                                 pointRadius: 6,
@@ -169,8 +137,8 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_19() {
                                 stack: "stack 0",
                             },
                             {
-                                data: graphCumulative[activePage-1],
-                                label: `${headerLabels[activePage-1]}[Cumulative]`,
+                                data: graphQuartersRegionB[activePage-1],
+                                label: `${headerLabels[activePage-1]}[Overseas]`,
                                 borderColor: "rgba(75, 0, 130, .30)",
                                 backgroundColor: "red",
                                 pointRadius: 6,
@@ -179,8 +147,8 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_19() {
                                 stack: "stack 0",
                             },
                             {
-                                data: graphQuartersLastFY[activePage-1],
-                                label: `${headerLabelsLastFY[activePage-1]}[Quarter]`,
+                                data: graphQuartersRegionA[secondDataRef-1],
+                                label: `${headerLabels[secondDataRef-1]}[Japan]`,
                                 borderColor: "orange",
                                 backgroundColor: "cyan",
                                 pointRadius: 6,
@@ -189,8 +157,8 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_19() {
                                 stack: "stack 1",
                             },
                             {
-                                data: graphCumulativeLastFY[activePage-1],
-                                label: `${headerLabelsLastFY[activePage-1]}[Cumulative]`,
+                                data: graphQuartersRegionB[secondDataRef-1],
+                                label: `${headerLabels[secondDataRef-1]}[Overseas]`,
                                 borderColor: "rgba(255, 165, 0, 0.3)",
                                 backgroundColor: "cyan",
                                 pointRadius: 6,
@@ -205,11 +173,10 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_19() {
                      scales: {
                         y: {
                             stacked: true,
+                            type: "logarithmic",
                             title: {
                               display: true,
-                              text: (activePage === 6)
-                                        ? "Million yen (¥)"
-                                        : "Units in Millions",
+                              text: "Units in Millions",
                             },
                           },
                           x: {
@@ -226,13 +193,13 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_19() {
             : (checked === false && barChecked === true) 
             ? (
                 <Bar
-                    datasetIdKey="Global HW/SW Sales Units"
+                    datasetIdKey="FY Million-Seller Titles"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                            data: graphQuarters[activePage-1],
-                            label: `${headerLabels[activePage-1]}[Quarter]`,
+                            data: graphQuartersRegionA[activePage-1],
+                            label: `${headerLabels[activePage-1]}[Japan]`,
                             backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".80)"
@@ -242,8 +209,8 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_19() {
                             borderWidth: 2,
                             },
                             {
-                            data: graphCumulative[activePage-1],
-                            label: `${headerLabels[activePage-1]}[Cumulative]`,
+                            data: graphQuartersRegionB[activePage-1],
+                            label: `${headerLabels[activePage-1]}[Overseas]`,
                             backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".20)"
@@ -259,11 +226,10 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_19() {
                      scales: {
                         y: {
                             stacked: true,
+                            type: "logarithmic",
                             title: {
                               display: true,
-                              text: (activePage === 6)
-                                        ? "Million yen (¥)"
-                                        : "Units in Millions",
+                              text: "Units in Millions",
                             },
                           },
                           x: {
@@ -279,37 +245,37 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_19() {
             )
             : (
                 <Bar
-                datasetIdKey="Global HW/SW Sales Units"
+                datasetIdKey="FY Million-Seller Titles"
                 data={{
                     labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                     datasets: [
                         {
-                            data: graphQuarters[activePage-1],
-                            label: `${headerLabels[activePage-1]}[Quarter]`,
+                            data: graphQuartersRegionA[activePage-1],
+                            label: `${headerLabels[activePage-1]}[Japan]`,
                             borderColor: "black",
                             backgroundColor: "indigo",
                             borderWidth: 2,
                             stack: "stack 0"
                         },
                         {
-                            data: graphCumulative[activePage-1],
-                            label: `${headerLabels[activePage-1]}[Cumulative]`,
+                            data: graphQuartersRegionB[activePage-1],
+                            label: `${headerLabels[activePage-1]}[Overseas]`,
                             borderColor: "black",
                             backgroundColor: "rgba(75, 0, 130, .20)",
                             borderWidth: 2,
                             stack: "stack 0"
                         },
                         {
-                            data: graphQuartersLastFY[activePage-1],
-                            label: `${headerLabelsLastFY[activePage-1]}[Quarter]`,
+                            data: graphQuartersRegionA[secondDataRef-1],
+                            label: `${headerLabels[secondDataRef-1]}[Japan]`,
                             borderColor: "black",
                             backgroundColor: "orange",
                             borderWidth: 2,
                             stack: "stack 1"
                         },
                         {
-                            data: graphCumulativeLastFY[activePage-1],
-                            label: `${headerLabelsLastFY[activePage-1]}[Cumulative]`,
+                            data: graphQuartersRegionB[secondDataRef-1],
+                            label: `${headerLabels[secondDataRef-1]}[Overseas]`,
                             borderColor: "black",
                             backgroundColor: "rgba(255, 165, 0, 0.2)",
                             borderWidth: 2,
@@ -321,12 +287,11 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_19() {
                 options={{
                  scales: {
                     y: {
-                        stacked: true,
+                            stacked: true,
+                            type: "logarithmic",
                         title: {
                           display: true,
-                          text: (activePage === 6)
-                                        ? "Million yen (¥)"
-                                        : "Units in Millions",
+                              text: "Units in Millions",
                         },
                       },
                       x: {
@@ -341,9 +306,12 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_19() {
             />
             )}
                 <Group mt="md" position="center">
-                    <Pagination page={activePage} onChange={setPage} total={graphQuarters.length} color="teal" size="sm" radius="md" />
+                    <Pagination page={activePage} onChange={setPage} total={headerLabels.length} color="teal" size="sm" radius="md" />
                         <Switch onLabel="BAR" offLabel="BAR" size="md" checked={barChecked} onChange={(event) => setBarChecked(event.currentTarget.checked)} />
                             <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
+                        {(checked === true) 
+                        ? <Pagination mr="xl" page={secondDataRef} onChange={setSecondDataRef} total={headerLabels.length} color="red" size="sm" radius="md" />
+                        : null}
             </Group>
         </div>
 

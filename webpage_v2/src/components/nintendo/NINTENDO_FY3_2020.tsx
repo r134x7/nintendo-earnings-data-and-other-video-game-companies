@@ -7,11 +7,11 @@ import { printTopSellingSwitchTitles } from "../../data/nintendo/Nintendo_FY3_20
 import { printFYMillionSellerTitles } from "../../data/nintendo/Nintendo_FY3_2020/mst_fy3_2020";
 import { printHardwareSoftware } from "../../data/nintendo/Nintendo_FY3_2020/nsw_hardware_software_fy3_2020";
 import { printRegions } from "../../data/nintendo/Nintendo_FY3_2020/regional_hw_sw_fy3_2020";
-import GRAPH_NINTENDO_EARNINGS_FY3_20 from "../../graphs/nintendo/Nintendo_FY3_2020/GRAPH_NINTENDO_EARNINGS_FY3_20";
-import GRAPH_NINTENDO_KPI_FY3_20 from "../../graphs/nintendo/Nintendo_FY3_2020/GRAPH_NINTENDO_KPI_FY3_20";
-import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_20 from "../../graphs/nintendo/Nintendo_FY3_2020/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_20";
-import GRAPH_NINTENDO_MST_FY3_20 from "../../graphs/nintendo/Nintendo_FY3_2020/GRAPH_NINTENDO_MST_FY3_20";
-import GRAPH_NINTENDO_NSW_HW_SW_FY3_20 from "../../graphs/nintendo/Nintendo_FY3_2020/GRAPH_NINTENDO_NSW_HW_SW_FY3_20";
+import GRAPH_NINTENDO_EARNINGS_FY3_2020 from "../../graphs/nintendo/Nintendo_FY3_2020/GRAPH_NINTENDO_EARNINGS_FY3_2020";
+import GRAPH_NINTENDO_KPI_FY3_2020 from "../../graphs/nintendo/Nintendo_FY3_2020/GRAPH_NINTENDO_KPI_FY3_2020";
+import GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_2020 from "../../graphs/nintendo/Nintendo_FY3_2020/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_2020";
+import GRAPH_NINTENDO_MST_FY3_2020 from "../../graphs/nintendo/Nintendo_FY3_2020/GRAPH_NINTENDO_MST_FY3_2020";
+import GRAPH_NINTENDO_NSW_HW_SW_FY3_2020 from "../../graphs/nintendo/Nintendo_FY3_2020/GRAPH_NINTENDO_NSW_HW_SW_FY3_2020";
 
 export default function NINTENDO_FY3_2020() {
 
@@ -119,15 +119,15 @@ export default function NINTENDO_FY3_2020() {
             {sources}
             <Code style={{backgroundColor: `${state.colour}`}} block>{data}</Code>
             {(value === "Consolidated Operating Results")
-                ? <GRAPH_NINTENDO_EARNINGS_FY3_20 />
+                ? <GRAPH_NINTENDO_EARNINGS_FY3_2020 />
                 : (value === "Global Hardware/Software units, Mobile/IP related income")
-                ? <GRAPH_NINTENDO_NSW_HW_SW_FY3_20 />
+                ? <GRAPH_NINTENDO_NSW_HW_SW_FY3_2020 />
                 : (value === "Key/Digital Sales Indicators")
-                ? <GRAPH_NINTENDO_KPI_FY3_20 />
+                ? <GRAPH_NINTENDO_KPI_FY3_2020 />
                 : (value === "FY Million-Seller Titles")
-                ? <GRAPH_NINTENDO_MST_FY3_20 /> 
+                ? <GRAPH_NINTENDO_MST_FY3_2020 /> 
                 : (value === "Top Selling Titles")
-                ? <GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_20 />
+                ? <GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_2020 />
                 : null
             }
             <Space h="xl" />

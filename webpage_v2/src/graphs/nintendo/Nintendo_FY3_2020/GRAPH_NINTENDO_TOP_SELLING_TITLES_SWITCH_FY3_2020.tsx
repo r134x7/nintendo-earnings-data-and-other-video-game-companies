@@ -1,40 +1,49 @@
 import { useState } from "react";
 import { Pagination, Group, Switch } from "@mantine/core";
 import { useSelector } from "react-redux";
-import {
-    digitalSalesQtr as digitalSalesQtrLastFY,
-    proportionOfDigitalSalesQtr as proportionOfDigitalSalesQtrLastFY,
-    proportionOfFirstPartySoftwareSalesQtr as proportionOfFirstPartySoftwareSalesQtrLastFY,
-    proportionOfHardwareSalesQtr as proportionOfHardwareSalesQtrLastFY,
-    proportionOfOverseasSalesQtr as proportionOfOverseasSalesQtrLastFY,
-    digitalSalesCml as digitalSalesCmlLastFY,
-    proportionOfDigitalSalesCml as proportionOfDigitalSalesCmlLastFY,
-    proportionOfFirstPartySoftwareSalesCml as proportionOfFirstPartySoftwareSalesCmlLastFY,
-    proportionOfHardwareSalesCml as proportionOfHardwareSalesCmlLastFY,
-    proportionOfOverseasSalesCml as proportionOfOverseasSalesCmlLastFY, 
-   } from "../../../data/nintendo/Nintendo_FY3_2017/kpi_fy3_2017"
-import {
-        digitalSalesQtr,
-        proportionOfDigitalSalesQtr,
-        proportionOfFirstPartySoftwareSalesQtr,
-        proportionOfHardwareSalesQtr,
-        proportionOfOverseasSalesQtr,
-        digitalSalesCml,
-        proportionOfDigitalSalesCml,
-        proportionOfFirstPartySoftwareSalesCml,
-        proportionOfHardwareSalesCml,
-        proportionOfOverseasSalesCml,
-       } from "../../../data/nintendo/Nintendo_FY3_2018/kpi_fy3_2018"
+import { title1Difference,
+         title2Difference,
+         title3Difference,
+         title4Difference,
+         title5Difference,
+         title6Difference,
+         title7Difference,
+         title8Difference,
+         title9Difference,
+         title10Difference,
+         title11Difference,
+         title12Difference,
+         title13Difference,
+         title14Difference,
+         title15Difference,
+         title1Sorted,
+         title2Sorted,
+         title3Sorted,
+         title4Sorted,
+         title5Sorted,
+         title6Sorted,
+         title7Sorted,
+         title8Sorted,
+         title9Sorted,
+         title10Sorted,
+         title11Sorted,
+         title12Sorted,
+         title13Sorted,
+         title14Sorted,
+         title15Sorted,
+        } from "../../../data/nintendo/Nintendo_FY3_2020/top_NSW_sw_fy3_2020";
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
 Chart.register(...registerables); // to get the package working, source: https://www.chartjs.org/docs/next/getting-started/integration.html
 
-export default function GRAPH_NINTENDO_KPI_FY3_18() {
+export default function GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_2020() {
+
 
     const state: any = useSelector(state => state);
 
     const [activePage, setPage] = useState(1);
+    const [secondDataRef, setSecondDataRef] = useState(2);
     const [checked, setChecked] = useState(false);
     const [barChecked, setBarChecked] = useState(false);
 
@@ -46,58 +55,64 @@ export default function GRAPH_NINTENDO_KPI_FY3_18() {
     }
 
     const labels: Labels = {
-        currentFY: "FY3/2018",
-        lastFY: "FY3/2017",
-        MarchThisYear: "March 2018",
-        MarchLastYear: "March 2017"
+        currentFY: "FY3/2020",
+        lastFY: "FY3/2019",
+        MarchThisYear: "March 2020",
+        MarchLastYear: "March 2019"
     }
 
-    const kpiLabels = [
-        `Proportion of overseas sales ${labels.currentFY}`,
-        `Proportion of hardware sales ${labels.currentFY}`,
-        `Proportion of first party software sales ${labels.currentFY}`,
-        `Digital Sales ${labels.currentFY}`,
-        `Proportion of Digital Sales ${labels.currentFY}`,
+    const titleLabels = [
+        title1Difference[0].title,
+        title2Difference[0].title,
+        title3Difference[0].title,
+        title4Difference[0].title,
+        title5Difference[0].title,
+        title6Difference[0].title,
+        title7Difference[0].title,
+        title8Difference[0].title,
+        title9Difference[0].title,
+        title10Difference[0].title,
+        title11Difference[0].title,
+        title12Difference[0].title,
+        title13Difference[0].title,
+        title14Difference[0].title,
+        title15Difference[0].title,
     ]
 
-    const kpiLabelsLastFY = [
-        `Proportion of overseas sales ${labels.lastFY}`,
-        `Proportion of hardware sales ${labels.lastFY}`,
-        `Proportion of first party software sales ${labels.lastFY}`,
-        `Digital Sales ${labels.lastFY}`,
-        `Proportion of Digital Sales ${labels.lastFY}`,
+    const titleQuarters = [
+        title1Difference.map((elem) => elem.value),
+        title2Difference.map((elem) => elem.value),
+        title3Difference.map((elem) => elem.value),
+        title4Difference.map((elem) => elem.value),
+        title5Difference.map((elem) => elem.value),
+        title6Difference.map((elem) => elem.value),
+        title7Difference.map((elem) => elem.value),
+        title8Difference.map((elem) => elem.value),
+        title9Difference.map((elem) => elem.value),
+        title10Difference.map((elem) => elem.value),
+        title11Difference.map((elem) => elem.value),
+        title12Difference.map((elem) => elem.value),
+        title13Difference.map((elem) => elem.value),
+        title14Difference.map((elem) => elem.value),
+        title15Difference.map((elem) => elem.value),
     ]
 
-    const graphQuarters = [
-        proportionOfOverseasSalesQtr.map((elem) => elem.value),
-        proportionOfHardwareSalesQtr.map((elem) => elem.value),
-        proportionOfFirstPartySoftwareSalesQtr.map((elem) => elem.value),
-        digitalSalesQtr.map((elem) => elem.value),
-        proportionOfDigitalSalesQtr.map((elem) => elem.value),
-    ]
-
-    const graphQuartersLastFY = [
-        proportionOfOverseasSalesQtrLastFY.map((elem) => elem.value),
-        proportionOfHardwareSalesQtrLastFY.map((elem) => elem.value),
-        proportionOfFirstPartySoftwareSalesQtrLastFY.map((elem) => elem.value),
-        digitalSalesQtrLastFY.map((elem) => elem.value),
-        proportionOfDigitalSalesQtrLastFY.map((elem) => elem.value),
-    ]
-
-    const graphCumulative = [
-        [proportionOfOverseasSalesQtr[0], ...proportionOfOverseasSalesCml].map((elem) => elem.value),
-        [proportionOfHardwareSalesQtr[0], ...proportionOfHardwareSalesCml].map((elem) => elem.value),
-        [proportionOfFirstPartySoftwareSalesQtr[0], ...proportionOfFirstPartySoftwareSalesCml].map((elem) => elem.value),
-        [digitalSalesQtr[0], ...digitalSalesCml].map((elem, index) => elem.value - digitalSalesQtr[index].value),
-        [proportionOfDigitalSalesQtr[0], ...proportionOfDigitalSalesCml].map((elem) => elem.value),
-    ]
-
-    const graphCumulativeLastFY = [
-        [proportionOfOverseasSalesQtrLastFY[0], ...proportionOfOverseasSalesCmlLastFY].map((elem) => elem.value),
-        [proportionOfHardwareSalesQtrLastFY[0], ...proportionOfHardwareSalesCmlLastFY].map((elem) => elem.value),
-        [proportionOfFirstPartySoftwareSalesQtrLastFY[0], ...proportionOfFirstPartySoftwareSalesCmlLastFY].map((elem) => elem.value),
-        [digitalSalesQtrLastFY[0], ...digitalSalesCmlLastFY].map((elem, index) => elem.value - digitalSalesQtrLastFY[index].value),
-        [proportionOfDigitalSalesQtrLastFY[0], ...proportionOfDigitalSalesCmlLastFY].map((elem) => elem.value),
+    const titleCumulatives = [
+        title1Sorted.map((elem, index) => elem.value - title1Difference[index].value), 
+        title2Sorted.map((elem, index) => elem.value - title2Difference[index].value),
+        title3Sorted.map((elem, index) => elem.value - title3Difference[index].value),
+        title4Sorted.map((elem, index) => elem.value - title4Difference[index].value),
+        title5Sorted.map((elem, index) => elem.value - title5Difference[index].value),
+        title6Sorted.map((elem, index) => elem.value - title6Difference[index].value),
+        title7Sorted.map((elem, index) => elem.value - title7Difference[index].value),
+        title8Sorted.map((elem, index) => elem.value - title8Difference[index].value),
+        title9Sorted.map((elem, index) => elem.value - title9Difference[index].value),
+        title10Sorted.map((elem, index) => elem.value - title10Difference[index].value),
+        title11Sorted.map((elem, index) => elem.value - title11Difference[index].value),
+        title12Sorted.map((elem, index) => elem.value - title12Difference[index].value),
+        title13Sorted.map((elem, index) => elem.value - title13Difference[index].value),
+        title14Sorted.map((elem, index) => elem.value - title14Difference[index].value),
+        title15Sorted.map((elem, index) => elem.value - title15Difference[index].value),
     ]
 
     return (
@@ -105,13 +120,13 @@ export default function GRAPH_NINTENDO_KPI_FY3_18() {
         {(checked === false && barChecked === false)
             ? (
                 <Line
-                    datasetIdKey="Key/Digital Sales Indicator"
+                    datasetIdKey="Top Selling Titles Switch"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                            data: graphQuarters[activePage-1],
-                            label: `${kpiLabels[activePage-1]}[Quarter]`,
+                            data: titleQuarters[activePage-1],
+                            label: `${titleLabels[activePage-1]}[Quarter]`,
                             borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + "1)"
@@ -127,8 +142,8 @@ export default function GRAPH_NINTENDO_KPI_FY3_18() {
                             pointBorderWidth: 2,
                             },
                             {
-                            data: graphCumulative[activePage-1],
-                            label: `${kpiLabels[activePage-1]}[Cumulative]`,
+                            data: titleCumulatives[activePage-1],
+                            label: `${titleLabels[activePage-1]}[Cumulative]`,
                             borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".3)"
@@ -149,20 +164,15 @@ export default function GRAPH_NINTENDO_KPI_FY3_18() {
                     options={{
                      scales: {
                         y: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: true,
+                            type: "logarithmic",
                             title: {
                               display: true,
-                              text: (activePage === 4)
-                                        ? "Billion yen (¥)"
-                                        : "Percentage (%)",
+                                  text: "Units in Millions",
                             },
                           },
                           x: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: true,
                               title: {
                                   display: true,
                                   text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
@@ -175,13 +185,13 @@ export default function GRAPH_NINTENDO_KPI_FY3_18() {
             : (checked === true && barChecked === false) 
             ? (
                 <Line
-                    datasetIdKey="Key/Digital Sales Indicator"
+                    datasetIdKey="Top Selling Titles Switch"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                                data: graphQuarters[activePage-1],
-                                label: `${kpiLabels[activePage-1]}[Quarter]`,
+                                data: titleQuarters[activePage-1],
+                                label: `${titleLabels[activePage-1]}[Quarter]`,
                                 borderColor: "indigo",
                                 backgroundColor: "red",
                                 pointRadius: 6,
@@ -190,8 +200,8 @@ export default function GRAPH_NINTENDO_KPI_FY3_18() {
                                 stack: "stack 0",
                             },
                             {
-                                data: graphCumulative[activePage-1],
-                                label: `${kpiLabels[activePage-1]}[Cumulative]`,
+                                data: titleCumulatives[activePage-1],
+                                label: `${titleLabels[activePage-1]}[Cumulative]`,
                                 borderColor: "rgba(75, 0, 130, .30)",
                                 backgroundColor: "red",
                                 pointRadius: 6,
@@ -200,8 +210,8 @@ export default function GRAPH_NINTENDO_KPI_FY3_18() {
                                 stack: "stack 0",
                             },
                             {
-                                data: graphQuartersLastFY[activePage-1],
-                                label: `${kpiLabelsLastFY[activePage-1]}[Quarter]`,
+                                data: titleQuarters[secondDataRef-1],
+                                label: `${titleLabels[secondDataRef-1]}[Quarter]`,
                                 borderColor: "orange",
                                 backgroundColor: "cyan",
                                 pointRadius: 6,
@@ -210,8 +220,8 @@ export default function GRAPH_NINTENDO_KPI_FY3_18() {
                                 stack: "stack 1",
                             },
                             {
-                                data: graphCumulativeLastFY[activePage-1],
-                                label: `${kpiLabelsLastFY[activePage-1]}[Cumulative]`,
+                                data: titleCumulatives[secondDataRef-1],
+                                label: `${titleLabels[secondDataRef-1]}[Cumulative]`,
                                 borderColor: "rgba(255, 165, 0, 0.3)",
                                 backgroundColor: "cyan",
                                 pointRadius: 6,
@@ -225,23 +235,18 @@ export default function GRAPH_NINTENDO_KPI_FY3_18() {
                     options={{
                      scales: {
                         y: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: true,
+                            type: "logarithmic",
                             title: {
                               display: true,
-                              text: (activePage === 4)
-                                        ? "Billion yen (¥)"
-                                        : "Percentage (%)",
+                                  text: "Units in Millions",
                             },
                           },
                           x: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: true,
                               title: {
                                   display: true,
-                                  text: `Quarters for Fiscal Years Ending ${labels.MarchThisYear} and ${labels.MarchLastYear}`,
+                                  text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
                                 },
                             },
                         }
@@ -251,13 +256,13 @@ export default function GRAPH_NINTENDO_KPI_FY3_18() {
             : (checked === false && barChecked === true) 
             ? (
                 <Bar
-                    datasetIdKey="Key/Digital Sales Indicator"
+                    datasetIdKey="Top Selling Titles Switch"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
                             {
-                            data: graphQuarters[activePage-1],
-                            label: `${kpiLabels[activePage-1]}[Quarter]`,
+                            data: titleQuarters[activePage-1],
+                            label: `${titleLabels[activePage-1]}[Quarter]`,
                             backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".80)"
@@ -267,8 +272,8 @@ export default function GRAPH_NINTENDO_KPI_FY3_18() {
                             borderWidth: 2,
                             },
                             {
-                            data: graphCumulative[activePage-1],
-                            label: `${kpiLabels[activePage-1]}[Cumulative]`,
+                            data: titleCumulatives[activePage-1],
+                            label: `${titleLabels[activePage-1]}[Cumulative]`,
                             backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".20)"
@@ -283,20 +288,15 @@ export default function GRAPH_NINTENDO_KPI_FY3_18() {
                     options={{
                      scales: {
                         y: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: true,
+                            type: "logarithmic",
                             title: {
                               display: true,
-                              text: (activePage === 4)
-                                        ? "Billion yen (¥)"
-                                        : "Percentage (%)",
+                                  text: "Units in Millions",
                             },
                           },
                           x: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: true,
                               title: {
                                   display: true,
                                   text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
@@ -308,49 +308,41 @@ export default function GRAPH_NINTENDO_KPI_FY3_18() {
             )
             : (
                 <Bar
-                datasetIdKey="Key/Digital Sales Indicator"
+                datasetIdKey="Top Selling Titles Switch"
                 data={{
                     labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                     datasets: [
                         {
-                            data: graphQuarters[activePage-1],
-                            label: `${kpiLabels[activePage-1]}[Quarter]`,
+                            data: titleQuarters[activePage-1],
+                            label: `${titleLabels[activePage-1]}[Quarter]`,
                             borderColor: "black",
                             backgroundColor: "indigo",
                             borderWidth: 2,
-                            stack: (activePage === 4)
-                                    ? "stack 0"
-                                    : "0",
+                            stack: "stack 0",
                         },
                         {
-                            data: graphCumulative[activePage-1],
-                            label: `${kpiLabels[activePage-1]}[Cumulative]`,
+                            data: titleCumulatives[activePage-1],
+                            label: `${titleLabels[activePage-1]}[Cumulative]`,
                             borderColor: "black",
                             backgroundColor: "rgba(75, 0, 130, .20)",
                             borderWidth: 2,
-                            stack: (activePage === 4)
-                                    ? "stack 0"
-                                    : "1",
+                            stack: "stack 0",  
                         },
                         {
-                            data: graphQuartersLastFY[activePage-1],
-                            label: `${kpiLabelsLastFY[activePage-1]}[Quarter]`,
+                            data: titleQuarters[secondDataRef-1],
+                            label: `${titleLabels[secondDataRef-1]}[Quarter]`,
                             borderColor: "black",
                             backgroundColor: "orange",
                             borderWidth: 2,
-                            stack: (activePage === 4)
-                                    ? "stack 1"
-                                    : "2",
+                            stack: "stack 1",
                         },
                         {
-                            data: graphCumulativeLastFY[activePage-1],
-                            label: `${kpiLabelsLastFY[activePage-1]}[Cumulative]`,
+                            data: titleCumulatives[secondDataRef-1],
+                            label: `${titleLabels[secondDataRef-1]}[Cumulative]`,
                             borderColor: "black",
                             backgroundColor: "rgba(255, 165, 0, 0.2)",
                             borderWidth: 2,
-                            stack: (activePage === 4)
-                                    ? "stack 1"
-                                    : "3",
+                            stack: "stack 1",
                         },
                     ], 
                 }}
@@ -358,23 +350,18 @@ export default function GRAPH_NINTENDO_KPI_FY3_18() {
                 options={{
                  scales: {
                     y: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                        stacked: true,
+                        type: "logarithmic",
                         title: {
                           display: true,
-                          text: (activePage === 4)
-                                        ? "Billion yen (¥)"
-                                        : "Percentage (%)",
+                                  text: "Units in Millions",
                         },
                       },
                       x: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                        stacked: true,
                           title: {
                               display: true,
-                              text: `Quarters for Fiscal Years Ending ${labels.MarchThisYear} and ${labels.MarchLastYear}`,
+                              text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
                             },
                         },
                     }
@@ -382,9 +369,12 @@ export default function GRAPH_NINTENDO_KPI_FY3_18() {
             />
             )}
                 <Group mt="md" position="center">
-                    <Pagination page={activePage} onChange={setPage} total={graphQuarters.length} color="teal" size="sm" radius="md" />
+                    <Pagination page={activePage} onChange={setPage} total={titleLabels.length} color="teal" size="sm" radius="md" />
                         <Switch onLabel="BAR" offLabel="BAR" size="md" checked={barChecked} onChange={(event) => setBarChecked(event.currentTarget.checked)} />
                             <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
+                        {(checked === true) 
+                        ? <Pagination mr="xl" page={secondDataRef} onChange={setSecondDataRef} total={titleLabels.length} color="red" size="sm" radius="md" />
+                        : null}
             </Group>
         </div>
 
