@@ -27,9 +27,9 @@ export default function SEGA_FY3_2022() {
         return (
             <Text>
                 <Stack align="center">
-                        Sega Sammy Integrated Report 2022 (Japanese version): 
-                    <Anchor mb="sm" href="https://www.segasammy.co.jp/japanese/ir/library/pdf/printing_annual/2022/ir_2022_web_all_jp.pdf" target="_blank" >
-                        https://www.segasammy.co.jp/japanese/ir/library/pdf/printing_annual/2022/ir_2022_web_all_jp.pdf
+                        Sega Sammy Integrated Report 2022: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/printing_annual/2022/ir_2022_web_all_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/printing_annual/2022/ir_2022_web_all_e.pdf
                     </Anchor>
                 </Stack>  
             </Text> 

@@ -9,7 +9,7 @@ const series1: Series =
     {
         title: " Shin Megami Tensei ",
         firstReleaseYear: " 1992 ",
-        platforms: "Pachislot and Pachinko Machines, Consumer Games, Pictures, Toys, etc.",
+        platforms: "Pachislot and Pachinko Machines, Consumer Games, Movies, Toys, etc.",
         totalEditions: 32,
         ipType: " Acquired IP ",
         units: "(Units and downloads*)",
@@ -24,7 +24,7 @@ const series2: Series =
     {
         title: " Persona ",
         firstReleaseYear: " 1996 ",
-        platforms: "Pachislot and Pachinko Machines, Consumer Games, Pictures, Toys, etc.",
+        platforms: "Pachislot and Pachinko Machines, Consumer Games, Movies, Toys, etc.",
         totalEditions: 18,
         ipType: " Acquired IP ",
         units: "(Units and downloads)",
@@ -64,7 +64,7 @@ const series5: Series =
     {
         title: " Sonic the Hedgehog ",
         firstReleaseYear: " 1991 ",
-        platforms: "Pachislot and Pachinko Machines, Consumer Games, Pictures, Amusement Machines, Toys, etc.",
+        platforms: "Pachislot and Pachinko Machines, Consumer Games, Movies, Amusement Machines, Toys, etc.",
         totalEditions: 0,
         ipType: " Developed in-house IP ",
         units: "(Units and downloads*)",
@@ -79,7 +79,7 @@ const series6: Series =
     {
         title: " Puyo Puyo ",
         firstReleaseYear: " 1991** ",
-        platforms: "Pachislot and Pachinko Machines, Consumer Games, Pictures, Amusement Machines, Toys, etc.",
+        platforms: "Pachislot and Pachinko Machines, Consumer Games, Movies, Amusement Machines, Toys, etc.",
         totalEditions: 0,
         ipType: " Developed in-house IP ",
         units: "(Units and downloads*/IDs/users)",
@@ -94,7 +94,7 @@ const series7: Series =
     {
         title: " Sakura Wars ",
         firstReleaseYear: " 1996 ",
-        platforms: "Pachislot and Pachinko Machines, Consumer Games, Pictures, Amusement Machines",
+        platforms: "Pachislot and Pachinko Machines, Consumer Games, Movies, Amusement Machines",
         totalEditions: 0,
         ipType: " Developed in-house IP ",
         units: "(Units and downloads)",
@@ -108,7 +108,7 @@ const series8: Series =
     {
         title: " Ryu ga Gotoku ",
         firstReleaseYear: " 2005 ",
-        platforms: "Pachislot and Pachinko Machines, Consumer Games, Pictures, Toys, etc.",
+        platforms: "Pachislot and Pachinko Machines, Consumer Games, Movies, Toys, etc.",
         totalEditions: 167,
         ipType: " Developed in-house IP ",
         units: "(units)",
@@ -122,7 +122,7 @@ const series9: Series =
     {
         title: " Virtua Fighter ",
         firstReleaseYear: " 1993 ",
-        platforms: "Pachislot and Pachinko Machines, Consumer Games, Pictures, Amusement Machines, Toys, etc.",
+        platforms: "Pachislot and Pachinko Machines, Consumer Games, Movies, Amusement Machines, Toys, etc.",
         totalEditions: 0,
         ipType: " Developed in-house IP ",
         units: "(Units and downloads/IDs)",
@@ -143,7 +143,7 @@ const series10: Series =
         value: 0.58,
         valueLastFY: 0.56,
         valueLastTwoFYs: 0.56,
-        miscellaneous1: "(pachislot and pachinko machines and amusement machines total)",
+        miscellaneous1: "(pachislot and pachinko machines total)",
     };
 
 const series11: Series = 
@@ -157,14 +157,14 @@ const series11: Series =
         value: 0.51,
         valueLastFY: 0.51,
         valueLastTwoFYs: 0.51,
-        miscellaneous1: "(pachislot and pachinko machines and amusement machines total)",
+        miscellaneous1: "(pachislot and pachinko machines total)",
     };
 
 const series12: Series = 
     {
         title: " Phantasy Star ",
         firstReleaseYear: " 1987 ",
-        platforms: "Pachislot and Pachinko Machines, Consumer Games, Pictures, Toys, etc.",
+        platforms: "Pachislot and Pachinko Machines, Consumer Games, Movies, Toys, etc.",
         totalEditions: 0,
         ipType: " Developed in-house IP ",
         units: "(users)",
@@ -178,7 +178,7 @@ const series13: Series =
     {
         title: " Chain Chronicle ",
         firstReleaseYear: " 2013 ",
-        platforms: "Pachislot and Pachinko Machines, Pictures, Consumer Games ",
+        platforms: "Pachislot and Pachinko Machines, Movies, Consumer Games ",
         totalEditions: 3,
         ipType: " Developed in-house IP ",
         units: "(Units and downloads*)",
@@ -207,7 +207,7 @@ const series15: Series =
     {
         title: " Hokuto No Ken ",
         firstReleaseYear: " 2002 ",
-        platforms: "Pachislot and Pachinko Machines, Consumer Games, Pictures, Amusement Machines, Toys, etc.",
+        platforms: "Pachislot and Pachinko Machines, Consumer Games, Movies, Amusement Machines, Toys, etc.",
         totalEditions: 38,
         ipType:  " Licensed third party IP ",
         units: "(Units and downloads)",
