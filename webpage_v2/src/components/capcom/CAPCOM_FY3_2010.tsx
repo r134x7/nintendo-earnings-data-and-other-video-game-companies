@@ -12,17 +12,17 @@ export default function CAPCOM_FY3_2010() {
 
     const state: any = useSelector(state => state);
 
-    const dataList = [ 
-        "Data Sources",
-        "FY Game Series",
-        ];
-
     const componentList = [
         {
             name: "FY Game Series", 
             value: gameSeriesSales
         },
     ]
+
+    const dataList = [ 
+        "Data Sources",
+        componentList[0].name,
+        ];
 
     const selectDataComponent = (objList: {name: string, value: string}[]) =>
     (dataUsed: string): string => {

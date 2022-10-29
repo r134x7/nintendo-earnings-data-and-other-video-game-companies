@@ -17,13 +17,6 @@ export default function CAPCOM_FY3_2022() {
 
     const state: any = useSelector(state => state);
 
-    const dataList = [ 
-        "Data Sources",
-        "FY Platinum Titles",
-        "All Platinum Titles",
-        "FY Game Series",
-        ];
-
     const componentList = [
         {
             name: "FY Platinum Titles", 
@@ -38,6 +31,8 @@ export default function CAPCOM_FY3_2022() {
             value: gameSeriesSales
         },
     ]
+
+    const dataList = ["Data Sources"].concat(componentList.map(elem => elem.name));
 
     const selectDataComponent = (objList: {name: string, value: string}[]) =>
     (dataUsed: string): string => {
