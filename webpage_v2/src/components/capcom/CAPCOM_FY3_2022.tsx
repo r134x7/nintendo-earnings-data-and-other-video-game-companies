@@ -12,7 +12,6 @@ export default function CAPCOM_FY3_2022() {
 
     const gameSeriesSales = printSeriesFY;
 
-    const [data, setData] = useState("");
     const [value, setValue] = useState("");
     const [sources, setSources] = useState(<></>)
 
@@ -95,7 +94,6 @@ export default function CAPCOM_FY3_2022() {
             
             {sources}
             <Code style={{backgroundColor: `${state.colour}`}} block>
-                {/* {data} */}
                 {selectData(value)}
                 </Code>
             <Space h="xl" />
