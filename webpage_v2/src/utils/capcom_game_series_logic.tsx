@@ -10,7 +10,7 @@ export type Series = {
 };
 
 export type Header = {
-    bandaiNamcoHeader: "| Capcom - Game Series Data  |",
+    capcomHeader: "| Capcom - Game Series Data  |",
     secondHeader: "| First Appearance and Rank      |",
     thirdHeader: "| Number of Titles               |",
     fourthHeader: "| Units                          |",
@@ -22,7 +22,7 @@ export type Header = {
 
 export const printHead = (header: Header) =>
 `+${"-".repeat(32)}+
-${header.bandaiNamcoHeader}
+${header.capcomHeader}
 +${"-".repeat(32)}+
 ${header.secondHeader}
 +${"-".repeat(32)}+
