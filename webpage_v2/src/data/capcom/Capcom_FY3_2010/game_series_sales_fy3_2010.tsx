@@ -11,7 +11,7 @@ const series1: Series =
         numberOfTitles: 3,
         releaseDate: " November 1984 ",
         value: 1.2,
-        valueLastFY: 1.2,
+        valueLastFY: 0,
         valueLastTwoFYs: 0,
     };
 
@@ -21,7 +21,7 @@ const series2: Series =
         numberOfTitles: 2,
         releaseDate: " April 1985 ",
         value: 1.2,
-        valueLastFY: 1.2,
+        valueLastFY: 0,
         valueLastTwoFYs: 0,
     };
 
@@ -31,7 +31,7 @@ const series3: Series =
         numberOfTitles: 14,
         releaseDate: " July 1985 ",
         value: 4.1,
-        valueLastFY: 4.1,
+        valueLastFY: 0,
         valueLastTwoFYs: 0,
     };
 
@@ -41,7 +41,7 @@ const series4: Series =
         numberOfTitles: 129,
         releaseDate: " December 1987 ",
         value: 28.0,
-        valueLastFY: 28.0,
+        valueLastFY: 0,
         valueLastTwoFYs: 0,
     };
 
@@ -51,7 +51,7 @@ const series5: Series =
         numberOfTitles: 68,
         releaseDate: " August 1987 ",
         value: 31.0,
-        valueLastFY: 31.0,
+        valueLastFY: 0,
         valueLastTwoFYs: 0,
     };
 
@@ -61,7 +61,7 @@ const series6: Series =
         numberOfTitles: 10,
         releaseDate: " November 1989 ",
         value: 3.2,
-        valueLastFY: 3.2,
+        valueLastFY: 0,
         valueLastTwoFYs: 0,
     };
 
@@ -71,7 +71,7 @@ const series7: Series =
         numberOfTitles: 15,
         releaseDate: " April 1993 ",
         value: 3.0,
-        valueLastFY: 3.0,
+        valueLastFY: 0,
         valueLastTwoFYs: 0,
     };
 
@@ -81,7 +81,7 @@ const series8: Series =
         numberOfTitles: 66,
         releaseDate: " March 1996 ",
         value: 46.0,
-        valueLastFY: 46.0,
+        valueLastFY: 0,
         valueLastTwoFYs: 0,
     };
 
@@ -91,7 +91,7 @@ const series9: Series =
         numberOfTitles: 13,
         releaseDate: " July 1999 ",
         value: 4.4,
-        valueLastFY: 4.4,
+        valueLastFY: 0,
         valueLastTwoFYs: 0,
     };
 
@@ -101,7 +101,7 @@ const series10: Series =
         numberOfTitles: 12,
         releaseDate: " January 2001 ",
         value: 7.9,
-        valueLastFY: 7.9,
+        valueLastFY: 0,
         valueLastTwoFYs: 0,
     };
 
@@ -111,7 +111,7 @@ const series11: Series =
         numberOfTitles: 13,
         releaseDate: " August 2001 ",
         value: 10.0,
-        valueLastFY: 10.0,
+        valueLastFY: 0,
         valueLastTwoFYs: 0,
     };
 
@@ -121,7 +121,7 @@ const series12: Series =
         numberOfTitles: 15,
         releaseDate: " August 2001 ",
         value: 4.2,
-        valueLastFY: 4.2,
+        valueLastFY: 0,
         valueLastTwoFYs: 0,
     };
 
@@ -131,7 +131,7 @@ const series13: Series =
         numberOfTitles: 17,
         releaseDate: " March 2004 ",
         value: 18.0,
-        valueLastFY: 18.0,
+        valueLastFY: 0,
         valueLastTwoFYs: 0,
     };
 
@@ -141,7 +141,7 @@ const series14: Series =
         numberOfTitles: 17,
         releaseDate: " July 2005 ",
         value: 2.5,
-        valueLastFY: 2.5,
+        valueLastFY: 0,
         valueLastTwoFYs: 0,
     };
 
@@ -151,16 +151,6 @@ const series15: Series =
         numberOfTitles: 13,
         releaseDate: " December 2006 ",
         value: 4.7,
-        valueLastFY: 4.7,
-        valueLastTwoFYs: 0,
-    };
-
-const series16: Series = 
-    {
-        title: "Dead Rising",
-        numberOfTitles: 6,
-        releaseDate: " August 2006 ",
-        value: 4.5,
         valueLastFY: 0,
         valueLastTwoFYs: 0,
     };
@@ -192,7 +182,6 @@ export const collection = [
     series13,
     series14,
     series15,
-    series16,
 ] as const;
 
 const sortedFYCollection: Series[] = collection.filter((elem, index, array) => {

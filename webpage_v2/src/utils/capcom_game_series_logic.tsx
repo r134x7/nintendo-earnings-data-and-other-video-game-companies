@@ -12,7 +12,7 @@ export type Series = {
 export type Header = {
     capcomHeader: "| Capcom - Game Series Data  |",
     secondHeader: "| First Appearance and Rank      |",
-    thirdHeader: "| Number of Titles               |",
+    thirdHeader: "|Number of Titles by Hardware SKU|",
     fourthHeader: "| Units                          |",
     fiscalYear: string,
     fiscalYearYoY: string,
