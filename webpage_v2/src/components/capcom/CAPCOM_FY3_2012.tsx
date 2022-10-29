@@ -19,10 +19,7 @@ export default function CAPCOM_FY3_2012() {
         },
     ]
 
-    const dataList = [ 
-        "Data Sources",
-        componentList[0].name,
-        ];
+    const dataList = ["Data Sources"].concat(componentList.map(elem => elem.name));
 
     const selectDataComponent = (objList: {name: string, value: string}[]) =>
     (dataUsed: string): string => {
