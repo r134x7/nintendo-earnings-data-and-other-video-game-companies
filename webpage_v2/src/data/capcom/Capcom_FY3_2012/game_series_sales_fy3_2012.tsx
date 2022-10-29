@@ -62,7 +62,7 @@ const series6: Series =
     releaseDate: " November 1989 ",
     value: 3.2,
     valueLastFY: 3.2,
-    valueLastTwoFYs: 0,
+    valueLastTwoFYs: 3.2,
 };
 
 const series7: Series = 
@@ -72,7 +72,7 @@ const series7: Series =
     releaseDate: " April 1993 ",
     value: 3.0,
     valueLastFY: 3.0,
-    valueLastTwoFYs: 0,
+    valueLastTwoFYs: 3.0,
 };
 
 const series8: Series = 
