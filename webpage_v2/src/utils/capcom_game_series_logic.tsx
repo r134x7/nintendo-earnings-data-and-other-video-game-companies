@@ -10,7 +10,7 @@ export type Series = {
 };
 
 export type Header = {
-    capcomHeader: "| Capcom - Game Series Data  |",
+    capcomHeader: "| Capcom - Game Series Data      |",
     secondHeader: "| First Appearance and Rank      |",
     thirdHeader: "|Number of Titles by Hardware SKU|",
     fourthHeader: "| Units                          |",
@@ -42,6 +42,18 @@ const printRank = (seriesIP: Series) => {
             : ranking + " ".repeat(blockLength - ranking.length); 
     }; 
 };
+
+const printNumberOfTitles = (seriesIP: Series) => {
+
+    let titleCount: string = " Number of Titles: " + seriesIP.numberOfTitles.toString();
+
+    return (blockLength: number) => {
+
+        return (titleCount.length >= blockLength)
+            ? titleCount
+            : titleCount + " ".repeat(blockLength - titleCount.length);
+    }
+}
 
 const printTextBlock = (text: string) => {
 
@@ -150,7 +162,7 @@ const printSeriesName = (seriesIP: Series) => {
 
     return (blockLength: number) => {
        return (!seriesIP.miscellaneous) 
-            ? "+"+"-".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title)(blockLength) + "\n+" + "-".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|"
+            ? "+"+"-".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title)(blockLength) + "\n+" + "-".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|\n+" + "-".repeat(blockLength) + "+\n|" + printNumberOfTitles(seriesIP)(blockLength) + "|"
             : "+"+"-".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title)(blockLength) + "\n+" + "-".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|\n+" + "-".repeat(blockLength) + "+\n" + printTextBlock(seriesIP.miscellaneous)(blockLength);
     };
 };

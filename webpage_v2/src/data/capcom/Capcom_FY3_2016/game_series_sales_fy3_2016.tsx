@@ -186,7 +186,7 @@ const series18: Series =
 };
 
 const header: Header = {
-capcomHeader: "| Capcom - Game Series Data  |",
+capcomHeader: "| Capcom - Game Series Data      |",
 secondHeader: "| First Appearance and Rank      |",
 thirdHeader: "|Number of Titles by Hardware SKU|",
 fourthHeader: "| Units                          |",
