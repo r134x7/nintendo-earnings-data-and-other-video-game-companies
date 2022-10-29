@@ -67,7 +67,7 @@ const Home = () => {
                     </List>
                     <Text>Capcom -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Platinum Titles data from 1st Quarter FY3/2023.</List.Item>
+                        <List.Item>Latest update: Game Series sales data from FY3/2010 to FY3/22 added.</List.Item>
                         <List.Item>Future update planned: Notes section.</List.Item>
                     </List>
                     <Text>Sega -</Text>
