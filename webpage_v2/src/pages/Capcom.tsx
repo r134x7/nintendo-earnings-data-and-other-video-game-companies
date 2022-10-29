@@ -4,10 +4,22 @@ import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
-import CAPCOM_FY3_2022 from "../components/capcom/CAPCOM_FY3_2022";
 import CAPCOM_FY3_2023 from "../components/capcom/CAPCOM_FY3_2023";
+import CAPCOM_FY3_2022 from "../components/capcom/CAPCOM_FY3_2022";
+import CAPCOM_FY3_2021 from "../components/capcom/CAPCOM_FY3_2021";
+import CAPCOM_FY3_2020 from "../components/capcom/CAPCOM_FY3_2020";
+import CAPCOM_FY3_2019 from "../components/capcom/CAPCOM_FY3_2019";
+import CAPCOM_FY3_2018 from "../components/capcom/CAPCOM_FY3_2018";
+import CAPCOM_FY3_2017 from "../components/capcom/CAPCOM_FY3_2017";
+import CAPCOM_FY3_2016 from "../components/capcom/CAPCOM_FY3_2016";
+import CAPCOM_FY3_2015 from "../components/capcom/CAPCOM_FY3_2015";
+import CAPCOM_FY3_2014 from "../components/capcom/CAPCOM_FY3_2014";
+import CAPCOM_FY3_2013 from "../components/capcom/CAPCOM_FY3_2013";
+import CAPCOM_FY3_2012 from "../components/capcom/CAPCOM_FY3_2012";
+import CAPCOM_FY3_2011 from "../components/capcom/CAPCOM_FY3_2011";
+import CAPCOM_FY3_2010 from "../components/capcom/CAPCOM_FY3_2010";
 
-const yearsList = Array.from({length: 2}, (elem, index) => 
+const yearsList = Array.from({length: 14}, (elem, index) => 
                     {
                             return "FY3/" + (2023 - index)
                     }) 
@@ -80,6 +92,54 @@ export default function Capcom() {
             year: "FY3/2022",
             component: <CAPCOM_FY3_2022 />
         },
+        {
+            year: "FY3/2021",
+            component: <CAPCOM_FY3_2021 />
+        },
+        {
+            year: "FY3/2020",
+            component: <CAPCOM_FY3_2020 />
+        },
+        {
+            year: "FY3/2019",
+            component: <CAPCOM_FY3_2019 />
+        },
+        {
+            year: "FY3/2018",
+            component: <CAPCOM_FY3_2018 />
+        },
+        {
+            year: "FY3/2017",
+            component: <CAPCOM_FY3_2017 />
+        },
+        {
+            year: "FY3/2016",
+            component: <CAPCOM_FY3_2016 />
+        },
+        {
+            year: "FY3/2015",
+            component: <CAPCOM_FY3_2015 />
+        },
+        {
+            year: "FY3/2014",
+            component: <CAPCOM_FY3_2014 />
+        },
+        {
+            year: "FY3/2013",
+            component: <CAPCOM_FY3_2013 />
+        },
+        {
+            year: "FY3/2012",
+            component: <CAPCOM_FY3_2012 />
+        },
+        {
+            year: "FY3/2011",
+            component: <CAPCOM_FY3_2011 />
+        },
+        {
+            year: "FY3/2010",
+            component: <CAPCOM_FY3_2010 />
+        },
     ];
 
     const selectYear = selectYearComponent(componentList);
@@ -111,11 +171,11 @@ export default function Capcom() {
                     mb="sm"
                     mr="md"
                     placeholder="Select"
-                    label="Select Fiscal Year from 2022 to 2023."
+                    label="Select Fiscal Year from 2010 to 2023."
                     description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
                     radius="xl"
                     size="md"
-                    limit={2}
+                    limit={5}
                     data={yearsList}
                     value={year} 
                     onChange={setYear}
