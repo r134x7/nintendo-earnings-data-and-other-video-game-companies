@@ -331,7 +331,7 @@ export const SegaPrint = (salesData: Section[], salesUnits: Section[], header: H
         printYoYSalesPerSoftwareUnit(salesData, salesUnits, header, currentQuarter),
     ];
 
-    return [head, salesDataBlock, salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+    return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
 
 }
 
@@ -353,7 +353,7 @@ export const BandaiNamcoPrint = (salesData: Section[], salesUnits: Section[], he
         printYoYSalesPerSoftwareUnit(salesData, salesUnits, header, currentQuarter),
     ];
 
-    return [head, salesDataBlock, salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+    return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
 
 }
 
@@ -375,6 +375,6 @@ export const CapcomPrint = (salesData: Section[], salesUnits: Section[], header:
         printYoYSalesPerSoftwareUnit(salesData, salesUnits, header, currentQuarter),
     ];
 
-    return [head, salesDataBlock, salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+    return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
 
 }
