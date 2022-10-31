@@ -67,17 +67,17 @@ const Home = () => {
                     </List>
                     <Text>Capcom -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Game Series sales data from FY3/2010 to FY3/22 added.</List.Item>
+                        <List.Item>Latest update: Sales per Software Unit data from FY3/2022 to FY3/23 added.</List.Item>
                         <List.Item>Future update planned: Notes section.</List.Item>
                     </List>
                     <Text>Sega -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: English version of FY3/2022 Integrated Report added to Data Sources. Changed platform name "Pictures" to "Movies".</List.Item>
+                        <List.Item>Latest update: Sales per Software Unit data from FY3/2022 to FY3/23 added.</List.Item>
                         <List.Item>Future update planned: Notes section.</List.Item>
                     </List>
                     <Text>Bandai Namco -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Series IP data from FY3/2019 to FY3/2022.</List.Item>
+                        <List.Item>Latest update: Sales per Software Unit data from FY3/2022.</List.Item>
                     </List>
                     <Text>Events -</Text>
                     <List withPadding listStyleType="disc">

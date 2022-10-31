@@ -83,7 +83,7 @@ let x =
 `+====================================+
 | Consumer    | Sales Per | Software |
 | Total/Total |  Software |    Units |
-| Unit Sales  | Unit Cml. |Cumulative|
+| Unit Sales  |      Unit |          |
 +------------------------------------+`
 
     return x
@@ -95,7 +95,7 @@ let x =
 `+====================================+
 |             | Sales Per | Software |
 | Full Games  |  Software |    Units |
-| Total       | Unit Cml. |Cumulative|
+| Total       |      Unit |          |
 +------------------------------------+`
 
     return x
@@ -107,7 +107,7 @@ let x =
 `+====================================+
 | Home        | Sales Per | Software |
 | Video Game  |  Software |    Units |
-| Group Total | Unit Cml. |Cumulative|
+| Group Total |      Unit |          |
 +------------------------------------+`
 
     return x
