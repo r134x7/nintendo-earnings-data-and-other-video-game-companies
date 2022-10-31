@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printSeriesFY } from "../../data/bandaiNamco/Bandai_Namco_FY3_2022/bandai_namco_annual_report_fy3_22"; 
+import { printSalesPerSoftwareUnit } from "../../data/bandaiNamco/Bandai_Namco_FY3_2022/home_video_game_fy3_2022"
 
 export default function BANDAI_NAMCO_FY3_2022() {
 
@@ -14,6 +15,8 @@ export default function BANDAI_NAMCO_FY3_2022() {
     useEffect(() => {
         (value === "FY Series IP")
             ? setData(SeriesFY)
+            : (value === "Software Sales")
+            ? setData(printSalesPerSoftwareUnit)
             : setData("");
 
         (value === "Data Sources")
@@ -47,6 +50,7 @@ export default function BANDAI_NAMCO_FY3_2022() {
                     value={value}
                     onChange={setValue}
                     data={[ "Data Sources",
+                            "Software Sales",
                             "FY Series IP",
                         ]}
             />
