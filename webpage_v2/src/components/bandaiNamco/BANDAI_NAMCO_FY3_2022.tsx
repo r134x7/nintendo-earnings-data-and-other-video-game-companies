@@ -30,6 +30,22 @@ export default function BANDAI_NAMCO_FY3_2022() {
         return (
             <Text>
                 <Stack align="center">
+                        1st Quarter Financial Hightlights: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210805_Report.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210805_Report.pdf
+                    </Anchor>
+                        2nd Quarter Financial Hightlights: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20211109_Report.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20211109_Report.pdf
+                    </Anchor>
+                        3rd Quarter Financial Hightlights: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20220208_Report.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20220208_Report.pdf
+                    </Anchor>
+                        4th Quarter Financial Hightlights: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/20220511_en_Report1.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/20220511_en_Report1.pdf
+                    </Anchor>
                         Bandai Namco Group Fact Book 2022: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/integrated/pdf/2022EN_fact.pdf" target="_blank" >
                         https://www.bandainamco.co.jp/files/ir/integrated/pdf/2022EN_fact.pdf
