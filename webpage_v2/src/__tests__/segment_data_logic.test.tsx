@@ -118,6 +118,35 @@ export function yearOnYearCalculation(segment: Section[]): Section {
                 )}; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
 }
 
+const printHead = (header: Header) => 
+`+${"-".repeat(27)}+
+${header.firstHeader}${header.fiscalYear}|
++${"-".repeat(27)}+
+${header.secondHeader}
++${"-".repeat(21)}+`;
+
+const printSalesHeader = (): string => {
+
+let x =
+`+-------------+
+| Home        |-------------+
+| Video Game  |    Sales    |
++---------------------------+`
+    return x
+};
+
+const printSalesPerUnitHeader = (): string => {
+
+let x =
+`+====================================+
+| Home        | Sales Per | Software |
+| Video Game  |  Software |    Units |
+| Group Total | Unit Cml. |Cumulative|
++------------------------------------+`
+
+    return x
+}
+
 const printQtrSales = (segmentSales: Section[], header: Header, currentQuarter: number): string[] => {
 
     const quarters = quarterlyCalculation(segmentSales);
@@ -361,4 +390,26 @@ test("print all sales per software unit and YoY", () => {
     const x = [...printQtrSalesPerSWUnit(testDataSales, testDataUnits, header, 4), ...printCmlSalesPerSWUnit(testDataSales, testDataUnits, header, 4), printYoYSalesPerSoftwareUnit(testDataSales, testDataUnits, header, 4)].reduce((prev, next) => prev + "\n" + next);
     
     console.log(x);
+})
+
+test("final print!", () => {
+
+    const head = printHead(header);
+
+    const x = [
+        printSalesHeader(),
+        ...printQtrSales(testDataSales, header, 4),
+        ...printCmlSales(testDataSales, header, 4),
+    ].reduce((prev, next) => prev + "\n" + next);
+
+    const y = [
+        printSalesPerUnitHeader(),
+        ...printQtrSalesPerSWUnit(testDataSales, testDataUnits, header, 4),
+        ...printCmlSalesPerSWUnit(testDataSales, testDataUnits, header, 4),
+    ].reduce((prev, next) => prev + "\n" + next); 
+
+    const z = [head, x, y].reduce((prev, next) => prev + "\n" + next); 
+
+    console.log(z);
+    
 })
