@@ -317,19 +317,31 @@ export const SegaPrint = (salesData: Section[], salesUnits: Section[], header: H
     
     const head = printHead(header);
 
-    const salesDataBlock = [
+    const salesDataBlock = (currentQuarter === 4)
+        ? [
         printSalesHeaderSega(),
         ...printQtrSales(salesData, header, currentQuarter),
         ...printCmlSales(salesData, header, currentQuarter),
         printYoYSales(salesData, header, currentQuarter),
-    ];
+        ]
+        : [
+        printSalesHeaderSega(),
+        ...printQtrSales(salesData, header, currentQuarter),
+        ...printCmlSales(salesData, header, currentQuarter),
+        ];
 
-    const salesUnitsBlock = [
+    const salesUnitsBlock = (currentQuarter === 4)
+        ? [
         printSalesPerUnitHeaderSega(),
         ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
         printYoYSalesPerSoftwareUnit(salesData, salesUnits, header, currentQuarter),
-    ];
+        ]
+        : [
+        printSalesPerUnitHeaderSega(),
+        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ]; 
 
     return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
 
@@ -339,19 +351,31 @@ export const BandaiNamcoPrint = (salesData: Section[], salesUnits: Section[], he
     
     const head = printHead(header);
 
-    const salesDataBlock = [
+    const salesDataBlock = (currentQuarter === 4)
+        ? [
         printSalesHeaderBandaiNamco(),
         ...printQtrSales(salesData, header, currentQuarter),
         ...printCmlSales(salesData, header, currentQuarter),
         printYoYSales(salesData, header, currentQuarter),
-    ];
+        ]
+        : [
+        printSalesHeaderBandaiNamco(),
+        ...printQtrSales(salesData, header, currentQuarter),
+        ...printCmlSales(salesData, header, currentQuarter),
+        ];
 
-    const salesUnitsBlock = [
+    const salesUnitsBlock = (currentQuarter === 4)
+        ? [
         printSalesPerUnitHeaderBandaiNamco(),
         ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
         printYoYSalesPerSoftwareUnit(salesData, salesUnits, header, currentQuarter),
-    ];
+        ]
+        : [
+        printSalesPerUnitHeaderBandaiNamco(),
+        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ]; 
 
     return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
 
@@ -361,19 +385,31 @@ export const CapcomPrint = (salesData: Section[], salesUnits: Section[], header:
     
     const head = printHead(header);
 
-    const salesDataBlock = [
+    const salesDataBlock = (currentQuarter === 4)
+        ? [
         printSalesHeaderCapcom(),
         ...printQtrSales(salesData, header, currentQuarter),
         ...printCmlSales(salesData, header, currentQuarter),
         printYoYSales(salesData, header, currentQuarter),
-    ];
+        ]
+        : [
+        printSalesHeaderCapcom(),
+        ...printQtrSales(salesData, header, currentQuarter),
+        ...printCmlSales(salesData, header, currentQuarter),
+        ];
 
-    const salesUnitsBlock = [
+    const salesUnitsBlock = (currentQuarter === 4)
+        ? [
         printSalesPerUnitHeaderCapcom(),
         ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
         printYoYSalesPerSoftwareUnit(salesData, salesUnits, header, currentQuarter),
-    ];
+        ]
+        : [
+        printSalesPerUnitHeaderCapcom(),
+        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ]; 
 
     return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
 
