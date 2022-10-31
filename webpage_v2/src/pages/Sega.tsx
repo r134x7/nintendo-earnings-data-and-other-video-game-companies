@@ -4,6 +4,7 @@ import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
+import SEGA_FY3_2023 from "../components/sega/SEGA_FY3_2023";
 import SEGA_FY3_2022 from "../components/sega/SEGA_FY3_2022";
 import SEGA_FY3_2021 from "../components/sega/SEGA_FY3_2021";
 import SEGA_FY3_2020 from "../components/sega/SEGA_FY3_2020";
@@ -15,9 +16,9 @@ import SEGA_FY3_2015 from "../components/sega/SEGA_FY3_2015";
 import SEGA_FY3_2014 from "../components/sega/SEGA_FY3_2014";
 import SEGA_FY3_2013 from "../components/sega/SEGA_FY3_2013";
 
-const yearsList = Array.from({length: 9}, (elem, index) => 
+const yearsList = Array.from({length: 10}, (elem, index) => 
                     {
-                            return "FY3/" + (2022 - index)
+                            return "FY3/" + (2023 - index)
                     }) 
 
 export default function Sega() {
@@ -80,6 +81,10 @@ export default function Sega() {
     }
 
     const componentList = [
+        {
+            year: "FY3/2023",
+            component: <SEGA_FY3_2023 />
+        },
         {
             year: "FY3/2022",
             component: <SEGA_FY3_2022 />
