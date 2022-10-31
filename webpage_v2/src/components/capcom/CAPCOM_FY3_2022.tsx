@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printFYPlatinumTitles, printAllPlatinumTitles } from "../../data/capcom/Capcom_FY3_2022/platinum_titles_fy3_22";
-import { printSeriesFY } from "../../data/capcom/Capcom_FY3_2022/game_series_sales_fy3_2022"
+import { printSeriesFY } from "../../data/capcom/Capcom_FY3_2022/game_series_sales_fy3_2022";
+import { printSalesPerSoftwareUnit } from "../../data/capcom/Capcom_FY3_2022/software_sales_fy3_2022";
 
 export default function CAPCOM_FY3_2022() {
+
+    const softwareSales = printSalesPerSoftwareUnit; 
 
     const platinumTitlesFY = printFYPlatinumTitles;
 
@@ -18,6 +21,10 @@ export default function CAPCOM_FY3_2022() {
     const state: any = useSelector(state => state);
 
     const componentList = [
+        {
+            name: "Software Sales",
+            value: softwareSales,
+        },
         {
             name: "FY Platinum Titles", 
             value: platinumTitlesFY
@@ -62,6 +69,22 @@ export default function CAPCOM_FY3_2022() {
         return (
             <Text>
                 <Stack align="center">
+                        1st Quarter Financial Results Presentation: 
+                    <Anchor mb="sm" href="https://www.capcom.co.jp/ir/english/data/pdf/explanation/2021/1st/explanation_2021_1st_01.pdf" target="_blank" >
+                        https://www.capcom.co.jp/ir/english/data/pdf/explanation/2021/1st/explanation_2021_1st_01.pdf
+                    </Anchor>
+                        2nd Quarter Financial Results Presentation: 
+                    <Anchor mb="sm" href="https://www.capcom.co.jp/ir/english/data/pdf/explanation/2021/2nd/explanation_2021_2nd_01.pdf" target="_blank" >
+                        https://www.capcom.co.jp/ir/english/data/pdf/explanation/2021/2nd/explanation_2021_2nd_01.pdf
+                    </Anchor>
+                        3rd Quarter Financial Results Presentation: 
+                    <Anchor mb="sm" href="https://www.capcom.co.jp/ir/english/data/pdf/explanation/2021/3rd/explanation_2021_3rd_01.pdf" target="_blank" >
+                        https://www.capcom.co.jp/ir/english/data/pdf/explanation/2021/3rd/explanation_2021_3rd_01.pdf
+                    </Anchor>
+                        4th Quarter Financial Results Presentation: 
+                    <Anchor mb="sm" href="https://www.capcom.co.jp/ir/english/data/pdf/explanation/2021/full/explanation_2021_full_01.pdf" target="_blank" >
+                        https://www.capcom.co.jp/ir/english/data/pdf/explanation/2021/full/explanation_2021_full_01.pdf
+                    </Anchor>
                         Capcom Platinum Titles Page: 
                     <Anchor mb="sm" href="https://www.capcom.co.jp/ir/english/business/million.html" target="_blank" >
                         https://www.capcom.co.jp/ir/english/business/million.html
