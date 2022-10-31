@@ -118,9 +118,11 @@ export function yearOnYearCalculation(segment: Section[]): Section {
                 )}; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
 }
 
-const printSales = (segmentSales: Section[], header: Header, currentQuarter: number): string[] => {
+const printQtrSales = (segmentSales: Section[], header: Header, currentQuarter: number): string[] => {
 
-        const sales = segmentSales.filter((elem, index, array) => {
+    const quarters = quarterlyCalculation(segmentSales);
+
+        const sales = quarters.filter((elem, index, array) => {
             return index < currentQuarter && array[index].value !== 0
         }).map((elem, index, array) => {
             // values given are Billion yen, changing to Million yen
@@ -147,13 +149,66 @@ const printSales = (segmentSales: Section[], header: Header, currentQuarter: num
 
 };
 
-const printSalesPerSWUnit = (segmentSales: Section[], segmentUnits: Section[], header: Header, currentQuarter: number): string[] => {
+const printCmlSales = (segmentSales: Section[], header: Header, currentQuarter: number): string[] => {
+
+        const sales = segmentSales.filter((elem, index, array) => {
+            return index !== 0 && index < currentQuarter && array[index].value !== 0
+        }).map((elem, index, array) => {
+            // values given are Billion yen, changing to Million yen
+            let printSection: string = `¥${(elem.value * 1000).toLocaleString("en")}M `
+
+            let printSectionFixed: string = (printSection.length >= 13)
+                ? printSection
+                : " ".repeat(13 - printSection.length) + printSection;
+            
+            let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+
+            let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
+                    ? `${shortFY}${elem.cmlPeriod}`
+                    : elem.cmlPeriod
+
+        //    let printLine: string = (array[index] === array.at(-1))
+        //         ? "\n+" + "=".repeat(27) + "+"
+        //         : "\n+" + "-".repeat(27) + "+"
+            
+           let printLine: string = "\n+" + "-".repeat(27) + "+";
+
+            return "|" + printPeriod + "|" + printSectionFixed + "|" + printLine  
+        })
+
+        return sales
+
+};
+
+const printYoYSales = (segmentSales: Section[], header: Header, currentQuarter: number): string => {
+
+    const yoy = yearOnYearCalculation(segmentSales);
+
+    // values given are Billion yen, changing to Million yen
+    let printSection: string = `${(yoy.value)}% `
+
+    let printSectionFixed: string = (printSection.length >= 13)
+        ? printSection
+        : " ".repeat(13 - printSection.length) + printSection;
+            
+    let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+
+    // let printPeriod: string = `${shortFY}${yoy.cmlPeriod}`
+
+    let printPeriod: string = `${shortFY}${yoy.cmlPeriod}`
+            
+    let printLine: string = "\n+" + "-".repeat(27) + "+";
+
+    return "|" + printPeriod + "|" + printSectionFixed + "|" + printLine  
+
+};
+const printCmlSalesPerSWUnit = (segmentSales: Section[], segmentUnits: Section[], header: Header, currentQuarter: number): string[] => {
 
         const salesPerSoftwareUnit = segmentSales.filter((elem, index, array) => {
-            return index < currentQuarter && array[index].value !== 0
+            return index !== 0 && index < currentQuarter && array[index].value !== 0
         }).map((elem, index, array) => { 
             // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
-            let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (segmentUnits[index].value / 1000)).toFixed(0))
+            let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (segmentUnits[index+1].value / 1000)).toFixed(0))
 
             let printsegmentSalesPerSoftware: string = `¥${calculateSalesPerSoftware.toLocaleString("en")} `
             
@@ -161,7 +216,7 @@ const printSalesPerSWUnit = (segmentSales: Section[], segmentUnits: Section[], h
                 ? printsegmentSalesPerSoftware
                 : " ".repeat(11 - printsegmentSalesPerSoftware.length) + printsegmentSalesPerSoftware;
             
-            let printSoftwareUnits: string = `${segmentUnits[index].value / 1000}M `
+            let printSoftwareUnits: string = `${segmentUnits[index+1].value / 1000}M `
 
             // let printSoftwareUnits: string = `${segmentUnits[index].value.toLocaleString("en")}k `
             let printSoftwareUnitsFixed: string = (printSoftwareUnits.length >= 10)
@@ -174,10 +229,12 @@ const printSalesPerSWUnit = (segmentSales: Section[], segmentUnits: Section[], h
                     ? `${shortFY}${elem.cmlPeriod}`
                     : elem.cmlPeriod
 
-           let printLine: string = (array[index] === array.at(-1))
-                ? "\n+" + "=".repeat(36) + "+"
-                : "\n+" + "-".repeat(36) + "+"
+        //    let printLine: string = (array[index] === array.at(-1))
+        //         ? "\n+" + "=".repeat(36) + "+"
+        //         : "\n+" + "-".repeat(36) + "+"
             
+        let printLine: string = "\n+" + "-".repeat(36) + "+";
+
             return "|" + printPeriod + "|" + printsegmentSalesPerSoftwareFixed + "|" + printSoftwareUnitsFixed + "|" + printLine
         })
 
@@ -186,13 +243,13 @@ const printSalesPerSWUnit = (segmentSales: Section[], segmentUnits: Section[], h
 
 test("sales print", () => {
 
-    console.log(printSales(testDataSales, header, 4).reduce((prev, next) => prev + "\n" + next));
+    console.log(printCmlSales(testDataSales, header, 4).reduce((prev, next) => prev + "\n" + next));
     
 })
 
 test("sales per software unit test", () => {
 
-    console.log(printSalesPerSWUnit(testDataSales, testDataUnits, header, 4).reduce((prev, next) => prev + "\n" + next));
+    console.log(printCmlSalesPerSWUnit(testDataSales, testDataUnits, header, 4).reduce((prev, next) => prev + "\n" + next));
     
 })
 
@@ -205,5 +262,19 @@ test("year on year calculation", () => {
     console.log(x.value);
     console.log(y.value);
     
+    
+});
+
+test("print quarter sales", () => {
+
+    console.log(printQtrSales(testDataSales, header, 4).reduce((prev, next) => prev + "\n" + next));
+    
+})
+
+test("print all sales and yoy", () => {
+
+    const x = [...printQtrSales(testDataSales, header, 4), ...printCmlSales(testDataSales, header, 4), printYoYSales(testDataSales, header, 4)].reduce((prev, next) => prev + "\n" + next);
+    
+    console.log(x);
     
 })
