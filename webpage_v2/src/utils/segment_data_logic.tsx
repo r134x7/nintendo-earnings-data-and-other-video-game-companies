@@ -8,7 +8,7 @@ export type Section = {
 }
 
 export type Header = {
-    firstHeader: "| Bandai Namco   |",
+    firstHeader: "| Bandai Namco   |" | "| Capcom         |" | "| Sega Sammy     |",
     secondHeader: "| Segment Information |",
     fiscalYear: string,
 }
@@ -47,7 +47,7 @@ export function yearOnYearCalculation(segment: Section[]): Section {
 }
 
 
-const printSalesHeader = (): string => {
+const printSalesHeaderBandaiNamco = (): string => {
 
 let x =
 `+-------------+
@@ -57,7 +57,51 @@ let x =
     return x
 };
 
-const printSalesPerUnitHeader = (): string => {
+const printSalesHeaderSega = (): string => {
+
+let x =
+`+-------------+
+|             |-------------+
+| Full Games  |    Sales    |
++---------------------------+`
+    return x
+};
+
+const printSalesHeaderCapcom = (): string => {
+
+let x =
+`+-------------+
+| Consumer    |-------------+
+| Total       |    Sales    |
++---------------------------+`
+    return x
+};
+
+const printSalesPerUnitHeaderCapcom = (): string => {
+
+let x =
+`+====================================+
+| Consumer    | Sales Per | Software |
+| Total/Total |  Software |    Units |
+| Unit Sales  | Unit Cml. |Cumulative|
++------------------------------------+`
+
+    return x
+}
+
+const printSalesPerUnitHeaderSega = (): string => {
+
+let x =
+`+====================================+
+|             | Sales Per | Software |
+| Full Games  |  Software |    Units |
+| Total       | Unit Cml. |Cumulative|
++------------------------------------+`
+
+    return x
+}
+
+const printSalesPerUnitHeaderBandaiNamco = (): string => {
 
 let x =
 `+====================================+
@@ -267,4 +311,64 @@ const printYoYSalesPerSoftwareUnit = (segmentSales: Section[], segmentUnits: Sec
 
     return "|" + printPeriod + "|" + printSalesFixed + "|" + printUnitsFixed + "|" + printLine
  
+}
+
+export const SegaPrint = (salesData: Section[], salesUnits: Section[], header: Header, currentQuarter: number) => {
+    
+    const head = printHead(header);
+
+    const salesDataBlock = [
+        printSalesHeaderSega(),
+        ...printQtrSales(salesData, header, currentQuarter),
+        ...printCmlSales(salesData, header, currentQuarter),
+    ];
+
+    const salesUnitsBlock = [
+        printSalesPerUnitHeaderSega(),
+        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+    ];
+
+    return [head, salesDataBlock, salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+
+}
+
+export const BandaiNamcoPrint = (salesData: Section[], salesUnits: Section[], header: Header, currentQuarter: number) => {
+    
+    const head = printHead(header);
+
+    const salesDataBlock = [
+        printSalesHeaderBandaiNamco(),
+        ...printQtrSales(salesData, header, currentQuarter),
+        ...printCmlSales(salesData, header, currentQuarter),
+    ];
+
+    const salesUnitsBlock = [
+        printSalesPerUnitHeaderBandaiNamco(),
+        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+    ];
+
+    return [head, salesDataBlock, salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+
+}
+
+export const CapcomPrint = (salesData: Section[], salesUnits: Section[], header: Header, currentQuarter: number) => {
+    
+    const head = printHead(header);
+
+    const salesDataBlock = [
+        printSalesHeaderCapcom(),
+        ...printQtrSales(salesData, header, currentQuarter),
+        ...printCmlSales(salesData, header, currentQuarter),
+    ];
+
+    const salesUnitsBlock = [
+        printSalesPerUnitHeaderCapcom(),
+        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+    ];
+
+    return [head, salesDataBlock, salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+
 }
