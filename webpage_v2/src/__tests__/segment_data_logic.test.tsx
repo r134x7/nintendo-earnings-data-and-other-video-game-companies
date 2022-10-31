@@ -134,9 +134,7 @@ const printQtrSales = (segmentSales: Section[], header: Header, currentQuarter: 
             
             let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
 
-            let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
-                    ? `${shortFY}${elem.cmlPeriod}`
-                    : elem.cmlPeriod
+            let printPeriod: string = elem.period;
 
            let printLine: string = (array[index] === array.at(-1))
                 ? "\n+" + "=".repeat(27) + "+"
@@ -185,7 +183,9 @@ const printYoYSales = (segmentSales: Section[], header: Header, currentQuarter: 
     const yoy = yearOnYearCalculation(segmentSales);
 
     // values given are Billion yen, changing to Million yen
-    let printSection: string = `${(yoy.value)}% `
+    let printSection: string = (yoy.value > 0)
+            ? `+${(yoy.value)}% `
+            : `${(yoy.value)}% `
 
     let printSectionFixed: string = (printSection.length >= 13)
         ? printSection
@@ -195,7 +195,7 @@ const printYoYSales = (segmentSales: Section[], header: Header, currentQuarter: 
 
     // let printPeriod: string = `${shortFY}${yoy.cmlPeriod}`
 
-    let printPeriod: string = `${shortFY}${yoy.cmlPeriod}`
+    let printPeriod: string = ` ${yoy.cmlPeriod}YoY%   `;
             
     let printLine: string = "\n+" + "-".repeat(27) + "+";
 
