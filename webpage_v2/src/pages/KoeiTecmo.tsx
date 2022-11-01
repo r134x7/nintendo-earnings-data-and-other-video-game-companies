@@ -5,6 +5,7 @@ import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import KOEI_TECMO_FY3_2022 from "../components/koeiTecmo/KOEI_TECMO_FY3_2022";
+import KOEI_TECMO_FY3_2023 from "../components/koeiTecmo/KOEI_TECMO_FY3_2023";
 
 const yearsList = Array.from({length: 2}, (elem, index) => 
                     {
@@ -71,10 +72,10 @@ export default function KoeiTecmo() {
     }
 
     const componentList = [
-        // {
-        //     year: "FY3/2023",
-        //     component: <KOEI_TECMO_FY3_2023 />
-        // },
+        {
+            year: "FY3/2023",
+            component: <KOEI_TECMO_FY3_2023 />
+        },
         {
             year: "FY3/2022",
             component: <KOEI_TECMO_FY3_2022 />
