@@ -2,94 +2,94 @@ import { Header, Section, CapcomPrint } from "../../../utils/segment_data_logic"
 
 const sales: Section[] = [
     {
-        name: " Digital Contents ",
+        name: " Console Package & DL ",
         region: " Group Total ",
         period: " 1st Quarter ",
         cmlPeriod: " 1st Quarter ",
         units: "currency",
-        value: 19.2 // billion yen
+        value: 10.068 // billion yen
     },
     {
-        name: " Digital Contents ",
+        name: " Console Package & DL ",
         region: " Group Total ",
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "currency",
-        value: 34.9 // billion yen
+        value: 15.885 // billion yen
     },
     {
-        name: " Digital Contents ",
+        name: " Console Package & DL ",
         region: " Group Total ",
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "currency",
-        value: 34.9 // billion yen
+        value: 23.297 // billion yen
     },
     {
-        name: " Digital Contents ",
+        name: " Console Package & DL ",
         region: " Group Total ",
         period: " 4th Quarter ",
         cmlPeriod: "Cml. ",
         units: "currency",
-        value: 34.9 // billion yen
+        value: 30.771 // billion yen
     },
     {
-        name: " Digital Contents ",
+        name: " Console Package & DL ",
         region: " Group Total ",
         period: " Last FY Cumulative ",
         cmlPeriod: "Cml. ",
         units: "currency",
-        value: 83.3 // billion yen
+        value: 28.728 // billion yen
     },
 ]
 
 const units: Section[] = [
     {
-        name: " Digital Contents ",
+        name: " Console Package & DL ",
         region: " Group Total ",
         period: " 1st Quarter ",
         cmlPeriod: " 1st Quarter ",
         units: "units",
-        value: 11700 // thousand
+        value: 2450 // thousand
     },
     {
-        name: " Digital Contents ",
+        name: " Console Package & DL ",
         region: " Group Total ",
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "units",
-        value: 21300,
+        value: 3650,
     },
     {
-        name: " Digital Contents ",
+        name: " Console Package & DL ",
         region: " Group Total ",
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "units",
-        value: 21300,
+        value: 5700,
     },
     {
-        name: " Digital Contents ",
+        name: " Console Package & DL ",
         region: " Group Total ",
         period: " 4th Quarter ",
         cmlPeriod: "Cml. ",
         units: "units",
-        value: 21300,
+        value: 8130,
     },
     {
-        name: " Digital Contents ",
+        name: " Console Package & DL ",
         region: " Group Total ",
         period: " Last FY Cumulative ",
         cmlPeriod: "Cml. ",
         units: "units",
-        value: 32600,
+        value: 10110,
     },
 ]
 
 const header: Header = {
-    fiscalYear: " FY3/2023 ",
+    fiscalYear: " FY3/2022 ",
     secondHeader: "| Segment Information |",
-    firstHeader: "| Capcom         |",
+    firstHeader: "| Koei Tecmo     |",
 }
 
 export const printSalesPerSoftwareUnit = CapcomPrint(sales, units, header, 2);
