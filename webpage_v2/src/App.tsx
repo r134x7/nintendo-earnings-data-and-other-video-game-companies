@@ -61,7 +61,7 @@ function App() {
                     <Button aria-label='Capcom data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Capcom</Button>
               </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/sega">
-                    <Button aria-label='Sega data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Sega</Button>
+                    <Button aria-label='Sega data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan"><Text size='xs' >Sega Sammy</Text></Button>
               </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/bandai-namco">
                     <Button aria-label='Bandai Namco data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">
@@ -69,7 +69,7 @@ function App() {
               </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/koei-tecmo">
                     <Button aria-label='Koei Tecmo data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">
-                      <Text size='xs' >Koei Tecmo</Text></Button>
+                      <Text>Koei Tecmo</Text></Button>
               </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/events">
                     <Button aria-label='Upcoming events page' leftIcon={<Calendar size={24} strokeWidth={2} color={'#40bfb2'}/>} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Events</Button>

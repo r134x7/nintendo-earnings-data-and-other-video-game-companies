@@ -70,7 +70,7 @@ const Home = () => {
                         <List.Item>Latest update: Sales per Software Unit data from FY3/2022 to FY3/23 added.</List.Item>
                         <List.Item>Future update planned: Notes section.</List.Item>
                     </List>
-                    <Text>Sega -</Text>
+                    <Text>Sega Sammy -</Text>
                     <List withPadding listStyleType="disc">
                         <List.Item>Latest update: Sales per Software Unit data from FY3/2022 to FY3/23 added.</List.Item>
                         <List.Item>Future update planned: Notes section.</List.Item>
@@ -78,6 +78,10 @@ const Home = () => {
                     <Text>Bandai Namco -</Text>
                     <List withPadding listStyleType="disc">
                         <List.Item>Latest update: Sales per Software Unit data from FY3/2022.</List.Item>
+                    </List>
+                    <Text>Koei Tecmo -</Text>
+                    <List withPadding listStyleType="disc">
+                        <List.Item>Latest update: Sales per Software Unit data from FY3/2022 to FY3/23 added.</List.Item>
                     </List>
                     <Text>Events -</Text>
                     <List withPadding listStyleType="disc">
