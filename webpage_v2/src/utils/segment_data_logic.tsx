@@ -46,6 +46,15 @@ function yearOnYearCalculation(segment: Section[]): Section {
                 )}; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
 }
 
+const printSalesHeaderKoeiTecmo = (): string => {
+
+let x =
+`+-------------+
+| Console     |-------------+
+| Package & DL|    Sales    |
++---------------------------+`
+    return x
+};
 
 const printSalesHeaderBandaiNamco = (): string => {
 
@@ -76,6 +85,18 @@ let x =
 +---------------------------+`
     return x
 };
+
+const printSalesPerUnitHeaderKoeiTecmo = (): string => {
+
+let x =
+`+====================================+
+| Console     | Sales Per | Software |
+| Package & DL|  Software |    Units |
+| Total       |      Unit |          |
++------------------------------------+`
+
+    return x
+}
 
 const printSalesPerUnitHeaderCapcom = (): string => {
 
@@ -407,6 +428,40 @@ export const CapcomPrint = (salesData: Section[], salesUnits: Section[], header:
         ]
         : [
         printSalesPerUnitHeaderCapcom(),
+        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ]; 
+
+    return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+
+}
+
+export const KoeiTecmoPrint = (salesData: Section[], salesUnits: Section[], header: Header, currentQuarter: number) => {
+    
+    const head = printHead(header);
+
+    const salesDataBlock = (currentQuarter === 4)
+        ? [
+        printSalesHeaderKoeiTecmo(),
+        ...printQtrSales(salesData, header, currentQuarter),
+        ...printCmlSales(salesData, header, currentQuarter),
+        printYoYSales(salesData, header, currentQuarter),
+        ]
+        : [
+        printSalesHeaderKoeiTecmo(),
+        ...printQtrSales(salesData, header, currentQuarter),
+        ...printCmlSales(salesData, header, currentQuarter),
+        ];
+
+    const salesUnitsBlock = (currentQuarter === 4)
+        ? [
+        printSalesPerUnitHeaderKoeiTecmo(),
+        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        printYoYSalesPerSoftwareUnit(salesData, salesUnits, header, currentQuarter),
+        ]
+        : [
+        printSalesPerUnitHeaderKoeiTecmo(),
         ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
         ]; 

@@ -1,4 +1,4 @@
-import { Header, Section, CapcomPrint } from "../../../utils/segment_data_logic";
+import { Header, Section, KoeiTecmoPrint } from "../../../utils/segment_data_logic";
 
 const sales: Section[] = [
     {
@@ -92,4 +92,4 @@ const header: Header = {
     firstHeader: "| Koei Tecmo     |",
 }
 
-export const printSalesPerSoftwareUnit = CapcomPrint(sales, units, header, 2);
+export const printSalesPerSoftwareUnit = KoeiTecmoPrint(sales, units, header, 4);
