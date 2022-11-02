@@ -46,6 +46,16 @@ function yearOnYearCalculation(segment: Section[]): Section {
                 )}; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
 }
 
+const printSalesHeaderSquareEnix = (): string => {
+
+let x =
+`+-------------+
+| Digital     |-------------+
+|Entertainment|    Sales    |
++---------------------------+`
+    return x
+};
+
 const printSalesHeaderKoeiTecmo = (): string => {
 
 let x =
@@ -85,6 +95,18 @@ let x =
 +---------------------------+`
     return x
 };
+
+const printSalesPerUnitHeaderSquareEnix = (): string => {
+
+let x =
+`+====================================+
+| Digital Ent.| Sales Per | Software |
+| HD & MMO    |  Software |    Units |
+| Games Total |      Unit |          |
++------------------------------------+`
+
+    return x
+}
 
 const printSalesPerUnitHeaderKoeiTecmo = (): string => {
 
@@ -462,6 +484,40 @@ export const KoeiTecmoPrint = (salesData: Section[], salesUnits: Section[], head
         ]
         : [
         printSalesPerUnitHeaderKoeiTecmo(),
+        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ]; 
+
+    return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+
+}
+
+export const SquareEnixPrint = (salesData: Section[], salesUnits: Section[], header: Header, currentQuarter: number) => {
+    
+    const head = printHead(header);
+
+    const salesDataBlock = (currentQuarter === 4)
+        ? [
+        printSalesHeaderSquareEnix(),
+        ...printQtrSales(salesData, header, currentQuarter),
+        ...printCmlSales(salesData, header, currentQuarter),
+        printYoYSales(salesData, header, currentQuarter),
+        ]
+        : [
+        printSalesHeaderSquareEnix(),
+        ...printQtrSales(salesData, header, currentQuarter),
+        ...printCmlSales(salesData, header, currentQuarter),
+        ];
+
+    const salesUnitsBlock = (currentQuarter === 4)
+        ? [
+        printSalesPerUnitHeaderSquareEnix(),
+        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        printYoYSalesPerSoftwareUnit(salesData, salesUnits, header, currentQuarter),
+        ]
+        : [
+        printSalesPerUnitHeaderSquareEnix(),
         ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
         ]; 
