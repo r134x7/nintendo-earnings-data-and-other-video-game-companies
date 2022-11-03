@@ -46,12 +46,23 @@ function yearOnYearCalculation(segment: Section[]): Section {
                 )}; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
 }
 
-const printSalesHeaderSquareEnix = (): string => {
+const printSalesHeaderSquareEnixHD = (): string => {
 
 let x =
-`+-------------+
-| Digital     |-------------+
-|Entertainment|    Sales    |
+`+-----------------------+
+| Digital Entertainment |
++-----------------------+
++---------------------------+
+| HD Games    |    Sales    |
++---------------------------+`
+    return x
+};
+
+const printSalesHeaderSquareEnixMMO = (): string => {
+
+let x =
+`+---------------------------+
+| MMO         |    Sales    |
 +---------------------------+`
     return x
 };
@@ -99,10 +110,13 @@ let x =
 const printSalesPerUnitHeaderSquareEnix = (): string => {
 
 let x =
-`+====================================+
+`|*MMO sales includes subscriptions
+|**Sales might include:
+| - Downloadable content purchases 
++====================================+
 | Digital Ent.| Sales Per | Software |
-| HD & MMO    |  Software |    Units |
-| Games Total |      Unit |          |
+| HD Games    |  Software |    Units |
+| & MMO Total |      Unit |          |
 +------------------------------------+`
 
     return x
@@ -111,7 +125,9 @@ let x =
 const printSalesPerUnitHeaderKoeiTecmo = (): string => {
 
 let x =
-`+====================================+
+`|*Sales does not include:
+| - Downloadable content purchases 
++====================================+
 | Console     | Sales Per | Software |
 | Package & DL|  Software |    Units |
 | Total       |      Unit |          |
@@ -123,7 +139,9 @@ let x =
 const printSalesPerUnitHeaderCapcom = (): string => {
 
 let x =
-`+====================================+
+`|*Sales includes:
+| - Downloadable content purchases
++====================================+
 | Consumer    | Sales Per | Software |
 | Total/Total |  Software |    Units |
 | Unit Sales  |      Unit |          |
@@ -135,7 +153,9 @@ let x =
 const printSalesPerUnitHeaderSega = (): string => {
 
 let x =
-`+====================================+
+`|*Sales might include:
+| - Downloadable content purchases 
++====================================+
 |             | Sales Per | Software |
 | Full Games  |  Software |    Units |
 | Total       |      Unit |          |
@@ -147,7 +167,9 @@ let x =
 const printSalesPerUnitHeaderBandaiNamco = (): string => {
 
 let x =
-`+====================================+
+`|*Sales might include:
+| - Downloadable content purchases
++====================================+
 | Home        | Sales Per | Software |
 | Video Game  |  Software |    Units |
 | Group Total |      Unit |          |
@@ -492,34 +514,41 @@ export const KoeiTecmoPrint = (salesData: Section[], salesUnits: Section[], head
 
 }
 
-export const SquareEnixPrint = (salesData: Section[], salesUnits: Section[], header: Header, currentQuarter: number) => {
+export const SquareEnixPrint = (salesHDGames: Section[], salesMMO: Section[], salesHDandMMO: Section[], salesUnits: Section[], header: Header, currentQuarter: number) => {
     
     const head = printHead(header);
 
     const salesDataBlock = (currentQuarter === 4)
         ? [
-        printSalesHeaderSquareEnix(),
-        ...printQtrSales(salesData, header, currentQuarter),
-        ...printCmlSales(salesData, header, currentQuarter),
-        printYoYSales(salesData, header, currentQuarter),
+        printSalesHeaderSquareEnixHD(),
+        ...printQtrSales(salesHDGames, header, currentQuarter),
+        ...printCmlSales(salesHDGames, header, currentQuarter),
+        printYoYSales(salesHDGames, header, currentQuarter),
+        printSalesHeaderSquareEnixMMO(),
+        ...printQtrSales(salesMMO, header, currentQuarter),
+        ...printCmlSales(salesMMO, header, currentQuarter),
+        printYoYSales(salesMMO, header, currentQuarter),
         ]
         : [
-        printSalesHeaderSquareEnix(),
-        ...printQtrSales(salesData, header, currentQuarter),
-        ...printCmlSales(salesData, header, currentQuarter),
+        printSalesHeaderSquareEnixHD(),
+        ...printQtrSales(salesHDGames, header, currentQuarter),
+        ...printCmlSales(salesHDGames, header, currentQuarter),
+        printSalesHeaderSquareEnixMMO(),
+        ...printQtrSales(salesMMO, header, currentQuarter),
+        ...printCmlSales(salesMMO, header, currentQuarter),
         ];
 
     const salesUnitsBlock = (currentQuarter === 4)
         ? [
         printSalesPerUnitHeaderSquareEnix(),
-        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        printYoYSalesPerSoftwareUnit(salesData, salesUnits, header, currentQuarter),
+        ...printQtrSalesPerSWUnit(salesHDandMMO, salesUnits, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesHDandMMO, salesUnits, header, currentQuarter),
+        printYoYSalesPerSoftwareUnit(salesHDandMMO, salesUnits, header, currentQuarter),
         ]
         : [
         printSalesPerUnitHeaderSquareEnix(),
-        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printQtrSalesPerSWUnit(salesHDandMMO, salesUnits, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesHDandMMO, salesUnits, header, currentQuarter),
         ]; 
 
     return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
