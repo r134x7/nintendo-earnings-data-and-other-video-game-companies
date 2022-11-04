@@ -178,4 +178,23 @@ const header: Header = {
     firstHeader: "| Square Enix    |", 
 }
 
-export const printSalesPerSoftwareUnit = SquareEnixPrint(salesHD, salesMMO, salesHDandMMO, units, header, 4);
+const notes = "\n" +
+`+----------------------------------------+
+|From Outline of Results Briefing held   | 
+|on May 13, 2021:                        |
+|We have also made a change to how we    |
+|disclose our units sold. Whereas the    |
+|download sales we disclosed previously  |
+|only included titles launched in the    |
+|past two years, we now include all sales|
+|made during the relevant fiscal year,   |
+|regardless of when a title may have been|
+|released.                               |
+|                                        |
+|This change was prompted primarily by   |
+|the fact that we are making many more   |
+|sales from our back catalog than we had |
+|in the past.                            |
++----------------------------------------+`;
+
+export const printSalesPerSoftwareUnit: string = SquareEnixPrint(salesHD, salesMMO, salesHDandMMO, units, header, 4).concat(notes);

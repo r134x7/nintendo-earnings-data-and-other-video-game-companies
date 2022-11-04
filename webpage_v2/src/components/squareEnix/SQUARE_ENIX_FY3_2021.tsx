@@ -74,6 +74,10 @@ export default function SQUARE_ENIX_FY3_2021() {
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/pdf/21q4release.pdf" target="_blank" >
                         https://www.hd.square-enix.com/eng/ir/pdf/21q4release.pdf
                     </Anchor>
+                        Regarding Software Sales units for 4th Quarter FY3/2021: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/docs/210618/page02.html" target="_blank" >
+                       https://www.hd.square-enix.com/eng/ir/library/docs/210618/page02.html 
+                    </Anchor>
                 </Stack>  
             </Text> 
         )

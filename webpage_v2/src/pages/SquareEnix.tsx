@@ -7,9 +7,11 @@ import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import SQUARE_ENIX_FY3_2022 from "../components/squareEnix/SQUARE_ENIX_FY3_2022";
 import SQUARE_ENIX_FY3_2021 from "../components/squareEnix/SQUARE_ENIX_FY3_2021";
 
+const currentYear = 2022;
+
 const yearsList = Array.from({length: 2}, (elem, index) => 
                     {
-                            return "FY3/" + (2022 - index)
+                            return "FY3/" + (currentYear - index)
                     }) 
 
 export default function SquareEnix() {
@@ -115,7 +117,7 @@ export default function SquareEnix() {
                     mb="sm"
                     mr="md"
                     placeholder="Select"
-                    label="Select Fiscal Year from 2021 to 2022."
+                    label={`Select Fiscal Year from 2021 to ${currentYear}.`}
                     description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
                     radius="xl"
                     size="md"
