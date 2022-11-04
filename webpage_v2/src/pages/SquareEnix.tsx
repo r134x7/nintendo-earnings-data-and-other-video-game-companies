@@ -7,10 +7,12 @@ import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import SQUARE_ENIX_FY3_2022 from "../components/squareEnix/SQUARE_ENIX_FY3_2022";
 import SQUARE_ENIX_FY3_2021 from "../components/squareEnix/SQUARE_ENIX_FY3_2021";
 import SQUARE_ENIX_FY3_2020 from "../components/squareEnix/SQUARE_ENIX_FY3_2020";
+import SQUARE_ENIX_FY3_2019 from "../components/squareEnix/SQUARE_ENIX_FY3_2019";
+import SQUARE_ENIX_FY3_2018 from "../components/squareEnix/SQUARE_ENIX_FY3_2018";
 
 const currentYear = 2022;
 
-const yearsList = Array.from({length: 3}, (elem, index) => 
+const yearsList = Array.from({length: 5}, (elem, index) => 
                     {
                             return "FY3/" + (currentYear - index)
                     }) 
@@ -90,6 +92,14 @@ export default function SquareEnix() {
         {
             year: "FY3/2020",
             component: <SQUARE_ENIX_FY3_2020 />
+        },
+        {
+            year: "FY3/2019",
+            component: <SQUARE_ENIX_FY3_2019 />
+        },
+        {
+            year: "FY3/2018",
+            component: <SQUARE_ENIX_FY3_2018 />
         },
     ];
 
