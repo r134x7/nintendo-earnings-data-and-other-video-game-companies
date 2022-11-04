@@ -11,10 +11,11 @@ import SQUARE_ENIX_FY3_2019 from "../components/squareEnix/SQUARE_ENIX_FY3_2019"
 import SQUARE_ENIX_FY3_2018 from "../components/squareEnix/SQUARE_ENIX_FY3_2018";
 import SQUARE_ENIX_FY3_2017 from "../components/squareEnix/SQUARE_ENIX_FY3_2017";
 import SQUARE_ENIX_FY3_2016 from "../components/squareEnix/SQUARE_ENIX_FY3_2016";
+import SQUARE_ENIX_FY3_2015 from "../components/squareEnix/SQUARE_ENIX_FY3_2015";
 
 const currentYear = 2022;
 
-const yearsList = Array.from({length: 7}, (elem, index) => 
+const yearsList = Array.from({length: 8}, (elem, index) => 
                     {
                             return "FY3/" + (currentYear - index)
                     }) 
@@ -110,6 +111,10 @@ export default function SquareEnix() {
         {
             year: "FY3/2016",
             component: <SQUARE_ENIX_FY3_2016 />
+        },
+        {
+            year: "FY3/2015",
+            component: <SQUARE_ENIX_FY3_2015 />
         },
     ];
 
