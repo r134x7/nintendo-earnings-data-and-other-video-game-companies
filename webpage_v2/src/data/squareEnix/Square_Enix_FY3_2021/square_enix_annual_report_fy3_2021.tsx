@@ -9,31 +9,31 @@ const series1: Series =
 {
     title: "Final Fantasy",
     releaseDate: " December 1987 ",
-    fyEndMonth: " March 2022 ",
-    value: 173,
-    valueLastFY: 164,
-    valueLastTwoFYs: 154,
+    fyEndMonth: " March 2021 ",
+    value: 164,
+    valueLastFY: 154,
+    valueLastTwoFYs: 144,
 };
 
 const series2: Series = 
 {
     title: "Dragon Quest",
     releaseDate: " May 1986 ",
-    fyEndMonth: " March 2022 ",
-    value: 85,
-    valueLastFY: 83,
-    valueLastTwoFYs: 82,
+    fyEndMonth: " March 2021 ",
+    value: 83,
+    valueLastFY: 82,
+    valueLastTwoFYs: 78,
 
 };
 
 const series3: Series = 
 {
-    title: "Kingdom Hearts",
-    releaseDate: " March 2002 ",
-    fyEndMonth: " March 2022 ",
-    value: 36,
-    valueLastFY: 0,
-    valueLastTwoFYs: 0,
+    title: "Tomb Raider",
+    releaseDate: " October 1996 ",
+    fyEndMonth: " March 2021 ",
+    value: 82,
+    valueLastFY: 77,
+    valueLastTwoFYs: 74,
 };
 
 const header: Header = {
@@ -42,8 +42,8 @@ secondHeader: "| First appearance to recent FY  |",
 thirdHeader: "| Rank                           |",
 fourthHeader: "| Units                          |",
 ltd: "| Life-To-Date       |",
-fiscalYear:  "| FY3/22 Cumulative  |",
-fiscalYearYoY: "| FY3/22 Cml. YoY%   |",
+fiscalYear:  "| FY3/21 Cumulative  |",
+fiscalYearYoY: "| FY3/21 Cml. YoY%   |",
 summaryHeader: " Placeholder ",
 }
 

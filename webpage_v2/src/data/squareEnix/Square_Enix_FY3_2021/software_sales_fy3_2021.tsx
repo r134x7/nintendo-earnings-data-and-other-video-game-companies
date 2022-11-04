@@ -7,7 +7,7 @@ const salesHD: Section[] = [
         period: " 1st Quarter ",
         cmlPeriod: " 1st Quarter ",
         units: "currency",
-        value: 25.1 // billion yen
+        value: 34.1 // billion yen
     },
     {
         name: " HD Games ",
@@ -15,7 +15,7 @@ const salesHD: Section[] = [
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "currency",
-        value: 39.5 // billion yen
+        value: 57.8 // billion yen
     },
     {
         name: " HD Games ",
@@ -23,7 +23,7 @@ const salesHD: Section[] = [
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "currency",
-        value: 65.5 // billion yen
+        value: 76.6 // billion yen
     },
     {
         name: " HD Games ",
@@ -31,7 +31,7 @@ const salesHD: Section[] = [
         period: " 4th Quarter ",
         cmlPeriod: "Cml. ",
         units: "currency",
-        value: 87.1 // billion yen
+        value: 96.6 // billion yen
     },
     {
         name: " HD Games ",
@@ -39,7 +39,7 @@ const salesHD: Section[] = [
         period: " Last FY Cumulative ",
         cmlPeriod: "Cml. ",
         units: "currency",
-        value: 96.6 // billion yen
+        value: 42.0 // billion yen
     },
 ]
 
@@ -50,7 +50,7 @@ const salesMMO: Section[] = [
         period: " 1st Quarter ",
         cmlPeriod: " 1st Quarter ",
         units: "currency",
-        value: 11.6 // billion yen
+        value: 10.1 // billion yen
     },
     {
         name: " MMO ",
@@ -58,7 +58,7 @@ const salesMMO: Section[] = [
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "currency",
-        value: 27.7 // billion yen
+        value: 20.9 // billion yen
     },
     {
         name: " MMO ",
@@ -66,7 +66,7 @@ const salesMMO: Section[] = [
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "currency",
-        value: 48.2 // billion yen
+        value: 29.5 // billion yen
     },
     {
         name: " MMO ",
@@ -74,7 +74,7 @@ const salesMMO: Section[] = [
         period: " 4th Quarter ",
         cmlPeriod: "Cml. ",
         units: "currency",
-        value: 62.2 // billion yen
+        value: 39.8 // billion yen
     },
     {
         name: " MMO ",
@@ -82,7 +82,7 @@ const salesMMO: Section[] = [
         period: " Last FY Cumulative ",
         cmlPeriod: "Cml. ",
         units: "currency",
-        value: 39.8 // billion yen
+        value: 40.1 // billion yen
     },
 ]
 
@@ -136,7 +136,7 @@ const units: Section[] = [
         period: " 1st Quarter ",
         cmlPeriod: " 1st Quarter ",
         units: "units",
-        value: 9880 // thousand
+        value: 6210 // thousand
     },
     {
         name: " HD Games & MMO ",
@@ -144,7 +144,7 @@ const units: Section[] = [
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "units",
-        value: 17220,
+        value: 12080,
     },
     {
         name: " HD Games & MMO ",
@@ -152,7 +152,7 @@ const units: Section[] = [
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "units",
-        value: 29450,
+        value: 15800,
     },
     {
         name: " HD Games & MMO ",
@@ -160,7 +160,7 @@ const units: Section[] = [
         period: " 4th Quarter ",
         cmlPeriod: "Cml. ",
         units: "units",
-        value: 39130,
+        value: 49900,
     },
     {
         name: " HD Games & MMO ",
@@ -168,12 +168,12 @@ const units: Section[] = [
         period: " Last FY Cumulative ",
         cmlPeriod: "Cml. ",
         units: "units",
-        value: 49900,
+        value: 33420,
     },
 ]
 
 const header: Header = {
-    fiscalYear: " FY3/2022 ",
+    fiscalYear: " FY3/2021 ",
     secondHeader: "| Segment Information |",
     firstHeader: "| Square Enix    |", 
 }
