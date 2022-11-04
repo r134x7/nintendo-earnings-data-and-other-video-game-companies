@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printSalesPerSoftwareUnit } from "../../data/squareEnix/Square_Enix_FY3_2022/software_sales_fy3_2022";
-import { printSeriesFY } from "../../data/squareEnix/Square_Enix_FY3_2022/square_enix_annual_report_fy3_2022";
+import { printSalesPerSoftwareUnit } from "../../data/squareEnix/Square_Enix_FY3_2021/software_sales_fy3_2021";
+import { printSeriesFY } from "../../data/squareEnix/Square_Enix_FY3_2021/square_enix_annual_report_fy3_2021";
 
-export default function SQUARE_ENIX_FY3_2022() {
+export default function SQUARE_ENIX_FY3_2021() {
 
     const softwareSales = printSalesPerSoftwareUnit; 
     const fySeriesSales = printSeriesFY;
@@ -51,28 +51,28 @@ export default function SQUARE_ENIX_FY3_2022() {
             <Text>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
-                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/22q1slides.pdf" target="_blank" >
-                        https://www.hd.square-enix.com/eng/ir/library/pdf/22q1slides.pdf
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/21q1slides.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/ir/library/pdf/21q1slides.pdf
                     </Anchor>
                         2nd Quarter Financial Results Presentation: 
-                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/22q2slides.pdf" target="_blank" >
-                        https://www.hd.square-enix.com/eng/ir/library/pdf/22q2slides.pdf
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/21q2slides.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/ir/library/pdf/21q2slides.pdf
                     </Anchor>
                         3rd Quarter Financial Results Presentation: 
-                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/22q3slides.pdf" target="_blank" >
-                        https://www.hd.square-enix.com/eng/ir/library/pdf/22q3slides.pdf
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/21q3slides.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/ir/library/pdf/21q3slides.pdf
                     </Anchor>
                         4th Quarter Financial Results Presentation: 
-                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/22q4slides.pdf" target="_blank" >
-                        https://www.hd.square-enix.com/eng/ir/library/pdf/22q4slides.pdf
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/21q4slides.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/ir/library/pdf/21q4slides.pdf
                     </Anchor>
-                        Annual Report 2022: 
-                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/ar_2022en.pdf" target="_blank" >
-                        https://www.hd.square-enix.com/eng/ir/library/pdf/ar_2022en.pdf
+                        Annual Report 2021: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/ar_2021en.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/ir/library/pdf/ar_2021en.pdf
                     </Anchor>
-                        Press Release for Q4 Fiscal Year Ending March 2022: 
-                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/pdf/22q4release.pdf" target="_blank" >
-                        https://www.hd.square-enix.com/eng/ir/pdf/22q4release.pdf
+                        Press Release for Q4 Fiscal Year Ending March 2021: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/pdf/21q4release.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/ir/pdf/21q4release.pdf
                     </Anchor>
                 </Stack>  
             </Text> 

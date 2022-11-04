@@ -5,8 +5,9 @@ import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import SQUARE_ENIX_FY3_2022 from "../components/squareEnix/SQUARE_ENIX_FY3_2022";
+import SQUARE_ENIX_FY3_2021 from "../components/squareEnix/SQUARE_ENIX_FY3_2021";
 
-const yearsList = Array.from({length: 1}, (elem, index) => 
+const yearsList = Array.from({length: 2}, (elem, index) => 
                     {
                             return "FY3/" + (2022 - index)
                     }) 
@@ -78,6 +79,10 @@ export default function SquareEnix() {
         {
             year: "FY3/2022",
             component: <SQUARE_ENIX_FY3_2022 />
+        },
+        {
+            year: "FY3/2021",
+            component: <SQUARE_ENIX_FY3_2021 />
         },
     ];
 

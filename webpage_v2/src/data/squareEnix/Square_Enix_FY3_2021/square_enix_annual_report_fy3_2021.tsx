@@ -36,16 +36,6 @@ const series3: Series =
     valueLastTwoFYs: 0,
 };
 
-const series4: Series = 
-{
-    title: "Tomb Raider",
-    releaseDate: " October 1996 ",
-    fyEndMonth: " March 2022 ",
-    value: 88,
-    valueLastFY: 82,
-    valueLastTwoFYs: 77,
-};
-
 const header: Header = {
 bandaiNamcoHeader: "| Square Enix  - IP Series Data  |",
 secondHeader: "| First appearance to recent FY  |",
@@ -61,7 +51,6 @@ export const collection = [
 series1,
 series2,
 series3,
-series4,
 ] as const;
 
 const sortedFYCollection: Series[] = collection.filter((elem, index, array) => {
