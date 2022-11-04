@@ -13,6 +13,8 @@ import NINTENDO_FY3_2022 from "../components/nintendo/NINTENDO_FY3_2022";
 import NINTENDO_FY3_2023 from "../components/nintendo/NINTENDO_FY3_2023";
 import NINTENDO_CML from "../components/nintendo/NINTENDO_CML";
 
+const currentYear = 2023;
+
 const yearsList = Array.from({length: 7}, (elem, index) => 
                     {
                             return "FY3/" + (2023 - index)
@@ -156,7 +158,7 @@ export default function Nintendo() {
                     mb="sm"
                     mr="md"
                     placeholder="Select"
-                    label="Select Fiscal Year from 2017 to 2023."
+                    label={`Select Fiscal Year from ${currentYear - yearsList.length-1} to ${currentYear}.`}
                     description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
                     radius="xl"
                     size="md"

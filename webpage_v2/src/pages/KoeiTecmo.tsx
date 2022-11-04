@@ -7,9 +7,11 @@ import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import KOEI_TECMO_FY3_2022 from "../components/koeiTecmo/KOEI_TECMO_FY3_2022";
 import KOEI_TECMO_FY3_2023 from "../components/koeiTecmo/KOEI_TECMO_FY3_2023";
 
+const currentYear = 2023;
+
 const yearsList = Array.from({length: 2}, (elem, index) => 
                     {
-                            return "FY3/" + (2023 - index)
+                            return "FY3/" + (currentYear - index)
                     }) 
 
 export default function KoeiTecmo() {
@@ -111,7 +113,7 @@ export default function KoeiTecmo() {
                     mb="sm"
                     mr="md"
                     placeholder="Select"
-                    label="Select Fiscal Year from 2022 to 2023."
+                    label={`Select Fiscal Year from ${currentYear - yearsList.length-1} to ${currentYear}.`}
                     description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
                     radius="xl"
                     size="md"

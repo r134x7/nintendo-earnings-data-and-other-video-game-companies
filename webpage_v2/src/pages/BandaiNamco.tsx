@@ -9,9 +9,11 @@ import BANDAI_NAMCO_FY3_2020 from "../components/bandaiNamco/BANDAI_NAMCO_FY3_20
 import BANDAI_NAMCO_FY3_2021 from "../components/bandaiNamco/BANDAI_NAMCO_FY3_2021";
 import BANDAI_NAMCO_FY3_2022 from "../components/bandaiNamco/BANDAI_NAMCO_FY3_2022";
 
+const currentYear = 2022;
+
 const yearsList = Array.from({length: 4}, (elem, index) => 
                     {
-                            return "FY3/" + (2022 - index)
+                            return "FY3/" + (currentYear - index)
                     }) 
 
 export default function BandaiNamco() {
@@ -132,7 +134,7 @@ export default function BandaiNamco() {
                     mb="sm"
                     mr="md"
                     placeholder="Select"
-                    label="Select Fiscal Year from 2019 to 2022."
+                    label={`Select Fiscal Year from ${currentYear - yearsList.length-1} to ${currentYear}.`}
                     description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
                     radius="xl"
                     size="md"

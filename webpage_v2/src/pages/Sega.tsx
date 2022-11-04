@@ -16,9 +16,11 @@ import SEGA_FY3_2015 from "../components/sega/SEGA_FY3_2015";
 import SEGA_FY3_2014 from "../components/sega/SEGA_FY3_2014";
 import SEGA_FY3_2013 from "../components/sega/SEGA_FY3_2013";
 
+const currentYear = 2023;
+
 const yearsList = Array.from({length: 10}, (elem, index) => 
                     {
-                            return "FY3/" + (2023 - index)
+                            return "FY3/" + (currentYear - index)
                     }) 
 
 export default function Sega() {
@@ -156,7 +158,7 @@ export default function Sega() {
                     mb="sm"
                     mr="md"
                     placeholder="Select"
-                    label="Select Fiscal Year from 2013 to 2023."
+                    label={`Select Fiscal Year from ${currentYear - yearsList.length-1} to ${currentYear}.`}
                     description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
                     radius="xl"
                     size="md"
