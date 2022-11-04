@@ -9,23 +9,23 @@ const series1: Series =
 {
     title: "Final Fantasy",
     releaseDate: " December 1987 ",
-    fyEndMonth: " March 2018 ",
-    value: 141,
-    valueLastFY: 130,
-    valueLastTwoFYs: 115,
+    fyEndMonth: " March 2017 ",
+    value: 130,
+    valueLastFY: 115,
+    valueLastTwoFYs: 110, 
 }; 
-// reference for fy3/18: https://www.hd.square-enix.com/eng/ir/pdf/19q1release.pdf
 // reference for fy3/17: https://www.hd.square-enix.com/eng/ir/pdf/18q1release.pdf  
 // reference for fy3/16: https://www.hd.square-enix.com/eng/ir/pdf/17q1release.pdf
+// reference for fy3/15: https://www.hd.square-enix.com/eng/ir/pdf/16q1release.pdf
 
 const series2: Series = 
 {
     title: "Dragon Quest",
     releaseDate: " May 1986 ",
-    fyEndMonth: " March 2018 ",
-    value: 76,
-    valueLastFY: 71,
-    valueLastTwoFYs: 68,
+    fyEndMonth: " March 2017 ",
+    value: 71,
+    valueLastFY: 68,
+    valueLastTwoFYs: 66,
 
 };
 
@@ -33,30 +33,10 @@ const series3: Series =
 {
     title: "Tomb Raider",
     releaseDate: " October 1996 ",
-    fyEndMonth: " March 2018 ",
-    value: 66,
-    valueLastFY: 58,
-    valueLastTwoFYs: 45,
-};
-
-const series4: Series = 
-{
-    title: "Kingdom Hearts",
-    releaseDate: " March 2002 ",
-    fyEndMonth: " June 2018* ",
-    value: 25,
-    valueLastFY: 0,
-    valueLastTwoFYs: 0,
-};
-
-const series5: Series = 
-{
-    title: "Just Cause",
-    releaseDate: " September 2006 ",
-    fyEndMonth: " June 2018* ",
-    value: 15,
-    valueLastFY: 0,
-    valueLastTwoFYs: 0,
+    fyEndMonth: " March 2017 ",
+    value: 58,
+    valueLastFY: 45,
+    valueLastTwoFYs: 42,
 };
 
 const header: Header = {
@@ -65,8 +45,8 @@ secondHeader: "| First appearance to recent FY  |",
 thirdHeader: "| Rank                           |",
 fourthHeader: "| Units                          |",
 ltd: "| Life-To-Date       |",
-fiscalYear:  "| FY3/18 Cumulative  |",
-fiscalYearYoY: "| FY3/18 Cml. YoY%   |",
+fiscalYear:  "| FY3/17 Cumulative  |",
+fiscalYearYoY: "| FY3/17 Cml. YoY%   |",
 summaryHeader: " Placeholder ",
 }
 
@@ -74,8 +54,6 @@ export const collection = [
 series1,
 series2,
 series3,
-series4,
-series5,
 ] as const;
 
 const sortedFYCollection: Series[] = collection.filter((elem, index, array) => {
@@ -100,9 +78,9 @@ let printOne = printHead(header);
 
 let notes =  
 `+----------------------------------------+
-|*Annual Report 2018 gives sales numbers | 
-|as of June, 2018. Data where applicable |
-|taken from Q1 FY3/19 Press Release as   |
+|Annual Report 2017 gives sales numbers  | 
+|as of June, 2017. Data used here is     |
+|taken from Q1 FY3/18 Press Release as   |
 |most recent change in numbers before    |
 |Annual Report for accuracy.             |
 +----------------------------------------+`;
