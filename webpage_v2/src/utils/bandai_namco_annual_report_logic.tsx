@@ -10,7 +10,7 @@ export type Series = {
 };
 
 export type Header = {
-    bandaiNamcoHeader: "| Bandai Namco - IP Series Data  |",
+    bandaiNamcoHeader: "| Bandai Namco - IP Series Data  |" | "| Square Enix  - IP Series Data  |",
     secondHeader: "| First appearance to recent FY  |",
     thirdHeader: "| Rank                           |",
     fourthHeader: "| Units                          |",
