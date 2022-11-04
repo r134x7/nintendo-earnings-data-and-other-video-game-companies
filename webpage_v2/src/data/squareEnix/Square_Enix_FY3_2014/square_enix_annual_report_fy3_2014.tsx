@@ -9,32 +9,32 @@ const series1: Series =
 {
     title: "Final Fantasy",
     releaseDate: " December 1987 ",
-    fyEndMonth: " March 2015*",
+    fyEndMonth: " March 2014*",
     value: 110, 
-    valueLastFY: 110,
+    valueLastFY: 100,
     valueLastTwoFYs: 100,
 }; 
-// reference for fy3/15: https://www.hd.square-enix.com/eng/ir/pdf/16q1release.pdf
 // reference for fy3/14: https://www.hd.square-enix.com/eng/ir/pdf/15q1release.pdf
 // reference for fy3/13: https://www.hd.square-enix.com/eng/ir/pdf/14q1release.pdf
+// reference for fy3/12: https://www.hd.square-enix.com/eng/ir/pdf/13q1release.pdf
 
 const series2: Series = 
 {
     title: "Dragon Quest",
     releaseDate: " May 1986 ",
-    fyEndMonth: " March 2015*",
-    value: 66,
-    valueLastFY: 64,
-    valueLastTwoFYs: 62,
+    fyEndMonth: " March 2014*",
+    value: 64,
+    valueLastFY: 62,
+    valueLastTwoFYs: 59, 
 };
 
 const series3: Series = 
 {
     title: "Tomb Raider",
     releaseDate: " October 1996 ",
-    fyEndMonth: " March 2015*",
+    fyEndMonth: " March 2014*",
     value: 42,
-    valueLastFY: 42,
+    valueLastFY: 35,
     valueLastTwoFYs: 35,
 };
 
@@ -44,8 +44,8 @@ secondHeader: "| First appearance to recent FY  |",
 thirdHeader: "| Rank                           |",
 fourthHeader: "| Units                          |",
 ltd: "| Life-To-Date       |",
-fiscalYear:  "| FY3/15 Cumulative  |",
-fiscalYearYoY: "| FY3/15 Cml. YoY%   |",
+fiscalYear:  "| FY3/14 Cumulative  |",
+fiscalYearYoY: "| FY3/14 Cml. YoY%   |",
 summaryHeader: " Placeholder ",
 }
 
@@ -77,10 +77,10 @@ let printOne = printHead(header);
 
 let notes =  
 `+----------------------------------------+
-|*Annual Report 2015 gives sales numbers | 
-|with no date. Data used here is taken   |
-|from Q1 FY3/16 Press Release assuming   |
-|data is as of March, 2015. Cannot verify|
+|*Annual Report 2014 gives no sales      | 
+|numbers. Data used here is taken        |
+|from Q1 FY3/15 Press Release assuming   |
+|data is as of March, 2014. Cannot verify|
 |whether it is accurate.                 |
 +----------------------------------------+`;
 
