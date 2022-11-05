@@ -1,11 +1,8 @@
 export type Series = {
     title: string,
     skuNumber: number,
-    releaseDate: string,
-    fyEndMonth: string,
     value: number,
     valueLastFY: number,
-    valueLastTwoFYs: number,
     rank?: number,
     miscellaneous?: string,
 };
@@ -105,13 +102,11 @@ const printCmlYoY = (seriesIP: Series) => {
 
         let FYCmlYoY = (seriesIP.valueLastFY === 0)
                 ? " New! "
-                : ((seriesIP.value - seriesIP.valueLastFY) === 0 && (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) === 0)
-                ? "N/A "
-                : ((seriesIP.value - seriesIP.valueLastFY) >=  (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) && !((seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) < 0))
+                : (seriesIP.value >= seriesIP.valueLastFY)
                 ? `+${((
-                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
+                    ((seriesIP.value / seriesIP.valueLastFY)) - 1) * 100).toFixed(2)}% ` 
                 : `${((
-                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
+                    ((seriesIP.value / seriesIP.valueLastFY)) - 1) * 100).toFixed(2)}% ` 
 
         return (blockLength: number) =>
                (header: Header) => {
