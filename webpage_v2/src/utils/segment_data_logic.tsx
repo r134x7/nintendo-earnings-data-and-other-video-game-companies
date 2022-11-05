@@ -102,7 +102,27 @@ const printSalesHeaderCapcom = (): string => {
 let x =
 `+-------------+
 | Consumer    |-------------+
-| Total       |    Sales    |
+| Total       | Net Sales   |
++---------------------------+`
+    return x
+};
+
+const printSalesHeaderCapcomPhysical = (): string => {
+
+let x =
+`+-------------+
+| Package     |-------------+
+| Total       | Net Sales   |
++---------------------------+`
+    return x
+};
+
+const printSalesHeaderCapcomDigital = (): string => {
+
+let x =
+`+-------------+
+| Digital     |-------------+
+| Total       | Net Sales   |
 +---------------------------+`
     return x
 };
@@ -144,6 +164,32 @@ let x =
 +====================================+
 | Consumer    | Sales Per | Software |
 | Total/Total |  Software |    Units |
+| Unit Sales  |      Unit |          |
++------------------------------------+`
+
+    return x
+}
+
+const printSalesPerUnitHeaderCapcomPhysical = (): string => {
+
+let x =
+`+====================================+
+| Package     | Sales Per | Software |
+|Total/Package|  Software |    Units |
+| Unit Sales  |      Unit |          |
++------------------------------------+`
+
+    return x
+}
+
+const printSalesPerUnitHeaderCapcomDigital = (): string => {
+
+let x =
+`|*Sales includes:
+| - Downloadable content purchases
++====================================+
+| Digital     | Sales Per | Software |
+|Total/Digital|  Software |    Units |
 | Unit Sales  |      Unit |          |
 +------------------------------------+`
 
@@ -477,6 +523,70 @@ export const CapcomPrint = (salesData: Section[], salesUnits: Section[], header:
         ]; 
 
     return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+
+}
+
+export const CapcomPrintPhysical = (salesData: Section[], salesUnits: Section[], header: Header, currentQuarter: number) => {
+
+    const salesDataBlock = (currentQuarter === 4)
+        ? [
+        printSalesHeaderCapcomPhysical(),
+        ...printQtrSales(salesData, header, currentQuarter),
+        ...printCmlSales(salesData, header, currentQuarter),
+        printYoYSales(salesData, header, currentQuarter),
+        ]
+        : [
+        printSalesHeaderCapcomPhysical(),
+        ...printQtrSales(salesData, header, currentQuarter),
+        ...printCmlSales(salesData, header, currentQuarter),
+        ];
+
+    const salesUnitsBlock = (currentQuarter === 4)
+        ? [
+        printSalesPerUnitHeaderCapcomPhysical(),
+        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        printYoYSalesPerSoftwareUnit(salesData, salesUnits, header, currentQuarter),
+        ]
+        : [
+        printSalesPerUnitHeaderCapcomPhysical(),
+        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ]; 
+
+    return [...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+
+}
+
+export const CapcomPrintDigital = (salesData: Section[], salesUnits: Section[], header: Header, currentQuarter: number) => {
+
+    const salesDataBlock = (currentQuarter === 4)
+        ? [
+        printSalesHeaderCapcomDigital(),
+        ...printQtrSales(salesData, header, currentQuarter),
+        ...printCmlSales(salesData, header, currentQuarter),
+        printYoYSales(salesData, header, currentQuarter),
+        ]
+        : [
+        printSalesHeaderCapcomDigital(),
+        ...printQtrSales(salesData, header, currentQuarter),
+        ...printCmlSales(salesData, header, currentQuarter),
+        ];
+
+    const salesUnitsBlock = (currentQuarter === 4)
+        ? [
+        printSalesPerUnitHeaderCapcomDigital(),
+        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        printYoYSalesPerSoftwareUnit(salesData, salesUnits, header, currentQuarter),
+        ]
+        : [
+        printSalesPerUnitHeaderCapcomDigital(),
+        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ]; 
+
+    return [...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
 
 }
 

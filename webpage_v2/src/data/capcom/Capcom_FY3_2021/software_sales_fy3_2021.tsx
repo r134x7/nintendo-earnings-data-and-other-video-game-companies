@@ -1,4 +1,4 @@
-import { Header, Section, CapcomPrint } from "../../../utils/segment_data_logic";
+import { Header, Section, CapcomPrint, CapcomPrintPhysical, CapcomPrintDigital } from "../../../utils/segment_data_logic";
 
 const sales: Section[] = [
     {
@@ -94,7 +94,7 @@ const salesPhysical: Section[] = [
         period: " 1st Quarter ",
         cmlPeriod: " 1st Quarter ",
         units: "currency",
-        value: 0.6 // billion yen
+        value: 6.0 // billion yen
     },
     {
         name: " Package ",
@@ -102,7 +102,7 @@ const salesPhysical: Section[] = [
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "currency",
-        value: 0.73 // billion yen
+        value: 7.3 // billion yen
     },
     {
         name: " Package ",
@@ -110,7 +110,7 @@ const salesPhysical: Section[] = [
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "currency",
-        value: 0.99 // billion yen
+        value: 9.9 // billion yen
     },
     {
         name: " Package ",
@@ -118,7 +118,7 @@ const salesPhysical: Section[] = [
         period: " 4th Quarter ",
         cmlPeriod: "Cml. ",
         units: "currency",
-        value: 2.08 // billion yen
+        value: 20.8 // billion yen
     },
     {
         name: " Package ",
@@ -126,7 +126,7 @@ const salesPhysical: Section[] = [
         period: " Last FY Cumulative ",
         cmlPeriod: "Cml. ",
         units: "currency",
-        value: 1.29 // billion yen
+        value: 12.9 // billion yen
     },
 ]
 
@@ -180,7 +180,7 @@ const salesDigital: Section[] = [
         period: " 1st Quarter ",
         cmlPeriod: " 1st Quarter ",
         units: "currency",
-        value: 1.43 // billion yen
+        value: 14.3 // billion yen
     },
     {
         name: " Digital ",
@@ -188,7 +188,7 @@ const salesDigital: Section[] = [
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "currency",
-        value: 2.48 // billion yen
+        value: 24.8 // billion yen
     },
     {
         name: " Digital ",
@@ -196,7 +196,7 @@ const salesDigital: Section[] = [
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "currency",
-        value: 3.43 // billion yen
+        value: 34.3 // billion yen
     },
     {
         name: " Digital ",
@@ -204,7 +204,7 @@ const salesDigital: Section[] = [
         period: " 4th Quarter ",
         cmlPeriod: "Cml. ",
         units: "currency",
-        value: 4.8 // billion yen
+        value: 48.0 // billion yen
     },
     {
         name: " Digital ",
@@ -212,7 +212,7 @@ const salesDigital: Section[] = [
         period: " Last FY Cumulative ",
         cmlPeriod: "Cml. ",
         units: "currency",
-        value: 4.26 // billion yen
+        value: 42.6 // billion yen
     },
 ]
 
@@ -265,4 +265,4 @@ const header: Header = {
     firstHeader: "| Capcom         |",
 }
 
-export const printSalesPerSoftwareUnit = CapcomPrint(sales, units, header, 4);
+export const printSalesPerSoftwareUnit = CapcomPrint(sales, units, header, 4) + "\n" + CapcomPrintPhysical(salesPhysical, unitsPhysical, header, 4) + "\n" + CapcomPrintDigital(salesDigital, unitsDigital, header, 4);
