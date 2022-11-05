@@ -59,6 +59,10 @@ export default function CAPCOM_FY3_2021() {
                     <Anchor mb="sm" href="https://www.capcom.co.jp/ir/english/business/salesdata.html" target="_blank" >
                         https://www.capcom.co.jp/ir/english/business/salesdata.html
                     </Anchor>
+                        Capcom Fact Book 2021:
+                    <Anchor mb="sm" href="https://www.capcom.co.jp/ir/english/data/pdf/annual/2021/annual_2021_08.pdf" target="_blank" >
+                        https://www.capcom.co.jp/ir/english/data/pdf/annual/2021/annual_2021_08.pdf
+                    </Anchor>
                 </Stack>  
             </Text> 
         )
