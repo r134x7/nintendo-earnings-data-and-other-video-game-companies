@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printSeriesFY } from "../../data/capcom/Capcom_FY3_2019/game_series_sales_fy3_2019"
+import { printSoftwareShipments } from "../../data/capcom/Capcom_FY3_2019/software_shipments_platform_fy3_2019";
 
 export default function CAPCOM_FY3_2019() {
 
     const gameSeriesSales = printSeriesFY;
+
+    const softwareShipments = printSoftwareShipments;
 
     const [value, setValue] = useState("");
     const [sources, setSources] = useState(<></>)
@@ -13,6 +16,10 @@ export default function CAPCOM_FY3_2019() {
     const state: any = useSelector(state => state);
 
     const componentList = [
+        {
+            name: "Software Platform Shipments", 
+            value: softwareShipments, 
+        },
         {
             name: "FY Game Series", 
             value: gameSeriesSales
@@ -51,6 +58,10 @@ export default function CAPCOM_FY3_2019() {
                         Capcom Game Series Sales Page:
                     <Anchor mb="sm" href="https://www.capcom.co.jp/ir/english/business/salesdata.html" target="_blank" >
                         https://www.capcom.co.jp/ir/english/business/salesdata.html
+                    </Anchor>
+                        Capcom Fact Book 2019:
+                    <Anchor mb="sm" href="https://www.capcom.co.jp/ir/english/data/pdf/annual/2019/annual_2019_09.pdf" target="_blank" >
+                        https://www.capcom.co.jp/ir/english/data/pdf/annual/2019/annual_2019_09.pdf
                     </Anchor>
                 </Stack>  
             </Text> 
