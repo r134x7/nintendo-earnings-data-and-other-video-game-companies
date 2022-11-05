@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printSeriesFY } from "../../data/capcom/Capcom_FY3_2021/game_series_sales_fy3_2021"
+import { printSoftwareShipments } from "../../data/capcom/Capcom_FY3_2021/software_shipments_platform_fy3_2021";
 
 export default function CAPCOM_FY3_2021() {
 
     const gameSeriesSales = printSeriesFY;
+
+    const softwareShipments = printSoftwareShipments;
 
     const [value, setValue] = useState("");
     const [sources, setSources] = useState(<></>)
@@ -13,6 +16,10 @@ export default function CAPCOM_FY3_2021() {
     const state: any = useSelector(state => state);
 
     const componentList = [
+        {
+            name: "Software Platform Shipments", 
+            value: softwareShipments, 
+        },
         {
             name: "FY Game Series", 
             value: gameSeriesSales
