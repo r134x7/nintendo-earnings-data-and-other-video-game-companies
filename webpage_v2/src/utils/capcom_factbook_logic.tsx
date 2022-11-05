@@ -9,8 +9,8 @@ export type Series = {
 
 export type Header = {
     firstHeader: "| Capcom - Fact Book Data        |", 
-    secondHeader: "| Units shipped by Platform  |",
-    thirdHeader: "| SKUs and Rank                  |",
+    secondHeader: "| Units shipped by Platform      |",
+    thirdHeader: "| SKU and Rank                   |",
     fourthHeader: "| Units                          |",
     fiscalYear: string,
     fiscalYearYoY: string,
@@ -29,7 +29,7 @@ ${header.fourthHeader}
 
 const printRankAndSKU = (seriesIP: Series) => {
 
-    let rankingAndSKU: string = ` SKU: ${seriesIP.skuNumber} | Rank ${seriesIP.rank} `;
+    let rankingAndSKU: string = ` SKU sum: ${seriesIP.skuNumber} | Rank ${seriesIP.rank} `;
 
     return (blockLength: number) => {
 
@@ -88,7 +88,7 @@ const printTextBlock = (text: string) => {
 
 const printCmlValue = (seriesIP: Series) => {
 
-        let CmlValue: string = `${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M `
+        let CmlValue: string = `${(seriesIP.value).toFixed(2)}M `
 
         return (blockLength: number) => 
                (header: Header) => {
