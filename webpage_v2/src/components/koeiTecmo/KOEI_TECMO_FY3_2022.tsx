@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
+import { Code, SegmentedControl, Anchor, Text, Stack, Space, Card } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printSalesPerSoftwareUnit } from "../../data/koeiTecmo/Koei_Tecmo_FY3_2022/software_sales_fy3_2022";
 
@@ -42,7 +42,8 @@ export default function KOEI_TECMO_FY3_2022() {
     function DATA_SOURCES() {
 
         return (
-            <Text>
+        <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
+            <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.koeitecmo.co.jp/e/ir/docs/ir2_20210726_e.pdf" target="_blank" >
@@ -62,6 +63,7 @@ export default function KOEI_TECMO_FY3_2022() {
                     </Anchor>
                 </Stack>  
             </Text> 
+        </Card>
         )
     };
 

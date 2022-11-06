@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
+import { Code, SegmentedControl, Anchor, Text, Stack, Space, Card } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printEarnings } from "../../data/nintendo/Nintendo_FY3_2022/earnings_fy3_2022";
 import { printKPI } from "../../data/nintendo/Nintendo_FY3_2022/kpi_fy3_2022";
@@ -45,7 +45,8 @@ export default function NINTENDO_FY3_2022() {
     function DATA_SOURCES() {
 
         return (
-            <Text>
+        <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
+            <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Earnings Release: 
                     <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2021/210805e.pdf" target="_blank" >
@@ -84,6 +85,7 @@ export default function NINTENDO_FY3_2022() {
                     </Anchor>
                 </Stack>  
             </Text> 
+        </Card>
         )
     };
 
