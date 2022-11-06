@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
+import { Code, SegmentedControl, Anchor, Text, Stack, Space, Card } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printSeriesFY } from "../../data/bandaiNamco/Bandai_Namco_FY3_2019/bandai_namco_annual_report_fy3_19" 
 
@@ -25,7 +25,8 @@ export default function BANDAI_NAMCO_FY3_2019() {
     function DATA_SOURCES() {
 
         return (
-            <Text>
+        <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
+            <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         Bandai Namco Group Fact Book 2019: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/integrated/pdf/en_2019_fact.pdf" target="_blank" >
@@ -33,6 +34,7 @@ export default function BANDAI_NAMCO_FY3_2019() {
                     </Anchor>
                 </Stack>  
             </Text> 
+        </Card>
         )
     };
 

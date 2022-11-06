@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
+import { Code, SegmentedControl, Anchor, Text, Stack, Space, Card } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printSeriesFY } from "../../data/bandaiNamco/Bandai_Namco_FY3_2022/bandai_namco_annual_report_fy3_22"; 
 import { printSalesPerSoftwareUnit } from "../../data/bandaiNamco/Bandai_Namco_FY3_2022/home_video_game_fy3_2022"
@@ -28,7 +28,8 @@ export default function BANDAI_NAMCO_FY3_2022() {
     function DATA_SOURCES() {
 
         return (
-            <Text>
+        <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
+            <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210805_Report.pdf" target="_blank" >
@@ -52,6 +53,7 @@ export default function BANDAI_NAMCO_FY3_2022() {
                     </Anchor>
                 </Stack>  
             </Text> 
+        </Card>
         )
     };
 
