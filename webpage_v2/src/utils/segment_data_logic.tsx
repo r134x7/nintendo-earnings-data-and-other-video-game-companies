@@ -285,13 +285,19 @@ const printQtrSales = (segmentSales: Section[], segmentSalesLastFY: Section[], h
             
             let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
 
-            let printPeriod: string = elem.period;
+           let printPeriod: string = elem.period;
+
+           let printLength: number = (quartersLastFY[index].units === "NaN")
+                ? 27
+                : 38
 
            let printLine: string = (array[index] === array.at(-1))
-                ? "\n+" + "=".repeat(38) + "+"
-                : "\n+" + "-".repeat(38) + "+"
+                ? "\n+" + "=".repeat(printLength) + "+"
+                : "\n+" + "-".repeat(printLength) + "+"
             
-            return "|" + printPeriod + "|" + printSectionFixed + "|" + yoyQuarters[index] + "|" + printLine  
+            return (quartersLastFY[index].units === "NaN") 
+                ? "|" + printPeriod + "|" + printSectionFixed + "|" + printLine  
+                : "|" + printPeriod + "|" + printSectionFixed + "|" + yoyQuarters[index] + "|" + printLine  
         })
 
         return sales
@@ -321,10 +327,16 @@ const printCmlSales = (segmentSales: Section[], segmentSalesLastFY: Section[], h
         //    let printLine: string = (array[index] === array.at(-1))
         //         ? "\n+" + "=".repeat(27) + "+"
         //         : "\n+" + "-".repeat(27) + "+"
+           let printLength: number = (segmentSalesLastFY[index].units === "NaN")
+                ? 27
+                : 38
             
-           let printLine: string = "\n+" + "-".repeat(38) + "+";
+           let printLine: string = "\n+" + "-".repeat(printLength) + "+";
 
-            return "|" + printPeriod + "|" + printSectionFixed + "|" + yoyCml[index] + "|" + printLine  
+            return (segmentSalesLastFY[index].units === "NaN") 
+                ? "|" + printPeriod + "|" + printSectionFixed + "|" + printLine  
+                : "|" + printPeriod + "|" + printSectionFixed + "|" + yoyCml[index] + "|" + printLine  
+            // return "|" + printPeriod + "|" + printSectionFixed + "|" + yoyCml[index] + "|" + printLine  
         })
 
         return sales
@@ -424,7 +436,9 @@ const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
                 ? "\n+" + "=".repeat(36) + "+"
                 : "\n+" + "-".repeat(36) + "+"
 
-            return "|" + printPeriod + "|" + printsegmentSalesPerSoftwareFixed + "|" + printSoftwareUnitsFixed + "|\n" + yoySalesPerUnit[index] + printLine
+            return (salesQuartersLastFY[index].units === "NaN")
+                ? "|" + printPeriod + "|" + printsegmentSalesPerSoftwareFixed + "|" + printSoftwareUnitsFixed + "|" + printLine
+                : "|" + printPeriod + "|" + printsegmentSalesPerSoftwareFixed + "|" + printSoftwareUnitsFixed + "|\n" + yoySalesPerUnit[index] + printLine
         })
 
         return salesPerSoftwareUnit
@@ -466,7 +480,9 @@ const printCmlSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
             
         let printLine: string = "\n+" + "-".repeat(36) + "+";
 
-            return "|" + printPeriod + "|" + printsegmentSalesPerSoftwareFixed + "|" + printSoftwareUnitsFixed + "|\n" + yoySalesPerUnit[index] + printLine
+            return (segmentSalesLastFY[index].units === "NaN")
+                    ? "|" + printPeriod + "|" + printsegmentSalesPerSoftwareFixed + "|" + printSoftwareUnitsFixed + "|" + printLine
+                    : "|" + printPeriod + "|" + printsegmentSalesPerSoftwareFixed + "|" + printSoftwareUnitsFixed + "|\n" + yoySalesPerUnit[index] + printLine
         })
 
         return salesPerSoftwareUnit

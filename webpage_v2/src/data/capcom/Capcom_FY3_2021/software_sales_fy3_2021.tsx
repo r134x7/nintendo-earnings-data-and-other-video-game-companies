@@ -1,4 +1,4 @@
-import { Header, Section, CapcomPrint, CapcomPrintPhysical, CapcomPrintDigital } from "../../../utils/segment_data_logic";
+import { Header, Section, CapcomPrint, CapcomPrintPhysical, CapcomPrintDigital, undefinedData } from "../../../utils/segment_data_logic";
 
 export const sales2021: Section[] = [
     {
@@ -265,4 +265,4 @@ const header: Header = {
     firstHeader: "| Capcom         |",
 }
 
-export const printSalesPerSoftwareUnit = CapcomPrint(sales2021, sales2021, units2021, units2021, header, 2) + "\n" + CapcomPrintPhysical(salesPhysical2021, salesPhysical2021, unitsPhysical2021, unitsPhysical2021, header, 2) + "\n" + CapcomPrintDigital(salesDigital2021, salesDigital2021, unitsDigital2021, unitsDigital2021, header, 2);
+export const printSalesPerSoftwareUnit = CapcomPrint(sales2021, undefinedData, units2021, undefinedData, header, 4) + "\n" + CapcomPrintPhysical(salesPhysical2021, undefinedData, unitsPhysical2021, undefinedData, header, 4) + "\n" + CapcomPrintDigital(salesDigital2021, undefinedData, unitsDigital2021, undefinedData, header, 4);
