@@ -1,6 +1,6 @@
-import { Header, Section, SegaPrint } from "../../../utils/segment_data_logic";
+import { Header, Section, SegaPrint, undefinedData } from "../../../utils/segment_data_logic";
 
-const sales: Section[] = [
+export const sales2022: Section[] = [
     {
         name: " Full Games ",
         region: " Group Total ",
@@ -33,17 +33,17 @@ const sales: Section[] = [
         units: "currency",
         value: 65.8 // billion yen
     },
-    {
-        name: " Full Games ",
-        region: " Group Total ",
-        period: " Last FY Cumulative ",
-        cmlPeriod: "Cml. ",
-        units: "currency",
-        value: 55.1 // billion yen
-    },
+    // {
+    //     name: " Full Games ",
+    //     region: " Group Total ",
+    //     period: " Last FY Cumulative ",
+    //     cmlPeriod: "Cml. ",
+    //     units: "currency",
+    //     value: 55.1 // billion yen
+    // },
 ]
 
-const units: Section[] = [
+export const units2022: Section[] = [
     {
         name: " Full Games ",
         region: " Group Total ",
@@ -76,14 +76,14 @@ const units: Section[] = [
         units: "currency",
         value: 27200,
     },
-    {
-        name: " Full Games ",
-        region: " Group Total ",
-        period: " Last FY Cumulative ",
-        cmlPeriod: "Cml. ",
-        units: "currency",
-        value: 41770,
-    },
+    // {
+    //     name: " Full Games ",
+    //     region: " Group Total ",
+    //     period: " Last FY Cumulative ",
+    //     cmlPeriod: "Cml. ",
+    //     units: "currency",
+    //     value: 41770,
+    // },
 ]
 
 const header: Header = {
@@ -92,4 +92,4 @@ const header: Header = {
     firstHeader: "| Sega Sammy     |",
 }
 
-export const printSalesPerSoftwareUnit = SegaPrint(sales, sales, units, units, header, 4);
+export const printSalesPerSoftwareUnit = SegaPrint(sales2022, undefinedData, units2022, undefinedData, header, 4);
