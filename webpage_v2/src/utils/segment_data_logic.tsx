@@ -712,29 +712,17 @@ export const KoeiTecmoPrint = (salesData: Section[], salesDataLastFY: Section[],
     
     const head = printHead(header);
 
-    const salesDataBlock = (currentQuarter === 4)
-        ? [
-        printSalesHeaderKoeiTecmo(),
-        ...printQtrSales(salesData, salesDataLastFY, header, currentQuarter),
-        ...printCmlSales(salesData, salesDataLastFY, header, currentQuarter),
-        ]
-        : [
+    const salesDataBlock = [
         printSalesHeaderKoeiTecmo(),
         ...printQtrSales(salesData, salesDataLastFY, header, currentQuarter),
         ...printCmlSales(salesData, salesDataLastFY, header, currentQuarter),
         ];
 
-    const salesUnitsBlock = (currentQuarter === 4)
-        ? [
+    const salesUnitsBlock = [
         printSalesPerUnitHeaderKoeiTecmo(),
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        ]
-        : [
-        printSalesPerUnitHeaderKoeiTecmo(),
-        ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        ]; 
+        ];
 
     return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
 
@@ -750,7 +738,7 @@ export const SquareEnixPrint = (salesHDGames: Section[], salesHDGamesLastFY: Sec
             ...printCmlSales(salesHDGames, salesHDGamesLastFY, header, currentQuarter),
             printSalesHeaderSquareEnixMMO(),
             ...printQtrSales(salesMMO, salesMMOLastFY, header, currentQuarter),
-            ...printCmlSales(salesMMO, salesHDGamesLastFY, header, currentQuarter),
+            ...printCmlSales(salesMMO, salesMMOLastFY, header, currentQuarter),
         ];
 
     const salesUnitsBlock = [

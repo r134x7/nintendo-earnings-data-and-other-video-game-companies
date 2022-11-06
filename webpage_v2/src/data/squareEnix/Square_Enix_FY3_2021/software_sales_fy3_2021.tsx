@@ -1,6 +1,12 @@
 import { Header, Section, SquareEnixPrint } from "../../../utils/segment_data_logic";
+import {
+    salesHD2020,
+    salesHDandMMO2020,
+    salesMMO2020,
+    units2020,
+} from "../Square_Enix_FY3_2020/software_sales_fy3_2020";
 
-const salesHD: Section[] = [
+export const salesHD2021: Section[] = [
     {
         name: " HD Games ",
         region: " Group Total ",
@@ -33,17 +39,17 @@ const salesHD: Section[] = [
         units: "currency",
         value: 96.6 // billion yen
     },
-    {
-        name: " HD Games ",
-        region: " Group Total ",
-        period: " Last FY Cumulative ",
-        cmlPeriod: "Cml. ",
-        units: "currency",
-        value: 42.0 // billion yen
-    },
+    // {
+    //     name: " HD Games ",
+    //     region: " Group Total ",
+    //     period: " Last FY Cumulative ",
+    //     cmlPeriod: "Cml. ",
+    //     units: "currency",
+    //     value: 42.0 // billion yen
+    // },
 ]
 
-const salesMMO: Section[] = [
+export const salesMMO2021: Section[] = [
     {
         name: " MMO ",
         region: " Group Total ",
@@ -76,24 +82,24 @@ const salesMMO: Section[] = [
         units: "currency",
         value: 39.8 // billion yen
     },
-    {
-        name: " MMO ",
-        region: " Group Total ",
-        period: " Last FY Cumulative ",
-        cmlPeriod: "Cml. ",
-        units: "currency",
-        value: 40.1 // billion yen
-    },
+    // {
+    //     name: " MMO ",
+    //     region: " Group Total ",
+    //     period: " Last FY Cumulative ",
+    //     cmlPeriod: "Cml. ",
+    //     units: "currency",
+    //     value: 40.1 // billion yen
+    // },
 ]
 
-const salesHDandMMO: Section[] = [
+export const salesHDandMMO2021: Section[] = [
     {
         name: " HD Games and MMO ",
         region: " Group Total ",
         period: " 1st Quarter ",
         cmlPeriod: " 1st Quarter ",
         units: "currency",
-        value: Number((salesHD[0].value + salesMMO[0].value).toFixed(1)) // billion yen
+        value: Number((salesHD2021[0].value + salesMMO2021[0].value).toFixed(1)) // billion yen
     },
     {
         name: " HD Games and MMO ",
@@ -101,7 +107,7 @@ const salesHDandMMO: Section[] = [
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "currency",
-        value: Number((salesHD[1].value + salesMMO[1].value).toFixed(1)) // billion yen
+        value: Number((salesHD2021[1].value + salesMMO2021[1].value).toFixed(1)) // billion yen
     },
     {
         name: " HD Games and MMO ",
@@ -109,7 +115,7 @@ const salesHDandMMO: Section[] = [
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "currency",
-        value: Number((salesHD[2].value + salesMMO[2].value).toFixed(1)) // billion yen
+        value: Number((salesHD2021[2].value + salesMMO2021[2].value).toFixed(1)) // billion yen
     },
     {
         name: " HD Games and MMO ",
@@ -117,19 +123,19 @@ const salesHDandMMO: Section[] = [
         period: " 4th Quarter ",
         cmlPeriod: "Cml. ",
         units: "currency",
-        value: Number((salesHD[3].value + salesMMO[3].value).toFixed(1)) // billion yen
+        value: Number((salesHD2021[3].value + salesMMO2021[3].value).toFixed(1)) // billion yen
     },
-    {
-        name: " HD Games and MMO ",
-        region: " Group Total ",
-        period: " Last FY Cumulative ",
-        cmlPeriod: "Cml. ",
-        units: "currency",
-        value: Number((salesHD[4].value + salesMMO[4].value).toFixed(1)) // billion yen
-    },
+    // {
+    //     name: " HD Games and MMO ",
+    //     region: " Group Total ",
+    //     period: " Last FY Cumulative ",
+    //     cmlPeriod: "Cml. ",
+    //     units: "currency",
+    //     value: Number((salesHD2021[4].value + salesMMO2021[4].value).toFixed(1)) // billion yen
+    // },
 ]
 
-const units: Section[] = [
+export const units2021: Section[] = [
     {
         name: " HD Games & MMO ",
         region: " Group Total ",
@@ -162,14 +168,14 @@ const units: Section[] = [
         units: "units",
         value: 49900,
     },
-    {
-        name: " HD Games & MMO ",
-        region: " Group Total ",
-        period: " Last FY Cumulative ",
-        cmlPeriod: "Cml. ",
-        units: "units",
-        value: 33420,
-    },
+    // {
+    //     name: " HD Games & MMO ",
+    //     region: " Group Total ",
+    //     period: " Last FY Cumulative ",
+    //     cmlPeriod: "Cml. ",
+    //     units: "units",
+    //     value: 33420,
+    // },
 ]
 
 const header: Header = {
@@ -197,5 +203,4 @@ const notes = "\n" +
 |in the past.                            |
 +----------------------------------------+`;
 
-// export const printSalesPerSoftwareUnit: string = SquareEnixPrint(salesHD, salesHD, salesMMO, salesMMO, salesHDandMMO, salesHDandMMO, units, units, header, 4).concat(notes);
-export const printSalesPerSoftwareUnit = SquareEnixPrint(salesHD, salesHD, salesMMO, salesMMO, salesHDandMMO, salesHDandMMO, units, units, header, 4).concat(notes);
+export const printSalesPerSoftwareUnit: string = SquareEnixPrint(salesHD2021, salesHD2020, salesMMO2021, salesMMO2020, salesHDandMMO2021, salesHDandMMO2020, units2021, units2020, header, 4).concat(notes);
