@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
+import { Code, SegmentedControl, Anchor, Text, Stack, Space, Card } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printSeriesFY } from "../../data/capcom/Capcom_FY3_2021/game_series_sales_fy3_2021"
 import { printSoftwareShipments } from "../../data/capcom/Capcom_FY3_2021/software_shipments_platform_fy3_2021";
@@ -56,7 +56,8 @@ export default function CAPCOM_FY3_2021() {
     function DATA_SOURCES() {
 
         return (
-            <Text>
+        <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
+            <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.capcom.co.jp/ir/english/data/pdf/explanation/2020/1st/explanation_2020_1st_01.pdf" target="_blank" >
@@ -88,6 +89,7 @@ export default function CAPCOM_FY3_2021() {
                     </Anchor>
                 </Stack>  
             </Text> 
+        </Card>
         )
     };
 
