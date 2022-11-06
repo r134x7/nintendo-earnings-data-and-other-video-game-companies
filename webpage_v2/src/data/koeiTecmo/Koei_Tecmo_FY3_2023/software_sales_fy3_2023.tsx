@@ -1,6 +1,10 @@
 import { Header, Section, KoeiTecmoPrint } from "../../../utils/segment_data_logic";
+import {
+    sales2022,
+    units2022,
+} from "../Koei_Tecmo_FY3_2022/software_sales_fy3_2022";
 
-const sales: Section[] = [
+export const sales2023: Section[] = [
     {
         name: " Console Package & DL ",
         region: " Group Total ",
@@ -33,17 +37,17 @@ const sales: Section[] = [
         units: "currency",
         value: 14.633 // billion yen
     },
-    {
-        name: " Console Package & DL ",
-        region: " Group Total ",
-        period: " Last FY Cumulative ",
-        cmlPeriod: "Cml. ",
-        units: "currency",
-        value: 30.771 // billion yen
-    },
+    // {
+    //     name: " Console Package & DL ",
+    //     region: " Group Total ",
+    //     period: " Last FY Cumulative ",
+    //     cmlPeriod: "Cml. ",
+    //     units: "currency",
+    //     value: 30.771 // billion yen
+    // },
 ]
 
-const units: Section[] = [
+export const units2023: Section[] = [
     {
         name: " Console Package & DL ",
         region: " Group Total ",
@@ -76,14 +80,14 @@ const units: Section[] = [
         units: "units",
         value: 4680,
     },
-    {
-        name: " Console Package & DL ",
-        region: " Group Total ",
-        period: " Last FY Cumulative ",
-        cmlPeriod: "Cml. ",
-        units: "units",
-        value: 8130,
-    },
+    // {
+    //     name: " Console Package & DL ",
+    //     region: " Group Total ",
+    //     period: " Last FY Cumulative ",
+    //     cmlPeriod: "Cml. ",
+    //     units: "units",
+    //     value: 8130,
+    // },
 ]
 
 const header: Header = {
@@ -92,4 +96,4 @@ const header: Header = {
     firstHeader: "| Koei Tecmo     |",
 }
 
-export const printSalesPerSoftwareUnit = KoeiTecmoPrint(sales, sales, units, units, header, 2);
+export const printSalesPerSoftwareUnit = KoeiTecmoPrint(sales2023, sales2022, units2023, units2022, header, 2);
