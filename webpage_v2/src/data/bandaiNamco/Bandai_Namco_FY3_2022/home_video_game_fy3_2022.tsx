@@ -1,6 +1,6 @@
-import { Header, Section, BandaiNamcoPrint } from "../../../utils/segment_data_logic";
+import { Header, Section, BandaiNamcoPrint, undefinedData } from "../../../utils/segment_data_logic";
 
-const sales: Section[] = [
+export const sales2022: Section[] = [
     {
         name: " Home video game ",
         region: " Group Total ",
@@ -33,17 +33,17 @@ const sales: Section[] = [
         units: "currency",
         value: 174.4 // billion yen
     },
-    {
-        name: " Home video game ",
-        region: " Group Total ",
-        period: " Last FY Cumulative ",
-        cmlPeriod: "Cml. ",
-        units: "currency",
-        value: 118.1 // billion yen
-    },
+    // {
+    //     name: " Home video game ",
+    //     region: " Group Total ",
+    //     period: " Last FY Cumulative ",
+    //     cmlPeriod: "Cml. ",
+    //     units: "currency",
+    //     value: 118.1 // billion yen
+    // },
 ]
 
-const units: Section[] = [
+export const units2022: Section[] = [
     {
         name: " Home video game ",
         region: " Group Total ",
@@ -76,14 +76,14 @@ const units: Section[] = [
         units: "currency",
         value: 56847,
     },
-    {
-        name: " Home video game ",
-        region: " Group Total ",
-        period: " Last FY Cumulative ",
-        cmlPeriod: "Cml. ",
-        units: "currency",
-        value: 41498,
-    },
+    // {
+    //     name: " Home video game ",
+    //     region: " Group Total ",
+    //     period: " Last FY Cumulative ",
+    //     cmlPeriod: "Cml. ",
+    //     units: "currency",
+    //     value: 41498,
+    // },
 ]
 
 const header: Header = {
@@ -92,4 +92,4 @@ const header: Header = {
     firstHeader: "| Bandai Namco   |",
 }
 
-export const printSalesPerSoftwareUnit = BandaiNamcoPrint(sales, sales, units, units, header, 4);
+export const printSalesPerSoftwareUnit = BandaiNamcoPrint(sales2022, undefinedData, units2022, undefinedData, header, 4);
