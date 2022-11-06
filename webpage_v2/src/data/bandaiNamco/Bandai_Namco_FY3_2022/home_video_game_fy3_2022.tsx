@@ -92,4 +92,4 @@ const header: Header = {
     firstHeader: "| Bandai Namco   |",
 }
 
-export const printSalesPerSoftwareUnit = BandaiNamcoPrint(sales, units, header, 4);
+export const printSalesPerSoftwareUnit = BandaiNamcoPrint(sales, sales, units, units, header, 4);

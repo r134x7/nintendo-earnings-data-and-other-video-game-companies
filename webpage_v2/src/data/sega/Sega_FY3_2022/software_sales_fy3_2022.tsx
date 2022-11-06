@@ -92,4 +92,4 @@ const header: Header = {
     firstHeader: "| Sega Sammy     |",
 }
 
-export const printSalesPerSoftwareUnit = SegaPrint(sales, units, header, 4);
+export const printSalesPerSoftwareUnit = SegaPrint(sales, sales, units, units, header, 4);

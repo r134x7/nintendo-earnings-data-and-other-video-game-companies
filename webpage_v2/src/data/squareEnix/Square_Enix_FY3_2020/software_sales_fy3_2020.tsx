@@ -178,4 +178,4 @@ const header: Header = {
     firstHeader: "| Square Enix    |", 
 }
 
-export const printSalesPerSoftwareUnit: string = SquareEnixPrint(salesHD, salesMMO, salesHDandMMO, units, header, 4);
+export const printSalesPerSoftwareUnit = SquareEnixPrint(salesHD, salesHD, salesMMO, salesMMO, salesHDandMMO, salesHDandMMO, units, units, header, 4);

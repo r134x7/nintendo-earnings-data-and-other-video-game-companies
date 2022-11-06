@@ -197,4 +197,5 @@ const notes = "\n" +
 |in the past.                            |
 +----------------------------------------+`;
 
-export const printSalesPerSoftwareUnit: string = SquareEnixPrint(salesHD, salesMMO, salesHDandMMO, units, header, 4).concat(notes);
+// export const printSalesPerSoftwareUnit: string = SquareEnixPrint(salesHD, salesHD, salesMMO, salesMMO, salesHDandMMO, salesHDandMMO, units, units, header, 4).concat(notes);
+export const printSalesPerSoftwareUnit = SquareEnixPrint(salesHD, salesHD, salesMMO, salesMMO, salesHDandMMO, salesHDandMMO, units, units, header, 4).concat(notes);

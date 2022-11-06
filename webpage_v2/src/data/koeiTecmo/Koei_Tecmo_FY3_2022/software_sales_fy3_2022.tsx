@@ -92,4 +92,4 @@ const header: Header = {
     firstHeader: "| Koei Tecmo     |",
 }
 
-export const printSalesPerSoftwareUnit = KoeiTecmoPrint(sales, units, header, 4);
+export const printSalesPerSoftwareUnit = KoeiTecmoPrint(sales, sales, units, units, header, 4);

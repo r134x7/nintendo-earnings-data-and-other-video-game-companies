@@ -1,6 +1,14 @@
 import { Header, Section, CapcomPrint, CapcomPrintPhysical, CapcomPrintDigital } from "../../../utils/segment_data_logic";
+import { 
+    sales2021,
+    salesDigital2021,
+    salesPhysical2021,
+    units2021,
+    unitsDigital2021,
+    unitsPhysical2021,
+} from "../Capcom_FY3_2021/software_sales_fy3_2021";
 
-const sales: Section[] = [
+export const sales2022: Section[] = [
     {
         name: " Digital Contents ",
         region: " Group Total ",
@@ -33,17 +41,17 @@ const sales: Section[] = [
         units: "currency",
         value: 83.3 // billion yen
     },
-    {
-        name: " Digital Contents ",
-        region: " Group Total ",
-        period: " Last FY Cumulative ",
-        cmlPeriod: "Cml. ",
-        units: "currency",
-        value: 68.8 // billion yen
-    },
+    // {
+    //     name: " Digital Contents ",
+    //     region: " Group Total ",
+    //     period: " Last FY Cumulative ",
+    //     cmlPeriod: "Cml. ",
+    //     units: "currency",
+    //     value: 68.8 // billion yen
+    // },
 ]
 
-const units: Section[] = [
+export const units2022: Section[] = [
     {
         name: " Digital Contents ",
         region: " Group Total ",
@@ -76,17 +84,17 @@ const units: Section[] = [
         units: "currency",
         value: 32600,
     },
-    {
-        name: " Digital Contents ",
-        region: " Group Total ",
-        period: " Last FY Cumulative ",
-        cmlPeriod: "Cml. ",
-        units: "currency",
-        value: 30100,
-    },
+    // {
+    //     name: " Digital Contents ",
+    //     region: " Group Total ",
+    //     period: " Last FY Cumulative ",
+    //     cmlPeriod: "Cml. ",
+    //     units: "currency",
+    //     value: 30100,
+    // },
 ]
 
-const salesPhysical: Section[] = [
+export const salesPhysical2022: Section[] = [
     {
         name: " Package ",
         region: " Group Total ",
@@ -119,17 +127,17 @@ const salesPhysical: Section[] = [
         units: "currency",
         value: 30.0 // billion yen
     },
-    {
-        name: " Package ",
-        region: " Group Total ",
-        period: " Last FY Cumulative ",
-        cmlPeriod: "Cml. ",
-        units: "currency",
-        value: 20.8 // billion yen
-    },
+    // {
+    //     name: " Package ",
+    //     region: " Group Total ",
+    //     period: " Last FY Cumulative ",
+    //     cmlPeriod: "Cml. ",
+    //     units: "currency",
+    //     value: 20.8 // billion yen
+    // },
 ]
 
-const unitsPhysical: Section[] = [
+export const unitsPhysical2022: Section[] = [
     {
         name: " Package ",
         region: " Group Total ",
@@ -162,17 +170,17 @@ const unitsPhysical: Section[] = [
         units: "currency",
         value: 8000,
     },
-    {
-        name: " Package ",
-        region: " Group Total ",
-        period: " Last FY Cumulative ",
-        cmlPeriod: "Cml. ",
-        units: "currency",
-        value: 6950,
-    },
+    // {
+    //     name: " Package ",
+    //     region: " Group Total ",
+    //     period: " Last FY Cumulative ",
+    //     cmlPeriod: "Cml. ",
+    //     units: "currency",
+    //     value: 6950,
+    // },
 ]
 
-const salesDigital: Section[] = [
+export const salesDigital2022: Section[] = [
     {
         name: " Digital ",
         region: " Group Total ",
@@ -205,17 +213,17 @@ const salesDigital: Section[] = [
         units: "currency",
         value: 53.3 // billion yen
     },
-    {
-        name: " Digital ",
-        region: " Group Total ",
-        period: " Last FY Cumulative ",
-        cmlPeriod: "Cml. ",
-        units: "currency",
-        value: 48.0 // billion yen
-    },
+    // {
+    //     name: " Digital ",
+    //     region: " Group Total ",
+    //     period: " Last FY Cumulative ",
+    //     cmlPeriod: "Cml. ",
+    //     units: "currency",
+    //     value: 48.0 // billion yen
+    // },
 ]
 
-const unitsDigital: Section[] = [
+export const unitsDigital2022: Section[] = [
     {
         name: " Digital ",
         region: " Group Total ",
@@ -248,14 +256,14 @@ const unitsDigital: Section[] = [
         units: "currency",
         value: 24600,
     },
-    {
-        name: " Digital ",
-        region: " Group Total ",
-        period: " Last FY Cumulative ",
-        cmlPeriod: "Cml. ",
-        units: "currency",
-        value: 23150,
-    },
+    // {
+    //     name: " Digital ",
+    //     region: " Group Total ",
+    //     period: " Last FY Cumulative ",
+    //     cmlPeriod: "Cml. ",
+    //     units: "currency",
+    //     value: 23150,
+    // },
 ]
 
 const header: Header = {
@@ -264,4 +272,4 @@ const header: Header = {
     firstHeader: "| Capcom         |",
 }
 
-export const printSalesPerSoftwareUnit = CapcomPrint(sales, units, header, 4) + "\n" + CapcomPrintPhysical(salesPhysical, unitsPhysical, header, 4) + "\n" + CapcomPrintDigital(salesDigital, unitsDigital, header, 4);
+export const printSalesPerSoftwareUnit = CapcomPrint(sales2022, sales2021, units2022, units2021, header, 4) + "\n" + CapcomPrintPhysical(salesPhysical2022, salesPhysical2021, unitsPhysical2022, unitsPhysical2021, header, 4) + "\n" + CapcomPrintDigital(salesDigital2022, salesDigital2021, unitsDigital2022, unitsDigital2021, header, 4);
