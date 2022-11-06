@@ -144,7 +144,7 @@ const printSalesHeaderCapcom = (): string => {
 let x =
 `+-------------+
 | Consumer    |------------------------+
-| Total       | Net Sales   |   YoY%   |
+| Total       |   Net Sales |   YoY%   |
 +--------------------------------------+`
     return x
 };
@@ -154,7 +154,7 @@ const printSalesHeaderCapcomPhysical = (): string => {
 let x =
 `+-------------+
 | Package     |------------------------+
-| Total       | Net Sales   |   YoY%   |
+| Total       |   Net Sales |   YoY%   |
 +--------------------------------------+`
     return x
 };
@@ -164,7 +164,7 @@ const printSalesHeaderCapcomDigital = (): string => {
 let x =
 `+-------------+
 | Digital     |------------------------+
-| Total       | Net Sales   |   YoY%   |
+| Total       |   Net Sales |   YoY%   |
 +--------------------------------------+`
     return x
 };
@@ -387,10 +387,15 @@ const printYoYSales = (segmentSales: Section[], segmentSalesLastFY: Section[]): 
 
 // };
 
-const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentUnits: Section[], header: Header, currentQuarter: number): string[] => {
+const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Section[], segmentUnits: Section[], segmentUnitsLastFY: Section[], header: Header, currentQuarter: number): string[] => {
 
     const salesQuarters = quarterlyCalculation(segmentSales);
+    const salesQuartersLastFY = quarterlyCalculation(segmentSalesLastFY);
     const salesUnits = quarterlyCalculation(segmentUnits); 
+    const salesUnitsLastFY = quarterlyCalculation(segmentUnitsLastFY);
+
+    const yoySalesPerUnit = printYoYSalesPerSoftwareUnit(salesQuarters, salesQuartersLastFY, salesUnits, salesUnitsLastFY)
+
 
         const salesPerSoftwareUnit = salesQuarters.filter((elem, index, array) => {
             return index < currentQuarter && array[index].value !== 0
@@ -419,14 +424,16 @@ const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentUnits: Section[]
                 ? "\n+" + "=".repeat(36) + "+"
                 : "\n+" + "-".repeat(36) + "+"
 
-            return "|" + printPeriod + "|" + printsegmentSalesPerSoftwareFixed + "|" + printSoftwareUnitsFixed + "|" + printLine
+            return "|" + printPeriod + "|" + printsegmentSalesPerSoftwareFixed + "|" + printSoftwareUnitsFixed + "|\n" + yoySalesPerUnit[index] + printLine
         })
 
         return salesPerSoftwareUnit
 }
 
 
-const printCmlSalesPerSWUnit = (segmentSales: Section[], segmentUnits: Section[], header: Header, currentQuarter: number): string[] => {
+const printCmlSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Section[], segmentUnits: Section[], segmentUnitsLastFY: Section[], header: Header, currentQuarter: number): string[] => {
+
+    const yoySalesPerUnit = printYoYSalesPerSoftwareUnit(segmentSales, segmentSalesLastFY, segmentUnits, segmentUnitsLastFY).filter((elem, index) => index !== 0); // remove first quarter for cumulatives;
 
         const salesPerSoftwareUnit = segmentSales.filter((elem, index, array) => {
             return index !== 0 && index < currentQuarter && array[index].value !== 0
@@ -459,13 +466,13 @@ const printCmlSalesPerSWUnit = (segmentSales: Section[], segmentUnits: Section[]
             
         let printLine: string = "\n+" + "-".repeat(36) + "+";
 
-            return "|" + printPeriod + "|" + printsegmentSalesPerSoftwareFixed + "|" + printSoftwareUnitsFixed + "|" + printLine
+            return "|" + printPeriod + "|" + printsegmentSalesPerSoftwareFixed + "|" + printSoftwareUnitsFixed + "|\n" + yoySalesPerUnit[index] + printLine
         })
 
         return salesPerSoftwareUnit
 };
 
-const printYoYSalesPerSoftwareUnit = (segmentSales: Section[], segmentSalesLastFY: Section[], segmentUnits: Section[], segmentUnitsLastFY: Section[], header: Header, currentQuarter: number): string[] => {
+const printYoYSalesPerSoftwareUnit = (segmentSales: Section[], segmentSalesLastFY: Section[], segmentUnits: Section[], segmentUnitsLastFY: Section[]): string[] => {
 
     // const filterUnits = segmentUnits.filter(elem => elem.cmlPeriod === "Cml. ");
 
@@ -521,9 +528,9 @@ const printYoYSalesPerSoftwareUnit = (segmentSales: Section[], segmentSalesLastF
     // return "|" + printPeriod + "|" + printSalesFixed + "|" + printUnitsFixed + "|" + printLine
     let printArray: string[] = yoySalesPerUnit.map((elem, index) => {
 
-        let printPeriod: string = ` ${elem.period}YoY%   `;
+        let printPeriod: string = `        YoY% `;
 
-        return "|" + printPeriod + "|" + printSalesFixed[index] + "|" + printUnitsFixed[index] + "|" + printLine
+        return "|" + printPeriod + "|" + printSalesFixed[index] + "|" + printUnitsFixed[index] + "|" 
     }) 
 
     return printArray 
@@ -548,14 +555,13 @@ export const SegaPrint = (salesData: Section[], salesDataLastFY: Section[], sale
     const salesUnitsBlock = (currentQuarter === 4)
         ? [
         printSalesPerUnitHeaderSega(),
-        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        printYoYSalesPerSoftwareUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ]
         : [
         printSalesPerUnitHeaderSega(),
-        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ]; 
 
     return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
@@ -581,14 +587,13 @@ export const BandaiNamcoPrint = (salesData: Section[], salesDataLastFY: Section[
     const salesUnitsBlock = (currentQuarter === 4)
         ? [
         printSalesPerUnitHeaderBandaiNamco(),
-        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        printYoYSalesPerSoftwareUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ]
         : [
         printSalesPerUnitHeaderBandaiNamco(),
-        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ]; 
 
     return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
@@ -614,14 +619,13 @@ export const CapcomPrint = (salesData: Section[], salesDataLastFY: Section[], sa
     const salesUnitsBlock = (currentQuarter === 4)
         ? [
         printSalesPerUnitHeaderCapcom(),
-        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        printYoYSalesPerSoftwareUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ]
         : [
         printSalesPerUnitHeaderCapcom(),
-        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ]; 
 
     return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
@@ -645,14 +649,13 @@ export const CapcomPrintPhysical = (salesData: Section[], salesDataLastFY: Secti
     const salesUnitsBlock = (currentQuarter === 4)
         ? [
         printSalesPerUnitHeaderCapcomPhysical(),
-        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        printYoYSalesPerSoftwareUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ]
         : [
         printSalesPerUnitHeaderCapcomPhysical(),
-        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ]; 
 
     return [...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
@@ -676,14 +679,13 @@ export const CapcomPrintDigital = (salesData: Section[], salesDataLastFY: Sectio
     const salesUnitsBlock = (currentQuarter === 4)
         ? [
         printSalesPerUnitHeaderCapcomDigital(),
-        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        printYoYSalesPerSoftwareUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ]
         : [
         printSalesPerUnitHeaderCapcomDigital(),
-        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ]; 
 
     return [...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
@@ -709,14 +711,13 @@ export const KoeiTecmoPrint = (salesData: Section[], salesDataLastFY: Section[],
     const salesUnitsBlock = (currentQuarter === 4)
         ? [
         printSalesPerUnitHeaderKoeiTecmo(),
-        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        printYoYSalesPerSoftwareUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ]
         : [
         printSalesPerUnitHeaderKoeiTecmo(),
-        ...printQtrSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        ...printCmlSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+        ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ]; 
 
     return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
@@ -738,9 +739,8 @@ export const SquareEnixPrint = (salesHDGames: Section[], salesHDGamesLastFY: Sec
 
     const salesUnitsBlock = [
             printSalesPerUnitHeaderSquareEnix(),
-            ...printQtrSalesPerSWUnit(salesHDandMMO, salesUnits, header, currentQuarter),
-            ...printCmlSalesPerSWUnit(salesHDandMMO, salesUnits, header, currentQuarter),
-            printYoYSalesPerSoftwareUnit(salesHDandMMO, salesHDandMMOLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+            ...printQtrSalesPerSWUnit(salesHDandMMO, salesHDandMMOLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
+            ...printCmlSalesPerSWUnit(salesHDandMMO, salesHDandMMOLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ];
 
     return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
