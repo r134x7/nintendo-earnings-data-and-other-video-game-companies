@@ -83,6 +83,17 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_2018() {
 
     ]
 
+    const bothOff = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+        if (barChecked) {
+            setChecked(event.currentTarget.checked)
+            setBarChecked(event.currentTarget.checked)
+            return
+        }
+
+        return setChecked(event.currentTarget.checked)
+    };
+
     return (
         <div className="chart">
         {(checked === false && barChecked === false)
@@ -343,7 +354,7 @@ export default function GRAPH_NINTENDO_NSW_HW_SW_FY3_2018() {
                 <Group mt="md" position="center">
                     <Pagination page={activePage} onChange={setPage} total={graphQuarters.length} color="teal" size="sm" radius="md" />
                         <Switch onLabel="BAR" offLabel="BAR" size="md" checked={barChecked} onChange={(event) => setBarChecked(event.currentTarget.checked)} />
-                            <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
+                            <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={bothOff} />
             </Group>
         </div>
 
