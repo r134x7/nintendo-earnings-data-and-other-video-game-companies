@@ -50,9 +50,17 @@ export default function KOEI_TECMO_FY3_2023() {
                         https://www.koeitecmo.co.jp/e/ir/docs/ir2_20220725_e.pdf
                     </Anchor>
                         2nd Quarter Financial Results Presentation: 
-                    <Anchor mb="sm" href="https://www.koeitecmo.co.jp/ir/docs/ir3_20221031_01.pdf" target="_blank" >
-                        https://www.koeitecmo.co.jp/ir/docs/ir3_20221031_01.pdf
+                    <Anchor mb="sm" href="https://www.koeitecmo.co.jp/e/ir/docs/ir2_20221031e.pdf" target="_blank" >
+                        https://www.koeitecmo.co.jp/e/ir/docs/ir2_20221031e.pdf
                     </Anchor>
+                        {/* 3rd Quarter Financial Results Presentation: 
+                    <Anchor mb="sm" href="https://www.koeitecmo.co.jp/e/ir/docs/ir2_20220131_e.pdf" target="_blank" >
+                        https://www.koeitecmo.co.jp/e/ir/docs/ir2_20220131_e.pdf
+                    </Anchor> */}
+                        {/* 4th Quarter Financial Results Presentation: 
+                    <Anchor mb="sm" href="https://www.koeitecmo.co.jp/e/ir/docs/ir2_20220425_e.pdf.pdf" target="_blank" >
+                        https://www.koeitecmo.co.jp/e/ir/docs/ir2_20220425_e.pdf.pdf
+                    </Anchor> */}
                 </Stack>  
             </Text> 
         </Card>

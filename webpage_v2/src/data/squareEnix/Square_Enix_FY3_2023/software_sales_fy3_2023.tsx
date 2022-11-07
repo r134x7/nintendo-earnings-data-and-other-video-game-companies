@@ -21,7 +21,7 @@ export const salesHD2023: Section[] = [
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "currency",
-        value: 39.5 // billion yen
+        value: 29.4 // billion yen
     },
     {
         name: " HD Games ",
@@ -56,7 +56,7 @@ export const salesMMO2023: Section[] = [
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "currency",
-        value: 27.7 // billion yen
+        value: 28.6 // billion yen
     },
     {
         name: " MMO ",
@@ -126,7 +126,7 @@ export const units2023: Section[] = [
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "units",
-        value: 17220,
+        value: 9410,
     },
     {
         name: " HD Games & MMO ",
