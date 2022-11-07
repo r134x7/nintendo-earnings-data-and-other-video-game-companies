@@ -1,32 +1,48 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printJapan, printGlobal, printOverseas } from "../../data/nintendo/Nintendo_Cumulative_Data/mst_cml_data";
+// import { printJapan, printGlobal, printOverseas } from "../../data/nintendo/Nintendo_Cumulative_Data/mst_cml_data";
 
 export default function NINTENDO_CML() {
 
-    const [data, setData] = useState("");
     const [value, setValue] = useState("");
 
     const state: any = useSelector(state => state);
 
-    useEffect(() => {
-        (value === "Nintendo Switch FY Million-Seller Titles - Japan")
-            ? setData(fyMillionSellersJapan)
-            : (value === "Nintendo Switch FY Million-Seller Titles - Overseas")
-            ? setData(fyMillionSellersOverseas)
-            : (value === "Nintendo Switch FY Million-Seller Titles - Global")
-            ? setData(fyMillionSellersGlobal)
-            : setData("");
+    // const fyMillionSellersJapan = printJapan;
+    // const fyMillionSellersOverseas = printOverseas;
+    // const fyMillionSellersGlobal = printGlobal;
 
-    }, [value])
+    const printJapan = "Data unavailable at this time";
+    const printOverseas = "Data unavailable at this time";
+    const printGlobal = "Data unavailable at this time";
 
-    const fyMillionSellersJapan = printJapan;
+    const componentList = [
+        {
+            name: "Nintendo Switch FY Million-Seller Titles - Japan",
+            value: printJapan 
+        },
+        {
+            name: "Nintendo Switch FY Million-Seller Titles - Overseas",
+            value: printOverseas, 
+        },
+        {
+            name: "Nintendo Switch FY Million-Seller Titles - Global",
+            value: printGlobal,
+        },
+    ];
 
-    const fyMillionSellersOverseas = printOverseas;
+    const dataList = componentList.map(elem => elem.name);
 
-    const fyMillionSellersGlobal = printGlobal;
+    const selectDataComponent = (objList: {name: string, value: string}[]) =>
+    (dataUsed: string): string => {
 
+        let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
+
+        return (dataSelected) ? dataSelected.value : ""
+    };
+
+    const selectData = selectDataComponent(componentList);
 
     return (
 
@@ -36,12 +52,12 @@ export default function NINTENDO_CML() {
                     orientation="vertical"
                     value={value}
                     onChange={setValue}
-                    data={[ "Nintendo Switch FY Million-Seller Titles - Japan", 
-                            "Nintendo Switch FY Million-Seller Titles - Overseas", 
-                            "Nintendo Switch FY Million-Seller Titles - Global",]}
+                    data={dataList}
             />
             
-            <Code style={{backgroundColor: `${state.colour}`}} block>{data}</Code>
+            <Code style={{backgroundColor: `${state.colour}`}} block>
+                {selectData(value)}
+                </Code>
             <Space h="xl" />
             <Space h="xl" />
             <Space h="xl" />

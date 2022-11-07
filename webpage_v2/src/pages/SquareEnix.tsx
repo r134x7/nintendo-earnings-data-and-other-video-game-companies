@@ -4,6 +4,7 @@ import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
+import SQUARE_ENIX_FY3_2023 from "../components/squareEnix/SQUARE_ENIX_FY3_2023";
 import SQUARE_ENIX_FY3_2022 from "../components/squareEnix/SQUARE_ENIX_FY3_2022";
 import SQUARE_ENIX_FY3_2021 from "../components/squareEnix/SQUARE_ENIX_FY3_2021";
 import SQUARE_ENIX_FY3_2020 from "../components/squareEnix/SQUARE_ENIX_FY3_2020";
@@ -18,9 +19,9 @@ import SQUARE_ENIX_FY3_2012 from "../components/squareEnix/SQUARE_ENIX_FY3_2012"
 import SQUARE_ENIX_FY3_2011 from "../components/squareEnix/SQUARE_ENIX_FY3_2011";
 import SQUARE_ENIX_FY3_2010 from "../components/squareEnix/SQUARE_ENIX_FY3_2010";
 
-const currentYear = 2022;
+const currentYear = 2023;
 
-const yearsList = Array.from({length: 13}, (elem, index) => 
+const yearsList = Array.from({length: 14}, (elem, index) => 
                     {
                             return "FY3/" + (currentYear - index)
                     }) 
@@ -85,10 +86,10 @@ export default function SquareEnix() {
     }
 
     const componentList = [
-        // {
-        //     year: "FY3/2023",
-        //     component: <KOEI_TECMO_FY3_2023 />
-        // },
+        {
+            year: "FY3/2023",
+            component: <SQUARE_ENIX_FY3_2023 />
+        },
         {
             year: "FY3/2022",
             component: <SQUARE_ENIX_FY3_2022 />

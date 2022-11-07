@@ -147,9 +147,9 @@ export const units2023: Section[] = [
 ]
 
 const header: Header = {
-    fiscalYear: " FY3/2022 ",
+    fiscalYear: " FY3/2023 ",
     secondHeader: "| Segment Information |",
     firstHeader: "| Square Enix    |", 
 }
 
-export const printSalesPerSoftwareUnit = SquareEnixPrint(salesHD2022, salesHD2022, salesMMO2022, salesMMO2022, salesHDandMMO2022, salesHDandMMO2022, units2022, units2022, header, 2);
+export const printSalesPerSoftwareUnit = SquareEnixPrint(salesHD2023, salesHD2022, salesMMO2023, salesMMO2022, salesHDandMMO2023, salesHDandMMO2022, units2023, units2022, header, 2);
