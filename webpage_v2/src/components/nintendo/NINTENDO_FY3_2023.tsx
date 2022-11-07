@@ -138,18 +138,6 @@ export default function NINTENDO_FY3_2023() {
         )
     };
 
-    const consolidatedOperatingResults = printEarnings;
-
-    const topSellingTitles = printTopSellingSwitchTitles;
-
-    const regionalHWSW = printRegions;
-
-    const fyMillionSellers = printFYMillionSellerTitles;
-
-    const keyIndicators = printKPI;
-
-    const nintendoHardwareSoftwareMobile = printHardwareSoftware;
-
     return (
 
         <div>  

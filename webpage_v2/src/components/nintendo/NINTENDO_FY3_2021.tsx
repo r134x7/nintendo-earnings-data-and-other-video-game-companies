@@ -139,18 +139,6 @@ export default function NINTENDO_FY3_2021() {
         )
     };
 
-    const consolidatedOperatingResults = printEarnings;
-
-    const nintendoHardwareSoftwareMobile = printHardwareSoftware;
-    
-    const keyIndicators = printKPI;
-
-    const fyMillionSellers = printFYMillionSellerTitles;
-
-    const regionalHWSW = printRegions;
-
-    const topSellingTitles = printTopSellingSwitchTitles; 
-
     return (
 
         <div>  
