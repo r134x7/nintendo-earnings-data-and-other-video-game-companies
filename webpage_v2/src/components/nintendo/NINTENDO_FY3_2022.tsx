@@ -15,32 +15,81 @@ import GRAPH_NINTENDO_MST_FY3_2022 from "../../graphs/nintendo/Nintendo_FY3_2022
 
 export default function NINTENDO_FY3_2022() {
 
-    const [data, setData] = useState("");
     const [value, setValue] = useState("");
     const [sources, setSources] = useState(<></>)
 
     const state: any = useSelector(state => state);
 
     useEffect(() => {
-        (value === "Consolidated Operating Results")
-            ? setData(consolidatedOperatingResults)
-            : (value === "Global Hardware/Software units, Mobile/IP related income")
-            ? setData(nintendoHardwareSoftwareMobile)
-            : (value === "Key/Digital Sales Indicators")
-            ? setData(keyIndicators)
-            : (value === "FY Million-Seller Titles")
-            ? setData(fyMillionSellers)
-            : (value === "Regional Hardware/Software units")
-            ? setData(regionalHWSW)
-            : (value === "Top Selling Titles")
-            ? setData(topSellingTitles)
-            : setData("");
 
         (value === "Data Sources")
             ? setSources(DATA_SOURCES)
             : setSources(<></>)
 
     }, [value])
+
+    const componentList = [
+        {
+            name: "Consolidated Operating Results", 
+            value: printEarnings,
+        },
+        {
+            name: "Global Hardware/Software units, Mobile/IP related income", 
+            value: printHardwareSoftware,
+        },
+        {
+            name: "Key/Digital Sales Indicators", 
+            value: printKPI,
+        },
+        {
+            name: "FY Million-Seller Titles", 
+            value: printFYMillionSellerTitles,
+        },
+        {
+            name: "Regional Hardware/Software units", 
+            value: printRegions,
+        },
+        {
+            name: "Top Selling Titles",
+            value: printTopSellingSwitchTitles,
+        },
+    ];
+
+    const graphList = [
+        {
+            name: "Consolidated Operating Results", 
+            value: <GRAPH_NINTENDO_EARNINGS_FY3_2022 />,
+        },
+        {
+            name: "Global Hardware/Software units, Mobile/IP related income", 
+            value: <GRAPH_NINTENDO_NSW_HW_SW_FY3_2022 />,
+        },
+        {
+            name: "Key/Digital Sales Indicators", 
+            value: <GRAPH_NINTENDO_KPI_FY3_2022 />,
+        },
+        {
+            name: "FY Million-Seller Titles", 
+            value: <GRAPH_NINTENDO_MST_FY3_2022 /> ,
+        },
+        {
+            name: "Top Selling Titles",
+            value: <GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_2022 />,
+        },
+    ]
+
+    const dataList = ["Data Sources"].concat(componentList.map(elem => elem.name));
+
+    const selectDataComponent = (objList: {name: string, value: string | JSX.Element}[]) =>
+    (dataUsed: string): string | JSX.Element => {
+
+        let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
+
+        return (dataSelected) ? dataSelected.value : ""
+    };
+
+    const selectData = selectDataComponent(componentList);
+    const selectGraph = selectDataComponent(graphList);
 
     function DATA_SOURCES() {
 
@@ -109,29 +158,12 @@ export default function NINTENDO_FY3_2022() {
                     orientation="vertical"
                     value={value}
                     onChange={setValue}
-                    data={[ "Data Sources",
-                            "Consolidated Operating Results", 
-                            "Global Hardware/Software units, Mobile/IP related income", 
-                            "Key/Digital Sales Indicators", 
-                            "FY Million-Seller Titles", 
-                            "Regional Hardware/Software units", 
-                            "Top Selling Titles",]}
+                    data={dataList}
             />
             
             {sources}
-            <Code style={{backgroundColor: `${state.colour}`}} block>{data}</Code>
-            {(value === "Consolidated Operating Results")
-                ? <GRAPH_NINTENDO_EARNINGS_FY3_2022 />
-                : (value === "Global Hardware/Software units, Mobile/IP related income")
-                ? <GRAPH_NINTENDO_NSW_HW_SW_FY3_2022 />
-                : (value === "Key/Digital Sales Indicators")
-                ? <GRAPH_NINTENDO_KPI_FY3_2022 />
-                : (value === "FY Million-Seller Titles")
-                ? <GRAPH_NINTENDO_MST_FY3_2022 /> 
-                : (value === "Top Selling Titles")
-                ? <GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_2022 />
-                : null
-            }
+            <Code style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
+            {selectGraph(value)}
             <Space h="xl" />
             <Space h="xl" />
             <Space h="xl" />
