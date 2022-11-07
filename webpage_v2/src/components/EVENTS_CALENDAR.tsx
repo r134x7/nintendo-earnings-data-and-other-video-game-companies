@@ -99,8 +99,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 11,
             companyName: "Square Enix",
-            eventName: "1st Quarter Earnings Results",
-            eventDate: "August 4, 2022",
+            eventName: "2nd Quarter Earnings Results",
+            eventDate: "November 7, 2022",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.hd.square-enix.com/eng/ir/",
         },

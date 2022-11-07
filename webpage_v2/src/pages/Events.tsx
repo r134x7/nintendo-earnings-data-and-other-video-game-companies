@@ -46,7 +46,7 @@ const Home = () => {
             </Stack>
             <Paper shadow="sm" radius="xl" p="md" withBorder>
             <Stack align="center">
-                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">You'll want to head to Install Base, where events such as Earnings Results are discussed on there.</Text>
+                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">You'll want to head to Install Base, where events such as Earnings Results are discussed.</Text>
                     <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/" target="_blank" >
                         https://www.installbaseforum.com/
                     </Anchor>

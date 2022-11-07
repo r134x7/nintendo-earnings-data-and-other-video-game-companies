@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
+import { Code, SegmentedControl, Anchor, Text, Stack, Space, Card } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printSalesPerSoftwareUnit } from "../../data/squareEnix/Square_Enix_FY3_2022/software_sales_fy3_2022";
 import { printSeriesFY } from "../../data/squareEnix/Square_Enix_FY3_2022/square_enix_annual_report_fy3_2022";
@@ -48,7 +48,8 @@ export default function SQUARE_ENIX_FY3_2022() {
     function DATA_SOURCES() {
 
         return (
-            <Text>
+        <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
+            <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/22q1slides.pdf" target="_blank" >
@@ -76,6 +77,7 @@ export default function SQUARE_ENIX_FY3_2022() {
                     </Anchor>
                 </Stack>  
             </Text> 
+        </Card>
         )
     };
 
