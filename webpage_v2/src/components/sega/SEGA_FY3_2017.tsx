@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
+import { Code, SegmentedControl, Anchor, Text, Stack, Space, Card } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printSeriesFY } from "../../data/sega/Sega_FY3_2017/sega_annual_report_fy3_17";
 
@@ -25,7 +25,8 @@ export default function SEGA_FY3_2017() {
     function DATA_SOURCES() {
 
         return (
-            <Text>
+        <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
+            <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         Sega Sammy Integrated Report 2017: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/printing_annual/2017/2017ar_all_e_.pdf" target="_blank" >
@@ -33,6 +34,7 @@ export default function SEGA_FY3_2017() {
                     </Anchor>
                 </Stack>  
             </Text> 
+        </Card>
         )
     };
 

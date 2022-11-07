@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Code, SegmentedControl, Anchor, Text, Stack, Space } from "@mantine/core";
+import { Code, SegmentedControl, Anchor, Text, Stack, Space, Card } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printSalesPerSoftwareUnit } from "../../data/sega/Sega_FY3_2023/software_sales_fy3_2023";
 
@@ -25,7 +25,8 @@ export default function SEGA_FY3_2023() {
     function DATA_SOURCES() {
 
         return (
-            <Text>
+        <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
+            <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Data Appendix: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20220804_appendix_e_final.pdf" target="_blank" >
@@ -37,6 +38,7 @@ export default function SEGA_FY3_2023() {
                     </Anchor>
                 </Stack>  
             </Text> 
+        </Card>
         )
     };
 
