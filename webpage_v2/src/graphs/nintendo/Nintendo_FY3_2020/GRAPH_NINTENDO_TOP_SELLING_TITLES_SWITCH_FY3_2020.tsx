@@ -115,6 +115,17 @@ export default function GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_2020() {
         title15Sorted.map((elem, index) => elem.value - title15Difference[index].value),
     ]
 
+    const bothOff = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+        if (barChecked) {
+            setChecked(event.currentTarget.checked)
+            setBarChecked(event.currentTarget.checked)
+            return
+        }
+
+        return setChecked(event.currentTarget.checked)
+    };
+
     return (
         <div className="chart">
         {(checked === false && barChecked === false)
@@ -371,7 +382,7 @@ export default function GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH_FY3_2020() {
                 <Group mt="md" position="center">
                     <Pagination page={activePage} onChange={setPage} total={titleLabels.length} color="teal" size="sm" radius="md" />
                         <Switch onLabel="BAR" offLabel="BAR" size="md" checked={barChecked} onChange={(event) => setBarChecked(event.currentTarget.checked)} />
-                            <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
+                            <Switch onLabel="ON" offLabel="OFF" size="md" checked={checked} onChange={bothOff} />
                         {(checked === true) 
                         ? <Pagination mr="xl" page={secondDataRef} onChange={setSecondDataRef} total={titleLabels.length} color="red" size="sm" radius="md" />
                         : null}
