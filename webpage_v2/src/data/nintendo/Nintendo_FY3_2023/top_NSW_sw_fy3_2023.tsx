@@ -489,8 +489,20 @@ export const printTopSellingSwitchTitles =
 ${printTwo}
 ${printThree}
 ${printFour}
+*This number has been adjusted to 
+reflect a revision of sales units
+in previous years.
++-------------------------------+
 ${printFive}
+*This number has been adjusted to 
+reflect a revision of sales units
+in previous years.
++-------------------------------+
 ${printSix}
+*This number has been adjusted to 
+reflect a revision of sales units
+in previous years.
++-------------------------------+
 ${printSeven}
 ${printEight}
 ${printNine}
