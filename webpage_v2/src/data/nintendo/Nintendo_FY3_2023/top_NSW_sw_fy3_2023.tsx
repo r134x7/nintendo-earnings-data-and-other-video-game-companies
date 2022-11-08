@@ -6,7 +6,7 @@ import {
     printBody,
 } from "../../../utils/top_selling_titles_logic";
 
-const currentQuarter = 1;
+const currentQuarter = 2;
 
 const title1: Titles[] = [
     {
@@ -17,17 +17,17 @@ const title1: Titles[] = [
     {
         title: " Mario Kart 8 Deluxe ",
         period: " 2nd Quarter         ",
-        value: 46.82,
+        value: 48.41,
     },
     {
         title: " Mario Kart 8 Deluxe ",
         period: " 3rd Quarter         ",
-        value: 46.82,
+        value: 48.41,
     },
     {
         title: " Mario Kart 8 Deluxe ",
         period: " 4th Quarter         ",
-        value: 46.82,
+        value: 48.41,
     },
     {
         title: " Mario Kart 8 Deluxe ",
@@ -45,17 +45,17 @@ const title2: Titles[] = [
     {
         title: " Super Mario Odyssey ",
         period: " 2nd Quarter         ",
-        value: 23.93,
+        value: 24.40,
     },
     {
         title: " Super Mario Odyssey ",
         period: " 3rd Quarter         ",
-        value: 23.93,
+        value: 24.40,
     },
     {
         title: " Super Mario Odyssey ",
         period: " 4th Quarter         ",
-        value: 23.93,
+        value: 24.40,
     },
     {
         title: " Super Mario Odyssey ",
@@ -73,17 +73,17 @@ const title3: Titles[] = [
     {
         title: " The Legend of Zelda: Breath of the Wild ", 
         period: " 2nd Quarter         ",
-        value: 27.14,
+        value: 27.79,
     },
     {
         title: " The Legend of Zelda: Breath of the Wild ", 
         period: " 3rd Quarter         ",
-        value: 27.14,
+        value: 27.79,
     },
     {
         title: " The Legend of Zelda: Breath of the Wild ", 
         period: " 4th Quarter         ",
-        value: 27.14,
+        value: 27.79,
     },
     {
         title: " The Legend of Zelda: Breath of the Wild ", 
@@ -101,17 +101,17 @@ const title4: Titles[] = [
     {
         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
         period: " 2nd Quarter         ",
-        value: 14.79,
+        value: 14.92,
     },
     {
         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
         period: " 3rd Quarter         ",
-        value: 14.79,
+        value: 14.92,
     },
     {
         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
         period: " 4th Quarter         ",
-        value: 14.79,
+        value: 14.92,
     },
     {
         title: " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
@@ -129,17 +129,17 @@ const title5: Titles[] = [
     {
         title: " Animal Crossing: New Horizons  ",
         period: " 2nd Quarter         ",
-        value: 39.38,
+        value: 40.17,
     },
     {
         title: " Animal Crossing: New Horizons  ",
         period: " 3rd Quarter         ",
-        value: 39.38,
+        value: 40.17,
     },
     {
         title: " Animal Crossing: New Horizons  ",
         period: " 4th Quarter         ",
-        value: 39.38,
+        value: 40.17,
     },
     {
         title: " Animal Crossing: New Horizons  ",
@@ -157,17 +157,17 @@ const title6: Titles[] = [
     {
         title: " Pokémon Sword / Pokémon Shield ",
         period: " 2nd Quarter         ",
-        value: 24.50,
+        value: 25.37,
     },
     {
         title: " Pokémon Sword / Pokémon Shield ",
         period: " 3rd Quarter         ",
-        value: 24.50,
+        value: 25.37,
     },
     {
         title: " Pokémon Sword / Pokémon Shield ",
         period: " 4th Quarter         ",
-        value: 24.50,
+        value: 25.37,
     },
     {
         title: " Pokémon Sword / Pokémon Shield ",
@@ -185,17 +185,17 @@ const title7: Titles[] = [
     {
         title: " Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee ",
         period: " 2nd Quarter         ",
-        value: 14.66,
+        value: 14.81,
     },
     {
         title: " Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee ",
         period: " 3rd Quarter         ",
-        value: 14.66,
+        value: 14.81,
     },
     {
         title: " Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee ",
         period: " 4th Quarter         ",
-        value: 14.66,
+        value: 14.81,
     },
     {
         title: " Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee ",
@@ -213,17 +213,17 @@ const title8: Titles[] = [
     {
         title: " Ring Fit Adventure ",
         period: " 2nd Quarter         ",
-        value: 14.54,
+        value: 14.87,
     },
     {
         title: " Ring Fit Adventure ",
         period: " 3rd Quarter         ",
-        value: 14.54,
+        value: 14.87,
     },
     {
         title: " Ring Fit Adventure ",
         period: " 4th Quarter         ",
-        value: 14.54,
+        value: 14.87,
     },
     {
         title: " Ring Fit Adventure ",
@@ -241,17 +241,17 @@ const title9: Titles[] = [
     {
         title: " Super Mario Party ",
         period: " 2nd Quarter         ",
-        value: 18.06,
+        value: 18.35,
     },
     {
         title: " Super Mario Party ",
         period: " 3rd Quarter         ",
-        value: 18.06,
+        value: 18.35,
     },
     {
         title: " Super Mario Party ",
         period: " 4th Quarter         ",
-        value: 18.06,
+        value: 18.35,
     },
     {
         title: " Super Mario Party ",
@@ -269,17 +269,17 @@ const title10: Titles[] = [
     {
         title: " Super Smash Bros. Ultimate ",
         period: " 2nd Quarter         ",
-        value: 28.82,
+        value: 29.53,
     },
     {
         title: " Super Smash Bros. Ultimate ",
         period: " 3rd Quarter         ",
-        value: 28.82,
+        value: 29.53,
     },
     {
         title: " Super Smash Bros. Ultimate ",
         period: " 4th Quarter         ",
-        value: 28.82,
+        value: 29.53,
     },
     {
         title: " Super Smash Bros. Ultimate ",

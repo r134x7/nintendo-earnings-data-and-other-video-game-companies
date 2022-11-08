@@ -8,7 +8,7 @@ import {
     yearOnYearCalculation
 } from "../../../utils/hardware_software_units_logic";
 
-const currentQuarter = 1;
+const currentQuarter = 2;
 
 const nintendoSwitchPlatformSales: Section[] = [
     {
@@ -23,7 +23,7 @@ const nintendoSwitchPlatformSales: Section[] = [
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "currency",
-        value: 0,
+        value: 616143,
     },
     {
         name: " Switch Platform ",
@@ -61,21 +61,21 @@ const nintendoSwitchOG: Section[] = [
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "units",
-        value: 132,
+        value: 223,
     },
     {
         name: " Switch ",
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "units",
-        value: 132,
+        value: 223,
     },
     {
         name: " Switch ",
         period: " 4th Quarter ",
         cmlPeriod: "Cml. ",
         units: "units",
-        value: 132,
+        value: 223,
     },
     {
         name: " Switch ",
@@ -130,21 +130,21 @@ const nintendoSwitchLite: Section[] = [
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "units",
-        value: 59,
+        value: 92,
     },
     {
         name: " Switch Lite ",
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "units",
-        value: 59,
+        value: 92,
     },
     {
         name: " Switch Lite ",
         period: " 4th Quarter ",
         cmlPeriod: "Cml. ",
         units: "units",
-        value: 59,
+        value: 92,
     },
     {
         name: " Switch Lite ",
@@ -199,21 +199,21 @@ const nintendoSwitchOLED: Section[] = [
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "units",
-        value: 152,
+        value: 353,
     },
     {
         name: " Switch OLED ",
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "units",
-        value: 152,
+        value: 353,
     },
     {
         name: " Switch OLED ",
         period: " 4th Quarter ",
         cmlPeriod: "Cml. ",
         units: "units",
-        value: 152,
+        value: 353,
     },
     {
         name: " Switch OLED ",
@@ -268,21 +268,21 @@ const nintendoSwitchHardwareTotal: Section[] = [
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "units",
-        value: 343,
+        value: 668,
     },
     {
         name: " Hardware Total ",
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "units",
-        value: 343,
+        value: 668,
     },
     {
         name: " Hardware Total ",
         period: " 4th Quarter ",
         cmlPeriod: "Cml. ",
         units: "units",
-        value: 343,
+        value: 668,
     },
     {
         name: " Hardware Total ",
@@ -301,13 +301,13 @@ const nintendoSwitchHardwareTotalForecast: Section[] = [
         units: "units",
         value: 2100,
     },
-    // {
-    //     name: " Hardware Total ",
-    //     period: " FCST Revision 1 ",
-    //     cmlPeriod: " First Half  ",
-    //     units: "units",
-    //     value: 2400,
-    // },
+    {
+        name: " Hardware Total ",
+        period: " FCST Revision 1 ",
+        cmlPeriod: " First Half  ",
+        units: "units",
+        value: 1900,
+    },
     // {
     //     name: " Hardware Total ",
     //     period: " FCST Revision 2 ",
@@ -368,21 +368,21 @@ const nintendoSwitchSoftwareTotal: Section[] = [
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "units",
-        value: 4141,
+        value: 9541,
     },
     {
         name: " Software Total ",
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "units",
-        value: 4141,
+        value: 9541,
     },
     {
         name: " Software Total ",
         period: " 4th Quarter ",
         cmlPeriod: "Cml. ",
         units: "units",
-        value: 4141,
+        value: 9541,
     },
     {
         name: " Software Total ",
@@ -401,13 +401,13 @@ const nintendoSwitchSoftwareTotalForecast: Section[] = [
         units: "units",
         value: 21000,
     },
-    // {
-    //     name: " Software Total ",
-    //     period: " FCST Revision 1 ",
-    //     cmlPeriod: " First Half  ",
-    //     units: "units",
-    //     value: 20000,
-    // },
+    {
+        name: " Software Total ",
+        period: " FCST Revision 1 ",
+        cmlPeriod: " First Half  ",
+        units: "units",
+        value: 21000,
+    },
     // {
     //     name: " Software Total ",
     //     period:" FCST Revision 2 ",
@@ -468,21 +468,21 @@ const nintendoMobile: Section[] = [
         period: " 2nd Quarter ",
         cmlPeriod: " First Half  ",
         units: "currency",
-        value: 10981,
+        value: 23581,
     },
     {
         name: " Mobile ",
         period: " 3rd Quarter ",
         cmlPeriod: " 1st 3 Qtrs  ",
         units: "currency",
-        value: 10981,
+        value: 23581,
     },
     {
         name: " Mobile ",
         period: " 4th Quarter ",
         cmlPeriod: "Cml. ",
         units: "currency",
-        value: 10981,
+        value: 23581,
     },
     {
         name: " Mobile ",

@@ -32,25 +32,25 @@ export default function NINTENDO_FY3_2023() {
                         https://www.nintendo.co.jp/ir/pdf/2022/220803_2e.pdf
                     </Anchor>
                 
-                        {/* 2nd Quarter Earnings Release: 
-                    <Anchor mb="sm" href="" target="_blank" >
-                        
+                        2nd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2022/221108e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2022/221108e.pdf 
                     </Anchor>
                         2nd Quarter Financial Results Explanatory Material:
-                    <Anchor mb="sm" href="" target="_blank" >
-                        
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2022/221108_8e.pdf" target="_blank" >
+                        https://www.nintendo.co.jp/ir/pdf/2022/221108_8e.pdf 
                     </Anchor>
                 
-                        3rd Quarter Earnings Release: 
+                        {/* 3rd Quarter Earnings Release: 
                     <Anchor mb="sm" href="" target="_blank" >
                         
                     </Anchor>
                         3rd Quarter Financial Results Explanatory Material:
                     <Anchor mb="sm" href="" target="_blank" >
                         
-                    </Anchor>
+                    </Anchor> */}
                 
-                        4th Quarter Earnings Release: 
+                        {/* 4th Quarter Earnings Release: 
                     <Anchor mb="sm" href="" target="_blank" >
                         
                     </Anchor>

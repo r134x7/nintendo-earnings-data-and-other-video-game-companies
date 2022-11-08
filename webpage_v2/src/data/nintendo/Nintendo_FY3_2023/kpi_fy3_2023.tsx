@@ -6,7 +6,7 @@ import {
     KPDIndicators,
 } from "../../../utils/kpi_logic"
 
-const currentQuarter = 1;
+const currentQuarter = 2;
 
 export const proportionOfOverseasSalesQtr: KPDIndicators[] = [
     {
@@ -19,7 +19,7 @@ export const proportionOfOverseasSalesQtr: KPDIndicators[] = [
         category: "quarterly",
         units: "percentage",
         quarter: " 2nd Quarter       ",
-        value: 0,
+        value: 72.4,
     },
     {
         category: "quarterly",
@@ -40,7 +40,7 @@ export const proportionOfOverseasSalesCml: KPDIndicators[] = [
         category: "cumulative",
         units: "percentage",
         quarter: " 1st Half          ",
-        value: 0,
+        value: 75.9,
     },
     {
         category: "cumulative",
@@ -67,7 +67,7 @@ export const proportionOfHardwareSalesQtr: KPDIndicators[] = [
         category: "quarterly",
         units: "percentage",
         quarter: " 2nd Quarter       ",
-        value: 0,
+        value: 39.8,
     },
     {
         category: "quarterly",
@@ -88,7 +88,7 @@ export const proportionOfHardwareSalesCml: KPDIndicators[] = [
         category: "cumulative",
         units: "percentage",
         quarter: " 1st Half          ",
-        value: 0,
+        value: 41.7,
     },
     {
         category: "cumulative",
@@ -115,7 +115,7 @@ export const proportionOfFirstPartySoftwareSalesQtr: KPDIndicators[] = [
         category: "quarterly",
         units: "percentage",
         quarter: " 2nd Quarter       ",
-        value: 0,
+        value: 72.7,
     },
     {
         category: "quarterly",
@@ -136,7 +136,7 @@ export const proportionOfFirstPartySoftwareSalesCml: KPDIndicators[] = [
         category: "cumulative",
         units: "percentage",
         quarter: " 1st Half          ",
-        value: 0,
+        value: 74.3,
     },
     {
         category: "cumulative",
@@ -163,7 +163,7 @@ export const digitalSalesQtr: KPDIndicators[] = [
         category: "quarterly",
         units: "currency",
         quarter: " 2nd Quarter       ",
-        value: 0,
+        value: 99.7,
     },
     {
         category: "quarterly",
@@ -184,7 +184,7 @@ export const digitalSalesCml: KPDIndicators[] = [
         category: "cumulative",
         units: "currency",
         quarter: " 1st Half          ",
-        value: 0,
+        value: 187.8,
     },
     {
         category: "cumulative",
@@ -211,7 +211,7 @@ export const proportionOfDigitalSalesQtr: KPDIndicators[] = [
         category: "quarterly",
         units: "percentage",
         quarter: " 2nd Quarter       ",
-        value: 0,
+        value: 49.3,
     },
     {
         category: "quarterly",
@@ -232,7 +232,7 @@ export const proportionOfDigitalSalesCml: KPDIndicators[] = [
         category: "cumulative",
         units: "percentage",
         quarter: " 1st Half          ",
-        value: 0,
+        value: 51.0,
     },
     {
         category: "cumulative",
@@ -259,7 +259,7 @@ export const proportionOfDLverPackagedSoftwareQtr: KPDIndicators[] = [
         category: "quarterly",
         units: "percentage",
         quarter: " 2nd Quarter       ",
-        value: 0,
+        value: 52.3,
     },
     {
         category: "quarterly",
@@ -280,7 +280,7 @@ export const proportionOfDLverPackagedSoftwareCml: KPDIndicators[] = [
         category: "cumulative",
         units: "percentage",
         quarter: " 1st Half          ",
-        value: 0,
+        value: 52.2,
     },
     {
         category: "cumulative",

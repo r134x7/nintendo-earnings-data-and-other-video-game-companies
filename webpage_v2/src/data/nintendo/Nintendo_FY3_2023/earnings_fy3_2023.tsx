@@ -9,7 +9,7 @@ import {
     Earnings,
     } from "../../../utils/earnings_logic"
 
-    const currentQuarter = 1;
+    const currentQuarter = 2;
 
     export const netSales: Earnings[] = [
         {
@@ -23,21 +23,21 @@ import {
             units: "currency",
             name: " 2nd Quarter ",
             cmlName: " First Half  ",
-            value: 307460 
+            value: 656974 
         },  // second quarter
         {
             category: "quarter",
             units: "currency", 
             name: " 3rd Quarter ",
             cmlName: " 1st 3 Qtrs  ",          
-            value: 307460 
+            value: 656974 
         }, // third quarter
         {
             category: "quarter",
             units: "currency", 
             name: " 4th Quarter ",
             cmlName: " FY3/22 Cml. ",         
-            value: 307460 
+            value: 656974 
         }, // fourth quarter
     ]
 
@@ -78,12 +78,12 @@ import {
             name: " FY3/23 Forecast ",
             value: 1600000
         }, // current Fiscal Year Forecast
-        // {
-        //     category: "forecast",
-        //     units: "currency",
-        //     name: " FCST Revision 1 ",
-        //     value: 1600000
-        // }, // first forecast revision
+        {
+            category: "forecast",
+            units: "currency",
+            name: " FCST Revision 1 ",
+            value: 1650000
+        }, // first forecast revision
         // {
         //     category: "forecast",
         //     units: "currency",
@@ -110,21 +110,21 @@ import {
             units: "currency",
             name: " 2nd Quarter ",
             cmlName: " First Half  ",
-            value: 101647 
+            value: 220387
         }, // second quarter
         {
             category: "quarter",
             units: "currency",
             name: " 3rd Quarter ",
             cmlName: " 1st 3 Qtrs  ",
-            value: 101647 
+            value: 220387
         }, // third quarter
         {
             category: "quarter",
             units: "currency",
             name: " 4th Quarter ",
             cmlName: " FY3/22 Cml. ",
-            value: 101647 
+            value: 220387
         }, // fourth quarter
     ]
     
@@ -165,12 +165,12 @@ import {
             name: " FY3/23 Forecast ",
             value: 500000
         }, // current Fiscal Year Forecast
-        //   {
-        //     category: "forecast",
-        //     units: "currency",
-        //     name: " FCST Revision 1 ",
-        //     value: 520000
-        // }, // first forecast revision
+          {
+            category: "forecast",
+            units: "currency",
+            name: " FCST Revision 1 ",
+            value: 500000
+        }, // first forecast revision 
         //   {
         //     category: "forecast",
         //     units: "currency",
@@ -197,21 +197,21 @@ import {
             units: "currency",
             name: " 2nd Quarter ",
             cmlName: " First Half  ",
-            value: 118984 
+            value: 230451
         }, // second quarter
         {
             category: "quarter",
             units: "currency",
             name: " 3rd Quarter ",
             cmlName: " 1st 3 Qtrs  ",          
-            value: 118984 
+            value: 230451
         }, // third quarter
         {
             category: "quarter",
             units: "currency",
             name: " 4th Quarter ",
             cmlName: " FY3/22 Cml. ",         
-            value: 118984 
+            value: 230451
         }, // fourth quarter
     ]
     
@@ -249,15 +249,15 @@ import {
         {
             category: "forecast",
             units: "currency",
-            name: " FY3/22 Forecast ",
+            name: " FY3/23 Forecast ",
             value: 480000
         }, // current Fiscal Year Forecast
-        // {
-        //     category: "forecast",
-        //     units: "currency",
-        //     name: " FCST Revision 1 ",
-        //     value: 350000
-        // }, // first forecast revision
+        {
+            category: "forecast",
+            units: "currency",
+            name: " FCST Revision 1 ",
+            value: 400000
+        }, // first forecast revision
         // {
         //     category: "forecast",
         //     units: "currency",
