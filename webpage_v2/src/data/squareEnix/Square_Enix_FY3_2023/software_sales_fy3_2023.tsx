@@ -5,6 +5,7 @@ import {
     salesMMO2022,
     units2022,
 } from "../Square_Enix_FY3_2022/software_sales_fy3_2022";
+import softwareSales2023 from "../Software_Sales/software_sales_fy3_2023.json";
 
 export const salesHD2023: Section[] = [
     {
@@ -152,4 +153,4 @@ const header: Header = {
     firstHeader: "| Square Enix    |", 
 }
 
-export const printSalesPerSoftwareUnit = SquareEnixPrint(salesHD2023, salesHD2022, salesMMO2023, salesMMO2022, salesHDandMMO2023, salesHDandMMO2022, units2023, units2022, header, 2);
+export const printSalesPerSoftwareUnit = SquareEnixPrint(salesHD2023, salesHD2022, salesMMO2023, salesMMO2022, salesHDandMMO2023, salesHDandMMO2022, units2023, units2022, header, softwareSales2023.currentQuarter);
