@@ -1,0 +1,28 @@
+{
+    "fiscalYear": "undefined",
+    "currentQuarter": 4,
+    "hdGamesSales": {
+        "name": " HD Games ",
+        "units": "NaN",
+        "Q1CmlValue": 0,
+        "Q2CmlValue": 0,
+        "Q3CmlValue": 0,
+        "Q4CmlValue": 0
+    },
+    "mmoSales": {
+        "name": " MMO ",
+        "units": "NaN",
+        "Q1CmlValue": 0,
+        "Q2CmlValue": 0,
+        "Q3CmlValue": 0,
+        "Q4CmlValue": 0 
+    },
+    "hdGamesAndMMOUnits": {
+        "name": " HD Games & MMO ",
+        "units": "NaN",
+        "Q1CmlValue": 0,
+        "Q2CmlValue": 0,
+        "Q3CmlValue": 0,
+        "Q4CmlValue": 0 
+    }
+}

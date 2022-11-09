@@ -3,6 +3,7 @@
     "currentQuarter": 4,
     "hdGamesSales": {
         "name": " HD Games ",
+        "units": "currency",
         "Q1CmlValue": 34.1,
         "Q2CmlValue": 57.8,
         "Q3CmlValue": 76.6,
@@ -10,6 +11,7 @@
     },
     "mmoSales": {
         "name": " MMO ",
+        "units": "currency",
         "Q1CmlValue": 10.1,
         "Q2CmlValue": 20.9,
         "Q3CmlValue": 29.5,
@@ -17,6 +19,7 @@
     },
     "hdGamesAndMMOUnits": {
         "name": " HD Games & MMO ",
+        "units": "units",
         "Q1CmlValue": 6210,
         "Q2CmlValue": 12080,
         "Q3CmlValue": 15800,

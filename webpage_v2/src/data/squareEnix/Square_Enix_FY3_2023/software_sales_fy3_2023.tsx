@@ -9,6 +9,7 @@ const collection = [
     softwareSales2022,
     softwareSales2021,
     softwareSales2020,
+    // undefinedData,
 ] as const;
 
 const something: string[] = collection.map((elem, index, array) => {
@@ -19,7 +20,7 @@ const something: string[] = collection.map((elem, index, array) => {
             region: " Group Total ",
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
-            units: "currency",
+            units: elem.hdGamesSales.units,
             value: elem.hdGamesSales.Q1CmlValue // billion yen
         },
         {
@@ -27,7 +28,7 @@ const something: string[] = collection.map((elem, index, array) => {
             region: " Group Total ",
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
-            units: "currency",
+            units: elem.hdGamesSales.units,
             value: elem.hdGamesSales.Q2CmlValue // billion yen
         },
         {
@@ -35,7 +36,7 @@ const something: string[] = collection.map((elem, index, array) => {
             region: " Group Total ",
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
-            units: "currency",
+            units: elem.hdGamesSales.units,
             value: elem.hdGamesSales.Q3CmlValue // billion yen
         },
         {
@@ -43,7 +44,7 @@ const something: string[] = collection.map((elem, index, array) => {
             region: " Group Total ",
             period: " 4th Quarter ",
             cmlPeriod: "Cml. ",
-            units: "currency",
+            units: elem.hdGamesSales.units,
             value: elem.hdGamesSales.Q4CmlValue // billion yen
         },
     ];
@@ -55,7 +56,7 @@ const something: string[] = collection.map((elem, index, array) => {
             region: " Group Total ",
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
-            units: "currency",
+            units: elem.mmoSales.units,
             value: elem.mmoSales.Q1CmlValue // billion yen
         },
         {
@@ -63,7 +64,7 @@ const something: string[] = collection.map((elem, index, array) => {
             region: " Group Total ",
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
-            units: "currency",
+            units: elem.mmoSales.units,
             value: elem.mmoSales.Q2CmlValue // billion yen
         },
         {
@@ -71,7 +72,7 @@ const something: string[] = collection.map((elem, index, array) => {
             region: " Group Total ",
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
-            units: "currency",
+            units: elem.mmoSales.units,
             value: elem.mmoSales.Q3CmlValue // billion yen
         },
         {
@@ -79,7 +80,7 @@ const something: string[] = collection.map((elem, index, array) => {
             region: " Group Total ",
             period: " 4th Quarter ",
             cmlPeriod: "Cml. ",
-            units: "currency",
+            units: elem.mmoSales.units,
             value: elem.mmoSales.Q4CmlValue // billion yen
         },
     ];
@@ -162,7 +163,9 @@ const something: string[] = collection.map((elem, index, array) => {
         firstHeader: "| Square Enix    |", 
     };
 
-    return ()  SquareEnixPrint(salesHD2021, salesHD2020, salesMMO2021, salesMMO2020, salesHDandMMO2021, salesHDandMMO2020, units2021, units2020, header, 4).concat(notes);
+    return (elem.fiscalYear === " FY3/2021 ")  
+            ? SquareEnixPrint(salesHD, salesHD2020, salesMMO, salesMMO2020, salesHDandMMO, salesHDandMMO2020, units, units2020, header, elem.currentQuarter).concat(notes2021)
+            :
 })
 
 export const salesHD2023: Section[] = [
