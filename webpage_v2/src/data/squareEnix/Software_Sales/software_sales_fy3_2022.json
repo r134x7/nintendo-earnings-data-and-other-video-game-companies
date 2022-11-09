@@ -1,0 +1,25 @@
+{
+    "fiscalYear": " FY3/2022 ",
+    "currentQuarter": 4,
+    "hdGamesSales": {
+        "name": " HD Games ",
+        "Q1CmlValue": 25.1,
+        "Q2CmlValue": 39.5,
+        "Q3CmlValue": 65.5,
+        "Q4CmlValue": 87.1
+    },
+    "mmoSales": {
+        "name": " MMO ",
+        "Q1CmlValue": 11.6,
+        "Q2CmlValue": 27.7,
+        "Q3CmlValue": 48.2,
+        "Q4CmlValue": 62.2
+    },
+    "hdGamesAndMMOUnits": {
+        "name": " HD Games & MMO ",
+        "Q1CmlValue": 9880,
+        "Q2CmlValue": 17220,
+        "Q3CmlValue": 29450,
+        "Q4CmlValue": 39130
+    }
+}
