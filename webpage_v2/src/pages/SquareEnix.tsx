@@ -4,20 +4,7 @@ import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
-import SQUARE_ENIX_FY3_2023 from "../components/squareEnix/SQUARE_ENIX_FY3_2023";
-// import SQUARE_ENIX_FY3_2022 from "../components/squareEnix/SQUARE_ENIX_FY3_2022";
-// import SQUARE_ENIX_FY3_2021 from "../components/squareEnix/SQUARE_ENIX_FY3_2021";
-// import SQUARE_ENIX_FY3_2020 from "../components/squareEnix/SQUARE_ENIX_FY3_2020";
-// import SQUARE_ENIX_FY3_2019 from "../components/squareEnix/SQUARE_ENIX_FY3_2019";
-// import SQUARE_ENIX_FY3_2018 from "../components/squareEnix/SQUARE_ENIX_FY3_2018";
-// import SQUARE_ENIX_FY3_2017 from "../components/squareEnix/SQUARE_ENIX_FY3_2017";
-// import SQUARE_ENIX_FY3_2016 from "../components/squareEnix/SQUARE_ENIX_FY3_2016";
-// import SQUARE_ENIX_FY3_2015 from "../components/squareEnix/SQUARE_ENIX_FY3_2015";
-// import SQUARE_ENIX_FY3_2014 from "../components/squareEnix/SQUARE_ENIX_FY3_2014";
-// import SQUARE_ENIX_FY3_2013 from "../components/squareEnix/SQUARE_ENIX_FY3_2013";
-// import SQUARE_ENIX_FY3_2012 from "../components/squareEnix/SQUARE_ENIX_FY3_2012";
-// import SQUARE_ENIX_FY3_2011 from "../components/squareEnix/SQUARE_ENIX_FY3_2011";
-// import SQUARE_ENIX_FY3_2010 from "../components/squareEnix/SQUARE_ENIX_FY3_2010";
+import SQUARE_ENIX_COMPONENT from "../components/SQUARE_ENIX_COMPONENT";
 
 const currentYear = 2023;
 
@@ -96,13 +83,13 @@ export default function SquareEnix() {
                                         : -1
                                }).filter(elem => elem !== -1);
 
-        return (yearIndexed >= 0) ? <SQUARE_ENIX_FY3_2023 setIndex={yearIndexed} /> : null
+        return (yearIndexed >= 0) ? <SQUARE_ENIX_COMPONENT setIndex={yearIndexed} /> : null
     }
 
     // const componentList = [
         // {
         //     year: "FY3/2023",
-        //     component: <SQUARE_ENIX_FY3_2023 setYear={year} />
+        //     component: <SQUARE_ENIX_COMPONENT setYear={year} />
         // },
         // {
         //     year: "FY3/2022",
