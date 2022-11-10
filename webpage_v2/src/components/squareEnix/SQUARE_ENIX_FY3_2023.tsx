@@ -1,54 +1,18 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space, Card } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printSalesPerSoftwareUnit } from "../../data/squareEnix/Square_Enix_FY3_2023/software_sales_fy3_2023";
+import { otherTest } from "../../data/squareEnix/Square_Enix_FY3_2023/software_sales_fy3_2023";
 
 export default function SQUARE_ENIX_FY3_2023() {
 
-    const softwareSales = printSalesPerSoftwareUnit; 
-    // const fySeriesSales = printSeriesFY;
 
     const [value, setValue] = useState("");
-    const [sources, setSources] = useState(<></>)
 
     const state: any = useSelector(state => state);
 
-    const componentList = [
-        {
-            name: "Software Sales",
-            value: softwareSales,
-        },
-        // {
-        //     name: "FY Series IP",
-        //     value: fySeriesSales,
-        // },
-    ]
-
-    const dataList = ["Data Sources"].concat(componentList.map(elem => elem.name));
-
-    const selectDataComponent = (objList: {name: string, value: string}[]) =>
-    (dataUsed: string): string => {
-
-        let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
-
-        return (dataSelected) ? dataSelected.value : ""
-    };
-
-    const selectData = selectDataComponent(componentList);
-
-    useEffect(() => {
-
-        (value === "Data Sources")
-            ? setSources(DATA_SOURCES)
-            : setSources(<></>)
-
-    }, [value])
-
-    function DATA_SOURCES() {
-
-        return (
+    const dataSources = (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
-            <Text style={{overflowWrap: "anywhere"}}>
+            <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/23q1slides.pdf" target="_blank" >
@@ -77,9 +41,34 @@ export default function SQUARE_ENIX_FY3_2023() {
                 </Stack>  
             </Text> 
         </Card>
-        )
+        );
+
+    const componentList = [
+        {
+            name: "Data Sources",
+            value: dataSources,
+        },
+        {
+            name: "Software Sales",
+            value: otherTest[0],
+        },
+        // {
+        //     name: "FY Series IP",
+        //     value: fySeriesSales,
+        // },
+    ]
+
+    const dataList = componentList.map(elem => elem.name);
+
+    const selectDataComponent = (objList: {name: string, value: string | JSX.Element}[]) =>
+    (dataUsed: string): string | JSX.Element => {
+
+        let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
+
+        return (dataSelected) ? dataSelected.value : ""
     };
 
+    const selectData = selectDataComponent(componentList);
 
     return (
 
@@ -92,10 +81,7 @@ export default function SQUARE_ENIX_FY3_2023() {
                     data={dataList}
             />
             
-            {sources}
-            <Code style={{backgroundColor: `${state.colour}`}} block>
-                {selectData(value)}
-                </Code>
+            <Code style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
             <Space h="xl" />
             <Space h="xl" />
             <Space h="xl" />

@@ -13,6 +13,25 @@ const collection = [
     undefinedData,
 ] as const;
 
+const notes2021 = "\n" +
+`+----------------------------------------+
+|From Outline of Results Briefing held   | 
+|on May 13, 2021:                        |
+|We have also made a change to how we    |
+|disclose our units sold. Whereas the    |
+|download sales we disclosed previously  |
+|only included titles launched in the    |
+|past two years, we now include all sales|
+|made during the relevant fiscal year,   |
+|regardless of when a title may have been|
+|released.                               |
+|                                        |
+|This change was prompted primarily by   |
+|the fact that we are making many more   |
+|sales from our back catalog than we had |
+|in the past.                            |
++----------------------------------------+`;
+
 const salesHDtest = (obj: {"hdGamesSales": {
     name: string;
     units: string;
@@ -209,9 +228,9 @@ const unitstest = (obj: {"hdGamesAndMMOUnits": {
     return units 
 };
 
-const otherTest: (string | undefined)[] = collection.map((elem, index, array) => {
+export const otherTest: string[] = collection.map((elem, index, array) => {
     if (array[index] === array.at(-1)) {
-        return undefined // for undefinedData in collection only
+        return "undefined" // for undefinedData in collection only
     }
 
     let header: Header = {
@@ -235,7 +254,7 @@ const otherTest: (string | undefined)[] = collection.map((elem, index, array) =>
     return (elem.fiscalYear === " FY3/2021 ")  
             ? SquareEnixPrint(salesHDThisFY, salesHDLastFY, salesMMOThisFY, salesMMOLastFY, salesHDandMMOThisFY, salesHDandMMOLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter).concat(notes2021)
             : SquareEnixPrint(salesHDThisFY, salesHDLastFY, salesMMOThisFY, salesMMOLastFY, salesHDandMMOThisFY, salesHDandMMOLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter)
-}).filter(elem => elem !== undefined)
+}).filter(elem => elem !== "undefined")
 
 
 // const something: string[] = collection.map((elem, index, array) => {
@@ -543,21 +562,3 @@ const header: Header = {
 // export const printSalesPerSoftwareUnit = SquareEnixPrint(salesHD2023, salesHD2022, salesMMO2023, salesMMO2022, salesHDandMMO2023, salesHDandMMO2022, units2023, units2022, header, softwareSales2023.currentQuarter);
 
 // export const printSalesPerSoftwareUnit: string = SquareEnixPrint(salesHD2021, salesHD2020, salesMMO2021, salesMMO2020, salesHDandMMO2021, salesHDandMMO2020, units2021, units2020, header, 4).concat(notes);
-const notes2021 = "\n" +
-`+----------------------------------------+
-|From Outline of Results Briefing held   | 
-|on May 13, 2021:                        |
-|We have also made a change to how we    |
-|disclose our units sold. Whereas the    |
-|download sales we disclosed previously  |
-|only included titles launched in the    |
-|past two years, we now include all sales|
-|made during the relevant fiscal year,   |
-|regardless of when a title may have been|
-|released.                               |
-|                                        |
-|This change was prompted primarily by   |
-|the fact that we are making many more   |
-|sales from our back catalog than we had |
-|in the past.                            |
-+----------------------------------------+`;
