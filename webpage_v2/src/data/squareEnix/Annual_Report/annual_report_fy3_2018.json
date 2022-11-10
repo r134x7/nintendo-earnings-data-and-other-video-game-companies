@@ -1,0 +1,43 @@
+{
+    "fiscalYear": " FY3/2018 ",
+    "fyEndMonth": " March 2018 ",
+    "fiscalYearCml":  "| FY3/18 Cumulative  |",
+    "fiscalYearYoY": "| FY3/18 Cml. YoY%   |",
+    "series": [
+        {
+            "title": "Final Fantasy",
+            "releaseDate": " December 1987 ",
+            "value": 141,
+            "valueLastFY": 130 ,
+            "valueLastTwoFYs": 115
+        },
+        {
+            "title": "Dragon Quest",
+            "releaseDate": " May 1986 ",
+            "value": 76 ,
+            "valueLastFY": 71 ,
+            "valueLastTwoFYs": 68 
+        },
+        {
+            "title": "Tomb Raider",
+            "releaseDate": " October 1996 ",
+            "value": 66,
+            "valueLastFY": 58,
+            "valueLastTwoFYs": 45
+        },
+        {
+            "title": "Kingdom Hearts",
+            "releaseDate": " March 2002 ",
+            "value": 25,
+            "valueLastFY": 0,
+            "valueLastTwoFYs": 0
+        },
+        {
+            "title": "Just Cause",
+            "releaseDate": " September 2006 ",
+            "value": 15,
+            "valueLastFY": 0,
+            "valueLastTwoFYs": 0
+        }
+    ]
+}

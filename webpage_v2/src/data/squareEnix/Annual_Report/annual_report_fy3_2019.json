@@ -1,0 +1,29 @@
+{
+    "fiscalYear": " FY3/2019 ",
+    "fyEndMonth": " March 2019 ",
+    "fiscalYearCml":  "| FY3/19 Cumulative  |",
+    "fiscalYearYoY": "| FY3/19 Cml. YoY%   |",
+    "series": [
+        {
+            "title": "Final Fantasy",
+            "releaseDate": " December 1987 ",
+            "value": 144 ,
+            "valueLastFY": 141,
+            "valueLastTwoFYs": 130 
+        },
+        {
+            "title": "Dragon Quest",
+            "releaseDate": " May 1986 ",
+            "value": 78,
+            "valueLastFY": 76 ,
+            "valueLastTwoFYs": 71 
+        },
+        {
+            "title": "Tomb Raider",
+            "releaseDate": " October 1996 ",
+            "value": 74,
+            "valueLastFY": 66 ,
+            "valueLastTwoFYs": 58 
+        }
+    ]
+}
