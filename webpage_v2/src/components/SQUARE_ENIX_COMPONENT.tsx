@@ -36,7 +36,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             {
                 name: "FY Series IP",
-                value: annualReportList[1]
+                value: annualReportListAltered[1]
             }
         ],
         [
@@ -50,7 +50,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             {
                 name: "FY Series IP",
-                value: annualReportList[2]
+                value: annualReportListAltered[2]
             }
         ],
         [
@@ -64,7 +64,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             {
                 name: "FY Series IP",
-                value: annualReportList[3]
+                value: annualReportListAltered[3]
             }
         ],
         [
@@ -78,7 +78,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             // },
             {
                 name: "FY Series IP",
-                value: annualReportList[4]
+                value: annualReportListAltered[4]
             }
         ],
         [
@@ -92,7 +92,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             // },
             {
                 name: "FY Series IP",
-                value: annualReportList[5]
+                value: annualReportListAltered[5]
             }
         ],
         [
@@ -106,7 +106,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             // },
             {
                 name: "FY Series IP",
-                value: annualReportList[6]
+                value: annualReportListAltered[6]
             }
         ],
         [
@@ -120,7 +120,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             // },
             {
                 name: "FY Series IP",
-                value: annualReportList[7]
+                value: annualReportListAltered[7]
             }
         ],
         [
@@ -134,7 +134,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             // },
             {
                 name: "FY Series IP",
-                value: annualReportList[8]
+                value: annualReportListAltered[8]
             }
         ],
         [
@@ -148,7 +148,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             // },
             {
                 name: "FY Series IP",
-                value: annualReportList[9]
+                value: annualReportListAltered[9]
             }
         ],
         [
@@ -162,7 +162,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             // },
             {
                 name: "FY Series IP",
-                value: annualReportList[10]
+                value: annualReportListAltered[10]
             }
         ],
         [
@@ -176,7 +176,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             // },
             {
                 name: "FY Series IP",
-                value: annualReportList[11]
+                value: annualReportListAltered[11]
             }
         ],
         [
@@ -190,7 +190,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             // },
             {
                 name: "FY Series IP",
-                value: annualReportList[12]
+                value: annualReportListAltered[12]
             }
         ],
         [
@@ -204,7 +204,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             // },
             {
                 name: "FY Series IP",
-                value: annualReportList[13]
+                value: annualReportListAltered[13]
             }
         ],
     ];

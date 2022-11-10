@@ -25,7 +25,7 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
         return sortingArrays(index)
     })
 
-    const dateLabel = "| Latest data as of June 30th, 2022        |\n+" + "-".repeat(42) + "+"
+    const dateLabel = "| Latest data as of September 30th, 2022   |\n+" + "-".repeat(42) + "+"
 
     const header: Header = {
     switchHeader: "| Nintendo Switch FY Million-Seller Titles |",
