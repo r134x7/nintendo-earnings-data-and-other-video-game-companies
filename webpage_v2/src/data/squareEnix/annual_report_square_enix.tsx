@@ -49,8 +49,8 @@ const seriesMake = (obj: {
 
         return {
             title: elem.title,
-            fyEndMonth: elem.fyEndMonth,
             releaseDate: elem.releaseDate,
+            fyEndMonth: elem.fyEndMonth,
             value: elem.value,
             valueLastFY: elem.valueLastFY,
             valueLastTwoFYs: elem.valueLastTwoFYs,
@@ -95,7 +95,13 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
 
     let printOne = printHead(header);
 
-    return printOne + "\n" + printedSeries
+    let notePrint = (elem.notes[0] === "") 
+                    ? undefined
+                    : elem.notes.reduce((prev, next) => prev + "\n" + next);
+
+    return (notePrint === undefined) 
+            ? printOne + "\n" + printedSeries
+            : printOne + "\n" + printedSeries + "\n" + notePrint
 })
 
 
