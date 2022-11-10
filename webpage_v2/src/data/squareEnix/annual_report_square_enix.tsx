@@ -60,7 +60,7 @@ const seriesMake = (obj: {
     return series
 };
 
-export const endList: string[] = collection.map((elem, index, array) => {
+export const annualReportList: string[] = collection.map((elem, index, array) => {
 
     let header: Header = {
         bandaiNamcoHeader: "| Square Enix  - IP Series Data  |",

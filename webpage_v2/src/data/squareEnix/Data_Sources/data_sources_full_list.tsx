@@ -1,6 +1,8 @@
 import { Anchor, Text, Stack, Card } from "@mantine/core";
 
-export const Data_Sources_FY3_2023 = (
+// newest data is first in. Latest FY, FY3/2023
+export const dataSourcesList = [
+    (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
@@ -31,9 +33,8 @@ export const Data_Sources_FY3_2023 = (
                 </Stack>  
             </Text> 
         </Card>
-        );
-
-export const Data_Sources_FY3_2022 = (
+    ),
+    (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
@@ -64,9 +65,8 @@ export const Data_Sources_FY3_2022 = (
                 </Stack>  
             </Text> 
         </Card>
-        );
-
-export const Data_Sources_FY3_2021 = (
+    ),
+    (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
@@ -101,9 +101,8 @@ export const Data_Sources_FY3_2021 = (
                 </Stack>  
             </Text> 
         </Card>
-);
-
-export const Data_Sources_FY3_2020 = (
+),
+(
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
@@ -134,9 +133,8 @@ export const Data_Sources_FY3_2020 = (
                 </Stack>  
             </Text> 
         </Card>
-);
-
-export const Data_Sources_FY3_2019 = (
+),
+(
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
@@ -167,9 +165,8 @@ export const Data_Sources_FY3_2019 = (
                 </Stack>  
             </Text> 
         </Card>
-);
-
-export const Data_Sources_FY3_2018 = (
+),
+(
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
@@ -204,9 +201,8 @@ export const Data_Sources_FY3_2018 = (
                 </Stack>  
             </Text> 
         </Card>
-);
-
-export const Data_Sources_FY3_2017 = (
+),
+(
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
@@ -241,9 +237,8 @@ export const Data_Sources_FY3_2017 = (
                 </Stack>  
             </Text> 
         </Card>
-);
-
-export const Data_Sources_FY3_2016 = (
+),
+(
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
@@ -278,9 +273,8 @@ export const Data_Sources_FY3_2016 = (
                 </Stack>  
             </Text> 
         </Card>
-);
-
-export const Data_Sources_FY3_2015 = (
+),
+(
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
@@ -315,9 +309,8 @@ export const Data_Sources_FY3_2015 = (
                 </Stack>  
             </Text> 
         </Card>
-);
-
-export const Data_Sources_FY3_2014 = (
+),
+(
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
@@ -352,9 +345,8 @@ export const Data_Sources_FY3_2014 = (
                 </Stack>  
             </Text> 
         </Card>
-);
-
-export const Data_Sources_FY3_2013 = (
+),
+(
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
@@ -389,9 +381,8 @@ export const Data_Sources_FY3_2013 = (
                 </Stack>  
             </Text> 
         </Card>
-);
-
-export const Data_Sources_FY3_2012 = (
+),
+(
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
@@ -426,9 +417,8 @@ export const Data_Sources_FY3_2012 = (
                 </Stack>  
             </Text> 
         </Card>
-);
-
-export const Data_Sources_FY3_2011 = (
+),
+(
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
@@ -463,9 +453,8 @@ export const Data_Sources_FY3_2011 = (
                 </Stack>  
             </Text> 
         </Card>
-);
-
-export const Data_Sources_FY3_2010 = (
+),
+(
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
@@ -500,4 +489,5 @@ export const Data_Sources_FY3_2010 = (
                 </Stack>  
             </Text> 
         </Card>
-);
+)
+];

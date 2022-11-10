@@ -228,7 +228,7 @@ const unitsmake = (obj: {"hdGamesAndMMOUnits": {
     return units 
 };
 
-export const endList: string[] = collection.map((elem, index, array) => {
+export const softwareSalesList: string[] = collection.map((elem, index, array) => {
     if (array[index] === array.at(-1)) {
         return "undefined" // for undefinedData in collection only
     }

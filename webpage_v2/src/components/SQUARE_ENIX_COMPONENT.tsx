@@ -1,23 +1,9 @@
 import { useState } from "react";
 import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { endList } from "../data/squareEnix/software_sales_square_enix";
-import { 
-    Data_Sources_FY3_2010,
-    Data_Sources_FY3_2011,
-    Data_Sources_FY3_2012,
-    Data_Sources_FY3_2013,
-    Data_Sources_FY3_2014,
-    Data_Sources_FY3_2015,
-    Data_Sources_FY3_2016,
-    Data_Sources_FY3_2017,
-    Data_Sources_FY3_2018,
-    Data_Sources_FY3_2019,
-    Data_Sources_FY3_2020,
-    Data_Sources_FY3_2021,
-    Data_Sources_FY3_2022,
-    Data_Sources_FY3_2023,
-} from "../data/squareEnix/Data_Sources/data_sources_full_list";
+import { softwareSalesList } from "../data/squareEnix/software_sales_square_enix";
+import { annualReportList } from "../data/squareEnix/annual_report_square_enix";
+import { dataSourcesList } from "../data/squareEnix/Data_Sources/data_sources_full_list";
 
 export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
 
@@ -25,146 +11,201 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
 
     const state: any = useSelector(state => state);
 
+    const annualReportListAltered = ["0 index === FY3/2023"].concat(annualReportList); // to manage keeping the index values the same with softwareSalesList
+
+    // 0 index is the latest year of data
     const componentList = [
         [
-            {
+            { // reminder, need to index Data Sources as well to manage scale
                 name: "Data Sources",
-                value: Data_Sources_FY3_2023,
+                value: dataSourcesList[0],
             },
             {
                 name: "Software Sales",
-                value: endList[0],
+                value: softwareSalesList[0],
             },
         ],
         [
             {
                 name: "Data Sources",
-                value: Data_Sources_FY3_2022,
+                value: dataSourcesList[1],
             },
             {
                 name: "Software Sales",
-                value: endList[1],
+                value: softwareSalesList[1],
             },
+            {
+                name: "FY Series IP",
+                value: annualReportList[1]
+            }
         ],
         [
             {
                 name: "Data Sources",
-                value: Data_Sources_FY3_2021,
+                value: dataSourcesList[2],
             },
             {
                 name: "Software Sales",
-                value: endList[2],
+                value: softwareSalesList[2],
             },
+            {
+                name: "FY Series IP",
+                value: annualReportList[2]
+            }
         ],
         [
             {
                 name: "Data Sources",
-                value: Data_Sources_FY3_2020,
+                value: dataSourcesList[3],
             },
             {
                 name: "Software Sales",
-                value: endList[3],
+                value: softwareSalesList[3],
             },
+            {
+                name: "FY Series IP",
+                value: annualReportList[3]
+            }
         ],
         [
             {
                 name: "Data Sources",
-                value: Data_Sources_FY3_2019,
+                value: dataSourcesList[4],
             },
             // {
             //     name: "Software Sales",
-            //     value: endList[4],
+            //     value: softwareSalesList[4],
             // },
+            {
+                name: "FY Series IP",
+                value: annualReportList[4]
+            }
         ],
         [
             {
                 name: "Data Sources",
-                value: Data_Sources_FY3_2018,
+                value: dataSourcesList[5],
             },
             // {
             //     name: "Software Sales",
-            //     value: endList[4],
+            //     value: softwareSalesList[4],
             // },
+            {
+                name: "FY Series IP",
+                value: annualReportList[5]
+            }
         ],
         [
             {
                 name: "Data Sources",
-                value: Data_Sources_FY3_2017,
+                value: dataSourcesList[6],
             },
             // {
             //     name: "Software Sales",
-            //     value: endList[4],
+            //     value: softwareSalesList[4],
             // },
+            {
+                name: "FY Series IP",
+                value: annualReportList[6]
+            }
         ],
         [
             {
                 name: "Data Sources",
-                value: Data_Sources_FY3_2016,
+                value: dataSourcesList[7],
             },
             // {
             //     name: "Software Sales",
-            //     value: endList[4],
+            //     value: softwareSalesList[4],
             // },
+            {
+                name: "FY Series IP",
+                value: annualReportList[7]
+            }
         ],
         [
             {
                 name: "Data Sources",
-                value: Data_Sources_FY3_2015,
+                value: dataSourcesList[8],
             },
             // {
             //     name: "Software Sales",
-            //     value: endList[4],
+            //     value: softwareSalesList[4],
             // },
+            {
+                name: "FY Series IP",
+                value: annualReportList[8]
+            }
         ],
         [
             {
                 name: "Data Sources",
-                value: Data_Sources_FY3_2014,
+                value: dataSourcesList[9],
             },
             // {
             //     name: "Software Sales",
-            //     value: endList[4],
+            //     value: softwareSalesList[4],
             // },
+            {
+                name: "FY Series IP",
+                value: annualReportList[9]
+            }
         ],
         [
             {
                 name: "Data Sources",
-                value: Data_Sources_FY3_2013,
+                value: dataSourcesList[10],
             },
             // {
             //     name: "Software Sales",
-            //     value: endList[4],
+            //     value: softwareSalesList[4],
             // },
+            {
+                name: "FY Series IP",
+                value: annualReportList[10]
+            }
         ],
         [
             {
                 name: "Data Sources",
-                value: Data_Sources_FY3_2012,
+                value: dataSourcesList[11],
             },
             // {
             //     name: "Software Sales",
-            //     value: endList[4],
+            //     value: softwareSalesList[4],
             // },
+            {
+                name: "FY Series IP",
+                value: annualReportList[11]
+            }
         ],
         [
             {
                 name: "Data Sources",
-                value: Data_Sources_FY3_2011,
+                value: dataSourcesList[12],
             },
             // {
             //     name: "Software Sales",
-            //     value: endList[4],
+            //     value: softwareSalesList[4],
             // },
+            {
+                name: "FY Series IP",
+                value: annualReportList[12]
+            }
         ],
         [
             {
                 name: "Data Sources",
-                value: Data_Sources_FY3_2010,
+                value: dataSourcesList[13],
             },
             // {
             //     name: "Software Sales",
-            //     value: endList[4],
+            //     value: softwareSalesList[4],
             // },
+            {
+                name: "FY Series IP",
+                value: annualReportList[13]
+            }
         ],
     ];
 
