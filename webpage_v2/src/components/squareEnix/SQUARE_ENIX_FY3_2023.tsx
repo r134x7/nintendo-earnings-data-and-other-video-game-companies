@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Code, SegmentedControl, Anchor, Text, Stack, Space, Card } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { otherTest } from "../../data/squareEnix/Square_Enix_FY3_2023/software_sales_fy3_2023";
 
-export default function SQUARE_ENIX_FY3_2023() {
+export default function SQUARE_ENIX_FY3_2023(props: {setYear: string}) {
 
+    const setYear = props.setYear;
 
     const [value, setValue] = useState("");
 
@@ -56,6 +57,17 @@ export default function SQUARE_ENIX_FY3_2023() {
         //     name: "FY Series IP",
         //     value: fySeriesSales,
         // },
+    ];
+
+    const compList2 = [
+        {
+            name: "Data Sources",
+            value: dataSources,
+        },
+        {
+            name: "Software Sales",
+            value: otherTest[1],
+        },
     ]
 
     const dataList = componentList.map(elem => elem.name);
@@ -68,7 +80,11 @@ export default function SQUARE_ENIX_FY3_2023() {
         return (dataSelected) ? dataSelected.value : ""
     };
 
-    const selectData = selectDataComponent(componentList);
+    // const selectData = selectDataComponent(componentList);
+
+    const selectData = (setYear === "FY3/2023")
+                        ? selectDataComponent(componentList)
+                        : selectDataComponent(compList2)
 
     return (
 

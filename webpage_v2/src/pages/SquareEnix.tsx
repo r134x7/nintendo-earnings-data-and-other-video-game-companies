@@ -77,19 +77,27 @@ export default function SquareEnix() {
 
     }, [colour, dispatch])
 
-    const selectYearComponent = (objList: {year: string, component: JSX.Element}[]) => 
+    // const selectYearComponent = (objList: {year: string, component: JSX.Element}[]) => 
+    // (yearUsed: string): JSX.Element | null => {
+
+    //     let [yearSelected] = objList.filter(elem => yearUsed === elem.year)
+
+    //     return (yearSelected) ? yearSelected.component : null
+    // }
+
+    const selectYearComponentNew = (yearsList: string[]) => 
     (yearUsed: string): JSX.Element | null => {
 
-        let [yearSelected] = objList.filter(elem => yearUsed === elem.year)
+        let [yearSelected] = yearsList.filter(elem => yearUsed === elem)
 
-        return (yearSelected) ? yearSelected.component : null
+        return (yearSelected) ? <SQUARE_ENIX_FY3_2023 setYear={year} /> : null
     }
 
-    const componentList = [
-        {
-            year: "FY3/2023",
-            component: <SQUARE_ENIX_FY3_2023 />
-        },
+    // const componentList = [
+        // {
+        //     year: "FY3/2023",
+        //     component: <SQUARE_ENIX_FY3_2023 setYear={year} />
+        // },
         // {
         //     year: "FY3/2022",
         //     component: <SQUARE_ENIX_FY3_2022 />
@@ -142,9 +150,10 @@ export default function SquareEnix() {
         //     year: "FY3/2010",
         //     component: <SQUARE_ENIX_FY3_2010 />
         // },
-    ];
+    // ];
 
-    const selectYear = selectYearComponent(componentList);
+    // const selectYear = selectYearComponent(componentList);
+    const selectYear = selectYearComponentNew(yearsList);
 
     return (
 
