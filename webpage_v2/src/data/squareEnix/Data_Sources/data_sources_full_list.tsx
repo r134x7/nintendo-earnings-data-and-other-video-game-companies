@@ -35,7 +35,7 @@ export const Data_Sources_FY3_2023 = (
 
 export const Data_Sources_FY3_2022 = (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
-            <Text style={{overflowWrap: "anywhere"}}>
+            <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/22q1slides.pdf" target="_blank" >
@@ -68,7 +68,7 @@ export const Data_Sources_FY3_2022 = (
 
 export const Data_Sources_FY3_2021 = (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
-            <Text style={{overflowWrap: "anywhere"}}>
+            <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/21q1slides.pdf" target="_blank" >
@@ -105,7 +105,7 @@ export const Data_Sources_FY3_2021 = (
 
 export const Data_Sources_FY3_2020 = (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
-            <Text style={{overflowWrap: "anywhere"}}>
+            <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/20q1slides.pdf" target="_blank" >
@@ -138,7 +138,7 @@ export const Data_Sources_FY3_2020 = (
 
 export const Data_Sources_FY3_2019 = (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
-            <Text style={{overflowWrap: "anywhere"}}>
+            <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/19q1slides.pdf" target="_blank" >
@@ -171,7 +171,7 @@ export const Data_Sources_FY3_2019 = (
 
 export const Data_Sources_FY3_2018 = (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
-            <Text style={{overflowWrap: "anywhere"}}>
+            <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/18q1slides.pdf" target="_blank" >
@@ -208,7 +208,7 @@ export const Data_Sources_FY3_2018 = (
 
 export const Data_Sources_FY3_2017 = (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
-            <Text style={{overflowWrap: "anywhere"}}>
+            <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/17q1slides.pdf" target="_blank" >
@@ -245,7 +245,7 @@ export const Data_Sources_FY3_2017 = (
 
 export const Data_Sources_FY3_2016 = (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
-            <Text style={{overflowWrap: "anywhere"}}>
+            <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/16q1slides.pdf" target="_blank" >
@@ -282,7 +282,7 @@ export const Data_Sources_FY3_2016 = (
 
 export const Data_Sources_FY3_2015 = (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
-            <Text style={{overflowWrap: "anywhere"}}>
+            <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/15q1slides.pdf" target="_blank" >
@@ -319,7 +319,7 @@ export const Data_Sources_FY3_2015 = (
 
 export const Data_Sources_FY3_2014 = (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
-            <Text style={{overflowWrap: "anywhere"}}>
+            <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/14q1slides.pdf" target="_blank" >
@@ -356,7 +356,7 @@ export const Data_Sources_FY3_2014 = (
 
 export const Data_Sources_FY3_2013 = (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
-            <Text style={{overflowWrap: "anywhere"}}>
+            <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/13q1slides.pdf" target="_blank" >
@@ -393,7 +393,7 @@ export const Data_Sources_FY3_2013 = (
 
 export const Data_Sources_FY3_2012 = (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
-            <Text style={{overflowWrap: "anywhere"}}>
+            <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/12q1slides.pdf" target="_blank" >
@@ -430,7 +430,7 @@ export const Data_Sources_FY3_2012 = (
 
 export const Data_Sources_FY3_2011 = (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
-            <Text style={{overflowWrap: "anywhere"}}>
+            <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/11q1slides.pdf" target="_blank" >
@@ -467,7 +467,7 @@ export const Data_Sources_FY3_2011 = (
 
 export const Data_Sources_FY3_2010 = (
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
-            <Text style={{overflowWrap: "anywhere"}}>
+            <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/10q1slides.pdf" target="_blank" >

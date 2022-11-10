@@ -88,9 +88,15 @@ export default function SquareEnix() {
     const selectYearComponentNew = (yearsList: string[]) => 
     (yearUsed: string): JSX.Element | null => {
 
-        let [yearSelected] = yearsList.filter(elem => yearUsed === elem)
+        // let [yearSelected] = yearsList.filter(elem => yearUsed === elem);
 
-        return (yearSelected) ? <SQUARE_ENIX_FY3_2023 setYear={year} /> : null
+        let [yearIndexed] = yearsList.map((elem, index) => {  
+                                return (yearUsed === elem)
+                                        ? index
+                                        : -1
+                               }).filter(elem => elem !== -1);
+
+        return (yearIndexed >= 0) ? <SQUARE_ENIX_FY3_2023 setIndex={yearIndexed} /> : null
     }
 
     // const componentList = [
