@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { otherTest } from "../data/squareEnix/Square_Enix_FY3_2023/software_sales_fy3_2023";
+import { endList } from "../data/squareEnix/software_sales_square_enix";
 import { 
     Data_Sources_FY3_2010,
     Data_Sources_FY3_2011,
@@ -33,7 +33,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             {
                 name: "Software Sales",
-                value: otherTest[0],
+                value: endList[0],
             },
         ],
         [
@@ -43,7 +43,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             {
                 name: "Software Sales",
-                value: otherTest[1],
+                value: endList[1],
             },
         ],
         [
@@ -53,7 +53,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             {
                 name: "Software Sales",
-                value: otherTest[2],
+                value: endList[2],
             },
         ],
         [
@@ -63,7 +63,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             {
                 name: "Software Sales",
-                value: otherTest[3],
+                value: endList[3],
             },
         ],
         [
@@ -73,7 +73,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             // {
             //     name: "Software Sales",
-            //     value: otherTest[4],
+            //     value: endList[4],
             // },
         ],
         [
@@ -83,7 +83,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             // {
             //     name: "Software Sales",
-            //     value: otherTest[4],
+            //     value: endList[4],
             // },
         ],
         [
@@ -93,7 +93,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             // {
             //     name: "Software Sales",
-            //     value: otherTest[4],
+            //     value: endList[4],
             // },
         ],
         [
@@ -103,7 +103,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             // {
             //     name: "Software Sales",
-            //     value: otherTest[4],
+            //     value: endList[4],
             // },
         ],
         [
@@ -113,7 +113,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             // {
             //     name: "Software Sales",
-            //     value: otherTest[4],
+            //     value: endList[4],
             // },
         ],
         [
@@ -123,7 +123,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             // {
             //     name: "Software Sales",
-            //     value: otherTest[4],
+            //     value: endList[4],
             // },
         ],
         [
@@ -133,7 +133,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             // {
             //     name: "Software Sales",
-            //     value: otherTest[4],
+            //     value: endList[4],
             // },
         ],
         [
@@ -143,7 +143,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             // {
             //     name: "Software Sales",
-            //     value: otherTest[4],
+            //     value: endList[4],
             // },
         ],
         [
@@ -153,7 +153,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             // {
             //     name: "Software Sales",
-            //     value: otherTest[4],
+            //     value: endList[4],
             // },
         ],
         [
@@ -163,7 +163,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number}) {
             },
             // {
             //     name: "Software Sales",
-            //     value: otherTest[4],
+            //     value: endList[4],
             // },
         ],
     ];
