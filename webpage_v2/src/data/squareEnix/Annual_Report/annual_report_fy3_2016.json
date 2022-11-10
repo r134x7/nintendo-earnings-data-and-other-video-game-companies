@@ -1,12 +1,11 @@
 {
-    "fiscalYear": " FY3/2016 ",
-    "fyEndMonth": " March 2016 ",
     "fiscalYearCml":  "| FY3/16 Cumulative  |",
     "fiscalYearYoY": "| FY3/16 Cml. YoY%   |",
     "series": [
         {
             "title": "Final Fantasy",
             "releaseDate": " December 1987 ",
+            "fyEndMonth": " March 2016 ",
             "value": 115,
             "valueLastFY": 110 ,
             "valueLastTwoFYs": 110 
@@ -14,6 +13,7 @@
         {
             "title": "Dragon Quest",
             "releaseDate": " May 1986 ",
+            "fyEndMonth": " March 2016 ",
             "value": 68,
             "valueLastFY": 66 ,
             "valueLastTwoFYs": 64 
@@ -21,9 +21,19 @@
         {
             "title": "Tomb Raider",
             "releaseDate": " October 1996 ",
+            "fyEndMonth": " March 2016 ",
             "value": 45,
             "valueLastFY": 42,
             "valueLastTwoFYs": 42 
         }
+    ],
+    "notes": [
+        "+----------------------------------------+",
+        "|Annual Report 2016 gives sales numbers  |", 
+        "|as of June, 2016. Data used here is     |",
+        "|taken from Q1 FY3/17 Press Release as   |",
+        "|most recent change in numbers before    |",
+        "|Annual Report for accuracy.             |",
+        "+----------------------------------------+"
     ]
 }

@@ -1,12 +1,11 @@
 {
-    "fiscalYear": " FY3/2022 ",
-    "fyEndMonth": " March 2022 ",
     "fiscalYearCml":  "| FY3/22 Cumulative  |",
     "fiscalYearYoY": "| FY3/22 Cml. YoY%   |",
     "series": [
         {
             "title": "Final Fantasy",
             "releaseDate": " December 1987 ",
+            "fyEndMonth": " March 2022 ",
             "value": 173,
             "valueLastFY": 164,
             "valueLastTwoFYs": 154
@@ -14,6 +13,7 @@
         {
             "title": "Dragon Quest",
             "releaseDate": " May 1986 ",
+            "fyEndMonth": " March 2022 ",
             "value": 85,
             "valueLastFY": 83,
             "valueLastTwoFYs": 82
@@ -21,6 +21,7 @@
         {
             "title": "Kingdom Hearts",
             "releaseDate": " March 2002 ",
+            "fyEndMonth": " March 2022 ",
             "value": 36,
             "valueLastFY": 0,
             "valueLastTwoFYs": 0 
@@ -28,6 +29,7 @@
         {
             "title": "Tomb Raider",
             "releaseDate": " October 1996 ",
+            "fyEndMonth": " March 2022 ",
             "value": 88,
             "valueLastFY": 82,
             "valueLastTwoFYs": 77

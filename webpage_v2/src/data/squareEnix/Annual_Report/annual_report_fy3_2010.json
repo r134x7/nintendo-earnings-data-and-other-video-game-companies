@@ -1,12 +1,11 @@
 {
-    "fiscalYear": " FY3/2010 ",
-    "fyEndMonth": " March 2010*",
     "fiscalYearCml":  "| FY3/10 Cumulative  |",
     "fiscalYearYoY": "| FY3/10 Cml. YoY%   |",
     "series": [
         {
             "title": "Final Fantasy",
             "releaseDate": " December 1987 ",
+            "fyEndMonth": " March 2010*",
             "value": 97,
             "valueLastFY": 0,
             "valueLastTwoFYs": 0 
@@ -14,6 +13,7 @@
         {
             "title": "Dragon Quest",
             "releaseDate": " May 1986 ",
+            "fyEndMonth": " March 2010*",
             "value": 54,
             "valueLastFY": 0,
             "valueLastTwoFYs": 0
@@ -21,9 +21,19 @@
         {
             "title": "Tomb Raider",
             "releaseDate": " October 1996 ",
+            "fyEndMonth": " March 2010*",
             "value": 35,
             "valueLastFY": 0,
             "valueLastTwoFYs": 0
         }
+    ],
+    "notes": [
+        "+----------------------------------------+",
+        "|*Annual Report 2011 gives no sales      |", 
+        "|numbers. Data used here is taken        |",
+        "|from Q1 FY3/12 Press Release assuming   |",
+        "|data is as of March, 2011. Cannot verify|",
+        "|whether it is accurate.                 |",
+        "+----------------------------------------+"
     ]
 }

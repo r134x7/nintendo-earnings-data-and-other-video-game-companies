@@ -1,12 +1,11 @@
 {
-    "fiscalYear": " FY3/2019 ",
-    "fyEndMonth": " March 2019 ",
     "fiscalYearCml":  "| FY3/19 Cumulative  |",
     "fiscalYearYoY": "| FY3/19 Cml. YoY%   |",
     "series": [
         {
             "title": "Final Fantasy",
             "releaseDate": " December 1987 ",
+            "fyEndMonth": " March 2019 ",
             "value": 144 ,
             "valueLastFY": 141,
             "valueLastTwoFYs": 130 
@@ -14,6 +13,7 @@
         {
             "title": "Dragon Quest",
             "releaseDate": " May 1986 ",
+            "fyEndMonth": " March 2019 ",
             "value": 78,
             "valueLastFY": 76 ,
             "valueLastTwoFYs": 71 
@@ -21,9 +21,19 @@
         {
             "title": "Tomb Raider",
             "releaseDate": " October 1996 ",
+            "fyEndMonth": " March 2019 ",
             "value": 74,
             "valueLastFY": 66 ,
             "valueLastTwoFYs": 58 
         }
+    ],
+    "notes": [
+        "+----------------------------------------+",
+        "|Annual Report 2019 gives sales numbers  |",
+        "|as of June, 2019. Data used here is     |",
+        "|taken from Q4 FY3/19 Press Release as   |",
+        "|most recent change in numbers before    |",
+        "|Annual Report for accuracy.             |",
+        "+----------------------------------------+"
     ]
 }

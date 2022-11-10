@@ -1,12 +1,11 @@
 {
-    "fiscalYear": " FY3/2013 ",
-    "fyEndMonth": " March 2013*",
     "fiscalYearCml":  "| FY3/13 Cumulative  |",
     "fiscalYearYoY": "| FY3/13 Cml. YoY%   |",
     "series": [
         {
             "title": "Final Fantasy",
             "releaseDate": " December 1987 ",
+            "fyEndMonth": " March 2013*",
             "value": 100,
             "valueLastFY": 100 ,
             "valueLastTwoFYs": 100 
@@ -14,6 +13,7 @@
         {
             "title": "Dragon Quest",
             "releaseDate": " May 1986 ",
+            "fyEndMonth": " March 2013*",
             "value": 62,
             "valueLastFY": 59,
             "valueLastTwoFYs": 58 
@@ -21,9 +21,19 @@
         {
             "title": "Tomb Raider",
             "releaseDate": " October 1996 ",
+            "fyEndMonth": " March 2013*",
             "value": 35,
             "valueLastFY": 35,
             "valueLastTwoFYs": 35 
         }
+    ],
+    "notes": [
+        "+----------------------------------------+",
+        "|*Annual Report 2013 gives no sales      |", 
+        "|numbers. Data used here is taken        |",
+        "|from Q1 FY3/14 Press Release assuming   |",
+        "|data is as of March, 2013. Cannot verify|",
+        "|whether it is accurate.                 |",
+        "+----------------------------------------+"
     ]
 }

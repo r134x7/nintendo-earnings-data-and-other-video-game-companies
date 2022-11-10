@@ -35,10 +35,10 @@ const collection = [
 ] as const;
 
 const seriesMake = (obj: {
-    fyEndMonth: string; 
     "series": {
         title: string;
         releaseDate: string;
+        fyEndMonth: string; 
         value: number;
         valueLastFY: number;
         valueLastTwoFYs: number;
@@ -49,7 +49,7 @@ const seriesMake = (obj: {
 
         return {
             title: elem.title,
-            fyEndMonth: obj.fyEndMonth,
+            fyEndMonth: elem.fyEndMonth,
             releaseDate: elem.releaseDate,
             value: elem.value,
             valueLastFY: elem.valueLastFY,
