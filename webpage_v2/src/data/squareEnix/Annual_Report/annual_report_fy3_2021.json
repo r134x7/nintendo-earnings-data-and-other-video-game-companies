@@ -1,0 +1,29 @@
+{
+    "fiscalYear": " FY3/2021 ",
+    "fyEndMonth": " March 2021 ",
+    "fiscalYearCml":  "| FY3/21 Cumulative  |",
+    "fiscalYearYoY": "| FY3/21 Cml. YoY%   |",
+    "series": [
+        {
+            "title": "Final Fantasy",
+            "releaseDate": " December 1987 ",
+            "value": 164,
+            "valueLastFY": 154,
+            "valueLastTwoFYs": 144 
+        },
+        {
+            "title": "Dragon Quest",
+            "releaseDate": " May 1986 ",
+            "value": 83,
+            "valueLastFY": 82,
+            "valueLastTwoFYs": 78
+        },
+        {
+            "title": "Tomb Raider",
+            "releaseDate": " October 1996 ",
+            "value": 82,
+            "valueLastFY": 77,
+            "valueLastTwoFYs": 74
+        }
+    ]
+}
