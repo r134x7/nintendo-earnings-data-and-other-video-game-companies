@@ -196,7 +196,7 @@ const unitsmake = (obj: {"hdGamesAndMMOUnits": {
             region: " Group Total ",
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
-            units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "currency",
+            units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "units",
             value: obj.hdGamesAndMMOUnits.Q1CmlValue // billion yen
         },
         {
@@ -204,7 +204,7 @@ const unitsmake = (obj: {"hdGamesAndMMOUnits": {
             region: " Group Total ",
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
-            units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "currency",
+            units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "units",
             value: obj.hdGamesAndMMOUnits.Q2CmlValue // billion yen
         },
         {
@@ -212,7 +212,7 @@ const unitsmake = (obj: {"hdGamesAndMMOUnits": {
             region: " Group Total ",
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
-            units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "currency",
+            units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "units",
             value: obj.hdGamesAndMMOUnits.Q3CmlValue // billion yen
         },
         {
@@ -220,7 +220,7 @@ const unitsmake = (obj: {"hdGamesAndMMOUnits": {
             region: " Group Total ",
             period: " 4th Quarter ",
             cmlPeriod: "Cml. ",
-            units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "currency",
+            units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "units",
             value: obj.hdGamesAndMMOUnits.Q4CmlValue // billion yen
         },
     ];
