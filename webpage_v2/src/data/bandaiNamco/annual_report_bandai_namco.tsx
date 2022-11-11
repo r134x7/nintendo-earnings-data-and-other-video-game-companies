@@ -8,30 +8,12 @@ import annualReport2022 from "./Annual_Report/annual_report_fy3_2022.json";
 import annualReport2021 from "./Annual_Report/annual_report_fy3_2021.json";
 import annualReport2020 from "./Annual_Report/annual_report_fy3_2020.json";
 import annualReport2019 from "./Annual_Report/annual_report_fy3_2019.json";
-import annualReport2018 from "./Annual_Report/annual_report_fy3_2018.json";
-import annualReport2017 from "./Annual_Report/annual_report_fy3_2017.json";
-import annualReport2016 from "./Annual_Report/annual_report_fy3_2016.json";
-import annualReport2015 from "./Annual_Report/annual_report_fy3_2015.json";
-import annualReport2014 from "./Annual_Report/annual_report_fy3_2014.json";
-import annualReport2013 from "./Annual_Report/annual_report_fy3_2013.json";
-import annualReport2012 from "./Annual_Report/annual_report_fy3_2012.json";
-import annualReport2011 from "./Annual_Report/annual_report_fy3_2011.json";
-import annualReport2010 from "./Annual_Report/annual_report_fy3_2010.json";
 
 const collection = [
     annualReport2022,
     annualReport2021,
     annualReport2020,
     annualReport2019,
-    annualReport2018,
-    annualReport2017,
-    annualReport2016,
-    annualReport2015,
-    annualReport2014,
-    annualReport2013,
-    annualReport2012,
-    annualReport2011,
-    annualReport2010,
 ] as const;
 
 const seriesMake = (obj: {
@@ -42,19 +24,31 @@ const seriesMake = (obj: {
         value: number;
         valueLastFY: number;
         valueLastTwoFYs: number;
+        miscellaneous?: string;
     }[]
 }): Series[] => {
     
     let series: Series[] = obj.series.map(elem => {
 
-        return {
-            title: elem.title,
-            releaseDate: elem.releaseDate,
-            fyEndMonth: elem.fyEndMonth,
-            value: elem.value,
-            valueLastFY: elem.valueLastFY,
-            valueLastTwoFYs: elem.valueLastTwoFYs,
-        };
+        return (!elem.miscellaneous)
+                ? {
+                    title: elem.title,
+                    releaseDate: elem.releaseDate,
+                    fyEndMonth: elem.fyEndMonth,
+                    value: elem.value,
+                    valueLastFY: elem.valueLastFY,
+                    valueLastTwoFYs: elem.valueLastTwoFYs,
+                }
+                : {
+                    title: elem.title,
+                    releaseDate: elem.releaseDate,
+                    fyEndMonth: elem.fyEndMonth,
+                    value: elem.value,
+                    valueLastFY: elem.valueLastFY,
+                    valueLastTwoFYs: elem.valueLastTwoFYs,
+                    miscellaneous: elem.miscellaneous,
+                }
+
     }) 
 
     return series
@@ -63,7 +57,7 @@ const seriesMake = (obj: {
 export const annualReportList: string[] = collection.map((elem, index, array) => {
 
     let header: Header = {
-        bandaiNamcoHeader: "| Square Enix  - IP Series Data  |",
+        bandaiNamcoHeader: "| Bandai Namco - IP Series Data  |",
         secondHeader: "| First appearance to recent FY  |",
         thirdHeader: "| Rank                           |",
         fourthHeader: "| Units                          |",
@@ -95,11 +89,6 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
 
     let printOne = printHead(header);
 
-    let notePrint = (elem.notes[0] === "") 
-                    ? undefined
-                    : elem.notes.reduce((prev, next) => prev + "\n" + next);
-
-    return (notePrint === undefined) 
-            ? printOne + "\n" + printedSeries
-            : printOne + "\n" + printedSeries + "\n" + notePrint
+    return printOne + "\n" + printedSeries
 })
+
