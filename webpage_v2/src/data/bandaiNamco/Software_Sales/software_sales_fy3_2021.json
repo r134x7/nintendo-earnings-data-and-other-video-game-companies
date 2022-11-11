@@ -1,0 +1,20 @@
+{
+    "fiscalYear": " FY3/2022 ",
+    "currentQuarter": 4,
+    "homeVideoGameSales": {
+        "name": " Home video game ",
+        "units": "currency",
+        "Q1CmlValue": 99.9,
+        "Q2CmlValue": 99.9,
+        "Q3CmlValue": 99.9,
+        "Q4CmlValue": 999.9
+    },
+    "homeVideoGameUnits": {
+        "name": " Home video game ",
+        "units": "units",
+        "Q1CmlValue": 99999,
+        "Q2CmlValue": 99999,
+        "Q3CmlValue": 99999,
+        "Q4CmlValue": 99999
+    }
+}
