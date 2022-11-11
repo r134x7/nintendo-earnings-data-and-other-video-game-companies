@@ -1,0 +1,20 @@
+{
+    "fiscalYear": " FY3/2023 ",
+    "currentQuarter": 2,
+    "fullGameSales": {
+        "name": " Full Games ",
+        "units": "currency",
+        "Q1CmlValue": 9.9,
+        "Q2CmlValue": 22.3,
+        "Q3CmlValue": 22.3,
+        "Q4CmlValue": 22.3 
+    },
+    "fullGameUnits": {
+        "name": " Full Games ",
+        "units": "units",
+        "Q1CmlValue": 5140,
+        "Q2CmlValue": 10140,
+        "Q3CmlValue": 10140,
+        "Q4CmlValue": 10140 
+    }
+}
