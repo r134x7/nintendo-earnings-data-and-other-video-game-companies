@@ -1,0 +1,20 @@
+{
+    "fiscalYear": " FY3/2021 ",
+    "currentQuarter": 4,
+    "consolePackageAndDLSales": {
+        "name": " Console Package & DL ",
+        "units": "currency",
+        "Q1CmlValue": 5.382,
+        "Q2CmlValue": 10.473,
+        "Q3CmlValue": 22.425,
+        "Q4CmlValue": 28.728
+    },
+    "consolePackageAndDLUnits": {
+        "name": " Console Package & DL ",
+        "units": "units",
+        "Q1CmlValue": 1690,
+        "Q2CmlValue": 3050,
+        "Q3CmlValue": 8160,
+        "Q4CmlValue": 10110
+    }
+}

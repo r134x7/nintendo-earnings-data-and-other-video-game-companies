@@ -1,0 +1,20 @@
+{
+    "fiscalYear": " FY3/2022 ",
+    "currentQuarter": 4,
+    "consolePackageAndDLSales": {
+        "name": " Console Package & DL ",
+        "units": "currency",
+        "Q1CmlValue": 10.068,
+        "Q2CmlValue": 15.885,
+        "Q3CmlValue": 23.297,
+        "Q4CmlValue": 30.771
+    },
+    "consolePackageAndDLUnits": {
+        "name": " Console Package & DL ",
+        "units": "units",
+        "Q1CmlValue": 2450,
+        "Q2CmlValue": 3650,
+        "Q3CmlValue": 5700,
+        "Q4CmlValue": 8130
+    }
+}
