@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text, Group, Space, SegmentedControl, Autocomplete, ColorPicker, Anchor, Stack, Paper, Code} from "@mantine/core"
+import { Text, Group, Space, Autocomplete, ColorPicker, Anchor, Stack, Paper, Code} from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";

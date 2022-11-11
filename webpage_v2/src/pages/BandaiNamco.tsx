@@ -4,10 +4,7 @@ import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
-import BANDAI_NAMCO_FY3_2019 from "../components/bandaiNamco/BANDAI_NAMCO_FY3_2019";
-import BANDAI_NAMCO_FY3_2020 from "../components/bandaiNamco/BANDAI_NAMCO_FY3_2020";
-import BANDAI_NAMCO_FY3_2021 from "../components/bandaiNamco/BANDAI_NAMCO_FY3_2021";
-import BANDAI_NAMCO_FY3_2022 from "../components/bandaiNamco/BANDAI_NAMCO_FY3_2022";
+import BANDAI_NAMCO_COMPONENT from "../components/BANDAI_NAMCO_COMPONENT";
 
 const currentYear = 2022;
 
@@ -67,17 +64,33 @@ export default function BandaiNamco() {
 
     }, [colour, dispatch])
 
-    // const selectYear = (yearUsed: string, tuples: [string, JSX.Element][]): JSX.Element => {
-    const selectYearComponent = (objList: {year: string, component: JSX.Element}[]) => 
+    const selectYearComponentNew = (yearsList: string[]) => 
     (yearUsed: string): JSX.Element | null => {
-        // let [tupleYear, tupleComponent] = tuples.filter(elem => yearUsed === elem[0]).flat() // remember it returns a shallow copy...
 
-        // return tupleComponent as JSX.Element
+        // let [yearSelected] = yearsList.filter(elem => yearUsed === elem);
 
-        let [yearSelected] = objList.filter(elem => yearUsed === elem.year)
+        let [yearIndexed] = yearsList.map((elem, index) => {  
+                                return (yearUsed === elem)
+                                        ? index
+                                        : -1
+                               }).filter(elem => elem !== -1);
 
-        return (yearSelected) ? yearSelected.component : null
-    }
+        return (yearIndexed >= 0) ? <BANDAI_NAMCO_COMPONENT setIndex={yearIndexed} /> : null
+    };
+
+    const selectYear = selectYearComponentNew(yearsList)    
+
+    // const selectYear = (yearUsed: string, tuples: [string, JSX.Element][]): JSX.Element => {
+    // const selectYearComponent = (objList: {year: string, component: JSX.Element}[]) => 
+    // (yearUsed: string): JSX.Element | null => {
+    //     // let [tupleYear, tupleComponent] = tuples.filter(elem => yearUsed === elem[0]).flat() // remember it returns a shallow copy...
+
+    //     // return tupleComponent as JSX.Element
+
+    //     let [yearSelected] = objList.filter(elem => yearUsed === elem.year)
+
+    //     return (yearSelected) ? yearSelected.component : null
+    // }
 
     // const tupleList: [string, JSX.Element][] = [
     //     ["FY3/2022", <BANDAI_NAMCO_FY3_2022 />],
@@ -86,26 +99,26 @@ export default function BandaiNamco() {
     //     ["FY3/2019", <BANDAI_NAMCO_FY3_2019 />],
     // ];
 
-    const componentList = [
-        {
-            year: "FY3/2022", 
-            component: <BANDAI_NAMCO_FY3_2022 />
-        },
-        {
-            year: "FY3/2021", 
-            component: <BANDAI_NAMCO_FY3_2021 />
-        },
-        {
-            year: "FY3/2020", 
-            component: <BANDAI_NAMCO_FY3_2020 />
-        },
-        {
-            year: "FY3/2019", 
-            component: <BANDAI_NAMCO_FY3_2019 />
-        },
-    ];
+    // const componentList = [
+    //     {
+    //         year: "FY3/2022", 
+    //         component: <BANDAI_NAMCO_FY3_2022 />
+    //     },
+    //     {
+    //         year: "FY3/2021", 
+    //         component: <BANDAI_NAMCO_FY3_2021 />
+    //     },
+    //     {
+    //         year: "FY3/2020", 
+    //         component: <BANDAI_NAMCO_FY3_2020 />
+    //     },
+    //     {
+    //         year: "FY3/2019", 
+    //         component: <BANDAI_NAMCO_FY3_2019 />
+    //     },
+    // ];
 
-    const selectYear = selectYearComponent(componentList)    
+    // const selectYear = selectYearComponent(componentList)    
 
     return (
 
