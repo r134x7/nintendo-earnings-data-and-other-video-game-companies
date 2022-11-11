@@ -4,12 +4,11 @@ import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
-import KOEI_TECMO_FY3_2022 from "../components/koeiTecmo/KOEI_TECMO_FY3_2022";
-import KOEI_TECMO_FY3_2023 from "../components/koeiTecmo/KOEI_TECMO_FY3_2023";
+import KOEI_TECMO_COMPONENT from "../components/KOEI_TECMO_COMPONENT";
 
 const currentYear = 2023;
 
-const yearsList = Array.from({length: 2}, (elem, index) => 
+const yearsList = Array.from({length: 3}, (elem, index) => 
                     {
                             return "FY3/" + (currentYear - index)
                     }) 
@@ -20,28 +19,21 @@ export default function KoeiTecmo() {
 
     const message = `Koei Tecmo (They publish Hyrule Warriors), this is where you can find archived data.`;
 
-    // const border = "+" + "-".repeat(98) + "+";
-
     const splitMessage = message.split("");
 
     const [text, setText] = useState("");
-    // const [textColour, setTextColour] = useState({});
-    // const [borderColour, setBorderColour] = useState({});
 
     const [seconds, setSeconds] = useState(0);
     const interval = useInterval(() => setSeconds((s) => s + 1), 80);
 
     useEffect(() => {
         if (seconds === splitMessage.length) {
-            // setTextColour({ color: 'crimson', fontSize: 18, lineHeight: 1.4, textAlign: "center" });
-            // setBorderColour({ color: 'crimson', fontSize: 21, lineHeight: 1.4 });
             interval.stop();
         } else {
             interval.start();
             setText(text + splitMessage[seconds])
         }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [seconds])
 
     const [year, setYear] = useState("");
@@ -65,26 +57,21 @@ export default function KoeiTecmo() {
 
     }, [colour, dispatch])
 
-    const selectYearComponent = (objList: {year: string, component: JSX.Element}[]) => 
+    const selectYearComponentNew = (yearsList: string[]) => 
     (yearUsed: string): JSX.Element | null => {
 
-        let [yearSelected] = objList.filter(elem => yearUsed === elem.year)
+        // let [yearSelected] = yearsList.filter(elem => yearUsed === elem);
 
-        return (yearSelected) ? yearSelected.component : null
-    }
+        let [yearIndexed] = yearsList.map((elem, index) => {  
+                                return (yearUsed === elem)
+                                        ? index
+                                        : -1
+                               }).filter(elem => elem !== -1);
 
-    const componentList = [
-        {
-            year: "FY3/2023",
-            component: <KOEI_TECMO_FY3_2023 />
-        },
-        {
-            year: "FY3/2022",
-            component: <KOEI_TECMO_FY3_2022 />
-        },
-    ];
+        return (yearIndexed >= 0) ? <KOEI_TECMO_COMPONENT setIndex={yearIndexed} /> : null
+    };
 
-    const selectYear = selectYearComponent(componentList);
+    const selectYear = selectYearComponentNew(yearsList)    
 
     return (
 
