@@ -48,10 +48,10 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number}) {
                 name: "Data Sources",
                 value: dataSourcesList[2],
             },
-            // {
-            //     name: "Software Sales",
-            //     value: softwareSalesList[2],
-            // },
+            {
+                name: "Software Sales",
+                value: softwareSalesList[2],
+            },
             {
                 name: "FY Series IP",
                 value: annualReportListAltered[2]
@@ -69,6 +69,20 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number}) {
             {
                 name: "FY Series IP",
                 value: annualReportListAltered[3]
+            }
+        ],
+        [
+            {
+                name: "Data Sources",
+                value: dataSourcesList[4],
+            },
+            // {
+            //     name: "Software Sales",
+            //     value: softwareSalesList[4],
+            // },
+            {
+                name: "FY Series IP",
+                value: annualReportListAltered[4]
             }
         ],
     ];

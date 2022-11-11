@@ -6,9 +6,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import BANDAI_NAMCO_COMPONENT from "../components/BANDAI_NAMCO_COMPONENT";
 
-const currentYear = 2022;
+const currentYear = 2023;
 
-const yearsList = Array.from({length: 4}, (elem, index) => 
+const yearsList = Array.from({length: 5}, (elem, index) => 
                     {
                             return "FY3/" + (currentYear - index)
                     }) 

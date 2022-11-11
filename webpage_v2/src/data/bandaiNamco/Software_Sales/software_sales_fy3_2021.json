@@ -4,17 +4,17 @@
     "homeVideoGameSales": {
         "name": " Home video game ",
         "units": "currency",
-        "Q1CmlValue": 99.9,
-        "Q2CmlValue": 99.9,
-        "Q3CmlValue": 99.9,
-        "Q4CmlValue": 999.9
+        "Q1CmlValue": 25.0,
+        "Q2CmlValue": 55.0,
+        "Q3CmlValue": 93.0,
+        "Q4CmlValue": 118.1
     },
     "homeVideoGameUnits": {
         "name": " Home video game ",
         "units": "units",
-        "Q1CmlValue": 99999,
-        "Q2CmlValue": 99999,
-        "Q3CmlValue": 99999,
-        "Q4CmlValue": 99999
+        "Q1CmlValue": 9005,
+        "Q2CmlValue": 18394,
+        "Q3CmlValue": 32345,
+        "Q4CmlValue": 41498
     }
 }

@@ -62,6 +62,22 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Financial Hightlights: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20200807_Report.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20200807_Report.pdf
+                    </Anchor>
+                        2nd Quarter Financial Hightlights: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20201106_Report.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20201106_Report.pdf
+                    </Anchor>
+                        3rd Quarter Financial Hightlights: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210208_Report.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210208_Report.pdf
+                    </Anchor>
+                        4th Quarter Financial Hightlights: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210511_Report.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210511_Report.pdf
+                    </Anchor>
                         Bandai Namco Group Fact Book 2021: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/integrated/pdf/2021EN_fact1.pdf" target="_blank" >
                         https://www.bandainamco.co.jp/files/ir/integrated/pdf/2021EN_fact1.pdf
