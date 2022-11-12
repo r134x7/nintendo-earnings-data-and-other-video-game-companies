@@ -1,0 +1,20 @@
+{
+    "fiscalYear": " FY3/2020 ",
+    "currentQuarter": 4,
+    "consolePackageAndDLSales": {
+        "name": " Console Package & DL ",
+        "units": "currency",
+        "Q1CmlValue": 3.095,
+        "Q2CmlValue": 8.003,
+        "Q3CmlValue": 12.555,
+        "Q4CmlValue": 21.446
+    },
+    "consolePackageAndDLUnits": {
+        "name": " Console Package & DL ",
+        "units": "units",
+        "Q1CmlValue": 790,
+        "Q2CmlValue": 5275,
+        "Q3CmlValue": 6835,
+        "Q4CmlValue": 10560
+    }
+}

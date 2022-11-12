@@ -187,8 +187,12 @@ let x =
 const printSalesPerUnitHeaderKoeiTecmo = (): string => {
 
 let x =
-`|*Sales does not include:
-| - Downloadable content purchases 
+`|Package: Including sales for packages,
+|royalty, commission fees 
+|(incl. %-of-completion basis),
+| and down payment.
+|DL (download) sales: sales for digital 
+|copies via PSN/XboxLive/Switch DL/Steam 
 +====================================+
 | Console     | Sales Per | Software |
 | Package & DL|  Software |    Units |

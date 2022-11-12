@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Code, SegmentedControl, Anchor, Text, Stack, Space, Card } from "@mantine/core";
+import { useState } from "react";
+import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { softwareSalesList } from "../data/koeiTecmo/software_sales_koei_tecmo";
 import { dataSourcesList } from "../data/koeiTecmo/Data_Sources/data_sources_full_list";
@@ -40,6 +40,26 @@ export default function KOEI_TECMO_COMPONENT(props: {setIndex: number}) {
             {
                 name: "Software Sales",
                 value: softwareSalesList[2],
+            },
+        ],
+        [
+            {
+                name: "Data Sources",
+                value: dataSourcesList[3],
+            },
+            {
+                name: "Software Sales",
+                value: softwareSalesList[3],
+            },
+        ],
+        [
+            {
+                name: "Data Sources",
+                value: dataSourcesList[4],
+            },
+            {
+                name: "Software Sales",
+                value: softwareSalesList[4],
             },
         ],
     ];
