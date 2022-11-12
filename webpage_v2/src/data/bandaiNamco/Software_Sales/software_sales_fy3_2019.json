@@ -1,0 +1,20 @@
+{
+    "fiscalYear": " FY3/2019 ",
+    "currentQuarter": 4,
+    "homeVideoGameSales": {
+        "name": " Home video game ",
+        "units": "currency",
+        "Q1CmlValue": 16.5,
+        "Q2CmlValue": 39.7,
+        "Q3CmlValue": 65.8,
+        "Q4CmlValue": 102.1
+    },
+    "homeVideoGameUnits": {
+        "name": " Home video game ",
+        "units": "units",
+        "Q1CmlValue": 4031,
+        "Q2CmlValue": 10229,
+        "Q3CmlValue": 17812,
+        "Q4CmlValue": 27611
+    }
+}
