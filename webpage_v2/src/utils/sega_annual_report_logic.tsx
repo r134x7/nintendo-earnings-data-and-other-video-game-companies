@@ -7,7 +7,7 @@ export type Series = {
     value: number,
     valueLastFY: number,
     valueLastTwoFYs: number,
-    ipType: " Acquired IP " | " Developed in-house IP " | " Licensed third party IP ",
+    ipType: " Acquired IP " | " Developed in-house IP " | " Licensed third party IP " | " Undefined ",
     rank?: number,
     miscellaneous1?: string,
     miscellaneous2?: string,

@@ -34,17 +34,35 @@ const seriesMake = (obj: {
         firstReleaseYear: string;
         platforms: string;
         totalEditions: number;
-        ipType: " Acquired IP " | " Developed in-house IP " | " Licensed third party IP "; 
+        ipType: string;
         units: string;
         value: number;
         valueLastFY: number;
         valueLastTwoFYs: number;
-        miscellaneous1?: string | undefined;
-        miscellaneous2?: string | undefined;
+        miscellaneous1?: string;
+        miscellaneous2?: string;
     }[]
 }): Series[] => {
+//" Acquired IP " | " Developed in-house IP " | " Licensed third party IP " | " Undefined "
     
     let series: Series[] = obj.series.map(elem => {
+
+        var ipTypeCheck: " Acquired IP " | " Developed in-house IP " | " Licensed third party IP " | " Undefined " = " Undefined "; // default
+
+        switch (elem.ipType) {
+            case " Acquired IP ":
+                ipTypeCheck = " Acquired IP "
+                break;
+            case " Developed in-house IP ":
+                ipTypeCheck = " Developed in-house IP "
+                break;
+            case " Licensed third party IP ":
+                ipTypeCheck = " Licensed third party IP "
+                break;
+            default:
+                // ipTypeCheck is already "undefined"
+                break;
+        }
 
         return (!elem.miscellaneous1 && !elem.miscellaneous2)
                 ? {
@@ -52,7 +70,7 @@ const seriesMake = (obj: {
                     firstReleaseYear: elem.firstReleaseYear,
                     platforms: elem.platforms,
                     totalEditions: elem.totalEditions,
-                    ipType: elem.ipType,
+                    ipType: ipTypeCheck,
                     units: elem.units,
                     value: elem.value,
                     valueLastFY: elem.valueLastFY,
@@ -64,7 +82,7 @@ const seriesMake = (obj: {
                     firstReleaseYear: elem.firstReleaseYear,
                     platforms: elem.platforms,
                     totalEditions: elem.totalEditions,
-                    ipType: elem.ipType,
+                    ipType: ipTypeCheck,
                     units: elem.units,
                     value: elem.value,
                     valueLastFY: elem.valueLastFY,
@@ -76,7 +94,7 @@ const seriesMake = (obj: {
                     firstReleaseYear: elem.firstReleaseYear,
                     platforms: elem.platforms,
                     totalEditions: elem.totalEditions,
-                    ipType: elem.ipType,
+                    ipType: ipTypeCheck,
                     units: elem.units,
                     value: elem.value,
                     valueLastFY: elem.valueLastFY,
