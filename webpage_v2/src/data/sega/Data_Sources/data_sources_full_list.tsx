@@ -50,6 +50,22 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Data Appendix: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_1q_hosoku_20200805_final_e_.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_1q_hosoku_20200805_final_e_.pdf
+                    </Anchor>
+                        2nd Quarter Data Appendix: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_2q_hosoku_20201106_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_2q_hosoku_20201106_e.pdf
+                    </Anchor>
+                        3rd Quarter Data Appendix: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_3q_hosoku_20210212_e_.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_3q_hosoku_20210212_e_.pdf
+                    </Anchor>
+                        4th Quarter Data Appendix: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_4q_hosoku_20210513_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_4q_hosoku_20210513_e.pdf
+                    </Anchor>
                         Sega Sammy Integrated Report 2021: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/printing_annual/2021/ir_2021_print_en.pdf" target="_blank" >
                         https://www.segasammy.co.jp/english/ir/library/pdf/printing_annual/2021/ir_2021_print_en.pdf
