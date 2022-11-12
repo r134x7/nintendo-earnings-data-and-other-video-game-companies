@@ -2,12 +2,16 @@ import { Header, Section, BandaiNamcoPrint, } from "../../utils/segment_data_log
 import softwareSales2023 from "./Software_Sales/software_sales_fy3_2023.json"
 import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
+import softwareSales2020 from "./Software_Sales/software_sales_fy3_2020.json";
+import softwareSales2019 from "./Software_Sales/software_sales_fy3_2019.json";
 import undefinedData from "./Software_Sales/undefinedData.json";
 
 const collection = [
     softwareSales2023,
     softwareSales2022,
     softwareSales2021,
+    softwareSales2020,
+    softwareSales2019,
     undefinedData,
 ] as const;
 
