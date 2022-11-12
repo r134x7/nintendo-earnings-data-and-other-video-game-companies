@@ -8,15 +8,8 @@ const Home = () => {
     const one = "Welcome to ggx2ac + archives: Nintendo earnings data and other video game companies";
     const splitOne = one.split("");
 
-    // const two = "+" + "-".repeat(85) + "+";
-    // const splitTwo = two.split("");
-
     const [text, setText] = useState("");
-    // const [border, setBorder] = useState("");
-
     const [textColour, setTextColour] = useState({});
-    // const [borderColour, setBorderColour] = useState({});
-
     const [seconds, setSeconds] = useState(0);
     
     const interval = useInterval(() => setSeconds((s) => s + 1), 80);
@@ -35,7 +28,6 @@ const Home = () => {
                 )
         }
         
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [seconds]);
 
     return (
@@ -72,7 +64,7 @@ const Home = () => {
                     </List>
                     <Text>Sega Sammy -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Sales per Software Unit data from FY3/2022 to FY3/23 added.</List.Item>
+                        <List.Item>Latest update: Sales per Software Unit data from FY3/2020 to FY3/23 added.</List.Item>
                         <List.Item>Future update planned: Notes section.</List.Item>
                     </List>
                     <Text>Bandai Namco -</Text>
@@ -81,15 +73,15 @@ const Home = () => {
                     </List>
                     <Text>Koei Tecmo -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Sales per Software Unit data from FY3/2021 to FY3/2023 added.</List.Item>
+                        <List.Item>Latest update: Sales per Software Unit data from FY3/2019 to FY3/2023 added.</List.Item>
                     </List>
                     <Text>Square Enix -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: FY Series IP data and Sales per Software Unit data from FY3/2021 to FY3/2023 added.</List.Item>
+                        <List.Item>Latest update: FY Series IP data and Sales per Software Unit data from FY3/2020 to FY3/2023 added.</List.Item>
                     </List>
                     <Text>Events -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Page update: Updated calendar for 20 of 22 companies from October to November 2022.</List.Item>
+                        <List.Item>Page update: Updated calendar for 22 of 22 companies from October to November 2022.</List.Item>
                     </List>
                     <Text>Games -</Text>
                     <List withPadding listStyleType="disc">

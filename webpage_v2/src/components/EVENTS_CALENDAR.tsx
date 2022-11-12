@@ -179,8 +179,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 21,
             companyName: "NIS",
-            eventName: "1st Quarter Earnings Results",
-            eventDate: "August 10, 2022",
+            eventName: "2nd Quarter Earnings Results",
+            eventDate: "November 11, 2022",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.nippon1.co.jp/ir/ir.html",
         },
