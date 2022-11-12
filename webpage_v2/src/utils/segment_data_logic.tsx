@@ -419,12 +419,14 @@ const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
 
 
         const salesPerSoftwareUnit = salesQuarters.filter((elem, index, array) => {
-            return index < currentQuarter && array[index].value !== 0
+            return index < currentQuarter // && array[index].value !== 0
         }).map((elem, index, array) => { 
             // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
             let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (salesUnits[index].value / 1000)).toFixed(0))
 
-            let printsegmentSalesPerSoftware: string = `¥${calculateSalesPerSoftware.toLocaleString("en")} `
+            let printsegmentSalesPerSoftware: string = (isNaN(calculateSalesPerSoftware)) 
+                                                ? "N/A "
+                                                : `¥${calculateSalesPerSoftware.toLocaleString("en")} `
             
             let printsegmentSalesPerSoftwareFixed: string = (printsegmentSalesPerSoftware.length >= 11)
                 ? printsegmentSalesPerSoftware
@@ -445,7 +447,7 @@ const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
                 ? "\n+" + "=".repeat(36) + "+"
                 : "\n+" + "-".repeat(36) + "+"
 
-            return (salesQuartersLastFY[index].units === "NaN")
+            return (salesQuartersLastFY[index].units === "NaN" || salesQuartersLastFY[index].value === 0)
                 ? "|" + printPeriod + "|" + printsegmentSalesPerSoftwareFixed + "|" + printSoftwareUnitsFixed + "|" + printLine
                 : "|" + printPeriod + "|" + printsegmentSalesPerSoftwareFixed + "|" + printSoftwareUnitsFixed + "|\n" + yoySalesPerUnit[index] + printLine
         })
@@ -522,7 +524,9 @@ const printYoYSalesPerSoftwareUnit = (segmentSales: Section[], segmentSalesLastF
 
 
     let printSalesPerUnitYoY: string[] = yoySalesPerUnit.map((elem) => {
-        return (elem.value > 0)
+        return (isNaN(elem.value))
+                    ? "N/A "
+                    : (elem.value > 0)
                     ? `+${(elem.value)}% `
                     : `${(elem.value)}% `
 
