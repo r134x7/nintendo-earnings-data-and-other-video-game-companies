@@ -111,7 +111,11 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number}) {
                     data={dataList}
             />
             
-            <Code style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
+            {
+                (value === "Data Sources")
+                    ? selectData(value)
+                    : <Code style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
+            }
             <Space h="xl" />
             <Space h="xl" />
             <Space h="xl" />
