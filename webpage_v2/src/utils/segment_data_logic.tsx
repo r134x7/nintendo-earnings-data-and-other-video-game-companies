@@ -134,7 +134,7 @@ const printSalesHeaderSega = (): string => {
 let x =
 `+-------------+
 |             |------------------------+
-| Full Games  |    Sales    |   YoY%   |
+| Full Game   |    Sales    |   YoY%   |
 +--------------------------------------+`
     return x
 };
@@ -246,9 +246,11 @@ let x =
 |home video game consoles and PCs. 
 |(Additional download content sales 
 |are not included.)"
+|**Software Units: "Unit sales don’t 
+|include the figure for free download"
 +====================================+
 |             | Sales Per | Software |
-| Full Games  |  Software |    Units |
+| Full Game   |  Software |    Units |
 | Total       |      Unit |          |
 +------------------------------------+`
 
