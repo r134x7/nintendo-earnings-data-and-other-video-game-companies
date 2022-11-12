@@ -1,11 +1,15 @@
-import { Header, Section, BandaiNamcoPrint, } from "../../utils/segment_data_logic";
+import { Header, Section, SegaPrint } from "../../utils/segment_data_logic";
 import softwareSales2023 from "./Software_Sales/software_sales_fy3_2023.json"
 import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
+import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
+import softwareSales2020 from "./Software_Sales/software_sales_fy3_2020.json";
 import undefinedData from "./Software_Sales/undefinedData.json";
 
 const collection = [
     softwareSales2023,
     softwareSales2022,
+    softwareSales2021,
+    softwareSales2020,
     undefinedData,
 ] as const;
 
@@ -111,7 +115,7 @@ export const softwareSalesList: string[] = collection.map((elem, index, array) =
     let header: Header = {
         fiscalYear: elem.fiscalYear,
         secondHeader: "| Segment Information |",
-        firstHeader: "| Bandai Namco   |",
+        firstHeader: "| Sega Sammy     |",
     };
 
     let salesThisFY: Section[] = salesMake(elem);
@@ -120,5 +124,5 @@ export const softwareSalesList: string[] = collection.map((elem, index, array) =
     let unitsThisFY: Section[] = unitsmake(elem);
     let unitsLastFY: Section[] = unitsmake(array[index+1]);
 
-    return BandaiNamcoPrint(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter)
+    return SegaPrint(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter)
 }).filter(elem => elem !== "undefined")

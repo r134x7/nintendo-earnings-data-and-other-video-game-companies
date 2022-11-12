@@ -241,8 +241,11 @@ let x =
 const printSalesPerUnitHeaderSega = (): string => {
 
 let x =
-`|*Sales might include:
-| - Downloadable content purchases 
+`|*"Full Game = Mainly physical sales 
+|and download sales of full game for 
+|home video game consoles and PCs. 
+|(Additional download content sales 
+|are not included.)"
 +====================================+
 |             | Sales Per | Software |
 | Full Games  |  Software |    Units |

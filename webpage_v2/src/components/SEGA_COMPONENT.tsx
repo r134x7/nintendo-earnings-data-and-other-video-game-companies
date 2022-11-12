@@ -48,10 +48,10 @@ export default function SEGA_COMPONENT(props: {setIndex: number}) {
                 name: "Data Sources",
                 value: dataSourcesList[2],
             },
-            // {
-            //     name: "Software Sales",
-            //     value: softwareSalesList[2],
-            // },
+            {
+                name: "Software Sales",
+                value: softwareSalesList[2],
+            },
             {
                 name: "FY Series IP",
                 value: annualReportListAltered[2]
@@ -62,10 +62,10 @@ export default function SEGA_COMPONENT(props: {setIndex: number}) {
                 name: "Data Sources",
                 value: dataSourcesList[3],
             },
-            // {
-            //     name: "Software Sales",
-            //     value: softwareSalesList[3],
-            // },
+            {
+                name: "Software Sales",
+                value: softwareSalesList[3],
+            },
             {
                 name: "FY Series IP",
                 value: annualReportListAltered[3]

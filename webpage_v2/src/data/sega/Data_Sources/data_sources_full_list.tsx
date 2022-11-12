@@ -78,6 +78,10 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        4th Quarter Data Appendix for FY3/2021 contains revised title/unit sales numbers for FY3/2020: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_4q_hosoku_20210513_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_4q_hosoku_20210513_e.pdf
+                    </Anchor>
                         Sega Sammy Integrated Report 2020: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/printing_annual/2020/al2020_e_all.pdf" target="_blank" >
                         https://www.segasammy.co.jp/english/ir/library/pdf/printing_annual/2020/al2020_e_all.pdf
