@@ -1,16 +1,16 @@
 {
-    "fiscalYearCml":  "| FY3/19 Cumulative  |",
-    "fiscalYearYoY": "| FY3/19 Cml. YoY%   |",
+    "fiscalYearCml":  "| FY3/18 Cumulative  |",
+    "fiscalYearYoY": "| FY3/18 Cml. YoY%   |",
     "series": [
         {
-            "title": " Shin Megami Tensei ",
-            "firstReleaseYear": " 1992 ",
+            "title": " Megami Tensei ",
+            "firstReleaseYear": " 1987 ",
             "platforms": "Pachislot and Pachinko Machines, Digital Games, Packaged Games, Toys, etc.",
             "totalEditions": 30,
             "ipType": " Acquired IP ",
             "units": "(Units and downloads*)",
-            "value": 17.4,
-            "valueLastFY": 12.4,
+            "value": 12.4,
+            "valueLastFY": 7.2,
             "valueLastTwoFYs": 7.2,
             "miscellaneous1": "(packaged and digital total)",
             "miscellaneous2": "*Including downloads of free-to-play titles "
@@ -19,12 +19,24 @@
             "title": " Persona ",
             "firstReleaseYear": " 1996 ",
             "platforms": "Pachislot and Pachinko Machines, Digital Games, Packaged Games, Toys, etc.",
-            "totalEditions": 16,
+            "totalEditions": 15,
             "ipType": " Acquired IP ",
             "units": "(Units and downloads)",
-            "value": 10.2,
-            "valueLastFY": 9.3,
-            "valueLastTwoFYs": 8.5
+            "value": 9.3,
+            "valueLastFY": 8.5,
+            "valueLastTwoFYs": 6.9
+        },
+        {
+            "title": " Etrian Odyssey ",
+            "firstReleaseYear": " 2007 ",
+            "platforms": "Digital Games, Packaged Games, Toys, etc.",
+            "totalEditions": 10,
+            "ipType": " Acquired IP ",
+            "units": "(Units and downloads)",
+            "value": 1.9,
+            "valueLastFY": 1.8,
+            "valueLastTwoFYs": 1.5,
+            "miscellaneous1": "(packaged and digital total)"
         },
         {
             "title": " Total War ",
@@ -33,8 +45,8 @@
             "totalEditions": 0,
             "ipType": " Acquired IP ",
             "units": "(Units and downloads)",
-            "value": 27.6,
-            "valueLastFY": 22.0,
+            "value": 22.0,
+            "valueLastFY": 0,
             "valueLastTwoFYs": 0
         },
         {
@@ -44,8 +56,8 @@
             "totalEditions": 0,
             "ipType": " Acquired IP ",
             "units": "(Units and downloads)",
-            "value": 20.0,
-            "valueLastFY": 18.1,
+            "value": 18.1,
+            "valueLastFY": 0,
             "valueLastTwoFYs": 0
         },
         {
@@ -55,9 +67,9 @@
             "totalEditions": 0,
             "ipType": " Developed in-house IP ",
             "units": "(Units and downloads*)",
-            "value": 920.0,
-            "valueLastFY": 800.0,
-            "valueLastTwoFYs": 360.0,
+            "value": 800.0,
+            "valueLastFY": 360.0,
+            "valueLastTwoFYs": 350.0,
             "miscellaneous1": "(packaged and digital total)",
             "miscellaneous2": "*Including downloads of free-to-play titles "
         },
@@ -68,34 +80,22 @@
             "totalEditions": 0,
             "ipType": " Developed in-house IP ",
             "units": "(Units and downloads*/ID)",
-            "value": 29.0,
-            "valueLastFY": 27.0,
-            "valueLastTwoFYs": 25.0,
+            "value": 27.0,
+            "valueLastFY": 25.0,
+            "valueLastTwoFYs": 22.0,
             "miscellaneous1": "*Including downloads of free-to-play titles",
             "miscellaneous2": "(packaged and digital, AM-registered ID total (total for registrations after IP acquisition)) **SEGA CORPORATION acquired the rights in 1998. Figures for cumulative unit sales are the totals for titles that SEGA sold after acquiring the rights."
-        },
-        {
-            "title": " Sakura Wars ",
-            "firstReleaseYear": " 1996 ",
-            "platforms": "Pachislot and Pachinko Machines, Digital Games, Packaged Games, Amusement Machines",
-            "totalEditions": 0,
-            "ipType": " Developed in-house IP ",
-            "units": "(units)",
-            "value": 3.8,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0,
-            "miscellaneous1": "(packaged and digital total)"
         },
         {
             "title": " Ryu ga Gotoku ",
             "firstReleaseYear": " 2005 ",
             "platforms": "Pachislot and Pachinko Machines, Digital Games, Packaged Games, Toys, etc.",
-            "totalEditions": 101,
+            "totalEditions": 92,
             "ipType": " Developed in-house IP ",
             "units": "(units and downloads)",
-            "value": 12.0,
-            "valueLastFY": 11.0,
-            "valueLastTwoFYs": 10.5,
+            "value": 11.0,
+            "valueLastFY": 10.5,
+            "valueLastTwoFYs": 9.3,
             "miscellaneous1": "(packaged total)"
         },
         {
@@ -114,10 +114,10 @@
             "title": " Beast King ",
             "firstReleaseYear": " 2001 ",
             "platforms": "Pachislot and Pachinko Machines, Digital Games, Packaged Games, Toys, etc.",
-            "totalEditions": 17,
+            "totalEditions": 15,
             "ipType": " Developed in-house IP ",
             "units": "(units)",
-            "value": 0.50,
+            "value": 0.49,
             "valueLastFY": 0.49,
             "valueLastTwoFYs": 0.49,
             "miscellaneous1": "(pachislot and pachinko machines and amusement machines total)"
@@ -129,8 +129,8 @@
             "totalEditions": 0,
             "ipType": " Developed in-house IP ",
             "units": "(users)",
-            "value": 5.5,
-            "valueLastFY": 5.0,
+            "value": 5.0,
+            "valueLastFY": 4.5,
             "valueLastTwoFYs": 4.5,
             "miscellaneous1": "(cumulative total for registered IDs)",
             "miscellaneous2": "Total for PHANTASY STAR ONLINE 2"
@@ -142,9 +142,9 @@
             "totalEditions": 3,
             "ipType": " Developed in-house IP ",
             "units": "(Units and downloads*)",
-            "value": 19.0,
-            "valueLastFY": 15.0,
-            "valueLastTwoFYs": 10.0,
+            "value": 15.0,
+            "valueLastFY": 10.0,
+            "valueLastTwoFYs": 5.0,
             "miscellaneous1": "(packaged and digital total)",
             "miscellaneous2": "*Including downloads of free-to-play titles "
         },
@@ -155,22 +155,22 @@
             "totalEditions": 61,
             "ipType": " Licensed third party IP ",
             "units": "(Units and downloads)",
-            "value": 6.1,
-            "valueLastFY": 6.0,
-            "valueLastTwoFYs": 5.5,
+            "value": 6.0,
+            "valueLastFY": 5.5,
+            "valueLastTwoFYs": 5.3,
             "miscellaneous1": "(packaged and digital total)"
         },
         {
             "title": " Hokuto No Ken ",
             "firstReleaseYear": " 2002 ",
             "platforms": "Pachislot and Pachinko Machines, Digital Games, Packaged Games, Amusement Machines, Toys, etc.",
-            "totalEditions": 32,
+            "totalEditions": 33,
             "ipType":  " Licensed third party IP ",
             "units": "(units)",
-            "value": 2.88,
+            "value": 2.74,
             "valueLastFY": 2.74,
-            "valueLastTwoFYs": 2.74,
-            "miscellaneous1": "(pachislot and pachinko machines total)"
+            "valueLastTwoFYs": 2.64,
+            "miscellaneous1": "(pachislot and pachinko machines and amusement machines total)"
         },
         {
             "title": " SOUTEN-NO-KEN ",
@@ -179,9 +179,9 @@
             "totalEditions": 12,
             "ipType": " Licensed third party IP ",
             "units": "(units)",
-            "value": 0.47,
+            "value": 0.44,
             "valueLastFY": 0.44,
-            "valueLastTwoFYs": 0.44,
+            "valueLastTwoFYs": 0.39,
             "miscellaneous1": "(pachislot and pachinko machines total)"
         }
     ]
