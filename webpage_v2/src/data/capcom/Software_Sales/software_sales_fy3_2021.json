@@ -1,0 +1,52 @@
+{
+    "fiscalYear": " FY3/2021 ",
+    "currentQuarter": 4,
+    "digitalContentsSales": {
+        "name": " Digital Contents ",
+        "units": "currency",
+        "Q1CmlValue": 20.3,
+        "Q2CmlValue": 32.1,
+        "Q3CmlValue": 44.2,
+        "Q4CmlValue": 68.8
+    },
+    "digitalContentsUnits": {
+        "name": " Digital Contents ",
+        "units": "units",
+        "Q1CmlValue": 9200,
+        "Q2CmlValue": 13800,
+        "Q3CmlValue": 19800,
+        "Q4CmlValue": 30100
+    },
+    "packageSales": {
+        "name": " Package ",
+        "units": "currency",
+        "Q1CmlValue": 6.0,
+        "Q2CmlValue": 7.3,
+        "Q3CmlValue": 9.9,
+        "Q4CmlValue": 20.8
+    },
+    "packageUnits": {
+        "name": " Package ",
+        "units": "units",
+        "Q1CmlValue": 1850,
+        "Q2CmlValue": 2400,
+        "Q3CmlValue": 3600,
+        "Q4CmlValue": 6950
+    },
+    "digitalSales": {
+        "name": " Digital ",
+        "units": "currency",
+        "Q1CmlValue": 14.3,
+        "Q2CmlValue": 24.8,
+        "Q3CmlValue": 34.3,
+        "Q4CmlValue": 48.0
+    },
+    "digitalUnits": {
+        "name": " Digital ",
+        "units": "units",
+        "Q1CmlValue": 7350,
+        "Q2CmlValue": 11400,
+        "Q3CmlValue": 16200,
+        "Q4CmlValue": 23150
+    }
+}
