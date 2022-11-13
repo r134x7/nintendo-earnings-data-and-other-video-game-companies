@@ -1,0 +1,48 @@
+{
+    "fiscalYear":  "| FY3/19 Cumulative  |",
+    "fiscalYearYoY": "| FY3/19 Cml. YoY%   |",
+    "platforms": [
+        {
+            "title": "PlayStation 3, PlayStation 4",
+            "skuNumber": 21,
+            "value": 6.5,
+            "valueLastFY": 8.25
+        },
+        {
+            "title": "Wii, Wii U, Nintendo Switch",
+            "skuNumber": 17,
+            "value": 1.95,
+            "valueLastFY": 1.1
+        },
+        {
+            "title": "Xbox 360, Xbox One",
+            "skuNumber": 9,
+            "value": 1.2,
+            "valueLastFY": 1.35
+        },
+        {
+            "title": "PC Other",
+            "skuNumber": 3,
+            "value": 0.3,
+            "valueLastFY": 0.35
+        },
+        {
+            "title": "Package Total",
+            "skuNumber": 53,
+            "value": 10.0,
+            "valueLastFY": 11.5
+        },
+        {
+            "title": "Full-game download",
+            "skuNumber": 8,
+            "value": 15.3,
+            "valueLastFY": 12.9
+        },
+        {
+            "title": "Total",
+            "skuNumber": 61,
+            "value": 25.3,
+            "valueLastFY": 24.4
+        }
+    ] 
+}
