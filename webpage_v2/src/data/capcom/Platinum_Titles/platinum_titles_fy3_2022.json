@@ -1,0 +1,96 @@
+{
+    "fiscalYearCml":  "| FY3/22 Cumulative  |",
+    "fiscalYearYoY": "| FY3/22 Cml. YoY%   |",
+    "summaryHeader": "| FY3/22 Cml. |   Units |    %    |",
+    "titles": [
+        {
+            "title": " Monster Hunter: World ",
+            "releaseDate": " Jan 2018 ",
+            "platforms": " PS4, Xbox One, PC, DL ",
+            "Q1CmlValue": 17.3,
+            "Q2CmlValue": 17.5,
+            "Q3CmlValue": 17.8,
+            "Q4CmlValue": 18.0,
+            "valueLastFY": 17.1,
+            "valueLastTwoFYs": 15.7, 
+            "miscellaneous": "|(* Excludes shipments of \n|Monster Hunter World: \n|Iceborne Master Edition)"
+        },
+        {
+            "title": " RESIDENT EVIL 7 biohazard ",
+            "releaseDate": " Jan 2017 ",
+            "platforms": " PS4, Xbox One, PC, DL ",
+            "Q1CmlValue": 9.8,
+            "Q2CmlValue": 10.2,
+            "Q3CmlValue": 10.6,
+            "Q4CmlValue": 10.8,
+            "valueLastFY": 9.0,
+            "valueLastTwoFYs": 7.5 
+        },
+        {
+            "title": " Resident Evil 2 ",
+            "releaseDate": " Jan 2019 ",
+            "platforms": " PS4, Xbox One, PC, DL ",
+            "Q1CmlValue": 8.6,
+            "Q2CmlValue": 8.9,
+            "Q3CmlValue": 9.3,
+            "Q4CmlValue": 9.6,
+            "valueLastFY": 8.1,
+            "valueLastTwoFYs": 6.6 
+        },
+        {
+            "title": " Monster Hunter World: Iceborne ",
+            "releaseDate": " Sep 2019 ",
+            "platforms": " PS4, Xbox One, PC, DL ",
+            "Q1CmlValue": 8.2,
+            "Q2CmlValue": 8.5,
+            "Q3CmlValue": 8.8,
+            "Q4CmlValue": 9.2,
+            "valueLastFY": 7.7,
+            "valueLastTwoFYs": 5.2 
+        },
+        {
+            "title": " Resident Evil 5 ", 
+            "releaseDate": " Mar 2009 ",
+            "platforms": " PS3, Xbox 360, DL ",
+            "Q1CmlValue": 7.9,
+            "Q2CmlValue": 8.0,
+            "Q3CmlValue": 8.1,
+            "Q4CmlValue": 8.2,
+            "valueLastFY": 7.8,
+            "valueLastTwoFYs": 7.6 
+        },
+        {
+            "title": " Resident Evil 6 ", 
+            "releaseDate": " Oct 2012 ",
+            "platforms": " PS3, Xbox 360, DL ",
+            "Q1CmlValue": 7.9,
+            "Q2CmlValue": 8.0,
+            "Q3CmlValue": 8.1,
+            "Q4CmlValue": 8.2,
+            "valueLastFY": 7.8,
+            "valueLastTwoFYs": 7.5 
+        },
+        {
+            "title": " Monster Hunter Rise ", 
+            "releaseDate": " Mar 2021 ",
+            "platforms": " NSW, PC, DL ",
+            "Q1CmlValue": 7.3,
+            "Q2CmlValue": 7.5,
+            "Q3CmlValue": 7.7,
+            "Q4CmlValue": 9.0,
+            "valueLastFY": 4.8,
+            "valueLastTwoFYs": 0 
+        },
+        {
+            "title": " Street Fighter V ", 
+            "releaseDate": " Feb 2016 ",
+            "platforms": " PS4, PC, DL ",
+            "Q1CmlValue": 5.8,
+            "Q2CmlValue": 6.0,
+            "Q3CmlValue": 6.1,
+            "Q4CmlValue": 6.2,
+            "valueLastFY": 5.5,
+            "valueLastTwoFYs": 4.5, 
+        },
+    ]
+}

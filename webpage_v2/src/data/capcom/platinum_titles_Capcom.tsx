@@ -7,11 +7,11 @@ import {
     printHead,
     printTitles,
     quarterlyCalculation,
-} from "../../../utils/capcom_platinum_titles_logic";
+} from "../../utils/capcom_platinum_titles_logic";
 
 import {
    legacyCollection, 
-} from "../Capcom_Cumulative_Data/platinum_legacy_titles"
+} from "./Capcom_Cumulative_Data/platinum_legacy_titles"
 
 const currentQuarter = 4;
 
