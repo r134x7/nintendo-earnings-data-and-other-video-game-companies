@@ -13,9 +13,9 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     const state: any = useSelector(state => state);
 
-    const annualReportListAltered = ["0 index === FY3/2023"].concat(annualReportList); // to manage keeping the index values the same with softwareSalesList
+    const annualReportListAltered = [""].concat(annualReportList); // to manage keeping the index values the same with softwareSalesList
 
-    const gameSeriesListAltered = ["0 index === FY3/2023"].concat(gameSeriesList); // to manage keeping the index values the same with softwareSalesList
+    const gameSeriesListAltered = [""].concat(gameSeriesList); // to manage keeping the index values the same with softwareSalesList
 
     const componentListNew = Array.from({length: props.yearLength}, (elem, index) => {
 
