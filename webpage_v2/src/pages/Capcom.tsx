@@ -4,20 +4,7 @@ import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
-import CAPCOM_FY3_2023 from "../components/capcom/CAPCOM_FY3_2023";
-import CAPCOM_FY3_2022 from "../components/capcom/CAPCOM_FY3_2022";
-import CAPCOM_FY3_2021 from "../components/capcom/CAPCOM_FY3_2021";
-import CAPCOM_FY3_2020 from "../components/capcom/CAPCOM_FY3_2020";
-import CAPCOM_FY3_2019 from "../components/capcom/CAPCOM_FY3_2019";
-import CAPCOM_FY3_2018 from "../components/capcom/CAPCOM_FY3_2018";
-import CAPCOM_FY3_2017 from "../components/capcom/CAPCOM_FY3_2017";
-import CAPCOM_FY3_2016 from "../components/capcom/CAPCOM_FY3_2016";
-import CAPCOM_FY3_2015 from "../components/capcom/CAPCOM_FY3_2015";
-import CAPCOM_FY3_2014 from "../components/capcom/CAPCOM_FY3_2014";
-import CAPCOM_FY3_2013 from "../components/capcom/CAPCOM_FY3_2013";
-import CAPCOM_FY3_2012 from "../components/capcom/CAPCOM_FY3_2012";
-import CAPCOM_FY3_2011 from "../components/capcom/CAPCOM_FY3_2011";
-import CAPCOM_FY3_2010 from "../components/capcom/CAPCOM_FY3_2010";
+import CAPCOM_COMPONENT from "../components/CAPCOM_COMPONENT";
 
 const currentYear = 2023
 
@@ -32,28 +19,21 @@ export default function Capcom() {
 
     const message = `Capcom (They publish Remember Me), this is where you can find archived Capcom Platinum Titles data.`;
 
-    // const border = "+" + "-".repeat(98) + "+";
-
     const splitMessage = message.split("");
 
     const [text, setText] = useState("");
-    // const [textColour, setTextColour] = useState({});
-    // const [borderColour, setBorderColour] = useState({});
 
     const [seconds, setSeconds] = useState(0);
     const interval = useInterval(() => setSeconds((s) => s + 1), 80);
 
     useEffect(() => {
         if (seconds === splitMessage.length) {
-            // setTextColour({ color: 'crimson', fontSize: 18, lineHeight: 1.4, textAlign: "center" });
-            // setBorderColour({ color: 'crimson', fontSize: 21, lineHeight: 1.4 });
             interval.stop();
         } else {
             interval.start();
             setText(text + splitMessage[seconds])
         }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [seconds])
 
     const [year, setYear] = useState("");
@@ -77,74 +57,24 @@ export default function Capcom() {
 
     }, [colour, dispatch])
 
-    const selectYearComponent = (objList: {year: string, component: JSX.Element}[]) => 
+    const selectYearComponentNew = (yearsList: string[]) => 
     (yearUsed: string): JSX.Element | null => {
 
-        let [yearSelected] = objList.filter(elem => yearUsed === elem.year)
+        // let [yearSelected] = yearsList.filter(elem => yearUsed === elem);
 
-        return (yearSelected) ? yearSelected.component : null
-    }
+        let [yearIndexed] = yearsList.map((elem, index) => {  
+                                return (yearUsed === elem)
+                                        ? index
+                                        : -1
+                               }).filter(elem => elem !== -1);
+        
+        let yearsLength = yearsList.length;
 
-    const componentList = [
-        {
-            year: "FY3/2023",
-            component: <CAPCOM_FY3_2023 />
-        },
-        {
-            year: "FY3/2022",
-            component: <CAPCOM_FY3_2022 />
-        },
-        {
-            year: "FY3/2021",
-            component: <CAPCOM_FY3_2021 />
-        },
-        {
-            year: "FY3/2020",
-            component: <CAPCOM_FY3_2020 />
-        },
-        {
-            year: "FY3/2019",
-            component: <CAPCOM_FY3_2019 />
-        },
-        {
-            year: "FY3/2018",
-            component: <CAPCOM_FY3_2018 />
-        },
-        {
-            year: "FY3/2017",
-            component: <CAPCOM_FY3_2017 />
-        },
-        {
-            year: "FY3/2016",
-            component: <CAPCOM_FY3_2016 />
-        },
-        {
-            year: "FY3/2015",
-            component: <CAPCOM_FY3_2015 />
-        },
-        {
-            year: "FY3/2014",
-            component: <CAPCOM_FY3_2014 />
-        },
-        {
-            year: "FY3/2013",
-            component: <CAPCOM_FY3_2013 />
-        },
-        {
-            year: "FY3/2012",
-            component: <CAPCOM_FY3_2012 />
-        },
-        {
-            year: "FY3/2011",
-            component: <CAPCOM_FY3_2011 />
-        },
-        {
-            year: "FY3/2010",
-            component: <CAPCOM_FY3_2010 />
-        },
-    ];
+        return (yearIndexed >= 0) ? <CAPCOM_COMPONENT setIndex={yearIndexed} yearLength={yearsLength} /> : null
+    };
 
-    const selectYear = selectYearComponent(componentList);
+    const selectYear = selectYearComponentNew(yearsList)    
+
 
     return (
 
