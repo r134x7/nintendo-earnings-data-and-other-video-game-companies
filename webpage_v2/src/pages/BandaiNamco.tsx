@@ -75,7 +75,9 @@ export default function BandaiNamco() {
                                         : -1
                                }).filter(elem => elem !== -1);
 
-        return (yearIndexed >= 0) ? <BANDAI_NAMCO_COMPONENT setIndex={yearIndexed} /> : null
+        let yearsLength = yearsList.length;
+
+        return (yearIndexed >= 0) ? <BANDAI_NAMCO_COMPONENT setIndex={yearIndexed} yearLength={yearsLength} /> : null
     };
 
     const selectYear = selectYearComponentNew(yearsList)    
