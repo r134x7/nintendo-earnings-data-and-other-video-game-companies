@@ -83,7 +83,9 @@ export default function SquareEnix() {
                                         : -1
                                }).filter(elem => elem !== -1);
 
-        return (yearIndexed >= 0) ? <SQUARE_ENIX_COMPONENT setIndex={yearIndexed} /> : null
+        let yearsLength = yearsList.length;
+
+        return (yearIndexed >= 0) ? <SQUARE_ENIX_COMPONENT setIndex={yearIndexed} yearLength={yearsLength} /> : null
     }
 
     // const componentList = [
