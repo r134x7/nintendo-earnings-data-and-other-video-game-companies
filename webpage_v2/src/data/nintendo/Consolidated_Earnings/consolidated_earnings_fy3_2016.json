@@ -1,0 +1,22 @@
+{
+    "currentQuarter": 4,
+    "fiscalYear": "FY3/2016 ",
+    "netSales": {
+            "Q1CmlValue": 90223,
+            "Q2CmlValue": 204182,
+            "Q3CmlValue": 425664,
+            "Q4CmlValue": 504459
+        },
+    "operatingIncome": {
+            "Q1CmlValue": 1149,
+            "Q2CmlValue": 8977,
+            "Q3CmlValue": 42485,
+            "Q4CmlValue": 32881
+    },
+    "netIncome": {
+            "Q1CmlValue": 8284,
+            "Q2CmlValue": 11466,
+            "Q3CmlValue": 40558,
+            "Q4CmlValue": 16505
+    }
+}

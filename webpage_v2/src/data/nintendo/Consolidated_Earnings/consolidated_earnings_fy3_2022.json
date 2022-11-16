@@ -1,0 +1,34 @@
+{
+    "currentQuarter": 4,
+    "fiscalYear": "FY3/2022 ",
+    "netSales": {
+            "Q1CmlValue": 322647,
+            "Q2CmlValue": 624272,
+            "Q3CmlValue": 1320219,
+            "Q4CmlValue": 1695344,
+            "forecastThisFY": 1600000,
+            "forecastRevision1": 1600000,
+            "forecastRevision2": 1650000,
+            "forecastNextFY": 1600000
+        },
+    "operatingIncome": {
+            "Q1CmlValue": 119752,
+            "Q2CmlValue": 219959,
+            "Q3CmlValue": 472551,
+            "Q4CmlValue": 592760,
+            "forecastThisFY": 500000,
+            "forecastRevision1": 520000,
+            "forecastRevision2": 560000,
+            "forecastNextFY": 500000
+    },
+    "netIncome": {
+            "Q1CmlValue": 92747,
+            "Q2CmlValue": 171834,
+            "Q3CmlValue": 367387,
+            "Q4CmlValue": 477691,
+            "forecastThisFY": 340000,
+            "forecastRevision1": 350000,
+            "forecastRevision2": 400000,
+            "forecastNextFY": 340000
+    }
+}
