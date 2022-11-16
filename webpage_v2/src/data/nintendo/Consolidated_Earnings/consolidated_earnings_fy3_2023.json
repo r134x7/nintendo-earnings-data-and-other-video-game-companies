@@ -1,0 +1,28 @@
+{
+    "currentQuarter": 2,
+    "fiscalYear": "FY3/2023 ",
+    "netSales": {
+            "Q1CmlValue": 307460,
+            "Q2CmlValue": 656974,
+            "Q3CmlValue": 656974,
+            "Q4CmlValue": 656974,
+            "forecastThisFY": 1600000,
+            "forecastRevision1": 1650000
+        },
+    "operatingIncome": {
+            "Q1CmlValue": 101647,
+            "Q2CmlValue": 220387,
+            "Q3CmlValue": 220387,
+            "Q4CmlValue": 220387,
+            "forecastThisFY": 500000,
+            "forecastRevision1": 500000
+    },
+    "netIncome": {
+            "Q1CmlValue": 118984,
+            "Q2CmlValue": 230451,
+            "Q3CmlValue": 230451,
+            "Q4CmlValue": 230451,
+            "forecastThisFY": 480000,
+            "forecastRevision1": 400000
+    }
+}
