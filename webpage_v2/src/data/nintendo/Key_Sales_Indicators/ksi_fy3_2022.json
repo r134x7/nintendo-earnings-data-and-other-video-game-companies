@@ -1,0 +1,72 @@
+{
+    "currentQuarter": 4,
+    "fiscalYear": "| FY3/2022 |",
+    "kpi": [
+        {
+            "name": "Proportion of Overseas Sales",
+            "units": "percentage",
+            "Q1Value": 77.9,
+            "Q2Value": 78.7,
+            "Q3Value": 79.6,
+            "Q4Value": 78.2,
+            "Q2CmlValue": 78.3,
+            "Q3CmlValue": 79.0,
+            "Q4CmlValue": 78.8
+        },
+        {
+            "name": "Proportion of Hardware Sales",
+            "units": "percentage",
+            "Q1Value": 47.6,
+            "Q2Value": 45.2,
+            "Q3Value": 53.9,
+            "Q4Value": 41.5,
+            "Q2CmlValue": 46.5,
+            "Q3CmlValue": 50.4,
+            "Q4CmlValue": 48.4
+        },
+        {
+            "name": "Proportion of First Party Software Sales",
+            "units": "percentage",
+            "Q1Value": 72.3,
+            "Q2Value": 68.9,
+            "Q3Value": 84.1,
+            "Q4Value": 82.3,
+            "Q2CmlValue": 70.6,
+            "Q3CmlValue": 77.7,
+            "Q4CmlValue": 78.8
+        },
+        {
+            "name": "Digital Sales",
+            "units": "currency",
+            "Q1Value": 75.9,
+            "Q2Value": 68.2,
+            "Q3Value": 110.8,
+            "Q4Value": 104.6,
+            "Q2CmlValue": 144.2,
+            "Q3CmlValue": 255.0,
+            "Q4CmlValue": 359.6
+        },
+        {
+            "name": "Proportion of Digital Sales",
+            "units": "percentage",
+            "Q1Value": 46.9,
+            "Q2Value": 43.2,
+            "Q3Value": 35.3,
+            "Q4Value": 49.5,
+            "Q2CmlValue": 45.1,
+            "Q3CmlValue": 40.2,
+            "Q4CmlValue": 42.6
+        },
+        {
+            "name": "Proportion of Download version of Packaged Software",
+            "units": "percentage",
+            "Q1Value": 52.1,
+            "Q2Value": 49.1,
+            "Q3Value": 56.3,
+            "Q4Value": 63.9,
+            "Q2CmlValue": 50.7,
+            "Q3CmlValue": 53.1,
+            "Q4CmlValue": 56.2
+        }
+    ]
+}

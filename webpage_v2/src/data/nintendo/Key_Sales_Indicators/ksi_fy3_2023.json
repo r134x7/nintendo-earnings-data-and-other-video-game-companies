@@ -1,0 +1,72 @@
+{
+    "currentQuarter": 2,
+    "fiscalYear": "| FY3/2023 |",
+    "kpi": [
+        {
+            "name": "Proportion of Overseas Sales",
+            "units": "percentage",
+            "Q1Value": 79.9,
+            "Q2Value": 72.4,
+            "Q3Value": 0,
+            "Q4Value": 0,
+            "Q2CmlValue": 75.9,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 0
+        },
+        {
+            "name": "Proportion of Hardware Sales",
+            "units": "percentage",
+            "Q1Value": 43.8,
+            "Q2Value": 39.8,
+            "Q3Value": 0,
+            "Q4Value": 0,
+            "Q2CmlValue": 41.7,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 0
+        },
+        {
+            "name": "Proportion of First Party Software Sales",
+            "units": "percentage",
+            "Q1Value": 76.3,
+            "Q2Value": 72.7,
+            "Q3Value": 0,
+            "Q4Value": 0,
+            "Q2CmlValue": 74.3,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 0
+        },
+        {
+            "name": "Digital Sales",
+            "units": "currency",
+            "Q1Value": 88.0,
+            "Q2Value": 99.7,
+            "Q3Value": 0,
+            "Q4Value": 0,
+            "Q2CmlValue": 187.8,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 0
+        },
+        {
+            "name": "Proportion of Digital Sales",
+            "units": "percentage",
+            "Q1Value": 53.0,
+            "Q2Value": 49.3,
+            "Q3Value": 0,
+            "Q4Value": 0,
+            "Q2CmlValue": 51.0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 0
+        },
+        {
+            "name": "Proportion of Download version of Packaged Software",
+            "units": "percentage",
+            "Q1Value": 52.1,
+            "Q2Value": 52.3,
+            "Q3Value": 0,
+            "Q4Value": 0,
+            "Q2CmlValue": 52.2,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 0
+        }
+    ]
+}
