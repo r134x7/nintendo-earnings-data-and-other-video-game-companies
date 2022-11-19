@@ -1,0 +1,70 @@
+{
+    "currentQuarter": 4,
+    "fiscalYear": "| FY3/18 Cumulative   |",
+    "titles": [
+        {
+            "name": " Mario Kart 8 Deluxe ",
+            "Q1CmlValue": 3.54,
+            "Q2CmlValue": 4.42,
+            "Q3CmlValue": 7.33,
+            "Q4CmlValue": 9.22,
+            "valueLastFY": 0
+        },
+        {
+            "name": " Super Mario Odyssey ",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 9.07,
+            "Q4CmlValue": 10.41,
+            "valueLastFY": 0
+        },
+        {
+            "name": " The Legend of Zelda: Breath of the Wild ",
+            "Q1CmlValue": 3.92,
+            "Q2CmlValue": 4.70,
+            "Q3CmlValue": 6.70,
+            "Q4CmlValue": 8.48,
+            "valueLastFY": 2.76
+        },
+        {
+            "name": " Splatoon 2 ",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 3.61,
+            "Q3CmlValue": 4.91,
+            "Q4CmlValue": 6.02,
+            "valueLastFY": 0 
+        },
+        {
+            "name": " 1-2-Switch ",
+            "Q1CmlValue": 1.22,
+            "Q2CmlValue": 1.37,
+            "Q3CmlValue": 1.88,
+            "Q4CmlValue": 2.29,
+            "valueLastFY": 0
+        },
+        {
+            "name": " Xenoblade Chronicles 2 ",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 1.06,
+            "Q4CmlValue": 1.31,
+            "valueLastFY": 0
+        },
+        {
+            "name": " Kirby Star Allies ",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 1.26,
+            "valueLastFY": 0
+        },
+        {
+            "name": " ARMS ",
+            "Q1CmlValue": 1.18,
+            "Q2CmlValue": 1.35,
+            "Q3CmlValue": 1.61,
+            "Q4CmlValue": 1.85,
+            "valueLastFY": 0
+        }
+    ]
+}

@@ -1,0 +1,128 @@
+{
+    "currentQuarter": 4,
+    "fiscalYear": "| FY3/20 Cumulative   |",
+    "titles": [
+        {
+            "name": " Mario Kart 8 Deluxe ",
+            "Q1CmlValue": 17.89,
+            "Q2CmlValue": 19.01,
+            "Q3CmlValue": 22.96,
+            "Q4CmlValue": 24.77,
+            "valueLastFY": 16.69
+        },
+        {
+            "name": " Super Mario Odyssey ",
+            "Q1CmlValue": 14.94, 
+            "Q2CmlValue": 15.38, 
+            "Q3CmlValue": 16.59, 
+            "Q4CmlValue": 17.41, 
+            "valueLastFY": 14.44
+        },
+        {
+            "name": " The Legend of Zelda: Breath of the Wild ",
+            "Q1CmlValue": 13.61, 
+            "Q2CmlValue": 14.54, 
+            "Q3CmlValue": 16.34, 
+            "Q4CmlValue": 17.41, 
+            "valueLastFY": 12.77
+        },
+        {
+            "name": " Animal Crossing: New Horizons  ",
+            "Q1CmlValue": 0, 
+            "q2cmlvalue": 0, 
+            "q3cmlvalue": 0, 
+            "q4cmlvalue": 11.77, 
+            "valuelastfy": 0
+
+        },
+        {
+            "name": " Pokémon Sword / Pokémon Shield ",
+            "Q1CmlValue": 0, 
+            "Q2CmlValue": 0, 
+            "Q3CmlValue": 16.06, 
+            "Q4CmlValue": 17.37, 
+            "valueLastFY": 0
+ 
+        },
+        {
+            "name": " Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee ",
+            "Q1CmlValue": 10.98, 
+            "Q2CmlValue": 11.28, 
+            "Q3CmlValue": 11.76, 
+            "Q4CmlValue": 11.97, 
+            "valueLastFY": 10.63
+        },
+        {
+            "name": " New Super Mario Bros. U Deluxe ",
+            "Q1CmlValue": 4.10, 
+            "Q2CmlValue": 4.59, 
+            "Q3CmlValue": 5.85, 
+            "Q4CmlValue": 6.60, 
+            "valueLastFY": 3.31
+        },
+        {
+            "name": " Super Mario Party ",
+            "Q1CmlValue": 6.99, 
+            "Q2CmlValue": 7.59, 
+            "Q3CmlValue": 9.12, 
+            "Q4CmlValue": 10.10, 
+            "valueLastFY": 6.4
+        },
+        {
+            "name": " Super Smash Bros. Ultimate ",
+            "Q1CmlValue": 14.73, 
+            "Q2CmlValue": 15.71, 
+            "Q3CmlValue": 17.68, 
+            "Q4CmlValue": 18.84, 
+            "valueLastFY": 13.81
+        },
+        {
+            "name": " Splatoon 2 ",
+            "Q1CmlValue": 9.02,
+            "Q2CmlValue": 9.28,
+            "Q3CmlValue": 9.81,
+            "Q4CmlValue": 10.13,
+            "valueLastFY": 8.70
+        },
+        {
+            "name": " 1-2-Switch ",
+            "Q1CmlValue": 3.01,
+            "Q2CmlValue": 3.01,
+            "Q3CmlValue": 3.01,
+            "Q4CmlValue": 3.01,
+            "valueLastFY": 2.97
+        },
+        {
+            "name": " Mario Tennis Aces ",
+            "Q1CmlValue": 2.75,
+            "Q2CmlValue": 2.75,
+            "Q3CmlValue": 2.75,
+            "Q4CmlValue": 2.75,
+            "valueLastFY": 2.64
+        },
+        {
+            "name": " The Legend of Zelda: Link's Awakening ",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 3.13,
+            "Q3CmlValue": 3.13,
+            "Q4CmlValue": 3.13,
+            "valueLastFY": 0
+        },
+        {
+            "name": " Super Mario Maker 2 ",
+            "Q1CmlValue": 2.42,
+            "Q2CmlValue": 3.93,
+            "Q3CmlValue": 3.93,
+            "Q4CmlValue": 3.93,
+            "valueLastFY": 0
+        },
+        {
+            "name": " Luigi's Mansion 3 ",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 5.37,
+            "Q4CmlValue": 5.37,
+            "valueLastFY": 0
+        }
+    ]
+}
