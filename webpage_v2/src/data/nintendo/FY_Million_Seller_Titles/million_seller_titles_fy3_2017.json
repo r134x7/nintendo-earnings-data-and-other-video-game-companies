@@ -1,0 +1,33 @@
+{
+    "currentQuarter": 4,
+    "fiscalYear": " FY3/17 ",
+    "titles": [
+        {
+            "name": " The Legend of Zelda: Breath of the Wild ",
+            "regionA": "   Japan ",
+            "Q1CmlValueA": 0,
+            "Q2CmlValueA": 0,
+            "Q3CmlValueA": 0, 
+            "Q4CmlValueA": 39,
+            "valueALastFY": 0,
+            "regionB": " Overseas",
+            "Q1CmlValueB": 0,
+            "Q2CmlValueB": 0,
+            "Q3CmlValueB": 0, 
+            "Q4CmlValueB": 237,
+            "valueBLastFY": 0,
+            "regionC": "   WW FY ",
+            "Q1CmlValueC": 0,
+            "Q2CmlValueC": 0,
+            "Q3CmlValueC": 0, 
+            "Q4CmlValueC": 276,
+            "valueCLastFY": 0,
+            "regionD": "  WW LTD ",
+            "Q1CmlValueD": 0,
+            "Q2CmlValueD": 0,
+            "Q3CmlValueD": 0, 
+            "Q4CmlValueD": 276,
+            "valueDLastFY": 0
+        }
+    ]
+}
