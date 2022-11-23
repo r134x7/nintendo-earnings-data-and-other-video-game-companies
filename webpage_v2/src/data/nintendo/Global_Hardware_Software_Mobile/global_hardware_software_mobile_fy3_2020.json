@@ -1,0 +1,77 @@
+{
+    "currentQuarter": 4,
+    "fiscalYear": " FY3/2020 ",
+    "nextFiscalYearShort": " FY3/21 ",
+    "platformCmlSales": [
+        {
+            "name": " Switch Platform ",
+            "units": "currency",
+            "Q1CmlValue": 152643,
+            "Q2CmlValue": 405588,
+            "Q3CmlValue": 957414,
+            "Q4CmlValue": 1219327,
+            "cmlValueLastFY": 1892297
+        }
+    ],
+    "platformUnitSales": [
+            {
+                "name": " Switch ",
+                "units": "units",
+                "Q1CmlValue": 213,
+                "Q2CmlValue": 498,
+                "Q3CmlValue": 1256,
+                "Q4CmlValue": 1483,
+                "cmlValueLastFY": 3474
+            },
+            {
+                "name": " Switch Lite ",
+                "units": "units",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 195,
+                "Q3CmlValue": 519,
+                "Q4CmlValue": 619,
+                "cmlValueLastFY": 0
+            },
+            {
+                "name": " Hardware Total ",
+                "units": "units",
+                "Q1CmlValue": 213,
+                "Q2CmlValue": 693,
+                "Q3CmlValue": 1774,
+                "Q4CmlValue": 2103,
+                "cmlValueLastFY": 3474
+            },
+            {
+                "name": " Software Total ",
+                "units": "units",
+                "Q1CmlValue": 2262,
+                "Q2CmlValue": 5849,
+                "Q3CmlValue": 12313,
+                "Q4CmlValue": 16872,
+                "cmlValueLastFY": 18752
+            },
+            {
+                "name": " Mobile ",
+                "units": "currency",
+                "Q1CmlValue": 10005,
+                "Q2CmlValue": 19964,
+                "Q3CmlValue": 36910,
+                "Q4CmlValue": 51295,
+                "cmlValueLastFY": 0 
+            }
+    ],
+    "platformForecastSales": [
+        {
+            "name": " Hardware Total ",
+            "forecastThisFY": 1800,
+            "forecastRevision1": 1950,
+            "forecastNextFY": 1900
+        },
+        {
+            "name": " Software Total ",
+            "forecastThisFY": 12500,
+            "forecastRevision1": 14000,
+            "forecastNextFY": 14000
+        }
+    ]
+}

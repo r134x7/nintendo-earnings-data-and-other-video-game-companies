@@ -1,0 +1,55 @@
+{
+    "currentQuarter": 4,
+    "fiscalYear": " FY3/2017 ",
+    "nextFiscalYearShort": " FY3/18 ",
+    "platformCmlSales": [
+        {
+            "name": " Switch Platform ",
+            "units": "currency",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 110951,
+            "cmlValueLastFY":0 
+        }
+    ],
+    "platformUnitSales": [
+            {
+                "name": " Hardware Total ",
+                "units": "units",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 274,
+                "cmlValueLastFY": 0
+            },
+            {
+                "name": " Software Total ",
+                "units": "units",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 546,
+                "cmlValueLastFY":0 
+            },
+            {
+                "name": " Mobile ",
+                "units": "currency",
+                "Q1CmlValue": 1649,
+                "Q2CmlValue": 3408,
+                "Q3CmlValue": 10683,
+                "Q4CmlValue": 24250,
+                "cmlValueLastFY": 0 
+            }
+    ],
+    "platformForecastSales": [
+        {
+            "name": " Hardware Total ",
+            "forecastNextFY": 1000
+        },
+        {
+            "name": " Software Total ",
+            "forecastNextFY": 3500
+        }
+    ]
+}

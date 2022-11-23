@@ -1,0 +1,88 @@
+{
+    "currentQuarter": 4,
+    "fiscalYear": " FY3/2022 ",
+    "nextFiscalYearShort": " FY3/23 ",
+    "platformCmlSales": [
+        {
+            "name": " Switch Platform ",
+            "units": "currency",
+            "Q1CmlValue": 300054,
+            "Q2CmlValue": 581808,
+            "Q3CmlValue": 1250479,
+            "Q4CmlValue": 1602725,
+            "cmlValueLastFY": 4778029
+        }
+    ],
+    "platformUnitSales": [
+            {
+                "name": " Switch ",
+                "units": "units",
+                "Q1CmlValue": 331,
+                "Q2CmlValue": 645,
+                "Q3CmlValue": 1179,
+                "Q4CmlValue": 1356,
+                "cmlValueLastFY": 6989
+            },
+            {
+                "name": " Switch Lite ",
+                "units": "units",
+                "Q1CmlValue": 114,
+                "Q2CmlValue": 182,
+                "Q3CmlValue": 317,
+                "Q4CmlValue": 370,
+                "cmlValueLastFY": 1470
+            },
+            {
+                "name": " Switch OLED ",
+                "units": "units",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 399,
+                "Q4CmlValue": 580,
+                "cmlValueLastFY": 0
+            },
+            {
+                "name": " Hardware Total ",
+                "units": "units",
+                "Q1CmlValue": 445,
+                "Q2CmlValue": 828,
+                "Q3CmlValue": 1895,
+                "Q4CmlValue": 2306,
+                "cmlValueLastFY": 8459
+            },
+            {
+                "name": " Software Total ",
+                "units": "units",
+                "Q1CmlValue": 4529,
+                "Q2CmlValue": 9389,
+                "Q3CmlValue": 17929,
+                "Q4CmlValue": 23507,
+                "cmlValueLastFY": 58711
+            },
+            {
+                "name": " Mobile ",
+                "units": "currency",
+                "Q1CmlValue": 13199,
+                "Q2CmlValue": 25501,
+                "Q3CmlValue": 39825,
+                "Q4CmlValue": 53342,
+                "cmlValueLastFY": 0 
+            }
+    ],
+    "platformForecastSales": [
+        {
+            "name": " Hardware Total ",
+            "forecastThisFY": 2550,
+            "forecastRevision1": 2400,
+            "forecastRevision2": 2300,
+            "forecastNextFY": 2100
+        },
+        {
+            "name": " Software Total ",
+            "forecastThisFY": 19000,
+            "forecastRevision1": 20000,
+            "forecastRevision2": 22000,
+            "forecastNextFY": 21000
+        }
+    ]
+}
