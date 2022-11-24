@@ -37,10 +37,10 @@
         {
             "name": " Animal Crossing: New Horizons  ",
             "Q1CmlValue": 33.89, 
-            "q2cmlvalue": 34.85, 
-            "q3cmlvalue": 37.62, 
-            "q4cmlvalue": 38.64, 
-            "valuelastfy": 32.63
+            "Q2CmlValue": 34.85, 
+            "Q3CmlValue": 37.62, 
+            "Q4CmlValue": 38.64, 
+            "valueLastFY": 32.63
         },
         {
             "name": " Pokémon Sword / Pokémon Shield ",
