@@ -24,7 +24,8 @@
             "Q2CmlValue": 27.79, 
             "Q3CmlValue": 27.79, 
             "Q4CmlValue": 27.79, 
-            "valueLastFY": 26.55
+            "valueLastFY": 26.55,
+            "miscellaneous": "*This number has been adjusted to reflect a revision of sales units in previous years." 
         },
         {
             "name": " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
@@ -48,7 +49,8 @@
             "Q2CmlValue": 25.37, 
             "Q3CmlValue": 25.37, 
             "Q4CmlValue": 25.37, 
-            "valueLastFY": 24.27
+            "valueLastFY": 24.27,
+            "miscellaneous": "*This number has been adjusted to reflect a revision of sales units in previous years." 
         },
         {
             "name": " Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee ",
@@ -80,7 +82,8 @@
             "Q2CmlValue": 29.53, 
             "Q3CmlValue": 29.53, 
             "Q4CmlValue": 29.53, 
-            "valueLastFY": 28.17
+            "valueLastFY": 28.17,
+            "miscellaneous": "*This number has been adjusted to reflect a revision of sales units in previous years." 
         }
     ]
 }
