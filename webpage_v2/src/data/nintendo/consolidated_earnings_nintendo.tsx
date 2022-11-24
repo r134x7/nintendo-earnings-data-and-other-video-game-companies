@@ -71,7 +71,11 @@ const valuesMake = (obj: undefined | {
 };
 
 const forecastMake = (obj: {
-    forecastThisFY: number,
+    Q1CmlValue: number,
+    Q2CmlValue: number,
+    Q3CmlValue: number,
+    Q4CmlValue: number,
+    forecastThisFY?: number,
     forecastRevision1?: number,
     forecastRevision2?: number,
     forecastRevision3?: number,
@@ -80,42 +84,42 @@ const forecastMake = (obj: {
 
     let forecasts: Earnings[] = [
         {
-            category: "forecast",
-            units: "currency",
             name: forecastLabelThisFY,
-            value: obj.forecastThisFY, 
+            value: obj?.forecastThisFY,
         },
         {
-            category: "forecast",
-            units: "currency",
             name: " FCST Revision 1 ",
-            value: obj?.forecastRevision1, 
+            value: obj?.forecastRevision1,
         },
         {
-            category: "forecast",
-            units: "currency",
             name: " FCST Revision 2 ",
-            value: obj?.forecastRevision2, 
+            value: obj?.forecastRevision2,
         },
         {
-            category: "forecast",
-            units: "currency",
             name: " FCST Revision 3 ",
-            value: obj?.forecastRevision3, 
+            value: obj?.forecastRevision3,
         },
         {
+            name: forecastLabelNextFY,
+            value: obj?.forecastNextFY,
+        },
+    ].filter(elem => elem.value !== undefined).map(elem => {
+
+        return {
             category: "forecast",
             units: "currency",
-            name: forecastLabelNextFY,
-            value: obj?.forecastNextFY, 
-        },
-    ]
+            name: elem.name,
+            value: elem.value as number, // type assertion, filter has already removed undefined values.
+        }
+    })
 
     return forecasts
 }
 
 
 const consolidatedEarningsList: string[] = collection.map((elem, index, array) => {
+
+    let currentQuarter: number = elem.currentQuarter;
 
     let header: Header = {
         companyName: " Nintendo Co., Ltd.",
@@ -151,14 +155,18 @@ const consolidatedEarningsList: string[] = collection.map((elem, index, array) =
 
     let forecastNameNextFY: string = " " + elem.fiscalYear.slice(0,4) + nextFY + "Forecast ";
 
-    let netSalesThisFY: Earnings[] = valuesMake(elem.netSales, cmlName)
-    let netSalesLastFY: Earnings[] = (!array[index+1].netSales) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].netSales, cmlName)
+    let netSalesThisFY: Earnings[] = valuesMake(elem.netSales, cmlName);
+    let netSalesLastFY: Earnings[] = (!array[index+1].netSales) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].netSales, cmlName);
 
-    let operatingIncomeThisFY: Earnings[] = valuesMake(elem.operatingIncome, cmlName)
-    let operatingIncomeLastFY: Earnings[] = (!array[index+1].operatingIncome) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].operatingIncome, cmlName)
+    let operatingIncomeThisFY: Earnings[] = valuesMake(elem.operatingIncome, cmlName);
+    let operatingIncomeLastFY: Earnings[] = (!array[index+1].operatingIncome) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].operatingIncome, cmlName);
 
-    let netIncomeThisFY: Earnings[] = valuesMake(elem.netIncome, cmlName)
-    let netIncomeLastFY: Earnings[] = (!array[index+1].netIncome) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].netIncome, cmlName)
+    let netIncomeThisFY: Earnings[] = valuesMake(elem.netIncome, cmlName);
+    let netIncomeLastFY: Earnings[] = (!array[index+1].netIncome) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].netIncome, cmlName);
+
+    let netSalesForecasts: Earnings[] = forecastMake(elem.netSales, forecastNameThisFY, forecastNameNextFY);
+    let operatingIncomeForecasts: Earnings[] = forecastMake(elem.operatingIncome, forecastNameThisFY, forecastNameNextFY);
+    let netIncomeForecasts: Earnings[] = forecastMake(elem.netIncome, forecastNameThisFY, forecastNameNextFY);
 
     const valueCollection = [
         netSalesThisFY,
@@ -232,5 +240,70 @@ const consolidatedEarningsList: string[] = collection.map((elem, index, array) =
             netSalesForecasts,
             operatingIncomeForecasts,
     ]
+
+    const [
+        operatingMarginQuarters, 
+        operatingMarginCumulative,
+        operatingMarginQuartersLastFY,
+        operatingMarginCumulativeLastFY,
+        opMarginForecasts
+    ] = opMarginCollection.map((elem, index, array) => {
+        // Input array of arrays of length 4, output array of arrays of length 4 and then filter to 2.
+    
+        return (index % 2 === 0) // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
+                ? operatingMarginCalculation(array[index], array[index+1])
+                : [];
+        }).filter((elem) => elem.length !== 0) // map creates empty arrays so filter removes them and then the array destructuring works correctly, note: elem is used and not array because the array contains 12 arrays! This also removes the issue of variable possibly being undefined had we not put in empty arrays since it would have automatically placed undefined.
+
+
+    const netSalesArrays = [
+        header, 
+        netSalesDifference,
+        netSalesDifferenceYoy,
+        netSalesCumulative,
+        netSalesCumulativeYoy,
+        netSalesForecasts, 
+        currentQuarter
+    ] as const; // to create read-only tuple
+
+    const operatingIncomeArrays = [
+        headerOperatingIncome,
+        operatingIncomeDifference,
+        operatingIncomeDifferenceYoy,
+        operatingIncomeCumulative,
+        operatingIncomeCumulativeYoy,
+        operatingIncomeForecasts,
+        currentQuarter,
+    ] as const; // to create read-only tuple;
+
+    const opMarginArrays = [
+        headerOpMargin,
+        operatingMarginQuarters,
+        operatingMarginQuartersLastFY,
+        operatingMarginCumulative,
+        operatingMarginCumulativeLastFY,
+        opMarginForecasts,
+        currentQuarter 
+    ] as const; // to create read-only tuple
+
+    const netIncomeArrays = [
+        headerNetIncome,
+        netIncomeDifference,
+        netIncomeDifferenceYoy,
+        netIncomeCumulative,
+        netIncomeCumulativeYoy,
+        netIncomeForecasts,
+        currentQuarter,
+    ] as const; // to create read-only tuple
+
+    const printOne = printHead(header);
+
+    const [printTwo, printThree, printFour, printFive] = [
+    netSalesArrays, operatingIncomeArrays, opMarginArrays, netIncomeArrays ].map((elem, index, array) => {
+
+            return printBody(...elem)
+    });
+
+    return printOne + "\n" + printTwo + "\n" + printThree + "\n" + printFour + "\n" + printFive + "\n###";
 
 })
