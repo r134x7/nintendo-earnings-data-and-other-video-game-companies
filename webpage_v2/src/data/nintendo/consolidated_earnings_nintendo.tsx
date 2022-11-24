@@ -17,7 +17,6 @@ import consolidatedEarnings2019 from "./Consolidated_Earnings/consolidated_earni
 import consolidatedEarnings2018 from "./Consolidated_Earnings/consolidated_earnings_fy3_2018.json";
 import consolidatedEarnings2017 from "./Consolidated_Earnings/consolidated_earnings_fy3_2017.json";
 import consolidatedEarnings2016 from "./Consolidated_Earnings/consolidated_earnings_fy3_2016.json";
-import { netSales } from "./Nintendo_FY3_2023/earnings_fy3_2023";
 
 const collection = [
     consolidatedEarnings2023,
