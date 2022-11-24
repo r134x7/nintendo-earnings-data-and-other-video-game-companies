@@ -3,6 +3,7 @@ export type Titles = {
     period: string,
     value: number,
     rank?: number,
+    misellaneous?: string,
 }
 
 export type Header = {
@@ -98,6 +99,17 @@ const printTitleFYCml = (titleDifference: Titles[], currentFY: Header, currentQu
     return currentFY.fiscalYear + reducedValueFixed + "|"
 }
 
+const miscellaneousLine = (titleDifference: Titles[]) => {
+    
+    let miscellaneousCheck: string | undefined = titleDifference[0].misellaneous;
+
+    let lastLine: string = "+" + "-".repeat(32) + "+"; 
+
+    return (miscellaneousCheck === undefined)
+            ? lastLine 
+            : lastLine + "\n" + lastLine;
+}
+
 export const printHead = (header: Header) =>
 `+${"-".repeat(32)}+
 ${header.switchHeader}
@@ -112,4 +124,4 @@ ${printTitles(quarter, currentQuarter)}
 +${"=".repeat(32)}+
 ${printTitleFYCml(FYCml, currentFY, currentQuarter)}
 ${printTitleLTD(LTD, currentQuarter)}
-+${"-".repeat(32)}+`;
+${miscellaneousLine(quarter)}`;
