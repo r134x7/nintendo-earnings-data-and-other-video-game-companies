@@ -116,7 +116,7 @@ const forecastMake = (obj: {
 }
 
 
-const consolidatedEarningsList: string[] = collection.map((elem, index, array) => {
+export const consolidatedEarningsList: string[] = collection.map((elem, index, array) => {
 
     let currentQuarter: number = elem.currentQuarter;
 
