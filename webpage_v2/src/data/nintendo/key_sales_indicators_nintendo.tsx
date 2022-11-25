@@ -107,7 +107,7 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
 
     let currentQuarter: number = elem.currentQuarter;
 
-    let cmlName: string = elem.fiscalYear.slice(1,5) + elem.fiscalYear.slice(-5,-2) + "Cumulative ";
+    let cmlName: string = elem.fiscalYear.slice(1,6) + elem.fiscalYear.slice(-4,-1) + "Cumulative ";
 
     let headerOne: Header = {
         companyName: " Nintendo Co., Ltd.",
@@ -179,12 +179,14 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
         }
     });
 
+    let endLine: string = "+" + "-".repeat(30) + "+" + "\n" + "###"; 
+
     let printOne = printHead(headerOne);
 
     let printRest = inputArrays.map(elem => {
 
         return printBody(elem.header, elem.footer, elem.quarterValues, elem.cumulativeValues, elem.currentQuarter)
-    }).concat("+" + "-".repeat+"+" + "\n" + "###");
+    }).concat(endLine);
 
     let printAll = [printOne].concat(printRest);  
 

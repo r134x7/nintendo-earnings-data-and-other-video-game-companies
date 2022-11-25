@@ -113,10 +113,12 @@ export const topSellingTitlesList: string[] = collection.map((elem, index, array
         }
     });
 
+    let endLine: string = "###"; 
+
     let printRest = inputArrays.map(elem => {
 
         return printBody(elem.quarter, elem.fiscalYearCml, elem.LTD, elem.header, elem.currentQuarter)
-    }).concat("+" + "-".repeat+"+" + "\n" + "###");
+    }).concat(endLine);
 
     let printAll = [printOne].concat(printRest);  
 
