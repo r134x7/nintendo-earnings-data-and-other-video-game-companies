@@ -39,31 +39,31 @@ const titlesMake = (obj: {
             title: obj.name,
             period: " 1st Quarter         ",
             value: obj.Q1CmlValue,
-            misellaneous: obj.miscellaneous,
+            miscellaneous: obj.miscellaneous,
         },
         {
             title: obj.name,
             period: " 2nd Quarter         ",
             value: obj.Q2CmlValue,
-            misellaneous: obj.miscellaneous,
+            miscellaneous: obj.miscellaneous,
         },
         {
             title: obj.name,
             period: " 3rd Quarter         ",
             value: obj.Q3CmlValue,
-            misellaneous: obj.miscellaneous,
+            miscellaneous: obj.miscellaneous,
         },
         {
             title: obj.name,
             period: " 4th Quarter         ",
             value: obj.Q4CmlValue,
-            misellaneous: obj.miscellaneous,
+            miscellaneous: obj.miscellaneous,
         },
         {
             title: obj.name,
             period: " Q4 Last FY ",
             value: obj.Q1CmlValue,
-            misellaneous: obj.miscellaneous,
+            miscellaneous: obj.miscellaneous,
         },
     ]
 

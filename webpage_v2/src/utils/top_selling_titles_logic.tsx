@@ -3,7 +3,7 @@ export type Titles = {
     period: string,
     value: number,
     rank?: number,
-    misellaneous?: string,
+    miscellaneous?: string,
 }
 
 export type Header = {
@@ -101,7 +101,7 @@ const printTitleFYCml = (titleDifference: Titles[], currentFY: Header, currentQu
 
 const miscellaneousLine = (titleDifference: Titles[]) => {
     
-    let miscellaneousCheck: string | undefined = titleDifference[0].misellaneous;
+    let miscellaneousCheck: string | undefined = titleDifference[0].miscellaneous;
 
     let lastLine: string = "+" + "-".repeat(32) + "+"; 
 
