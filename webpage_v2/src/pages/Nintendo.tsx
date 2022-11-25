@@ -4,20 +4,21 @@ import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
-import NINTENDO_FY3_2017 from "../components/nintendo/NINTENDO_FY3_2017";
-import NINTENDO_FY3_2018 from "../components/nintendo/NINTENDO_FY3_2018";
-import NINTENDO_FY3_2019 from "../components/nintendo/NINTENDO_FY3_2019";
-import NINTENDO_FY3_2020 from "../components/nintendo/NINTENDO_FY3_2020";
-import NINTENDO_FY3_2021 from "../components/nintendo/NINTENDO_FY3_2021";
-import NINTENDO_FY3_2022 from "../components/nintendo/NINTENDO_FY3_2022";
-import NINTENDO_FY3_2023 from "../components/nintendo/NINTENDO_FY3_2023";
+// import NINTENDO_FY3_2017 from "../components/nintendo/NINTENDO_FY3_2017";
+// import NINTENDO_FY3_2018 from "../components/nintendo/NINTENDO_FY3_2018";
+// import NINTENDO_FY3_2019 from "../components/nintendo/NINTENDO_FY3_2019";
+// import NINTENDO_FY3_2020 from "../components/nintendo/NINTENDO_FY3_2020";
+// import NINTENDO_FY3_2021 from "../components/nintendo/NINTENDO_FY3_2021";
+// import NINTENDO_FY3_2022 from "../components/nintendo/NINTENDO_FY3_2022";
+// import NINTENDO_FY3_2023 from "../components/nintendo/NINTENDO_FY3_2023";
 import NINTENDO_CML from "../components/nintendo/NINTENDO_CML";
+import NINTENDO_COMPONENT from "../components/NINTENDO_COMPONENT";
 
 const currentYear = 2023;
 
 const yearsList = Array.from({length: 7}, (elem, index) => 
                     {
-                            return "FY3/" + (2023 - index)
+                            return "FY3/" + (currentYear - index)
                     }) // FY3/2017 to FY3/2023 at length: 7
 
 // const coloursList = ["rgba(52, 58, 64, 0.2)", "#2C2E33"]
@@ -74,48 +75,24 @@ export default function Nintendo() {
 
     }, [colour, dispatch])
 
-    const selectYearComponent = (objList: {year: string, component: JSX.Element}[]) => 
+    const selectYearComponentNew = (yearsList: string[]) => 
     (yearUsed: string): JSX.Element | null => {
 
-        let [yearSelected] = objList.filter(elem => yearUsed === elem.year)
+        // let [yearSelected] = yearsList.filter(elem => yearUsed === elem);
 
-        return (yearSelected) ? yearSelected.component : null
-    }
+        let [yearIndexed] = yearsList.map((elem, index) => {  
+                                return (yearUsed === elem)
+                                        ? index
+                                        : -1
+                               }).filter(elem => elem !== -1);
 
-    const componentList = [
-        {
-            year: "FY3/2023",
-            component: <NINTENDO_FY3_2023 />
-        },
-        {
-            year: "FY3/2022",
-            component: <NINTENDO_FY3_2022 />
-        },
-        {
-            year: "FY3/2021",
-            component: <NINTENDO_FY3_2021 />
-        },
-        {
-            year: "FY3/2020",
-            component: <NINTENDO_FY3_2020 />
-        },
-        {
-            year: "FY3/2019",
-            component: <NINTENDO_FY3_2019 />
-        },
-        {
-            year: "FY3/2018",
-            component: <NINTENDO_FY3_2018 />
-        },
-        {
-            year: "FY3/2017",
-            component: <NINTENDO_FY3_2017 />
-        },
-    ];
+        let yearsLength = yearsList.length;
 
-    const selectYear = selectYearComponent(componentList);
+        return (yearIndexed >= 0) ? <NINTENDO_COMPONENT setIndex={yearIndexed} yearLength={yearsLength} /> : null
+    };
 
-
+    const selectYear = selectYearComponentNew(yearsList)
+       
     return (
 
         <div>
