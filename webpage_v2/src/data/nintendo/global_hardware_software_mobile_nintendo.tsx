@@ -196,7 +196,7 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
 
     let platformSalesList: Section[][] = elem.platformCmlSales.map(value => platformSalesMake(value));
 
-    let platformUnitSalesList: Section[][] = elem.platformUnitSales.map(value => platformUnitSalesMake(value));
+    let platformUnitSalesThisFYList: Section[][] = elem.platformUnitSales.map(value => platformUnitSalesMake(value));
 
     let platformUnitSalesLastFYList: Section[][] = elem.platformUnitSales.map((value) => {
 
@@ -207,6 +207,77 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
                 : platformUnitSalesMake(nameSearch[0]);
     })
 
+    let platformForecastsList: Section[][] = elem.platformForecastSales.map(value => platformForecastsMake(value));
 
+    const quarterlyPlatformUnitSalesThisFY = platformUnitSalesThisFYList.map((elem) => {
+
+        return quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative index
+    });
+
+    const quarterlyPlatformUnitSalesLastFY = platformUnitSalesThisFYList.map((elem) => {
+
+        return quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative index
+    });
+
+    const platformUnitSalesThisFY = platformUnitSalesThisFYList.map((elem) => {
+        return elem.filter((value, index) => index !== array.length-1) // filtering out the last FY cml index
+    });
+
+    const platformUnitSalesLastFY = platformUnitSalesLastFYList.map((elem) => {
+        return elem.filter((value, index) => index !== array.length-1) // filtering out the last FY cml index
+    });
+
+    const platformUnitSalesYoY = Array.from({length: platformUnitSalesThisFY.length}, (v, i) => {
+
+        return yearOnYearCalculation(platformUnitSalesThisFY[i], platformUnitSalesLastFY[i])
+    });
+
+    const quarterlyPlatformUnitSalesYoY = Array.from({length: quarterlyPlatformUnitSalesThisFY.length}, (v, i) => {
+
+        return yearOnYearCalculation(quarterlyPlatformUnitSalesThisFY[i], quarterlyPlatformUnitSalesLastFY[i])
+    });
+
+    const cmlPlatformUnitSalesThisFY = platformUnitSalesThisFYList.map(elem => {
+
+        return elem.filter((value, index) => {
+            return index !== 0 // filter out the first quarters
+        });
+    });
+
+
+    const printOne: string = printHead(header)
+
+    const printPlatformCmlSales: string[] = Array.from({length: platformSalesList.length}, (v, i) => {
+
+        let switchHardware: Section[][] = platformUnitSalesThisFYList.filter((elem, index) => elem[index].name === " Hardware Total ")
+
+        return printSalesHardware(
+            header,
+            platformSalesList[i],
+            switchHardware[0],
+            currentQuarter
+        ) 
+    })
+
+    const printPlatformUnitSales: string[] = Array.from({length: platformUnitSalesThisFY.length}, (v, i) => {
+
+        let forecast = (cmlPlatformUnitSalesThisFY[i][0].name === " Software Total ")
+            ? platformForecastsList[1] // software
+            : platformForecastsList[0] // hardware
+
+        return printSections(
+            header, 
+            quarterlyPlatformUnitSalesThisFY[i],
+            quarterlyPlatformUnitSalesYoY[i],
+            cmlPlatformUnitSalesThisFY[i],
+            platformUnitSalesYoY[i],
+            forecast,
+            currentQuarter
+            )
+    }).concat("###");
+
+    let printAll = [printOne].concat(printPlatformCmlSales, printPlatformUnitSales);
+
+    return printAll.reduce((prev, next) => prev + "\n" + next);
 
 });
