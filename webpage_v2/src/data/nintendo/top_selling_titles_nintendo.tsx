@@ -62,7 +62,7 @@ const titlesMake = (obj: {
         {
             title: obj.name,
             period: " Q4 Last FY ",
-            value: obj.Q1CmlValue,
+            value: obj.valueLastFY, // must check correct keys used
             miscellaneous: obj.miscellaneous,
         },
     ]
@@ -99,9 +99,9 @@ export const topSellingTitlesList: string[] = collection.map((elem, index, array
         });
     
     let differenceTitles: Titles[][] = sortedCollection.map(elem => quarterlyCalculation(elem));
-
+        
     let printOne = printHead(header)
-
+        
     let inputArrays = Array.from({length: differenceTitles.length}, (v, i) => {
 
         return {

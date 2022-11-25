@@ -163,7 +163,7 @@ export const regionalHardwareSoftwareList: string[] = collection.map((elem, inde
 
     let regionalUnitsLastFYList: Section[][] = elem.regions.map((value) => {
 
-        let nameSearch = array[index+1].regions.filter(findName => value.name === findName.name); // should find only one match
+        let nameSearch = (!array[index+1]) ? undefined : array[index+1].regions.filter(findName => value.name === findName.name); // should find only one match
 
         return (!nameSearch)
                 ? platformUnitsMake(undefined)

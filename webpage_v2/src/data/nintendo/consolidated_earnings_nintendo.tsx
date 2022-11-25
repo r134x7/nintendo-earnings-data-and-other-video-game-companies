@@ -118,6 +118,10 @@ const forecastMake = (obj: {
 
 export const consolidatedEarningsList: string[] = collection.map((elem, index, array) => {
 
+    if (index === array.length-1) {
+        return ""
+    }
+
     let currentQuarter: number = elem.currentQuarter;
 
     let header: Header = {
@@ -155,13 +159,13 @@ export const consolidatedEarningsList: string[] = collection.map((elem, index, a
     let forecastNameNextFY: string = " " + elem.fiscalYear.slice(0,4) + nextFY + "Forecast ";
 
     let netSalesThisFY: Earnings[] = valuesMake(elem.netSales, cmlName);
-    let netSalesLastFY: Earnings[] = (!array[index+1].netSales) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].netSales, cmlName);
+    let netSalesLastFY: Earnings[] = (!array[index+1]) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].netSales, cmlName);
 
     let operatingIncomeThisFY: Earnings[] = valuesMake(elem.operatingIncome, cmlName);
-    let operatingIncomeLastFY: Earnings[] = (!array[index+1].operatingIncome) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].operatingIncome, cmlName);
+    let operatingIncomeLastFY: Earnings[] = (!array[index+1]) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].operatingIncome, cmlName);
 
     let netIncomeThisFY: Earnings[] = valuesMake(elem.netIncome, cmlName);
-    let netIncomeLastFY: Earnings[] = (!array[index+1].netIncome) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].netIncome, cmlName);
+    let netIncomeLastFY: Earnings[] = (!array[index+1]) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].netIncome, cmlName);
 
     let netSalesForecasts: Earnings[] = forecastMake(elem.netSales, forecastNameThisFY, forecastNameNextFY);
     let operatingIncomeForecasts: Earnings[] = forecastMake(elem.operatingIncome, forecastNameThisFY, forecastNameNextFY);
@@ -298,11 +302,11 @@ export const consolidatedEarningsList: string[] = collection.map((elem, index, a
     const printOne = printHead(header);
 
     const [printTwo, printThree, printFour, printFive] = [
-    netSalesArrays, operatingIncomeArrays, opMarginArrays, netIncomeArrays ].map((elem, index, array) => {
-
+    netSalesArrays, operatingIncomeArrays, opMarginArrays, netIncomeArrays].map((elem, index, array) => {
+            
             return printBody(...elem)
     });
 
     return printOne + "\n" + printTwo + "\n" + printThree + "\n" + printFour + "\n" + printFive + "\n###";
 
-})
+}).filter(elem => elem !== "");
