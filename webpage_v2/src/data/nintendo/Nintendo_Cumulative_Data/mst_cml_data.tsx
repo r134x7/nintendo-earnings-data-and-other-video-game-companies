@@ -1,26 +1,49 @@
-import { collection as fy3_2017_collection } from "../Nintendo_FY3_2017/mst_fy3_2017";
-import { collection as fy3_2018_collection } from "../Nintendo_FY3_2018/mst_fy3_2018";
-import { collection as fy3_2019_collection } from "../Nintendo_FY3_2019/mst_fy3_2019";
-import { collection as fy3_2020_collection } from "../Nintendo_FY3_2020/mst_fy3_2020";
-import { collection as fy3_2021_collection } from "../Nintendo_FY3_2021/mst_fy3_2021";
-import { collection as fy3_2022_collection } from "../Nintendo_FY3_2022/mst_fy3_2022";
-import { collection as fy3_2023_collection } from "../Nintendo_FY3_2023/mst_fy3_2023";
+// import { collection as fy3_2017_collection } from "../Nintendo_FY3_2017/mst_fy3_2017";
+// import { collection as fy3_2018_collection } from "../Nintendo_FY3_2018/mst_fy3_2018";
+// import { collection as fy3_2019_collection } from "../Nintendo_FY3_2019/mst_fy3_2019";
+// import { collection as fy3_2020_collection } from "../Nintendo_FY3_2020/mst_fy3_2020";
+// import { collection as fy3_2021_collection } from "../Nintendo_FY3_2021/mst_fy3_2021";
+// import { collection as fy3_2022_collection } from "../Nintendo_FY3_2022/mst_fy3_2022";
+// import { collection as fy3_2023_collection } from "../Nintendo_FY3_2023/mst_fy3_2023";
+
+import { titlesMake } from "../fy_million_seller_titles_nintendo";
+
+import fyMillionSellerTitles2023 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2023.json";
+import fyMillionSellerTitles2022 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2022.json";
+import fyMillionSellerTitles2021 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2021.json";
+import fyMillionSellerTitles2020 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2020.json";
+import fyMillionSellerTitles2019 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2019.json";
+import fyMillionSellerTitles2018 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2018.json";
+import fyMillionSellerTitles2017 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2017.json";
 
 // avoid having empty lists [] in your collections from preparing for the next earnings
 import { Header, Titles, decimateCalculation, printHead } from "../../../utils/fy_million_seller_titles_logic"
 
+    // const totalCollection = [
+    //     fy3_2017_collection,
+    //     fy3_2018_collection,
+    //     fy3_2019_collection,
+    //     fy3_2020_collection,
+    //     fy3_2021_collection,
+    //     fy3_2022_collection,
+    //     fy3_2023_collection,
+    // ] as const;
+
     const totalCollection = [
-        fy3_2017_collection,
-        fy3_2018_collection,
-        fy3_2019_collection,
-        fy3_2020_collection,
-        fy3_2021_collection,
-        fy3_2022_collection,
-        fy3_2023_collection,
-    ] as const;
+        fyMillionSellerTitles2017,
+        fyMillionSellerTitles2018,
+        fyMillionSellerTitles2019,
+        fyMillionSellerTitles2020,
+        fyMillionSellerTitles2021,
+        fyMillionSellerTitles2022,
+        fyMillionSellerTitles2023,
+    ].map(elem => {
+        return elem.titles.map(value => titlesMake(value))
+    });
 
     // latestFYcollection is where the latest FY collection needs to be placed.
-    const latestFYcollection = fy3_2023_collection.map((elem, index) => {
+    // const latestFYcollection = fy3_2023_collection.map((elem, index) => {
+    const latestFYcollection = totalCollection[totalCollection.length-1].map((elem, index) => {
         
         return sortingArrays(index)
     })
@@ -295,14 +318,17 @@ const printFour = printTitlesGlobal(divideSortedGlobalCollection)
 export const printJapan =
 `${printOne}
 ${dateLabel}
-${printTwo}`;
+${printTwo}
+###`;
 
 export const printOverseas = 
 `${printOne}
 ${dateLabel}
-${printThree}`;
+${printThree}
+###`;
 
 export const printGlobal = 
 `${printOne}
 ${dateLabel}
-${printFour}`;
+${printFour}
+###`;

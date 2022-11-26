@@ -28,7 +28,7 @@ const collection = [
     fyMillionSellerTitles2017,
 ] as const;
 
-const titlesMake = (obj: {
+export const titlesMake = (obj: {
     name: string,
     regionA: string,
     Q1CmlValueA: number,
