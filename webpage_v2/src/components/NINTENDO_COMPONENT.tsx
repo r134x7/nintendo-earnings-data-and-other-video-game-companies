@@ -9,6 +9,9 @@ import { keySalesIndicatorsList } from "../data/nintendo/key_sales_indicators_ni
 import { regionalHardwareSoftwareList } from "../data/nintendo/regional_hardware_software_nintendo";
 import { topSellingTitlesList } from "../data/nintendo/top_selling_titles_nintendo";
 
+import GRAPH_NINTENDO_EARNINGS from "../data/nintendo/Graphs/GRAPH_NINTENDO_EARNINGS";
+import { consolidatedEarningsGraphList } from "../data/nintendo/consolidated_earnings_nintendo";
+
 export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
     const [value, setValue] = useState("");
@@ -25,6 +28,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
             {
                 name: "Consolidated Operating Results",
                 value: consolidatedEarningsList[index]? consolidatedEarningsList[index] : undefined,
+                graph: consolidatedEarningsGraphList[index]? <GRAPH_NINTENDO_EARNINGS setData={consolidatedEarningsGraphList[index]} /> : undefined
             },
             {
                 name: "Global Hardware/Software units, Mobile/IP related income",

@@ -349,11 +349,11 @@ export const consolidatedEarningsGraphList = collection.map((elem, index, array)
         return quarterlyCalculation(elem)
     });
 
-    let thisFY = elem.fiscalYear.slice(0, -1);
-    let lastFY = (Number(thisFY.slice(-4)) - 1).toString();
+    let thisFY: string = elem.fiscalYear.slice(0, -1);
+    let lastFY: string = (Number(thisFY.slice(-4)) - 1).toString();
 
-    let marchThisFY = "March " + thisFY.slice(4);
-    let marchLastFY = "March " + lastFY.slice(4);
+    let marchThisFY: string = "March " + thisFY.slice(4);
+    let marchLastFY: string = "March " + lastFY.slice(4);
 
     const opMarginCollection = [
             netSalesDifference,
@@ -380,6 +380,10 @@ export const consolidatedEarningsGraphList = collection.map((elem, index, array)
 
 
     const graphMake = {
+        thisFY: thisFY,
+        lastFY: lastFY,
+        marchThisFY: marchThisFY,
+        marchLastFY: marchLastFY,
         qtrNetSalesThisFY: netSalesDifference,
         qtrOperatingIncomeThisFY: operatingIncomeDifference,
         qtrOpMarginThisFY: operatingMarginQuarters,
