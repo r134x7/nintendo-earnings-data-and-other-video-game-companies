@@ -316,8 +316,6 @@ export const consolidatedEarningsGraphList = collection.map((elem, index, array)
         return undefined
     }
 
-    let currentQuarter: number = elem.currentQuarter;
-
     let cmlName: string = " " + elem.fiscalYear.slice(0,4) + elem.fiscalYear.slice(-3) + "Cml. ";
 
     let netSalesThisFY: Earnings[] = valuesMake(elem.netSales, cmlName);
@@ -350,7 +348,7 @@ export const consolidatedEarningsGraphList = collection.map((elem, index, array)
     });
 
     let thisFY: string = elem.fiscalYear.slice(0, -1);
-    let lastFY: string = (Number(thisFY.slice(-4)) - 1).toString();
+    let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
 
     let marchThisFY: string = "March " + thisFY.slice(4);
     let marchLastFY: string = "March " + lastFY.slice(4);
