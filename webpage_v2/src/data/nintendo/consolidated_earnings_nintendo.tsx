@@ -115,7 +115,6 @@ const forecastMake = (obj: {
     return forecasts
 }
 
-
 export const consolidatedEarningsList: string[] = collection.map((elem, index, array) => {
 
     if (index === array.length-1) {
@@ -310,3 +309,94 @@ export const consolidatedEarningsList: string[] = collection.map((elem, index, a
     return printOne + "\n" + printTwo + "\n" + printThree + "\n" + printFour + "\n" + printFive + "\n###";
 
 }).filter(elem => elem !== "");
+
+export const consolidatedEarningsGraphList = collection.map((elem, index, array) => {
+
+    if (index === array.length-1) {
+        return undefined
+    }
+
+    let currentQuarter: number = elem.currentQuarter;
+
+    let cmlName: string = " " + elem.fiscalYear.slice(0,4) + elem.fiscalYear.slice(-3) + "Cml. ";
+
+    let netSalesThisFY: Earnings[] = valuesMake(elem.netSales, cmlName);
+    let netSalesLastFY: Earnings[] = (!array[index+1]) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].netSales, cmlName);
+
+    let operatingIncomeThisFY: Earnings[] = valuesMake(elem.operatingIncome, cmlName);
+    let operatingIncomeLastFY: Earnings[] = (!array[index+1]) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].operatingIncome, cmlName);
+
+    let netIncomeThisFY: Earnings[] = valuesMake(elem.netIncome, cmlName);
+    let netIncomeLastFY: Earnings[] = (!array[index+1]) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].netIncome, cmlName);
+
+
+    const valueCollection = [
+        netSalesThisFY,
+        netSalesLastFY,
+        operatingIncomeThisFY,
+        operatingIncomeLastFY,
+        netIncomeThisFY,
+        netIncomeLastFY,
+    ];
+
+    const [
+        netSalesDifference, 
+        netSalesLastFYDifference, 
+        operatingIncomeDifference, operatingIncomeLastFYDifference, 
+        netIncomeDifference, 
+        netIncomeLastFYDifference,
+    ] = valueCollection.map((elem) => {
+        return quarterlyCalculation(elem)
+    });
+
+    let thisFY = elem.fiscalYear.slice(0, -1);
+    let lastFY = (Number(thisFY.slice(-4)) - 1).toString();
+
+    let marchThisFY = "March " + thisFY.slice(4);
+    let marchLastFY = "March " + lastFY.slice(4);
+
+    const opMarginCollection = [
+            netSalesDifference,
+            operatingIncomeDifference,
+            netSalesThisFY,
+            operatingIncomeThisFY,
+            netSalesLastFYDifference,
+            operatingIncomeLastFYDifference,
+            netSalesLastFY,
+            operatingIncomeLastFY,
+    ];
+
+    const [
+        operatingMarginQuarters, 
+        operatingMarginCumulative,
+        operatingMarginQuartersLastFY,
+        operatingMarginCumulativeLastFY,
+    ] = opMarginCollection.map((elem, index, array) => {
+    
+        return (index % 2 === 0) 
+                ? operatingMarginCalculation(array[index], array[index+1])
+                : [];
+        }).filter((elem) => elem.length !== 0)
+
+
+    const graphMake = {
+        qtrNetSalesThisFY: netSalesDifference,
+        qtrOperatingIncomeThisFY: operatingIncomeDifference,
+        qtrOpMarginThisFY: operatingMarginQuarters,
+        qtrNetIncomeThisFY: netIncomeDifference,
+        cmlNetSalesThisFY: netSalesThisFY,
+        cmlOperatingIncomeThisFY: operatingIncomeThisFY,
+        cmlOpMarginThisFY: operatingMarginCumulative,
+        cmlNetIncomeThisFY: netIncomeThisFY,
+        qtrNetSalesLastFY: netSalesLastFYDifference,
+        qtrOperatingIncomeLastFY: operatingIncomeLastFYDifference,
+        qtrOpMarginLastFY: operatingMarginQuartersLastFY,
+        qtrNetIncomeLastFY: netSalesLastFYDifference,
+        cmlNetSalesLastFY: netSalesLastFY,
+        cmlOperatingIncomeLastFY: operatingIncomeLastFY,
+        cmlOpMarginLastFY: operatingMarginCumulativeLastFY,
+        cmlNetIncomeLastFY: netIncomeLastFY,
+    };
+
+    return graphMake
+}).filter(elem => elem !== undefined);
