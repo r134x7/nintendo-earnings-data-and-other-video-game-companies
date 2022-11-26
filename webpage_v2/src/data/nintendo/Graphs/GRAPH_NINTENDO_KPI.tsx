@@ -94,13 +94,32 @@ export default function GRAPH_NINTENDO_KPI(props:
     //     [proportionOfDLverPackagedSoftwareQtr[0], ...proportionOfDLverPackagedSoftwareCml].map((elem) => elem.value),
     // ]
 
-    const graphCumulative: number[][] = props.setData.quarterValuesThisFY.map((elem) => {
+    const graphCumulativePartOne: number[][] = props.setData.quarterValuesThisFY.map((elem) => {
         return elem.filter((value, index) => index === 0).map(value => value.value)
-    }).concat(props.setData.cumulativeValuesThisFY.map(elem => {
+    })
+
+    const graphCumulativePartTwo: number[][] = props.setData.cumulativeValuesThisFY.map(elem => {
         return elem.map(value => value.value)
     })
-    )
-    // filter((elem, index) => index === 0).map(elem => elem[0].value).concat();
+    
+    const graphCumulative: number[][] = Array.from({length: props.setData.quarterValuesThisFY.length}, (v,i) => {
+
+        return graphCumulativePartOne[i].concat(graphCumulativePartTwo[i])
+    }) 
+    
+
+    const graphCumulativeLastFYPartOne: number[][] = props.setData.quarterValuesLastFY.map((elem) => {
+        return elem.filter((value, index) => index === 0).map(value => value.value)
+    })
+
+    const graphCumulativeLastFYPartTwo: number[][] = props.setData.cumulativeValuesLastFY.map(elem => {
+        return elem.map(value => value.value)
+    })
+    
+    const graphCumulativeLastFY: number[][] = Array.from({length: props.setData.quarterValuesLastFY.length}, (v,i) => {
+
+        return graphCumulativeLastFYPartOne[i].concat(graphCumulativeLastFYPartTwo[i])
+    }) 
 
 
     // const graphCumulativeLastFY = [
@@ -161,9 +180,10 @@ export default function GRAPH_NINTENDO_KPI(props:
                     options={{
                      scales: {
                         y: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: false,
+                            // (activePage === 4)
+                            //             ? true
+                            //             : false,
                             title: {
                               display: true,
                               text: (activePage === 4)
@@ -172,9 +192,10 @@ export default function GRAPH_NINTENDO_KPI(props:
                             },
                           },
                           x: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: false,
+                            // (activePage === 4)
+                            //             ? true
+                            //             : false,
                               title: {
                                   display: true,
                                   text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
@@ -237,9 +258,10 @@ export default function GRAPH_NINTENDO_KPI(props:
                     options={{
                      scales: {
                         y: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: false,
+                            // (activePage === 4)
+                            //             ? true
+                            //             : false,
                             title: {
                               display: true,
                               text: (activePage === 4)
@@ -248,9 +270,10 @@ export default function GRAPH_NINTENDO_KPI(props:
                             },
                           },
                           x: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: false,
+                            // (activePage === 4)
+                            //             ? true
+                            //             : false,
                               title: {
                                   display: true,
                                   text: `Quarters for Fiscal Years Ending ${labels.MarchThisYear} and ${labels.MarchLastYear}`,
@@ -295,9 +318,10 @@ export default function GRAPH_NINTENDO_KPI(props:
                     options={{
                      scales: {
                         y: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: false,
+                            // (activePage === 4)
+                            //             ? true
+                            //             : false,
                             title: {
                               display: true,
                               text: (activePage === 4)
@@ -306,9 +330,10 @@ export default function GRAPH_NINTENDO_KPI(props:
                             },
                           },
                           x: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: false,
+                            // (activePage === 4)
+                            //             ? true
+                            //             : false,
                               title: {
                                   display: true,
                                   text: `Quarters for Fiscal Year Ending ${labels.MarchThisYear}`,
@@ -330,9 +355,10 @@ export default function GRAPH_NINTENDO_KPI(props:
                             borderColor: "black",
                             backgroundColor: "indigo",
                             borderWidth: 2,
-                            stack: (activePage === 4)
-                                    ? "stack 0"
-                                    : "0",
+                            stack: "0", 
+                            // (activePage === 4)
+                            //         ? "stack 0"
+                            //         : "0",
                         },
                         {
                             data: graphCumulative[activePage-1],
@@ -340,9 +366,10 @@ export default function GRAPH_NINTENDO_KPI(props:
                             borderColor: "black",
                             backgroundColor: "rgba(75, 0, 130, .20)",
                             borderWidth: 2,
-                            stack: (activePage === 4)
-                                    ? "stack 0"
-                                    : "1",
+                            stack: "1", 
+                            // (activePage === 4)
+                            //         ? "stack 0"
+                            //         : "1",
                         },
                         {
                             data: graphQuartersLastFY[activePage-1],
@@ -360,9 +387,10 @@ export default function GRAPH_NINTENDO_KPI(props:
                             borderColor: "black",
                             backgroundColor: "rgba(255, 165, 0, 0.2)",
                             borderWidth: 2,
-                            stack: (activePage === 4)
-                                    ? "stack 1"
-                                    : "3",
+                            stack: "3",
+                            // (activePage === 4)
+                            //         ? "stack 1"
+                            //         : "3",
                         },
                     ], 
                 }}
@@ -370,9 +398,10 @@ export default function GRAPH_NINTENDO_KPI(props:
                 options={{
                  scales: {
                     y: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: false,
+                            // (activePage === 4)
+                            //             ? true
+                            //             : false,
                         title: {
                           display: true,
                           text: (activePage === 4)
@@ -381,9 +410,10 @@ export default function GRAPH_NINTENDO_KPI(props:
                         },
                       },
                       x: {
-                            stacked: (activePage === 4)
-                                        ? true
-                                        : false,
+                            stacked: false,
+                            // (activePage === 4)
+                            //             ? true
+                            //             : false,
                           title: {
                               display: true,
                               text: `Quarters for Fiscal Years Ending ${labels.MarchThisYear} and ${labels.MarchLastYear}`,

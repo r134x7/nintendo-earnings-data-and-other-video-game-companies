@@ -202,11 +202,11 @@ export const keySalesIndicatorsGraphList = collection.map((elem, index, array) =
 
     let cmlValuesThisFY: KPDIndicators[][] = elem.kpi.map(elem => cmlValuesMake(elem, cmlName));
 
-    let qtrValuesLastFY: KPDIndicators[][] = (!array[index+1]) ? elem.kpi.map(elem => quarterValuesMake(undefined)) : elem.kpi.map(elem => quarterValuesMake(elem));
+    let qtrValuesLastFY: KPDIndicators[][] = (!array[index+1]) ? elem.kpi.map(elem => quarterValuesMake(undefined)) : array[index+1].kpi.map(elem => quarterValuesMake(elem));
 
-    let cmlValuesLastFY: KPDIndicators[][] = (!array[index+1]) ? elem.kpi.map(elem => cmlValuesMake(undefined, cmlName)) : elem.kpi.map(elem => cmlValuesMake(elem, cmlName));
+    let cmlValuesLastFY: KPDIndicators[][] = (!array[index+1]) ? elem.kpi.map(elem => cmlValuesMake(undefined, cmlName)) : array[index+1].kpi.map(elem => cmlValuesMake(elem, cmlName));
 
-    let thisFY: string = elem.fiscalYear.slice(3, -2);
+    let thisFY: string = elem.fiscalYear.slice(2, -2);
     let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
 
     let marchThisFY: string = "March " + thisFY.slice(4);
