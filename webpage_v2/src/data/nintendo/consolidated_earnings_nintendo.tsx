@@ -395,7 +395,7 @@ export const consolidatedEarningsGraphList = collection.map((elem, index, array)
         qtrNetSalesLastFY: netSalesLastFYDifference,
         qtrOperatingIncomeLastFY: operatingIncomeLastFYDifference,
         qtrOpMarginLastFY: operatingMarginQuartersLastFY,
-        qtrNetIncomeLastFY: netSalesLastFYDifference,
+        qtrNetIncomeLastFY: netIncomeLastFYDifference,
         cmlNetSalesLastFY: netSalesLastFY,
         cmlOperatingIncomeLastFY: operatingIncomeLastFY,
         cmlOpMarginLastFY: operatingMarginCumulativeLastFY,
