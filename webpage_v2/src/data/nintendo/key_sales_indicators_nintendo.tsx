@@ -24,7 +24,7 @@ const collection = [
     keySalesIndicators2017,
 ] as const;
 
-const quarterValuesMake = (obj: {
+const quarterValuesMake = (obj: undefined | {
     name: string,
     units: string,
     Q1Value: number,
@@ -40,34 +40,34 @@ const quarterValuesMake = (obj: {
     let quarterValues: KPDIndicators[] = [
         {
             category: "quarterly",
-            units: (obj.units === "percentage") ? "percentage" : "currency",
+            units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
             quarter: " 1st Quarter       ",
-            value: obj.Q1Value,
+            value: (!obj) ? 0 : obj.Q1Value,
         },
         {
             category: "quarterly",
-            units: (obj.units === "percentage") ? "percentage" : "currency",
+            units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
             quarter: " 2nd Quarter       ",
-            value: obj.Q2Value,
+            value: (!obj) ? 0 : obj.Q2Value,
         },
         {
             category: "quarterly",
-            units: (obj.units === "percentage") ? "percentage" : "currency",
+            units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
             quarter: " 3rd Quarter       ",
-            value: obj.Q3Value,
+            value: (!obj) ? 0 : obj.Q3Value,
         },
         {
             category: "quarterly",
-            units: (obj.units === "percentage") ? "percentage" : "currency",
+            units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
             quarter: " 4th Quarter       ",
-            value: obj.Q4Value,
+            value: (!obj) ? 0 : obj.Q4Value,
         },
     ]
 
     return quarterValues
 };
 
-const cmlValuesMake = (obj: {
+const cmlValuesMake = (obj: undefined | {
     name: string,
     units: string,
     Q1Value: number,
@@ -82,21 +82,21 @@ const cmlValuesMake = (obj: {
     let cmlValues: KPDIndicators[] = [
         {
             category: "cumulative",
-            units: (obj.units === "percentage") ? "percentage" : "currency",
+            units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
             quarter: " 1st Half          ",
-            value: obj.Q2CmlValue,
+            value: (!obj) ? 0 : obj.Q2CmlValue,
         },
         {
             category: "cumulative",
-            units: (obj.units === "percentage") ? "percentage" : "currency",
+            units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
             quarter: " 1st Three Quarters",
-            value: obj.Q3CmlValue,
+            value: (!obj) ? 0 : obj.Q3CmlValue,
         },
         {
             category: "cumulative",
-            units: (obj.units === "percentage") ? "percentage" : "currency",
+            units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
             quarter: cmlName,
-            value: obj.Q4CmlValue,
+            value: (!obj) ? 0 : obj.Q4CmlValue,
         },
     ];
 
@@ -191,5 +191,39 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
     let printAll = [printOne].concat(printRest);  
 
     return printAll.reduce((prev, next) => prev + "\n" + next);
+
+});
+
+export const keySalesIndicatorsGraphList = collection.map((elem, index, array) => {
+
+    let cmlName: string = elem.fiscalYear.slice(1,6) + elem.fiscalYear.slice(-4,-1) + "Cumulative ";
+
+    let qtrValuesThisFY: KPDIndicators[][] = elem.kpi.map(elem => quarterValuesMake(elem));
+
+    let cmlValuesThisFY: KPDIndicators[][] = elem.kpi.map(elem => cmlValuesMake(elem, cmlName));
+
+    let qtrValuesLastFY: KPDIndicators[][] = (!array[index+1]) ? elem.kpi.map(elem => quarterValuesMake(undefined)) : elem.kpi.map(elem => quarterValuesMake(elem));
+
+    let cmlValuesLastFY: KPDIndicators[][] = (!array[index+1]) ? elem.kpi.map(elem => cmlValuesMake(undefined, cmlName)) : elem.kpi.map(elem => cmlValuesMake(elem, cmlName));
+
+    let thisFY: string = elem.fiscalYear.slice(3, -2);
+    let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
+
+    let marchThisFY: string = "March " + thisFY.slice(4);
+    let marchLastFY: string = "March " + lastFY.slice(4);
+
+
+    const graphMake = {
+        thisFY: thisFY,
+        lastFY: lastFY,
+        marchThisFY: marchThisFY,
+        marchLastFY: marchLastFY,
+        quarterValuesThisFY: qtrValuesThisFY,
+        quarterValuesLastFY: qtrValuesLastFY,
+        cumulativeValuesThisFY: cmlValuesThisFY,
+        cumulativeValuesLastFY: cmlValuesLastFY,
+    };
+
+    return graphMake
 
 })

@@ -2,15 +2,15 @@ import { useState } from "react";
 import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { dataSourcesList } from "../data/nintendo/Data_Sources/data_sources_full_list";
-import { consolidatedEarningsList } from "../data/nintendo/consolidated_earnings_nintendo";
+import { consolidatedEarningsList, consolidatedEarningsGraphList } from "../data/nintendo/consolidated_earnings_nintendo";
 import { fyMillionSellerTitlesList } from "../data/nintendo/fy_million_seller_titles_nintendo";
 import { globalHardwareSoftwareMobileList } from "../data/nintendo/global_hardware_software_mobile_nintendo";
-import { keySalesIndicatorsList } from "../data/nintendo/key_sales_indicators_nintendo";
+import { keySalesIndicatorsList, keySalesIndicatorsGraphList } from "../data/nintendo/key_sales_indicators_nintendo";
 import { regionalHardwareSoftwareList } from "../data/nintendo/regional_hardware_software_nintendo";
 import { topSellingTitlesList } from "../data/nintendo/top_selling_titles_nintendo";
 
 import GRAPH_NINTENDO_EARNINGS from "../data/nintendo/Graphs/GRAPH_NINTENDO_EARNINGS";
-import { consolidatedEarningsGraphList } from "../data/nintendo/consolidated_earnings_nintendo";
+import GRAPH_NINTENDO_KPI from "../data/nintendo/Graphs/GRAPH_NINTENDO_KPI";
 
 export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
@@ -37,6 +37,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
             {
                 name: "Key/Digital Sales Indicators",
                 value: keySalesIndicatorsList[index]? keySalesIndicatorsList[index] : undefined,
+                graph: keySalesIndicatorsGraphList[index]? <GRAPH_NINTENDO_KPI setData={keySalesIndicatorsGraphList[index]} /> : undefined
             },
             {
                 name: "FY Million-Seller Titles",
