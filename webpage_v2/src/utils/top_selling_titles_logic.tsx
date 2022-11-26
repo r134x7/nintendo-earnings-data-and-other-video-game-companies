@@ -107,7 +107,7 @@ const miscellaneousLine = (titleDifference: Titles[]) => {
 
     return (miscellaneousCheck === undefined)
             ? lastLine 
-            : lastLine + "\n" + lastLine;
+            : lastLine + "\n" + miscellaneousCheck + "\n" + lastLine;
 }
 
 export const printHead = (header: Header) =>

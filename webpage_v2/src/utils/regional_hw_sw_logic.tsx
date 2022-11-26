@@ -62,11 +62,11 @@ export function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
                         valueE: Number(
                         ((((elem.valueE / lastFY[index].valueE) -1)* -1) * 100).toFixed(2)),
                       }
-                    // : (lastFY[index].valueA === 0 || lastFY[index].dataShift === true)
-                    // ? {
-                    //     ...elem, 
-                    //     units: "NaN", 
-                    // }
+                    : (lastFY[index].valueA === 0) // || lastFY[index].dataShift === true) // won't need dataShift here most likely
+                    ? {
+                        ...elem, 
+                        units: "NaN", 
+                    }
                     // : (lastFY[index].valueE !== 0)
                     // ? {
                     //     ...elem, 
