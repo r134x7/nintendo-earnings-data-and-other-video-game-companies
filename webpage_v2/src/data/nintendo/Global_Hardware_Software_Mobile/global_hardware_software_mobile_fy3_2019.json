@@ -21,7 +21,8 @@
                 "Q2CmlValue": 507,
                 "Q3CmlValue": 1449,
                 "Q4CmlValue": 1695,
-                "cmlValueLastFY": 1779
+                "cmlValueLastFY": 1779,
+                "dataShift": true
             },
             {
                 "name": " Hardware Total ",

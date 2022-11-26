@@ -88,7 +88,6 @@ const platformUnitSalesMake = (obj: undefined | {
     cmlValueLastFY: number,
 }): Section[] => {
 
-
     let unitSales: Section[] = [
         {
             name: (!obj) ? "Null" : obj.name,
@@ -215,12 +214,14 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
 
     let platformSalesList: Section[][] = elem.platformCmlSales.map(value => platformSalesMake(value));
 
-    let platformUnitSalesThisFYList: Section[][] = elem.platformUnitSales.map(value => platformUnitSalesMake(value));
-
-    let platformUnitSalesLastFYList: Section[][] = elem.platformUnitSales.map((value) => {
-
+    let platformUnitSalesThisFYList: Section[][] = elem.platformUnitSales.filter(value => !Object.hasOwn(value, "dataShift")).map(value => platformUnitSalesMake(value)); // applying only to ThisFY and not LastFY else YoY% won't work correctly
+    
+    let platformUnitSalesLastFYList: Section[][] = elem.platformUnitSales.filter(value => !Object.hasOwn(value, "dataShift")).map((value) => {
+        // array[index+1] is checking the collection index of the previous fiscal year
         let nameSearch = (!array[index+1]) ? undefined : array[index+1].platformUnitSales.filter(findName => value.name === findName.name); // it should only find one match
-
+        console.log(nameSearch);
+        console.log(nameSearch === undefined);
+        
         return (!nameSearch) 
                 ? platformUnitSalesMake(undefined)
                 : platformUnitSalesMake(nameSearch[0]);
@@ -232,9 +233,7 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
 
         return quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative index
     });
-    console.log(quarterlyPlatformUnitSalesThisFY);
     
-
     const quarterlyPlatformUnitSalesLastFY = platformUnitSalesLastFYList.map((elem) => {
 
         return quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative index
@@ -252,15 +251,11 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
 
         return yearOnYearCalculation(platformUnitSalesThisFY[i], platformUnitSalesLastFY[i])
     });
-    console.log(platformUnitSalesYoY);
-    
 
     const quarterlyPlatformUnitSalesYoY = Array.from({length: quarterlyPlatformUnitSalesThisFY.length}, (v, i) => {
 
         return yearOnYearCalculation(quarterlyPlatformUnitSalesThisFY[i], quarterlyPlatformUnitSalesLastFY[i])
     });
-
-    console.log(quarterlyPlatformUnitSalesYoY);
 
     const cmlPlatformUnitSalesThisFY = platformUnitSalesThisFYList.map(elem => {
 
