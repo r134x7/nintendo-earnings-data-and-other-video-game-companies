@@ -159,9 +159,10 @@ export const regionalHardwareSoftwareList: string[] = collection.map((elem, inde
         ltd: " Life-To-Date ",
     };
 
-    let regionalUnitsThisFYList: Section[][] = elem.regions.map(value => platformUnitsMake(value));
+    let regionalUnitsThisFYList: Section[][] = elem.regions.filter(value => !Object.hasOwn(value, "dataShift")).map(value => platformUnitsMake(value));
 
-    let regionalUnitsLastFYList: Section[][] = elem.regions.map((value) => {
+    // applying the filter on both ThisFYList and LastFYList will work correctly 
+    let regionalUnitsLastFYList: Section[][] = elem.regions.filter(value => !Object.hasOwn(value, "dataShift")).map((value) => {
 
         let nameSearch = (!array[index+1]) ? undefined : array[index+1].regions.filter(findName => value.name === findName.name); // should find only one match
 

@@ -62,13 +62,29 @@ export function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
                         valueE: Number(
                         ((((elem.valueE / lastFY[index].valueE) -1)* -1) * 100).toFixed(2)),
                       }
-                    : (lastFY[index].valueA === 0 || lastFY[index].dataShift === true)
-                    ? {
-                        ...elem, 
-                        units: "NaN", 
-                    }
-                    : (lastFY[index].valueE !== 0)
-                    ? {
+                    // : (lastFY[index].valueA === 0 || lastFY[index].dataShift === true)
+                    // ? {
+                    //     ...elem, 
+                    //     units: "NaN", 
+                    // }
+                    // : (lastFY[index].valueE !== 0)
+                    // ? {
+                    //     ...elem, 
+                    //     units: "percentage", 
+                    //     valueB: Number(
+                    //     (((elem.valueB / lastFY[index].valueB) -1) * 100).toFixed(2)
+                    //     ),
+                    //     valueC: Number(
+                    //     (((elem.valueC / lastFY[index].valueC) -1) * 100).toFixed(2)
+                    //     ),
+                    //     valueD: Number(
+                    //     (((elem.valueD / lastFY[index].valueD) -1) * 100).toFixed(2)
+                    //     ),
+                    //     valueE: Number(
+                    //     (((elem.valueE / lastFY[index].valueE) -1) * 100).toFixed(2)
+                    //     ),
+                    //   }
+                    : {
                         ...elem, 
                         units: "percentage", 
                         valueB: Number(
@@ -82,20 +98,7 @@ export function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
                         ),
                         valueE: Number(
                         (((elem.valueE / lastFY[index].valueE) -1) * 100).toFixed(2)
-                        ),
-                      }
-                    : {
-                        ...elem, 
-                        units: "percentage", 
-                        valueB: Number(
-                        (((elem.valueB / lastFY[index].valueB) -1) * 100).toFixed(2)
-                        ),
-                        valueC: Number(
-                        (((elem.valueC / lastFY[index].valueC) -1) * 100).toFixed(2)
-                        ),
-                        valueD: Number(
-                        (((elem.valueD / lastFY[index].valueD) -1) * 100).toFixed(2)
-                        ),
+                        ), // added valueE here to deal with a different issue regarding FY3/2019 making the previous conditions useless
                       }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
         })
 

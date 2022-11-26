@@ -214,13 +214,12 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
 
     let platformSalesList: Section[][] = elem.platformCmlSales.map(value => platformSalesMake(value));
 
-    let platformUnitSalesThisFYList: Section[][] = elem.platformUnitSales.filter(value => !Object.hasOwn(value, "dataShift")).map(value => platformUnitSalesMake(value)); // applying only to ThisFY and not LastFY else YoY% won't work correctly
+    let platformUnitSalesThisFYList: Section[][] = elem.platformUnitSales.filter(value => !Object.hasOwn(value, "dataShift")).map(value => platformUnitSalesMake(value)); 
+    // applying the filter on both ThisFYList and LastFYList will work correctly 
     
     let platformUnitSalesLastFYList: Section[][] = elem.platformUnitSales.filter(value => !Object.hasOwn(value, "dataShift")).map((value) => {
         // array[index+1] is checking the collection index of the previous fiscal year
         let nameSearch = (!array[index+1]) ? undefined : array[index+1].platformUnitSales.filter(findName => value.name === findName.name); // it should only find one match
-        console.log(nameSearch);
-        console.log(nameSearch === undefined);
         
         return (!nameSearch) 
                 ? platformUnitSalesMake(undefined)
