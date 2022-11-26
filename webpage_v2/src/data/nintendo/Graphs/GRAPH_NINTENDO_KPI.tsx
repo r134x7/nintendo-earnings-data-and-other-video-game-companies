@@ -58,41 +58,59 @@ export default function GRAPH_NINTENDO_KPI(props:
         `Proportion of downloadable versions of Packaged Software Sales ${labels.lastFY}`,
     ]
 
-    const graphQuarters = [
-        proportionOfOverseasSalesQtr.map((elem) => elem.value),
-        proportionOfHardwareSalesQtr.map((elem) => elem.value),
-        proportionOfFirstPartySoftwareSalesQtr.map((elem) => elem.value),
-        digitalSalesQtr.map((elem) => elem.value),
-        proportionOfDigitalSalesQtr.map((elem) => elem.value),
-        proportionOfDLverPackagedSoftwareQtr.map((elem) => elem.value),
-    ]
+    // const graphQuarters = [
+    //     proportionOfOverseasSalesQtr.map((elem) => elem.value),
+    //     proportionOfHardwareSalesQtr.map((elem) => elem.value),
+    //     proportionOfFirstPartySoftwareSalesQtr.map((elem) => elem.value),
+    //     digitalSalesQtr.map((elem) => elem.value),
+    //     proportionOfDigitalSalesQtr.map((elem) => elem.value),
+    //     proportionOfDLverPackagedSoftwareQtr.map((elem) => elem.value),
+    // ]
 
-    const graphQuartersLastFY = [
-        proportionOfOverseasSalesQtrLastFY.map((elem) => elem.value),
-        proportionOfHardwareSalesQtrLastFY.map((elem) => elem.value),
-        proportionOfFirstPartySoftwareSalesQtrLastFY.map((elem) => elem.value),
-        digitalSalesQtrLastFY.map((elem) => elem.value),
-        proportionOfDigitalSalesQtrLastFY.map((elem) => elem.value),
-        proportionOfDLverPackagedSoftwareQtrLastFY.map((elem) => elem.value),
-    ]
+    const graphQuarters = props.setData.quarterValuesThisFY.map((elem) => {
+        return elem.map(value => value.value)
+    })
 
-    const graphCumulative = [
-        [proportionOfOverseasSalesQtr[0], ...proportionOfOverseasSalesCml].map((elem) => elem.value),
-        [proportionOfHardwareSalesQtr[0], ...proportionOfHardwareSalesCml].map((elem) => elem.value),
-        [proportionOfFirstPartySoftwareSalesQtr[0], ...proportionOfFirstPartySoftwareSalesCml].map((elem) => elem.value),
-        [digitalSalesQtr[0], ...digitalSalesCml].map((elem, index) => elem.value - digitalSalesQtr[index].value),
-        [proportionOfDigitalSalesQtr[0], ...proportionOfDigitalSalesCml].map((elem) => elem.value),
-        [proportionOfDLverPackagedSoftwareQtr[0], ...proportionOfDLverPackagedSoftwareCml].map((elem) => elem.value),
-    ]
+    const graphQuartersLastFY = props.setData.quarterValuesLastFY.map((elem) => {
+        return elem.map(value => value.value)
+    })
+ 
 
-    const graphCumulativeLastFY = [
-        [proportionOfOverseasSalesQtrLastFY[0], ...proportionOfOverseasSalesCmlLastFY].map((elem) => elem.value),
-        [proportionOfHardwareSalesQtrLastFY[0], ...proportionOfHardwareSalesCmlLastFY].map((elem) => elem.value),
-        [proportionOfFirstPartySoftwareSalesQtrLastFY[0], ...proportionOfFirstPartySoftwareSalesCmlLastFY].map((elem) => elem.value),
-        [digitalSalesQtrLastFY[0], ...digitalSalesCmlLastFY].map((elem, index) => elem.value - digitalSalesQtrLastFY[index].value),
-        [proportionOfDigitalSalesQtrLastFY[0], ...proportionOfDigitalSalesCmlLastFY].map((elem) => elem.value),
-        [proportionOfDLverPackagedSoftwareQtrLastFY[0], ...proportionOfDLverPackagedSoftwareCmlLastFY].map((elem) => elem.value),
-    ]
+    // const graphQuartersLastFY = [
+    //     proportionOfOverseasSalesQtrLastFY.map((elem) => elem.value),
+    //     proportionOfHardwareSalesQtrLastFY.map((elem) => elem.value),
+    //     proportionOfFirstPartySoftwareSalesQtrLastFY.map((elem) => elem.value),
+    //     digitalSalesQtrLastFY.map((elem) => elem.value),
+    //     proportionOfDigitalSalesQtrLastFY.map((elem) => elem.value),
+    //     proportionOfDLverPackagedSoftwareQtrLastFY.map((elem) => elem.value),
+    // ]
+
+    // const graphCumulative = [
+    //     [proportionOfOverseasSalesQtr[0], ...proportionOfOverseasSalesCml].map((elem) => elem.value),
+    //     [proportionOfHardwareSalesQtr[0], ...proportionOfHardwareSalesCml].map((elem) => elem.value),
+    //     [proportionOfFirstPartySoftwareSalesQtr[0], ...proportionOfFirstPartySoftwareSalesCml].map((elem) => elem.value),
+    //     [digitalSalesQtr[0], ...digitalSalesCml].map((elem, index) => elem.value - digitalSalesQtr[index].value),
+    //     [proportionOfDigitalSalesQtr[0], ...proportionOfDigitalSalesCml].map((elem) => elem.value),
+    //     [proportionOfDLverPackagedSoftwareQtr[0], ...proportionOfDLverPackagedSoftwareCml].map((elem) => elem.value),
+    // ]
+
+    const graphCumulative: number[][] = props.setData.quarterValuesThisFY.map((elem) => {
+        return elem.filter((value, index) => index === 0).map(value => value.value)
+    }).concat(props.setData.cumulativeValuesThisFY.map(elem => {
+        return elem.map(value => value.value)
+    })
+    )
+    // filter((elem, index) => index === 0).map(elem => elem[0].value).concat();
+
+
+    // const graphCumulativeLastFY = [
+    //     [proportionOfOverseasSalesQtrLastFY[0], ...proportionOfOverseasSalesCmlLastFY].map((elem) => elem.value),
+    //     [proportionOfHardwareSalesQtrLastFY[0], ...proportionOfHardwareSalesCmlLastFY].map((elem) => elem.value),
+    //     [proportionOfFirstPartySoftwareSalesQtrLastFY[0], ...proportionOfFirstPartySoftwareSalesCmlLastFY].map((elem) => elem.value),
+    //     [digitalSalesQtrLastFY[0], ...digitalSalesCmlLastFY].map((elem, index) => elem.value - digitalSalesQtrLastFY[index].value),
+    //     [proportionOfDigitalSalesQtrLastFY[0], ...proportionOfDigitalSalesCmlLastFY].map((elem) => elem.value),
+    //     [proportionOfDLverPackagedSoftwareQtrLastFY[0], ...proportionOfDLverPackagedSoftwareCmlLastFY].map((elem) => elem.value),
+    // ]
 
     return (
         <div className="chart">
