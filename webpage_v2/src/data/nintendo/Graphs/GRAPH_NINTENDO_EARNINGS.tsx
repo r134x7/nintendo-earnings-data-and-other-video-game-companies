@@ -7,8 +7,6 @@ import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
 Chart.register(...registerables); // to get the package working, source: https://www.chartjs.org/docs/next/getting-started/integration.html
 
-// need to use props to index the correct data when displaying the graph...
-
 export default function GRAPH_NINTENDO_EARNINGS(props:
     {setData: ({
         thisFY: string;
@@ -84,10 +82,6 @@ export default function GRAPH_NINTENDO_EARNINGS(props:
     ]
 
     const graphCumulative = [
-       props.setData?.cmlNetSalesThisFY.map((elem) => elem.value),
-       props.setData?.cmlOperatingIncomeThisFY.map((elem) => elem.value),
-       props.setData?.cmlOpMarginThisFY.map((elem) => elem.value),
-       props.setData?.cmlNetIncomeThisFY.map((elem) => elem.value),
        props.setData?.cmlNetSalesThisFY.map((elem, index) => elem.value - (props.setData?.qtrNetSalesThisFY[index].value as number)),
        props.setData?.cmlOperatingIncomeThisFY.map((elem, index) => elem.value - (props.setData?.qtrOperatingIncomeThisFY[index].value as number)),
         [
@@ -105,21 +99,26 @@ export default function GRAPH_NINTENDO_EARNINGS(props:
             // // : - elem.value + operatingMarginQuarters[index].value
             // : - elem.value + operatingMarginQuarters[index].value // the least worst result to ensure accuracy
         }),
-       props.setData?.cmlOperatingIncomeThisFY.map((elem, index) => elem.value - (props.setData?.qtrNetIncomeThisFY[index].value as number)),
+       props.setData?.cmlNetIncomeThisFY.map((elem, index) => elem.value - (props.setData?.qtrNetIncomeThisFY[index].value as number)),
     ]
 
     const graphCumulativeLastFY = [
-        netSalesLastFY.map((elem, index) => elem.value - netSalesLastFYDifference[index].value),
-        operatingIncomeLastFY.map((elem, index) => elem.value - operatingIncomeLastFYDifference[index].value),
-        [operatingMarginQuartersLastFY[0], ...operatingMarginCumulativeLastFY].map((elem, index) => {
-            return elem.value
+       props.setData?.cmlNetSalesLastFY.map((elem, index) => elem.value - (props.setData?.qtrNetSalesLastFY[index].value as number)),
+       props.setData?.cmlOperatingIncomeLastFY.map((elem, index) => elem.value - (props.setData?.qtrOperatingIncomeLastFY[index].value as number)),
+        [
+            props.setData?.qtrOpMarginLastFY[0], 
+            props.setData?.cmlOpMarginLastFY[1],
+            props.setData?.cmlOpMarginLastFY[2],
+            props.setData?.cmlOpMarginLastFY[3],
+        ].map((elem, index) => {
+            return (!elem?.value) ? 0 : elem?.value
             // return (elem.value > operatingMarginQuartersLastFY[index].value)
             // ? elem.value - operatingMarginQuartersLastFY[index].value
             // // : - elem.value + operatingMarginQuarters[index].value
             // : 0 // the least worst result to ensure accuracy
         }),
 
-        netIncomeLastFY.map((elem, index) => elem.value - netIncomeLastFYDifference[index].value),
+       props.setData?.cmlNetIncomeLastFY.map((elem, index) => elem.value - (props.setData?.qtrNetIncomeLastFY[index].value as number)),
     ]
 
     const bothOff = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -63,7 +63,16 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
         return (dataSelected) ? dataSelected.value : ""
     };
 
+    const selectGraphComponent = (objList: {name: string, value: string | JSX.Element | undefined, graph?: JSX.Element | undefined}[]) =>
+    (dataUsed: string): JSX.Element | undefined => {
+
+        let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
+
+        return (dataSelected) ? dataSelected.graph : undefined
+    };
+
     const selectData = selectDataComponent(componentListNew[props.setIndex]);
+    const selectGraph = selectGraphComponent(componentListNew[props.setIndex]);
 
 
     return (
@@ -82,6 +91,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                     ? selectData(value)
                     : <Code style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
             }
+            {selectGraph(value)}
             <Space h="xl" />
             <Space h="xl" />
             <Space h="xl" />
