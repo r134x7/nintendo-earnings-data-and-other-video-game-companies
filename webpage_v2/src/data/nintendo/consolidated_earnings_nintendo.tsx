@@ -152,11 +152,11 @@ export const consolidatedEarningsList: string[] = collection.map((elem, index, a
 
     let cmlName: string = " " + elem.fiscalYear.slice(0,4) + elem.fiscalYear.slice(-3) + "Cml. ";
 
-    let nextFY: string = Number((elem.fiscalYear.slice(-3, -1)) + 1).toString();
+    let nextFY: string = (Number(elem.fiscalYear.slice(-3, -1)) + 1).toString();
 
     let forecastNameThisFY : string = " " + elem.fiscalYear.slice(0,4) + elem.fiscalYear.slice(-3) + "Forecast ";
 
-    let forecastNameNextFY: string = " " + elem.fiscalYear.slice(0,4) + nextFY + "Forecast ";
+    let forecastNameNextFY: string = " " + elem.fiscalYear.slice(0,4) + nextFY + " Forecast ";
 
     let netSalesThisFY: Earnings[] = valuesMake(elem.netSales, cmlName);
     let netSalesLastFY: Earnings[] = (!array[index+1]) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].netSales, cmlName);

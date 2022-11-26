@@ -15,6 +15,15 @@
     ],
     "platformUnitSales": [
             {
+                "name": " Switch ",
+                "units": "units",
+                "Q1CmlValue": 188,
+                "Q2CmlValue": 507,
+                "Q3CmlValue": 1449,
+                "Q4CmlValue": 1695,
+                "cmlValueLastFY": 1779
+            },
+            {
                 "name": " Hardware Total ",
                 "units": "units",
                 "Q1CmlValue": 188,
