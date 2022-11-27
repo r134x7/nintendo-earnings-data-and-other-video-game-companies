@@ -7,10 +7,11 @@ import { fyMillionSellerTitlesList } from "../data/nintendo/fy_million_seller_ti
 import { globalHardwareSoftwareMobileList } from "../data/nintendo/global_hardware_software_mobile_nintendo";
 import { keySalesIndicatorsList, keySalesIndicatorsGraphList } from "../data/nintendo/key_sales_indicators_nintendo";
 import { regionalHardwareSoftwareList } from "../data/nintendo/regional_hardware_software_nintendo";
-import { topSellingTitlesList } from "../data/nintendo/top_selling_titles_nintendo";
+import { topSellingTitlesList, topSellingTitlesGraphList } from "../data/nintendo/top_selling_titles_nintendo";
 
 import GRAPH_NINTENDO_EARNINGS from "../data/nintendo/Graphs/GRAPH_NINTENDO_EARNINGS";
 import GRAPH_NINTENDO_KPI from "../data/nintendo/Graphs/GRAPH_NINTENDO_KPI";
+import GRAPH_NINTENDO_TOP_SELLING_TITLES from "../data/nintendo/Graphs/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH";
 
 export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
@@ -50,6 +51,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
             {
                 name: "Top Selling Titles",
                 value: topSellingTitlesList[index]? topSellingTitlesList[index] : undefined,
+                graph: topSellingTitlesGraphList[index]? <GRAPH_NINTENDO_TOP_SELLING_TITLES setData={topSellingTitlesGraphList[index]} /> : undefined
             },
         ].filter(elem => elem.value !== undefined);
     })

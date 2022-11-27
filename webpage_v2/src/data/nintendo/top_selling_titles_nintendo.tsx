@@ -123,4 +123,46 @@ export const topSellingTitlesList: string[] = collection.map((elem, index, array
     let printAll = [printOne].concat(printRest);  
 
     return printAll.reduce((prev, next) => prev + "\n" + next);
-})
+});
+
+export const topSellingTitlesGraphList = collection.map((elem, index, array) => {
+
+    let currentQuarter: number = elem.currentQuarter;
+
+    let titlesList: Titles[][] = elem.titles.map(value => titlesMake(value))
+
+    let sortedCollection = titlesList.map((elem, index, array) => {
+                return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+        }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+            return (a[currentQuarter-1].value > b[currentQuarter-1].value)
+                ? 1
+                : (a[currentQuarter-1].value < b[currentQuarter-1].value)
+                ? -1
+                : 0
+        }).map((elem, index) => {
+            // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+            const x: Titles[] = [...elem].map((elemTwo) => {
+                return {...elemTwo, rank: index+1} 
+            })
+            return x // x which is the returned array is now returned to the array of arrays
+        });
+    
+    let differenceTitles: Titles[][] = sortedCollection.map(elem => quarterlyCalculation(elem));
+        
+    let thisFY: string = elem.fiscalYear.slice(2, -13);
+    let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
+
+    let marchThisFY: string = "March " + thisFY.slice(4);
+    let marchLastFY: string = "March " + lastFY.slice(4);
+
+    const graphMake = {
+        thisFY: thisFY,
+        lastFY: lastFY,
+        marchThisFY: marchThisFY,
+        marchLastFY: marchLastFY,
+        quarterTitleValuesThisFY: differenceTitles,
+        cumulativeTitleValuesThisFY: sortedCollection,
+    };
+
+    return graphMake
+});
