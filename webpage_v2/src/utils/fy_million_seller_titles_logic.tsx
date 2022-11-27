@@ -121,7 +121,7 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
             ? printCmlValueB
             : " ".repeat(9 - printCmlValueB.length) + printCmlValueB;
         
-        let printFYCml: string = "+" + "=".repeat(34) + "+\n|" + header.fiscalYear + "Cml.  |" + printCmlValueAFixed + "|" + printCmlValueBFixed + "|"
+        let printFYCml: string = "+" + "=".repeat(34) + "+\n| " + header.fiscalYear + " Cml.|" + printCmlValueAFixed + "|" + printCmlValueBFixed + "|"
 
         let printRegionAWWPercentage: string = `${((titleCumulative[currentQuarter-1].valueA / titleCumulative[currentQuarter-1].valueC) * 100).toFixed(2)}% `
         let printRegionAWWPercentageFixed: string = (printRegionAWWPercentage.length >= 9)
@@ -147,7 +147,7 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
             ? printRegionBYoY
             :  " ".repeat(9 - printRegionBYoY.length) + printRegionBYoY;
 
-        let printFYCmlYoY: string = "\n|" + header.fiscalYear + "YoY%  |" + printRegionAYoYFixed + "|" + printRegionBYoYFixed + "|"
+        let printFYCmlYoY: string = "\n| " + header.fiscalYear + " YoY%|" + printRegionAYoYFixed + "|" + printRegionBYoYFixed + "|"
 
         if (index === 0 && elem.valueC === 0) {
             return printTitleNameFixed + "\n" + printAreaHeader 
@@ -194,7 +194,7 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
             ? printCmlValueD
             : " ".repeat(9 - printCmlValueD.length) + printCmlValueD;
 
-        let printFYCml: string = "+" + "=".repeat(34) + "+\n|" + header.fiscalYear + "Cml.  |" + printCmlValueCFixed + "|" + printCmlValueDFixed + "|"
+        let printFYCml: string = "+" + "=".repeat(34) + "+\n| " + header.fiscalYear + " Cml.|" + printCmlValueCFixed + "|" + printCmlValueDFixed + "|"
         
         let printRegionCWWPercentage: string = `${((titleCumulative[currentQuarter-1].valueC / titleCumulative[currentQuarter-1].valueD) * 100).toFixed(2)}% `
         let printRegionCWWPercentageFixed: string = (printRegionCWWPercentage.length >= 9)
@@ -220,7 +220,7 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
             ? printRegionDYoY
             :  " ".repeat(9 - printRegionDYoY.length) + printRegionDYoY;
 
-        let printFYCmlYoY: string = "\n|" + header.fiscalYear + "YoY%  |" + printRegionCYoYFixed + "|" + printRegionDYoYFixed + "|"
+        let printFYCmlYoY: string = "\n| " + header.fiscalYear + " YoY%|" + printRegionCYoYFixed + "|" + printRegionDYoYFixed + "|"
         
         if (index === 0 && elem.valueC === 0) {
             return printGlobalHeader 
@@ -299,7 +299,7 @@ export const printSummary = (header: Header, regionNew: number[], regionRecurrin
 
     return regionNew.map((elem, index, array) => {
 
-        let printRegionHeader: string = "+"+"-".repeat(33)+"+\n" + regionHeaders[index] + "\n+"+"-".repeat(33)+"+\n|" + header.fiscalYear + "Cml. |   Units |    %    |\n+" + "-".repeat(33) + "+\n"
+        let printRegionHeader: string = "+"+"-".repeat(33)+"+\n" + regionHeaders[index] + "\n+"+"-".repeat(33)+"+\n|" + header.fiscalYear + " Cml.|   Units |    %    |\n+" + "-".repeat(33) + "+\n"
 
         let TotalUnits: number = Number((elem + regionRecurring[index]).toFixed(2)) 
 

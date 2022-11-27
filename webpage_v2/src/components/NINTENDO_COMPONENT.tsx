@@ -3,7 +3,7 @@ import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { dataSourcesList } from "../data/nintendo/Data_Sources/data_sources_full_list";
 import { consolidatedEarningsList, consolidatedEarningsGraphList } from "../data/nintendo/consolidated_earnings_nintendo";
-import { fyMillionSellerTitlesList } from "../data/nintendo/fy_million_seller_titles_nintendo";
+import { fyMillionSellerTitlesList, fyMillionSellerTitlesGraphList } from "../data/nintendo/fy_million_seller_titles_nintendo";
 import { globalHardwareSoftwareMobileList } from "../data/nintendo/global_hardware_software_mobile_nintendo";
 import { keySalesIndicatorsList, keySalesIndicatorsGraphList } from "../data/nintendo/key_sales_indicators_nintendo";
 import { regionalHardwareSoftwareList } from "../data/nintendo/regional_hardware_software_nintendo";
@@ -12,6 +12,7 @@ import { topSellingTitlesList, topSellingTitlesGraphList } from "../data/nintend
 import GRAPH_NINTENDO_EARNINGS from "../data/nintendo/Graphs/GRAPH_NINTENDO_EARNINGS";
 import GRAPH_NINTENDO_KPI from "../data/nintendo/Graphs/GRAPH_NINTENDO_KPI";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES from "../data/nintendo/Graphs/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH";
+import GRAPH_NINTENDO_FY_MILLION_SELLER_TITLES from "../data/nintendo/Graphs/GRAPH_NINTENDO_FY_MILLION_SELLER_TITLES";
 
 export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
@@ -43,6 +44,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
             {
                 name: "FY Million-Seller Titles",
                 value: fyMillionSellerTitlesList[index]? fyMillionSellerTitlesList[index] : undefined,
+                graph: fyMillionSellerTitlesGraphList[index]? <GRAPH_NINTENDO_FY_MILLION_SELLER_TITLES setData={fyMillionSellerTitlesGraphList[index]} /> : undefined
             },
             {
                 name: "Regional Hardware/Software units",

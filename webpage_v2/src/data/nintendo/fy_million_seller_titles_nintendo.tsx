@@ -254,3 +254,59 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
     return printFYMillionSellerTitles
 
 });
+
+export const fyMillionSellerTitlesGraphList = collection.map((elem, index, array) => {
+
+    let currentQuarter: number = elem.currentQuarter;
+
+    let titlesList: Titles[][] = elem.titles.map(value => titlesMake(value));
+
+
+    let filteredCollection = titlesList.filter((elem, index, array) => {
+        return array[index][3].valueC !== 0
+    }) // to make sure things are accurate and that it works, all titles that sold units this FY must not have zero units for the remaining quarters. (ignore Last FY Cml.) Tried using [currentQuarter -1] and not [3] but bugs occurred, oh well.
+
+
+    let sortedCollection = filteredCollection.map((elem, index, array) => {
+                return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+        }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+            return (a[currentQuarter-1].valueC > b[currentQuarter-1].valueC)
+                ? 1
+                : (a[currentQuarter-1].valueC < b[currentQuarter-1].valueC)
+                ? -1
+                : 0 // 4th quarter WW FY is index 11
+        }).map((elem, index) => {
+            // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+            let x: Titles[] = [...elem].map((elemTwo) => {
+                return {...elemTwo, rank: index+1} 
+            })
+            return x // x which is the returned array is now returned to the array of arrays
+        })
+
+    let sortedTitles = sortedCollection.map((elem) => {
+            return decimateCalculation(elem)
+        })
+
+    let differenceTitles = sortedCollection.map((elem) => {
+        return decimateCalculation(elem)
+    }).map((elem) => {
+        return quarterlyCalculation(elem)
+    })
+
+    let thisFY: string = elem.fiscalYear;
+    let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
+
+    let marchThisFY: string = "March " + thisFY.slice(4);
+    let marchLastFY: string = "March " + lastFY.slice(4);
+
+    const graphMake = {
+        thisFY: thisFY,
+        lastFY: lastFY,
+        marchThisFY: marchThisFY,
+        marchLastFY: marchLastFY,
+        quarterTitleValuesThisFY: differenceTitles,
+        cumulativeTitleValuesThisFY: sortedTitles,
+    };
+
+    return graphMake
+});
