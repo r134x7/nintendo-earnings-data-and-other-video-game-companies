@@ -1,6 +1,6 @@
 export type Section = {
     region: " Group Total " | " Japan " | " Americas " | " Europe ",
-    units: "units" | "percentage" | "currency" | "NaN" ,
+    units: "units" | "percentage" | "currency" | "NaN" | "salesPerSoftwareUnit",
     period: " 1st Quarter " | " 2nd Quarter " | " 3rd Quarter " | " 4th Quarter " | " Last FY Cumulative ",
     cmlPeriod: " 1st Quarter " | " First Half  " | " 1st 3 Qtrs  " | "Cml. ",
     name: string,
@@ -772,22 +772,22 @@ export const graphMake = (salesDataThisFY: Section[], salesDataLastFY: Section[]
     let quartersUnitsThisFY = quarterlyCalculation(salesUnitsThisFY); 
     let quartersUnitsLastFY = quarterlyCalculation(salesUnitsLastFY);
 
-    let quarterSalesPerSoftwareUnitThisFY = quartersSalesThisFY.filter((elem, index, array) => {
+    let quarterSalesPerSoftwareUnitThisFY: Section[] = quartersSalesThisFY.filter((elem, index, array) => {
             return index < currentQuarter 
         }).map((elem, index, array) => { 
             // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
             let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (quartersUnitsThisFY[index].value / 1000)).toFixed(0))
 
-            return calculateSalesPerSoftware
+            return { ...elem, units: "salesPerSoftwareUnit", value: calculateSalesPerSoftware}
         })
 
-    let quarterSalesPerSoftwareUnitLastFY = quartersSalesLastFY.filter((elem, index, array) => {
+    let quarterSalesPerSoftwareUnitLastFY: Section[] = quartersSalesLastFY.filter((elem, index, array) => {
             return index < currentQuarter 
         }).map((elem, index, array) => { 
             // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
             let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (quartersUnitsLastFY[index].value / 1000)).toFixed(0))
 
-            return calculateSalesPerSoftware
+            return { ...elem, units: "salesPerSoftwareUnit", value: calculateSalesPerSoftware}
         })
 
     let cumulativeSalesPerSoftwareUnitThisFY: Section[] = salesDataThisFY.filter((elem, index, array) => {
@@ -796,7 +796,7 @@ export const graphMake = (salesDataThisFY: Section[], salesDataLastFY: Section[]
             // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
             let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (salesUnitsThisFY[index].value / 1000)).toFixed(0))
 
-            return { ...elem, value: calculateSalesPerSoftware} 
+            return { ...elem, units: "salesPerSoftwareUnit", value: calculateSalesPerSoftware}
         })
 
     let cumulativeSalesPerSoftwareUnitLastFY: Section[]= salesDataLastFY.filter((elem, index, array) => {
@@ -805,9 +805,8 @@ export const graphMake = (salesDataThisFY: Section[], salesDataLastFY: Section[]
             // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
             let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (salesUnitsLastFY[index].value / 1000)).toFixed(0))
 
-            return { ...elem, value: calculateSalesPerSoftware}
+            return { ...elem, units: "salesPerSoftwareUnit", value: calculateSalesPerSoftware}
         })
-
 
     let thisFY: string = fiscalYear.slice(1, -1);
     let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();

@@ -1,22 +1,23 @@
 import { useState } from "react";
 import { Pagination, Group, Switch } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { Section } from "../../../utils/hardware_software_units_logic";
+import { Section } from "../../utils/segment_data_logic";
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
 Chart.register(...registerables); // to get the package working, source: https://www.chartjs.org/docs/next/getting-started/integration.html
 
-export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
-    {setData: ({
-        thisFY: string;
-        lastFY: string;
+export default function GRAPH_SOFTWARE_SALES(props:
+    {setData: undefined | ({
+        segmentName: string,
+        thisFY: string,
+        lastFY: string,
         marchThisFY: string,
         marchLastFY: string,
-        quarterValuesThisFY: Section[][];
-        quarterValuesLastFY: Section[][];
-        cumulativeValuesThisFY: Section[][];
-        cumulativeValuesLastFY: Section[][];
+        quarterValuesThisFY: Section[][],
+        quarterValuesLastFY: Section[][],
+        cumulativeValuesThisFY: Section[][],
+        cumulativeValuesLastFY: Section[][],
     })}) {
 
     const state: any = useSelector(state => state);
@@ -39,137 +40,58 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
         MarchLastYear: props.setData?.marchLastFY as string,
     }
 
-    // const headerLabels = [
-    //     `Switch ${labels.currentFY}`,
-    //     `Switch Lite ${labels.currentFY}`,
-    //     `Switch OLED ${labels.currentFY}`,
-    //     `Switch Hardware Total ${labels.currentFY}`,
-    //     `Switch Software Total ${labels.currentFY}`,
-    //     `Mobile, IP related income, etc. ${labels.currentFY}`,
-    // ]
+    const headerLabels = [
+        props.setData?.segmentName + " Net Sales " + labels.currentFY,
+        props.setData?.segmentName + " Software Units " + labels.currentFY,
+        props.setData?.segmentName + " Sales Per Software Unit " + labels.currentFY,
+    ];
 
-    const headerLabels = props.setData.quarterValuesThisFY.map((elem) => {
+    const headerLabelsLastFY = [
+        props.setData?.segmentName + " Net Sales " + labels.lastFY,
+        props.setData?.segmentName + " Software Units " + labels.lastFY,
+        props.setData?.segmentName + " Sales Per Software Unit " + labels.lastFY,
+    ];
 
-        switch (elem[0].name) {
-            case " Switch ":
-                return `Switch ${labels.currentFY}`
-            case " Switch Lite ":
-                return `Switch Lite ${labels.currentFY}`
-            case " Switch OLED ":
-                return `Switch OLED ${labels.currentFY}`
-            case " Hardware Total ":
-                return `Switch Hardware Total ${labels.currentFY}`
-            case " Software Total ":
-                return `Switch Software Total ${labels.currentFY}`
-            case " Mobile ":
-                return `Mobile, IP related income, etc. ${labels.currentFY}`
-            default:
-                return `Undefined ${labels.currentFY}`
-        }
-        // return elem[0].name + " " + labels.currentFY 
-    });
-
-    const headerLabelsLastFY = props.setData.quarterValuesLastFY.map((elem) => {
-
-        switch (elem[0].name) {
-            case " Switch ":
-                return `Switch ${labels.lastFY}`
-            case " Switch Lite ":
-                return `Switch Lite ${labels.lastFY}`
-            case " Switch OLED ":
-                return `Switch OLED ${labels.lastFY}`
-            case " Hardware Total ":
-                return `Switch Hardware Total ${labels.lastFY}`
-            case " Software Total ":
-                return `Switch Software Total ${labels.lastFY}`
-            case " Mobile ":
-                return `Mobile, IP related income, etc. ${labels.lastFY}`
-            default:
-                return `Undefined ${labels.lastFY}`
-        }
-        // return elem[0].name + " " + labels.lastFY
-    });
-
-
-    // const headerLabelsLastFY = [
-    //     `Switch ${labels.lastFY}`,
-    //     `Switch Lite ${labels.lastFY}`,
-    //     `Switch OLED ${labels.lastFY}`,
-    //     `Switch Hardware Total ${labels.lastFY}`,
-    //     `Switch Software Total ${labels.lastFY}`,
-    //     `Mobile, IP related income, etc. ${labels.lastFY}`,
-    // ]
-
-    // const graphQuarters = [
-    //     quarterSwitchOG.map((elem) => (elem.value / 100).toFixed(2)),
-    //     quarterSwitchLite.map((elem) => (elem.value / 100).toFixed(2)),
-    //     quarterSwitchOLED.map((elem) => (elem.value / 100).toFixed(2)),
-    //     quarterHardwareTotal.map((elem) => (elem.value / 100).toFixed(2)),
-    //     quarterSoftwareTotal.map((elem) => (elem.value / 100).toFixed(2)),
-    //     quarterNintendoMobile.map((elem) => elem.value),
-    // ]
-
-    const graphQuarters = props.setData.quarterValuesThisFY.map((elem) => {
+    const graphQuarters = props.setData?.quarterValuesThisFY.map((elem) => {
         return elem.map(value => {
-            return (value.units === "units")
-                    ? (value.value / 100).toFixed(2)
+            return (value.units === "currency")
+                    ? value.value * 1000
+                    : (value.units === "units")
+                    ? value.value / 1000
                     : value.value
         })
-    });
+    }) as number[][];
 
-    const graphQuartersLastFY = props.setData.quarterValuesLastFY.map((elem) => {
+    const graphQuartersLastFY = props.setData?.quarterValuesLastFY.map((elem) => {
         return elem.map(value => {
-            return (value.units === "units")
-                    ? (value.value / 100).toFixed(2)
+            return (value.units === "currency")
+                    ? value.value * 1000
+                    : (value.units === "units")
+                    ? value.value / 1000
                     : value.value
         })
-    });
+    }) as number[][];
  
 
-    // const graphQuartersLastFY = [
-    //     quarterSwitchOGLastFY.map((elem) => (elem.value / 100).toFixed(2)),
-    //     quarterSwitchLiteLastFY.map((elem) => (elem.value / 100).toFixed(2)),
-    //     quarterSwitchOLEDLastFY.map((elem) => (elem.value / 100).toFixed(2)),
-    //     quarterHardwareTotalLastFY.map((elem) => (elem.value / 100).toFixed(2)),
-    //     quarterSoftwareTotalLastFY.map((elem) => (elem.value / 100).toFixed(2)),
-    //     quarterNintendoMobileLastFY.map((elem) => elem.value),
-    // ]
-
-    const graphCumulative = props.setData.cumulativeValuesThisFY.map((elem) => {
+    const graphCumulative = props.setData?.cumulativeValuesThisFY.map((elem) => {
         return elem.map(value => {
-            return (value.units === "units")
-                    ? (value.value / 100).toFixed(2)
+            return (value.units === "currency")
+                    ? value.value * 1000
+                    : (value.units === "units")
+                    ? value.value / 1000
                     : value.value
         })
-    });
+    }) as number[][];
 
-    const graphCumulativeLastFY = props.setData.cumulativeValuesLastFY.map((elem) => {
+    const graphCumulativeLastFY = props.setData?.cumulativeValuesLastFY.map((elem) => {
         return elem.map(value => {
-            return (value.units === "units")
-                    ? (value.value / 100).toFixed(2)
+            return (value.units === "currency")
+                    ? value.value * 1000
+                    : (value.units === "units")
+                    ? value.value / 1000
                     : value.value
         })
-    });
-
-
-    // const graphCumulative = [
-    //     nintendoSwitchOGFiltered.map((elem, index) => ((elem.value - quarterSwitchOG[index].value) / 100).toFixed(2)),
-    //     nintendoSwitchLiteFiltered.map((elem, index) => ((elem.value - quarterSwitchLite[index].value) / 100).toFixed(2)),
-    //     nintendoSwitchOLEDFiltered.map((elem, index) => ((elem.value - quarterSwitchOLED[index].value) / 100).toFixed(2)),
-    //     nintendoSwitchHardwareTotalFiltered.map((elem, index) => ((elem.value - quarterHardwareTotal[index].value) / 100).toFixed(2)),
-    //     nintendoSwitchSoftwareTotalFiltered.map((elem, index) => ((elem.value - quarterSoftwareTotal[index].value) / 100).toFixed(2)),
-    //     nintendoMobileFiltered.map((elem, index) => ((elem.value - quarterNintendoMobile[index].value)).toFixed(2)),
-    // ]
-
-    // const graphCumulativeLastFY = [
-    //     nintendoSwitchOGLastFY.map((elem, index) => ((elem.value - quarterSwitchOGLastFY[index].value) / 100).toFixed(2)),
-    //     nintendoSwitchLiteLastFY.map((elem, index) => ((elem.value - quarterSwitchLiteLastFY[index].value) / 100).toFixed(2)),
-    //     nintendoSwitchOLEDLastFY.map((elem, index) => ((elem.value - quarterSwitchOLEDLastFY[index].value) / 100).toFixed(2)),
-    //     nintendoSwitchHardwareTotalLastFY.map((elem, index) => ((elem.value - quarterHardwareTotalLastFY[index].value) / 100).toFixed(2)),
-    //     nintendoSwitchSoftwareTotalLastFY.map((elem, index) => ((elem.value - quarterSoftwareTotalLastFY[index].value) / 100).toFixed(2)),
-    //     nintendoMobileLastFY.map((elem, index) => ((elem.value - quarterNintendoMobileLastFY[index].value)).toFixed(2)),
-
-    // ]
+    }) as number[][];
 
     const bothOff = (event: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -187,7 +109,7 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
         {(checked === false && barChecked === false)
             ? (
                 <Line
-                    datasetIdKey="Global HW/SW Sales Units"
+                    datasetIdKey="Sales Per Software Unit"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
@@ -234,7 +156,7 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
                             // stacked: true,
                             title: {
                               display: true,
-                              text: (activePage === graphQuarters.length)
+                              text: (activePage !== 2)
                                         ? "Million yen (¥)"
                                         : "Units in Millions",
                             },
@@ -253,7 +175,7 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
             : (checked === true && barChecked === false) 
             ? (
                 <Line
-                    datasetIdKey="Global HW/SW Sales Units"
+                    datasetIdKey="Sales Per Software Unit"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
@@ -306,7 +228,7 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
                             // stacked: true,
                             title: {
                               display: true,
-                              text: (activePage === graphQuarters.length)
+                              text: (activePage !== 2)
                                         ? "Million yen (¥)"
                                         : "Units in Millions",
                             },
@@ -325,7 +247,7 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
             : (checked === false && barChecked === true) 
             ? (
                 <Bar
-                    datasetIdKey="Global HW/SW Sales Units"
+                    datasetIdKey="Sales Per Software Unit"
                     data={{
                         labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                         datasets: [
@@ -360,7 +282,7 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
                             // stacked: true,
                             title: {
                               display: true,
-                              text: (activePage === graphQuarters.length)
+                              text: (activePage !== 2)
                                         ? "Million yen (¥)"
                                         : "Units in Millions",
                             },
@@ -378,7 +300,7 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
             )
             : (
                 <Bar
-                datasetIdKey="Global HW/SW Sales Units"
+                datasetIdKey="Sales Per Software Unit"
                 data={{
                     labels: ["1st Quarter", "2nd Quarter", "3rd Quarter", "4th Quarter",],//array x-axis
                     datasets: [

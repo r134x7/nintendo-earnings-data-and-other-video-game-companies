@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { softwareSalesList } from "../data/bandaiNamco/software_sales_bandai_namco";
+import { softwareSalesList, softwareSalesGraphList } from "../data/bandaiNamco/software_sales_bandai_namco";
 import { annualReportList } from "../data/bandaiNamco/annual_report_bandai_namco";
 import { dataSourcesList } from "../data/bandaiNamco/Data_Sources/data_sources_full_list";
+
+import GRAPH_SOFTWARE_SALES from "../data/miscellaneousGraphs/GRAPH_SOFTWARE_SALES";
 
 export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
@@ -23,6 +25,7 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
             {
                 name: "Software Sales",
                 value: softwareSalesList[index]? softwareSalesList[index] : undefined,
+                graph: softwareSalesGraphList[index]? <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} /> : undefined
             },
             {
                 name: "FY Series IP",
@@ -40,6 +43,16 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
 
         return (dataSelected) ? dataSelected.value : ""
     };
+
+    const selectGraphComponent = (objList: {name: string, value: string | JSX.Element | undefined, graph?: JSX.Element | undefined}[]) =>
+    (dataUsed: string): JSX.Element | undefined => {
+
+        let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
+
+        return (dataSelected) ? dataSelected.graph : undefined
+    };
+
+    const selectGraph = selectGraphComponent(componentListNew[props.setIndex]);
 
     const selectData = selectDataComponent(componentListNew[props.setIndex]);
 
@@ -60,6 +73,7 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
                     ? selectData(value)
                     : <Code style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
             }
+            {selectGraph(value)}
             <Space h="xl" />
             <Space h="xl" />
             <Space h="xl" />
