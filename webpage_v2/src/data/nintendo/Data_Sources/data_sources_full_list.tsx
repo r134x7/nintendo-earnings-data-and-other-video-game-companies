@@ -41,6 +41,14 @@ export const dataSourcesList = [
                     <Anchor mb="sm" href="" target="_blank" >
                         
                     </Anchor> */}
+                        Dedicated Video Game Sales Units:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/en/finance/hard_soft/index.html" target="_blank" >
+                        https://www.nintendo.co.jp/ir/en/finance/hard_soft/index.html
+                    </Anchor>
+                        Top Selling Title Sales Units:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/en/finance/software/index.html" target="_blank" >
+                        https://www.nintendo.co.jp/ir/en/finance/software/index.html
+                    </Anchor>
                 </Stack>  
             </Text> 
         </Card>
@@ -83,6 +91,14 @@ export const dataSourcesList = [
                         4th Quarter Financial Results Explanatory Material:
                     <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2022/220510_7e.pdf" target="_blank" >
                         https://www.nintendo.co.jp/ir/pdf/2022/220510_7e.pdf
+                    </Anchor>
+                        Dedicated Video Game Sales Units:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/en/finance/hard_soft/index.html" target="_blank" >
+                        https://www.nintendo.co.jp/ir/en/finance/hard_soft/index.html
+                    </Anchor>
+                        Top Selling Title Sales Units:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/en/finance/software/index.html" target="_blank" >
+                        https://www.nintendo.co.jp/ir/en/finance/software/index.html
                     </Anchor>
                 </Stack>  
             </Text> 
@@ -127,6 +143,14 @@ export const dataSourcesList = [
                     <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2021/210506_4e.pdf" target="_blank" >
                         https://www.nintendo.co.jp/ir/pdf/2021/210506_4e.pdf
                     </Anchor>
+                        Dedicated Video Game Sales Units:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/en/finance/hard_soft/index.html" target="_blank" >
+                        https://www.nintendo.co.jp/ir/en/finance/hard_soft/index.html
+                    </Anchor>
+                        Top Selling Title Sales Units:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/en/finance/software/index.html" target="_blank" >
+                        https://www.nintendo.co.jp/ir/en/finance/software/index.html
+                    </Anchor>
                 </Stack>  
             </Text> 
         </Card>
@@ -169,6 +193,14 @@ export const dataSourcesList = [
                         4th Quarter Financial Results Explanatory Material:
                     <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2020/200507_3e.pdf" target="_blank" >
                         https://www.nintendo.co.jp/ir/pdf/2020/200507_3e.pdf
+                    </Anchor>
+                        Dedicated Video Game Sales Units:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/en/finance/hard_soft/index.html" target="_blank" >
+                        https://www.nintendo.co.jp/ir/en/finance/hard_soft/index.html
+                    </Anchor>
+                        Top Selling Title Sales Units:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/en/finance/software/index.html" target="_blank" >
+                        https://www.nintendo.co.jp/ir/en/finance/software/index.html
                     </Anchor>
                 </Stack>  
             </Text> 
@@ -213,6 +245,14 @@ export const dataSourcesList = [
                     <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2019/190425_3e.pdf" target="_blank" >
                         https://www.nintendo.co.jp/ir/pdf/2019/190425_3e.pdf
                     </Anchor>
+                        Dedicated Video Game Sales Units:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/en/finance/hard_soft/index.html" target="_blank" >
+                        https://www.nintendo.co.jp/ir/en/finance/hard_soft/index.html
+                    </Anchor>
+                        Top Selling Title Sales Units:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/en/finance/software/index.html" target="_blank" >
+                        https://www.nintendo.co.jp/ir/en/finance/software/index.html
+                    </Anchor>
                 </Stack>  
             </Text> 
         </Card>
@@ -256,6 +296,14 @@ export const dataSourcesList = [
                     <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2018/180426_4e.pdf" target="_blank" >
                         https://www.nintendo.co.jp/ir/pdf/2018/180426_4e.pdf
                     </Anchor>
+                        Dedicated Video Game Sales Units:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/en/finance/hard_soft/index.html" target="_blank" >
+                        https://www.nintendo.co.jp/ir/en/finance/hard_soft/index.html
+                    </Anchor>
+                        Top Selling Title Sales Units:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/en/finance/software/index.html" target="_blank" >
+                        https://www.nintendo.co.jp/ir/en/finance/software/index.html
+                    </Anchor>
                 </Stack>  
             </Text> 
         </Card>
@@ -286,6 +334,14 @@ export const dataSourcesList = [
                         4th Quarter Supplementary Information:
                     <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/pdf/2017/170427_6e.pdf" target="_blank" >
                         https://www.nintendo.co.jp/ir/pdf/2017/170427_6e.pdf
+                    </Anchor>
+                        Dedicated Video Game Sales Units:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/en/finance/hard_soft/index.html" target="_blank" >
+                        https://www.nintendo.co.jp/ir/en/finance/hard_soft/index.html
+                    </Anchor>
+                        Top Selling Title Sales Units:
+                    <Anchor mb="sm" href="https://www.nintendo.co.jp/ir/en/finance/software/index.html" target="_blank" >
+                        https://www.nintendo.co.jp/ir/en/finance/software/index.html
                     </Anchor>
                 </Stack>  
             </Text> 
