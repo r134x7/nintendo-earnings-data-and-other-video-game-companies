@@ -38,35 +38,35 @@ const platformSalesMake = (obj: undefined | {
 
     let sales: Section[] = [
         {
-            name: (!obj) ? "Null" : obj.name,
+            name: (!obj) ? "N/A" : obj.name,
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q1CmlValue
         },
         {
-            name: (!obj) ? "Null" : obj.name,
+            name: (!obj) ? "N/A" : obj.name,
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q2CmlValue
         },
         {
-            name: (!obj) ? "Null" : obj.name,
+            name: (!obj) ? "N/A" : obj.name,
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q3CmlValue
         },
         {
-            name: (!obj) ? "Null" : obj.name,
+            name: (!obj) ? "N/A" : obj.name,
             period: " 4th Quarter ",
             cmlPeriod: "Cml. ",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q4CmlValue
         },
         {
-            name: (!obj) ? "Null" : obj.name,
+            name: (!obj) ? "N/A" : obj.name,
             period: " Last FY Cumulative ",
             cmlPeriod: "Cml. ",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
@@ -90,7 +90,7 @@ const platformUnitSalesMake = (obj: undefined | {
 
     let unitSales: Section[] = [
         {
-            name: (!obj) ? "Null" : obj.name,
+            name: (!obj) ? "N/A" : obj.name,
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
             units: (obj !== undefined && obj.units === "units") 
@@ -101,7 +101,7 @@ const platformUnitSalesMake = (obj: undefined | {
             value: (!obj) ? 0 : obj.Q1CmlValue
         },
         {
-            name: (!obj) ? "Null" : obj.name,
+            name: (!obj) ? "N/A" : obj.name,
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
             units: (obj !== undefined && obj.units === "units") 
@@ -112,7 +112,7 @@ const platformUnitSalesMake = (obj: undefined | {
             value: (!obj) ? 0 : obj.Q2CmlValue
         },
         {
-            name: (!obj) ? "Null" : obj.name,
+            name: (!obj) ? "N/A" : obj.name,
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
             units: (obj !== undefined && obj.units === "units") 
@@ -123,7 +123,7 @@ const platformUnitSalesMake = (obj: undefined | {
             value: (!obj) ? 0 : obj.Q3CmlValue
         },
         {
-            name: (!obj) ? "Null" : obj.name,
+            name: (!obj) ? "N/A" : obj.name,
             period: " 4th Quarter ",
             cmlPeriod: "Cml. ",
             units: (obj !== undefined && obj.units === "units") 
@@ -134,7 +134,7 @@ const platformUnitSalesMake = (obj: undefined | {
             value: (!obj) ? 0 : obj.Q4CmlValue
         },
         {
-            name: (!obj) ? "Null" : obj.name,
+            name: (!obj) ? "N/A" : obj.name,
             period: " Last FY Cumulative ",
             cmlPeriod: "Cml. ",
             units: (obj !== undefined && obj.units === "units") 
@@ -301,5 +301,60 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
     let printAll = [printOne].concat(printPlatformCmlSales, printPlatformUnitSales);
 
     return printAll.reduce((prev, next) => prev + "\n" + next);
+
+});
+
+export const globalHardwareSoftwareMobileGraphList = collection.map((elem, index, array) => {
+
+    let currentQuarter: number = elem.currentQuarter;
+
+    let platformUnitSalesThisFYList: Section[][] = elem.platformUnitSales.filter(value => !Object.hasOwn(value, "dataShift")).map(value => platformUnitSalesMake(value)); 
+    // applying the filter on both ThisFYList and LastFYList will work correctly 
+
+    let platformUnitSalesLastFYList: Section[][] = elem.platformUnitSales.filter(value => !Object.hasOwn(value, "dataShift")).map((value) => {
+        // array[index+1] is checking the collection index of the previous fiscal year
+        let nameSearch = (!array[index+1]) ? undefined : array[index+1].platformUnitSales.filter(findName => value.name === findName.name); // it should only find one match
+        
+        return (!nameSearch) 
+                ? platformUnitSalesMake(undefined)
+                : platformUnitSalesMake(nameSearch[0]);
+    })
+
+    const quarterlyPlatformUnitSalesThisFY = platformUnitSalesThisFYList.map((elem) => {
+
+        return quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative index
+    });
+    
+    const quarterlyPlatformUnitSalesLastFY = platformUnitSalesLastFYList.map((elem) => {
+
+        return quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative index
+    });
+
+    const platformUnitSalesThisFY = platformUnitSalesThisFYList.map((elem) => {
+        return elem.filter((value, index, array) => index !== array.length-1) // filtering out the last FY cml index
+    });
+
+    const platformUnitSalesLastFY = platformUnitSalesLastFYList.map((elem) => {
+        return elem.filter((value, index, array) => index !== array.length-1) // filtering out the last FY cml index
+    });
+
+    let thisFY: string = elem.fiscalYear.slice(1, -1);
+    let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
+
+    let marchThisFY: string = "March " + thisFY.slice(4);
+    let marchLastFY: string = "March " + lastFY.slice(4);
+
+    const graphMake = {
+        thisFY: thisFY,
+        lastFY: lastFY,
+        marchThisFY: marchThisFY,
+        marchLastFY: marchLastFY,
+        quarterValuesThisFY: quarterlyPlatformUnitSalesThisFY,
+        quarterValuesLastFY: quarterlyPlatformUnitSalesLastFY,
+        cumulativeValuesThisFY: platformUnitSalesThisFY,
+        cumulativeValuesLastFY: platformUnitSalesLastFY,
+    };
+
+    return graphMake
 
 });
