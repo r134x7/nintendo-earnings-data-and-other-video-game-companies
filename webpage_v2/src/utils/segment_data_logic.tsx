@@ -764,7 +764,7 @@ export const SquareEnixPrint = (salesHDGames: Section[], salesHDGamesLastFY: Sec
 
 }
 
-export const graphMake = (salesDataThisFY: Section[], salesDataLastFY: Section[], salesUnitsThisFY: Section[], salesUnitsLastFY: Section[], header: Header, currentQuarter: number) => {
+export const graphMake = (salesDataThisFY: Section[], salesDataLastFY: Section[], salesUnitsThisFY: Section[], salesUnitsLastFY: Section[], segmentName: string, fiscalYear: string, currentQuarter: number) => {
 
     let quartersSalesThisFY = quarterlyCalculation(salesDataThisFY);
     let quartersSalesLastFY = quarterlyCalculation(salesDataLastFY);
@@ -790,39 +790,66 @@ export const graphMake = (salesDataThisFY: Section[], salesDataLastFY: Section[]
             return calculateSalesPerSoftware
         })
 
-    let cumulativeSalesPerSoftwareUnitThisFY = salesDataThisFY.filter((elem, index, array) => {
+    let cumulativeSalesPerSoftwareUnitThisFY: Section[] = salesDataThisFY.filter((elem, index, array) => {
             return index < currentQuarter 
         }).map((elem, index, array) => { 
             // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
             let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (salesUnitsThisFY[index].value / 1000)).toFixed(0))
 
-            return calculateSalesPerSoftware
+            return { ...elem, value: calculateSalesPerSoftware} 
         })
 
-    let cumulativeSalesPerSoftwareUnitLastFY = salesDataLastFY.filter((elem, index, array) => {
+    let cumulativeSalesPerSoftwareUnitLastFY: Section[]= salesDataLastFY.filter((elem, index, array) => {
             return index < currentQuarter 
         }).map((elem, index, array) => { 
             // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
             let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (salesUnitsLastFY[index].value / 1000)).toFixed(0))
 
-            return calculateSalesPerSoftware
+            return { ...elem, value: calculateSalesPerSoftware}
         })
 
 
-        let graphData = {
-            quarterSalesValuesThisFY: quartersSalesThisFY,
-            quarterSalesValuesLastFY: quartersSalesLastFY,
-            quarterUnitValuesThisFY: quartersUnitsThisFY,
-            quarterUnitValuesLastFY: quartersUnitsLastFY,
-            quarterSalesPerSoftwareUnitThisFY: quarterSalesPerSoftwareUnitThisFY,
-            quarterSalesPerSoftwareUnitLastFY: quarterSalesPerSoftwareUnitLastFY,
-            cumulativeSalesValuesThisFY: salesDataThisFY,
-            cumulativeSalesValuesLastFY: salesDataLastFY,
-            cumulativeUnitValuesThisFY: salesUnitsThisFY,
-            cumulativeUnitValuesLastFY: salesUnitsLastFY,
-            cumulativeSalesPerSoftwareUnitThisFY: cumulativeSalesPerSoftwareUnitThisFY,
-            cumulativeSalesPerSoftwareUnitLastFY: cumulativeSalesPerSoftwareUnitLastFY,
-        }
+    let thisFY: string = fiscalYear.slice(1, -1);
+    let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
+
+    let marchThisFY: string = "March " + thisFY.slice(4);
+    let marchLastFY: string = "March " + lastFY.slice(4);
+
+    let quarterValuesThisFYList = [
+        quartersSalesThisFY,
+        quartersUnitsThisFY,
+        quarterSalesPerSoftwareUnitThisFY,
+    ];
+
+    let quarterValuesLastFYList = [
+        quartersSalesLastFY,
+        quartersUnitsLastFY,
+        quarterSalesPerSoftwareUnitLastFY,
+    ];
+
+    let cmlValuesThisFYList = [
+        salesDataThisFY,
+        salesUnitsThisFY,
+        cumulativeSalesPerSoftwareUnitThisFY,
+    ];
+
+    let cmlValuesLastFYList = [
+        salesDataLastFY,
+        salesUnitsLastFY,
+        cumulativeSalesPerSoftwareUnitLastFY,
+    ];
+
+    let graphData = {
+        segmentName: segmentName,
+        thisFY: thisFY,
+        lastFY: lastFY,
+        marchThisFY: marchThisFY,
+        marchLastFY: marchLastFY,
+        quarterValuesThisFY: quarterValuesThisFYList,
+        quarterValuesLastFY: quarterValuesLastFYList,
+        cumulativeValuesThisFY: cmlValuesThisFYList,
+        cumulativeValuesLastFY: cmlValuesLastFYList,
+    } 
 
         return graphData
 };
