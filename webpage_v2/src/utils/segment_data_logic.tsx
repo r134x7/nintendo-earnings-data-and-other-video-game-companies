@@ -763,3 +763,66 @@ export const SquareEnixPrint = (salesHDGames: Section[], salesHDGamesLastFY: Sec
     return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
 
 }
+
+export const graphMake = (salesDataThisFY: Section[], salesDataLastFY: Section[], salesUnitsThisFY: Section[], salesUnitsLastFY: Section[], header: Header, currentQuarter: number) => {
+
+    let quartersSalesThisFY = quarterlyCalculation(salesDataThisFY);
+    let quartersSalesLastFY = quarterlyCalculation(salesDataLastFY);
+
+    let quartersUnitsThisFY = quarterlyCalculation(salesUnitsThisFY); 
+    let quartersUnitsLastFY = quarterlyCalculation(salesUnitsLastFY);
+
+    let quarterSalesPerSoftwareUnitThisFY = quartersSalesThisFY.filter((elem, index, array) => {
+            return index < currentQuarter 
+        }).map((elem, index, array) => { 
+            // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
+            let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (quartersUnitsThisFY[index].value / 1000)).toFixed(0))
+
+            return calculateSalesPerSoftware
+        })
+
+    let quarterSalesPerSoftwareUnitLastFY = quartersSalesLastFY.filter((elem, index, array) => {
+            return index < currentQuarter 
+        }).map((elem, index, array) => { 
+            // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
+            let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (quartersUnitsLastFY[index].value / 1000)).toFixed(0))
+
+            return calculateSalesPerSoftware
+        })
+
+    let cumulativeSalesPerSoftwareUnitThisFY = salesDataThisFY.filter((elem, index, array) => {
+            return index < currentQuarter 
+        }).map((elem, index, array) => { 
+            // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
+            let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (salesUnitsThisFY[index].value / 1000)).toFixed(0))
+
+            return calculateSalesPerSoftware
+        })
+
+    let cumulativeSalesPerSoftwareUnitLastFY = salesDataLastFY.filter((elem, index, array) => {
+            return index < currentQuarter 
+        }).map((elem, index, array) => { 
+            // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
+            let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (salesUnitsLastFY[index].value / 1000)).toFixed(0))
+
+            return calculateSalesPerSoftware
+        })
+
+
+        let graphData = {
+            quarterSalesValuesThisFY: quartersSalesThisFY,
+            quarterSalesValuesLastFY: quartersSalesLastFY,
+            quarterUnitValuesThisFY: quartersUnitsThisFY,
+            quarterUnitValuesLastFY: quartersUnitsLastFY,
+            quarterSalesPerSoftwareUnitThisFY: quarterSalesPerSoftwareUnitThisFY,
+            quarterSalesPerSoftwareUnitLastFY: quarterSalesPerSoftwareUnitLastFY,
+            cumulativeSalesValuesThisFY: salesDataThisFY,
+            cumulativeSalesValuesLastFY: salesDataLastFY,
+            cumulativeUnitValuesThisFY: salesUnitsThisFY,
+            cumulativeUnitValuesLastFY: salesUnitsLastFY,
+            cumulativeSalesPerSoftwareUnitThisFY: cumulativeSalesPerSoftwareUnitThisFY,
+            cumulativeSalesPerSoftwareUnitLastFY: cumulativeSalesPerSoftwareUnitLastFY,
+        }
+
+        return graphData
+};

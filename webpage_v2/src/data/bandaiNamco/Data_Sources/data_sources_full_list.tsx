@@ -7,8 +7,8 @@ export const dataSourcesList = [
             <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
                         1st Quarter Financial Hightlights: 
-                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20220805_Complement.pdf" target="_blank" >
-                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20220805_Complement.pdf
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20220805_Complement_2.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20220805_Complement_2.pdf
                     </Anchor>
                         2nd Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/2022E5B9B4E5BAA62Q_E8A39CE8B6B3E8B387E69699(E88BB1.pdf" target="_blank" >
