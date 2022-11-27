@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { softwareSalesList } from "../data/sega/software_sales_sega";
+import { softwareSalesList, softwareSalesGraphList } from "../data/sega/software_sales_sega";
 import { annualReportList } from "../data/sega/annual_report_sega";
 import { dataSourcesList } from "../data/sega/Data_Sources/data_sources_full_list";
+
+import GRAPH_SOFTWARE_SALES from "../data/miscellaneousGraphs/GRAPH_SOFTWARE_SALES";
 
 export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
@@ -23,6 +25,7 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
             {
                 name: "Software Sales",
                 value: softwareSalesList[index]? softwareSalesList[index] : undefined,
+                graph: softwareSalesGraphList[index]? <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} /> : undefined
             },
             {
                 name: "FY Series IP",
@@ -40,6 +43,16 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
 
         return (dataSelected) ? dataSelected.value : ""
     };
+
+    const selectGraphComponent = (objList: {name: string, value: string | JSX.Element | undefined, graph?: JSX.Element | undefined}[]) =>
+    (dataUsed: string): JSX.Element | undefined => {
+
+        let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
+
+        return (dataSelected) ? dataSelected.graph : undefined
+    };
+
+    const selectGraph = selectGraphComponent(componentListNew[props.setIndex]);
 
     const selectData = selectDataComponent(componentListNew[props.setIndex]);
 
@@ -59,6 +72,7 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
                     ? selectData(value)
                     : <Code style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
             }
+            {selectGraph(value)}
             <Space h="xl" />
             <Space h="xl" />
             <Space h="xl" />

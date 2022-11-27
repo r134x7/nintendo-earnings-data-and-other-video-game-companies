@@ -59,21 +59,21 @@ const Home = () => {
                     </List>
                     <Text>Capcom -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Platinum Titles list FY3/2023 updated, Software Sales from FY3/21 to FY3/23 updated, added Software Platform Shipments from FY3/21 to FY3/22.</List.Item>
+                        <List.Item>Latest update: Platinum Titles list FY3/2023 updated, Software Sales from FY3/21 to FY3/23 updated (Now with Graphs), added Software Platform Shipments from FY3/21 to FY3/22.</List.Item>
                         <List.Item>Future update planned: Notes section.</List.Item>
                     </List>
                     <Text>Sega Sammy -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Sales per Software Unit data from FY3/2020 to FY3/23 added.</List.Item>
+                        <List.Item>Latest update: Sales per Software Unit data from FY3/2020 to FY3/23 added (Now with Graphs).</List.Item>
                         <List.Item>Future update planned: Notes section.</List.Item>
                     </List>
                     <Text>Bandai Namco -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Sales per Software Unit data from FY3/2019 to FY3/2023 added.</List.Item>
+                        <List.Item>Latest update: Sales per Software Unit data from FY3/2019 to FY3/2023 added (Now with Graphs).</List.Item>
                     </List>
                     <Text>Koei Tecmo -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Sales per Software Unit data from FY3/2019 to FY3/2023 added.</List.Item>
+                        <List.Item>Latest update: Sales per Software Unit data from FY3/2019 to FY3/2023 added (Now with Graphs).</List.Item>
                     </List>
                     <Text>Square Enix -</Text>
                     <List withPadding listStyleType="disc">

@@ -1,4 +1,4 @@
-import { Header, Section, CapcomPrint, CapcomPrintPhysical, CapcomPrintDigital } from "../../utils/segment_data_logic";
+import { Header, Section, CapcomPrint, CapcomPrintPhysical, CapcomPrintDigital, graphMake } from "../../utils/segment_data_logic";
 import softwareSales2023 from "./Software_Sales/software_sales_fy3_2023.json";
 import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
@@ -325,3 +325,17 @@ export const softwareSalesList: string[] = collection.map((elem, index, array) =
 
     return CapcomPrint(digitalContentsSalesThisFY, digitalContentsSalesLastFY, digitalContentsUnitsThisFY, digitalContentsUnitsLastFY, header, elem.currentQuarter) + "\n" + CapcomPrintPhysical(packageSalesThisFY, packageSalesLastFY, packageUnitsThisFY, packageUnitsLastFY, header, elem.currentQuarter) + "\n" + CapcomPrintDigital(digitalSalesThisFY, digitalSalesLastFY, digitalUnitsThisFY, digitalUnitsLastFY, header, elem.currentQuarter)
 }).filter(elem => elem !== "undefined")
+
+export const softwareSalesGraphList = collection.map((elem, index, array) => {
+    if (array[index] === array.at(-1)) {
+        return undefined // for undefinedData in collection only
+    }
+
+    let salesThisFY: Section[] = digitalContentsSalesMake(elem);
+    let salesLastFY: Section[] = digitalContentsSalesMake(array[index+1]);
+
+    let unitsThisFY: Section[] = digitalContentsUnitsMake(elem);
+    let unitsLastFY: Section[] = digitalContentsUnitsMake(array[index+1]);
+
+    return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.digitalContentsSales.name, elem.fiscalYear, elem.currentQuarter)
+}).filter(elem => elem !== undefined);

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { softwareSalesList } from "../data/koeiTecmo/software_sales_koei_tecmo";
+import { softwareSalesList, softwareSalesGraphList } from "../data/koeiTecmo/software_sales_koei_tecmo";
 import { dataSourcesList } from "../data/koeiTecmo/Data_Sources/data_sources_full_list";
+import GRAPH_SOFTWARE_SALES from "../data/miscellaneousGraphs/GRAPH_SOFTWARE_SALES";
 
 export default function KOEI_TECMO_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
@@ -20,6 +21,7 @@ export default function KOEI_TECMO_COMPONENT(props: {setIndex: number; yearLengt
             {
                 name: "Software Sales",
                 value: softwareSalesList[index]? softwareSalesList[index] : undefined,
+                graph: softwareSalesGraphList[index]? <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} /> : undefined
             },
         ].filter(elem => elem.value !== undefined);
     })
@@ -33,6 +35,16 @@ export default function KOEI_TECMO_COMPONENT(props: {setIndex: number; yearLengt
 
         return (dataSelected) ? dataSelected.value : ""
     };
+
+    const selectGraphComponent = (objList: {name: string, value: string | JSX.Element | undefined, graph?: JSX.Element | undefined}[]) =>
+    (dataUsed: string): JSX.Element | undefined => {
+
+        let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
+
+        return (dataSelected) ? dataSelected.graph : undefined
+    };
+
+    const selectGraph = selectGraphComponent(componentListNew[props.setIndex]);
 
     const selectData = selectDataComponent(componentListNew[props.setIndex]);
 
@@ -52,6 +64,7 @@ export default function KOEI_TECMO_COMPONENT(props: {setIndex: number; yearLengt
                     ? selectData(value)
                     : <Code style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
             }
+            {selectGraph(value)}
             <Space h="xl" />
             <Space h="xl" />
             <Space h="xl" />

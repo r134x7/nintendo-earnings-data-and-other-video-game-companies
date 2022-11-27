@@ -4,8 +4,9 @@ import { useSelector } from "react-redux";
 import { dataSourcesList } from "../data/capcom/Data_Sources/data_sources_full_list"
 import { allPlatinumTitlesList, fyPlatinumTitlesList } from "../data/capcom/platinum_titles_Capcom";
 import { gameSeriesList } from "../data/capcom/game_series_sales_Capcom";
-import { softwareSalesList } from "../data/capcom/software_sales_Capcom";
+import { softwareSalesList, softwareSalesGraphList } from "../data/capcom/software_sales_Capcom";
 import { annualReportList } from "../data/capcom/software_shipments_platform_Capcom";
+import GRAPH_SOFTWARE_SALES from "../data/miscellaneousGraphs/GRAPH_SOFTWARE_SALES";
 
 export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
@@ -27,6 +28,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
             {
                 name: "Software Sales",
                 value: softwareSalesList[index]? softwareSalesList[index] : undefined,
+                graph: softwareSalesGraphList[index]? <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} /> : undefined
             },
             {
                 name: "Software Platform Shipments", 
@@ -57,6 +59,15 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
         return (dataSelected) ? dataSelected.value : ""
     };
 
+    const selectGraphComponent = (objList: {name: string, value: string | JSX.Element | undefined, graph?: JSX.Element | undefined}[]) =>
+    (dataUsed: string): JSX.Element | undefined => {
+
+        let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
+
+        return (dataSelected) ? dataSelected.graph : undefined
+    };
+
+    const selectGraph = selectGraphComponent(componentListNew[props.setIndex]);
     const selectData = selectDataComponent(componentListNew[props.setIndex]);
 
 
@@ -76,6 +87,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
                     ? selectData(value)
                     : <Code style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
             }
+            {selectGraph(value)}
             <Space h="xl" />
             <Space h="xl" />
             <Space h="xl" />

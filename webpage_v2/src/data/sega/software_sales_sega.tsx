@@ -1,4 +1,4 @@
-import { Header, Section, SegaPrint } from "../../utils/segment_data_logic";
+import { Header, Section, SegaPrint, graphMake } from "../../utils/segment_data_logic";
 import softwareSales2023 from "./Software_Sales/software_sales_fy3_2023.json"
 import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
@@ -126,3 +126,18 @@ export const softwareSalesList: string[] = collection.map((elem, index, array) =
 
     return SegaPrint(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter)
 }).filter(elem => elem !== "undefined")
+
+export const softwareSalesGraphList = collection.map((elem, index, array) => {
+    if (array[index] === array.at(-1)) {
+        return undefined // for undefinedData in collection only
+    }
+
+    let salesThisFY: Section[] = salesMake(elem);
+    let salesLastFY: Section[] = salesMake(array[index+1]);
+
+    let unitsThisFY: Section[] = unitsmake(elem);
+    let unitsLastFY: Section[] = unitsmake(array[index+1]);
+
+    return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.fullGameSales.name, elem.fiscalYear, elem.currentQuarter)
+}).filter(elem => elem !== undefined);
+

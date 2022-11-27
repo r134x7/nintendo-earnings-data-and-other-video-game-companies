@@ -156,9 +156,11 @@ export default function GRAPH_SOFTWARE_SALES(props:
                             // stacked: true,
                             title: {
                               display: true,
-                              text: (activePage !== 2)
+                              text: (activePage === 1)
                                         ? "Million yen (¥)"
-                                        : "Units in Millions",
+                                        : (activePage === 2)
+                                        ? "Units in Millions"
+                                        : "Yen (¥)",
                             },
                           },
                           x: {
@@ -228,9 +230,11 @@ export default function GRAPH_SOFTWARE_SALES(props:
                             // stacked: true,
                             title: {
                               display: true,
-                              text: (activePage !== 2)
+                              text: (activePage === 1)
                                         ? "Million yen (¥)"
-                                        : "Units in Millions",
+                                        : (activePage === 2)
+                                        ? "Units in Millions"
+                                        : "Yen (¥)",
                             },
                           },
                           x: {
@@ -282,9 +286,11 @@ export default function GRAPH_SOFTWARE_SALES(props:
                             // stacked: true,
                             title: {
                               display: true,
-                              text: (activePage !== 2)
+                              text: (activePage === 1)
                                         ? "Million yen (¥)"
-                                        : "Units in Millions",
+                                        : (activePage === 2)
+                                        ? "Units in Millions"
+                                        : "Yen (¥)",
                             },
                           },
                           x: {
@@ -349,9 +355,11 @@ export default function GRAPH_SOFTWARE_SALES(props:
                         // stacked: true,
                         title: {
                           display: true,
-                          text: (activePage === graphQuarters.length)
+                              text: (activePage === 1)
                                         ? "Million yen (¥)"
-                                        : "Units in Millions",
+                                        : (activePage === 2)
+                                        ? "Units in Millions"
+                                        : "Yen (¥)",
                         },
                       },
                       x: {
