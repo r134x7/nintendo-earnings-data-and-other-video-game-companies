@@ -34,7 +34,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                 graph: consolidatedEarningsGraphList[index]? <GRAPH_NINTENDO_EARNINGS setData={consolidatedEarningsGraphList[index]} /> : undefined
             },
             {
-                name: "Global Hardware/Software units, Mobile/IP related income",
+                name: "Global Hardware/Software units, Mobile/IP related income, Playing cards",
                 value: globalHardwareSoftwareMobileList[index]? globalHardwareSoftwareMobileList[index] : undefined,
                 graph: globalHardwareSoftwareMobileGraphList[index]? <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={globalHardwareSoftwareMobileGraphList[index]} /> : undefined
             },
