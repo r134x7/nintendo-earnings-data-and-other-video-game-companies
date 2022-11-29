@@ -63,7 +63,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             : (sectionDifference[0].name === " Dedicated video game platform ")
             ? "+------------------------------------+\n| Dedicated video game platform      |\n+------------------------------------+\n|             |     Sales  |    YoY% |\n+------------------------------------+"
             : (sectionDifference[0].name === " Digital Sales ")
-            ? "+--------------------------+\n|Digital Sales in dedicated|--------+|\n| video game platform      |    YoY% |\n+------------------------------------+"
+            ? "+--------------------------+\n|Digital Sales in dedicated|---------+\n| video game platform      |    YoY% |\n+------------------------------------+"
             : "+" + "-".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |\n+" + "-".repeat(33) + "+"
 
      const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem, index, array) => {
@@ -235,7 +235,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
 
             const mobileFooter = "|(Includes income from smart-device\n|content and royalty income.)";
 
-            const digitalSalesFooter = "|(Includes downloadable versions of\n|packaged software, download-only\n|software, add-on content and\n|Nintendo Switch Online.)"
+            const digitalSalesFooter = "|(Includes downloadable versions of\n|packaged software, download-only\n|software, add-on content and\n|Nintendo Switch Online*.)\n|*Nintendo Switch Online from FY3/2019"
 
         const penultimateCheck = (sectionDifference[0].name === " Hardware Total " || sectionDifference[0].name === " Software Total ")
             ? [sectionHeader, ...difference, ...cumulative, ltdPrint, forecast].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)

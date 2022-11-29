@@ -50,6 +50,33 @@
                 "Q3CmlValue": 33384,
                 "Q4CmlValue": 46008,
                 "cmlValueLastFY": 0 
+            },
+            {
+                "name": " Playing cards ",
+                "units": "currency",
+                "Q1CmlValue": 541,
+                "Q2CmlValue": 1008,
+                "Q3CmlValue": 1570,
+                "Q4CmlValue": 1949,
+                "cmlValueLastFY": 0 
+            },
+            {
+                "name": " Dedicated video game platform ",
+                "units": "currency",
+                "Q1CmlValue": 158517,
+                "Q2CmlValue": 369130,
+                "Q3CmlValue": 962340,
+                "Q4CmlValue": 1152602,
+                "cmlValueLastFY": 0 
+            },
+            {
+                "name": " Digital Sales ",
+                "units": "currency",
+                "Q1CmlValue": 18500,
+                "Q2CmlValue": 39100,
+                "Q3CmlValue": 84200,
+                "Q4CmlValue": 118800,
+                "cmlValueLastFY": 0 
             }
     ],
     "platformForecastSales": [
