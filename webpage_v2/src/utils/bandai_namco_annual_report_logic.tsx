@@ -43,7 +43,7 @@ const printRank = (seriesIP: Series) => {
     }; 
 };
 
-const printTextBlock = (text: string) => {
+export const printTextBlock = (text: string) => {
 
     return (blockLength: number) => {
 
