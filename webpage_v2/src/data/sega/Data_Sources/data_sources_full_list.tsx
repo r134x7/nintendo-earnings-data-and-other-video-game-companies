@@ -10,9 +10,17 @@ export const dataSourcesList = [
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20220804_appendix_e_final.pdf" target="_blank" >
                         https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20220804_appendix_e_final.pdf
                     </Anchor>
+                        1st Quarter Results Presentation: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20220804_presentation_e_final.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20220804_presentation_e_final.pdf
+                    </Anchor>
                         2nd Quarter Data Appendix: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20221031_appendix_e_final.pdf" target="_blank" >
                         https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20221031_appendix_e_final.pdf
+                    </Anchor>
+                        2nd Quarter Results Presentation: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20221031_presentation_e_final.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20221031_presentation_e_final.pdf
                     </Anchor>
                 </Stack>  
             </Text> 
@@ -37,6 +45,10 @@ export const dataSourcesList = [
                         4th Quarter Data Appendix: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20220513_appendix_en_final_.pdf" target="_blank" >
                         https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20220513_appendix_en_final_.pdf
+                    </Anchor>
+                        4th Quarter Results Presentation: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20220513_presentation_eng_final.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20220513_presentation_eng_final.pdf
                     </Anchor>
                         Sega Sammy Integrated Report 2022: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/printing_annual/2022/ir_2022_web_all_e.pdf" target="_blank" >
@@ -65,6 +77,10 @@ export const dataSourcesList = [
                         4th Quarter Data Appendix: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_4q_hosoku_20210513_e.pdf" target="_blank" >
                         https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_4q_hosoku_20210513_e.pdf
+                    </Anchor>
+                    4th Quarter Results Presentation: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_4q_presentation_20210513_en.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_4q_presentation_20210513_en.pdf
                     </Anchor>
                         Sega Sammy Integrated Report 2021: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/printing_annual/2021/ir_2021_print_en.pdf" target="_blank" >

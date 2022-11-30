@@ -110,18 +110,41 @@ const seriesMake = (obj: {
     return series
 };
 
-const fullGameRatio = (ip: Series): string => {
+const fullGameRatio = (ip: Series, fiscalYear: string): string | undefined => {
 
-    let nameSearch = softwareUnitsCollection.map((elem) => {
+    let nameSearch = softwareUnitsCollection.filter((elem) => {
         // match by fiscalYear key
         // then go to software units and get Q4CmlValue
         // (full game units / ip series units ) * 100).toFixed(2)%
-    })
 
-    let fullGameToIP = 
+        return elem.fiscalYear === fiscalYear
+    }).map((elem, index, array) => {
+
+        let ipMatch = elem.softwareUnits.filter(value => value.ip === ip.title); // Should only have one match
+        
+        return ipMatch
+    }).flat();
+
+    if (nameSearch.length === 0) {
+        return undefined
+    } else {
+        
+        let calc: string = `${(((nameSearch[0].Q4CmlValue / 1000) / (ip.value - ip.valueLastFY)) * 100).toFixed(2)}% `
+
+        let calcFixed: string = (calc.length >= 9)
+                ? calc 
+                :  " ".repeat(9 - calc.length) + calc;
+
+        let calcPrint: string = "\n+--------------------------------------------+\n|" + fiscalYear + "Full Game / IP Series % |" + calcFixed + "|\n+============================================+\n###";
+
+        return calcPrint 
+    };
+
 };
 
 export const annualReportList: string[] = collection.map((elem, index, array) => {
+
+    let fiscalYear = elem.fiscalYear;
 
     let header: Header = {
         segaHeader: "| Sega Sammy - IP Series Data    |",
@@ -154,7 +177,12 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
     })
 
     let printedSeries = sortedList.map((elem) => {
-        return printSeries(header, elem)
+
+        let printRatio = fullGameRatio(elem, fiscalYear)        
+
+        return (!printRatio) 
+                ? printSeries(header, elem)
+                : printSeries(header, elem).concat(printRatio)
     }).reduce((prev, next) => prev + "\n" + next)
 
     let printOne = printHead(header);

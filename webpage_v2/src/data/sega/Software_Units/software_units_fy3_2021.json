@@ -4,6 +4,7 @@
     "softwareUnits": [
         {
             "name": " Sonic series ",
+            "ip": " Sonic the Hedgehog ",
             "Q1CmlValue": 800,
             "Q2CmlValue": 2300,
             "Q3CmlValue": 3700,
@@ -11,6 +12,7 @@
         },
         {
             "name": " Total War series ",
+            "ip": " Total War ",
             "Q1CmlValue": 1900,
             "Q2CmlValue": 2500,
             "Q3CmlValue": 3600,
@@ -18,6 +20,7 @@
         },
         {
             "name": " Persona series ",
+            "ip": " Persona ",
             "Q1CmlValue": 1200,
             "Q2CmlValue": 1500,
             "Q3CmlValue": 1900,
@@ -25,6 +28,7 @@
         },
         {
             "name": " Like a Dragon series ",
+            "ip": " Ryu ga Gotoku ",
             "Q1CmlValue": 300,
             "Q2CmlValue": 600,
             "Q3CmlValue": 1600,
@@ -33,6 +37,7 @@
         },
         {
             "name": " Football Manager series ",
+            "ip": " Football Manager ",
             "Q1CmlValue": 0,
             "Q2CmlValue": 0,
             "Q3CmlValue": 0,
