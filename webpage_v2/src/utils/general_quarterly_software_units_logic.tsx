@@ -10,8 +10,8 @@ export type Section = {
 }
 
 export type Header = {
-    switchHeader: "| Sega Sammy        |",
-    secondHeader: "| Series Sales Units       |",
+    firstHeader: "| Sega Sammy        |",
+    secondHeader: "| Full Game Unit Sales    |",
     fiscalYear: string,
 }
 
@@ -48,7 +48,7 @@ export function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
 
 export const printHead = (header: Header) => 
 `+${"-".repeat(30)}+
-${header.switchHeader}${header.fiscalYear}|
+${header.firstHeader}${header.fiscalYear}|
 +${"-".repeat(30)}+
 ${header.secondHeader}
 +${"-".repeat(30)}+`;
