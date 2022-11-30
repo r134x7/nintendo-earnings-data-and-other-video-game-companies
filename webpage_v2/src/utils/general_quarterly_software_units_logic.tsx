@@ -11,7 +11,7 @@ export type Section = {
 
 export type Header = {
     firstHeader: "| Sega Sammy        |",
-    secondHeader: "| Full Game Unit Sales    |",
+    secondHeader: "| Full Game Software Unit Sales|",
     fiscalYear: string,
 }
 
@@ -55,8 +55,8 @@ ${header.secondHeader}
 
 export const printSoftwareGeneral = (header: Header, sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], currentQuarter: number) => {
 
-    const textBlock: string | never[] = printTextBlock(sectionDifference[0].name)(33);
-    const sectionHeader: string = textBlock + "\n+---------------------------------+\n|           |   Units |    YoY% |\n+---------------------------------+"
+    const textBlock: string | never[] = "+---------------------------------+\n" + printTextBlock(sectionDifference[0].name)(33);
+    const sectionHeader: string = textBlock + "\n+---------------------------------+\n|             |   Units |    YoY% |\n+---------------------------------+"
 
      const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem, index, array) => {
          return index < currentQuarter 

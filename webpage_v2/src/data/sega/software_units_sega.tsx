@@ -33,7 +33,7 @@ const platformUnitSalesMake = (obj: undefined | {
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
             units: "units",
-            value: (!obj) ? 0 : obj.Q1CmlValue,
+            value: (!obj) ? 0 : obj.Q1CmlValue / 10,
             miscellaneous: obj?.miscellaneous,
         },
         {
@@ -41,7 +41,7 @@ const platformUnitSalesMake = (obj: undefined | {
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
             units: "units",
-            value: (!obj) ? 0 : obj.Q2CmlValue,
+            value: (!obj) ? 0 : obj.Q2CmlValue / 10,
             miscellaneous: obj?.miscellaneous,
         },
         {
@@ -49,7 +49,7 @@ const platformUnitSalesMake = (obj: undefined | {
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
             units: "units",
-            value: (!obj) ? 0 : obj.Q3CmlValue,
+            value: (!obj) ? 0 : obj.Q3CmlValue / 10,
             miscellaneous: obj?.miscellaneous,
         },
         {
@@ -57,7 +57,7 @@ const platformUnitSalesMake = (obj: undefined | {
             period: " 4th Quarter ",
             cmlPeriod: "Cml. ",
             units: "units",
-            value: (!obj) ? 0 : obj.Q4CmlValue,
+            value: (!obj) ? 0 : obj.Q4CmlValue / 10,
             miscellaneous: obj?.miscellaneous,
         },
         {
@@ -65,7 +65,7 @@ const platformUnitSalesMake = (obj: undefined | {
             period: " Last FY Cumulative ",
             cmlPeriod: "Cml. ",
             units: "units",
-            value: (!obj || !obj.cmlValueLastFY) ? 0 : obj.cmlValueLastFY,
+            value: (!obj || !obj.cmlValueLastFY) ? 0 : obj.cmlValueLastFY / 10,
             miscellaneous: obj?.miscellaneous,
         },
     ];
@@ -81,7 +81,7 @@ export const segaSoftwareUnitsList: string[] = collection.map((elem, index, arra
     let header: Header = {
         fiscalYear: elem.fiscalYear,
         firstHeader: "| Sega Sammy        |",
-        secondHeader: "| Full Game Unit Sales    |",
+        secondHeader: "| Full Game Software Unit Sales|",
     };
 
     let platformUnitSalesThisFYList: Section[][] = elem.softwareUnits.map(value => platformUnitSalesMake(value)); 

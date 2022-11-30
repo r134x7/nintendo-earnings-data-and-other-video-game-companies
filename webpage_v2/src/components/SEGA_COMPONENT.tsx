@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
+import { segaSoftwareUnitsList, segaSoftwareUnitsGraphList } from "../data/sega/software_units_sega"
 import { softwareSalesList, softwareSalesGraphList } from "../data/sega/software_sales_sega";
 import { annualReportList } from "../data/sega/annual_report_sega";
 import { dataSourcesList } from "../data/sega/Data_Sources/data_sources_full_list";
 
 import GRAPH_SOFTWARE_SALES from "../data/miscellaneousGraphs/GRAPH_SOFTWARE_SALES";
+import GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE from "../data/nintendo/Graphs/GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE";
 
 export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
@@ -26,6 +28,11 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
                 name: "Software Sales",
                 value: softwareSalesList[index]? softwareSalesList[index] : undefined,
                 graph: softwareSalesGraphList[index]? <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} /> : undefined
+            },
+            {
+                name: "Software Units",
+                value: segaSoftwareUnitsList[index]? segaSoftwareUnitsList[index] : undefined,
+                graph: segaSoftwareUnitsGraphList[index]? <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={segaSoftwareUnitsGraphList[index]} /> : undefined
             },
             {
                 name: "FY Series IP",

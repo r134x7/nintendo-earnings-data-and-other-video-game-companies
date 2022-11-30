@@ -69,6 +69,10 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
                 return `Dedicated video game platform ${labels.lastFY}`
             case " Digital Sales ":
                 return `Digital Sales in dedicated video game platform ${labels.lastFY}`
+            case "N/A":
+                return  `N/A ${labels.currentFY}`
+            case elem[0].name:
+                return `${elem[0].name} ${labels.currentFY}`
             default:
                 return `Undefined ${labels.currentFY}`
         }
@@ -96,6 +100,10 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
                 return `Dedicated video game platform ${labels.lastFY}`
             case " Digital Sales ":
                 return `Digital Sales in dedicated video game platform ${labels.lastFY}`
+            case "N/A":
+                return  `N/A ${labels.lastFY}`
+            case elem[0].name:
+                return `${elem[0].name} ${labels.lastFY}`
             default:
                 return `Undefined ${labels.lastFY}`
         }
