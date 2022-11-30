@@ -11,7 +11,7 @@ import seriesSoftwareUnits2023 from "./Software_Units/software_units_fy3_2023.js
 import seriesSoftwareUnits2022 from "./Software_Units/software_units_fy3_2022.json";
 import seriesSoftwareUnits2021 from "./Software_Units/software_units_fy3_2021.json";
 
-const collection = [
+export const collection = [
     seriesSoftwareUnits2023,
     seriesSoftwareUnits2022,
     seriesSoftwareUnits2021,

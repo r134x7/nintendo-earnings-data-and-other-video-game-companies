@@ -15,6 +15,8 @@ import annualReport2015 from "./Annual_Report/annual_report_fy3_2015.json";
 import annualReport2014 from "./Annual_Report/annual_report_fy3_2014.json";
 import annualReport2013 from "./Annual_Report/annual_report_fy3_2013.json";
 
+import { collection as softwareUnitsCollection } from "./software_units_sega";
+
 const collection = [
     annualReport2022,
     annualReport2021,
@@ -108,6 +110,17 @@ const seriesMake = (obj: {
     return series
 };
 
+const fullGameRatio = (ip: Series): string => {
+
+    let nameSearch = softwareUnitsCollection.map((elem) => {
+        // match by fiscalYear key
+        // then go to software units and get Q4CmlValue
+        // (full game units / ip series units ) * 100).toFixed(2)%
+    })
+
+    let fullGameToIP = 
+};
+
 export const annualReportList: string[] = collection.map((elem, index, array) => {
 
     let header: Header = {
@@ -126,7 +139,7 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
 
     let seriesList: Series[] = seriesMake(elem)
 
-    let sortedList = seriesList.filter((elem, index, array) => {
+    let sortedList: Series[] = seriesList.filter((elem, index, array) => {
         // return elem.value - elem.valueLastFY !== 0 // probably shouldn't make two separate tables for FY and ALL...
         return elem // forgetting filter doesn't do anything here...
         // we need to create a new array that is identical to the original due to sort's mutating properties. filter titles that sold units this FY
@@ -148,4 +161,3 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
 
     return printOne + "\n" + printedSeries
 })
-
