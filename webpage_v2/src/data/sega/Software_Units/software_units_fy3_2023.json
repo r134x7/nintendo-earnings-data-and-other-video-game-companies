@@ -1,0 +1,35 @@
+{
+    "fiscalYear": " FY3/2023 ",
+    "currentQuarter": 2,
+    "softwareUnits": [
+        {
+            "name": " Sonic series ",
+            "Q1CmlValue": 1460,
+            "Q2CmlValue": 2630,
+            "Q3CmlValue": 2630,
+            "Q4CmlValue": 2630 
+        },
+        {
+            "name": " Total War series ",
+            "Q1CmlValue": 420,
+            "Q2CmlValue": 950,
+            "Q3CmlValue": 950,
+            "Q4CmlValue": 950 
+        },
+        {
+            "name": " Persona series ",
+            "Q1CmlValue": 270,
+            "Q2CmlValue": 500,
+            "Q3CmlValue": 500,
+            "Q4CmlValue": 500 
+        },
+        {
+            "name": " Like a Dragon series ",
+            "Q1CmlValue": 470,
+            "Q2CmlValue": 960,
+            "Q3CmlValue": 960,
+            "Q4CmlValue": 960, 
+            "miscellaneous": "*Like a Dragon series includes the Judgment series" 
+        }
+    ]
+}
