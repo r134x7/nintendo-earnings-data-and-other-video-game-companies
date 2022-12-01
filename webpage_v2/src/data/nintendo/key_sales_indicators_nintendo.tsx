@@ -35,13 +35,14 @@ const collection = [
 // take proportion of digital sales % x total software sales = total digital sales /done
 // take proportion of downloadable versions of packaged software sales % x digital sales = sales of downloadable versions of packaged software /done
 
-const keySalesQuarterMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndicators[][]): KPDIndicators[][] => {
+const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndicators[][]): KPDIndicators[][] => {
 
     let softwareSalesMake: KPDIndicators[][] = indicators.filter(elem => elem[0].name === "Proportion of Hardware Sales").map(elem => {
         return elem.map((value, indexValue) => {
             return {
                 ...value,
-                name: "Proportion of Software Sales",
+                name: "Total Software Sales",
+                units: "currency",
                 value: Number(((1 - (value.value / 100)) * consolidatedSales[1][indexValue].value).toFixed(2)) // total software sales, 
             }
         })
@@ -53,7 +54,8 @@ const keySalesQuarterMake = (indicators: KPDIndicators[][], consolidatedSales: K
         return elem.map((value, indexValue) => {
             return {
                 ...value,
-                name: "Proportion of Physical Software Sales",
+                name: "Total Physical Software Sales",
+                units: "currency",
                 value: Number(((1 - (value.value / 100)) * consolidatedSales[1][indexValue].value).toFixed(2)) // total software sales, 
             }
         })
@@ -64,31 +66,41 @@ const keySalesQuarterMake = (indicators: KPDIndicators[][], consolidatedSales: K
             return (value.name === "Proportion of Overseas Sales")
                 ? {
                     ...value,
+                    name: "Total Overseas Sales",
+                    units: "currency",
                     value: Number(((value.value / 100) * consolidatedSales[0][indexValue].value).toFixed(2)) // total overseas sales 
                   }
                 : (value.name === "Proportion of Hardware Sales")
                 ? {
                     ...value,
+                    name: "Total Hardware Sales",
+                    units: "currency",
                     value: Number(((value.value / 100) * consolidatedSales[1][indexValue].value).toFixed(2)) // total hardware sales
                   }
                 : (value.name === "Proportion of First Party Software Sales")
                 ? {
                     ...value,
+                    name: "Total First-Party Software Sales",
+                    units: "currency",
                     value: Number(((value.value / 100) * softwareSalesMake[0][indexValue].value).toFixed(2)) // total first-party software sales 
                   }
                 : (value.name === "Proportion of Digital Sales")
                 ? {
                     ...value,
+                    name: "Total Digital Sales",
+                    units: "currency",
                     value: Number(((value.value / 100) * softwareSalesMake[0][indexValue].value).toFixed(2)) // total digital sales 
                 }
                 : (value.name === "Proportion of Download version of Packaged Software")
                 ? {
                     ...value,
-                    value: Number(((value.value / 100) * digitalSalesMake[0][indexValue].value).toFixed(2)) // total digital sales 
+                    name: "Total Download Version of Packaged Software",
+                    units: "currency",
+                    value: Number(((value.value / 100) * digitalSalesMake[0][indexValue].value).toFixed(2)) 
                 }
                 : {
                     ...value
-                }
+                } // digital sales
         })
     });
 
@@ -345,14 +357,19 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
     // thisFY values and lastFY values are retrieved.
     // will need to make new maker that multiplies the values
 
-    let filterKeySalesIndicatorsQuarters = qtrValues.filter((elem, index) => {
-        return elem[0].units !== "currency"  
-        // return elem.filter(value => value.units !== "currency")
+    let qtrKeySalesValuesThisFY: KPDIndicators[][] = keySalesMake(qtrValues, qtrSalesValuesThisFY);
+    let cmlKeySalesValuesThisFY: KPDIndicators[][] = keySalesMake(cmlValues, cmlSalesValuesThisFY);
+
+    let qtrKeySalesValuesLastFY: KPDIndicators[][] = keySalesMake(qtrValuesLastFY, qtrSalesValuesLastFY);
+    let cmlKeySalesValuesLastFY: KPDIndicators[][] = keySalesMake(cmlValuesLastFY, cmlSalesValuesLastFY);
+
+    let qtrYearOnYearValues: KPDIndicators[][] = qtrKeySalesValuesThisFY.map((elem, index, array) => {
+        return yearOnYearCalculation(elem, qtrKeySalesValuesLastFY[index])
     });
 
-
-
-
+    let cmlYearOnYearValues: KPDIndicators[][] = cmlKeySalesValuesThisFY.map((elem, index, array) => {
+        return yearOnYearCalculation(elem, cmlKeySalesValuesLastFY[index])
+    });
 
     let inputArrays = Array.from({length: qtrValues.length}, (v, i) => {
 
