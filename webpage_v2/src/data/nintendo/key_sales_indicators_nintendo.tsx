@@ -4,6 +4,8 @@ import {
     printHead,
     printBody,
     KPDIndicators,
+    quarterlyCalculation,
+    yearOnYearCalculation,
 } from "../../utils/kpi_logic";
 
 import keySalesIndicators2023 from "./Key_Sales_Indicators/ksi_fy3_2023.json";
@@ -23,6 +25,46 @@ const collection = [
     keySalesIndicators2018,
     keySalesIndicators2017,
 ] as const;
+
+const consolidatedSalesQuartersMake = (obj: undefined | {
+    name: string,
+    Q1Value: number,
+    Q2Value: number,
+    Q3Value: number,
+    Q4Value: number 
+}) => {
+    // values are cumulative and need to go through quarterly calc
+    let cmlValues: KPDIndicators[] = [
+        {
+            category: "quarterly",
+            units: (obj === undefined) ? "NaN" : "currency",
+            quarter: " 1st Quarter       ",
+            value: (!obj) ? 0 : obj.Q1Value,
+        },
+        {
+            category: "quarterly",
+            units: (obj === undefined) ? "NaN" : "currency",
+            quarter: " 2nd Quarter       ",
+            value: (!obj) ? 0 : obj.Q2Value,
+        },
+        {
+            category: "quarterly",
+            units: (obj === undefined) ? "NaN" : "currency",
+            quarter: " 3rd Quarter       ",
+            value: (!obj) ? 0 : obj.Q3Value,
+        },
+        {
+            category: "quarterly",
+            units: (obj === undefined) ? "NaN" : "currency",
+            quarter: " 4th Quarter       ",
+            value: (!obj) ? 0 : obj.Q4Value,
+        },
+    ];
+    // quarterly calculation taken care of
+    let quarterValues = quarterlyCalculation(cmlValues);
+
+    return quarterValues
+};
 
 const quarterValuesMake = (obj: undefined | {
     name: string,

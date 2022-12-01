@@ -1,6 +1,6 @@
 export type KPDIndicators = {
     category: "quarterly" | "cumulative", 
-    units: "percentage" | "currency",
+    units: "percentage" | "currency" | "NaN",
     quarter: string,
     value: number,
 }
@@ -20,6 +20,38 @@ export type Header = {
 export type Footer = {
    section: "|(※ Proportion of overseas (outside of Japan)\n| sales to total sales)" | "|(※ Proportion of hardware\n|(including accessories) sales to total\n| dedicated video game platform sales)" | "|(※ Proportion of first-party software sales\n| to total dedicated video game software sales)" | "|(\"※ Digital sales include a) downloadable\n| versions of packaged software,\n|b) download-only software,\n|c) add-on content and\n|d) Nintendo Switch Online, etc.\n|＊\"Downloadable versions of packaged software\"\n| indicates the downloadable version of\n| software that is offered both physically\n| and digitally.\")" | "|(※ Proportion of digital sales to total\n| dedicated video game software sales )" | "|(※ Proportion of downloadable versions of\n| packaged software sales to total digital\n| sales as indicated above: a/(a+b+c+d) )", 
 }
+
+
+export function quarterlyCalculation(quarters: KPDIndicators[]) {
+        
+    const calc: KPDIndicators[] = quarters.map((elem, index, array) => {
+        return (index === 0) // 1st Quarter 
+                ? elem
+                : {...elem, value: elem.value - array[index-1].value}
+    })
+    
+    return calc
+}
+
+export function yearOnYearCalculation(thisFY: KPDIndicators[], lastFY: KPDIndicators[]) {
+
+        const calc: KPDIndicators[] = thisFY.map((elem, index) => {
+
+            return (lastFY[index].value < 0)
+                    ? {...elem, units: "percentage", value: Number(
+                        ((((elem.value / lastFY[index].value) -1)* -1) * 100).toFixed(2)
+                        )
+                      }
+                    : (lastFY[index].value === 0)
+                    ? {...elem, units: "NaN", value: 0}
+                    :{...elem, units: "percentage", value: Number(
+                        (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
+                        )
+                      };
+        })
+
+       return calc
+    }
 
 const printSections = (sectionDifference: KPDIndicators[], currentQuarter: number) => { 
 
