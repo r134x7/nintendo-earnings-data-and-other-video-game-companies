@@ -1,8 +1,10 @@
 export type KPDIndicators = {
+    name: string,
     category: "quarterly" | "cumulative", 
     units: "percentage" | "currency" | "NaN",
     quarter: string,
     value: number,
+    miscellaneous?: string,
 }
 
 export type Header = {

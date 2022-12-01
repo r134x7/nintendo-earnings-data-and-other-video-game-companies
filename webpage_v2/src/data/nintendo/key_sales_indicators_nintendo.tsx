@@ -34,6 +34,26 @@ const collection = [
 // take digital sales and provide YoY data and everything else that uses currency
 // take proportion of digital sales % x total dedicated video game platform sales = total digital sales 
 // take proportion of downloadable versions of packaged software sales % x digital sales = sales of downloadable versions of packaged software
+// amount needed: total sales = 1, total dedicated video game platform sales = 2, total dedicated video game platform sales 
+
+const keySalesQuarterMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndicators[][]): KPDIndicators[][] => {
+
+    let x = indicators.map((elem, index) => {
+        return elem.map((value, indexValue) => {
+            return (elem[index] === elem[0])
+                ? {
+                    ...value,
+                    value: Number((value.value * consolidatedSales[0][indexValue].value).toFixed(2)) // total sales x proportion of overseas sales %
+                  }
+                : {
+                    ...value,
+                    value: Number((value.value * consolidatedSales[1][indexValue].value).toFixed(2)) // total dedicated video game platform sales x proportion of hardware sales, 
+                  }
+        })
+    });
+
+    return x
+};
 
 const consolidatedSalesQuartersMake = (obj: undefined | {
     name: string,
@@ -41,28 +61,32 @@ const consolidatedSalesQuartersMake = (obj: undefined | {
     Q2Value: number,
     Q3Value: number,
     Q4Value: number 
-}) => {
+}): KPDIndicators[] => {
     // values are cumulative and need to go through quarterly calc
     let cmlValues: KPDIndicators[] = [
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "quarterly",
             units: (obj === undefined) ? "NaN" : "currency",
             quarter: " 1st Quarter       ",
             value: (!obj) ? 0 : obj.Q1Value,
         },
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "quarterly",
             units: (obj === undefined) ? "NaN" : "currency",
             quarter: " 2nd Quarter       ",
             value: (!obj) ? 0 : obj.Q2Value,
         },
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "quarterly",
             units: (obj === undefined) ? "NaN" : "currency",
             quarter: " 3rd Quarter       ",
             value: (!obj) ? 0 : obj.Q3Value,
         },
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "quarterly",
             units: (obj === undefined) ? "NaN" : "currency",
             quarter: " 4th Quarter       ",
@@ -81,22 +105,25 @@ const consolidatedSalesCmlMake = (obj: undefined | {
     Q2Value: number,
     Q3Value: number,
     Q4Value: number 
-}, cmlName: string) => {
+}, cmlName: string): KPDIndicators[] => {
     // values are cumulative and need to go through quarterly calc
     let cmlValues: KPDIndicators[] = [
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "cumulative",
             units: (obj === undefined) ? "NaN" : "currency",
             quarter: " 1st Half          ",
             value: (!obj) ? 0 : obj.Q2Value,
         },
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "cumulative",
             units: (obj === undefined) ? "NaN" : "currency",
             quarter: " 1st Three Quarters",
             value: (!obj) ? 0 : obj.Q3Value,
         },
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "cumulative",
             units: (obj === undefined) ? "NaN" : "currency",
             quarter: cmlName,
@@ -124,24 +151,28 @@ const quarterValuesMake = (obj: undefined | {
 
     let quarterValues: KPDIndicators[] = [
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "quarterly",
             units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
             quarter: " 1st Quarter       ",
             value: (!obj) ? 0 : obj.Q1Value,
         },
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "quarterly",
             units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
             quarter: " 2nd Quarter       ",
             value: (!obj) ? 0 : obj.Q2Value,
         },
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "quarterly",
             units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
             quarter: " 3rd Quarter       ",
             value: (!obj) ? 0 : obj.Q3Value,
         },
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "quarterly",
             units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
             quarter: " 4th Quarter       ",
@@ -166,18 +197,21 @@ const cmlValuesMake = (obj: undefined | {
 
     let cmlValues: KPDIndicators[] = [
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "cumulative",
             units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
             quarter: " 1st Half          ",
             value: (!obj) ? 0 : obj.Q2CmlValue,
         },
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "cumulative",
             units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
             quarter: " 1st Three Quarters",
             value: (!obj) ? 0 : obj.Q3CmlValue,
         },
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "cumulative",
             units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
             quarter: cmlName,
@@ -252,6 +286,32 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
     let qtrValues: KPDIndicators[][] = elem.kpi.map(elem => quarterValuesMake(elem))
 
     let cmlValues: KPDIndicators[][] = elem.kpi.map(elem => cmlValuesMake(elem, cmlName));
+
+    let qtrValuesLastFY: KPDIndicators[][] = (!array[index+1]) ? elem.kpi.map(elem => quarterValuesMake(undefined)) : array[index+1].kpi.map(elem => quarterValuesMake(elem));
+
+    let cmlValuesLastFY: KPDIndicators[][] = (!array[index+1]) ? elem.kpi.map(elem => cmlValuesMake(undefined, cmlName)) : array[index+1].kpi.map(elem => cmlValuesMake(elem, cmlName));
+
+    let qtrSalesValuesThisFY: KPDIndicators[][] = elem.consolidatedSales.map(elem => consolidatedSalesQuartersMake(elem));
+
+    let qtrSalesValuesLastFY: KPDIndicators[][] = (!array[index+1]) ? elem.consolidatedSales.map(value => consolidatedSalesQuartersMake(undefined)) 
+    : array[index+1].consolidatedSales.map(value => consolidatedSalesQuartersMake(value)); 
+
+    let cmlSalesValuesThisFY: KPDIndicators[][] = elem.consolidatedSales.map(elem => consolidatedSalesCmlMake(elem, cmlName))
+
+    let cmlSalesValuesLastFY: KPDIndicators[][] = (!array[index+1]) ? elem.consolidatedSales.map(value => consolidatedSalesCmlMake(undefined, cmlName)) 
+    : array[index+1].consolidatedSales.map(value => consolidatedSalesCmlMake(value, cmlName)); 
+
+    // thisFY values and lastFY values are retrieved.
+    // will need to make new maker that multiplies the values
+
+    let filterKeySalesIndicatorsQuarters = qtrValues.filter((elem, index) => {
+        return elem[0].units !== "currency"  
+        // return elem.filter(value => value.units !== "currency")
+    });
+
+
+
+
 
     let inputArrays = Array.from({length: qtrValues.length}, (v, i) => {
 
