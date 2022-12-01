@@ -50,7 +50,7 @@ const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndic
                     ...value,
                     name: "Total Software Sales",
                     units: "currency",
-                    value: Number(((1 - (value.value / 100)) * consolidatedSales[1][indexValue].value).toFixed(2)) // total software sales, 
+                    value: Number(((1 - (value.value / 100)) * consolidatedSales[1][indexValue].value).toFixed(0)) // total software sales, 
                 }
             })
         })
@@ -70,47 +70,49 @@ const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndic
                 ...value,
                 name: "Total Physical Software Sales",
                 units: "currency",
-                value: Number(((1 - (value.value / 100)) * consolidatedSales[1][indexValue].value).toFixed(2)) // total software sales, 
+                value: Number(((1 - (value.value / 100)) * consolidatedSales[1][indexValue].value).toFixed(0)) // total software sales, 
             }
         })
     });
  
     let indicatorsMake: KPDIndicators[][] = indicators.map((elem, index) => {
         return elem.map((value, indexValue) => {
+console.log((cmlName === " FY3/22 Cumulative ") ? consolidatedSales[0][indexValue].value : "no");
+
             return (value.name === "Proportion of Overseas Sales")
                 ? {
                     ...value,
                     name: "Total Overseas Sales",
                     units: "currency",
-                    value: Number(((value.value / 100) * consolidatedSales[0][indexValue].value).toFixed(2)) // total overseas sales 
+                    value: Number(((value.value / 100) * consolidatedSales[0][indexValue].value).toFixed(0)) // total overseas sales 
                   }
                 : (value.name === "Proportion of Hardware Sales")
                 ? {
                     ...value,
                     name: "Total Hardware Sales",
                     units: "currency",
-                    value: Number(((value.value / 100) * consolidatedSales[1][indexValue].value).toFixed(2)) // total hardware sales
+                    value: Number(((value.value / 100) * consolidatedSales[1][indexValue].value).toFixed(0)) // total hardware sales
                   }
                 : (value.name === "Proportion of First Party Software Sales")
                 ? {
                     ...value,
                     name: "Total First-Party Software Sales",
                     units: "currency",
-                    value: Number(((value.value / 100) * softwareSalesMake[0][indexValue].value).toFixed(2)) // total first-party software sales 
+                    value: Number(((value.value / 100) * softwareSalesMake[0][indexValue].value).toFixed(0)) // total first-party software sales 
                   }
                 : (value.name === "Proportion of Digital Sales")
                 ? {
                     ...value,
                     name: "Total Digital Sales",
                     units: "currency",
-                    value: Number(((value.value / 100) * softwareSalesMake[0][indexValue].value).toFixed(2)) // total digital sales 
+                    value: Number(((value.value / 100) * softwareSalesMake[0][indexValue].value).toFixed(0)) // total digital sales 
                 }
                 : (value.name === "Proportion of Download version of Packaged Software")
                 ? {
                     ...value,
                     name: "Total Download Version of Packaged Software",
                     units: "currency",
-                    value: Number(((value.value / 100) * digitalSalesMake[0][indexValue].value).toFixed(2)) 
+                    value: Number(((value.value / 100) * digitalSalesMake[0][indexValue].value).toFixed(0)) 
                 }
                 : {
                     ...value
@@ -197,10 +199,8 @@ const consolidatedSalesCmlMake = (obj: undefined | {
             value: (!obj) ? 0 : obj.Q4Value,
         },
     ];
-    // quarterly calculation taken care of
-    let quarterValues = quarterlyCalculation(cmlValues);
 
-    return quarterValues
+    return cmlValues
 };
 
 const quarterValuesMake = (obj: undefined | {
@@ -432,39 +432,8 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
 
     let cmlKeySalesValuesLastFY: KPDIndicators[][] = keySalesMake(cmlValuesLastFY, cmlSalesValuesLastFY, cmlName);
 
-    // if (cmlName === " FY3/19 Cumulative ") {
-
-    //     console.log(qtrValues);
-    //     console.log(qtrValuesLastFY);
-    //     console.log(cmlValues);
-    //     console.log(cmlValuesLastFY);
-    //     // console.log(qtrSalesValuesThisFY);
-    //     // console.log(qtrSalesValuesLastFY);
-    //     // console.log(cmlSalesValuesThisFY);
-    //     // console.log(cmlSalesValuesLastFY);
-        
-        
-        
-    // }
-
     let qtrYearOnYearValues: KPDIndicators[][] = qtrKeySalesValuesThisFY.map((elem, index, array) => {
          
-    if (cmlName === " FY3/21 Cumulative ") {
-        // console.log(elem);
-        // console.log(elem.length);
-        // console.log(qtrKeySalesValuesLastFY[index]);
-        // console.log(qtrKeySalesValuesLastFY[index].length);
-        console.log(qtrKeySalesValuesThisFY.length);
-        console.log(qtrKeySalesValuesLastFY.length);
-        console.log(qtrKeySalesValuesThisFY.at(-1));
-        console.log(qtrKeySalesValuesLastFY.at(-1));
-        
-
-        
-
-        
-        
-    }
         return yearOnYearCalculation(elem, qtrKeySalesValuesLastFY[index])
     });
 

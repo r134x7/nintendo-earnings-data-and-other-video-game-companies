@@ -68,7 +68,7 @@ const printNewSections = (sectionDifference: KPDIndicators[], yearOnYearValues: 
             // need to change any billions to millions
             
             let printSection: string = (elem.units === "currency") 
-                ? `¥${elem.value}M `
+                ? `¥${elem.value.toLocaleString("en")}M `
                 : `${elem.value}% `; 
             let printSectionFixed: string = (printSection.length >= 10)
                                       ? printSection
@@ -77,7 +77,7 @@ const printNewSections = (sectionDifference: KPDIndicators[], yearOnYearValues: 
         } else {
 
             let printSectionCml: string = (elem.units === "currency") 
-                ? `¥${elem.value}B `
+                ? `¥${elem.value.toLocaleString("en")}M `
                 : `${elem.value}% `; 
     
                 let printSectionCmlFixed: string = (printSectionCml.length >= 10)
@@ -181,7 +181,8 @@ ${printSections(quarter, currentQuarter)}
 ${footer.section}`;
 
 export const printNewBody = (quarter: KPDIndicators[], cumulative: KPDIndicators[], quarterYoY: KPDIndicators[], cumulativeYoY: KPDIndicators[], currentQuarter: number) =>
-`${printNewSections(quarter, quarterYoY, currentQuarter)}
+`${quarter[0].name}
+${printNewSections(quarter, quarterYoY, currentQuarter)}
 +${(currentQuarter > 1) ? "=".repeat(30)+"+\n" + printNewSections(cumulative, cumulativeYoY, currentQuarter) : "=".repeat(30)+"+" }
 +${"-".repeat(30)+"+"}`;
 
