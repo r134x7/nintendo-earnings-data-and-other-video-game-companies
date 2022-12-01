@@ -68,5 +68,23 @@
             "Q3CmlValue": 65.6,
             "Q4CmlValue": 70.0
         }
+    ],
+    "consolidatedSales": [
+        {
+            "name": " Total Sales ",
+            "units": "currency",
+            "Q1Value": 172111,
+            "Q2Value": 443967,
+            "Q3Value": 1022668,
+            "Q4Value": 1308519
+        },
+        {
+            "name": " Dedicated video game platform ",
+            "units": "currency",
+            "Q1Value": 161629,
+            "Q2Value": 422955,
+            "Q3Value": 983531,
+            "Q4Value": 1254162
+        }
     ]
 }
