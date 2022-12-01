@@ -55,6 +55,51 @@ export function yearOnYearCalculation(thisFY: KPDIndicators[], lastFY: KPDIndica
        return calc
     }
 
+const printNewSections = (sectionDifference: KPDIndicators[], yearOnYearValues: KPDIndicators[], currentQuarter: number) => {
+
+    return sectionDifference.filter((elem, index) => { 
+            return (elem.category === "quarterly")
+                ? index < currentQuarter
+                : currentQuarter >= 2 && index < currentQuarter -1         
+    }).map((elem, index) => {
+
+        if (elem.category === "quarterly") {
+            // need to change any billions to millions
+            
+            let printSection: string = (elem.units === "currency") 
+                ? `¥${elem.value}M `
+                : `${elem.value}% `; 
+            let printSectionFixed: string = (printSection.length >= 10)
+                                      ? printSection
+                                      : " ".repeat(10 - printSection.length) + printSection;
+            return "|" + elem.quarter + "|" + printSectionFixed + "|"
+        } else {
+
+            let printSectionCml: string = (elem.units === "currency") 
+                ? `¥${elem.value}B `
+                : `${elem.value}% `; 
+    
+                let printSectionCmlFixed: string = (printSectionCml.length >= 10)
+                              ? printSectionCml
+                              : " ".repeat(10 - printSectionCml.length) + printSectionCml;
+            return "|" + elem.quarter + "|" + printSectionCmlFixed + "|"
+        }
+    }).reduce((prev, next, index, array) => {
+
+        if (sectionDifference[index].category === "quarterly" ) {
+            
+            return (array[index] === array[currentQuarter -1])
+                      ? prev + `\n` + next
+                      : prev + `\n` + next 
+        } else {
+
+            return (array[index] === array[currentQuarter -2])
+                    ? prev + `\n` + next 
+                    : prev + `\n` + next 
+        }
+    })
+}
+
 const printSections = (sectionDifference: KPDIndicators[], currentQuarter: number) => { 
 
     return sectionDifference.filter((elem, index) => { 
@@ -133,6 +178,11 @@ ${printSections(quarter, currentQuarter)}
 +${(currentQuarter > 1) ? "=".repeat(30)+"+\n" + printSections(cumulative, currentQuarter) : "=".repeat(30)+"+" }
 +${"-".repeat(30)+"+"}
 ${footer.section}`;
+
+export const printNewBody = (quarter: KPDIndicators[], cumulative: KPDIndicators[], quarterYoY: KPDIndicators[], cumulativeYoY: KPDIndicators[], currentQuarter: number) =>
+`${printNewSections(quarter, quarterYoY, currentQuarter)}
++${(currentQuarter > 1) ? "=".repeat(30)+"+\n" + printNewSections(cumulative, cumulativeYoY, currentQuarter) : "=".repeat(30)+"+" }
++${"-".repeat(30)+"+"}`;
 
 // export const printProportionOfOverseasSales = (header: Header, footer: Footer, proportionOfOverseasSalesQtr: KPIQuarter[], proportionOfOverseasSalesCml: KPICumulative[], currentQuarter: number) => 
 // `+${"-".repeat(30)}+

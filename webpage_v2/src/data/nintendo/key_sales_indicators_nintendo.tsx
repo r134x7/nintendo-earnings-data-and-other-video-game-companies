@@ -6,6 +6,7 @@ import {
     KPDIndicators,
     quarterlyCalculation,
     yearOnYearCalculation,
+    printNewBody,
 } from "../../utils/kpi_logic";
 
 import keySalesIndicators2023 from "./Key_Sales_Indicators/ksi_fy3_2023.json";
@@ -371,6 +372,17 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
         return yearOnYearCalculation(elem, cmlKeySalesValuesLastFY[index])
     });
 
+    let inputNewArrays = Array.from({length: qtrKeySalesValuesThisFY.length}, (v, i) => { 
+
+        return {
+            quarterValues: qtrKeySalesValuesThisFY[i],
+            cumulativeValues: cmlKeySalesValuesThisFY[i],
+            quarterYoY: qtrYearOnYearValues[i],
+            cumulativeYoY: cmlYearOnYearValues[i],
+            currentQuarter: currentQuarter,
+        }
+    })
+
     let inputArrays = Array.from({length: qtrValues.length}, (v, i) => {
 
         return {
@@ -391,7 +403,11 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
         return printBody(elem.header, elem.footer, elem.quarterValues, elem.cumulativeValues, elem.currentQuarter)
     }).concat(endLine);
 
-    let printAll = [printOne].concat(printRest);  
+    let printSecondRest = inputNewArrays.map(elem => {
+        return printNewBody(elem.quarterValues, elem.cumulativeValues, elem.quarterYoY, elem.cumulativeYoY, elem.currentQuarter)
+    }).concat(endLine);
+
+    let printAll = [printOne].concat(printRest, printSecondRest);  
 
     return printAll.reduce((prev, next) => prev + "\n" + next);
 
