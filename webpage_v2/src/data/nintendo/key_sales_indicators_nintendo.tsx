@@ -26,6 +26,15 @@ const collection = [
     keySalesIndicators2017,
 ] as const;
 
+// need to...
+// take total sales x proportion of overseas sales % = total overseas sales 
+// take total dedicated video game platform sales x proportion of hardware sales % = total hardware sales 
+// take total dedicated video game platform sales x (1 - proportion of hardware sales %) = total software sales
+// take proportion of software sales x proportion of first-party software sales % = total first-party software sales 
+// take digital sales and provide YoY data and everything else that uses currency
+// take proportion of digital sales % x total dedicated video game platform sales = total digital sales 
+// take proportion of downloadable versions of packaged software sales % x digital sales = sales of downloadable versions of packaged software
+
 const consolidatedSalesQuartersMake = (obj: undefined | {
     name: string,
     Q1Value: number,
@@ -57,6 +66,40 @@ const consolidatedSalesQuartersMake = (obj: undefined | {
             category: "quarterly",
             units: (obj === undefined) ? "NaN" : "currency",
             quarter: " 4th Quarter       ",
+            value: (!obj) ? 0 : obj.Q4Value,
+        },
+    ];
+    // quarterly calculation taken care of
+    let quarterValues = quarterlyCalculation(cmlValues);
+
+    return quarterValues
+};
+
+const consolidatedSalesCmlMake = (obj: undefined | {
+    name: string,
+    Q1Value: number,
+    Q2Value: number,
+    Q3Value: number,
+    Q4Value: number 
+}, cmlName: string) => {
+    // values are cumulative and need to go through quarterly calc
+    let cmlValues: KPDIndicators[] = [
+        {
+            category: "cumulative",
+            units: (obj === undefined) ? "NaN" : "currency",
+            quarter: " 1st Half          ",
+            value: (!obj) ? 0 : obj.Q2Value,
+        },
+        {
+            category: "cumulative",
+            units: (obj === undefined) ? "NaN" : "currency",
+            quarter: " 1st Three Quarters",
+            value: (!obj) ? 0 : obj.Q3Value,
+        },
+        {
+            category: "cumulative",
+            units: (obj === undefined) ? "NaN" : "currency",
+            quarter: cmlName,
             value: (!obj) ? 0 : obj.Q4Value,
         },
     ];
@@ -155,7 +198,7 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
         companyName: " Nintendo Co., Ltd.",
         section: "| Proportion of overseas sales |",
         fiscalYear: elem.fiscalYear,
-        title: "| Key/Digital Sales Indicators |",
+        title: "| Key Sales Indicators         |",
     };
 
     let headers: Header[] = [

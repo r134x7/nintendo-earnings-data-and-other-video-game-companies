@@ -39,7 +39,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                 graph: globalHardwareSoftwareMobileGraphList[index]? <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={globalHardwareSoftwareMobileGraphList[index]} /> : undefined
             },
             {
-                name: "Key/Digital Sales Indicators",
+                name: "Key Sales Indicators",
                 value: keySalesIndicatorsList[index]? keySalesIndicatorsList[index] : undefined,
                 graph: keySalesIndicatorsGraphList[index]? <GRAPH_NINTENDO_KPI setData={keySalesIndicatorsGraphList[index]} /> : undefined
             },
