@@ -36,6 +36,7 @@ export function quarterlyCalculation(quarters: KPDIndicators[]) {
 }
 
 export function yearOnYearCalculation(thisFY: KPDIndicators[], lastFY: KPDIndicators[]) {
+// console.log(lastFY[0]);
 
         const calc: KPDIndicators[] = thisFY.map((elem, index) => {
 
