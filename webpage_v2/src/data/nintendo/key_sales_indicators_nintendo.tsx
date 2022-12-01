@@ -30,10 +30,10 @@ const collection = [
 // take total sales x proportion of overseas sales % = total overseas sales /done
 // take total dedicated video game platform sales x proportion of hardware sales % = total hardware sales /done 
 // take total dedicated video game platform sales x (1 - proportion of hardware sales %) = total software sales /done
-// take total software sales x proportion of first-party software sales % = total first-party software sales 
-// take digital sales and provide YoY data and everything else that uses currency
-// take proportion of digital sales % x total software sales = total digital sales 
-// take proportion of downloadable versions of packaged software sales % x digital sales = sales of downloadable versions of packaged software
+// take total software sales x proportion of first-party software sales % = total first-party software sales /done
+// take digital sales and provide YoY data and everything else that uses currency ...
+// take proportion of digital sales % x total software sales = total digital sales /done
+// take proportion of downloadable versions of packaged software sales % x digital sales = sales of downloadable versions of packaged software /done
 
 const keySalesQuarterMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndicators[][]): KPDIndicators[][] => {
 
@@ -49,7 +49,16 @@ const keySalesQuarterMake = (indicators: KPDIndicators[][], consolidatedSales: K
 
     let digitalSalesMake: KPDIndicators[][] = indicators.filter(elem => elem[0].name === "Digital Sales");
 
-
+    let physicalSoftwareSalesMake: KPDIndicators[][] = indicators.filter(elem => elem[0].name === "Proportion of Digital Sales").map(elem => {
+        return elem.map((value, indexValue) => {
+            return {
+                ...value,
+                name: "Proportion of Physical Software Sales",
+                value: Number(((1 - (value.value / 100)) * consolidatedSales[1][indexValue].value).toFixed(2)) // total software sales, 
+            }
+        })
+    });
+ 
     let indicatorsMake: KPDIndicators[][] = indicators.map((elem, index) => {
         return elem.map((value, indexValue) => {
             return (value.name === "Proportion of Overseas Sales")
@@ -84,7 +93,7 @@ const keySalesQuarterMake = (indicators: KPDIndicators[][], consolidatedSales: K
     });
 
 
-    return indicatorsMake
+    return indicatorsMake.concat(softwareSalesMake, physicalSoftwareSalesMake)
 };
 
 const consolidatedSalesQuartersMake = (obj: undefined | {
