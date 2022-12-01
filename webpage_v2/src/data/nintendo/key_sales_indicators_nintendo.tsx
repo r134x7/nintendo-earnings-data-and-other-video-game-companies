@@ -27,32 +27,64 @@ const collection = [
 ] as const;
 
 // need to...
-// take total sales x proportion of overseas sales % = total overseas sales 
-// take total dedicated video game platform sales x proportion of hardware sales % = total hardware sales 
-// take total dedicated video game platform sales x (1 - proportion of hardware sales %) = total software sales
-// take proportion of software sales x proportion of first-party software sales % = total first-party software sales 
+// take total sales x proportion of overseas sales % = total overseas sales /done
+// take total dedicated video game platform sales x proportion of hardware sales % = total hardware sales /done 
+// take total dedicated video game platform sales x (1 - proportion of hardware sales %) = total software sales /done
+// take total software sales x proportion of first-party software sales % = total first-party software sales 
 // take digital sales and provide YoY data and everything else that uses currency
-// take proportion of digital sales % x total dedicated video game platform sales = total digital sales 
+// take proportion of digital sales % x total software sales = total digital sales 
 // take proportion of downloadable versions of packaged software sales % x digital sales = sales of downloadable versions of packaged software
-// amount needed: total sales = 1, total dedicated video game platform sales = 2, total dedicated video game platform sales 
 
 const keySalesQuarterMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndicators[][]): KPDIndicators[][] => {
 
-    let x = indicators.map((elem, index) => {
+    let softwareSalesMake: KPDIndicators[][] = indicators.filter(elem => elem[0].name === "Proportion of Hardware Sales").map(elem => {
         return elem.map((value, indexValue) => {
-            return (elem[index] === elem[0])
+            return {
+                ...value,
+                name: "Proportion of Software Sales",
+                value: Number(((1 - (value.value / 100)) * consolidatedSales[1][indexValue].value).toFixed(2)) // total software sales, 
+            }
+        })
+    })
+
+    let digitalSalesMake: KPDIndicators[][] = indicators.filter(elem => elem[0].name === "Digital Sales");
+
+
+    let indicatorsMake: KPDIndicators[][] = indicators.map((elem, index) => {
+        return elem.map((value, indexValue) => {
+            return (value.name === "Proportion of Overseas Sales")
                 ? {
                     ...value,
-                    value: Number((value.value * consolidatedSales[0][indexValue].value).toFixed(2)) // total sales x proportion of overseas sales %
+                    value: Number(((value.value / 100) * consolidatedSales[0][indexValue].value).toFixed(2)) // total overseas sales 
                   }
-                : {
+                : (value.name === "Proportion of Hardware Sales")
+                ? {
                     ...value,
-                    value: Number((value.value * consolidatedSales[1][indexValue].value).toFixed(2)) // total dedicated video game platform sales x proportion of hardware sales, 
+                    value: Number(((value.value / 100) * consolidatedSales[1][indexValue].value).toFixed(2)) // total hardware sales
                   }
+                : (value.name === "Proportion of First Party Software Sales")
+                ? {
+                    ...value,
+                    value: Number(((value.value / 100) * softwareSalesMake[0][indexValue].value).toFixed(2)) // total first-party software sales 
+                  }
+                : (value.name === "Proportion of Digital Sales")
+                ? {
+                    ...value,
+                    value: Number(((value.value / 100) * softwareSalesMake[0][indexValue].value).toFixed(2)) // total digital sales 
+                }
+                : (value.name === "Proportion of Download version of Packaged Software")
+                ? {
+                    ...value,
+                    value: Number(((value.value / 100) * digitalSalesMake[0][indexValue].value).toFixed(2)) // total digital sales 
+                }
+                : {
+                    ...value
+                }
         })
     });
 
-    return x
+
+    return indicatorsMake
 };
 
 const consolidatedSalesQuartersMake = (obj: undefined | {
