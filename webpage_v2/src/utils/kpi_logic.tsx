@@ -38,7 +38,6 @@ export function quarterlyCalculation(quarters: KPDIndicators[]) {
 }
 
 export function yearOnYearCalculation(thisFY: KPDIndicators[], lastFY: KPDIndicators[]) {
-// console.log(lastFY[0]);
 
         const calc: KPDIndicators[] = thisFY.map((elem, index) => {
 
@@ -67,9 +66,10 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
     }).map((elem, index) => {
 
         if (elem.category === "quarterly") {
-            // need to change any billions to millions
             
-            let printSection: string = `${elem.value}% `; 
+            let printSection: string = (elem.units === "NaN")
+                                        ? "N/A "
+                                        : `${elem.value}% `; 
 
             let printSectionFixed: string = (printSection.length >= 10)
                                       ? printSection

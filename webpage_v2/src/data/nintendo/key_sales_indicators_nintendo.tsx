@@ -2,7 +2,6 @@ import {
     Header,
     Footer,
     printHead,
-    printBody,
     KPDIndicators,
     quarterlyCalculation,
     yearOnYearCalculation,
@@ -26,15 +25,6 @@ const collection = [
     keySalesIndicators2018,
     keySalesIndicators2017,
 ] as const;
-
-// need to...
-// take total sales x proportion of overseas sales % = total overseas sales /done
-// take total dedicated video game platform sales x proportion of hardware sales % = total hardware sales /done 
-// take total dedicated video game platform sales x (1 - proportion of hardware sales %) = total software sales /done
-// take total software sales x proportion of first-party software sales % = total first-party software sales /done
-// take digital sales and provide YoY data and everything else that uses currency ...
-// take proportion of digital sales % x total software sales = total digital sales /done
-// take proportion of downloadable versions of packaged software sales % x digital sales = sales of downloadable versions of packaged software /done
 
 const softwareProportionMake = (proportions:  KPDIndicators[][], cmlName: string) => {
 
@@ -128,7 +118,6 @@ const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndic
  
     let indicatorsMake: KPDIndicators[][] = indicators.map((elem, index) => {
         return elem.map((value, indexValue) => {
-// console.log((cmlName === " FY3/22 Cumulative ") ? consolidatedSales[0][indexValue].value : "no");
 
             return (value.name === "Proportion of Overseas Sales")
                 ? {
@@ -441,9 +430,9 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
             
             let nameSearchThisFY = value.name
             let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
-
+            
             return (nameSearchThisFY === nameSearchLastFY)
-                ? quarterValuesMake(value)
+                ? quarterValuesMake(array[index+1].kpi[indexValue])
                 : quarterValuesMake(undefined)
 
             })
@@ -464,14 +453,13 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
             let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
 
             return (nameSearchThisFY === nameSearchLastFY)
-                ? cmlValuesMake(value, cmlName)
+                ? cmlValuesMake(array[index+1].kpi[indexValue], cmlName)
                 : cmlValuesMake(undefined, cmlName)
 
             })
         : array[index+1].kpi.map(value => cmlValuesMake(value, cmlName))
 
     let cmlValuesLastFYPlus: KPDIndicators[][] = cmlValuesLastFY.concat(softwareProportionMake(cmlValuesLastFY, cmlName), (physicalSoftwareProportionMake(cmlValuesLastFY, cmlName)));
-
 
     let qtrSalesValuesThisFY: KPDIndicators[][] = elem.consolidatedSales.map(elem => consolidatedSalesQuartersMake(elem));
 
@@ -484,7 +472,7 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
             let nameSearchLastFY = array[index+1].consolidatedSales[indexValue]? array[index+1].consolidatedSales[indexValue].name : undefined;
 
             return (nameSearchThisFY === nameSearchLastFY)
-                ? consolidatedSalesQuartersMake(value)
+                ? consolidatedSalesQuartersMake(array[index+1].consolidatedSales[indexValue])
                 : consolidatedSalesQuartersMake(undefined)
 
             })
@@ -501,7 +489,7 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
             let nameSearchLastFY = array[index+1].consolidatedSales[indexValue]? array[index+1].consolidatedSales[indexValue].name : undefined;
 
             return (nameSearchThisFY === nameSearchLastFY)
-                ? consolidatedSalesCmlMake(value, cmlName)
+                ? consolidatedSalesCmlMake(array[index+1].consolidatedSales[indexValue], cmlName)
                 : consolidatedSalesCmlMake(undefined, cmlName)
 
             })
@@ -521,7 +509,7 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
     let cmlKeySalesValuesLastFY: KPDIndicators[][] = keySalesMake(cmlValuesLastFY, cmlSalesValuesLastFY, cmlName);
 
     let qtrYearOnYearValues: KPDIndicators[][] = qtrKeySalesValuesThisFY.map((elem, index, array) => {
-         
+
         return yearOnYearCalculation(elem, qtrKeySalesValuesLastFY[index])
     });
 
@@ -530,7 +518,6 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
     });
 
     let inputNewArrays = Array.from({length: qtrKeySalesValuesThisFY.length}, (v, i) => { 
-    // let inputNewArrays = Array.from({length: qtrValues.length}, (v, i) => { 
 
         return {
             header: headers[i],
@@ -583,9 +570,13 @@ export const keySalesIndicatorsGraphList = collection.map((elem, index, array) =
 
     let cmlValuesThisFY: KPDIndicators[][] = elem.kpi.map(elem => cmlValuesMake(elem, cmlName));
 
-    let qtrValuesLastFY: KPDIndicators[][] = (!array[index+1]) ? elem.kpi.map(elem => quarterValuesMake(undefined)) : array[index+1].kpi.map(elem => quarterValuesMake(elem));
+    let qtrValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
+    ? elem.kpi.map(elem => quarterValuesMake(undefined)) 
+    : array[index+1].kpi.map(elem => quarterValuesMake(elem));
 
-    let cmlValuesLastFY: KPDIndicators[][] = (!array[index+1]) ? elem.kpi.map(elem => cmlValuesMake(undefined, cmlName)) : array[index+1].kpi.map(elem => cmlValuesMake(elem, cmlName));
+    let cmlValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
+    ? elem.kpi.map(elem => cmlValuesMake(undefined, cmlName)) 
+    : array[index+1].kpi.map(elem => cmlValuesMake(elem, cmlName));
 
     let thisFY: string = elem.fiscalYear.slice(2, -2);
     let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
