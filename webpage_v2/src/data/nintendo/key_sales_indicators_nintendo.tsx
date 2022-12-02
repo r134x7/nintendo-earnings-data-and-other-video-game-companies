@@ -77,7 +77,7 @@ const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndic
  
     let indicatorsMake: KPDIndicators[][] = indicators.map((elem, index) => {
         return elem.map((value, indexValue) => {
-console.log((cmlName === " FY3/22 Cumulative ") ? consolidatedSales[0][indexValue].value : "no");
+// console.log((cmlName === " FY3/22 Cumulative ") ? consolidatedSales[0][indexValue].value : "no");
 
             return (value.name === "Proportion of Overseas Sales")
                 ? {
@@ -441,42 +441,47 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
         return yearOnYearCalculation(elem, cmlKeySalesValuesLastFY[index])
     });
 
-    let inputNewArrays = Array.from({length: qtrKeySalesValuesThisFY.length}, (v, i) => { 
+    // let inputNewArrays = Array.from({length: qtrKeySalesValuesThisFY.length}, (v, i) => { 
+    let inputNewArrays = Array.from({length: qtrValues.length}, (v, i) => { 
 
         return {
-            quarterValues: qtrKeySalesValuesThisFY[i],
-            cumulativeValues: cmlKeySalesValuesThisFY[i],
+            header: headers[i],
+            footer: footers[i],
+            quarterValuesProportion: qtrValues[i],
+            cumulativeValuesProportion: cmlValues[i],
+            quarterValuesSales: qtrKeySalesValuesThisFY[i],
+            cumulativeValuesSales: cmlKeySalesValuesThisFY[i],
             quarterYoY: qtrYearOnYearValues[i],
             cumulativeYoY: cmlYearOnYearValues[i],
             currentQuarter: currentQuarter,
         }
     })
 
-    let inputArrays = Array.from({length: qtrValues.length}, (v, i) => {
+    // let inputArrays = Array.from({length: qtrValues.length}, (v, i) => {
 
-        return {
-            header: headers[i],
-            footer: footers[i],
-            quarterValues: qtrValues[i],
-            cumulativeValues: cmlValues[i],
-            currentQuarter: currentQuarter,
-        }
-    });
+    //     return {
+    //         header: headers[i],
+    //         footer: footers[i],
+    //         quarterValues: qtrValues[i],
+    //         cumulativeValues: cmlValues[i],
+    //         currentQuarter: currentQuarter,
+    //     }
+    // });
 
     let endLine: string = "+" + "-".repeat(30) + "+" + "\n" + "###"; 
 
     let printOne = printHead(headerOne);
 
-    let printRest = inputArrays.map(elem => {
+    // let printRest = inputArrays.map(elem => {
 
-        return printBody(elem.header, elem.footer, elem.quarterValues, elem.cumulativeValues, elem.currentQuarter)
-    }).concat(endLine);
+    //     return printBody(elem.header, elem.footer, elem.quarterValues, elem.cumulativeValues, elem.currentQuarter)
+    // }).concat(endLine);
 
     let printSecondRest = inputNewArrays.map(elem => {
-        return printNewBody(elem.quarterValues, elem.cumulativeValues, elem.quarterYoY, elem.cumulativeYoY, elem.currentQuarter)
+        return printNewBody(elem.header, elem.footer, elem.quarterValuesProportion, elem.cumulativeValuesProportion,elem.quarterValuesSales, elem.cumulativeValuesSales, elem.quarterYoY, elem.cumulativeYoY, elem.currentQuarter)
     }).concat(endLine);
 
-    let printAll = [printOne].concat(printRest, printSecondRest);  
+    let printAll = [printOne].concat(printSecondRest);  
 
     return printAll.reduce((prev, next) => prev + "\n" + next);
 
