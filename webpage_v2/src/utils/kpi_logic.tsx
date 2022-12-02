@@ -9,18 +9,18 @@ export type KPDIndicators = {
 
 export type Header = {
     companyName: string,
-    section: "| Proportion of overseas sales |" | 
-    "| Proportion of hardware sales |" | 
-    "| Proportion of first party    |\n| software sales               |" | 
-    "| Digital Sales                |" | 
-    "| Proportion of Digital Sales  |" | 
-    "| Proportion of downloadable   |\n| versions of Packaged         |\n| Software Sales               |",
+    section: "| Proportion of overseas sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | 
+    "| Proportion of hardware sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | 
+    "| Proportion of first party    |\n| software sales               |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | 
+    "| Digital Sales                |\n+--------------------------------------------------+\n|                    Sales |      Sales |    YoY%  |" | 
+    "| Proportion of Digital Sales  |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | 
+    "| Proportion of downloadable   |\n| versions of Packaged         |\n| Software Sales               |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | "| Proportion of software sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | "| Proportion of physical software sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
     fiscalYear: string,
     title: string,
 }
 
 export type Footer = {
-   section: "|(※ Proportion of overseas (outside of Japan)\n| sales to total sales)" | "|(※ Proportion of hardware\n|(including accessories) sales to total\n| dedicated video game platform sales)" | "|(※ Proportion of first-party software sales\n| to total dedicated video game software sales)" | "|(\"※ Digital sales include a) downloadable\n| versions of packaged software,\n|b) download-only software,\n|c) add-on content and\n|d) Nintendo Switch Online, etc.\n|＊\"Downloadable versions of packaged software\"\n| indicates the downloadable version of\n| software that is offered both physically\n| and digitally.\")" | "|(※ Proportion of digital sales to total\n| dedicated video game software sales )" | "|(※ Proportion of downloadable versions of\n| packaged software sales to total digital\n| sales as indicated above: a/(a+b+c+d) )", 
+   section: "|(※ Proportion of overseas (outside of Japan)\n| sales to total sales)" | "|(※ Proportion of hardware\n|(including accessories) sales to total\n| dedicated video game platform sales)" | "|(※ Proportion of first-party software sales\n| to total dedicated video game software sales)" | "|(\"※ Digital sales include a) downloadable\n| versions of packaged software,\n|b) download-only software,\n|c) add-on content and\n|d) Nintendo Switch Online, etc.\n|＊\"Downloadable versions of packaged software\"\n| indicates the downloadable version of\n| software that is offered both physically\n| and digitally.\")" | "|(※ Proportion of digital sales to total\n| dedicated video game software sales )" | "|(※ Proportion of downloadable versions of\n| packaged software sales to total digital\n| sales as indicated above: a/(a+b+c+d) )" | "|(※ Proportion of software (including\n|digital sales) sales to total dedicated\n|video game platform sales)|" |  "|(※ Proportion of physical software sales\n|to total dedicated\n|video game platform software sales)|", 
 }
 
 
@@ -108,9 +108,9 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
             let printSection: string = (elem.units === "currency") 
                 ? `¥${elem.value.toLocaleString("en")}M `
                 : `${elem.value}% `; 
-            let printSectionFixed: string = (printSection.length >= 10)
+            let printSectionFixed: string = (printSection.length >= 12)
                                       ? printSection
-                                      : " ".repeat(10 - printSection.length) + printSection;
+                                      : " ".repeat(12 - printSection.length) + printSection;
             // return "|" + elem.quarter + "|" + printSectionFixed + "|"
             let objectReturn: {period: string, value: string} = {
                 period: elem.quarter,
@@ -124,9 +124,9 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
                 ? `¥${elem.value.toLocaleString("en")}M `
                 : `${elem.value}% `; 
     
-                let printSectionCmlFixed: string = (printSectionCml.length >= 10)
+                let printSectionCmlFixed: string = (printSectionCml.length >= 12)
                               ? printSectionCml
-                              : " ".repeat(10 - printSectionCml.length) + printSectionCml;
+                              : " ".repeat(12 - printSectionCml.length) + printSectionCml;
             // return "|" + elem.quarter + "|" + printSectionCmlFixed + "|"
             let objectReturn = {
                 period: elem.quarter,
@@ -289,7 +289,6 @@ export const printNewBody = (header: Header, footer: Footer, quarterProportion: 
 `+${"-".repeat(30)}+
 ${header.section}
 +${"-".repeat(30)}+
-${quarterSales[0].name}
 ${printNewSections(quarterProportion, quarterSales, quarterYoY, currentQuarter)}
 +${(currentQuarter > 1) ? "=".repeat(30)+"+\n" + printNewSections(cumulativeProportion, cumulativeSales, cumulativeYoY, currentQuarter) : "=".repeat(30)+"+" }
 +${"-".repeat(30)+"+"}

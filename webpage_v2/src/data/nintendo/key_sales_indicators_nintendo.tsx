@@ -36,6 +36,52 @@ const collection = [
 // take proportion of digital sales % x total software sales = total digital sales /done
 // take proportion of downloadable versions of packaged software sales % x digital sales = sales of downloadable versions of packaged software /done
 
+const softwareProportionMake = (proportions:  KPDIndicators[][], cmlName: string) => {
+
+    let softwareProportionCheckValues: KPDIndicators[][] = proportions.filter(elem => elem[0].name === "Proportion of Hardware Sales");
+
+    let softwareProportionMake: KPDIndicators[][] = (softwareProportionCheckValues.length === 0 && proportions[0][0].category === "quarterly")
+        ? [quarterValuesMake(undefined)] 
+        : (softwareProportionCheckValues.length === 0 && proportions[0][0].category === "cumulative")
+        ? [cmlValuesMake(undefined, cmlName)]
+        : softwareProportionCheckValues.map(elem => {
+            return elem.map((value, indexValue) => {
+                return {
+                    ...value,
+                    name: "Proportion of Software Sales",
+                    units: "percentage",
+                    value: Number((100 - value.value).toFixed(1)) 
+                }
+            })
+        })
+    
+    return softwareProportionMake
+}
+
+
+const physicalSoftwareProportionMake = (proportions:  KPDIndicators[][], cmlName: string) => { 
+
+   let physicalSoftwareProportionCheck: KPDIndicators[][] = proportions.filter(elem => elem[0].name === "Proportion of Digital Sales");
+
+    let physicalSoftwareSalesMake: KPDIndicators[][] = 
+    (physicalSoftwareProportionCheck.length === 0 && proportions[0][0].category === "quarterly")
+        ? [quarterValuesMake(undefined)] 
+        : (physicalSoftwareProportionCheck.length === 0 && proportions[0][0].category === "cumulative")
+        ? [cmlValuesMake(undefined, cmlName)]
+        : physicalSoftwareProportionCheck.map(elem => {
+        return elem.map((value, indexValue) => {
+            return {
+                ...value,
+                name: "Proportion of Physical Software Sales",
+                units: "percentage",
+                value: Number((100 - value.value).toFixed(1)) 
+            }
+        })
+    })
+
+    return physicalSoftwareSalesMake 
+}
+
 const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndicators[][], cmlName: string): KPDIndicators[][] => {
     
     let softwareSalesCheck: KPDIndicators[][] = indicators.filter(elem => elem[0].name === "Proportion of Hardware Sales");
@@ -137,28 +183,28 @@ const consolidatedSalesQuartersMake = (obj: undefined | {
             name: (!obj) ? "N/A" : obj.name,
             category: "quarterly",
             units: (obj === undefined) ? "NaN" : "currency",
-            quarter: " 1st Quarter       ",
+            quarter: " 1st Quarter   ",
             value: (!obj) ? 0 : obj.Q1Value,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             category: "quarterly",
             units: (obj === undefined) ? "NaN" : "currency",
-            quarter: " 2nd Quarter       ",
+            quarter: " 2nd Quarter   ",
             value: (!obj) ? 0 : obj.Q2Value,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             category: "quarterly",
             units: (obj === undefined) ? "NaN" : "currency",
-            quarter: " 3rd Quarter       ",
+            quarter: " 3rd Quarter   ",
             value: (!obj) ? 0 : obj.Q3Value,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             category: "quarterly",
             units: (obj === undefined) ? "NaN" : "currency",
-            quarter: " 4th Quarter       ",
+            quarter: " 4th Quarter   ",
             value: (!obj) ? 0 : obj.Q4Value,
         },
     ];
@@ -181,14 +227,14 @@ const consolidatedSalesCmlMake = (obj: undefined | {
             name: (!obj) ? "N/A" : obj.name,
             category: "cumulative",
             units: (obj === undefined) ? "NaN" : "currency",
-            quarter: " 1st Half          ",
+            quarter: " 1st Half      ",
             value: (!obj) ? 0 : obj.Q2Value,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             category: "cumulative",
             units: (obj === undefined) ? "NaN" : "currency",
-            quarter: " 1st Three Quarters",
+            quarter: " 1st 3 Quarters",
             value: (!obj) ? 0 : obj.Q3Value,
         },
         {
@@ -221,28 +267,28 @@ const quarterValuesMake = (obj: undefined | {
             name: (!obj) ? "N/A" : obj.name,
             category: "quarterly",
             units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
-            quarter: " 1st Quarter       ",
+            quarter: " 1st Quarter   ",
             value: (!obj) ? 0 : obj.Q1Value,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             category: "quarterly",
             units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
-            quarter: " 2nd Quarter       ",
+            quarter: " 2nd Quarter   ",
             value: (!obj) ? 0 : obj.Q2Value,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             category: "quarterly",
             units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
-            quarter: " 3rd Quarter       ",
+            quarter: " 3rd Quarter   ",
             value: (!obj) ? 0 : obj.Q3Value,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             category: "quarterly",
             units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
-            quarter: " 4th Quarter       ",
+            quarter: " 4th Quarter   ",
             value: (!obj) ? 0 : obj.Q4Value,
         },
     ]
@@ -267,14 +313,14 @@ const cmlValuesMake = (obj: undefined | {
             name: (!obj) ? "N/A" : obj.name,
             category: "cumulative",
             units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
-            quarter: " 1st Half          ",
+            quarter: " 1st Half      ",
             value: (!obj) ? 0 : obj.Q2CmlValue,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             category: "cumulative",
             units: (obj === undefined || obj.units === "percentage") ? "percentage" : "currency",
-            quarter: " 1st Three Quarters",
+            quarter: " 1st 3 Quarters",
             value: (!obj) ? 0 : obj.Q3CmlValue,
         },
         {
@@ -293,40 +339,48 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
 
     let currentQuarter: number = elem.currentQuarter;
 
-    let cmlName: string = elem.fiscalYear.slice(1,6) + elem.fiscalYear.slice(-4,-1) + "Cumulative ";
+    let cmlName: string = elem.fiscalYear.slice(1,6) + elem.fiscalYear.slice(-6,-1) + "Cml. ";
 
     let headerOne: Header = {
         companyName: " Nintendo Co., Ltd.",
-        section: "| Proportion of overseas sales |",
+        section: "| Proportion of overseas sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
         fiscalYear: elem.fiscalYear,
         title: "| Key Sales Indicators         |",
     };
-
+  
     let headers: Header[] = [
         {
             ...headerOne,
-            section: "| Proportion of overseas sales |",
+            section: "| Proportion of overseas sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
         },
         {
             ...headerOne,
-            section: "| Proportion of hardware sales |"
+            section: "| Proportion of hardware sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
         },
         {
             ...headerOne,
-            section: "| Proportion of first party    |\n| software sales               |"
+            section: "| Proportion of first party    |\n| software sales               |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
         },
         {
             ...headerOne,
-            section: "| Digital Sales                |"
+            section: "| Digital Sales                |\n+--------------------------------------------------+\n|                    Sales |      Sales |    YoY%  |",
         },
         {
             ...headerOne,
-            section: "| Proportion of Digital Sales  |"
+            section: "| Proportion of Digital Sales  |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
         },
         {
             ...headerOne,
-            section: "| Proportion of downloadable   |\n| versions of Packaged         |\n| Software Sales               |"
-        }
+            section: "| Proportion of downloadable   |\n| versions of Packaged         |\n| Software Sales               |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |"
+        },
+        {
+            ...headerOne,
+            section: "| Proportion of software sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
+        },
+        {
+            ...headerOne,
+            section: "| Proportion of physical software sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
+        },
     ];
 
     const footers: Footer[] = [
@@ -347,10 +401,18 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
         },
         {
             section: "|(※ Proportion of downloadable versions of\n| packaged software sales to total digital\n| sales as indicated above: a/(a+b+c+d) )" 
+        },
+        {
+            section: "|(※ Proportion of software (including\n|digital sales) sales to total dedicated\n|video game platform sales)|"
+        },
+        {
+            section: "|(※ Proportion of physical software sales\n|to total dedicated\n|video game platform software sales)|",
         }
     ];
 
     let qtrValues: KPDIndicators[][] = elem.kpi.map(elem => quarterValuesMake(elem))
+
+    let qtrValuesPlus: KPDIndicators[][] = qtrValues.concat(softwareProportionMake(qtrValues, cmlName), (physicalSoftwareProportionMake(qtrValues, cmlName)));
 
     let qtrValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
         ? elem.kpi.map(value => quarterValuesMake(undefined)) 
@@ -366,9 +428,12 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
 
             })
         : array[index+1].kpi.map(value => quarterValuesMake(value))
+    
+    let qtrValuesLastFYPlus: KPDIndicators[][] = qtrValuesLastFY.concat(softwareProportionMake(qtrValuesLastFY, cmlName), (physicalSoftwareProportionMake(qtrValuesLastFY, cmlName)));
 
     let cmlValues: KPDIndicators[][] = elem.kpi.map(elem => cmlValuesMake(elem, cmlName));
     
+    let cmlValuesPlus: KPDIndicators[][] = cmlValues.concat(softwareProportionMake(cmlValues, cmlName), (physicalSoftwareProportionMake(cmlValues, cmlName)));
 
     let cmlValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
         ? elem.kpi.map(value => cmlValuesMake(undefined, cmlName)) 
@@ -384,6 +449,9 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
 
             })
         : array[index+1].kpi.map(value => cmlValuesMake(value, cmlName))
+
+    let cmlValuesLastFYPlus: KPDIndicators[][] = cmlValuesLastFY.concat(softwareProportionMake(cmlValuesLastFY, cmlName), (physicalSoftwareProportionMake(cmlValuesLastFY, cmlName)));
+
 
     let qtrSalesValuesThisFY: KPDIndicators[][] = elem.consolidatedSales.map(elem => consolidatedSalesQuartersMake(elem));
 
@@ -441,14 +509,14 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
         return yearOnYearCalculation(elem, cmlKeySalesValuesLastFY[index])
     });
 
-    // let inputNewArrays = Array.from({length: qtrKeySalesValuesThisFY.length}, (v, i) => { 
-    let inputNewArrays = Array.from({length: qtrValues.length}, (v, i) => { 
+    let inputNewArrays = Array.from({length: qtrKeySalesValuesThisFY.length}, (v, i) => { 
+    // let inputNewArrays = Array.from({length: qtrValues.length}, (v, i) => { 
 
         return {
             header: headers[i],
             footer: footers[i],
-            quarterValuesProportion: qtrValues[i],
-            cumulativeValuesProportion: cmlValues[i],
+            quarterValuesProportion: qtrValuesPlus[i],
+            cumulativeValuesProportion: cmlValuesPlus[i],
             quarterValuesSales: qtrKeySalesValuesThisFY[i],
             cumulativeValuesSales: cmlKeySalesValuesThisFY[i],
             quarterYoY: qtrYearOnYearValues[i],
