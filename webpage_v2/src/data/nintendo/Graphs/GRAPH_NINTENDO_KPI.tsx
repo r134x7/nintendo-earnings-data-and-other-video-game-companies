@@ -40,23 +40,35 @@ export default function GRAPH_NINTENDO_KPI(props:
         MarchLastYear: props.setData?.marchLastFY as string,
     };
 
-    const kpiLabels = [
-        `Proportion of overseas sales ${labels.currentFY}`,
-        `Proportion of hardware sales ${labels.currentFY}`,
-        `Proportion of first party software sales ${labels.currentFY}`,
-        `Digital Sales ${labels.currentFY}`,
-        `Proportion of Digital Sales ${labels.currentFY}`,
-        `Proportion of downloadable versions of Packaged Software Sales ${labels.currentFY}`,
-    ]
+    const kpiLabels = props.setData.quarterValuesThisFY.map(elem => {
+        return elem.map((value, index) => (index === 0) ? value.name + " " + labels.currentFY : []).flat()
+    });
 
-    const kpiLabelsLastFY = [
-        `Proportion of overseas sales ${labels.lastFY}`,
-        `Proportion of hardware sales ${labels.lastFY}`,
-        `Proportion of first party software sales ${labels.lastFY}`,
-        `Digital Sales ${labels.lastFY}`,
-        `Proportion of Digital Sales ${labels.lastFY}`,
-        `Proportion of downloadable versions of Packaged Software Sales ${labels.lastFY}`,
-    ]
+    const kpiLabelsLastFY = props.setData.quarterValuesLastFY.map(elem => {
+        return elem.map((value, index) => (index === 0) ? value.name + " " + labels.lastFY : []).flat()
+    });
+
+    const kpiYLabels = props.setData.quarterValuesThisFY.map(elem => {
+        return elem.map((value, index) => (index === 0) ? value.units : []).flat()
+    });
+
+    // const kpiLabels = [
+    //     `Proportion of overseas sales ${labels.currentFY}`,
+    //     `Proportion of hardware sales ${labels.currentFY}`,
+    //     `Proportion of first party software sales ${labels.currentFY}`,
+    //     `Digital Sales ${labels.currentFY}`,
+    //     `Proportion of Digital Sales ${labels.currentFY}`,
+    //     `Proportion of downloadable versions of Packaged Software Sales ${labels.currentFY}`,
+    // ]
+
+    // const kpiLabelsLastFY = [
+    //     `Proportion of overseas sales ${labels.lastFY}`,
+    //     `Proportion of hardware sales ${labels.lastFY}`,
+    //     `Proportion of first party software sales ${labels.lastFY}`,
+    //     `Digital Sales ${labels.lastFY}`,
+    //     `Proportion of Digital Sales ${labels.lastFY}`,
+    //     `Proportion of downloadable versions of Packaged Software Sales ${labels.lastFY}`,
+    // ]
 
     // const graphQuarters = [
     //     proportionOfOverseasSalesQtr.map((elem) => elem.value),
@@ -69,7 +81,7 @@ export default function GRAPH_NINTENDO_KPI(props:
 
     const graphQuarters = props.setData.quarterValuesThisFY.map((elem) => {
         return elem.map(value => value.value)
-    })
+    });
 
     const graphQuartersLastFY = props.setData.quarterValuesLastFY.map((elem) => {
         return elem.map(value => value.value)
@@ -186,8 +198,13 @@ export default function GRAPH_NINTENDO_KPI(props:
                             //             : false,
                             title: {
                               display: true,
+                            //   text: (activePage === 4)
+                            //             ? "Billion yen (¥)"
+                            //             : "Percentage (%)",
                               text: (activePage === 4)
                                         ? "Billion yen (¥)"
+                                        : (kpiYLabels[activePage-1][0] === "currency")
+                                        ? "Million yen (¥)"
                                         : "Percentage (%)",
                             },
                           },
@@ -264,8 +281,13 @@ export default function GRAPH_NINTENDO_KPI(props:
                             //             : false,
                             title: {
                               display: true,
+                            //   text: (activePage === 4)
+                            //             ? "Billion yen (¥)"
+                            //             : "Percentage (%)",
                               text: (activePage === 4)
                                         ? "Billion yen (¥)"
+                                        : (kpiYLabels[activePage-1][0] === "currency")
+                                        ? "Million yen (¥)"
                                         : "Percentage (%)",
                             },
                           },
@@ -324,8 +346,13 @@ export default function GRAPH_NINTENDO_KPI(props:
                             //             : false,
                             title: {
                               display: true,
+                            //   text: (activePage === 4)
+                            //             ? "Billion yen (¥)"
+                            //             : "Percentage (%)",
                               text: (activePage === 4)
                                         ? "Billion yen (¥)"
+                                        : (kpiYLabels[activePage-1][0] === "currency")
+                                        ? "Million yen (¥)"
                                         : "Percentage (%)",
                             },
                           },
@@ -404,10 +431,12 @@ export default function GRAPH_NINTENDO_KPI(props:
                             //             : false,
                         title: {
                           display: true,
-                          text: (activePage === 4)
+                              text: (activePage === 4)
                                         ? "Billion yen (¥)"
+                                        : (kpiYLabels[activePage-1][0] === "currency")
+                                        ? "Million yen (¥)"
                                         : "Percentage (%)",
-                        },
+                            },
                       },
                       x: {
                             stacked: false,

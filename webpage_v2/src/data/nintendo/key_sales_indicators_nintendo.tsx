@@ -84,7 +84,7 @@ const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndic
             return elem.map((value, indexValue) => {
                 return {
                     ...value,
-                    name: "Total Software Sales",
+                    name: "Proportion of Software Sales",
                     units: "currency",
                     value: Number(((1 - (value.value / 100)) * consolidatedSales[1][indexValue].value).toFixed(0)) // total software sales, 
                 }
@@ -109,7 +109,7 @@ const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndic
         return elem.map((value, indexValue) => {
             return {
                 ...value,
-                name: "Total Physical Software Sales",
+                name: "Proportion of Physical Software Sales",
                 units: "currency",
                 value: Number(((1 - (value.value / 100)) * softwareSalesMake[0][indexValue].value).toFixed(0)) 
             }
@@ -122,42 +122,36 @@ const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndic
             return (value.name === "Proportion of Overseas Sales")
                 ? {
                     ...value,
-                    name: "Total Overseas Sales",
                     units: "currency",
                     value: Number(((value.value / 100) * consolidatedSales[0][indexValue].value).toFixed(0)) // total overseas sales 
                   }
                 : (value.name === "Proportion of Hardware Sales")
                 ? {
                     ...value,
-                    name: "Total Hardware Sales",
                     units: "currency",
                     value: Number(((value.value / 100) * consolidatedSales[1][indexValue].value).toFixed(0)) // total hardware sales
                   }
                 : (value.name === "Proportion of First Party Software Sales")
                 ? {
                     ...value,
-                    name: "Total First-Party Software Sales",
                     units: "currency",
                     value: Number(((value.value / 100) * softwareSalesMake[0][indexValue].value).toFixed(0)) // total first-party software sales 
                   }
                 : (value.name === "Proportion of Digital Sales")
                 ? {
                     ...value,
-                    name: "Total Digital Sales",
                     units: "currency",
                     value: Number(((value.value / 100) * softwareSalesMake[0][indexValue].value).toFixed(0)) // total digital sales 
                 }
                 : (value.name === "Proportion of Download version of Packaged Software")
                 ? {
                     ...value,
-                    name: "Total Download Version of Packaged Software",
                     units: "currency",
                     value: Number(((value.value / 100) * digitalSalesMake[0][indexValue].value).toFixed(0)) 
                 }
                 : (value.name === "Digital Sales")
                 ? {
                     ...value,
-                    name: "Digital Sales in millions",
                     units: "currency",
                     value: Number(digitalSalesMake[0][indexValue].value.toFixed(0)) 
                 }
@@ -568,15 +562,45 @@ export const keySalesIndicatorsGraphList = collection.map((elem, index, array) =
 
     let qtrValuesThisFY: KPDIndicators[][] = elem.kpi.map(elem => quarterValuesMake(elem));
 
+    let qtrValuesPlus: KPDIndicators[][] = qtrValuesThisFY.concat(softwareProportionMake(qtrValuesThisFY, cmlName), (physicalSoftwareProportionMake(qtrValuesThisFY, cmlName)));
+
     let cmlValuesThisFY: KPDIndicators[][] = elem.kpi.map(elem => cmlValuesMake(elem, cmlName));
 
+    let cmlValuesPlus: KPDIndicators[][] = cmlValuesThisFY.concat(softwareProportionMake(cmlValuesThisFY, cmlName), (physicalSoftwareProportionMake(cmlValuesThisFY, cmlName)));
+
     let qtrValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
-    ? elem.kpi.map(elem => quarterValuesMake(undefined)) 
-    : array[index+1].kpi.map(elem => quarterValuesMake(elem));
+        ? elem.kpi.map(value => quarterValuesMake(undefined)) 
+        : (array[index+1].kpi.length !== elem.kpi.length)
+        ? elem.kpi.map((value, indexValue) => {
+            
+            let nameSearchThisFY = value.name
+            let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
+            
+            return (nameSearchThisFY === nameSearchLastFY)
+                ? quarterValuesMake(array[index+1].kpi[indexValue])
+                : quarterValuesMake(undefined)
+
+            })
+        : array[index+1].kpi.map(value => quarterValuesMake(value))
+
+    let qtrValuesLastFYPlus: KPDIndicators[][] = qtrValuesLastFY.concat(softwareProportionMake(qtrValuesLastFY, cmlName), (physicalSoftwareProportionMake(qtrValuesLastFY, cmlName)));
 
     let cmlValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
-    ? elem.kpi.map(elem => cmlValuesMake(undefined, cmlName)) 
-    : array[index+1].kpi.map(elem => cmlValuesMake(elem, cmlName));
+        ? elem.kpi.map(value => cmlValuesMake(undefined, cmlName)) 
+        : (array[index+1].kpi.length !== elem.kpi.length)
+        ? elem.kpi.map((value, indexValue) => {
+            
+            let nameSearchThisFY = value.name
+            let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
+
+            return (nameSearchThisFY === nameSearchLastFY)
+                ? cmlValuesMake(array[index+1].kpi[indexValue], cmlName)
+                : cmlValuesMake(undefined, cmlName)
+
+            })
+        : array[index+1].kpi.map(value => cmlValuesMake(value, cmlName))
+
+    let cmlValuesLastFYPlus: KPDIndicators[][] = cmlValuesLastFY.concat(softwareProportionMake(cmlValuesLastFY, cmlName), (physicalSoftwareProportionMake(cmlValuesLastFY, cmlName)));
 
     let thisFY: string = elem.fiscalYear.slice(2, -2);
     let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
@@ -584,16 +608,57 @@ export const keySalesIndicatorsGraphList = collection.map((elem, index, array) =
     let marchThisFY: string = "March " + thisFY.slice(4);
     let marchLastFY: string = "March " + lastFY.slice(4);
 
+    let qtrSalesValuesThisFY: KPDIndicators[][] = elem.consolidatedSales.map(elem => consolidatedSalesQuartersMake(elem));
+
+    let qtrSalesValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
+        ? elem.consolidatedSales.map(value => consolidatedSalesQuartersMake(undefined)) 
+        : (array[index+1].consolidatedSales.length !== elem.consolidatedSales.length)
+        ? elem.consolidatedSales.map((value, indexValue) => {
+            
+            let nameSearchThisFY = value.name;
+            let nameSearchLastFY = array[index+1].consolidatedSales[indexValue]? array[index+1].consolidatedSales[indexValue].name : undefined;
+
+            return (nameSearchThisFY === nameSearchLastFY)
+                ? consolidatedSalesQuartersMake(array[index+1].consolidatedSales[indexValue])
+                : consolidatedSalesQuartersMake(undefined)
+
+            })
+        : array[index+1].consolidatedSales.map(value => consolidatedSalesQuartersMake(value))
+
+    let cmlSalesValuesThisFY: KPDIndicators[][] = elem.consolidatedSales.map(elem => consolidatedSalesCmlMake(elem, cmlName))
+
+    let cmlSalesValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
+        ? elem.consolidatedSales.map(value => consolidatedSalesCmlMake(undefined, cmlName)) 
+        : (array[index+1].consolidatedSales.length !== elem.consolidatedSales.length)
+        ? elem.consolidatedSales.map((value, indexValue) => {
+            
+            let nameSearchThisFY = value.name
+            let nameSearchLastFY = array[index+1].consolidatedSales[indexValue]? array[index+1].consolidatedSales[indexValue].name : undefined;
+
+            return (nameSearchThisFY === nameSearchLastFY)
+                ? consolidatedSalesCmlMake(array[index+1].consolidatedSales[indexValue], cmlName)
+                : consolidatedSalesCmlMake(undefined, cmlName)
+
+            })
+        : array[index+1].consolidatedSales.map(value => consolidatedSalesCmlMake(value, cmlName))
+
+    let qtrKeySalesValuesThisFY: KPDIndicators[][] = keySalesMake(qtrValuesThisFY, qtrSalesValuesThisFY, cmlName);
+
+    let cmlKeySalesValuesThisFY: KPDIndicators[][] = keySalesMake(cmlValuesThisFY, cmlSalesValuesThisFY, cmlName);
+
+    let qtrKeySalesValuesLastFY: KPDIndicators[][] = keySalesMake(qtrValuesLastFY, qtrSalesValuesLastFY, cmlName);
+
+    let cmlKeySalesValuesLastFY: KPDIndicators[][] = keySalesMake(cmlValuesLastFY, cmlSalesValuesLastFY, cmlName);
 
     const graphMake = {
         thisFY: thisFY,
         lastFY: lastFY,
         marchThisFY: marchThisFY,
         marchLastFY: marchLastFY,
-        quarterValuesThisFY: qtrValuesThisFY,
-        quarterValuesLastFY: qtrValuesLastFY,
-        cumulativeValuesThisFY: cmlValuesThisFY,
-        cumulativeValuesLastFY: cmlValuesLastFY,
+        quarterValuesThisFY: qtrValuesThisFY.concat(qtrKeySalesValuesThisFY),
+        quarterValuesLastFY: qtrValuesLastFY.concat(qtrKeySalesValuesLastFY),
+        cumulativeValuesThisFY: cmlValuesThisFY.concat(cmlKeySalesValuesThisFY),
+        cumulativeValuesLastFY: cmlValuesLastFY.concat(cmlKeySalesValuesLastFY),
     };
 
     return graphMake
