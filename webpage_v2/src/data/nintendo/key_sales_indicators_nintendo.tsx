@@ -393,7 +393,11 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
             ...headerOne,
             section: "| Proportion of physical software sales            |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |"
         },
-    ];
+    ].filter((value, indexValue, valueArray) => {
+        return (elem.fiscalYear === "| FY3/2018 |" || elem.fiscalYear === "| FY3/2017 |")
+            ? valueArray[indexValue] !== valueArray[5] 
+            : value
+    }) as Header[];
 
     const footers: Footer[] = [
         {
@@ -420,7 +424,11 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
         {
             section: "|(※ Proportion of physical software sales\n|to total dedicated\n|video game platform software sales)|",
         }
-    ];
+    ].filter((value, indexValue, valueArray) => {
+        return (elem.fiscalYear === "| FY3/2018 |" || elem.fiscalYear === "| FY3/2017 |")
+            ? valueArray[indexValue] !== valueArray[5] 
+            : value
+    }) as Footer[];
 
     let qtrValues: KPDIndicators[][] = elem.kpi.map(elem => quarterValuesMake(elem))
 
