@@ -101,7 +101,12 @@ const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndic
             })
         })
 
-    let digitalSalesMake: KPDIndicators[][] = indicators.filter(elem => elem[0].name === "Digital Sales");
+    let digitalSalesMake: KPDIndicators[][] = indicators.filter(elem => elem[0].name === "Digital Sales").map(elem => elem.map(value => {
+        return {
+            ...value,
+            value: value.value * 1000
+        }
+    }));
 
    let physicalSoftwareSalesCheck: KPDIndicators[][] = indicators.filter(elem => elem[0].name === "Proportion of Digital Sales")
 
@@ -116,7 +121,7 @@ const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndic
                 ...value,
                 name: "Total Physical Software Sales",
                 units: "currency",
-                value: Number(((1 - (value.value / 100)) * consolidatedSales[1][indexValue].value).toFixed(0)) // total software sales, 
+                value: Number(((1 - (value.value / 100)) * softwareSalesMake[0][indexValue].value).toFixed(0)) 
             }
         })
     });
@@ -160,9 +165,16 @@ const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndic
                     units: "currency",
                     value: Number(((value.value / 100) * digitalSalesMake[0][indexValue].value).toFixed(0)) 
                 }
+                : (value.name === "Digital Sales")
+                ? {
+                    ...value,
+                    name: "Digital Sales in millions",
+                    units: "currency",
+                    value: Number(digitalSalesMake[0][indexValue].value.toFixed(0)) 
+                }
                 : {
                     ...value
-                } // digital sales
+                } 
         })
     });
 
@@ -343,7 +355,7 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
 
     let headerOne: Header = {
         companyName: " Nintendo Co., Ltd.",
-        section: "| Proportion of overseas sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
+        section: "| Proportion of overseas sales                     |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
         fiscalYear: elem.fiscalYear,
         title: "| Key Sales Indicators         |",
     };
@@ -351,35 +363,35 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
     let headers: Header[] = [
         {
             ...headerOne,
-            section: "| Proportion of overseas sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
+            section: "| Proportion of overseas sales                     |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |"
         },
         {
             ...headerOne,
-            section: "| Proportion of hardware sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
+            section: "| Proportion of hardware sales                     |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |"
         },
         {
             ...headerOne,
-            section: "| Proportion of first party    |\n| software sales               |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
+            section: "| Proportion of first party software sales         |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |"
         },
         {
             ...headerOne,
-            section: "| Digital Sales                |\n+--------------------------------------------------+\n|                    Sales |      Sales |    YoY%  |",
+            section: "| Digital Sales                                    |\n+--------------------------------------------------+\n|                    Sales |      Sales |    YoY%  |"
         },
         {
             ...headerOne,
-            section: "| Proportion of Digital Sales  |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
+            section: "| Proportion of Digital Sales                      |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |"
         },
         {
             ...headerOne,
-            section: "| Proportion of downloadable   |\n| versions of Packaged         |\n| Software Sales               |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |"
+            section: "| Proportion of downloadable versions of Packaged  |\n| Software Sales                                   |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |"
         },
         {
             ...headerOne,
-            section: "| Proportion of software sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
+            section: "| Proportion of software sales                     |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |"
         },
         {
             ...headerOne,
-            section: "| Proportion of physical software sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
+            section: "| Proportion of physical software sales            |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |"
         },
     ];
 

@@ -9,12 +9,14 @@ export type KPDIndicators = {
 
 export type Header = {
     companyName: string,
-    section: "| Proportion of overseas sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | 
-    "| Proportion of hardware sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | 
-    "| Proportion of first party    |\n| software sales               |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | 
-    "| Digital Sales                |\n+--------------------------------------------------+\n|                    Sales |      Sales |    YoY%  |" | 
-    "| Proportion of Digital Sales  |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | 
-    "| Proportion of downloadable   |\n| versions of Packaged         |\n| Software Sales               |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | "| Proportion of software sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | "| Proportion of physical software sales |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
+    section: "| Proportion of overseas sales                     |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | 
+    "| Proportion of hardware sales                     |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | 
+    "| Proportion of first party software sales         |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | 
+    "| Digital Sales                                    |\n+--------------------------------------------------+\n|                    Sales |      Sales |    YoY%  |" | 
+    "| Proportion of Digital Sales                      |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | 
+    "| Proportion of downloadable versions of Packaged  |\n| Software Sales                                   |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | 
+    "| Proportion of software sales                     |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |" | 
+    "| Proportion of physical software sales            |\n+--------------------------------------------------+\n|               Proportion |      Sales |    YoY%  |",
     fiscalYear: string,
     title: string,
 }
@@ -286,12 +288,12 @@ ${printSections(quarter, currentQuarter)}
 ${footer.section}`;
 
 export const printNewBody = (header: Header, footer: Footer, quarterProportion: KPDIndicators[], cumulativeProportion: KPDIndicators[], quarterSales: KPDIndicators[], cumulativeSales: KPDIndicators[], quarterYoY: KPDIndicators[], cumulativeYoY: KPDIndicators[], currentQuarter: number) =>
-`+${"-".repeat(30)}+
+`+${"-".repeat(50)}+
 ${header.section}
-+${"-".repeat(30)}+
++${"-".repeat(50)}+
 ${printNewSections(quarterProportion, quarterSales, quarterYoY, currentQuarter)}
-+${(currentQuarter > 1) ? "=".repeat(30)+"+\n" + printNewSections(cumulativeProportion, cumulativeSales, cumulativeYoY, currentQuarter) : "=".repeat(30)+"+" }
-+${"-".repeat(30)+"+"}
++${(currentQuarter > 1) ? "=".repeat(50)+"+\n" + printNewSections(cumulativeProportion, cumulativeSales, cumulativeYoY, currentQuarter) : "=".repeat(50)+"+" }
++${"-".repeat(50)+"+"}
 ${footer.section}`;
 
 // export const printProportionOfOverseasSales = (header: Header, footer: Footer, proportionOfOverseasSalesQtr: KPIQuarter[], proportionOfOverseasSalesCml: KPICumulative[], currentQuarter: number) => 
