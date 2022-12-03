@@ -14,7 +14,7 @@ export type Header = {
     title: "Consolidated Operating Results",
 };
 
-function quarterlyCalculation(quarters: Earnings[]): Earnings[] {
+export function quarterlyCalculation(quarters: Earnings[]): Earnings[] {
        
     const calc: Earnings[] = quarters.map((elem, index, array) => {
         return (index === 0) 
@@ -43,7 +43,7 @@ function yearOnYearCalculation(thisFY: Earnings[], lastFY: Earnings[]): Earnings
        return calc
     };
 
-function operatingMarginCalculation(netSalesLocal: Earnings[], opIncomeLocal: Earnings[]) {
+export function operatingMarginCalculation(netSalesLocal: Earnings[], opIncomeLocal: Earnings[]) {
 
     const calc: Earnings[] = opIncomeLocal.map((elem, index) => {
         return (netSalesLocal[index].value !== 0) 

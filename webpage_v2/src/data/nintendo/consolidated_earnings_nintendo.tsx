@@ -1,13 +1,12 @@
-import { 
-    quarterlyCalculation, 
-    cumulativeCalculation, 
-    operatingMarginCalculation,
-    yearOnYearCalculation,
-    Header,
-    printHead,
-    printBody,
+import {
     Earnings,
-    } from "../../utils/earnings_logic";
+    Header,
+    printOpMargin,
+    operatingMarginCalculation,
+    quarterlyCalculation,
+    printAll,
+    printHead,
+} from "../../utils/general_earnings_logic";
 
 import consolidatedEarnings2023 from "./Consolidated_Earnings/consolidated_earnings_fy3_2023.json";
 import consolidatedEarnings2022 from "./Consolidated_Earnings/consolidated_earnings_fy3_2022.json";
@@ -30,46 +29,49 @@ const collection = [
 ] as const;
 
 const valuesMake = (obj: undefined | {
+    name: string,
     Q1CmlValue: number,
     Q2CmlValue: number,
     Q3CmlValue: number,
     Q4CmlValue: number,
-}, cmlName: string): Earnings[] => {
+}): Earnings[] => {
 
     let values: Earnings[] = [
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "quarter",
             units: "currency",
-            name: " 1st Quarter ",
+            period: "1st Quarter",
             value: (!obj) ? 0 : obj.Q1CmlValue
         },
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "quarter",
             units: "currency",
-            name: " 2nd Quarter ",
-            cmlName: " First Half  ",
+            period: "2nd Quarter",
             value: (!obj) ? 0 : obj.Q2CmlValue 
         },
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "quarter",
             units: "currency", 
-            name: " 3rd Quarter ",
-            cmlName: " 1st 3 Qtrs  ",          
+            period: "3rd Quarter",
             value: (!obj) ? 0 : obj.Q3CmlValue 
         },
         {
+            name: (!obj) ? "N/A" : obj.name,
             category: "quarter",
             units: "currency", 
-            name: " 4th Quarter ",
-            cmlName: cmlName,         
+            period: "4th Quarter",
             value: (!obj) ? 0 : obj.Q4CmlValue 
         },
-    ]
+    ];
 
     return values 
 };
 
 const forecastMake = (obj: {
+    name: string,
     Q1CmlValue: number,
     Q2CmlValue: number,
     Q3CmlValue: number,
@@ -83,23 +85,28 @@ const forecastMake = (obj: {
 
     let forecasts: Earnings[] = [
         {
-            name: forecastLabelThisFY,
+            name: obj.name,
+            forecastPeriod: forecastLabelThisFY,
             value: obj?.forecastThisFY,
         },
         {
-            name: " FCST Revision 1 ",
+            name: obj.name,
+            forecastPeriod: " FCST Revision 1 ",
             value: obj?.forecastRevision1,
         },
         {
-            name: " FCST Revision 2 ",
+            name: obj.name,
+            forecastPeriod: " FCST Revision 2 ",
             value: obj?.forecastRevision2,
         },
         {
-            name: " FCST Revision 3 ",
+            name: obj.name,
+            forecastPeriod: " FCST Revision 3 ",
             value: obj?.forecastRevision3,
         },
         {
-            name: forecastLabelNextFY,
+            name: obj.name,
+            forecastPeriod: forecastLabelNextFY,
             value: obj?.forecastNextFY,
         },
     ].filter(elem => elem.value !== undefined).map(elem => {
@@ -108,48 +115,30 @@ const forecastMake = (obj: {
             category: "forecast",
             units: "currency",
             name: elem.name,
+            period: "1st Quarter",
+            forecastPeriod: elem.forecastPeriod, 
             value: elem.value as number, // type assertion, filter has already removed undefined values.
-        }
-    })
+        };
+    });
 
     return forecasts
-}
+};
 
 export const consolidatedEarningsList: string[] = collection.map((elem, index, array) => {
 
     if (index === array.length-1) {
         return ""
-    }
+    };
 
     let currentQuarter: number = elem.currentQuarter;
 
     let header: Header = {
-        companyName: " Nintendo Co., Ltd.",
-        yearOnYearPercentage: "|    YoY% |",
+        companyName: "Nintendo Co., Ltd.",
         fiscalYear: elem.fiscalYear,
-        title: " Consolidated Operating Results   ",
-        section: "| Net Sales                  ", 
-        borderLineLengthBody: 38,
-        borderLineLengthFooter: 32,
+        title: "Consolidated Operating Results",
     };
 
-    let [headerOperatingIncome, headerOpMargin, headerNetIncome]: Header[] = [
-        {
-            ...header, section: "| Operating Income           "
-        },
-        {
-            ...header,
-            yearOnYearPercentage: "|", 
-            section: "| Operating Margin      ",
-            borderLineLengthBody: 23, 
-            borderLineLengthFooter: 27,  
-        },
-        {
-            ...header, section: "| Net Income                 "
-        },
-    ];
-
-    let cmlName: string = " " + elem.fiscalYear.slice(0,4) + elem.fiscalYear.slice(-3) + "Cml. ";
+    // let cmlName: string = " " + elem.fiscalYear.slice(0,4) + elem.fiscalYear.slice(-3) + "Cml.";
 
     let nextFY: string = (Number(elem.fiscalYear.slice(-3, -1)) + 1).toString();
 
@@ -157,156 +146,27 @@ export const consolidatedEarningsList: string[] = collection.map((elem, index, a
 
     let forecastNameNextFY: string = " " + elem.fiscalYear.slice(0,4) + nextFY + " Forecast ";
 
-    let netSalesThisFY: Earnings[] = valuesMake(elem.netSales, cmlName);
-    let netSalesLastFY: Earnings[] = (!array[index+1]) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].netSales, cmlName);
+    let dataThisFY: Earnings[][] = elem.data.map(value => valuesMake(value));
 
-    let operatingIncomeThisFY: Earnings[] = valuesMake(elem.operatingIncome, cmlName);
-    let operatingIncomeLastFY: Earnings[] = (!array[index+1]) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].operatingIncome, cmlName);
+    let dataLastFY: Earnings[][] = (!array[index+1]) ? elem.data.map(value => valuesMake(undefined)) : array[index+1].data.map(value => valuesMake(value));
 
-    let netIncomeThisFY: Earnings[] = valuesMake(elem.netIncome, cmlName);
-    let netIncomeLastFY: Earnings[] = (!array[index+1]) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].netIncome, cmlName);
+    let forecastData: Earnings[][] = elem.data.map(value => forecastMake(value, forecastNameThisFY, forecastNameNextFY));
 
-    let netSalesForecasts: Earnings[] = forecastMake(elem.netSales, forecastNameThisFY, forecastNameNextFY);
-    let operatingIncomeForecasts: Earnings[] = forecastMake(elem.operatingIncome, forecastNameThisFY, forecastNameNextFY);
-    let netIncomeForecasts: Earnings[] = forecastMake(elem.netIncome, forecastNameThisFY, forecastNameNextFY);
+    const printOne = printHead(header)(35);
 
-    const valueCollection = [
-        netSalesThisFY,
-        netSalesLastFY,
-        operatingIncomeThisFY,
-        operatingIncomeLastFY,
-        netIncomeThisFY,
-        netIncomeLastFY,
-    ];
+    const opMarginSet = printOpMargin(header, dataThisFY[0], dataThisFY[1], forecastData[0], forecastData[1], currentQuarter);
 
-    const [
-        netSalesDifference, 
-        netSalesLastFYDifference, 
-        operatingIncomeDifference, operatingIncomeLastFYDifference, 
-        netIncomeDifference, 
-        netIncomeLastFYDifference,
-    ] = valueCollection.map((elem) => {
-        return quarterlyCalculation(elem)
+    const printEach = Array.from({length: dataThisFY.length + 1}, (v, i) => {
+        return (i === 2) 
+                ? opMarginSet(11)(32)
+                :(i === dataThisFY.length)
+                ? printAll(header, dataThisFY[2], dataLastFY[2], forecastData[2], currentQuarter)(14)(10)(35)
+                : printAll(header, dataThisFY[i], dataLastFY[i], forecastData[i], currentQuarter)(14)(10)(35);
     });
 
-    const [
-        netSalesCumulative, 
-        netSalesLastFYCumulative, 
-        operatingIncomeCumulative,
-        operatingIncomeLastFYCumulative,
-        netIncomeCumulative, 
-        netIncomeLastFYCumulative
-    ] = valueCollection.map((elem) => {
-            return cumulativeCalculation(elem)
-    });
+    return [printOne, ...printEach].reduce((acc, next) => acc + "\n" + next)
 
-    const yearOnYearCollection = [
-        netSalesDifference,
-        netSalesLastFYDifference,
-        netSalesCumulative,
-        netSalesLastFYCumulative,
-        operatingIncomeDifference,
-        operatingIncomeLastFYDifference,
-        operatingIncomeCumulative,
-        operatingIncomeLastFYCumulative,
-        netIncomeDifference,
-        netIncomeLastFYDifference,
-        netIncomeCumulative,
-        netIncomeLastFYCumulative,
-    ];
-
-    const [
-        netSalesDifferenceYoy, 
-        netSalesCumulativeYoy, 
-        operatingIncomeDifferenceYoy,
-        operatingIncomeCumulativeYoy, 
-        netIncomeDifferenceYoy, 
-        netIncomeCumulativeYoy
-    ] = yearOnYearCollection.map((elem, index, array) => {
-        // need to use map and then filter, not the other way around. Input array of arrays of length 12, output array of arrays of length 12 and then filter to 6.
-    
-        return (index % 2 === 0) // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
-                ? yearOnYearCalculation(array[index], array[index+1])
-                : [];
-        }).filter((elem) => elem.length !== 0); // map creates empty arrays so filter removes them and then the array destructuring works correctly, note: elem is used and not array because the array contains 12 arrays! This also removes the issue of variable possibly being undefined had we not put in empty arrays since it would have automatically placed undefined.
-
-    const opMarginCollection = [
-            netSalesDifference,
-            operatingIncomeDifference,
-            netSalesCumulative,
-            operatingIncomeCumulative,
-            netSalesLastFYDifference,
-            operatingIncomeLastFYDifference,
-            netSalesLastFYCumulative,
-            operatingIncomeLastFYCumulative,
-            netSalesForecasts,
-            operatingIncomeForecasts,
-    ]
-
-    const [
-        operatingMarginQuarters, 
-        operatingMarginCumulative,
-        operatingMarginQuartersLastFY,
-        operatingMarginCumulativeLastFY,
-        opMarginForecasts
-    ] = opMarginCollection.map((elem, index, array) => {
-        // Input array of arrays of length 4, output array of arrays of length 4 and then filter to 2.
-    
-        return (index % 2 === 0) // this is so that it returns on even numbered indexes, i.e. 0,1 then 2,3 etc.
-                ? operatingMarginCalculation(array[index], array[index+1])
-                : [];
-        }).filter((elem) => elem.length !== 0) // map creates empty arrays so filter removes them and then the array destructuring works correctly, note: elem is used and not array because the array contains 12 arrays! This also removes the issue of variable possibly being undefined had we not put in empty arrays since it would have automatically placed undefined.
-
-
-    const netSalesArrays = [
-        header, 
-        netSalesDifference,
-        netSalesDifferenceYoy,
-        netSalesCumulative,
-        netSalesCumulativeYoy,
-        netSalesForecasts, 
-        currentQuarter
-    ] as const; // to create read-only tuple
-
-    const operatingIncomeArrays = [
-        headerOperatingIncome,
-        operatingIncomeDifference,
-        operatingIncomeDifferenceYoy,
-        operatingIncomeCumulative,
-        operatingIncomeCumulativeYoy,
-        operatingIncomeForecasts,
-        currentQuarter,
-    ] as const; // to create read-only tuple;
-
-    const opMarginArrays = [
-        headerOpMargin,
-        operatingMarginQuarters,
-        operatingMarginQuartersLastFY,
-        operatingMarginCumulative,
-        operatingMarginCumulativeLastFY,
-        opMarginForecasts,
-        currentQuarter 
-    ] as const; // to create read-only tuple
-
-    const netIncomeArrays = [
-        headerNetIncome,
-        netIncomeDifference,
-        netIncomeDifferenceYoy,
-        netIncomeCumulative,
-        netIncomeCumulativeYoy,
-        netIncomeForecasts,
-        currentQuarter,
-    ] as const; // to create read-only tuple
-
-    const printOne = printHead(header);
-
-    const [printTwo, printThree, printFour, printFive] = [
-    netSalesArrays, operatingIncomeArrays, opMarginArrays, netIncomeArrays].map((elem, index, array) => {
-            
-            return printBody(...elem)
-    });
-
-    return printOne + "\n" + printTwo + "\n" + printThree + "\n" + printFour + "\n" + printFive + "\n###";
+    // return printOne + "\n" + printTwo + "\n" + printThree + "\n" + printFour + "\n" + printFive + "\n###";
 
 }).filter(elem => elem !== "");
 
@@ -316,36 +176,19 @@ export const consolidatedEarningsGraphList = collection.map((elem, index, array)
         return undefined
     }
 
-    let cmlName: string = " " + elem.fiscalYear.slice(0,4) + elem.fiscalYear.slice(-3) + "Cml. ";
+    let dataThisFY: Earnings[][] = elem.data.map(value => valuesMake(value));
 
-    let netSalesThisFY: Earnings[] = valuesMake(elem.netSales, cmlName);
-    let netSalesLastFY: Earnings[] = (!array[index+1]) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].netSales, cmlName);
+    let dataLastFY: Earnings[][] = (!array[index+1]) ? elem.data.map(value => valuesMake(undefined)) : array[index+1].data.map(value => valuesMake(value));
 
-    let operatingIncomeThisFY: Earnings[] = valuesMake(elem.operatingIncome, cmlName);
-    let operatingIncomeLastFY: Earnings[] = (!array[index+1]) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].operatingIncome, cmlName);
+    let quartersDataThisFY: Earnings[][] = dataThisFY.map(value => quarterlyCalculation(value));
 
-    let netIncomeThisFY: Earnings[] = valuesMake(elem.netIncome, cmlName);
-    let netIncomeLastFY: Earnings[] = (!array[index+1]) ? valuesMake(undefined, cmlName) : valuesMake(array[index+1].netIncome, cmlName);
+    let quartersDataLastFY: Earnings[][] = dataLastFY.map(value => quarterlyCalculation(value));
 
-
-    const valueCollection = [
-        netSalesThisFY,
-        netSalesLastFY,
-        operatingIncomeThisFY,
-        operatingIncomeLastFY,
-        netIncomeThisFY,
-        netIncomeLastFY,
+    let quartersOpMarginsThisAndLastFY: Earnings[][] = [ operatingMarginCalculation(quartersDataThisFY[0], quartersDataThisFY[1]), operatingMarginCalculation(quartersDataLastFY[0], quartersDataLastFY[1])];
+    
+    let cumulativeOpMarginsThisAndLastFY: Earnings[][] = [
+        operatingMarginCalculation(dataThisFY[0], dataThisFY[1]), operatingMarginCalculation(dataLastFY[0], dataLastFY[1])
     ];
-
-    const [
-        netSalesDifference, 
-        netSalesLastFYDifference, 
-        operatingIncomeDifference, operatingIncomeLastFYDifference, 
-        netIncomeDifference, 
-        netIncomeLastFYDifference,
-    ] = valueCollection.map((elem) => {
-        return quarterlyCalculation(elem)
-    });
 
     let thisFY: string = elem.fiscalYear.slice(0, -1);
     let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
@@ -353,51 +196,27 @@ export const consolidatedEarningsGraphList = collection.map((elem, index, array)
     let marchThisFY: string = "March " + thisFY.slice(4);
     let marchLastFY: string = "March " + lastFY.slice(4);
 
-    const opMarginCollection = [
-            netSalesDifference,
-            operatingIncomeDifference,
-            netSalesThisFY,
-            operatingIncomeThisFY,
-            netSalesLastFYDifference,
-            operatingIncomeLastFYDifference,
-            netSalesLastFY,
-            operatingIncomeLastFY,
-    ];
-
-    const [
-        operatingMarginQuarters, 
-        operatingMarginCumulative,
-        operatingMarginQuartersLastFY,
-        operatingMarginCumulativeLastFY,
-    ] = opMarginCollection.map((elem, index, array) => {
-    
-        return (index % 2 === 0) 
-                ? operatingMarginCalculation(array[index], array[index+1])
-                : [];
-        }).filter((elem) => elem.length !== 0)
-
-
     const graphMake = {
         thisFY: thisFY,
         lastFY: lastFY,
         marchThisFY: marchThisFY,
         marchLastFY: marchLastFY,
-        qtrNetSalesThisFY: netSalesDifference,
-        qtrOperatingIncomeThisFY: operatingIncomeDifference,
-        qtrOpMarginThisFY: operatingMarginQuarters,
-        qtrNetIncomeThisFY: netIncomeDifference,
-        cmlNetSalesThisFY: netSalesThisFY,
-        cmlOperatingIncomeThisFY: operatingIncomeThisFY,
-        cmlOpMarginThisFY: operatingMarginCumulative,
-        cmlNetIncomeThisFY: netIncomeThisFY,
-        qtrNetSalesLastFY: netSalesLastFYDifference,
-        qtrOperatingIncomeLastFY: operatingIncomeLastFYDifference,
-        qtrOpMarginLastFY: operatingMarginQuartersLastFY,
-        qtrNetIncomeLastFY: netIncomeLastFYDifference,
-        cmlNetSalesLastFY: netSalesLastFY,
-        cmlOperatingIncomeLastFY: operatingIncomeLastFY,
-        cmlOpMarginLastFY: operatingMarginCumulativeLastFY,
-        cmlNetIncomeLastFY: netIncomeLastFY,
+        qtrNetSalesThisFY: quartersDataThisFY[0],
+        qtrOperatingIncomeThisFY: quartersDataThisFY[1],
+        qtrOpMarginThisFY: quartersOpMarginsThisAndLastFY[0],
+        qtrNetIncomeThisFY: quartersDataThisFY[2],
+        cmlNetSalesThisFY: dataThisFY[0],
+        cmlOperatingIncomeThisFY: dataThisFY[1],
+        cmlOpMarginThisFY: cumulativeOpMarginsThisAndLastFY[0],
+        cmlNetIncomeThisFY: dataThisFY[2],
+        qtrNetSalesLastFY: quartersDataLastFY[0],
+        qtrOperatingIncomeLastFY: quartersDataLastFY[1],
+        qtrOpMarginLastFY: quartersOpMarginsThisAndLastFY[1],
+        qtrNetIncomeLastFY: quartersDataLastFY[2],
+        cmlNetSalesLastFY: dataLastFY[0],
+        cmlOperatingIncomeLastFY: dataLastFY[1],
+        cmlOpMarginLastFY: cumulativeOpMarginsThisAndLastFY[1],
+        cmlNetIncomeLastFY: dataLastFY[2],
     };
 
     return graphMake
