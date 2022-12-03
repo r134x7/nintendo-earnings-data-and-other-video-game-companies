@@ -164,25 +164,39 @@ const printLine = (lineLength: number) => "+" + "-".repeat(lineLength) + "+";
 
 const printDoubleLine = (lineLength: number) => "+" + "=".repeat(lineLength) + "+";
 
-function printSection = ()
+const printSection = (valuesThisFY: Earnings[]) => (lineLength: number) => (yoyLength: number) => {
+    let yoyHeader = "YoY%"
+
+    return printLine(lineLength) + "\n| " + valuesThisFY[0].name + " |" + " ".repeat(yoyLength - yoyHeader.length) + yoyHeader + " |";
+};
 
 export const printHead = (header: Header)  => (lineLength: number): string => {
     return printLine(lineLength) + "\n| " + header.companyName + " | " + header.fiscalYear + " |\n" + printLine(lineLength) + "\n| " + header.title + " |\n" + printLine(lineLength)
 };
 
-export const printAll = (header: Header, valuesThisFY: Earnings[], valuesLastFY: Earnings[], forecastValues: Earnings[], currentQuarter: number) => (valueLength: number) => (yoyLength: number) => {
+export const printAll = (header: Header, valuesThisFY: Earnings[], valuesLastFY: Earnings[], forecastValues: Earnings[], currentQuarter: number) => (valueLength: number) => (yoyLength: number) => (lineLength: number): string => {
+
+    let sectionHeader: string = printSection(valuesThisFY)(valueLength)(yoyLength)
 
     let quartersThisFY: string[] = printQuarterValues(valuesThisFY, currentQuarter)(valueLength);
 
     let quartersYoY: string[] = printYoY(quarterlyCalculation(valuesThisFY), quarterlyCalculation(valuesLastFY), currentQuarter)(yoyLength);
 
+    let quartersJoin: string[] = quartersThisFY.map((elem, index) => elem + quartersYoY[index]);
+
     let cumulativesThisFY: string[] = printCumulativeValues(valuesThisFY, header.fiscalYear, currentQuarter)(valueLength);
 
     let cumulativesYoY: string[] = printYoY(valuesThisFY, valuesLastFY, currentQuarter)(yoyLength);
 
+    let cumulativesJoin: string[] = cumulativesThisFY.map((elem, index) => elem + cumulativesYoY[index]);
+
     let forecasting: string[] = printForecastValues(forecastValues)(valueLength);
 
-    let printing = (currentQuarter )
+    let printing: string = [sectionHeader, ...quartersJoin, ...cumulativesJoin, ...forecasting, "###"].reduce((acc, next) => {
+        return acc + "\n" + (printLine(lineLength)) + "\n" + next
+    })
+
+    return printing
 
 }; 
 
