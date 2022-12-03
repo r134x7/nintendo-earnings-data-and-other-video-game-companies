@@ -55,9 +55,9 @@ function operatingMarginCalculation(netSalesLocal: Earnings[], opIncomeLocal: Ea
 };
 
 function printQuarterValues(quarterValues: Earnings[],  currentQuarter: number) {
-    return (quarterPrintLength: number) =>  {
+    return (quarterPrintLength: number): string[] =>  {
 
-        let quarters = quarterValues.filter((elem, index) => index < currentQuarter).map((elem, index) => {
+        let quarters = quarterValues.filter((elem, index) => index < currentQuarter).map((elem) => {
 
             let valueString: string = (elem.units === "currency")
                         ? `¥${elem.value.toLocaleString("en")}M `
@@ -69,27 +69,63 @@ function printQuarterValues(quarterValues: Earnings[],  currentQuarter: number) 
                                   ? valueString 
                                   : " ".repeat(quarterPrintLength - valueString.length) + valueString;
             
-            return valueFixed
+            return `| ${elem.period} | ${valueFixed} |`;
         });
 
         return quarters
     };
 };
 
-function printQuarterYoY(yoyValues: Earnings[], currentQuarter: number) {
+function printCumulativeValues(cmlValues: Earnings[], fiscalYear: string, currentQuarter: number) {
+    return (cmlPrintLength: number): string[] =>  {
+
+        let cmlPeriod = [
+            "1st Half",
+            "1st 3/4",
+            `${fiscalYear} Cml.`
+        ];
+
+        let cumulatives = cmlValues.filter((elem, index) => currentQuarter >= 2 && index < currentQuarter -1).map((elem, index) => {
+
+            let valueString: string = (elem.units === "currency")
+                        ? `¥${elem.value.toLocaleString("en")}M `
+                        : (elem.units === "percentage")
+                        ? `${elem.value}% `
+                        : `NaN`;
+
+            let valueFixed: string = (valueString.length === cmlPrintLength)
+                                  ? valueString 
+                                  : " ".repeat(cmlPrintLength - valueString.length) + valueString;
+            
+            return `| ${cmlPeriod[index]} | ${valueFixed} |`;
+        });
+
+        return cumulatives 
+    };
+};
+
+function printYoY(yoyValues: Earnings[], currentQuarter: number) {
     return (yoyPrintLength: number): string[] => {
 
-        let quarters = yoyValues.filter((elem, index) => index < currentQuarter).map((elem, index) => {
+        let quarters = yoyValues.filter((elem, index) => {
+        return (elem.category === "quarter")
+                ? index < currentQuarter
+                : (elem.category === "cumulative")
+                ? currentQuarter >= 2 && index < currentQuarter -1
+                : elem // forecasts
+    }).map((elem) => {
 
             let yoy: string = (elem.value > 0) 
                                 ? `+${elem.value}% `
+                                : (elem.units === "NaN")
+                                ? "N/A "
                                 : `${elem.value}% `;
             
             let yoyFixed: string = (yoy.length >= yoyPrintLength)
                                 ? yoy 
                                 : " ".repeat(yoyPrintLength - yoy.length) +yoy 
 
-            return yoyFixed
+            return `${yoyFixed}|`
         });
 
         return quarters
