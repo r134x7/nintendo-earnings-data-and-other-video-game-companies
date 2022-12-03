@@ -146,7 +146,16 @@ function printYoY(valuesThisFY: Earnings[], valuesLastFY: Earnings[], currentQua
 function printForecastValues(forecastValues: Earnings[]) {
     return (forecastPrintLength: number): string[] => {
 
+        let forecastLengthFixed: number = (forecastValues[0].forecastPeriod === undefined) 
+            ? 1
+            : (forecastValues[0].forecastPeriod?.length)
+
         let forecastPeriods = forecastValues.map(elem => {
+
+
+            let forecastLength: number = (elem.forecastPeriod === undefined) 
+                ? 1
+                : (elem.forecastPeriod?.length)
 
             let forecastString: string = (elem.units === "currency")
                             ? `¥${elem.value.toLocaleString("en")}M `
@@ -157,8 +166,12 @@ function printForecastValues(forecastValues: Earnings[]) {
             let forecastFixed: string = (forecastString.length >= forecastPrintLength)
                                       ? forecastString 
                                       : " ".repeat(forecastPrintLength - forecastString.length) + forecastString;
+            
+            let forecastTitle: string | undefined = (forecastLength >= forecastLengthFixed)
+                ? elem.forecastPeriod
+                : elem.forecastPeriod + " ".repeat(forecastLengthFixed-forecastLength)
 
-            return `| ${elem.forecastPeriod} | ${forecastFixed} |`
+            return `|${forecastTitle}| ${forecastFixed}|`
         });
 
         return forecastPeriods
@@ -199,20 +212,20 @@ export const printOpMargin = (header: Header, netSalesThisFY: Earnings[], operat
     let quartersOpMarginThisFY: string[] = printQuarterValues(operatingMarginCalculation(quartersNetSalesThisFY, quartersOperatingIncomeThisFY), currentQuarter)(valueLength)(periodLength);
 
     let quartersJoin: string[] = quartersOpMarginThisFY.map((elem, index, array) => {
-        let lineCheck = (index === array.length-1) ? printDoubleLine(lineLength) : printLine(lineLength); 
+        let lineCheck = (index === array.length-1) ? printDoubleLine(lineLength-9) : printLine(lineLength-9); 
 
         return elem + "\n" + lineCheck 
     });
 
     let cumulativesOpMarginThisFY: string[] = printCumulativeValues(operatingMarginCalculation(netSalesThisFY, operatingIncomeThisFY), header.fiscalYear, currentQuarter)(valueLength)(periodLength); 
 
-    let cumulativesJoin: string[] = cumulativesOpMarginThisFY.map((elem) => elem + "\n" + printLine(lineLength));
+    let cumulativesJoin: string[] = cumulativesOpMarginThisFY.map((elem, index, array) => elem + "\n" + printLine((index === array.length-1) ? lineLength-5 : lineLength-9));
 
     let forecasting: string[] = printForecastValues(operatingMarginCalculation(netSalesForecast, operatingIncomeForecast))(valueLength);
 
-    let forecastingJoin: string[] = forecasting.map(elem => elem + "\n" + printLine(lineLength));
+    let forecastingJoin: string[] = forecasting.map(elem => elem + "\n" + printLine(lineLength-5));
 
-    let sectionHeader: string = printSection(operatingMarginCalculation(quartersNetSalesThisFY, quartersOperatingIncomeThisFY))(lineLength)(0)
+    let sectionHeader: string = printSection(operatingMarginCalculation(quartersNetSalesThisFY, quartersOperatingIncomeThisFY))(lineLength-9)(0)
 
     let printing: string = [sectionHeader, ...quartersJoin, ...cumulativesJoin, ...forecastingJoin, "###"].reduce((acc, next) => {
         return acc + "\n" + next
@@ -244,7 +257,7 @@ export const printAll = (header: Header, valuesThisFY: Earnings[], valuesLastFY:
 
     let forecasting: string[] = printForecastValues(forecastValues)(valueLength);
 
-    let forecastingJoin: string[] = forecasting.map(elem => elem + "\n" + printLine(lineLength));
+    let forecastingJoin: string[] = forecasting.map(elem => elem + "\n" + printLine(lineLength-7));
 
     let printing: string = [sectionHeader, ...quartersJoin, ...cumulativesJoin, ...forecastingJoin, "###"].reduce((acc, next) => {
         return acc + "\n" + next

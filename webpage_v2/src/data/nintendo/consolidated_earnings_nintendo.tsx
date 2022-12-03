@@ -156,7 +156,7 @@ export const consolidatedEarningsList: string[] = collection.map((elem, index, a
 
     const printEach = Array.from({length: dataThisFY.length + 1}, (v, i) => {
         return (i === 2) 
-                ? opMarginSet(12)(32)(13)
+                ? opMarginSet(8)(32)(13)
                 :(i === dataThisFY.length)
                 ? printAll(header, dataThisFY[2], dataLastFY[2], forecastData[2], currentQuarter)(12)(10)(38)(13)
                 : printAll(header, dataThisFY[i], dataLastFY[i], forecastData[i], currentQuarter)(12)(10)(38)(13);
