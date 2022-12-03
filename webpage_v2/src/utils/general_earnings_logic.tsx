@@ -57,9 +57,9 @@ export function operatingMarginCalculation(netSalesLocal: Earnings[], opIncomeLo
 };
 
 function printQuarterValues(quarterValues: Earnings[],  currentQuarter: number) {
-    return (quarterPrintLength: number): string[] =>  {
+    return (quarterPrintLength: number) => (periodLength: number): string[] =>  {
 
-        let quartercalc = quarterlyCalculation(quarterValues);
+        let quartercalc = (quarterValues[0].name === "Operating Margin") ? quarterValues : quarterlyCalculation(quarterValues);
 
         let quarters = quartercalc.filter((elem, index) => index < currentQuarter).map((elem) => {
 
@@ -69,11 +69,11 @@ function printQuarterValues(quarterValues: Earnings[],  currentQuarter: number) 
                         ? `${elem.value}% `
                         : `NaN`;
 
-            let valueFixed: string = (valueString.length === quarterPrintLength)
+            let valueFixed: string = (valueString.length >= quarterPrintLength)
                                   ? valueString 
                                   : " ".repeat(quarterPrintLength - valueString.length) + valueString;
             
-            return `| ${elem.period} | ${valueFixed} |`;
+            return `| ${elem.period}${" ".repeat(periodLength-elem.period.length-1)}| ${valueFixed}|`;
         });
 
         return quarters
@@ -81,15 +81,15 @@ function printQuarterValues(quarterValues: Earnings[],  currentQuarter: number) 
 };
 
 function printCumulativeValues(cmlValues: Earnings[], fiscalYear: string, currentQuarter: number) {
-    return (cmlPrintLength: number): string[] =>  {
+    return (cmlPrintLength: number) => (periodLength: number): string[] =>  {
 
         let cmlPeriod = [
             "1st Half",
             "1st 3/4",
             `${fiscalYear} Cml.`
         ];
-
-        let cumulatives = cmlValues.filter((elem, index) => currentQuarter >= 2 && index < currentQuarter -1).map((elem, index) => {
+        
+        let cumulatives = cmlValues.filter((elem, index) => currentQuarter >= 2 && index < currentQuarter && index !== 0).map((elem, index) => {
 
             let valueString: string = (elem.units === "currency")
                         ? `¥${elem.value.toLocaleString("en")}M `
@@ -97,11 +97,15 @@ function printCumulativeValues(cmlValues: Earnings[], fiscalYear: string, curren
                         ? `${elem.value}% `
                         : `NaN`;
 
-            let valueFixed: string = (valueString.length === cmlPrintLength)
+            let valueFixed: string = (valueString.length >= cmlPrintLength)
                                   ? valueString 
                                   : " ".repeat(cmlPrintLength - valueString.length) + valueString;
+
+            let periodFixed: string = (cmlPeriod[index].length >= periodLength)
+                ? cmlPeriod[index]
+                : " " + cmlPeriod[index] + " ".repeat(periodLength-cmlPeriod[index].length-1)
             
-            return `| ${cmlPeriod[index]} | ${valueFixed} |`;
+            return `|${periodFixed}| ${valueFixed}|`;
         });
 
         return cumulatives 
@@ -112,12 +116,13 @@ function printYoY(valuesThisFY: Earnings[], valuesLastFY: Earnings[], currentQua
     return (yoyPrintLength: number): string[] => {
 
         let yoyCalc = yearOnYearCalculation(valuesThisFY, valuesLastFY);
-
+        console.log(yoyCalc);
+        
         let yoyValues = yoyCalc.filter((elem, index) => {
         return (elem.category === "quarter")
                 ? index < currentQuarter
                 : (elem.category === "cumulative")
-                ? currentQuarter >= 2 && index < currentQuarter -1
+                ? currentQuarter >= 2 && index < currentQuarter && index !== 0
                 : elem // forecasts
     }).map((elem) => {
 
@@ -149,7 +154,7 @@ function printForecastValues(forecastValues: Earnings[]) {
                             ? `${elem.value}% `
                             : `NaN`;
             
-            let forecastFixed: string = (forecastString.length === forecastPrintLength)
+            let forecastFixed: string = (forecastString.length >= forecastPrintLength)
                                       ? forecastString 
                                       : " ".repeat(forecastPrintLength - forecastString.length) + forecastString;
 
@@ -166,27 +171,40 @@ const printDoubleLine = (lineLength: number) => "+" + "=".repeat(lineLength) + "
 
 const printSection = (valuesThisFY: Earnings[]) => (lineLength: number) => (yoyLength: number) => {
     let yoyHeader = "YoY%"
-
+    // have to deal with these hardcoded values later
     return (yoyLength === 0) 
-        ? printLine(lineLength) + "\n| " + valuesThisFY[0].name + " |"
-        : printLine(lineLength) + "\n| " + valuesThisFY[0].name + " |" + " ".repeat(yoyLength - yoyHeader.length) + yoyHeader + " |";
+        ? printLine(lineLength) + "\n| " + valuesThisFY[0].name + " ".repeat(lineLength-valuesThisFY[0].name.length-1) + "|\n" + printLine(lineLength)
+        : printLine(lineLength) + "\n| " + valuesThisFY[0].name + " ".repeat(lineLength-valuesThisFY[0].name.length-1-yoyLength-1) + "|" + " ".repeat(yoyLength - yoyHeader.length-1) + yoyHeader + " |\n" + printLine(lineLength);
 };
 
 export const printHead = (header: Header)  => (lineLength: number): string => {
-    return printLine(lineLength) + "\n| " + header.companyName + " | " + header.fiscalYear + " |\n" + printLine(lineLength) + "\n| " + header.title + " |\n" + printLine(lineLength)
+
+    let companyNameFixed: string = (header.companyName.length >= (lineLength-header.fiscalYear.length))
+        ? header.companyName
+        : " " + header.companyName + " ".repeat(lineLength-header.companyName.length-header.fiscalYear.length-4);
+    
+    let titleFixed: string = (header.title.length >= (lineLength))
+        ? header.title
+        : " " + header.title + " ".repeat(lineLength-header.title.length-1)
+
+    return printLine(lineLength) + "\n|" + companyNameFixed + "| " + header.fiscalYear + " |\n" + printLine(lineLength) + "\n|" + titleFixed + "|\n" + printLine(lineLength)
 };
 
-export const printOpMargin = (header: Header, netSalesThisFY: Earnings[], operatingIncomeThisFY: Earnings[], netSalesForecast: Earnings[], operatingIncomeForecast: Earnings[], currentQuarter: number) => (valueLength: number) => (lineLength: number): string => {
+export const printOpMargin = (header: Header, netSalesThisFY: Earnings[], operatingIncomeThisFY: Earnings[], netSalesForecast: Earnings[], operatingIncomeForecast: Earnings[], currentQuarter: number) => (valueLength: number) => (lineLength: number) => (periodLength: number): string => {
 
     let quartersNetSalesThisFY: Earnings[] = quarterlyCalculation(netSalesThisFY);
 
     let quartersOperatingIncomeThisFY: Earnings[] = quarterlyCalculation(operatingIncomeThisFY);
 
-    let quartersOpMarginThisFY: string[] = printQuarterValues(operatingMarginCalculation(quartersNetSalesThisFY, quartersOperatingIncomeThisFY), currentQuarter)(valueLength);
+    let quartersOpMarginThisFY: string[] = printQuarterValues(operatingMarginCalculation(quartersNetSalesThisFY, quartersOperatingIncomeThisFY), currentQuarter)(valueLength)(periodLength);
 
-    let quartersJoin: string[] = quartersOpMarginThisFY.map((elem, index, array) => elem + "\n" + (index === array.length-1) ? printDoubleLine(lineLength) : printLine(lineLength));
+    let quartersJoin: string[] = quartersOpMarginThisFY.map((elem, index, array) => {
+        let lineCheck = (index === array.length-1) ? printDoubleLine(lineLength) : printLine(lineLength); 
 
-    let cumulativesOpMarginThisFY: string[] = printCumulativeValues(operatingMarginCalculation(netSalesThisFY, operatingIncomeThisFY), header.fiscalYear, currentQuarter)(valueLength); 
+        return elem + "\n" + lineCheck 
+    });
+
+    let cumulativesOpMarginThisFY: string[] = printCumulativeValues(operatingMarginCalculation(netSalesThisFY, operatingIncomeThisFY), header.fiscalYear, currentQuarter)(valueLength)(periodLength); 
 
     let cumulativesJoin: string[] = cumulativesOpMarginThisFY.map((elem) => elem + "\n" + printLine(lineLength));
 
@@ -194,7 +212,7 @@ export const printOpMargin = (header: Header, netSalesThisFY: Earnings[], operat
 
     let forecastingJoin: string[] = forecasting.map(elem => elem + "\n" + printLine(lineLength));
 
-    let sectionHeader: string = printSection(quartersNetSalesThisFY)(valueLength)(0)
+    let sectionHeader: string = printSection(operatingMarginCalculation(quartersNetSalesThisFY, quartersOperatingIncomeThisFY))(lineLength)(0)
 
     let printing: string = [sectionHeader, ...quartersJoin, ...cumulativesJoin, ...forecastingJoin, "###"].reduce((acc, next) => {
         return acc + "\n" + next
@@ -204,17 +222,21 @@ export const printOpMargin = (header: Header, netSalesThisFY: Earnings[], operat
 }; 
 
 
-export const printAll = (header: Header, valuesThisFY: Earnings[], valuesLastFY: Earnings[], forecastValues: Earnings[], currentQuarter: number) => (valueLength: number) => (yoyLength: number) => (lineLength: number): string => {
+export const printAll = (header: Header, valuesThisFY: Earnings[], valuesLastFY: Earnings[], forecastValues: Earnings[], currentQuarter: number) => (valueLength: number) => (yoyLength: number) => (lineLength: number) => (periodLength: number): string => {
 
-    let sectionHeader: string = printSection(valuesThisFY)(valueLength)(yoyLength)
+    let sectionHeader: string = printSection(valuesThisFY)(lineLength)(yoyLength)
 
-    let quartersThisFY: string[] = printQuarterValues(valuesThisFY, currentQuarter)(valueLength);
+    let quartersThisFY: string[] = printQuarterValues(valuesThisFY, currentQuarter)(valueLength)(periodLength);
 
     let quartersYoY: string[] = printYoY(quarterlyCalculation(valuesThisFY), quarterlyCalculation(valuesLastFY), currentQuarter)(yoyLength);
 
-    let quartersJoin: string[] = quartersThisFY.map((elem, index, array) => elem + quartersYoY[index] + "\n" + (index === array.length-1) ? printDoubleLine(lineLength) : printLine(lineLength));
+    let quartersJoin: string[] = quartersThisFY.map((elem, index, array) => {
+        let lineCheck = (index === array.length-1) ? printDoubleLine(lineLength) : printLine(lineLength); 
 
-    let cumulativesThisFY: string[] = printCumulativeValues(valuesThisFY, header.fiscalYear, currentQuarter)(valueLength);
+        return elem + quartersYoY[index] + "\n" + lineCheck 
+    });
+
+    let cumulativesThisFY: string[] = printCumulativeValues(valuesThisFY, header.fiscalYear, currentQuarter)(valueLength)(periodLength);
 
     let cumulativesYoY: string[] = printYoY(valuesThisFY, valuesLastFY, currentQuarter)(yoyLength);
 

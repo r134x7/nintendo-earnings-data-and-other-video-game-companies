@@ -39,28 +39,28 @@ const valuesMake = (obj: undefined | {
     let values: Earnings[] = [
         {
             name: (!obj) ? "N/A" : obj.name,
-            category: "quarter",
+            category: "cumulative",
             units: "currency",
             period: "1st Quarter",
             value: (!obj) ? 0 : obj.Q1CmlValue
         },
         {
             name: (!obj) ? "N/A" : obj.name,
-            category: "quarter",
+            category: "cumulative",
             units: "currency",
             period: "2nd Quarter",
             value: (!obj) ? 0 : obj.Q2CmlValue 
         },
         {
             name: (!obj) ? "N/A" : obj.name,
-            category: "quarter",
+            category: "cumulative",
             units: "currency", 
             period: "3rd Quarter",
             value: (!obj) ? 0 : obj.Q3CmlValue 
         },
         {
             name: (!obj) ? "N/A" : obj.name,
-            category: "quarter",
+            category: "cumulative",
             units: "currency", 
             period: "4th Quarter",
             value: (!obj) ? 0 : obj.Q4CmlValue 
@@ -91,17 +91,17 @@ const forecastMake = (obj: {
         },
         {
             name: obj.name,
-            forecastPeriod: " FCST Revision 1 ",
+            forecastPeriod: "FCST Revision 1",
             value: obj?.forecastRevision1,
         },
         {
             name: obj.name,
-            forecastPeriod: " FCST Revision 2 ",
+            forecastPeriod: "FCST Revision 2",
             value: obj?.forecastRevision2,
         },
         {
             name: obj.name,
-            forecastPeriod: " FCST Revision 3 ",
+            forecastPeriod: "FCST Revision 3",
             value: obj?.forecastRevision3,
         },
         {
@@ -137,14 +137,12 @@ export const consolidatedEarningsList: string[] = collection.map((elem, index, a
         fiscalYear: elem.fiscalYear,
         title: "Consolidated Operating Results",
     };
+//. FY3/2022 Forecast .
+    let nextFY: string = (Number(elem.fiscalYear.slice(-4)) + 1).toString();
 
-    // let cmlName: string = " " + elem.fiscalYear.slice(0,4) + elem.fiscalYear.slice(-3) + "Cml.";
+    let forecastNameThisFY : string = elem.fiscalYear + " Forecast";
 
-    let nextFY: string = (Number(elem.fiscalYear.slice(-3, -1)) + 1).toString();
-
-    let forecastNameThisFY : string = " " + elem.fiscalYear.slice(0,4) + elem.fiscalYear.slice(-3) + "Forecast ";
-
-    let forecastNameNextFY: string = " " + elem.fiscalYear.slice(0,4) + nextFY + " Forecast ";
+    let forecastNameNextFY: string = elem.fiscalYear.slice(0,4) + nextFY + " Forecast";
 
     let dataThisFY: Earnings[][] = elem.data.map(value => valuesMake(value));
 
@@ -158,15 +156,13 @@ export const consolidatedEarningsList: string[] = collection.map((elem, index, a
 
     const printEach = Array.from({length: dataThisFY.length + 1}, (v, i) => {
         return (i === 2) 
-                ? opMarginSet(11)(32)
+                ? opMarginSet(12)(32)(13)
                 :(i === dataThisFY.length)
-                ? printAll(header, dataThisFY[2], dataLastFY[2], forecastData[2], currentQuarter)(14)(10)(35)
-                : printAll(header, dataThisFY[i], dataLastFY[i], forecastData[i], currentQuarter)(14)(10)(35);
+                ? printAll(header, dataThisFY[2], dataLastFY[2], forecastData[2], currentQuarter)(12)(10)(38)(13)
+                : printAll(header, dataThisFY[i], dataLastFY[i], forecastData[i], currentQuarter)(12)(10)(38)(13);
     });
 
     return [printOne, ...printEach].reduce((acc, next) => acc + "\n" + next)
-
-    // return printOne + "\n" + printTwo + "\n" + printThree + "\n" + printFour + "\n" + printFive + "\n###";
 
 }).filter(elem => elem !== "");
 
@@ -190,7 +186,7 @@ export const consolidatedEarningsGraphList = collection.map((elem, index, array)
         operatingMarginCalculation(dataThisFY[0], dataThisFY[1]), operatingMarginCalculation(dataLastFY[0], dataLastFY[1])
     ];
 
-    let thisFY: string = elem.fiscalYear.slice(0, -1);
+    let thisFY: string = elem.fiscalYear;
     let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
 
     let marchThisFY: string = "March " + thisFY.slice(4);
