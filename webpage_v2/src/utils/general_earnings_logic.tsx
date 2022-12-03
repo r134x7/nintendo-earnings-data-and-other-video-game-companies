@@ -1,48 +1,30 @@
 export type Earnings = {
     category: "quarter" | "cumulative" | "forecast",
-    units: "currency" | "percentage",
-    name: string,
-    cmlName?: string,
+    period: "1st Quarter" | "2nd Quarter" | "3rd Quarter" | "4th Quarter"
+    units: "currency" | "percentage" | "NaN",
+    name: "Net Sales" | "Operating Income" | "Operating Margin" | "Net Income",
     value: number,
-}
-// | Operating Margin      |    
+    footnotes?: string,
+};
+
 export type Header = {
     companyName: string,
-    section: "| Net Sales                  " | "| Operating Income           " | "| Operating Margin      " | "| Net Income                 ",
-    yearOnYearPercentage: "|    YoY% |" | "|",
     fiscalYear: string,
-    title: string,
-    borderLineLengthBody: 38 | 23,
-    borderLineLengthFooter: 32 | 27,
-}
+};
 
-export function quarterlyCalculation(quarters: Earnings[]) {
-        
-    // calc needs to be defined as earnings to retain its type when making any changes
+function quarterlyCalculation(quarters: Earnings[]): Earnings[] {
+       
     const calc: Earnings[] = quarters.map((elem, index, array) => {
         return (index === 0) 
-                ? elem
-                : {...elem, value: elem.value - array[index-1].value}
+                ? {...elem, category: "quarter"}
+                : {...elem, category: "quarter", value: elem.value - array[index-1].value}
     })
     
     return calc
-}
+};
 
-export function cumulativeCalculation(quarters: Earnings[]) {
+function yearOnYearCalculation(thisFY: Earnings[], lastFY: Earnings[]): Earnings[] {
 
-    // calc needs to be typed as Earnings[] or else it's not recognised as that type alias and then issues occur with function parameters down the line, source for solution: https://stackoverflow.com/questions/52423842/what-is-not-assignable-to-parameter-of-type-never-error-in-typescript
-    const calc: Earnings[] = quarters.filter((elem, index, array) => { 
-        return elem !== array[0]
-    }).map((elem, index) => {
-        return {...elem, category: "cumulative"}
-    })
-
-    return calc
-}
-
-export function yearOnYearCalculation(thisFY: Earnings[], lastFY: Earnings[]) {
-
-        // calc needs to be defined as earnings to retain its type when making any changes
         const calc: Earnings[] = thisFY.map((elem, index) => {
 
             return (lastFY[index].value < 0)
@@ -53,24 +35,66 @@ export function yearOnYearCalculation(thisFY: Earnings[], lastFY: Earnings[]) {
                     : {...elem, units: "percentage", value: Number(
                         (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
                         )
-                      }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
+                      }; // .toFixed(2) to round the number by two decimal places. Number will output a string, string has to be wrapped in Number() typing.  
         })
 
        return calc
-    }
+    };
 
-export function operatingMarginCalculation(netSalesLocal: Earnings[], opIncomeLocal: Earnings[]) {
+function operatingMarginCalculation(netSalesLocal: Earnings[], opIncomeLocal: Earnings[]) {
 
     const calc: Earnings[] = opIncomeLocal.map((elem, index) => {
         return (netSalesLocal[index].value !== 0) 
                   ? {...elem, units: "percentage", value: Number(
                         (((elem.value / netSalesLocal[index].value)) * 100).toFixed(2)
-                     )} // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number 
-                  : {...elem, units: "percentage", value: 0} // to prevent infinity calculations
-    })
+                     )}  
+                  : {...elem, units: "NaN", value: 0} 
+    });
    
    return calc
-}
+};
+
+function printQuarterValues(quarterValues: Earnings[],  currentQuarter: number) {
+    return (quarterPrintLength: number) =>  {
+
+        let quarters = quarterValues.filter((elem, index) => index < currentQuarter).map((elem, index) => {
+
+            let valueString: string = (elem.units === "currency")
+                        ? `¥${elem.value.toLocaleString("en")}M `
+                        : (elem.units === "percentage")
+                        ? `${elem.value}% `
+                        : `NaN`;
+
+            let valueFixed: string = (valueString.length === quarterPrintLength)
+                                  ? valueString 
+                                  : " ".repeat(quarterPrintLength - valueString.length) + valueString;
+            
+            return valueFixed
+        });
+
+        return quarters
+    };
+};
+
+function printQuarterYoY(yoyValues: Earnings[], currentQuarter: number) {
+    return (yoyPrintLength: number): string[] => {
+
+        let quarters = yoyValues.filter((elem, index) => index < currentQuarter).map((elem, index) => {
+
+            let yoy: string = (elem.value > 0) 
+                                ? `+${elem.value}% `
+                                : `${elem.value}% `;
+            
+            let yoyFixed: string = (yoy.length >= yoyPrintLength)
+                                ? yoy 
+                                : " ".repeat(yoyPrintLength - yoy.length) +yoy 
+
+            return yoyFixed
+        });
+
+        return quarters
+    };
+};
 
 export const printSections = (sectionDifference: Earnings[], sectionYoY: Earnings[], currentQuarter: number) => {
     
