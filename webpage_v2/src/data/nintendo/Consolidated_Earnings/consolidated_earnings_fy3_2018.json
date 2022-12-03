@@ -1,7 +1,9 @@
 {
     "currentQuarter": 4,
     "fiscalYear": "FY3/2018",
-    "netSales": {
+    "data": [
+        {
+            "name": "Net Sales",
             "Q1CmlValue": 154069,
             "Q2CmlValue": 374041,
             "Q3CmlValue": 857012,
@@ -11,7 +13,8 @@
             "forecastRevision2": 1020000,
             "forecastNextFY": 1200000
         },
-    "operatingIncome": {
+        {
+            "name": "Operating Income",
             "Q1CmlValue": 16208,
             "Q2CmlValue": 39961,
             "Q3CmlValue": 156462,
@@ -20,8 +23,9 @@
             "forecastRevision1": 120000,
             "forecastRevision2": 160000,
             "forecastNextFY": 225000
-    },
-    "netIncome": {
+        },
+        {
+            "name": "Net Income",
             "Q1CmlValue": 21260,
             "Q2CmlValue": 51503,
             "Q3CmlValue": 135165,
@@ -30,5 +34,6 @@
             "forecastRevision1": 85000,
             "forecastRevision2": 120000,
             "forecastNextFY": 165000
-    }
+        }
+    ]
 }

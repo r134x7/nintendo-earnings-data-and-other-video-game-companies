@@ -1,7 +1,9 @@
 {
     "currentQuarter": 4,
     "fiscalYear": "FY3/2020",
-    "netSales": {
+    "data": [
+        {
+            "name": "Net Sales",
             "Q1CmlValue": 172111,
             "Q2CmlValue": 443967,
             "Q3CmlValue": 1022668,
@@ -10,7 +12,8 @@
             "forecastRevision1": 1250000,
             "forecastNextFY": 1200000
         },
-    "operatingIncome": {
+        {
+            "name": "Operating Income",
             "Q1CmlValue": 27428,
             "Q2CmlValue": 94222,
             "Q3CmlValue": 262930,
@@ -18,8 +21,9 @@
             "forecastThisFY": 260000,
             "forecastRevision1": 300000,
             "forecastNextFY": 300000
-    },
-    "netIncome": {
+        },
+        {
+            "name": "Net Income",
             "Q1CmlValue": 16604,
             "Q2CmlValue": 62018,
             "Q3CmlValue": 196389,
@@ -27,5 +31,6 @@
             "forecastThisFY": 180000,
             "forecastRevision1": 210000,
             "forecastNextFY": 200000
-    }
+        }
+    ]
 }

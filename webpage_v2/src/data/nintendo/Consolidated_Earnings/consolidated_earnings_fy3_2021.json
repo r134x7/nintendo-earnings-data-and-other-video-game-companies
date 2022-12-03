@@ -1,7 +1,9 @@
 {
     "currentQuarter": 4,
     "fiscalYear": "FY3/2021",
-    "netSales": {
+    "data": [
+        {
+            "name": "Net Sales",
             "Q1CmlValue": 358106,
             "Q2CmlValue": 769524,
             "Q3CmlValue": 1404463,
@@ -11,7 +13,8 @@
             "forecastRevision2": 1600000,
             "forecastNextFY": 1600000
         },
-    "operatingIncome": {
+        {
+            "name": "Operating Income",
             "Q1CmlValue": 144737,
             "Q2CmlValue": 291424,
             "Q3CmlValue": 521108,
@@ -20,8 +23,9 @@
             "forecastRevision1": 450000,
             "forecastRevision2": 560000,
             "forecastNextFY": 500000
-    },
-    "netIncome": {
+        },
+        {
+            "name": "Net Income",
             "Q1CmlValue": 106482,
             "Q2CmlValue": 213123,
             "Q3CmlValue": 376665,
@@ -30,5 +34,6 @@
             "forecastRevision1": 300000,
             "forecastRevision2": 400000,
             "forecastNextFY": 340000
-    }
+        }
+    ]
 }

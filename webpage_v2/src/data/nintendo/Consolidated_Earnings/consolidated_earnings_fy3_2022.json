@@ -1,7 +1,9 @@
 {
     "currentQuarter": 4,
     "fiscalYear": "FY3/2022",
-    "netSales": {
+    "data": [
+        {
+            "name": "Net Sales",
             "Q1CmlValue": 322647,
             "Q2CmlValue": 624272,
             "Q3CmlValue": 1320219,
@@ -11,7 +13,8 @@
             "forecastRevision2": 1650000,
             "forecastNextFY": 1600000
         },
-    "operatingIncome": {
+        {
+            "name": "Operating Income",
             "Q1CmlValue": 119752,
             "Q2CmlValue": 219959,
             "Q3CmlValue": 472551,
@@ -20,8 +23,9 @@
             "forecastRevision1": 520000,
             "forecastRevision2": 560000,
             "forecastNextFY": 500000
-    },
-    "netIncome": {
+        },
+        {
+            "name": "Net Income",
             "Q1CmlValue": 92747,
             "Q2CmlValue": 171834,
             "Q3CmlValue": 367387,
@@ -30,5 +34,6 @@
             "forecastRevision1": 350000,
             "forecastRevision2": 400000,
             "forecastNextFY": 340000
-    }
+        }
+    ]
 }
