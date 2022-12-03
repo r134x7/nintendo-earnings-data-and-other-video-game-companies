@@ -4,12 +4,14 @@ export type Earnings = {
     units: "currency" | "percentage" | "NaN",
     name: "Net Sales" | "Operating Income" | "Operating Margin" | "Net Income",
     value: number,
+    forecastPeriod?: string,
     footnotes?: string,
 };
 
 export type Header = {
     companyName: string,
     fiscalYear: string,
+    title: "Consolidated Operating Results",
 };
 
 function quarterlyCalculation(quarters: Earnings[]): Earnings[] {
@@ -41,7 +43,7 @@ function yearOnYearCalculation(thisFY: Earnings[], lastFY: Earnings[]): Earnings
        return calc
     };
 
-function operatingMarginCalculation(netSalesLocal: Earnings[], opIncomeLocal: Earnings[]) {
+export function operatingMarginCalculation(netSalesLocal: Earnings[], opIncomeLocal: Earnings[]) {
 
     const calc: Earnings[] = opIncomeLocal.map((elem, index) => {
         return (netSalesLocal[index].value !== 0) 
@@ -57,7 +59,9 @@ function operatingMarginCalculation(netSalesLocal: Earnings[], opIncomeLocal: Ea
 function printQuarterValues(quarterValues: Earnings[],  currentQuarter: number) {
     return (quarterPrintLength: number): string[] =>  {
 
-        let quarters = quarterValues.filter((elem, index) => index < currentQuarter).map((elem) => {
+        let quartercalc = quarterlyCalculation(quarterValues);
+
+        let quarters = quartercalc.filter((elem, index) => index < currentQuarter).map((elem) => {
 
             let valueString: string = (elem.units === "currency")
                         ? `¥${elem.value.toLocaleString("en")}M `
@@ -104,10 +108,12 @@ function printCumulativeValues(cmlValues: Earnings[], fiscalYear: string, curren
     };
 };
 
-function printYoY(yoyValues: Earnings[], currentQuarter: number) {
+function printYoY(valuesThisFY: Earnings[], valuesLastFY: Earnings[], currentQuarter: number) {
     return (yoyPrintLength: number): string[] => {
 
-        let quarters = yoyValues.filter((elem, index) => {
+        let yoyCalc = yearOnYearCalculation(valuesThisFY, valuesLastFY);
+
+        let yoyValues = yoyCalc.filter((elem, index) => {
         return (elem.category === "quarter")
                 ? index < currentQuarter
                 : (elem.category === "cumulative")
@@ -128,9 +134,57 @@ function printYoY(yoyValues: Earnings[], currentQuarter: number) {
             return `${yoyFixed}|`
         });
 
-        return quarters
+        return yoyValues 
     };
 };
+
+function printForecastValues(forecastValues: Earnings[]) {
+    return (forecastPrintLength: number): string[] => {
+
+        let forecastPeriods = forecastValues.map(elem => {
+
+            let forecastString: string = (elem.units === "currency")
+                            ? `¥${elem.value.toLocaleString("en")}M `
+                            : (elem.units === "percentage")
+                            ? `${elem.value}% `
+                            : `NaN`;
+            
+            let forecastFixed: string = (forecastString.length === forecastPrintLength)
+                                      ? forecastString 
+                                      : " ".repeat(forecastPrintLength - forecastString.length) + forecastString;
+
+            return `| ${elem.forecastPeriod} | ${forecastFixed} |`
+        });
+
+        return forecastPeriods
+    };
+};
+
+const printLine = (lineLength: number) => "+" + "-".repeat(lineLength) + "+"; 
+
+const printDoubleLine = (lineLength: number) => "+" + "=".repeat(lineLength) + "+";
+
+function printSection = ()
+
+export const printHead = (header: Header)  => (lineLength: number): string => {
+    return printLine(lineLength) + "\n| " + header.companyName + " | " + header.fiscalYear + " |\n" + printLine(lineLength) + "\n| " + header.title + " |\n" + printLine(lineLength)
+};
+
+export const printAll = (header: Header, valuesThisFY: Earnings[], valuesLastFY: Earnings[], forecastValues: Earnings[], currentQuarter: number) => (valueLength: number) => (yoyLength: number) => {
+
+    let quartersThisFY: string[] = printQuarterValues(valuesThisFY, currentQuarter)(valueLength);
+
+    let quartersYoY: string[] = printYoY(quarterlyCalculation(valuesThisFY), quarterlyCalculation(valuesLastFY), currentQuarter)(yoyLength);
+
+    let cumulativesThisFY: string[] = printCumulativeValues(valuesThisFY, header.fiscalYear, currentQuarter)(valueLength);
+
+    let cumulativesYoY: string[] = printYoY(valuesThisFY, valuesLastFY, currentQuarter)(yoyLength);
+
+    let forecasting: string[] = printForecastValues(forecastValues)(valueLength);
+
+    let printing = (currentQuarter )
+
+}; 
 
 export const printSections = (sectionDifference: Earnings[], sectionYoY: Earnings[], currentQuarter: number) => {
     
@@ -239,17 +293,22 @@ export const printSections = (sectionDifference: Earnings[], sectionYoY: Earning
     })
 }
 
-export const printHead = (header: Header) => 
-`+${"-".repeat(34)}+
-|${header.companyName}|    ${header.fiscalYear} |
-+${"-".repeat(34)}+
-|${header.title}|
-+${"-".repeat(34)}+`;
+// export const printHead = (header: Header) => 
+// `+${"-".repeat(34)}+
+// |${header.companyName}|    ${header.fiscalYear} |
+// +${"-".repeat(34)}+
+// |${header.title}|
+// +${"-".repeat(34)}+`;
 
 export const printBody = (header: Header, quarter: Earnings[], quarterYoY: Earnings[], cumulative: Earnings[], cumulativeYoY: Earnings[], forecasts: Earnings[], currentQuarter: number) => 
 `+${"-".repeat(header.borderLineLengthBody)}+
 ${header.section}${header.yearOnYearPercentage}
 +${"-".repeat(header.borderLineLengthBody)}+
 ${printSections(quarter, quarterYoY, currentQuarter)}
-+${(currentQuarter > 1) ? "=".repeat(header.borderLineLengthBody)+"+\n" + printSections(cumulative, cumulativeYoY, currentQuarter) : "=".repeat(header.borderLineLengthBody)+"+" }${(currentQuarter === 2) ? `\n+${"-".repeat(header.borderLineLengthBody)}+\n` + printSections(forecasts, [], currentQuarter) : (currentQuarter === 1) ? `\n` + printSections(forecasts, [], currentQuarter) : printSections(forecasts, [], currentQuarter) }
++${(currentQuarter > 1) 
+    ? "=".repeat(header.borderLineLengthBody)+"+\n" + printSections(cumulative, cumulativeYoY, currentQuarter) 
+    : "=".repeat(header.borderLineLengthBody)+"+" }${(currentQuarter === 2) 
+    ? `\n+${"-".repeat(header.borderLineLengthBody)}+\n` + printSections(forecasts, [], currentQuarter) : (currentQuarter === 1) 
+    ? `\n` + printSections(forecasts, [], currentQuarter) 
+    : printSections(forecasts, [], currentQuarter) }
 +${"-".repeat(header.borderLineLengthFooter)}+`;
