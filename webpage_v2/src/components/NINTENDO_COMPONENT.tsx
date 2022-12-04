@@ -2,18 +2,18 @@ import { useState } from "react";
 import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { dataSourcesList } from "../data/nintendo/Data_Sources/data_sources_full_list";
-import { consolidatedEarningsList, consolidatedEarningsGraphList } from "../data/nintendo/consolidated_earnings_nintendo";
+import { nintendoConsolidatedEarningsList, nintendoConsolidatedEarningsGraphList} from "../data/generalTables/consolidated_earnings_general";
 import { fyMillionSellerTitlesList, fyMillionSellerTitlesGraphList } from "../data/nintendo/fy_million_seller_titles_nintendo";
 import { globalHardwareSoftwareMobileList, globalHardwareSoftwareMobileGraphList } from "../data/nintendo/global_hardware_software_mobile_nintendo";
 import { keySalesIndicatorsList, keySalesIndicatorsGraphList } from "../data/nintendo/key_sales_indicators_nintendo";
 import { regionalHardwareSoftwareList } from "../data/nintendo/regional_hardware_software_nintendo";
 import { topSellingTitlesList, topSellingTitlesGraphList } from "../data/nintendo/top_selling_titles_nintendo";
 
-import GRAPH_NINTENDO_EARNINGS from "../data/nintendo/Graphs/GRAPH_NINTENDO_EARNINGS";
 import GRAPH_NINTENDO_KPI from "../data/nintendo/Graphs/GRAPH_NINTENDO_KPI";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES from "../data/nintendo/Graphs/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH";
 import GRAPH_NINTENDO_FY_MILLION_SELLER_TITLES from "../data/nintendo/Graphs/GRAPH_NINTENDO_FY_MILLION_SELLER_TITLES";
 import GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE from "../data/nintendo/Graphs/GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE";
+import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
 
 export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
@@ -30,8 +30,8 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
             },
             {
                 name: "Consolidated Operating Results",
-                value: consolidatedEarningsList[index]? consolidatedEarningsList[index] : undefined,
-                graph: consolidatedEarningsGraphList[index]? <GRAPH_NINTENDO_EARNINGS setData={consolidatedEarningsGraphList[index]} /> : undefined
+                value: nintendoConsolidatedEarningsList[index]? nintendoConsolidatedEarningsList[index] : undefined,
+                graph: nintendoConsolidatedEarningsGraphList[index]? <GRAPH_CONSOLIDATED_EARNINGS setData={nintendoConsolidatedEarningsGraphList[index]} /> : undefined
             },
             {
                 name: "Global Hardware/Software units, Mobile/IP related income, Playing cards",

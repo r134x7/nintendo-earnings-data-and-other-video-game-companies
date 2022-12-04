@@ -4,6 +4,9 @@ import { useSelector } from "react-redux";
 import { softwareSalesList } from "../data/squareEnix/software_sales_square_enix";
 import { annualReportList } from "../data/squareEnix/annual_report_square_enix";
 import { dataSourcesList } from "../data/squareEnix/Data_Sources/data_sources_full_list";
+import { squareEnixConsolidatedEarningsList, squareEnixConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
+
+import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
 
 export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
@@ -19,6 +22,11 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
             { 
                 name: "Data Sources",
                 value: dataSourcesList[index]? dataSourcesList[index] : undefined,
+            },
+            {
+                name: "Consolidated Financial Results",
+                value: squareEnixConsolidatedEarningsList[index]? squareEnixConsolidatedEarningsList[index] : undefined,
+                graph: squareEnixConsolidatedEarningsGraphList[index]? <GRAPH_CONSOLIDATED_EARNINGS setData={squareEnixConsolidatedEarningsGraphList[index]} /> : undefined
             },
             {
                 name: "Software Sales",

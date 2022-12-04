@@ -4,8 +4,10 @@ import { useSelector } from "react-redux";
 import { softwareSalesList, softwareSalesGraphList } from "../data/bandaiNamco/software_sales_bandai_namco";
 import { annualReportList } from "../data/bandaiNamco/annual_report_bandai_namco";
 import { dataSourcesList } from "../data/bandaiNamco/Data_Sources/data_sources_full_list";
+import { bandaiNamcoConsolidatedEarningsList, bandaiNamcoConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 
-import GRAPH_SOFTWARE_SALES from "../data/miscellaneousGraphs/GRAPH_SOFTWARE_SALES";
+import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
+import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
 
 export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
@@ -21,6 +23,11 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
             { 
                 name: "Data Sources",
                 value: dataSourcesList[index]? dataSourcesList[index] : undefined,
+            },
+            {
+                name: "Consolidated Operating Results",
+                value: bandaiNamcoConsolidatedEarningsList[index]? bandaiNamcoConsolidatedEarningsList[index] : undefined,
+                graph: bandaiNamcoConsolidatedEarningsGraphList[index]? <GRAPH_CONSOLIDATED_EARNINGS setData={bandaiNamcoConsolidatedEarningsGraphList[index]} /> : undefined
             },
             {
                 name: "Software Sales",
