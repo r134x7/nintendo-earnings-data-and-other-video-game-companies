@@ -116,7 +116,6 @@ function printYoY(valuesThisFY: Earnings[], valuesLastFY: Earnings[], currentQua
     return (yoyPrintLength: number): string[] => {
 
         let yoyCalc = yearOnYearCalculation(valuesThisFY, valuesLastFY);
-        console.log(yoyCalc);
         
         let yoyValues = yoyCalc.filter((elem, index) => {
         return (elem.category === "quarter")
@@ -145,6 +144,10 @@ function printYoY(valuesThisFY: Earnings[], valuesLastFY: Earnings[], currentQua
 
 function printForecastValues(forecastValues: Earnings[]) {
     return (forecastPrintLength: number): string[] => {
+
+        if (!forecastValues[0]) {
+            return ["| See Earnings Release for forecast info. |"]
+        }
 
         let forecastLengthFixed: number = (forecastValues[0].forecastPeriod === undefined) 
             ? 1

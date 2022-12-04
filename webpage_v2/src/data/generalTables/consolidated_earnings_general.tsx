@@ -223,7 +223,7 @@ const forecastMake = (obj: EarningsMake, forecastLabelThisFY: string, forecastLa
     return forecasts
 };
 
-const consolidatedEarningsList = (collection: EarningsJSON[]): string[] => { 
+const consolidatedEarningsList = (collection: EarningsJSON[], headerLength: number): string[] => { 
 
 return collection.map((elem, index, array) => {
 
@@ -251,7 +251,7 @@ return collection.map((elem, index, array) => {
 
     let forecastData: Earnings[][] = elem.data.map(value => forecastMake(value, forecastNameThisFY, forecastNameNextFY));
 
-    const printOne = printHead(header)(35);
+    const printOne = printHead(header)(headerLength);
 
     const opMarginSet = printOpMargin(header, dataThisFY[0], dataThisFY[1], forecastData[0], forecastData[1], currentQuarter);
 
@@ -323,26 +323,26 @@ return collection.map((elem, index, array) => {
     }).filter(elem => elem !== undefined)
 };
 
-export const nintendoConsolidatedEarningsList = consolidatedEarningsList(collectionNintendo);
+export const nintendoConsolidatedEarningsList = consolidatedEarningsList(collectionNintendo, 35);
 
 export const nintendoConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionNintendo);
 
-export const capcomConsolidatedEarningsList = consolidatedEarningsList(collectionCapcom);
+export const capcomConsolidatedEarningsList = consolidatedEarningsList(collectionCapcom, 35);
 
 export const capcomConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionCapcom);
 
-export const bandaiNamcoConsolidatedEarningsList = consolidatedEarningsList(collectionBandaiNamco);
+export const bandaiNamcoConsolidatedEarningsList = consolidatedEarningsList(collectionBandaiNamco, 38);
 
 export const bandaiNamcoConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionBandaiNamco);
 
-export const koeiTecmoConsolidatedEarningsList = consolidatedEarningsList(collectionKoeiTecmo);
+export const koeiTecmoConsolidatedEarningsList = consolidatedEarningsList(collectionKoeiTecmo, 42);
 
 export const koeiTecmoConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionKoeiTecmo);
 
-export const segaConsolidatedEarningsList = consolidatedEarningsList(collectionSegaSammy);
+export const segaConsolidatedEarningsList = consolidatedEarningsList(collectionSegaSammy, 38);
 
 export const segaConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionSegaSammy);
 
-export const squareEnixConsolidatedEarningsList = consolidatedEarningsList(collectionSquareEnix);
+export const squareEnixConsolidatedEarningsList = consolidatedEarningsList(collectionSquareEnix, 42);
 
 export const squareEnixConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionSquareEnix);
