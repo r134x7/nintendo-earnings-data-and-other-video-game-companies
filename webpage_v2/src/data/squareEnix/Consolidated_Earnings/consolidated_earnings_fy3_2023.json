@@ -1,0 +1,28 @@
+{
+    "currentQuarter": 2,
+    "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
+    "fiscalYear": "FY3/2023",
+    "data": [
+        {
+            "name": "Net Sales",
+            "Q1CmlValue": 74876,
+            "Q2CmlValue": 163392,
+            "Q3CmlValue": 163392,
+            "Q4CmlValue": 163392
+        },
+        {
+            "name": "Operating Income",
+            "Q1CmlValue": 14430,
+            "Q2CmlValue": 26044,
+            "Q3CmlValue": 26044,
+            "Q4CmlValue": 26044
+        },
+        {
+            "name": "Net Income",
+            "Q1CmlValue": 18355,
+            "Q2CmlValue": 39473,
+            "Q3CmlValue": 39473,
+            "Q4CmlValue": 39473
+        }
+    ]
+}

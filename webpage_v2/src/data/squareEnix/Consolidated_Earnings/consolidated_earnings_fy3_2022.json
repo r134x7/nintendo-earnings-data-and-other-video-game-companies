@@ -1,0 +1,34 @@
+{
+    "currentQuarter": 4,
+    "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
+    "fiscalYear": "FY3/2022",
+    "data": [
+        {
+            "name": "Net Sales",
+            "Q1CmlValue": 88604,
+            "Q2CmlValue": 168917,
+            "Q3CmlValue": 273627,
+            "Q4CmlValue": 365275,
+            "forecastThisFY": 340000,
+            "forecastRevision1": 340000
+        },
+        {
+            "name": "Operating Income",
+            "Q1CmlValue": 17316,
+            "Q2CmlValue": 29146,
+            "Q3CmlValue": 50138,
+            "Q4CmlValue": 59261,
+            "forecastThisFY": 40000,
+            "forecastRevision1": 50000
+        },
+        {
+            "name": "Net Income",
+            "Q1CmlValue": 12655,
+            "Q2CmlValue": 22991,
+            "Q3CmlValue": 39844,
+            "Q4CmlValue": 51013,
+            "forecastThisFY": 24000,
+            "forecastRevision1": 35000
+        }
+    ]
+}

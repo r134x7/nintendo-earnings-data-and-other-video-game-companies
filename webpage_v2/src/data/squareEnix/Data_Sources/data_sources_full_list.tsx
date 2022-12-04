@@ -6,9 +6,17 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/23q1earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/23q1earnings.pdf
+                    </Anchor>
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/23q1slides.pdf" target="_blank" >
                         https://www.hd.square-enix.com/eng/ir/library/pdf/23q1slides.pdf
+                    </Anchor>
+                        2nd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/23q2earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/23q2earnings.pdf
                     </Anchor>
                         2nd Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/23q2slides.pdf" target="_blank" >
@@ -38,17 +46,33 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/22q1earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/22q1earnings.pdf
+                    </Anchor>
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/22q1slides.pdf" target="_blank" >
                         https://www.hd.square-enix.com/eng/ir/library/pdf/22q1slides.pdf
+                    </Anchor>
+                        2nd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/22q2earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/22q2earnings.pdf
                     </Anchor>
                         2nd Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/22q2slides.pdf" target="_blank" >
                         https://www.hd.square-enix.com/eng/ir/library/pdf/22q2slides.pdf
                     </Anchor>
+                        3rd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/22q3earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/22q3earnings.pdf
+                    </Anchor>
                         3rd Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/22q3slides.pdf" target="_blank" >
                         https://www.hd.square-enix.com/eng/ir/library/pdf/22q3slides.pdf
+                    </Anchor>
+                        4th Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/22q4earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/22q4earnings.pdf
                     </Anchor>
                         4th Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/22q4slides.pdf" target="_blank" >
@@ -70,17 +94,33 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/21q1earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/21q1earnings.pdf
+                    </Anchor>
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/21q1slides.pdf" target="_blank" >
                         https://www.hd.square-enix.com/eng/ir/library/pdf/21q1slides.pdf
+                    </Anchor>
+                        2nd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/21q2earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/21q2earnings.pdf
                     </Anchor>
                         2nd Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/21q2slides.pdf" target="_blank" >
                         https://www.hd.square-enix.com/eng/ir/library/pdf/21q2slides.pdf
                     </Anchor>
+                        3rd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/21q3earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/21q3earnings.pdf
+                    </Anchor>
                         3rd Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/21q3slides.pdf" target="_blank" >
                         https://www.hd.square-enix.com/eng/ir/library/pdf/21q3slides.pdf
+                    </Anchor>
+                        4th Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/21q4earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/21q4earnings.pdf
                     </Anchor>
                         4th Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/21q4slides.pdf" target="_blank" >
@@ -106,17 +146,33 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/20q1earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/20q1earnings.pdf
+                    </Anchor>
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/20q1slides.pdf" target="_blank" >
                         https://www.hd.square-enix.com/eng/ir/library/pdf/20q1slides.pdf
+                    </Anchor>
+                        2nd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/20q2earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/20q2earnings.pdf
                     </Anchor>
                         2nd Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/20q2slides.pdf" target="_blank" >
                         https://www.hd.square-enix.com/eng/ir/library/pdf/20q2slides.pdf
                     </Anchor>
+                        3rd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/20q3earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/20q3earnings.pdf
+                    </Anchor>
                         3rd Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/20q3slides.pdf" target="_blank" >
                         https://www.hd.square-enix.com/eng/ir/library/pdf/20q3slides.pdf
+                    </Anchor>
+                        4th Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/20q4earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/20q4earnings.pdf
                     </Anchor>
                         4th Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/20q4slides.pdf" target="_blank" >
@@ -138,17 +194,33 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text size={"md"} style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/19q1earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/19q1earnings.pdf
+                    </Anchor>
                         1st Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/19q1slides.pdf" target="_blank" >
                         https://www.hd.square-enix.com/eng/ir/library/pdf/19q1slides.pdf
+                    </Anchor>
+                        2nd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/19q2earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/19q2earnings.pdf
                     </Anchor>
                         2nd Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/19q2slides.pdf" target="_blank" >
                         https://www.hd.square-enix.com/eng/ir/library/pdf/19q2slides.pdf
                     </Anchor>
+                        3rd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/19q3earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/19q3earnings.pdf
+                    </Anchor>
                         3rd Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/19q3slides.pdf" target="_blank" >
                         https://www.hd.square-enix.com/eng/ir/library/pdf/19q3slides.pdf
+                    </Anchor>
+                        4th Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/news/pdf/19q4earnings.pdf" target="_blank" >
+                        https://www.hd.square-enix.com/eng/news/pdf/19q4earnings.pdf
                     </Anchor>
                         4th Quarter Financial Results Presentation: 
                     <Anchor mb="sm" href="https://www.hd.square-enix.com/eng/ir/library/pdf/19q4slides.pdf" target="_blank" >

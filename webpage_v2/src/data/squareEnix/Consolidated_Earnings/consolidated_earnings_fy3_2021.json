@@ -1,0 +1,34 @@
+{
+    "currentQuarter": 4,
+    "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
+    "fiscalYear": "FY3/2021",
+    "data": [
+        {
+            "name": "Net Sales",
+            "Q1CmlValue": 87054,
+            "Q2CmlValue": 172731,
+            "Q3CmlValue": 253643,
+            "Q4CmlValue": 332532,
+            "forecastThisFY": 290000,
+            "forecastNextFY": 340000
+        },
+        {
+            "name": "Operating Income",
+            "Q1CmlValue": 24549,
+            "Q2CmlValue": 31655,
+            "Q3CmlValue": 41022,
+            "Q4CmlValue": 47226,
+            "forecastThisFY": 40000,
+            "forecastNextFY": 40000
+        },
+        {
+            "name": "Net Income",
+            "Q1CmlValue": 14372,
+            "Q2CmlValue": 16047,
+            "Q3CmlValue": 18371,
+            "Q4CmlValue": 26942,
+            "forecastThisFY": 24000,
+            "forecastNextFY": 24000
+        }
+    ]
+}

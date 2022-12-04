@@ -135,7 +135,7 @@ export const consolidatedEarningsList: string[] = collection.map((elem, index, a
     let header: Header = {
         companyName: elem.companyName,
         fiscalYear: elem.fiscalYear,
-        title: (elem.companyName === "CAPCOM Co., Ltd.") ? "Consolidated Financial Results" : "Consolidated Operating Results",
+        title: (elem.companyName === "CAPCOM Co., Ltd." || elem.companyName === "SQUARE ENIX HOLDINGS CO., LTD.") ? "Consolidated Financial Results" : "Consolidated Operating Results",
     };
 //. FY3/2022 Forecast .
     let nextFY: string = (Number(elem.fiscalYear.slice(-4)) + 1).toString();
