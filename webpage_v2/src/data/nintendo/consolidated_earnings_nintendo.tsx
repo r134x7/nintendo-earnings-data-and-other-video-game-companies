@@ -135,7 +135,7 @@ export const consolidatedEarningsList: string[] = collection.map((elem, index, a
     let header: Header = {
         companyName: elem.companyName,
         fiscalYear: elem.fiscalYear,
-        title: "Consolidated Operating Results",
+        title: (elem.companyName === "CAPCOM Co., Ltd.") ? "Consolidated Financial Results" : "Consolidated Operating Results",
     };
 //. FY3/2022 Forecast .
     let nextFY: string = (Number(elem.fiscalYear.slice(-4)) + 1).toString();
@@ -157,8 +157,8 @@ export const consolidatedEarningsList: string[] = collection.map((elem, index, a
     const printEach = Array.from({length: dataThisFY.length + 1}, (v, i) => {
         return (i === 2) 
                 ? opMarginSet(8)(32)(13)
-                :(i === dataThisFY.length)
-                ? printAll(header, dataThisFY[2], dataLastFY[2], forecastData[2], currentQuarter)(12)(10)(38)(13)
+                :(i > 2)
+                ? printAll(header, dataThisFY[i-1], dataLastFY[i-1], forecastData[i-1], currentQuarter)(12)(10)(38)(13)
                 : printAll(header, dataThisFY[i], dataLastFY[i], forecastData[i], currentQuarter)(12)(10)(38)(13);
     });
 

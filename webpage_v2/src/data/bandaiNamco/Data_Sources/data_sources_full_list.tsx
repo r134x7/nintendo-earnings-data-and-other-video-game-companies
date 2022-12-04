@@ -6,9 +6,17 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20220805_Result.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20220805_Result.pdf
+                    </Anchor>
                         1st Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20220805_Complement_2.pdf" target="_blank" >
                         https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20220805_Complement_2.pdf
+                    </Anchor>
+                        2nd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20221110_Result.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20221110_Result.pdf
                     </Anchor>
                         2nd Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/2022E5B9B4E5BAA62Q_E8A39CE8B6B3E8B387E69699(E88BB1.pdf" target="_blank" >
@@ -34,17 +42,33 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210805_Result1.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210805_Result1.pdf
+                    </Anchor>
                         1st Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210805_Report.pdf" target="_blank" >
                         https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210805_Report.pdf
+                    </Anchor>
+                        2nd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20211109_Result1.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20211109_Result1.pdf
                     </Anchor>
                         2nd Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20211109_Report.pdf" target="_blank" >
                         https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20211109_Report.pdf
                     </Anchor>
+                        3rd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20220208_Result1.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20220208_Result1.pdf
+                    </Anchor>
                         3rd Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20220208_Report.pdf" target="_blank" >
                         https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20220208_Report.pdf
+                    </Anchor>
+                        4th Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20220511_Result.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20220511_Result.pdf
                     </Anchor>
                         4th Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/20220511_en_Report1.pdf" target="_blank" >
@@ -62,17 +86,33 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20200807_Result1.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20200807_Result1.pdf
+                    </Anchor>
                         1st Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20200807_Report.pdf" target="_blank" >
                         https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20200807_Report.pdf
+                    </Anchor>
+                        2nd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20201106_Result1.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20201106_Result1.pdf
                     </Anchor>
                         2nd Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20201106_Report.pdf" target="_blank" >
                         https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20201106_Report.pdf
                     </Anchor>
+                        3rd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210208_Result1.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210208_Result1.pdf
+                    </Anchor>
                         3rd Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210208_Report.pdf" target="_blank" >
                         https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210208_Report.pdf
+                    </Anchor>
+                        4th Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210628_Result.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210628_Result.pdf
                     </Anchor>
                         4th Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20210511_Report.pdf" target="_blank" >
@@ -90,17 +130,33 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20190808_Result1.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20190808_Result1.pdf
+                    </Anchor>
                         1st Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20190808_Report1.pdf" target="_blank" >
                         https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20190808_Report1.pdf
+                    </Anchor>
+                        2nd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20191107_Result1.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20191107_Result1.pdf
                     </Anchor>
                         2nd Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20191107_Report.pdf" target="_blank" >
                         https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20191107_Report.pdf
                     </Anchor>
+                        3rd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20200209_Result.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20200209_Result.pdf
+                    </Anchor>
                         3rd Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20200206_Report1.pdf" target="_blank" >
                         https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20200206_Report1.pdf
+                    </Anchor>
+                        4th Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20200520_Result.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20200520_Result.pdf
                     </Anchor>
                         4th Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20200520_Report.pdf" target="_blank" >
@@ -118,17 +174,33 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20180807_Result.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20180807_Result.pdf
+                    </Anchor>
                         1st Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20180807_Report.pdf" target="_blank" >
                         https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20180807_Report.pdf
+                    </Anchor>
+                        2nd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20181107_2_Result.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20181107_2_Result.pdf
                     </Anchor>
                         2nd Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20181107_Report.pdf" target="_blank" >
                         https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20181107_Report.pdf
                     </Anchor>
+                        3rd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20190206_Result_2.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20190206_Result_2.pdf
+                    </Anchor>
                         3rd Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20190206_Report_2.pdf" target="_blank" >
                         https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20190206_Report_2.pdf
+                    </Anchor>
+                        4th Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20190509_Result_full.pdf" target="_blank" >
+                        https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20190509_Result_full.pdf
                     </Anchor>
                         4th Quarter Financial Hightlights: 
                     <Anchor mb="sm" href="https://www.bandainamco.co.jp/files/ir/financialstatements/pdf/en_20190509_Report.pdf" target="_blank" >

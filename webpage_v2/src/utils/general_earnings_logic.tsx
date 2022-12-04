@@ -11,7 +11,7 @@ export type Earnings = {
 export type Header = {
     companyName: string,
     fiscalYear: string,
-    title: "Consolidated Operating Results",
+    title: string,
 };
 
 export function quarterlyCalculation(quarters: Earnings[]): Earnings[] {

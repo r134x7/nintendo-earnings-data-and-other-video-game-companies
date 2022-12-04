@@ -1,0 +1,40 @@
+{
+    "currentQuarter": 4,
+    "companyName": "Bandai Namco Holdings Inc.",
+    "fiscalYear": "FY3/2022",
+    "data": [
+        {
+            "name": "Net Sales",
+            "Q1CmlValue": 178049,
+            "Q2CmlValue": 393646,
+            "Q3CmlValue": 628311,
+            "Q4CmlValue": 889270,
+            "forecastThisFY": 750000,
+            "forecastRevision1": 795000,
+            "forecastRevision2": 810000,
+            "forecastNextFY": 880000
+        },
+        {
+            "name": "Operating Income",
+            "Q1CmlValue": 27021,
+            "Q2CmlValue": 61751,
+            "Q3CmlValue": 92153,
+            "Q4CmlValue": 125496,
+            "forecastThisFY": 75000,
+            "forecastRevision1": 90000,
+            "forecastRevision2": 96000,
+            "forecastNextFY": 100000
+        },
+        {
+            "name": "Net Income",
+            "Q1CmlValue": 20917,
+            "Q2CmlValue": 39527,
+            "Q3CmlValue": 61703,
+            "Q4CmlValue": 92752,
+            "forecastThisFY": 52000,
+            "forecastRevision1": 58000,
+            "forecastRevision2": 67000,
+            "forecastNextFY": 70000
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "currentQuarter": 4,
+    "companyName": "Bandai Namco Holdings Inc.",
+    "fiscalYear": "FY3/2020",
+    "data": [
+        {
+            "name": "Net Sales",
+            "Q1CmlValue": 159251,
+            "Q2CmlValue": 349327,
+            "Q3CmlValue": 532576,
+            "Q4CmlValue": 723989,
+            "forecastThisFY": 720000,
+            "forecastRevision1": 720000
+        },
+        {
+            "name": "Operating Income",
+            "Q1CmlValue": 22830,
+            "Q2CmlValue": 47941,
+            "Q3CmlValue": 72096,
+            "Q4CmlValue": 78775,
+            "forecastThisFY": 70000,
+            "forecastRevision1": 75000
+        },
+        {
+            "name": "Net Income",
+            "Q1CmlValue": 16924,
+            "Q2CmlValue": 34607,
+            "Q3CmlValue": 52904,
+            "Q4CmlValue": 57665,
+            "forecastThisFY": 50000,
+            "forecastRevision1": 54000
+        }
+    ]
+}

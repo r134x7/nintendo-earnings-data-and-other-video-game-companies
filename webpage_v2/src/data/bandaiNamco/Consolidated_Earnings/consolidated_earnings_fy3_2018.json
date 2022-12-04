@@ -1,0 +1,28 @@
+{
+    "currentQuarter": 4,
+    "companyName": "Bandai Namco Holdings Inc.",
+    "fiscalYear": "FY3/2018",
+    "data": [
+        {
+            "name": "Net Sales",
+            "Q1CmlValue": 144084,
+            "Q2CmlValue": 308846,
+            "Q3CmlValue": 483180,
+            "Q4CmlValue": 678312
+        },
+        {
+            "name": "Operating Income",
+            "Q1CmlValue": 15611,
+            "Q2CmlValue": 34941,
+            "Q3CmlValue": 53462,
+            "Q4CmlValue": 75024
+        },
+        {
+            "name": "Net Income",
+            "Q1CmlValue": 13498,
+            "Q2CmlValue": 28196,
+            "Q3CmlValue": 40878,
+            "Q4CmlValue": 54109
+        }
+    ]
+}
