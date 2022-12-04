@@ -1,0 +1,28 @@
+{
+    "currentQuarter": 4,
+    "companyName": "KOEI TECMO HOLDINGS CO., LTD.",
+    "fiscalYear": "FY3/2018",
+    "data": [
+        {
+            "name": "Net Sales",
+            "Q1CmlValue": 6516,
+            "Q2CmlValue": 14916,
+            "Q3CmlValue": 24030,
+            "Q4CmlValue": 38926
+        },
+        {
+            "name": "Operating Income",
+            "Q1CmlValue": 984,
+            "Q2CmlValue": 2850,
+            "Q3CmlValue": 5688,
+            "Q4CmlValue": 11711
+        },
+        {
+            "name": "Net Income",
+            "Q1CmlValue": 3058,
+            "Q2CmlValue": 5034,
+            "Q3CmlValue": 8261,
+            "Q4CmlValue": 13017
+        }
+    ]
+}
