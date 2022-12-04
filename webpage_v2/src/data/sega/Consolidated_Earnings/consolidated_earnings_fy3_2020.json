@@ -1,0 +1,34 @@
+{
+    "currentQuarter": 4,
+    "companyName": "SEGA SAMMY HOLDINGS INC.",
+    "fiscalYear": "FY3/2020",
+    "data": [
+        {
+            "name": "Net Sales",
+            "Q1CmlValue": 72734,
+            "Q2CmlValue": 165535,
+            "Q3CmlValue": 280808,
+            "Q4CmlValue": 366594,
+            "forecastThisFY": 390000,
+            "forecastRevision1": 367000 
+        },
+        {
+            "name": "Operating Income",
+            "Q1CmlValue": 3409,
+            "Q2CmlValue": 14601,
+            "Q3CmlValue": 28066,
+            "Q4CmlValue": 27643,
+            "forecastThisFY": 27000,
+            "forecastRevision1": 27000
+        },
+        {
+            "name": "Net Income",
+            "Q1CmlValue": 1718,
+            "Q2CmlValue": 9870,
+            "Q3CmlValue": 22989,
+            "Q4CmlValue": 13775,
+            "forecastThisFY": 15000,
+            "forecastRevision1": 21000
+        }
+    ]
+}

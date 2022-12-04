@@ -6,6 +6,10 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20220804_tanshin_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20220804_tanshin_e.pdf
+                    </Anchor>
                         1st Quarter Data Appendix: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20220804_appendix_e_final.pdf" target="_blank" >
                         https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20220804_appendix_e_final.pdf
@@ -13,6 +17,10 @@ export const dataSourcesList = [
                         1st Quarter Results Presentation: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20220804_presentation_e_final.pdf" target="_blank" >
                         https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20220804_presentation_e_final.pdf
+                    </Anchor>
+                        2nd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20221031_tanshin_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20221031_tanshin_e.pdf
                     </Anchor>
                         2nd Quarter Data Appendix: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2023/20221031_appendix_e_final.pdf" target="_blank" >
@@ -30,17 +38,33 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20210806_tanshin_e_final.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20210806_tanshin_e_final.pdf
+                    </Anchor>
                         1st Quarter Data Appendix: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20210806_appendix_e_final.pdf" target="_blank" >
                         https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20210806_appendix_e_final.pdf
+                    </Anchor>
+                        2nd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20211108_tanshin_e_final.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20211108_tanshin_e_final.pdf
                     </Anchor>
                         2nd Quarter Data Appendix: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20211108_appendix_e_final.pdf" target="_blank" >
                         https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20211108_appendix_e_final.pdf
                     </Anchor>
+                        3rd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20220210_tanshin_e_final.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20220210_tanshin_e_final.pdf
+                    </Anchor>
                         3rd Quarter Data Appendix: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20220210_appendix_e_final_.pdf" target="_blank" >
                         https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20220210_appendix_e_final_.pdf
+                    </Anchor>
+                        4th Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20220513_tanshin_e_final.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20220513_tanshin_e_final.pdf
                     </Anchor>
                         4th Quarter Data Appendix: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2022/20220513_appendix_en_final_.pdf" target="_blank" >
@@ -62,17 +86,33 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_1q_tanshin_20200805_final_e_.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_1q_tanshin_20200805_final_e_.pdf
+                    </Anchor>
                         1st Quarter Data Appendix: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_1q_hosoku_20200805_final_e_.pdf" target="_blank" >
                         https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_1q_hosoku_20200805_final_e_.pdf
+                    </Anchor>
+                        2nd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_2q_tanshin_20202206_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_2q_tanshin_20202206_e.pdf
                     </Anchor>
                         2nd Quarter Data Appendix: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_2q_hosoku_20201106_e.pdf" target="_blank" >
                         https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_2q_hosoku_20201106_e.pdf
                     </Anchor>
+                        3rd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_3q_tanshin_20210212_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_3q_tanshin_20210212_e.pdf
+                    </Anchor>
                         3rd Quarter Data Appendix: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_3q_hosoku_20210212_e_.pdf" target="_blank" >
                         https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_3q_hosoku_20210212_e_.pdf
+                    </Anchor>
+                        4th Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_4q_tanshin_20210513_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_4q_tanshin_20210513_e.pdf
                     </Anchor>
                         4th Quarter Data Appendix: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_4q_hosoku_20210513_e.pdf" target="_blank" >
@@ -94,6 +134,22 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2020/202003_1q_tanshin_20190730_final_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2020/202003_1q_tanshin_20190730_final_e.pdf
+                    </Anchor>
+                        2nd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2020/202003_2q_tanshin_20191031_final_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2020/202003_2q_tanshin_20191031_final_e.pdf
+                    </Anchor>
+                        3rd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2020/202003_3q_tanshin_20200205_final_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2020/202003_3q_tanshin_20200205_final_e.pdf
+                    </Anchor>
+                        4th Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2020/202003_4q_tanshin_20200513_final_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2020/202003_4q_tanshin_20200513_final_e.pdf
+                    </Anchor>
                         4th Quarter Data Appendix for FY3/2021 contains revised title/unit sales numbers for FY3/2020: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_4q_hosoku_20210513_e.pdf" target="_blank" >
                         https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2021/202103_4q_hosoku_20210513_e.pdf
@@ -110,6 +166,22 @@ export const dataSourcesList = [
         <Card shadow="sm" p="sm" radius="md" withBorder  style={{margin: "1em"}}>
             <Text style={{overflowWrap: "anywhere"}}>
                 <Stack align="center">
+                        1st Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2019/201903_1q_tanshin_20180802_final_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2019/201903_1q_tanshin_20180802_final_e.pdf
+                    </Anchor>
+                        2nd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2019/201903_2q_tanshin_20181101_final_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2019/201903_2q_tanshin_20181101_final_e.pdf
+                    </Anchor>
+                        3rd Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2019/201903_3q_tanshin_20190205_final_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2019/201903_3q_tanshin_20190205_final_e.pdf
+                    </Anchor>
+                        4th Quarter Earnings Release: 
+                    <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2019/201903_4q_tanshin_20190426_final_e.pdf" target="_blank" >
+                        https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2019/201903_4q_tanshin_20190426_final_e.pdf
+                    </Anchor>
                         Sega Sammy Integrated Report 2019: 
                     <Anchor mb="sm" href="https://www.segasammy.co.jp/english/ir/library/pdf/printing_annual/2019/al2019_all_e__.pdf" target="_blank" >
                         https://www.segasammy.co.jp/english/ir/library/pdf/printing_annual/2019/al2019_all_e__.pdf
