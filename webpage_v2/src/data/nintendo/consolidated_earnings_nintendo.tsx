@@ -133,7 +133,7 @@ export const consolidatedEarningsList: string[] = collection.map((elem, index, a
     let currentQuarter: number = elem.currentQuarter;
 
     let header: Header = {
-        companyName: "Nintendo Co., Ltd.",
+        companyName: elem.companyName,
         fiscalYear: elem.fiscalYear,
         title: "Consolidated Operating Results",
     };

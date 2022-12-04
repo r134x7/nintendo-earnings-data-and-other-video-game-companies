@@ -1,0 +1,34 @@
+{
+    "currentQuarter": 4,
+    "companyName": "CAPCOM Co., Ltd.",
+    "fiscalYear": "FY3/2018",
+    "data": [
+        {
+            "name": "Net Sales",
+            "Q1CmlValue": 11746,
+            "Q2CmlValue": 33729,
+            "Q3CmlValue": 47740,
+            "Q4CmlValue": 94515,
+            "forecastThisFY": 93000,
+            "forecastNextFY": 96000 
+        },
+        {
+            "name": "Operating Income",
+            "Q1CmlValue": 784,
+            "Q2CmlValue": 5001,
+            "Q3CmlValue": 7009,
+            "Q4CmlValue": 16037,
+            "forecastThisFY": 14000,
+            "forecastNextFY": 17000
+        },
+        {
+            "name": "Net Income",
+            "Q1CmlValue": 521,
+            "Q2CmlValue": 3481,
+            "Q3CmlValue": 4439,
+            "Q4CmlValue": 10937,
+            "forecastThisFY": 9500,
+            "forecastNextFY": 12000
+        }
+    ]
+}
