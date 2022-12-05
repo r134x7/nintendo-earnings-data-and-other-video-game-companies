@@ -12,6 +12,7 @@ export type Titles = {
     rank?: number,
     label?: " New! " | " Recurring ",
     miscellaneous?: string,
+    yearsCount?: number,
 }
 
 export type Header = {
