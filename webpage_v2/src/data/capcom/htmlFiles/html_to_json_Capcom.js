@@ -16,11 +16,7 @@ const testData = fs.readFileSync("fourthQuarter.html", "utf-8")
 
 // console.log(testData);
 
-let testData1 = testData.split(/<tr>|<\/tr>/);
-
-if (testData1.includes("<td>")) {
-    x++
-}
+let testData1 = testData.match(/(?<=td>)(.+?)(?=<\/td>)/g); // regex taken from: https://www.octoparse.com/blog/using-regular-expression-to-match-html#regex3
 
 console.log(x);
 
