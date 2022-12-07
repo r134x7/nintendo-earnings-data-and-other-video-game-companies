@@ -10,14 +10,27 @@ import fs from "fs";
 // run file using node command not npm
 // starting with FY3/2021
 
-let x = 0;
-
 const testData = fs.readFileSync("fourthQuarter.html", "utf-8")
-
-// console.log(testData);
 
 let testData1 = testData.match(/(?<=td>)(.+?)(?=<\/td>)/g); // regex taken from: https://www.octoparse.com/blog/using-regular-expression-to-match-html#regex3
 
-console.log(x);
-
 console.log(testData1);
+
+let testData2 = {
+    date: testData1[0],
+    title: testData1[1],
+    platforms: testData1[2],
+    value: testData1[3],
+};
+
+let testArray = Array.from({length:(testData1.length/4)}, (v,i) => {
+
+    return {
+        title: testData1[(i*4)+1],
+        releaseDate: testData1[i*4],
+        platforms: testData1[(i*4)+2],
+        value: Number(testData1[(i*4)+3]),
+    }
+})
+
+console.log(JSON.stringify(testArray));
