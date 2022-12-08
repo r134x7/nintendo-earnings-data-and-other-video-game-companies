@@ -14,6 +14,7 @@ import platinumTitles2022 from "./Platinum_Titles/platinum_titles_fy3_2022.json"
 import platinumTitles2021 from "./Platinum_Titles/platinum_titles_fy3_2021.json";
 import platinumTitles2020 from "./Platinum_Titles/platinum_titles_fy3_2020.json";
 import platinumTitles2019 from "./Platinum_Titles/platinum_titles_fy3_2019.json";
+import platinumTitles2018 from "./Platinum_Titles/platinum_titles_fy3_2018.json";
 
 const collection = [
     platinumTitles2023,
@@ -21,6 +22,7 @@ const collection = [
     platinumTitles2021,
     platinumTitles2020,
     platinumTitles2019,
+    platinumTitles2018,
 ] as const;
 
 type getTitles = {
