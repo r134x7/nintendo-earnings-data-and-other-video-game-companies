@@ -1,8 +1,8 @@
 {
     "currentQuarter": 2,
-    "fiscalYearCml":  "| FY3/23 Cumulative  |",
-    "fiscalYearYoY": "| FY3/23 Cml. YoY%   |",
-    "summaryHeader": "| FY3/23 Cml. |   Units |    %    |",
+    "fiscalYearCml":  "| FY3/2023 Cumulative|",
+    "fiscalYearYoY": "| FY3/2023 Cml. YoY% |",
+    "summaryHeader": "|FY3/2023 Cml.|   Units |    %    |",
     "titles": [
         {
             "title": " Monster Hunter: World ",
