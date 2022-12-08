@@ -12,11 +12,13 @@ import {
 import platinumTitles2023 from "./Platinum_Titles/platinum_titles_fy3_2023.json";
 import platinumTitles2022 from "./Platinum_Titles/platinum_titles_fy3_2022.json";
 import platinumTitles2021 from "./Platinum_Titles/platinum_titles_fy3_2021.json";
+import platinumTitles2020 from "./Platinum_Titles/platinum_titles_fy3_2020.json";
 
 const collection = [
     platinumTitles2023,
     platinumTitles2022,
     platinumTitles2021,
+    platinumTitles2020,
 ] as const;
 
 type getTitles = {
