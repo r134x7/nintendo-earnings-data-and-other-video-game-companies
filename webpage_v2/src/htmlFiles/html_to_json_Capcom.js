@@ -8,7 +8,7 @@ import fs from "fs";
 // run file using node command not npm
 // starting with FY3/2021
 
-let currentQuarter = 4;
+let currentQuarter = 2;
 
 
 const readQuarter = (currentQuarterLocal) => {
