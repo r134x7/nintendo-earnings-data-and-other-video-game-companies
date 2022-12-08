@@ -69,7 +69,13 @@ let extractNQ = extractData(readNewestQuarter);
 let getCurrentData = getJSON("platinum_titles_fy3_2021_test.json", currentQuarter);
 let extractCD = (!getCurrentData) ? undefined : extractData(getCurrentData);
 
-let makeNewArray = makeArray(extractNQ, extractCD, currentQuarter);
+let newArray = makeArray(extractNQ, extractCD, currentQuarter);
+
+let newArrayStringify = JSON.stringify(newArray);
+
+fs.writeFile('platinum_titles_fy3_2021_test.json', newArrayStringify, (err) =>
+  err ? console.error(err) : console.log('Capcom is back!')
+);
 
 
 
@@ -93,43 +99,43 @@ let makeNewArray = makeArray(extractNQ, extractCD, currentQuarter);
 // });
 
 // need to read from the JSON file
-const jsonRead = fs.readFileSync("platinum_titles_fy3_2021_test.json", "utf-8")
+// const jsonRead = fs.readFileSync("platinum_titles_fy3_2021_test.json", "utf-8")
 
-const jsonParse = JSON.parse(jsonRead)
+// const jsonParse = JSON.parse(jsonRead)
 
-const dataReadSecondQuarter = fs.readFileSync("secondQuarter.html", "utf-8")
+// const dataReadSecondQuarter = fs.readFileSync("secondQuarter.html", "utf-8")
 
-let dataMatchSecondQuarter = dataReadSecondQuarter.match(/(?<=td>)(.+?)(?=<\/td>)/g); // regex taken from: https://www.octoparse.com/blog/using-regular-expression-to-match-html#regex3
+// let dataMatchSecondQuarter = dataReadSecondQuarter.match(/(?<=td>)(.+?)(?=<\/td>)/g); // regex taken from: https://www.octoparse.com/blog/using-regular-expression-to-match-html#regex3
 
-let arraySecondQuarter = Array.from({length:(dataMatchSecondQuarter.length/4)}, (v,i) => {
-    // if current quarter = 2
-    let searchTitle = jsonParse.filter((elem,index,array) => (elem.title === dataMatchSecondQuarter[(i*4)+1]) && (elem.releaseDate === dataMatchSecondQuarter[i*4])); // searching by title name and release date should only match one title
+// let arraySecondQuarter = Array.from({length:(dataMatchSecondQuarter.length/4)}, (v,i) => {
+//     // if current quarter = 2
+//     let searchTitle = jsonParse.filter((elem,index,array) => (elem.title === dataMatchSecondQuarter[(i*4)+1]) && (elem.releaseDate === dataMatchSecondQuarter[i*4])); // searching by title name and release date should only match one title
 
-    return (!searchTitle[0]) 
-    ? {
-        title: dataMatchSecondQuarter[(i*4)+1],
-        releaseDate: dataMatchSecondQuarter[i*4],
-        platforms: dataMatchSecondQuarter[(i*4)+2],
-        Q1CmlValue: 0,
-        Q2CmlValue: Number(dataMatchSecondQuarter[(i*4)+3]),
-        Q3CmlValue: Number(dataMatchSecondQuarter[(i*4)+3]),
-        Q4CmlValue: Number(dataMatchSecondQuarter[(i*4)+3]),
-    }
-    : {
-        title: dataMatchSecondQuarter[(i*4)+1],
-        releaseDate: dataMatchSecondQuarter[i*4],
-        platforms: dataMatchSecondQuarter[(i*4)+2],
-        Q1CmlValue: searchTitle[0].Q1CmlValue,
-        Q2CmlValue: Number(dataMatchSecondQuarter[(i*4)+3]),
-        Q3CmlValue: Number(dataMatchSecondQuarter[(i*4)+3]),
-        Q4CmlValue: Number(dataMatchSecondQuarter[(i*4)+3]),
-    }
+//     return (!searchTitle[0]) 
+//     ? {
+//         title: dataMatchSecondQuarter[(i*4)+1],
+//         releaseDate: dataMatchSecondQuarter[i*4],
+//         platforms: dataMatchSecondQuarter[(i*4)+2],
+//         Q1CmlValue: 0,
+//         Q2CmlValue: Number(dataMatchSecondQuarter[(i*4)+3]),
+//         Q3CmlValue: Number(dataMatchSecondQuarter[(i*4)+3]),
+//         Q4CmlValue: Number(dataMatchSecondQuarter[(i*4)+3]),
+//     }
+//     : {
+//         title: dataMatchSecondQuarter[(i*4)+1],
+//         releaseDate: dataMatchSecondQuarter[i*4],
+//         platforms: dataMatchSecondQuarter[(i*4)+2],
+//         Q1CmlValue: searchTitle[0].Q1CmlValue,
+//         Q2CmlValue: Number(dataMatchSecondQuarter[(i*4)+3]),
+//         Q3CmlValue: Number(dataMatchSecondQuarter[(i*4)+3]),
+//         Q4CmlValue: Number(dataMatchSecondQuarter[(i*4)+3]),
+//     }
 
-});
+// });
 
 
-// console.log(JSON.stringify(testArray));
+// // console.log(JSON.stringify(testArray));
 
-fs.writeFile('platinum_titles_fy3_2021_test.json', JSON.stringify(arraySecondQuarter), (err) =>
-  err ? console.error(err) : console.log('Success!')
-);
+// fs.writeFile('platinum_titles_fy3_2021_test.json', JSON.stringify(arraySecondQuarter), (err) =>
+//   err ? console.error(err) : console.log('Success!')
+// );
