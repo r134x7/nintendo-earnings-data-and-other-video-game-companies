@@ -89,11 +89,11 @@ const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, prev2FYs:
                         releaseDate: elem.releaseDate,
                         platforms: elem.platforms,
                         period: " Last FY Total ",
-                        value: (searchPrevFY[0] !== undefined) 
-                                ? searchPrevFY[0].Q4CmlValue 
-                                : (elem.valueLastFY === undefined)
-                                ? 0
-                                : elem.valueLastFY,
+                        value: (elem.valueLastFY !== undefined) 
+                                ? elem.valueLastFY 
+                                : (searchPrevFY[0] !== undefined)
+                                    ? searchPrevFY[0].Q4CmlValue
+                                    : 0,
                         miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
                     },
                     {
@@ -101,11 +101,11 @@ const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, prev2FYs:
                         releaseDate: elem.releaseDate,
                         platforms: elem.platforms,
                         period: " Total at Two FYs prior ", 
-                        value: (searchPrev2FYs[0] !== undefined) 
-                                ? searchPrev2FYs[0].Q4CmlValue 
-                                : (elem.valueLastTwoFYs === undefined)
-                                ? 0
-                                : elem.valueLastTwoFYs,
+                        value: (elem.valueLastTwoFYs !== undefined) 
+                                ? elem.valueLastTwoFYs 
+                                : (searchPrev2FYs[0] !== undefined)
+                                    ? searchPrev2FYs[0].Q4CmlValue
+                                    : 0,
                         miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
                     },
                 ]
