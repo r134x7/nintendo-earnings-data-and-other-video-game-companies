@@ -5,9 +5,9 @@
     "summaryHeader": "|FY3/2022 Cml.|   Units |    %    |",
     "titles": [
         {
-            "title": " Monster Hunter: World ",
-            "releaseDate": " Jan 2018 ",
-            "platforms": " PS4, Xbox One, PC, DL ",
+            "title": "Monster Hunter: World",
+            "releaseDate": "Jan 2018",
+            "platforms": "PS4, Xbox One, PC, DL",
             "Q1CmlValue": 17.3,
             "Q2CmlValue": 17.5,
             "Q3CmlValue": 17.8,
@@ -17,9 +17,9 @@
             "miscellaneous": "|(* Excludes shipments of \n|Monster Hunter World: \n|Iceborne Master Edition)"
         },
         {
-            "title": " RESIDENT EVIL 7 biohazard ",
-            "releaseDate": " Jan 2017 ",
-            "platforms": " PS4, Xbox One, PC, DL ",
+            "title": "RESIDENT EVIL 7 biohazard",
+            "releaseDate": "Jan 2017",
+            "platforms": "PS4, Xbox One, PC, DL",
             "Q1CmlValue": 9.8,
             "Q2CmlValue": 10.2,
             "Q3CmlValue": 10.6,
@@ -28,9 +28,9 @@
             "valueLastTwoFYs": 7.5 
         },
         {
-            "title": " Resident Evil 2 ",
-            "releaseDate": " Jan 2019 ",
-            "platforms": " PS4, Xbox One, PC, DL ",
+            "title": "Resident Evil 2",
+            "releaseDate": "Jan 2019",
+            "platforms": "PS4, Xbox One, PC, DL",
             "Q1CmlValue": 8.6,
             "Q2CmlValue": 8.9,
             "Q3CmlValue": 9.3,
@@ -39,9 +39,9 @@
             "valueLastTwoFYs": 6.6 
         },
         {
-            "title": " Monster Hunter World: Iceborne ",
-            "releaseDate": " Sep 2019 ",
-            "platforms": " PS4, Xbox One, PC, DL ",
+            "title": "Monster Hunter World: Iceborne",
+            "releaseDate": "Sep 2019",
+            "platforms": "PS4, Xbox One, PC, DL",
             "Q1CmlValue": 8.2,
             "Q2CmlValue": 8.5,
             "Q3CmlValue": 8.8,
@@ -50,9 +50,9 @@
             "valueLastTwoFYs": 5.2 
         },
         {
-            "title": " Resident Evil 5 ", 
-            "releaseDate": " Mar 2009 ",
-            "platforms": " PS3, Xbox 360, DL ",
+            "title": "Resident Evil 5", 
+            "releaseDate": "Mar 2009",
+            "platforms": "PS3, Xbox 360, DL",
             "Q1CmlValue": 7.9,
             "Q2CmlValue": 8.0,
             "Q3CmlValue": 8.1,
@@ -61,9 +61,9 @@
             "valueLastTwoFYs": 7.6 
         },
         {
-            "title": " Resident Evil 6 ", 
-            "releaseDate": " Oct 2012 ",
-            "platforms": " PS3, Xbox 360, DL ",
+            "title": "Resident Evil 6", 
+            "releaseDate": "Oct 2012",
+            "platforms": "PS3, Xbox 360, DL",
             "Q1CmlValue": 7.9,
             "Q2CmlValue": 8.0,
             "Q3CmlValue": 8.1,
@@ -72,9 +72,9 @@
             "valueLastTwoFYs": 7.5 
         },
         {
-            "title": " Monster Hunter Rise ", 
-            "releaseDate": " Mar 2021 ",
-            "platforms": " NSW, PC, DL ",
+            "title": "Monster Hunter Rise", 
+            "releaseDate": "Mar 2021",
+            "platforms": "NSW, PC, DL",
             "Q1CmlValue": 7.3,
             "Q2CmlValue": 7.5,
             "Q3CmlValue": 7.7,
@@ -83,9 +83,9 @@
             "valueLastTwoFYs": 0 
         },
         {
-            "title": " Street Fighter V ", 
-            "releaseDate": " Feb 2016 ",
-            "platforms": " PS4, PC, DL ",
+            "title": "Street Fighter V", 
+            "releaseDate": "Feb 2016",
+            "platforms": "PS4, PC, DL",
             "Q1CmlValue": 5.8,
             "Q2CmlValue": 6.0,
             "Q3CmlValue": 6.1,
@@ -94,9 +94,9 @@
             "valueLastTwoFYs": 4.5
         },
         {
-            "title": " Resident Evil Village ", 
-            "releaseDate": " May 2021 ",
-            "platforms": " PS4, PS5, Xbox One, XSX, PC, DL ",
+            "title": "Resident Evil Village", 
+            "releaseDate": "May 2021",
+            "platforms": "PS4, PS5, Xbox One, XSX, PC, DL",
             "Q1CmlValue": 4.5,
             "Q2CmlValue": 4.8,
             "Q3CmlValue": 5.7,
@@ -105,9 +105,9 @@
             "valueLastTwoFYs": 0
         },
         {
-            "title": " Resident Evil 3 ", 
-            "releaseDate": " Apr 2020 ",
-            "platforms": " PS4, Xbox One, PC, DL ",
+            "title": "Resident Evil 3", 
+            "releaseDate": "Apr 2020",
+            "platforms": "PS4, Xbox One, PC, DL",
             "Q1CmlValue": 4.4,
             "Q2CmlValue": 4.6,
             "Q3CmlValue": 4.9,
@@ -116,9 +116,9 @@
             "valueLastTwoFYs": 0
         },
         {
-            "title": " Monster Hunter Freedom 3 ", 
-            "releaseDate": " Dec 2010 ",
-            "platforms": " PSP, DL ",
+            "title": "Monster Hunter Freedom 3", 
+            "releaseDate": "Dec 2010",
+            "platforms": "PSP, DL",
             "Q1CmlValue": 4.9,
             "Q2CmlValue": 4.9,
             "Q3CmlValue": 4.9,
@@ -127,9 +127,9 @@
             "valueLastTwoFYs": 4.9
         },
         {
-            "title": " Devil May Cry 5 ", 
-            "releaseDate": " Mar 2019 ",
-            "platforms": " PS4, Xbox One, PC, DL ",
+            "title": "Devil May Cry 5", 
+            "releaseDate": "Mar 2019",
+            "platforms": "PS4, Xbox One, PC, DL",
             "Q1CmlValue": 4.5,
             "Q2CmlValue": 4.7,
             "Q3CmlValue": 4.8,
@@ -138,9 +138,9 @@
             "valueLastTwoFYs": 3.5
         },
         {
-            "title": " Monster Hunter Generations Ultimate ", 
-            "releaseDate": " Mar 2017 ",
-            "platforms": " 3DS, NSW, DL ",
+            "title": "Monster Hunter Generations Ultimate", 
+            "releaseDate": "Mar 2017",
+            "platforms": "3DS, NSW, DL",
             "Q1CmlValue": 4.3,
             "Q2CmlValue": 4.3,
             "Q3CmlValue": 4.4,
@@ -148,9 +148,9 @@
             "valueLastFY": 4.3,
             "valueLastTwoFYs": 3.6
         },{
-            "title": " Monster Hunter Generations ", 
-            "releaseDate": " Nov 2015 ",
-            "platforms": " 3DS, DL ",
+            "title": "Monster Hunter Generations", 
+            "releaseDate": "Nov 2015",
+            "platforms": "3DS, DL",
             "Q1CmlValue": 4.3,
             "Q2CmlValue": 4.3,
             "Q3CmlValue": 4.3,
@@ -159,9 +159,9 @@
             "valueLastTwoFYs": 4.3
         },
         {
-            "title": " Monster Hunter 4 Ultimate ", 
-            "releaseDate": " Oct 2014 ",
-            "platforms": " 3DS, DL ",
+            "title": "Monster Hunter 4 Ultimate", 
+            "releaseDate": "Oct 2014",
+            "platforms": "3DS, DL",
             "Q1CmlValue": 4.2,
             "Q2CmlValue": 4.2,
             "Q3CmlValue": 4.2,
@@ -170,9 +170,9 @@
             "valueLastTwoFYs": 4.2
         },
         {
-            "title": " Monster Hunter 4 ", 
-            "releaseDate": " Sep 2013 ",
-            "platforms": " 3DS, DL ",
+            "title": "Monster Hunter 4", 
+            "releaseDate": "Sep 2013",
+            "platforms": "3DS, DL",
             "Q1CmlValue": 4.1,
             "Q2CmlValue": 4.1,
             "Q3CmlValue": 4.1,
@@ -181,9 +181,9 @@
             "valueLastTwoFYs": 4.1
         },
         {
-            "title": " Monster Hunter Freedom Unite ", 
-            "releaseDate": " Mar 2008 ",
-            "platforms": " PSP, DL ",
+            "title": "Monster Hunter Freedom Unite", 
+            "releaseDate": "Mar 2008",
+            "platforms": "PSP, DL",
             "Q1CmlValue": 3.8,
             "Q2CmlValue": 3.8,
             "Q3CmlValue": 3.8,
@@ -191,9 +191,9 @@
             "valueLastFY": 3.8,
             "valueLastTwoFYs": 3.8
         },{
-            "title": " Street Fighter IV ", 
-            "releaseDate": " Feb 2009 ",
-            "platforms": " PS3, Xbox 360, DL ",
+            "title": "Street Fighter IV", 
+            "releaseDate": "Feb 2009",
+            "platforms": "PS3, Xbox 360, DL",
             "Q1CmlValue": 3.4,
             "Q2CmlValue": 3.4,
             "Q3CmlValue": 3.4,
@@ -202,9 +202,9 @@
             "valueLastTwoFYs": 3.4
         },
         {
-            "title": " Resident Evil ", 
-            "releaseDate": " Nov 2014 ",
-            "platforms": " PS3, DL ",
+            "title": "Resident Evil", 
+            "releaseDate": "Nov 2014",
+            "platforms": "PS3, DL",
             "Q1CmlValue": 3.1,
             "Q2CmlValue": 3.2,
             "Q3CmlValue": 3.3,
@@ -213,9 +213,9 @@
             "valueLastTwoFYs": 2.6
         },
         {
-            "title": " Resident Evil 0: HD Remaster ", 
-            "releaseDate": " Jan 2016 ",
-            "platforms": " PS3, PS4, Xbox One, PC, DL ",
+            "title": "Resident Evil 0: HD Remaster", 
+            "releaseDate": "Jan 2016",
+            "platforms": "PS3, PS4, Xbox One, PC, DL",
             "Q1CmlValue": 3.0,
             "Q2CmlValue": 3.1,
             "Q3CmlValue": 3.2,
@@ -224,9 +224,9 @@
             "valueLastTwoFYs": 2.5
         },
         {
-            "title": " Dead Rising 2 ", 
-            "releaseDate": " Sep 2010 ",
-            "platforms": " PS3, Xbox 360, PC, DL ",
+            "title": "Dead Rising 2", 
+            "releaseDate": "Sep 2010",
+            "platforms": "PS3, Xbox 360, PC, DL",
             "Q1CmlValue": 3.1,
             "Q2CmlValue": 3.1,
             "Q3CmlValue": 3.1,
@@ -234,9 +234,9 @@
             "valueLastFY": 3.1,
             "valueLastTwoFYs": 3.1
         },{
-            "title": " Devil May Cry 4 ", 
-            "releaseDate": " Jan 2008 ",
-            "platforms": " PS3, Xbox 360, DL ",
+            "title": "Devil May Cry 4", 
+            "releaseDate": "Jan 2008",
+            "platforms": "PS3, Xbox 360, DL",
             "Q1CmlValue": 3.0,
             "Q2CmlValue": 3.0,
             "Q3CmlValue": 3.0,
@@ -245,9 +245,9 @@
             "valueLastTwoFYs": 3.0
         },
         {
-            "title": " Dead Rising 3 ", 
-            "releaseDate": " Nov 2013 ",
-            "platforms": " Xbox One, DL ",
+            "title": "Dead Rising 3", 
+            "releaseDate": "Nov 2013",
+            "platforms": "Xbox One, DL",
             "Q1CmlValue": 2.9,
             "Q2CmlValue": 3.0,
             "Q3CmlValue": 3.0,
@@ -256,9 +256,9 @@
             "valueLastTwoFYs": 2.7
         },
         {
-            "title": " Resident Evil Relevations 2 ", 
-            "releaseDate": " Mar 2015 ",
-            "platforms": " PS3, PS4, Xbox 360, Xbox One, PC, DL ",
+            "title": "Resident Evil Relevations 2", 
+            "releaseDate": "Mar 2015",
+            "platforms": "PS3, PS4, Xbox 360, Xbox One, PC, DL",
             "Q1CmlValue": 2.8,
             "Q2CmlValue": 2.8,
             "Q3CmlValue": 2.9,
@@ -267,9 +267,9 @@
             "valueLastTwoFYs": 2.6
         },
         {
-            "title": " Monster Hunter 3 Ultimate ", 
-            "releaseDate": " Dec 2011 ",
-            "platforms": " 3DS, DL ",
+            "title": "Monster Hunter 3 Ultimate", 
+            "releaseDate": "Dec 2011",
+            "platforms": "3DS, DL",
             "Q1CmlValue": 2.6,
             "Q2CmlValue": 2.6,
             "Q3CmlValue": 2.6,
@@ -278,9 +278,9 @@
             "valueLastTwoFYs": 2.6
         },
         {
-            "title": " Resident Evil: Operation Raccoon City ", 
-            "releaseDate": " Mar 2012 ",
-            "platforms": " PS3, Xbox 360, DL ",
+            "title": "Resident Evil: Operation Raccoon City", 
+            "releaseDate": "Mar 2012",
+            "platforms": "PS3, Xbox 360, DL",
             "Q1CmlValue": 2.6,
             "Q2CmlValue": 2.6,
             "Q3CmlValue": 2.6,
@@ -289,9 +289,9 @@
             "valueLastTwoFYs": 2.5
         },
         {
-            "title": " DmC Devil May Cry ", 
-            "releaseDate": " Jan 2013 ",
-            "platforms": " PS3, Xbox 360, DL ",
+            "title": "DmC Devil May Cry", 
+            "releaseDate": "Jan 2013",
+            "platforms": "PS3, Xbox 360, DL",
             "Q1CmlValue": 2.5,
             "Q2CmlValue": 2.5,
             "Q3CmlValue": 2.6,
@@ -300,9 +300,9 @@
             "valueLastTwoFYs": 2.4
         },
         {
-            "title": " Resident Evil 4 ", 
-            "releaseDate": " Aug 2016 ",
-            "platforms": " PS4, Xbox One, DL ",
+            "title": "Resident Evil 4", 
+            "releaseDate": "Aug 2016",
+            "platforms": "PS4, Xbox One, DL",
             "Q1CmlValue": 2.3,
             "Q2CmlValue": 2.4,
             "Q3CmlValue": 2.5,
@@ -311,9 +311,9 @@
             "valueLastTwoFYs": 1.7
         },
         {
-            "title": " Resident Evil 5 ", 
-            "releaseDate": " Jun 2016",
-            "platforms": " PS4, Xbox One, DL ",
+            "title": "Resident Evil 5", 
+            "releaseDate": "Jun 2016",
+            "platforms": "PS4, Xbox One, DL",
             "Q1CmlValue": 2.2,
             "Q2CmlValue": 2.3,
             "Q3CmlValue": 2.4,
@@ -322,9 +322,9 @@
             "valueLastTwoFYs": 1.7
         },
         {
-            "title": " Resident Evil 6 ", 
-            "releaseDate": " Mar 2016 ",
-            "platforms": " PS4, Xbox One, DL ",
+            "title": "Resident Evil 6", 
+            "releaseDate": "Mar 2016",
+            "platforms": "PS4, Xbox One, DL",
             "Q1CmlValue": 2.3,
             "Q2CmlValue": 2.3,
             "Q3CmlValue": 2.3,
@@ -333,9 +333,9 @@
             "valueLastTwoFYs": 2.0
         },
         {
-            "title": " Resident Evil 5: Gold Edition ", 
-            "releaseDate": " Feb 2010 ",
-            "platforms": " PS3, Xbox 360, DL ",
+            "title": "Resident Evil 5: Gold Edition", 
+            "releaseDate": "Feb 2010",
+            "platforms": "PS3, Xbox 360, DL",
             "Q1CmlValue": 2.3,
             "Q2CmlValue": 2.3,
             "Q3CmlValue": 2.3,
@@ -344,9 +344,9 @@
             "valueLastTwoFYs": 2.3
         },
         {
-            "title": " Dragon’s Dogma: Dark Arisen ", 
-            "releaseDate": " Apr 2013 ",
-            "platforms": " PS3, Xbox 360, DL ",
+            "title": "Dragon’s Dogma: Dark Arisen", 
+            "releaseDate": "Apr 2013",
+            "platforms": "PS3, Xbox 360, DL",
             "Q1CmlValue": 2.2,
             "Q2CmlValue": 2.2,
             "Q3CmlValue": 2.2,
@@ -355,9 +355,9 @@
             "valueLastTwoFYs": 2.1
         },
         {
-            "title": " Resident Evil Revelations ", 
-            "releaseDate": " May 2013 ",
-            "platforms": " PS3, Xbox 360, Wii U, PC, DL ",
+            "title": "Resident Evil Revelations", 
+            "releaseDate": "May 2013",
+            "platforms": "PS3, Xbox 360, Wii U, PC, DL",
             "Q1CmlValue": 2.1,
             "Q2CmlValue": 2.1,
             "Q3CmlValue": 2.2,
@@ -366,9 +366,9 @@
             "valueLastTwoFYs": 2.0
         },
         {
-            "title": " Street Fighter 30th Anniversary Collection ", 
-            "releaseDate": " May 2018 ",
-            "platforms": " PS4, Xbox One, NSW, PC, DL ",
+            "title": "Street Fighter 30th Anniversary Collection", 
+            "releaseDate": "May 2018",
+            "platforms": "PS4, Xbox One, NSW, PC, DL",
             "Q1CmlValue": 1.9,
             "Q2CmlValue": 2.0,
             "Q3CmlValue": 2.1,
@@ -377,9 +377,9 @@
             "valueLastTwoFYs": 1.2
         },
         {
-            "title": " Lost Planet 2 ", 
-            "releaseDate": " May 2010 ",
-            "platforms": " PS3, Xbox 360, DL ",
+            "title": "Lost Planet 2", 
+            "releaseDate": "May 2010",
+            "platforms": "PS3, Xbox 360, DL",
             "Q1CmlValue": 2.1,
             "Q2CmlValue": 2.1,
             "Q3CmlValue": 2.1,
@@ -388,9 +388,9 @@
             "valueLastTwoFYs": 2.0
         },
         {
-            "title": " Resident Evil 4 Wii edition ", 
-            "releaseDate": " May 2007 ",
-            "platforms": " Wii, DL ",
+            "title": "Resident Evil 4 Wii edition", 
+            "releaseDate": "May 2007",
+            "platforms": "Wii, DL",
             "Q1CmlValue": 2.0,
             "Q2CmlValue": 2.0,
             "Q3CmlValue": 2.0,
@@ -399,9 +399,9 @@
             "valueLastTwoFYs": 2.0
         },
         {
-            "title": " Super Street Fighter IV ", 
-            "releaseDate": " Apr 2010 ",
-            "platforms": " PS3, Xbox 360, DL ",
+            "title": "Super Street Fighter IV", 
+            "releaseDate": "Apr 2010",
+            "platforms": "PS3, Xbox 360, DL",
             "Q1CmlValue": 1.9,
             "Q2CmlValue": 1.9,
             "Q3CmlValue": 1.9,
@@ -410,9 +410,9 @@
             "valueLastTwoFYs": 1.9
         },
         {
-            "title": " Street Fighter X Tekken ", 
-            "releaseDate": " Mar 2012 ",
-            "platforms": " PS3, Xbox 360, DL ",
+            "title": "Street Fighter X Tekken", 
+            "releaseDate": "Mar 2012",
+            "platforms": "PS3, Xbox 360, DL",
             "Q1CmlValue": 1.9,
             "Q2CmlValue": 1.9,
             "Q3CmlValue": 1.9,
@@ -421,9 +421,9 @@
             "valueLastTwoFYs": 1.8
         },
         {
-            "title": " Dead Rising ", 
-            "releaseDate": " Aug 2006 ",
-            "platforms": " Xbox 360, DL ",
+            "title": "Dead Rising", 
+            "releaseDate": "Aug 2006",
+            "platforms": "Xbox 360, DL",
             "Q1CmlValue": 1.8,
             "Q2CmlValue": 1.8,
             "Q3CmlValue": 1.8,
@@ -432,9 +432,9 @@
             "valueLastTwoFYs": 1.8
         },
         {
-            "title": " Devil May Cry 4 Special Edition ", 
-            "releaseDate": " Jun 2015 ",
-            "platforms": " PS4, Xbox One, DL ",
+            "title": "Devil May Cry 4 Special Edition", 
+            "releaseDate": "Jun 2015",
+            "platforms": "PS4, Xbox One, DL",
             "Q1CmlValue": 1.7,
             "Q2CmlValue": 1.8,
             "Q3CmlValue": 1.8,
@@ -443,9 +443,9 @@
             "valueLastTwoFYs": 1.5
         },
         {
-            "title": " Marvel vs. Capcom: Infinite ", 
-            "releaseDate": " Sep 2017 ",
-            "platforms": " PS4, Xbox One, PC, DL ",
+            "title": "Marvel vs. Capcom: Infinite", 
+            "releaseDate": "Sep 2017",
+            "platforms": "PS4, Xbox One, PC, DL",
             "Q1CmlValue": 1.7,
             "Q2CmlValue": 1.7,
             "Q3CmlValue": 1.8,
@@ -454,9 +454,9 @@
             "valueLastTwoFYs": 1.4
         },
         {
-            "title": " Okami HD ", 
-            "releaseDate": " Dec 2017 ",
-            "platforms": " PS4, Xbox One, NSW, DL ",
+            "title": "Okami HD", 
+            "releaseDate": "Dec 2017",
+            "platforms": "PS4, Xbox One, NSW, DL",
             "Q1CmlValue": 1.7,
             "Q2CmlValue": 1.7,
             "Q3CmlValue": 1.8,
@@ -465,9 +465,9 @@
             "valueLastTwoFYs": 1.2
         },
         {
-            "title": " Resident Evil 4: Ultimate HD Edition ", 
-            "releaseDate": " Feb 2014 ",
-            "platforms": " PC, DL ",
+            "title": "Resident Evil 4: Ultimate HD Edition", 
+            "releaseDate": "Feb 2014",
+            "platforms": "PC, DL",
             "Q1CmlValue": 1.6,
             "Q2CmlValue": 1.7,
             "Q3CmlValue": 1.8,
@@ -476,9 +476,9 @@
             "valueLastTwoFYs": 1.1
         },
         {
-            "title": " Dragon’s Dogma: Dark Arisen ", 
-            "releaseDate": " Oct 2017 ",
-            "platforms": " PS4, Xbox One, DL ",
+            "title": "Dragon’s Dogma: Dark Arisen", 
+            "releaseDate": "Oct 2017",
+            "platforms": "PS4, Xbox One, DL",
             "Q1CmlValue": 1.6,
             "Q2CmlValue": 1.6,
             "Q3CmlValue": 1.7,
@@ -487,9 +487,9 @@
             "valueLastTwoFYs": 1.0
         },
         {
-            "title": " Lost Planet Extreme Condition ", 
-            "releaseDate": " Dec 2006 ",
-            "platforms": " Xbox 360, DL ",
+            "title": "Lost Planet Extreme Condition", 
+            "releaseDate": "Dec 2006",
+            "platforms": "Xbox 360, DL",
             "Q1CmlValue": 1.6,
             "Q2CmlValue": 1.6,
             "Q3CmlValue": 1.6,
@@ -498,9 +498,9 @@
             "valueLastTwoFYs": 1.6
         },
         {
-            "title": " Ultra Street Fighter IV ", 
-            "releaseDate": " Aug 2014 ",
-            "platforms": " PS3, Xbox 360, PC, DL ",
+            "title": "Ultra Street Fighter IV", 
+            "releaseDate": "Aug 2014",
+            "platforms": "PS3, Xbox 360, PC, DL",
             "Q1CmlValue": 1.5,
             "Q2CmlValue": 1.5,
             "Q3CmlValue": 1.5,
@@ -509,9 +509,9 @@
             "valueLastTwoFYs": 1.4
         },
         {
-            "title": " DuckTales: Remastered ", 
-            "releaseDate": " Nov 2013 ",
-            "platforms": " PS3, Xbox 360, Wii U, DL ",
+            "title": "DuckTales: Remastered", 
+            "releaseDate": "Nov 2013",
+            "platforms": "PS3, Xbox 360, Wii U, DL",
             "Q1CmlValue": 1.4,
             "Q2CmlValue": 1.4,
             "Q3CmlValue": 1.5,
@@ -520,9 +520,9 @@
             "valueLastTwoFYs": 1.4
         },
         {
-            "title": " Monster Hunter Stories 2: Wings of Ruin ", 
-            "releaseDate": " Jul 2021 ",
-            "platforms": " NSW, PC, DL ",
+            "title": "Monster Hunter Stories 2: Wings of Ruin", 
+            "releaseDate": "Jul 2021",
+            "platforms": "NSW, PC, DL",
             "Q1CmlValue": 0,
             "Q2CmlValue": 1.3,
             "Q3CmlValue": 1.4,
@@ -531,9 +531,9 @@
             "valueLastTwoFYs": 0
         },
         {
-            "title": " Dead Rising 2 Off The Record ", 
-            "releaseDate": " Oct 2010 ",
-            "platforms": " PS3, Xbox 360, DL ",
+            "title": "Dead Rising 2 Off The Record", 
+            "releaseDate": "Oct 2010",
+            "platforms": "PS3, Xbox 360, DL",
             "Q1CmlValue": 1.4,
             "Q2CmlValue": 1.4,
             "Q3CmlValue": 1.4,
@@ -542,9 +542,9 @@
             "valueLastTwoFYs": 1.4
         },
         {
-            "title": " Mega Man 11 ", 
-            "releaseDate": " Oct 2018 ",
-            "platforms": " PS4, Xbox One, NSW, DL ",
+            "title": "Mega Man 11", 
+            "releaseDate": "Oct 2018",
+            "platforms": "PS4, Xbox One, NSW, DL",
             "Q1CmlValue": 1.3,
             "Q2CmlValue": 1.4,
             "Q3CmlValue": 1.4,
@@ -553,9 +553,9 @@
             "valueLastTwoFYs": 1.2
         },
         {
-            "title": " Phoenix Wright: Ace Attorney Trilogy ", 
-            "releaseDate": " Feb 2019 ",
-            "platforms": " PS4, NSW, DL ",
+            "title": "Phoenix Wright: Ace Attorney Trilogy", 
+            "releaseDate": "Feb 2019",
+            "platforms": "PS4, NSW, DL",
             "Q1CmlValue": 1.2,
             "Q2CmlValue": 1.3,
             "Q3CmlValue": 1.4,
@@ -564,9 +564,9 @@
             "valueLastTwoFYs": 0
         },
         {
-            "title": " Marvel vs. Capcom 2: New Age Of Heroes ", 
-            "releaseDate": " Jul 2009 ",
-            "platforms": " DL (PS3, Xbox 360) ",
+            "title": "Marvel vs. Capcom 2: New Age Of Heroes", 
+            "releaseDate": "Jul 2009",
+            "platforms": "DL (PS3, Xbox 360)",
             "Q1CmlValue": 1.4,
             "Q2CmlValue": 1.4,
             "Q3CmlValue": 1.4,
@@ -575,9 +575,9 @@
             "valueLastTwoFYs": 1.4
         },
         {
-            "title": " Monster Hunter Freedom ", 
-            "releaseDate": " Dec 2005 ",
-            "platforms": " PSP, DL ",
+            "title": "Monster Hunter Freedom", 
+            "releaseDate": "Dec 2005",
+            "platforms": "PSP, DL",
             "Q1CmlValue": 1.3,
             "Q2CmlValue": 1.3,
             "Q3CmlValue": 1.3,
@@ -586,9 +586,9 @@
             "valueLastTwoFYs": 1.3
         },
         {
-            "title": " Remember Me ", 
-            "releaseDate": " Jun 2013 ",
-            "platforms": " PS3, Xbox 360, PC, DL ",
+            "title": "Remember Me", 
+            "releaseDate": "Jun 2013",
+            "platforms": "PS3, Xbox 360, PC, DL",
             "Q1CmlValue": 1.3,
             "Q2CmlValue": 1.3,
             "Q3CmlValue": 1.3,
@@ -597,9 +597,9 @@
             "valueLastTwoFYs": 1.2
         },
         {
-            "title": " Super Street Fighter IV 3D ", 
-            "releaseDate": " Feb 2011 ",
-            "platforms": " 3DS, DL ",
+            "title": "Super Street Fighter IV 3D", 
+            "releaseDate": "Feb 2011",
+            "platforms": "3DS, DL",
             "Q1CmlValue": 1.3,
             "Q2CmlValue": 1.3,
             "Q3CmlValue": 1.3,
@@ -608,9 +608,9 @@
             "valueLastTwoFYs": 1.3
         },
         {
-            "title": " Ultimate Marvel vs. Capcom 3 ", 
-            "releaseDate": " Mar 2017 ",
-            "platforms": " PS4, Xbox One, DL ",
+            "title": "Ultimate Marvel vs. Capcom 3", 
+            "releaseDate": "Mar 2017",
+            "platforms": "PS4, Xbox One, DL",
             "Q1CmlValue": 1.2,
             "Q2CmlValue": 1.2,
             "Q3CmlValue": 1.3,
@@ -619,9 +619,9 @@
             "valueLastTwoFYs": 0
         },
         {
-            "title": " Dead Rising 4 ", 
-            "releaseDate": " Dec 2016 ",
-            "platforms": " Xbox One, PC, DL ",
+            "title": "Dead Rising 4", 
+            "releaseDate": "Dec 2016",
+            "platforms": "Xbox One, PC, DL",
             "Q1CmlValue": 1.2,
             "Q2CmlValue": 1.2,
             "Q3CmlValue": 1.2,
@@ -630,9 +630,9 @@
             "valueLastTwoFYs": 1.0
         },
         {
-            "title": " Resident Evil 4 ", 
-            "releaseDate": " Mar 2012 ",
-            "platforms": " DL (PS3, Xbox 360) ",
+            "title": "Resident Evil 4", 
+            "releaseDate": "Mar 2012",
+            "platforms": "DL (PS3, Xbox 360)",
             "Q1CmlValue": 1.2,
             "Q2CmlValue": 1.2,
             "Q3CmlValue": 1.2,
@@ -641,9 +641,9 @@
             "valueLastTwoFYs": 0
         },
         {
-            "title": " Mega Man Legacy Collection ", 
-            "releaseDate": " Aug 2015 ",
-            "platforms": " PS4, Xbox One, DL ",
+            "title": "Mega Man Legacy Collection", 
+            "releaseDate": "Aug 2015",
+            "platforms": "PS4, Xbox One, DL",
             "Q1CmlValue": 1.2,
             "Q2CmlValue": 1.2,
             "Q3CmlValue": 1.2,
@@ -652,9 +652,9 @@
             "valueLastTwoFYs": 1.1
         },
         {
-            "title": " Ultimate Marvel vs. Capcom 3 ", 
-            "releaseDate": " Nov 2011 ",
-            "platforms": " PS3, Xbox 360, DL ",
+            "title": "Ultimate Marvel vs. Capcom 3", 
+            "releaseDate": "Nov 2011",
+            "platforms": "PS3, Xbox 360, DL",
             "Q1CmlValue": 1.2,
             "Q2CmlValue": 1.2,
             "Q3CmlValue": 1.2,
@@ -663,9 +663,9 @@
             "valueLastTwoFYs": 1.2
         },
         {
-            "title": " Dead Rising ", 
-            "releaseDate": " Sep 2016 ",
-            "platforms": " PS4, Xbox One, DL ",
+            "title": "Dead Rising", 
+            "releaseDate": "Sep 2016",
+            "platforms": "PS4, Xbox One, DL",
             "Q1CmlValue": 1.2,
             "Q2CmlValue": 1.2,
             "Q3CmlValue": 1.2,
@@ -674,9 +674,9 @@
             "valueLastTwoFYs": 0
         },
         {
-            "title": " DMC Devil May Cry Definitive Edition ", 
-            "releaseDate": " Mar 2015 ",
-            "platforms": " PS4, Xbox One, DL ",
+            "title": "DMC Devil May Cry Definitive Edition", 
+            "releaseDate": "Mar 2015",
+            "platforms": "PS4, Xbox One, DL",
             "Q1CmlValue": 1.2,
             "Q2CmlValue": 1.2,
             "Q3CmlValue": 1.2,
@@ -685,9 +685,9 @@
             "valueLastTwoFYs": 0
         },
         {
-            "title": " Devil May Cry HD Collection ", 
-            "releaseDate": " Mar 2012 ",
-            "platforms": " PS3, Xbox 360, DL ",
+            "title": "Devil May Cry HD Collection", 
+            "releaseDate": "Mar 2012",
+            "platforms": "PS3, Xbox 360, DL",
             "Q1CmlValue": 1.2,
             "Q2CmlValue": 1.2,
             "Q3CmlValue": 1.2,
@@ -696,9 +696,9 @@
             "valueLastTwoFYs": 1.2
         },
         {
-            "title": " Super Street Fighter IV Arcade Edition ", 
-            "releaseDate": " Jun 2011 ",
-            "platforms": " PS3, Xbox 360, DL ",
+            "title": "Super Street Fighter IV Arcade Edition", 
+            "releaseDate": "Jun 2011",
+            "platforms": "PS3, Xbox 360, DL",
             "Q1CmlValue": 1.1,
             "Q2CmlValue": 1.1,
             "Q3CmlValue": 1.1,
@@ -707,9 +707,9 @@
             "valueLastTwoFYs": 1.1
         },
         {
-            "title": " Bionic Commando ", 
-            "releaseDate": " Jun 2009 ",
-            "platforms": " PS3, Xbox 360, PC, DL ",
+            "title": "Bionic Commando", 
+            "releaseDate": "Jun 2009",
+            "platforms": "PS3, Xbox 360, PC, DL",
             "Q1CmlValue": 1.1,
             "Q2CmlValue": 1.1,
             "Q3CmlValue": 1.1,
@@ -718,9 +718,9 @@
             "valueLastTwoFYs": 1.1
         },
         {
-            "title": " Resident Evil Revelations Collection ", 
-            "releaseDate": " Nov 2017 ",
-            "platforms": " NSW, DL ",
+            "title": "Resident Evil Revelations Collection", 
+            "releaseDate": "Nov 2017",
+            "platforms": "NSW, DL",
             "Q1CmlValue": 1.0,
             "Q2CmlValue": 1.0,
             "Q3CmlValue": 1.1,
@@ -729,9 +729,9 @@
             "valueLastTwoFYs": 0
         },
         {
-            "title": " Strider ", 
-            "releaseDate": " Feb 2014 ",
-            "platforms": " DL (PS3, PS4, Xbox 360, Xbox One, PC) ",
+            "title": "Strider", 
+            "releaseDate": "Feb 2014",
+            "platforms": "DL (PS3, PS4, Xbox 360, Xbox One, PC)",
             "Q1CmlValue": 1.0,
             "Q2CmlValue": 1.0,
             "Q3CmlValue": 1.0,
@@ -740,9 +740,9 @@
             "valueLastTwoFYs": 0
         },
         {
-            "title": " Street Fighter II ", 
-            "releaseDate": " Jun 1992 ",
-            "platforms": " SNES ",
+            "title": "Street Fighter II", 
+            "releaseDate": "Jun 1992",
+            "platforms": "SNES",
             "Q1CmlValue": 6.3,
             "Q2CmlValue": 6.3,
             "Q3CmlValue": 6.3,
@@ -751,9 +751,9 @@
             "valueLastTwoFYs": 6.3
         },
         {
-            "title": " Resident Evil 2 ", 
-            "releaseDate": " Jan 1998 ",
-            "platforms": " PS ",
+            "title": "Resident Evil 2", 
+            "releaseDate": "Jan 1998",
+            "platforms": "PS",
             "Q1CmlValue": 4.96,
             "Q2CmlValue": 4.96,
             "Q3CmlValue": 4.96,
@@ -762,9 +762,9 @@
             "valueLastTwoFYs": 4.96
         },
         {
-            "title": " Super Street Fighter II Turbo ", 
-            "releaseDate": " Jul 1993 ",
-            "platforms": " SNES ",
+            "title": "Super Street Fighter II Turbo", 
+            "releaseDate": "Jul 1993",
+            "platforms": "SNES",
             "Q1CmlValue": 4.1,
             "Q2CmlValue": 4.1,
             "Q3CmlValue": 4.1,
@@ -773,9 +773,9 @@
             "valueLastTwoFYs": 4.1
         },
         {
-            "title": " Resident Evil 3 Nemesis ", 
-            "releaseDate": " Sep 1999 ",
-            "platforms": " PS ",
+            "title": "Resident Evil 3 Nemesis", 
+            "releaseDate": "Sep 1999",
+            "platforms": "PS",
             "Q1CmlValue": 3.5,
             "Q2CmlValue": 3.5,
             "Q3CmlValue": 3.5,
@@ -784,9 +784,9 @@
             "valueLastTwoFYs": 3.5
         },
         {
-            "title": " Resident Evil ", 
-            "releaseDate": " Mar 1996 ",
-            "platforms": " PS ",
+            "title": "Resident Evil", 
+            "releaseDate": "Mar 1996",
+            "platforms": "PS",
             "Q1CmlValue": 2.75,
             "Q2CmlValue": 2.75,
             "Q3CmlValue": 2.75,
@@ -795,9 +795,9 @@
             "valueLastTwoFYs": 2.75
         },
         {
-            "title": " Monster Hunter Freedom 2 ", 
-            "releaseDate": " Feb 2007 ",
-            "platforms": " PSP ",
+            "title": "Monster Hunter Freedom 2", 
+            "releaseDate": "Feb 2007",
+            "platforms": "PSP",
             "Q1CmlValue": 2.4,
             "Q2CmlValue": 2.4,
             "Q3CmlValue": 2.4,
@@ -806,9 +806,9 @@
             "valueLastTwoFYs": 2.4
         },
         {
-            "title": " Dino Crisis ", 
-            "releaseDate": " Jul 1999 ",
-            "platforms": " PS ",
+            "title": "Dino Crisis", 
+            "releaseDate": "Jul 1999",
+            "platforms": "PS",
             "Q1CmlValue": 2.4,
             "Q2CmlValue": 2.4,
             "Q3CmlValue": 2.4,
@@ -817,9 +817,9 @@
             "valueLastTwoFYs": 2.4
         },
         {
-            "title": " Resident Evil 4 ", 
-            "releaseDate": " Dec 2005 ",
-            "platforms": " PS2 ",
+            "title": "Resident Evil 4", 
+            "releaseDate": "Dec 2005",
+            "platforms": "PS2",
             "Q1CmlValue": 2.3,
             "Q2CmlValue": 2.3,
             "Q3CmlValue": 2.3,
@@ -828,9 +828,9 @@
             "valueLastTwoFYs": 2.3
         },
         {
-            "title": " Marvel vs. Capcom 3: Fate of Two Worlds ", 
-            "releaseDate": " Feb 2011 ",
-            "platforms": " PS3, Xbox 360 ",
+            "title": "Marvel vs. Capcom 3: Fate of Two Worlds", 
+            "releaseDate": "Feb 2011",
+            "platforms": "PS3, Xbox 360",
             "Q1CmlValue": 2.2,
             "Q2CmlValue": 2.2,
             "Q3CmlValue": 2.2,
@@ -839,9 +839,9 @@
             "valueLastTwoFYs": 2.2
         },
         {
-            "title": " Devil May Cry ", 
-            "releaseDate": " Aug 2001 ",
-            "platforms": " PS2 ",
+            "title": "Devil May Cry", 
+            "releaseDate": "Aug 2001",
+            "platforms": "PS2",
             "Q1CmlValue": 2.16,
             "Q2CmlValue": 2.16,
             "Q3CmlValue": 2.16,
@@ -850,9 +850,9 @@
             "valueLastTwoFYs": 2.16
         },
         {
-            "title": " Onimusha 2: Samurai’s Destiny ", 
-            "releaseDate": " Mar 2002 ",
-            "platforms": " PS2 ",
+            "title": "Onimusha 2: Samurai’s Destiny", 
+            "releaseDate": "Mar 2002",
+            "platforms": "PS2",
             "Q1CmlValue": 2.1,
             "Q2CmlValue": 2.1,
             "Q3CmlValue": 2.1,
@@ -861,9 +861,9 @@
             "valueLastTwoFYs": 2.1
         },
         {
-            "title": " Onimusha: Warlords ", 
-            "releaseDate": " Jan 2001 ",
-            "platforms": " PS2 ",
+            "title": "Onimusha: Warlords", 
+            "releaseDate": "Jan 2001",
+            "platforms": "PS2",
             "Q1CmlValue": 2.02,
             "Q2CmlValue": 2.02,
             "Q3CmlValue": 2.02,
@@ -872,9 +872,9 @@
             "valueLastTwoFYs": 2.02
         },
         {
-            "title": " Super Street Fighter II ", 
-            "releaseDate": " Jun 1994 ",
-            "platforms": " SNES ",
+            "title": "Super Street Fighter II", 
+            "releaseDate": "Jun 1994",
+            "platforms": "SNES",
             "Q1CmlValue": 2.0,
             "Q2CmlValue": 2.0,
             "Q3CmlValue": 2.0,
@@ -883,9 +883,9 @@
             "valueLastTwoFYs": 2.0
         },
         {
-            "title": " Monster Hunter Tri ", 
-            "releaseDate": " Aug 2009 ",
-            "platforms": " Wii ",
+            "title": "Monster Hunter Tri", 
+            "releaseDate": "Aug 2009",
+            "platforms": "Wii",
             "Q1CmlValue": 1.9,
             "Q2CmlValue": 1.9,
             "Q3CmlValue": 1.9,
@@ -894,9 +894,9 @@
             "valueLastTwoFYs": 1.9
         },
         {
-            "title": " Devil May Cry 2 ", 
-            "releaseDate": " Jan 2003 ",
-            "platforms": " PS2 ",
+            "title": "Devil May Cry 2", 
+            "releaseDate": "Jan 2003",
+            "platforms": "PS2",
             "Q1CmlValue": 1.7,
             "Q2CmlValue": 1.7,
             "Q3CmlValue": 1.7,
@@ -905,9 +905,9 @@
             "valueLastTwoFYs": 1.7
         },
         {
-            "title": " Street Fighter II’ Special Champion Edition ", 
-            "releaseDate": " Sep 1993 ",
-            "platforms": " MD ",
+            "title": "Street Fighter II’ Special Champion Edition", 
+            "releaseDate": "Sep 1993",
+            "platforms": "MD",
             "Q1CmlValue": 1.65,
             "Q2CmlValue": 1.65,
             "Q3CmlValue": 1.65,
@@ -916,9 +916,9 @@
             "valueLastTwoFYs": 1.65
         },
         {
-            "title": " Ghosts’n Goblins ", 
-            "releaseDate": " Jun 1986 ",
-            "platforms": " NES ",
+            "title": "Ghosts’n Goblins", 
+            "releaseDate": "Jun 1986",
+            "platforms": "NES",
             "Q1CmlValue": 1.64,
             "Q2CmlValue": 1.64,
             "Q3CmlValue": 1.64,
@@ -927,9 +927,9 @@
             "valueLastTwoFYs": 1.64
         },
         {
-            "title": " Resident Evil 4 ", 
-            "releaseDate": " Jan 2005 ",
-            "platforms": " GC ",
+            "title": "Resident Evil 4", 
+            "releaseDate": "Jan 2005",
+            "platforms": "GC",
             "Q1CmlValue": 1.6,
             "Q2CmlValue": 1.6,
             "Q3CmlValue": 1.6,
@@ -938,9 +938,9 @@
             "valueLastTwoFYs": 1.6
         },
         {
-            "title": " Onimusha 3: Demon Siege ", 
-            "releaseDate": " Feb 2004 ",
-            "platforms": " PS2 ",
+            "title": "Onimusha 3: Demon Siege", 
+            "releaseDate": "Feb 2004",
+            "platforms": "PS2",
             "Q1CmlValue": 1.52,
             "Q2CmlValue": 1.52,
             "Q3CmlValue": 1.52,
@@ -949,9 +949,9 @@
             "valueLastTwoFYs": 1.52
         },
         {
-            "title": " Mega Man 2 ", 
-            "releaseDate": " Dec 1988 ",
-            "platforms": " NES ",
+            "title": "Mega Man 2", 
+            "releaseDate": "Dec 1988",
+            "platforms": "NES",
             "Q1CmlValue": 1.51,
             "Q2CmlValue": 1.51,
             "Q3CmlValue": 1.51,
@@ -960,9 +960,9 @@
             "valueLastTwoFYs": 1.51
         },
         {
-            "title": " Final Fight ", 
-            "releaseDate": " Dec 1990 ",
-            "platforms": " SNES ",
+            "title": "Final Fight", 
+            "releaseDate": "Dec 1990",
+            "platforms": "SNES",
             "Q1CmlValue": 1.48,
             "Q2CmlValue": 1.48,
             "Q3CmlValue": 1.48,
@@ -971,9 +971,9 @@
             "valueLastTwoFYs": 1.48
         },
         {
-            "title": " Resident Evil Outbreak ", 
-            "releaseDate": " Dec 2003 ",
-            "platforms": " PS2 ",
+            "title": "Resident Evil Outbreak", 
+            "releaseDate": "Dec 2003",
+            "platforms": "PS2",
             "Q1CmlValue": 1.45,
             "Q2CmlValue": 1.45,
             "Q3CmlValue": 1.45,
@@ -982,9 +982,9 @@
             "valueLastTwoFYs": 1.45
         },
         {
-            "title": " Resident Evil Code: Veronica X ", 
-            "releaseDate": " Mar 2001 ",
-            "platforms": " PS2 ",
+            "title": "Resident Evil Code: Veronica X", 
+            "releaseDate": "Mar 2001",
+            "platforms": "PS2",
             "Q1CmlValue": 1.4,
             "Q2CmlValue": 1.4,
             "Q3CmlValue": 1.4,
@@ -993,9 +993,9 @@
             "valueLastTwoFYs": 1.4
         },
         {
-            "title": " Resident Evil ", 
-            "releaseDate": " Mar 2002 ",
-            "platforms": " GC ",
+            "title": "Resident Evil", 
+            "releaseDate": "Mar 2002",
+            "platforms": "GC",
             "Q1CmlValue": 1.35,
             "Q2CmlValue": 1.35,
             "Q3CmlValue": 1.35,
@@ -1004,9 +1004,9 @@
             "valueLastTwoFYs": 1.35
         },
         {
-            "title": " Mega Man Battle Network 4 ", 
-            "releaseDate": " Dec 2003 ",
-            "platforms": " GBA ",
+            "title": "Mega Man Battle Network 4", 
+            "releaseDate": "Dec 2003",
+            "platforms": "GBA",
             "Q1CmlValue": 1.35,
             "Q2CmlValue": 1.35,
             "Q3CmlValue": 1.35,
@@ -1015,9 +1015,9 @@
             "valueLastTwoFYs": 1.35
         },
         {
-            "title": " Dragon’s Dogma ", 
-            "releaseDate": " May 2012 ",
-            "platforms": " PS3, Xbox 360 ",
+            "title": "Dragon’s Dogma", 
+            "releaseDate": "May 2012",
+            "platforms": "PS3, Xbox 360",
             "Q1CmlValue": 1.3,
             "Q2CmlValue": 1.3,
             "Q3CmlValue": 1.3,
@@ -1026,9 +1026,9 @@
             "valueLastTwoFYs": 1.3
         },
         {
-            "title": " Resident Evil: The Umbrella Chronicles ", 
-            "releaseDate": " Nov 2007 ",
-            "platforms": " Wii ",
+            "title": "Resident Evil: The Umbrella Chronicles", 
+            "releaseDate": "Nov 2007",
+            "platforms": "Wii",
             "Q1CmlValue": 1.3,
             "Q2CmlValue": 1.3,
             "Q3CmlValue": 1.3,
@@ -1037,9 +1037,9 @@
             "valueLastTwoFYs": 1.3
         },
         {
-            "title": " Devil May Cry 3 ", 
-            "releaseDate": " Feb 2005 ",
-            "platforms": " PS2 ",
+            "title": "Devil May Cry 3", 
+            "releaseDate": "Feb 2005",
+            "platforms": "PS2",
             "Q1CmlValue": 1.3,
             "Q2CmlValue": 1.3,
             "Q3CmlValue": 1.3,
@@ -1048,9 +1048,9 @@
             "valueLastTwoFYs": 1.3
         },
         {
-            "title": " Resident Evil 0 ", 
-            "releaseDate": " Nov 2002 ",
-            "platforms": " GC ",
+            "title": "Resident Evil 0", 
+            "releaseDate": "Nov 2002",
+            "platforms": "GC",
             "Q1CmlValue": 1.25,
             "Q2CmlValue": 1.25,
             "Q3CmlValue": 1.25,
@@ -1059,9 +1059,9 @@
             "valueLastTwoFYs": 1.25
         },
         {
-            "title": " Dino Crisis 2 ", 
-            "releaseDate": " Sep 2000 ",
-            "platforms": " PS ",
+            "title": "Dino Crisis 2", 
+            "releaseDate": "Sep 2000",
+            "platforms": "PS",
             "Q1CmlValue": 1.2,
             "Q2CmlValue": 1.2,
             "Q3CmlValue": 1.2,
@@ -1070,9 +1070,9 @@
             "valueLastTwoFYs": 1.2
         },
         {
-            "title": " Resident Evil Director’s Cut Dual Shock ", 
-            "releaseDate": " Aug 1998 ",
-            "platforms": " PS ",
+            "title": "Resident Evil Director’s Cut Dual Shock", 
+            "releaseDate": "Aug 1998",
+            "platforms": "PS",
             "Q1CmlValue": 1.2,
             "Q2CmlValue": 1.2,
             "Q3CmlValue": 1.2,
@@ -1081,9 +1081,9 @@
             "valueLastTwoFYs": 1.2
         },
         {
-            "title": " Mega Man X ", 
-            "releaseDate": " Dec 1993 ",
-            "platforms": " SNES ",
+            "title": "Mega Man X", 
+            "releaseDate": "Dec 1993",
+            "platforms": "SNES",
             "Q1CmlValue": 1.16,
             "Q2CmlValue": 1.16,
             "Q3CmlValue": 1.16,
@@ -1092,9 +1092,9 @@
             "valueLastTwoFYs": 1.16
         },
         {
-            "title": " Resident Evil Code: Veronica ", 
-            "releaseDate": " Feb 2000 ",
-            "platforms": " DC ",
+            "title": "Resident Evil Code: Veronica", 
+            "releaseDate": "Feb 2000",
+            "platforms": "DC",
             "Q1CmlValue": 1.14,
             "Q2CmlValue": 1.14,
             "Q3CmlValue": 1.14,
@@ -1103,9 +1103,9 @@
             "valueLastTwoFYs": 1.14
         },
         {
-            "title": " Commando ", 
-            "releaseDate": " Sep 1986 ",
-            "platforms": " NES ",
+            "title": "Commando", 
+            "releaseDate": "Sep 1986",
+            "platforms": "NES",
             "Q1CmlValue": 1.14,
             "Q2CmlValue": 1.14,
             "Q3CmlValue": 1.14,
@@ -1114,9 +1114,9 @@
             "valueLastTwoFYs": 1.14
         },
         {
-            "title": " Resident Evil Director’s Cut ", 
-            "releaseDate": " Sep 1997 ",
-            "platforms": " PS ",
+            "title": "Resident Evil Director’s Cut", 
+            "releaseDate": "Sep 1997",
+            "platforms": "PS",
             "Q1CmlValue": 1.13,
             "Q2CmlValue": 1.13,
             "Q3CmlValue": 1.13,
@@ -1125,9 +1125,9 @@
             "valueLastTwoFYs": 1.13
         },
         {
-            "title": " Super Ghouls’n Ghosts ", 
-            "releaseDate": " Oct 1991 ",
-            "platforms": " SNES ",
+            "title": "Super Ghouls’n Ghosts", 
+            "releaseDate": "Oct 1991",
+            "platforms": "SNES",
             "Q1CmlValue": 1.09,
             "Q2CmlValue": 1.09,
             "Q3CmlValue": 1.09,
@@ -1136,9 +1136,9 @@
             "valueLastTwoFYs": 1.09
         },
         {
-            "title": " Mega Man 3 ", 
-            "releaseDate": " Sep 1990 ",
-            "platforms": " NES ",
+            "title": "Mega Man 3", 
+            "releaseDate": "Sep 1990",
+            "platforms": "NES",
             "Q1CmlValue": 1.08,
             "Q2CmlValue": 1.08,
             "Q3CmlValue": 1.08,
@@ -1147,9 +1147,9 @@
             "valueLastTwoFYs": 1.08
         },
         {
-            "title": " Final Fight 2 ", 
-            "releaseDate": " May 1993 ",
-            "platforms": " SNES ",
+            "title": "Final Fight 2", 
+            "releaseDate": "May 1993",
+            "platforms": "SNES",
             "Q1CmlValue": 1.03,
             "Q2CmlValue": 1.03,
             "Q3CmlValue": 1.03,
@@ -1158,9 +1158,9 @@
             "valueLastTwoFYs": 1.03
         },
         {
-            "title": " Street Fighter Alpha 3 ", 
-            "releaseDate": " Dec 1998 ",
-            "platforms": " PS ",
+            "title": "Street Fighter Alpha 3", 
+            "releaseDate": "Dec 1998",
+            "platforms": "PS",
             "Q1CmlValue": 1.0,
             "Q2CmlValue": 1.0,
             "Q3CmlValue": 1.0,
@@ -1169,9 +1169,9 @@
             "valueLastTwoFYs": 1.0
         },
         {
-            "title": " Devil May Cry 3 Special Edition ", 
-            "releaseDate": " Feb 2006 ",
-            "platforms": " PS2 ",
+            "title": "Devil May Cry 3 Special Edition", 
+            "releaseDate": "Feb 2006",
+            "platforms": "PS2",
             "Q1CmlValue": 1.0,
             "Q2CmlValue": 1.0,
             "Q3CmlValue": 1.0,
@@ -1180,9 +1180,9 @@
             "valueLastTwoFYs": 1.0
         },
         {
-            "title": " Aladdin ", 
-            "releaseDate": " Nov 1993 ",
-            "platforms": " SNES ",
+            "title": "Aladdin", 
+            "releaseDate": "Nov 1993",
+            "platforms": "SNES",
             "Q1CmlValue": 1.75,
             "Q2CmlValue": 1.75,
             "Q3CmlValue": 1.75,
@@ -1191,9 +1191,9 @@
             "valueLastTwoFYs": 1.75
         },
         {
-            "title": " Duck Tales ", 
-            "releaseDate": " Jan 1990 ",
-            "platforms": " NES ",
+            "title": "Duck Tales", 
+            "releaseDate": "Jan 1990",
+            "platforms": "NES",
             "Q1CmlValue": 1.67,
             "Q2CmlValue": 1.67,
             "Q3CmlValue": 1.67,
@@ -1202,9 +1202,9 @@
             "valueLastTwoFYs": 1.67
         },
         {
-            "title": " Duck Tales ", 
-            "releaseDate": " Sep 1990 ",
-            "platforms": " GB ",
+            "title": "Duck Tales", 
+            "releaseDate": "Sep 1990",
+            "platforms": "GB",
             "Q1CmlValue": 1.43,
             "Q2CmlValue": 1.43,
             "Q3CmlValue": 1.43,
@@ -1213,9 +1213,9 @@
             "valueLastTwoFYs": 1.43
         },
         {
-            "title": " Magical Quest Starring Mickey ", 
-            "releaseDate": " Nov 1992 ",
-            "platforms": " SNES ",
+            "title": "Magical Quest Starring Mickey", 
+            "releaseDate": "Nov 1992",
+            "platforms": "SNES",
             "Q1CmlValue": 1.21,
             "Q2CmlValue": 1.21,
             "Q3CmlValue": 1.21,
@@ -1224,9 +1224,9 @@
             "valueLastTwoFYs": 1.21
         },
         {
-            "title": " Chip'n Dale Rescue Rangers ", 
-            "releaseDate": " Jun 1990 ",
-            "platforms": " NES ",
+            "title": "Chip'n Dale Rescue Rangers", 
+            "releaseDate": "Jun 1990",
+            "platforms": "NES",
             "Q1CmlValue": 1.2,
             "Q2CmlValue": 1.2,
             "Q3CmlValue": 1.2,

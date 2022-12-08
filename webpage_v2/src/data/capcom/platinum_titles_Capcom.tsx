@@ -15,15 +15,18 @@ import platinumTitles2021 from "./Platinum_Titles/platinum_titles_fy3_2021.json"
 import platinumTitles2020 from "./Platinum_Titles/platinum_titles_fy3_2020.json";
 import platinumTitles2019 from "./Platinum_Titles/platinum_titles_fy3_2019.json";
 import platinumTitles2018 from "./Platinum_Titles/platinum_titles_fy3_2018.json";
-
-const collection = [
-    platinumTitles2023,
-    platinumTitles2022,
-    platinumTitles2021,
-    platinumTitles2020,
-    platinumTitles2019,
-    platinumTitles2018,
-] as const;
+import platinumTitles2017 from "./Platinum_Titles/platinum_titles_fy3_2017.json";
+import platinumTitles2016 from "./Platinum_Titles/platinum_titles_fy3_2016.json";
+import platinumTitles2015 from "./Platinum_Titles/platinum_titles_fy3_2015.json";
+import platinumTitles2014 from "./Platinum_Titles/platinum_titles_fy3_2014.json";
+import platinumTitles2013 from "./Platinum_Titles/platinum_titles_fy3_2013.json";
+import platinumTitles2012 from "./Platinum_Titles/platinum_titles_fy3_2012.json";
+import platinumTitles2011 from "./Platinum_Titles/platinum_titles_fy3_2011.json";
+import platinumTitles2010 from "./Platinum_Titles/platinum_titles_fy3_2010.json";
+import platinumTitles2009 from "./Platinum_Titles/platinum_titles_fy3_2009.json";
+import platinumTitles2008 from "./Platinum_Titles/platinum_titles_fy3_2008.json";
+import platinumTitles2007 from "./Platinum_Titles/platinum_titles_fy3_2007.json";
+import platinumTitles2006 from "./Platinum_Titles/platinum_titles_fy3_2006.json";
 
 type getTitles = {
     title: string;
@@ -37,6 +40,37 @@ type getTitles = {
     valueLastTwoFYs?: number;
     miscellaneous?: string;
 }
+
+type collectionData = {
+    currentQuarter: number,
+    footnotes?: string,
+    fiscalYearCml: string,
+    fiscalYearYoY: string,
+    summaryHeader: string,
+    titles: getTitles[],
+    delistedTitles?: getTitles[],
+}
+
+const collection: collectionData[] = [
+    platinumTitles2023,
+    platinumTitles2022,
+    platinumTitles2021,
+    platinumTitles2020,
+    platinumTitles2019,
+    platinumTitles2018,
+    platinumTitles2017,
+    platinumTitles2016,
+    platinumTitles2015,
+    platinumTitles2014,
+    platinumTitles2013,
+    platinumTitles2012,
+    platinumTitles2011,
+    platinumTitles2010,
+    platinumTitles2009,
+    platinumTitles2008,
+    platinumTitles2007,
+    platinumTitles2006,
+];
 
 const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, prev2FYs: getTitles[] | undefined): Titles[][] => {
     
@@ -135,6 +169,9 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
 
     let titlesList: Titles[][] = titlesMake(elem.titles, prevFYCheck, prev2FYsCheck);
 
+    // let delistedTitlesCheck = (Object.hasOwn(elem, "delistedTitles")) ? elem.delistedTitles : undefined;
+    // let delistedTitles: Titles[][] = titlesMake(elem.delistedTitles, prevFYCheck, prev2FYsCheck);
+
     let sortedAllCollection = titlesList.map((elem, index, array) => {
                 return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
         }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
@@ -162,7 +199,9 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
 
     let printOne = printHead(header);
 
-    let printAllPlatinumTitles = [printOne, ...printListedTitlesAll].reduce((prev, next) => prev + "\n" + next )
+    let printAllPlatinumTitles = (elem.footnotes === undefined) 
+                ? [printOne, ...printListedTitlesAll].reduce((prev, next) => prev + "\n" + next )
+                : [printOne, ...printListedTitlesAll, elem.footnotes].reduce((prev, next) => prev + "\n" + next )
 
     return printAllPlatinumTitles
 });
@@ -259,9 +298,11 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
 
     let printSummaryTwo = printSummary(header, newSum, recurringSum, sporadicSum)
 
+    let printListedTitlesFYFixed: string[] = (elem.footnotes === undefined) ? printListedTitlesFY : printListedTitlesFY.concat(elem.footnotes) 
+
     let printFYPlatinumTitles: string = (currentQuarter !== 4)
-        ? [printOne, ...printListedTitlesFY].reduce((prev, next) => prev + "\n" + next )
-        : [printSummaryOne, printSummaryTwo, printOne, ...printListedTitlesFY,].reduce((prev, next) => prev + "\n" + next )
+        ? [printOne, ...printListedTitlesFYFixed].reduce((prev, next) => prev + "\n" + next )
+        : [printSummaryOne, printSummaryTwo, printOne, ...printListedTitlesFYFixed,].reduce((prev, next) => prev + "\n" + next )
 
     return printFYPlatinumTitles
 });
