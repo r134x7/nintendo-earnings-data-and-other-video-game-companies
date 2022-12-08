@@ -58,11 +58,11 @@ var makeArray = function (newQuarterLocal, currentDataLocal, currentQuarterLocal
 var readNewestQuarter = readQuarter(currentQuarter);
 var extractNQ = extractData(readNewestQuarter);
 console.log(extractNQ);
-var getCurrentData = getJSON("platinum_titles_fy3_2021_test.json", currentQuarter);
+var getCurrentData = getJSON("platinum_titles_test.json", currentQuarter);
 var parseCurrentData = (!getCurrentData) ? undefined : JSON.parse(getCurrentData);
 var newArray = makeArray(extractNQ, parseCurrentData, currentQuarter);
 var newArrayStringify = JSON.stringify(newArray);
-(0, fs_1.writeFile)('platinum_titles_fy3_2021_test.json', newArrayStringify, function (err) {
+(0, fs_1.writeFile)('platinum_titles_test.json', newArrayStringify, function (err) {
     return err ? console.error(err) : console.log('Capcom is back!');
 });
 // const dataReadFirstQuarter = fs.readFileSync("firstQuarter.html", "utf-8")

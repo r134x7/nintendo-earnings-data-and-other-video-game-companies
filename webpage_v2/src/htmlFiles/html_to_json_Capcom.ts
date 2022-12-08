@@ -81,14 +81,14 @@ let readNewestQuarter = readQuarter(currentQuarter);
 let extractNQ = extractData(readNewestQuarter);
 console.log(extractNQ);
 
-let getCurrentData = getJSON("platinum_titles_fy3_2021_test.json", currentQuarter);
+let getCurrentData = getJSON("platinum_titles_test.json", currentQuarter);
 let parseCurrentData = (!getCurrentData) ? undefined : JSON.parse(getCurrentData);
 
 let newArray = makeArray(extractNQ, parseCurrentData, currentQuarter);
 
 let newArrayStringify = JSON.stringify(newArray);
 
-writeFile('platinum_titles_fy3_2021_test.json', newArrayStringify, (err) =>
+writeFile('platinum_titles_test.json', newArrayStringify, (err) =>
   err ? console.error(err) : console.log('Capcom is back!')
 );
 
