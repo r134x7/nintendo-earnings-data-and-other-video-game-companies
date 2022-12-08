@@ -8,7 +8,7 @@ import fs from "fs";
 // run file using node command not npm
 // starting with FY3/2021
 
-let currentQuarter = 2;
+let currentQuarter = 1;
 
 
 const readQuarter = (currentQuarterLocal) => {
@@ -38,8 +38,8 @@ const getJSON = (jsonLocal, currentQuarterLocal) => {
 const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
 
     return Array.from({length:(newQuarterLocal.length/4)}, (v,i) => {
-    // if current quarter = 1
-    let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem,index,array) => (elem.title === dataMatchSecondQuarter[(i*4)+1]) && (elem.releaseDate === dataMatchSecondQuarter[i*4])); // searching by title name and release date should only match one title
+
+        let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem,index,array) => (elem.title === dataMatchSecondQuarter[(i*4)+1]) && (elem.releaseDate === dataMatchSecondQuarter[i*4])); // searching by title name and release date should only match one title
 
         return (!searchTitle[0])
             ? {
@@ -67,9 +67,9 @@ let readNewestQuarter = readQuarter(currentQuarter);
 let extractNQ = extractData(readNewestQuarter);
 
 let getCurrentData = getJSON("platinum_titles_fy3_2021_test.json", currentQuarter);
-let extractCD = (!getCurrentData) ? undefined : extractData(getCurrentData);
+let parseCurrentData = (!getCurrentData) ? undefined : getCurrentData.JSON.parse(getCurrentData);
 
-let newArray = makeArray(extractNQ, extractCD, currentQuarter);
+let newArray = makeArray(extractNQ, parseCurrentData, currentQuarter);
 
 let newArrayStringify = JSON.stringify(newArray);
 
