@@ -201,7 +201,10 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
         // ? " " + elem.platforms + " " + " ".repeat(32 - elem.platforms.length-2) 
         // : " " + elem.platforms + " ".repeat(32 - elem.platforms.length+1);
 
-        let printReleaseDateFixed: string = " " + elem.releaseDate + " ".repeat(11)
+        let printReleaseDate: string = " " + elem.releaseDate;
+        let printReleaseDateFixed: string = (printReleaseDate.length >= 20)
+                ? printReleaseDate
+                : printReleaseDate + " ".repeat(20 - printReleaseDate.length);
 
 
         let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n" + printTitleName + "\n+" + "-".repeat(32) + "+\n" + printPlatforms + "\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
