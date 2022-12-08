@@ -124,7 +124,10 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
         summaryHeader: elem.summaryHeader,
     };
 
-    let titlesList: Titles[][] = titlesMake(elem.titles, array[index+1].titles, array[index+2].titles);
+    let prevFYCheck = (array[index+1] === undefined) ? undefined : array[index+1].titles;
+    let prev2FYsCheck = (array[index+2] === undefined) ? undefined : array[index+2].titles; 
+
+    let titlesList: Titles[][] = titlesMake(elem.titles, prevFYCheck, prev2FYsCheck);
 
     let sortedAllCollection = titlesList.map((elem, index, array) => {
                 return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
@@ -174,7 +177,10 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
         summaryHeader: elem.summaryHeader,
     };
 
-    let titlesList: Titles[][] = titlesMake(elem.titles, array[index+1].titles, array[index+2].titles);
+    let prevFYCheck = (array[index+1] === undefined) ? undefined : array[index+1].titles;
+    let prev2FYsCheck = (array[index+2] === undefined) ? undefined : array[index+2].titles; 
+
+    let titlesList: Titles[][] = titlesMake(elem.titles, prevFYCheck, prev2FYsCheck);
 
     let sortedFYCollection = titlesList.filter((elem, index, array) => {
             return elem[3].value - elem[4].value !== 0

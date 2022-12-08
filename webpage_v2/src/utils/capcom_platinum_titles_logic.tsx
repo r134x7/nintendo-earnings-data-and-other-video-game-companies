@@ -1,3 +1,5 @@
+import { printTextBlock } from "./bandai_namco_annual_report_logic"
+
 export type Titles = {
     title: string,
     releaseDate: string,
@@ -163,44 +165,46 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
                 ? printRank
                 : printRank + " ".repeat(11 - printRank.length);
 
-        let printTitleName: string = (elem.title.length > 32)
-        ? elem.title.split(" ").reduce((prev, next, index, array) => {
+        let printTitleName: string | never[] = printTextBlock(elem.title)(32)
+        // let printTitleName: string = (elem.title.length > 32)
+        // ? elem.title.split(" ").reduce((prev, next, index, array) => {
 
-            let nextCheck = prev + next + " ";
+        //     let nextCheck = prev + next + " ";
             
-            if (nextCheck.length > 31 && prev.length <= 31) {
-                return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-            } else if (index === array.length-1) {
-                return prev + next + " ".repeat(67 - prev.length)
-            } else {
-                return prev + " " + next
-            }
-        })
-        : (elem.title.length < 32)
-        ? elem.title + " ".repeat(32 - elem.title.length) 
-        : elem.title
+        //     if (nextCheck.length > 31 && prev.length <= 31) {
+        //         return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+        //     } else if (index === array.length-1) {
+        //         return prev + next + " ".repeat(67 - prev.length)
+        //     } else {
+        //         return prev + " " + next
+        //     }
+        // })
+        // : (elem.title.length < 32)
+        // ? elem.title + " ".repeat(32 - elem.title.length) 
+        // : elem.title
 
-        let printPlatforms: string = (elem.platforms.length > 32)
-        ? elem.platforms.split(" ").reduce((prev, next, index, array) => {
+        let printPlatforms: string | never[] = printTextBlock(elem.platforms)(32)
+        // let printPlatforms: string = (elem.platforms.length > 32)
+        // ? elem.platforms.split(" ").reduce((prev, next, index, array) => {
 
-            let nextCheck = prev + next + " ";
+        //     let nextCheck = prev + next + " ";
             
-            if (nextCheck.length > 31 && prev.length <= 31) {
-                return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-            } else if (index === array.length-1) {
-                return prev + next + " ".repeat(67 - prev.length)
-            } else {
-                return prev + " " + next
-            }
-        })
-        : (elem.platforms.length < 32)
-        ? elem.platforms + " ".repeat(32 - elem.platforms.length) 
-        : elem.platforms
+        //     if (nextCheck.length > 31 && prev.length <= 31) {
+        //         return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
+        //     } else if (index === array.length-1) {
+        //         return prev + next + " ".repeat(67 - prev.length)
+        //     } else {
+        //         return prev + " " + next
+        //     }
+        // })
+        // : (elem.platforms.length+2 < 32) // had to change length to account for the spaces on both ends due to composition of string from json
+        // ? " " + elem.platforms + " " + " ".repeat(32 - elem.platforms.length-2) 
+        // : " " + elem.platforms + " ".repeat(32 - elem.platforms.length+1);
 
-        let printReleaseDateFixed: string = elem.releaseDate + " ".repeat(10)
+        let printReleaseDateFixed: string = " " + elem.releaseDate + " ".repeat(11)
 
 
-        let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n|" + printTitleName + "|\n+" + "-".repeat(32) + "+\n|" + printPlatforms + "|\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
+        let printTitleNameFixed: string = "+"+"-".repeat(32)+"+\n" + printTitleName + "\n+" + "-".repeat(32) + "+\n" + printPlatforms + "\n+" + "-".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
 
         return printTitleNameFixed
         
