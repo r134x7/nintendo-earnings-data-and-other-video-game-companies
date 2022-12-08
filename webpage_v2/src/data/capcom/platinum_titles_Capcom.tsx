@@ -11,37 +11,48 @@ import {
 
 import platinumTitles2023 from "./Platinum_Titles/platinum_titles_fy3_2023.json";
 import platinumTitles2022 from "./Platinum_Titles/platinum_titles_fy3_2022.json";
+import platinumTitles2021 from "./Platinum_Titles/platinum_titles_fy3_2021.json";
 
 const collection = [
     platinumTitles2023,
     platinumTitles2022,
+    platinumTitles2021,
 ] as const;
 
-const titlesMake = (obj: {
-    "titles": {
-        title: string;
-        releaseDate: string;
-        platforms: string;
-        Q1CmlValue: number;
-        Q2CmlValue: number;
-        Q3CmlValue: number;
-        Q4CmlValue: number;
-        valueLastFY: number;
-        valueLastTwoFYs: number;
-        miscellaneous?: string;
-    }[]
-}): Titles[][] => {
-    
-    let title: Titles[][] = obj.titles.map(elem => {
+type getTitles = {
+    title: string;
+    releaseDate: string;
+    platforms: string;
+    Q1CmlValue: number;
+    Q2CmlValue: number;
+    Q3CmlValue: number;
+    Q4CmlValue: number;
+    valueLastFY?: number;
+    valueLastTwoFYs?: number;
+    miscellaneous?: string;
+}
 
-        return (!elem.miscellaneous) 
-                ? [
+const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, prev2FYs: getTitles[] | undefined): Titles[][] => {
+    
+    let title: Titles[][] = obj.map(elem => {
+
+        //need to search for title in previous fy years.
+        let searchPrevFY = (!prevFY)
+                ? [undefined]
+                : prevFY.filter((value) => (elem.title === value.title) && (elem.releaseDate === value.releaseDate)); // searching by title name and release date should only match one title;
+        
+        let searchPrev2FYs = (!prev2FYs)
+                ? [undefined]
+                : prev2FYs.filter((value) => (elem.title === value.title) && (elem.releaseDate === value.releaseDate)); 
+
+        return  [
                     {
                         title: elem.title,
                         releaseDate: elem.releaseDate,
                         platforms: elem.platforms,
                         period: " 1st Quarter  ",
                         value: elem.Q1CmlValue,
+                        miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
                     },
                     {
                         title: elem.title,
@@ -49,6 +60,7 @@ const titlesMake = (obj: {
                         platforms: elem.platforms,
                         period: " 2nd Quarter  ",
                         value: elem.Q2CmlValue,
+                        miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
                     },
                     {
                         title: elem.title,
@@ -56,6 +68,7 @@ const titlesMake = (obj: {
                         platforms: elem.platforms,
                         period: " 3rd Quarter  ",
                         value: elem.Q3CmlValue,
+                        miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
                     },
                     {
                         title: elem.title,
@@ -63,70 +76,31 @@ const titlesMake = (obj: {
                         platforms: elem.platforms,
                         period: " 4th Quarter  ",
                         value: elem.Q4CmlValue,
+                        miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
                     },
                     {
                         title: elem.title,
                         releaseDate: elem.releaseDate,
                         platforms: elem.platforms,
                         period: " Last FY Total ",
-                        value: elem.valueLastFY,
+                        value: (searchPrevFY[0] !== undefined) 
+                                ? searchPrevFY[0].Q4CmlValue 
+                                : (elem.valueLastFY === undefined)
+                                ? 0
+                                : elem.valueLastFY,
+                        miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
                     },
                     {
                         title: elem.title,
                         releaseDate: elem.releaseDate,
                         platforms: elem.platforms,
                         period: " Total at Two FYs prior ", 
-                        value: elem.valueLastTwoFYs,
-                    },
-                ]
-                : [
-                    {
-                        title: elem.title,
-                        releaseDate: elem.releaseDate,
-                        platforms: elem.platforms,
-                        period: " 1st Quarter  ",
-                        value: elem.Q1CmlValue,
-                        miscellaneous: elem.miscellaneous,
-                    },
-                    {
-                        title: elem.title,
-                        releaseDate: elem.releaseDate,
-                        platforms: elem.platforms,
-                        period: " 2nd Quarter  ",
-                        value: elem.Q2CmlValue,
-                        miscellaneous: elem.miscellaneous,
-                    },
-                    {
-                        title: elem.title,
-                        releaseDate: elem.releaseDate,
-                        platforms: elem.platforms,
-                        period: " 3rd Quarter  ",
-                        value: elem.Q3CmlValue,
-                        miscellaneous: elem.miscellaneous,
-                    },
-                    {
-                        title: elem.title,
-                        releaseDate: elem.releaseDate,
-                        platforms: elem.platforms,
-                        period: " 4th Quarter  ",
-                        value: elem.Q4CmlValue,
-                        miscellaneous: elem.miscellaneous,
-                    },
-                    {
-                        title: elem.title,
-                        releaseDate: elem.releaseDate,
-                        platforms: elem.platforms,
-                        period: " Last FY Total ",
-                        value: elem.valueLastFY,
-                        miscellaneous: elem.miscellaneous,
-                    },
-                    {
-                        title: elem.title,
-                        releaseDate: elem.releaseDate,
-                        platforms: elem.platforms,
-                        period: " Total at Two FYs prior ", 
-                        value: elem.valueLastTwoFYs,
-                        miscellaneous: elem.miscellaneous,
+                        value: (searchPrev2FYs[0] !== undefined) 
+                                ? searchPrev2FYs[0].Q4CmlValue 
+                                : (elem.valueLastTwoFYs === undefined)
+                                ? 0
+                                : elem.valueLastTwoFYs,
+                        miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
                     },
                 ]
             }) 
@@ -150,7 +124,7 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
         summaryHeader: elem.summaryHeader,
     };
 
-    let titlesList: Titles[][] = titlesMake(elem);
+    let titlesList: Titles[][] = titlesMake(elem.titles, array[index+1].titles, array[index+2].titles);
 
     let sortedAllCollection = titlesList.map((elem, index, array) => {
                 return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
@@ -200,7 +174,7 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
         summaryHeader: elem.summaryHeader,
     };
 
-    let titlesList: Titles[][] = titlesMake(elem);
+    let titlesList: Titles[][] = titlesMake(elem.titles, array[index+1].titles, array[index+2].titles);
 
     let sortedFYCollection = titlesList.filter((elem, index, array) => {
             return elem[3].value - elem[4].value !== 0
