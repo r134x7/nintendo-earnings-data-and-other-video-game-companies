@@ -165,12 +165,13 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
     };
 
     let prevFYCheck = (array[index+1] === undefined) ? undefined : array[index+1].titles;
-    let prev2FYsCheck = (array[index+2] === undefined) ? undefined : array[index+2].titles; 
+    let prev2FYsCheck = (array[index+2] === undefined) ? undefined : array[index+2].titles;
 
-    let titlesList: Titles[][] = titlesMake(elem.titles, prevFYCheck, prev2FYsCheck);
+    let delistedTitlesCheck: getTitles[] = (elem.delistedTitles === undefined)
+            ? elem.titles
+            : elem.titles.concat(elem.delistedTitles);
 
-    // let delistedTitlesCheck = (Object.hasOwn(elem, "delistedTitles")) ? elem.delistedTitles : undefined;
-    // let delistedTitles: Titles[][] = titlesMake(elem.delistedTitles, prevFYCheck, prev2FYsCheck);
+    let titlesList: Titles[][] = titlesMake(delistedTitlesCheck, prevFYCheck, prev2FYsCheck);
 
     let sortedAllCollection = titlesList.map((elem, index, array) => {
                 return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
@@ -199,7 +200,7 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
 
     let printOne = printHead(header);
 
-    let printAllPlatinumTitles = (elem.footnotes === undefined) 
+    let printAllPlatinumTitles: string = (elem.footnotes === undefined) 
                 ? [printOne, ...printListedTitlesAll].reduce((prev, next) => prev + "\n" + next )
                 : [printOne, ...printListedTitlesAll, elem.footnotes].reduce((prev, next) => prev + "\n" + next )
 
@@ -225,7 +226,11 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
     let prevFYCheck = (array[index+1] === undefined) ? undefined : array[index+1].titles;
     let prev2FYsCheck = (array[index+2] === undefined) ? undefined : array[index+2].titles; 
 
-    let titlesList: Titles[][] = titlesMake(elem.titles, prevFYCheck, prev2FYsCheck);
+    let delistedTitlesCheck: getTitles[] = (elem.delistedTitles === undefined)
+            ? elem.titles
+            : elem.titles.concat(elem.delistedTitles);
+
+    let titlesList: Titles[][] = titlesMake(delistedTitlesCheck, prevFYCheck, prev2FYsCheck);
 
     let sortedFYCollection = titlesList.filter((elem, index, array) => {
             return elem[3].value - elem[4].value !== 0

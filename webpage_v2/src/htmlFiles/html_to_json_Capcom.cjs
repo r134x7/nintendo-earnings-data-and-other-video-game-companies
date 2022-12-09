@@ -8,7 +8,7 @@ var fs_1 = require("fs");
 // run file using node command not npm
 // compile to javaScript using npx tsc (filename)
 // starting with FY3/2021
-var currentQuarter = 2;
+var currentQuarter = 4;
 var readQuarter = function (currentQuarterLocal) {
     return (currentQuarterLocal === 1)
         ? (0, fs_1.readFileSync)("firstQuarter.html", "utf-8")
