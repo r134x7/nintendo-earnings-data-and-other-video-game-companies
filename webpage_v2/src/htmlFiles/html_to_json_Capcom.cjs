@@ -8,7 +8,7 @@ var fs_1 = require("fs");
 // run file using node command not npm
 // compile to javaScript using npx tsc (filename)
 // starting with FY3/2021
-var currentQuarter = 4;
+var currentQuarter = 2;
 var readQuarter = function (currentQuarterLocal) {
     return (currentQuarterLocal === 1)
         ? (0, fs_1.readFileSync)("firstQuarter.html", "utf-8")
@@ -51,7 +51,7 @@ var makeArray = function (newQuarterLocal, currentDataLocal, currentQuarterLocal
                 platforms: newQuarterLocal[(i * 4) + 2],
                 Q1CmlValue: searchTitle[0].Q1CmlValue,
                 Q2CmlValue: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i * 4) + 3]) : searchTitle[0].Q2CmlValue,
-                Q3CmlValue: (currentQuarterLocal === 3) ? Number(newQuarterLocal[(i * 4) + 3]) : searchTitle[0].Q3CmlValue,
+                Q3CmlValue: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i * 4) + 3]) : searchTitle[0].Q3CmlValue,
                 Q4CmlValue: Number(newQuarterLocal[(i * 4) + 3])
             };
     });
