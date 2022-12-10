@@ -74,13 +74,7 @@ const makeValues: Titles[][][] = totalCollection.map((data, index, array) => {
 
 function sortingTitles(title: Titles[])  {
 
-    // const testTitles = makeValues.map((elem, index) => {
-
-    //     return (elem.map(value => value.filter(i => i.title === title[0].title && i.period === " 4th Quarter  "))).flat()
-    // }).flat();
-    // console.log(makeValues.length);
-    
-    const testTitles: Titles[] = makeValues.map((elem, index) => {
+    const setTitles: Titles[] = makeValues.map((elem, index) => {
 
         return (elem.map(value => value.filter((v, i, array) => {
             return v.releaseDate === title[0].releaseDate && v.title === title[0].title && v.period === " 4th Quarter  " && v.value !== array[4].value // checks that Q4 value isn't the same as the last FY value
@@ -88,7 +82,7 @@ function sortingTitles(title: Titles[])  {
         ).flat()
     }).flat();
 
-    return testTitles
+    return setTitles
 };
 
 

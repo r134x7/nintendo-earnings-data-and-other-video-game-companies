@@ -5,6 +5,7 @@ import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import CAPCOM_COMPONENT from "../components/CAPCOM_COMPONENT";
+import CAPCOM_CML from "../components/special/CAPCOM_CML";
 
 const currentYear = 2023
 
@@ -36,6 +37,7 @@ export default function Capcom() {
 
     }, [seconds])
 
+    const [value, setValue] = useState("Data by Fiscal Year");
     const [year, setYear] = useState("");
 
     const [colour, setColour] = useState("rgb(0, 255, 255)")
@@ -95,7 +97,22 @@ export default function Capcom() {
                     </Anchor>
             </Stack>
             </Paper>
+            <SegmentedControl 
+                mb="sm"
+                mt="sm"
+                fullWidth
+                orientation="horizontal"
+                value={value}
+                onChange={setValue}
+                data={[
+                    "Data by Fiscal Year",
+                    "Special Page",
+                ]}
+            />
 
+            {
+                (value === "Data by Fiscal Year")
+                ? 
             <Group position="center">
 
                 <Autocomplete
@@ -152,12 +169,15 @@ export default function Capcom() {
                         </Paper>
 
             </Group>
+                : <CAPCOM_CML />
+            }
 
-            {  
-                selectYear(year)
+            {   (value === "Data by Fiscal Year")
+                ? selectYear(year)
+                : null
             }
             
-            { (selectYear(year) !== null)
+            { (selectYear(year) !== null && value === "Data by Fiscal Year")
                 ? (
                 <Group position="center">
                     <Space h="xl" />

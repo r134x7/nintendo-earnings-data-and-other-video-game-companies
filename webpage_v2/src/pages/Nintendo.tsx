@@ -11,7 +11,7 @@ import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 // import NINTENDO_FY3_2021 from "../components/nintendo/NINTENDO_FY3_2021";
 // import NINTENDO_FY3_2022 from "../components/nintendo/NINTENDO_FY3_2022";
 // import NINTENDO_FY3_2023 from "../components/nintendo/NINTENDO_FY3_2023";
-import NINTENDO_CML from "../components/nintendo/NINTENDO_CML";
+import NINTENDO_CML from "../components/special/NINTENDO_CML";
 import NINTENDO_COMPONENT from "../components/NINTENDO_COMPONENT";
 
 const currentYear = 2023;

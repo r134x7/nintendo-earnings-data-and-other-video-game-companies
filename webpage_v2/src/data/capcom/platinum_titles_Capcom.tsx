@@ -73,6 +73,27 @@ const collection: collectionData[] = [
     platinumTitles2006,
 ];
 
+const reverseCollection: collectionData[] = [      
+    platinumTitles2006,        
+    platinumTitles2007,        
+    platinumTitles2008,        
+    platinumTitles2009,        
+    platinumTitles2010,        
+    platinumTitles2011,        
+    platinumTitles2012,        
+    platinumTitles2013,        
+    platinumTitles2014,        
+    platinumTitles2015,        
+    platinumTitles2016,        
+    platinumTitles2017,        
+    platinumTitles2018,        
+    platinumTitles2019,        
+    platinumTitles2020,        
+    platinumTitles2021,        
+    platinumTitles2022,        
+    platinumTitles2023,    
+];
+
 export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, prev2FYs: getTitles[] | undefined): Titles[][] => {
     
     let title: Titles[][] = obj.map(elem => {
@@ -312,3 +333,77 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
 
     return printFYPlatinumTitles
 });
+
+const specialList = (): string => {
+
+    let header: Header = {
+        capcomHeader: "| Capcom - Platinum Titles       |",
+        secondHeader: "| Title                          |",
+        thirdHeader: "| Platform                       |",
+        fourthHeader: "| Release Date and Rank          |",
+        fifthHeader: "| Units                          |",
+        fiscalYear: "N/A",
+        fiscalYearYoY: "N/A",
+        ltd: "| Life-To-Date       |",
+        summaryHeader: "N/A",
+    };
+
+    const makeValues: Titles[][][] = reverseCollection.map((data, index, array) => {
+
+        let prevFYCheck = (array[index-1] === undefined) ? undefined : array[index-1].titles;
+        let prev2FYsCheck = (array[index-2] === undefined) ? undefined : array[index-2].titles;
+
+        let delistedTitlesCheck: getTitles[] = (data.delistedTitles === undefined)
+                ? data.titles
+                : data.titles.concat(data.delistedTitles);
+
+        let titlesList: Titles[][] = titlesMake(delistedTitlesCheck, prevFYCheck, prev2FYsCheck);
+
+        return titlesList.map(elem => elem.map(value => { return { ...value, fiscalYear: data.fiscalYearCml} }))
+    });
+
+
+    function sortingTitles(title: Titles[])  {
+
+        const setTitles: Titles[] = makeValues.map((elem, index) => {
+
+            return (elem.map(value => value.filter((v, i, array) => {
+                return v.releaseDate === title[0].releaseDate && v.title === title[0].title && v.period === " 4th Quarter  " && v.value !== array[4].value // checks that Q4 value isn't the same as the last FY value
+            }))
+            ).flat()
+        }).flat();
+
+        return setTitles
+    };
+
+    let latestTitlesList = makeValues[makeValues.length-1].map((elem, index) => {
+
+            return sortingTitles(elem)
+    });
+
+
+    let filteredList = latestTitlesList.filter(elem => elem.length !== 0);
+
+    let sortedList: Titles[][] = filteredList.map(elem => elem).sort((b, a) => {
+        return (a[a.length-1].value > b[b.length-1].value)
+            ? 1
+            : (a[a.length-1].value < b[b.length-1].value)
+            ? -1
+            : 0 
+    }).map((elem, index) => {    
+            return elem.map((elemTitle) => {
+                return {...elemTitle, rank: index+1}
+            })  
+    });
+
+
+    let yearlyCalcList = sortedList.map(elem => yearlyCalculation(elem));
+
+    let printAll = yearlyCalcList.map((elem, index) => {
+        return printTitles(header, elem, sortedList[index], 9999)
+    }) as string[];
+
+    return printAll.reduce((acc, next) => acc + next) 
+};
+
+export const printSpecialList = specialList();
