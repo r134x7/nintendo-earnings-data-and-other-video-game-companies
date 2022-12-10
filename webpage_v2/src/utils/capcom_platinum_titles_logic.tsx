@@ -9,6 +9,7 @@ export type Titles = {
     rank?: number,
     label?: " New! " | " Recurring " | " Sporadic ",
     miscellaneous?: string,
+    fiscalYear?: string,
 }
 
 export type Header = {

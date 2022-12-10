@@ -44,27 +44,43 @@ const totalCollection: collectionData[] = [
     platinumTitles2023,    
 ];
 
-const makeValues: collectionData[] = totalCollection.map(elem => {
-    return {
-        ...elem,
-        createdTitles: titlesMake(elem.titles, undefined, undefined)
-    }
+const makeValues: Titles[][][] = totalCollection.map(data => {
+
+    let makeTitles = titlesMake(data.titles, undefined, undefined);
+
+    return makeTitles.map(elem => elem.map(value => { return { ...value, fiscalYear: data.fiscalYearCml} }))
 });
 
 // created titles for each fiscal year...
 // need to filter through each titles and get the Q4 value and the fiscal year date... end up with a 
 
-function accumulateValues(getCollection: collectionData[]) {
+function sortingTitles(title: Titles[])  {
 
-    let x = getCollection[0].titles[0];
-    console.log(x);
+    const testTitles = makeValues.map((elem, index) => {
+
+        return (elem.map(value => value.filter(i => i.title === title[0].title && i.period === " 4th Quarter  "))).flat()
+    }).flat();
+
+    return testTitles
     
 };
 
 
-test("accumualateValues", async () => {
+test("accumualateValues", () => {
 
-    console.log(accumulateValues(makeValues));
+    // let latestTitlesList = makeValues.map((elem, index) => {
+
+    //     return sortingTitles(elem)
+    // });
+    let latestTitlesList = makeValues.map((elem, index) => {
+
+        return elem.map(value => {
+            return sortingTitles(value)
+        })
+    });
+
+    console.log(latestTitlesList[0]);
     
+
     
 });

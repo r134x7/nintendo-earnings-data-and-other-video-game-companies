@@ -26,7 +26,7 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
     // latestFYcollection is where the latest FY collection needs to be placed.
     // const latestFYcollection = fy3_2023_collection.map((elem, index) => {
     const latestFYcollection = totalCollection[totalCollection.length-1].map((elem, index) => {
-        
+        // takes the latest data in the collection, maps it because it contains all the titles up to that date, 
         return sortingArrays(index)
     })
 
@@ -46,9 +46,9 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
     globalLTDSummaryHeader: "| Global LTD                      |",
     }
 
-    function sortingArrays(titleCount: number) {
+    function sortingArrays(titleCount: number): Titles[] {
 
-        const testTitle1 = totalCollection.map((elem, index) => {
+        const testTitle1: Titles[][] = totalCollection.map((elem, index) => {
             
             return (elem[titleCount] === undefined)
                 ? []
@@ -56,12 +56,12 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
     
         }).filter((elem) => elem.length !== 0)
 
-        const filterTitle1 = testTitle1.map((elem) => {
+        const filterTitle1: Titles[][] = testTitle1.map((elem) => {
             return elem.filter((secondElem, index, array) => {
                 return secondElem.valueC !== 0 && secondElem.period === " 4th Quarter  "
             })
         }).filter((elem) => elem.length !== 0) 
-        
+        // returns Titles[]
         return filterTitle1.flat() // return was deeply nested
     }
     
