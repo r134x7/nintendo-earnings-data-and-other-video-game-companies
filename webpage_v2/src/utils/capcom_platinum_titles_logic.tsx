@@ -301,8 +301,10 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
             : "+" + "-".repeat(32) + "+";
     let printDoubleLine: string = "+" + "=".repeat(32) + "+";
 
-    let printMiscellaneous: string | never[] = (titleDifference[0].miscellaneous)
-                ? titleDifference[0].miscellaneous
+    let checker = (titleDifference[0].fiscalYear === undefined) ? 0 : titleDifference.length-1
+
+    let printMiscellaneous: string | never[] = (titleDifference[checker].miscellaneous)
+                ? titleDifference[checker].miscellaneous as string
                 : []
 
     const lastCheck = [
