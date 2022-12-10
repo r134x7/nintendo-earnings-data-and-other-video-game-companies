@@ -49,7 +49,6 @@ export type collectionData = {
     summaryHeader: string,
     titles: getTitles[],
     delistedTitles?: getTitles[],
-    createdTitles?: Titles[][],
 }
 
 const collection: collectionData[] = [
@@ -165,8 +164,8 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
 //         summaryHeader: elem.summaryHeader,
 //     };
 
-//     let prevFYCheck = (array[index+1] === undefined) ? undefined : array[index+1].titles;
-//     let prev2FYsCheck = (array[index+2] === undefined) ? undefined : array[index+2].titles;
+    // let prevFYCheck = (array[index+1] === undefined) ? undefined : array[index+1].titles;
+    // let prev2FYsCheck = (array[index+2] === undefined) ? undefined : array[index+2].titles;
 
 //     let delistedTitlesCheck: getTitles[] = (elem.delistedTitles === undefined)
 //             ? elem.titles

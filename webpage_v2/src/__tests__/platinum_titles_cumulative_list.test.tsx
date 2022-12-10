@@ -1,4 +1,4 @@
-import { Titles } from "../utils/capcom_platinum_titles_logic";
+import { Titles, Header, printTitles } from "../utils/capcom_platinum_titles_logic";
 import { titlesMake, getTitles, collectionData } from "../data/capcom/platinum_titles_Capcom";
 
 // found a source for why I need to import the JSON like this in Jest testing: https://github.com/nrwl/nx/issues/5195 
@@ -43,6 +43,21 @@ const totalCollection: collectionData[] = [
     platinumTitles2022,        
     platinumTitles2023,    
 ];
+
+function yearlyCalculation(years: Titles[]) {
+
+   const calc: Titles[] = years.map((elem, index, array) => {
+       return (index !== 0)
+               ? {
+                ...elem,
+                value: Number((elem.value - array[index-1].value).toFixed(2))
+               }
+               : elem 
+   })
+
+   return calc
+};
+
 
 const makeValues: Titles[][][] = totalCollection.map((data, index, array) => {
 
@@ -94,7 +109,7 @@ test("accumualateValues", () => {
 
     let filteredList = latestTitlesList.filter(elem => elem.length !== 0);
 
-    let sortedList = filteredList.map(elem => elem).sort((b, a) => {
+    let sortedList: Titles[][] = filteredList.map(elem => elem).sort((b, a) => {
         return (a[a.length-1].value > b[b.length-1].value)
             ? 1
             : (a[a.length-1].value < b[b.length-1].value)
@@ -106,7 +121,29 @@ test("accumualateValues", () => {
             })  
     });
 
-    console.log(sortedList);
+    // console.log(sortedList);
+    
+    let yearlyCalcList = sortedList.map(elem => yearlyCalculation(elem));
+
+    // console.log(yearlyCalcList);
+    
+    let header: Header = {
+        capcomHeader: "| Capcom - Platinum Titles       |",
+        secondHeader: "| Title                          |",
+        thirdHeader: "| Platform                       |",
+        fourthHeader: "| Release Date and Rank          |",
+        fifthHeader: "| Units                          |",
+        fiscalYear: "22222",
+        fiscalYearYoY: "33333",
+        ltd: "| Life-To-Date       |",
+        summaryHeader: "444444",
+    };
+
+    let printAll = yearlyCalcList.map((elem, index) => {
+        return printTitles(header, elem, sortedList[index], 9999)
+    }) as string[];
+
+    // console.log(printAll);
     
 
     

@@ -24,6 +24,20 @@ export type Header = {
     summaryHeader: string,
 }
 
+export function yearlyCalculation(years: Titles[]) {
+
+   const calc: Titles[] = years.map((elem, index, array) => {
+       return (index !== 0)
+               ? {
+                ...elem,
+                value: Number((elem.value - array[index-1].value).toFixed(2))
+               }
+               : elem 
+   })
+
+   return calc
+};
+
 export function quarterlyCalculation(quarters: Titles[]) {
        
    const calc: Titles[] = quarters.map((elem, index, array) => {
@@ -159,7 +173,9 @@ ${header.fifthHeader}
 
 export const printTitles = (header: Header, titleDifference: Titles[], titleCumulative: Titles[], currentQuarter: number) => {
 
-    const titleHeader = titleDifference.filter((elem, index) => index === 0).map((elem, index, array) => {
+    const titleHeader = titleDifference.filter((elem, index, array) => {
+       return (elem.fiscalYear === undefined) ? index === 0 : array[index] === array[array.length-1] 
+    }).map((elem, index, array) => {
 
         let printRank: string = ` Rank ${elem.rank} `
         let printRankFixed: string = (printRank.length >= 11)
@@ -223,14 +239,16 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
             ? printValue
             : " ".repeat(11 - printValue.length) + printValue;
 
-        let printPeriodFixed: string = elem.period + " ".repeat(6)
+        let printPeriodFixed: string = (elem.fiscalYear === undefined) 
+                ? "|" + elem.period + " ".repeat(6) + "|"
+                : elem.fiscalYear
 
-        return "|" + printPeriodFixed + "|" + printValueFixed + "|"
+        return  printPeriodFixed + printValueFixed + "|"
     });
 
     const printLTD = [""].map((elem, index, array) => {
 
-       let printValue: string = `${titleCumulative[currentQuarter-1].value}M `
+       let printValue: string = (titleCumulative[0].fiscalYear === undefined) ? `${titleCumulative[currentQuarter-1].value}M ` : `${titleCumulative[titleCumulative.length-1].value}M ` 
        
        let printValueFixed: string = (printValue.length >= 11)
             ? printValue
@@ -254,18 +272,22 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
             ? reducedValue
             : " ".repeat(11 - reducedValue.length) + reducedValue; 
 
-        return header.fiscalYear + reducedValueFixed + "|"
-    })
+        return (titleDifference[0].fiscalYear === undefined)
+            ? header.fiscalYear + reducedValueFixed + "|"
+            : []
+    }).flat() // was returning [][] making it not the same like the others when filtering to remove from the print with the new special data
 
-    const printFYCmlYoY = (currentQuarter === 4 && titleCumulative[4].value === 0)
+    const printFYCmlYoY = (titleCumulative[0].fiscalYear !== undefined) 
+    ? "NaN"
+    : (currentQuarter === 4 && titleCumulative[4].value === 0)
         ? " New! "
         : (currentQuarter === 4 && (titleCumulative[3].value - titleCumulative[4].value) > (titleCumulative[4].value - titleCumulative[5].value))
-        ? `+${((
-            ((titleCumulative[3].value - titleCumulative[4].value) / (titleCumulative[4].value - titleCumulative[5].value)) - 1) * 100).toFixed(2)}% ` 
-        : (currentQuarter === 4 && (titleCumulative[3].value - titleCumulative[4].value) < (titleCumulative[4].value - titleCumulative[5].value))
-        ? `${((
-            ((titleCumulative[3].value - titleCumulative[4].value) / (titleCumulative[4].value - titleCumulative[5].value)) - 1) * 100).toFixed(2)}% ` 
-        : "NaN" 
+            ? `+${((
+                ((titleCumulative[3].value - titleCumulative[4].value) / (titleCumulative[4].value - titleCumulative[5].value)) - 1) * 100).toFixed(2)}% ` 
+            : (currentQuarter === 4 && (titleCumulative[3].value - titleCumulative[4].value) < (titleCumulative[4].value - titleCumulative[5].value))
+                ? `${((
+                    ((titleCumulative[3].value - titleCumulative[4].value) / (titleCumulative[4].value - titleCumulative[5].value)) - 1) * 100).toFixed(2)}% ` 
+                : "NaN" 
     
     const printFYCmlYoYFixed: string | never[] = (printFYCmlYoY === "NaN")
             ? []
