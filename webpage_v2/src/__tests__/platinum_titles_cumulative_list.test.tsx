@@ -56,30 +56,42 @@ const makeValues: Titles[][][] = totalCollection.map(data => {
 
 function sortingTitles(title: Titles[])  {
 
-    const testTitles = makeValues.map((elem, index) => {
+    // const testTitles = makeValues.map((elem, index) => {
 
-        return (elem.map(value => value.filter(i => i.title === title[0].title && i.period === " 4th Quarter  "))).flat()
+    //     return (elem.map(value => value.filter(i => i.title === title[0].title && i.period === " 4th Quarter  "))).flat()
+    // }).flat();
+
+    const testTitles: Titles[] = makeValues.map((elem, index) => {
+
+        return (elem.map(value => value.filter((v, i, array) => {
+            return v.releaseDate === title[0].releaseDate && v.title === title[0].title && v.period === " 4th Quarter  " && v.value !== array[i-1].value
+        }))
+        ).flat()
     }).flat();
 
     return testTitles
-    
 };
 
 
 test("accumualateValues", () => {
 
+    let latestTitlesList = makeValues[makeValues.length-1].map((elem, index) => {
+
+        return sortingTitles(elem)
+    });
     // let latestTitlesList = makeValues.map((elem, index) => {
 
-    //     return sortingTitles(elem)
+    //     return elem.map(value => {
+    //         return sortingTitles(value)
+    //     })
     // });
-    let latestTitlesList = makeValues.map((elem, index) => {
 
-        return elem.map(value => {
-            return sortingTitles(value)
-        })
-    });
+    // console.log(latestTitlesList);
 
-    console.log(latestTitlesList[0]);
+    let filteredList = latestTitlesList.filter(elem => elem.length !== 0);
+
+    console.log(filteredList);
+    
     
 
     
