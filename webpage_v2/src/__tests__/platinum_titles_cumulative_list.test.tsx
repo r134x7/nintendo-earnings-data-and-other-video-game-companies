@@ -44,9 +44,12 @@ const totalCollection: collectionData[] = [
     platinumTitles2023,    
 ];
 
-const makeValues: Titles[][][] = totalCollection.map(data => {
+const makeValues: Titles[][][] = totalCollection.map((data, index, array) => {
 
-    let makeTitles = titlesMake(data.titles, undefined, undefined);
+    let prevFYCheck = (array[index-1] === undefined) ? undefined : array[index-1].titles;
+    let prev2FYsCheck = (array[index-2] === undefined) ? undefined : array[index-2].titles;
+
+    let makeTitles = titlesMake(data.titles, prevFYCheck, prev2FYsCheck);
 
     return makeTitles.map(elem => elem.map(value => { return { ...value, fiscalYear: data.fiscalYearCml} }))
 });
@@ -60,11 +63,12 @@ function sortingTitles(title: Titles[])  {
 
     //     return (elem.map(value => value.filter(i => i.title === title[0].title && i.period === " 4th Quarter  "))).flat()
     // }).flat();
-
+    console.log(makeValues.length);
+    
     const testTitles: Titles[] = makeValues.map((elem, index) => {
 
         return (elem.map(value => value.filter((v, i, array) => {
-            return v.releaseDate === title[0].releaseDate && v.title === title[0].title && v.period === " 4th Quarter  " && v.value !== array[i-1].value
+            return v.releaseDate === title[0].releaseDate && v.title === title[0].title && v.period === " 4th Quarter  " && v.value !== array[4].value // checks that Q4 value isn't the same as the last FY value
         }))
         ).flat()
     }).flat();
