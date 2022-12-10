@@ -63,7 +63,7 @@ function sortingTitles(title: Titles[])  {
 
     //     return (elem.map(value => value.filter(i => i.title === title[0].title && i.period === " 4th Quarter  "))).flat()
     // }).flat();
-    console.log(makeValues.length);
+    // console.log(makeValues.length);
     
     const testTitles: Titles[] = makeValues.map((elem, index) => {
 
@@ -94,8 +94,19 @@ test("accumualateValues", () => {
 
     let filteredList = latestTitlesList.filter(elem => elem.length !== 0);
 
-    console.log(filteredList);
-    
+    let sortedList = filteredList.map(elem => elem).sort((b, a) => {
+        return (a[a.length-1].value > b[b.length-1].value)
+            ? 1
+            : (a[a.length-1].value < b[b.length-1].value)
+            ? -1
+            : 0 
+    }).map((elem, index) => {    
+            return elem.map((elemTitle) => {
+                return {...elemTitle, rank: index+1}
+            })  
+    });
+
+    console.log(sortedList);
     
 
     
