@@ -28,7 +28,7 @@ import platinumTitles2008 from "./Platinum_Titles/platinum_titles_fy3_2008.json"
 import platinumTitles2007 from "./Platinum_Titles/platinum_titles_fy3_2007.json";
 import platinumTitles2006 from "./Platinum_Titles/platinum_titles_fy3_2006.json";
 
-type getTitles = {
+export type getTitles = {
     title: string;
     releaseDate: string;
     platforms: string;
@@ -41,7 +41,7 @@ type getTitles = {
     miscellaneous?: string;
 }
 
-type collectionData = {
+export type collectionData = {
     currentQuarter: number,
     footnotes?: string,
     fiscalYearCml: string,
@@ -49,6 +49,7 @@ type collectionData = {
     summaryHeader: string,
     titles: getTitles[],
     delistedTitles?: getTitles[],
+    createdTitles?: Titles[][],
 }
 
 const collection: collectionData[] = [
@@ -72,7 +73,7 @@ const collection: collectionData[] = [
     platinumTitles2006,
 ];
 
-const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, prev2FYs: getTitles[] | undefined): Titles[][] => {
+export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, prev2FYs: getTitles[] | undefined): Titles[][] => {
     
     let title: Titles[][] = obj.map(elem => {
 
@@ -148,166 +149,166 @@ const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, prev2FYs:
     return title 
 };
 
-export const allPlatinumTitlesList: string[] = collection.map((elem, index, array) => {
+// export const allPlatinumTitlesList: string[] = collection.map((elem, index, array) => {
 
-    let currentQuarter = elem.currentQuarter;
+//     let currentQuarter = elem.currentQuarter;
 
-    let header: Header = {
-        capcomHeader: "| Capcom - Platinum Titles       |",
-        secondHeader: "| Title                          |",
-        thirdHeader: "| Platform                       |",
-        fourthHeader: "| Release Date and Rank          |",
-        fifthHeader: "| Units                          |",
-        fiscalYear: elem.fiscalYearCml,
-        fiscalYearYoY: elem.fiscalYearYoY,
-        ltd: "| Life-To-Date       |",
-        summaryHeader: elem.summaryHeader,
-    };
+//     let header: Header = {
+//         capcomHeader: "| Capcom - Platinum Titles       |",
+//         secondHeader: "| Title                          |",
+//         thirdHeader: "| Platform                       |",
+//         fourthHeader: "| Release Date and Rank          |",
+//         fifthHeader: "| Units                          |",
+//         fiscalYear: elem.fiscalYearCml,
+//         fiscalYearYoY: elem.fiscalYearYoY,
+//         ltd: "| Life-To-Date       |",
+//         summaryHeader: elem.summaryHeader,
+//     };
 
-    let prevFYCheck = (array[index+1] === undefined) ? undefined : array[index+1].titles;
-    let prev2FYsCheck = (array[index+2] === undefined) ? undefined : array[index+2].titles;
+//     let prevFYCheck = (array[index+1] === undefined) ? undefined : array[index+1].titles;
+//     let prev2FYsCheck = (array[index+2] === undefined) ? undefined : array[index+2].titles;
 
-    let delistedTitlesCheck: getTitles[] = (elem.delistedTitles === undefined)
-            ? elem.titles
-            : elem.titles.concat(elem.delistedTitles);
+//     let delistedTitlesCheck: getTitles[] = (elem.delistedTitles === undefined)
+//             ? elem.titles
+//             : elem.titles.concat(elem.delistedTitles);
 
-    let titlesList: Titles[][] = titlesMake(delistedTitlesCheck, prevFYCheck, prev2FYsCheck);
+//     let titlesList: Titles[][] = titlesMake(delistedTitlesCheck, prevFYCheck, prev2FYsCheck);
 
-    let sortedAllCollection = titlesList.map((elem, index, array) => {
-                return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
-        }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
-            return (a[currentQuarter-1].value > b[currentQuarter-1].value)
-                ? 1
-                : (a[currentQuarter-1].value < b[currentQuarter-1].value)
-                ? -1
-                : 0
-        }).map((elem, index) => {
-            // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
-            const x: Titles[] = [...elem].map((elemTwo) => {
-                return {...elemTwo, rank: index+1} 
-            })
-            return x // x which is the returned array is now returned to the array of arrays
-        })
+//     let sortedAllCollection = titlesList.map((elem, index, array) => {
+//                 return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+//         }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+//             return (a[currentQuarter-1].value > b[currentQuarter-1].value)
+//                 ? 1
+//                 : (a[currentQuarter-1].value < b[currentQuarter-1].value)
+//                 ? -1
+//                 : 0
+//         }).map((elem, index) => {
+//             // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+//             const x: Titles[] = [...elem].map((elemTwo) => {
+//                 return {...elemTwo, rank: index+1} 
+//             })
+//             return x // x which is the returned array is now returned to the array of arrays
+//         })
     
     
-    let differenceAllTitles = sortedAllCollection.map((elem) => {
-        return quarterlyCalculation(elem)
-        })
+//     let differenceAllTitles = sortedAllCollection.map((elem) => {
+//         return quarterlyCalculation(elem)
+//         })
     
-    let printListedTitlesAll = differenceAllTitles.map((elem, index) => {
-        return printTitles(header, elem, sortedAllCollection[index], currentQuarter)
-    }) as string[];
+//     let printListedTitlesAll = differenceAllTitles.map((elem, index) => {
+//         return printTitles(header, elem, sortedAllCollection[index], currentQuarter)
+//     }) as string[];
 
-    let printOne = printHead(header);
+//     let printOne = printHead(header);
 
-    let printAllPlatinumTitles: string = (elem.footnotes === undefined) 
-                ? [printOne, ...printListedTitlesAll].reduce((prev, next) => prev + "\n" + next )
-                : [printOne, ...printListedTitlesAll, elem.footnotes].reduce((prev, next) => prev + "\n" + next )
+//     let printAllPlatinumTitles: string = (elem.footnotes === undefined) 
+//                 ? [printOne, ...printListedTitlesAll].reduce((prev, next) => prev + "\n" + next )
+//                 : [printOne, ...printListedTitlesAll, elem.footnotes].reduce((prev, next) => prev + "\n" + next )
 
-    return printAllPlatinumTitles
-});
+//     return printAllPlatinumTitles
+// });
 
-export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array) => {
+// export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array) => {
 
-    let currentQuarter = elem.currentQuarter;
+//     let currentQuarter = elem.currentQuarter;
 
-    let header: Header = {
-        capcomHeader: "| Capcom - Platinum Titles       |",
-        secondHeader: "| Title                          |",
-        thirdHeader: "| Platform                       |",
-        fourthHeader: "| Release Date and Rank          |",
-        fifthHeader: "| Units                          |",
-        fiscalYear: elem.fiscalYearCml,
-        fiscalYearYoY: elem.fiscalYearYoY,
-        ltd: "| Life-To-Date       |",
-        summaryHeader: elem.summaryHeader,
-    };
+//     let header: Header = {
+//         capcomHeader: "| Capcom - Platinum Titles       |",
+//         secondHeader: "| Title                          |",
+//         thirdHeader: "| Platform                       |",
+//         fourthHeader: "| Release Date and Rank          |",
+//         fifthHeader: "| Units                          |",
+//         fiscalYear: elem.fiscalYearCml,
+//         fiscalYearYoY: elem.fiscalYearYoY,
+//         ltd: "| Life-To-Date       |",
+//         summaryHeader: elem.summaryHeader,
+//     };
 
-    let prevFYCheck = (array[index+1] === undefined) ? undefined : array[index+1].titles;
-    let prev2FYsCheck = (array[index+2] === undefined) ? undefined : array[index+2].titles; 
+//     let prevFYCheck = (array[index+1] === undefined) ? undefined : array[index+1].titles;
+//     let prev2FYsCheck = (array[index+2] === undefined) ? undefined : array[index+2].titles; 
 
-    let delistedTitlesCheck: getTitles[] = (elem.delistedTitles === undefined)
-            ? elem.titles
-            : elem.titles.concat(elem.delistedTitles);
+//     let delistedTitlesCheck: getTitles[] = (elem.delistedTitles === undefined)
+//             ? elem.titles
+//             : elem.titles.concat(elem.delistedTitles);
 
-    let titlesList: Titles[][] = titlesMake(delistedTitlesCheck, prevFYCheck, prev2FYsCheck);
+//     let titlesList: Titles[][] = titlesMake(delistedTitlesCheck, prevFYCheck, prev2FYsCheck);
 
-    let sortedFYCollection = titlesList.filter((elem, index, array) => {
-            return elem[3].value - elem[4].value !== 0
-            // we need to create a new array that is identical to the original due to sort's mutating properties. filter titles that sold units this FY
-    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
-        return (a[currentQuarter-1].value - a[4].value > b[currentQuarter-1].value - b[4].value)
-            ? 1
-            : (a[currentQuarter-1].value - a[4].value < b[currentQuarter-1].value - b[4].value)
-            ? -1
-            : 0
-    }).map((elem, index) => {
-        // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
-        const x: Titles[] = [...elem].map((elemTwo) => {
-            return {...elemTwo, rank: index+1} 
-        })
-        return x // x which is the returned array is now returned to the array of arrays
-    });
+//     let sortedFYCollection = titlesList.filter((elem, index, array) => {
+//             return elem[3].value - elem[4].value !== 0
+//             // we need to create a new array that is identical to the original due to sort's mutating properties. filter titles that sold units this FY
+//     }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+//         return (a[currentQuarter-1].value - a[4].value > b[currentQuarter-1].value - b[4].value)
+//             ? 1
+//             : (a[currentQuarter-1].value - a[4].value < b[currentQuarter-1].value - b[4].value)
+//             ? -1
+//             : 0
+//     }).map((elem, index) => {
+//         // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+//         const x: Titles[] = [...elem].map((elemTwo) => {
+//             return {...elemTwo, rank: index+1} 
+//         })
+//         return x // x which is the returned array is now returned to the array of arrays
+//     });
 
-    let differenceFYTitles = sortedFYCollection.map((elem) => {
-        return quarterlyCalculation(elem)
-    })
+//     let differenceFYTitles = sortedFYCollection.map((elem) => {
+//         return quarterlyCalculation(elem)
+//     })
 
-    let printListedTitlesFY = differenceFYTitles.map((elem, index) => {
-        return printTitles(header, elem, sortedFYCollection[index], currentQuarter)
-    }) as string[];
+//     let printListedTitlesFY = differenceFYTitles.map((elem, index) => {
+//         return printTitles(header, elem, sortedFYCollection[index], currentQuarter)
+//     }) as string[];
 
-    let newTitles = sortedFYCollection.map((elem) => {
-            return labelTitles(elem)
-        }).map((elem) => {
-            return elem.filter((secondElem) => {
-                return secondElem.label === " New! "
-            })
-        }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
-        ).map((elem) => {
-        return elem[3].value // 4th quarter, new titles would not have last FY numbers, therefore can be summed up. 
-        })
+//     let newTitles = sortedFYCollection.map((elem) => {
+//             return labelTitles(elem)
+//         }).map((elem) => {
+//             return elem.filter((secondElem) => {
+//                 return secondElem.label === " New! "
+//             })
+//         }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
+//         ).map((elem) => {
+//         return elem[3].value // 4th quarter, new titles would not have last FY numbers, therefore can be summed up. 
+//         })
 
-    let newSum = newTitles.reduce((prev, next) => prev + next, 0);        
+//     let newSum = newTitles.reduce((prev, next) => prev + next, 0);        
 
-    let recurringTitles = sortedFYCollection.map((elem) => {
-            return labelTitles(elem)
-        }).map((elem) => {
-            return elem.filter((secondElem) => {
-                return secondElem.label === " Recurring "
-            })
-        }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
-        ).map((elem) => {
-            return elem[3].value - elem[4].value // to get FY cml. number
-        })
+//     let recurringTitles = sortedFYCollection.map((elem) => {
+//             return labelTitles(elem)
+//         }).map((elem) => {
+//             return elem.filter((secondElem) => {
+//                 return secondElem.label === " Recurring "
+//             })
+//         }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
+//         ).map((elem) => {
+//             return elem[3].value - elem[4].value // to get FY cml. number
+//         })
 
-    let recurringSum = recurringTitles.reduce((prev, next) => prev + next, 0)    
+//     let recurringSum = recurringTitles.reduce((prev, next) => prev + next, 0)    
 
-    let sporadicTitles = sortedFYCollection.map((elem) => {
-            return labelTitles(elem)
-        }).map((elem) => {
-            return elem.filter((secondElem) => {
-                return secondElem.label === " Sporadic " 
-            })
-        }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
-        ).map((elem) => {
-            return elem[3].value - elem[4].value // to get FY cml. number
-        })
+//     let sporadicTitles = sortedFYCollection.map((elem) => {
+//             return labelTitles(elem)
+//         }).map((elem) => {
+//             return elem.filter((secondElem) => {
+//                 return secondElem.label === " Sporadic " 
+//             })
+//         }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
+//         ).map((elem) => {
+//             return elem[3].value - elem[4].value // to get FY cml. number
+//         })
 
-    let sporadicSum = sporadicTitles.reduce((prev, next) => prev + next, 0)    
+//     let sporadicSum = sporadicTitles.reduce((prev, next) => prev + next, 0)    
 
 
-    let printOne = printHead(header);
+//     let printOne = printHead(header);
 
-    let printSummaryOne = printSummaryHead(header, newTitles, recurringTitles, sporadicTitles)
+//     let printSummaryOne = printSummaryHead(header, newTitles, recurringTitles, sporadicTitles)
 
-    let printSummaryTwo = printSummary(header, newSum, recurringSum, sporadicSum)
+//     let printSummaryTwo = printSummary(header, newSum, recurringSum, sporadicSum)
 
-    let printListedTitlesFYFixed: string[] = (elem.footnotes === undefined) ? printListedTitlesFY : printListedTitlesFY.concat(elem.footnotes) 
+//     let printListedTitlesFYFixed: string[] = (elem.footnotes === undefined) ? printListedTitlesFY : printListedTitlesFY.concat(elem.footnotes) 
 
-    let printFYPlatinumTitles: string = (currentQuarter !== 4)
-        ? [printOne, ...printListedTitlesFYFixed].reduce((prev, next) => prev + "\n" + next )
-        : [printSummaryOne, printSummaryTwo, printOne, ...printListedTitlesFYFixed,].reduce((prev, next) => prev + "\n" + next )
+//     let printFYPlatinumTitles: string = (currentQuarter !== 4)
+//         ? [printOne, ...printListedTitlesFYFixed].reduce((prev, next) => prev + "\n" + next )
+//         : [printSummaryOne, printSummaryTwo, printOne, ...printListedTitlesFYFixed,].reduce((prev, next) => prev + "\n" + next )
 
-    return printFYPlatinumTitles
-});
+//     return printFYPlatinumTitles
+// });
