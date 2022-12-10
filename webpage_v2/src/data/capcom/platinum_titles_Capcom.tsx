@@ -403,7 +403,7 @@ const specialList = (): string => {
         return printTitles(header, elem, sortedList[index], 9999)
     }) as string[];
 
-    return printAll.reduce((acc, next) => acc + next) 
+    return printAll.reduce((acc, next) => acc + "\n" + next) 
 };
 
 export const printSpecialList = specialList();
