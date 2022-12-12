@@ -28,7 +28,7 @@ export default function EVENTS_CALENDAR() {
             id: 2,
             companyName: "Nintendo",
             eventName: "2nd Quarter Earnings Results",
-            eventDate: "November 8, 2022",
+            eventDate: "February 7, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.nintendo.co.jp/ir/en/",
         },
