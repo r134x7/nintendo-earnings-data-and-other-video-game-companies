@@ -21,7 +21,7 @@ const removeCommas = (readQuarterLocal) => {
     let four = three.replaceAll(/Europe\d+/g, "\r\nEurope");
     let five = four.replaceAll(/Other\d+/g, "\r\nOther");
     let six = five.replaceAll(/Total\d+/g, "\r\nTotal");
-    let seven = six.match(/New titles(.*)/g, "");
+    let seven = six.replaceAll(/New titles(.*)/g, "");
 
     let eight = seven.match(/Japan\s\d+|Americas\s\d+|Other\s\d+|Europe\s\d+|Total\s\d+|Nintendo Switch (Hardware \(Total\)|OLED Model|Lite)|Nintendo Switch|Switch Software/g);
 
@@ -33,28 +33,66 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
         return null
     };
 
-    return Array.from({length:(newQuarterLocal.length/4)}, (v,i) => {
+    return Array.from({length:(newQuarterLocal.length/6)}, (v,i) => {
 
-        let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem,index,array) => (elem.title === newQuarterLocal[(i*4)+1]) && (elem.releaseDate === newQuarterLocal[i*4])); // searching by title name and release date should only match one title
+        let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem,index,array) => (elem.name === newQuarterLocal[(i*6)])); // searching by name
 
         return (!searchTitle[0])
             ? {
-                title: newQuarterLocal[(i*4)+1],
-                releaseDate: newQuarterLocal[i*4],
-                platforms: newQuarterLocal[(i*4)+2],
-                Q1CmlValue: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*4)+3]),
-                Q2CmlValue: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*4)+3]),
-                Q3CmlValue: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*4)+3]),
-                Q4CmlValue: Number(newQuarterLocal[(i*4)+3]),
+                name: newQuarterLocal[(i*6)],
+                regionA: "Global",
+                Q1CmlValueA: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+5].match(/\d+/)),
+                Q2CmlValueA: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*6)+5].match(/\d+/)),
+                Q3CmlValueA: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*6)+5].match(/\d+/)),
+                Q4CmlValueA: Number(newQuarterLocal[(i*6)+5].match(/\d+/)),
+                regionB: "Japan",
+                Q1CmlValueB: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+1].match(/\d+/)),
+                Q2CmlValueB: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*6)+1].match(/\d+/)),
+                Q3CmlValueB: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*6)+1].match(/\d+/)),
+                Q4CmlValueB: Number(newQuarterLocal[(i*6)+1].match(/\d+/)),
+                regionC: "The Americas",
+                Q1CmlValueC: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+2].match(/\d+/)),
+                Q2CmlValueC: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*6)+2].match(/\d+/)),
+                Q3CmlValueC: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*6)+2].match(/\d+/)),
+                Q4CmlValueC: Number(newQuarterLocal[(i*6)+2].match(/\d+/)),
+                regionD: "Europe",
+                Q1CmlValueD: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+3].match(/\d+/)),
+                Q2CmlValueD: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*6)+3].match(/\d+/)),
+                Q3CmlValueD: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*6)+3].match(/\d+/)),
+                Q4CmlValueD: Number(newQuarterLocal[(i*6)+3].match(/\d+/)),
+                regionE: "Other",
+                Q1CmlValueE: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+4].match(/\d+/)),
+                Q2CmlValueE: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*6)+4].match(/\d+/)),
+                Q3CmlValueE: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*6)+4].match(/\d+/)),
+                Q4CmlValueE: Number(newQuarterLocal[(i*6)+4].match(/\d+/)),
             } 
             : {
-                title: newQuarterLocal[(i*4)+1],
-                releaseDate: newQuarterLocal[i*4],
-                platforms: newQuarterLocal[(i*4)+2],
-                Q1CmlValue: searchTitle[0].Q1CmlValue,
-                Q2CmlValue: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*4)+3]) : searchTitle[0].Q2CmlValue,
-                Q3CmlValue: (currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*4)+3]) : searchTitle[0].Q3CmlValue,
-                Q4CmlValue: Number(newQuarterLocal[(i*4)+3]),
+                name: newQuarterLocal[(i*6)],
+                regionA: "Global",
+                Q1CmlValueA: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+5].match(/\d+/)),
+                Q2CmlValueA: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*6)+5].match(/\d+/)) : searchTitle[0].Q2CmlValueA,
+                Q3CmlValueA: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*6)+5].match(/\d+/)) : searchTitle[0].Q3CmlValueA,
+                Q4CmlValueA: Number(newQuarterLocal[(i*6)+5].match(/\d+/)),
+                regionB: "Japan",
+                Q1CmlValueB: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+1].match(/\d+/)),
+                Q2CmlValueB: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*6)+1].match(/\d+/)) : searchTitle[0].Q2CmlValueB,
+                Q3CmlValueB: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*6)+1].match(/\d+/)) : searchTitle[0].Q3CmlValueB,
+                Q4CmlValueB: Number(newQuarterLocal[(i*6)+1].match(/\d+/)),
+                regionC: "The Americas",
+                Q1CmlValueC: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+2].match(/\d+/)),
+                Q2CmlValueC: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*6)+2].match(/\d+/)) : searchTitle[0].Q2CmlValueC,
+                Q3CmlValueC: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*6)+2].match(/\d+/)) : searchTitle[0].Q3CmlValueC,
+                Q4CmlValueC: Number(newQuarterLocal[(i*6)+2].match(/\d+/)),
+                regionD: "Europe",
+                Q1CmlValueD: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+3].match(/\d+/)),
+                Q2CmlValueD: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*6)+3].match(/\d+/)) : searchTitle[0].Q2CmlValueD,
+                Q3CmlValueD: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*6)+3].match(/\d+/)) : searchTitle[0].Q3CmlValueD,
+                Q4CmlValueD: Number(newQuarterLocal[(i*6)+3].match(/\d+/)),
+                regionE: "Other",
+                Q1CmlValueE: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+4].match(/\d+/)),
+                Q2CmlValueE: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*6)+4].match(/\d+/)) : searchTitle[0].Q2CmlValueE,
+                Q3CmlValueE: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*6)+4].match(/\d+/)) : searchTitle[0].Q3CmlValueE,
+                Q4CmlValueE: Number(newQuarterLocal[(i*6)+4].match(/\d+/)),
             };
     });
 };

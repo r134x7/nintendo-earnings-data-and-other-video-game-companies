@@ -39,10 +39,7 @@ Europe2,563 2,846 26,639
 Other700 853 6,915 
 Total9,389 9,541 91,759 21,000 
 
-New titles
-Japan152 151 1,327
-Americas199 252 1,659
-Europe202 227 1,644 
+New titlesJapan152 151 1,327Americas199 252 1,659Europe202 227 1,644 
 [Notes]
 1.Software sales units include both packaged and downloadable versions of software, and do not include download-only software or add-on content.
 2.The number of new titles is the number of packaged software.
