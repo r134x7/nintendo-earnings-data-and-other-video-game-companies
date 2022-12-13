@@ -1,0 +1,54 @@
+(4) Consolidated sales units, number of new titles, and sales units forecast
+Sales Units in Ten Thousands
+Number of New Titles Released
+ActualActual　Life-to-dateForecast
+Apr. '21-Sep. '21    Apr. '22-Sep. '22Sep. '22Apr. '22-Mar. '23  
+Nintendo Switch Hardware (Total)
+Japan203 173 2,696 
+Americas304 256 4,459 
+Europe202 169 2,929 
+Other119 70 1,349 
+Total828 668 11,433 1,900 
+ of which 
+Nintendo Switch
+Japan158 44 1,922 
+Americas215 91 3,299 
+Europe161 72 2,287 
+Other106 15 1,059 
+Total640 223 8,567 
+ of which  
+Nintendo Switch OLED Model
+Japan 114 274 
+Americas 112 307 
+Europe2 79 191 
+Other3 49 162 
+Total6 353 934 
+
+of which 
+Nintendo Switch Lite
+Japan45 15 499 
+Americas89 52 853 
+Europe39 18 451 
+Other10 6 129 
+Total182 92 1,932 
+
+Switch Software
+Japan1,613 2,073 17,509 
+Americas4,513 3,770 40,697 
+Europe2,563 2,846 26,639 
+Other700 853 6,915 
+Total9,389 9,541 91,759 21,000 
+
+New titles
+Japan152 151 1,327
+Americas199 252 1,659
+Europe202 227 1,644 
+[Notes]
+1.Software sales units include both packaged and downloadable versions of software, and do not include download-only software or add-on content.
+2.The number of new titles is the number of packaged software.
+3.Actual software sales units include the quantity bundled with hardware.
+4.While forecasted software sales units include the quantity bundled with hardware for six months ended September 30, 2022, they do not include
+the quantity to be bundled with hardware on and after October 1, 2022.
+Nintendo Co., Ltd.
+- 9 -
+----------------Page (8) Break----------------
