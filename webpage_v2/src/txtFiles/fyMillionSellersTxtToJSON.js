@@ -1,6 +1,7 @@
 import { readFileSync, writeFile } from "fs";
 
 let currentQuarter = 1;
+let currentPlatform = "Wii U";
 
 const readQuarter = (currentQuarterLocal) => {
 
@@ -19,7 +20,7 @@ const checkMatch = (readingQuarter) => {
     return readingQuarter.match(/.+/g)
 };
 
-const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
+const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal, platformLocal) => {
     if (newQuarterLocal === null) {
         return null
     };
@@ -31,22 +32,23 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
         return (!searchTitle[0])
             ? {
                 name: newQuarterLocal[(i*5)],
-                regionA: "   Japan ",
+                platform: platformLocal,
+                regionA: "Japan",
                 Q1CmlValueA: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*5)+2]),
                 Q2CmlValueA: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*5)+2]),
                 Q3CmlValueA: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*5)+2]),
                 Q4CmlValueA: Number(newQuarterLocal[(i*5)+2]),
-                regionB: " Overseas",
+                regionB: "Overseas",
                 Q1CmlValueB: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*5)+3]),
                 Q2CmlValueB: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*5)+3]),
                 Q3CmlValueB: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*5)+3]),
                 Q4CmlValueB: Number(newQuarterLocal[(i*5)+3]),
-                regionC: "   WW FY ",
+                regionC: "WW FY",
                 Q1CmlValueC: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*5)+1]),
                 Q2CmlValueC: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*5)+1]),
                 Q3CmlValueC: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*5)+1]),
                 Q4CmlValueC: Number(newQuarterLocal[(i*5)+1]),
-                regionD: "  WW LTD ",
+                regionD: "WW LTD",
                 Q1CmlValueD: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*5)+4]),
                 Q2CmlValueD: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*5)+4]),
                 Q3CmlValueD: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*5)+4]),
@@ -54,22 +56,23 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
             } 
             : {
                 name: newQuarterLocal[(i*5)],
-                regionA: "   Japan ",
+                platform: platformLocal,
+                regionA: "Japan",
                 Q1CmlValueA: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*5)+2]),
                 Q2CmlValueA: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*5)+2]) : searchTitle[0].Q2CmlValueA,
                 Q3CmlValueA: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*5)+2]) : searchTitle[0].Q3CmlValueA,
                 Q4CmlValueA: Number(newQuarterLocal[(i*5)+2]),
-                regionB: " Overseas",
+                regionB: "Overseas",
                 Q1CmlValueB: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*5)+3]),
                 Q2CmlValueB: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*5)+3]) : searchTitle[0].Q2CmlValueB,
                 Q3CmlValueB: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*5)+3]) : searchTitle[0].Q3CmlValueB,
                 Q4CmlValueB: Number(newQuarterLocal[(i*5)+3]),
-                regionC: "   WW FY ",
+                regionC: "WW FY",
                 Q1CmlValueC: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*5)+1]),
                 Q2CmlValueC: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*5)+1]) : searchTitle[0].Q2CmlValueC,
                 Q3CmlValueC: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*5)+1]) : searchTitle[0].Q3CmlValueC,
                 Q4CmlValueC: Number(newQuarterLocal[(i*5)+1]),
-                regionD: "  WW LTD ",
+                regionD: "WW LTD",
                 Q1CmlValueD: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*5)+4]),
                 Q2CmlValueD: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*5)+4]) : searchTitle[0].Q2CmlValueD,
                 Q3CmlValueD: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*5)+4]) : searchTitle[0].Q3CmlValueD,
@@ -92,7 +95,7 @@ console.log(extractNQ);
 let getCurrentData = getJSON("million_sellers_test.json", currentQuarter);
 let parseCurrentData = (!getCurrentData) ? undefined : JSON.parse(getCurrentData);
 
-let newArray = makeArray(extractNQ, parseCurrentData, currentQuarter);
+let newArray = makeArray(extractNQ, parseCurrentData, currentQuarter, currentPlatform);
 
 let newArrayStringify = JSON.stringify(newArray);
 
