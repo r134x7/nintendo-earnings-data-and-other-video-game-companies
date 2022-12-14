@@ -17,7 +17,8 @@ export type Titles = {
 }
 
 export type Header = {
-    switchHeader: "| Nintendo Switch FY Million-Seller Titles |",
+    mainHeader: "| Fiscal Year Million-Seller Titles |",
+    platformHeader: "| Nintendo Switch                   |", // change this to a string
     secondHeader: "| Title and Rank                           |",
     thirdHeader: "| Units                                    |",
     fiscalYear: string,
@@ -63,7 +64,9 @@ export function quarterlyCalculation(quarters: Titles[]) {
 
 export const printHead = (header: Header) => 
 `+${"-".repeat(42)}+
-${header.switchHeader}
+${header.mainHeader}
++${"-".repeat(42)}+
+${header.platformHeader}
 +${"-".repeat(42)}+
 +${"-".repeat(42)}+
 ${header.secondHeader}

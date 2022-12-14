@@ -18,18 +18,20 @@ import fyMillionSellerTitles2019 from "./FY_Million_Seller_Titles/million_seller
 import fyMillionSellerTitles2018 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2018.json";
 import fyMillionSellerTitles2017 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2017.json";
 
-const collection = [
-    fyMillionSellerTitles2023,
-    fyMillionSellerTitles2022,
-    fyMillionSellerTitles2021,
-    fyMillionSellerTitles2020,
-    fyMillionSellerTitles2019,
-    fyMillionSellerTitles2018,
-    fyMillionSellerTitles2017,
-] as const;
+type collectionJSON = {
+    currentQuarter: number,
+    fiscalYear: string,
+    titles: titlesJSON[],
+    // titles: {
+    //     switch: titlesJSON[],
+    //     0: titlesJSON[],
+    // } // have to think about...
+    // titles: titlesJSON[][]
+};
 
 type titlesJSON = {
     name: string,
+    platform?: string,
     regionA: string,
     Q1CmlValueA: number,
     Q2CmlValueA: number,
@@ -56,6 +58,16 @@ type titlesJSON = {
     valueDLastFY?: number,
     miscellaneous?: string,
 };
+
+const collection: collectionJSON[] = [
+    fyMillionSellerTitles2023,
+    fyMillionSellerTitles2022,
+    fyMillionSellerTitles2021,
+    fyMillionSellerTitles2020,
+    fyMillionSellerTitles2019,
+    fyMillionSellerTitles2018,
+    fyMillionSellerTitles2017,
+] //as const;
 
 export const titlesMake = (obj: titlesJSON): Titles[] => {
 
@@ -136,7 +148,8 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
     let currentQuarter: number = elem.currentQuarter;
 
     let header: Header = {
-        switchHeader: "| Nintendo Switch FY Million-Seller Titles |",
+        mainHeader: "| Fiscal Year Million-Seller Titles |",
+        platformHeader: "| Nintendo Switch                   |",
         secondHeader: "| Title and Rank                           |",
         thirdHeader: "| Units                                    |",
         areaHeader: "| Area         |   Japan | Overseas|",
