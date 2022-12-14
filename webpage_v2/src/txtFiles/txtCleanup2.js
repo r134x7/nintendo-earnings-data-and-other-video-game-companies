@@ -18,7 +18,7 @@ const removeCommas = (readQuarterLocal) => {
 
     let one = readQuarterLocal.replaceAll(",", "");
     // let two = one.replaceAll(/(?<=\d+)\s/g, ",")
-    let two = one.replaceAll(/(?<=\d+)\s|(?<=[A-Za-z])\s(?=\d)/g, ",")
+    let two = one.replaceAll(/(?<=\d+)\s|(?<=[A-Za-z])\s(?=\d)/g, "\r\n")
 
     return two
 };
@@ -113,6 +113,6 @@ console.log(extractNQ);
 // writeFile("regional_data_test.json", newArrayStringify, (err) =>
 //   err ? console.error(err) : console.log('No commas?')
 // );
-writeFile("testData.csv", extractNQ, (err) =>
+writeFile("testData.txt", extractNQ, (err) =>
   err ? console.error(err) : console.log('No commas?')
 );
