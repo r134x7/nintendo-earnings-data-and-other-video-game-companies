@@ -6,8 +6,7 @@ let currentPlatform = "Wii U";
 const readQuarter = (currentQuarterLocal) => {
 
     return (currentQuarterLocal === 1)
-            // ? readFileSync("firstQuarter.txt", "utf-8")
-            ? readFileSync("testData.txt", "utf-8")
+            ? readFileSync("firstQuarter.txt", "utf-8")
             : (currentQuarterLocal === 2)
             ? readFileSync("secondQuarter.txt", "utf-8") 
             : (currentQuarterLocal === 3)
