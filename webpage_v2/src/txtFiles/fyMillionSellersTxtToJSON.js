@@ -1,8 +1,8 @@
 import { readFileSync, writeFile } from "fs";
 
-let currentQuarter = 4;
-// let currentPlatform = "Wii U";
-let currentPlatform = "Nintendo 3DS";
+let currentQuarter = 1;
+let currentPlatform = "Wii U";
+// let currentPlatform = "Nintendo 3DS";
 
 const readQuarter = (currentQuarterLocal) => {
 
@@ -58,22 +58,22 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal, platf
                 name: newQuarterLocal[(i*5)],
                 platform: platformLocal,
                 regionA: "Japan",
-                Q1CmlValueA: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*5)+2]),
+                Q1CmlValueA: searchTitle[0].Q1CmlValueA,
                 Q2CmlValueA: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*5)+2]) : searchTitle[0].Q2CmlValueA,
                 Q3CmlValueA: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*5)+2]) : searchTitle[0].Q3CmlValueA,
                 Q4CmlValueA: Number(newQuarterLocal[(i*5)+2]),
                 regionB: "Overseas",
-                Q1CmlValueB: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*5)+3]),
+                Q1CmlValueB: searchTitle[0].Q1CmlValueB,
                 Q2CmlValueB: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*5)+3]) : searchTitle[0].Q2CmlValueB,
                 Q3CmlValueB: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*5)+3]) : searchTitle[0].Q3CmlValueB,
                 Q4CmlValueB: Number(newQuarterLocal[(i*5)+3]),
                 regionC: "WW FY",
-                Q1CmlValueC: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*5)+1]),
+                Q1CmlValueC: searchTitle[0].Q1CmlValueC,
                 Q2CmlValueC: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*5)+1]) : searchTitle[0].Q2CmlValueC,
                 Q3CmlValueC: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*5)+1]) : searchTitle[0].Q3CmlValueC,
                 Q4CmlValueC: Number(newQuarterLocal[(i*5)+1]),
                 regionD: "WW LTD",
-                Q1CmlValueD: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*5)+4]),
+                Q1CmlValueD: searchTitle[0].Q1CmlValueD,
                 Q2CmlValueD: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*5)+4]) : searchTitle[0].Q2CmlValueD,
                 Q3CmlValueD: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*5)+4]) : searchTitle[0].Q3CmlValueD,
                 Q4CmlValueD: Number(newQuarterLocal[(i*5)+4]),
