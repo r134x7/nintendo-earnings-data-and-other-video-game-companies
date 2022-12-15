@@ -4,8 +4,9 @@ let currentQuarter = 4;
 // let currentPlatform = "Wii U";
 // let currentPlatform = "Nintendo 3DS";
 // let currentPlatform = "Wii";
-// let currentPlatform = "Nintendo DS";
-let currentPlatform = "Game Boy Advance";
+let currentPlatform = "Nintendo DS";
+// let currentPlatform = "Game Boy Advance";
+// let currentPlatform = "Nintendo GameCube";
 
 const readQuarter = (currentQuarterLocal) => {
 
