@@ -2,8 +2,8 @@ import { readFileSync, writeFile } from "fs";
 
 let currentQuarter = 4;
 // let currentPlatform = "Wii U";
-// let currentPlatform = "Nintendo 3DS";
-let currentPlatform = "Wii";
+let currentPlatform = "Nintendo 3DS";
+// let currentPlatform = "Wii";
 // let currentPlatform = "Nintendo DS";
 
 const readQuarter = (currentQuarterLocal) => {
