@@ -145,8 +145,6 @@ export const titlesMake = (obj: titlesJSON): Titles[] => {
 
 export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, array) => {
 
-    let currentQuarter: number = elem.currentQuarter;
-
     let header: Header = {
         mainHeader: "| Fiscal Year Million-Seller Titles |",
         platformHeader: "| Nintendo Switch                   |",
@@ -162,112 +160,119 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
         globalLTDSummaryHeader: "| Global LTD                      |",
     };
 
-    let titlesList: Titles[][] = elem.titles.map(value => titlesMake(value));
+    function makeTitlesList(titleValues: titlesJSON[], headerValues: Header, currentQuarter: number): string {
+
+        let titlesList: Titles[][] = elem.titles.map(value => titlesMake(value));
 
 
-    let filteredCollection = titlesList.filter((elem, index, array) => {
-        return array[index][3].valueC !== 0
-    }) // to make sure things are accurate and that it works, all titles that sold units this FY must not have zero units for the remaining quarters. (ignore Last FY Cml.) Tried using [currentQuarter -1] and not [3] but bugs occurred, oh well.
+        let filteredCollection = titlesList.filter((elem, index, array) => {
+            return array[index][3].valueC !== 0
+        }) // to make sure things are accurate and that it works, all titles that sold units this FY must not have zero units for the remaining quarters. (ignore Last FY Cml.) Tried using [currentQuarter -1] and not [3] but bugs occurred, oh well.
 
 
-    let sortedCollection = filteredCollection.map((elem, index, array) => {
-                return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
-        }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
-            return (a[currentQuarter-1].valueC > b[currentQuarter-1].valueC)
-                ? 1
-                : (a[currentQuarter-1].valueC < b[currentQuarter-1].valueC)
-                ? -1
-                : 0 // 4th quarter WW FY is index 11
-        }).map((elem, index) => {
-            // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
-            let x: Titles[] = [...elem].map((elemTwo) => {
-                return {...elemTwo, rank: index+1} 
+        let sortedCollection = filteredCollection.map((elem, index, array) => {
+                    return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+            }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+                return (a[currentQuarter-1].valueC > b[currentQuarter-1].valueC)
+                    ? 1
+                    : (a[currentQuarter-1].valueC < b[currentQuarter-1].valueC)
+                    ? -1
+                    : 0 // 4th quarter WW FY is index 11
+            }).map((elem, index) => {
+                // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+                let x: Titles[] = [...elem].map((elemTwo) => {
+                    return {...elemTwo, rank: index+1} 
+                })
+                return x // x which is the returned array is now returned to the array of arrays
             })
-            return x // x which is the returned array is now returned to the array of arrays
-        })
 
-    let sortedTitles = sortedCollection.map((elem) => {
+        let sortedTitles = sortedCollection.map((elem) => {
+                return decimateCalculation(elem)
+            })
+
+        let differenceTitles = sortedCollection.map((elem) => {
             return decimateCalculation(elem)
-        })
-
-    let differenceTitles = sortedCollection.map((elem) => {
-        return decimateCalculation(elem)
-    }).map((elem) => {
-        return quarterlyCalculation(elem)
-    })
-
-    let newCollection = sortedTitles.map((elem) => {
-            return labelTitles(elem)
         }).map((elem) => {
-            return elem.filter((secondElem) => {
-                return secondElem.label === " New! "
+            return quarterlyCalculation(elem)
+        })
+
+        let newCollection = sortedTitles.map((elem) => {
+                return labelTitles(elem)
+            }).map((elem) => {
+                return elem.filter((secondElem) => {
+                    return secondElem.label === " New! "
+                })
+            }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
+            ).map((elem) => {
+                return elem[3] // 4th quarter, I can't remember but I assume I just wanted only that quarter with cumulative data...
             })
-        }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
-        ).map((elem) => {
-            return elem[3] // 4th quarter, I can't remember but I assume I just wanted only that quarter with cumulative data...
-        })
 
-    let recurringCollection = sortedTitles.map((elem) => {
-            return labelTitles(elem)
-        }).map((elem) => {
-            return elem.filter((secondElem) => {
-                return secondElem.label === " Recurring "
+        let recurringCollection = sortedTitles.map((elem) => {
+                return labelTitles(elem)
+            }).map((elem) => {
+                return elem.filter((secondElem) => {
+                    return secondElem.label === " Recurring "
+                })
+            }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
+            ).map((elem) => {
+                return elem[3] // 4th quarter
+            })    
+
+        let newSummary = [newCollection, newCollection, newCollection, newCollection].map((elem, index, array) =>  {
+            if (elem.length === 0) {
+                return 0 // so that's why this isn't a never type...
+            }
+           // I really should have left notes here... I am guessing that I am putting all the values into the array and then I reduce it to get the summation of that region... 
+                return elem.map((secondElem) => {
+                    return (index === 0)
+                        ? secondElem.valueA
+                        : (index === 1)
+                        ? secondElem.valueB
+                        : (index === 2)
+                        ? secondElem.valueC
+                        : secondElem.valueD
+                }).reduce((prev, next) => prev + next)
             })
-        }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
-        ).map((elem) => {
-            return elem[3] // 4th quarter
-        })    
 
-    let newSummary = [newCollection, newCollection, newCollection, newCollection].map((elem, index, array) =>  {
-        if (elem.length === 0) {
-            return 0 // so that's why this isn't a never type...
-        }
-       // I really should have left notes here... I am guessing that I am putting all the values into the array and then I reduce it to get the summation of that region... 
-            return elem.map((secondElem) => {
-                return (index === 0)
-                    ? secondElem.valueA
-                    : (index === 1)
-                    ? secondElem.valueB
-                    : (index === 2)
-                    ? secondElem.valueC
-                    : secondElem.valueD
-            }).reduce((prev, next) => prev + next)
-        })
+        let recurringSummary = [recurringCollection, recurringCollection, recurringCollection, recurringCollection].map((elem, index, array) =>  {
+            if (elem.length === 0) {
+                return 0
+            }
 
-    let recurringSummary = [recurringCollection, recurringCollection, recurringCollection, recurringCollection].map((elem, index, array) =>  {
-        if (elem.length === 0) {
-            return 0
-        }
-
-       // I really should have left notes here... I am guessing that I am putting all the values into the array and then I reduce it to get the summation of that region... 
-            return elem.map((secondElem) => {
-                return (index === 0)
-                    ? secondElem.valueA
-                    : (index === 1)
-                    ? secondElem.valueB
-                    : (index === 2)
-                    ? secondElem.valueC
-                    : secondElem.valueD
-            }).reduce((prev, next) => prev + next)
-        })
+           // I really should have left notes here... I am guessing that I am putting all the values into the array and then I reduce it to get the summation of that region... 
+                return elem.map((secondElem) => {
+                    return (index === 0)
+                        ? secondElem.valueA
+                        : (index === 1)
+                        ? secondElem.valueB
+                        : (index === 2)
+                        ? secondElem.valueC
+                        : secondElem.valueD
+                }).reduce((prev, next) => prev + next)
+            })
 
 
-    let printOne = printHead(header)
+        let printOne = printHead(headerValues)
 
-    let printListedTitles = differenceTitles.map((elem, index) => {
-        return printTitles(header, elem, sortedTitles[index], currentQuarter)
-    }) as string[];
+        let printListedTitles = differenceTitles.map((elem, index) => {
+            return printTitles(headerValues, elem, sortedTitles[index], currentQuarter)
+        }) as string[];
 
-    let printSummaryOne = printSummaryHead(header, newCollection, recurringCollection)
+        let printSummaryOne = printSummaryHead(headerValues, newCollection, recurringCollection)
 
-    let printSummaryTwo = printSummary(header, newSummary, recurringSummary)
+        let printSummaryTwo = printSummary(headerValues, newSummary, recurringSummary)
 
-    let printFYMillionSellerTitles = (currentQuarter !== 4) // can't use !== 4 for one condition only or else it assumes condition is always true (this issue occurred with hardcoded currentQuarter)
-        ? [printOne, ...printListedTitles ].reduce((prev, next) => prev + "\n" + next )
-        : [printOne, ...printListedTitles, printSummaryOne, printSummaryTwo].reduce((prev, next) => prev + "\n" + next )
+        let printFYMillionSellerTitles = (currentQuarter !== 4) // can't use !== 4 for one condition only or else it assumes condition is always true (this issue occurred with hardcoded currentQuarter)
+            ? [printOne, ...printListedTitles ].reduce((prev, next) => prev + "\n" + next )
+            : [printOne, ...printListedTitles, printSummaryOne, printSummaryTwo].reduce((prev, next) => prev + "\n" + next )
 
-    return printFYMillionSellerTitles
+        return printFYMillionSellerTitles
+    };
 
+    // now that it is a function, when I want to add titles of another platform, then I can reduce it
+    let platformList = makeTitlesList(elem.titles, header, elem.currentQuarter);
+
+    return platformList
 });
 
 export const fyMillionSellerTitlesGraphList = collection.map((elem, index, array) => {
