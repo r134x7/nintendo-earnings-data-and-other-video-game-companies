@@ -18,18 +18,13 @@ import fyMillionSellerTitles2019 from "./FY_Million_Seller_Titles/million_seller
 import fyMillionSellerTitles2018 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2018.json";
 import fyMillionSellerTitles2017 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2017.json";
 
-type collectionJSON = {
+export type collectionJSON = {
     currentQuarter: number,
     fiscalYear: string,
-    titles: titlesJSON[],
-    // titles: {
-    //     switch: titlesJSON[],
-    //     0: titlesJSON[],
-    // } // have to think about...
-    // titles: titlesJSON[][]
+    titles: titlesJSON[][],
 };
 
-type titlesJSON = {
+export type titlesJSON = {
     name: string,
     platform?: string,
     regionA: string,
@@ -162,7 +157,7 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
 
     function makeTitlesList(titleValues: titlesJSON[], headerValues: Header, currentQuarter: number): string {
 
-        let titlesList: Titles[][] = elem.titles.map(value => titlesMake(value));
+        let titlesList: Titles[][] = titleValues.map(value => titlesMake(value));
 
 
         let filteredCollection = titlesList.filter((elem, index, array) => {
@@ -270,48 +265,76 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
     };
 
     // now that it is a function, when I want to add titles of another platform, then I can reduce it
-    let platformList = makeTitlesList(elem.titles, header, elem.currentQuarter);
+    // let platformList = makeTitlesList(elem.titles, header, elem.currentQuarter);
+    let platformList: string = elem.titles.map(value => {
+        return (value[0].name === "N/A")
+            ? "N/A"
+            : makeTitlesList(value, header, elem.currentQuarter)
+    }).filter(value => value !== "N/A").reduce((prev,next) => prev + "\n" + next);
 
     return platformList
 });
 
 export const fyMillionSellerTitlesGraphList = collection.map((elem, index, array) => {
 
-    let currentQuarter: number = elem.currentQuarter;
+    function makeGraphList(titleValues: titlesJSON[], currentQuarter: number) {
 
-    let titlesList: Titles[][] = elem.titles.map(value => titlesMake(value));
+        let titlesList: Titles[][] = titleValues.map(value => titlesMake(value));
+
+        let filteredCollection = titlesList.filter((elem, index, array) => {
+            return array[index][3].valueC !== 0
+        }) // to make sure things are accurate and that it works, all titles that sold units this FY must not have zero units for the remaining quarters. (ignore Last FY Cml.) Tried using [currentQuarter -1] and not [3] but bugs occurred, oh well.
 
 
-    let filteredCollection = titlesList.filter((elem, index, array) => {
-        return array[index][3].valueC !== 0
-    }) // to make sure things are accurate and that it works, all titles that sold units this FY must not have zero units for the remaining quarters. (ignore Last FY Cml.) Tried using [currentQuarter -1] and not [3] but bugs occurred, oh well.
-
-
-    let sortedCollection = filteredCollection.map((elem, index, array) => {
-                return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
-        }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
-            return (a[currentQuarter-1].valueC > b[currentQuarter-1].valueC)
-                ? 1
-                : (a[currentQuarter-1].valueC < b[currentQuarter-1].valueC)
-                ? -1
-                : 0 // 4th quarter WW FY is index 11
-        }).map((elem, index) => {
-            // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
-            let x: Titles[] = [...elem].map((elemTwo) => {
-                return {...elemTwo, rank: index+1} 
+        let sortedCollection = filteredCollection.map((elem, index, array) => {
+                    return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+            }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+                return (a[currentQuarter-1].valueC > b[currentQuarter-1].valueC)
+                    ? 1
+                    : (a[currentQuarter-1].valueC < b[currentQuarter-1].valueC)
+                    ? -1
+                    : 0 // 4th quarter WW FY is index 11
+            }).map((elem, index) => {
+                // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
+                let x: Titles[] = [...elem].map((elemTwo) => {
+                    return {...elemTwo, rank: index+1} 
+                })
+                return x // x which is the returned array is now returned to the array of arrays
             })
-            return x // x which is the returned array is now returned to the array of arrays
-        })
 
-    let sortedTitles = sortedCollection.map((elem) => {
+        let sortedTitles = sortedCollection.map((elem) => {
+                return decimateCalculation(elem)
+            })
+
+        let differenceTitles = sortedCollection.map((elem) => {
             return decimateCalculation(elem)
+        }).map((elem) => {
+            return quarterlyCalculation(elem)
         })
 
-    let differenceTitles = sortedCollection.map((elem) => {
-        return decimateCalculation(elem)
-    }).map((elem) => {
-        return quarterlyCalculation(elem)
-    })
+        return {
+            quarters: differenceTitles,
+            cumulative: sortedTitles,
+        }
+    };
+
+    let platformList = elem.titles.map(value => {
+        return (value[0].name === "N/A")
+            ? "N/A"
+            : makeGraphList(value, elem.currentQuarter)
+    }).filter(value => value !== "N/A");
+
+    let differenceTitlesList = platformList.map(value => {
+        if (value !== "N/A") {
+            return value.quarters
+        };
+    }).flat() as Titles[][];
+
+    let cumualativeTitlesList = platformList.map(value => {
+        if (value !== "N/A") {
+            return value.cumulative
+        };
+    }).flat() as Titles[][];
 
     let thisFY: string = elem.fiscalYear;
     let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
@@ -324,8 +347,8 @@ export const fyMillionSellerTitlesGraphList = collection.map((elem, index, array
         lastFY: lastFY,
         marchThisFY: marchThisFY,
         marchLastFY: marchLastFY,
-        quarterTitleValuesThisFY: differenceTitles,
-        cumulativeTitleValuesThisFY: sortedTitles,
+        quarterTitleValuesThisFY: differenceTitlesList,
+        cumulativeTitleValuesThisFY: cumualativeTitlesList,
     };
 
     return graphMake

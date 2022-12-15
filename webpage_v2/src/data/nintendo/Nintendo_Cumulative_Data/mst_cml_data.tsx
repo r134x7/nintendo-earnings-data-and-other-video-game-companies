@@ -1,4 +1,4 @@
-import { titlesMake } from "../fy_million_seller_titles_nintendo";
+import { titlesMake, titlesJSON, collectionJSON } from "../fy_million_seller_titles_nintendo";
 
 import fyMillionSellerTitles2023 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2023.json";
 import fyMillionSellerTitles2022 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2022.json";
@@ -11,7 +11,7 @@ import fyMillionSellerTitles2017 from "../FY_Million_Seller_Titles/million_selle
 // avoid having empty lists [] in your collections from preparing for the next earnings
 import { Header, Titles, decimateCalculation, printHead } from "../../../utils/fy_million_seller_titles_logic"
 
-    const totalCollection = [
+    const totalCollection: collectionJSON[] = [
         fyMillionSellerTitles2017,
         fyMillionSellerTitles2018,
         fyMillionSellerTitles2019,
@@ -19,13 +19,23 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
         fyMillionSellerTitles2021,
         fyMillionSellerTitles2022,
         fyMillionSellerTitles2023,
-    ].map(elem => {
-        return elem.titles.map(value => titlesMake(value))
+    ]
+    
+    let totalCollectionSet = totalCollection.map(elem => {
+
+        let flatList = elem.titles.filter(value => value[0].name !== "N/A").flat();
+
+        return flatList.map(value => titlesMake(value))
+
+        // return elem.titles.map(value => titlesMake(value))
+        // return elem.titles.filter(value => value[0].name !== "N/A").map(value => {
+        //     return titlesMake(value)
+        // })
     });
 
     // latestFYcollection is where the latest FY collection needs to be placed.
     // const latestFYcollection = fy3_2023_collection.map((elem, index) => {
-    const latestFYcollection = totalCollection[totalCollection.length-1].map((elem, index) => {
+    const latestFYcollection = totalCollectionSet[totalCollectionSet.length-1].map((elem, index) => {
         // takes the latest data in the collection, maps it because it contains all the titles up to that date, 
         return sortingArrays(index)
     })
@@ -33,7 +43,8 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
     const dateLabel = "| Latest data as of September 30th, 2022   |\n+" + "-".repeat(42) + "+"
 
     const header: Header = {
-    switchHeader: "| Nintendo Switch FY Million-Seller Titles |",
+    mainHeader: "| Fiscal Year Million-Seller Titles |",
+    platformHeader: "| Nintendo Switch                   |",
     secondHeader: "| Title and Rank                           |",
     thirdHeader: "| Units                                    |",
     areaHeader: "| Area         |   Japan | Overseas|",
@@ -48,7 +59,7 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
 
     function sortingArrays(titleCount: number): Titles[] {
 
-        const testTitle1: Titles[][] = totalCollection.map((elem, index) => {
+        const testTitle1: Titles[][] = totalCollectionSet.map((elem, index) => {
             
             return (elem[titleCount] === undefined)
                 ? []

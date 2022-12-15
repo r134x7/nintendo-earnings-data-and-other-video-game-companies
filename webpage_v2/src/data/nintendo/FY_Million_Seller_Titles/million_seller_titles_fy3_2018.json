@@ -1,7 +1,7 @@
 {
     "currentQuarter": 4,
     "fiscalYear": "FY3/2018",
-    "titles": [
+    "titles": [[
         {
             "name": " The Legend of Zelda: Breath of the Wild ",
             "regionA": "   Japan ",
@@ -246,5 +246,33 @@
             "valueDLastFY": 0,
             "miscellaneous": "*This title is published by The Pokémon Company in the domestic market."
         }
+    ],
+        [{
+            "name": "N/A",
+            "regionA": "Japan",
+            "Q1CmlValueA": 0,
+            "Q2CmlValueA": 0,
+            "Q3CmlValueA": 0, 
+            "Q4CmlValueA": 0,
+            "valueALastFY": 0,
+            "regionB": "Overseas",
+            "Q1CmlValueB": 0,
+            "Q2CmlValueB": 0,
+            "Q3CmlValueB": 0, 
+            "Q4CmlValueB": 0,
+            "valueBLastFY": 0,
+            "regionC": "WW FY ",
+            "Q1CmlValueC": 0,
+            "Q2CmlValueC": 0,
+            "Q3CmlValueC": 0, 
+            "Q4CmlValueC": 0,
+            "valueCLastFY": 0,
+            "regionD": "WW LTD",
+            "Q1CmlValueD": 0,
+            "Q2CmlValueD": 0,
+            "Q3CmlValueD": 0, 
+            "Q4CmlValueD": 0,
+            "valueDLastFY": 0
+        }]
     ]
 }
