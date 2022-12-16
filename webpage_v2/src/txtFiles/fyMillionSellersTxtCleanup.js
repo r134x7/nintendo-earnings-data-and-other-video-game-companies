@@ -1,6 +1,6 @@
 import { readFileSync, writeFile } from "fs";
 
-let currentQuarter = 4;
+let currentQuarter = 3;
 
 const readQuarter = (currentQuarterLocal) => {
 
