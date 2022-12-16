@@ -1,3 +1,5 @@
+import { printTextBlock } from "./bandai_namco_annual_report_logic"
+
 export type Titles = {
     title: string,
     platform?: string,
@@ -87,24 +89,25 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
                 ? printRank
                 : printRank + " ".repeat(9 - printRank.length);
 
-        let printTitleName: string = (elem.title.length > 32)
-        ? elem.title.split(" ").reduce((prev, next, index, array) => {
+        // let printTitleName: string = (elem.title.length > 32)
+        // ? elem.title.split(" ").reduce((prev, next, index, array) => {
 
-            let nextCheck = prev + next + " ";
+        //     let nextCheck = prev + next + " ";
             
-            if (nextCheck.length > 31 && prev.length <= 31) {
-                return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
-            } else if (index === array.length-1) {
-                return prev + next + " ".repeat(77 - prev.length)
-            } else {
-                return prev + " " + next
-            }
-        })
-        : (elem.title.length < 32)
-        ? elem.title + " ".repeat(32 - elem.title.length) 
-        : elem.title
+        //     if (nextCheck.length > 31 && prev.length <= 31) {
+        //         return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
+        //     } else if (index === array.length-1) {
+        //         return prev + next + " ".repeat(77 - prev.length)
+        //     } else {
+        //         return prev + " " + next
+        //     }
+        // })
+        // : (elem.title.length < 32)
+        // ? elem.title + " ".repeat(32 - elem.title.length) 
+        // : elem.title
+        let printTitleName = printTextBlock(elem.title)(32)
 
-        let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n|" + printTitleName + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+        let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + printRankFixed + "|\n+"+"-".repeat(42)+"+"
 
         let printValueA: string = `${elem.valueA}M ` 
         let printValueAFixed: string = (printValueA.length >= 9)
