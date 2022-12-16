@@ -4,6 +4,7 @@
     "titles": [[
         {
             "name": "The Legend of Zelda: Breath of the Wild",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 21,
             "Q2CmlValueA": 29,
@@ -31,6 +32,7 @@
         },
         {
             "name": "Mario Kart 8 Deluxe",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 69,
             "Q2CmlValueA": 87,
@@ -58,6 +60,7 @@
         },
         {
             "name": "ARMS",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 23,
             "Q2CmlValueA": 30,
@@ -85,6 +88,7 @@
         },
         {
             "name": "Splatoon 2",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 156,
@@ -112,6 +116,7 @@
         },
         {
             "name": "Super Mario Odyssey",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -139,6 +144,7 @@
         },
         {
             "name": "Xenoblade Chronicles 2",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -166,6 +172,7 @@
         },
         {
             "name": "Kirby Star Allies",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -193,6 +200,7 @@
         },
         {
             "name": "1-2-Switch",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -220,6 +228,7 @@
         },
         {
             "name": "Pokkén Tournament DX",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -246,33 +255,6 @@
             "valueDLastFY": 0,
             "miscellaneous": "*This title is published by The Pokémon Company in the domestic market."
         }
-    ],
-        [{
-            "name": "N/A",
-            "regionA": "Japan",
-            "Q1CmlValueA": 0,
-            "Q2CmlValueA": 0,
-            "Q3CmlValueA": 0, 
-            "Q4CmlValueA": 0,
-            "valueALastFY": 0,
-            "regionB": "Overseas",
-            "Q1CmlValueB": 0,
-            "Q2CmlValueB": 0,
-            "Q3CmlValueB": 0, 
-            "Q4CmlValueB": 0,
-            "valueBLastFY": 0,
-            "regionC": "WW FY ",
-            "Q1CmlValueC": 0,
-            "Q2CmlValueC": 0,
-            "Q3CmlValueC": 0, 
-            "Q4CmlValueC": 0,
-            "valueCLastFY": 0,
-            "regionD": "WW LTD",
-            "Q1CmlValueD": 0,
-            "Q2CmlValueD": 0,
-            "Q3CmlValueD": 0, 
-            "Q4CmlValueD": 0,
-            "valueDLastFY": 0
-        }]
+    ]
     ]
 }

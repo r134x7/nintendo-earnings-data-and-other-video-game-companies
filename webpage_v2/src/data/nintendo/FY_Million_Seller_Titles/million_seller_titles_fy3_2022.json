@@ -4,6 +4,7 @@
     "titles": [[
         {
             "name": "The Legend of Zelda: Breath of the Wild",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 16,
@@ -31,6 +32,7 @@
         },
         {
             "name": "Mario Kart 8 Deluxe",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 20,
             "Q2CmlValueA": 46,
@@ -58,6 +60,7 @@
         },
         {
             "name": "ARMS",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -85,6 +88,7 @@
         },
         {
             "name": "Splatoon 2",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -112,6 +116,7 @@
         },
         {
             "name": "Super Mario Odyssey",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 8,
@@ -139,6 +144,7 @@
         },
         {
             "name": "Xenoblade Chronicles 2",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -166,6 +172,7 @@
         },
         {
             "name": "Kirby Star Allies",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -193,6 +200,7 @@
         },
         {
             "name": "1-2-Switch",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -220,6 +228,7 @@
         },
         {
             "name": "Pokkén Tournament DX",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -248,6 +257,7 @@
         },
         {
             "name": "Donkey Kong Country: Tropical Freeze",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -275,6 +285,7 @@
         },
         {
             "name": "Mario Tennis Aces",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -302,6 +313,7 @@
         },
         {
             "name": "Super Smash Bros. Ultimate",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 33,
@@ -329,6 +341,7 @@
         },
         {
             "name": "Pokémon: Let's Go, Pikachu! / Pokémon: Let's Go, Eevee!",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -356,6 +369,7 @@
         },
         {
             "name": "Super Mario Party",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 22,
@@ -383,6 +397,7 @@
         },
         {
             "name": "Octopath Traveler",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -411,6 +426,7 @@
         },
         {
             "name": "Nintendo Labo Toy-Con 01: Variety Kit",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -438,6 +454,7 @@
         },
         {
             "name": "Captain Toad: Treasure Tracker",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -465,6 +482,7 @@
         },
         {
             "name": "Yoshi's Crafted World",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -492,6 +510,7 @@
         },
         {
             "name": "New Super Mario Bros. Deluxe",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 8,
@@ -519,6 +538,7 @@
         },
         {
             "name": "Super Mario Maker ",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -546,6 +566,7 @@
         },
         {
             "name": "Fire Emblem: Three Houses",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -573,6 +594,7 @@
         },
         {
             "name": "The Legend of Zelda: Link's Awakening",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -600,6 +622,7 @@
         },
         {
             "name": "Pokémon Sword / Pokémon Shield",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 19,
@@ -627,6 +650,7 @@
         },
         {
             "name": "Luigi's Mansion 3",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -654,6 +678,7 @@
         },
         {
             "name": "Ring Fit Adventure",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 25,
             "Q2CmlValueA": 52,
@@ -681,6 +706,7 @@
         },
         {
             "name": "Astral Chain",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -708,6 +734,7 @@
         },
         {
             "name": "Marvel Ultimate Alliance 3: The Black Order",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -735,6 +762,7 @@
         },
         {
             "name": "Animal Crossing: New Horizons",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 13,
             "Q2CmlValueA": 25,
@@ -762,6 +790,7 @@
         },
         {
             "name": "Pokémon Mystery Dungeon: Rescue Team DX",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -789,6 +818,7 @@
         },
         {
             "name": "Xenoblade Chronicles Definitive Edition",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -816,6 +846,7 @@
         },
         {
             "name": "Clubhouse Games: 51 Worldwide Classics",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -843,6 +874,7 @@
         },
         {
             "name": "Super Mario 3D All-Stars",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -870,6 +902,7 @@
         },
         {
             "name": "Paper Mario: The Origami King",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -897,6 +930,7 @@
         },
         {
             "name": "Hyrule Warriors: Age of Calamity",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -925,6 +959,7 @@
         },
         {
             "name": "Pikmin 3 Deluxe",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -952,6 +987,7 @@
         },
         {
             "name": "Mario Kart Live: Home Circuit",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -979,6 +1015,7 @@
         },
         {
             "name": "Super Mario 3D World + Bowser's Fury",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 21,
             "Q2CmlValueA": 36,
@@ -1006,6 +1043,7 @@
         },
         {
             "name": "New Pokémon Snap",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -1034,6 +1072,7 @@
         },
         {
             "name": "Mario Golf: Super Rush",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 21,
             "Q2CmlValueA": 29,
@@ -1061,6 +1100,7 @@
         },
         {
             "name": "Miitopia",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 26,
             "Q2CmlValueA": 35,
@@ -1088,6 +1128,7 @@
         },
         {
             "name": "The Legend of Zelda: Skyward Sword HD",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 42,
@@ -1115,6 +1156,7 @@
         },
         {
             "name": "Pokémon Brilliant Diamond / Pokémon Shining Pearl",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -1142,6 +1184,7 @@
         },
         {
             "name": "Mario Party Superstars",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -1169,6 +1212,7 @@
         },
         {
             "name": "Big Brain Academy: Brain vs Brain",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -1196,6 +1240,7 @@
         },
         {
             "name": "WarioWare: Get It Together!",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -1223,6 +1268,7 @@
         },
         {
             "name": "Metroid Dread",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -1250,6 +1296,7 @@
         },
         {
             "name": "Game Builder Garage",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -1277,6 +1324,7 @@
         },
         {
             "name": "Pokémon Legends: Arceus",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -1304,6 +1352,7 @@
         },
         {
             "name": "Kirby and the Forgotten Land",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -1329,33 +1378,6 @@
             "Q4CmlValueD": 265,
             "valueDLastFY": 0
         }
-    ],
-        [{
-            "name": "N/A",
-            "regionA": "Japan",
-            "Q1CmlValueA": 0,
-            "Q2CmlValueA": 0,
-            "Q3CmlValueA": 0, 
-            "Q4CmlValueA": 0,
-            "valueALastFY": 0,
-            "regionB": "Overseas",
-            "Q1CmlValueB": 0,
-            "Q2CmlValueB": 0,
-            "Q3CmlValueB": 0, 
-            "Q4CmlValueB": 0,
-            "valueBLastFY": 0,
-            "regionC": "WW FY ",
-            "Q1CmlValueC": 0,
-            "Q2CmlValueC": 0,
-            "Q3CmlValueC": 0, 
-            "Q4CmlValueC": 0,
-            "valueCLastFY": 0,
-            "regionD": "WW LTD",
-            "Q1CmlValueD": 0,
-            "Q2CmlValueD": 0,
-            "Q3CmlValueD": 0, 
-            "Q4CmlValueD": 0,
-            "valueDLastFY": 0
-        }]
+    ]
     ]
 }

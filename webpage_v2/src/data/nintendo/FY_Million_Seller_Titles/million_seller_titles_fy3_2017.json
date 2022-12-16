@@ -4,6 +4,7 @@
     "titles": [
         [{
             "name": "The Legend of Zelda: Breath of the Wild",
+            "platform": "Nintendo Switch",
             "regionA": "Japan",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,

@@ -39,7 +39,7 @@ export type collectionJSON = {
 
 export type titlesJSON = {
     name: string,
-    platform?: string,
+    platform: string,
     regionA: string,
     Q1CmlValueA: number,
     Q2CmlValueA: number,
@@ -279,13 +279,9 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
                 }).reduce((prev, next) => prev + next)
             })
 
-        let platformLength = (sortedCollection[0][0].platform === undefined)
-                ? " ".repeat(10)
-                : " ".repeat(44 - sortedCollection[0][0].platform.length-1)
+        let platformLength = " ".repeat(44 - sortedCollection[0][0].platform.length-1)
 
-        let summaryLength = (sortedCollection[0][0].platform === undefined)
-                ? " ".repeat(10)
-                : " ".repeat(24 - sortedCollection[0][0].platform.length-1)
+        let summaryLength = " ".repeat(24 - sortedCollection[0][0].platform.length-1)
 
         let headerFixed = {
             ...headerValues,

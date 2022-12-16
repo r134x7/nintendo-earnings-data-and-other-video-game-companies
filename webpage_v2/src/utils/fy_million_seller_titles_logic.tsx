@@ -2,7 +2,7 @@ import { printTextBlock } from "./bandai_namco_annual_report_logic"
 
 export type Titles = {
     title: string,
-    platform?: string,
+    platform: string,
     period: " 1st Quarter  " | " 2nd Quarter  " | " 3rd Quarter  " | " 4th Quarter  " | " Last FY Total ",
     regionA: "Japan", 
     valueA: number,
@@ -88,6 +88,8 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
         let printRankFixed: string = (printRank.length >= 9)
                 ? printRank
                 : printRank + " ".repeat(9 - printRank.length);
+        
+        let printPlatformFixed: string = (elem.platform)
 
         // let printTitleName: string = (elem.title.length > 32)
         // ? elem.title.split(" ").reduce((prev, next, index, array) => {
@@ -105,9 +107,9 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
         // : (elem.title.length < 32)
         // ? elem.title + " ".repeat(32 - elem.title.length) 
         // : elem.title
-        let printTitleName = printTextBlock(elem.title)(32)
+        let printTitleName = printTextBlock(elem.title)(42)
 
-        let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+        let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
 
         let printValueA: string = `${elem.valueA}M ` 
         let printValueAFixed: string = (printValueA.length >= 9)
