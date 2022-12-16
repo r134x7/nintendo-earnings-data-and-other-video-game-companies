@@ -1,4 +1,5 @@
 import { titlesMake, titlesJSON, collectionJSON } from "../fy_million_seller_titles_nintendo";
+import { printTextBlock } from "../../../utils/bandai_namco_annual_report_logic";
 
 import fyMillionSellerTitles2023 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2023.json";
 import fyMillionSellerTitles2022 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2022.json";
@@ -7,11 +8,37 @@ import fyMillionSellerTitles2020 from "../FY_Million_Seller_Titles/million_selle
 import fyMillionSellerTitles2019 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2019.json";
 import fyMillionSellerTitles2018 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2018.json";
 import fyMillionSellerTitles2017 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2017.json";
+import fyMillionSellerTitles2016 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2016.json";
+import fyMillionSellerTitles2015 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2015.json";
+import fyMillionSellerTitles2014 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2014.json";
+import fyMillionSellerTitles2013 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2013.json";
+import fyMillionSellerTitles2012 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2012.json";
+import fyMillionSellerTitles2011 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2011.json";
+import fyMillionSellerTitles2010 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2010.json";
+import fyMillionSellerTitles2009 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2009.json";
+import fyMillionSellerTitles2008 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2008.json";
+import fyMillionSellerTitles2007 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2007.json";
+import fyMillionSellerTitles2006 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2006.json";
+import fyMillionSellerTitles2005 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2005.json";
+import fyMillionSellerTitles2004 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2004.json";
 
 // avoid having empty lists [] in your collections from preparing for the next earnings
 import { Header, Titles, decimateCalculation, printHead } from "../../../utils/fy_million_seller_titles_logic"
 
     const totalCollection: collectionJSON[] = [
+        fyMillionSellerTitles2004,
+        fyMillionSellerTitles2005,
+        fyMillionSellerTitles2006,
+        fyMillionSellerTitles2007,
+        fyMillionSellerTitles2008,
+        fyMillionSellerTitles2009,
+        fyMillionSellerTitles2010,
+        fyMillionSellerTitles2011,
+        fyMillionSellerTitles2012,
+        fyMillionSellerTitles2013,
+        fyMillionSellerTitles2014,
+        fyMillionSellerTitles2015,
+        fyMillionSellerTitles2016,
         fyMillionSellerTitles2017,
         fyMillionSellerTitles2018,
         fyMillionSellerTitles2019,
@@ -43,14 +70,17 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
     const dateLabel = "| Latest data as of September 30th, 2022   |\n+" + "-".repeat(42) + "+"
 
     const header: Header = {
-    mainHeader: "| Fiscal Year Million-Seller Titles |",
-    platformHeader: "| Nintendo Switch                   |",
-    secondHeader: "| Title and Rank                           |",
-    thirdHeader: "| Units                                    |",
+    mainHeader: "| Nintendo Fiscal Year Million-Seller Titles |",
+    platformHeader: "+============================================+",
+    secondHeader: "| Title                                    |",
+    thirdHeader: "| Platform and Rank                        |",
+    fourthHeader: "| Units                                    |",
     areaHeader: "| Area         |   Japan | Overseas|",
     globalHeader: "| Global       |   WW FY |  WW LTD |",
     fiscalYear: " FY3/23 ",
-    switchSummaryHeader: "| Nintendo Switch FY    |\n| Million-Seller Titles |\n",
+    mainSummaryHeader: "",
+    secondSummaryHeader: "| FY Million-Seller      |",
+    thirdSummaryHeader: "| Titles Summary         |",
     japanSummaryHeader: "| Japan                           |",
     overseasSummaryHeader: "| Overseas                        |",
     globalFYSummaryHeader: "| Global FY                       |",
@@ -114,24 +144,29 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
                     ? printRank
                     : printRank + " ".repeat(9 - printRank.length);
     
-            let printTitleName: string = (elem.title.length > 32)
-            ? elem.title.split(" ").reduce((prev, next, index, array) => {
+            // let printTitleName: string = (elem.title.length > 32)
+            // ? elem.title.split(" ").reduce((prev, next, index, array) => {
     
-                let nextCheck = prev + next + " ";
+            //     let nextCheck = prev + next + " ";
                 
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(77 - prev.length)
-                } else {
-                    return prev + " " + next
-                }
-            })
-            : (elem.title.length < 32)
-            ? elem.title + " ".repeat(32 - elem.title.length) 
-            : elem.title
+            //     if (nextCheck.length > 31 && prev.length <= 31) {
+            //         return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
+            //     } else if (index === array.length-1) {
+            //         return prev + next + " ".repeat(77 - prev.length)
+            //     } else {
+            //         return prev + " " + next
+            //     }
+            // })
+            // : (elem.title.length < 32)
+            // ? elem.title + " ".repeat(32 - elem.title.length) 
+            // : elem.title
+            let printTitleName = printTextBlock(elem.title)(42)
     
-            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n|" + printTitleName + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+            let printPlatformFixed: string = (elem.platform.length >= 32)
+                ? elem.platform
+                : " " + elem.platform + " ".repeat(31 - elem.platform.length)
+    
+        let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
             
             let printValueD: string = `${elem.valueD}M ` 
             let printValueDFixed: string = (printValueD.length >= 9)
@@ -168,24 +203,29 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
                     ? printRank
                     : printRank + " ".repeat(9 - printRank.length);
     
-            let printTitleName: string = (elem.title.length > 32)
-            ? elem.title.split(" ").reduce((prev, next, index, array) => {
+            // let printTitleName: string = (elem.title.length > 32)
+            // ? elem.title.split(" ").reduce((prev, next, index, array) => {
     
-                let nextCheck = prev + next + " ";
+            //     let nextCheck = prev + next + " ";
                 
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(77 - prev.length)
-                } else {
-                    return prev + " " + next
-                }
-            })
-            : (elem.title.length < 32)
-            ? elem.title + " ".repeat(32 - elem.title.length) 
-            : elem.title
+            //     if (nextCheck.length > 31 && prev.length <= 31) {
+            //         return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
+            //     } else if (index === array.length-1) {
+            //         return prev + next + " ".repeat(77 - prev.length)
+            //     } else {
+            //         return prev + " " + next
+            //     }
+            // })
+            // : (elem.title.length < 32)
+            // ? elem.title + " ".repeat(32 - elem.title.length) 
+            // : elem.title
+            let printTitleName = printTextBlock(elem.title)(42)
     
-            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n|" + printTitleName + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+            let printPlatformFixed: string = (elem.platform.length >= 32)
+                ? elem.platform
+                : " " + elem.platform + " ".repeat(31 - elem.platform.length)
+    
+        let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
             
             let printValueB: string = `${elem.valueB}M ` 
             let printValueBFixed: string = (printValueB.length >= 9)
@@ -223,24 +263,29 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
                     ? printRank
                     : printRank + " ".repeat(9 - printRank.length);
     
-            let printTitleName: string = (elem.title.length > 32)
-            ? elem.title.split(" ").reduce((prev, next, index, array) => {
+            // let printTitleName: string = (elem.title.length > 32)
+            // ? elem.title.split(" ").reduce((prev, next, index, array) => {
     
-                let nextCheck = prev + next + " ";
+            //     let nextCheck = prev + next + " ";
                 
-                if (nextCheck.length > 31 && prev.length <= 31) {
-                    return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
-                } else if (index === array.length-1) {
-                    return prev + next + " ".repeat(77 - prev.length)
-                } else {
-                    return prev + " " + next
-                }
-            })
-            : (elem.title.length < 32)
-            ? elem.title + " ".repeat(32 - elem.title.length) 
-            : elem.title
+            //     if (nextCheck.length > 31 && prev.length <= 31) {
+            //         return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
+            //     } else if (index === array.length-1) {
+            //         return prev + next + " ".repeat(77 - prev.length)
+            //     } else {
+            //         return prev + " " + next
+            //     }
+            // })
+            // : (elem.title.length < 32)
+            // ? elem.title + " ".repeat(32 - elem.title.length) 
+            // : elem.title
+            let printTitleName = printTextBlock(elem.title)(42)
+
+            let printPlatformFixed: string = (elem.platform.length >= 32)
+                ? elem.platform
+                : " " + elem.platform + " ".repeat(31 - elem.platform.length)
     
-            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n|" + printTitleName + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+        let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
             
             let printValueA: string = `${elem.valueA}M ` 
             let printValueAFixed: string = (printValueA.length >= 9)
