@@ -96,8 +96,6 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
             ? [undefined]
             : prevFY.map((elem) => elem.filter((value) => value.platform === obj.platform && value.name === obj.name)).flat()
 
-    console.log(searchPrevFY);
-    
     let title: Titles[] = [
         {
             title: obj.name,

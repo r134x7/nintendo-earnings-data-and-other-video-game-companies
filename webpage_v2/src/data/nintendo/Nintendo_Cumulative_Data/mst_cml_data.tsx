@@ -48,20 +48,46 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
         fyMillionSellerTitles2023,
     ]
     
-    let totalCollectionSet = totalCollection.map(elem => {
+    let totalCollectionSet: Titles[][][] = totalCollection.map(elem => {
 
         let flatList = elem.titles.flat();
 
-        return flatList.map(value => titlesMake(value, undefined))
+        return flatList.map(value => titlesMake(value, undefined)).map(value => value.map(secondValue => { return { ...secondValue, fiscalYear: elem.fiscalYear}}))
 
     });
 
     // latestFYcollection is where the latest FY collection needs to be placed.
     // const latestFYcollection = fy3_2023_collection.map((elem, index) => {
-    const latestFYcollection = totalCollectionSet[totalCollectionSet.length-1].map((elem, index) => {
-        // takes the latest data in the collection, maps it because it contains all the titles up to that date, 
-        return sortingArrays(index)
-    })
+    // const latestFYcollection = totalCollectionSet[totalCollectionSet.length-1].map((elem, index) => {
+    //     // takes the latest data in the collection, maps it because it contains all the titles up to that date, 
+    //     return sortingArrays(index)
+    // })
+
+    const flatCollection = totalCollectionSet.map((value) => value.map((secondValue) => secondValue.filter((thirdValue, thirdIndex) => thirdIndex === 3))).flat(2);
+
+    const flatTitles = totalCollectionSet.map((value) => value.map((secondValue) => secondValue.filter((thirdValue, thirdIndex) => thirdIndex === 3))).flat(2).map(value => { return { title: value.title, platform: value.platform}})
+
+    let filteredCollection = flatTitles.filter((elem, index, array) =>
+    index === array.findIndex((value) => (
+      value.title === elem.title && value.platform === elem.platform
+    ))) // source for solution after Set wouldn't work: https://stackoverflow.com/questions/2218999/how-to-remove-all-duplicates-from-an-array-of-objects
+
+    function sortingTitles(titles: {title: string, platform: string}[]) {
+
+        const setTitles: Titles[][] = titles.map((elem, index, array) => {
+
+            let searchTitle = flatCollection.filter((value) => value.title === elem.title && value.platform === elem.platform)
+
+            return searchTitle 
+        })
+
+        return setTitles
+    };
+
+    const latestFYcollection = sortingTitles(filteredCollection);
+
+    console.log(latestFYcollection);
+    
 
     const dateLabel = "| Latest data as of September 30th, 2022   |\n+" + "-".repeat(42) + "+"
 
@@ -83,29 +109,27 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
     globalLTDSummaryHeader: "| Global LTD                      |",
     }
 
-    function sortingArrays(titleCount: number): Titles[] {
+    // function sortingArrays(titleCount: number): Titles[] {
 
-        const testTitle1: Titles[][] = totalCollectionSet.map((elem, index) => {
+    //     const testTitle1: Titles[][] = totalCollectionSet.map((elem, index) => {
             
-            return (elem[titleCount] === undefined)
-                ? []
-                : elem[titleCount]
+    //         return (elem[titleCount] === undefined)
+    //             ? []
+    //             : elem[titleCount]
     
-        }).filter((elem) => elem.length !== 0)
+    //     }).filter((elem) => elem.length !== 0)
 
-        const filterTitle1: Titles[][] = testTitle1.map((elem) => {
-            return elem.filter((secondElem, index, array) => {
-                return secondElem.valueC !== 0 && secondElem.period === " 4th Quarter  "
-            })
-        }).filter((elem) => elem.length !== 0) 
-        // returns Titles[]
-        return filterTitle1.flat() // return was deeply nested
-    }
+    //     const filterTitle1: Titles[][] = testTitle1.map((elem) => {
+    //         return elem.filter((secondElem, index, array) => {
+    //             return secondElem.valueC !== 0 && secondElem.period === " 4th Quarter  "
+    //         })
+    //     }).filter((elem) => elem.length !== 0) 
+    //     // returns Titles[]
+    //     return filterTitle1.flat() // return was deeply nested
+    // }
     
-    function accumulate(title: Titles[]) {
+    function accumulate(title: Titles[]): Titles[] {
 
-        let yearsCount: number = title.length;
-         
         const japanTitle1 = title.map((elem, index, array) => {
             return elem.valueA
         }).reduce((prev, next) => prev + next)
@@ -121,14 +145,13 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
             return {...prev, ...next}
         })
         
-        return {
+        return title.concat({
                 ...title1Flat, 
                 valueA: japanTitle1, 
                 valueB: overseasTitle1, 
                 valueC: 0,
-                yearsCount: yearsCount,
-            }
-    } 
+            })
+    };
 
 
     const printTitlesGlobal = (titles: Titles[]) => {
@@ -139,30 +162,15 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
             let printRankFixed: string = (printRank.length >= 9)
                     ? printRank
                     : printRank + " ".repeat(9 - printRank.length);
-    
-            // let printTitleName: string = (elem.title.length > 32)
-            // ? elem.title.split(" ").reduce((prev, next, index, array) => {
-    
-            //     let nextCheck = prev + next + " ";
-                
-            //     if (nextCheck.length > 31 && prev.length <= 31) {
-            //         return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
-            //     } else if (index === array.length-1) {
-            //         return prev + next + " ".repeat(77 - prev.length)
-            //     } else {
-            //         return prev + " " + next
-            //     }
-            // })
-            // : (elem.title.length < 32)
-            // ? elem.title + " ".repeat(32 - elem.title.length) 
-            // : elem.title
-            let printTitleName = printTextBlock(elem.title)(42)
-    
+
+                    
             let printPlatformFixed: string = (elem.platform.length >= 32)
-                ? elem.platform
-                : " " + elem.platform + " ".repeat(31 - elem.platform.length)
-    
-        let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+                    ? elem.platform
+                    : " " + elem.platform + " ".repeat(31 - elem.platform.length)
+
+            let printTitleName = printTextBlock(elem.title)(42)
+
+            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
             
             let printValueD: string = `${elem.valueD}M ` 
             let printValueDFixed: string = (printValueD.length >= 9)
@@ -173,14 +181,7 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
                 ? "| Global - Life-To-Date (Units)  |" + printValueDFixed + "|\n+" + "-".repeat(42) + "+\n|" + elem.miscellaneous + "\n+" + "-".repeat(elem.miscellaneous.length-1) + "+"
                 : "| Global - Life-To-Date (Units)  |" + printValueDFixed + "|\n+" + "-".repeat(42) + "+";
 
-            let printYearsCount: string = `${elem.yearsCount} FYs ` 
-            let printYearsCountFixed: string = (printYearsCount.length >= 9)
-                ? printYearsCount
-                : " ".repeat(9 - printYearsCount.length) + printYearsCount;
-
-            let printYearsCountRow: string = "| Count: FYs selling >= 1M units |" + printYearsCountFixed + "|\n+" + "-".repeat(42) + "+";
-
-            return printTitleNameFixed + "\n" + printYearsCountRow + "\n" + printValueDRow
+            return printTitleNameFixed + "\n" + printValueDRow
 
         }).reduce((prev, next) => {
             return prev + "\n" + next
@@ -250,130 +251,135 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
 
     }
 
-    const printTitlesJapan = (titles: Titles[]) => {
+    const printTitlesJapan = (titles: Titles[][]): string => {
+
 
         const japanRank = titles.map((elem, index, array) => {
-
-            let printRank: string = ` Rank ${elem.rank} `
-            let printRankFixed: string = (printRank.length >= 9)
+            if (elem[elem.length-1].valueA === 0) {
+                return "N/A"
+            }
+            
+            let printRank: string = ` Rank ${elem[0].rank} `
+            let printRankFixed: string = (printRank.length >= 11)
                     ? printRank
-                    : printRank + " ".repeat(9 - printRank.length);
-    
-            // let printTitleName: string = (elem.title.length > 32)
-            // ? elem.title.split(" ").reduce((prev, next, index, array) => {
-    
-            //     let nextCheck = prev + next + " ";
+                    : printRank + " ".repeat(11 - printRank.length);
+
+            let printTitleName = printTextBlock(elem[0].title)(42)
+
+            let printPlatformFixed: string = (elem[0].platform.length >= 30)
+                ? elem[0].platform
+                : " " + elem[0].platform + " ".repeat(29 - elem[0].platform.length)
+
+
+            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+
+            let yearValues: string[] = elem.filter((value, index) => { return value.valueA !== 0}).map((value, valueIndex, valueArray) => {
+
+               let printValue: string = `${value.valueA}M ` 
+               let printValueFixed: string = (printValue.length >= 11)
+                   ? printValue
+                   : " ".repeat(11 - printValue.length) + printValue;
+
+               let printPeriodFixed: string = (value.fiscalYear === undefined) 
+                       ? "|" + value.period + " ".repeat(6) + "|"
+                       : "| " + value.fiscalYear + " Cumulative          |"
+
+               return  printPeriodFixed + printValueFixed + "|"
+            }).filter((value, index) => index !== elem.length-1 );
                 
-            //     if (nextCheck.length > 31 && prev.length <= 31) {
-            //         return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
-            //     } else if (index === array.length-1) {
-            //         return prev + next + " ".repeat(77 - prev.length)
-            //     } else {
-            //         return prev + " " + next
-            //     }
-            // })
-            // : (elem.title.length < 32)
-            // ? elem.title + " ".repeat(32 - elem.title.length) 
-            // : elem.title
-            let printTitleName = printTextBlock(elem.title)(42)
 
-            let printPlatformFixed: string = (elem.platform.length >= 32)
-                ? elem.platform
-                : " " + elem.platform + " ".repeat(31 - elem.platform.length)
-    
-        let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
-            
-            let printValueA: string = `${elem.valueA}M ` 
-            let printValueAFixed: string = (printValueA.length >= 9)
-                ? printValueA
-                : " ".repeat(9 - printValueA.length) + printValueA;
+        let printValue: string = `${elem[elem.length-1].valueA}M ` 
+        
+        let printValueFixed: string = (printValue.length >= 11)
+            ? printValue
+            : " ".repeat(11 - printValue.length) + printValue;
 
-            let printValueARow: string = (elem.miscellaneous)
-                ? "| Japan - Life-To-Date (Units)   |" + printValueAFixed + "|\n+" + "-".repeat(42) + "+\n|" + elem.miscellaneous + "\n+" + "-".repeat(elem.miscellaneous.length-1) + "+"
-                : "| Japan - Life-To-Date (Units)   |" + printValueAFixed + "|\n+" + "-".repeat(42) + "+"
+        let printLine: string = "+" + "-".repeat(42) + "+";
 
-            let printYearsCount: string = `${elem.yearsCount} FYs ` 
-            let printYearsCountFixed: string = (printYearsCount.length >= 9)
-                ? printYearsCount
-                : " ".repeat(9 - printYearsCount.length) + printYearsCount;
+        let printLTD = printLine + "\n| Japan - Life-To-Date (Units) |" + printValueFixed + "|\n" + printLine;
 
-            let printYearsCountRow: string = "| Count: FYs selling >= 1M units |" + printYearsCountFixed + "|\n+" + "-".repeat(42) + "+";
-            
-            return printTitleNameFixed + "\n" + printYearsCountRow + "\n" + printValueARow
-        }).reduce((prev, next) => {
-            return prev + "\n" + next
-        })
+            return [
+                printTitleNameFixed,
+                ...yearValues,
+                printLTD,
+            ].reduce((prev, next) => {
+                return prev + "\n" + next
+            });
+
+        }).filter(value => value !== "N/A").reduce((prev, next) => {
+                return prev + "\n" + next
+        });
 
         return japanRank
-
     }
 
-    const reducedArrays = latestFYcollection.map((elem) => {
+    const reducedArrays: Titles[][] = latestFYcollection.map((elem) => {
 
         return accumulate(elem)
     })
     
-    const sortedJapanCollection = reducedArrays.map((elem, index, array) => {
+    const sortedJapanCollection: Titles[][] = reducedArrays.map((elem, index, array) => {
             return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
     }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
-        return (a.valueA > b.valueA)
+        return (a[a.length-1].valueA > b[b.length-1].valueA)
             ? 1
-            : (a.valueA < b.valueA)
+            : (a[a.length-1].valueA < b[b.length-1].valueA)
             ? -1
-            : 0 // 4th quarter WW FY is index 11
+            : 0 
     }).map((elem, index) => {
-        // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
-        // const x: Titles[] = [...elem].map((elemTwo) => {
-        //     return {...elemTwo, rank: index+1} 
-        // })
-        return {...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
-    }).filter((elem) => {
-        return elem.valueA !== 0
-    }) // for filtering out games not published by Nintendo in Japan
+        let rankGet = index+1
+        return elem.map(value => {
+            return {...value, rank: rankGet} 
+        }) //{...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
+    })
+    // .filter((elem) => {
+    //     return elem.valueA !== 0
+    // }) // for filtering out games not published by Nintendo in Japan
 
-    const sortedOverseasCollection = reducedArrays.map((elem, index, array) => {
+    const sortedOverseasCollection: Titles[][] = reducedArrays.map((elem, index, array) => {
             return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
     }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
-        return (a.valueB > b.valueB)
+        return (a[a.length-1].valueB > b[b.length-1].valueB)
             ? 1
-            : (a.valueB < b.valueB)
+            : (a[a.length-1].valueB < b[b.length-1].valueB)
             ? -1
-            : 0 // 4th quarter WW FY is index 11
+            : 0 
     }).map((elem, index) => {
-        // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
-        // const x: Titles[] = [...elem].map((elemTwo) => {
-        //     return {...elemTwo, rank: index+1} 
-        // })
-        return {...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
+        let rankGet = index+1
+        return elem.map(value => {
+            return {...value, rank: rankGet} 
+        }) //{...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
     })
 
-    const sortedWWLTDCollection = reducedArrays.map((elem, index, array) => {
+    const sortedWWLTDCollection: Titles[][] = reducedArrays.map((elem, index, array) => {
             return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
     }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
-        return (a.valueD > b.valueD)
+        return (a[a.length-1].valueD > b[b.length-1].valueD)
             ? 1
-            : (a.valueD < b.valueD)
+            : (a[a.length-1].valueD < b[b.length-1].valueD)
             ? -1
-            : 0 // 4th quarter WW FY is index 11
+            : 0 
     }).map((elem, index) => {
-        // x is a nested map so that the actual elements of the array can be accessed, the level above is arrays being the elements since it is a collection of arrays
-        // const x: Titles[] = [...elem].map((elemTwo) => {
-        //     return {...elemTwo, rank: index+1} 
-        // })
-        return {...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
+        let rankGet = index+1
+        return elem.map(value => {
+            return {...value, rank: rankGet} 
+        }) //{...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
     }) 
 
 
 const printOne = printHead(header)
 
-const divideSortedJapanCollection = decimateCalculation(sortedJapanCollection)
+// const divideSortedJapanCollection = decimateCalculation(sortedJapanCollection)
+console.log(sortedJapanCollection);
+
+const divideSortedJapanCollection = sortedJapanCollection.map(elem => decimateCalculation(elem)) 
 const printTwo = printTitlesJapan(divideSortedJapanCollection)
 
-const divideSortedOverseasCollection = decimateCalculation(sortedOverseasCollection)
-const printThree = printTitlesOverseas(divideSortedOverseasCollection)
+// const divideSortedOverseasCollection = decimateCalculation(sortedOverseasCollection)
+// const printThree = printTitlesOverseas(divideSortedOverseasCollection)
 
-const divideSortedGlobalCollection = decimateCalculation(sortedWWLTDCollection)
-const printFour = printTitlesGlobal(divideSortedGlobalCollection)
+// const divideSortedGlobalCollection = decimateCalculation(sortedWWLTDCollection)
+// const printFour = printTitlesGlobal(divideSortedGlobalCollection)
 
 export const printJapan =
 `${printOne}
@@ -384,11 +390,9 @@ ${printTwo}
 export const printOverseas = 
 `${printOne}
 ${dateLabel}
-${printThree}
 ###`;
 
 export const printGlobal = 
 `${printOne}
 ${dateLabel}
-${printFour}
 ###`;

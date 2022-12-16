@@ -16,6 +16,7 @@ export type Titles = {
     label?: " New! " | " Recurring ",
     miscellaneous?: string,
     yearsCount?: number,
+    fiscalYear?: string,
 }
 
 export type Header = {

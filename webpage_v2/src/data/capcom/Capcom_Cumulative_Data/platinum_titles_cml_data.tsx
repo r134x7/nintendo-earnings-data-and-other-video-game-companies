@@ -62,3 +62,5 @@ function accumulateValues(getCollection: collectionData[]) {
 };
 
 accumulateValues(makeValues);
+
+// I've forgotten but I am going to guess this file actually does nothing now.
