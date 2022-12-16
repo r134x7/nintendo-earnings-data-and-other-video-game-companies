@@ -11,15 +11,15 @@ export default function NINTENDO_CML() {
 
     const componentList = [
         {
-            name: "Nintendo Switch FY Million-Seller Titles - Japan",
+            name: "Nintendo FY Million-Seller Titles - Japan",
             value: printJapan 
         },
         {
-            name: "Nintendo Switch FY Million-Seller Titles - Overseas",
+            name: "Nintendo FY Million-Seller Titles - Overseas",
             value: printOverseas, 
         },
         {
-            name: "Nintendo Switch FY Million-Seller Titles - Global",
+            name: "Nintendo FY Million-Seller Titles - Global",
             value: printGlobal,
         },
     ];
