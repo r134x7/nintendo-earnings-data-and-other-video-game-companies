@@ -154,101 +154,159 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
     };
 
 
-    const printTitlesGlobal = (titles: Titles[]) => {
+    const printTitlesGlobal = (titles: Titles[][]) => {
 
-        const globalRank = titles.map((elem, index, array) => {
-
-            let printRank: string = ` Rank ${elem.rank} `
-            let printRankFixed: string = (printRank.length >= 9)
+        const regionRank = titles.map((elem, index, array) => {
+            // if (elem[elem.length-1].valueB === 0) {
+            //     return "N/A"
+            // }
+            
+            let printRank: string = ` Rank ${elem[0].rank} `
+            let printRankFixed: string = (printRank.length >= 11)
                     ? printRank
-                    : printRank + " ".repeat(9 - printRank.length);
+                    : printRank + " ".repeat(11 - printRank.length);
 
-                    
-            let printPlatformFixed: string = (elem.platform.length >= 32)
-                    ? elem.platform
-                    : " " + elem.platform + " ".repeat(31 - elem.platform.length)
+            let printTitleName = printTextBlock(elem[0].title)(42)
 
-            let printTitleName = printTextBlock(elem.title)(42)
+            let printPlatformFixed: string = (elem[0].platform.length >= 30)
+                ? elem[0].platform
+                : " " + elem[0].platform + " ".repeat(29 - elem[0].platform.length)
+
 
             let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+
+            let yearValues: string[] = elem.filter((value, index) => { return value.valueC !== 0}).map((value, valueIndex, valueArray) => {
+
+               let printValue: string = `${value.valueC}M ` 
+               let printValueFixed: string = (printValue.length >= 11)
+                   ? printValue
+                   : " ".repeat(11 - printValue.length) + printValue;
+
+               let printPeriodFixed: string = (value.fiscalYear === undefined) 
+                       ? "|" + value.period + " ".repeat(6) + "|"
+                       : "| " + value.fiscalYear + " Cumulative          |"
+
+               return  printPeriodFixed + printValueFixed + "|"
+            }).filter((value, index) => index !== elem.length-1 );
+                
+
+        let printValue: string = `${elem[elem.length-1].valueD}M ` 
+        
+        let printValueFixed: string = (printValue.length >= 11)
+            ? printValue
+            : " ".repeat(11 - printValue.length) + printValue;
+
+        let printLine: string = "+" + "-".repeat(42) + "+";
+
+        let printLTD = printLine + "\n| Global - Life-To-Date (Units)|" + printValueFixed + "|\n" + printLine;
+
+            return [
+                printTitleNameFixed,
+                ...yearValues,
+                printLTD,
+            ].reduce((prev, next) => {
+                return prev + "\n" + next
+            });
+
+        }).filter(value => value !== "N/A").reduce((prev, next) => {
+                return prev + "\n" + next
+        });
+
+        return regionRank
+        // const globalRank = titles.map((elem, index, array) => {
+
+        //     let printRank: string = ` Rank ${elem.rank} `
+        //     let printRankFixed: string = (printRank.length >= 9)
+        //             ? printRank
+        //             : printRank + " ".repeat(9 - printRank.length);
+
+                    
+        //     let printPlatformFixed: string = (elem.platform.length >= 32)
+        //             ? elem.platform
+        //             : " " + elem.platform + " ".repeat(31 - elem.platform.length)
+
+        //     let printTitleName = printTextBlock(elem.title)(42)
+
+        //     let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
             
-            let printValueD: string = `${elem.valueD}M ` 
-            let printValueDFixed: string = (printValueD.length >= 9)
-                ? printValueD
-                : " ".repeat(9 - printValueD.length) + printValueD;
+        //     let printValueD: string = `${elem.valueD}M ` 
+        //     let printValueDFixed: string = (printValueD.length >= 9)
+        //         ? printValueD
+        //         : " ".repeat(9 - printValueD.length) + printValueD;
 
-            let printValueDRow: string = (elem.miscellaneous)
-                ? "| Global - Life-To-Date (Units)  |" + printValueDFixed + "|\n+" + "-".repeat(42) + "+\n|" + elem.miscellaneous + "\n+" + "-".repeat(elem.miscellaneous.length-1) + "+"
-                : "| Global - Life-To-Date (Units)  |" + printValueDFixed + "|\n+" + "-".repeat(42) + "+";
+        //     let printValueDRow: string = (elem.miscellaneous)
+        //         ? "| Global - Life-To-Date (Units)  |" + printValueDFixed + "|\n+" + "-".repeat(42) + "+\n|" + elem.miscellaneous + "\n+" + "-".repeat(elem.miscellaneous.length-1) + "+"
+        //         : "| Global - Life-To-Date (Units)  |" + printValueDFixed + "|\n+" + "-".repeat(42) + "+";
 
-            return printTitleNameFixed + "\n" + printValueDRow
+        //     return printTitleNameFixed + "\n" + printValueDRow
 
-        }).reduce((prev, next) => {
-            return prev + "\n" + next
-        })
+        // }).reduce((prev, next) => {
+        //     return prev + "\n" + next
+        // })
 
-        return globalRank
+        // return globalRank
 
     }
 
-    const printTitlesOverseas = (titles: Titles[]) => {
+    const printTitlesOverseas = (titles: Titles[][]) => {
 
-        const overseasRank = titles.map((elem, index, array) => {
-
-            let printRank: string = ` Rank ${elem.rank} `
-            let printRankFixed: string = (printRank.length >= 9)
-                    ? printRank
-                    : printRank + " ".repeat(9 - printRank.length);
-    
-            // let printTitleName: string = (elem.title.length > 32)
-            // ? elem.title.split(" ").reduce((prev, next, index, array) => {
-    
-            //     let nextCheck = prev + next + " ";
-                
-            //     if (nextCheck.length > 31 && prev.length <= 31) {
-            //         return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
-            //     } else if (index === array.length-1) {
-            //         return prev + next + " ".repeat(77 - prev.length)
-            //     } else {
-            //         return prev + " " + next
-            //     }
-            // })
-            // : (elem.title.length < 32)
-            // ? elem.title + " ".repeat(32 - elem.title.length) 
-            // : elem.title
-            let printTitleName = printTextBlock(elem.title)(42)
-    
-            let printPlatformFixed: string = (elem.platform.length >= 32)
-                ? elem.platform
-                : " " + elem.platform + " ".repeat(31 - elem.platform.length)
-    
-        let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+        const regionRank = titles.map((elem, index, array) => {
+            if (elem[elem.length-1].valueB === 0) {
+                return "N/A"
+            }
             
-            let printValueB: string = `${elem.valueB}M ` 
-            let printValueBFixed: string = (printValueB.length >= 9)
-                ? printValueB
-                : " ".repeat(9 - printValueB.length) + printValueB;
+            let printRank: string = ` Rank ${elem[0].rank} `
+            let printRankFixed: string = (printRank.length >= 11)
+                    ? printRank
+                    : printRank + " ".repeat(11 - printRank.length);
 
-            let printValueBRow: string = (elem.miscellaneous)
-                ? "| Overseas - Life-To-Date (Units)|" + printValueBFixed + "|\n+" + "-".repeat(42) + "+\n|" + elem.miscellaneous + "\n+" + "-".repeat(elem.miscellaneous.length-1) + "+"
-                : "| Overseas - Life-To-Date (Units)|" + printValueBFixed + "|\n+" + "-".repeat(42) + "+"
+            let printTitleName = printTextBlock(elem[0].title)(42)
+
+            let printPlatformFixed: string = (elem[0].platform.length >= 30)
+                ? elem[0].platform
+                : " " + elem[0].platform + " ".repeat(29 - elem[0].platform.length)
 
 
-            let printYearsCount: string = `${elem.yearsCount} FYs ` 
-            let printYearsCountFixed: string = (printYearsCount.length >= 9)
-                ? printYearsCount
-                : " ".repeat(9 - printYearsCount.length) + printYearsCount;
+            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
 
-            let printYearsCountRow: string = "| Count: FYs selling >= 1M units |" + printYearsCountFixed + "|\n+" + "-".repeat(42) + "+";
+            let yearValues: string[] = elem.filter((value, index) => { return value.valueB !== 0}).map((value, valueIndex, valueArray) => {
 
-            return printTitleNameFixed + "\n" + printYearsCountRow + "\n" + printValueBRow
+               let printValue: string = `${value.valueB}M ` 
+               let printValueFixed: string = (printValue.length >= 11)
+                   ? printValue
+                   : " ".repeat(11 - printValue.length) + printValue;
 
-        }).reduce((prev, next) => {
-            return prev + "\n" + next
-        })
+               let printPeriodFixed: string = (value.fiscalYear === undefined) 
+                       ? "|" + value.period + " ".repeat(6) + "|"
+                       : "| " + value.fiscalYear + " Cumulative          |"
 
-        return overseasRank
+               return  printPeriodFixed + printValueFixed + "|"
+            }).filter((value, index) => index !== elem.length-1 );
+                
 
+        let printValue: string = `${elem[elem.length-1].valueB}M ` 
+        
+        let printValueFixed: string = (printValue.length >= 11)
+            ? printValue
+            : " ".repeat(11 - printValue.length) + printValue;
+
+        let printLine: string = "+" + "-".repeat(42) + "+";
+
+        let printLTD = printLine + "\n|Overseas - Life-To-Date(Units)|" + printValueFixed + "|\n" + printLine;
+
+            return [
+                printTitleNameFixed,
+                ...yearValues,
+                printLTD,
+            ].reduce((prev, next) => {
+                return prev + "\n" + next
+            });
+
+        }).filter(value => value !== "N/A").reduce((prev, next) => {
+                return prev + "\n" + next
+        });
+
+        return regionRank
     }
 
     const printTitlesJapan = (titles: Titles[][]): string => {
@@ -392,11 +450,11 @@ console.log(sortedJapanCollection);
 const divideSortedJapanCollection = sortedJapanCollection.map(elem => decimateCalculation(elem)) 
 const printTwo = printTitlesJapan(divideSortedJapanCollection)
 
-// const divideSortedOverseasCollection = decimateCalculation(sortedOverseasCollection)
-// const printThree = printTitlesOverseas(divideSortedOverseasCollection)
+const divideSortedOverseasCollection = sortedOverseasCollection.map(elem => decimateCalculation(elem))
+const printThree = printTitlesOverseas(divideSortedOverseasCollection)
 
-// const divideSortedGlobalCollection = decimateCalculation(sortedWWLTDCollection)
-// const printFour = printTitlesGlobal(divideSortedGlobalCollection)
+const divideSortedGlobalCollection = sortedWWLTDCollection.map(elem => decimateCalculation(elem))
+const printFour = printTitlesGlobal(divideSortedGlobalCollection)
 
 export const printJapan =
 `${printOneJapan}
@@ -407,9 +465,11 @@ ${printTwo}
 export const printOverseas = 
 `${printOneOverseas}
 ${dateLabel}
+${printThree}
 ###`;
 
 export const printGlobal = 
 `${printOneWW}
 ${dateLabel}
+${printFour}
 ###`;
