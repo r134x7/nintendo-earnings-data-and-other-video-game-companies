@@ -308,11 +308,8 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
 
     // now that it is a function, when I want to add titles of another platform, then I can reduce it
     // let platformList = makeTitlesList(elem.titles, header, elem.currentQuarter);
-    let platformList: string = elem.titles.map(value => {
-        return (value[0].name === "N/A")
-            ? "N/A"
-            : makeTitlesList(value, header, elem.currentQuarter)
-    }).filter(value => value !== "N/A").reduce((prev,next) => prev + "\n" + next);
+    let platformList: string = elem.titles.map(value => makeTitlesList(value, header, elem.currentQuarter)
+    ).reduce((prev,next) => prev + "\n" + next);
 
     return platformList
 });
@@ -360,23 +357,14 @@ export const fyMillionSellerTitlesGraphList = collection.map((elem, index, array
         }
     };
 
-    let platformList = elem.titles.map(value => {
-        return (value[0].name === "N/A")
-            ? "N/A"
-            : makeGraphList(value, elem.currentQuarter)
-    }).filter(value => value !== "N/A");
+    let platformList = elem.titles.map(value => makeGraphList(value, elem.currentQuarter)
+    );
 
-    let differenceTitlesList = platformList.map(value => {
-        if (value !== "N/A") {
-            return value.quarters
-        };
-    }).flat() as Titles[][];
+    let differenceTitlesList = platformList.map(value => value.quarters
+    ).flat() as Titles[][];
 
-    let cumualativeTitlesList = platformList.map(value => {
-        if (value !== "N/A") {
-            return value.cumulative
-        };
-    }).flat() as Titles[][];
+    let cumualativeTitlesList = platformList.map(value => value.cumulative
+    ).flat() as Titles[][];
 
     let thisFY: string = elem.fiscalYear;
     let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
