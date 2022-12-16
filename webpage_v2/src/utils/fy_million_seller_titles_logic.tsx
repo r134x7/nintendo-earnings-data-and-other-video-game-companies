@@ -21,8 +21,9 @@ export type Titles = {
 export type Header = {
     mainHeader: "| Nintendo Fiscal Year Million-Seller Titles |",
     platformHeader: string, // change this to a string
-    secondHeader: "| Title and Rank                           |",
-    thirdHeader: "| Units                                    |",
+    secondHeader: "| Title                                    |",
+    thirdHeader: "| Platform and Rank                        |"
+    fourthHeader: "| Units                                    |",
     fiscalYear: string,
     areaHeader: "| Area         |   Japan | Overseas|",
     globalHeader: "| Global       |   WW FY |  WW LTD |",
@@ -76,6 +77,8 @@ ${header.platformHeader}
 ${header.secondHeader}
 +${"-".repeat(42)}+
 ${header.thirdHeader}
++${"-".repeat(42)}+
+${header.fourthHeader}
 +${"-".repeat(42)}+`;
 
 export const printTitles = (header: Header, titleDifference: Titles[], titleCumulative: Titles[], currentQuarter: number) => {
@@ -89,7 +92,9 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
                 ? printRank
                 : printRank + " ".repeat(9 - printRank.length);
         
-        let printPlatformFixed: string = (elem.platform)
+        let printPlatformFixed: string = (elem.platform.length >= 32)
+                ? elem.platform
+                : " " + elem.platform + " ".repeat(31 - elem.platform.length)
 
         // let printTitleName: string = (elem.title.length > 32)
         // ? elem.title.split(" ").reduce((prev, next, index, array) => {
@@ -109,7 +114,7 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
         // : elem.title
         let printTitleName = printTextBlock(elem.title)(42)
 
-        let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+        let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
 
         let printValueA: string = `${elem.valueA}M ` 
         let printValueAFixed: string = (printValueA.length >= 9)
@@ -172,7 +177,7 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
                     ? printTitleNameFixed + "\n" + printAreaHeader + "\n|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|"
                     : (index === 3)
                     ? "|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|\n" + printFYCml + printFYCmlYoY + "\n| Area/WW FY % |" + printRegionAWWPercentageFixed + "|" + printRegionBWWPercentageFixed + "|"
-                    : (index === currentQuarter-1 )
+                    : (index === currentQuarter-1)
                     ? "|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|\n" + printFYCml + "\n| Area/WW FY % |" + printRegionAWWPercentageFixed + "|" + printRegionBWWPercentageFixed + "|"
                     : "|" + elem.period + "|" + printValueAFixed + "|" + printValueBFixed + "|"
         }
