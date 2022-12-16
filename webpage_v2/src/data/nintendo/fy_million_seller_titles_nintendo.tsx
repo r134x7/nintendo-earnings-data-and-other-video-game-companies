@@ -90,8 +90,14 @@ const collection: collectionJSON[] = [
     fyMillionSellerTitles2004,
 ] //as const;
 
-export const titlesMake = (obj: titlesJSON): Titles[] => {
+export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined): Titles[] => {
 
+    let searchPrevFY = (!prevFY)
+            ? [undefined]
+            : prevFY.map((elem) => elem.filter((value) => value.platform === obj.platform && value.name === obj.name)).flat()
+
+    console.log(searchPrevFY);
+    
     let title: Titles[] = [
         {
             title: obj.name,
@@ -154,13 +160,30 @@ export const titlesMake = (obj: titlesJSON): Titles[] => {
             platform: obj.platform,
             period: " Last FY Total ",
             regionA: "Japan",
-            valueA: (obj.valueALastFY === undefined) ? 0 : obj.valueALastFY,
+            valueA: (obj.valueALastFY !== undefined) 
+                                ? obj.valueALastFY 
+                                : (searchPrevFY[0] !== undefined)
+                                    ? searchPrevFY[0].Q4CmlValueA
+                                    : 0, 
+            // (obj.valueALastFY === undefined) ? 0 : obj.valueALastFY,
             regionB: "Overseas",
-            valueB: (obj.valueBLastFY === undefined) ? 0 : obj.valueBLastFY, 
+            valueB: (obj.valueBLastFY !== undefined) 
+                                ? obj.valueBLastFY 
+                                : (searchPrevFY[0] !== undefined)
+                                    ? searchPrevFY[0].Q4CmlValueB
+                                    : 0,
             regionC: "WW FY",
-            valueC: (obj.valueCLastFY === undefined) ? 0 : obj.valueCLastFY,
+            valueC: (obj.valueCLastFY !== undefined) 
+                                ? obj.valueCLastFY 
+                                : (searchPrevFY[0] !== undefined)
+                                    ? searchPrevFY[0].Q4CmlValueC
+                                    : 0,
             regionD: "WW LTD",
-            valueD: (obj.valueDLastFY === undefined) ? 0 : obj.valueDLastFY,
+            valueD: (obj.valueDLastFY !== undefined) 
+                                ? obj.valueDLastFY 
+                                : (searchPrevFY[0] !== undefined)
+                                    ? searchPrevFY[0].Q4CmlValueD
+                                    : 0,
             miscellaneous: obj.miscellaneous,
         },
     ]
@@ -189,9 +212,13 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
         globalLTDSummaryHeader: "| Global LTD                      |",
     };
 
-    function makeTitlesList(titleValues: titlesJSON[], headerValues: Header, currentQuarter: number): string {
+    let prevFYTitles: titlesJSON[][] | undefined = (array[index+1] === undefined)
+        ? undefined
+        : array[index+1].titles;
 
-        let titlesList: Titles[][] = titleValues.map(value => titlesMake(value));
+    function makeTitlesList(titleValues: titlesJSON[], prevFYTitlesLocal: titlesJSON[][] | undefined, headerValues: Header, currentQuarter: number): string {
+
+        let titlesList: Titles[][] = titleValues.map(value => titlesMake(value, prevFYTitlesLocal));
 
 
         let filteredCollection = titlesList.filter((elem, index, array) => {
@@ -309,7 +336,7 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
 
     // now that it is a function, when I want to add titles of another platform, then I can reduce it
     // let platformList = makeTitlesList(elem.titles, header, elem.currentQuarter);
-    let platformList: string = elem.titles.map(value => makeTitlesList(value, header, elem.currentQuarter)
+    let platformList: string = elem.titles.map(value => makeTitlesList(value, prevFYTitles, header, elem.currentQuarter)
     ).reduce((prev,next) => prev + "\n" + next);
 
     return platformList
@@ -319,7 +346,7 @@ export const fyMillionSellerTitlesGraphList = collection.map((elem, index, array
 
     function makeGraphList(titleValues: titlesJSON[], currentQuarter: number) {
 
-        let titlesList: Titles[][] = titleValues.map(value => titlesMake(value));
+        let titlesList: Titles[][] = titleValues.map(value => titlesMake(value, undefined));
 
         let filteredCollection = titlesList.filter((elem, index, array) => {
             return array[index][3].valueC !== 0

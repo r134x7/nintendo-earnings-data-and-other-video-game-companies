@@ -50,14 +50,10 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
     
     let totalCollectionSet = totalCollection.map(elem => {
 
-        let flatList = elem.titles.filter(value => value[0].name !== "N/A").flat();
+        let flatList = elem.titles.flat();
 
-        return flatList.map(value => titlesMake(value))
+        return flatList.map(value => titlesMake(value, undefined))
 
-        // return elem.titles.map(value => titlesMake(value))
-        // return elem.titles.filter(value => value[0].name !== "N/A").map(value => {
-        //     return titlesMake(value)
-        // })
     });
 
     // latestFYcollection is where the latest FY collection needs to be placed.

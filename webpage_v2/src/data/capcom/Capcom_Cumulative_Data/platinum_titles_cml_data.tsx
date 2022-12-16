@@ -57,7 +57,7 @@ const makeValues: collectionData[] = totalCollection.map(elem => {
 function accumulateValues(getCollection: collectionData[]) {
 
     let x = getCollection[0];
-    console.log(x);
+    // console.log(x);
     
 };
 
