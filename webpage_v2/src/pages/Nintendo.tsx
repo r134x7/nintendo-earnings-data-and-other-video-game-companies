@@ -4,19 +4,12 @@ import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
-// import NINTENDO_FY3_2017 from "../components/nintendo/NINTENDO_FY3_2017";
-// import NINTENDO_FY3_2018 from "../components/nintendo/NINTENDO_FY3_2018";
-// import NINTENDO_FY3_2019 from "../components/nintendo/NINTENDO_FY3_2019";
-// import NINTENDO_FY3_2020 from "../components/nintendo/NINTENDO_FY3_2020";
-// import NINTENDO_FY3_2021 from "../components/nintendo/NINTENDO_FY3_2021";
-// import NINTENDO_FY3_2022 from "../components/nintendo/NINTENDO_FY3_2022";
-// import NINTENDO_FY3_2023 from "../components/nintendo/NINTENDO_FY3_2023";
 import NINTENDO_CML from "../components/special/NINTENDO_CML";
 import NINTENDO_COMPONENT from "../components/NINTENDO_COMPONENT";
 
 const currentYear = 2023;
 
-const yearsList = Array.from({length: 7}, (elem, index) => 
+const yearsList = Array.from({length: 20}, (elem, index) => 
                     {
                             return "FY3/" + (currentYear - index)
                     }) // FY3/2017 to FY3/2023 at length: 7

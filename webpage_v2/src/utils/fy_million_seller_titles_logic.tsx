@@ -17,14 +17,16 @@ export type Titles = {
 }
 
 export type Header = {
-    mainHeader: "| Fiscal Year Million-Seller Titles |",
-    platformHeader: "| Nintendo Switch                   |", // change this to a string
+    mainHeader: "| Nintendo Fiscal Year Million-Seller Titles |",
+    platformHeader: string, // change this to a string
     secondHeader: "| Title and Rank                           |",
     thirdHeader: "| Units                                    |",
     fiscalYear: string,
     areaHeader: "| Area         |   Japan | Overseas|",
     globalHeader: "| Global       |   WW FY |  WW LTD |",
-    switchSummaryHeader: "| Nintendo Switch FY    |\n| Million-Seller Titles |\n",
+    mainSummaryHeader: string,
+    secondSummaryHeader: "| FY Million-Seller      |",
+    thirdSummaryHeader: "| Titles Summary         |"
     japanSummaryHeader: "| Japan                           |",
     overseasSummaryHeader: "| Overseas                        |",
     globalFYSummaryHeader: "| Global FY                       |",
@@ -63,11 +65,11 @@ export function quarterlyCalculation(quarters: Titles[]) {
 }
 
 export const printHead = (header: Header) => 
-`+${"-".repeat(42)}+
+`+${"-".repeat(44)}+
 ${header.mainHeader}
-+${"-".repeat(42)}+
++${"-".repeat(44)}+
 ${header.platformHeader}
-+${"-".repeat(42)}+
++${"-".repeat(44)}+
 +${"-".repeat(42)}+
 ${header.secondHeader}
 +${"-".repeat(42)}+
@@ -285,7 +287,7 @@ export const printSummaryHead = (header: Header, newCollection: Titles[], recurr
     ? printTotal
     : " ".repeat(9 - printTotal.length) + printTotal;
 
-    let printHeader: string = "+"+"-".repeat(23)+"+\n" + header.switchSummaryHeader + "+"+"-".repeat(23)+"+"
+    let printHeader: string = "+"+"-".repeat(24)+"+\n" + header.mainSummaryHeader  + "\n" + header.secondSummaryHeader + "\n" + header.thirdSummaryHeader + "\n" + "+"+"-".repeat(24)+"+"
 
     let printTitles: string = "\n+"+"-".repeat(23)+"+\n| Titles      |   Count |\n+" + "-".repeat(23)+"+" 
 

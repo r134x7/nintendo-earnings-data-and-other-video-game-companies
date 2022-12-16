@@ -17,6 +17,19 @@ import fyMillionSellerTitles2020 from "./FY_Million_Seller_Titles/million_seller
 import fyMillionSellerTitles2019 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2019.json";
 import fyMillionSellerTitles2018 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2018.json";
 import fyMillionSellerTitles2017 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2017.json";
+import fyMillionSellerTitles2016 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2016.json";
+import fyMillionSellerTitles2015 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2015.json";
+import fyMillionSellerTitles2014 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2014.json";
+import fyMillionSellerTitles2013 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2013.json";
+import fyMillionSellerTitles2012 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2012.json";
+import fyMillionSellerTitles2011 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2011.json";
+import fyMillionSellerTitles2010 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2010.json";
+import fyMillionSellerTitles2009 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2009.json";
+import fyMillionSellerTitles2008 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2008.json";
+import fyMillionSellerTitles2007 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2007.json";
+import fyMillionSellerTitles2006 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2006.json";
+import fyMillionSellerTitles2005 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2005.json";
+import fyMillionSellerTitles2004 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2004.json";
 
 export type collectionJSON = {
     currentQuarter: number,
@@ -62,6 +75,19 @@ const collection: collectionJSON[] = [
     fyMillionSellerTitles2019,
     fyMillionSellerTitles2018,
     fyMillionSellerTitles2017,
+    fyMillionSellerTitles2016,
+    fyMillionSellerTitles2015,
+    fyMillionSellerTitles2014,
+    fyMillionSellerTitles2013,
+    fyMillionSellerTitles2012,
+    fyMillionSellerTitles2011,
+    fyMillionSellerTitles2010,
+    fyMillionSellerTitles2009,
+    fyMillionSellerTitles2008,
+    fyMillionSellerTitles2007,
+    fyMillionSellerTitles2006,
+    fyMillionSellerTitles2005,
+    fyMillionSellerTitles2004,
 ] //as const;
 
 export const titlesMake = (obj: titlesJSON): Titles[] => {
@@ -69,6 +95,7 @@ export const titlesMake = (obj: titlesJSON): Titles[] => {
     let title: Titles[] = [
         {
             title: obj.name,
+            platform: obj.platform,
             period: " 1st Quarter  ",
             regionA: "Japan",
             valueA: obj.Q1CmlValueA,
@@ -82,6 +109,7 @@ export const titlesMake = (obj: titlesJSON): Titles[] => {
         },
         {
             title: obj.name,
+            platform: obj.platform,
             period: " 2nd Quarter  ",
             regionA: "Japan",
             valueA: obj.Q2CmlValueA,
@@ -95,6 +123,7 @@ export const titlesMake = (obj: titlesJSON): Titles[] => {
         },
         {
             title: obj.name,
+            platform: obj.platform,
             period: " 3rd Quarter  ",
             regionA: "Japan",
             valueA: obj.Q3CmlValueA,
@@ -108,6 +137,7 @@ export const titlesMake = (obj: titlesJSON): Titles[] => {
         },
         {
             title: obj.name,
+            platform: obj.platform,
             period: " 4th Quarter  ",
             regionA: "Japan",
             valueA: obj.Q4CmlValueA,
@@ -121,6 +151,7 @@ export const titlesMake = (obj: titlesJSON): Titles[] => {
         },
         {
             title: obj.name,
+            platform: obj.platform,
             period: " Last FY Total ",
             regionA: "Japan",
             valueA: (obj.valueALastFY === undefined) ? 0 : obj.valueALastFY,
@@ -141,14 +172,16 @@ export const titlesMake = (obj: titlesJSON): Titles[] => {
 export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, array) => {
 
     let header: Header = {
-        mainHeader: "| Fiscal Year Million-Seller Titles |",
+        mainHeader: "| Nintendo Fiscal Year Million-Seller Titles |",
         platformHeader: "| Nintendo Switch                   |",
         secondHeader: "| Title and Rank                           |",
         thirdHeader: "| Units                                    |",
         areaHeader: "| Area         |   Japan | Overseas|",
         globalHeader: "| Global       |   WW FY |  WW LTD |",
         fiscalYear: elem.fiscalYear,
-        switchSummaryHeader: "| Nintendo Switch FY    |\n| Million-Seller Titles |\n",
+        mainSummaryHeader: "placeholder",
+        secondSummaryHeader: "| FY Million-Seller      |",
+        thirdSummaryHeader: "| Titles Summary         |",
         japanSummaryHeader: "| Japan                           |",
         overseasSummaryHeader: "| Overseas                        |",
         globalFYSummaryHeader: "| Global FY                       |",
@@ -246,16 +279,29 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
                 }).reduce((prev, next) => prev + next)
             })
 
+        let platformLength = (sortedCollection[0][0].platform === undefined)
+                ? " ".repeat(10)
+                : " ".repeat(44 - sortedCollection[0][0].platform.length-1)
 
-        let printOne = printHead(headerValues)
+        let summaryLength = (sortedCollection[0][0].platform === undefined)
+                ? " ".repeat(10)
+                : " ".repeat(24 - sortedCollection[0][0].platform.length-1)
+
+        let headerFixed = {
+            ...headerValues,
+            platformHeader: "| " + sortedCollection[0][0].platform + platformLength + "|",
+            mainSummaryHeader: "| " + sortedCollection[0][0].platform + summaryLength + "|"
+        }
+
+        let printOne = printHead(headerFixed)
 
         let printListedTitles = differenceTitles.map((elem, index) => {
-            return printTitles(headerValues, elem, sortedTitles[index], currentQuarter)
+            return printTitles(headerFixed, elem, sortedTitles[index], currentQuarter)
         }) as string[];
 
-        let printSummaryOne = printSummaryHead(headerValues, newCollection, recurringCollection)
+        let printSummaryOne = printSummaryHead(headerFixed, newCollection, recurringCollection)
 
-        let printSummaryTwo = printSummary(headerValues, newSummary, recurringSummary)
+        let printSummaryTwo = printSummary(headerFixed, newSummary, recurringSummary)
 
         let printFYMillionSellerTitles = (currentQuarter !== 4) // can't use !== 4 for one condition only or else it assumes condition is always true (this issue occurred with hardcoded currentQuarter)
             ? [printOne, ...printListedTitles ].reduce((prev, next) => prev + "\n" + next )
