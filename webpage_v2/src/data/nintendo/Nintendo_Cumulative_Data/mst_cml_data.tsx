@@ -86,7 +86,7 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
 
     const latestFYcollection = sortingTitles(filteredCollection);
 
-    console.log(latestFYcollection);
+    // console.log(latestFYcollection);
     
 
     const dateLabel = "| Latest data as of September 30th, 2022   |\n+" + "-".repeat(42) + "+"
@@ -157,9 +157,6 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
     const printTitlesGlobal = (titles: Titles[][]) => {
 
         const regionRank = titles.map((elem, index, array) => {
-            // if (elem[elem.length-1].valueB === 0) {
-            //     return "N/A"
-            // }
             
             let printRank: string = ` Rank ${elem[0].rank} `
             let printRankFixed: string = (printRank.length >= 11)
@@ -445,7 +442,7 @@ const printOneOverseas = printHead(overseasHeader)
 const printOneWW = printHead(wwHeader)
 
 // const divideSortedJapanCollection = decimateCalculation(sortedJapanCollection)
-console.log(sortedJapanCollection);
+// console.log(sortedJapanCollection);
 
 const divideSortedJapanCollection = sortedJapanCollection.map(elem => decimateCalculation(elem)) 
 const printTwo = printTitlesJapan(divideSortedJapanCollection)
