@@ -366,8 +366,25 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
         }) //{...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
     }) 
 
+let japanHeader = {
+    ...header,
+    platformHeader: "| Japan - Million-Seller Titles              |" 
+}
 
-const printOne = printHead(header)
+let overseasHeader = {
+    ...header,
+    platformHeader: "| Overseas - Million-Seller Titles           |" 
+}
+
+let wwHeader = {
+    ...header,
+    platformHeader: "| Global - Million-Seller Titles             |" 
+}
+const printOneJapan = printHead(japanHeader)
+
+const printOneOverseas = printHead(overseasHeader)
+
+const printOneWW = printHead(wwHeader)
 
 // const divideSortedJapanCollection = decimateCalculation(sortedJapanCollection)
 console.log(sortedJapanCollection);
@@ -382,17 +399,17 @@ const printTwo = printTitlesJapan(divideSortedJapanCollection)
 // const printFour = printTitlesGlobal(divideSortedGlobalCollection)
 
 export const printJapan =
-`${printOne}
+`${printOneJapan}
 ${dateLabel}
 ${printTwo}
 ###`;
 
 export const printOverseas = 
-`${printOne}
+`${printOneOverseas}
 ${dateLabel}
 ###`;
 
 export const printGlobal = 
-`${printOne}
+`${printOneWW}
 ${dateLabel}
 ###`;
