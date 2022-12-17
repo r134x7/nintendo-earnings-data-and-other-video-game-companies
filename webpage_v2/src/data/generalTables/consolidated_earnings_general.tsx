@@ -16,6 +16,18 @@ import nintendoConsolidatedEarnings2019 from "../nintendo/Consolidated_Earnings/
 import nintendoConsolidatedEarnings2018 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2018.json";
 import nintendoConsolidatedEarnings2017 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2017.json";
 import nintendoConsolidatedEarnings2016 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2016.json";
+import nintendoConsolidatedEarnings2015 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2015.json";
+import nintendoConsolidatedEarnings2014 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2014.json";
+import nintendoConsolidatedEarnings2013 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2013.json";
+import nintendoConsolidatedEarnings2012 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2012.json";
+import nintendoConsolidatedEarnings2011 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2011.json";
+import nintendoConsolidatedEarnings2010 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2010.json";
+import nintendoConsolidatedEarnings2009 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2009.json";
+import nintendoConsolidatedEarnings2008 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2008.json";
+import nintendoConsolidatedEarnings2007 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2007.json";
+import nintendoConsolidatedEarnings2006 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2006.json";
+import nintendoConsolidatedEarnings2005 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2005.json";
+import nintendoConsolidatedEarnings2004 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2004.json";
 
 import capcomEarnings2023 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2023.json";
 import capcomEarnings2022 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2022.json";
@@ -95,6 +107,18 @@ const collectionNintendo: EarningsJSON[] = [
     nintendoConsolidatedEarnings2018,
     nintendoConsolidatedEarnings2017,
     nintendoConsolidatedEarnings2016,
+    nintendoConsolidatedEarnings2015,
+    nintendoConsolidatedEarnings2014,
+    nintendoConsolidatedEarnings2013,
+    nintendoConsolidatedEarnings2012,
+    nintendoConsolidatedEarnings2011,
+    nintendoConsolidatedEarnings2010,
+    nintendoConsolidatedEarnings2009,
+    nintendoConsolidatedEarnings2008,
+    nintendoConsolidatedEarnings2007,
+    nintendoConsolidatedEarnings2006,
+    nintendoConsolidatedEarnings2005,
+    nintendoConsolidatedEarnings2004,
 ];
 
 const collectionCapcom: EarningsJSON[] = [
@@ -227,9 +251,9 @@ const consolidatedEarningsList = (collection: EarningsJSON[], headerLength: numb
 
 return collection.map((elem, index, array) => {
 
-    if (index === array.length-1) {
-        return ""
-    };
+    // if (index === array.length-1) {
+    //     return ""
+    // };
 
     let currentQuarter: number = elem.currentQuarter;
 
@@ -272,9 +296,9 @@ const consolidatedEarningsGraphList = (collection: EarningsJSON[]) => {
     
 return collection.map((elem, index, array) => {
 
-    if (index === array.length-1) {
-        return undefined
-    }
+    // if (index === array.length-1) {
+    //     return undefined
+    // }
 
     let dataThisFY: Earnings[][] = elem.data.map(value => valuesMake(value));
 

@@ -34,6 +34,8 @@ function yearOnYearCalculation(thisFY: Earnings[], lastFY: Earnings[]): Earnings
                         ((((elem.value / lastFY[index].value) -1)* -1) * 100).toFixed(2)
                         )
                       }
+                    : (lastFY[index].value === 0)
+                    ? {...elem, units: "NaN", value: 0}
                     : {...elem, units: "percentage", value: Number(
                         (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
                         )
