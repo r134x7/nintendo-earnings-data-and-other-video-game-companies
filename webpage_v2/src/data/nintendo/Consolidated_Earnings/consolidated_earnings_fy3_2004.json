@@ -1,0 +1,28 @@
+{
+    "currentQuarter": 4,
+    "companyName": "Nintendo Co., Ltd.",
+    "fiscalYear": "FY3/2004",
+    "data": [
+        {
+            "name": "Net Sales",
+            "Q1CmlValue": 83821,
+            "Q2CmlValue": 211382,
+            "Q3CmlValue": 439589,
+            "Q4CmlValue": 514805
+        },
+        {
+            "name": "Operating Income",
+            "Q1CmlValue": 7245,
+            "Q2CmlValue": 28771,
+            "Q3CmlValue": 102627,
+            "Q4CmlValue": 107683
+        },
+        {
+            "name": "Net Income",
+            "Q1CmlValue": 11450,
+            "Q2CmlValue": -2885,
+            "Q3CmlValue": 34545,
+            "Q4CmlValue": 33194
+        }
+    ]
+}
