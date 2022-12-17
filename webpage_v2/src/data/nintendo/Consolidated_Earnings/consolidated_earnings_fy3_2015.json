@@ -1,0 +1,37 @@
+{
+    "currentQuarter": 4,
+    "companyName": "Nintendo Co., Ltd.",
+    "fiscalYear": "FY3/2015",
+    "data": [
+        {
+            "name": "Net Sales",
+            "Q1CmlValue": 74695,
+            "Q2CmlValue": 171399,
+            "Q3CmlValue": 442920,
+            "Q4CmlValue": 549780,
+            "forecastThisFY": 590000,
+            "forecastRevision1": 550000,
+            "forecastNextFY": 570000
+        },
+        {
+            "name": "Operating Income",
+            "Q1CmlValue": -9470,
+            "Q2CmlValue": -215,
+            "Q3CmlValue": 31604,
+            "Q4CmlValue": 24770,
+            "forecastThisFY": 40000,
+            "forecastRevision1": 20000,
+            "forecastNextFY": 50000
+        },
+        {
+            "name": "Net Income",
+            "Q1CmlValue": -9924,
+            "Q2CmlValue": 14300,
+            "Q3CmlValue": 59515,
+            "Q4CmlValue": 41843,
+            "forecastThisFY": 20000,
+            "forecastRevision1": 30000,
+            "forecastNextFY": 35000
+        }
+    ]
+}

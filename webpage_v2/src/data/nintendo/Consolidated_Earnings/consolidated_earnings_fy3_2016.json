@@ -8,21 +8,27 @@
             "Q1CmlValue": 90223,
             "Q2CmlValue": 204182,
             "Q3CmlValue": 425664,
-            "Q4CmlValue": 504459
+            "Q4CmlValue": 504459,
+            "forecastThisFY": 570000,
+            "forecastNextFY": 500000
         },
         {
             "name": "Operating Income",
             "Q1CmlValue": 1149,
             "Q2CmlValue": 8977,
             "Q3CmlValue": 42485,
-            "Q4CmlValue": 32881
+            "Q4CmlValue": 32881,
+            "forecastThisFY": 50000,
+            "forecastNextFY": 45000
         },
         {
             "name": "Net Income",
             "Q1CmlValue": 8284,
             "Q2CmlValue": 11466,
             "Q3CmlValue": 40558,
-            "Q4CmlValue": 16505
+            "Q4CmlValue": 16505,
+            "forecastThisFY": 35000,
+            "forecastNextFY": 35000
         }
     ]
 }
