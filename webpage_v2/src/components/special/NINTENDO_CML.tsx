@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printJapan, printGlobal, printOverseas } from "../../data/nintendo/Nintendo_Cumulative_Data/mst_cml_data";
+import { cumulativeEarningsList } from "../../data/nintendo/Nintendo_Cumulative_Data/consolidated_earnings_cml_data";
 
 export default function NINTENDO_CML() {
 
@@ -10,6 +11,10 @@ export default function NINTENDO_CML() {
     const state: any = useSelector(state => state);
 
     const componentList = [
+        {
+            name: "Nintendo Consolidated Operating Results - Historical Data",
+            value: cumulativeEarningsList
+        },
         {
             name: "Nintendo FY Million-Seller Titles - Japan",
             value: printJapan 

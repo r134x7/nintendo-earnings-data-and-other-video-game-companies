@@ -66,7 +66,7 @@ import squareEnix2020 from "../squareEnix/Consolidated_Earnings/consolidated_ear
 import squareEnix2019 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2019.json";
 import squareEnix2018 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2018.json";
 
-type EarningsJSON = {
+export type EarningsJSON = {
     currentQuarter: number,
     companyName: string,
     fiscalYear: string,
