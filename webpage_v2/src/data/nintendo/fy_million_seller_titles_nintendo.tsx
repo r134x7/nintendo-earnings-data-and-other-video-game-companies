@@ -33,6 +33,7 @@ import fyMillionSellerTitles2004 from "./FY_Million_Seller_Titles/million_seller
 
 export type collectionJSON = {
     currentQuarter: number,
+    footnote?: string,
     fiscalYear: string,
     titles: titlesJSON[][],
 };
@@ -332,10 +333,12 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
         return printFYMillionSellerTitles
     };
 
+    let footnote = (elem.footnote === undefined) ? "###" : elem.footnote;
+
     // now that it is a function, when I want to add titles of another platform, then I can reduce it
     // let platformList = makeTitlesList(elem.titles, header, elem.currentQuarter);
     let platformList: string = elem.titles.map(value => makeTitlesList(value, prevFYTitles, header, elem.currentQuarter)
-    ).reduce((prev,next) => prev + "\n" + next);
+    ).concat(footnote).reduce((prev,next) => prev + "\n" + next);
 
     return platformList
 });
