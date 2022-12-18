@@ -7,13 +7,13 @@ import {
     yearOnYearCalculation,
 } from "../../utils/regional_hw_sw_logic";
 
-import switchRegionalHardwareSoftware2023 from "./Regional_Hardware_Software/switch_regional_hw_sw_fy3_2023.json";
-import switchRegionalHardwareSoftware2022 from "./Regional_Hardware_Software/switch_regional_hw_sw_fy3_2022.json";
-import switchRegionalHardwareSoftware2021 from "./Regional_Hardware_Software/switch_regional_hw_sw_fy3_2021.json";
-import switchRegionalHardwareSoftware2020 from "./Regional_Hardware_Software/switch_regional_hw_sw_fy3_2020.json";
-import switchRegionalHardwareSoftware2019 from "./Regional_Hardware_Software/switch_regional_hw_sw_fy3_2019.json";
-import switchRegionalHardwareSoftware2018 from "./Regional_Hardware_Software/switch_regional_hw_sw_fy3_2018.json";
-import switchRegionalHardwareSoftware2017 from "./Regional_Hardware_Software/switch_regional_hw_sw_fy3_2017.json";
+import switchRegionalHardwareSoftware2023 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2023.json";
+import switchRegionalHardwareSoftware2022 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2022.json";
+import switchRegionalHardwareSoftware2021 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2021.json";
+import switchRegionalHardwareSoftware2020 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2020.json";
+import switchRegionalHardwareSoftware2019 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2019.json";
+import switchRegionalHardwareSoftware2018 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2018.json";
+import switchRegionalHardwareSoftware2017 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2017.json";
 
 const collection = [
     switchRegionalHardwareSoftware2023,
