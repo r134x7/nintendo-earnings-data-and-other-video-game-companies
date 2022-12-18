@@ -1,34 +1,35 @@
 Nintendo 3DS Hardware 
 Japan
-3
-2520
+4
+2522
 
 The Americas
-9
-2654
+18
+2662
 
 Other
-8
-2354
+15
+2361
 
 Total
-20
-7528
+37
+7545
 
 Nintendo 3DS Software 
 Japan
-17
-13712
+28
+13722
 
 The Americas
-68
-12920
+122
+12974
 
 Other
-63
-11328
+110
+11376
 
 Total
-148
-37960
+260
+38072
 
+ 
