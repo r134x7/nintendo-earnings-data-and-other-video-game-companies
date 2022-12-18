@@ -1,6 +1,6 @@
 import { readFileSync, writeFile } from "fs";
 
-let currentQuarter = 1;
+let currentQuarter = 4;
 
 const readQuarter = (currentQuarterLocal) => {
 
@@ -36,7 +36,7 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
 
     return Array.from({length:(newQuarterLocal.length/13)}, (v,i) => {
 
-        let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem,index,array) => (elem.name === newQuarterLocal[(i*13)])); // searching by name
+        let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem,index,array) => (elem.name === newQuarterLocal[(i*13)].trim())); // searching by name
 
         return (!searchTitle[0])
             ? {
