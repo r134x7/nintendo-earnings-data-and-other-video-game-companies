@@ -5,7 +5,7 @@ export type Section = {
     name: string,
     regionA: "Global",
     regionB: "Japan", 
-    regionC: "The Americas",
+    regionC: "The Americas" | "Overseas",
     regionD: "Europe" | "Other", // due to change in data shown from FY3/XX...
     regionE: "Other",
     valueA: number,

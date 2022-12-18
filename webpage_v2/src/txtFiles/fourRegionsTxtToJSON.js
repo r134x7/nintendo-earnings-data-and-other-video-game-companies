@@ -17,13 +17,14 @@ const removeCommas = (readQuarterLocal) => {
 
     let one = readQuarterLocal.replaceAll(",", "");
     let two = one.replaceAll(/Japan\d+/g, "\r\nJapan");
-    let three = two.replaceAll(/Americas\d+/g, "\r\nAmericas");
+    let three = two.replaceAll(/The Americas\d+/g, "\r\nThe Americas");
     let four = three.replaceAll(/Europe\d+/g, "\r\nEurope");
     let five = four.replaceAll(/Other\d+/g, "\r\nOther");
     let six = five.replaceAll(/Total\d+/g, "\r\nTotal");
     let seven = six.replaceAll(/New titles(.*)/g, "");
 
-    let eight = seven.match(/Japan\s\d+|Americas\s\d+|Other\s\d+|Europe\s\d+|Total\s\d+|Nintendo Switch (Hardware \(Total\)|OLED Model|Lite)|Nintendo Switch|Switch Software/g);
+    // let eight = seven.match(/Japan\s\d+|The Americas\s\d+|Other\s\d+|Europe\s\d+|Total\s\d+|Nintendo Switch (Hardware \(Total\)|OLED Model|Lite)|Nintendo Switch|Switch Software/g);
+    let eight = seven.match(/.+/g)
 
     return eight 
 };

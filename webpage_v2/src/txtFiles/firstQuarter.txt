@@ -1,0 +1,10 @@
+Nintendo 3DS Hardware 
+Japan 3
+The Americas 9
+Other 8
+Total 20
+Nintendo 3DS Software 
+Japan 17
+The Americas 68
+Other 63
+Total 148
