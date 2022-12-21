@@ -127,5 +127,5 @@ let newArray = makeArray(extractNQ, parseCurrentData, currentQuarter);
 let newArrayStringify = JSON.stringify(newArray);
 
 writeFile("regional_data_test.json", newArrayStringify, (err) =>
-  err ? console.error(err) : console.log('No commas?')
+  err ? console.error(err) : console.log('three regions')
 );

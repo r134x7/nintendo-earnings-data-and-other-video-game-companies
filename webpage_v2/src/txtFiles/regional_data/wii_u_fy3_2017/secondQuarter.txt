@@ -1,0 +1,34 @@
+Wii U Hardware 
+Japan
+16
+330
+
+The Americas
+22
+641
+
+Other
+18
+365
+
+Total
+56
+1336
+
+Wii U Software 
+Japan
+107
+1455
+
+The Americas
+424
+5062
+
+Other
+300
+2718
+
+Total
+830
+9235
+
