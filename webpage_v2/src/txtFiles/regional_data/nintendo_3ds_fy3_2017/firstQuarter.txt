@@ -1,0 +1,101 @@
+Nintendo 3DS Hardware 
+Japan
+31
+2163
+
+The Americas
+35
+2011
+
+Other
+28
+1805
+
+Total
+94
+5979
+
+Nintendo 3DS XL 
+Japan
+0
+704
+
+The Americas
+0
+663
+
+Other
+1
+592
+
+Total
+1
+1959
+
+Nintendo 2DS 
+Japan
+0
+10
+
+The Americas
+15
+237
+
+Other
+9
+269
+
+Total
+24
+517
+
+New Nintendo 3DS 
+Japan
+4
+108
+
+The Americas
+0
+11
+
+Other
+4
+74
+
+Total
+8
+192
+
+New Nintendo 3DS XL 
+Japan
+27
+318
+
+The Americas
+20
+229
+
+Other
+12
+142
+
+Total
+59
+689
+
+Nintendo 3DS Software 
+Japan
+209
+10769
+
+The Americas
+316
+9481
+
+Other
+322
+8015
+
+Total
+847
+28265
