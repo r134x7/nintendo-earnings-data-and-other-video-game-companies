@@ -3,5 +3,6 @@
     "fiscalYear": "FY3/2014",
     "fiscalYearCml": "FY3/14 Cumulative",
     "regions": [
+        {"name":"Nintendo DS Hardware","regionA":"Global","Q1CmlValueA":6,"Q2CmlValueA":10,"Q3CmlValueA":11,"Q4CmlValueA":13,"valueALastFY":15386,"regionB":"Japan","Q1CmlValueB":0,"Q2CmlValueB":0,"Q3CmlValueB":0,"Q4CmlValueB":0,"valueBLastFY":3299,"regionC":"The Americas","Q1CmlValueC":4,"Q2CmlValueC":6,"Q3CmlValueC":7,"Q4CmlValueC":7,"valueCLastFY":5986,"regionD":"Other","Q1CmlValueD":2,"Q2CmlValueD":4,"Q3CmlValueD":4,"Q4CmlValueD":6,"valueDLastFY":6101,"regionE":"Other","Q1CmlValueE":0,"Q2CmlValueE":0,"Q3CmlValueE":0,"Q4CmlValueE":0,"valueELastFY":0},{"name":"Nintendo DS Software","regionA":"Global","Q1CmlValueA":215,"Q2CmlValueA":525,"Q3CmlValueA":863,"Q4CmlValueA":1029,"valueALastFY":93369,"regionB":"Japan","Q1CmlValueB":13,"Q2CmlValueB":33,"Q3CmlValueB":85,"Q4CmlValueB":111,"valueBLastFY":21198,"regionC":"The Americas","Q1CmlValueC":114,"Q2CmlValueC":294,"Q3CmlValueC":470,"Q4CmlValueC":538,"valueCLastFY":39139,"regionD":"Other","Q1CmlValueD":88,"Q2CmlValueD":197,"Q3CmlValueD":308,"Q4CmlValueD":381,"valueDLastFY":33031,"regionE":"Other","Q1CmlValueE":0,"Q2CmlValueE":0,"Q3CmlValueE":0,"Q4CmlValueE":0,"valueELastFY":0},
     ]
 }
