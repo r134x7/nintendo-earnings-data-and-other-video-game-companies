@@ -1,7 +1,7 @@
 {
     "currentQuarter": 4,
-    "fiscalYear": " FY3/2021 ",
-    "fiscalYearCml": " FY3/21 Cumulative ",
+    "fiscalYear": "FY3/2021",
+    "fiscalYearCml": "FY3/21 Cumulative",
     "regions": [
         {
             "name": " Switch ",
