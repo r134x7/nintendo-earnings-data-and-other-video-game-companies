@@ -1,0 +1,34 @@
+Nintendo DS Hardware 
+Japan
+1
+3299
+
+The Americas
+40
+5815
+
+Other
+13
+6091
+
+Total
+54
+15205
+
+Nintendo DS Software 
+Japan
+281
+20973
+
+The Americas
+308
+37684
+
+Other
+259
+32223
+
+Total
+848
+90879
+
