@@ -1,0 +1,68 @@
+Nintendo DS Hardware 
+Japan
+11
+3287
+
+The Americas
+55
+5569
+
+Other
+78
+5930
+
+Total
+144
+14786
+
+Nintendo DSi 
+Japan
+6
+585
+
+The Americas
+14
+1000
+
+Other
+39
+922
+
+Total
+59
+2507
+
+Nintendo DSi XL 
+Japan
+5
+227
+
+The Americas
+15
+424
+
+Other
+30
+407
+
+Total
+50
+1058
+
+Nintendo DS Software 
+Japan
+174
+20088
+
+The Americas
+550
+34632
+
+Other
+489
+30442
+
+Total
+1213
+85162
+
