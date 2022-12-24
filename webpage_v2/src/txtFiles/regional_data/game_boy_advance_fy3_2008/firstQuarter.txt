@@ -1,0 +1,51 @@
+Game Boy Advance Hardware 
+Japan
+2
+1668
+
+The Americas
+32
+4142
+
+Other
+21
+2191
+
+Total
+56
+8002
+
+Game Boy Advance SP 
+Japan
+0
+650
+
+The Americas
+31
+2378
+
+Other
+19
+1214
+
+Total
+50
+4243
+
+Game Boy Advance Software 
+Japan
+14
+7251
+
+The Americas
+288
+21145
+
+Other
+67
+8599
+
+Total
+369
+36994
+
