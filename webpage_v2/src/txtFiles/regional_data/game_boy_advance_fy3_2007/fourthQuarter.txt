@@ -1,68 +1,68 @@
 Game Boy Advance Hardware 
 Japan
-100
+11
 1666
 
 The Americas
-472
+300
 4110
 
 Other
-261
+122
 2171
 
 Total
-833
+434
 7946
 
 Game Boy Advance SP 
 Japan
-42
+8
 650
 
 The Americas
-426
+252
 2347
 
 Other
-176
+109
 1195
 
 Total
-644
+369
 4192
 
 Game Boy Micro 
 Japan
-58
+3
 61
 
 The Americas
-47
+48
 95
 
 Other
-79
+8
 87
 
 Total
-183
+59
 242
 
 Game Boy Advance Software 
 Japan
-728
+255
 7236
 
 The Americas
-3534
+2599
 20857
 
 Other
-1674
+999
 8532
 
 Total
-5936
+3853
 36625
 
