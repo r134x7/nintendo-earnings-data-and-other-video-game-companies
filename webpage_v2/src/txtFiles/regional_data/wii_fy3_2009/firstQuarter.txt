@@ -1,0 +1,34 @@
+Wii Hardware 
+Japan
+53
+643
+
+The Americas
+250
+1311
+
+Other
+215
+1008
+
+Total
+517
+2962
+
+Wii Software 
+Japan
+390
+2496
+
+The Americas
+1934
+9871
+
+Other
+1716
+6517
+
+Total
+4041
+18885
+
