@@ -1,0 +1,68 @@
+Nintendo DS Hardware 
+Japan
+401
+3040
+
+The Americas
+1229
+4674
+
+Other
+1081
+5174
+
+Total
+2711
+12889
+
+Nintendo DSi 
+Japan
+254
+476
+
+The Americas
+664
+697
+
+Other
+562
+610
+
+Total
+1480
+1782
+
+Nintendo DSi XL 
+Japan
+104
+104
+
+The Americas
+42
+42
+
+Other
+62
+62
+
+Total
+208
+208
+
+Nintendo DS Software 
+Japan
+3054
+17749
+
+The Americas
+7362
+27856
+
+Other
+4743
+26245
+
+Total
+15159
+71850
+
