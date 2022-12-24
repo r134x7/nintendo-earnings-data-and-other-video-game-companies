@@ -7,57 +7,93 @@ import {
     yearOnYearCalculation,
 } from "../../utils/regional_hw_sw_logic";
 
-import switchRegionalHardwareSoftware2023 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2023.json";
-import switchRegionalHardwareSoftware2022 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2022.json";
-import switchRegionalHardwareSoftware2021 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2021.json";
-import switchRegionalHardwareSoftware2020 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2020.json";
-import switchRegionalHardwareSoftware2019 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2019.json";
-import switchRegionalHardwareSoftware2018 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2018.json";
-import switchRegionalHardwareSoftware2017 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2017.json";
+import regionalHardwareSoftware2023 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2023.json";
+import regionalHardwareSoftware2022 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2022.json";
+import regionalHardwareSoftware2021 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2021.json";
+import regionalHardwareSoftware2020 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2020.json";
+import regionalHardwareSoftware2019 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2019.json";
+import regionalHardwareSoftware2018 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2018.json";
+import regionalHardwareSoftware2017 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2017.json";
+import regionalHardwareSoftware2016 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2016.json";
+import regionalHardwareSoftware2015 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2015.json";
+import regionalHardwareSoftware2014 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2014.json";
+import regionalHardwareSoftware2013 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2013.json";
+import regionalHardwareSoftware2012 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2012.json";
+import regionalHardwareSoftware2011 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2011.json";
+import regionalHardwareSoftware2010 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2010.json";
+import regionalHardwareSoftware2009 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2009.json";
+import regionalHardwareSoftware2008 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2008.json";
+import regionalHardwareSoftware2007 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2007.json";
+import regionalHardwareSoftware2006 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2006.json";
+import regionalHardwareSoftware2005 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2005.json";
+import regionalHardwareSoftware2004 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2004.json";
 
-const collection = [
-    switchRegionalHardwareSoftware2023,
-    switchRegionalHardwareSoftware2022,
-    switchRegionalHardwareSoftware2021,
-    switchRegionalHardwareSoftware2020,
-    switchRegionalHardwareSoftware2019,
-    switchRegionalHardwareSoftware2018,
-    switchRegionalHardwareSoftware2017,
-] as const;
+type jsonData = {
+    currentQuarter: number,
+    fiscalYear: string,
+    fiscalYearCml: string,
+    regions: regionData[]
+}
 
-const platformUnitsMake = (obj: undefined | {
+type regionData = {
     name: string,
     regionA: string,
     Q1CmlValueA: number,
-    Q2CmlValueA: number,
-    Q3CmlValueA: number,
-    Q4CmlValueA: number, 
+    Q2CmlValueA: number, 
+    Q3CmlValueA: number, 
+    Q4CmlValueA: number,
     valueALastFY: number,
     regionB: string,
     Q1CmlValueB: number,
-    Q2CmlValueB: number,
+    Q2CmlValueB: number, 
     Q3CmlValueB: number,
     Q4CmlValueB: number,
     valueBLastFY: number,
     regionC: string,
     Q1CmlValueC: number,
-    Q2CmlValueC: number,
-    Q3CmlValueC: number,
+    Q2CmlValueC: number, 
+    Q3CmlValueC: number, 
     Q4CmlValueC: number,
     valueCLastFY: number,
     regionD: string,
     Q1CmlValueD: number,
-    Q2CmlValueD: number,
-    Q3CmlValueD: number,
+    Q2CmlValueD: number, 
+    Q3CmlValueD: number, 
     Q4CmlValueD: number,
     valueDLastFY: number,
     regionE: string,
     Q1CmlValueE: number,
-    Q2CmlValueE: number,
-    Q3CmlValueE: number,
+    Q2CmlValueE: number, 
+    Q3CmlValueE: number, 
     Q4CmlValueE: number,
-    valueELastFY: number, 
-}): Section[] => {
+    valueELastFY: number,
+    dataShift?: boolean, 
+}
+
+const collection: jsonData[] = [
+    regionalHardwareSoftware2023,
+    regionalHardwareSoftware2022,
+    regionalHardwareSoftware2021,
+    regionalHardwareSoftware2020,
+    regionalHardwareSoftware2019,
+    regionalHardwareSoftware2018,
+    regionalHardwareSoftware2017,
+    regionalHardwareSoftware2016,
+    regionalHardwareSoftware2015,
+    regionalHardwareSoftware2014,
+    regionalHardwareSoftware2013,
+    regionalHardwareSoftware2012,
+    regionalHardwareSoftware2011,
+    regionalHardwareSoftware2010,
+    regionalHardwareSoftware2009,
+    regionalHardwareSoftware2008,
+    regionalHardwareSoftware2007,
+    regionalHardwareSoftware2006,
+    regionalHardwareSoftware2005,
+    regionalHardwareSoftware2004,
+];
+
+const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
 
     let sales: Section[] = [
         {
