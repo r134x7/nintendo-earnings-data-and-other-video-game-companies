@@ -1,21 +1,21 @@
 import { readFileSync, writeFile } from "fs";
 
-let currentQuarter = 1;
+let currentQuarter = 4;
 
 const readQuarter = (currentQuarterLocal) => {
 
     return (currentQuarterLocal === 1)
-            ? readFileSync("firstQuarter.txt", "utf-8")
+            ? readFileSync("regional_data/nintendo_3ds_fy3_2019/firstQuarter.txt", "utf-8")
             : (currentQuarterLocal === 2)
-            ? readFileSync("secondQuarter.txt", "utf-8") 
+            ? readFileSync("regional_data/nintendo_3ds_fy3_2019/secondQuarter.txt", "utf-8") 
             : (currentQuarterLocal === 3)
-            ? readFileSync("thirdQuarter.txt", "utf-8")
-            : readFileSync("fourthQuarter.txt", "utf-8");
+            ? readFileSync("regional_data/nintendo_3ds_fy3_2019/thirdQuarter.txt", "utf-8")
+            : readFileSync("regional_data/nintendo_3ds_fy3_2019/fourthQuarter.txt", "utf-8");
 };
 
 const getTotals = (readQuarterLocal) => {
 
-    let getMatch = readQuarterLocal.match(/.+(?=\nJapan)|Total\n\d+\n\d+/g)
+    let getMatch = readQuarterLocal.match(/.+(?=\r\nJapan)|Total|(?<=Total\r\n)\d+|(?<=Total\r\n\d+\r\n)\d+/g) // had to construct like this to avoid making one long match with escape characters e.g. Total\r\n111\r\n222
 
     return getMatch
 };
@@ -70,5 +70,5 @@ let newArray = makeArray(extractNQ, parseCurrentData, currentQuarter);
 let newArrayStringify = JSON.stringify(newArray);
 
 writeFile("global_data_test.json", newArrayStringify, (err) =>
-  err ? console.error(err) : console.log('totals')
+  err ? console.error(err) : console.log('totals done')
 );
