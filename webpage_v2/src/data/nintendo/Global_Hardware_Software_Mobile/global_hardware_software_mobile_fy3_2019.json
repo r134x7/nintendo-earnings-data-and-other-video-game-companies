@@ -77,7 +77,8 @@
                 "Q3CmlValue": 84200,
                 "Q4CmlValue": 118800,
                 "cmlValueLastFY": 0 
-            }
+            },
+            {"name":"Nintendo 3DS Hardware","units":"units","Q1CmlValue":36,"Q2CmlValue":100,"Q3CmlValue":231,"Q4CmlValue":231,"cmlValueLastFY":7253},{"name":"New Nintendo 3DS XL","units":"units","Q1CmlValue":6,"Q2CmlValue":12,"Q3CmlValue":21,"Q4CmlValue":21,"cmlValueLastFY":1201},{"name":"Nintendo 2DS","units":"units","Q1CmlValue":11,"Q2CmlValue":27,"Q3CmlValue":80,"Q4CmlValue":80,"cmlValueLastFY":942},{"name":"New Nintendo 2DS XL","units":"units","Q1CmlValue":20,"Q2CmlValue":61,"Q3CmlValue":130,"Q4CmlValue":130,"cmlValueLastFY":271},{"name":"Nintendo 3DS Software","units":"units","Q1CmlValue":295,"Q2CmlValue":627,"Q3CmlValue":1108,"Q4CmlValue":1108,"cmlValueLastFY":36489}
     ],
     "platformForecastSales": [
         {

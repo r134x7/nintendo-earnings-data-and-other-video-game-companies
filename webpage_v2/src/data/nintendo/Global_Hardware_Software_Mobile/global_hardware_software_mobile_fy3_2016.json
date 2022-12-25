@@ -1,0 +1,17 @@
+{
+    "currentQuarter": 4,
+    "fiscalYear": "FY3/2016",
+    "nextFiscalYearShort": "FY3/17",
+    "platformUnitSales": [
+    ],
+    "platformForecastSales": [
+        {
+            "name": " Hardware Total ",
+            "forecastNextFY": 1000
+        },
+        {
+            "name": " Software Total ",
+            "forecastNextFY": 3500
+        }
+    ]
+}
