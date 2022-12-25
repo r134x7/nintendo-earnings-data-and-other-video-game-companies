@@ -5,12 +5,12 @@ let currentQuarter = 4;
 const readQuarter = (currentQuarterLocal) => {
 
     return (currentQuarterLocal === 1)
-            ? readFileSync("regional_data/nintendo_3ds_fy3_2011/firstQuarter.txt", "utf-8")
+            ? readFileSync("regional_data/wii_u_fy3_2016/firstQuarter.txt", "utf-8")
             : (currentQuarterLocal === 2)
-            ? readFileSync("regional_data/nintendo_3ds_fy3_2011/secondQuarter.txt", "utf-8") 
+            ? readFileSync("regional_data/wii_u_fy3_2016/secondQuarter.txt", "utf-8") 
             : (currentQuarterLocal === 3)
-            ? readFileSync("regional_data/nintendo_3ds_fy3_2011/thirdQuarter.txt", "utf-8")
-            : readFileSync("regional_data/nintendo_3ds_fy3_2011/fourthQuarter.txt", "utf-8");
+            ? readFileSync("regional_data/wii_u_fy3_2016/thirdQuarter.txt", "utf-8")
+            : readFileSync("regional_data/wii_u_fy3_2016/fourthQuarter.txt", "utf-8");
 };
 
 const getTotals = (readQuarterLocal) => {
