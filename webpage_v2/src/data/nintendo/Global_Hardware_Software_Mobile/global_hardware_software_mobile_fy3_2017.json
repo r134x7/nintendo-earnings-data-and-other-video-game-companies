@@ -68,6 +68,7 @@
                 "Q4CmlValue": 32500,
                 "cmlValueLastFY": 0 
             },
+            {"name":"Nintendo 3DS Hardware","units":"units","Q1CmlValue":94,"Q2CmlValue":271,"Q3CmlValue":645,"Q4CmlValue":727,"cmlValueLastFY":5885},{"name":"Nintendo 3DS XL","units":"units","Q1CmlValue":1,"Q2CmlValue":3,"Q3CmlValue":6,"Q4CmlValue":6,"cmlValueLastFY":1958},{"name":"Nintendo 2DS","units":"units","Q1CmlValue":24,"Q2CmlValue":85,"Q3CmlValue":217,"Q4CmlValue":249,"cmlValueLastFY":493},{"name":"New Nintendo 3DS","units":"units","Q1CmlValue":8,"Q2CmlValue":27,"Q3CmlValue":64,"Q4CmlValue":65,"cmlValueLastFY":184},{"name":"New Nintendo 3DS XL","units":"units","Q1CmlValue":59,"Q2CmlValue":154,"Q3CmlValue":353,"Q4CmlValue":402,"cmlValueLastFY":630},{"name":"Nintendo 3DS Software","units":"units","Q1CmlValue":847,"Q2CmlValue":1923,"Q3CmlValue":4678,"Q4CmlValue":5508,"cmlValueLastFY":27417},
             {"name":"Wii U Hardware","units":"units","Q1CmlValue":22,"Q2CmlValue":56,"Q3CmlValue":76,"Q4CmlValue":76,"cmlValueLastFY":1280},{"name":"Wii U Software","units":"units","Q1CmlValue":468,"Q2CmlValue":830,"Q3CmlValue":1248,"Q4CmlValue":1480,"cmlValueLastFY":8405}
     ],
     "platformForecastSales": [
