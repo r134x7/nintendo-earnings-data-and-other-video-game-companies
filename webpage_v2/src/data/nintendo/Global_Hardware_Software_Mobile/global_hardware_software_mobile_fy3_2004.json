@@ -8,12 +8,8 @@
     ],
     "platformForecastSales": [
         {
-            "name": "Nintendo Switch Hardware Total",
-            "forecastNextFY": 1000
-        },
-        {
-            "name": "Nintendo Switch Software Total",
-            "forecastNextFY": 3500
+            "name": "N/A",
+            "forecastThisFY": 0
         }
     ]
 }

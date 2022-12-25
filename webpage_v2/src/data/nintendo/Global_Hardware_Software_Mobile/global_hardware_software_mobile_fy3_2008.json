@@ -10,12 +10,50 @@
     ],
     "platformForecastSales": [
         {
-            "name": "Nintendo Switch Hardware Total",
-            "forecastNextFY": 1000
+            "name": "Game Boy Advance Hardware Total",
+            "forecastThisFY": 0
         },
         {
-            "name": "Nintendo Switch Software Total",
-            "forecastNextFY": 3500
+            "name": "Game Boy Advance Software Total",
+            "forecastThisFY": 1000 
+        },
+        {
+            "name": "Nintendo GameCube Hardware Total",
+            "forecastThisFY": 0,
+            "forecastRevision1": 0
+        },
+        {
+            "name": "Nintendo GameCube Software Total",
+            "forecastThisFY": 350,
+            "forecastRevision1": 250 
+        },
+        {
+            "name": "Nintendo DS Hardware Total",
+            "forecastThisFY": 2600,
+            "forecastRevision1": 2800,
+            "forecastRevision2": 2950,
+            "forecastNextFY": 2800
+        },
+        {
+            "name": "Nintendo DS Software Total",
+            "forecastThisFY": 14000, 
+            "forecastRevision1": 16500,
+            "forecastRevision2": 17900,
+            "forecastNextFY": 18700
+        },
+        {
+            "name": "Wii Hardware Total",
+            "forecastThisFY": 1650,
+            "forecastRevision1": 1750,
+            "forecastRevision2": 1850,
+            "forecastNextFY": 2500 
+        },
+        {
+            "name": "Wii Software Total",
+            "forecastThisFY": 7200,
+            "forecastRevision1": 9700,
+            "forecastRevision2": 11500,
+            "forecastNextFY": 17700 
         }
     ]
 }
