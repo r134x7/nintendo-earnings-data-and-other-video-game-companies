@@ -15,6 +15,19 @@ import globalHardwareSoftwareMobile2020 from "./Global_Hardware_Software_Mobile/
 import globalHardwareSoftwareMobile2019 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2019.json";
 import globalHardwareSoftwareMobile2018 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2018.json";
 import globalHardwareSoftwareMobile2017 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2017.json";
+import globalHardwareSoftwareMobile2016 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2016.json";
+import globalHardwareSoftwareMobile2015 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2015.json";
+import globalHardwareSoftwareMobile2014 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2014.json";
+import globalHardwareSoftwareMobile2013 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2013.json";
+import globalHardwareSoftwareMobile2012 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2012.json";
+import globalHardwareSoftwareMobile2011 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2011.json";
+import globalHardwareSoftwareMobile2010 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2010.json";
+import globalHardwareSoftwareMobile2009 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2009.json";
+import globalHardwareSoftwareMobile2008 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2008.json";
+import globalHardwareSoftwareMobile2007 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2007.json";
+import globalHardwareSoftwareMobile2006 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2006.json";
+import globalHardwareSoftwareMobile2005 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2005.json";
+import globalHardwareSoftwareMobile2004 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2004.json";
 
 const collection = [
     globalHardwareSoftwareMobile2023,
@@ -24,6 +37,19 @@ const collection = [
     globalHardwareSoftwareMobile2019,
     globalHardwareSoftwareMobile2018,
     globalHardwareSoftwareMobile2017,
+    globalHardwareSoftwareMobile2016,
+    globalHardwareSoftwareMobile2015,
+    globalHardwareSoftwareMobile2014,
+    globalHardwareSoftwareMobile2013,
+    globalHardwareSoftwareMobile2012,
+    globalHardwareSoftwareMobile2011,
+    globalHardwareSoftwareMobile2010,
+    globalHardwareSoftwareMobile2009,
+    globalHardwareSoftwareMobile2008,
+    globalHardwareSoftwareMobile2007,
+    globalHardwareSoftwareMobile2006,
+    globalHardwareSoftwareMobile2005,
+    globalHardwareSoftwareMobile2004,
 ] as const;
 
 const platformSalesMake = (obj: undefined | {
@@ -266,7 +292,7 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
 
     const printOne: string = printHead(header)
 
-    const printPlatformCmlSales: string[] = Array.from({length: platformSalesList.length}, (v, i) => {
+    const printPlatformCmlSales: string[] = (platformSalesList[0][0].name === "N/A") ? [""] : Array.from({length: platformSalesList.length}, (v, i) => {
 
         let switchHardware: Section[][] = platformUnitSalesThisFYList.map((elem, index) => {
             
@@ -281,7 +307,7 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
         ) 
     })
 
-    const printPlatformUnitSales: string[] = Array.from({length: platformUnitSalesThisFY.length}, (v, i) => {
+    const printPlatformUnitSales = Array.from({length: platformUnitSalesThisFY.length}, (v, i) => {
 
         let forecast = (cmlPlatformUnitSalesThisFY[i][0].name === "Nintendo Switch Software Total")
             ? platformForecastsList[1] // software
@@ -296,7 +322,7 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
             forecast,
             currentQuarter
             )
-    }).concat("###");
+    }).concat("###") as string[];
 
     let printAll = [printOne].concat(printPlatformCmlSales, printPlatformUnitSales);
 

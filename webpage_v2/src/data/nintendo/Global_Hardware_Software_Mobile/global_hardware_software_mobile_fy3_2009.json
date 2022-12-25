@@ -2,6 +2,17 @@
     "currentQuarter": 4,
     "fiscalYear": "FY3/2009",
     "nextFiscalYearShort": "FY3/10",
+    "platformCmlSales": [
+        {
+            "name": "N/A",
+            "units": "currency",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 0,
+            "cmlValueLastFY": 0 
+        }
+    ],
     "platformUnitSales": [
         {"name":"Nintendo DS Hardware","units":"units","Q1CmlValue":694,"Q2CmlValue":1373,"Q3CmlValue":2562,"Q4CmlValue":3118,"cmlValueLastFY":7060},{"name":"Nintendo DSi","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":166,"Q4CmlValue":302,"cmlValueLastFY":0},{"name":"Nintendo DS Software","units":"units","Q1CmlValue":3659,"Q2CmlValue":8502,"Q3CmlValue":16378,"Q4CmlValue":19731,"cmlValueLastFY":36961},
         {"name":"Game Boy Advance Hardware","units":"units","Q1CmlValue":19,"Q2CmlValue":30,"Q3CmlValue":39,"Q4CmlValue":42,"cmlValueLastFY":8105},{"name":"Game Boy Advance Software","units":"units","Q1CmlValue":28,"Q2CmlValue":47,"Q3CmlValue":59,"Q4CmlValue":62,"cmlValueLastFY":37666},

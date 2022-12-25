@@ -2,6 +2,17 @@
     "currentQuarter": 4,
     "fiscalYear": "FY3/2006",
     "nextFiscalYearShort": "FY3/07",
+    "platformCmlSales": [
+        {
+            "name": "N/A",
+            "units": "currency",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 0,
+            "cmlValueLastFY": 0 
+        }
+    ],
     "platformUnitSales": [
         {"name":"Game Boy Advance Hardware","units":"units","Q1CmlValue":98,"Q2CmlValue":325,"Q3CmlValue":746,"Q4CmlValue":833,"cmlValueLastFY":6680},{"name":"Game Boy Advance SP","units":"units","Q1CmlValue":0,"Q2CmlValue":253,"Q3CmlValue":561,"Q4CmlValue":644,"cmlValueLastFY":3179},{"name":"Game Boy Micro","units":"units","Q1CmlValue":0,"Q2CmlValue":70,"Q3CmlValue":182,"Q4CmlValue":183,"cmlValueLastFY":0},{"name":"Game Boy Advance Software","units":"units","Q1CmlValue":1167,"Q2CmlValue":2776,"Q3CmlValue":5095,"Q4CmlValue":5936,"cmlValueLastFY":26836},
         {"name":"Nintendo DS Hardware","units":"units","Q1CmlValue":138,"Q2CmlValue":357,"Q3CmlValue":916,"Q4CmlValue":1146,"cmlValueLastFY":527},{"name":"Nintendo DS Lite","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":58,"cmlValueLastFY":0},{"name":"Nintendo DS Software","units":"units","Q1CmlValue":532,"Q2CmlValue":1330,"Q3CmlValue":3590,"Q4CmlValue":4995,"cmlValueLastFY":1049},

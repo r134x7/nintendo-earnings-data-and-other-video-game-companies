@@ -1,3 +1,5 @@
+import { printTextBlock } from "./bandai_namco_annual_report_logic"
+
 export type Section = {
     units: "units" | "percentage" | "currency" | "NaN" ,
     period: " 1st Quarter " | " 2nd Quarter " | " 3rd Quarter " | " 4th Quarter " | " Last FY Cumulative " | "Forecast " | " FCST Revision 1 " | " FCST Revision 2 " | " FCST Revision 3 "
@@ -54,17 +56,18 @@ ${header.secondHeader}
 
 export const printSections = (header: Header, sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], sectionForecasts: Section[], currentQuarter: number) => {
 
-    const sectionHeader: string = (sectionDifference[0].name === "Nintendo Switch Hardware Total" || sectionDifference[0].name === "Nintendo Switch Software Total")
-            ? "+-------------+\n|" + sectionDifference[0].name.split("").slice(0,9).join("") + "    |-------------------+\n| Total       |   Units |    YoY% |\n+---------------------------------+" 
-            : (sectionDifference[0].name === "Mobile")
-            ? "+--------------------------+\n| Mobile, IP related       |---------+\n| income, etc.             |    YoY% |\n+------------------------------------+"
-            : (sectionDifference[0].name === "Playing cards")
-            ? "+--------------------------+\n| Playing cards, etc       |\n+------------------------------------+\n|             |     Sales  |    YoY% |\n+------------------------------------+"
-            : (sectionDifference[0].name === "Dedicated video game platform")
-            ? "+------------------------------------+\n| Dedicated video game platform      |\n+------------------------------------+\n|             |     Sales  |    YoY% |\n+------------------------------------+"
-            : (sectionDifference[0].name === "Digital Sales")
-            ? "+--------------------------+\n|Digital Sales in dedicated|---------+\n| video game platform      |    YoY% |\n+------------------------------------+"
-            : "+" + "-".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |\n+" + "-".repeat(33) + "+"
+    // const sectionHeader: string = (sectionDifference[0].name === "Nintendo Switch Hardware Total" || sectionDifference[0].name === "Nintendo Switch Software Total")
+    //         ? "+-------------+\n|" + sectionDifference[0].name.split("").slice(0,9).join("") + "    |-------------------+\n| Total       |   Units |    YoY% |\n+---------------------------------+" 
+    //         : (sectionDifference[0].name === "Mobile")
+    //         ? "+--------------------------+\n| Mobile, IP related       |---------+\n| income, etc.             |    YoY% |\n+------------------------------------+"
+    //         : (sectionDifference[0].name === "Playing cards")
+    //         ? "+--------------------------+\n| Playing cards, etc       |\n+------------------------------------+\n|             |     Sales  |    YoY% |\n+------------------------------------+"
+    //         : (sectionDifference[0].name === "Dedicated video game platform")
+    //         ? "+------------------------------------+\n| Dedicated video game platform      |\n+------------------------------------+\n|             |     Sales  |    YoY% |\n+------------------------------------+"
+    //         : (sectionDifference[0].name === "Digital Sales")
+    //         ? "+--------------------------+\n|Digital Sales in dedicated|---------+\n| video game platform      |    YoY% |\n+------------------------------------+"
+    //         : "+" + "-".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |\n+" + "-".repeat(33) + "+"
+    const sectionHeader: string | never[] = printTextBlock(sectionCumulative[0].name)(33)
 
      const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem, index, array) => {
         //  return index < currentQuarter && array[index].units !== "NaN"
