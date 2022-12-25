@@ -51,7 +51,7 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
     const headerLabels = props.setData.quarterValuesThisFY.map((elem) => {
 
         switch (elem[0].name) {
-            case " Switch ":
+            case "Nintendo Switch":
                 return `Switch ${labels.currentFY}`
             case " Switch Lite ":
                 return `Switch Lite ${labels.currentFY}`
@@ -82,7 +82,7 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
     const headerLabelsLastFY = props.setData.quarterValuesLastFY.map((elem) => {
 
         switch (elem[0].name) {
-            case " Switch ":
+            case "Nintendo Switch":
                 return `Switch ${labels.lastFY}`
             case " Switch Lite ":
                 return `Switch Lite ${labels.lastFY}`
