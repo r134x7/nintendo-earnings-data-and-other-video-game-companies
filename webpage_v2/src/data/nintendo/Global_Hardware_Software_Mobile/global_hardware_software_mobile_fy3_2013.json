@@ -3,6 +3,7 @@
     "fiscalYear": "FY3/2013",
     "nextFiscalYearShort": "FY3/14",
     "platformUnitSales": [
+        {"name":"Nintendo DS Hardware","units":"units","Q1CmlValue":54,"Q2CmlValue":98,"Q3CmlValue":215,"Q4CmlValue":235,"cmlValueLastFY":15152},{"name":"Nintendo DS Software","units":"units","Q1CmlValue":848,"Q2CmlValue":1730,"Q3CmlValue":3024,"Q4CmlValue":3338,"cmlValueLastFY":90031},
         {"name":"Nintendo 3DS Hardware","units":"units","Q1CmlValue":186,"Q2CmlValue":506,"Q3CmlValue":1271,"Q4CmlValue":1395,"cmlValueLastFY":1714},{"name":"Nintendo 3DS XL","units":"units","Q1CmlValue":0,"Q2CmlValue":210,"Q3CmlValue":705,"Q4CmlValue":778,"cmlValueLastFY":0},{"name":"Nintendo 3DS Software","units":"units","Q1CmlValue":739,"Q2CmlValue":1903,"Q3CmlValue":3956,"Q4CmlValue":4961,"cmlValueLastFY":4542},
         {"name":"Wii Hardware","units":"units","Q1CmlValue":71,"Q2CmlValue":132,"Q3CmlValue":353,"Q4CmlValue":398,"cmlValueLastFY":9586},{"name":"Wii Software","units":"units","Q1CmlValue":847,"Q2CmlValue":2374,"Q3CmlValue":4508,"Q4CmlValue":5061,"cmlValueLastFY":81845},
         {"name":"Wii U Hardware","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":306,"Q4CmlValue":345,"cmlValueLastFY":0},{"name":"Wii U Software","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":1169,"Q4CmlValue":1342,"cmlValueLastFY":0}
