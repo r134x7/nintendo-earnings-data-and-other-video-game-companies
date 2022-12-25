@@ -3,7 +3,8 @@
     "fiscalYear": "FY3/2012",
     "nextFiscalYearShort": "FY3/13",
     "platformUnitSales": [
-        {"name":"Nintendo 3DS Hardware","units":"units","Q1CmlValue":71,"Q2CmlValue":307,"Q3CmlValue":1143,"Q4CmlValue":1353,"cmlValueLastFY":360},{"name":"Nintendo 3DS Software","units":"units","Q1CmlValue":453,"Q2CmlValue":813,"Q3CmlValue":2804,"Q4CmlValue":3600,"cmlValueLastFY":942}
+        {"name":"Nintendo 3DS Hardware","units":"units","Q1CmlValue":71,"Q2CmlValue":307,"Q3CmlValue":1143,"Q4CmlValue":1353,"cmlValueLastFY":360},{"name":"Nintendo 3DS Software","units":"units","Q1CmlValue":453,"Q2CmlValue":813,"Q3CmlValue":2804,"Q4CmlValue":3600,"cmlValueLastFY":942},
+        {"name":"Wii Hardware","units":"units","Q1CmlValue":156,"Q2CmlValue":335,"Q3CmlValue":896,"Q4CmlValue":984,"cmlValueLastFY":8601},{"name":"Wii Software","units":"units","Q1CmlValue":1344,"Q2CmlValue":3645,"Q3CmlValue":8906,"Q4CmlValue":10237,"cmlValueLastFY":71609}
     ],
     "platformForecastSales": [
         {
