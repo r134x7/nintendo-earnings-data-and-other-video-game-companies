@@ -3,6 +3,7 @@
     "fiscalYear": "FY3/2009",
     "nextFiscalYearShort": "FY3/10",
     "platformUnitSales": [
+        {"name":"Wii Hardware","units":"units","Q1CmlValue":517,"Q2CmlValue":1010,"Q3CmlValue":2052,"Q4CmlValue":2595,"cmlValueLastFY":2444},{"name":"Wii Software","units":"units","Q1CmlValue":4041,"Q2CmlValue":8141,"Q3CmlValue":16378,"Q4CmlValue":20458,"cmlValueLastFY":14844}
     ],
     "platformForecastSales": [
         {
