@@ -19,7 +19,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 1,
             companyName: "Capcom",
-            eventName: "2nd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results",
             eventDate: "January 30, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.capcom.co.jp/ir/english/",
@@ -27,7 +27,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 2,
             companyName: "Nintendo",
-            eventName: "2nd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results",
             eventDate: "February 7, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.nintendo.co.jp/ir/en/",
