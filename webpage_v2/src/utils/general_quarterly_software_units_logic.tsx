@@ -148,7 +148,7 @@ export const printSoftwareGeneral = (header: Header, sectionDifference: Section[
                 let printLine: string = "\n+" + "-".repeat(printLineLength) + "+"
 
                 let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
-                    ? `${shortFY}${elem.cmlPeriod}`
+                    ? `${shortFY}${elem.cmlPeriod} `
                     : elem.cmlPeriod
 
                 return (printSectionCumulativeYoYFixed === "NaN")
