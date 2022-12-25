@@ -3,7 +3,7 @@ import { printTextBlock } from "./bandai_namco_annual_report_logic"
 export type Section = {
     units: "units" | "percentage" | "currency" | "NaN" ,
     period: " 1st Quarter " | " 2nd Quarter " | " 3rd Quarter " | " 4th Quarter " | " Last FY Cumulative ",
-    cmlPeriod: " 1st Quarter " | " First Half  " | " 1st 3 Qtrs  " | "Cml. ",
+    cmlPeriod: " 1st Quarter " | " First Half  " | " 1st 3 Qtrs  " | "Cml.",
     name: string,
     value: number,
     miscellaneous?: string,

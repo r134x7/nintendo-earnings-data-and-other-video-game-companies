@@ -55,7 +55,7 @@ const platformUnitSalesMake = (obj: undefined | {
         {
             name: (!obj) ? "N/A" : obj.name,
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: "units",
             value: (!obj) ? 0 : obj.Q4CmlValue / 10,
             miscellaneous: obj?.miscellaneous,
@@ -63,7 +63,7 @@ const platformUnitSalesMake = (obj: undefined | {
         {
             name: (!obj) ? "N/A" : obj.name,
             period: " Last FY Cumulative ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: "units",
             value: (!obj || !obj.cmlValueLastFY) ? 0 : obj.cmlValueLastFY / 10,
             miscellaneous: obj?.miscellaneous,
