@@ -186,9 +186,9 @@ export const regionalHardwareSoftwareList: string[] = collection.map((elem, inde
     let currentQuarter: number = elem.currentQuarter;
 
     let header: Header = {
-        switchHeader: "| Nintendo Switch Regional Data   |",
+        switchHeader: "| Nintendo Co., Ltd. Regional Data |",
         fiscalYear: elem.fiscalYear,
-        fiscalYearCml: elem.fiscalYearCml,
+        fiscalYearCml: " " + elem.fiscalYear + " Cumulative",
         globalPercentage: "| Global%|",
         units: "| Units  |",
         yearOnYear: "| YoY%   |",

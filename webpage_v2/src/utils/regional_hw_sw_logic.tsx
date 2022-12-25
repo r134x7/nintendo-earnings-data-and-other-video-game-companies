@@ -17,7 +17,7 @@ export type Section = {
 }
 
 export type Header = {
-    switchHeader: "| Nintendo Switch Regional Data   |",
+    switchHeader: "| Nintendo Co., Ltd. Regional Data |",
     fiscalYear: string,
     fiscalYearCml: string,
     units: "| Units  |",
@@ -106,15 +106,15 @@ export function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
     }
 
 export const printHead = (header: Header) => 
-`+${"-".repeat(44)}+
-${header.switchHeader}${header.fiscalYear}|
-+${"-".repeat(44)}+`;
+`+${"-".repeat(45)}+
+${header.switchHeader} ${header.fiscalYear} |
++${"-".repeat(45)}+`;
 
 export const printSection = (header: Header, sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], currentQuarter: number) => {
 
     const sectionHeader: string = (sectionDifference[currentQuarter-1].valueE !== 0) // changed index from [3] to currentQuarter or else the wrong header occurs... 
-        ? "+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + " ".repeat(44 - sectionDifference[0].name.length) + "|\n+" + "-".repeat(44) + "+\n|        | Japan  |The     | Europe | Other  |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
-        : "+" + "-".repeat(44) + "+\n|" + sectionDifference[0].name + " ".repeat(44 - sectionDifference[0].name.length) + "|\n+" + "-".repeat(44) + "+\n|        | Japan  |The     | Other  |        |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
+        ? "+" + "-".repeat(44) + "+\n| " + sectionDifference[0].name + " ".repeat(43 - sectionDifference[0].name.length) + "|\n+" + "-".repeat(44) + "+\n|        | Japan  |The     | Europe | Other  |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
+        : "+" + "-".repeat(44) + "+\n| " + sectionDifference[0].name + " ".repeat(43 - sectionDifference[0].name.length) + "|\n+" + "-".repeat(44) + "+\n|        | Japan  |The     | Other  |        |\n|        |        |Americas|        |        |\n+" +  "-".repeat(44) + "+"
 
     const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem) => {
         return (currentQuarter === 1)

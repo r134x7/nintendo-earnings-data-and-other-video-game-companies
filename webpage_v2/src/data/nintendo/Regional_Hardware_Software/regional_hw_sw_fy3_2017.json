@@ -1,10 +1,9 @@
 {
     "currentQuarter": 4,
     "fiscalYear": "FY3/2017",
-    "fiscalYearCml": "FY3/17 Cumulative",
     "regions": [
         {
-            "name": " Nintendo Switch Hardware Total ",
+            "name": "Nintendo Switch Hardware Total",
             "regionA": "Global",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
@@ -37,7 +36,7 @@
             "valueELastFY":0 
         },
         {
-            "name": " Nintendo Switch Software Total ",
+            "name": "Nintendo Switch Software Total",
             "regionA": "Global",
             "Q1CmlValueA": 0,
             "Q2CmlValueA": 0,
