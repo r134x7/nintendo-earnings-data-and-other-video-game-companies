@@ -3,7 +3,7 @@ import { printTextBlock } from "./bandai_namco_annual_report_logic"
 export type Section = {
     units: "units" | "percentage" | "currency" | "NaN" ,
     period: " 1st Quarter " | " 2nd Quarter " | " 3rd Quarter " | " 4th Quarter " | " Last FY Cumulative " | "Forecast " | " FCST Revision 1 " | " FCST Revision 2 " | " FCST Revision 3 "
-    cmlPeriod: " 1st Quarter " | " First Half  " | " 1st 3 Qtrs  " | "Cml. ",
+    cmlPeriod: " 1st Quarter " | " First Half  " | " 1st 3 Qtrs  " | "Cml.",
     name: string,
     value: number,
 }
@@ -67,7 +67,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
     //         : (sectionDifference[0].name === "Digital Sales")
     //         ? "+--------------------------+\n|Digital Sales in dedicated|---------+\n| video game platform      |    YoY% |\n+------------------------------------+"
     //         : "+" + "-".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |\n+" + "-".repeat(33) + "+"
-    const sectionHeader: string | never[] = printTextBlock(sectionCumulative[0].name)(33)
+    const sectionHeader: string | never[] = "+" + "-".repeat(33) + "+\n" + printTextBlock(sectionCumulative[0].name)(33) + "\n+" + "-".repeat(33) + "+\n" + "|             |   Units |    YoY% |\n" + "+" + "-".repeat(33) + "+" 
 
      const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem, index, array) => {
         //  return index < currentQuarter && array[index].units !== "NaN"
@@ -161,7 +161,8 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                     ? printCumulative
                     : " ".repeat(lineSpace - printCumulative.length) + printCumulative;
 
-                let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+                // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+                let shortFY: string = header.fiscalYear
                 
             let printLineCheck = sectionCumulativeYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN");
 
@@ -177,7 +178,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                 let printLine: string = "\n+" + "-".repeat(printLineLength) + "+"
 
                 let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
-                    ? `${shortFY}${elem.cmlPeriod}`
+                    ? `${shortFY} ${elem.cmlPeriod}`
                     : elem.cmlPeriod
 
                 return (printSectionCumulativeYoYFixed === "NaN")
@@ -280,7 +281,7 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
             let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
 
             let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
-                    ? `${shortFY}${elem.cmlPeriod}`
+                    ? `${shortFY} ${elem.cmlPeriod}`
                     : elem.cmlPeriod
 
            let printLine: string = (array[index] === array.at(-1))
@@ -303,7 +304,7 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
             let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
 
             let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
-                    ? `${shortFY}${elem.cmlPeriod}`
+                    ? `${shortFY} ${elem.cmlPeriod}`
                     : elem.cmlPeriod
 
            let printLine: string = (array[index] === array.at(-1))
@@ -336,7 +337,7 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
             let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
 
             let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
-                    ? `${shortFY}${elem.cmlPeriod}`
+                    ? `${shortFY} ${elem.cmlPeriod}`
                     : elem.cmlPeriod
 
            let printLine: string = (array[index] === array.at(-1))

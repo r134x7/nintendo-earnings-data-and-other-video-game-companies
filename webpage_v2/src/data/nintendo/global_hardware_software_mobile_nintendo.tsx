@@ -87,14 +87,14 @@ const platformSalesMake = (obj: undefined | {
         {
             name: (!obj) ? "N/A" : obj.name,
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q4CmlValue
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             period: " Last FY Cumulative ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.cmlValueLastFY
         },
@@ -151,7 +151,7 @@ const platformUnitSalesMake = (obj: undefined | {
         {
             name: (!obj) ? "N/A" : obj.name,
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj !== undefined && obj.units === "units") 
                     ? "units"
                     : (obj !== undefined && obj.units === "currency")
@@ -162,7 +162,7 @@ const platformUnitSalesMake = (obj: undefined | {
         {
             name: (!obj) ? "N/A" : obj.name,
             period: " Last FY Cumulative ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj !== undefined && obj.units === "units") 
                     ? "units"
                     : (obj !== undefined && obj.units === "currency")
@@ -219,7 +219,7 @@ const platformForecastsMake = (obj: {
             name: obj.name,
             units: "units",
             period: "Forecast ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             value: obj?.forecastNextFY,
         } as Section,
     ].filter(elem => elem.value !== undefined)
