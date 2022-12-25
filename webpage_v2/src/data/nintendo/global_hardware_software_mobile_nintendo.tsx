@@ -190,7 +190,7 @@ const platformForecastsMake = (obj: {
         {
             name: obj.name,
             units: "units",
-            period: "Forecast ", 
+            period: "Forecast", 
             cmlPeriod: " 1st Quarter ",
             value: obj?.forecastThisFY,
         } as Section,
@@ -218,7 +218,7 @@ const platformForecastsMake = (obj: {
         {
             name: obj.name,
             units: "units",
-            period: "Forecast ",
+            period: "Forecast",
             cmlPeriod: "Cml.",
             value: obj?.forecastNextFY,
         } as Section,
@@ -367,7 +367,7 @@ export const globalHardwareSoftwareMobileGraphList = collection.map((elem, index
         return elem.filter((value, index, array) => index !== array.length-1) // filtering out the last FY cml index
     });
 
-    let thisFY: string = elem.fiscalYear.slice(1, -1);
+    let thisFY: string = elem.fiscalYear;
     let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
 
     let marchThisFY: string = "March " + thisFY.slice(4);

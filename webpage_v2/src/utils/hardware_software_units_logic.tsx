@@ -2,7 +2,7 @@ import { printTextBlock } from "./bandai_namco_annual_report_logic"
 
 export type Section = {
     units: "units" | "percentage" | "currency" | "NaN" ,
-    period: " 1st Quarter " | " 2nd Quarter " | " 3rd Quarter " | " 4th Quarter " | " Last FY Cumulative " | "Forecast " | " FCST Revision 1 " | " FCST Revision 2 " | " FCST Revision 3 "
+    period: " 1st Quarter " | " 2nd Quarter " | " 3rd Quarter " | " 4th Quarter " | " Last FY Cumulative " | "Forecast" | " FCST Revision 1 " | " FCST Revision 2 " | " FCST Revision 3 "
     cmlPeriod: " 1st Quarter " | " First Half  " | " 1st 3 Qtrs  " | "Cml.",
     name: string,
     value: number,
@@ -50,6 +50,8 @@ export function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
 export const printHead = (header: Header) => 
 `+${"-".repeat(31)}+
 ${header.switchHeader} ${header.fiscalYear} |
++${"-".repeat(31)}+
+${header.firstHeader}
 +${"-".repeat(31)}+
 ${header.secondHeader}
 +${"-".repeat(31)}+`;
@@ -239,11 +241,11 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                 // let miscellaneous: string = "|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"
 
                 return (currentQuarter === 4 && index === array.length-1 && array.length === 1)
-                    ? "+" + "-".repeat(27) + "+\n|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+                    ? "+" + "-".repeat(27) + "+\n|" + header.nextFiscalYearShort + " " + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
                     : (currentQuarter === 4 && index === array.length-1)
-                    ? "|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+                    ? "|" + header.nextFiscalYearShort + " " + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
                     : (index === 0)
-                    ? "+" + "-".repeat(27) + "+\n|" + shortFY + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+"
+                    ? "+" + "-".repeat(27) + "+\n|" + shortFY + " " + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+"
                     : "|" + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
             }).concat(["|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"]).reduce((prev, next) => prev + "\n" + next)
             : "shrug"

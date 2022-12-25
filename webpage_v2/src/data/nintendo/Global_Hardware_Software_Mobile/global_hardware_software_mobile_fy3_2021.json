@@ -14,6 +14,15 @@
     ],
     "platformUnitSales": [
             {
+                "name": "Nintendo Switch Hardware Total",
+                "units": "units",
+                "Q1CmlValue": 568,
+                "Q2CmlValue": 1253,
+                "Q3CmlValue": 2410,
+                "Q4CmlValue": 2883,
+                "cmlValueLastFY": 5577
+            },
+            {
                 "name": "Nintendo Switch",
                 "units": "units",
                 "Q1CmlValue": 305,
@@ -30,15 +39,6 @@
                 "Q3CmlValue": 733,
                 "Q4CmlValue": 851,
                 "cmlValueLastFY": 619
-            },
-            {
-                "name": "Nintendo Switch Hardware Total",
-                "units": "units",
-                "Q1CmlValue": 568,
-                "Q2CmlValue": 1253,
-                "Q3CmlValue": 2410,
-                "Q4CmlValue": 2883,
-                "cmlValueLastFY": 5577
             },
             {
                 "name": "Nintendo Switch Software Total",
