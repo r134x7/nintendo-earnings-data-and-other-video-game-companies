@@ -4,7 +4,7 @@
     "nextFiscalYearShort": " FY3/21 ",
     "platformCmlSales": [
         {
-            "name": " Switch Platform ",
+            "name": "Switch Platform",
             "units": "currency",
             "Q1CmlValue": 152643,
             "Q2CmlValue": 405588,
@@ -33,7 +33,7 @@
                 "cmlValueLastFY": 0
             },
             {
-                "name": " Hardware Total ",
+                "name": "Nintendo Switch Hardware Total",
                 "units": "units",
                 "Q1CmlValue": 213,
                 "Q2CmlValue": 693,
@@ -42,7 +42,7 @@
                 "cmlValueLastFY": 3474
             },
             {
-                "name": " Software Total ",
+                "name": "Nintendo Switch Software Total",
                 "units": "units",
                 "Q1CmlValue": 2262,
                 "Q2CmlValue": 5849,
@@ -51,7 +51,7 @@
                 "cmlValueLastFY": 18752
             },
             {
-                "name": " Mobile ",
+                "name": "Mobile",
                 "units": "currency",
                 "Q1CmlValue": 10005,
                 "Q2CmlValue": 19964,
@@ -60,7 +60,7 @@
                 "cmlValueLastFY": 0 
             },
             {
-                "name": " Playing cards ",
+                "name": "Playing cards",
                 "units": "currency",
                 "Q1CmlValue": 475,
                 "Q2CmlValue": 1047,
@@ -69,7 +69,7 @@
                 "cmlValueLastFY": 0 
             },
             {
-                "name": " Dedicated video game platform ",
+                "name": "Dedicated video game platform",
                 "units": "currency",
                 "Q1CmlValue": 161629,
                 "Q2CmlValue": 422955,
@@ -78,7 +78,7 @@
                 "cmlValueLastFY": 0 
             },
             {
-                "name": " Digital Sales ",
+                "name": "Digital Sales",
                 "units": "currency",
                 "Q1CmlValue": 18500,
                 "Q2CmlValue": 39100,
@@ -89,13 +89,13 @@
     ],
     "platformForecastSales": [
         {
-            "name": " Hardware Total ",
+            "name": "Nintendo Switch Hardware Total",
             "forecastThisFY": 1800,
             "forecastRevision1": 1950,
             "forecastNextFY": 1900
         },
         {
-            "name": " Software Total ",
+            "name": "Nintendo Switch Software Total",
             "forecastThisFY": 12500,
             "forecastRevision1": 14000,
             "forecastNextFY": 14000

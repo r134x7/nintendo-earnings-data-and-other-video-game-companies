@@ -57,17 +57,17 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
                 return `Switch Lite ${labels.currentFY}`
             case " Switch OLED ":
                 return `Switch OLED ${labels.currentFY}`
-            case " Hardware Total ":
+            case "Nintendo Switch Hardware Total":
                 return `Switch Hardware Total ${labels.currentFY}`
-            case " Software Total ":
+            case "Nintendo Switch Software Total":
                 return `Switch Software Total ${labels.currentFY}`
-            case " Mobile ":
+            case "Mobile":
                 return `Mobile, IP related income, etc. ${labels.currentFY}`
-            case " Playing cards ":
+            case "Playing cards":
                 return `Playing cards, etc. ${labels.lastFY}`
-            case " Dedicated video game platform ":
+            case "Dedicated video game platform":
                 return `Dedicated video game platform ${labels.lastFY}`
-            case " Digital Sales ":
+            case "Digital Sales":
                 return `Digital Sales in dedicated video game platform ${labels.lastFY}`
             case "N/A":
                 return  `N/A ${labels.currentFY}`
@@ -88,17 +88,17 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
                 return `Switch Lite ${labels.lastFY}`
             case " Switch OLED ":
                 return `Switch OLED ${labels.lastFY}`
-            case " Hardware Total ":
+            case "Nintendo Switch Hardware Total":
                 return `Switch Hardware Total ${labels.lastFY}`
-            case " Software Total ":
+            case "Nintendo Switch Software Total":
                 return `Switch Software Total ${labels.lastFY}`
-            case " Mobile ":
+            case "Mobile":
                 return `Mobile, IP related income, etc. ${labels.lastFY}`
-            case " Playing cards ":
+            case "Playing cards":
                 return `Playing cards, etc. ${labels.lastFY}`
-            case " Dedicated video game platform ":
+            case "Dedicated video game platform":
                 return `Dedicated video game platform ${labels.lastFY}`
-            case " Digital Sales ":
+            case "Digital Sales":
                 return `Digital Sales in dedicated video game platform ${labels.lastFY}`
             case "N/A":
                 return  `N/A ${labels.lastFY}`
