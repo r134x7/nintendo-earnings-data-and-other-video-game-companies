@@ -230,12 +230,15 @@ const platformForecastsMake = (obj: {
 export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, index, array) => {
 
     let currentQuarter: number = elem.currentQuarter;
+    
+    let nextFiscalYear: string = elem.fiscalYear.slice(0,4) + (Number(elem.fiscalYear.slice(4)) + 1).toString()
 
     let header: Header = {
         fiscalYear: elem.fiscalYear,
-        nextFiscalYearShort: elem.nextFiscalYearShort,
-        switchHeader: "| Nintendo Switch   |",
-        secondHeader: "| Sales Units and Forecast     |",
+        nextFiscalYearShort: nextFiscalYear,
+        switchHeader: "| Nintendo Co., Ltd. |",
+        firstHeader: "| Global Hardware and Software  |",
+        secondHeader: "| Sales Units and Forecasts     |",
     };
 
     let platformSalesList: Section[][] = elem.platformCmlSales.map(value => platformSalesMake(value));

@@ -9,8 +9,9 @@ export type Section = {
 }
 
 export type Header = {
-    switchHeader: "| Nintendo Switch   |",
-    secondHeader: "| Sales Units and Forecast     |",
+    switchHeader: "| Nintendo Co., Ltd. |",
+    firstHeader: "| Global Hardware and Software  |"
+    secondHeader: "| Sales Units and Forecasts     |",
     fiscalYear: string,
     nextFiscalYearShort: string,
 }
@@ -47,11 +48,11 @@ export function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
     }
 
 export const printHead = (header: Header) => 
-`+${"-".repeat(30)}+
-${header.switchHeader}${header.fiscalYear}|
-+${"-".repeat(30)}+
+`+${"-".repeat(31)}+
+${header.switchHeader} ${header.fiscalYear} |
++${"-".repeat(31)}+
 ${header.secondHeader}
-+${"-".repeat(30)}+`;
++${"-".repeat(31)}+`;
 
 
 export const printSections = (header: Header, sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], sectionForecasts: Section[], currentQuarter: number) => {
@@ -208,7 +209,8 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
         const forecast: string = (sectionDifference[0].name === "Nintendo Switch Hardware Total")
             ? sectionForecasts.map((elem, index, array) => {
 
-                let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+                // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+                let shortFY: string = header.fiscalYear;
                 
                 let printValue: string = `${elem.value / 100}M `
                 let printValueFixed: string = (printValue.length >= 9)
@@ -226,7 +228,8 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             : (sectionDifference[0].name === "Nintendo Switch Software Total") 
             ? sectionForecasts.map((elem, index, array) => {
 
-                let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+                // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+                let shortFY: string = header.fiscalYear;
 
                 let printValue: string = `${elem.value / 100}M `
                 let printValueFixed: string = (printValue.length >= 9)
@@ -286,7 +289,8 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
                 ? printSection
                 : " ".repeat(13 - printSection.length) + printSection;
             
-            let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+            // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+            let shortFY: string = header.fiscalYear;
 
             let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
                     ? `${shortFY} ${elem.cmlPeriod}`
@@ -309,7 +313,8 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
                 ? printSectionLTD
                 : " ".repeat(13 - printSectionLTD.length) + printSectionLTD;
             
-            let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+            // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+            let shortFY: string = header.fiscalYear;
 
             let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
                     ? `${shortFY} ${elem.cmlPeriod}`
@@ -342,7 +347,8 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
                     ? printHardwareUnits
                     : " ".repeat(10 - printHardwareUnits.length) + printHardwareUnits 
 
-            let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+            // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+            let shortFY: string = header.fiscalYear
 
             let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
                     ? `${shortFY} ${elem.cmlPeriod}`

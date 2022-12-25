@@ -1,7 +1,6 @@
 {
     "currentQuarter": 2,
     "fiscalYear": "FY3/2023",
-    "nextFiscalYearShort": "FY3/24",
     "platformCmlSales": [
         {
             "name": "Switch Platform",
