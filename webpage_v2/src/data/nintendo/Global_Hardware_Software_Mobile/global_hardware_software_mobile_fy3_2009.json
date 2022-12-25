@@ -1,0 +1,17 @@
+{
+    "currentQuarter": 4,
+    "fiscalYear": "FY3/2009",
+    "nextFiscalYearShort": "FY3/10",
+    "platformUnitSales": [
+    ],
+    "platformForecastSales": [
+        {
+            "name": " Hardware Total ",
+            "forecastNextFY": 1000
+        },
+        {
+            "name": " Software Total ",
+            "forecastNextFY": 3500
+        }
+    ]
+}
