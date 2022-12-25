@@ -3,7 +3,8 @@
     "fiscalYear": "FY3/2007",
     "nextFiscalYearShort": "FY3/08",
     "platformUnitSales": [
-        {"name":"Wii Hardware","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":319,"Q4CmlValue":584,"cmlValueLastFY":0},{"name":"Wii Software","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":1751,"Q4CmlValue":2884,"cmlValueLastFY":0}
+        {"name":"Wii Hardware","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":319,"Q4CmlValue":584,"cmlValueLastFY":0},{"name":"Wii Software","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":1751,"Q4CmlValue":2884,"cmlValueLastFY":0},
+        {"name":"Nintendo GameCube Hardware","units":"units","Q1CmlValue":15,"Q2CmlValue":35,"Q3CmlValue":66,"Q4CmlValue":73,"cmlValueLastFY":2086},{"name":"Nintendo GameCube Software","units":"units","Q1CmlValue":352,"Q2CmlValue":898,"Q3CmlValue":1527,"Q4CmlValue":1680,"cmlValueLastFY":18908}
     ],
     "platformForecastSales": [
         {
