@@ -312,9 +312,13 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
 
     const printPlatformUnitSales = Array.from({length: platformUnitSalesThisFY.length}, (v, i) => {
 
-        let forecast = (cmlPlatformUnitSalesThisFY[i][0].name === "Nintendo Switch Software Total")
-            ? platformForecastsList[1] // software
-            : platformForecastsList[0] // hardware
+        // let forecast = (cmlPlatformUnitSalesThisFY[i][0].name === "Nintendo Switch Software Total")
+        //     ? platformForecastsList[1] // software
+        //     : platformForecastsList[0] // hardware
+        let forecast: Section[] = platformForecastsList.map(value => 
+            {
+                return value.filter(findName => findName.name === cmlPlatformUnitSalesThisFY[i][0].name) // should only find one match
+            }).flat()
 
         return printSections(
             header, 

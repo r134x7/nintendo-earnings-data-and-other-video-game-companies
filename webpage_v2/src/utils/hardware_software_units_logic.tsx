@@ -208,27 +208,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
         
         const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+"
 
-        const forecast: string = (sectionDifference[0].name === "Nintendo Switch Hardware Total")
-            ? sectionForecasts.map((elem, index, array) => {
-
-                // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
-                let shortFY: string = header.fiscalYear;
-                
-                let printValue: string = `${elem.value / 100}M `
-                let printValueFixed: string = (printValue.length >= 9)
-                    ? printValue
-                    : " ".repeat(9 - printValue.length) + printValue
-
-                return (currentQuarter === 4 && index === array.length-1 && array.length === 1)
-                    ? "+" + "-".repeat(27) + "+\n|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
-                    : (currentQuarter === 4 && index === array.length-1)
-                    ? "|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
-                    : (index === 0)
-                    ? "+" + "-".repeat(27) + "+\n|" + shortFY + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+"
-                    : "|" + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
-            }).reduce((prev, next) => prev + "\n" + next)
-            : (sectionDifference[0].name === "Nintendo Switch Software Total") 
-            ? sectionForecasts.map((elem, index, array) => {
+        const forecast: string = sectionForecasts.map((elem, index, array) => {
 
                 // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
                 let shortFY: string = header.fiscalYear;
@@ -247,14 +227,54 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                     : (index === 0)
                     ? "+" + "-".repeat(27) + "+\n|" + shortFY + " " + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+"
                     : "|" + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
-            }).concat(["|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"]).reduce((prev, next) => prev + "\n" + next)
-            : "shrug"
+            }).concat((sectionDifference[0].name === "Nintendo Switch Software Total") ? ["|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"] : "###").reduce((prev, next) => prev + "\n" + next)
+        // (sectionDifference[0].name === "Nintendo Switch Hardware Total")
+        //     ? sectionForecasts.map((elem, index, array) => {
+
+        //         // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+        //         let shortFY: string = header.fiscalYear;
+                
+        //         let printValue: string = `${elem.value / 100}M `
+        //         let printValueFixed: string = (printValue.length >= 9)
+        //             ? printValue
+        //             : " ".repeat(9 - printValue.length) + printValue
+
+        //         return (currentQuarter === 4 && index === array.length-1 && array.length === 1)
+        //             ? "+" + "-".repeat(27) + "+\n|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+        //             : (currentQuarter === 4 && index === array.length-1)
+        //             ? "|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+        //             : (index === 0)
+        //             ? "+" + "-".repeat(27) + "+\n|" + shortFY + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+"
+        //             : "|" + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+        //     }).reduce((prev, next) => prev + "\n" + next)
+        //     : (sectionDifference[0].name === "Nintendo Switch Software Total") 
+            // ? sectionForecasts.map((elem, index, array) => {
+
+            //     // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+            //     let shortFY: string = header.fiscalYear;
+
+            //     let printValue: string = `${elem.value / 100}M `
+            //     let printValueFixed: string = (printValue.length >= 9)
+            //         ? printValue
+            //         : " ".repeat(9 - printValue.length) + printValue
+
+            //     // let miscellaneous: string = "|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"
+
+            //     return (currentQuarter === 4 && index === array.length-1 && array.length === 1)
+            //         ? "+" + "-".repeat(27) + "+\n|" + header.nextFiscalYearShort + " " + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+            //         : (currentQuarter === 4 && index === array.length-1)
+            //         ? "|" + header.nextFiscalYearShort + " " + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+            //         : (index === 0)
+            //         ? "+" + "-".repeat(27) + "+\n|" + shortFY + " " + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+"
+            //         : "|" + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+            // }).concat(["|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"]).reduce((prev, next) => prev + "\n" + next)
+            // : "shrug"
 
             const mobileFooter = "|(Includes income from smart-device\n|content and royalty income.)";
 
             const digitalSalesFooter = "|(Includes downloadable versions of\n|packaged software, download-only\n|software, add-on content and\n|Nintendo Switch Online*.)\n|*Nintendo Switch Online from FY3/2019"
 
-        const penultimateCheck = (sectionDifference[0].name === "Nintendo Switch Hardware Total" || sectionDifference[0].name === "Nintendo Switch Software Total")
+        const penultimateCheck = (sectionDifference[0].name.split(" ").includes("Total"))
             ? [sectionHeader, ...difference, ...cumulative, ltdPrint, forecast].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
             : (sectionDifference[0].name === "Mobile")
             ? [sectionHeader, ...difference, ...cumulative, mobileFooter].filter((elem) => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
