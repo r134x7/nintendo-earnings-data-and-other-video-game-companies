@@ -1,16 +1,16 @@
 import { readFileSync, writeFile } from "fs";
 
-let currentQuarter = 1;
+let currentQuarter = 4;
 
 const readQuarter = (currentQuarterLocal) => {
 
     return (currentQuarterLocal === 1)
-            ? readFileSync("regional_data/nintendo_gamecube_fy3_2009/firstQuarter.txt", "utf-8")
+            ? readFileSync("regional_data/nintendo_gamecube_fy3_2008/firstQuarter.txt", "utf-8")
             : (currentQuarterLocal === 2)
-            ? readFileSync("regional_data/nintendo_gamecube_fy3_2009/secondQuarter.txt", "utf-8") 
+            ? readFileSync("regional_data/nintendo_gamecube_fy3_2008/secondQuarter.txt", "utf-8") 
             : (currentQuarterLocal === 3)
-            ? readFileSync("regional_data/nintendo_gamecube_fy3_2009/thirdQuarter.txt", "utf-8")
-            : readFileSync("regional_data/nintendo_gamecube_fy3_2009/fourthQuarter.txt", "utf-8");
+            ? readFileSync("regional_data/nintendo_gamecube_fy3_2008/thirdQuarter.txt", "utf-8")
+            : readFileSync("regional_data/nintendo_gamecube_fy3_2008/fourthQuarter.txt", "utf-8");
 };
 
 const getTotals = (readQuarterLocal) => {
