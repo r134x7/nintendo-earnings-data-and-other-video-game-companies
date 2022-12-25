@@ -53,9 +53,9 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
         switch (elem[0].name) {
             case "Nintendo Switch":
                 return `Switch ${labels.currentFY}`
-            case " Switch Lite ":
+            case "Nintendo Switch Lite":
                 return `Switch Lite ${labels.currentFY}`
-            case " Switch OLED ":
+            case "Nintendo Switch OLED Model":
                 return `Switch OLED ${labels.currentFY}`
             case "Nintendo Switch Hardware Total":
                 return `Switch Hardware Total ${labels.currentFY}`
@@ -84,9 +84,9 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
         switch (elem[0].name) {
             case "Nintendo Switch":
                 return `Switch ${labels.lastFY}`
-            case " Switch Lite ":
+            case "Nintendo Switch Lite":
                 return `Switch Lite ${labels.lastFY}`
-            case " Switch OLED ":
+            case "Nintendo Switch OLED Model":
                 return `Switch OLED ${labels.lastFY}`
             case "Nintendo Switch Hardware Total":
                 return `Switch Hardware Total ${labels.lastFY}`

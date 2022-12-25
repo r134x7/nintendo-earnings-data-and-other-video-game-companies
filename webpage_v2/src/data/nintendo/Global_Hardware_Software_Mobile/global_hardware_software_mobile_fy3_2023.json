@@ -1,7 +1,7 @@
 {
     "currentQuarter": 2,
-    "fiscalYear": " FY3/2023 ",
-    "nextFiscalYearShort": " FY3/24 ",
+    "fiscalYear": "FY3/2023",
+    "nextFiscalYearShort": "FY3/24",
     "platformCmlSales": [
         {
             "name": "Switch Platform",
@@ -24,7 +24,7 @@
                 "cmlValueLastFY": 8345
             },
             {
-                "name": " Switch Lite ",
+                "name": "Nintendo Switch Lite",
                 "units": "units",
                 "Q1CmlValue": 59,
                 "Q2CmlValue": 92,
@@ -33,7 +33,7 @@
                 "cmlValueLastFY": 1840
             },
             {
-                "name": " Switch OLED ",
+                "name": "Nintendo Switch OLED Model",
                 "units": "units",
                 "Q1CmlValue": 152,
                 "Q2CmlValue": 353,

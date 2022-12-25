@@ -1,7 +1,7 @@
 {
     "currentQuarter": 4,
-    "fiscalYear": " FY3/2021 ",
-    "nextFiscalYearShort": " FY3/22 ",
+    "fiscalYear": "FY3/2021",
+    "nextFiscalYearShort": "FY3/22",
     "platformCmlSales": [
         {
             "name": "Switch Platform",
@@ -24,7 +24,7 @@
                 "cmlValueLastFY": 4957
             },
             {
-                "name": " Switch Lite ",
+                "name": "Nintendo Switch Lite",
                 "units": "units",
                 "Q1CmlValue": 262,
                 "Q2CmlValue": 417,
