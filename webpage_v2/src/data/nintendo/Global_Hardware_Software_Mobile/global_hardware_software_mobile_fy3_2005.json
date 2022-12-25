@@ -3,6 +3,7 @@
     "fiscalYear": "FY3/2005",
     "nextFiscalYearShort": "FY3/06",
     "platformUnitSales": [
+        {"name":"Game Boy Advance Hardware","units":"units","Q1CmlValue":232,"Q2CmlValue":673,"Q3CmlValue":1434,"Q4CmlValue":1540,"cmlValueLastFY":5139},{"name":"Game Boy Advance SP","units":"units","Q1CmlValue":217,"Q2CmlValue":653,"Q3CmlValue":1358,"Q4CmlValue":1464,"cmlValueLastFY":1715},{"name":"Game Boy Advance Software","units":"units","Q1CmlValue":1747,"Q2CmlValue":3790,"Q3CmlValue":7257,"Q4CmlValue":8457,"cmlValueLastFY":18379},
         {"name":"Nintendo GameCube Hardware","units":"units","Q1CmlValue":65,"Q2CmlValue":140,"Q3CmlValue":346,"Q4CmlValue":392,"cmlValueLastFY":1458},{"name":"Nintendo GameCube Software","units":"units","Q1CmlValue":736,"Q2CmlValue":1809,"Q3CmlValue":4030,"Q4CmlValue":4842,"cmlValueLastFY":10787}
     ],
     "platformForecastSales": [
