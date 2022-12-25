@@ -3,6 +3,7 @@
     "fiscalYear": "FY3/2006",
     "nextFiscalYearShort": "FY3/07",
     "platformUnitSales": [
+        {"name":"Nintendo GameCube Hardware","units":"units","Q1CmlValue":26,"Q2CmlValue":81,"Q3CmlValue":212,"Q4CmlValue":235,"cmlValueLastFY":1850},{"name":"Nintendo GameCube Software","units":"units","Q1CmlValue":431,"Q2CmlValue":1322,"Q3CmlValue":2807,"Q4CmlValue":3279,"cmlValueLastFY":15629}
     ],
     "platformForecastSales": [
         {
