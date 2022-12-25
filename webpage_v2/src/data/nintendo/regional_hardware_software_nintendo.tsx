@@ -31,7 +31,6 @@ import regionalHardwareSoftware2004 from "./Regional_Hardware_Software/regional_
 type jsonData = {
     currentQuarter: number,
     fiscalYear: string,
-    fiscalYearCml: string,
     regions: regionData[]
 }
 
