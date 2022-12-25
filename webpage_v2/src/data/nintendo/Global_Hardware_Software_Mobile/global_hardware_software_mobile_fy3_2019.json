@@ -92,6 +92,18 @@
             "forecastThisFY": 10000,
             "forecastRevision1": 11000,
             "forecastNextFY": 12500
+        },
+        {
+            "name": "Nintendo 3DS Hardware Total",
+            "forecastThisFY": 400,
+            "forecastRevision1": 260,
+            "forecastNextFY": 100
+        },
+        {
+            "name": "Nintendo 3DS Software Total",
+            "forecastThisFY": 1600,
+            "forecastRevision1": 1300,
+            "forecastNextFY": 500
         }
     ]
 }

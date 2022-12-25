@@ -9,12 +9,40 @@
     ],
     "platformForecastSales": [
         {
-            "name": "Nintendo Switch Hardware Total",
-            "forecastNextFY": 1000
+            "name": "Nintendo 3DS Hardware Total",
+            "forecastThisFY": 1200,
+            "forecastRevision1": 900,
+            "forecastNextFY": 760
         },
         {
-            "name": "Nintendo Switch Software Total",
-            "forecastNextFY": 3500
+            "name": "Nintendo 3DS Software Total",
+            "forecastThisFY": 6700,
+            "forecastRevision1": 6100,
+            "forecastNextFY": 5600 
+        },
+        {
+            "name": "Wii Hardware Total",
+            "forecastThisFY": 50,
+            "forecastRevision1": 50,
+            "forecastNextFY": 10 
+        },
+        {
+            "name": "Wii Software Total",
+            "forecastThisFY": 900,
+            "forecastRevision1": 1100,
+            "forecastNextFY": 400
+        },
+        {
+            "name": "Wii U Hardware Total",
+            "forecastThisFY": 360,
+            "forecastRevision1": 360,
+            "forecastNextFY": 340 
+        },
+        {
+            "name": "Wii U Software Total",
+            "forecastThisFY": 2000,
+            "forecastRevision1": 2500,
+            "forecastNextFY": 2300 
         }
     ]
 }
