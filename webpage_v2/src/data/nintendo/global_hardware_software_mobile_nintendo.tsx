@@ -29,7 +29,44 @@ import globalHardwareSoftwareMobile2006 from "./Global_Hardware_Software_Mobile/
 import globalHardwareSoftwareMobile2005 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2005.json";
 import globalHardwareSoftwareMobile2004 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2004.json";
 
-const collection = [
+export type collectionJSON = {
+    currentQuarter: number,
+    fiscalYear: string,
+    platformCmlSales: platformCumulativeSalesType[],
+    platformUnitSales: platformUnitSalesType[],
+    platformForecastSales: platformForecastSalesType[],
+};
+
+type platformCumulativeSalesType = {
+    name: string,
+    units: string,
+    Q1CmlValue: number,
+    Q2CmlValue: number,
+    Q3CmlValue: number,
+    Q4CmlValue: number,
+    cmlValueLastFY: number,
+};
+
+export type platformUnitSalesType = {
+    name: string,
+    units: string,
+    Q1CmlValue: number,
+    Q2CmlValue: number,
+    Q3CmlValue: number,
+    Q4CmlValue: number,
+    cmlValueLastFY: number, 
+};
+
+type platformForecastSalesType = {
+    name: string,
+    forecastThisFY?: number,
+    forecastRevision1?: number,
+    forecastRevision2?: number,
+    forecastRevision3?: number,
+    forecastNextFY?: number,
+};
+
+const collection: collectionJSON[] = [
     globalHardwareSoftwareMobile2023,
     globalHardwareSoftwareMobile2022,
     globalHardwareSoftwareMobile2021,
@@ -50,17 +87,9 @@ const collection = [
     globalHardwareSoftwareMobile2006,
     globalHardwareSoftwareMobile2005,
     globalHardwareSoftwareMobile2004,
-] as const;
+];
 
-const platformSalesMake = (obj: undefined | {
-    name: string,
-    units: string,
-    Q1CmlValue: number,
-    Q2CmlValue: number,
-    Q3CmlValue: number,
-    Q4CmlValue: number,
-    cmlValueLastFY: number,
-}): Section[] => {
+const platformSalesMake = (obj: undefined | platformCumulativeSalesType ): Section[] => {
 
     let sales: Section[] = [
         {
@@ -104,15 +133,7 @@ const platformSalesMake = (obj: undefined | {
 
 };
 
-const platformUnitSalesMake = (obj: undefined | {
-    name: string,
-    units: string,
-    Q1CmlValue: number,
-    Q2CmlValue: number,
-    Q3CmlValue: number,
-    Q4CmlValue: number,
-    cmlValueLastFY: number,
-}): Section[] => {
+export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): Section[] => {
 
     let unitSales: Section[] = [
         {
@@ -176,14 +197,7 @@ const platformUnitSalesMake = (obj: undefined | {
 
 };
 
-const platformForecastsMake = (obj: {
-    name: string,
-    forecastThisFY?: number,
-    forecastRevision1?: number,
-    forecastRevision2?: number,
-    forecastRevision3?: number,
-    forecastNextFY?: number,
-}): Section[] => {
+const platformForecastsMake = (obj: platformForecastSalesType): Section[] => {
 
     // had to use different type assertion due to issue with keys not being recognised...
     let forecasts: Section[] = [
