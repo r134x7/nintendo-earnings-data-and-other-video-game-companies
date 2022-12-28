@@ -85,6 +85,8 @@ import {
 
     const flatCollection = totalCollectionSet.map((value) => value.map((secondValue) => secondValue.filter((thirdValue, thirdIndex) => thirdIndex === 3))).flat(2);
 
+    const flatCollectionLTD = totalCollectionSet.map((value) => value.map((secondValue) => secondValue.filter((thirdValue, thirdIndex) => thirdIndex === 4))).flat(2);
+
     const flatTitles = totalCollectionSet.map((value) => value.map((secondValue) => secondValue.filter((thirdValue, thirdIndex) => thirdIndex === 3))).flat(2).map(value => { return  value.name })
 
     const filteredCollection = [...new Set(flatTitles)];
@@ -94,9 +96,13 @@ import {
 
         const setTitles: Section[][] = titles.map((elem, index, array) => {
 
-            let searchTitle = flatCollection.filter((value) => value.name === elem)
+            let searchTitle: Section[] = flatCollection.filter((value) => value.name === elem)
 
-            return searchTitle 
+            let searchLTD: Section[] = flatCollectionLTD.filter((value) => value.name === elem)
+
+            let latestLTD = searchLTD[searchLTD.length-1];
+            
+            return searchTitle.concat([latestLTD]) 
         })
 
         return setTitles
@@ -129,11 +135,20 @@ import {
         //     return elem.valueB
         // }).reduce((prev, next) => prev + next)
 
-        const title1Flat = title.flatMap((flat) => flat).reduce((prev, next) => {
-            return {...prev, ...next}
-        })
+        // const title1Flat = title.flatMap((flat) => flat).reduce((prev, next) => {
+        //     return {...prev, ...next}
+        // })
+
+        const title1Flat = {
+            ...title[title.length-1],
+            value: title[title.length-1].value + title[title.length-2].value
+        }
+
+        const removeLast = title.filter((elem, index, array) => index !== array.length-1)
+
+        let newTitle = removeLast.concat(title1Flat);
         
-        return title.concat(title1Flat)
+        return newTitle
     };
 
 
@@ -156,7 +171,7 @@ import {
             // let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
             let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+"// + "+"+"-".repeat(42)+"+"
 
-            let yearValues: string[] = elem.filter((value, index) => { return value.value !== 0}).map((value, valueIndex, valueArray) => {
+            let yearValues: string[] = elem.filter((value, index) => value.value !== 0).map((value, valueIndex, valueArray) => {
 
                let printValue: string = `${value.value}M ` 
                let printValueFixed: string = (printValue.length >= 11)
@@ -168,8 +183,7 @@ import {
                        : "| " + value.fiscalYear + " Cumulative          |"
 
                return  printPeriodFixed + printValueFixed + "|"
-            }).filter((value, index) => index !== elem.length-1 );
-                
+            }).filter((secondValue, index) => index !== elem.length-1) // will not work using secondValue;
 
         let printValue: string = `${elem[elem.length-1].value}M ` 
         
