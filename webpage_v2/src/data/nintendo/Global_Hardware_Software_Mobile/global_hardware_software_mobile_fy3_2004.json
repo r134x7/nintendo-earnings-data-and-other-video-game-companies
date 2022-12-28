@@ -14,7 +14,8 @@
     ],
     "platformUnitSales": [
         {"name":"Game Boy Advance Hardware Total","units":"units","Q1CmlValue":324,"Q2CmlValue":834,"Q3CmlValue":1561,"Q4CmlValue":1759,"cmlValueLastFY":3381},{"name":"Game Boy Advance SP","units":"units","Q1CmlValue":274,"Q2CmlValue":693,"Q3CmlValue":1319,"Q4CmlValue":1505,"cmlValueLastFY":211},{"name":"Game Boy Advance Software Total","units":"units","Q1CmlValue":1058,"Q2CmlValue":2991,"Q3CmlValue":6149,"Q4CmlValue":7489,"cmlValueLastFY":10890},
-        {"name":"Nintendo GameCube Hardware Total","units":"units","Q1CmlValue":8,"Q2CmlValue":89,"Q3CmlValue":439,"Q4CmlValue":502,"cmlValueLastFY":955},{"name":"Nintendo GameCube Software Total","units":"units","Q1CmlValue":618,"Q2CmlValue":1450,"Q3CmlValue":3774,"Q4CmlValue":4737,"cmlValueLastFY":6050}
+        {"name":"Nintendo GameCube Hardware Total","units":"units","Q1CmlValue":8,"Q2CmlValue":89,"Q3CmlValue":439,"Q4CmlValue":502,"cmlValueLastFY":955},{"name":"Nintendo GameCube Software Total","units":"units","Q1CmlValue":618,"Q2CmlValue":1450,"Q3CmlValue":3774,"Q4CmlValue":4737,"cmlValueLastFY":6050},
+        {"name":"Nintendo 64 Software","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":2,"cmlValueLastFY":22495}
     ],
     "platformForecastSales": [
         {
