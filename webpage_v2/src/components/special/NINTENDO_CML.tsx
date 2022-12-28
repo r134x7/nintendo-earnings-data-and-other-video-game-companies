@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { printJapan, printGlobal, printOverseas } from "../../data/nintendo/Nintendo_Cumulative_Data/mst_cml_data";
 import { cumulativeEarningsList } from "../../data/nintendo/Nintendo_Cumulative_Data/consolidated_earnings_cml_data";
 import { printGlobalHardwareSoftware } from "../../data/nintendo/Nintendo_Cumulative_Data/global_hardware_software_cml_data";
+import { printJapanHardwareSoftware, printAmericasHardwareSoftware, printEuropeHardwareSoftware, printOtherHardwareSoftware } from "../../data/nintendo/Nintendo_Cumulative_Data/regional_hardware_software_cml_data";
 
 export default function NINTENDO_CML() {
 
@@ -17,8 +18,24 @@ export default function NINTENDO_CML() {
             value: cumulativeEarningsList
         },
         {
-            name: "Nintendo Global Hardware Software - Historical Data",
+            name: "Nintendo Hardware/Software Historical Data - Global",
             value: printGlobalHardwareSoftware
+        },
+        {
+            name: "Nintendo Hardware/Software Historical Data - Japan",
+            value: printJapanHardwareSoftware
+        },
+        {
+            name: "Nintendo Hardware/Software Historical Data - The Americas",
+            value: printAmericasHardwareSoftware
+        },
+        {
+            name: "Nintendo Hardware/Software Historical Data - Europe",
+            value: printEuropeHardwareSoftware 
+        },
+        {
+            name: "Nintendo Hardware/Software Historical Data - Other",
+            value: printOtherHardwareSoftware 
         },
         {
             name: "Nintendo FY Million-Seller Titles - Japan",

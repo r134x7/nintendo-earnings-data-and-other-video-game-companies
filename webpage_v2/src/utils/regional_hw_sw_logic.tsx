@@ -14,6 +14,7 @@ export type Section = {
     valueD: number,
     valueE: number,
     dataShift?: boolean, // to deal with YoY% for FY3/19...
+    fiscalYear?: string,
 }
 
 export type Header = {

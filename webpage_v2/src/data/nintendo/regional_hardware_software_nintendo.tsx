@@ -28,13 +28,13 @@ import regionalHardwareSoftware2006 from "./Regional_Hardware_Software/regional_
 import regionalHardwareSoftware2005 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2005.json";
 import regionalHardwareSoftware2004 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2004.json";
 
-type jsonData = {
+export type jsonData = {
     currentQuarter: number,
     fiscalYear: string,
     regions: regionData[]
 }
 
-type regionData = {
+export type regionData = {
     name: string,
     regionA: string,
     Q1CmlValueA: number,
@@ -92,7 +92,7 @@ const collection: jsonData[] = [
     regionalHardwareSoftware2004,
 ];
 
-const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
+export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
 
     let sales: Section[] = [
         {
