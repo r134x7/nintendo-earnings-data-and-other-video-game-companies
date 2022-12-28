@@ -1,0 +1,33 @@
+Nintendo 64 Hardware 
+Japan
+5
+554
+
+The Americas
+30
+2062
+
+Other
+15
+675
+
+Total
+50
+3292
+
+Nintendo 64 Software 
+Japan
+59
+3964
+
+The Americas
+553
+14164
+
+Other
+162
+4302
+
+Total
+774
+22430
