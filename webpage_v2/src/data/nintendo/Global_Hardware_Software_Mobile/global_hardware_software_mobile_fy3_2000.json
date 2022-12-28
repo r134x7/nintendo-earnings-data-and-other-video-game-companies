@@ -13,7 +13,7 @@
         }
     ],
     "platformUnitSales": [
-        {"name":"Nintendo 64 Hardware","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":649,"cmlValueLastFY":2308},{"name":"Nintendo 64 Software","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":5666,"cmlValueLastFY":12395}
+        {"name":"Nintendo 64 Hardware Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":649,"cmlValueLastFY":2308},{"name":"Nintendo 64 Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":5666,"cmlValueLastFY":12395}
     ],
     "platformForecastSales": [
         {

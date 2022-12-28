@@ -6,6 +6,7 @@ export type Section = {
     cmlPeriod: " 1st Quarter " | " First Half  " | " 1st 3 Qtrs  " | "Cml.",
     name: string,
     value: number,
+    fiscalYear?: string,
 }
 
 export type Header = {
