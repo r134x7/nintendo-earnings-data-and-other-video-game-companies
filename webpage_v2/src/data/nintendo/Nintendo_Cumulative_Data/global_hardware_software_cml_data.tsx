@@ -240,8 +240,11 @@ const divideSortedGlobalCollection = reducedArrays.map(elem => elem.map(section 
 
 const printFour = printTitlesGlobal(divideSortedGlobalCollection)
 
+let dataSource = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_data/index.html"
+
 export const printGlobalHardwareSoftware = 
 `${printOneWW}
 ${dateLabel}
 ${printFour}
-###`;
+###
+${dataSource}`;

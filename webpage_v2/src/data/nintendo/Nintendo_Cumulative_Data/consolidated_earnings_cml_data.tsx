@@ -90,6 +90,8 @@ const totalCollection: EarningsJSON[] = [
     consolidatedEarnings2023,
 ];
 
+const dateLabel = "| Latest data as of September 30th, 2022   |\n+" + "-".repeat(42) + "+"
+
 let netSalesSet = totalCollection.map(elem => {
     return {
         fiscalYear: elem.fiscalYear,
@@ -167,6 +169,7 @@ let dataSource = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_da
 
 export const cumulativeEarningsList = [
     header,
+    dateLabel,
     ...printNetSales,
     ...printOperatingIncome,
     ...printNetIncome,
