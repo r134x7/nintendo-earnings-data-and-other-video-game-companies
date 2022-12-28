@@ -10,7 +10,7 @@ const readQuarter = (currentQuarterLocal) => {
             ? readFileSync("secondQuarter.txt", "utf-8") 
             : (currentQuarterLocal === 3)
             ? readFileSync("thirdQuarter.txt", "utf-8")
-            : readFileSync("regional_data/nintendo_gamecube_fy3_2002/fourthQuarter.txt", "utf-8");
+            : readFileSync("regional_data/nintendo_64_fy3_2004/fourthQuarter.txt", "utf-8");
 };
 
 const removeCommas = (readQuarterLocal) => {

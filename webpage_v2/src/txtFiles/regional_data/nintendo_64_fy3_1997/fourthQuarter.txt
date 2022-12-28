@@ -7,6 +7,10 @@ Overseas
 377
 377
 
+Other
+0
+0
+
 Total
 580
 580
@@ -19,6 +23,10 @@ Japan
 Overseas
 995
 995
+
+Other
+0
+0
 
 Total
 1572

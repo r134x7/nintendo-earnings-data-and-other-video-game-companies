@@ -2,5 +2,6 @@
     "currentQuarter": 4,
     "fiscalYear": "FY3/1999",
     "regions": [
+        {"name":"Nintendo 64 Hardware","regionA":"Global","Q1CmlValueA":0,"Q2CmlValueA":0,"Q3CmlValueA":0,"Q4CmlValueA":786,"valueALastFY":1522,"regionB":"Japan","Q1CmlValueB":0,"Q2CmlValueB":0,"Q3CmlValueB":0,"Q4CmlValueB":121,"valueBLastFY":314,"regionC":"Overseas","Q1CmlValueC":0,"Q2CmlValueC":0,"Q3CmlValueC":0,"Q4CmlValueC":665,"valueCLastFY":1208,"regionD":"Other","Q1CmlValueD":0,"Q2CmlValueD":0,"Q3CmlValueD":0,"Q4CmlValueD":0,"valueDLastFY":0,"regionE":"Other","Q1CmlValueE":0,"Q2CmlValueE":0,"Q3CmlValueE":0,"Q4CmlValueE":0,"valueELastFY":0},{"name":"Nintendo 64 Software","regionA":"Global","Q1CmlValueA":0,"Q2CmlValueA":0,"Q3CmlValueA":0,"Q4CmlValueA":6331,"valueALastFY":6064,"regionB":"Japan","Q1CmlValueB":0,"Q2CmlValueB":0,"Q3CmlValueB":0,"Q4CmlValueB":958,"valueBLastFY":1381,"regionC":"Overseas","Q1CmlValueC":0,"Q2CmlValueC":0,"Q3CmlValueC":0,"Q4CmlValueC":5373,"valueCLastFY":4683,"regionD":"Other","Q1CmlValueD":0,"Q2CmlValueD":0,"Q3CmlValueD":0,"Q4CmlValueD":0,"valueDLastFY":0,"regionE":"Other","Q1CmlValueE":0,"Q2CmlValueE":0,"Q3CmlValueE":0,"Q4CmlValueE":0,"valueELastFY":0}
     ]
 }
