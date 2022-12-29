@@ -10,7 +10,7 @@ const readQuarter = (currentQuarterLocal) => {
             ? readFileSync("regional_data/nintendo_3ds_fy3_2020/secondQuarter.txt", "utf-8") 
             : (currentQuarterLocal === 3)
             ? readFileSync("regional_data/nintendo_3ds_fy3_2020/thirdQuarter.txt", "utf-8")
-            : readFileSync("regional_data/nes_data/nes_fy3_2004/fourthQuarter.txt", "utf-8");
+            : readFileSync("regional_data/game_boy_data/game_boy_fy3_1998/fourthQuarter.txt", "utf-8");
 };
 
 const getTotals = (readQuarterLocal) => {
