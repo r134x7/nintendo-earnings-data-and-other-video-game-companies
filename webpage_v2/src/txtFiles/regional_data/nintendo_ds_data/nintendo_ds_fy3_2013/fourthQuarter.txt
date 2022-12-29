@@ -15,6 +15,57 @@ Total
 235
 15387
 
+Nintendo DS Lite
+Japan
+0
+1820
+
+The Americas
+0
+3644
+
+Other
+2
+3921
+
+Total
+2
+9385
+
+Nintendo DSi 
+Japan
+0
+590
+
+The Americas
+143
+1228
+
+Other
+11
+1014
+
+Total
+154
+2832
+
+Nintendo DSi XL 
+Japan
+1
+235
+
+The Americas
+68
+585
+
+Other
+11
+472
+
+Total
+79
+1291
+
 Nintendo DS Software 
 Japan
 506
