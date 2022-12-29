@@ -1,0 +1,50 @@
+Nintendo DS Hardware 
+Japan
+0
+3299
+
+The Americas
+0
+5993
+
+Other
+1
+6110
+
+Total
+1
+15402
+
+Nintendo DS Lite
+Japan
+0
+1820
+
+The Americas
+0
+3644
+
+Other
+1
+3922
+
+Total
+1
+9386
+
+Nintendo DS Software
+Japan
+8
+21358
+
+The Americas
+86
+39909
+
+Other
+32
+33556
+
+Total
+126
+94822
