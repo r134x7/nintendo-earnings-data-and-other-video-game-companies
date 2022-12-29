@@ -167,6 +167,7 @@
             "Q4CmlValueE": 1888,
             "valueELastFY": 4174 
         },
-        {"name":"Wii U Software","regionA":"Global","Q1CmlValueA":0,"Q2CmlValueA":0,"Q3CmlValueA":0,"Q4CmlValueA":13,"valueALastFY":10335,"regionB":"Japan","Q1CmlValueB":0,"Q2CmlValueB":0,"Q3CmlValueB":0,"Q4CmlValueB":1,"valueBLastFY":1581,"regionC":"The Americas","Q1CmlValueC":0,"Q2CmlValueC":0,"Q3CmlValueC":0,"Q4CmlValueC":8,"valueCLastFY":5632,"regionD":"Other","Q1CmlValueD":0,"Q2CmlValueD":0,"Q3CmlValueD":0,"Q4CmlValueD":4,"valueDLastFY":3122,"regionE":"Other","Q1CmlValueE":0,"Q2CmlValueE":0,"Q3CmlValueE":0,"Q4CmlValueE":0,"valueELastFY":0}
+        {"name":"Wii U Software","regionA":"Global","Q1CmlValueA":0,"Q2CmlValueA":0,"Q3CmlValueA":0,"Q4CmlValueA":13,"valueALastFY":10335,"regionB":"Japan","Q1CmlValueB":0,"Q2CmlValueB":0,"Q3CmlValueB":0,"Q4CmlValueB":1,"valueBLastFY":1581,"regionC":"The Americas","Q1CmlValueC":0,"Q2CmlValueC":0,"Q3CmlValueC":0,"Q4CmlValueC":8,"valueCLastFY":5632,"regionD":"Other","Q1CmlValueD":0,"Q2CmlValueD":0,"Q3CmlValueD":0,"Q4CmlValueD":4,"valueDLastFY":3122,"regionE":"Other","Q1CmlValueE":0,"Q2CmlValueE":0,"Q3CmlValueE":0,"Q4CmlValueE":0,"valueELastFY":0},
+        {"name":"Nintendo 3DS Software","regionA":"Global","Q1CmlValueA":0,"Q2CmlValueA":0,"Q3CmlValueA":0,"Q4CmlValueA":207,"valueALastFY":38648,"regionB":"Japan","Q1CmlValueB":0,"Q2CmlValueB":0,"Q3CmlValueB":0,"Q4CmlValueB":34,"valueBLastFY":13807,"regionC":"The Americas","Q1CmlValueC":0,"Q2CmlValueC":0,"Q3CmlValueC":0,"Q4CmlValueC":103,"valueCLastFY":13238,"regionD":"Other","Q1CmlValueD":0,"Q2CmlValueD":0,"Q3CmlValueD":0,"Q4CmlValueD":70,"valueDLastFY":11603,"regionE":"Other","Q1CmlValueE":0,"Q2CmlValueE":0,"Q3CmlValueE":0,"Q4CmlValueE":0,"valueELastFY":0}
     ]
 }
