@@ -210,7 +210,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
         const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+"
 
         const forecast: string = sectionForecasts.map((elem, index, array) => {
-
+                
                 // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
                 let shortFY: string = header.fiscalYear;
 
@@ -223,7 +223,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
 
                 return (currentQuarter === 4 && index === array.length-1 && array.length === 1)
                     ? "+" + "-".repeat(27) + "+\n|" + header.nextFiscalYearShort + " " + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
-                    : (currentQuarter === 4 && index === array.length-1)
+                    : (currentQuarter === 4 && index === array.length-1 && elem.period === "Forecast")
                     ? "|" + header.nextFiscalYearShort + " " + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
                     : (index === 0)
                     ? "+" + "-".repeat(27) + "+\n|" + shortFY + " " + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+"
