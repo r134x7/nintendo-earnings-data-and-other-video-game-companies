@@ -14,7 +14,8 @@
     ],
     "platformUnitSales": [
         {"name":"Nintendo DS Hardware Total","units":"units","Q1CmlValue":597,"Q2CmlValue":1170,"Q3CmlValue":2335,"Q4CmlValue":2711,"cmlValueLastFY":10178},{"name":"Nintendo DSi","units":"units","Q1CmlValue":365,"Q2CmlValue":715,"Q3CmlValue":1341,"Q4CmlValue":1480,"cmlValueLastFY":302},{"name":"Nintendo DSi XL","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":70,"Q4CmlValue":208,"cmlValueLastFY":0},{"name":"Nintendo DS Software Total","units":"units","Q1CmlValue":2909,"Q2CmlValue":7115,"Q3CmlValue":12138,"Q4CmlValue":15159,"cmlValueLastFY":56691},
-        {"name":"Wii Hardware Total" ,"units":"units","Q1CmlValue":223,"Q2CmlValue":575,"Q3CmlValue":1705,"Q4CmlValue":2053,"cmlValueLastFY":5040},{"name":"Wii Software Total" ,"units":"units","Q1CmlValue":3107,"Q2CmlValue":7621,"Q3CmlValue":15664,"Q4CmlValue":19181,"cmlValueLastFY":35302}
+        {"name":"Wii Hardware Total" ,"units":"units","Q1CmlValue":223,"Q2CmlValue":575,"Q3CmlValue":1705,"Q4CmlValue":2053,"cmlValueLastFY":5040},{"name":"Wii Software Total" ,"units":"units","Q1CmlValue":3107,"Q2CmlValue":7621,"Q3CmlValue":15664,"Q4CmlValue":19181,"cmlValueLastFY":35302},
+        {"name":"Game Boy Advance Hardware","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":4,"cmlValueLastFY":8147},{"name":"Game Boy Advance SP","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":4,"cmlValueLastFY":4353},{"name":"Game Boy Advance Software","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":10,"cmlValueLastFY":37728}
     ],
     "platformForecastSales": [
         {
