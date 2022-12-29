@@ -1,0 +1,33 @@
+Game Boy Hardware
+Japan
+473
+2396
+
+Overseas
+826
+5345
+
+Other
+0
+0
+
+Total
+1299
+7741
+
+Game Boy Software
+Japan
+1616
+11470
+
+Overseas
+2585
+19507
+
+Other
+0
+0
+
+Total
+4201
+30978

@@ -1,0 +1,33 @@
+Game Boy Hardware
+Japan
+337
+3151
+
+The Americas
+774
+4260
+
+Other
+775
+3961
+
+Total
+1886
+11372
+
+Game Boy Software
+Japan
+1769
+15177
+
+The Americas
+3423
+16912
+
+Other
+2427
+13278
+
+Total
+7619
+45368

@@ -1,0 +1,33 @@
+Super Family Computer/SNES Hardware
+Japan
+3
+1713
+
+The Americas
+23
+2328
+
+Other
+2
+857
+
+Total
+28
+4898
+
+Super Family Computer/SNES Software
+Japan
+19
+19477
+
+The Americas
+118
+13491
+
+Other
+13
+4921
+
+Total
+150
+37888

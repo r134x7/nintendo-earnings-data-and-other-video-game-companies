@@ -1,0 +1,33 @@
+Game Boy Hardware
+Japan
+418
+2814
+
+The Americas
+859
+3486
+
+Other
+468
+3186
+
+Total
+1745
+9486
+
+Game Boy Software
+Japan
+1938
+13408
+
+The Americas
+3233
+13489
+
+Other
+1600
+10851
+
+Total
+6771
+37749

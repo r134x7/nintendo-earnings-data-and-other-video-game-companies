@@ -1,0 +1,33 @@
+Game Boy Hardware
+Japan
+91
+3242
+
+The Americas
+146
+4406
+
+Other
+232
+4193
+
+Total
+470
+11842
+
+Game Boy Software
+Japan
+430
+15607
+
+The Americas
+1499
+18411
+
+Other
+1511
+14789
+
+Total
+3440
+48808

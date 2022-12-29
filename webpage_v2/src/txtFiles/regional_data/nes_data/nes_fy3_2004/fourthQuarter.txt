@@ -1,0 +1,33 @@
+Family Computer/NES Hardware 
+Japan
+3
+1935
+
+The Americas
+0
+3400
+
+Other
+0
+856
+
+Total
+3
+6191
+
+Family Computer/NES Software 
+Japan
+0
+22586
+
+The Americas
+0
+23085
+
+Other
+0
+4329
+
+Total
+0
+50001
