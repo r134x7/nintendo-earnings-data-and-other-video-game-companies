@@ -94,9 +94,9 @@
                 "Q4CmlValue": 359600,
                 "cmlValueLastFY": 0 
             },
-            {"name":"Wii U Software","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":13,"cmlValueLastFY":10335},
-            {"name":"Nintendo DS Software","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":3,"cmlValueLastFY":94873},
-            {"name":"Nintendo 3DS Software","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":207,"cmlValueLastFY":38648}
+            {"name":"Wii U Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":13,"cmlValueLastFY":10335},
+            {"name":"Nintendo DS Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":3,"cmlValueLastFY":94873},
+            {"name":"Nintendo 3DS Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":207,"cmlValueLastFY":38648}
     ],
     "platformForecastSales": [
         {
