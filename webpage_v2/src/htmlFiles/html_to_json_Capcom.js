@@ -28,8 +28,8 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
         return null;
     };
 
-    return Array.from({ length: (newQuarterLocal.length / 4) }, function (v, i) {
-        const searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter(function (elem, index, array) { return (elem.title === newQuarterLocal[(i * 4) + 1]) && (elem.releaseDate === newQuarterLocal[i * 4]); }); // searching by title name and release date should only match one title
+    return Array.from({ length: (newQuarterLocal.length / 4) }, (v, i) => {
+        const searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem, index, array) => { return (elem.title === newQuarterLocal[(i * 4) + 1]) && (elem.releaseDate === newQuarterLocal[i * 4]); }); // searching by title name and release date should only match one title
 
         return (!searchTitle[0])
             ? {
@@ -62,7 +62,7 @@ const parseCurrentData = (!getCurrentData) ? undefined : JSON.parse(getCurrentDa
 const newArray = makeArray(extractNQ, parseCurrentData, currentQuarter);
 const newArrayStringify = JSON.stringify(newArray);
 
-writeFile('platinum_titles_test.json', newArrayStringify, function (err) {
+writeFile('platinum_titles_test.json', newArrayStringify, (err) => {
     return err ? console.error(err) : console.log('Capcom is back!');
 });
 // const dataReadFirstQuarter = fs.readFileSync("firstQuarter.html", "utf-8")
