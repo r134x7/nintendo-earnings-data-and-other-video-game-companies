@@ -3,7 +3,7 @@
     "fiscalYear": "| FY3/2022 Cumulative |",
     "titles": [
         {
-            "name": " Mario Kart 8 Deluxe ",
+            "name": "Mario Kart 8 Deluxe",
             "Q1CmlValue": 37.08,
             "Q2CmlValue": 38.74,
             "Q3CmlValue": 43.35,
@@ -11,7 +11,7 @@
             "valueLastFY": 35.39
         },
         {
-            "name": " Super Mario Odyssey ",
+            "name": "Super Mario Odyssey",
             "Q1CmlValue": 21.40, 
             "Q2CmlValue": 21.95, 
             "Q3CmlValue": 23.02, 
@@ -19,7 +19,7 @@
             "valueLastFY": 20.83
         },
         {
-            "name": " The Legend of Zelda: Breath of the Wild ",
+            "name": "The Legend of Zelda: Breath of the Wild",
             "Q1CmlValue": 23.20, 
             "Q2CmlValue": 24.13, 
             "Q3CmlValue": 25.80, 
@@ -27,7 +27,7 @@
             "valueLastFY": 22.28
         },
         {
-            "name": " Pokémon Brilliant Diamond / Pokémon Shining Pearl ",
+            "name": "Pokémon Brilliant Diamond / Pokémon Shining Pearl",
             "Q1CmlValue":  0,
             "Q2CmlValue":  0,
             "Q3CmlValue":  13.97,
@@ -35,7 +35,7 @@
             "valueLastFY": 0
         },
         {
-            "name": " Animal Crossing: New Horizons  ",
+            "name": "Animal Crossing: New Horizons ",
             "Q1CmlValue": 33.89, 
             "Q2CmlValue": 34.85, 
             "Q3CmlValue": 37.62, 
@@ -43,7 +43,7 @@
             "valueLastFY": 32.63
         },
         {
-            "name": " Pokémon Sword / Pokémon Shield ",
+            "name": "Pokémon Sword / Pokémon Shield",
             "Q1CmlValue": 21.85, 
             "Q2CmlValue": 22.64, 
             "Q3CmlValue": 23.90, 
@@ -51,7 +51,7 @@
             "valueLastFY": 21.10 
         },
         {
-            "name": " Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee ",
+            "name": "Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee",
             "Q1CmlValue": 13.57, 
             "Q2CmlValue": 13.83, 
             "Q3CmlValue": 14.33, 
@@ -59,7 +59,7 @@
             "valueLastFY": 13.28
         },
         {
-            "name": " Ring Fit Adventure ",
+            "name": "Ring Fit Adventure",
             "Q1CmlValue": 11.26, 
             "Q2CmlValue": 12.21, 
             "Q3CmlValue": 13.53, 
@@ -67,7 +67,7 @@
             "valueLastFY": 10.11
         },
         {
-            "name": " Super Mario Party ",
+            "name": "Super Mario Party",
             "Q1CmlValue": 15.72, 
             "Q2CmlValue": 16.48, 
             "Q3CmlValue": 17.39, 
@@ -75,7 +75,7 @@
             "valueLastFY": 14.79
         },
         {
-            "name": " Super Smash Bros. Ultimate ",
+            "name": "Super Smash Bros. Ultimate",
             "Q1CmlValue": 24.77, 
             "Q2CmlValue": 25.71, 
             "Q3CmlValue": 27.40, 
@@ -83,7 +83,7 @@
             "valueLastFY": 23.84
         },
         {
-            "name": " Splatoon 2 ",
+            "name": "Splatoon 2",
             "Q1CmlValue": 12.45, 
             "Q2CmlValue": 12.68, 
             "Q3CmlValue": 12.68, 

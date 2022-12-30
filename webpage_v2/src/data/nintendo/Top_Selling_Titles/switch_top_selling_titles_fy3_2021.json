@@ -3,7 +3,7 @@
     "fiscalYear": "| FY3/2021 Cumulative |",
     "titles": [
         {
-            "name": " Mario Kart 8 Deluxe ",
+            "name": "Mario Kart 8 Deluxe",
             "Q1CmlValue": 26.74,
             "Q2CmlValue": 28.99,
             "Q3CmlValue": 33.41,
@@ -11,7 +11,7 @@
             "valueLastFY": 24.77
         },
         {
-            "name": " Super Mario Odyssey ",
+            "name": "Super Mario Odyssey",
             "Q1CmlValue": 18.34, 
             "Q2CmlValue": 18.99, 
             "Q3CmlValue": 20.23, 
@@ -19,7 +19,7 @@
             "valueLastFY": 17.41
         },
         {
-            "name": " The Legend of Zelda: Breath of the Wild ",
+            "name": "The Legend of Zelda: Breath of the Wild",
             "Q1CmlValue": 18.60, 
             "Q2CmlValue": 19.74, 
             "Q3CmlValue": 21.45, 
@@ -27,7 +27,7 @@
             "valueLastFY": 17.41
         },
         {
-            "name": " Animal Crossing: New Horizons  ",
+            "name": "Animal Crossing: New Horizons ",
             "Q1CmlValue": 22.40, 
             "Q2CmlValue": 26.04, 
             "Q3CmlValue": 31.18, 
@@ -35,7 +35,7 @@
             "valueLastFY": 11.77
         },
         {
-            "name": " Pokémon Sword / Pokémon Shield ",
+            "name": "Pokémon Sword / Pokémon Shield",
             "Q1CmlValue": 18.22, 
             "Q2CmlValue": 19.02, 
             "Q3CmlValue": 20.35, 
@@ -43,7 +43,7 @@
             "valueLastFY": 17.37 
         },
         {
-            "name": " Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee ",
+            "name": "Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee",
             "Q1CmlValue": 12.20, 
             "Q2CmlValue": 12.49, 
             "Q3CmlValue": 13.00, 
@@ -51,7 +51,7 @@
             "valueLastFY": 11.97
         },
         {
-            "name": " New Super Mario Bros. U Deluxe ",
+            "name": "New Super Mario Bros. U Deluxe",
             "Q1CmlValue": 7.44, 
             "Q2CmlValue": 8.32, 
             "Q3CmlValue": 9.82, 
@@ -59,7 +59,7 @@
             "valueLastFY": 6.60
         },
         {
-            "name": " Super Mario Party ",
+            "name": "Super Mario Party",
             "Q1CmlValue": 10.94, 
             "Q2CmlValue": 12.1, 
             "Q3CmlValue": 13.82, 
@@ -67,7 +67,7 @@
             "valueLastFY": 10.10
         },
         {
-            "name": " Super Smash Bros. Ultimate ",
+            "name": "Super Smash Bros. Ultimate",
             "Q1CmlValue": 19.99, 
             "Q2CmlValue": 21.10, 
             "Q3CmlValue": 22.85, 
@@ -75,7 +75,7 @@
             "valueLastFY": 18.84
         },
         {
-            "name": " Splatoon 2 ",
+            "name": "Splatoon 2",
             "Q1CmlValue": 10.71, 
             "Q2CmlValue": 11.27, 
             "Q3CmlValue": 11.9, 

@@ -62,8 +62,8 @@ const getCurrentData = getJSON("nintendo_titles_test.json", currentQuarter);
 const parseCurrentData = (!getCurrentData) ? undefined : JSON.parse(getCurrentData);
 
 const newArray = makeArray(extractNQ, parseCurrentData, currentQuarter);
-
 const newArrayStringify = JSON.stringify(newArray);
+
 writeFile('nintendo_titles_test.json', newArrayStringify, function (err) {
     return err ? console.error(err) : console.log('Capcom is back!');
 });
