@@ -1,40 +1,36 @@
-"use strict";
-// need fs
-// need to read html files
-// need to write files in json
-// need to make a function to filter titles by name and release date to add values to the correct title
-exports.__esModule = true;
-var fs_1 = require("fs");
-// run file using node command not npm
+import { readFileSync, writeFile } from "fs";
 // compile to javaScript using npx tsc (filename)
-// starting with FY3/2021
-var currentQuarter = 3;
-var readQuarter = function (currentQuarterLocal) {
+
+const currentQuarter = 3;
+const readQuarter = (currentQuarterLocal) => {
     return (currentQuarterLocal === 1)
-        ? (0, fs_1.readFileSync)("firstQuarter.html", "utf-8")
+        ? readFileSync("firstQuarter.html", "utf-8")
         : (currentQuarterLocal === 2)
-            ? (0, fs_1.readFileSync)("secondQuarter.html", "utf-8")
+            ? readFileSync("secondQuarter.html", "utf-8")
             : (currentQuarterLocal === 3)
-                ? (0, fs_1.readFileSync)("thirdQuarter.html", "utf-8")
-                : (0, fs_1.readFileSync)("fourthQuarter.html", "utf-8");
+                ? readFileSync("thirdQuarter.html", "utf-8")
+                : readFileSync("fourthQuarter.html", "utf-8");
 };
-// make if statement to call different functions
-var extractData = function (readQuarterLocal) {
+
+const extractData = (readQuarterLocal) => {
     return readQuarterLocal.match(/(?<=td>)(.+?)(?=<\/td>)/g); // regex taken from: https://www.octoparse.com/blog/using-regular-expression-to-match-html#regex3
 };
-var getJSON = function (jsonLocal, currentQuarterLocal) {
+
+const getJSON = (jsonLocal, currentQuarterLocal) => {
 
     return (currentQuarterLocal > 1)
-        ? (0, fs_1.readFileSync)(jsonLocal, "utf-8")
+        ? readFileSync(jsonLocal, "utf-8")
         : undefined;
 };
-var makeArray = function (newQuarterLocal, currentDataLocal, currentQuarterLocal) {
+
+const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
     if (newQuarterLocal === null) {
         return null;
-    }
-    ;
+    };
+
     return Array.from({ length: (newQuarterLocal.length / 4) }, function (v, i) {
-        var searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter(function (elem, index, array) { return (elem.title === newQuarterLocal[(i * 4) + 1]) && (elem.releaseDate === newQuarterLocal[i * 4]); }); // searching by title name and release date should only match one title
+        const searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter(function (elem, index, array) { return (elem.title === newQuarterLocal[(i * 4) + 1]) && (elem.releaseDate === newQuarterLocal[i * 4]); }); // searching by title name and release date should only match one title
+
         return (!searchTitle[0])
             ? {
                 title: newQuarterLocal[(i * 4) + 1],
@@ -56,14 +52,17 @@ var makeArray = function (newQuarterLocal, currentDataLocal, currentQuarterLocal
             };
     });
 };
-var readNewestQuarter = readQuarter(currentQuarter);
-var extractNQ = extractData(readNewestQuarter);
+const readNewestQuarter = readQuarter(currentQuarter);
+const extractNQ = extractData(readNewestQuarter);
 console.log(extractNQ);
-var getCurrentData = getJSON("platinum_titles_test.json", currentQuarter);
-var parseCurrentData = (!getCurrentData) ? undefined : JSON.parse(getCurrentData);
-var newArray = makeArray(extractNQ, parseCurrentData, currentQuarter);
-var newArrayStringify = JSON.stringify(newArray);
-(0, fs_1.writeFile)('platinum_titles_test.json', newArrayStringify, function (err) {
+
+const getCurrentData = getJSON("platinum_titles_test.json", currentQuarter);
+const parseCurrentData = (!getCurrentData) ? undefined : JSON.parse(getCurrentData);
+
+const newArray = makeArray(extractNQ, parseCurrentData, currentQuarter);
+const newArrayStringify = JSON.stringify(newArray);
+
+writeFile('platinum_titles_test.json', newArrayStringify, function (err) {
     return err ? console.error(err) : console.log('Capcom is back!');
 });
 // const dataReadFirstQuarter = fs.readFileSync("firstQuarter.html", "utf-8")
