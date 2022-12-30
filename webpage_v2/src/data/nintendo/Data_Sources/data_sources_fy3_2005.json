@@ -1,37 +1,29 @@
 {
-    "fiscalYear": "FY3/20",
+    "fiscalYear": "FY3/2005",
     "data": [
         {
             "text": "1st Quarter Earnings Release:",
-            "link": ""
-        },
-        {
-            "text": "1st Quarter Financial Results Explanatory Material:",
-            "link": ""
+            "link": "https://www.nintendo.co.jp/ir/pdf/2004/040728e.pdf"
         },
         {
             "text": "2nd Quarter Earnings Release:",
-            "link": ""
+            "link": "https://www.nintendo.co.jp/ir/pdf/2004/041125e.pdf"
         },
         {
-            "text": "2nd Quarter Financial Results Explanatory Material:",
-            "link": ""
+            "text": "2nd Quarter Supplementary Information (Japanese):",
+            "link": "https://www.nintendo.co.jp/ir/pdf/2004/041126.pdf"
         },
         {
             "text": "3rd Quarter Earnings Release:",
-            "link": ""
-        },
-        {
-            "text": "3rd Quarter Financial Results Explanatory Material:",
-            "link": ""
+            "link": "https://www.nintendo.co.jp/ir/pdf/2005/050126e.pdf"
         },
         {
             "text": "4th Quarter Earnings Release:",
-            "link": ""
+            "link": "https://www.nintendo.co.jp/ir/pdf/2005/050526e.pdf"
         },
         {
-            "text": "4th Quarter Financial Results Explanatory Material:",
-            "link": ""
+            "text": "4th Quarter Supplementary Information (Japanese):",
+            "link": "https://www.nintendo.co.jp/ir/pdf/2005/050527.pdf"
         },
         {
             "text": "Dedicated Video Game Sales Units:",
