@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { dataSourcesList } from "../data/nintendo/Data_Sources/data_sources_full_list";
+import { nintendoLinks } from "../data/generalTables/data_sources_general";
 import { nintendoConsolidatedEarningsList, nintendoConsolidatedEarningsGraphList} from "../data/generalTables/consolidated_earnings_general";
 import { fyMillionSellerTitlesList, fyMillionSellerTitlesGraphList } from "../data/nintendo/fy_million_seller_titles_nintendo";
 import { globalHardwareSoftwareMobileList, globalHardwareSoftwareMobileGraphList } from "../data/nintendo/global_hardware_software_mobile_nintendo";
@@ -26,7 +26,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
         return [
             { 
                 name: "Data Sources",
-                value: dataSourcesList[index]? dataSourcesList[index] : undefined,
+                value: nintendoLinks[index]? nintendoLinks[index] : undefined,
             },
             {
                 name: "Consolidated Operating Results",
