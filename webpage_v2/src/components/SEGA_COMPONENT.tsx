@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 import { segaSoftwareUnitsList, segaSoftwareUnitsGraphList } from "../data/sega/software_units_sega"
 import { softwareSalesList, softwareSalesGraphList } from "../data/sega/software_sales_sega";
 import { annualReportList } from "../data/sega/annual_report_sega";
-import { dataSourcesList } from "../data/sega/Data_Sources/data_sources_full_list";
 import { segaConsolidatedEarningsList, segaConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
+import { segaLinks } from "../data/generalTables/data_sources_general";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
 import GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE from "../data/nintendo/Graphs/GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE";
@@ -24,7 +24,7 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
         return [
             { 
                 name: "Data Sources",
-                value: dataSourcesList[index]? dataSourcesList[index] : undefined,
+                value: segaLinks[index]? segaLinks[index] : undefined,
             },
             {
                 name: "Consolidated Operating Results",

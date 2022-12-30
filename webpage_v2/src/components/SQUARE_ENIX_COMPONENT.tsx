@@ -3,8 +3,8 @@ import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { softwareSalesList } from "../data/squareEnix/software_sales_square_enix";
 import { annualReportList } from "../data/squareEnix/annual_report_square_enix";
-import { dataSourcesList } from "../data/squareEnix/Data_Sources/data_sources_full_list";
 import { squareEnixConsolidatedEarningsList, squareEnixConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
+import { squareEnixLinks } from "../data/generalTables/data_sources_general";
 
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
 
@@ -21,7 +21,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
         return [
             { 
                 name: "Data Sources",
-                value: dataSourcesList[index]? dataSourcesList[index] : undefined,
+                value: squareEnixLinks[index]? squareEnixLinks[index] : undefined,
             },
             {
                 name: "Consolidated Financial Results",

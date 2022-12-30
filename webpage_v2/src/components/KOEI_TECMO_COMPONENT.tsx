@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { softwareSalesList, softwareSalesGraphList } from "../data/koeiTecmo/software_sales_koei_tecmo";
-import { dataSourcesList } from "../data/koeiTecmo/Data_Sources/data_sources_full_list";
 import { koeiTecmoConsolidatedEarningsList, koeiTecmoConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
+import { koeiTecmoLinks } from "../data/generalTables/data_sources_general";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
@@ -19,7 +19,7 @@ export default function KOEI_TECMO_COMPONENT(props: {setIndex: number; yearLengt
         return [
             { 
                 name: "Data Sources",
-                value: dataSourcesList[index]? dataSourcesList[index] : undefined,
+                value: koeiTecmoLinks[index]? koeiTecmoLinks[index] : undefined,
             },
             {
                 name: "Consolidated Operating Results",
