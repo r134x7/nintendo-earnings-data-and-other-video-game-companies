@@ -91,6 +91,7 @@
             "Q4CmlValue": 12.68, 
             "valueLastFY": 12.21
         }
-    ]
+    ],
+    [{"name":"Mario Kart 8","platform":"Wii U","Q1CmlValue":0,"Q2CmlValue":8.46,"Q3CmlValue":8.46,"Q4CmlValue":8.46},{"name":"Super Mario 3D World","platform":"Wii U","Q1CmlValue":0,"Q2CmlValue":5.88,"Q3CmlValue":5.88,"Q4CmlValue":5.88},{"name":"New Super Mario Bros. U","platform":"Wii U","Q1CmlValue":0,"Q2CmlValue":5.81,"Q3CmlValue":5.81,"Q4CmlValue":5.82},{"name":"Super Smash Bros. for Wii U","platform":"Wii U","Q1CmlValue":0,"Q2CmlValue":5.38,"Q3CmlValue":5.38,"Q4CmlValue":5.38},{"name":"Nintendo Land","platform":"Wii U","Q1CmlValue":0,"Q2CmlValue":5.2,"Q3CmlValue":5.2,"Q4CmlValue":5.21},{"name":"Splatoon","platform":"Wii U","Q1CmlValue":0,"Q2CmlValue":4.95,"Q3CmlValue":4.95,"Q4CmlValue":4.95},{"name":"Super Mario Maker","platform":"Wii U","Q1CmlValue":0,"Q2CmlValue":4.02,"Q3CmlValue":4.02,"Q4CmlValue":4.02},{"name":"New Super Luigi U","platform":"Wii U","Q1CmlValue":0,"Q2CmlValue":3.07,"Q3CmlValue":3.07,"Q4CmlValue":3.07},{"name":"The Legend of Zelda: The Wind Waker HD","platform":"Wii U","Q1CmlValue":0,"Q2CmlValue":2.35,"Q3CmlValue":2.35,"Q4CmlValue":2.35},{"name":"Mario Party 10","platform":"Wii U","Q1CmlValue":0,"Q2CmlValue":2.26,"Q3CmlValue":2.26,"Q4CmlValue":2.26}]
     ]
 }
