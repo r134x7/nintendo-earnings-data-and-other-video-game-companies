@@ -2,6 +2,12 @@ import { readFileSync, writeFile } from "fs";
 // compile to javaScript using npx tsc (filename)
 
 const currentQuarter = 2;
+// let currentPlatform = "Nintendo Switch";
+// let currentPlatform = "Wii U";
+let currentPlatform = "Nintendo 3DS";
+// let currentPlatform = "Wii";
+// let currentPlatform = "Nintendo DS";
+
 const readQuarter = (currentQuarterLocal) => {
     return (currentQuarterLocal === 1)
         ? readFileSync("firstQuarter.html", "utf-8")
@@ -23,7 +29,7 @@ const getJSON = (jsonLocal, currentQuarterLocal) => {
         : undefined;
 };
 
-const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
+const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal, platformLocal) => {
     if (newQuarterLocal === null) {
         return null;
     };
@@ -35,6 +41,7 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
         return (!searchTitle[0])
             ? {
                 name: newQuarterLocal[(i * 2)],
+                platform: platformLocal,
                 Q1CmlValue: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i * 2) + 1]),
                 Q2CmlValue: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i * 2) + 1]),
                 Q3CmlValue: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i * 2) + 1]),
@@ -42,6 +49,7 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
             }
             : {
                 name: newQuarterLocal[(i * 2)],
+                platform: platformLocal,
                 Q1CmlValue: searchTitle[0].Q1CmlValue,
                 Q2CmlValue: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i * 2) + 1]) : searchTitle[0].Q2CmlValue,
                 Q3CmlValue: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i * 2) + 1]) : searchTitle[0].Q3CmlValue,
@@ -57,7 +65,7 @@ console.log(extractNQ);
 const getCurrentData = getJSON("nintendo_titles_test.json", currentQuarter);
 const parseCurrentData = (!getCurrentData) ? undefined : JSON.parse(getCurrentData);
 
-const newArray = makeArray(extractNQ, parseCurrentData, currentQuarter);
+const newArray = makeArray(extractNQ, parseCurrentData, currentQuarter, currentPlatform);
 const newArrayStringify = JSON.stringify(newArray);
 
 writeFile('nintendo_titles_test.json', newArrayStringify, (err) => {
