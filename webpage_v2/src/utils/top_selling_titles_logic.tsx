@@ -1,3 +1,5 @@
+import { printTextBlock } from "./bandai_namco_annual_report_logic"
+
 export type Titles = {
     title: string,
     platform: string,
@@ -10,6 +12,9 @@ export type Titles = {
 
 export type Header = {
     mainHeader: string,
+    platformHeader: string
+    titles: string,
+    platform: string,
     units: string,
     fiscalYear: string,
 }
@@ -39,24 +44,29 @@ const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
                 ? printRank
                 : " ".repeat(10 - printRank.length) + printRank;
 
-        let printTitleName: string = (elem.title.length > 32)
-        ? elem.title.split(" ").reduce((prev, next, index, array) => {
+        let printPlatformFixed: string = (elem.platform.length >= 32)
+                ? elem.platform
+                : " " + elem.platform + " ".repeat(31 - elem.platform.length)
 
-            let nextCheck = prev + next + " ";
+        // let printTitleName: string = (elem.title.length > 32)
+        // ? elem.title.split(" ").reduce((prev, next, index, array) => {
+
+        //     let nextCheck = prev + next + " ";
             
-            if (nextCheck.length > 31 && prev.length <= 31) {
-                return prev + " ".repeat(32 - prev.length) + `|          |\n| ` + next
-            } else if (index === array.length-1) {
-                return prev + next + " ".repeat(78 - prev.length)
-            } else {
-                return prev + " " + next
-            }
-        })
-        : (elem.title.length < 32)
-        ? elem.title + " ".repeat(32 - elem.title.length) 
-        : elem.title
+        //     if (nextCheck.length > 31 && prev.length <= 31) {
+        //         return prev + " ".repeat(32 - prev.length) + `|          |\n| ` + next
+        //     } else if (index === array.length-1) {
+        //         return prev + next + " ".repeat(78 - prev.length)
+        //     } else {
+        //         return prev + " " + next
+        //     }
+        // })
+        // : (elem.title.length < 32)
+        // ? elem.title + " ".repeat(32 - elem.title.length) 
+        // : elem.title
+        let printTitleName = printTextBlock(elem.title)(43)
 
-        let printTitleNameFixed: string = "|" + printTitleName + "|" + printRankFixed + "|\n+"+"-".repeat(43)+"+"
+        let printTitleNameFixed: string = printTitleName + "\n+" +"-".repeat(43)+"+" + "\n|" + printPlatformFixed + "|" + printRankFixed + "|\n+"+"-".repeat(43)+"+"
 
         let printValue: string = `${elem.value}M ` 
         // let printValue: string = (elem.value !== 0) 
@@ -98,7 +108,7 @@ const printTitleFYCml = (titleDifference: Titles[], currentFY: Header, currentQu
         ? reducedValue
         : " ".repeat(10 - reducedValue.length) + reducedValue; 
 
-    return currentFY.fiscalYear + reducedValueFixed + "|"
+    return "| " + currentFY.fiscalYear + " Cumulative |" + reducedValueFixed + "|"
 }
 
 const miscellaneousLine = (titleDifference: Titles[]) => {
@@ -116,6 +126,12 @@ export const printHead = (header: Header) =>
 `+${"-".repeat(32)}+
 ${header.mainHeader}
 +${"-".repeat(32)}+
+${header.platformHeader}
++${"-".repeat(32)}+
++${"-".repeat(32)}+
+${header.titles}
++${"-".repeat(32)}+
+${header.platform}
 +${"-".repeat(32)}+
 ${header.units}
 +${"-".repeat(32)}+`;

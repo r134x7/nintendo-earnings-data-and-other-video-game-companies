@@ -107,7 +107,10 @@ export const topSellingTitlesList: string[] = collection.map((elem, index, array
     let currentQuarter: number = elem.currentQuarter;
 
     let header: Header = {
-    mainHeader: "| Nintendo Switch - Top Selling Titles    |",
+    mainHeader: "| Top Selling Titles             |",
+    platformHeader: "||",
+    titles: "| Title                          |",
+    platform: "| Platform                       |",
     units: "| Units                          |",
     fiscalYear: elem.fiscalYear,
     };
@@ -118,8 +121,12 @@ export const topSellingTitlesList: string[] = collection.map((elem, index, array
 
     function makeTitlesList(titleValues: titlesJSON[], prevFYTitlesLocal: titlesJSON[][] | undefined, headerValues: Header, currentQuarter: number): string {
 
-        let titlesList: Titles[][] = titleValues.map(value => titlesMake(value, prevFYTitlesLocal));
+        let headerValuesFixed = {
+            ...headerValues,
+            platformHeader: `| ${titleValues[0].platform}${" ".repeat(31-titleValues[0].platform.length)}|`
+        }
 
+        let titlesList: Titles[][] = titleValues.map(value => titlesMake(value, prevFYTitlesLocal));
 
         let sortedCollection = titlesList.map((elem, index, array) => {
                     return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
@@ -141,7 +148,7 @@ export const topSellingTitlesList: string[] = collection.map((elem, index, array
         let differenceTitles: Titles[][] = sortedCollection.map(elem => quarterlyCalculation(elem));
 
 
-        let printOne = printHead(header)
+        let printOne = printHead(headerValuesFixed)
 
         let inputArrays = Array.from({length: differenceTitles.length}, (v, i) => {
 
@@ -149,7 +156,7 @@ export const topSellingTitlesList: string[] = collection.map((elem, index, array
                 quarter: differenceTitles[i],
                 fiscalYearCml: differenceTitles[i], // I forget why this is done twice
                 LTD: sortedCollection[i],
-                header: header,
+                header: headerValuesFixed,
                 currentQuarter: currentQuarter,
             }
         });
