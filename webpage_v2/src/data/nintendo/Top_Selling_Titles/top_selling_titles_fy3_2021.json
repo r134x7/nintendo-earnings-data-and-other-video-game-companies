@@ -2,6 +2,7 @@
     "currentQuarter": 4,
     "fiscalYear": "FY3/2021",
     "titles": [
+    [
         {
             "name": "Mario Kart 8 Deluxe",
             "Q1CmlValue": 26.74,
@@ -82,5 +83,7 @@
             "Q4CmlValue": 12.21, 
             "valueLastFY": 10.13
         }
+    ],
+    [{"name":"Wii Sports","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":82.9,"Q3CmlValue":82.9,"Q4CmlValue":82.9},{"name":"Mario Kart Wii","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":37.38,"Q3CmlValue":37.38,"Q4CmlValue":37.38},{"name":"Wii Sports Resort","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":33.14,"Q3CmlValue":33.14,"Q4CmlValue":33.14},{"name":"New Super Mario Bros. Wii","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":30.32,"Q3CmlValue":30.32,"Q4CmlValue":30.32},{"name":"Wii Play","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":28.02,"Q3CmlValue":28.02,"Q4CmlValue":28.02},{"name":"Wii Fit","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":22.67,"Q3CmlValue":22.67,"Q4CmlValue":22.67},{"name":"Wii Fit Plus","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":21.13,"Q3CmlValue":21.13,"Q4CmlValue":21.13},{"name":"Super Smash Bros. Brawl","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":13.32,"Q3CmlValue":13.32,"Q4CmlValue":13.32},{"name":"Super Mario Galaxy","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":12.8,"Q3CmlValue":12.8,"Q4CmlValue":12.8},{"name":"Wii Party","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":9.35,"Q3CmlValue":9.35,"Q4CmlValue":9.35}]
     ]
 }

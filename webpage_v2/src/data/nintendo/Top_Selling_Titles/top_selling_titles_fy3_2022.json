@@ -1,7 +1,8 @@
 {
     "currentQuarter": 4,
     "fiscalYear": "FY3/2022",
-    "titles": [
+    "titles": [ 
+    [
         {
             "name": "Mario Kart 8 Deluxe",
             "Q1CmlValue": 37.08,
@@ -90,5 +91,6 @@
             "Q4CmlValue": 12.68, 
             "valueLastFY": 12.21
         }
+    ]
     ]
 }

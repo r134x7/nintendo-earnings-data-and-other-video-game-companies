@@ -5,17 +5,17 @@ const currentQuarter = 4;
 // let currentPlatform = "Nintendo Switch";
 // let currentPlatform = "Wii U";
 // let currentPlatform = "Nintendo 3DS";
-// let currentPlatform = "Wii";
-let currentPlatform = "Nintendo DS";
+let currentPlatform = "Wii";
+// let currentPlatform = "Nintendo DS";
 
 const readQuarter = (currentQuarterLocal) => {
     return (currentQuarterLocal === 1)
-        ? readFileSync("nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2012/nintendo_ds/firstQuarter.html", "utf-8")
+        ? readFileSync("nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2012/wii/firstQuarter.html", "utf-8")
         : (currentQuarterLocal === 2)
-            ? readFileSync("nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2012/nintendo_ds/secondQuarter.html", "utf-8")
+            ? readFileSync("nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2012/wii/secondQuarter.html", "utf-8")
             : (currentQuarterLocal === 3)
-                ? readFileSync("nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2012/nintendo_ds/thirdQuarter.html", "utf-8")
-                : readFileSync("nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2012/nintendo_ds/fourthQuarter.html", "utf-8");
+                ? readFileSync("nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2012/wii/thirdQuarter.html", "utf-8")
+                : readFileSync("nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2012/wii/fourthQuarter.html", "utf-8");
 };
 
 const extractData = (readQuarterLocal) => {

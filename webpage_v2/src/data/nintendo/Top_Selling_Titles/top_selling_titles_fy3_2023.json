@@ -1,7 +1,8 @@
 {
     "currentQuarter": 2,
     "fiscalYear": "FY3/2023",
-    "titles": [
+    "titles": [ 
+    [
         {
             "name": "Mario Kart 8 Deluxe",
             "Q1CmlValue": 46.82, 
@@ -85,5 +86,6 @@
             "valueLastFY": 28.17,
             "miscellaneous": "*This number has been adjusted to reflect a revision of sales units in previous years." 
         }
+    ]
     ]
 }
