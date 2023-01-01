@@ -5,6 +5,7 @@
     [
         {
             "name": "Mario Kart 8 Deluxe",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 10.35,
             "Q2CmlValue": 11.71,
             "Q3CmlValue": 15.02,
@@ -13,6 +14,7 @@
         },
         {
             "name": "Super Mario Odyssey",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 11.17, 
             "Q2CmlValue": 12.17, 
             "Q3CmlValue": 13.76, 
@@ -21,6 +23,7 @@
         },
         {
             "name": "The Legend of Zelda: Breath of the Wild",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 9.32, 
             "Q2CmlValue": 10.28, 
             "Q3CmlValue": 11.06, 
@@ -29,6 +32,7 @@
         },
         {
             "name": "Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 0, 
             "Q2CmlValue": 0, 
             "Q3CmlValue": 10.00, 
@@ -37,6 +41,7 @@
         },
         {
             "name": "New Super Mario Bros. U Deluxe",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 0, 
             "Q2CmlValue": 0, 
             "Q3CmlValue": 0, 
@@ -45,6 +50,7 @@
         },
         {
             "name": "Super Mario Party",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 0,
             "Q2CmlValue": 0,
             "Q3CmlValue": 5.30,
@@ -53,6 +59,7 @@
         },
         {
             "name": "Super Smash Bros. Ultimate",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 0, 
             "Q2CmlValue": 0, 
             "Q3CmlValue": 12.08, 
@@ -61,6 +68,7 @@
         },
         {
             "name": "Splatoon 2",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 6.76,
             "Q2CmlValue": 7.47,
             "Q3CmlValue": 8.27,
@@ -69,6 +77,7 @@
         },
         {
             "name": "1-2-Switch",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 2.45,
             "Q2CmlValue": 2.64,
             "Q3CmlValue": 2.86,
@@ -77,6 +86,7 @@
         },
         {
             "name": "Mario Tennis Aces",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 1.38,
             "Q2CmlValue": 2.16,
             "Q3CmlValue": 2.53,
@@ -85,6 +95,7 @@
         },
         {
             "name": "Donkey Kong Country: Tropical Freeze",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 1.40,
             "Q2CmlValue": 1.67,
             "Q3CmlValue": 1.67,
@@ -93,6 +104,7 @@
         },
         {
             "name": "Xenoblade Chronicles 2",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 1.42,
             "Q2CmlValue": 1.53,
             "Q3CmlValue": 1.53,
@@ -101,6 +113,7 @@
         },
         {
             "name": "Kirby Star Allies",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 1.89,
             "Q2CmlValue": 2.1,
             "Q3CmlValue": 2.42,
@@ -109,6 +122,7 @@
         },
         {
             "name": "ARMS",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 2.01,
             "Q2CmlValue": 2.1,
             "Q3CmlValue": 2.1,

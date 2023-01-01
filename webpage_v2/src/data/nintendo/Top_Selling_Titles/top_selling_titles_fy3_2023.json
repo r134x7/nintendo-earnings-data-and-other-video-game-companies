@@ -5,6 +5,7 @@
     [
         {
             "name": "Mario Kart 8 Deluxe",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 46.82, 
             "Q2CmlValue": 48.41, 
             "Q3CmlValue": 48.41, 
@@ -13,6 +14,7 @@
         },
         {
             "name": "Super Mario Odyssey",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 23.93, 
             "Q2CmlValue": 24.40, 
             "Q3CmlValue": 24.40, 
@@ -21,6 +23,7 @@
         },
         {
             "name": "The Legend of Zelda: Breath of the Wild",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 27.14, 
             "Q2CmlValue": 27.79, 
             "Q3CmlValue": 27.79, 
@@ -30,6 +33,7 @@
         },
         {
             "name": "Pokémon Brilliant Diamond / Pokémon Shining Pearl",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 14.79, 
             "Q2CmlValue": 14.92, 
             "Q3CmlValue": 14.92, 
@@ -38,6 +42,7 @@
         },
         {
             "name": "Animal Crossing: New Horizons ",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 39.38, 
             "Q2CmlValue": 40.17, 
             "Q3CmlValue": 40.17, 
@@ -46,6 +51,7 @@
         },
         {
             "name": "Pokémon Sword / Pokémon Shield",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 24.50, 
             "Q2CmlValue": 25.37, 
             "Q3CmlValue": 25.37, 
@@ -55,6 +61,7 @@
         },
         {
             "name": "Pokémon Let's Go Pikachu / Pokémon Let's Go Eevee",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 14.66, 
             "Q2CmlValue": 14.81, 
             "Q3CmlValue": 14.81, 
@@ -63,6 +70,7 @@
         },
         {
             "name": "Ring Fit Adventure",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 14.54, 
             "Q2CmlValue": 14.87, 
             "Q3CmlValue": 14.87, 
@@ -71,6 +79,7 @@
         },
         {
             "name": "Super Mario Party",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 18.06, 
             "Q2CmlValue": 18.35, 
             "Q3CmlValue": 18.35, 
@@ -79,6 +88,7 @@
         },
         {
             "name": "Super Smash Bros. Ultimate",
+            "platform": "Nintendo Switch",
             "Q1CmlValue": 28.82, 
             "Q2CmlValue": 29.53, 
             "Q3CmlValue": 29.53, 

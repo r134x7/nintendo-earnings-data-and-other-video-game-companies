@@ -1,13 +1,15 @@
 export type Titles = {
     title: string,
+    platform: string,
     period: string,
     value: number,
     rank?: number,
     miscellaneous?: string,
+    fiscalYear?: string,
 }
 
 export type Header = {
-    switchHeader: string,
+    mainHeader: string,
     units: string,
     fiscalYear: string,
 }
@@ -112,7 +114,7 @@ const miscellaneousLine = (titleDifference: Titles[]) => {
 
 export const printHead = (header: Header) =>
 `+${"-".repeat(32)}+
-${header.switchHeader}
+${header.mainHeader}
 +${"-".repeat(32)}+
 +${"-".repeat(32)}+
 ${header.units}

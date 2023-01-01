@@ -392,7 +392,7 @@ export const fyMillionSellerTitlesGraphList = collection.map((elem, index, array
     let differenceTitlesList = platformList.map(value => value.quarters
     ).flat() as Titles[][];
 
-    let cumualativeTitlesList = platformList.map(value => value.cumulative
+    let cumulativeTitlesList = platformList.map(value => value.cumulative
     ).flat() as Titles[][];
 
     let thisFY: string = elem.fiscalYear;
@@ -407,7 +407,7 @@ export const fyMillionSellerTitlesGraphList = collection.map((elem, index, array
         marchThisFY: marchThisFY,
         marchLastFY: marchLastFY,
         quarterTitleValuesThisFY: differenceTitlesList,
-        cumulativeTitleValuesThisFY: cumualativeTitlesList,
+        cumulativeTitleValuesThisFY: cumulativeTitlesList,
     };
 
     return graphMake
