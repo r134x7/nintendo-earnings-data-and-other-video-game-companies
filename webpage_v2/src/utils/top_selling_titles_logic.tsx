@@ -34,19 +34,33 @@ export function quarterlyCalculation(quarters: Titles[]) {
 }
 
 const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
+
+    let printRank: string = ` Rank ${titleDifference[0].rank} `
+    let printRankFixed: string = (printRank.length >= 10)
+            ? printRank
+            : " ".repeat(10 - printRank.length) + printRank;
+
+    let printPlatformFixed: string = (titleDifference[0].platform.length >= 32)
+            ? titleDifference[0].platform
+            : " " + titleDifference[0].platform + " ".repeat(31 - titleDifference[0].platform.length)
+
+    let printTitleName = printTextBlock(titleDifference[0].title)(43)
+
+    let printTitleNameFixed: string = printTitleName + "\n+" +"-".repeat(43)+"+" + "\n|" + printPlatformFixed + "|" + printRankFixed + "|\n+"+"-".repeat(43)+"+"
+    
         
-    return titleDifference.filter((elem, index) => {
+    let titleValues = titleDifference.filter((elem, index) => {
         return index < currentQuarter && elem.value !== 0
     }).map((elem, index) => {
 
-        let printRank: string = ` Rank ${elem.rank} `
-        let printRankFixed: string = (printRank.length >= 10)
-                ? printRank
-                : " ".repeat(10 - printRank.length) + printRank;
+        // let printRank: string = ` Rank ${elem.rank} `
+        // let printRankFixed: string = (printRank.length >= 10)
+        //         ? printRank
+        //         : " ".repeat(10 - printRank.length) + printRank;
 
-        let printPlatformFixed: string = (elem.platform.length >= 32)
-                ? elem.platform
-                : " " + elem.platform + " ".repeat(31 - elem.platform.length)
+        // let printPlatformFixed: string = (elem.platform.length >= 32)
+        //         ? elem.platform
+        //         : " " + elem.platform + " ".repeat(31 - elem.platform.length)
 
         // let printTitleName: string = (elem.title.length > 32)
         // ? elem.title.split(" ").reduce((prev, next, index, array) => {
@@ -64,9 +78,9 @@ const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
         // : (elem.title.length < 32)
         // ? elem.title + " ".repeat(32 - elem.title.length) 
         // : elem.title
-        let printTitleName = printTextBlock(elem.title)(43)
+        // let printTitleName = printTextBlock(elem.title)(43)
 
-        let printTitleNameFixed: string = printTitleName + "\n+" +"-".repeat(43)+"+" + "\n|" + printPlatformFixed + "|" + printRankFixed + "|\n+"+"-".repeat(43)+"+"
+        // let printTitleNameFixed: string = printTitleName + "\n+" +"-".repeat(43)+"+" + "\n|" + printPlatformFixed + "|" + printRankFixed + "|\n+"+"-".repeat(43)+"+"
 
         let printValue: string = `${elem.value}M ` 
         // let printValue: string = (elem.value !== 0) 
@@ -76,10 +90,17 @@ const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
             ? printValue
             : " ".repeat(10 - printValue.length) + printValue;
 
-        return (index === 0) 
-                ? printTitleNameFixed + "\n|" + elem.period + "|" + printValueFixed + "|" 
-                : "|" + elem.period + "|" + printValueFixed + "|"
-    }).reduce((prev, next, index, array) => {
+        return "|" + elem.period + "|" + printValueFixed + "|"
+        // return (index === 0) 
+        //         ? printTitleNameFixed + "\n|" + elem.period + "|" + printValueFixed + "|" 
+        //         : "|" + elem.period + "|" + printValueFixed + "|"
+    })
+
+    let valueCheck = (titleValues.length === 0)
+            ? [ printTitleNameFixed ]
+            : [ printTitleNameFixed, ...titleValues]
+
+    return valueCheck.reduce((prev, next, index, array) => {
         return prev + "\n" + next
     })
 }
