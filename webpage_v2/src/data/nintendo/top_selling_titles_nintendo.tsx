@@ -71,14 +71,18 @@ const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined): Titles
             title: obj.name,
             platform: obj.platform,
             period: " 2nd Quarter         ",
-            value: obj.Q2CmlValue,
+            value: (obj.Q2CmlValue === 0 && searchPrevFY[0] !== undefined)
+                                    ? searchPrevFY[0].Q4CmlValue
+                                    : obj.Q2CmlValue,
             miscellaneous: obj.miscellaneous,
         },
         {
             title: obj.name,
             platform: obj.platform,
             period: " 3rd Quarter         ",
-            value: obj.Q3CmlValue,
+            value: (obj.Q3CmlValue === 0 && searchPrevFY[0] !== undefined)
+                                    ? searchPrevFY[0].Q4CmlValue
+                                    : obj.Q3CmlValue,
             miscellaneous: obj.miscellaneous,
         },
         {
