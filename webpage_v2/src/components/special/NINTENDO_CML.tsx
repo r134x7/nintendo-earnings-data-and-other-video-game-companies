@@ -5,6 +5,7 @@ import { printJapan, printGlobal, printOverseas } from "../../data/nintendo/Nint
 import { cumulativeEarningsList } from "../../data/nintendo/Nintendo_Cumulative_Data/consolidated_earnings_cml_data";
 import { printGlobalHardwareSoftware } from "../../data/nintendo/Nintendo_Cumulative_Data/global_hardware_software_cml_data";
 import { printJapanHardwareSoftware, printAmericasHardwareSoftware, printEuropeHardwareSoftware, printOtherHardwareSoftware } from "../../data/nintendo/Nintendo_Cumulative_Data/regional_hardware_software_cml_data";
+import { printTopSellingTitles } from "../../data/nintendo/Nintendo_Cumulative_Data/top_selling_titles_cml_data";
 
 export default function NINTENDO_CML() {
 
@@ -48,6 +49,10 @@ export default function NINTENDO_CML() {
         {
             name: "Nintendo FY Million-Seller Titles - Global",
             value: printGlobal,
+        },
+        {
+            name: "Nintendo Top Selling Titles - Historical Data",
+            value: printTopSellingTitles,
         },
     ];
 

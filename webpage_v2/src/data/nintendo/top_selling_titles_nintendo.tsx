@@ -51,7 +51,7 @@ const collection: collectionJSON[] = [
     topSellingTitles2012,
 ];
 
-const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined): Titles[] => {
+export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined): Titles[] => {
 
     let searchPrevFY = (!prevFY)
             ? [undefined]
