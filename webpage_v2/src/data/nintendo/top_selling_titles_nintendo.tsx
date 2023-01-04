@@ -52,7 +52,7 @@ const collection: collectionJSON[] = [
 ];
 
 export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined): Titles[] => {
-
+    // will find the first instance of the title and platform which by year is in descending order
     let searchPrevFY = (!prevFY)
             ? [undefined]
             : prevFY.map((elem) => elem.filter((value) => value.platform === obj.platform && value.name === obj.name)).flat()
@@ -121,9 +121,16 @@ export const topSellingTitlesList: string[] = collection.map((elem, index, array
     fiscalYear: elem.fiscalYear,
     };
 
+    // let prevFYTitles: titlesJSON[][] | undefined = (array[index+1] === undefined)
+    //     ? undefined
+    //     : array[index+1].titles;
+
+    // changed method due to fiscal years where the previous FY data for a title is not there, all remaining fiscal years are taken and then filtered in titlesMake.
     let prevFYTitles: titlesJSON[][] | undefined = (array[index+1] === undefined)
         ? undefined
-        : array[index+1].titles;
+        : array.filter((value, secondIndex, secondArray) => {
+            return secondIndex > index
+        }).flatMap(value => value.titles);
 
     function makeTitlesList(titleValues: titlesJSON[], prevFYTitlesLocal: titlesJSON[][] | undefined, headerValues: Header, currentQuarter: number): string {
 
