@@ -8,6 +8,7 @@ import { globalHardwareSoftwareMobileList, globalHardwareSoftwareMobileGraphList
 import { keySalesIndicatorsList, keySalesIndicatorsGraphList } from "../data/nintendo/key_sales_indicators_nintendo";
 import { regionalHardwareSoftwareList } from "../data/nintendo/regional_hardware_software_nintendo";
 import { topSellingTitlesList, topSellingTitlesGraphList } from "../data/nintendo/top_selling_titles_nintendo";
+import { consolidatedSalesInformationList, consolidatedSalesInformationGraphList } from "../data/nintendo/consolidated_sales_information_nintendo";
 
 import GRAPH_NINTENDO_KPI from "../data/nintendo/Graphs/GRAPH_NINTENDO_KPI";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES from "../data/nintendo/Graphs/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH";
@@ -34,7 +35,12 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                 graph: nintendoConsolidatedEarningsGraphList[index]? <GRAPH_CONSOLIDATED_EARNINGS setData={nintendoConsolidatedEarningsGraphList[index]} /> : undefined
             },
             {
-                name: "Global Hardware/Software units, Mobile/IP related income, Playing cards",
+                name: "Consolidated Sales Information",
+                value: consolidatedSalesInformationList[index]? consolidatedSalesInformationList[index] : undefined,
+                graph: consolidatedSalesInformationGraphList[index]? <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={consolidatedSalesInformationGraphList[index]} /> : undefined
+            },
+            {
+                name: "Global Hardware/Software Units",
                 value: globalHardwareSoftwareMobileList[index]? globalHardwareSoftwareMobileList[index] : undefined,
                 graph: globalHardwareSoftwareMobileGraphList[index]? <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={globalHardwareSoftwareMobileGraphList[index]} /> : undefined
             },
@@ -49,7 +55,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                 graph: fyMillionSellerTitlesGraphList[index]? <GRAPH_NINTENDO_FY_MILLION_SELLER_TITLES setData={fyMillionSellerTitlesGraphList[index]} /> : undefined
             },
             {
-                name: "Regional Hardware/Software units",
+                name: "Regional Hardware/Software Units",
                 value: regionalHardwareSoftwareList[index]? regionalHardwareSoftwareList[index] : undefined,
             },
             {

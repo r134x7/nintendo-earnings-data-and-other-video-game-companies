@@ -105,8 +105,8 @@ export const consolidatedSalesInformationList: string[] = collection.map((elem, 
         fiscalYear: elem.fiscalYear,
         nextFiscalYearShort: nextFiscalYear,
         switchHeader: "| Nintendo Co., Ltd. |",
-        firstHeader: "| Consolidated Sales Information|",
-        secondHeader: "|                               |",
+        firstHeader: "| Consolidated                  |",
+        secondHeader: "| Sales Information             |",
     };
 
     let platformSalesThisFYList: Section[][] = elem.platformSales.map(value => platformSalesMake(value)); 

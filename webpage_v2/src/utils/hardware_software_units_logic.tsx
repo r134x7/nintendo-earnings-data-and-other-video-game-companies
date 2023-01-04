@@ -11,8 +11,8 @@ export type Section = {
 
 export type Header = {
     switchHeader: "| Nintendo Co., Ltd. |",
-    firstHeader: "| Global Hardware and Software  |" | "| Consolidated Sales Information|",
-    secondHeader: "| Sales Units and Forecasts     |" | "|                               |",
+    firstHeader: "| Global Hardware and Software  |" | "| Consolidated                  |",
+    secondHeader: "| Sales Units and Forecasts     |" | "| Sales Information             |",
     fiscalYear: string,
     nextFiscalYearShort: string,
 }
