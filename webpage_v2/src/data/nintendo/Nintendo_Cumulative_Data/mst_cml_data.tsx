@@ -197,11 +197,22 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
 
         let printLTD = printLine + "\n| Global - Life-To-Date (Units)|" + printValueFixed + "|\n" + printLine;
 
-            return [
+        let printNote = (elem[0].miscellaneous === undefined) ? undefined : "|" + elem[0].miscellaneous + "\n###";
+
+        let printFinal = (printNote === undefined)
+            ? [
                 printTitleNameFixed,
                 ...yearValues,
                 printLTD,
-            ].reduce((prev, next) => {
+            ]
+            : [
+                printTitleNameFixed,
+                ...yearValues,
+                printLTD,
+                printNote,
+            ]
+
+            return printFinal.reduce((prev, next) => {
                 return prev + "\n" + next
             });
 
@@ -291,11 +302,22 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
 
         let printLTD = printLine + "\n|Overseas - Life-To-Date(Units)|" + printValueFixed + "|\n" + printLine;
 
-            return [
+        let printNote = (elem[0].miscellaneous === undefined) ? undefined : "|" + elem[0].miscellaneous + "\n###";
+
+        let printFinal = (printNote === undefined)
+            ? [
                 printTitleNameFixed,
                 ...yearValues,
                 printLTD,
-            ].reduce((prev, next) => {
+            ]
+            : [
+                printTitleNameFixed,
+                ...yearValues,
+                printLTD,
+                printNote,
+            ]
+
+            return printFinal.reduce((prev, next) => {
                 return prev + "\n" + next
             });
 
@@ -352,12 +374,23 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
         let printLine: string = "+" + "-".repeat(42) + "+";
 
         let printLTD = printLine + "\n| Japan - Life-To-Date (Units) |" + printValueFixed + "|\n" + printLine;
+        
+        let printNote = (elem[0].miscellaneous === undefined) ? undefined : "|" + elem[0].miscellaneous + "\n###";
 
-            return [
+        let printFinal = (printNote === undefined)
+            ? [
                 printTitleNameFixed,
                 ...yearValues,
                 printLTD,
-            ].reduce((prev, next) => {
+            ]
+            : [
+                printTitleNameFixed,
+                ...yearValues,
+                printLTD,
+                printNote,
+            ]
+
+            return printFinal.reduce((prev, next) => {
                 return prev + "\n" + next
             });
 

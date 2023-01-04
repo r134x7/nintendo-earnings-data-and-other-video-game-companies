@@ -172,8 +172,7 @@ import { Titles, Header, quarterlyCalculation, printHead } from "../../../utils/
 const printOneWW = printHead(header)
 
 // const divideSortedJapanCollection = decimateCalculation(sortedJapanCollection)
-// console.log(sortedJapanCollection);
-console.log(sortedWWLTDCollection);
+// console.log(sortedWWLTDCollection);
 
 // const divideSortedGlobalCollection = sortedWWLTDCollection.map(elem => quarterlyCalculation(elem))
 const divideSortedGlobalCollection = sortedWWLTDCollection.map(elem => {
