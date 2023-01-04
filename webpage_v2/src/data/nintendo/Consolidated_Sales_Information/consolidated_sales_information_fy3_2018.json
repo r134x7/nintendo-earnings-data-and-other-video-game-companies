@@ -1,0 +1,42 @@
+{
+    "currentQuarter": 4,
+    "fiscalYear": "FY3/2018",
+    "platformSales": [
+            {
+                "name": "Mobile",
+                "units": "currency",
+                "Q1CmlValue": 9062,
+                "Q2CmlValue": 17925,
+                "Q3CmlValue": 29101,
+                "Q4CmlValue": 39320,
+                "cmlValueLastFY": 0 
+            },
+            {
+                "name": "Playing cards",
+                "units": "currency",
+                "Q1CmlValue": 391,
+                "Q2CmlValue": 837,
+                "Q3CmlValue": 1371,
+                "Q4CmlValue": 1729,
+                "cmlValueLastFY": 0 
+            },
+            {
+                "name": "Dedicated video game platform",
+                "units": "currency",
+                "Q1CmlValue": 144615,
+                "Q2CmlValue": 355278,
+                "Q3CmlValue": 826539,
+                "Q4CmlValue": 1014631,
+                "cmlValueLastFY": 0 
+            },
+            {
+                "name": "Digital Sales",
+                "units": "currency",
+                "Q1CmlValue": 11000,
+                "Q2CmlValue": 22800,
+                "Q3CmlValue": 43100,
+                "Q4CmlValue": 60800,
+                "cmlValueLastFY": 0 
+            }
+    ]
+}
