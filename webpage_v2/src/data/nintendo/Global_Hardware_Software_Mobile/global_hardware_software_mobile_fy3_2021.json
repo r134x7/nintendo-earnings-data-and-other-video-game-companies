@@ -49,42 +49,6 @@
                 "Q4CmlValue": 23088,
                 "cmlValueLastFY": 35624
             },
-            {
-                "name": "Mobile",
-                "units": "currency",
-                "Q1CmlValue": 13278,
-                "Q2CmlValue": 26727,
-                "Q3CmlValue": 42011,
-                "Q4CmlValue": 57080,
-                "cmlValueLastFY": 0 
-            },
-            {
-                "name": "Playing cards",
-                "units": "currency",
-                "Q1CmlValue": 298,
-                "Q2CmlValue": 887,
-                "Q3CmlValue": 1378,
-                "Q4CmlValue": 1779,
-                "cmlValueLastFY": 0 
-            },
-            {
-                "name": "Dedicated video game platform",
-                "units": "currency",
-                "Q1CmlValue": 344529,
-                "Q2CmlValue": 741909,
-                "Q3CmlValue": 1361073,
-                "Q4CmlValue": 1700050,
-                "cmlValueLastFY": 0 
-            },
-            {
-                "name": "Digital Sales",
-                "units": "currency",
-                "Q1CmlValue": 101000,
-                "Q2CmlValue": 171500,
-                "Q3CmlValue": 256000,
-                "Q4CmlValue": 344100,
-                "cmlValueLastFY": 0 
-            },
             {"name":"Wii U Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":13,"cmlValueLastFY":10335},
             {"name":"Wii Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":16,"cmlValueLastFY":92169},
             {"name":"Nintendo DS Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":4,"cmlValueLastFY":94869},
