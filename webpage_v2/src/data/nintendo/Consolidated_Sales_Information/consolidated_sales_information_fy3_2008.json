@@ -37,6 +37,42 @@
                 "Q3CmlValue": 459454,
                 "Q4CmlValue": 1668793,
                 "cmlValueLastFY": 0
+            },
+            {
+                "name": "Handheld Hardware Total",
+                "units": "currency",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 467226,
+                "cmlValueLastFY": 0
+            },
+            {
+                "name": "Home Console Hardware Total",
+                "units": "currency",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 499346,
+                "cmlValueLastFY": 0
+            },
+            {
+                "name": "Handheld Software Total",
+                "units": "currency",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 332756,
+                "cmlValueLastFY": 0
+            },
+            {
+                "name": "Home Console Software Total",
+                "units": "currency",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 247803,
+                "cmlValueLastFY": 0
             }
     ]
 }
