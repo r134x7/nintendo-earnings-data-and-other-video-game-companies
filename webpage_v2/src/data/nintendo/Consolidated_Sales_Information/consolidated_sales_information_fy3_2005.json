@@ -1,0 +1,42 @@
+{
+    "currentQuarter": 4,
+    "fiscalYear": "FY3/2005",
+    "platformSales": [
+            {
+                "name": "Playing cards",
+                "units": "currency",
+                "Q1CmlValue": 637,
+                "Q2CmlValue": 1048,
+                "Q3CmlValue": 1687,
+                "Q4CmlValue": 2208,
+                "cmlValueLastFY": 0 
+            },
+            {
+                "name": "Dedicated video game platform",
+                "units": "currency",
+                "Q1CmlValue": 81515,
+                "Q2CmlValue": 186961,
+                "Q3CmlValue": 417685,
+                "Q4CmlValue": 513084,
+                "cmlValueLastFY": 0
+            },
+            {
+                "name": "Dedicated video game hardware",
+                "units": "currency",
+                "Q1CmlValue": 39470,
+                "Q2CmlValue": 93783,
+                "Q3CmlValue": 233674,
+                "Q4CmlValue": 290378,
+                "cmlValueLastFY": 0
+            },
+            {
+                "name": "Dedicated video game software",
+                "units": "currency",
+                "Q1CmlValue": 42045,
+                "Q2CmlValue": 93177,
+                "Q3CmlValue": 184011,
+                "Q4CmlValue": 222705,
+                "cmlValueLastFY": 0
+            }
+    ]
+}
