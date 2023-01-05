@@ -6,6 +6,7 @@ import { cumulativeEarningsList } from "../../data/nintendo/Nintendo_Cumulative_
 import { printGlobalHardwareSoftware } from "../../data/nintendo/Nintendo_Cumulative_Data/global_hardware_software_cml_data";
 import { printJapanHardwareSoftware, printAmericasHardwareSoftware, printEuropeHardwareSoftware, printOtherHardwareSoftware } from "../../data/nintendo/Nintendo_Cumulative_Data/regional_hardware_software_cml_data";
 import { printTopSellingTitles } from "../../data/nintendo/Nintendo_Cumulative_Data/top_selling_titles_cml_data";
+import { printConsolidatedSalesInfo } from "../../data/nintendo/Nintendo_Cumulative_Data/consolidated_sales_information_cml_data";
 
 export default function NINTENDO_CML() {
 
@@ -17,6 +18,10 @@ export default function NINTENDO_CML() {
         {
             name: "Nintendo Consolidated Operating Results - Historical Data",
             value: cumulativeEarningsList
+        },
+        {
+            name: "Nintendo Consolidated Sales Information - Historical Data",
+            value: printConsolidatedSalesInfo
         },
         {
             name: "Nintendo Hardware/Software Historical Data - Global",

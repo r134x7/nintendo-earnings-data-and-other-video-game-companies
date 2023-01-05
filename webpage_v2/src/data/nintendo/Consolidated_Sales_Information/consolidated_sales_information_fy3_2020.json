@@ -3,7 +3,7 @@
     "fiscalYear": "FY3/2020",
     "platformSales": [
             {
-                "name": "Mobile",
+                "name": "Mobile, IP related income, etc.",
                 "units": "currency",
                 "Q1CmlValue": 10005,
                 "Q2CmlValue": 19964,
@@ -12,7 +12,7 @@
                 "cmlValueLastFY": 0 
             },
             {
-                "name": "Playing cards",
+                "name": "Playing cards, etc.",
                 "units": "currency",
                 "Q1CmlValue": 475,
                 "Q2CmlValue": 1047,

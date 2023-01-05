@@ -62,18 +62,18 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
 
     // const sectionHeader: string = (sectionDifference[0].name === "Nintendo Switch Hardware Total" || sectionDifference[0].name === "Nintendo Switch Software Total")
     //         ? "+-------------+\n|" + sectionDifference[0].name.split("").slice(0,9).join("") + "    |-------------------+\n| Total       |   Units |    YoY% |\n+---------------------------------+" 
-            // : (sectionDifference[0].name === "Mobile")
+            // : (sectionDifference[0].name === "Mobile, IP related income, etc.")
             // ? "+--------------------------+\n| Mobile, IP related       |---------+\n| income, etc.             |    YoY% |\n+------------------------------------+"
-            // : (sectionDifference[0].name === "Playing cards")
+            // : (sectionDifference[0].name === "Playing cards, etc.")
             // ? "+--------------------------+\n| Playing cards, etc       |\n+------------------------------------+\n|             |     Sales  |    YoY% |\n+------------------------------------+"
             // : (sectionDifference[0].name === "Dedicated video game platform")
             // ? "+------------------------------------+\n| Dedicated video game platform      |\n+------------------------------------+\n|             |     Sales  |    YoY% |\n+------------------------------------+"
             // : (sectionDifference[0].name === "Digital Sales")
             // ? "+--------------------------+\n|Digital Sales in dedicated|---------+\n| video game platform      |    YoY% |\n+------------------------------------+"
     //         : "+" + "-".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |\n+" + "-".repeat(33) + "+"
-    const sectionHeader: string | never[] = (sectionDifference[0].name === "Mobile")
+    const sectionHeader: string | never[] = (sectionDifference[0].name === "Mobile, IP related income, etc.")
             ? "+--------------------------+\n| Mobile, IP related       |---------+\n| income, etc.             |    YoY% |\n+------------------------------------+"  
-            : (sectionDifference[0].name === "Playing cards")
+            : (sectionDifference[0].name === "Playing cards, etc.")
             ? "+--------------------------+\n| Playing cards, etc       |\n+------------------------------------+\n|             |     Sales  |    YoY% |\n+------------------------------------+"
             : (sectionDifference[0].name === "Dedicated video game platform")
             ? "+------------------------------------+\n| Dedicated video game platform      |\n+------------------------------------+\n|             |     Sales  |    YoY% |\n+------------------------------------+"
@@ -285,9 +285,9 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
 
         const penultimateCheck = (sectionDifference[0].name.split(" ").includes("Total") && sectionDifference[0].units === "units")
             ? [sectionHeader, ...difference, ...cumulative, ltdPrint, forecast].flat().reduce((prev, next) => prev + "\n" + next)
-            : (sectionDifference[0].name === "Mobile")
+            : (sectionDifference[0].name === "Mobile, IP related income, etc.")
             ? [sectionHeader, ...difference, ...cumulative, mobileFooter].flat().reduce((prev, next) => prev + "\n" + next)
-            : (sectionDifference[0].name === "Playing cards" || sectionDifference[0].name === "Dedicated video game platform")
+            : (sectionDifference[0].name === "Playing cards, etc." || sectionDifference[0].name === "Dedicated video game platform")
             ? [sectionHeader, ...difference, ...cumulative].flat().reduce((prev, next) => prev + "\n" + next)
             : (sectionDifference[0].name === "Digital Sales")
             ? [sectionHeader, ...difference, ...cumulative, digitalSalesFooter].flat().reduce((prev, next) => prev + "\n" + next)

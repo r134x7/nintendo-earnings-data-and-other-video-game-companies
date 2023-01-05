@@ -61,9 +61,9 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
         //         return `Switch Hardware Total ${labels.currentFY}`
         //     case "Nintendo Switch Software Total":
         //         return `Switch Software Total ${labels.currentFY}`
-        //     case "Mobile":
+        //     case "Mobile, IP related income, etc.":
         //         return `Mobile, IP related income, etc. ${labels.currentFY}`
-        //     case "Playing cards":
+        //     case "Playing cards, etc.":
         //         return `Playing cards, etc. ${labels.lastFY}`
         //     case "Dedicated video game platform":
         //         return `Dedicated video game platform ${labels.lastFY}`
@@ -92,9 +92,9 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
         //         return `Switch Hardware Total ${labels.lastFY}`
         //     case "Nintendo Switch Software Total":
         //         return `Switch Software Total ${labels.lastFY}`
-        //     case "Mobile":
+        //     case "Mobile, IP related income, etc.":
         //         return `Mobile, IP related income, etc. ${labels.lastFY}`
-        //     case "Playing cards":
+        //     case "Playing cards, etc.":
         //         return `Playing cards, etc. ${labels.lastFY}`
         //     case "Dedicated video game platform":
         //         return `Dedicated video game platform ${labels.lastFY}`

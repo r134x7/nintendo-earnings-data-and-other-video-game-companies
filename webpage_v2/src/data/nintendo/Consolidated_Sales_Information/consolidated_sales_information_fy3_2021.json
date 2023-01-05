@@ -3,7 +3,7 @@
     "fiscalYear": "FY3/2021",
     "platformSales": [
             {
-                "name": "Mobile",
+                "name": "Mobile, IP related income, etc.",
                 "units": "currency",
                 "Q1CmlValue": 13278,
                 "Q2CmlValue": 26727,
@@ -12,7 +12,7 @@
                 "cmlValueLastFY": 0 
             },
             {
-                "name": "Playing cards",
+                "name": "Playing cards, etc.",
                 "units": "currency",
                 "Q1CmlValue": 298,
                 "Q2CmlValue": 887,
