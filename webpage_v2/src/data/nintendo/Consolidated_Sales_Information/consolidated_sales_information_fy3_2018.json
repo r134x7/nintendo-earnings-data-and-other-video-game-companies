@@ -37,6 +37,24 @@
                 "Q3CmlValue": 43100,
                 "Q4CmlValue": 60800,
                 "cmlValueLastFY": 0 
+            },
+            {
+                "name": "Nintendo 3DS platform",
+                "units": "currency",
+                "Q1CmlValue": 31094,
+                "Q2CmlValue": 78098,
+                "Q3CmlValue": 170660,
+                "Q4CmlValue": 188269,
+                "cmlValueLastFY": 0 
+            },
+            {
+            "name": "Nintendo Switch platform",
+            "units": "currency",
+            "Q1CmlValue": 103808,
+            "Q2CmlValue": 245774,
+            "Q3CmlValue": 594849,
+            "Q4CmlValue": 753409,
+            "cmlValueLastFY": 110951
             }
     ]
 }

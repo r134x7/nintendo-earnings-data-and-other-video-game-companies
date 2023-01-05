@@ -37,6 +37,33 @@
                 "Q3CmlValue": 23100,
                 "Q4CmlValue": 32500,
                 "cmlValueLastFY": 0 
+            },
+            {
+                "name": "Nintendo 3DS platform",
+                "units": "currency",
+                "Q1CmlValue": 34919,
+                "Q2CmlValue": 83884,
+                "Q3CmlValue": 215175,
+                "Q4CmlValue": 247949,
+                "cmlValueLastFY": 0 
+            },
+            {
+                "name": "Wii U platform",
+                "units": "currency",
+                "Q1CmlValue": 18893,
+                "Q2CmlValue": 36462,
+                "Q3CmlValue": 54384,
+                "Q4CmlValue": 64383,
+                "cmlValueLastFY": 0 
+            },
+            {
+                "name": "Nintendo Switch platform",
+                "units": "currency",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 110951,
+                "cmlValueLastFY": 0 
             }
     ]
 }

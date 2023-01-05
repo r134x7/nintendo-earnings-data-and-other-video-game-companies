@@ -37,6 +37,15 @@
                 "Q3CmlValue": 256000,
                 "Q4CmlValue": 344100,
                 "cmlValueLastFY": 0 
+            },
+            {
+                "name": "Nintendo Switch platform",
+                "units": "currency",
+                "Q1CmlValue": 339341,
+                "Q2CmlValue": 730913,
+                "Q3CmlValue": 1335282,
+                "Q4CmlValue": 1666405,
+                "cmlValueLastFY": 3111624
             }
     ]
 }
