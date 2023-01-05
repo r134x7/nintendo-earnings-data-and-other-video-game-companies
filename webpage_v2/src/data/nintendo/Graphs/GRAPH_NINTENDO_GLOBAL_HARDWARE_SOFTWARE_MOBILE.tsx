@@ -50,64 +50,64 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
 
     const headerLabels = props.setData.quarterValuesThisFY.map((elem) => {
 
-        switch (elem[0].name) {
-            case "Nintendo Switch":
-                return `Switch ${labels.currentFY}`
-            case "Nintendo Switch Lite":
-                return `Switch Lite ${labels.currentFY}`
-            case "Nintendo Switch OLED Model":
-                return `Switch OLED ${labels.currentFY}`
-            case "Nintendo Switch Hardware Total":
-                return `Switch Hardware Total ${labels.currentFY}`
-            case "Nintendo Switch Software Total":
-                return `Switch Software Total ${labels.currentFY}`
-            case "Mobile":
-                return `Mobile, IP related income, etc. ${labels.currentFY}`
-            case "Playing cards":
-                return `Playing cards, etc. ${labels.lastFY}`
-            case "Dedicated video game platform":
-                return `Dedicated video game platform ${labels.lastFY}`
-            case "Digital Sales":
-                return `Digital Sales in dedicated video game platform ${labels.lastFY}`
-            case "N/A":
-                return  `N/A ${labels.currentFY}`
-            case elem[0].name:
-                return `${elem[0].name} ${labels.currentFY}`
-            default:
-                return `Undefined ${labels.currentFY}`
-        }
-        // return elem[0].name + " " + labels.currentFY 
+        // switch (elem[0].name) {
+        //     case "Nintendo Switch":
+        //         return `Switch ${labels.currentFY}`
+        //     case "Nintendo Switch Lite":
+        //         return `Switch Lite ${labels.currentFY}`
+        //     case "Nintendo Switch OLED Model":
+        //         return `Switch OLED ${labels.currentFY}`
+        //     case "Nintendo Switch Hardware Total":
+        //         return `Switch Hardware Total ${labels.currentFY}`
+        //     case "Nintendo Switch Software Total":
+        //         return `Switch Software Total ${labels.currentFY}`
+        //     case "Mobile":
+        //         return `Mobile, IP related income, etc. ${labels.currentFY}`
+        //     case "Playing cards":
+        //         return `Playing cards, etc. ${labels.lastFY}`
+        //     case "Dedicated video game platform":
+        //         return `Dedicated video game platform ${labels.lastFY}`
+        //     case "Digital Sales":
+        //         return `Digital Sales in dedicated video game platform ${labels.lastFY}`
+        //     case "N/A":
+        //         return  `N/A ${labels.currentFY}`
+        //     case elem[0].name:
+        //         return `${elem[0].name} ${labels.currentFY}`
+        //     default:
+        //         return `Undefined ${labels.currentFY}`
+        // }
+        return elem[0].name + " " + labels.currentFY 
     });
 
     const headerLabelsLastFY = props.setData.quarterValuesLastFY.map((elem) => {
 
-        switch (elem[0].name) {
-            case "Nintendo Switch":
-                return `Switch ${labels.lastFY}`
-            case "Nintendo Switch Lite":
-                return `Switch Lite ${labels.lastFY}`
-            case "Nintendo Switch OLED Model":
-                return `Switch OLED ${labels.lastFY}`
-            case "Nintendo Switch Hardware Total":
-                return `Switch Hardware Total ${labels.lastFY}`
-            case "Nintendo Switch Software Total":
-                return `Switch Software Total ${labels.lastFY}`
-            case "Mobile":
-                return `Mobile, IP related income, etc. ${labels.lastFY}`
-            case "Playing cards":
-                return `Playing cards, etc. ${labels.lastFY}`
-            case "Dedicated video game platform":
-                return `Dedicated video game platform ${labels.lastFY}`
-            case "Digital Sales":
-                return `Digital Sales in dedicated video game platform ${labels.lastFY}`
-            case "N/A":
-                return  `N/A ${labels.lastFY}`
-            case elem[0].name:
-                return `${elem[0].name} ${labels.lastFY}`
-            default:
-                return `Undefined ${labels.lastFY}`
-        }
-        // return elem[0].name + " " + labels.lastFY
+        // switch (elem[0].name) {
+        //     case "Nintendo Switch":
+        //         return `Switch ${labels.lastFY}`
+        //     case "Nintendo Switch Lite":
+        //         return `Switch Lite ${labels.lastFY}`
+        //     case "Nintendo Switch OLED Model":
+        //         return `Switch OLED ${labels.lastFY}`
+        //     case "Nintendo Switch Hardware Total":
+        //         return `Switch Hardware Total ${labels.lastFY}`
+        //     case "Nintendo Switch Software Total":
+        //         return `Switch Software Total ${labels.lastFY}`
+        //     case "Mobile":
+        //         return `Mobile, IP related income, etc. ${labels.lastFY}`
+        //     case "Playing cards":
+        //         return `Playing cards, etc. ${labels.lastFY}`
+        //     case "Dedicated video game platform":
+        //         return `Dedicated video game platform ${labels.lastFY}`
+        //     case "Digital Sales":
+        //         return `Digital Sales in dedicated video game platform ${labels.lastFY}`
+        //     case "N/A":
+        //         return  `N/A ${labels.lastFY}`
+        //     case elem[0].name:
+        //         return `${elem[0].name} ${labels.lastFY}`
+        //     default:
+        //         return `Undefined ${labels.lastFY}`
+        // }
+        return elem[0].name + " " + labels.lastFY
     });
 
 
@@ -128,6 +128,10 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
     //     quarterSoftwareTotal.map((elem) => (elem.value / 100).toFixed(2)),
     //     quarterNintendoMobile.map((elem) => elem.value),
     // ]
+
+    const setUnits = (props.setData.quarterValuesThisFY[0][0].units === "units")
+            ? "units" 
+            : "currency"
 
     const graphQuarters = props.setData.quarterValuesThisFY.map((elem) => {
         return elem.map(value => {
@@ -254,7 +258,8 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
                             // stacked: true,
                             title: {
                               display: true,
-                              text: (activePage === graphQuarters.length)
+                            //   text: (activePage === graphQuarters.length)
+                              text: (setUnits === "currency")
                                         ? "Million yen (¥)"
                                         : "Units in Millions",
                             },
@@ -326,7 +331,8 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
                             // stacked: true,
                             title: {
                               display: true,
-                              text: (activePage === graphQuarters.length)
+                            //   text: (activePage === graphQuarters.length)
+                              text: (setUnits === "currency")
                                         ? "Million yen (¥)"
                                         : "Units in Millions",
                             },
@@ -380,7 +386,8 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
                             // stacked: true,
                             title: {
                               display: true,
-                              text: (activePage === graphQuarters.length)
+                            //   text: (activePage === graphQuarters.length)
+                              text: (setUnits === "currency")
                                         ? "Million yen (¥)"
                                         : "Units in Millions",
                             },
