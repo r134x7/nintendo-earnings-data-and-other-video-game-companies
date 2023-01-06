@@ -3,7 +3,7 @@
     "fiscalYear": "FY3/2004",
     "platformCmlSales": [
         {
-            "name": "Handheld platform",
+            "name": "Game Boy Advance and Other Handheld platforms",
             "units": "currency",
             "Q1CmlValue": 0,
             "Q2CmlValue": 0,
@@ -11,11 +11,13 @@
             "Q4CmlValue": 318086,
             "cmlValueLastFY": 873011,
             "hardwareReference": [
-                "Game Boy Advance Hardware Total"
-            ] 
+                "Game Boy Advance Hardware Total",
+                "Game Boy Hardware Total"
+            ],
+            "otherHardwareCmlLastFY": 2383
         },
         {
-            "name": "Home Console platform",
+            "name": "Nintendo GameCube and Other Home Console platforms",
             "units": "currency",
             "Q1CmlValue": 0,
             "Q2CmlValue": 0,
@@ -24,9 +26,11 @@
             "cmlValueLastFY": 363993,
             "hardwareReference": [
                 "Nintendo GameCube Hardware Total",
+                "Nintendo 64 Hardware Total",
                 "Super Family Computer/SNES Hardware Total",
                 "Family Computer/NES Hardware Total"
-            ] 
+            ],
+            "otherHardwareCmlLastFY": 65
         }
     ],
     "platformUnitSales": [

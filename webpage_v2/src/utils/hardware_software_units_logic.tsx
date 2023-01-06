@@ -8,6 +8,7 @@ export type Section = {
     value: number,
     fiscalYear?: string,
     hardwareReference?: string[],
+    otherHardwareCmlLastFY: number,
 }
 
 export type Header = {
@@ -317,8 +318,8 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
             if (elem.value === 0) {
                 return [] // can't filter out zeroes above because it will cause issues when doing salesPerHardwareUnit
             };
-            
-            return ((elem.value + sectionHardwareTotal[sectionHardwareTotal.length-1].value) / 100)
+
+            return ((elem.value + sectionSales[index].otherHardwareCmlLastFY + sectionHardwareTotal[sectionHardwareTotal.length-1].value) / 100)
         })
 
         const hardwareNotes: string = (sectionSales[0].hardwareReference === undefined) 

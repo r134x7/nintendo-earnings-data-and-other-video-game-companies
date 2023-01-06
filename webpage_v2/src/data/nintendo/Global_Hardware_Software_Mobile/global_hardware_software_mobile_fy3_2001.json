@@ -3,7 +3,7 @@
     "fiscalYear": "FY3/2001",
     "platformCmlSales": [
         {
-            "name": "Handheld platform",
+            "name": "Game Boy Advance and Other Handheld platforms",
             "units": "currency",
             "Q1CmlValue": 0,
             "Q2CmlValue": 0,
@@ -13,7 +13,8 @@
             "hardwareReference": [
                 "Game Boy Advance Hardware Total",
                 "Game Boy Hardware Total"
-            ] 
+            ], 
+            "otherHardwareCmlLastFY": 0
         }
     ],
     "platformUnitSales": [
