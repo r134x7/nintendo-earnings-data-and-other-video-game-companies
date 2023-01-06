@@ -43,8 +43,8 @@
                 "units": "currency",
                 "Q1CmlValue": 288266,
                 "Q2CmlValue": 616143,
-                "Q3CmlValue": 0,
-                "Q4CmlValue": 0,
+                "Q3CmlValue": 616143,
+                "Q4CmlValue": 616143,
                 "cmlValueLastFY": 6380754
             }
     ]

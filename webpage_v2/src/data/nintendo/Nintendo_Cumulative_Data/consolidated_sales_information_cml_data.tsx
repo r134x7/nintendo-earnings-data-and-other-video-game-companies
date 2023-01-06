@@ -21,6 +21,9 @@ import consolidatedSalesInfo2007 from "../Consolidated_Sales_Information/consoli
 import consolidatedSalesInfo2006 from "../Consolidated_Sales_Information/consolidated_sales_information_fy3_2006.json";
 import consolidatedSalesInfo2005 from "../Consolidated_Sales_Information/consolidated_sales_information_fy3_2005.json";
 import consolidatedSalesInfo2004 from "../Consolidated_Sales_Information/consolidated_sales_information_fy3_2004.json";
+import consolidatedSalesInfo2003 from "../Consolidated_Sales_Information/consolidated_sales_information_fy3_2003.json";
+import consolidatedSalesInfo2002 from "../Consolidated_Sales_Information/consolidated_sales_information_fy3_2002.json";
+import consolidatedSalesInfo2001 from "../Consolidated_Sales_Information/consolidated_sales_information_fy3_2001.json";
 
 // avoid having empty lists [] in your collections from preparing for the next earnings
 import {
@@ -34,6 +37,9 @@ import {
 } from "../../../utils/hardware_software_units_logic";
 
     const totalCollection = [
+        consolidatedSalesInfo2001,
+        consolidatedSalesInfo2002,
+        consolidatedSalesInfo2003,
         consolidatedSalesInfo2004,
         consolidatedSalesInfo2005,
         consolidatedSalesInfo2006,
@@ -147,16 +153,24 @@ import {
 
                return  printPeriodFixed + printValueFixed + "|"
             }).filter((secondValue, index) => index !== elem.length-1) // will not work using secondValue;
-
-        let printValue: string = `¥${elem[elem.length-1].value.toLocaleString("en")}M ` 
         
-        let printValueFixed: string = (printValue.length >= 15)
-            ? printValue
-            : " ".repeat(15 - printValue.length) + printValue;
 
+        let printSum: string = `¥${elem[elem.length-1].value.toLocaleString("en")}M ` 
+        
+        let printSumFixed: string = (printSum.length >= 15)
+            ? printSum
+            : " ".repeat(15 - printSum.length) + printSum;
+
+
+        let printAverage: string = `¥${Number((elem[elem.length-1].value / yearValues.length).toFixed(0)).toLocaleString("en")}M ` 
+
+        let printAverageFixed: string = (printAverage.length >= 15)
+            ? printAverage
+            : " ".repeat(15 - printAverage.length) + printAverage;
+        
         let printLine: string = "+" + "-".repeat(42) + "+";
 
-        let printLTD = printLine + "\n| Cumulative Sum           |" + printValueFixed + "|\n" + printLine;
+        let printLTD = printLine + "\n| Sum                      |" + printSumFixed + "|\n| Average                  |" + printAverageFixed + "|\n"  + printLine;
 
             return [
                 printTitleNameFixed,
@@ -178,15 +192,15 @@ import {
         return accumulate(elem)
     })
     
-    // const sortedWWLTDCollection: Section[][] = reducedArrays.map((elem, index, array) => {
-    //         return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
-    // }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
-    //     return (a[a.length-1].value > b[b.length-1].value)
-    //         ? 1
-    //         : (a[a.length-1].value < b[b.length-1].value)
-    //         ? -1
-    //         : 0 
-    // })
+    const sortedArrays: Section[][] = reducedArrays.map((elem, index, array) => {
+            return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a[a.length-1].value > b[b.length-1].value)
+            ? 1
+            : (a[a.length-1].value < b[b.length-1].value)
+            ? -1
+            : 0 
+    })
 
 const printOneWW = 
 `+--------------------+
@@ -202,7 +216,7 @@ const printOneWW =
 //     }}))
 
 // const printFour = printTitlesGlobal(divideSortedGlobalCollection)
-const printFour = printTitlesGlobal(reducedArrays)
+const printFour = printTitlesGlobal(sortedArrays)
 
 let dataSource = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_data/index.html"
 
