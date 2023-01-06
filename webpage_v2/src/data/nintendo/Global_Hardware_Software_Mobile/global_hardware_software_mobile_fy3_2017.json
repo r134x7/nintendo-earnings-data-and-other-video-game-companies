@@ -10,7 +10,9 @@
             "Q3CmlValue": 0,
             "Q4CmlValue": 110951,
             "cmlValueLastFY":0, 
-            "hardwareReference": "Nintendo Switch Hardware Total" 
+            "hardwareReference": [
+                "Nintendo Switch Hardware Total" 
+            ]
         }
     ],
     "platformUnitSales": [

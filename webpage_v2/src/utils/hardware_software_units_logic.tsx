@@ -7,7 +7,7 @@ export type Section = {
     name: string,
     value: number,
     fiscalYear?: string,
-    hardwareReference?: string,
+    hardwareReference?: string[],
 }
 
 export type Header = {

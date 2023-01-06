@@ -3,13 +3,17 @@
     "fiscalYear": "FY3/2016",
     "platformCmlSales": [
         {
-            "name": "N/A",
+            "name": "Home Console platform",
             "units": "currency",
             "Q1CmlValue": 0,
             "Q2CmlValue": 0,
             "Q3CmlValue": 0,
-            "Q4CmlValue": 0,
-            "cmlValueLastFY": 0 
+            "Q4CmlValue": 194749,
+            "cmlValueLastFY": 0,
+            "hardwareReference": [
+                "Wii U Hardware Total",
+                "Wii Hardware Total"
+            ]
         }
     ],
     "platformUnitSales": [
