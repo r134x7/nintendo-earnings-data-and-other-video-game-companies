@@ -100,7 +100,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
     }).flatMap((elem, index, array) => {
         if (elem.value === 0) {
             return [] // must return an array to flatten it
-        }
+        };
 
             // let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed.length === 0)
             let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed[index].units === "NaN")
@@ -312,14 +312,18 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
         const sectionHeaderThree: string = "+" + "-".repeat(50) + "+\n" + "|             |             | Hardware | Sales Per |\n|             |       Sales |    Units |  Hardware |\n|             |  Cumulative |Cumulative| Unit Cml. |\n+" + "-".repeat(50) + "+"
 
         const sectionHardwareTotalFixed = sectionHardwareTotal.filter((elem, index, array) => {
-            return index < currentQuarter && array[index].value !== 0
-        }).map((elem, index, array) => {
+            return index < currentQuarter //&& array[index].value !== 0
+        }).flatMap((elem, index, array) => {
+            if (elem.value === 0) {
+                return [] // can't filter out zeroes above because it will cause issues when doing salesPerHardwareUnit
+            };
+            
             return ((elem.value + sectionHardwareTotal[sectionHardwareTotal.length-1].value) / 100)
         })
 
         const hardwareNotes: string = (sectionSales[0].hardwareReference === undefined) 
             ? "" 
-            : "*Hardware Units used: " + sectionSales[0].hardwareReference.reduce((acc, next) => acc + ",\n " + next) + "\n" + headerBorder; 
+            : "*Hardware Units used: " + sectionSales[0].hardwareReference.reduce((acc, next) => acc + ",\n " + next + " (FY cumulative only)") + "\n" + headerBorder; 
 
         // const sales = sectionSales.filter((elem, index, array) => {
         //     return index < currentQuarter && array[index].value !== 0
@@ -370,8 +374,11 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
         // })
 
         const salesPerHardwareUnit = sectionSales.filter((elem, index, array) => {
-            return index < currentQuarter && array[index].value !== 0
-        }).map((elem, index, array) => { 
+            return index < currentQuarter //&& array[index].value !== 0 
+        }).flatMap((elem, index, array) => { 
+            if (elem.value === 0) {
+                return [] 
+            };
 
             let printSectionLTD: string = `¥${(elem.value + sectionSales[sectionSales.length-1].value).toLocaleString("en")}M `
 

@@ -3,13 +3,29 @@
     "fiscalYear": "FY3/2006",
     "platformCmlSales": [
         {
-            "name": "N/A",
+            "name": "Handheld platform",
             "units": "currency",
             "Q1CmlValue": 0,
             "Q2CmlValue": 0,
             "Q3CmlValue": 0,
-            "Q4CmlValue": 0,
-            "cmlValueLastFY": 0 
+            "Q4CmlValue": 396530,
+            "cmlValueLastFY": 352301,
+            "hardwareReference": [
+                "Nintendo DS Hardware Total",
+                "Game Boy Advance Hardware Total"
+            ] 
+        },
+        {
+            "name": "Home Console platform",
+            "units": "currency",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 621039,
+            "cmlValueLastFY": 504621,
+            "hardwareReference": [
+                "Nintendo GameCube Hardware Total"
+            ] 
         }
     ],
     "platformUnitSales": [

@@ -3,13 +3,32 @@
     "fiscalYear": "FY3/2003",
     "platformCmlSales": [
         {
-            "name": "N/A",
+            "name": "Handheld platform",
             "units": "currency",
             "Q1CmlValue": 0,
             "Q2CmlValue": 0,
             "Q3CmlValue": 0,
-            "Q4CmlValue": 0,
-            "cmlValueLastFY": 0 
+            "Q4CmlValue": 255615,
+            "cmlValueLastFY": 617396,
+            "hardwareReference": [
+                "Game Boy Advance Hardware Total",
+                "Game Boy Hardware Total"
+            ] 
+        },
+        {
+            "name": "Home Console platform",
+            "units": "currency",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 200879,
+            "cmlValueLastFY": 163114,
+            "hardwareReference": [
+                "Nintendo GameCube Hardware Total",
+                "Nintendo 64 Hardware Total",
+                "Super Family Computer/SNES Hardware Total",
+                "Family Computer/NES Hardware Total"
+            ] 
         }
     ],
     "platformUnitSales": [

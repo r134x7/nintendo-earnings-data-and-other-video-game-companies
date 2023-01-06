@@ -324,12 +324,14 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
                     return platformSalesList[i][0].hardwareReference?.includes(findName.name)
                 })
         }).filter(elem => elem.length !== 0);
-
+        
         let platformHardwareFixed: Section[] = (platformHardware.length === 1)
                 ? platformHardware.flat()
                 : Array.from({length:5}, (v, i) => {
                         
-                    let reduceQuarters: number = platformHardware.map((elem, index, array) => {
+                    let reduceQuarters: number = (i === 4) 
+                    ? platformHardware[0][i].value // only takes the LTD of the first platform because combining all LTD numbers don't make sense, cumulative sales numbers reset when first platform changes.
+                    : platformHardware.map((elem, index, array) => {
                         // goes through each array of arrays and gets the value from the relevant quarter i.e. all quarter one values
                         return elem[i].value
                     }).reduce((acc, next) => acc + next)
@@ -339,6 +341,7 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
                         value: reduceQuarters,
                     }
                 })
+        // console.log(platformHardwareFixed);
         
         return printSalesHardware(
             header,
