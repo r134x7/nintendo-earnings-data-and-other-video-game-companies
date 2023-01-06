@@ -45,6 +45,7 @@ type platformCumulativeSalesType = {
     Q3CmlValue: number,
     Q4CmlValue: number,
     cmlValueLastFY: number,
+    hardwareReference?: string,
 };
 
 export type platformUnitSalesType = {
@@ -97,35 +98,40 @@ const platformSalesMake = (obj: undefined | platformCumulativeSalesType ): Secti
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
-            value: (!obj) ? 0 : obj.Q1CmlValue
+            value: (!obj) ? 0 : obj.Q1CmlValue,
+            hardwareReference: (!obj) ? undefined : obj.hardwareReference,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
-            value: (!obj) ? 0 : obj.Q2CmlValue
+            value: (!obj) ? 0 : obj.Q2CmlValue,
+            hardwareReference: (!obj) ? undefined : obj.hardwareReference,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
-            value: (!obj) ? 0 : obj.Q3CmlValue
+            value: (!obj) ? 0 : obj.Q3CmlValue,
+            hardwareReference: (!obj) ? undefined : obj.hardwareReference,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             period: " 4th Quarter ",
             cmlPeriod: "Cml.",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
-            value: (!obj) ? 0 : obj.Q4CmlValue
+            value: (!obj) ? 0 : obj.Q4CmlValue,
+            hardwareReference: (!obj) ? undefined : obj.hardwareReference,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             period: " Last FY Cumulative ",
             cmlPeriod: "Cml.",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
-            value: (!obj) ? 0 : obj.cmlValueLastFY
+            value: (!obj) ? 0 : obj.cmlValueLastFY,
+            hardwareReference: (!obj) ? undefined : obj.hardwareReference,
         },
     ];
 
@@ -311,15 +317,20 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
 
     const printPlatformCmlSales: string[] = (platformSalesList[0][0].name === "N/A") ? [""] : Array.from({length: platformSalesList.length}, (v, i) => {
 
-        let switchHardware: Section[][] = platformUnitSalesThisFYList.map((elem, index) => {
+        // let platformHardware: Section[][] = platformUnitSalesThisFYList.map((elem, index) => {
             
-            return elem.filter(value => value.name === "Nintendo Switch Hardware Total")
+        //     return elem.filter(value => value.name === "Nintendo Switch Hardware Total")
+        // }).filter(elem => elem.length !== 0);
+        let platformHardware: Section[][] = platformUnitSalesThisFYList.map((elem, index) => {
+            
+                return elem.filter(findName => findName.name === platformSalesList[i][0].hardwareReference) // should only find one match
         }).filter(elem => elem.length !== 0);
-
+        // console.log(platformHardware);
+        
         return printSalesHardware(
             header,
             platformSalesList[i],
-            switchHardware[0],
+            platformHardware[0],
             currentQuarter
         ) 
     })
