@@ -8,7 +8,6 @@ export type Section = {
     value: number,
     fiscalYear?: string,
     hardwareReference?: string[],
-    otherHardwareCmlLastFY: number,
 }
 
 export type Header = {
@@ -314,17 +313,17 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
 
         const sectionHardwareTotalFixed = sectionHardwareTotal.filter((elem, index, array) => {
             return index < currentQuarter //&& array[index].value !== 0
-        }).flatMap((elem, index, array) => {
-            if (elem.value === 0) {
-                return [] // can't filter out zeroes above because it will cause issues when doing salesPerHardwareUnit
-            };
+        }).map((elem, index, array) => {
+            // if (elem.value === 0) {
+            //     return [] // can't filter out zeroes above because it will cause issues when doing salesPerHardwareUnit
+            // };
 
-            return ((elem.value + sectionSales[index].otherHardwareCmlLastFY + sectionHardwareTotal[sectionHardwareTotal.length-1].value) / 100)
+            return (elem.value === 0) ? 0 : ((elem.value + sectionHardwareTotal[sectionHardwareTotal.length-1].value) / 100)
         })
 
-        const hardwareNotes: string = (sectionSales[0].hardwareReference === undefined) 
-            ? "" 
-            : "*Hardware Units used: " + sectionSales[0].hardwareReference.reduce((acc, next) => acc + ",\n " + next + " (FY cumulative only)") + "\n" + headerBorder; 
+        // const hardwareNotes: string = (sectionSales[0].hardwareReference === undefined) 
+        //     ? "" 
+        //     : "*Hardware Units used: " + sectionSales[0].hardwareReference.reduce((acc, next) => acc + ",\n " + next + " (FY cumulative only)") + "\n" + headerBorder; 
 
         // const sales = sectionSales.filter((elem, index, array) => {
         //     return index < currentQuarter && array[index].value !== 0
@@ -418,7 +417,7 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
             return "|" + printPeriod + "|" + printSectionLTDFixed + "|" +  printHardwareUnitsFixed + "|" +   printSectionSalesPerHardwareFixed + "|" + printLine
         })
   
-        const printIt = [ headerBorder, sectionHeaderName, sectionHeaderThree, ...salesPerHardwareUnit, hardwareNotes].reduce((prev, next) => prev + "\n" + next)
+        const printIt = [ headerBorder, sectionHeaderName, sectionHeaderThree, ...salesPerHardwareUnit].reduce((prev, next) => prev + "\n" + next)
 
         return printIt
     }

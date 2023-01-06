@@ -46,7 +46,6 @@ type platformCumulativeSalesType = {
     Q4CmlValue: number,
     cmlValueLastFY: number,
     hardwareReference?: string[],
-    otherHardwareCmlLastFY?: number,
 };
 
 export type platformUnitSalesType = {
@@ -101,11 +100,6 @@ const platformSalesMake = (obj: undefined | platformCumulativeSalesType ): Secti
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q1CmlValue,
             hardwareReference: (!obj) ? undefined : obj.hardwareReference,
-            otherHardwareCmlLastFY: (!obj) 
-                    ? 0 
-                    : (obj.otherHardwareCmlLastFY === undefined) 
-                        ? 0 
-                        : obj.otherHardwareCmlLastFY,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -114,11 +108,6 @@ const platformSalesMake = (obj: undefined | platformCumulativeSalesType ): Secti
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q2CmlValue,
             hardwareReference: (!obj) ? undefined : obj.hardwareReference,
-            otherHardwareCmlLastFY: (!obj) 
-                    ? 0 
-                    : (obj.otherHardwareCmlLastFY === undefined) 
-                        ? 0 
-                        : obj.otherHardwareCmlLastFY,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -127,11 +116,6 @@ const platformSalesMake = (obj: undefined | platformCumulativeSalesType ): Secti
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q3CmlValue,
             hardwareReference: (!obj) ? undefined : obj.hardwareReference,
-            otherHardwareCmlLastFY: (!obj) 
-                    ? 0 
-                    : (obj.otherHardwareCmlLastFY === undefined) 
-                        ? 0 
-                        : obj.otherHardwareCmlLastFY,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -140,11 +124,6 @@ const platformSalesMake = (obj: undefined | platformCumulativeSalesType ): Secti
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q4CmlValue,
             hardwareReference: (!obj) ? undefined : obj.hardwareReference,
-            otherHardwareCmlLastFY: (!obj) 
-                    ? 0 
-                    : (obj.otherHardwareCmlLastFY === undefined) 
-                        ? 0 
-                        : obj.otherHardwareCmlLastFY,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -153,11 +132,6 @@ const platformSalesMake = (obj: undefined | platformCumulativeSalesType ): Secti
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.cmlValueLastFY,
             hardwareReference: (!obj) ? undefined : obj.hardwareReference,
-            otherHardwareCmlLastFY: (!obj) 
-                    ? 0 
-                    : (obj.otherHardwareCmlLastFY === undefined) 
-                        ? 0 
-                        : obj.otherHardwareCmlLastFY,
         },
     ];
 
@@ -178,7 +152,6 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
                     ? "currency"
                     : "NaN",
             value: (!obj) ? 0 : obj.Q1CmlValue,
-            otherHardwareCmlLastFY: 0,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -190,7 +163,6 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
                     ? "currency"
                     : "NaN",
             value: (!obj) ? 0 : obj.Q2CmlValue,
-            otherHardwareCmlLastFY: 0,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -202,7 +174,6 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
                     ? "currency"
                     : "NaN",
             value: (!obj) ? 0 : obj.Q3CmlValue,
-            otherHardwareCmlLastFY: 0,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -214,7 +185,6 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
                     ? "currency"
                     : "NaN",
             value: (!obj) ? 0 : obj.Q4CmlValue,
-            otherHardwareCmlLastFY: 0,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -226,7 +196,6 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
                     ? "currency"
                     : "NaN",
             value: (!obj) ? 0 : obj.cmlValueLastFY,
-            otherHardwareCmlLastFY: 0,
         },
     ];
 
@@ -349,36 +318,35 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
     // "N/A" avoids crashing when no data...
     const printPlatformCmlSales: string[] = (platformSalesList[0][0].name === "N/A") ? [""] : Array.from({length: platformSalesList.length}, (v, i) => {
 
-        let platformHardware: Section[][] = platformUnitSalesThisFYList.map((elem, index) => {
+        let platformHardware: Section[] = platformUnitSalesThisFYList.flatMap((elem, index) => {
 
                 return elem.filter(findName => {
                     return platformSalesList[i][0].hardwareReference?.includes(findName.name)
                 })
-        }).filter(elem => elem.length !== 0);
+        })
         console.log(platformHardware);
         
-        
-        let platformHardwareFixed: Section[] = (platformHardware.length === 1)
-                ? platformHardware.flat()
-                : Array.from({length:5}, (v, iSecond) => {
+        // let platformHardwareFixed: Section[] = (platformHardware.length === 1)
+        //         ? platformHardware.flat()
+        //         : Array.from({length:5}, (v, iSecond) => {
                     
-                    let reduceQuarters: number = (iSecond === 4)
-                    ? platformHardware[0][iSecond].value
-                    : platformHardware.map((elem, index, array) => {
-                        // goes through each array of arrays and gets the value from the relevant quarter i.e. all quarter one values
-                        return elem[iSecond].value
-                    }).reduce((acc, next) => acc + next)
+        //             let reduceQuarters: number = (iSecond === 4)
+        //             ? platformHardware[0][iSecond].value
+        //             : platformHardware.map((elem, index, array) => {
+        //                 // goes through each array of arrays and gets the value from the relevant quarter i.e. all quarter one values
+        //                 return elem[iSecond].value
+        //             }).reduce((acc, next) => acc + next)
 
-                    return {
-                        ...platformHardware[0][iSecond],
-                        value: reduceQuarters,
-                    }
-                })
+        //             return {
+        //                 ...platformHardware[0][iSecond],
+        //                 value: reduceQuarters,
+        //             }
+        //         })
         
         return printSalesHardware(
             header,
             platformSalesList[i],
-            platformHardwareFixed,
+            platformHardware,
             currentQuarter
         ) 
     })

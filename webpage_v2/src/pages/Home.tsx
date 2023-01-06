@@ -54,7 +54,7 @@ const Home = () => {
                     {/* <List.Item>Nintendo -</List.Item> */}
                     <Text>Nintendo -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Data added for Top Selling Titles from FY3/2012 to FY3/2023, special page also added. Added Consolidated Sales Information from FY3/2004 to FY3/2023. Moved Mobile Income data to Consolidated Sales Information.</List.Item>
+                        <List.Item>Latest update: Data added for Top Selling Titles from FY3/2012 to FY3/2023, special page also added. Added Consolidated Sales Information from FY3/2004 to FY3/2023. Moved Mobile Income data to Consolidated Sales Information and, added special page.</List.Item>
                         <List.Item>Future update planned: Notes section.</List.Item>
                     </List>
                     <Text>Capcom -</Text>
