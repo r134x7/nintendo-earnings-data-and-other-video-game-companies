@@ -2,7 +2,7 @@
 
   # Description  
 
-  I am Github user r134x7 also known as ggx2ac in some places. This is an ever-evolving project that first started out in Java (not in the repo) then moved to Python and is now a deployed front-end web app using React and TypeScript.
+  I am Github user r134x7 also known as ggx2ac on Install Base Forum. This is an ever-evolving project that first started out years in Java (not in the repo) then moved to Python and is now a deployed front-end web app using React, Mantine, Vite and TypeScript. The deployed app contains a lot of earnings release data from various video game companies including Nintendo spanning many years.
 
   # Table of Contents
   
@@ -24,6 +24,7 @@
   - react-router-dom
   - React
   - tabler-icons-react
+  - vite
 
 # Background History:
 
@@ -41,6 +42,7 @@ Link to deployed application: [https://r134x7.github.io/nintendo-earnings-data-a
   
   Tests written for:
   - KPI-Logic to get the output of the code to match that of the Python code other than getting the code to work.
+  - Many other tests also in the __test__ folder but was only used to console.log which may not be considered proper. Due to utilising the Functional Programming paradigm my code is relatively robust.
 
 # Questions
   
