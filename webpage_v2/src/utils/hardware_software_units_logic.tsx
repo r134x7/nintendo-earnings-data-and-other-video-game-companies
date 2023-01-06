@@ -305,13 +305,21 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
 
         // const sectionHeaderTwo: string = "| Switch      |  Cumulative |\n| Platform    |       Sales |\n+" + "-".repeat(27) + "+"
 
-        const sectionHeaderThree: string = "+" + "-".repeat(50) + "+\n" + "| Nintendo    | Sales       | Hardware | Sales Per |\n| Switch      | Cumulative  |    Units |  Hardware |\n| Platform    |             |Cumulative| Unit Cml. |\n+" + "-".repeat(50) + "+"
+        const headerBorder: string = "+" + "-".repeat(50) + "+"
+
+        const sectionHeaderName: string | never[] = printTextBlock(sectionSales[0].name)(50) as string;
+
+        const sectionHeaderThree: string = "+" + "-".repeat(50) + "+\n" + "|             |             | Hardware | Sales Per |\n|             |       Sales |    Units |  Hardware |\n|             |  Cumulative |Cumulative| Unit Cml. |\n+" + "-".repeat(50) + "+"
 
         const sectionHardwareTotalFixed = sectionHardwareTotal.filter((elem, index, array) => {
             return index < currentQuarter && array[index].value !== 0
         }).map((elem, index, array) => {
             return ((elem.value + sectionHardwareTotal[sectionHardwareTotal.length-1].value) / 100)
         })
+
+        const hardwareNotes: string = (sectionSales[0].hardwareReference === undefined) 
+            ? "" 
+            : "*Hardware Units used: " + sectionSales[0].hardwareReference.reduce((acc, next) => acc + ",\n " + next) + "\n" + headerBorder; 
 
         // const sales = sectionSales.filter((elem, index, array) => {
         //     return index < currentQuarter && array[index].value !== 0
@@ -402,7 +410,7 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
             return "|" + printPeriod + "|" + printSectionLTDFixed + "|" +  printHardwareUnitsFixed + "|" +   printSectionSalesPerHardwareFixed + "|" + printLine
         })
   
-        const printIt = [ sectionHeaderThree, ...salesPerHardwareUnit].reduce((prev, next) => prev + "\n" + next)
+        const printIt = [ headerBorder, sectionHeaderName, sectionHeaderThree, ...salesPerHardwareUnit, hardwareNotes].reduce((prev, next) => prev + "\n" + next)
 
         return printIt
     }

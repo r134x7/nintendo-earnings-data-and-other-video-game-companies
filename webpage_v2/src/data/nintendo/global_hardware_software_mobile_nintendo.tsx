@@ -318,22 +318,13 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
     // "N/A" avoids crashing when no data...
     const printPlatformCmlSales: string[] = (platformSalesList[0][0].name === "N/A") ? [""] : Array.from({length: platformSalesList.length}, (v, i) => {
 
-        // let platformHardware: Section[][] = platformUnitSalesThisFYList.map((elem, index) => {
-            
-        //     return elem.filter(value => value.name === "Nintendo Switch Hardware Total")
-        // }).filter(elem => elem.length !== 0);
         let platformHardware: Section[][] = platformUnitSalesThisFYList.map((elem, index) => {
 
-            
-                // return elem.filter(findName => findName.name === platformSalesList[i][0].hardwareReference) // should only find one match
                 return elem.filter(findName => {
                     return platformSalesList[i][0].hardwareReference?.includes(findName.name)
                 })
         }).filter(elem => elem.length !== 0);
-        // console.log(platformHardware);
-        
 
-        // need to change hardwareReference to a list, need to combine all numbers but not to reduce everything into a single value...
         let platformHardwareFixed: Section[] = (platformHardware.length === 1)
                 ? platformHardware.flat()
                 : Array.from({length:5}, (v, i) => {
@@ -348,13 +339,11 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
                         value: reduceQuarters,
                     }
                 })
-        // console.log(platformHardwareFixed);
-        
         
         return printSalesHardware(
             header,
             platformSalesList[i],
-            platformHardware[0],
+            platformHardwareFixed,
             currentQuarter
         ) 
     })
