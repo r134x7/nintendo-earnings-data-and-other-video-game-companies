@@ -69,13 +69,13 @@ import { Titles, Header, quarterlyCalculation, printHead } from "../../../utils/
 
     const latestFYcollection = sortingTitles(filteredCollection);
 
-    const dateLabel = "| Latest data as of September 30th, 2022   |\n+" + "-".repeat(42) + "+"
+    const dateLabel = "| Data as of September 30th, 2022|\n+" + "-".repeat(32) + "+"
 
     const header: Header = {
         fiscalYear: "placeholder",
         mainHeader: "| Nintendo Co., Ltd.             |",
         platform: "| Platform                       |",
-        platformHeader: "| Top Selling Titles - Historical Data |",
+        platformHeader: "| Top Selling Titles - Cumulative|",
         titles: "| Title                          |",
         units: "| Units                          |"
     }

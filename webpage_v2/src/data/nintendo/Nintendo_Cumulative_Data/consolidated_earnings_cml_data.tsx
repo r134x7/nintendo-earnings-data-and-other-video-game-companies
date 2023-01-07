@@ -90,7 +90,7 @@ const totalCollection: EarningsJSON[] = [
     consolidatedEarnings2023,
 ];
 
-const dateLabel = "| Latest data as of September 30th, 2022   |\n+" + "-".repeat(42) + "+"
+const dateLabel = "| Data as of September 30th, 2022   |\n+" + "-".repeat(35) + "+"
 
 let netSalesSet = totalCollection.map(elem => {
     return {

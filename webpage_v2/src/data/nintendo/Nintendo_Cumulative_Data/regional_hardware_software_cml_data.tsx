@@ -107,7 +107,7 @@ import {
     // console.log(latestFYcollection);
     
 
-    const dateLabel = "| Latest data as of September 30th, 2022   |\n+" + "-".repeat(42) + "+"
+    const dateLabel = "| Data as of September 30th, 2022   |\n+" + "-".repeat(35) + "+"
 
     function accumulate(title: Section[]): Section[] {
 
@@ -356,23 +356,23 @@ import {
 const printOneJapan = 
 `+--------------------+
 | Nintendo Co., Ltd. |
-+----------------------------------------------+
-| Regional Hardware and Software Units - Japan |
-+----------------------------------------------+`;
++-------------------------------------+
+| Hardware and Software Units - Japan |
++-------------------------------------+`;
 
 const printOneAmericas = 
 `+--------------------+
 | Nintendo Co., Ltd. |
-+-----------------------------------------------------+
-| Regional Hardware and Software Units - The Americas |
-+-----------------------------------------------------+`;
++--------------------------------------------+
+| Hardware and Software Units - The Americas |
++--------------------------------------------+`;
 
 const printOneEurope = 
 `+--------------------+
 | Nintendo Co., Ltd. |
-+-----------------------------------------------+
-| Regional Hardware and Software Units - Europe |
-+-----------------------------------------------+`;
++--------------------------------------+
+| Hardware and Software Units - Europe |
++--------------------------------------+`;
 
 const printOneOther = 
 `+--------------------+

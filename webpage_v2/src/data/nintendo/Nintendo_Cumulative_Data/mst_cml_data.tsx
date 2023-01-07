@@ -89,7 +89,7 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
     // console.log(latestFYcollection);
     
 
-    const dateLabel = "| Latest data as of September 30th, 2022   |\n+" + "-".repeat(42) + "+"
+    const dateLabel = "| Data as of September 30th, 2022   |\n+" + "-".repeat(35) + "+"
 
     const header: Header = {
     mainHeader: "| Nintendo Fiscal Year Million-Seller Titles |",
@@ -456,17 +456,17 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
 
 let japanHeader = {
     ...header,
-    platformHeader: "| Japan - Million-Seller Titles              |" 
+    platformHeader: "| FY Million-Seller Titles Cml. - Japan      |" 
 }
 
 let overseasHeader = {
     ...header,
-    platformHeader: "| Overseas - Million-Seller Titles           |" 
+    platformHeader: "| FY Million-Seller Titles Cml. - Overseas   |" 
 }
 
 let wwHeader = {
     ...header,
-    platformHeader: "| Global - Million-Seller Titles             |" 
+    platformHeader: "| FY Million-Seller Titles Cml. - Global     |" 
 }
 const printOneJapan = printHead(japanHeader)
 

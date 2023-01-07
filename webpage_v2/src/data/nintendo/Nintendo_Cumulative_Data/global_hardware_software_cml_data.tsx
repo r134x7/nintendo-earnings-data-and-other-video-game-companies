@@ -113,7 +113,7 @@ import {
     // console.log(latestFYcollection);
     
 
-    const dateLabel = "| Latest data as of September 30th, 2022   |\n+" + "-".repeat(42) + "+"
+    const dateLabel = "| Data as of September 30th, 2022    |\n+" + "-".repeat(36) + "+"
 
     const header: Header = {
         firstHeader: "| Global Hardware and Software  |",
@@ -230,7 +230,7 @@ const printOneWW =
 | Nintendo Co., Ltd. |
 +------------------------------------+
 | Global Hardware and Software Units |
-+------------------------------------------+`;
++------------------------------------+`;
 
 const divideSortedGlobalCollection = reducedArrays.map(elem => elem.map(section => {
     return {

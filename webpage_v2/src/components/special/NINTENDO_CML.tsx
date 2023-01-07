@@ -16,47 +16,47 @@ export default function NINTENDO_CML() {
 
     const componentList = [
         {
-            name: "Nintendo Consolidated Operating Results - Historical Data",
+            name: "Nintendo Consolidated Operating Results - Cumulative",
             value: cumulativeEarningsList
         },
         {
-            name: "Nintendo Consolidated Sales Information - Historical Data",
+            name: "Nintendo Consolidated Sales Information - Cumulative",
             value: printConsolidatedSalesInfo
         },
         {
-            name: "Nintendo Hardware/Software Historical Data - Global",
+            name: "Nintendo Hardware/Software Cumulative - Global",
             value: printGlobalHardwareSoftware
         },
         {
-            name: "Nintendo Hardware/Software Historical Data - Japan",
+            name: "Nintendo Hardware/Software Cumulative - Japan",
             value: printJapanHardwareSoftware
         },
         {
-            name: "Nintendo Hardware/Software Historical Data - The Americas",
+            name: "Nintendo Hardware/Software Cml. - The Americas",
             value: printAmericasHardwareSoftware
         },
         {
-            name: "Nintendo Hardware/Software Historical Data - Europe",
+            name: "Nintendo Hardware/Software Cumulative - Europe",
             value: printEuropeHardwareSoftware 
         },
         {
-            name: "Nintendo Hardware/Software Historical Data - Other",
+            name: "Nintendo Hardware/Software Cumulative - Other",
             value: printOtherHardwareSoftware 
         },
         {
-            name: "Nintendo FY Million-Seller Titles - Japan",
+            name: "Nintendo FY Million-Seller Titles Cml. - Japan",
             value: printJapan 
         },
         {
-            name: "Nintendo FY Million-Seller Titles - Overseas",
+            name: "Nintendo FY Million-Seller Titles Cml. - Overseas",
             value: printOverseas, 
         },
         {
-            name: "Nintendo FY Million-Seller Titles - Global",
+            name: "Nintendo FY Million-Seller Titles Cml. - Global",
             value: printGlobal,
         },
         {
-            name: "Nintendo Top Selling Titles - Historical Data",
+            name: "Nintendo Top Selling Titles - Cumulative",
             value: printTopSellingTitles,
         },
     ];
