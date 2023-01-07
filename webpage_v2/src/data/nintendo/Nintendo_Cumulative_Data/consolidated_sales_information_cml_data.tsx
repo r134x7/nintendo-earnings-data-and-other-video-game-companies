@@ -162,20 +162,81 @@ import {
             : " ".repeat(15 - printSum.length) + printSum;
 
 
-        let printAverage: string = `¥${Number((elem[elem.length-1].value / yearValues.length).toFixed(0)).toLocaleString("en")}M ` 
+        let printAverage: string = `¥${Number((elem[elem.length-1].value / yearValues.length).toFixed(0)).toLocaleString("en")}M `; 
 
         let printAverageFixed: string = (printAverage.length >= 15)
             ? printAverage
             : " ".repeat(15 - printAverage.length) + printAverage;
+
+        // let printMedian: string = ((yearValues.length % 2) === 0) // even number
+        //         ? `${yearValues[yearValues.length/2]}` 
+        //         : `well...`;
+
+        let valuesMedian = elem.filter((value, index) => value.value !== 0 && index !== elem.length-1);
+
+        let sortValuesMedian = sortList(valuesMedian);
+
+        function sortList(list: Section[]) {
+
+            const sortList = list.map((elem, index, array) => {
+                    return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+            }).sort((a, b) => { // (b,a) is descending order, (a,b) sorts in ascending order
+                return (a.value > b.value)
+                    ? 1
+                    : (a.value < b.value)
+                    ? -1
+                    : 0 
+            });
+
+            return sortList
+        };
+
+        let printCount: string = `${sortValuesMedian.length} `;
+
+        let printCountFixed: string = (printCount.length >= 15)
+            ? printCount
+            : " ".repeat(15 - printCount.length) + printCount;
+
+        let printMedian: string = ((sortValuesMedian.length % 2) === 0) // even number
+            ? `¥${sortValuesMedian[sortValuesMedian.length/2].value.toLocaleString("en")}M `
+            : "well....";
+
+        let printMedianFixed: string = (printMedian.length >= 15)
+            ? printMedian
+            : " ".repeat(15 - printMedian.length) + printMedian;
+
+        let printMin: string = `¥${sortValuesMedian[0].value.toLocaleString("en")}M `;
+
+        let printMinFixed: string = (printMin.length >= 15)
+            ? printMin
+            : " ".repeat(15 - printMin.length) + printMin;
+
+        let printMax: string = `¥${sortValuesMedian[sortValuesMedian.length-1].value.toLocaleString("en")}M ` 
+
+        let printMaxFixed: string = (printMax.length >= 15)
+            ? printMax
+            : " ".repeat(15 - printMax.length) + printMax;
         
         let printLine: string = "+" + "-".repeat(42) + "+";
 
-        let printLTD = printLine + "\n| Sum                      |" + printSumFixed + "|\n| Average                  |" + printAverageFixed + "|\n"  + printLine;
+        let printCountRow = "| Count                    |" + printCountFixed + "|";
+
+        let printSumRow = "| Sum                      |" + printSumFixed + "|";
+
+        let printAverageRow = "| Average                  |" + printAverageFixed + "|";
+
+        let printMedianRow: string = "| Median                   |" + printMedianFixed + "|"
+
+        let printMinimumRow: string = "| Minimum                  |" + printMinFixed + "|"
+
+        let printMaximumRow: string = "| Maximum                  |" + printMaxFixed + "|"
+
+        let printStats = printLine + "\n" + printCountRow + "\n" +  printSumRow + "\n" + printAverageRow + "\n" + printMedianRow + "\n" + printMinimumRow + "\n" + printMaximumRow + "\n" + printLine;
 
             return [
                 printTitleNameFixed,
                 ...yearValues,
-                printLTD,
+                printStats,
             ].reduce((prev, next) => {
                 return prev + "\n" + next
             });
