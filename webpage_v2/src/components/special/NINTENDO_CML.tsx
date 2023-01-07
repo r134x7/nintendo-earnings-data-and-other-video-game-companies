@@ -3,7 +3,7 @@ import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printJapan, printGlobal, printOverseas } from "../../data/nintendo/Nintendo_Cumulative_Data/mst_cml_data";
 import { cumulativeEarningsList } from "../../data/nintendo/Nintendo_Cumulative_Data/consolidated_earnings_cml_data";
-import { printGlobalHardwareSoftware } from "../../data/nintendo/Nintendo_Cumulative_Data/global_hardware_software_cml_data";
+import { printGlobalHardwareSoftware, printGlobalSalesPerHardwareUnit } from "../../data/nintendo/Nintendo_Cumulative_Data/global_hardware_software_cml_data";
 import { printJapanHardwareSoftware, printAmericasHardwareSoftware, printEuropeHardwareSoftware, printOtherHardwareSoftware } from "../../data/nintendo/Nintendo_Cumulative_Data/regional_hardware_software_cml_data";
 import { printTopSellingTitles } from "../../data/nintendo/Nintendo_Cumulative_Data/top_selling_titles_cml_data";
 import { printConsolidatedSalesInfo } from "../../data/nintendo/Nintendo_Cumulative_Data/consolidated_sales_information_cml_data";
@@ -24,6 +24,10 @@ export default function NINTENDO_CML() {
         {
             name: "Nintendo Consolidated Sales Information - Cumulative",
             value: printConsolidatedSalesInfo
+        },
+        {
+            name: "Nintendo Sales Per Hardware Unit - Cumulative",
+            value: printGlobalSalesPerHardwareUnit
         },
         {
             name: "Nintendo Hardware/Software Cumulative - Global",

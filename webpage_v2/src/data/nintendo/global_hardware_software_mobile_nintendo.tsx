@@ -90,7 +90,7 @@ const collection: collectionJSON[] = [
     globalHardwareSoftwareMobile2004,
 ];
 
-const platformSalesMake = (obj: undefined | platformCumulativeSalesType ): Section[] => {
+export const platformSalesMake = (obj: undefined | platformCumulativeSalesType ): Section[] => {
 
     let sales: Section[] = [
         {

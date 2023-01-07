@@ -1,4 +1,4 @@
-import { platformUnitSalesMake, collectionJSON, platformUnitSalesType } from "../global_hardware_software_mobile_nintendo";
+import { platformUnitSalesMake, platformSalesMake, collectionJSON, platformUnitSalesType } from "../global_hardware_software_mobile_nintendo";
 import { printTextBlock } from "../../../utils/bandai_namco_annual_report_logic";
 
 import globalHardwareSoftware2023 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2023.json";
@@ -232,6 +232,13 @@ const printOneWW =
 | Global Hardware and Software Units |
 +------------------------------------+`;
 
+const printTwoWW = 
+`+--------------------+
+| Nintendo Co., Ltd. |
++------------------------------------+
+| Sales Per Hardware Unit            |
++------------------------------------+`;
+
 const divideSortedGlobalCollection = reducedArrays.map(elem => elem.map(section => {
     return {
         ...section,
@@ -248,3 +255,83 @@ ${dateLabel}
 ${printFour}
 ###
 ${dataSource}`;
+
+// sales per hardware unit - will need to come back to this when more than one platform in a fiscal year is listed...
+    let salesCollectionSet: Section[][][] = totalCollection.filter(elem => elem.platformCmlSales[0].name !== "N/A").map(elem => {
+
+        let flatList = elem.platformCmlSales.flat();
+
+        return flatList.map(value => platformSalesMake(value)).map(value => value.map(secondValue => {      
+            return { ...secondValue, fiscalYear: elem.fiscalYear}}))
+    });
+
+    const flatSalesCollection = salesCollectionSet.map((value) => value.map((secondValue) => secondValue.filter((thirdValue, thirdIndex) => thirdIndex > 2))).flat(2);
+
+    const flatSalesCollectionMkII = salesCollectionSet.map((value) => value.map((secondValue) => secondValue.filter((thirdValue, thirdIndex) => thirdIndex > 2))).flat(1) 
+
+    const hardwareReferences = flatSalesCollection.flatMap(elem => elem.hardwareReference);
+
+    const filteredHardwareReferences = [...new Set(hardwareReferences)] 
+
+    const flatCollectionMkII = totalCollectionSet.map((value) => value.flatMap((secondValue) => secondValue.filter((thirdValue, thirdIndex) => thirdIndex > 2 && filteredHardwareReferences.includes(thirdValue.name)))).filter(elem => elem.length !== 0)//.flat(2);
+    
+    const printSalesPerHardwareUnitCumulative = (salesArrays: Section[][], hardwareArrays: Section[][]): string => {
+
+        let sectionHardwareTotalFixed = hardwareArrays.map((elem) => {
+
+            return ((elem[0].value + elem[1].value) / 100)
+        });
+
+        let printTitleName = printTextBlock(salesArrays[0][0].name)(58);
+
+        let printTitleNameFixed: string = "+"+"-".repeat(58)+"+\n" + printTitleName + "\n+" + "-".repeat(58) + "+";
+
+        let printHeaders: string = "|                     |             | Hardware | Sales Per |\n|                     |       Sales |    Units |  Hardware |\n|                     |  Cumulative |Cumulative| Unit Cml. |\n+" + "-".repeat(58) + "+"
+
+        const salesPrint = salesArrays.map((elem, index, array) => {
+
+        
+            let printSectionLTD: string = `¥${(elem[0].value + elem[1].value).toLocaleString("en")}M `
+
+            let printSectionLTDFixed: string = (printSectionLTD.length >= 13)
+                ? printSectionLTD
+                : " ".repeat(13 - printSectionLTD.length) + printSectionLTD;
+            
+            let calculateSalesPerHardware: number = Number(((elem[0].value + elem[1].value) / sectionHardwareTotalFixed[index]).toFixed(0))
+
+            let printSectionSalesPerHardware: string = `¥${calculateSalesPerHardware.toLocaleString("en")} `
+            
+            let printSectionSalesPerHardwareFixed: string = (printSectionSalesPerHardware.length >= 11)
+                ? printSectionSalesPerHardware
+                : " ".repeat(11 - printSectionSalesPerHardware.length) + printSectionSalesPerHardware;
+            
+            let printHardwareUnits: string = `${sectionHardwareTotalFixed[index]}M `
+
+            let printHardwareUnitsFixed: string = (printHardwareUnits.length >= 10)
+                    ? printHardwareUnits
+                    : " ".repeat(10 - printHardwareUnits.length) + printHardwareUnits 
+
+            let shortFY: string = ` ${elem[0].fiscalYear} Cumulative `;
+
+
+            
+            return "|" + shortFY + "|" + printSectionLTDFixed + "|" +  printHardwareUnitsFixed + "|" +   printSectionSalesPerHardwareFixed + "|"
+        });
+
+        let printLine: string = "+" + "-".repeat(58) + "+"
+        
+        return [
+            printTitleNameFixed,
+            printHeaders,
+            ...salesPrint,
+            printLine,
+        ].reduce((acc, next) => acc + "\n" + next)
+    };
+
+    const printFive = printSalesPerHardwareUnitCumulative(flatSalesCollectionMkII, flatCollectionMkII);
+
+export const printGlobalSalesPerHardwareUnit = 
+`${printTwoWW}
+${dateLabel}
+${printFive}
+###`;
