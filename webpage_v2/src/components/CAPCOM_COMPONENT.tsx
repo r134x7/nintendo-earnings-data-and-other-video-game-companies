@@ -11,6 +11,8 @@ import { capcomLinks } from "../data/generalTables/data_sources_general";
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
 
+import {cite, citeCopy} from "../utils/copySetCitation";
+
 export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
     const [value, setValue] = useState("");
@@ -93,7 +95,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
             {
                 (value === "Data Sources")
                     ? selectData(value)
-                    : <Code style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
+                    : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
             }
             {selectGraph(value)}
             <Space h="xl" />

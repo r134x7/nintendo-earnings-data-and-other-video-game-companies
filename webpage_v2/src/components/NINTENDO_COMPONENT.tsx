@@ -16,6 +16,8 @@ import GRAPH_NINTENDO_FY_MILLION_SELLER_TITLES from "../data/nintendo/Graphs/GRA
 import GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE from "../data/nintendo/Graphs/GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE";
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
 
+import {cite, citeCopy} from "../utils/copySetCitation";
+
 export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
     const [value, setValue] = useState("");
@@ -87,7 +89,6 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
     const selectData = selectDataComponent(componentListNew[props.setIndex]);
     const selectGraph = selectGraphComponent(componentListNew[props.setIndex]);
 
-
     return (
 
         <div>  
@@ -98,11 +99,11 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                     onChange={setValue}
                     data={dataList}
             />
-            
+
             {
                 (value === "Data Sources")
                     ? selectData(value)
-                    : <Code style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
+                    : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
             }
             {selectGraph(value)}
             <Space h="xl" />

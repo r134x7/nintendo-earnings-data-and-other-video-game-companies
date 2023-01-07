@@ -11,6 +11,8 @@ import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
 import GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE from "../data/nintendo/Graphs/GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE";
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
 
+import {cite, citeCopy} from "../utils/copySetCitation";
+
 export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
     const [value, setValue] = useState("");
@@ -84,7 +86,7 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
             {
                 (value === "Data Sources")
                     ? selectData(value)
-                    : <Code style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
+                    : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
             }
             {selectGraph(value)}
             <Space h="xl" />

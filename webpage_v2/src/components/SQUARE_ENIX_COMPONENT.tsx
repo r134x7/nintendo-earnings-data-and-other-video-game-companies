@@ -8,6 +8,8 @@ import { squareEnixLinks } from "../data/generalTables/data_sources_general";
 
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
 
+import {cite, citeCopy} from "../utils/copySetCitation";
+
 export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
     const [value, setValue] = useState("");
@@ -65,7 +67,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
             {
                 (value === "Data Sources")
                     ? selectData(value)
-                    : <Code style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
+                    : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
             }
             <Space h="xl" />
             <Space h="xl" />

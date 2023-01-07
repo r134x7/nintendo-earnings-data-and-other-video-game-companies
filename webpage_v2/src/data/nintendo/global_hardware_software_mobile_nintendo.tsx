@@ -324,7 +324,7 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
                     return platformSalesList[i][0].hardwareReference?.includes(findName.name)
                 })
         })
-        console.log(platformHardware);
+        // console.log(platformHardware);
         
         // let platformHardwareFixed: Section[] = (platformHardware.length === 1)
         //         ? platformHardware.flat()
