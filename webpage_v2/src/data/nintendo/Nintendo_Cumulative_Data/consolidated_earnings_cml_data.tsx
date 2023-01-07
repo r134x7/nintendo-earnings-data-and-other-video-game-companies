@@ -117,7 +117,7 @@ function sortList(list: {fiscalYear: string, value: number}[]) {
 
     const sortList = list.map((elem, index, array) => {
             return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
-    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+    }).sort((a, b) => { // (b,a) is descending order, (a,b) sorts in ascending order
         return (a.value > b.value)
             ? 1
             : (a.value < b.value)
@@ -139,11 +139,11 @@ let header =
 | Consolidated Operating Results    |
 +-----------------------------------+`;
 
-const printCumulativeValues = (sortedList: {fiscalYear: string, value: number}[], valueType: string): string[] => {
+const printCumulativeValues = (list: {fiscalYear: string, value: number}[], sortedList: {fiscalYear: string, value: number}[], valueType: string): string[] => {
 
     let header = "+" + "-".repeat(35) + "+\n| " + valueType + " ".repeat(34-valueType.length) + "|\n+" + "-".repeat(35) + "+"; 
 
-    let printList = sortedList.map(elem => {
+    let printList = list.map(elem => {
 
         let valueString: string = `¥${elem.value.toLocaleString("en")}M `;
 
@@ -156,14 +156,79 @@ const printCumulativeValues = (sortedList: {fiscalYear: string, value: number}[]
 
     let printLine = "+" + "-".repeat(35) + "+";
 
-    return [header, ...printList, printLine] 
+    let printCount: string = `${sortedList.length} `;
+
+    let printCountFixed: string = (printCount.length >= 15)
+            ? printCount
+            : " ".repeat(15 - printCount.length) + printCount;
+
+    let printSum: string = `¥${(sortedList.map(value => value.value).reduce((acc, next) => acc + next)).toLocaleString("en")}M ` 
+        
+    let printSumFixed: string = (printSum.length >= 15)
+            ? printSum
+            : " ".repeat(15 - printSum.length) + printSum;
+
+
+    let printAverage: string = `¥${Number(((sortedList.map(value => value.value).reduce((acc, next) => acc + next)) / sortedList.length).toFixed(0)).toLocaleString("en")}M `; 
+
+    let printAverageFixed: string = (printAverage.length >= 15)
+            ? printAverage
+            : " ".repeat(15 - printAverage.length) + printAverage;
+
+    let printMedian: string = ((sortedList.length % 2) !== 0) // odd number
+            // median formula source: https://en.wikipedia.org/wiki/Median
+            // odd number median(x) = x(n+1)/2 => index version => median(x) = (x(n+1)/2)-1
+            ? `¥${sortedList[((sortedList.length + 1)/2) -1].value.toLocaleString("en")}M `
+            // even number median(x) = (x(n/2) + x((n/2) + 1)) /2 => index version median(x) = (x((n/2)-1) + x((n/2))) /2
+            : `¥${Number(((sortedList[(sortedList.length/2) -1].value + sortedList[(sortedList.length/2)].value)/2).toFixed(0)).toLocaleString("en")}M `;
+
+    let printMedianFixed: string = (printMedian.length >= 15)
+            ? printMedian
+            : " ".repeat(15 - printMedian.length) + printMedian;
+
+    let printMin: string = `¥${sortedList[0].value.toLocaleString("en")}M `;
+
+    let printMinFixed: string = (printMin.length >= 15)
+            ? printMin
+            : " ".repeat(15 - printMin.length) + printMin;
+
+    let printMax: string = `¥${sortedList[sortedList.length-1].value.toLocaleString("en")}M ` 
+
+    let printMaxFixed: string = (printMax.length >= 15)
+            ? printMax
+            : " ".repeat(15 - printMax.length) + printMax;
+
+    let printCountRow = "| Count             |" + printCountFixed + "|";
+
+    let printSumRow = "| Sum               |" + printSumFixed + "|";
+
+    let printAverageRow = "| Average           |" + printAverageFixed + "|";
+
+    let printMedianRow: string = "| Median            |" + printMedianFixed + "|"
+
+    let printMinimumRow: string = "| Minimum           |" + printMinFixed + "|"
+
+    let printMaximumRow: string = "| Maximum           |" + printMaxFixed + "|"
+
+    return [
+        header, 
+        ...printList, 
+        printLine,
+        printCountRow,
+        printSumRow,
+        printAverageRow,
+        printMedianRow,
+        printMinimumRow,
+        printMaximumRow,
+        printLine
+    ] 
 };
 
-const printNetSales = printCumulativeValues(sortedNetSales, "Net Sales");
+const printNetSales = printCumulativeValues(netSalesSet, sortedNetSales, "Net Sales");
 
-const printOperatingIncome = printCumulativeValues(sortedOperatingIncome, "Operating Income");
+const printOperatingIncome = printCumulativeValues(operatingIncomeSet, sortedOperatingIncome, "Operating Income");
 
-const printNetIncome = printCumulativeValues(sortedNetIncome, "Net Income");
+const printNetIncome = printCumulativeValues(netIncomeSet, sortedNetIncome, "Net Income");
 
 let dataSource = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_data/index.html"
 

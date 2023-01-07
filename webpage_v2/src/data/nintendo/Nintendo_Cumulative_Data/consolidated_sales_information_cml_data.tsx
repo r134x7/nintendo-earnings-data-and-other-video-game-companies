@@ -168,10 +168,6 @@ import {
             ? printAverage
             : " ".repeat(15 - printAverage.length) + printAverage;
 
-        // let printMedian: string = ((yearValues.length % 2) === 0) // even number
-        //         ? `${yearValues[yearValues.length/2]}` 
-        //         : `well...`;
-
         let valuesMedian = elem.filter((value, index) => value.value !== 0 && index !== elem.length-1);
 
         let sortValuesMedian = sortList(valuesMedian);
