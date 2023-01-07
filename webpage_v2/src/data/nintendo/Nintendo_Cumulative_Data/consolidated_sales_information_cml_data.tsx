@@ -197,9 +197,12 @@ import {
             ? printCount
             : " ".repeat(15 - printCount.length) + printCount;
 
-        let printMedian: string = ((sortValuesMedian.length % 2) === 0) // even number
-            ? `¥${sortValuesMedian[sortValuesMedian.length/2].value.toLocaleString("en")}M `
-            : "well....";
+        let printMedian: string = ((sortValuesMedian.length % 2) !== 0) // odd number
+            // median formula source: https://en.wikipedia.org/wiki/Median
+            // odd number median(x) = x(n+1)/2 => index version => median(x) = (x(n+1)/2)-1
+            ? `¥${sortValuesMedian[((sortValuesMedian.length + 1)/2) -1].value.toLocaleString("en")}M `
+            // even number median(x) = (x(n/2) + x((n/2) + 1)) /2 => index version median(x) = (x((n/2)-1) + x((n/2))) /2
+            : `¥${Number(((sortValuesMedian[(sortValuesMedian.length/2) -1].value + sortValuesMedian[(sortValuesMedian.length/2)].value)/2).toFixed(0)).toLocaleString("en")}M `;
 
         let printMedianFixed: string = (printMedian.length >= 15)
             ? printMedian
