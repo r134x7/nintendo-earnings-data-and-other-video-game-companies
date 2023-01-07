@@ -8,6 +8,8 @@ import { printJapanHardwareSoftware, printAmericasHardwareSoftware, printEuropeH
 import { printTopSellingTitles } from "../../data/nintendo/Nintendo_Cumulative_Data/top_selling_titles_cml_data";
 import { printConsolidatedSalesInfo } from "../../data/nintendo/Nintendo_Cumulative_Data/consolidated_sales_information_cml_data";
 
+import {cite, citeCopy} from "../../utils/copySetCitation";
+
 export default function NINTENDO_CML() {
 
     const [value, setValue] = useState("");
@@ -84,7 +86,7 @@ export default function NINTENDO_CML() {
                     data={dataList}
             />
             
-            <Code style={{backgroundColor: `${state.colour}`}} block>
+            <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`}} block>
                 {selectData(value)}
                 </Code>
             <Space h="xl" />

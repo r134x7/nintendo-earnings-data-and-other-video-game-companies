@@ -3,6 +3,8 @@ import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printSpecialList } from "../../data/capcom/platinum_titles_Capcom";
 
+import {cite, citeCopy} from "../../utils/copySetCitation";
+
 export default function CAPCOM_CML() {
 
     const [value, setValue] = useState("");
@@ -39,7 +41,7 @@ export default function CAPCOM_CML() {
                     data={dataList}
             />
             
-            <Code style={{backgroundColor: `${state.colour}`}} block>
+            <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`}} block>
                 {selectData(value)}
                 </Code>
             <Space h="xl" />
