@@ -45,13 +45,13 @@ const printRank = (seriesIP: Series) => {
 
 export const printTextBlock = (text: string) => {
 
-    return (blockLength: number) => {
+    return (blockLength: number): string => {
 
         let textSplit: string[] = text.split(" ");
          
         let arrayCheckText = 0; // a mutating variable for splicing textSplit below in textReduce
 
-        let printText: string | never[] = Array.from({length:Math.ceil((text.length + textSplit.length)/blockLength)}, (v,i) => {
+        let printText: string = Array.from({length:Math.ceil((text.length + textSplit.length)/blockLength)}, (v,i) => {
 
             let textSplice = textSplit.slice(arrayCheckText)
 
@@ -79,12 +79,13 @@ export const printTextBlock = (text: string) => {
             let textFixed = (textReduce.length >= blockLength || textReduce.length === 0) // latter condition is to return an empty array
                 ? textReduce
                 : textReduce + " ".repeat(blockLength - textReduce.length)
-
+                
+            // need to use flat not filter to prevent never[] type issue
             return (textFixed.length === 0) 
                 ? []
                 : "|" + textFixed + "|"
 
-        }).filter(elem => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
+        }).flat().reduce((prev, next) => prev + "\n" + next)
         
         return printText
     }

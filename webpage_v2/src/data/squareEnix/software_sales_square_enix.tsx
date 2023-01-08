@@ -33,12 +33,13 @@ const notes2021 = "\n" +
 +----------------------------------------+`;
 
 const salesHDmake = (obj: {"hdGamesSales": {
-    name: string;
-    units: string;
-    Q1CmlValue: number;
-    Q2CmlValue: number;
-    Q3CmlValue: number;
-    Q4CmlValue: number;
+    name: string,
+    units: string,
+    Q1CmlValue: number,
+    Q2CmlValue: number,
+    Q3CmlValue: number,
+    Q4CmlValue: number,
+    notes?: string,
 }}): Section[] => {
 
     let salesHD: Section[] = [
@@ -48,7 +49,8 @@ const salesHDmake = (obj: {"hdGamesSales": {
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.hdGamesSales.Q1CmlValue // billion yen
+            value: obj.hdGamesSales.Q1CmlValue, // billion yen
+            notes: obj.hdGamesSales.notes
         },
         {
             name: obj.hdGamesSales.name,
@@ -56,7 +58,8 @@ const salesHDmake = (obj: {"hdGamesSales": {
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.hdGamesSales.Q2CmlValue // billion yen
+            value: obj.hdGamesSales.Q2CmlValue, // billion yen
+            notes: obj.hdGamesSales.notes
         },
         {
             name: obj.hdGamesSales.name,
@@ -64,7 +67,8 @@ const salesHDmake = (obj: {"hdGamesSales": {
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.hdGamesSales.Q3CmlValue // billion yen
+            value: obj.hdGamesSales.Q3CmlValue, // billion yen
+            notes: obj.hdGamesSales.notes
         },
         {
             name: obj.hdGamesSales.name,
@@ -72,7 +76,8 @@ const salesHDmake = (obj: {"hdGamesSales": {
             period: " 4th Quarter ",
             cmlPeriod: "Cml.",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.hdGamesSales.Q4CmlValue // billion yen
+            value: obj.hdGamesSales.Q4CmlValue, // billion yen
+            notes: obj.hdGamesSales.notes
         },
     ];
 
@@ -81,12 +86,13 @@ const salesHDmake = (obj: {"hdGamesSales": {
 
 
 const salesMMOmake = (obj: {"mmoSales": {
-    name: string;
-    units: string;
-    Q1CmlValue: number;
-    Q2CmlValue: number;
-    Q3CmlValue: number;
-    Q4CmlValue: number;
+    name: string,
+    units: string,
+    Q1CmlValue: number,
+    Q2CmlValue: number,
+    Q3CmlValue: number,
+    Q4CmlValue: number,
+    notes?: string,
 }}): Section[] => {
 
     let salesMMO: Section[] = [
@@ -96,7 +102,8 @@ const salesMMOmake = (obj: {"mmoSales": {
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
             units: (obj.mmoSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.mmoSales.Q1CmlValue // billion yen
+            value: obj.mmoSales.Q1CmlValue, // billion yen
+            notes: obj.mmoSales.notes
         },
         {
             name: obj.mmoSales.name,
@@ -104,7 +111,8 @@ const salesMMOmake = (obj: {"mmoSales": {
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
             units: (obj.mmoSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.mmoSales.Q2CmlValue // billion yen
+            value: obj.mmoSales.Q2CmlValue, // billion yen
+            notes: obj.mmoSales.notes
         },
         {
             name: obj.mmoSales.name,
@@ -112,7 +120,8 @@ const salesMMOmake = (obj: {"mmoSales": {
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
             units: (obj.mmoSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.mmoSales.Q3CmlValue // billion yen
+            value: obj.mmoSales.Q3CmlValue, // billion yen
+            notes: obj.mmoSales.notes
         },
         {
             name: obj.mmoSales.name,
@@ -120,7 +129,8 @@ const salesMMOmake = (obj: {"mmoSales": {
             period: " 4th Quarter ",
             cmlPeriod: "Cml.",
             units: (obj.mmoSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.mmoSales.Q4CmlValue // billion yen
+            value: obj.mmoSales.Q4CmlValue, // billion yen
+            notes: obj.mmoSales.notes
         },
     ];
 
@@ -128,19 +138,21 @@ const salesMMOmake = (obj: {"mmoSales": {
 };
 
 const salesHDandMMOmake= (obj: {"hdGamesSales": {
-    name: string;
-    units: string;
-    Q1CmlValue: number;
-    Q2CmlValue: number;
-    Q3CmlValue: number;
-    Q4CmlValue: number;
+    name: string,
+    units: string,
+    Q1CmlValue: number,
+    Q2CmlValue: number,
+    Q3CmlValue: number,
+    Q4CmlValue: number,
+    notes?: string,
 }, "mmoSales": {
-    name: string;
-    units: string;
-    Q1CmlValue: number;
-    Q2CmlValue: number;
-    Q3CmlValue: number;
-    Q4CmlValue: number;
+    name: string,
+    units: string,
+    Q1CmlValue: number,
+    Q2CmlValue: number,
+    Q3CmlValue: number,
+    Q4CmlValue: number,
+    notes?: string,
 }}): Section[] => {
 
     let salesHDandMMO: Section[] = [
@@ -150,7 +162,8 @@ const salesHDandMMOmake= (obj: {"hdGamesSales": {
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
-            value: Number((obj.hdGamesSales.Q1CmlValue + obj.mmoSales.Q1CmlValue).toFixed(1)) // billion yen
+            value: Number((obj.hdGamesSales.Q1CmlValue + obj.mmoSales.Q1CmlValue).toFixed(1)), // billion yen
+            notes: `${obj.hdGamesSales.notes} ${obj.mmoSales.notes}`
         },
         {
             name: " HD Games & MMO Sales ",
@@ -158,7 +171,8 @@ const salesHDandMMOmake= (obj: {"hdGamesSales": {
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
-            value: Number((obj.hdGamesSales.Q2CmlValue + obj.mmoSales.Q2CmlValue).toFixed(1)) // billion yen
+            value: Number((obj.hdGamesSales.Q2CmlValue + obj.mmoSales.Q2CmlValue).toFixed(1)), // billion yen
+            notes: `${obj.hdGamesSales.notes} ${obj.mmoSales.notes}`
         },
         {
             name: " HD Games & MMO Sales ",
@@ -166,7 +180,8 @@ const salesHDandMMOmake= (obj: {"hdGamesSales": {
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
-            value: Number((obj.hdGamesSales.Q3CmlValue + obj.mmoSales.Q3CmlValue).toFixed(1)) // billion yen
+            value: Number((obj.hdGamesSales.Q3CmlValue + obj.mmoSales.Q3CmlValue).toFixed(1)), // billion yen
+            notes: `${obj.hdGamesSales.notes} ${obj.mmoSales.notes}`
         },
         {
             name: " HD Games & MMO Sales ",
@@ -174,7 +189,8 @@ const salesHDandMMOmake= (obj: {"hdGamesSales": {
             period: " 4th Quarter ",
             cmlPeriod: "Cml.",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
-            value: Number((obj.hdGamesSales.Q4CmlValue + obj.mmoSales.Q4CmlValue).toFixed(1)) // billion yen
+            value: Number((obj.hdGamesSales.Q4CmlValue + obj.mmoSales.Q4CmlValue).toFixed(1)), // billion yen
+            notes: `${obj.hdGamesSales.notes} ${obj.mmoSales.notes}`
         },
     ];
 
