@@ -67,27 +67,9 @@ const squareEnixCollection = [
     squareEnixSoftwareSales2023,
 ];
 
-// let bandaiNamcoCollectionSales: Section[] = bandaiNamcoCollection.map((elem) => {
+const bandaiNamcoSales: Section[] = setMaker(bandaiNamcoCollection, salesHomeVideoGameMake);
 
-//     let list = salesHomeVideoGameMake(elem);
-
-//     return list.map(value => {
-//         return { ...value, fiscalYear: elem.fiscalYear}
-//     })
-// }).flatMap(elem => elem.filter((value, valueIndex) => valueIndex > 2)); 
-
-// let bandaiNamcoCollectionUnits: Section[] = bandaiNamcoCollection.map((elem) => {
-
-//     let list = unitsMake(elem);
-
-//     return list.map(value => {
-//         return { ...value, fiscalYear: elem.fiscalYear}
-//     })
-// }).flatMap(elem => elem.filter((value, valueIndex) => valueIndex > 2)); 
-
-const bandaiNamcoSales = setMaker(bandaiNamcoCollection, salesHomeVideoGameMake);
-
-const bandaiNamcoUnits = setMaker(bandaiNamcoCollection, unitsMake);
+const bandaiNamcoUnits: Section[] = setMaker(bandaiNamcoCollection, unitsMake);
 
 function setMaker(collection: collectionJSON[], objectMaker: Function): Section[] {
 
@@ -101,3 +83,39 @@ function setMaker(collection: collectionJSON[], objectMaker: Function): Section[
     }).flatMap(elem => elem.filter((value, valueIndex) => valueIndex > 2)); 
 };
 
+const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArray: Section[]): string => {
+
+    let printName = printTextBlock(salesArray[0].name)(50);
+
+    let salesPerSoftwareUnit = salesArray.map((elem, index, array) => {
+
+        let printSales: string = `¥${(elem.value * 1000).toLocaleString("en")}M `;
+
+        let printSalesFixed: string = (printSales.length >= 13)
+            ? printSales
+            : " ".repeat(13 - printSales.length) + printSales;
+        
+        
+        let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (softwareArray[index].value / 1000)).toFixed(0));
+
+        let printsegmentSalesPerSoftware: string = `¥${calculateSalesPerSoftware.toLocaleString("en")} `
+
+
+        let printsegmentSalesPerSoftwareFixed: string = (printsegmentSalesPerSoftware.length >= 11)
+                ? printsegmentSalesPerSoftware
+                : " ".repeat(11 - printsegmentSalesPerSoftware.length) + printsegmentSalesPerSoftware;
+            
+            let printSoftwareUnits: string = `${softwareArray[index].value / 1000}M `
+
+        
+        let printSoftwareUnitsFixed: string = (printSoftwareUnits.length >= 10)
+                ? printSoftwareUnits
+                : " ".repeat(10 - printSoftwareUnits.length) + printSoftwareUnits;
+        
+        return "|" + elem.fiscalYear + " Cml.|" + printSalesFixed + "|" + printSoftwareUnitsFixed + "|" + printsegmentSalesPerSoftwareFixed + "|"; 
+    });
+
+    return [printName, ...salesPerSoftwareUnit].reduce((acc, next) => acc + "\n" + next);
+};
+
+export const bandaiNamcoSalesPerSoftwareUnitCml = printSalesPerSoftwareUnitCumulative(bandaiNamcoSales, bandaiNamcoUnits);

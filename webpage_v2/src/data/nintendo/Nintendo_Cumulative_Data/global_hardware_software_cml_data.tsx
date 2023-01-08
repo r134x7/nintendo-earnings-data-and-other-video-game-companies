@@ -282,11 +282,11 @@ ${dataSource}`;
             return ((elem[0].value + elem[1].value) / 100)
         });
 
-        let printTitleName = printTextBlock(salesArrays[0][0].name)(51);
+        let printTitleName = printTextBlock(salesArrays[0][0].name)(39);
 
-        let printTitleNameFixed: string = "+"+"-".repeat(51)+"+\n" + printTitleName + "\n+" + "-".repeat(51) + "+";
+        let printTitleNameFixed: string = "+"+"-".repeat(39)+"+\n" + printTitleName + "\n+" + "-".repeat(51) + "+";
 
-        let printHeaders: string = "|                     |             | Hardware | Sales Per |\n|                     |       Sales |    Units |  Hardware |\n|                     |  Cumulative |Cumulative| Unit Cml. |\n+" + "-".repeat(51) + "+"
+        let printHeaders: string = "|              |             | Hardware | Sales Per |\n|              |       Sales |    Units |  Hardware |\n|              |  Cumulative |Cumulative| Unit Cml. |\n+" + "-".repeat(51) + "+"
 
         const salesPrint = salesArrays.map((elem, index, array) => {
 

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Text, Group, Space, Autocomplete, ColorPicker, Anchor, Stack, Paper, Code} from "@mantine/core"
+import { Text, Group, Space, SegmentedControl, Autocomplete, ColorPicker, Anchor, Stack, Paper, Code} from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import BANDAI_NAMCO_COMPONENT from "../components/BANDAI_NAMCO_COMPONENT";
+import BANDAI_NAMCO_CML from "../components/special/BANDAI_NAMCO_CML";
 
 const currentYear = 2023;
 
@@ -43,6 +44,7 @@ export default function BandaiNamco() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [seconds])
 
+    const [value, setValue] = useState("Data by Fiscal Year");
     const [year, setYear] = useState("");
 
     const [colour, setColour] = useState("rgb(0, 255, 255)")
@@ -141,7 +143,22 @@ export default function BandaiNamco() {
                     </Anchor>
             </Stack>
             </Paper>
+            <SegmentedControl 
+                mb="sm"
+                mt="sm"
+                fullWidth
+                orientation="horizontal"
+                value={value}
+                onChange={setValue}
+                data={[
+                    "Data by Fiscal Year",
+                    "Special Page",
+                ]}
+            />
 
+            {
+                (value === "Data by Fiscal Year")
+                ? 
             <Group position="center">
 
                 <Autocomplete
@@ -198,12 +215,15 @@ export default function BandaiNamco() {
                         </Paper>
 
             </Group>
+                : <BANDAI_NAMCO_CML />
+            }
 
-            {   
-                selectYear(year)
+            {   (value === "Data by Fiscal Year")
+                ? selectYear(year)
+                : null
             }
             
-            { (selectYear(year) !== null)
+            { (selectYear(year) !== null && value === "Data by Fiscal Year")
                 ? (
                 <Group position="center">
                     <Space h="xl" />

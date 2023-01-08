@@ -336,6 +336,8 @@ const printCmlSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
             return index !== 0 && index < currentQuarter && array[index].value !== 0
         }).map((elem, index, array) => { 
             // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
+
+            // index+1 is being used for segmentUnits since we don't want the firstQuarter value for: First Half to FY Cml.
             let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (segmentUnits[index+1].value / 1000)).toFixed(0))
 
             let printsegmentSalesPerSoftware: string = `¥${calculateSalesPerSoftware.toLocaleString("en")} `
@@ -344,9 +346,10 @@ const printCmlSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
                 ? printsegmentSalesPerSoftware
                 : " ".repeat(11 - printsegmentSalesPerSoftware.length) + printsegmentSalesPerSoftware;
             
+            // index+1 is being used for segmentUnits since we don't want the firstQuarter value for: First Half to FY Cml.
             let printSoftwareUnits: string = `${segmentUnits[index+1].value / 1000}M `
 
-            // let printSoftwareUnits: string = `${segmentUnits[index].value.toLocaleString("en")}k `
+            // let printSoftwareUnits: string = `${segmentUnits[index+1].value.toLocaleString("en")}k `
             let printSoftwareUnitsFixed: string = (printSoftwareUnits.length >= 10)
                     ? printSoftwareUnits
                     : " ".repeat(10 - printSoftwareUnits.length) + printSoftwareUnits 
