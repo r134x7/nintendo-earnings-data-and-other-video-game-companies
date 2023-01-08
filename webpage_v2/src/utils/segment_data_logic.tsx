@@ -1,4 +1,4 @@
-import { printTextBlock } from "./bandai_namco_annual_report_logic";
+import { printTextBlock, border, liner, spacer } from "./table_design_logic";;
 
 export type Section = {
     region: " Group Total " | " Japan " | " Americas " | " Europe ",

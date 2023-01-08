@@ -1,5 +1,5 @@
 import { platformUnitsMake, jsonData, regionData } from "../regional_hardware_software_nintendo";
-import { printTextBlock } from "../../../utils/bandai_namco_annual_report_logic";
+import { printTextBlock, border, liner, spacer } from "../../../utils/table_design_logic";
 
 import regionalHardwareSoftware2023 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2023.json";
 import regionalHardwareSoftware2022 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2022.json";

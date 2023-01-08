@@ -1,5 +1,6 @@
 import { platformSalesMake, collectionJSON, platformSalesType } from "../consolidated_sales_information_nintendo";
-import { printTextBlock } from "../../../utils/bandai_namco_annual_report_logic";
+import { printTextBlock, border, liner, spacer } from "../../../utils/table_design_logic";
+
 
 import consolidatedSalesInfo2023 from "../Consolidated_Sales_Information/consolidated_sales_information_fy3_2023.json";
 import consolidatedSalesInfo2022 from "../Consolidated_Sales_Information/consolidated_sales_information_fy3_2022.json";

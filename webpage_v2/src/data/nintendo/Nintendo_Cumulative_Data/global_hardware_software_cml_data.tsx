@@ -1,5 +1,5 @@
 import { platformUnitSalesMake, platformSalesMake, collectionJSON, platformUnitSalesType } from "../global_hardware_software_mobile_nintendo";
-import { printTextBlock } from "../../../utils/bandai_namco_annual_report_logic";
+import { printTextBlock, border, liner, spacer } from "../../../utils/table_design_logic";
 
 import globalHardwareSoftware2023 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2023.json";
 import globalHardwareSoftware2022 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2022.json";

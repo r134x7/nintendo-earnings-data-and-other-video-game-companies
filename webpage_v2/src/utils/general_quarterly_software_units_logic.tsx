@@ -1,4 +1,4 @@
-import { printTextBlock } from "./bandai_namco_annual_report_logic"
+import { printTextBlock, border, liner, spacer } from "./table_design_logic";
 
 export type Section = {
     units: "units" | "percentage" | "currency" | "NaN" ,

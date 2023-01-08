@@ -1,5 +1,5 @@
 import { titlesMake, titlesJSON, collectionJSON } from "../fy_million_seller_titles_nintendo";
-import { printTextBlock } from "../../../utils/bandai_namco_annual_report_logic";
+import { printTextBlock, border, liner, spacer } from "../../../utils/table_design_logic";
 
 import fyMillionSellerTitles2023 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2023.json";
 import fyMillionSellerTitles2022 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2022.json";

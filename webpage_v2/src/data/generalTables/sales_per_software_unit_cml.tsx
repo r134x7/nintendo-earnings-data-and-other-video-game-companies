@@ -1,4 +1,4 @@
-import { printTextBlock } from "../../utils/bandai_namco_annual_report_logic"
+import { printTextBlock, border, liner, spacer } from "../../utils/table_design_logic";
 import { Section } from "../../utils/segment_data_logic";
 
 import { unitsMake, salesHomeVideoGameMake, collectionJSON, salesOrUnitsJSON } from "../bandaiNamco/software_sales_bandai_namco";
@@ -147,33 +147,6 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
 
     let printAverageSalesPerSoftware: string = `¥${Number(( sortedSalesPerSoftwareSum ).toFixed(0)).toLocaleString("en")}`; 
 
-    const spacer = (text: string, length: number, align: "left" | "right"): string => {
-        return (text.length >= length)
-            ? text
-            : (align === "right")
-                ? " ".repeat(length - text.length) + text + " "
-                : " " + text + " ".repeat(length - text.length)
-    };
-
-    const border = (textArray: string[]): string => {
-        return (textArray.length < 2)
-            ? "|" + textArray[0] + "|"
-            : textArray.reduce((acc, next, index) => {
-            return (index === textArray.length-1)
-                ? acc + "|" + next + "|"
-                : acc + "|" + next 
-        }, "")
-    };
-
-    const liner = (text: string, lineStyle: "-" | "=" | "#", position: "top" | "bottom" | "both"): string => {
-        let line = `+${lineStyle.repeat(text.length-2)}+` 
-
-        return (position === "top")
-            ? line + "\n" + text
-            : (position === "bottom")
-                ? text + "\n" + line
-                : line + "\n" + text + "\n" + line;
-    };
     
     let printCountRow: string = liner(border([
         spacer("Count", 13, "left"),
