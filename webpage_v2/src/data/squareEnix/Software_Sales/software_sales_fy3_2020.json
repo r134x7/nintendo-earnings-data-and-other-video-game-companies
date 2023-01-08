@@ -2,15 +2,16 @@
     "fiscalYear": "FY3/2020",
     "currentQuarter": 4,
     "hdGamesSales": {
-        "name": " HD Games ",
+        "name": "HD Games",
         "units": "currency",
         "Q1CmlValue": 7.9,
         "Q2CmlValue": 18.7,
         "Q3CmlValue": 27.1,
-        "Q4CmlValue": 42.0
+        "Q4CmlValue": 42.0,
+        "notes": "*MMO sales includes subscriptions **Sales might include: - Downloadable content purchases" 
     },
     "mmoSales": {
-        "name": " MMO ",
+        "name": "MMO",
         "units": "currency",
         "Q1CmlValue": 8.8,
         "Q2CmlValue": 22.4,
@@ -18,7 +19,7 @@
         "Q4CmlValue": 40.1
     },
     "hdGamesAndMMOUnits": {
-        "name": " HD Games & MMO ",
+        "name": "HD Games & MMO",
         "units": "units",
         "Q1CmlValue": 3250,
         "Q2CmlValue": 8650,

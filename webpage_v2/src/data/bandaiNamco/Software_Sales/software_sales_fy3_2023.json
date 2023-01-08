@@ -2,15 +2,16 @@
     "fiscalYear": "FY3/2023",
     "currentQuarter": 2,
     "homeVideoGameSales": {
-        "name": " Home video game ",
+        "name": "Home video game",
         "units": "currency",
         "Q1CmlValue": 40.5,
         "Q2CmlValue": 85.1,
         "Q3CmlValue": 85.1,
-        "Q4CmlValue": 85.1
+        "Q4CmlValue": 85.1,
+        "notes": "*Sales might include: - Downloadable content purchases"
     },
     "homeVideoGameUnits": {
-        "name": " Home video game ",
+        "name": "Home video game",
         "units": "units",
         "Q1CmlValue": 11525,
         "Q2CmlValue": 24617,

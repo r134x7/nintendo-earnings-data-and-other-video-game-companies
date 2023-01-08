@@ -12,12 +12,13 @@ const collection = [
 ] as const;
 
 const digitalContentsSalesMake = (obj: {"digitalContentsSales": {
-    name: string;
-    units: string;
-    Q1CmlValue: number;
-    Q2CmlValue: number;
-    Q3CmlValue: number;
-    Q4CmlValue: number;
+    name: string,
+    units: string,
+    Q1CmlValue: number,
+    Q2CmlValue: number,
+    Q3CmlValue: number,
+    Q4CmlValue: number,
+    notes?: string, 
 }}): Section[] => {
 
     let sales: Section[] = [
@@ -27,7 +28,8 @@ const digitalContentsSalesMake = (obj: {"digitalContentsSales": {
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
             units: (obj.digitalContentsSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.digitalContentsSales.Q1CmlValue // billion yen
+            value: obj.digitalContentsSales.Q1CmlValue, // billion yen
+            notes: obj.digitalContentsSales.notes
         },
         {
             name: obj.digitalContentsSales.name,
@@ -35,7 +37,8 @@ const digitalContentsSalesMake = (obj: {"digitalContentsSales": {
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
             units: (obj.digitalContentsSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.digitalContentsSales.Q2CmlValue // billion yen
+            value: obj.digitalContentsSales.Q2CmlValue, // billion yen
+            notes: obj.digitalContentsSales.notes
         },
         {
             name: obj.digitalContentsSales.name,
@@ -43,7 +46,8 @@ const digitalContentsSalesMake = (obj: {"digitalContentsSales": {
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
             units: (obj.digitalContentsSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.digitalContentsSales.Q3CmlValue // billion yen
+            value: obj.digitalContentsSales.Q3CmlValue, // billion yen
+            notes: obj.digitalContentsSales.notes
         },
         {
             name: obj.digitalContentsSales.name,
@@ -51,7 +55,8 @@ const digitalContentsSalesMake = (obj: {"digitalContentsSales": {
             period: " 4th Quarter ",
             cmlPeriod: "Cml.",
             units: (obj.digitalContentsSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.digitalContentsSales.Q4CmlValue // billion yen
+            value: obj.digitalContentsSales.Q4CmlValue, // billion yen
+            notes: obj.digitalContentsSales.notes
         },
     ];
 

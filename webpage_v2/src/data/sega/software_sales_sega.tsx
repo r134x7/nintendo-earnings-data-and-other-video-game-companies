@@ -14,12 +14,13 @@ const collection = [
 ] as const;
 
 const salesMake = (obj: {"fullGameSales": {
-    name: string;
-    units: string;
-    Q1CmlValue: number;
-    Q2CmlValue: number;
-    Q3CmlValue: number;
-    Q4CmlValue: number;
+    name: string,
+    units: string,
+    Q1CmlValue: number,
+    Q2CmlValue: number,
+    Q3CmlValue: number,
+    Q4CmlValue: number,
+    notes?: string, 
 }}): Section[] => {
 
     let sales: Section[] = [
@@ -29,7 +30,8 @@ const salesMake = (obj: {"fullGameSales": {
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
             units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.fullGameSales.Q1CmlValue // billion yen
+            value: obj.fullGameSales.Q1CmlValue, // billion yen
+            notes: obj.fullGameSales.notes
         },
         {
             name: obj.fullGameSales.name,
@@ -37,7 +39,8 @@ const salesMake = (obj: {"fullGameSales": {
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
             units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.fullGameSales.Q2CmlValue // billion yen
+            value: obj.fullGameSales.Q2CmlValue, // billion yen
+            notes: obj.fullGameSales.notes
         },
         {
             name: obj.fullGameSales.name,
@@ -45,7 +48,8 @@ const salesMake = (obj: {"fullGameSales": {
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
             units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.fullGameSales.Q3CmlValue // billion yen
+            value: obj.fullGameSales.Q3CmlValue, // billion yen
+            notes: obj.fullGameSales.notes
         },
         {
             name: obj.fullGameSales.name,
@@ -53,7 +57,8 @@ const salesMake = (obj: {"fullGameSales": {
             period: " 4th Quarter ",
             cmlPeriod: "Cml.",
             units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.fullGameSales.Q4CmlValue // billion yen
+            value: obj.fullGameSales.Q4CmlValue, // billion yen
+            notes: obj.fullGameSales.notes
         },
     ];
 

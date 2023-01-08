@@ -2,15 +2,16 @@
     "fiscalYear": "FY3/2022",
     "currentQuarter": 4,
     "fullGameSales": {
-        "name": " Full Games ",
+        "name": "Full Games",
         "units": "currency",
         "Q1CmlValue": 11.0,
         "Q2CmlValue": 30.7,
         "Q3CmlValue": 50.3,
-        "Q4CmlValue": 65.8 
+        "Q4CmlValue": 65.8,
+        "notes": "\"*Full Game = Mainly physical sales and download sales of full game for home video game consoles and PCs. (Additional download content sales are not included.)\" **Software Units: \"Unit sales don’t include the figure for free download\""
     },
     "fullGameUnits": {
-        "name": " Full Games ",
+        "name": "Full Games",
         "units": "units",
         "Q1CmlValue": 6580,
         "Q2CmlValue": 14040,

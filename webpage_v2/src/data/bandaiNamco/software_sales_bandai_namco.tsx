@@ -53,7 +53,7 @@ const salesHomeVideoGameMake = (obj: {"homeVideoGameSales": {
             name: obj.homeVideoGameSales.name,
             region: " Group Total ",
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj.homeVideoGameSales.units === "NaN") ? "NaN" : "currency",
             value: obj.homeVideoGameSales.Q4CmlValue // billion yen
         },
@@ -100,7 +100,7 @@ const unitsmake = (obj: {"homeVideoGameUnits": {
             name: obj.homeVideoGameUnits.name,
             region: " Group Total ",
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj.homeVideoGameUnits.units === "NaN") ? "NaN" : "units",
             value: obj.homeVideoGameUnits.Q4CmlValue // billion yen
         },

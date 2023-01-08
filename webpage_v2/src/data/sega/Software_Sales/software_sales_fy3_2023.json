@@ -2,15 +2,16 @@
     "fiscalYear": "FY3/2023",
     "currentQuarter": 2,
     "fullGameSales": {
-        "name": " Full Games ",
+        "name": "Full Games",
         "units": "currency",
         "Q1CmlValue": 9.9,
         "Q2CmlValue": 22.3,
         "Q3CmlValue": 22.3,
-        "Q4CmlValue": 22.3 
+        "Q4CmlValue": 22.3, 
+        "notes": "\"*Full Game = Mainly physical sales and download sales of full game for home video game consoles and PCs. (Additional download content sales are not included.)\" **Software Units: \"Unit sales don’t include the figure for free download\""
     },
     "fullGameUnits": {
-        "name": " Full Games ",
+        "name": "Full Games",
         "units": "units",
         "Q1CmlValue": 5140,
         "Q2CmlValue": 10140,

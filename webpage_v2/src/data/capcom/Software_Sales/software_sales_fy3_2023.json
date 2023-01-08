@@ -2,15 +2,16 @@
     "fiscalYear": "FY3/2023",
     "currentQuarter": 2,
     "digitalContentsSales": {
-        "name": " Digital Contents ",
+        "name": "Digital Contents",
         "units": "currency",
         "Q1CmlValue": 19.2,
         "Q2CmlValue": 34.9,
         "Q3CmlValue": 34.9,
-        "Q4CmlValue": 34.9
+        "Q4CmlValue": 34.9,
+        "notes": "*Sales includes: - Downloadable content purchases"
     },
     "digitalContentsUnits": {
-        "name": " Digital Contents ",
+        "name": "Digital Contents",
         "units": "units",
         "Q1CmlValue": 11700,
         "Q2CmlValue": 21300,
@@ -18,7 +19,7 @@
         "Q4CmlValue": 21300
     },
     "packageSales": {
-        "name": " Package ",
+        "name": "Package",
         "units": "currency",
         "Q1CmlValue": 2.9,
         "Q2CmlValue": 4.3,
@@ -26,7 +27,7 @@
         "Q4CmlValue": 4.3
     },
     "packageUnits": {
-        "name": " Package ",
+        "name": "Package",
         "units": "units",
         "Q1CmlValue": 1300,
         "Q2CmlValue": 1800,
@@ -34,15 +35,16 @@
         "Q4CmlValue": 1800
     },
     "digitalSales": {
-        "name": " Digital ",
+        "name": "Digital",
         "units": "currency",
         "Q1CmlValue": 16.3,
         "Q2CmlValue": 30.6,
         "Q3CmlValue": 30.6,
-        "Q4CmlValue": 30.6
+        "Q4CmlValue": 30.6,
+        "notes": "*Sales includes: - Downloadable content purchases"
     },
     "digitalUnits": {
-        "name": " Digital ",
+        "name": "Digital",
         "units": "units",
         "Q1CmlValue": 10400,
         "Q2CmlValue": 19500,
