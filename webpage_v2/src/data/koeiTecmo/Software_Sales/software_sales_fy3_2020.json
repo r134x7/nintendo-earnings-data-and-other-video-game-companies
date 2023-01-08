@@ -7,7 +7,8 @@
         "Q1CmlValue": 3.095,
         "Q2CmlValue": 8.003,
         "Q3CmlValue": 12.555,
-        "Q4CmlValue": 21.446
+        "Q4CmlValue": 21.446,
+        "notes": "Package: Including sales for packages, royalty, commission fees (incl. %-of-completion basis), and down payment. DL (download) sales: sales for digital copies via PSN/XboxLive/Switch DL/Steam" 
     },
     "consolePackageAndDLUnits": {
         "name": " Console Package & DL ",
