@@ -282,11 +282,11 @@ ${dataSource}`;
             return ((elem[0].value + elem[1].value) / 100)
         });
 
-        let printTitleName = printTextBlock(salesArrays[0][0].name)(58);
+        let printTitleName = printTextBlock(salesArrays[0][0].name)(51);
 
-        let printTitleNameFixed: string = "+"+"-".repeat(58)+"+\n" + printTitleName + "\n+" + "-".repeat(58) + "+";
+        let printTitleNameFixed: string = "+"+"-".repeat(51)+"+\n" + printTitleName + "\n+" + "-".repeat(51) + "+";
 
-        let printHeaders: string = "|                     |             | Hardware | Sales Per |\n|                     |       Sales |    Units |  Hardware |\n|                     |  Cumulative |Cumulative| Unit Cml. |\n+" + "-".repeat(58) + "+"
+        let printHeaders: string = "|                     |             | Hardware | Sales Per |\n|                     |       Sales |    Units |  Hardware |\n|                     |  Cumulative |Cumulative| Unit Cml. |\n+" + "-".repeat(51) + "+"
 
         const salesPrint = salesArrays.map((elem, index, array) => {
 
@@ -311,14 +311,14 @@ ${dataSource}`;
                     ? printHardwareUnits
                     : " ".repeat(10 - printHardwareUnits.length) + printHardwareUnits 
 
-            let shortFY: string = ` ${elem[0].fiscalYear} Cumulative `;
+            let shortFY: string = ` ${elem[0].fiscalYear} Cml.`;
 
 
             
             return "|" + shortFY + "|" + printSectionLTDFixed + "|" +  printHardwareUnitsFixed + "|" +   printSectionSalesPerHardwareFixed + "|"
         });
 
-        let printLine: string = "+" + "-".repeat(58) + "+"
+        let printLine: string = "+" + "-".repeat(51) + "+"
         
         return [
             printTitleNameFixed,
