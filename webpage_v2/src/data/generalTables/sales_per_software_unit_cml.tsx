@@ -67,9 +67,28 @@ const squareEnixCollection = [
     squareEnixSoftwareSales2023,
 ];
 
+const generalSalesHeader = 
+`+---------------------------------------------------+
+|              |             |          | Sales Per |
+|              |             | Software |  Software |
+|              |       Sales |    Units |      Unit |
++---------------------------------------------------+`;
+
 const bandaiNamcoSales: Section[] = setMaker(bandaiNamcoCollection, salesHomeVideoGameMake);
 
 const bandaiNamcoUnits: Section[] = setMaker(bandaiNamcoCollection, unitsMake);
+
+function headerMaker(companyName: string) {
+
+    let company = liner(border([spacer(companyName, companyName.length+1, "left")]), "-", "top")
+
+    let subHeaderName = "Segment Information - Cumulative"
+
+    let subHeader = liner(border([spacer(subHeaderName, subHeaderName.length+1, "left")]), "-", "both");
+
+    return [company, subHeader].reduce((acc, next) => acc + "\n" + next)
+
+};
 
 function setMaker(collection: collectionJSON[], objectMaker: Function): Section[] {
 
@@ -87,7 +106,7 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
 
     let printLine = (length: number) => `+${"-".repeat(length)}+`;
 
-    let printName = printLine(39) + "\n" + printTextBlock(salesArray[0].name)(39) + "\n" + printLine(51);
+    let printName = printLine(salesArray[0].name.length+2) + "\n" + printTextBlock(salesArray[0].name)(salesArray[0].name.length+2); 
 
     let salesPerSoftwareUnit = salesArray.map((elem, index, array) => {
 
@@ -148,17 +167,23 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
     let printAverageSalesPerSoftware: string = `¥${Number(( sortedSalesPerSoftwareSum ).toFixed(0)).toLocaleString("en")}`; 
 
     
-    let printCountRow: string = liner(border([
+    let printCountRow: string = border([
         spacer("Count", 13, "left"),
         spacer(`${salesArray.length}`, 12, "right"),
         spacer("", 9, "left"),
         spacer("", 10, "left"),
-    ]), "-", "bottom");
+    ]);
 
-    let printAverageRow: string =  spacer("Average", 13, "left") + spacer(printAverageSales, 12, "right") + spacer(printAverageUnits, 9, "right") + spacer(printAverageSalesPerSoftware, 10, "right");
+    let printAverageRow: string =  border([
+        spacer("Average", 13, "left"),
+        spacer(printAverageSales, 12, "right"),
+        spacer(printAverageUnits, 9, "right"),
+        spacer(printAverageSalesPerSoftware, 10, "right")
+    ]);
 
     return [
-        printName, 
+        printName,
+        generalSalesHeader,
         ...salesPerSoftwareUnit, 
         printLine(51),
         printCountRow,
@@ -166,4 +191,8 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
     ].reduce((acc, next) => acc + "\n" + next);
 };
 
-export const bandaiNamcoSalesPerSoftwareUnitCml = printSalesPerSoftwareUnitCumulative(bandaiNamcoSales, bandaiNamcoUnits);
+export const bandaiNamcoSalesPerSoftwareUnitCml = [
+    headerMaker("Bandai Namco"),
+    printSalesPerSoftwareUnitCumulative(bandaiNamcoSales, bandaiNamcoUnits)
+].reduce((acc, next) => acc + "\n" + next);  
+        
