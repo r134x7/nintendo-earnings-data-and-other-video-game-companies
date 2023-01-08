@@ -51,7 +51,7 @@ const salesMake = (obj: {"fullGameSales": {
             name: obj.fullGameSales.name,
             region: " Group Total ",
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
             value: obj.fullGameSales.Q4CmlValue // billion yen
         },
@@ -98,7 +98,7 @@ const unitsmake = (obj: {"fullGameUnits": {
             name: obj.fullGameUnits.name,
             region: " Group Total ",
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj.fullGameUnits.units === "NaN") ? "NaN" : "units",
             value: obj.fullGameUnits.Q4CmlValue // billion yen
         },

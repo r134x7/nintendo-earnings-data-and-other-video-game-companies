@@ -70,7 +70,7 @@ const salesHDmake = (obj: {"hdGamesSales": {
             name: obj.hdGamesSales.name,
             region: " Group Total ",
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
             value: obj.hdGamesSales.Q4CmlValue // billion yen
         },
@@ -118,7 +118,7 @@ const salesMMOmake = (obj: {"mmoSales": {
             name: obj.mmoSales.name,
             region: " Group Total ",
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj.mmoSales.units === "NaN") ? "NaN" : "currency",
             value: obj.mmoSales.Q4CmlValue // billion yen
         },
@@ -172,7 +172,7 @@ const salesHDandMMOmake= (obj: {"hdGamesSales": {
             name: " HD Games & MMO Sales ",
             region: " Group Total ",
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
             value: Number((obj.hdGamesSales.Q4CmlValue + obj.mmoSales.Q4CmlValue).toFixed(1)) // billion yen
         },
@@ -219,7 +219,7 @@ const unitsmake = (obj: {"hdGamesAndMMOUnits": {
             name: obj.hdGamesAndMMOUnits.name,
             region: " Group Total ",
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "units",
             value: obj.hdGamesAndMMOUnits.Q4CmlValue // billion yen
         },

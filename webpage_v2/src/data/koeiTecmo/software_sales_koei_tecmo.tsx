@@ -57,7 +57,7 @@ const salesMake = (obj: {"consolePackageAndDLSales": {
             name: obj.consolePackageAndDLSales.name,
             region: " Group Total ",
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj.consolePackageAndDLSales.units === "NaN") ? "NaN" : "currency",
             value: obj.consolePackageAndDLSales.Q4CmlValue, // billion yen
             notes: obj.consolePackageAndDLSales.notes
@@ -105,7 +105,7 @@ const unitsmake = (obj: {"consolePackageAndDLUnits": {
             name: obj.consolePackageAndDLUnits.name,
             region: " Group Total ",
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj.consolePackageAndDLUnits.units === "NaN") ? "NaN" : "units",
             value: obj.consolePackageAndDLUnits.Q4CmlValue // billion yen
         },

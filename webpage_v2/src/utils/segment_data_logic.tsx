@@ -4,7 +4,7 @@ export type Section = {
     region: " Group Total " | " Japan " | " Americas " | " Europe ",
     units: "units" | "percentage" | "currency" | "NaN" | "salesPerSoftwareUnit",
     period: " 1st Quarter " | " 2nd Quarter " | " 3rd Quarter " | " 4th Quarter " | " Last FY Cumulative ",
-    cmlPeriod: " 1st Quarter " | " First Half  " | " 1st 3 Qtrs  " | "Cml. ",
+    cmlPeriod: " 1st Quarter " | " First Half  " | " 1st 3 Qtrs  " | "Cml.",
     name: string,
     value: number,
     notes?: string,
@@ -45,7 +45,7 @@ export const undefinedData: Section[] = [
         name: "undefined",
         region: " Group Total ",
         period: " 4th Quarter ",
-        cmlPeriod: "Cml. ",
+        cmlPeriod: "Cml.",
         units: "NaN",
         value: 0, 
     },
@@ -54,7 +54,7 @@ export const undefinedData: Section[] = [
 
 const printHead = (header: Header) => 
 `+${"-".repeat(27)}+
-${header.firstHeader}${header.fiscalYear}|
+${header.firstHeader} ${header.fiscalYear} |
 +${"-".repeat(27)}+
 ${header.secondHeader}
 +${"-".repeat(21)}+`;
@@ -430,7 +430,7 @@ const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
     const yoySalesPerUnit = printYoYSalesPerSoftwareUnit(salesQuarters, salesQuartersLastFY, salesUnits, salesUnitsLastFY)
 
         const sales = salesQuarters.filter((elem, index, array) => {
-            return index < currentQuarter && array[index].value !== 0
+            return index < currentQuarter //&& array[index].value !== 0
         }).map((elem, index, array) => {
             // values given are Billion yen, changing to Million yen
             let printSection: string = `¥${(elem.value * 1000).toLocaleString("en")}M `
@@ -456,7 +456,10 @@ const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
 
         const salesPerSoftwareUnit = salesQuarters.filter((elem, index, array) => {
             return index < currentQuarter // && array[index].value !== 0
-        }).map((elem, index, array) => { 
+        }).flatMap((elem, index, array) => {
+            if (elem.value === 0 && salesUnits[index].value === 0) {
+                return []
+            };
             // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
             let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (salesUnits[index].value / 1000)).toFixed(0))
 
@@ -528,10 +531,11 @@ const printCmlSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
                     ? printSoftwareUnits
                     : " ".repeat(10 - printSoftwareUnits.length) + printSoftwareUnits 
 
-            let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+            // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
+            let shortFY: string = header.fiscalYear
 
             let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
-                    ? `${shortFY}${elem.cmlPeriod}`
+                    ? `${shortFY} ${elem.cmlPeriod}`
                     : elem.cmlPeriod
 
         //    let printLine: string = (array[index] === array.at(-1))

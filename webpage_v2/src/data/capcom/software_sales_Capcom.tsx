@@ -49,7 +49,7 @@ const digitalContentsSalesMake = (obj: {"digitalContentsSales": {
             name: obj.digitalContentsSales.name,
             region: " Group Total ",
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj.digitalContentsSales.units === "NaN") ? "NaN" : "currency",
             value: obj.digitalContentsSales.Q4CmlValue // billion yen
         },
@@ -96,7 +96,7 @@ const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": {
             name: obj.digitalContentsUnits.name,
             region: " Group Total ",
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj.digitalContentsUnits.units === "NaN") ? "NaN" : "units",
             value: obj.digitalContentsUnits.Q4CmlValue // billion yen
         },
@@ -143,7 +143,7 @@ const packageSalesMake = (obj: {"packageSales": {
             name: obj.packageSales.name,
             region: " Group Total ",
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj.packageSales.units === "NaN") ? "NaN" : "currency",
             value: obj.packageSales.Q4CmlValue // billion yen
         },
@@ -190,7 +190,7 @@ const packageUnitsMake = (obj: {"packageUnits": {
             name: obj.packageUnits.name,
             region: " Group Total ",
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj.packageUnits.units === "NaN") ? "NaN" : "units",
             value: obj.packageUnits.Q4CmlValue // billion yen
         },
@@ -237,7 +237,7 @@ const digitalSalesMake = (obj: {"digitalSales": {
             name: obj.digitalSales.name,
             region: " Group Total ",
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj.digitalSales.units === "NaN") ? "NaN" : "currency",
             value: obj.digitalSales.Q4CmlValue // billion yen
         },
@@ -284,7 +284,7 @@ const digitalUnitsMake = (obj: {"digitalUnits": {
             name: obj.digitalUnits.name,
             region: " Group Total ",
             period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            cmlPeriod: "Cml.",
             units: (obj.digitalUnits.units === "NaN") ? "NaN" : "units",
             value: obj.digitalUnits.Q4CmlValue // billion yen
         },
