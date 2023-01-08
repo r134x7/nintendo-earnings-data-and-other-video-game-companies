@@ -1,7 +1,11 @@
 import { printTextBlock, border, liner, spacer } from "../../utils/table_design_logic";
 import { Section } from "../../utils/segment_data_logic";
 
-import { unitsMake, salesHomeVideoGameMake, collectionJSON, salesOrUnitsJSON } from "../bandaiNamco/software_sales_bandai_namco";
+import { unitsMake as bandaiNamcoUnitsMake, salesHomeVideoGameMake as bandaiNamcoSalesMake, collectionJSON as bandaiNamcoCollectionJSON} from "../bandaiNamco/software_sales_bandai_namco";
+import { unitsMake as koeiTecmoUnitsMake, collectionJSON as koeiTecmoCollectionJSON, salesMake as koeiTecmoSalesMake, } from "../koeiTecmo/software_sales_koei_tecmo";
+import { unitsMake as segaUnitsMake, collectionJSON as segaCollectionJSON, salesMake as segaSalesMake } from "../sega/software_sales_sega";
+import { digitalContentsSalesMake, collectionJSON as capcomCollectionJSON, digitalContentsUnitsMake, digitalSalesMake, digitalUnitsMake, packageSalesMake, packageUnitsMake } from "../capcom/software_sales_Capcom";
+import { notes2021, collectionJSON as squareEnixCollectionJSON, salesHDandMMOmake, unitsMake as squareEnixUnitsMake} from "../squareEnix/software_sales_square_enix";
 
 import bandaiNamcoSoftwareSales2023 from "../bandaiNamco/Software_Sales/software_sales_fy3_2023.json";
 import bandaiNamcoSoftwareSales2022 from "../bandaiNamco/Software_Sales/software_sales_fy3_2022.json";
@@ -31,7 +35,7 @@ import squareEnixSoftwareSales2020 from "../squareEnix/Software_Sales/software_s
 
 const dateLabel = "| Data as of September 30th, 2022   |\n+" + "-".repeat(35) + "+"
 
-const bandaiNamcoCollection: collectionJSON[] = [
+const bandaiNamcoCollection: bandaiNamcoCollectionJSON[] = [
     bandaiNamcoSoftwareSales2019,
     bandaiNamcoSoftwareSales2020,
     bandaiNamcoSoftwareSales2021,
@@ -39,20 +43,20 @@ const bandaiNamcoCollection: collectionJSON[] = [
     bandaiNamcoSoftwareSales2023,
 ];
 
-const capcomCollection = [
+const capcomCollection: capcomCollectionJSON[] = [
     capcomSoftwareSales2021,
     capcomSoftwareSales2022,
     capcomSoftwareSales2023,
 ];
 
-const segaCollection = [
+const segaCollection: segaCollectionJSON[] = [
     segaSammySoftwareSales2020,
     segaSammySoftwareSales2021,
     segaSammySoftwareSales2022,
     segaSammySoftwareSales2023,
 ];
 
-const koeiTecmoCollection = [
+const koeiTecmoCollection: koeiTecmoCollectionJSON[] = [
     koeiTecmoSoftwareSales2019,
     koeiTecmoSoftwareSales2020,
     koeiTecmoSoftwareSales2021,
@@ -60,7 +64,7 @@ const koeiTecmoCollection = [
     koeiTecmoSoftwareSales2023,
 ];
 
-const squareEnixCollection = [
+const squareEnixCollection: squareEnixCollectionJSON[] = [
     squareEnixSoftwareSales2020,
     squareEnixSoftwareSales2021,
     squareEnixSoftwareSales2022,
@@ -74,9 +78,33 @@ const generalSalesHeader =
 |              |       Sales |    Units |      Unit |
 +---------------------------------------------------+`;
 
-const bandaiNamcoSales: Section[] = setMaker(bandaiNamcoCollection, salesHomeVideoGameMake);
+const bandaiNamcoSales: Section[] = setMaker(bandaiNamcoCollection, bandaiNamcoSalesMake);
 
-const bandaiNamcoUnits: Section[] = setMaker(bandaiNamcoCollection, unitsMake);
+const bandaiNamcoUnits: Section[] = setMaker(bandaiNamcoCollection, bandaiNamcoUnitsMake);
+
+const capcomDigitalContentsSales: Section[] = setMaker(capcomCollection, digitalContentsSalesMake);
+
+const capcomDigitalContentsUnits: Section[] = setMaker(capcomCollection, digitalContentsUnitsMake);
+
+const capcomPhysicalSales: Section[] = setMaker(capcomCollection, packageSalesMake);
+
+const capcomPhysicalUnits: Section[] = setMaker(capcomCollection, packageUnitsMake);
+
+const capcomDigitalSales: Section[] = setMaker(capcomCollection, digitalSalesMake);
+
+const capcomDigitalUnits: Section[] = setMaker(capcomCollection, digitalUnitsMake);
+
+const segaSales: Section[] = setMaker(segaCollection, segaSalesMake);
+
+const segaUnits: Section[] = setMaker(segaCollection, segaUnitsMake);
+
+const koeiTecmoSales: Section[] = setMaker(koeiTecmoCollection, koeiTecmoSalesMake);
+
+const koeiTecmoUnits: Section[] = setMaker(koeiTecmoCollection, koeiTecmoUnitsMake);
+
+const squareEnixSales: Section[] = setMaker(squareEnixCollection, salesHDandMMOmake);
+
+const squareEnixUnits: Section[] = setMaker(squareEnixCollection, squareEnixUnitsMake);
 
 function headerMaker(companyName: string) {
 
@@ -90,7 +118,7 @@ function headerMaker(companyName: string) {
 
 };
 
-function setMaker(collection: collectionJSON[], objectMaker: Function): Section[] {
+function setMaker(collection: bandaiNamcoCollectionJSON[] | koeiTecmoCollectionJSON[] | capcomCollectionJSON[] | squareEnixCollectionJSON[] | segaCollectionJSON[], objectMaker: Function): Section[] {
 
     return collection.map((elem) => {
 
@@ -195,5 +223,13 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
 export const bandaiNamcoSalesPerSoftwareUnitCml = [
     headerMaker("Bandai Namco"),
     printSalesPerSoftwareUnitCumulative(bandaiNamcoSales, bandaiNamcoUnits)
-].reduce((acc, next) => acc + "\n" + next);  
+].reduce((acc, next) => acc + "\n" + next);
+
+export const CapcomSalesPerSoftwareUnitCml = [
+    headerMaker("Capcom"),
+    printSalesPerSoftwareUnitCumulative(capcomDigitalContentsSales, capcomDigitalContentsUnits),
+    printSalesPerSoftwareUnitCumulative(capcomDigitalSales, capcomDigitalUnits),
+    printSalesPerSoftwareUnitCumulative(capcomPhysicalSales, capcomPhysicalUnits),
+].reduce((acc, next) => acc + "\n" + next);
+
         

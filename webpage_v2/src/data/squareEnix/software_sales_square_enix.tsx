@@ -41,15 +41,7 @@ export const notes2021 = "\n" +
 |in the past.                            |
 +----------------------------------------+`;
 
-const salesHDmake = (obj: {"hdGamesSales": {
-    name: string,
-    units: string,
-    Q1CmlValue: number,
-    Q2CmlValue: number,
-    Q3CmlValue: number,
-    Q4CmlValue: number,
-    notes?: string,
-}}): Section[] => {
+const salesHDmake = (obj: {"hdGamesSales": salesOrUnitsJSON}): Section[] => {
 
     let salesHD: Section[] = [
         {
@@ -94,15 +86,7 @@ const salesHDmake = (obj: {"hdGamesSales": {
 };
 
 
-const salesMMOmake = (obj: {"mmoSales": {
-    name: string,
-    units: string,
-    Q1CmlValue: number,
-    Q2CmlValue: number,
-    Q3CmlValue: number,
-    Q4CmlValue: number,
-    notes?: string,
-}}): Section[] => {
+const salesMMOmake = (obj: {"mmoSales": salesOrUnitsJSON}): Section[] => {
 
     let salesMMO: Section[] = [
         {
@@ -146,23 +130,7 @@ const salesMMOmake = (obj: {"mmoSales": {
     return salesMMO
 };
 
-const salesHDandMMOmake= (obj: {"hdGamesSales": {
-    name: string,
-    units: string,
-    Q1CmlValue: number,
-    Q2CmlValue: number,
-    Q3CmlValue: number,
-    Q4CmlValue: number,
-    notes?: string,
-}, "mmoSales": {
-    name: string,
-    units: string,
-    Q1CmlValue: number,
-    Q2CmlValue: number,
-    Q3CmlValue: number,
-    Q4CmlValue: number,
-    notes?: string,
-}}): Section[] => {
+export const salesHDandMMOmake= (obj: {"hdGamesSales": salesOrUnitsJSON, "mmoSales": salesOrUnitsJSON}): Section[] => {
 
     let salesHDandMMO: Section[] = [
         {
@@ -206,14 +174,7 @@ const salesHDandMMOmake= (obj: {"hdGamesSales": {
     return salesHDandMMO
 };
 
-const unitsmake = (obj: {"hdGamesAndMMOUnits": {
-    name: string;
-    units: string;
-    Q1CmlValue: number;
-    Q2CmlValue: number;
-    Q3CmlValue: number;
-    Q4CmlValue: number;
-}}): Section[] => {
+export const unitsMake = (obj: {"hdGamesAndMMOUnits": salesOrUnitsJSON}): Section[] => {
 
     let units: Section[] = [
         {
@@ -273,8 +234,8 @@ export const softwareSalesList: string[] = collection.map((elem, index, array) =
     let salesHDandMMOThisFY: Section[] = salesHDandMMOmake(elem);
     let salesHDandMMOLastFY: Section[] = salesHDandMMOmake(array[index+1]);
 
-    let unitsThisFY: Section[] = unitsmake(elem);
-    let unitsLastFY: Section[] = unitsmake(array[index+1]);
+    let unitsThisFY: Section[] = unitsMake(elem);
+    let unitsLastFY: Section[] = unitsMake(array[index+1]);
 
     return (elem.fiscalYear === "FY3/2021")  
             ? SquareEnixPrint(salesHDThisFY, salesHDLastFY, salesMMOThisFY, salesMMOLastFY, salesHDandMMOThisFY, salesHDandMMOLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter).concat(notes2021)
