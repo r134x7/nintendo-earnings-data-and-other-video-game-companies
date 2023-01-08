@@ -85,7 +85,9 @@ function setMaker(collection: collectionJSON[], objectMaker: Function): Section[
 
 const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArray: Section[]): string => {
 
-    let printName = printTextBlock(salesArray[0].name)(50);
+    let printLine = (length: number) => `+${"-".repeat(length)}+`;
+
+    let printName = printLine(39) + "\n" + printTextBlock(salesArray[0].name)(39) + "\n" + printLine(51);
 
     let salesPerSoftwareUnit = salesArray.map((elem, index, array) => {
 
@@ -100,22 +102,95 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
 
         let printsegmentSalesPerSoftware: string = `¥${calculateSalesPerSoftware.toLocaleString("en")} `
 
-
         let printsegmentSalesPerSoftwareFixed: string = (printsegmentSalesPerSoftware.length >= 11)
                 ? printsegmentSalesPerSoftware
                 : " ".repeat(11 - printsegmentSalesPerSoftware.length) + printsegmentSalesPerSoftware;
             
-            let printSoftwareUnits: string = `${softwareArray[index].value / 1000}M `
+        let printSoftwareUnits: string = `${softwareArray[index].value / 1000}M `
 
         
         let printSoftwareUnitsFixed: string = (printSoftwareUnits.length >= 10)
                 ? printSoftwareUnits
                 : " ".repeat(10 - printSoftwareUnits.length) + printSoftwareUnits;
         
-        return "|" + elem.fiscalYear + " Cml.|" + printSalesFixed + "|" + printSoftwareUnitsFixed + "|" + printsegmentSalesPerSoftwareFixed + "|"; 
+        return "| " + elem.fiscalYear + " Cml.|" + printSalesFixed + "|" + printSoftwareUnitsFixed + "|" + printsegmentSalesPerSoftwareFixed + "|"; 
     });
 
-    return [printName, ...salesPerSoftwareUnit].reduce((acc, next) => acc + "\n" + next);
+    function sortList(list: Section[]) {
+
+        const sortList = list.map((elem, index, array) => {
+                return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+        }).sort((a, b) => { // (b,a) is descending order, (a,b) sorts in ascending order
+            return (a.value > b.value)
+                ? 1
+                : (a.value < b.value)
+                ? -1
+                : 0 
+        });
+
+        return sortList
+    };
+
+    let sortedSales = sortList(salesArray);
+
+    let sortedUnits = sortList(softwareArray);
+
+    let sortedSalesSum = ((sortedSales.map(value => value.value).reduce((acc, next) => acc + next)) * 1000);
+
+    let sortedUnitsSum = ((sortedUnits.map(value => value.value).reduce((acc, next) => acc + next)) / 1000);
+
+    let sortedSalesPerSoftwareSum = sortedSalesSum / sortedUnitsSum;
+
+    let printAverageSales: string = `¥${Number(( sortedSalesSum / sortedSales.length).toFixed(0)).toLocaleString("en")}M`;
+
+    let printAverageUnits: string = `${( sortedUnitsSum / sortedUnits.length).toFixed(3)}M`; 
+
+    let printAverageSalesPerSoftware: string = `¥${Number(( sortedSalesPerSoftwareSum ).toFixed(0)).toLocaleString("en")}`; 
+
+    const spacer = (text: string, length: number, align: "left" | "right"): string => {
+        return (text.length >= length)
+            ? text
+            : (align === "right")
+                ? " ".repeat(length - text.length) + text + " "
+                : " " + text + " ".repeat(length - text.length)
+    };
+
+    const border = (textArray: string[]): string => {
+        return (textArray.length < 2)
+            ? "|" + textArray[0] + "|"
+            : textArray.reduce((acc, next, index) => {
+            return (index === textArray.length-1)
+                ? acc + "|" + next + "|"
+                : acc + "|" + next 
+        }, "")
+    };
+
+    const liner = (text: string, lineStyle: "-" | "=" | "#", position: "top" | "bottom" | "both"): string => {
+        let line = `+${lineStyle.repeat(text.length-2)}+` 
+
+        return (position === "top")
+            ? line + "\n" + text
+            : (position === "bottom")
+                ? text + "\n" + line
+                : line + "\n" + text + "\n" + line;
+    };
+    
+    let printCountRow: string = liner(border([
+        spacer("Count", 13, "left"),
+        spacer(`${salesArray.length}`, 12, "right"),
+        spacer("", 9, "left"),
+        spacer("", 10, "left"),
+    ]), "-", "bottom");
+
+    let printAverageRow: string =  spacer("Average", 13, "left") + spacer(printAverageSales, 12, "right") + spacer(printAverageUnits, 9, "right") + spacer(printAverageSalesPerSoftware, 10, "right");
+
+    return [
+        printName, 
+        ...salesPerSoftwareUnit, 
+        printLine(51),
+        printCountRow,
+        printAverageRow,
+    ].reduce((acc, next) => acc + "\n" + next);
 };
 
 export const bandaiNamcoSalesPerSoftwareUnitCml = printSalesPerSoftwareUnitCumulative(bandaiNamcoSales, bandaiNamcoUnits);
