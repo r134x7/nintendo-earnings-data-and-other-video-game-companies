@@ -150,44 +150,45 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
         return sortList
     };
 
-    let sortedSales = sortList(salesArray);
+    // let sortedSales = sortList(salesArray);
 
-    let sortedUnits = sortList(softwareArray);
+    // let sortedUnits = sortList(softwareArray);
 
-    let sortedSalesSum = ((sortedSales.map(value => value.value).reduce((acc, next) => acc + next)) * 1000);
+    // let sortedSalesSum = ((sortedSales.map(value => value.value).reduce((acc, next) => acc + next)) * 1000);
 
-    let sortedUnitsSum = ((sortedUnits.map(value => value.value).reduce((acc, next) => acc + next)) / 1000);
+    // let sortedUnitsSum = ((sortedUnits.map(value => value.value).reduce((acc, next) => acc + next)) / 1000);
 
-    let sortedSalesPerSoftwareSum = sortedSalesSum / sortedUnitsSum;
+    // let sortedSalesPerSoftwareSum = sortedSalesSum / sortedUnitsSum;
 
-    let printAverageSales: string = `¥${Number(( sortedSalesSum / sortedSales.length).toFixed(0)).toLocaleString("en")}M`;
+    // let printAverageSales: string = `¥${Number(( sortedSalesSum / sortedSales.length).toFixed(0)).toLocaleString("en")}M`;
 
-    let printAverageUnits: string = `${( sortedUnitsSum / sortedUnits.length).toFixed(3)}M`; 
+    // let printAverageUnits: string = `${( sortedUnitsSum / sortedUnits.length).toFixed(3)}M`; 
 
-    let printAverageSalesPerSoftware: string = `¥${Number(( sortedSalesPerSoftwareSum ).toFixed(0)).toLocaleString("en")}`; 
+    // let printAverageSalesPerSoftware: string = `¥${Number(( sortedSalesPerSoftwareSum ).toFixed(0)).toLocaleString("en")}`; 
 
+    // need to fix issue with sales per software unit average...
     
-    let printCountRow: string = border([
-        spacer("Count", 13, "left"),
-        spacer(`${salesArray.length}`, 12, "right"),
-        spacer("", 9, "left"),
-        spacer("", 10, "left"),
-    ]);
+    // let printCountRow: string = border([
+    //     spacer("Count", 13, "left"),
+    //     spacer(`${salesArray.length}`, 12, "right"),
+    //     spacer("", 9, "left"),
+    //     spacer("", 10, "left"),
+    // ]);
 
-    let printAverageRow: string =  border([
-        spacer("Average", 13, "left"),
-        spacer(printAverageSales, 12, "right"),
-        spacer(printAverageUnits, 9, "right"),
-        spacer(printAverageSalesPerSoftware, 10, "right")
-    ]);
+    // let printAverageRow: string =  border([
+    //     spacer("Average", 13, "left"),
+    //     spacer(printAverageSales, 12, "right"),
+    //     spacer(printAverageUnits, 9, "right"),
+    //     spacer(printAverageSalesPerSoftware, 10, "right")
+    // ]);
 
     return [
         printName,
         generalSalesHeader,
         ...salesPerSoftwareUnit, 
         printLine(51),
-        printCountRow,
-        printAverageRow,
+        // printCountRow,
+        // printAverageRow,
     ].reduce((acc, next) => acc + "\n" + next);
 };
 

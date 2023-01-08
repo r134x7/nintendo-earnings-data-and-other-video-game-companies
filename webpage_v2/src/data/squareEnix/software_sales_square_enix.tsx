@@ -4,19 +4,28 @@ import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
 import softwareSales2020 from "./Software_Sales/software_sales_fy3_2020.json";
 import undefinedData from "./Software_Sales/undefinedData.json";
+import { salesOrUnitsJSON } from "../bandaiNamco/software_sales_bandai_namco";
 
-const collection = [
+export type collectionJSON = {
+    fiscalYear: string,
+    currentQuarter: number,
+    hdGamesSales: salesOrUnitsJSON,
+    mmoSales: salesOrUnitsJSON,
+    hdGamesAndMMOUnits: salesOrUnitsJSON,
+};
+
+const collection: collectionJSON[] = [
     softwareSales2023,
     softwareSales2022,
     softwareSales2021,
     softwareSales2020,
     undefinedData,
-] as const;
+];
 
-const notes2021 = "\n" +
+export const notes2021 = "\n" +
 `+----------------------------------------+
 |From Outline of Results Briefing held   | 
-|on May 13, 2021:                        |
+|on May 13, 2021 (for FY3/2021):         |
 |We have also made a change to how we    |
 |disclose our units sold. Whereas the    |
 |download sales we disclosed previously  |

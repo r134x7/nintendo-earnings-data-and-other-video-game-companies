@@ -4,6 +4,14 @@ import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
 import softwareSales2020 from "./Software_Sales/software_sales_fy3_2020.json";
 import undefinedData from "./Software_Sales/undefinedData.json";
+import { salesOrUnitsJSON } from "../bandaiNamco/software_sales_bandai_namco";
+
+export type collectionJSON = {
+    fiscalYear: string,
+    currentQuarter: number,
+    fullGameSales: salesOrUnitsJSON,
+    fullGameUnits: salesOrUnitsJSON,
+};
 
 const collection = [
     softwareSales2023,
@@ -13,15 +21,7 @@ const collection = [
     undefinedData,
 ] as const;
 
-const salesMake = (obj: {"fullGameSales": {
-    name: string,
-    units: string,
-    Q1CmlValue: number,
-    Q2CmlValue: number,
-    Q3CmlValue: number,
-    Q4CmlValue: number,
-    notes?: string, 
-}}): Section[] => {
+export const salesMake = (obj: {"fullGameSales": salesOrUnitsJSON}): Section[] => {
 
     let sales: Section[] = [
         {
@@ -65,14 +65,7 @@ const salesMake = (obj: {"fullGameSales": {
     return sales
 };
 
-const unitsmake = (obj: {"fullGameUnits": {
-    name: string;
-    units: string;
-    Q1CmlValue: number;
-    Q2CmlValue: number;
-    Q3CmlValue: number;
-    Q4CmlValue: number;
-}}): Section[] => {
+export const unitsMake = (obj: {"fullGameUnits": salesOrUnitsJSON}): Section[] => {
 
     let units: Section[] = [
         {
@@ -126,8 +119,8 @@ export const softwareSalesList: string[] = collection.map((elem, index, array) =
     let salesThisFY: Section[] = salesMake(elem);
     let salesLastFY: Section[] = salesMake(array[index+1]);
 
-    let unitsThisFY: Section[] = unitsmake(elem);
-    let unitsLastFY: Section[] = unitsmake(array[index+1]);
+    let unitsThisFY: Section[] = unitsMake(elem);
+    let unitsLastFY: Section[] = unitsMake(array[index+1]);
 
     return SegaPrint(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter)
 }).filter(elem => elem !== "undefined")
@@ -140,8 +133,8 @@ export const softwareSalesGraphList = collection.map((elem, index, array) => {
     let salesThisFY: Section[] = salesMake(elem);
     let salesLastFY: Section[] = salesMake(array[index+1]);
 
-    let unitsThisFY: Section[] = unitsmake(elem);
-    let unitsLastFY: Section[] = unitsmake(array[index+1]);
+    let unitsThisFY: Section[] = unitsMake(elem);
+    let unitsLastFY: Section[] = unitsMake(array[index+1]);
 
     return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.fullGameSales.name, elem.fiscalYear, elem.currentQuarter)
 }).filter(elem => elem !== undefined);

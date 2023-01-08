@@ -4,22 +4,27 @@ import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
 import undefinedData from "./Software_Sales/undefinedData.json";
 
-const collection = [
+import { salesOrUnitsJSON } from "../bandaiNamco/software_sales_bandai_namco";
+
+export type collectionJSON = {
+    fiscalYear: string,
+    currentQuarter: number,
+    digitalContentsSales: salesOrUnitsJSON,
+    digitalContentsUnits: salesOrUnitsJSON,
+    packageSales: salesOrUnitsJSON,
+    packageUnits: salesOrUnitsJSON,
+    digitalSales: salesOrUnitsJSON,
+    digitalUnits: salesOrUnitsJSON,
+}
+
+const collection: collectionJSON[] = [
     softwareSales2023,
     softwareSales2022,
     softwareSales2021,
     undefinedData,
-] as const;
+];
 
-const digitalContentsSalesMake = (obj: {"digitalContentsSales": {
-    name: string,
-    units: string,
-    Q1CmlValue: number,
-    Q2CmlValue: number,
-    Q3CmlValue: number,
-    Q4CmlValue: number,
-    notes?: string, 
-}}): Section[] => {
+export const digitalContentsSalesMake = (obj: {"digitalContentsSales": salesOrUnitsJSON}): Section[] => {
 
     let sales: Section[] = [
         {
@@ -63,14 +68,7 @@ const digitalContentsSalesMake = (obj: {"digitalContentsSales": {
     return sales
 };
 
-const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": {
-    name: string;
-    units: string;
-    Q1CmlValue: number;
-    Q2CmlValue: number;
-    Q3CmlValue: number;
-    Q4CmlValue: number;
-}}): Section[] => {
+export const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": salesOrUnitsJSON}): Section[] => {
 
     let units: Section[] = [
         {
@@ -110,14 +108,7 @@ const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": {
     return units 
 };
 
-const packageSalesMake = (obj: {"packageSales": {
-    name: string;
-    units: string;
-    Q1CmlValue: number;
-    Q2CmlValue: number;
-    Q3CmlValue: number;
-    Q4CmlValue: number;
-}}): Section[] => {
+export const packageSalesMake = (obj: {"packageSales": salesOrUnitsJSON}): Section[] => {
 
     let sales: Section[] = [
         {
@@ -157,14 +148,7 @@ const packageSalesMake = (obj: {"packageSales": {
     return sales
 };
 
-const packageUnitsMake = (obj: {"packageUnits": {
-    name: string,
-    units: string,
-    Q1CmlValue: number,
-    Q2CmlValue: number,
-    Q3CmlValue: number,
-    Q4CmlValue: number,
-}}): Section[] => {
+export const packageUnitsMake = (obj: {"packageUnits": salesOrUnitsJSON}): Section[] => {
 
     let units: Section[] = [
         {
@@ -204,15 +188,7 @@ const packageUnitsMake = (obj: {"packageUnits": {
     return units 
 };
 
-const digitalSalesMake = (obj: {"digitalSales": {
-    name: string,
-    units: string,
-    Q1CmlValue: number,
-    Q2CmlValue: number,
-    Q3CmlValue: number,
-    Q4CmlValue: number,
-    notes?: string,
-}}): Section[] => {
+export const digitalSalesMake = (obj: {"digitalSales": salesOrUnitsJSON}): Section[] => {
 
     let sales: Section[] = [
         {
@@ -256,14 +232,7 @@ const digitalSalesMake = (obj: {"digitalSales": {
     return sales
 };
 
-const digitalUnitsMake = (obj: {"digitalUnits": {
-    name: string;
-    units: string;
-    Q1CmlValue: number;
-    Q2CmlValue: number;
-    Q3CmlValue: number;
-    Q4CmlValue: number;
-}}): Section[] => {
+export const digitalUnitsMake = (obj: {"digitalUnits": salesOrUnitsJSON}): Section[] => {
 
     let units: Section[] = [
         {
