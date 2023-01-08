@@ -251,7 +251,7 @@ export const softwareSalesList: string[] = collection.map((elem, index, array) =
     let unitsThisFY: Section[] = unitsmake(elem);
     let unitsLastFY: Section[] = unitsmake(array[index+1]);
 
-    return (elem.fiscalYear === " FY3/2021 ")  
+    return (elem.fiscalYear === "FY3/2021")  
             ? SquareEnixPrint(salesHDThisFY, salesHDLastFY, salesMMOThisFY, salesMMOLastFY, salesHDandMMOThisFY, salesHDandMMOLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter).concat(notes2021)
             : SquareEnixPrint(salesHDThisFY, salesHDLastFY, salesMMOThisFY, salesMMOLastFY, salesHDandMMOThisFY, salesHDandMMOLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter)
 }).filter(elem => elem !== "undefined")

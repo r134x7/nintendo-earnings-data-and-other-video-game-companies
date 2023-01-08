@@ -16,12 +16,13 @@ const collection = [
 ] as const;
 
 const salesMake = (obj: {"consolePackageAndDLSales": {
-    name: string;
-    units: string;
-    Q1CmlValue: number;
-    Q2CmlValue: number;
-    Q3CmlValue: number;
-    Q4CmlValue: number;
+    name: string,
+    units: string,
+    Q1CmlValue: number,
+    Q2CmlValue: number,
+    Q3CmlValue: number,
+    Q4CmlValue: number,
+    notes?: string, 
 }}): Section[] => {
 
     let sales: Section[] = [
@@ -31,7 +32,8 @@ const salesMake = (obj: {"consolePackageAndDLSales": {
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
             units: (obj.consolePackageAndDLSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.consolePackageAndDLSales.Q1CmlValue // billion yen
+            value: obj.consolePackageAndDLSales.Q1CmlValue, // billion yen
+            notes: obj.consolePackageAndDLSales.notes
         },
         {
             name: obj.consolePackageAndDLSales.name,
@@ -39,7 +41,8 @@ const salesMake = (obj: {"consolePackageAndDLSales": {
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
             units: (obj.consolePackageAndDLSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.consolePackageAndDLSales.Q2CmlValue // billion yen
+            value: obj.consolePackageAndDLSales.Q2CmlValue, // billion yen
+            notes: obj.consolePackageAndDLSales.notes
         },
         {
             name: obj.consolePackageAndDLSales.name,
@@ -47,7 +50,8 @@ const salesMake = (obj: {"consolePackageAndDLSales": {
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
             units: (obj.consolePackageAndDLSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.consolePackageAndDLSales.Q3CmlValue // billion yen
+            value: obj.consolePackageAndDLSales.Q3CmlValue, // billion yen
+            notes: obj.consolePackageAndDLSales.notes
         },
         {
             name: obj.consolePackageAndDLSales.name,
@@ -55,7 +59,8 @@ const salesMake = (obj: {"consolePackageAndDLSales": {
             period: " 4th Quarter ",
             cmlPeriod: "Cml. ",
             units: (obj.consolePackageAndDLSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.consolePackageAndDLSales.Q4CmlValue // billion yen
+            value: obj.consolePackageAndDLSales.Q4CmlValue, // billion yen
+            notes: obj.consolePackageAndDLSales.notes
         },
     ];
 

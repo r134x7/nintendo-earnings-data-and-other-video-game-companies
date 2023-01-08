@@ -1,8 +1,8 @@
 {
-    "fiscalYear": " FY3/2021 ",
+    "fiscalYear": "FY3/2021",
     "currentQuarter": 4,
     "consolePackageAndDLSales": {
-        "name": " Console Package & DL ",
+        "name": "Console Package & DL",
         "units": "currency",
         "Q1CmlValue": 5.382,
         "Q2CmlValue": 10.473,
@@ -11,7 +11,7 @@
         "notes": "Package: Including sales for packages, royalty, commission fees (incl. %-of-completion basis), and down payment. DL (download) sales: sales for digital copies via PSN/XboxLive/Switch DL/Steam" 
     },
     "consolePackageAndDLUnits": {
-        "name": " Console Package & DL ",
+        "name": "Console Package & DL",
         "units": "units",
         "Q1CmlValue": 1690,
         "Q2CmlValue": 3050,
