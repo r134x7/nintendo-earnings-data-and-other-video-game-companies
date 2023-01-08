@@ -16,12 +16,13 @@ const collection = [
 ] as const;
 
 const salesHomeVideoGameMake = (obj: {"homeVideoGameSales": {
-    name: string;
-    units: string;
-    Q1CmlValue: number;
-    Q2CmlValue: number;
-    Q3CmlValue: number;
-    Q4CmlValue: number;
+    name: string,
+    units: string,
+    Q1CmlValue: number,
+    Q2CmlValue: number,
+    Q3CmlValue: number,
+    Q4CmlValue: number,
+    notes?: string,
 }}): Section[] => {
 
     let salesHomeVideoGame: Section[] = [
@@ -31,7 +32,8 @@ const salesHomeVideoGameMake = (obj: {"homeVideoGameSales": {
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
             units: (obj.homeVideoGameSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.homeVideoGameSales.Q1CmlValue // billion yen
+            value: obj.homeVideoGameSales.Q1CmlValue, // billion yen
+            notes: obj.homeVideoGameSales.notes
         },
         {
             name: obj.homeVideoGameSales.name,
@@ -39,7 +41,8 @@ const salesHomeVideoGameMake = (obj: {"homeVideoGameSales": {
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
             units: (obj.homeVideoGameSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.homeVideoGameSales.Q2CmlValue // billion yen
+            value: obj.homeVideoGameSales.Q2CmlValue, // billion yen
+            notes: obj.homeVideoGameSales.notes
         },
         {
             name: obj.homeVideoGameSales.name,
@@ -47,7 +50,8 @@ const salesHomeVideoGameMake = (obj: {"homeVideoGameSales": {
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
             units: (obj.homeVideoGameSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.homeVideoGameSales.Q3CmlValue // billion yen
+            value: obj.homeVideoGameSales.Q3CmlValue, // billion yen
+            notes: obj.homeVideoGameSales.notes
         },
         {
             name: obj.homeVideoGameSales.name,
@@ -55,7 +59,8 @@ const salesHomeVideoGameMake = (obj: {"homeVideoGameSales": {
             period: " 4th Quarter ",
             cmlPeriod: "Cml.",
             units: (obj.homeVideoGameSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.homeVideoGameSales.Q4CmlValue // billion yen
+            value: obj.homeVideoGameSales.Q4CmlValue, // billion yen
+            notes: obj.homeVideoGameSales.notes
         },
     ];
 

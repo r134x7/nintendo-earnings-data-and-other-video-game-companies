@@ -158,12 +158,12 @@ const packageSalesMake = (obj: {"packageSales": {
 };
 
 const packageUnitsMake = (obj: {"packageUnits": {
-    name: string;
-    units: string;
-    Q1CmlValue: number;
-    Q2CmlValue: number;
-    Q3CmlValue: number;
-    Q4CmlValue: number;
+    name: string,
+    units: string,
+    Q1CmlValue: number,
+    Q2CmlValue: number,
+    Q3CmlValue: number,
+    Q4CmlValue: number,
 }}): Section[] => {
 
     let units: Section[] = [
@@ -205,12 +205,13 @@ const packageUnitsMake = (obj: {"packageUnits": {
 };
 
 const digitalSalesMake = (obj: {"digitalSales": {
-    name: string;
-    units: string;
-    Q1CmlValue: number;
-    Q2CmlValue: number;
-    Q3CmlValue: number;
-    Q4CmlValue: number;
+    name: string,
+    units: string,
+    Q1CmlValue: number,
+    Q2CmlValue: number,
+    Q3CmlValue: number,
+    Q4CmlValue: number,
+    notes?: string,
 }}): Section[] => {
 
     let sales: Section[] = [
@@ -220,7 +221,8 @@ const digitalSalesMake = (obj: {"digitalSales": {
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
             units: (obj.digitalSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.digitalSales.Q1CmlValue // billion yen
+            value: obj.digitalSales.Q1CmlValue, // billion yen
+            notes: obj.digitalSales.notes
         },
         {
             name: obj.digitalSales.name,
@@ -228,7 +230,8 @@ const digitalSalesMake = (obj: {"digitalSales": {
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
             units: (obj.digitalSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.digitalSales.Q2CmlValue // billion yen
+            value: obj.digitalSales.Q2CmlValue, // billion yen
+            notes: obj.digitalSales.notes
         },
         {
             name: obj.digitalSales.name,
@@ -236,7 +239,8 @@ const digitalSalesMake = (obj: {"digitalSales": {
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
             units: (obj.digitalSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.digitalSales.Q3CmlValue // billion yen
+            value: obj.digitalSales.Q3CmlValue, // billion yen
+            notes: obj.digitalSales.notes
         },
         {
             name: obj.digitalSales.name,
@@ -244,7 +248,8 @@ const digitalSalesMake = (obj: {"digitalSales": {
             period: " 4th Quarter ",
             cmlPeriod: "Cml.",
             units: (obj.digitalSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.digitalSales.Q4CmlValue // billion yen
+            value: obj.digitalSales.Q4CmlValue, // billion yen
+            notes: obj.digitalSales.notes
         },
     ];
 

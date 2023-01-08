@@ -675,7 +675,9 @@ export const CapcomPrint = (salesData: Section[], salesDataLastFY: Section[], sa
     const head = printHead(header);
 
     const salesUnitsBlock = [
-        printSalesPerUnitHeaderCapcom(),
+        printLine(32),
+        printTextBlock(salesData[0].name)(32),
+        generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes)(50) + "\n" + printLine(50),
@@ -687,7 +689,9 @@ export const CapcomPrint = (salesData: Section[], salesDataLastFY: Section[], sa
 export const CapcomPrintPhysical = (salesData: Section[], salesDataLastFY: Section[], salesUnits: Section[], salesUnitsLastFY: Section[], header: Header, currentQuarter: number) => {
 
     const salesUnitsBlock = [
-        printSalesPerUnitHeaderCapcomPhysical(),
+        printLine(32),
+        printTextBlock(salesData[0].name)(32),
+        generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes)(50) + "\n" + printLine(50),
@@ -699,7 +703,9 @@ export const CapcomPrintPhysical = (salesData: Section[], salesDataLastFY: Secti
 export const CapcomPrintDigital = (salesData: Section[], salesDataLastFY: Section[], salesUnits: Section[], salesUnitsLastFY: Section[], header: Header, currentQuarter: number) => {
 
     const salesUnitsBlock = [
-        printSalesPerUnitHeaderCapcomDigital(),
+        printLine(32),
+        printTextBlock(salesData[0].name)(32),
+        generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes)(50) + "\n" + printLine(50),

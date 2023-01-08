@@ -157,7 +157,7 @@ const salesHDandMMOmake= (obj: {"hdGamesSales": {
 
     let salesHDandMMO: Section[] = [
         {
-            name: " HD Games & MMO Sales ",
+            name: "HD Games & MMO Sales",
             region: " Group Total ",
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
@@ -166,7 +166,7 @@ const salesHDandMMOmake= (obj: {"hdGamesSales": {
             notes: `${obj.hdGamesSales.notes} ${obj.mmoSales.notes}`
         },
         {
-            name: " HD Games & MMO Sales ",
+            name: "HD Games & MMO Sales",
             region: " Group Total ",
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
@@ -175,7 +175,7 @@ const salesHDandMMOmake= (obj: {"hdGamesSales": {
             notes: `${obj.hdGamesSales.notes} ${obj.mmoSales.notes}`
         },
         {
-            name: " HD Games & MMO Sales ",
+            name: "HD Games & MMO Sales",
             region: " Group Total ",
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
@@ -184,7 +184,7 @@ const salesHDandMMOmake= (obj: {"hdGamesSales": {
             notes: `${obj.hdGamesSales.notes} ${obj.mmoSales.notes}`
         },
         {
-            name: " HD Games & MMO Sales ",
+            name: "HD Games & MMO Sales",
             region: " Group Total ",
             period: " 4th Quarter ",
             cmlPeriod: "Cml.",
