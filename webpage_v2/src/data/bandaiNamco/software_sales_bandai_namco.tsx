@@ -6,6 +6,23 @@ import softwareSales2020 from "./Software_Sales/software_sales_fy3_2020.json";
 import softwareSales2019 from "./Software_Sales/software_sales_fy3_2019.json";
 import undefinedData from "./Software_Sales/undefinedData.json";
 
+export type collectionJSON = {
+    fiscalYear: string,
+    currentQuarter: number,
+    softwareSales: salesOrUnitsJSON,
+    softwareUnits: salesOrUnitsJSON,
+};
+
+export type salesOrUnitsJSON = {
+    name: string,
+    units: string,
+    Q1CmlValue: number,
+    Q2CmlValue: number,
+    Q3CmlValue: number,
+    Q4CmlValue: number,
+    notes?: string,
+}
+
 const collection = [
     softwareSales2023,
     softwareSales2022,
@@ -15,99 +32,84 @@ const collection = [
     undefinedData,
 ] as const;
 
-const salesHomeVideoGameMake = (obj: {"homeVideoGameSales": {
-    name: string,
-    units: string,
-    Q1CmlValue: number,
-    Q2CmlValue: number,
-    Q3CmlValue: number,
-    Q4CmlValue: number,
-    notes?: string,
-}}): Section[] => {
+export const salesHomeVideoGameMake = (obj: {"softwareSales": salesOrUnitsJSON }): Section[] => {
 
     let salesHomeVideoGame: Section[] = [
         {
-            name: obj.homeVideoGameSales.name,
+            name: obj.softwareSales.name,
             region: " Group Total ",
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
-            units: (obj.homeVideoGameSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.homeVideoGameSales.Q1CmlValue, // billion yen
-            notes: obj.homeVideoGameSales.notes
+            units: (obj.softwareSales.units === "NaN") ? "NaN" : "currency",
+            value: obj.softwareSales.Q1CmlValue, // billion yen
+            notes: obj.softwareSales.notes
         },
         {
-            name: obj.homeVideoGameSales.name,
+            name: obj.softwareSales.name,
             region: " Group Total ",
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
-            units: (obj.homeVideoGameSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.homeVideoGameSales.Q2CmlValue, // billion yen
-            notes: obj.homeVideoGameSales.notes
+            units: (obj.softwareSales.units === "NaN") ? "NaN" : "currency",
+            value: obj.softwareSales.Q2CmlValue, // billion yen
+            notes: obj.softwareSales.notes
         },
         {
-            name: obj.homeVideoGameSales.name,
+            name: obj.softwareSales.name,
             region: " Group Total ",
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
-            units: (obj.homeVideoGameSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.homeVideoGameSales.Q3CmlValue, // billion yen
-            notes: obj.homeVideoGameSales.notes
+            units: (obj.softwareSales.units === "NaN") ? "NaN" : "currency",
+            value: obj.softwareSales.Q3CmlValue, // billion yen
+            notes: obj.softwareSales.notes
         },
         {
-            name: obj.homeVideoGameSales.name,
+            name: obj.softwareSales.name,
             region: " Group Total ",
             period: " 4th Quarter ",
             cmlPeriod: "Cml.",
-            units: (obj.homeVideoGameSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.homeVideoGameSales.Q4CmlValue, // billion yen
-            notes: obj.homeVideoGameSales.notes
+            units: (obj.softwareSales.units === "NaN") ? "NaN" : "currency",
+            value: obj.softwareSales.Q4CmlValue, // billion yen
+            notes: obj.softwareSales.notes
         },
     ];
 
     return salesHomeVideoGame
 };
 
-const unitsmake = (obj: {"homeVideoGameUnits": {
-    name: string;
-    units: string;
-    Q1CmlValue: number;
-    Q2CmlValue: number;
-    Q3CmlValue: number;
-    Q4CmlValue: number;
-}}): Section[] => {
+export const unitsMake = (obj: {"softwareUnits": salesOrUnitsJSON }): Section[] => {
 
     let units: Section[] = [
         {
-            name: obj.homeVideoGameUnits.name,
+            name: obj.softwareUnits.name,
             region: " Group Total ",
             period: " 1st Quarter ",
             cmlPeriod: " 1st Quarter ",
-            units: (obj.homeVideoGameUnits.units === "NaN") ? "NaN" : "units",
-            value: obj.homeVideoGameUnits.Q1CmlValue // billion yen
+            units: (obj.softwareUnits.units === "NaN") ? "NaN" : "units",
+            value: obj.softwareUnits.Q1CmlValue // billion yen
         },
         {
-            name: obj.homeVideoGameUnits.name,
+            name: obj.softwareUnits.name,
             region: " Group Total ",
             period: " 2nd Quarter ",
             cmlPeriod: " First Half  ",
-            units: (obj.homeVideoGameUnits.units === "NaN") ? "NaN" : "units",
-            value: obj.homeVideoGameUnits.Q2CmlValue // billion yen
+            units: (obj.softwareUnits.units === "NaN") ? "NaN" : "units",
+            value: obj.softwareUnits.Q2CmlValue // billion yen
         },
         {
-            name: obj.homeVideoGameUnits.name,
+            name: obj.softwareUnits.name,
             region: " Group Total ",
             period: " 3rd Quarter ",
             cmlPeriod: " 1st 3 Qtrs  ",
-            units: (obj.homeVideoGameUnits.units === "NaN") ? "NaN" : "units",
-            value: obj.homeVideoGameUnits.Q3CmlValue // billion yen
+            units: (obj.softwareUnits.units === "NaN") ? "NaN" : "units",
+            value: obj.softwareUnits.Q3CmlValue // billion yen
         },
         {
-            name: obj.homeVideoGameUnits.name,
+            name: obj.softwareUnits.name,
             region: " Group Total ",
             period: " 4th Quarter ",
             cmlPeriod: "Cml.",
-            units: (obj.homeVideoGameUnits.units === "NaN") ? "NaN" : "units",
-            value: obj.homeVideoGameUnits.Q4CmlValue // billion yen
+            units: (obj.softwareUnits.units === "NaN") ? "NaN" : "units",
+            value: obj.softwareUnits.Q4CmlValue // billion yen
         },
     ];
 
@@ -128,8 +130,8 @@ export const softwareSalesList: string[] = collection.map((elem, index, array) =
     let salesThisFY: Section[] = salesHomeVideoGameMake(elem);
     let salesLastFY: Section[] = salesHomeVideoGameMake(array[index+1]);
 
-    let unitsThisFY: Section[] = unitsmake(elem);
-    let unitsLastFY: Section[] = unitsmake(array[index+1]);
+    let unitsThisFY: Section[] = unitsMake(elem);
+    let unitsLastFY: Section[] = unitsMake(array[index+1]);
 
     return BandaiNamcoPrint(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter)
 }).filter(elem => elem !== "undefined")
@@ -142,9 +144,9 @@ export const softwareSalesGraphList = collection.map((elem, index, array) => {
     let salesThisFY: Section[] = salesHomeVideoGameMake(elem);
     let salesLastFY: Section[] = salesHomeVideoGameMake(array[index+1]);
 
-    let unitsThisFY: Section[] = unitsmake(elem);
-    let unitsLastFY: Section[] = unitsmake(array[index+1]);
+    let unitsThisFY: Section[] = unitsMake(elem);
+    let unitsLastFY: Section[] = unitsMake(array[index+1]);
 
-    return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.homeVideoGameSales.name, elem.fiscalYear, elem.currentQuarter)
+    return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.softwareSales.name, elem.fiscalYear, elem.currentQuarter)
 }).filter(elem => elem !== undefined);
 

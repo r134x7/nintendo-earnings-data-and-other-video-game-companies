@@ -1,7 +1,7 @@
 {
     "fiscalYear": "undefined",
     "currentQuarter": 4,
-    "homeVideoGameSales": {
+    "softwareSales": {
         "name": "Home video game",
         "units": "NaN",
         "Q1CmlValue": 0,
@@ -9,7 +9,7 @@
         "Q3CmlValue": 0,
         "Q4CmlValue": 0
     },
-    "homeVideoGameUnits": {
+    "softwareUnits": {
         "name": "Home video game",
         "units": "NaN",
         "Q1CmlValue": 0,

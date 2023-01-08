@@ -1,7 +1,7 @@
 {
     "fiscalYear": "FY3/2021",
     "currentQuarter": 4,
-    "homeVideoGameSales": {
+    "softwareSales": {
         "name": "Home video game",
         "units": "currency",
         "Q1CmlValue": 25.0,
@@ -10,7 +10,7 @@
         "Q4CmlValue": 118.1,
         "notes": "*Sales might include: - Downloadable content purchases"
     },
-    "homeVideoGameUnits": {
+    "softwareUnits": {
         "name": "Home video game",
         "units": "units",
         "Q1CmlValue": 9005,
