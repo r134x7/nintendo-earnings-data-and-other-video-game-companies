@@ -100,7 +100,7 @@ import { Titles, Header, quarterlyCalculation, printHead } from "../../../utils/
                     ? printRank
                     : printRank + " ".repeat(11 - printRank.length);
 
-            let printTitleName = printTextBlock(elem[0].title)(42)
+            let printTitleName = printTextBlock(elem[0].title,  42)
 
             let printPlatformFixed: string = (elem[0].platform.length >= 30)
                 ? elem[0].platform

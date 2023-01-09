@@ -33,7 +33,7 @@ import squareEnixSoftwareSales2022 from "../squareEnix/Software_Sales/software_s
 import squareEnixSoftwareSales2021 from "../squareEnix/Software_Sales/software_sales_fy3_2021.json";
 import squareEnixSoftwareSales2020 from "../squareEnix/Software_Sales/software_sales_fy3_2020.json";
 
-const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+2, "left")]),"-", "bottom")
+const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+2, "left")]),"−", "bottom")
 
 const bandaiNamcoCollection: bandaiNamcoCollectionJSON[] = [
     bandaiNamcoSoftwareSales2019,
@@ -108,11 +108,11 @@ const squareEnixUnits: Section[] = setMaker(squareEnixCollection, squareEnixUnit
 
 function headerMaker(companyName: string) {
 
-    let company = liner(border([spacer(companyName, companyName.length+1, "left")]), "-", "top")
+    let company = liner(border([spacer(companyName, companyName.length+1, "left")]), "−", "top")
 
     let subHeaderName = "Segment Information - Cumulative"
 
-    let subHeader = liner(border([spacer(subHeaderName, subHeaderName.length+1, "left")]), "-", "both");
+    let subHeader = liner(border([spacer(subHeaderName, subHeaderName.length+1, "left")]), "−", "both");
 
     return [company, subHeader].reduce((acc, next) => acc + "\n" + next)
 
@@ -134,7 +134,7 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
 
     let printLine = (length: number) => `+${"−".repeat(length)}+`;
 
-    let printName = printLine(salesArray[0].name.length+2) + "\n" + printTextBlock(salesArray[0].name)(salesArray[0].name.length+2); 
+    let printName = printLine(salesArray[0].name.length+2) + "\n" + printTextBlock(salesArray[0].name, salesArray[0].name.length+2); 
 
 
     let salesPerSoftwareUnit = salesArray.map((elem, index, array) => {
@@ -293,7 +293,7 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
         spacer(printMaxSales, 12, "right"),
         spacer(printMaxUnits, 9, "right"),
         spacer(printMaxSalesPerSoftwareUnit, 10, "right")
-    ]),"-", "bottom");
+    ]),"−", "bottom");
 
 
     return [
@@ -307,7 +307,7 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
         printMedianRow,
         printMinRow,
         printMaxRow,
-        (salesArray[0].notes === undefined) ? [] : printTextBlock(salesArray[0].notes)(51) + "\n" + printLine(51),
+        (salesArray[0].notes === undefined) ? [] : printTextBlock(salesArray[0].notes, 51) + "\n" + printLine(51),
     ].flat().reduce((acc, next) => acc + "\n" + next);
 };
 
@@ -342,5 +342,5 @@ export const squareEnixSalesPerSoftwareUnitCml = [
     dateLabel,
     printSalesPerSoftwareUnitCumulative(squareEnixSales, squareEnixUnits),
     notes2021,
-    liner(border([spacer("See \"Data by Fiscal Year\" for HD Games and MMO sales splits", 60, "left")]),"-","both"),
+    liner(border([spacer("See \"Data by Fiscal Year\" for HD Games and MMO sales splits", 60, "left")]),"−","both"),
 ].reduce((acc, next) => acc + "\n" + next);

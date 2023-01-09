@@ -161,7 +161,7 @@ import {
             //         ? printRank
             //         : printRank + " ".repeat(11 - printRank.length);
 
-            let printTitleName = printTextBlock(elem[0].name)(42)
+            let printTitleName = printTextBlock(elem[0].name, 42)
 
             // let printPlatformFixed: string = (elem[0].platform.length >= 30)
             //     ? elem[0].platform
@@ -282,7 +282,7 @@ ${dataSource}`;
             return ((elem[0].value + elem[1].value) / 100)
         });
 
-        let printTitleName = printTextBlock(salesArrays[0][0].name)(39);
+        let printTitleName = printTextBlock(salesArrays[0][0].name, 39);
 
         let printTitleNameFixed: string = "+"+"−".repeat(39)+"+\n" + printTitleName + "\n+" + "−".repeat(51) + "+";
 

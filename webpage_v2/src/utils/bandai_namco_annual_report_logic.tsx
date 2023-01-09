@@ -1,4 +1,4 @@
-import { printTextBlock, border, liner, spacer, singleLiner } from "./table_design_logic";
+import { printTextBlock, border, liner, spacer } from "./table_design_logic";
 
 export type Series = {
     title: string,
@@ -12,39 +12,32 @@ export type Series = {
 };
 
 export type Header = {
-    bandaiNamcoHeader: "| Bandai Namco - IP Series Data  |" | "| Square Enix  - IP Series Data  |",
-    secondHeader: "| First appearance to recent FY  |",
-    thirdHeader: "| Rank                           |",
-    fourthHeader: "| Units                          |",
+    bandaiNamcoHeader: "Bandai Namco - IP Series Data" | "Square Enix  - IP Series Data",
+    secondHeader: "First appearance to recent FY",
+    thirdHeader: "Rank",
+    fourthHeader: "Units",
     fiscalYear: string,
     fiscalYearYoY: string,
     ltd: "Life-To-Date",
     summaryHeader: string,
 };
 
-export const printHead = (header: Header) =>
-`+${"−".repeat(32)}+
-${header.bandaiNamcoHeader}
-+${"−".repeat(32)}+
-${header.secondHeader}
-+${"−".repeat(32)}+
-${header.thirdHeader}
-+${"−".repeat(32)}+
-${header.fourthHeader}
-+${"−".repeat(32)}+`;
+export const printHead = (header: Header) => {
+    
+    let headerArray = [
+        header.bandaiNamcoHeader,
+        header.secondHeader,
+        header.thirdHeader,
+        header.fourthHeader,
+    ];
 
-// const printRank = (seriesIP: Series) => {
+    return Array.from({length:headerArray.length}, (v,i) => {
 
-//     let ranking: string = ` Rank ${seriesIP.rank} `;
-
-//     return (blockLength: number) => {
-
-//         return (ranking.length >= blockLength)
-//             ? ranking
-//             : ranking + " ".repeat(blockLength - ranking.length); 
-//     }; 
-// };
-
+        return (i === headerArray.length-1)
+            ? liner(border([spacer(headerArray[i], 32, "left")]), "−","both")
+            : liner(border([spacer(headerArray[i], 32, "left")]), "−","top", true)
+    }).reduce((acc, next) => acc + next);
+};
 
 const printReleaseDateAndRank = (seriesIP: Series) => {
 
@@ -57,10 +50,6 @@ const printReleaseDateAndRank = (seriesIP: Series) => {
             spacer(releaseDate, blockLength-12,"left"),
             spacer(ranking, 9,"left")
         ])
-
-        // return (releaseDate.length >= blockLength)
-        //     ? releaseDate + "|" + printRank(seriesIP)(11)
-        //     : releaseDate + " ".repeat(blockLength - releaseDate.length - printRank(seriesIP)(11).length - 1) + "|" + printRank(seriesIP)(11); // not the best solution since I am having to hardcode printRank length...
     };
 };
 
@@ -95,10 +84,6 @@ const printCmlYoY = (seriesIP: Series) => {
                     spacer(header.fiscalYear + " Cml. YoY%", 20, "left"),
                     spacer(FYCmlYoY, 11, "right")
                 ])
-
-                // return (FYCmlYoY.length >= blockLength) 
-                //     ? header.fiscalYearYoY + FYCmlYoY + "|"
-                //     : header.fiscalYearYoY + " ".repeat(blockLength - FYCmlYoY.length) + FYCmlYoY + "|"
             };
     };
 
@@ -112,10 +97,6 @@ const printLTDValue = (seriesIP: Series) => {
                     spacer(header.ltd, 20, "left"),
                     spacer(printLTDValue, 11, "right")
                 ])
-
-            // return (printLTDValue.length >= blockLength)
-            // ? header.ltd + printLTDValue + "|"
-            // : header.ltd + " ".repeat(blockLength - printLTDValue.length) + printLTDValue + "|";
         };
 };
 
@@ -123,8 +104,8 @@ const printSeriesName = (seriesIP: Series) => {
 
     return (blockLength: number) => {
        return (!seriesIP.miscellaneous) 
-            ? liner(printTextBlock(seriesIP.title, blockLength),"−","both") + "\n" + printReleaseDateAndRank(seriesIP)(blockLength)
-            : liner(printTextBlock(seriesIP.title, blockLength),"−","both", blockLength) + "\n" + printReleaseDateAndRank(seriesIP)(blockLength) + "\n" + singleLiner(blockLength+2, "−") + "\n" + printTextBlock(seriesIP.miscellaneous, blockLength);
+            ? liner(printTextBlock(seriesIP.title, blockLength),"−","both", true, blockLength) + printReleaseDateAndRank(seriesIP)(blockLength)
+            : liner(printTextBlock(seriesIP.title, blockLength),"−","both", true, blockLength) + liner(printReleaseDateAndRank(seriesIP)(blockLength), "−", "bottom", true) + printTextBlock(seriesIP.miscellaneous, blockLength);
     };
 };
 
@@ -135,6 +116,6 @@ export const printSeriesOutput = (seriesIP: Series) => {
            (valueLength: number) =>
            (shortLineLength: number) => {
 
-                return printSeriesName(seriesIP)(blockLength) + "\n" + singleLiner(blockLength+2,"=") + "\n" + printCmlValue(seriesIP)(valueLength)(header) + "\n" + printCmlYoY(seriesIP)(valueLength)(header) + "\n" + printLTDValue(seriesIP)(valueLength)(header) + "\n" + singleLiner(shortLineLength+4,"−")
+                return liner(printSeriesName(seriesIP)(blockLength), "=", "bottom", true, blockLength) + printCmlValue(seriesIP)(valueLength)(header) + "\n" + printCmlYoY(seriesIP)(valueLength)(header) + "\n" + liner(printLTDValue(seriesIP)(valueLength)(header), "−", "bottom")
     };
 };

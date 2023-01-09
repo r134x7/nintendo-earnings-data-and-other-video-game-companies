@@ -89,7 +89,7 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
     // console.log(latestFYcollection);
     
 
-    const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+2, "left")]),"-", "bottom")
+    const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+2, "left")]),"−", "bottom")
 
     const header: Header = {
     mainHeader: "| Nintendo Fiscal Year Million-Seller Titles |",
@@ -163,7 +163,7 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
                     ? printRank
                     : printRank + " ".repeat(11 - printRank.length);
 
-            let printTitleName = printTextBlock(elem[0].title)(42)
+            let printTitleName = printTextBlock(elem[0].title, 42)
 
             let printPlatformFixed: string = (elem[0].platform.length >= 30)
                 ? elem[0].platform
@@ -268,7 +268,7 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
                     ? printRank
                     : printRank + " ".repeat(11 - printRank.length);
 
-            let printTitleName = printTextBlock(elem[0].title)(42)
+            let printTitleName = printTextBlock(elem[0].title, 42)
 
             let printPlatformFixed: string = (elem[0].platform.length >= 30)
                 ? elem[0].platform
@@ -302,7 +302,7 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
 
         let printLTD = printLine + "\n|Overseas - Life-To-Date(Units)|" + printValueFixed + "|\n" + printLine;
 
-        let printNote = (elem[0].miscellaneous === undefined) ? undefined : "|" + elem[0].miscellaneous + "\n###";
+        let printNote: string | undefined = (elem[0].miscellaneous === undefined) ? undefined : "|" + elem[0].miscellaneous + "\n###";
 
         let printFinal = (printNote === undefined)
             ? [
@@ -341,7 +341,7 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
                     ? printRank
                     : printRank + " ".repeat(11 - printRank.length);
 
-            let printTitleName = printTextBlock(elem[0].title)(42)
+            let printTitleName = printTextBlock(elem[0].title, 42)
 
             let printPlatformFixed: string = (elem[0].platform.length >= 30)
                 ? elem[0].platform

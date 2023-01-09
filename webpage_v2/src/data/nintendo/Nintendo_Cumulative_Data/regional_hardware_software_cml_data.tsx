@@ -107,7 +107,7 @@ import {
     // console.log(latestFYcollection);
     
 
-    const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+2, "left")]),"-", "bottom")
+    const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+2, "left")]),"−", "bottom")
 
     function accumulate(title: Section[]): Section[] {
 
@@ -131,7 +131,7 @@ import {
         
         const regionRank = titles.map((elem, index, array) => {
             
-            let printTitleName = printTextBlock(elem[0].name)(42)
+            let printTitleName = printTextBlock(elem[0].name, 42)
 
             let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+"// + "+"+"−".repeat(42)+"+"
             // need to check regarding || conditions in filter because it's not working...
@@ -178,7 +178,7 @@ import {
         
         const regionRank = titles.map((elem, index, array) => {
             
-            let printTitleName = printTextBlock(elem[0].name)(42)
+            let printTitleName = printTextBlock(elem[0].name, 42)
 
             let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+"// + "+"+"−".repeat(42)+"+"
             // need to check regarding || conditions in filter because it's not working...
@@ -225,7 +225,7 @@ import {
         
         const regionRank = titles.map((elem, index, array) => {
             
-            let printTitleName = printTextBlock(elem[0].name)(42)
+            let printTitleName = printTextBlock(elem[0].name, 42)
 
             let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+"// + "+"+"−".repeat(42)+"+"
             // need to check regarding || conditions in filter because it's not working...
@@ -272,7 +272,7 @@ import {
         
         const regionRank = titles.map((elem, index, array) => {
             
-            let printTitleName = printTextBlock(elem[0].name)(42)
+            let printTitleName = printTextBlock(elem[0].name, 42)
 
             let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+"// + "+"+"−".repeat(42)+"+"
 

@@ -131,7 +131,7 @@ import {
             //         ? printRank
             //         : printRank + " ".repeat(11 - printRank.length);
 
-            let printTitleName = printTextBlock(elem[0].name)(42)
+            let printTitleName = printTextBlock(elem[0].name, 42)
 
             // let printPlatformFixed: string = (elem[0].platform.length >= 30)
             //     ? elem[0].platform

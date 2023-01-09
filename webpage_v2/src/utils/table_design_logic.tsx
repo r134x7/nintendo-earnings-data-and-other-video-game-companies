@@ -61,19 +61,18 @@ export const border = (textArray: string[]): string => {
         }, "")
     };
 
-export const liner = (text: string, lineStyle: "−" | "=" | "#", position: "top" | "bottom" | "both", lineLengthCustom?: number): string => {
+export const liner = (text: string, lineStyle: "−" | "=" | "#", position: "top" | "bottom" | "both", newline?: true, lineLengthCustom?: number): string => {
         let line = (lineLengthCustom === undefined) 
             ? `+${lineStyle.repeat(text.length-2)}+`
-            : `+${lineStyle.repeat(lineLengthCustom-2)}+`; 
+            : `+${lineStyle.repeat(lineLengthCustom)}+`; 
 
-        return (position === "top")
+        let setPosition = (position === "top")
             ? line + "\n" + text
             : (position === "bottom")
                 ? text + "\n" + line
                 : line + "\n" + text + "\n" + line;
-    };
 
-// no longer necessary, solved issue with liner and printTextBlock
-export const singleLiner = (lineLength: number, lineStyle: "−" | "=" | "#"): string => {
-        return `+${lineStyle.repeat(lineLength-2)}+`;
+        return (newline === undefined)
+            ? setPosition
+            : setPosition + "\n";
     };

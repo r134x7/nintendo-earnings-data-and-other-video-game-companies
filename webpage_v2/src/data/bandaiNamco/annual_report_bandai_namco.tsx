@@ -57,10 +57,10 @@ const seriesMake = (obj: {
 export const annualReportList: string[] = collection.map((elem, index, array) => {
 
     let header: Header = {
-        bandaiNamcoHeader: "| Bandai Namco - IP Series Data  |",
-        secondHeader: "| First appearance to recent FY  |",
-        thirdHeader: "| Rank                           |",
-        fourthHeader: "| Units                          |",
+        bandaiNamcoHeader: "Bandai Namco - IP Series Data",
+        secondHeader: "First appearance to recent FY",
+        thirdHeader: "Rank",
+        fourthHeader: "Units",
         ltd: "Life-To-Date",
         summaryHeader: " Placeholder ",
         fiscalYear: elem.fiscalYear,
