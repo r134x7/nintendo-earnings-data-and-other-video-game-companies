@@ -214,13 +214,13 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
 
     let printSalesSum: string = `¥${Number((sortedSalesSum).toFixed(0)).toLocaleString("en")}M`;
 
-    let printUnitsSum: string = `${(sortedUnitsSum).toFixed(3)}M`;
+    let printUnitsSum: string = `${(sortedUnitsSum)}M`;
     
     let printSalesPerSoftwareUnitSum = `¥${Number((salesPerSoftwareUnitSum).toFixed(0)).toLocaleString("en")}`;
 
     let printAverageSales: string = `¥${Number(( sortedSalesSum / sortedSales.length).toFixed(0)).toLocaleString("en")}M`;
 
-    let printAverageUnits: string = `${( sortedUnitsSum / sortedUnits.length).toFixed(3)}M`; 
+    let printAverageUnits: string = `${( sortedUnitsSum / sortedUnits.length).toFixed(2)}M`; 
 
     let printAverageSalesPerSoftware: string = `¥${Number(( salesPerSoftwareUnitAverage).toFixed(0)).toLocaleString("en")}`; 
 
@@ -233,8 +233,8 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
     
     
     let printMedianUnits: string = ((sortedUnits.length % 2) !== 0) // odd number
-            ? `${(sortedUnits[((sortedUnits.length + 1)/2) -1].value / 1000).toFixed(3)}M`
-            : `${Number((((sortedUnits[(sortedUnits.length/2) -1].value + sortedUnits[(sortedUnits.length/2)].value)/2) / 1000).toFixed(3))}M`;
+            ? `${(sortedUnits[((sortedUnits.length + 1)/2) -1].value / 1000).toFixed(2)}M`
+            : `${Number((((sortedUnits[(sortedUnits.length/2) -1].value + sortedUnits[(sortedUnits.length/2)].value)/2) / 1000).toFixed(2))}M`;
 
     let printMedianSalesPerSoftwareUnit: string = ((salesPerSoftwareUnitSorted.length % 2) !== 0) // odd number
             ? `¥${salesPerSoftwareUnitSorted[((salesPerSoftwareUnitSorted.length + 1)/2) -1].toLocaleString("en")}`
@@ -242,15 +242,15 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
 
     let printMinSales: string = `¥${(sortedSales[0].value * 1000).toLocaleString("en")}M`;
 
-    let printMinUnits: string = `${(sortedUnits[0].value / 1000).toFixed(3)}M`;
+    let printMinUnits: string = `${(sortedUnits[0].value / 1000)}M`;
 
-    let printMinSalesPerSoftwareUnit: string = `¥${(salesPerSoftwareUnitSorted[0]).toLocaleString("en")}M`;
+    let printMinSalesPerSoftwareUnit: string = `¥${(salesPerSoftwareUnitSorted[0]).toLocaleString("en")}`;
 
     let printMaxSales: string = `¥${(sortedSales[sortedSales.length-1].value * 1000).toLocaleString("en")}M`;
 
-    let printMaxUnits: string = `${(sortedUnits[sortedUnits.length-1].value / 1000).toFixed(3)}M`;
+    let printMaxUnits: string = `${(sortedUnits[sortedUnits.length-1].value / 1000)}M`;
 
-    let printMaxSalesPerSoftwareUnit: string = `¥${(salesPerSoftwareUnitSorted[salesPerSoftwareUnitSorted.length-1]).toLocaleString("en")}M`;
+    let printMaxSalesPerSoftwareUnit: string = `¥${(salesPerSoftwareUnitSorted[salesPerSoftwareUnitSorted.length-1]).toLocaleString("en")}`;
 
 
     let printCountRow: string = border([
@@ -319,6 +319,7 @@ export const bandaiNamcoSalesPerSoftwareUnitCml = [
 
 export const CapcomSalesPerSoftwareUnitCml = [
     headerMaker("Capcom"),
+    dateLabel,
     printSalesPerSoftwareUnitCumulative(capcomDigitalContentsSales, capcomDigitalContentsUnits),
     printSalesPerSoftwareUnitCumulative(capcomDigitalSales, capcomDigitalUnits),
     printSalesPerSoftwareUnitCumulative(capcomPhysicalSales, capcomPhysicalUnits),
@@ -326,17 +327,20 @@ export const CapcomSalesPerSoftwareUnitCml = [
 
 export const segaSammySalesPerSoftwareUnitCml = [
     headerMaker("Sega Sammy"),
+    dateLabel,
     printSalesPerSoftwareUnitCumulative(segaSales, segaUnits)
 ].reduce((acc, next) => acc + "\n" + next);
 
 export const koeiTecmoSalesPerSoftwareUnitCml = [
     headerMaker("Koei Tecmo"),
+    dateLabel,
     printSalesPerSoftwareUnitCumulative(koeiTecmoSales, koeiTecmoUnits)
 ].reduce((acc, next) => acc + "\n" + next);
 
 export const squareEnixSalesPerSoftwareUnitCml = [
     headerMaker("Square Enix"),
+    dateLabel,
     printSalesPerSoftwareUnitCumulative(squareEnixSales, squareEnixUnits),
     notes2021,
-    liner(border([spacer("See \"Data by Fiscal Year\" for HD Games and MMO sales splits", 55, "left")]),"-","both"),
+    liner(border([spacer("See \"Data by Fiscal Year\" for HD Games and MMO sales splits", 60, "left")]),"-","both"),
 ].reduce((acc, next) => acc + "\n" + next);

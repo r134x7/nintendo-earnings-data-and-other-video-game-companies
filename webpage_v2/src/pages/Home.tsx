@@ -59,25 +59,25 @@ const Home = () => {
                     </List>
                     <Text>Capcom -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Platinum Titles from FY3/2006 to FY3/2023 added (with some data missing, see footnotes at end of some tables). Added Special page.</List.Item>
+                        <List.Item>Latest update: Platinum Titles from FY3/2006 to FY3/2023 added (with some data missing, see footnotes at end of some tables). Added sales per software unit cumulative to special page.</List.Item>
                         <List.Item>Future update planned: Notes section.</List.Item>
                     </List>
                     <Text>Sega Sammy -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Consolidated Operating Results from FY3/2019 to FY3/2023 added.</List.Item>
+                        <List.Item>Latest update: Consolidated Operating Results from FY3/2019 to FY3/2023 added. Added Special page.</List.Item>
                         <List.Item>Future update planned: Notes section.</List.Item>
                     </List>
                     <Text>Bandai Namco -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Consolidated Operating Results from FY3/2019 to FY3/2023 added.</List.Item>
+                        <List.Item>Latest update: Consolidated Operating Results from FY3/2019 to FY3/2023 added. Added Special page.</List.Item>
                     </List>
                     <Text>Koei Tecmo -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Consolidated Operating Results from FY3/2019 to FY3/2023 added.</List.Item>
+                        <List.Item>Latest update: Consolidated Operating Results from FY3/2019 to FY3/2023 added. Added Special page.</List.Item>
                     </List>
                     <Text>Square Enix -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Consolidated Operating Results from FY3/2019 to FY3/2023 added.</List.Item>
+                        <List.Item>Latest update: Consolidated Operating Results from FY3/2019 to FY3/2023 added. Added Special page.</List.Item>
                     </List>
                     <Text>Events -</Text>
                     <List withPadding listStyleType="disc">
