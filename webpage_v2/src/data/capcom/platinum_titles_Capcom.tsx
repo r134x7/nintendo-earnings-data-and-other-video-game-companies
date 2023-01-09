@@ -45,9 +45,7 @@ export type getTitles = {
 export type collectionData = {
     currentQuarter: number,
     footnotes?: string,
-    fiscalYearCml: string,
-    fiscalYearYoY: string,
-    summaryHeader: string,
+    fiscalYear: string,
     titles: getTitles[],
     delistedTitles?: getTitles[],
 }
@@ -175,15 +173,15 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
     let currentQuarter = elem.currentQuarter;
 
     let header: Header = {
-        capcomHeader: "| Capcom - Platinum Titles       |",
-        secondHeader: "| Title                          |",
-        thirdHeader: "| Platform                       |",
-        fourthHeader: "| Release Date and Rank          |",
-        fifthHeader: "| Units                          |",
-        fiscalYear: elem.fiscalYearCml,
-        fiscalYearYoY: elem.fiscalYearYoY,
+        capcomHeader: "Capcom - Platinum Titles",
+        secondHeader: "Title",
+        thirdHeader: "Platform",
+        fourthHeader: "Release Date and Rank",
+        fifthHeader: "Units",
+        fiscalYear: elem.fiscalYear,
+        fiscalYearYoY: elem.fiscalYear + " Cml. YoY% |",
         ltd: "Life-To-Date",
-        summaryHeader: elem.summaryHeader,
+        summaryHeader: elem.fiscalYear + " Cml.|   Units |    %    |",
     };
 
     let prevFYCheck = (array[index+1] === undefined) ? undefined : array[index+1].titles;
@@ -234,15 +232,15 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
     let currentQuarter = elem.currentQuarter;
 
     let header: Header = {
-        capcomHeader: "| Capcom - Platinum Titles       |",
-        secondHeader: "| Title                          |",
-        thirdHeader: "| Platform                       |",
-        fourthHeader: "| Release Date and Rank          |",
-        fifthHeader: "| Units                          |",
-        fiscalYear: elem.fiscalYearCml,
-        fiscalYearYoY: elem.fiscalYearYoY,
+        capcomHeader: "Capcom - Platinum Titles",
+        secondHeader: "Title",
+        thirdHeader: "Platform",
+        fourthHeader: "Release Date and Rank",
+        fifthHeader: "Units",
+        fiscalYear: elem.fiscalYear,
+        fiscalYearYoY: elem.fiscalYear + " Cml. YoY% |",
         ltd: "Life-To-Date",
-        summaryHeader: elem.summaryHeader,
+        summaryHeader: elem.fiscalYear + " Cml.|   Units |    %    |",
     };
 
     let prevFYCheck = (array[index+1] === undefined) ? undefined : array[index+1].titles;
@@ -337,11 +335,11 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
 const specialList = (): string => {
 
     let header: Header = {
-        capcomHeader: "| Capcom - Platinum Titles       |",
-        secondHeader: "| Title                          |",
-        thirdHeader: "| Platform                       |",
-        fourthHeader: "| Release Date and Rank          |",
-        fifthHeader: "| Units                          |",
+        capcomHeader: "Capcom - Platinum Titles",
+        secondHeader: "Title",
+        thirdHeader: "Platform",
+        fourthHeader: "Release Date and Rank",
+        fifthHeader: "Units",
         fiscalYear: "N/A",
         fiscalYearYoY: "N/A",
         ltd: "Life-To-Date",

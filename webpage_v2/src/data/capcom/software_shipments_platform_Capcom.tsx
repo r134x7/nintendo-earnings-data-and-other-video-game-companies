@@ -1,9 +1,6 @@
-import {
-    Header,
-    Series,
-    printHead,
-    printSeriesOutput,
-} from "../../utils/capcom_factbook_logic";
+import { Header, Series, printSeriesOutput } from "../../utils/capcom_factbook_logic";
+import { headerPrint } from "../../utils/table_design_logic";
+
 import softwareShipmentsPlatform2022 from "./Fact_Book/software_shipments_platform_fy3_2022.json";
 import softwareShipmentsPlatform2021 from "./Fact_Book/software_shipments_platform_fy3_2021.json";
 import softwareShipmentsPlatform2020 from "./Fact_Book/software_shipments_platform_fy3_2020.json";
@@ -41,10 +38,10 @@ const platformsMake = (obj: {
 export const annualReportList: string[] = collection.map((elem, index, array) => {
 
     let header: Header = {
-    firstHeader: "| Capcom - Fact Book Data        |",
-    secondHeader: "| Units shipped by Platform      |",
-    thirdHeader: "| SKU and Rank                   |",
-    fourthHeader: "| Units                          |",
+    firstHeader: "Capcom - Fact Book Data",
+    secondHeader: "Units shipped by Platform",
+    thirdHeader: "SKU and Rank",
+    fourthHeader: "Units",
     fiscalYear: elem.fiscalYear,
     fiscalYearYoY: elem.fiscalYearYoY,
     };
@@ -66,10 +63,15 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
     })
 
     let printedSeries = sortedList.map((elem) => {
-        return printSeriesOutput(elem)(header)(32)(11)(32);
+        return printSeriesOutput(elem, header, 32, 11);
     }).reduce((prev, next) => prev + "\n" + next)
 
-    let printOne = printHead(header);
+    let printOne = headerPrint([
+        header.firstHeader,
+        header.secondHeader,
+        header.thirdHeader,
+        header.fourthHeader,
+    ], 32);
 
     return printOne + "\n" + printedSeries
 })

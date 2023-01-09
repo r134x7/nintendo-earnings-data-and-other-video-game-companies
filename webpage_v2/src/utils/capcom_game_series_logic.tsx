@@ -1,3 +1,5 @@
+import { printTextBlock, liner, spacer, border } from "./table_design_logic";
+
 export type Series = {
     title: string,
     numberOfTitles: number,
@@ -10,26 +12,15 @@ export type Series = {
 };
 
 export type Header = {
-    capcomHeader: "| Capcom - Game Series Data      |",
-    secondHeader: "| First Appearance and Rank      |",
-    thirdHeader: "|Number of Titles by Hardware SKU|",
-    fourthHeader: "| Units                          |",
+    capcomHeader: "Capcom - Game Series Data",
+    secondHeader: "First Appearance and Rank",
+    thirdHeader: "Number of Titles by Hardware SKU",
+    fourthHeader: "Units",
     fiscalYear: string,
     fiscalYearYoY: string,
-    ltd: "| Life-To-Date       |",
+    ltd: "Life-To-Date",
     summaryHeader: string,
 };
-
-export const printHead = (header: Header) =>
-`+${"−".repeat(32)}+
-${header.capcomHeader}
-+${"−".repeat(32)}+
-${header.secondHeader}
-+${"−".repeat(32)}+
-${header.thirdHeader}
-+${"−".repeat(32)}+
-${header.fourthHeader}
-+${"−".repeat(32)}+`;
 
 const printRank = (seriesIP: Series) => {
 
@@ -54,53 +45,6 @@ const printNumberOfTitles = (seriesIP: Series) => {
             : titleCount + " ".repeat(blockLength - titleCount.length);
     }
 }
-
-const printTextBlock = (text: string) => {
-
-    return (blockLength: number) => {
-
-        let textSplit: string[] = text.split(" ");
-         
-        let arrayCheckText = 0; // a mutating variable for splicing textSplit below in textReduce
-
-        let printText: string | never[] = Array.from({length:Math.ceil((text.length + textSplit.length)/blockLength)}, (v,i) => {
-
-            let textSplice = textSplit.slice(arrayCheckText)
-
-            let nextCheckAlert = false;
-            
-            let textReduce = textSplice.reduce((prev, next) => 
-            {
-                if (nextCheckAlert) { // if this isn't here and next is small enough to pass the next if statement then words end up missing due to the arrayCheckText + increment
-                    return prev
-                }
-
-                let nextCheck = prev + " " + next + " ";
-                
-                if (nextCheck.length > blockLength) {
-                    nextCheckAlert = true;
-                    return prev // repeat prev until reduce finishes
-                } 
-                
-                arrayCheckText++ 
-
-                return prev + " " + next
-                
-            }, "")
-
-            let textFixed = (textReduce.length >= blockLength || textReduce.length === 0) // latter condition is to return an empty array
-                ? textReduce
-                : textReduce + " ".repeat(blockLength - textReduce.length)
-
-            return (textFixed.length === 0) 
-                ? []
-                : "|" + textFixed + "|"
-
-        }).filter(elem => elem.length !== 0).reduce((prev, next) => prev + "\n" + next)
-        
-        return printText
-    }
-};
 
 const printReleaseDate = (seriesIP: Series) => {
 
@@ -164,8 +108,8 @@ const printSeriesName = (seriesIP: Series) => {
 
     return (blockLength: number) => {
        return (!seriesIP.miscellaneous) 
-            ? "+"+"−".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title)(blockLength) + "\n+" + "−".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|\n+" + "−".repeat(blockLength) + "+\n|" + printNumberOfTitles(seriesIP)(blockLength) + "|"
-            : "+"+"−".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title)(blockLength) + "\n+" + "−".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|\n+" + "−".repeat(blockLength) + "+\n" + printTextBlock(seriesIP.miscellaneous)(blockLength);
+            ? "+"+"−".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title, blockLength) + "\n+" + "−".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|\n+" + "−".repeat(blockLength) + "+\n|" + printNumberOfTitles(seriesIP)(blockLength) + "|"
+            : "+"+"−".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title, blockLength) + "\n+" + "−".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|\n+" + "−".repeat(blockLength) + "+\n" + printTextBlock(seriesIP.miscellaneous, blockLength);
     };
 };
 

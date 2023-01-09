@@ -1,6 +1,5 @@
 {
-    "fiscalYearCml":  "FY3/2012 Cumulative  |",
-    "fiscalYearYoY": "FY3/12 Cml. YoY%   |",
+    "fiscalYear": "FY3/2012",
     "series": [
         {
             "title": "1942",

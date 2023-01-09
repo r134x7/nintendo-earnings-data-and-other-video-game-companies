@@ -1,6 +1,5 @@
 {
-    "fiscalYearCml":  "FY3/2021",
-    "fiscalYearYoY": "FY3/21 Cml. YoY%   |",
+    "fiscalYear": "FY3/2021",
     "series": [
         {
             "title": "1942",

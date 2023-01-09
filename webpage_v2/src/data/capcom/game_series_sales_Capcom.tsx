@@ -1,9 +1,6 @@
-import { 
-    Header,
-    Series,
-    printHead,
-    printSeriesOutput,
-} from "../../utils/capcom_game_series_logic";
+import { Header, Series, printSeriesOutput } from "../../utils/capcom_game_series_logic";
+import { spacer, border, liner, headerPrint } from "../../utils/table_design_logic";
+
 import gameSeries2022 from "./Game_Series/game_series_fy3_2022.json";
 import gameSeries2021 from "./Game_Series/game_series_fy3_2021.json";
 import gameSeries2020 from "./Game_Series/game_series_fy3_2020.json";
@@ -63,14 +60,14 @@ const seriesMake = (obj: {
 export const gameSeriesList: string[] = collection.map((elem, index, array) => {
 
     let header: Header = {
-    capcomHeader: "| Capcom - Game Series Data      |",
-    secondHeader: "| First Appearance and Rank      |",
-    thirdHeader: "|Number of Titles by Hardware SKU|",
-    fourthHeader: "| Units                          |",
-    ltd: "| Life-To-Date       |",
+    capcomHeader: "Capcom - Game Series Data",
+    secondHeader: "First Appearance and Rank",
+    thirdHeader: "Number of Titles by Hardware SKU",
+    fourthHeader: "Units",
+    ltd: "Life-To-Date",
     fiscalYear: elem.fiscalYearCml,
     fiscalYearYoY: elem.fiscalYearYoY,
-    summaryHeader: " Placeholder ",
+    summaryHeader: "Placeholder",
     }
 
     let seriesList: Series[] = seriesMake(elem)
@@ -92,7 +89,12 @@ export const gameSeriesList: string[] = collection.map((elem, index, array) => {
         return printSeriesOutput(elem)(header)(42)(11)(32);
     }).reduce((prev, next) => prev + "\n" + next)
 
-    let printOne = printHead(header);
+    let printOne = headerPrint([
+        header.capcomHeader,
+        header.secondHeader,
+        header.thirdHeader,
+        header.fourthHeader,
+    ], 45)
 
     return printOne + "\n" + printedSeries
 })

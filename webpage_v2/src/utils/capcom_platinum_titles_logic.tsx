@@ -13,14 +13,14 @@ export type Titles = {
 }
 
 export type Header = {
-    capcomHeader: "| Capcom - Platinum Titles       |",
-    secondHeader: "| Title                          |",
-    thirdHeader: "| Platform                       |",
-    fourthHeader: "| Release Date and Rank          |",
-    fifthHeader: "| Units                          |",
+    capcomHeader: "Capcom - Platinum Titles",
+    secondHeader: "Title",
+    thirdHeader: "Platform",
+    fourthHeader: "Release Date and Rank",
+    fifthHeader: "Units",
     fiscalYear: string,
     fiscalYearYoY: string,
-    ltd: "| Life-To-Date       |",
+    ltd: "Life-To-Date",
     summaryHeader: string,
 }
 
