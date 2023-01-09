@@ -64,7 +64,7 @@ export const border = (textArray: string[]): string => {
         }, "")
     };
 
-export const liner = (text: string, lineStyle: "-" | "=" | "#", position: "top" | "bottom" | "both"): string => {
+export const liner = (text: string, lineStyle: "−" | "=" | "#", position: "top" | "bottom" | "both"): string => {
         let line = `+${lineStyle.repeat(text.length-2)}+` 
 
         return (position === "top")

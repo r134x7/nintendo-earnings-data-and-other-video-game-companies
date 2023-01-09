@@ -41,7 +41,7 @@ export default function BANDAI_NAMCO_CML() {
                     data={dataList}
             />
             
-            <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`, fontFamily: "monospace"}} block>
+            <Code  onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`}} block>
                 {selectData(value)}
                 </Code>
             <Space h="xl" />
