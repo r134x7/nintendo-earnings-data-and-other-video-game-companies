@@ -5,6 +5,7 @@ import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import KOEI_TECMO_COMPONENT from "../components/KOEI_TECMO_COMPONENT";
+import KOEI_TECMO_CML from "../components/special/KOEI_TECMO_CML";
 
 const currentYear = 2023;
 
@@ -37,6 +38,7 @@ export default function KoeiTecmo() {
     }, [seconds])
 
     const [year, setYear] = useState("");
+    const [value, setValue] = useState("Data by Fiscal Year");
 
     const [colour, setColour] = useState("rgb(0, 255, 255)")
 
@@ -94,7 +96,22 @@ export default function KoeiTecmo() {
                     </Anchor>
             </Stack>
             </Paper>
+            <SegmentedControl 
+                mb="sm"
+                mt="sm"
+                fullWidth
+                orientation="horizontal"
+                value={value}
+                onChange={setValue}
+                data={[
+                    "Data by Fiscal Year",
+                    "Special Page",
+                ]}
+            />
 
+            {
+                (value === "Data by Fiscal Year")
+                ? 
             <Group position="center">
 
                 <Autocomplete
@@ -151,12 +168,15 @@ export default function KoeiTecmo() {
                         </Paper>
 
             </Group>
+                : <KOEI_TECMO_CML />
+            }
 
-            {  
-                selectYear(year)
+            {   (value === "Data by Fiscal Year")
+                ? selectYear(year)
+                : null
             }
             
-            { (selectYear(year) !== null)
+            { (selectYear(year) !== null && value === "Data by Fiscal Year")
                 ? (
                 <Group position="center">
                     <Space h="xl" />

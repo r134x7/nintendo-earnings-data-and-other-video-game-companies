@@ -336,5 +336,7 @@ export const koeiTecmoSalesPerSoftwareUnitCml = [
 
 export const squareEnixSalesPerSoftwareUnitCml = [
     headerMaker("Square Enix"),
-    printSalesPerSoftwareUnitCumulative(squareEnixSales, squareEnixUnits)
+    printSalesPerSoftwareUnitCumulative(squareEnixSales, squareEnixUnits),
+    notes2021,
+    liner(border([spacer("See \"Data by Fiscal Year\" for HD Games and MMO sales splits", 55, "left")]),"-","both"),
 ].reduce((acc, next) => acc + "\n" + next);

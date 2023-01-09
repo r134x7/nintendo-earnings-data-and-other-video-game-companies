@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Text, Group, Space, Autocomplete, ColorPicker, Anchor, Stack, Paper, Code} from "@mantine/core"
+import { Text, Group, Space, SegmentedControl, Autocomplete, ColorPicker, Anchor, Stack, Paper, Code} from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import SQUARE_ENIX_COMPONENT from "../components/SQUARE_ENIX_COMPONENT";
+import SQUARE_ENIX_CML from "../components/special/SQUARE_ENIX_CML";
 
 const currentYear = 2023;
 
@@ -44,6 +45,7 @@ export default function SquareEnix() {
     }, [seconds])
 
     const [year, setYear] = useState("");
+    const [value, setValue] = useState("Data by Fiscal Year");
 
     const [colour, setColour] = useState("rgb(0, 255, 255)")
 
@@ -169,7 +171,22 @@ export default function SquareEnix() {
                     </Anchor>
             </Stack>
             </Paper>
+            <SegmentedControl 
+                mb="sm"
+                mt="sm"
+                fullWidth
+                orientation="horizontal"
+                value={value}
+                onChange={setValue}
+                data={[
+                    "Data by Fiscal Year",
+                    "Special Page",
+                ]}
+            />
 
+            {
+                (value === "Data by Fiscal Year")
+                ? 
             <Group position="center">
 
                 <Autocomplete
@@ -226,12 +243,15 @@ export default function SquareEnix() {
                         </Paper>
 
             </Group>
+                : <SQUARE_ENIX_CML />
+            }
 
-            {  
-                selectYear(year)
+            {   (value === "Data by Fiscal Year")
+                ? selectYear(year)
+                : null
             }
             
-            { (selectYear(year) !== null)
+            { (selectYear(year) !== null && value === "Data by Fiscal Year")
                 ? (
                 <Group position="center">
                     <Space h="xl" />

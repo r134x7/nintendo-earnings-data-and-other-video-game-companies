@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Text, Group, Space, Autocomplete, ColorPicker, Anchor, Stack, Paper, Code} from "@mantine/core"
+import { Text, Group, Space, SegmentedControl, Autocomplete, ColorPicker, Anchor, Stack, Paper, Code} from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import SEGA_COMPONENT from "../components/SEGA_COMPONENT";
+import SEGA_CML from "../components/special/SEGA_CML";
 
 const currentYear = 2023;
 
@@ -37,6 +38,7 @@ export default function Sega() {
     }, [seconds])
 
     const [year, setYear] = useState("");
+    const [value, setValue] = useState("Data by Fiscal Year");
 
     const [colour, setColour] = useState("rgb(0, 255, 255)")
 
@@ -94,7 +96,22 @@ export default function Sega() {
                     </Anchor>
             </Stack>
             </Paper>
+            <SegmentedControl 
+                mb="sm"
+                mt="sm"
+                fullWidth
+                orientation="horizontal"
+                value={value}
+                onChange={setValue}
+                data={[
+                    "Data by Fiscal Year",
+                    "Special Page",
+                ]}
+            />
 
+            {
+                (value === "Data by Fiscal Year")
+                ? 
             <Group position="center">
 
                 <Autocomplete
@@ -151,12 +168,15 @@ export default function Sega() {
                         </Paper>
 
             </Group>
+                : <SEGA_CML />
+            }
 
-            {   
-                selectYear(year)
+            {   (value === "Data by Fiscal Year")
+                ? selectYear(year)
+                : null
             }
             
-            { (selectYear(year) !== null)
+            { (selectYear(year) !== null && value === "Data by Fiscal Year")
                 ? (
                 <Group position="center">
                     <Space h="xl" />
