@@ -133,11 +133,11 @@ import {
             
             let printTitleName = printTextBlock(elem[0].name)(42)
 
-            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+"// + "+"+"-".repeat(42)+"+"
+            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+"// + "+"+"−".repeat(42)+"+"
             // need to check regarding || conditions in filter because it's not working...
             let yearValues: string[] = elem.filter(value => value.valueB !== 0).filter(value => value.period !== " Last FY Cumulative ").map((value, valueIndex, valueArray) => {
 
-               let printValue: string = `${value.valueB}M ` 
+               let printValue: string = `${value.valueB}M` 
                let printValueFixed: string = (printValue.length >= 11)
                    ? printValue
                    : " ".repeat(11 - printValue.length) + printValue;
@@ -149,13 +149,13 @@ import {
                return  printPeriodFixed + printValueFixed + "|"
             })//.filter((secondValue, index) => index !== elem.length-1) 
 
-        let printValue: string = `${elem[elem.length-1].valueB}M ` 
+        let printValue: string = `${elem[elem.length-1].valueB}M` 
         
         let printValueFixed: string = (printValue.length >= 11)
             ? printValue
             : " ".repeat(11 - printValue.length) + printValue;
 
-        let printLine: string = "+" + "-".repeat(42) + "+";
+        let printLine: string = "+" + "−".repeat(42) + "+";
 
         let printLTD = printLine + "\n| Japan - Life-To-Date (Units) |" + printValueFixed + "|\n" + printLine;
 
@@ -180,11 +180,11 @@ import {
             
             let printTitleName = printTextBlock(elem[0].name)(42)
 
-            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+"// + "+"+"-".repeat(42)+"+"
+            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+"// + "+"+"−".repeat(42)+"+"
             // need to check regarding || conditions in filter because it's not working...
             let yearValues: string[] = elem.filter(value => value.valueC !== 0).filter(value => value.regionC !== "Overseas").filter(value => value.period !== " Last FY Cumulative ").map((value, valueIndex, valueArray) => {
 
-               let printValue: string = `${value.valueC}M ` 
+               let printValue: string = `${value.valueC}M` 
                let printValueFixed: string = (printValue.length >= 11)
                    ? printValue
                    : " ".repeat(11 - printValue.length) + printValue;
@@ -196,13 +196,13 @@ import {
                return  printPeriodFixed + printValueFixed + "|"
             })//.filter((secondValue, index) => index !== elem.length-1) 
 
-        let printValue: string = `${elem[elem.length-1].valueC}M ` 
+        let printValue: string = `${elem[elem.length-1].valueC}M` 
         
         let printValueFixed: string = (printValue.length >= 11)
             ? printValue
             : " ".repeat(11 - printValue.length) + printValue;
 
-        let printLine: string = "+" + "-".repeat(42) + "+";
+        let printLine: string = "+" + "−".repeat(42) + "+";
 
         let printLTD = printLine + "\n| The Americas - LTD (Units)   |" + printValueFixed + "|\n" + printLine;
 
@@ -227,11 +227,11 @@ import {
             
             let printTitleName = printTextBlock(elem[0].name)(42)
 
-            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+"// + "+"+"-".repeat(42)+"+"
+            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+"// + "+"+"−".repeat(42)+"+"
             // need to check regarding || conditions in filter because it's not working...
             let yearValues: string[] = elem.filter(value => value.valueD !== 0).filter(value => value.regionD !== "Other").filter(value => value.period !== " Last FY Cumulative ").map((value, valueIndex, valueArray) => {
 
-               let printValue: string = `${value.valueD}M ` 
+               let printValue: string = `${value.valueD}M` 
                let printValueFixed: string = (printValue.length >= 11)
                    ? printValue
                    : " ".repeat(11 - printValue.length) + printValue;
@@ -243,13 +243,13 @@ import {
                return  printPeriodFixed + printValueFixed + "|"
             })//.filter((secondValue, index) => index !== elem.length-1) 
 
-        let printValue: string = `${elem[elem.length-1].valueD}M ` 
+        let printValue: string = `${elem[elem.length-1].valueD}M` 
         
         let printValueFixed: string = (printValue.length >= 11)
             ? printValue
             : " ".repeat(11 - printValue.length) + printValue;
 
-        let printLine: string = "+" + "-".repeat(42) + "+";
+        let printLine: string = "+" + "−".repeat(42) + "+";
 
         let printLTD = printLine + "\n| Europe - Life-To-Date (Units)|" + printValueFixed + "|\n" + printLine;
 
@@ -274,7 +274,7 @@ import {
             
             let printTitleName = printTextBlock(elem[0].name)(42)
 
-            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+"// + "+"+"-".repeat(42)+"+"
+            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+"// + "+"+"−".repeat(42)+"+"
 
             let yearValuesOtherD: string[] = elem.filter(value => {
                 return (value.valueD !== 0 && value.regionD === "Other")
@@ -284,7 +284,7 @@ import {
             //         ? value.valueD
             //         : value.valueE 
 
-               let printValue: string = `${value.valueD}M ` 
+               let printValue: string = `${value.valueD}M` 
                let printValueFixed: string = (printValue.length >= 11)
                    ? printValue
                    : " ".repeat(11 - printValue.length) + printValue;
@@ -304,7 +304,7 @@ import {
             //         ? value.valueD
             //         : value.valueE 
 
-               let printValue: string = `${value.valueE}M ` 
+               let printValue: string = `${value.valueE}M` 
                let printValueFixed: string = (printValue.length >= 11)
                    ? printValue
                    : " ".repeat(11 - printValue.length) + printValue;
@@ -322,13 +322,13 @@ import {
                     ? elem[elem.length-1].valueD
                     : elem[elem.length-1].valueE 
 
-        let printValue: string = `${findOtherLTDValue}M ` 
+        let printValue: string = `${findOtherLTDValue}M` 
         
         let printValueFixed: string = (printValue.length >= 11)
             ? printValue
             : " ".repeat(11 - printValue.length) + printValue;
 
-        let printLine: string = "+" + "-".repeat(42) + "+";
+        let printLine: string = "+" + "−".repeat(42) + "+";
 
         let printLTD = printLine + "\n| Other - Life-To-Date (Units) |" + printValueFixed + "|\n" + printLine;
 

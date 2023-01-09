@@ -1,7 +1,7 @@
 {
     "currentQuarter": 4,
-    "fiscalYearCml":  "| FY3/2022 Cumulative|",
-    "fiscalYearYoY": "| FY3/2022 Cml. YoY% |",
+    "fiscalYearCml":  "FY3/202022 Cumulative|",
+    "fiscalYearYoY": "FY3/2022 Cml. YoY% |",
     "summaryHeader": "|FY3/2022 Cml.|   Units |    %    |",
     "titles": [
         {

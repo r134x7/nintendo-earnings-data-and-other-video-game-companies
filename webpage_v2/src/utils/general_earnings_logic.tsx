@@ -66,9 +66,9 @@ function printQuarterValues(quarterValues: Earnings[],  currentQuarter: number) 
         let quarters = quartercalc.filter((elem, index) => index < currentQuarter).map((elem) => {
 
             let valueString: string = (elem.units === "currency")
-                        ? `¥${elem.value.toLocaleString("en")}M `
+                        ? `¥${elem.value.toLocaleString("en")}M`
                         : (elem.units === "percentage")
-                        ? `${elem.value}% `
+                        ? `${elem.value}%`
                         : `NaN`;
 
             let valueFixed: string = (valueString.length >= quarterPrintLength)
@@ -94,9 +94,9 @@ function printCumulativeValues(cmlValues: Earnings[], fiscalYear: string, curren
         let cumulatives = cmlValues.filter((elem, index) => currentQuarter >= 2 && index < currentQuarter && index !== 0).map((elem, index) => {
 
             let valueString: string = (elem.units === "currency")
-                        ? `¥${elem.value.toLocaleString("en")}M `
+                        ? `¥${elem.value.toLocaleString("en")}M`
                         : (elem.units === "percentage")
-                        ? `${elem.value}% `
+                        ? `${elem.value}%`
                         : `NaN`;
 
             let valueFixed: string = (valueString.length >= cmlPrintLength)
@@ -128,10 +128,10 @@ function printYoY(valuesThisFY: Earnings[], valuesLastFY: Earnings[], currentQua
     }).map((elem) => {
 
             let yoy: string = (elem.value > 0) 
-                                ? `+${elem.value}% `
+                                ? `+${elem.value}%`
                                 : (elem.units === "NaN")
-                                ? "N/A "
-                                : `${elem.value}% `;
+                                ? "N/A"
+                                : `${elem.value}%`;
             
             let yoyFixed: string = (yoy.length >= yoyPrintLength)
                                 ? yoy 
@@ -163,9 +163,9 @@ function printForecastValues(forecastValues: Earnings[]) {
                 : (elem.forecastPeriod?.length)
 
             let forecastString: string = (elem.units === "currency")
-                            ? `¥${elem.value.toLocaleString("en")}M `
+                            ? `¥${elem.value.toLocaleString("en")}M`
                             : (elem.units === "percentage")
-                            ? `${elem.value}% `
+                            ? `${elem.value}%`
                             : `NaN`;
             
             let forecastFixed: string = (forecastString.length >= forecastPrintLength)
@@ -183,7 +183,7 @@ function printForecastValues(forecastValues: Earnings[]) {
     };
 };
 
-const printLine = (lineLength: number) => "+" + "-".repeat(lineLength) + "+"; 
+const printLine = (lineLength: number) => "+" + "−".repeat(lineLength) + "+"; 
 
 const printDoubleLine = (lineLength: number) => "+" + "=".repeat(lineLength) + "+";
 

@@ -170,11 +170,11 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
                 : " " + elem[0].platform + " ".repeat(29 - elem[0].platform.length)
 
 
-            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
 
             let yearValues: string[] = elem.filter((value, index) => { return value.valueC !== 0}).map((value, valueIndex, valueArray) => {
 
-               let printValue: string = `${value.valueC}M ` 
+               let printValue: string = `${value.valueC}M` 
                let printValueFixed: string = (printValue.length >= 11)
                    ? printValue
                    : " ".repeat(11 - printValue.length) + printValue;
@@ -187,13 +187,13 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
             }).filter((value, index) => index !== elem.length-1 );
                 
 
-        let printValue: string = `${elem[elem.length-1].valueD}M ` 
+        let printValue: string = `${elem[elem.length-1].valueD}M` 
         
         let printValueFixed: string = (printValue.length >= 11)
             ? printValue
             : " ".repeat(11 - printValue.length) + printValue;
 
-        let printLine: string = "+" + "-".repeat(42) + "+";
+        let printLine: string = "+" + "−".repeat(42) + "+";
 
         let printLTD = printLine + "\n| Global - Life-To-Date (Units)|" + printValueFixed + "|\n" + printLine;
 
@@ -235,16 +235,16 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
 
         //     let printTitleName = printTextBlock(elem.title)(42)
 
-        //     let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+        //     let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
             
-        //     let printValueD: string = `${elem.valueD}M ` 
+        //     let printValueD: string = `${elem.valueD}M` 
         //     let printValueDFixed: string = (printValueD.length >= 9)
         //         ? printValueD
         //         : " ".repeat(9 - printValueD.length) + printValueD;
 
         //     let printValueDRow: string = (elem.miscellaneous)
-        //         ? "| Global - Life-To-Date (Units)  |" + printValueDFixed + "|\n+" + "-".repeat(42) + "+\n|" + elem.miscellaneous + "\n+" + "-".repeat(elem.miscellaneous.length-1) + "+"
-        //         : "| Global - Life-To-Date (Units)  |" + printValueDFixed + "|\n+" + "-".repeat(42) + "+";
+        //         ? "| Global - Life-To-Date (Units)  |" + printValueDFixed + "|\n+" + "−".repeat(42) + "+\n|" + elem.miscellaneous + "\n+" + "−".repeat(elem.miscellaneous.length-1) + "+"
+        //         : "| Global - Life-To-Date (Units)  |" + printValueDFixed + "|\n+" + "−".repeat(42) + "+";
 
         //     return printTitleNameFixed + "\n" + printValueDRow
 
@@ -275,11 +275,11 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
                 : " " + elem[0].platform + " ".repeat(29 - elem[0].platform.length)
 
 
-            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
 
             let yearValues: string[] = elem.filter((value, index) => { return value.valueB !== 0}).map((value, valueIndex, valueArray) => {
 
-               let printValue: string = `${value.valueB}M ` 
+               let printValue: string = `${value.valueB}M` 
                let printValueFixed: string = (printValue.length >= 11)
                    ? printValue
                    : " ".repeat(11 - printValue.length) + printValue;
@@ -292,13 +292,13 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
             }).filter((value, index) => index !== elem.length-1 );
                 
 
-        let printValue: string = `${elem[elem.length-1].valueB}M ` 
+        let printValue: string = `${elem[elem.length-1].valueB}M` 
         
         let printValueFixed: string = (printValue.length >= 11)
             ? printValue
             : " ".repeat(11 - printValue.length) + printValue;
 
-        let printLine: string = "+" + "-".repeat(42) + "+";
+        let printLine: string = "+" + "−".repeat(42) + "+";
 
         let printLTD = printLine + "\n|Overseas - Life-To-Date(Units)|" + printValueFixed + "|\n" + printLine;
 
@@ -348,11 +348,11 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
                 : " " + elem[0].platform + " ".repeat(29 - elem[0].platform.length)
 
 
-            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
 
             let yearValues: string[] = elem.filter((value, index) => { return value.valueA !== 0}).map((value, valueIndex, valueArray) => {
 
-               let printValue: string = `${value.valueA}M ` 
+               let printValue: string = `${value.valueA}M` 
                let printValueFixed: string = (printValue.length >= 11)
                    ? printValue
                    : " ".repeat(11 - printValue.length) + printValue;
@@ -365,13 +365,13 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
             }).filter((value, index) => index !== elem.length-1 );
                 
 
-        let printValue: string = `${elem[elem.length-1].valueA}M ` 
+        let printValue: string = `${elem[elem.length-1].valueA}M` 
         
         let printValueFixed: string = (printValue.length >= 11)
             ? printValue
             : " ".repeat(11 - printValue.length) + printValue;
 
-        let printLine: string = "+" + "-".repeat(42) + "+";
+        let printLine: string = "+" + "−".repeat(42) + "+";
 
         let printLTD = printLine + "\n| Japan - Life-To-Date (Units) |" + printValueFixed + "|\n" + printLine;
         

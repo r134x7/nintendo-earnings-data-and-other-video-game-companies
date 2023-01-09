@@ -50,13 +50,13 @@ export function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
     }
 
 export const printHead = (header: Header) => 
-`+${"-".repeat(31)}+
+`+${"−".repeat(31)}+
 ${header.switchHeader} ${header.fiscalYear} |
-+${"-".repeat(31)}+
++${"−".repeat(31)}+
 ${header.firstHeader}
-+${"-".repeat(31)}+
++${"−".repeat(31)}+
 ${header.secondHeader}
-+${"-".repeat(31)}+`;
++${"−".repeat(31)}+`;
 
 
 export const printSections = (header: Header, sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], sectionForecasts: Section[], currentQuarter: number) => {
@@ -71,7 +71,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             // ? "+------------------------------------+\n| Dedicated video game platform      |\n+------------------------------------+\n|             |     Sales  |    YoY% |\n+------------------------------------+"
             // : (sectionDifference[0].name === "Digital Sales")
             // ? "+--------------------------+\n|Digital Sales in dedicated|---------+\n| video game platform      |    YoY% |\n+------------------------------------+"
-    //         : "+" + "-".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |\n+" + "-".repeat(33) + "+"
+    //         : "+" + "−".repeat(33) + "+\n|" + sectionDifference[0].name + " ".repeat(13 - sectionDifference[0].name.length) + "|   Units |    YoY% |\n+" + "−".repeat(33) + "+"
     const sectionHeader: string | never[] = (sectionDifference[0].name === "Mobile, IP related income, etc.")
             ? "+--------------------------+\n| Mobile, IP related       |---------+\n| income, etc.             |    YoY% |\n+------------------------------------+"  
             : (sectionDifference[0].name === "Playing cards, etc.")
@@ -81,8 +81,8 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             : (sectionDifference[0].name === "Digital Sales")
             ? "+--------------------------+\n|Digital Sales in dedicated|---------+\n| video game platform      |    YoY% |\n+------------------------------------+"
             : (sectionDifference[0].units === "currency")
-            ? "+" + "-".repeat(33) + "+\n" + printTextBlock(sectionCumulative[0].name)(33) + "\n+" + "-".repeat(36) + "+\n" + "|             |      Units |    YoY% |\n" + "+" + "-".repeat(36) + "+" 
-            : "+" + "-".repeat(33) + "+\n" + printTextBlock(sectionCumulative[0].name)(33) + "\n+" + "-".repeat(33) + "+\n" + "|             |   Units |    YoY% |\n" + "+" + "-".repeat(33) + "+" 
+            ? "+" + "−".repeat(33) + "+\n" + printTextBlock(sectionCumulative[0].name)(33) + "\n+" + "−".repeat(36) + "+\n" + "|             |      Units |    YoY% |\n" + "+" + "−".repeat(36) + "+" 
+            : "+" + "−".repeat(33) + "+\n" + printTextBlock(sectionCumulative[0].name)(33) + "\n+" + "−".repeat(33) + "+\n" + "|             |   Units |    YoY% |\n" + "+" + "−".repeat(33) + "+" 
 
      const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem, index, array) => {
         //  return index < currentQuarter && array[index].units !== "NaN"
@@ -106,8 +106,8 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed[index].units === "NaN")
                 ? "NaN"
                 : (sectionDifferenceYoYFixed[index].value > 0)
-                ? `+${sectionDifferenceYoYFixed[index].value}% `
-                : `${sectionDifferenceYoYFixed[index].value}% `
+                ? `+${sectionDifferenceYoYFixed[index].value}%`
+                : `${sectionDifferenceYoYFixed[index].value}%`
 
             let printSectionDifferenceYoYFixed: string = (printSectionDifferenceYoY === "NaN")
                 ? printSectionDifferenceYoY
@@ -116,8 +116,8 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                 : " ".repeat(9 - printSectionDifferenceYoY.length) + printSectionDifferenceYoY
 
             let printSection: string = (elem.units === "currency")
-                ? `¥${elem.value.toLocaleString("en")}M `
-                : `${(elem.value / 100).toFixed(2)}M `;
+                ? `¥${elem.value.toLocaleString("en")}M`
+                : `${(elem.value / 100).toFixed(2)}M`;
 
             let lineSpace: number = (elem.units === "currency")
                 ? 12
@@ -141,7 +141,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             // let printLine: string = (index === currentQuarter -1)
             let printLine: string = (array[index] === array.at(-1))
                 ? "\n+" + "=".repeat(printLineLength) + "+"
-                : "\n+" + "-".repeat(printLineLength) + "+"
+                : "\n+" + "−".repeat(printLineLength) + "+"
 
             return (printSectionDifferenceYoYFixed === "NaN")
                     ? "|" + elem.period + "|" + printSectionFixed + "|" + printLine
@@ -161,8 +161,8 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                 let printSectionCumulativeYoY: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                     ? "NaN"
                     : (sectionCumulativeYoYFixed[index].value > 0)
-                    ? `+${sectionCumulativeYoYFixed[index].value}% `
-                    : `${sectionCumulativeYoYFixed[index].value}% `
+                    ? `+${sectionCumulativeYoYFixed[index].value}%`
+                    : `${sectionCumulativeYoYFixed[index].value}%`
 
                 let printSectionCumulativeYoYFixed: string = (printSectionCumulativeYoY === "NaN")
                     ? printSectionCumulativeYoY
@@ -171,8 +171,8 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                     : " ".repeat(9 - printSectionCumulativeYoY.length) + printSectionCumulativeYoY
 
                 let printCumulative: string = (elem.units === "currency")
-                ? `¥${elem.value.toLocaleString("en")}M `
-                : `${(elem.value / 100).toFixed(2)}M `;
+                ? `¥${elem.value.toLocaleString("en")}M`
+                : `${(elem.value / 100).toFixed(2)}M`;
 
                 let lineSpace: number = (elem.units === "currency")
                     ? 12
@@ -196,7 +196,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                 ? lineLengths.short 
                 : lineLengths.long    
 
-                let printLine: string = "\n+" + "-".repeat(printLineLength) + "+"
+                let printLine: string = "\n+" + "−".repeat(printLineLength) + "+"
 
                 let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
                     ? `${shortFY} ${elem.cmlPeriod}`
@@ -209,21 +209,21 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             : []
 
         const ltd: string = (currentQuarter === 1) 
-                ? `${((sectionDifference[currentQuarter-1].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M `
-                : `${((sectionCumulative[currentQuarter-2].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M `
+                ? `${((sectionDifference[currentQuarter-1].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M`
+                : `${((sectionCumulative[currentQuarter-2].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M`
 
         const ltdFixed: string = (ltd.length >= 9)
                 ? ltd
                 : " ".repeat(9 - ltd.length) + ltd
         
-        const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+"
+        const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "−".repeat(23) + "+"
 
         const forecast: string = sectionForecasts.map((elem, index, array) => {
                 
                 // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
                 let shortFY: string = header.fiscalYear;
 
-                let printValue: string = `${elem.value / 100}M `
+                let printValue: string = `${elem.value / 100}M`
                 let printValueFixed: string = (printValue.length >= 9)
                     ? printValue
                     : " ".repeat(9 - printValue.length) + printValue
@@ -231,12 +231,12 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                 // let miscellaneous: string = "|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"
 
                 return (currentQuarter === 4 && index === array.length-1 && array.length === 1)
-                    ? "+" + "-".repeat(27) + "+\n|" + header.nextFiscalYearShort + " " + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+                    ? "+" + "−".repeat(27) + "+\n|" + header.nextFiscalYearShort + " " + elem.period + "|" + printValueFixed + "|\n+" + "−".repeat(27) + "+" 
                     : (currentQuarter === 4 && index === array.length-1 && elem.period === "Forecast")
-                    ? "|" + header.nextFiscalYearShort + " " + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+                    ? "|" + header.nextFiscalYearShort + " " + elem.period + "|" + printValueFixed + "|\n+" + "−".repeat(27) + "+" 
                     : (index === 0)
-                    ? "+" + "-".repeat(27) + "+\n|" + shortFY + " " + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+"
-                    : "|" + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+                    ? "+" + "−".repeat(27) + "+\n|" + shortFY + " " + elem.period + "|" + printValueFixed + "|\n+" + "−".repeat(27) + "+"
+                    : "|" + elem.period + "|" + printValueFixed + "|\n+" + "−".repeat(27) + "+" 
             }).concat((sectionDifference[0].name === "Nintendo Switch Software Total") ? ["|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"] : "###").reduce((prev, next) => prev + "\n" + next)
         // (sectionDifference[0].name === "Nintendo Switch Hardware Total")
         //     ? sectionForecasts.map((elem, index, array) => {
@@ -244,18 +244,18 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
         //         // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
         //         let shortFY: string = header.fiscalYear;
                 
-        //         let printValue: string = `${elem.value / 100}M `
+        //         let printValue: string = `${elem.value / 100}M`
         //         let printValueFixed: string = (printValue.length >= 9)
         //             ? printValue
         //             : " ".repeat(9 - printValue.length) + printValue
 
         //         return (currentQuarter === 4 && index === array.length-1 && array.length === 1)
-        //             ? "+" + "-".repeat(27) + "+\n|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+        //             ? "+" + "−".repeat(27) + "+\n|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "−".repeat(27) + "+" 
         //             : (currentQuarter === 4 && index === array.length-1)
-        //             ? "|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+        //             ? "|" + header.nextFiscalYearShort + elem.period + "|" + printValueFixed + "|\n+" + "−".repeat(27) + "+" 
         //             : (index === 0)
-        //             ? "+" + "-".repeat(27) + "+\n|" + shortFY + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+"
-        //             : "|" + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+        //             ? "+" + "−".repeat(27) + "+\n|" + shortFY + elem.period + "|" + printValueFixed + "|\n+" + "−".repeat(27) + "+"
+        //             : "|" + elem.period + "|" + printValueFixed + "|\n+" + "−".repeat(27) + "+" 
         //     }).reduce((prev, next) => prev + "\n" + next)
         //     : (sectionDifference[0].name === "Nintendo Switch Software Total") 
             // ? sectionForecasts.map((elem, index, array) => {
@@ -263,7 +263,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             //     // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
             //     let shortFY: string = header.fiscalYear;
 
-            //     let printValue: string = `${elem.value / 100}M `
+            //     let printValue: string = `${elem.value / 100}M`
             //     let printValueFixed: string = (printValue.length >= 9)
             //         ? printValue
             //         : " ".repeat(9 - printValue.length) + printValue
@@ -271,12 +271,12 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             //     // let miscellaneous: string = "|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"
 
             //     return (currentQuarter === 4 && index === array.length-1 && array.length === 1)
-            //         ? "+" + "-".repeat(27) + "+\n|" + header.nextFiscalYearShort + " " + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+            //         ? "+" + "−".repeat(27) + "+\n|" + header.nextFiscalYearShort + " " + elem.period + "|" + printValueFixed + "|\n+" + "−".repeat(27) + "+" 
             //         : (currentQuarter === 4 && index === array.length-1)
-            //         ? "|" + header.nextFiscalYearShort + " " + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+            //         ? "|" + header.nextFiscalYearShort + " " + elem.period + "|" + printValueFixed + "|\n+" + "−".repeat(27) + "+" 
             //         : (index === 0)
-            //         ? "+" + "-".repeat(27) + "+\n|" + shortFY + " " + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+"
-            //         : "|" + elem.period + "|" + printValueFixed + "|\n+" + "-".repeat(27) + "+" 
+            //         ? "+" + "−".repeat(27) + "+\n|" + shortFY + " " + elem.period + "|" + printValueFixed + "|\n+" + "−".repeat(27) + "+"
+            //         : "|" + elem.period + "|" + printValueFixed + "|\n+" + "−".repeat(27) + "+" 
             // }).concat(["|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"]).reduce((prev, next) => prev + "\n" + next)
             // : "shrug"
 
@@ -301,15 +301,15 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
 
 export const printSalesHardware = (header: Header, sectionSales: Section[], sectionHardwareTotal: Section[], currentQuarter: number) => {
 
-        // const sectionHeader: string = "+" + "-".repeat(13) + "+\n| Switch      |-------------+\n| Platform    |    Sales    |\n+" + "-".repeat(27) + "+"
+        // const sectionHeader: string = "+" + "−".repeat(13) + "+\n| Switch      |-------------+\n| Platform    |    Sales    |\n+" + "−".repeat(27) + "+"
 
-        // const sectionHeaderTwo: string = "| Switch      |  Cumulative |\n| Platform    |       Sales |\n+" + "-".repeat(27) + "+"
+        // const sectionHeaderTwo: string = "| Switch      |  Cumulative |\n| Platform    |       Sales |\n+" + "−".repeat(27) + "+"
 
-        const headerBorder: string = "+" + "-".repeat(50) + "+"
+        const headerBorder: string = "+" + "−".repeat(50) + "+"
 
         const sectionHeaderName: string | never[] = printTextBlock(sectionSales[0].name)(50) as string;
 
-        const sectionHeaderThree: string = "+" + "-".repeat(50) + "+\n" + "|             |             | Hardware | Sales Per |\n|             |       Sales |    Units |  Hardware |\n|             |  Cumulative |Cumulative| Unit Cml. |\n+" + "-".repeat(50) + "+"
+        const sectionHeaderThree: string = "+" + "−".repeat(50) + "+\n" + "|             |             | Hardware | Sales Per |\n|             |       Sales |    Units |  Hardware |\n|             |  Cumulative |Cumulative| Unit Cml. |\n+" + "−".repeat(50) + "+"
 
         const sectionHardwareTotalFixed = sectionHardwareTotal.filter((elem, index, array) => {
             return index < currentQuarter //&& array[index].value !== 0
@@ -329,7 +329,7 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
         //     return index < currentQuarter && array[index].value !== 0
         // }).map((elem, index, array) => {
 
-        //     let printSection: string = `¥${elem.value.toLocaleString("en")}M `
+        //     let printSection: string = `¥${elem.value.toLocaleString("en")}M`
 
         //     let printSectionFixed: string = (printSection.length >= 13)
         //         ? printSection
@@ -344,7 +344,7 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
 
         //    let printLine: string = (array[index] === array.at(-1))
         //         ? "\n+" + "=".repeat(27) + "+"
-        //         : "\n+" + "-".repeat(27) + "+"
+        //         : "\n+" + "−".repeat(27) + "+"
             
         //     return "|" + printPeriod + "|" + printSectionFixed + "|" + printLine  
         // })
@@ -353,7 +353,7 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
         //     return index < currentQuarter && array[index].value !== 0
         // }).map((elem, index, array) => { 
 
-        //     let printSectionLTD: string = `¥${(elem.value + sectionSales[sectionSales.length-1].value).toLocaleString("en")}M `
+        //     let printSectionLTD: string = `¥${(elem.value + sectionSales[sectionSales.length-1].value).toLocaleString("en")}M`
 
         //     let printSectionLTDFixed: string = (printSectionLTD.length >= 13)
         //         ? printSectionLTD
@@ -368,7 +368,7 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
 
         //    let printLine: string = (array[index] === array.at(-1))
         //         ? "\n+" + "=".repeat(36) + "+"
-        //         : "\n+" + "-".repeat(27) + "+"
+        //         : "\n+" + "−".repeat(27) + "+"
             
         //     return "|" + printPeriod + "|" + printSectionLTDFixed + "|" + printLine
         // })
@@ -380,7 +380,7 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
                 return [] 
             };
 
-            let printSectionLTD: string = `¥${(elem.value + sectionSales[sectionSales.length-1].value).toLocaleString("en")}M `
+            let printSectionLTD: string = `¥${(elem.value + sectionSales[sectionSales.length-1].value).toLocaleString("en")}M`
 
             let printSectionLTDFixed: string = (printSectionLTD.length >= 13)
                 ? printSectionLTD
@@ -397,7 +397,7 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
                 ? printSectionSalesPerHardware
                 : " ".repeat(11 - printSectionSalesPerHardware.length) + printSectionSalesPerHardware;
             
-            let printHardwareUnits: string = `${sectionHardwareTotalFixed[index]}M `
+            let printHardwareUnits: string = `${sectionHardwareTotalFixed[index]}M`
 
             let printHardwareUnitsFixed: string = (printHardwareUnits.length >= 10)
                     ? printHardwareUnits
@@ -412,7 +412,7 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
 
            let printLine: string = (array[index] === array.at(-1))
                 ? "\n+" + "=".repeat(50) + "+"
-                : "\n+" + "-".repeat(50) + "+"
+                : "\n+" + "−".repeat(50) + "+"
             
             return "|" + printPeriod + "|" + printSectionLTDFixed + "|" +  printHardwareUnitsFixed + "|" +   printSectionSalesPerHardwareFixed + "|" + printLine
         })

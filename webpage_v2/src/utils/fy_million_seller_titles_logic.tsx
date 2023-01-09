@@ -13,7 +13,7 @@ export type Titles = {
     regionD: "WW LTD",
     valueD: number,
     rank?: number,
-    label?: " New! " | " Recurring ",
+    label?: "New!" | " Recurring ",
     miscellaneous?: string,
     yearsCount?: number,
     fiscalYear?: string,
@@ -69,18 +69,18 @@ export function quarterlyCalculation(quarters: Titles[]) {
 }
 
 export const printHead = (header: Header) => 
-`+${"-".repeat(44)}+
+`+${"−".repeat(44)}+
 ${header.mainHeader}
-+${"-".repeat(44)}+
++${"−".repeat(44)}+
 ${header.platformHeader}
-+${"-".repeat(44)}+
-+${"-".repeat(42)}+
++${"−".repeat(44)}+
++${"−".repeat(42)}+
 ${header.secondHeader}
-+${"-".repeat(42)}+
++${"−".repeat(42)}+
 ${header.thirdHeader}
-+${"-".repeat(42)}+
++${"−".repeat(42)}+
 ${header.fourthHeader}
-+${"-".repeat(42)}+`;
++${"−".repeat(42)}+`;
 
 export const printTitles = (header: Header, titleDifference: Titles[], titleCumulative: Titles[], currentQuarter: number) => {
         
@@ -115,52 +115,52 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
         // : elem.title
         let printTitleName = printTextBlock(elem.title)(42)
 
-        let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+        let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
 
-        let printValueA: string = `${elem.valueA}M ` 
+        let printValueA: string = `${elem.valueA}M` 
         let printValueAFixed: string = (printValueA.length >= 9)
             ? printValueA
             : " ".repeat(9 - printValueA.length) + printValueA;
         
-        let printValueB: string = `${elem.valueB}M ` 
+        let printValueB: string = `${elem.valueB}M` 
         let printValueBFixed: string = (printValueB.length >= 9)
             ? printValueB
             : " ".repeat(9 - printValueB.length) + printValueB;
 
-        let printAreaHeader: string = header.areaHeader + "\n+"+"-".repeat(34)+"+"
+        let printAreaHeader: string = header.areaHeader + "\n+"+"−".repeat(34)+"+"
 
-        let printCmlValueA: string =  `${titleCumulative[currentQuarter-1].valueA}M `
+        let printCmlValueA: string =  `${titleCumulative[currentQuarter-1].valueA}M`
         let printCmlValueAFixed: string = (printCmlValueA.length >= 9)
             ? printCmlValueA
             : " ".repeat(9 - printCmlValueA.length) + printCmlValueA;
 
-        let printCmlValueB: string =  `${titleCumulative[currentQuarter-1].valueB}M `
+        let printCmlValueB: string =  `${titleCumulative[currentQuarter-1].valueB}M`
         let printCmlValueBFixed: string = (printCmlValueB.length >= 9)
             ? printCmlValueB
             : " ".repeat(9 - printCmlValueB.length) + printCmlValueB;
         
         let printFYCml: string = "+" + "=".repeat(34) + "+\n| " + header.fiscalYear + " Cml.|" + printCmlValueAFixed + "|" + printCmlValueBFixed + "|"
 
-        let printRegionAWWPercentage: string = `${((titleCumulative[currentQuarter-1].valueA / titleCumulative[currentQuarter-1].valueC) * 100).toFixed(2)}% `
+        let printRegionAWWPercentage: string = `${((titleCumulative[currentQuarter-1].valueA / titleCumulative[currentQuarter-1].valueC) * 100).toFixed(2)}%`
         let printRegionAWWPercentageFixed: string = (printRegionAWWPercentage.length >= 9)
             ? printRegionAWWPercentage
             :  " ".repeat(9 - printRegionAWWPercentage.length) + printRegionAWWPercentage;
 
-        let printRegionBWWPercentage: string = `${((titleCumulative[currentQuarter-1].valueB / titleCumulative[currentQuarter-1].valueC) * 100).toFixed(2)}% `
+        let printRegionBWWPercentage: string = `${((titleCumulative[currentQuarter-1].valueB / titleCumulative[currentQuarter-1].valueC) * 100).toFixed(2)}%`
         let printRegionBWWPercentageFixed: string = (printRegionBWWPercentage.length >= 9)
             ? printRegionBWWPercentage
             : " ".repeat(9 - printRegionBWWPercentage.length) + printRegionBWWPercentage;
 
         let printRegionAYoY: string = (titleCumulative[4].valueA === 0)
             ? ` New! `
-            : `${((((titleCumulative[3].valueA / titleCumulative[4].valueA) - 1) * 100) > 0) ? "+" : ""}${(((titleCumulative[3].valueA / titleCumulative[4].valueA) - 1) * 100).toFixed(2)}% ` 
+            : `${((((titleCumulative[3].valueA / titleCumulative[4].valueA) - 1) * 100) > 0) ? "+" : ""}${(((titleCumulative[3].valueA / titleCumulative[4].valueA) - 1) * 100).toFixed(2)}%` 
         let printRegionAYoYFixed: string = (printRegionAYoY.length >= 9)
             ? printRegionAYoY
             :  " ".repeat(9 - printRegionAYoY.length) + printRegionAYoY;
 
         let printRegionBYoY: string = (titleCumulative[4].valueB === 0)
             ? ` New! `
-            : `${((((titleCumulative[3].valueB / titleCumulative[4].valueB) - 1) * 100) > 0) ? "+" : ""}${(((titleCumulative[3].valueB / titleCumulative[4].valueB) - 1) * 100).toFixed(2)}% ` 
+            : `${((((titleCumulative[3].valueB / titleCumulative[4].valueB) - 1) * 100) > 0) ? "+" : ""}${(((titleCumulative[3].valueB / titleCumulative[4].valueB) - 1) * 100).toFixed(2)}%` 
         let printRegionBYoYFixed: string = (printRegionBYoY.length >= 9)
             ? printRegionBYoY
             :  " ".repeat(9 - printRegionBYoY.length) + printRegionBYoY;
@@ -190,50 +190,50 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
         return index !== 4
     }).map((elem, index, array) => {
         
-        let printValueC: string = `${elem.valueC}M ` 
+        let printValueC: string = `${elem.valueC}M` 
         let printValueCFixed: string = (printValueC.length >= 9)
             ? printValueC
             : " ".repeat(9 - printValueC.length) + printValueC;
         
-        let printValueD: string = `${elem.valueD}M ` 
+        let printValueD: string = `${elem.valueD}M` 
         let printValueDFixed: string = (printValueD.length >= 9)
             ? printValueD
             : " ".repeat(9 - printValueD.length) + printValueD;
 
-        let printGlobalHeader: string = "+"+"-".repeat(34)+"+\n" + header.globalHeader + "\n+"+"-".repeat(34)+"+"
+        let printGlobalHeader: string = "+"+"−".repeat(34)+"+\n" + header.globalHeader + "\n+"+"−".repeat(34)+"+"
 
-        let printCmlValueC: string =  `${titleCumulative[currentQuarter-1].valueC}M `
+        let printCmlValueC: string =  `${titleCumulative[currentQuarter-1].valueC}M`
         let printCmlValueCFixed: string = (printCmlValueC.length >= 9)
             ? printCmlValueC
             : " ".repeat(9 - printCmlValueC.length) + printCmlValueC;
 
-        let printCmlValueD: string =  `${titleCumulative[currentQuarter-1].valueD}M `
+        let printCmlValueD: string =  `${titleCumulative[currentQuarter-1].valueD}M`
         let printCmlValueDFixed: string = (printCmlValueD.length >= 9)
             ? printCmlValueD
             : " ".repeat(9 - printCmlValueD.length) + printCmlValueD;
 
         let printFYCml: string = "+" + "=".repeat(34) + "+\n| " + header.fiscalYear + " Cml.|" + printCmlValueCFixed + "|" + printCmlValueDFixed + "|"
         
-        let printRegionCWWPercentage: string = `${((titleCumulative[currentQuarter-1].valueC / titleCumulative[currentQuarter-1].valueD) * 100).toFixed(2)}% `
+        let printRegionCWWPercentage: string = `${((titleCumulative[currentQuarter-1].valueC / titleCumulative[currentQuarter-1].valueD) * 100).toFixed(2)}%`
         let printRegionCWWPercentageFixed: string = (printRegionCWWPercentage.length >= 9)
             ? printRegionCWWPercentage
             :  " ".repeat(9 - printRegionCWWPercentage.length) + printRegionCWWPercentage;
 
-        let printRegionDWWPercentage: string = `${( 100 - ((titleCumulative[currentQuarter-1].valueC / titleCumulative[currentQuarter-1].valueD) * 100)).toFixed(2)}% `
+        let printRegionDWWPercentage: string = `${( 100 - ((titleCumulative[currentQuarter-1].valueC / titleCumulative[currentQuarter-1].valueD) * 100)).toFixed(2)}%`
         let printRegionDWWPercentageFixed: string = (printRegionDWWPercentage.length >= 9)
             ? printRegionDWWPercentage
             :  " ".repeat(9 - printRegionDWWPercentage.length) + printRegionDWWPercentage;
         
         let printRegionCYoY: string = (titleCumulative[4].valueC === 0)
             ? ` New! `
-            : `${((((titleCumulative[3].valueC / titleCumulative[4].valueC) - 1) * 100) > 0) ? "+" : ""}${(((titleCumulative[3].valueC / titleCumulative[4].valueC) - 1) * 100).toFixed(2)}% ` 
+            : `${((((titleCumulative[3].valueC / titleCumulative[4].valueC) - 1) * 100) > 0) ? "+" : ""}${(((titleCumulative[3].valueC / titleCumulative[4].valueC) - 1) * 100).toFixed(2)}%` 
         let printRegionCYoYFixed: string = (printRegionCYoY.length >= 9)
             ? printRegionCYoY
             :  " ".repeat(9 - printRegionCYoY.length) + printRegionCYoY;
 
         let printRegionDYoY: string = (titleCumulative[4].valueD === 0)
             ? ` New! `
-            : `${((((titleCumulative[3].valueD / titleCumulative[4].valueD) - 1) * 100) > 0) ? "+" : ""}${(((titleCumulative[3].valueD / titleCumulative[4].valueD) - 1) * 100).toFixed(2)}% ` 
+            : `${((((titleCumulative[3].valueD / titleCumulative[4].valueD) - 1) * 100) > 0) ? "+" : ""}${(((titleCumulative[3].valueD / titleCumulative[4].valueD) - 1) * 100).toFixed(2)}%` 
         let printRegionDYoYFixed: string = (printRegionDYoY.length >= 9)
             ? printRegionDYoY
             :  " ".repeat(9 - printRegionDYoY.length) + printRegionDYoY;
@@ -259,12 +259,12 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
         return prev + "\n" + next
     })
     
-    // return [regionAB, regionCD].reduce((prev, next) => prev + "\n" + next + "\n+"+"-".repeat(34)+"+")
+    // return [regionAB, regionCD].reduce((prev, next) => prev + "\n" + next + "\n+"+"−".repeat(34)+"+")
 
-    const penultimateCheck = [regionAB, regionCD].reduce((prev, next) => prev + "\n" + next + "\n+"+"-".repeat(34)+"+")
+    const penultimateCheck = [regionAB, regionCD].reduce((prev, next) => prev + "\n" + next + "\n+"+"−".repeat(34)+"+")
     
     return (titleDifference[0].miscellaneous)
-            ? penultimateCheck + "\n|" + titleDifference[0].miscellaneous + "\n+" + "-".repeat(titleDifference[0].miscellaneous.length-1) + "+"
+            ? penultimateCheck + "\n|" + titleDifference[0].miscellaneous + "\n+" + "−".repeat(titleDifference[0].miscellaneous.length-1) + "+"
             : penultimateCheck 
 
 }
@@ -274,7 +274,7 @@ export function labelTitles(titlesSorted: Titles[]) {
     const calc: Titles[] = titlesSorted.map((elem, index, array) => {
         
         return (array[4].valueC === 0)
-                ? {...elem, label: " New! "}
+                ? {...elem, label: "New!"}
                 : {...elem, label: " Recurring "}
     })
     
@@ -298,15 +298,15 @@ export const printSummaryHead = (header: Header, newCollection: Titles[], recurr
     ? printTotal
     : " ".repeat(9 - printTotal.length) + printTotal;
 
-    let printHeader: string = "+"+"-".repeat(24)+"+\n" + header.mainSummaryHeader  + "\n" + header.secondSummaryHeader + "\n" + header.thirdSummaryHeader + "\n" + "+"+"-".repeat(24)+"+"
+    let printHeader: string = "+"+"−".repeat(24)+"+\n" + header.mainSummaryHeader  + "\n" + header.secondSummaryHeader + "\n" + header.thirdSummaryHeader + "\n" + "+"+"−".repeat(24)+"+"
 
-    let printTitles: string = "\n+"+"-".repeat(23)+"+\n| Titles      |   Count |\n+" + "-".repeat(23)+"+" 
+    let printTitles: string = "\n+"+"−".repeat(23)+"+\n| Titles      |   Count |\n+" + "−".repeat(23)+"+" 
 
     let printNewRow: string = "\n| New!        |" + printNewFixed + "|"
 
     let printRecurringRow: string = "\n| Recurring   |" + printRecurringFixed + "|"
 
-    let printTotalRow: string = "\n+"+"=".repeat(23) + "+\n| Total       |" + printTotalFixed + "|\n+"+"-".repeat(23) + "+"
+    let printTotalRow: string = "\n+"+"=".repeat(23) + "+\n| Total       |" + printTotalFixed + "|\n+"+"−".repeat(23) + "+"
 
     return printHeader + printTitles + printNewRow + printRecurringRow + printTotalRow
 }
@@ -317,36 +317,36 @@ export const printSummary = (header: Header, regionNew: number[], regionRecurrin
 
     return regionNew.map((elem, index, array) => {
 
-        let printRegionHeader: string = "+"+"-".repeat(33)+"+\n" + regionHeaders[index] + "\n+"+"-".repeat(33)+"+\n|" + header.fiscalYear + " Cml.|   Units |    %    |\n+" + "-".repeat(33) + "+\n"
+        let printRegionHeader: string = "+"+"−".repeat(33)+"+\n" + regionHeaders[index] + "\n+"+"−".repeat(33)+"+\n|" + header.fiscalYear + " Cml.|   Units |    %    |\n+" + "−".repeat(33) + "+\n"
 
         let TotalUnits: number = Number((elem + regionRecurring[index]).toFixed(2)) 
 
-        let printTotalUnits: string = `${(elem + regionRecurring[index]).toFixed(2)}M `
+        let printTotalUnits: string = `${(elem + regionRecurring[index]).toFixed(2)}M`
         let printTotalUnitsFixed: string = (printTotalUnits.length >= 9)
             ? printTotalUnits
             : " ".repeat(9 - printTotalUnits.length) + printTotalUnits;
         
-        let printNewUnits: string = `${elem.toFixed(2)}M `
+        let printNewUnits: string = `${elem.toFixed(2)}M`
         let printNewUnitsFixed: string = (printNewUnits.length >= 9)
                 ? printNewUnits
                 : " ".repeat(9 - printNewUnits.length) + printNewUnits;
 
-        let printNewPercentages: string = `${((elem / TotalUnits) * 100).toFixed(2)}% `
+        let printNewPercentages: string = `${((elem / TotalUnits) * 100).toFixed(2)}%`
         let printNewPercentagesFixed: string = (printNewPercentages.length >= 9)
             ? printNewPercentages
             : " ".repeat(9 - printNewPercentages.length) + printNewPercentages;
 
-        let printRecurringUnits: string = `${regionRecurring[index].toFixed(2)}M `
+        let printRecurringUnits: string = `${regionRecurring[index].toFixed(2)}M`
         let printRecurringUnitsFixed: string = (printRecurringUnits.length >= 9)
             ? printRecurringUnits
             : " ".repeat(9 - printRecurringUnits.length) + printRecurringUnits;
         
-        let printRecurringPercentages: string = `${((regionRecurring[index] / TotalUnits) * 100).toFixed(2)}% `
+        let printRecurringPercentages: string = `${((regionRecurring[index] / TotalUnits) * 100).toFixed(2)}%`
         let printRecurringPercentagesFixed: string = (printRecurringPercentages.length >= 9)
             ? printRecurringPercentages
             : " ".repeat(9 - printRecurringPercentages.length) + printRecurringPercentages;
 
-        let printRows: string = "| New!        |" + printNewUnitsFixed + "|" + printNewPercentagesFixed + "|\n| Recurring   |" + printRecurringUnitsFixed + "|" + printRecurringPercentagesFixed + "|\n+" + "=".repeat(33) + "+\n| Total       |" + printTotalUnitsFixed + "|\n+" + "-".repeat(23) + "+\n" 
+        let printRows: string = "| New!        |" + printNewUnitsFixed + "|" + printNewPercentagesFixed + "|\n| Recurring   |" + printRecurringUnitsFixed + "|" + printRecurringPercentagesFixed + "|\n+" + "=".repeat(33) + "+\n| Total       |" + printTotalUnitsFixed + "|\n+" + "−".repeat(23) + "+\n" 
 
         return printRegionHeader + printRows
     }).reduce((prev, next) => prev + next)

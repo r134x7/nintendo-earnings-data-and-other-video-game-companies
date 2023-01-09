@@ -1,7 +1,7 @@
 {
     "fiscalYear": "FY3/2013",
-    "fiscalYearCml":  "| FY3/13 Cumulative  |",
-    "fiscalYearYoY": "| FY3/13 Cml. YoY%   |",
+    "fiscalYearCml":  "FY3/2013 Cumulative  |",
+    "fiscalYearYoY": "FY3/13 Cml. YoY%   |",
     "series": [
         {
             "title": " Sonic the Hedgehog ",

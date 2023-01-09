@@ -73,3 +73,7 @@ export const liner = (text: string, lineStyle: "−" | "=" | "#", position: "top
                 ? text + "\n" + line
                 : line + "\n" + text + "\n" + line;
     };
+
+export const singleLiner = (lineLength: number, lineStyle: "−" | "=" | "#"): string => {
+        return `+${lineStyle.repeat(lineLength-2)}+` 
+    };

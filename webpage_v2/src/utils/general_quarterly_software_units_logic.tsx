@@ -47,11 +47,11 @@ export function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
     }
 
 export const printHead = (header: Header) => 
-`+${"-".repeat(30)}+
+`+${"−".repeat(30)}+
 ${header.firstHeader}${header.fiscalYear}|
-+${"-".repeat(30)}+
++${"−".repeat(30)}+
 ${header.secondHeader}
-+${"-".repeat(30)}+`;
++${"−".repeat(30)}+`;
 
 export const printSoftwareGeneral = (header: Header, sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], currentQuarter: number) => {
 
@@ -74,8 +74,8 @@ export const printSoftwareGeneral = (header: Header, sectionDifference: Section[
             let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed[index].units === "NaN")
                 ? "NaN"
                 : (sectionDifferenceYoYFixed[index].value > 0)
-                ? `+${sectionDifferenceYoYFixed[index].value}% `
-                : `${sectionDifferenceYoYFixed[index].value}% `
+                ? `+${sectionDifferenceYoYFixed[index].value}%`
+                : `${sectionDifferenceYoYFixed[index].value}%`
 
             let printSectionDifferenceYoYFixed: string = (printSectionDifferenceYoY === "NaN")
                 ? printSectionDifferenceYoY
@@ -83,7 +83,7 @@ export const printSoftwareGeneral = (header: Header, sectionDifference: Section[
                 ? printSectionDifferenceYoY
                 : " ".repeat(9 - printSectionDifferenceYoY.length) + printSectionDifferenceYoY
 
-            let printSection: string = `${(elem.value / 100).toFixed(2)}M `;
+            let printSection: string = `${(elem.value / 100).toFixed(2)}M`;
 
             let lineSpace: number = 9;
 
@@ -101,7 +101,7 @@ export const printSoftwareGeneral = (header: Header, sectionDifference: Section[
 
             let printLine: string = (array[index] === array.at(-1))
                 ? "\n+" + "=".repeat(printLineLength) + "+"
-                : "\n+" + "-".repeat(printLineLength) + "+"
+                : "\n+" + "−".repeat(printLineLength) + "+"
 
             return (printSectionDifferenceYoYFixed === "NaN")
                     ? "|" + elem.period + "|" + printSectionFixed + "|" + printLine
@@ -117,8 +117,8 @@ export const printSoftwareGeneral = (header: Header, sectionDifference: Section[
                 let printSectionCumulativeYoY: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                     ? "NaN"
                     : (sectionCumulativeYoYFixed[index].value > 0)
-                    ? `+${sectionCumulativeYoYFixed[index].value}% `
-                    : `${sectionCumulativeYoYFixed[index].value}% `
+                    ? `+${sectionCumulativeYoYFixed[index].value}%`
+                    : `${sectionCumulativeYoYFixed[index].value}%`
 
                 let printSectionCumulativeYoYFixed: string = (printSectionCumulativeYoY === "NaN")
                     ? printSectionCumulativeYoY
@@ -126,7 +126,7 @@ export const printSoftwareGeneral = (header: Header, sectionDifference: Section[
                     ? printSectionCumulativeYoY
                     : " ".repeat(9 - printSectionCumulativeYoY.length) + printSectionCumulativeYoY
 
-                let printCumulative: string = `${(elem.value / 100).toFixed(2)}M `;
+                let printCumulative: string = `${(elem.value / 100).toFixed(2)}M`;
 
                 let lineSpace: number = 9;
 
@@ -145,7 +145,7 @@ export const printSoftwareGeneral = (header: Header, sectionDifference: Section[
                 ? lineLengths.short 
                 : lineLengths.long    
 
-                let printLine: string = "\n+" + "-".repeat(printLineLength) + "+"
+                let printLine: string = "\n+" + "−".repeat(printLineLength) + "+"
 
                 let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
                     ? `${shortFY}${elem.cmlPeriod} `
@@ -158,14 +158,14 @@ export const printSoftwareGeneral = (header: Header, sectionDifference: Section[
             : []
 
         // const ltd: string = (currentQuarter === 1) 
-        //         ? `${((sectionDifference[currentQuarter-1].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M `
-        //         : `${((sectionCumulative[currentQuarter-2].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M `
+        //         ? `${((sectionDifference[currentQuarter-1].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M`
+        //         : `${((sectionCumulative[currentQuarter-2].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M`
 
         // const ltdFixed: string = (ltd.length >= 9)
         //         ? ltd
         //         : " ".repeat(9 - ltd.length) + ltd
         
-        // const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "-".repeat(23) + "+"
+        // const ltdPrint: string = "| Life-To-Date|" + ltdFixed + "|\n+" + "−".repeat(23) + "+"
 
         const miscellaneousPrint = sectionDifference[0].miscellaneous;
 

@@ -20,7 +20,7 @@ export default function BandaiNamco() {
 
     const message = `Bandai Namco (They publish Dark Souls), this is where you can find archived Series IP data.`;
 
-    // const border = "+" + "-".repeat(86) + "+";
+    // const border = "+" + "−".repeat(86) + "+";
 
     const splitMessage = message.split("");
 

@@ -144,11 +144,11 @@ let header = [
 
 const printCumulativeValues = (list: {fiscalYear: string, value: number}[], sortedList: {fiscalYear: string, value: number}[], valueType: string): string[] => {
 
-    let header = "+" + "-".repeat(35) + "+\n| " + valueType + " ".repeat(34-valueType.length) + "|\n+" + "-".repeat(35) + "+"; 
+    let header = "+" + "−".repeat(35) + "+\n| " + valueType + " ".repeat(34-valueType.length) + "|\n+" + "−".repeat(35) + "+"; 
 
     let printList = list.map(elem => {
 
-        let valueString: string = `¥${elem.value.toLocaleString("en")}M `;
+        let valueString: string = `¥${elem.value.toLocaleString("en")}M`;
 
         let valueFixed: string = (valueString.length >= 12)
                               ? valueString 
@@ -157,7 +157,7 @@ const printCumulativeValues = (list: {fiscalYear: string, value: number}[], sort
         return `| ${elem.fiscalYear} Cumulative | ${valueFixed}|`;
     });
 
-    let printLine = "+" + "-".repeat(35) + "+";
+    let printLine = "+" + "−".repeat(35) + "+";
 
     let printCount: string = `${sortedList.length} `;
 
@@ -165,14 +165,14 @@ const printCumulativeValues = (list: {fiscalYear: string, value: number}[], sort
             ? printCount
             : " ".repeat(15 - printCount.length) + printCount;
 
-    let printSum: string = `¥${(sortedList.map(value => value.value).reduce((acc, next) => acc + next)).toLocaleString("en")}M ` 
+    let printSum: string = `¥${(sortedList.map(value => value.value).reduce((acc, next) => acc + next)).toLocaleString("en")}M` 
         
     let printSumFixed: string = (printSum.length >= 15)
             ? printSum
             : " ".repeat(15 - printSum.length) + printSum;
 
 
-    let printAverage: string = `¥${Number(((sortedList.map(value => value.value).reduce((acc, next) => acc + next)) / sortedList.length).toFixed(0)).toLocaleString("en")}M `; 
+    let printAverage: string = `¥${Number(((sortedList.map(value => value.value).reduce((acc, next) => acc + next)) / sortedList.length).toFixed(0)).toLocaleString("en")}M`; 
 
     let printAverageFixed: string = (printAverage.length >= 15)
             ? printAverage
@@ -181,21 +181,21 @@ const printCumulativeValues = (list: {fiscalYear: string, value: number}[], sort
     let printMedian: string = ((sortedList.length % 2) !== 0) // odd number
             // median formula source: https://en.wikipedia.org/wiki/Median
             // odd number median(x) = x(n+1)/2 => index version => median(x) = (x(n+1)/2)-1
-            ? `¥${sortedList[((sortedList.length + 1)/2) -1].value.toLocaleString("en")}M `
+            ? `¥${sortedList[((sortedList.length + 1)/2) -1].value.toLocaleString("en")}M`
             // even number median(x) = (x(n/2) + x((n/2) + 1)) /2 => index version median(x) = (x((n/2)-1) + x((n/2))) /2
-            : `¥${Number(((sortedList[(sortedList.length/2) -1].value + sortedList[(sortedList.length/2)].value)/2).toFixed(0)).toLocaleString("en")}M `;
+            : `¥${Number(((sortedList[(sortedList.length/2) -1].value + sortedList[(sortedList.length/2)].value)/2).toFixed(0)).toLocaleString("en")}M`;
 
     let printMedianFixed: string = (printMedian.length >= 15)
             ? printMedian
             : " ".repeat(15 - printMedian.length) + printMedian;
 
-    let printMin: string = `¥${sortedList[0].value.toLocaleString("en")}M `;
+    let printMin: string = `¥${sortedList[0].value.toLocaleString("en")}M`;
 
     let printMinFixed: string = (printMin.length >= 15)
             ? printMin
             : " ".repeat(15 - printMin.length) + printMin;
 
-    let printMax: string = `¥${sortedList[sortedList.length-1].value.toLocaleString("en")}M ` 
+    let printMax: string = `¥${sortedList[sortedList.length-1].value.toLocaleString("en")}M` 
 
     let printMaxFixed: string = (printMax.length >= 15)
             ? printMax

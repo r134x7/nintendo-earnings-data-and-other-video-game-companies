@@ -54,11 +54,11 @@ export const undefinedData: Section[] = [
 
 
 const printHead = (header: Header) => 
-`+${"-".repeat(27)}+
+`+${"−".repeat(27)}+
 ${header.firstHeader} ${header.fiscalYear} |
-+${"-".repeat(27)}+
++${"−".repeat(27)}+
 ${header.secondHeader}
-+${"-".repeat(21)}+`;
++${"−".repeat(21)}+`;
 
 function quarterlyCalculation(quarters: Section[]) {
         
@@ -92,7 +92,7 @@ function yearOnYearCalculation(segmentThisFY: Section[], segmentLastFY: Section[
 
 }
 
-const printLine = (blockLength: number): string => `+${"-".repeat(blockLength)}+`;
+const printLine = (blockLength: number): string => `+${"−".repeat(blockLength)}+`;
 
 const generalSalesHeader = 
 `+--------------------------------------------------+
@@ -117,7 +117,7 @@ const printQtrSales = (segmentSales: Section[], segmentSalesLastFY: Section[], h
             return index < currentQuarter && array[index].value !== 0
         }).map((elem, index, array) => {
             // values given are Billion yen, changing to Million yen
-            let printSection: string = `¥${(elem.value * 1000).toLocaleString("en")}M `
+            let printSection: string = `¥${(elem.value * 1000).toLocaleString("en")}M`
 
             let printSectionFixed: string = (printSection.length >= 13)
                 ? printSection
@@ -133,7 +133,7 @@ const printQtrSales = (segmentSales: Section[], segmentSalesLastFY: Section[], h
 
            let printLine: string = (array[index] === array.at(-1))
                 ? "\n+" + "=".repeat(printLength) + "+"
-                : "\n+" + "-".repeat(printLength) + "+"
+                : "\n+" + "−".repeat(printLength) + "+"
             
             return (quartersLastFY[index].units === "NaN") 
                 ? "|" + printPeriod + "|" + printSectionFixed + "|" + printLine  
@@ -152,7 +152,7 @@ const printCmlSales = (segmentSales: Section[], segmentSalesLastFY: Section[], h
             return index !== 0 && index < currentQuarter && array[index].value !== 0
         }).map((elem, index, array) => {
             // values given are Billion yen, changing to Million yen
-            let printSection: string = `¥${(elem.value * 1000).toLocaleString("en")}M `
+            let printSection: string = `¥${(elem.value * 1000).toLocaleString("en")}M`
 
             let printSectionFixed: string = (printSection.length >= 13)
                 ? printSection
@@ -167,12 +167,12 @@ const printCmlSales = (segmentSales: Section[], segmentSalesLastFY: Section[], h
 
         //    let printLine: string = (array[index] === array.at(-1))
         //         ? "\n+" + "=".repeat(27) + "+"
-        //         : "\n+" + "-".repeat(27) + "+"
+        //         : "\n+" + "−".repeat(27) + "+"
            let printLength: number = (segmentSalesLastFY[index].units === "NaN")
                 ? 27
                 : 38
             
-           let printLine: string = "\n+" + "-".repeat(printLength) + "+";
+           let printLine: string = "\n+" + "−".repeat(printLength) + "+";
 
             return (segmentSalesLastFY[index].units === "NaN") 
                 ? "|" + printPeriod + "|" + printSectionFixed + "|" + printLine  
@@ -191,8 +191,8 @@ const printYoYSales = (segmentSales: Section[], segmentSalesLastFY: Section[]): 
     let printSection: string[] = yoy.map((elem) => {
 
         return (elem.value > 0)
-                   ? `+${(elem.value)}% `
-                   : `${(elem.value)}% `
+                   ? `+${(elem.value)}%`
+                   : `${(elem.value)}%`
     })
 
     let printSectionFixed: string[] = printSection.map((elem) => {
@@ -209,7 +209,7 @@ const printYoYSales = (segmentSales: Section[], segmentSalesLastFY: Section[]): 
 
     // let printPeriod: string = ` ${yoy[yoy.length-1].cmlPeriod}YoY%   `;
             
-    // let printLine: string = "\n+" + "-".repeat(27) + "+";
+    // let printLine: string = "\n+" + "−".repeat(27) + "+";
 
     // return "|" + printPeriod + "|" + printSectionFixed + "|" + printLine  
 
@@ -221,8 +221,8 @@ const printYoYSales = (segmentSales: Section[], segmentSalesLastFY: Section[]): 
 //     const yoy = yearOnYearCalculation(segmentSales);
 
 //     let printSection: string = (yoy.value > 0)
-//             ? `+${(yoy.value)}% `
-//             : `${(yoy.value)}% `
+//             ? `+${(yoy.value)}%`
+//             : `${(yoy.value)}%`
 
 //     let printSectionFixed: string = (printSection.length >= 13)
 //         ? printSection
@@ -234,7 +234,7 @@ const printYoYSales = (segmentSales: Section[], segmentSalesLastFY: Section[]): 
 
 //     let printPeriod: string = ` ${yoy.cmlPeriod}YoY%   `;
             
-//     let printLine: string = "\n+" + "-".repeat(27) + "+";
+//     let printLine: string = "\n+" + "−".repeat(27) + "+";
 
 //     return "|" + printPeriod + "|" + printSectionFixed + "|" + printLine  
 
@@ -253,7 +253,7 @@ const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
             return index < currentQuarter //&& array[index].value !== 0
         }).map((elem, index, array) => {
             // values given are Billion yen, changing to Million yen
-            let printSection: string = `¥${(elem.value * 1000).toLocaleString("en")}M `
+            let printSection: string = `¥${(elem.value * 1000).toLocaleString("en")}M`
 
             let printSectionFixed: string = (printSection.length >= 13)
                 ? printSection
@@ -269,7 +269,7 @@ const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
 
         //    let printLine: string = (array[index] === array.at(-1))
         //         ? "\n+" + "=".repeat(printLength) + "+"
-        //         : "\n+" + "-".repeat(printLength) + "+"
+        //         : "\n+" + "−".repeat(printLength) + "+"
             
             return printSectionFixed
         })
@@ -284,14 +284,14 @@ const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
             let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (salesUnits[index].value / 1000)).toFixed(0))
 
             let printsegmentSalesPerSoftware: string = (isNaN(calculateSalesPerSoftware)) 
-                                                ? "N/A "
+                                                ? "N/A"
                                                 : `¥${calculateSalesPerSoftware.toLocaleString("en")} `
             
             let printsegmentSalesPerSoftwareFixed: string = (printsegmentSalesPerSoftware.length >= 11)
                 ? printsegmentSalesPerSoftware
                 : " ".repeat(11 - printsegmentSalesPerSoftware.length) + printsegmentSalesPerSoftware;
             
-            let printSoftwareUnits: string = `${salesUnits[index].value / 1000}M `
+            let printSoftwareUnits: string = `${salesUnits[index].value / 1000}M`
 
             // let printSoftwareUnits: string = `${segmentUnits[index].value.toLocaleString("en")}k `
             let printSoftwareUnitsFixed: string = (printSoftwareUnits.length >= 10)
@@ -304,7 +304,7 @@ const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
 
            let printLine: string = (array[index] === array.at(-1))
                 ? "\n+" + "=".repeat(50) + "+"
-                : "\n+" + "-".repeat(50) + "+"
+                : "\n+" + "−".repeat(50) + "+"
 
             return (salesQuartersLastFY[index].units === "NaN" || salesQuartersLastFY[index].value === 0)
                 ? "|" + printPeriod + "|" + sales[index] + "|" + printSoftwareUnitsFixed + "|" + printsegmentSalesPerSoftwareFixed + "|" +  printLine
@@ -323,7 +323,7 @@ const printCmlSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
             return index !== 0 && index < currentQuarter && array[index].value !== 0
         }).map((elem, index, array) => {
             // values given are Billion yen, changing to Million yen
-            let printSection: string = `¥${(elem.value * 1000).toLocaleString("en")}M `
+            let printSection: string = `¥${(elem.value * 1000).toLocaleString("en")}M`
 
             let printSectionFixed: string = (printSection.length >= 13)
                 ? printSection
@@ -347,7 +347,7 @@ const printCmlSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
                 : " ".repeat(11 - printsegmentSalesPerSoftware.length) + printsegmentSalesPerSoftware;
             
             // index+1 is being used for segmentUnits since we don't want the firstQuarter value for: First Half to FY Cml.
-            let printSoftwareUnits: string = `${segmentUnits[index+1].value / 1000}M `
+            let printSoftwareUnits: string = `${segmentUnits[index+1].value / 1000}M`
 
             // let printSoftwareUnits: string = `${segmentUnits[index+1].value.toLocaleString("en")}k `
             let printSoftwareUnitsFixed: string = (printSoftwareUnits.length >= 10)
@@ -363,9 +363,9 @@ const printCmlSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
 
         //    let printLine: string = (array[index] === array.at(-1))
         //         ? "\n+" + "=".repeat(36) + "+"
-        //         : "\n+" + "-".repeat(36) + "+"
+        //         : "\n+" + "−".repeat(36) + "+"
             
-        let printLine: string = "\n+" + "-".repeat(50) + "+";
+        let printLine: string = "\n+" + "−".repeat(50) + "+";
 
             return (segmentSalesLastFY[index].units === "NaN")
                     ? "|" + printPeriod + "|" + sales[index] + "|" + printSoftwareUnitsFixed + "|" + printsegmentSalesPerSoftwareFixed + "|" + printLine
@@ -402,23 +402,23 @@ const printYoYSalesPerSoftwareUnit = (segmentSales: Section[], segmentSalesLastF
 
     let printSalesYoY: string[] = yoySales.map((elem) => {
         return (elem.value > 0)
-                    ? `+${(elem.value)}% `
-                    : `${(elem.value)}% `
+                    ? `+${(elem.value)}%`
+                    : `${(elem.value)}%`
     }) 
 
     let printSalesPerUnitYoY: string[] = yoySalesPerUnit.map((elem) => {
         return (isNaN(elem.value))
-                    ? "N/A "
+                    ? "N/A"
                     : (elem.value > 0)
-                    ? `+${(elem.value)}% `
-                    : `${(elem.value)}% `
+                    ? `+${(elem.value)}%`
+                    : `${(elem.value)}%`
 
     }) 
 
     let printUnitsYoY: string[] = yoyUnits.map((elem) => {
         return (elem.value > 0)
-                    ? `+${(elem.value)}% `
-                    : `${(elem.value)}% `
+                    ? `+${(elem.value)}%`
+                    : `${(elem.value)}%`
     }) 
 
     let printSalesPerUnitFixed: string[] = printSalesPerUnitYoY.map((elem) => {
@@ -439,14 +439,14 @@ const printYoYSalesPerSoftwareUnit = (segmentSales: Section[], segmentSalesLastF
                     : " ".repeat(13 - elem.length) + elem;
     }) 
 
-    let printLine: string = "\n+" + "-".repeat(36) + "+";
+    let printLine: string = "\n+" + "−".repeat(36) + "+";
 
     // let printPeriod: string = ` ${yoySalesPerUnit.cmlPeriod}YoY%   `;
 
     // return "|" + printPeriod + "|" + printSalesPerUnitFixed + "|" + printUnitsFixed + "|" + printLine
     let printArray: string[] = yoySalesPerUnit.map((elem, index) => {
 
-        let printPeriod: string = `        YoY% `;
+        let printPeriod: string = `        YoY%`;
 
         return "|" + printPeriod + "|" + printSalesFixed[index] + "|" + printUnitsFixed[index] + "|" + printSalesPerUnitFixed[index] + "|"  
     }) 

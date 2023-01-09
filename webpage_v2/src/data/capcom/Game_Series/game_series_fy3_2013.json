@@ -1,11 +1,11 @@
 {
-    "fiscalYearCml":  "| FY3/13 Cumulative  |",
-    "fiscalYearYoY": "| FY3/13 Cml. YoY%   |",
+    "fiscalYearCml":  "FY3/2013 Cumulative  |",
+    "fiscalYearYoY": "FY3/13 Cml. YoY%   |",
     "series": [
         {
             "title": "1942",
             "numberOfTitles": 3,
-            "releaseDate": " November 1984 ",
+            "releaseDate": "November 1984",
             "value": 1.2,
             "valueLastFY": 1.2,
             "valueLastTwoFYs": 1.2
@@ -13,7 +13,7 @@
         {
             "title": "Commando",
             "numberOfTitles": 2,
-            "releaseDate": " April 1985 ",
+            "releaseDate": "April 1985",
             "value": 1.2,
             "valueLastFY": 1.2,
             "valueLastTwoFYs": 1.2
@@ -21,7 +21,7 @@
         {
             "title": "Ghosts’n Goblins",
             "numberOfTitles": 14,
-            "releaseDate": " July 1985 ",
+            "releaseDate": "July 1985",
             "value": 4.1,
             "valueLastFY": 4.1,
             "valueLastTwoFYs": 4.1
@@ -29,7 +29,7 @@
         {
             "title": "Mega Man",
             "numberOfTitles": 129,
-            "releaseDate": " December 1987 ",
+            "releaseDate": "December 1987",
             "value": 29.0,
             "valueLastFY": 29.0,
             "valueLastTwoFYs": 28.0
@@ -37,7 +37,7 @@
         {
             "title": "Street Fighter",
             "numberOfTitles": 77,
-            "releaseDate": " August 1987 ",
+            "releaseDate": "August 1987",
             "value": 34.0,
             "valueLastFY": 31.0,
             "valueLastTwoFYs": 31.0
@@ -45,7 +45,7 @@
         {
             "title": "Final Fight",
             "numberOfTitles": 10,
-            "releaseDate": " November 1989 ",
+            "releaseDate": "November 1989",
             "value": 3.2,
             "valueLastFY": 3.2,
             "valueLastTwoFYs": 3.2
@@ -53,7 +53,7 @@
         {
             "title": "Breath of Fire",
             "numberOfTitles": 15,
-            "releaseDate": " April 1993 ",
+            "releaseDate": "April 1993",
             "value": 3.0,
             "valueLastFY": 3.0,
             "valueLastTwoFYs": 3.0
@@ -61,7 +61,7 @@
         {
             "title": "Resident Evil",
             "numberOfTitles": 82,
-            "releaseDate": " March 1996 ",
+            "releaseDate": "March 1996",
             "value": 56.0,
             "valueLastFY": 46.0,
             "valueLastTwoFYs": 46.0
@@ -69,7 +69,7 @@
         {
             "title": "Dino Crisis",
             "numberOfTitles": 13,
-            "releaseDate": " July 1999 ",
+            "releaseDate": "July 1999",
             "value": 4.4,
             "valueLastFY": 4.4,
             "valueLastTwoFYs": 4.4
@@ -77,7 +77,7 @@
         {
             "title": "Onimusha",
             "numberOfTitles": 12,
-            "releaseDate": " January 2001 ",
+            "releaseDate": "January 2001",
             "value": 7.9,
             "valueLastFY": 7.9,
             "valueLastTwoFYs": 7.9
@@ -85,7 +85,7 @@
         {
             "title": "Devil May Cry",
             "numberOfTitles": 19,
-            "releaseDate": " August 2001 ",
+            "releaseDate": "August 2001",
             "value": 12.0,
             "valueLastFY": 10.0,
             "valueLastTwoFYs": 10.0
@@ -93,7 +93,7 @@
         {
             "title": "Ace Attorney",
             "numberOfTitles": 16,
-            "releaseDate": " August 2001 ",
+            "releaseDate": "August 2001",
             "value": 4.4,
             "valueLastFY": 4.2,
             "valueLastTwoFYs": 4.2
@@ -101,7 +101,7 @@
         {
             "title": "Monster Hunter",
             "numberOfTitles": 25,
-            "releaseDate": " March 2004 ",
+            "releaseDate": "March 2004",
             "value": 23.0,
             "valueLastFY": 19.0,
             "valueLastTwoFYs": 18.0
@@ -109,7 +109,7 @@
         {
             "title": "Sengoku Basara",
             "numberOfTitles": 25,
-            "releaseDate": " July 2005 ",
+            "releaseDate": "July 2005",
             "value": 3.3,
             "valueLastFY": 2.8,
             "valueLastTwoFYs": 2.5
@@ -117,7 +117,7 @@
         {
             "title": "Lost Planet",
             "numberOfTitles": 13,
-            "releaseDate": " December 2006 ",
+            "releaseDate": "December 2006",
             "value": 4.9,
             "valueLastFY": 4.7,
             "valueLastTwoFYs": 4.7
@@ -125,7 +125,7 @@
         {
             "title": "Dead Rising",
             "numberOfTitles": 11,
-            "releaseDate": " August 2006 ",
+            "releaseDate": "August 2006",
             "value": 5.4,
             "valueLastFY": 4.5,
             "valueLastTwoFYs": 4.5

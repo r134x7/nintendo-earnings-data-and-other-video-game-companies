@@ -182,7 +182,7 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
         fifthHeader: "| Units                          |",
         fiscalYear: elem.fiscalYearCml,
         fiscalYearYoY: elem.fiscalYearYoY,
-        ltd: "| Life-To-Date       |",
+        ltd: "Life-To-Date",
         summaryHeader: elem.summaryHeader,
     };
 
@@ -241,7 +241,7 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
         fifthHeader: "| Units                          |",
         fiscalYear: elem.fiscalYearCml,
         fiscalYearYoY: elem.fiscalYearYoY,
-        ltd: "| Life-To-Date       |",
+        ltd: "Life-To-Date",
         summaryHeader: elem.summaryHeader,
     };
 
@@ -283,7 +283,7 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
             return labelTitles(elem)
         }).map((elem) => {
             return elem.filter((secondElem) => {
-                return secondElem.label === " New! "
+                return secondElem.label === "New!"
             })
         }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
         ).map((elem) => {
@@ -344,7 +344,7 @@ const specialList = (): string => {
         fifthHeader: "| Units                          |",
         fiscalYear: "N/A",
         fiscalYearYoY: "N/A",
-        ltd: "| Life-To-Date       |",
+        ltd: "Life-To-Date",
         summaryHeader: "N/A",
     };
 

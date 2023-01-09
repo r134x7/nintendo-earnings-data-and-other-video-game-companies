@@ -20,7 +20,7 @@ export default function SquareEnix() {
 
     const message = `Square Enix (They publish Marvel's Avengers), this is where you can find archived data.`;
 
-    // const border = "+" + "-".repeat(98) + "+";
+    // const border = "+" + "−".repeat(98) + "+";
 
     const splitMessage = message.split("");
 

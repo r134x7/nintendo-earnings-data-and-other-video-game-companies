@@ -537,7 +537,7 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
     //     }
     // });
 
-    let endLine: string = "+" + "-".repeat(50) + "+" + "\n" + "###"; 
+    let endLine: string = "+" + "−".repeat(50) + "+" + "\n" + "###"; 
 
     let printOne = printHead(headerOne);
 

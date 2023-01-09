@@ -9,7 +9,7 @@ const Home = () => {
     const one = "Welcome, this is where you can use the calendar to find some upcoming events.";
     const splitOne = one.split("");
 
-    // const border = "+" + "-".repeat(76) + "+";
+    // const border = "+" + "−".repeat(76) + "+";
 
     const [text, setText] = useState("");
 

@@ -68,8 +68,8 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
         if (elem.category === "quarterly") {
             
             let printSection: string = (elem.units === "NaN")
-                                        ? "N/A "
-                                        : `${elem.value}% `; 
+                                        ? "N/A"
+                                        : `${elem.value}%`; 
 
             let printSectionFixed: string = (printSection.length >= 10)
                                       ? printSection
@@ -84,8 +84,8 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
         } else {
 
             let printSectionCml: string = (elem.units === "NaN")
-                                        ? "N/A "
-                                        : `${elem.value}% `; 
+                                        ? "N/A"
+                                        : `${elem.value}%`; 
     
                 let printSectionCmlFixed: string = (printSectionCml.length >= 10)
                               ? printSectionCml
@@ -110,8 +110,8 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
             // need to change any billions to millions
             
             let printSection: string = (elem.units === "currency") 
-                ? `¥${elem.value.toLocaleString("en")}M `
-                : `${elem.value}% `; 
+                ? `¥${elem.value.toLocaleString("en")}M`
+                : `${elem.value}%`; 
             let printSectionFixed: string = (printSection.length >= 12)
                                       ? printSection
                                       : " ".repeat(12 - printSection.length) + printSection;
@@ -125,8 +125,8 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
         } else {
 
             let printSectionCml: string = (elem.units === "currency") 
-                ? `¥${elem.value.toLocaleString("en")}M `
-                : `${elem.value}% `; 
+                ? `¥${elem.value.toLocaleString("en")}M`
+                : `${elem.value}%`; 
     
                 let printSectionCmlFixed: string = (printSectionCml.length >= 12)
                               ? printSectionCml
@@ -151,7 +151,7 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
             
             let printSection: string = (elem.units === "currency") 
                 ? `¥${elem.value}B `
-                : `${elem.value}% `; 
+                : `${elem.value}%`; 
             let printSectionFixed: string = (printSection.length >= 10)
                                       ? printSection
                                       : " ".repeat(10 - printSection.length) + printSection;
@@ -167,7 +167,7 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
 
             let printSectionCml: string = (elem.units === "currency") 
                 ? `¥${elem.value}B `
-                : `${elem.value}% `; 
+                : `${elem.value}%`; 
     
                 let printSectionCmlFixed: string = (printSectionCml.length >= 10)
                               ? printSectionCml
@@ -222,7 +222,7 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
             
 //             let printSection: string = (elem.units === "currency") 
 //                 ? `¥${elem.value}B `
-//                 : `${elem.value}% `; 
+//                 : `${elem.value}%`; 
 //             let printSectionFixed: string = (printSection.length >= 10)
 //                                       ? printSection
 //                                       : " ".repeat(10 - printSection.length) + printSection;
@@ -231,7 +231,7 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
 
 //             let printSectionCml: string = (elem.units === "currency") 
 //                 ? `¥${elem.value}B `
-//                 : `${elem.value}% `; 
+//                 : `${elem.value}%`; 
     
 //                 let printSectionCmlFixed: string = (printSectionCml.length >= 10)
 //                               ? printSectionCml
@@ -256,26 +256,26 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
 // };
 
 export const printHead = (header: Header) => 
-`+${"-".repeat(30)}+
+`+${"−".repeat(30)}+
 |${header.companyName}${header.fiscalYear}
-+${"-".repeat(30)}+
++${"−".repeat(30)}+
 ${header.title}
-+${"-".repeat(30)}+`;
++${"−".repeat(30)}+`;
 
 // export const printBody = (header: Header, footer: Footer, quarter: KPDIndicators[], cumulative: KPDIndicators[], currentQuarter: number) => 
-// `+${"-".repeat(30)}+
+// `+${"−".repeat(30)}+
 // ${header.section}
-// +${"-".repeat(30)}+
+// +${"−".repeat(30)}+
 // ${printSections(quarter, currentQuarter)}
 // +${(currentQuarter > 1) ? "=".repeat(30)+"+\n" + printSections(cumulative, currentQuarter) : "=".repeat(30)+"+" }
-// +${"-".repeat(30)+"+"}
+// +${"−".repeat(30)+"+"}
 // ${footer.section}`;
 
 export const printNewBody = (header: Header, footer: Footer, quarterProportion: KPDIndicators[], cumulativeProportion: KPDIndicators[], quarterSales: KPDIndicators[], cumulativeSales: KPDIndicators[], quarterYoY: KPDIndicators[], cumulativeYoY: KPDIndicators[], currentQuarter: number) =>
-`+${"-".repeat(50)}+
+`+${"−".repeat(50)}+
 ${header.section}
-+${"-".repeat(50)}+
++${"−".repeat(50)}+
 ${printNewSections(quarterProportion, quarterSales, quarterYoY, currentQuarter)}
 +${(currentQuarter > 1) ? "=".repeat(50)+"+\n" + printNewSections(cumulativeProportion, cumulativeSales, cumulativeYoY, currentQuarter) : "=".repeat(50)+"+" }
-+${"-".repeat(50)+"+"}
++${"−".repeat(50)+"+"}
 ${footer.section}`;

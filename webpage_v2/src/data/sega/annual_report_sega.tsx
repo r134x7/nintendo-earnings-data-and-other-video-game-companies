@@ -129,7 +129,7 @@ const fullGameRatio = (ip: Series, fiscalYear: string): string | undefined => {
         return undefined
     } else {
         
-        let calc: string = `${(((nameSearch[0].Q4CmlValue / 1000) / (ip.value - ip.valueLastFY)) * 100).toFixed(2)}% `
+        let calc: string = `${(((nameSearch[0].Q4CmlValue / 1000) / (ip.value - ip.valueLastFY)) * 100).toFixed(2)}%`
 
         let calcFixed: string = (calc.length >= 9)
                 ? calc 
@@ -152,7 +152,7 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
         thirdHeader: "| IP Type                        |",
         fourthHeader: "| Platforms                      |",
         fifthHeader: "| Total Editions                 |",
-        ltd: "| Life-To-Date       |",
+        ltd: "Life-To-Date",
         seventhHeader: "| Units                          |",
         sixthHeader: "| First Appearance and Rank      |",
         summaryHeader: " Placeholder ",

@@ -1,27 +1,27 @@
 {
-    "fiscalYearCml":  "| FY3/20 Cumulative  |",
-    "fiscalYearYoY": "| FY3/20 Cml. YoY%   |",
+    "fiscalYearCml":  "FY3/2020",
+    "fiscalYearYoY": "FY3/20 Cml. YoY%   |",
     "series": [
         {
             "title": "Final Fantasy",
-            "releaseDate": " December 1987 ",
-            "fyEndMonth": " March 2020 ",
+            "releaseDate": "December 1987",
+            "fyEndMonth": "March 2020",
             "value": 154,
             "valueLastFY": 144 ,
             "valueLastTwoFYs": 141
         },
         {
             "title": "Dragon Quest",
-            "releaseDate": " May 1986 ",
-            "fyEndMonth": " March 2020 ",
+            "releaseDate": "May 1986",
+            "fyEndMonth": "March 2020",
             "value": 82,
             "valueLastFY": 78,
             "valueLastTwoFYs": 76 
         },
         {
             "title": "Tomb Raider",
-            "releaseDate": " October 1996 ",
-            "fyEndMonth": " March 2020 ",
+            "releaseDate": "October 1996",
+            "fyEndMonth": "March 2020",
             "value": 77,
             "valueLastFY": 74,
             "valueLastTwoFYs": 66 

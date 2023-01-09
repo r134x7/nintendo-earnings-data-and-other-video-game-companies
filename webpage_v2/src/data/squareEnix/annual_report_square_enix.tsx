@@ -67,7 +67,7 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
         secondHeader: "| First appearance to recent FY  |",
         thirdHeader: "| Rank                           |",
         fourthHeader: "| Units                          |",
-        ltd: "| Life-To-Date       |",
+        ltd: "Life-To-Date",
         summaryHeader: " Placeholder ",
         fiscalYear: elem.fiscalYearCml,
         fiscalYearYoY: elem.fiscalYearYoY,

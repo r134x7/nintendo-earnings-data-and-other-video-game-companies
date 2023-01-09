@@ -1,7 +1,7 @@
 {
     "fiscalYear": "FY3/2021",
-    "fiscalYearCml":  "| FY3/21 Cumulative  |",
-    "fiscalYearYoY": "| FY3/21 Cml. YoY%   |",
+    "fiscalYearCml":  "FY3/2021",
+    "fiscalYearYoY": "FY3/21 Cml. YoY%   |",
     "series": [
         {
             "title": " Shin Megami Tensei ",

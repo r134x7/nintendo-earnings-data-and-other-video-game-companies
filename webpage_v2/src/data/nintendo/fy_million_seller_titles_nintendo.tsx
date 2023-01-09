@@ -255,7 +255,7 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
                 return labelTitles(elem)
             }).map((elem) => {
                 return elem.filter((secondElem) => {
-                    return secondElem.label === " New! "
+                    return secondElem.label === "New!"
                 })
             }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
             ).map((elem) => {

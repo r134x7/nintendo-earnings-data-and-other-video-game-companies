@@ -1,19 +1,18 @@
 {
-    "fiscalYearCml":  "| FY3/20 Cumulative  |",
-    "fiscalYearYoY": "| FY3/20 Cml. YoY%   |",
+    "fiscalYear": "FY3/2020",
     "series": [
         {
             "title": "Super Robot Wars",
-            "releaseDate": " April 1991 ",
-            "fyEndMonth": " March 2020 ",
+            "releaseDate": "April 1991",
+            "fyEndMonth": "March 2020",
             "value": 19.10,
             "valueLastFY": 18.77,
             "valueLastTwoFYs": 0
         },
         {
             "title": "Tekken",
-            "releaseDate": " March 1995 ",
-            "fyEndMonth": " March 2020 ",
+            "releaseDate": "March 1995",
+            "fyEndMonth": "March 2020",
             "value": 50.52,
             "valueLastFY": 48.39,
             "valueLastTwoFYs": 0
@@ -21,24 +20,24 @@
         },
         {
             "title": "Tales of...",
-            "releaseDate": " December 1995 ",
-            "fyEndMonth": " March 2020 ",
+            "releaseDate": "December 1995",
+            "fyEndMonth": "March 2020",
             "value": 23.86,
             "valueLastFY": 21.60,
             "valueLastTwoFYs": 0
         },
         {
             "title": "Ultimate Ninja Storm",
-            "releaseDate": " January 2009 ",
-            "fyEndMonth": " March 2020 ",
+            "releaseDate": "January 2009",
+            "fyEndMonth": "March 2020",
             "value": 15.66,
             "valueLastFY": 13.95,
             "valueLastTwoFYs": 0
         },
         {
             "title": "Dark Souls",
-            "releaseDate": " September 2011 ",
-            "fyEndMonth": " March 2020 ",
+            "releaseDate": "September 2011",
+            "fyEndMonth": "March 2020",
             "value": 25.22,
             "valueLastFY": 22.19,
             "valueLastTwoFYs": 0,

@@ -1,43 +1,43 @@
 {
-    "fiscalYearCml":  "| FY3/18 Cumulative  |",
-    "fiscalYearYoY": "| FY3/18 Cml. YoY%   |",
+    "fiscalYearCml":  "FY3/2018 Cumulative  |",
+    "fiscalYearYoY": "FY3/18 Cml. YoY%   |",
     "series": [
         {
             "title": "Final Fantasy",
-            "releaseDate": " December 1987 ",
-            "fyEndMonth": " March 2018 ",
+            "releaseDate": "December 1987",
+            "fyEndMonth": "March 2018",
             "value": 141,
             "valueLastFY": 130 ,
             "valueLastTwoFYs": 115
         },
         {
             "title": "Dragon Quest",
-            "releaseDate": " May 1986 ",
-            "fyEndMonth": " March 2018 ",
+            "releaseDate": "May 1986",
+            "fyEndMonth": "March 2018",
             "value": 76 ,
             "valueLastFY": 71 ,
             "valueLastTwoFYs": 68 
         },
         {
             "title": "Tomb Raider",
-            "releaseDate": " October 1996 ",
-            "fyEndMonth": " March 2018 ",
+            "releaseDate": "October 1996",
+            "fyEndMonth": "March 2018",
             "value": 66,
             "valueLastFY": 58,
             "valueLastTwoFYs": 45
         },
         {
             "title": "Kingdom Hearts",
-            "releaseDate": " March 2002 ",
-            "fyEndMonth": " June 2018*",
+            "releaseDate": "March 2002",
+            "fyEndMonth": "June 2018*",
             "value": 25,
             "valueLastFY": 0,
             "valueLastTwoFYs": 0
         },
         {
             "title": "Just Cause",
-            "releaseDate": " September 2006 ",
-            "fyEndMonth": " June 2018*",
+            "releaseDate": "September 2006",
+            "fyEndMonth": "June 2018*",
             "value": 15,
             "valueLastFY": 0,
             "valueLastTwoFYs": 0

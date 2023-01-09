@@ -69,7 +69,7 @@ import { Titles, Header, quarterlyCalculation, printHead } from "../../../utils/
 
     const latestFYcollection = sortingTitles(filteredCollection);
 
-    const dateLabel = "| Data as of September 30th, 2022|\n+" + "-".repeat(32) + "+"
+    const dateLabel = "| Data as of September 30th, 2022|\n+" + "−".repeat(32) + "+"
 
     const header: Header = {
         fiscalYear: "placeholder",
@@ -107,11 +107,11 @@ import { Titles, Header, quarterlyCalculation, printHead } from "../../../utils/
                 : " " + elem[0].platform + " ".repeat(29 - elem[0].platform.length)
 
 
-            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
+            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
 
             let yearValues: string[] = elem.filter((value, index) => { return value.value !== 0}).map((value, valueIndex, valueArray) => {
 
-               let printValue: string = `${value.value}M ` 
+               let printValue: string = `${value.value}M` 
                let printValueFixed: string = (printValue.length >= 11)
                    ? printValue
                    : " ".repeat(11 - printValue.length) + printValue;
@@ -124,13 +124,13 @@ import { Titles, Header, quarterlyCalculation, printHead } from "../../../utils/
             }).filter((value, index) => index !== elem.length-1 );
                 
 
-        let printValue: string = `${elem[elem.length-1].value}M ` 
+        let printValue: string = `${elem[elem.length-1].value}M` 
         
         let printValueFixed: string = (printValue.length >= 11)
             ? printValue
             : " ".repeat(11 - printValue.length) + printValue;
 
-        let printLine: string = "+" + "-".repeat(42) + "+";
+        let printLine: string = "+" + "−".repeat(42) + "+";
 
         let printLTD = printLine + "\n| Life-To-Date (Units)         |" + printValueFixed + "|\n" + printLine;
 

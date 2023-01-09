@@ -97,7 +97,7 @@ import {
     // console.log(latestFYcollection);
     
 
-    const dateLabel = "| Data as of September 30th, 2022    |\n+" + "-".repeat(36) + "+"
+    const dateLabel = "| Data as of September 30th, 2022    |\n+" + "−".repeat(36) + "+"
 
     const header: Header = {
         firstHeader: "| Global Hardware and Software  |",
@@ -138,12 +138,12 @@ import {
             //     : " " + elem[0].platform + " ".repeat(29 - elem[0].platform.length)
 
 
-            // let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
-            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+"// + "+"+"-".repeat(42)+"+"
+            // let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
+            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+"// + "+"+"−".repeat(42)+"+"
 
             let yearValues: string[] = elem.filter((value, index) => value.value !== 0).map((value, valueIndex, valueArray) => {
 
-               let printValue: string = `¥${value.value.toLocaleString("en")}M ` 
+               let printValue: string = `¥${value.value.toLocaleString("en")}M` 
                let printValueFixed: string = (printValue.length >= 15)
                    ? printValue
                    : " ".repeat(15 - printValue.length) + printValue;
@@ -156,14 +156,14 @@ import {
             }).filter((secondValue, index) => index !== elem.length-1) // will not work using secondValue;
         
 
-        let printSum: string = `¥${elem[elem.length-1].value.toLocaleString("en")}M ` 
+        let printSum: string = `¥${elem[elem.length-1].value.toLocaleString("en")}M` 
         
         let printSumFixed: string = (printSum.length >= 15)
             ? printSum
             : " ".repeat(15 - printSum.length) + printSum;
 
 
-        let printAverage: string = `¥${Number((elem[elem.length-1].value / yearValues.length).toFixed(0)).toLocaleString("en")}M `; 
+        let printAverage: string = `¥${Number((elem[elem.length-1].value / yearValues.length).toFixed(0)).toLocaleString("en")}M`; 
 
         let printAverageFixed: string = (printAverage.length >= 15)
             ? printAverage
@@ -197,27 +197,27 @@ import {
         let printMedian: string = ((sortValuesMedian.length % 2) !== 0) // odd number
             // median formula source: https://en.wikipedia.org/wiki/Median
             // odd number median(x) = x(n+1)/2 => index version => median(x) = (x(n+1)/2)-1
-            ? `¥${sortValuesMedian[((sortValuesMedian.length + 1)/2) -1].value.toLocaleString("en")}M `
+            ? `¥${sortValuesMedian[((sortValuesMedian.length + 1)/2) -1].value.toLocaleString("en")}M`
             // even number median(x) = (x(n/2) + x((n/2) + 1)) /2 => index version median(x) = (x((n/2)-1) + x((n/2))) /2
-            : `¥${Number(((sortValuesMedian[(sortValuesMedian.length/2) -1].value + sortValuesMedian[(sortValuesMedian.length/2)].value)/2).toFixed(0)).toLocaleString("en")}M `;
+            : `¥${Number(((sortValuesMedian[(sortValuesMedian.length/2) -1].value + sortValuesMedian[(sortValuesMedian.length/2)].value)/2).toFixed(0)).toLocaleString("en")}M`;
 
         let printMedianFixed: string = (printMedian.length >= 15)
             ? printMedian
             : " ".repeat(15 - printMedian.length) + printMedian;
 
-        let printMin: string = `¥${sortValuesMedian[0].value.toLocaleString("en")}M `;
+        let printMin: string = `¥${sortValuesMedian[0].value.toLocaleString("en")}M`;
 
         let printMinFixed: string = (printMin.length >= 15)
             ? printMin
             : " ".repeat(15 - printMin.length) + printMin;
 
-        let printMax: string = `¥${sortValuesMedian[sortValuesMedian.length-1].value.toLocaleString("en")}M ` 
+        let printMax: string = `¥${sortValuesMedian[sortValuesMedian.length-1].value.toLocaleString("en")}M` 
 
         let printMaxFixed: string = (printMax.length >= 15)
             ? printMax
             : " ".repeat(15 - printMax.length) + printMax;
         
-        let printLine: string = "+" + "-".repeat(42) + "+";
+        let printLine: string = "+" + "−".repeat(42) + "+";
 
         let printCountRow = "| Count                    |" + printCountFixed + "|";
 

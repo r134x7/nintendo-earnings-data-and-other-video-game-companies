@@ -46,7 +46,7 @@ const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
 
     let printTitleName = printTextBlock(titleDifference[0].title)(43)
 
-    let printTitleNameFixed: string = printTitleName + "\n+" +"-".repeat(43)+"+" + "\n|" + printPlatformFixed + "|" + printRankFixed + "|\n+"+"-".repeat(43)+"+"
+    let printTitleNameFixed: string = printTitleName + "\n+" +"−".repeat(43)+"+" + "\n|" + printPlatformFixed + "|" + printRankFixed + "|\n+"+"−".repeat(43)+"+"
     
         
     let titleValues = titleDifference.filter((elem, index) => {
@@ -80,11 +80,11 @@ const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
         // : elem.title
         // let printTitleName = printTextBlock(elem.title)(43)
 
-        // let printTitleNameFixed: string = printTitleName + "\n+" +"-".repeat(43)+"+" + "\n|" + printPlatformFixed + "|" + printRankFixed + "|\n+"+"-".repeat(43)+"+"
+        // let printTitleNameFixed: string = printTitleName + "\n+" +"−".repeat(43)+"+" + "\n|" + printPlatformFixed + "|" + printRankFixed + "|\n+"+"−".repeat(43)+"+"
 
-        let printValue: string = `${elem.value}M ` 
+        let printValue: string = `${elem.value}M` 
         // let printValue: string = (elem.value !== 0) 
-        //     ? `${elem.value}M `
+        //     ? `${elem.value}M`
         //     : ` N/A `
         let printValueFixed: string = (printValue.length >= 10)
             ? printValue
@@ -107,7 +107,7 @@ const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
 
 const printTitleLTD = (titleLTD: Titles[], currentQuarter: number) => {
 
-    let printValue: string = `${titleLTD[currentQuarter-1].value}M `
+    let printValue: string = `${titleLTD[currentQuarter-1].value}M`
     let printValueFixed: string = (printValue.length === 10)
             ? printValue
             : " ".repeat(10 - printValue.length) + printValue;
@@ -124,7 +124,7 @@ const printTitleFYCml = (titleDifference: Titles[], currentFY: Header, currentQu
 
     let reducedFixed = Number(reduced.toFixed(2))
 
-    let reducedValue: string = `${reducedFixed}M `
+    let reducedValue: string = `${reducedFixed}M`
     let reducedValueFixed: string = (reducedValue.length >= 10)
         ? reducedValue
         : " ".repeat(10 - reducedValue.length) + reducedValue; 
@@ -136,7 +136,7 @@ const miscellaneousLine = (titleDifference: Titles[]) => {
     
     let miscellaneousCheck: string | undefined = titleDifference[0].miscellaneous;
 
-    let lastLine: string = "+" + "-".repeat(32) + "+"; 
+    let lastLine: string = "+" + "−".repeat(32) + "+"; 
 
     return (miscellaneousCheck === undefined)
             ? lastLine 
@@ -144,21 +144,21 @@ const miscellaneousLine = (titleDifference: Titles[]) => {
 }
 
 export const printHead = (header: Header) =>
-`+${"-".repeat(32)}+
+`+${"−".repeat(32)}+
 ${header.mainHeader}
-+${"-".repeat(32)}+
++${"−".repeat(32)}+
 ${header.platformHeader}
-+${"-".repeat(32)}+
-+${"-".repeat(32)}+
++${"−".repeat(32)}+
++${"−".repeat(32)}+
 ${header.titles}
-+${"-".repeat(32)}+
++${"−".repeat(32)}+
 ${header.platform}
-+${"-".repeat(32)}+
++${"−".repeat(32)}+
 ${header.units}
-+${"-".repeat(32)}+`;
++${"−".repeat(32)}+`;
 
 export const printBody = (quarter: Titles[], FYCml: Titles[], LTD: Titles[], currentFY: Header, currentQuarter: number) => 
-`+${"-".repeat(43)}+
+`+${"−".repeat(43)}+
 ${printTitles(quarter, currentQuarter)}
 +${"=".repeat(32)}+
 ${printTitleFYCml(FYCml, currentFY, currentQuarter)}

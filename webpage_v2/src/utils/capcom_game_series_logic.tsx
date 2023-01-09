@@ -21,15 +21,15 @@ export type Header = {
 };
 
 export const printHead = (header: Header) =>
-`+${"-".repeat(32)}+
+`+${"−".repeat(32)}+
 ${header.capcomHeader}
-+${"-".repeat(32)}+
++${"−".repeat(32)}+
 ${header.secondHeader}
-+${"-".repeat(32)}+
++${"−".repeat(32)}+
 ${header.thirdHeader}
-+${"-".repeat(32)}+
++${"−".repeat(32)}+
 ${header.fourthHeader}
-+${"-".repeat(32)}+`;
++${"−".repeat(32)}+`;
 
 const printRank = (seriesIP: Series) => {
 
@@ -116,7 +116,7 @@ const printReleaseDate = (seriesIP: Series) => {
 
 const printCmlValue = (seriesIP: Series) => {
 
-        let CmlValue: string = `${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M `
+        let CmlValue: string = `${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M`
 
         return (blockLength: number) => 
                (header: Header) => {
@@ -129,14 +129,14 @@ const printCmlValue = (seriesIP: Series) => {
 const printCmlYoY = (seriesIP: Series) => {
 
         let FYCmlYoY = (seriesIP.valueLastFY === 0)
-                ? " New! "
+                ? "New!"
                 : ((seriesIP.value - seriesIP.valueLastFY) === 0 && (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) === 0)
-                ? "N/A "
+                ? "N/A"
                 : ((seriesIP.value - seriesIP.valueLastFY) >=  (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) && !((seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) < 0))
                 ? `+${((
-                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
+                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}%` 
                 : `${((
-                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}% ` 
+                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}%` 
 
         return (blockLength: number) =>
                (header: Header) => {
@@ -149,7 +149,7 @@ const printCmlYoY = (seriesIP: Series) => {
 
 const printLTDValue = (seriesIP: Series) => {
 
-        let printLTDValue: string = `${seriesIP.value}M `
+        let printLTDValue: string = `${seriesIP.value}M`
        
         return (blockLength: number) => 
                (header: Header) => {
@@ -164,8 +164,8 @@ const printSeriesName = (seriesIP: Series) => {
 
     return (blockLength: number) => {
        return (!seriesIP.miscellaneous) 
-            ? "+"+"-".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title)(blockLength) + "\n+" + "-".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|\n+" + "-".repeat(blockLength) + "+\n|" + printNumberOfTitles(seriesIP)(blockLength) + "|"
-            : "+"+"-".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title)(blockLength) + "\n+" + "-".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|\n+" + "-".repeat(blockLength) + "+\n" + printTextBlock(seriesIP.miscellaneous)(blockLength);
+            ? "+"+"−".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title)(blockLength) + "\n+" + "−".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|\n+" + "−".repeat(blockLength) + "+\n|" + printNumberOfTitles(seriesIP)(blockLength) + "|"
+            : "+"+"−".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title)(blockLength) + "\n+" + "−".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|\n+" + "−".repeat(blockLength) + "+\n" + printTextBlock(seriesIP.miscellaneous)(blockLength);
     };
 };
 
@@ -180,7 +180,7 @@ export const printSeriesOutput = (seriesIP: Series) => {
     };
 };
 
-const printLine = (lineLength: number) => "+" + "-".repeat(lineLength) + "+"; 
+const printLine = (lineLength: number) => "+" + "−".repeat(lineLength) + "+"; 
 
 const printDoubleLine = (lineLength: number) => "+" + "=".repeat(lineLength) + "+"; 
 

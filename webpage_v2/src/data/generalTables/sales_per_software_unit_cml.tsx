@@ -132,14 +132,14 @@ function setMaker(collection: bandaiNamcoCollectionJSON[] | koeiTecmoCollectionJ
 
 const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArray: Section[]): string => {
 
-    let printLine = (length: number) => `+${"-".repeat(length)}+`;
+    let printLine = (length: number) => `+${"−".repeat(length)}+`;
 
     let printName = printLine(salesArray[0].name.length+2) + "\n" + printTextBlock(salesArray[0].name)(salesArray[0].name.length+2); 
 
 
     let salesPerSoftwareUnit = salesArray.map((elem, index, array) => {
 
-        let printSales: string = `¥${(elem.value * 1000).toLocaleString("en")}M `;
+        let printSales: string = `¥${(elem.value * 1000).toLocaleString("en")}M`;
 
         let printSalesFixed: string = (printSales.length >= 13)
             ? printSales
@@ -154,7 +154,7 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
                 ? printsegmentSalesPerSoftware
                 : " ".repeat(11 - printsegmentSalesPerSoftware.length) + printsegmentSalesPerSoftware;
             
-        let printSoftwareUnits: string = `${softwareArray[index].value / 1000}M `
+        let printSoftwareUnits: string = `${softwareArray[index].value / 1000}M`
 
         
         let printSoftwareUnitsFixed: string = (printSoftwareUnits.length >= 10)

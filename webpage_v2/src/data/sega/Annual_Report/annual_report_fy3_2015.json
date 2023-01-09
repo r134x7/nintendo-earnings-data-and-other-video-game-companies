@@ -1,7 +1,7 @@
 {
     "fiscalYear": "FY3/2015",
-    "fiscalYearCml":  "| FY3/15 Cumulative  |",
-    "fiscalYearYoY": "| FY3/15 Cml. YoY%   |",
+    "fiscalYearCml":  "FY3/2015 Cumulative  |",
+    "fiscalYearYoY": "FY3/15 Cml. YoY%   |",
     "series": [
         {
             "title": " Megami Tensei ",

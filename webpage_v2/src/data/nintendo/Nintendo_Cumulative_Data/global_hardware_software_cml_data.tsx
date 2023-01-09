@@ -113,7 +113,7 @@ import {
     // console.log(latestFYcollection);
     
 
-    const dateLabel = "| Data as of September 30th, 2022    |\n+" + "-".repeat(36) + "+"
+    const dateLabel = "| Data as of September 30th, 2022    |\n+" + "−".repeat(36) + "+"
 
     const header: Header = {
         firstHeader: "| Global Hardware and Software  |",
@@ -168,12 +168,12 @@ import {
             //     : " " + elem[0].platform + " ".repeat(29 - elem[0].platform.length)
 
 
-            // let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"-".repeat(42)+"+"
-            let printTitleNameFixed: string = "+"+"-".repeat(42)+"+\n" + printTitleName + "\n+" + "-".repeat(42) + "+"// + "+"+"-".repeat(42)+"+"
+            // let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
+            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+"// + "+"+"−".repeat(42)+"+"
 
             let yearValues: string[] = elem.filter((value, index) => value.value !== 0).map((value, valueIndex, valueArray) => {
 
-               let printValue: string = `${value.value}M ` 
+               let printValue: string = `${value.value}M` 
                let printValueFixed: string = (printValue.length >= 11)
                    ? printValue
                    : " ".repeat(11 - printValue.length) + printValue;
@@ -185,13 +185,13 @@ import {
                return  printPeriodFixed + printValueFixed + "|"
             }).filter((secondValue, index) => index !== elem.length-1) // will not work using secondValue;
 
-        let printValue: string = `${elem[elem.length-1].value}M ` 
+        let printValue: string = `${elem[elem.length-1].value}M` 
         
         let printValueFixed: string = (printValue.length >= 11)
             ? printValue
             : " ".repeat(11 - printValue.length) + printValue;
 
-        let printLine: string = "+" + "-".repeat(42) + "+";
+        let printLine: string = "+" + "−".repeat(42) + "+";
 
         let printLTD = printLine + "\n| Global - Life-To-Date (Units)|" + printValueFixed + "|\n" + printLine;
 
@@ -284,14 +284,14 @@ ${dataSource}`;
 
         let printTitleName = printTextBlock(salesArrays[0][0].name)(39);
 
-        let printTitleNameFixed: string = "+"+"-".repeat(39)+"+\n" + printTitleName + "\n+" + "-".repeat(51) + "+";
+        let printTitleNameFixed: string = "+"+"−".repeat(39)+"+\n" + printTitleName + "\n+" + "−".repeat(51) + "+";
 
-        let printHeaders: string = "|              |             | Hardware | Sales Per |\n|              |       Sales |    Units |  Hardware |\n|              |  Cumulative |Cumulative| Unit Cml. |\n+" + "-".repeat(51) + "+"
+        let printHeaders: string = "|              |             | Hardware | Sales Per |\n|              |       Sales |    Units |  Hardware |\n|              |  Cumulative |Cumulative| Unit Cml. |\n+" + "−".repeat(51) + "+"
 
         const salesPrint = salesArrays.map((elem, index, array) => {
 
         
-            let printSectionLTD: string = `¥${(elem[0].value + elem[1].value).toLocaleString("en")}M `
+            let printSectionLTD: string = `¥${(elem[0].value + elem[1].value).toLocaleString("en")}M`
 
             let printSectionLTDFixed: string = (printSectionLTD.length >= 13)
                 ? printSectionLTD
@@ -305,7 +305,7 @@ ${dataSource}`;
                 ? printSectionSalesPerHardware
                 : " ".repeat(11 - printSectionSalesPerHardware.length) + printSectionSalesPerHardware;
             
-            let printHardwareUnits: string = `${sectionHardwareTotalFixed[index]}M `
+            let printHardwareUnits: string = `${sectionHardwareTotalFixed[index]}M`
 
             let printHardwareUnitsFixed: string = (printHardwareUnits.length >= 10)
                     ? printHardwareUnits
@@ -318,7 +318,7 @@ ${dataSource}`;
             return "|" + shortFY + "|" + printSectionLTDFixed + "|" +  printHardwareUnitsFixed + "|" +   printSectionSalesPerHardwareFixed + "|"
         });
 
-        let printLine: string = "+" + "-".repeat(51) + "+"
+        let printLine: string = "+" + "−".repeat(51) + "+"
         
         return [
             printTitleNameFixed,

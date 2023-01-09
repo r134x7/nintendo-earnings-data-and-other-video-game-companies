@@ -22,7 +22,7 @@ export default function Nintendo() {
 
     const message = `Nintendo (They publish playing cards), this is where you can find archived Nintendo earnings data.`;
 
-    // const border = "+" + "-".repeat(93) + "+";
+    // const border = "+" + "−".repeat(93) + "+";
 
     const splitMessage = message.split("");
 
