@@ -43,7 +43,7 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
     thirdHeader: "SKU and Rank",
     fourthHeader: "Units",
     fiscalYear: elem.fiscalYear,
-    fiscalYearYoY: elem.fiscalYearYoY,
+    fiscalYearYoY: elem.fiscalYear + " Cml. YoY%",
     };
 
     let seriesList: Series[] = platformsMake(elem)
@@ -71,7 +71,7 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
         header.secondHeader,
         header.thirdHeader,
         header.fourthHeader,
-    ], 32);
+    ], 31);
 
     return printOne + "\n" + printedSeries
 })

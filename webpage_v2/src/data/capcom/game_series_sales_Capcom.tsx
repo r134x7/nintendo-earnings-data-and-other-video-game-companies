@@ -65,8 +65,8 @@ export const gameSeriesList: string[] = collection.map((elem, index, array) => {
     thirdHeader: "Number of Titles by Hardware SKU",
     fourthHeader: "Units",
     ltd: "Life-To-Date",
-    fiscalYear: elem.fiscalYearCml,
-    fiscalYearYoY: elem.fiscalYearYoY,
+    fiscalYear: elem.fiscalYear,
+    fiscalYearYoY: elem.fiscalYear + " Cml. YoY%",
     summaryHeader: "Placeholder",
     }
 

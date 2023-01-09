@@ -357,7 +357,7 @@ const specialList = (): string => {
 
         let titlesList: Titles[][] = titlesMake(delistedTitlesCheck, prevFYCheck, prev2FYsCheck);
 
-        return titlesList.map(elem => elem.map(value => { return { ...value, fiscalYear: data.fiscalYearCml} }))
+        return titlesList.map(elem => elem.map(value => { return { ...value, fiscalYear: data.fiscalYear} }))
     });
 
 

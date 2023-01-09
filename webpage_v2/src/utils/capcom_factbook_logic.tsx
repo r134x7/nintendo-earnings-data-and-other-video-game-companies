@@ -19,14 +19,14 @@ export type Header = {
 };
 
 const printRankAndSKU = (seriesIP: Series, blockLength: number) => {
-    return  border([spacer(`SKU sum: ${seriesIP.skuNumber} | Rank ${seriesIP.rank}`, blockLength, "left")]);
+    return  border([spacer(`SKU sum: ${seriesIP.skuNumber} | Rank ${seriesIP.rank}`, blockLength-1, "left")]);
 };
 
 const printCmlValue = (seriesIP: Series, blockLength: number, header: Header) => {
         return border([
-            spacer(header.fiscalYear, 20, "left"),
-            spacer(`${(seriesIP.value).toFixed(2)}M`, 20, "right"),
-        ])
+            spacer(header.fiscalYear + " Cumulative", 20, "left"),
+            spacer(`${(seriesIP.value).toFixed(2)}M`, 9, "right"),
+        ],true)
 };
 
 const printCmlYoY = (seriesIP: Series, blockLength: number, header: Header) => {
@@ -40,20 +40,17 @@ const printCmlYoY = (seriesIP: Series, blockLength: number, header: Header) => {
                     ((seriesIP.value / seriesIP.valueLastFY)) - 1) * 100).toFixed(2)}%` 
 
         return border([
-            spacer(header.fiscalYear, 20, "left"),
-            spacer(FYCmlYoY, 20, "right"),
+            spacer(header.fiscalYear + " Cml. YoY%", 20, "left"),
+            spacer(FYCmlYoY, 9, "right"),
         ])
     };
 
-const printSeriesName = (seriesIP: Series) => {
-
-    return (blockLength: number) => {
+const printSeriesName = (seriesIP: Series, blockLength: number) => {
        return (!seriesIP.miscellaneous) 
-            ? "+"+"−".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title, blockLength) + "\n+" + "−".repeat(blockLength) + "+\n|" + printRankAndSKU(seriesIP, blockLength) + "|"
-            : "+"+"−".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title, blockLength) + "\n+" + "−".repeat(blockLength) + "+\n|" + printRankAndSKU(seriesIP, blockLength) + "|\n+" + "−".repeat(blockLength) + "+\n" + printTextBlock(seriesIP.miscellaneous, blockLength);
-    };
+            ? liner(printTextBlock(seriesIP.title, blockLength), "−", "both", true, blockLength) + liner(printRankAndSKU(seriesIP, blockLength), "=","bottom",true)
+            : liner(printTextBlock(seriesIP.title, blockLength), "−", "both", true, blockLength) + liner(printRankAndSKU(seriesIP, blockLength), "=","bottom",true) + liner(printTextBlock(seriesIP.miscellaneous, blockLength),"−","bottom",true,blockLength);
 };
 
 export const printSeriesOutput = (seriesIP: Series, header: Header, blockLength: number, valueLength: number) => {
-        return printSeriesName(seriesIP)(blockLength) + "\n" + "\n" + printCmlValue(seriesIP, valueLength, header) + "\n" + printCmlYoY(seriesIP, valueLength, header)
+        return printSeriesName(seriesIP, blockLength) + printCmlValue(seriesIP, valueLength, header) + liner(printCmlYoY(seriesIP, valueLength, header),"−","bottom")
 };
