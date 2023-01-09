@@ -3,32 +3,32 @@
     "currentQuarter": 2,
     "softwareUnits": [
         {
-            "name": " Sonic series ",
-            "ip": " Sonic the Hedgehog ",
+            "name": "Sonic series",
+            "ip": "Sonic the Hedgehog",
             "Q1CmlValue": 1460,
             "Q2CmlValue": 2630,
             "Q3CmlValue": 2630,
             "Q4CmlValue": 2630 
         },
         {
-            "name": " Total War series ",
-            "ip": " Total War ",
+            "name": "Total War series",
+            "ip": "Total War",
             "Q1CmlValue": 420,
             "Q2CmlValue": 950,
             "Q3CmlValue": 950,
             "Q4CmlValue": 950 
         },
         {
-            "name": " Persona series ",
-            "ip": " Persona ",
+            "name": "Persona series",
+            "ip": "Persona",
             "Q1CmlValue": 270,
             "Q2CmlValue": 500,
             "Q3CmlValue": 500,
             "Q4CmlValue": 500 
         },
         {
-            "name": " Like a Dragon series ",
-            "ip": " Ryu ga Gotoku ",
+            "name": "Like a Dragon series",
+            "ip": "Ryu ga Gotoku",
             "Q1CmlValue": 470,
             "Q2CmlValue": 960,
             "Q3CmlValue": 960,

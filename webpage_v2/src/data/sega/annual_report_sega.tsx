@@ -1,5 +1,5 @@
 import { Header, Series, printSeries } from "../../utils/sega_annual_report_logic";
-import { headerPrint } from "../../utils/table_design_logic";
+import { headerPrint, border, liner, spacer } from "../../utils/table_design_logic";
 
 import annualReport2022 from "./Annual_Report/annual_report_fy3_2022.json";
 import annualReport2021 from "./Annual_Report/annual_report_fy3_2021.json";
@@ -14,7 +14,26 @@ import annualReport2013 from "./Annual_Report/annual_report_fy3_2013.json";
 
 import { collection as softwareUnitsCollection } from "./software_units_sega";
 
-const collection = [
+type collectionJSON = {
+    fiscalYear: string,
+    series: seriesType[]
+};
+
+type seriesType = {
+    title: string;
+    firstReleaseYear: string;
+    platforms: string;
+    totalEditions: number;
+    ipType: string;
+    units: string;
+    value: number;
+    valueLastFY: number;
+    valueLastTwoFYs: number;
+    miscellaneous1?: string;
+    miscellaneous2?: string;
+};
+
+const collection: collectionJSON[] = [
     annualReport2022,
     annualReport2021,
     annualReport2020,
@@ -25,24 +44,11 @@ const collection = [
     annualReport2015,
     annualReport2014,
     annualReport2013,
-] as const;
+];
 
 const seriesMake = (obj: {
-    "series": {
-        title: string;
-        firstReleaseYear: string;
-        platforms: string;
-        totalEditions: number;
-        ipType: string;
-        units: string;
-        value: number;
-        valueLastFY: number;
-        valueLastTwoFYs: number;
-        miscellaneous1?: string;
-        miscellaneous2?: string;
-    }[]
+    "series": seriesType[]
 }): Series[] => {
-//" Acquired IP " | " Developed in-house IP " | " Licensed third party IP " | " Undefined "
     
     let series: Series[] = obj.series.map(elem => {
 
@@ -76,7 +82,6 @@ const seriesMake = (obj: {
                     miscellaneous1: (elem.miscellaneous1 === undefined) ? undefined : elem.miscellaneous1,
                     miscellaneous2: (elem.miscellaneous2 === undefined) ? undefined : elem.miscellaneous2,
                 }
-
     }) 
 
     return series
@@ -96,18 +101,17 @@ const fullGameRatio = (ip: Series, fiscalYear: string): string | undefined => {
         
         return ipMatch
     }).flat();
-
+    
     if (nameSearch.length === 0) {
         return undefined
     } else {
         
         let calc: string = `${(((nameSearch[0].Q4CmlValue / 1000) / (ip.value - ip.valueLastFY)) * 100).toFixed(2)}%`
 
-        let calcFixed: string = (calc.length >= 9)
-                ? calc 
-                :  " ".repeat(9 - calc.length) + calc;
-
-        let calcPrint: string = "\n+--------------------------------------------+\n|" + fiscalYear + "Full Game / IP Series % |" + calcFixed + "|\n+============================================+\n###";
+        let calcPrint: string = liner(border([
+            spacer(fiscalYear + " Full Game / IP Series %", 33, "left"),
+            spacer(calc, 9, "right"),
+        ]),"=","both",true) + "###"
 
         return calcPrint 
     };
@@ -149,9 +153,9 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
     })
 
     let printedSeries = sortedList.map((elem) => {
-
+        
         let printRatio = fullGameRatio(elem, fiscalYear)        
-
+        
         return (!printRatio) 
                 ? printSeries(header, elem)
                 : printSeries(header, elem).concat(printRatio)

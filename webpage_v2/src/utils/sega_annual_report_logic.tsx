@@ -67,6 +67,8 @@ export const printSeries = (header: Header, seriesIP: Series) => {
             ? printUnits
             : printUnits + "\n" + printMiscFlatFilter.reduce((prev, next) => prev + "\n" + next);
 
+        let printUnitsFixedLine: string = liner(printUnitsFixed, "−", "bottom", true, 44)
+
         let printCmlValue: string = border([
             spacer(header.fiscalYear + " Cumulative", 20, "left"),
             spacer(`${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M`, 11, "right")
@@ -90,9 +92,9 @@ export const printSeries = (header: Header, seriesIP: Series) => {
         let printLTDValue: string = border([
             spacer(header.ltd, 20, "left"),
             spacer(`${seriesIP.value}M`, 11, "right"),
-        ],true);
+        ]);
 
-        let printValues = liner(printCmlValue + printFYCmlYoYFixed + printLTDValue, "−", "bottom", undefined, 32)
+        let printValues = liner(printCmlValue + printFYCmlYoYFixed + printLTDValue, "−", "bottom", true, 34)
 
-    return printTitleNameFixed + printUnitsFixed + printValues
+    return printTitleNameFixed + printUnitsFixedLine + printValues
 }
