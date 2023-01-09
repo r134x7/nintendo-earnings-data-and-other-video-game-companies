@@ -44,7 +44,7 @@ const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
             ? titleDifference[0].platform
             : " " + titleDifference[0].platform + " ".repeat(31 - titleDifference[0].platform.length)
 
-    let printTitleName = printTextBlock(titleDifference[0].title)(43)
+    let printTitleName = printTextBlock(titleDifference[0].title, 43)
 
     let printTitleNameFixed: string = printTitleName + "\n+" +"−".repeat(43)+"+" + "\n|" + printPlatformFixed + "|" + printRankFixed + "|\n+"+"−".repeat(43)+"+"
     

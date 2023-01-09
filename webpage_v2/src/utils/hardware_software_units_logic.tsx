@@ -81,8 +81,8 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             : (sectionDifference[0].name === "Digital Sales")
             ? "+--------------------------+\n|Digital Sales in dedicated|---------+\n| video game platform      |    YoY% |\n+------------------------------------+"
             : (sectionDifference[0].units === "currency")
-            ? "+" + "−".repeat(33) + "+\n" + printTextBlock(sectionCumulative[0].name)(33) + "\n+" + "−".repeat(36) + "+\n" + "|             |      Units |    YoY% |\n" + "+" + "−".repeat(36) + "+" 
-            : "+" + "−".repeat(33) + "+\n" + printTextBlock(sectionCumulative[0].name)(33) + "\n+" + "−".repeat(33) + "+\n" + "|             |   Units |    YoY% |\n" + "+" + "−".repeat(33) + "+" 
+            ? "+" + "−".repeat(33) + "+\n" + printTextBlock(sectionCumulative[0].name, 33) + "\n+" + "−".repeat(36) + "+\n" + "|             |      Units |    YoY% |\n" + "+" + "−".repeat(36) + "+" 
+            : "+" + "−".repeat(33) + "+\n" + printTextBlock(sectionCumulative[0].name, 33) + "\n+" + "−".repeat(33) + "+\n" + "|             |   Units |    YoY% |\n" + "+" + "−".repeat(33) + "+" 
 
      const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem, index, array) => {
         //  return index < currentQuarter && array[index].units !== "NaN"
@@ -307,7 +307,7 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
 
         const headerBorder: string = "+" + "−".repeat(50) + "+"
 
-        const sectionHeaderName: string | never[] = printTextBlock(sectionSales[0].name)(50) as string;
+        const sectionHeaderName: string | never[] = printTextBlock(sectionSales[0].name, 50) as string;
 
         const sectionHeaderThree: string = "+" + "−".repeat(50) + "+\n" + "|             |             | Hardware | Sales Per |\n|             |       Sales |    Units |  Hardware |\n|             |  Cumulative |Cumulative| Unit Cml. |\n+" + "−".repeat(50) + "+"
 

@@ -460,11 +460,11 @@ export const SegaPrint = (salesData: Section[], salesDataLastFY: Section[], sale
 
     const salesUnitsBlock = [
         printLine(32),
-        printTextBlock(salesData[0].name)(32),
+        printTextBlock(salesData[0].name, 32),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes)(50) + "\n" + printLine(50),
+        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes, 50) + "\n" + printLine(50),
         ].flat();
 
     return [head, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
@@ -476,11 +476,11 @@ export const BandaiNamcoPrint = (salesData: Section[], salesDataLastFY: Section[
 
     const salesUnitsBlock = [
         printLine(32),
-        printTextBlock(salesData[0].name)(32),
+        printTextBlock(salesData[0].name, 32),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes)(50) + "\n" + printLine(50),
+        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes, 50) + "\n" + printLine(50),
         ].flat();
 
     return [head, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
@@ -492,11 +492,11 @@ export const CapcomPrint = (salesData: Section[], salesDataLastFY: Section[], sa
 
     const salesUnitsBlock = [
         printLine(32),
-        printTextBlock(salesData[0].name)(32),
+        printTextBlock(salesData[0].name, 32),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes)(50) + "\n" + printLine(50),
+        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes, 50) + "\n" + printLine(50),
         ].flat();
 
     return [head, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
@@ -506,11 +506,11 @@ export const CapcomPrintPhysical = (salesData: Section[], salesDataLastFY: Secti
 
     const salesUnitsBlock = [
         printLine(32),
-        printTextBlock(salesData[0].name)(32),
+        printTextBlock(salesData[0].name, 32),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes)(50) + "\n" + printLine(50),
+        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes, 50) + "\n" + printLine(50),
         ].flat();
 
     return [...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
@@ -520,11 +520,11 @@ export const CapcomPrintDigital = (salesData: Section[], salesDataLastFY: Sectio
 
     const salesUnitsBlock = [
         printLine(32),
-        printTextBlock(salesData[0].name)(32),
+        printTextBlock(salesData[0].name, 32),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes)(50) + "\n" + printLine(50),
+        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes, 50) + "\n" + printLine(50),
         ].flat();
 
     return [...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
@@ -536,11 +536,11 @@ export const KoeiTecmoPrint = (salesData: Section[], salesDataLastFY: Section[],
 
     const salesUnitsBlock = [
         printLine(32),
-        printTextBlock(salesData[0].name)(32),
+        printTextBlock(salesData[0].name, 32),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes)(50) + "\n" + printLine(50),
+        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes, 50) + "\n" + printLine(50),
         ].flat();
 
     return [head, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
@@ -552,26 +552,26 @@ export const SquareEnixPrint = (salesHDGames: Section[], salesHDGamesLastFY: Sec
 
     const salesDataBlock = [
         printLine(32),
-        printTextBlock(salesHDGames[0].name)(32),
+        printTextBlock(salesHDGames[0].name, 32),
         squareEnixSalesHeader,
         ...printQtrSales(salesHDGames, salesHDGamesLastFY, header, currentQuarter),
         ...printCmlSales(salesHDGames, salesHDGamesLastFY, header, currentQuarter),
-        (salesHDGames[0].notes === undefined) ? [] : printTextBlock(salesHDGames[0].notes)(38) + "\n" + printLine(38),
+        (salesHDGames[0].notes === undefined) ? [] : printTextBlock(salesHDGames[0].notes, 38) + "\n" + printLine(38),
         printLine(32),
-        printTextBlock(salesMMO[0].name)(32),
+        printTextBlock(salesMMO[0].name, 32),
         squareEnixSalesHeader,
         ...printQtrSales(salesMMO, salesMMOLastFY, header, currentQuarter),
         ...printCmlSales(salesMMO, salesMMOLastFY, header, currentQuarter),
-        (salesMMO[0].notes === undefined) ? [] : printTextBlock(salesMMO[0].notes)(38) + "\n" + printLine(38),
+        (salesMMO[0].notes === undefined) ? [] : printTextBlock(salesMMO[0].notes, 38) + "\n" + printLine(38),
     ].flat();
 
     const salesUnitsBlock = [
             printLine(32),
-            printTextBlock(salesHDandMMO[0].name)(32),
+            printTextBlock(salesHDandMMO[0].name, 32),
             generalSalesHeader,
             ...printQtrSalesPerSWUnit(salesHDandMMO, salesHDandMMOLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
             ...printCmlSalesPerSWUnit(salesHDandMMO, salesHDandMMOLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-            (salesHDandMMO[0].notes === undefined) ? [] : printTextBlock(salesHDandMMO[0].notes)(50) + "\n" + printLine(50),
+            (salesHDandMMO[0].notes === undefined) ? [] : printTextBlock(salesHDandMMO[0].notes, 50) + "\n" + printLine(50),
         ].flat();
 
     return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 

@@ -55,7 +55,7 @@ ${header.secondHeader}
 
 export const printSoftwareGeneral = (header: Header, sectionDifference: Section[], sectionDifferenceYoY: Section[], sectionCumulative: Section[], sectionCumulativeYoY: Section[], currentQuarter: number) => {
 
-    const textBlock: string | never[] = "+---------------------------------+\n" + printTextBlock(sectionDifference[0].name)(33);
+    const textBlock: string | never[] = "+---------------------------------+\n" + printTextBlock(sectionDifference[0].name, 33);
     const sectionHeader: string = textBlock + "\n+---------------------------------+\n|             |   Units |    YoY% |\n+---------------------------------+"
 
      const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem, index, array) => {

@@ -113,7 +113,7 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
         // : (elem.title.length < 32)
         // ? elem.title + " ".repeat(32 - elem.title.length) 
         // : elem.title
-        let printTitleName = printTextBlock(elem.title)(42)
+        let printTitleName = printTextBlock(elem.title, 42)
 
         let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
 

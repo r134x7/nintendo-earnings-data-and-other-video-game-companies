@@ -1,6 +1,4 @@
-export const printTextBlock = (text: string) => {
-
-    return (blockLength: number): string => {
+export const printTextBlock = (text: string, blockLength: number): string => {
 
         let textSplit: string[] = text.split(" ");
          
@@ -43,7 +41,6 @@ export const printTextBlock = (text: string) => {
         }).flat().reduce((prev, next) => prev + "\n" + next)
         
         return printText
-    }
 };
 
 export const spacer = (text: string, length: number, align: "left" | "right"): string => {
@@ -64,8 +61,10 @@ export const border = (textArray: string[]): string => {
         }, "")
     };
 
-export const liner = (text: string, lineStyle: "−" | "=" | "#", position: "top" | "bottom" | "both"): string => {
-        let line = `+${lineStyle.repeat(text.length-2)}+` 
+export const liner = (text: string, lineStyle: "−" | "=" | "#", position: "top" | "bottom" | "both", lineLengthCustom?: number): string => {
+        let line = (lineLengthCustom === undefined) 
+            ? `+${lineStyle.repeat(text.length-2)}+`
+            : `+${lineStyle.repeat(lineLengthCustom-2)}+`; 
 
         return (position === "top")
             ? line + "\n" + text
@@ -74,6 +73,7 @@ export const liner = (text: string, lineStyle: "−" | "=" | "#", position: "top
                 : line + "\n" + text + "\n" + line;
     };
 
+// no longer necessary, solved issue with liner and printTextBlock
 export const singleLiner = (lineLength: number, lineStyle: "−" | "=" | "#"): string => {
-        return `+${lineStyle.repeat(lineLength-2)}+` 
+        return `+${lineStyle.repeat(lineLength-2)}+`;
     };

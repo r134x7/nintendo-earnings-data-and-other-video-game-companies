@@ -182,7 +182,7 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
                 ? printRank
                 : printRank + " ".repeat(11 - printRank.length);
 
-        let printTitleName: string | never[] = printTextBlock(elem.title)(32)
+        let printTitleName: string | never[] = printTextBlock(elem.title, 32)
         // let printTitleName: string = (elem.title.length > 32)
         // ? elem.title.split(" ").reduce((prev, next, index, array) => {
 
@@ -200,7 +200,7 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
         // ? elem.title + " ".repeat(32 - elem.title.length) 
         // : elem.title
 
-        let printPlatforms: string | never[] = printTextBlock(elem.platforms)(32)
+        let printPlatforms: string | never[] = printTextBlock(elem.platforms, 32)
         // let printPlatforms: string = (elem.platforms.length > 32)
         // ? elem.platforms.split(" ").reduce((prev, next, index, array) => {
 

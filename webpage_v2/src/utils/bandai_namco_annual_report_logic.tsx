@@ -123,8 +123,8 @@ const printSeriesName = (seriesIP: Series) => {
 
     return (blockLength: number) => {
        return (!seriesIP.miscellaneous) 
-            ? liner(printTextBlock(seriesIP.title)(blockLength),"−","both") + "\n" + printReleaseDateAndRank(seriesIP)(blockLength)
-            : liner(printTextBlock(seriesIP.title)(blockLength),"−","both") + "\n" + printReleaseDateAndRank(seriesIP)(blockLength) + "\n" + singleLiner(blockLength+2, "−") + "\n" + printTextBlock(seriesIP.miscellaneous)(blockLength);
+            ? liner(printTextBlock(seriesIP.title, blockLength),"−","both") + "\n" + printReleaseDateAndRank(seriesIP)(blockLength)
+            : liner(printTextBlock(seriesIP.title, blockLength),"−","both", blockLength) + "\n" + printReleaseDateAndRank(seriesIP)(blockLength) + "\n" + singleLiner(blockLength+2, "−") + "\n" + printTextBlock(seriesIP.miscellaneous, blockLength);
     };
 };
 
