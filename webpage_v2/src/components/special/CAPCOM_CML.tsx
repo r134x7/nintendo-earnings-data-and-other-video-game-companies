@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printSpecialList } from "../../data/capcom/platinum_titles_Capcom";
+import { CapcomSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 
@@ -16,6 +17,10 @@ export default function CAPCOM_CML() {
             name: "Capcom Platinum Titles - Cumulative",
             value: printSpecialList 
         },
+        {
+            name: "Capcom Sales Per Software Unit - Cumulative",
+            value: CapcomSalesPerSoftwareUnitCml
+        }
     ];
 
     const dataList = componentList.map(elem => elem.name);

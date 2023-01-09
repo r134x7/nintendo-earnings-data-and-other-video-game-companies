@@ -33,7 +33,7 @@ import squareEnixSoftwareSales2022 from "../squareEnix/Software_Sales/software_s
 import squareEnixSoftwareSales2021 from "../squareEnix/Software_Sales/software_sales_fy3_2021.json";
 import squareEnixSoftwareSales2020 from "../squareEnix/Software_Sales/software_sales_fy3_2020.json";
 
-const dateLabel = "| Data as of September 30th, 2022   |\n+" + "-".repeat(35) + "+"
+const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+2, "left")]),"-", "bottom")
 
 const bandaiNamcoCollection: bandaiNamcoCollectionJSON[] = [
     bandaiNamcoSoftwareSales2019,
@@ -136,6 +136,7 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
 
     let printName = printLine(salesArray[0].name.length+2) + "\n" + printTextBlock(salesArray[0].name)(salesArray[0].name.length+2); 
 
+
     let salesPerSoftwareUnit = salesArray.map((elem, index, array) => {
 
         let printSales: string = `¥${(elem.value * 1000).toLocaleString("en")}M `;
@@ -178,50 +179,112 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
         return sortList
     };
 
-    // let sortedSales = sortList(salesArray);
+    function sortValues(list: number[]) {
 
-    // let sortedUnits = sortList(softwareArray);
+        const sortList = list.map((elem, index, array) => {
+                return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+        }).sort((a, b) => { // (b,a) is descending order, (a,b) sorts in ascending order
+            return (a > b)
+                ? 1
+                : (a < b)
+                ? -1
+                : 0 
+        });
 
-    // let sortedSalesSum = ((sortedSales.map(value => value.value).reduce((acc, next) => acc + next)) * 1000);
+        return sortList
+    };
 
-    // let sortedUnitsSum = ((sortedUnits.map(value => value.value).reduce((acc, next) => acc + next)) / 1000);
+    let sortedSales = sortList(salesArray);
 
-    // let sortedSalesPerSoftwareSum = sortedSalesSum / sortedUnitsSum;
+    let sortedUnits = sortList(softwareArray);
 
-    // let printAverageSales: string = `¥${Number(( sortedSalesSum / sortedSales.length).toFixed(0)).toLocaleString("en")}M`;
+    let sortedSalesSum = ((sortedSales.map(value => value.value).reduce((acc, next) => acc + next)) * 1000);
 
-    // let printAverageUnits: string = `${( sortedUnitsSum / sortedUnits.length).toFixed(3)}M`; 
+    let sortedUnitsSum = ((sortedUnits.map(value => value.value).reduce((acc, next) => acc + next)) / 1000);
 
-    // let printAverageSalesPerSoftware: string = `¥${Number(( sortedSalesPerSoftwareSum ).toFixed(0)).toLocaleString("en")}`; 
+    let salesPerSoftwareUnitUnsorted = salesArray.map((elem, index) => {
+        return  Number(((elem.value * 1000) / (softwareArray[index].value / 1000)).toFixed(0));
+    });
 
-    // need to fix issue with sales per software unit average...
+    let salesPerSoftwareUnitSorted = sortValues(salesPerSoftwareUnitUnsorted);
+
+    let salesPerSoftwareUnitSum = salesPerSoftwareUnitUnsorted.reduce((acc, next) => acc + next); 
+
+    let salesPerSoftwareUnitAverage = salesPerSoftwareUnitSum / salesArray.length;
+
+    let printSalesSum: string = `¥${Number((sortedSalesSum).toFixed(0)).toLocaleString("en")}M`;
+
+    let printUnitsSum: string = `${(sortedUnitsSum).toFixed(3)}M`;
     
-    // let printCountRow: string = border([
-    //     spacer("Count", 13, "left"),
-    //     spacer(`${salesArray.length}`, 12, "right"),
-    //     spacer("", 9, "left"),
-    //     spacer("", 10, "left"),
-    // ]);
+    let printSalesPerSoftwareUnitSum = `¥${Number((salesPerSoftwareUnitSum).toFixed(0)).toLocaleString("en")}`;
 
-    // let printAverageRow: string =  border([
-    //     spacer("Average", 13, "left"),
-    //     spacer(printAverageSales, 12, "right"),
-    //     spacer(printAverageUnits, 9, "right"),
-    //     spacer(printAverageSalesPerSoftware, 10, "right")
-    // ]);
+    let printAverageSales: string = `¥${Number(( sortedSalesSum / sortedSales.length).toFixed(0)).toLocaleString("en")}M`;
+
+    let printAverageUnits: string = `${( sortedUnitsSum / sortedUnits.length).toFixed(3)}M`; 
+
+    let printAverageSalesPerSoftware: string = `¥${Number(( salesPerSoftwareUnitAverage).toFixed(0)).toLocaleString("en")}`; 
+
+    let printMedianSales: string = ((sortedSales.length % 2) !== 0) // odd number
+            // median formula source: https://en.wikipedia.org/wiki/Median
+            // odd number median(x) = x(n+1)/2 => index version => median(x) = (x(n+1)/2)-1
+            ? `¥${((sortedSales[((sortedSales.length + 1)/2) -1].value) * 1000).toLocaleString("en")}M`
+            // even number median(x) = (x(n/2) + x((n/2) + 1)) /2 => index version median(x) = (x((n/2)-1) + x((n/2))) /2
+            : `¥${Number((((sortedSales[(sortedSales.length/2) -1].value + sortedSales[(sortedSales.length/2)].value)/2) * 1000).toFixed(0)).toLocaleString("en")}M`;
+    
+    
+    let printMedianUnits: string = ((sortedUnits.length % 2) !== 0) // odd number
+            ? `${sortedUnits[((sortedUnits.length + 1)/2) -1].value.toFixed(3)}M`
+            : `${Number(((sortedUnits[(sortedUnits.length/2) -1].value + sortedUnits[(sortedUnits.length/2)].value)/2).toFixed(3))}M`;
+
+    let printMedianSalesPerSoftwareUnit: string = ((salesPerSoftwareUnitSorted.length % 2) !== 0) // odd number
+            ? `¥${salesPerSoftwareUnitSorted[((salesPerSoftwareUnitSorted.length + 1)/2) -1].toLocaleString("en")}`
+            : `¥${Number(((salesPerSoftwareUnitSorted[(salesPerSoftwareUnitSorted.length/2) -1] + salesPerSoftwareUnitSorted[(salesPerSoftwareUnitSorted.length/2)])/2).toFixed(0)).toLocaleString("en")}`;
+
+    let printCountRow: string = border([
+        spacer("Count", 13, "left"),
+        spacer(`${salesArray.length}`, 12, "right"),
+        spacer("", 9, "left"),
+        spacer("", 10, "left"),
+    ]);
+
+    let printSumRow: string = border([
+        spacer("Sum", 13, "left"),
+        spacer(printSalesSum, 12, "right"),
+        spacer(printUnitsSum, 9, "right"),
+        spacer(printSalesPerSoftwareUnitSum, 10, "right"),
+    ]);
+
+    let printAverageRow: string = border([
+        spacer("Average", 13, "left"),
+        spacer(printAverageSales, 12, "right"),
+        spacer(printAverageUnits, 9, "right"),
+        spacer(printAverageSalesPerSoftware, 10, "right")
+    ]);
+
+    let printMedianRow: string = border([
+        spacer("Median", 13, "left"),
+        spacer(printMedianSales, 12, "right"),
+        spacer(printMedianUnits, 9, "right"),
+        spacer(printMedianSalesPerSoftwareUnit, 10, "right")
+    ]);
+
 
     return [
         printName,
         generalSalesHeader,
         ...salesPerSoftwareUnit, 
         printLine(51),
-        // printCountRow,
-        // printAverageRow,
-    ].reduce((acc, next) => acc + "\n" + next);
+        printCountRow,
+        printSumRow,
+        printAverageRow,
+        printMedianRow,
+        (salesArray[0].notes === undefined) ? [] : printTextBlock(salesArray[0].notes)(51) + "\n" + printLine(51),
+    ].flat().reduce((acc, next) => acc + "\n" + next);
 };
 
 export const bandaiNamcoSalesPerSoftwareUnitCml = [
     headerMaker("Bandai Namco"),
+    dateLabel,
     printSalesPerSoftwareUnitCumulative(bandaiNamcoSales, bandaiNamcoUnits)
 ].reduce((acc, next) => acc + "\n" + next);
 
@@ -232,4 +295,17 @@ export const CapcomSalesPerSoftwareUnitCml = [
     printSalesPerSoftwareUnitCumulative(capcomPhysicalSales, capcomPhysicalUnits),
 ].reduce((acc, next) => acc + "\n" + next);
 
-        
+export const segaSammySalesPerSoftwareUnitCml = [
+    headerMaker("Sega Sammy"),
+    printSalesPerSoftwareUnitCumulative(segaSales, segaUnits)
+].reduce((acc, next) => acc + "\n" + next);
+
+export const koeiTecmoSalesPerSoftwareUnitCml = [
+    headerMaker("Koei Tecmo"),
+    printSalesPerSoftwareUnitCumulative(koeiTecmoSales, koeiTecmoUnits)
+].reduce((acc, next) => acc + "\n" + next);
+
+export const squareEnixSalesPerSoftwareUnitCml = [
+    headerMaker("Square Enix"),
+    printSalesPerSoftwareUnitCumulative(squareEnixSales, squareEnixUnits)
+].reduce((acc, next) => acc + "\n" + next);

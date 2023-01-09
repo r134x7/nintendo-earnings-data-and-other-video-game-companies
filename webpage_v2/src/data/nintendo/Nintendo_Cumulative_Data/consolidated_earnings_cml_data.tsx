@@ -1,4 +1,5 @@
 import { EarningsJSON } from "../../generalTables/consolidated_earnings_general"
+import { liner, spacer, border } from "../../../utils/table_design_logic"
 
 import consolidatedEarnings1981 from "../Consolidated_Earnings/consolidated_earnings_fy8_1981.json" 
 import consolidatedEarnings1982 from "../Consolidated_Earnings/consolidated_earnings_fy8_1982.json" 
@@ -90,7 +91,7 @@ const totalCollection: EarningsJSON[] = [
     consolidatedEarnings2023,
 ];
 
-const dateLabel = "| Data as of September 30th, 2022   |\n+" + "-".repeat(35) + "+"
+const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+1, "left")]),"-", "bottom")
 
 let netSalesSet = totalCollection.map(elem => {
     return {
@@ -132,12 +133,14 @@ const sortedNetSales = sortList(netSalesSet);
 const sortedOperatingIncome = sortList(operatingIncomeSet);
 const sortedNetIncome = sortList(netIncomeSet);
 
-let header = 
-`+--------------------+
-| Nintendo Co., Ltd. |
-+-----------------------------------+
-| Consolidated Operating Results    |
-+-----------------------------------+`;
+let header = [
+    liner(border([
+    spacer("Nintendo Co., Ltd.", "Nintendo Co., Ltd.".length+1, "left")
+    ]),"-","top"),
+    liner(border([
+        spacer("Consolidated Operating Results", "Consolidated Operating Results".length+2, "left")
+    ]), "-", "both")
+].reduce((acc, next) => acc + "\n" + next)
 
 const printCumulativeValues = (list: {fiscalYear: string, value: number}[], sortedList: {fiscalYear: string, value: number}[], valueType: string): string[] => {
 

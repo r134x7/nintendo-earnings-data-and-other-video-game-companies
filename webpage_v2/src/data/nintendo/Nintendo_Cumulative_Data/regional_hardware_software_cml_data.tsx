@@ -107,7 +107,7 @@ import {
     // console.log(latestFYcollection);
     
 
-    const dateLabel = "| Data as of September 30th, 2022   |\n+" + "-".repeat(35) + "+"
+    const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+2, "left")]),"-", "bottom")
 
     function accumulate(title: Section[]): Section[] {
 
