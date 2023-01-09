@@ -1,9 +1,6 @@
-import { 
-    Header,
-    Series,
-    printHead,
-    printSeriesOutput,
-} from "../../utils/bandai_namco_annual_report_logic";
+import { Header, Series, printSeriesOutput } from "../../utils/bandai_namco_annual_report_logic";
+import { headerPrint } from "../../utils/table_design_logic";
+
 import annualReport2022 from "./Annual_Report/annual_report_fy3_2022.json";
 import annualReport2021 from "./Annual_Report/annual_report_fy3_2021.json";
 import annualReport2020 from "./Annual_Report/annual_report_fy3_2020.json";
@@ -84,10 +81,15 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
     })
 
     let printedSeries = sortedList.map((elem) => {
-        return printSeriesOutput(elem)(header)(42)(11)(32);
+        return printSeriesOutput(elem, header, 42, 11);
     }).reduce((prev, next) => prev + "\n" + next)
 
-    let printOne = printHead(header);
+    let printOne = headerPrint([
+        header.bandaiNamcoHeader,
+        header.secondHeader,
+        header.thirdHeader,
+        header.fourthHeader,
+    ], 32) 
 
     return printOne + "\n" + printedSeries
 })

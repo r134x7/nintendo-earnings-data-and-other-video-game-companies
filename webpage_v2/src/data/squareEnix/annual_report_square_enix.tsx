@@ -1,9 +1,6 @@
-import { 
-    Header,
-    Series,
-    printHead,
-    printSeriesOutput,
-} from "../../utils/bandai_namco_annual_report_logic";
+import { Header, Series, printSeriesOutput } from "../../utils/bandai_namco_annual_report_logic";
+import { headerPrint } from "../../utils/table_design_logic";
+
 import annualReport2022 from "./Annual_Report/annual_report_fy3_2022.json";
 import annualReport2021 from "./Annual_Report/annual_report_fy3_2021.json";
 import annualReport2020 from "./Annual_Report/annual_report_fy3_2020.json";
@@ -55,7 +52,7 @@ const seriesMake = (obj: {
             valueLastFY: elem.valueLastFY,
             valueLastTwoFYs: elem.valueLastTwoFYs,
         };
-    }) 
+    });
 
     return series
 };
@@ -73,7 +70,7 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
         fiscalYearYoY: elem.fiscalYearYoY,
     };
 
-    let seriesList: Series[] = seriesMake(elem)
+    let seriesList: Series[] = seriesMake(elem);
 
     let sortedList = seriesList.filter((elem, index, array) => {
         // return elem.value - elem.valueLastFY !== 0 // probably shouldn't make two separate tables for FY and ALL...
@@ -87,13 +84,18 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
             : 0
     }).map((elem, index) => {
         return {...elem, rank: index+1}
-    })
+    });
 
     let printedSeries = sortedList.map((elem) => {
-        return printSeriesOutput(elem)(header)(42)(11)(32);
-    }).reduce((prev, next) => prev + "\n" + next)
+        return printSeriesOutput(elem, header, 42, 11);
+    }).reduce((prev, next) => prev + "\n" + next);
 
-    let printOne = printHead(header);
+    let printOne = headerPrint([
+            header.bandaiNamcoHeader,
+            header.secondHeader,
+            header.thirdHeader,
+            header.fourthHeader,
+    ], 32)
 
     let notePrint = (elem.notes[0] === "") 
                     ? undefined
@@ -102,4 +104,4 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
     return (notePrint === undefined) 
             ? printOne + "\n" + printedSeries
             : printOne + "\n" + printedSeries + "\n" + notePrint
-})
+});

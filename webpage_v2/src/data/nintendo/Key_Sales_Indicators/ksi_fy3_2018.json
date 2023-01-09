@@ -60,7 +60,7 @@
     ],
     "consolidatedSales": [
         {
-            "name": " Total Sales ",
+            "name": " Total Sales",
             "units": "currency",
             "Q1Value": 154069,
             "Q2Value": 374041,

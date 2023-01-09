@@ -51,17 +51,21 @@ export const spacer = (text: string, length: number, align: "left" | "right"): s
                 : " " + text + " ".repeat(length - text.length)
     };
 
-export const border = (textArray: string[]): string => {
-        return (textArray.length < 2)
+export const border = (textArray: string[], newLine?: true): string => {
+        let setText = (textArray.length < 2)
             ? "|" + textArray[0] + "|"
             : textArray.reduce((acc, next, index) => {
             return (index === textArray.length-1)
                 ? acc + "|" + next + "|"
                 : acc + "|" + next 
         }, "")
+
+        return (newLine === undefined)
+            ? setText
+            : setText + "\n";
     };
 
-export const liner = (text: string, lineStyle: "−" | "=" | "#", position: "top" | "bottom" | "both", newline?: true, lineLengthCustom?: number): string => {
+export const liner = (text: string, lineStyle: "−" | "=" | "#", position: "top" | "bottom" | "both", newLine?: true, lineLengthCustom?: number): string => {
         let line = (lineLengthCustom === undefined) 
             ? `+${lineStyle.repeat(text.length-2)}+`
             : `+${lineStyle.repeat(lineLengthCustom)}+`; 
@@ -72,7 +76,16 @@ export const liner = (text: string, lineStyle: "−" | "=" | "#", position: "top
                 ? text + "\n" + line
                 : line + "\n" + text + "\n" + line;
 
-        return (newline === undefined)
+        return (newLine === undefined)
             ? setPosition
             : setPosition + "\n";
     };
+
+export const headerPrint = (headerArray: string[], blockLength: number) => {
+    return Array.from({length:headerArray.length}, (v,i) => {
+
+        return (i === headerArray.length-1)
+            ? liner(border([spacer(headerArray[i], blockLength, "left")]), "−","both")
+            : liner(border([spacer(headerArray[i], blockLength, "left")]), "−","top", true)
+    }).reduce((acc, next) => acc + next);
+};

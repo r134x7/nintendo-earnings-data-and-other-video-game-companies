@@ -1,9 +1,6 @@
-import { 
-    Header,
-    Series,
-    printHead,
-    printSeries,
-} from "../../utils/sega_annual_report_logic";
+import { Header, Series, printSeries } from "../../utils/sega_annual_report_logic";
+import { headerPrint } from "../../utils/table_design_logic";
+
 import annualReport2022 from "./Annual_Report/annual_report_fy3_2022.json";
 import annualReport2021 from "./Annual_Report/annual_report_fy3_2021.json";
 import annualReport2020 from "./Annual_Report/annual_report_fy3_2020.json";
@@ -49,25 +46,24 @@ const seriesMake = (obj: {
     
     let series: Series[] = obj.series.map(elem => {
 
-        var ipTypeCheck: " Acquired IP " | " Developed in-house IP " | " Licensed third party IP " | " Undefined " = " Undefined "; // default
+        var ipTypeCheck: "Acquired IP" | "Developed in-house IP" | "Licensed third party IP" | "Undefined" = "Undefined"; // default
 
         switch (elem.ipType) {
-            case " Acquired IP ":
-                ipTypeCheck = " Acquired IP "
+            case "Acquired IP":
+                ipTypeCheck = "Acquired IP"
                 break;
-            case " Developed in-house IP ":
-                ipTypeCheck = " Developed in-house IP "
+            case "Developed in-house IP":
+                ipTypeCheck = "Developed in-house IP"
                 break;
-            case " Licensed third party IP ":
-                ipTypeCheck = " Licensed third party IP "
+            case "Licensed third party IP":
+                ipTypeCheck = "Licensed third party IP"
                 break;
             default:
                 // ipTypeCheck is already "undefined"
                 break;
         }
 
-        return (!elem.miscellaneous1 && !elem.miscellaneous2)
-                ? {
+        return {
                     title: elem.title,
                     firstReleaseYear: elem.firstReleaseYear,
                     platforms: elem.platforms,
@@ -77,32 +73,8 @@ const seriesMake = (obj: {
                     value: elem.value,
                     valueLastFY: elem.valueLastFY,
                     valueLastTwoFYs: elem.valueLastTwoFYs,
-                }
-                : (!elem.miscellaneous2)
-                ? {
-                    title: elem.title,
-                    firstReleaseYear: elem.firstReleaseYear,
-                    platforms: elem.platforms,
-                    totalEditions: elem.totalEditions,
-                    ipType: ipTypeCheck,
-                    units: elem.units,
-                    value: elem.value,
-                    valueLastFY: elem.valueLastFY,
-                    valueLastTwoFYs: elem.valueLastTwoFYs,
-                    miscellaneous1: elem.miscellaneous1,
-                }
-                : {
-                    title: elem.title,
-                    firstReleaseYear: elem.firstReleaseYear,
-                    platforms: elem.platforms,
-                    totalEditions: elem.totalEditions,
-                    ipType: ipTypeCheck,
-                    units: elem.units,
-                    value: elem.value,
-                    valueLastFY: elem.valueLastFY,
-                    valueLastTwoFYs: elem.valueLastTwoFYs,
-                    miscellaneous1: elem.miscellaneous1,
-                    miscellaneous2: elem.miscellaneous2,
+                    miscellaneous1: (elem.miscellaneous1 === undefined) ? undefined : elem.miscellaneous1,
+                    miscellaneous2: (elem.miscellaneous2 === undefined) ? undefined : elem.miscellaneous2,
                 }
 
     }) 
@@ -147,17 +119,17 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
     let fiscalYear = elem.fiscalYear;
 
     let header: Header = {
-        segaHeader: "| Sega Sammy - IP Series Data    |",
-        secondHeader: "| IP Title                       |",
-        thirdHeader: "| IP Type                        |",
-        fourthHeader: "| Platforms                      |",
-        fifthHeader: "| Total Editions                 |",
+        segaHeader: "Sega Sammy - IP Series Data",
+        secondHeader: "IP Title",
+        thirdHeader: "IP Type",
+        fourthHeader: "Platforms",
+        fifthHeader: "Total Editions",
         ltd: "Life-To-Date",
-        seventhHeader: "| Units                          |",
-        sixthHeader: "| First Appearance and Rank      |",
-        summaryHeader: " Placeholder ",
-        fiscalYear: elem.fiscalYearCml,
-        fiscalYearYoY: elem.fiscalYearYoY,
+        seventhHeader: "Units",
+        sixthHeader: "First Appearance and Rank",
+        summaryHeader: "Placeholder",
+        fiscalYear: elem.fiscalYear,
+        fiscalYearYoY: elem.fiscalYear + " Cml. YoY%",
     };
 
     let seriesList: Series[] = seriesMake(elem)
@@ -185,7 +157,15 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
                 : printSeries(header, elem).concat(printRatio)
     }).reduce((prev, next) => prev + "\n" + next)
 
-    let printOne = printHead(header);
+    let printOne = headerPrint([
+        header.segaHeader,
+        header.secondHeader,
+        header.thirdHeader,
+        header.fourthHeader,
+        header.fifthHeader,
+        header.sixthHeader,
+        header.seventhHeader
+    ], 32)
 
     return printOne + "\n" + printedSeries
 })
