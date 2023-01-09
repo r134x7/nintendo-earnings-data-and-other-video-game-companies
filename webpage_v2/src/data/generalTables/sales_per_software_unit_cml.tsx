@@ -233,12 +233,25 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
     
     
     let printMedianUnits: string = ((sortedUnits.length % 2) !== 0) // odd number
-            ? `${sortedUnits[((sortedUnits.length + 1)/2) -1].value.toFixed(3)}M`
-            : `${Number(((sortedUnits[(sortedUnits.length/2) -1].value + sortedUnits[(sortedUnits.length/2)].value)/2).toFixed(3))}M`;
+            ? `${(sortedUnits[((sortedUnits.length + 1)/2) -1].value / 1000).toFixed(3)}M`
+            : `${Number((((sortedUnits[(sortedUnits.length/2) -1].value + sortedUnits[(sortedUnits.length/2)].value)/2) / 1000).toFixed(3))}M`;
 
     let printMedianSalesPerSoftwareUnit: string = ((salesPerSoftwareUnitSorted.length % 2) !== 0) // odd number
             ? `¥${salesPerSoftwareUnitSorted[((salesPerSoftwareUnitSorted.length + 1)/2) -1].toLocaleString("en")}`
             : `¥${Number(((salesPerSoftwareUnitSorted[(salesPerSoftwareUnitSorted.length/2) -1] + salesPerSoftwareUnitSorted[(salesPerSoftwareUnitSorted.length/2)])/2).toFixed(0)).toLocaleString("en")}`;
+
+    let printMinSales: string = `¥${(sortedSales[0].value * 1000).toLocaleString("en")}M`;
+
+    let printMinUnits: string = `${(sortedUnits[0].value / 1000).toFixed(3)}M`;
+
+    let printMinSalesPerSoftwareUnit: string = `¥${(salesPerSoftwareUnitSorted[0]).toLocaleString("en")}M`;
+
+    let printMaxSales: string = `¥${(sortedSales[sortedSales.length-1].value * 1000).toLocaleString("en")}M`;
+
+    let printMaxUnits: string = `${(sortedUnits[sortedUnits.length-1].value / 1000).toFixed(3)}M`;
+
+    let printMaxSalesPerSoftwareUnit: string = `¥${(salesPerSoftwareUnitSorted[salesPerSoftwareUnitSorted.length-1]).toLocaleString("en")}M`;
+
 
     let printCountRow: string = border([
         spacer("Count", 13, "left"),
@@ -268,6 +281,20 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
         spacer(printMedianSalesPerSoftwareUnit, 10, "right")
     ]);
 
+    let printMinRow: string = border([
+        spacer("Minimum", 13, "left"),
+        spacer(printMinSales, 12, "right"),
+        spacer(printMinUnits, 9, "right"),
+        spacer(printMinSalesPerSoftwareUnit, 10, "right")
+    ]);
+
+    let printMaxRow: string = liner(border([
+        spacer("Maximum", 13, "left"),
+        spacer(printMaxSales, 12, "right"),
+        spacer(printMaxUnits, 9, "right"),
+        spacer(printMaxSalesPerSoftwareUnit, 10, "right")
+    ]),"-", "bottom");
+
 
     return [
         printName,
@@ -278,6 +305,8 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
         printSumRow,
         printAverageRow,
         printMedianRow,
+        printMinRow,
+        printMaxRow,
         (salesArray[0].notes === undefined) ? [] : printTextBlock(salesArray[0].notes)(51) + "\n" + printLine(51),
     ].flat().reduce((acc, next) => acc + "\n" + next);
 };
