@@ -1,5 +1,5 @@
 import { titlesMake, titlesJSON, collectionJSON } from "../fy_million_seller_titles_nintendo";
-import { printTextBlock, border, liner, spacer } from "../../../utils/table_design_logic";
+import { printTextBlock, border, liner, spacer, headerPrint } from "../../../utils/table_design_logic";
 
 import fyMillionSellerTitles2023 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2023.json";
 import fyMillionSellerTitles2022 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2022.json";
@@ -89,24 +89,24 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
     // console.log(latestFYcollection);
     
 
-    const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+2, "left")]),"−", "bottom")
+    const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+2, "left")]),"−", "both")
 
     const header: Header = {
-    mainHeader: "| Nintendo Fiscal Year Million-Seller Titles |",
+    mainHeader: "Nintendo Fiscal Year Million-Seller Titles",
     platformHeader: "+============================================+",
-    secondHeader: "| Title                                    |",
-    thirdHeader: "| Platform and Rank                        |",
-    fourthHeader: "| Units                                    |",
+    secondHeader: "Title",
+    thirdHeader: "Platform and Rank",
+    fourthHeader: "Units",
     areaHeader: "| Area         |   Japan | Overseas|",
     globalHeader: "| Global       |   WW FY |  WW LTD |",
     fiscalYear: " FY3/23 ",
     mainSummaryHeader: "",
-    secondSummaryHeader: "| FY Million-Seller      |",
-    thirdSummaryHeader: "| Titles Summary         |",
-    japanSummaryHeader: "| Japan                           |",
-    overseasSummaryHeader: "| Overseas                        |",
-    globalFYSummaryHeader: "| Global FY                       |",
-    globalLTDSummaryHeader: "| Global LTD                      |",
+    secondSummaryHeader: "FY Million-Seller",
+    thirdSummaryHeader: "Titles Summary",
+    japanSummaryHeader: "Japan",
+    overseasSummaryHeader: "Overseas",
+    globalFYSummaryHeader: "Global FY",
+    globalLTDSummaryHeader: "Global LTD",
     }
 
     // function sortingArrays(titleCount: number): Titles[] {
@@ -158,102 +158,49 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
 
         const regionRank = titles.map((elem, index, array) => {
             
-            let printRank: string = ` Rank ${elem[0].rank} `
-            let printRankFixed: string = (printRank.length >= 11)
-                    ? printRank
-                    : printRank + " ".repeat(11 - printRank.length);
+            let printPlatformAndRank: string = liner(border([
+                spacer(elem[0].platform,29,"left"),
+                spacer(`Rank ${elem[0].rank}`,11,"left"),
+            ]),"−","bottom",true);
 
-            let printTitleName = printTextBlock(elem[0].title, 42)
+            let printTitleName = liner(printTextBlock(elem[0].title, 43),"−","both",true,43);
 
-            let printPlatformFixed: string = (elem[0].platform.length >= 30)
-                ? elem[0].platform
-                : " " + elem[0].platform + " ".repeat(29 - elem[0].platform.length)
-
-
-            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
+            let printTitleNameFixed: string = printTitleName + printPlatformAndRank;
 
             let yearValues: string[] = elem.filter((value, index) => { return value.valueC !== 0}).map((value, valueIndex, valueArray) => {
 
-               let printValue: string = `${value.valueC}M` 
-               let printValueFixed: string = (printValue.length >= 11)
-                   ? printValue
-                   : " ".repeat(11 - printValue.length) + printValue;
-
-               let printPeriodFixed: string = (value.fiscalYear === undefined) 
-                       ? "|" + value.period + " ".repeat(6) + "|"
-                       : "| " + value.fiscalYear + " Cumulative          |"
-
-               return  printPeriodFixed + printValueFixed + "|"
+                return border([
+                    spacer(value.fiscalYear + " Cumulative",29,"left"),
+                    spacer(`${value.valueC}M`,11,"right"),
+                ],true)
             }).filter((value, index) => index !== elem.length-1 );
                 
-
-        let printValue: string = `${elem[elem.length-1].valueD}M` 
+        let printLTD: string = liner(border([
+            spacer(" Global - Life-To-Date (Units)",29,"left"),
+            spacer(`${elem[elem.length-1].valueD}M`,11,"right"),
+        ]),"−","both",true) 
+         
+        let printPenultimate = [
+                printTitleNameFixed,
+                ...yearValues,
+                printLTD,
+            ];
         
-        let printValueFixed: string = (printValue.length >= 11)
-            ? printValue
-            : " ".repeat(11 - printValue.length) + printValue;
-
-        let printLine: string = "+" + "−".repeat(42) + "+";
-
-        let printLTD = printLine + "\n| Global - Life-To-Date (Units)|" + printValueFixed + "|\n" + printLine;
-
-        let printNote = (elem[0].miscellaneous === undefined) ? undefined : "|" + elem[0].miscellaneous + "\n###";
+        let printNote = (elem[0].miscellaneous === undefined) ? undefined : liner(printTextBlock(elem[0].miscellaneous,43),"−","bottom",true,43);
 
         let printFinal = (printNote === undefined)
-            ? [
-                printTitleNameFixed,
-                ...yearValues,
-                printLTD,
-            ]
-            : [
-                printTitleNameFixed,
-                ...yearValues,
-                printLTD,
-                printNote,
-            ]
+            ? printPenultimate 
+            : [...printPenultimate, printNote] 
 
             return printFinal.reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
             });
 
         }).filter(value => value !== "N/A").reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
         });
 
         return regionRank
-        // const globalRank = titles.map((elem, index, array) => {
-
-        //     let printRank: string = ` Rank ${elem.rank} `
-        //     let printRankFixed: string = (printRank.length >= 9)
-        //             ? printRank
-        //             : printRank + " ".repeat(9 - printRank.length);
-
-                    
-        //     let printPlatformFixed: string = (elem.platform.length >= 32)
-        //             ? elem.platform
-        //             : " " + elem.platform + " ".repeat(31 - elem.platform.length)
-
-        //     let printTitleName = printTextBlock(elem.title)(42)
-
-        //     let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
-            
-        //     let printValueD: string = `${elem.valueD}M` 
-        //     let printValueDFixed: string = (printValueD.length >= 9)
-        //         ? printValueD
-        //         : " ".repeat(9 - printValueD.length) + printValueD;
-
-        //     let printValueDRow: string = (elem.miscellaneous)
-        //         ? "| Global - Life-To-Date (Units)  |" + printValueDFixed + "|\n+" + "−".repeat(42) + "+\n|" + elem.miscellaneous + "\n+" + "−".repeat(elem.miscellaneous.length-1) + "+"
-        //         : "| Global - Life-To-Date (Units)  |" + printValueDFixed + "|\n+" + "−".repeat(42) + "+";
-
-        //     return printTitleNameFixed + "\n" + printValueDRow
-
-        // }).reduce((prev, next) => {
-        //     return prev + "\n" + next
-        // })
-
-        // return globalRank
-
     }
 
     const printTitlesOverseas = (titles: Titles[][]) => {
@@ -263,66 +210,46 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
                 return "N/A"
             }
             
-            let printRank: string = ` Rank ${elem[0].rank} `
-            let printRankFixed: string = (printRank.length >= 11)
-                    ? printRank
-                    : printRank + " ".repeat(11 - printRank.length);
+            let printPlatformAndRank: string = liner(border([
+                spacer(elem[0].platform,29,"left"),
+                spacer(`Rank ${elem[0].rank}`,11,"left"),
+            ]),"−","bottom",true);
 
-            let printTitleName = printTextBlock(elem[0].title, 42)
+            let printTitleName = liner(printTextBlock(elem[0].title, 43),"−","both",true,43);
 
-            let printPlatformFixed: string = (elem[0].platform.length >= 30)
-                ? elem[0].platform
-                : " " + elem[0].platform + " ".repeat(29 - elem[0].platform.length)
-
-
-            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
+            let printTitleNameFixed: string = printTitleName + printPlatformAndRank;
 
             let yearValues: string[] = elem.filter((value, index) => { return value.valueB !== 0}).map((value, valueIndex, valueArray) => {
 
-               let printValue: string = `${value.valueB}M` 
-               let printValueFixed: string = (printValue.length >= 11)
-                   ? printValue
-                   : " ".repeat(11 - printValue.length) + printValue;
-
-               let printPeriodFixed: string = (value.fiscalYear === undefined) 
-                       ? "|" + value.period + " ".repeat(6) + "|"
-                       : "| " + value.fiscalYear + " Cumulative          |"
-
-               return  printPeriodFixed + printValueFixed + "|"
+                return border([
+                    spacer(value.fiscalYear + " Cumulative",29,"left"),
+                    spacer(`${value.valueB}M`,11,"right"),
+                ],true)
             }).filter((value, index) => index !== elem.length-1 );
                 
+        let printLTD: string = liner(border([
+            spacer("Overseas - Life-To-Date(Units)",29,"left"),
+            spacer(`${elem[elem.length-1].valueB}M`,11,"right"),
+        ]),"−","both",true) 
 
-        let printValue: string = `${elem[elem.length-1].valueB}M` 
-        
-        let printValueFixed: string = (printValue.length >= 11)
-            ? printValue
-            : " ".repeat(11 - printValue.length) + printValue;
+        let printNote = (elem[0].miscellaneous === undefined) ? undefined : liner(printTextBlock(elem[0].miscellaneous,43),"−","bottom",true,43);
 
-        let printLine: string = "+" + "−".repeat(42) + "+";
-
-        let printLTD = printLine + "\n|Overseas - Life-To-Date(Units)|" + printValueFixed + "|\n" + printLine;
-
-        let printNote: string | undefined = (elem[0].miscellaneous === undefined) ? undefined : "|" + elem[0].miscellaneous + "\n###";
+        let printPenultimate = [
+                printTitleNameFixed,
+                ...yearValues,
+                printLTD,
+            ];
 
         let printFinal = (printNote === undefined)
-            ? [
-                printTitleNameFixed,
-                ...yearValues,
-                printLTD,
-            ]
-            : [
-                printTitleNameFixed,
-                ...yearValues,
-                printLTD,
-                printNote,
-            ]
+            ? printPenultimate 
+            : [...printPenultimate, printNote] 
 
             return printFinal.reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
             });
 
         }).filter(value => value !== "N/A").reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
         });
 
         return regionRank
@@ -335,67 +262,47 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
             if (elem[elem.length-1].valueA === 0) {
                 return "N/A"
             }
-            
-            let printRank: string = ` Rank ${elem[0].rank} `
-            let printRankFixed: string = (printRank.length >= 11)
-                    ? printRank
-                    : printRank + " ".repeat(11 - printRank.length);
 
-            let printTitleName = printTextBlock(elem[0].title, 42)
+            let printPlatformAndRank: string = liner(border([
+                spacer(elem[0].platform,29,"left"),
+                spacer(`Rank ${elem[0].rank}`,11,"left"),
+            ]),"−","bottom",true);
 
-            let printPlatformFixed: string = (elem[0].platform.length >= 30)
-                ? elem[0].platform
-                : " " + elem[0].platform + " ".repeat(29 - elem[0].platform.length)
+            let printTitleName = liner(printTextBlock(elem[0].title, 43),"−","both",true,43);
 
-
-            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
+            let printTitleNameFixed: string = printTitleName + printPlatformAndRank;
 
             let yearValues: string[] = elem.filter((value, index) => { return value.valueA !== 0}).map((value, valueIndex, valueArray) => {
 
-               let printValue: string = `${value.valueA}M` 
-               let printValueFixed: string = (printValue.length >= 11)
-                   ? printValue
-                   : " ".repeat(11 - printValue.length) + printValue;
-
-               let printPeriodFixed: string = (value.fiscalYear === undefined) 
-                       ? "|" + value.period + " ".repeat(6) + "|"
-                       : "| " + value.fiscalYear + " Cumulative          |"
-
-               return  printPeriodFixed + printValueFixed + "|"
+                return border([
+                    spacer(value.fiscalYear + " Cumulative",29,"left"),
+                    spacer(`${value.valueA}M`,11,"right"),
+                ],true)
             }).filter((value, index) => index !== elem.length-1 );
                 
+        let printLTD: string = liner(border([
+            spacer("Japan - Life-To-Date (Units)",29,"left"),
+            spacer(`${elem[elem.length-1].valueA}M`,11,"right"),
+        ]),"−","both",true) 
+         
+        let printPenultimate = [
+                printTitleNameFixed,
+                ...yearValues,
+                printLTD,
+            ];
 
-        let printValue: string = `${elem[elem.length-1].valueA}M` 
-        
-        let printValueFixed: string = (printValue.length >= 11)
-            ? printValue
-            : " ".repeat(11 - printValue.length) + printValue;
-
-        let printLine: string = "+" + "−".repeat(42) + "+";
-
-        let printLTD = printLine + "\n| Japan - Life-To-Date (Units) |" + printValueFixed + "|\n" + printLine;
-        
-        let printNote = (elem[0].miscellaneous === undefined) ? undefined : "|" + elem[0].miscellaneous + "\n###";
+        let printNote = (elem[0].miscellaneous === undefined) ? undefined : liner(printTextBlock(elem[0].miscellaneous,43),"−","bottom",true,43);
 
         let printFinal = (printNote === undefined)
-            ? [
-                printTitleNameFixed,
-                ...yearValues,
-                printLTD,
-            ]
-            : [
-                printTitleNameFixed,
-                ...yearValues,
-                printLTD,
-                printNote,
-            ]
+            ? printPenultimate 
+            : [...printPenultimate, printNote] 
 
             return printFinal.reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
             });
 
         }).filter(value => value !== "N/A").reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
         });
 
         return japanRank
@@ -456,26 +363,44 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
 
 let japanHeader = {
     ...header,
-    platformHeader: "| FY Million-Seller Titles Cml. - Japan      |" 
+    platformHeader: "FY Million-Seller Titles Cml. - Japan" 
 }
 
 let overseasHeader = {
     ...header,
-    platformHeader: "| FY Million-Seller Titles Cml. - Overseas   |" 
+    platformHeader: "FY Million-Seller Titles Cml. - Overseas" 
 }
 
 let wwHeader = {
     ...header,
-    platformHeader: "| FY Million-Seller Titles Cml. - Global     |" 
+    platformHeader: "FY Million-Seller Titles Cml. - Global" 
 }
-const printOneJapan = printHead(japanHeader)
+const printOneJapan = headerPrint([
+    japanHeader.mainHeader,
+    japanHeader.platformHeader,
+],44) + "\n" + headerPrint([
+    japanHeader.secondHeader,
+    japanHeader.thirdHeader,
+    japanHeader.fourthHeader,
+],28)
 
-const printOneOverseas = printHead(overseasHeader)
+const printOneOverseas = headerPrint([
+    overseasHeader.mainHeader,
+    overseasHeader.platformHeader,
+],44) + "\n" + headerPrint([
+    overseasHeader.secondHeader,
+    overseasHeader.thirdHeader,
+    overseasHeader.fourthHeader,
+],28)
 
-const printOneWW = printHead(wwHeader)
-
-// const divideSortedJapanCollection = decimateCalculation(sortedJapanCollection)
-// console.log(sortedJapanCollection);
+const printOneWW = headerPrint([
+    wwHeader.mainHeader,
+    wwHeader.platformHeader,
+],44) + "\n" + headerPrint([
+    wwHeader.secondHeader,
+    wwHeader.thirdHeader,
+    wwHeader.fourthHeader,
+],28)
 
 const divideSortedJapanCollection = sortedJapanCollection.map(elem => decimateCalculation(elem)) 
 const printTwo = printTitlesJapan(divideSortedJapanCollection)

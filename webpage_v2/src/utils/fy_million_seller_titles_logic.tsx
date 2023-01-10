@@ -20,21 +20,21 @@ export type Titles = {
 }
 
 export type Header = {
-    mainHeader: "| Nintendo Fiscal Year Million-Seller Titles |",
+    mainHeader: "Nintendo Fiscal Year Million-Seller Titles",
     platformHeader: string, // change this to a string
-    secondHeader: "| Title                                    |",
-    thirdHeader: "| Platform and Rank                        |"
-    fourthHeader: "| Units                                    |",
+    secondHeader: "Title",
+    thirdHeader: "Platform and Rank"
+    fourthHeader: "Units",
     fiscalYear: string,
     areaHeader: "| Area         |   Japan | Overseas|",
     globalHeader: "| Global       |   WW FY |  WW LTD |",
     mainSummaryHeader: string,
-    secondSummaryHeader: "| FY Million-Seller      |",
-    thirdSummaryHeader: "| Titles Summary         |"
-    japanSummaryHeader: "| Japan                           |",
-    overseasSummaryHeader: "| Overseas                        |",
-    globalFYSummaryHeader: "| Global FY                       |",
-    globalLTDSummaryHeader: "| Global LTD                      |",
+    secondSummaryHeader: "FY Million-Seller",
+    thirdSummaryHeader: "Titles Summary"
+    japanSummaryHeader: "Japan",
+    overseasSummaryHeader: "Overseas",
+    globalFYSummaryHeader: "Global FY",
+    globalLTDSummaryHeader: "Global LTD",
 }
 
 export function decimateCalculation(numbers: Titles[]) {
