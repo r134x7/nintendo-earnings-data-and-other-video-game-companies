@@ -1,5 +1,5 @@
 import { collectionJSON, titlesJSON, titlesMake } from "../top_selling_titles_nintendo";
-import { printTextBlock, border, liner, spacer } from "../../../utils/table_design_logic";
+import { printTextBlock, border, liner, spacer, headerPrint } from "../../../utils/table_design_logic";
 
 import topSellingTitles2023 from "../Top_Selling_Titles/top_selling_titles_fy3_2023.json";
 import topSellingTitles2022 from "../Top_Selling_Titles/top_selling_titles_fy3_2022.json";
@@ -69,15 +69,17 @@ import { Titles, Header, quarterlyCalculation, printHead } from "../../../utils/
 
     const latestFYcollection = sortingTitles(filteredCollection);
 
-    const dateLabel = "| Data as of September 30th, 2022|\n+" + "−".repeat(32) + "+"
+    const dateLabel = liner(border([
+        spacer("Data as of September 30th, 2022","Data as of September 30th, 2022".length+1,"left")
+    ]),"−","bottom");
 
     const header: Header = {
         fiscalYear: "placeholder",
-        mainHeader: "| Nintendo Co., Ltd.             |",
-        platform: "| Platform                       |",
-        platformHeader: "| Top Selling Titles - Cumulative|",
-        titles: "| Title                          |",
-        units: "| Units                          |"
+        mainHeader: "Nintendo Co., Ltd.",
+        platform: "Platform",
+        platformHeader: "Top Selling Titles - Cumulative",
+        titles: "Title",
+        units: "Units"
     }
     
     function accumulate(title: Titles[]): Titles[] {
@@ -95,55 +97,37 @@ import { Titles, Header, quarterlyCalculation, printHead } from "../../../utils/
 
         const regionRank = titles.map((elem, index, array) => {
             
-            let printRank: string = ` Rank ${elem[0].rank} `
-            let printRankFixed: string = (printRank.length >= 11)
-                    ? printRank
-                    : printRank + " ".repeat(11 - printRank.length);
+            let printPlatformAndRank: string = liner(border([
+                spacer(elem[0].platform,29,"left"),
+                spacer(`Rank ${elem[0].rank}`,10,"left")
+            ]),"−","bottom",true) 
+            
+            let printTitleName = liner(printTextBlock(elem[0].title, 42),"−","both",true,42)
 
-            let printTitleName = printTextBlock(elem[0].title,  42)
-
-            let printPlatformFixed: string = (elem[0].platform.length >= 30)
-                ? elem[0].platform
-                : " " + elem[0].platform + " ".repeat(29 - elem[0].platform.length)
-
-
-            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
+            let printTitleNameFixed: string = printTitleName + printPlatformAndRank;
 
             let yearValues: string[] = elem.filter((value, index) => { return value.value !== 0}).map((value, valueIndex, valueArray) => {
-
-               let printValue: string = `${value.value}M` 
-               let printValueFixed: string = (printValue.length >= 11)
-                   ? printValue
-                   : " ".repeat(11 - printValue.length) + printValue;
-
-               let printPeriodFixed: string = (value.fiscalYear === undefined) 
-                       ? "|" + value.period + " ".repeat(6) + "|"
-                       : "| " + value.fiscalYear + " Cumulative          |"
-
-               return  printPeriodFixed + printValueFixed + "|"
+               return border([
+                    spacer(value.fiscalYear + " Cumulative",29,"left"),
+                    spacer(`${value.value}M`,10,"right")
+               ],true) 
             }).filter((value, index) => index !== elem.length-1 );
                 
-
-        let printValue: string = `${elem[elem.length-1].value}M` 
+        let printLTD: string = liner(border([
+            spacer("Life-To-Date (Units)",29,"left"),
+            spacer(`${elem[elem.length-1].value}M`,10,"right")
+        ]),"=","both",true);
         
-        let printValueFixed: string = (printValue.length >= 11)
-            ? printValue
-            : " ".repeat(11 - printValue.length) + printValue;
-
-        let printLine: string = "+" + "−".repeat(42) + "+";
-
-        let printLTD = printLine + "\n| Life-To-Date (Units)         |" + printValueFixed + "|\n" + printLine;
-
             return [
                 printTitleNameFixed,
                 ...yearValues,
                 printLTD,
             ].reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
             });
 
         }).filter(value => value !== "N/A").reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
         });
 
         return regionRank
@@ -169,12 +153,11 @@ import { Titles, Header, quarterlyCalculation, printHead } from "../../../utils/
         }) //{...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
     }) 
 
-const printOneWW = printHead(header)
+const printOneWW = headerPrint([
+    header.mainHeader,
+    header.platformHeader
+],32)
 
-// const divideSortedJapanCollection = decimateCalculation(sortedJapanCollection)
-// console.log(sortedWWLTDCollection);
-
-// const divideSortedGlobalCollection = sortedWWLTDCollection.map(elem => quarterlyCalculation(elem))
 const divideSortedGlobalCollection = sortedWWLTDCollection.map(elem => {
     return elem.map((secondElem, index, array) => {
         return (index === 0 || index === array.length-1)
