@@ -99,7 +99,7 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
     fourthHeader: "Units",
     areaHeader: "| Area         |   Japan | Overseas|",
     globalHeader: "| Global       |   WW FY |  WW LTD |",
-    fiscalYear: " FY3/23 ",
+    fiscalYear: " FY3/23",
     mainSummaryHeader: "",
     secondSummaryHeader: "FY Million-Seller",
     thirdSummaryHeader: "Titles Summary",

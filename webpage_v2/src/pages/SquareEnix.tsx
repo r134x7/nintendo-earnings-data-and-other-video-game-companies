@@ -56,7 +56,7 @@ export default function SquareEnix() {
             return (curr === "b")
                 ? acc + "ba"
                 : (curr === ")")
-                ? acc + ", .20)"
+                ? acc +", .20)"
                 : acc + curr
         }, "") // using reduce to create an rgba colour with 20% opacity so that the user only has to use an RGB slider.
                

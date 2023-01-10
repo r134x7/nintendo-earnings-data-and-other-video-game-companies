@@ -29,35 +29,35 @@ export const digitalContentsSalesMake = (obj: {"digitalContentsSales": salesOrUn
     let sales: Section[] = [
         {
             name: obj.digitalContentsSales.name,
-            region: " Group Total ",
-            period: " 1st Quarter ",
-            cmlPeriod: " 1st Quarter ",
+            region: " Group Total",
+            period: "1st Quarter",
+            cmlPeriod: "1st Quarter",
             units: (obj.digitalContentsSales.units === "NaN") ? "NaN" : "currency",
             value: obj.digitalContentsSales.Q1CmlValue, // billion yen
             notes: obj.digitalContentsSales.notes
         },
         {
             name: obj.digitalContentsSales.name,
-            region: " Group Total ",
-            period: " 2nd Quarter ",
-            cmlPeriod: " First Half  ",
+            region: " Group Total",
+            period: "2nd Quarter",
+            cmlPeriod: "First Half",
             units: (obj.digitalContentsSales.units === "NaN") ? "NaN" : "currency",
             value: obj.digitalContentsSales.Q2CmlValue, // billion yen
             notes: obj.digitalContentsSales.notes
         },
         {
             name: obj.digitalContentsSales.name,
-            region: " Group Total ",
-            period: " 3rd Quarter ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            region: " Group Total",
+            period: "3rd Quarter",
+            cmlPeriod: "1st 3 Qtrs",
             units: (obj.digitalContentsSales.units === "NaN") ? "NaN" : "currency",
             value: obj.digitalContentsSales.Q3CmlValue, // billion yen
             notes: obj.digitalContentsSales.notes
         },
         {
             name: obj.digitalContentsSales.name,
-            region: " Group Total ",
-            period: " 4th Quarter ",
+            region: " Group Total",
+            period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.digitalContentsSales.units === "NaN") ? "NaN" : "currency",
             value: obj.digitalContentsSales.Q4CmlValue, // billion yen
@@ -73,32 +73,32 @@ export const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": salesOrUn
     let units: Section[] = [
         {
             name: obj.digitalContentsUnits.name,
-            region: " Group Total ",
-            period: " 1st Quarter ",
-            cmlPeriod: " 1st Quarter ",
+            region: " Group Total",
+            period: "1st Quarter",
+            cmlPeriod: "1st Quarter",
             units: (obj.digitalContentsUnits.units === "NaN") ? "NaN" : "units",
             value: obj.digitalContentsUnits.Q1CmlValue // billion yen
         },
         {
             name: obj.digitalContentsUnits.name,
-            region: " Group Total ",
-            period: " 2nd Quarter ",
-            cmlPeriod: " First Half  ",
+            region: " Group Total",
+            period: "2nd Quarter",
+            cmlPeriod: "First Half",
             units: (obj.digitalContentsUnits.units === "NaN") ? "NaN" : "units",
             value: obj.digitalContentsUnits.Q2CmlValue // billion yen
         },
         {
             name: obj.digitalContentsUnits.name,
-            region: " Group Total ",
-            period: " 3rd Quarter ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            region: " Group Total",
+            period: "3rd Quarter",
+            cmlPeriod: "1st 3 Qtrs",
             units: (obj.digitalContentsUnits.units === "NaN") ? "NaN" : "units",
             value: obj.digitalContentsUnits.Q3CmlValue // billion yen
         },
         {
             name: obj.digitalContentsUnits.name,
-            region: " Group Total ",
-            period: " 4th Quarter ",
+            region: " Group Total",
+            period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.digitalContentsUnits.units === "NaN") ? "NaN" : "units",
             value: obj.digitalContentsUnits.Q4CmlValue // billion yen
@@ -113,32 +113,32 @@ export const packageSalesMake = (obj: {"packageSales": salesOrUnitsJSON}): Secti
     let sales: Section[] = [
         {
             name: obj.packageSales.name,
-            region: " Group Total ",
-            period: " 1st Quarter ",
-            cmlPeriod: " 1st Quarter ",
+            region: " Group Total",
+            period: "1st Quarter",
+            cmlPeriod: "1st Quarter",
             units: (obj.packageSales.units === "NaN") ? "NaN" : "currency",
             value: obj.packageSales.Q1CmlValue // billion yen
         },
         {
             name: obj.packageSales.name,
-            region: " Group Total ",
-            period: " 2nd Quarter ",
-            cmlPeriod: " First Half  ",
+            region: " Group Total",
+            period: "2nd Quarter",
+            cmlPeriod: "First Half",
             units: (obj.packageSales.units === "NaN") ? "NaN" : "currency",
             value: obj.packageSales.Q2CmlValue // billion yen
         },
         {
             name: obj.packageSales.name,
-            region: " Group Total ",
-            period: " 3rd Quarter ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            region: " Group Total",
+            period: "3rd Quarter",
+            cmlPeriod: "1st 3 Qtrs",
             units: (obj.packageSales.units === "NaN") ? "NaN" : "currency",
             value: obj.packageSales.Q3CmlValue // billion yen
         },
         {
             name: obj.packageSales.name,
-            region: " Group Total ",
-            period: " 4th Quarter ",
+            region: " Group Total",
+            period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.packageSales.units === "NaN") ? "NaN" : "currency",
             value: obj.packageSales.Q4CmlValue // billion yen
@@ -153,32 +153,32 @@ export const packageUnitsMake = (obj: {"packageUnits": salesOrUnitsJSON}): Secti
     let units: Section[] = [
         {
             name: obj.packageUnits.name,
-            region: " Group Total ",
-            period: " 1st Quarter ",
-            cmlPeriod: " 1st Quarter ",
+            region: " Group Total",
+            period: "1st Quarter",
+            cmlPeriod: "1st Quarter",
             units: (obj.packageUnits.units === "NaN") ? "NaN" : "units",
             value: obj.packageUnits.Q1CmlValue // billion yen
         },
         {
             name: obj.packageUnits.name,
-            region: " Group Total ",
-            period: " 2nd Quarter ",
-            cmlPeriod: " First Half  ",
+            region: " Group Total",
+            period: "2nd Quarter",
+            cmlPeriod: "First Half",
             units: (obj.packageUnits.units === "NaN") ? "NaN" : "units",
             value: obj.packageUnits.Q2CmlValue // billion yen
         },
         {
             name: obj.packageUnits.name,
-            region: " Group Total ",
-            period: " 3rd Quarter ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            region: " Group Total",
+            period: "3rd Quarter",
+            cmlPeriod: "1st 3 Qtrs",
             units: (obj.packageUnits.units === "NaN") ? "NaN" : "units",
             value: obj.packageUnits.Q3CmlValue // billion yen
         },
         {
             name: obj.packageUnits.name,
-            region: " Group Total ",
-            period: " 4th Quarter ",
+            region: " Group Total",
+            period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.packageUnits.units === "NaN") ? "NaN" : "units",
             value: obj.packageUnits.Q4CmlValue // billion yen
@@ -193,35 +193,35 @@ export const digitalSalesMake = (obj: {"digitalSales": salesOrUnitsJSON}): Secti
     let sales: Section[] = [
         {
             name: obj.digitalSales.name,
-            region: " Group Total ",
-            period: " 1st Quarter ",
-            cmlPeriod: " 1st Quarter ",
+            region: " Group Total",
+            period: "1st Quarter",
+            cmlPeriod: "1st Quarter",
             units: (obj.digitalSales.units === "NaN") ? "NaN" : "currency",
             value: obj.digitalSales.Q1CmlValue, // billion yen
             notes: obj.digitalSales.notes
         },
         {
             name: obj.digitalSales.name,
-            region: " Group Total ",
-            period: " 2nd Quarter ",
-            cmlPeriod: " First Half  ",
+            region: " Group Total",
+            period: "2nd Quarter",
+            cmlPeriod: "First Half",
             units: (obj.digitalSales.units === "NaN") ? "NaN" : "currency",
             value: obj.digitalSales.Q2CmlValue, // billion yen
             notes: obj.digitalSales.notes
         },
         {
             name: obj.digitalSales.name,
-            region: " Group Total ",
-            period: " 3rd Quarter ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            region: " Group Total",
+            period: "3rd Quarter",
+            cmlPeriod: "1st 3 Qtrs",
             units: (obj.digitalSales.units === "NaN") ? "NaN" : "currency",
             value: obj.digitalSales.Q3CmlValue, // billion yen
             notes: obj.digitalSales.notes
         },
         {
             name: obj.digitalSales.name,
-            region: " Group Total ",
-            period: " 4th Quarter ",
+            region: " Group Total",
+            period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.digitalSales.units === "NaN") ? "NaN" : "currency",
             value: obj.digitalSales.Q4CmlValue, // billion yen
@@ -237,32 +237,32 @@ export const digitalUnitsMake = (obj: {"digitalUnits": salesOrUnitsJSON}): Secti
     let units: Section[] = [
         {
             name: obj.digitalUnits.name,
-            region: " Group Total ",
-            period: " 1st Quarter ",
-            cmlPeriod: " 1st Quarter ",
+            region: " Group Total",
+            period: "1st Quarter",
+            cmlPeriod: "1st Quarter",
             units: (obj.digitalUnits.units === "NaN") ? "NaN" : "units",
             value: obj.digitalUnits.Q1CmlValue // billion yen
         },
         {
             name: obj.digitalUnits.name,
-            region: " Group Total ",
-            period: " 2nd Quarter ",
-            cmlPeriod: " First Half  ",
+            region: " Group Total",
+            period: "2nd Quarter",
+            cmlPeriod: "First Half",
             units: (obj.digitalUnits.units === "NaN") ? "NaN" : "units",
             value: obj.digitalUnits.Q2CmlValue // billion yen
         },
         {
             name: obj.digitalUnits.name,
-            region: " Group Total ",
-            period: " 3rd Quarter ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            region: " Group Total",
+            period: "3rd Quarter",
+            cmlPeriod: "1st 3 Qtrs",
             units: (obj.digitalUnits.units === "NaN") ? "NaN" : "units",
             value: obj.digitalUnits.Q3CmlValue // billion yen
         },
         {
             name: obj.digitalUnits.name,
-            region: " Group Total ",
-            period: " 4th Quarter ",
+            region: " Group Total",
+            period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.digitalUnits.units === "NaN") ? "NaN" : "units",
             value: obj.digitalUnits.Q4CmlValue // billion yen

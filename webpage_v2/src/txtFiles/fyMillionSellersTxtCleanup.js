@@ -16,7 +16,7 @@ const readQuarter = (currentQuarterLocal) => {
 const removeCommas = (readQuarterLocal) => {
 
     let one = readQuarterLocal.replaceAll(",", "");
-    // let two = one.replaceAll(/(?<=\d+)\s/g, ",")
+    // let two = one.replaceAll(/(?<=\d+)\s/g,",")
     let two = one.replaceAll(/(?<=\d+)\s|(?<=[A-Za-z])\s(?=\d)/g, "\r\n")
 
     return two

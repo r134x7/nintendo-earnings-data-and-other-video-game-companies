@@ -74,8 +74,8 @@ export const platformSalesMake = (obj: undefined | platformSalesType): Section[]
     let unitSales: Section[] = [
         {
             name: (!obj) ? "N/A" : obj.name,
-            period: " 1st Quarter ",
-            cmlPeriod: " 1st Quarter ",
+            period: "1st Quarter",
+            cmlPeriod: "1st Quarter",
             units: (obj !== undefined && obj.units === "currency")
                     ? "currency"
                     : "NaN",
@@ -83,8 +83,8 @@ export const platformSalesMake = (obj: undefined | platformSalesType): Section[]
         },
         {
             name: (!obj) ? "N/A" : obj.name,
-            period: " 2nd Quarter ",
-            cmlPeriod: " First Half  ",
+            period: "2nd Quarter",
+            cmlPeriod: "First Half",
             units: (obj !== undefined && obj.units === "currency")
                     ? "currency"
                     : "NaN",
@@ -92,8 +92,8 @@ export const platformSalesMake = (obj: undefined | platformSalesType): Section[]
         },
         {
             name: (!obj) ? "N/A" : obj.name,
-            period: " 3rd Quarter ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            period: "3rd Quarter",
+            cmlPeriod: "1st 3 Qtrs",
             units: (obj !== undefined && obj.units === "currency")
                     ? "currency"
                     : "NaN",
@@ -101,7 +101,7 @@ export const platformSalesMake = (obj: undefined | platformSalesType): Section[]
         },
         {
             name: (!obj) ? "N/A" : obj.name,
-            period: " 4th Quarter ",
+            period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj !== undefined && obj.units === "currency")
                     ? "currency"
@@ -110,7 +110,7 @@ export const platformSalesMake = (obj: undefined | platformSalesType): Section[]
         },
         {
             name: (!obj) ? "N/A" : obj.name,
-            period: " Last FY Cumulative ",
+            period: "Last FY Cumulative",
             cmlPeriod: "Cml.",
             units: (obj !== undefined && obj.units === "currency")
                     ? "currency"
@@ -198,7 +198,7 @@ export const consolidatedSalesInformationList: string[] = collection.map((elem, 
                 name: "N/A",
                 units: "units",
                 period: "Forecast", 
-                cmlPeriod: " 1st Quarter ",
+                cmlPeriod: "1st Quarter",
                 value: 0
             }
         ]

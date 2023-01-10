@@ -95,31 +95,31 @@ export const platformSalesMake = (obj: undefined | platformCumulativeSalesType )
     let sales: Section[] = [
         {
             name: (!obj) ? "N/A" : obj.name,
-            period: " 1st Quarter ",
-            cmlPeriod: " 1st Quarter ",
+            period: "1st Quarter",
+            cmlPeriod: "1st Quarter",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q1CmlValue,
             hardwareReference: (!obj) ? undefined : obj.hardwareReference,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
-            period: " 2nd Quarter ",
-            cmlPeriod: " First Half  ",
+            period: "2nd Quarter",
+            cmlPeriod: "First Half",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q2CmlValue,
             hardwareReference: (!obj) ? undefined : obj.hardwareReference,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
-            period: " 3rd Quarter ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            period: "3rd Quarter",
+            cmlPeriod: "1st 3 Qtrs",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q3CmlValue,
             hardwareReference: (!obj) ? undefined : obj.hardwareReference,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
-            period: " 4th Quarter ",
+            period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q4CmlValue,
@@ -127,7 +127,7 @@ export const platformSalesMake = (obj: undefined | platformCumulativeSalesType )
         },
         {
             name: (!obj) ? "N/A" : obj.name,
-            period: " Last FY Cumulative ",
+            period: "Last FY Cumulative",
             cmlPeriod: "Cml.",
             units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.cmlValueLastFY,
@@ -144,8 +144,8 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
     let unitSales: Section[] = [
         {
             name: (!obj) ? "N/A" : obj.name,
-            period: " 1st Quarter ",
-            cmlPeriod: " 1st Quarter ",
+            period: "1st Quarter",
+            cmlPeriod: "1st Quarter",
             units: (obj !== undefined && obj.units === "units") 
                     ? "units"
                     : (obj !== undefined && obj.units === "currency")
@@ -155,8 +155,8 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
         },
         {
             name: (!obj) ? "N/A" : obj.name,
-            period: " 2nd Quarter ",
-            cmlPeriod: " First Half  ",
+            period: "2nd Quarter",
+            cmlPeriod: "First Half",
             units: (obj !== undefined && obj.units === "units") 
                     ? "units"
                     : (obj !== undefined && obj.units === "currency")
@@ -166,8 +166,8 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
         },
         {
             name: (!obj) ? "N/A" : obj.name,
-            period: " 3rd Quarter ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            period: "3rd Quarter",
+            cmlPeriod: "1st 3 Qtrs",
             units: (obj !== undefined && obj.units === "units") 
                     ? "units"
                     : (obj !== undefined && obj.units === "currency")
@@ -177,7 +177,7 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
         },
         {
             name: (!obj) ? "N/A" : obj.name,
-            period: " 4th Quarter ",
+            period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj !== undefined && obj.units === "units") 
                     ? "units"
@@ -188,7 +188,7 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
         },
         {
             name: (!obj) ? "N/A" : obj.name,
-            period: " Last FY Cumulative ",
+            period: "Last FY Cumulative",
             cmlPeriod: "Cml.",
             units: (obj !== undefined && obj.units === "units") 
                     ? "units"
@@ -211,28 +211,28 @@ const platformForecastsMake = (obj: platformForecastSalesType): Section[] => {
             name: obj.name,
             units: "units",
             period: "Forecast", 
-            cmlPeriod: " 1st Quarter ",
+            cmlPeriod: "1st Quarter",
             value: obj?.forecastThisFY,
         } as Section,
         {
             name: obj.name,
             units: "units",
-            period: " FCST Revision 1 ",
-            cmlPeriod: " First Half  ",
+            period: "FCST Revision 1",
+            cmlPeriod: "First Half ",
             value: obj?.forecastRevision1,
         } as Section,
         {
             name: obj.name,
             units: "units",
-            period: " FCST Revision 2 ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            period: "FCST Revision 2",
+            cmlPeriod: "1st 3 Qtrs ",
             value: obj?.forecastRevision2,
         } as Section,
         {
             name: obj.name,
             units: "units",
-            period: " FCST Revision 3 ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            period: "FCST Revision 3",
+            cmlPeriod: "1st 3 Qtrs ",
             value: obj?.forecastRevision3,
         } as Section,
         {

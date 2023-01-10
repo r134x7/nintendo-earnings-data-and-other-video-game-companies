@@ -1,7 +1,7 @@
 export type Section = {
     units: "units" | "percentage" | "currency" | "NaN" ,
-    period: " 1st Quarter " | " 2nd Quarter " | " 3rd Quarter " | " 4th Quarter " | " Last FY Cumulative "
-    cmlPeriod: " 1st Quarter " | " First Half  " | " First Three Quarters " | "Cml. ",
+    period: "1st Quarter " | " 2nd Quarter " | " 3rd Quarter " | " 4th Quarter " | " Last FY Cumulative "
+    cmlPeriod: "1st Quarter " | " First Half  " | " First Three Quarters " | "Cml.",
     name: string,
     regionA: "Global",
     regionB: "Japan", 
@@ -24,14 +24,14 @@ export type Header = {
     units: "| Units  |",
     yearOnYear: "| YoY%   |",
     globalPercentage: "| Global%|",
-    ltd: " Life-To-Date ",
+    ltd: " Life-To-Date",
 }
 
 export function quarterlyCalculation(quarters: Section[]) {
        
    const calc: Section[] = quarters.map((elem, index, array) => {
-    //    return (elem.period !== " 1st Quarter  " && elem.period !== " Last FY Total ")
-       return (elem.period !== " 1st Quarter " && elem.period !== " Last FY Cumulative ")
+    //    return (elem.period !== "1st Quarter  " && elem.period !== " Last FY Total ")
+       return (elem.period !== "1st Quarter " && elem.period !== " Last FY Cumulative ")
                ? {
                 ...elem, 
                 valueA: Number((elem.valueA - array[index-1].valueA).toFixed(2)),
@@ -119,15 +119,15 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
 
     const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem) => {
         return (currentQuarter === 1)
-            ? elem.period === " 1st Quarter "
+            ? elem.period === "1st Quarter "
             : (currentQuarter === 2)
-            ? elem.period === " 1st Quarter " || elem.period === " 2nd Quarter "
+            ? elem.period === "1st Quarter " || elem.period === " 2nd Quarter "
             : (currentQuarter === 3)
             ? elem.period !== " 4th Quarter " 
             : elem
     }) 
 
-    const sectionCumulativeYoYFixed = sectionCumulativeYoY.filter((elem) => elem.period !== " 1st Quarter ").filter((elem) => {
+    const sectionCumulativeYoYFixed = sectionCumulativeYoY.filter((elem) => elem.period !== "1st Quarter ").filter((elem) => {
 
         if (currentQuarter === 2) {
             return elem.cmlPeriod === " First Half  "
@@ -142,9 +142,9 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
 
     const difference = sectionDifference.filter((elem, index, array) => {
         return (currentQuarter === 1)
-            ? elem.period === " 1st Quarter " && elem.valueA !== 0 
+            ? elem.period === "1st Quarter " && elem.valueA !== 0 
             : (currentQuarter === 2 )
-            ? (elem.period === " 1st Quarter " && elem.valueA !== 0) || (elem.period === " 2nd Quarter " && elem.valueA !== 0)
+            ? (elem.period === "1st Quarter " && elem.valueA !== 0) || (elem.period === " 2nd Quarter " && elem.valueA !== 0)
             : (currentQuarter === 3)
             ? elem.period !== " 4th Quarter " && elem.valueA !== 0
             : elem.valueA !== 0
@@ -242,7 +242,7 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
             : (currentQuarter === 3 && elem.period !== " Last FY Cumulative ")
             ? (elem.cmlPeriod === " First Half  " && elem.valueA !== 0) || (elem.cmlPeriod === " First Three Quarters " && elem.valueA !== 0) 
             : (currentQuarter === 4 && elem.period !== " Last FY Cumulative ")
-            ? elem.cmlPeriod !== " 1st Quarter " && elem.valueA !== 0
+            ? elem.cmlPeriod !== "1st Quarter " && elem.valueA !== 0
             : !elem // should return empty arrays...
         
         }).map((elem, index, array) => {

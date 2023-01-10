@@ -110,7 +110,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
                         title: elem.title,
                         releaseDate: elem.releaseDate,
                         platforms: elem.platforms,
-                        period: " 1st Quarter  ",
+                        period: "1st Quarter ",
                         value: elem.Q1CmlValue,
                         miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
                     },
@@ -118,7 +118,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
                         title: elem.title,
                         releaseDate: elem.releaseDate,
                         platforms: elem.platforms,
-                        period: " 2nd Quarter  ",
+                        period: "2nd Quarter ",
                         value: elem.Q2CmlValue,
                         miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
                     },
@@ -126,7 +126,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
                         title: elem.title,
                         releaseDate: elem.releaseDate,
                         platforms: elem.platforms,
-                        period: " 3rd Quarter  ",
+                        period: "3rd Quarter ",
                         value: elem.Q3CmlValue,
                         miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
                     },
@@ -134,7 +134,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
                         title: elem.title,
                         releaseDate: elem.releaseDate,
                         platforms: elem.platforms,
-                        period: " 4th Quarter  ",
+                        period: "4th Quarter ",
                         value: elem.Q4CmlValue,
                         miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
                     },
@@ -142,7 +142,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
                         title: elem.title,
                         releaseDate: elem.releaseDate,
                         platforms: elem.platforms,
-                        period: " Last FY Total ",
+                        period: "Last FY Total",
                         value: (elem.valueLastFY !== undefined) 
                                 ? elem.valueLastFY 
                                 : (searchPrevFY[0] !== undefined)
@@ -154,7 +154,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
                         title: elem.title,
                         releaseDate: elem.releaseDate,
                         platforms: elem.platforms,
-                        period: " Total at Two FYs prior ", 
+                        period: "Total at Two FYs prior", 
                         value: (elem.valueLastTwoFYs !== undefined) 
                                 ? elem.valueLastTwoFYs 
                                 : (searchPrev2FYs[0] !== undefined)

@@ -46,35 +46,35 @@ const salesHDmake = (obj: {"hdGamesSales": salesOrUnitsJSON}): Section[] => {
     let salesHD: Section[] = [
         {
             name: obj.hdGamesSales.name,
-            region: " Group Total ",
-            period: " 1st Quarter ",
-            cmlPeriod: " 1st Quarter ",
+            region: " Group Total",
+            period: "1st Quarter",
+            cmlPeriod: "1st Quarter",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
             value: obj.hdGamesSales.Q1CmlValue, // billion yen
             notes: obj.hdGamesSales.notes
         },
         {
             name: obj.hdGamesSales.name,
-            region: " Group Total ",
-            period: " 2nd Quarter ",
-            cmlPeriod: " First Half  ",
+            region: " Group Total",
+            period: "2nd Quarter",
+            cmlPeriod: "First Half",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
             value: obj.hdGamesSales.Q2CmlValue, // billion yen
             notes: obj.hdGamesSales.notes
         },
         {
             name: obj.hdGamesSales.name,
-            region: " Group Total ",
-            period: " 3rd Quarter ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            region: " Group Total",
+            period: "3rd Quarter",
+            cmlPeriod: "1st 3 Qtrs",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
             value: obj.hdGamesSales.Q3CmlValue, // billion yen
             notes: obj.hdGamesSales.notes
         },
         {
             name: obj.hdGamesSales.name,
-            region: " Group Total ",
-            period: " 4th Quarter ",
+            region: " Group Total",
+            period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
             value: obj.hdGamesSales.Q4CmlValue, // billion yen
@@ -91,35 +91,35 @@ const salesMMOmake = (obj: {"mmoSales": salesOrUnitsJSON}): Section[] => {
     let salesMMO: Section[] = [
         {
             name: obj.mmoSales.name,
-            region: " Group Total ",
-            period: " 1st Quarter ",
-            cmlPeriod: " 1st Quarter ",
+            region: " Group Total",
+            period: "1st Quarter",
+            cmlPeriod: "1st Quarter",
             units: (obj.mmoSales.units === "NaN") ? "NaN" : "currency",
             value: obj.mmoSales.Q1CmlValue, // billion yen
             notes: obj.mmoSales.notes
         },
         {
             name: obj.mmoSales.name,
-            region: " Group Total ",
-            period: " 2nd Quarter ",
-            cmlPeriod: " First Half  ",
+            region: " Group Total",
+            period: "2nd Quarter",
+            cmlPeriod: "First Half",
             units: (obj.mmoSales.units === "NaN") ? "NaN" : "currency",
             value: obj.mmoSales.Q2CmlValue, // billion yen
             notes: obj.mmoSales.notes
         },
         {
             name: obj.mmoSales.name,
-            region: " Group Total ",
-            period: " 3rd Quarter ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            region: " Group Total",
+            period: "3rd Quarter",
+            cmlPeriod: "1st 3 Qtrs",
             units: (obj.mmoSales.units === "NaN") ? "NaN" : "currency",
             value: obj.mmoSales.Q3CmlValue, // billion yen
             notes: obj.mmoSales.notes
         },
         {
             name: obj.mmoSales.name,
-            region: " Group Total ",
-            period: " 4th Quarter ",
+            region: " Group Total",
+            period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.mmoSales.units === "NaN") ? "NaN" : "currency",
             value: obj.mmoSales.Q4CmlValue, // billion yen
@@ -135,35 +135,35 @@ export const salesHDandMMOmake= (obj: {"hdGamesSales": salesOrUnitsJSON, "mmoSal
     let salesHDandMMO: Section[] = [
         {
             name: "HD Games & MMO Sales",
-            region: " Group Total ",
-            period: " 1st Quarter ",
-            cmlPeriod: " 1st Quarter ",
+            region: " Group Total",
+            period: "1st Quarter",
+            cmlPeriod: "1st Quarter",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
             value: Number((obj.hdGamesSales.Q1CmlValue + obj.mmoSales.Q1CmlValue).toFixed(1)), // billion yen
             notes: `${obj.hdGamesSales.notes} ${obj.mmoSales.notes}`
         },
         {
             name: "HD Games & MMO Sales",
-            region: " Group Total ",
-            period: " 2nd Quarter ",
-            cmlPeriod: " First Half  ",
+            region: " Group Total",
+            period: "2nd Quarter",
+            cmlPeriod: "First Half",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
             value: Number((obj.hdGamesSales.Q2CmlValue + obj.mmoSales.Q2CmlValue).toFixed(1)), // billion yen
             notes: `${obj.hdGamesSales.notes} ${obj.mmoSales.notes}`
         },
         {
             name: "HD Games & MMO Sales",
-            region: " Group Total ",
-            period: " 3rd Quarter ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            region: " Group Total",
+            period: "3rd Quarter",
+            cmlPeriod: "1st 3 Qtrs",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
             value: Number((obj.hdGamesSales.Q3CmlValue + obj.mmoSales.Q3CmlValue).toFixed(1)), // billion yen
             notes: `${obj.hdGamesSales.notes} ${obj.mmoSales.notes}`
         },
         {
             name: "HD Games & MMO Sales",
-            region: " Group Total ",
-            period: " 4th Quarter ",
+            region: " Group Total",
+            period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
             value: Number((obj.hdGamesSales.Q4CmlValue + obj.mmoSales.Q4CmlValue).toFixed(1)), // billion yen
@@ -179,32 +179,32 @@ export const unitsMake = (obj: {"hdGamesAndMMOUnits": salesOrUnitsJSON}): Sectio
     let units: Section[] = [
         {
             name: obj.hdGamesAndMMOUnits.name,
-            region: " Group Total ",
-            period: " 1st Quarter ",
-            cmlPeriod: " 1st Quarter ",
+            region: " Group Total",
+            period: "1st Quarter",
+            cmlPeriod: "1st Quarter",
             units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "units",
             value: obj.hdGamesAndMMOUnits.Q1CmlValue // billion yen
         },
         {
             name: obj.hdGamesAndMMOUnits.name,
-            region: " Group Total ",
-            period: " 2nd Quarter ",
-            cmlPeriod: " First Half  ",
+            region: " Group Total",
+            period: "2nd Quarter",
+            cmlPeriod: "First Half",
             units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "units",
             value: obj.hdGamesAndMMOUnits.Q2CmlValue // billion yen
         },
         {
             name: obj.hdGamesAndMMOUnits.name,
-            region: " Group Total ",
-            period: " 3rd Quarter ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            region: " Group Total",
+            period: "3rd Quarter",
+            cmlPeriod: "1st 3 Qtrs",
             units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "units",
             value: obj.hdGamesAndMMOUnits.Q3CmlValue // billion yen
         },
         {
             name: obj.hdGamesAndMMOUnits.name,
-            region: " Group Total ",
-            period: " 4th Quarter ",
+            region: " Group Total",
+            period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "units",
             value: obj.hdGamesAndMMOUnits.Q4CmlValue // billion yen

@@ -4,10 +4,10 @@ export type Titles = {
     title: string,
     releaseDate: string,
     platforms: string,
-    period: " 1st Quarter  " | " 2nd Quarter  " | " 3rd Quarter  " | " 4th Quarter  " | " Last FY Total " | " Total at Two FYs prior ",
+    period: "1st Quarter  " | " 2nd Quarter  " | " 3rd Quarter  " | " 4th Quarter  " | " Last FY Total " | " Total at Two FYs prior",
     value: number,
     rank?: number,
-    label?: "New!" | " Recurring " | " Sporadic ",
+    label?: "New!" | " Recurring " | " Sporadic",
     miscellaneous?: string,
     fiscalYear?: string,
 }
@@ -41,7 +41,7 @@ export function yearlyCalculation(years: Titles[]) {
 export function quarterlyCalculation(quarters: Titles[]) {
        
    const calc: Titles[] = quarters.map((elem, index, array) => {
-       return (elem.period === " 1st Quarter  ")
+       return (elem.period === "1st Quarter  ")
                ? {
                 ...elem, 
                 value: Number((elem.value - array[4].value).toFixed(2))

@@ -26,35 +26,35 @@ export const salesMake = (obj: {"fullGameSales": salesOrUnitsJSON}): Section[] =
     let sales: Section[] = [
         {
             name: obj.fullGameSales.name,
-            region: " Group Total ",
-            period: " 1st Quarter ",
-            cmlPeriod: " 1st Quarter ",
+            region: " Group Total",
+            period: "1st Quarter",
+            cmlPeriod: "1st Quarter",
             units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
             value: obj.fullGameSales.Q1CmlValue, // billion yen
             notes: obj.fullGameSales.notes
         },
         {
             name: obj.fullGameSales.name,
-            region: " Group Total ",
-            period: " 2nd Quarter ",
-            cmlPeriod: " First Half  ",
+            region: " Group Total",
+            period: "2nd Quarter",
+            cmlPeriod: "First Half",
             units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
             value: obj.fullGameSales.Q2CmlValue, // billion yen
             notes: obj.fullGameSales.notes
         },
         {
             name: obj.fullGameSales.name,
-            region: " Group Total ",
-            period: " 3rd Quarter ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            region: " Group Total",
+            period: "3rd Quarter",
+            cmlPeriod: "1st 3 Qtrs",
             units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
             value: obj.fullGameSales.Q3CmlValue, // billion yen
             notes: obj.fullGameSales.notes
         },
         {
             name: obj.fullGameSales.name,
-            region: " Group Total ",
-            period: " 4th Quarter ",
+            region: " Group Total",
+            period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
             value: obj.fullGameSales.Q4CmlValue, // billion yen
@@ -70,32 +70,32 @@ export const unitsMake = (obj: {"fullGameUnits": salesOrUnitsJSON}): Section[] =
     let units: Section[] = [
         {
             name: obj.fullGameUnits.name,
-            region: " Group Total ",
-            period: " 1st Quarter ",
-            cmlPeriod: " 1st Quarter ",
+            region: " Group Total",
+            period: "1st Quarter",
+            cmlPeriod: "1st Quarter",
             units: (obj.fullGameUnits.units === "NaN") ? "NaN" : "units",
             value: obj.fullGameUnits.Q1CmlValue // billion yen
         },
         {
             name: obj.fullGameUnits.name,
-            region: " Group Total ",
-            period: " 2nd Quarter ",
-            cmlPeriod: " First Half  ",
+            region: " Group Total",
+            period: "2nd Quarter",
+            cmlPeriod: "First Half",
             units: (obj.fullGameUnits.units === "NaN") ? "NaN" : "units",
             value: obj.fullGameUnits.Q2CmlValue // billion yen
         },
         {
             name: obj.fullGameUnits.name,
-            region: " Group Total ",
-            period: " 3rd Quarter ",
-            cmlPeriod: " 1st 3 Qtrs  ",
+            region: " Group Total",
+            period: "3rd Quarter",
+            cmlPeriod: "1st 3 Qtrs",
             units: (obj.fullGameUnits.units === "NaN") ? "NaN" : "units",
             value: obj.fullGameUnits.Q3CmlValue // billion yen
         },
         {
             name: obj.fullGameUnits.name,
-            region: " Group Total ",
-            period: " 4th Quarter ",
+            region: " Group Total",
+            period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.fullGameUnits.units === "NaN") ? "NaN" : "units",
             value: obj.fullGameUnits.Q4CmlValue // billion yen

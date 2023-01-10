@@ -61,7 +61,7 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
         {
             title: obj.name,
             platform: obj.platform,
-            period: " 1st Quarter         ",
+            period: "1st Quarter        ",
             value: (obj.Q1CmlValue === 0 && searchPrevFY[0] !== undefined)
                                     ? searchPrevFY[0].Q4CmlValue
                                     : obj.Q1CmlValue,
@@ -70,7 +70,7 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
         {
             title: obj.name,
             platform: obj.platform,
-            period: " 2nd Quarter         ",
+            period: "2nd Quarter        ",
             value: (obj.Q2CmlValue === 0 && searchPrevFY[0] !== undefined)
                                     ? searchPrevFY[0].Q4CmlValue
                                     : obj.Q2CmlValue,
@@ -79,7 +79,7 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
         {
             title: obj.name,
             platform: obj.platform,
-            period: " 3rd Quarter         ",
+            period: "3rd Quarter        ",
             value: (obj.Q3CmlValue === 0 && searchPrevFY[0] !== undefined)
                                     ? searchPrevFY[0].Q4CmlValue
                                     : obj.Q3CmlValue,
@@ -88,14 +88,14 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
         {
             title: obj.name,
             platform: obj.platform,
-            period: " 4th Quarter         ",
+            period: "4th Quarter        ",
             value: obj.Q4CmlValue,
             miscellaneous: obj.miscellaneous,
         },
         {
             title: obj.name,
             platform: obj.platform,
-            period: " Q4 Last FY ",
+            period: "Q4 Last FY",
             value: (obj.valueLastFY !== undefined) 
                                 ? obj.valueLastFY 
                                 : (searchPrevFY[0] !== undefined)

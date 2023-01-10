@@ -2,8 +2,8 @@ import { printTextBlock, border, liner, spacer } from "./table_design_logic";
 
 export type Section = {
     units: "units" | "percentage" | "currency" | "NaN" ,
-    period: " 1st Quarter " | " 2nd Quarter " | " 3rd Quarter " | " 4th Quarter " | " Last FY Cumulative " | "Forecast" | " FCST Revision 1 " | " FCST Revision 2 " | " FCST Revision 3 "
-    cmlPeriod: " 1st Quarter " | " First Half  " | " 1st 3 Qtrs  " | "Cml.",
+    period: "1st Quarter" | "2nd Quarter" | "3rd Quarter" | "4th Quarter" | "Last FY Cumulative" | "Forecast" | "FCST Revision 1" | "FCST Revision 2" | "FCST Revision 3"
+    cmlPeriod: "1st Quarter" | "First Half" | "1st 3 Qtrs" | "Cml.",
     name: string,
     value: number,
     fiscalYear?: string,
@@ -21,7 +21,7 @@ export type Header = {
 export function quarterlyCalculation(quarters: Section[]) {
         
     const calc: Section[] = quarters.map((elem, index, array) => {
-        return (index === 0 || quarters[index].period === " Last FY Cumulative ") // 1st Quarter or last FY number
+        return (index === 0 || quarters[index].period === "Last FY Cumulative") // 1st Quarter or last FY number
                 ? elem
                 : {...elem, value: elem.value - array[index-1].value}
     })
@@ -323,7 +323,7 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
 
         // const hardwareNotes: string = (sectionSales[0].hardwareReference === undefined) 
         //     ? "" 
-        //     : "*Hardware Units used: " + sectionSales[0].hardwareReference.reduce((acc, next) => acc + ",\n " + next + " (FY cumulative only)") + "\n" + headerBorder; 
+        //     : "*Hardware Units used: " + sectionSales[0].hardwareReference.reduce((acc, next) => acc +",\n " + next + " (FY cumulative only)") + "\n" + headerBorder; 
 
         // const sales = sectionSales.filter((elem, index, array) => {
         //     return index < currentQuarter && array[index].value !== 0

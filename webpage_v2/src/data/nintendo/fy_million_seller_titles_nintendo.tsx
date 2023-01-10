@@ -102,7 +102,7 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
         {
             title: obj.name,
             platform: obj.platform,
-            period: " 1st Quarter  ",
+            period: "1st Quarter",
             regionA: "Japan",
             valueA: obj.Q1CmlValueA,
             regionB: "Overseas",
@@ -116,7 +116,7 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
         {
             title: obj.name,
             platform: obj.platform,
-            period: " 2nd Quarter  ",
+            period: "2nd Quarter",
             regionA: "Japan",
             valueA: obj.Q2CmlValueA,
             regionB: "Overseas",
@@ -130,7 +130,7 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
         {
             title: obj.name,
             platform: obj.platform,
-            period: " 3rd Quarter  ",
+            period: "3rd Quarter",
             regionA: "Japan",
             valueA: obj.Q3CmlValueA,
             regionB: "Overseas",
@@ -144,7 +144,7 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
         {
             title: obj.name,
             platform: obj.platform,
-            period: " 4th Quarter  ",
+            period: "4th Quarter",
             regionA: "Japan",
             valueA: obj.Q4CmlValueA,
             regionB: "Overseas",
@@ -158,7 +158,7 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
         {
             title: obj.name,
             platform: obj.platform,
-            period: " Last FY Total ",
+            period: "Last FY Total",
             regionA: "Japan",
             valueA: (obj.valueALastFY !== undefined) 
                                 ? obj.valueALastFY 
@@ -267,7 +267,7 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
                 return labelTitles(elem)
             }).map((elem) => {
                 return elem.filter((secondElem) => {
-                    return secondElem.label === " Recurring "
+                    return secondElem.label === "Recurring"
                 })
             }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
             ).map((elem) => {

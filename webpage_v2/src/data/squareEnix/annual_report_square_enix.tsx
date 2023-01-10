@@ -65,7 +65,7 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
         thirdHeader: "Rank",
         fourthHeader: "Units",
         ltd: "Life-To-Date",
-        summaryHeader: " Placeholder ",
+        summaryHeader: " Placeholder",
         fiscalYear: elem.fiscalYearCml,
         fiscalYearYoY: elem.fiscalYearYoY,
     };

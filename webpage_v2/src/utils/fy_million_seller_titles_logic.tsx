@@ -3,7 +3,7 @@ import { printTextBlock, border, liner, spacer, headerPrint } from "./table_desi
 export type Titles = {
     title: string,
     platform: string,
-    period: " 1st Quarter  " | " 2nd Quarter  " | " 3rd Quarter  " | " 4th Quarter  " | " Last FY Total ",
+    period: "1st Quarter" | "2nd Quarter" | "3rd Quarter" | "4th Quarter" | "Last FY Total",
     regionA: "Japan", 
     valueA: number,
     regionB: "Overseas",
@@ -13,7 +13,7 @@ export type Titles = {
     regionD: "WW LTD",
     valueD: number,
     rank?: number,
-    label?: "New!" | " Recurring ",
+    label?: "New!" | "Recurring",
     miscellaneous?: string,
     yearsCount?: number,
     fiscalYear?: string,
@@ -55,7 +55,7 @@ export function decimateCalculation(numbers: Titles[]) {
 export function quarterlyCalculation(quarters: Titles[]) {
        
    const calc: Titles[] = quarters.map((elem, index, array) => {
-       return (elem.period !== " 1st Quarter  " && elem.period !== " Last FY Total ")
+       return (elem.period !== "1st Quarter" && elem.period !== "Last FY Total")
                ? {
                 ...elem, 
                 valueA: Number((elem.valueA - array[index-1].valueA).toFixed(2)),
@@ -68,54 +68,20 @@ export function quarterlyCalculation(quarters: Titles[]) {
    return calc
 }
 
-export const printHead = (header: Header) => 
-`+${"−".repeat(44)}+
-${header.mainHeader}
-+${"−".repeat(44)}+
-${header.platformHeader}
-+${"−".repeat(44)}+
-+${"−".repeat(42)}+
-${header.secondHeader}
-+${"−".repeat(42)}+
-${header.thirdHeader}
-+${"−".repeat(42)}+
-${header.fourthHeader}
-+${"−".repeat(42)}+`;
-
 export const printTitles = (header: Header, titleDifference: Titles[], titleCumulative: Titles[], currentQuarter: number) => {
         
     const regionAB = titleDifference.filter((elem, index) => {
         return index !== 4
     }).map((elem, index, array) => {
         
-        let printRank: string = ` Rank ${elem.rank} `
-        let printRankFixed: string = (printRank.length >= 9)
-                ? printRank
-                : printRank + " ".repeat(9 - printRank.length);
+        let printPlatformAndRank: string = liner(border([
+            spacer(elem.platform,30,"left"),
+            spacer(`Rank ${elem.rank}`,9,"left"),
+        ]),"−","bottom")
         
-        let printPlatformFixed: string = (elem.platform.length >= 32)
-                ? elem.platform
-                : " " + elem.platform + " ".repeat(31 - elem.platform.length)
+        let printTitleName = liner(printTextBlock(elem.title, 42),"−","both",true,42)
 
-        // let printTitleName: string = (elem.title.length > 32)
-        // ? elem.title.split(" ").reduce((prev, next, index, array) => {
-
-        //     let nextCheck = prev + next + " ";
-            
-        //     if (nextCheck.length > 31 && prev.length <= 31) {
-        //         return prev + " ".repeat(32 - prev.length) + `|         |\n| ` + next
-        //     } else if (index === array.length-1) {
-        //         return prev + next + " ".repeat(77 - prev.length)
-        //     } else {
-        //         return prev + " " + next
-        //     }
-        // })
-        // : (elem.title.length < 32)
-        // ? elem.title + " ".repeat(32 - elem.title.length) 
-        // : elem.title
-        let printTitleName = printTextBlock(elem.title, 42)
-
-        let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
+        let printTitleNameFixed: string = printTitleName + printPlatformAndRank
 
         let printValueA: string = `${elem.valueA}M` 
         let printValueAFixed: string = (printValueA.length >= 9)
@@ -275,7 +241,7 @@ export function labelTitles(titlesSorted: Titles[]) {
         
         return (array[4].valueC === 0)
                 ? {...elem, label: "New!"}
-                : {...elem, label: " Recurring "}
+                : {...elem, label: "Recurring"}
     })
     
     return calc
@@ -321,7 +287,7 @@ export const printSummary = (header: Header, regionNew: number[], regionRecurrin
         let printRegionHeader: string = liner(border([
             spacer(regionHeaders[index],32,"left"),
         ]),"−","both",true) + liner(border([
-            spacer(header.fiscalYear + " Cml.|   Units |    %    ",32,"left")
+            spacer(header.fiscalYear + " Cml.|   Units |    %   ",32,"left")
         ]),"−","bottom",true)
 
         let TotalUnits: number = Number((elem + regionRecurring[index]).toFixed(2)) 

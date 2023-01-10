@@ -97,8 +97,8 @@ export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
     let sales: Section[] = [
         {
             name: (!obj) ? "None" : obj.name,
-            period: " 1st Quarter ",
-            cmlPeriod: " 1st Quarter ",
+            period: "1st Quarter",
+            cmlPeriod: "1st Quarter",
             units: "units",
             regionA: "Global",
             valueA: (!obj) ? 0 : obj.Q1CmlValueA,
@@ -113,8 +113,8 @@ export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
         },
         {
             name: (!obj) ? "None" : obj.name,
-            period: " 2nd Quarter ", 
-            cmlPeriod: " First Half  ",
+            period: "2nd Quarter", 
+            cmlPeriod: "First Half",
             units: "units",
             regionA: "Global",
             valueA: (!obj) ? 0 : obj.Q2CmlValueA,
@@ -129,8 +129,8 @@ export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
         },
         {
             name: (!obj) ? "None" : obj.name,
-            period: " 3rd Quarter ",
-            cmlPeriod: " First Three Quarters ",
+            period: "3rd Quarter",
+            cmlPeriod: "First Three Quarters",
             units: "units",
             regionA: "Global",
             valueA: (!obj) ? 0 : obj.Q3CmlValueA,
@@ -145,8 +145,8 @@ export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
         },
         {
             name: (!obj) ? "None" : obj.name,
-            period: " 4th Quarter ",
-            cmlPeriod: "Cml. ",
+            period: "4th Quarter",
+            cmlPeriod: "Cml.",
             units: "units",
             regionA: "Global",
             valueA: (!obj) ? 0 : obj.Q4CmlValueA,
@@ -161,8 +161,8 @@ export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
         },
         {
             name: (!obj) ? "None" : obj.name,
-            period: " Last FY Cumulative ",
-            cmlPeriod: "Cml. ",
+            period: "Last FY Cumulative",
+            cmlPeriod: "Cml.",
             units: "units",
             regionA: "Global",
             valueA: (!obj) ? 0 : obj.valueALastFY,
@@ -191,7 +191,7 @@ export const regionalHardwareSoftwareList: string[] = collection.map((elem, inde
         globalPercentage: "| Global%|",
         units: "| Units  |",
         yearOnYear: "| YoY%   |",
-        ltd: " Life-To-Date ",
+        ltd: " Life-To-Date",
     };
 
     let regionalUnitsThisFYList: Section[][] = elem.regions.filter(value => !Object.hasOwn(value, "dataShift")).map(value => platformUnitsMake(value));
