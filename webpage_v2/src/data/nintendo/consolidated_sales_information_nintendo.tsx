@@ -7,6 +7,8 @@ import {
     yearOnYearCalculation
 } from "../../utils/hardware_software_units_logic";
 
+import { headerPrint } from "../../utils/table_design_logic";
+
 import consolidatedSalesInfo2023 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2023.json";
 import consolidatedSalesInfo2022 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2022.json";
 import consolidatedSalesInfo2021 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2021.json";
@@ -130,9 +132,9 @@ export const consolidatedSalesInformationList: string[] = collection.map((elem, 
     let header: Header = {
         fiscalYear: elem.fiscalYear,
         nextFiscalYearShort: nextFiscalYear,
-        switchHeader: "| Nintendo Co., Ltd. |",
-        firstHeader: "| Consolidated                  |",
-        secondHeader: "| Sales Information             |",
+        switchHeader: "Nintendo Co., Ltd.",
+        firstHeader: "Consolidated",
+        secondHeader: "Sales Information",
     };
 
     let platformSalesThisFYList: Section[][] = elem.platformSales.map(value => platformSalesMake(value)); 
@@ -183,7 +185,11 @@ export const consolidatedSalesInformationList: string[] = collection.map((elem, 
     });
 
 
-    const printOne: string = printHead(header)
+    const printOne: string = headerPrint([
+        header.switchHeader + " | " + header.fiscalYear,
+        header.firstHeader,
+        header.secondHeader,
+    ],30)
 
     const printPlatformSales = Array.from({length: platformSalesThisFY.length}, (v, i) => {
 

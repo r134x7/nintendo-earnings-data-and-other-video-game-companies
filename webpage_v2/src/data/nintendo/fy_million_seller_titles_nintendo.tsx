@@ -4,11 +4,12 @@ import {
     decimateCalculation,
     quarterlyCalculation,
     labelTitles,
-    printHead,
     printTitles,
     printSummary,
     printSummaryHead,
 } from "../../utils/fy_million_seller_titles_logic";
+
+import { headerPrint } from "../../utils/table_design_logic";
 
 import fyMillionSellerTitles2023 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2023.json";
 import fyMillionSellerTitles2022 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2022.json";
@@ -194,21 +195,21 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
 export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, array) => {
 
     let header: Header = {
-        mainHeader: "| Nintendo Fiscal Year Million-Seller Titles |",
-        platformHeader: "| Nintendo Switch                   |",
-        secondHeader: "| Title                                    |",
-        thirdHeader: "| Platform and Rank                        |",
-        fourthHeader: "| Units                                    |",
+        mainHeader: "Nintendo Fiscal Year Million-Seller Titles",
+        platformHeader: "Nintendo Switch",
+        secondHeader: "Title",
+        thirdHeader: "Platform and Rank",
+        fourthHeader: "Units",
         areaHeader: "| Area         |   Japan | Overseas|",
         globalHeader: "| Global       |   WW FY |  WW LTD |",
         fiscalYear: elem.fiscalYear,
         mainSummaryHeader: "placeholder",
-        secondSummaryHeader: "| FY Million-Seller      |",
-        thirdSummaryHeader: "| Titles Summary         |",
-        japanSummaryHeader: "| Japan                           |",
-        overseasSummaryHeader: "| Overseas                        |",
-        globalFYSummaryHeader: "| Global FY                       |",
-        globalLTDSummaryHeader: "| Global LTD                      |",
+        secondSummaryHeader: "FY Million-Seller",
+        thirdSummaryHeader: "Titles Summary",
+        japanSummaryHeader: "Japan",
+        overseasSummaryHeader: "Overseas",
+        globalFYSummaryHeader: "Global FY",
+        globalLTDSummaryHeader: "Global LTD",
     };
 
     let prevFYTitles: titlesJSON[][] | undefined = (array[index+1] === undefined)
@@ -306,17 +307,20 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
                 }).reduce((prev, next) => prev + next)
             })
 
-        let platformLength = " ".repeat(44 - sortedCollection[0][0].platform.length-1)
-
-        let summaryLength = " ".repeat(24 - sortedCollection[0][0].platform.length-1)
-
         let headerFixed = {
             ...headerValues,
-            platformHeader: "| " + sortedCollection[0][0].platform + platformLength + "|",
-            mainSummaryHeader: "| " + sortedCollection[0][0].platform + summaryLength + "|"
+            platformHeader: sortedCollection[0][0].platform,
+            mainSummaryHeader: sortedCollection[0][0].platform
         }
 
-        let printOne = printHead(headerFixed)
+        let printOne = headerPrint([
+            header.mainHeader,
+            header.platformHeader,
+        ],44) + "\n" + headerPrint([
+            header.secondHeader,
+            header.thirdHeader,
+            header.fourthHeader
+        ],32)
 
         let printListedTitles = differenceTitles.map((elem, index) => {
             return printTitles(headerFixed, elem, sortedTitles[index], currentQuarter)

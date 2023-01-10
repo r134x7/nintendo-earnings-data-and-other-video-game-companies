@@ -1,4 +1,4 @@
-import { printTextBlock, border, liner, spacer } from "./table_design_logic";
+import { printTextBlock, border, liner, spacer, headerPrint } from "./table_design_logic";
 
 export type Titles = {
     title: string,
@@ -283,32 +283,33 @@ export function labelTitles(titlesSorted: Titles[]) {
 
 export const printSummaryHead = (header: Header, newCollection: Titles[], recurringCollection: Titles[]) => {
 
-    let printNew: string = `${newCollection.length} `
-    let printNewFixed: string = (printNew.length >= 9)
-        ? printNew
-        : " ".repeat(9 - printNew.length) + printNew;
+    let printNew: string = border([
+        spacer("New!",12,"left"),
+        spacer(`${newCollection.length}`,9,"right")
+    ],true)
 
-    let printRecurring: string = `${recurringCollection.length} `
-    let printRecurringFixed: string = (printRecurring.length >= 9)
-        ? printRecurring
-        : " ".repeat(9 - printRecurring.length) + printRecurring;
+    let printRecurring: string = border([
+        spacer("Recurring",12,"left"),
+        spacer(`${recurringCollection.length}`,9,"right")
+    ],true)
 
-    let printTotal: string = `${newCollection.length + recurringCollection.length} `
-    let printTotalFixed: string = (printTotal.length >= 9)
-    ? printTotal
-    : " ".repeat(9 - printTotal.length) + printTotal;
+    let printTotal: string = liner(border([
+        spacer("Total",12,"left"),
+        spacer(`${newCollection.length + recurringCollection.length}`,9,"right")
+    ]),"=","both")
 
-    let printHeader: string = "+"+"−".repeat(24)+"+\n" + header.mainSummaryHeader  + "\n" + header.secondSummaryHeader + "\n" + header.thirdSummaryHeader + "\n" + "+"+"−".repeat(24)+"+"
+    let printHeader: string = headerPrint([
+        header.mainSummaryHeader,
+        header.secondSummaryHeader,
+        header.thirdSummaryHeader,
+    ],23)
 
-    let printTitles: string = "\n+"+"−".repeat(23)+"+\n| Titles      |   Count |\n+" + "−".repeat(23)+"+" 
+    let printTitles: string = liner(border([
+        spacer("Titles",12,"left"),
+        spacer("Count",9,"right"),
+    ]),"−","both",true)
 
-    let printNewRow: string = "\n| New!        |" + printNewFixed + "|"
-
-    let printRecurringRow: string = "\n| Recurring   |" + printRecurringFixed + "|"
-
-    let printTotalRow: string = "\n+"+"=".repeat(23) + "+\n| Total       |" + printTotalFixed + "|\n+"+"−".repeat(23) + "+"
-
-    return printHeader + printTitles + printNewRow + printRecurringRow + printTotalRow
+    return printHeader + "\n" + printTitles + printNew + printRecurring + printTotal
 }
     
 export const printSummary = (header: Header, regionNew: number[], regionRecurring: number[], ) => {
@@ -317,36 +318,32 @@ export const printSummary = (header: Header, regionNew: number[], regionRecurrin
 
     return regionNew.map((elem, index, array) => {
 
-        let printRegionHeader: string = "+"+"−".repeat(33)+"+\n" + regionHeaders[index] + "\n+"+"−".repeat(33)+"+\n|" + header.fiscalYear + " Cml.|   Units |    %    |\n+" + "−".repeat(33) + "+\n"
+        let printRegionHeader: string = liner(border([
+            spacer(regionHeaders[index],32,"left"),
+        ]),"−","both",true) + liner(border([
+            spacer(header.fiscalYear + " Cml.|   Units |    %    ",32,"left")
+        ]),"−","bottom",true)
 
         let TotalUnits: number = Number((elem + regionRecurring[index]).toFixed(2)) 
 
-        let printTotalUnits: string = `${(elem + regionRecurring[index]).toFixed(2)}M`
-        let printTotalUnitsFixed: string = (printTotalUnits.length >= 9)
-            ? printTotalUnits
-            : " ".repeat(9 - printTotalUnits.length) + printTotalUnits;
+        let printTotalUnits: string = liner(border([
+            spacer("Total",12,"left"),
+            spacer(`${(elem + regionRecurring[index]).toFixed(2)}M`,8,"right")
+        ]),"−","bottom",true);
         
-        let printNewUnits: string = `${elem.toFixed(2)}M`
-        let printNewUnitsFixed: string = (printNewUnits.length >= 9)
-                ? printNewUnits
-                : " ".repeat(9 - printNewUnits.length) + printNewUnits;
-
-        let printNewPercentages: string = `${((elem / TotalUnits) * 100).toFixed(2)}%`
-        let printNewPercentagesFixed: string = (printNewPercentages.length >= 9)
-            ? printNewPercentages
-            : " ".repeat(9 - printNewPercentages.length) + printNewPercentages;
-
-        let printRecurringUnits: string = `${regionRecurring[index].toFixed(2)}M`
-        let printRecurringUnitsFixed: string = (printRecurringUnits.length >= 9)
-            ? printRecurringUnits
-            : " ".repeat(9 - printRecurringUnits.length) + printRecurringUnits;
+        let printNewUnits: string = border([
+            spacer("New!",12,"left"),
+            spacer(`${elem.toFixed(2)}M`,8,"right"),
+            spacer(`${((elem / TotalUnits) * 100).toFixed(2)}%`,8,"right")
+        ],true);
         
-        let printRecurringPercentages: string = `${((regionRecurring[index] / TotalUnits) * 100).toFixed(2)}%`
-        let printRecurringPercentagesFixed: string = (printRecurringPercentages.length >= 9)
-            ? printRecurringPercentages
-            : " ".repeat(9 - printRecurringPercentages.length) + printRecurringPercentages;
+        let printRecurringUnits: string = liner(border([
+            spacer("Recurring",12,"left"),
+            spacer(`${regionRecurring[index].toFixed(2)}M`,8,"right"),
+            spacer(`${((regionRecurring[index] / TotalUnits) * 100).toFixed(2)}%`,8,"right")
+        ]),"=","bottom",true);
 
-        let printRows: string = "| New!        |" + printNewUnitsFixed + "|" + printNewPercentagesFixed + "|\n| Recurring   |" + printRecurringUnitsFixed + "|" + printRecurringPercentagesFixed + "|\n+" + "=".repeat(33) + "+\n| Total       |" + printTotalUnitsFixed + "|\n+" + "−".repeat(23) + "+\n" 
+        let printRows: string = printNewUnits + printRecurringUnits + printTotalUnits
 
         return printRegionHeader + printRows
     }).reduce((prev, next) => prev + next)
