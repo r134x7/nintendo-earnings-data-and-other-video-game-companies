@@ -30,14 +30,7 @@ import regionalHardwareSoftware1998 from "../Regional_Hardware_Software/regional
 import regionalHardwareSoftware1997 from "../Regional_Hardware_Software/regional_hw_sw_fy3_1997.json";
 
 // avoid having empty lists [] in your collections from preparing for the next earnings
-import {
-    Header,
-    Section,
-    printHead,
-    printSection,
-    quarterlyCalculation,
-    yearOnYearCalculation,
-} from "../../../utils/regional_hw_sw_logic";
+import { Section } from "../../../utils/regional_hw_sw_logic";
 
     const totalCollection = [
         regionalHardwareSoftware1997,
@@ -104,9 +97,6 @@ import {
 
     const latestFYcollection = sortingTitles(filteredCollection);
 
-    // console.log(latestFYcollection);
-    
-
     const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+2, "left")]),"−", "bottom")
 
     function accumulate(title: Section[]): Section[] {
@@ -131,44 +121,30 @@ import {
         
         const regionRank = titles.map((elem, index, array) => {
             
-            let printTitleName = printTextBlock(elem[0].name, 42)
+            let printTitleName = liner(printTextBlock(elem[0].name, 43),"−","both",true,43);
 
-            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+"// + "+"+"−".repeat(42)+"+"
             // need to check regarding || conditions in filter because it's not working...
             let yearValues: string[] = elem.filter(value => value.valueB !== 0).filter(value => value.period !== " Last FY Cumulative ").map((value, valueIndex, valueArray) => {
+               return border([
+                    spacer(value.fiscalYear + " Cumulative",29,"left"),
+                    spacer(`${value.valueB}M`,11,"right")
+               ],true);
+            });
 
-               let printValue: string = `${value.valueB}M` 
-               let printValueFixed: string = (printValue.length >= 11)
-                   ? printValue
-                   : " ".repeat(11 - printValue.length) + printValue;
-
-               let printPeriodFixed: string = (value.fiscalYear === undefined) 
-                       ? "|" + value.period + " ".repeat(6) + "|"
-                       : "| " + value.fiscalYear + " Cumulative          |"
-
-               return  printPeriodFixed + printValueFixed + "|"
-            })//.filter((secondValue, index) => index !== elem.length-1) 
-
-        let printValue: string = `${elem[elem.length-1].valueB}M` 
-        
-        let printValueFixed: string = (printValue.length >= 11)
-            ? printValue
-            : " ".repeat(11 - printValue.length) + printValue;
-
-        let printLine: string = "+" + "−".repeat(42) + "+";
-
-        let printLTD = printLine + "\n| Japan - Life-To-Date (Units) |" + printValueFixed + "|\n" + printLine;
+            let printLTD: string = liner(border([
+                spacer("Japan - Life-To-Date (Units)",29,"left"),
+                spacer(`${elem[elem.length-1].valueB}M`,11,"right"),
+            ]),"=","both",true);
 
             return [
-                printTitleNameFixed,
+                printTitleName,
                 ...yearValues,
                 printLTD,
             ].reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
             });
-
         }).filter(value => value !== "N/A").reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
         });
 
         return regionRank
@@ -178,44 +154,30 @@ import {
         
         const regionRank = titles.map((elem, index, array) => {
             
-            let printTitleName = printTextBlock(elem[0].name, 42)
+            let printTitleName = liner(printTextBlock(elem[0].name, 43),"−","both",true,43);
 
-            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+"// + "+"+"−".repeat(42)+"+"
             // need to check regarding || conditions in filter because it's not working...
             let yearValues: string[] = elem.filter(value => value.valueC !== 0).filter(value => value.regionC !== "Overseas").filter(value => value.period !== " Last FY Cumulative ").map((value, valueIndex, valueArray) => {
-
-               let printValue: string = `${value.valueC}M` 
-               let printValueFixed: string = (printValue.length >= 11)
-                   ? printValue
-                   : " ".repeat(11 - printValue.length) + printValue;
-
-               let printPeriodFixed: string = (value.fiscalYear === undefined) 
-                       ? "|" + value.period + " ".repeat(6) + "|"
-                       : "| " + value.fiscalYear + " Cumulative          |"
-
-               return  printPeriodFixed + printValueFixed + "|"
+               return border([
+                    spacer(value.fiscalYear + " Cumulative",29,"left"),
+                    spacer(`${value.valueC}M`,11,"right")
+               ],true);
             })//.filter((secondValue, index) => index !== elem.length-1) 
 
-        let printValue: string = `${elem[elem.length-1].valueC}M` 
-        
-        let printValueFixed: string = (printValue.length >= 11)
-            ? printValue
-            : " ".repeat(11 - printValue.length) + printValue;
-
-        let printLine: string = "+" + "−".repeat(42) + "+";
-
-        let printLTD = printLine + "\n| The Americas - LTD (Units)   |" + printValueFixed + "|\n" + printLine;
+            let printLTD: string = liner(border([
+                spacer("The Americas - LTD (Units)",29,"left"),
+                spacer(`${elem[elem.length-1].valueC}M`,11,"right"),
+            ]),"=","both",true);
 
             return [
-                printTitleNameFixed,
+                printTitleName,
                 ...yearValues,
                 printLTD,
             ].reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
             });
-
         }).filter(value => value !== "N/A").reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
         });
 
         return regionRank
@@ -225,44 +187,30 @@ import {
         
         const regionRank = titles.map((elem, index, array) => {
             
-            let printTitleName = printTextBlock(elem[0].name, 42)
+            let printTitleName = liner(printTextBlock(elem[0].name, 43),"−","both",true,43);
 
-            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+"// + "+"+"−".repeat(42)+"+"
             // need to check regarding || conditions in filter because it's not working...
             let yearValues: string[] = elem.filter(value => value.valueD !== 0).filter(value => value.regionD !== "Other").filter(value => value.period !== " Last FY Cumulative ").map((value, valueIndex, valueArray) => {
-
-               let printValue: string = `${value.valueD}M` 
-               let printValueFixed: string = (printValue.length >= 11)
-                   ? printValue
-                   : " ".repeat(11 - printValue.length) + printValue;
-
-               let printPeriodFixed: string = (value.fiscalYear === undefined) 
-                       ? "|" + value.period + " ".repeat(6) + "|"
-                       : "| " + value.fiscalYear + " Cumulative          |"
-
-               return  printPeriodFixed + printValueFixed + "|"
+               return border([
+                    spacer(value.fiscalYear + " Cumulative",29,"left"),
+                    spacer(`${value.valueD}M`,11,"right")
+               ],true);
             })//.filter((secondValue, index) => index !== elem.length-1) 
 
-        let printValue: string = `${elem[elem.length-1].valueD}M` 
-        
-        let printValueFixed: string = (printValue.length >= 11)
-            ? printValue
-            : " ".repeat(11 - printValue.length) + printValue;
-
-        let printLine: string = "+" + "−".repeat(42) + "+";
-
-        let printLTD = printLine + "\n| Europe - Life-To-Date (Units)|" + printValueFixed + "|\n" + printLine;
+            let printLTD: string = liner(border([
+                spacer(" Europe - Life-To-Date (Units)",29,"left"),
+                spacer(`${elem[elem.length-1].valueD}M`,11,"right"),
+            ]),"=","both",true);
 
             return (yearValues.length === 0) ? "N/A" : [
-                printTitleNameFixed,
+                printTitleName,
                 ...yearValues,
                 printLTD,
             ].reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
             });
-
         }).filter(value => value !== "N/A").reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
         });
 
         return regionRank
@@ -272,28 +220,19 @@ import {
         
         const regionRank = titles.map((elem, index, array) => {
             
-            let printTitleName = printTextBlock(elem[0].name, 42)
-
-            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+"// + "+"+"−".repeat(42)+"+"
+            let printTitleName = liner(printTextBlock(elem[0].name, 43),"−","both",true,43);
 
             let yearValuesOtherD: string[] = elem.filter(value => {
                 return (value.valueD !== 0 && value.regionD === "Other")
             }).filter(value => value.period !== " Last FY Cumulative ").map((value, valueIndex, valueArray) => {
-                
             //    let findOtherValue = (value.valueE === 0 && value.regionD !== "Europe") 
             //         ? value.valueD
             //         : value.valueE 
 
-               let printValue: string = `${value.valueD}M` 
-               let printValueFixed: string = (printValue.length >= 11)
-                   ? printValue
-                   : " ".repeat(11 - printValue.length) + printValue;
-
-               let printPeriodFixed: string = (value.fiscalYear === undefined) 
-                       ? "|" + value.period + " ".repeat(6) + "|"
-                       : "| " + value.fiscalYear + " Cumulative          |"
-
-               return  printPeriodFixed + printValueFixed + "|"
+               return border([
+                    spacer(value.fiscalYear + " Cumulative",29,"left"),
+                    spacer(`${value.valueD}M`,11,"right")
+               ],true);
             })//.filter((secondValue, index) => index !== elem.length-1) 
 
             let yearValuesOtherE: string[] = elem.filter(value => {
@@ -304,16 +243,10 @@ import {
             //         ? value.valueD
             //         : value.valueE 
 
-               let printValue: string = `${value.valueE}M` 
-               let printValueFixed: string = (printValue.length >= 11)
-                   ? printValue
-                   : " ".repeat(11 - printValue.length) + printValue;
-
-               let printPeriodFixed: string = (value.fiscalYear === undefined) 
-                       ? "|" + value.period + " ".repeat(6) + "|"
-                       : "| " + value.fiscalYear + " Cumulative          |"
-
-               return  printPeriodFixed + printValueFixed + "|"
+               return border([
+                    spacer(value.fiscalYear + " Cumulative",29,"left"),
+                    spacer(`${value.valueE}M`,11,"right")
+               ],true);
             })//.filter((secondValue, index) => index !== elem.length-1) 
 
         let yearValues: string[] = yearValuesOtherD.concat(yearValuesOtherE);
@@ -322,31 +255,25 @@ import {
                     ? elem[elem.length-1].valueD
                     : elem[elem.length-1].valueE 
 
-        let printValue: string = `${findOtherLTDValue}M` 
-        
-        let printValueFixed: string = (printValue.length >= 11)
-            ? printValue
-            : " ".repeat(11 - printValue.length) + printValue;
-
-        let printLine: string = "+" + "−".repeat(42) + "+";
-
-        let printLTD = printLine + "\n| Other - Life-To-Date (Units) |" + printValueFixed + "|\n" + printLine;
-
+        let printLTD: string = liner(border([
+            spacer("Other - Life-To-Date (Units)",29,"left"),
+            spacer(`${findOtherLTDValue}M`,11,"right"),
+        ]),"=","both",true);
+    
             return (yearValues.length === 0) ? "N/A" : [
-                printTitleNameFixed,
+                printTitleName,
                 ...yearValues,
                 printLTD,
             ].reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
             });
 
         }).filter(value => value !== "N/A").reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
         });
 
         return regionRank
     };
-
 
     const reducedArrays: Section[][] = latestFYcollection.map((elem) => {
 
@@ -354,32 +281,32 @@ import {
     })
     
 const printOneJapan = 
-`+--------------------+
+`+−−−−−−−−−−−−−−−−−−−−+
 | Nintendo Co., Ltd. |
-+-------------------------------------+
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 | Hardware and Software Units - Japan |
-+-------------------------------------+`;
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
 
 const printOneAmericas = 
-`+--------------------+
+`+−−−−−−−−−−−−−−−−−−−−+
 | Nintendo Co., Ltd. |
-+--------------------------------------------+
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 | Hardware and Software Units - The Americas |
-+--------------------------------------------+`;
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
 
 const printOneEurope = 
-`+--------------------+
+`+−−−−−−−−−−−−−−−−−−−−+
 | Nintendo Co., Ltd. |
-+--------------------------------------+
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 | Hardware and Software Units - Europe |
-+--------------------------------------+`;
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
 
 const printOneOther = 
-`+--------------------+
+`+−−−−−−−−−−−−−−−−−−−−+
 | Nintendo Co., Ltd. |
-+----------------------------------------------+
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 | Regional Hardware and Software Units - Other |
-+----------------------------------------------+`;
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
 
 const divideSortedGlobalCollection = reducedArrays.map(elem => elem.map(section => {
     return {
