@@ -91,7 +91,7 @@ const totalCollection: EarningsJSON[] = [
     consolidatedEarnings2023,
 ];
 
-const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+1, "left")]),"-", "bottom")
+const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+1, "left")]),"−", "bottom")
 
 let netSalesSet = totalCollection.map(elem => {
     return {
@@ -136,10 +136,10 @@ const sortedNetIncome = sortList(netIncomeSet);
 let header = [
     liner(border([
     spacer("Nintendo Co., Ltd.", "Nintendo Co., Ltd.".length+1, "left")
-    ]),"-","top"),
+    ]),"−","top"),
     liner(border([
         spacer("Consolidated Operating Results", "Consolidated Operating Results".length+2, "left")
-    ]), "-", "both")
+    ]), "−", "both")
 ].reduce((acc, next) => acc + "\n" + next)
 
 const printCumulativeValues = (list: {fiscalYear: string, value: number}[], sortedList: {fiscalYear: string, value: number}[], valueType: string): string[] => {

@@ -72,11 +72,11 @@ const squareEnixCollection: squareEnixCollectionJSON[] = [
 ];
 
 const generalSalesHeader = 
-`+---------------------------------------------------+
+`+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 |              |             |          | Sales Per |
 |              |             | Software |  Software |
 |              |       Sales |    Units |      Unit |
-+---------------------------------------------------+`;
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
 
 const bandaiNamcoSales: Section[] = setMaker(bandaiNamcoCollection, bandaiNamcoSalesMake);
 

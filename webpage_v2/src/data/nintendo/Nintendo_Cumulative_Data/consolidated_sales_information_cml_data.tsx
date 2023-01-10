@@ -27,15 +27,7 @@ import consolidatedSalesInfo2002 from "../Consolidated_Sales_Information/consoli
 import consolidatedSalesInfo2001 from "../Consolidated_Sales_Information/consolidated_sales_information_fy3_2001.json";
 
 // avoid having empty lists [] in your collections from preparing for the next earnings
-import {
-    Section,
-    Header,
-    printHead,
-    printSections,
-    printSalesHardware,
-    quarterlyCalculation,
-    yearOnYearCalculation
-} from "../../../utils/hardware_software_units_logic";
+import { Section, Header } from "../../../utils/hardware_software_units_logic";
 
     const totalCollection = [
         consolidatedSalesInfo2001,
@@ -94,9 +86,6 @@ import {
 
     const latestFYcollection = sortingTitles(filteredCollection);
 
-    // console.log(latestFYcollection);
-    
-
     const dateLabel = "| Data as of September 30th, 2022    |\n+" + "−".repeat(36) + "+"
 
     const header: Header = {
@@ -126,48 +115,25 @@ import {
 
         const regionRank = titles.map((elem, index, array) => {
             
-            // let printRank: string = ` Rank ${elem[0].rank} `
-            // let printRankFixed: string = (printRank.length >= 11)
-            //         ? printRank
-            //         : printRank + " ".repeat(11 - printRank.length);
-
-            let printTitleName = printTextBlock(elem[0].name, 42)
-
-            // let printPlatformFixed: string = (elem[0].platform.length >= 30)
-            //     ? elem[0].platform
-            //     : " " + elem[0].platform + " ".repeat(29 - elem[0].platform.length)
-
-
-            // let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
-            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+"// + "+"+"−".repeat(42)+"+"
+            let printTitleName = liner(printTextBlock(elem[0].name, 42),"−","both",true,42);
 
             let yearValues: string[] = elem.filter((value, index) => value.value !== 0).map((value, valueIndex, valueArray) => {
 
-               let printValue: string = `¥${value.value.toLocaleString("en")}M` 
-               let printValueFixed: string = (printValue.length >= 15)
-                   ? printValue
-                   : " ".repeat(15 - printValue.length) + printValue;
-
-               let printPeriodFixed: string = (value.fiscalYear === undefined) 
-                       ? "|" + value.period + " ".repeat(6) + "|"
-                       : "| " + value.fiscalYear + " Cumulative      |"
-
-               return  printPeriodFixed + printValueFixed + "|"
+               return border([
+                    spacer(value.fiscalYear + " Cumulative",24,"left"),
+                    spacer(`¥${value.value.toLocaleString("en")}M`,15,"right") 
+               ],true);
             }).filter((secondValue, index) => index !== elem.length-1) // will not work using secondValue;
-        
 
-        let printSum: string = `¥${elem[elem.length-1].value.toLocaleString("en")}M` 
-        
-        let printSumFixed: string = (printSum.length >= 15)
-            ? printSum
-            : " ".repeat(15 - printSum.length) + printSum;
+        let printSum: string = border([
+            spacer("Sum",24,"left"),
+            spacer(`¥${elem[elem.length-1].value.toLocaleString("en")}M`,15,"right"),
+        ],true);
 
-
-        let printAverage: string = `¥${Number((elem[elem.length-1].value / yearValues.length).toFixed(0)).toLocaleString("en")}M`; 
-
-        let printAverageFixed: string = (printAverage.length >= 15)
-            ? printAverage
-            : " ".repeat(15 - printAverage.length) + printAverage;
+        let printAverage: string = border([
+            spacer("Average",24,"left"),
+            spacer(`¥${Number((elem[elem.length-1].value / yearValues.length).toFixed(0)).toLocaleString("en")}M`,15,"right")
+        ],true);
 
         let valuesMedian = elem.filter((value, index) => value.value !== 0 && index !== elem.length-1);
 
@@ -188,11 +154,10 @@ import {
             return sortList
         };
 
-        let printCount: string = `${sortValuesMedian.length} `;
-
-        let printCountFixed: string = (printCount.length >= 15)
-            ? printCount
-            : " ".repeat(15 - printCount.length) + printCount;
+        let printCount: string = border([
+            spacer("Count",24,"left"),
+            spacer(`${sortValuesMedian.length}`,15,"right"),
+        ],true); 
 
         let printMedian: string = ((sortValuesMedian.length % 2) !== 0) // odd number
             // median formula source: https://en.wikipedia.org/wiki/Median
@@ -201,44 +166,29 @@ import {
             // even number median(x) = (x(n/2) + x((n/2) + 1)) /2 => index version median(x) = (x((n/2)-1) + x((n/2))) /2
             : `¥${Number(((sortValuesMedian[(sortValuesMedian.length/2) -1].value + sortValuesMedian[(sortValuesMedian.length/2)].value)/2).toFixed(0)).toLocaleString("en")}M`;
 
-        let printMedianFixed: string = (printMedian.length >= 15)
-            ? printMedian
-            : " ".repeat(15 - printMedian.length) + printMedian;
+        let printMedianFixed:string = border([
+            spacer("Median",24,"left"),
+            spacer(printMedian,15,"right"),
+        ],true);
 
-        let printMin: string = `¥${sortValuesMedian[0].value.toLocaleString("en")}M`;
+        let printMinimum: string = border([
+            spacer("Minimum",24,"left"),
+            spacer(`¥${sortValuesMedian[0].value.toLocaleString("en")}M`,15,"right")
+        ],true);
 
-        let printMinFixed: string = (printMin.length >= 15)
-            ? printMin
-            : " ".repeat(15 - printMin.length) + printMin;
-
-        let printMax: string = `¥${sortValuesMedian[sortValuesMedian.length-1].value.toLocaleString("en")}M` 
-
-        let printMaxFixed: string = (printMax.length >= 15)
-            ? printMax
-            : " ".repeat(15 - printMax.length) + printMax;
-        
-        let printLine: string = "+" + "−".repeat(42) + "+";
-
-        let printCountRow = "| Count                    |" + printCountFixed + "|";
-
-        let printSumRow = "| Sum                      |" + printSumFixed + "|";
-
-        let printAverageRow = "| Average                  |" + printAverageFixed + "|";
-
-        let printMedianRow: string = "| Median                   |" + printMedianFixed + "|"
-
-        let printMinimumRow: string = "| Minimum                  |" + printMinFixed + "|"
-
-        let printMaximumRow: string = "| Maximum                  |" + printMaxFixed + "|"
-
-        let printStats = printLine + "\n" + printCountRow + "\n" +  printSumRow + "\n" + printAverageRow + "\n" + printMedianRow + "\n" + printMinimumRow + "\n" + printMaximumRow + "\n" + printLine;
+        let printMaximum: string = border([
+            spacer("Maximum",24,"left"),
+            spacer(`¥${sortValuesMedian[sortValuesMedian.length-1].value.toLocaleString("en")}M`,15,"right")
+        ]);
+         
+        let printStats = liner(printCount +  printSum + printAverage + printMedianFixed + printMinimum + printMaximum,"−","both",true,42);
 
             return [
-                printTitleNameFixed,
+                printTitleName,
                 ...yearValues,
                 printStats,
             ].reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
             });
 
         }).filter(value => value !== "N/A").reduce((prev, next) => {
@@ -264,11 +214,11 @@ import {
     })
 
 const printOneWW = 
-`+--------------------+
+`+−−−−−−−−−−−−−−−−−−−−+
 | Nintendo Co., Ltd. |
-+------------------------------------+
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 | Consolidated Sales Information     |
-+------------------------------------+`;
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
 
 // const divideSortedGlobalCollection = reducedArrays.map(elem => elem.map(section => {
 //     return {
