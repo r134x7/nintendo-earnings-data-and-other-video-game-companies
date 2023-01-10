@@ -2,7 +2,6 @@ import {
     Titles,
     Header,
     quarterlyCalculation,
-    printHead,
     printBody,
 } from "../../utils/top_selling_titles_logic";
 
@@ -18,6 +17,7 @@ import topSellingTitles2015 from "./Top_Selling_Titles/top_selling_titles_fy3_20
 import topSellingTitles2014 from "./Top_Selling_Titles/top_selling_titles_fy3_2014.json";
 import topSellingTitles2013 from "./Top_Selling_Titles/top_selling_titles_fy3_2013.json";
 import topSellingTitles2012 from "./Top_Selling_Titles/top_selling_titles_fy3_2012.json";
+import { headerPrint } from "../../utils/table_design_logic";
 
 export type collectionJSON = {
     currentQuarter: number,
@@ -61,7 +61,7 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
         {
             title: obj.name,
             platform: obj.platform,
-            period: "1st Quarter        ",
+            period: "1st Quarter",
             value: (obj.Q1CmlValue === 0 && searchPrevFY[0] !== undefined)
                                     ? searchPrevFY[0].Q4CmlValue
                                     : obj.Q1CmlValue,
@@ -70,7 +70,7 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
         {
             title: obj.name,
             platform: obj.platform,
-            period: "2nd Quarter        ",
+            period: "2nd Quarter",
             value: (obj.Q2CmlValue === 0 && searchPrevFY[0] !== undefined)
                                     ? searchPrevFY[0].Q4CmlValue
                                     : obj.Q2CmlValue,
@@ -79,7 +79,7 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
         {
             title: obj.name,
             platform: obj.platform,
-            period: "3rd Quarter        ",
+            period: "3rd Quarter",
             value: (obj.Q3CmlValue === 0 && searchPrevFY[0] !== undefined)
                                     ? searchPrevFY[0].Q4CmlValue
                                     : obj.Q3CmlValue,
@@ -88,7 +88,7 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
         {
             title: obj.name,
             platform: obj.platform,
-            period: "4th Quarter        ",
+            period: "4th Quarter",
             value: obj.Q4CmlValue,
             miscellaneous: obj.miscellaneous,
         },
@@ -113,11 +113,11 @@ export const topSellingTitlesList: string[] = collection.map((elem, index, array
     let currentQuarter: number = elem.currentQuarter;
 
     let header: Header = {
-    mainHeader: "| Top Selling Titles             |",
+    mainHeader: "Top Selling Titles",
     platformHeader: "||",
-    titles: "| Title                          |",
-    platform: "| Platform                       |",
-    units: "| Units                          |",
+    titles: "Title",
+    platform: "Platform",
+    units: "Units",
     fiscalYear: elem.fiscalYear,
     };
 
@@ -136,7 +136,7 @@ export const topSellingTitlesList: string[] = collection.map((elem, index, array
 
         let headerValuesFixed = {
             ...headerValues,
-            platformHeader: `| ${titleValues[0].platform}${" ".repeat(31-titleValues[0].platform.length)}|`
+            platformHeader: titleValues[0].platform
         }
 
         let titlesList: Titles[][] = titleValues.map(value => titlesMake(value, prevFYTitlesLocal));
@@ -157,11 +157,16 @@ export const topSellingTitlesList: string[] = collection.map((elem, index, array
                 return x // x which is the returned array is now returned to the array of arrays
             });
 
-
         let differenceTitles: Titles[][] = sortedCollection.map(elem => quarterlyCalculation(elem));
 
-
-        let printOne = printHead(headerValuesFixed)
+        let printOne = headerPrint([
+            headerValuesFixed.mainHeader,
+            headerValuesFixed.platformHeader,
+        ],32) + "\n" + headerPrint([
+            headerValuesFixed.titles,
+            headerValuesFixed.platform,
+            headerValuesFixed.units,
+        ],20);
 
         let inputArrays = Array.from({length: differenceTitles.length}, (v, i) => {
 

@@ -35,85 +35,38 @@ export function quarterlyCalculation(quarters: Titles[]) {
 
 const printTitles = (titleDifference: Titles[], currentQuarter: number) => {
 
-    let printRank: string = ` Rank ${titleDifference[0].rank} `
-    let printRankFixed: string = (printRank.length >= 10)
-            ? printRank
-            : " ".repeat(10 - printRank.length) + printRank;
+    let printPlatformAndRank: string = liner(border([
+        spacer(titleDifference[0].platform,31,"left"),
+        spacer(`Rank ${titleDifference[0].rank}`,9,"left")
+    ]),"−","bottom",true);
 
-    let printPlatformFixed: string = (titleDifference[0].platform.length >= 32)
-            ? titleDifference[0].platform
-            : " " + titleDifference[0].platform + " ".repeat(31 - titleDifference[0].platform.length)
+    let printTitleName = liner(printTextBlock(titleDifference[0].title, 43),"−","both",true,43);
 
-    let printTitleName = printTextBlock(titleDifference[0].title, 43)
-
-    let printTitleNameFixed: string = printTitleName + "\n+" +"−".repeat(43)+"+" + "\n|" + printPlatformFixed + "|" + printRankFixed + "|\n+"+"−".repeat(43)+"+"
-    
+    let printTitleNameFixed: string = printTitleName + printPlatformAndRank 
         
     let titleValues = titleDifference.filter((elem, index) => {
         return index < currentQuarter && elem.value !== 0
-    }).map((elem, index) => {
-
-        // let printRank: string = ` Rank ${elem.rank} `
-        // let printRankFixed: string = (printRank.length >= 10)
-        //         ? printRank
-        //         : " ".repeat(10 - printRank.length) + printRank;
-
-        // let printPlatformFixed: string = (elem.platform.length >= 32)
-        //         ? elem.platform
-        //         : " " + elem.platform + " ".repeat(31 - elem.platform.length)
-
-        // let printTitleName: string = (elem.title.length > 32)
-        // ? elem.title.split(" ").reduce((prev, next, index, array) => {
-
-        //     let nextCheck = prev + next + " ";
-            
-        //     if (nextCheck.length > 31 && prev.length <= 31) {
-        //         return prev + " ".repeat(32 - prev.length) + `|          |\n| ` + next
-        //     } else if (index === array.length-1) {
-        //         return prev + next + " ".repeat(78 - prev.length)
-        //     } else {
-        //         return prev + " " + next
-        //     }
-        // })
-        // : (elem.title.length < 32)
-        // ? elem.title + " ".repeat(32 - elem.title.length) 
-        // : elem.title
-        // let printTitleName = printTextBlock(elem.title)(43)
-
-        // let printTitleNameFixed: string = printTitleName + "\n+" +"−".repeat(43)+"+" + "\n|" + printPlatformFixed + "|" + printRankFixed + "|\n+"+"−".repeat(43)+"+"
-
-        let printValue: string = `${elem.value}M` 
-        // let printValue: string = (elem.value !== 0) 
-        //     ? `${elem.value}M`
-        //     : ` N/A `
-        let printValueFixed: string = (printValue.length >= 10)
-            ? printValue
-            : " ".repeat(10 - printValue.length) + printValue;
-
-        return "|" + elem.period + "|" + printValueFixed + "|"
-        // return (index === 0) 
-        //         ? printTitleNameFixed + "\n|" + elem.period + "|" + printValueFixed + "|" 
-        //         : "|" + elem.period + "|" + printValueFixed + "|"
+    }).map((elem, index, array) => {
+        return border([
+            spacer(elem.period,20,"left"),
+            spacer(`${elem.value}M`,9,"right")
+        ],(index === array.length-1) ? undefined : true) 
     })
 
     let valueCheck = (titleValues.length === 0)
-            ? [ printTitleNameFixed ]
-            : [ printTitleNameFixed, ...titleValues]
+            ? [printTitleNameFixed]
+            : [printTitleNameFixed, ...titleValues]
 
     return valueCheck.reduce((prev, next, index, array) => {
-        return prev + "\n" + next
+        return prev + next
     })
 }
 
 const printTitleLTD = (titleLTD: Titles[], currentQuarter: number) => {
-
-    let printValue: string = `${titleLTD[currentQuarter-1].value}M`
-    let printValueFixed: string = (printValue.length === 10)
-            ? printValue
-            : " ".repeat(10 - printValue.length) + printValue;
-
-        return "| Life-To-Date        |" + printValueFixed + "|"
-
+    return border([
+        spacer("Life-To-Date",20,"left"),
+        spacer(`${titleLTD[currentQuarter-1].value}M`,9,"right")
+    ]) 
 }
 
 const printTitleFYCml = (titleDifference: Titles[], currentFY: Header, currentQuarter: number) => {
@@ -124,43 +77,28 @@ const printTitleFYCml = (titleDifference: Titles[], currentFY: Header, currentQu
 
     let reducedFixed = Number(reduced.toFixed(2))
 
-    let reducedValue: string = `${reducedFixed}M`
-    let reducedValueFixed: string = (reducedValue.length >= 10)
-        ? reducedValue
-        : " ".repeat(10 - reducedValue.length) + reducedValue; 
-
-    return "| " + currentFY.fiscalYear + " Cumulative |" + reducedValueFixed + "|"
+    return border([
+        spacer(currentFY.fiscalYear + " Cumulative",20,"left"),
+        spacer(`${reducedFixed}M`,9,"right"),
+    ],true) 
 }
 
-const miscellaneousLine = (titleDifference: Titles[]) => {
+const miscellaneous = (titleDifference: Titles[]) => {
     
-    let miscellaneousCheck: string | undefined = titleDifference[0].miscellaneous;
-
-    let lastLine: string = "+" + "−".repeat(32) + "+"; 
+    let miscellaneousCheck: string | undefined = (titleDifference[0].miscellaneous === undefined)   
+        ? undefined
+        : liner(printTextBlock(titleDifference[0].miscellaneous,32),"−","bottom",true,32);
 
     return (miscellaneousCheck === undefined)
-            ? lastLine 
-            : lastLine + "\n" + miscellaneousCheck + "\n" + lastLine;
+            ? undefined
+            : miscellaneousCheck; 
 }
 
-export const printHead = (header: Header) =>
-`+${"−".repeat(32)}+
-${header.mainHeader}
-+${"−".repeat(32)}+
-${header.platformHeader}
-+${"−".repeat(32)}+
-+${"−".repeat(32)}+
-${header.titles}
-+${"−".repeat(32)}+
-${header.platform}
-+${"−".repeat(32)}+
-${header.units}
-+${"−".repeat(32)}+`;
+export const printBody = (quarter: Titles[], FYCml: Titles[], LTD: Titles[], currentFY: Header, currentQuarter: number) => {
 
-export const printBody = (quarter: Titles[], FYCml: Titles[], LTD: Titles[], currentFY: Header, currentQuarter: number) => 
-`+${"−".repeat(43)}+
-${printTitles(quarter, currentQuarter)}
-+${"=".repeat(32)}+
-${printTitleFYCml(FYCml, currentFY, currentQuarter)}
-${printTitleLTD(LTD, currentQuarter)}
-${miscellaneousLine(quarter)}`;
+let body = printTitles(quarter, currentQuarter) + "\n" + liner(printTitleFYCml(FYCml, currentFY, currentQuarter) + printTitleLTD(LTD, currentQuarter),"=","both",undefined,32);
+
+return (miscellaneous(quarter) === undefined)
+    ? body
+    : body + "\n" + miscellaneous(quarter);
+};

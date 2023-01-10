@@ -110,7 +110,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
                         title: elem.title,
                         releaseDate: elem.releaseDate,
                         platforms: elem.platforms,
-                        period: "1st Quarter ",
+                        period: "1st Quarter",
                         value: elem.Q1CmlValue,
                         miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
                     },
@@ -118,7 +118,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
                         title: elem.title,
                         releaseDate: elem.releaseDate,
                         platforms: elem.platforms,
-                        period: "2nd Quarter ",
+                        period: "2nd Quarter",
                         value: elem.Q2CmlValue,
                         miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
                     },
@@ -126,7 +126,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
                         title: elem.title,
                         releaseDate: elem.releaseDate,
                         platforms: elem.platforms,
-                        period: "3rd Quarter ",
+                        period: "3rd Quarter",
                         value: elem.Q3CmlValue,
                         miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
                     },
@@ -134,7 +134,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
                         title: elem.title,
                         releaseDate: elem.releaseDate,
                         platforms: elem.platforms,
-                        period: "4th Quarter ",
+                        period: "4th Quarter",
                         value: elem.Q4CmlValue,
                         miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
                     },
@@ -294,7 +294,7 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
             return labelTitles(elem)
         }).map((elem) => {
             return elem.filter((secondElem) => {
-                return secondElem.label === " Recurring "
+                return secondElem.label === "Recurring"
             })
         }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
         ).map((elem) => {
@@ -307,7 +307,7 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
             return labelTitles(elem)
         }).map((elem) => {
             return elem.filter((secondElem) => {
-                return secondElem.label === " Sporadic " 
+                return secondElem.label === "Sporadic" 
             })
         }).filter((elem) => elem.length !== 0 // to filter out zero length arrays
         ).map((elem) => {
@@ -366,7 +366,7 @@ const specialList = (): string => {
         const setTitles: Titles[] = makeValues.map((elem, index) => {
 
             return (elem.map(value => value.filter((v, i, array) => {
-                return v.releaseDate === title[0].releaseDate && v.title === title[0].title && v.period === " 4th Quarter  " && v.value !== array[4].value // checks that Q4 value isn't the same as the last FY value
+                return v.releaseDate === title[0].releaseDate && v.title === title[0].title && v.period === "4th Quarter" && v.value !== array[4].value // checks that Q4 value isn't the same as the last FY value
             }))
             ).flat()
         }).flat();

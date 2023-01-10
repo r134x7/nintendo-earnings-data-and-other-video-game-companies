@@ -4,10 +4,10 @@ export type Titles = {
     title: string,
     releaseDate: string,
     platforms: string,
-    period: "1st Quarter  " | " 2nd Quarter  " | " 3rd Quarter  " | " 4th Quarter  " | " Last FY Total " | " Total at Two FYs prior",
+    period: "1st Quarter" | "2nd Quarter" | "3rd Quarter" | "4th Quarter" | "Last FY Total" | "Total at Two FYs prior",
     value: number,
     rank?: number,
-    label?: "New!" | " Recurring " | " Sporadic",
+    label?: "New!" | "Recurring" | "Sporadic",
     miscellaneous?: string,
     fiscalYear?: string,
 }
@@ -41,7 +41,7 @@ export function yearlyCalculation(years: Titles[]) {
 export function quarterlyCalculation(quarters: Titles[]) {
        
    const calc: Titles[] = quarters.map((elem, index, array) => {
-       return (elem.period === "1st Quarter  ")
+       return (elem.period === "1st Quarter")
                ? {
                 ...elem, 
                 value: Number((elem.value - array[4].value).toFixed(2))
@@ -64,10 +64,10 @@ export function labelTitles(titlesSorted: Titles[]) {
         return (array[4].value === 0 && array[5].value === 0) 
                 ? {...elem, label: "New!"}
                 : (array[3].value !== array[4].value && array[4].value !== 0 && array[4].value !== array[5].value)
-                ? {...elem, label: " Recurring "}
+                ? {...elem, label: "Recurring"}
                 : (array[3].value === array[4].value)
                 ? elem // titles that haven't made sales this FY
-                : {...elem, label: " Sporadic "}
+                : {...elem, label: "Sporadic"}
     })
     
     return calc
