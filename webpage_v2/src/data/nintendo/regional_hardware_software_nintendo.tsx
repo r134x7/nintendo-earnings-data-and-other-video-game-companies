@@ -1,7 +1,6 @@
 import {
     Header,
     Section,
-    printHead,
     printSection,
     quarterlyCalculation,
     yearOnYearCalculation,
@@ -27,6 +26,7 @@ import regionalHardwareSoftware2007 from "./Regional_Hardware_Software/regional_
 import regionalHardwareSoftware2006 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2006.json";
 import regionalHardwareSoftware2005 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2005.json";
 import regionalHardwareSoftware2004 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2004.json";
+import { headerPrint } from "../../utils/table_design_logic";
 
 export type jsonData = {
     currentQuarter: number,
@@ -185,13 +185,13 @@ export const regionalHardwareSoftwareList: string[] = collection.map((elem, inde
     let currentQuarter: number = elem.currentQuarter;
 
     let header: Header = {
-        switchHeader: "| Nintendo Co., Ltd. Regional Data |",
+        switchHeader: "Nintendo Co., Ltd. Regional Data",
         fiscalYear: elem.fiscalYear,
-        fiscalYearCml: " " + elem.fiscalYear + " Cumulative",
+        fiscalYearCml: elem.fiscalYear + " Cumulative",
         globalPercentage: "| Global%|",
         units: "| Units  |",
         yearOnYear: "| YoY%   |",
-        ltd: " Life-To-Date",
+        ltd: "Life-To-Date",
     };
 
     let regionalUnitsThisFYList: Section[][] = elem.regions.filter(value => !Object.hasOwn(value, "dataShift")).map(value => platformUnitsMake(value));
@@ -241,7 +241,9 @@ export const regionalHardwareSoftwareList: string[] = collection.map((elem, inde
         });
     });
 
-    const printOne: string = printHead(header)
+    const printOne: string = headerPrint([
+        header.switchHeader + " | " + header.fiscalYear,
+    ],44)
 
     const printRegionalUnitSales: string[] = Array.from({length: regionalUnitsThisFYList.length}, (v, i) => {
 
