@@ -413,16 +413,16 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
             : value
     }) as Footer[];
 
-    let qtrValues: KPDIndicators[][] = elem.kpi.map(elem => quarterValuesMake(elem))
+    let qtrValuesThisFY: KPDIndicators[][] = elem.kpi.map(elem => quarterValuesMake(elem))
 
-    let qtrValuesPlus: KPDIndicators[][] = qtrValues.concat(softwareProportionMake(qtrValues, cmlName), (physicalSoftwareProportionMake(qtrValues, cmlName)));
+    let qtrValuesThisFYPlus: KPDIndicators[][] = qtrValuesThisFY.concat(softwareProportionMake(qtrValuesThisFY, cmlName), (physicalSoftwareProportionMake(qtrValuesThisFY, cmlName)));
 
     let qtrValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
         ? elem.kpi.map(value => quarterValuesMake(undefined)) 
         : (array[index+1].kpi.length !== elem.kpi.length)
         ? elem.kpi.map((value, indexValue) => {
             
-            let nameSearchThisFY = value.name
+            let nameSearchThisFY: string = value.name
             let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
             
             return (nameSearchThisFY === nameSearchLastFY)
@@ -432,12 +432,12 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
             })
         : array[index+1].kpi.map(value => quarterValuesMake(value))
 
-    // I should have noted why this is not used...
-    let qtrValuesLastFYPlus: KPDIndicators[][] = qtrValuesLastFY.concat(softwareProportionMake(qtrValuesLastFY, cmlName), (physicalSoftwareProportionMake(qtrValuesLastFY, cmlName)));
+    // assuming this is not used because it's the percentages...
+    // let qtrValuesLastFYPlus: KPDIndicators[][] = qtrValuesLastFY.concat(softwareProportionMake(qtrValuesLastFY, cmlName), (physicalSoftwareProportionMake(qtrValuesLastFY, cmlName)));
 
-    let cmlValues: KPDIndicators[][] = elem.kpi.map(elem => cmlValuesMake(elem, cmlName));
+    let cmlValuesThisFY: KPDIndicators[][] = elem.kpi.map(elem => cmlValuesMake(elem, cmlName));
     
-    let cmlValuesPlus: KPDIndicators[][] = cmlValues.concat(softwareProportionMake(cmlValues, cmlName), (physicalSoftwareProportionMake(cmlValues, cmlName)));
+    let cmlValuesThisFYPlus: KPDIndicators[][] = cmlValuesThisFY.concat(softwareProportionMake(cmlValuesThisFY, cmlName), (physicalSoftwareProportionMake(cmlValuesThisFY, cmlName)));
 
     let cmlValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
         ? elem.kpi.map(value => cmlValuesMake(undefined, cmlName)) 
@@ -454,7 +454,8 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
             })
         : array[index+1].kpi.map(value => cmlValuesMake(value, cmlName))
 
-    let cmlValuesLastFYPlus: KPDIndicators[][] = cmlValuesLastFY.concat(softwareProportionMake(cmlValuesLastFY, cmlName), (physicalSoftwareProportionMake(cmlValuesLastFY, cmlName)));
+    // assuming this is not used because it's the percentages...
+    // let cmlValuesLastFYPlus: KPDIndicators[][] = cmlValuesLastFY.concat(softwareProportionMake(cmlValuesLastFY, cmlName), (physicalSoftwareProportionMake(cmlValuesLastFY, cmlName)));
 
     let qtrSalesValuesThisFY: KPDIndicators[][] = elem.consolidatedSales.map(elem => consolidatedSalesQuartersMake(elem));
 
@@ -463,7 +464,7 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
         : (array[index+1].consolidatedSales.length !== elem.consolidatedSales.length)
         ? elem.consolidatedSales.map((value, indexValue) => {
             
-            let nameSearchThisFY = value.name;
+            let nameSearchThisFY: string = value.name;
             let nameSearchLastFY = array[index+1].consolidatedSales[indexValue]? array[index+1].consolidatedSales[indexValue].name : undefined;
 
             return (nameSearchThisFY === nameSearchLastFY)
@@ -493,15 +494,13 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
     // thisFY values and lastFY values are retrieved.
     // will need to make new maker that multiplies the values
 
-    let qtrKeySalesValuesThisFY: KPDIndicators[][] = keySalesMake(qtrValues, qtrSalesValuesThisFY, cmlName);
-    let cmlKeySalesValuesThisFY: KPDIndicators[][] = keySalesMake(cmlValues, cmlSalesValuesThisFY, cmlName);
+    let qtrKeySalesValuesThisFY: KPDIndicators[][] = keySalesMake(qtrValuesThisFY, qtrSalesValuesThisFY, cmlName);
+    let cmlKeySalesValuesThisFY: KPDIndicators[][] = keySalesMake(cmlValuesThisFY, cmlSalesValuesThisFY, cmlName);
 
     let qtrKeySalesValuesLastFY: KPDIndicators[][] = keySalesMake(qtrValuesLastFY, qtrSalesValuesLastFY, cmlName);
-
     let cmlKeySalesValuesLastFY: KPDIndicators[][] = keySalesMake(cmlValuesLastFY, cmlSalesValuesLastFY, cmlName);
 
     let qtrYearOnYearValues: KPDIndicators[][] = qtrKeySalesValuesThisFY.map((elem, index, array) => {
-
         return yearOnYearCalculation(elem, qtrKeySalesValuesLastFY[index])
     });
 
@@ -514,8 +513,8 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
         return {
             header: headers[i],
             footer: footers[i],
-            quarterValuesProportion: qtrValuesPlus[i],
-            cumulativeValuesProportion: cmlValuesPlus[i],
+            quarterValuesProportion: qtrValuesThisFYPlus[i],
+            cumulativeValuesProportion: cmlValuesThisFYPlus[i],
             quarterValuesSales: qtrKeySalesValuesThisFY[i],
             cumulativeValuesSales: cmlKeySalesValuesThisFY[i],
             quarterYoY: qtrYearOnYearValues[i],
@@ -547,11 +546,13 @@ export const keySalesIndicatorsGraphList = collection.map((elem, index, array) =
 
     let qtrValuesThisFY: KPDIndicators[][] = elem.kpi.map(elem => quarterValuesMake(elem));
 
-    let qtrValuesPlus: KPDIndicators[][] = qtrValuesThisFY.concat(softwareProportionMake(qtrValuesThisFY, cmlName), (physicalSoftwareProportionMake(qtrValuesThisFY, cmlName)));
+    // assuming this is not used because it's the percentages...
+    // let qtrValuesThisFYPlus: KPDIndicators[][] = qtrValuesThisFY.concat(softwareProportionMake(qtrValuesThisFY, cmlName), (physicalSoftwareProportionMake(qtrValuesThisFY, cmlName)));
 
     let cmlValuesThisFY: KPDIndicators[][] = elem.kpi.map(elem => cmlValuesMake(elem, cmlName));
 
-    let cmlValuesPlus: KPDIndicators[][] = cmlValuesThisFY.concat(softwareProportionMake(cmlValuesThisFY, cmlName), (physicalSoftwareProportionMake(cmlValuesThisFY, cmlName)));
+    // assuming this is not used because it's the percentages...
+    // let cmlValuesThisFYPlus: KPDIndicators[][] = cmlValuesThisFY.concat(softwareProportionMake(cmlValuesThisFY, cmlName), (physicalSoftwareProportionMake(cmlValuesThisFY, cmlName)));
 
     let qtrValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
         ? elem.kpi.map(value => quarterValuesMake(undefined)) 
@@ -568,7 +569,8 @@ export const keySalesIndicatorsGraphList = collection.map((elem, index, array) =
             })
         : array[index+1].kpi.map(value => quarterValuesMake(value))
 
-    let qtrValuesLastFYPlus: KPDIndicators[][] = qtrValuesLastFY.concat(softwareProportionMake(qtrValuesLastFY, cmlName), (physicalSoftwareProportionMake(qtrValuesLastFY, cmlName)));
+    // assuming this is not used because it's the percentages...
+    // let qtrValuesLastFYPlus: KPDIndicators[][] = qtrValuesLastFY.concat(softwareProportionMake(qtrValuesLastFY, cmlName), (physicalSoftwareProportionMake(qtrValuesLastFY, cmlName)));
 
     let cmlValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
         ? elem.kpi.map(value => cmlValuesMake(undefined, cmlName)) 
@@ -585,7 +587,8 @@ export const keySalesIndicatorsGraphList = collection.map((elem, index, array) =
             })
         : array[index+1].kpi.map(value => cmlValuesMake(value, cmlName))
 
-    let cmlValuesLastFYPlus: KPDIndicators[][] = cmlValuesLastFY.concat(softwareProportionMake(cmlValuesLastFY, cmlName), (physicalSoftwareProportionMake(cmlValuesLastFY, cmlName)));
+    // assuming this is not used because it's the percentages...
+    // let cmlValuesLastFYPlus: KPDIndicators[][] = cmlValuesLastFY.concat(softwareProportionMake(cmlValuesLastFY, cmlName), (physicalSoftwareProportionMake(cmlValuesLastFY, cmlName)));
 
     let thisFY: string = elem.fiscalYear;
     let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();

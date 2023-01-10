@@ -69,6 +69,8 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
             
             let printSection: string = (elem.units === "NaN")
                                         ? "N/A"
+                                        : (elem.value > 0)
+                                        ? `+${elem.value}%`
                                         : `${elem.value}%`; 
 
             let printSectionFixed: string = spacer(printSection,9,"right") 
@@ -83,6 +85,8 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
 
             let printSectionCml: string = (elem.units === "NaN")
                                         ? "N/A"
+                                        : (elem.value > 0)
+                                        ? `+${elem.value}%`
                                         : `${elem.value}%`; 
     
             let printSectionCmlFixed: string = spacer(printSectionCml,9,"right")
