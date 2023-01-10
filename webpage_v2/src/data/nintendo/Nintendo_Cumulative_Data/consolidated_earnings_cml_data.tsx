@@ -91,7 +91,7 @@ const totalCollection: EarningsJSON[] = [
     consolidatedEarnings2023,
 ];
 
-const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+1, "left")]),"−", "bottom")
+const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+1, "left")]),"−", "bottom",true)
 
 let netSalesSet = totalCollection.map(elem => {
     return {
@@ -133,50 +133,40 @@ const sortedNetSales = sortList(netSalesSet);
 const sortedOperatingIncome = sortList(operatingIncomeSet);
 const sortedNetIncome = sortList(netIncomeSet);
 
-let header = [
-    liner(border([
+let header = liner(border([
     spacer("Nintendo Co., Ltd.", "Nintendo Co., Ltd.".length+1, "left")
-    ]),"−","top"),
+    ]),"−","top",true) +
     liner(border([
         spacer("Consolidated Operating Results", "Consolidated Operating Results".length+2, "left")
-    ]), "−", "both")
-].reduce((acc, next) => acc + "\n" + next)
+    ]), "−", "both",true)
 
 const printCumulativeValues = (list: {fiscalYear: string, value: number}[], sortedList: {fiscalYear: string, value: number}[], valueType: string): string[] => {
 
-    let header = "+" + "−".repeat(35) + "+\n| " + valueType + " ".repeat(34-valueType.length) + "|\n+" + "−".repeat(35) + "+"; 
+    let header = liner(border([
+        spacer(valueType,34,"left"),
+    ]),"−","both",true)
 
     let printList = list.map(elem => {
-
-        let valueString: string = `¥${elem.value.toLocaleString("en")}M`;
-
-        let valueFixed: string = (valueString.length >= 12)
-                              ? valueString 
-                              : " ".repeat(12 - valueString.length) + valueString;
-
-        return `| ${elem.fiscalYear} Cumulative | ${valueFixed}|`;
+        return border([
+            spacer(elem.fiscalYear + " Cumulative",20,"left"),
+            spacer(`¥${elem.value.toLocaleString("en")}M`,12,"right")
+        ],true) 
     });
 
-    let printLine = "+" + "−".repeat(35) + "+";
+    let printCount: string = border([
+        spacer("Count",17,"left"),
+        spacer(`${sortedList.length}`,15,"right"),
+    ],true);
 
-    let printCount: string = `${sortedList.length} `;
-
-    let printCountFixed: string = (printCount.length >= 15)
-            ? printCount
-            : " ".repeat(15 - printCount.length) + printCount;
-
-    let printSum: string = `¥${(sortedList.map(value => value.value).reduce((acc, next) => acc + next)).toLocaleString("en")}M` 
-        
-    let printSumFixed: string = (printSum.length >= 15)
-            ? printSum
-            : " ".repeat(15 - printSum.length) + printSum;
-
-
-    let printAverage: string = `¥${Number(((sortedList.map(value => value.value).reduce((acc, next) => acc + next)) / sortedList.length).toFixed(0)).toLocaleString("en")}M`; 
-
-    let printAverageFixed: string = (printAverage.length >= 15)
-            ? printAverage
-            : " ".repeat(15 - printAverage.length) + printAverage;
+    let printSum: string = border([
+        spacer("Sum",17,"left"),
+        spacer(`¥${(sortedList.map(value => value.value).reduce((acc, next) => acc + next)).toLocaleString("en")}M`,15,"right"),
+    ],true) 
+     
+    let printAverage: string = border([
+        spacer("Average",17,"left"),
+        spacer(`¥${Number(((sortedList.map(value => value.value).reduce((acc, next) => acc + next)) / sortedList.length).toFixed(0)).toLocaleString("en")}M`,15,"right"),
+    ],true) 
 
     let printMedian: string = ((sortedList.length % 2) !== 0) // odd number
             // median formula source: https://en.wikipedia.org/wiki/Median
@@ -185,45 +175,28 @@ const printCumulativeValues = (list: {fiscalYear: string, value: number}[], sort
             // even number median(x) = (x(n/2) + x((n/2) + 1)) /2 => index version median(x) = (x((n/2)-1) + x((n/2))) /2
             : `¥${Number(((sortedList[(sortedList.length/2) -1].value + sortedList[(sortedList.length/2)].value)/2).toFixed(0)).toLocaleString("en")}M`;
 
-    let printMedianFixed: string = (printMedian.length >= 15)
-            ? printMedian
-            : " ".repeat(15 - printMedian.length) + printMedian;
+    let printMedianFixed: string = border([
+        spacer("Median",17,"left"),
+        spacer(printMedian,15,"right")
+    ],true);
 
-    let printMin: string = `¥${sortedList[0].value.toLocaleString("en")}M`;
+    let printMinimum: string = border([
+        spacer("Minimum",17,"left"),
+        spacer(`¥${sortedList[0].value.toLocaleString("en")}M`,15,"right")
+    ],true);
 
-    let printMinFixed: string = (printMin.length >= 15)
-            ? printMin
-            : " ".repeat(15 - printMin.length) + printMin;
+    let printMaximum: string = border([
+        spacer("Maximum",17,"left"),
+        spacer(`¥${sortedList[sortedList.length-1].value.toLocaleString("en")}M`,15,"right"),
+    ]);
 
-    let printMax: string = `¥${sortedList[sortedList.length-1].value.toLocaleString("en")}M` 
-
-    let printMaxFixed: string = (printMax.length >= 15)
-            ? printMax
-            : " ".repeat(15 - printMax.length) + printMax;
-
-    let printCountRow = "| Count             |" + printCountFixed + "|";
-
-    let printSumRow = "| Sum               |" + printSumFixed + "|";
-
-    let printAverageRow = "| Average           |" + printAverageFixed + "|";
-
-    let printMedianRow: string = "| Median            |" + printMedianFixed + "|"
-
-    let printMinimumRow: string = "| Minimum           |" + printMinFixed + "|"
-
-    let printMaximumRow: string = "| Maximum           |" + printMaxFixed + "|"
-
+    let printStats = liner(
+        printCount + printSum + printAverage + printMedianFixed + printMinimum + printMaximum, "−", "both",true,35);
+     
     return [
         header, 
         ...printList, 
-        printLine,
-        printCountRow,
-        printSumRow,
-        printAverageRow,
-        printMedianRow,
-        printMinimumRow,
-        printMaximumRow,
-        printLine
+        printStats
     ] 
 };
 
@@ -243,4 +216,4 @@ export const cumulativeEarningsList = [
     ...printNetIncome,
     "###",
     dataSource,
-].reduce((prev, next) => prev + "\n" + next);
+].reduce((prev, next) => prev + next);
