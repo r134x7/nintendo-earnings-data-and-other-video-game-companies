@@ -30,15 +30,7 @@ import globalHardwareSoftware1998 from "./../Global_Hardware_Software_Mobile/glo
 import globalHardwareSoftware1997 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_1997.json";
 
 // avoid having empty lists [] in your collections from preparing for the next earnings
-import {
-    Section,
-    Header,
-    printHead,
-    printSections,
-    printSalesHardware,
-    quarterlyCalculation,
-    yearOnYearCalculation
-} from "../../../utils/hardware_software_units_logic";
+import { Section, Header } from "../../../utils/hardware_software_units_logic";
 
     const totalCollection = [
         globalHardwareSoftware1997,
@@ -113,14 +105,16 @@ import {
     // console.log(latestFYcollection);
     
 
-    const dateLabel = "| Data as of September 30th, 2022    |\n+" + "−".repeat(36) + "+"
+    const dateLabel = liner(border([
+        spacer("Data as of September 30th, 2022",35,"left"),
+    ]),"−","bottom")
 
     const header: Header = {
-        firstHeader: "| Global Hardware and Software  |",
+        firstHeader: "Global Hardware and Software",
         fiscalYear: "placeholder",
         nextFiscalYearShort: "place",
-        secondHeader: "| Sales Units and Forecasts     |",
-        switchHeader: "| Nintendo Co., Ltd. |",
+        secondHeader: "Sales Units and Forecasts",
+        switchHeader: "Nintendo Co., Ltd.",
     };
 
     function accumulate(title: Section[]): Section[] {
@@ -156,55 +150,31 @@ import {
 
         const regionRank = titles.map((elem, index, array) => {
             
-            // let printRank: string = ` Rank ${elem[0].rank} `
-            // let printRankFixed: string = (printRank.length >= 11)
-            //         ? printRank
-            //         : printRank + " ".repeat(11 - printRank.length);
-
-            let printTitleName = printTextBlock(elem[0].name, 42)
-
-            // let printPlatformFixed: string = (elem[0].platform.length >= 30)
-            //     ? elem[0].platform
-            //     : " " + elem[0].platform + " ".repeat(29 - elem[0].platform.length)
-
-
-            // let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+\n|" + printPlatformFixed  + "|" + printRankFixed + "|\n+"+"−".repeat(42)+"+"
-            let printTitleNameFixed: string = "+"+"−".repeat(42)+"+\n" + printTitleName + "\n+" + "−".repeat(42) + "+"// + "+"+"−".repeat(42)+"+"
+            let printTitleName = liner(printTextBlock(elem[0].name, 42),"−","both",true,42)
 
             let yearValues: string[] = elem.filter((value, index) => value.value !== 0).map((value, valueIndex, valueArray) => {
 
-               let printValue: string = `${value.value}M` 
-               let printValueFixed: string = (printValue.length >= 11)
-                   ? printValue
-                   : " ".repeat(11 - printValue.length) + printValue;
-
-               let printPeriodFixed: string = (value.fiscalYear === undefined) 
-                       ? "|" + value.period + " ".repeat(6) + "|"
-                       : "| " + value.fiscalYear + " Cumulative          |"
-
-               return  printPeriodFixed + printValueFixed + "|"
+               return border([
+                    spacer(value.fiscalYear + " Cumlative",30,"left"),
+                    spacer(`${value.value}M`,9,"right")
+               ],true);
             }).filter((secondValue, index) => index !== elem.length-1) // will not work using secondValue;
 
-        let printValue: string = `${elem[elem.length-1].value}M` 
-        
-        let printValueFixed: string = (printValue.length >= 11)
-            ? printValue
-            : " ".repeat(11 - printValue.length) + printValue;
-
-        let printLine: string = "+" + "−".repeat(42) + "+";
-
-        let printLTD = printLine + "\n| Global - Life-To-Date (Units)|" + printValueFixed + "|\n" + printLine;
-
+        let printLTD: string = liner(border([
+            spacer("Global - Life-To-Date (Units)",30,"left"),
+            spacer(`${elem[elem.length-1].value}M`,9,"right")
+        ]),"−","both",true) 
+         
             return [
-                printTitleNameFixed,
+                printTitleName,
                 ...yearValues,
                 printLTD,
             ].reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
             });
 
         }).filter(value => value !== "N/A").reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
         });
 
         return regionRank
@@ -215,29 +185,19 @@ import {
         return accumulate(elem)
     })
     
-    // const sortedWWLTDCollection: Section[][] = reducedArrays.map((elem, index, array) => {
-    //         return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
-    // }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
-    //     return (a[a.length-1].value > b[b.length-1].value)
-    //         ? 1
-    //         : (a[a.length-1].value < b[b.length-1].value)
-    //         ? -1
-    //         : 0 
-    // })
-
 const printOneWW = 
-`+--------------------+
+`+−−−−−−−−−−−−−−−−−−−−+
 | Nintendo Co., Ltd. |
-+------------------------------------+
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 | Global Hardware and Software Units |
-+------------------------------------+`;
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
 
 const printTwoWW = 
-`+--------------------+
+`+−−−−−−−−−−−−−−−−−−−−+
 | Nintendo Co., Ltd. |
-+------------------------------------+
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 | Sales Per Hardware Unit            |
-+------------------------------------+`;
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
 
 const divideSortedGlobalCollection = reducedArrays.map(elem => elem.map(section => {
     return {
@@ -282,50 +242,49 @@ ${dataSource}`;
             return ((elem[0].value + elem[1].value) / 100)
         });
 
-        let printTitleName = printTextBlock(salesArrays[0][0].name, 39);
+        let printTitleName = liner(printTextBlock(salesArrays[0][0].name, 39),"−","top",true,39);
 
-        let printTitleNameFixed: string = "+"+"−".repeat(39)+"+\n" + printTitleName + "\n+" + "−".repeat(51) + "+";
-
-        let printHeaders: string = "|              |             | Hardware | Sales Per |\n|              |       Sales |    Units |  Hardware |\n|              |  Cumulative |Cumulative| Unit Cml. |\n+" + "−".repeat(51) + "+"
+        let printHeaders: string = liner(
+            border([
+                spacer("",13,"left"),
+                spacer("",12,"left"),
+                spacer("Hardware",9,"right"),
+                spacer("Sales Per",10,"right")
+            ],true) +
+            border([
+                spacer("",13,"left"),
+                spacer("Sales",12,"right"),
+                spacer("Units",9,"right"),
+                spacer("Hardware",10,"right")
+            ],true) +
+            border([
+                spacer("",13,"left"),
+                spacer("Cumulative",12,"right"),
+                spacer("Cumulative",9,"right"),
+                spacer("Unit Cml.",10,"right")
+            ])
+        ,"−","both",true,51) 
 
         const salesPrint = salesArrays.map((elem, index, array) => {
 
-        
-            let printSectionLTD: string = `¥${(elem[0].value + elem[1].value).toLocaleString("en")}M`
-
-            let printSectionLTDFixed: string = (printSectionLTD.length >= 13)
-                ? printSectionLTD
-                : " ".repeat(13 - printSectionLTD.length) + printSectionLTD;
-            
             let calculateSalesPerHardware: number = Number(((elem[0].value + elem[1].value) / sectionHardwareTotalFixed[index]).toFixed(0))
 
-            let printSectionSalesPerHardware: string = `¥${calculateSalesPerHardware.toLocaleString("en")} `
-            
-            let printSectionSalesPerHardwareFixed: string = (printSectionSalesPerHardware.length >= 11)
-                ? printSectionSalesPerHardware
-                : " ".repeat(11 - printSectionSalesPerHardware.length) + printSectionSalesPerHardware;
-            
-            let printHardwareUnits: string = `${sectionHardwareTotalFixed[index]}M`
-
-            let printHardwareUnitsFixed: string = (printHardwareUnits.length >= 10)
-                    ? printHardwareUnits
-                    : " ".repeat(10 - printHardwareUnits.length) + printHardwareUnits 
-
-            let shortFY: string = ` ${elem[0].fiscalYear} Cml.`;
-
-
-            
-            return "|" + shortFY + "|" + printSectionLTDFixed + "|" +  printHardwareUnitsFixed + "|" +   printSectionSalesPerHardwareFixed + "|"
+            return border([
+                spacer(" " + elem[0].fiscalYear + " Cml.",13,"left"),
+                spacer(`¥${(elem[0].value + elem[1].value).toLocaleString("en")}M`,12,"right"),
+                spacer(`${sectionHardwareTotalFixed[index]}M`,9,"right"),
+                spacer(`¥${calculateSalesPerHardware.toLocaleString("en")}`,10,"right")
+            ],true)
         });
 
         let printLine: string = "+" + "−".repeat(51) + "+"
         
         return [
-            printTitleNameFixed,
+            printTitleName,
             printHeaders,
             ...salesPrint,
             printLine,
-        ].reduce((acc, next) => acc + "\n" + next)
+        ].reduce((acc, next) => acc + next)
     };
 
     const printFive = printSalesPerHardwareUnitCumulative(flatSalesCollectionMkII, flatCollectionMkII);
