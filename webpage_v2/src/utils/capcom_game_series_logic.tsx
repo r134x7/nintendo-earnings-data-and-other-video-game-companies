@@ -22,55 +22,27 @@ export type Header = {
     summaryHeader: string,
 };
 
-const printRank = (seriesIP: Series) => {
-
-    let ranking: string = ` Rank ${seriesIP.rank} `;
-
-    return (blockLength: number) => {
-
-        return (ranking.length >= blockLength)
-            ? ranking
-            : ranking + " ".repeat(blockLength - ranking.length); 
-    }; 
-};
-
-const printNumberOfTitles = (seriesIP: Series) => {
-
-    let titleCount: string = " Number of Titles: " + seriesIP.numberOfTitles.toString();
-
-    return (blockLength: number) => {
-
-        return (titleCount.length >= blockLength)
-            ? titleCount
-            : titleCount + " ".repeat(blockLength - titleCount.length);
-    }
+const printNumberOfTitles = (seriesIP: Series, blockLength: number, ) => {
+    return border([
+        spacer("Number of Titles: " + seriesIP.numberOfTitles.toString(),blockLength-1,"left"),
+    ])
 }
 
-const printReleaseDate = (seriesIP: Series) => {
-
-    let releaseDate: string = seriesIP.releaseDate;
-
-    return (blockLength: number) => {
-
-        return (releaseDate.length >= blockLength)
-            ? releaseDate + "|" + printRank(seriesIP)(11)
-            : releaseDate + " ".repeat(blockLength - releaseDate.length - printRank(seriesIP)(11).length - 1) + "|" + printRank(seriesIP)(11); // not the best solution since I am having to hardcode printRank length...
-    };
+const printReleaseDate = (seriesIP: Series, blockLength: number) => {
+    return border([
+        spacer(seriesIP.releaseDate,blockLength-14,"left"),
+        spacer((`Rank ${seriesIP.rank}`), 11,"left"),
+    ])
 };
 
-const printCmlValue = (seriesIP: Series) => {
-
-        let CmlValue: string = `${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M`
-
-        return (blockLength: number) => 
-               (header: Header) => {
-                    return (CmlValue.length >= blockLength)
-                        ? header.fiscalYear + CmlValue + "|"
-                        : header.fiscalYear + " ".repeat(blockLength - CmlValue.length) + CmlValue + "|";
-        };
+const printCmlValue = (seriesIP: Series, blockLength: number, header: Header) => {
+        return border([
+            spacer(header.fiscalYear + " Cumulative",20, "left"),
+            spacer(`${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M`, blockLength, "right"),
+        ],true)
 };
 
-const printCmlYoY = (seriesIP: Series) => {
+const printCmlYoY = (seriesIP: Series, blockLength: number, header: Header) => {
 
         let FYCmlYoY = (seriesIP.valueLastFY === 0)
                 ? "New!"
@@ -82,49 +54,28 @@ const printCmlYoY = (seriesIP: Series) => {
                 : `${((
                     ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}%` 
 
-        return (blockLength: number) =>
-               (header: Header) => {
-
-                return (FYCmlYoY.length >= blockLength) 
-                    ? header.fiscalYearYoY + FYCmlYoY + "|"
-                    : header.fiscalYearYoY + " ".repeat(blockLength - FYCmlYoY.length) + FYCmlYoY + "|"
-            };
+        return border([
+            spacer(header.fiscalYear + " Cml. YoY%",20, "left"),
+            spacer(FYCmlYoY, blockLength, "right"),
+        ],true)
     };
 
-const printLTDValue = (seriesIP: Series) => {
-
-        let printLTDValue: string = `${seriesIP.value}M`
-       
-        return (blockLength: number) => 
-               (header: Header) => {
-
-            return (printLTDValue.length >= blockLength)
-            ? header.ltd + printLTDValue + "|"
-            : header.ltd + " ".repeat(blockLength - printLTDValue.length) + printLTDValue + "|";
-        };
+const printLTDValue = (seriesIP: Series, blockLength: number, header: Header) => {
+        return liner(border([
+            spacer(header.ltd,20, "left"),
+            spacer(`${seriesIP.value}M`, blockLength, "right"),
+        ]),"−","bottom")
 };
 
-const printSeriesName = (seriesIP: Series) => {
+const printSeriesName = (seriesIP: Series, blockLength: number) => {
 
-    return (blockLength: number) => {
+    let seriesBlock = liner(printTextBlock(seriesIP.title, blockLength),"−","top",true, blockLength) +  liner(printReleaseDate(seriesIP, blockLength),"−","both",true,blockLength) + liner(printNumberOfTitles(seriesIP, blockLength),"=","bottom",true,blockLength) 
+
        return (!seriesIP.miscellaneous) 
-            ? "+"+"−".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title, blockLength) + "\n+" + "−".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|\n+" + "−".repeat(blockLength) + "+\n|" + printNumberOfTitles(seriesIP)(blockLength) + "|"
-            : "+"+"−".repeat(blockLength)+"+\n" + printTextBlock(seriesIP.title, blockLength) + "\n+" + "−".repeat(blockLength) + "+\n|" + printReleaseDate(seriesIP)(blockLength) + "|\n+" + "−".repeat(blockLength) + "+\n" + printTextBlock(seriesIP.miscellaneous, blockLength);
-    };
+            ? seriesBlock
+            : seriesBlock + printTextBlock(seriesIP.miscellaneous, blockLength);
 };
 
-export const printSeriesOutput = (seriesIP: Series) => {
-
-    return (header: Header) =>
-           (blockLength: number) =>
-           (valueLength: number) =>
-           (shortLineLength: number) => {
-
-                return printSeriesName(seriesIP)(blockLength) + "\n" + printDoubleLine(blockLength) + "\n" + printCmlValue(seriesIP)(valueLength)(header) + "\n" + printCmlYoY(seriesIP)(valueLength)(header) + "\n" + printLTDValue(seriesIP)(valueLength)(header) + "\n" + printLine(shortLineLength) 
-    };
+export const printSeriesOutput = (seriesIP: Series, header: Header, blockLength: number, valueLength: number) => {
+        return printSeriesName(seriesIP, blockLength) + printCmlValue(seriesIP, valueLength, header) + printCmlYoY(seriesIP, valueLength, header) + printLTDValue(seriesIP,valueLength,header) 
 };
-
-const printLine = (lineLength: number) => "+" + "−".repeat(lineLength) + "+"; 
-
-const printDoubleLine = (lineLength: number) => "+" + "=".repeat(lineLength) + "+"; 
-

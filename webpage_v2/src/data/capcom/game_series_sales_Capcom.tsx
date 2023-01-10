@@ -86,7 +86,7 @@ export const gameSeriesList: string[] = collection.map((elem, index, array) => {
         })
 
     let printedSeries = sortedList.map((elem) => {
-        return printSeriesOutput(elem)(header)(42)(11)(32);
+        return printSeriesOutput(elem, header, 42, 11);
     }).reduce((prev, next) => prev + "\n" + next)
 
     let printOne = headerPrint([
@@ -94,7 +94,7 @@ export const gameSeriesList: string[] = collection.map((elem, index, array) => {
         header.secondHeader,
         header.thirdHeader,
         header.fourthHeader,
-    ], 45)
+    ], 33)
 
     return printOne + "\n" + printedSeries
 })
