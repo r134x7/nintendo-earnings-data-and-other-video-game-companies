@@ -5,8 +5,8 @@ import {
     operatingMarginCalculation,
     quarterlyCalculation,
     printAll,
-    printHead,
 } from "../../utils/general_earnings_logic";
+import { headerPrint } from "../../utils/table_design_logic";
 
 import nintendoConsolidatedEarnings2023 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2023.json";
 import nintendoConsolidatedEarnings2022 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2022.json";
@@ -275,16 +275,19 @@ return collection.map((elem, index, array) => {
 
     let forecastData: Earnings[][] = elem.data.map(value => forecastMake(value, forecastNameThisFY, forecastNameNextFY));
 
-    const printOne = printHead(header)(headerLength);
+    const printOne = headerPrint([
+        header.companyName + " | " + header.fiscalYear,
+        header.title
+    ],headerLength);
 
-    const opMarginSet = printOpMargin(header, dataThisFY[0], dataThisFY[1], forecastData[0], forecastData[1], currentQuarter);
+    // const opMarginSet = printOpMargin(header, dataThisFY[0], dataThisFY[1], forecastData[0], forecastData[1], currentQuarter);
 
     const printEach = Array.from({length: dataThisFY.length + 1}, (v, i) => {
         return (i === 2) 
-                ? opMarginSet(8)(32)(13)
+                ? printOpMargin(header, dataThisFY[0], dataThisFY[1], forecastData[0], forecastData[1], currentQuarter,13)
                 :(i > 2)
-                ? printAll(header, dataThisFY[i-1], dataLastFY[i-1], forecastData[i-1], currentQuarter)(12)(10)(38)(13)
-                : printAll(header, dataThisFY[i], dataLastFY[i], forecastData[i], currentQuarter)(12)(10)(38)(13);
+                ? printAll(header, dataThisFY[i-1], dataLastFY[i-1], forecastData[i-1], currentQuarter, 13)
+                : printAll(header, dataThisFY[i], dataLastFY[i], forecastData[i], currentQuarter, 13);
     });
 
     return [printOne, ...printEach].reduce((acc, next) => acc + "\n" + next)
