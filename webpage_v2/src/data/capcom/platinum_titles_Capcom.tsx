@@ -4,7 +4,6 @@ import {
     labelTitles,
     printSummary,
     printSummaryHead,
-    printHead,
     printTitles,
     quarterlyCalculation,
     yearlyCalculation,
@@ -28,6 +27,7 @@ import platinumTitles2009 from "./Platinum_Titles/platinum_titles_fy3_2009.json"
 import platinumTitles2008 from "./Platinum_Titles/platinum_titles_fy3_2008.json";
 import platinumTitles2007 from "./Platinum_Titles/platinum_titles_fy3_2007.json";
 import platinumTitles2006 from "./Platinum_Titles/platinum_titles_fy3_2006.json";
+import { headerPrint } from "../../utils/table_design_logic";
 
 export type getTitles = {
     title: string;
@@ -179,7 +179,7 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
         fourthHeader: "Release Date and Rank",
         fifthHeader: "Units",
         fiscalYear: elem.fiscalYear,
-        fiscalYearYoY: elem.fiscalYear + " Cml. YoY% |",
+        fiscalYearYoY: elem.fiscalYear + " Cml. YoY% ",
         ltd: "Life-To-Date",
         summaryHeader: elem.fiscalYear + " Cml.|   Units |    %    |",
     };
@@ -218,11 +218,17 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
         return printTitles(header, elem, sortedAllCollection[index], currentQuarter)
     }) as string[];
 
-    let printOne = printHead(header);
+    let printOne = headerPrint([
+        header.capcomHeader,
+        header.secondHeader,
+        header.thirdHeader,
+        header.fourthHeader,
+        header.fifthHeader,
+    ],28) + "\n"
 
     let printAllPlatinumTitles: string = (elem.footnotes === undefined) 
-                ? [printOne, ...printListedTitlesAll].reduce((prev, next) => prev + "\n" + next )
-                : [printOne, ...printListedTitlesAll, elem.footnotes].reduce((prev, next) => prev + "\n" + next )
+                ? [printOne, ...printListedTitlesAll].reduce((prev, next) => prev + next )
+                : [printOne, ...printListedTitlesAll, elem.footnotes].reduce((prev, next) => prev + next )
 
     return printAllPlatinumTitles
 });
@@ -238,9 +244,9 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
         fourthHeader: "Release Date and Rank",
         fifthHeader: "Units",
         fiscalYear: elem.fiscalYear,
-        fiscalYearYoY: elem.fiscalYear + " Cml. YoY% |",
+        fiscalYearYoY: elem.fiscalYear + " Cml. YoY% ",
         ltd: "Life-To-Date",
-        summaryHeader: elem.fiscalYear + " Cml.|   Units |    %    |",
+        summaryHeader: elem.fiscalYear + " Cml.|   Units |    %    ",
     };
 
     let prevFYCheck = (array[index+1] === undefined) ? undefined : array[index+1].titles;
@@ -317,17 +323,23 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
     let sporadicSum = sporadicTitles.reduce((prev, next) => prev + next, 0)    
 
 
-    let printOne = printHead(header);
+    let printOne = headerPrint([
+        header.capcomHeader,
+        header.secondHeader,
+        header.thirdHeader,
+        header.fourthHeader,
+        header.fifthHeader,
+    ],28) + "\n"
 
-    let printSummaryOne = printSummaryHead(header, newTitles, recurringTitles, sporadicTitles)
+    let printSummaryOne = printSummaryHead(header, newTitles, recurringTitles, sporadicTitles) + "\n"
 
-    let printSummaryTwo = printSummary(header, newSum, recurringSum, sporadicSum)
+    let printSummaryTwo = printSummary(header, newSum, recurringSum, sporadicSum) + "\n"
 
     let printListedTitlesFYFixed: string[] = (elem.footnotes === undefined) ? printListedTitlesFY : printListedTitlesFY.concat(elem.footnotes) 
 
     let printFYPlatinumTitles: string = (currentQuarter !== 4)
-        ? [printOne, ...printListedTitlesFYFixed].reduce((prev, next) => prev + "\n" + next )
-        : [printSummaryOne, printSummaryTwo, printOne, ...printListedTitlesFYFixed,].reduce((prev, next) => prev + "\n" + next )
+        ? [printOne, ...printListedTitlesFYFixed].reduce((prev, next) => prev + next )
+        : [printSummaryOne, printSummaryTwo, printOne, ...printListedTitlesFYFixed,].reduce((prev, next) => prev + next )
 
     return printFYPlatinumTitles
 });
@@ -345,6 +357,15 @@ const specialList = (): string => {
         ltd: "Life-To-Date",
         summaryHeader: "N/A",
     };
+
+    let headerOne = headerPrint([
+        header.capcomHeader,
+        "Cumulative",
+        header.secondHeader,
+        header.thirdHeader,
+        header.fourthHeader,
+        header.fifthHeader,
+    ],33) + "\n"
 
     const makeValues: Titles[][][] = reverseCollection.map((data, index, array) => {
 
@@ -401,7 +422,7 @@ const specialList = (): string => {
         return printTitles(header, elem, sortedList[index], 9999)
     }) as string[];
 
-    return printAll.reduce((acc, next) => acc + "\n" + next) 
+    return [headerOne, ...printAll].reduce((acc, next) => acc + next) 
 };
 
 export const printSpecialList = specialList();

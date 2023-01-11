@@ -1,4 +1,4 @@
-import { printTextBlock, border, liner, spacer } from "./table_design_logic";
+import { printTextBlock, border, liner, spacer, headerPrint } from "./table_design_logic";
 
 export type Titles = {
     title: string,
@@ -75,101 +75,78 @@ export function labelTitles(titlesSorted: Titles[]) {
 
 export const printSummaryHead = (header: Header, newTitlesLocal: number[], recurringTitlesLocal: number[], sporadicTitlesLocal: number[]) => {
 
-    let printNew: string = `${newTitlesLocal.length} `
-    let printNewFixed: string = (printNew.length >= 9)
-        ? printNew
-        : " ".repeat(9 - printNew.length) + printNew;
+    let printNew: string = border([
+        spacer("New!",12,"left"),
+        spacer(`${newTitlesLocal.length}`,8,"right")
+    ],true);
 
-    let printRecurring: string = `${recurringTitlesLocal.length} `
-    let printRecurringFixed: string = (printRecurring.length >= 9)
-        ? printRecurring
-        : " ".repeat(9 - printRecurring.length) + printRecurring;
+    let printRecurring: string = border([
+        spacer("Recurring",12,"left"),
+        spacer(`${recurringTitlesLocal.length}`,8,"right")
+    ],true);
+ 
+    let printSporadic: string = border([
+        spacer("Sporadic",12,"left"),
+        spacer(`${sporadicTitlesLocal.length}`,8,"right")
+    ],true);
+ 
+    let printTotal: string = liner(border([
+        spacer("Total",12,"left"),
+        spacer(`${newTitlesLocal.length + recurringTitlesLocal.length + sporadicTitlesLocal.length}`,8,"right")
+    ]),"=","both");
 
-    let printSporadic: string = `${sporadicTitlesLocal.length} `
-    let printSporadicFixed: string = (printSporadic.length >= 9)
-        ? printSporadic
-        : " ".repeat(9 - printSporadic.length) + printSporadic;
+    let printHeader: string =  headerPrint([header.capcomHeader],28) + "\n"
 
-    let printTotal: string = `${newTitlesLocal.length + recurringTitlesLocal.length + sporadicTitlesLocal.length} `
-    let printTotalFixed: string = (printTotal.length >= 9)
-    ? printTotal
-    : " ".repeat(9 - printTotal.length) + printTotal;
+    let printTitles: string = liner("| FY Titles   |   Count |","−","both",true); 
 
-    let printHeader: string = "+"+"−".repeat(32)+"+\n" + header.capcomHeader
-
-    let printTitles: string = "\n+"+"−".repeat(32)+"+\n| FY Titles   |   Count |\n+" + "−".repeat(23)+"+" 
-
-    let printNewRow: string = "\n| New!        |" + printNewFixed + "|";
-
-    let printRecurringRow: string = "\n| Recurring   |" + printRecurringFixed + "|";
-
-    let printSporadicRow: string = "\n| Sporadic    |" + printSporadicFixed + "|";
-
-    let printTotalRow: string = "\n+"+"=".repeat(23) + "+\n| Total       |" + printTotalFixed + "|\n+"+"−".repeat(23) + "+"
-
-    return printHeader + printTitles + printNewRow + printRecurringRow + printSporadicRow + printTotalRow
+    return printHeader + printTitles + printNew + printRecurring + printSporadic + printTotal
 }
  
 export const printSummary = (header: Header, newSumLocal: number, recurringSumLocal: number, sporadicSumLocal: number) => {
 
-        let printSummaryHeader: string = "\n+"+"−".repeat(33)+"+\n" + header.summaryHeader + "\n+" + "−".repeat(33) + "+\n"
+        let printSummaryHeader: string = liner(border([header.summaryHeader]),"−","both",true) 
 
         let TotalUnits: number = Number((newSumLocal + recurringSumLocal + sporadicSumLocal).toFixed(2)) 
 
         let printTotalUnits: string = `${(newSumLocal + recurringSumLocal + sporadicSumLocal).toFixed(2)}M`
-        let printTotalUnitsFixed: string = (printTotalUnits.length >= 9)
-            ? printTotalUnits
-            : " ".repeat(9 - printTotalUnits.length) + printTotalUnits;
+
+        let printTotalUnitsFixed: string = liner(border([
+            spacer("Total",12,"left"),
+            spacer(printTotalUnits,8,"right")
+        ]),"=","bottom",true);
         
-        let printNewUnits: string = `${newSumLocal.toFixed(2)}M`
-        let printNewUnitsFixed: string = (printNewUnits.length >= 9)
-                ? printNewUnits
-                : " ".repeat(9 - printNewUnits.length) + printNewUnits;
+        let printNewUnits: string = `${newSumLocal.toFixed(2)}M`;
 
         let printNewPercentages: string = `${((newSumLocal / TotalUnits) * 100).toFixed(2)}%`
-        let printNewPercentagesFixed: string = (printNewPercentages.length >= 9)
-            ? printNewPercentages
-            : " ".repeat(9 - printNewPercentages.length) + printNewPercentages;
+
+        let printNewUnitsFixed: string = border([
+            spacer("New!",12,"left"),
+            spacer(printNewUnits,8,"right"),
+            spacer(printNewPercentages,8,"right"),
+        ],true);
 
         let printRecurringUnits: string = `${recurringSumLocal.toFixed(2)}M`
-        let printRecurringUnitsFixed: string = (printRecurringUnits.length >= 9)
-            ? printRecurringUnits
-            : " ".repeat(9 - printRecurringUnits.length) + printRecurringUnits;
         
         let printRecurringPercentages: string = `${((recurringSumLocal / TotalUnits) * 100).toFixed(2)}%`
-        let printRecurringPercentagesFixed: string = (printRecurringPercentages.length >= 9)
-            ? printRecurringPercentages
-            : " ".repeat(9 - printRecurringPercentages.length) + printRecurringPercentages;
+
+        let printRecurringUnitsFixed: string = border([
+            spacer("Recurring",12,"left"),
+            spacer(printRecurringUnits,8,"right"),
+            spacer(printRecurringPercentages,8,"right"),
+        ],true);
 
         let printSporadicUnits: string = `${sporadicSumLocal.toFixed(2)}M`;
 
-        let printSporadicUnitsFixed: string = (printSporadicUnits.length >= 9)
-            ? printSporadicUnits
-            : " ".repeat(9 - printSporadicUnits.length) + printSporadicUnits;
-        
-        let printSporadicPercentages: string = `${((sporadicSumLocal / TotalUnits) * 100).toFixed(2)}%`
-        let printSporadicPercentagesFixed: string = (printSporadicPercentages.length >= 9)
-            ? printSporadicPercentages
-            : " ".repeat(9 - printSporadicPercentages.length) + printSporadicPercentages;
+        let printSporadicPercentages: string = `${((sporadicSumLocal / TotalUnits) * 100).toFixed(2)}%`;
 
-        let printRows: string = "| New!        |" + printNewUnitsFixed + "|" + printNewPercentagesFixed + "|\n| Recurring   |" + printRecurringUnitsFixed + "|" + printRecurringPercentagesFixed + "|\n| Sporadic    |" + printSporadicUnitsFixed + "|" + printSporadicPercentagesFixed + "|\n+" + "=".repeat(33) + "+\n| Total       |" + printTotalUnitsFixed + "|\n+" + "−".repeat(23) + "+\n" 
+        let printSporadicUnitsFixed: string = liner(border([
+            spacer("Sporadic",12,"left"),
+            spacer(printSporadicUnits,8,"right"),
+            spacer(printSporadicPercentages,8,"right"),
+        ]),"=","bottom",true);
 
-        return printSummaryHeader + printRows
-
+        return printSummaryHeader + printNewUnitsFixed + printRecurringUnitsFixed + printSporadicUnitsFixed + printTotalUnitsFixed 
 }
-
-export const printHead = (header: Header) => 
-`+${"−".repeat(32)}+
-${header.capcomHeader}
-+${"−".repeat(32)}+
-${header.secondHeader}
-+${"−".repeat(32)}+
-${header.thirdHeader}
-+${"−".repeat(32)}+
-${header.fourthHeader}
-+${"−".repeat(32)}+
-${header.fifthHeader}
-+${"−".repeat(32)}+`;
 
 export const printTitles = (header: Header, titleDifference: Titles[], titleCumulative: Titles[], currentQuarter: number) => {
 
@@ -177,54 +154,16 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
        return (elem.fiscalYear === undefined) ? index === 0 : array[index] === array[array.length-1] 
     }).map((elem, index, array) => {
 
-        let printRank: string = ` Rank ${elem.rank} `
-        let printRankFixed: string = (printRank.length >= 11)
-                ? printRank
-                : printRank + " ".repeat(11 - printRank.length);
+        let printTitleName: string = liner(printTextBlock(elem.title, 34),"−","both",true,34);
 
-        let printTitleName: string | never[] = printTextBlock(elem.title, 32)
-        // let printTitleName: string = (elem.title.length > 32)
-        // ? elem.title.split(" ").reduce((prev, next, index, array) => {
+        let printPlatforms: string = liner(printTextBlock(elem.platforms, 34),"−","bottom",true,34);
 
-        //     let nextCheck = prev + next + " ";
-            
-        //     if (nextCheck.length > 31 && prev.length <= 31) {
-        //         return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-        //     } else if (index === array.length-1) {
-        //         return prev + next + " ".repeat(67 - prev.length)
-        //     } else {
-        //         return prev + " " + next
-        //     }
-        // })
-        // : (elem.title.length < 32)
-        // ? elem.title + " ".repeat(32 - elem.title.length) 
-        // : elem.title
+        let printReleaseDateAndRank: string = liner(border([
+            spacer(elem.releaseDate,20,"left"),
+            spacer(`Rank ${elem.rank}`,11,"left"),
+        ]),"−","bottom",true)
 
-        let printPlatforms: string | never[] = printTextBlock(elem.platforms, 32)
-        // let printPlatforms: string = (elem.platforms.length > 32)
-        // ? elem.platforms.split(" ").reduce((prev, next, index, array) => {
-
-        //     let nextCheck = prev + next + " ";
-            
-        //     if (nextCheck.length > 31 && prev.length <= 31) {
-        //         return prev + " ".repeat(32 - prev.length) + `|\n| ` + next
-        //     } else if (index === array.length-1) {
-        //         return prev + next + " ".repeat(67 - prev.length)
-        //     } else {
-        //         return prev + " " + next
-        //     }
-        // })
-        // : (elem.platforms.length+2 < 32) // had to change length to account for the spaces on both ends due to composition of string from json
-        // ? " " + elem.platforms + " " + " ".repeat(32 - elem.platforms.length-2) 
-        // : " " + elem.platforms + " ".repeat(32 - elem.platforms.length+1);
-
-        let printReleaseDate: string = " " + elem.releaseDate;
-        let printReleaseDateFixed: string = (printReleaseDate.length >= 20)
-                ? printReleaseDate
-                : printReleaseDate + " ".repeat(20 - printReleaseDate.length);
-
-
-        let printTitleNameFixed: string = "+"+"−".repeat(32)+"+\n" + printTitleName + "\n+" + "−".repeat(32) + "+\n" + printPlatforms + "\n+" + "−".repeat(32) + "+\n|" + printReleaseDateFixed + "|" + printRankFixed + "|"
+        let printTitleNameFixed: string = printTitleName + printPlatforms + printReleaseDateAndRank
 
         return printTitleNameFixed
         
@@ -233,30 +172,20 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
     const quartersPrint = titleDifference.filter((elem, index) => {
         return index < currentQuarter && elem.value !== 0
     }).map((elem, index) => {
-
-        let printValue: string = `${elem.value}M` 
-        let printValueFixed: string = (printValue.length >= 11)
-            ? printValue
-            : " ".repeat(11 - printValue.length) + printValue;
-
-        let printPeriodFixed: string = (elem.fiscalYear === undefined) 
-                ? "|" + elem.period + " ".repeat(6) + "|"
-                : elem.fiscalYear
-
-        return  printPeriodFixed + printValueFixed + "|"
+        return border([
+            spacer((elem.fiscalYear === undefined) ? elem.period : elem.fiscalYear + " Cumulative",20,"left"),
+            spacer(`${elem.value}M`,11,"right"),
+        ],true)
     });
 
     const printLTD = [""].map((elem, index, array) => {
 
        let printValue: string = (titleCumulative[0].fiscalYear === undefined) ? `${titleCumulative[currentQuarter-1].value}M` : `${titleCumulative[titleCumulative.length-1].value}M` 
        
-       let printValueFixed: string = (printValue.length >= 11)
-            ? printValue
-            : " ".repeat(11 - printValue.length) + printValue;
-
-        let printLine: string = "|\n+" + "−".repeat(32) + "+";
-
-        return header.ltd + printValueFixed + printLine
+        return liner(border([
+            spacer(header.ltd,20,"left"),
+            spacer(printValue,11,"right"),
+        ]),(titleCumulative[0].fiscalYear === undefined) ? "−" : "=",(titleCumulative[0].fiscalYear === undefined) ? "bottom" : "both",true) 
     });
 
     const FYCmlFigure = titleDifference.filter((elem, index) => {
@@ -268,12 +197,12 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
         let reducedFixed = Number(elem.toFixed(2))
 
         let reducedValue: string = `${reducedFixed}M`
-        let reducedValueFixed: string = (reducedValue.length >= 11)
-            ? reducedValue
-            : " ".repeat(11 - reducedValue.length) + reducedValue; 
 
         return (titleDifference[0].fiscalYear === undefined)
-            ? header.fiscalYear + reducedValueFixed + "|"
+            ? liner(border([
+                spacer(header.fiscalYear + " Cumulative",20,"left"),
+                spacer(reducedValue,11,"right")
+            ]),"=","top",true)
             : []
     }).flat() // was returning [][] making it not the same like the others when filtering to remove from the print with the new special data
 
@@ -291,34 +220,26 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
     
     const printFYCmlYoYFixed: string | never[] = (printFYCmlYoY === "NaN")
             ? []
-            : (printFYCmlYoY.length >= 11 
-                ? header.fiscalYearYoY + printFYCmlYoY + "|"
-                : header.fiscalYearYoY + " ".repeat(11 - printFYCmlYoY.length) + printFYCmlYoY + "|"
-                )
-
-    let printLine: string | never[] = (quartersPrint.length === 0) 
-            ? [] 
-            : "+" + "−".repeat(32) + "+";
-    let printDoubleLine: string = "+" + "=".repeat(32) + "+";
+            : border([
+                spacer(header.fiscalYearYoY,20,"left"),
+                spacer(printFYCmlYoY,11,"right"),
+            ],true) 
 
     let checker = (titleDifference[0].fiscalYear === undefined) ? 0 : titleDifference.length-1
 
-    let printMiscellaneous: string | never[] = (titleDifference[checker].miscellaneous)
-                ? titleDifference[checker].miscellaneous as string
-                : []
+    let printMiscellaneous: string | never[] = (titleDifference[checker].miscellaneous === undefined)
+            ? []
+            : liner(printTextBlock(titleDifference[checker].miscellaneous as string,34),"−","bottom",true,34)
 
     const lastCheck = [
         titleHeader,
-        printLine, 
         ...quartersPrint,
-        printDoubleLine,
         printFYCml,
         printFYCmlYoYFixed,
         printLTD,
         printMiscellaneous,
-    ].filter(elem => elem.length !== 0)
-     .reduce((prev, next) => {
-        return prev + "\n" + next
+    ].flat().reduce((prev, next) => {
+        return prev + next
      })
 
     return lastCheck
