@@ -1,7 +1,6 @@
 import {
     Section,
     Header,
-    printHead,
     printSoftwareGeneral,
     quarterlyCalculation,
     yearOnYearCalculation,
@@ -10,6 +9,7 @@ import {
 import seriesSoftwareUnits2023 from "./Software_Units/software_units_fy3_2023.json";
 import seriesSoftwareUnits2022 from "./Software_Units/software_units_fy3_2022.json";
 import seriesSoftwareUnits2021 from "./Software_Units/software_units_fy3_2021.json";
+import { headerPrint } from "../../utils/table_design_logic";
 
 export const collection = [
     seriesSoftwareUnits2023,
@@ -80,8 +80,8 @@ export const segaSoftwareUnitsList: string[] = collection.map((elem, index, arra
 
     let header: Header = {
         fiscalYear: elem.fiscalYear,
-        firstHeader: "| Sega Sammy        |",
-        secondHeader: "| Full Game Software Unit Sales|",
+        firstHeader: "Sega Sammy",
+        secondHeader: "Full Game Software Unit Sales",
     };
 
     let platformUnitSalesThisFYList: Section[][] = elem.softwareUnits.map(value => platformUnitSalesMake(value)); 
@@ -131,7 +131,10 @@ export const segaSoftwareUnitsList: string[] = collection.map((elem, index, arra
     });
 
 
-    const printOne: string = printHead(header)
+    const printOne: string = headerPrint([
+        header.firstHeader + " | " + header.fiscalYear,
+        header.secondHeader,
+    ],32) + "\n"
 
     const printPlatformUnitSales: string[] = Array.from({length: platformUnitSalesThisFY.length}, (v, i) => {
 
@@ -147,7 +150,7 @@ export const segaSoftwareUnitsList: string[] = collection.map((elem, index, arra
 
     let printAll = [printOne].concat(printPlatformUnitSales);
 
-    return printAll.reduce((prev, next) => prev + "\n" + next);
+    return printAll.reduce((prev, next) => prev + next);
 
 });
 
