@@ -77,7 +77,6 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             return [] // must return an array to flatten it
         };
 
-            // let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed.length === 0)
             let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed[index].units === "NaN")
                 ? "NaN"
                 : (sectionDifferenceYoYFixed[index].value > 0)
@@ -98,17 +97,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
 
             let printSectionFixed: string = spacer(printSection,lineSpace,"right"); 
 
-            let printLineCheck = sectionDifferenceYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN"); // checks the next element for whether it is NaN so that printLineLength does a closing line correctly
-
-            let lineLengths: {long: number, short: number} = (elem.units === "currency")
-                ? { long: 36, short: 26}
-                : { long: 33, short: 23}
-
-            let printLineLength: number = 
-            // (printSectionDifferenceYoY === "NaN")
-            (printLineCheck.length === 0 && printSectionDifferenceYoY === "NaN")
-                ? lineLengths.short
-                : lineLengths.long 
+            // let printLineCheck = sectionDifferenceYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN"); // checks the next element for whether it is NaN so that printLineLength does a closing line correctly
 
             return (printSectionDifferenceYoYFixed === "NaN")
                     ? liner(border([
@@ -151,16 +140,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
 
                 let printCumulativeFixed: string = spacer(printCumulative,lineSpace,"right")
 
-            let printLineCheck = sectionCumulativeYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN");
-
-            let lineLengths: {long: number, short: number} = (elem.units === "currency")
-                ? { long: 36, short: 26}
-                : { long: 33, short: 23}
-
-            let printLineLength: number = 
-            (printLineCheck.length === 0 && printSectionCumulativeYoY === "NaN")
-                ? lineLengths.short 
-                : lineLengths.long    
+            // let printLineCheck = sectionCumulativeYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN");
 
                 let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
                     ? `${header.fiscalYear} ${elem.cmlPeriod}`
