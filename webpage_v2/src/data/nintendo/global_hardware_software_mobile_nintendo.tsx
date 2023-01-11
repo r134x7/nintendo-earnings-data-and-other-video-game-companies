@@ -1,12 +1,12 @@
 import {
     Section,
     Header,
-    printHead,
     printSections,
     printSalesHardware,
     quarterlyCalculation,
     yearOnYearCalculation
 } from "../../utils/hardware_software_units_logic";
+import { headerPrint } from "../../utils/table_design_logic";
 
 import globalHardwareSoftwareMobile2023 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2023.json";
 import globalHardwareSoftwareMobile2022 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2022.json";
@@ -218,21 +218,21 @@ const platformForecastsMake = (obj: platformForecastSalesType): Section[] => {
             name: obj.name,
             units: "units",
             period: "FCST Revision 1",
-            cmlPeriod: "First Half ",
+            cmlPeriod: "First Half",
             value: obj?.forecastRevision1,
         } as Section,
         {
             name: obj.name,
             units: "units",
             period: "FCST Revision 2",
-            cmlPeriod: "1st 3 Qtrs ",
+            cmlPeriod: "1st 3 Qtrs",
             value: obj?.forecastRevision2,
         } as Section,
         {
             name: obj.name,
             units: "units",
             period: "FCST Revision 3",
-            cmlPeriod: "1st 3 Qtrs ",
+            cmlPeriod: "1st 3 Qtrs",
             value: obj?.forecastRevision3,
         } as Section,
         {
@@ -256,9 +256,9 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
     let header: Header = {
         fiscalYear: elem.fiscalYear,
         nextFiscalYearShort: nextFiscalYear,
-        switchHeader: "| Nintendo Co., Ltd. |",
-        firstHeader: "| Global Hardware and Software  |",
-        secondHeader: "| Sales Units and Forecasts     |",
+        switchHeader: "Nintendo Co., Ltd.",
+        firstHeader: "Global Hardware and Software",
+        secondHeader: "Sales Units and Forecasts",
     };
 
     let platformSalesList: Section[][] = elem.platformCmlSales.map(value => platformSalesMake(value));
@@ -313,7 +313,11 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
     });
 
 
-    const printOne: string = printHead(header)
+    const printOne: string = headerPrint([
+        header.switchHeader + " | " + header.fiscalYear,
+        header.firstHeader,
+        header.secondHeader,
+    ],30)
 
     // "N/A" avoids crashing when no data...
     const printPlatformCmlSales: string[] = (platformSalesList[0][0].name === "N/A") ? [""] : Array.from({length: platformSalesList.length}, (v, i) => {
