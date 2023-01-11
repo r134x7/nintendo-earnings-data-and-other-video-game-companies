@@ -124,7 +124,7 @@ import { Section } from "../../../utils/regional_hw_sw_logic";
             let printTitleName = liner(printTextBlock(elem[0].name, 43),"−","both",true,43);
 
             // need to check regarding || conditions in filter because it's not working...
-            let yearValues: string[] = elem.filter(value => value.valueB !== 0).filter(value => value.period !== " Last FY Cumulative ").map((value, valueIndex, valueArray) => {
+            let yearValues: string[] = elem.filter(value => value.valueB !== 0).filter(value => value.period !== "Last FY Cumulative").map((value, valueIndex, valueArray) => {
                return border([
                     spacer(value.fiscalYear + " Cumulative",29,"left"),
                     spacer(`${value.valueB}M`,11,"right")
@@ -157,7 +157,7 @@ import { Section } from "../../../utils/regional_hw_sw_logic";
             let printTitleName = liner(printTextBlock(elem[0].name, 43),"−","both",true,43);
 
             // need to check regarding || conditions in filter because it's not working...
-            let yearValues: string[] = elem.filter(value => value.valueC !== 0).filter(value => value.regionC !== "Overseas").filter(value => value.period !== " Last FY Cumulative ").map((value, valueIndex, valueArray) => {
+            let yearValues: string[] = elem.filter(value => value.valueC !== 0).filter(value => value.regionC !== "Overseas").filter(value => value.period !== "Last FY Cumulative").map((value, valueIndex, valueArray) => {
                return border([
                     spacer(value.fiscalYear + " Cumulative",29,"left"),
                     spacer(`${value.valueC}M`,11,"right")
@@ -190,7 +190,7 @@ import { Section } from "../../../utils/regional_hw_sw_logic";
             let printTitleName = liner(printTextBlock(elem[0].name, 43),"−","both",true,43);
 
             // need to check regarding || conditions in filter because it's not working...
-            let yearValues: string[] = elem.filter(value => value.valueD !== 0).filter(value => value.regionD !== "Other").filter(value => value.period !== " Last FY Cumulative ").map((value, valueIndex, valueArray) => {
+            let yearValues: string[] = elem.filter(value => value.valueD !== 0).filter(value => value.regionD !== "Other").filter(value => value.period !== "Last FY Cumulative").map((value, valueIndex, valueArray) => {
                return border([
                     spacer(value.fiscalYear + " Cumulative",29,"left"),
                     spacer(`${value.valueD}M`,11,"right")
@@ -224,7 +224,7 @@ import { Section } from "../../../utils/regional_hw_sw_logic";
 
             let yearValuesOtherD: string[] = elem.filter(value => {
                 return (value.valueD !== 0 && value.regionD === "Other")
-            }).filter(value => value.period !== " Last FY Cumulative ").map((value, valueIndex, valueArray) => {
+            }).filter(value => value.period !== "Last FY Cumulative").map((value, valueIndex, valueArray) => {
             //    let findOtherValue = (value.valueE === 0 && value.regionD !== "Europe") 
             //         ? value.valueD
             //         : value.valueE 
@@ -237,7 +237,7 @@ import { Section } from "../../../utils/regional_hw_sw_logic";
 
             let yearValuesOtherE: string[] = elem.filter(value => {
                 return (value.valueE !== 0 && value.regionD === "Europe")
-            }).filter(value => value.period !== " Last FY Cumulative ").map((value, valueIndex, valueArray) => {
+            }).filter(value => value.period !== "Last FY Cumulative").map((value, valueIndex, valueArray) => {
                 
             //    let findOtherValue = (value.valueE === 0 && value.regionD !== "Europe") 
             //         ? value.valueD

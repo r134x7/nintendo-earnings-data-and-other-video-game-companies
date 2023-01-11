@@ -89,11 +89,11 @@ import { Section, Header } from "../../../utils/hardware_software_units_logic";
     const dateLabel = "| Data as of September 30th, 2022    |\n+" + "−".repeat(36) + "+"
 
     const header: Header = {
-        firstHeader: "| Global Hardware and Software  |",
+        firstHeader: "Global Hardware and Software",
         fiscalYear: "placeholder",
         nextFiscalYearShort: "place",
-        secondHeader: "| Sales Units and Forecasts     |",
-        switchHeader: "| Nintendo Co., Ltd. |",
+        secondHeader: "Sales Units and Forecasts",
+        switchHeader: "Nintendo Co., Ltd.",
     };
 
     function accumulate(title: Section[]): Section[] {
@@ -192,7 +192,7 @@ import { Section, Header } from "../../../utils/hardware_software_units_logic";
             });
 
         }).filter(value => value !== "N/A").reduce((prev, next) => {
-                return prev + "\n" + next
+                return prev + next
         });
 
         return regionRank

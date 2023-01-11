@@ -15,7 +15,7 @@ import topSellingTitles2013 from "../Top_Selling_Titles/top_selling_titles_fy3_2
 import topSellingTitles2012 from "../Top_Selling_Titles/top_selling_titles_fy3_2012.json";
 
 // avoid having empty lists [] in your collections from preparing for the next earnings
-import { Titles, Header, quarterlyCalculation, printHead } from "../../../utils/top_selling_titles_logic";
+import { Titles, Header } from "../../../utils/top_selling_titles_logic";
 
     const totalCollection: collectionJSON[] = [
         topSellingTitles2012,
@@ -71,7 +71,7 @@ import { Titles, Header, quarterlyCalculation, printHead } from "../../../utils/
 
     const dateLabel = liner(border([
         spacer("Data as of September 30th, 2022","Data as of September 30th, 2022".length+1,"left")
-    ]),"−","bottom");
+    ]),"−","both");
 
     const header: Header = {
         fiscalYear: "placeholder",
@@ -156,7 +156,11 @@ import { Titles, Header, quarterlyCalculation, printHead } from "../../../utils/
 const printOneWW = headerPrint([
     header.mainHeader,
     header.platformHeader
-],32)
+],32) + "\n" + headerPrint([
+    header.titles,
+    header.platform,
+    header.units,
+],24)
 
 const divideSortedGlobalCollection = sortedWWLTDCollection.map(elem => {
     return elem.map((secondElem, index, array) => {

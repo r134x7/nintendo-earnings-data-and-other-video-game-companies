@@ -27,7 +27,7 @@ import platinumTitles2009 from "./Platinum_Titles/platinum_titles_fy3_2009.json"
 import platinumTitles2008 from "./Platinum_Titles/platinum_titles_fy3_2008.json";
 import platinumTitles2007 from "./Platinum_Titles/platinum_titles_fy3_2007.json";
 import platinumTitles2006 from "./Platinum_Titles/platinum_titles_fy3_2006.json";
-import { headerPrint } from "../../utils/table_design_logic";
+import { headerPrint, border, liner, spacer } from "../../utils/table_design_logic";
 
 export type getTitles = {
     title: string;
@@ -220,11 +220,12 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
 
     let printOne = headerPrint([
         header.capcomHeader,
+    ],28) + "\n" + headerPrint([
         header.secondHeader,
         header.thirdHeader,
         header.fourthHeader,
         header.fifthHeader,
-    ],28) + "\n"
+    ],28) + "\n";
 
     let printAllPlatinumTitles: string = (elem.footnotes === undefined) 
                 ? [printOne, ...printListedTitlesAll].reduce((prev, next) => prev + next )
@@ -322,14 +323,14 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
 
     let sporadicSum = sporadicTitles.reduce((prev, next) => prev + next, 0)    
 
-
     let printOne = headerPrint([
         header.capcomHeader,
+    ],28) + "\n" + headerPrint([
         header.secondHeader,
         header.thirdHeader,
         header.fourthHeader,
         header.fifthHeader,
-    ],28) + "\n"
+    ],28) + "\n";
 
     let printSummaryOne = printSummaryHead(header, newTitles, recurringTitles, sporadicTitles) + "\n"
 
@@ -361,11 +362,16 @@ const specialList = (): string => {
     let headerOne = headerPrint([
         header.capcomHeader,
         "Cumulative",
+    ],33) + "\n" + headerPrint([
         header.secondHeader,
         header.thirdHeader,
         header.fourthHeader,
         header.fifthHeader,
-    ],33) + "\n"
+    ],24) + "\n"; 
+
+    const dateLabel = liner(border([
+        spacer("Data as of September 30th, 2022","Data as of September 30th, 2022".length+1,"left")
+    ]),"−","both",true);
 
     const makeValues: Titles[][][] = reverseCollection.map((data, index, array) => {
 
@@ -422,7 +428,7 @@ const specialList = (): string => {
         return printTitles(header, elem, sortedList[index], 9999)
     }) as string[];
 
-    return [headerOne, ...printAll].reduce((acc, next) => acc + next) 
+    return [headerOne, dateLabel, ...printAll].reduce((acc, next) => acc + next) 
 };
 
 export const printSpecialList = specialList();

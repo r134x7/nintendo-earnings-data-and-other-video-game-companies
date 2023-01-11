@@ -214,6 +214,6 @@ export const cumulativeEarningsList = [
     ...printNetSales,
     ...printOperatingIncome,
     ...printNetIncome,
-    "###",
+    "###\n",
     dataSource,
 ].reduce((prev, next) => prev + next);
