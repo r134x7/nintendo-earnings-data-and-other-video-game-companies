@@ -23,7 +23,7 @@ import fyMillionSellerTitles2005 from "../FY_Million_Seller_Titles/million_selle
 import fyMillionSellerTitles2004 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2004.json";
 
 // avoid having empty lists [] in your collections from preparing for the next earnings
-import { Header, Titles, decimateCalculation, printHead } from "../../../utils/fy_million_seller_titles_logic"
+import { Header, Titles, decimateCalculation } from "../../../utils/fy_million_seller_titles_logic"
 
     const totalCollection: collectionJSON[] = [
         fyMillionSellerTitles2004,
@@ -97,8 +97,8 @@ import { Header, Titles, decimateCalculation, printHead } from "../../../utils/f
     secondHeader: "Title",
     thirdHeader: "Platform and Rank",
     fourthHeader: "Units",
-    areaHeader: "| Area         |   Japan | Overseas|",
-    globalHeader: "| Global       |   WW FY |  WW LTD |",
+    areaHeader: "| Area         |    Japan | Overseas |",
+    globalHeader: "| Global       | Global FY|Global LTD|", 
     fiscalYear: " FY3/23",
     mainSummaryHeader: "",
     secondSummaryHeader: "FY Million-Seller",
