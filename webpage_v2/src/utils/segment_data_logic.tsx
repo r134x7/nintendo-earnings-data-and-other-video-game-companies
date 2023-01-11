@@ -58,7 +58,7 @@ const printHead = (header: Header) =>
 ${header.firstHeader} ${header.fiscalYear} |
 +${"−".repeat(27)}+
 ${header.secondHeader}
-+${"−".repeat(21)}+`;
++${"−".repeat(21)}+\n`;
 
 function quarterlyCalculation(quarters: Section[]) {
         
@@ -92,19 +92,17 @@ function yearOnYearCalculation(segmentThisFY: Section[], segmentLastFY: Section[
 
 }
 
-const printLine = (blockLength: number): string => `+${"−".repeat(blockLength)}+`;
-
 const generalSalesHeader = 
-`+--------------------------------------------------+
+`+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 |             |             |          | Sales Per |
 |             |             | Software |  Software |
 |             |       Sales |    Units |      Unit |
-+--------------------------------------------------+`;
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
 
 const squareEnixSalesHeader =
-`+--------------------------------------+
+`+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 |             |    Sales    |   YoY%   |
-+--------------------------------------+`;
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
 
 const printQtrSales = (segmentSales: Section[], segmentSalesLastFY: Section[], header: Header, currentQuarter: number): string[] => {
 
@@ -119,25 +117,16 @@ const printQtrSales = (segmentSales: Section[], segmentSalesLastFY: Section[], h
             // values given are Billion yen, changing to Million yen
             let printSection: string = `¥${(elem.value * 1000).toLocaleString("en")}M`
 
-            let printSectionFixed: string = (printSection.length >= 13)
-                ? printSection
-                : " ".repeat(13 - printSection.length) + printSection;
-            
-            let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
-
-           let printPeriod: string = elem.period;
-
-           let printLength: number = (quartersLastFY[index].units === "NaN")
-                ? 27
-                : 38
-
-           let printLine: string = (array[index] === array.at(-1))
-                ? "\n+" + "=".repeat(printLength) + "+"
-                : "\n+" + "−".repeat(printLength) + "+"
-            
             return (quartersLastFY[index].units === "NaN") 
-                ? "|" + printPeriod + "|" + printSectionFixed + "|" + printLine  
-                : "|" + printPeriod + "|" + printSectionFixed + "|" + yoyQuarters[index] + "|" + printLine  
+                ? liner(border([
+                    spacer(elem.period,12,"left"),
+                    spacer(printSection,12,"right"),
+                ]),(array[index] === array.at(-1))?"=":"−","bottom",true)
+                : liner(border([
+                    spacer(elem.period,12,"left"),
+                    spacer(printSection,12,"right"),
+                    spacer(yoyQuarters[index],10,"right"),
+                ]),(array[index] === array.at(-1))?"=":"−","bottom",true)
         })
 
         return sales
@@ -146,7 +135,7 @@ const printQtrSales = (segmentSales: Section[], segmentSalesLastFY: Section[], h
 
 const printCmlSales = (segmentSales: Section[], segmentSalesLastFY: Section[], header: Header, currentQuarter: number): string[] => {
 
-    const yoyCml = printYoYSales(segmentSales, segmentSalesLastFY).filter((elem, index) => index !== 0); // remove first quarter for cumulatives
+        const yoyCml = printYoYSales(segmentSales, segmentSalesLastFY).filter((elem, index) => index !== 0); // remove first quarter for cumulatives
 
         const sales = segmentSales.filter((elem, index, array) => {
             return index !== 0 && index < currentQuarter && array[index].value !== 0
@@ -154,34 +143,23 @@ const printCmlSales = (segmentSales: Section[], segmentSalesLastFY: Section[], h
             // values given are Billion yen, changing to Million yen
             let printSection: string = `¥${(elem.value * 1000).toLocaleString("en")}M`
 
-            let printSectionFixed: string = (printSection.length >= 13)
-                ? printSection
-                : " ".repeat(13 - printSection.length) + printSection;
-            
-            // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
-            let shortFY: string = header.fiscalYear;
-
             let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
-                    ? `${shortFY} ${elem.cmlPeriod}`
+                    ? `${header.fiscalYear} ${elem.cmlPeriod}`
                     : elem.cmlPeriod
 
-        //    let printLine: string = (array[index] === array.at(-1))
-        //         ? "\n+" + "=".repeat(27) + "+"
-        //         : "\n+" + "−".repeat(27) + "+"
-           let printLength: number = (segmentSalesLastFY[index].units === "NaN")
-                ? 27
-                : 38
-            
-           let printLine: string = "\n+" + "−".repeat(printLength) + "+";
-
             return (segmentSalesLastFY[index].units === "NaN") 
-                ? "|" + printPeriod + "|" + printSectionFixed + "|" + printLine  
-                : "|" + printPeriod + "|" + printSectionFixed + "|" + yoyCml[index] + "|" + printLine  
-            // return "|" + printPeriod + "|" + printSectionFixed + "|" + yoyCml[index] + "|" + printLine  
+                ? liner(border([
+                    spacer(printPeriod,12,"left"),
+                    spacer(printSection,12,"right"),
+                ]),(array[index] === array.at(-1))?"=":"−","bottom",true)
+                : liner(border([
+                    spacer(printPeriod,12,"left"),
+                    spacer(printSection,12,"right"),
+                    spacer(yoyCml[index],10,"right"),
+                ]),(array[index] === array.at(-1))?"=":"−","bottom",true)
         })
 
         return sales
-
 };
 
 const printYoYSales = (segmentSales: Section[], segmentSalesLastFY: Section[]): string[] => {
@@ -196,49 +174,11 @@ const printYoYSales = (segmentSales: Section[], segmentSalesLastFY: Section[]): 
     })
 
     let printSectionFixed: string[] = printSection.map((elem) => {
-        return (elem.length >= 10) // changed from 13
-            ? elem 
-            : " ".repeat(10 - elem.length) + elem;
+        return spacer(elem,9,"right")
     }) 
 
     return printSectionFixed
-            
-    // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
-
-    // let printPeriod: string = `${shortFY}${yoy.cmlPeriod}`
-
-    // let printPeriod: string = ` ${yoy[yoy.length-1].cmlPeriod}YoY%   `;
-            
-    // let printLine: string = "\n+" + "−".repeat(27) + "+";
-
-    // return "|" + printPeriod + "|" + printSectionFixed + "|" + printLine  
-
 };
-
-// do not use this one...
-// const printYoYSales = (segmentSales: Section[], header: Header, currentQuarter: number): string => {
-
-//     const yoy = yearOnYearCalculation(segmentSales);
-
-//     let printSection: string = (yoy.value > 0)
-//             ? `+${(yoy.value)}%`
-//             : `${(yoy.value)}%`
-
-//     let printSectionFixed: string = (printSection.length >= 13)
-//         ? printSection
-//         : " ".repeat(13 - printSection.length) + printSection;
-            
-//     let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
-
-//     // let printPeriod: string = `${shortFY}${yoy.cmlPeriod}`
-
-//     let printPeriod: string = ` ${yoy.cmlPeriod}YoY%   `;
-            
-//     let printLine: string = "\n+" + "−".repeat(27) + "+";
-
-//     return "|" + printPeriod + "|" + printSectionFixed + "|" + printLine  
-
-// };
 
 const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Section[], segmentUnits: Section[], segmentUnitsLastFY: Section[], header: Header, currentQuarter: number): string[] => {
 
@@ -247,7 +187,7 @@ const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
     const salesUnits = quarterlyCalculation(segmentUnits); 
     const salesUnitsLastFY = quarterlyCalculation(segmentUnitsLastFY);
 
-    const yoySalesPerUnit = printYoYSalesPerSoftwareUnit(salesQuarters, salesQuartersLastFY, salesUnits, salesUnitsLastFY)
+        const yoySalesPerUnit = printYoYSalesPerSoftwareUnit(salesQuarters, salesQuartersLastFY, salesUnits, salesUnitsLastFY)
 
         const sales = salesQuarters.filter((elem, index, array) => {
             return index < currentQuarter //&& array[index].value !== 0
@@ -255,23 +195,7 @@ const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
             // values given are Billion yen, changing to Million yen
             let printSection: string = `¥${(elem.value * 1000).toLocaleString("en")}M`
 
-            let printSectionFixed: string = (printSection.length >= 13)
-                ? printSection
-                : " ".repeat(13 - printSection.length) + printSection;
-            
-        //     let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
-
-        //    let printPeriod: string = elem.period;
-
-        //    let printLength: number = (salesQuartersLastFY[index].units === "NaN")
-        //         ? 27
-        //         : 38
-
-        //    let printLine: string = (array[index] === array.at(-1))
-        //         ? "\n+" + "=".repeat(printLength) + "+"
-        //         : "\n+" + "−".repeat(printLength) + "+"
-            
-            return printSectionFixed
+            return printSection
         })
 
         const salesPerSoftwareUnit = salesQuarters.filter((elem, index, array) => {
@@ -284,31 +208,27 @@ const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
             let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (salesUnits[index].value / 1000)).toFixed(0))
 
             let printsegmentSalesPerSoftware: string = (isNaN(calculateSalesPerSoftware)) 
-                                                ? "N/A"
-                                                : `¥${calculateSalesPerSoftware.toLocaleString("en")} `
-            
-            let printsegmentSalesPerSoftwareFixed: string = (printsegmentSalesPerSoftware.length >= 11)
-                ? printsegmentSalesPerSoftware
-                : " ".repeat(11 - printsegmentSalesPerSoftware.length) + printsegmentSalesPerSoftware;
+                    ? "N/A"
+                    : `¥${calculateSalesPerSoftware.toLocaleString("en")}`
             
             let printSoftwareUnits: string = `${salesUnits[index].value / 1000}M`
 
             // let printSoftwareUnits: string = `${segmentUnits[index].value.toLocaleString("en")}k `
-            let printSoftwareUnitsFixed: string = (printSoftwareUnits.length >= 10)
-                    ? printSoftwareUnits
-                    : " ".repeat(10 - printSoftwareUnits.length) + printSoftwareUnits 
-
-            let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
-
-            let printPeriod: string = elem.period;
-
-           let printLine: string = (array[index] === array.at(-1))
-                ? "\n+" + "=".repeat(50) + "+"
-                : "\n+" + "−".repeat(50) + "+"
 
             return (salesQuartersLastFY[index].units === "NaN" || salesQuartersLastFY[index].value === 0)
-                ? "|" + printPeriod + "|" + sales[index] + "|" + printSoftwareUnitsFixed + "|" + printsegmentSalesPerSoftwareFixed + "|" +  printLine
-                : "|" + printPeriod + "|" + sales[index] + "|" + printSoftwareUnitsFixed + "|" + printsegmentSalesPerSoftwareFixed  +  "|\n" + yoySalesPerUnit[index] + printLine
+                ? liner(border([
+                    spacer(elem.period,12,"left"),
+                    spacer(sales[index],12,"right"),
+                    spacer(printSoftwareUnits,9,"right"),
+                    spacer(printsegmentSalesPerSoftware,10,"right"),
+                ]),(array[index] === array.at(-1))?"=":"−","bottom",true)
+                : liner(border([
+                    spacer(elem.period,12,"left"),
+                    spacer(sales[index],12,"right"),
+                    spacer(printSoftwareUnits,9,"right"),
+                    spacer(printsegmentSalesPerSoftware,10,"right"),
+                ],true) + yoySalesPerUnit[index]
+                ,(array[index] === array.at(-1))?"=":"−","bottom",true,50)
         })
 
         return salesPerSoftwareUnit
@@ -325,9 +245,7 @@ const printCmlSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
             // values given are Billion yen, changing to Million yen
             let printSection: string = `¥${(elem.value * 1000).toLocaleString("en")}M`
 
-            let printSectionFixed: string = (printSection.length >= 13)
-                ? printSection
-                : " ".repeat(13 - printSection.length) + printSection;
+            let printSectionFixed: string = spacer(printSection,12,"right")
             
             return printSectionFixed
         })
@@ -340,49 +258,37 @@ const printCmlSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
             // index+1 is being used for segmentUnits since we don't want the firstQuarter value for: First Half to FY Cml.
             let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (segmentUnits[index+1].value / 1000)).toFixed(0))
 
-            let printsegmentSalesPerSoftware: string = `¥${calculateSalesPerSoftware.toLocaleString("en")} `
-            
-            let printsegmentSalesPerSoftwareFixed: string = (printsegmentSalesPerSoftware.length >= 11)
-                ? printsegmentSalesPerSoftware
-                : " ".repeat(11 - printsegmentSalesPerSoftware.length) + printsegmentSalesPerSoftware;
+            let printsegmentSalesPerSoftware: string = `¥${calculateSalesPerSoftware.toLocaleString("en")}`
             
             // index+1 is being used for segmentUnits since we don't want the firstQuarter value for: First Half to FY Cml.
             let printSoftwareUnits: string = `${segmentUnits[index+1].value / 1000}M`
 
             // let printSoftwareUnits: string = `${segmentUnits[index+1].value.toLocaleString("en")}k `
-            let printSoftwareUnitsFixed: string = (printSoftwareUnits.length >= 10)
-                    ? printSoftwareUnits
-                    : " ".repeat(10 - printSoftwareUnits.length) + printSoftwareUnits 
-
-            // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
-            let shortFY: string = header.fiscalYear
 
             let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
-                    ? `${shortFY} ${elem.cmlPeriod}`
+                    ? `${header.fiscalYear} ${elem.cmlPeriod}`
                     : elem.cmlPeriod
 
-        //    let printLine: string = (array[index] === array.at(-1))
-        //         ? "\n+" + "=".repeat(36) + "+"
-        //         : "\n+" + "−".repeat(36) + "+"
-            
-        let printLine: string = "\n+" + "−".repeat(50) + "+";
-
             return (segmentSalesLastFY[index].units === "NaN")
-                    ? "|" + printPeriod + "|" + sales[index] + "|" + printSoftwareUnitsFixed + "|" + printsegmentSalesPerSoftwareFixed + "|" + printLine
-                    : "|" + printPeriod + "|" + sales[index] + "|" + printSoftwareUnitsFixed + "|" + printsegmentSalesPerSoftwareFixed + "|\n" + yoySalesPerUnit[index] + printLine
+                ? liner(border([
+                    spacer(printPeriod,12,"left"),
+                    spacer(sales[index],12,"right"),
+                    spacer(printSoftwareUnits,9,"right"),
+                    spacer(printsegmentSalesPerSoftware,10,"right"),
+                ]),(array[index] === array.at(-1))?"=":"−","bottom",true)
+                : liner(border([
+                    spacer(printPeriod,12,"left"),
+                    spacer(sales[index],12,"right"),
+                    spacer(printSoftwareUnits,9,"right"),
+                    spacer(printsegmentSalesPerSoftware,10,"right"),
+                ],true) + yoySalesPerUnit[index]
+                ,(array[index] === array.at(-1))?"=":"−","bottom",true,50)
         })
 
         return salesPerSoftwareUnit
 };
 
 const printYoYSalesPerSoftwareUnit = (segmentSales: Section[], segmentSalesLastFY: Section[], segmentUnits: Section[], segmentUnitsLastFY: Section[]): string[] => {
-
-    // const filterUnits = segmentUnits.filter(elem => elem.cmlPeriod === "Cml. ");
-
-    // const filterSales: Section[] = segmentSales.filter(elem => elem.cmlPeriod === "Cml. ").map((elem, index, array) => {
-
-    //     return {...elem, value: Number(((elem.value * 1000) / (filterUnits[index].value / 1000)).toFixed(0))} 
-    // });
 
     const salesPerUnitThisFY: Section[] = segmentSales.map((elem, index, array) => {
 
@@ -422,33 +328,27 @@ const printYoYSalesPerSoftwareUnit = (segmentSales: Section[], segmentSalesLastF
     }) 
 
     let printSalesPerUnitFixed: string[] = printSalesPerUnitYoY.map((elem) => {
-        return (elem.length >= 11)
-                ? elem 
-                : " ".repeat(11 - elem.length) + elem;
+        return spacer(elem,10,"right");
     }) 
 
     let printUnitsFixed: string[] = printUnitsYoY.map((elem) => {
-        return (elem.length >= 10)
-                    ? elem 
-                    : " ".repeat(10 - elem.length) + elem;
+        return spacer(elem,9,"right");
     }) 
     
     let printSalesFixed: string[] = printSalesYoY.map((elem) => {
-        return (elem.length >= 13)
-                    ? elem 
-                    : " ".repeat(13 - elem.length) + elem;
+        return spacer(elem,12,"right");
     }) 
 
-    let printLine: string = "\n+" + "−".repeat(36) + "+";
-
-    // let printPeriod: string = ` ${yoySalesPerUnit.cmlPeriod}YoY%   `;
-
-    // return "|" + printPeriod + "|" + printSalesPerUnitFixed + "|" + printUnitsFixed + "|" + printLine
     let printArray: string[] = yoySalesPerUnit.map((elem, index) => {
 
-        let printPeriod: string = `        YoY%`;
+        let printPeriod: string = spacer(`YoY%`,12,"right");
 
-        return "|" + printPeriod + "|" + printSalesFixed[index] + "|" + printUnitsFixed[index] + "|" + printSalesPerUnitFixed[index] + "|"  
+        return border([
+            printPeriod,
+            printSalesFixed[index],
+            printUnitsFixed[index],
+            printSalesPerUnitFixed[index],
+        ]) 
     }) 
 
     return printArray 
@@ -459,15 +359,14 @@ export const SegaPrint = (salesData: Section[], salesDataLastFY: Section[], sale
     const head = printHead(header);
 
     const salesUnitsBlock = [
-        printLine(32),
-        printTextBlock(salesData[0].name, 32),
+        liner(printTextBlock(salesData[0].name, 32),"−","top",true,32),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes, 50) + "\n" + printLine(50),
+        (salesData[0].notes === undefined) ? [] : liner(printTextBlock(salesData[0].notes, 50),"−","bottom",true,50)
         ].flat();
 
-    return [head, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+    return [head, ...salesUnitsBlock].reduce((prev, next) => prev + next); 
 };
 
 export const BandaiNamcoPrint = (salesData: Section[], salesDataLastFY: Section[], salesUnits: Section[], salesUnitsLastFY: Section[], header: Header, currentQuarter: number) => {
@@ -475,15 +374,14 @@ export const BandaiNamcoPrint = (salesData: Section[], salesDataLastFY: Section[
     const head = printHead(header);
 
     const salesUnitsBlock = [
-        printLine(32),
-        printTextBlock(salesData[0].name, 32),
+        liner(printTextBlock(salesData[0].name, 32),"−","top",true),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes, 50) + "\n" + printLine(50),
+        (salesData[0].notes === undefined) ? [] : liner(printTextBlock(salesData[0].notes, 50),"−","bottom",true,50)
         ].flat();
 
-    return [head, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+    return [head, ...salesUnitsBlock].reduce((prev, next) => prev + next); 
 };
 
 export const CapcomPrint = (salesData: Section[], salesDataLastFY: Section[], salesUnits: Section[], salesUnitsLastFY: Section[], header: Header, currentQuarter: number) => {
@@ -491,43 +389,40 @@ export const CapcomPrint = (salesData: Section[], salesDataLastFY: Section[], sa
     const head = printHead(header);
 
     const salesUnitsBlock = [
-        printLine(32),
-        printTextBlock(salesData[0].name, 32),
+        liner(printTextBlock(salesData[0].name, 32),"−","top",true),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes, 50) + "\n" + printLine(50),
+        (salesData[0].notes === undefined) ? [] : liner(printTextBlock(salesData[0].notes, 50),"−","bottom",true,50)
         ].flat();
 
-    return [head, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+    return [head, ...salesUnitsBlock].reduce((prev, next) => prev + next); 
 };
 
 export const CapcomPrintPhysical = (salesData: Section[], salesDataLastFY: Section[], salesUnits: Section[], salesUnitsLastFY: Section[], header: Header, currentQuarter: number) => {
 
     const salesUnitsBlock = [
-        printLine(32),
-        printTextBlock(salesData[0].name, 32),
+        liner(printTextBlock(salesData[0].name, 32),"−","top",true),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes, 50) + "\n" + printLine(50),
+        (salesData[0].notes === undefined) ? [] : liner(printTextBlock(salesData[0].notes, 50),"−","bottom",true,50)
         ].flat();
 
-    return [...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+    return [...salesUnitsBlock].reduce((prev, next) => prev + next); 
 };
 
 export const CapcomPrintDigital = (salesData: Section[], salesDataLastFY: Section[], salesUnits: Section[], salesUnitsLastFY: Section[], header: Header, currentQuarter: number) => {
 
     const salesUnitsBlock = [
-        printLine(32),
-        printTextBlock(salesData[0].name, 32),
+        liner(printTextBlock(salesData[0].name, 32),"−","top",true),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes, 50) + "\n" + printLine(50),
+        (salesData[0].notes === undefined) ? [] : liner(printTextBlock(salesData[0].notes, 50),"−","bottom",true,50)
         ].flat();
 
-    return [...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+    return [...salesUnitsBlock].reduce((prev, next) => prev + next); 
 };
 
 export const KoeiTecmoPrint = (salesData: Section[], salesDataLastFY: Section[], salesUnits: Section[], salesUnitsLastFY: Section[], header: Header, currentQuarter: number) => {
@@ -535,15 +430,14 @@ export const KoeiTecmoPrint = (salesData: Section[], salesDataLastFY: Section[],
     const head = printHead(header);
 
     const salesUnitsBlock = [
-        printLine(32),
-        printTextBlock(salesData[0].name, 32),
+        liner(printTextBlock(salesData[0].name, 32),"−","top",true),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : printTextBlock(salesData[0].notes, 50) + "\n" + printLine(50),
+        (salesData[0].notes === undefined) ? [] : liner(printTextBlock(salesData[0].notes, 50),"−","bottom",true,50)
         ].flat();
 
-    return [head, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+    return [head, ...salesUnitsBlock].reduce((prev, next) => prev + next); 
 };
 
 export const SquareEnixPrint = (salesHDGames: Section[], salesHDGamesLastFY: Section[], salesMMO: Section[], salesMMOLastFY: Section[], salesHDandMMO: Section[], salesHDandMMOLastFY: Section[], salesUnits: Section[], salesUnitsLastFY: Section[], header: Header, currentQuarter: number): string => {
@@ -551,30 +445,27 @@ export const SquareEnixPrint = (salesHDGames: Section[], salesHDGamesLastFY: Sec
     const head = printHead(header);
 
     const salesDataBlock = [
-        printLine(32),
-        printTextBlock(salesHDGames[0].name, 32),
+        liner(printTextBlock(salesHDGames[0].name, 32),"−","top",true,32),
         squareEnixSalesHeader,
         ...printQtrSales(salesHDGames, salesHDGamesLastFY, header, currentQuarter),
         ...printCmlSales(salesHDGames, salesHDGamesLastFY, header, currentQuarter),
-        (salesHDGames[0].notes === undefined) ? [] : printTextBlock(salesHDGames[0].notes, 38) + "\n" + printLine(38),
-        printLine(32),
-        printTextBlock(salesMMO[0].name, 32),
+        (salesHDGames[0].notes === undefined) ? [] : liner(printTextBlock(salesHDGames[0].notes, 38),"−","bottom",true,38),
+        liner(printTextBlock(salesMMO[0].name, 32),"−","top",true,32),
         squareEnixSalesHeader,
         ...printQtrSales(salesMMO, salesMMOLastFY, header, currentQuarter),
         ...printCmlSales(salesMMO, salesMMOLastFY, header, currentQuarter),
-        (salesMMO[0].notes === undefined) ? [] : printTextBlock(salesMMO[0].notes, 38) + "\n" + printLine(38),
+        (salesMMO[0].notes === undefined) ? [] : liner(printTextBlock(salesMMO[0].notes, 38),"−","bottom",true,38),
     ].flat();
 
     const salesUnitsBlock = [
-            printLine(32),
-            printTextBlock(salesHDandMMO[0].name, 32),
+            liner(printTextBlock(salesHDandMMO[0].name, 32),"−","top",true,32),
             generalSalesHeader,
             ...printQtrSalesPerSWUnit(salesHDandMMO, salesHDandMMOLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
             ...printCmlSalesPerSWUnit(salesHDandMMO, salesHDandMMOLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-            (salesHDandMMO[0].notes === undefined) ? [] : printTextBlock(salesHDandMMO[0].notes, 50) + "\n" + printLine(50),
+            (salesHDandMMO[0].notes === undefined) ? [] : liner(printTextBlock(salesHDandMMO[0].notes, 50),"−","bottom",true,50)
         ].flat();
 
-    return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + "\n" + next); 
+    return [head, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + next); 
 
 }
 
