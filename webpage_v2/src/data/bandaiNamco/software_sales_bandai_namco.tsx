@@ -37,7 +37,7 @@ export const salesHomeVideoGameMake = (obj: {"softwareSales": salesOrUnitsJSON }
     let salesHomeVideoGame: Section[] = [
         {
             name: obj.softwareSales.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "1st Quarter",
             cmlPeriod: "1st Quarter",
             units: (obj.softwareSales.units === "NaN") ? "NaN" : "currency",
@@ -46,7 +46,7 @@ export const salesHomeVideoGameMake = (obj: {"softwareSales": salesOrUnitsJSON }
         },
         {
             name: obj.softwareSales.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "2nd Quarter",
             cmlPeriod: "First Half",
             units: (obj.softwareSales.units === "NaN") ? "NaN" : "currency",
@@ -55,7 +55,7 @@ export const salesHomeVideoGameMake = (obj: {"softwareSales": salesOrUnitsJSON }
         },
         {
             name: obj.softwareSales.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "3rd Quarter",
             cmlPeriod: "1st 3 Qtrs",
             units: (obj.softwareSales.units === "NaN") ? "NaN" : "currency",
@@ -64,7 +64,7 @@ export const salesHomeVideoGameMake = (obj: {"softwareSales": salesOrUnitsJSON }
         },
         {
             name: obj.softwareSales.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.softwareSales.units === "NaN") ? "NaN" : "currency",
@@ -81,7 +81,7 @@ export const unitsMake = (obj: {"softwareUnits": salesOrUnitsJSON }): Section[] 
     let units: Section[] = [
         {
             name: obj.softwareUnits.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "1st Quarter",
             cmlPeriod: "1st Quarter",
             units: (obj.softwareUnits.units === "NaN") ? "NaN" : "units",
@@ -89,7 +89,7 @@ export const unitsMake = (obj: {"softwareUnits": salesOrUnitsJSON }): Section[] 
         },
         {
             name: obj.softwareUnits.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "2nd Quarter",
             cmlPeriod: "First Half",
             units: (obj.softwareUnits.units === "NaN") ? "NaN" : "units",
@@ -97,7 +97,7 @@ export const unitsMake = (obj: {"softwareUnits": salesOrUnitsJSON }): Section[] 
         },
         {
             name: obj.softwareUnits.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "3rd Quarter",
             cmlPeriod: "1st 3 Qtrs",
             units: (obj.softwareUnits.units === "NaN") ? "NaN" : "units",
@@ -105,7 +105,7 @@ export const unitsMake = (obj: {"softwareUnits": salesOrUnitsJSON }): Section[] 
         },
         {
             name: obj.softwareUnits.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.softwareUnits.units === "NaN") ? "NaN" : "units",

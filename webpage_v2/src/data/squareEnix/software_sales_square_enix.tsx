@@ -46,7 +46,7 @@ const salesHDmake = (obj: {"hdGamesSales": salesOrUnitsJSON}): Section[] => {
     let salesHD: Section[] = [
         {
             name: obj.hdGamesSales.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "1st Quarter",
             cmlPeriod: "1st Quarter",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
@@ -55,7 +55,7 @@ const salesHDmake = (obj: {"hdGamesSales": salesOrUnitsJSON}): Section[] => {
         },
         {
             name: obj.hdGamesSales.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "2nd Quarter",
             cmlPeriod: "First Half",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
@@ -64,7 +64,7 @@ const salesHDmake = (obj: {"hdGamesSales": salesOrUnitsJSON}): Section[] => {
         },
         {
             name: obj.hdGamesSales.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "3rd Quarter",
             cmlPeriod: "1st 3 Qtrs",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
@@ -73,7 +73,7 @@ const salesHDmake = (obj: {"hdGamesSales": salesOrUnitsJSON}): Section[] => {
         },
         {
             name: obj.hdGamesSales.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
@@ -91,7 +91,7 @@ const salesMMOmake = (obj: {"mmoSales": salesOrUnitsJSON}): Section[] => {
     let salesMMO: Section[] = [
         {
             name: obj.mmoSales.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "1st Quarter",
             cmlPeriod: "1st Quarter",
             units: (obj.mmoSales.units === "NaN") ? "NaN" : "currency",
@@ -100,7 +100,7 @@ const salesMMOmake = (obj: {"mmoSales": salesOrUnitsJSON}): Section[] => {
         },
         {
             name: obj.mmoSales.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "2nd Quarter",
             cmlPeriod: "First Half",
             units: (obj.mmoSales.units === "NaN") ? "NaN" : "currency",
@@ -109,7 +109,7 @@ const salesMMOmake = (obj: {"mmoSales": salesOrUnitsJSON}): Section[] => {
         },
         {
             name: obj.mmoSales.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "3rd Quarter",
             cmlPeriod: "1st 3 Qtrs",
             units: (obj.mmoSales.units === "NaN") ? "NaN" : "currency",
@@ -118,7 +118,7 @@ const salesMMOmake = (obj: {"mmoSales": salesOrUnitsJSON}): Section[] => {
         },
         {
             name: obj.mmoSales.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.mmoSales.units === "NaN") ? "NaN" : "currency",
@@ -135,7 +135,7 @@ export const salesHDandMMOmake= (obj: {"hdGamesSales": salesOrUnitsJSON, "mmoSal
     let salesHDandMMO: Section[] = [
         {
             name: "HD Games & MMO Sales",
-            region: " Group Total",
+            region: "Group Total",
             period: "1st Quarter",
             cmlPeriod: "1st Quarter",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
@@ -144,7 +144,7 @@ export const salesHDandMMOmake= (obj: {"hdGamesSales": salesOrUnitsJSON, "mmoSal
         },
         {
             name: "HD Games & MMO Sales",
-            region: " Group Total",
+            region: "Group Total",
             period: "2nd Quarter",
             cmlPeriod: "First Half",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
@@ -153,7 +153,7 @@ export const salesHDandMMOmake= (obj: {"hdGamesSales": salesOrUnitsJSON, "mmoSal
         },
         {
             name: "HD Games & MMO Sales",
-            region: " Group Total",
+            region: "Group Total",
             period: "3rd Quarter",
             cmlPeriod: "1st 3 Qtrs",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
@@ -162,7 +162,7 @@ export const salesHDandMMOmake= (obj: {"hdGamesSales": salesOrUnitsJSON, "mmoSal
         },
         {
             name: "HD Games & MMO Sales",
-            region: " Group Total",
+            region: "Group Total",
             period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.hdGamesSales.units === "NaN") ? "NaN" : "currency",
@@ -179,7 +179,7 @@ export const unitsMake = (obj: {"hdGamesAndMMOUnits": salesOrUnitsJSON}): Sectio
     let units: Section[] = [
         {
             name: obj.hdGamesAndMMOUnits.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "1st Quarter",
             cmlPeriod: "1st Quarter",
             units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "units",
@@ -187,7 +187,7 @@ export const unitsMake = (obj: {"hdGamesAndMMOUnits": salesOrUnitsJSON}): Sectio
         },
         {
             name: obj.hdGamesAndMMOUnits.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "2nd Quarter",
             cmlPeriod: "First Half",
             units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "units",
@@ -195,7 +195,7 @@ export const unitsMake = (obj: {"hdGamesAndMMOUnits": salesOrUnitsJSON}): Sectio
         },
         {
             name: obj.hdGamesAndMMOUnits.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "3rd Quarter",
             cmlPeriod: "1st 3 Qtrs",
             units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "units",
@@ -203,7 +203,7 @@ export const unitsMake = (obj: {"hdGamesAndMMOUnits": salesOrUnitsJSON}): Sectio
         },
         {
             name: obj.hdGamesAndMMOUnits.name,
-            region: " Group Total",
+            region: "Group Total",
             period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj.hdGamesAndMMOUnits.units === "NaN") ? "NaN" : "units",

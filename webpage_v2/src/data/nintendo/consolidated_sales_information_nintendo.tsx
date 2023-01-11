@@ -1,7 +1,6 @@
 import {
     Section,
     Header,
-    printHead,
     printSections,
     quarterlyCalculation,
     yearOnYearCalculation
