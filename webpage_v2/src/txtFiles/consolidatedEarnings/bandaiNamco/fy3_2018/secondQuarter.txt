@@ -1,5 +1,11 @@
 Net Sales
+308846
+620000
 
 Operating Income
+34941
+57000
 
 Net Income
+28196
+40000
