@@ -1,6 +1,6 @@
 import { readFileSync, writeFile } from "fs";
 
-let currentQuarter = 1;
+let currentQuarter = 4;
 
 const readQuarter = (currentQuarterLocal) => {
 
@@ -18,7 +18,7 @@ const checkMatch = (readingQuarter) => {
     return readingQuarter.match(/.+/g)
 };
 
-const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal, platformLocal) => {
+const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
     if (newQuarterLocal === null) {
         return null
     };
@@ -47,10 +47,22 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal, platf
                 Q3CmlValue: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*3)+1]) : searchTitle[0].Q3CmlValue,
                 Q4CmlValue: Number(newQuarterLocal[(i*3)+1]),
                 forecastThisFY: searchTitle[0].forecastThisFY,
-                forecastRevision1: (searchTitle[0].forecastThisFY === Number(newQuarterLocal[(i*3)+2])) ? null : Number(newQuarterLocal[(i*3)+2]),
-                forecastRevision2: (searchTitle[0].forecastRevision1 === Number(newQuarterLocal[(i*3)+2])) ? null : Number(newQuarterLocal[(i*3)+2]),
-                forecastRevision3: (searchTitle[0].forecastRevision2 === Number(newQuarterLocal[(i*3)+2])) ? null : Number(newQuarterLocal[(i*3)+2]),
-                forecastNextFY: (currentQuarterLocal === 4) ? null : Number(newQuarterLocal[(i*3)+2]),
+                forecastRevision1: (searchTitle[0].forecastRevision1 !== null)
+                        ? searchTitle[0].forecastRevision1
+                        : (currentQuarter < 4 && searchTitle[0].forecastThisFY !== Number(newQuarterLocal[(i*3)+2])) 
+                            ? Number(newQuarterLocal[(i*3)+2])
+                            : null,
+                forecastRevision2: (searchTitle[0].forecastRevision2 !== null)
+                        ? searchTitle[0].forecastRevision2
+                        : (currentQuarter < 4 && searchTitle[0].forecastThisFY !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastRevision1 !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastRevision1 !== null) 
+                            ? Number(newQuarterLocal[(i*3)+2]) 
+                            : null,
+                forecastRevision3: (searchTitle[0].forecastRevision3 !== null)
+                        ? searchTitle[0].forecastRevision3
+                        : (currentQuarter < 4 && searchTitle[0].forecastThisFY !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastRevision1 !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastRevision1 !== null && searchTitle[0].forecastRevision2 !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastRevision2 !== null) 
+                            ? Number(newQuarterLocal[(i*3)+2])
+                            : null,
+                forecastNextFY: (currentQuarterLocal === 4) ? Number(newQuarterLocal[(i*3)+2]) : null,
             };
     });
 };
@@ -69,7 +81,7 @@ console.log(extractNQ);
 let getCurrentData = getJSON("earnings_data_test.json", currentQuarter);
 let parseCurrentData = (!getCurrentData) ? undefined : JSON.parse(getCurrentData);
 
-let newArray = makeArray(extractNQ, parseCurrentData, currentQuarter, currentPlatform);
+let newArray = makeArray(extractNQ, parseCurrentData, currentQuarter);
 
 let newArrayStringify = JSON.stringify(newArray);
 
