@@ -44,6 +44,18 @@ import bandaiNamco2021 from "../bandaiNamco/Consolidated_Earnings/consolidated_e
 import bandaiNamco2020 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2020.json";
 import bandaiNamco2019 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2019.json";
 import bandaiNamco2018 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2018.json";
+import bandaiNamco2017 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2017.json";
+import bandaiNamco2016 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2016.json";
+import bandaiNamco2015 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2015.json";
+import bandaiNamco2014 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2014.json";
+import bandaiNamco2013 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2013.json";
+import bandaiNamco2012 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2012.json";
+import bandaiNamco2011 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2011.json";
+import bandaiNamco2010 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2010.json";
+import bandaiNamco2009 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2009.json";
+import bandaiNamco2008 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2008.json";
+import bandaiNamco2007 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2007.json";
+import bandaiNamco2006 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2006.json";
 
 import sega2023 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2023.json";
 import sega2022 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2022.json";
@@ -70,18 +82,7 @@ export type EarningsJSON = {
     currentQuarter: number,
     companyName: string,
     fiscalYear: string,
-    data: {
-        name: string,
-        Q1CmlValue: number,
-        Q2CmlValue: number,
-        Q3CmlValue: number,
-        Q4CmlValue: number,
-        forecastThisFY?: number,
-        forecastRevision1?: number,
-        forecastRevision2?: number,
-        forecastRevision3?: number,
-        forecastNextFY?: number, 
-    }[],
+    data: EarningsMake[],
 };
 
 type EarningsMake = {
@@ -90,11 +91,11 @@ type EarningsMake = {
         Q2CmlValue: number,
         Q3CmlValue: number,
         Q4CmlValue: number,
-        forecastThisFY?: number,
-        forecastRevision1?: number,
-        forecastRevision2?: number,
-        forecastRevision3?: number,
-        forecastNextFY?: number, 
+        forecastThisFY?: number | null,
+        forecastRevision1?: number | null,
+        forecastRevision2?: number | null,
+        forecastRevision3?: number | null,
+        forecastNextFY?: number | null, 
 }; 
 
 
@@ -139,6 +140,18 @@ const collectionBandaiNamco: EarningsJSON[] = [
     bandaiNamco2020,
     bandaiNamco2019,
     bandaiNamco2018,
+    bandaiNamco2017,
+    bandaiNamco2016,
+    bandaiNamco2015,
+    bandaiNamco2014,
+    bandaiNamco2013,
+    bandaiNamco2012,
+    bandaiNamco2011,
+    bandaiNamco2010,
+    bandaiNamco2009,
+    bandaiNamco2008,
+    bandaiNamco2007,
+    bandaiNamco2006,
 ];
 
 const collectionSegaSammy: EarningsJSON[] = [
@@ -232,7 +245,13 @@ const forecastMake = (obj: EarningsMake, forecastLabelThisFY: string, forecastLa
             forecastPeriod: forecastLabelNextFY,
             value: obj?.forecastNextFY,
         },
-    ].filter(elem => elem.value !== undefined).map(elem => {
+    ].flatMap(elem => {
+        if(elem.value === undefined || elem.value === null) {
+            return []
+        }
+
+        return elem;
+    }).map(elem => {
 
         return {
             category: "forecast",
@@ -243,7 +262,7 @@ const forecastMake = (obj: EarningsMake, forecastLabelThisFY: string, forecastLa
             value: elem.value as number, // type assertion, filter has already removed undefined values.
         };
     });
-
+    
     return forecasts
 };
 
@@ -279,10 +298,11 @@ return collection.map((elem, index, array) => {
         header.companyName + " | " + header.fiscalYear,
         header.title
     ],headerLength);
-
+    
     // const opMarginSet = printOpMargin(header, dataThisFY[0], dataThisFY[1], forecastData[0], forecastData[1], currentQuarter);
 
     const printEach = Array.from({length: dataThisFY.length + 1}, (v, i) => {
+        
         return (i === 2) 
                 ? printOpMargin(header, dataThisFY[0], dataThisFY[1], forecastData[0], forecastData[1], currentQuarter,13)
                 :(i > 2)

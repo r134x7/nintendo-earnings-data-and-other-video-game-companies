@@ -69,7 +69,7 @@ const Home = () => {
                     </List>
                     <Text>Bandai Namco -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Consolidated Operating Results from FY3/2019 to FY3/2023 added. Added Special page.</List.Item>
+                        <List.Item>Latest update: Consolidated Operating Results from FY3/2006 to FY3/2023 added. Added Consolidated Operating Results added to special page.</List.Item>
                     </List>
                     <Text>Koei Tecmo -</Text>
                     <List withPadding listStyleType="disc">

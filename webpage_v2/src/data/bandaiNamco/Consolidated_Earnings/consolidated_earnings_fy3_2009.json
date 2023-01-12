@@ -2,5 +2,5 @@
     "currentQuarter": 4,
     "companyName": "Bandai Namco Holdings Inc.",
     "fiscalYear": "FY3/2009",
-    "data": [{"name":"Net Sales","Q1CmlValue":89979,"Q2CmlValue":190795,"Q3CmlValue":315647,"Q4CmlValue":426399,"forecastThisFY":440000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":430000},{"name":"Operating Income","Q1CmlValue":1528,"Q2CmlValue":5576,"Q3CmlValue":19841,"Q4CmlValue":22348,"forecastThisFY":24000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":22500},{"name":"Net Income","Q1CmlValue":1018,"Q2CmlValue":1282,"Q3CmlValue":9019,"Q4CmlValue":11830,"forecastThisFY":13000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":12500}]
+    "data": [{"name":"Net Sales","Q1CmlValue":89979,"Q2CmlValue":190795,"Q3CmlValue":315647,"Q4CmlValue":426399,"forecastThisFY":440000,"forecastNextFY":430000},{"name":"Operating Income","Q1CmlValue":1528,"Q2CmlValue":5576,"Q3CmlValue":19841,"Q4CmlValue":22348,"forecastThisFY":24000,"forecastNextFY":22500},{"name":"Net Income","Q1CmlValue":1018,"Q2CmlValue":1282,"Q3CmlValue":9019,"Q4CmlValue":11830,"forecastThisFY":13000,"forecastNextFY":12500}]
 }

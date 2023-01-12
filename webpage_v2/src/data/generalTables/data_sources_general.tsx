@@ -46,6 +46,19 @@ import bandaiNamcoDataSources2022 from "../bandaiNamco/Data_Sources/data_sources
 import bandaiNamcoDataSources2021 from "../bandaiNamco/Data_Sources/data_sources_fy3_2021.json";
 import bandaiNamcoDataSources2020 from "../bandaiNamco/Data_Sources/data_sources_fy3_2020.json";
 import bandaiNamcoDataSources2019 from "../bandaiNamco/Data_Sources/data_sources_fy3_2019.json";
+import bandaiNamcoDataSources2018 from "../bandaiNamco/Data_Sources/data_sources_fy3_2018.json";
+import bandaiNamcoDataSources2017 from "../bandaiNamco/Data_Sources/data_sources_fy3_2017.json";
+import bandaiNamcoDataSources2016 from "../bandaiNamco/Data_Sources/data_sources_fy3_2016.json";
+import bandaiNamcoDataSources2015 from "../bandaiNamco/Data_Sources/data_sources_fy3_2015.json";
+import bandaiNamcoDataSources2014 from "../bandaiNamco/Data_Sources/data_sources_fy3_2014.json";
+import bandaiNamcoDataSources2013 from "../bandaiNamco/Data_Sources/data_sources_fy3_2013.json";
+import bandaiNamcoDataSources2012 from "../bandaiNamco/Data_Sources/data_sources_fy3_2012.json";
+import bandaiNamcoDataSources2011 from "../bandaiNamco/Data_Sources/data_sources_fy3_2011.json";
+import bandaiNamcoDataSources2010 from "../bandaiNamco/Data_Sources/data_sources_fy3_2010.json";
+import bandaiNamcoDataSources2009 from "../bandaiNamco/Data_Sources/data_sources_fy3_2009.json";
+import bandaiNamcoDataSources2008 from "../bandaiNamco/Data_Sources/data_sources_fy3_2008.json";
+import bandaiNamcoDataSources2007 from "../bandaiNamco/Data_Sources/data_sources_fy3_2007.json";
+import bandaiNamcoDataSources2006 from "../bandaiNamco/Data_Sources/data_sources_fy3_2006.json";
 
 import koeiTecmoDataSources2023 from "../koeiTecmo/Data_Sources/data_sources_fy3_2023.json";
 import koeiTecmoDataSources2022 from "../koeiTecmo/Data_Sources/data_sources_fy3_2022.json";
@@ -132,6 +145,19 @@ const bandaiNamcoDataSources: jsonData[] = [
     bandaiNamcoDataSources2021,
     bandaiNamcoDataSources2020,
     bandaiNamcoDataSources2019,
+    bandaiNamcoDataSources2018,
+    bandaiNamcoDataSources2017,
+    bandaiNamcoDataSources2016,
+    bandaiNamcoDataSources2015,
+    bandaiNamcoDataSources2014,
+    bandaiNamcoDataSources2013,
+    bandaiNamcoDataSources2012,
+    bandaiNamcoDataSources2011,
+    bandaiNamcoDataSources2010,
+    bandaiNamcoDataSources2009,
+    bandaiNamcoDataSources2008,
+    bandaiNamcoDataSources2007,
+    bandaiNamcoDataSources2006,
 ];
 
 const koeiTecmoDataSources: jsonData[] = [

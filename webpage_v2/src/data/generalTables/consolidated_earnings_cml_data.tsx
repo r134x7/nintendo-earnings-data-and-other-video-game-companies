@@ -45,6 +45,18 @@ import consolidatedEarningsNintendo2021 from "../nintendo/Consolidated_Earnings/
 import consolidatedEarningsNintendo2022 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2022.json" 
 import consolidatedEarningsNintendo2023 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2023.json"
 
+import consolidatedEarningsBandaiNamco2006 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2006.json";
+import consolidatedEarningsBandaiNamco2007 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2007.json";
+import consolidatedEarningsBandaiNamco2008 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2008.json";
+import consolidatedEarningsBandaiNamco2009 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2009.json";
+import consolidatedEarningsBandaiNamco2010 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2010.json";
+import consolidatedEarningsBandaiNamco2011 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2011.json";
+import consolidatedEarningsBandaiNamco2012 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2012.json";
+import consolidatedEarningsBandaiNamco2013 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2013.json";
+import consolidatedEarningsBandaiNamco2014 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2014.json";
+import consolidatedEarningsBandaiNamco2015 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2015.json";
+import consolidatedEarningsBandaiNamco2016 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2016.json";
+import consolidatedEarningsBandaiNamco2017 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2017.json";
 import consolidatedEarningsBandaiNamco2018 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2018.json"
 import consolidatedEarningsBandaiNamco2019 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2019.json"
 import consolidatedEarningsBandaiNamco2020 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2020.json"
@@ -129,6 +141,18 @@ const totalCollectionNintendo: EarningsJSON[] = [
 ];
 
 const totalCollectionBandaiNamco: EarningsJSON[] = [
+    consolidatedEarningsBandaiNamco2006,
+    consolidatedEarningsBandaiNamco2007,
+    consolidatedEarningsBandaiNamco2008,
+    consolidatedEarningsBandaiNamco2009,
+    consolidatedEarningsBandaiNamco2010,
+    consolidatedEarningsBandaiNamco2011,
+    consolidatedEarningsBandaiNamco2012,
+    consolidatedEarningsBandaiNamco2013,
+    consolidatedEarningsBandaiNamco2014,
+    consolidatedEarningsBandaiNamco2015,
+    consolidatedEarningsBandaiNamco2016,
+    consolidatedEarningsBandaiNamco2017,
     consolidatedEarningsBandaiNamco2018,
     consolidatedEarningsBandaiNamco2019,
     consolidatedEarningsBandaiNamco2020,
@@ -178,8 +202,15 @@ const totalCollectionSquareEnix: EarningsJSON[] = [
 const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+1, "left")]),"−", "bottom",true)
 
 function operatingResultsMaker (collection: EarningsJSON[]): {
-    netSales: string[], operatingIncome: string[], netIncome: string[]
+    header: string, netSales: string[], operatingIncome: string[], netIncome: string[]
 } {
+
+    let headerMake = liner(border([
+        spacer(collection[0].companyName, collection[0].companyName.length+1, "left")
+        ]),"−","top",true) +
+        liner(border([
+            spacer("Consolidated Operating Results", "Consolidated Operating Results".length+2, "left")
+        ]), "−", "both",true)
 
     let netSalesSet = collection.map(elem => {
         return {
@@ -213,6 +244,7 @@ function operatingResultsMaker (collection: EarningsJSON[]): {
     const printNetIncome = printCumulativeValues(netIncomeSet, sortedNetIncome, "Net Income");
 
     return {
+        header: headerMake,
         netSales: printNetSales,
         operatingIncome: printOperatingIncome,
         netIncome: printNetIncome,
@@ -259,12 +291,6 @@ function sortList(list: {fiscalYear: string, value: number}[]) {
 // const sortedOperatingIncome = sortList(operatingIncomeSet);
 // const sortedNetIncome = sortList(netIncomeSet);
 
-let headerNintendo = liner(border([
-    spacer("Nintendo Co., Ltd.", "Nintendo Co., Ltd.".length+1, "left")
-    ]),"−","top",true) +
-    liner(border([
-        spacer("Consolidated Operating Results", "Consolidated Operating Results".length+2, "left")
-    ]), "−", "both",true)
 
 const printCumulativeValues = (list: {fiscalYear: string, value: number}[], sortedList: {fiscalYear: string, value: number}[], valueType: string): string[] => {
 
@@ -336,8 +362,10 @@ let dataSourceNintendo = "Source: https://www.nintendo.co.jp/ir/en/finance/histo
 
 const operatingResultsNintendo = operatingResultsMaker(totalCollectionNintendo);
 
+const operatingResultsBandaiNamco = operatingResultsMaker(totalCollectionBandaiNamco);
+
 export const cumulativeEarningsListNintendo = [
-    headerNintendo,
+    operatingResultsNintendo.header,
     dateLabel,
     ...operatingResultsNintendo.netSales,
     ...operatingResultsNintendo.operatingIncome,
@@ -346,3 +374,11 @@ export const cumulativeEarningsListNintendo = [
     dataSourceNintendo,
 ].reduce((prev, next) => prev + next);
 
+export const cumulativeEarningsListBandaiNamco = [
+    operatingResultsBandaiNamco.header,
+    dateLabel,
+    ...operatingResultsBandaiNamco.netSales,
+    ...operatingResultsBandaiNamco.operatingIncome,
+    ...operatingResultsBandaiNamco.netIncome,
+    "###\n",
+].reduce((prev, next) => prev + next);
