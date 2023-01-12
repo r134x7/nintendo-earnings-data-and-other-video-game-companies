@@ -1,51 +1,51 @@
-import { EarningsJSON } from "../../generalTables/consolidated_earnings_general"
-import { liner, spacer, border } from "../../../utils/table_design_logic"
+import { EarningsJSON } from "./consolidated_earnings_general"
+import { liner, spacer, border } from "../../utils/table_design_logic"
 
-import consolidatedEarnings1981 from "../Consolidated_Earnings/consolidated_earnings_fy8_1981.json" 
-import consolidatedEarnings1982 from "../Consolidated_Earnings/consolidated_earnings_fy8_1982.json" 
-import consolidatedEarnings1983 from "../Consolidated_Earnings/consolidated_earnings_fy8_1983.json" 
-import consolidatedEarnings1984 from "../Consolidated_Earnings/consolidated_earnings_fy8_1984.json" 
-import consolidatedEarnings1985 from "../Consolidated_Earnings/consolidated_earnings_fy8_1985.json" 
-import consolidatedEarnings1986 from "../Consolidated_Earnings/consolidated_earnings_fy8_1986.json" 
-import consolidatedEarnings1987 from "../Consolidated_Earnings/consolidated_earnings_fy8_1987.json" 
-import consolidatedEarnings1988 from "../Consolidated_Earnings/consolidated_earnings_fy8_1988.json" 
-import consolidatedEarnings1989 from "../Consolidated_Earnings/consolidated_earnings_fy8_1989.json" 
-import consolidatedEarnings1990 from "../Consolidated_Earnings/consolidated_earnings_fy3_1990.json" 
-import consolidatedEarnings1991 from "../Consolidated_Earnings/consolidated_earnings_fy3_1991.json" 
-import consolidatedEarnings1992 from "../Consolidated_Earnings/consolidated_earnings_fy3_1992.json" 
-import consolidatedEarnings1993 from "../Consolidated_Earnings/consolidated_earnings_fy3_1993.json" 
-import consolidatedEarnings1994 from "../Consolidated_Earnings/consolidated_earnings_fy3_1994.json" 
-import consolidatedEarnings1995 from "../Consolidated_Earnings/consolidated_earnings_fy3_1995.json" 
-import consolidatedEarnings1996 from "../Consolidated_Earnings/consolidated_earnings_fy3_1996.json" 
-import consolidatedEarnings1997 from "../Consolidated_Earnings/consolidated_earnings_fy3_1997.json" 
-import consolidatedEarnings1998 from "../Consolidated_Earnings/consolidated_earnings_fy3_1998.json" 
-import consolidatedEarnings1999 from "../Consolidated_Earnings/consolidated_earnings_fy3_1999.json" 
-import consolidatedEarnings2000 from "../Consolidated_Earnings/consolidated_earnings_fy3_2000.json" 
-import consolidatedEarnings2001 from "../Consolidated_Earnings/consolidated_earnings_fy3_2001.json" 
-import consolidatedEarnings2002 from "../Consolidated_Earnings/consolidated_earnings_fy3_2002.json" 
-import consolidatedEarnings2003 from "../Consolidated_Earnings/consolidated_earnings_fy3_2003.json" 
-import consolidatedEarnings2004 from "../Consolidated_Earnings/consolidated_earnings_fy3_2004.json" 
-import consolidatedEarnings2005 from "../Consolidated_Earnings/consolidated_earnings_fy3_2005.json" 
-import consolidatedEarnings2006 from "../Consolidated_Earnings/consolidated_earnings_fy3_2006.json" 
-import consolidatedEarnings2007 from "../Consolidated_Earnings/consolidated_earnings_fy3_2007.json" 
-import consolidatedEarnings2008 from "../Consolidated_Earnings/consolidated_earnings_fy3_2008.json" 
-import consolidatedEarnings2009 from "../Consolidated_Earnings/consolidated_earnings_fy3_2009.json" 
-import consolidatedEarnings2010 from "../Consolidated_Earnings/consolidated_earnings_fy3_2010.json" 
-import consolidatedEarnings2011 from "../Consolidated_Earnings/consolidated_earnings_fy3_2011.json" 
-import consolidatedEarnings2012 from "../Consolidated_Earnings/consolidated_earnings_fy3_2012.json" 
-import consolidatedEarnings2013 from "../Consolidated_Earnings/consolidated_earnings_fy3_2013.json" 
-import consolidatedEarnings2014 from "../Consolidated_Earnings/consolidated_earnings_fy3_2014.json" 
-import consolidatedEarnings2015 from "../Consolidated_Earnings/consolidated_earnings_fy3_2015.json" 
-import consolidatedEarnings2016 from "../Consolidated_Earnings/consolidated_earnings_fy3_2016.json" 
-import consolidatedEarnings2017 from "../Consolidated_Earnings/consolidated_earnings_fy3_2017.json" 
-import consolidatedEarnings2018 from "../Consolidated_Earnings/consolidated_earnings_fy3_2018.json" 
-import consolidatedEarnings2019 from "../Consolidated_Earnings/consolidated_earnings_fy3_2019.json" 
-import consolidatedEarnings2020 from "../Consolidated_Earnings/consolidated_earnings_fy3_2020.json" 
-import consolidatedEarnings2021 from "../Consolidated_Earnings/consolidated_earnings_fy3_2021.json" 
-import consolidatedEarnings2022 from "../Consolidated_Earnings/consolidated_earnings_fy3_2022.json" 
-import consolidatedEarnings2023 from "../Consolidated_Earnings/consolidated_earnings_fy3_2023.json" 
+import consolidatedEarnings1981 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1981.json" 
+import consolidatedEarnings1982 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1982.json" 
+import consolidatedEarnings1983 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1983.json" 
+import consolidatedEarnings1984 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1984.json" 
+import consolidatedEarnings1985 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1985.json" 
+import consolidatedEarnings1986 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1986.json" 
+import consolidatedEarnings1987 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1987.json" 
+import consolidatedEarnings1988 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1988.json" 
+import consolidatedEarnings1989 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1989.json" 
+import consolidatedEarnings1990 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1990.json" 
+import consolidatedEarnings1991 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1991.json" 
+import consolidatedEarnings1992 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1992.json" 
+import consolidatedEarnings1993 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1993.json" 
+import consolidatedEarnings1994 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1994.json" 
+import consolidatedEarnings1995 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1995.json" 
+import consolidatedEarnings1996 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1996.json" 
+import consolidatedEarnings1997 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1997.json" 
+import consolidatedEarnings1998 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1998.json" 
+import consolidatedEarnings1999 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1999.json" 
+import consolidatedEarnings2000 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2000.json" 
+import consolidatedEarnings2001 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2001.json" 
+import consolidatedEarnings2002 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2002.json" 
+import consolidatedEarnings2003 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2003.json" 
+import consolidatedEarnings2004 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2004.json" 
+import consolidatedEarnings2005 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2005.json" 
+import consolidatedEarnings2006 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2006.json" 
+import consolidatedEarnings2007 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2007.json" 
+import consolidatedEarnings2008 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2008.json" 
+import consolidatedEarnings2009 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2009.json" 
+import consolidatedEarnings2010 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2010.json" 
+import consolidatedEarnings2011 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2011.json" 
+import consolidatedEarnings2012 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2012.json" 
+import consolidatedEarnings2013 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2013.json" 
+import consolidatedEarnings2014 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2014.json" 
+import consolidatedEarnings2015 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2015.json" 
+import consolidatedEarnings2016 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2016.json" 
+import consolidatedEarnings2017 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2017.json" 
+import consolidatedEarnings2018 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2018.json" 
+import consolidatedEarnings2019 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2019.json" 
+import consolidatedEarnings2020 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2020.json" 
+import consolidatedEarnings2021 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2021.json" 
+import consolidatedEarnings2022 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2022.json" 
+import consolidatedEarnings2023 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2023.json" 
 
-const totalCollection: EarningsJSON[] = [
+const totalCollectionNintendo: EarningsJSON[] = [
     consolidatedEarnings1981,
     consolidatedEarnings1982,
     consolidatedEarnings1983,
@@ -93,21 +93,21 @@ const totalCollection: EarningsJSON[] = [
 
 const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+1, "left")]),"−", "bottom",true)
 
-let netSalesSet = totalCollection.map(elem => {
+let netSalesSet = totalCollectionNintendo.map(elem => {
     return {
         fiscalYear: elem.fiscalYear,
         value: elem.data[0].Q4CmlValue
     };
 });
 
-let operatingIncomeSet = totalCollection.map(elem => {
+let operatingIncomeSet = totalCollectionNintendo.map(elem => {
     return {
         fiscalYear: elem.fiscalYear,
         value: elem.data[1].Q4CmlValue
     };
 });
 
-let netIncomeSet = totalCollection.map(elem => {
+let netIncomeSet = totalCollectionNintendo.map(elem => {
     return {
         fiscalYear: elem.fiscalYear,
         value: elem.data[2].Q4CmlValue
@@ -133,7 +133,7 @@ const sortedNetSales = sortList(netSalesSet);
 const sortedOperatingIncome = sortList(operatingIncomeSet);
 const sortedNetIncome = sortList(netIncomeSet);
 
-let header = liner(border([
+let headerNintendo = liner(border([
     spacer("Nintendo Co., Ltd.", "Nintendo Co., Ltd.".length+1, "left")
     ]),"−","top",true) +
     liner(border([
@@ -206,14 +206,14 @@ const printOperatingIncome = printCumulativeValues(operatingIncomeSet, sortedOpe
 
 const printNetIncome = printCumulativeValues(netIncomeSet, sortedNetIncome, "Net Income");
 
-let dataSource = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_data/index.html"
+let dataSourceNintendo = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_data/index.html"
 
-export const cumulativeEarningsList = [
-    header,
+export const cumulativeEarningsListNintendo = [
+    headerNintendo,
     dateLabel,
     ...printNetSales,
     ...printOperatingIncome,
     ...printNetIncome,
     "###\n",
-    dataSource,
+    dataSourceNintendo,
 ].reduce((prev, next) => prev + next);
