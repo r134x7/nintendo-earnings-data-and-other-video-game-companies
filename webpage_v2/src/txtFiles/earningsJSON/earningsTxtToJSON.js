@@ -34,7 +34,7 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
                 Q2CmlValue: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*3)+1]),
                 Q3CmlValue: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*3)+1]),
                 Q4CmlValue: Number(newQuarterLocal[(i*3)+1]),
-                forecastThisFY: (currentQuarterLocal > 1) ? null : Number(newQuarterLocal[(i*3)+2]),
+                forecastThisFY: (currentQuarterLocal !== 4) ? null : Number(newQuarterLocal[(i*3)+2]),
                 forecastRevision1: null,
                 forecastRevision2: null,
                 forecastRevision3: null,
@@ -46,10 +46,12 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
                 Q2CmlValue: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*3)+1]) : searchTitle[0].Q2CmlValue,
                 Q3CmlValue: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*3)+1]) : searchTitle[0].Q3CmlValue,
                 Q4CmlValue: Number(newQuarterLocal[(i*3)+1]),
-                forecastThisFY: searchTitle[0].forecastThisFY,
+                forecastThisFY: (searchTitle[0].forecastThisFY !== null) 
+                        ? searchTitle[0].forecastThisFY
+                        : Number(newQuarterLocal[(i*3)+2]),
                 forecastRevision1: (searchTitle[0].forecastRevision1 !== null)
                         ? searchTitle[0].forecastRevision1
-                        : (currentQuarter < 4 && searchTitle[0].forecastThisFY !== Number(newQuarterLocal[(i*3)+2])) 
+                        : (currentQuarter < 4 && searchTitle[0].forecastThisFY !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastThisFY !== null) 
                             ? Number(newQuarterLocal[(i*3)+2])
                             : null,
                 forecastRevision2: (searchTitle[0].forecastRevision2 !== null)
