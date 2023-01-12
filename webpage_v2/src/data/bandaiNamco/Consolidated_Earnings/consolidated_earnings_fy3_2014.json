@@ -2,5 +2,5 @@
     "currentQuarter": 4,
     "companyName": "Bandai Namco Holdings Inc.",
     "fiscalYear": "FY3/2014",
-    "data": []
+    "data": [{"name":"Net Sales","Q1CmlValue":105867,"Q2CmlValue":228528,"Q3CmlValue":368126,"Q4CmlValue":507679,"forecastThisFY":480000,"forecastRevision1":485000,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":500000},{"name":"Operating Income","Q1CmlValue":13347,"Q2CmlValue":26389,"Q3CmlValue":42782,"Q4CmlValue":44672,"forecastThisFY":40000,"forecastRevision1":45000,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":45000},{"name":"Net Income","Q1CmlValue":9508,"Q2CmlValue":19607,"Q3CmlValue":29702,"Q4CmlValue":25054,"forecastThisFY":26000,"forecastRevision1":29000,"forecastRevision2":25500,"forecastRevision3":null,"forecastNextFY":28000}]
 }
