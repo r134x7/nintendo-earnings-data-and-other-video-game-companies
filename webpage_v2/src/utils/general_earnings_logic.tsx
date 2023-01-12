@@ -165,13 +165,19 @@ const printSection = (valuesThisFY: Earnings[], yoyLength: number) => {
 
 export const printOpMargin = (header: Header, netSalesThisFY: Earnings[], operatingIncomeThisFY: Earnings[], netSalesForecast: Earnings[], operatingIncomeForecast: Earnings[], currentQuarter: number, valueLength: number): string => {
 
+    let bandaiNamcoCheck = (header.companyName === "Bandai Namco Holdings Inc." && "FY3/2006") ? true : false;
+
     let quartersNetSalesThisFY: Earnings[] = quarterlyCalculation(netSalesThisFY);
 
     let quartersOperatingIncomeThisFY: Earnings[] = quarterlyCalculation(operatingIncomeThisFY);
 
     let quartersOpMarginThisFY: string[] = printQuarterValues(operatingMarginCalculation(quartersNetSalesThisFY, quartersOperatingIncomeThisFY), currentQuarter, valueLength);
 
-    let quartersJoin: string[] = quartersOpMarginThisFY.map((elem, index, array) => {
+    let quartersJoin: string[] = quartersOpMarginThisFY.flatMap((elem, index, array) => {
+        if (bandaiNamcoCheck === true && index === 0) {
+            return []
+        }        
+
         return liner(elem,(index === array.length-1) ? "=" : "−", "bottom",true,elem.length-2)
     });
 
@@ -193,6 +199,8 @@ export const printOpMargin = (header: Header, netSalesThisFY: Earnings[], operat
 }; 
 
 export const printAll = (header: Header, valuesThisFY: Earnings[], valuesLastFY: Earnings[], forecastValues: Earnings[], currentQuarter: number, valueLength: number): string => {
+    
+    let bandaiNamcoCheck = (header.companyName === "Bandai Namco Holdings Inc." && "FY3/2006") ? true : false;
 
     let sectionHeader: string = printSection(valuesThisFY, valueLength);
 
@@ -200,7 +208,11 @@ export const printAll = (header: Header, valuesThisFY: Earnings[], valuesLastFY:
 
     let quartersYoY: string[] = printYoY(quarterlyCalculation(valuesThisFY), quarterlyCalculation(valuesLastFY), currentQuarter);
 
-    let quartersJoin: string[] = quartersThisFY.map((elem, index, array) => {
+    let quartersJoin: string[] = quartersThisFY.flatMap((elem, index, array) => {
+        if (bandaiNamcoCheck === true && index === 0) {
+            return []
+        }        
+
         let lineCheck = index === array.length-1; 
 
         return liner(elem + quartersYoY[index],(lineCheck) ? "=" : "−","bottom",true,(elem.length + quartersYoY[index].length - 3)) 

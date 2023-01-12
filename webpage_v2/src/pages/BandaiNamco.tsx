@@ -9,7 +9,7 @@ import BANDAI_NAMCO_CML from "../components/special/BANDAI_NAMCO_CML";
 
 const currentYear = 2023;
 
-const yearsList = Array.from({length: 5}, (elem, index) => 
+const yearsList = Array.from({length: 18}, (elem, index) => 
                     {
                             return "FY3/" + (currentYear - index)
                     }) 
