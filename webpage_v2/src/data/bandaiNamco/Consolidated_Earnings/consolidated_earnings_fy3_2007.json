@@ -1,0 +1,28 @@
+{
+    "currentQuarter": 4,
+    "companyName": "Bandai Namco Holdings Inc.",
+    "fiscalYear": "FY3/2007",
+    "data": [
+        {
+            "name": "Net Sales",
+            "Q1CmlValue": 99119,
+            "Q2CmlValue": 206636,
+            "Q3CmlValue": 330517,
+            "Q4CmlValue": 459132
+        },
+        {
+            "name": "Operating Income",
+            "Q1CmlValue": 8656,
+            "Q2CmlValue": 17263,
+            "Q3CmlValue": 32235,
+            "Q4CmlValue": 42224
+        },
+        {
+            "name": "Net Income",
+            "Q1CmlValue": 4077,
+            "Q2CmlValue": 11011,
+            "Q3CmlValue": 19892,
+            "Q4CmlValue": 24252
+        }
+    ]
+}
