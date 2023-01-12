@@ -8,7 +8,10 @@
             "Q1CmlValue": 0,
             "Q2CmlValue": 218873,
             "Q3CmlValue": 345396,
-            "Q4CmlValue": 450829
+            "Q4CmlValue": 450829,
+            "forecastThisFY": 470000,
+            "forecastRevision1": 450000,
+            "forecastNextFY": 470000
         },
         {
             "name": "Operating Income",
@@ -22,7 +25,10 @@
             "Q1CmlValue": 0,
             "Q2CmlValue": 7834,
             "Q3CmlValue": 17711,
-            "Q4CmlValue": 14149
+            "Q4CmlValue": 14149,
+            "forecastThisFY": 24400,
+            "forecastRevision1": 11000,
+            "forecastNextFY": 22000
         }
     ]
 }
