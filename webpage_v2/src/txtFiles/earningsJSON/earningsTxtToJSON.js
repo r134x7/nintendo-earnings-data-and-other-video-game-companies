@@ -1,6 +1,7 @@
 import { readFileSync, writeFile } from "fs";
 
-let currentQuarter = 4;
+// Enter 1 to 4 on the command line
+let currentQuarter = Number(process.argv[2]);
 
 const readQuarter = (currentQuarterLocal) => {
 
