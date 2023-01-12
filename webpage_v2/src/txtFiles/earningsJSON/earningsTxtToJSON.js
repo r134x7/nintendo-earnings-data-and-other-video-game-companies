@@ -34,11 +34,11 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
                 Q2CmlValue: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*3)+1]),
                 Q3CmlValue: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*3)+1]),
                 Q4CmlValue: Number(newQuarterLocal[(i*3)+1]),
-                forecastThisFY: (currentQuarterLocal !== 4) ? null : Number(newQuarterLocal[(i*3)+2]),
+                forecastThisFY: (currentQuarterLocal === 4) ? null : Number(newQuarterLocal[(i*3)+2]),
                 forecastRevision1: null,
                 forecastRevision2: null,
                 forecastRevision3: null,
-                forecastNextFY: (currentQuarterLocal === 4) ? null : Number(newQuarterLocal[(i*3)+2]),
+                forecastNextFY: (currentQuarterLocal !== 4) ? null : Number(newQuarterLocal[(i*3)+2]),
             } 
             : {
                 name: newQuarterLocal[(i*3)].trim(),
