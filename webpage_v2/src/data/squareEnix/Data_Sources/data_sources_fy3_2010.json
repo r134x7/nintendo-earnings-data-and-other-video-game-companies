@@ -2,16 +2,32 @@
     "fiscalYear": "FY3/2010",
     "data": [
         {
+            "text": "1st Quarter Earnings Release:",
+            "link": "https://www.hd.square-enix.com/eng/pdf/financial_20090807_01en.pdf"
+        },
+        {
             "text": "1st Quarter Financial Results Presentation:",
             "link": "https://www.hd.square-enix.com/eng/ir/library/pdf/10q1slides.pdf"
+        },
+        {
+            "text": "2nd Quarter Earnings Release:",
+            "link": "https://www.hd.square-enix.com/eng/pdf/financial_20091105_01en.pdf"
         },
         {
             "text": "2nd Quarter Financial Results Presentation:",
             "link": "https://www.hd.square-enix.com/eng/ir/library/pdf/10q2slides.pdf"
         },
         {
+            "text": "3rd Quarter Earnings Release:",
+            "link": "https://www.hd.square-enix.com/eng/pdf/financial_10q3earnings.pdf"
+        },
+        {
             "text": "3rd Quarter Financial Results Presentation:",
             "link": "https://www.hd.square-enix.com/eng/ir/library/pdf/10q3slides.pdf"
+        },
+        {
+            "text": "4th Quarter Earnings Release:",
+            "link": "https://www.hd.square-enix.com/eng/pdf/financial_10q4earnings.pdf"
         },
         {
             "text": "4th Quarter Financial Results Presentation:",

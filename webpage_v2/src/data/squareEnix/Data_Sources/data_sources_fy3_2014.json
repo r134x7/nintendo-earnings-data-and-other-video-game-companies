@@ -2,16 +2,32 @@
     "fiscalYear": "FY3/2014",
     "data": [
         {
+            "text": "1st Quarter Earnings Release:",
+            "link": "https://www.hd.square-enix.com/eng/news/pdf/14q1earnings.pdf"
+        },
+        {
             "text": "1st Quarter Financial Results Presentation:",
             "link": "https://www.hd.square-enix.com/eng/ir/library/pdf/14q1slides.pdf"
+        },
+        {
+            "text": "2nd Quarter Earnings Release:",
+            "link": "https://www.hd.square-enix.com/eng/news/pdf/14q2earnings.pdf"
         },
         {
             "text": "2nd Quarter Financial Results Presentation:",
             "link": "https://www.hd.square-enix.com/eng/ir/library/pdf/14q2slides.pdf"
         },
         {
+            "text": "3rd Quarter Earnings Release:",
+            "link": "https://www.hd.square-enix.com/eng/news/pdf/14q3earnings.pdf"
+        },
+        {
             "text": "3rd Quarter Financial Results Presentation:",
             "link": "https://www.hd.square-enix.com/eng/ir/library/pdf/14q3slides.pdf"
+        },
+        {
+            "text": "4th Quarter Earnings Release:",
+            "link": "https://www.hd.square-enix.com/eng/news/pdf/14q4earnings.pdf"
         },
         {
             "text": "4th Quarter Financial Results Presentation:",

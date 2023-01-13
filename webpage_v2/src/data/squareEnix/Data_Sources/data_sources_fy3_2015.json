@@ -2,16 +2,32 @@
     "fiscalYear": "FY3/2015",
     "data": [
         {
+            "text": "1st Quarter Earnings Release:",
+            "link": "https://www.hd.square-enix.com/eng/news/pdf/15q1earnings.pdf"
+        },
+        {
             "text": "1st Quarter Financial Results Presentation:",
             "link": "https://www.hd.square-enix.com/eng/ir/library/pdf/15q1slides.pdf"
+        },
+        {
+            "text": "2nd Quarter Earnings Release:",
+            "link": "https://www.hd.square-enix.com/eng/news/pdf/15q2earnings.pdf"
         },
         {
             "text": "2nd Quarter Financial Results Presentation:",
             "link": "https://www.hd.square-enix.com/eng/ir/library/pdf/15q2slides.pdf"
         },
         {
+            "text": "3rd Quarter Earnings Release:",
+            "link": "https://www.hd.square-enix.com/eng/news/pdf/15q3earnings.pdf"
+        },
+        {
             "text": "3rd Quarter Financial Results Presentation:",
             "link": "https://www.hd.square-enix.com/eng/ir/library/pdf/15q3slides.pdf"
+        },
+        {
+            "text": "4th Quarter Earnings Release:",
+            "link": "https://www.hd.square-enix.com/eng/news/pdf/15q4earnings.pdf"
         },
         {
             "text": "4th Quarter Financial Results Presentation:",
