@@ -2,5 +2,5 @@
     "currentQuarter": 4,
     "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
     "fiscalYear": "FY3/2009",
-    "data": []
+    "data": [{"name":"Net Sales","Q1CmlValue":29770,"Q2CmlValue":67974,"Q3CmlValue":103488,"Q4CmlValue":135693,"forecastThisFY":160000,"forecastRevision1":133000,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":180000},{"name":"Operating Income","Q1CmlValue":3463,"Q2CmlValue":9396,"Q3CmlValue":12768,"Q4CmlValue":12277,"forecastThisFY":21000,"forecastRevision1":12000,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":25000},{"name":"Net Income","Q1CmlValue":2883,"Q2CmlValue":6054,"Q3CmlValue":5259,"Q4CmlValue":6333,"forecastThisFY":12000,"forecastRevision1":4500,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":15000}]
 }
