@@ -1,0 +1,9 @@
+Net Sales
+250394
+270000
+Operating Income
+38176
+30000
+Net Income
+25821
+21000
