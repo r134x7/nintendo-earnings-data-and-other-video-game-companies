@@ -2,20 +2,16 @@
     "fiscalYear": "FY3/2005",
     "data": [
         {
-            "text": "1st Quarter Earnings Release:",
-            "link": ""
-        },
-        {
             "text": "2nd Quarter Earnings Release:",
-            "link": ""
+            "link": "https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2005/e_200503_2q_pre.pdf"
         },
         {
             "text": "3rd Quarter Earnings Release:",
-            "link": ""
+            "link": "https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2005/e_200503_3q.pdf"
         },
         {
             "text": "4th Quarter Earnings Release:",
-            "link": ""
+            "link": "https://www.segasammy.co.jp/english/ir/library/pdf/settlement/2005/e_200503_4q.pdf"
         }
     ]
 }
