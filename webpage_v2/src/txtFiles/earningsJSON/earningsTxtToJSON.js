@@ -85,7 +85,9 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
                 Q4CmlValue: Number(newQuarterLocal[(i*3)+1]),
                 forecastThisFY: (searchTitle[0].forecastThisFY !== null) 
                         ? searchTitle[0].forecastThisFY
-                        : Number(newQuarterLocal[(i*3)+2]),
+                        : (currentQuarterLocal === 4)
+                            ? searchTitle[0].forecastThisFY
+                            : Number(newQuarterLocal[(i*3)+2]),
                 forecastRevision1: (searchTitle[0].forecastRevision1 !== null)
                          ? searchTitle[0].forecastRevision1
                          : (searchForecasts.at(-1) === true)
