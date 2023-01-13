@@ -34,9 +34,7 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
             netIncomeForecast: (Number.isNaN(Number(newQuarterLocal[8])) === true) ? null : Number(newQuarterLocal[8]),
         };
 
-        console.log(latestForecasts);
-
-        let searchForecasts = (!currentDataLocal)  
+        let searchForecasts = (!currentDataLocal || currentQuarterLocal > 3)  
             ? [undefined]
             : [
                 {
@@ -55,25 +53,15 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
                     value3: currentDataLocal[2].forecastRevision2,
                 }
             ].flatMap((elem,index) => {
-                // There is the issue where some fiscal years don't have forecasts for operating income hence only checking the net sales forecast
                 if (elem.value1 === null) {
-                    console.log(elem);
                     return []
                 } else if (elem.value1 === latestForecasts.netSalesForecast && elem.value2 === latestForecasts.operatingIncomeForecast && elem.value3 === latestForecasts.netIncomeForecast) {
-                    // wondering about when operating income forecast is a null value...
-                    console.log(elem);
-                    console.log("stop");
-                    console.log(latestForecasts);
                     return []
                 } else {
-                    // I can only assume this won't return one value so the true value picked must be from the end of the array
-                    console.log(elem);
+                    // the array length should only be 1 or 0 for this to work correctly.
                     return true
                 };
             });
-
-            console.log(searchForecasts);
-            console.log(searchForecasts.length);
 
         return (!searchTitle[0])
             ? {
