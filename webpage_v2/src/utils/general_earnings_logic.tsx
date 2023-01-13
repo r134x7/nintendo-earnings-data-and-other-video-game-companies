@@ -165,7 +165,9 @@ const printSection = (valuesThisFY: Earnings[], yoyLength: number) => {
 
 export const printOpMargin = (header: Header, netSalesThisFY: Earnings[], operatingIncomeThisFY: Earnings[], netSalesForecast: Earnings[], operatingIncomeForecast: Earnings[], currentQuarter: number, valueLength: number): string => {
 
-    let bandaiNamcoCheck = (header.companyName === "Bandai Namco Holdings Inc." && "FY3/2006") ? true : false;
+    let bandaiNamcoCheck = ((header.companyName === "Bandai Namco Holdings Inc." && header.fiscalYear === "FY3/2006")) ? true : false;
+
+    let segaCheck = (header.companyName === "SEGA SAMMY HOLDINGS INC." && header.fiscalYear === "FY3/2005") ? true : false;
 
     let quartersNetSalesThisFY: Earnings[] = quarterlyCalculation(netSalesThisFY);
 
@@ -176,14 +178,22 @@ export const printOpMargin = (header: Header, netSalesThisFY: Earnings[], operat
     let quartersJoin: string[] = quartersOpMarginThisFY.flatMap((elem, index, array) => {
         if (bandaiNamcoCheck === true && index === 0) {
             return []
-        }        
+        } else if (segaCheck === true && index < 2) {
+            return []
+        }       
 
         return liner(elem,(index === array.length-1) ? "=" : "−", "bottom",true,elem.length-2)
     });
 
     let cumulativesOpMarginThisFY: string[] = printCumulativeValues(operatingMarginCalculation(netSalesThisFY, operatingIncomeThisFY), header.fiscalYear, currentQuarter, valueLength); 
 
-    let cumulativesJoin: string[] = cumulativesOpMarginThisFY.map((elem, index, array) => liner(elem,"−","bottom",true,elem.length-2));
+    let cumulativesJoin: string[] = cumulativesOpMarginThisFY.flatMap((elem, index, array) => {
+        if (segaCheck === true && index === 0) {
+            return []
+        }       
+
+        return liner(elem,"−","bottom",true,elem.length-2)
+    })
 
     let forecasting: string[] = printForecastValues(operatingMarginCalculation(netSalesForecast, operatingIncomeForecast), valueLength);
 
@@ -200,7 +210,9 @@ export const printOpMargin = (header: Header, netSalesThisFY: Earnings[], operat
 
 export const printAll = (header: Header, valuesThisFY: Earnings[], valuesLastFY: Earnings[], forecastValues: Earnings[], currentQuarter: number, valueLength: number): string => {
     
-    let bandaiNamcoCheck = (header.companyName === "Bandai Namco Holdings Inc." && "FY3/2006") ? true : false;
+    let bandaiNamcoCheck = (header.companyName === "Bandai Namco Holdings Inc." && header.fiscalYear === "FY3/2006") ? true : false;
+
+    let segaCheck = (header.companyName === "SEGA SAMMY HOLDINGS INC." && header.fiscalYear === "FY3/2005") ? true : false;
 
     let sectionHeader: string = printSection(valuesThisFY, valueLength);
 
@@ -211,7 +223,9 @@ export const printAll = (header: Header, valuesThisFY: Earnings[], valuesLastFY:
     let quartersJoin: string[] = quartersThisFY.flatMap((elem, index, array) => {
         if (bandaiNamcoCheck === true && index === 0) {
             return []
-        }        
+        } else if (segaCheck === true && index < 2) {
+            return []
+        }       
 
         let lineCheck = index === array.length-1; 
 
@@ -222,7 +236,13 @@ export const printAll = (header: Header, valuesThisFY: Earnings[], valuesLastFY:
 
     let cumulativesYoY: string[] = printYoY(valuesThisFY, valuesLastFY, currentQuarter);
 
-    let cumulativesJoin: string[] = cumulativesThisFY.map((elem, index) => liner(elem + cumulativesYoY[index],"−","bottom",true,(elem.length + cumulativesYoY[index].length - 3)));
+    let cumulativesJoin: string[] = cumulativesThisFY.flatMap((elem, index) => {
+        if (segaCheck === true && index === 0) {
+            return []
+        }       
+
+       return liner(elem + cumulativesYoY[index],"−","bottom",true,(elem.length + cumulativesYoY[index].length - 3))
+    }); 
 
     let forecasting: string[] = printForecastValues(forecastValues, valueLength);
 

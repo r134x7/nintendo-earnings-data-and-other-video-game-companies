@@ -32,6 +32,14 @@ import segaDataSources2016 from "../sega/Data_Sources/data_sources_fy3_2016.json
 import segaDataSources2015 from "../sega/Data_Sources/data_sources_fy3_2015.json";
 import segaDataSources2014 from "../sega/Data_Sources/data_sources_fy3_2014.json";
 import segaDataSources2013 from "../sega/Data_Sources/data_sources_fy3_2013.json";
+import segaDataSources2012 from "../sega/Data_Sources/data_sources_fy3_2012.json";
+import segaDataSources2011 from "../sega/Data_Sources/data_sources_fy3_2011.json";
+import segaDataSources2010 from "../sega/Data_Sources/data_sources_fy3_2010.json";
+import segaDataSources2009 from "../sega/Data_Sources/data_sources_fy3_2009.json";
+import segaDataSources2008 from "../sega/Data_Sources/data_sources_fy3_2008.json";
+import segaDataSources2007 from "../sega/Data_Sources/data_sources_fy3_2007.json";
+import segaDataSources2006 from "../sega/Data_Sources/data_sources_fy3_2006.json";
+import segaDataSources2005 from "../sega/Data_Sources/data_sources_fy3_2005.json";
 
 import capcomDataSources2023 from "../capcom/Data_Sources/data_sources_fy3_2023.json";
 import capcomDataSources2022 from "../capcom/Data_Sources/data_sources_fy3_2022.json";
@@ -133,6 +141,14 @@ const segaDataSources: jsonData[] = [
     segaDataSources2015,
     segaDataSources2014,
     segaDataSources2013,
+    segaDataSources2012,
+    segaDataSources2011,
+    segaDataSources2010,
+    segaDataSources2009,
+    segaDataSources2008,
+    segaDataSources2007,
+    segaDataSources2006,
+    segaDataSources2005,
 ];
 
 const capcomDataSources: jsonData[] = [

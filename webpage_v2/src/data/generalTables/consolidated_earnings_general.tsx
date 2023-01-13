@@ -63,6 +63,19 @@ import sega2021 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_20
 import sega2020 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2020.json";
 import sega2019 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2019.json";
 import sega2018 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2018.json";
+import sega2017 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2017.json";
+import sega2016 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2016.json";
+import sega2015 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2015.json";
+import sega2014 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2014.json";
+import sega2013 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2013.json";
+import sega2012 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2012.json";
+import sega2011 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2011.json";
+import sega2010 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2010.json";
+import sega2009 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2009.json";
+import sega2008 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2008.json";
+import sega2007 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2007.json";
+import sega2006 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2006.json";
+import sega2005 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2005.json";
 
 import koeiTecmo2023 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2023.json";
 import koeiTecmo2022 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2022.json";
@@ -175,6 +188,19 @@ const collectionSegaSammy: EarningsJSON[] = [
     sega2020,
     sega2019,
     sega2018,
+    sega2017,
+    sega2016,
+    sega2015,
+    sega2014,
+    sega2013,
+    sega2012,
+    sega2011,
+    sega2010,
+    sega2009,
+    sega2008,
+    sega2007,
+    sega2006,
+    sega2005,
 ];
 
 const collectionKoeiTecmo: EarningsJSON[] = [

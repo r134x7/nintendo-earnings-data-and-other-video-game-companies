@@ -80,6 +80,19 @@ import consolidatedEarningsKoeiTecmo2021 from "../koeiTecmo/Consolidated_Earning
 import consolidatedEarningsKoeiTecmo2022 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2022.json"
 import consolidatedEarningsKoeiTecmo2023 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2023.json"
 
+import consolidatedEarningsSegaSammy2005 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2005.json"
+import consolidatedEarningsSegaSammy2006 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2006.json"
+import consolidatedEarningsSegaSammy2007 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2007.json"
+import consolidatedEarningsSegaSammy2008 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2008.json"
+import consolidatedEarningsSegaSammy2009 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2009.json"
+import consolidatedEarningsSegaSammy2010 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2010.json"
+import consolidatedEarningsSegaSammy2011 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2011.json"
+import consolidatedEarningsSegaSammy2012 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2012.json"
+import consolidatedEarningsSegaSammy2013 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2013.json"
+import consolidatedEarningsSegaSammy2014 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2014.json"
+import consolidatedEarningsSegaSammy2015 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2015.json"
+import consolidatedEarningsSegaSammy2016 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2016.json"
+import consolidatedEarningsSegaSammy2017 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2017.json"
 import consolidatedEarningsSegaSammy2018 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2018.json"
 import consolidatedEarningsSegaSammy2019 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2019.json"
 import consolidatedEarningsSegaSammy2020 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2020.json"
@@ -196,6 +209,19 @@ const totalCollectionKoeiTecmo: EarningsJSON[] = [
 ];
 
 const totalCollectionSegaSammy: EarningsJSON[] = [
+    consolidatedEarningsSegaSammy2005,
+    consolidatedEarningsSegaSammy2006,
+    consolidatedEarningsSegaSammy2007,
+    consolidatedEarningsSegaSammy2008,
+    consolidatedEarningsSegaSammy2009,
+    consolidatedEarningsSegaSammy2010,
+    consolidatedEarningsSegaSammy2011,
+    consolidatedEarningsSegaSammy2012,
+    consolidatedEarningsSegaSammy2013,
+    consolidatedEarningsSegaSammy2014,
+    consolidatedEarningsSegaSammy2015,
+    consolidatedEarningsSegaSammy2016,
+    consolidatedEarningsSegaSammy2017,
     consolidatedEarningsSegaSammy2018,
     consolidatedEarningsSegaSammy2019,
     consolidatedEarningsSegaSammy2020,
@@ -396,6 +422,8 @@ const operatingResultsBandaiNamco = operatingResultsMaker(totalCollectionBandaiN
 
 const operatingResultsSquareEnix = operatingResultsMaker(totalCollectionSquareEnix);
 
+const operatingResultsSegaSammy = operatingResultsMaker(totalCollectionSegaSammy);
+
 export const cumulativeEarningsListNintendo = [
     operatingResultsNintendo.header,
     dateLabel,
@@ -421,5 +449,14 @@ export const cumulativeEarningsListSquareEnix = [
     ...operatingResultsSquareEnix.netSales,
     ...operatingResultsSquareEnix.operatingIncome,
     ...operatingResultsSquareEnix.netIncome,
+    "###\n",
+].reduce((prev, next) => prev + next);
+
+export const cumulativeEarningsListSegaSammy = [
+    operatingResultsSegaSammy.header,
+    dateLabel,
+    ...operatingResultsSegaSammy.netSales,
+    ...operatingResultsSegaSammy.operatingIncome,
+    ...operatingResultsSegaSammy.netIncome,
     "###\n",
 ].reduce((prev, next) => prev + next);
