@@ -52,8 +52,9 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
                     value2: currentDataLocal[1].forecastRevision2,
                     value3: currentDataLocal[2].forecastRevision2,
                 }
-            ].flatMap((elem,index) => {
-                if (elem.value1 === null) {
+            ].flatMap((elem) => (elem.value1 === null && elem.value2 === null && elem.value3 === null) ? [] : elem).flatMap((elem, index ,array) => {
+                // need to check values only at the end of the array, older forecast numbers do not need to be checked
+                if (index !== array.length-1) {
                     return []
                 } else if (elem.value1 === latestForecasts.netSalesForecast && elem.value2 === latestForecasts.operatingIncomeForecast && elem.value3 === latestForecasts.netIncomeForecast) {
                     return []
@@ -95,7 +96,7 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
                         //      : null,
                 forecastRevision2: (searchTitle[0].forecastRevision2 !== null)
                          ? searchTitle[0].forecastRevision2
-                         : (searchForecasts.at(-1) === true)
+                         : (searchForecasts.at(-1) === true && searchTitle[0].forecastRevision1 !== null)
                          ? Number(newQuarterLocal[(i*3)+2])
                          : null,
                         // (searchTitle[0].forecastRevision2 !== null)
@@ -105,7 +106,7 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
                         //     : null,
                 forecastRevision3: (searchTitle[0].forecastRevision3 !== null)
                          ? searchTitle[0].forecastRevision3
-                         : (searchForecasts.at(-1) === true)
+                         : (searchForecasts.at(-1) === true && searchTitle[0].forecastRevision2 !== null)
                          ? Number(newQuarterLocal[(i*3)+2])
                          : null,
                         // (searchTitle[0].forecastRevision3 !== null)
