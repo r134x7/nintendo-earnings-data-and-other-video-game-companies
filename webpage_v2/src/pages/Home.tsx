@@ -77,7 +77,7 @@ const Home = () => {
                     </List>
                     <Text>Square Enix -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Consolidated Operating Results from FY3/2019 to FY3/2023 added. Added Special page.</List.Item>
+                        <List.Item>Latest update: Consolidated Financial Results from FY3/2004 to FY3/2023 added. Added Consolidated Financial Results added to special page.</List.Item>
                     </List>
                     <Text>Events -</Text>
                     <List withPadding listStyleType="disc">

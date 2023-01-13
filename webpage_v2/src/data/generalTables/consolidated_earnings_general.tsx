@@ -77,6 +77,20 @@ import squareEnix2021 from "../squareEnix/Consolidated_Earnings/consolidated_ear
 import squareEnix2020 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2020.json";
 import squareEnix2019 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2019.json";
 import squareEnix2018 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2018.json";
+import squareEnix2017 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2017.json";
+import squareEnix2016 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2016.json";
+import squareEnix2015 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2015.json";
+import squareEnix2014 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2014.json";
+import squareEnix2013 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2013.json";
+import squareEnix2012 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2012.json";
+import squareEnix2011 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2011.json";
+import squareEnix2010 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2010.json";
+import squareEnix2009 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2009.json";
+import squareEnix2008 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2008.json";
+import squareEnix2007 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2007.json";
+import squareEnix2006 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2006.json";
+import squareEnix2005 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2005.json";
+import squareEnix2004 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2004.json";
 
 export type EarningsJSON = {
     currentQuarter: number,
@@ -179,6 +193,20 @@ const collectionSquareEnix: EarningsJSON[] = [
     squareEnix2020,
     squareEnix2019,
     squareEnix2018,
+    squareEnix2017,
+    squareEnix2016,
+    squareEnix2015,
+    squareEnix2014,
+    squareEnix2013,
+    squareEnix2012,
+    squareEnix2011,
+    squareEnix2010,
+    squareEnix2009,
+    squareEnix2008,
+    squareEnix2007,
+    squareEnix2006,
+    squareEnix2005,
+    squareEnix2004,
 ];
 
 const valuesMake = (obj: undefined | EarningsMake): Earnings[] => {

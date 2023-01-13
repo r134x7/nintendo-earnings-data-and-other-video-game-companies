@@ -80,6 +80,12 @@ import squareEnixDataSources2013 from "../squareEnix/Data_Sources/data_sources_f
 import squareEnixDataSources2012 from "../squareEnix/Data_Sources/data_sources_fy3_2012.json";
 import squareEnixDataSources2011 from "../squareEnix/Data_Sources/data_sources_fy3_2011.json";
 import squareEnixDataSources2010 from "../squareEnix/Data_Sources/data_sources_fy3_2010.json";
+import squareEnixDataSources2009 from "../squareEnix/Data_Sources/data_sources_fy3_2009.json";
+import squareEnixDataSources2008 from "../squareEnix/Data_Sources/data_sources_fy3_2008.json";
+import squareEnixDataSources2007 from "../squareEnix/Data_Sources/data_sources_fy3_2007.json";
+import squareEnixDataSources2006 from "../squareEnix/Data_Sources/data_sources_fy3_2006.json";
+import squareEnixDataSources2005 from "../squareEnix/Data_Sources/data_sources_fy3_2005.json";
+import squareEnixDataSources2004 from "../squareEnix/Data_Sources/data_sources_fy3_2004.json";
 
 
 type jsonData = {
@@ -183,6 +189,12 @@ const squareEnixDataSources: jsonData[] = [
     squareEnixDataSources2012,
     squareEnixDataSources2011,
     squareEnixDataSources2010,
+    squareEnixDataSources2009,
+    squareEnixDataSources2008,
+    squareEnixDataSources2007,
+    squareEnixDataSources2006,
+    squareEnixDataSources2005,
+    squareEnixDataSources2004,
 ];
 
 const dataSourcesLogic = (dataLocal: linkData[]): JSX.Element => {

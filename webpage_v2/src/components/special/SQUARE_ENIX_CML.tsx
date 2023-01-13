@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { squareEnixSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
+import { cumulativeEarningsListSquareEnix } from "../../data/generalTables/consolidated_earnings_cml_data";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 
@@ -12,6 +13,10 @@ export default function SQUARE_ENIX_CML() {
     const state: any = useSelector(state => state);
 
     const componentList = [
+        {
+            name: "Square Enix Consolidated Financial Results - Cumulative",
+            value: cumulativeEarningsListSquareEnix 
+        },
         {
             name: "Square Enix Sales Per Software Unit - Cumulative",
             value: squareEnixSalesPerSoftwareUnitCml

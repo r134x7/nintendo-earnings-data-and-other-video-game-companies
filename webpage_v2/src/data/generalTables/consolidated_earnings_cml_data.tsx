@@ -87,6 +87,20 @@ import consolidatedEarningsSegaSammy2021 from "../sega/Consolidated_Earnings/con
 import consolidatedEarningsSegaSammy2022 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2022.json"
 import consolidatedEarningsSegaSammy2023 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2023.json"
 
+import consolidatedEarningsSquareEnix2004 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2004.json"
+import consolidatedEarningsSquareEnix2005 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2005.json"
+import consolidatedEarningsSquareEnix2006 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2006.json"
+import consolidatedEarningsSquareEnix2007 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2007.json"
+import consolidatedEarningsSquareEnix2008 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2008.json"
+import consolidatedEarningsSquareEnix2009 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2009.json"
+import consolidatedEarningsSquareEnix2010 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2010.json"
+import consolidatedEarningsSquareEnix2011 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2011.json"
+import consolidatedEarningsSquareEnix2012 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2012.json"
+import consolidatedEarningsSquareEnix2013 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2013.json"
+import consolidatedEarningsSquareEnix2014 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2014.json"
+import consolidatedEarningsSquareEnix2015 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2015.json"
+import consolidatedEarningsSquareEnix2016 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2016.json"
+import consolidatedEarningsSquareEnix2017 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2017.json"
 import consolidatedEarningsSquareEnix2018 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2018.json"
 import consolidatedEarningsSquareEnix2019 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2019.json"
 import consolidatedEarningsSquareEnix2020 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2020.json"
@@ -191,6 +205,20 @@ const totalCollectionSegaSammy: EarningsJSON[] = [
 ];
 
 const totalCollectionSquareEnix: EarningsJSON[] = [
+    consolidatedEarningsSquareEnix2004,
+    consolidatedEarningsSquareEnix2005,
+    consolidatedEarningsSquareEnix2006,
+    consolidatedEarningsSquareEnix2007,
+    consolidatedEarningsSquareEnix2008,
+    consolidatedEarningsSquareEnix2009,
+    consolidatedEarningsSquareEnix2010,
+    consolidatedEarningsSquareEnix2011,
+    consolidatedEarningsSquareEnix2012,
+    consolidatedEarningsSquareEnix2013,
+    consolidatedEarningsSquareEnix2014,
+    consolidatedEarningsSquareEnix2015,
+    consolidatedEarningsSquareEnix2016,
+    consolidatedEarningsSquareEnix2017,
     consolidatedEarningsSquareEnix2018,
     consolidatedEarningsSquareEnix2019,
     consolidatedEarningsSquareEnix2020,
@@ -205,11 +233,13 @@ function operatingResultsMaker (collection: EarningsJSON[]): {
     header: string, netSales: string[], operatingIncome: string[], netIncome: string[]
 } {
 
+    let subHeader = (collection[0].companyName === "CAPCOM Co., Ltd." || collection[0].companyName === "SQUARE ENIX HOLDINGS CO., LTD.") ? "Consolidated Financial Results" : "Consolidated Operating Results";
+
     let headerMake = liner(border([
         spacer(collection[0].companyName, collection[0].companyName.length+1, "left")
         ]),"−","top",true) +
         liner(border([
-            spacer("Consolidated Operating Results", "Consolidated Operating Results".length+2, "left")
+            spacer(subHeader, subHeader.length+2, "left")
         ]), "−", "both",true)
 
     let netSalesSet = collection.map(elem => {
@@ -364,6 +394,8 @@ const operatingResultsNintendo = operatingResultsMaker(totalCollectionNintendo);
 
 const operatingResultsBandaiNamco = operatingResultsMaker(totalCollectionBandaiNamco);
 
+const operatingResultsSquareEnix = operatingResultsMaker(totalCollectionSquareEnix);
+
 export const cumulativeEarningsListNintendo = [
     operatingResultsNintendo.header,
     dateLabel,
@@ -380,5 +412,14 @@ export const cumulativeEarningsListBandaiNamco = [
     ...operatingResultsBandaiNamco.netSales,
     ...operatingResultsBandaiNamco.operatingIncome,
     ...operatingResultsBandaiNamco.netIncome,
+    "###\n",
+].reduce((prev, next) => prev + next);
+
+export const cumulativeEarningsListSquareEnix = [
+    operatingResultsSquareEnix.header,
+    dateLabel,
+    ...operatingResultsSquareEnix.netSales,
+    ...operatingResultsSquareEnix.operatingIncome,
+    ...operatingResultsSquareEnix.netIncome,
     "###\n",
 ].reduce((prev, next) => prev + next);
