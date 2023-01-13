@@ -2,5 +2,5 @@
     "currentQuarter": 4,
     "companyName": "SEGA SAMMY HOLDINGS INC.",
     "fiscalYear": "FY3/2013",
-    "data": []
+    "data": [{"name":"Net Sales","Q1CmlValue":69980,"Q2CmlValue":136583,"Q3CmlValue":207004,"Q4CmlValue":321407,"forecastThisFY":470000,"forecastRevision1":320000,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":485000},{"name":"Operating Income","Q1CmlValue":5415,"Q2CmlValue":7892,"Q3CmlValue":7074,"Q4CmlValue":19073,"forecastThisFY":66000,"forecastRevision1":15000,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":73000},{"name":"Net Income","Q1CmlValue":2544,"Q2CmlValue":3874,"Q3CmlValue":3067,"Q4CmlValue":33460,"forecastThisFY":40000,"forecastRevision1":12500,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":47000}]
 }
