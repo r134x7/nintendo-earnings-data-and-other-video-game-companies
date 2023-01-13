@@ -29,41 +29,51 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
         let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem,index,array) => (elem.name.trim() === newQuarterLocal[(i*3)].trim())); // searching by name
 
         let latestForecasts = {
-            netSalesForecast: Number(newQuarterLocal[2]),
-            operatingIncomeForecast: Number(newQuarterLocal[5]),
-            netIncomeForecast: Number(newQuarterLocal[8]),
+            netSalesForecast: (Number.isNaN(Number(newQuarterLocal[2])) === true) ? null : Number(newQuarterLocal[2]),
+            operatingIncomeForecast: (Number.isNaN(Number(newQuarterLocal[5])) === true) ? null : Number(newQuarterLocal[5]),
+            netIncomeForecast: (Number.isNaN(Number(newQuarterLocal[8])) === true) ? null : Number(newQuarterLocal[8]),
         };
+
+        console.log(latestForecasts);
 
         let searchForecasts = (!currentDataLocal)  
             ? [undefined]
             : [
                 {
-                    value1: Number(currentDataLocal[0].forecastThisFY),
-                    value2: Number(currentDataLocal[1].forecastThisFY),
-                    value3: Number(currentDataLocal[2].forecastThisFY),
+                    value1: currentDataLocal[0].forecastThisFY,
+                    value2: currentDataLocal[1].forecastThisFY,
+                    value3: currentDataLocal[2].forecastThisFY,
                 },
                 {
-                    value1: Number(currentDataLocal[0].forecastRevision1),
-                    value2: Number(currentDataLocal[1].forecastRevision1),
-                    value3: Number(currentDataLocal[2].forecastRevision1),
+                    value1: currentDataLocal[0].forecastRevision1,
+                    value2: currentDataLocal[1].forecastRevision1,
+                    value3: currentDataLocal[2].forecastRevision1,
                 },
                 {
-                    value1: Number(currentDataLocal[0].forecastRevision2),
-                    value2: Number(currentDataLocal[1].forecastRevision2),
-                    value3: Number(currentDataLocal[2].forecastRevision2),
+                    value1: currentDataLocal[0].forecastRevision2,
+                    value2: currentDataLocal[1].forecastRevision2,
+                    value3: currentDataLocal[2].forecastRevision2,
                 }
             ].flatMap((elem,index) => {
                 // There is the issue where some fiscal years don't have forecasts for operating income hence only checking the net sales forecast
                 if (elem.value1 === null) {
+                    console.log(elem);
                     return []
                 } else if (elem.value1 === latestForecasts.netSalesForecast && elem.value2 === latestForecasts.operatingIncomeForecast && elem.value3 === latestForecasts.netIncomeForecast) {
                     // wondering about when operating income forecast is a null value...
+                    console.log(elem);
+                    console.log("stop");
+                    console.log(latestForecasts);
                     return []
                 } else {
                     // I can only assume this won't return one value so the true value picked must be from the end of the array
+                    console.log(elem);
                     return true
                 };
             });
+
+            console.log(searchForecasts);
+            console.log(searchForecasts.length);
 
         return (!searchTitle[0])
             ? {
