@@ -28,6 +28,43 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
 
         let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem,index,array) => (elem.name.trim() === newQuarterLocal[(i*3)].trim())); // searching by name
 
+        let latestForecasts = {
+            netSalesForecast: Number(newQuarterLocal[2]),
+            operatingIncomeForecast: Number(newQuarterLocal[5]),
+            netIncomeForecast: Number(newQuarterLocal[8]),
+        };
+
+        let searchForecasts = (!currentDataLocal)  
+            ? [undefined]
+            : [
+                {
+                    value1: Number(currentDataLocal[0].forecastThisFY),
+                    value2: Number(currentDataLocal[1].forecastThisFY),
+                    value3: Number(currentDataLocal[2].forecastThisFY),
+                },
+                {
+                    value1: Number(currentDataLocal[0].forecastRevision1),
+                    value2: Number(currentDataLocal[1].forecastRevision1),
+                    value3: Number(currentDataLocal[2].forecastRevision1),
+                },
+                {
+                    value1: Number(currentDataLocal[0].forecastRevision2),
+                    value2: Number(currentDataLocal[1].forecastRevision2),
+                    value3: Number(currentDataLocal[2].forecastRevision2),
+                }
+            ].flatMap((elem,index) => {
+                // There is the issue where some fiscal years don't have forecasts for operating income hence only checking the net sales forecast
+                if (elem.value1 === null) {
+                    return []
+                } else if (elem.value1 === latestForecasts.netSalesForecast && elem.value2 === latestForecasts.operatingIncomeForecast && elem.value3 === latestForecasts.netIncomeForecast) {
+                    // wondering about when operating income forecast is a null value...
+                    return []
+                } else {
+                    // I can only assume this won't return one value so the true value picked must be from the end of the array
+                    return true
+                };
+            });
+
         return (!searchTitle[0])
             ? {
                 name: newQuarterLocal[(i*3)].trim(),
@@ -51,20 +88,33 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
                         ? searchTitle[0].forecastThisFY
                         : Number(newQuarterLocal[(i*3)+2]),
                 forecastRevision1: (searchTitle[0].forecastRevision1 !== null)
-                        ? searchTitle[0].forecastRevision1
-                        : (currentQuarter < 4 && searchTitle[0].forecastThisFY !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastThisFY !== null) 
-                            ? Number(newQuarterLocal[(i*3)+2])
-                            : null,
+                         ? searchTitle[0].forecastRevision1
+                         : (searchForecasts.at(-1) === true)
+                         ? Number(newQuarterLocal[(i*3)+2])
+                         : null,
+                        //  : (currentQuarter < 4 && searchTitle[0].forecastThisFY !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastThisFY !== null) 
+                        //      ? Number(newQuarterLocal[(i*3)+2])
+                        //      : null,
                 forecastRevision2: (searchTitle[0].forecastRevision2 !== null)
-                        ? searchTitle[0].forecastRevision2
-                        : (currentQuarter < 4 && searchTitle[0].forecastThisFY !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastRevision1 !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastRevision1 !== null) 
-                            ? Number(newQuarterLocal[(i*3)+2]) 
-                            : null,
+                         ? searchTitle[0].forecastRevision2
+                         : (searchForecasts.at(-1) === true)
+                         ? Number(newQuarterLocal[(i*3)+2])
+                         : null,
+                        // (searchTitle[0].forecastRevision2 !== null)
+                        // ? searchTitle[0].forecastRevision2
+                        // : (currentQuarter < 4 && searchTitle[0].forecastThisFY !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastRevision1 !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastRevision1 !== null) 
+                        //     ? Number(newQuarterLocal[(i*3)+2]) 
+                        //     : null,
                 forecastRevision3: (searchTitle[0].forecastRevision3 !== null)
-                        ? searchTitle[0].forecastRevision3
-                        : (currentQuarter < 4 && searchTitle[0].forecastThisFY !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastRevision1 !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastRevision1 !== null && searchTitle[0].forecastRevision2 !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastRevision2 !== null) 
-                            ? Number(newQuarterLocal[(i*3)+2])
-                            : null,
+                         ? searchTitle[0].forecastRevision3
+                         : (searchForecasts.at(-1) === true)
+                         ? Number(newQuarterLocal[(i*3)+2])
+                         : null,
+                        // (searchTitle[0].forecastRevision3 !== null)
+                        // ? searchTitle[0].forecastRevision3
+                        // : (currentQuarter < 4 && searchTitle[0].forecastThisFY !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastRevision1 !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastRevision1 !== null && searchTitle[0].forecastRevision2 !== Number(newQuarterLocal[(i*3)+2]) && searchTitle[0].forecastRevision2 !== null) 
+                        //     ? Number(newQuarterLocal[(i*3)+2])
+                        //     : null,
                 forecastNextFY: (currentQuarterLocal === 4) ? Number(newQuarterLocal[(i*3)+2]) : null,
             };
     });
