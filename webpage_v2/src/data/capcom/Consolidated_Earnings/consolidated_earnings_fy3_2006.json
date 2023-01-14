@@ -2,5 +2,5 @@
     "currentQuarter": 4,
     "companyName": "CAPCOM Co., Ltd.",
     "fiscalYear": "FY3/2006",
-    "data": []
+    "data": [{"name":"Net Sales","Q1CmlValue":11431,"Q2CmlValue":27801,"Q3CmlValue":47925,"Q4CmlValue":70253,"forecastThisFY":70000,"forecastRevision1":70000,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":68400},{"name":"Operating Income","Q1CmlValue":891,"Q2CmlValue":666,"Q3CmlValue":4744,"Q4CmlValue":6580,"forecastThisFY":null,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":null},{"name":"Net Income","Q1CmlValue":608,"Q2CmlValue":3124,"Q3CmlValue":7427,"Q4CmlValue":6941,"forecastThisFY":3900,"forecastRevision1":8900,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":3900}]
 }
