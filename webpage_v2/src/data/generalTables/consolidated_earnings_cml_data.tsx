@@ -64,6 +64,24 @@ import consolidatedEarningsBandaiNamco2021 from "../bandaiNamco/Consolidated_Ear
 import consolidatedEarningsBandaiNamco2022 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2022.json"
 import consolidatedEarningsBandaiNamco2023 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2023.json"
 
+import consolidatedEarningsCapcom1998 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_1998.json"
+import consolidatedEarningsCapcom1999 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_1999.json"
+import consolidatedEarningsCapcom2000 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2000.json"
+import consolidatedEarningsCapcom2001 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2001.json"
+import consolidatedEarningsCapcom2002 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2002.json"
+import consolidatedEarningsCapcom2003 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2003.json"
+import consolidatedEarningsCapcom2004 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2004.json"
+import consolidatedEarningsCapcom2005 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2005.json"
+import consolidatedEarningsCapcom2006 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2006.json"
+import consolidatedEarningsCapcom2007 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2007.json"
+import consolidatedEarningsCapcom2008 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2008.json"
+import consolidatedEarningsCapcom2009 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2009.json"
+import consolidatedEarningsCapcom2010 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2010.json"
+import consolidatedEarningsCapcom2011 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2011.json"
+import consolidatedEarningsCapcom2012 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2012.json"
+import consolidatedEarningsCapcom2013 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2013.json"
+import consolidatedEarningsCapcom2014 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2014.json"
+import consolidatedEarningsCapcom2015 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2015.json"
 import consolidatedEarningsCapcom2016 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2016.json"
 import consolidatedEarningsCapcom2017 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2017.json"
 import consolidatedEarningsCapcom2018 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2018.json"
@@ -189,6 +207,24 @@ const totalCollectionBandaiNamco: EarningsJSON[] = [
 ];
 
 const totalCollectionCapcom: EarningsJSON[] = [
+    consolidatedEarningsCapcom1998,
+    consolidatedEarningsCapcom1999,
+    consolidatedEarningsCapcom2000,
+    consolidatedEarningsCapcom2001,
+    consolidatedEarningsCapcom2002,
+    consolidatedEarningsCapcom2003,
+    consolidatedEarningsCapcom2004,
+    consolidatedEarningsCapcom2005,
+    consolidatedEarningsCapcom2006,
+    consolidatedEarningsCapcom2007,
+    consolidatedEarningsCapcom2008,
+    consolidatedEarningsCapcom2009,
+    consolidatedEarningsCapcom2010,
+    consolidatedEarningsCapcom2011,
+    consolidatedEarningsCapcom2012,
+    consolidatedEarningsCapcom2013,
+    consolidatedEarningsCapcom2014,
+    consolidatedEarningsCapcom2015,
     consolidatedEarningsCapcom2016,
     consolidatedEarningsCapcom2017,
     consolidatedEarningsCapcom2018,
@@ -424,6 +460,8 @@ const operatingResultsSquareEnix = operatingResultsMaker(totalCollectionSquareEn
 
 const operatingResultsSegaSammy = operatingResultsMaker(totalCollectionSegaSammy);
 
+const operatingResultsCapcom = operatingResultsMaker(totalCollectionCapcom);
+
 export const cumulativeEarningsListNintendo = [
     operatingResultsNintendo.header,
     dateLabel,
@@ -458,5 +496,14 @@ export const cumulativeEarningsListSegaSammy = [
     ...operatingResultsSegaSammy.netSales,
     ...operatingResultsSegaSammy.operatingIncome,
     ...operatingResultsSegaSammy.netIncome,
+    "###\n",
+].reduce((prev, next) => prev + next);
+
+export const cumulativeEarningsListCapcom = [
+    operatingResultsCapcom.header,
+    dateLabel,
+    ...operatingResultsCapcom.netSales,
+    ...operatingResultsCapcom.operatingIncome,
+    ...operatingResultsCapcom.netIncome,
     "###\n",
 ].reduce((prev, next) => prev + next);

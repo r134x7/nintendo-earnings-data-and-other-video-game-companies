@@ -9,7 +9,7 @@ import CAPCOM_CML from "../components/special/CAPCOM_CML";
 
 const currentYear = 2023
 
-const yearsList = Array.from({length: 18}, (elem, index) => 
+const yearsList = Array.from({length: 25}, (elem, index) => 
                     {
                             return "FY3/" + (currentYear - index)
                     }) 

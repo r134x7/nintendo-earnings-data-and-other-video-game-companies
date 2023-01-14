@@ -48,6 +48,25 @@ import capcomDataSources2020 from "../capcom/Data_Sources/data_sources_fy3_2020.
 import capcomDataSources2019 from "../capcom/Data_Sources/data_sources_fy3_2019.json";
 import capcomDataSources2018 from "../capcom/Data_Sources/data_sources_fy3_2018.json";
 import capcomDataSources2017 from "../capcom/Data_Sources/data_sources_fy3_2017.json";
+import capcomDataSources2016 from "../capcom/Data_Sources/data_sources_fy3_2016.json";
+import capcomDataSources2015 from "../capcom/Data_Sources/data_sources_fy3_2015.json";
+import capcomDataSources2014 from "../capcom/Data_Sources/data_sources_fy3_2014.json";
+import capcomDataSources2013 from "../capcom/Data_Sources/data_sources_fy3_2013.json";
+import capcomDataSources2012 from "../capcom/Data_Sources/data_sources_fy3_2012.json";
+import capcomDataSources2011 from "../capcom/Data_Sources/data_sources_fy3_2011.json";
+import capcomDataSources2010 from "../capcom/Data_Sources/data_sources_fy3_2010.json";
+import capcomDataSources2009 from "../capcom/Data_Sources/data_sources_fy3_2009.json";
+import capcomDataSources2008 from "../capcom/Data_Sources/data_sources_fy3_2008.json";
+import capcomDataSources2007 from "../capcom/Data_Sources/data_sources_fy3_2007.json";
+import capcomDataSources2006 from "../capcom/Data_Sources/data_sources_fy3_2006.json";
+import capcomDataSources2005 from "../capcom/Data_Sources/data_sources_fy3_2005.json";
+import capcomDataSources2004 from "../capcom/Data_Sources/data_sources_fy3_2004.json";
+import capcomDataSources2003 from "../capcom/Data_Sources/data_sources_fy3_2003.json";
+import capcomDataSources2002 from "../capcom/Data_Sources/data_sources_fy3_2002.json";
+import capcomDataSources2001 from "../capcom/Data_Sources/data_sources_fy3_2001.json";
+import capcomDataSources2000 from "../capcom/Data_Sources/data_sources_fy3_2000.json";
+import capcomDataSources1999 from "../capcom/Data_Sources/data_sources_fy3_1999.json";
+import capcomDataSources1998 from "../capcom/Data_Sources/data_sources_fy3_1998.json";
 
 import bandaiNamcoDataSources2023 from "../bandaiNamco/Data_Sources/data_sources_fy3_2023.json";
 import bandaiNamcoDataSources2022 from "../bandaiNamco/Data_Sources/data_sources_fy3_2022.json";
@@ -159,6 +178,25 @@ const capcomDataSources: jsonData[] = [
     capcomDataSources2019,
     capcomDataSources2018,
     capcomDataSources2017,
+    capcomDataSources2016,
+    capcomDataSources2015,
+    capcomDataSources2014,
+    capcomDataSources2013,
+    capcomDataSources2012,
+    capcomDataSources2011,
+    capcomDataSources2010,
+    capcomDataSources2009,
+    capcomDataSources2008,
+    capcomDataSources2007,
+    capcomDataSources2006,
+    capcomDataSources2005,
+    capcomDataSources2004,
+    capcomDataSources2003,
+    capcomDataSources2002,
+    capcomDataSources2001,
+    capcomDataSources2000,
+    capcomDataSources1999,
+    capcomDataSources1998,
 ];
 
 const bandaiNamcoDataSources: jsonData[] = [

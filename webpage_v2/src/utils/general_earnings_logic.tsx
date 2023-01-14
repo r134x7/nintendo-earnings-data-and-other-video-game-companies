@@ -169,6 +169,8 @@ export const printOpMargin = (header: Header, netSalesThisFY: Earnings[], operat
 
     let segaCheck = (header.companyName === "SEGA SAMMY HOLDINGS INC." && header.fiscalYear === "FY3/2005") ? true : false;
 
+    let capcomCheck = (header.companyName === "CAPCOM Co., Ltd." && header.fiscalYear === "FY3/2004") ? true : false;
+
     let quartersNetSalesThisFY: Earnings[] = quarterlyCalculation(netSalesThisFY);
 
     let quartersOperatingIncomeThisFY: Earnings[] = quarterlyCalculation(operatingIncomeThisFY);
@@ -180,7 +182,9 @@ export const printOpMargin = (header: Header, netSalesThisFY: Earnings[], operat
             return []
         } else if (segaCheck === true && index < 2) {
             return []
-        }       
+        } else if (capcomCheck === true && index === 0) {
+            return []
+        }      
 
         return liner(elem,(index === array.length-1) ? "=" : "−", "bottom",true,elem.length-2)
     });
@@ -214,6 +218,8 @@ export const printAll = (header: Header, valuesThisFY: Earnings[], valuesLastFY:
 
     let segaCheck = (header.companyName === "SEGA SAMMY HOLDINGS INC." && header.fiscalYear === "FY3/2005") ? true : false;
 
+    let capcomCheck = (header.companyName === "CAPCOM Co., Ltd." && header.fiscalYear === "FY3/2004") ? true : false;
+
     let sectionHeader: string = printSection(valuesThisFY, valueLength);
 
     let quartersThisFY: string[] = printQuarterValues(valuesThisFY, currentQuarter, valueLength);
@@ -225,7 +231,9 @@ export const printAll = (header: Header, valuesThisFY: Earnings[], valuesLastFY:
             return []
         } else if (segaCheck === true && index < 2) {
             return []
-        }       
+        } else if (capcomCheck === true && index === 0) {
+            return []
+        }      
 
         let lineCheck = index === array.length-1; 
 

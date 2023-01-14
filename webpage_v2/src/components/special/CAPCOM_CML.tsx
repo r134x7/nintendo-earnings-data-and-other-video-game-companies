@@ -3,6 +3,7 @@ import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printSpecialList } from "../../data/capcom/platinum_titles_Capcom";
 import { CapcomSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
+import { cumulativeEarningsListCapcom } from "../../data/generalTables/consolidated_earnings_cml_data";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 
@@ -13,6 +14,10 @@ export default function CAPCOM_CML() {
     const state: any = useSelector(state => state);
 
     const componentList = [
+        {
+            name: "Capcom Consolidated Financial Results - Cumulative",
+            value: cumulativeEarningsListCapcom
+        },
         {
             name: "Capcom Platinum Titles - Cumulative",
             value: printSpecialList 
