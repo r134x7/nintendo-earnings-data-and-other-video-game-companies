@@ -1,6 +1,5 @@
 {
-    "fiscalYearCml":  "FY3/2022",
-    "fiscalYearYoY": "FY3/22 Cml. YoY%   |",
+    "fiscalYear":  "FY3/2022",
     "series": [
         {
             "title": "Final Fantasy",

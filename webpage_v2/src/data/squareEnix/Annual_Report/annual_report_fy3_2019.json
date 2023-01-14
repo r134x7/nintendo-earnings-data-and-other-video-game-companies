@@ -1,6 +1,5 @@
 {
-    "fiscalYearCml":  "FY3/2019",
-    "fiscalYearYoY": "FY3/19 Cml. YoY%   |",
+    "fiscalYear":  "FY3/2019",
     "series": [
         {
             "title": "Final Fantasy",

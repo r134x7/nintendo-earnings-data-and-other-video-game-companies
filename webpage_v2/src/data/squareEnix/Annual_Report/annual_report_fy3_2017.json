@@ -1,6 +1,5 @@
 {
-    "fiscalYearCml":  "FY3/2017 Cumulative  |",
-    "fiscalYearYoY": "FY3/17 Cml. YoY%   |",
+    "fiscalYear":  "FY3/2017",
     "series": [
         {
             "title": "Final Fantasy",

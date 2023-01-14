@@ -15,28 +15,19 @@ const collection = [
 
 const seriesMake = (obj: {
     "series": {
-        title: string;
-        releaseDate: string;
-        fyEndMonth: string; 
-        value: number;
-        valueLastFY: number;
-        valueLastTwoFYs: number;
-        miscellaneous?: string;
+        title: string,
+        releaseDate: string,
+        fyEndMonth: string, 
+        value: number,
+        valueLastFY: number,
+        valueLastTwoFYs: number,
+        miscellaneous?: string,
     }[]
 }): Series[] => {
     
     let series: Series[] = obj.series.map(elem => {
 
-        return (!elem.miscellaneous)
-                ? {
-                    title: elem.title,
-                    releaseDate: elem.releaseDate,
-                    fyEndMonth: elem.fyEndMonth,
-                    value: elem.value,
-                    valueLastFY: elem.valueLastFY,
-                    valueLastTwoFYs: elem.valueLastTwoFYs,
-                }
-                : {
+        return  {
                     title: elem.title,
                     releaseDate: elem.releaseDate,
                     fyEndMonth: elem.fyEndMonth,
