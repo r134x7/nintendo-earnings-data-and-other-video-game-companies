@@ -92,6 +92,15 @@ import koeiTecmoDataSources2022 from "../koeiTecmo/Data_Sources/data_sources_fy3
 import koeiTecmoDataSources2021 from "../koeiTecmo/Data_Sources/data_sources_fy3_2021.json";
 import koeiTecmoDataSources2020 from "../koeiTecmo/Data_Sources/data_sources_fy3_2020.json";
 import koeiTecmoDataSources2019 from "../koeiTecmo/Data_Sources/data_sources_fy3_2019.json";
+import koeiTecmoDataSources2018 from "../koeiTecmo/Data_Sources/data_sources_fy3_2018.json";
+import koeiTecmoDataSources2017 from "../koeiTecmo/Data_Sources/data_sources_fy3_2017.json";
+import koeiTecmoDataSources2016 from "../koeiTecmo/Data_Sources/data_sources_fy3_2016.json";
+import koeiTecmoDataSources2015 from "../koeiTecmo/Data_Sources/data_sources_fy3_2015.json";
+import koeiTecmoDataSources2014 from "../koeiTecmo/Data_Sources/data_sources_fy3_2014.json";
+import koeiTecmoDataSources2013 from "../koeiTecmo/Data_Sources/data_sources_fy3_2013.json";
+import koeiTecmoDataSources2012 from "../koeiTecmo/Data_Sources/data_sources_fy3_2012.json";
+import koeiTecmoDataSources2011 from "../koeiTecmo/Data_Sources/data_sources_fy3_2011.json";
+import koeiTecmoDataSources2010 from "../koeiTecmo/Data_Sources/data_sources_fy3_2010.json";
 
 import squareEnixDataSources2023 from "../squareEnix/Data_Sources/data_sources_fy3_2023.json";
 import squareEnixDataSources2022 from "../squareEnix/Data_Sources/data_sources_fy3_2022.json";
@@ -226,6 +235,15 @@ const koeiTecmoDataSources: jsonData[] = [
     koeiTecmoDataSources2021,
     koeiTecmoDataSources2020,
     koeiTecmoDataSources2019,
+    koeiTecmoDataSources2018,
+    koeiTecmoDataSources2017,
+    koeiTecmoDataSources2016,
+    koeiTecmoDataSources2015,
+    koeiTecmoDataSources2014,
+    koeiTecmoDataSources2013,
+    koeiTecmoDataSources2012,
+    koeiTecmoDataSources2011,
+    koeiTecmoDataSources2010,
 ];
 
 const squareEnixDataSources: jsonData[] = [

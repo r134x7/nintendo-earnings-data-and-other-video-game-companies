@@ -91,6 +91,14 @@ import consolidatedEarningsCapcom2021 from "../capcom/Consolidated_Earnings/cons
 import consolidatedEarningsCapcom2022 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2022.json"
 import consolidatedEarningsCapcom2023 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2023.json"
 
+import consolidatedEarningsKoeiTecmo2010 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2010.json"
+import consolidatedEarningsKoeiTecmo2011 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2011.json"
+import consolidatedEarningsKoeiTecmo2012 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2012.json"
+import consolidatedEarningsKoeiTecmo2013 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2013.json"
+import consolidatedEarningsKoeiTecmo2014 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2014.json"
+import consolidatedEarningsKoeiTecmo2015 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2015.json"
+import consolidatedEarningsKoeiTecmo2016 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2016.json"
+import consolidatedEarningsKoeiTecmo2017 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2017.json"
 import consolidatedEarningsKoeiTecmo2018 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2018.json"
 import consolidatedEarningsKoeiTecmo2019 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2019.json"
 import consolidatedEarningsKoeiTecmo2020 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2020.json"
@@ -236,6 +244,14 @@ const totalCollectionCapcom: EarningsJSON[] = [
 ];
 
 const totalCollectionKoeiTecmo: EarningsJSON[] = [
+    consolidatedEarningsKoeiTecmo2010,
+    consolidatedEarningsKoeiTecmo2011,
+    consolidatedEarningsKoeiTecmo2012,
+    consolidatedEarningsKoeiTecmo2013,
+    consolidatedEarningsKoeiTecmo2014,
+    consolidatedEarningsKoeiTecmo2015,
+    consolidatedEarningsKoeiTecmo2016,
+    consolidatedEarningsKoeiTecmo2017,
     consolidatedEarningsKoeiTecmo2018,
     consolidatedEarningsKoeiTecmo2019,
     consolidatedEarningsKoeiTecmo2020,
@@ -462,6 +478,8 @@ const operatingResultsSegaSammy = operatingResultsMaker(totalCollectionSegaSammy
 
 const operatingResultsCapcom = operatingResultsMaker(totalCollectionCapcom);
 
+const operatingResultsKoeiTecmo = operatingResultsMaker(totalCollectionKoeiTecmo);
+
 export const cumulativeEarningsListNintendo = [
     operatingResultsNintendo.header,
     dateLabel,
@@ -505,5 +523,14 @@ export const cumulativeEarningsListCapcom = [
     ...operatingResultsCapcom.netSales,
     ...operatingResultsCapcom.operatingIncome,
     ...operatingResultsCapcom.netIncome,
+    "###\n",
+].reduce((prev, next) => prev + next);
+
+export const cumulativeEarningsListKoeiTecmo = [
+    operatingResultsKoeiTecmo.header,
+    dateLabel,
+    ...operatingResultsKoeiTecmo.netSales,
+    ...operatingResultsKoeiTecmo.operatingIncome,
+    ...operatingResultsKoeiTecmo.netIncome,
     "###\n",
 ].reduce((prev, next) => prev + next);
