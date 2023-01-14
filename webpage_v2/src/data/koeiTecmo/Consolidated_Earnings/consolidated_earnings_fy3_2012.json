@@ -2,5 +2,5 @@
     "currentQuarter": 4,
     "companyName": "KOEI TECMO HOLDINGS CO., LTD.",
     "fiscalYear": "FY3/2012",
-    "data": [] 
+    "data": [{"name":"Net Sales","Q1CmlValue":6717,"Q2CmlValue":13635,"Q3CmlValue":20860,"Q4CmlValue":35525,"forecastThisFY":35000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":39000},{"name":"Operating Income","Q1CmlValue":343,"Q2CmlValue":712,"Q3CmlValue":1803,"Q4CmlValue":5758,"forecastThisFY":5000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":7000},{"name":"Net Income","Q1CmlValue":265,"Q2CmlValue":412,"Q3CmlValue":666,"Q4CmlValue":4640,"forecastThisFY":3600,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":5000}] 
 }

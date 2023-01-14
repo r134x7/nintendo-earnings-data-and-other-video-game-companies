@@ -1,9 +1,9 @@
 Net Sales
-32081
-35000
+34502
+36500
 Operating Income
-3305
+641
 5000
 Net Income
-2741
-3600
+2604
+3500
