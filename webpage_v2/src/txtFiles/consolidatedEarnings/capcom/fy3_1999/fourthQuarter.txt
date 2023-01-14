@@ -1,9 +1,9 @@
 Net Sales
-51574
-48000
+38366
+45000
 Operating Income
-9061
+3611
 no forecast
 Net Income
-9700
-6000
+1507
+4550
