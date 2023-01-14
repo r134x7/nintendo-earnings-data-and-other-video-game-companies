@@ -2,27 +2,5 @@
     "currentQuarter": 4,
     "companyName": "CAPCOM Co., Ltd.",
     "fiscalYear": "FY3/2016",
-    "data": [
-        {
-            "name": "Net Sales",
-            "Q1CmlValue": 14541,
-            "Q2CmlValue": 31638,
-            "Q3CmlValue": 57060,
-            "Q4CmlValue": 77021
-        },
-        {
-            "name": "Operating Income",
-            "Q1CmlValue": 2026,
-            "Q2CmlValue": 2844,
-            "Q3CmlValue": 10604,
-            "Q4CmlValue": 12029
-        },
-        {
-            "name": "Net Income",
-            "Q1CmlValue": 1569,
-            "Q2CmlValue": 1951,
-            "Q3CmlValue": 7006,
-            "Q4CmlValue": 7745
-        }
-    ]
+    "data": [{"name":"Net Sales","Q1CmlValue":14541,"Q2CmlValue":31638,"Q3CmlValue":57060,"Q4CmlValue":77021,"forecastThisFY":76000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":85000},{"name":"Operating Income","Q1CmlValue":2026,"Q2CmlValue":2844,"Q3CmlValue":10604,"Q4CmlValue":12029,"forecastThisFY":12000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":13600},{"name":"Net Income","Q1CmlValue":1569,"Q2CmlValue":1951,"Q3CmlValue":7006,"Q4CmlValue":7745,"forecastThisFY":7700,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":9000}]
 }
