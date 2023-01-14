@@ -2,36 +2,28 @@
     "fiscalYear": "FY3/2018",
     "data": [
         {
-            "text": "1st Quarter Earnings Release:",
-            "link": ""
+            "text": "1st Quarter Earnings Release (Japanese):",
+            "link": "https://www.koeitecmo.co.jp/ir/docs/ir1_20170724.pdf"
         },
         {
-            "text": "1st Quarter Financial Results Presentation:",
-            "link": ""
-        },
-        {
-            "text": "2nd Quarter Earnings Release:",
-            "link": ""
+            "text": "2nd Quarter Earnings Release (Japanese):",
+            "link": "https://www.koeitecmo.co.jp/ir/docs/ir1_20171026.pdf"
         },
         {
             "text": "2nd Quarter Financial Results Presentation:",
-            "link": ""
+            "link": "https://www.koeitecmo.co.jp/e/ir/docs/ird3_20171212.pdf"
         },
         {
-            "text": "3rd Quarter Earnings Release:",
-            "link": ""
+            "text": "3rd Quarter Earnings Release (Japanese):",
+            "link": "https://www.koeitecmo.co.jp/ir/docs/ir1_20180129.pdf"
         },
         {
-            "text": "3rd Quarter Financial Results Presentation:",
-            "link": ""
-        },
-        {
-            "text": "4th Quarter Earnings Release:",
-            "link": ""
+            "text": "4th Quarter Earnings Release (Japanese):",
+            "link": "https://www.koeitecmo.co.jp/ir/docs/ir1_20180426.pdf"
         },
         {
             "text": "4th Quarter Financial Results Presentation:",
-            "link": ""
+            "link": "https://www.koeitecmo.co.jp/e/ir/docs/ird3_20180530.pdf"
         }
     ]
 }
