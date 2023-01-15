@@ -1,0 +1,59 @@
+{
+    "fiscalYear":  "FY3/2017",
+    "platforms": [
+        {
+            "title": "PlayStation 3, PlayStation 4",
+            "skuNumber": 16,
+            "value": 4.7,
+            "valueLastFY": 3.5
+        },
+        {
+            "title": "PSP, PlayStation Vita",
+            "skuNumber": 5,
+            "value": 0.15,
+            "valueLastFY": 0.3
+        },
+        {
+            "title": "Wii, Wii U",
+            "skuNumber": 0,
+            "value": 0,
+            "valueLastFY": 0.1 
+        },
+        {
+            "title": "Nintendo DS, Nintendo 3DS",
+            "skuNumber": 5,
+            "value": 3.2,
+            "valueLastFY": 4.1
+        },
+        {
+            "title": "Xbox 360, Xbox One",
+            "skuNumber": 9,
+            "value": 2.1,
+            "valueLastFY": 0.65
+        },
+        {
+            "title": "PC Other",
+            "skuNumber": 6,
+            "value": 0.25,
+            "valueLastFY": 0.25
+        },
+        {
+            "title": "Package Total",
+            "skuNumber": 41,
+            "value": 10.4,
+            "valueLastFY": 8.9
+        },
+        {
+            "title": "Full-game download",
+            "skuNumber": 1,
+            "value": 9.0,
+            "valueLastFY": 6.1 
+        },
+        {
+            "title": "Total",
+            "skuNumber": 42,
+            "value": 19.4,
+            "valueLastFY": 15.0
+        }
+    ] 
+}
