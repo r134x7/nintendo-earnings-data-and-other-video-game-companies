@@ -7,6 +7,7 @@ export type Section = {
     name: string,
     value: number,
     miscellaneous?: string,
+    fiscalYear?: string,
 }
 
 export type Header = {

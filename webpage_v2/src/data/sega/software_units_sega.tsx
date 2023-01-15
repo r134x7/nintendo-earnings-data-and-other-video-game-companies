@@ -17,7 +17,7 @@ export const collection = [
     seriesSoftwareUnits2021,
 ] as const;
 
-const platformUnitSalesMake = (obj: undefined | {
+export const platformUnitSalesMake = (obj: undefined | {
     name: string,
     Q1CmlValue: number,
     Q2CmlValue: number,
