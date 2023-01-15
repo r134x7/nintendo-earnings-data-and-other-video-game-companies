@@ -130,15 +130,13 @@ function annualReportMaker (collection: annualReport[], companyName: string, dat
    }
 }
 
-const annualReportBandaiNamco = annualReportMaker(collectionBandaiNamco, "Bandai Namco", dateLabel);
-
 function printTitles(header: string, titles: Series[][]) {
 
     const titleList = titles.map((elem, index, array) => {
 
         let printTitleName = liner(printTextBlock(elem[0].title, 42),"−","both",true,42);
 
-        let miscellaneousCheck = (elem[elem.length-1].miscellaneous === undefined)
+        let miscellaneousCheck: string | undefined = (elem[elem.length-1].miscellaneous === undefined)
             ? undefined
             : elem[elem.length-1].miscellaneous;
 
@@ -146,7 +144,10 @@ function printTitles(header: string, titles: Series[][]) {
             ? liner(printReleaseDateAndRank(elem[elem.length-1],42),"=","bottom",true,42)
             : liner(printReleaseDateAndRank(elem[elem.length-1],42),"−","bottom",true,42) + liner(printTextBlock(miscellaneousCheck,42),"=","bottom",true,42) 
 
-        let yearValues: string[] = elem.map(value => {
+        let yearValues: string[] = elem.flatMap(value => {
+            if (value.value - value.valueLastFY === 0) {
+                return []
+            }
 
             let valueCalculation: string = (value.value - value.valueLastFY).toFixed(2);
 
@@ -177,4 +178,15 @@ function printTitles(header: string, titles: Series[][]) {
     ].reduce((acc, next) => acc + next)
 };
 
+const annualReportBandaiNamco = annualReportMaker(collectionBandaiNamco, "Bandai Namco", dateLabel);
+
 export const fyTitlesBandaiNamco = printTitles(annualReportBandaiNamco.header, annualReportBandaiNamco.titles);
+
+const annualReportSquareEnix = annualReportMaker(collectionSquareEnix, "Square Enix", dateLabel);
+
+let squareEnixNote = "For the numbers shown from FY3/2010 to FY3/2019, go to the FY Series IP section of the relevant fiscal year and check the footnotes regarding the accuracy of those numbers." 
+
+export const fyTitlesSquareEnix = [
+    printTitles(annualReportSquareEnix.header, annualReportSquareEnix.titles),
+    liner(printTextBlock(squareEnixNote,42),"−","both",true,42)
+].reduce((acc, next) => acc + next); 
