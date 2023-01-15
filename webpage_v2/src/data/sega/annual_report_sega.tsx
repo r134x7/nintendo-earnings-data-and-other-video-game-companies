@@ -87,7 +87,7 @@ export const seriesMake = (obj: {
     return series
 };
 
-export const fullGameRatio = (ip: Series, fiscalYear: string): string | undefined => {
+export const fullGameRatio = (ip: Series, fiscalYear: string, cumulative: boolean): string | never[] => {
 
     let nameSearch = softwareUnitsCollection.filter((elem) => {
         // match by fiscalYear key
@@ -103,17 +103,24 @@ export const fullGameRatio = (ip: Series, fiscalYear: string): string | undefine
     }).flat();
     
     if (nameSearch.length === 0) {
-        return undefined
+        return []
     } else {
         
         let calc: string = `${(((nameSearch[0].Q4CmlValue / 1000) / (ip.value - ip.valueLastFY)) * 100).toFixed(2)}%`
+
+        let calcRow: string = border([
+            spacer(fiscalYear + " Full Game / IP Series %", 33, "left"),
+            spacer(calc, 9, "right"),
+        ])
 
         let calcPrint: string = liner(border([
             spacer(fiscalYear + " Full Game / IP Series %", 33, "left"),
             spacer(calc, 9, "right"),
         ]),"=","both",true) + "###"
 
-        return calcPrint 
+        return (cumulative === true)
+            ? calcRow 
+            : calcPrint
     };
 
 };
@@ -154,11 +161,11 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
 
     let printedSeries = sortedList.map((elem) => {
         
-        let printRatio = fullGameRatio(elem, fiscalYear)        
+        let printRatio: string[] = [fullGameRatio(elem, fiscalYear,false)].flat()        
         
-        return (!printRatio) 
+        return (printRatio.length === 0) 
                 ? printSeries(header, elem)
-                : printSeries(header, elem).concat(printRatio)
+                : printSeries(header, elem).concat(printRatio[0])
     }).reduce((prev, next) => prev + "\n" + next)
 
     let printOne = headerPrint([

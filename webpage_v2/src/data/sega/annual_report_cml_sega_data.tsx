@@ -1,7 +1,7 @@
 import { liner, border, spacer, printTextBlock } from "../../utils/table_design_logic";
 import { Series } from "../../utils/sega_annual_report_logic";
 import { seriesType, seriesMake, fullGameRatio } from "./annual_report_sega";
-import { collection as softwareUnitsCollection } from "./software_units_sega";
+// import { collection as softwareUnitsCollection } from "./software_units_sega"; // so the function is working without having to import the software units collection...
 
 import annualReportSegaSammy2013 from "./Annual_Report/annual_report_fy3_2013.json";
 import annualReportSegaSammy2014 from "./Annual_Report/annual_report_fy3_2014.json";
@@ -62,7 +62,12 @@ function annualReportMaker (collection: annualReport[], companyName: string, dat
         let fiscalYearGet = elem.fiscalYear;
 
         return flatList.map(value => {
-            return {
+            return (value.title === "Megami Tensei") ? {
+                ...value,
+                title: "Shin Megami Tensei",
+                fiscalYear: fiscalYearGet,
+            }
+            : {
                 ...value, fiscalYear: fiscalYearGet,
             }
         })
@@ -150,7 +155,7 @@ function printTitles(header: string, titles: Series[][]) {
 
         let printMiscFlatFilter: string = [printMisc1, printMisc2].flat().reduce((acc, next) => acc + "\n" + next, "");
 
-        let releaseDateAndRankAndNotes = (miscellaneousCheck1 === undefined && miscellaneousCheck2 === undefined) 
+        let releaseDateAndRankAndNotes: string = (miscellaneousCheck1 === undefined && miscellaneousCheck2 === undefined) 
             ? printFirstYearAndRankAndEditions + printUnits 
             : printFirstYearAndRankAndEditions + printUnits + liner(printMiscFlatFilter,"=","bottom",true,44) 
 
@@ -172,6 +177,22 @@ function printTitles(header: string, titles: Series[][]) {
             spacer(`${elem[elem.length-1].value}M`,9,"right")
         ]),"−","both",true) 
 
+        let ratioList: string = elem.flatMap(value => {
+            let fiscalYearCheck = (value.fiscalYear === undefined) 
+                ? "N/A"
+                : value.fiscalYear
+            
+            return fullGameRatio(value,fiscalYearCheck,true)
+        }).reduce((acc, next, index, array) => {
+            return (index === 0)    
+                ? acc + next
+                : acc + "\n" + next
+        },"");
+
+        let ratioListFixed = (ratioList === "")
+            ? "" 
+            : liner(ratioList,"=","both",undefined,45) + "\n###\n"
+
         return [
             printTitleName,
             printIPType,
@@ -179,6 +200,7 @@ function printTitles(header: string, titles: Series[][]) {
             releaseDateAndRankAndNotes,
             ...yearValues,
             printLTD,
+            ratioListFixed,
         ].reduce((prev, next) => {
             return prev + next
         });
@@ -192,9 +214,4 @@ function printTitles(header: string, titles: Series[][]) {
 
 const annualReportSegaSammy = annualReportMaker(collectionSegaSammy, "Sega Sammy", dateLabel);
 
-let segaSammyNote = "placeholder" 
-
-export const fyTitlesSegaSammy = [
-    printTitles(annualReportSegaSammy.header, annualReportSegaSammy.titles),
-    liner(printTextBlock(segaSammyNote,42),"−","both",true,42)
-].reduce((acc, next) => acc + next); 
+export const fyTitlesSegaSammy = printTitles(annualReportSegaSammy.header, annualReportSegaSammy.titles); 
