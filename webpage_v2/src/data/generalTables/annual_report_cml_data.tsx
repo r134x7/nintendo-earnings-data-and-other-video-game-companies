@@ -109,9 +109,24 @@ function annualReportMaker (collection: annualReport[], companyName: string, dat
 
    let titleList: Series[][] = sortTitles(filteredCollection)
 
+   let rankTitles: Series[][] = titleList.map((elem, index, array) => {
+            return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+    }).sort((b, a) => { // (b,a) is descending order, (a,b) sorts in ascending order
+        return (a[a.length-1].value > b[b.length-1].value)
+            ? 1
+            : (a[a.length-1].value < b[b.length-1].value)
+            ? -1
+            : 0 
+    }).map((elem, index) => {
+        let rankGet = index+1
+        return elem.map(value => {
+            return {...value, rank: rankGet} 
+        }) //{...elem, rank: index+1} // x which is the returned array is now returned to the array of arrays
+    })
+
    return {
         header: headerMake,
-        titles: titleList,
+        titles: rankTitles,
    }
 }
 
@@ -128,8 +143,8 @@ function printTitles(header: string, titles: Series[][]) {
             : elem[elem.length-1].miscellaneous;
 
         let releaseDateAndRank = (miscellaneousCheck === undefined) 
-            ? liner(printReleaseDateAndRank(elem[elem.length-1],38),"=","bottom",true,42)
-            : liner(printReleaseDateAndRank(elem[elem.length-1],38),"−","bottom",true,42) + liner(printTextBlock(miscellaneousCheck,42),"=","bottom",true,42) 
+            ? liner(printReleaseDateAndRank(elem[elem.length-1],42),"=","bottom",true,42)
+            : liner(printReleaseDateAndRank(elem[elem.length-1],42),"−","bottom",true,42) + liner(printTextBlock(miscellaneousCheck,42),"=","bottom",true,42) 
 
         let yearValues: string[] = elem.map(value => {
 
