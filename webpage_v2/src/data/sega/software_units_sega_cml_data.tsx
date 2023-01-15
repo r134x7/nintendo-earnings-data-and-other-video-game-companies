@@ -35,14 +35,8 @@ function softwareUnitsMaker (collection: softwareUnits[], companyName: string, d
         spacer(companyName, companyName.length+1, "left")
         ]),"−","top",true) +
         liner(border([
-            spacer("IP Series Data - Cumulative", "IP Series Data - Cumulative".length+2, "left")
-        ]), "−", "both",true) + dateLabelLocal + liner(border([
-            spacer("First appearance to recent FY",32,"left"),
-        ]),"−","top",true) + liner(border([
-            spacer("Rank",32,"left"),
-        ]),"−","top",true) + liner(border([
-            spacer("Units",32,"left"),
-        ]),"−","both",true)
+            spacer("Full Game Software Unit Sales - Cumulative", "Full Game Software Unit Sales - Cumulative".length+1, "left")
+        ]), "−", "both",true) + dateLabelLocal 
 
     let totalCollectionSet: Section[][] = collection.map(elem => {
 
@@ -108,16 +102,21 @@ function printTitles(header: string, titles: Section[][]) {
         let yearValues: string[] = elem.flatMap(value => {
             return border([
                  spacer(value.fiscalYear + " Cumlative",30,"left"),
-                 spacer(`${value.value}M`,9,"right")
+                 spacer(`${value.value / 100}M`,9,"right")
             ],true);
         });
 
-       let sum = elem.reduce((acc, next) => acc + next.value, 0).toFixed(2); 
+       let sum = Number(elem.reduce((acc, next) => acc + next.value, 0) / 100).toFixed(2); 
 
-        let printSum: string = liner(border([
-            spacer("Sum",30,"left"),
-            spacer(`${sum}M`,9,"right")
-        ]),"−","both",true) 
+        let printSum: string = (miscellaneousCheck === undefined) 
+            ? liner(border([
+                spacer("Sum",30,"left"),
+                spacer(`${sum}M`,9,"right")
+            ]),"−","both",true) 
+            : liner(border([
+                spacer("Sum",30,"left"),
+                spacer(`${sum}M`,9,"right")
+            ]),"−","both",true) + liner(printTextBlock(miscellaneousCheck,42),"−","bottom",true,42)
 
         return [
             printTitleName,
@@ -133,3 +132,7 @@ function printTitles(header: string, titles: Section[][]) {
         titleList,
     ].reduce((acc, next) => acc + next)
 };
+
+const softwareUnitsSegaSammy = softwareUnitsMaker(collectionSegaSammy, "Sega Sammy", dateLabel);
+
+export const softwareCumulativeSegaSammy = printTitles(softwareUnitsSegaSammy.header, softwareUnitsSegaSammy.titles);
