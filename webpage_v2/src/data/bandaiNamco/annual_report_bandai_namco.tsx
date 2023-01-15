@@ -13,7 +13,7 @@ const collection = [
     annualReport2019,
 ] as const;
 
-const seriesMake = (obj: {
+export const seriesMake = (obj: {
     "series": {
         title: string,
         releaseDate: string,

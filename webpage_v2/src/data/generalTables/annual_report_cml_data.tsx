@@ -1,4 +1,6 @@
-import { liner, border, spacer, headerPrint } from "../../utils/table_design_logic";
+import { liner, border, spacer, printTextBlock } from "../../utils/table_design_logic";
+import { printReleaseDateAndRank, Series } from "../../utils/bandai_namco_annual_report_logic";
+// import { seriesMake } from "../bandaiNamco/annual_report_bandai_namco";
 
 import annualReportBandaiNamco2019 from "../bandaiNamco/Annual_Report/annual_report_fy3_2019.json";
 import annualReportBandaiNamco2020 from "../bandaiNamco/Annual_Report/annual_report_fy3_2020.json";
@@ -57,14 +59,107 @@ const collectionSquareEnix: annualReport[] = [
 
 const dateLabel = liner(border([spacer("Data as of March 31st, 2022", "Data as of March 31st, 2022".length+1, "left")]),"−", "bottom",true)
 
-function annualReportMaker (collection: annualReport[], companyName: string) {
+function annualReportMaker (collection: annualReport[], companyName: string, dateLabelLocal: string) {
 
-    let headerMake = liner(border([
+    let headerMake: string = liner(border([
         spacer(companyName, companyName.length+1, "left")
         ]),"−","top",true) +
         liner(border([
-            spacer("IP Series Data", "IP Series Data".length+2, "left")
-        ]), "−", "both",true)
+            spacer("IP Series Data - Cumulative", "IP Series Data - Cumulative".length+2, "left")
+        ]), "−", "both",true) + dateLabelLocal + liner(border([
+            spacer("First appearance to recent FY",32,"left"),
+        ]),"−","top",true) + liner(border([
+            spacer("Rank",32,"left"),
+        ]),"−","top",true) + liner(border([
+            spacer("Units",32,"left"),
+        ]),"−","both",true)
 
-    
+    let totalCollectionSet: Series[][] = collection.map(elem => {
+
+        let flatList: Series[] = elem.series;
+
+        let fiscalYearGet = elem.fiscalYear;
+
+        return flatList.map(value => {
+            return (value.title === "Ultimate Ninja Storm") ? {
+                ...value,
+                title: "Naruto-related",
+                fiscalYear: fiscalYearGet,
+            }
+            : {
+                ...value, fiscalYear: fiscalYearGet,
+            }
+        })
+    });
+
+    let flatCollectionSet: Series[] = totalCollectionSet.flat();
+
+   let titlesList = totalCollectionSet.flat().map(value => value.title);
+
+   const filteredCollection = [...new Set(titlesList)];
+
+   function sortTitles(titles: string[]): Series[][] {
+        return titles.map((elem, index, array) => {
+
+            let searchTitle: Series[] = flatCollectionSet.filter((value) => value.title === elem)
+
+            return searchTitle
+        });
+   };
+
+   let titleList: Series[][] = sortTitles(filteredCollection)
+
+   return {
+        header: headerMake,
+        titles: titleList,
+   }
 }
+
+const annualReportBandaiNamco = annualReportMaker(collectionBandaiNamco, "Bandai Namco", dateLabel);
+
+function printTitles(header: string, titles: Series[][]) {
+
+    const titleList = titles.map((elem, index, array) => {
+
+        let printTitleName = liner(printTextBlock(elem[0].title, 42),"−","both",true,42);
+
+        let miscellaneousCheck = (elem[elem.length-1].miscellaneous === undefined)
+            ? undefined
+            : elem[elem.length-1].miscellaneous;
+
+        let releaseDateAndRank = (miscellaneousCheck === undefined) 
+            ? liner(printReleaseDateAndRank(elem[elem.length-1],38),"=","bottom",true,42)
+            : liner(printReleaseDateAndRank(elem[elem.length-1],38),"−","bottom",true,42) + liner(printTextBlock(miscellaneousCheck,42),"=","bottom",true,42) 
+
+        let yearValues: string[] = elem.map(value => {
+
+            let valueCalculation: string = (value.value - value.valueLastFY).toFixed(2);
+
+            return border([
+                 spacer(value.fiscalYear + " Cumlative",30,"left"),
+                 spacer(`${valueCalculation}M`,9,"right")
+            ],true);
+        });
+
+        let printLTD: string = liner(border([
+            spacer("Life-To-Date (Units)",30,"left"),
+            spacer(`${elem[elem.length-1].value}M`,9,"right")
+        ]),"−","both",true) 
+
+        return [
+            printTitleName,
+            releaseDateAndRank,
+            ...yearValues,
+            printLTD,
+        ].reduce((prev, next) => {
+            return prev + next
+        });
+    }).reduce((prev, next) => prev + next);
+
+    return [
+        header,
+        titleList,
+    ].reduce((acc, next) => acc + next)
+};
+
+export const fyTitlesBandaiNamco = printTitles(annualReportBandaiNamco.header, annualReportBandaiNamco.titles);

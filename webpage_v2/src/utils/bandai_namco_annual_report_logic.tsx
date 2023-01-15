@@ -9,6 +9,7 @@ export type Series = {
     valueLastTwoFYs: number,
     rank?: number,
     miscellaneous?: string,
+    fiscalYear?: string,
 };
 
 export type Header = {
@@ -22,7 +23,7 @@ export type Header = {
     summaryHeader: string,
 };
 
-const printReleaseDateAndRank = (seriesIP: Series, blockLength: number) => {
+export const printReleaseDateAndRank = (seriesIP: Series, blockLength: number) => {
 
     let releaseDate: string = seriesIP.releaseDate + " to " + seriesIP.fyEndMonth;
 
