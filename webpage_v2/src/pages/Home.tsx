@@ -59,12 +59,12 @@ const Home = () => {
                     </List>
                     <Text>Capcom -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Consolidated Financial Results from FY3/2004 to FY3/2023 added. Added Consolidated Financial Results and FY Game Series to special page.</List.Item>
+                        <List.Item>Latest update: Consolidated Financial Results from FY3/2004 to FY3/2023 added. Added Consolidated Financial Results, FY Game Series and Software Platform Shipments to special page.</List.Item>
                         <List.Item>Future update planned: Notes section.</List.Item>
                     </List>
                     <Text>Sega Sammy -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Consolidated Operating Results from FY3/2005 to FY3/2023 added. Added Consolidated Operating Results and FY Series IP to special page.</List.Item>
+                        <List.Item>Latest update: Consolidated Operating Results from FY3/2005 to FY3/2023 added. Added Consolidated Operating Results, FY Series IP and Software Units to special page.</List.Item>
                         <List.Item>Future update planned: Notes section.</List.Item>
                     </List>
                     <Text>Bandai Namco -</Text>

@@ -110,7 +110,7 @@ function printTitles(header: string, titles: Section[][]) {
 
         let printSum: string = (miscellaneousCheck === undefined) 
             ? liner(border([
-                spacer("Sum",30,"left"),
+                spacer("Sum (Units)",30,"left"),
                 spacer(`${sum}M`,9,"right")
             ]),"−","both",true) 
             : liner(border([

@@ -7,6 +7,7 @@ export type Series = {
     valueLastFY: number,
     rank?: number,
     miscellaneous?: string,
+    fiscalYear?: string,
 };
 
 export type Header = {

@@ -5,6 +5,7 @@ import { printSpecialList } from "../../data/capcom/platinum_titles_Capcom";
 import { CapcomSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListCapcom } from "../../data/generalTables/consolidated_earnings_cml_data";
 import { fyTitlesCapcom } from "../../data/capcom/game_series_sales_capcom_cml_data";
+import { factBookCapcom } from "../../data/capcom/software_shipments_capcom_cml_data";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 
@@ -26,6 +27,10 @@ export default function CAPCOM_CML() {
         {
             name: "Capcom Sales Per Software Unit - Cumulative",
             value: CapcomSalesPerSoftwareUnitCml
+        },
+        {
+            name: "Capcom Software Platform Shipments - Cumulative",
+            value: factBookCapcom 
         },
         {
             name: "Capcom FY Game Series - Cumulative",
