@@ -3,6 +3,7 @@ import { Code, SegmentedControl, Space } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { segaSammySalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListSegaSammy } from "../../data/generalTables/consolidated_earnings_cml_data";
+import { fyTitlesSegaSammy } from "../../data/sega/annual_report_cml_sega_data";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 
@@ -20,6 +21,10 @@ export default function SEGA_CML() {
         {
             name: "Sega Sammy Sales Per Software Unit - Cumulative",
             value: segaSammySalesPerSoftwareUnitCml 
+        },
+        {
+            name: "Sega Sammy FY Series IP - Cumulative",
+            value: fyTitlesSegaSammy
         },
     ];
 

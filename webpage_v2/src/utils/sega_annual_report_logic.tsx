@@ -13,6 +13,7 @@ export type Series = {
     rank?: number,
     miscellaneous1?: string,
     miscellaneous2?: string,
+    fiscalYear?: string,
 }
 
 export type Header = {

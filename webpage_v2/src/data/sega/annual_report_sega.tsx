@@ -19,7 +19,7 @@ type collectionJSON = {
     series: seriesType[]
 };
 
-type seriesType = {
+export type seriesType = {
     title: string;
     firstReleaseYear: string;
     platforms: string;
@@ -46,7 +46,7 @@ const collection: collectionJSON[] = [
     annualReport2013,
 ];
 
-const seriesMake = (obj: {
+export const seriesMake = (obj: {
     "series": seriesType[]
 }): Series[] => {
     
@@ -87,7 +87,7 @@ const seriesMake = (obj: {
     return series
 };
 
-const fullGameRatio = (ip: Series, fiscalYear: string): string | undefined => {
+export const fullGameRatio = (ip: Series, fiscalYear: string): string | undefined => {
 
     let nameSearch = softwareUnitsCollection.filter((elem) => {
         // match by fiscalYear key
