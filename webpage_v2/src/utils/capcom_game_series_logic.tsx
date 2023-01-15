@@ -9,6 +9,7 @@ export type Series = {
     valueLastTwoFYs: number,
     rank?: number,
     miscellaneous?: string,
+    fiscalYear?: string,
 };
 
 export type Header = {
@@ -22,13 +23,13 @@ export type Header = {
     summaryHeader: string,
 };
 
-const printNumberOfTitles = (seriesIP: Series, blockLength: number, ) => {
+export const printNumberOfTitles = (seriesIP: Series, blockLength: number, ) => {
     return border([
         spacer("Number of Titles: " + seriesIP.numberOfTitles.toString(),blockLength-1,"left"),
     ])
 }
 
-const printReleaseDate = (seriesIP: Series, blockLength: number) => {
+export const printReleaseDate = (seriesIP: Series, blockLength: number) => {
     return border([
         spacer(seriesIP.releaseDate,blockLength-14,"left"),
         spacer((`Rank ${seriesIP.rank}`), 11,"left"),
