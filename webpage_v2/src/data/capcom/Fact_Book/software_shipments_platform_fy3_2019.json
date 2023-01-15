@@ -8,6 +8,12 @@
             "valueLastFY": 8.25
         },
         {
+            "title": "PSP, PlayStation Vita",
+            "skuNumber": 3,
+            "value": 0.05,
+            "valueLastFY": 0
+        },
+        {
             "title": "Wii, Wii U, Nintendo Switch",
             "skuNumber": 17,
             "value": 1.95,
