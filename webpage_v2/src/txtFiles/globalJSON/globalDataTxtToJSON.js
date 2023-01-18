@@ -1,16 +1,17 @@
 import { readFileSync, writeFile } from "fs";
 
-let currentQuarter = 4;
+// Enter 1 to 4 on the command line
+let currentQuarter = Number(process.argv[2]);
 
 const readQuarter = (currentQuarterLocal) => {
 
     return (currentQuarterLocal === 1)
-            ? readFileSync("regional_data/nintendo_ds_data/nintendo_ds_fy3_2010/firstQuarter.txt", "utf-8")
+            ? readFileSync("../regionalJSON/firstQuarter.txt", "utf-8")
             : (currentQuarterLocal === 2)
-            ? readFileSync("regional_data/nintendo_ds_data/nintendo_ds_fy3_2010/secondQuarter.txt", "utf-8") 
+            ? readFileSync("../regionalJSON/secondQuarter.txt", "utf-8") 
             : (currentQuarterLocal === 3)
-            ? readFileSync("regional_data/nintendo_ds_data/nintendo_ds_fy3_2010/thirdQuarter.txt", "utf-8")
-            : readFileSync("regional_data/nintendo_3ds_data/nintendo_3ds_fy3_2020/fourthQuarter.txt", "utf-8");
+            ? readFileSync("../regionalJSON/thirdQuarter.txt", "utf-8")
+            : readFileSync("../regionalJSON/fourthQuarter.txt", "utf-8");
 };
 
 const getTotals = (readQuarterLocal) => {
