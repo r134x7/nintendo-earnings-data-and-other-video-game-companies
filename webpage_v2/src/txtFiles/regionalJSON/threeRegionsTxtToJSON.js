@@ -1,6 +1,7 @@
 import { readFileSync, writeFile } from "fs";
 
-let currentQuarter = 4;
+// Enter 1 to 4 on the command line
+let currentQuarter = Number(process.argv[2]);
 
 const readQuarter = (currentQuarterLocal) => {
 
@@ -10,7 +11,7 @@ const readQuarter = (currentQuarterLocal) => {
             ? readFileSync("secondQuarter.txt", "utf-8") 
             : (currentQuarterLocal === 3)
             ? readFileSync("thirdQuarter.txt", "utf-8")
-            : readFileSync("regional_data/nintendo_3ds_data/nintendo_3ds_fy3_2020/fourthQuarter.txt", "utf-8");
+            : readFileSync("fourthQuarter.txt", "utf-8");
 };
 
 const removeCommas = (readQuarterLocal) => {

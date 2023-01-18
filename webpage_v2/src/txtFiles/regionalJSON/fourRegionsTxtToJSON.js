@@ -1,6 +1,7 @@
 import { readFileSync, writeFile } from "fs";
 
-let currentQuarter = 1;
+// Enter 1 to 4 on the command line
+let currentQuarter = Number(process.argv[2]);
 
 const readQuarter = (currentQuarterLocal) => {
 
@@ -15,16 +16,17 @@ const readQuarter = (currentQuarterLocal) => {
 
 const removeCommas = (readQuarterLocal) => {
 
-    let one = readQuarterLocal.replaceAll(",", "");
-    let two = one.replaceAll(/Japan\d+/g, "\r\nJapan");
-    let three = two.replaceAll(/The Americas\d+/g, "\r\nThe Americas");
-    let four = three.replaceAll(/Europe\d+/g, "\r\nEurope");
-    let five = four.replaceAll(/Other\d+/g, "\r\nOther");
-    let six = five.replaceAll(/Total\d+/g, "\r\nTotal");
-    let seven = six.replaceAll(/New titles(.*)/g, "");
+    // let one = readQuarterLocal.replaceAll(",", "");
+    // let two = one.replaceAll(/Japan\d+/g, "\r\nJapan");
+    // let three = two.replaceAll(/The Americas\d+/g, "\r\nThe Americas");
+    // let four = three.replaceAll(/Europe\d+/g, "\r\nEurope");
+    // let five = four.replaceAll(/Other\d+/g, "\r\nOther");
+    // let six = five.replaceAll(/Total\d+/g, "\r\nTotal");
+    // let seven = six.replaceAll(/New titles(.*)/g, "");
 
     // let eight = seven.match(/Japan\s\d+|The Americas\s\d+|Other\s\d+|Europe\s\d+|Total\s\d+|Nintendo Switch (Hardware \(Total\)|OLED Model|Lite)|Nintendo Switch|Switch Software/g);
-    let eight = seven.match(/.+/g)
+    // let eight = seven.match(/.+/g)
+    let eight = readQuarterLocal.match(/.+/g);
 
     return eight 
 };
@@ -34,66 +36,76 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
         return null
     };
 
-    return Array.from({length:(newQuarterLocal.length/6)}, (v,i) => {
+    return Array.from({length:(newQuarterLocal.length/13)}, (v,i) => {
 
-        let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem,index,array) => (elem.name === newQuarterLocal[(i*6)])); // searching by name
+        let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem,index,array) => (elem.name === newQuarterLocal[(i*13)].trim())); // searching by name
 
         return (!searchTitle[0])
             ? {
-                name: newQuarterLocal[(i*6)],
+                name: newQuarterLocal[(i*13)].trim(),
                 regionA: "Global",
-                Q1CmlValueA: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+5].match(/\d+/)),
-                Q2CmlValueA: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*6)+5].match(/\d+/)),
-                Q3CmlValueA: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*6)+5].match(/\d+/)),
-                Q4CmlValueA: Number(newQuarterLocal[(i*6)+5].match(/\d+/)),
+                Q1CmlValueA: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*13)+11]),
+                Q2CmlValueA: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*13)+11]),
+                Q3CmlValueA: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*13)+11]),
+                Q4CmlValueA: Number(newQuarterLocal[(i*13)+11]),
+                valueALastFY: Number(newQuarterLocal[(i*13)+12]) - Number(newQuarterLocal[(i*13)+11]),
                 regionB: "Japan",
-                Q1CmlValueB: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+1].match(/\d+/)),
-                Q2CmlValueB: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*6)+1].match(/\d+/)),
-                Q3CmlValueB: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*6)+1].match(/\d+/)),
-                Q4CmlValueB: Number(newQuarterLocal[(i*6)+1].match(/\d+/)),
+                Q1CmlValueB: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*13)+2]),
+                Q2CmlValueB: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*13)+2]),
+                Q3CmlValueB: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*13)+2]),
+                Q4CmlValueB: Number(newQuarterLocal[(i*13)+2]),
+                valueBLastFY: Number(newQuarterLocal[(i*13)+3]) - Number(newQuarterLocal[(i*13)+2]),
                 regionC: "The Americas",
-                Q1CmlValueC: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+2].match(/\d+/)),
-                Q2CmlValueC: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*6)+2].match(/\d+/)),
-                Q3CmlValueC: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*6)+2].match(/\d+/)),
-                Q4CmlValueC: Number(newQuarterLocal[(i*6)+2].match(/\d+/)),
-                regionD: "Europe",
-                Q1CmlValueD: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+3].match(/\d+/)),
-                Q2CmlValueD: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*6)+3].match(/\d+/)),
-                Q3CmlValueD: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*6)+3].match(/\d+/)),
-                Q4CmlValueD: Number(newQuarterLocal[(i*6)+3].match(/\d+/)),
+                Q1CmlValueC: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*13)+5]),
+                Q2CmlValueC: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*13)+5]),
+                Q3CmlValueC: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*13)+5]),
+                Q4CmlValueC: Number(newQuarterLocal[(i*13)+5]),
+                valueCLastFY: Number(newQuarterLocal[(i*13)+6]) - Number(newQuarterLocal[(i*13)+5]),
+                regionD: "Other",
+                Q1CmlValueD: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*13)+8]),
+                Q2CmlValueD: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*13)+8]),
+                Q3CmlValueD: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*13)+8]),
+                Q4CmlValueD: Number(newQuarterLocal[(i*13)+8]),
+                valueDLastFY: Number(newQuarterLocal[(i*13)+9]) - Number(newQuarterLocal[(i*13)+8]),
                 regionE: "Other",
-                Q1CmlValueE: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+4].match(/\d+/)),
-                Q2CmlValueE: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*6)+4].match(/\d+/)),
-                Q3CmlValueE: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*6)+4].match(/\d+/)),
-                Q4CmlValueE: Number(newQuarterLocal[(i*6)+4].match(/\d+/)),
+                Q1CmlValueE: 0,
+                Q2CmlValueE: 0,
+                Q3CmlValueE: 0,
+                Q4CmlValueE: 0,
+                valueELastFY: 0,
             } 
             : {
-                name: newQuarterLocal[(i*6)],
+                name: newQuarterLocal[(i*13)].trim(),
                 regionA: "Global",
-                Q1CmlValueA: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+5].match(/\d+/)),
-                Q2CmlValueA: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*6)+5].match(/\d+/)) : searchTitle[0].Q2CmlValueA,
-                Q3CmlValueA: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*6)+5].match(/\d+/)) : searchTitle[0].Q3CmlValueA,
-                Q4CmlValueA: Number(newQuarterLocal[(i*6)+5].match(/\d+/)),
+                Q1CmlValueA: searchTitle[0].Q1CmlValueA,
+                Q2CmlValueA: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*13)+11]) : searchTitle[0].Q2CmlValueA,
+                Q3CmlValueA: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*13)+11]) : searchTitle[0].Q3CmlValueA,
+                Q4CmlValueA: Number(newQuarterLocal[(i*13)+11]),
+                valueALastFY: Number(newQuarterLocal[(i*13)+12]) - Number(newQuarterLocal[(i*13)+11]),
                 regionB: "Japan",
-                Q1CmlValueB: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+1].match(/\d+/)),
-                Q2CmlValueB: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*6)+1].match(/\d+/)) : searchTitle[0].Q2CmlValueB,
-                Q3CmlValueB: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*6)+1].match(/\d+/)) : searchTitle[0].Q3CmlValueB,
-                Q4CmlValueB: Number(newQuarterLocal[(i*6)+1].match(/\d+/)),
+                Q1CmlValueB: searchTitle[0].Q1CmlValueB,
+                Q2CmlValueB: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*13)+2]) : searchTitle[0].Q2CmlValueB,
+                Q3CmlValueB: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*13)+2]) : searchTitle[0].Q3CmlValueB,
+                Q4CmlValueB: Number(newQuarterLocal[(i*13)+2]),
+                valueBLastFY: Number(newQuarterLocal[(i*13)+3]) - Number(newQuarterLocal[(i*13)+2]),
                 regionC: "The Americas",
-                Q1CmlValueC: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+2].match(/\d+/)),
-                Q2CmlValueC: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*6)+2].match(/\d+/)) : searchTitle[0].Q2CmlValueC,
-                Q3CmlValueC: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*6)+2].match(/\d+/)) : searchTitle[0].Q3CmlValueC,
-                Q4CmlValueC: Number(newQuarterLocal[(i*6)+2].match(/\d+/)),
-                regionD: "Europe",
-                Q1CmlValueD: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+3].match(/\d+/)),
-                Q2CmlValueD: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*6)+3].match(/\d+/)) : searchTitle[0].Q2CmlValueD,
-                Q3CmlValueD: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*6)+3].match(/\d+/)) : searchTitle[0].Q3CmlValueD,
-                Q4CmlValueD: Number(newQuarterLocal[(i*6)+3].match(/\d+/)),
+                Q1CmlValueC: searchTitle[0].Q1CmlValueC,
+                Q2CmlValueC: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*13)+5]) : searchTitle[0].Q2CmlValueC,
+                Q3CmlValueC: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*13)+5]) : searchTitle[0].Q3CmlValueC,
+                Q4CmlValueC: Number(newQuarterLocal[(i*13)+5]),
+                valueCLastFY: Number(newQuarterLocal[(i*13)+6]) - Number(newQuarterLocal[(i*13)+5]),
+                regionD: "Other",
+                Q1CmlValueD: searchTitle[0].Q1CmlValueD,
+                Q2CmlValueD: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*13)+8]) : searchTitle[0].Q2CmlValueD,
+                Q3CmlValueD: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*13)+8]) : searchTitle[0].Q3CmlValueD,
+                Q4CmlValueD: Number(newQuarterLocal[(i*13)+8]),
+                valueDLastFY: Number(newQuarterLocal[(i*13)+9]) - Number(newQuarterLocal[(i*13)+8]),
                 regionE: "Other",
-                Q1CmlValueE: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*6)+4].match(/\d+/)),
-                Q2CmlValueE: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*6)+4].match(/\d+/)) : searchTitle[0].Q2CmlValueE,
-                Q3CmlValueE: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*6)+4].match(/\d+/)) : searchTitle[0].Q3CmlValueE,
-                Q4CmlValueE: Number(newQuarterLocal[(i*6)+4].match(/\d+/)),
+                Q1CmlValueE: 0,
+                Q2CmlValueE: 0,
+                Q3CmlValueE: 0,
+                Q4CmlValueE: 0,
+                valueELastFY: 0,
             };
     });
 };
@@ -117,5 +129,5 @@ let newArray = makeArray(extractNQ, parseCurrentData, currentQuarter);
 let newArrayStringify = JSON.stringify(newArray);
 
 writeFile("regional_data_test.json", newArrayStringify, (err) =>
-  err ? console.error(err) : console.log('No commas?')
+  err ? console.error(err) : console.log('four regions')
 );
