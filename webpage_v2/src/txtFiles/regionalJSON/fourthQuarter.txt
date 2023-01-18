@@ -1,33 +1,33 @@
 Nintendo Switch Hardware Total 
 Japan
-378
-438
+385
+823
 
 The Americas
-594
-714
+688
+1401
 
 Other
-533
-627
+623
+1250
 
 Total
-1505
-1779
+1695
+3474
 
 Nintendo Switch Software Total 
 Japan
-1226
-1315
+2148
+3464
 
 The Americas
-2752
-3037
+5394
+8431
 
 Other
-2373
-2544
+4313
+6857
 
 Total
-6351
-6897
+11855
+18752
