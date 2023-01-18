@@ -16,51 +16,7 @@
         }
     ],
     "platformUnitSales": [
-            {
-                "name": "Nintendo Switch Hardware Total",
-                "units": "units",
-                "Q1CmlValue": 445,
-                "Q2CmlValue": 828,
-                "Q3CmlValue": 1895,
-                "Q4CmlValue": 2306,
-                "cmlValueLastFY": 8459
-            },
-            {
-                "name": "Nintendo Switch",
-                "units": "units",
-                "Q1CmlValue": 331,
-                "Q2CmlValue": 645,
-                "Q3CmlValue": 1179,
-                "Q4CmlValue": 1356,
-                "cmlValueLastFY": 6989
-            },
-            {
-                "name": "Nintendo Switch Lite",
-                "units": "units",
-                "Q1CmlValue": 114,
-                "Q2CmlValue": 182,
-                "Q3CmlValue": 317,
-                "Q4CmlValue": 370,
-                "cmlValueLastFY": 1470
-            },
-            {
-                "name": "Nintendo Switch OLED Model",
-                "units": "units",
-                "Q1CmlValue": 0,
-                "Q2CmlValue": 0,
-                "Q3CmlValue": 399,
-                "Q4CmlValue": 580,
-                "cmlValueLastFY": 0
-            },
-            {
-                "name": "Nintendo Switch Software Total",
-                "units": "units",
-                "Q1CmlValue": 4529,
-                "Q2CmlValue": 9389,
-                "Q3CmlValue": 17929,
-                "Q4CmlValue": 23507,
-                "cmlValueLastFY": 58711
-            },
+            {"name":"Nintendo Switch Hardware Total","units":"units","Q1CmlValue":445,"Q2CmlValue":828,"Q3CmlValue":1895,"Q4CmlValue":2306,"cmlValueLastFY":8459},{"name":"Nintendo Switch","units":"units","Q1CmlValue":331,"Q2CmlValue":645,"Q3CmlValue":1179,"Q4CmlValue":1356,"cmlValueLastFY":6989},{"name":"Nintendo Switch OLED Model","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":399,"Q4CmlValue":580,"cmlValueLastFY":0},{"name":"Nintendo Switch Lite","units":"units","Q1CmlValue":114,"Q2CmlValue":182,"Q3CmlValue":317,"Q4CmlValue":370,"cmlValueLastFY":1470},{"name":"Nintendo Switch Software Total","units":"units","Q1CmlValue":4529,"Q2CmlValue":9389,"Q3CmlValue":17929,"Q4CmlValue":23507,"cmlValueLastFY":58711},
             {"name":"Wii U Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":13,"cmlValueLastFY":10335},
             {"name":"Nintendo DS Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":3,"cmlValueLastFY":94873},
             {"name":"Nintendo 3DS Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":207,"cmlValueLastFY":38648}
