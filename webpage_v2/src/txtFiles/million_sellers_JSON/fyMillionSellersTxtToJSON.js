@@ -1,9 +1,54 @@
 import { readFileSync, writeFile } from "fs";
 
-let currentQuarter = 4;
+// Enter 1 to 4 on the command line
+let currentQuarter = Number(process.argv[2]);
+
+let platformInput = process.argv[3];
+
+function platformMake (platformInputLocal) {
+
+    switch (platformInputLocal) {
+        case "nsw": {
+            console.log("Nintendo Switch");
+            return "Nintendo Switch";
+        }
+        case "wiiu": {
+            console.log("Wii U");
+            return "Wii U";
+        }
+        case "3ds": {
+            console.log("Nintendo 3DS");
+            return "Nintendo 3DS";
+        }
+        case "wii": {
+            console.log("Wii");
+            return "Wii";
+        }
+        case "ds": {
+            console.log("Nintendo DS");
+            return "Nintendo DS";
+        }
+        case "gba": {
+            console.log("Game Boy Advance");
+            return "Game Boy Advance";
+        }
+        case "gc": {
+            console.log("Nintendo GameCube");
+            return "Nintendo GameCube";
+        }
+        default: {
+        let currentPlatform = "N/A";
+        console.log(currentPlatform);
+            break;
+        }
+    }
+};
+
+let currentPlatform = platformMake(platformInput);
+
 // let currentPlatform = "Nintendo Switch";
 // let currentPlatform = "Wii U";
-let currentPlatform = "Nintendo 3DS";
+// let currentPlatform = "Nintendo 3DS";
 // let currentPlatform = "Wii";
 // let currentPlatform = "Nintendo DS";
 // let currentPlatform = "Game Boy Advance";
