@@ -52,8 +52,8 @@ export default function EVENTS_CALENDAR() {
             id: 5,
             companyName: "Ubisoft",
             eventName: "2nd Quarter Earnings Results",
-            eventDate: "October 27, 2022",
-            timeZone: "France, CEST, UTC +2 Hours",
+            eventDate: "February 16, 2023",
+            timeZone: "France, CET, UTC +1 Hours",
             irPage: "https://www.ubisoft.com/en-us/company/about-us/investors",
         },
         {

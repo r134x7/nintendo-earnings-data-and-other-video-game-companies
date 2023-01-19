@@ -81,7 +81,7 @@ const Home = () => {
                     </List>
                     <Text>Events -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Page update: Updated calendar for 17 of 22 companies from January to February 2023.</List.Item>
+                        <List.Item>Page update: Updated calendar for 19 of 22 companies from January to February 2023.</List.Item>
                     </List>
                     <Text>Games -</Text>
                     <List withPadding listStyleType="disc">

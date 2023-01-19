@@ -92,7 +92,7 @@ const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndic
             })
         })
 
-    let digitalSalesMake: KPDIndicators[][] = indicators.filter(elem => elem[0].name === "Digital Sales").map(elem => elem.map(value => {
+    let digitalSalesMake: KPDIndicators[][] = indicators.filter(elem => elem[0].name === "Digital Sales in dedicated video game platform").map(elem => elem.map(value => {
         return {
             ...value,
             value: value.value * 1000
@@ -150,7 +150,7 @@ const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndic
                     units: "currency",
                     value: Number(((value.value / 100) * digitalSalesMake[0][indexValue].value).toFixed(0)) 
                 }
-                : (value.name === "Digital Sales")
+                : (value.name === "Digital Sales in dedicated video game platform")
                 ? {
                     ...value,
                     units: "currency",
@@ -358,7 +358,7 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
         },
         {
             ...headerOne,
-            section: "| Digital Sales                                    |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|                   Sales |       Sales |    YoY%  |"
+            section: "| Digital Sales in dedicated video game platform   |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|                   Sales |       Sales |    YoY%  |"
         },
         {
             ...headerOne,
