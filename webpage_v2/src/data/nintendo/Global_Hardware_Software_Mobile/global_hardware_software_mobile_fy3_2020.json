@@ -16,8 +16,8 @@
         }
     ],
     "platformUnitSales": [
-            {"name":"Nintendo Switch Hardware Total","units":"units","Q1CmlValue":213,"Q2CmlValue":693,"Q3CmlValue":1774,"Q4CmlValue":2103,"cmlValueLastFY":3474},{"name":"Nintendo Switch","units":"units","Q1CmlValue":213,"Q2CmlValue":498,"Q3CmlValue":1256,"Q4CmlValue":1483,"cmlValueLastFY":3474},{"name":"Nintendo Switch Lite","units":"units","Q1CmlValue":0,"Q2CmlValue":195,"Q3CmlValue":519,"Q4CmlValue":619,"cmlValueLastFY":0},{"name":"Nintendo Switch Software Total","units":"units","Q1CmlValue":2262,"Q2CmlValue":5849,"Q3CmlValue":12313,"Q4CmlValue":16872,"cmlValueLastFY":18752},
-            {"name":"Nintendo 3DS Hardware Total","units":"units","Q1CmlValue":20,"Q2CmlValue":37,"Q3CmlValue":62,"Q4CmlValue":69,"cmlValueLastFY":7508},{"name":"Nintendo 2DS","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":20,"cmlValueLastFY":1030},{"name":"New Nintendo 2DS XL","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":48,"cmlValueLastFY":415},{"name":"Nintendo 3DS Software Total","units":"units","Q1CmlValue":148,"Q2CmlValue":260,"Q3CmlValue":410,"Q4CmlValue":499,"cmlValueLastFY":37812},
+            {"name":"Nintendo Switch Hardware Total","units":"units","Q1CmlValue":213,"Q2CmlValue":693,"Q3CmlValue":1774,"Q4CmlValue":2103,"cmlValueLastFY":3474},{"name":"Nintendo Switch","units":"units","Q1CmlValue":213,"Q2CmlValue":498,"Q3CmlValue":1256,"Q4CmlValue":1483,"cmlValueLastFY":3474},{"name":"Nintendo Switch Lite","units":"units","Q1CmlValue":0,"Q2CmlValue":195,"Q3CmlValue":519,"Q4CmlValue":619,"cmlValueLastFY":0},{"name":"Nintendo Switch Software Total","units":"units","Q1CmlValue":2262,"Q2CmlValue":5849,"Q3CmlValue":12313,"Q4CmlValue":16872,"cmlValueLastFY":18752,"footnote":"Software sales units include both packaged and downloadable versions of software, and do not include download-only software or add-on content. Actual software sales units include the quantity bundled with hardware."},
+            {"name":"Nintendo 3DS Hardware Total","units":"units","Q1CmlValue":20,"Q2CmlValue":37,"Q3CmlValue":62,"Q4CmlValue":69,"cmlValueLastFY":7508},{"name":"Nintendo 2DS","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":20,"cmlValueLastFY":1030},{"name":"New Nintendo 2DS XL","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":48,"cmlValueLastFY":415},{"name":"Nintendo 3DS Software Total","units":"units","Q1CmlValue":148,"Q2CmlValue":260,"Q3CmlValue":410,"Q4CmlValue":499,"cmlValueLastFY":37812,"footnote":"Software sales units include both packaged and downloadable versions of software. Actual software sales units include the quantity bundled with hardware."},
             {"name":"Wii U Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":24,"cmlValueLastFY":10285},
             {"name":"Wii Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":88,"cmlValueLastFY":92081},
             {"name":"Nintendo DS Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":5,"cmlValueLastFY":94864}
@@ -33,7 +33,8 @@
             "name": "Nintendo Switch Software Total",
             "forecastThisFY": 12500,
             "forecastRevision1": 14000,
-            "forecastNextFY": 14000
+            "forecastNextFY": 14000,
+            "footnote": "Forecasted software sales units do not include the quantity to be bundled with hardware."
         },
         {
             "name": "Nintendo 3DS Hardware Total",

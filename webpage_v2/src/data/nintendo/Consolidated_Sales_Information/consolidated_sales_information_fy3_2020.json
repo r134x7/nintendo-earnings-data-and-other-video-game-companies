@@ -8,7 +8,8 @@
                 "Q1CmlValue": 10005,
                 "Q2CmlValue": 19964,
                 "Q3CmlValue": 36910,
-                "Q4CmlValue": 51295 
+                "Q4CmlValue": 51295,
+                "footnote": "Includes income from smart-device content and royalty income." 
             },
             {
                 "name": "Playing cards, etc.",
@@ -24,15 +25,17 @@
                 "Q1CmlValue": 161629,
                 "Q2CmlValue": 422955,
                 "Q3CmlValue": 983531,
-                "Q4CmlValue": 1254162 
+                "Q4CmlValue": 1254162, 
+                "footnote": "Includes Nintendo Switch platform, Nintendo 3DS platform and other dedicated video game platforms. Each platform includes hardware, software (including downloadable versions of packaged software, download-only software and add-on content) and accessories " 
             },
             {
-                                "name": "Digital Sales in dedicated video game platform",
+                "name": "Digital Sales in dedicated video game platform",
                 "units": "currency",
                 "Q1CmlValue": 18500,
                 "Q2CmlValue": 39100,
                 "Q3CmlValue": 124900,
-                "Q4CmlValue": 204100 
+                "Q4CmlValue": 204100, 
+                "footnote": "Includes downloadable versions of packaged software, download-only software, add-on content and Nintendo Switch Online." 
             },
             {
                 "name": "Nintendo 3DS platform",
@@ -49,7 +52,17 @@
                 "Q2CmlValue": 405588,
                 "Q3CmlValue": 957414,
                 "Q4CmlValue": 1219327,
-                "cmlValueLastFY": 1892297
+                "cmlValueLastFY": 1892297,
+                "footnote": "Includes Nintendo Switch Online."
+            },
+            {
+                "name": "Other dedicated video game platforms",
+                "units": "currency",
+                "Q1CmlValue": 3306,
+                "Q2CmlValue": 7361,
+                "Q3CmlValue": 10333,
+                "Q4CmlValue": 16777,
+                "footnote": " Includes amiibo, Virtual Console and platforms other than Nintendo 3DS or Nintendo Switch." 
             }
     ]
 }
