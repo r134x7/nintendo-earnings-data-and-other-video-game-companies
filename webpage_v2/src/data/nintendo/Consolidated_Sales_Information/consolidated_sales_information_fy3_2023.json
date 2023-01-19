@@ -8,7 +8,8 @@
                 "Q1CmlValue": 10981,
                 "Q2CmlValue": 23581,
                 "Q3CmlValue": 23581,
-                "Q4CmlValue": 23581 
+                "Q4CmlValue": 23581,
+                "footnote": "Includes income from smart-device content and royalty income." 
             },
             {
                 "name": "Playing cards, etc.",
@@ -24,15 +25,17 @@
                 "Q1CmlValue": 295670,
                 "Q2CmlValue": 631412,
                 "Q3CmlValue": 631412,
-                "Q4CmlValue": 631412 
+                "Q4CmlValue": 631412,
+                "footnote": "Includes Nintendo Switch platform and other dedicated video game platforms." 
             },
             {
-                "name": "Digital Sales",
+                "name": "Digital Sales in dedicated video game platform",
                 "units": "currency",
                 "Q1CmlValue": 88000,
                 "Q2CmlValue": 187800,
                 "Q3CmlValue": 187800,
-                "Q4CmlValue": 187800 
+                "Q4CmlValue": 187800,
+                "footnote": "Includes downloadable versions of packaged software, download-only software, add-on content and Nintendo Switch Online." 
             },
             {
                 "name": "Nintendo Switch platform",
@@ -41,7 +44,17 @@
                 "Q2CmlValue": 616143,
                 "Q3CmlValue": 616143,
                 "Q4CmlValue": 616143,
-                "cmlValueLastFY": 6380754
+                "cmlValueLastFY": 6380754,
+                "footnote": "Nintendo Switch platform includes hardware, software (including downloadable versions of packaged software, download-only software, add-on content and Nintendo Switch Online) and accessories" 
+            },
+            {
+                "name": "Other dedicated video game platforms",
+                "units": "currency",
+                "Q1CmlValue": 7404,
+                "Q2CmlValue": 15269,
+                "Q3CmlValue": 15269,
+                "Q4CmlValue": 15269,
+                "footnote": "Includes platforms other than Nintendo Switch and also amiibo." 
             }
     ]
 }

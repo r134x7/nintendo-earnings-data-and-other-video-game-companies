@@ -115,7 +115,7 @@ function printTitles(header: string, titles: Series[][]) {
 
     const titleList = titles.map((elem, index, array) => {
 
-        console.log(elem);
+        // console.log(elem);
         
         let printTitleName = liner(printTextBlock(elem[0].title, 44),"−","both",true,44);
 
