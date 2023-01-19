@@ -170,6 +170,11 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             spacer(ltd,10,"right"),
         ]),"−","bottom",true,25) 
 
+        // have to check why ?. worked because footnotecheck didn't need ?
+        const forecastNoteCheck = (sectionForecasts[0]?.footnote === undefined)
+                ? []
+                : liner(printTextBlock(sectionForecasts[0].footnote, 39),"=","both",true,39);
+
         const forecast: string = sectionForecasts.map((elem, index, array) => {
                 
                 let printValue: string = `${elem.value / 100}M`
@@ -193,7 +198,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                         spacer(elem.period,16,"left"),
                         spacer(printValue,9,"right"),
                     ]),"−","bottom",true)
-            }).reduce((prev, next) => prev + next, "")
+            }).concat(forecastNoteCheck).flat().reduce((prev, next) => prev + next, "")
 
             // const mobileFooter = "|(Includes income from smart-device\n|content and royalty income.)";
 

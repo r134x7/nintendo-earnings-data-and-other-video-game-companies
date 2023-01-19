@@ -25,7 +25,8 @@
         {
             "name": "Nintendo Switch Software Total",
             "forecastThisFY": 21000,
-            "forecastRevision1": 21000
+            "forecastRevision1": 21000,
+            "footnote": "While forecasted software sales units include the quantity bundled with hardware for six months ended September 30, 2022, they do not include the quantity to be bundled with hardware on and after October 1, 2022."
         }
     ]
 }

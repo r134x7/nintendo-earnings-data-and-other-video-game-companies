@@ -66,6 +66,7 @@ type platformForecastSalesType = {
     forecastRevision2?: number,
     forecastRevision3?: number,
     forecastNextFY?: number,
+    footnote?: string,
 };
 
 const collection: collectionJSON[] = [
@@ -219,6 +220,7 @@ const platformForecastsMake = (obj: platformForecastSalesType): Section[] => {
             period: "Forecast", 
             cmlPeriod: "1st Quarter",
             value: obj?.forecastThisFY,
+            footnote: obj?.footnote,
         } as Section,
         {
             name: obj.name,
@@ -226,6 +228,7 @@ const platformForecastsMake = (obj: platformForecastSalesType): Section[] => {
             period: "FCST Revision 1",
             cmlPeriod: "First Half",
             value: obj?.forecastRevision1,
+            footnote: obj?.footnote,
         } as Section,
         {
             name: obj.name,
@@ -233,6 +236,7 @@ const platformForecastsMake = (obj: platformForecastSalesType): Section[] => {
             period: "FCST Revision 2",
             cmlPeriod: "1st 3 Qtrs",
             value: obj?.forecastRevision2,
+            footnote: obj?.footnote,
         } as Section,
         {
             name: obj.name,
@@ -240,6 +244,7 @@ const platformForecastsMake = (obj: platformForecastSalesType): Section[] => {
             period: "FCST Revision 3",
             cmlPeriod: "1st 3 Qtrs",
             value: obj?.forecastRevision3,
+            footnote: obj?.footnote,
         } as Section,
         {
             name: obj.name,
@@ -247,6 +252,7 @@ const platformForecastsMake = (obj: platformForecastSalesType): Section[] => {
             period: "Forecast",
             cmlPeriod: "Cml.",
             value: obj?.forecastNextFY,
+            footnote: obj?.footnote,
         } as Section,
     ].filter(elem => elem.value !== undefined)
 
