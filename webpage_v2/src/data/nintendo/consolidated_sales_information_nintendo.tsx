@@ -42,7 +42,7 @@ export type platformSalesType = {
     Q2CmlValue: number,
     Q3CmlValue: number,
     Q4CmlValue: number,
-    cmlValueLastFY: number, 
+    footnote?: string,
 };
 
 const collection: collectionJSON[] = [
@@ -78,7 +78,8 @@ export const platformSalesMake = (obj: undefined | platformSalesType): Section[]
             units: (obj !== undefined && obj.units === "currency")
                     ? "currency"
                     : "NaN",
-            value: (!obj) ? 0 : obj.Q1CmlValue
+            value: (!obj) ? 0 : obj.Q1CmlValue,
+            footnote: obj?.footnote,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -87,7 +88,8 @@ export const platformSalesMake = (obj: undefined | platformSalesType): Section[]
             units: (obj !== undefined && obj.units === "currency")
                     ? "currency"
                     : "NaN",
-            value: (!obj) ? 0 : obj.Q2CmlValue
+            value: (!obj) ? 0 : obj.Q2CmlValue,
+            footnote: obj?.footnote,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -96,7 +98,8 @@ export const platformSalesMake = (obj: undefined | platformSalesType): Section[]
             units: (obj !== undefined && obj.units === "currency")
                     ? "currency"
                     : "NaN",
-            value: (!obj) ? 0 : obj.Q3CmlValue
+            value: (!obj) ? 0 : obj.Q3CmlValue,
+            footnote: obj?.footnote,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -105,7 +108,8 @@ export const platformSalesMake = (obj: undefined | platformSalesType): Section[]
             units: (obj !== undefined && obj.units === "currency")
                     ? "currency"
                     : "NaN",
-            value: (!obj) ? 0 : obj.Q4CmlValue
+            value: (!obj) ? 0 : obj.Q4CmlValue,
+            footnote: obj?.footnote,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -114,7 +118,8 @@ export const platformSalesMake = (obj: undefined | platformSalesType): Section[]
             units: (obj !== undefined && obj.units === "currency")
                     ? "currency"
                     : "NaN",
-            value: 0
+            value: 0,
+            footnote: obj?.footnote,
         },
     ];
 

@@ -8,8 +8,7 @@
                 "Q1CmlValue": 742,
                 "Q2CmlValue": 1503,
                 "Q3CmlValue": 2815,
-                "Q4CmlValue": 3629,
-                "cmlValueLastFY": 0 
+                "Q4CmlValue": 3629 
             },
             {
                 "name": "Dedicated video game platform",
@@ -17,8 +16,7 @@
                 "Q1CmlValue": 339697,
                 "Q2CmlValue": 693299,
                 "Q3CmlValue": 1313618,
-                "Q4CmlValue": 1668793,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 1668793
             },
             {
                 "name": "Dedicated video game hardware",
@@ -26,8 +24,7 @@
                 "Q1CmlValue": 224374,
                 "Q2CmlValue": 452687,
                 "Q3CmlValue": 854164,
-                "Q4CmlValue": 1076713,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 1076713
             },
             {
                 "name": "Dedicated video game software",
@@ -35,8 +32,7 @@
                 "Q1CmlValue": 115322,
                 "Q2CmlValue": 240611,
                 "Q3CmlValue": 459454,
-                "Q4CmlValue": 1668793,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 1668793
             },
             {
                 "name": "Handheld Hardware Total",
@@ -44,8 +40,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 467226,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 467226
             },
             {
                 "name": "Home Console Hardware Total",
@@ -53,8 +48,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 499346,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 499346
             },
             {
                 "name": "Handheld Software Total",
@@ -62,8 +56,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 332756,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 332756
             },
             {
                 "name": "Home Console Software Total",
@@ -71,8 +64,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 247803,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 247803
             }
     ]
 }

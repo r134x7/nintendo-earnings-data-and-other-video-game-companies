@@ -56,6 +56,7 @@ export type platformUnitSalesType = {
     Q3CmlValue: number,
     Q4CmlValue: number,
     cmlValueLastFY: number, 
+    footnote?: string,
 };
 
 type platformForecastSalesType = {
@@ -152,6 +153,7 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
                     ? "currency"
                     : "NaN",
             value: (!obj) ? 0 : obj.Q1CmlValue,
+            footnote: obj?.footnote,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -163,6 +165,7 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
                     ? "currency"
                     : "NaN",
             value: (!obj) ? 0 : obj.Q2CmlValue,
+            footnote: obj?.footnote,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -174,6 +177,7 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
                     ? "currency"
                     : "NaN",
             value: (!obj) ? 0 : obj.Q3CmlValue,
+            footnote: obj?.footnote,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -185,6 +189,7 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
                     ? "currency"
                     : "NaN",
             value: (!obj) ? 0 : obj.Q4CmlValue,
+            footnote: obj?.footnote,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -196,6 +201,7 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
                     ? "currency"
                     : "NaN",
             value: (!obj) ? 0 : obj.cmlValueLastFY,
+            footnote: obj?.footnote,
         },
     ];
 

@@ -8,8 +8,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 517646,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 517646
             },
             {
                 "name": "Dedicated video game hardware",
@@ -17,8 +16,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 289009,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 289009
             },
             {
                 "name": "Dedicated video game software",
@@ -26,8 +24,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 228637,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 228637
             },
             {
                 "name": "Handheld Hardware Total",
@@ -35,8 +32,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 189753,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 189753
             },
             {
                 "name": "Home Console Hardware Total",
@@ -44,8 +40,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 99256,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 99256
             },
             {
                 "name": "Handheld Software Total",
@@ -53,8 +48,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 164779,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 164779
             },
             {
                 "name": "Home Console Software Total",
@@ -62,8 +56,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 63858,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 63858
             }
     ]
 }

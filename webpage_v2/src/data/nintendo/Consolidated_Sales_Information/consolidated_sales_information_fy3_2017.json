@@ -8,8 +8,7 @@
                 "Q1CmlValue": 1649,
                 "Q2CmlValue": 3408,
                 "Q3CmlValue": 10683,
-                "Q4CmlValue": 24250,
-                "cmlValueLastFY": 0 
+                "Q4CmlValue": 24250 
             },
             {
                 "name": "Playing cards, etc.",
@@ -17,8 +16,7 @@
                 "Q1CmlValue": 364,
                 "Q2CmlValue": 830,
                 "Q3CmlValue": 1336,
-                "Q4CmlValue": 1714,
-                "cmlValueLastFY": 0 
+                "Q4CmlValue": 1714 
             },
             {
                 "name": "Dedicated video game platform",
@@ -26,8 +24,7 @@
                 "Q1CmlValue": 59955,
                 "Q2CmlValue": 132573,
                 "Q3CmlValue": 299102,
-                "Q4CmlValue": 463131,
-                "cmlValueLastFY": 0 
+                "Q4CmlValue": 463131 
             },
             {
                 "name": "Digital Sales",
@@ -35,8 +32,7 @@
                 "Q1CmlValue": 7800,
                 "Q2CmlValue": 14700,
                 "Q3CmlValue": 23100,
-                "Q4CmlValue": 32500,
-                "cmlValueLastFY": 0 
+                "Q4CmlValue": 32500 
             },
             {
                 "name": "Nintendo 3DS platform",
@@ -44,8 +40,7 @@
                 "Q1CmlValue": 34919,
                 "Q2CmlValue": 83884,
                 "Q3CmlValue": 215175,
-                "Q4CmlValue": 247949,
-                "cmlValueLastFY": 0 
+                "Q4CmlValue": 247949 
             },
             {
                 "name": "Wii U platform",
@@ -53,8 +48,7 @@
                 "Q1CmlValue": 18893,
                 "Q2CmlValue": 36462,
                 "Q3CmlValue": 54384,
-                "Q4CmlValue": 64383,
-                "cmlValueLastFY": 0 
+                "Q4CmlValue": 64383 
             },
             {
                 "name": "Nintendo Switch platform",
@@ -62,8 +56,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 110951,
-                "cmlValueLastFY": 0 
+                "Q4CmlValue": 110951 
             }
     ]
 }

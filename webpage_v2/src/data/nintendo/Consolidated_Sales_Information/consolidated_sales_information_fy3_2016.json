@@ -8,8 +8,7 @@
                 "Q1CmlValue": 932,
                 "Q2CmlValue": 2725,
                 "Q3CmlValue": 4387,
-                "Q4CmlValue": 5734,
-                "cmlValueLastFY": 0 
+                "Q4CmlValue": 5734 
             },
             {
                 "name": "Playing cards, etc.",
@@ -17,8 +16,7 @@
                 "Q1CmlValue": 294,
                 "Q2CmlValue": 716,
                 "Q3CmlValue": 1220,
-                "Q4CmlValue": 1577,
-                "cmlValueLastFY": 0 
+                "Q4CmlValue": 1577 
             },
             {
                 "name": "Dedicated video game platform",
@@ -26,8 +24,7 @@
                 "Q1CmlValue": 89928,
                 "Q2CmlValue": 204182,
                 "Q3CmlValue": 424443,
-                "Q4CmlValue": 497147,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 497147
             },
             {
                 "name": "Dedicated video game hardware",
@@ -35,8 +32,7 @@
                 "Q1CmlValue": 44556,
                 "Q2CmlValue": 103002,
                 "Q3CmlValue": 239033,
-                "Q4CmlValue": 267630,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 267630
             },
             {
                 "name": "Dedicated video game software",
@@ -44,8 +40,7 @@
                 "Q1CmlValue": 45372,
                 "Q2CmlValue": 100462,
                 "Q3CmlValue": 185410,
-                "Q4CmlValue": 229517,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 229517
             },
             {
                 "name": "Digital Sales",
@@ -53,8 +48,7 @@
                 "Q1CmlValue": 12000,
                 "Q2CmlValue": 21000,
                 "Q3CmlValue": 30500,
-                "Q4CmlValue": 43900,
-                "cmlValueLastFY": 0 
+                "Q4CmlValue": 43900 
             },
             {
                 "name": "Handheld Hardware Total",
@@ -62,8 +56,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 113239,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 113239
             },
             {
                 "name": "Home Console Hardware Total",
@@ -71,8 +64,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 102404,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 102404
             },
             {
                 "name": "Handheld Software Total",
@@ -80,8 +72,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 109179,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 109179
             },
             {
                 "name": "Home Console Software Total",
@@ -89,8 +80,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 92345,
-                "cmlValueLastFY": 0
+                "Q4CmlValue": 92345
             },
             {
                 "name": "Nintendo 3DS platform",
@@ -98,8 +88,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 235885,
-                "cmlValueLastFY": 0 
+                "Q4CmlValue": 235885 
             },
             {
                 "name": "Wii U platform",
@@ -107,8 +96,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
-                "Q4CmlValue": 198362,
-                "cmlValueLastFY": 0 
+                "Q4CmlValue": 198362 
             }
     ]
 }

@@ -8,6 +8,7 @@ export type Section = {
     value: number,
     fiscalYear?: string,
     hardwareReference?: string[],
+    footnote?: string,
 }
 
 export type Header = {
@@ -192,24 +193,22 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                         spacer(elem.period,16,"left"),
                         spacer(printValue,9,"right"),
                     ]),"−","bottom",true)
-            }).concat((sectionDifference[0].name === "Nintendo Switch Software Total") ? ["|(Software sales units include both\n|packaged and downloadable versions\n|of software.)"] : "###").reduce((prev, next) => prev + next)
-            // I need to go back here and implement footnotes...
+            }).reduce((prev, next) => prev + next, "")
 
-            const mobileFooter = "|(Includes income from smart-device\n|content and royalty income.)";
+            // const mobileFooter = "|(Includes income from smart-device\n|content and royalty income.)";
 
-            const digitalSalesFooter = "|(Includes downloadable versions of\n|packaged software, download-only\n|software, add-on content and\n|Nintendo Switch Online*.)\n|*Nintendo Switch Online from FY3/2019"
+            // const digitalSalesFooter = "|(Includes downloadable versions of\n|packaged software, download-only\n|software, add-on content and\n|Nintendo Switch Online*.)\n|*Nintendo Switch Online from FY3/2019"
+
+            // can't use .at(-1) due to the possibility of it being undefined
+            const footNoteCheck = (sectionDifference[0].footnote === undefined)
+                    ? []
+                    : liner(printTextBlock(sectionDifference[0].footnote, 39),"=","both",true,39);
 
         const penultimateCheck = (sectionDifference[0].name.split(" ").includes("Total") && sectionDifference[0].units === "units")
-            ? [sectionHeader, ...difference, ...cumulative, ltdPrint, forecast].flat().reduce((prev, next) => prev + next)
-            : (sectionDifference[0].name === "Mobile, IP related income, etc.")
-            ? [sectionHeader, ...difference, ...cumulative, mobileFooter].flat().reduce((prev, next) => prev + next)
-            : (sectionDifference[0].name === "Playing cards, etc." || sectionDifference[0].name === "Dedicated video game platform")
-            ? [sectionHeader, ...difference, ...cumulative].flat().reduce((prev, next) => prev + next)
-            : (sectionDifference[0].name === "Digital Sales")
-            ? [sectionHeader, ...difference, ...cumulative, digitalSalesFooter].flat().reduce((prev, next) => prev + next)
-            : (sectionDifference[0].units === "currency")
-            ? [sectionHeader, ...difference, ...cumulative].flat().reduce((prev, next) => prev + next)
-            : [sectionHeader, ...difference, ...cumulative, ltdPrint].flat().reduce((prev, next) => prev + next)
+                ? [sectionHeader, ...difference, ...cumulative, ltdPrint, footNoteCheck, forecast].flat().reduce((prev, next) => prev + next)
+                : (sectionDifference[0].units === "currency")
+                    ? [sectionHeader, ...difference, ...cumulative, footNoteCheck].flat().reduce((prev, next) => prev + next)
+                    : [sectionHeader, ...difference, ...cumulative, ltdPrint, footNoteCheck].flat().reduce((prev, next) => prev + next)
 
         return penultimateCheck 
     }
