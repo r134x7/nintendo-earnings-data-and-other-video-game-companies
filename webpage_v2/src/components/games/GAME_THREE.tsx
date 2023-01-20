@@ -9,7 +9,10 @@ import { liner, border, spacer } from "../../utils/table_design_logic";
 
 // reusing code from game one
     // Objects need to be placed outside the function to retain state...
-    const field = new Field(2,2);
+    // need to have a list of fields...
+    const xLength = Math.ceil(Math.random() * 5)
+    const yLength = Math.ceil(Math.random() * 5)
+    const field = new Field(xLength,yLength);
 
     const playerOne = new Unit(field, 0, 0, 100, 10, "X");
     const playerTwo = new Unit(field, field.getX, field.getY, 100, 10, "O");
@@ -41,17 +44,35 @@ export default function GAME_THREE() {
     const playerTwoPosition = ifPlayerPositionXY(playerTwo);
 
 // need to solve this...
-const visualField = () =>
-`−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-${playerOnePosition(0,0)}${playerOnePosition(1,0)}${playerOnePosition(2,0)}
-${playerTwoPosition(0,0)}${playerTwoPosition(1,0)}${playerTwoPosition(2,0)}
-−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-${playerOnePosition(0,1)}${playerOnePosition(1,1)}${playerOnePosition(2,1)}
-${playerTwoPosition(0,1)}${playerTwoPosition(1,1)}${playerTwoPosition(2,1)}
-−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-${playerOnePosition(0,2)}${playerOnePosition(1,2)}${playerOnePosition(2,2)}
-${playerTwoPosition(0,2)}${playerTwoPosition(1,2)}${playerTwoPosition(2,2)}
-−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−`;
+// need parameters to create the map...
+const visualField = (xLengthLocal: number, yLengthLocal: number) => {
+
+    let lineCount = xLengthLocal + 1;
+
+    let mapArray = Array.from({length:yLengthLocal},(v,i) => {
+
+        let p1 = Array.from({length:xLengthLocal},(w,j) => {
+            return playerOnePosition(j,i);
+        })
+
+        let p2 = Array.from({length:yLengthLocal},(w,j) => {
+            return playerTwoPosition(j,i);
+        })
+
+        return 
+
+    })
+};
+// `−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+// ${playerOnePosition(0,0)}${playerOnePosition(1,0)}${playerOnePosition(2,0)}
+// ${playerTwoPosition(0,0)}${playerTwoPosition(1,0)}${playerTwoPosition(2,0)}
+// −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+// ${playerOnePosition(0,1)}${playerOnePosition(1,1)}${playerOnePosition(2,1)}
+// ${playerTwoPosition(0,1)}${playerTwoPosition(1,1)}${playerTwoPosition(2,1)}
+// −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+// ${playerOnePosition(0,2)}${playerOnePosition(1,2)}${playerOnePosition(2,2)}
+// ${playerTwoPosition(0,2)}${playerTwoPosition(1,2)}${playerTwoPosition(2,2)}
+// −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−`;
 
 const displayHP = () => 
 `------------------------------
