@@ -84,7 +84,7 @@
                 "Q4CmlValue": 92345
             },
             {
-                "name": "Other in Dedicated video game hardware",
+                "name": "Others in dedicated video game hardware",
                 "units": "currency",
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
@@ -93,7 +93,7 @@
                 "footnote": "Includes amiibo and accessories."
             },
             {
-                "name": "Other in Dedicated video game software",
+                "name": "Content income, etc. in dedicated video game software",
                 "units": "currency",
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 0,
