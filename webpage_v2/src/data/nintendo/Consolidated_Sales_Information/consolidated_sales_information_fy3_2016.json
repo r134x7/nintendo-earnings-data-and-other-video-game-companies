@@ -84,6 +84,24 @@
                 "Q4CmlValue": 92345
             },
             {
+                "name": "Other in Dedicated video game hardware",
+                "units": "currency",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 51986,
+                "footnote": "Includes amiibo and accessories."
+            },
+            {
+                "name": "Other in Dedicated video game software",
+                "units": "currency",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 27992,
+                "footnote": "Includes download-only content."
+            },
+            {
                 "name": "Nintendo 3DS platform",
                 "units": "currency",
                 "Q1CmlValue": 0,
