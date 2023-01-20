@@ -11,7 +11,8 @@
             "Q4Value": 77.8,
             "Q2CmlValue": 72.8,
             "Q3CmlValue": 74.7,
-            "Q4CmlValue": 75.3
+            "Q4CmlValue": 75.3,
+            "footnote":"*Proportion of overseas (outside of Japan) sales to total sales"
         },
         {
             "name": "Proportion of Hardware Sales",
@@ -22,7 +23,8 @@
             "Q4Value": 61.3,
             "Q2CmlValue": 66.3,
             "Q3CmlValue": 66.3,
-            "Q4CmlValue": 65.4
+            "Q4CmlValue": 65.4,
+            "footnote": "*Proportion of hardware (including accessories) sales to total dedicated video game platform sales"
         },
         {
             "name": "Proportion of First Party Software Sales",
@@ -33,10 +35,11 @@
             "Q4Value": 84.9,
             "Q2CmlValue": 80.0,
             "Q3CmlValue": 85.4,
-            "Q4CmlValue": 85.3
+            "Q4CmlValue": 85.3,
+            "footnote": "*Proportion of first-party software sales to total dedicated video game platform software sales"
         },
         {
-                "name": "Digital Sales in dedicated video game platform",
+            "name": "Digital Sales in dedicated video game platform",
             "units": "currency",
             "Q1Value": 11.0,
             "Q2Value": 11.7,
@@ -44,7 +47,8 @@
             "Q4Value": 17.6,
             "Q2CmlValue": 22.8,
             "Q3CmlValue": 43.1,
-            "Q4CmlValue": 60.8
+            "Q4CmlValue": 60.8,
+            "footnote":"*Digital sales include downloadable version of packaged software (the downloadable version of software that is offered both physically and digitally),download-only software and add-on content."
         },
         {
             "name": "Proportion of Digital Sales",
@@ -55,7 +59,8 @@
             "Q4Value": 24.2,
             "Q2CmlValue": 19.1,
             "Q3CmlValue": 15.5,
-            "Q4CmlValue": 17.3
+            "Q4CmlValue": 17.3,
+            "footnote":"*Proportion of digital sales to total dedicated video game software sales"
         }
     ],
     "consolidatedSales": [

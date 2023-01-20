@@ -11,7 +11,8 @@
             "Q4Value": 76.6,
             "Q2CmlValue": 77.5,
             "Q3CmlValue": 77.6,
-            "Q4CmlValue": 77.4
+            "Q4CmlValue": 77.4,
+            "footnote":"*Proportion of overseas (outside of Japan) sales to total sales"
         },
         {
             "name": "Proportion of Hardware Sales",
@@ -22,7 +23,8 @@
             "Q4Value": 47.6,
             "Q2CmlValue": 51.1,
             "Q3CmlValue": 54.0,
-            "Q4CmlValue": 52.7
+            "Q4CmlValue": 52.7,
+            "footnote": "*Proportion of hardware (including accessories) sales to total dedicated video game platform sales"
         },
         {
             "name": "Proportion of First Party Software Sales",
@@ -33,10 +35,11 @@
             "Q4Value": 71.1,
             "Q2CmlValue": 81.9,
             "Q3CmlValue": 81.6,
-            "Q4CmlValue": 79.4
+            "Q4CmlValue": 79.4,
+            "footnote": "*Proportion of first-party software sales to total dedicated video game platform software sales"
         },
         {
-                "name": "Digital Sales in dedicated video game platform",
+            "name": "Digital Sales in dedicated video game platform",
             "units": "currency",
             "Q1Value": 101.0,
             "Q2Value": 70.4,
@@ -44,7 +47,8 @@
             "Q4Value": 88.1,
             "Q2CmlValue": 171.5,
             "Q3CmlValue": 256.0,
-            "Q4CmlValue": 344.1
+            "Q4CmlValue": 344.1,
+            "footnote":"*Digital sales include (a) downloadable version of packaged software (the downloadable version of software that is offered both physically and digitally), (b) download-only software, (c) add-on content and (d) Nintendo Switch Online, etc."
         },
         {
             "name": "Proportion of Digital Sales",
@@ -55,10 +59,11 @@
             "Q4Value": 49.6,
             "Q2CmlValue": 47.2,
             "Q3CmlValue": 40.9,
-            "Q4CmlValue": 42.8
+            "Q4CmlValue": 42.8,
+            "footnote":"*Proportion of digital sales to total dedicated video game software sales"
         },
         {
-            "name": "Proportion of Download version of Packaged Software",
+            "name": "Proportion of Downloadable Versions of Packaged Software Sales",
             "units": "percentage",
             "Q1Value": 67.7,
             "Q2Value": 57.8,
@@ -66,7 +71,8 @@
             "Q4Value": 60.9,
             "Q2CmlValue": 63.6,
             "Q3CmlValue": 58.7,
-            "Q4CmlValue": 59.3
+            "Q4CmlValue": 59.3,
+            "footnote":"*Proportion of downloadable versions of packaged software sales to total digital sales as indicated above: a/(a+b+c+d)"
         }
     ],
     "consolidatedSales": [

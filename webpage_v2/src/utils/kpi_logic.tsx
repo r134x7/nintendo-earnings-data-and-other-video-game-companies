@@ -6,24 +6,36 @@ export type KPDIndicators = {
     quarter: string,
     value: number,
     miscellaneous?: string,
+    footnote?: string,
 }
+
+// export type Header = {
+//     companyName: string,
+//     section: "| Proportion of overseas sales                     |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
+//     "| Proportion of hardware sales                     |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
+//     "| Proportion of first party software sales         |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
+//     "| Digital Sales in dedicated video game platform   |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|                   Sales |       Sales |    YoY%  |" | 
+//     "| Proportion of Digital Sales                      |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
+//     "| Proportion of downloadable versions of Packaged  |\n| Software Sales                                   |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
+//     "| Proportion of software sales                     |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
+//     "| Proportion of physical software sales            |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |",
+//     fiscalYear: string,
+//     title: string,
+// }
 
 export type Header = {
     companyName: string,
-    section: "| Proportion of overseas sales                     |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
-    "| Proportion of hardware sales                     |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
-    "| Proportion of first party software sales         |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
-    "| Digital Sales in dedicated video game platform   |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|                   Sales |       Sales |    YoY%  |" | 
-    "| Proportion of Digital Sales                      |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
-    "| Proportion of downloadable versions of Packaged  |\n| Software Sales                                   |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
-    "| Proportion of software sales                     |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
-    "| Proportion of physical software sales            |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |",
+    section: string,
     fiscalYear: string,
     title: string,
 }
 
+// export type Footer = {
+//    section: "(* Proportion of overseas (outside of Japan) sales to total sales)" | "(* Proportion of hardware (including accessories) sales to total dedicated video game platform sales)" | "(* Proportion of first-party software sales to total dedicated video game software sales)" | "(\"* Digital sales include a) downloadable versions of packaged software, b) download-only software, c) add-on content and d) Nintendo Switch Online, etc. *\"Downloadable versions of packaged software\" indicates the downloadable version of software that is offered both physically and digitally.\")" | "(* Proportion of digital sales to total dedicated video game software sales)" | "(* Proportion of downloadable versions of packaged software sales to total digital sales as indicated above: a/(a+b+c+d) )" | "(* Proportion of software (including digital sales) sales to total dedicated video game platform sales)" |  "(* Proportion of physical software sales to total dedicated video game platform software sales)", 
+// };
+
 export type Footer = {
-   section: "(* Proportion of overseas (outside of Japan) sales to total sales)" | "(* Proportion of hardware (including accessories) sales to total dedicated video game platform sales)" | "(* Proportion of first-party software sales to total dedicated video game software sales)" | "(\"* Digital sales include a) downloadable versions of packaged software, b) download-only software, c) add-on content and d) Nintendo Switch Online, etc. *\"Downloadable versions of packaged software\" indicates the downloadable version of software that is offered both physically and digitally.\")" | "(* Proportion of digital sales to total dedicated video game software sales)" | "(* Proportion of downloadable versions of packaged software sales to total digital sales as indicated above: a/(a+b+c+d) )" | "(* Proportion of software (including digital sales) sales to total dedicated video game platform sales)" |  "(* Proportion of physical software sales to total dedicated video game platform software sales)", 
+   section: string,
 };
 
 export function quarterlyCalculation(quarters: KPDIndicators[]) {
