@@ -22,7 +22,8 @@
         {
             "name": "Game Boy Advance Hardware Total",
             "forecastThisFY": 1600,
-            "forecastNextFY": 1020
+            "forecastNextFY": 1020,
+            "footnote":"The forecast is the combined total of GAME BOY ADVANCE, GAME BOY ADVANCE SP, and GAME BOY MICRO (tentative)."
         },
         {
             "name": "Game Boy Advance Software Total",

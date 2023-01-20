@@ -65,6 +65,22 @@
                 "Q2CmlValue": 0,
                 "Q3CmlValue": 0,
                 "Q4CmlValue": 340032
+            },
+            {
+                "name": "Others in dedicated video game hardware",
+                "units": "currency",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 104524
+            },
+            {
+                "name": "Content income, etc. in dedicated video game software",
+                "units": "currency",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 19520
             }
     ]
 }

@@ -59,7 +59,8 @@
             "forecastRevision1": 7500,
             "forecastRevision2": 8200,
             "forecastRevision3": 10000,
-            "forecastNextFY": 13000
+            "forecastNextFY": 13000,
+            "footnote":"The software forecast figures do not include quantity bundled with hardware."
         },
         {
             "name": "Wii Hardware Total",
@@ -71,7 +72,8 @@
             "name": "Wii Software Total",
             "forecastThisFY": 1700,
             "forecastRevision1": 2100,
-            "forecastNextFY": 5500
+            "forecastNextFY": 5500,
+            "footnote":"The software forecast figures do not include quantity bundled with hardware."
         }
     ]
 }

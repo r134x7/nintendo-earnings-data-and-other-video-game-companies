@@ -22,7 +22,8 @@
         {
             "name": "Game Boy Advance Hardware Total",
             "forecastThisFY": 1100,
-            "forecastNextFY": 250
+            "forecastNextFY": 250,
+            "footnote":"The forecast is the combined total of Game Boy Advance, Game Boy Advance SP, and Game Boy Micro"
         },
         {
             "name": "Game Boy Advance Software Total",
@@ -42,7 +43,8 @@
         {
             "name": "Nintendo DS Hardware Total",
             "forecastThisFY": 1200,
-            "forecastNextFY": 1600
+            "forecastNextFY": 1600,
+            "footnote":"The forecast is the combined total of Nintendo DS and Nintendo DS Lite"
         },
         {
             "name": "Nintendo DS Software Total",
