@@ -255,7 +255,7 @@ export const regionalHardwareSoftwareList: string[] = collection.map((elem, inde
             regionalUnitSalesYoY[i],
             currentQuarter
             )
-    }).concat("###");
+    })
 
     let printAll = [printOne].concat(printRegionalUnitSales);
 
