@@ -226,11 +226,12 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
 
 export const printNewBody = (header: Header, footer: Footer, quarterProportion: KPDIndicators[], cumulativeProportion: KPDIndicators[], quarterSales: KPDIndicators[], cumulativeSales: KPDIndicators[], quarterYoY: KPDIndicators[], cumulativeYoY: KPDIndicators[], currentQuarter: number) => {
 
-    let text = liner(header.section,"−","both",true,50) + liner(printNewSections(quarterProportion, quarterSales, quarterYoY, currentQuarter),"=","bottom",true,50)
+    let text = liner(printNewSections(quarterProportion, quarterSales, quarterYoY, currentQuarter),"=","bottom",true,50)
 
     let quarterOne = (currentQuarter > 1)
-        ? printNewSections(cumulativeProportion, cumulativeSales, cumulativeYoY, currentQuarter)
-        : "=".repeat(50)+"+";
+        ? printNewSections(cumulativeProportion, cumulativeSales, cumulativeYoY, currentQuarter) + "\n"
+        : "=".repeat(50)+"+" + "\n";
 
-    return text + quarterOne + "\n" + liner(printTextBlock(footer.section,50),"−","both",true,50) 
+    // return text + quarterOne + "\n" + liner(printTextBlock(footer.section,50),"−","both",true,50) 
+    return header.section + text + quarterOne + footer.section
 };

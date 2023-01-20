@@ -7,7 +7,7 @@ import {
     printNewBody,
 } from "../../utils/kpi_logic";
 
-import { headerPrint } from "../../utils/table_design_logic";
+import { headerPrint, printTextBlock, border, liner, spacer } from "../../utils/table_design_logic";
 
 import keySalesIndicators2023 from "./Key_Sales_Indicators/ksi_fy3_2023.json";
 import keySalesIndicators2022 from "./Key_Sales_Indicators/ksi_fy3_2022.json";
@@ -17,7 +17,32 @@ import keySalesIndicators2019 from "./Key_Sales_Indicators/ksi_fy3_2019.json";
 import keySalesIndicators2018 from "./Key_Sales_Indicators/ksi_fy3_2018.json";
 import keySalesIndicators2017 from "./Key_Sales_Indicators/ksi_fy3_2017.json";
 
-const collection = [
+type keySalesIndicatorsCollection = {
+    currentQuarter: number,
+    fiscalYear: string,
+    kpi: {
+            name: string,
+            units: string,
+            Q1Value: number,
+            Q2Value: number,
+            Q3Value: number,
+            Q4Value: number,
+            Q2CmlValue: number,
+            Q3CmlValue: number,
+            Q4CmlValue: number,
+            footnote?: string,
+    }[],
+    consolidatedSales: {
+            name: string,
+            units: string,
+            Q1Value: number,
+            Q2Value: number,
+            Q3Value: number,
+            Q4Value: number 
+    }[]
+}
+
+const collection: keySalesIndicatorsCollection[] = [
     keySalesIndicators2023,
     keySalesIndicators2022,
     keySalesIndicators2021,
@@ -25,7 +50,7 @@ const collection = [
     keySalesIndicators2019,
     keySalesIndicators2018,
     keySalesIndicators2017,
-] as const;
+];
 
 const softwareProportionMake = (proportions:  KPDIndicators[][], cmlName: string) => {
 
@@ -171,7 +196,8 @@ const consolidatedSalesQuartersMake = (obj: undefined | {
     Q1Value: number,
     Q2Value: number,
     Q3Value: number,
-    Q4Value: number 
+    Q4Value: number, 
+    footnote?: string,
 }): KPDIndicators[] => {
     // values are cumulative and need to go through quarterly calc
     let cmlValues: KPDIndicators[] = [
@@ -181,6 +207,7 @@ const consolidatedSalesQuartersMake = (obj: undefined | {
             units: (obj === undefined) ? "NaN" : "currency",
             quarter: "1st Quarter",
             value: (!obj) ? 0 : obj.Q1Value,
+            footnote: obj?.footnote,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -188,6 +215,7 @@ const consolidatedSalesQuartersMake = (obj: undefined | {
             units: (obj === undefined) ? "NaN" : "currency",
             quarter: "2nd Quarter",
             value: (!obj) ? 0 : obj.Q2Value,
+            footnote: obj?.footnote,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -195,6 +223,7 @@ const consolidatedSalesQuartersMake = (obj: undefined | {
             units: (obj === undefined) ? "NaN" : "currency",
             quarter: "3rd Quarter",
             value: (!obj) ? 0 : obj.Q3Value,
+            footnote: obj?.footnote,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -202,6 +231,7 @@ const consolidatedSalesQuartersMake = (obj: undefined | {
             units: (obj === undefined) ? "NaN" : "currency",
             quarter: "4th Quarter",
             value: (!obj) ? 0 : obj.Q4Value,
+            footnote: obj?.footnote,
         },
     ];
     // quarterly calculation taken care of
@@ -215,7 +245,8 @@ const consolidatedSalesCmlMake = (obj: undefined | {
     Q1Value: number,
     Q2Value: number,
     Q3Value: number,
-    Q4Value: number 
+    Q4Value: number, 
+    footnote?: string,
 }, cmlName: string): KPDIndicators[] => {
     // values are cumulative and need to go through quarterly calc
     let cmlValues: KPDIndicators[] = [
@@ -225,6 +256,7 @@ const consolidatedSalesCmlMake = (obj: undefined | {
             units: (obj === undefined) ? "NaN" : "currency",
             quarter: "1st Half",
             value: (!obj) ? 0 : obj.Q2Value,
+            footnote: obj?.footnote,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -232,6 +264,7 @@ const consolidatedSalesCmlMake = (obj: undefined | {
             units: (obj === undefined) ? "NaN" : "currency",
             quarter: "1st 3/4",
             value: (!obj) ? 0 : obj.Q3Value,
+            footnote: obj?.footnote,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
@@ -239,6 +272,7 @@ const consolidatedSalesCmlMake = (obj: undefined | {
             units: (obj === undefined) ? "NaN" : "currency",
             quarter: cmlName,
             value: (!obj) ? 0 : obj.Q4Value,
+            footnote: obj?.footnote,
         },
     ];
 
@@ -338,80 +372,60 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
 
     let headerOne: Header = {
         companyName: "Nintendo Co., Ltd.",
-        section: "| Proportion of overseas sales                     |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |",
+        section: " Proportion |       Sales |    YoY%  |",
         fiscalYear: elem.fiscalYear,
         title: "Key Sales Indicators",
     };
-  
-    let headers: Header[] = [
-        {
-            ...headerOne,
-            section: "| Proportion of overseas sales                     |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |"
-        },
-        {
-            ...headerOne,
-            section: "| Proportion of hardware sales                     |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |"
-        },
-        {
-            ...headerOne,
-            section: "| Proportion of first party software sales         |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |"
-        },
-        {
-            ...headerOne,
-            section: "| Digital Sales in dedicated video game platform   |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|                   Sales |       Sales |    YoY%  |"
-        },
-        {
-            ...headerOne,
-            section: "| Proportion of Digital Sales                      |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |"
-        },
-        {
-            ...headerOne,
-            section: "| Proportion of downloadable versions of Packaged  |\n| Software Sales                                   |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |"
-        },
-        {
-            ...headerOne,
-            section: "| Proportion of software sales                     |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |"
-        },
-        {
-            ...headerOne,
-            section: "| Proportion of physical software sales            |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |"
-        },
-    ].filter((value, indexValue, valueArray) => {
-        return (elem.fiscalYear === "FY3/2018" || elem.fiscalYear === "FY3/2017")
-            ? valueArray[indexValue] !== valueArray[5] 
-            : value
-    }) as Header[];
 
-    const footers: Footer[] = [
+    let otherHeaders: Header[] = [
         {
-            section: "(* Proportion of overseas (outside of Japan) sales to total sales)"
+            ...headerOne,
+            section: liner(printTextBlock("Proportion of software sales",50),"−","both",true,50) + liner(border([
+                spacer("Proportion", 24,"right"),
+                spacer("Sales", 12,"right"),
+                spacer("YoY%", 9,"right"),
+            ]),"−","bottom",true,50),
         },
         {
-            section: "(* Proportion of hardware (including accessories) sales to total dedicated video game platform sales)"
+            ...headerOne,
+            section: liner(printTextBlock("Proportion of physical software sales",50),"−","both",true,50) + liner(border([
+                spacer("Proportion", 24,"right"),
+                spacer("Sales", 12,"right"),
+                spacer("YoY%", 9,"right"),
+            ]),"−","bottom",true,50),
         },
-        {
-            section: "(* Proportion of first-party software sales to total dedicated video game software sales)" 
-        },
-        {
-            section: "(\"* Digital sales include a) downloadable versions of packaged software, b) download-only software, c) add-on content and d) Nintendo Switch Online, etc. *\"Downloadable versions of packaged software\" indicates the downloadable version of software that is offered both physically and digitally.\")"
-        },
-        {
-            section: "(* Proportion of digital sales to total dedicated video game software sales)" 
-        },
-        {
-            section: "(* Proportion of downloadable versions of packaged software sales to total digital sales as indicated above: a/(a+b+c+d) )" 
-        },
-        {
-            section: "(* Proportion of software (including digital sales) sales to total dedicated video game platform sales)"
-        },
-        {
-            section: "(* Proportion of physical software sales to total dedicated video game platform software sales)",
+    ]
+  
+    let headers: Header[] = elem.kpi.map((value => {
+        return {
+            ...headerOne,
+            section: liner(printTextBlock(value.name,50),"−","both",true,50) + liner(border([
+                spacer((value.units === "currency") ? "Sales" : "Proportion", 24,"right"),
+                spacer("Sales", 12,"right"),
+                spacer("YoY%", 9,"right"),
+            ]),"−","bottom",true,50),
         }
-    ].filter((value, indexValue, valueArray) => {
-        return (elem.fiscalYear === "FY3/2018" || elem.fiscalYear === "FY3/2017")
-            ? valueArray[indexValue] !== valueArray[5] 
-            : value
-    }) as Footer[];
+    })).concat(otherHeaders)
+
+    let otherFooters: Footer[] = [
+        {
+            section: liner(printTextBlock("*Proportion of software (including digital sales) sales to total dedicated video game platform sales",50),"−","both",true,50) 
+        },
+        {
+            section: liner(printTextBlock("*Proportion of physical software sales to total dedicated video game platform software sales",50),"−","both",true,50) 
+        }
+    ]
+
+    let footers: Footer[] = elem.kpi.map((value => {
+
+        let footnoteCheck = (value?.footnote === undefined)
+            ? "N/A"
+            : value.footnote
+
+        return {
+            section: liner(printTextBlock(footnoteCheck,50),"−","both",true,50) 
+        }
+    })).concat(otherFooters) 
 
     let qtrValuesThisFY: KPDIndicators[][] = elem.kpi.map(elem => quarterValuesMake(elem))
 
@@ -620,7 +634,7 @@ export const keySalesIndicatorsGraphList = collection.map((elem, index, array) =
         : (array[index+1].consolidatedSales.length !== elem.consolidatedSales.length)
         ? elem.consolidatedSales.map((value, indexValue) => {
             
-            let nameSearchThisFY = value.name
+            let nameSearchThisFY: string = value.name
             let nameSearchLastFY = array[index+1].consolidatedSales[indexValue]? array[index+1].consolidatedSales[indexValue].name : undefined;
 
             return (nameSearchThisFY === nameSearchLastFY)
@@ -650,5 +664,4 @@ export const keySalesIndicatorsGraphList = collection.map((elem, index, array) =
     };
 
     return graphMake
-
 })
