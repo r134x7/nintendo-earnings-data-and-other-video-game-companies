@@ -10,9 +10,13 @@ import { liner, border, spacer } from "../../utils/table_design_logic";
 // reusing code from game one
     // Objects need to be placed outside the function to retain state...
     // need to have a list of fields...
-    const xLength = Math.ceil(Math.random() * 5)
-    const yLength = Math.ceil(Math.random() * 5)
+    const xLength = Math.ceil(Math.random() * 4) // can't make it too long for mobile
+    const yLength = Math.ceil(Math.random() * 7)
     const field = new Field(xLength,yLength);
+    console.log(xLength);
+    console.log(yLength);
+
+    
 
     const playerOne = new Unit(field, 0, 0, 100, 10, "X");
     const playerTwo = new Unit(field, field.getX, field.getY, 100, 10, "O");
@@ -45,23 +49,27 @@ export default function GAME_THREE() {
 
 // need to solve this...
 // need parameters to create the map...
-const visualField = (xLengthLocal: number, yLengthLocal: number) => {
+const visualField = (xLengthLocal: number, yLengthLocal: number): string => {
 
-    let lineCount = xLengthLocal + 1;
+    let mapArray: string[] = Array.from({length:yLengthLocal+1},(v,i) => {
 
-    let mapArray = Array.from({length:yLengthLocal},(v,i) => {
-
-        let p1 = Array.from({length:xLengthLocal},(w,j) => {
+        let p1: string = Array.from({length:xLengthLocal+1},(w,j) => {
             return playerOnePosition(j,i);
-        })
+        }).reduce((acc, next) => acc + next)
 
-        let p2 = Array.from({length:yLengthLocal},(w,j) => {
+        let p2: string = Array.from({length:xLengthLocal+1},(w,j) => {
             return playerTwoPosition(j,i);
-        })
+        }).reduce((acc, next) => acc + next)
 
-        return 
+        let mapLines = "−".repeat(12 * (xLengthLocal +1)); 
 
-    })
+        return (i === yLengthLocal) 
+            ? mapLines + "\n" + p1 + "\n" + p2 + "\n" + mapLines 
+            : mapLines + "\n" + p1 + "\n" + p2 + "\n"
+    });
+    
+    return mapArray.reduce((acc,next) => acc + next)
+
 };
 // `−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
 // ${playerOnePosition(0,0)}${playerOnePosition(1,0)}${playerOnePosition(2,0)}
@@ -81,7 +89,7 @@ const displayHP = () =>
 ------------------------------
 `;
 
-    const [playerField, setPlayerField] = useState(visualField);
+    const [playerField, setPlayerField] = useState(visualField(xLength,yLength));
 
     const [hitPoints, setHitPoints] = useState(displayHP);
 
@@ -98,7 +106,7 @@ const displayHP = () =>
             cpu()
             cpu()
             cpu()
-            setPlayerField(visualField)
+            setPlayerField(visualField(xLength,yLength))
             setHitPoints(displayHP);
     }
 
@@ -113,7 +121,7 @@ const displayHP = () =>
             cpu()
             cpu()
             cpu()
-            setPlayerField(visualField)
+            setPlayerField(visualField(xLength,yLength))
             setHitPoints(displayHP);
     }
 
@@ -128,7 +136,7 @@ const displayHP = () =>
             cpu()
             cpu()
             cpu()
-            setPlayerField(visualField)
+            setPlayerField(visualField(xLength,yLength))
             setHitPoints(displayHP);
     }
 
@@ -143,7 +151,7 @@ const displayHP = () =>
             cpu()
             cpu()
             cpu()
-            setPlayerField(visualField)
+            setPlayerField(visualField(xLength,yLength))
             setHitPoints(displayHP);
     }
 
