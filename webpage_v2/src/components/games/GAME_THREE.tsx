@@ -22,31 +22,15 @@ function makePlayer (map: Field, startPositionX: number, startPositionY: number,
     return new Unit(map, startPositionX, startPositionY, hp, attack, char)
 }; 
 
-    const cpu = () => {
-
-        let x = Math.floor(Math.random() * 4);
-
-        (x === 0) 
-        ? playerTwo.incrementPositionXMinus()
-        : (x === 1)
-        ? playerTwo.incrementPositionYMinus()
-        : (x === 2)
-        ? playerTwo.incrementPositionXPlus()
-        : playerTwo.incrementPositionYPlus()
-
-        playerTwo.attackOpponent(playerOne)
-    }
-
-function difficulty (attacks: number) {
-    for (let index = 0; index < attacks; index++) {
-        cpu()
-    }
-};
-
-    const level = difficulty(Math.ceil(Math.random() * 4))
-
     const playerOne = makePlayer(field, 0, 0, 100, 10, "X");
     const playerTwo = makePlayer(field, field.getX, field.getY, 100, 10, "O");
+
+
+function difficulty (attacks: number) {
+    return Math.ceil(Math.random() * attacks)
+};
+
+    const level = difficulty(5);
 
 export default function GAME_THREE() {
 
@@ -113,6 +97,7 @@ const displayHP = () =>
 `------------------------------
 | Player X: ${playerOne.getHitPoints}HP${" ".repeat(31 - (16 + playerOne.getHitPoints.toString().length))}|
 | CPU O: ${playerTwo.getHitPoints}HP${" ".repeat(34 - (16 + playerTwo.getHitPoints.toString().length))}|
+| Difficulty Level: ${level}        |
 ------------------------------
 `;
 
@@ -130,7 +115,11 @@ const displayHP = () =>
             playerOne.incrementPositionXPlus()
             // thisPosition()
             playerOne.attackOpponent(playerTwo)
-            level
+
+            for (let index = 0; index < level; index++) {
+                cpu()
+            }
+
             setPlayerField(visualField(field.getX,field.getY))
             setHitPoints(displayHP);
     }
@@ -143,7 +132,11 @@ const displayHP = () =>
             playerOne.incrementPositionXMinus()
             // thisPosition()
             playerOne.attackOpponent(playerTwo)
-            level
+
+            for (let index = 0; index < level; index++) {
+                cpu()
+            }
+
             setPlayerField(visualField(field.getX,field.getY))
             setHitPoints(displayHP);
     }
@@ -156,7 +149,11 @@ const displayHP = () =>
             playerOne.incrementPositionYMinus()
             // thisPosition()
             playerOne.attackOpponent(playerTwo)
-            level
+
+            for (let index = 0; index < level; index++) {
+                cpu()
+            }
+
             setPlayerField(visualField(field.getX,field.getY))
             setHitPoints(displayHP);
     }
@@ -169,25 +166,29 @@ const displayHP = () =>
             playerOne.incrementPositionYPlus()
             // thisPosition()
             playerOne.attackOpponent(playerTwo)
-            level
+
+            for (let index = 0; index < level; index++) {
+                cpu()
+            }
+
             setPlayerField(visualField(field.getX,field.getY))
             setHitPoints(displayHP);
     }
 
-    // const cpu = () => {
+    const cpu = () => {
 
-    //     let x = Math.floor(Math.random() * 4);
+        let x = Math.floor(Math.random() * 4);
 
-    //     (x === 0) 
-    //     ? playerTwo.incrementPositionXMinus()
-    //     : (x === 1)
-    //     ? playerTwo.incrementPositionYMinus()
-    //     : (x === 2)
-    //     ? playerTwo.incrementPositionXPlus()
-    //     : playerTwo.incrementPositionYPlus()
+        (x === 0) 
+        ? playerTwo.incrementPositionXMinus()
+        : (x === 1)
+        ? playerTwo.incrementPositionYMinus()
+        : (x === 2)
+        ? playerTwo.incrementPositionXPlus()
+        : playerTwo.incrementPositionYPlus()
 
-    //     playerTwo.attackOpponent(playerOne)
-    // }
+        playerTwo.attackOpponent(playerOne)
+    }
 
 const gameOverOne = 
 `--------------------------------
