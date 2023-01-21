@@ -26,7 +26,7 @@ export default function Games() {
                 <br />
             <Button aria-label='Play game two' radius="lg" fullWidth onClick={() => setOpenGame(1)} variant="outline" color="cyan">Game Two</Button>
                 <br />
-            <Button aria-label='Play game three' radius="lg" fullWidth onClick={() => setOpenGame(2)} variant="outline" color="cyan">Game Three</Button>
+            <Button aria-label='Play game one plus' radius="lg" fullWidth onClick={() => setOpenGame(2)} variant="outline" color="cyan">Game One Plus</Button>
 
         </div>
         : gamesList[openGame]

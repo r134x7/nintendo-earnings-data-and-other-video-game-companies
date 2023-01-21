@@ -1,6 +1,6 @@
 import { Code, Button, SimpleGrid } from "@mantine/core";
-import { useHotkeys, useInterval } from "@mantine/hooks";
-import { useEffect, useState } from "react";
+import { useHotkeys } from "@mantine/hooks";
+import { useState } from "react";
 import { Field } from "../../classes/Field";
 import { Unit } from "../../classes/Unit";
 import { liner, border, spacer } from "../../utils/table_design_logic";
@@ -40,8 +40,6 @@ function difficulty (attacks: number) {
 
     var levelSetting = 1;
 
-    // var level = difficulty(levelSetting);
-
 export default function GAME_THREE() {
 
     useHotkeys([
@@ -68,8 +66,6 @@ export default function GAME_THREE() {
     const playerOnePosition = ifPlayerPositionXY(playerOne);
     const playerTwoPosition = ifPlayerPositionXY(playerTwo);
 
-// need to solve this...
-// need parameters to create the map...
 const visualField = (xLengthLocal: number, yLengthLocal: number): string => {
 
     let mapArray: string[] = Array.from({length:yLengthLocal+1},(v,i) => {
@@ -92,16 +88,6 @@ const visualField = (xLengthLocal: number, yLengthLocal: number): string => {
     return mapArray.reduce((acc,next) => acc + next)
 
 };
-// `−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-// ${playerOnePosition(0,0)}${playerOnePosition(1,0)}${playerOnePosition(2,0)}
-// ${playerTwoPosition(0,0)}${playerTwoPosition(1,0)}${playerTwoPosition(2,0)}
-// −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-// ${playerOnePosition(0,1)}${playerOnePosition(1,1)}${playerOnePosition(2,1)}
-// ${playerTwoPosition(0,1)}${playerTwoPosition(1,1)}${playerTwoPosition(2,1)}
-// −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-// ${playerOnePosition(0,2)}${playerOnePosition(1,2)}${playerOnePosition(2,2)}
-// ${playerTwoPosition(0,2)}${playerTwoPosition(1,2)}${playerTwoPosition(2,2)}
-// −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−`;
 
 const displayHP = (): string => liner(border([
 spacer(`Player X: ${playerOne.getHitPoints}HP`,29,"left")
@@ -110,13 +96,6 @@ spacer(`CPU O: ${playerTwo.getHitPoints}HP`,29,"left")
 ],true) + liner(border([
 spacer(`Difficulty Level: ${levelSetting}`,29,"left")
 ]),"−","bottom");
-
-// `−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-// | Player X: ${playerOne.getHitPoints}HP${" ".repeat(31 - (16 + playerOne.getHitPoints.toString().length))}|
-// | CPU O: ${playerTwo.getHitPoints}HP${" ".repeat(34 - (16 + playerTwo.getHitPoints.toString().length))}|
-// ${border([`Difficulty Level: ${levelSetting} `])}
-// −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-// `;
 
     const [playerField, setPlayerField] = useState(visualField(field.getX,field.getY));
 
@@ -214,17 +193,12 @@ const gameOverOne =
 | Game Over                    |
 --------------------------------`; 
 
-const gameOverTwo = 
-`--------------------------------
-| You struggled to win.        |
-|                              |
-| Game Over!                   |
---------------------------------`; 
-
 function reset () {
 
     levelSetting++
-    // field = makeField(xLength(3),yLength(5));
+
+    field = makeField(xLength(3),yLength(5));
+
     playerOneHP = playerOneHP + 20;
     playerOneAtt = playerOneAtt + 5;
     // purposely making use of implicit type conversion.
@@ -232,10 +206,11 @@ function reset () {
 
     playerOne = makePlayer(field, 0, 0, playerOneHP, playerOneAtt, playerOneAvatar);
 
-    playerTwo = makePlayer(field, field.getX, field.getY, 100, 10, "O");
+    playerTwoHP = playerTwoHP + 10;
 
+    playerTwo = makePlayer(field, field.getX, field.getY, playerTwoHP, 10, "O");
 
-    // level = difficulty(levelSetting)
+    setPlayerField(visualField(field.getX,field.getY))
 
     return playerField
 };
