@@ -9,17 +9,44 @@ import { liner, border, spacer } from "../../utils/table_design_logic";
 
 // reusing code from game one
     // Objects need to be placed outside the function to retain state...
-    // need to have a list of fields...
-    const xLength = Math.ceil(Math.random() * 4) // can't make it too long for mobile
-    const yLength = Math.ceil(Math.random() * 7)
-    const field = new Field(xLength,yLength);
-    console.log(xLength);
-    console.log(yLength);
+function makeField (xLengthField: number, yLengthField: number) {
+    return new Field(xLengthField,yLengthField);
+};
 
-    
+    const xLength = (length: number) => Math.ceil(Math.random() * length) // can't make it too long for mobile
+    const yLength = (length: number) => Math.ceil(Math.random() * length)
 
-    const playerOne = new Unit(field, 0, 0, 100, 10, "X");
-    const playerTwo = new Unit(field, field.getX, field.getY, 100, 10, "O");
+    const field = makeField(xLength(4),yLength(7));
+
+function makePlayer (map: Field, startPositionX: number, startPositionY: number, hp: number, attack: number, char: string) {
+    return new Unit(map, startPositionX, startPositionY, hp, attack, char)
+}; 
+
+    const cpu = () => {
+
+        let x = Math.floor(Math.random() * 4);
+
+        (x === 0) 
+        ? playerTwo.incrementPositionXMinus()
+        : (x === 1)
+        ? playerTwo.incrementPositionYMinus()
+        : (x === 2)
+        ? playerTwo.incrementPositionXPlus()
+        : playerTwo.incrementPositionYPlus()
+
+        playerTwo.attackOpponent(playerOne)
+    }
+
+function difficulty (attacks: number) {
+    for (let index = 0; index < attacks; index++) {
+        cpu()
+    }
+};
+
+    const level = difficulty(Math.ceil(Math.random() * 4))
+
+    const playerOne = makePlayer(field, 0, 0, 100, 10, "X");
+    const playerTwo = makePlayer(field, field.getX, field.getY, 100, 10, "O");
 
 export default function GAME_THREE() {
 
@@ -89,7 +116,7 @@ const displayHP = () =>
 ------------------------------
 `;
 
-    const [playerField, setPlayerField] = useState(visualField(xLength,yLength));
+    const [playerField, setPlayerField] = useState(visualField(field.getX,field.getY));
 
     const [hitPoints, setHitPoints] = useState(displayHP);
 
@@ -103,10 +130,8 @@ const displayHP = () =>
             playerOne.incrementPositionXPlus()
             // thisPosition()
             playerOne.attackOpponent(playerTwo)
-            cpu()
-            cpu()
-            cpu()
-            setPlayerField(visualField(xLength,yLength))
+            level
+            setPlayerField(visualField(field.getX,field.getY))
             setHitPoints(displayHP);
     }
 
@@ -118,10 +143,8 @@ const displayHP = () =>
             playerOne.incrementPositionXMinus()
             // thisPosition()
             playerOne.attackOpponent(playerTwo)
-            cpu()
-            cpu()
-            cpu()
-            setPlayerField(visualField(xLength,yLength))
+            level
+            setPlayerField(visualField(field.getX,field.getY))
             setHitPoints(displayHP);
     }
 
@@ -133,10 +156,8 @@ const displayHP = () =>
             playerOne.incrementPositionYMinus()
             // thisPosition()
             playerOne.attackOpponent(playerTwo)
-            cpu()
-            cpu()
-            cpu()
-            setPlayerField(visualField(xLength,yLength))
+            level
+            setPlayerField(visualField(field.getX,field.getY))
             setHitPoints(displayHP);
     }
 
@@ -148,27 +169,25 @@ const displayHP = () =>
             playerOne.incrementPositionYPlus()
             // thisPosition()
             playerOne.attackOpponent(playerTwo)
-            cpu()
-            cpu()
-            cpu()
-            setPlayerField(visualField(xLength,yLength))
+            level
+            setPlayerField(visualField(field.getX,field.getY))
             setHitPoints(displayHP);
     }
 
-    const cpu = () => {
+    // const cpu = () => {
 
-        let x = Math.floor(Math.random() * 4);
+    //     let x = Math.floor(Math.random() * 4);
 
-        (x === 0) 
-        ? playerTwo.incrementPositionXMinus()
-        : (x === 1)
-        ? playerTwo.incrementPositionYMinus()
-        : (x === 2)
-        ? playerTwo.incrementPositionXPlus()
-        : playerTwo.incrementPositionYPlus()
+    //     (x === 0) 
+    //     ? playerTwo.incrementPositionXMinus()
+    //     : (x === 1)
+    //     ? playerTwo.incrementPositionYMinus()
+    //     : (x === 2)
+    //     ? playerTwo.incrementPositionXPlus()
+    //     : playerTwo.incrementPositionYPlus()
 
-        playerTwo.attackOpponent(playerOne)
-    }
+    //     playerTwo.attackOpponent(playerOne)
+    // }
 
 const gameOverOne = 
 `--------------------------------
