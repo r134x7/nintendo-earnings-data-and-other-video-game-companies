@@ -16,21 +16,31 @@ function makeField (xLengthField: number, yLengthField: number) {
     const xLength = (length: number) => Math.ceil(Math.random() * length) // can't make it too long for mobile
     const yLength = (length: number) => Math.ceil(Math.random() * length)
 
-    const field = makeField(xLength(4),yLength(7));
+    var field = makeField(xLength(3),yLength(5));
 
 function makePlayer (map: Field, startPositionX: number, startPositionY: number, hp: number, attack: number, char: string) {
     return new Unit(map, startPositionX, startPositionY, hp, attack, char)
 }; 
 
-    const playerOne = makePlayer(field, 0, 0, 100, 10, "X");
-    const playerTwo = makePlayer(field, field.getX, field.getY, 100, 10, "O");
+    var playerOneHP = 100;
+    var playerOneAtt = 10;
+    var playerOneAvatar = "X"
+
+    var playerTwoHP = 100;
+    var playerTwoAtt = 10;
+    var playerTwoAvatar = "O"
+
+    var playerOne = makePlayer(field, 0, 0, playerOneHP, playerOneAtt, playerOneAvatar);
+    var playerTwo = makePlayer(field, field.getX, field.getY, playerTwoHP, playerTwoAtt, playerTwoAvatar);
 
 
 function difficulty (attacks: number) {
     return Math.ceil(Math.random() * attacks)
 };
 
-    const level = difficulty(5);
+    var levelSetting = 1;
+
+    // var level = difficulty(levelSetting);
 
 export default function GAME_THREE() {
 
@@ -93,13 +103,20 @@ const visualField = (xLengthLocal: number, yLengthLocal: number): string => {
 // ${playerTwoPosition(0,2)}${playerTwoPosition(1,2)}${playerTwoPosition(2,2)}
 // −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−`;
 
-const displayHP = () => 
-`------------------------------
-| Player X: ${playerOne.getHitPoints}HP${" ".repeat(31 - (16 + playerOne.getHitPoints.toString().length))}|
-| CPU O: ${playerTwo.getHitPoints}HP${" ".repeat(34 - (16 + playerTwo.getHitPoints.toString().length))}|
-| Difficulty Level: ${level}        |
-------------------------------
-`;
+const displayHP = (): string => liner(border([
+spacer(`Player X: ${playerOne.getHitPoints}HP`,29,"left")
+]),"−","top",true) + border([
+spacer(`CPU O: ${playerTwo.getHitPoints}HP`,29,"left")
+],true) + liner(border([
+spacer(`Difficulty Level: ${levelSetting}`,29,"left")
+]),"−","bottom");
+
+// `−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+// | Player X: ${playerOne.getHitPoints}HP${" ".repeat(31 - (16 + playerOne.getHitPoints.toString().length))}|
+// | CPU O: ${playerTwo.getHitPoints}HP${" ".repeat(34 - (16 + playerTwo.getHitPoints.toString().length))}|
+// ${border([`Difficulty Level: ${levelSetting} `])}
+// −−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
+// `;
 
     const [playerField, setPlayerField] = useState(visualField(field.getX,field.getY));
 
@@ -116,7 +133,7 @@ const displayHP = () =>
             // thisPosition()
             playerOne.attackOpponent(playerTwo)
 
-            for (let index = 0; index < level; index++) {
+            for (let index = 0; index < levelSetting; index++) {
                 cpu()
             }
 
@@ -133,7 +150,7 @@ const displayHP = () =>
             // thisPosition()
             playerOne.attackOpponent(playerTwo)
 
-            for (let index = 0; index < level; index++) {
+            for (let index = 0; index < levelSetting; index++) {
                 cpu()
             }
 
@@ -150,7 +167,7 @@ const displayHP = () =>
             // thisPosition()
             playerOne.attackOpponent(playerTwo)
 
-            for (let index = 0; index < level; index++) {
+            for (let index = 0; index < levelSetting; index++) {
                 cpu()
             }
 
@@ -167,7 +184,7 @@ const displayHP = () =>
             // thisPosition()
             playerOne.attackOpponent(playerTwo)
 
-            for (let index = 0; index < level; index++) {
+            for (let index = 0; index < levelSetting; index++) {
                 cpu()
             }
 
@@ -204,10 +221,29 @@ const gameOverTwo =
 | Game Over!                   |
 --------------------------------`; 
 
+function reset () {
+
+    levelSetting++
+    // field = makeField(xLength(3),yLength(5));
+    playerOneHP = playerOneHP + 20;
+    playerOneAtt = playerOneAtt + 5;
+    // purposely making use of implicit type conversion.
+    playerOneAvatar = "X+" + (levelSetting-1);
+
+    playerOne = makePlayer(field, 0, 0, playerOneHP, playerOneAtt, playerOneAvatar);
+
+    playerTwo = makePlayer(field, field.getX, field.getY, 100, 10, "O");
+
+
+    // level = difficulty(levelSetting)
+
+    return playerField
+};
+
     return (
         <div>
             <Code block>
-                {(playerTwo.getHitPoints <= 0) ? gameOverTwo : (playerOne.getHitPoints <= 0) ? gameOverOne : playerField}
+                {(playerTwo.getHitPoints <= 0) ? reset() : (playerOne.getHitPoints <= 0) ? gameOverOne : playerField}
                 <br />
                 {hitPoints}
             </Code>
