@@ -29,41 +29,41 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
         return [
             { 
                 name: "Data Sources",
-                value: nintendoLinks[index]? nintendoLinks[index] : undefined,
+                value: nintendoLinks?.[index],
             },
             {
                 name: "Consolidated Operating Results",
-                value: nintendoConsolidatedEarningsList[index]? nintendoConsolidatedEarningsList[index] : undefined,
-                graph: nintendoConsolidatedEarningsGraphList[index]? <GRAPH_CONSOLIDATED_EARNINGS setData={nintendoConsolidatedEarningsGraphList[index]} /> : undefined
+                value: nintendoConsolidatedEarningsList?.[index],
+                graph: <GRAPH_CONSOLIDATED_EARNINGS setData={nintendoConsolidatedEarningsGraphList[index]} />
             },
             {
                 name: "Consolidated Sales Information",
-                value: consolidatedSalesInformationList[index]? consolidatedSalesInformationList[index] : undefined,
-                graph: consolidatedSalesInformationGraphList[index]? <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={consolidatedSalesInformationGraphList[index]} /> : undefined
+                value: consolidatedSalesInformationList?.[index],
+                graph: <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={consolidatedSalesInformationGraphList[index]} />
             },
             {
                 name: "Global Hardware/Software Units",
-                value: globalHardwareSoftwareMobileList[index]? globalHardwareSoftwareMobileList[index] : undefined,
-                graph: globalHardwareSoftwareMobileGraphList[index]? <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={globalHardwareSoftwareMobileGraphList[index]} /> : undefined
+                value: globalHardwareSoftwareMobileList?.[index],
+                graph: <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={globalHardwareSoftwareMobileGraphList[index]} />
             },
             {
                 name: "Key Sales Indicators",
-                value: keySalesIndicatorsList[index]? keySalesIndicatorsList[index] : undefined,
-                graph: keySalesIndicatorsGraphList[index]? <GRAPH_NINTENDO_KPI setData={keySalesIndicatorsGraphList[index]} /> : undefined
+                value: keySalesIndicatorsList?.[index],
+                graph: <GRAPH_NINTENDO_KPI setData={keySalesIndicatorsGraphList[index]} />
             },
             {
                 name: "FY Million-Seller Titles",
-                value: fyMillionSellerTitlesList[index]? fyMillionSellerTitlesList[index] : undefined,
-                graph: fyMillionSellerTitlesGraphList[index]? <GRAPH_NINTENDO_FY_MILLION_SELLER_TITLES setData={fyMillionSellerTitlesGraphList[index]} /> : undefined
+                value: fyMillionSellerTitlesList?.[index],
+                graph: <GRAPH_NINTENDO_FY_MILLION_SELLER_TITLES setData={fyMillionSellerTitlesGraphList[index]} /> 
             },
             {
                 name: "Regional Hardware/Software Units",
-                value: regionalHardwareSoftwareList[index]? regionalHardwareSoftwareList[index] : undefined,
+                value: regionalHardwareSoftwareList?.[index],
             },
             {
                 name: "Top Selling Titles",
-                value: topSellingTitlesList[index]? topSellingTitlesList[index] : undefined,
-                graph: topSellingTitlesGraphList[index]? <GRAPH_NINTENDO_TOP_SELLING_TITLES setData={topSellingTitlesGraphList[index]} /> : undefined
+                value: topSellingTitlesList?.[index],
+                graph: <GRAPH_NINTENDO_TOP_SELLING_TITLES setData={topSellingTitlesGraphList[index]} />
             },
         ].filter(elem => elem.value !== undefined);
     })
@@ -75,7 +75,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
         let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
 
-        return (dataSelected) ? dataSelected.value : ""
+        return dataSelected?.value || ""
     };
 
     const selectGraphComponent = (objList: {name: string, value: string | JSX.Element | undefined, graph?: JSX.Element | undefined}[]) =>
@@ -83,7 +83,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
         let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
 
-        return (dataSelected) ? dataSelected.graph : undefined
+        return dataSelected?.graph
     };
 
     const selectData = selectDataComponent(componentListNew[props.setIndex]);
