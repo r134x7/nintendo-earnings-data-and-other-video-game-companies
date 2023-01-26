@@ -23,20 +23,20 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
         return [
             { 
                 name: "Data Sources",
-                value: squareEnixLinks[index]? squareEnixLinks[index] : undefined,
+                value: squareEnixLinks?.[index],
             },
             {
                 name: "Consolidated Financial Results",
-                value: squareEnixConsolidatedEarningsList[index]? squareEnixConsolidatedEarningsList[index] : undefined,
-                graph: squareEnixConsolidatedEarningsGraphList[index]? <GRAPH_CONSOLIDATED_EARNINGS setData={squareEnixConsolidatedEarningsGraphList[index]} /> : undefined
+                value: squareEnixConsolidatedEarningsList?.[index],
+                graph: <GRAPH_CONSOLIDATED_EARNINGS setData={squareEnixConsolidatedEarningsGraphList[index]} />
             },
             {
                 name: "Software Sales",
-                value: softwareSalesList[index]? softwareSalesList[index] : undefined,
+                value: softwareSalesList?.[index],
             },
             {
                 name: "FY Series IP",
-                value: annualReportListAltered[index]? annualReportListAltered[index] : undefined,
+                value: annualReportListAltered[index] ? annualReportListAltered[index] : undefined, // can't use optional chaining on falsy values i.e. ""
             },
         ].filter(elem => elem.value !== undefined);
     })
@@ -48,10 +48,19 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
 
         let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
 
-        return (dataSelected) ? dataSelected.value : ""
+        return dataSelected?.value || ""
+    };
+
+    const selectGraphComponent = (objList: {name: string, value: string | JSX.Element | undefined, graph?: JSX.Element | undefined}[]) =>
+    (dataUsed: string): JSX.Element | undefined => {
+
+        let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
+
+        return dataSelected?.graph
     };
 
     const selectData = selectDataComponent(componentListNew[props.setIndex]);
+    const selectGraph = selectGraphComponent(componentListNew[props.setIndex]);
 
     return (
 
@@ -69,6 +78,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
                     ? selectData(value)
                     : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
             }
+            {selectGraph(value)}
             <Space h="xl" />
             <Space h="xl" />
             <Space h="xl" />
