@@ -26,26 +26,26 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
         return [
             { 
                 name: "Data Sources",
-                value: segaLinks[index]? segaLinks[index] : undefined,
+                value: segaLinks?.[index],
             },
             {
                 name: "Consolidated Operating Results",
-                value: segaConsolidatedEarningsList[index]? segaConsolidatedEarningsList[index] : undefined,
-                graph: segaConsolidatedEarningsGraphList[index]? <GRAPH_CONSOLIDATED_EARNINGS setData={segaConsolidatedEarningsGraphList[index]} /> : undefined
+                value: segaConsolidatedEarningsList?.[index],
+                graph: <GRAPH_CONSOLIDATED_EARNINGS setData={segaConsolidatedEarningsGraphList[index]} />
             },
             {
                 name: "Software Sales",
-                value: softwareSalesList[index]? softwareSalesList[index] : undefined,
-                graph: softwareSalesGraphList[index]? <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} /> : undefined
+                value: softwareSalesList?.[index],
+                graph: <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} />
             },
             {
                 name: "Software Units",
-                value: segaSoftwareUnitsList[index]? segaSoftwareUnitsList[index] : undefined,
-                graph: segaSoftwareUnitsGraphList[index]? <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={segaSoftwareUnitsGraphList[index]} /> : undefined
+                value: segaSoftwareUnitsList?.[index],
+                graph: <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={segaSoftwareUnitsGraphList[index]} />
             },
             {
                 name: "FY Series IP",
-                value: annualReportListAltered[index]? annualReportListAltered[index] : undefined,
+                value: annualReportListAltered[index] ? annualReportListAltered[index] : undefined, // can't use optional chaining on falsy values i.e. ""
             },
         ].filter(elem => elem.value !== undefined);
     })
@@ -57,7 +57,7 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
 
         let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
 
-        return (dataSelected) ? dataSelected.value : ""
+        return dataSelected?.value || ""
     };
 
     const selectGraphComponent = (objList: {name: string, value: string | JSX.Element | undefined, graph?: JSX.Element | undefined}[]) =>
@@ -65,7 +65,7 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
 
         let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
 
-        return (dataSelected) ? dataSelected.graph : undefined
+        return dataSelected?.graph
     };
 
     const selectGraph = selectGraphComponent(componentListNew[props.setIndex]);
