@@ -21,17 +21,17 @@ export default function KOEI_TECMO_COMPONENT(props: {setIndex: number; yearLengt
         return [
             { 
                 name: "Data Sources",
-                value: koeiTecmoLinks[index]? koeiTecmoLinks[index] : undefined,
+                value: koeiTecmoLinks?.[index],
             },
             {
                 name: "Consolidated Operating Results",
-                value: koeiTecmoConsolidatedEarningsList[index]? koeiTecmoConsolidatedEarningsList[index] : undefined,
-                graph: koeiTecmoConsolidatedEarningsGraphList[index]? <GRAPH_CONSOLIDATED_EARNINGS setData={koeiTecmoConsolidatedEarningsGraphList[index]} /> : undefined
+                value: koeiTecmoConsolidatedEarningsList?.[index],
+                graph: <GRAPH_CONSOLIDATED_EARNINGS setData={koeiTecmoConsolidatedEarningsGraphList[index]} />
             },
             {
                 name: "Software Sales",
-                value: softwareSalesList[index]? softwareSalesList[index] : undefined,
-                graph: softwareSalesGraphList[index]? <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} /> : undefined
+                value: softwareSalesList?.[index],
+                graph: <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} />
             },
         ].filter(elem => elem.value !== undefined);
     })
@@ -43,7 +43,7 @@ export default function KOEI_TECMO_COMPONENT(props: {setIndex: number; yearLengt
 
         let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
 
-        return (dataSelected) ? dataSelected.value : ""
+        return dataSelected?.value || ""
     };
 
     const selectGraphComponent = (objList: {name: string, value: string | JSX.Element | undefined, graph?: JSX.Element | undefined}[]) =>
@@ -51,7 +51,7 @@ export default function KOEI_TECMO_COMPONENT(props: {setIndex: number; yearLengt
 
         let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
 
-        return (dataSelected) ? dataSelected.graph : undefined
+        return dataSelected?.graph
     };
 
     const selectGraph = selectGraphComponent(componentListNew[props.setIndex]);

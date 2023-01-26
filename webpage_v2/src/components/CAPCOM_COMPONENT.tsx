@@ -28,33 +28,33 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
         return [
             { 
                 name: "Data Sources",
-                value: capcomLinks[index]? capcomLinks[index] : undefined,
+                value: capcomLinks?.[index],
             },
             {
                 name: "Consolidated Financial Results",
-                value: capcomConsolidatedEarningsList[index]? capcomConsolidatedEarningsList[index] : undefined,
-                graph: capcomConsolidatedEarningsGraphList[index]? <GRAPH_CONSOLIDATED_EARNINGS setData={capcomConsolidatedEarningsGraphList[index]} /> : undefined
+                value: capcomConsolidatedEarningsList?.[index],
+                graph: <GRAPH_CONSOLIDATED_EARNINGS setData={capcomConsolidatedEarningsGraphList[index]} />
             },
             {
                 name: "Software Sales",
-                value: softwareSalesList[index]? softwareSalesList[index] : undefined,
-                graph: softwareSalesGraphList[index]? <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} /> : undefined
+                value: softwareSalesList?.[index],
+                graph: <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} />
             },
             {
                 name: "Software Platform Shipments", 
-                value: annualReportListAltered[index]? annualReportListAltered[index] : undefined, 
+                value: annualReportListAltered[index] ? annualReportListAltered[index] : undefined, // can't use optional chaining on falsy values i.e. ""
             },
             {
                 name: "FY Platinum Titles", 
-                value: fyPlatinumTitlesList[index]? fyPlatinumTitlesList[index] : undefined,
+                value: fyPlatinumTitlesList?.[index],
             },
             {
                 name: "All Platinum Titles", 
-                value: allPlatinumTitlesList[index]? allPlatinumTitlesList[index] : undefined,
+                value: allPlatinumTitlesList?.[index],
             },
             {
                 name: "FY Game Series", 
-                value: gameSeriesListAltered[index]? gameSeriesListAltered[index] : undefined,
+                value: gameSeriesListAltered[index] ? gameSeriesListAltered[index] : undefined, // can't use optional chaining on falsy values i.e. ""
             },
         ].filter(elem => elem.value !== undefined);
     })
@@ -66,7 +66,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
         let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
 
-        return (dataSelected) ? dataSelected.value : ""
+        return dataSelected?.value || ""
     };
 
     const selectGraphComponent = (objList: {name: string, value: string | JSX.Element | undefined, graph?: JSX.Element | undefined}[]) =>
@@ -74,7 +74,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
         let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
 
-        return (dataSelected) ? dataSelected.graph : undefined
+        return dataSelected?.graph
     };
 
     const selectGraph = selectGraphComponent(componentListNew[props.setIndex]);

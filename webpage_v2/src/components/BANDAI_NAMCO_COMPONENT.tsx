@@ -24,21 +24,21 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
         return [
             { 
                 name: "Data Sources",
-                value: bandaiNamcoLinks[index]? bandaiNamcoLinks[index] : undefined,
+                value: bandaiNamcoLinks?.[index],
             },
             {
                 name: "Consolidated Operating Results",
-                value: bandaiNamcoConsolidatedEarningsList[index]? bandaiNamcoConsolidatedEarningsList[index] : undefined,
-                graph: bandaiNamcoConsolidatedEarningsGraphList[index]? <GRAPH_CONSOLIDATED_EARNINGS setData={bandaiNamcoConsolidatedEarningsGraphList[index]} /> : undefined
+                value: bandaiNamcoConsolidatedEarningsList?.[index],
+                graph: <GRAPH_CONSOLIDATED_EARNINGS setData={bandaiNamcoConsolidatedEarningsGraphList[index]} />
             },
             {
                 name: "Software Sales",
-                value: softwareSalesList[index]? softwareSalesList[index] : undefined,
-                graph: softwareSalesGraphList[index]? <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} /> : undefined
+                value: softwareSalesList?.[index],
+                graph: <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} />
             },
             {
                 name: "FY Series IP",
-                value: annualReportListAltered[index]? annualReportListAltered[index] : undefined,
+                value: annualReportListAltered[index] ? annualReportListAltered[index] : undefined, // can't use optional chaining on falsy values i.e. ""
             },
         ].filter(elem => elem.value !== undefined);
     })
@@ -50,7 +50,7 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
 
         let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
 
-        return (dataSelected) ? dataSelected.value : ""
+        return dataSelected?.value || ""
     };
 
     const selectGraphComponent = (objList: {name: string, value: string | JSX.Element | undefined, graph?: JSX.Element | undefined}[]) =>
@@ -58,7 +58,7 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
 
         let [dataSelected] = objList.filter(elem => dataUsed === elem.name)
 
-        return (dataSelected) ? dataSelected.graph : undefined
+        return dataSelected?.graph
     };
 
     const selectGraph = selectGraphComponent(componentListNew[props.setIndex]);
