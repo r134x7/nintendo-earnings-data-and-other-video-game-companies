@@ -2,7 +2,7 @@
 
   # Description  
 
-  I am Github user r134x7 also known as ggx2ac on Install Base Forum. This is an ever-evolving project that first started out years in Java (not in the repo) then moved to Python and is now a deployed front-end web app using React, Mantine, Vite and TypeScript. The deployed app contains a lot of earnings release data from various video game companies including Nintendo spanning many years.
+  I am Github user r134x7 also known as ggx2ac on Install Base Forum. This is an ever-evolving project that first started out years in Java (not in the repo) then moved to Python and is now a deployed front-end web app using React, Mantine, Vite and TypeScript. The deployed app contains decades of earnings release data from various video game companies including Nintendo spanning many years. Efficiency of data gathering improves over time from use of regular expressions to extract the data from PDF or HTML files to put into JSON.
 
   # Table of Contents
   
@@ -36,7 +36,12 @@ At the second half of 2021 the Java IDE app I was using no longer worked properl
 
 # Deployed Application
 
-Link to deployed application: [https://r134x7.github.io/nintendo-earnings-data-and-other-video-game-companies/](https://r134x7.github.io/nintendo-earnings-data-and-other-video-game-companies/)
+Link to deployed application: [https://r134x7.github.io/nintendo-earnings-data-and-other-video-game-companies/](https://r134x7.github.io/nintendo-earnings-data-and-other-video-game-companies/)  
+  
+    
+
+Example Image:  
+![Section of a page](lp1.jpg)
 
 # Tests
   
