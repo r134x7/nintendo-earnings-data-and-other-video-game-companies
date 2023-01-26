@@ -513,7 +513,7 @@ export const graphMake = (salesDataThisFY: Section[], salesDataLastFY: Section[]
             return { ...elem, units: "salesPerSoftwareUnit", value: calculateSalesPerSoftware}
         })
 
-    let thisFY: string = fiscalYear.slice(1, -1);
+    let thisFY: string = fiscalYear;
     let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
 
     let marchThisFY: string = "March " + thisFY.slice(4);
