@@ -19,7 +19,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 1,
             companyName: "Capcom",
-            eventName: "3rd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results, FY3/2023",
             eventDate: "January 30, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.capcom.co.jp/ir/english/",
@@ -27,7 +27,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 2,
             companyName: "Nintendo",
-            eventName: "3rd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results, FY3/2023",
             eventDate: "February 7, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.nintendo.co.jp/ir/en/",
@@ -35,7 +35,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 3,
             companyName: "Sony",
-            eventName: "3rd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results, FY3/2023",
             eventDate: "February 2, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.sony.com/en/SonyInfo/IR/",
@@ -43,7 +43,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 4,
             companyName: "Microsoft",
-            eventName: "2nd Quarter Earnings Results",
+            eventName: "2nd Quarter Earnings Results, FY6/2023",
             eventDate: "January 24, 2023",
             timeZone: "US, PST, UTC -8 Hours",
             irPage: "https://www.microsoft.com/en-us/Investor",
@@ -51,7 +51,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 5,
             companyName: "Ubisoft",
-            eventName: "2nd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results, FY3/2023",
             eventDate: "February 16, 2023",
             timeZone: "France, CET, UTC +1 Hours",
             irPage: "https://www.ubisoft.com/en-us/company/about-us/investors",
@@ -59,7 +59,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 6,
             companyName: "DeNA",
-            eventName: "3rd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results, FY3/2023",
             eventDate: "February 8, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://dena.com/intl/ir/",
@@ -67,7 +67,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 7,
             companyName: "Koei Tecmo",
-            eventName: "3rd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results, FY3/2023",
             eventDate: "January 30, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.koeitecmo.co.jp/e/ir/",
@@ -75,7 +75,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 8,
             companyName: "EA",
-            eventName: "3rd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results, FY3/2023",
             eventDate: "January 31, 2023",
             timeZone: "US, PST, UTC -8 Hours",
             irPage: "https://ir.ea.com/home/default.aspx",
@@ -83,7 +83,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 9,
             companyName: "CyberAgent",
-            eventName: "1st Quarter Earnings Results",
+            eventName: "1st Quarter Earnings Results, FY9/2023",
             eventDate: "January 25, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.cyberagent.co.jp/en/ir/",
@@ -91,7 +91,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 10,
             companyName: "GungHo",
-            eventName: "4th Quarter Earnings Results",
+            eventName: "4th Quarter Earnings Results, FY12/2022",
             eventDate: "February 14, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.gungho.co.jp/en/ir/",
@@ -99,7 +99,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 11,
             companyName: "Square Enix",
-            eventName: "2nd Quarter Earnings Results",
+            eventName: "2nd Quarter Earnings Results, FY3/2023",
             eventDate: "November 7, 2022",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.hd.square-enix.com/eng/ir/",
@@ -107,7 +107,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 12,
             companyName: "Sega Sammy",
-            eventName: "3rd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results, FY3/2023",
             eventDate: "February 9, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.segasammy.co.jp/english/ir/",
@@ -115,7 +115,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 13,
             companyName: "Konami",
-            eventName: "3rd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results, FY3/2023",
             eventDate: "February 2, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.konami.com/ir/en/",
@@ -123,7 +123,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 14,
             companyName: "Marvelous",
-            eventName: "3rd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results, FY3/2023",
             eventDate: "January 31, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://corp.marv.jp/english/",
@@ -131,7 +131,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 15,
             companyName: "Activision Blizzard",
-            eventName: "3rd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results, FY3/2023",
             eventDate: "February 6, 2023",
             timeZone: "US, PST, UTC -8 Hours",
             irPage: "https://investor.activision.com/",
@@ -139,7 +139,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 16,
             companyName: "Take-Two",
-            eventName: "2nd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results, FY3/2023",
             eventDate: "February 7, 2022",
             timeZone: "US, EST, UTC -5 Hours",
             irPage: "https://www.take2games.com/ir",
@@ -147,7 +147,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 17,
             companyName: "GREE",
-            eventName: "2nd Quarter Earnings Results",
+            eventName: "2nd Quarter Earnings Results, FY6/2023",
             eventDate: "February 8, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "http://www.gree.co.jp/jp/en/ir/",
@@ -155,7 +155,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 18,
             companyName: "Bandai Namco",
-            eventName: "3rd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results, FY3/2023",
             eventDate: "February 7, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.bandainamco.co.jp/en/ir/index.html",
@@ -163,7 +163,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 19,
             companyName: "Kadokawa",
-            eventName: "3rd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results, FY3/2023",
             eventDate: "February 2, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://group.kadokawa.co.jp/global/ir/",
@@ -171,7 +171,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 20,
             companyName: "Falcom",
-            eventName: "4th Quarter Earnings Results",
+            eventName: "4th Quarter Earnings Results, FY9/2022",
             eventDate: "November 10, 2022",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.falcom.co.jp/ir",
@@ -179,7 +179,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 21,
             companyName: "NIS",
-            eventName: "2nd Quarter Earnings Results",
+            eventName: "2nd Quarter Earnings Results, FY3/2023",
             eventDate: "November 11, 2022",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.nippon1.co.jp/ir/ir.html",
@@ -187,7 +187,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 22,
             companyName: "Embracer Group",
-            eventName: "3rd Quarter Earnings Results",
+            eventName: "3rd Quarter Earnings Results, FY3/2023",
             eventDate: "February 16, 2023",
             timeZone: "Sweden, CET, UTC +1 Hour",
             irPage: "https://embracer.com/investors/",
