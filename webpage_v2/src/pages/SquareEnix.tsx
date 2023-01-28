@@ -7,6 +7,8 @@ import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import SQUARE_ENIX_COMPONENT from "../components/SQUARE_ENIX_COMPONENT";
 import SQUARE_ENIX_CML from "../components/special/SQUARE_ENIX_CML";
 
+import { liner, printTextBlock } from "../utils/table_design_logic";
+
 const currentYear = 2023;
 
 const yearsList = Array.from({length: 20}, (elem, index) => 
@@ -18,30 +20,28 @@ export default function SquareEnix() {
 
     const dispatch = useDispatch();
 
-    const message = `Square Enix (They publish Marvel's Avengers), this is where you can find archived data.`;
-
-    // const border = "+" + "−".repeat(98) + "+";
+    const message = `Square Enix (They publish Marvel's Avengers), this is where you can find archived data. `;
 
     const splitMessage = message.split("");
 
     const [text, setText] = useState("");
-    // const [textColour, setTextColour] = useState({});
-    // const [borderColour, setBorderColour] = useState({});
+
+    const [textBlock, setTextBlock] = useState("");
 
     const [seconds, setSeconds] = useState(0);
     const interval = useInterval(() => setSeconds((s) => s + 1), 80);
 
     useEffect(() => {
         if (seconds === splitMessage.length) {
-            // setTextColour({ color: 'crimson', fontSize: 18, lineHeight: 1.4, textAlign: "center" });
-            // setBorderColour({ color: 'crimson', fontSize: 21, lineHeight: 1.4 });
             interval.stop();
         } else {
             interval.start();
+
             setText(text + splitMessage[seconds])
+
+            setTextBlock(liner(printTextBlock(text + " ".repeat(message.length-text.length),40),"−","both",true,40))
         }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [seconds])
 
     const [year, setYear] = useState("");
@@ -161,7 +161,7 @@ export default function SquareEnix() {
                 <Text sx={textColour} size="lg">{text}</Text>
                 <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text>  */}
             {/* </Paper> */}
-            <Code style={{backgroundColor: `${state.colour}`}} >{text}</Code>
+            <Code style={{backgroundColor: `${state.colour}`}} block>{textBlock}</Code>
             </Stack>
             <Paper mb="md" shadow="sm" radius="xl" p="md" withBorder>
             <Stack align="center">

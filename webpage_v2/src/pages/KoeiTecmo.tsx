@@ -7,6 +7,8 @@ import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import KOEI_TECMO_COMPONENT from "../components/KOEI_TECMO_COMPONENT";
 import KOEI_TECMO_CML from "../components/special/KOEI_TECMO_CML";
 
+import { liner, printTextBlock } from "../utils/table_design_logic";
+
 const currentYear = 2023;
 
 const yearsList = Array.from({length: 14}, (elem, index) => 
@@ -18,11 +20,13 @@ export default function KoeiTecmo() {
 
     const dispatch = useDispatch();
 
-    const message = `Koei Tecmo (They publish Hyrule Warriors), this is where you can find archived data.`;
+    const message = `Koei Tecmo (They publish Hyrule Warriors), this is where you can find archived data. `;
 
     const splitMessage = message.split("");
 
     const [text, setText] = useState("");
+
+    const [textBlock, setTextBlock] = useState("");
 
     const [seconds, setSeconds] = useState(0);
     const interval = useInterval(() => setSeconds((s) => s + 1), 80);
@@ -33,6 +37,8 @@ export default function KoeiTecmo() {
         } else {
             interval.start();
             setText(text + splitMessage[seconds])
+
+            setTextBlock(liner(printTextBlock(text + " ".repeat(message.length-text.length),40),"−","both",true,40))
         }
 
     }, [seconds])
@@ -86,7 +92,7 @@ export default function KoeiTecmo() {
                 <Text sx={textColour} size="lg">{text}</Text>
                 <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text>  */}
             {/* </Paper> */}
-            <Code style={{backgroundColor: `${state.colour}`}} >{text}</Code>
+            <Code style={{backgroundColor: `${state.colour}`}} block>{textBlock}</Code>
             </Stack>
             <Paper mb="md" shadow="sm" radius="xl" p="md" withBorder>
             <Stack align="center">

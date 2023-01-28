@@ -7,7 +7,7 @@ import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import BANDAI_NAMCO_COMPONENT from "../components/BANDAI_NAMCO_COMPONENT";
 import BANDAI_NAMCO_CML from "../components/special/BANDAI_NAMCO_CML";
 
-import { liner, border, spacer, printTextBlock } from "../utils/table_design_logic";
+import { liner, printTextBlock } from "../utils/table_design_logic";
 
 const currentYear = 2023;
 
@@ -22,8 +22,6 @@ export default function BandaiNamco() {
 
     const message = `Bandai Namco (They publish Dark Souls), this is where you can find archived Series IP data. `;
 
-    // const border = "+" + "−".repeat(86) + "+";
-
     const splitMessage = message.split("");
 
     const [text, setText] = useState("");
@@ -36,13 +34,12 @@ export default function BandaiNamco() {
 
     useEffect(() => {
         if (seconds === splitMessage.length) {
-            // setTextColour({ color: 'crimson', fontSize: 18, lineHeight: 1.4, textAlign: "center" });
-            // setBorderColour({ color: 'crimson', fontSize: 21, lineHeight: 1.4 });
             interval.stop();
         } else {
             interval.start();
+
             setText(text + splitMessage[seconds])
-            // setText(liner(printTextBlock("1" + text + splitMessage[seconds],40),"−","both",undefined,40))
+
             setTextBlock(liner(printTextBlock(text + " ".repeat(message.length-text.length),40),"−","both",true,40))
         }
 

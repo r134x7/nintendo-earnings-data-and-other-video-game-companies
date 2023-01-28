@@ -4,45 +4,42 @@ import { useInterval } from "@mantine/hooks";
 import "../App.css" // have to import the css to get it to work
 import EVENTS_CALENDAR from "../components/EVENTS_CALENDAR";
 
+import { liner, printTextBlock } from "../utils/table_design_logic";
+
 const Home = () => {
 
-    const one = "Welcome, this is where you can use the calendar to find some upcoming events.";
-    const splitOne = one.split("");
+    const message = "This is where you can use the calendar to find some upcoming events. ";
 
-    // const border = "+" + "−".repeat(76) + "+";
+    const splitMessage = message.split("");
 
     const [text, setText] = useState("");
 
-    const [textColour, setTextColour] = useState({});
-    // const [borderColour, setBorderColour] = useState({});
+    // const [textColour, setTextColour] = useState({});
+
+    const [textBlock, setTextBlock] = useState("");
 
     const [seconds, setSeconds] = useState(0);
     
     const interval = useInterval(() => setSeconds((s) => s + 1), 80);
 
     useEffect(() => {
-        
-        if (seconds >= splitOne.length) { // LINE ONE
-            setTextColour({ color: '#40bfb2', fontSize: 18, lineHeight: 1.4, textAlign: "center" });
-            // setBorderColour({ color: 'crimson', fontSize: 21, lineHeight: 1.4 });
+        if (seconds === splitMessage.length) {
             interval.stop();
-        } else if (seconds <= splitOne.length + 1) {
+        } else {
             interval.start();
-            setText(text + splitOne[seconds])
+
+            setText(text + splitMessage[seconds])
+
+            setTextBlock(liner(printTextBlock(text + " ".repeat(message.length-text.length),40),"−","both",true,40))
         }
-        
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [seconds]);
+
+    }, [seconds])
 
     return (
 
         <div>
             <Stack mb="md" align="center">
-            <Paper shadow="sm" radius="lg" p="md" withBorder>
-                {/* <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text>  */}
-                <Text sx={textColour} size="lg">{text}</Text>
-                {/* <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text>  */}
-            </Paper>
+            <Code style={{backgroundColor: `rgba(0, 255, 255,0.2)`}} block>{textBlock}</Code>
             </Stack>
             <Paper shadow="sm" radius="xl" p="md" withBorder>
             <Stack align="center">

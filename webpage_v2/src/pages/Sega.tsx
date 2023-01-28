@@ -7,6 +7,8 @@ import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import SEGA_COMPONENT from "../components/SEGA_COMPONENT";
 import SEGA_CML from "../components/special/SEGA_CML";
 
+import { liner, printTextBlock } from "../utils/table_design_logic";
+
 const currentYear = 2023;
 
 const yearsList = Array.from({length: 19}, (elem, index) => 
@@ -18,11 +20,13 @@ export default function Sega() {
 
     const dispatch = useDispatch();
 
-    const message = `Sega (They publish Hatsune Miku games), this is where you can find archived Sega Series IP data.`;
+    const message = `Sega (They publish Hatsune Miku games), this is where you can find archived Sega Series IP data. `;
 
     const splitMessage = message.split("");
 
     const [text, setText] = useState("");
+
+    const [textBlock, setTextBlock] = useState("");
 
     const [seconds, setSeconds] = useState(0);
     const interval = useInterval(() => setSeconds((s) => s + 1), 80);
@@ -32,7 +36,10 @@ export default function Sega() {
             interval.stop();
         } else {
             interval.start();
+
             setText(text + splitMessage[seconds])
+
+            setTextBlock(liner(printTextBlock(text + " ".repeat(message.length-text.length),40),"−","both",true,40))
         }
 
     }, [seconds])
@@ -86,7 +93,7 @@ export default function Sega() {
                 <Text sx={textColour} size="lg">{text}</Text>
                 <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text>  */}
             {/* </Paper> */}
-            <Code style={{backgroundColor: `${state.colour}`}} >{text}</Code>
+            <Code style={{backgroundColor: `${state.colour}`}} block>{textBlock}</Code>
             </Stack>
             <Paper mb="md" shadow="sm" radius="xl" p="md" withBorder>
             <Stack align="center">

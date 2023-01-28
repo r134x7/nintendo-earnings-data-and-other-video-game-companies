@@ -7,6 +7,8 @@ import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import CAPCOM_COMPONENT from "../components/CAPCOM_COMPONENT";
 import CAPCOM_CML from "../components/special/CAPCOM_CML";
 
+import { liner, printTextBlock } from "../utils/table_design_logic";
+
 const currentYear = 2023
 
 const yearsList = Array.from({length: 25}, (elem, index) => 
@@ -18,11 +20,13 @@ export default function Capcom() {
 
     const dispatch = useDispatch();
 
-    const message = `Capcom (They publish Remember Me), this is where you can find archived Capcom Platinum Titles data.`;
+    const message = `Capcom (They publish Remember Me), this is where you can find archived Capcom Platinum Titles data. `;
 
     const splitMessage = message.split("");
 
     const [text, setText] = useState("");
+
+    const [textBlock, setTextBlock] = useState("");
 
     const [seconds, setSeconds] = useState(0);
     const interval = useInterval(() => setSeconds((s) => s + 1), 80);
@@ -32,7 +36,10 @@ export default function Capcom() {
             interval.stop();
         } else {
             interval.start();
+
             setText(text + splitMessage[seconds])
+
+            setTextBlock(liner(printTextBlock(text + " ".repeat(message.length-text.length),40),"−","both",true,40))
         }
 
     }, [seconds])
@@ -87,7 +94,7 @@ export default function Capcom() {
                 <Text sx={textColour} size="lg">{text}</Text>
                 <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text>  */}
             {/* </Paper> */}
-            <Code style={{backgroundColor: `${state.colour}`}} >{text}</Code>
+            <Code style={{backgroundColor: `${state.colour}`}} block>{textBlock}</Code>
             </Stack>
             <Paper mb="md" shadow="sm" radius="xl" p="md" withBorder>
             <Stack align="center">

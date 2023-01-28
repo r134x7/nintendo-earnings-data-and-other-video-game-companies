@@ -7,6 +7,8 @@ import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import NINTENDO_CML from "../components/special/NINTENDO_CML";
 import NINTENDO_COMPONENT from "../components/NINTENDO_COMPONENT";
 
+import { liner, printTextBlock } from "../utils/table_design_logic";
+
 const currentYear = 2023;
 
 const yearsList = Array.from({length: 20}, (elem, index) => 
@@ -20,30 +22,30 @@ export default function Nintendo() {
 
     const dispatch = useDispatch();
 
-    const message = `Nintendo (They publish playing cards), this is where you can find archived Nintendo earnings data.`;
+    const message = `Nintendo (They publish playing cards), this is where you can find archived Nintendo earnings data. `;
 
     // const border = "+" + "−".repeat(93) + "+";
 
     const splitMessage = message.split("");
 
     const [text, setText] = useState("");
-    // const [textColour, setTextColour] = useState({});
-    // const [borderColour, setBorderColour] = useState({});
+
+    const [textBlock, setTextBlock] = useState("");
 
     const [seconds, setSeconds] = useState(0);
     const interval = useInterval(() => setSeconds((s) => s + 1), 80);
 
     useEffect(() => {
         if (seconds === splitMessage.length) {
-            // setTextColour({ color: 'crimson', fontSize: 18, lineHeight: 1.4, textAlign: "center" });
-            // setBorderColour({ color: 'crimson', fontSize: 21, lineHeight: 1.4 });
             interval.stop();
         } else {
             interval.start();
+
             setText(text + splitMessage[seconds])
+
+            setTextBlock(liner(printTextBlock(text + " ".repeat(message.length-text.length),40),"−","both",true,40))
         }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [seconds])
 
     const [value, setValue] = useState("Data by Fiscal Year");
@@ -95,7 +97,7 @@ export default function Nintendo() {
                 <Text sx={textColour} size="lg">{text}</Text>
                 <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text>  */}
             {/* </Paper> */}
-            <Code style={{backgroundColor: `${state.colour}`}} >{text}</Code>
+            <Code style={{backgroundColor: `${state.colour}`}} block>{textBlock}</Code>
             </Stack>
             <Paper mb="md" shadow="sm" radius="xl" p="xs" withBorder>
             <Stack align="center">

@@ -1,43 +1,41 @@
 import { useEffect, useState } from "react";
-import { Text, Anchor, Stack, Paper, List} from '@mantine/core';
+import { Text, Anchor, Stack, Paper, List, Code } from '@mantine/core';
 import { useInterval } from "@mantine/hooks";
 import "../App.css" // have to import the css to get it to work
 
+import { liner, printTextBlock } from "../utils/table_design_logic";
+
 const Home = () => {
 
-    const one = "Welcome to ggx2ac + archives: Nintendo earnings data and other video game companies";
-    const splitOne = one.split("");
+    const message = "Welcome to ggx2ac + archives: Nintendo earnings data and other video game companies ";
+    const splitMessage = message.split("");
+
+    const [textBlock, setTextBlock] = useState("");
 
     const [text, setText] = useState("");
-    const [textColour, setTextColour] = useState({});
+    // const [textColour, setTextColour] = useState({});
     const [seconds, setSeconds] = useState(0);
     
     const interval = useInterval(() => setSeconds((s) => s + 1), 80);
 
     useEffect(() => {
-        
-        if (seconds >= splitOne.length) { // LINE ONE
-            setTextColour({ color: '#40bfb2', fontSize: 18, lineHeight: 1.4, textAlign: "center" });
-            // setBorderColour({ color: 'crimson', fontSize: 21, lineHeight: 1.4 });
+        if (seconds === splitMessage.length) {
             interval.stop();
-        } else if (seconds <= splitOne.length + 1) {
+        } else {
             interval.start();
-            // setBorder(border + splitTwo[seconds])
-            setText(text + splitOne[seconds] 
-                // + " ".repeat(86 - seconds)
-                )
+
+            setText(text + splitMessage[seconds])
+
+            setTextBlock(liner(printTextBlock(text + " ".repeat(message.length-text.length),40),"−","both",true,40))
         }
-        
-    }, [seconds]);
+
+    }, [seconds])
 
     return (
 
         <div>
             <Stack mb="md" align="center">
-            <Paper shadow="sm" radius="lg" p="md" withBorder>
-                <Text 
-                sx={textColour} size="lg">{text}</Text>
-            </Paper>
+            <Code style={{backgroundColor: `rgba(0, 255, 255,0.2)`}} block>{textBlock}</Code>
             </Stack>
             <Paper shadow="sm" radius="xl" p="md" withBorder>
             <Stack align="center">
