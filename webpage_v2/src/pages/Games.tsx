@@ -1,6 +1,7 @@
 import GAME_ONE from "../components/games/GAME_ONE";
 import GAME_TWO from "../components/games/GAME_TWO";
 import GAME_THREE from "../components/games/GAME_THREE";
+import GAME_FOUR from "../components/games/GAME_FOUR";
 import { Button, Text } from "@mantine/core"
 import { useState } from "react"
 
@@ -12,6 +13,7 @@ export default function Games() {
         <GAME_ONE />,
         <GAME_TWO />,
         <GAME_THREE />,
+        <GAME_FOUR />,
     ];
 
     return (
@@ -27,6 +29,8 @@ export default function Games() {
             <Button aria-label='Play game two' radius="lg" fullWidth onClick={() => setOpenGame(1)} variant="outline" color="cyan">Game Two</Button>
                 <br />
             <Button aria-label='Play game one plus' radius="lg" fullWidth onClick={() => setOpenGame(2)} variant="outline" color="cyan">Game One Plus</Button>
+                <br />
+            <Button aria-label='Play game one plus' radius="lg" fullWidth onClick={() => setOpenGame(3)} variant="outline" color="cyan">Tech Demo</Button>
 
         </div>
         : gamesList[openGame]
