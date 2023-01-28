@@ -7,6 +7,20 @@ import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import BANDAI_NAMCO_COMPONENT from "../components/BANDAI_NAMCO_COMPONENT";
 import BANDAI_NAMCO_CML from "../components/special/BANDAI_NAMCO_CML";
 
+import { css } from "@emotion/react";
+
+const titleStyle = css({
+    boxSizing: 'border-box',
+    width: 300,
+    height: 200
+  })
+  
+  const subtitleStyle = css`
+    box-sizing: border-box;
+    width: 100px;
+    height: 60px;
+  `
+
 const currentYear = 2023;
 
 const yearsList = Array.from({length: 18}, (elem, index) => 
