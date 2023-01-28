@@ -3,15 +3,16 @@ import { useHotkeys, useInterval } from "@mantine/hooks";
 import { useEffect, useState } from "react";
 import { Field } from "../../classes/Field";
 import { Unit } from "../../classes/Unit";
+import Games from "../../pages/Games";
 
 // need to try making a function here that spawns objects...
 function ball(x: number, y: number) {
     return new Unit(objectField, x, y, 1, 0, (Math.floor(Math.random() * 2) === 1) ? "o" : "x")
 }
 
-const objectField = new Field(6,4);
-const field = new Field(2,0);
-const playerOne = new Unit(field, 0, 0, 3, 1, "X=----=O")
+var objectField = new Field(6,4);
+var field = new Field(2,0);
+var playerOne = new Unit(field, 0, 0, 3, 1, "X=----=O")
 
 // const makeBall: Unit[] = Array.from({length: 7}, (elem, index) => {
 //     return ball(index, 0)
@@ -266,6 +267,27 @@ const gameOverTwo =
 | Game Over!                   |
 --------------------------------`; 
 
+function reset () {
+
+    objectField = new Field(6,4);
+    field = new Field(2,0);
+    playerOne = new Unit(field, 0, 0, 3, 1, "X=----=O")
+    
+    makeBall = ball(0,4);
+    
+    score = 0;
+
+    setSeconds(0)
+
+    right()
+}
+
+// function menu () {
+//     return (
+//          <Games menu={999} />
+//     )
+// }
+
     return (
         <div>
             <Code block>
@@ -274,7 +296,11 @@ const gameOverTwo =
                 {hitPoints}
             </Code>
             {(playerOne.getHitPoints <= 0)
-            ? <></>
+            ? 
+            <>
+            <Button variant="outline" radius={"lg"} color="red"  onClick={reset} fullWidth>
+                Reset</Button>
+            </>
             :
             <SimpleGrid cols={2}>
                 <Button variant="outline" radius={"lg"} color="red" onClick={left} fullWidth>

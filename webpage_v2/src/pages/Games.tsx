@@ -34,7 +34,7 @@ export default function Games() {
                 <br />
             <Button aria-label='Play game one plus' radius="lg" fullWidth onClick={() => setOpenGame(3)} variant="outline" color="cyan">Tech Demo</Button>
                 <br />
-            <Button aria-label='Play game one plus' radius="lg" fullWidth onClick={() => setOpenGame(4)} variant="outline" color="cyan">Tech Demo</Button>
+            <Button aria-label='Play game one plus' radius="lg" fullWidth onClick={() => setOpenGame(4)} variant="outline" color="cyan">Game Three</Button>
 
         </div>
         : gamesList[openGame]
