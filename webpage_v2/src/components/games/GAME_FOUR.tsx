@@ -13,7 +13,9 @@ export default function GAME_FOUR() {
     const [lineOne, setLineOne] = useState(0);
     const [lineTwo, setLineTwo] = useState(0);
 
-    const playerOne = gameFourScript?.playerOneBox[lineOne] ?? "No lines here P1";
+    const playerOne = gameFourScript.playerOneBox?.[lineOne] ?? "No lines here P1";
+    console.log(playerOne);
+    
 
     const splitOne = (playerOne + " ").split("");
 
@@ -21,7 +23,9 @@ export default function GAME_FOUR() {
 
     const [textBlockOne, setTextBlockOne] = useState("");
 
-    const playerTwo = gameFourScript?.playerTwoBox[lineTwo] ?? "No lines here P2";
+    const playerTwo = gameFourScript.playerTwoBox?.[lineTwo] ?? "No lines here P2";
+    console.log(playerTwo);
+    
 
     const splitTwo = (playerTwo + " ").split("");
 
@@ -35,18 +39,20 @@ export default function GAME_FOUR() {
     useEffect(() => {
         if (seconds === splitOne.length && lineOne === lineTwo) {
             interval.stop();
-            setSeconds(0);
-            setLineOne(lineOne+1)
             setTimeout(() => {
-
-              }, 3000)
+                setSeconds(0);
+                setLineOne(lineOne+1)
+                setTextTwo("")
+                setTextBlockTwo("")
+              }, 2100)
         } else if (seconds === splitTwo.length && lineOne !== lineTwo) {
             interval.stop();
-            setSeconds(0);
-            setLineTwo(lineTwo+1)
             setTimeout(() => {
-
-              }, 3000)
+                setSeconds(0);
+                setLineTwo(lineTwo+1)
+                setTextOne("")
+                setTextBlockOne("")
+              }, 2100)
         } else if (lineOne === lineTwo) {
             interval.start();
 
