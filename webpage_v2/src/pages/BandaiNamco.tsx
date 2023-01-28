@@ -7,19 +7,7 @@ import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
 import BANDAI_NAMCO_COMPONENT from "../components/BANDAI_NAMCO_COMPONENT";
 import BANDAI_NAMCO_CML from "../components/special/BANDAI_NAMCO_CML";
 
-import { css } from "@emotion/react";
-
-const titleStyle = css({
-    boxSizing: 'border-box',
-    width: 300,
-    height: 200
-  })
-  
-  const subtitleStyle = css`
-    box-sizing: border-box;
-    width: 100px;
-    height: 60px;
-  `
+import { liner, border, spacer, printTextBlock } from "../utils/table_design_logic";
 
 const currentYear = 2023;
 
@@ -32,7 +20,7 @@ export default function BandaiNamco() {
 
     const dispatch = useDispatch();
 
-    const message = `Bandai Namco (They publish Dark Souls), this is where you can find archived Series IP data.`;
+    const message = `Bandai Namco (They publish Dark Souls), this is where you can find archived Series IP data. `;
 
     // const border = "+" + "−".repeat(86) + "+";
 
@@ -41,6 +29,7 @@ export default function BandaiNamco() {
     const [text, setText] = useState("");
     // const [textColour, setTextColour] = useState({});
     // const [borderColour, setBorderColour] = useState({});
+    const [textBlock, setTextBlock] = useState("");
 
     const [seconds, setSeconds] = useState(0);
     const interval = useInterval(() => setSeconds((s) => s + 1), 80);
@@ -53,9 +42,10 @@ export default function BandaiNamco() {
         } else {
             interval.start();
             setText(text + splitMessage[seconds])
+            // setText(liner(printTextBlock("1" + text + splitMessage[seconds],40),"−","both",undefined,40))
+            setTextBlock(liner(printTextBlock(text + " ".repeat(message.length-text.length),40),"−","both",true,40))
         }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [seconds])
 
     const [value, setValue] = useState("Data by Fiscal Year");
@@ -147,7 +137,7 @@ export default function BandaiNamco() {
                 <Text sx={textColour} size="lg">{text}</Text>
                 <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text>  */}
             {/* </Paper> */}
-            <Code style={{backgroundColor: `${state.colour}`}} >{text}</Code>
+            <Code style={{backgroundColor: `${state.colour}`}} block>{textBlock}</Code>
             </Stack>
             <Paper mb="md" shadow="sm" radius="xl" p="md" withBorder>
             <Stack align="center">
