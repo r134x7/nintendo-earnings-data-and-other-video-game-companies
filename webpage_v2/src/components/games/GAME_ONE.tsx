@@ -1,25 +1,17 @@
 import { Field } from "../../classes/Field";
 import { Unit } from "../../classes/Unit";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Code, Button, SimpleGrid } from "@mantine/core";
 import { useHotkeys } from "@mantine/hooks";
 
     // Objects need to be placed outside the function to retain state...
-    const field = new Field(2,2);
+    var field = new Field(2,2);
 
-    const playerOne = new Unit(field, 0, 0, 100, 10, "X");
-    const playerTwo = new Unit(field, field.getX, field.getY, 100, 10, "O");
+    var playerOne = new Unit(field, 0, 0, 100, 10, "X");
+    var playerTwo = new Unit(field, field.getX, field.getY, 100, 10, "O");
 
 export default function GAME_ONE() {
 
-    // const field = new Field(1,1);
-
-    // const playerOne = new Unit(field, 0, 0, 100, 10, "X");
-    // const playerTwo = new Unit(field, field.getX, field.getY, 100, 10, "O");
-
-    // const ifPlayerOnePositionX = Array.from({length:field.getX+1}, (v,i) => i);
-    // const ifPlayerOnePositionY = Array.from({length:field.getY+1}, (v,i) => i);
-    // console.log([ifPlayerOnePositionX[0], ifPlayerOnePositionY[2]]);
     useHotkeys([
         ["ArrowDown", () => down()],
         ["ArrowUp", () => up()],
@@ -36,7 +28,6 @@ export default function GAME_ONE() {
                 : "         "
             }
         }
-            
     
     const playerOnePosition = ifPlayerPositionXY(playerOne);
     const playerTwoPosition = ifPlayerPositionXY(playerTwo);
@@ -126,6 +117,19 @@ const displayHP = () =>
             setHitPoints(displayHP);
     }
 
+    const resetMove = () => {
+        playerOne.incrementPositionYMinus()
+        playerTwo.incrementPositionYMinus() 
+        playerTwo.incrementPositionYMinus() 
+        playerTwo.incrementPositionXPlus()
+        playerTwo.incrementPositionXPlus()
+        playerTwo.attackOpponent(playerOne)
+        playerOne.attackOpponent(playerTwo)
+
+        setPlayerField(visualField)
+        setHitPoints(displayHP);
+    }
+
     const cpu = () => {
 
         let x = Math.floor(Math.random() * 4);
@@ -155,6 +159,16 @@ const gameOverTwo =
 | Game Over!                   |
 --------------------------------`; 
 
+function reset () {
+
+    field = new Field(2,2);
+
+    playerOne = new Unit(field, 0, 0, 100, 10, "X");
+    playerTwo = new Unit(field, field.getX, field.getY, 100, 10, "O");
+
+    return resetMove()
+}
+
     return (
         <div>
             <Code block>
@@ -163,7 +177,10 @@ const gameOverTwo =
                 {hitPoints}
             </Code>
             { (playerOne.getHitPoints <= 0 || playerTwo.getHitPoints <= 0) ?
-            <></>
+            <>
+            <Button variant="outline" radius={"lg"} color="red"  onClick={reset} fullWidth>
+                Reset</Button>
+            </>
             : <SimpleGrid cols={2}>
             <Button variant="outline" radius={"lg"} color="red"  onClick={up} fullWidth>
                 Up
