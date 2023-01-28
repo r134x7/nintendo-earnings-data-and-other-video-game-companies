@@ -6,15 +6,30 @@
     ],
     "playerOneBox": [
         "I activate a Quick-Play Magic! Berserker Soul!!",
-        "I can activate this when I discard all cards I have on hand! I can keep drawing cards until I reach a non-Monster Card. And I have to discard them into the Graveyard. Then, for each monster that I've discarded... A Monster with 1500 or less Attack Power allows me to keep attacking!",
-        "(flashback) Once this Effect is activated, the Magic Counter disappears... And the Attack Power of Breaker goes down by 300 points.",
-        "Here I come! The first card, draw!"
+        "I can activate this when I discard all cards I have on hand! I can keep drawing cards until I reach a non-Monster Card and, I have to discard them into the Graveyard. Then, for each monster that I've discarded... A Monster with 1500 or less Attack Power allows me to keep attacking!",
+        "*flashback* Once this Effect is activated, the Magic Counter disappears... And the Attack Power of Breaker goes down by 300 points.",
+        "Here I come! The first card, draw! I discard the Monster Card, Queen's Knight into the Graveyard! Magical Warrior Breaker, attack again!",
+        "I draw the second card! Monster Card!",
+        "The third card! Monster Card!",
+        "Draw! Monster Card!",
+        "Draw! Monster Card!",
+        "Draw! Monster Card! Draw! Monster Card!",
+        "Draw! Monster Car...",
+        "Let go of me!!",
+        "*breathes heavily*"
 
     ],
     "playerTwoBox": [
         "Berserker Soul?",
-        "A Monster with 1500 or less Attack Points? At that time... (flashback)",
-        "That Yugi... He planned this far ahead...?"
-
+        "A Monster with 1500 or less Attack Points? *Thinking* At that time... *flashback*",
+        "That Yugi... He planned this far ahead...?",
+        "Ahhh!",
+        "(gasp)... Ahhh!",
+        "Ahhh!",
+        "Ahhh!",
+        "Ahhh!",
+        "Ahhhhhhhhhh!",
+        "Stop it already, Yugi!!",
+        "Weevil's Life Points already dropped to 0 a long time ago! It's clearly your victory!"
     ]
 }

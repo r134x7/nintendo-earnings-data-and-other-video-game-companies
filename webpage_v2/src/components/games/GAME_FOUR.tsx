@@ -13,9 +13,20 @@ export default function GAME_FOUR() {
     const [lineOne, setLineOne] = useState(0);
     const [lineTwo, setLineTwo] = useState(0);
 
-    const playerOne = gameFourScript.playerOneBox?.[lineOne] ?? "No lines here P1";
-    console.log(playerOne);
-    
+    const [nameOne, SetNameOne] = useState(gameFourScript.characterNames[0]);
+
+    const [nameTwo, SetNameTwo] = useState(gameFourScript.characterNames[1]);
+
+    const printNameOne = liner(printTextBlock(nameOne,30),"=","top",true,30)
+
+    const [lifePointsTwo, setLifePointsTwo] = useState(2200)
+
+    const printNameTwo = liner(printTextBlock(nameTwo,25) + `${spacer((nameTwo === gameFourScript.characterNames[2]) ? "" : `LP: ${lifePointsTwo}`,13,"left")}|` ,"=","top",true,40)
+
+    // const [lifePointsOne, setLifePointsOne] = useState()
+
+
+    const playerOne = gameFourScript.playerOneBox?.[lineOne] ?? "Nil";
 
     const splitOne = (playerOne + " ").split("");
 
@@ -23,9 +34,7 @@ export default function GAME_FOUR() {
 
     const [textBlockOne, setTextBlockOne] = useState("");
 
-    const playerTwo = gameFourScript.playerTwoBox?.[lineTwo] ?? "No lines here P2";
-    console.log(playerTwo);
-    
+    const playerTwo = gameFourScript.playerTwoBox?.[lineTwo] ?? "Nil";
 
     const splitTwo = (playerTwo + " ").split("");
 
@@ -34,9 +43,14 @@ export default function GAME_FOUR() {
     const [textBlockTwo, setTextBlockTwo] = useState("");
 
     const [seconds, setSeconds] = useState(0);
-    const interval = useInterval(() => setSeconds((s) => s + 1), 80);
+    const interval = useInterval(() => setSeconds((s) => s + 1), 50);
 
     useEffect(() => {
+        if (playerOne === "Nil") {
+            interval.stop();
+            return
+        }
+
         if (seconds === splitOne.length && lineOne === lineTwo) {
             interval.stop();
             setTimeout(() => {
@@ -44,7 +58,14 @@ export default function GAME_FOUR() {
                 setLineOne(lineOne+1)
                 setTextTwo("")
                 setTextBlockTwo("")
-              }, 2100)
+                if (lineTwo === 9) {
+                    SetNameTwo(gameFourScript.characterNames[2])
+                } else if (lineTwo > 2 && lineTwo < 8) {
+                    setLifePointsTwo(lifePointsTwo - 1500)
+                } else if (lineTwo === 8) {
+                    setLifePointsTwo(lifePointsTwo - 3000)
+                }
+              }, 2000)
         } else if (seconds === splitTwo.length && lineOne !== lineTwo) {
             interval.stop();
             setTimeout(() => {
@@ -52,7 +73,10 @@ export default function GAME_FOUR() {
                 setLineTwo(lineTwo+1)
                 setTextOne("")
                 setTextBlockOne("")
-              }, 2100)
+                // if (lineTwo === 9) {
+                //     SetNameTwo(gameFourScript.characterNames[2])
+                // }
+              }, 2000)
         } else if (lineOne === lineTwo) {
             interval.start();
 
@@ -71,9 +95,15 @@ export default function GAME_FOUR() {
 
     return (
         <div>
-            <Code style={{backgroundColor: `rgba(0, 255, 255,0.2)`}} block>{textBlockOne}</Code>
+            <Code style={{backgroundColor: `rgba(0, 255, 255,0.2)`}} block>
+                {printNameOne}
+                {textBlockOne}
+            </Code>
             <Space h="xl" />
-            <Code style={{backgroundColor: `rgba(75, 0, 130, .20)`}} block>{textBlockTwo}</Code>
+            <Code style={{backgroundColor: `rgba(75, 0, 130, .20)`}} block>
+                {printNameTwo}
+                {textBlockTwo}
+            </Code>
             <Space h="xl" />
             Dialogue source: https://www.youtube.com/watch?v=-9NBvsmQ2Ik
         </div>
