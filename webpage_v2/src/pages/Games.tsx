@@ -24,7 +24,7 @@ export default function Games() {
         <div>
             <Text>When playing a game, use either the button controls or the arrow keys on your keyboard.</Text>
                 <br />
-            <Text>Refresh the page to play again.</Text>
+            <Text>To go back to the Games page, click Home and then click Games. If that doesn't work, refresh the page.</Text>
                 <br />
             <Button aria-label='Play game one' radius="lg" fullWidth onClick={() => setOpenGame(0)} variant="outline" color="cyan">Game One</Button>
                 <br />

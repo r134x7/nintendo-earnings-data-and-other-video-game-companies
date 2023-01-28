@@ -171,6 +171,18 @@ spacer(`Difficulty Level: ${levelSetting}`,29,"left")
             setHitPoints(displayHP);
     }
 
+    const resetMove = () => {
+        playerOne.incrementPositionYMinus()
+        playerTwo.incrementPositionYMinus() 
+        playerTwo.incrementPositionYMinus() 
+        playerTwo.incrementPositionXPlus()
+        playerTwo.incrementPositionXPlus()
+        playerTwo.attackOpponent(playerOne)
+        playerOne.attackOpponent(playerTwo)
+
+        setHitPoints(displayHP);
+    }
+
     const cpu = () => {
 
         let x = Math.floor(Math.random() * 4);
@@ -193,7 +205,7 @@ const gameOverOne =
 | Game Over                    |
 --------------------------------`; 
 
-function reset () {
+function nextLevel () {
 
     levelSetting++
 
@@ -215,15 +227,36 @@ function reset () {
     return playerField
 };
 
+function reset () {
+
+    field = makeField(xLength(3),yLength(5));
+
+    playerOneHP = 100;
+    playerOneAtt = 10;
+    playerOneAvatar = "X";
+
+    playerOne = makePlayer(field, 0, 0, playerOneHP, playerOneAtt, playerOneAvatar);
+
+    playerTwoHP = 100;
+
+    playerTwo = makePlayer(field, field.getX, field.getY, playerTwoHP, 10, "O");
+
+    return resetMove()
+}
+
+
     return (
         <div>
             <Code block>
-                {(playerTwo.getHitPoints <= 0) ? reset() : (playerOne.getHitPoints <= 0) ? gameOverOne : playerField}
+                {(playerTwo.getHitPoints <= 0) ? nextLevel() : (playerOne.getHitPoints <= 0) ? gameOverOne : playerField}
                 <br />
                 {hitPoints}
             </Code>
             { (playerOne.getHitPoints <= 0 || playerTwo.getHitPoints <= 0) ?
-            <></>
+            <>
+            <Button variant="outline" radius={"lg"} color="red"  onClick={reset} fullWidth>
+                Reset</Button>
+            </>
             : <SimpleGrid cols={2}>
             <Button variant="outline" radius={"lg"} color="red"  onClick={up} fullWidth>
                 Up
