@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { Text, Anchor, Stack, Paper, List, Code } from '@mantine/core';
 import { useInterval } from "@mantine/hooks";
 import "../App.css" // have to import the css to get it to work
+import { useSelector } from "react-redux";
 
 import { liner, printTextBlock } from "../utils/table_design_logic";
 
 const Home = () => {
+
+    const state: any = useSelector(state => state);
 
     const nintendoStatus = liner(printTextBlock("Nintendo page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Data added for Top Selling Titles from FY3/2012 to FY3/2023, special page also added. Added Consolidated Sales Information from FY3/2004 to FY3/2023. Moved Mobile Income data to Consolidated Sales Information and, added special page.",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
 
@@ -22,6 +25,8 @@ const Home = () => {
     const eventsStatus = liner(printTextBlock("Events page status",32),"=","top",true,32) + liner(printTextBlock("Page update: Updated calendar for 19 of 22 companies from January to February 2023.",40),"−","both",true,40);
 
     const gamesStatus = liner(printTextBlock("Games page status",32),"=","top",true,32) + liner(printTextBlock("Four of five games available to play.",40),"−","both",true,40);
+
+    const linkOther = liner(printTextBlock("Also, visit Install Base. It's a place to discuss and elaborate on the business side of the video game industry.",40),"=","top",true,40);
 
     const message = "Welcome to ggx2ac + archives: Nintendo earnings data and other video game companies ";
     const splitMessage = message.split("");
@@ -51,19 +56,22 @@ const Home = () => {
 
         <div>
             <Stack mb="md" align="center">
-            <Code style={{backgroundColor: `rgba(0, 255, 255,0.2)`}} block>{textBlock}</Code>
+            <Code style={{backgroundColor: `${state.colour}`}} block>{textBlock}</Code>
             </Stack>
-            <Paper shadow="sm" radius="xl" p="md" withBorder>
-            <Stack align="center">
-                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">Also visit Install Base, it's a place to discuss and elaborate on the business side of the video game industry.</Text>
-                    <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/" target="_blank" >
-                        https://www.installbaseforum.com/
-                    </Anchor>
+
+            <Stack mb="md" align="center">
+            <Code style={{backgroundColor: `${state.colour}`}} block>
+                {linkOther}
+                <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/" target="_blank" >
+                    <Code style={{backgroundColor: `${state.colour}`}} block>
+                        {liner(printTextBlock("https://www.installbaseforum.com/",36),"−","both",true,36)}
+                    </Code>
+                </Anchor>
+            </Code>
             </Stack>
-            </Paper>        
 
             <Stack align="center">
-                <Code style={{backgroundColor: `rgba(0, 255, 255,0.2)`}} block>
+                <Code style={{backgroundColor: `${state.colour}`,color:(state.fontColor === "dark") ? "#fff" : "#000000"}}  block>
                     {nintendoStatus}
                     {capcomStatus}
                     {segaStatus}

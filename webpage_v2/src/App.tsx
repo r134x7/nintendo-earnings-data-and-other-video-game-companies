@@ -49,6 +49,10 @@ function App() {
   const [colour, setColour] = useState("rgb(0, 255, 255)")
   const state: any = useSelector(state => state);
 
+  const [colorScheme, setColorScheme] = useState<ColorScheme>('dark'); // when pressing a specific icon it toggles the light/dark mode
+  const toggleColorScheme = (value?: ColorScheme) =>
+  setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
+
     useEffect(() => {
         const colourSplitReduce = colour.split("").reduce((acc, curr) => {
             return (curr === "b")
@@ -57,16 +61,15 @@ function App() {
                 ? acc +", .20)"
                 : acc + curr
         }, "") // using reduce to create an rgba colour with 20% opacity so that the user only has to use an RGB slider.
+
+        const colourTheme = colorScheme;
                
         dispatch(ADD_BACKGROUND_COLOUR({
-            colour: colourSplitReduce
+            colour: colourSplitReduce,
+            fontColor: colourTheme, 
         }))
 
-    }, [colour, dispatch])
-  
-  const [colorScheme, setColorScheme] = useState<ColorScheme>('dark'); // when pressing a specific icon it toggles the light/dark mode
-  const toggleColorScheme = (value?: ColorScheme) =>
-  setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
+    }, [colour, colorScheme, dispatch])
   
   return (
       <Router>
