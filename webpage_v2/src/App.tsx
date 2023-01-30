@@ -25,7 +25,7 @@ import {
 
 
 import { printTextBlock, liner } from './utils/table_design_logic';
-import { Calendar, DeviceNintendo, Moon, Sun, DeviceGamepad } from 'tabler-icons-react';
+import { Calendar, DeviceNintendo, Moon, Sun, DeviceGamepad, Cards } from 'tabler-icons-react';
 
 import Home from "./pages/Home";
 import NoMatch from "./pages/NoMatch";
@@ -128,7 +128,9 @@ function App() {
                 />
               </MediaQuery>
                 <Text>ggx2ac + archives: Nintendo earnings data and other video game companies</Text>
-                <Button aria-label='Open Drawer' radius="xl" variant='outline' color={'cyan'} onClick={() => setOpenDraw(true)}>DRAW!</Button>
+                <Button aria-label='Open Drawer' radius="xl" variant='outline' color={'cyan'} onClick={() => setOpenDraw(true)} leftIcon={<Cards size={24} strokeWidth={2} color={'#40bfb2'} />}>
+                  
+                  DRAW!</Button>
                 <Drawer position='right' opened={openDraw} onClose={() => setOpenDraw(false) } >
 
                 <Group position="center">
@@ -140,7 +142,7 @@ function App() {
                   </Button>
 
                   <Code style={{backgroundColor: `${state.colour}`}} block>{
-                    liner(printTextBlock("Set background theme to light or dark mode. Changing colour affects data background and single dataset charts where applicable.",40),"−","both",true,40)
+                    liner(printTextBlock("Set background theme to light or dark mode. Changing colour affects data background and single dataset charts where applicable.",38),"−","both",true,38)
                   }</Code>
 
                   <Paper mt={'xl'} style={{backgroundColor: state.colour}} p="xs" radius="xl" withBorder>
