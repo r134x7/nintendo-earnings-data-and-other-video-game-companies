@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Code, SegmentedControl, Space } from "@mantine/core";
+import { Code, SegmentedControl } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { allPlatinumTitlesList, fyPlatinumTitlesList } from "../data/capcom/platinum_titles_Capcom";
 import { gameSeriesList } from "../data/capcom/game_series_sales_Capcom";
@@ -98,10 +98,6 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
                     : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
             }
             {selectGraph(value)}
-            <Space h="xl" />
-            <Space h="xl" />
-            <Space h="xl" />
-            <Space h="xl" />
         </div>
         
     );

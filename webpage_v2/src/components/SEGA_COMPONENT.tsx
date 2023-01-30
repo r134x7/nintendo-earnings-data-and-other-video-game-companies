@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Code, SegmentedControl, Space } from "@mantine/core";
+import { Code, SegmentedControl } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { segaSoftwareUnitsList, segaSoftwareUnitsGraphList } from "../data/sega/software_units_sega"
 import { softwareSalesList, softwareSalesGraphList } from "../data/sega/software_sales_sega";
@@ -89,10 +89,6 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
                     : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
             }
             {selectGraph(value)}
-            <Space h="xl" />
-            <Space h="xl" />
-            <Space h="xl" />
-            <Space h="xl" />
         </div>
         
     );

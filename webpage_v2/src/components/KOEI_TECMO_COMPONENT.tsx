@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Code, SegmentedControl, Space } from "@mantine/core";
+import { Code, SegmentedControl } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { softwareSalesList, softwareSalesGraphList } from "../data/koeiTecmo/software_sales_koei_tecmo";
 import { koeiTecmoConsolidatedEarningsList, koeiTecmoConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
@@ -75,10 +75,6 @@ export default function KOEI_TECMO_COMPONENT(props: {setIndex: number; yearLengt
                     : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
             }
             {selectGraph(value)}
-            <Space h="xl" />
-            <Space h="xl" />
-            <Space h="xl" />
-            <Space h="xl" />
         </div>
         
     );
