@@ -7,6 +7,22 @@ import { liner, printTextBlock } from "../utils/table_design_logic";
 
 const Home = () => {
 
+    const nintendoStatus = liner(printTextBlock("Nintendo page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Data added for Top Selling Titles from FY3/2012 to FY3/2023, special page also added. Added Consolidated Sales Information from FY3/2004 to FY3/2023. Moved Mobile Income data to Consolidated Sales Information and, added special page.",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
+
+    const capcomStatus = liner(printTextBlock("Capcom page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: 3rd Quarter Earnings release data for FY3/2023 added.",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
+
+    const segaStatus = liner(printTextBlock("Sega page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Consolidated Operating Results from FY3/2005 to FY3/2023 added. Added Consolidated Operating Results, FY Series IP and Software Units to special page.",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
+
+    const bandaiNamcoStatus = liner(printTextBlock("Bandai Namco page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Consolidated Operating Results from FY3/2006 to FY3/2023 added. Added Consolidated Operating Results and FY Series IP to special page.",40),"−","both",true,40);
+
+    const koeiTecmoStatus = liner(printTextBlock("Koei Tecmo page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: 3rd Quarter Earnings release data for FY3/2023 added.",40),"−","both",true,40);
+
+    const squareEnixStatus = liner(printTextBlock("Square Enix page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Consolidated Financial Results from FY3/2004 to FY3/2023 added. Added Consolidated Financial Results and FY Series IP to special page.",40),"−","both",true,40);
+
+    const eventsStatus = liner(printTextBlock("Events page status",32),"=","top",true,32) + liner(printTextBlock("Page update: Updated calendar for 19 of 22 companies from January to February 2023.",40),"−","both",true,40);
+
+    const gamesStatus = liner(printTextBlock("Games page status",32),"=","top",true,32) + liner(printTextBlock("Four of five games available to play.",40),"−","both",true,40);
+
     const message = "Welcome to ggx2ac + archives: Nintendo earnings data and other video game companies ";
     const splitMessage = message.split("");
 
@@ -45,49 +61,19 @@ const Home = () => {
                     </Anchor>
             </Stack>
             </Paper>        
-            <Paper mt="sm" shadow="sm" radius="xl" p="md" withBorder>
+
             <Stack align="center">
-                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">Status</Text>
-                <List listStyleType="disc">
-                    {/* <List.Item>Nintendo -</List.Item> */}
-                    <Text>Nintendo -</Text>
-                    <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Data added for Top Selling Titles from FY3/2012 to FY3/2023, special page also added. Added Consolidated Sales Information from FY3/2004 to FY3/2023. Moved Mobile Income data to Consolidated Sales Information and, added special page.</List.Item>
-                        <List.Item>Future update planned: Notes section.</List.Item>
-                    </List>
-                    <Text>Capcom -</Text>
-                    <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: 3rd Quarter Earnings release data for FY3/2023 added.</List.Item>
-                        <List.Item>Future update planned: Notes section.</List.Item>
-                    </List>
-                    <Text>Sega Sammy -</Text>
-                    <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Consolidated Operating Results from FY3/2005 to FY3/2023 added. Added Consolidated Operating Results, FY Series IP and Software Units to special page.</List.Item>
-                        <List.Item>Future update planned: Notes section.</List.Item>
-                    </List>
-                    <Text>Bandai Namco -</Text>
-                    <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Consolidated Operating Results from FY3/2006 to FY3/2023 added. Added Consolidated Operating Results and FY Series IP to special page.</List.Item>
-                    </List>
-                    <Text>Koei Tecmo -</Text>
-                    <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: 3rd Quarter Earnings release data for FY3/2023 added.</List.Item>
-                    </List>
-                    <Text>Square Enix -</Text>
-                    <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Consolidated Financial Results from FY3/2004 to FY3/2023 added. Added Consolidated Financial Results and FY Series IP to special page.</List.Item>
-                    </List>
-                    <Text>Events -</Text>
-                    <List withPadding listStyleType="disc">
-                        <List.Item>Page update: Updated calendar for 19 of 22 companies from January to February 2023.</List.Item>
-                    </List>
-                    <Text>Games -</Text>
-                    <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Two games available to play.</List.Item>
-                    </List>
-                </List>
+                <Code style={{backgroundColor: `rgba(0, 255, 255,0.2)`}} block>
+                    {nintendoStatus}
+                    {capcomStatus}
+                    {segaStatus}
+                    {bandaiNamcoStatus}
+                    {koeiTecmoStatus}
+                    {squareEnixStatus}
+                    {eventsStatus}
+                    {gamesStatus}
+                </Code>
             </Stack>
-            </Paper>        
         </div>
     );
 };
