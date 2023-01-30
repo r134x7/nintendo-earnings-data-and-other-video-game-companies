@@ -20,8 +20,11 @@ import {
   ColorPicker,
   Paper,
   Group,
+  Code,
 } from '@mantine/core';
 
+
+import { printTextBlock, liner } from './utils/table_design_logic';
 import { Calendar, DeviceNintendo, Moon, Sun, DeviceGamepad } from 'tabler-icons-react';
 
 import Home from "./pages/Home";
@@ -129,15 +132,19 @@ function App() {
                 <Drawer position='right' opened={openDraw} onClose={() => setOpenDraw(false) } >
 
                 <Group position="center">
-                  <Button aria-label='Enable Dark or Light theme' leftIcon={(colorScheme === 'dark') 
+                  <Button mb={'xl'} aria-label='Enable Dark or Light theme' leftIcon={(colorScheme === 'dark') 
                                     ? <Sun size={24} strokeWidth={2} color={'yellow'} /> 
                                     : <Moon size={24} strokeWidth={2} color={'#40bfb2'} />} 
                                       radius="xl" variant='outline' color={colorScheme === "dark" ? "yellow" : "blue"} onClick={() => toggleColorScheme()} title="Toggle mode">
                     {colorScheme === "dark" ? "Light" : "Dark"}
                   </Button>
 
-                  <Paper style={{backgroundColor: state.colour}} p="xs" radius="xl" withBorder>
-                  <Text size="sm" >
+                  <Code style={{backgroundColor: `${state.colour}`}} block>{
+                    liner(printTextBlock("Set background theme to light or dark mode. Changing colour affects data background and single dataset charts where applicable.",40),"−","both",true,40)
+                  }</Code>
+
+                  <Paper mt={'xl'} style={{backgroundColor: state.colour}} p="xs" radius="xl" withBorder>
+                  <Text size="sm" ml={"xl"} pl={'xl'} >
                   Colour: {state.colour}
                   </Text>    
                   <ColorPicker 

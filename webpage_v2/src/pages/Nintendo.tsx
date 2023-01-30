@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text, Group, Space, SegmentedControl, Autocomplete, ColorPicker, Anchor, Stack, Paper, Code} from "@mantine/core"
+import { Text, Group, SegmentedControl, Autocomplete, Anchor, Stack, Paper, Code} from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
 import { useSelector, useDispatch } from "react-redux";
@@ -139,45 +139,6 @@ export default function Nintendo() {
                     value={year} 
                     onChange={setYear}
                 />
-                
-                <Paper style={{backgroundColor: state.colour}} p="xs" radius="xl" withBorder>
-                <Text size="sm" >
-                Colour: {state.colour}
-                </Text>    
-                <ColorPicker 
-                        withPicker={false}
-                        size="lg"
-                        mb="sm" 
-                        swatchesPerRow={7} 
-                        format="rgb" 
-                        swatches={[
-                            "rgb(0, 0, 0)", 
-                            "rgb(0, 255, 255)", 
-                            "rgb(0, 128, 128)",
-                            "rgb(0, 0, 255)", 
-                            "rgb(75, 0, 130)", 
-                            "rgb(135, 30, 135)", 
-                            "rgb(255, 0, 255)", 
-                            "rgb(86, 29, 37)",
-                            "rgb(173, 255, 47)",
-                            "rgb(127, 184, 0)",
-                            "rgb(0, 255, 0)", 
-                            "rgb(128, 128, 128)",
-                            "rgb(255, 0, 0)",
-                            "rgb(227, 24, 9)",
-                            "rgb(220, 20, 60)", 
-                            "rgb(212, 81, 19)", 
-                            "rgb(255, 165, 0)", 
-                            "rgb(255, 215, 0)",
-                            "rgb(200, 200, 200)",
-                            "rgb(255, 196, 235)",
-                            "rgb(255, 255, 255)", 
-                        ]}
-                        value={colour} 
-                        onChange={setColour}
-                        />
-                        </Paper>
-
             </Group>
                 : <NINTENDO_CML />
             }
@@ -185,53 +146,6 @@ export default function Nintendo() {
             {   (value === "Data by Fiscal Year")
                 ? selectYear(year)
                 : null
-            }
-            
-            { (selectYear(year) !== null && value === "Data by Fiscal Year")
-                ? (
-                <Group position="center">
-                    <Space h="xl" />
-                    <Paper style={{backgroundColor: state.colour}} p="xs" radius="xl" withBorder>
-                        <Text size="sm" >
-                        Colour: {state.colour}
-                        </Text>    
-                    <ColorPicker 
-                        withPicker={false}
-                        size="lg"
-                        mb="sm" 
-                        swatchesPerRow={7} 
-                        format="rgb" 
-                        swatches={[
-                            "rgb(0, 0, 0)", 
-                            "rgb(0, 255, 255)", 
-                            "rgb(0, 128, 128)",
-                            "rgb(0, 0, 255)", 
-                            "rgb(75, 0, 130)", 
-                            "rgb(135, 30, 135)", 
-                            "rgb(255, 0, 255)", 
-                            "rgb(86, 29, 37)",
-                            "rgb(173, 255, 47)",
-                            "rgb(127, 184, 0)",
-                            "rgb(0, 255, 0)", 
-                            "rgb(128, 128, 128)",
-                            "rgb(255, 0, 0)",
-                            "rgb(227, 24, 9)",
-                            "rgb(220, 20, 60)", 
-                            "rgb(212, 81, 19)", 
-                            "rgb(255, 165, 0)", 
-                            "rgb(255, 215, 0)",
-                            "rgb(200, 200, 200)",
-                            "rgb(255, 196, 235)",
-                            "rgb(255, 255, 255)", 
-                        ]}
-                        value={colour} 
-                        onChange={setColour}
-                        />
-                        </Paper>
-                </Group>
-                ) : (
-                    null
-                )
             }
         </div>
 

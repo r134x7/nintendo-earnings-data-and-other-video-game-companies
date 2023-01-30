@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Code, SegmentedControl, Space } from "@mantine/core";
+import { Code, SegmentedControl } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { nintendoLinks } from "../data/generalTables/data_sources_general";
 import { nintendoConsolidatedEarningsList, nintendoConsolidatedEarningsGraphList} from "../data/generalTables/consolidated_earnings_general";
@@ -106,10 +106,6 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                     : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
             }
             {selectGraph(value)}
-            <Space h="xl" />
-            <Space h="xl" />
-            <Space h="xl" />
-            <Space h="xl" />
         </div>
         
     );
