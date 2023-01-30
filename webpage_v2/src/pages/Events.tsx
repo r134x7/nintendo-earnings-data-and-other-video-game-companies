@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
-import { Text, Anchor, Stack, Paper, Code } from '@mantine/core';
+import { Anchor, Stack, Code } from '@mantine/core';
 import { useInterval } from "@mantine/hooks";
 import "../App.css" // have to import the css to get it to work
+import { useSelector } from "react-redux";
 import EVENTS_CALENDAR from "../components/EVENTS_CALENDAR";
 
 import { liner, printTextBlock } from "../utils/table_design_logic";
 
 const Home = () => {
+
+    const state: any = useSelector(state => state);
+
+    const linkOther = liner(printTextBlock("You'll want to head to Install Base, where events such as Earnings Results are discussed.",40),"=","top",true,40);
 
     const message = "This is where you can use the calendar to find some upcoming events. ";
 
@@ -39,16 +44,20 @@ const Home = () => {
 
         <div>
             <Stack mb="md" align="center">
-            <Code style={{backgroundColor: `rgba(0, 255, 255,0.2)`}} block>{textBlock}</Code>
+            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {textBlock}
+            </Code>
             </Stack>
-            <Paper shadow="sm" radius="xl" p="md" withBorder>
             <Stack align="center">
-                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">You'll want to head to Install Base, where events such as Earnings Results are discussed.</Text>
+            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {linkOther}
                     <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/" target="_blank" >
-                        https://www.installbaseforum.com/
-                    </Anchor>
+                    <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                        {liner(printTextBlock("https://www.installbaseforum.com/",36),"=","both",true,36)}
+                    </Code>
+                </Anchor>
+            </Code>
             </Stack>
-            </Paper>
 
             <EVENTS_CALENDAR />        
         </div>

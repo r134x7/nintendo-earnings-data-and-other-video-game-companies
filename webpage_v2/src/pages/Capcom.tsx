@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Text, Group, SegmentedControl, Autocomplete, Anchor, Stack, Paper, Code} from "@mantine/core"
+import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
-import { useSelector, useDispatch } from "react-redux";
-import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
+import { useSelector } from "react-redux";
 import CAPCOM_COMPONENT from "../components/CAPCOM_COMPONENT";
 import CAPCOM_CML from "../components/special/CAPCOM_CML";
 
@@ -18,7 +17,7 @@ const yearsList = Array.from({length: 25}, (elem, index) =>
 
 export default function Capcom() {
 
-    const dispatch = useDispatch();
+    const linkOther = liner(printTextBlock("While you're here, you can head to Install Base to read about the mysterious Sega Super Genesis 32.",40),"=","top",true,40);
 
     const message = `Capcom (They publish Remember Me), this is where you can find archived Capcom Platinum Titles data. `;
 
@@ -47,24 +46,7 @@ export default function Capcom() {
     const [value, setValue] = useState("Data by Fiscal Year");
     const [year, setYear] = useState("");
 
-    const [colour, setColour] = useState("rgb(0, 255, 255)")
-
     const state: any = useSelector(state => state);
-
-    useEffect(() => {
-        const colourSplitReduce = colour.split("").reduce((acc, curr) => {
-            return (curr === "b")
-                ? acc + "ba"
-                : (curr === ")")
-                ? acc +", .20)"
-                : acc + curr
-        }, "") // using reduce to create an rgba colour with 20% opacity so that the user only has to use an RGB slider.
-               
-        dispatch(ADD_BACKGROUND_COLOUR({
-            colour: colourSplitReduce
-        }))
-
-    }, [colour, dispatch])
 
     const selectYearComponentNew = (yearsList: string[]) => 
     (yearUsed: string): JSX.Element | null => {
@@ -84,26 +66,24 @@ export default function Capcom() {
 
     const selectYear = selectYearComponentNew(yearsList)    
 
-
     return (
 
         <div>
             <Stack mb="md" align="center">
-            {/* <Paper shadow="sm" radius="lg" p="md" withBorder> */}
-                {/* <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
-                <Text sx={textColour} size="lg">{text}</Text>
-                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text>  */}
-            {/* </Paper> */}
-            <Code style={{backgroundColor: `${state.colour}`}} block>{textBlock}</Code>
+            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {textBlock}
+            </Code>
             </Stack>
-            <Paper mb="md" shadow="sm" radius="xl" p="md" withBorder>
             <Stack align="center">
-                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">Also visit Install Base, it's a place to discuss and elaborate on the business side of the video game industry.</Text>
-                    <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/" target="_blank" >
-                        https://www.installbaseforum.com/
-                    </Anchor>
+            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {linkOther}
+                    <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/forums/threads/ggx2ac-and-the-mysterious-case-of-the-sega-trademark-super-genesis-32.915/" target="_blank" >
+                    <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                        {liner(printTextBlock("Link to Install Base Forum thread",36),"=","both",true,36)}
+                    </Code>
+                </Anchor>
+            </Code>
             </Stack>
-            </Paper>
             <SegmentedControl 
                 mb="sm"
                 mt="sm"

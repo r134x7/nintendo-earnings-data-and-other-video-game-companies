@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text, Anchor, Stack, Paper, List, Code } from '@mantine/core';
+import { Anchor, Stack, Code } from '@mantine/core';
 import { useInterval } from "@mantine/hooks";
 import "../App.css" // have to import the css to get it to work
 import { useSelector } from "react-redux";
@@ -56,14 +56,16 @@ const Home = () => {
 
         <div>
             <Stack mb="md" align="center">
-            <Code style={{backgroundColor: `${state.colour}`}} block>{textBlock}</Code>
+            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {textBlock}
+            </Code>
             </Stack>
 
             <Stack mb="md" align="center">
-            <Code style={{backgroundColor: `${state.colour}`}} block>
+            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
                 {linkOther}
                 <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/" target="_blank" >
-                    <Code style={{backgroundColor: `${state.colour}`}} block>
+                    <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
                         {liner(printTextBlock("https://www.installbaseforum.com/",36),"−","both",true,36)}
                     </Code>
                 </Anchor>
@@ -71,7 +73,7 @@ const Home = () => {
             </Stack>
 
             <Stack align="center">
-                <Code style={{backgroundColor: `${state.colour}`,color:(state.fontColor === "dark") ? "#fff" : "#000000"}}  block>
+                <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
                     {nintendoStatus}
                     {capcomStatus}
                     {segaStatus}

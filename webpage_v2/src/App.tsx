@@ -144,8 +144,8 @@ function App() {
                     {colorScheme === "dark" ? "Light" : "Dark"}
                   </Button>
 
-                  <Code style={{backgroundColor: `${state.colour}`}} block>{
-                    liner(printTextBlock("Set background theme to light or dark mode. Changing colour affects data background and single dataset charts where applicable.",38),"−","both",true,38)
+                  <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                    {liner(printTextBlock("Set background theme to light or dark mode. Changing colour affects data background and single dataset charts where applicable.",38),"−","both",true,38)
                   }</Code>
 
                   <Paper mt={'xl'} style={{backgroundColor: state.colour}} p="xs" radius="xl" withBorder>

@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Text, Group, SegmentedControl, Autocomplete, Anchor, Stack, Paper, Code} from "@mantine/core"
+import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
-import { useSelector, useDispatch } from "react-redux";
-import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
+import { useSelector } from "react-redux";
 import BANDAI_NAMCO_COMPONENT from "../components/BANDAI_NAMCO_COMPONENT";
 import BANDAI_NAMCO_CML from "../components/special/BANDAI_NAMCO_CML";
 
@@ -18,15 +17,14 @@ const yearsList = Array.from({length: 18}, (elem, index) =>
 
 export default function BandaiNamco() {
 
-    const dispatch = useDispatch();
+    const linkOther = liner(printTextBlock("While you're here, you can head to Install Base to read about the mysterious Sega Super Genesis 32.",40),"=","top",true,40);
 
     const message = `Bandai Namco (They publish Dark Souls), this is where you can find archived Series IP data. `;
 
     const splitMessage = message.split("");
 
     const [text, setText] = useState("");
-    // const [textColour, setTextColour] = useState({});
-    // const [borderColour, setBorderColour] = useState({});
+
     const [textBlock, setTextBlock] = useState("");
 
     const [seconds, setSeconds] = useState(0);
@@ -48,24 +46,7 @@ export default function BandaiNamco() {
     const [value, setValue] = useState("Data by Fiscal Year");
     const [year, setYear] = useState("");
 
-    const [colour, setColour] = useState("rgb(0, 255, 255)")
-
     const state: any = useSelector(state => state);
-
-    useEffect(() => {
-        const colourSplitReduce = colour.split("").reduce((acc, curr) => {
-            return (curr === "b")
-                ? acc + "ba"
-                : (curr === ")")
-                ? acc +", .20)"
-                : acc + curr
-        }, "") // using reduce to create an rgba colour with 20% opacity so that the user only has to use an RGB slider.
-               
-        dispatch(ADD_BACKGROUND_COLOUR({
-            colour: colourSplitReduce
-        }))
-
-    }, [colour, dispatch])
 
     const selectYearComponentNew = (yearsList: string[]) => 
     (yearUsed: string): JSX.Element | null => {
@@ -85,65 +66,24 @@ export default function BandaiNamco() {
 
     const selectYear = selectYearComponentNew(yearsList)    
 
-    // const selectYear = (yearUsed: string, tuples: [string, JSX.Element][]): JSX.Element => {
-    // const selectYearComponent = (objList: {year: string, component: JSX.Element}[]) => 
-    // (yearUsed: string): JSX.Element | null => {
-    //     // let [tupleYear, tupleComponent] = tuples.filter(elem => yearUsed === elem[0]).flat() // remember it returns a shallow copy...
-
-    //     // return tupleComponent as JSX.Element
-
-    //     let [yearSelected] = objList.filter(elem => yearUsed === elem.year)
-
-    //     return (yearSelected) ? yearSelected.component : null
-    // }
-
-    // const tupleList: [string, JSX.Element][] = [
-    //     ["FY3/2022", <BANDAI_NAMCO_FY3_2022 />],
-    //     ["FY3/2021", <BANDAI_NAMCO_FY3_2021 />],
-    //     ["FY3/2020", <BANDAI_NAMCO_FY3_2020 />],
-    //     ["FY3/2019", <BANDAI_NAMCO_FY3_2019 />],
-    // ];
-
-    // const componentList = [
-    //     {
-    //         year: "FY3/2022", 
-    //         component: <BANDAI_NAMCO_FY3_2022 />
-    //     },
-    //     {
-    //         year: "FY3/2021", 
-    //         component: <BANDAI_NAMCO_FY3_2021 />
-    //     },
-    //     {
-    //         year: "FY3/2020", 
-    //         component: <BANDAI_NAMCO_FY3_2020 />
-    //     },
-    //     {
-    //         year: "FY3/2019", 
-    //         component: <BANDAI_NAMCO_FY3_2019 />
-    //     },
-    // ];
-
-    // const selectYear = selectYearComponent(componentList)    
-
     return (
 
         <div>
             <Stack mb="md" align="center">
-            {/* <Paper shadow="sm" radius="lg" p="md" withBorder> */}
-                {/* <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
-                <Text sx={textColour} size="lg">{text}</Text>
-                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text>  */}
-            {/* </Paper> */}
-            <Code style={{backgroundColor: `${state.colour}`}} block>{textBlock}</Code>
+            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {textBlock}
+            </Code>
             </Stack>
-            <Paper mb="md" shadow="sm" radius="xl" p="md" withBorder>
             <Stack align="center">
-                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">While you're here, read about the mysterious Sega Super Genesis 32.</Text>
+            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {linkOther}
                     <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/forums/threads/ggx2ac-and-the-mysterious-case-of-the-sega-trademark-super-genesis-32.915/" target="_blank" >
-                    ggx2ac and the mysterious case of the Sega trademark: Super Genesis 32
-                    </Anchor>
+                    <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                        {liner(printTextBlock("Link to Install Base Forum thread",36),"=","both",true,36)}
+                    </Code>
+                </Anchor>
+            </Code>
             </Stack>
-            </Paper>
             <SegmentedControl 
                 mb="sm"
                 mt="sm"
