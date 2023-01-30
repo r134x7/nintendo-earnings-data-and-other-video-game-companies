@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Text, Group, SegmentedControl, Autocomplete, Anchor, Stack, Paper, Code} from "@mantine/core"
+import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
-import { useSelector, useDispatch } from "react-redux";
-import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
+import { useSelector } from "react-redux";
 import SQUARE_ENIX_COMPONENT from "../components/SQUARE_ENIX_COMPONENT";
 import SQUARE_ENIX_CML from "../components/special/SQUARE_ENIX_CML";
 
@@ -18,7 +17,7 @@ const yearsList = Array.from({length: 20}, (elem, index) =>
 
 export default function SquareEnix() {
 
-    const dispatch = useDispatch();
+    const linkOther = liner(printTextBlock("Also, visit Install Base. It's a place to discuss and elaborate on the business side of the video game industry.",40),"=","top",true,40);
 
     const message = `Square Enix (They publish Marvel's Avengers), this is where you can find archived data. `;
 
@@ -47,37 +46,10 @@ export default function SquareEnix() {
     const [year, setYear] = useState("");
     const [value, setValue] = useState("Data by Fiscal Year");
 
-    const [colour, setColour] = useState("rgb(0, 255, 255)")
-
     const state: any = useSelector(state => state);
-
-    useEffect(() => {
-        const colourSplitReduce = colour.split("").reduce((acc, curr) => {
-            return (curr === "b")
-                ? acc + "ba"
-                : (curr === ")")
-                ? acc +", .20)"
-                : acc + curr
-        }, "") // using reduce to create an rgba colour with 20% opacity so that the user only has to use an RGB slider.
-               
-        dispatch(ADD_BACKGROUND_COLOUR({
-            colour: colourSplitReduce
-        }))
-
-    }, [colour, dispatch])
-
-    // const selectYearComponent = (objList: {year: string, component: JSX.Element}[]) => 
-    // (yearUsed: string): JSX.Element | null => {
-
-    //     let [yearSelected] = objList.filter(elem => yearUsed === elem.year)
-
-    //     return (yearSelected) ? yearSelected.component : null
-    // }
 
     const selectYearComponentNew = (yearsList: string[]) => 
     (yearUsed: string): JSX.Element | null => {
-
-        // let [yearSelected] = yearsList.filter(elem => yearUsed === elem);
 
         let [yearIndexed] = yearsList.map((elem, index) => {  
                                 return (yearUsed === elem)
@@ -90,87 +62,27 @@ export default function SquareEnix() {
         return (yearIndexed >= 0) ? <SQUARE_ENIX_COMPONENT setIndex={yearIndexed} yearLength={yearsLength} /> : null
     }
 
-    // const componentList = [
-        // {
-        //     year: "FY3/2023",
-        //     component: <SQUARE_ENIX_COMPONENT setYear={year} />
-        // },
-        // {
-        //     year: "FY3/2022",
-        //     component: <SQUARE_ENIX_FY3_2022 />
-        // },
-        // {
-        //     year: "FY3/2021",
-        //     component: <SQUARE_ENIX_FY3_2021 />
-        // },
-        // {
-        //     year: "FY3/2020",
-        //     component: <SQUARE_ENIX_FY3_2020 />
-        // },
-        // {
-        //     year: "FY3/2019",
-        //     component: <SQUARE_ENIX_FY3_2019 />
-        // },
-        // {
-        //     year: "FY3/2018",
-        //     component: <SQUARE_ENIX_FY3_2018 />
-        // },
-        // {
-        //     year: "FY3/2017",
-        //     component: <SQUARE_ENIX_FY3_2017 />
-        // },
-        // {
-        //     year: "FY3/2016",
-        //     component: <SQUARE_ENIX_FY3_2016 />
-        // },
-        // {
-        //     year: "FY3/2015",
-        //     component: <SQUARE_ENIX_FY3_2015 />
-        // },
-        // {
-        //     year: "FY3/2014",
-        //     component: <SQUARE_ENIX_FY3_2014 />
-        // },
-        // {
-        //     year: "FY3/2013",
-        //     component: <SQUARE_ENIX_FY3_2013 />
-        // },
-        // {
-        //     year: "FY3/2012",
-        //     component: <SQUARE_ENIX_FY3_2012 />
-        // },
-        // {
-        //     year: "FY3/2011",
-        //     component: <SQUARE_ENIX_FY3_2011 />
-        // },
-        // {
-        //     year: "FY3/2010",
-        //     component: <SQUARE_ENIX_FY3_2010 />
-        // },
-    // ];
-
-    // const selectYear = selectYearComponent(componentList);
     const selectYear = selectYearComponentNew(yearsList);
 
     return (
 
         <div>
             <Stack mb="md" align="center">
-            {/* <Paper shadow="sm" radius="lg" p="md" withBorder> */}
-                {/* <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
-                <Text sx={textColour} size="lg">{text}</Text>
-                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text>  */}
-            {/* </Paper> */}
-            <Code style={{backgroundColor: `${state.colour}`}} block>{textBlock}</Code>
+            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {textBlock}
+            </Code>
             </Stack>
-            <Paper mb="md" shadow="sm" radius="xl" p="md" withBorder>
-            <Stack align="center">
-                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">Also visit Install Base, it's a place to discuss and elaborate on the business side of the video game industry.</Text>
-                    <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/" target="_blank" >
-                        https://www.installbaseforum.com/
-                    </Anchor>
+
+            <Stack mb="md" align="center">
+            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {linkOther}
+                <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/" target="_blank" >
+                    <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                        {liner(printTextBlock("https://www.installbaseforum.com/",36),"−","both",true,36)}
+                    </Code>
+                </Anchor>
+            </Code>
             </Stack>
-            </Paper>
             <SegmentedControl 
                 mb="sm"
                 mt="sm"

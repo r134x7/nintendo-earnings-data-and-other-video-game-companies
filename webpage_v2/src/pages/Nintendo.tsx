@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Text, Group, SegmentedControl, Autocomplete, Anchor, Stack, Paper, Code} from "@mantine/core"
+import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
-import { useSelector, useDispatch } from "react-redux";
-import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
+import { useSelector } from "react-redux";
 import NINTENDO_CML from "../components/special/NINTENDO_CML";
 import NINTENDO_COMPONENT from "../components/NINTENDO_COMPONENT";
 
@@ -20,11 +19,9 @@ const yearsList = Array.from({length: 20}, (elem, index) =>
 
 export default function Nintendo() {
 
-    const dispatch = useDispatch();
+    const linkOther = liner(printTextBlock("For more in-depth historical data, visit Install Base and look at Celine's thread, link:",40),"=","top",true,40);
 
     const message = `Nintendo (They publish playing cards), this is where you can find archived Nintendo earnings data. `;
-
-    // const border = "+" + "−".repeat(93) + "+";
 
     const splitMessage = message.split("");
 
@@ -51,25 +48,8 @@ export default function Nintendo() {
     const [value, setValue] = useState("Data by Fiscal Year");
     const [year, setYear] = useState("");
 
-    const [colour, setColour] = useState("rgb(0, 255, 255)")
-
     const state: any = useSelector(state => state);
     
-    useEffect(() => {
-        const colourSplitReduce = colour.split("").reduce((acc, curr) => {
-            return (curr === "b")
-                ? acc + "ba"
-                : (curr === ")")
-                ? acc +", .20)"
-                : acc + curr
-        }, "") // using reduce to create an rgba colour with 20% opacity so that the user only has to use an RGB slider.
-               
-        dispatch(ADD_BACKGROUND_COLOUR({
-            colour: colourSplitReduce
-        }))
-
-    }, [colour, dispatch])
-
     const selectYearComponentNew = (yearsList: string[]) => 
     (yearUsed: string): JSX.Element | null => {
 
@@ -92,21 +72,20 @@ export default function Nintendo() {
 
         <div>
             <Stack mb="md" align="center">
-            {/* <Paper shadow="sm" radius="lg" p="md" withBorder> */}
-                {/* <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
-                <Text sx={textColour} size="lg">{text}</Text>
-                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text>  */}
-            {/* </Paper> */}
-            <Code style={{backgroundColor: `${state.colour}`}} block>{textBlock}</Code>
+            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {textBlock}
+            </Code>
             </Stack>
-            <Paper mb="md" shadow="sm" radius="xl" p="xs" withBorder>
             <Stack align="center">
-                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">For more in-depth historical data, visit Install Base and look at Celine's thread:</Text>
+            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {linkOther}
                     <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/forums/threads/nintendo-software-and-hardware-sales-data-from-1983-to-present.170/" target="_blank" >
-                     [ Install Base ]: Nintendo software and hardware sales data from 1983 to present
-                    </Anchor>
+                    <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000", padding: 0}} block>
+                        {liner(printTextBlock("[Install Base]: Nintendo software and hardware sales data from 1983 to present",36),"=","both",true,36)}
+                    </Code>
+                </Anchor>
+            </Code>
             </Stack>
-            </Paper>
             <SegmentedControl 
                 mb="sm"
                 mt="sm"

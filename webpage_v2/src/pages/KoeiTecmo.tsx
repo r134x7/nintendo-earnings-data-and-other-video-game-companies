@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Text, Group, SegmentedControl, Autocomplete, Anchor, Stack, Paper, Code} from "@mantine/core"
+import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
 import "../App.css";
 import { useInterval } from "@mantine/hooks";
-import { useSelector, useDispatch } from "react-redux";
-import { ADD_BACKGROUND_COLOUR } from "../features/backgroundReducer";
+import { useSelector } from "react-redux";
 import KOEI_TECMO_COMPONENT from "../components/KOEI_TECMO_COMPONENT";
 import KOEI_TECMO_CML from "../components/special/KOEI_TECMO_CML";
 
@@ -18,7 +17,7 @@ const yearsList = Array.from({length: 14}, (elem, index) =>
 
 export default function KoeiTecmo() {
 
-    const dispatch = useDispatch();
+    const linkOther = liner(printTextBlock("Also, visit Install Base. It's a place to discuss and elaborate on the business side of the video game industry.",40),"=","top",true,40);
 
     const message = `Koei Tecmo (They publish Hyrule Warriors), this is where you can find archived data. `;
 
@@ -50,21 +49,6 @@ export default function KoeiTecmo() {
 
     const state: any = useSelector(state => state);
 
-    useEffect(() => {
-        const colourSplitReduce = colour.split("").reduce((acc, curr) => {
-            return (curr === "b")
-                ? acc + "ba"
-                : (curr === ")")
-                ? acc +", .20)"
-                : acc + curr
-        }, "") // using reduce to create an rgba colour with 20% opacity so that the user only has to use an RGB slider.
-               
-        dispatch(ADD_BACKGROUND_COLOUR({
-            colour: colourSplitReduce
-        }))
-
-    }, [colour, dispatch])
-
     const selectYearComponentNew = (yearsList: string[]) => 
     (yearUsed: string): JSX.Element | null => {
 
@@ -87,21 +71,20 @@ export default function KoeiTecmo() {
 
         <div>
             <Stack mb="md" align="center">
-            {/* <Paper shadow="sm" radius="lg" p="md" withBorder> */}
-                {/* <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text> 
-                <Text sx={textColour} size="lg">{text}</Text>
-                <Text style={{textAlign: "center"}} sx={borderColour} size="xl">{border}</Text>  */}
-            {/* </Paper> */}
-            <Code style={{backgroundColor: `${state.colour}`}} block>{textBlock}</Code>
+            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {textBlock}
+            </Code>
             </Stack>
-            <Paper mb="md" shadow="sm" radius="xl" p="md" withBorder>
             <Stack align="center">
-                <Text className="fade" mt="md" style={{textAlign: "center"}} size="lg">Also visit Install Base, it's a place to discuss and elaborate on the business side of the video game industry.</Text>
+            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {linkOther}
                     <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/" target="_blank" >
-                        https://www.installbaseforum.com/
-                    </Anchor>
+                    <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                        {liner(printTextBlock("https://www.installbaseforum.com/",36),"=","both",true,36)}
+                    </Code>
+                </Anchor>
+            </Code>
             </Stack>
-            </Paper>
             <SegmentedControl 
                 mb="sm"
                 mt="sm"
