@@ -57,7 +57,7 @@ const Home = () => {
                     </List>
                     <Text>Capcom -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Consolidated Financial Results from FY3/2004 to FY3/2023 added. Added Consolidated Financial Results, FY Game Series and Software Platform Shipments to special page.</List.Item>
+                        <List.Item>Latest update: 3rd Quarter Earnings release data for FY3/2023 added.</List.Item>
                         <List.Item>Future update planned: Notes section.</List.Item>
                     </List>
                     <Text>Sega Sammy -</Text>
@@ -71,7 +71,7 @@ const Home = () => {
                     </List>
                     <Text>Koei Tecmo -</Text>
                     <List withPadding listStyleType="disc">
-                        <List.Item>Latest update: Consolidated Operating Results from FY3/2010 to FY3/2023 added. Added Consolidated Operating Results to Special page.</List.Item>
+                        <List.Item>Latest update: 3rd Quarter Earnings release data for FY3/2023 added.</List.Item>
                     </List>
                     <Text>Square Enix -</Text>
                     <List withPadding listStyleType="disc">

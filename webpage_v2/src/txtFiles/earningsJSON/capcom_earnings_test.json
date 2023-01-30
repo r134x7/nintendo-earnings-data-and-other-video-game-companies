@@ -1,0 +1,29 @@
+[
+    {
+        "name": "Net Sales",
+        "Q1CmlValue": 25232,
+        "Q2CmlValue": 49067,
+        "Q3CmlValue": 49067,
+        "Q4CmlValue": 49067,
+        "forecastThisFY": 120000,
+        "forecastRevision1": 125000 
+    },
+    {
+        "name": "Operating Income",
+        "Q1CmlValue": 12061,
+        "Q2CmlValue": 21895,
+        "Q3CmlValue": 21895,
+        "Q4CmlValue": 21895,
+        "forecastThisFY": 48000,
+        "forecastRevision1": 50000
+    },
+    {
+        "name": "Net Income",
+        "Q1CmlValue": 9007,
+        "Q2CmlValue": 16142,
+        "Q3CmlValue": 16142,
+        "Q4CmlValue": 16142,
+        "forecastThisFY": 34500,
+        "forecastRevision1": 36500
+    }
+]
