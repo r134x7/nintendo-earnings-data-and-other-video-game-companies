@@ -13,7 +13,8 @@ import {
   MantineProvider,
   ColorSchemeProvider,
   ColorScheme,
-  Stack
+  Stack,
+  Drawer,
 } from '@mantine/core';
 
 import { Calendar, DeviceNintendo, Moon, Sun, DeviceGamepad } from 'tabler-icons-react';
@@ -33,6 +34,7 @@ function App() {
   
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
+  const [openDraw, setOpenDraw] = useState(false);
   
   const [colorScheme, setColorScheme] = useState<ColorScheme>('dark'); // when pressing a specific icon it toggles the light/dark mode
   const toggleColorScheme = (value?: ColorScheme) =>
@@ -98,12 +100,17 @@ function App() {
                 />
               </MediaQuery>
                 <Text>ggx2ac + archives: Nintendo earnings data and other video game companies</Text>
-                <Button aria-label='Enable Dark or Light theme' leftIcon={(colorScheme === 'dark') 
-                                  ? <Sun size={24} strokeWidth={2} color={'yellow'} /> 
-                                  : <Moon size={24} strokeWidth={2} color={'#40bfb2'} />} 
-                                    radius="xl" variant='outline' color={colorScheme === "dark" ? "yellow" : "blue"} onClick={() => toggleColorScheme()} title="Toggle mode">
-                  {colorScheme === "dark" ? "Light" : "Dark"}
-                </Button>
+                <Button aria-label='Open Drawer' radius="xl" variant='outline' color={'cyan'} onClick={() => setOpenDraw(true)}>DRAW!</Button>
+                <Drawer position='right' opened={openDraw} onClose={() => setOpenDraw(false) } >
+
+                  <Button aria-label='Enable Dark or Light theme' leftIcon={(colorScheme === 'dark') 
+                                    ? <Sun size={24} strokeWidth={2} color={'yellow'} /> 
+                                    : <Moon size={24} strokeWidth={2} color={'#40bfb2'} />} 
+                                      radius="xl" variant='outline' color={colorScheme === "dark" ? "yellow" : "blue"} onClick={() => toggleColorScheme()} title="Toggle mode">
+                    {colorScheme === "dark" ? "Light" : "Dark"}
+                  </Button>
+
+                </Drawer>
             </div>
           </Header>
         }
