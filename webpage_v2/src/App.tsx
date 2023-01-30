@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { HashRouter as Router, Route, Routes, NavLink } from 'react-router-dom'; // changed from BrowserRouter to HashRouter to solve client-side issue of refreshing causing 404 error due to GitHub Pages, source: https://create-react-app.dev/docs/deployment/#notes-on-client-side-routing
 
+import { ADD_BACKGROUND_COLOUR } from "./features/backgroundReducer";
+import { useSelector, useDispatch } from "react-redux";
 import {
   AppShell,
   Navbar,
@@ -15,6 +17,9 @@ import {
   ColorScheme,
   Stack,
   Drawer,
+  ColorPicker,
+  Paper,
+  Group,
 } from '@mantine/core';
 
 import { Calendar, DeviceNintendo, Moon, Sun, DeviceGamepad } from 'tabler-icons-react';
@@ -31,10 +36,30 @@ import KoeiTecmo from './pages/KoeiTecmo';
 import SquareEnix from './pages/SquareEnix';
 
 function App() {
+
+  const dispatch = useDispatch();
   
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
   const [openDraw, setOpenDraw] = useState(false);
+
+  const [colour, setColour] = useState("rgb(0, 255, 255)")
+  const state: any = useSelector(state => state);
+
+    useEffect(() => {
+        const colourSplitReduce = colour.split("").reduce((acc, curr) => {
+            return (curr === "b")
+                ? acc + "ba"
+                : (curr === ")")
+                ? acc +", .20)"
+                : acc + curr
+        }, "") // using reduce to create an rgba colour with 20% opacity so that the user only has to use an RGB slider.
+               
+        dispatch(ADD_BACKGROUND_COLOUR({
+            colour: colourSplitReduce
+        }))
+
+    }, [colour, dispatch])
   
   const [colorScheme, setColorScheme] = useState<ColorScheme>('dark'); // when pressing a specific icon it toggles the light/dark mode
   const toggleColorScheme = (value?: ColorScheme) =>
@@ -103,6 +128,7 @@ function App() {
                 <Button aria-label='Open Drawer' radius="xl" variant='outline' color={'cyan'} onClick={() => setOpenDraw(true)}>DRAW!</Button>
                 <Drawer position='right' opened={openDraw} onClose={() => setOpenDraw(false) } >
 
+                <Group position="center">
                   <Button aria-label='Enable Dark or Light theme' leftIcon={(colorScheme === 'dark') 
                                     ? <Sun size={24} strokeWidth={2} color={'yellow'} /> 
                                     : <Moon size={24} strokeWidth={2} color={'#40bfb2'} />} 
@@ -110,6 +136,44 @@ function App() {
                     {colorScheme === "dark" ? "Light" : "Dark"}
                   </Button>
 
+                  <Paper style={{backgroundColor: state.colour}} p="xs" radius="xl" withBorder>
+                  <Text size="sm" >
+                  Colour: {state.colour}
+                  </Text>    
+                  <ColorPicker 
+                        withPicker={false}
+                        size="lg"
+                        mb="sm" 
+                        swatchesPerRow={7} 
+                        format="rgb" 
+                        swatches={[
+                            "rgb(0, 0, 0)", 
+                            "rgb(0, 255, 255)", 
+                            "rgb(0, 128, 128)",
+                            "rgb(0, 0, 255)", 
+                            "rgb(75, 0, 130)", 
+                            "rgb(135, 30, 135)", 
+                            "rgb(255, 0, 255)", 
+                            "rgb(86, 29, 37)",
+                            "rgb(173, 255, 47)",
+                            "rgb(127, 184, 0)",
+                            "rgb(0, 255, 0)", 
+                            "rgb(128, 128, 128)",
+                            "rgb(255, 0, 0)",
+                            "rgb(227, 24, 9)",
+                            "rgb(220, 20, 60)", 
+                            "rgb(212, 81, 19)", 
+                            "rgb(255, 165, 0)", 
+                            "rgb(255, 215, 0)",
+                            "rgb(200, 200, 200)",
+                            "rgb(255, 196, 235)",
+                            "rgb(255, 255, 255)", 
+                        ]}
+                        value={colour} 
+                        onChange={setColour}
+                        />
+                  </Paper>
+                 </Group>
                 </Drawer>
             </div>
           </Header>
