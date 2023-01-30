@@ -1,31 +1,6 @@
 {
-    "currentQuarter": 2,
+    "currentQuarter": 3,
     "companyName": "KOEI TECMO HOLDINGS CO., LTD.",
     "fiscalYear": "FY3/2023",
-    "data": [
-        {
-            "name": "Net Sales",
-            "Q1CmlValue": 18653,
-            "Q2CmlValue": 34762,
-            "Q3CmlValue": 34762,
-            "Q4CmlValue": 34762,
-            "forecastThisFY": 77000
-        },
-        {
-            "name": "Operating Income",
-            "Q1CmlValue": 11657,
-            "Q2CmlValue": 18321,
-            "Q3CmlValue": 18321,
-            "Q4CmlValue": 18321,
-            "forecastThisFY": 32500
-        },
-        {
-            "name": "Net Income",
-            "Q1CmlValue": 6750,
-            "Q2CmlValue": 13648,
-            "Q3CmlValue": 13648,
-            "Q4CmlValue": 13648,
-            "forecastThisFY": 31500
-        }
-    ]
+    "data": [{"name":"Net Sales","Q1CmlValue":18653,"Q2CmlValue":34762,"Q3CmlValue":49439,"Q4CmlValue":49439,"forecastThisFY":77000,"forecastNextFY":null},{"name":"Operating Income","Q1CmlValue":11657,"Q2CmlValue":18321,"Q3CmlValue":22994,"Q4CmlValue":22994,"forecastThisFY":32500,"forecastNextFY":null},{"name":"Net Income","Q1CmlValue":6750,"Q2CmlValue":13648,"Q3CmlValue":13477,"Q4CmlValue":13477,"forecastThisFY":31500,"forecastNextFY":null}]
 }
