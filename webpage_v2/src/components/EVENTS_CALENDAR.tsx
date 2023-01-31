@@ -261,6 +261,12 @@ export default function EVENTS_CALENDAR() {
                             {liner(printTextBlock("Select a marked date to view upcoming events. Calendar is usually updated every three months.",40),"=","both",true,40)}
                         </Stack>
                     <Calendar 
+                        styles={(theme) => ({
+                            weekday: {color:(state.fontColor === "dark") ? "#fff" : "#000000", border: `1px solid`},
+                            cell: {
+                                border: `1px solid`,
+                            }
+                        })}
                         fullWidth
                         value={value} 
                         onChange={setValue}

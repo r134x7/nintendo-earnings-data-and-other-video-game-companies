@@ -51,9 +51,9 @@ const Home = () => {
             <Stack align="center">
             <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
                 {linkOther}
-                    <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/" target="_blank" >
-                    <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000", padding:0}} block>
-                        {liner(printTextBlock("https://www.installbaseforum.com/",40),"=","both",true,40)}
+                    <Anchor className="fade" style={{textAlign: "center"}} href="https://www.installbaseforum.com/" target="_blank" >
+                    <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                        {liner(printTextBlock("https://www.installbaseforum.com/",36),"=","both",true,36)}
                     </Code>
                 </Anchor>
             </Code>
