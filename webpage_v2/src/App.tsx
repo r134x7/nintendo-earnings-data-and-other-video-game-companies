@@ -157,15 +157,13 @@ function App() {
                     {liner(printTextBlock("Set background theme to light or dark mode. Changing colour affects data background and single dataset charts where applicable.",38),"−","both",true,38)
                   }</Code>
 
-                  <Paper mt={'xl'} style={{backgroundColor: state.colour}} p="xs" radius="xl" withBorder>
-                  <Text size="sm" ml={"xl"} pl={'xl'} >
-                  Colour: {state.colour}
-                  </Text>    
+                  <Paper mt={'xl'} p="xs" radius="xl" withBorder>
+                    <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                      {liner(printTextBlock(`Colour: ${state.colour}`,34),"−","both",true,34)}</Code>
                   <ColorPicker 
                         withPicker={false}
                         size="lg"
-                        mb="sm" 
-                        swatchesPerRow={7} 
+                        swatchesPerRow={6} 
                         format="rgb" 
                         swatches={[
                             "rgb(0, 0, 0)", 
@@ -188,7 +186,10 @@ function App() {
                             "rgb(255, 215, 0)",
                             "rgb(200, 200, 200)",
                             "rgb(255, 196, 235)",
-                            "rgb(255, 255, 255)", 
+                            "rgb(255, 255, 255)",
+                            "rgb(100,200,100)",
+                            "rgb(200,100,100)",
+                            "rgb(100,100,200)",
                         ]}
                         value={colour} 
                         onChange={setColour}
