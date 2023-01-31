@@ -47,7 +47,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 4,
             companyName: "Microsoft",
-            eventName: "2nd Quarter Earnings Results, FY6/2023",
+            eventName: "2nd Quarter Earnings Results, FY6/2023 (Fiscal Year ending June 2023)",
             eventDate: "January 24, 2023",
             timeZone: "US, PST, UTC -8 Hours",
             irPage: "https://www.microsoft.com/en-us/Investor",
@@ -87,7 +87,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 9,
             companyName: "CyberAgent",
-            eventName: "1st Quarter Earnings Results, FY9/2023",
+            eventName: "1st Quarter Earnings Results, FY9/2023 (Fiscal Year ending September 2023)",
             eventDate: "January 25, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.cyberagent.co.jp/en/ir/",
@@ -95,7 +95,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 10,
             companyName: "GungHo",
-            eventName: "4th Quarter Earnings Results, FY12/2022",
+            eventName: "4th Quarter Earnings Results, FY12/2022 (Fiscal Year ending December 2023)",
             eventDate: "February 14, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.gungho.co.jp/en/ir/",
@@ -151,7 +151,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 17,
             companyName: "GREE",
-            eventName: "2nd Quarter Earnings Results, FY6/2023",
+            eventName: "2nd Quarter Earnings Results, FY6/2023 (Fiscal Year ending June 2023)",
             eventDate: "February 8, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "http://www.gree.co.jp/jp/en/ir/",
@@ -175,7 +175,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 20,
             companyName: "Falcom",
-            eventName: "4th Quarter Earnings Results, FY9/2022",
+            eventName: "4th Quarter Earnings Results, FY9/2022 (Fiscal Year ending September 2023)",
             eventDate: "November 10, 2022",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.falcom.co.jp/ir",

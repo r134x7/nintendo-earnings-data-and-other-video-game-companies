@@ -118,21 +118,30 @@ function App() {
           </Navbar>
         }
         header={
-          <Header sx={(theme) => ({ backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[1] })} height={70} p="md">
+          <Header sx={(theme) => ({ backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[1] })} height={50} p="md">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: "space-between", height: '100%' }}>
               <MediaQuery largerThan="sm" styles={{ display: "none"}}>
                 <Burger
                   aria-label='Open or close menu'
                   opened={opened}
                   onClick={() => setOpened((o) => !o)}
-                  size="lg"
+                  size="sm"
                   color={theme.colors.gray[6]}
-                  mr="xl"
+                  // mr="xl"
                 />
               </MediaQuery>
-                <Text>ggx2ac + archives: Nintendo earnings data and other video game companies</Text>
+              <MediaQuery largerThan="sm" styles={{ display: "none"}}>
+                  <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000", padding:"1em", margin:0}}>
+                    ggx2ac + archives
+                  </Code>
+              </MediaQuery>
+              <MediaQuery smallerThan={"sm"} styles={{ display: "none"}}>
+                  <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000", padding:"1em", margin:0}}>
+                    ggx2ac + archives: Nintendo earnings data and other video game companies
+                  </Code>
+              </MediaQuery>
+
                 <Button aria-label='Open Drawer' radius="xl" variant='outline' color={'cyan'} onClick={() => setOpenDraw(true)} leftIcon={<Cards size={24} strokeWidth={2} color={'#40bfb2'} />}>
-                  
                   DRAW!</Button>
                 <Drawer position='right' opened={openDraw} onClose={() => setOpenDraw(false) } >
 
