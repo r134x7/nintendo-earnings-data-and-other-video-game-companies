@@ -80,7 +80,7 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
             {
                 (value === "Data Sources")
                     ? selectData(value)
-                    : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
+                    : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>{selectData(value)}</Code>
             }
             {selectGraph(value)}
         </div>

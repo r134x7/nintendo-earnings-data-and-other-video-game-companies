@@ -51,7 +51,7 @@ export default function SQUARE_ENIX_CML() {
                     data={dataList}
             />
             
-            <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`, fontFamily: "monospace"}} block>
+            <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
                 {selectData(value)}
                 </Code>
             <Space h="xl" />

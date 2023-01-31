@@ -61,7 +61,7 @@ export default function CAPCOM_CML() {
                     data={dataList}
             />
             
-            <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`}} block>
+            <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
                 {selectData(value)}
                 </Code>
             <Space h="xl" />

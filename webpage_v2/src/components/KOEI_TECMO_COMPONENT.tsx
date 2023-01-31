@@ -72,7 +72,7 @@ export default function KOEI_TECMO_COMPONENT(props: {setIndex: number; yearLengt
             {
                 (value === "Data Sources")
                     ? selectData(value)
-                    : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor: `${state.colour}`}} block>{selectData(value)}</Code>
+                    : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>{selectData(value)}</Code>
             }
             {selectGraph(value)}
         </div>
