@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { Text, Card, Grid, Stack, Indicator, Anchor } from "@mantine/core";
+import { Text, Card, Grid, Stack, Indicator, Anchor, Code } from "@mantine/core";
 import { Calendar, isSameDate } from "@mantine/dates";
+import { liner, printTextBlock } from "../utils/table_design_logic";
+import { useSelector } from "react-redux";
 
 export default function EVENTS_CALENDAR() {
+
+    const state: any = useSelector(state => state);
 
     const [value, setValue] = useState<Date | null>(null); 
     
@@ -19,7 +23,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 1,
             companyName: "Capcom",
-            eventName: "3rd Quarter Earnings Results, FY3/2023",
+            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "January 30, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.capcom.co.jp/ir/english/",
@@ -27,7 +31,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 2,
             companyName: "Nintendo",
-            eventName: "3rd Quarter Earnings Results, FY3/2023",
+            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "February 7, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.nintendo.co.jp/ir/en/",
@@ -35,7 +39,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 3,
             companyName: "Sony",
-            eventName: "3rd Quarter Earnings Results, FY3/2023",
+            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "February 2, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.sony.com/en/SonyInfo/IR/",
@@ -51,7 +55,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 5,
             companyName: "Ubisoft",
-            eventName: "3rd Quarter Earnings Results, FY3/2023",
+            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "February 16, 2023",
             timeZone: "France, CET, UTC +1 Hours",
             irPage: "https://www.ubisoft.com/en-us/company/about-us/investors",
@@ -59,7 +63,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 6,
             companyName: "DeNA",
-            eventName: "3rd Quarter Earnings Results, FY3/2023",
+            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "February 8, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://dena.com/intl/ir/",
@@ -67,7 +71,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 7,
             companyName: "Koei Tecmo",
-            eventName: "3rd Quarter Earnings Results, FY3/2023",
+            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "January 30, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.koeitecmo.co.jp/e/ir/",
@@ -75,7 +79,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 8,
             companyName: "EA",
-            eventName: "3rd Quarter Earnings Results, FY3/2023",
+            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "January 31, 2023",
             timeZone: "US, PST, UTC -8 Hours",
             irPage: "https://ir.ea.com/home/default.aspx",
@@ -99,7 +103,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 11,
             companyName: "Square Enix",
-            eventName: "2nd Quarter Earnings Results, FY3/2023",
+            eventName: "2nd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "November 7, 2022",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.hd.square-enix.com/eng/ir/",
@@ -107,7 +111,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 12,
             companyName: "Sega Sammy",
-            eventName: "3rd Quarter Earnings Results, FY3/2023",
+            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "February 9, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.segasammy.co.jp/english/ir/",
@@ -115,7 +119,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 13,
             companyName: "Konami",
-            eventName: "3rd Quarter Earnings Results, FY3/2023",
+            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "February 2, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.konami.com/ir/en/",
@@ -123,7 +127,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 14,
             companyName: "Marvelous",
-            eventName: "3rd Quarter Earnings Results, FY3/2023",
+            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "January 31, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://corp.marv.jp/english/",
@@ -131,7 +135,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 15,
             companyName: "Activision Blizzard",
-            eventName: "3rd Quarter Earnings Results, FY3/2023",
+            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "February 6, 2023",
             timeZone: "US, PST, UTC -8 Hours",
             irPage: "https://investor.activision.com/",
@@ -139,7 +143,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 16,
             companyName: "Take-Two",
-            eventName: "3rd Quarter Earnings Results, FY3/2023",
+            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "February 7, 2022",
             timeZone: "US, EST, UTC -5 Hours",
             irPage: "https://www.take2games.com/ir",
@@ -155,7 +159,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 18,
             companyName: "Bandai Namco",
-            eventName: "3rd Quarter Earnings Results, FY3/2023",
+            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "February 7, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.bandainamco.co.jp/en/ir/index.html",
@@ -163,7 +167,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 19,
             companyName: "Kadokawa",
-            eventName: "3rd Quarter Earnings Results, FY3/2023",
+            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "February 2, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://group.kadokawa.co.jp/global/ir/",
@@ -179,7 +183,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 21,
             companyName: "NIS",
-            eventName: "2nd Quarter Earnings Results, FY3/2023",
+            eventName: "2nd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "November 11, 2022",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.nippon1.co.jp/ir/ir.html",
@@ -187,7 +191,7 @@ export default function EVENTS_CALENDAR() {
         {
             id: 22,
             companyName: "Embracer Group",
-            eventName: "3rd Quarter Earnings Results, FY3/2023",
+            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "February 16, 2023",
             timeZone: "Sweden, CET, UTC +1 Hour",
             irPage: "https://embracer.com/investors/",
@@ -198,32 +202,47 @@ export default function EVENTS_CALENDAR() {
 
         return  dateArray.map((data: EventDate) => {
               if (isSameDate(value || new Date(), new Date(data.eventDate))) {
-                  let selectEventCompany = (data.companyName) ? `Company: ${data.companyName}` : null;
+                  let selectEventCompany = (data.companyName) ? `Company: ${data.companyName}` : " ";
                   let selectEventName = `Event: ${data.eventName}`;
                   let selectEventDate = `Date: ${data.eventDate}`;
                   let selectTimeZone = `Time Zone: ${data.timeZone}`;
-                  let selectIRPage = `IR Page: ${data.irPage}`;
+                  let selectIRPage = `IR page: ${(data.irPage.length > 30) ? data.irPage.slice(0,29) + " " + data.irPage.slice(29)  : data.irPage}`;
                   let anchorLink = data.irPage;
   
-                  return <Card key={data.id} shadow="sm" p="sm" radius="md" withBorder style={{margin: "1em"}} >
-                      <Stack >
-                          <Text >
-                              {selectEventName}
-                          </Text>
-                          <Text >
-                              {selectEventCompany}
-                          </Text>
-                          <Text >
-                              {selectEventDate}
-                          </Text>
-                          <Text >
-                              {selectTimeZone}
-                          </Text>
-                          <Anchor href={anchorLink} target="_blank">
-                              {selectIRPage}
-                          </Anchor>
-                      </Stack>
-                  </Card>
+                return (
+                    <Stack align={"center"}>
+                        <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                            {liner(printTextBlock(selectEventName,40),"=","top",true,40)}
+                            {liner(printTextBlock(selectEventCompany,40),"=","top",true,40)}
+                            {liner(printTextBlock(selectEventDate,40),"=","top",true,40)}
+                            {liner(printTextBlock(selectTimeZone,40),"=","top",true,40)}
+                           <Anchor href={anchorLink} target="_blank">
+                                <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000", padding:0, margin:0}} block>
+                                    {liner(printTextBlock(selectIRPage,40),"=","both",true,40)}
+                                </Code>
+                           </Anchor>
+                        </Code>
+                    </Stack>
+                )
+                //   return <Card key={data.id} shadow="sm" p="sm" radius="md" withBorder style={{margin: "1em"}} >
+                //       <Stack >
+                //           <Text >
+                //               {selectEventName}
+                //           </Text>
+                //           <Text >
+                //               {selectEventCompany}
+                //           </Text>
+                //           <Text >
+                //               {selectEventDate}
+                //           </Text>
+                //           <Text >
+                //               {selectTimeZone}
+                //           </Text>
+                        //   <Anchor href={anchorLink} target="_blank">
+                        //       {selectIRPage}
+                        //    </Anchor>
+                //       </Stack>
+                //   </Card>
               } else {
                   return null
               }

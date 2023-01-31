@@ -98,7 +98,7 @@ export default function GAME_FOUR() {
                 {textBlockOne}
             </Code>
             <Space h="xl" />
-            <Code style={{backgroundColor: `rgba(75, 0, 130, .20)`}} block>
+            <Code style={{backgroundColor:(lineTwo === 9) ? "rgba(200, 200, 200, 0.2)" : `rgba(75, 0, 130, .20)`}} block>
                 {printNameTwo}
                 {textBlockTwo}
             </Code>
