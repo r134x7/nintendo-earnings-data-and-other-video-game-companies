@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, Card, Grid, Stack, Indicator, Anchor, Code } from "@mantine/core";
+import { Grid, Stack, Indicator, Anchor, Code } from "@mantine/core";
 import { Calendar, isSameDate } from "@mantine/dates";
 import { liner, printTextBlock } from "../utils/table_design_logic";
 import { useSelector } from "react-redux";
@@ -210,7 +210,7 @@ export default function EVENTS_CALENDAR() {
                   let anchorLink = data.irPage;
   
                 return (
-                    <Stack align={"center"}>
+                    <Stack align={"center"} mb={"sm"} >
                         <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
                             {liner(printTextBlock(selectEventName,40),"=","top",true,40)}
                             {liner(printTextBlock(selectEventCompany,40),"=","top",true,40)}
@@ -252,10 +252,14 @@ export default function EVENTS_CALENDAR() {
 
     return (
         <>
-        <Grid grow>
+        <Grid mt={"sm"} grow>
             <Grid.Col
                 span={6} 
             >
+                <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000", padding:0, margin:0}} block>
+                        <Stack align={"center"}>
+                            {liner(printTextBlock("Select a marked date to view upcoming events. Calendar is usually updated every three months.",40),"=","both",true,40)}
+                        </Stack>
                     <Calendar 
                         fullWidth
                         value={value} 
@@ -288,7 +292,7 @@ export default function EVENTS_CALENDAR() {
                             const day = date.getDate();
                             const fullDate = date.toString();
                             return (
-                              <Indicator size={8} color="teal" offset={8} 
+                              <Indicator size={8} color={(state.fontColor === "dark") ? "#fff" : "#000000"} offset={8} 
                                 disabled={
                                 fullDate !== new Date(dateArray[0].eventDate).toString()
                                 && fullDate !== new Date(dateArray[1].eventDate).toString() 
@@ -319,6 +323,7 @@ export default function EVENTS_CALENDAR() {
                             );
                           }}
                     />
+                </Code>
                 </Grid.Col>
                 <Grid.Col
                     span={6} 
