@@ -370,7 +370,7 @@ const specialList = (): string => {
     ],24) + "\n"; 
 
     const dateLabel = liner(border([
-        spacer("Data as of September 30th, 2022","Data as of September 30th, 2022".length+1,"left")
+        spacer("Data as of December 31st, 2022","Data as of December 31st, 2022".length+1,"left")
     ]),"−","both",true);
 
     const makeValues: Titles[][][] = reverseCollection.map((data, index, array) => {
