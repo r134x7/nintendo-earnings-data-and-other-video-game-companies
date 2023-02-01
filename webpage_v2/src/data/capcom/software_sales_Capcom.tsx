@@ -37,9 +37,64 @@ const collection: collectionJSON[] = [
     undefinedData,
 ];
 
-const forecastMake = 0;
+const forecastsMake = (obj: capcomSalesOrUnitsJSON, units: string): Section[] => {
 
-export const digitalContentsSalesMake = (obj: {"digitalContentsSales": capcomSalesOrUnitsJSON}): Section[] => {
+    // had to use different type assertion due to issue with keys not being recognised...
+    let forecasts: Section[] = [
+        {
+            name: obj.name,
+            region: "Group Total",
+            units: (units === "units") ? "units" : "currency",
+            period: "Forecast", 
+            cmlPeriod: "1st Quarter",
+            value: obj?.forecastThisFY,
+            notes: obj?.notes,
+        } as Section,
+        {
+            name: obj.name,
+            region: "Group Total",
+            units: (units === "units") ? "units" : "currency",
+            period: "FCST Revision 1",
+            cmlPeriod: "First Half",
+            value: obj?.forecastRevision1,
+            notes: obj?.notes,
+        } as Section,
+        {
+            name: obj.name,
+            region: "Group Total",
+            units: (units === "units") ? "units" : "currency",
+            period: "FCST Revision 2",
+            cmlPeriod: "1st 3 Qtrs",
+            value: obj?.forecastRevision2,
+            notes: obj?.notes,
+        } as Section,
+        {
+            name: obj.name,
+            region: "Group Total",
+            units: (units === "units") ? "units" : "currency",
+            period: "FCST Revision 3",
+            cmlPeriod: "1st 3 Qtrs",
+            value: obj?.forecastRevision3,
+            notes: obj?.notes,
+        } as Section,
+        {
+            name: obj.name,
+            region: "Group Total",
+            units: (units === "units") ? "units" : "currency",
+            period: "Forecast",
+            cmlPeriod: "Cml.",
+            value: obj?.forecastNextFY,
+            notes: obj?.notes,
+        } as Section,
+    ].filter(elem => elem.value !== undefined)
+
+    return forecasts
+};
+
+export const digitalContentsSalesMake = (obj: {"digitalContentsSales": capcomSalesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+    if (forecast === true) {
+        return forecastsMake(obj.digitalContentsSales,"currency")
+    }
 
     let sales: Section[] = [
         {
@@ -83,7 +138,10 @@ export const digitalContentsSalesMake = (obj: {"digitalContentsSales": capcomSal
     return sales
 };
 
-export const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": capcomSalesOrUnitsJSON}): Section[] => {
+export const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": capcomSalesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+    if (forecast === true) {
+        return forecastsMake(obj.digitalContentsUnits,"units")
+    }
 
     let units: Section[] = [
         {
@@ -123,7 +181,10 @@ export const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": capcomSal
     return units 
 };
 
-export const packageSalesMake = (obj: {"packageSales": capcomSalesOrUnitsJSON}): Section[] => {
+export const packageSalesMake = (obj: {"packageSales": capcomSalesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+    if (forecast === true) {
+        return forecastsMake(obj.packageSales,"currency")
+    }
 
     let sales: Section[] = [
         {
@@ -163,7 +224,10 @@ export const packageSalesMake = (obj: {"packageSales": capcomSalesOrUnitsJSON}):
     return sales
 };
 
-export const packageUnitsMake = (obj: {"packageUnits": capcomSalesOrUnitsJSON}): Section[] => {
+export const packageUnitsMake = (obj: {"packageUnits": capcomSalesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+    if (forecast === true) {
+        return forecastsMake(obj.packageUnits,"units")
+    }
 
     let units: Section[] = [
         {
@@ -203,7 +267,10 @@ export const packageUnitsMake = (obj: {"packageUnits": capcomSalesOrUnitsJSON}):
     return units 
 };
 
-export const digitalSalesMake = (obj: {"digitalSales": capcomSalesOrUnitsJSON}): Section[] => {
+export const digitalSalesMake = (obj: {"digitalSales": capcomSalesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+    if (forecast === true) {
+        return forecastsMake(obj.digitalSales,"currency")
+    }
 
     let sales: Section[] = [
         {
@@ -247,7 +314,10 @@ export const digitalSalesMake = (obj: {"digitalSales": capcomSalesOrUnitsJSON}):
     return sales
 };
 
-export const digitalUnitsMake = (obj: {"digitalUnits": capcomSalesOrUnitsJSON}): Section[] => {
+export const digitalUnitsMake = (obj: {"digitalUnits": capcomSalesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+    if (forecast === true) {
+        return forecastsMake(obj.digitalUnits,"units")
+    }
 
     let units: Section[] = [
         {
