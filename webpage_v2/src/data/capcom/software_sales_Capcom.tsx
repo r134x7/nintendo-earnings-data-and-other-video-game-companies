@@ -4,17 +4,30 @@ import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
 import undefinedData from "./Software_Sales/undefinedData.json";
 
-import { salesOrUnitsJSON } from "../bandaiNamco/software_sales_bandai_namco";
-
 export type collectionJSON = {
     fiscalYear: string,
     currentQuarter: number,
-    digitalContentsSales: salesOrUnitsJSON,
-    digitalContentsUnits: salesOrUnitsJSON,
-    packageSales: salesOrUnitsJSON,
-    packageUnits: salesOrUnitsJSON,
-    digitalSales: salesOrUnitsJSON,
-    digitalUnits: salesOrUnitsJSON,
+    digitalContentsSales: capcomSalesOrUnitsJSON,
+    digitalContentsUnits: capcomSalesOrUnitsJSON,
+    packageSales: capcomSalesOrUnitsJSON,
+    packageUnits: capcomSalesOrUnitsJSON,
+    digitalSales: capcomSalesOrUnitsJSON,
+    digitalUnits: capcomSalesOrUnitsJSON,
+}
+
+type capcomSalesOrUnitsJSON = {
+    name: string,
+    units: string,
+    Q1CmlValue: number,
+    Q2CmlValue: number,
+    Q3CmlValue: number,
+    Q4CmlValue: number,
+    forecastThisFY?: number,
+    forecastRevision1?: number,
+    forecastRevision2?: number,
+    forecastRevision3?: number,
+    forecastNextFY?: number,
+    notes?: string,
 }
 
 const collection: collectionJSON[] = [
@@ -24,7 +37,9 @@ const collection: collectionJSON[] = [
     undefinedData,
 ];
 
-export const digitalContentsSalesMake = (obj: {"digitalContentsSales": salesOrUnitsJSON}): Section[] => {
+const forecastMake = 0;
+
+export const digitalContentsSalesMake = (obj: {"digitalContentsSales": capcomSalesOrUnitsJSON}): Section[] => {
 
     let sales: Section[] = [
         {
@@ -68,7 +83,7 @@ export const digitalContentsSalesMake = (obj: {"digitalContentsSales": salesOrUn
     return sales
 };
 
-export const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": salesOrUnitsJSON}): Section[] => {
+export const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": capcomSalesOrUnitsJSON}): Section[] => {
 
     let units: Section[] = [
         {
@@ -108,7 +123,7 @@ export const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": salesOrUn
     return units 
 };
 
-export const packageSalesMake = (obj: {"packageSales": salesOrUnitsJSON}): Section[] => {
+export const packageSalesMake = (obj: {"packageSales": capcomSalesOrUnitsJSON}): Section[] => {
 
     let sales: Section[] = [
         {
@@ -148,7 +163,7 @@ export const packageSalesMake = (obj: {"packageSales": salesOrUnitsJSON}): Secti
     return sales
 };
 
-export const packageUnitsMake = (obj: {"packageUnits": salesOrUnitsJSON}): Section[] => {
+export const packageUnitsMake = (obj: {"packageUnits": capcomSalesOrUnitsJSON}): Section[] => {
 
     let units: Section[] = [
         {
@@ -188,7 +203,7 @@ export const packageUnitsMake = (obj: {"packageUnits": salesOrUnitsJSON}): Secti
     return units 
 };
 
-export const digitalSalesMake = (obj: {"digitalSales": salesOrUnitsJSON}): Section[] => {
+export const digitalSalesMake = (obj: {"digitalSales": capcomSalesOrUnitsJSON}): Section[] => {
 
     let sales: Section[] = [
         {
@@ -232,7 +247,7 @@ export const digitalSalesMake = (obj: {"digitalSales": salesOrUnitsJSON}): Secti
     return sales
 };
 
-export const digitalUnitsMake = (obj: {"digitalUnits": salesOrUnitsJSON}): Section[] => {
+export const digitalUnitsMake = (obj: {"digitalUnits": capcomSalesOrUnitsJSON}): Section[] => {
 
     let units: Section[] = [
         {
