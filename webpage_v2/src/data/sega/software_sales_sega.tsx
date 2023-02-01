@@ -13,13 +13,13 @@ export type collectionJSON = {
     fullGameUnits: salesOrUnitsJSON,
 };
 
-const collection = [
+const collection: collectionJSON[] = [
     softwareSales2023,
     softwareSales2022,
     softwareSales2021,
     softwareSales2020,
     undefinedData,
-] as const;
+];
 
 const forecastsMake = (obj: salesOrUnitsJSON, units: string): Section[] => {
 
@@ -179,13 +179,18 @@ export const softwareSalesList: string[] = collection.flatMap((elem, index, arra
 
     let salesThisFY: Section[] = salesMake(elem);
     let salesLastFY: Section[] = salesMake(array[index+1]);
-    let salesForecast: Section[] = salesMake(elem,true);
+    let salesForecast: Section[] = (elem.fullGameSales?.forecastThisFY === undefined) ? [] : salesMake(elem,true);
 
     let unitsThisFY: Section[] = unitsMake(elem);
     let unitsLastFY: Section[] = unitsMake(array[index+1]);
-    let unitsForecast: Section[] = unitsMake(elem,true);
+    let unitsForecast: Section[] = (elem.fullGameUnits?.forecastThisFY === undefined) ? [] : unitsMake(elem,true);
 
-    return SegaPrint(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter) + "\n" + salesPerSoftwareUnitForecast(salesForecast, unitsForecast, header, elem.currentQuarter)
+    let printList = [
+        SegaPrint(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter),
+        (salesForecast.length === 0 && unitsForecast.length === 0) ? [] : salesPerSoftwareUnitForecast(salesForecast, unitsForecast, header, elem.currentQuarter),
+    ].flat().reduce((acc, next) => acc + "\n" + next);
+
+    return printList
 });
 
 export const softwareSalesGraphList = collection.flatMap((elem, index, array) => {
