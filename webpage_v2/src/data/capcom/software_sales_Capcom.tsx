@@ -1,33 +1,19 @@
-import { Header, Section, CapcomPrint, CapcomForecast, CapcomPrintPhysical, CapcomPrintDigital, graphMake, undefinedData as forecastUndefinedData } from "../../utils/segment_data_logic";
+import { Header, Section, CapcomPrint, salesPerSoftwareUnitForecast, CapcomPrintPhysical, CapcomPrintDigital, graphMake } from "../../utils/segment_data_logic";
 import softwareSales2023 from "./Software_Sales/software_sales_fy3_2023.json";
 import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
 import undefinedData from "./Software_Sales/undefinedData.json";
+import { salesOrUnitsJSON } from "../bandaiNamco/software_sales_bandai_namco";
 
 export type collectionJSON = {
     fiscalYear: string,
     currentQuarter: number,
-    digitalContentsSales: capcomSalesOrUnitsJSON,
-    digitalContentsUnits: capcomSalesOrUnitsJSON,
-    packageSales: capcomSalesOrUnitsJSON,
-    packageUnits: capcomSalesOrUnitsJSON,
-    digitalSales: capcomSalesOrUnitsJSON,
-    digitalUnits: capcomSalesOrUnitsJSON,
-}
-
-type capcomSalesOrUnitsJSON = {
-    name: string,
-    units: string,
-    Q1CmlValue: number,
-    Q2CmlValue: number,
-    Q3CmlValue: number,
-    Q4CmlValue: number,
-    forecastThisFY?: number,
-    forecastRevision1?: number,
-    forecastRevision2?: number,
-    forecastRevision3?: number,
-    forecastNextFY?: number,
-    notes?: string,
+    digitalContentsSales: salesOrUnitsJSON,
+    digitalContentsUnits: salesOrUnitsJSON,
+    packageSales: salesOrUnitsJSON,
+    packageUnits: salesOrUnitsJSON,
+    digitalSales: salesOrUnitsJSON,
+    digitalUnits: salesOrUnitsJSON,
 }
 
 const collection: collectionJSON[] = [
@@ -37,7 +23,7 @@ const collection: collectionJSON[] = [
     undefinedData,
 ];
 
-const forecastsMake = (obj: capcomSalesOrUnitsJSON, units: string): Section[] => {
+const forecastsMake = (obj: salesOrUnitsJSON, units: string): Section[] => {
 
     // had to use different type assertion due to issue with keys not being recognised...
     let forecasts: Section[] = [
@@ -91,7 +77,7 @@ const forecastsMake = (obj: capcomSalesOrUnitsJSON, units: string): Section[] =>
     return forecasts
 };
 
-export const digitalContentsSalesMake = (obj: {"digitalContentsSales": capcomSalesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+export const digitalContentsSalesMake = (obj: {"digitalContentsSales": salesOrUnitsJSON}, forecast?: Boolean): Section[] => {
     if (forecast === true) {
         return forecastsMake(obj.digitalContentsSales,"currency")
     }
@@ -138,7 +124,7 @@ export const digitalContentsSalesMake = (obj: {"digitalContentsSales": capcomSal
     return sales
 };
 
-export const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": capcomSalesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+export const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": salesOrUnitsJSON}, forecast?: Boolean): Section[] => {
     if (forecast === true) {
         return forecastsMake(obj.digitalContentsUnits,"units")
     }
@@ -181,7 +167,7 @@ export const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": capcomSal
     return units 
 };
 
-export const packageSalesMake = (obj: {"packageSales": capcomSalesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+export const packageSalesMake = (obj: {"packageSales": salesOrUnitsJSON}, forecast?: Boolean): Section[] => {
     if (forecast === true) {
         return forecastsMake(obj.packageSales,"currency")
     }
@@ -224,7 +210,7 @@ export const packageSalesMake = (obj: {"packageSales": capcomSalesOrUnitsJSON}, 
     return sales
 };
 
-export const packageUnitsMake = (obj: {"packageUnits": capcomSalesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+export const packageUnitsMake = (obj: {"packageUnits": salesOrUnitsJSON}, forecast?: Boolean): Section[] => {
     if (forecast === true) {
         return forecastsMake(obj.packageUnits,"units")
     }
@@ -267,7 +253,7 @@ export const packageUnitsMake = (obj: {"packageUnits": capcomSalesOrUnitsJSON}, 
     return units 
 };
 
-export const digitalSalesMake = (obj: {"digitalSales": capcomSalesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+export const digitalSalesMake = (obj: {"digitalSales": salesOrUnitsJSON}, forecast?: Boolean): Section[] => {
     if (forecast === true) {
         return forecastsMake(obj.digitalSales,"currency")
     }
@@ -314,7 +300,7 @@ export const digitalSalesMake = (obj: {"digitalSales": capcomSalesOrUnitsJSON}, 
     return sales
 };
 
-export const digitalUnitsMake = (obj: {"digitalUnits": capcomSalesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+export const digitalUnitsMake = (obj: {"digitalUnits": salesOrUnitsJSON}, forecast?: Boolean): Section[] => {
     if (forecast === true) {
         return forecastsMake(obj.digitalUnits,"units")
     }
@@ -395,11 +381,11 @@ export const softwareSalesList: string[] = collection.map((elem, index, array) =
 
     let capcomList: string = [
         CapcomPrint(digitalContentsSalesThisFY, digitalContentsSalesLastFY, digitalContentsUnitsThisFY, digitalContentsUnitsLastFY, header, elem.currentQuarter),
-        CapcomForecast(digitalContentsSalesForecast, digitalContentsUnitsForecast, header, elem.currentQuarter),
+        salesPerSoftwareUnitForecast(digitalContentsSalesForecast, digitalContentsUnitsForecast, header, elem.currentQuarter),
         CapcomPrintPhysical(packageSalesThisFY, packageSalesLastFY, packageUnitsThisFY, packageUnitsLastFY, header, elem.currentQuarter),
-        CapcomForecast(packageSalesForecast, packageUnitsForecast, header, elem.currentQuarter),
+        salesPerSoftwareUnitForecast(packageSalesForecast, packageUnitsForecast, header, elem.currentQuarter),
         CapcomPrintDigital(digitalSalesThisFY, digitalSalesLastFY, digitalUnitsThisFY, digitalUnitsLastFY, header, elem.currentQuarter),
-        CapcomForecast(digitalSalesForecast, digitalUnitsForecast, header, elem.currentQuarter),
+        salesPerSoftwareUnitForecast(digitalSalesForecast, digitalUnitsForecast, header, elem.currentQuarter),
     ].reduce((acc, next) => acc + "\n" + next);
 
     return capcomList

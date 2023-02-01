@@ -449,7 +449,7 @@ export const CapcomPrint = (salesData: Section[], salesDataLastFY: Section[], sa
     return [head, ...salesUnitsBlock].reduce((prev, next) => prev + next); 
 };
 
-export const CapcomForecast = (salesData: Section[], salesUnits: Section[], header: Header, currentQuarter: number) => {
+export const salesPerSoftwareUnitForecast = (salesData: Section[], salesUnits: Section[], header: Header, currentQuarter: number) => {
 
     const salesUnitsBlock = [
         liner(printTextBlock(salesData[0].name + " Forecast", 40),"−","top",true,40),
