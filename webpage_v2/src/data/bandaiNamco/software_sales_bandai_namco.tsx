@@ -181,9 +181,9 @@ export const unitsMake = (obj: {"softwareUnits": salesOrUnitsJSON }, forecast?: 
     return units 
 };
 
-export const softwareSalesList: string[] = collection.map((elem, index, array) => {
+export const softwareSalesList: string[] = collection.flatMap((elem, index, array) => {
     if (array[index] === array.at(-1)) {
-        return "undefined" // for undefinedData in collection only
+        return [] // for undefinedData in collection only
     }
 
     let header: Header = {
@@ -201,11 +201,11 @@ export const softwareSalesList: string[] = collection.map((elem, index, array) =
     let unitsForecast: Section[] = unitsMake(elem,true);
 
     return BandaiNamcoPrint(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter) + "\n" + salesPerSoftwareUnitForecast(salesForecast, unitsForecast, header, elem.currentQuarter)
-}).filter(elem => elem !== "undefined")
+});
 
-export const softwareSalesGraphList = collection.map((elem, index, array) => {
+export const softwareSalesGraphList = collection.flatMap((elem, index, array) => {
     if (array[index] === array.at(-1)) {
-        return undefined // for undefinedData in collection only
+        return [] // for undefinedData in collection only
     }
 
     let salesThisFY: Section[] = salesHomeVideoGameMake(elem);
@@ -215,5 +215,4 @@ export const softwareSalesGraphList = collection.map((elem, index, array) => {
     let unitsLastFY: Section[] = unitsMake(array[index+1]);
 
     return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.softwareSales.name, elem.fiscalYear, elem.currentQuarter)
-}).filter(elem => elem !== undefined);
-
+});

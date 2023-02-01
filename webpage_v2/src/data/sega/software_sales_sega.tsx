@@ -1,4 +1,4 @@
-import { Header, Section, SegaPrint, graphMake } from "../../utils/segment_data_logic";
+import { Header, Section, SegaPrint, graphMake, salesPerSoftwareUnitForecast } from "../../utils/segment_data_logic";
 import softwareSales2023 from "./Software_Sales/software_sales_fy3_2023.json"
 import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
@@ -21,7 +21,65 @@ const collection = [
     undefinedData,
 ] as const;
 
-export const salesMake = (obj: {"fullGameSales": salesOrUnitsJSON}): Section[] => {
+const forecastsMake = (obj: salesOrUnitsJSON, units: string): Section[] => {
+
+    // had to use different type assertion due to issue with keys not being recognised...
+    let forecasts: Section[] = [
+        {
+            name: obj.name,
+            region: "Group Total",
+            units: (units === "units") ? "units" : "currency",
+            period: "Forecast", 
+            cmlPeriod: "1st Quarter",
+            value: obj?.forecastThisFY,
+            notes: obj?.notes,
+        } as Section,
+        {
+            name: obj.name,
+            region: "Group Total",
+            units: (units === "units") ? "units" : "currency",
+            period: "FCST Revision 1",
+            cmlPeriod: "First Half",
+            value: obj?.forecastRevision1,
+            notes: obj?.notes,
+        } as Section,
+        {
+            name: obj.name,
+            region: "Group Total",
+            units: (units === "units") ? "units" : "currency",
+            period: "FCST Revision 2",
+            cmlPeriod: "1st 3 Qtrs",
+            value: obj?.forecastRevision2,
+            notes: obj?.notes,
+        } as Section,
+        {
+            name: obj.name,
+            region: "Group Total",
+            units: (units === "units") ? "units" : "currency",
+            period: "FCST Revision 3",
+            cmlPeriod: "1st 3 Qtrs",
+            value: obj?.forecastRevision3,
+            notes: obj?.notes,
+        } as Section,
+        {
+            name: obj.name,
+            region: "Group Total",
+            units: (units === "units") ? "units" : "currency",
+            period: "Forecast",
+            cmlPeriod: "Cml.",
+            value: obj?.forecastNextFY,
+            notes: obj?.notes,
+        } as Section,
+    ].filter(elem => elem.value !== undefined)
+
+    return forecasts
+};
+
+
+export const salesMake = (obj: {"fullGameSales": salesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+    if (forecast === true) {
+        return forecastsMake(obj.fullGameSales,"currency")
+    }
 
     let sales: Section[] = [
         {
@@ -65,7 +123,10 @@ export const salesMake = (obj: {"fullGameSales": salesOrUnitsJSON}): Section[] =
     return sales
 };
 
-export const unitsMake = (obj: {"fullGameUnits": salesOrUnitsJSON}): Section[] => {
+export const unitsMake = (obj: {"fullGameUnits": salesOrUnitsJSON}, forecast?: true): Section[] => {
+    if (forecast === true) {
+        return forecastsMake(obj.fullGameUnits,"units")
+    }
 
     let units: Section[] = [
         {
@@ -105,9 +166,9 @@ export const unitsMake = (obj: {"fullGameUnits": salesOrUnitsJSON}): Section[] =
     return units 
 };
 
-export const softwareSalesList: string[] = collection.map((elem, index, array) => {
+export const softwareSalesList: string[] = collection.flatMap((elem, index, array) => {
     if (array[index] === array.at(-1)) {
-        return "undefined" // for undefinedData in collection only
+        return [] // for undefinedData in collection only
     }
 
     let header: Header = {
@@ -118,16 +179,18 @@ export const softwareSalesList: string[] = collection.map((elem, index, array) =
 
     let salesThisFY: Section[] = salesMake(elem);
     let salesLastFY: Section[] = salesMake(array[index+1]);
+    let salesForecast: Section[] = salesMake(elem,true);
 
     let unitsThisFY: Section[] = unitsMake(elem);
     let unitsLastFY: Section[] = unitsMake(array[index+1]);
+    let unitsForecast: Section[] = unitsMake(elem,true);
 
-    return SegaPrint(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter)
-}).filter(elem => elem !== "undefined")
+    return SegaPrint(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter) + "\n" + salesPerSoftwareUnitForecast(salesForecast, unitsForecast, header, elem.currentQuarter)
+});
 
-export const softwareSalesGraphList = collection.map((elem, index, array) => {
+export const softwareSalesGraphList = collection.flatMap((elem, index, array) => {
     if (array[index] === array.at(-1)) {
-        return undefined // for undefinedData in collection only
+        return [] // for undefinedData in collection only
     }
 
     let salesThisFY: Section[] = salesMake(elem);
@@ -137,5 +200,5 @@ export const softwareSalesGraphList = collection.map((elem, index, array) => {
     let unitsLastFY: Section[] = unitsMake(array[index+1]);
 
     return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.fullGameSales.name, elem.fiscalYear, elem.currentQuarter)
-}).filter(elem => elem !== undefined);
+});
 

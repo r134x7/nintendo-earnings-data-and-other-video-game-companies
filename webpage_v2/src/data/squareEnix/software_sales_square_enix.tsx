@@ -214,9 +214,9 @@ export const unitsMake = (obj: {"hdGamesAndMMOUnits": salesOrUnitsJSON}): Sectio
     return units 
 };
 
-export const softwareSalesList: string[] = collection.map((elem, index, array) => {
+export const softwareSalesList: string[] = collection.flatMap((elem, index, array) => {
     if (array[index] === array.at(-1)) {
-        return "undefined" // for undefinedData in collection only
+        return [] // for undefinedData in collection only
     }
 
     let header: Header = {
@@ -240,4 +240,4 @@ export const softwareSalesList: string[] = collection.map((elem, index, array) =
     return (elem.fiscalYear === "FY3/2021")  
             ? SquareEnixPrint(salesHDThisFY, salesHDLastFY, salesMMOThisFY, salesMMOLastFY, salesHDandMMOThisFY, salesHDandMMOLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter).concat(notes2021)
             : SquareEnixPrint(salesHDThisFY, salesHDLastFY, salesMMOThisFY, salesMMOLastFY, salesHDandMMOThisFY, salesHDandMMOLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter)
-}).filter(elem => elem !== "undefined")
+});

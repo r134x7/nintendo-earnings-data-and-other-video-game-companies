@@ -344,7 +344,7 @@ export const digitalUnitsMake = (obj: {"digitalUnits": salesOrUnitsJSON}, foreca
 };
 
 
-export const softwareSalesList: string[] = collection.map((elem, index, array) => {
+export const softwareSalesList: string[] = collection.flatMap((elem, index, array) => {
     if (array[index] === array.at(-1)) {
         return [] // for undefinedData in collection only
     }
@@ -391,9 +391,9 @@ export const softwareSalesList: string[] = collection.map((elem, index, array) =
     return capcomList
 
     // return CapcomPrint(digitalContentsSalesThisFY, digitalContentsSalesLastFY, digitalContentsUnitsThisFY, digitalContentsUnitsLastFY, header, elem.currentQuarter) + "\n" + CapcomPrintPhysical(packageSalesThisFY, packageSalesLastFY, packageUnitsThisFY, packageUnitsLastFY, header, elem.currentQuarter) + "\n" + CapcomPrintDigital(digitalSalesThisFY, digitalSalesLastFY, digitalUnitsThisFY, digitalUnitsLastFY, header, elem.currentQuarter)
-}).flat();
+});
 
-export const softwareSalesGraphList = collection.map((elem, index, array) => {
+export const softwareSalesGraphList = collection.flatMap((elem, index, array) => {
     if (array[index] === array.at(-1)) {
         return [] // for undefinedData in collection only
     }
@@ -405,4 +405,4 @@ export const softwareSalesGraphList = collection.map((elem, index, array) => {
     let unitsLastFY: Section[] = digitalContentsUnitsMake(array[index+1]);
 
     return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.digitalContentsSales.name, elem.fiscalYear, elem.currentQuarter)
-}).flat();
+});
