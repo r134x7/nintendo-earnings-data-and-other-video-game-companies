@@ -1,4 +1,4 @@
-import { Header, Section, CapcomPrint, CapcomPrintPhysical, CapcomPrintDigital, graphMake } from "../../utils/segment_data_logic";
+import { Header, Section, CapcomPrint, CapcomForecast, CapcomPrintPhysical, CapcomPrintDigital, graphMake, undefinedData as forecastUndefinedData } from "../../utils/segment_data_logic";
 import softwareSales2023 from "./Software_Sales/software_sales_fy3_2023.json";
 import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
@@ -360,7 +360,7 @@ export const digitalUnitsMake = (obj: {"digitalUnits": capcomSalesOrUnitsJSON}, 
 
 export const softwareSalesList: string[] = collection.map((elem, index, array) => {
     if (array[index] === array.at(-1)) {
-        return "undefined" // for undefinedData in collection only
+        return [] // for undefinedData in collection only
     }
 
     let header: Header = {
@@ -371,28 +371,45 @@ export const softwareSalesList: string[] = collection.map((elem, index, array) =
 
     let digitalContentsSalesThisFY: Section[] = digitalContentsSalesMake(elem);
     let digitalContentsSalesLastFY: Section[] = digitalContentsSalesMake(array[index+1]);
+    let digitalContentsSalesForecast: Section[] = digitalContentsSalesMake(elem,true);
 
     let digitalContentsUnitsThisFY: Section[] = digitalContentsUnitsMake(elem);
     let digitalContentsUnitsLastFY: Section[] = digitalContentsUnitsMake(array[index+1]);
+    let digitalContentsUnitsForecast: Section[] = digitalContentsUnitsMake(elem,true);
 
     let packageSalesThisFY: Section[] = packageSalesMake(elem);
     let packageSalesLastFY: Section[] = packageSalesMake(array[index+1]);
+    let packageSalesForecast: Section[] = packageSalesMake(elem,true);
 
     let packageUnitsThisFY: Section[] = packageUnitsMake(elem);
     let packageUnitsLastFY: Section[] = packageUnitsMake(array[index+1]);
+    let packageUnitsForecast: Section[] = packageUnitsMake(elem,true);
 
     let digitalSalesThisFY: Section[] = digitalSalesMake(elem);
     let digitalSalesLastFY: Section[] = digitalSalesMake(array[index+1]);
+    let digitalSalesForecast: Section[] = digitalSalesMake(elem,true);
 
     let digitalUnitsThisFY: Section[] = digitalUnitsMake(elem);
     let digitalUnitsLastFY: Section[] = digitalUnitsMake(array[index+1]);
+    let digitalUnitsForecast: Section[] = digitalUnitsMake(elem,true);
 
-    return CapcomPrint(digitalContentsSalesThisFY, digitalContentsSalesLastFY, digitalContentsUnitsThisFY, digitalContentsUnitsLastFY, header, elem.currentQuarter) + "\n" + CapcomPrintPhysical(packageSalesThisFY, packageSalesLastFY, packageUnitsThisFY, packageUnitsLastFY, header, elem.currentQuarter) + "\n" + CapcomPrintDigital(digitalSalesThisFY, digitalSalesLastFY, digitalUnitsThisFY, digitalUnitsLastFY, header, elem.currentQuarter)
-}).filter(elem => elem !== "undefined")
+    let capcomList: string = [
+        CapcomPrint(digitalContentsSalesThisFY, digitalContentsSalesLastFY, digitalContentsUnitsThisFY, digitalContentsUnitsLastFY, header, elem.currentQuarter),
+        CapcomForecast(digitalContentsSalesForecast, digitalContentsUnitsForecast, header, elem.currentQuarter),
+        CapcomPrintPhysical(packageSalesThisFY, packageSalesLastFY, packageUnitsThisFY, packageUnitsLastFY, header, elem.currentQuarter),
+        CapcomForecast(packageSalesForecast, packageUnitsForecast, header, elem.currentQuarter),
+        CapcomPrintDigital(digitalSalesThisFY, digitalSalesLastFY, digitalUnitsThisFY, digitalUnitsLastFY, header, elem.currentQuarter),
+        CapcomForecast(digitalSalesForecast, digitalUnitsForecast, header, elem.currentQuarter),
+    ].reduce((acc, next) => acc + "\n" + next);
+
+    return capcomList
+
+    // return CapcomPrint(digitalContentsSalesThisFY, digitalContentsSalesLastFY, digitalContentsUnitsThisFY, digitalContentsUnitsLastFY, header, elem.currentQuarter) + "\n" + CapcomPrintPhysical(packageSalesThisFY, packageSalesLastFY, packageUnitsThisFY, packageUnitsLastFY, header, elem.currentQuarter) + "\n" + CapcomPrintDigital(digitalSalesThisFY, digitalSalesLastFY, digitalUnitsThisFY, digitalUnitsLastFY, header, elem.currentQuarter)
+}).flat();
 
 export const softwareSalesGraphList = collection.map((elem, index, array) => {
     if (array[index] === array.at(-1)) {
-        return undefined // for undefinedData in collection only
+        return [] // for undefinedData in collection only
     }
 
     let salesThisFY: Section[] = digitalContentsSalesMake(elem);
@@ -402,4 +419,4 @@ export const softwareSalesGraphList = collection.map((elem, index, array) => {
     let unitsLastFY: Section[] = digitalContentsUnitsMake(array[index+1]);
 
     return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.digitalContentsSales.name, elem.fiscalYear, elem.currentQuarter)
-}).filter(elem => elem !== undefined);
+}).flat();

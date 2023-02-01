@@ -99,6 +99,13 @@ const generalSalesHeader =
 |             |       Sales |    Units |      Unit |
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
 
+const forecastSalesHeader = 
+`+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
+|                 |             |          | Sales Per |
+|                 |             | Software |  Software |
+|                 |       Sales |    Units |      Unit |
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
+
 const squareEnixSalesHeader =
 `+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 |             |    Sales    |   YoY%   |
@@ -179,6 +186,49 @@ const printYoYSales = (segmentSales: Section[], segmentSalesLastFY: Section[]): 
 
     return printSectionFixed
 };
+
+const printForecastSalesPerSWUnit = (segmentSales: Section[], segmentUnits: Section[], header: Header, currentQuarter: number): string[] => {
+
+        const sales = segmentSales.map((elem, index, array) => {
+            // values given are Billion yen, changing to Million yen
+            let printSection: string = `¥${(elem.value * 1000).toLocaleString("en")}M`
+
+            return printSection
+        })
+
+        const salesPerSoftwareUnit = segmentSales.flatMap((elem, index, array) => {
+            if (elem.value === 0) {
+                return []
+            };
+            // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
+            let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (segmentUnits[index].value / 1000)).toFixed(0))
+
+            let printsegmentSalesPerSoftware: string = (isNaN(calculateSalesPerSoftware)) 
+                    ? "N/A"
+                    : `¥${calculateSalesPerSoftware.toLocaleString("en")}`
+            
+            let printSoftwareUnits: string = `${segmentUnits[index].value / 1000}M`
+
+            // let printSoftwareUnits: string = `${segmentUnits[index].value.toLocaleString("en")}k `
+            let periodCondition: string = (currentQuarter === 4 && index === array.length-1 && array.length === 1)
+                ? `${header.fiscalYear.slice(0,4) + (Number(header.fiscalYear.slice(4)) + 1).toString()} ${elem.period}`
+                : (currentQuarter === 4 && index === array.length-1 && elem.period === "Forecast")
+                    ? `${header.fiscalYear.slice(0,4) + (Number(header.fiscalYear.slice(4)) + 1).toString()} ${elem.period}`
+                    : (index === 0)
+                        ? `${header.fiscalYear} ${elem.period}`
+                        : elem.period
+
+            return liner(border([
+                    spacer(periodCondition,16,"left"),
+                    spacer(sales[index],12,"right"),
+                    spacer(printSoftwareUnits,9,"right"),
+                    spacer(printsegmentSalesPerSoftware,10,"right"),
+                ]),(array[index] === array.at(-1))?"=":"−","bottom",true)
+        })
+
+        return salesPerSoftwareUnit
+}
+
 
 const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Section[], segmentUnits: Section[], segmentUnitsLastFY: Section[], header: Header, currentQuarter: number): string[] => {
 
@@ -389,7 +439,7 @@ export const CapcomPrint = (salesData: Section[], salesDataLastFY: Section[], sa
     const head = printHead(header);
 
     const salesUnitsBlock = [
-        liner(printTextBlock(salesData[0].name, 32),"−","top",true),
+        liner(printTextBlock(salesData[0].name, 40),"−","top",true,40),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
@@ -399,10 +449,22 @@ export const CapcomPrint = (salesData: Section[], salesDataLastFY: Section[], sa
     return [head, ...salesUnitsBlock].reduce((prev, next) => prev + next); 
 };
 
+export const CapcomForecast = (salesData: Section[], salesUnits: Section[], header: Header, currentQuarter: number) => {
+
+    const salesUnitsBlock = [
+        liner(printTextBlock(salesData[0].name + " Forecast", 40),"−","top",true,40),
+        forecastSalesHeader,
+        ...printForecastSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
+        (salesData[0].notes === undefined) ? [] : liner(printTextBlock(salesData[0].notes, 50),"−","bottom",true,50)
+        ].flat();
+
+    return [...salesUnitsBlock].reduce((prev, next) => prev + next); 
+};
+
 export const CapcomPrintPhysical = (salesData: Section[], salesDataLastFY: Section[], salesUnits: Section[], salesUnitsLastFY: Section[], header: Header, currentQuarter: number) => {
 
     const salesUnitsBlock = [
-        liner(printTextBlock(salesData[0].name, 32),"−","top",true),
+        liner(printTextBlock(salesData[0].name, 32),"−","top",true,32),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
@@ -415,7 +477,7 @@ export const CapcomPrintPhysical = (salesData: Section[], salesDataLastFY: Secti
 export const CapcomPrintDigital = (salesData: Section[], salesDataLastFY: Section[], salesUnits: Section[], salesUnitsLastFY: Section[], header: Header, currentQuarter: number) => {
 
     const salesUnitsBlock = [
-        liner(printTextBlock(salesData[0].name, 32),"−","top",true),
+        liner(printTextBlock(salesData[0].name, 32),"−","top",true,32),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
