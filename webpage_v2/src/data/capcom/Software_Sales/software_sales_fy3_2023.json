@@ -2,7 +2,7 @@
     "fiscalYear": "FY3/2023",
     "currentQuarter": 3,
     "digitalContentsSales": {
-        "name": "Digital Contents",
+        "name": "Digital Contents - Package & Digital",
         "units": "currency",
         "Q1CmlValue": 19.2,
         "Q2CmlValue": 34.9,
@@ -13,7 +13,7 @@
         "notes": "*Sales includes: - Downloadable content purchases"
     },
     "digitalContentsUnits": {
-        "name": "Digital Contents",
+        "name": "Digital Contents - Package & Digital",
         "units": "units",
         "Q1CmlValue": 11700,
         "Q2CmlValue": 21300,

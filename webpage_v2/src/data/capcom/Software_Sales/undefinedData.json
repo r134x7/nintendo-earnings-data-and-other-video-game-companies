@@ -2,7 +2,7 @@
     "fiscalYear": "undefined",
     "currentQuarter": 4,
     "digitalContentsSales": {
-        "name": "Digital Contents",
+        "name": "Digital Contents - Package & Digital",
         "units": "NaN",
         "Q1CmlValue": 0,
         "Q2CmlValue": 0,
@@ -10,7 +10,7 @@
         "Q4CmlValue": 0
     },
     "digitalContentsUnits": {
-        "name": "Digital Contents",
+        "name": "Digital Contents - Package & Digital",
         "units": "NaN",
         "Q1CmlValue": 0,
         "Q2CmlValue": 0,
