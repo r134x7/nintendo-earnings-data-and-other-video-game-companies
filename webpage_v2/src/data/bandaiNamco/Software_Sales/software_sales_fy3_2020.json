@@ -8,6 +8,9 @@
         "Q2CmlValue": 40.7,
         "Q3CmlValue": 67.5,
         "Q4CmlValue": 99.0,
+        "forecastThisFY": 96.0,
+        "forecastRevision1": 96.0,
+        "forecastNextFY": 100.0,
         "notes": "*Sales might include: - Downloadable content purchases"
     },
     "softwareUnits": {
@@ -16,6 +19,9 @@
         "Q1CmlValue": 4347,
         "Q2CmlValue": 10186,
         "Q3CmlValue": 15536,
-        "Q4CmlValue": 24584
+        "Q4CmlValue": 24584,
+        "forecastThisFY": 26000,
+        "forecastRevision1": 22600,
+        "forecastNextFY": 28000
     }
 }
