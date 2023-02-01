@@ -8,6 +8,10 @@
         "Q2CmlValue": 25.2,
         "Q3CmlValue": 42.6,
         "Q4CmlValue": 55.1,
+        "forecastThisFY": 51.3,
+        "forecastRevision1": 48.5,
+        "forecastRevision2": 55.7,
+        "forecastNextFY": 55.0,
         "notes": "\"*Full Game = Mainly physical sales and download sales of full game for home video game consoles and PCs. (Additional download content sales are not included.)\" **Software Units: \"Unit sales don’t include the figure for free download\""
     },
     "fullGameUnits": {
@@ -16,6 +20,10 @@
         "Q1CmlValue": 12980,
         "Q2CmlValue": 19080,
         "Q3CmlValue": 34200,
-        "Q4CmlValue": 41770 
+        "Q4CmlValue": 41770, 
+        "forecastThisFY": 34100,
+        "forecastRevision1": 33040,
+        "forecastRevision2": 40540,
+        "forecastNextFY": 37870
     }
 }
