@@ -118,13 +118,7 @@ function printTitles(header: string, titles: Series[][]) {
 
         let printTitleName = liner(printTextBlock(elem[0].title, 42),"−","both",true,42);
 
-        let miscellaneousCheck: string | undefined = (elem[elem.length-1].miscellaneous === undefined)
-            ? undefined
-            : elem[elem.length-1].miscellaneous;
-
-        let releaseDateAndRank = (miscellaneousCheck === undefined) 
-            ? liner(printReleaseDate(elem[elem.length-1],42),"−","bottom",true,42) + liner(printNumberOfTitles(elem[elem.length-1],42),"=","bottom",true)
-            : liner(printReleaseDate(elem[elem.length-1],42),"−","bottom",true,42) + liner(printNumberOfTitles(elem[elem.length-1],42),"=","bottom",true) + liner(printTextBlock(miscellaneousCheck,42),"=","bottom",true,42) 
+        let releaseDateRankAndMiscCheck = liner(printReleaseDate(elem[elem.length-1],42),"−","bottom",true,42) + liner(printNumberOfTitles(elem[elem.length-1],42),"=","bottom",true) + (liner(printTextBlock(elem.at(-1)?.miscellaneous,42),"=","bottom",true,42)) 
 
         let yearValues: string[] = elem.flatMap(value => {
             if (value.value - value.valueLastFY === 0) {
@@ -146,7 +140,7 @@ function printTitles(header: string, titles: Series[][]) {
 
         return [
             printTitleName,
-            releaseDateAndRank,
+            releaseDateRankAndMiscCheck,
             ...yearValues,
             printLTD,
         ].reduce((prev, next) => {

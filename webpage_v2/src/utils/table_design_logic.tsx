@@ -1,5 +1,8 @@
-export const printTextBlock = (text: string, blockLength: number): string => {
-
+export const printTextBlock = (text: string | undefined, blockLength: number): string | undefined => {
+    // to make liner work by not printing.
+    if (text === undefined) {
+        return undefined;
+    }
         let textSplit: string[] = text.split(" ");
          
         let arrayCheckText = 0; // a mutating variable for splicing textSplit below in textReduce
@@ -65,7 +68,11 @@ export const border = (textArray: string[], newLine?: true): string => {
             : setText + "\n";
     };
 
-export const liner = (text: string, lineStyle: "−" | "=" | "#", position: "top" | "bottom" | "both", newLine?: true, lineLengthCustom?: number): string => {
+export const liner = (text: string | undefined, lineStyle: "−" | "=" | "#", position: "top" | "bottom" | "both", newLine?: true, lineLengthCustom?: number): string => {
+    // to make printTextBlock miscChecks simpler.
+    if (text === undefined) {
+        return "";
+    }
         let line = (lineLengthCustom === undefined) 
             ? `+${lineStyle.repeat(text.length-2)}+`
             : `+${lineStyle.repeat(lineLengthCustom)}+`; 
