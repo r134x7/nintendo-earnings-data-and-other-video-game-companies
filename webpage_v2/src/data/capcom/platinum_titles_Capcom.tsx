@@ -112,7 +112,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
                         platforms: elem.platforms,
                         period: "1st Quarter",
                         value: elem.Q1CmlValue,
-                        miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
+                        miscellaneous: elem?.miscellaneous,
                     },
                     {
                         title: elem.title,
@@ -120,7 +120,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
                         platforms: elem.platforms,
                         period: "2nd Quarter",
                         value: elem.Q2CmlValue,
-                        miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
+                        miscellaneous: elem?.miscellaneous,
                     },
                     {
                         title: elem.title,
@@ -128,7 +128,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
                         platforms: elem.platforms,
                         period: "3rd Quarter",
                         value: elem.Q3CmlValue,
-                        miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
+                        miscellaneous: elem?.miscellaneous,
                     },
                     {
                         title: elem.title,
@@ -136,7 +136,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
                         platforms: elem.platforms,
                         period: "4th Quarter",
                         value: elem.Q4CmlValue,
-                        miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
+                        miscellaneous: elem?.miscellaneous,
                     },
                     {
                         title: elem.title,
@@ -148,7 +148,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
                                 : (searchPrevFY[0] !== undefined)
                                     ? searchPrevFY[0].Q4CmlValue
                                     : 0,
-                        miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
+                        miscellaneous: elem?.miscellaneous,
                     },
                     {
                         title: elem.title,
@@ -160,7 +160,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
                                 : (searchPrev2FYs[0] !== undefined)
                                     ? searchPrev2FYs[0].Q4CmlValue
                                     : 0,
-                        miscellaneous: (!elem.miscellaneous) ? undefined : elem.miscellaneous,
+                        miscellaneous: elem?.miscellaneous,
                     },
                 ]
             }) 
@@ -184,13 +184,13 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
         summaryHeader: elem.fiscalYear + " Cml.|   Units |    %    |",
     };
 
-    let prevFYCheck = (array[index+1] === undefined) ? undefined : array[index+1].titles;
-    let prev2FYsCheck = (array[index+2] === undefined) ? undefined : array[index+2].titles;
+    // returns titles else returns undefined
+    let prevFYCheck = array?.[index+1]?.titles;
+    let prev2FYsCheck = array?.[index+2]?.titles;
 
-    let delistedTitlesCheck: getTitles[] = (elem.delistedTitles === undefined)
-            ? elem.titles
-            : elem.titles.concat(elem.delistedTitles);
-
+    // if delistedTitles is undefined, is changed to [] and flat used.
+    let delistedTitlesCheck: getTitles[] = [elem.titles, elem?.delistedTitles ?? [],].flat(); 
+    
     let titlesList: Titles[][] = titlesMake(delistedTitlesCheck, prevFYCheck, prev2FYsCheck);
 
     let sortedAllCollection = titlesList.map((elem, index, array) => {
@@ -254,12 +254,10 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
         summaryHeader: elem.fiscalYear + " Cml.|   Units |    %    ",
     };
 
-    let prevFYCheck = (array[index+1] === undefined) ? undefined : array[index+1].titles;
-    let prev2FYsCheck = (array[index+2] === undefined) ? undefined : array[index+2].titles; 
+    let prevFYCheck = array?.[index+1]?.titles;
+    let prev2FYsCheck = array?.[index+2]?.titles;
 
-    let delistedTitlesCheck: getTitles[] = (elem.delistedTitles === undefined)
-            ? elem.titles
-            : elem.titles.concat(elem.delistedTitles);
+    let delistedTitlesCheck: getTitles[] = [elem.titles, elem?.delistedTitles ?? [],].flat(); 
 
     let titlesList: Titles[][] = titlesMake(delistedTitlesCheck, prevFYCheck, prev2FYsCheck);
 
@@ -344,7 +342,7 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
 
     let printSummaryTwo = printSummary(header, newSum, recurringSum, sporadicSum) + "\n"
 
-    let printListedTitlesFYFixed: string[] = (elem.footnotes === undefined) ? printListedTitlesFY : printListedTitlesFY.concat(elem.footnotes) 
+    let printListedTitlesFYFixed: string[] = printListedTitlesFY.concat(elem?.footnotes ?? []).flat(); 
 
     let printFYPlatinumTitles: string = (currentQuarter !== 4)
         ? [printOne, ...printListedTitlesFYFixed].reduce((prev, next) => prev + next )
@@ -382,12 +380,10 @@ const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+
 
     const makeValues: Titles[][][] = reverseCollection.map((data, index, array) => {
 
-        let prevFYCheck = (array[index-1] === undefined) ? undefined : array[index-1].titles;
-        let prev2FYsCheck = (array[index-2] === undefined) ? undefined : array[index-2].titles;
+    let prevFYCheck = array?.[index+1]?.titles;
+    let prev2FYsCheck = array?.[index+2]?.titles;
 
-        let delistedTitlesCheck: getTitles[] = (data.delistedTitles === undefined)
-                ? data.titles
-                : data.titles.concat(data.delistedTitles);
+    let delistedTitlesCheck: getTitles[] = [data.titles, data?.delistedTitles ?? [],].flat(); 
 
         let titlesList: Titles[][] = titlesMake(delistedTitlesCheck, prevFYCheck, prev2FYsCheck);
 
@@ -409,14 +405,11 @@ const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+
     };
 
     let latestTitlesList = makeValues[makeValues.length-1].map((elem, index) => {
-
-            return sortingTitles(elem)
+            // I forget what issue occurred that there could be empty arrays inside the arrays, changed from filter 0 length to flat()
+            return sortingTitles(elem).flat()
     });
 
-
-    let filteredList = latestTitlesList.filter(elem => elem.length !== 0);
-
-    let sortedList: Titles[][] = filteredList.map(elem => elem).sort((b, a) => {
+    let sortedList: Titles[][] = latestTitlesList.map(elem => elem).sort((b, a) => {
         return (a[a.length-1].value > b[b.length-1].value)
             ? 1
             : (a[a.length-1].value < b[b.length-1].value)
