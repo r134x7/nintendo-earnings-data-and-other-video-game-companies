@@ -1,5 +1,5 @@
 import { Header, Series, printSeriesOutput } from "../../utils/capcom_game_series_logic";
-import { spacer, border, liner, headerPrint } from "../../utils/table_design_logic";
+import { spacer, border, liner, headerPrint, dateLabel } from "../../utils/table_design_logic";
 
 import gameSeries2022 from "./Game_Series/game_series_fy3_2022.json";
 import gameSeries2021 from "./Game_Series/game_series_fy3_2021.json";
@@ -89,12 +89,16 @@ export const gameSeriesList: string[] = collection.map((elem, index, array) => {
         return printSeriesOutput(elem, header, 42, 11);
     }).reduce((prev, next) => prev + "\n" + next)
 
+    const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
     let printOne = headerPrint([
         header.capcomHeader,
         header.secondHeader,
         header.thirdHeader,
         header.fourthHeader,
-    ], 33)
+    ], 33) + "\n" + printDateLabel;
 
     return printOne + "\n" + printedSeries
 })

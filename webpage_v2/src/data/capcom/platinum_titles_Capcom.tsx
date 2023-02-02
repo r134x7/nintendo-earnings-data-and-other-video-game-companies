@@ -218,6 +218,10 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
         return printTitles(header, elem, sortedAllCollection[index], currentQuarter)
     }) as string[];
 
+    const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", elem?.currentQuarter ?? 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
     let printOne = headerPrint([
         header.capcomHeader,
     ],28) + "\n" + headerPrint([
@@ -225,7 +229,7 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
         header.thirdHeader,
         header.fourthHeader,
         header.fifthHeader,
-    ],28) + "\n";
+    ],28) + "\n" + printDateLabel;
 
     let printAllPlatinumTitles: string = (elem.footnotes === undefined) 
                 ? [printOne, ...printListedTitlesAll].reduce((prev, next) => prev + next )
@@ -323,6 +327,10 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
 
     let sporadicSum = sporadicTitles.reduce((prev, next) => prev + next, 0)    
 
+    const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", elem?.currentQuarter ?? 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
     let printOne = headerPrint([
         header.capcomHeader,
     ],28) + "\n" + headerPrint([
@@ -330,7 +338,7 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
         header.thirdHeader,
         header.fourthHeader,
         header.fifthHeader,
-    ],28) + "\n";
+    ],28) + "\n" + printDateLabel;
 
     let printSummaryOne = printSummaryHead(header, newTitles, recurringTitles, sporadicTitles) + "\n"
 

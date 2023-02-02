@@ -1,5 +1,5 @@
 import { Header, Series, printSeriesOutput } from "../../utils/capcom_factbook_logic";
-import { headerPrint } from "../../utils/table_design_logic";
+import { headerPrint, liner, border, spacer, dateLabel } from "../../utils/table_design_logic";
 
 import softwareShipmentsPlatform2022 from "./Fact_Book/software_shipments_platform_fy3_2022.json";
 import softwareShipmentsPlatform2021 from "./Fact_Book/software_shipments_platform_fy3_2021.json";
@@ -66,12 +66,16 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
         return printSeriesOutput(elem, header, 32, 11);
     }).reduce((prev, next) => prev + "\n" + next)
 
+    const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
     let printOne = headerPrint([
         header.firstHeader,
         header.secondHeader,
         header.thirdHeader,
         header.fourthHeader,
-    ], 31);
+    ], 31) + "\n" + printDateLabel;
 
     return printOne + "\n" + printedSeries
 })
