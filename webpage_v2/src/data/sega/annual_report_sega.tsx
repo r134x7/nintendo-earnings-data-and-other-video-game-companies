@@ -1,5 +1,5 @@
 import { Header, Series, printSeries } from "../../utils/sega_annual_report_logic";
-import { headerPrint, border, liner, spacer } from "../../utils/table_design_logic";
+import { headerPrint, border, liner, spacer, dateLabel } from "../../utils/table_design_logic";
 
 import annualReport2022 from "./Annual_Report/annual_report_fy3_2022.json";
 import annualReport2021 from "./Annual_Report/annual_report_fy3_2021.json";
@@ -168,6 +168,10 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
                 : printSeries(header, elem).concat(printRatio[0])
     }).reduce((prev, next) => prev + "\n" + next)
 
+    const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
     let printOne = headerPrint([
         header.segaHeader,
         header.secondHeader,
@@ -176,7 +180,7 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
         header.fifthHeader,
         header.sixthHeader,
         header.seventhHeader
-    ], 32)
+    ], 32) + "\n" + printDateLabel;
 
     return printOne + "\n" + printedSeries
 })

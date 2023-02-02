@@ -9,7 +9,7 @@ import {
 import seriesSoftwareUnits2023 from "./Software_Units/software_units_fy3_2023.json";
 import seriesSoftwareUnits2022 from "./Software_Units/software_units_fy3_2022.json";
 import seriesSoftwareUnits2021 from "./Software_Units/software_units_fy3_2021.json";
-import { headerPrint } from "../../utils/table_design_logic";
+import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
 
 export const collection = [
     seriesSoftwareUnits2023,
@@ -130,11 +130,14 @@ export const segaSoftwareUnitsList: string[] = collection.map((elem, index, arra
         });
     });
 
+    const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", elem?.currentQuarter ?? 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
 
     const printOne: string = headerPrint([
         header.firstHeader + " | " + header.fiscalYear,
         header.secondHeader,
-    ],32) + "\n"
+    ],32) + "\n" + printDateLabel;
 
     const printPlatformUnitSales: string[] = Array.from({length: platformUnitSalesThisFY.length}, (v, i) => {
 

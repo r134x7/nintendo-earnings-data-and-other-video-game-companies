@@ -1,5 +1,5 @@
 import { Header, Series, printSeriesOutput } from "../../utils/bandai_namco_annual_report_logic";
-import { headerPrint } from "../../utils/table_design_logic";
+import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
 
 import annualReport2022 from "./Annual_Report/annual_report_fy3_2022.json";
 import annualReport2021 from "./Annual_Report/annual_report_fy3_2021.json";
@@ -90,12 +90,16 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
         return printSeriesOutput(elem, header, 42, 11);
     }).reduce((prev, next) => prev + "\n" + next);
 
+    const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
     let printOne = headerPrint([
             header.bandaiNamcoHeader,
             header.secondHeader,
             header.thirdHeader,
             header.fourthHeader,
-    ], 32)
+    ], 32) + "\n" + printDateLabel;
 
     let notePrint = (elem.notes[0] === "") 
                     ? undefined
