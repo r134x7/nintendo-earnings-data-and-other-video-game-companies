@@ -6,7 +6,7 @@ import {
     quarterlyCalculation,
     yearOnYearCalculation
 } from "../../utils/hardware_software_units_logic";
-import { headerPrint } from "../../utils/table_design_logic";
+import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
 
 import globalHardwareSoftwareMobile2023 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2023.json";
 import globalHardwareSoftwareMobile2022 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2022.json";
@@ -259,7 +259,7 @@ const platformForecastsMake = (obj: platformForecastSalesType): Section[] => {
     return forecasts
 };
 
-export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, index, array) => {
+export const globalHardwareSoftwareList: string[] = collection.map((elem, index, array) => {
 
     let currentQuarter: number = elem.currentQuarter;
     
@@ -272,6 +272,10 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
         firstHeader: "Global Hardware and Software",
         secondHeader: "Sales Units and Forecasts",
     };
+
+    const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", elem?.currentQuarter ?? 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
 
     let platformSalesList: Section[][] = elem.platformCmlSales.map(value => platformSalesMake(value));
 
@@ -329,7 +333,7 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
         header.switchHeader + " | " + header.fiscalYear,
         header.firstHeader,
         header.secondHeader,
-    ],30)
+    ],30) + "\n" + printDateLabel;
 
     // "N/A" avoids crashing when no data...
     const printPlatformCmlSales: string[] = (platformSalesList[0][0].name === "N/A") ? [""] : Array.from({length: platformSalesList.length}, (v, i) => {
@@ -394,7 +398,7 @@ export const globalHardwareSoftwareMobileList: string[] = collection.map((elem, 
 
 });
 
-export const globalHardwareSoftwareMobileGraphList = collection.map((elem, index, array) => {
+export const globalHardwareSoftwareGraphList = collection.map((elem, index, array) => {
 
     let currentQuarter: number = elem.currentQuarter;
 

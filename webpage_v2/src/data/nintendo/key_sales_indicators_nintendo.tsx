@@ -7,7 +7,7 @@ import {
     printNewBody,
 } from "../../utils/kpi_logic";
 
-import { headerPrint, printTextBlock, border, liner, spacer } from "../../utils/table_design_logic";
+import { headerPrint, printTextBlock, border, liner, spacer, dateLabel } from "../../utils/table_design_logic";
 
 import keySalesIndicators2023 from "./Key_Sales_Indicators/ksi_fy3_2023.json";
 import keySalesIndicators2022 from "./Key_Sales_Indicators/ksi_fy3_2022.json";
@@ -539,10 +539,14 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
 
     let endLine: string = "###"; 
 
+    const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", elem?.currentQuarter ?? 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
     let printOne = headerPrint([
         headerOne.companyName + " | " + headerOne.fiscalYear,
         headerOne.title,
-    ],30)
+    ],30) + "\n" + printDateLabel;
 
     let printSecondRest = inputNewArrays.map(elem => {
         return printNewBody(elem.header, elem.footer, elem.quarterValuesProportion, elem.cumulativeValuesProportion,elem.quarterValuesSales, elem.cumulativeValuesSales, elem.quarterYoY, elem.cumulativeYoY, elem.currentQuarter)

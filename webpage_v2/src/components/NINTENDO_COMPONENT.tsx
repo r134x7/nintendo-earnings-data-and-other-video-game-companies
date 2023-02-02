@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { nintendoLinks } from "../data/generalTables/data_sources_general";
 import { nintendoConsolidatedEarningsList, nintendoConsolidatedEarningsGraphList} from "../data/generalTables/consolidated_earnings_general";
 import { fyMillionSellerTitlesList, fyMillionSellerTitlesGraphList } from "../data/nintendo/fy_million_seller_titles_nintendo";
-import { globalHardwareSoftwareMobileList, globalHardwareSoftwareMobileGraphList } from "../data/nintendo/global_hardware_software_mobile_nintendo";
+import { globalHardwareSoftwareList, globalHardwareSoftwareGraphList } from "../data/nintendo/global_hardware_software_mobile_nintendo";
 import { keySalesIndicatorsList, keySalesIndicatorsGraphList } from "../data/nintendo/key_sales_indicators_nintendo";
 import { regionalHardwareSoftwareList } from "../data/nintendo/regional_hardware_software_nintendo";
 import { topSellingTitlesList, topSellingTitlesGraphList } from "../data/nintendo/top_selling_titles_nintendo";
@@ -43,8 +43,8 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
             },
             {
                 name: "Global Hardware/Software Units",
-                value: globalHardwareSoftwareMobileList?.[index],
-                graph: <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={globalHardwareSoftwareMobileGraphList[index]} />
+                value: globalHardwareSoftwareList?.[index],
+                graph: <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={globalHardwareSoftwareGraphList[index]} />
             },
             {
                 name: "Key Sales Indicators",

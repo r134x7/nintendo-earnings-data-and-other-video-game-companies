@@ -9,7 +9,7 @@ import {
     printSummaryHead,
 } from "../../utils/fy_million_seller_titles_logic";
 
-import { headerPrint } from "../../utils/table_design_logic";
+import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
 
 import fyMillionSellerTitles2023 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2023.json";
 import fyMillionSellerTitles2022 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2022.json";
@@ -212,6 +212,10 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
         globalLTDSummaryHeader: "Global LTD",
     };
 
+    const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", elem?.currentQuarter ?? 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
     let prevFYTitles: titlesJSON[][] | undefined = (array[index+1] === undefined)
         ? undefined
         : array[index+1].titles;
@@ -320,7 +324,7 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
             header.secondHeader,
             header.thirdHeader,
             header.fourthHeader
-        ],32)
+        ],32) + "\n" + printDateLabel;
 
         let printListedTitles = differenceTitles.map((elem, index) => {
             return printTitles(headerFixed, elem, sortedTitles[index], currentQuarter)

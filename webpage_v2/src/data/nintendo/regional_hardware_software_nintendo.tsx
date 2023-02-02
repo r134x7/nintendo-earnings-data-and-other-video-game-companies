@@ -26,7 +26,7 @@ import regionalHardwareSoftware2007 from "./Regional_Hardware_Software/regional_
 import regionalHardwareSoftware2006 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2006.json";
 import regionalHardwareSoftware2005 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2005.json";
 import regionalHardwareSoftware2004 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2004.json";
-import { headerPrint } from "../../utils/table_design_logic";
+import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
 
 export type jsonData = {
     currentQuarter: number,
@@ -241,9 +241,13 @@ export const regionalHardwareSoftwareList: string[] = collection.map((elem, inde
         });
     });
 
+    const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", elem?.currentQuarter ?? 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
     const printOne: string = headerPrint([
         header.switchHeader + " | " + header.fiscalYear,
-    ],44)
+    ],44) + "\n" + printDateLabel;
 
     const printRegionalUnitSales: string[] = Array.from({length: regionalUnitsThisFYList.length}, (v, i) => {
 

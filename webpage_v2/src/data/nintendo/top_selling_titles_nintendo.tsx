@@ -17,7 +17,7 @@ import topSellingTitles2015 from "./Top_Selling_Titles/top_selling_titles_fy3_20
 import topSellingTitles2014 from "./Top_Selling_Titles/top_selling_titles_fy3_2014.json";
 import topSellingTitles2013 from "./Top_Selling_Titles/top_selling_titles_fy3_2013.json";
 import topSellingTitles2012 from "./Top_Selling_Titles/top_selling_titles_fy3_2012.json";
-import { headerPrint } from "../../utils/table_design_logic";
+import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
 
 export type collectionJSON = {
     currentQuarter: number,
@@ -159,6 +159,10 @@ export const topSellingTitlesList: string[] = collection.map((elem, index, array
 
         let differenceTitles: Titles[][] = sortedCollection.map(elem => quarterlyCalculation(elem));
 
+    const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", elem?.currentQuarter ?? 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
         let printOne = headerPrint([
             headerValuesFixed.mainHeader,
             headerValuesFixed.platformHeader,
@@ -166,7 +170,7 @@ export const topSellingTitlesList: string[] = collection.map((elem, index, array
             headerValuesFixed.titles,
             headerValuesFixed.platform,
             headerValuesFixed.units,
-        ],20);
+        ],20) + "\n" + printDateLabel;
 
         let inputArrays = Array.from({length: differenceTitles.length}, (v, i) => {
 
