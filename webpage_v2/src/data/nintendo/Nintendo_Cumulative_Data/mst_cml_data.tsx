@@ -1,5 +1,5 @@
-import { titlesMake, titlesJSON, collectionJSON } from "../fy_million_seller_titles_nintendo";
-import { printTextBlock, border, liner, spacer, headerPrint } from "../../../utils/table_design_logic";
+import { titlesMake, collectionJSON } from "../fy_million_seller_titles_nintendo";
+import { printTextBlock, border, liner, spacer, headerPrint, dateLabel } from "../../../utils/table_design_logic";
 
 import fyMillionSellerTitles2023 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2023.json";
 import fyMillionSellerTitles2022 from "../FY_Million_Seller_Titles/million_seller_titles_fy3_2022.json";
@@ -88,8 +88,10 @@ import { Header, Titles, decimateCalculation } from "../../../utils/fy_million_s
 
     // console.log(latestFYcollection);
     
+    const makeDateLabel = dateLabel(totalCollection.at(-1)?.fiscalYear ?? "N/A", totalCollection.at(-1)?.currentQuarter ?? 4);
 
-    const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+2, "left")]),"−", "both")
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "bottom",true)
+
 
     const header: Header = {
     mainHeader: "Nintendo Fiscal Year Million-Seller Titles",
@@ -413,18 +415,18 @@ const printFour = printTitlesGlobal(divideSortedGlobalCollection)
 
 export const printJapan =
 `${printOneJapan}
-${dateLabel}
+${printDateLabel}
 ${printTwo}
 ###`;
 
 export const printOverseas = 
 `${printOneOverseas}
-${dateLabel}
+${printDateLabel}
 ${printThree}
 ###`;
 
 export const printGlobal = 
 `${printOneWW}
-${dateLabel}
+${printDateLabel}
 ${printFour}
 ###`;

@@ -1,5 +1,5 @@
-import { platformUnitsMake, jsonData, regionData } from "../regional_hardware_software_nintendo";
-import { printTextBlock, border, liner, spacer } from "../../../utils/table_design_logic";
+import { platformUnitsMake } from "../regional_hardware_software_nintendo";
+import { printTextBlock, border, liner, spacer, dateLabel } from "../../../utils/table_design_logic";
 
 import regionalHardwareSoftware2023 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2023.json";
 import regionalHardwareSoftware2022 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2022.json";
@@ -97,7 +97,9 @@ import { Section } from "../../../utils/regional_hw_sw_logic";
 
     const latestFYcollection = sortingTitles(filteredCollection);
 
-    const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+2, "left")]),"−", "bottom")
+    const makeDateLabel = dateLabel(totalCollection.at(-1)?.fiscalYear ?? "N/A", totalCollection.at(-1)?.currentQuarter ?? 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "bottom",true)
 
     function accumulate(title: Section[]): Section[] {
 
@@ -330,28 +332,28 @@ let dataSource = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_da
 
 export const printJapanHardwareSoftware = 
 `${printOneJapan}
-${dateLabel}
+${printDateLabel}
 ${printFour}
 ###
 ${dataSource}`;
 
 export const printAmericasHardwareSoftware = 
 `${printOneAmericas}
-${dateLabel}
+${printDateLabel}
 ${printFive}
 ###
 ${dataSource}`;
 
 export const printEuropeHardwareSoftware = 
 `${printOneEurope}
-${dateLabel}
+${printDateLabel}
 ${printSix}
 ###
 ${dataSource}`;
 
 export const printOtherHardwareSoftware = 
 `${printOneOther}
-${dateLabel}
+${printDateLabel}
 ${printSeven}
 ###
 ${dataSource}`;

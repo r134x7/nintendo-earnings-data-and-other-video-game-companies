@@ -1,4 +1,4 @@
-import { liner, border, spacer, printTextBlock } from "../../utils/table_design_logic";
+import { liner, border, spacer, printTextBlock, dateLabel } from "../../utils/table_design_logic";
 import { Series } from "../../utils/sega_annual_report_logic";
 import { seriesType, seriesMake, fullGameRatio } from "./annual_report_sega";
 // import { collection as softwareUnitsCollection } from "./software_units_sega"; // so the function is working without having to import the software units collection...
@@ -32,7 +32,9 @@ const collectionSegaSammy: annualReport[] = [
     annualReportSegaSammy2022,
 ];
 
-const dateLabel = liner(border([spacer("Data as of March 31st, 2022", "Data as of March 31st, 2022".length+1, "left")]),"−", "bottom",true)
+    const makeDateLabel = dateLabel(collectionSegaSammy.at(-1)?.fiscalYear ?? "N/A", 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "bottom",true)
 
 function annualReportMaker (collection: annualReport[], companyName: string, dateLabelLocal: string) {
 
@@ -212,6 +214,6 @@ function printTitles(header: string, titles: Series[][]) {
     ].reduce((acc, next) => acc + next)
 };
 
-const annualReportSegaSammy = annualReportMaker(collectionSegaSammy, "Sega Sammy", dateLabel);
+const annualReportSegaSammy = annualReportMaker(collectionSegaSammy, "Sega Sammy", printDateLabel);
 
 export const fyTitlesSegaSammy = printTitles(annualReportSegaSammy.header, annualReportSegaSammy.titles); 

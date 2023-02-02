@@ -1,5 +1,5 @@
-import { collectionJSON, titlesJSON, titlesMake } from "../top_selling_titles_nintendo";
-import { printTextBlock, border, liner, spacer, headerPrint } from "../../../utils/table_design_logic";
+import { collectionJSON, titlesMake } from "../top_selling_titles_nintendo";
+import { printTextBlock, border, liner, spacer, headerPrint, dateLabel } from "../../../utils/table_design_logic";
 
 import topSellingTitles2023 from "../Top_Selling_Titles/top_selling_titles_fy3_2023.json";
 import topSellingTitles2022 from "../Top_Selling_Titles/top_selling_titles_fy3_2022.json";
@@ -69,9 +69,9 @@ import { Titles, Header } from "../../../utils/top_selling_titles_logic";
 
     const latestFYcollection = sortingTitles(filteredCollection);
 
-    const dateLabel = liner(border([
-        spacer("Data as of September 30th, 2022","Data as of September 30th, 2022".length+1,"left")
-    ]),"−","both");
+    const makeDateLabel = dateLabel(totalCollection.at(-1)?.fiscalYear ?? "N/A", totalCollection.at(-1)?.currentQuarter ?? 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
 
     const header: Header = {
         fiscalYear: "placeholder",
@@ -173,6 +173,6 @@ const printFour = printTitlesGlobal(divideSortedGlobalCollection)
 
 export const printTopSellingTitles = 
 `${printOneWW}
-${dateLabel}
+${printDateLabel}
 ${printFour}
 ###`;

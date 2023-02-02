@@ -1,5 +1,5 @@
-import { platformUnitSalesMake, platformSalesMake, collectionJSON, platformUnitSalesType } from "../global_hardware_software_mobile_nintendo";
-import { printTextBlock, border, liner, spacer } from "../../../utils/table_design_logic";
+import { platformUnitSalesMake, platformSalesMake } from "../global_hardware_software_mobile_nintendo";
+import { printTextBlock, border, liner, spacer, dateLabel } from "../../../utils/table_design_logic";
 
 import globalHardwareSoftware2023 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2023.json";
 import globalHardwareSoftware2022 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2022.json";
@@ -105,9 +105,9 @@ import { Section, Header } from "../../../utils/hardware_software_units_logic";
     // console.log(latestFYcollection);
     
 
-    const dateLabel = liner(border([
-        spacer("Data as of September 30th, 2022",35,"left"),
-    ]),"−","bottom")
+    const makeDateLabel = dateLabel(totalCollection.at(-1)?.fiscalYear ?? "N/A", totalCollection.at(-1)?.currentQuarter ?? 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "bottom",true)
 
     const header: Header = {
         firstHeader: "Global Hardware and Software",
@@ -211,7 +211,7 @@ let dataSource = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_da
 
 export const printGlobalHardwareSoftware = 
 `${printOneWW}
-${dateLabel}
+${printDateLabel}
 ${printFour}
 ###
 ${dataSource}`;
@@ -291,6 +291,6 @@ ${dataSource}`;
 
 export const printGlobalSalesPerHardwareUnit = 
 `${printTwoWW}
-${dateLabel}
+${printDateLabel}
 ${printFive}
 ###`;

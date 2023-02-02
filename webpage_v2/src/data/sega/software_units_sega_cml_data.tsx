@@ -1,6 +1,6 @@
-import { Section,  } from "../../utils/general_quarterly_software_units_logic";
+import { Section } from "../../utils/general_quarterly_software_units_logic";
 import { platformUnitSalesMake } from "./software_units_sega";
-import { liner, border, printTextBlock, spacer } from "../../utils/table_design_logic";
+import { liner, border, printTextBlock, spacer, dateLabel } from "../../utils/table_design_logic";
 
 
 import softwareUnitsSegaSammy2021 from "./Software_Units/software_units_fy3_2021.json"
@@ -27,7 +27,9 @@ const collectionSegaSammy: softwareUnits[] = [
     softwareUnitsSegaSammy2023,
 ];
 
-const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+1, "left")]),"−", "bottom",true)
+    const makeDateLabel = dateLabel(collectionSegaSammy.at(-1)?.fiscalYear ?? "N/A", collectionSegaSammy.at(-1)?.currentQuarter ?? 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "bottom",true)
 
 function softwareUnitsMaker (collection: softwareUnits[], companyName: string, dateLabelLocal: string) {
 
@@ -133,6 +135,6 @@ function printTitles(header: string, titles: Section[][]) {
     ].reduce((acc, next) => acc + next)
 };
 
-const softwareUnitsSegaSammy = softwareUnitsMaker(collectionSegaSammy, "Sega Sammy", dateLabel);
+const softwareUnitsSegaSammy = softwareUnitsMaker(collectionSegaSammy, "Sega Sammy", printDateLabel);
 
 export const softwareCumulativeSegaSammy = printTitles(softwareUnitsSegaSammy.header, softwareUnitsSegaSammy.titles);

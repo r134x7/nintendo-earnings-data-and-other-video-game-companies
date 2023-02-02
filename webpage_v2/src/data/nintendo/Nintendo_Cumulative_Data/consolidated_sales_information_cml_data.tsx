@@ -1,5 +1,5 @@
-import { platformSalesMake, collectionJSON, platformSalesType } from "../consolidated_sales_information_nintendo";
-import { printTextBlock, border, liner, spacer } from "../../../utils/table_design_logic";
+import { platformSalesMake } from "../consolidated_sales_information_nintendo";
+import { printTextBlock, border, liner, spacer, dateLabel } from "../../../utils/table_design_logic";
 
 
 import consolidatedSalesInfo2023 from "../Consolidated_Sales_Information/consolidated_sales_information_fy3_2023.json";
@@ -86,7 +86,9 @@ import { Section, Header } from "../../../utils/hardware_software_units_logic";
 
     const latestFYcollection = sortingTitles(filteredCollection);
 
-    const dateLabel = "| Data as of September 30th, 2022    |\n+" + "−".repeat(36) + "+"
+    const makeDateLabel = dateLabel(totalCollection.at(-1)?.fiscalYear ?? "N/A", totalCollection.at(-1)?.currentQuarter ?? 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "bottom",true)
 
     const header: Header = {
         firstHeader: "Global Hardware and Software",
@@ -233,7 +235,7 @@ let dataSource = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_da
 
 export const printConsolidatedSalesInfo = 
 `${printOneWW}
-${dateLabel}
+${printDateLabel}
 ${printFour}
 ###
 ${dataSource}`;
