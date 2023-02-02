@@ -1,4 +1,4 @@
-import { printTextBlock, border, liner, spacer } from "../../utils/table_design_logic";
+import { printTextBlock, border, liner, spacer, dateLabel } from "../../utils/table_design_logic";
 import { Section } from "../../utils/segment_data_logic";
 
 import { unitsMake as bandaiNamcoUnitsMake, salesHomeVideoGameMake as bandaiNamcoSalesMake, collectionJSON as bandaiNamcoCollectionJSON} from "../bandaiNamco/software_sales_bandai_namco";
@@ -33,7 +33,17 @@ import squareEnixSoftwareSales2022 from "../squareEnix/Software_Sales/software_s
 import squareEnixSoftwareSales2021 from "../squareEnix/Software_Sales/software_sales_fy3_2021.json";
 import squareEnixSoftwareSales2020 from "../squareEnix/Software_Sales/software_sales_fy3_2020.json";
 
-const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+2, "left")]),"−", "bottom")
+type Dates = {
+    fiscalYear: string,
+    currentQuarter: number,
+};
+// finally made use of a generic to deal with a complex problem.
+function labelMaker <T extends Dates>(collection: T[]) {
+
+    const makeDateLabel = dateLabel(collection.at(-1)?.fiscalYear ?? "N/A", collection.at(-1)?.currentQuarter ?? 4);
+
+    return liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "bottom",true)
+}
 
 const bandaiNamcoCollection: bandaiNamcoCollectionJSON[] = [
     bandaiNamcoSoftwareSales2019,
@@ -313,13 +323,13 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
 
 export const bandaiNamcoSalesPerSoftwareUnitCml = [
     headerMaker("Bandai Namco"),
-    dateLabel,
+    labelMaker(bandaiNamcoCollection),
     printSalesPerSoftwareUnitCumulative(bandaiNamcoSales, bandaiNamcoUnits)
 ].reduce((acc, next) => acc + "\n" + next);
 
 export const CapcomSalesPerSoftwareUnitCml = [
     headerMaker("Capcom"),
-    dateLabel,
+    labelMaker(capcomCollection),
     printSalesPerSoftwareUnitCumulative(capcomDigitalContentsSales, capcomDigitalContentsUnits),
     printSalesPerSoftwareUnitCumulative(capcomDigitalSales, capcomDigitalUnits),
     printSalesPerSoftwareUnitCumulative(capcomPhysicalSales, capcomPhysicalUnits),
@@ -327,19 +337,19 @@ export const CapcomSalesPerSoftwareUnitCml = [
 
 export const segaSammySalesPerSoftwareUnitCml = [
     headerMaker("Sega Sammy"),
-    dateLabel,
+    labelMaker(segaCollection),
     printSalesPerSoftwareUnitCumulative(segaSales, segaUnits)
 ].reduce((acc, next) => acc + "\n" + next);
 
 export const koeiTecmoSalesPerSoftwareUnitCml = [
     headerMaker("Koei Tecmo"),
-    dateLabel,
+    labelMaker(koeiTecmoCollection),
     printSalesPerSoftwareUnitCumulative(koeiTecmoSales, koeiTecmoUnits)
 ].reduce((acc, next) => acc + "\n" + next);
 
 export const squareEnixSalesPerSoftwareUnitCml = [
     headerMaker("Square Enix"),
-    dateLabel,
+    labelMaker(squareEnixCollection),
     printSalesPerSoftwareUnitCumulative(squareEnixSales, squareEnixUnits),
     notes2021,
     liner(border([spacer("See \"Data by Fiscal Year\" for HD Games and MMO sales splits", 60, "left")]),"−","both"),
