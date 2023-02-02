@@ -27,7 +27,7 @@ import platinumTitles2009 from "./Platinum_Titles/platinum_titles_fy3_2009.json"
 import platinumTitles2008 from "./Platinum_Titles/platinum_titles_fy3_2008.json";
 import platinumTitles2007 from "./Platinum_Titles/platinum_titles_fy3_2007.json";
 import platinumTitles2006 from "./Platinum_Titles/platinum_titles_fy3_2006.json";
-import { headerPrint, border, liner, spacer } from "../../utils/table_design_logic";
+import { headerPrint, border, liner, spacer, dateLabel } from "../../utils/table_design_logic";
 
 export type getTitles = {
     title: string;
@@ -369,9 +369,8 @@ const specialList = (): string => {
         header.fifthHeader,
     ],24) + "\n"; 
 
-    const dateLabel = liner(border([
-        spacer("Data as of December 31st, 2022","Data as of December 31st, 2022".length+1,"left")
-    ]),"−","both",true);
+const makeDateLabel = dateLabel(reverseCollection.at(-1)?.fiscalYear ?? "N/A", reverseCollection.at(-1)?.currentQuarter ?? 4);
+const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
 
     const makeValues: Titles[][][] = reverseCollection.map((data, index, array) => {
 
@@ -428,7 +427,7 @@ const specialList = (): string => {
         return printTitles(header, elem, sortedList[index], 9999)
     }) as string[];
 
-    return [headerOne, dateLabel, ...printAll].reduce((acc, next) => acc + next) 
+    return [headerOne, printDateLabel, ...printAll].reduce((acc, next) => acc + next) 
 };
 
 export const printSpecialList = specialList();

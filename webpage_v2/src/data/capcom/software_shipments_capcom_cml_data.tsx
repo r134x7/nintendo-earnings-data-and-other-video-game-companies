@@ -1,4 +1,4 @@
-import { liner, border, spacer, printTextBlock } from "../../utils/table_design_logic";
+import { liner, border, spacer, printTextBlock, dateLabel } from "../../utils/table_design_logic";
 import { Series } from "../../utils/capcom_factbook_logic";
 
 import factBookCapcom2011 from "./Fact_Book/software_shipments_platform_fy3_2011.json";
@@ -40,7 +40,8 @@ const collectionCapcom: factBook[] = [
     factBookCapcom2022,
 ];
 
-const dateLabel = liner(border([spacer("Data as of March 31st, 2022", "Data as of March 31st, 2022".length+1, "left")]),"−", "bottom",true)
+const makeDateLabel = dateLabel(collectionCapcom.at(-1)?.fiscalYear ?? "N/A", 4);
+const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "bottom",true)
 
 function shipmentsMaker (collection: factBook[], companyName: string, dateLabelLocal: string) {
 
@@ -130,7 +131,7 @@ function printShipments(header: string, titles: Series[][]) {
             spacer(`Rank ${elem[elem.length-1].rank}`,9,"left")
         ])
 
-        let rankSKUandMisc = (miscellaneousCheck === undefined) 
+        let rankSKUandMisc: string = (miscellaneousCheck === undefined) 
             ? liner(printRankAndSKU,"=","bottom",true,42)
             : liner(printRankAndSKU,"−","bottom",true,42) + liner(printTextBlock(miscellaneousCheck,42),"=","bottom",true,42)
 
@@ -168,6 +169,6 @@ function printShipments(header: string, titles: Series[][]) {
     ].reduce((acc, next) => acc + next)
 };
 
-const softwareShipmentsCapcom = shipmentsMaker(collectionCapcom, "Capcom", dateLabel);
+const softwareShipmentsCapcom = shipmentsMaker(collectionCapcom, "Capcom", printDateLabel);
 
 export const factBookCapcom = printShipments(softwareShipmentsCapcom.header, softwareShipmentsCapcom.titles);

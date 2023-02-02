@@ -1,4 +1,4 @@
-import { liner, border, spacer, printTextBlock } from "../../utils/table_design_logic";
+import { liner, border, spacer, printTextBlock, dateLabel } from "../../utils/table_design_logic";
 import { printReleaseDateAndRank, Series } from "../../utils/bandai_namco_annual_report_logic";
 // import { seriesMake } from "../bandaiNamco/annual_report_bandai_namco";
 
@@ -57,7 +57,13 @@ const collectionSquareEnix: annualReport[] = [
     annualReportSquareEnix2022,
 ];
 
-const dateLabel = liner(border([spacer("Data as of March 31st, 2022", "Data as of March 31st, 2022".length+1, "left")]),"−", "bottom",true)
+function labelMaker (collection: annualReport[]) {
+
+    const makeDateLabel = dateLabel(collection.at(-1)?.fiscalYear ?? "N/A", 4);
+
+    return liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "bottom",true)
+}
+
 
 function annualReportMaker (collection: annualReport[], companyName: string, dateLabelLocal: string) {
 
@@ -178,11 +184,11 @@ function printTitles(header: string, titles: Series[][]) {
     ].reduce((acc, next) => acc + next)
 };
 
-const annualReportBandaiNamco = annualReportMaker(collectionBandaiNamco, "Bandai Namco", dateLabel);
+const annualReportBandaiNamco = annualReportMaker(collectionBandaiNamco, "Bandai Namco", labelMaker(collectionBandaiNamco));
 
 export const fyTitlesBandaiNamco = printTitles(annualReportBandaiNamco.header, annualReportBandaiNamco.titles);
 
-const annualReportSquareEnix = annualReportMaker(collectionSquareEnix, "Square Enix", dateLabel);
+const annualReportSquareEnix = annualReportMaker(collectionSquareEnix, "Square Enix", labelMaker(collectionSquareEnix));
 
 let squareEnixNote = "For the numbers shown from FY3/2010 to FY3/2019, go to the FY Series IP section of the relevant fiscal year and check the footnotes regarding the accuracy of those numbers." 
 

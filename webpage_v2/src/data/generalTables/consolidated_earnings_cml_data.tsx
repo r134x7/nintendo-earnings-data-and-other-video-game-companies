@@ -1,5 +1,5 @@
 import { EarningsJSON } from "./consolidated_earnings_general"
-import { liner, spacer, border } from "../../utils/table_design_logic"
+import { liner, spacer, border, dateLabel } from "../../utils/table_design_logic"
 
 import consolidatedEarningsNintendo1981 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1981.json" 
 import consolidatedEarningsNintendo1982 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1982.json" 
@@ -305,7 +305,12 @@ const totalCollectionSquareEnix: EarningsJSON[] = [
     consolidatedEarningsSquareEnix2023,
 ];
 
-const dateLabel = liner(border([spacer("Data as of September 30th, 2022", "Data as of September 30th, 2022".length+1, "left")]),"−", "bottom",true)
+function labelMaker (collection: EarningsJSON[]) {
+
+    const makeDateLabel = dateLabel(collection.at(-1)?.fiscalYear ?? "N/A", collection.at(-1)?.currentQuarter ?? 4);
+
+    return liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "bottom",true)
+}
 
 function operatingResultsMaker (collection: EarningsJSON[]): {
     header: string, netSales: string[], operatingIncome: string[], netIncome: string[]
@@ -482,7 +487,7 @@ const operatingResultsKoeiTecmo = operatingResultsMaker(totalCollectionKoeiTecmo
 
 export const cumulativeEarningsListNintendo = [
     operatingResultsNintendo.header,
-    dateLabel,
+    labelMaker(totalCollectionNintendo),
     ...operatingResultsNintendo.netSales,
     ...operatingResultsNintendo.operatingIncome,
     ...operatingResultsNintendo.netIncome,
@@ -492,7 +497,7 @@ export const cumulativeEarningsListNintendo = [
 
 export const cumulativeEarningsListBandaiNamco = [
     operatingResultsBandaiNamco.header,
-    dateLabel,
+    labelMaker(totalCollectionBandaiNamco),
     ...operatingResultsBandaiNamco.netSales,
     ...operatingResultsBandaiNamco.operatingIncome,
     ...operatingResultsBandaiNamco.netIncome,
@@ -501,7 +506,7 @@ export const cumulativeEarningsListBandaiNamco = [
 
 export const cumulativeEarningsListSquareEnix = [
     operatingResultsSquareEnix.header,
-    dateLabel,
+    labelMaker(totalCollectionSquareEnix),
     ...operatingResultsSquareEnix.netSales,
     ...operatingResultsSquareEnix.operatingIncome,
     ...operatingResultsSquareEnix.netIncome,
@@ -510,7 +515,7 @@ export const cumulativeEarningsListSquareEnix = [
 
 export const cumulativeEarningsListSegaSammy = [
     operatingResultsSegaSammy.header,
-    dateLabel,
+    labelMaker(totalCollectionSegaSammy),
     ...operatingResultsSegaSammy.netSales,
     ...operatingResultsSegaSammy.operatingIncome,
     ...operatingResultsSegaSammy.netIncome,
@@ -519,7 +524,7 @@ export const cumulativeEarningsListSegaSammy = [
 
 export const cumulativeEarningsListCapcom = [
     operatingResultsCapcom.header,
-    dateLabel,
+    labelMaker(totalCollectionCapcom),
     ...operatingResultsCapcom.netSales,
     ...operatingResultsCapcom.operatingIncome,
     ...operatingResultsCapcom.netIncome,
@@ -528,7 +533,7 @@ export const cumulativeEarningsListCapcom = [
 
 export const cumulativeEarningsListKoeiTecmo = [
     operatingResultsKoeiTecmo.header,
-    dateLabel,
+    labelMaker(totalCollectionKoeiTecmo),
     ...operatingResultsKoeiTecmo.netSales,
     ...operatingResultsKoeiTecmo.operatingIncome,
     ...operatingResultsKoeiTecmo.netIncome,
