@@ -89,3 +89,18 @@ export const headerPrint = (headerArray: string[], blockLength: number) => {
             : liner(border([spacer(headerArray[i], blockLength, "left")]), "−","top", true)
     }).reduce((acc, next) => acc + next);
 };
+
+export const dateLabel = (latestFiscalYear: string, currentQuarter: number) => {
+    
+    let fiscalYear = latestFiscalYear.slice(4);
+    let lastYear = (Number(fiscalYear) - 1).toString();
+
+    let fyEndingMarchDates = [
+        `June 30th, ${lastYear}`,
+        `September 30th, ${lastYear}`,
+        `December 31st, ${lastYear}`,
+        `March 31st, ${fiscalYear}`,
+    ].filter((elem, index) => index === currentQuarter - 1);
+
+    return `Data as of ${fyEndingMarchDates}`
+};
