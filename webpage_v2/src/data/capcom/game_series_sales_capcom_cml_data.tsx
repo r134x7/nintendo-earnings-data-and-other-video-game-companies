@@ -1,4 +1,4 @@
-import { liner, border, spacer, printTextBlock } from "../../utils/table_design_logic";
+import { liner, border, spacer, printTextBlock, dateLabel } from "../../utils/table_design_logic";
 import { Series, printNumberOfTitles, printReleaseDate} from "../../utils/capcom_game_series_logic";
 
 import gameSeries2010 from "./Game_Series/game_series_fy3_2010.json";
@@ -43,7 +43,8 @@ const collectionCapcom: annualReport[] = [
     gameSeries2022,
 ];
 
-const dateLabel = liner(border([spacer("Data as of March 31st, 2022", "Data as of March 31st, 2022".length+1, "left")]),"−", "bottom",true)
+const makeDateLabel = dateLabel(collectionCapcom.at(-1)?.fiscalYear ?? "N/A", 4);
+const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "bottom",true)
 
 function annualReportMaker (collection: annualReport[], companyName: string, dateLabelLocal: string) {
 
@@ -159,6 +160,6 @@ function printTitles(header: string, titles: Series[][]) {
     ].reduce((acc, next) => acc + next)
 };
 
-const annualReportCapcom = annualReportMaker(collectionCapcom, "Capcom", dateLabel);
+const annualReportCapcom = annualReportMaker(collectionCapcom, "Capcom", printDateLabel);
 
 export const fyTitlesCapcom = printTitles(annualReportCapcom.header, annualReportCapcom.titles);
