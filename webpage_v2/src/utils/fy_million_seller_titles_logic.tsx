@@ -235,9 +235,7 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
 
     const penultimateCheck = [regionAB, regionCD].reduce((prev, next) => prev + next)
     
-    return (titleDifference[0].miscellaneous)
-            ? liner(penultimateCheck,"−","bottom",true,36) + liner(printTextBlock(titleDifference[0].miscellaneous,36),"−","bottom",true,36)
-            : liner(penultimateCheck,"−","bottom",true,36) 
+    return liner(penultimateCheck,"−","bottom",true,36) + liner(printTextBlock(titleDifference[0]?.miscellaneous,36),"−","bottom",true,36)
 }
 
 export function labelTitles(titlesSorted: Titles[]) {

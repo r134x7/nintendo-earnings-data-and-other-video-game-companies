@@ -120,10 +120,6 @@ function printShipments(header: string, titles: Series[][]) {
 
         let printTitleName = liner(printTextBlock(elem[0].title, 42),"−","both",true,42);
 
-        let miscellaneousCheck: string | undefined = (elem[elem.length-1].miscellaneous === undefined)
-            ? undefined
-            : elem[elem.length-1].miscellaneous;
-
         let sumSKUs = elem.reduce((acc, next) => acc + next.skuNumber, 0); 
 
         let printRankAndSKU = border([
@@ -131,9 +127,7 @@ function printShipments(header: string, titles: Series[][]) {
             spacer(`Rank ${elem[elem.length-1].rank}`,9,"left")
         ])
 
-        let rankSKUandMisc: string = (miscellaneousCheck === undefined) 
-            ? liner(printRankAndSKU,"=","bottom",true,42)
-            : liner(printRankAndSKU,"−","bottom",true,42) + liner(printTextBlock(miscellaneousCheck,42),"=","bottom",true,42)
+        let rankSKUandMisc: string = liner(printRankAndSKU,"−","bottom",true,42) + liner(printTextBlock(elem.at(-1)?.miscellaneous,42),"=","bottom",true,42)
 
         let yearValues: string[] = elem.flatMap(value => {
             if (value.value === 0) {
