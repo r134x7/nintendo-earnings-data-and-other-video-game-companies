@@ -160,36 +160,18 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
             platform: obj.platform,
             period: "Last FY Total",
             regionA: "Japan",
-            valueA: (obj.valueALastFY !== undefined) 
-                                ? obj.valueALastFY 
-                                : (searchPrevFY[0] !== undefined)
-                                    ? searchPrevFY[0].Q4CmlValueA
-                                    : 0, 
-            // (obj.valueALastFY === undefined) ? 0 : obj.valueALastFY,
+            valueA: obj?.valueALastFY ?? searchPrevFY?.[0]?.Q4CmlValueA ?? 0, 
             regionB: "Overseas",
-            valueB: (obj.valueBLastFY !== undefined) 
-                                ? obj.valueBLastFY 
-                                : (searchPrevFY[0] !== undefined)
-                                    ? searchPrevFY[0].Q4CmlValueB
-                                    : 0,
+            valueB: obj?.valueBLastFY ?? searchPrevFY?.[0]?.Q4CmlValueB ?? 0, 
             regionC: "WW FY",
-            valueC: (obj.valueCLastFY !== undefined) 
-                                ? obj.valueCLastFY 
-                                : (searchPrevFY[0] !== undefined)
-                                    ? searchPrevFY[0].Q4CmlValueC
-                                    : 0,
+            valueC: obj?.valueCLastFY ?? searchPrevFY?.[0]?.Q4CmlValueC ?? 0, 
             regionD: "WW LTD",
-            valueD: (obj.valueDLastFY !== undefined) 
-                                ? obj.valueDLastFY 
-                                : (searchPrevFY[0] !== undefined)
-                                    ? searchPrevFY[0].Q4CmlValueD
-                                    : 0,
+            valueD: obj?.valueDLastFY ?? searchPrevFY?.[0]?.Q4CmlValueD ?? 0,
             miscellaneous: obj.miscellaneous,
         },
     ]
 
     return title
-
 };
 
 export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, array) => {
@@ -216,19 +198,15 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
 
     const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
 
-    let prevFYTitles: titlesJSON[][] | undefined = (array[index+1] === undefined)
-        ? undefined
-        : array[index+1].titles;
+    let prevFYTitles: titlesJSON[][] | undefined = array?.[index+1].titles;
 
     function makeTitlesList(titleValues: titlesJSON[], prevFYTitlesLocal: titlesJSON[][] | undefined, headerValues: Header, currentQuarter: number): string {
 
         let titlesList: Titles[][] = titleValues.map(value => titlesMake(value, prevFYTitlesLocal));
 
-
         let filteredCollection = titlesList.filter((elem, index, array) => {
             return array[index][3].valueC !== 0
         }) // to make sure things are accurate and that it works, all titles that sold units this FY must not have zero units for the remaining quarters. (ignore Last FY Cml.) Tried using [currentQuarter -1] and not [3] but bugs occurred, oh well.
-
 
         let sortedCollection = filteredCollection.map((elem, index, array) => {
                     return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
@@ -341,7 +319,7 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
         return printFYMillionSellerTitles
     };
 
-    let footnote = (elem.footnote === undefined) ? "###" : elem.footnote;
+    let footnote = elem?.footnote ?? "###";
 
     // now that it is a function, when I want to add titles of another platform, then I can reduce it
     // let platformList = makeTitlesList(elem.titles, header, elem.currentQuarter);
@@ -360,7 +338,6 @@ export const fyMillionSellerTitlesGraphList = collection.map((elem, index, array
         let filteredCollection = titlesList.filter((elem, index, array) => {
             return array[index][3].valueC !== 0
         }) // to make sure things are accurate and that it works, all titles that sold units this FY must not have zero units for the remaining quarters. (ignore Last FY Cml.) Tried using [currentQuarter -1] and not [3] but bugs occurred, oh well.
-
 
         let sortedCollection = filteredCollection.map((elem, index, array) => {
                     return elem // we need to create a new array that is identical to the original due to sort's mutating properties.

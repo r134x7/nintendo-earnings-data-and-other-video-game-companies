@@ -72,50 +72,50 @@ export const platformSalesMake = (obj: undefined | platformSalesType): Section[]
 
     let unitSales: Section[] = [
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "1st Quarter",
             cmlPeriod: "1st Quarter",
-            units: (obj !== undefined && obj.units === "currency")
+            units: (obj?.units === "currency")
                     ? "currency"
                     : "NaN",
-            value: (!obj) ? 0 : obj.Q1CmlValue,
+            value: obj?.Q1CmlValue ?? 0,
             footnote: obj?.footnote,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "2nd Quarter",
             cmlPeriod: "First Half",
-            units: (obj !== undefined && obj.units === "currency")
+            units: (obj?.units === "currency")
                     ? "currency"
                     : "NaN",
-            value: (!obj) ? 0 : obj.Q2CmlValue,
+            value: obj?.Q2CmlValue ?? 0,
             footnote: obj?.footnote,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "3rd Quarter",
             cmlPeriod: "1st 3 Qtrs",
-            units: (obj !== undefined && obj.units === "currency")
+            units: (obj?.units === "currency")
                     ? "currency"
                     : "NaN",
-            value: (!obj) ? 0 : obj.Q3CmlValue,
+            value: obj?.Q3CmlValue ?? 0,
             footnote: obj?.footnote,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "4th Quarter",
             cmlPeriod: "Cml.",
-            units: (obj !== undefined && obj.units === "currency")
+            units: (obj?.units === "currency")
                     ? "currency"
                     : "NaN",
-            value: (!obj) ? 0 : obj.Q4CmlValue,
+            value: obj?.Q4CmlValue ?? 0,
             footnote: obj?.footnote,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "Last FY Cumulative",
             cmlPeriod: "Cml.",
-            units: (obj !== undefined && obj.units === "currency")
+            units: (obj?.units === "currency")
                     ? "currency"
                     : "NaN",
             value: 0,
@@ -124,7 +124,6 @@ export const platformSalesMake = (obj: undefined | platformSalesType): Section[]
     ];
 
     return unitSales 
-
 };
 
 export const consolidatedSalesInformationList: string[] = collection.map((elem, index, array) => {

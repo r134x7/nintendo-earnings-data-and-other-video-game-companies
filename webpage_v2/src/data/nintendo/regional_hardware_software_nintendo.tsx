@@ -96,84 +96,84 @@ export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
 
     let sales: Section[] = [
         {
-            name: (!obj) ? "None" : obj.name,
+            name: obj?.name ?? "None",
             period: "1st Quarter",
             cmlPeriod: "1st Quarter",
             units: "units",
             regionA: "Global",
-            valueA: (!obj) ? 0 : obj.Q1CmlValueA,
+            valueA: obj?.Q1CmlValueA ?? 0,
             regionB: "Japan", 
-            valueB: (!obj) ? 0 : obj.Q1CmlValueB,
+            valueB: obj?.Q1CmlValueB ?? 0,
             regionC: (obj?.regionC === "The Americas") ? "The Americas" : "Overseas", 
-            valueC: (!obj) ? 0 : obj.Q1CmlValueC,
+            valueC: obj?.Q1CmlValueC ?? 0,
             regionD: (obj?.regionD === "Europe") ? "Europe" : "Other", 
-            valueD: (!obj) ? 0 : obj.Q1CmlValueD,
+            valueD: obj?.Q1CmlValueD ?? 0,
             regionE: "Other",
-            valueE: (!obj) ? 0 : obj.Q1CmlValueE,
+            valueE: obj?.Q1CmlValueE ?? 0,
         },
         {
-            name: (!obj) ? "None" : obj.name,
+            name: obj?.name ?? "None",
             period: "2nd Quarter", 
             cmlPeriod: "First Half",
             units: "units",
             regionA: "Global",
-            valueA: (!obj) ? 0 : obj.Q2CmlValueA,
+            valueA: obj?.Q2CmlValueA ?? 0,
             regionB: "Japan", 
-            valueB: (!obj) ? 0 : obj.Q2CmlValueB,
+            valueB: obj?.Q2CmlValueB ?? 0,
             regionC: (obj?.regionC === "The Americas") ? "The Americas" : "Overseas", 
-            valueC: (!obj) ? 0 : obj.Q2CmlValueC,
+            valueC: obj?.Q2CmlValueC ?? 0,
             regionD: (obj?.regionD === "Europe") ? "Europe" : "Other", 
-            valueD: (!obj) ? 0 : obj.Q2CmlValueD,
+            valueD: obj?.Q2CmlValueD ?? 0,
             regionE: "Other",
-            valueE: (!obj) ? 0 : obj.Q2CmlValueE,
+            valueE: obj?.Q2CmlValueE ?? 0,
         },
         {
-            name: (!obj) ? "None" : obj.name,
+            name: obj?.name ?? "None",
             period: "3rd Quarter",
             cmlPeriod: "First Three Quarters",
             units: "units",
             regionA: "Global",
-            valueA: (!obj) ? 0 : obj.Q3CmlValueA,
+            valueA: obj?.Q3CmlValueA ?? 0,
             regionB: "Japan", 
-            valueB: (!obj) ? 0 : obj.Q3CmlValueB,
+            valueB: obj?.Q3CmlValueB ?? 0,
             regionC: (obj?.regionC === "The Americas") ? "The Americas" : "Overseas", 
-            valueC: (!obj) ? 0 : obj.Q3CmlValueC,
+            valueC: obj?.Q3CmlValueC ?? 0,
             regionD: (obj?.regionD === "Europe") ? "Europe" : "Other", 
-            valueD: (!obj) ? 0 : obj.Q3CmlValueD,
+            valueD: obj?.Q3CmlValueD ?? 0,
             regionE: "Other",
-            valueE: (!obj) ? 0 : obj.Q3CmlValueE,
+            valueE: obj?.Q3CmlValueE ?? 0,
         },
         {
-            name: (!obj) ? "None" : obj.name,
+            name: obj?.name ?? "None",
             period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: "units",
             regionA: "Global",
-            valueA: (!obj) ? 0 : obj.Q4CmlValueA,
+            valueA: obj?.Q4CmlValueA ?? 0,
             regionB: "Japan", 
-            valueB: (!obj) ? 0 : obj.Q4CmlValueB,
+            valueB: obj?.Q4CmlValueB ?? 0,
             regionC: (obj?.regionC === "The Americas") ? "The Americas" : "Overseas", 
-            valueC: (!obj) ? 0 : obj.Q4CmlValueC,
+            valueC: obj?.Q4CmlValueC ?? 0,
             regionD: (obj?.regionD === "Europe") ? "Europe" : "Other", 
-            valueD: (!obj) ? 0 : obj.Q4CmlValueD,
+            valueD: obj?.Q4CmlValueD ?? 0,
             regionE: "Other",
-            valueE: (!obj) ? 0 : obj.Q4CmlValueE,
+            valueE: obj?.Q4CmlValueE ?? 0,
         },
         {
-            name: (!obj) ? "None" : obj.name,
+            name: obj?.name ?? "None",
             period: "Last FY Cumulative",
             cmlPeriod: "Cml.",
             units: "units",
             regionA: "Global",
-            valueA: (!obj) ? 0 : obj.valueALastFY,
+            valueA: obj?.valueALastFY ?? 0,
             regionB: "Japan", 
-            valueB: (!obj) ? 0 : obj.valueBLastFY,
+            valueB: obj?.valueBLastFY ?? 0,
             regionC: (obj?.regionC === "The Americas") ? "The Americas" : "Overseas", 
-            valueC: (!obj) ? 0 : obj.valueCLastFY,
+            valueC: obj?.valueCLastFY ?? 0,
             regionD: (obj?.regionD === "Europe") ? "Europe" : "Other", 
-            valueD: (!obj) ? 0 : obj.valueDLastFY,
+            valueD: obj?.valueDLastFY ?? 0,
             regionE: "Other",
-            valueE: (!obj) ? 0 : obj.valueELastFY,
+            valueE: obj?.valueELastFY ?? 0,
         },
     ];
 
@@ -207,21 +207,23 @@ export const regionalHardwareSoftwareList: string[] = collection.map((elem, inde
     });
     
     let quarterlyRegionalUnitsThisFY = regionalUnitsThisFYList.map((value) => {
-
-        return quarterlyCalculation(value).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative index
+        // filters out last fy cumulative index
+        return quarterlyCalculation(value).filter((elem, index, array) => index !== array.length-1)
     });
 
     let quarterlyRegionalUnitsLastFY = regionalUnitsLastFYList.map((value) => {
-
-        return quarterlyCalculation(value).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative index
+        // filters out last fy cumulative index
+        return quarterlyCalculation(value).filter((elem, index, array) => index !== array.length-1)
     });
 
     const regionalUnitSalesThisFY = regionalUnitsThisFYList.map((value) => {
-        return value.filter((elem, index) => index !== array.length-1) // filtering out the last FY cml index
+        // filtering out the last FY cml index
+        return value.filter((elem, index) => index !== array.length-1) 
     });
 
     const regionalUnitSalesLastFY = regionalUnitsLastFYList.map((value) => {
-        return value.filter((elem, index) => index !== array.length-1) // filtering out the last FY cml index
+        // filtering out the last FY cml index
+        return value.filter((elem, index) => index !== array.length-1) 
     });
 
     const regionalUnitSalesYoY = Array.from({length: regionalUnitSalesThisFY.length}, (v, i) => {
@@ -235,9 +237,9 @@ export const regionalHardwareSoftwareList: string[] = collection.map((elem, inde
     });
 
     const cmlRegionalUnitSalesThisFY = regionalUnitsThisFYList.map(elem => {
-
         return elem.filter((value, index) => {
-            return index !== 0 // filter out the first quarters
+            // filter out the first quarters
+            return index !== 0 
         });
     });
 
@@ -261,8 +263,7 @@ export const regionalHardwareSoftwareList: string[] = collection.map((elem, inde
             )
     })
 
-    let printAll = [printOne].concat(printRegionalUnitSales);
+    let printAll: string[] = [printOne].concat(printRegionalUnitSales);
 
     return printAll.reduce((prev, next) => prev + "\n" + next);
-
 }) 
