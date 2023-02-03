@@ -103,8 +103,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 11,
             companyName: "Square Enix",
-            eventName: "2nd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "November 7, 2022",
+            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
+            eventDate: "February 3, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.hd.square-enix.com/eng/ir/",
         },
