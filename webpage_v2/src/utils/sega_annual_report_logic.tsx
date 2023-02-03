@@ -52,23 +52,34 @@ export const printSeries = (header: Header, seriesIP: Series) => {
 
         let printTitleNameFixed: string = printTitleName + printIPType + printPlatforms + printFirstYearAndRankAndEditions
 
-        let printUnits: string = border([spacer(seriesIP.units, 43, "left")]);
+        // let printUnits: string = border([spacer(seriesIP.units, 43, "left")]);
 
-        let printMisc1: string | never[] = (!seriesIP.miscellaneous1)
-            ? [] 
-            : printTextBlock(seriesIP.miscellaneous1, 44)
+        // let printMisc1: string | never[] = (!seriesIP.miscellaneous1)
+        //     ? [] 
+        //     : printTextBlock(seriesIP.miscellaneous1, 44)
 
-        let printMisc2: string | never[] = (!seriesIP.miscellaneous2)
-            ? [] 
-            : printTextBlock(seriesIP.miscellaneous2, 44)
+        let printMisc1: string | undefined = printTextBlock(seriesIP?.miscellaneous1, 44);
 
-        let printMiscFlatFilter: string[] = [printMisc1, printMisc2].flat()
+        // let printMisc2: string | never[] = (!seriesIP.miscellaneous2)
+        //     ? [] 
+        //     : printTextBlock(seriesIP.miscellaneous2, 44)
 
-        let printUnitsFixed: string = (printMiscFlatFilter.length === 0)
-            ? printUnits
-            : printUnits + "\n" + printMiscFlatFilter.reduce((prev, next) => prev + "\n" + next);
+        let printMisc2: string | undefined = printTextBlock(seriesIP?.miscellaneous2, 44)
 
-        let printUnitsFixedLine: string = liner(printUnitsFixed, "−", "bottom", true, 44)
+        let printUnits: string = liner(printTextBlock(seriesIP?.units,44),"=","bottom",(!printMisc1 && !printMisc2) ? true : undefined,44)
+
+        let printMiscFlatFilter: string = [printMisc1, printMisc2].flatMap((value, index, array) => {
+            // do not use value over array in return statement else it gets first value in string...
+            return array?.[index] ?? []; 
+        }).reduce((acc, next) => acc + "\n" + next, "");
+
+        let printMiscCheck = (!printMisc1 && !printMisc2) 
+            ? "" 
+            : liner(printMiscFlatFilter,"=","bottom",true,44)
+
+        let printUnitsFixedLine: string = printUnits + printMiscCheck;
+
+        // let printUnitsFixedLine: string = liner(printUnitsFixed, "−", "bottom", true, 44)
 
         let printCmlValue: string = border([
             spacer(header.fiscalYear + " Cumulative", 20, "left"),
