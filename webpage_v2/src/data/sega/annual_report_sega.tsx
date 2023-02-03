@@ -79,8 +79,8 @@ export const seriesMake = (obj: {
                     value: elem.value,
                     valueLastFY: elem.valueLastFY,
                     valueLastTwoFYs: elem.valueLastTwoFYs,
-                    miscellaneous1: (elem.miscellaneous1 === undefined) ? undefined : elem.miscellaneous1,
-                    miscellaneous2: (elem.miscellaneous2 === undefined) ? undefined : elem.miscellaneous2,
+                    miscellaneous1: elem?.miscellaneous1,
+                    miscellaneous2: elem?.miscellaneous2,
                 }
     }) 
 
@@ -122,7 +122,6 @@ export const fullGameRatio = (ip: Series, fiscalYear: string, cumulative: boolea
             ? calcRow 
             : calcPrint
     };
-
 };
 
 export const annualReportList: string[] = collection.map((elem, index, array) => {

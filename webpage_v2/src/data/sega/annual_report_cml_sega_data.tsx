@@ -117,8 +117,6 @@ function printTitles(header: string, titles: Series[][]) {
 
     const titleList = titles.map((elem, index, array) => {
 
-        // console.log(elem);
-        
         let printTitleName = liner(printTextBlock(elem[0].title, 44),"−","both",true,44);
 
         let printPlatforms: string = liner(printTextBlock(elem[elem.length-1].platforms, 44), "−", "bottom", true, 44);
@@ -137,29 +135,17 @@ function printTitles(header: string, titles: Series[][]) {
                 spacer(`Rank ${elem[elem.length-1].rank}`, 11, "left"),
             ]), "=", "bottom", true, 44);
 
-        let miscellaneousCheck1: string | undefined = (elem[elem.length-1].miscellaneous1 === undefined)
-            ? undefined
-            : elem[elem.length-1].miscellaneous1;
+        let printMisc1: string | undefined = printTextBlock(elem.at(-1)?.miscellaneous1, 44);
+            
+        let printMisc2: string | undefined = printTextBlock(elem.at(-1)?.miscellaneous2, 44)
 
-        let miscellaneousCheck2: string | undefined = (elem[elem.length-1].miscellaneous1 === undefined)
-            ? undefined
-            : elem[elem.length-1].miscellaneous2;
+        let printUnits: string = liner(printTextBlock(elem.at(-1)?.units,44),"=","bottom",(!printMisc1 && !printMisc2) ? true : undefined,44)
 
-        let printUnits: string = liner(printTextBlock(elem[elem.length-1].units,44),"=","bottom",(miscellaneousCheck1 === undefined && miscellaneousCheck2 === undefined) ? true : undefined,44)
+        let printMiscFlatFilter: string = [printMisc1, printMisc2].flatMap((value, index) => {
+            return value?.[index] ?? []; 
+        }).reduce((acc, next) => acc + "\n" + next, "");
 
-        let printMisc1: string | never[] = (miscellaneousCheck1 === undefined)
-            ? [] 
-            : printTextBlock(miscellaneousCheck1, 44)
-
-        let printMisc2: string | never[] = (miscellaneousCheck2 === undefined)
-            ? [] 
-            : printTextBlock(miscellaneousCheck2, 44)
-
-        let printMiscFlatFilter: string = [printMisc1, printMisc2].flat().reduce((acc, next) => acc + "\n" + next, "");
-
-        let releaseDateAndRankAndNotes: string = (miscellaneousCheck1 === undefined && miscellaneousCheck2 === undefined) 
-            ? printFirstYearAndRankAndEditions + printUnits 
-            : printFirstYearAndRankAndEditions + printUnits + liner(printMiscFlatFilter,"=","bottom",true,44) 
+        let releaseDateAndRankAndNotes: string = printFirstYearAndRankAndEditions + printUnits + (!printMisc1 && !printMisc2) ? "" : liner(printMiscFlatFilter,"=","bottom",true,44) 
 
         let yearValues: string[] = elem.flatMap(value => {
             if (value.value - value.valueLastFY === 0) {

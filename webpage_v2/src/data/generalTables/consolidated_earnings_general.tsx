@@ -279,32 +279,32 @@ const valuesMake = (obj: undefined | EarningsMake): Earnings[] => {
 
     let values: Earnings[] = [
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             category: "cumulative",
             units: "currency",
             period: "1st Quarter",
-            value: (!obj) ? 0 : obj.Q1CmlValue
+            value: obj?.Q1CmlValue ?? 0,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             category: "cumulative",
             units: "currency",
             period: "2nd Quarter",
-            value: (!obj) ? 0 : obj.Q2CmlValue 
+            value: obj?.Q2CmlValue ?? 0, 
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             category: "cumulative",
             units: "currency", 
             period: "3rd Quarter",
-            value: (!obj) ? 0 : obj.Q3CmlValue 
+            value: obj?.Q3CmlValue ?? 0, 
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             category: "cumulative",
             units: "currency", 
             period: "4th Quarter",
-            value: (!obj) ? 0 : obj.Q4CmlValue 
+            value: obj?.Q4CmlValue ?? 0, 
         },
     ];
 

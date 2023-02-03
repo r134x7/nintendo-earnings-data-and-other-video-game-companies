@@ -29,49 +29,48 @@ export const platformUnitSalesMake = (obj: undefined | {
 
     let unitSales: Section[] = [
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "1st Quarter",
             cmlPeriod: "1st Quarter",
             units: "units",
-            value: (!obj) ? 0 : obj.Q1CmlValue / 10,
+            value: (!obj) ? 0 : obj?.Q1CmlValue / 10,
             miscellaneous: obj?.miscellaneous,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "2nd Quarter",
             cmlPeriod: "First Half",
             units: "units",
-            value: (!obj) ? 0 : obj.Q2CmlValue / 10,
+            value: (!obj) ? 0 : obj?.Q2CmlValue / 10,
             miscellaneous: obj?.miscellaneous,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "3rd Quarter",
             cmlPeriod: "1st 3 Qtrs",
             units: "units",
-            value: (!obj) ? 0 : obj.Q3CmlValue / 10,
+            value: (!obj) ? 0 : obj?.Q3CmlValue / 10,
             miscellaneous: obj?.miscellaneous,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: "units",
-            value: (!obj) ? 0 : obj.Q4CmlValue / 10,
+            value: (!obj) ? 0 : obj?.Q4CmlValue / 10,
             miscellaneous: obj?.miscellaneous,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "Last FY Cumulative",
             cmlPeriod: "Cml.",
             units: "units",
-            value: (!obj || !obj.cmlValueLastFY) ? 0 : obj.cmlValueLastFY / 10,
+            value: (obj?.cmlValueLastFY) ? obj.cmlValueLastFY / 10 : 0,
             miscellaneous: obj?.miscellaneous,
         },
     ];
 
     return unitSales 
-
 };
 
 export const segaSoftwareUnitsList: string[] = collection.map((elem, index, array) => {
@@ -101,16 +100,18 @@ export const segaSoftwareUnitsList: string[] = collection.map((elem, index, arra
     });
     
     const quarterlyPlatformUnitSalesLastFY = platformUnitSalesLastFYList.map((elem) => {
-
-        return quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative index
+        // filters out last fy cumulative index
+        return quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) 
     });
 
     const platformUnitSalesThisFY = platformUnitSalesThisFYList.map((elem) => {
-        return elem.filter((value, index, array) => index !== array.length-1) // filtering out the last FY cml index
+        // filtering out the last FY cml index
+        return elem.filter((value, index, array) => index !== array.length-1) 
     });
 
     const platformUnitSalesLastFY = platformUnitSalesLastFYList.map((elem) => {
-        return elem.filter((value, index, array) => index !== array.length-1) // filtering out the last FY cml index
+        // filtering out the last FY cml index
+        return elem.filter((value, index, array) => index !== array.length-1) 
     });
 
     const platformUnitSalesYoY = Array.from({length: platformUnitSalesThisFY.length}, (v, i) => {
@@ -124,9 +125,9 @@ export const segaSoftwareUnitsList: string[] = collection.map((elem, index, arra
     });
 
     const cmlPlatformUnitSalesThisFY = platformUnitSalesThisFYList.map(elem => {
-
         return elem.filter((value, index) => {
-            return index !== 0 // filter out the first quarters
+            // filter out the first quarters
+            return index !== 0 
         });
     });
 
@@ -151,15 +152,12 @@ export const segaSoftwareUnitsList: string[] = collection.map((elem, index, arra
             )
     }).concat("###");
 
-    let printAll = [printOne].concat(printPlatformUnitSales);
+    let printAll: string[] = [printOne].concat(printPlatformUnitSales);
 
     return printAll.reduce((prev, next) => prev + next);
-
 });
 
 export const segaSoftwareUnitsGraphList = collection.map((elem, index, array) => {
-
-    let currentQuarter: number = elem.currentQuarter;
 
     let platformUnitSalesThisFYList: Section[][] = elem.softwareUnits.map(value => platformUnitSalesMake(value)); 
 
@@ -208,5 +206,4 @@ export const segaSoftwareUnitsGraphList = collection.map((elem, index, array) =>
     };
 
     return graphMake
-
 });
