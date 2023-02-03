@@ -188,8 +188,8 @@ export const segaSoftwareUnitsGraphList = collection.map((elem, index, array) =>
         return elem.filter((value, index, array) => index !== array.length-1) // filtering out the last FY cml index
     });
 
-    let thisFY: string = elem.fiscalYear.slice(1, -1);
-    let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
+    let thisFY: string = elem.fiscalYear;
+    let lastFY: string = thisFY.slice(0,4) + (Number(thisFY.slice(-4)) - 1).toString();
 
     let marchThisFY: string = "March " + thisFY.slice(4);
     let marchLastFY: string = "March " + lastFY.slice(4);

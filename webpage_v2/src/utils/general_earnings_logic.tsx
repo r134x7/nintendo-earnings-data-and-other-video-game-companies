@@ -37,12 +37,12 @@ function yearOnYearCalculation(thisFY: Earnings[], lastFY: Earnings[]): Earnings
                         )
                       }
                     : (lastFY[index].value === 0)
-                    ? {...elem, units: "NaN", value: 0}
-                    : {...elem, units: "percentage", value: Number(
-                        (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
-                        )
-                      }; // .toFixed(2) to round the number by two decimal places. Number will output a string, string has to be wrapped in Number() typing.  
-        })
+                        ? {...elem, units: "NaN", value: 0}
+                        : {...elem, units: "percentage", value: Number(
+                            (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
+                            )
+                          }; // .toFixed(2) to round the number by two decimal places. Number will output a string, string has to be wrapped in Number() typing.  
+        }) 
 
        return calc
     };
@@ -69,8 +69,8 @@ function printQuarterValues(quarterValues: Earnings[],  currentQuarter: number, 
             let valueString: string = (elem.units === "currency")
                         ? `¥${elem.value.toLocaleString("en")}M`
                         : (elem.units === "percentage")
-                        ? `${elem.value}%`
-                        : `NaN`;
+                            ? `${elem.value}%`
+                            : `NaN`;
 
             return border([
                 spacer(elem.period,12,"left"),
@@ -94,8 +94,8 @@ function printCumulativeValues(cmlValues: Earnings[], fiscalYear: string, curren
             let valueString: string = (elem.units === "currency")
                         ? `¥${elem.value.toLocaleString("en")}M`
                         : (elem.units === "percentage")
-                        ? `${elem.value}%`
-                        : `NaN`;
+                            ? `${elem.value}%`
+                            : `NaN`;
 
             return border([
                 spacer(cmlPeriod[index],12,"left"),
@@ -121,8 +121,8 @@ function printYoY(valuesThisFY: Earnings[], valuesLastFY: Earnings[], currentQua
             let yoy: string = (elem.value > 0) 
                                 ? `+${elem.value}%`
                                 : (elem.units === "NaN")
-                                ? "N/A"
-                                : `${elem.value}%`;
+                                    ? "N/A"
+                                    : `${elem.value}%`;
             
             let yoyFixed: string = spacer(yoy + " |",12,"right")
 
@@ -143,11 +143,11 @@ function printForecastValues(forecastValues: Earnings[], forecastValueLength: nu
             let forecastString: string = (elem.units === "currency")
                             ? `¥${elem.value.toLocaleString("en")}M`
                             : (elem.units === "percentage")
-                            ? `${elem.value}%`
-                            : `NaN`;
+                                ? `${elem.value}%`
+                                : `NaN`;
             
             return border([
-                spacer((elem.forecastPeriod === undefined) ? "?" : elem.forecastPeriod,16,"left"),
+                spacer(elem?.forecastPeriod ?? "N/A",16,"left"),
                 spacer(forecastString,forecastValueLength,"right")
             ])
         });

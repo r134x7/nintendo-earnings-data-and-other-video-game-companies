@@ -37,11 +37,11 @@ export function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
                         )
                       }
                     : (lastFY[index].value === 0)
-                    ? {...elem, units: "NaN", value: 0}
-                    :{...elem, units: "percentage", value: Number(
-                        (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
-                        )
-                      }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
+                        ? {...elem, units: "NaN", value: 0}
+                        : {...elem, units: "percentage", value: Number(
+                            (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
+                            )
+                          }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
         })
 
        return calc
@@ -57,7 +57,6 @@ export const printSoftwareGeneral = (header: Header, sectionDifference: Section[
      })
 
     const sectionCumulativeYoYFixed = sectionCumulativeYoY.filter((elem, index) => index !== 0).filter((elem, index, array) => {
-        
             return currentQuarter >= 2 && index < currentQuarter-1
     }) // had to do two separate filters, first removes first quarter...
     
@@ -68,8 +67,8 @@ export const printSoftwareGeneral = (header: Header, sectionDifference: Section[
             let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed[index].units === "NaN")
                 ? "NaN"
                 : (sectionDifferenceYoYFixed[index].value > 0)
-                ? `+${sectionDifferenceYoYFixed[index].value}%`
-                : `${sectionDifferenceYoYFixed[index].value}%`
+                    ? `+${sectionDifferenceYoYFixed[index].value}%`
+                    : `${sectionDifferenceYoYFixed[index].value}%`
 
             let printSectionDifferenceYoYFixed: string = (printSectionDifferenceYoY === "NaN")
                 ? printSectionDifferenceYoY
@@ -79,7 +78,7 @@ export const printSoftwareGeneral = (header: Header, sectionDifference: Section[
 
             let printSectionFixed: string = spacer(printSection,8,"right");
 
-            let printLineCheck = sectionDifferenceYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN"); // checks the next element for whether it is NaN so that printLineLength does a closing line correctly
+            // let printLineCheck = sectionDifferenceYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN"); // checks the next element for whether it is NaN so that printLineLength does a closing line correctly
 
             return (printSectionDifferenceYoYFixed === "NaN")
                     ? liner(border([
@@ -101,8 +100,8 @@ export const printSoftwareGeneral = (header: Header, sectionDifference: Section[
                 let printSectionCumulativeYoY: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                     ? "NaN"
                     : (sectionCumulativeYoYFixed[index].value > 0)
-                    ? `+${sectionCumulativeYoYFixed[index].value}%`
-                    : `${sectionCumulativeYoYFixed[index].value}%`
+                        ? `+${sectionCumulativeYoYFixed[index].value}%`
+                        : `${sectionCumulativeYoYFixed[index].value}%`
 
                 let printSectionCumulativeYoYFixed: string = (printSectionCumulativeYoY === "NaN")
                     ? printSectionCumulativeYoY
@@ -114,7 +113,7 @@ export const printSoftwareGeneral = (header: Header, sectionDifference: Section[
 
                 // let shortFY: string = header.fiscalYear.split("").slice(0, 5).concat(header.fiscalYear.split("").slice(7)).reduce((prev, next) => prev + next) // FY3/XX
                 
-            let printLineCheck = sectionCumulativeYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN");
+            // let printLineCheck = sectionCumulativeYoYFixed.filter((secondElem, secondIndex) => secondIndex === index + 1 && secondElem.units !== "NaN");
 
                 let printPeriod: string = (currentQuarter === 4 && array[index] === array.at(-1))
                     ? `${header.fiscalYear} ${elem.cmlPeriod}`
@@ -133,13 +132,14 @@ export const printSoftwareGeneral = (header: Header, sectionDifference: Section[
             })
             : []
 
-        const miscellaneousPrint = (sectionDifference[0].miscellaneous === undefined)
-            ? [] 
-            : liner(printTextBlock(sectionDifference[0].miscellaneous,34),"−","bottom",true,34);
+        const miscellaneousPrint = liner(printTextBlock(sectionDifference[0]?.miscellaneous,34),"−","bottom",true,34);
 
-        const penultimateCheck = (!miscellaneousPrint) 
-        ? [sectionHeader, ...difference, ...cumulative].flat().reduce((prev, next) => prev + next)
-        : [sectionHeader, ...difference, ...cumulative, miscellaneousPrint].flat().reduce((prev, next) => prev + next)
+        const penultimateCheck = [
+            sectionHeader, 
+            ...difference, 
+            ...cumulative, 
+            miscellaneousPrint
+        ].flat().reduce((prev, next) => prev + next)
 
         return penultimateCheck 
     };
