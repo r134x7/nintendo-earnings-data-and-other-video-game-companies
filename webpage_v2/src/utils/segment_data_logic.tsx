@@ -89,7 +89,6 @@ function yearOnYearCalculation(segmentThisFY: Section[], segmentLastFY: Section[
     })
 
     return calc
-
 }
 
 const generalSalesHeader = 
@@ -229,7 +228,6 @@ const printForecastSalesPerSWUnit = (segmentSales: Section[], segmentUnits: Sect
         return salesPerSoftwareUnit
 }
 
-
 const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Section[], segmentUnits: Section[], segmentUnitsLastFY: Section[], header: Header, currentQuarter: number): string[] => {
 
     const salesQuarters = quarterlyCalculation(segmentSales);
@@ -283,7 +281,6 @@ const printQtrSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Sec
 
         return salesPerSoftwareUnit
 }
-
 
 const printCmlSalesPerSWUnit = (segmentSales: Section[], segmentSalesLastFY: Section[], segmentUnits: Section[], segmentUnitsLastFY: Section[], header: Header, currentQuarter: number): string[] => {
 
@@ -412,13 +409,12 @@ export const SegaPrint = (salesData: Section[], salesDataLastFY: Section[], sale
 
     const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
 
-
     const salesUnitsBlock = [
         liner(printTextBlock(salesData[0].name, 32),"−","top",true,32),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : liner(printTextBlock(salesData[0].notes, 50),"−","bottom",true,50)
+        liner(printTextBlock(salesData[0]?.notes, 50),"−","bottom",true,50)
         ].flat();
 
     return [head, printDateLabel, ...salesUnitsBlock].reduce((prev, next) => prev + next); 
@@ -432,13 +428,12 @@ export const BandaiNamcoPrint = (salesData: Section[], salesDataLastFY: Section[
 
     const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
 
-
     const salesUnitsBlock = [
         liner(printTextBlock(salesData[0].name, 32),"−","top",true),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : liner(printTextBlock(salesData[0].notes, 50),"−","bottom",true,50)
+        liner(printTextBlock(salesData[0]?.notes, 50),"−","bottom",true,50)
         ].flat();
 
     return [head, printDateLabel, ...salesUnitsBlock].reduce((prev, next) => prev + next); 
@@ -452,13 +447,12 @@ export const CapcomPrint = (salesData: Section[], salesDataLastFY: Section[], sa
 
     const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
 
-
     const salesUnitsBlock = [
         liner(printTextBlock(salesData[0].name, 40),"−","top",true,40),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : liner(printTextBlock(salesData[0].notes, 50),"−","bottom",true,50)
+        liner(printTextBlock(salesData[0]?.notes, 50),"−","bottom",true,50)
         ].flat();
 
     return [head, printDateLabel, ...salesUnitsBlock].reduce((prev, next) => prev + next); 
@@ -470,7 +464,7 @@ export const salesPerSoftwareUnitForecast = (salesData: Section[], salesUnits: S
         liner(printTextBlock(salesData[0].name + " Forecast", 40),"−","top",true,40),
         forecastSalesHeader,
         ...printForecastSalesPerSWUnit(salesData, salesUnits, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : liner(printTextBlock(salesData[0].notes, 50),"−","bottom",true,50)
+        liner(printTextBlock(salesData[0]?.notes, 50),"−","bottom",true,50)
         ].flat();
 
     return [...salesUnitsBlock].reduce((prev, next) => prev + next); 
@@ -483,7 +477,7 @@ export const CapcomPrintPhysical = (salesData: Section[], salesDataLastFY: Secti
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : liner(printTextBlock(salesData[0].notes, 50),"−","bottom",true,50)
+        liner(printTextBlock(salesData[0]?.notes, 50),"−","bottom",true,50)
         ].flat();
 
     return [...salesUnitsBlock].reduce((prev, next) => prev + next); 
@@ -496,7 +490,7 @@ export const CapcomPrintDigital = (salesData: Section[], salesDataLastFY: Sectio
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : liner(printTextBlock(salesData[0].notes, 50),"−","bottom",true,50)
+        liner(printTextBlock(salesData[0]?.notes, 50),"−","bottom",true,50)
         ].flat();
 
     return [...salesUnitsBlock].reduce((prev, next) => prev + next); 
@@ -510,13 +504,12 @@ export const KoeiTecmoPrint = (salesData: Section[], salesDataLastFY: Section[],
 
     const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
 
-
     const salesUnitsBlock = [
         liner(printTextBlock(salesData[0].name, 32),"−","top",true),
         generalSalesHeader,
         ...printQtrSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
         ...printCmlSalesPerSWUnit(salesData, salesDataLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-        (salesData[0].notes === undefined) ? [] : liner(printTextBlock(salesData[0].notes, 50),"−","bottom",true,50)
+        liner(printTextBlock(salesData[0]?.notes, 50),"−","bottom",true,50)
         ].flat();
 
     return [head, printDateLabel, ...salesUnitsBlock].reduce((prev, next) => prev + next); 
@@ -530,18 +523,17 @@ export const SquareEnixPrint = (salesHDGames: Section[], salesHDGamesLastFY: Sec
 
     const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
 
-
     const salesDataBlock = [
         liner(printTextBlock(salesHDGames[0].name, 32),"−","top",true,32),
         squareEnixSalesHeader,
         ...printQtrSales(salesHDGames, salesHDGamesLastFY, header, currentQuarter),
         ...printCmlSales(salesHDGames, salesHDGamesLastFY, header, currentQuarter),
-        (salesHDGames[0].notes === undefined) ? [] : liner(printTextBlock(salesHDGames[0].notes, 38),"−","bottom",true,38),
+        liner(printTextBlock(salesHDGames[0]?.notes, 38),"−","bottom",true,38),
         liner(printTextBlock(salesMMO[0].name, 32),"−","top",true,32),
         squareEnixSalesHeader,
         ...printQtrSales(salesMMO, salesMMOLastFY, header, currentQuarter),
         ...printCmlSales(salesMMO, salesMMOLastFY, header, currentQuarter),
-        (salesMMO[0].notes === undefined) ? [] : liner(printTextBlock(salesMMO[0].notes, 38),"−","bottom",true,38),
+        liner(printTextBlock(salesMMO[0]?.notes, 38),"−","bottom",true,38),
     ].flat();
 
     const salesUnitsBlock = [
@@ -549,11 +541,10 @@ export const SquareEnixPrint = (salesHDGames: Section[], salesHDGamesLastFY: Sec
             generalSalesHeader,
             ...printQtrSalesPerSWUnit(salesHDandMMO, salesHDandMMOLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
             ...printCmlSalesPerSWUnit(salesHDandMMO, salesHDandMMOLastFY, salesUnits, salesUnitsLastFY, header, currentQuarter),
-            (salesHDandMMO[0].notes === undefined) ? [] : liner(printTextBlock(salesHDandMMO[0].notes, 50),"−","bottom",true,50)
+            liner(printTextBlock(salesHDandMMO[0]?.notes, 50),"−","bottom",true,50)
         ].flat();
 
     return [head, printDateLabel, ...salesDataBlock, ...salesUnitsBlock].reduce((prev, next) => prev + next); 
-
 }
 
 export const graphMake = (salesDataThisFY: Section[], salesDataLastFY: Section[], salesUnitsThisFY: Section[], salesUnitsLastFY: Section[], segmentName: string, fiscalYear: string, currentQuarter: number) => {

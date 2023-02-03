@@ -52,17 +52,7 @@ export const printSeries = (header: Header, seriesIP: Series) => {
 
         let printTitleNameFixed: string = printTitleName + printIPType + printPlatforms + printFirstYearAndRankAndEditions
 
-        // let printUnits: string = border([spacer(seriesIP.units, 43, "left")]);
-
-        // let printMisc1: string | never[] = (!seriesIP.miscellaneous1)
-        //     ? [] 
-        //     : printTextBlock(seriesIP.miscellaneous1, 44)
-
         let printMisc1: string | undefined = printTextBlock(seriesIP?.miscellaneous1, 44);
-
-        // let printMisc2: string | never[] = (!seriesIP.miscellaneous2)
-        //     ? [] 
-        //     : printTextBlock(seriesIP.miscellaneous2, 44)
 
         let printMisc2: string | undefined = printTextBlock(seriesIP?.miscellaneous2, 44)
 
@@ -79,8 +69,6 @@ export const printSeries = (header: Header, seriesIP: Series) => {
 
         let printUnitsFixedLine: string = printUnits + printMiscCheck;
 
-        // let printUnitsFixedLine: string = liner(printUnitsFixed, "−", "bottom", true, 44)
-
         let printCmlValue: string = border([
             spacer(header.fiscalYear + " Cumulative", 20, "left"),
             spacer(`${(seriesIP.value - seriesIP.valueLastFY).toFixed(2)}M`, 11, "right")
@@ -89,12 +77,12 @@ export const printSeries = (header: Header, seriesIP: Series) => {
         let printFYCmlYoY = (seriesIP.valueLastFY === 0)
                 ? "New!"
                 : ((seriesIP.value - seriesIP.valueLastFY) === 0 && (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) === 0)
-                ? "N/A"
-                : ((seriesIP.value - seriesIP.valueLastFY) >=  (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) && !((seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) < 0))
-                ? `+${((
-                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}%` 
-                : `${((
-                    ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}%` 
+                    ? "N/A"
+                    : ((seriesIP.value - seriesIP.valueLastFY) >=  (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) && !((seriesIP.valueLastFY - seriesIP.valueLastTwoFYs) < 0))
+                        ? `+${((
+                            ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}%` 
+                        : `${((
+                            ((seriesIP.value - seriesIP.valueLastFY) / (seriesIP.valueLastFY - seriesIP.valueLastTwoFYs)) - 1) * 100).toFixed(2)}%` 
 
         let printFYCmlYoYFixed: string = border([
             spacer(header.fiscalYearYoY, 20, "left"),

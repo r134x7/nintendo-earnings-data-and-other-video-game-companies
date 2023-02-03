@@ -23,11 +23,11 @@ export function quarterlyCalculation(quarters: Titles[]) {
        
    const calc: Titles[] = quarters.map((elem, index, array) => {
        return (index === 0) 
-               ? {...elem, value: Number((elem.value - array[4].value).toFixed(2))
-               } // to subtract from the LTD figure last FY
-               : (index !== 4 && index !== 0)
-               ? {...elem, value: Number((elem.value - array[index-1].value).toFixed(2))}
-               : elem // no changes to LTD figure last FY
+           ? {...elem, value: Number((elem.value - array[4].value).toFixed(2))
+           } // to subtract from the LTD figure last FY
+           : (index !== 4 && index !== 0)
+                ? {...elem, value: Number((elem.value - array[index-1].value).toFixed(2))}
+                : elem // no changes to LTD figure last FY
    })
    
    return calc
@@ -84,21 +84,9 @@ const printTitleFYCml = (titleDifference: Titles[], currentFY: Header, currentQu
 }
 
 const miscellaneous = (titleDifference: Titles[]) => {
-    
-    let miscellaneousCheck: string | undefined = (titleDifference[0].miscellaneous === undefined)   
-        ? undefined
-        : liner(printTextBlock(titleDifference[0].miscellaneous,32),"−","bottom",true,32);
-
-    return (miscellaneousCheck === undefined)
-            ? undefined
-            : miscellaneousCheck; 
+    return liner(printTextBlock(titleDifference[0]?.miscellaneous,32),"−","bottom",true,32) 
 }
 
 export const printBody = (quarter: Titles[], FYCml: Titles[], LTD: Titles[], currentFY: Header, currentQuarter: number) => {
-
-let body = printTitles(quarter, currentQuarter) + "\n" + liner(printTitleFYCml(FYCml, currentFY, currentQuarter) + printTitleLTD(LTD, currentQuarter),"=","both",undefined,32);
-
-return (miscellaneous(quarter) === undefined)
-    ? body
-    : body + "\n" + miscellaneous(quarter);
+    return printTitles(quarter, currentQuarter) + "\n" + liner(printTitleFYCml(FYCml, currentFY, currentQuarter) + printTitleLTD(LTD, currentQuarter),"=","both",true,32) + miscellaneous(quarter);
 };
