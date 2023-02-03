@@ -35,10 +35,10 @@ const printCmlYoY = (seriesIP: Series, blockLength: number, header: Header) => {
         let FYCmlYoY = (seriesIP.valueLastFY === 0)
                 ? "New!"
                 : (seriesIP.value >= seriesIP.valueLastFY)
-                ? `+${((
-                    ((seriesIP.value / seriesIP.valueLastFY)) - 1) * 100).toFixed(2)}%` 
-                : `${((
-                    ((seriesIP.value / seriesIP.valueLastFY)) - 1) * 100).toFixed(2)}%` 
+                    ? `+${((
+                        ((seriesIP.value / seriesIP.valueLastFY)) - 1) * 100).toFixed(2)}%` 
+                    : `${((
+                        ((seriesIP.value / seriesIP.valueLastFY)) - 1) * 100).toFixed(2)}%` 
 
         return border([
             spacer(header.fiscalYear + " Cml. YoY%", 20, "left"),

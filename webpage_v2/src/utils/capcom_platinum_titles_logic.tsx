@@ -166,7 +166,6 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
         let printTitleNameFixed: string = printTitleName + printPlatforms + printReleaseDateAndRank
 
         return printTitleNameFixed
-        
     })
 
     const quartersPrint = titleDifference.filter((elem, index) => {
@@ -180,7 +179,9 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
 
     const printLTD = [""].map((elem, index, array) => {
 
-       let printValue: string = (titleCumulative[0].fiscalYear === undefined) ? `${titleCumulative[currentQuarter-1].value}M` : `${titleCumulative[titleCumulative.length-1].value}M` 
+       let printValue: string = (titleCumulative[0].fiscalYear === undefined) 
+        ? `${titleCumulative[currentQuarter-1].value}M` 
+        : `${titleCumulative[titleCumulative.length-1].value}M` 
        
         return liner(border([
             spacer(header.ltd,20,"left"),
@@ -227,9 +228,7 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
 
     let checker = (titleDifference[0].fiscalYear === undefined) ? 0 : titleDifference.length-1
 
-    let printMiscellaneous: string | never[] = (titleDifference[checker].miscellaneous === undefined)
-            ? []
-            : liner(printTextBlock(titleDifference[checker].miscellaneous as string,34),"−","bottom",true,34)
+    let printMiscellaneous: string = liner(printTextBlock(titleDifference[checker]?.miscellaneous,34),"−","bottom",true,34)
 
     const lastCheck = [
         titleHeader,

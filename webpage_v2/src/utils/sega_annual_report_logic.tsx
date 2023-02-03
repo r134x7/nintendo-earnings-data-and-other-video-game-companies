@@ -66,7 +66,7 @@ export const printSeries = (header: Header, seriesIP: Series) => {
 
         let printMisc2: string | undefined = printTextBlock(seriesIP?.miscellaneous2, 44)
 
-        let printUnits: string = liner(printTextBlock(seriesIP?.units,44),"=","bottom",(!printMisc1 && !printMisc2) ? true : undefined,44)
+        let printUnits: string = liner(printTextBlock(seriesIP?.units,44),(!printMisc1 && !printMisc2) ? "=" : "−","bottom",(!printMisc1 && !printMisc2) ? true : undefined,44)
 
         let printMiscFlatFilter: string = [printMisc1, printMisc2].flatMap((value, index, array) => {
             // do not use value over array in return statement else it gets first value in string...
