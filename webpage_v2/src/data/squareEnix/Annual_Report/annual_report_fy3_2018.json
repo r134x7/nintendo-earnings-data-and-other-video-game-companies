@@ -1,5 +1,5 @@
 {
-    "fiscalYear":  "FY3/2018",
+    "fiscalYear": "FY3/2018",
     "series": [
         {
             "title": "Final Fantasy",
@@ -42,13 +42,5 @@
             "valueLastTwoFYs": 0
         }
     ],
-    "notes": [
-        "+----------------------------------------+",
-        "|*Annual Report 2018 gives sales numbers |",
-        "|as of June, 2018. Data where applicable |",
-        "|taken from Q1 FY3/19 Press Release as   |",
-        "|most recent change in numbers before    |",
-        "|Annual Report for accuracy.             |",
-        "+----------------------------------------+"
-    ]
+    "notes": "*Annual Report 2018 gives sales numbers as of June, 2018. Data where applicable taken from Q1 FY3/19 Press Release as most recent change in numbers before Annual Report for accuracy."
 }

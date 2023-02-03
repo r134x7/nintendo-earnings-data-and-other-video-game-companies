@@ -1,5 +1,5 @@
 {
-    "fiscalYear":  "FY3/2016",
+    "fiscalYear": "FY3/2016",
     "series": [
         {
             "title": "Final Fantasy",
@@ -26,13 +26,5 @@
             "valueLastTwoFYs": 42 
         }
     ],
-    "notes": [
-        "+----------------------------------------+",
-        "|Annual Report 2016 gives sales numbers  |", 
-        "|as of June, 2016. Data used here is     |",
-        "|taken from Q1 FY3/17 Press Release as   |",
-        "|most recent change in numbers before    |",
-        "|Annual Report for accuracy.             |",
-        "+----------------------------------------+"
-    ]
+    "notes": "Annual Report 2016 gives sales numbers as of June, 2016. Data used here is taken from Q1 FY3/17 Press Release as most recent change in numbers before Annual Report for accuracy."
 }

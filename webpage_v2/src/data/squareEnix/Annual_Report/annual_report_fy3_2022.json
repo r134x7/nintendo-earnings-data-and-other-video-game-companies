@@ -1,5 +1,5 @@
 {
-    "fiscalYear":  "FY3/2022",
+    "fiscalYear": "FY3/2022",
     "series": [
         {
             "title": "Final Fantasy",
@@ -34,5 +34,5 @@
             "valueLastTwoFYs": 77
         }
     ],
-    "notes": [""]
+    "notes": ""
 }

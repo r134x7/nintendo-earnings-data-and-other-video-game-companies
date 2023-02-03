@@ -26,13 +26,5 @@
             "valueLastTwoFYs": 0
         }
     ],
-    "notes": [
-        "+----------------------------------------+",
-        "|*Annual Report 2011 gives no sales      |", 
-        "|numbers. Data used here is taken        |",
-        "|from Q1 FY3/12 Press Release assuming   |",
-        "|data is as of March, 2011. Cannot verify|",
-        "|whether it is accurate.                 |",
-        "+----------------------------------------+"
-    ]
+    "notes": "*Annual Report 2011 gives no sales numbers. Data used here is taken from Q1 FY3/12 Press Release assuming data is as of March, 2011. Cannot verify whether it is accurate."
 }
