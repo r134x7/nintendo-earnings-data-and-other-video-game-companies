@@ -96,112 +96,111 @@ export const platformSalesMake = (obj: undefined | platformCumulativeSalesType )
 
     let sales: Section[] = [
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "1st Quarter",
             cmlPeriod: "1st Quarter",
             units: (obj?.units === "currency") ? "currency" : "NaN",
-            value: (!obj) ? 0 : obj.Q1CmlValue,
+            value: obj?.Q1CmlValue ?? 0,
             hardwareReference: obj?.hardwareReference,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "2nd Quarter",
             cmlPeriod: "First Half",
             units: (obj?.units === "currency") ? "currency" : "NaN",
-            value: (!obj) ? 0 : obj.Q2CmlValue,
+            value: obj?.Q2CmlValue ?? 0,
             hardwareReference: obj?.hardwareReference,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "3rd Quarter",
             cmlPeriod: "1st 3 Qtrs",
             units: (obj?.units === "currency") ? "currency" : "NaN",
-            value: (!obj) ? 0 : obj.Q3CmlValue,
+            value: obj?.Q3CmlValue ?? 0,
             hardwareReference: obj?.hardwareReference,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj?.units === "currency") ? "currency" : "NaN",
-            value: (!obj) ? 0 : obj.Q4CmlValue,
+            value: obj?.Q4CmlValue ?? 0,
             hardwareReference: obj?.hardwareReference,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "Last FY Cumulative",
             cmlPeriod: "Cml.",
             units: (obj?.units === "currency") ? "currency" : "NaN",
-            value: (!obj) ? 0 : obj.cmlValueLastFY,
+            value: obj?.cmlValueLastFY ?? 0,
             hardwareReference: obj?.hardwareReference,
         },
     ];
 
     return sales
-
 };
 
 export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): Section[] => {
 
     let unitSales: Section[] = [
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "1st Quarter",
             cmlPeriod: "1st Quarter",
             units: (obj?.units === "units") 
                     ? "units"
                     : (obj?.units === "currency")
-                    ? "currency"
-                    : "NaN",
-            value: (!obj) ? 0 : obj.Q1CmlValue,
+                        ? "currency"
+                        : "NaN",
+            value: obj?.Q1CmlValue ?? 0,
             footnote: obj?.footnote,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "2nd Quarter",
             cmlPeriod: "First Half",
             units: (obj?.units === "units") 
                     ? "units"
                     : (obj?.units === "currency")
-                    ? "currency"
-                    : "NaN",
-            value: (!obj) ? 0 : obj.Q2CmlValue,
+                        ? "currency"
+                        : "NaN",
+            value: obj?.Q2CmlValue ?? 0,
             footnote: obj?.footnote,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "3rd Quarter",
             cmlPeriod: "1st 3 Qtrs",
             units: (obj?.units === "units") 
                     ? "units"
                     : (obj?.units === "currency")
-                    ? "currency"
-                    : "NaN",
-            value: (!obj) ? 0 : obj.Q3CmlValue,
+                        ? "currency"
+                        : "NaN",
+            value: obj?.Q3CmlValue ?? 0,
             footnote: obj?.footnote,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "4th Quarter",
             cmlPeriod: "Cml.",
             units: (obj?.units === "units") 
                     ? "units"
                     : (obj?.units === "currency")
-                    ? "currency"
-                    : "NaN",
-            value: (!obj) ? 0 : obj.Q4CmlValue,
+                        ? "currency"
+                        : "NaN",
+            value: obj?.Q4CmlValue ?? 0,
             footnote: obj?.footnote,
         },
         {
-            name: (!obj) ? "N/A" : obj.name,
+            name: obj?.name ?? "N/A",
             period: "Last FY Cumulative",
             cmlPeriod: "Cml.",
             units: (obj?.units === "units") 
                     ? "units"
                     : (obj?.units === "currency")
-                    ? "currency"
-                    : "NaN",
-            value: (!obj) ? 0 : obj.cmlValueLastFY,
+                        ? "currency"
+                        : "NaN",
+            value: obj?.cmlValueLastFY ?? 0,
             footnote: obj?.footnote,
         },
     ];
