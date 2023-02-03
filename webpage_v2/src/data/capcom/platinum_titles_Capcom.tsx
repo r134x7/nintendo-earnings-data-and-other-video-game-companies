@@ -27,7 +27,7 @@ import platinumTitles2009 from "./Platinum_Titles/platinum_titles_fy3_2009.json"
 import platinumTitles2008 from "./Platinum_Titles/platinum_titles_fy3_2008.json";
 import platinumTitles2007 from "./Platinum_Titles/platinum_titles_fy3_2007.json";
 import platinumTitles2006 from "./Platinum_Titles/platinum_titles_fy3_2006.json";
-import { headerPrint, border, liner, spacer, dateLabel } from "../../utils/table_design_logic";
+import { headerPrint, border, liner, spacer, dateLabel, printTextBlock } from "../../utils/table_design_logic";
 
 export type getTitles = {
     title: string;
@@ -48,6 +48,7 @@ export type collectionData = {
     fiscalYear: string,
     titles: getTitles[],
     delistedTitles?: getTitles[],
+    platformNotes: string,
 }
 
 const collection: collectionData[] = [
@@ -231,9 +232,15 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
         header.fifthHeader,
     ],28) + "\n" + printDateLabel;
 
-    let printAllPlatinumTitles: string = (elem.footnotes === undefined) 
-                ? [printOne, ...printListedTitlesAll].reduce((prev, next) => prev + next )
-                : [printOne, ...printListedTitlesAll, elem.footnotes].reduce((prev, next) => prev + next )
+    let allPlatinumTitlesPlus: string[] = printListedTitlesAll.concat(liner(printTextBlock(elem?.footnotes,40),"=","both",true,40)); 
+
+    let printPlatformNotes: string = liner(printTextBlock(elem.platformNotes,40),"=","both",true,40)
+
+    let printAllPlatinumTitles: string = [
+        printOne, 
+        ...allPlatinumTitlesPlus,
+        printPlatformNotes,
+    ].reduce((prev, next) => prev + next )
 
     return printAllPlatinumTitles
 });
@@ -342,11 +349,13 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
 
     let printSummaryTwo = printSummary(header, newSum, recurringSum, sporadicSum) + "\n"
 
-    let printListedTitlesFYFixed: string[] = printListedTitlesFY.concat(elem?.footnotes ?? []).flat(); 
+    let printListedTitlesFYFixed: string[] = printListedTitlesFY.concat(liner(printTextBlock(elem?.footnotes,40),"=","both",true,40)); 
+
+    let printPlatformNotes: string = liner(printTextBlock(elem.platformNotes,40),"=","both",true,40)
 
     let printFYPlatinumTitles: string = (currentQuarter !== 4)
-        ? [printOne, ...printListedTitlesFYFixed].reduce((prev, next) => prev + next )
-        : [printSummaryOne, printSummaryTwo, printOne, ...printListedTitlesFYFixed,].reduce((prev, next) => prev + next )
+        ? [printOne, ...printListedTitlesFYFixed, printPlatformNotes].reduce((prev, next) => prev + next )
+        : [printSummaryOne, printSummaryTwo, printOne, ...printListedTitlesFYFixed, printPlatformNotes].reduce((prev, next) => prev + next )
 
     return printFYPlatinumTitles
 });
@@ -421,14 +430,15 @@ const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+
             })  
     });
 
-
     let yearlyCalcList = sortedList.map(elem => yearlyCalculation(elem));
+
+    let latestPlatformNotes = liner(printTextBlock(reverseCollection.at(-1)?.platformNotes,40),"=","both",true,40);
 
     let printAll = yearlyCalcList.map((elem, index) => {
         return printTitles(header, elem, sortedList[index], 9999)
     }) as string[];
 
-    return [headerOne, printDateLabel, ...printAll].reduce((acc, next) => acc + next) 
+    return [headerOne, printDateLabel, ...printAll, latestPlatformNotes].reduce((acc, next) => acc + next) 
 };
 
 export const printSpecialList = specialList();
