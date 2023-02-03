@@ -99,41 +99,41 @@ export const platformSalesMake = (obj: undefined | platformCumulativeSalesType )
             name: (!obj) ? "N/A" : obj.name,
             period: "1st Quarter",
             cmlPeriod: "1st Quarter",
-            units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
+            units: (obj?.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q1CmlValue,
-            hardwareReference: (!obj) ? undefined : obj.hardwareReference,
+            hardwareReference: obj?.hardwareReference,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             period: "2nd Quarter",
             cmlPeriod: "First Half",
-            units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
+            units: (obj?.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q2CmlValue,
-            hardwareReference: (!obj) ? undefined : obj.hardwareReference,
+            hardwareReference: obj?.hardwareReference,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             period: "3rd Quarter",
             cmlPeriod: "1st 3 Qtrs",
-            units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
+            units: (obj?.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q3CmlValue,
-            hardwareReference: (!obj) ? undefined : obj.hardwareReference,
+            hardwareReference: obj?.hardwareReference,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             period: "4th Quarter",
             cmlPeriod: "Cml.",
-            units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
+            units: (obj?.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.Q4CmlValue,
-            hardwareReference: (!obj) ? undefined : obj.hardwareReference,
+            hardwareReference: obj?.hardwareReference,
         },
         {
             name: (!obj) ? "N/A" : obj.name,
             period: "Last FY Cumulative",
             cmlPeriod: "Cml.",
-            units: (obj !== undefined && obj.units === "currency") ? "currency" : "NaN",
+            units: (obj?.units === "currency") ? "currency" : "NaN",
             value: (!obj) ? 0 : obj.cmlValueLastFY,
-            hardwareReference: (!obj) ? undefined : obj.hardwareReference,
+            hardwareReference: obj?.hardwareReference,
         },
     ];
 
@@ -148,9 +148,9 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
             name: (!obj) ? "N/A" : obj.name,
             period: "1st Quarter",
             cmlPeriod: "1st Quarter",
-            units: (obj !== undefined && obj.units === "units") 
+            units: (obj?.units === "units") 
                     ? "units"
-                    : (obj !== undefined && obj.units === "currency")
+                    : (obj?.units === "currency")
                     ? "currency"
                     : "NaN",
             value: (!obj) ? 0 : obj.Q1CmlValue,
@@ -160,9 +160,9 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
             name: (!obj) ? "N/A" : obj.name,
             period: "2nd Quarter",
             cmlPeriod: "First Half",
-            units: (obj !== undefined && obj.units === "units") 
+            units: (obj?.units === "units") 
                     ? "units"
-                    : (obj !== undefined && obj.units === "currency")
+                    : (obj?.units === "currency")
                     ? "currency"
                     : "NaN",
             value: (!obj) ? 0 : obj.Q2CmlValue,
@@ -172,9 +172,9 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
             name: (!obj) ? "N/A" : obj.name,
             period: "3rd Quarter",
             cmlPeriod: "1st 3 Qtrs",
-            units: (obj !== undefined && obj.units === "units") 
+            units: (obj?.units === "units") 
                     ? "units"
-                    : (obj !== undefined && obj.units === "currency")
+                    : (obj?.units === "currency")
                     ? "currency"
                     : "NaN",
             value: (!obj) ? 0 : obj.Q3CmlValue,
@@ -184,9 +184,9 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
             name: (!obj) ? "N/A" : obj.name,
             period: "4th Quarter",
             cmlPeriod: "Cml.",
-            units: (obj !== undefined && obj.units === "units") 
+            units: (obj?.units === "units") 
                     ? "units"
-                    : (obj !== undefined && obj.units === "currency")
+                    : (obj?.units === "currency")
                     ? "currency"
                     : "NaN",
             value: (!obj) ? 0 : obj.Q4CmlValue,
@@ -196,9 +196,9 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
             name: (!obj) ? "N/A" : obj.name,
             period: "Last FY Cumulative",
             cmlPeriod: "Cml.",
-            units: (obj !== undefined && obj.units === "units") 
+            units: (obj?.units === "units") 
                     ? "units"
-                    : (obj !== undefined && obj.units === "currency")
+                    : (obj?.units === "currency")
                     ? "currency"
                     : "NaN",
             value: (!obj) ? 0 : obj.cmlValueLastFY,
@@ -207,7 +207,6 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
     ];
 
     return unitSales 
-
 };
 
 const platformForecastsMake = (obj: platformForecastSalesType): Section[] => {
@@ -286,29 +285,29 @@ export const globalHardwareSoftwareList: string[] = collection.map((elem, index,
         // array[index+1] is checking the collection index of the previous fiscal year
         let nameSearch = (!array[index+1]) ? undefined : array[index+1].platformUnitSales.filter(findName => value.name === findName.name); // it should only find one match
         
-        return (!nameSearch) 
-                ? platformUnitSalesMake(undefined)
-                : platformUnitSalesMake(nameSearch[0]);
+        return platformUnitSalesMake(nameSearch?.[0]);
     })
 
     let platformForecastsList: Section[][] = elem.platformForecastSales.map(value => platformForecastsMake(value));
 
     const quarterlyPlatformUnitSalesThisFY = platformUnitSalesThisFYList.map((elem) => {
-
-        return quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative index
+         // filters out last fy cumulative index
+        return quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1)
     });
     
     const quarterlyPlatformUnitSalesLastFY = platformUnitSalesLastFYList.map((elem) => {
-
-        return quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1) // filters out last fy cumulative index
+        // filters out last fy cumulative index
+        return quarterlyCalculation(elem).filter((elem, index, array) => index !== array.length-1)
     });
 
     const platformUnitSalesThisFY = platformUnitSalesThisFYList.map((elem) => {
-        return elem.filter((value, index, array) => index !== array.length-1) // filtering out the last FY cml index
+        // filtering out the last FY cml index
+        return elem.filter((value, index, array) => index !== array.length-1)
     });
 
     const platformUnitSalesLastFY = platformUnitSalesLastFYList.map((elem) => {
-        return elem.filter((value, index, array) => index !== array.length-1) // filtering out the last FY cml index
+        // filtering out the last FY cml index
+        return elem.filter((value, index, array) => index !== array.length-1)
     });
 
     const platformUnitSalesYoY = Array.from({length: platformUnitSalesThisFY.length}, (v, i) => {
@@ -322,12 +321,11 @@ export const globalHardwareSoftwareList: string[] = collection.map((elem, index,
     });
 
     const cmlPlatformUnitSalesThisFY = platformUnitSalesThisFYList.map(elem => {
-
         return elem.filter((value, index) => {
-            return index !== 0 // filter out the first quarters
+            // filter out the first quarters
+            return index !== 0 
         });
     });
-
 
     const printOne: string = headerPrint([
         header.switchHeader + " | " + header.fiscalYear,
@@ -336,6 +334,7 @@ export const globalHardwareSoftwareList: string[] = collection.map((elem, index,
     ],30) + "\n" + printDateLabel;
 
     // "N/A" avoids crashing when no data...
+    // Will look at refactoring this when a second platform occurs simultaneously with Switch
     const printPlatformCmlSales: string[] = (platformSalesList[0][0].name === "N/A") ? [""] : Array.from({length: platformSalesList.length}, (v, i) => {
 
         let platformHardware: Section[] = platformUnitSalesThisFYList.flatMap((elem, index) => {
@@ -371,11 +370,8 @@ export const globalHardwareSoftwareList: string[] = collection.map((elem, index,
         ) 
     })
 
-    const printPlatformUnitSales = Array.from({length: platformUnitSalesThisFY.length}, (v, i) => {
+    const printPlatformUnitSales: string[] = Array.from({length: platformUnitSalesThisFY.length}, (v, i) => {
 
-        // let forecast = (cmlPlatformUnitSalesThisFY[i][0].name === "Nintendo Switch Software Total")
-        //     ? platformForecastsList[1] // software
-        //     : platformForecastsList[0] // hardware
         let forecast: Section[] = platformForecastsList.map(value => 
             {
                 return value.filter(findName => findName.name === cmlPlatformUnitSalesThisFY[i][0].name) // should only find one match
@@ -390,17 +386,14 @@ export const globalHardwareSoftwareList: string[] = collection.map((elem, index,
             forecast,
             currentQuarter
             )
-    }).concat("###") as string[];
+    }).concat("###");
 
-    let printAll = [printOne].concat(printPlatformCmlSales, printPlatformUnitSales);
+    let printAll: string[] = [printOne].concat(printPlatformCmlSales, printPlatformUnitSales);
 
     return printAll.reduce((prev, next) => prev + "\n" + next);
-
 });
 
 export const globalHardwareSoftwareGraphList = collection.map((elem, index, array) => {
-
-    let currentQuarter: number = elem.currentQuarter;
 
     let platformUnitSalesThisFYList: Section[][] = elem.platformUnitSales.filter(value => !Object.hasOwn(value, "dataShift")).map(value => platformUnitSalesMake(value)); 
     // applying the filter on both ThisFYList and LastFYList will work correctly 
@@ -450,5 +443,4 @@ export const globalHardwareSoftwareGraphList = collection.map((elem, index, arra
     };
 
     return graphMake
-
 });
