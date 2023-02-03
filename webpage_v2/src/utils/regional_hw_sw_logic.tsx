@@ -35,12 +35,12 @@ export function quarterlyCalculation(quarters: Section[]) {
     //    return (elem.period !== "1st Quarter  " && elem.period !== " Last FY Total ")
        return (elem.period !== "1st Quarter" && elem.period !== "Last FY Cumulative")
                ? {
-                ...elem, 
-                valueA: Number((elem.valueA - array[index-1].valueA).toFixed(2)),
-                valueB: Number((elem.valueB - array[index-1].valueB).toFixed(2)),
-                valueC: Number((elem.valueC - array[index-1].valueC).toFixed(2)),
-                valueD: Number((elem.valueD - array[index-1].valueD).toFixed(2)),
-                valueE: Number((elem.valueE - array[index-1].valueE).toFixed(2)),
+                    ...elem, 
+                    valueA: Number((elem.valueA - array[index-1].valueA).toFixed(2)),
+                    valueB: Number((elem.valueB - array[index-1].valueB).toFixed(2)),
+                    valueC: Number((elem.valueC - array[index-1].valueC).toFixed(2)),
+                    valueD: Number((elem.valueD - array[index-1].valueD).toFixed(2)),
+                    valueE: Number((elem.valueE - array[index-1].valueE).toFixed(2)),
                 }
                : elem
    })
@@ -123,10 +123,10 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
         return (currentQuarter === 1)
             ? elem.period === "1st Quarter"
             : (currentQuarter === 2)
-            ? elem.period === "1st Quarter" || elem.period === "2nd Quarter"
-            : (currentQuarter === 3)
-            ? elem.period !== "4th Quarter" 
-            : elem
+                ? elem.period === "1st Quarter" || elem.period === "2nd Quarter"
+                : (currentQuarter === 3)
+                    ? elem.period !== "4th Quarter" 
+                    : elem
     }) 
 
     const sectionCumulativeYoYFixed = sectionCumulativeYoY.filter((elem) => elem.period !== "1st Quarter").filter((elem) => {
@@ -146,10 +146,10 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
         return (currentQuarter === 1)
             ? elem.period === "1st Quarter" && elem.valueA !== 0 
             : (currentQuarter === 2 )
-            ? (elem.period === "1st Quarter" && elem.valueA !== 0) || (elem.period === "2nd Quarter" && elem.valueA !== 0)
-            : (currentQuarter === 3)
-            ? elem.period !== "4th Quarter" && elem.valueA !== 0
-            : elem.valueA !== 0
+                ? (elem.period === "1st Quarter" && elem.valueA !== 0) || (elem.period === "2nd Quarter" && elem.valueA !== 0)
+                : (currentQuarter === 3)
+                    ? elem.period !== "4th Quarter" && elem.valueA !== 0
+                    : elem.valueA !== 0
     }).map((elem, index, array) => {
 
         let printSectionDifferenceWWPerJapan: string = `${((elem.valueB / elem.valueA) * 100).toFixed(2)}% `;
@@ -169,33 +169,34 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
         let printSectionDifferenceYoYJapan: string = (sectionDifferenceYoYFixed[index].units === "NaN")
             ? "NaN"
             : (sectionDifferenceYoYFixed[index].valueB > 0)
-            ? `+${sectionDifferenceYoYFixed[index].valueB}%`
-            : `${sectionDifferenceYoYFixed[index].valueB}%`
+                ? `+${sectionDifferenceYoYFixed[index].valueB}%`
+                : `${sectionDifferenceYoYFixed[index].valueB}%`
 
         let printSectionDifferenceYoYAmericas: string = (sectionDifferenceYoYFixed[index].units === "NaN")
             ? "NaN"
             : (sectionDifferenceYoYFixed[index].valueC > 0)
-            ? `+${sectionDifferenceYoYFixed[index].valueC}%`
-            : `${sectionDifferenceYoYFixed[index].valueC}%`
+                ? `+${sectionDifferenceYoYFixed[index].valueC}%`
+                : `${sectionDifferenceYoYFixed[index].valueC}%`
 
         let printSectionDifferenceYoYEurope: string = (sectionDifferenceYoYFixed[index].units === "NaN")
             ? "NaN"
             : (sectionDifferenceYoYFixed[index].valueD > 0)
-            ? `+${sectionDifferenceYoYFixed[index].valueD}%`
-            : `${sectionDifferenceYoYFixed[index].valueD}%`
+                ? `+${sectionDifferenceYoYFixed[index].valueD}%`
+                : `${sectionDifferenceYoYFixed[index].valueD}%`
 
         let printSectionDifferenceYoYOther: string = (sectionDifferenceYoYFixed[index].units === "NaN")
             ? "NaN"
             : (sectionDifferenceYoYFixed[index].valueE > 0)
-            ? `+${sectionDifferenceYoYFixed[index].valueE}% `
-            : `${sectionDifferenceYoYFixed[index].valueE}% `
+                ? `+${sectionDifferenceYoYFixed[index].valueE}% `
+                : `${sectionDifferenceYoYFixed[index].valueE}% `
         
         let [printSectionDifferenceYoYJapanFixed, printSectionDifferenceYoYAmericasFixed, printSectionDifferenceYoYEuropeFixed, printSectionDifferenceYoYOtherFixed]: string[] = [printSectionDifferenceYoYJapan, printSectionDifferenceYoYAmericas, printSectionDifferenceYoYEurope, printSectionDifferenceYoYOther].map((value) => {
             return (value === "NaN")
                 ? value
+                // can't use spacer unless I make everything wider
                 : (value.length >= 8)
-                ? value
-                : " ".repeat(7 - value.length) + value + " "
+                    ? value
+                    : " ".repeat(7 - value.length) + value + " "
         })
         
         let printSectionJapan: string = `${(elem.valueB / 100).toFixed(2)}M `;
@@ -229,10 +230,10 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
         return (printSectionDifferenceYoYJapanFixed === "NaN" && elem.valueE !== 0)
                 ? printPeriod + header.units + printSectionJapanFixed + "|" + printSectionAmericasFixed + "|" + printSectionEuropeFixed + "|" + printSectionOtherFixed + "|\n" + header.globalPercentage +  printSectionDifferenceWWPerJapanFixed + "|" + printSectionDifferenceWWPerAmericasFixed + "|" + printSectionDifferenceWWPerEuropeFixed + "|" + printSectionDifferenceWWPerOtherFixed + "|" + printLine 
                 : (printSectionDifferenceYoYJapanFixed === "NaN" && elem.valueE === 0)
-                ? printPeriod + header.units + printSectionJapanFixed + "|" + printSectionAmericasFixed + "|" + printSectionEuropeFixed + "|\n" + header.globalPercentage +  printSectionDifferenceWWPerJapanFixed + "|" + printSectionDifferenceWWPerAmericasFixed + "|" + printSectionDifferenceWWPerEuropeFixed + "|" + printLine
-                : (elem.valueE !== 0)
-                ? printPeriod + header.units + printSectionJapanFixed + "|" + printSectionAmericasFixed + "|" + printSectionEuropeFixed + "|" + printSectionOtherFixed + "|\n" + header.yearOnYear + printSectionDifferenceYoYJapanFixed + "|" + printSectionDifferenceYoYAmericasFixed + "|" + printSectionDifferenceYoYEuropeFixed + "|" + printSectionDifferenceYoYOtherFixed + "|\n" + header.globalPercentage +  printSectionDifferenceWWPerJapanFixed + "|" + printSectionDifferenceWWPerAmericasFixed + "|" + printSectionDifferenceWWPerEuropeFixed + "|" + printSectionDifferenceWWPerOtherFixed + "|" + printLine
-                : printPeriod + header.units + printSectionJapanFixed + "|" + printSectionAmericasFixed + "|" + printSectionEuropeFixed + "|\n" + header.yearOnYear + printSectionDifferenceYoYJapanFixed + "|" + printSectionDifferenceYoYAmericasFixed + "|" + printSectionDifferenceYoYEuropeFixed + "|\n" + header.globalPercentage +  printSectionDifferenceWWPerJapanFixed + "|" + printSectionDifferenceWWPerAmericasFixed + "|" + printSectionDifferenceWWPerEuropeFixed + "|" + printLine
+                    ? printPeriod + header.units + printSectionJapanFixed + "|" + printSectionAmericasFixed + "|" + printSectionEuropeFixed + "|\n" + header.globalPercentage +  printSectionDifferenceWWPerJapanFixed + "|" + printSectionDifferenceWWPerAmericasFixed + "|" + printSectionDifferenceWWPerEuropeFixed + "|" + printLine
+                    : (elem.valueE !== 0)
+                        ? printPeriod + header.units + printSectionJapanFixed + "|" + printSectionAmericasFixed + "|" + printSectionEuropeFixed + "|" + printSectionOtherFixed + "|\n" + header.yearOnYear + printSectionDifferenceYoYJapanFixed + "|" + printSectionDifferenceYoYAmericasFixed + "|" + printSectionDifferenceYoYEuropeFixed + "|" + printSectionDifferenceYoYOtherFixed + "|\n" + header.globalPercentage +  printSectionDifferenceWWPerJapanFixed + "|" + printSectionDifferenceWWPerAmericasFixed + "|" + printSectionDifferenceWWPerEuropeFixed + "|" + printSectionDifferenceWWPerOtherFixed + "|" + printLine
+                        : printPeriod + header.units + printSectionJapanFixed + "|" + printSectionAmericasFixed + "|" + printSectionEuropeFixed + "|\n" + header.yearOnYear + printSectionDifferenceYoYJapanFixed + "|" + printSectionDifferenceYoYAmericasFixed + "|" + printSectionDifferenceYoYEuropeFixed + "|\n" + header.globalPercentage +  printSectionDifferenceWWPerJapanFixed + "|" + printSectionDifferenceWWPerAmericasFixed + "|" + printSectionDifferenceWWPerEuropeFixed + "|" + printLine
             
     })
 
@@ -242,10 +243,10 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
             return (currentQuarter === 2 && elem.period !== "Last FY Cumulative")
             ? elem.cmlPeriod === "First Half" && elem.valueA !== 0
             : (currentQuarter === 3 && elem.period !== "Last FY Cumulative")
-            ? (elem.cmlPeriod === "First Half" && elem.valueA !== 0) || (elem.cmlPeriod === "First Three Quarters" && elem.valueA !== 0) 
-            : (currentQuarter === 4 && elem.period !== "Last FY Cumulative")
-            ? elem.cmlPeriod !== "1st Quarter" && elem.valueA !== 0
-            : !elem // should return empty arrays...
+                ? (elem.cmlPeriod === "First Half" && elem.valueA !== 0) || (elem.cmlPeriod === "First Three Quarters" && elem.valueA !== 0) 
+                : (currentQuarter === 4 && elem.period !== "Last FY Cumulative")
+                    ? elem.cmlPeriod !== "1st Quarter" && elem.valueA !== 0
+                    : !elem // should return empty arrays...
         
         }).map((elem, index, array) => {
             
@@ -266,41 +267,41 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
             let printSectionCumulativeYoYJapan: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                 ? "NaN"
                 : (sectionCumulativeYoYFixed[index].valueB > 999)
-                ? `+${(sectionCumulativeYoYFixed[index].valueB).toFixed(0)}% `
-                : (sectionCumulativeYoYFixed[index].valueB > 0)
-                ? `+${sectionCumulativeYoYFixed[index].valueB}% `
-                : `${sectionCumulativeYoYFixed[index].valueB}% `;
+                    ? `+${(sectionCumulativeYoYFixed[index].valueB).toFixed(0)}% `
+                    : (sectionCumulativeYoYFixed[index].valueB > 0)
+                        ? `+${sectionCumulativeYoYFixed[index].valueB}% `
+                        : `${sectionCumulativeYoYFixed[index].valueB}% `;
 
             let printSectionCumulativeYoYAmericas: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                 ? "NaN"
                 : (sectionCumulativeYoYFixed[index].valueC > 999)
-                ? `+${(sectionCumulativeYoYFixed[index].valueC).toFixed(0)}% `
-                : (sectionCumulativeYoYFixed[index].valueC > 0)
-                ? `+${sectionCumulativeYoYFixed[index].valueC}% `
-                : `${sectionCumulativeYoYFixed[index].valueC}% `;
+                    ? `+${(sectionCumulativeYoYFixed[index].valueC).toFixed(0)}% `
+                    : (sectionCumulativeYoYFixed[index].valueC > 0)
+                        ? `+${sectionCumulativeYoYFixed[index].valueC}% `
+                        : `${sectionCumulativeYoYFixed[index].valueC}% `;
 
             let printSectionCumulativeYoYEurope: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                 ? "NaN"
                 : (sectionCumulativeYoYFixed[index].valueD > 999)
-                ? `+${(sectionCumulativeYoYFixed[index].valueD).toFixed(0)}% `
-                : (sectionCumulativeYoYFixed[index].valueD > 0)
-                ? `+${sectionCumulativeYoYFixed[index].valueD}% `
-                : `${sectionCumulativeYoYFixed[index].valueD}% `;
+                    ? `+${(sectionCumulativeYoYFixed[index].valueD).toFixed(0)}% `
+                    : (sectionCumulativeYoYFixed[index].valueD > 0)
+                        ? `+${sectionCumulativeYoYFixed[index].valueD}% `
+                        : `${sectionCumulativeYoYFixed[index].valueD}% `;
 
             let printSectionCumulativeYoYOther: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                 ? "NaN"
                 : (sectionCumulativeYoYFixed[index].valueE > 999)
-                ? `+${(sectionCumulativeYoYFixed[index].valueE).toFixed(0)}% `
-                : (sectionCumulativeYoYFixed[index].valueE > 0)
-                ? `+${sectionCumulativeYoYFixed[index].valueE}% `
-                : `${sectionCumulativeYoYFixed[index].valueE}% `;
+                    ? `+${(sectionCumulativeYoYFixed[index].valueE).toFixed(0)}% `
+                    : (sectionCumulativeYoYFixed[index].valueE > 0)
+                        ? `+${sectionCumulativeYoYFixed[index].valueE}% `
+                        : `${sectionCumulativeYoYFixed[index].valueE}% `;
 
             let [printSectionCumulativeYoYJapanFixed, printSectionCumulativeYoYAmericasFixed, printSectionCumulativeYoYEuropeFixed, printSectionCumulativeYoYOtherFixed]: string[] = [printSectionCumulativeYoYJapan, printSectionCumulativeYoYAmericas, printSectionCumulativeYoYEurope, printSectionCumulativeYoYOther].map((value) => {
                 return (value === "NaN")
                     ? value
                     : (value.length >= 8)
-                    ? value
-                    : " ".repeat(7 - value.length) + value + " ";
+                        ? value
+                        : " ".repeat(7 - value.length) + value + " ";
             })
 
             let printCumulativeJapan: string = `${(elem.valueB / 100).toFixed(2)}M `;
@@ -326,10 +327,10 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
             return (printSectionCumulativeYoYJapanFixed === "NaN" && elem.valueE !== 0)
                     ? printPeriod + header.units + printCumulativeJapanFixed + "|" + printCumulativeAmericasFixed + "|" + printCumulativeEuropeFixed + "|" + printCumulativeOtherFixed + "|\n" + header.globalPercentage +  printSectionCumulativeWWPerJapanFixed + "|" + printSectionCumulativeWWPerAmericasFixed + "|" + printSectionCumulativeWWPerEuropeFixed + "|" + printSectionCumulativeWWPerOtherFixed + "|" + printLine
                     : (printSectionCumulativeYoYJapanFixed === "NaN" && elem.valueE === 0)
-                    ? printPeriod + header.units + printCumulativeJapanFixed + "|" + printCumulativeAmericasFixed + "|" + printCumulativeEuropeFixed + "|\n" + header.globalPercentage +  printSectionCumulativeWWPerJapanFixed + "|" + printSectionCumulativeWWPerAmericasFixed + "|" + printSectionCumulativeWWPerEuropeFixed + "|" + printLine
-                    : (elem.valueE !== 0)
-                    ? printPeriod + header.units + printCumulativeJapanFixed + "|" + printCumulativeAmericasFixed + "|" + printCumulativeEuropeFixed + "|" + printCumulativeOtherFixed + "|\n" + header.yearOnYear + printSectionCumulativeYoYJapanFixed + "|" + printSectionCumulativeYoYAmericasFixed + "|" + printSectionCumulativeYoYEuropeFixed + "|" + printSectionCumulativeYoYOtherFixed + "|\n" + header.globalPercentage +  printSectionCumulativeWWPerJapanFixed + "|" + printSectionCumulativeWWPerAmericasFixed + "|" + printSectionCumulativeWWPerEuropeFixed + "|" + printSectionCumulativeWWPerOtherFixed + "|" + printLine
-                    : printPeriod + header.units + printCumulativeJapanFixed + "|" + printCumulativeAmericasFixed + "|" + printCumulativeEuropeFixed + "|\n" + header.yearOnYear + printSectionCumulativeYoYJapanFixed + "|" + printSectionCumulativeYoYAmericasFixed + "|" + printSectionCumulativeYoYEuropeFixed + "|\n" + header.globalPercentage +  printSectionCumulativeWWPerJapanFixed + "|" + printSectionCumulativeWWPerAmericasFixed + "|" + printSectionCumulativeWWPerEuropeFixed + "|" + printLine
+                        ? printPeriod + header.units + printCumulativeJapanFixed + "|" + printCumulativeAmericasFixed + "|" + printCumulativeEuropeFixed + "|\n" + header.globalPercentage +  printSectionCumulativeWWPerJapanFixed + "|" + printSectionCumulativeWWPerAmericasFixed + "|" + printSectionCumulativeWWPerEuropeFixed + "|" + printLine
+                        : (elem.valueE !== 0)
+                            ? printPeriod + header.units + printCumulativeJapanFixed + "|" + printCumulativeAmericasFixed + "|" + printCumulativeEuropeFixed + "|" + printCumulativeOtherFixed + "|\n" + header.yearOnYear + printSectionCumulativeYoYJapanFixed + "|" + printSectionCumulativeYoYAmericasFixed + "|" + printSectionCumulativeYoYEuropeFixed + "|" + printSectionCumulativeYoYOtherFixed + "|\n" + header.globalPercentage +  printSectionCumulativeWWPerJapanFixed + "|" + printSectionCumulativeWWPerAmericasFixed + "|" + printSectionCumulativeWWPerEuropeFixed + "|" + printSectionCumulativeWWPerOtherFixed + "|" + printLine
+                            : printPeriod + header.units + printCumulativeJapanFixed + "|" + printCumulativeAmericasFixed + "|" + printCumulativeEuropeFixed + "|\n" + header.yearOnYear + printSectionCumulativeYoYJapanFixed + "|" + printSectionCumulativeYoYAmericasFixed + "|" + printSectionCumulativeYoYEuropeFixed + "|\n" + header.globalPercentage +  printSectionCumulativeWWPerJapanFixed + "|" + printSectionCumulativeWWPerAmericasFixed + "|" + printSectionCumulativeWWPerEuropeFixed + "|" + printLine
             })
             : [];
 
@@ -389,4 +390,3 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
 
         return penultimateCheck;
 }
-

@@ -40,11 +40,11 @@ export function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
                         )
                       }
                     : (lastFY[index].value === 0)
-                    ? {...elem, units: "NaN", value: 0}
-                    :{...elem, units: "percentage", value: Number(
-                        (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
-                        )
-                      }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
+                        ? {...elem, units: "NaN", value: 0}
+                        : {...elem, units: "percentage", value: Number(
+                            (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
+                            )
+                          }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
         })
 
        return calc
@@ -81,8 +81,8 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed[index].units === "NaN")
                 ? "NaN"
                 : (sectionDifferenceYoYFixed[index].value > 0)
-                ? `+${sectionDifferenceYoYFixed[index].value}%`
-                : `${sectionDifferenceYoYFixed[index].value}%`
+                    ? `+${sectionDifferenceYoYFixed[index].value}%`
+                    : `${sectionDifferenceYoYFixed[index].value}%`
 
             let printSectionDifferenceYoYFixed: string = (printSectionDifferenceYoY === "NaN")
                 ? printSectionDifferenceYoY
@@ -124,8 +124,8 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                 let printSectionCumulativeYoY: string = (sectionCumulativeYoYFixed[index].units === "NaN")
                     ? "NaN"
                     : (sectionCumulativeYoYFixed[index].value > 0)
-                    ? `+${sectionCumulativeYoYFixed[index].value}%`
-                    : `${sectionCumulativeYoYFixed[index].value}%`
+                        ? `+${sectionCumulativeYoYFixed[index].value}%`
+                        : `${sectionCumulativeYoYFixed[index].value}%`
 
                 let printSectionCumulativeYoYFixed: string = (printSectionCumulativeYoY === "NaN")
                     ? printSectionCumulativeYoY
@@ -170,10 +170,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             spacer(ltd,10,"right"),
         ]),"−","bottom",true,25) 
 
-        // have to check why ?. worked because footnotecheck didn't need ?
-        const forecastNoteCheck = (sectionForecasts[0]?.footnote === undefined)
-                ? []
-                : liner(printTextBlock(sectionForecasts[0].footnote, 39),"=","both",true,39);
+        const forecastNoteCheck = liner(printTextBlock(sectionForecasts[0]?.footnote, 39),"=","both",true,39);
 
         const forecast: string = sectionForecasts.map((elem, index, array) => {
                 
@@ -200,14 +197,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                     ]),"−","bottom",true)
             }).concat(forecastNoteCheck).flat().reduce((prev, next) => prev + next, "")
 
-            // const mobileFooter = "|(Includes income from smart-device\n|content and royalty income.)";
-
-            // const digitalSalesFooter = "|(Includes downloadable versions of\n|packaged software, download-only\n|software, add-on content and\n|Nintendo Switch Online*.)\n|*Nintendo Switch Online from FY3/2019"
-
-            // can't use .at(-1) due to the possibility of it being undefined
-            const footNoteCheck = (sectionDifference[0].footnote === undefined)
-                    ? []
-                    : liner(printTextBlock(sectionDifference[0].footnote, 39),"=","both",true,39);
+            const footNoteCheck = liner(printTextBlock(sectionDifference[0]?.footnote, 39),"=","both",true,39);
 
         const penultimateCheck = (sectionDifference[0].name.split(" ").includes("Total") && sectionDifference[0].units === "units")
                 ? [sectionHeader, ...difference, ...cumulative, ltdPrint, footNoteCheck, forecast].flat().reduce((prev, next) => prev + next)
@@ -261,7 +251,11 @@ export const printSalesHardware = (header: Header, sectionSales: Section[], sect
             ]),(array[index] === array.at(-1)) ? "=" : "−","bottom",true) 
         })
   
-        const printIt = [ sectionHeaderName, sectionHeaderThree, ...salesPerHardwareUnit].reduce((prev, next) => prev + next)
+        const printIt = [
+            sectionHeaderName, 
+            sectionHeaderThree, 
+            ...salesPerHardwareUnit
+        ].reduce((prev, next) => prev + next)
 
         return printIt
     }

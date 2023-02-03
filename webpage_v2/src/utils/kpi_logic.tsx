@@ -9,30 +9,12 @@ export type KPDIndicators = {
     footnote?: string,
 }
 
-// export type Header = {
-//     companyName: string,
-//     section: "| Proportion of overseas sales                     |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
-//     "| Proportion of hardware sales                     |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
-//     "| Proportion of first party software sales         |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
-//     "| Digital Sales in dedicated video game platform   |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|                   Sales |       Sales |    YoY%  |" | 
-//     "| Proportion of Digital Sales                      |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
-//     "| Proportion of downloadable versions of Packaged  |\n| Software Sales                                   |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
-//     "| Proportion of software sales                     |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |" | 
-//     "| Proportion of physical software sales            |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n|              Proportion |       Sales |    YoY%  |",
-//     fiscalYear: string,
-//     title: string,
-// }
-
 export type Header = {
     companyName: string,
     section: string,
     fiscalYear: string,
     title: string,
 }
-
-// export type Footer = {
-//    section: "(* Proportion of overseas (outside of Japan) sales to total sales)" | "(* Proportion of hardware (including accessories) sales to total dedicated video game platform sales)" | "(* Proportion of first-party software sales to total dedicated video game software sales)" | "(\"* Digital sales include a) downloadable versions of packaged software, b) download-only software, c) add-on content and d) Nintendo Switch Online, etc. *\"Downloadable versions of packaged software\" indicates the downloadable version of software that is offered both physically and digitally.\")" | "(* Proportion of digital sales to total dedicated video game software sales)" | "(* Proportion of downloadable versions of packaged software sales to total digital sales as indicated above: a/(a+b+c+d) )" | "(* Proportion of software (including digital sales) sales to total dedicated video game platform sales)" |  "(* Proportion of physical software sales to total dedicated video game platform software sales)", 
-// };
 
 export type Footer = {
    section: string,
@@ -60,7 +42,7 @@ export function yearOnYearCalculation(thisFY: KPDIndicators[], lastFY: KPDIndica
                       }
                     : (lastFY[index].value === 0)
                     ? {...elem, units: "NaN", value: 0}
-                    :{...elem, units: "percentage", value: Number(
+                    : {...elem, units: "percentage", value: Number(
                         (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
                         )
                       };
@@ -80,10 +62,10 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
         if (elem.category === "quarterly") {
             
             let printSection: string = (elem.units === "NaN")
-                                        ? "N/A"
-                                        : (elem.value > 0)
-                                        ? `+${elem.value}%`
-                                        : `${elem.value}%`; 
+                    ? "N/A"
+                    : (elem.value > 0)
+                        ? `+${elem.value}%`
+                        : `${elem.value}%`; 
 
             let printSectionFixed: string = spacer(printSection,9,"right") 
 
@@ -96,10 +78,10 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
         } else {
 
             let printSectionCml: string = (elem.units === "NaN")
-                                        ? "N/A"
-                                        : (elem.value > 0)
-                                        ? `+${elem.value}%`
-                                        : `${elem.value}%`; 
+                    ? "N/A"
+                    : (elem.value > 0)
+                        ? `+${elem.value}%`
+                        : `${elem.value}%`; 
     
             let printSectionCmlFixed: string = spacer(printSectionCml,9,"right")
 
@@ -221,7 +203,6 @@ const printNewSections = (proportionDifference: KPDIndicators[], sectionDifferen
     })
     
     return printAllReduce
-
 };
 
 export const printNewBody = (header: Header, footer: Footer, quarterProportion: KPDIndicators[], cumulativeProportion: KPDIndicators[], quarterSales: KPDIndicators[], cumulativeSales: KPDIndicators[], quarterYoY: KPDIndicators[], cumulativeYoY: KPDIndicators[], currentQuarter: number) => {
@@ -232,6 +213,5 @@ export const printNewBody = (header: Header, footer: Footer, quarterProportion: 
         ? printNewSections(cumulativeProportion, cumulativeSales, cumulativeYoY, currentQuarter) + "\n"
         : "=".repeat(50)+"+" + "\n";
 
-    // return text + quarterOne + "\n" + liner(printTextBlock(footer.section,50),"−","both",true,50) 
     return header.section + text + quarterOne + footer.section
 };
