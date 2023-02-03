@@ -198,7 +198,7 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
 
     const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
 
-    let prevFYTitles: titlesJSON[][] | undefined = array?.[index+1].titles;
+    let prevFYTitles: titlesJSON[][] | undefined = array?.[index+1]?.titles;
 
     function makeTitlesList(titleValues: titlesJSON[], prevFYTitlesLocal: titlesJSON[][] | undefined, headerValues: Header, currentQuarter: number): string {
 

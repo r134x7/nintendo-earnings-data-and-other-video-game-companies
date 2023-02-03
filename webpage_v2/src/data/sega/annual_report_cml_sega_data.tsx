@@ -141,11 +141,16 @@ function printTitles(header: string, titles: Series[][]) {
 
         let printUnits: string = liner(printTextBlock(elem.at(-1)?.units,44),"=","bottom",(!printMisc1 && !printMisc2) ? true : undefined,44)
 
-        let printMiscFlatFilter: string = [printMisc1, printMisc2].flatMap((value, index) => {
-            return value?.[index] ?? []; 
+        let printMiscFlatFilter: string = [printMisc1, printMisc2].flatMap((value, index, array) => {
+            // do not use value over array in return statement else it gets first value in string...
+            return array?.[index] ?? []; 
         }).reduce((acc, next) => acc + "\n" + next, "");
 
-        let releaseDateAndRankAndNotes: string = printFirstYearAndRankAndEditions + printUnits + (!printMisc1 && !printMisc2) ? "" : liner(printMiscFlatFilter,"=","bottom",true,44) 
+        let printMiscCheck = (!printMisc1 && !printMisc2) 
+            ? "" 
+            : liner(printMiscFlatFilter,"=","bottom",true,44)
+
+        let releaseDateAndRankAndNotes: string = printFirstYearAndRankAndEditions + printUnits + printMiscCheck  
 
         let yearValues: string[] = elem.flatMap(value => {
             if (value.value - value.valueLastFY === 0) {
