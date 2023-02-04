@@ -1,3 +1,6 @@
+import { useInterval } from "@mantine/hooks";
+import { useState, useEffect } from "react";
+
 export const printTextBlock = (text: string | undefined, blockLength: number): string | undefined => {
     // to make liner work by not printing.
     if (text === undefined) {
@@ -110,4 +113,30 @@ export const dateLabel = (latestFiscalYear: string, currentQuarter: number) => {
     ].filter((elem, index) => index === currentQuarter - 1);
 
     return `Data as of ${fyEndingMarchDates}`
+};
+
+export function useOneTextScroll(textInput: string, blockLength: number, milliseconds: number): string {
+
+    const [text, setText] = useState("");
+    const [textBlock, setTextBlock] = useState("");
+    const [seconds, setSeconds] = useState(0);
+
+    const interval = useInterval(() => setSeconds((s) => s + 1), milliseconds);
+
+    let splitText = text.split("");
+
+    useEffect(() => {
+        if (seconds === splitText.length) {
+            interval.stop();
+        } else {
+            interval.start();
+
+            setText(text + splitText[seconds])
+
+            setTextBlock(liner(printTextBlock(text + " ".repeat(textInput.length - text.length),blockLength),"−","both",true,blockLength))
+        }
+
+    }, [seconds])
+
+    return textBlock;
 };
