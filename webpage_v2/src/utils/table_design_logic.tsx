@@ -140,3 +140,29 @@ export function useSingleMessage(textInput: string, blockLength: number, borderS
 
     return textBlock;
 };
+
+export function usePrompt(textInput: string, blockLength: number, borderStyle: "=" | "−", milliseconds: number, hp: number): string {
+
+    let splitText = textInput.split("");
+
+    const [text, setText] = useState("");
+    const [textBlock, setTextBlock] = useState("");
+    const [seconds, setSeconds] = useState(0);
+
+    const interval = useInterval(() => setSeconds((s) => s + 1), milliseconds);
+
+    useEffect(() => {
+        if (seconds === splitText.length + 1) {
+            interval.stop();
+        } else if (hp <= 0) {
+            interval.start();
+            
+            setText(text + splitText[seconds])
+
+            setTextBlock(liner(printTextBlock(text + " ".repeat(textInput.length - text.length),blockLength), borderStyle,"both",true,blockLength))
+        }
+
+    }, [seconds,hp])
+
+    return textBlock;
+};

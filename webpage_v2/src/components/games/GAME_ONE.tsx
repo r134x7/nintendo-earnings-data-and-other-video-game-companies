@@ -3,6 +3,7 @@ import { Unit } from "../../classes/Unit";
 import { useEffect, useState } from "react";
 import { Code, Button, SimpleGrid } from "@mantine/core";
 import { useHotkeys } from "@mantine/hooks";
+import { usePrompt, useSingleMessage } from "../../utils/table_design_logic";
 
     // Objects need to be placed outside the function to retain state...
     var field = new Field(2,2);
@@ -145,19 +146,12 @@ const displayHP = () =>
         playerTwo.attackOpponent(playerOne)
     }
 
-const gameOverOne = 
-`--------------------------------
-| You struggled and lost.      |
-|                              |
-| Game Over                    |
---------------------------------`; 
+    
 
-const gameOverTwo = 
-`--------------------------------
-| You struggled to win.        |
-|                              |
-| Game Over!                   |
---------------------------------`; 
+    // cannot get the message to run only when called...
+const gameOverOne = usePrompt("You struggled and lost. Game Over",40,"=",80,playerOne.getHitPoints);
+
+const gameOverTwo = usePrompt("You struggled to win. Game Over!",40,"=",80,playerTwo.getHitPoints);
 
 function reset () {
 
