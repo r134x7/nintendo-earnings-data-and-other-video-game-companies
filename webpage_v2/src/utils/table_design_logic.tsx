@@ -126,7 +126,7 @@ export function useSingleMessage(textInput: string, blockLength: number, borderS
     const interval = useInterval(() => setSeconds((s) => s + 1), milliseconds);
 
     useEffect(() => {
-        if (seconds === splitText.length) {
+        if (seconds === splitText.length + 1) {
             interval.stop();
         } else {
             interval.start();

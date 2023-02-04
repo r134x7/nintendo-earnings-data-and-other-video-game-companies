@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
 import "../App.css";
-import { useInterval } from "@mantine/hooks";
 import { useSelector } from "react-redux";
 import CAPCOM_COMPONENT from "../components/CAPCOM_COMPONENT";
 import CAPCOM_CML from "../components/special/CAPCOM_CML";
 
-import { liner, printTextBlock } from "../utils/table_design_logic";
+import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
 const currentYear = 2023
 
@@ -19,29 +18,9 @@ export default function Capcom() {
 
     const linkOther = liner(printTextBlock("While you're here, you can head to Install Base to read about the mysterious Sega Super Genesis 32.",40),"=","top",true,40);
 
-    const message = `Capcom (They publish Remember Me), this is where you can find archived Capcom Platinum Titles data. `;
+    const message = `Capcom (They publish Remember Me), this is where you can find archived Capcom Platinum Titles data.`;
 
-    const splitMessage = message.split("");
-
-    const [text, setText] = useState("");
-
-    const [textBlock, setTextBlock] = useState("");
-
-    const [seconds, setSeconds] = useState(0);
-    const interval = useInterval(() => setSeconds((s) => s + 1), 80);
-
-    useEffect(() => {
-        if (seconds === splitMessage.length) {
-            interval.stop();
-        } else {
-            interval.start();
-
-            setText(text + splitMessage[seconds])
-
-            setTextBlock(liner(printTextBlock(text + " ".repeat(message.length-text.length),40),"−","both",true,40))
-        }
-
-    }, [seconds])
+    const makeText = useSingleMessage(message,40,"−",80);
 
     const [value, setValue] = useState("Data by Fiscal Year");
     const [year, setYear] = useState("");
@@ -71,7 +50,7 @@ export default function Capcom() {
         <div>
             <Stack mb="md" align="center">
             <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {textBlock}
+                {makeText}
             </Code>
             </Stack>
             <Stack align="center">

@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import SQUARE_ENIX_COMPONENT from "../components/SQUARE_ENIX_COMPONENT";
 import SQUARE_ENIX_CML from "../components/special/SQUARE_ENIX_CML";
 
-import { liner, printTextBlock } from "../utils/table_design_logic";
+import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
 const currentYear = 2023;
 
@@ -19,29 +19,9 @@ export default function SquareEnix() {
 
     const linkOther = liner(printTextBlock("Also, visit Install Base. It's a place to discuss and elaborate on the business side of the video game industry.",40),"=","top",true,40);
 
-    const message = `Square Enix (They publish Marvel's Avengers), this is where you can find archived data. `;
+    const message = `Square Enix (They publish Marvel's Avengers), this is where you can find archived data.`;
 
-    const splitMessage = message.split("");
-
-    const [text, setText] = useState("");
-
-    const [textBlock, setTextBlock] = useState("");
-
-    const [seconds, setSeconds] = useState(0);
-    const interval = useInterval(() => setSeconds((s) => s + 1), 80);
-
-    useEffect(() => {
-        if (seconds === splitMessage.length) {
-            interval.stop();
-        } else {
-            interval.start();
-
-            setText(text + splitMessage[seconds])
-
-            setTextBlock(liner(printTextBlock(text + " ".repeat(message.length-text.length),40),"−","both",true,40))
-        }
-
-    }, [seconds])
+    const makeText = useSingleMessage(message,40,"−",80);
 
     const [year, setYear] = useState("");
     const [value, setValue] = useState("Data by Fiscal Year");
@@ -69,7 +49,7 @@ export default function SquareEnix() {
         <div>
             <Stack mb="md" align="center">
             <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {textBlock}
+                {makeText}
             </Code>
             </Stack>
 

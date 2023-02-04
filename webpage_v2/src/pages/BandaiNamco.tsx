@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
 import "../App.css";
-import { useInterval } from "@mantine/hooks";
 import { useSelector } from "react-redux";
 import BANDAI_NAMCO_COMPONENT from "../components/BANDAI_NAMCO_COMPONENT";
 import BANDAI_NAMCO_CML from "../components/special/BANDAI_NAMCO_CML";
 
-import { liner, printTextBlock } from "../utils/table_design_logic";
+import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
 const currentYear = 2023;
 
@@ -19,29 +18,9 @@ export default function BandaiNamco() {
 
     const linkOther = liner(printTextBlock("While you're here, you can head to Install Base to read about the mysterious Sega Super Genesis 32.",40),"=","top",true,40);
 
-    const message = `Bandai Namco (They publish Dark Souls), this is where you can find archived Series IP data. `;
+    const message = `Bandai Namco (They publish Dark Souls), this is where you can find archived Series IP data.`;
 
-    const splitMessage = message.split("");
-
-    const [text, setText] = useState("");
-
-    const [textBlock, setTextBlock] = useState("");
-
-    const [seconds, setSeconds] = useState(0);
-    const interval = useInterval(() => setSeconds((s) => s + 1), 80);
-
-    useEffect(() => {
-        if (seconds === splitMessage.length) {
-            interval.stop();
-        } else {
-            interval.start();
-
-            setText(text + splitMessage[seconds])
-
-            setTextBlock(liner(printTextBlock(text + " ".repeat(message.length-text.length),40),"−","both",true,40))
-        }
-
-    }, [seconds])
+    const makeText = useSingleMessage(message,42,"−",80);
 
     const [value, setValue] = useState("Data by Fiscal Year");
     const [year, setYear] = useState("");
@@ -71,7 +50,7 @@ export default function BandaiNamco() {
         <div>
             <Stack mb="md" align="center">
             <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {textBlock}
+                {makeText}
             </Code>
             </Stack>
             <Stack align="center">

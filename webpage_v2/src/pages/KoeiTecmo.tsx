@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
 import "../App.css";
-import { useInterval } from "@mantine/hooks";
 import { useSelector } from "react-redux";
 import KOEI_TECMO_COMPONENT from "../components/KOEI_TECMO_COMPONENT";
 import KOEI_TECMO_CML from "../components/special/KOEI_TECMO_CML";
 
-import { liner, printTextBlock } from "../utils/table_design_logic";
+import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
 const currentYear = 2023;
 
@@ -19,33 +18,12 @@ export default function KoeiTecmo() {
 
     const linkOther = liner(printTextBlock("Also, visit Install Base. It's a place to discuss and elaborate on the business side of the video game industry.",40),"=","top",true,40);
 
-    const message = `Koei Tecmo (They publish Hyrule Warriors), this is where you can find archived data. `;
+    const message = `Koei Tecmo (They publish Hyrule Warriors), this is where you can find archived data.`;
 
-    const splitMessage = message.split("");
-
-    const [text, setText] = useState("");
-
-    const [textBlock, setTextBlock] = useState("");
-
-    const [seconds, setSeconds] = useState(0);
-    const interval = useInterval(() => setSeconds((s) => s + 1), 80);
-
-    useEffect(() => {
-        if (seconds === splitMessage.length) {
-            interval.stop();
-        } else {
-            interval.start();
-            setText(text + splitMessage[seconds])
-
-            setTextBlock(liner(printTextBlock(text + " ".repeat(message.length-text.length),40),"−","both",true,40))
-        }
-
-    }, [seconds])
+    const makeText = useSingleMessage(message,40,"−",80)
 
     const [year, setYear] = useState("");
     const [value, setValue] = useState("Data by Fiscal Year");
-
-    const [colour, setColour] = useState("rgb(0, 255, 255)")
 
     const state: any = useSelector(state => state);
 
@@ -72,7 +50,7 @@ export default function KoeiTecmo() {
         <div>
             <Stack mb="md" align="center">
             <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {textBlock}
+                {makeText}
             </Code>
             </Stack>
             <Stack align="center">

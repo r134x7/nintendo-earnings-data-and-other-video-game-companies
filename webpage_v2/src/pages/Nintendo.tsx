@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
 import "../App.css";
-import { useInterval } from "@mantine/hooks";
 import { useSelector } from "react-redux";
 import NINTENDO_CML from "../components/special/NINTENDO_CML";
 import NINTENDO_COMPONENT from "../components/NINTENDO_COMPONENT";
 
-import { liner, printTextBlock } from "../utils/table_design_logic";
+import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
 const currentYear = 2023;
 
@@ -21,29 +20,9 @@ export default function Nintendo() {
 
     const linkOther = liner(printTextBlock("For more in-depth historical data, visit Install Base and look at Celine's thread, link:",40),"=","top",true,40);
 
-    const message = `Nintendo (They publish playing cards), this is where you can find archived Nintendo earnings data. `;
+    const message = `Nintendo (They publish playing cards), this is where you can find archived Nintendo earnings data.`;
 
-    const splitMessage = message.split("");
-
-    const [text, setText] = useState("");
-
-    const [textBlock, setTextBlock] = useState("");
-
-    const [seconds, setSeconds] = useState(0);
-    const interval = useInterval(() => setSeconds((s) => s + 1), 80);
-
-    useEffect(() => {
-        if (seconds === splitMessage.length) {
-            interval.stop();
-        } else {
-            interval.start();
-
-            setText(text + splitMessage[seconds])
-
-            setTextBlock(liner(printTextBlock(text + " ".repeat(message.length-text.length),40),"−","both",true,40))
-        }
-
-    }, [seconds])
+    const makeText = useSingleMessage(message, 40, "−", 80);
 
     const [value, setValue] = useState("Data by Fiscal Year");
     const [year, setYear] = useState("");
@@ -73,7 +52,7 @@ export default function Nintendo() {
         <div>
             <Stack mb="md" align="center">
             <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {textBlock}
+                {makeText}
             </Code>
             </Stack>
             <Stack align="center">
