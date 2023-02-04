@@ -146,12 +146,9 @@ const displayHP = () =>
         playerTwo.attackOpponent(playerOne)
     }
 
-    
+const gameOverOne = usePrompt("You struggled and lost. Game Over",40,"=",80,(playerOne.getHitPoints <= 0) ? true : false, (playerOne.getHitPoints > 0) ? true : false);
 
-    // cannot get the message to run only when called...
-const gameOverOne = usePrompt("You struggled and lost. Game Over",40,"=",80,playerOne.getHitPoints);
-
-const gameOverTwo = usePrompt("You struggled to win. Game Over!",40,"=",80,playerTwo.getHitPoints);
+const gameOverTwo = usePrompt("You struggled to win. Game Over!",40,"=",80,(playerTwo.getHitPoints <= 0) ? true : false, (playerTwo.getHitPoints > 0) ? true : false);
 
 function reset () {
 

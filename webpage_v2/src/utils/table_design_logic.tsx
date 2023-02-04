@@ -141,7 +141,7 @@ export function useSingleMessage(textInput: string, blockLength: number, borderS
     return textBlock;
 };
 
-export function usePrompt(textInput: string, blockLength: number, borderStyle: "=" | "−", milliseconds: number, hp: number): string {
+export function usePrompt(textInput: string, blockLength: number, borderStyle: "=" | "−", milliseconds: number, start: Boolean, reset: Boolean): string {
 
     let splitText = textInput.split("");
 
@@ -152,9 +152,15 @@ export function usePrompt(textInput: string, blockLength: number, borderStyle: "
     const interval = useInterval(() => setSeconds((s) => s + 1), milliseconds);
 
     useEffect(() => {
+        if (reset === true) {
+            setText("");
+            setTextBlock("");
+            setSeconds(0);
+        }
+
         if (seconds === splitText.length + 1) {
             interval.stop();
-        } else if (hp <= 0) {
+        } else if (start === true) {
             interval.start();
             
             setText(text + splitText[seconds])
@@ -162,7 +168,7 @@ export function usePrompt(textInput: string, blockLength: number, borderStyle: "
             setTextBlock(liner(printTextBlock(text + " ".repeat(textInput.length - text.length),blockLength), borderStyle,"both",true,blockLength))
         }
 
-    }, [seconds,hp])
+    }, [seconds, start, reset])
 
     return textBlock;
 };
