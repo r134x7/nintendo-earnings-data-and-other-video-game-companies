@@ -1,43 +1,25 @@
 import { Code, Space } from "@mantine/core";
-import { useInterval } from "@mantine/hooks";
-import { useState, useEffect } from "react";
-import { liner, spacer, printTextBlock } from "../../utils/table_design_logic";
+import { useState } from "react";
+import { useSingleMessage } from "../../utils/table_design_logic";
 import gameFiveScript from "../../gameScript/gameFive/script.json";
+import { useSelector } from "react-redux";
 
 export default function GAME_FIVE() {
 
+    const state: any = useSelector(state => state);
+
     const [line, setLine] = useState(0);
 
-    const intro = gameFiveScript.intro?.[line] ?? "Nil";
+    // const intro = gameFiveScript.intro?.[line] ?? "Nil";
+    const intro = useSingleMessage(gameFiveScript.intro?.[line] ?? "Nil",40,"=",60);
 
-    const splitIntro = (intro + " ").split("");
-    // I need to create a function to handle the script...
-
-    const [text, setText] = useState("");
-
-    const [textBlock, setTextBlock] = useState("");
-
-    const [seconds, setSeconds] = useState(0);
-    const interval = useInterval(() => setSeconds((s) => s + 1), 80);
-
-    useEffect(() => {
-        if (seconds === splitIntro.length) {
-            interval.stop();
-        } else {
-            interval.start();
-
-            setText(text + splitIntro[seconds])
-
-            setTextBlock(liner(printTextBlock(text + " ".repeat(intro.length-text.length),40),"−","both",true,40))
-        }
-
-    }, [seconds])
-
+    // need to think of making a function to call useSingleMessage whenever a que occurs...........
+    
 
     return (
         <div>
-            <Code style={{backgroundColor: `rgba(0, 255, 255,0.2)`}} block>
-            {textBlock}
+            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+            {intro}
             </Code>
             <Space h="xl" />
         </div>
