@@ -4,7 +4,7 @@ import { useInterval } from "@mantine/hooks";
 import "../App.css" // have to import the css to get it to work
 import { useSelector } from "react-redux";
 
-import { liner, printTextBlock } from "../utils/table_design_logic";
+import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
 const Home = () => {
 
@@ -29,35 +29,37 @@ const Home = () => {
     const linkOther = liner(printTextBlock("Also, visit Install Base. It's a place to discuss and elaborate on the business side of the video game industry.",40),"=","top",true,40);
 
     const message = "Welcome to ggx2ac + archives: Nintendo earnings data and other video game companies ";
-    const splitMessage = message.split("");
 
-    const [textBlock, setTextBlock] = useState("");
+    const makeText = useSingleMessage(message, 40, "−", 80);
+    // const splitMessage = message.split("");
 
-    const [text, setText] = useState("");
-    // const [textColour, setTextColour] = useState({});
-    const [seconds, setSeconds] = useState(0);
+    // const [textBlock, setTextBlock] = useState("");
+
+    // const [text, setText] = useState("");
+    // // const [textColour, setTextColour] = useState({});
+    // const [seconds, setSeconds] = useState(0);
     
-    const interval = useInterval(() => setSeconds((s) => s + 1), 80);
+    // const interval = useInterval(() => setSeconds((s) => s + 1), 80);
 
-    useEffect(() => {
-        if (seconds === splitMessage.length) {
-            interval.stop();
-        } else {
-            interval.start();
+    // useEffect(() => {
+    //     if (seconds === splitMessage.length) {
+    //         interval.stop();
+    //     } else {
+    //         interval.start();
 
-            setText(text + splitMessage[seconds])
+    //         setText(text + splitMessage[seconds])
 
-            setTextBlock(liner(printTextBlock(text + " ".repeat(message.length-text.length),40),"−","both",true,40))
-        }
+    //         setTextBlock(liner(printTextBlock(text + " ".repeat(message.length-text.length),40),"−","both",true,40))
+    //     }
 
-    }, [seconds])
+    // }, [seconds])
 
     return (
 
         <div>
             <Stack mb="md" align="center">
             <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {textBlock}
+                {makeText}
             </Code>
             </Stack>
 

@@ -115,7 +115,9 @@ export const dateLabel = (latestFiscalYear: string, currentQuarter: number) => {
     return `Data as of ${fyEndingMarchDates}`
 };
 
-export function useOneTextScroll(textInput: string, blockLength: number, milliseconds: number): string {
+export function useSingleMessage(textInput: string, blockLength: number, borderStyle: "=" | "−", milliseconds: number): string {
+
+    let splitText = textInput.split("");
 
     const [text, setText] = useState("");
     const [textBlock, setTextBlock] = useState("");
@@ -123,17 +125,15 @@ export function useOneTextScroll(textInput: string, blockLength: number, millise
 
     const interval = useInterval(() => setSeconds((s) => s + 1), milliseconds);
 
-    let splitText = text.split("");
-
     useEffect(() => {
         if (seconds === splitText.length) {
             interval.stop();
         } else {
             interval.start();
-
+            
             setText(text + splitText[seconds])
 
-            setTextBlock(liner(printTextBlock(text + " ".repeat(textInput.length - text.length),blockLength),"−","both",true,blockLength))
+            setTextBlock(liner(printTextBlock(text + " ".repeat(textInput.length - text.length),blockLength), borderStyle,"both",true,blockLength))
         }
 
     }, [seconds])
