@@ -17,7 +17,7 @@ export default function GAME_FOUR() {
     ]);
 
 
-    const [action, setAction] = useState("");
+    // const [action, setAction] = useState("");
 
     const [lineOne, setLineOne] = useState(0);
     const [lineTwo, setLineTwo] = useState(-1); // set to minus one so that the text doesn't start at the same time as line one.
@@ -49,6 +49,10 @@ export default function GAME_FOUR() {
 
     function next() {
         // need to set conditions for when it is at a particular line so that it returns void
+        if (lineOne === 4) {
+            return
+        }
+
 
         if (lineOne === lineTwo) {
             setResetValue(true)
@@ -63,13 +67,23 @@ export default function GAME_FOUR() {
             setTimeout(() => {
                 setLineTwo(lineTwo+1)
                 setResetValue2(false);
+
+                if (lineTwo === 8) {
+                    return SetNameTwo(gameFourScript.characterNames[2])
+                }
             }, 1)
         }
     }
 
     const [miss, setMiss] = useState(100);
 
+    const [remove, setRemove] = useState(false);
+
     function runAction() {
+        if (remove === true) {
+            return
+        };
+
         setResetValue(true)
         setResetValue2(true)
         // need to set lifepoints value here...
@@ -79,17 +93,19 @@ export default function GAME_FOUR() {
         if (drawCard > (100 - miss)) {
             setLifePointsTwo(lifePointsTwo - 1500)
             setMiss(miss - 5)
+            setLineOne(6)
         } else if (drawCard < (100 - miss) && lifePointsTwo > 0) {
             // set lose condition here
-            console.log("lose...");
-            
+            setRemove(true)
+            // need to set lose scene here.
         } else {
             // disable drawing card and advance to next line...
+            setRemove(true)
+            setLineOne(9) // to get to specific line.
+            setLineTwo(8)
         }
         
         setTimeout(() => {
-            setAction("You attacked for X damage!")
-
             setResetValue(false)
             setResetValue2(false);
         }, 1)
@@ -170,7 +186,7 @@ export default function GAME_FOUR() {
                 {textBlockOne}
             </Code>
             <Space h="xl" />
-            <Code style={{backgroundColor:(lineTwo === 9) ? "rgba(200, 200, 200, 0.2)" : `rgba(75, 0, 130, .20)`}} block>
+            <Code style={{backgroundColor:(lineTwo > 8) ? "rgba(200, 200, 200, 0.2)" : `rgba(75, 0, 130, .20)`}} block>
                 {printNameTwo}
                 {textBlockTwo}
             </Code>
