@@ -3,7 +3,7 @@ import { useHotkeys, useInterval } from "@mantine/hooks";
 import { useEffect, useState } from "react";
 import { Field } from "../../classes/Field";
 import { Unit } from "../../classes/Unit";
-import Games from "../../pages/Games";
+import { usePrompt } from "../../utils/table_design_logic";
 
 // need to try making a function here that spawns objects...
 function ball(x: number, y: number) {
@@ -253,19 +253,9 @@ const displayHP = () =>
 
 const [hitPoints, setHitPoints] = useState(displayHP);
 
-const gameOverOne = 
-`--------------------------------
-| You struggled.               |
-|                              |
-| Game Over                    |
---------------------------------`; 
+const gameOverOne = usePrompt("You struggled. Game Over",40,"=",80,(playerOne.getHitPoints <= 0) ? true : false, (playerOne.getHitPoints > 0) ? true : false);
 
-const gameOverTwo =
-`--------------------------------
-| You struggled against time.  |
-|                              |
-| Game Over!                   |
---------------------------------`; 
+const gameOverTwo = usePrompt("You struggled against time. Game Over!",40,"=",80,(playerOne.getHitPoints <= 0 && seconds > 800) ? true : false, (playerOne.getHitPoints > 0) ? true : false);
 
 function reset () {
 
@@ -281,12 +271,6 @@ function reset () {
 
     right()
 }
-
-// function menu () {
-//     return (
-//          <Games menu={999} />
-//     )
-// }
 
     return (
         <div>

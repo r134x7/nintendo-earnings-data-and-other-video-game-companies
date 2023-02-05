@@ -3,7 +3,7 @@ import { useHotkeys } from "@mantine/hooks";
 import { useState } from "react";
 import { Field } from "../../classes/Field";
 import { Unit } from "../../classes/Unit";
-import { liner, border, spacer } from "../../utils/table_design_logic";
+import { liner, border, spacer, usePrompt } from "../../utils/table_design_logic";
 
 // need to figure out how to have a reactive map...
 
@@ -198,12 +198,7 @@ spacer(`Difficulty Level: ${levelSetting}`,29,"left")
         playerTwo.attackOpponent(playerOne)
     }
 
-const gameOverOne = 
-`--------------------------------
-| You struggled and lost.      |
-|                              |
-| Game Over                    |
---------------------------------`; 
+const gameOverOne = usePrompt("You struggled and lost. Game Over",40,"=",80,(playerOne.getHitPoints <= 0) ? true : false, (playerOne.getHitPoints > 0) ? true : false);
 
 function nextLevel () {
 
