@@ -35,10 +35,15 @@ export default function GAME_FOUR() {
     const [resetValue, setResetValue] = useState(false);
     const [resetValue2, setResetValue2] = useState(false);
 
-    const textBlockOne = callPrompt(gameFourScript?.playerOneBox?.[lineOne] ?? "",resetValue);
+    const [playerOneSpeak, setplayerOneSpeak] = useState(gameFourScript?.playerOneBox?.[lineOne] ?? "");
+    const [playerTwoSpeak, setplayerTwoSpeak] = useState(gameFourScript?.playerTwoBox?.[lineTwo] ?? "");
 
-    const textBlockTwo = callPrompt(gameFourScript?.playerTwoBox?.[lineTwo] ?? "",resetValue2);
+    // var playerOneScript = gameFourScript?.playerOneBox?.[lineOne];
+    // var playerTwoScript = gameFourScript?.playerTwoBox?.[lineTwo];
 
+    const textBlockOne = callPrompt(playerOneSpeak ?? "",resetValue);
+
+    const textBlockTwo = callPrompt(playerTwoSpeak ?? "",resetValue2);
 
     function callPrompt(text: string, reset: Boolean) {
         // I can't put reset into the parameter to not use a ternary condition because it breaks...
@@ -59,6 +64,7 @@ export default function GAME_FOUR() {
             
             setTimeout(() => {
                 setLineOne(lineOne+1)
+                setplayerOneSpeak(gameFourScript?.playerOneBox?.[lineOne] ?? "")
                 setResetValue(false);
             }, 1)
         } else {
@@ -66,6 +72,7 @@ export default function GAME_FOUR() {
             
             setTimeout(() => {
                 setLineTwo(lineTwo+1)
+                setplayerTwoSpeak(gameFourScript?.playerTwoBox?.[lineTwo] ?? "")
                 setResetValue2(false);
 
                 if (lineTwo === 8) {
@@ -92,12 +99,19 @@ export default function GAME_FOUR() {
 
         if (drawCard > (100 - miss)) {
             setLifePointsTwo(lifePointsTwo - 1500)
-            setMiss(miss - 5)
+            setMiss(miss - 99)
             setLineOne(6)
         } else if (drawCard < (100 - miss) && lifePointsTwo > 0) {
             // set lose condition here
             setRemove(true)
             // need to set lose scene here.
+
+            setLineOne(0)
+            setLineTwo(-1)
+            setplayerOneSpeak(gameFourScript?.playerOneLose?.[lineOne] ?? "") ;
+
+            setplayerTwoSpeak(gameFourScript?.playerTwoLose?.[lineTwo] ?? "")
+
         } else {
             // disable drawing card and advance to next line...
             setRemove(true)

@@ -31,5 +31,11 @@
         "Ahhhhhhhhhh!",
         "Stop it already, Yugi!!",
         "Weevil's Life Points already dropped to 0 a long time ago! It's clearly your victory!"
+    ],
+    "playerOneLose": [
+        "Oh no! I drew Pot of Greed."
+    ],
+    "playerTwoLose": [
+        "Hahahaha... it's over Yugi!"
     ]
 }
