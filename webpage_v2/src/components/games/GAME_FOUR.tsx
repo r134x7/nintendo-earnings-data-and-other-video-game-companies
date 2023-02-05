@@ -35,15 +35,10 @@ export default function GAME_FOUR() {
     const [resetValue, setResetValue] = useState(false);
     const [resetValue2, setResetValue2] = useState(false);
 
-    const [playerOneSpeak, setplayerOneSpeak] = useState(gameFourScript?.playerOneBox?.[lineOne] ?? "");
-    const [playerTwoSpeak, setplayerTwoSpeak] = useState(gameFourScript?.playerTwoBox?.[lineTwo] ?? "");
+    const textBlockOne = callPrompt(gameFourScript?.playerOneBox?.[lineOne] ?? "",resetValue);
 
-    // var playerOneScript = gameFourScript?.playerOneBox?.[lineOne];
-    // var playerTwoScript = gameFourScript?.playerTwoBox?.[lineTwo];
+    const textBlockTwo = callPrompt(gameFourScript?.playerTwoBox?.[lineTwo] ?? "",resetValue2);
 
-    const textBlockOne = callPrompt(playerOneSpeak ?? "",resetValue);
-
-    const textBlockTwo = callPrompt(playerTwoSpeak ?? "",resetValue2);
 
     function callPrompt(text: string, reset: Boolean) {
         // I can't put reset into the parameter to not use a ternary condition because it breaks...
@@ -54,7 +49,7 @@ export default function GAME_FOUR() {
 
     function next() {
         // need to set conditions for when it is at a particular line so that it returns void
-        if (lineOne === 4) {
+        if (lineOne === 4 || lineOne === 6) {
             return
         }
 
@@ -64,7 +59,6 @@ export default function GAME_FOUR() {
             
             setTimeout(() => {
                 setLineOne(lineOne+1)
-                setplayerOneSpeak(gameFourScript?.playerOneBox?.[lineOne] ?? "")
                 setResetValue(false);
             }, 1)
         } else {
@@ -72,7 +66,6 @@ export default function GAME_FOUR() {
             
             setTimeout(() => {
                 setLineTwo(lineTwo+1)
-                setplayerTwoSpeak(gameFourScript?.playerTwoBox?.[lineTwo] ?? "")
                 setResetValue2(false);
 
                 if (lineTwo === 8) {
@@ -99,24 +92,19 @@ export default function GAME_FOUR() {
 
         if (drawCard > (100 - miss)) {
             setLifePointsTwo(lifePointsTwo - 1500)
-            setMiss(miss - 99)
+            setMiss(miss - 5)
             setLineOne(6)
         } else if (drawCard < (100 - miss) && lifePointsTwo > 0) {
             // set lose condition here
             setRemove(true)
             // need to set lose scene here.
-
-            setLineOne(0)
-            setLineTwo(-1)
-            setplayerOneSpeak(gameFourScript?.playerOneLose?.[lineOne] ?? "") ;
-
-            setplayerTwoSpeak(gameFourScript?.playerTwoLose?.[lineTwo] ?? "")
-
+            setLineOne(13)
+            setLineTwo(12)
         } else {
             // disable drawing card and advance to next line...
             setRemove(true)
-            setLineOne(9) // to get to specific line.
-            setLineTwo(8)
+            setLineOne(9); // to get to specific line.
+            setLineTwo(8);
         }
         
         setTimeout(() => {
@@ -205,10 +193,10 @@ export default function GAME_FOUR() {
                 {textBlockTwo}
             </Code>
             <SimpleGrid cols={2}>
-                <Button variant="outline" radius={"lg"} color="red" onClick={next} fullWidth>
+                <Button variant="outline" radius={"lg"} color={(lineOne === 4 || lineOne === 6) ? "gray" :"red"} onClick={next} fullWidth>
                    Next 
                 </Button>
-                <Button variant="outline" radius={"lg"} color="red" onClick={runAction} fullWidth>
+                <Button variant="outline" radius={"lg"} color={(remove === true) ? "gray" :"red"} onClick={runAction} fullWidth>
                    Draw Card!
                 </Button>
             </SimpleGrid>
