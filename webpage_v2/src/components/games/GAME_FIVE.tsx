@@ -38,9 +38,8 @@ export default function GAME_FIVE() {
             setResetValue(false);
         }, 1)
     }
-    // const intro = gameFiveScript.intro?.[line] ?? "Nil";
-    // const intro = useSingleMessage(gameFiveScript.intro?.[line] ?? "Nil",40,"=",60);
-    const intro = callPrompt(gameFiveScript?.loading?.[line] ?? "Uh-oh...",resetValue);
+
+    const intro = callPrompt(gameFiveScript?.loading?.[line] ?? "No more content past here...",resetValue);
 
     // need to think of making a function to call useSingleMessage whenever a que occurs...........
     function callPrompt(text: string, reset: Boolean) {
