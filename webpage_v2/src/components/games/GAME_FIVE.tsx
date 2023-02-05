@@ -28,18 +28,25 @@ export default function GAME_FIVE() {
     // useEffect(() => {
 
     // },[line])
+    const [resetValue, setResetValue] = useState(false);
 
     function next() {
         // setResetValue(true)
         // blank()
         console.log(line);
         
-        return setLine(line+1)
+        setResetValue(true)
+        setLine(line+1)
+        // setResetValue(false)
         // return  gameFiveScript?.loading[line] ?? "Uh-oh..."
+
+        setTimeout(() => {
+            setResetValue(false);
+        }, 1)
     }
     // const intro = gameFiveScript.intro?.[line] ?? "Nil";
     // const intro = useSingleMessage(gameFiveScript.intro?.[line] ?? "Nil",40,"=",60);
-    const intro = callPrompt(gameFiveScript?.loading[line] ?? "Error...",false);
+    const intro = callPrompt(gameFiveScript?.loading?.[line] ?? "Uh-oh...",resetValue);
 
     // need to think of making a function to call useSingleMessage whenever a que occurs...........
     function callPrompt(text: string, reset: Boolean) {
