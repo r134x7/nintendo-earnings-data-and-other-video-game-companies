@@ -154,7 +154,8 @@ export function usePrompt(textInput: string, blockLength: number, borderStyle: "
     useEffect(() => {
         if (reset === true) {
             setText("");
-            setTextBlock("");
+            // setTextBlock("");
+            setTextBlock(liner(printTextBlock(text,blockLength), borderStyle,"both",true,blockLength))
             setSeconds(0);
         }
 

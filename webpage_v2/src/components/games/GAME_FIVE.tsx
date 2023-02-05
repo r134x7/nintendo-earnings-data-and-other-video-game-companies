@@ -31,16 +31,10 @@ export default function GAME_FIVE() {
     const [resetValue, setResetValue] = useState(false);
 
     function next() {
-        // setResetValue(true)
-        // blank()
-        console.log(line);
-        
         setResetValue(true)
-        setLine(line+1)
-        // setResetValue(false)
-        // return  gameFiveScript?.loading[line] ?? "Uh-oh..."
-
+        
         setTimeout(() => {
+            setLine(line+1)
             setResetValue(false);
         }, 1)
     }
