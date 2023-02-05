@@ -20,7 +20,7 @@ export default function GAME_FOUR() {
     const [action, setAction] = useState("");
 
     const [lineOne, setLineOne] = useState(0);
-    const [lineTwo, setLineTwo] = useState(0);
+    const [lineTwo, setLineTwo] = useState(-1); // set to minus one so that the text doesn't start at the same time as line one.
 
     const [nameOne, SetNameOne] = useState(gameFourScript.characterNames[0]);
 
@@ -43,31 +43,54 @@ export default function GAME_FOUR() {
     function callPrompt(text: string, reset: Boolean) {
         // I can't put reset into the parameter to not use a ternary condition because it breaks...
         return (!reset) 
-            ? usePrompt(text,40,"=",80,true,false)
-            : usePrompt(text,40,"=",80,false,true)
+            ? usePrompt(text,40,"=",30,true,false)
+            : usePrompt(text,40,"=",30,false,true)
     }
-
-    const [lifePointsOne, setLifePointsOne] = useState()
 
     function next() {
         // need to set conditions for when it is at a particular line so that it returns void
 
-
-        setResetValue(true)
-        
-        setTimeout(() => {
-            setLineOne(lineOne+1)
-            setResetValue(false);
-        }, 1)
+        if (lineOne === lineTwo) {
+            setResetValue(true)
+            
+            setTimeout(() => {
+                setLineOne(lineOne+1)
+                setResetValue(false);
+            }, 1)
+        } else {
+            setResetValue2(true)
+            
+            setTimeout(() => {
+                setLineTwo(lineTwo+1)
+                setResetValue2(false);
+            }, 1)
+        }
     }
 
+    const [miss, setMiss] = useState(100);
+
     function runAction() {
+        setResetValue(true)
         setResetValue2(true)
         // need to set lifepoints value here...
-        // when attacking, need to randomise chance, probably start at a 99% chance and have it go down by 1% each draw and then .01% as it goes down to from 1%
+        // when attacking, need to randomise chance, probably start at a 100% chance and have it go down by 5% each draw and then .01% as it goes down to from 1%
+        let drawCard = Math.ceil(Math.random() * 100);
+
+        if (drawCard > (100 - miss)) {
+            setLifePointsTwo(lifePointsTwo - 1500)
+            setMiss(miss - 5)
+        } else if (drawCard < (100 - miss) && lifePointsTwo > 0) {
+            // set lose condition here
+            console.log("lose...");
+            
+        } else {
+            // disable drawing card and advance to next line...
+        }
         
         setTimeout(() => {
             setAction("You attacked for X damage!")
+
+            setResetValue(false)
             setResetValue2(false);
         }, 1)
     }
