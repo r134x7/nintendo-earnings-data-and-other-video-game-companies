@@ -7,5 +7,10 @@
     ],
     "intro": [
         "It is the year 20XX... (To be continued...)"
+    ],
+    "loading": [
+         "Loading...",
+         "Loading...",
+         "Error..."
     ]
 }

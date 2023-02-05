@@ -1,8 +1,9 @@
-import { Code, Space } from "@mantine/core";
-import { useState } from "react";
-import { useSingleMessage } from "../../utils/table_design_logic";
+import { Code, Space, SimpleGrid, Button } from "@mantine/core";
+import { useEffect, useState } from "react";
+import { usePrompt, useSingleMessage } from "../../utils/table_design_logic";
 import gameFiveScript from "../../gameScript/gameFive/script.json";
 import { useSelector } from "react-redux";
+import { useHotkeys } from "@mantine/hooks";
 
 export default function GAME_FIVE() {
 
@@ -10,10 +11,42 @@ export default function GAME_FIVE() {
 
     const [line, setLine] = useState(0);
 
+    useHotkeys([
+        // ["ArrowDown", () => down()],
+        // ["ArrowUp", () => up()],
+        // ["ArrowLeft", () => left()],
+        ["ArrowRight", () => next()],
+    ]);
+
+    // const [resetValue, setResetValue] = useState(false);
+
+    function blank() {
+        // return setResetValue(false)
+        return true
+    }
+
+    // useEffect(() => {
+
+    // },[line])
+
+    function next() {
+        // setResetValue(true)
+        // blank()
+        console.log(line);
+        
+        return setLine(line+1)
+        // return  gameFiveScript?.loading[line] ?? "Uh-oh..."
+    }
     // const intro = gameFiveScript.intro?.[line] ?? "Nil";
-    const intro = useSingleMessage(gameFiveScript.intro?.[line] ?? "Nil",40,"=",60);
+    // const intro = useSingleMessage(gameFiveScript.intro?.[line] ?? "Nil",40,"=",60);
+    const intro = callPrompt(gameFiveScript?.loading[line] ?? "Error...",false);
 
     // need to think of making a function to call useSingleMessage whenever a que occurs...........
+    function callPrompt(text: string, reset: Boolean) {
+        return (!reset) 
+            ? usePrompt(text,40,"=",80,true,false)
+            : usePrompt(text,40,"=",80,false,true)
+    }
     
 
     return (
@@ -21,7 +54,11 @@ export default function GAME_FIVE() {
             <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
             {intro}
             </Code>
-            <Space h="xl" />
+            <SimpleGrid cols={1}>
+                <Button variant="outline" radius={"lg"} color="red" onClick={next} fullWidth>
+                   Next 
+                </Button>
+            </SimpleGrid>
         </div>
     )
 }
