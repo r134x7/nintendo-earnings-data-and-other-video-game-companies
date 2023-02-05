@@ -1,12 +1,23 @@
-import { Code, Space } from "@mantine/core";
-import { useInterval } from "@mantine/hooks";
+import { Code, Space, SimpleGrid, Button } from "@mantine/core";
+import { useInterval, useHotkeys } from "@mantine/hooks";
 import { useState, useEffect } from "react";
 import { liner, spacer, printTextBlock } from "../../utils/table_design_logic";
+import { usePrompt } from "../../utils/table_design_logic";
 
 import gameFourScript from "../../gameScript/gameFour/script.json"
 
 
 export default function GAME_FOUR() {
+
+    useHotkeys([
+        ["ArrowDown", () => runAction()],
+        // ["ArrowUp", () => up()],
+        // ["ArrowLeft", () => left()],
+        ["ArrowRight", () => next()],
+    ]);
+
+
+    const [action, setAction] = useState("");
 
     const [lineOne, setLineOne] = useState(0);
     const [lineTwo, setLineTwo] = useState(0);
@@ -21,75 +32,113 @@ export default function GAME_FOUR() {
 
     const printNameTwo = liner(printTextBlock(nameTwo,25) + `${spacer((nameTwo === gameFourScript.characterNames[2]) ? "" : `LP: ${lifePointsTwo}`,13,"left")}|` ,"=","top",true,40)
 
-    // const [lifePointsOne, setLifePointsOne] = useState()
+    const [resetValue, setResetValue] = useState(false);
+    const [resetValue2, setResetValue2] = useState(false);
+
+    const textBlockOne = callPrompt(gameFourScript?.playerOneBox?.[lineOne] ?? "",resetValue);
+
+    const textBlockTwo = callPrompt(gameFourScript?.playerTwoBox?.[lineTwo] ?? "",resetValue2);
 
 
-    const playerOne = gameFourScript.playerOneBox?.[lineOne] ?? "Nil";
+    function callPrompt(text: string, reset: Boolean) {
+        // I can't put reset into the parameter to not use a ternary condition because it breaks...
+        return (!reset) 
+            ? usePrompt(text,40,"=",80,true,false)
+            : usePrompt(text,40,"=",80,false,true)
+    }
 
-    const splitOne = (playerOne + " ").split("");
+    const [lifePointsOne, setLifePointsOne] = useState()
 
-    const [textOne, setTextOne] = useState("");
+    function next() {
+        // need to set conditions for when it is at a particular line so that it returns void
 
-    const [textBlockOne, setTextBlockOne] = useState("");
 
-    const playerTwo = gameFourScript.playerTwoBox?.[lineTwo] ?? "Nil";
+        setResetValue(true)
+        
+        setTimeout(() => {
+            setLineOne(lineOne+1)
+            setResetValue(false);
+        }, 1)
+    }
 
-    const splitTwo = (playerTwo + " ").split("");
+    function runAction() {
+        setResetValue2(true)
+        // need to set lifepoints value here...
+        // when attacking, need to randomise chance, probably start at a 99% chance and have it go down by 1% each draw and then .01% as it goes down to from 1%
+        
+        setTimeout(() => {
+            setAction("You attacked for X damage!")
+            setResetValue2(false);
+        }, 1)
+    }
 
-    const [textTwo, setTextTwo] = useState("");
 
-    const [textBlockTwo, setTextBlockTwo] = useState("");
+    // const playerOne = gameFourScript.playerOneBox?.[lineOne] ?? "Nil";
 
-    const [seconds, setSeconds] = useState(0);
-    const interval = useInterval(() => setSeconds((s) => s + 1), 50);
+    // const splitOne = (playerOne + " ").split("");
 
-    useEffect(() => {
-        if (playerOne === "Nil") {
-            interval.stop();
-            return
-        }
+    // const [textOne, setTextOne] = useState("");
 
-        if (seconds === splitOne.length && lineOne === lineTwo) {
-            interval.stop();
-            setTimeout(() => {
-                setSeconds(0);
-                setLineOne(lineOne+1)
-                setTextTwo("")
-                setTextBlockTwo("")
-                if (lineTwo === 9) {
-                    SetNameTwo(gameFourScript.characterNames[2])
-                } else if (lineTwo > 2 && lineTwo < 8) {
-                    setLifePointsTwo(lifePointsTwo - 1500)
-                } else if (lineTwo === 8) {
-                    setLifePointsTwo(lifePointsTwo - 3000)
-                }
-              }, 2000)
-        } else if (seconds === splitTwo.length && lineOne !== lineTwo) {
-            interval.stop();
-            setTimeout(() => {
-                setSeconds(0);
-                setLineTwo(lineTwo+1)
-                setTextOne("")
-                setTextBlockOne("")
-                // if (lineTwo === 9) {
-                //     SetNameTwo(gameFourScript.characterNames[2])
-                // }
-              }, 2000)
-        } else if (lineOne === lineTwo) {
-            interval.start();
+    // const [textBlockOne, setTextBlockOne] = useState("");
 
-            setTextOne(textOne + splitOne[seconds])
+    // const playerTwo = gameFourScript.playerTwoBox?.[lineTwo] ?? "Nil";
 
-            setTextBlockOne(liner(printTextBlock(textOne + " ".repeat(playerOne.length-textOne.length),40),"−","both",true,40))
-        } else {
-            interval.start();
+    // const splitTwo = (playerTwo + " ").split("");
 
-            setTextTwo(textTwo + splitTwo[seconds])
+    // const [textTwo, setTextTwo] = useState("");
 
-            setTextBlockTwo(liner(printTextBlock(textTwo + " ".repeat(playerTwo.length-textTwo.length),40),"−","both",true,40))
-        }
+    // const [textBlockTwo, setTextBlockTwo] = useState("");
 
-    }, [seconds])
+    // const [seconds, setSeconds] = useState(0);
+    // const interval = useInterval(() => setSeconds((s) => s + 1), 50);
+
+    // useEffect(() => {
+    //     if (playerOne === "Nil") {
+    //         interval.stop();
+    //         return
+    //     }
+
+    //     if (seconds === splitOne.length && lineOne === lineTwo) {
+    //         interval.stop();
+    //         setTimeout(() => {
+    //             setSeconds(0);
+    //             setLineOne(lineOne+1)
+    //             setTextTwo("")
+    //             setTextBlockTwo("")
+    //             if (lineTwo === 9) {
+    //                 SetNameTwo(gameFourScript.characterNames[2])
+    //             } else if (lineTwo > 2 && lineTwo < 8) {
+    //                 setLifePointsTwo(lifePointsTwo - 1500)
+    //             } else if (lineTwo === 8) {
+    //                 setLifePointsTwo(lifePointsTwo - 3000)
+    //             }
+    //           }, 2000)
+    //     } else if (seconds === splitTwo.length && lineOne !== lineTwo) {
+    //         interval.stop();
+    //         setTimeout(() => {
+    //             setSeconds(0);
+    //             setLineTwo(lineTwo+1)
+    //             setTextOne("")
+    //             setTextBlockOne("")
+    //             // if (lineTwo === 9) {
+    //             //     SetNameTwo(gameFourScript.characterNames[2])
+    //             // }
+    //           }, 2000)
+    //     } else if (lineOne === lineTwo) {
+    //         interval.start();
+
+    //         setTextOne(textOne + splitOne[seconds])
+
+    //         setTextBlockOne(liner(printTextBlock(textOne + " ".repeat(playerOne.length-textOne.length),40),"−","both",true,40))
+    //     } else {
+    //         interval.start();
+
+    //         setTextTwo(textTwo + splitTwo[seconds])
+
+    //         setTextBlockTwo(liner(printTextBlock(textTwo + " ".repeat(playerTwo.length-textTwo.length),40),"−","both",true,40))
+    //     }
+
+    // }, [seconds])
 
     return (
         <div>
@@ -102,6 +151,14 @@ export default function GAME_FOUR() {
                 {printNameTwo}
                 {textBlockTwo}
             </Code>
+            <SimpleGrid cols={2}>
+                <Button variant="outline" radius={"lg"} color="red" onClick={next} fullWidth>
+                   Next 
+                </Button>
+                <Button variant="outline" radius={"lg"} color="red" onClick={runAction} fullWidth>
+                   Draw Card!
+                </Button>
+            </SimpleGrid>
             <Space h="xl" />
             Dialogue source: https://www.youtube.com/watch?v=-9NBvsmQ2Ik
         </div>

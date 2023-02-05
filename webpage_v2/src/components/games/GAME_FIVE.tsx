@@ -20,16 +20,6 @@ export default function GAME_FIVE() {
         ["ArrowRight", () => next()],
     ]);
 
-    // const [resetValue, setResetValue] = useState(false);
-
-    function blank() {
-        // return setResetValue(false)
-        return true
-    }
-
-    // useEffect(() => {
-
-    // },[line])
     const [resetValue, setResetValue] = useState(false);
     const [resetValue2, setResetValue2] = useState(false);
 
@@ -57,6 +47,7 @@ export default function GAME_FIVE() {
 
     // need to think of making a function to call useSingleMessage whenever a que occurs...........
     function callPrompt(text: string, reset: Boolean) {
+        // I can't put reset into the parameter to not use a ternary condition because it breaks...
         return (!reset) 
             ? usePrompt(text,40,"=",80,true,false)
             : usePrompt(text,40,"=",80,false,true)
