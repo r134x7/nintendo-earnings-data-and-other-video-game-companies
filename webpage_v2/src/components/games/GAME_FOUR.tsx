@@ -49,8 +49,10 @@ export default function GAME_FOUR() {
 
     function next() {
         // need to set conditions for when it is at a particular line so that it returns void
-        if (lineOne === 4 || lineOne === 6) {
+        if (lineOne === 4 || lineOne === 6 || (lineOne === 12 && lineTwo === 11)) {
             return
+        } else if (lineOne === 3) {
+            runAction()
         }
 
 
@@ -193,7 +195,7 @@ export default function GAME_FOUR() {
                 {textBlockTwo}
             </Code>
             <SimpleGrid cols={2}>
-                <Button variant="outline" radius={"lg"} color={(lineOne === 4 || lineOne === 6) ? "gray" :"red"} onClick={next} fullWidth>
+                <Button variant="outline" radius={"lg"} color={(lineOne === 4 || lineOne === 6 || lineOne === 12) ? "gray" :"red"} onClick={next} fullWidth>
                    Next 
                 </Button>
                 <Button variant="outline" radius={"lg"} color={(remove === true) ? "gray" :"red"} onClick={runAction} fullWidth>

@@ -27,9 +27,13 @@ export default function Games() {
     
     const messageTwo = "To go back to the Games page, click Home and then click Games. If that doesn't work, refresh the page.";
 
+    const messageThree = "Tech Demo Plus keyboard controls: Right Key = Next, Down Key = Draw Card!";
+
     const makeTextOne = useSingleMessage(messageOne, 40, "−", 80);
 
     const makeTextTwo =  useSingleMessage(messageTwo, 40, "=", 80);
+
+    const makeTextThree =  useSingleMessage(messageThree, 40, "=", 80);
 
     return (
         (openGame === 999)
@@ -39,6 +43,7 @@ export default function Games() {
             <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
                 {makeTextOne}
                 {makeTextTwo}
+                {makeTextThree}
             </Code>
             </Stack>
             <Button aria-label='Play game one' radius="lg" fullWidth onClick={() => setOpenGame(0)} variant="outline" color="cyan">Game One</Button>
@@ -47,7 +52,7 @@ export default function Games() {
                 <br />
             <Button aria-label='Play game one plus' radius="lg" fullWidth onClick={() => setOpenGame(2)} variant="outline" color="cyan">Game One Plus</Button>
                 <br />
-            <Button aria-label='Play game one plus' radius="lg" fullWidth onClick={() => setOpenGame(3)} variant="outline" color="cyan">Tech Demo</Button>
+            <Button aria-label='Play game one plus' radius="lg" fullWidth onClick={() => setOpenGame(3)} variant="outline" color="cyan">Tech Demo Plus</Button>
                 <br />
             <Button aria-label='Play game one plus' radius="lg" fullWidth onClick={() => setOpenGame(4)} variant="outline" color="cyan">Game Three</Button>
 
