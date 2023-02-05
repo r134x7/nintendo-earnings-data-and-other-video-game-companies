@@ -11,8 +11,10 @@ export default function GAME_FIVE() {
 
     const [line, setLine] = useState(0);
 
+    const [action, setAction] = useState("");
+
     useHotkeys([
-        // ["ArrowDown", () => down()],
+        ["ArrowDown", () => runAction()],
         // ["ArrowUp", () => up()],
         // ["ArrowLeft", () => left()],
         ["ArrowRight", () => next()],
@@ -29,6 +31,7 @@ export default function GAME_FIVE() {
 
     // },[line])
     const [resetValue, setResetValue] = useState(false);
+    const [resetValue2, setResetValue2] = useState(false);
 
     function next() {
         setResetValue(true)
@@ -39,7 +42,18 @@ export default function GAME_FIVE() {
         }, 1)
     }
 
-    const intro = callPrompt(gameFiveScript?.loading?.[line] ?? "No more content past here...",resetValue);
+    function runAction() {
+        setResetValue2(true)
+        
+        setTimeout(() => {
+            setAction("You attacked for X damage!")
+            setResetValue2(false);
+        }, 1)
+    }
+
+    const messageBox = callPrompt(gameFiveScript?.loading?.[line] ?? "No more content past here...",resetValue);
+
+    const contextBox = callPrompt(action ?? "No more content past here...",resetValue2);
 
     // need to think of making a function to call useSingleMessage whenever a que occurs...........
     function callPrompt(text: string, reset: Boolean) {
@@ -52,11 +66,15 @@ export default function GAME_FIVE() {
     return (
         <div>
             <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-            {intro}
+            {messageBox}
+            {contextBox}
             </Code>
-            <SimpleGrid cols={1}>
+            <SimpleGrid cols={2}>
                 <Button variant="outline" radius={"lg"} color="red" onClick={next} fullWidth>
                    Next 
+                </Button>
+                <Button variant="outline" radius={"lg"} color="red" onClick={runAction} fullWidth>
+                   Action
                 </Button>
             </SimpleGrid>
         </div>
