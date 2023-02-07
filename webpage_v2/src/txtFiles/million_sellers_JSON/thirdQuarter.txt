@@ -1,8 +1,114 @@
-Net Sales
+Pokémon Scarlet/ Pokémon Violet
+2061
+694
+1367
+2061
 
+Pokémon Legends: Arceus
+199
+16
+183
+1463
 
-Operating Income
+Splatoon 3
+1013
+632
+380
+1013
 
+Xenoblade Chronicles 3
+181
+50
+131
+181
 
-Net Income
+Nintendo Switch Sports
+861
+159
+702
+861
+
+SUPER MARIO ODYSSEY
+162
+19
+143
+2512
+
+Mario Kart 8 Deluxe
+666
+95
+571
+5200
+
+New Super Mario Bros. U Deluxe
+145
+13
+132
+1475
+
+Kirby and the Forgotten Land
+347
+77
+270
+612
+
+Super Mario 3D World + Bowser’s Fury
+139
+17
+122
+1082
+
+Animal Crossing: New Horizons
+295
+43
+252
+4159
+
+Ring Fit Adventure
+113
+33
+80
+1522
+
+Mario Party Superstars
+250
+34
+216
+938
+
+Bayonetta 3
+104
+15
+88
+104
+
+Mario Strikers: Battle League
+247
+17
+230
+247
+
+Luigi’s Mansion 3
+102
+13
+89
+1244
+
+The Legend of Zelda: Breath of the Wild
+243
+34
+209
+2900
+
+Super Mario Party
+101
+13
+88
+1879
+
+Super Smash Bros. Ultimate
+227
+48
+179
+3044
 
