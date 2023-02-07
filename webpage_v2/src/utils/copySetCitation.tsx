@@ -1,6 +1,6 @@
 export function citeCopy(event: React.ClipboardEvent<HTMLElement>, citation: string) {
 
-    let io: boolean = false; 
+    let io: boolean = true; // false = dev mode off
 
     if (io) {
         return console.log("Dev mode...");

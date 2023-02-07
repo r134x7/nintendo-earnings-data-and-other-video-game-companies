@@ -1,15 +1,16 @@
 {
     "fiscalYear": "FY3/2023",
-    "currentQuarter": 2,
+    "currentQuarter": 3,
     "softwareSales": {
         "name": "Home video game",
         "units": "currency",
         "Q1CmlValue": 40.5,
         "Q2CmlValue": 85.1,
-        "Q3CmlValue": 85.1,
-        "Q4CmlValue": 85.1,
+        "Q3CmlValue": 125.4,
+        "Q4CmlValue": 125.4,
         "forecastThisFY": 140.0,
         "forecastRevision1": 157.0,
+        "forecastRevision2": 157.0,
         "notes": "*Sales might include: - Downloadable content purchases"
     },
     "softwareUnits": {
@@ -17,9 +18,10 @@
         "units": "units",
         "Q1CmlValue": 11525,
         "Q2CmlValue": 24617,
-        "Q3CmlValue": 24617,
-        "Q4CmlValue": 24617,
+        "Q3CmlValue": 38711,
+        "Q4CmlValue": 38711,
         "forecastThisFY": 43500,
-        "forecastRevision1": 46000
+        "forecastRevision1": 46000,
+        "forecastRevision2": 48000
     }
 }
