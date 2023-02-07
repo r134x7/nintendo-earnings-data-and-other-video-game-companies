@@ -103,7 +103,7 @@ function printTitles(header: string, titles: Section[][]) {
 
         let yearValues: string[] = elem.flatMap(value => {
             return border([
-                 spacer(value.fiscalYear + " Cumlative",30,"left"),
+                 spacer(value.fiscalYear + " Cumulative",30,"left"),
                  spacer(`${value.value / 100}M`,9,"right")
             ],true);
         });

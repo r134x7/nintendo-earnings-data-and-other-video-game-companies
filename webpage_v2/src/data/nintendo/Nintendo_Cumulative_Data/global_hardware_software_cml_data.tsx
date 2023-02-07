@@ -155,7 +155,7 @@ import { Section, Header } from "../../../utils/hardware_software_units_logic";
             let yearValues: string[] = elem.filter((value, index) => value.value !== 0).map((value, valueIndex, valueArray) => {
 
                return border([
-                    spacer(value.fiscalYear + " Cumlative",30,"left"),
+                    spacer(value.fiscalYear + " Cumulative",30,"left"),
                     spacer(`${value.value}M`,9,"right")
                ],true);
             }).filter((secondValue, index) => index !== elem.length-1) // will not work using secondValue;

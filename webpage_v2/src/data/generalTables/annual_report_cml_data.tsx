@@ -158,7 +158,7 @@ function printTitles(header: string, titles: Series[][]) {
             let valueCalculation: string = (value.value - value.valueLastFY).toFixed(2);
 
             return border([
-                 spacer(value.fiscalYear + " Cumlative",30,"left"),
+                 spacer(value.fiscalYear + " Cumulative",30,"left"),
                  spacer(`${valueCalculation}M`,9,"right")
             ],true);
         });

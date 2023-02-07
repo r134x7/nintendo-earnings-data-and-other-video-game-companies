@@ -135,7 +135,7 @@ function printShipments(header: string, titles: Series[][]) {
             }
 
             return border([
-                 spacer(value.fiscalYear + " Cumlative",30,"left"),
+                 spacer(value.fiscalYear + " Cumulative",30,"left"),
                  spacer(`${value.value}M`,9,"right")
             ],true);
         });
