@@ -6,7 +6,8 @@ let currentQuarter = Number(process.argv[2]);
 
 let platformInput = process.argv[3];
 
-let filePathRead = "nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2023/nintendo_switch/"
+// let filePathRead = "nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2023/nintendo_switch/"
+let filePathRead = "nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2016/wii_u/"
 
 function platformMake (platformInputLocal) {
 
@@ -74,9 +75,10 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal, platf
     if (newQuarterLocal === null) {
         return null;
     };
-    // this does not work when old titles are replaced by new titles...
-    // if currentDataLocal.length !== newQuarterLocal.length / 2, need to find the odd titles out and concatenate it to the new array
-    let removedTitles = (!currentDataLocal || currentDataLocal.length === newQuarterLocal.length / 2)
+
+    // console.log(`currentData Length: ${currentDataLocal?.length ?? 0}, newData Length: ${newQuarterLocal.length / 2}`);
+    // was a bad idea to check length of currentData and newData as a condition...
+    let removedTitles = (!currentDataLocal)
             ? [] 
             : currentDataLocal.filter((elem, index, array) => {
                 let searchNewTitles = newQuarterLocal.filter((value, secondIndex, secondArray) => {
