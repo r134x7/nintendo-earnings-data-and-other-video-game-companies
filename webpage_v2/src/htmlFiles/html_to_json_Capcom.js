@@ -1,7 +1,9 @@
 import { readFileSync, writeFile } from "fs";
 // compile to javaScript using npx tsc (filename)
 
-const currentQuarter = 3;
+// Enter 1 to 4 on the command line
+let currentQuarter = Number(process.argv[2]);
+
 const readQuarter = (currentQuarterLocal) => {
     return (currentQuarterLocal === 1)
         ? readFileSync("firstQuarter.html", "utf-8")
