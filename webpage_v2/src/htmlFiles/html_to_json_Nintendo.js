@@ -75,6 +75,22 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal, platf
         return null;
     };
     // this does not work when old titles are replaced by new titles...
+    // if currentDataLocal.length !== newQuarterLocal.length / 2, need to find the odd titles out and concatenate it to the new array
+    let removedTitles = (!currentDataLocal || currentDataLocal.length === newQuarterLocal.length / 2)
+            ? [] 
+            : currentDataLocal.filter((elem, index, array) => {
+                let searchNewTitles = newQuarterLocal.filter((value, secondIndex, secondArray) => {
+                    // will go through every name and number and should only find one matching name.
+                    // if it doesnt't find anything then the array will be empty [].
+                    return elem.name === value
+                });
+                
+                // if it found a match, then we don't want to return it, if newTitles is empty [], then we return the old title because it did not appear in new list.
+                return (searchNewTitles?.[0])
+                    ? !elem
+                    : elem;
+            });
+    
     return Array.from({ length: (newQuarterLocal.length / 2) }, (v, i) => {
 
         const searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem, index, array) => { return (elem.name === newQuarterLocal[(i * 2)]); }); // searching by title name should only match one title
@@ -96,7 +112,7 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal, platf
                 Q3CmlValue: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i * 2) + 1]) : searchTitle[0].Q3CmlValue,
                 Q4CmlValue: Number(newQuarterLocal[(i * 2) + 1])
             };
-    });
+    }).concat(removedTitles).flat();
 };
 
 const readNewestQuarter = readQuarter(currentQuarter);
