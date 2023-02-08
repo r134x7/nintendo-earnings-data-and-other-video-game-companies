@@ -1,21 +1,62 @@
 import { readFileSync, writeFile } from "fs";
 // compile to javaScript using npx tsc (filename)
 
-const currentQuarter = 3;
-let currentPlatform = "Nintendo Switch";
-// let currentPlatform = "Wii U";
-// let currentPlatform = "Nintendo 3DS";
-// let currentPlatform = "Wii";
-// let currentPlatform = "Nintendo DS";
+// Enter 1 to 4 on the command line
+let currentQuarter = Number(process.argv[2]);
+
+let platformInput = process.argv[3];
+
+let filePathRead = "nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2023/nintendo_switch/"
+
+function platformMake (platformInputLocal) {
+
+    switch (platformInputLocal) {
+        case "nsw": {
+            console.log("Nintendo Switch");
+            return "Nintendo Switch";
+        }
+        case "wiiu": {
+            console.log("Wii U");
+            return "Wii U";
+        }
+        case "3ds": {
+            console.log("Nintendo 3DS");
+            return "Nintendo 3DS";
+        }
+        case "wii": {
+            console.log("Wii");
+            return "Wii";
+        }
+        case "ds": {
+            console.log("Nintendo DS");
+            return "Nintendo DS";
+        }
+        case "gba": {
+            console.log("Game Boy Advance");
+            return "Game Boy Advance";
+        }
+        case "gc": {
+            console.log("Nintendo GameCube");
+            return "Nintendo GameCube";
+        }
+        default: {
+        let currentPlatform = "N/A";
+        console.log(currentPlatform);
+            break;
+        }
+    }
+};
+
+let currentPlatform = platformMake(platformInput);
 
 const readQuarter = (currentQuarterLocal) => {
     return (currentQuarterLocal === 1)
-        ? readFileSync("nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2023/nintendo_switch/firstQuarter.html", "utf-8")
+        ? readFileSync(filePathRead + "firstQuarter.html", "utf-8")
         : (currentQuarterLocal === 2)
-            ? readFileSync("nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2023/nintendo_switch/secondQuarter.html", "utf-8")
+            ? readFileSync(filePathRead + "secondQuarter.html", "utf-8")
             : (currentQuarterLocal === 3)
-                ? readFileSync("nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2023/nintendo_switch/thirdQuarter.html", "utf-8")
-                : readFileSync("nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2023/nintendo_switch/fourthQuarter.html", "utf-8");
+                ? readFileSync(filePathRead + "thirdQuarter.html", "utf-8")
+                : readFileSync(filePathRead + "fourthQuarter.html", "utf-8");
 };
 
 const extractData = (readQuarterLocal) => {
@@ -33,10 +74,10 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal, platf
     if (newQuarterLocal === null) {
         return null;
     };
-
+    // this does not work when old titles are replaced by new titles...
     return Array.from({ length: (newQuarterLocal.length / 2) }, (v, i) => {
 
-        const searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem, index, array) => { return (elem.name === newQuarterLocal[(i * 2)]); }); // searching by title name and release date should only match one title
+        const searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem, index, array) => { return (elem.name === newQuarterLocal[(i * 2)]); }); // searching by title name should only match one title
 
         return (!searchTitle[0])
             ? {
