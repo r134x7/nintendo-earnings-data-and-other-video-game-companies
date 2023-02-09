@@ -1,31 +1,6 @@
 {
-    "currentQuarter": 2,
+    "currentQuarter": 3,
     "companyName": "SEGA SAMMY HOLDINGS INC.",
     "fiscalYear": "FY3/2023",
-    "data": [
-        {
-            "name": "Net Sales",
-            "Q1CmlValue": 66118,
-            "Q2CmlValue": 150095,
-            "Q3CmlValue": 150095,
-            "Q4CmlValue": 150095,
-            "forecastThisFY": 375000
-        },
-        {
-            "name": "Operating Income",
-            "Q1CmlValue": 2777,
-            "Q2CmlValue": 9574,
-            "Q3CmlValue": 9574,
-            "Q4CmlValue": 9574,
-            "forecastThisFY": 40000
-        },
-        {
-            "name": "Net Income",
-            "Q1CmlValue": 3158,
-            "Q2CmlValue": 9619,
-            "Q3CmlValue": 9619,
-            "Q4CmlValue": 9619,
-            "forecastThisFY": 28000
-        }
-    ]
+    "data": [{"name":"Net Sales","Q1CmlValue":66118,"Q2CmlValue":150095,"Q3CmlValue":271979,"Q4CmlValue":271979,"forecastThisFY":375000,"forecastRevision1":381500},{"name":"Operating Income","Q1CmlValue":2777,"Q2CmlValue":9574,"Q3CmlValue":38222,"Q4CmlValue":38222,"forecastThisFY":40000,"forecastRevision1":45000},{"name":"Net Income","Q1CmlValue":3158,"Q2CmlValue":9619,"Q3CmlValue":32846,"Q4CmlValue":32846,"forecastThisFY":28000,"forecastRevision1":31500}]
 }

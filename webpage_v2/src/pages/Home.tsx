@@ -12,13 +12,13 @@ const Home = () => {
 
     const capcomStatus = liner(printTextBlock("Capcom page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Platinum Titles updated to December 31st 2022. 3rd Quarter Earnings release data for FY3/2023 added.",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
 
-    const segaStatus = liner(printTextBlock("Sega page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Consolidated Operating Results from FY3/2005 to FY3/2023 added. Added Consolidated Operating Results, FY Series IP and Software Units to special page.",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
+    const segaStatus = liner(printTextBlock("Sega page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: 3rd Quarter Earnings release data for FY3/2023 added.",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
 
-    const bandaiNamcoStatus = liner(printTextBlock("Bandai Namco page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Consolidated Operating Results from FY3/2006 to FY3/2023 added. Added Consolidated Operating Results and FY Series IP to special page.",40),"−","both",true,40);
+    const bandaiNamcoStatus = liner(printTextBlock("Bandai Namco page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: 3rd Quarter Earnings release data for FY3/2023 added.",40),"−","both",true,40);
 
     const koeiTecmoStatus = liner(printTextBlock("Koei Tecmo page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: 3rd Quarter Earnings release data for FY3/2023 added.",40),"−","both",true,40);
 
-    const squareEnixStatus = liner(printTextBlock("Square Enix page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Consolidated Financial Results from FY3/2004 to FY3/2023 added. Added Consolidated Financial Results and FY Series IP to special page.",40),"−","both",true,40);
+    const squareEnixStatus = liner(printTextBlock("Square Enix page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: 3rd Quarter Earnings release data for FY3/2023 added.",40),"−","both",true,40);
 
     const eventsStatus = liner(printTextBlock("Events page status",32),"=","top",true,32) + liner(printTextBlock("Page update: Updated calendar for 20 of 22 companies from January to February 2023.",40),"−","both",true,40);
 

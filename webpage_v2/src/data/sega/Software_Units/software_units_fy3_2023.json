@@ -1,39 +1,56 @@
 {
     "fiscalYear": "FY3/2023",
-    "currentQuarter": 2,
+    "currentQuarter": 3,
     "softwareUnits": [
         {
             "name": "Sonic series",
             "ip": "Sonic the Hedgehog",
             "Q1CmlValue": 1460,
             "Q2CmlValue": 2630,
-            "Q3CmlValue": 2630,
-            "Q4CmlValue": 2630 
+            "Q3CmlValue": 6750,
+            "Q4CmlValue": 6750 
         },
         {
             "name": "Total War series",
             "ip": "Total War",
             "Q1CmlValue": 420,
             "Q2CmlValue": 950,
-            "Q3CmlValue": 950,
-            "Q4CmlValue": 950 
+            "Q3CmlValue": 1750,
+            "Q4CmlValue": 1750 
         },
         {
             "name": "Persona series",
             "ip": "Persona",
             "Q1CmlValue": 270,
             "Q2CmlValue": 500,
-            "Q3CmlValue": 500,
-            "Q4CmlValue": 500 
+            "Q3CmlValue": 2040,
+            "Q4CmlValue": 2040 
         },
         {
             "name": "Like a Dragon series",
             "ip": "Ryu ga Gotoku",
             "Q1CmlValue": 470,
             "Q2CmlValue": 960,
-            "Q3CmlValue": 960,
-            "Q4CmlValue": 960, 
+            "Q3CmlValue": 1730,
+            "Q4CmlValue": 1730, 
             "miscellaneous": "*Like a Dragon series includes the Judgment series" 
+        },
+        {
+            "name": "Sonic Frontiers",
+            "ip": "N/A",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 2900,
+            "Q4CmlValue": 2900 
+        },
+        {
+            "name": "Persona 5 Royal",
+            "ip": "N/A",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 1300,
+            "Q4CmlValue": 1300, 
+            "miscellaneous": "*This is the unit sales of the Remaster that released on October 21, 2022." 
         }
     ]
 }
