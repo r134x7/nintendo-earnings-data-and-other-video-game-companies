@@ -454,7 +454,10 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
                         // stacked: true,
                         title: {
                           display: true,
-                          text: (activePage === graphQuarters.length)
+                        //   text: (activePage === graphQuarters.length)
+                        //                 ? "Million yen (¥)"
+                        //                 : "Units in Millions",
+                              text: (setUnits === "currency")
                                         ? "Million yen (¥)"
                                         : "Units in Millions",
                         },
