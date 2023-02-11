@@ -63,12 +63,12 @@ export type regionData = {
     Q3CmlValueD: RoundedZero, 
     Q4CmlValueD: RoundedZero,
     valueDLastFY: RoundedZero,
-    regionE: string,
-    Q1CmlValueE: RoundedZero,
-    Q2CmlValueE: RoundedZero, 
-    Q3CmlValueE: RoundedZero, 
-    Q4CmlValueE: RoundedZero,
-    valueELastFY: RoundedZero,
+    regionE?: string,
+    Q1CmlValueE?: RoundedZero,
+    Q2CmlValueE?: RoundedZero, 
+    Q3CmlValueE?: RoundedZero, 
+    Q4CmlValueE?: RoundedZero,
+    valueELastFY?: RoundedZero,
     dataShift?: boolean, 
 }
 
