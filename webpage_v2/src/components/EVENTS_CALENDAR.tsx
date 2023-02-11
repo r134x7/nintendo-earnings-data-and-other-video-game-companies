@@ -202,6 +202,7 @@ export default function EVENTS_CALENDAR() {
 
         return  dateArray.map((data: EventDate) => {
               if (isSameDate(value || new Date(), new Date(data.eventDate))) {
+                  let selectId = data.id;
                   let selectEventCompany = (data.companyName) ? `Company: ${data.companyName}` : " ";
                   let selectEventName = `Event: ${data.eventName}`;
                   let selectEventDate = `Date: ${data.eventDate}`;
@@ -210,7 +211,7 @@ export default function EVENTS_CALENDAR() {
                   let anchorLink = data.irPage;
   
                 return (
-                    <Stack align={"center"} mb={"sm"} >
+                    <Stack key={selectId} align={"center"} mb={"sm"} >
                         <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
                             {liner(printTextBlock(selectEventName,40),"=","top",true,40)}
                             {liner(printTextBlock(selectEventCompany,40),"=","top",true,40)}
