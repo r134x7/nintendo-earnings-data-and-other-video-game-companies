@@ -115,6 +115,17 @@ export const dateLabel = (latestFiscalYear: string, currentQuarter: number) => {
     return `Data as of ${fyEndingMarchDates}`
 };
 
+export const valueLimit = (value: number | string | undefined): number => {
+
+            return (value === "-0") 
+                        ? -Infinity 
+                        : (value === "+0")
+                            ? Infinity
+                            : (typeof value === "number")
+                                ? value 
+                                : 0;
+};
+
 export function useSingleMessage(textInput: string, blockLength: number, borderStyle: "=" | "−", milliseconds: number): string {
 
     let splitText = textInput.split("");

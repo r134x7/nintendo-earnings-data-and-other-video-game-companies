@@ -34,38 +34,40 @@ export type jsonData = {
     regions: regionData[]
 }
 
+export type RoundedZero = number | string; 
+
 export type regionData = {
     name: string,
     regionA: string,
-    Q1CmlValueA: number,
-    Q2CmlValueA: number, 
-    Q3CmlValueA: number, 
-    Q4CmlValueA: number,
-    valueALastFY: number,
+    Q1CmlValueA: RoundedZero,
+    Q2CmlValueA: RoundedZero, 
+    Q3CmlValueA: RoundedZero, 
+    Q4CmlValueA: RoundedZero,
+    valueALastFY: RoundedZero,
     regionB: string,
-    Q1CmlValueB: number,
-    Q2CmlValueB: number, 
-    Q3CmlValueB: number,
-    Q4CmlValueB: number,
-    valueBLastFY: number,
+    Q1CmlValueB: RoundedZero,
+    Q2CmlValueB: RoundedZero, 
+    Q3CmlValueB: RoundedZero,
+    Q4CmlValueB: RoundedZero,
+    valueBLastFY: RoundedZero,
     regionC: string,
-    Q1CmlValueC: number,
-    Q2CmlValueC: number, 
-    Q3CmlValueC: number, 
-    Q4CmlValueC: number,
-    valueCLastFY: number,
+    Q1CmlValueC: RoundedZero,
+    Q2CmlValueC: RoundedZero, 
+    Q3CmlValueC: RoundedZero, 
+    Q4CmlValueC: RoundedZero,
+    valueCLastFY: RoundedZero,
     regionD: string,
-    Q1CmlValueD: number,
-    Q2CmlValueD: number, 
-    Q3CmlValueD: number, 
-    Q4CmlValueD: number,
-    valueDLastFY: number,
+    Q1CmlValueD: RoundedZero,
+    Q2CmlValueD: RoundedZero, 
+    Q3CmlValueD: RoundedZero, 
+    Q4CmlValueD: RoundedZero,
+    valueDLastFY: RoundedZero,
     regionE: string,
-    Q1CmlValueE: number,
-    Q2CmlValueE: number, 
-    Q3CmlValueE: number, 
-    Q4CmlValueE: number,
-    valueELastFY: number,
+    Q1CmlValueE: RoundedZero,
+    Q2CmlValueE: RoundedZero, 
+    Q3CmlValueE: RoundedZero, 
+    Q4CmlValueE: RoundedZero,
+    valueELastFY: RoundedZero,
     dataShift?: boolean, 
 }
 
@@ -101,7 +103,14 @@ export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
             cmlPeriod: "1st Quarter",
             units: "units",
             regionA: "Global",
-            valueA: obj?.Q1CmlValueA ?? 0,
+            // valueA: obj?.Q1CmlValueA ?? 0,
+            valueA: (obj?.Q1CmlValueA === "-0") 
+                        ? -Infinity 
+                        : (obj?.Q1CmlValueA === "+0")
+                            ? Infinity
+                            : (typeof obj?.Q1CmlValueA === "number")
+                                ? obj.Q1CmlValueA
+                                : 0,
             regionB: "Japan", 
             valueB: obj?.Q1CmlValueB ?? 0,
             regionC: (obj?.regionC === "The Americas") ? "The Americas" : "Overseas", 
