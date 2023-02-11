@@ -1,4 +1,4 @@
-import { liner, border, spacer } from "./table_design_logic"
+import { liner, border, spacer, infiniteCheck } from "./table_design_logic"
 
 export type Section = {
     units: "units" | "percentage" | "currency" | "NaN" ,

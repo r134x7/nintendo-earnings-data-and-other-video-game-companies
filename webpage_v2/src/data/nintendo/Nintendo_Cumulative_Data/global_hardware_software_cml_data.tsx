@@ -1,5 +1,5 @@
 import { platformUnitSalesMake, platformSalesMake } from "../global_hardware_software_mobile_nintendo";
-import { printTextBlock, border, liner, spacer, dateLabel } from "../../../utils/table_design_logic";
+import { printTextBlock, border, liner, spacer, dateLabel, infiniteCheck } from "../../../utils/table_design_logic";
 
 import globalHardwareSoftware2023 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2023.json";
 import globalHardwareSoftware2022 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2022.json";
@@ -119,23 +119,10 @@ import { Section, Header } from "../../../utils/hardware_software_units_logic";
 
     function accumulate(title: Section[]): Section[] {
 
-        // const japanTitle1 = title.map((elem, index, array) => {
-        //     return elem.valueA
-        // }).reduce((prev, next) => prev + next)
-    
-        
-        // const overseasTitle1 = title.map((elem, index, array) => {
-        //     // return elem[0].valueB
-        //     return elem.valueB
-        // }).reduce((prev, next) => prev + next)
-
-        // const title1Flat = title.flatMap((flat) => flat).reduce((prev, next) => {
-        //     return {...prev, ...next}
-        // })
-
+        // should really note what is happening here... creating a new object that contains title.at(-1) and changing the value so that it contains the LTD number
         const title1Flat = {
             ...title[title.length-1],
-            value: title[title.length-1].value + title[title.length-2].value
+            value: infiniteCheck(title[title.length-1].value) + infiniteCheck(title[title.length-2].value)
         }
 
         const removeLast = title.filter((elem, index, array) => index !== array.length-1)
@@ -154,9 +141,15 @@ import { Section, Header } from "../../../utils/hardware_software_units_logic";
 
             let yearValues: string[] = elem.filter((value, index) => value.value !== 0).map((value, valueIndex, valueArray) => {
 
+                let valueCheck = (value.value === Infinity)
+                    ? `< 0.01M`
+                    : (value.value === -Infinity)
+                        ? `< −0.01M`
+                        : `${value.value}M`;
+
                return border([
                     spacer(value.fiscalYear + " Cumulative",30,"left"),
-                    spacer(`${value.value}M`,9,"right")
+                    spacer(valueCheck,9,"right")
                ],true);
             }).filter((secondValue, index) => index !== elem.length-1) // will not work using secondValue;
 

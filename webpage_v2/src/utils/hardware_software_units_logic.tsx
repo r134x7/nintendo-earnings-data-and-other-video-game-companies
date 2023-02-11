@@ -1,4 +1,4 @@
-import { printTextBlock, border, liner, spacer } from "./table_design_logic";
+import { printTextBlock, border, liner, spacer, infiniteCheck } from "./table_design_logic";
 
 export type Section = {
     units: "units" | "percentage" | "currency" | "NaN" ,
@@ -90,6 +90,10 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
 
             let printSection: string = (elem.units === "currency")
                 ? `¥${elem.value.toLocaleString("en")}M`
+                : (elem.value === Infinity)
+                ? `< 0.01M`
+                : (elem.value === -Infinity)
+                ? `< −0.01M`
                 : `${(elem.value / 100).toFixed(2)}M`;
 
             let lineSpace: number = (elem.units === "currency")
@@ -131,10 +135,14 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                     ? printSectionCumulativeYoY
                     : spacer(printSectionCumulativeYoY,10,"right")
 
-                let printCumulative: string = (elem.units === "currency")
+            let printCumulative: string = (elem.units === "currency")
                 ? `¥${elem.value.toLocaleString("en")}M`
+                : (elem.value === Infinity)
+                ? `< 0.01M`
+                : (elem.value === -Infinity)
+                ? `< −0.01M`
                 : `${(elem.value / 100).toFixed(2)}M`;
-
+                
                 let lineSpace: number = (elem.units === "currency")
                     ? 12
                     : 10
@@ -161,9 +169,10 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             })
             : []
 
+
         const ltd: string = (currentQuarter === 1) 
-                ? `${((sectionDifference[currentQuarter-1].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M`
-                : `${((sectionCumulative[currentQuarter-2].value + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M`
+                ? `${((infiniteCheck(sectionDifference[currentQuarter-1].value) + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M`
+                : `${((infiniteCheck(sectionCumulative[currentQuarter-2].value) + sectionCumulative[sectionCumulative.length-1].value) / 100 ).toFixed(2)}M`
 
         const ltdPrint: string = liner(border([
             spacer(" Life-To-Date",12,"left"),

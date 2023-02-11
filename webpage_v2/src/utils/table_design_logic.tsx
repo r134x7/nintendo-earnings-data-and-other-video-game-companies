@@ -126,6 +126,13 @@ export const valueLimit = (value: number | string | undefined): number => {
                                 : 0;
 };
 
+export const infiniteCheck = (value: number) => {
+
+            return (value === Infinity || value === -Infinity)
+                ? 0
+                : value 
+        }
+
 export function useSingleMessage(textInput: string, blockLength: number, borderStyle: "=" | "−", milliseconds: number): string {
 
     let splitText = textInput.split("");

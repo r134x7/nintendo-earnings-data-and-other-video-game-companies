@@ -6,6 +6,8 @@ import {
     yearOnYearCalculation,
 } from "../../utils/regional_hw_sw_logic";
 
+import { headerPrint, dateLabel, liner, border, spacer, valueLimit } from "../../utils/table_design_logic";
+
 import regionalHardwareSoftware2023 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2023.json";
 import regionalHardwareSoftware2022 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2022.json";
 import regionalHardwareSoftware2021 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2021.json";
@@ -26,7 +28,6 @@ import regionalHardwareSoftware2007 from "./Regional_Hardware_Software/regional_
 import regionalHardwareSoftware2006 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2006.json";
 import regionalHardwareSoftware2005 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2005.json";
 import regionalHardwareSoftware2004 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2004.json";
-import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
 
 export type jsonData = {
     currentQuarter: number,
@@ -104,21 +105,15 @@ export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
             units: "units",
             regionA: "Global",
             // valueA: obj?.Q1CmlValueA ?? 0,
-            valueA: (obj?.Q1CmlValueA === "-0") 
-                        ? -Infinity 
-                        : (obj?.Q1CmlValueA === "+0")
-                            ? Infinity
-                            : (typeof obj?.Q1CmlValueA === "number")
-                                ? obj.Q1CmlValueA
-                                : 0,
+            valueA: valueLimit(obj?.Q1CmlValueA),
             regionB: "Japan", 
-            valueB: obj?.Q1CmlValueB ?? 0,
+            valueB: valueLimit(obj?.Q1CmlValueB),
             regionC: (obj?.regionC === "The Americas") ? "The Americas" : "Overseas", 
-            valueC: obj?.Q1CmlValueC ?? 0,
+            valueC: valueLimit(obj?.Q1CmlValueC),
             regionD: (obj?.regionD === "Europe") ? "Europe" : "Other", 
-            valueD: obj?.Q1CmlValueD ?? 0,
+            valueD: valueLimit(obj?.Q1CmlValueD),
             regionE: "Other",
-            valueE: obj?.Q1CmlValueE ?? 0,
+            valueE: valueLimit(obj?.Q1CmlValueE),
         },
         {
             name: obj?.name ?? "None",
@@ -126,15 +121,15 @@ export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
             cmlPeriod: "First Half",
             units: "units",
             regionA: "Global",
-            valueA: obj?.Q2CmlValueA ?? 0,
+            valueA: valueLimit(obj?.Q2CmlValueA),
             regionB: "Japan", 
-            valueB: obj?.Q2CmlValueB ?? 0,
+            valueB: valueLimit(obj?.Q2CmlValueB),
             regionC: (obj?.regionC === "The Americas") ? "The Americas" : "Overseas", 
-            valueC: obj?.Q2CmlValueC ?? 0,
+            valueC: valueLimit(obj?.Q2CmlValueC),
             regionD: (obj?.regionD === "Europe") ? "Europe" : "Other", 
-            valueD: obj?.Q2CmlValueD ?? 0,
+            valueD: valueLimit(obj?.Q2CmlValueD),
             regionE: "Other",
-            valueE: obj?.Q2CmlValueE ?? 0,
+            valueE: valueLimit(obj?.Q2CmlValueE),
         },
         {
             name: obj?.name ?? "None",
@@ -142,15 +137,15 @@ export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
             cmlPeriod: "First Three Quarters",
             units: "units",
             regionA: "Global",
-            valueA: obj?.Q3CmlValueA ?? 0,
+            valueA: valueLimit(obj?.Q3CmlValueA),
             regionB: "Japan", 
-            valueB: obj?.Q3CmlValueB ?? 0,
+            valueB: valueLimit(obj?.Q3CmlValueB),
             regionC: (obj?.regionC === "The Americas") ? "The Americas" : "Overseas", 
-            valueC: obj?.Q3CmlValueC ?? 0,
+            valueC: valueLimit(obj?.Q3CmlValueC),
             regionD: (obj?.regionD === "Europe") ? "Europe" : "Other", 
-            valueD: obj?.Q3CmlValueD ?? 0,
+            valueD: valueLimit(obj?.Q3CmlValueD),
             regionE: "Other",
-            valueE: obj?.Q3CmlValueE ?? 0,
+            valueE: valueLimit(obj?.Q3CmlValueE),
         },
         {
             name: obj?.name ?? "None",
@@ -158,15 +153,15 @@ export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
             cmlPeriod: "Cml.",
             units: "units",
             regionA: "Global",
-            valueA: obj?.Q4CmlValueA ?? 0,
+            valueA: valueLimit(obj?.Q4CmlValueA),
             regionB: "Japan", 
-            valueB: obj?.Q4CmlValueB ?? 0,
+            valueB: valueLimit(obj?.Q4CmlValueB),
             regionC: (obj?.regionC === "The Americas") ? "The Americas" : "Overseas", 
-            valueC: obj?.Q4CmlValueC ?? 0,
+            valueC: valueLimit(obj?.Q4CmlValueC),
             regionD: (obj?.regionD === "Europe") ? "Europe" : "Other", 
-            valueD: obj?.Q4CmlValueD ?? 0,
+            valueD: valueLimit(obj?.Q4CmlValueD),
             regionE: "Other",
-            valueE: obj?.Q4CmlValueE ?? 0,
+            valueE: valueLimit(obj?.Q4CmlValueE),
         },
         {
             name: obj?.name ?? "None",
@@ -174,15 +169,15 @@ export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
             cmlPeriod: "Cml.",
             units: "units",
             regionA: "Global",
-            valueA: obj?.valueALastFY ?? 0,
+            valueA: valueLimit(obj?.valueALastFY),
             regionB: "Japan", 
-            valueB: obj?.valueBLastFY ?? 0,
+            valueB: valueLimit(obj?.valueBLastFY),
             regionC: (obj?.regionC === "The Americas") ? "The Americas" : "Overseas", 
-            valueC: obj?.valueCLastFY ?? 0,
+            valueC: valueLimit(obj?.valueCLastFY),
             regionD: (obj?.regionD === "Europe") ? "Europe" : "Other", 
-            valueD: obj?.valueDLastFY ?? 0,
+            valueD: valueLimit(obj?.valueDLastFY),
             regionE: "Other",
-            valueE: obj?.valueELastFY ?? 0,
+            valueE: valueLimit(obj?.valueELastFY),
         },
     ];
 

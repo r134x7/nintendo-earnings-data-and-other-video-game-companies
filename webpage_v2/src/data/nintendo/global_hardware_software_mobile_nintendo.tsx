@@ -6,7 +6,7 @@ import {
     quarterlyCalculation,
     yearOnYearCalculation
 } from "../../utils/hardware_software_units_logic";
-import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
+import { headerPrint, dateLabel, liner, border, spacer, valueLimit } from "../../utils/table_design_logic";
 
 import globalHardwareSoftwareMobile2023 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2023.json";
 import globalHardwareSoftwareMobile2022 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2022.json";
@@ -51,10 +51,10 @@ type platformCumulativeSalesType = {
 export type platformUnitSalesType = {
     name: string,
     units: string,
-    Q1CmlValue: number,
-    Q2CmlValue: number,
-    Q3CmlValue: number,
-    Q4CmlValue: number,
+    Q1CmlValue: number | string,
+    Q2CmlValue: number | string,
+    Q3CmlValue: number | string,
+    Q4CmlValue: number | string,
     cmlValueLastFY: number, 
     footnote?: string,
 };
@@ -152,7 +152,7 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
                     : (obj?.units === "currency")
                         ? "currency"
                         : "NaN",
-            value: obj?.Q1CmlValue ?? 0,
+            value: valueLimit(obj?.Q1CmlValue),
             footnote: obj?.footnote,
         },
         {
@@ -164,7 +164,7 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
                     : (obj?.units === "currency")
                         ? "currency"
                         : "NaN",
-            value: obj?.Q2CmlValue ?? 0,
+            value: valueLimit(obj?.Q2CmlValue),
             footnote: obj?.footnote,
         },
         {
@@ -176,7 +176,7 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
                     : (obj?.units === "currency")
                         ? "currency"
                         : "NaN",
-            value: obj?.Q3CmlValue ?? 0,
+            value: valueLimit(obj?.Q3CmlValue),
             footnote: obj?.footnote,
         },
         {
@@ -188,7 +188,7 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
                     : (obj?.units === "currency")
                         ? "currency"
                         : "NaN",
-            value: obj?.Q4CmlValue ?? 0,
+            value: valueLimit(obj?.Q4CmlValue),
             footnote: obj?.footnote,
         },
         {
@@ -200,7 +200,7 @@ export const platformUnitSalesMake = (obj: undefined | platformUnitSalesType): S
                     : (obj?.units === "currency")
                         ? "currency"
                         : "NaN",
-            value: obj?.cmlValueLastFY ?? 0,
+            value: valueLimit(obj?.cmlValueLastFY),
             footnote: obj?.footnote,
         },
     ];
