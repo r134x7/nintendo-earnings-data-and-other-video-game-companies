@@ -1,5 +1,5 @@
 import { platformUnitsMake } from "../regional_hardware_software_nintendo";
-import { printTextBlock, border, liner, spacer, dateLabel } from "../../../utils/table_design_logic";
+import { printTextBlock, border, liner, spacer, dateLabel, infiniteCheck } from "../../../utils/table_design_logic";
 
 import regionalHardwareSoftware2023 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2023.json";
 import regionalHardwareSoftware2022 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2022.json";
@@ -61,6 +61,14 @@ import { Section } from "../../../utils/regional_hw_sw_logic";
         regionalHardwareSoftware2022,
         regionalHardwareSoftware2023,
     ]
+
+const valueCheck = (value: number) => {
+    return (value === Infinity)
+                    ? `< 0.01M`
+                    : (value === -Infinity)
+                        ? `< −0.01M`
+                        : `${value}M`;
+}
     
     let totalCollectionSet: Section[][][] = totalCollection.map(elem => {
 
@@ -105,11 +113,11 @@ import { Section } from "../../../utils/regional_hw_sw_logic";
 
         const title1Flat = {
             ...title[title.length-1],
-            valueA: title[title.length-1].valueA + title[title.length-2].valueA,
-            valueB: title[title.length-1].valueB + title[title.length-2].valueB,
-            valueC: title[title.length-1].valueC + title[title.length-2].valueC,
-            valueD: title[title.length-1].valueD + title[title.length-2].valueD,
-            valueE: title[title.length-1].valueE + title[title.length-2].valueE,
+            valueA: infiniteCheck(title[title.length-1].valueA) + infiniteCheck(title[title.length-2].valueA),
+            valueB: infiniteCheck(title[title.length-1].valueB) + infiniteCheck(title[title.length-2].valueB),
+            valueC: infiniteCheck(title[title.length-1].valueC) + infiniteCheck(title[title.length-2].valueC),
+            valueD: infiniteCheck(title[title.length-1].valueD) + infiniteCheck(title[title.length-2].valueD),
+            valueE: infiniteCheck(title[title.length-1].valueE) + infiniteCheck(title[title.length-2].valueE),
         };
 
         const removeLast = title.filter((elem, index, array) => index !== array.length-1)
@@ -129,7 +137,7 @@ import { Section } from "../../../utils/regional_hw_sw_logic";
             let yearValues: string[] = elem.filter(value => value.valueB !== 0).filter(value => value.period !== "Last FY Cumulative").map((value, valueIndex, valueArray) => {
                return border([
                     spacer(value.fiscalYear + " Cumulative",29,"left"),
-                    spacer(`${value.valueB}M`,11,"right")
+                    spacer(valueCheck(value.valueB),11,"right")
                ],true);
             });
 
@@ -162,7 +170,7 @@ import { Section } from "../../../utils/regional_hw_sw_logic";
             let yearValues: string[] = elem.filter(value => value.valueC !== 0).filter(value => value.regionC !== "Overseas").filter(value => value.period !== "Last FY Cumulative").map((value, valueIndex, valueArray) => {
                return border([
                     spacer(value.fiscalYear + " Cumulative",29,"left"),
-                    spacer(`${value.valueC}M`,11,"right")
+                    spacer(valueCheck(value.valueC),11,"right")
                ],true);
             })//.filter((secondValue, index) => index !== elem.length-1) 
 
@@ -195,7 +203,7 @@ import { Section } from "../../../utils/regional_hw_sw_logic";
             let yearValues: string[] = elem.filter(value => value.valueD !== 0).filter(value => value.regionD !== "Other").filter(value => value.period !== "Last FY Cumulative").map((value, valueIndex, valueArray) => {
                return border([
                     spacer(value.fiscalYear + " Cumulative",29,"left"),
-                    spacer(`${value.valueD}M`,11,"right")
+                    spacer(valueCheck(value.valueD),11,"right")
                ],true);
             })//.filter((secondValue, index) => index !== elem.length-1) 
 
@@ -233,7 +241,7 @@ import { Section } from "../../../utils/regional_hw_sw_logic";
 
                return border([
                     spacer(value.fiscalYear + " Cumulative",29,"left"),
-                    spacer(`${value.valueD}M`,11,"right")
+                    spacer(valueCheck(value.valueD),11,"right")
                ],true);
             })//.filter((secondValue, index) => index !== elem.length-1) 
 
