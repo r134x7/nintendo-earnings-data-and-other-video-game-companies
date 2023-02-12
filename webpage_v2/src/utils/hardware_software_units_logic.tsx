@@ -24,7 +24,7 @@ export function quarterlyCalculation(quarters: Section[]) {
     const calc: Section[] = quarters.map((elem, index, array) => {
         return (index === 0 || quarters[index].period === "Last FY Cumulative") // 1st Quarter or last FY number
                 ? elem
-                : {...elem, value: elem.value - array[index-1].value}
+                : {...elem, value: infiniteCheck(elem.value) - infiniteCheck(array[index-1].value)}
     })
     
     return calc
@@ -36,13 +36,13 @@ export function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
 
             return (lastFY[index].value < 0)
                     ? {...elem, units: "percentage", value: Number(
-                        ((((elem.value / lastFY[index].value) -1)* -1) * 100).toFixed(2)
+                        ((((infiniteCheck(elem.value) / infiniteCheck(lastFY[index].value)) -1)* -1) * 100).toFixed(2)
                         )
                       }
                     : (lastFY[index].value === 0)
                         ? {...elem, units: "NaN", value: 0}
                         : {...elem, units: "percentage", value: Number(
-                            (((elem.value / lastFY[index].value) -1) * 100).toFixed(2)
+                            (((infiniteCheck(elem.value) / infiniteCheck(lastFY[index].value)) -1) * 100).toFixed(2)
                             )
                           }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
         })
@@ -78,7 +78,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
             return [] // must return an array to flatten it
         };
 
-            let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed[index].units === "NaN")
+            let printSectionDifferenceYoY: string = (sectionDifferenceYoYFixed[index].units === "NaN" || Number.isNaN(sectionDifferenceYoYFixed[index].value))
                 ? "NaN"
                 : (sectionDifferenceYoYFixed[index].value > 0)
                     ? `+${sectionDifferenceYoYFixed[index].value}%`
@@ -125,7 +125,7 @@ export const printSections = (header: Header, sectionDifference: Section[], sect
                     return [] // must return an array to flatten it
                 }
                 
-                let printSectionCumulativeYoY: string = (sectionCumulativeYoYFixed[index].units === "NaN")
+                let printSectionCumulativeYoY: string = (sectionCumulativeYoYFixed[index].units === "NaN" || Number.isNaN(sectionCumulativeYoYFixed[index].value))
                     ? "NaN"
                     : (sectionCumulativeYoYFixed[index].value > 0)
                         ? `+${sectionCumulativeYoYFixed[index].value}%`

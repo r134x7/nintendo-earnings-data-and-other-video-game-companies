@@ -36,11 +36,11 @@ export function quarterlyCalculation(quarters: Section[]) {
        return (elem.period !== "1st Quarter" && elem.period !== "Last FY Cumulative")
                ? {
                     ...elem, 
-                    valueA: Number((elem.valueA - array[index-1].valueA).toFixed(2)),
-                    valueB: Number((elem.valueB - array[index-1].valueB).toFixed(2)),
-                    valueC: Number((elem.valueC - array[index-1].valueC).toFixed(2)),
-                    valueD: Number((elem.valueD - array[index-1].valueD).toFixed(2)),
-                    valueE: Number((elem.valueE - array[index-1].valueE).toFixed(2)),
+                    valueA: Number((infiniteCheck(elem.valueA) - infiniteCheck(array[index-1].valueA)).toFixed(2)),
+                    valueB: Number((infiniteCheck(elem.valueB) - infiniteCheck(array[index-1].valueB)).toFixed(2)),
+                    valueC: Number((infiniteCheck(elem.valueC) - infiniteCheck(array[index-1].valueC)).toFixed(2)),
+                    valueD: Number((infiniteCheck(elem.valueD) - infiniteCheck(array[index-1].valueD)).toFixed(2)),
+                    valueE: Number((infiniteCheck(elem.valueE) - infiniteCheck(array[index-1].valueE)).toFixed(2)),
                 }
                : elem
    })
@@ -57,13 +57,13 @@ export function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
                         ...elem, 
                         units: "percentage", 
                         valueB: Number(
-                        ((((elem.valueB / lastFY[index].valueB) -1)* -1) * 100).toFixed(2)),
+                        ((((infiniteCheck(elem.valueB) / infiniteCheck(lastFY[index].valueB)) -1)* -1) * 100).toFixed(2)),
                         valueC: Number(
-                        ((((elem.valueC / lastFY[index].valueC) -1)* -1) * 100).toFixed(2)),
+                        ((((infiniteCheck(elem.valueC) / infiniteCheck(lastFY[index].valueC)) -1)* -1) * 100).toFixed(2)),
                         valueD: Number(
-                        ((((elem.valueD / lastFY[index].valueD) -1)* -1) * 100).toFixed(2)),
+                        ((((infiniteCheck(elem.valueD) / infiniteCheck(lastFY[index].valueD)) -1)* -1) * 100).toFixed(2)),
                         valueE: Number(
-                        ((((elem.valueE / lastFY[index].valueE) -1)* -1) * 100).toFixed(2)),
+                        ((((infiniteCheck(elem.valueE) / infiniteCheck(lastFY[index].valueE)) -1)* -1) * 100).toFixed(2)),
                       }
                     : (lastFY[index].valueA === 0) // || lastFY[index].dataShift === true) // won't need dataShift here most likely
                     ? {
@@ -91,16 +91,16 @@ export function yearOnYearCalculation(thisFY: Section[], lastFY: Section[]) {
                         ...elem, 
                         units: "percentage", 
                         valueB: Number(
-                        (((elem.valueB / lastFY[index].valueB) -1) * 100).toFixed(2)
+                        (((infiniteCheck(elem.valueB) / infiniteCheck(lastFY[index].valueB)) -1) * 100).toFixed(2)
                         ),
                         valueC: Number(
-                        (((elem.valueC / lastFY[index].valueC) -1) * 100).toFixed(2)
+                        (((infiniteCheck(elem.valueC) / infiniteCheck(lastFY[index].valueC)) -1) * 100).toFixed(2)
                         ),
                         valueD: Number(
-                        (((elem.valueD / lastFY[index].valueD) -1) * 100).toFixed(2)
+                        (((infiniteCheck(elem.valueD) / infiniteCheck(lastFY[index].valueD)) -1) * 100).toFixed(2)
                         ),
                         valueE: Number(
-                        (((elem.valueE / lastFY[index].valueE) -1) * 100).toFixed(2)
+                        (((infiniteCheck(elem.valueE) / infiniteCheck(lastFY[index].valueE)) -1) * 100).toFixed(2)
                         ), // added valueE here to deal with a different issue regarding FY3/2019 making the previous conditions useless
                       }; // .toFixed(2) to round the number by two decimal points regardless of Number will output a string, whole thing needs to be wrapped in Number to change type back from string to number  
         })
