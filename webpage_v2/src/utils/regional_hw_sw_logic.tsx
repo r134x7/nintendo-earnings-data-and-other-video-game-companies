@@ -124,7 +124,7 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
         spacer("",11,"right"),
         spacer("Units",9,"right"),
         spacer("Global%",9,"right"),
-        spacer("YoY%",9,"right"),
+        spacer("Units YoY%",9,"right"),
     ]),"−","bottom") 
 
     const sectionDifferenceYoYFixed = sectionDifferenceYoY.filter((elem) => {
