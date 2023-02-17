@@ -1,5 +1,6 @@
 import { useInterval, useHotkeys } from "@mantine/hooks";
 import { useState, useEffect } from "react";
+import { Button } from "@mantine/core";
 
 export const printTextBlock = (text: string | undefined, blockLength: number): string | undefined => {
     // to make liner work by not printing.
@@ -212,15 +213,29 @@ export function timedStage(level: string, milliseconds: number) {
         // ["ArrowDown", () => down()],
         // ["ArrowUp", () => up()],
         ["ArrowLeft", () => (position > 0) ? setPosition(position-1) : setPosition(position)],
-        ["ArrowRight", () => (position < 40) ? setPosition(position+1) : setPosition(position)],
+        ["ArrowRight", () => (position < 41) ? setPosition(position+1) : setPosition(position)],
     ]);
 
+    const buttonLeft = (
+                <Button variant="outline" radius={"lg"} color="red" onMouseDown={() => (position > 0) ? setPosition(position-1) : setPosition(position)} fullWidth>
+                   Left
+                </Button>
+    )
+
+    const buttonRight = (
+                <Button variant="outline" radius={"lg"} color="red" onMouseDown={() => (position < 41) ? setPosition(position+1) : setPosition(position)} fullWidth>
+                   Right
+                </Button>
+    )
+
     useEffect(() => {
-        if (position > endPoint) {
+        // if (position > endPoint) {
+            // causes player to go off field but it doesn't crash
+        if (position > 40) {
             // interval.stop();
             setStartPoint(endPoint)
             setEndPoint(endPoint + 40)
-            setPosition(endPoint)
+            setPosition(0)
 
         } else {
             interval.start();
@@ -230,5 +245,10 @@ export function timedStage(level: string, milliseconds: number) {
 
     }, [seconds, startPoint, endPoint])
 
-    return field;
+    // return field;
+    return [
+        field,
+        buttonLeft,
+        buttonRight,
+    ];
 };

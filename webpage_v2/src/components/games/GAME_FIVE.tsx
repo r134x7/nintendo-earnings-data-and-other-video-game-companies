@@ -5,7 +5,7 @@ import gameFiveScript from "../../gameScript/gameFive/script.json";
 import { useSelector } from "react-redux";
 import { useHotkeys } from "@mantine/hooks";
 
-const stageOne = "----------------------------------------========================================"
+const stageOne = "----------------------------------------========================================||||||||||||||||||||||||||||||||||||||||"
 
 export default function GAME_FIVE() {
 
@@ -54,24 +54,31 @@ export default function GAME_FIVE() {
     //         ? usePrompt(text,40,"=",80,true,false)
     //         : usePrompt(text,40,"=",80,false,true)
     // }
+
+    let message = useSingleMessage("Using the Left or Right Arrows on your keyboard, you can move left or right. The field changes when you move all the way to the right until there's no more field left.", 42, "=", 80)
+
+
     
-    let stage = timedStage(stageOne,60)
+    let stage = timedStage(stageOne,50)
 
     return (
         <div>
             <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
             {/* {messageBox}
             {contextBox} */}
-            {stage}
+            {stage[0] + "\n"}
+            {message}
             </Code>
-            {/* <SimpleGrid cols={2}>
-                <Button variant="outline" radius={"lg"} color="red" onClick={next} fullWidth>
+            <SimpleGrid cols={2}>
+                {stage[1]}
+                {stage[2]}
+                {/* <Button variant="outline" radius={"lg"} color="red" onMouseDown={} fullWidth>
                    Next 
                 </Button>
-                <Button variant="outline" radius={"lg"} color="red" onClick={runAction} fullWidth>
+                <Button variant="outline" radius={"lg"} color="red"  fullWidth>
                    Action
-                </Button>
-            </SimpleGrid> */}
+                </Button> */}
+            </SimpleGrid>
         </div>
     )
 }
