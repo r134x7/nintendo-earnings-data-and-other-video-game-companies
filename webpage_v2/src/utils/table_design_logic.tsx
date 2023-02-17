@@ -206,7 +206,7 @@ export function timedStage(level: string, milliseconds: number) {
     // take in the whole level and try to split level into 40 chars per screen view or each call of the function...
     let splitLevel = playerVisual + "\n" + level.split("").filter((elem, index) => {
         return index <= endPoint && index >= startPoint
-    }).join();
+    }).reduce((acc, next) => acc + next, "");
 
     useHotkeys([
         // ["ArrowDown", () => down()],
@@ -220,6 +220,7 @@ export function timedStage(level: string, milliseconds: number) {
             // interval.stop();
             setStartPoint(endPoint)
             setEndPoint(endPoint + 40)
+            setPosition(endPoint)
 
         } else {
             interval.start();
