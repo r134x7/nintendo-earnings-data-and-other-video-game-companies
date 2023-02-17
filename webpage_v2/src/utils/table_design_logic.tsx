@@ -200,13 +200,14 @@ export function timedStage(level: string, milliseconds: number) {
     const [startPoint, setStartPoint] = useState(0);
     const [endPoint, setEndPoint] = useState(40)
     const [position, setPosition] = useState(0);
+    const [avatar, setAvatar] = useState("x");
 
     const interval = useInterval(() => setSeconds((s) => s + 1), milliseconds);
 
     // const [buttonHold, setButtonHold] = useState(false);
     // const mouseInterval = useInterval(() => setButtonHold((s) => s + 1), 60)
     
-    let playerVisual = spacer(" ".repeat(position) + "x",40,"left")
+    let playerVisual = spacer(" ".repeat(position) + avatar,40,"left")
     // take in the whole level and try to split level into 40 chars per screen view or each call of the function...
     let splitLevel = playerVisual + "\n" + level.split("").filter((elem, index) => {
         return index <= endPoint && index >= startPoint
@@ -215,17 +216,29 @@ export function timedStage(level: string, milliseconds: number) {
     useHotkeys([
         // ["ArrowDown", () => down()],
         // ["ArrowUp", () => up()],
-        ["ArrowLeft", () => (position > 0) ? setPosition(position-1) : setPosition(position)],
-        ["ArrowRight", () => (position < 41) ? setPosition(position+1) : setPosition(position)],
+        ["ArrowLeft", () => {
+             if (position > 0) {
+                setAvatar((avatar === "x") ? "+" : "x")
+                setPosition(position-1)
+             } else {
+                setAvatar((avatar === "x") ? "+" : "x")
+                setPosition(position)
+             }
+            // (position > 0) ? setPosition(position-1) : setPosition(position)
+        }],
+        ["ArrowRight", () => {
+             if (position < 41) {
+                setAvatar((avatar === "x") ? "+" : "x")
+                setPosition(position+1)
+             } else {
+                setAvatar((avatar === "x") ? "+" : "x")
+                setPosition(position)
+             }
+        } 
+        //(position < 41) ? setPosition(position+1) : setPosition(position)
+        ],
     ]);
 
-    useHotkeys([
-        // ["ArrowDown", () => down()],
-        // ["ArrowUp", () => up()],
-        ["ArrowLeft", () => (position > 0) ? setPosition(position-1) : setPosition(position)],
-        ["ArrowRight", () => (position < 41) ? setPosition(position+1) : setPosition(position)],
-    ]);
-    
     // function buttonLeftClick() {
     //     setButtonHold(true);
     //     console.log(buttonHold);
@@ -239,27 +252,52 @@ export function timedStage(level: string, milliseconds: number) {
     //     // (position > 0 && buttonHold === true) ? setPosition(position-1) : setPosition(position)
     // }
 
+    function rubRight() {
+        // let delayedPosition = position;
+        // using setTimeout helps to reduce speed of movement but bug occurs where stages are skipped...
+        // setTimeout(() => {
+           setAvatar((avatar === "x") ? "+" : "x");
+           (position < 41) ? setPosition(position+1) : setPosition(position);
+        // }, 100);
+    }
+
+    function rubLeft() {
+        setAvatar((avatar === "x") ? "+" : "x");
+        (position > 0) ? setPosition(position-1) : setPosition(position);
+    }
+
     const buttonLeft = (
-                <Button variant="outline" radius={"lg"} color="red" onMouseDown={() => (position > 0) ? setPosition(position-1) : setPosition(position)} 
+                <Button variant="outline" radius={"lg"} color="red" onTouchMove={rubLeft} 
                 fullWidth>
-                   Left
+                  Rub Left
                 </Button>
     )
 
     const buttonRight = (
-                <Button variant="outline" radius={"lg"} color="red" onMouseDown={() => (position < 41) ? setPosition(position+1) : setPosition(position)} fullWidth>
-                   Right
+                <Button variant="outline" radius={"lg"} color="red" onTouchMove={rubRight} fullWidth>
+                  Rub Right
                 </Button>
     )
 
     useEffect(() => {
         // if (position > endPoint) {
             // causes player to go off field but it doesn't crash
+        // console.log(seconds);
+        // 999 seconds / 50 (milliseconds setting) = 20000 // rounded up
+        if (seconds > (6000)) {
+            interval.stop();
+            return
+        }
+
         if (position > 40) {
             // interval.stop();
-            setStartPoint(endPoint)
-            setEndPoint(endPoint + 40)
-            setPosition(0)
+            // setTimeout(() => {
+
+                setStartPoint(endPoint)
+                setEndPoint(endPoint + 40)
+                setPosition(0)
+                
+            // }, 100);
 
         } else {
             interval.start();

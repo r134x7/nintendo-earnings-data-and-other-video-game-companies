@@ -55,11 +55,11 @@ export default function GAME_FIVE() {
     //         : usePrompt(text,40,"=",80,false,true)
     // }
 
-    let message = useSingleMessage("Using the Left or Right Arrows on your keyboard, you can move left or right. The field changes when you move all the way to the right until there's no more field left.", 42, "=", 80)
+    let message = useSingleMessage("Using the Left or Right Arrows on your keyboard, you can move left or right. The field changes when you move into the right direction until there is nothing left. The Left and Right buttons are Touch-only and react when touchscreen movement occurs. A timer will stop the game at around 100 seconds.", 42, "=", 80)
 
 
     
-    let stage = timedStage(stageOne,50)
+    let stage = timedStage(stageOne,17)
 
     return (
         <div>
