@@ -191,3 +191,36 @@ export function usePrompt(textInput: string, blockLength: number, borderStyle: "
 
     return textBlock;
 };
+
+export function timedStage(level: string, milliseconds: number) {
+
+    const [field, setField] = useState("");
+    const [seconds, setSeconds] = useState(0);
+    const [startPoint, setStartPoint] = useState(0);
+    const [endPoint, setEndPoint] = useState(40)
+    const [position, setPosition] = useState(0);
+
+    const interval = useInterval(() => setSeconds((s) => s + 1), milliseconds);
+
+    // take in the whole level and try to split level into 40 chars per screen view or each call of the function...
+    let splitLevel = level.split("").filter((elem, index) => {
+        return index <= endPoint && index >= startPoint
+    }).join();
+
+
+    useEffect(() => {
+        if (position > endPoint) {
+            // interval.stop();
+            setStartPoint(endPoint)
+            setEndPoint(endPoint + 40)
+
+        } else {
+            interval.start();
+            
+            setField(splitLevel)
+        }
+
+    }, [seconds, startPoint, endPoint])
+
+    return field;
+};
