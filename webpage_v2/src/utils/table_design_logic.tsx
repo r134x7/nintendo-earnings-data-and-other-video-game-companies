@@ -202,6 +202,9 @@ export function timedStage(level: string, milliseconds: number) {
     const [position, setPosition] = useState(0);
 
     const interval = useInterval(() => setSeconds((s) => s + 1), milliseconds);
+
+    // const [buttonHold, setButtonHold] = useState(false);
+    // const mouseInterval = useInterval(() => setButtonHold((s) => s + 1), 60)
     
     let playerVisual = spacer(" ".repeat(position) + "x",40,"left")
     // take in the whole level and try to split level into 40 chars per screen view or each call of the function...
@@ -216,8 +219,29 @@ export function timedStage(level: string, milliseconds: number) {
         ["ArrowRight", () => (position < 41) ? setPosition(position+1) : setPosition(position)],
     ]);
 
+    useHotkeys([
+        // ["ArrowDown", () => down()],
+        // ["ArrowUp", () => up()],
+        ["ArrowLeft", () => (position > 0) ? setPosition(position-1) : setPosition(position)],
+        ["ArrowRight", () => (position < 41) ? setPosition(position+1) : setPosition(position)],
+    ]);
+    
+    // function buttonLeftClick() {
+    //     setButtonHold(true);
+    //     console.log(buttonHold);
+        
+        // if (position > 0 && buttonHold === true) {
+        //     setPosition(position-1)
+    //         // setButtonHold(false)
+    //     } else if (position < 0 && buttonHold === true) {
+    //         setPosition(position)
+    //     }
+    //     // (position > 0 && buttonHold === true) ? setPosition(position-1) : setPosition(position)
+    // }
+
     const buttonLeft = (
-                <Button variant="outline" radius={"lg"} color="red" onMouseDown={() => (position > 0) ? setPosition(position-1) : setPosition(position)} fullWidth>
+                <Button variant="outline" radius={"lg"} color="red" onMouseDown={() => (position > 0) ? setPosition(position-1) : setPosition(position)} 
+                fullWidth>
                    Left
                 </Button>
     )
