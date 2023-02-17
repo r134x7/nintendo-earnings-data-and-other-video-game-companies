@@ -1,4 +1,4 @@
-import { useInterval } from "@mantine/hooks";
+import { useInterval, useHotkeys } from "@mantine/hooks";
 import { useState, useEffect } from "react";
 
 export const printTextBlock = (text: string | undefined, blockLength: number): string | undefined => {
@@ -201,12 +201,19 @@ export function timedStage(level: string, milliseconds: number) {
     const [position, setPosition] = useState(0);
 
     const interval = useInterval(() => setSeconds((s) => s + 1), milliseconds);
-
+    
+    let playerVisual = spacer(" ".repeat(position) + "x",40,"left")
     // take in the whole level and try to split level into 40 chars per screen view or each call of the function...
-    let splitLevel = level.split("").filter((elem, index) => {
+    let splitLevel = playerVisual + "\n" + level.split("").filter((elem, index) => {
         return index <= endPoint && index >= startPoint
     }).join();
 
+    useHotkeys([
+        // ["ArrowDown", () => down()],
+        // ["ArrowUp", () => up()],
+        ["ArrowLeft", () => (position > 0) ? setPosition(position-1) : setPosition(position)],
+        ["ArrowRight", () => (position < 40) ? setPosition(position+1) : setPosition(position)],
+    ]);
 
     useEffect(() => {
         if (position > endPoint) {
