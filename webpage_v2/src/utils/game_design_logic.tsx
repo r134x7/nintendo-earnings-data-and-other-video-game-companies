@@ -59,7 +59,7 @@ export function timedStage(level: string, milliseconds: number) {
     // let wall = (level.at(position+1) === "|") ? true : false;
 
     // let jump = false;
-
+    // endPoint - (40 - position) + 1
     useHotkeys([
         // ["ArrowDown", () => down()],
         // ["ArrowUp", () => up()],
@@ -74,7 +74,7 @@ export function timedStage(level: string, milliseconds: number) {
             // (position > 0) ? setPosition(position-1) : setPosition(position)
         }],
         ["ArrowRight", () => {
-             if (position < 41 && (level.at(position+1) !== "|" /*|| jump !== false */)) {
+             if (position < 41 && (level.at(endPoint - (40 - position) + 1) !== "|" /*|| jump !== false */)) {
                 setAvatar((avatar === "x") ? "+" : "x")
                 setPosition(position+1)
              } else {
@@ -85,7 +85,8 @@ export function timedStage(level: string, milliseconds: number) {
         //(position < 41) ? setPosition(position+1) : setPosition(position)
         ],
         ["f", () => {
-           if (level.at(position+1) === "|") {
+            // need to figure out how to determine walls relative to the stage and not the player...
+           if (level.at(endPoint - (40 - position) + 1) === "|") {
                 setAvatar((avatar === "x") ? "+" : "x")
                 setPosition(position+2)
            } else if (level.at(position-1) === "|") {
