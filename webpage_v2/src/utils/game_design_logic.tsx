@@ -87,9 +87,11 @@ export function useTimedStage(level: string, milliseconds: number) {
             } else {
                 return (enemyY === Math.floor(i/3)) ? enemyVis : blank
             }
-        })
+        }).reduce((acc, next) => acc + "\n" + next)
     };
 
+    // the field is inverted on the Y axis!
+    let displayField = yField(positionY, enemyPosY, splitLevel);
     // let wall = (level.at(position+1) === "|") ? true : false;
 
     // let jump = false;
@@ -211,6 +213,13 @@ export function useTimedStage(level: string, milliseconds: number) {
             setGate(true)
         }
 
+        if (enemyPosX > 40) {
+            setEnemyPosX(0)
+            setEnemyPosY((enemyPosY === 2) ? 0 : enemyPosY+1)
+        } else {
+            setEnemyPosX(enemyPosX+1)
+        }
+
         if (positionX > 40 && gate) {
             // interval.stop();
             // setTimeout(() => {
@@ -224,7 +233,8 @@ export function useTimedStage(level: string, milliseconds: number) {
         } else {
             interval.start();
             
-            setField(splitLevel)
+            // setField(splitLevel)
+            setField(displayField)
         }
 
     }, [seconds, startPoint, endPoint])
