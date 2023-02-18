@@ -87,8 +87,11 @@ export function timedStage(level: string, milliseconds: number) {
         ["f", () => {
            if (level.at(position+1) === "|") {
                 setAvatar((avatar === "x") ? "+" : "x")
-                setPosition(position+1)
-           } 
+                setPosition(position+2)
+           } else if (level.at(position-1) === "|") {
+                setAvatar((avatar === "x") ? "+" : "x")
+                setPosition(position-2)
+           }
             
         }],
     ]);
