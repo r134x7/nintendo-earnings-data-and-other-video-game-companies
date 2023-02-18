@@ -1,7 +1,7 @@
 import { Code, Space, SimpleGrid, Button } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useSingleMessage } from "../../utils/table_design_logic";
-import { timedStage, usePrompt } from "../../utils/game_design_logic";
+import { useTimedStage, usePrompt } from "../../utils/game_design_logic";
 import gameFiveScript from "../../gameScript/gameFive/script.json";
 import { useSelector } from "react-redux";
 import { useHotkeys } from "@mantine/hooks";
@@ -13,9 +13,7 @@ const stageOne = "-------------------|---------------------======|===|=|=|===|==
 removes whitespace as the player moves but doesn't cause the field to be moved
 */
 const stageTwo = 
-`                       
-                        −−−−−−−−−−−−−−−−−−−−−−−−−
-                        |
+`                        |−−−−−−−−−−−−−−−−−−−−−−−−−
 −−−−−−−−−−−−−−−−−−−−−−−−−
 `;
 
@@ -71,7 +69,7 @@ export default function GAME_FIVE() {
 
 
     
-    let stage = timedStage(stageOne,17)
+    let stage = useTimedStage(stageOne,17)
 
     return (
         <div>
@@ -81,10 +79,10 @@ export default function GAME_FIVE() {
             {stage[0] + "\n"}
             {message}
             </Code>
-            <SimpleGrid cols={2}>
+            <SimpleGrid verticalSpacing={"xl"} cols={2}>
                 {stage[3]}
                 {stage[2]}
-                {stage[3]}
+                {stage[4]}
                 {stage[1]}
                 {/* <Button variant="outline" radius={"lg"} color="red" onMouseDown={} fullWidth>
                    Next 

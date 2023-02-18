@@ -36,21 +36,28 @@ export function usePrompt(textInput: string, blockLength: number, borderStyle: "
     return textBlock;
 };
 
-export function timedStage(level: string, milliseconds: number) {
+export function useTimedStage(level: string, milliseconds: number) {
 
     const [field, setField] = useState("");
     const [seconds, setSeconds] = useState(0);
     const [startPoint, setStartPoint] = useState(0);
     const [endPoint, setEndPoint] = useState(40)
-    const [position, setPosition] = useState(0);
+    const [positionX, setPositionX] = useState(0);
+    const [positionY, setPositionY] = useState(0);
     const [avatar, setAvatar] = useState("x");
+    const [enemy, setEnemy] = useState("O###H");
+    const [enemyPosX, setEnemyPosX] = useState(0);
+    const [enemyPosY, setEnemyPosY] = useState(0);
 
     const interval = useInterval(() => setSeconds((s) => s + 1), milliseconds);
 
     // const [buttonHold, setButtonHold] = useState(false);
     // const mouseInterval = useInterval(() => setButtonHold((s) => s + 1), 60)
+    let enemyVisual = spacer(" ".repeat(enemyPosX) + enemy,40,"left")
     
-    let playerVisual = spacer(" ".repeat(position) + avatar,40,"left")
+    let playerVisual = spacer(" ".repeat(positionX) + avatar,40,"left");
+
+    
     // take in the whole level and try to split level into 40 chars per screen view or each call of the function...
     let splitLevel = playerVisual + "\n" + level.split("").filter((elem, index) => {
         return index <= endPoint && index >= startPoint
@@ -63,33 +70,50 @@ export function timedStage(level: string, milliseconds: number) {
 
     // need to create functions since using same commands for keys and buttons
     function moveLeft() {
-             if (position > 0 && (level.at(endPoint - (40 - position) - 1) !== "|" /*|| jump !== false */)) {
+             if (positionX > 0 && (level.at(endPoint - (40 - positionX) - 1) !== "|" /*|| jump !== false */)) {
                 setAvatar((avatar === "x") ? "+" : "x")
-                setPosition(position-1)
+                setPositionX(positionX-1)
              } else {
                 setAvatar((avatar === "x") ? "+" : "x")
-                setPosition(position)
+                setPositionX(positionX)
              }
     }
 
     function moveRight() {
-             if (position < 41 && (level.at(endPoint - (40 - position) + 1) !== "|" /*|| jump !== false */)) {
+             if (positionX < 41 && (level.at(endPoint - (40 - positionX) + 1) !== "|" /*|| jump !== false */)) {
                 setAvatar((avatar === "x") ? "+" : "x")
-                setPosition(position+1)
+                setPositionX(positionX+1)
              } else {
                 setAvatar((avatar === "x") ? "+" : "x")
-                setPosition(position)
+                setPositionX(positionX)
              }
     }
 
     function jumpOver() {
-           if (level.at(endPoint - (40 - position) + 1) === "|") {
+           if (level.at(endPoint - (40 - positionX) + 1) === "|") {
                 setAvatar((avatar === "x") ? "+" : "x")
-                setPosition(position+2)
-           } else if (level.at(endPoint - (40 - position) - 1) === "|") {
+                setPositionX(positionX+2)
+           } else if (level.at(endPoint - (40 - positionX) - 1) === "|") {
                 setAvatar((avatar === "x") ? "+" : "x")
-                setPosition(position-2)
+                setPositionX(positionX-2)
            }
+    }
+
+    function strikeThrough() {
+        // if at a wall...
+        // jump up or down..............
+        // depending on which side you are on...
+        if (level.at(endPoint - (40 - positionX) + 1) === "|" && positionY < 4) {
+            setPositionY(positionY + 1);
+            if (positionX === enemyPosX && positionY > enemyPosY) {
+                setEnemy(enemy.slice(1))
+            }
+        } else if (level.at(endPoint - (40 - positionX) - 1) === "|" && positionY > 0) {
+            setPositionY(positionY - 1);
+            if (positionX === enemyPosX && positionY < enemyPosY) {
+                setEnemy(enemy.slice(1))
+            }
+        }
     }
 
     useHotkeys([
@@ -98,6 +122,7 @@ export function timedStage(level: string, milliseconds: number) {
         ["ArrowLeft", () => moveLeft()],
         ["ArrowRight", () => moveRight()],
         ["f", () => jumpOver()],
+        ["d", () => strikeThrough()],
     ]);
 
     function rubRight() {
@@ -112,8 +137,12 @@ export function timedStage(level: string, milliseconds: number) {
         moveLeft();
     }
 
-    function rubJump() {
+    function touchJump() {
         jumpOver();
+    }
+
+    function rubStrike() {
+        strikeThrough();
     }
 
     const buttonLeft = (
@@ -130,8 +159,14 @@ export function timedStage(level: string, milliseconds: number) {
     )
 
     const buttonJump = (
-                <Button variant="outline" radius={"lg"} color="red" onTouchStart={rubJump} fullWidth>
+                <Button variant="outline" radius={"lg"} color="red" onTouchStart={touchJump} fullWidth>
                   Jump Over
+                </Button>
+    )
+
+    const buttonStrike = (
+                <Button variant="outline" radius={"lg"} color="red" onTouchMove={rubStrike} fullWidth>
+                  Rub Strike
                 </Button>
     )
 
@@ -145,13 +180,13 @@ export function timedStage(level: string, milliseconds: number) {
             return
         }
 
-        if (position > 40) {
+        if (positionX > 40) {
             // interval.stop();
             // setTimeout(() => {
 
                 setStartPoint(endPoint)
                 setEndPoint(endPoint + 40)
-                setPosition(0)
+                setPositionX(0)
                 
             // }, 100);
 
@@ -164,10 +199,26 @@ export function timedStage(level: string, milliseconds: number) {
     }, [seconds, startPoint, endPoint])
 
     // return field;
+    // need to put the prompt in here and then return it
     return [
         field,
         buttonLeft,
         buttonRight,
         buttonJump,
+        buttonStrike,
     ];
 };
+/*
+the enemy moves fast... 
+
+----|---------|------- // three...
+O|||||)
+xxxxxxxxxxxxxxxxxxx
+----|---------|------- // two...
+       O####H
+xxxxxxxxxxxxxxxxxxx
+----|---------|------- // one...
+ooooooooooooooooooo
+xxxxxxxxxxxxxxxxxxx
+----|---------|------- // zero...
+*/
