@@ -65,7 +65,7 @@ export default function GAME_FIVE() {
     //         : usePrompt(text,40,"=",80,false,true)
     // }
 
-    let message = useSingleMessage("Keyboard controls (keys can be held): [Left Arrow]: Move left, [Right Arrow]: Move right, [f]: Jump over, [d]: Strike. Screen buttons are touch-only.", 42, "=", 80)
+    let message = useSingleMessage("Keyboard controls (keys can be held): [Left Arrow]: Move left, [Right Arrow]: Move right, [f]: Jump over, [d]: Wall Strike. Screen buttons are touch-only.", 42, "=", 80)
 
     let stage = useTimedStage(stageOne,17)
 
@@ -82,7 +82,7 @@ export default function GAME_FIVE() {
             {stage[5]}
             {message}
             </Code>
-            <SimpleGrid verticalSpacing={"xl"} cols={2}>
+            <SimpleGrid mt={"lg"} verticalSpacing={"xl"} cols={2}>
                 {stage[3]}
                 {stage[2]}
                 {stage[4]}

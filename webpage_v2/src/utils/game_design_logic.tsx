@@ -198,11 +198,11 @@ export function useTimedStage(level: string, milliseconds: number) {
 
     const buttonStrike = (
                 <Button variant="outline" radius={"lg"} color="red" onTouchStart={rubStrike} fullWidth>
-                  Strike
+                  Wall Strike
                 </Button>
     )
 
-    const timeDisplay = liner(printTextBlock(`Time: ${6000 - seconds} | Enemy HP: ${enemy.length}`,30),"=","both",true)
+    const timeDisplay = liner(printTextBlock(`Time: ${6000 - seconds} | Enemy HP: ${enemy.length} | ${gate ? "Go right!": `Enemies: ${3 - koCount}`}`,40),"=","both",true)
 
     // const gameOverOne = usePrompt("You struggled and lost to time. Game Over",40,"=",80,((6000 - seconds) <= 0) ? true : false, ((6000 - seconds)> 0) ? true : false);
 
