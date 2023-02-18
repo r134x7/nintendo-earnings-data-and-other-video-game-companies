@@ -78,19 +78,20 @@ export function useTimedStage(level: string, milliseconds: number) {
 
         return Array.from({length: 12}, (v,i) => {
             // 0, 3, 6, 9
-            if (i % 3 === 0) {
+            // 11 - i should solve the upside down display...
+            if ((11 - i) % 3 === 0) {
                 return level
                 // 1, 4, 7, 10...
-            } else if (i % 3 === 1) {
+            } else if ((11 - i) % 3 === 1) {
                 // Math.floor returns 0, 1, 2, 3...
-                return (playerY === Math.floor(i/3)) ? playerVis : blank
+                return (playerY === Math.floor((11 - i)/3)) ? playerVis : blank
             } else {
-                return (enemyY === Math.floor(i/3)) ? enemyVis : blank
+                return (enemyY === Math.floor((11 - i)/3)) ? enemyVis : blank
             }
         }).reduce((acc, next) => acc + "\n" + next)
     };
 
-    // the field is inverted on the Y axis!
+    // the field was inverted on the Y axis
     let displayField = yField(positionY, enemyPosY, splitLevel);
     // let wall = (level.at(position+1) === "|") ? true : false;
 
@@ -134,12 +135,13 @@ export function useTimedStage(level: string, milliseconds: number) {
         // depending on which side you are on...
         if (level.at(endPoint - (40 - positionX) + 1) === "|" && positionY < 3) {
             setPositionY(positionY + 1);
-            if (positionX === enemyPosX && positionY > enemyPosY) {
+            // I am guessing Position Y will not have the new value yet, therefore, I add + 1 to the position Y condition below which seems to fix the issue of odd enemy damage happening
+            if ((positionX - enemyPosX < 5) && ((positionY + 1) - enemyPosY === 1)) {
                 setEnemy(enemy.slice(1))
             }
         } else if (level.at(endPoint - (40 - positionX) - 1) === "|" && positionY > 0) {
             setPositionY(positionY - 1);
-            if (positionX === enemyPosX && positionY < enemyPosY) {
+            if ( (positionX - enemyPosX < 5) /* positionX === enemyPosX */ && ((positionY - 1) - enemyPosY === 0) /* positionY < enemyPosY */ ) {
                 setEnemy(enemy.slice(1))
             }
         }
