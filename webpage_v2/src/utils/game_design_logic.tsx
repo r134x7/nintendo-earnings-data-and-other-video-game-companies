@@ -58,11 +58,13 @@ export function timedStage(level: string, milliseconds: number) {
 
     // let wall = (level.at(position+1) === "|") ? true : false;
 
+    // let jump = false;
+
     useHotkeys([
         // ["ArrowDown", () => down()],
         // ["ArrowUp", () => up()],
         ["ArrowLeft", () => {
-             if (position > 0 && level.at(position-1) !== "|") {
+             if (position > 0 && (level.at(position-1) !== "|" /*|| jump !== false */)) {
                 setAvatar((avatar === "x") ? "+" : "x")
                 setPosition(position-1)
              } else {
@@ -72,7 +74,7 @@ export function timedStage(level: string, milliseconds: number) {
             // (position > 0) ? setPosition(position-1) : setPosition(position)
         }],
         ["ArrowRight", () => {
-             if (position < 41 && level.at(position+1) !== "|") {
+             if (position < 41 && (level.at(position+1) !== "|" /*|| jump !== false */)) {
                 setAvatar((avatar === "x") ? "+" : "x")
                 setPosition(position+1)
              } else {
@@ -82,6 +84,13 @@ export function timedStage(level: string, milliseconds: number) {
         } 
         //(position < 41) ? setPosition(position+1) : setPosition(position)
         ],
+        ["f", () => {
+           if (level.at(position+1) === "|") {
+                setAvatar((avatar === "x") ? "+" : "x")
+                setPosition(position+1)
+           } 
+            
+        }],
     ]);
 
     // function buttonLeftClick() {
