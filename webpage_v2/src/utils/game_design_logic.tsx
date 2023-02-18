@@ -60,20 +60,19 @@ export function timedStage(level: string, milliseconds: number) {
 
     // let jump = false;
     // endPoint - (40 - position) + 1
-    useHotkeys([
-        // ["ArrowDown", () => down()],
-        // ["ArrowUp", () => up()],
-        ["ArrowLeft", () => {
-             if (position > 0 && (level.at(position-1) !== "|" /*|| jump !== false */)) {
+
+    // need to create functions since using same commands for keys and buttons
+    function moveLeft() {
+             if (position > 0 && (level.at(endPoint - (40 - position) - 1) !== "|" /*|| jump !== false */)) {
                 setAvatar((avatar === "x") ? "+" : "x")
                 setPosition(position-1)
              } else {
                 setAvatar((avatar === "x") ? "+" : "x")
                 setPosition(position)
              }
-            // (position > 0) ? setPosition(position-1) : setPosition(position)
-        }],
-        ["ArrowRight", () => {
+    }
+
+    function moveRight() {
              if (position < 41 && (level.at(endPoint - (40 - position) + 1) !== "|" /*|| jump !== false */)) {
                 setAvatar((avatar === "x") ? "+" : "x")
                 setPosition(position+1)
@@ -81,47 +80,40 @@ export function timedStage(level: string, milliseconds: number) {
                 setAvatar((avatar === "x") ? "+" : "x")
                 setPosition(position)
              }
-        } 
-        //(position < 41) ? setPosition(position+1) : setPosition(position)
-        ],
-        ["f", () => {
-            // need to figure out how to determine walls relative to the stage and not the player...
+    }
+
+    function jumpOver() {
            if (level.at(endPoint - (40 - position) + 1) === "|") {
                 setAvatar((avatar === "x") ? "+" : "x")
                 setPosition(position+2)
-           } else if (level.at(position-1) === "|") {
+           } else if (level.at(endPoint - (40 - position) - 1) === "|") {
                 setAvatar((avatar === "x") ? "+" : "x")
                 setPosition(position-2)
            }
-            
-        }],
-    ]);
+    }
 
-    // function buttonLeftClick() {
-    //     setButtonHold(true);
-    //     console.log(buttonHold);
-        
-        // if (position > 0 && buttonHold === true) {
-        //     setPosition(position-1)
-    //         // setButtonHold(false)
-    //     } else if (position < 0 && buttonHold === true) {
-    //         setPosition(position)
-    //     }
-    //     // (position > 0 && buttonHold === true) ? setPosition(position-1) : setPosition(position)
-    // }
+    useHotkeys([
+        // ["ArrowDown", () => down()],
+        // ["ArrowUp", () => up()],
+        ["ArrowLeft", () => moveLeft()],
+        ["ArrowRight", () => moveRight()],
+        ["f", () => jumpOver()],
+    ]);
 
     function rubRight() {
         // let delayedPosition = position;
         // using setTimeout helps to reduce speed of movement but bug occurs where stages are skipped...
         // setTimeout(() => {
-           setAvatar((avatar === "x") ? "+" : "x");
-           (position < 41) ? setPosition(position+1) : setPosition(position);
+            moveRight();
         // }, 100);
     }
 
     function rubLeft() {
-        setAvatar((avatar === "x") ? "+" : "x");
-        (position > 0) ? setPosition(position-1) : setPosition(position);
+        moveLeft();
+    }
+
+    function rubJump() {
+        jumpOver();
     }
 
     const buttonLeft = (
@@ -134,6 +126,12 @@ export function timedStage(level: string, milliseconds: number) {
     const buttonRight = (
                 <Button variant="outline" radius={"lg"} color="red" onTouchMove={rubRight} fullWidth>
                   Rub Right
+                </Button>
+    )
+
+    const buttonJump = (
+                <Button variant="outline" radius={"lg"} color="red" onTouchStart={rubJump} fullWidth>
+                  Jump Over
                 </Button>
     )
 
@@ -170,5 +168,6 @@ export function timedStage(level: string, milliseconds: number) {
         field,
         buttonLeft,
         buttonRight,
+        buttonJump,
     ];
 };

@@ -67,7 +67,7 @@ export default function GAME_FIVE() {
     //         : usePrompt(text,40,"=",80,false,true)
     // }
 
-    let message = useSingleMessage("Using the Left or Right Arrows on your keyboard, you can move left or right. The field changes when you move into the right direction until there is nothing left. The Left and Right buttons are Touch-only and react when touchscreen movement occurs. A timer will stop the game at around 100 seconds.", 42, "=", 80)
+    let message = useSingleMessage("Keyboard controls (all keys can be pressed and held): [Left Arrow Key]: Move left, [Right Arrow Key]: Move right, [f key]: Jump over. Screen buttons are touch-only. A timer will stop the game at around 100 seconds.", 42, "=", 80)
 
 
     
@@ -82,8 +82,10 @@ export default function GAME_FIVE() {
             {message}
             </Code>
             <SimpleGrid cols={2}>
-                {stage[1]}
+                {stage[3]}
                 {stage[2]}
+                {stage[3]}
+                {stage[1]}
                 {/* <Button variant="outline" radius={"lg"} color="red" onMouseDown={} fullWidth>
                    Next 
                 </Button>
