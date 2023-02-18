@@ -3,7 +3,8 @@ import { useHotkeys } from "@mantine/hooks";
 import { useState } from "react";
 import { Field } from "../../classes/Field";
 import { Unit } from "../../classes/Unit";
-import { liner, border, spacer, usePrompt } from "../../utils/table_design_logic";
+import { liner, border, spacer } from "../../utils/table_design_logic";
+import { usePrompt } from "../../utils/game_design_logic";
 
 // need to figure out how to have a reactive map...
 

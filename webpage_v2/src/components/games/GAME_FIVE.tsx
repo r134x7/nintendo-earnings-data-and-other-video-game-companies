@@ -1,6 +1,7 @@
 import { Code, Space, SimpleGrid, Button } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { usePrompt, useSingleMessage, timedStage } from "../../utils/table_design_logic";
+import { useSingleMessage } from "../../utils/table_design_logic";
+import { timedStage, usePrompt } from "../../utils/game_design_logic";
 import gameFiveScript from "../../gameScript/gameFive/script.json";
 import { useSelector } from "react-redux";
 import { useHotkeys } from "@mantine/hooks";

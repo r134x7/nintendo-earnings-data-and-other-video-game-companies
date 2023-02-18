@@ -3,7 +3,7 @@ import { useHotkeys, useInterval } from "@mantine/hooks";
 import { useEffect, useState } from "react";
 import { Field } from "../../classes/Field";
 import { Unit } from "../../classes/Unit";
-import { usePrompt } from "../../utils/table_design_logic";
+import { usePrompt } from "../../utils/game_design_logic";
 
 // need to try making a function here that spawns objects...
 function ball(x: number, y: number) {

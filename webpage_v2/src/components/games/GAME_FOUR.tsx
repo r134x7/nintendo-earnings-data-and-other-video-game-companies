@@ -2,7 +2,7 @@ import { Code, Space, SimpleGrid, Button } from "@mantine/core";
 import { useInterval, useHotkeys } from "@mantine/hooks";
 import { useState, useEffect } from "react";
 import { liner, spacer, printTextBlock } from "../../utils/table_design_logic";
-import { usePrompt } from "../../utils/table_design_logic";
+import { usePrompt } from "../../utils/game_design_logic";
 
 import gameFourScript from "../../gameScript/gameFour/script.json"
 
