@@ -56,11 +56,13 @@ export function timedStage(level: string, milliseconds: number) {
         return index <= endPoint && index >= startPoint
     }).reduce((acc, next) => acc + next, "");
 
+    // let wall = (level.at(position+1) === "|") ? true : false;
+
     useHotkeys([
         // ["ArrowDown", () => down()],
         // ["ArrowUp", () => up()],
         ["ArrowLeft", () => {
-             if (position > 0) {
+             if (position > 0 && level.at(position-1) !== "|") {
                 setAvatar((avatar === "x") ? "+" : "x")
                 setPosition(position-1)
              } else {
@@ -70,7 +72,7 @@ export function timedStage(level: string, milliseconds: number) {
             // (position > 0) ? setPosition(position-1) : setPosition(position)
         }],
         ["ArrowRight", () => {
-             if (position < 41) {
+             if (position < 41 && level.at(position+1) !== "|") {
                 setAvatar((avatar === "x") ? "+" : "x")
                 setPosition(position+1)
              } else {

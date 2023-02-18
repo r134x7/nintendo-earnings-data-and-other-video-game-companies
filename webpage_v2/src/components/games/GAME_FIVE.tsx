@@ -6,7 +6,18 @@ import gameFiveScript from "../../gameScript/gameFive/script.json";
 import { useSelector } from "react-redux";
 import { useHotkeys } from "@mantine/hooks";
 
-const stageOne = "----------------------------------------========================================||||||||||||||||||||||||||||||||||||||||"
+const stageOne = "-------------------|---------------------========================================||||||||||||||||||||||||||||||||||||||||"
+// need to create walls and put in the logic for them...
+// have to find the position of the wall to apply logic to stop the player
+/* there is a lot of whitespace, would need to come up with a new function that 
+removes whitespace as the player moves but doesn't cause the field to be moved
+*/
+const stageTwo = 
+`                       
+                        −−−−−−−−−−−−−−−−−−−−−−−−−
+                        |
+−−−−−−−−−−−−−−−−−−−−−−−−−
+`;
 
 export default function GAME_FIVE() {
 
