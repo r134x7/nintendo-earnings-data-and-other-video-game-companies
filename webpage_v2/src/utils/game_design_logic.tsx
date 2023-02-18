@@ -48,6 +48,7 @@ export function useTimedStage(level: string, milliseconds: number) {
     const [enemy, setEnemy] = useState("O###H");
     const [enemyPosX, setEnemyPosX] = useState(0);
     const [enemyPosY, setEnemyPosY] = useState(0);
+    const [gate, setGate] = useState(false);
 
     const interval = useInterval(() => setSeconds((s) => s + 1), milliseconds);
 
@@ -57,11 +58,37 @@ export function useTimedStage(level: string, milliseconds: number) {
     
     let playerVisual = spacer(" ".repeat(positionX) + avatar,40,"left");
 
-    
     // take in the whole level and try to split level into 40 chars per screen view or each call of the function...
-    let splitLevel = playerVisual + "\n" + level.split("").filter((elem, index) => {
+    // let splitLevel = playerVisual + "\n" + level.split("").filter((elem, index) => {
+    //     return index <= endPoint && index >= startPoint
+    // }).reduce((acc, next) => acc + next, "");
+
+    let splitLevel = level.split("").filter((elem, index) => {
         return index <= endPoint && index >= startPoint
     }).reduce((acc, next) => acc + next, "");
+
+
+    function yField(playerY: number, enemyY: number, level: string) {
+
+        let playerVis = spacer(" ".repeat(positionX) + avatar,40,"left");
+
+        let enemyVis = spacer(" ".repeat(enemyPosX) + enemy,40,"left");
+
+        let blank = spacer(" ",40,"left");
+
+        return Array.from({length: 12}, (v,i) => {
+            // 0, 3, 6, 9
+            if (i % 3 === 0) {
+                return level
+                // 1, 4, 7, 10...
+            } else if (i % 3 === 1) {
+                // Math.floor returns 0, 1, 2, 3...
+                return (playerY === Math.floor(i/3)) ? playerVis : blank
+            } else {
+                return (enemyY === Math.floor(i/3)) ? enemyVis : blank
+            }
+        })
+    };
 
     // let wall = (level.at(position+1) === "|") ? true : false;
 
@@ -103,7 +130,7 @@ export function useTimedStage(level: string, milliseconds: number) {
         // if at a wall...
         // jump up or down..............
         // depending on which side you are on...
-        if (level.at(endPoint - (40 - positionX) + 1) === "|" && positionY < 4) {
+        if (level.at(endPoint - (40 - positionX) + 1) === "|" && positionY < 3) {
             setPositionY(positionY + 1);
             if (positionX === enemyPosX && positionY > enemyPosY) {
                 setEnemy(enemy.slice(1))
@@ -180,14 +207,18 @@ export function useTimedStage(level: string, milliseconds: number) {
             return
         }
 
-        if (positionX > 40) {
+        if (enemy.length === 0) {
+            setGate(true)
+        }
+
+        if (positionX > 40 && gate) {
             // interval.stop();
             // setTimeout(() => {
 
                 setStartPoint(endPoint)
                 setEndPoint(endPoint + 40)
                 setPositionX(0)
-                
+                setGate(false)
             // }, 100);
 
         } else {
@@ -211,6 +242,7 @@ export function useTimedStage(level: string, milliseconds: number) {
 /*
 the enemy moves fast... 
 
+xxxxxxxxxxxxxxxxxxx
 ----|---------|------- // three...
 O|||||)
 xxxxxxxxxxxxxxxxxxx
