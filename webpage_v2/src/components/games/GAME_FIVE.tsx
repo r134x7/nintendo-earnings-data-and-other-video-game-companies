@@ -6,7 +6,7 @@ import gameFiveScript from "../../gameScript/gameFive/script.json";
 import { useSelector } from "react-redux";
 import { useHotkeys } from "@mantine/hooks";
 
-const stageOne = "-------------------|---------------------======|===|=|=|===|==|===|====|===|===================||||||||||||||||||||||||||||||||||||||||"
+const stageOne = "-------------------|---------------------======|=====|=====|==|===|====|===|===================||||||===||||||========================="
 // need to create walls and put in the logic for them...
 // have to find the position of the wall to apply logic to stop the player
 /* there is a lot of whitespace, would need to come up with a new function that 
@@ -65,18 +65,21 @@ export default function GAME_FIVE() {
     //         : usePrompt(text,40,"=",80,false,true)
     // }
 
-    let message = useSingleMessage("Keyboard controls (all keys can be pressed and held): [Left Arrow Key]: Move left, [Right Arrow Key]: Move right, [f key]: Jump over. Screen buttons are touch-only. A timer will stop the game at around 100 seconds.", 42, "=", 80)
+    let message = useSingleMessage("Keyboard controls (keys can be held): [Left Arrow]: Move left, [Right Arrow]: Move right, [f]: Jump over, [d]: Strike. Screen buttons are touch-only.", 42, "=", 80)
 
-
-    
     let stage = useTimedStage(stageOne,17)
+
+    const gameOverOne = usePrompt("You struggled and lost to time. Game Over",40,"=",80,(stage[6] >= 6000) ? true : false, (stage[6] < 6000) ? true : false) + "\n";
+
+    const gameOverTwo = usePrompt("You struggled to win. Game Over!",40,"=",80,(stage[7] === 3) ? true : false, (stage[7] < 3) ? true : false) + "\n";
 
     return (
         <div>
             <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
             {/* {messageBox}
             {contextBox} */}
-            {stage[0] + "\n"}
+            {(stage[6] >= 6000) ? gameOverOne : (stage[7] === 3) ? gameOverTwo : stage[0] + "\n"}
+            {stage[5]}
             {message}
             </Code>
             <SimpleGrid verticalSpacing={"xl"} cols={2}>

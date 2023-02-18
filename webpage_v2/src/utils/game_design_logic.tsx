@@ -49,14 +49,15 @@ export function useTimedStage(level: string, milliseconds: number) {
     const [enemyPosX, setEnemyPosX] = useState(0);
     const [enemyPosY, setEnemyPosY] = useState(0);
     const [gate, setGate] = useState(false);
+    const [koCount, setKOCount] = useState(0)
 
     const interval = useInterval(() => setSeconds((s) => s + 1), milliseconds);
 
     // const [buttonHold, setButtonHold] = useState(false);
     // const mouseInterval = useInterval(() => setButtonHold((s) => s + 1), 60)
-    let enemyVisual = spacer(" ".repeat(enemyPosX) + enemy,40,"left")
+    // let enemyVisual = spacer(" ".repeat(enemyPosX) + enemy,40,"left")
     
-    let playerVisual = spacer(" ".repeat(positionX) + avatar,40,"left");
+    // let playerVisual = spacer(" ".repeat(positionX) + avatar,40,"left");
 
     // take in the whole level and try to split level into 40 chars per screen view or each call of the function...
     // let splitLevel = playerVisual + "\n" + level.split("").filter((elem, index) => {
@@ -196,17 +197,37 @@ export function useTimedStage(level: string, milliseconds: number) {
     )
 
     const buttonStrike = (
-                <Button variant="outline" radius={"lg"} color="red" onTouchMove={rubStrike} fullWidth>
-                  Rub Strike
+                <Button variant="outline" radius={"lg"} color="red" onTouchStart={rubStrike} fullWidth>
+                  Strike
                 </Button>
     )
+
+    const timeDisplay = liner(printTextBlock(`Time: ${6000 - seconds} | Enemy HP: ${enemy.length}`,30),"=","both",true)
+
+    // const gameOverOne = usePrompt("You struggled and lost to time. Game Over",40,"=",80,((6000 - seconds) <= 0) ? true : false, ((6000 - seconds)> 0) ? true : false);
+
+    // const gameOverTwo = usePrompt("You struggled to win. Game Over!",40,"=",80,(koCount === 3) ? true : false, (koCount < 3) ? true : false);
+
+    // function gameOver() {
+
+    //     if ((6000 - seconds) <= 0) {
+    //         return useSingleMessage("You struggled and lost to time. Game Over",40,"=",80)
+    //         // return usePrompt("You struggled and lost to time. Game Over",40,"=",80,((6000 - seconds) <= 0) ? true : false, ((6000 - seconds)> 0) ? true : false);
+    //     } else if (koCount === 1) {
+    //         return useSingleMessage("You struggled to win. Game Over!",40,"=",80)
+    //         // return printTextBlock("You struggled to win. Game Over!",40)
+    //         // return usePrompt("You struggled to win. Game Over!",40,"=",80,(koCount === 1) ? true : false, (koCount < 3) ? true : false);
+    //     }
+        
+    //     return ""
+    // }
 
     useEffect(() => {
         // if (position > endPoint) {
             // causes player to go off field but it doesn't crash
         // console.log(seconds);
         // 999 seconds / 50 (milliseconds setting) = 20000 // rounded up
-        if (seconds > (6000)) {
+        if (seconds > (6000) || koCount === 3) {
             interval.stop();
             return
         }
@@ -230,6 +251,8 @@ export function useTimedStage(level: string, milliseconds: number) {
                 setEndPoint(endPoint + 40)
                 setPositionX(0)
                 setGate(false)
+                setKOCount(koCount + 1)
+                setEnemy("O##########H")
             // }, 100);
 
         } else {
@@ -249,6 +272,9 @@ export function useTimedStage(level: string, milliseconds: number) {
         buttonRight,
         buttonJump,
         buttonStrike,
+        timeDisplay,
+        seconds,
+        koCount,
     ];
 };
 /*
