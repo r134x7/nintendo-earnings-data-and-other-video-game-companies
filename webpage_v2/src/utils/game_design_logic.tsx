@@ -3,6 +3,17 @@ import { useState, useEffect } from "react";
 import { Button } from "@mantine/core";
 import { printTextBlock, spacer, liner, border, useSingleMessage } from "./table_design_logic";
 
+export type timedStage = {
+    field: string,
+    buttonLeft: JSX.Element,
+    buttonRight: JSX.Element,
+    buttonJump: JSX.Element,
+    buttonStrike: JSX.Element,
+    timeDisplay: string,
+    seconds: number,
+    koCount: number,
+}
+
 export function usePrompt(textInput: string, blockLength: number, borderStyle: "=" | "−", milliseconds: number, start: Boolean, reset: Boolean): string {
 
     let splitText = textInput.split("");
@@ -36,7 +47,7 @@ export function usePrompt(textInput: string, blockLength: number, borderStyle: "
     return textBlock;
 };
 
-export function useTimedStage(level: string, milliseconds: number) {
+export function useTimedStage(level: string, milliseconds: number): timedStage {
 
     const [field, setField] = useState("");
     const [seconds, setSeconds] = useState(0);
@@ -266,7 +277,7 @@ export function useTimedStage(level: string, milliseconds: number) {
 
     // return field;
     // need to put the prompt in here and then return it
-    return [
+    return { 
         field,
         buttonLeft,
         buttonRight,
@@ -275,7 +286,17 @@ export function useTimedStage(level: string, milliseconds: number) {
         timeDisplay,
         seconds,
         koCount,
-    ];
+    };
+    // return [
+    //     field, // 0
+    //     buttonLeft, // 1
+    //     buttonRight, // 2
+    //     buttonJump, // 3
+    //     buttonStrike, // 4
+    //     timeDisplay, // 5
+    //     seconds, // 6
+    //     koCount, // 7
+    // ];
 };
 /*
 the enemy moves fast... 

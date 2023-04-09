@@ -69,24 +69,24 @@ export default function GAME_FIVE() {
 
     let stage = useTimedStage(stageOne,17)
 
-    const gameOverOne = usePrompt("You struggled and lost to time. Game Over",40,"=",80,(stage[6] >= 6000) ? true : false, (stage[6] < 6000) ? true : false) + "\n";
+    const gameOverOne = usePrompt("You struggled and lost to time. Game Over",40,"=",80,(stage.seconds >= 6000) ? true : false, (stage.seconds < 6000) ? true : false) + "\n";
 
-    const gameOverTwo = usePrompt("You struggled to win. Game Over!",40,"=",80,(stage[7] === 3) ? true : false, (stage[7] < 3) ? true : false) + "\n";
+    const gameOverTwo = usePrompt("You struggled to win. Game Over!",40,"=",80,(stage.koCount === 3) ? true : false, (stage.koCount < 3) ? true : false) + "\n";
 
     return (
         <div>
             <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
             {/* {messageBox}
             {contextBox} */}
-            {(stage[6] >= 6000) ? gameOverOne : (stage[7] === 3) ? gameOverTwo : stage[0] + "\n"}
-            {stage[5]}
+            {(stage.seconds >= 6000) ? gameOverOne : (stage.koCount === 3) ? gameOverTwo : stage.field + "\n"}
+            {stage.timeDisplay}
             {message}
             </Code>
             <SimpleGrid mt={"lg"} verticalSpacing={"xl"} cols={2}>
-                {stage[3]}
-                {stage[2]}
-                {stage[4]}
-                {stage[1]}
+                {stage.buttonJump}
+                {stage.buttonRight}
+                {stage.buttonStrike}
+                {stage.buttonLeft}
                 {/* <Button variant="outline" radius={"lg"} color="red" onMouseDown={} fullWidth>
                    Next 
                 </Button>
