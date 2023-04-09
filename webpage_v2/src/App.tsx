@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { HashRouter as Router, Route, Routes, NavLink } from 'react-router-dom'; // changed from BrowserRouter to HashRouter to solve client-side issue of refreshing causing 404 error due to GitHub Pages, source: https://create-react-app.dev/docs/deployment/#notes-on-client-side-routing
+import { Outlet, NavLink } from 'react-router-dom'; // changed from BrowserRouter to HashRouter to solve client-side issue of refreshing causing 404 error due to GitHub Pages, source: https://create-react-app.dev/docs/deployment/#notes-on-client-side-routing
 
 import { ADD_BACKGROUND_COLOUR } from "./features/backgroundReducer";
 import { useSelector, useDispatch } from "react-redux";
@@ -26,17 +26,6 @@ import {
 
 import { printTextBlock, liner } from './utils/table_design_logic';
 import { Calendar, DeviceNintendo, Moon, Sun, DeviceGamepad, Cards } from 'tabler-icons-react';
-
-import Home from "./pages/Home";
-import NoMatch from "./pages/NoMatch";
-import Nintendo from './pages/Nintendo';
-import Capcom from "./pages/Capcom";
-import Events from "./pages/Events";
-import Sega from "./pages/Sega";
-import BandaiNamco from './pages/BandaiNamco';
-import Games from './pages/Games';
-import KoeiTecmo from './pages/KoeiTecmo';
-import SquareEnix from './pages/SquareEnix';
 
 function App() {
 
@@ -72,7 +61,7 @@ function App() {
     }, [colour, colorScheme, dispatch])
   
   return (
-      <Router>
+
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
        <MantineProvider 
        theme={{ colorScheme: colorScheme}}  
@@ -201,24 +190,11 @@ function App() {
           </Header>
         }
         >
-          <div>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/nintendo" element={<Nintendo />} />
-                <Route path="/capcom" element={<Capcom />} />
-                <Route path="/sega" element={<Sega />} />
-                <Route path="/bandai-namco" element={<BandaiNamco />} />
-                <Route path="/koei-tecmo" element={<KoeiTecmo />} />
-                <Route path="/square-enix" element={<SquareEnix />} />
-                <Route path="/events" element={<Events />} />
-                <Route path="/games" element={<Games />} />
-                <Route path="*" element={<NoMatch />} />
-              </Routes>
-          </div>
+          {/* Outlet is where the pages appear inside the UI layout */}
+          <Outlet />
         </AppShell>
        </MantineProvider>
        </ColorSchemeProvider>
-      </Router>
   );
 }
 
