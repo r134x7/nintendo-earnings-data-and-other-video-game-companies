@@ -12,12 +12,12 @@ export default function LOADING_SCREEN() {
     const state: any = useSelector(state => state);
 
     return (
-        <div>
-            <Stack align="center" justify="center">
+        <>
+            <Stack align="center" justify="center" style={{minHeight:"80vh"}}>
                 <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
                     {loadingText}
                 </Code>
             </Stack>
-        </div>
+        </>
     )
 }

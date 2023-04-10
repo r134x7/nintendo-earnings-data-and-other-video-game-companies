@@ -16,7 +16,6 @@ const NoMatch = () => {
             <Code style={{backgroundColor: `rgba(0, 255, 255,0.2)`}} block>
                 {makeText}
             </Code>
-            <LOADING_SCREEN />
             </Stack>
             <Paper shadow="sm" radius="xl" p="md" withBorder>
             <Stack align="center">
