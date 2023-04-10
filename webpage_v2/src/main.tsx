@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 import store from "./utils/store";
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 
-import { Loader } from '@mantine/core';
 import LOADING_SCREEN from './components/LOADING_SCREEN';
 
 import Home from "./pages/Home";
@@ -64,7 +63,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
     <React.StrictMode>
       <Suspense fallback={<LOADING_SCREEN />}>
-        <RouterProvider router={router} fallbackElement={<Loader />} />
+        <RouterProvider router={router} fallbackElement={<LOADING_SCREEN />} />
       </Suspense>
     </React.StrictMode>
   </Provider>
