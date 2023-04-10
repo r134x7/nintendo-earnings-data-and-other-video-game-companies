@@ -7,6 +7,7 @@ import store from "./utils/store";
 import { createHashRouter, RouterProvider } from 'react-router-dom';
 
 import { Loader } from '@mantine/core';
+import LOADING_SCREEN from './components/LOADING_SCREEN';
 
 import Home from "./pages/Home";
 import NoMatch from "./pages/NoMatch";
@@ -62,7 +63,7 @@ const router = createHashRouter([
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
     <React.StrictMode>
-      <Suspense fallback={<Loader color='red' variant='bars' size="xl" />}>
+      <Suspense fallback={<LOADING_SCREEN />}>
         <RouterProvider router={router} fallbackElement={<Loader />} />
       </Suspense>
     </React.StrictMode>

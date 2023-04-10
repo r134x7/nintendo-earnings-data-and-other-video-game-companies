@@ -133,7 +133,7 @@ export const infiniteCheck = (value: number) => {
                 : value 
         }
 
-export function useSingleMessage(textInput: string, blockLength: number, borderStyle: "=" | "−", milliseconds: number): string {
+export function useSingleMessage(textInput: string, blockLength: number, borderStyle: "=" | "−", milliseconds: number, repeat?: boolean): string {
 
     let splitText = textInput.split("");
 
@@ -146,6 +146,15 @@ export function useSingleMessage(textInput: string, blockLength: number, borderS
     useEffect(() => {
         if (seconds === splitText.length + 1) {
             interval.stop();
+
+            if (repeat === true) {
+                setTimeout(() => {
+                    setText("");
+                    setTextBlock("");
+                    setSeconds(0);
+                }, 600)
+            }
+
         } else {
             interval.start();
             

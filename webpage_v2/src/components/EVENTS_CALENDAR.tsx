@@ -95,8 +95,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 10,
             companyName: "GungHo",
-            eventName: "4th Quarter Earnings Results, FY12/2022 (Fiscal Year ending December 2023)",
-            eventDate: "February 14, 2023",
+            eventName: "1st Quarter Earnings Results, FY12/2023 (Fiscal Year ending December 2023)",
+            eventDate: "May 11, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.gungho.co.jp/en/ir/",
         },
@@ -119,8 +119,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 13,
             companyName: "Konami",
-            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "February 2, 2023",
+            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
+            eventDate: "May 11, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.konami.com/ir/en/",
         },

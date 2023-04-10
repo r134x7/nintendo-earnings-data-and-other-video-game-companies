@@ -2,6 +2,7 @@ import { Text, Stack, Paper, Anchor, Code } from '@mantine/core';
 import "../App.css"
 
 import { useSingleMessage } from "../utils/table_design_logic";
+import LOADING_SCREEN from '../components/LOADING_SCREEN';
 
 const NoMatch = () => {
 
@@ -15,6 +16,7 @@ const NoMatch = () => {
             <Code style={{backgroundColor: `rgba(0, 255, 255,0.2)`}} block>
                 {makeText}
             </Code>
+            <LOADING_SCREEN />
             </Stack>
             <Paper shadow="sm" radius="xl" p="md" withBorder>
             <Stack align="center">
