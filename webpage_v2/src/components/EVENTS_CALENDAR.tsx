@@ -47,9 +47,9 @@ export default function EVENTS_CALENDAR() {
         {
             id: 4,
             companyName: "Microsoft",
-            eventName: "2nd Quarter Earnings Results, FY6/2023 (Fiscal Year ending June 2023)",
-            eventDate: "January 24, 2023",
-            timeZone: "US, PST, UTC -8 Hours",
+            eventName: "3rd Quarter Earnings Results, FY6/2023 (Fiscal Year ending June 2023)",
+            eventDate: "April 25, 2023",
+            timeZone: "US, PDT, UTC -7 Hours",
             irPage: "https://www.microsoft.com/en-us/Investor",
         },
         {
@@ -71,8 +71,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 7,
             companyName: "Koei Tecmo",
-            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "January 30, 2023",
+            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
+            eventDate: "April 24, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.koeitecmo.co.jp/e/ir/",
         },
@@ -159,8 +159,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 18,
             companyName: "Bandai Namco",
-            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "February 7, 2023",
+            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
+            eventDate: "May 10, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.bandainamco.co.jp/en/ir/index.html",
         },

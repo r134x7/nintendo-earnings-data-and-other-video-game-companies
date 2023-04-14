@@ -20,7 +20,7 @@ const Home = () => {
 
     const squareEnixStatus = liner(printTextBlock("Square Enix page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: 3rd Quarter Earnings release data for FY3/2023 added.",40),"−","both",true,40);
 
-    const eventsStatus = liner(printTextBlock("Events page status",32),"=","top",true,32) + liner(printTextBlock("Page update: Updated calendar for 13 of 22 companies from April to May 2023.",40),"−","both",true,40);
+    const eventsStatus = liner(printTextBlock("Events page status",32),"=","top",true,32) + liner(printTextBlock("Page update: Updated calendar for 16 of 22 companies from April to May 2023.",40),"−","both",true,40);
 
     const gamesStatus = liner(printTextBlock("Games page status",32),"=","top",true,32) + liner(printTextBlock("Game Three is now playable.",40),"−","both",true,40);
 
