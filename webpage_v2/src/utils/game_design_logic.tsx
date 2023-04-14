@@ -316,8 +316,11 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
         enemy.forEach((value, key) => {
             if (value[1] > 40) {
                 enemy.set(key, [value[0], 0, (value[2] === 2 ? 0 : value[2] + 1)])
+                console.log(value[1]);
+                
             } else {
-                enemy.set(key, [value[0], value[1] + 1, value[2]])
+                let newX = value[1] + 1;
+                enemy.set(key, [value[0], newX, value[2]])
             }
         })
 
