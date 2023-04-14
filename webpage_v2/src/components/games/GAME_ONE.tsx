@@ -1,9 +1,8 @@
 import { Field } from "../../classes/Field";
 import { Unit } from "../../classes/Unit";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Code, Button, SimpleGrid } from "@mantine/core";
 import { useHotkeys } from "@mantine/hooks";
-import { useSingleMessage } from "../../utils/table_design_logic";
 import { usePrompt } from "../../utils/game_design_logic";
 
     // Objects need to be placed outside the function to retain state...

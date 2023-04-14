@@ -1,10 +1,7 @@
-import { Code, Space, SimpleGrid, Button } from "@mantine/core";
-import { useEffect, useState } from "react";
+import { Code, SimpleGrid } from "@mantine/core";
 import { useSingleMessage } from "../../utils/table_design_logic";
 import { useTimedStage, usePrompt } from "../../utils/game_design_logic";
-import gameFiveScript from "../../gameScript/gameFive/script.json";
 import { useSelector } from "react-redux";
-import { useHotkeys } from "@mantine/hooks";
 
 const stageOne = "-------------------|---------------------======|=====|=====|==|===|====|===|===================||||||===||||||========================="
 // need to create walls and put in the logic for them...
