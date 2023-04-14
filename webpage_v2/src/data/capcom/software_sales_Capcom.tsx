@@ -77,7 +77,7 @@ const forecastsMake = (obj: salesOrUnitsJSON, units: string): Section[] => {
     return forecasts
 };
 
-export const digitalContentsSalesMake = (obj: {"digitalContentsSales": salesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+export const digitalContentsSalesMake = (obj: {"digitalContentsSales": salesOrUnitsJSON}, forecast?: boolean): Section[] => {
     if (forecast === true) {
         return forecastsMake(obj.digitalContentsSales,"currency")
     }
@@ -124,7 +124,7 @@ export const digitalContentsSalesMake = (obj: {"digitalContentsSales": salesOrUn
     return sales
 };
 
-export const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": salesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+export const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": salesOrUnitsJSON}, forecast?: boolean): Section[] => {
     if (forecast === true) {
         return forecastsMake(obj.digitalContentsUnits,"units")
     }
@@ -167,7 +167,7 @@ export const digitalContentsUnitsMake = (obj: {"digitalContentsUnits": salesOrUn
     return units 
 };
 
-export const packageSalesMake = (obj: {"packageSales": salesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+export const packageSalesMake = (obj: {"packageSales": salesOrUnitsJSON}, forecast?: boolean): Section[] => {
     if (forecast === true) {
         return forecastsMake(obj.packageSales,"currency")
     }
@@ -210,7 +210,7 @@ export const packageSalesMake = (obj: {"packageSales": salesOrUnitsJSON}, foreca
     return sales
 };
 
-export const packageUnitsMake = (obj: {"packageUnits": salesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+export const packageUnitsMake = (obj: {"packageUnits": salesOrUnitsJSON}, forecast?: boolean): Section[] => {
     if (forecast === true) {
         return forecastsMake(obj.packageUnits,"units")
     }
@@ -253,7 +253,7 @@ export const packageUnitsMake = (obj: {"packageUnits": salesOrUnitsJSON}, foreca
     return units 
 };
 
-export const digitalSalesMake = (obj: {"digitalSales": salesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+export const digitalSalesMake = (obj: {"digitalSales": salesOrUnitsJSON}, forecast?: boolean): Section[] => {
     if (forecast === true) {
         return forecastsMake(obj.digitalSales,"currency")
     }
@@ -300,7 +300,7 @@ export const digitalSalesMake = (obj: {"digitalSales": salesOrUnitsJSON}, foreca
     return sales
 };
 
-export const digitalUnitsMake = (obj: {"digitalUnits": salesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+export const digitalUnitsMake = (obj: {"digitalUnits": salesOrUnitsJSON}, forecast?: boolean): Section[] => {
     if (forecast === true) {
         return forecastsMake(obj.digitalUnits,"units")
     }

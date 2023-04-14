@@ -40,7 +40,7 @@ export default function GAME_FOUR() {
     const textBlockTwo = callPrompt(gameFourScript?.playerTwoBox?.[lineTwo] ?? "",resetValue2);
 
 
-    function callPrompt(text: string, reset: Boolean) {
+    function callPrompt(text: string, reset: boolean) {
         // I can't put reset into the parameter to not use a ternary condition because it breaks...
         return (!reset) 
             ? usePrompt(text,40,"=",30,true,false)

@@ -76,7 +76,7 @@ const forecastsMake = (obj: salesOrUnitsJSON, units: string): Section[] => {
 };
 
 
-export const salesMake = (obj: {"fullGameSales": salesOrUnitsJSON}, forecast?: Boolean): Section[] => {
+export const salesMake = (obj: {"fullGameSales": salesOrUnitsJSON}, forecast?: boolean): Section[] => {
     if (forecast === true) {
         return forecastsMake(obj.fullGameSales,"currency")
     }

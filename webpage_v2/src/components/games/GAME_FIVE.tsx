@@ -55,7 +55,7 @@ export default function GAME_FIVE() {
     // const contextBox = callPrompt(action ?? "No more content past here...",resetValue2);
 
     // // need to think of making a function to call useSingleMessage whenever a que occurs...........
-    // function callPrompt(text: string, reset: Boolean) {
+    // function callPrompt(text: string, reset: boolean) {
     //     // I can't put reset into the parameter to not use a ternary condition because it breaks...
     //     return (!reset) 
     //         ? usePrompt(text,40,"=",80,true,false)

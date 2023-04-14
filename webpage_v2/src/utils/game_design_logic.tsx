@@ -21,7 +21,7 @@ type enemyObject = {
     yPosition: number,
 }
 
-export function usePrompt(textInput: string, blockLength: number, borderStyle: "=" | "−", milliseconds: number, start: Boolean, reset: Boolean): string {
+export function usePrompt(textInput: string, blockLength: number, borderStyle: "=" | "−", milliseconds: number, start: boolean, reset: boolean): string {
 
     let splitText = textInput.split("");
 

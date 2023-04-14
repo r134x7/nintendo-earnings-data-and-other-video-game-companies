@@ -91,7 +91,7 @@ const forecastsMake = (obj: salesOrUnitsJSON, units: string): Section[] => {
     return forecasts
 };
 
-export const salesHomeVideoGameMake = (obj: {"softwareSales": salesOrUnitsJSON }, forecast?: Boolean): Section[] => {
+export const salesHomeVideoGameMake = (obj: {"softwareSales": salesOrUnitsJSON }, forecast?: boolean): Section[] => {
     if (forecast === true) {
         return forecastsMake(obj.softwareSales,"currency")
     }
@@ -138,7 +138,7 @@ export const salesHomeVideoGameMake = (obj: {"softwareSales": salesOrUnitsJSON }
     return salesHomeVideoGame
 };
 
-export const unitsMake = (obj: {"softwareUnits": salesOrUnitsJSON }, forecast?: Boolean): Section[] => {
+export const unitsMake = (obj: {"softwareUnits": salesOrUnitsJSON }, forecast?: boolean): Section[] => {
     if (forecast === true) {
         return forecastsMake(obj.softwareUnits,"units")
     }
