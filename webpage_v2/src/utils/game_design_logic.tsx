@@ -14,6 +14,13 @@ export type timedStage = {
     koCount: number,
 }
 
+type enemyTuple = [number, [string, number, number]]
+type enemyObject = {
+    body: string,
+    xPosition: number,
+    yPosition: number,
+}
+
 export function usePrompt(textInput: string, blockLength: number, borderStyle: "=" | "−", milliseconds: number, start: Boolean, reset: Boolean): string {
 
     let splitText = textInput.split("");
@@ -64,7 +71,17 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
     // ]));
     // probably won't need to use reactivity...
     // key, [avatar, Xpos, Ypos]
-    const enemy: Map<number, [string, number, number]> = new Map([ [0, ["O###H", 0, 0]], ])
+    // const enemy: Map<number, [string, number, number]> = new Map([ [0, ["O###H", 0, 0]], ])
+
+    // key, [avatar, Xpos, Ypos]
+    // const [enemy, setEnemy] = useState<enemyTuple[] | []>([
+    //     [0, ["O###H", 0, 0]],
+    // ]) 
+
+    const [enemy, setEnemy] = useState<enemyObject[] | []>([
+        { body: "O###H", xPosition: 0, yPosition: 0},
+        { body: "X+++H", xPosition: 20, yPosition: 0},
+    ]) 
     // const [enemyPosX, setEnemyPosX] = useState(0);
     // const [enemyPosY, setEnemyPosY] = useState(0);
     const [gate, setGate] = useState(false);
@@ -88,21 +105,22 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
     }).reduce((acc, next) => acc + next, "");
 
 
-    function yField(playerY: number, level: string) {
+    function yField(playerY: number, enemyLocal: enemyObject[], level: string) {
 
-        let enemyArray: [string, number][] = []; 
+        // let enemyArray: [string, number][] = []; 
 
-        enemy.forEach((value, key) => {
+        // enemy.forEach((value, key) => {
 
-            let [bodyStr, posX, posY] = value
+        //     let [bodyStr, posX, posY] = value
 
-            // [string, posY] tuple 
-            return enemyArray.push([spacer(" ".repeat(posX) + bodyStr,40,"left"), posY])
-        })
+        //     // [string, posY] tuple 
+        //     return enemyArray.push([spacer(" ".repeat(posX) + bodyStr,40,"left"), posY])
+        // })
 
         let playerVis = spacer(" ".repeat(positionX) + avatar,40,"left");
 
         // let enemyVis = spacer(" ".repeat(enemyPosX) + enemy,40,"left");
+        // let enemyVis: [string, number][] = enemyLocal.map(elem => [spacer(" ".repeat(elem.xPosition) + elem.body,40,"left"), elem.yPosition])
 
         let blank = spacer(" ",40,"left");
 
@@ -118,21 +136,48 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
                 return (playerY === Math.floor((11 - i)/3)) ? playerVis : blank
             } else {
 
-                let reduceAllEnemies: string = enemyArray.reduce((acc, next,) => {
-                    return (next[1] === Math.floor((11 - i)/3))
-                        ? next[0]
-                        : ""
+                // let reduceAllEnemies: string = enemyArray.reduce((acc, next,) => {
+                //     return (next[1] === Math.floor((11 - i)/3))
+                //         ? next[0]
+                //         : ""
+                // }, "")
+
+                // let reduceAllEnemies: string = enemyVis.reduce((acc, next,) => {
+                //     return (next[1] === Math.floor((11 - i)/3))
+                //         ? next[0]
+                //         : ""
+                // }, "")
+
+                let reduceAllEnemies: string = enemyLocal.reduce((acc, next,) => {
+                    if (next.yPosition === Math.floor((11 - i)/3)) {
+
+                        if (acc.length === 0) {
+                          return  acc + (" ".repeat(next.xPosition) + next.body)
+                        } else {
+                            return acc + (" ".repeat(next.xPosition - acc.length) + next.body)
+                        }
+
+                    } else {
+                        return acc
+                    }
+                    // return (next.yPosition === Math.floor((11 - i)/3))
+                    //     ? acc + (" ".repeat(next.xPosition) + next.body)
+                    //     : acc + ""
                 }, "")
 
+        // let enemyVis = spacer(" ".repeat(enemyPosX) + enemy,40,"left");
                 // return (enemyY === Math.floor((11 - i)/3)) ? enemyVis : blank
-                return (reduceAllEnemies.length === 0) ? blank : reduceAllEnemies
+                // return (reduceAllEnemies.length === 0) ? blank : reduceAllEnemies
+                return (reduceAllEnemies.length === 0) 
+                    ? blank 
+                    : spacer(reduceAllEnemies, 40, "left")
             }
         }).reduce((acc, next) => acc + "\n" + next)
     };
 
     // the field was inverted on the Y axis
     // let displayField = yField(positionY, enemyPosY, splitLevel);
-    let displayField = yField(positionY, splitLevel);
+    let displayField = yField(positionY, enemy, splitLevel);
     // let wall = (level.at(position+1) === "|") ? true : false;
 
     // let jump = false;
@@ -179,31 +224,60 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
             // if ((positionX - enemyPosX < 5) && ((positionY + 1) - enemyPosY === 1)) {
             //     setEnemy(enemy.slice(1))
             // }
-            enemy.forEach((value, key) => {
-                // value: bodyStr, xPos, yPos
-                if ((positionX - value[1] < 5) && ((positionY + 1) - value[2] === 1)) {
-                    enemy.set(key,[value[0].slice(1),value[1],value[2]] )
-                }
+            // enemy.forEach((value, key) => {
+            //     // value: bodyStr, xPos, yPos
+            //     if ((positionX - value[1] < 5) && ((positionY + 1) - value[2] === 1)) {
+            //         enemy.set(key,[value[0].slice(1),value[1],value[2]] )
+            //     }
 
-                if (value[0].length === 0) {
-                    enemy.delete(key);
-                }
-            })
+            //     if (value[0].length === 0) {
+            //         enemy.delete(key);
+            //     }
+            // })
+            setEnemy(
+                enemy.flatMap((elem, index) => {
+                    if ((positionX - elem.xPosition < 5) && ((positionY + 1) - elem.yPosition === 1) && elem.body.length === 1) {
+                        return []
+                    } else if ((positionX - elem.xPosition < 5) && ((positionY + 1) - elem.yPosition === 1)) {
+                        return {
+                            ...elem,
+                            body: elem.body.slice(1),
+                        }
+                    } else {
+                        return elem
+                    }
+                })
+            )
         } else if (level.at(endPoint - (40 - positionX) - 1) === "|" && positionY > 0) {
             setPositionY(positionY - 1);
             // if ( (positionX - enemyPosX < 5) /* positionX === enemyPosX */ && ((positionY - 1) - enemyPosY === 0) /* positionY < enemyPosY */ ) {
             //     setEnemy(enemy.slice(1))
             // }
-            enemy.forEach((value, key) => {
-                // value: bodyStr, xPos, yPos
-                if ((positionX - value[1] < 5) && ((positionY - 1) - value[2] === 0)) {
-                    enemy.set(key,[value[0].slice(1),value[1],value[2]]);
-                }
+            // enemy.forEach((value, key) => {
+            //     // value: bodyStr, xPos, yPos
+            //     if ((positionX - value[1] < 5) && ((positionY - 1) - value[2] === 0)) {
+            //         enemy.set(key,[value[0].slice(1),value[1],value[2]]);
+            //     }
 
-                if (value[0].length === 0) {
-                    enemy.delete(key);
-                }
-            })
+            //     if (value[0].length === 0) {
+            //         enemy.delete(key);
+            //     }
+            // })
+            setEnemy(
+                enemy.flatMap((elem, index) => {
+                    if ((positionX - elem.xPosition < 5) && ((positionY - 1) - elem.yPosition === 0) && elem.body.length === 1) {
+                        return []
+                    } else if ((positionX - elem.xPosition < 5) && ((positionY - 1) - elem.yPosition === 0)) {
+                        return {
+                            ...elem,
+                            body: elem.body.slice(1),
+                        }
+                    } else {
+                        return elem
+                    }
+
+                })
+            )
         }
     }
 
@@ -261,7 +335,7 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
                 </Button>
     )
 
-    const timeDisplay = liner(printTextBlock(`Time: ${6000 - seconds} | Enemies: ${enemy.size} | ${gate ? "Go right!": `Enemies: ${3 - koCount}`}`,40),"=","both",true)
+    const timeDisplay = liner(printTextBlock(`Time: ${6000 - seconds} | Enemies: ${enemy.length} | ${gate ? "Go right!": `Enemies: ${3 - koCount}`}`,40),"=","both",true)
 
     // const gameOverOne = usePrompt("You struggled and lost to time. Game Over",40,"=",80,((6000 - seconds) <= 0) ? true : false, ((6000 - seconds)> 0) ? true : false);
 
@@ -281,15 +355,15 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
     //     return ""
     // }
 
-    function enemyGenerate(gen: number, count: number): void {
+    // function enemyGenerate(gen: number, count: number): void {
 
-        if (enemy.size === gen) {
-            return
-        } else {
-            enemy.set(count,["O###H", 0, count])
-            enemyGenerate(gen, count + 1)
-        }
-    }
+    //     if (enemy.size === gen) {
+    //         return
+    //     } else {
+    //         enemy.set(count,["O###H", 0, count])
+    //         enemyGenerate(gen, count + 1)
+    //     }
+    // }
 
     useEffect(() => {
         // if (position > endPoint) {
@@ -301,8 +375,7 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
             return
         }
 
-        // was enemy.length when it was a single enemy
-        if (enemy.size === 0) {
+        if (enemy.length === 0) {
             setGate(true)
         }
 
@@ -312,17 +385,36 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
         // } else {
         //     setEnemyPosX(enemyPosX+1)
         // }
+        setEnemy(
+                enemy.map((elem, index) => {
+                    console.log(elem.body);
+                    
+                    if (elem.xPosition > 40) {
+                        return {
+                            ...elem,
+                            xPosition: 0,
+                            yPosition: (elem.yPosition === 2) ? 0 : elem.yPosition +1 
+                        }
+                    } else {
+                        return {
+                            ...elem,
+                            xPosition: elem.xPosition + 1
+                        }
+                    }
 
-        enemy.forEach((value, key) => {
-            if (value[1] > 40) {
-                enemy.set(key, [value[0], 0, (value[2] === 2 ? 0 : value[2] + 1)])
-                console.log(value[1]);
+                })
+        )
+
+        // enemy.forEach((value, key) => {
+        //     if (value[1] > 40) {
+        //         enemy.set(key, [value[0], 0, (value[2] === 2 ? 0 : value[2] + 1)])
+        //         console.log(value[1]);
                 
-            } else {
-                let newX = value[1] + 1;
-                enemy.set(key, [value[0], newX, value[2]])
-            }
-        })
+        //     } else {
+        //         let newX = value[1] + 1;
+        //         enemy.set(key, [value[0], newX, value[2]])
+        //     }
+        // })
 
         if (positionX > 40 && gate) {
             // interval.stop();
@@ -334,7 +426,18 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
                 setGate(false)
                 setKOCount(koCount + 1)
                 // setEnemy("O##########H")
-                enemyGenerate(koCount + 1, 0)
+                // enemyGenerate(koCount + 1, 0)
+                // setEnemy(
+                //     // Array.from({length: koCount + 1}, (v,i) => {
+                //     //     return {
+                //     //         body: "O###H",
+                //     //         xPosition: 0,
+                //     //         yPosition: i,
+                //     //     }
+                //     // })
+                //     [{ body: "nsth", xPosition: 0, yPosition:1},
+                // { body: "vwdl", xPosition: 0, yPosition: 2}]
+                // )
             // }, 100);
 
         } else {
