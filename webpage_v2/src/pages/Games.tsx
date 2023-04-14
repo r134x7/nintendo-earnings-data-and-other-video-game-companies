@@ -3,6 +3,7 @@ import GAME_TWO from "../components/games/GAME_TWO";
 import GAME_THREE from "../components/games/GAME_THREE";
 import GAME_FOUR from "../components/games/GAME_FOUR";
 import GAME_FIVE from "../components/games/GAME_FIVE";
+import GAME_SIX from "../components/games/GAME_SIX";
 import { Button } from "@mantine/core"
 import { useState } from "react"
 import { useSingleMessage } from "../utils/table_design_logic";
@@ -21,6 +22,7 @@ export default function Games() {
         <GAME_THREE />,
         <GAME_FOUR />,
         <GAME_FIVE />,
+        <GAME_SIX />,
     ];
 
     const messageOne = "When playing a game, use either the button controls or the arrow keys on your keyboard.";
@@ -52,9 +54,11 @@ export default function Games() {
                 <br />
             <Button aria-label='Play game one plus' radius="lg" fullWidth onClick={() => setOpenGame(2)} variant="outline" color="cyan">Game One Plus</Button>
                 <br />
-            <Button aria-label='Play game one plus' radius="lg" fullWidth onClick={() => setOpenGame(3)} variant="outline" color="cyan">Tech Demo Plus</Button>
+            <Button aria-label='Tech demo plus' radius="lg" fullWidth onClick={() => setOpenGame(3)} variant="outline" color="cyan">Tech Demo Plus</Button>
                 <br />
-            <Button aria-label='Play game one plus' radius="lg" fullWidth onClick={() => setOpenGame(4)} variant="outline" color="cyan">Game Three</Button>
+            <Button aria-label='Game Three' radius="lg" fullWidth onClick={() => setOpenGame(4)} variant="outline" color="cyan">Game Three</Button>
+                <br />
+            <Button aria-label='Game Four' radius="lg" fullWidth onClick={() => setOpenGame(5)} variant="outline" color="cyan">Game Four</Button>
 
         </div>
         : gamesList[openGame]

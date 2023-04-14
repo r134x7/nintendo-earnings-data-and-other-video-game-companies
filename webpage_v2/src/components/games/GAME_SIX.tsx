@@ -22,6 +22,8 @@ const player = new Map<number, UnitTypeTwo>([
     [0, new UnitTypeTwo("player","x",0,0,10,3)]
 ])
 
+// const player = new UnitTypeTwo("player","x",0,0,10,3) 
+
 const enemies = new Map<number, UnitTypeTwo>([
     [0, new UnitTypeTwo("some guy","\(-_-)/",39,0,5,1)]
 ])
@@ -34,10 +36,13 @@ export default function GAME_SIX() {
     
     const state: any = useSelector(state => state);
 
+    const stageSet = useTimedStageGameSix(stage.get(0) ?? "ERROR",17);
+
 
     return (
         <div>
             <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {stageSet}
             </Code>
             <SimpleGrid mt={"lg"} verticalSpacing={"xl"} cols={2}>
             </SimpleGrid>
@@ -51,9 +56,10 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
     useHotkeys([
         // ["ArrowDown", () => down()],
         // ["ArrowUp", () => up()],
-        ["ArrowLeft", () => player.get(0)?.setXLeft()],
-        ["ArrowRight", () => player.get(0)?.setXRight()],
-        ["Space", () => jump()],
+        ["ArrowLeft", () => moveLeft()],
+        // ["ArrowLeft", () => player.setXLeft()],
+        ["ArrowRight", () => moveRight()],
+        ["Space", () => jump(5,0,5)],
         // ["d", () => strikeThrough()],
     ]);
 
@@ -71,9 +77,9 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
 
             let allUnits: UnitTypeTwo[] = [];
 
-            enemies.forEach((value, key) => allUnits.push(value))
-
             player.forEach((value, key) => allUnits.push(value))
+
+            enemies.forEach((value, key) => allUnits.push(value))
 
             // 0, 3, 6, 9
             // 11 - i should solve the upside down display...
@@ -83,7 +89,7 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
                         if (acc.length === 0) {
                           return  acc + (" ".repeat(next.getX()) + next.getBody())
                         } else {
-                            return acc + (" ".repeat((next.getX() - acc.length < 0) ? 1 : next.getX() - acc.length) + next.getBody)
+                            return acc + (" ".repeat((next.getX() - acc.length < 0) ? 1 : next.getX() - acc.length) + next.getBody())
                         }
                 } else {
                     return acc
@@ -98,20 +104,45 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
 
     const getField = screenDisplay();
 
-    function jump() {
-
-        // need to... have a pretty high field 
-        // y position has to go from 0 to 5 to 0
-        // should have it increase by 1 per increment
-        if ((player.get(0)?.getY() ?? 0) < 11) {
-            player.get(0)?.setYUp();
+    function moveRight() {
+        if ((player.get(0)?.getX() ?? 40) > 40) {
+            return
+        } else {
+            return player.get(0)?.setXRight();
         }
+    }
 
-        setTimeout(() => {
-            if ((player.get(0)?.getY() ?? 0) > 0) {
-                player.get(0)?.setYDown();
-            }
-        }, 100);
+    function moveLeft() {
+        if ((player.get(0)?.getX() ?? 1) < 1) {
+            return
+        } else {
+            return player.get(0)?.setXLeft();
+        }
+    }
+
+
+    // accidentally discovered kirby's floating jump
+    function jump(height: number, up: number, down: number) {
+
+        if (down === 0) {
+            return
+        } else if (up !== height) {
+                if ((player.get(0)?.getY() ?? 0) < 11) {
+                    player.get(0)?.setYUp();
+                }
+
+            setTimeout(() => {
+                jump(height, up + 1, down)
+            }, 100);
+            // jump(height, up + 1, down)
+        } else {
+                if ((player.get(0)?.getY() ?? 0) > 0) {
+                    player.get(0)?.setYDown();
+                }
+            setTimeout(() => {
+                jump(height, up, down -1)
+            }, 200);
+        }
     }
 
     useEffect(() => {
@@ -119,5 +150,7 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
         interval.start()
 
         setField(getField);
-    })
+    }, [seconds])
+
+    return field;
 } 

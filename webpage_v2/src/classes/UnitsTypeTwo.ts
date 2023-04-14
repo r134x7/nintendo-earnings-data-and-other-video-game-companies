@@ -40,11 +40,12 @@ export class UnitTypeTwo {
     }
 
     setXRight(): number {
-        return this.xPosition + 1;
+        // have to set like this or see setXLeft for increment;
+        return this.xPosition = this.xPosition + 1;
     }
 
     setXLeft(): number {
-        return this.xPosition - 1;
+        return this.xPosition--;
     }
 
     getY(): number {
@@ -52,11 +53,11 @@ export class UnitTypeTwo {
     }
 
     setYUp(): number {
-        return this.yPosition + 1;
+        return this.yPosition++;
     }
 
     setYDown(): number {
-        return this.yPosition - 1;
+        return this.yPosition--;
     }
 
     attackOpponent(opponent: UnitTypeTwo) {
