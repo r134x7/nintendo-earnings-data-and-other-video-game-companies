@@ -58,10 +58,13 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
     const [avatar, setAvatar] = useState("x");
     // const [enemy, setEnemy] = useState("O###H");
     // need to make an array containing map...
-    const [enemy, setEnemy] = useState<Map<number, [string, number, number]>>(new Map([
-        // key, [avatar, Xpos, Ypos]
-        [0, ["O###H", 0, 0]],
-    ]));
+    // const [enemy, setEnemy] = useState<Map<number, [string, number, number]>>(new Map([
+    //     // key, [avatar, Xpos, Ypos]
+    //     [0, ["O###H", 0, 0]],
+    // ]));
+    // probably won't need to use reactivity...
+    // key, [avatar, Xpos, Ypos]
+    const enemy: Map<number, [string, number, number]> = new Map([ [0, ["O###H", 0, 0]], ])
     // const [enemyPosX, setEnemyPosX] = useState(0);
     // const [enemyPosY, setEnemyPosY] = useState(0);
     const [gate, setGate] = useState(false);
@@ -173,14 +176,34 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
         if (level.at(endPoint - (40 - positionX) + 1) === "|" && positionY < 3) {
             setPositionY(positionY + 1);
             // I am guessing Position Y will not have the new value yet, therefore, I add + 1 to the position Y condition below which seems to fix the issue of odd enemy damage happening
-            if ((positionX - enemyPosX < 5) && ((positionY + 1) - enemyPosY === 1)) {
-                setEnemy(enemy.slice(1))
-            }
+            // if ((positionX - enemyPosX < 5) && ((positionY + 1) - enemyPosY === 1)) {
+            //     setEnemy(enemy.slice(1))
+            // }
+            enemy.forEach((value, key) => {
+                // value: bodyStr, xPos, yPos
+                if ((positionX - value[1] < 5) && ((positionY + 1) - value[2] === 1)) {
+                    enemy.set(key,[value[0].slice(1),value[1],value[2]] )
+                }
+
+                if (value[0].length === 0) {
+                    enemy.delete(key);
+                }
+            })
         } else if (level.at(endPoint - (40 - positionX) - 1) === "|" && positionY > 0) {
             setPositionY(positionY - 1);
-            if ( (positionX - enemyPosX < 5) /* positionX === enemyPosX */ && ((positionY - 1) - enemyPosY === 0) /* positionY < enemyPosY */ ) {
-                setEnemy(enemy.slice(1))
-            }
+            // if ( (positionX - enemyPosX < 5) /* positionX === enemyPosX */ && ((positionY - 1) - enemyPosY === 0) /* positionY < enemyPosY */ ) {
+            //     setEnemy(enemy.slice(1))
+            // }
+            enemy.forEach((value, key) => {
+                // value: bodyStr, xPos, yPos
+                if ((positionX - value[1] < 5) && ((positionY - 1) - value[2] === 0)) {
+                    enemy.set(key,[value[0].slice(1),value[1],value[2]]);
+                }
+
+                if (value[0].length === 0) {
+                    enemy.delete(key);
+                }
+            })
         }
     }
 
@@ -238,7 +261,7 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
                 </Button>
     )
 
-    const timeDisplay = liner(printTextBlock(`Time: ${6000 - seconds} | Enemy HP: ${enemy.length} | ${gate ? "Go right!": `Enemies: ${3 - koCount}`}`,40),"=","both",true)
+    const timeDisplay = liner(printTextBlock(`Time: ${6000 - seconds} | Enemies: ${enemy.size} | ${gate ? "Go right!": `Enemies: ${3 - koCount}`}`,40),"=","both",true)
 
     // const gameOverOne = usePrompt("You struggled and lost to time. Game Over",40,"=",80,((6000 - seconds) <= 0) ? true : false, ((6000 - seconds)> 0) ? true : false);
 
@@ -258,6 +281,16 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
     //     return ""
     // }
 
+    function enemyGenerate(gen: number, count: number): void {
+
+        if (enemy.size === gen) {
+            return
+        } else {
+            enemy.set(count,["O###H", 0, count])
+            enemyGenerate(gen, count + 1)
+        }
+    }
+
     useEffect(() => {
         // if (position > endPoint) {
             // causes player to go off field but it doesn't crash
@@ -268,16 +301,25 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
             return
         }
 
-        if (enemy.length === 0) {
+        // was enemy.length when it was a single enemy
+        if (enemy.size === 0) {
             setGate(true)
         }
 
-        if (enemyPosX > 40) {
-            setEnemyPosX(0)
-            setEnemyPosY((enemyPosY === 2) ? 0 : enemyPosY+1)
-        } else {
-            setEnemyPosX(enemyPosX+1)
-        }
+        // if (enemyPosX > 40) {
+        //     setEnemyPosX(0)
+        //     setEnemyPosY((enemyPosY === 2) ? 0 : enemyPosY+1)
+        // } else {
+        //     setEnemyPosX(enemyPosX+1)
+        // }
+
+        enemy.forEach((value, key) => {
+            if (value[1] > 40) {
+                enemy.set(key, [value[0], 0, (value[2] === 2 ? 0 : value[2] + 1)])
+            } else {
+                enemy.set(key, [value[0], value[1] + 1, value[2]])
+            }
+        })
 
         if (positionX > 40 && gate) {
             // interval.stop();
@@ -288,7 +330,8 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
                 setPositionX(0)
                 setGate(false)
                 setKOCount(koCount + 1)
-                setEnemy("O##########H")
+                // setEnemy("O##########H")
+                enemyGenerate(koCount + 1, 0)
             // }, 100);
 
         } else {
