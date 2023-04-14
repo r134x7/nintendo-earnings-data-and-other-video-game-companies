@@ -154,7 +154,7 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
                         if (acc.length === 0) {
                           return  acc + (" ".repeat(next.xPosition) + next.body)
                         } else {
-                            return acc + (" ".repeat(next.xPosition - acc.length) + next.body)
+                            return acc + (" ".repeat((next.xPosition - acc.length < 0) ? 1 : next.xPosition - acc.length) + next.body)
                         }
 
                     } else {
@@ -335,7 +335,7 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
                 </Button>
     )
 
-    const timeDisplay = liner(printTextBlock(`Time: ${6000 - seconds} | Enemies: ${enemy.length} | ${gate ? "Go right!": `Enemies: ${3 - koCount}`}`,40),"=","both",true)
+    const timeDisplay = liner(printTextBlock(`Time: ${6000 - seconds} | Enemies: ${enemy.length} | ${gate ? "Go right!": `${(koCount === 3 || seconds > 6000) ? "Finished" : `Stage: ${koCount + 1}`}`}`,40),"=","both",true)
 
     // const gameOverOne = usePrompt("You struggled and lost to time. Game Over",40,"=",80,((6000 - seconds) <= 0) ? true : false, ((6000 - seconds)> 0) ? true : false);
 
@@ -387,8 +387,6 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
         // }
         setEnemy(
                 enemy.map((elem, index) => {
-                    console.log(elem.body);
-                    
                     if (elem.xPosition > 40) {
                         return {
                             ...elem,
@@ -427,17 +425,19 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
                 setKOCount(koCount + 1)
                 // setEnemy("O##########H")
                 // enemyGenerate(koCount + 1, 0)
-                // setEnemy(
-                //     // Array.from({length: koCount + 1}, (v,i) => {
-                //     //     return {
-                //     //         body: "O###H",
-                //     //         xPosition: 0,
-                //     //         yPosition: i,
-                //     //     }
-                //     // })
-                //     [{ body: "nsth", xPosition: 0, yPosition:1},
-                // { body: "vwdl", xPosition: 0, yPosition: 2}]
-                // )
+                setEnemy(
+                    Array.from({length: 1 + Math.ceil(Math.random() * 9)}, (v,i) => {
+                        return {
+                            body: (i % 3 === 0) 
+                                ? "O###H"
+                                : (i % 3 === 1)
+                                    ? "X+++H"
+                                    : "VBBBH",
+                            xPosition: Math.floor(Math.random() * 39),
+                            yPosition: i % 3,
+                        }
+                    })
+                )
             // }, 100);
 
         } else {
