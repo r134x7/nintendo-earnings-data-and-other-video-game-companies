@@ -56,9 +56,14 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
     const [positionX, setPositionX] = useState(0);
     const [positionY, setPositionY] = useState(0);
     const [avatar, setAvatar] = useState("x");
-    const [enemy, setEnemy] = useState("O###H");
-    const [enemyPosX, setEnemyPosX] = useState(0);
-    const [enemyPosY, setEnemyPosY] = useState(0);
+    // const [enemy, setEnemy] = useState("O###H");
+    // need to make an array containing map...
+    const [enemy, setEnemy] = useState<Map<number, [string, number, number]>>(new Map([
+        // key, [avatar, Xpos, Ypos]
+        [0, ["O###H", 0, 0]],
+    ]));
+    // const [enemyPosX, setEnemyPosX] = useState(0);
+    // const [enemyPosY, setEnemyPosY] = useState(0);
     const [gate, setGate] = useState(false);
     const [koCount, setKOCount] = useState(0)
 
@@ -80,15 +85,26 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
     }).reduce((acc, next) => acc + next, "");
 
 
-    function yField(playerY: number, enemyY: number, level: string) {
+    function yField(playerY: number, level: string) {
+
+        let enemyArray: [string, number][] = []; 
+
+        enemy.forEach((value, key) => {
+
+            let [bodyStr, posX, posY] = value
+
+            // [string, posY] tuple 
+            return enemyArray.push([spacer(" ".repeat(posX) + bodyStr,40,"left"), posY])
+        })
 
         let playerVis = spacer(" ".repeat(positionX) + avatar,40,"left");
 
-        let enemyVis = spacer(" ".repeat(enemyPosX) + enemy,40,"left");
+        // let enemyVis = spacer(" ".repeat(enemyPosX) + enemy,40,"left");
 
         let blank = spacer(" ",40,"left");
 
         return Array.from({length: 12}, (v,i) => {
+
             // 0, 3, 6, 9
             // 11 - i should solve the upside down display...
             if ((11 - i) % 3 === 0) {
@@ -98,13 +114,22 @@ export function useTimedStage(level: string, milliseconds: number): timedStage {
                 // Math.floor returns 0, 1, 2, 3...
                 return (playerY === Math.floor((11 - i)/3)) ? playerVis : blank
             } else {
-                return (enemyY === Math.floor((11 - i)/3)) ? enemyVis : blank
+
+                let reduceAllEnemies: string = enemyArray.reduce((acc, next,) => {
+                    return (next[1] === Math.floor((11 - i)/3))
+                        ? next[0]
+                        : ""
+                }, "")
+
+                // return (enemyY === Math.floor((11 - i)/3)) ? enemyVis : blank
+                return (reduceAllEnemies.length === 0) ? blank : reduceAllEnemies
             }
         }).reduce((acc, next) => acc + "\n" + next)
     };
 
     // the field was inverted on the Y axis
-    let displayField = yField(positionY, enemyPosY, splitLevel);
+    // let displayField = yField(positionY, enemyPosY, splitLevel);
+    let displayField = yField(positionY, splitLevel);
     // let wall = (level.at(position+1) === "|") ? true : false;
 
     // let jump = false;
