@@ -1,4 +1,4 @@
-import { Code, SimpleGrid } from "@mantine/core";
+import { Code, SimpleGrid, Button } from "@mantine/core";
 import { useSingleMessage } from "../../utils/table_design_logic";
 import { usePrompt } from "../../utils/game_design_logic";
 import { useSelector } from "react-redux";
@@ -56,16 +56,30 @@ export default function GAME_SIX() {
 
     const stageSet = useTimedStageGameSix(stage.get(0) ?? "ERROR",17);
 
-    const timeDisplay = liner(printTextBlock(`Time: ${6000 - stageSet.secondsOut}`,40),"=","both",true)
+    const timeDisplay = liner(printTextBlock(`Time: ${6000 - stageSet.seconds} | Score: ${stageSet.score} | Jump On Top!`,42),"=","both",true)
 
+    let message = useSingleMessage("Keyboard controls (keys can be held): [←]: Move left, [→]: Move right, [f]: Jump. Screen buttons are touch-only.", 42, "=", 80)
+
+    const gameOverOne = usePrompt(`${enemyBodies[0]} ${enemyBodies[1]} ${enemyBodies[2]} Game Over`,40,"=",80,(stageSet.seconds >= 6000) ? true : false, (stageSet.seconds < 6000) ? true : false) + "\n";
+
+    const gameOverTwo = usePrompt(`\\(^_^)/ \\(^o^)/ \\(x_^)/ Game Over`,40,"=",80,(stageSet.seconds >= 6000 && stageSet.score >= 500) ? true : false, (stageSet.seconds < 6000) ? true : false) + "\n";
 
     return (
         <div>
             <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {stageSet.fieldOut + "\n"}
+                {(stageSet.seconds >= 6000 && stageSet.score < 500) 
+                    ? gameOverOne 
+                    : (stageSet.seconds >= 6000 && stageSet.score >= 500)
+                    ? gameOverTwo
+                    : stageSet.field + "\n"}
                 {timeDisplay}
+                {message}
             </Code>
             <SimpleGrid mt={"lg"} verticalSpacing={"xl"} cols={2}>
+                {stageSet.buttonLeft}
+                {stageSet.buttonRight}
+                {stageSet.buttonJump}
+                {stageSet.buttonJump}
             </SimpleGrid>
         </div>
     )
@@ -87,7 +101,9 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
     const [field, setField] = useState("");
     const [seconds, setSeconds] = useState(0);
     const [jumpCount, setJumpCount] = useState(0);
-    const [gate, setGate] = useState(false);
+    // const [gate, setGate] = useState(false);
+    const [score, setScore] = useState(0);
+    const [multiplier, setMultiplier] = useState(1);
 
     const interval = useInterval(() => setSeconds((s) => s + 1), milliseconds);
 
@@ -148,10 +164,29 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
 
             let allUnits: UnitTypeTwo[] = [];
 
-            player.forEach((value, key) => allUnits.push(value))
+            let maxPositionX = 0;
 
-            enemies.forEach((value, key) => allUnits.push(value))
+            // player.forEach((value, key) => allUnits.push(value))
 
+            // enemies.forEach((value, key) => allUnits.push(value))
+
+            enemies.forEach((value, key) => {
+                if (value.getY() === Math.floor(11 - i)) {
+                    allUnits.push(value)
+                }
+
+                if (value.getX() >= maxPositionX) {
+                    maxPositionX = value.getX()
+                }
+            })
+
+            player.forEach((value, key) => {
+                if (value.getX() > maxPositionX && value.getY() === Math.floor(11 - i)) {
+                    allUnits.push(value)
+                } else {
+                    allUnits.unshift(value)
+                }
+            })
 
             // 0, 3, 6, 9
             // 11 - i should solve the upside down display...
@@ -193,6 +228,25 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
             return player.get(0)?.setXLeft();
         }
     }
+
+    const buttonLeft = (
+                <Button variant="outline" radius={"lg"} color="red" onTouchMove={moveLeft} 
+                fullWidth>
+                  Rub Left
+                </Button>
+    )
+
+    const buttonRight = (
+                <Button variant="outline" radius={"lg"} color="red" onTouchMove={moveRight} fullWidth>
+                  Rub Right
+                </Button>
+    )
+
+    const buttonJump = (
+                <Button variant="outline" radius={"lg"} color="red" onTouchStart={doubleJump} fullWidth>
+                  Jump
+                </Button>
+    )
 
     function enemyGenerate(gen: number, count: number): void {
 
@@ -250,7 +304,8 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
         relying on a side effect to reset jump count to avoid player pressing jump and it not working.
         */
         if (player.get(0)?.getY() === 0) {
-            setJumpCount(0)
+            setJumpCount(0);
+            setMultiplier(1);
         }
 
         if (enemies.size > 0) {
@@ -258,6 +313,8 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
             enemies.forEach((value, key) => {
                 if ((player.get(0)?.getY() ?? 0) - value.getY() === 1 && (player.get(0)?.getX() ?? 0) - value.getX() >= 0 && (player.get(0)?.getX() ?? 0) - value.getX() < 5) {
                     player.get(0)?.attackOpponent(value)
+                    setScore(score + (1 * multiplier))
+                    setMultiplier(multiplier + 1)
                     player.get(0)?.jumpAction(3,0,3,0,11,100,100)
 
                 }
@@ -277,7 +334,11 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
     }, [seconds, jumpCount])
 
     return {
-        fieldOut: field,
-        secondsOut: seconds,
+        field,
+        seconds,
+        buttonJump,
+        buttonLeft,
+        buttonRight,
+        score,
     } 
 } 

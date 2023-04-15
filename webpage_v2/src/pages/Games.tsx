@@ -56,7 +56,7 @@ export default function Games() {
                 <br />
             <Button aria-label='Tech demo plus' radius="lg" fullWidth onClick={() => setOpenGame(3)} variant="outline" color="cyan">Tech Demo Plus</Button>
                 <br />
-            <Button aria-label='Game Three' radius="lg" fullWidth onClick={() => setOpenGame(4)} variant="outline" color="cyan">Game Three</Button>
+            <Button aria-label='Game Three' radius="lg" fullWidth onClick={() => setOpenGame(4)} variant="outline" color="cyan">Game Three Plus</Button>
                 <br />
             <Button aria-label='Game Four' radius="lg" fullWidth onClick={() => setOpenGame(5)} variant="outline" color="cyan">Game Four</Button>
 

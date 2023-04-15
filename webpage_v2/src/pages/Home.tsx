@@ -22,7 +22,7 @@ const Home = () => {
 
     const eventsStatus = liner(printTextBlock("Events page status",32),"=","top",true,32) + liner(printTextBlock("Page update: Updated calendar for 16 of 22 companies from April to May 2023.",40),"−","both",true,40);
 
-    const gamesStatus = liner(printTextBlock("Games page status",32),"=","top",true,32) + liner(printTextBlock("Game Three is now playable.",40),"−","both",true,40);
+    const gamesStatus = liner(printTextBlock("Games page status",32),"=","top",true,32) + liner(printTextBlock("Game Three Plus and Game Four is now playable.",40),"−","both",true,40);
 
     const linkOther = liner(printTextBlock("Also, visit Install Base. It's a place to discuss and elaborate on the business side of the video game industry.",40),"=","top",true,40);
 
