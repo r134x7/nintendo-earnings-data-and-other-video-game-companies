@@ -19,11 +19,7 @@ const enemyBodies = [
     "\\(x_o)/",
 ]
 
-const enemies = new Map<number, UnitTypeTwo>([
-    [0, new UnitTypeTwo("some guy","\\(-_-)/",39,0,5,1)],
-    [1, new UnitTypeTwo("some guy2","\\(o_o)/",36,1,5,1)],
-    [2, new UnitTypeTwo("some guy3","\\(x_o)/",32,2,5,1)]
-])
+const enemies = new Map<number, UnitTypeTwo>()
 
 const stage = new Map<number, string>([
     [0, "_".repeat(40)]
@@ -31,8 +27,10 @@ const stage = new Map<number, string>([
 
 // let backgroundLayer1: string = ".. -- .. ---- ... ...---- --... ..--- .."
 
-let backgroundLayer1: string = "‿‿.‿.‿,‿‿‿,‿,‿.‿‿‿.‿.‿,‿‿,‿."
-
+// Can't use this string since phones won't render the text.
+// let backgroundLayer1: string = "‿‿.‿.‿,‿‿‿,‿,‿.‿‿‿.‿.‿,‿‿,‿."
+let backgroundLayer1: string = "\u203F\u203F.\u203F.\u203F,\u203F\u203F\u203F,\u203F,\u203F.\u203F\u203F\u203F.\u203F.\u203F,\u203F\u203F,\u203F."
+// "\u203F".split(/(?:)/u); // source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split
 // let backgroundLayer2: string = ", , / , / , // , / ,, / ,,, , / , / , //"
 // let backgroundLayer2: string = " /  /  //  /  /  /  /  // /  /  / // / /"
 let backgroundLayer2: string = " /   //  / //   /   //   /   //  /   // "
@@ -58,7 +56,8 @@ export default function GAME_SIX() {
 
     const timeDisplay = liner(printTextBlock(`Time: ${6000 - stageSet.seconds} | Score: ${stageSet.score} | Jump On Top!`,42),"=","both",true)
 
-    let message = useSingleMessage("Keyboard controls (keys can be held): [←]: Move left, [→]: Move right, [f]: Jump. Screen buttons are touch-only.", 42, "=", 80)
+    // [←] [→] 
+    let message = useSingleMessage("Keyboard controls (keys can be held): [\u2190]: Move left, [\u2192]: Move right, [f]: Jump. Screen buttons are touch-only.", 42, "=", 80)
 
     const gameOverOne = usePrompt(`${enemyBodies[0]} ${enemyBodies[1]} ${enemyBodies[2]} Game Over`,40,"=",80,(stageSet.seconds >= 6000) ? true : false, (stageSet.seconds < 6000) ? true : false) + "\n";
 
@@ -127,7 +126,7 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
 
         function reduceBackground(backgroundLayer: string, shiftChar: string[]): string {
 
-            return [backgroundLayer.split("").reduce((acc, next, index) => {
+            return [backgroundLayer.split(/(?:)/u).reduce((acc, next, index) => {
                 if (index === 0) {
                     shiftChar.push(next)
                     return acc
@@ -306,6 +305,7 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
         if (player.get(0)?.getY() === 0) {
             setJumpCount(0);
             setMultiplier(1);
+            player.get(0)?.setBody("x")
         }
 
         if (enemies.size > 0) {
@@ -313,10 +313,10 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
             enemies.forEach((value, key) => {
                 if ((player.get(0)?.getY() ?? 0) - value.getY() === 1 && (player.get(0)?.getX() ?? 0) - value.getX() >= 0 && (player.get(0)?.getX() ?? 0) - value.getX() < 5) {
                     player.get(0)?.attackOpponent(value)
+                    player.get(0)?.setBody("vXv")
                     setScore(score + (1 * multiplier))
                     setMultiplier(multiplier + 1)
                     player.get(0)?.jumpAction(3,0,3,0,11,100,100)
-
                 }
 
                 if (value.getHp() <= 0) {
