@@ -7,17 +7,6 @@ import { useInterval, useHotkeys } from "@mantine/hooks";
 import { spacer } from "../../utils/table_design_logic";
 import { UnitTypeTwo } from "../../classes/UnitsTypeTwo";
 
-// type unitType = {
-//     name: string,
-//     body: string,
-//     xPosition: number,
-//     yPosition: number,
-//     hp: number,
-//     attack: number,
-// }
-
-
-
 const player = new Map<number, UnitTypeTwo>([
     [0, new UnitTypeTwo("player","x",0,0,10,3)]
 ])
@@ -31,6 +20,27 @@ const enemies = new Map<number, UnitTypeTwo>([
 const stage = new Map<number, string>([
     [0, "_".repeat(40)]
 ])
+
+// let backgroundLayer1: string = ".. -- .. ---- ... ...---- --... ..--- .."
+
+let backgroundLayer1: string = "‿‿.‿.‿,‿‿‿,‿,‿.‿‿‿.‿.‿,‿‿,‿."
+
+// let backgroundLayer2: string = ", , / , / , // , / ,, / ,,, , / , / , //"
+// let backgroundLayer2: string = " /  /  //  /  /  /  /  // /  /  / // / /"
+let backgroundLayer2: string = " /   //  / //   /   //   /   //  /   // "
+
+// let backgroundLayer3: string = "/ , // ,, / , / , / , / , // , // ,, /"
+let backgroundLayer3: string = " //   /   //  /   //  /   //  /  //   / "
+
+// let backgroundLayer4 = backgroundLayer2;
+
+// let clouds: string =
+// `
+//  o
+// (_)
+// `
+// let background: string = ".. -- .. ---- ... ...---- --... ..--- .." + "\n" + ".. -- .. ---- ... ...---- --... ..--- .."
+
 
 export default function GAME_SIX() {
     
@@ -82,16 +92,54 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
 
     function screenDisplay(): string {
 
+
+        let shiftCharLayer1: string[] = [""];
+        let shiftCharLayer2: string[] = [""];
+        let shiftCharLayer3: string[] = [""];
+
+        function reduceBackground(backgroundLayer: string, shiftChar: string[]): string {
+
+            return [backgroundLayer.split("").reduce((acc, next, index, array) => {
+                if (index === 0) {
+                    shiftChar.push(next)
+                    return acc
+                } else if (index !== 0) {
+                    return acc + next
+                }
+
+                return acc
+            }, "")].concat(shiftChar).join("")
+
+        }
+
+        let backgroundLocal1 = reduceBackground(backgroundLayer1, shiftCharLayer1)
+
+        let backgroundLocal2 = reduceBackground(backgroundLayer2, shiftCharLayer2)
+
+        let backgroundLocal3 = reduceBackground(backgroundLayer3, shiftCharLayer3)
+        
+        let testBackground = (seconds % 75 === 0) ? backgroundLayer2 : backgroundLayer3;
+
+        if (seconds % 33 === 0) {
+            backgroundLayer1 = backgroundLocal1;
+        }
+
+        if (seconds % 25 === 0) {
+            backgroundLayer2 = backgroundLocal2;
+            backgroundLayer3 = backgroundLocal3;
+        }
+
         
         //probably reuse Game Five yField 
         // need to use the method to put both player and enemies on the same x position.
-        return Array.from({length: 12}, (v,i) => {
+        let playerScreen: string = Array.from({length: 12}, (v,i) => {
 
             let allUnits: UnitTypeTwo[] = [];
 
             player.forEach((value, key) => allUnits.push(value))
 
             enemies.forEach((value, key) => allUnits.push(value))
+
 
             // 0, 3, 6, 9
             // 11 - i should solve the upside down display...
@@ -112,6 +160,8 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
                 ? spacer(" ", 40,"left")
                 : spacer(reduceAllUnits, 40, "left")
         }).reduce((acc, next) => acc + "\n" + next);
+
+        return backgroundLayer1 + "\n" + backgroundLayer2 + "\n" + testBackground + "\n" + playerScreen
     }
 
     const getField = screenDisplay();
