@@ -64,25 +64,25 @@ export class UnitTypeTwo {
         return opponent.hp -= this.attack;
     }
 
-    jumpAction(height: number, up: number, down: number): void {
+    jumpAction(height: number, up: number, down: number, stageFloor: number, stageCeiling: number, upDelayMilliseconds: number, downDelayMilliseconds: number): void {
 
-            if (down === 0) {
-                return
+            if (down === stageFloor) {
+                return 
             } else if (up !== height) {
-                    if (this.getY() < 11) {
+                    if (this.getY() < stageCeiling) {
                         this.setYUp();
                     }
 
                 setTimeout(() => {
-                    this.jumpAction(height, up + 1, down)
-                }, 100);
+                    this.jumpAction(height, up + 1, down, stageFloor, stageCeiling, upDelayMilliseconds, downDelayMilliseconds)
+                }, upDelayMilliseconds);
             } else {
-                    if (this.getY() > 0) {
+                    if (this.getY() > stageFloor) {
                         this.setYDown();
                     }
                 setTimeout(() => {
-                    this.jumpAction(height, up, down -1)
-                }, 200);
+                    this.jumpAction(height, up, down -1, stageFloor, stageCeiling, upDelayMilliseconds, downDelayMilliseconds)
+                }, downDelayMilliseconds);
             }
     }
     

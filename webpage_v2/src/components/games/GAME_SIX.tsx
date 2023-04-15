@@ -59,14 +59,26 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
         ["ArrowLeft", () => moveLeft()],
         // ["ArrowLeft", () => player.setXLeft()],
         ["ArrowRight", () => moveRight()],
-        ["f", () => player.get(0)?.jumpAction(5,0,5)],
+        ["f", () => doubleJump()],
         // ["d", () => strikeThrough()],
     ]);
 
     const [field, setField] = useState("");
     const [seconds, setSeconds] = useState(0);
+    const [jumpCount, setJumpCount] = useState(0);
 
     const interval = useInterval(() => setSeconds((s) => s + 1), milliseconds);
+
+    function doubleJump() {
+
+        if (jumpCount === 0) {
+            player.get(0)?.jumpAction(5,0,5,0,11,100,100)
+            setJumpCount(jumpCount + 1);
+        } else if (jumpCount === 1) {
+            player.get(0)?.jumpAction(7,0,7,0,11,100,200)
+            setJumpCount(jumpCount + 1);
+        } 
+    }
 
     function screenDisplay(): string {
 
@@ -146,10 +158,17 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
 
     useEffect(() => {
 
+        /* 
+        relying on a side effect to reset jump count to avoid player pressing jump and it not working.
+        */
+        if (player.get(0)?.getY() === 0) {
+            setJumpCount(0)
+        }
+
         interval.start()
 
         setField(getField);
-    }, [seconds])
+    }, [seconds, jumpCount])
 
     return field;
 } 
