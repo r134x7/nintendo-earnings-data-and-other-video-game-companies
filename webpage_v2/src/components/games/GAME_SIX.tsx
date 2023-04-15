@@ -59,7 +59,7 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
         ["ArrowLeft", () => moveLeft()],
         // ["ArrowLeft", () => player.setXLeft()],
         ["ArrowRight", () => moveRight()],
-        ["Space", () => jump(5,0,5)],
+        ["f", () => player.get(0)?.jumpAction(5,0,5)],
         // ["d", () => strikeThrough()],
     ]);
 
@@ -120,30 +120,29 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
         }
     }
 
-
     // accidentally discovered kirby's floating jump
-    function jump(height: number, up: number, down: number) {
+    // function jump(height: number, up: number, down: number) {
 
-        if (down === 0) {
-            return
-        } else if (up !== height) {
-                if ((player.get(0)?.getY() ?? 0) < 11) {
-                    player.get(0)?.setYUp();
-                }
+    //     if (down === 0) {
+    //         return
+    //     } else if (up !== height) {
+    //             if ((player.get(0)?.getY() ?? 0) < 11) {
+    //                 player.get(0)?.setYUp();
+    //             }
 
-            setTimeout(() => {
-                jump(height, up + 1, down)
-            }, 100);
-            // jump(height, up + 1, down)
-        } else {
-                if ((player.get(0)?.getY() ?? 0) > 0) {
-                    player.get(0)?.setYDown();
-                }
-            setTimeout(() => {
-                jump(height, up, down -1)
-            }, 200);
-        }
-    }
+    //         setTimeout(() => {
+    //             jump(height, up + 1, down)
+    //         }, 100);
+    //         // jump(height, up + 1, down)
+    //     } else {
+    //             if ((player.get(0)?.getY() ?? 0) > 0) {
+    //                 player.get(0)?.setYDown();
+    //             }
+    //         setTimeout(() => {
+    //             jump(height, up, down -1)
+    //         }, 200);
+    //     }
+    // }
 
     useEffect(() => {
 

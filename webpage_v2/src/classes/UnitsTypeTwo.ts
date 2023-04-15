@@ -63,5 +63,27 @@ export class UnitTypeTwo {
     attackOpponent(opponent: UnitTypeTwo) {
         return opponent.hp -= this.attack;
     }
+
+    jumpAction(height: number, up: number, down: number): void {
+
+            if (down === 0) {
+                return
+            } else if (up !== height) {
+                    if (this.getY() < 11) {
+                        this.setYUp();
+                    }
+
+                setTimeout(() => {
+                    this.jumpAction(height, up + 1, down)
+                }, 100);
+            } else {
+                    if (this.getY() > 0) {
+                        this.setYDown();
+                    }
+                setTimeout(() => {
+                    this.jumpAction(height, up, down -1)
+                }, 200);
+            }
+    }
     
 }
