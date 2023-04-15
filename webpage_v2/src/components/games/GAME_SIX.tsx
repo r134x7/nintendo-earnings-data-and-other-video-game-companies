@@ -4,7 +4,7 @@ import { usePrompt } from "../../utils/game_design_logic";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useInterval, useHotkeys } from "@mantine/hooks";
-import { spacer } from "../../utils/table_design_logic";
+import { spacer, printTextBlock, liner } from "../../utils/table_design_logic";
 import { UnitTypeTwo } from "../../classes/UnitsTypeTwo";
 
 const player = new Map<number, UnitTypeTwo>([
@@ -13,8 +13,16 @@ const player = new Map<number, UnitTypeTwo>([
 
 // const player = new UnitTypeTwo("player","x",0,0,10,3) 
 
+const enemyBodies = [
+    "\\(-_-)/",
+    "\\(o_o)/",
+    "\\(x_o)/",
+]
+
 const enemies = new Map<number, UnitTypeTwo>([
-    [0, new UnitTypeTwo("some guy","\(-_-)/",39,0,5,1)]
+    [0, new UnitTypeTwo("some guy","\\(-_-)/",39,0,5,1)],
+    [1, new UnitTypeTwo("some guy2","\\(o_o)/",36,1,5,1)],
+    [2, new UnitTypeTwo("some guy3","\\(x_o)/",32,2,5,1)]
 ])
 
 const stage = new Map<number, string>([
@@ -48,11 +56,14 @@ export default function GAME_SIX() {
 
     const stageSet = useTimedStageGameSix(stage.get(0) ?? "ERROR",17);
 
+    const timeDisplay = liner(printTextBlock(`Time: ${6000 - stageSet.secondsOut}`,40),"=","both",true)
+
 
     return (
         <div>
             <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {stageSet}
+                {stageSet.fieldOut + "\n"}
+                {timeDisplay}
             </Code>
             <SimpleGrid mt={"lg"} verticalSpacing={"xl"} cols={2}>
             </SimpleGrid>
@@ -183,6 +194,16 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
         }
     }
 
+    function enemyGenerate(gen: number, count: number): void {
+
+        if (enemies.size === gen) {
+            return
+        } else {
+            enemies.set(count, new UnitTypeTwo(`x${count}`, enemyBodies[count % 3], Math.floor(Math.random() * 35), count % 9,5,1))
+            enemyGenerate(gen, count + 1)
+        }
+    }
+
     // accidentally discovered kirby's floating jump
     // function jump(height: number, up: number, down: number) {
 
@@ -214,16 +235,16 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
             return
         }
 
-        if (enemies.size === 0) {
-            setGate(true);
-        }
+        // if (enemies.size === 0) {
+        //     setGate(true);
+        // }
 
-        if ((player.get(0)?.getX() ?? 0) > 40 && gate) {
+        // if ((player.get(0)?.getX() ?? 0) > 40 && gate) {
 
-            // change stage here
-            setGate(false)
-            // create new enemies here using Map<>
-        }
+        //     // change stage here
+        //     setGate(false)
+        //     // create new enemies here using recursion with Map<>
+        // }
 
         /* 
         relying on a side effect to reset jump count to avoid player pressing jump and it not working.
@@ -232,10 +253,31 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
             setJumpCount(0)
         }
 
+        if (enemies.size > 0) {
+
+            enemies.forEach((value, key) => {
+                if ((player.get(0)?.getY() ?? 0) - value.getY() === 1 && (player.get(0)?.getX() ?? 0) - value.getX() >= 0 && (player.get(0)?.getX() ?? 0) - value.getX() < 5) {
+                    player.get(0)?.attackOpponent(value)
+                    player.get(0)?.jumpAction(3,0,3,0,11,100,100)
+
+                }
+
+                if (value.getHp() <= 0) {
+                    enemies.delete(key);
+                }
+            })
+
+        } else if (enemies.size === 0 ) {
+            enemyGenerate(Math.floor(Math.random() * 15),0)
+        }
+
         interval.start()
 
         setField(getField);
     }, [seconds, jumpCount])
 
-    return field;
+    return {
+        fieldOut: field,
+        secondsOut: seconds,
+    } 
 } 
