@@ -76,6 +76,7 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
     const [field, setField] = useState("");
     const [seconds, setSeconds] = useState(0);
     const [jumpCount, setJumpCount] = useState(0);
+    const [gate, setGate] = useState(false);
 
     const interval = useInterval(() => setSeconds((s) => s + 1), milliseconds);
 
@@ -99,7 +100,7 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
 
         function reduceBackground(backgroundLayer: string, shiftChar: string[]): string {
 
-            return [backgroundLayer.split("").reduce((acc, next, index, array) => {
+            return [backgroundLayer.split("").reduce((acc, next, index) => {
                 if (index === 0) {
                     shiftChar.push(next)
                     return acc
@@ -207,6 +208,22 @@ export function useTimedStageGameSix (level: string, milliseconds: number) {
     // }
 
     useEffect(() => {
+
+        if (seconds > (6000)) {
+            interval.stop();
+            return
+        }
+
+        if (enemies.size === 0) {
+            setGate(true);
+        }
+
+        if ((player.get(0)?.getX() ?? 0) > 40 && gate) {
+
+            // change stage here
+            setGate(false)
+            // create new enemies here using Map<>
+        }
 
         /* 
         relying on a side effect to reset jump count to avoid player pressing jump and it not working.

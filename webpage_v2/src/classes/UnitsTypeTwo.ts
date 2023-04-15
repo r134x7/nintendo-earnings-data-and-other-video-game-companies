@@ -27,12 +27,24 @@ export class UnitTypeTwo {
         return this.name;
     }
 
+    setName(value: string): string {
+        return this.name = value; 
+    }
+
     getBody(): string {
         return this.body;
     }
 
+    setBody(value: string): string {
+        return this.body = value;
+    }
+
     getHp(): number {
         return this.hp;
+    }
+
+    setHp(value: number) {
+        return this.hp = value;
     }
 
     getX(): number {
