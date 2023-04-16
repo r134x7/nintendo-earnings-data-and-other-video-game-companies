@@ -1,7 +1,8 @@
 import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import './index.css'
+// import './index.css'
+import "./App.css";
 import { Provider } from "react-redux";
 import store from "./utils/store";
 import { createHashRouter, RouterProvider } from 'react-router-dom';
