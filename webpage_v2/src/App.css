@@ -11,6 +11,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+code {
+  font-family: 'Noto Sans Mono', monospace;
+}
+
 @media screen and (max-width: 768px) {
   .chart {
     position: "relative";

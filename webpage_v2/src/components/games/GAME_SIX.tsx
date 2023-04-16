@@ -65,7 +65,7 @@ export default function GAME_SIX() {
 
     return (
         <div>
-            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000", fontFamily: "Ubuntu, sans-serif;"}} block>
+            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000", fontFamily: "Noto Sans Mono"}} block>
                 {(stageSet.seconds >= 6000 && stageSet.score < 500) 
                     ? gameOverOne 
                     : (stageSet.seconds >= 6000 && stageSet.score >= 500)
