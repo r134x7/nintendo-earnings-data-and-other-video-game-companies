@@ -1,5 +1,4 @@
 import { Anchor, Stack, Code } from '@mantine/core';
-import "../App.css" // have to import the css to get it to work
 import { useSelector } from "react-redux";
 
 import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";

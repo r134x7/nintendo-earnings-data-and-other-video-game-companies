@@ -1,8 +1,6 @@
 import { Text, Stack, Paper, Anchor, Code } from '@mantine/core';
-import "../App.css"
 
 import { useSingleMessage } from "../utils/table_design_logic";
-import LOADING_SCREEN from '../components/LOADING_SCREEN';
 
 const NoMatch = () => {
 

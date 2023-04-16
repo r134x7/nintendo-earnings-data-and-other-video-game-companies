@@ -1,5 +1,4 @@
 import { Anchor, Stack, Code } from '@mantine/core';
-import "../App.css" // have to import the css to get it to work
 import { useSelector } from "react-redux";
 import EVENTS_CALENDAR from "../components/EVENTS_CALENDAR";
 

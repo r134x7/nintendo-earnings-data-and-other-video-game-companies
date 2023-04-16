@@ -12,8 +12,10 @@ body {
 }
 
 code {
-  font-family: 'Noto Sans Mono', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
+/* note... code text color default was #C1C2C5 */
 
 @media screen and (max-width: 768px) {
   .chart {

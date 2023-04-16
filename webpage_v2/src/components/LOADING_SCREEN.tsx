@@ -1,6 +1,5 @@
 // creating a custom loading screen for lazy loading
 import { Code, Stack, Center } from "@mantine/core";
-import "../App.css";
 import { useSelector } from "react-redux";
 
 import { useSingleMessage } from "../utils/table_design_logic";

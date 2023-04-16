@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
-import "../App.css";
-import { useInterval } from "@mantine/hooks";
 import { useSelector } from "react-redux";
 import SQUARE_ENIX_COMPONENT from "../components/SQUARE_ENIX_COMPONENT";
 import SQUARE_ENIX_CML from "../components/special/SQUARE_ENIX_CML";

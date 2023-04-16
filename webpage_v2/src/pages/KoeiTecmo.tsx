@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
-import "../App.css";
 import { useSelector } from "react-redux";
 import KOEI_TECMO_COMPONENT from "../components/KOEI_TECMO_COMPONENT";
 import KOEI_TECMO_CML from "../components/special/KOEI_TECMO_CML";

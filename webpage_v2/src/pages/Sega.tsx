@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
-import "../App.css";
 import { useSelector } from "react-redux";
 import SEGA_COMPONENT from "../components/SEGA_COMPONENT";
 import SEGA_CML from "../components/special/SEGA_CML";

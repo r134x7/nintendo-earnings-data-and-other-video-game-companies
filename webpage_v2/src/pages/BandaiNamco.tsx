@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
-import "../App.css";
 import { useSelector } from "react-redux";
 import BANDAI_NAMCO_COMPONENT from "../components/BANDAI_NAMCO_COMPONENT";
 import BANDAI_NAMCO_CML from "../components/special/BANDAI_NAMCO_CML";

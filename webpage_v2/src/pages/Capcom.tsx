@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
-import "../App.css";
 import { useSelector } from "react-redux";
 import CAPCOM_COMPONENT from "../components/CAPCOM_COMPONENT";
 import CAPCOM_CML from "../components/special/CAPCOM_CML";

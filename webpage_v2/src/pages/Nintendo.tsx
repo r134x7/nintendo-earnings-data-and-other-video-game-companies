@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
-import "../App.css";
 import { useSelector } from "react-redux";
 import NINTENDO_CML from "../components/special/NINTENDO_CML";
 import NINTENDO_COMPONENT from "../components/NINTENDO_COMPONENT";
