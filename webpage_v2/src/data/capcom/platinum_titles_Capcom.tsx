@@ -29,6 +29,19 @@ import platinumTitles2007 from "./Platinum_Titles/platinum_titles_fy3_2007.json"
 import platinumTitles2006 from "./Platinum_Titles/platinum_titles_fy3_2006.json";
 import { headerPrint, border, liner, spacer, dateLabel, printTextBlock } from "../../utils/table_design_logic";
 
+type searchTitles = {
+        title: string;
+        platforms: string;
+        table: string;
+}
+
+export type filteringTitles = {
+        header: string,
+        date: string,
+        titleData: searchTitles[], 
+        platformsNote: string 
+}
+
 export type getTitles = {
     title: string;
     releaseDate: string;
@@ -360,7 +373,7 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
     return printFYPlatinumTitles
 });
 
-const specialList = (): string => {
+const specialList = (): filteringTitles => {
 
     let header: Header = {
         capcomHeader: "Capcom - Platinum Titles",
@@ -437,11 +450,17 @@ const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+
 
     let latestPlatformNotes = liner(printTextBlock(reverseCollection.at(-1)?.platformNotes,40),"=","both",true,40);
 
-    let printAll = yearlyCalcList.map((elem, index) => {
-        return printTitles(header, elem, sortedList[index], 9999)
-    }) as string[];
+    let printAll: searchTitles[] = yearlyCalcList.map((elem, index) => {
+        return printTitles(header, elem, sortedList[index], 9999, true)
+    }) as searchTitles[];
 
-    return [headerOne, printDateLabel, ...printAll, latestPlatformNotes].reduce((acc, next) => acc + next) 
+    // return [headerOne, printDateLabel, ...printAll, latestPlatformNotes].reduce((acc, next) => acc + next) 
+    return {
+        header: headerOne,
+        date: printDateLabel,
+        titleData: printAll, 
+        platformsNote: latestPlatformNotes
+    }
 };
 
 export const printSpecialList = specialList();

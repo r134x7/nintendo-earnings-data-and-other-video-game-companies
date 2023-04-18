@@ -148,7 +148,7 @@ export const printSummary = (header: Header, newSumLocal: number, recurringSumLo
         return printSummaryHeader + printNewUnitsFixed + printRecurringUnitsFixed + printSporadicUnitsFixed + printTotalUnitsFixed 
 }
 
-export const printTitles = (header: Header, titleDifference: Titles[], titleCumulative: Titles[], currentQuarter: number) => {
+export const printTitles = (header: Header, titleDifference: Titles[], titleCumulative: Titles[], currentQuarter: number, returnObject?: boolean) => {
 
     const titleHeader = titleDifference.filter((elem, index, array) => {
        return (elem.fiscalYear === undefined) ? index === 0 : array[index] === array[array.length-1] 
@@ -241,5 +241,11 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
         return prev + next
      })
 
-    return lastCheck
+    return (!returnObject) 
+        ? lastCheck
+        : { 
+            title: titleDifference?.at(-1)?.title ?? "ERROR",
+            platforms: titleDifference?.at(-1)?.platforms ?? "ERROR",
+            table: lastCheck
+          }
 };
