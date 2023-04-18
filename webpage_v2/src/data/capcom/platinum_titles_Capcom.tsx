@@ -389,8 +389,11 @@ const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+
 
     const makeValues: Titles[][][] = reverseCollection.map((data, index, array) => {
 
-    let prevFYCheck = array?.[index+1]?.titles;
-    let prev2FYsCheck = array?.[index+2]?.titles;
+    // I am using the reverse Collection i.e. starts at 2006 and increasing and it seems I have been checking the Next Fiscal years... not the previous fiscal years... which lead to inaccurate data being displayed...
+    // let prevFYCheck = array?.[index+1]?.titles;
+    // let prev2FYsCheck = array?.[index+2]?.titles;
+    let prevFYCheck = array?.[index-1]?.titles;
+    let prev2FYsCheck = array?.[index-2]?.titles;
 
     let delistedTitlesCheck: getTitles[] = [data.titles, data?.delistedTitles ?? [],].flat(); 
 
