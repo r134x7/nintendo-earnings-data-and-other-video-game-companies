@@ -55,13 +55,15 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
         return filterPlatforms<searchTitles>(allPlatinumTitlesList[i].titleData)
     }) 
 
-    // let x = allPlatinumTitlesList[0].titleData[0].platforms
-    let platformLists = new Set()
-    // let y = allPlatinumTitlesList[0].titleData.map(elem => [...elem.platforms.matchAll(/\w+\s?\w+/g)].flat().map(value => platformLists.add(value)))
+    // let platformLists = new Set()
+    // only way I could think of making sure I got lists for each year.
+    let platformLists = Array.from({length:allPlatinumTitlesList.length},(v,i) => {
+        return new Set<string>()
+    })
 
-    allPlatinumTitlesList.map(elem => elem.titleData.map(value => [...value.platforms.matchAll(/\w+\s?\w+/g)].flat().map(setValue => platformLists.add(setValue))))
-    
-    console.log(platformLists);
+    allPlatinumTitlesList.map((elem, index) => elem.titleData.map(value => [...value.platforms.matchAll(/\w+\s?\w+/g)].flat().map(setValue => platformLists[index].add(setValue))))
+
+    let platformListDeconstruct = [...platformLists?.[props.setIndex] ?? [""]];
 
     let allTitlesFilter = allPlatinumTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem))
 
@@ -153,27 +155,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
                     ? <Select
                         data={[
                          "All",
-                         "DL",
-                         "XSX",
-                         "PS5",
-                         "NSW",
-                         "PS4",
-                         "Xbox One",
-                         "Wii U",
-                         "3DS",
-                         "PS3",
-                         "Wii",
-                         "Xbox 360",
-                         "PSP",
-                         "GC",
-                         "PS2",
-                         "GBA",
-                         "DC",
-                         "PS",
-                         "SNES",
-                         "MD",
-                         "GB",
-                         "NES",
+                         ...platformListDeconstruct
                      ]}
                     defaultValue={"All"} 
                     label="Select all or one platform:"
