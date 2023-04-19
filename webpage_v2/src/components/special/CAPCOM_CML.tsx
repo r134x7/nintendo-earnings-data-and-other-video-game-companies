@@ -21,12 +21,26 @@ export default function CAPCOM_CML() {
 
     const state: any = useSelector(state => state);
 
-    let filteredPlatforms = printSpecialList.titleData.filter(elem => (platformValue === "" || platformValue === "All") ? elem : elem.platforms.includes((platformValue === "NES") 
-        ? "NES"
-        : platformValue === "SNES"
-            ? "SNES" 
-            : platformValue ?? "All"));
+    // easy regex pattern found to check terms better than string.includes().
+    // let filteredPlatforms = printSpecialList.titleData.filter(elem => (platformValue === "All") 
+    //         ? elem 
+    //         : (platformValue === elem.platforms) 
+    //             ? elem
+    //             // : elem.platforms.includes(platformValue ?? "All")) 
+    //             : [...elem.platforms.matchAll(/\w+/g)].flat().filter(value => value === platformValue));
 
+    let filteredPlatforms = printSpecialList.titleData.filter(elem => {
+
+        if (platformValue === "All") {
+            return elem
+        } else if (platformValue === elem.platforms) {
+            return elem
+        } else if ([...elem.platforms.matchAll(/\w+/g)].flat().filter(value => value === platformValue).length > 0) {
+            return elem
+        }
+
+    })  
+            
     let filterTitles = filteredPlatforms.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue))
 
     // forgot that I could have applied a useEffect but this method works fine
