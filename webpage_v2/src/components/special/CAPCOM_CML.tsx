@@ -21,21 +21,15 @@ export default function CAPCOM_CML() {
 
     const state: any = useSelector(state => state);
 
-    // easy regex pattern found to check terms better than string.includes().
-    // let filteredPlatforms = printSpecialList.titleData.filter(elem => (platformValue === "All") 
-    //         ? elem 
-    //         : (platformValue === elem.platforms) 
-    //             ? elem
-    //             // : elem.platforms.includes(platformValue ?? "All")) 
-    //             : [...elem.platforms.matchAll(/\w+/g)].flat().filter(value => value === platformValue));
-
+    // single word regex \w+, 
+    // two word spaced regex \w+\s?\w+
     let filteredPlatforms = printSpecialList.titleData.filter(elem => {
 
         if (platformValue === "All") {
             return elem
         } else if (platformValue === elem.platforms) {
             return elem
-        } else if ([...elem.platforms.matchAll(/\w+/g)].flat().filter(value => value === platformValue).length > 0) {
+        } else if ([...elem.platforms.matchAll(/\w+\s?\w+/g)].flat().filter(value => value === platformValue).length > 0) {
             return elem
         }
 
@@ -52,8 +46,6 @@ export default function CAPCOM_CML() {
     let titlesReduce = filterTitles.reduce((acc, next) => acc + next.table, "");
 
     let completeSpecialList = printSpecialList.header + printSpecialList.date + titlesReduce + printSpecialList.platformsNote;
-
-    // const [titlesLength, setTitlesLength] = useState(filterTitles.length); 
 
     const componentList = [
         {
@@ -112,8 +104,11 @@ export default function CAPCOM_CML() {
                          "PS5",
                          "NSW",
                          "PS4",
+                         "Wii U",
                          "3DS",
                          "PS3",
+                         "Wii",
+                         "Xbox 360",
                          "PSP",
                          "GC",
                          "PS2",
