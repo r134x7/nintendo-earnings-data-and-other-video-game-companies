@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Code, SegmentedControl } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { allPlatinumTitlesList, fyPlatinumTitlesList } from "../data/capcom/platinum_titles_Capcom";
+import { allPlatinumTitlesList, filteringFyTitles, fyPlatinumTitlesList, searchTitles } from "../data/capcom/platinum_titles_Capcom";
 import { gameSeriesList } from "../data/capcom/game_series_sales_Capcom";
 import { softwareSalesList, softwareSalesGraphList } from "../data/capcom/software_sales_Capcom";
 import { annualReportList } from "../data/capcom/software_shipments_platform_Capcom";
@@ -13,11 +13,35 @@ import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATE
 
 import {cite, citeCopy} from "../utils/copySetCitation";
 
+let titleListCheck = 0;
+let seriesListCheck = 0;
+let softwareShipmentsListCheck = 0;
+
 export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
     const [value, setValue] = useState("");
 
     const state: any = useSelector(state => state);
+
+    const [titleValue, setTitleValue] = useState("");
+    const [platformValue, setPlatformValue] = useState<string | null>("All" ?? "All");
+
+    function filterPlatforms<T extends searchTitles>(input: T[]) {
+
+        return input.filter(elem => {
+
+            if (platformValue === "All") {
+                return elem
+            } else if (platformValue === elem.platforms) {
+                return elem
+            } else if ([...elem.platforms.matchAll(/\w+\s?\w+/g)].flat().filter(value => value === platformValue).length > 0) {
+                return elem
+            }
+
+        })
+    }
+
+    // let allTitlesPlatformsFiltered = filterPlatforms(allPlatinumTitlesList.) 
 
     const annualReportListAltered = [""].concat(annualReportList); // to manage keeping the index values the same with softwareSalesList
 
@@ -95,7 +119,10 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
             {
                 (value === "Data Sources")
                     ? selectData(value)
-                    : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>{selectData(value)}</Code>
+                    : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                        
+                        {selectData(value)}
+                    </Code>
             }
             {selectGraph(value)}
         </div>

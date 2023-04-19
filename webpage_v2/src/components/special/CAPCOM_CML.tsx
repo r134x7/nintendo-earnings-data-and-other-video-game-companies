@@ -7,6 +7,9 @@ import { cumulativeEarningsListCapcom } from "../../data/generalTables/consolida
 import { fyTitlesCapcom } from "../../data/capcom/game_series_sales_capcom_cml_data";
 import { factBookCapcom } from "../../data/capcom/software_shipments_capcom_cml_data";
 
+import type { searchTitles } from "../../data/capcom/platinum_titles_Capcom";
+import type { titleSet } from "../../data/capcom/game_series_sales_capcom_cml_data";
+
 import {cite, citeCopy} from "../../utils/copySetCitation";
 
 // mutating this variable is the only way I can get this to reliably work
@@ -36,20 +39,29 @@ export default function CAPCOM_CML() {
         }
 
     })  
+
+    function filterTitles<T extends searchTitles | titleSet>(input: T[]) {
+
+        return input.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()))
+    }
+
+    let filterPlatinumTitles = filterTitles<searchTitles>(filteredPlatforms);
             
-    let filterTitles = filteredPlatforms.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()))
+    // let filterTitles = filteredPlatforms.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()))
     
     // forgot that I could have applied a useEffect but this method works fine
-    titleListCheck = filterTitles.length;
+    titleListCheck = filterPlatinumTitles.length;
 
     // this creates recursion because you are re-rendering here at this point at all times
-    // setTitlesLength(filterTitles.length);
+    // setTitlesLength(filterPlatinumTitles.length);
     
-    let titlesReduce = filterTitles.reduce((acc, next) => acc + next.table, "");
+    let titlesReduce = filterPlatinumTitles.reduce((acc, next) => acc + next.table, "");
 
     let completeSpecialList = printSpecialList.header + printSpecialList.date + titlesReduce + printSpecialList.platformsNote;
 
-    let fyTitlesFilter = fyTitlesCapcom.titleList.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()));
+    // let fyTitlesFilter = fyTitlesCapcom.titleList.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()));
+
+    let fyTitlesFilter = filterTitles<titleSet>(fyTitlesCapcom.titleList)
 
     seriesListCheck = fyTitlesFilter.length;
 
@@ -57,7 +69,9 @@ export default function CAPCOM_CML() {
 
     let fyGameSeriesList = fyTitlesCapcom.header + fyTitlesReduce;
 
-    let softwareShipmentsFilter = factBookCapcom.titleList.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()));
+    // let softwareShipmentsFilter = factBookCapcom.titleList.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()));
+
+    let softwareShipmentsFilter = filterTitles<titleSet>(factBookCapcom.titleList);
 
     softwareShipmentsListCheck = softwareShipmentsFilter.length;
 

@@ -29,7 +29,7 @@ import platinumTitles2007 from "./Platinum_Titles/platinum_titles_fy3_2007.json"
 import platinumTitles2006 from "./Platinum_Titles/platinum_titles_fy3_2006.json";
 import { headerPrint, border, liner, spacer, dateLabel, printTextBlock } from "../../utils/table_design_logic";
 
-type searchTitles = {
+export type searchTitles = {
         title: string;
         platforms: string;
         table: string;
@@ -40,6 +40,13 @@ export type filteringTitles = {
         date: string,
         titleData: searchTitles[], 
         platformsNote: string 
+}
+
+export type filteringFyTitles = {
+    header: string,
+    titleData: searchTitles[],
+    fyNotes: string,
+    platformNotes: string,
 }
 
 export type getTitles = {
@@ -182,7 +189,7 @@ export const titlesMake = (obj: getTitles[], prevFY: getTitles[] | undefined, pr
     return title 
 };
 
-export const allPlatinumTitlesList: string[] = collection.map((elem, index, array) => {
+export const allPlatinumTitlesList: filteringFyTitles[] = collection.map((elem, index, array) => {
 
     let currentQuarter = elem.currentQuarter;
 
@@ -229,8 +236,8 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
         })
     
     let printListedTitlesAll = differenceAllTitles.map((elem, index) => {
-        return printTitles(header, elem, sortedAllCollection[index], currentQuarter)
-    }) as string[];
+        return printTitles(header, elem, sortedAllCollection[index], currentQuarter, true)
+    }) as searchTitles[];
 
     const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", elem?.currentQuarter ?? 4);
 
@@ -245,15 +252,24 @@ export const allPlatinumTitlesList: string[] = collection.map((elem, index, arra
         header.fifthHeader,
     ],28) + "\n" + printDateLabel;
 
-    let allPlatinumTitlesPlus: string[] = printListedTitlesAll.concat(liner(printTextBlock(elem?.footnotes,40),"=","both",true,40)); 
+    // let allPlatinumTitlesPlus: string[] = printListedTitlesAll.concat(liner(printTextBlock(elem?.footnotes,40),"=","both",true,40)); 
+
+    let fySpecficNotes = liner(printTextBlock(elem?.footnotes,40),"=","both",true,40);
 
     let printPlatformNotes: string = liner(printTextBlock(elem.platformNotes,40),"=","both",true,40)
 
-    let printAllPlatinumTitles: string = [
-        printOne, 
-        ...allPlatinumTitlesPlus,
-        printPlatformNotes,
-    ].reduce((prev, next) => prev + next )
+    // let printAllPlatinumTitles: string = [
+    //     printOne, 
+    //     ...allPlatinumTitlesPlus,
+    //     printPlatformNotes,
+    // ].reduce((prev, next) => prev + next )
+
+    let printAllPlatinumTitles = {
+        header: printOne,
+        titleData: printListedTitlesAll,
+        fyNotes: fySpecficNotes,
+        platformNotes: printPlatformNotes,
+    }
 
     return printAllPlatinumTitles
 });
