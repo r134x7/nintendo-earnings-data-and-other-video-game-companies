@@ -104,6 +104,7 @@ export default function CAPCOM_CML() {
                          "PS5",
                          "NSW",
                          "PS4",
+                         "Xbox One",
                          "Wii U",
                          "3DS",
                          "PS3",
