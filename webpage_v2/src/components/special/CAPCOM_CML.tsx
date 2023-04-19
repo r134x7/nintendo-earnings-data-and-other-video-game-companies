@@ -35,7 +35,7 @@ export default function CAPCOM_CML() {
 
     })  
             
-    let filterTitles = filteredPlatforms.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue))
+    let filterTitles = filteredPlatforms.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()))
 
     // forgot that I could have applied a useEffect but this method works fine
     titleListCheck = filterTitles.length;
@@ -130,7 +130,7 @@ export default function CAPCOM_CML() {
                 }
                 {(value === "Capcom Platinum Titles - Cumulative")
                     ? <TextInput
-                    placeholder="Search specific titles (use lower case)"
+                    placeholder="Search specific titles"
                     label={`Title Search - Number of Titles shown: ${titleListCheck}`}
                     description="Clear field to show all titles of the selected platform"
                     radius="xl"
