@@ -57,9 +57,11 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     // let x = allPlatinumTitlesList[0].titleData[0].platforms
     let platformLists = new Set()
-    let y = allPlatinumTitlesList[0].titleData.map(elem => [...elem.platforms.matchAll(/\w+\s?\w+/g)].flat().map(value => platformLists.add(value)))
-    console.log(platformLists);
+    // let y = allPlatinumTitlesList[0].titleData.map(elem => [...elem.platforms.matchAll(/\w+\s?\w+/g)].flat().map(value => platformLists.add(value)))
+
+    allPlatinumTitlesList.map(elem => elem.titleData.map(value => [...value.platforms.matchAll(/\w+\s?\w+/g)].flat().map(setValue => platformLists.add(setValue))))
     
+    console.log(platformLists);
 
     let allTitlesFilter = allPlatinumTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem))
 
