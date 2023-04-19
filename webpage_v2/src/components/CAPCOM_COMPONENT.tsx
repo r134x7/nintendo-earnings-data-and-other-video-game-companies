@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Code, SegmentedControl } from "@mantine/core";
+import { Code, SegmentedControl, Select, TextInput } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { allPlatinumTitlesList, filteringFyTitles, fyPlatinumTitlesList, searchTitles } from "../data/capcom/platinum_titles_Capcom";
 import { gameSeriesList } from "../data/capcom/game_series_sales_Capcom";
@@ -7,6 +7,7 @@ import { softwareSalesList, softwareSalesGraphList } from "../data/capcom/softwa
 import { annualReportList } from "../data/capcom/software_shipments_platform_Capcom";
 import { capcomConsolidatedEarningsList, capcomConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { capcomLinks } from "../data/generalTables/data_sources_general";
+import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
@@ -41,7 +42,26 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
         })
     }
 
-    // let allTitlesPlatformsFiltered = filterPlatforms(allPlatinumTitlesList.) 
+    function filterTitles<T extends searchTitles | titleSet>(input: T[]) {
+
+        return input.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()))
+    }
+
+    /*
+    steps: filter by platform => filter by title search => side effect: (mutate titles list length) => reduce titlesFilter => combine the headers, footers with the tables.
+    */
+
+    let allPlatinumTitlesPlatformsFiltered = Array.from({length:allPlatinumTitlesList.length},(v,i) => {
+        return filterPlatforms<searchTitles>(allPlatinumTitlesList[i].titleData)
+    }) 
+
+    let allTitlesFilter = allPlatinumTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem))
+
+    titleListCheck = allTitlesFilter?.[props.setIndex]?.length ?? 0;
+
+    let allTitlesReduce: string[] = allTitlesFilter.map(elem => elem.reduce((acc,next) => acc + next.table,"")) 
+
+    let completeAllTitlesList = allTitlesReduce.map((elem, index) => allPlatinumTitlesList[index].header + elem + allPlatinumTitlesList[index].fyNotes + allPlatinumTitlesList[index].platformNotes)
 
     const annualReportListAltered = [""].concat(annualReportList); // to manage keeping the index values the same with softwareSalesList
 
@@ -74,7 +94,8 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
             },
             {
                 name: "All Platinum Titles", 
-                value: allPlatinumTitlesList?.[index],
+                // value: allPlatinumTitlesList?.[index],
+                value: completeAllTitlesList?.[index],
             },
             {
                 name: "FY Game Series", 
@@ -120,7 +141,53 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
                 (value === "Data Sources")
                     ? selectData(value)
                     : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                        
+                {(value === "All Platinum Titles")
+                    ? <Select
+                        data={[
+                         "All",
+                         "DL",
+                         "XSX",
+                         "PS5",
+                         "NSW",
+                         "PS4",
+                         "Xbox One",
+                         "Wii U",
+                         "3DS",
+                         "PS3",
+                         "Wii",
+                         "Xbox 360",
+                         "PSP",
+                         "GC",
+                         "PS2",
+                         "GBA",
+                         "DC",
+                         "PS",
+                         "SNES",
+                         "MD",
+                         "GB",
+                         "NES",
+                     ]}
+                    defaultValue={"All"} 
+                    label="Select all or one platform:"
+                    radius="xl"
+                    value={platformValue}
+                    onChange={setPlatformValue}
+                  /> 
+                    : undefined
+                }
+                {(value === "All Platinum Titles")
+                    ? <TextInput
+                    placeholder="Search specific titles"
+                    label={`Title Search - Number of Titles shown: ${titleListCheck}`}
+                    description="Clear field to show all titles of the selected platform"
+                    radius="xl"
+                    value={titleValue}
+                    onChange={e => {
+                        setTitleValue(e.target.value)
+                    }}
+                    />  
+                    : undefined
+                }
                         {selectData(value)}
                     </Code>
             }
