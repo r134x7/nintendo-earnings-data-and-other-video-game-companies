@@ -11,6 +11,7 @@ import {cite, citeCopy} from "../../utils/copySetCitation";
 
 // mutating this variable is the only way I can get this to reliably work
 let titleListCheck = 0;
+let seriesListCheck = 0;
 
 export default function CAPCOM_CML() {
 
@@ -36,7 +37,7 @@ export default function CAPCOM_CML() {
     })  
             
     let filterTitles = filteredPlatforms.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()))
-
+    
     // forgot that I could have applied a useEffect but this method works fine
     titleListCheck = filterTitles.length;
 
@@ -46,6 +47,14 @@ export default function CAPCOM_CML() {
     let titlesReduce = filterTitles.reduce((acc, next) => acc + next.table, "");
 
     let completeSpecialList = printSpecialList.header + printSpecialList.date + titlesReduce + printSpecialList.platformsNote;
+
+    let fyTitlesFilter = fyTitlesCapcom.titleList.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()));
+
+    seriesListCheck = fyTitlesFilter.length;
+
+    let fyTitlesReduce = fyTitlesFilter.reduce((acc, next) => acc + next.table, "")
+
+    let fyGameSeriesList = fyTitlesCapcom.header + fyTitlesReduce;
 
     const componentList = [
         {
@@ -67,7 +76,8 @@ export default function CAPCOM_CML() {
         },
         {
             name: "Capcom FY Game Series - Cumulative",
-            value: fyTitlesCapcom
+            // value: fyTitlesCapcom
+            value: fyGameSeriesList
         },
     ];
 
@@ -134,6 +144,19 @@ export default function CAPCOM_CML() {
                     placeholder="Search specific titles"
                     label={`Title Search - Number of Titles shown: ${titleListCheck}`}
                     description="Clear field to show all titles of the selected platform"
+                    radius="xl"
+                    value={titleValue}
+                    onChange={e => {
+                        setTitleValue(e.target.value)
+                    }}
+                    />  
+                    : undefined
+                }
+                {(value === "Capcom FY Game Series - Cumulative")
+                    ? <TextInput
+                    placeholder="Search specific series"
+                    label={`Series Search - Number of game series shown: ${seriesListCheck}`}
+                    description="Clear field to show all game series listed."
                     radius="xl"
                     value={titleValue}
                     onChange={e => {

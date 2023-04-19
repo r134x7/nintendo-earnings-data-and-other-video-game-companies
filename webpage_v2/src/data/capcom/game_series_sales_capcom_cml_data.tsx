@@ -15,6 +15,16 @@ import gameSeries2020 from "./Game_Series/game_series_fy3_2020.json";
 import gameSeries2021 from "./Game_Series/game_series_fy3_2021.json";
 import gameSeries2022 from "./Game_Series/game_series_fy3_2022.json";
 
+type titleSet = {
+    title: string,
+    table: string,
+}
+
+type titleSetHeader = {
+    header: string,
+    titleList: titleSet[]
+}
+
 type annualReport = {
     fiscalYear: string,
     series: {
@@ -112,7 +122,7 @@ function annualReportMaker (collection: annualReport[], companyName: string, dat
    }
 }
 
-function printTitles(header: string, titles: Series[][]) {
+function printTitles(header: string, titles: Series[][], returnObject?: boolean) {
 
     const titleList = titles.map((elem, index, array) => {
 
@@ -138,22 +148,40 @@ function printTitles(header: string, titles: Series[][]) {
             spacer(`${elem[elem.length-1].value}M`,9,"right")
         ]),"−","both",true) 
 
-        return [
-            printTitleName,
-            releaseDateRankAndMiscCheck,
-            ...yearValues,
-            printLTD,
-        ].reduce((prev, next) => {
-            return prev + next
-        });
-    }).reduce((prev, next) => prev + next);
+        return (!returnObject)
+            ? [
+                printTitleName,
+                releaseDateRankAndMiscCheck,
+                ...yearValues,
+                printLTD,
+             ].reduce((prev, next) => {
+                 return prev + next
+             })
+            : {
+               title: elem[0].title,
+               table: [
+                printTitleName,
+                releaseDateRankAndMiscCheck,
+                ...yearValues,
+                printLTD,
+             ].reduce((prev, next) => {
+                 return prev + next
+             })
+            }
+        ;
+    })//.reduce((prev, next) => prev + next);
 
-    return [
-        header,
-        titleList,
-    ].reduce((acc, next) => acc + next)
+    return (!returnObject)
+        ? [
+            header,
+            titleList.reduce((acc, next) => (typeof next === "string") ? acc + next : acc ,""),
+            ].reduce((acc, next) => (typeof next === "string") ? acc + next : acc ,"")
+        : {
+            header,
+            titleList
+        }
 };
 
 const annualReportCapcom = annualReportMaker(collectionCapcom, "Capcom", printDateLabel);
 
-export const fyTitlesCapcom = printTitles(annualReportCapcom.header, annualReportCapcom.titles);
+export const fyTitlesCapcom = printTitles(annualReportCapcom.header, annualReportCapcom.titles, true) as titleSetHeader;
