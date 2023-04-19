@@ -15,12 +15,12 @@ import gameSeries2020 from "./Game_Series/game_series_fy3_2020.json";
 import gameSeries2021 from "./Game_Series/game_series_fy3_2021.json";
 import gameSeries2022 from "./Game_Series/game_series_fy3_2022.json";
 
-type titleSet = {
+export type titleSet = {
     title: string,
     table: string,
 }
 
-type titleSetHeader = {
+export type titleSetHeader = {
     header: string,
     titleList: titleSet[]
 }

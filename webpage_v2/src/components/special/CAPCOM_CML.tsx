@@ -12,6 +12,7 @@ import {cite, citeCopy} from "../../utils/copySetCitation";
 // mutating this variable is the only way I can get this to reliably work
 let titleListCheck = 0;
 let seriesListCheck = 0;
+let softwareShipmentsListCheck = 0;
 
 export default function CAPCOM_CML() {
 
@@ -56,6 +57,14 @@ export default function CAPCOM_CML() {
 
     let fyGameSeriesList = fyTitlesCapcom.header + fyTitlesReduce;
 
+    let softwareShipmentsFilter = factBookCapcom.titleList.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()));
+
+    softwareShipmentsListCheck = softwareShipmentsFilter.length;
+
+    let softwareShipmentsReduce = softwareShipmentsFilter.reduce((acc, next) => acc + next.table,"");
+
+    let softwareShipmentsList = factBookCapcom.header + softwareShipmentsReduce;
+
     const componentList = [
         {
             name: "Capcom Consolidated Financial Results - Cumulative",
@@ -72,7 +81,8 @@ export default function CAPCOM_CML() {
         },
         {
             name: "Capcom Software Platform Shipments - Cumulative",
-            value: factBookCapcom 
+            // value: factBookCapcom 
+            value: softwareShipmentsList
         },
         {
             name: "Capcom FY Game Series - Cumulative",
@@ -157,6 +167,19 @@ export default function CAPCOM_CML() {
                     placeholder="Search specific series"
                     label={`Series Search - Number of game series shown: ${seriesListCheck}`}
                     description="Clear field to show all game series listed."
+                    radius="xl"
+                    value={titleValue}
+                    onChange={e => {
+                        setTitleValue(e.target.value)
+                    }}
+                    />  
+                    : undefined
+                }
+                {(value === "Capcom Software Platform Shipments - Cumulative")
+                    ? <TextInput
+                    placeholder="Search specific platform"
+                    label={`Platform Search - Groups of platforms shown: ${softwareShipmentsListCheck}`}
+                    description="Clear field to show all platforms."
                     radius="xl"
                     value={titleValue}
                     onChange={e => {

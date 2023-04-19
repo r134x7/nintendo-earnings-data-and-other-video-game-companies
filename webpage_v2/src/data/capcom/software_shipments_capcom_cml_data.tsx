@@ -1,5 +1,6 @@
 import { liner, border, spacer, printTextBlock, dateLabel } from "../../utils/table_design_logic";
 import { Series } from "../../utils/capcom_factbook_logic";
+import type { titleSet, titleSetHeader } from "./game_series_sales_capcom_cml_data";
 
 import factBookCapcom2011 from "./Fact_Book/software_shipments_platform_fy3_2011.json";
 import factBookCapcom2012 from "./Fact_Book/software_shipments_platform_fy3_2012.json";
@@ -114,7 +115,7 @@ function shipmentsMaker (collection: factBook[], companyName: string, dateLabelL
    }
 }
 
-function printShipments(header: string, titles: Series[][]) {
+function printShipments(header: string, titles: Series[][], returnObject?: boolean) {
 
     const titleList = titles.map((elem, index, array) => {
 
@@ -147,22 +148,40 @@ function printShipments(header: string, titles: Series[][]) {
             spacer(`${sumUnits}M`,9,"right")
         ]),"−","both",true) 
 
-        return [
+        return (!returnObject)
+        ? [
             printTitleName,
             rankSKUandMisc,
             ...yearValues,
             printLTD,
         ].reduce((prev, next) => {
             return prev + next
-        });
-    }).reduce((prev, next) => prev + next);
+        })
+        : {
+            title: elem[0].title,
+            table: [
+            printTitleName,
+            rankSKUandMisc,
+            ...yearValues,
+            printLTD,
+        ].reduce((prev, next) => {
+            return prev + next
+        })
+        }
 
-    return [
+    })//.reduce((prev, next) => prev + next);
+
+    return (!returnObject)
+    ? [
         header,
-        titleList,
-    ].reduce((acc, next) => acc + next)
+        titleList.reduce((acc, next) => (typeof next === "string") ? acc + next : acc ,""),
+    ].reduce((acc, next) => (typeof next === "string") ? acc + next : acc ,"")
+    : {
+        header,
+        titleList
+    }
 };
 
 const softwareShipmentsCapcom = shipmentsMaker(collectionCapcom, "Capcom", printDateLabel);
 
-export const factBookCapcom = printShipments(softwareShipmentsCapcom.header, softwareShipmentsCapcom.titles);
+export const factBookCapcom = printShipments(softwareShipmentsCapcom.header, softwareShipmentsCapcom.titles, true) as titleSetHeader;
