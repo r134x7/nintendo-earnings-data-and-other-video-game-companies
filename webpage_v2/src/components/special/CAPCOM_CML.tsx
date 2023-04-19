@@ -12,6 +12,10 @@ import type { titleSet } from "../../data/capcom/game_series_sales_capcom_cml_da
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 
+/*
+reminder: resident evil 4 wii edition platforms are not up to date on platinum titles cumulative... need to check code for that...
+*/
+
 // mutating this variable is the only way I can get this to reliably work
 let titleListCheck = 0;
 let seriesListCheck = 0;

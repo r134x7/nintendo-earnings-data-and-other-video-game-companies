@@ -55,15 +55,18 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
         return filterPlatforms<searchTitles>(allPlatinumTitlesList[i].titleData)
     }) 
 
-    // let platformLists = new Set()
+    let platformLists = new Set<string>()
     // only way I could think of making sure I got lists for each year.
-    let platformLists = Array.from({length:allPlatinumTitlesList.length},(v,i) => {
-        return new Set<string>()
-    })
+    // let platformLists = Array.from({length:allPlatinumTitlesList.length},(v,i) => {
+    //     return new Set<string>()
+    // })
 
-    allPlatinumTitlesList.map((elem, index) => elem.titleData.map(value => [...value.platforms.matchAll(/\w+\s?\w+/g)].flat().map(setValue => platformLists[index].add(setValue))))
+    // allPlatinumTitlesList.map((elem, index) => elem.titleData.map(value => [...value.platforms.matchAll(/\w+\s?\w+/g)].flat().map(setValue => platformLists[index].add(setValue))))
 
-    let platformListDeconstruct = [...platformLists?.[props.setIndex] ?? [""]];
+    // more efficient method
+    allPlatinumTitlesList?.[props.setIndex]?.titleData.map(elem => [...elem?.platforms.matchAll(/\w+\s?\w+/g)].flat().map(setValue => platformLists.add(setValue ?? "")))
+
+    // let platformListDeconstruct = [...platformLists?.[props.setIndex] ?? [""]];
 
     let allTitlesFilter = allPlatinumTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem))
 
@@ -155,7 +158,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
                     ? <Select
                         data={[
                          "All",
-                         ...platformListDeconstruct
+                         ...platformLists
                      ]}
                     defaultValue={"All"} 
                     label="Select all or one platform:"
