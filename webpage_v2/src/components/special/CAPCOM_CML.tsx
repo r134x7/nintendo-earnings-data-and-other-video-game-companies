@@ -22,9 +22,9 @@ export default function CAPCOM_CML() {
     const state: any = useSelector(state => state);
 
     let filteredPlatforms = printSpecialList.titleData.filter(elem => (platformValue === "" || platformValue === "All") ? elem : elem.platforms.includes((platformValue === "NES") 
-        ? "FC"
+        ? "NES"
         : platformValue === "SNES"
-            ? "SFC" 
+            ? "SNES" 
             : platformValue ?? "All"));
 
     let filterTitles = filteredPlatforms.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue))
