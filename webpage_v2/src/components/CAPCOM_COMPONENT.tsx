@@ -117,6 +117,33 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     const gameSeriesListAltered = [""].concat(completeGameSeriesList); // to manage keeping the index values the same with softwareSalesList
 
+    const textInputValues = [
+        {
+           value: "All Platinum Titles",
+           placeholder: "Search specific titles",
+           label: `Title Search - Number of Titles shown: ${titleListCheckAll}`,
+           description: "Clear field to show all titles of the selected platform", 
+        },
+        {
+           value: "FY Platinum Titles",
+           placeholder: "Search specific titles",
+           label: `Title Search - Number of Titles shown: ${titleListCheckFY}`,
+           description: "Clear field to show all titles of the selected platform", 
+        },
+        {
+           value: "FY Game Series",
+           placeholder: "Search specific series",
+           label: `Series Search - Number of game series shown: ${seriesListCheck}`,
+           description: "Clear field to show all game series listed.", 
+        },
+        {
+           value: "Software Platform Shipments",
+           placeholder: "Search specific platform",
+           label: `Platform Search - Sets of platforms shown: ${softwareShipmentsListCheck}`,
+           description: "Clear field to show all platforms.", 
+        }
+    ].filter(elem => elem.value === value);
+
     const componentListNew = Array.from({length: props.yearLength}, (elem, index) => {
 
         return [
@@ -207,15 +234,9 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
                 }
                 {(value === "All Platinum Titles" || value === "FY Platinum Titles" || value === "FY Game Series" || value === "Software Platform Shipments")
                     ? <TextInput
-                    placeholder="Search specific titles"
-                    label={`Title Search - Number of Titles shown: ${(value === "All Platinum Titles") 
-                    ? titleListCheckAll 
-                    : (value === "FY Platinum Titles")
-                        ? titleListCheckFY
-                        : (value === "FY Game Series")
-                            ? seriesListCheck 
-                            : softwareShipmentsListCheck}`}
-                    description="Clear field to show all titles of the selected platform"
+                    placeholder={textInputValues[0].placeholder}
+                    label={textInputValues[0].label}
+                    description={textInputValues[0].description}
                     radius="xl"
                     value={titleValue}
                     onChange={e => {
