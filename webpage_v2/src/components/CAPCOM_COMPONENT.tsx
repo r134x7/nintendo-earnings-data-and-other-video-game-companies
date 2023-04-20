@@ -14,7 +14,8 @@ import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATE
 
 import {cite, citeCopy} from "../utils/copySetCitation";
 
-let titleListCheck = 0;
+let titleListCheckAll = 0;
+let titleListCheckFY = 0;
 let seriesListCheck = 0;
 let softwareShipmentsListCheck = 0;
 
@@ -58,7 +59,14 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
             : allPlatinumTitlesList[i].titleData
     })
 
-    let platformLists = new Set<string>()
+    let fyPlatinumTitlesPlatformsFiltered = Array.from({length:fyPlatinumTitlesList.length},(v,i) => {
+        return (i === props.setIndex)
+            ? filterPlatforms<searchTitles>(fyPlatinumTitlesList[i].titleData)
+            : fyPlatinumTitlesList[i].titleData
+    })
+
+    let platformListsAll = new Set<string>()
+    let platformListsFY = new Set<string>()
     // only way I could think of making sure I got lists for each year.
     // let platformLists = Array.from({length:allPlatinumTitlesList.length},(v,i) => {
     //     return new Set<string>()
@@ -67,17 +75,22 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
     // allPlatinumTitlesList.map((elem, index) => elem.titleData.map(value => [...value.platforms.matchAll(/\w+\s?\w+/g)].flat().map(setValue => platformLists[index].add(setValue))))
 
     // more efficient method
-    allPlatinumTitlesList?.[props.setIndex]?.titleData.map(elem => [...elem?.platforms.matchAll(/\w+\s?\w+/g)].flat().map(setValue => platformLists.add(setValue ?? "")))
+    allPlatinumTitlesList?.[props.setIndex]?.titleData.map(elem => [...elem?.platforms.matchAll(/\w+\s?\w+/g)].flat().map(setValue => platformListsAll.add(setValue ?? "")));
 
-    // let platformListDeconstruct = [...platformLists?.[props.setIndex] ?? [""]];
+    fyPlatinumTitlesList?.[props.setIndex]?.titleData.map(elem => [...elem?.platforms.matchAll(/\w+\s?\w+/g)].flat().map(setValue => platformListsFY.add(setValue ?? "")));
 
-    let allTitlesFilter = allPlatinumTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem))
+    let allTitlesFilter = allPlatinumTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem));
+    let fyTitlesFilter = fyPlatinumTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem));
 
-    titleListCheck = allTitlesFilter?.[props.setIndex]?.length ?? 0;
+    // SIDE EFFECTS!!
+    titleListCheckAll = allTitlesFilter?.[props.setIndex]?.length ?? 0;
+    titleListCheckFY = fyTitlesFilter?.[props.setIndex]?.length ?? 0;
 
-    let allTitlesReduce: string[] = allTitlesFilter.map(elem => elem.reduce((acc,next) => acc + next.table,"")) 
+    let allTitlesReduce: string[] = allTitlesFilter.map(elem => elem.reduce((acc,next) => acc + next.table,"")); 
+    let fyTitlesReduce: string[] = fyTitlesFilter.map(elem => elem.reduce((acc, next) => acc + next.table,""));
 
-    let completeAllTitlesList = allTitlesReduce.map((elem, index) => allPlatinumTitlesList[index].header + elem + allPlatinumTitlesList[index].fyNotes + allPlatinumTitlesList[index].platformNotes)
+    let completeAllTitlesList = allTitlesReduce.map((elem, index) => allPlatinumTitlesList[index].header + elem + allPlatinumTitlesList[index].fyNotes + allPlatinumTitlesList[index].platformNotes);
+    let completeFYTitlesList = fyTitlesReduce.map((elem, index) => fyPlatinumTitlesList[index].header + elem + fyPlatinumTitlesList[index].fyNotes + fyPlatinumTitlesList[index].platformNotes);
 
     const annualReportListAltered = [""].concat(annualReportList); // to manage keeping the index values the same with softwareSalesList
 
@@ -106,7 +119,8 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
             },
             {
                 name: "FY Platinum Titles", 
-                value: fyPlatinumTitlesList?.[index],
+                // value: fyPlatinumTitlesList?.[index],
+                value: completeFYTitlesList?.[index],
             },
             {
                 name: "All Platinum Titles", 
@@ -157,12 +171,11 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
                 (value === "Data Sources")
                     ? selectData(value)
                     : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {(value === "All Platinum Titles")
+                {(value === "All Platinum Titles" || value === "FY Platinum Titles")
                     ? <Select
                         data={[
                          "All",
-                         ...platformLists
-                     ]}
+                     ].concat((value === "All Platinum Titles") ? [...platformListsAll] : [...platformListsFY])}
                     defaultValue={"All"} 
                     label="Select all or one platform:"
                     radius="xl"
@@ -171,10 +184,10 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
                   /> 
                     : undefined
                 }
-                {(value === "All Platinum Titles")
+                {(value === "All Platinum Titles" || value === "FY Platinum Titles")
                     ? <TextInput
                     placeholder="Search specific titles"
-                    label={`Title Search - Number of Titles shown: ${titleListCheck}`}
+                    label={`Title Search - Number of Titles shown: ${(value === "All Platinum Titles") ? titleListCheckAll : titleListCheckFY}`}
                     description="Clear field to show all titles of the selected platform"
                     radius="xl"
                     value={titleValue}
