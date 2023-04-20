@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Code, SegmentedControl, Space, TextInput, Select } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printSpecialList } from "../../data/capcom/platinum_titles_Capcom";
+import { platinumTitlesCML } from "../../data/capcom/platinum_titles_Capcom";
 import { CapcomSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListCapcom } from "../../data/generalTables/consolidated_earnings_cml_data";
-import { fyTitlesCapcom } from "../../data/capcom/game_series_sales_capcom_cml_data";
+import { gameSeriesCapcom } from "../../data/capcom/game_series_sales_capcom_cml_data";
 import { factBookCapcom } from "../../data/capcom/software_shipments_capcom_cml_data";
 
 import type { searchTitles } from "../../data/capcom/platinum_titles_Capcom";
@@ -32,7 +32,7 @@ export default function CAPCOM_CML() {
 
     // single word regex \w+, 
     // two word spaced regex \w+\s?\w+
-    let filteredPlatforms = printSpecialList.titleData.filter(elem => {
+    let filteredPlatforms = platinumTitlesCML.titleData.filter(elem => {
 
         if (platformValue === "All") {
             return elem
@@ -61,17 +61,17 @@ export default function CAPCOM_CML() {
     
     let titlesReduce = filterPlatinumTitles.reduce((acc, next) => acc + next.table, "");
 
-    let completeSpecialList = printSpecialList.header + printSpecialList.date + titlesReduce + printSpecialList.platformsNote;
+    let completeSpecialList = platinumTitlesCML.header + platinumTitlesCML.date + titlesReduce + platinumTitlesCML.platformsNote;
 
     // let fyTitlesFilter = fyTitlesCapcom.titleList.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()));
 
-    let fyTitlesFilter = filterTitles<titleSet>(fyTitlesCapcom.titleList)
+    let gameSeriesFilter = filterTitles<titleSet>(gameSeriesCapcom.titleList)
 
-    seriesListCheck = fyTitlesFilter.length;
+    seriesListCheck = gameSeriesFilter.length;
 
-    let fyTitlesReduce = fyTitlesFilter.reduce((acc, next) => acc + next.table, "")
+    let fyTitlesReduce = gameSeriesFilter.reduce((acc, next) => acc + next.table, "")
 
-    let fyGameSeriesList = fyTitlesCapcom.header + fyTitlesReduce;
+    let fyGameSeriesList = gameSeriesCapcom.header + fyTitlesReduce;
 
     // let softwareShipmentsFilter = factBookCapcom.titleList.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()));
 
@@ -138,6 +138,7 @@ export default function CAPCOM_CML() {
                         data={[
                          "All",
                          "DL",
+                         "PC",
                          "XSX",
                          "PS5",
                          "NSW",

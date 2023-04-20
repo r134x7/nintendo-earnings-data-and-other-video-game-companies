@@ -496,4 +496,4 @@ const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+
     }
 };
 
-export const printSpecialList = specialList();
+export const platinumTitlesCML = specialList();

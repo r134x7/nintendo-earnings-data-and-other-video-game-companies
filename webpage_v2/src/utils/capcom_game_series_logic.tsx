@@ -77,6 +77,11 @@ const printSeriesName = (seriesIP: Series, blockLength: number) => {
             : seriesBlock + printTextBlock(seriesIP.miscellaneous, blockLength);
 };
 
-export const printSeriesOutput = (seriesIP: Series, header: Header, blockLength: number, valueLength: number) => {
-        return printSeriesName(seriesIP, blockLength) + printCmlValue(seriesIP, valueLength, header) + printCmlYoY(seriesIP, valueLength, header) + printLTDValue(seriesIP,valueLength,header) 
+export const printSeriesOutput = (seriesIP: Series, header: Header, blockLength: number, valueLength: number, returnObject?: boolean) => {
+        return (!returnObject) 
+            ? printSeriesName(seriesIP, blockLength) + printCmlValue(seriesIP, valueLength, header) + printCmlYoY(seriesIP, valueLength, header) + printLTDValue(seriesIP,valueLength,header) 
+            : {
+                title: seriesIP.title,
+                table: printSeriesName(seriesIP, blockLength) + printCmlValue(seriesIP, valueLength, header) + printCmlYoY(seriesIP, valueLength, header) + printLTDValue(seriesIP,valueLength,header) 
+            }
 };

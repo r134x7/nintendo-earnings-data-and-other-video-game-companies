@@ -184,4 +184,4 @@ function printTitles(header: string, titles: Series[][], returnObject?: boolean)
 
 const annualReportCapcom = annualReportMaker(collectionCapcom, "Capcom", printDateLabel);
 
-export const fyTitlesCapcom = printTitles(annualReportCapcom.header, annualReportCapcom.titles, true) as titleSetHeader;
+export const gameSeriesCapcom = printTitles(annualReportCapcom.header, annualReportCapcom.titles, true) as titleSetHeader;

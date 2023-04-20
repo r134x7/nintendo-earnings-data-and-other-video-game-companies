@@ -15,6 +15,8 @@ import gameSeries2012 from "./Game_Series/game_series_fy3_2012.json";
 import gameSeries2011 from "./Game_Series/game_series_fy3_2011.json";
 import gameSeries2010 from "./Game_Series/game_series_fy3_2010.json";
 
+import type { titleSetHeader, titleSet } from "./game_series_sales_capcom_cml_data";
+
 const collection = [
     gameSeries2022,
     gameSeries2021,
@@ -57,7 +59,7 @@ const seriesMake = (obj: {
     return series
 };
 
-export const gameSeriesList: string[] = collection.map((elem, index, array) => {
+export const gameSeriesList: titleSetHeader[] = collection.map((elem, index, array) => {
 
     let header: Header = {
     capcomHeader: "Capcom - Game Series Data",
@@ -87,7 +89,8 @@ export const gameSeriesList: string[] = collection.map((elem, index, array) => {
 
     let printedSeries = sortedList.map((elem) => {
         return printSeriesOutput(elem, header, 42, 11);
-    }).reduce((prev, next) => prev + "\n" + next)
+    }) as titleSet[];
+    //.reduce((prev, next) => prev + "\n" + next)
 
     const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", 4);
 
@@ -100,5 +103,10 @@ export const gameSeriesList: string[] = collection.map((elem, index, array) => {
         header.fourthHeader,
     ], 33) + "\n" + printDateLabel;
 
-    return printOne + "\n" + printedSeries
+    // return printOne + "\n" + printedSeries
+
+    return {
+        header: printOne,
+        titleList: printedSeries,
+    }
 })

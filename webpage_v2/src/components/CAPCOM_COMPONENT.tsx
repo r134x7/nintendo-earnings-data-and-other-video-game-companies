@@ -80,21 +80,33 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
     fyPlatinumTitlesList?.[props.setIndex]?.titleData.map(elem => [...elem?.platforms.matchAll(/\w+\s?\w+/g)].flat().map(setValue => platformListsFY.add(setValue ?? "")));
 
     let allTitlesFilter = allPlatinumTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem));
+
     let fyTitlesFilter = fyPlatinumTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem));
+
+    let gameSeriesFilter = gameSeriesList.map(elem => filterTitles<titleSet>(elem.titleList));
 
     // SIDE EFFECTS!!
     titleListCheckAll = allTitlesFilter?.[props.setIndex]?.length ?? 0;
+
     titleListCheckFY = fyTitlesFilter?.[props.setIndex]?.length ?? 0;
 
+    seriesListCheck = gameSeriesFilter?.[props.setIndex]?.length ?? 0;
+
     let allTitlesReduce: string[] = allTitlesFilter.map(elem => elem.reduce((acc,next) => acc + next.table,"")); 
+
     let fyTitlesReduce: string[] = fyTitlesFilter.map(elem => elem.reduce((acc, next) => acc + next.table,""));
 
+    let gameSeriesReduce: string[] = gameSeriesFilter.map(elem => elem.reduce((acc, next) => acc + next.table,"")); 
+
     let completeAllTitlesList = allTitlesReduce.map((elem, index) => allPlatinumTitlesList[index].header + elem + allPlatinumTitlesList[index].fyNotes + allPlatinumTitlesList[index].platformNotes);
+
     let completeFYTitlesList = fyTitlesReduce.map((elem, index) => fyPlatinumTitlesList[index].header + elem + fyPlatinumTitlesList[index].fyNotes + fyPlatinumTitlesList[index].platformNotes);
+
+    let completeGameSeriesList = gameSeriesReduce.map((elem, index) => gameSeriesList[index].header + elem);
 
     const annualReportListAltered = [""].concat(annualReportList); // to manage keeping the index values the same with softwareSalesList
 
-    const gameSeriesListAltered = [""].concat(gameSeriesList); // to manage keeping the index values the same with softwareSalesList
+    const gameSeriesListAltered = [""].concat(completeGameSeriesList); // to manage keeping the index values the same with softwareSalesList
 
     const componentListNew = Array.from({length: props.yearLength}, (elem, index) => {
 
@@ -184,10 +196,14 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
                   /> 
                     : undefined
                 }
-                {(value === "All Platinum Titles" || value === "FY Platinum Titles")
+                {(value === "All Platinum Titles" || value === "FY Platinum Titles" || value === "FY Game Series")
                     ? <TextInput
                     placeholder="Search specific titles"
-                    label={`Title Search - Number of Titles shown: ${(value === "All Platinum Titles") ? titleListCheckAll : titleListCheckFY}`}
+                    label={`Title Search - Number of Titles shown: ${(value === "All Platinum Titles") 
+                    ? titleListCheckAll 
+                    : (value === "FY Platinum Titles")
+                        ? titleListCheckFY
+                        : seriesListCheck }`}
                     description="Clear field to show all titles of the selected platform"
                     radius="xl"
                     value={titleValue}
