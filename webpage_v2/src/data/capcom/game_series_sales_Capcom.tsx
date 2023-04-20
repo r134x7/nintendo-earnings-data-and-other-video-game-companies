@@ -88,10 +88,10 @@ export const gameSeriesList: titleSetHeader[] = collection.map((elem, index, arr
         })
 
     let printedSeries = sortedList.map((elem) => {
-        return printSeriesOutput(elem, header, 42, 11);
+        return printSeriesOutput(elem, header, 42, 11, true);
     }) as titleSet[];
     //.reduce((prev, next) => prev + "\n" + next)
-
+    
     const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", 4);
 
     const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)

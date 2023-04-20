@@ -82,6 +82,6 @@ export const printSeriesOutput = (seriesIP: Series, header: Header, blockLength:
             ? printSeriesName(seriesIP, blockLength) + printCmlValue(seriesIP, valueLength, header) + printCmlYoY(seriesIP, valueLength, header) + printLTDValue(seriesIP,valueLength,header) 
             : {
                 title: seriesIP.title,
-                table: printSeriesName(seriesIP, blockLength) + printCmlValue(seriesIP, valueLength, header) + printCmlYoY(seriesIP, valueLength, header) + printLTDValue(seriesIP,valueLength,header) 
+                table: printSeriesName(seriesIP, blockLength) + printCmlValue(seriesIP, valueLength, header) + printCmlYoY(seriesIP, valueLength, header) + printLTDValue(seriesIP,valueLength,header) + "\n" 
             }
 };
