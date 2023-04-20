@@ -28,6 +28,7 @@ export default function CAPCOM_CML() {
     const [titleValue, setTitleValue] = useState("");
     const [platformValue, setPlatformValue] = useState<string | null>("All" ?? "All");
 
+
     const state: any = useSelector(state => state);
 
     // single word regex \w+, 
@@ -82,6 +83,27 @@ export default function CAPCOM_CML() {
     let softwareShipmentsReduce = softwareShipmentsFilter.reduce((acc, next) => acc + next.table,"");
 
     let softwareShipmentsList = factBookCapcom.header + softwareShipmentsReduce;
+
+    const textInputValues = [
+        {
+           value: "Capcom Platinum Titles - Cumulative",
+           placeholder: "Search specific titles",
+           label: `Title Search - Number of Titles shown: ${titleListCheck}`,
+           description: "Clear field to show all titles of the selected platform", 
+        },
+        {
+           value: "Capcom FY Game Series - Cumulative",
+           placeholder: "Search specific series",
+           label: `Series Search - Number of game series shown: ${seriesListCheck}`,
+           description: "Clear field to show all game series listed.", 
+        },
+        {
+           value: "Capcom Software Platform Shipments - Cumulative",
+           placeholder: "Search specific platform",
+           label: `Platform Search - Sets of platforms shown: ${softwareShipmentsListCheck}`,
+           description: "Clear field to show all platforms.", 
+        }
+    ].filter(elem => elem.value === value);
 
     const componentList = [
         {
@@ -168,37 +190,11 @@ export default function CAPCOM_CML() {
                   /> 
                     : undefined
                 }
-                {(value === "Capcom Platinum Titles - Cumulative")
+                {(value === "Capcom Platinum Titles - Cumulative" || value === "Capcom FY Game Series - Cumulative" || value === "Capcom Software Platform Shipments - Cumulative")
                     ? <TextInput
-                    placeholder="Search specific titles"
-                    label={`Title Search - Number of Titles shown: ${titleListCheck}`}
-                    description="Clear field to show all titles of the selected platform"
-                    radius="xl"
-                    value={titleValue}
-                    onChange={e => {
-                        setTitleValue(e.target.value)
-                    }}
-                    />  
-                    : undefined
-                }
-                {(value === "Capcom FY Game Series - Cumulative")
-                    ? <TextInput
-                    placeholder="Search specific series"
-                    label={`Series Search - Number of game series shown: ${seriesListCheck}`}
-                    description="Clear field to show all game series listed."
-                    radius="xl"
-                    value={titleValue}
-                    onChange={e => {
-                        setTitleValue(e.target.value)
-                    }}
-                    />  
-                    : undefined
-                }
-                {(value === "Capcom Software Platform Shipments - Cumulative")
-                    ? <TextInput
-                    placeholder="Search specific platform"
-                    label={`Platform Search - Groups of platforms shown: ${softwareShipmentsListCheck}`}
-                    description="Clear field to show all platforms."
+                    placeholder={textInputValues[0].placeholder}
+                    label={textInputValues[0].label}
+                    description={textInputValues[0].description}
                     radius="xl"
                     value={titleValue}
                     onChange={e => {
