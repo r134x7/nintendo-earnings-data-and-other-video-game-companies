@@ -5,6 +5,7 @@ import softwareShipmentsPlatform2022 from "./Fact_Book/software_shipments_platfo
 import softwareShipmentsPlatform2021 from "./Fact_Book/software_shipments_platform_fy3_2021.json";
 import softwareShipmentsPlatform2020 from "./Fact_Book/software_shipments_platform_fy3_2020.json";
 import softwareShipmentsPlatform2019 from "./Fact_Book/software_shipments_platform_fy3_2019.json";
+import { titleSet, titleSetHeader } from "./game_series_sales_capcom_cml_data";
 
 const collection = [
     softwareShipmentsPlatform2022,
@@ -35,7 +36,7 @@ const platformsMake = (obj: {
     return series
 };
 
-export const annualReportList: string[] = collection.map((elem, index, array) => {
+export const platformSoftwareShipmentsList: titleSetHeader[] = collection.map((elem, index, array) => {
 
     let header: Header = {
     firstHeader: "Capcom - Fact Book Data",
@@ -63,8 +64,8 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
     })
 
     let printedSeries = sortedList.map((elem) => {
-        return printSeriesOutput(elem, header, 32, 11);
-    }).reduce((prev, next) => prev + "\n" + next)
+        return printSeriesOutput(elem, header, 32, 11, true);
+    }) as titleSet[]; //.reduce((prev, next) => prev + "\n" + next)
 
     const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", 4);
 
@@ -77,5 +78,9 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
         header.fourthHeader,
     ], 31) + "\n" + printDateLabel;
 
-    return printOne + "\n" + printedSeries
+    // return printOne + "\n" + printedSeries
+    return {
+        header: printOne,
+        titleList: printedSeries
+    }
 })

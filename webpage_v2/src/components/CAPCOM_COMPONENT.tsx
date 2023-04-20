@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { allPlatinumTitlesList, filteringFyTitles, fyPlatinumTitlesList, searchTitles } from "../data/capcom/platinum_titles_Capcom";
 import { gameSeriesList } from "../data/capcom/game_series_sales_Capcom";
 import { softwareSalesList, softwareSalesGraphList } from "../data/capcom/software_sales_Capcom";
-import { annualReportList } from "../data/capcom/software_shipments_platform_Capcom";
+import { platformSoftwareShipmentsList } from "../data/capcom/software_shipments_platform_Capcom";
 import { capcomConsolidatedEarningsList, capcomConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { capcomLinks } from "../data/generalTables/data_sources_general";
 import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
@@ -85,12 +85,17 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     let gameSeriesFilter = gameSeriesList.map(elem => filterTitles<titleSet>(elem.titleList));
 
+    let platformSoftwareShipmentsFilter = platformSoftwareShipmentsList.map(elem => filterTitles<titleSet>(elem.titleList));
+
     // SIDE EFFECTS!!
     titleListCheckAll = allTitlesFilter?.[props.setIndex]?.length ?? 0;
 
     titleListCheckFY = fyTitlesFilter?.[props.setIndex]?.length ?? 0;
 
-    seriesListCheck = gameSeriesFilter?.[props.setIndex]?.length ?? 0;
+    // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
+    seriesListCheck = gameSeriesFilter?.[props.setIndex-1]?.length ?? 0;
+    // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
+    softwareShipmentsListCheck = platformSoftwareShipmentsFilter?.[props.setIndex-1]?.length ?? 0;
 
     let allTitlesReduce: string[] = allTitlesFilter.map(elem => elem.reduce((acc,next) => acc + next.table,"")); 
 
@@ -98,13 +103,17 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     let gameSeriesReduce: string[] = gameSeriesFilter.map(elem => elem.reduce((acc, next) => acc + next.table,"")); 
 
+    let platformSoftwareShipmentsReduce: string[] = platformSoftwareShipmentsFilter.map(elem => elem.reduce((acc, next) => acc + next.table,""));
+
     let completeAllTitlesList = allTitlesReduce.map((elem, index) => allPlatinumTitlesList[index].header + elem + allPlatinumTitlesList[index].fyNotes + allPlatinumTitlesList[index].platformNotes);
 
     let completeFYTitlesList = fyTitlesReduce.map((elem, index) => fyPlatinumTitlesList[index].header + elem + fyPlatinumTitlesList[index].fyNotes + fyPlatinumTitlesList[index].platformNotes);
 
     let completeGameSeriesList = gameSeriesReduce.map((elem, index) => gameSeriesList[index].header + elem);
 
-    const annualReportListAltered = [""].concat(annualReportList); // to manage keeping the index values the same with softwareSalesList
+    let completePlatformSoftwareShipmentsList = platformSoftwareShipmentsReduce.map((elem, index) => platformSoftwareShipmentsList[index].header + elem)
+
+    const annualReportListAltered = [""].concat(completePlatformSoftwareShipmentsList); // to manage keeping the index values the same with softwareSalesList
 
     const gameSeriesListAltered = [""].concat(completeGameSeriesList); // to manage keeping the index values the same with softwareSalesList
 
@@ -196,14 +205,16 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
                   /> 
                     : undefined
                 }
-                {(value === "All Platinum Titles" || value === "FY Platinum Titles" || value === "FY Game Series")
+                {(value === "All Platinum Titles" || value === "FY Platinum Titles" || value === "FY Game Series" || value === "Software Platform Shipments")
                     ? <TextInput
                     placeholder="Search specific titles"
                     label={`Title Search - Number of Titles shown: ${(value === "All Platinum Titles") 
                     ? titleListCheckAll 
                     : (value === "FY Platinum Titles")
                         ? titleListCheckFY
-                        : seriesListCheck }`}
+                        : (value === "FY Game Series")
+                            ? seriesListCheck 
+                            : softwareShipmentsListCheck}`}
                     description="Clear field to show all titles of the selected platform"
                     radius="xl"
                     value={titleValue}

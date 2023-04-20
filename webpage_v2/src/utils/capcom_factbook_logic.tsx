@@ -52,6 +52,11 @@ const printSeriesName = (seriesIP: Series, blockLength: number) => {
             : liner(printTextBlock(seriesIP.title, blockLength), "−", "both", true, blockLength) + liner(printRankAndSKU(seriesIP, blockLength), "=","bottom",true) + liner(printTextBlock(seriesIP.miscellaneous, blockLength),"−","bottom",true,blockLength);
 };
 
-export const printSeriesOutput = (seriesIP: Series, header: Header, blockLength: number, valueLength: number) => {
-        return printSeriesName(seriesIP, blockLength) + printCmlValue(seriesIP, valueLength, header) + liner(printCmlYoY(seriesIP, valueLength, header),"−","bottom")
+export const printSeriesOutput = (seriesIP: Series, header: Header, blockLength: number, valueLength: number, returnObject?: true) => {
+        return (!returnObject)
+            ? printSeriesName(seriesIP, blockLength) + printCmlValue(seriesIP, valueLength, header) + liner(printCmlYoY(seriesIP, valueLength, header),"−","bottom")
+            : {
+                title: seriesIP.title,
+                table: printSeriesName(seriesIP, blockLength) + printCmlValue(seriesIP, valueLength, header) + liner(printCmlYoY(seriesIP, valueLength, header),"−","bottom") + "\n"
+            }
 };
