@@ -51,9 +51,12 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
     steps: filter by platform => filter by title search => side effect: (mutate titles list length) => reduce titlesFilter => combine the headers, footers with the tables.
     */
 
+    // reducing computations by only filtering the selected year and not filtering the other years. 
     let allPlatinumTitlesPlatformsFiltered = Array.from({length:allPlatinumTitlesList.length},(v,i) => {
-        return filterPlatforms<searchTitles>(allPlatinumTitlesList[i].titleData)
-    }) 
+        return (i === props.setIndex)
+            ? filterPlatforms<searchTitles>(allPlatinumTitlesList[i].titleData)
+            : allPlatinumTitlesList[i].titleData
+    })
 
     let platformLists = new Set<string>()
     // only way I could think of making sure I got lists for each year.

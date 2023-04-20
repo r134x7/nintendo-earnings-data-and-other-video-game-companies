@@ -274,7 +274,7 @@ export const allPlatinumTitlesList: filteringFyTitles[] = collection.map((elem, 
     return printAllPlatinumTitles
 });
 
-export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array) => {
+export const fyPlatinumTitlesList: filteringFyTitles[] = collection.map((elem, index, array) => {
 
     let currentQuarter = elem.currentQuarter;
 
@@ -319,8 +319,8 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
     })
 
     let printListedTitlesFY = differenceFYTitles.map((elem, index) => {
-        return printTitles(header, elem, sortedFYCollection[index], currentQuarter)
-    }) as string[];
+        return printTitles(header, elem, sortedFYCollection[index], currentQuarter, true)
+    }) as searchTitles[];
 
     let newTitles = sortedFYCollection.map((elem) => {
             return labelTitles(elem)
@@ -378,13 +378,30 @@ export const fyPlatinumTitlesList: string[] = collection.map((elem, index, array
 
     let printSummaryTwo = printSummary(header, newSum, recurringSum, sporadicSum) + "\n"
 
-    let printListedTitlesFYFixed: string[] = printListedTitlesFY.concat(liner(printTextBlock(elem?.footnotes,40),"=","both",true,40)); 
+    // let printListedTitlesFYFixed: string[] = printListedTitlesFY.concat(liner(printTextBlock(elem?.footnotes,40),"=","both",true,40)); 
+
+    let fySpecficNotes = liner(printTextBlock(elem?.footnotes,40),"=","both",true,40);
 
     let printPlatformNotes: string = liner(printTextBlock(elem.platformNotes,40),"=","both",true,40)
 
-    let printFYPlatinumTitles: string = (currentQuarter !== 4)
-        ? [printOne, ...printListedTitlesFYFixed, printPlatformNotes].reduce((prev, next) => prev + next )
-        : [printSummaryOne, printSummaryTwo, printOne, ...printListedTitlesFYFixed, printPlatformNotes].reduce((prev, next) => prev + next )
+    // let printFYPlatinumTitles: string = (currentQuarter !== 4)
+    //     ? [printOne, ...printListedTitlesFYFixed, printPlatformNotes].reduce((prev, next) => prev + next )
+    //     : [printSummaryOne, printSummaryTwo, printOne, ...printListedTitlesFYFixed, printPlatformNotes].reduce((prev, next) => prev + next )
+
+   let printFYPlatinumTitles = (currentQuarter !== 4) 
+        ? {
+            header: printOne,
+            titleData: printListedTitlesFY,
+            fyNotes: fySpecficNotes,
+            platformNotes: printPlatformNotes
+        }
+        : {
+            header: printSummaryOne + printSummaryTwo + printOne,
+            titleData: printListedTitlesFY,
+            fyNotes: fySpecficNotes,
+            platformNotes: printPlatformNotes
+        }
+    
 
     return printFYPlatinumTitles
 });
