@@ -2,6 +2,7 @@ import { Section } from "../../utils/general_quarterly_software_units_logic";
 import { platformUnitSalesMake } from "./software_units_sega";
 import { liner, border, printTextBlock, spacer, dateLabel } from "../../utils/table_design_logic";
 
+import type { titleSetHeader } from "../capcom/game_series_sales_capcom_cml_data";
 
 import softwareUnitsSegaSammy2021 from "./Software_Units/software_units_fy3_2021.json"
 import softwareUnitsSegaSammy2022 from "./Software_Units/software_units_fy3_2022.json"
@@ -91,7 +92,7 @@ function softwareUnitsMaker (collection: softwareUnits[], companyName: string, d
    }
 };
 
-function printTitles(header: string, titles: Section[][]) {
+function printTitles(header: string, titles: Section[][], returnObject?: true) {
 
     const titleList = titles.map((elem, index, array) => {
 
@@ -120,21 +121,37 @@ function printTitles(header: string, titles: Section[][]) {
                 spacer(`${sum}M`,9,"right")
             ]),"−","both",true) + liner(printTextBlock(miscellaneousCheck,42),"−","bottom",true,42)
 
-        return [
+        return (!returnObject) 
+        ? [
             printTitleName,
             ...yearValues,
             printSum,
         ].reduce((prev, next) => {
             return prev + next
-        });
-    }).reduce((prev, next) => prev + next);
+        })
+        : {
+            title: elem[0].name,
+            table: [
+            printTitleName,
+            ...yearValues,
+            printSum,
+        ].reduce((prev, next) => {
+            return prev + next
+        })
+        };
+    })//.reduce((prev, next) => prev + next);
 
-    return [
+    return (!returnObject)
+    ? [
+        header,
+        titleList.reduce((acc, next) => (typeof next === "string") ? acc + next : acc,""),
+    ].reduce((acc, next) => (typeof next === "string") ? acc + next : acc,"")
+    : {
         header,
         titleList,
-    ].reduce((acc, next) => acc + next)
+    }
 };
 
 const softwareUnitsSegaSammy = softwareUnitsMaker(collectionSegaSammy, "Sega Sammy", printDateLabel);
 
-export const softwareCumulativeSegaSammy = printTitles(softwareUnitsSegaSammy.header, softwareUnitsSegaSammy.titles);
+export const softwareCumulativeSegaSammy = printTitles(softwareUnitsSegaSammy.header, softwareUnitsSegaSammy.titles, true) as titleSetHeader;
