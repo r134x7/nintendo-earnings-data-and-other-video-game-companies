@@ -20,6 +20,14 @@ export default function SEGA_CML() {
 
     const state: any = useSelector(state => state);
 
+    let filteredIPType = fyTitlesSegaSammy.titleData.filter(elem => {
+        if (platformValue === "All") {
+            return elem
+        } else if (platformValue === elem.platforms) {
+            return elem
+        }
+    })
+
     function filterTitles<T extends searchTitles | titleSet>(input: T[]) {
 
         return input.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()))
@@ -31,6 +39,12 @@ export default function SEGA_CML() {
 
     let softwareCumulativeList = softwareCumulativeSegaSammy.header + softwareCumulativeReduce;
 
+    let filterIPTypeTitles = filterTitles<searchTitles>(filteredIPType);
+
+    let IPTypeReduce = filterIPTypeTitles.reduce((acc, next) => acc + next.table,"");
+
+    let IPTypeList = fyTitlesSegaSammy.header + IPTypeReduce;
+
     const textInputValues = [
         {
            value: "Sega Sammy Software Units - Cumulative",
@@ -38,28 +52,30 @@ export default function SEGA_CML() {
            label: `Title/Series Search - Number of Titles/Series shown: ${titlesLength}`,
            description: "Clear field to show all titles of the selected platform", 
         },
-        // {
-        //    value: "Capcom FY Game Series - Cumulative",
-        //    placeholder: "Search specific series",
-        //    label: `Series Search - Number of game series shown: ${seriesListCheck}`,
-        //    description: "Clear field to show all game series listed.", 
-        // },
-        // {
-        //    value: "Capcom Software Platform Shipments - Cumulative",
-        //    placeholder: "Search specific platform",
-        //    label: `Platform Search - Sets of platforms shown: ${softwareShipmentsListCheck}`,
-        //    description: "Clear field to show all platforms.", 
-        // }
+        {
+           value: "Sega Sammy FY Series IP - Cumulative",
+           placeholder: "Search specific series",
+           label: `Series Search - Number of game series shown: ${titlesLength}`,
+           description: "Clear field to show all game series listed.", 
+        },
     ].filter(elem => elem.value === value);
-
     
     useEffect(() => {
-        // setting up a setValue here rather than mutating a value outside the function... i.e. side effect
-        if (value === "Sega Sammy Software Units - Cumulative") {
-            setTitlesLength(filterSoftwareCumulative.length)
+
+        switch (value) {
+            case "Sega Sammy Software Units - Cumulative":
+                setTitlesLength(filterSoftwareCumulative.length)
+                break;
+
+            case "Sega Sammy FY Series IP - Cumulative":
+                setTitlesLength(filterIPTypeTitles.length)
+                break;
+        
+            default:
+                break;
         }
 
-    }, [titleValue])
+    }, [titleValue, value, platformValue])
 
     const componentList = [
         {
@@ -77,7 +93,8 @@ export default function SEGA_CML() {
         },
         {
             name: "Sega Sammy FY Series IP - Cumulative",
-            value: fyTitlesSegaSammy
+            // value: fyTitlesSegaSammy
+            value: IPTypeList
         },
     ];
 
@@ -105,7 +122,23 @@ export default function SEGA_CML() {
             />
             
             <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {(value === "Sega Sammy Software Units - Cumulative")
+                {(value === "Sega Sammy FY Series IP - Cumulative")
+                    ? <Select
+                        data={[
+                         "All",
+                         "Developed in-house IP",
+                         "Acquired IP",
+                         "Licensed third party IP",
+                     ]}
+                    defaultValue={"All"} 
+                    label="Select all or one IP Type:"
+                    radius="xl"
+                    value={platformValue}
+                    onChange={setPlatformValue}
+                  /> 
+                    : undefined
+                }
+                {(value === "Sega Sammy Software Units - Cumulative" || value === "Sega Sammy FY Series IP - Cumulative")
                     ? <TextInput
                     placeholder={textInputValues[0].placeholder}
                     label={textInputValues[0].label}

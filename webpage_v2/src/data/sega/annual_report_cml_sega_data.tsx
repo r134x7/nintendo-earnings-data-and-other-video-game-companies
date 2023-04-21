@@ -14,6 +14,8 @@ import annualReportSegaSammy2020 from "./Annual_Report/annual_report_fy3_2020.js
 import annualReportSegaSammy2021 from "./Annual_Report/annual_report_fy3_2021.json";
 import annualReportSegaSammy2022 from "./Annual_Report/annual_report_fy3_2022.json";
 
+import type { filteringTitles, searchTitles } from "../capcom/platinum_titles_Capcom";
+
 type annualReport = {
     fiscalYear: string,
     series: seriesType[]
@@ -113,7 +115,7 @@ function annualReportMaker (collection: annualReport[], companyName: string, dat
    }
 }
 
-function printTitles(header: string, titles: Series[][]) {
+function printTitles(header: string, titles: Series[][], returnObject?: boolean) {
 
     const titleList = titles.map((elem, index, array) => {
 
@@ -186,7 +188,8 @@ function printTitles(header: string, titles: Series[][]) {
             ? "" 
             : liner(ratioList,"=","both",undefined,45) + "\n###\n"
 
-        return [
+        return (!returnObject) 
+        ? [
             printTitleName,
             printIPType,
             printPlatforms,
@@ -196,15 +199,37 @@ function printTitles(header: string, titles: Series[][]) {
             ratioListFixed,
         ].reduce((prev, next) => {
             return prev + next
-        });
-    }).reduce((prev, next) => prev + next);
+        })
+        : {
+            title: elem[0].title,
+            platforms: elem[0].ipType,
+            table: [
+            printTitleName,
+            printIPType,
+            printPlatforms,
+            releaseDateAndRankAndNotes,
+            ...yearValues,
+            printLTD,
+            ratioListFixed,
+        ].reduce((prev, next) => {
+            return prev + next
+        }) 
+        };
+    })//.reduce((prev, next) => prev + next);
 
-    return [
+    return (!returnObject) 
+    ? [
         header,
-        titleList,
-    ].reduce((acc, next) => acc + next)
+        titleList.reduce((acc, next) => (typeof next === "string") ? acc + next : acc ,""),
+    ].reduce((acc, next) => (typeof next === "string") ? acc + next : acc ,"")
+    : {
+        header: header,
+        date: "", // date already inside header
+        titleData: titleList,
+        platformsNote: "", // no platform notes
+    }
 };
 
 const annualReportSegaSammy = annualReportMaker(collectionSegaSammy, "Sega Sammy", printDateLabel);
 
-export const fyTitlesSegaSammy = printTitles(annualReportSegaSammy.header, annualReportSegaSammy.titles); 
+export const fyTitlesSegaSammy = printTitles(annualReportSegaSammy.header, annualReportSegaSammy.titles, true) as filteringTitles; 
