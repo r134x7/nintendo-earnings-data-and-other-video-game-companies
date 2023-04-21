@@ -6,6 +6,7 @@ import { CapcomSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_pe
 import { cumulativeEarningsListCapcom } from "../../data/generalTables/consolidated_earnings_cml_data";
 import { gameSeriesCapcom } from "../../data/capcom/game_series_sales_capcom_cml_data";
 import { factBookCapcom } from "../../data/capcom/software_shipments_capcom_cml_data";
+import { filterTitles } from "../../utils/table_design_logic";
 
 import type { searchTitles } from "../../data/capcom/platinum_titles_Capcom";
 import type { titleSet } from "../../data/capcom/game_series_sales_capcom_cml_data";
@@ -46,12 +47,7 @@ export default function CAPCOM_CML() {
 
     })  
 
-    function filterTitles<T extends searchTitles | titleSet>(input: T[]) {
-
-        return input.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()))
-    }
-
-    let filterPlatinumTitles = filterTitles<searchTitles>(filteredPlatforms);
+    let filterPlatinumTitles = filterTitles<searchTitles>(filteredPlatforms, titleValue);
             
     // let filterTitles = filteredPlatforms.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()))
     
@@ -67,7 +63,7 @@ export default function CAPCOM_CML() {
 
     // let fyTitlesFilter = fyTitlesCapcom.titleList.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()));
 
-    let gameSeriesFilter = filterTitles<titleSet>(gameSeriesCapcom.titleList)
+    let gameSeriesFilter = filterTitles<titleSet>(gameSeriesCapcom.titleList, titleValue)
 
     // seriesListCheck = gameSeriesFilter.length;
 
@@ -77,7 +73,7 @@ export default function CAPCOM_CML() {
 
     // let softwareShipmentsFilter = factBookCapcom.titleList.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()));
 
-    let softwareShipmentsFilter = filterTitles<titleSet>(factBookCapcom.titleList);
+    let softwareShipmentsFilter = filterTitles<titleSet>(factBookCapcom.titleList, titleValue);
 
     // softwareShipmentsListCheck = softwareShipmentsFilter.length;
 

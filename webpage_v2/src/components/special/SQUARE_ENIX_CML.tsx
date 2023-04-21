@@ -13,6 +13,9 @@ export default function SQUARE_ENIX_CML() {
 
     const state: any = useSelector(state => state);
 
+    const [titleValue, setTitleValue] = useState("");
+    const [titlesLength, setTitlesLength] = useState(0)
+
     const componentList = [
         {
             name: "Square Enix Consolidated Financial Results - Cumulative",

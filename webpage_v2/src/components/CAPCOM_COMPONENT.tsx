@@ -7,6 +7,7 @@ import { softwareSalesList, softwareSalesGraphList } from "../data/capcom/softwa
 import { platformSoftwareShipmentsList } from "../data/capcom/software_shipments_platform_Capcom";
 import { capcomConsolidatedEarningsList, capcomConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { capcomLinks } from "../data/generalTables/data_sources_general";
+import { filterTitles } from "../utils/table_design_logic";
 import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
@@ -44,11 +45,6 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
         })
     }
 
-    function filterTitles<T extends searchTitles | titleSet>(input: T[]) {
-
-        return input.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()))
-    }
-
     /*
     steps: filter by platform => filter by title search => side effect: (mutate titles list length) => reduce titlesFilter => combine the headers, footers with the tables.
     */
@@ -80,13 +76,13 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     fyPlatinumTitlesList?.[props.setIndex]?.titleData.map(elem => [...elem?.platforms.matchAll(/\w+\s?\w+/g)].flat().map(setValue => platformListsFY.add(setValue ?? "")));
 
-    let allTitlesFilter = allPlatinumTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem));
+    let allTitlesFilter = allPlatinumTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem,titleValue));
 
-    let fyTitlesFilter = fyPlatinumTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem));
+    let fyTitlesFilter = fyPlatinumTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem, titleValue));
 
-    let gameSeriesFilter = gameSeriesList.map(elem => filterTitles<titleSet>(elem.titleList));
+    let gameSeriesFilter = gameSeriesList.map(elem => filterTitles<titleSet>(elem.titleList, titleValue));
 
-    let platformSoftwareShipmentsFilter = platformSoftwareShipmentsList.map(elem => filterTitles<titleSet>(elem.titleList));
+    let platformSoftwareShipmentsFilter = platformSoftwareShipmentsList.map(elem => filterTitles<titleSet>(elem.titleList, titleValue));
 
     // // SIDE EFFECTS!!
     // titleListCheckAll = allTitlesFilter?.[props.setIndex]?.length ?? 0;

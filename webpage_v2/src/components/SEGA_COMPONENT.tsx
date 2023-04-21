@@ -6,6 +6,7 @@ import { softwareSalesList, softwareSalesGraphList } from "../data/sega/software
 import { annualReportList } from "../data/sega/annual_report_sega";
 import { segaConsolidatedEarningsList, segaConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { segaLinks } from "../data/generalTables/data_sources_general";
+import { filterTitles } from "../utils/table_design_logic";
 import type { searchTitles } from "../data/capcom/platinum_titles_Capcom";
 import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
 
@@ -38,23 +39,18 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
             : annualReportList[i].titleData
     })
 
-    function filterTitles<T extends searchTitles | titleSet>(input: T[]) {
-
-        return input.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()))
-    }
-
     let annualReportIPTypes = new Set<string>();
 
     // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
     annualReportList?.[props.setIndex-1]?.titleData.map(elem => annualReportIPTypes.add(elem.platforms));
 
-    let annualReportTitlesFilter = annualReportListFiltered.map(elem => filterTitles<searchTitles>(elem))
+    let annualReportTitlesFilter = annualReportListFiltered.map(elem => filterTitles<searchTitles>(elem, titleValue))
 
     let annualReportReduce = annualReportTitlesFilter.map(elem => elem.reduce((acc,next) => acc + next.table,""));
 
     let completeAnnualReportList = annualReportReduce.map((elem, index) => annualReportList[index].header + elem);
 
-    let softwareUnitsFilter = segaSoftwareUnitsList.map(elem => filterTitles<titleSet>(elem.titleList));
+    let softwareUnitsFilter = segaSoftwareUnitsList.map(elem => filterTitles<titleSet>(elem.titleList, titleValue));
 
     let softwareUnitsReduce = softwareUnitsFilter.map(elem => elem.reduce((acc, next) => acc + next.table,""));
 

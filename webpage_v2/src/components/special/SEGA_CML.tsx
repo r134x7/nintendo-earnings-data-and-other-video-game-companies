@@ -7,6 +7,7 @@ import { fyTitlesSegaSammy } from "../../data/sega/annual_report_cml_sega_data";
 import { softwareCumulativeSegaSammy } from "../../data/sega/software_units_sega_cml_data";
 import type { searchTitles } from "../../data/capcom/platinum_titles_Capcom";
 import type { titleSet } from "../../data/capcom/game_series_sales_capcom_cml_data";
+import { filterTitles } from "../../utils/table_design_logic";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 
@@ -28,18 +29,13 @@ export default function SEGA_CML() {
         }
     })
 
-    function filterTitles<T extends searchTitles | titleSet>(input: T[]) {
-
-        return input.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()))
-    }
-
-    let filterSoftwareCumulative = filterTitles<titleSet>(softwareCumulativeSegaSammy.titleList);
+    let filterSoftwareCumulative = filterTitles<titleSet>(softwareCumulativeSegaSammy.titleList, titleValue);
 
     let softwareCumulativeReduce = filterSoftwareCumulative.reduce((acc, next) => acc + next.table,"");
 
     let softwareCumulativeList = softwareCumulativeSegaSammy.header + softwareCumulativeReduce;
 
-    let filterIPTypeTitles = filterTitles<searchTitles>(filteredIPType);
+    let filterIPTypeTitles = filterTitles<searchTitles>(filteredIPType, titleValue);
 
     let IPTypeReduce = filterIPTypeTitles.reduce((acc, next) => acc + next.table,"");
 

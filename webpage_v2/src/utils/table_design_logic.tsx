@@ -1,5 +1,7 @@
 import { useInterval } from "@mantine/hooks";
 import { useState, useEffect } from "react";
+import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
+import type { searchTitles } from "../data/capcom/platinum_titles_Capcom";
 
 export const printTextBlock = (text: string | undefined, blockLength: number): string | undefined => {
     // to make liner work by not printing.
@@ -167,3 +169,8 @@ export function useSingleMessage(textInput: string, blockLength: number, borderS
 
     return textBlock;
 };
+
+export function filterTitles<T extends searchTitles | titleSet>(input: T[], stateValue: string) {
+
+        return input.filter(elem => (stateValue === "") ? elem : elem.title.toLowerCase().includes(stateValue.toLowerCase()))
+    }
