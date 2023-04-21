@@ -1,6 +1,7 @@
 import { platformSalesMake } from "../consolidated_sales_information_nintendo";
 import { printTextBlock, border, liner, spacer, dateLabel } from "../../../utils/table_design_logic";
 
+import type { titleSet, titleSetHeader } from "../../capcom/game_series_sales_capcom_cml_data";
 
 import consolidatedSalesInfo2023 from "../Consolidated_Sales_Information/consolidated_sales_information_fy3_2023.json";
 import consolidatedSalesInfo2022 from "../Consolidated_Sales_Information/consolidated_sales_information_fy3_2022.json";
@@ -113,7 +114,7 @@ import { Section, Header } from "../../../utils/hardware_software_units_logic";
     };
 
 
-    const printTitlesGlobal = (titles: Section[][]) => {
+    const printTitlesGlobal = (titles: Section[][], returnObject?: boolean) => {
 
         const regionRank = titles.map((elem, index, array) => {
             
@@ -185,19 +186,32 @@ import { Section, Header } from "../../../utils/hardware_software_units_logic";
          
         let printStats = liner(printCount +  printSum + printAverage + printMedianFixed + printMinimum + printMaximum,"−","both",true,42);
 
-            return [
+            return (!returnObject) 
+            ? [
                 printTitleName,
                 ...yearValues,
                 printStats,
             ].reduce((prev, next) => {
                 return prev + next
-            });
-
-        }).filter(value => value !== "N/A").reduce((prev, next) => {
+            })
+            : {
+                title: elem.at(-1)?.name ?? "ERROR",
+                table: [
+                printTitleName,
+                ...yearValues,
+                printStats,
+                ].reduce((prev, next) => {
                 return prev + next
-        });
+            })
+            } 
+        })
+        // .filter(value => value !== "N/A").reduce((prev, next) => {
+        //         return prev + next
+        // });
 
-        return regionRank
+        return (!returnObject) 
+            ? regionRank.filter(value => value !== "N/A").reduce((acc, next) => (typeof next === "string") ? acc + next : next,"")
+            : regionRank.filter(value => value !== "N/A")
     }
 
     const reducedArrays: Section[][] = latestFYcollection.map((elem) => {
@@ -220,7 +234,7 @@ const printOneWW =
 | Nintendo Co., Ltd. |
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 | Consolidated Sales Information     |
-+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
 
 // const divideSortedGlobalCollection = reducedArrays.map(elem => elem.map(section => {
 //     return {
@@ -229,13 +243,20 @@ const printOneWW =
 //     }}))
 
 // const printFour = printTitlesGlobal(divideSortedGlobalCollection)
-const printFour = printTitlesGlobal(sortedArrays)
+const printFour = printTitlesGlobal(sortedArrays,true) as titleSet[];
 
 let dataSource = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_data/index.html"
 
-export const printConsolidatedSalesInfo = 
-`${printOneWW}
-${printDateLabel}
-${printFour}
-###
-${dataSource}`;
+// export const printConsolidatedSalesInfo = 
+// `${printOneWW}
+// ${printDateLabel}
+// ${printFour}
+// ###
+// ${dataSource}`;
+
+export const printConsolidatedSalesInfo = {
+    header: printOneWW,
+    date: printDateLabel,
+    titleList : printFour,
+    footer: dataSource,
+}
