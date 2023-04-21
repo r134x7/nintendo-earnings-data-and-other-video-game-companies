@@ -1,11 +1,13 @@
-import { useState } from "react";
-import { Code, SegmentedControl, Space } from "@mantine/core";
+import { useState, useEffect } from "react";
+import { Code, SegmentedControl, Space, TextInput } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { squareEnixSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListSquareEnix } from "../../data/generalTables/consolidated_earnings_cml_data";
-import { fyTitlesSquareEnix } from "../../data/generalTables/annual_report_cml_data";
+import { fyTitlesSquareEnix, squareEnixFootnotes } from "../../data/generalTables/annual_report_cml_data";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
+import { filterTitles } from "../../utils/table_design_logic";
+import type { titleSet } from "../../data/capcom/game_series_sales_capcom_cml_data";
 
 export default function SQUARE_ENIX_CML() {
 
@@ -15,6 +17,34 @@ export default function SQUARE_ENIX_CML() {
 
     const [titleValue, setTitleValue] = useState("");
     const [titlesLength, setTitlesLength] = useState(0)
+
+    let filterAnnualReportTitles = filterTitles<titleSet>(fyTitlesSquareEnix.titleList, titleValue);
+
+    let annualReportTitlesReduce = filterAnnualReportTitles.reduce((acc, next) => acc + next.table,"");
+
+    let completeAnnualReportList = fyTitlesSquareEnix.header + annualReportTitlesReduce + squareEnixFootnotes;
+
+    const textInputValues = [
+        {
+           value: "Square Enix FY Series IP - Cumulative",
+           placeholder: "Search specific series",
+           label: `Series Search - Number of game series shown: ${titlesLength}`,
+           description: "Clear field to show all game series listed.", 
+        },
+    ].filter(elem => elem.value === value);
+    
+    useEffect(() => {
+
+        switch (value) {
+            case "Square Enix FY Series IP - Cumulative":
+                setTitlesLength(filterAnnualReportTitles.length)
+                break;
+
+            default:
+                break;
+        }
+
+    }, [titleValue, value])
 
     const componentList = [
         {
@@ -27,7 +57,7 @@ export default function SQUARE_ENIX_CML() {
         },
         {
             name: "Square Enix FY Series IP - Cumulative",
-            value: fyTitlesSquareEnix
+            value: completeAnnualReportList
         },
     ];
 
@@ -55,6 +85,19 @@ export default function SQUARE_ENIX_CML() {
             />
             
             <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {(value === "Square Enix FY Series IP - Cumulative")
+                    ? <TextInput
+                    placeholder={textInputValues[0].placeholder}
+                    label={textInputValues[0].label}
+                    description={textInputValues[0].description}
+                    radius="xl"
+                    value={titleValue}
+                    onChange={e => {
+                        setTitleValue(e.target.value)
+                    }}
+                    />  
+                    : undefined
+                }
                 {selectData(value)}
                 </Code>
             <Space h="xl" />

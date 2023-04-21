@@ -21,6 +21,8 @@ import annualReportSquareEnix2020 from "../squareEnix/Annual_Report/annual_repor
 import annualReportSquareEnix2021 from "../squareEnix/Annual_Report/annual_report_fy3_2021.json";
 import annualReportSquareEnix2022 from "../squareEnix/Annual_Report/annual_report_fy3_2022.json";
 
+import type { titleSet, titleSetHeader } from "../capcom/game_series_sales_capcom_cml_data";
+
 type annualReport = {
     fiscalYear: string,
     series: {
@@ -136,7 +138,7 @@ function annualReportMaker (collection: annualReport[], companyName: string, dat
    }
 }
 
-function printTitles(header: string, titles: Series[][]) {
+function printTitles(header: string, titles: Series[][], returnObject?: true) {
 
     const titleList = titles.map((elem, index, array) => {
 
@@ -168,20 +170,37 @@ function printTitles(header: string, titles: Series[][]) {
             spacer(`${elem[elem.length-1].value}M`,9,"right")
         ]),"−","both",true) 
 
-        return [
+        return (!returnObject)
+        ? [
             printTitleName,
             releaseDateAndRank,
             ...yearValues,
             printLTD,
         ].reduce((prev, next) => {
             return prev + next
-        });
-    }).reduce((prev, next) => prev + next);
+        })
+        : {
+            title: elem[0].title,
+            table: [
+            printTitleName,
+            releaseDateAndRank,
+            ...yearValues,
+            printLTD,
+        ].reduce((prev, next) => {
+            return prev + next
+        })
+        };
+    })//.reduce((prev, next) => prev + next);
 
-    return [
+    return (!returnObject)
+    ? [
+        header,
+        titleList.reduce((acc, next) => (typeof next === "string") ? acc + next : acc ,""),
+    ].reduce((acc, next) => (typeof next === "string") ? acc + next : acc ,"")
+    : {
         header,
         titleList,
-    ].reduce((acc, next) => acc + next)
+    }
 };
 
 const annualReportBandaiNamco = annualReportMaker(collectionBandaiNamco, "Bandai Namco", labelMaker(collectionBandaiNamco));
@@ -192,7 +211,11 @@ const annualReportSquareEnix = annualReportMaker(collectionSquareEnix, "Square E
 
 let squareEnixNote = "For the numbers shown from FY3/2010 to FY3/2019, go to the FY Series IP section of the relevant fiscal year and check the footnotes regarding the accuracy of those numbers." 
 
-export const fyTitlesSquareEnix = [
-    printTitles(annualReportSquareEnix.header, annualReportSquareEnix.titles),
-    liner(printTextBlock(squareEnixNote,42),"−","both",true,42)
-].reduce((acc, next) => acc + next); 
+// export const fyTitlesSquareEnix = [
+//     printTitles(annualReportSquareEnix.header, annualReportSquareEnix.titles),
+//     liner(printTextBlock(squareEnixNote,42),"−","both",true,42)
+// ].reduce((acc, next) => acc + next); 
+
+export const fyTitlesSquareEnix = printTitles(annualReportSquareEnix.header, annualReportSquareEnix.titles, true) as titleSetHeader ;  
+
+export const squareEnixFootnotes: string = liner(printTextBlock(squareEnixNote,42),"−","both",true,42)
