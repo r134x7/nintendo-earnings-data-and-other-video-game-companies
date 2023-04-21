@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Code, SegmentedControl, Select, TextInput } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { allPlatinumTitlesList, fyPlatinumTitlesList, searchTitles } from "../data/capcom/platinum_titles_Capcom";
@@ -14,10 +14,10 @@ import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATE
 
 import {cite, citeCopy} from "../utils/copySetCitation";
 
-let titleListCheckAll = 0;
-let titleListCheckFY = 0;
-let seriesListCheck = 0;
-let softwareShipmentsListCheck = 0;
+// let titleListCheckAll = 0;
+// let titleListCheckFY = 0;
+// let seriesListCheck = 0;
+// let softwareShipmentsListCheck = 0;
 
 export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
@@ -26,6 +26,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
     const state: any = useSelector(state => state);
 
     const [titleValue, setTitleValue] = useState("");
+    const [titlesLength, setTitlesLength] = useState(0);
     const [platformValue, setPlatformValue] = useState<string | null>("All" ?? "All");
 
     function filterPlatforms<T extends searchTitles>(input: T[]) {
@@ -87,15 +88,15 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     let platformSoftwareShipmentsFilter = platformSoftwareShipmentsList.map(elem => filterTitles<titleSet>(elem.titleList));
 
-    // SIDE EFFECTS!!
-    titleListCheckAll = allTitlesFilter?.[props.setIndex]?.length ?? 0;
+    // // SIDE EFFECTS!!
+    // titleListCheckAll = allTitlesFilter?.[props.setIndex]?.length ?? 0;
 
-    titleListCheckFY = fyTitlesFilter?.[props.setIndex]?.length ?? 0;
+    // titleListCheckFY = fyTitlesFilter?.[props.setIndex]?.length ?? 0;
 
-    // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
-    seriesListCheck = gameSeriesFilter?.[props.setIndex-1]?.length ?? 0;
-    // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
-    softwareShipmentsListCheck = platformSoftwareShipmentsFilter?.[props.setIndex-1]?.length ?? 0;
+    // // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
+    // seriesListCheck = gameSeriesFilter?.[props.setIndex-1]?.length ?? 0;
+    // // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
+    // softwareShipmentsListCheck = platformSoftwareShipmentsFilter?.[props.setIndex-1]?.length ?? 0;
 
     let allTitlesReduce: string[] = allTitlesFilter.map(elem => elem.reduce((acc,next) => acc + next.table,"")); 
 
@@ -121,28 +122,55 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
         {
            value: "All Platinum Titles",
            placeholder: "Search specific titles",
-           label: `Title Search - Number of Titles shown: ${titleListCheckAll}`,
+           label: `Title Search - Number of Titles shown: ${titlesLength}`,
            description: "Clear field to show all titles of the selected platform", 
         },
         {
            value: "FY Platinum Titles",
            placeholder: "Search specific titles",
-           label: `Title Search - Number of Titles shown: ${titleListCheckFY}`,
+           label: `Title Search - Number of Titles shown: ${titlesLength}`,
            description: "Clear field to show all titles of the selected platform", 
         },
         {
            value: "FY Game Series",
            placeholder: "Search specific series",
-           label: `Series Search - Number of game series shown: ${seriesListCheck}`,
+           label: `Series Search - Number of game series shown: ${titlesLength}`,
            description: "Clear field to show all game series listed.", 
         },
         {
            value: "Software Platform Shipments",
            placeholder: "Search specific platform",
-           label: `Platform Search - Sets of platforms shown: ${softwareShipmentsListCheck}`,
+           label: `Platform Search - Sets of platforms shown: ${titlesLength}`,
            description: "Clear field to show all platforms.", 
         }
     ].filter(elem => elem.value === value);
+
+    useEffect(() => {
+
+        switch (value) {
+            case "FY Game Series":
+                // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
+                setTitlesLength(gameSeriesFilter?.[props.setIndex-1]?.length ?? 0)
+                break;
+
+            case "Software Platform Shipments":
+                // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
+                setTitlesLength(platformSoftwareShipmentsFilter?.[props.setIndex-1]?.length ?? 0)
+                break;
+
+            case "FY Platinum Titles":
+                setTitlesLength(fyTitlesFilter?.[props.setIndex]?.length ?? 0)
+                break;
+
+            case "All Platinum Titles":
+                setTitlesLength(allTitlesFilter?.[props.setIndex]?.length ?? 0)
+                break;
+        
+            default:
+                break;
+        }
+
+    }, [value, titleValue, platformValue])
 
     const componentListNew = Array.from({length: props.yearLength}, (elem, index) => {
 
