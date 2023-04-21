@@ -1,6 +1,8 @@
 import { platformUnitsMake } from "../regional_hardware_software_nintendo";
 import { printTextBlock, border, liner, spacer, dateLabel, infiniteCheck } from "../../../utils/table_design_logic";
 
+import type { titleSet } from "../../capcom/game_series_sales_capcom_cml_data";
+
 import regionalHardwareSoftware2023 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2023.json";
 import regionalHardwareSoftware2022 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2022.json";
 import regionalHardwareSoftware2021 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2021.json";
@@ -127,7 +129,7 @@ const valueCheck = (value: number) => {
         return newTitle
     };
 
-    const printTitlesJapan = (titles: Section[][]) => {
+    const printTitlesJapan = (titles: Section[][], returnObject?: boolean) => {
         
         const regionRank = titles.map((elem, index, array) => {
             
@@ -146,21 +148,43 @@ const valueCheck = (value: number) => {
                 spacer(`${elem[elem.length-1].valueB}M`,11,"right"),
             ]),"=","both",true);
 
-            return [
+            // return [
+            //     printTitleName,
+            //     ...yearValues,
+            //     printLTD,
+            // ].reduce((prev, next) => {
+            //     return prev + next
+            // });
+            return (!returnObject) 
+            ? [
                 printTitleName,
                 ...yearValues,
                 printLTD,
             ].reduce((prev, next) => {
                 return prev + next
-            });
-        }).filter(value => value !== "N/A").reduce((prev, next) => {
+            })
+            : {
+                title: elem.at(-1)?.name ?? "ERROR",
+                table: [
+                printTitleName,
+                ...yearValues,
+                printLTD,
+                ].reduce((prev, next) => {
                 return prev + next
-        });
+            })
+            }
+        })
+        // .filter(value => value !== "N/A").reduce((prev, next) => {
+        //         return prev + next
+        // });
 
-        return regionRank
+        // return regionRank
+        return (!returnObject) 
+            ? regionRank.filter(value => value !== "N/A").reduce((acc, next) => (typeof next === "string") ? acc + next : next,"")
+            : regionRank.filter(value => value !== "N/A")
     };
 
-    const printTitlesAmericas = (titles: Section[][]) => {
+    const printTitlesAmericas = (titles: Section[][], returnObject?: boolean) => {
         
         const regionRank = titles.map((elem, index, array) => {
             
@@ -179,21 +203,43 @@ const valueCheck = (value: number) => {
                 spacer(`${elem[elem.length-1].valueC}M`,11,"right"),
             ]),"=","both",true);
 
-            return [
+            // return [
+            //     printTitleName,
+            //     ...yearValues,
+            //     printLTD,
+            // ].reduce((prev, next) => {
+            //     return prev + next
+            // });
+            return (!returnObject) 
+            ? [
                 printTitleName,
                 ...yearValues,
                 printLTD,
             ].reduce((prev, next) => {
                 return prev + next
-            });
-        }).filter(value => value !== "N/A").reduce((prev, next) => {
+            })
+            : {
+                title: elem.at(-1)?.name ?? "ERROR",
+                table: [
+                printTitleName,
+                ...yearValues,
+                printLTD,
+                ].reduce((prev, next) => {
                 return prev + next
-        });
+            })
+            }
+        })
+        // .filter(value => value !== "N/A").reduce((prev, next) => {
+        //         return prev + next
+        // });
 
-        return regionRank
+        // return regionRank
+        return (!returnObject) 
+            ? regionRank.filter(value => value !== "N/A").reduce((acc, next) => (typeof next === "string") ? acc + next : next,"")
+            : regionRank.filter(value => value !== "N/A")
     };
 
-    const printTitlesEurope = (titles: Section[][]) => {
+    const printTitlesEurope = (titles: Section[][],returnObject?: boolean) => {
         
         const regionRank = titles.map((elem, index, array) => {
             
@@ -212,21 +258,45 @@ const valueCheck = (value: number) => {
                 spacer(`${elem[elem.length-1].valueD}M`,11,"right"),
             ]),"=","both",true);
 
-            return (yearValues.length === 0) ? "N/A" : [
-                printTitleName,
-                ...yearValues,
-                printLTD,
-            ].reduce((prev, next) => {
-                return prev + next
-            });
-        }).filter(value => value !== "N/A").reduce((prev, next) => {
-                return prev + next
-        });
+            // return (yearValues.length === 0) ? "N/A" : [
+            //     printTitleName,
+            //     ...yearValues,
+            //     printLTD,
+            // ].reduce((prev, next) => {
+            //     return prev + next
+            // });
+            return (yearValues.length === 0) 
+            ? "N/A" // should probably consider using a flatMap...
+            : (!returnObject) 
+                ? [
+                    printTitleName,
+                    ...yearValues,
+                    printLTD,
+                ].reduce((prev, next) => {
+                    return prev + next
+                })
+                : {
+                    title: elem.at(-1)?.name ?? "ERROR",
+                    table: [
+                    printTitleName,
+                    ...yearValues,
+                    printLTD,
+                    ].reduce((prev, next) => {
+                    return prev + next
+                })
+                }
+        })
+        // .filter(value => value !== "N/A").reduce((prev, next) => {
+        //         return prev + next
+        // });
 
-        return regionRank
+        // return regionRank
+        return (!returnObject) 
+            ? regionRank.filter(value => value !== "N/A").reduce((acc, next) => (typeof next === "string") ? acc + next : next,"")
+            : regionRank.filter(value => value !== "N/A")
     };
 
-    const printTitlesOther = (titles: Section[][]) => {
+    const printTitlesOther = (titles: Section[][], returnObject?: boolean) => {
         
         const regionRank = titles.map((elem, index, array) => {
             
@@ -270,19 +340,42 @@ const valueCheck = (value: number) => {
             spacer(`${findOtherLTDValue}M`,11,"right"),
         ]),"=","both",true);
     
-            return (yearValues.length === 0) ? "N/A" : [
-                printTitleName,
-                ...yearValues,
-                printLTD,
-            ].reduce((prev, next) => {
-                return prev + next
-            });
+            // return (yearValues.length === 0) ? "N/A" : [
+            //     printTitleName,
+            //     ...yearValues,
+            //     printLTD,
+            // ].reduce((prev, next) => {
+            //     return prev + next
+            // });
+            return (yearValues.length === 0) 
+            ? "N/A"
+            : (!returnObject) 
+                ? [
+                    printTitleName,
+                    ...yearValues,
+                    printLTD,
+                ].reduce((prev, next) => {
+                    return prev + next
+                })
+                : {
+                    title: elem.at(-1)?.name ?? "ERROR",
+                    table: [
+                    printTitleName,
+                    ...yearValues,
+                    printLTD,
+                    ].reduce((prev, next) => {
+                    return prev + next
+                })
+            }
+        })
+        // .filter(value => value !== "N/A").reduce((prev, next) => {
+        //         return prev + next
+        // });
 
-        }).filter(value => value !== "N/A").reduce((prev, next) => {
-                return prev + next
-        });
-
-        return regionRank
+        // return regionRank
+        return (!returnObject) 
+            ? regionRank.filter(value => value !== "N/A").reduce((acc, next) => (typeof next === "string") ? acc + next : next,"")
+            : regionRank.filter(value => value !== "N/A")
     };
 
     const reducedArrays: Section[][] = latestFYcollection.map((elem) => {
@@ -295,28 +388,28 @@ const printOneJapan =
 | Nintendo Co., Ltd. |
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 | Hardware and Software Units - Japan |
-+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
 
 const printOneAmericas = 
 `+−−−−−−−−−−−−−−−−−−−−+
 | Nintendo Co., Ltd. |
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 | Hardware and Software Units - The Americas |
-+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
 
 const printOneEurope = 
 `+−−−−−−−−−−−−−−−−−−−−+
 | Nintendo Co., Ltd. |
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 | Hardware and Software Units - Europe |
-+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
 
 const printOneOther = 
 `+−−−−−−−−−−−−−−−−−−−−+
 | Nintendo Co., Ltd. |
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 | Regional Hardware and Software Units - Other |
-+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
 
 const divideSortedGlobalCollection = reducedArrays.map(elem => elem.map(section => {
     return {
@@ -328,40 +421,72 @@ const divideSortedGlobalCollection = reducedArrays.map(elem => elem.map(section 
         valueE: Number((section.valueE / 100).toFixed(2)),
     }}))
 
-const printFour = printTitlesJapan(divideSortedGlobalCollection)
+const printFour = printTitlesJapan(divideSortedGlobalCollection, true) as titleSet[];
 
-const printFive = printTitlesAmericas(divideSortedGlobalCollection)
+const printFive = printTitlesAmericas(divideSortedGlobalCollection, true) as titleSet[];
 
-const printSix = printTitlesEurope(divideSortedGlobalCollection)
+const printSix = printTitlesEurope(divideSortedGlobalCollection, true) as titleSet[];
 
-const printSeven = printTitlesOther(divideSortedGlobalCollection)
+const printSeven = printTitlesOther(divideSortedGlobalCollection, true) as titleSet[];
 
 let dataSource = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_data/index.html"
 
-export const printJapanHardwareSoftware = 
-`${printOneJapan}
-${printDateLabel}
-${printFour}
-###
-${dataSource}`;
+// export const printJapanHardwareSoftware = 
+// `${printOneJapan}
+// ${printDateLabel}
+// ${printFour}
+// ###
+// ${dataSource}`;
 
-export const printAmericasHardwareSoftware = 
-`${printOneAmericas}
-${printDateLabel}
-${printFive}
-###
-${dataSource}`;
+// export const printAmericasHardwareSoftware = 
+// `${printOneAmericas}
+// ${printDateLabel}
+// ${printFive}
+// ###
+// ${dataSource}`;
 
-export const printEuropeHardwareSoftware = 
-`${printOneEurope}
-${printDateLabel}
-${printSix}
-###
-${dataSource}`;
+// export const printEuropeHardwareSoftware = 
+// `${printOneEurope}
+// ${printDateLabel}
+// ${printSix}
+// ###
+// ${dataSource}`;
 
-export const printOtherHardwareSoftware = 
-`${printOneOther}
-${printDateLabel}
-${printSeven}
-###
-${dataSource}`;
+// export const printOtherHardwareSoftware = 
+// `${printOneOther}
+// ${printDateLabel}
+// ${printSeven}
+// ###
+// ${dataSource}`;
+
+export const printJapanHardwareSoftware = {
+    header: printOneJapan,
+    date: printDateLabel, 
+    region: "Japan",
+    titleList: printFour,
+    footer: dataSource 
+};
+
+export const printAmericasHardwareSoftware = {
+    header: printOneAmericas,
+    date: printDateLabel,
+    region: "The Americas",
+    titleList: printFive,
+    footer: dataSource,
+};
+
+export const printEuropeHardwareSoftware = {
+    header: printOneEurope,
+    date: printDateLabel,
+    region: "Europe",
+    titleList: printSix,
+    footer: dataSource,
+};
+
+export const printOtherHardwareSoftware = {
+    header: printOneOther,
+    date: printDateLabel,
+    region: "Other",
+    titleList: printSeven,
+    footer: dataSource,
+};

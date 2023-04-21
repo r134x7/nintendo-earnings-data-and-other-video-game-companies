@@ -1,7 +1,7 @@
 import { platformSalesMake } from "../consolidated_sales_information_nintendo";
 import { printTextBlock, border, liner, spacer, dateLabel } from "../../../utils/table_design_logic";
 
-import type { titleSet, titleSetHeader } from "../../capcom/game_series_sales_capcom_cml_data";
+import type { titleSet } from "../../capcom/game_series_sales_capcom_cml_data";
 
 import consolidatedSalesInfo2023 from "../Consolidated_Sales_Information/consolidated_sales_information_fy3_2023.json";
 import consolidatedSalesInfo2022 from "../Consolidated_Sales_Information/consolidated_sales_information_fy3_2022.json";
@@ -257,6 +257,6 @@ let dataSource = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_da
 export const printConsolidatedSalesInfo = {
     header: printOneWW,
     date: printDateLabel,
-    titleList : printFour,
+    titleList: printFour,
     footer: dataSource,
 }

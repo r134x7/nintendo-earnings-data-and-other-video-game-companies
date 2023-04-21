@@ -31,6 +31,7 @@ import globalHardwareSoftware1997 from "./../Global_Hardware_Software_Mobile/glo
 
 // avoid having empty lists [] in your collections from preparing for the next earnings
 import { Section, Header } from "../../../utils/hardware_software_units_logic";
+import type { titleSet } from "../../capcom/game_series_sales_capcom_cml_data";
 
     const totalCollection = [
         globalHardwareSoftware1997,
@@ -133,7 +134,7 @@ import { Section, Header } from "../../../utils/hardware_software_units_logic";
     };
 
 
-    const printTitlesGlobal = (titles: Section[][]) => {
+    const printTitlesGlobal = (titles: Section[][], returnObject?: boolean) => {
 
         const regionRank = titles.map((elem, index, array) => {
             
@@ -158,19 +159,40 @@ import { Section, Header } from "../../../utils/hardware_software_units_logic";
             spacer(`${elem[elem.length-1].value}M`,9,"right")
         ]),"−","both",true) 
          
-            return [
+            // return [
+            //     printTitleName,
+            //     ...yearValues,
+            //     printLTD,
+            // ].reduce((prev, next) => {
+            //     return prev + next
+            // });
+            return (!returnObject) 
+            ? [
                 printTitleName,
                 ...yearValues,
                 printLTD,
             ].reduce((prev, next) => {
                 return prev + next
-            });
-
-        }).filter(value => value !== "N/A").reduce((prev, next) => {
+            })
+            : {
+                title: elem.at(-1)?.name ?? "ERROR",
+                table: [
+                printTitleName,
+                ...yearValues,
+                printLTD,
+                ].reduce((prev, next) => {
                 return prev + next
-        });
+            })
+            }
+        })
+        // .filter(value => value !== "N/A").reduce((prev, next) => {
+        //         return prev + next
+        // });
 
-        return regionRank
+        // return regionRank
+        return (!returnObject) 
+            ? regionRank.filter(value => value !== "N/A").reduce((acc, next) => (typeof next === "string") ? acc + next : next,"")
+            : regionRank.filter(value => value !== "N/A")
     }
 
     const reducedArrays: Section[][] = latestFYcollection.map((elem) => {
@@ -183,7 +205,7 @@ const printOneWW =
 | Nintendo Co., Ltd. |
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 | Global Hardware and Software Units |
-+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
 
 const printTwoWW = 
 `+−−−−−−−−−−−−−−−−−−−−+
@@ -198,16 +220,24 @@ const divideSortedGlobalCollection = reducedArrays.map(elem => elem.map(section 
         value: Number((section.value / 100).toFixed(2)),
     }}))
 
-const printFour = printTitlesGlobal(divideSortedGlobalCollection)
+const printFour = printTitlesGlobal(divideSortedGlobalCollection) as titleSet[];
 
 let dataSource = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_data/index.html"
 
-export const printGlobalHardwareSoftware = 
-`${printOneWW}
-${printDateLabel}
-${printFour}
-###
-${dataSource}`;
+// export const printGlobalHardwareSoftware = 
+// `${printOneWW}
+// ${printDateLabel}
+// ${printFour}
+// ###
+// ${dataSource}`;
+
+export const printGlobalHardwareSoftware = {
+    header: printOneWW,
+    date: printDateLabel, 
+    region: "Global",
+    titleList: printFour,
+    footer: dataSource 
+}; 
 
 // sales per hardware unit - will need to come back to this when more than one platform in a fiscal year is listed...
     let salesCollectionSet: Section[][][] = totalCollection.filter(elem => elem.platformCmlSales[0].name !== "N/A").map(elem => {
