@@ -11,7 +11,7 @@ const Home = () => {
 
     const capcomStatus = liner(printTextBlock("Capcom page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Platform and/or title search feature applied to Software Platform Shipments, FY Platinum Titles, All Platinum Titles, FY Game Series, Capcom Platinum Titles - Cumulative, Capcom Software Platform Shipments - Cumulative, Capcom FY Game Series - Cumulative.",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
 
-    const segaStatus = liner(printTextBlock("Sega page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: 3rd Quarter Earnings release data for FY3/2023 added.",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
+    const segaStatus = liner(printTextBlock("Sega page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: IP Type and/or title search feature applied to Software Sales, Software Units, Sega Sammy Software Units - Cumulative, Sega Sammy FY Series IP - Cumulative",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
 
     const bandaiNamcoStatus = liner(printTextBlock("Bandai Namco page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: 3rd Quarter Earnings release data for FY3/2023 added.",40),"−","both",true,40);
 
