@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Code, SegmentedControl, Select, TextInput } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { allPlatinumTitlesList, filteringFyTitles, fyPlatinumTitlesList, searchTitles } from "../data/capcom/platinum_titles_Capcom";
+import { allPlatinumTitlesList, fyPlatinumTitlesList, searchTitles } from "../data/capcom/platinum_titles_Capcom";
 import { gameSeriesList } from "../data/capcom/game_series_sales_Capcom";
 import { softwareSalesList, softwareSalesGraphList } from "../data/capcom/software_sales_Capcom";
 import { platformSoftwareShipmentsList } from "../data/capcom/software_shipments_platform_Capcom";
@@ -65,8 +65,8 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
             : fyPlatinumTitlesList[i].titleData
     })
 
-    let platformListsAll = new Set<string>()
-    let platformListsFY = new Set<string>()
+    let platformListsAll = new Set<string>();
+    let platformListsFY = new Set<string>();
     // only way I could think of making sure I got lists for each year.
     // let platformLists = Array.from({length:allPlatinumTitlesList.length},(v,i) => {
     //     return new Set<string>()

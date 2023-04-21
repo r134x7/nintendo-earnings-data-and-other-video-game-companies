@@ -14,6 +14,8 @@ import annualReport2013 from "./Annual_Report/annual_report_fy3_2013.json";
 
 import { collection as softwareUnitsCollection } from "./software_units_sega";
 
+import type { filteringTitles, searchTitles } from "../capcom/platinum_titles_Capcom";
+
 type collectionJSON = {
     fiscalYear: string,
     series: seriesType[]
@@ -124,7 +126,7 @@ export const fullGameRatio = (ip: Series, fiscalYear: string, cumulative: boolea
     };
 };
 
-export const annualReportList: string[] = collection.map((elem, index, array) => {
+export const annualReportList: filteringTitles[] = collection.map((elem, index, array) => {
 
     let fiscalYear = elem.fiscalYear;
 
@@ -162,10 +164,18 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
         
         let printRatio: string[] = [fullGameRatio(elem, fiscalYear,false)].flat()        
         
-        return (printRatio.length === 0) 
+        // return (printRatio.length === 0) 
+        //         ? printSeries(header, elem)
+        //         : printSeries(header, elem).concat(printRatio[0])
+        return {
+            title:elem.title,
+            platforms:elem.ipType,
+            table: (printRatio.length === 0) 
                 ? printSeries(header, elem)
-                : printSeries(header, elem).concat(printRatio[0])
-    }).reduce((prev, next) => prev + "\n" + next)
+                : printSeries(header, elem).concat(printRatio[0]),
+        }
+    }) as searchTitles[];
+    //.reduce((prev, next) => prev + "\n" + next)
 
     const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", 4);
 
@@ -181,5 +191,11 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
         header.seventhHeader
     ], 32) + "\n" + printDateLabel;
 
-    return printOne + "\n" + printedSeries
+    // return printOne + "\n" + printedSeries
+    return {
+        header: printOne,
+        date: "",
+        titleData: printedSeries,
+        platformsNote: "",
+    }
 })
