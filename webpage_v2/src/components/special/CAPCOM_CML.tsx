@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Code, SegmentedControl, Space, TextInput, Select } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { platinumTitlesCML } from "../../data/capcom/platinum_titles_Capcom";
@@ -17,15 +17,16 @@ reminder: resident evil 4 wii edition platforms are not up to date on platinum t
 */
 
 // mutating this variable is the only way I can get this to reliably work
-let titleListCheck = 0;
-let seriesListCheck = 0;
-let softwareShipmentsListCheck = 0;
+// let titleListCheck = 0;
+// let seriesListCheck = 0;
+// let softwareShipmentsListCheck = 0;
 
 export default function CAPCOM_CML() {
 
     const [value, setValue] = useState("");
 
     const [titleValue, setTitleValue] = useState("");
+    const [titlesLength, setTitlesLength] = useState(0)
     const [platformValue, setPlatformValue] = useState<string | null>("All" ?? "All");
 
 
@@ -55,7 +56,7 @@ export default function CAPCOM_CML() {
     // let filterTitles = filteredPlatforms.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()))
     
     // forgot that I could have applied a useEffect but this method works fine
-    titleListCheck = filterPlatinumTitles.length;
+    // titleListCheck = filterPlatinumTitles.length;
 
     // this creates recursion because you are re-rendering here at this point at all times
     // setTitlesLength(filterPlatinumTitles.length);
@@ -68,7 +69,7 @@ export default function CAPCOM_CML() {
 
     let gameSeriesFilter = filterTitles<titleSet>(gameSeriesCapcom.titleList)
 
-    seriesListCheck = gameSeriesFilter.length;
+    // seriesListCheck = gameSeriesFilter.length;
 
     let fyTitlesReduce = gameSeriesFilter.reduce((acc, next) => acc + next.table, "")
 
@@ -78,7 +79,7 @@ export default function CAPCOM_CML() {
 
     let softwareShipmentsFilter = filterTitles<titleSet>(factBookCapcom.titleList);
 
-    softwareShipmentsListCheck = softwareShipmentsFilter.length;
+    // softwareShipmentsListCheck = softwareShipmentsFilter.length;
 
     let softwareShipmentsReduce = softwareShipmentsFilter.reduce((acc, next) => acc + next.table,"");
 
@@ -88,22 +89,43 @@ export default function CAPCOM_CML() {
         {
            value: "Capcom Platinum Titles - Cumulative",
            placeholder: "Search specific titles",
-           label: `Title Search - Number of Titles shown: ${titleListCheck}`,
+           label: `Title Search - Number of Titles shown: ${titlesLength}`,
            description: "Clear field to show all titles of the selected platform", 
         },
         {
            value: "Capcom FY Game Series - Cumulative",
            placeholder: "Search specific series",
-           label: `Series Search - Number of game series shown: ${seriesListCheck}`,
+           label: `Series Search - Number of game series shown: ${titlesLength}`,
            description: "Clear field to show all game series listed.", 
         },
         {
            value: "Capcom Software Platform Shipments - Cumulative",
            placeholder: "Search specific platform",
-           label: `Platform Search - Sets of platforms shown: ${softwareShipmentsListCheck}`,
+           label: `Platform Search - Sets of platforms shown: ${titlesLength}`,
            description: "Clear field to show all platforms.", 
         }
     ].filter(elem => elem.value === value);
+
+    useEffect(() => {
+
+        switch (value) {
+            case "Capcom Platinum Titles - Cumulative":
+                setTitlesLength(filterPlatinumTitles.length)
+                break;
+
+            case "Capcom FY Game Series - Cumulative":
+                setTitlesLength(gameSeriesFilter.length)
+                break;
+        
+            case "Capcom Software Platform Shipments - Cumulative":
+                setTitlesLength(softwareShipmentsFilter.length)
+                break;
+
+            default:
+                break;
+        }
+
+    }, [titleValue, platformValue, value])
 
     const componentList = [
         {
