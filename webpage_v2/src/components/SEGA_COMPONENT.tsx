@@ -54,6 +54,12 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
 
     let completeAnnualReportList = annualReportReduce.map((elem, index) => annualReportList[index].header + elem);
 
+    let softwareUnitsFilter = segaSoftwareUnitsList.map(elem => filterTitles<titleSet>(elem.titleList));
+
+    let softwareUnitsReduce = softwareUnitsFilter.map(elem => elem.reduce((acc, next) => acc + next.table,""));
+
+    let completeSoftwareUnitsList = softwareUnitsReduce.map((elem, index) => segaSoftwareUnitsList[index].header + elem);
+
     const annualReportListAltered = [""].concat(completeAnnualReportList); // to manage keeping the index values the same with softwareSalesList
 
     const textInputValues = [
@@ -80,7 +86,7 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
                 break;
 
             case "Software Units":
-                // setTitlesLength(annualReportTitlesFilter?.[props.setIndex]?.length ?? 0)
+                setTitlesLength(softwareUnitsFilter?.[props.setIndex]?.length ?? 0)
                 break;
         
             default:
@@ -108,7 +114,8 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
             },
             {
                 name: "Software Units",
-                value: segaSoftwareUnitsList?.[index],
+                // value: segaSoftwareUnitsList?.[index],
+                value: completeSoftwareUnitsList?.[index],
                 graph: <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={segaSoftwareUnitsGraphList[index]} />
             },
             {

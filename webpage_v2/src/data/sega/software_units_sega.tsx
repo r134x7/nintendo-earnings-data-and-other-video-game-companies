@@ -11,6 +11,8 @@ import seriesSoftwareUnits2022 from "./Software_Units/software_units_fy3_2022.js
 import seriesSoftwareUnits2021 from "./Software_Units/software_units_fy3_2021.json";
 import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
 
+import type { titleSet, titleSetHeader } from "../capcom/game_series_sales_capcom_cml_data";
+
 export const collection = [
     seriesSoftwareUnits2023,
     seriesSoftwareUnits2022,
@@ -73,7 +75,7 @@ export const platformUnitSalesMake = (obj: undefined | {
     return unitSales 
 };
 
-export const segaSoftwareUnitsList: string[] = collection.map((elem, index, array) => {
+export const segaSoftwareUnitsList: titleSetHeader[] = collection.map((elem, index, array) => {
 
     let currentQuarter: number = elem.currentQuarter;
 
@@ -140,21 +142,29 @@ export const segaSoftwareUnitsList: string[] = collection.map((elem, index, arra
         header.secondHeader,
     ],32) + "\n" + printDateLabel;
 
-    const printPlatformUnitSales: string[] = Array.from({length: platformUnitSalesThisFY.length}, (v, i) => {
+    const printPlatformUnitSales: titleSet[] = Array.from({length: platformUnitSalesThisFY.length}, (v, i) => {
 
-        return printSoftwareGeneral(
+        return {
+            title: quarterlyPlatformUnitSalesThisFY[i][0].name,
+            table: printSoftwareGeneral(
             header, 
             quarterlyPlatformUnitSalesThisFY[i],
             quarterlyPlatformUnitSalesYoY[i],
             cmlPlatformUnitSalesThisFY[i],
             platformUnitSalesYoY[i],
             currentQuarter
-            )
-    }).concat("###");
+            ),
+        } 
+    })//.concat("###");
 
-    let printAll: string[] = [printOne].concat(printPlatformUnitSales);
+    // let printAll: string[] = [printOne].concat(printPlatformUnitSales);
 
-    return printAll.reduce((prev, next) => prev + next);
+    // return printAll.reduce((prev, next) => prev + next);
+
+    return {
+        header: printOne,
+        titleList: printPlatformUnitSales,
+    }
 });
 
 export const segaSoftwareUnitsGraphList = collection.map((elem, index, array) => {
