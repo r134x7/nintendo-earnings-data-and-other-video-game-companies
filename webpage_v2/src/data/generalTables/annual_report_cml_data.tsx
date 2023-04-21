@@ -205,7 +205,7 @@ function printTitles(header: string, titles: Series[][], returnObject?: true) {
 
 const annualReportBandaiNamco = annualReportMaker(collectionBandaiNamco, "Bandai Namco", labelMaker(collectionBandaiNamco));
 
-export const fyTitlesBandaiNamco = printTitles(annualReportBandaiNamco.header, annualReportBandaiNamco.titles);
+export const fyTitlesBandaiNamco = printTitles(annualReportBandaiNamco.header, annualReportBandaiNamco.titles, true) as titleSetHeader;
 
 const annualReportSquareEnix = annualReportMaker(collectionSquareEnix, "Square Enix", labelMaker(collectionSquareEnix));
 
