@@ -15,6 +15,14 @@ import annualReport2012 from "./Annual_Report/annual_report_fy3_2012.json";
 import annualReport2011 from "./Annual_Report/annual_report_fy3_2011.json";
 import annualReport2010 from "./Annual_Report/annual_report_fy3_2010.json";
 
+import { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
+
+export type SquareEnixAnnualReportFY = {
+    header: string,
+    fyNotes: string,
+    titleData: titleSet[]
+}
+
 const collection = [
     annualReport2022,
     annualReport2021,
@@ -57,7 +65,7 @@ const seriesMake = (obj: {
     return series
 };
 
-export const annualReportList: string[] = collection.map((elem, index, array) => {
+export const annualReportList: SquareEnixAnnualReportFY[] = collection.map((elem, index, array) => {
 
     let header: Header = {
         bandaiNamcoHeader: "Square Enix  - IP Series Data",
@@ -87,8 +95,12 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
     });
 
     let printedSeries = sortedList.map((elem) => {
-        return printSeriesOutput(elem, header, 42, 11);
-    }).reduce((prev, next) => prev + "\n" + next);
+        return {
+            title: elem.title,
+            table: printSeriesOutput(elem, header, 42, 11),
+        } 
+    }) as titleSet[];
+    //.reduce((prev, next) => prev + "\n" + next);
 
     const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", 4);
 
@@ -101,7 +113,12 @@ export const annualReportList: string[] = collection.map((elem, index, array) =>
             header.fourthHeader,
     ], 32) + "\n" + printDateLabel;
 
-    let notePrint = liner(printTextBlock(elem?.notes,40),"=","both",true,40);
+    let notePrint = (elem?.notes?.length === 0 ?? 0) ? "" : liner(printTextBlock(elem?.notes,40),"=","both",true,40);
 
-    return printOne + "\n" + printedSeries + "\n" + notePrint
+    // return printOne + "\n" + printedSeries + "\n" + notePrint
+    return {
+        header: printOne,
+        titleData: printedSeries,
+        fyNotes: notePrint,
+    }
 });

@@ -80,5 +80,5 @@ const printSeriesName = (seriesIP: Series, blockLength: number) => {
 };
 
 export const printSeriesOutput = (seriesIP: Series, header: Header, blockLength: number, valueLength: number) => {
-        return liner(printSeriesName(seriesIP, blockLength), "=", "bottom", true, blockLength) + printCmlValue(seriesIP, valueLength, header) + "\n" + printCmlYoY(seriesIP, valueLength, header) + "\n" + liner(printLTDValue(seriesIP, valueLength, header), "−", "bottom")
+        return liner(printSeriesName(seriesIP, blockLength), "=", "bottom", true, blockLength) + printCmlValue(seriesIP, valueLength, header) + "\n" + printCmlYoY(seriesIP, valueLength, header) + "\n" + liner(printLTDValue(seriesIP, valueLength, header), "−", "bottom") + "\n"
 };
