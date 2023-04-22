@@ -23,6 +23,8 @@ export default function NINTENDO_CML() {
 
     const state: any = useSelector(state => state);
 
+    const allHardwareSoftwareHeader = "+−−−−−−−−−−−−−−−−−−−−+\n| Nintendo Co., Ltd. |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n| All Regions: Hardware & Software Units |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n";
+
     /*
     need to... filter by region, then by platform, then by title... filtering should be easy compared to capcom platforms
     */
@@ -64,7 +66,9 @@ export default function NINTENDO_CML() {
 
     let completeConsolidatedSalesInformation = printConsolidatedSalesInfo.header + printConsolidatedSalesInfo.date + consolidatedSalesInformationReduce + printConsolidatedSalesInfo.footer 
 
-    let completehardwareSoftware = hardwareSoftwareRegionFilter[0].header + hardwareSoftwareRegionFilter[0].date + hardwareSoftwareTitleReduce + hardwareSoftwareRegionFilter[0].footer
+    let completehardwareSoftware = (regionValue === "All") 
+    ? allHardwareSoftwareHeader + hardwareSoftwareRegionFilter[0].date + hardwareSoftwareTitleReduce + hardwareSoftwareRegionFilter[0].footer
+    : hardwareSoftwareRegionFilter[0].header + hardwareSoftwareRegionFilter[0].date + hardwareSoftwareTitleReduce + hardwareSoftwareRegionFilter[0].footer;
 
     const textInputValues = [
         {
@@ -109,13 +113,13 @@ export default function NINTENDO_CML() {
             value: completeConsolidatedSalesInformation
         },
         {
+            name: "Nintendo Sales Per Hardware Unit - Cumulative",
+            value: printGlobalSalesPerHardwareUnit
+        },
+        {
             name: "Nintendo Hardware/Software - Cumulative",
             value: completehardwareSoftware
         },
-        // {
-        //     name: "Nintendo Sales Per Hardware Unit - Cumulative",
-        //     value: printGlobalSalesPerHardwareUnit
-        // },
         // {
         //     name: "Nintendo Hardware/Software Cumulative - Global",
         //     value: printGlobalHardwareSoftware
