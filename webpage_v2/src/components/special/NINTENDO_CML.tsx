@@ -56,11 +56,18 @@ export default function NINTENDO_CML() {
         }
     })
 
-    let fyMillionSellersPlatformFilter = fyMillionSellersRegionFilter.filter(elem => {
+    // let fyMillionSellersPlatformFilter = fyMillionSellersRegionFilter.filter(elem => {
+    let fyMillionSellersPlatformFilter = fyMillionSellersRegionFilter.map(elem => {
         if (platformValue === "All") {
             return elem
         } else {
-            return elem.titleList.filter(elemII => elemII.platforms === platformValue)
+            // return elem.titleList.filter(elemII => elemII.platforms === platformValue)
+            let platformFilter = elem.titleList.filter(elemII => elemII.platforms === platformValue)
+            
+            return {
+                ...elem,
+                titleList: platformFilter,
+            }
         }
     })
 
@@ -86,7 +93,7 @@ export default function NINTENDO_CML() {
     let hardwareSoftwareTitleFilter = hardwareSoftwareRegionFilter.flatMap(elem => filterTitles<titleSet>(elem.titleList, titleValue));
     // let hardwareSoftwareTitleFilter = filterTitles<titleSet>(hardwareSoftwareRegionFilter[0].titleList, titleValue)
 
-    let fyMillionSellersTitleFilter = fyMillionSellersRegionFilter.flatMap(elem => filterTitles<searchTitles>(elem.titleList,titleValue));
+    let fyMillionSellersTitleFilter = fyMillionSellersPlatformFilter.flatMap(elem => filterTitles<searchTitles>(elem.titleList,titleValue));
     // let fyMillionSellersTitleFilter = filterTitles<searchTitles>(printGlobal.titleList, titleValue)
 
     let topSellingTitlesTitleFilter = filterTitles<searchTitles>(topSellingTitlePlatformFilter, titleValue);
