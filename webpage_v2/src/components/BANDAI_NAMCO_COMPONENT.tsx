@@ -26,18 +26,18 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
 
     let predictText = new Set<string>();
 
-    // if (titleValue.length !== 0 && value === "FY Series IP") {
-    //     annualReportTitlesFilter.flatMap((elem, index) => {
-    //         // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
-    //         if (index === props.setIndex-1) {
-    //             elem.map(elemII => {
-    //                 [...elemII.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(setValue => predictText.add(setValue))
-    //             })
-    //         } else {
-    //             return []
-    //         }
-    //     })
-    // }
+    if (titleValue.length !== 0 && value === "FY Series IP") {
+        annualReportTitlesFilter.flatMap((elem, index) => {
+            // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
+            if (index === props.setIndex-1) {
+                elem.map(elemII => {
+                    [...elemII.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(setValue => predictText.add(setValue))
+                })
+            } else {
+                return []
+            }
+        })
+    }
 
     let annualReportReduce = annualReportTitlesFilter.map(elem => elem.reduce((acc,next) => acc + next.table,""));
 
@@ -142,8 +142,8 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
                             setTitleValue(e.target.value)
                         }}
                         />  
-                        {/* {(predictText.size > 0 && titleValue !== predictText.values().next().value) ? liner(printTextBlock("Nearest single word search: (To use, click on a word)",40),"−","both",true,40) : undefined } */}
-                        {/* { (predictText.size > 0 && titleValue !== predictText.values().next().value)
+                        {(predictText.size > 0 && titleValue !== predictText.values().next().value) ? liner(printTextBlock("Nearest single word search: (To use, click on a word)",40),"−","both",true,40) : undefined }
+                        { (predictText.size > 0 && titleValue !== predictText.values().next().value)
                         ? [...predictText].flatMap((elem, index) => {
                             if (index > 4) {
                                 return []
@@ -169,7 +169,7 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
                                     </Code>
                                 </Button> 
                         : undefined
-                        } */}
+                        }
                         <br/>
                         </>  
                         : undefined

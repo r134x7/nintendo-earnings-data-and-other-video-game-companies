@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Group, SegmentedControl, Anchor, Stack, Code, Select } from "@mantine/core"
+import { Group, SegmentedControl, Anchor, Stack, Code, Select, Autocomplete } from "@mantine/core"
 import { useSelector } from "react-redux";
 import BANDAI_NAMCO_COMPONENT from "../components/BANDAI_NAMCO_COMPONENT";
 import BANDAI_NAMCO_CML from "../components/special/BANDAI_NAMCO_CML";
@@ -22,7 +22,7 @@ export default function BandaiNamco() {
     const makeText = useSingleMessage(message,42,"−",80);
 
     const [value, setValue] = useState("Data by Fiscal Year");
-    const [year, setYear] = useState<string | null>("");
+    const [year, setYear] = useState<string>("");
 
     const state: any = useSelector(state => state);
 
@@ -80,7 +80,8 @@ export default function BandaiNamco() {
                 ? 
             <Group position="center">
 
-                <Select
+                {/* <Select */}
+                <Autocomplete
                     dropdownPosition="bottom"
                     mb="sm"
                     mr="md"
