@@ -41,15 +41,30 @@ export default function NINTENDO_CML() {
         }
     });
 
+    // let hardwareSoftwarePlatformFilter = hardwareSoftwareRegionFilter.filter(elem => {
+    //     if (platformValue === "All") {
+    //         return elem
+    //     } else if (platformValue === elem.titleList.)
+    // })
+
     let consolidatedSalesInformationFilter = filterTitles<titleSet>(printConsolidatedSalesInfo.titleList, titleValue);
+
+    let hardwareSoftwareTitleFilter = hardwareSoftwareRegionFilter.flatMap(elem => filterTitles<titleSet>(elem.titleList, titleValue))
+    // let hardwareSoftwareTitleFilter = filterTitles<titleSet>(hardwareSoftwareRegionFilter[0].titleList, titleValue)
 
     let predictText = new Set<string>();
 
     filterTextAddToSetCml(consolidatedSalesInformationFilter, value, "Nintendo Consolidated Sales Information - Cumulative", titleValue, predictText);
 
+    filterTextAddToSetCml(hardwareSoftwareTitleFilter, value, "Nintendo Hardware/Software - Cumulative", titleValue, predictText);
+
     let consolidatedSalesInformationReduce = consolidatedSalesInformationFilter.reduce((acc, next) => acc + next.table,"");
 
+    let hardwareSoftwareTitleReduce = hardwareSoftwareTitleFilter.reduce((acc, next) => acc + next.table,"");
+
     let completeConsolidatedSalesInformation = printConsolidatedSalesInfo.header + printConsolidatedSalesInfo.date + consolidatedSalesInformationReduce + printConsolidatedSalesInfo.footer 
+
+    let completehardwareSoftware = hardwareSoftwareRegionFilter[0].header + hardwareSoftwareRegionFilter[0].date + hardwareSoftwareTitleReduce + hardwareSoftwareRegionFilter[0].footer
 
     const textInputValues = [
         {
@@ -58,12 +73,12 @@ export default function NINTENDO_CML() {
            label: `Platform Search - Number of Platforms shown: ${titlesLength}`,
            description: "Clear field to show all platforms", 
         },
-        // {
-        //    value: "Sega Sammy FY Series IP - Cumulative",
-        //    placeholder: "Search specific series",
-        //    label: `Series Search - Number of game series shown: ${titlesLength}`,
-        //    description: "Clear field to show all game series listed.", 
-        // },
+        {
+           value: "Nintendo Hardware/Software - Cumulative",
+           placeholder: "Search specific platforms",
+           label: `Platform Search - Number of Platforms shown: ${titlesLength}`,
+           description: "Clear field to show all platforms", 
+        },
     ].filter(elem => elem.value === value);
     
     useEffect(() => {
@@ -73,15 +88,15 @@ export default function NINTENDO_CML() {
                 setTitlesLength(consolidatedSalesInformationFilter.length)
                 break;
 
-            // case "Sega Sammy FY Series IP - Cumulative":
-            //     setTitlesLength(filterIPTypeTitles.length)
-            //     break;
+            case "Nintendo Hardware/Software - Cumulative":
+                setTitlesLength(hardwareSoftwareTitleFilter.length)
+                break;
         
             default:
                 break;
         }
 
-    }, [titleValue, value, platformValue])
+    }, [titleValue, value, platformValue, regionValue])
 
 
     const componentList = [
@@ -92,6 +107,10 @@ export default function NINTENDO_CML() {
         {
             name: "Nintendo Consolidated Sales Information - Cumulative",
             value: completeConsolidatedSalesInformation
+        },
+        {
+            name: "Nintendo Hardware/Software - Cumulative",
+            value: completehardwareSoftware
         },
         // {
         //     name: "Nintendo Sales Per Hardware Unit - Cumulative",
@@ -159,7 +178,25 @@ export default function NINTENDO_CML() {
             />
             
             <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {(value === "Nintendo Consolidated Sales Information - Cumulative" )
+                {(value === "Nintendo Hardware/Software - Cumulative")
+                    ? <Select
+                        data={[
+                         "All",
+                         "Global",
+                         "Japan",
+                         "The Americas",
+                         "Europe",
+                         "Other",
+                     ]}
+                    defaultValue={"All"} 
+                    label="Select all or one region:"
+                    radius="xl"
+                    value={regionValue}
+                    onChange={setRegionValue}
+                  /> 
+                    : undefined
+                }
+                {(value === "Nintendo Consolidated Sales Information - Cumulative" || value === "Nintendo Hardware/Software - Cumulative" )
                     ? <>
                         <TextInput
                         placeholder={textInputValues[0].placeholder}

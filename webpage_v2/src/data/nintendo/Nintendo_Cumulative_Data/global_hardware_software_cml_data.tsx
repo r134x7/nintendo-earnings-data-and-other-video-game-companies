@@ -220,7 +220,7 @@ const divideSortedGlobalCollection = reducedArrays.map(elem => elem.map(section 
         value: Number((section.value / 100).toFixed(2)),
     }}))
 
-const printFour = printTitlesGlobal(divideSortedGlobalCollection) as titleSet[];
+const printFour = printTitlesGlobal(divideSortedGlobalCollection, true) as titleSet[];
 
 let dataSource = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_data/index.html"
 
