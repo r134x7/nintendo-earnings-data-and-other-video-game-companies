@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Code, SegmentedControl, Space, TextInput, Select } from "@mantine/core";
+import { Code, SegmentedControl, Space, TextInput, Select, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { platinumTitlesCML } from "../../data/capcom/platinum_titles_Capcom";
 import { CapcomSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListCapcom } from "../../data/generalTables/consolidated_earnings_cml_data";
 import { gameSeriesCapcom } from "../../data/capcom/game_series_sales_capcom_cml_data";
 import { factBookCapcom } from "../../data/capcom/software_shipments_capcom_cml_data";
-import { filterTitles } from "../../utils/table_design_logic";
+import { filterTitles, printTextBlock, liner } from "../../utils/table_design_logic";
 
 import type { searchTitles } from "../../data/capcom/platinum_titles_Capcom";
 import type { titleSet } from "../../data/capcom/game_series_sales_capcom_cml_data";
@@ -53,15 +53,19 @@ export default function CAPCOM_CML() {
 
     let predictTextPlatinumTitles = new Set<string>();
 
+    // regex pattern needed to match a whole word... requires RegExp constructor to enable dynamic input
+    if (titleValue.length !== 0) {
 
+        filterPlatinumTitles.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(setValue => predictTextPlatinumTitles.add(setValue)))
 
-    // regex pattern needed to match a whole word...
-    filterPlatinumTitles.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(setValue => predictTextPlatinumTitles.add(setValue)))
+    }
 
-    console.log(predictTextPlatinumTitles);
-    
-    
-            
+    // let textBox: string[] = [];
+
+    // predictTextPlatinumTitles.forEach((thisValue) => {
+    //    return textBox.push(liner(printTextBlock(thisValue ?? "ERROR",20) ?? "ERROR","=","both",undefined)) 
+    // })
+
     // let filterTitles = filteredPlatforms.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()))
     
     // forgot that I could have applied a useEffect but this method works fine
@@ -222,7 +226,8 @@ export default function CAPCOM_CML() {
                     : undefined
                 }
                 {(value === "Capcom Platinum Titles - Cumulative" || value === "Capcom FY Game Series - Cumulative" || value === "Capcom Software Platform Shipments - Cumulative")
-                    ? <TextInput
+                    ? <>
+                    <TextInput
                     placeholder={textInputValues[0].placeholder}
                     label={textInputValues[0].label}
                     description={textInputValues[0].description}
@@ -232,6 +237,30 @@ export default function CAPCOM_CML() {
                         setTitleValue(e.target.value)
                     }}
                     />  
+                    {/* {([...predictTextPlatinumTitles].length !== 0) ? useSingleMessage([...predictTextPlatinumTitles].reduce((acc,next)=> acc + next,""),40,"=",80) : undefined} */}
+                    {/* {[...predictTextPlatinumTitles]} */}
+                    {(predictTextPlatinumTitles.size > 0) ? liner(printTextBlock("Nearest single word search:",30),"−","both",true) : undefined}
+                    {[...predictTextPlatinumTitles].flatMap((elem, index) => {
+                        if (index > 4) {
+                            return []
+                        } else {
+                            return <Button 
+                            // style={{color:`${state.color}`}}
+                            onClick={() => setTitleValue(elem)}
+                            radius={"xl"}
+                            color={`${state.color}`}
+                            ml={"sm"} mt={"sm"} variant="outline" compact>
+                                {/* {elem} */}
+
+                                <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                    {elem}
+                                </Code>
+                            </Button>
+
+                        }
+                    })}
+                    <br/>
+                    </>  
                     : undefined
                 }
                 {selectData(value)}
