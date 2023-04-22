@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Code, SegmentedControl, Select, TextInput } from "@mantine/core";
+import { Code, SegmentedControl, Select, TextInput, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { allPlatinumTitlesList, fyPlatinumTitlesList, searchTitles } from "../data/capcom/platinum_titles_Capcom";
 import { gameSeriesList } from "../data/capcom/game_series_sales_Capcom";
@@ -7,7 +7,7 @@ import { softwareSalesList, softwareSalesGraphList } from "../data/capcom/softwa
 import { platformSoftwareShipmentsList } from "../data/capcom/software_shipments_platform_Capcom";
 import { capcomConsolidatedEarningsList, capcomConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { capcomLinks } from "../data/generalTables/data_sources_general";
-import { filterTitles } from "../utils/table_design_logic";
+import { filterTitles, printTextBlock, liner } from "../utils/table_design_logic";
 import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
@@ -83,6 +83,26 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
     let gameSeriesFilter = gameSeriesList.map(elem => filterTitles<titleSet>(elem.titleList, titleValue));
 
     let platformSoftwareShipmentsFilter = platformSoftwareShipmentsList.map(elem => filterTitles<titleSet>(elem.titleList, titleValue));
+
+    let predictText = new Set<string>();
+
+    function filterTextAddtoSet<T extends titleSet | searchTitles>(filteredText: T[][], categoryValue: string, titleCheck: string, alteredList: boolean, yearSelect: number, theSet: Set<string>, stateValue: string, ) {
+
+        let yearSet = (!alteredList) ? yearSelect : yearSelect-1
+
+        if (titleCheck.length !== 0 && stateValue === categoryValue) {
+
+            filteredText.flatMap((elem, index) => {
+                if (index === yearSet) {
+                    elem.map(elemII => {
+                        [...elemII.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleCheck})\\w+`,"g"))].flat().map(elemIII => theSet.add(elemIII))
+                    })
+                } else {
+                    return []
+                }
+            })
+        }
+    }
 
     // // SIDE EFFECTS!!
     // titleListCheckAll = allTitlesFilter?.[props.setIndex]?.length ?? 0;
