@@ -7,7 +7,7 @@ import { softwareSalesList, softwareSalesGraphList } from "../data/capcom/softwa
 import { platformSoftwareShipmentsList } from "../data/capcom/software_shipments_platform_Capcom";
 import { capcomConsolidatedEarningsList, capcomConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { capcomLinks } from "../data/generalTables/data_sources_general";
-import { filterTitles, printTextBlock, liner } from "../utils/table_design_logic";
+import { filterTitles, printTextBlock, liner, filterTextAddtoSet } from "../utils/table_design_logic";
 import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
@@ -86,23 +86,13 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     let predictText = new Set<string>();
 
-    function filterTextAddtoSet<T extends titleSet | searchTitles>(filteredText: T[][], categoryValue: string, titleCheck: string, alteredList: boolean, yearSelect: number, theSet: Set<string>, stateValue: string, ) {
+    filterTextAddtoSet(allTitlesFilter, value, "All Platinum Titles", titleValue, false, props.setIndex, predictText);
 
-        let yearSet = (!alteredList) ? yearSelect : yearSelect-1
+    filterTextAddtoSet(fyTitlesFilter, value, "FY Platinum Titles", titleValue, false, props.setIndex, predictText);
 
-        if (titleCheck.length !== 0 && stateValue === categoryValue) {
+    filterTextAddtoSet(gameSeriesFilter, value, "FY Game Series", titleValue, true, props.setIndex, predictText);
 
-            filteredText.flatMap((elem, index) => {
-                if (index === yearSet) {
-                    elem.map(elemII => {
-                        [...elemII.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleCheck})\\w+`,"g"))].flat().map(elemIII => theSet.add(elemIII))
-                    })
-                } else {
-                    return []
-                }
-            })
-        }
-    }
+    filterTextAddtoSet(platformSoftwareShipmentsFilter, value, "Software Platform Shipments", titleValue, true, props.setIndex, predictText);
 
     // // SIDE EFFECTS!!
     // titleListCheckAll = allTitlesFilter?.[props.setIndex]?.length ?? 0;
@@ -292,20 +282,52 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
                     : undefined
                 }
                 {(value === "All Platinum Titles" || value === "FY Platinum Titles" || value === "FY Game Series" || value === "Software Platform Shipments")
-                    ? <TextInput
-                    placeholder={textInputValues[0].placeholder}
-                    label={textInputValues[0].label}
-                    description={textInputValues[0].description}
-                    radius="xl"
-                    value={titleValue}
-                    onChange={e => {
-                        setTitleValue(e.target.value)
-                    }}
-                    />  
+                    ? <>
+                        <TextInput
+                        placeholder={textInputValues[0].placeholder}
+                        label={textInputValues[0].label}
+                        description={textInputValues[0].description}
+                        radius="xl"
+                        value={titleValue}
+                        onChange={e => {
+                            setTitleValue(e.target.value)
+                        }}
+                        />  
+                        {(predictText.size > 0 && titleValue !== predictText.values().next().value) ? liner(printTextBlock("Nearest single word search: (To use, click on a word)",40),"−","both",true,40) : undefined }
+                        { (predictText.size > 0 && titleValue !== predictText.values().next().value)
+                        ? [...predictText].flatMap((elem, index) => {
+                            if (index > 4) {
+                                return []
+                            } else {
+                                return ( <Button 
+                                key={elem}
+                                onClick={() => setTitleValue(elem)}
+                                radius={"xl"}
+                                ml={"sm"} mb={"sm"} variant="subtle" compact>
+                                    <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                        {elem}
+                                    </Code>
+                                </Button>
+                                )
+                            }
+                            })
+                        : (titleValue === predictText.values().next().value || titlesLength === 0) 
+                            ? <Button 
+                                    onClick={() => setTitleValue("")}
+                                    radius={"xl"}
+                                    m={"sm"} variant="subtle" compact>
+                                        <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                            {"Clear Search"}
+                                        </Code>
+                                    </Button> 
+                            : undefined
+                        }
+                        <br/>
+                        </>  
                     : undefined
                 }
-                        {selectData(value)}
-                    </Code>
+                {selectData(value)}
+                </Code>
             }
             {selectGraph(value)}
         </div>

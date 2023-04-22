@@ -169,7 +169,7 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
                             if (index > 4) {
                                 return []
                             } else {
-                                return <Button 
+                                return ( <Button 
                                 key={elem}
                                 onClick={() => setTitleValue(elem)}
                                 radius={"xl"}
@@ -178,6 +178,7 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
                                         {elem}
                                     </Code>
                                 </Button>
+                                )
                             }
                             })
                         : (titleValue === predictText.values().next().value || titlesLength === 0) 

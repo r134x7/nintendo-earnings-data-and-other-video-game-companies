@@ -175,11 +175,11 @@ export function filterTitles<T extends searchTitles | titleSet>(input: T[], stat
         return input.filter(elem => (stateValue === "") ? elem : elem.title.toLowerCase().includes(stateValue.toLowerCase()))
     }
 
-export function filterTextAddtoSet<T extends titleSet | searchTitles>(filteredText: T[][], categoryValue: string, titleCheck: string, alteredList: boolean, yearSelect: number, theSet: Set<string>, stateValue: string, ) {
+export function filterTextAddtoSet<T extends titleSet | searchTitles>(filteredText: T[][], categoryValue: string, categoryCheck: string, titleCheck: string, alteredList: boolean, yearSelect: number, theSet: Set<string>) {
 
     let yearSet = (!alteredList) ? yearSelect : yearSelect-1
 
-    if (titleCheck.length !== 0 && stateValue === categoryValue) {
+    if (titleCheck.length !== 0 && categoryCheck === categoryValue) {
 
         filteredText.flatMap((elem, index) => {
             if (index === yearSet) {
