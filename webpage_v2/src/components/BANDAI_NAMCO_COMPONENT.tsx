@@ -123,7 +123,7 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
     function delayedReset() {
         setTimeout(() => {
             setValue("")
-        }, 20);
+        }, 10);
         return undefined
     }
 
