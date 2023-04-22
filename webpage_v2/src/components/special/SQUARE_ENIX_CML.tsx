@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { Code, SegmentedControl, Space, TextInput } from "@mantine/core";
+import { Code, SegmentedControl, Space, TextInput, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { squareEnixSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListSquareEnix } from "../../data/generalTables/consolidated_earnings_cml_data";
 import { fyTitlesSquareEnix, squareEnixFootnotes } from "../../data/generalTables/annual_report_cml_data";
+import { printTextBlock, liner } from "../../utils/table_design_logic";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 import { filterTitles } from "../../utils/table_design_logic";
@@ -19,6 +20,12 @@ export default function SQUARE_ENIX_CML() {
     const [titlesLength, setTitlesLength] = useState(0)
 
     let filterAnnualReportTitles = filterTitles<titleSet>(fyTitlesSquareEnix.titleList, titleValue);
+
+    let predictText = new Set<string>();
+
+    if (titleValue.length !== 0 && value === "Square Enix FY Series IP - Cumulative") {
+            filterAnnualReportTitles.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(setValue => predictText.add(setValue)))
+    }
 
     let annualReportTitlesReduce = filterAnnualReportTitles.reduce((acc, next) => acc + next.table,"");
 
@@ -86,7 +93,8 @@ export default function SQUARE_ENIX_CML() {
             
             <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
                 {(value === "Square Enix FY Series IP - Cumulative")
-                    ? <TextInput
+                    ? <> 
+                    <TextInput
                     placeholder={textInputValues[0].placeholder}
                     label={textInputValues[0].label}
                     description={textInputValues[0].description}
@@ -96,6 +104,36 @@ export default function SQUARE_ENIX_CML() {
                         setTitleValue(e.target.value)
                     }}
                     />  
+                    {(predictText.size > 0 && titleValue !== predictText.values().next().value) ? liner(printTextBlock("Nearest single word search: (To use, click on a word)",40),"−","both",true,40) : undefined }
+                    { (predictText.size > 0 && titleValue !== predictText.values().next().value)
+                    ? [...predictText].flatMap((elem, index) => {
+                        if (index > 4) {
+                            return []
+                        } else {
+                            return <Button 
+                            key={elem}
+                            onClick={() => setTitleValue(elem)}
+                            radius={"xl"}
+                            ml={"sm"} mb={"sm"} variant="subtle" compact>
+                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                    {elem}
+                                </Code>
+                            </Button>
+                        }
+                        })
+                    : (titleValue === predictText.values().next().value || titlesLength === 0) 
+                    ? <Button 
+                            onClick={() => setTitleValue("")}
+                            radius={"xl"}
+                            m={"sm"} variant="subtle" compact>
+                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                    {"Clear Search"}
+                                </Code>
+                            </Button> 
+                    : undefined
+                    }
+                    <br/>
+                    </>  
                     : undefined
                 }
                 {selectData(value)}
