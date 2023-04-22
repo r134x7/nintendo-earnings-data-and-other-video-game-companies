@@ -24,6 +24,7 @@ import fyMillionSellerTitles2004 from "../FY_Million_Seller_Titles/million_selle
 
 // avoid having empty lists [] in your collections from preparing for the next earnings
 import { Header, Titles, decimateCalculation } from "../../../utils/fy_million_seller_titles_logic"
+import { searchTitles } from "../../capcom/platinum_titles_Capcom";
 
     const totalCollection: collectionJSON[] = [
         fyMillionSellerTitles2004,
@@ -156,7 +157,7 @@ import { Header, Titles, decimateCalculation } from "../../../utils/fy_million_s
     };
 
 
-    const printTitlesGlobal = (titles: Titles[][]) => {
+    const printTitlesGlobal = (titles: Titles[][], returnObject?: boolean) => {
 
         const regionRank = titles.map((elem, index, array) => {
             
@@ -194,18 +195,28 @@ import { Header, Titles, decimateCalculation } from "../../../utils/fy_million_s
             ? printPenultimate 
             : [...printPenultimate, printNote] 
 
-            return printFinal.reduce((prev, next) => {
-                return prev + next
-            });
+            // return printFinal.reduce((prev, next) => {
+            //     return prev + next
+            // });
 
-        }).filter(value => value !== "N/A").reduce((prev, next) => {
-                return prev + next
-        });
+            return (!returnObject) 
+            ? printFinal.reduce((prev, next) => prev + next)
+            : {
+                title: elem.at(-1)?.title ?? "ERROR",
+                platforms: elem.at(-1)?.platform ?? "ERROR",
+                table: printFinal.reduce((prev, next) => prev + next)
+            }
+        })
+        // .filter(value => value !== "N/A").reduce((prev, next) => {
+        //         return prev + next
+        // });
 
-        return regionRank
+        return (!returnObject) 
+            ? regionRank.filter(value => value !== "N/A").reduce((acc, next) => (typeof next === "string") ? acc + next : next,"")
+            : regionRank.filter(value => value !== "N/A")
     }
 
-    const printTitlesOverseas = (titles: Titles[][]) => {
+    const printTitlesOverseas = (titles: Titles[][], returnObject?: boolean) => {
 
         const regionRank = titles.map((elem, index, array) => {
             if (elem[elem.length-1].valueB === 0) {
@@ -246,15 +257,25 @@ import { Header, Titles, decimateCalculation } from "../../../utils/fy_million_s
             ? printPenultimate 
             : [...printPenultimate, printNote] 
 
-            return printFinal.reduce((prev, next) => {
-                return prev + next
-            });
+            // return printFinal.reduce((prev, next) => {
+            //     return prev + next
+            // });
 
-        }).filter(value => value !== "N/A").reduce((prev, next) => {
-                return prev + next
-        });
+            return (!returnObject) 
+            ? printFinal.reduce((prev, next) => prev + next)
+            : {
+                title: elem.at(-1)?.title ?? "ERROR",
+                platforms: elem.at(-1)?.platform ?? "ERROR",
+                table: printFinal.reduce((prev, next) => prev + next)
+            }
+        })
+        // .filter(value => value !== "N/A").reduce((prev, next) => {
+        //         return prev + next
+        // });
 
-        return regionRank
+        return (!returnObject) 
+            ? regionRank.filter(value => value !== "N/A").reduce((acc, next) => (typeof next === "string") ? acc + next : next,"")
+            : regionRank.filter(value => value !== "N/A")
     }
 
     const printTitlesJapan = (titles: Titles[][]): string => {
@@ -408,25 +429,37 @@ const divideSortedJapanCollection = sortedJapanCollection.map(elem => decimateCa
 const printTwo = printTitlesJapan(divideSortedJapanCollection)
 
 const divideSortedOverseasCollection = sortedOverseasCollection.map(elem => decimateCalculation(elem))
-const printThree = printTitlesOverseas(divideSortedOverseasCollection)
+const printThree = printTitlesOverseas(divideSortedOverseasCollection) as searchTitles[];
 
 const divideSortedGlobalCollection = sortedWWLTDCollection.map(elem => decimateCalculation(elem))
-const printFour = printTitlesGlobal(divideSortedGlobalCollection)
+const printFour = printTitlesGlobal(divideSortedGlobalCollection, true) as searchTitles[];
 
-export const printJapan =
-`${printOneJapan}
-${printDateLabel}
-${printTwo}
-###`;
+// export const printJapan =
+// `${printOneJapan}
+// ${printDateLabel}
+// ${printTwo}
+// ###`;
 
-export const printOverseas = 
-`${printOneOverseas}
-${printDateLabel}
-${printThree}
-###`;
+// export const printOverseas = 
+// `${printOneOverseas}
+// ${printDateLabel}
+// ${printThree}
+// ###`;
 
-export const printGlobal = 
-`${printOneWW}
-${printDateLabel}
-${printFour}
-###`;
+// export const printGlobal = 
+// `${printOneWW}
+// ${printDateLabel}
+// ${printFour}
+// ###`;
+
+export const printOverseas = {
+    header: printOneOverseas + "\n",
+    date: printDateLabel,
+    titleList: printThree,
+}
+
+export const printGlobal = {
+    header: printOneWW + "\n",
+    date: printDateLabel,
+    titleList: printFour,
+}
