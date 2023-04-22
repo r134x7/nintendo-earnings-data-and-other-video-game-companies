@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
+import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code, Select} from "@mantine/core"
 import { useSelector } from "react-redux";
 import CAPCOM_COMPONENT from "../components/CAPCOM_COMPONENT";
 import CAPCOM_CML from "../components/special/CAPCOM_CML";
@@ -22,7 +22,7 @@ export default function Capcom() {
     const makeText = useSingleMessage(message,40,"−",80);
 
     const [value, setValue] = useState("Data by Fiscal Year");
-    const [year, setYear] = useState("");
+    const [year, setYear] = useState<string | null>("");
 
     const state: any = useSelector(state => state);
 
@@ -80,16 +80,17 @@ export default function Capcom() {
                 ? 
             <Group position="center">
 
-                <Autocomplete
+                {/* <Autocomplete */}
+                <Select
                     dropdownPosition="bottom"
                     mb="sm"
                     mr="md"
                     placeholder="Select"
                     label={`Select Fiscal Year from ${currentYear - (yearsList.length-1)} to ${currentYear}.`}
-                    description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
+                    description={`Fiscal Year ending March ${(Number(year?.slice(4,8))) ? year?.slice(4,8) : "" }.`}
                     radius="xl"
                     size="md"
-                    limit={5}
+                    // limit={5}
                     data={yearsList}
                     value={year} 
                     onChange={setYear}
@@ -98,7 +99,7 @@ export default function Capcom() {
                 : <CAPCOM_CML />
             }
 
-            {   (value === "Data by Fiscal Year")
+            {   (value === "Data by Fiscal Year" && typeof year === "string")
                 ? selectYear(year)
                 : null
             }

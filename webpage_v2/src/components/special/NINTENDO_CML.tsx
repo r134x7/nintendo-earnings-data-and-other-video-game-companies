@@ -23,6 +23,24 @@ export default function NINTENDO_CML() {
 
     const state: any = useSelector(state => state);
 
+    /*
+    need to... filter by region, then by platform, then by title... filtering should be easy compared to capcom platforms
+    */
+
+    let hardwareSoftwareRegionFilter = [
+      printGlobalHardwareSoftware,  
+      printJapanHardwareSoftware,
+      printAmericasHardwareSoftware,
+      printEuropeHardwareSoftware,
+      printOtherHardwareSoftware,
+    ].filter(elem => {
+        if (regionValue === "All") {
+            return elem
+        } else if (regionValue === elem.region) {
+            return elem
+        }
+    });
+
     let consolidatedSalesInformationFilter = filterTitles<titleSet>(printConsolidatedSalesInfo.titleList, titleValue);
 
     let consolidatedSalesInformationReduce = consolidatedSalesInformationFilter.reduce((acc, next) => acc + next.table,"");
@@ -71,30 +89,30 @@ export default function NINTENDO_CML() {
             name: "Nintendo Consolidated Sales Information - Cumulative",
             value: completeConsolidatedSalesInformation
         },
-        {
-            name: "Nintendo Sales Per Hardware Unit - Cumulative",
-            value: printGlobalSalesPerHardwareUnit
-        },
-        {
-            name: "Nintendo Hardware/Software Cumulative - Global",
-            value: printGlobalHardwareSoftware
-        },
-        {
-            name: "Nintendo Hardware/Software Cumulative - Japan",
-            value: printJapanHardwareSoftware
-        },
-        {
-            name: "Nintendo Hardware/Software Cml. - The Americas",
-            value: printAmericasHardwareSoftware
-        },
-        {
-            name: "Nintendo Hardware/Software Cumulative - Europe",
-            value: printEuropeHardwareSoftware 
-        },
-        {
-            name: "Nintendo Hardware/Software Cumulative - Other",
-            value: printOtherHardwareSoftware 
-        },
+        // {
+        //     name: "Nintendo Sales Per Hardware Unit - Cumulative",
+        //     value: printGlobalSalesPerHardwareUnit
+        // },
+        // {
+        //     name: "Nintendo Hardware/Software Cumulative - Global",
+        //     value: printGlobalHardwareSoftware
+        // },
+        // {
+        //     name: "Nintendo Hardware/Software Cumulative - Japan",
+        //     value: printJapanHardwareSoftware
+        // },
+        // {
+        //     name: "Nintendo Hardware/Software Cml. - The Americas",
+        //     value: printAmericasHardwareSoftware
+        // },
+        // {
+        //     name: "Nintendo Hardware/Software Cumulative - Europe",
+        //     value: printEuropeHardwareSoftware 
+        // },
+        // {
+        //     name: "Nintendo Hardware/Software Cumulative - Other",
+        //     value: printOtherHardwareSoftware 
+        // },
         {
             name: "Nintendo FY Million-Seller Titles Cml. - Japan",
             value: printJapan 
