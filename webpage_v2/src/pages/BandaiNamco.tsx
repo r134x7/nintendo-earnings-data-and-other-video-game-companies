@@ -22,7 +22,7 @@ export default function BandaiNamco() {
     const makeText = useSingleMessage(message,42,"−",80);
 
     const [value, setValue] = useState("Data by Fiscal Year");
-    const [year, setYear] = useState<string>("");
+    const [year, setYear] = useState<string | null>("");
 
     const state: any = useSelector(state => state);
 
@@ -80,8 +80,8 @@ export default function BandaiNamco() {
                 ? 
             <Group position="center">
 
-                {/* <Select */}
-                <Autocomplete
+                <Select
+                // <Autocomplete
                     dropdownPosition="bottom"
                     mb="sm"
                     mr="md"

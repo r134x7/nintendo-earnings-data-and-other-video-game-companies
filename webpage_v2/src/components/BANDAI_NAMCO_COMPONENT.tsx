@@ -31,7 +31,7 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
             // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
             if (index === props.setIndex-1) {
                 elem.map(elemII => {
-                    [...elemII.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(setValue => predictText.add(setValue))
+                    [...elemII.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(elemIII => predictText.add(elemIII))
                 })
             } else {
                 return []
@@ -55,6 +55,12 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
     ].filter(elem => elem.value === value);
     
     useEffect(() => {
+
+        // console.log(dataList.filter(elem => elem === value));
+        
+        // if (dataList.filter(elem => elem === value).length === 0) {
+        //     setValue("Data Sources")
+        // }
 
         switch (value) {
             case "FY Series IP":
@@ -114,17 +120,27 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
 
     const selectData = selectDataComponent(componentListNew[props.setIndex]);
 
+    function delayedReset() {
+        setTimeout(() => {
+            setValue("")
+        }, 20);
+        return undefined
+    }
 
     return (
 
         <div>  
-            <SegmentedControl
+            {
+                (dataList.filter(elem => elem === value).length === 0 && value.length !== 0) 
+                ?  delayedReset()
+                : <SegmentedControl
                     fullWidth 
                     orientation="vertical"
                     value={value}
                     onChange={setValue}
                     data={dataList}
-            />
+                />
+            }
             
             {
                 (value === "Data Sources")
