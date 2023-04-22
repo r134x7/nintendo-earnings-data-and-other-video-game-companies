@@ -239,7 +239,7 @@ export default function CAPCOM_CML() {
                     />  
                     {/* {([...predictTextPlatinumTitles].length !== 0) ? useSingleMessage([...predictTextPlatinumTitles].reduce((acc,next)=> acc + next,""),40,"=",80) : undefined} */}
                     {/* {[...predictTextPlatinumTitles]} */}
-                    {(predictTextPlatinumTitles.size > 0) ? liner(printTextBlock("Nearest single word search:",30),"−","both",true) : undefined}
+                    {(predictTextPlatinumTitles.size > 0) ? liner(printTextBlock("Nearest single word search: (To use, click a word)",40),"−","both",true,40) : undefined}
                     {[...predictTextPlatinumTitles].flatMap((elem, index) => {
                         if (index > 4) {
                             return []
@@ -248,11 +248,11 @@ export default function CAPCOM_CML() {
                             // style={{color:`${state.color}`}}
                             onClick={() => setTitleValue(elem)}
                             radius={"xl"}
-                            color={`${state.color}`}
-                            ml={"sm"} mt={"sm"} variant="outline" compact>
+                            // color={`${state.color}`}
+                            ml={"sm"} mb={"sm"} variant="subtle" compact>
                                 {/* {elem} */}
 
-                                <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
                                     {elem}
                                 </Code>
                             </Button>
