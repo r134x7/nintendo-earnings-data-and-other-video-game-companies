@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
+import { Group, SegmentedControl, Anchor, Stack, Code, Select } from "@mantine/core"
 import { useSelector } from "react-redux";
 import BANDAI_NAMCO_COMPONENT from "../components/BANDAI_NAMCO_COMPONENT";
 import BANDAI_NAMCO_CML from "../components/special/BANDAI_NAMCO_CML";
@@ -22,7 +22,7 @@ export default function BandaiNamco() {
     const makeText = useSingleMessage(message,42,"−",80);
 
     const [value, setValue] = useState("Data by Fiscal Year");
-    const [year, setYear] = useState("");
+    const [year, setYear] = useState<string | null>("");
 
     const state: any = useSelector(state => state);
 
@@ -80,16 +80,15 @@ export default function BandaiNamco() {
                 ? 
             <Group position="center">
 
-                <Autocomplete
+                <Select
                     dropdownPosition="bottom"
                     mb="sm"
                     mr="md"
                     placeholder="Select"
-                    label={`Select Fiscal Year from ${currentYear - (yearsList.length-1)} to ${currentYear}.`}
-                    description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
+                    label={`Select a Fiscal Year from ${currentYear - (yearsList.length-1)} to ${currentYear}.`}
+                    description={`Fiscal Year ending March ${(Number(year?.slice(4,8))) ? year?.slice(4,8) : "" }.`}
                     radius="xl"
                     size="md"
-                    limit={5}
                     data={yearsList}
                     value={year} 
                     onChange={setYear}
@@ -98,7 +97,7 @@ export default function BandaiNamco() {
                 : <BANDAI_NAMCO_CML />
             }
 
-            {   (value === "Data by Fiscal Year")
+            {   (value === "Data by Fiscal Year" && typeof year === "string")
                 ? selectYear(year)
                 : null
             }

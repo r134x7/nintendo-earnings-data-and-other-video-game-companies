@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code, Select} from "@mantine/core"
+import { Group, SegmentedControl, Anchor, Stack, Code, Select } from "@mantine/core"
 import { useSelector } from "react-redux";
 import CAPCOM_COMPONENT from "../components/CAPCOM_COMPONENT";
 import CAPCOM_CML from "../components/special/CAPCOM_CML";
@@ -89,7 +89,6 @@ export default function Capcom() {
                     description={`Fiscal Year ending March ${(Number(year?.slice(4,8))) ? year?.slice(4,8) : "" }.`}
                     radius="xl"
                     size="md"
-                    // limit={5}
                     data={yearsList}
                     value={year} 
                     onChange={setYear}

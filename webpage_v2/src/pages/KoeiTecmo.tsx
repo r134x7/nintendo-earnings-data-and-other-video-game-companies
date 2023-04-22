@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Group, SegmentedControl, Autocomplete, Anchor, Stack, Code} from "@mantine/core"
+import { Group, SegmentedControl, Select, Anchor, Stack, Code } from "@mantine/core"
 import { useSelector } from "react-redux";
 import KOEI_TECMO_COMPONENT from "../components/KOEI_TECMO_COMPONENT";
 import KOEI_TECMO_CML from "../components/special/KOEI_TECMO_CML";
@@ -21,7 +21,7 @@ export default function KoeiTecmo() {
 
     const makeText = useSingleMessage(message,40,"−",80)
 
-    const [year, setYear] = useState("");
+    const [year, setYear] = useState<string | null>("");
     const [value, setValue] = useState("Data by Fiscal Year");
 
     const state: any = useSelector(state => state);
@@ -80,16 +80,15 @@ export default function KoeiTecmo() {
                 ? 
             <Group position="center">
 
-                <Autocomplete
+                <Select
                     dropdownPosition="bottom"
                     mb="sm"
                     mr="md"
                     placeholder="Select"
-                    label={`Select Fiscal Year from ${currentYear - (yearsList.length-1)} to ${currentYear}.`}
-                    description={`Fiscal Year ending March ${(Number(year.slice(4,8))) ? year.slice(4,8) : "" }. (Type in the last two digits of the year to search quicker except 2020.)`}
+                    label={`Select a Fiscal Year from ${currentYear - (yearsList.length-1)} to ${currentYear}.`}
+                    description={`Fiscal Year ending March ${(Number(year?.slice(4,8))) ? year?.slice(4,8) : "" }.`}
                     radius="xl"
                     size="md"
-                    limit={5}
                     data={yearsList}
                     value={year} 
                     onChange={setYear}
@@ -98,7 +97,7 @@ export default function KoeiTecmo() {
                 : <KOEI_TECMO_CML />
             }
 
-            {   (value === "Data by Fiscal Year")
+            {   (value === "Data by Fiscal Year" && typeof year === "string")
                 ? selectYear(year)
                 : null
             }
