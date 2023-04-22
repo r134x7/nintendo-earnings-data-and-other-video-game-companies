@@ -49,15 +49,20 @@ export default function CAPCOM_CML() {
 
     let filterPlatinumTitles = filterTitles<searchTitles>(filteredPlatforms, titleValue);
 
+    let gameSeriesFilter = filterTitles<titleSet>(gameSeriesCapcom.titleList, titleValue)
+
+    let softwareShipmentsFilter = filterTitles<titleSet>(factBookCapcom.titleList, titleValue);
     // console.log(filterPlatinumTitles.map(elem => elem.title));
 
-    let predictTextPlatinumTitles = new Set<string>();
+    let predictText = new Set<string>();
 
     // regex pattern needed to match a whole word... requires RegExp constructor to enable dynamic input
-    if (titleValue.length !== 0) {
-
-        filterPlatinumTitles.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(setValue => predictTextPlatinumTitles.add(setValue)))
-
+    if (titleValue.length !== 0 && value === "Capcom Platinum Titles - Cumulative") {
+        filterPlatinumTitles.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(setValue => predictText.add(setValue)))
+    } else if (titleValue.length !== 0 && value === "Capcom FY Game Series - Cumulative") {
+        gameSeriesFilter.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(setValue => predictText.add(setValue)))
+    } else if (titleValue.length !== 0 && value === "Capcom Software Platform Shipments - Cumulative") {
+        softwareShipmentsFilter.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(setValue => predictText.add(setValue)))
     }
 
     // let textBox: string[] = [];
@@ -80,7 +85,6 @@ export default function CAPCOM_CML() {
 
     // let fyTitlesFilter = fyTitlesCapcom.titleList.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()));
 
-    let gameSeriesFilter = filterTitles<titleSet>(gameSeriesCapcom.titleList, titleValue)
 
     // seriesListCheck = gameSeriesFilter.length;
 
@@ -90,7 +94,6 @@ export default function CAPCOM_CML() {
 
     // let softwareShipmentsFilter = factBookCapcom.titleList.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()));
 
-    let softwareShipmentsFilter = filterTitles<titleSet>(factBookCapcom.titleList, titleValue);
 
     // softwareShipmentsListCheck = softwareShipmentsFilter.length;
 
@@ -237,13 +240,14 @@ export default function CAPCOM_CML() {
                         setTitleValue(e.target.value)
                     }}
                     />  
-                    {(predictTextPlatinumTitles.size > 1) ? liner(printTextBlock("Nearest single word search: (To use, click on a word)",40),"−","both",true,40) : undefined }
-                    { (predictTextPlatinumTitles.size > 1)
-                    ? [...predictTextPlatinumTitles].flatMap((elem, index) => {
+                    {(predictText.size > 0 && titleValue !== predictText.values().next().value) ? liner(printTextBlock("Nearest single word search: (To use, click on a word)",40),"−","both",true,40) : undefined }
+                    { (predictText.size > 0 && titleValue !== predictText.values().next().value)
+                    ? [...predictText].flatMap((elem, index) => {
                         if (index > 4) {
                             return []
                         } else {
                             return <Button 
+                            key={elem}
                             onClick={() => setTitleValue(elem)}
                             radius={"xl"}
                             ml={"sm"} mb={"sm"} variant="subtle" compact>
@@ -253,9 +257,8 @@ export default function CAPCOM_CML() {
                             </Button>
                         }
                         })
-                    : (titleValue.length === 0) 
-                    ? undefined
-                    : <Button 
+                    : (titleValue === predictText.values().next().value) 
+                    ? <Button 
                             onClick={() => setTitleValue("")}
                             radius={"xl"}
                             m={"sm"} variant="subtle" compact>
@@ -263,6 +266,7 @@ export default function CAPCOM_CML() {
                                     {"Clear Search"}
                                 </Code>
                             </Button> 
+                    : undefined
                     }
                     <br/>
                     </>  
