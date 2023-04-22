@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Code, SegmentedControl, Select, TextInput } from "@mantine/core";
+import { Code, SegmentedControl, Select, TextInput, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { segaSoftwareUnitsList, segaSoftwareUnitsGraphList } from "../data/sega/software_units_sega"
 import { softwareSalesList, softwareSalesGraphList } from "../data/sega/software_sales_sega";
 import { annualReportList } from "../data/sega/annual_report_sega";
 import { segaConsolidatedEarningsList, segaConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { segaLinks } from "../data/generalTables/data_sources_general";
-import { filterTitles } from "../utils/table_design_logic";
+import { filterTitles, printTextBlock, liner, filterTextAddToSet } from "../utils/table_design_logic";
 import type { searchTitles } from "../data/capcom/platinum_titles_Capcom";
 import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
 
@@ -45,6 +45,10 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
     annualReportList?.[props.setIndex-1]?.titleData.map(elem => annualReportIPTypes.add(elem.platforms));
 
     let annualReportTitlesFilter = annualReportListFiltered.map(elem => filterTitles<searchTitles>(elem, titleValue))
+
+    let predictText = new Set<string>();
+
+    filterTextAddToSet(annualReportTitlesFilter, value, "FY Series IP", titleValue, true, props.setIndex, predictText);
 
     let annualReportReduce = annualReportTitlesFilter.map(elem => elem.reduce((acc,next) => acc + next.table,""));
 
@@ -188,20 +192,52 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
                             : undefined
                         }
                         {(value === "FY Series IP" || value === "Software Units")
-                            ? <TextInput
-                            placeholder={textInputValues[0].placeholder}
-                            label={textInputValues[0].label}
-                            description={textInputValues[0].description}
-                            radius="xl"
-                            value={titleValue}
-                            onChange={e => {
-                                setTitleValue(e.target.value)
-                            }}
-                            />  
+                    ? <>
+                        <TextInput
+                        placeholder={textInputValues[0].placeholder}
+                        label={textInputValues[0].label}
+                        description={textInputValues[0].description}
+                        radius="xl"
+                        value={titleValue}
+                        onChange={e => {
+                            setTitleValue(e.target.value)
+                        }}
+                        />  
+                        {(predictText.size > 0 && titleValue !== predictText.values().next().value) ? liner(printTextBlock("Nearest single word search: (To use, click on a word)",40),"−","both",true,40) : undefined }
+                        { (predictText.size > 0 && titleValue !== predictText.values().next().value)
+                        ? [...predictText].flatMap((elem, index) => {
+                            if (index > 4) {
+                                return []
+                            } else {
+                                return ( <Button 
+                                key={elem}
+                                onClick={() => setTitleValue(elem)}
+                                radius={"xl"}
+                                ml={"sm"} mb={"sm"} variant="subtle" compact>
+                                    <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                        {elem}
+                                    </Code>
+                                </Button>
+                                )
+                            }
+                            })
+                        : (titleValue === predictText.values().next().value || titlesLength === 0) 
+                            ? <Button 
+                                    onClick={() => setTitleValue("")}
+                                    radius={"xl"}
+                                    m={"sm"} variant="subtle" compact>
+                                        <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                            {"Clear Search"}
+                                        </Code>
+                                    </Button> 
                             : undefined
                         }
-                        {selectData(value)}
-                    </Code>
+                        <br/>
+                        </>  
+                    : undefined
+                }
+                {selectData(value)}
+                </Code>
             }
             {selectGraph(value)}
         </div>
