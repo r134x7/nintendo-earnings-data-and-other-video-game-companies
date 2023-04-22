@@ -278,12 +278,13 @@ import { searchTitles } from "../../capcom/platinum_titles_Capcom";
             : regionRank.filter(value => value !== "N/A")
     }
 
-    const printTitlesJapan = (titles: Titles[][]): string => {
+    const printTitlesJapan = (titles: Titles[][], returnObject?: boolean) => {
 
 
-        const japanRank = titles.map((elem, index, array) => {
+        const regionRank = titles.flatMap((elem, index, array) => {
             if (elem[elem.length-1].valueA === 0) {
-                return "N/A"
+                // return "N/A"
+                return []
             }
 
             let printPlatformAndRank: string = liner(border([
@@ -320,15 +321,25 @@ import { searchTitles } from "../../capcom/platinum_titles_Capcom";
             ? printPenultimate 
             : [...printPenultimate, printNote] 
 
-            return printFinal.reduce((prev, next) => {
-                return prev + next
-            });
+            // return printFinal.reduce((prev, next) => {
+            //     return prev + next
+            // });
 
-        }).filter(value => value !== "N/A").reduce((prev, next) => {
-                return prev + next
-        });
+            return (!returnObject) 
+            ? printFinal.reduce((prev, next) => prev + next) as string
+            : {
+                title: elem.at(-1)?.title ?? "ERROR",
+                platforms: elem.at(-1)?.platform ?? "ERROR",
+                table: printFinal.reduce((prev, next) => prev + next)
+            } as searchTitles
+        })
+        // .filter(value => value !== "N/A").reduce((prev, next) => {
+        //         return prev + next
+        // });
 
-        return japanRank
+        return (!returnObject) 
+            ? regionRank.reduce((acc, next) => (typeof next === "string") ? acc + next : next,"")
+            : regionRank
     }
 
     const reducedArrays: Titles[][] = latestFYcollection.map((elem) => {
@@ -398,6 +409,12 @@ let wwHeader = {
     ...header,
     platformHeader: "FY Million-Seller Titles Cml. - Global" 
 }
+
+let allHeader = {
+    ...header,
+    platformHeader: "FY Million-Seller Titles Cml. - All"
+}
+
 const printOneJapan = headerPrint([
     japanHeader.mainHeader,
     japanHeader.platformHeader,
@@ -425,11 +442,20 @@ const printOneWW = headerPrint([
     wwHeader.fourthHeader,
 ],28)
 
+export const printOneAll = headerPrint([
+    allHeader.mainHeader,
+    allHeader.platformHeader,
+],44) + "\n" + headerPrint([
+    allHeader.secondHeader,
+    allHeader.thirdHeader,
+    allHeader.fourthHeader,
+],28) + "\n"
+
 const divideSortedJapanCollection = sortedJapanCollection.map(elem => decimateCalculation(elem)) 
-const printTwo = printTitlesJapan(divideSortedJapanCollection)
+const printTwo = printTitlesJapan(divideSortedJapanCollection, true) as searchTitles[];
 
 const divideSortedOverseasCollection = sortedOverseasCollection.map(elem => decimateCalculation(elem))
-const printThree = printTitlesOverseas(divideSortedOverseasCollection) as searchTitles[];
+const printThree = printTitlesOverseas(divideSortedOverseasCollection, true) as searchTitles[];
 
 const divideSortedGlobalCollection = sortedWWLTDCollection.map(elem => decimateCalculation(elem))
 const printFour = printTitlesGlobal(divideSortedGlobalCollection, true) as searchTitles[];
@@ -452,14 +478,23 @@ const printFour = printTitlesGlobal(divideSortedGlobalCollection, true) as searc
 // ${printFour}
 // ###`;
 
+export const printJapan = {
+    header: printOneJapan + "\n",
+    date: printDateLabel,
+    region: "Japan",
+    titleList: printTwo,
+}
+
 export const printOverseas = {
     header: printOneOverseas + "\n",
     date: printDateLabel,
+    region: "Overseas",
     titleList: printThree,
 }
 
 export const printGlobal = {
     header: printOneWW + "\n",
     date: printDateLabel,
+    region: "Global",
     titleList: printFour,
 }

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Space, TextInput, Select, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { printJapan, printGlobal, printOverseas } from "../../data/nintendo/Nintendo_Cumulative_Data/mst_cml_data";
+import { printOneAll, printJapan, printGlobal, printOverseas } from "../../data/nintendo/Nintendo_Cumulative_Data/mst_cml_data";
 import { cumulativeEarningsListNintendo } from "../../data/generalTables/consolidated_earnings_cml_data";
 import { printGlobalHardwareSoftware, printGlobalSalesPerHardwareUnit } from "../../data/nintendo/Nintendo_Cumulative_Data/global_hardware_software_cml_data";
 import { printJapanHardwareSoftware, printAmericasHardwareSoftware, printEuropeHardwareSoftware, printOtherHardwareSoftware } from "../../data/nintendo/Nintendo_Cumulative_Data/regional_hardware_software_cml_data";
@@ -44,6 +44,26 @@ export default function NINTENDO_CML() {
         }
     });
 
+    let fyMillionSellersRegionFilter = [
+        printGlobal,
+        printJapan,
+        printOverseas,
+    ].filter(elem => {
+        if (regionValue === "All") {
+            return elem
+        } else if (regionValue === elem.region) {
+            return elem
+        }
+    })
+
+    let fyMillionSellersPlatformFilter = fyMillionSellersRegionFilter.filter(elem => {
+        if (platformValue === "All") {
+            return elem
+        } else {
+            return elem.titleList.filter(elemII => elemII.platforms === platformValue)
+        }
+    })
+
     let topSellingTitlePlatformFilter = printTopSellingTitles.titleList.filter(elem => {
         if (platformValue === "All") {
             return elem
@@ -52,6 +72,9 @@ export default function NINTENDO_CML() {
         }
     })
 
+    // console.log(fyMillionSellersPlatformFilter);
+    // console.log(hardwareSoftwareRegionFilter);
+    
     // let hardwareSoftwarePlatformFilter = hardwareSoftwareRegionFilter.filter(elem => {
     //     if (platformValue === "All") {
     //         return elem
@@ -60,10 +83,17 @@ export default function NINTENDO_CML() {
 
     let consolidatedSalesInformationFilter = filterTitles<titleSet>(printConsolidatedSalesInfo.titleList, titleValue);
 
-    let hardwareSoftwareTitleFilter = hardwareSoftwareRegionFilter.flatMap(elem => filterTitles<titleSet>(elem.titleList, titleValue))
+    let hardwareSoftwareTitleFilter = hardwareSoftwareRegionFilter.flatMap(elem => filterTitles<titleSet>(elem.titleList, titleValue));
     // let hardwareSoftwareTitleFilter = filterTitles<titleSet>(hardwareSoftwareRegionFilter[0].titleList, titleValue)
 
+    let fyMillionSellersTitleFilter = fyMillionSellersRegionFilter.flatMap(elem => filterTitles<searchTitles>(elem.titleList,titleValue));
+    // let fyMillionSellersTitleFilter = filterTitles<searchTitles>(printGlobal.titleList, titleValue)
+
     let topSellingTitlesTitleFilter = filterTitles<searchTitles>(topSellingTitlePlatformFilter, titleValue);
+
+    let platformListsFyMillionSellers = new Set<string>();
+
+    printGlobal.titleList.map(elem => platformListsFyMillionSellers.add(elem.platforms));
 
     let platformListsTopSelling = new Set<string>();
 
@@ -75,11 +105,15 @@ export default function NINTENDO_CML() {
 
     filterTextAddToSetCml(hardwareSoftwareTitleFilter, value, "Nintendo Hardware/Software - Cumulative", titleValue, predictText);
 
+    filterTextAddToSetCml(fyMillionSellersTitleFilter, value, "Nintendo FY Million-Seller Titles - Cumulative", titleValue, predictText);
+
     filterTextAddToSetCml(topSellingTitlesTitleFilter, value, "Nintendo Top Selling Titles - Cumulative", titleValue, predictText);
 
     let consolidatedSalesInformationReduce = consolidatedSalesInformationFilter.reduce((acc, next) => acc + next.table,"");
 
     let hardwareSoftwareTitleReduce = hardwareSoftwareTitleFilter.reduce((acc, next) => acc + next.table,"");
+
+    let fyMillionSellersTitleReduce = fyMillionSellersTitleFilter.reduce((acc, next) => acc + next.table,"");
 
     let topSellingTitleReduce = topSellingTitlesTitleFilter.reduce((acc, next) => acc + next.table,"");
 
@@ -87,7 +121,10 @@ export default function NINTENDO_CML() {
 
     let completehardwareSoftware = (regionValue === "All") 
     ? allHardwareSoftwareHeader + hardwareSoftwareRegionFilter[0].date + hardwareSoftwareTitleReduce + hardwareSoftwareRegionFilter[0].footer
-    : hardwareSoftwareRegionFilter[0].header + hardwareSoftwareRegionFilter[0].date + hardwareSoftwareTitleReduce + hardwareSoftwareRegionFilter[0].footer;
+    : (hardwareSoftwareRegionFilter?.[0]?.header ?? "ERROR") + (hardwareSoftwareRegionFilter?.[0]?.date ?? "ERROR") + (hardwareSoftwareTitleReduce ?? "ERROR") + (hardwareSoftwareRegionFilter?.[0]?.footer ?? "ERROR");
+
+    let completeFyMillionSellers = (regionValue === "All") ? printOneAll + fyMillionSellersRegionFilter[0].date + fyMillionSellersTitleReduce
+    : (fyMillionSellersRegionFilter?.[0]?.header ?? "ERROR") + (fyMillionSellersRegionFilter?.[0]?.date ?? "ERROR") + (fyMillionSellersTitleReduce ?? "ERROR");
 
     let completeTopSellingTitles = printTopSellingTitles.header + printTopSellingTitles.date + topSellingTitleReduce;
 
@@ -103,6 +140,12 @@ export default function NINTENDO_CML() {
            placeholder: "Search specific platforms",
            label: `Platform Search - Number of Platforms shown: ${titlesLength}`,
            description: "Clear field to show all platforms", 
+        },
+        {
+            value: "Nintendo FY Million-Seller Titles - Cumulative",
+            placeholder: "Search specific titles",
+            label: `Title Search - Number of Titles shown: ${titlesLength}`,
+            description: "Clear field to show all titles", 
         },
         {
            value: "Nintendo Top Selling Titles - Cumulative",
@@ -121,6 +164,10 @@ export default function NINTENDO_CML() {
 
             case "Nintendo Hardware/Software - Cumulative":
                 setTitlesLength(hardwareSoftwareTitleFilter.length)
+                break;
+
+            case "Nintendo FY Million-Seller Titles - Cumulative":
+                setTitlesLength(fyMillionSellersTitleFilter.length)
                 break;
 
             case "Nintendo Top Selling Titles - Cumulative":
@@ -171,17 +218,21 @@ export default function NINTENDO_CML() {
         //     name: "Nintendo Hardware/Software Cumulative - Other",
         //     value: printOtherHardwareSoftware 
         // },
+        // {
+        //     name: "Nintendo FY Million-Seller Titles Cml. - Japan",
+        //     value: printJapan 
+        // },
+        // {
+        //     name: "Nintendo FY Million-Seller Titles Cml. - Overseas",
+        //     value: printOverseas, 
+        // },
+        // {
+        //     name: "Nintendo FY Million-Seller Titles Cml. - Global",
+        //     value: printGlobal,
+        // },
         {
-            name: "Nintendo FY Million-Seller Titles Cml. - Japan",
-            value: printJapan 
-        },
-        {
-            name: "Nintendo FY Million-Seller Titles Cml. - Overseas",
-            value: printOverseas, 
-        },
-        {
-            name: "Nintendo FY Million-Seller Titles Cml. - Global",
-            value: printGlobal,
+            name: "Nintendo FY Million-Seller Titles - Cumulative",
+            value: completeFyMillionSellers,
         },
         {
             name: "Nintendo Top Selling Titles - Cumulative",
@@ -213,16 +264,12 @@ export default function NINTENDO_CML() {
             />
             
             <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {(value === "Nintendo Hardware/Software - Cumulative")
+                {(value === "Nintendo Hardware/Software - Cumulative" || value === "Nintendo FY Million-Seller Titles - Cumulative")
                     ? <Select
                         data={[
                          "All",
-                         "Global",
-                         "Japan",
-                         "The Americas",
-                         "Europe",
-                         "Other",
-                     ]}
+                     ].concat((value === "Nintendo Hardware/Software - Cumulative") ? ["Global","Japan","The Americas","Europe","Other",
+                     ] : ["Global", "Japan", "Overseas"])}
                     defaultValue={"All"} 
                     label="Select all or one region:"
                     radius="xl"
@@ -231,11 +278,11 @@ export default function NINTENDO_CML() {
                   /> 
                     : undefined
                 }
-                {(value === "Nintendo Top Selling Titles - Cumulative")
+                {(value === "Nintendo Top Selling Titles - Cumulative" || value === "Nintendo FY Million-Seller Titles - Cumulative")
                     ? <Select
                         data={[
                          "All",
-                     ].concat([...platformListsTopSelling])}
+                     ].concat((value === "Nintendo Top Selling Titles - Cumulative") ? [...platformListsTopSelling] : [...platformListsFyMillionSellers])}
                     defaultValue={"All"} 
                     label="Select all or one platform:"
                     radius="xl"
@@ -244,7 +291,7 @@ export default function NINTENDO_CML() {
                   /> 
                     : undefined
                 }
-                {(value === "Nintendo Consolidated Sales Information - Cumulative" || value === "Nintendo Hardware/Software - Cumulative" || value === "Nintendo Top Selling Titles - Cumulative")
+                {(value === "Nintendo Consolidated Sales Information - Cumulative" || value === "Nintendo Hardware/Software - Cumulative" || value === "Nintendo Top Selling Titles - Cumulative" || value === "Nintendo FY Million-Seller Titles - Cumulative")
                     ? <>
                         <TextInput
                         placeholder={textInputValues[0].placeholder}
