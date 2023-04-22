@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { Code, SegmentedControl, TextInput } from "@mantine/core";
+import { Code, SegmentedControl, TextInput, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { softwareSalesList, softwareSalesGraphList } from "../data/bandaiNamco/software_sales_bandai_namco";
 import { annualReportList } from "../data/bandaiNamco/annual_report_bandai_namco";
 import { bandaiNamcoConsolidatedEarningsList, bandaiNamcoConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { bandaiNamcoLinks } from "../data/generalTables/data_sources_general";
-import { filterTitles } from "../utils/table_design_logic";
+import { filterTitles, printTextBlock, liner } from "../utils/table_design_logic";
 import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
@@ -23,6 +23,21 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
     const [titlesLength, setTitlesLength] = useState(0);
 
     let annualReportTitlesFilter = annualReportList.map(elem => filterTitles<titleSet>(elem.titleList, titleValue));
+
+    let predictText = new Set<string>();
+
+    // if (titleValue.length !== 0 && value === "FY Series IP") {
+    //     annualReportTitlesFilter.flatMap((elem, index) => {
+    //         // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
+    //         if (index === props.setIndex-1) {
+    //             elem.map(elemII => {
+    //                 [...elemII.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(setValue => predictText.add(setValue))
+    //             })
+    //         } else {
+    //             return []
+    //         }
+    //     })
+    // }
 
     let annualReportReduce = annualReportTitlesFilter.map(elem => elem.reduce((acc,next) => acc + next.table,""));
 
@@ -116,19 +131,50 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
                     ? selectData(value)
                     : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
                         {(value === "FY Series IP")
-                            ? <TextInput
-                            placeholder={textInputValues[0].placeholder}
-                            label={textInputValues[0].label}
-                            description={textInputValues[0].description}
-                            radius="xl"
-                            value={titleValue}
-                            onChange={e => {
-                                setTitleValue(e.target.value)
-                            }}
-                            />  
-                            : undefined
-                        }
-                        {selectData(value)}
+                        ? <>
+                        <TextInput
+                        placeholder={textInputValues[0].placeholder}
+                        label={textInputValues[0].label}
+                        description={textInputValues[0].description}
+                        radius="xl"
+                        value={titleValue}
+                        onChange={e => {
+                            setTitleValue(e.target.value)
+                        }}
+                        />  
+                        {/* {(predictText.size > 0 && titleValue !== predictText.values().next().value) ? liner(printTextBlock("Nearest single word search: (To use, click on a word)",40),"−","both",true,40) : undefined } */}
+                        {/* { (predictText.size > 0 && titleValue !== predictText.values().next().value)
+                        ? [...predictText].flatMap((elem, index) => {
+                            if (index > 4) {
+                                return []
+                            } else {
+                                return <Button 
+                                key={elem}
+                                onClick={() => setTitleValue(elem)}
+                                radius={"xl"}
+                                ml={"sm"} mb={"sm"} variant="subtle" compact>
+                                    <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                        {elem}
+                                    </Code>
+                                </Button>
+                            }
+                            })
+                        : (titleValue === predictText.values().next().value || titlesLength === 0) 
+                        ? <Button 
+                                onClick={() => setTitleValue("")}
+                                radius={"xl"}
+                                m={"sm"} variant="subtle" compact>
+                                    <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                        {"Clear Search"}
+                                    </Code>
+                                </Button> 
+                        : undefined
+                        } */}
+                        <br/>
+                        </>  
+                        : undefined
+                    }
+                    {selectData(value)}
                     </Code>
             }
             {selectGraph(value)}
