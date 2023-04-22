@@ -1,5 +1,6 @@
 import { collectionJSON, titlesMake } from "../top_selling_titles_nintendo";
 import { printTextBlock, border, liner, spacer, headerPrint, dateLabel } from "../../../utils/table_design_logic";
+import type { searchTitles } from "../../capcom/platinum_titles_Capcom";
 
 import topSellingTitles2023 from "../Top_Selling_Titles/top_selling_titles_fy3_2023.json";
 import topSellingTitles2022 from "../Top_Selling_Titles/top_selling_titles_fy3_2022.json";
@@ -93,7 +94,7 @@ import { Titles, Header } from "../../../utils/top_selling_titles_logic";
             })
     };
 
-    const printTitlesGlobal = (titles: Titles[][]) => {
+    const printTitlesGlobal = (titles: Titles[][], returnObject?: boolean) => {
 
         const regionRank = titles.map((elem, index, array) => {
             
@@ -118,19 +119,42 @@ import { Titles, Header } from "../../../utils/top_selling_titles_logic";
             spacer(`${elem[elem.length-1].value}M`,10,"right")
         ]),"=","both",true);
         
-            return [
-                printTitleNameFixed,
+            // return [
+            //     printTitleNameFixed,
+            //     ...yearValues,
+            //     printLTD,
+            // ].reduce((prev, next) => {
+            //     return prev + next
+            // });
+            return (!returnObject) 
+            ? [
+                printTitleName,
                 ...yearValues,
                 printLTD,
             ].reduce((prev, next) => {
                 return prev + next
-            });
-
-        }).filter(value => value !== "N/A").reduce((prev, next) => {
+            })
+            : {
+                title: elem.at(-1)?.title ?? "ERROR",
+                platforms: elem.at(-1)?.platform ?? "ERROR",
+                table: [
+                printTitleName,
+                ...yearValues,
+                printLTD,
+                ].reduce((prev, next) => {
                 return prev + next
-        });
+            })
+            }
+        })
 
-        return regionRank
+        // .filter(value => value !== "N/A").reduce((prev, next) => {
+        //         return prev + next
+        // });
+
+        // return regionRank
+        return (!returnObject) 
+            ? regionRank.filter(value => value !== "N/A").reduce((acc, next) => (typeof next === "string") ? acc + next : next,"")
+            : regionRank.filter(value => value !== "N/A")
     }
 
     const reducedArrays: Titles[][] = latestFYcollection.map((elem) => {
@@ -169,10 +193,16 @@ const divideSortedGlobalCollection = sortedWWLTDCollection.map(elem => {
             : { ...secondElem, value: Number((secondElem.value - array[index-1].value).toFixed(2))}
     })
 });
-const printFour = printTitlesGlobal(divideSortedGlobalCollection)
+const printFour = printTitlesGlobal(divideSortedGlobalCollection, true) as searchTitles[];
 
-export const printTopSellingTitles = 
-`${printOneWW}
-${printDateLabel}
-${printFour}
-###`;
+// export const printTopSellingTitles = 
+// `${printOneWW}
+// ${printDateLabel}
+// ${printFour}
+// ###`;
+
+export const printTopSellingTitles = {
+    header: printOneWW + "\n",
+    date: printDateLabel,
+    titleList: printFour,
+} 

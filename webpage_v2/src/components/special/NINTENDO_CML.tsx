@@ -11,6 +11,7 @@ import { filterTitles, printTextBlock, liner, filterTextAddToSetCml } from "../.
 import type { titleSet } from "../../data/capcom/game_series_sales_capcom_cml_data";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
+import { searchTitles } from "../../data/capcom/platinum_titles_Capcom";
 
 export default function NINTENDO_CML() {
 
@@ -43,6 +44,14 @@ export default function NINTENDO_CML() {
         }
     });
 
+    let topSellingTitlePlatformFilter = printTopSellingTitles.titleList.filter(elem => {
+        if (platformValue === "All") {
+            return elem
+        } else if (platformValue === elem.platforms) {
+            return elem
+        }
+    })
+
     // let hardwareSoftwarePlatformFilter = hardwareSoftwareRegionFilter.filter(elem => {
     //     if (platformValue === "All") {
     //         return elem
@@ -54,21 +63,33 @@ export default function NINTENDO_CML() {
     let hardwareSoftwareTitleFilter = hardwareSoftwareRegionFilter.flatMap(elem => filterTitles<titleSet>(elem.titleList, titleValue))
     // let hardwareSoftwareTitleFilter = filterTitles<titleSet>(hardwareSoftwareRegionFilter[0].titleList, titleValue)
 
+    let topSellingTitlesTitleFilter = filterTitles<searchTitles>(topSellingTitlePlatformFilter, titleValue);
+
+    let platformListsTopSelling = new Set<string>();
+
+    printTopSellingTitles.titleList.map(elem => platformListsTopSelling.add(elem.platforms));
+
     let predictText = new Set<string>();
 
     filterTextAddToSetCml(consolidatedSalesInformationFilter, value, "Nintendo Consolidated Sales Information - Cumulative", titleValue, predictText);
 
     filterTextAddToSetCml(hardwareSoftwareTitleFilter, value, "Nintendo Hardware/Software - Cumulative", titleValue, predictText);
 
+    filterTextAddToSetCml(topSellingTitlesTitleFilter, value, "Nintendo Top Selling Titles - Cumulative", titleValue, predictText);
+
     let consolidatedSalesInformationReduce = consolidatedSalesInformationFilter.reduce((acc, next) => acc + next.table,"");
 
     let hardwareSoftwareTitleReduce = hardwareSoftwareTitleFilter.reduce((acc, next) => acc + next.table,"");
+
+    let topSellingTitleReduce = topSellingTitlesTitleFilter.reduce((acc, next) => acc + next.table,"");
 
     let completeConsolidatedSalesInformation = printConsolidatedSalesInfo.header + printConsolidatedSalesInfo.date + consolidatedSalesInformationReduce + printConsolidatedSalesInfo.footer 
 
     let completehardwareSoftware = (regionValue === "All") 
     ? allHardwareSoftwareHeader + hardwareSoftwareRegionFilter[0].date + hardwareSoftwareTitleReduce + hardwareSoftwareRegionFilter[0].footer
     : hardwareSoftwareRegionFilter[0].header + hardwareSoftwareRegionFilter[0].date + hardwareSoftwareTitleReduce + hardwareSoftwareRegionFilter[0].footer;
+
+    let completeTopSellingTitles = printTopSellingTitles.header + printTopSellingTitles.date + topSellingTitleReduce;
 
     const textInputValues = [
         {
@@ -83,6 +104,12 @@ export default function NINTENDO_CML() {
            label: `Platform Search - Number of Platforms shown: ${titlesLength}`,
            description: "Clear field to show all platforms", 
         },
+        {
+           value: "Nintendo Top Selling Titles - Cumulative",
+           placeholder: "Search specific titles",
+           label: `Title Search - Number of Titles shown: ${titlesLength}`,
+           description: "Clear field to show all titles", 
+        },
     ].filter(elem => elem.value === value);
     
     useEffect(() => {
@@ -94,6 +121,10 @@ export default function NINTENDO_CML() {
 
             case "Nintendo Hardware/Software - Cumulative":
                 setTitlesLength(hardwareSoftwareTitleFilter.length)
+                break;
+
+            case "Nintendo Top Selling Titles - Cumulative":
+                setTitlesLength(topSellingTitlesTitleFilter.length)
                 break;
         
             default:
@@ -154,7 +185,7 @@ export default function NINTENDO_CML() {
         },
         {
             name: "Nintendo Top Selling Titles - Cumulative",
-            value: printTopSellingTitles,
+            value: completeTopSellingTitles,
         },
     ];
 
@@ -200,7 +231,20 @@ export default function NINTENDO_CML() {
                   /> 
                     : undefined
                 }
-                {(value === "Nintendo Consolidated Sales Information - Cumulative" || value === "Nintendo Hardware/Software - Cumulative" )
+                {(value === "Nintendo Top Selling Titles - Cumulative")
+                    ? <Select
+                        data={[
+                         "All",
+                     ].concat([...platformListsTopSelling])}
+                    defaultValue={"All"} 
+                    label="Select all or one platform:"
+                    radius="xl"
+                    value={platformValue}
+                    onChange={setPlatformValue}
+                  /> 
+                    : undefined
+                }
+                {(value === "Nintendo Consolidated Sales Information - Cumulative" || value === "Nintendo Hardware/Software - Cumulative" || value === "Nintendo Top Selling Titles - Cumulative")
                     ? <>
                         <TextInput
                         placeholder={textInputValues[0].placeholder}
