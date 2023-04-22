@@ -257,7 +257,7 @@ export default function CAPCOM_CML() {
                             </Button>
                         }
                         })
-                    : (titleValue === predictText.values().next().value) 
+                    : (titleValue === predictText.values().next().value || titlesLength === 0) 
                     ? <Button 
                             onClick={() => setTitleValue("")}
                             radius={"xl"}

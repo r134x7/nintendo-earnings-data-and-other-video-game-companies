@@ -122,7 +122,7 @@ export default function BANDAI_NAMCO_CML() {
                             </Button>
                         }
                         })
-                    : (titleValue === predictText.values().next().value) 
+                    : (titleValue === predictText.values().next().value || titlesLength === 0) 
                     ? <Button 
                             onClick={() => setTitleValue("")}
                             radius={"xl"}
