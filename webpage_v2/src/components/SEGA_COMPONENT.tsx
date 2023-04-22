@@ -6,7 +6,7 @@ import { softwareSalesList, softwareSalesGraphList } from "../data/sega/software
 import { annualReportList } from "../data/sega/annual_report_sega";
 import { segaConsolidatedEarningsList, segaConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { segaLinks } from "../data/generalTables/data_sources_general";
-import { filterTitles, printTextBlock, liner, filterTextAddToSet } from "../utils/table_design_logic";
+import { filterTitles, printTextBlock, liner, filterTextAddToSetFY } from "../utils/table_design_logic";
 import type { searchTitles } from "../data/capcom/platinum_titles_Capcom";
 import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
 
@@ -48,7 +48,7 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
 
     let predictText = new Set<string>();
 
-    filterTextAddToSet(annualReportTitlesFilter, value, "FY Series IP", titleValue, true, props.setIndex, predictText);
+    filterTextAddToSetFY(annualReportTitlesFilter, value, "FY Series IP", titleValue, true, props.setIndex, predictText);
 
     let annualReportReduce = annualReportTitlesFilter.map(elem => elem.reduce((acc,next) => acc + next.table,""));
 

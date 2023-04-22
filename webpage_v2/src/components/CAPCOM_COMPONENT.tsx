@@ -7,7 +7,7 @@ import { softwareSalesList, softwareSalesGraphList } from "../data/capcom/softwa
 import { platformSoftwareShipmentsList } from "../data/capcom/software_shipments_platform_Capcom";
 import { capcomConsolidatedEarningsList, capcomConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { capcomLinks } from "../data/generalTables/data_sources_general";
-import { filterTitles, printTextBlock, liner, filterTextAddToSet } from "../utils/table_design_logic";
+import { filterTitles, printTextBlock, liner, filterTextAddToSetFY } from "../utils/table_design_logic";
 import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
@@ -86,13 +86,13 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     let predictText = new Set<string>();
 
-    filterTextAddToSet(allTitlesFilter, value, "All Platinum Titles", titleValue, false, props.setIndex, predictText);
+    filterTextAddToSetFY(allTitlesFilter, value, "All Platinum Titles", titleValue, false, props.setIndex, predictText);
 
-    filterTextAddToSet(fyTitlesFilter, value, "FY Platinum Titles", titleValue, false, props.setIndex, predictText);
+    filterTextAddToSetFY(fyTitlesFilter, value, "FY Platinum Titles", titleValue, false, props.setIndex, predictText);
 
-    filterTextAddToSet(gameSeriesFilter, value, "FY Game Series", titleValue, true, props.setIndex, predictText);
+    filterTextAddToSetFY(gameSeriesFilter, value, "FY Game Series", titleValue, true, props.setIndex, predictText);
 
-    filterTextAddToSet(platformSoftwareShipmentsFilter, value, "Software Platform Shipments", titleValue, true, props.setIndex, predictText);
+    filterTextAddToSetFY(platformSoftwareShipmentsFilter, value, "Software Platform Shipments", titleValue, true, props.setIndex, predictText);
 
     // // SIDE EFFECTS!!
     // titleListCheckAll = allTitlesFilter?.[props.setIndex]?.length ?? 0;

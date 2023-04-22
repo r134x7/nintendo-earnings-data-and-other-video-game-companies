@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Code, SegmentedControl, Space, TextInput, Select } from "@mantine/core";
+import { Code, SegmentedControl, Space, TextInput, Select, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { printJapan, printGlobal, printOverseas } from "../../data/nintendo/Nintendo_Cumulative_Data/mst_cml_data";
 import { cumulativeEarningsListNintendo } from "../../data/generalTables/consolidated_earnings_cml_data";
@@ -7,7 +7,7 @@ import { printGlobalHardwareSoftware, printGlobalSalesPerHardwareUnit } from "..
 import { printJapanHardwareSoftware, printAmericasHardwareSoftware, printEuropeHardwareSoftware, printOtherHardwareSoftware } from "../../data/nintendo/Nintendo_Cumulative_Data/regional_hardware_software_cml_data";
 import { printTopSellingTitles } from "../../data/nintendo/Nintendo_Cumulative_Data/top_selling_titles_cml_data";
 import { printConsolidatedSalesInfo } from "../../data/nintendo/Nintendo_Cumulative_Data/consolidated_sales_information_cml_data";
-import { filterTitles } from "../../utils/table_design_logic";
+import { filterTitles, printTextBlock, liner, filterTextAddToSetCml } from "../../utils/table_design_logic";
 import type { titleSet } from "../../data/capcom/game_series_sales_capcom_cml_data";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
@@ -42,6 +42,10 @@ export default function NINTENDO_CML() {
     });
 
     let consolidatedSalesInformationFilter = filterTitles<titleSet>(printConsolidatedSalesInfo.titleList, titleValue);
+
+    let predictText = new Set<string>();
+
+    filterTextAddToSetCml(consolidatedSalesInformationFilter, value, "Nintendo Consolidated Sales Information - Cumulative", titleValue, predictText);
 
     let consolidatedSalesInformationReduce = consolidatedSalesInformationFilter.reduce((acc, next) => acc + next.table,"");
 
@@ -156,16 +160,48 @@ export default function NINTENDO_CML() {
             
             <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
                 {(value === "Nintendo Consolidated Sales Information - Cumulative" )
-                    ? <TextInput
-                    placeholder={textInputValues[0].placeholder}
-                    label={textInputValues[0].label}
-                    description={textInputValues[0].description}
-                    radius="xl"
-                    value={titleValue}
-                    onChange={e => {
-                        setTitleValue(e.target.value)
-                    }}
-                    />  
+                    ? <>
+                        <TextInput
+                        placeholder={textInputValues[0].placeholder}
+                        label={textInputValues[0].label}
+                        description={textInputValues[0].description}
+                        radius="xl"
+                        value={titleValue}
+                        onChange={e => {
+                            setTitleValue(e.target.value)
+                        }}
+                        />  
+                        {(predictText.size > 0 && titleValue !== predictText.values().next().value) ? liner(printTextBlock("Nearest single word search: (To use, click on a word)",40),"−","both",true,40) : undefined }
+                        { (predictText.size > 0 && titleValue !== predictText.values().next().value)
+                        ? [...predictText].flatMap((elem, index) => {
+                            if (index > 4) {
+                                return []
+                            } else {
+                                return ( <Button 
+                                key={elem}
+                                onClick={() => setTitleValue(elem)}
+                                radius={"xl"}
+                                ml={"sm"} mb={"sm"} variant="subtle" compact>
+                                    <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                        {elem}
+                                    </Code>
+                                </Button>
+                                )
+                            }
+                            })
+                        : (titleValue === predictText.values().next().value || titlesLength === 0) 
+                            ? <Button 
+                                    onClick={() => setTitleValue("")}
+                                    radius={"xl"}
+                                    m={"sm"} variant="subtle" compact>
+                                        <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                            {"Clear Search"}
+                                        </Code>
+                                    </Button> 
+                            : undefined
+                        }
+                        <br/>
+                        </>  
                     : undefined
                 }
                 {selectData(value)}

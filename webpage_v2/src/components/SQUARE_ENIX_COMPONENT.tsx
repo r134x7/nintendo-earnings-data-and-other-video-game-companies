@@ -5,7 +5,7 @@ import { softwareSalesList } from "../data/squareEnix/software_sales_square_enix
 import { annualReportList } from "../data/squareEnix/annual_report_square_enix";
 import { squareEnixConsolidatedEarningsList, squareEnixConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { squareEnixLinks } from "../data/generalTables/data_sources_general";
-import { filterTitles, printTextBlock, liner, filterTextAddToSet } from "../utils/table_design_logic";
+import { filterTitles, printTextBlock, liner, filterTextAddToSetFY } from "../utils/table_design_logic";
 import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
 
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
@@ -25,7 +25,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
 
     let predictText = new Set<string>();
 
-    filterTextAddToSet(annualReportTitlesFilter, value, "FY Series IP", titleValue, true, props.setIndex, predictText);
+    filterTextAddToSetFY(annualReportTitlesFilter, value, "FY Series IP", titleValue, true, props.setIndex, predictText);
 
     let annualReportReduce = annualReportTitlesFilter.map(elem => elem.reduce((acc,next) => acc + next.table,""));
 
