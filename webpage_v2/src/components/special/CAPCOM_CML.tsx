@@ -237,28 +237,33 @@ export default function CAPCOM_CML() {
                         setTitleValue(e.target.value)
                     }}
                     />  
-                    {/* {([...predictTextPlatinumTitles].length !== 0) ? useSingleMessage([...predictTextPlatinumTitles].reduce((acc,next)=> acc + next,""),40,"=",80) : undefined} */}
-                    {/* {[...predictTextPlatinumTitles]} */}
-                    {(predictTextPlatinumTitles.size > 0) ? liner(printTextBlock("Nearest single word search: (To use, click a word)",40),"−","both",true,40) : undefined}
-                    {[...predictTextPlatinumTitles].flatMap((elem, index) => {
+                    {(predictTextPlatinumTitles.size > 1) ? liner(printTextBlock("Nearest single word search: (To use, click on a word)",40),"−","both",true,40) : undefined }
+                    { (predictTextPlatinumTitles.size > 1)
+                    ? [...predictTextPlatinumTitles].flatMap((elem, index) => {
                         if (index > 4) {
                             return []
                         } else {
                             return <Button 
-                            // style={{color:`${state.color}`}}
                             onClick={() => setTitleValue(elem)}
                             radius={"xl"}
-                            // color={`${state.color}`}
                             ml={"sm"} mb={"sm"} variant="subtle" compact>
-                                {/* {elem} */}
-
                                 <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
                                     {elem}
                                 </Code>
                             </Button>
-
                         }
-                    })}
+                        })
+                    : (titleValue.length === 0) 
+                    ? undefined
+                    : <Button 
+                            onClick={() => setTitleValue("")}
+                            radius={"xl"}
+                            m={"sm"} variant="subtle" compact>
+                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                    {"Clear Search"}
+                                </Code>
+                            </Button> 
+                    }
                     <br/>
                     </>  
                     : undefined
