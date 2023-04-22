@@ -48,6 +48,19 @@ export default function CAPCOM_CML() {
     })  
 
     let filterPlatinumTitles = filterTitles<searchTitles>(filteredPlatforms, titleValue);
+
+    // console.log(filterPlatinumTitles.map(elem => elem.title));
+
+    let predictTextPlatinumTitles = new Set<string>();
+
+
+
+    // regex pattern needed to match a whole word...
+    filterPlatinumTitles.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(setValue => predictTextPlatinumTitles.add(setValue)))
+
+    console.log(predictTextPlatinumTitles);
+    
+    
             
     // let filterTitles = filteredPlatforms.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()))
     

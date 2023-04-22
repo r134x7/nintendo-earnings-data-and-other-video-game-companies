@@ -80,13 +80,12 @@ export default function Capcom() {
                 ? 
             <Group position="center">
 
-                {/* <Autocomplete */}
                 <Select
                     dropdownPosition="bottom"
                     mb="sm"
                     mr="md"
                     placeholder="Select"
-                    label={`Select Fiscal Year from ${currentYear - (yearsList.length-1)} to ${currentYear}.`}
+                    label={`Select a Fiscal Year from ${currentYear - (yearsList.length-1)} to ${currentYear}.`}
                     description={`Fiscal Year ending March ${(Number(year?.slice(4,8))) ? year?.slice(4,8) : "" }.`}
                     radius="xl"
                     size="md"
