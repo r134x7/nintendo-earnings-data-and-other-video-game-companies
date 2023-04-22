@@ -121,6 +121,11 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
     const selectData = selectDataComponent(componentListNew[props.setIndex]);
 
     function delayedReset() {
+    /* removes SegmentedControl from the DOM
+    *  it returns undefined first
+    *  then activates setValue from the setTimeout
+    *  to reset the value to ""
+    */ 
         setTimeout(() => {
             setValue("")
         }, 10);

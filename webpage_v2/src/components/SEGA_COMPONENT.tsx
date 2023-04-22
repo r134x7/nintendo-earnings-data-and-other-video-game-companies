@@ -143,16 +143,32 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
 
     const selectData = selectDataComponent(componentListNew[props.setIndex]);
 
+    function delayedReset() {
+    /* removes SegmentedControl from the DOM
+    *  it returns undefined first
+    *  then activates setValue from the setTimeout
+    *  to reset the value to ""
+    */ 
+        setTimeout(() => {
+            setValue("")
+        }, 10);
+        return undefined
+    }
+
     return (
 
         <div>  
-            <SegmentedControl
+            {
+                (dataList.filter(elem => elem === value).length === 0 && value.length !== 0) 
+                ?  delayedReset()
+                : <SegmentedControl
                     fullWidth 
                     orientation="vertical"
                     value={value}
                     onChange={setValue}
                     data={dataList}
-            />
+                />
+            }
             
             {
                 (value === "Data Sources")

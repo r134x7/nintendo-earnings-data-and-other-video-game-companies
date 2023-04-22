@@ -89,16 +89,32 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
     const selectData = selectDataComponent(componentListNew[props.setIndex]);
     const selectGraph = selectGraphComponent(componentListNew[props.setIndex]);
 
+    function delayedReset() {
+        /* removes SegmentedControl from the DOM
+        *  it returns undefined first
+        *  then activates setValue from the setTimeout
+        *  to reset the value to ""
+        */ 
+            setTimeout(() => {
+                setValue("")
+            }, 10);
+            return undefined
+        }
+
     return (
 
         <div>  
-            <SegmentedControl
+            {
+                (dataList.filter(elem => elem === value).length === 0 && value.length !== 0) 
+                ?  delayedReset()
+                : <SegmentedControl
                     fullWidth 
                     orientation="vertical"
                     value={value}
                     onChange={setValue}
                     data={dataList}
-            />
+                />
+            }
 
             {
                 (value === "Data Sources")
