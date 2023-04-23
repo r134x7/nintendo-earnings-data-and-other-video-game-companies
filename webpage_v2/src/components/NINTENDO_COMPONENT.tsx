@@ -186,6 +186,13 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                 break;
         }
 
+        let x = [...platformListsTopSellingTitles].filter(elem => elem === platformValue)
+
+        if ((x?.length ?? 0) === 0) {
+            setPlatformValue("All");
+        }
+
+
     }, [value, titleValue, platformValue, regionValue, props.setIndex])
 
     const componentListNew = Array.from({length: props.yearLength}, (elem, index) => {
