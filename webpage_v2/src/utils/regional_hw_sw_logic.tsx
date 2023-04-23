@@ -419,7 +419,7 @@ export const printSection = (header: Header, sectionDifference: Section[], secti
             printFourthLTDRow,
         ].flat().reduce((acc, next) => acc + next),"−","bottom",undefined,34);
         
-    const penultimateCheck = [sectionHeader, ...difference, ...cumulative, ltdPrint, "###"].flat().reduce((prev, next) => prev + "\n" + next)
+    const penultimateCheck = [sectionHeader, ...difference, ...cumulative, ltdPrint, "###\n"].flat().reduce((prev, next) => prev + "\n" + next)
 
         return penultimateCheck;
 }

@@ -5,6 +5,7 @@ import {
     quarterlyCalculation,
     yearOnYearCalculation,
 } from "../../utils/regional_hw_sw_logic";
+import type { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
 
 import { headerPrint, dateLabel, liner, border, spacer, valueLimit } from "../../utils/table_design_logic";
 
@@ -184,7 +185,7 @@ export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
     return sales
 };
 
-export const regionalHardwareSoftwareList: string[] = collection.map((elem, index, array) => {
+export const regionalHardwareSoftwareList = collection.map((elem, index, array) => {
 
     let currentQuarter: number = elem.currentQuarter;
 
@@ -255,19 +256,27 @@ export const regionalHardwareSoftwareList: string[] = collection.map((elem, inde
         header.switchHeader + " | " + header.fiscalYear,
     ],44) + "\n" + printDateLabel;
 
-    const printRegionalUnitSales: string[] = Array.from({length: regionalUnitsThisFYList.length}, (v, i) => {
+    const printRegionalUnitSales = Array.from({length: regionalUnitsThisFYList.length}, (v, i) => {
 
-        return printSection(
+        return {
+            title: quarterlyRegionalUnitsThisFY[i][0].name,
+            table: printSection(
             header, 
             quarterlyRegionalUnitsThisFY[i],
             quarterlyRegionalUnitSalesYoY[i],
             cmlRegionalUnitSalesThisFY[i],
             regionalUnitSalesYoY[i],
             currentQuarter
-            )
+            ),
+        } as titleSet
     })
 
-    let printAll: string[] = [printOne].concat(printRegionalUnitSales);
+    // let printAll: string[] = [printOne].concat(printRegionalUnitSales);
 
-    return printAll.reduce((prev, next) => prev + "\n" + next);
+    // return printAll.reduce((prev, next) => prev + "\n" + next);
+
+    return {
+        header: printOne,
+        titleList: printRegionalUnitSales,
+    }
 }) 

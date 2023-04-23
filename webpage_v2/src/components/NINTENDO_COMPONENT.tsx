@@ -49,6 +49,8 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
     let keySalesIndicatorsIndex = keySalesIndicatorsList?.[props.setIndex];
 
+    let regionalHardwareSoftwareIndex = regionalHardwareSoftwareList?.[props.setIndex];
+
     let fyMillionSellerTitlesIndex = fyMillionSellerTitlesList?.[props.setIndex];
 
     let fyMillionSellerTitlesAllPlatformsHeaderPickedIndex = fyMillionSellerTitlesListAllHeaders?.[props.setIndex]; 
@@ -136,6 +138,8 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
     let topSellingTitlesCall = platformSearchFeatures(topSellingTitleIndex, topSellingTitlesAllPlatformsHeaderPickedIndex, "Top Selling Titles", platformListsTopSellingTitles);
 
+    let regionalHardwareSoftwareCall = titleSetSearchFeatures(regionalHardwareSoftwareIndex, "Regional Hardware/Software Units");
+
     let consolidatedSalesInformationCall = titleSetSearchFeatures(consolidatedSalesInformationIndex, "Consolidated Sales Information");
 
     let keySalesIndicatorsCall = titleSetSearchFeatures(keySalesIndicatorsIndex, "Key Sales Indicators")
@@ -149,7 +153,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
            description: "Clear field to show all titles of the selected platform", 
         },
         {
-           value: consolidatedSalesInformationCall.sectionTitle,
+           value: (value === consolidatedSalesInformationCall.sectionTitle) ? consolidatedSalesInformationCall.sectionTitle : regionalHardwareSoftwareCall.sectionTitle,
            placeholder: "Search specific platform",
            label: `Platform Search - Sets of platforms shown: ${titlesLength}`,
            description: "Clear field to show all platforms.", 
@@ -160,24 +164,6 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
            label: `Category Search - Sets of categories shown: ${titlesLength}`,
            description: "Clear field to show all categories.", 
         },
-        // {
-        //    value: "FY Platinum Titles",
-        //    placeholder: "Search specific titles",
-        //    label: `Title Search - Number of Titles shown: ${titlesLength}`,
-        //    description: "Clear field to show all titles of the selected platform", 
-        // },
-        // {
-        //    value: "FY Game Series",
-        //    placeholder: "Search specific series",
-        //    label: `Series Search - Number of game series shown: ${titlesLength}`,
-        //    description: "Clear field to show all game series listed.", 
-        // },
-        // {
-        //    value: "Software Platform Shipments",
-        //    placeholder: "Search specific platform",
-        //    label: `Platform Search - Sets of platforms shown: ${titlesLength}`,
-        //    description: "Clear field to show all platforms.", 
-        // }
     ].filter(elem => elem.value === value);
 
     useEffect(() => {
@@ -211,6 +197,10 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
             case keySalesIndicatorsCall.sectionTitle:
                 setTitlesLength(keySalesIndicatorsCall.titlesLength?.length ?? 0)
+                break;
+
+            case regionalHardwareSoftwareCall.sectionTitle:
+                setTitlesLength(regionalHardwareSoftwareCall.titlesLength?.length ?? 0)
                 break;
         
             default:
@@ -254,7 +244,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
             },
             {
                 name: "Regional Hardware/Software Units",
-                value: regionalHardwareSoftwareList?.[index],
+                value: regionalHardwareSoftwareCall.table,
             },
             {
                 name: "Top Selling Titles",
@@ -330,7 +320,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                   /> 
                     : undefined
                 }
-                {(value === "Top Selling Titles" || value === "Consolidated Sales Information" || value === "Key Sales Indicators" || value === fyMillionSellerTitlesCall.sectionTitle)
+                {(value === "Top Selling Titles" || value === "Consolidated Sales Information" || value === "Key Sales Indicators" || value === fyMillionSellerTitlesCall.sectionTitle || value === regionalHardwareSoftwareCall.sectionTitle)
                     ? <>
                     <TextInput
                     placeholder={textInputValues[0].placeholder}
