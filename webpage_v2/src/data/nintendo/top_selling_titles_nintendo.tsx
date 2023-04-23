@@ -208,6 +208,10 @@ export const topSellingTitlesList = collection.map((elem, index, array) => {
 
             return printAll.reduce((prev, next) => prev + "\n" + next);
         } else {
+            // return [
+            //     {header: printOne},
+            //     {titlesList: printRest},
+            // ]
             return {
                 header: printOne,
                 titleList: printRest,
@@ -220,8 +224,11 @@ export const topSellingTitlesList = collection.map((elem, index, array) => {
 
     let platformList = elem.titles.map(value => makeTitlesList(value, prevFYTitles, header, elem.currentQuarter, true));
     // console.log(platformList);
-    
 
+    // return platformList as [
+    //     {header: string},
+    //     {titlesList: searchTitles[]},
+    // ][]
     return platformList as {
         header: string,
         titleList: searchTitles[],

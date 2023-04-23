@@ -10,7 +10,7 @@ import { regionalHardwareSoftwareList } from "../data/nintendo/regional_hardware
 import { topSellingTitlesList, topSellingTitlesGraphList } from "../data/nintendo/top_selling_titles_nintendo";
 import { consolidatedSalesInformationList, consolidatedSalesInformationGraphList } from "../data/nintendo/consolidated_sales_information_nintendo";
 import { searchTitles } from "../data/capcom/platinum_titles_Capcom";
-import { printTextBlock, liner } from "../utils/table_design_logic";
+import { printTextBlock, liner, filterTextAddToSetCml } from "../utils/table_design_logic";
 
 import GRAPH_NINTENDO_KPI from "../data/nintendo/Graphs/GRAPH_NINTENDO_KPI";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES from "../data/nintendo/Graphs/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH";
@@ -43,6 +43,26 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
         })
     }
 
+    
+    // console.log(topSellingTitlesList);
+
+    let topSellingTitlePickedIndex = topSellingTitlesList?.[props.setIndex];
+
+    let topSellingTitlesPlatformsCombined = topSellingTitlePickedIndex.flatMap(elem => elem.titleList);
+
+    let topSellingTitlesHeadersCombined = topSellingTitlePickedIndex.flatMap(elem => {
+
+        return {
+            header: elem.header,
+            platform: elem.titleList[0].platforms
+        }
+    });
+
+    // console.log(topSellingTitlesPlatformsCombined);
+    
+    // topSellingTitles
+    
+    
     /**
      * the shape... 
      * [
@@ -58,29 +78,39 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
      * I didn't know this creates notes for the variable below...
     */
     
-    let TopSellingTitlesPlatformsFiltered = Array.from({length:topSellingTitlesList.length},(v,i) => {
-        return (i === props.setIndex)
-            ? topSellingTitlesList[i].map(elem => filterPlatforms<searchTitles>(elem.titleList))
-            // : topSellingTitlesList[i]
-            : []
-    }).flat()
+    // let TopSellingTitlesPlatformsFiltered = Array.from({length:topSellingTitlesList.length},(v,i) => {
+    //     return (i === props.setIndex)
+    //         ? topSellingTitlesList[i].map(elem => filterPlatforms<searchTitles>(elem.titleList))
+    //         // : topSellingTitlesList[i]
+    //         : []
+    // }).flat()
+
+    let TopSellingTitlesPlatformsFiltered = filterPlatforms<searchTitles>(topSellingTitlesPlatformsCombined);
+
+    let topSellingTitlesTitleFilter = filterTitles<searchTitles>(TopSellingTitlesPlatformsFiltered, titleValue);
 
     let platformListsTopSellingTitles = new Set<string>();
 
     // topSellingTitlesList?.[props.setIndex]?.map(elem => elem.titleList.map(elemII => platformListsTopSellingTitles.add(elemII.platforms)));
-    topSellingTitlesList?.[0]?.map(elem => elem.titleList.map(elemII => platformListsTopSellingTitles.add(elemII.platforms)));
+
+    topSellingTitlesPlatformsCombined.map(elem => platformListsTopSellingTitles.add(elem.platforms));
 
     // let topSellingTitlesTitleFilter = TopSellingTitlesPlatformsFiltered?.[0].map(elem => filterTitles<searchTitles>(elem, titleValue)))
-    let topSellingTitlesTitleFilter = TopSellingTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem, titleValue));
+    // let topSellingTitlesTitleFilter = TopSellingTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem, titleValue));
 
     let predictText = new Set<string>();
 
-    filterTextAddToSetFY(topSellingTitlesTitleFilter, value, "Top Selling Titles", titleValue, false, props.setIndex, predictText)
+    filterTextAddToSetCml(topSellingTitlesTitleFilter, value, "Top Selling Titles", titleValue, predictText)
 
-    let topSellingTitlesReduce: string[] = topSellingTitlesTitleFilter.map(elem => elem.reduce((acc, next) => acc + next.table,""));
+    let topSellingTitlesReduce: string = topSellingTitlesTitleFilter.reduce((acc, next) => acc + next.table,"");
 
-    let completeTopSellingTitles = topSellingTitlesReduce.map((elem, index) => topSellingTitlesList[index][0].header + elem)
+    // let completeTopSellingTitles = topSellingTitlesHeadersCombined.filter(elem => elem.platform === platformValue) + topSellingTitlesReduce ;
 
+    let completeTopSellingTitles = topSellingTitlesReduce ;
+    console.log(platformListsTopSellingTitles);
+    
+
+    
     const textInputValues = [
         {
            value: "Top Selling Titles",
@@ -112,8 +142,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
         switch (value) {
             case "Top Selling Titles":
-                // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
-                setTitlesLength(topSellingTitlesTitleFilter?.[props.setIndex]?.length ?? 0)
+                setTitlesLength(topSellingTitlesTitleFilter?.length ?? 0)
                 break;
 
             // case "Software Platform Shipments":
@@ -174,7 +203,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
             {
                 name: "Top Selling Titles",
                 // value: topSellingTitlesList?.[index],
-                value: completeTopSellingTitles?.[index],
+                value: completeTopSellingTitles,
                 graph: <GRAPH_NINTENDO_TOP_SELLING_TITLES setData={topSellingTitlesGraphList[index]} />
             },
         ].filter(elem => elem.value !== undefined);
@@ -247,47 +276,46 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                 }
                 {(value === "Top Selling Titles")
                     ? <>
-                        <TextInput
-                        placeholder={textInputValues[0].placeholder}
-                        label={textInputValues[0].label}
-                        description={textInputValues[0].description}
-                        radius="xl"
-                        value={titleValue}
-                        onChange={e => {
-                            setTitleValue(e.target.value.toLowerCase())
-                        }}
-                        />  
-                        {(predictText.size > 0 && titleValue !== predictText.values().next().value) ? liner(printTextBlock("Nearest single word search: (To use, click on a word)",40),"−","both",true,40) : undefined }
-                        { (predictText.size > 0 && titleValue !== predictText.values().next().value)
-                        ? [...predictText].flatMap((elem, index) => {
-                            if (index > 3) {
-                                return []
-                            } else {
-                                return ( <Button 
-                                key={elem}
-                                onClick={() => setTitleValue(elem)}
-                                radius={"xl"}
-                                ml={"sm"} mb={"sm"} variant="subtle" compact>
-                                    <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
-                                        {elem}
-                                    </Code>
-                                </Button>
-                                )
-                            }
-                            })
-                        : (titleValue === predictText.values().next().value || titlesLength === 0) 
-                            ? <Button 
-                                    onClick={() => setTitleValue("")}
-                                    radius={"xl"}
-                                    m={"sm"} variant="subtle" compact>
-                                        <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
-                                            {"Clear Search"}
-                                        </Code>
-                                    </Button> 
-                            : undefined
+                    <TextInput
+                    placeholder={textInputValues[0].placeholder}
+                    label={textInputValues[0].label}
+                    description={textInputValues[0].description}
+                    radius="xl"
+                    value={titleValue}
+                    onChange={e => {
+                        setTitleValue(e.target.value.toLowerCase())
+                    }}
+                    />  
+                    {(predictText.size > 0 && titleValue !== predictText.values().next().value) ? liner(printTextBlock("Nearest single word search: (To use, click on a word)",40),"−","both",true,40) : undefined }
+                    { (predictText.size > 0 && titleValue !== predictText.values().next().value)
+                    ? [...predictText].flatMap((elem, index) => {
+                        if (index > 3) {
+                            return []
+                        } else {
+                            return <Button 
+                            key={elem}
+                            onClick={() => setTitleValue(elem)}
+                            radius={"xl"}
+                            ml={"sm"} mb={"sm"} variant="subtle" compact>
+                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                    {elem}
+                                </Code>
+                            </Button>
                         }
-                        <br/>
-                        </>  
+                        })
+                    : (titleValue === predictText.values().next().value || titlesLength === 0) 
+                    ? <Button 
+                            onClick={() => setTitleValue("")}
+                            radius={"xl"}
+                            m={"sm"} variant="subtle" compact>
+                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                    {"Clear Search"}
+                                </Code>
+                            </Button> 
+                    : undefined
+                    }
+                    <br/>
+                    </>  
                     : undefined
                 }
                         {selectData(value)}
