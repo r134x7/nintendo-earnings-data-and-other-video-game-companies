@@ -196,6 +196,7 @@ export function filterTextAddToSetFY<T extends titleSet | searchTitles>(filtered
 export function filterTextAddToSetCml<T extends titleSet | searchTitles>(filteredText: T[], categoryValue: string, categoryCheck: string, titleCheck: string, theSet: Set<string>) {
     
     if (titleCheck.length !== 0 && categoryCheck === categoryValue) {
-        filteredText.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleCheck})\\w+`,"g"))].flat().map(elemII => theSet.add(elemII)))
+        // filteredText.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleCheck})\\w+`,"g"))].flat().map(elemII => theSet.add(elemII)))
+        filteredText.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=[\\w\é]*${titleCheck})[\\w\é]+`,"g"))].flat().map(elemII => theSet.add(elemII)))
     }
 } 
