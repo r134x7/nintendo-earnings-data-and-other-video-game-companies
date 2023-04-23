@@ -166,7 +166,7 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
                         {(predictText.size > 0 && titleValue !== predictText.values().next().value) ? liner(printTextBlock("Nearest single word search: (To use, click on a word)",40),"−","both",true,40) : undefined }
                         { (predictText.size > 0 && titleValue !== predictText.values().next().value)
                         ? [...predictText].flatMap((elem, index) => {
-                            if (index > 4) {
+                            if (index > 3) {
                                 return []
                             } else {
                                 return ( <Button 
