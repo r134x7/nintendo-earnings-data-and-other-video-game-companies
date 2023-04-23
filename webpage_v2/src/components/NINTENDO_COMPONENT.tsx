@@ -3,7 +3,7 @@ import { Code, SegmentedControl, TextInput, Button, Select } from "@mantine/core
 import { useSelector } from "react-redux";
 import { nintendoLinks } from "../data/generalTables/data_sources_general";
 import { nintendoConsolidatedEarningsList, nintendoConsolidatedEarningsGraphList} from "../data/generalTables/consolidated_earnings_general";
-import { fyMillionSellerTitlesList, fyMillionSellerTitlesGraphList } from "../data/nintendo/fy_million_seller_titles_nintendo";
+import { fyMillionSellerTitlesListAllHeaders, fyMillionSellerTitlesList, fyMillionSellerTitlesGraphList } from "../data/nintendo/fy_million_seller_titles_nintendo";
 import { globalHardwareSoftwareList, globalHardwareSoftwareGraphList } from "../data/nintendo/global_hardware_software_mobile_nintendo";
 import { keySalesIndicatorsList, keySalesIndicatorsGraphList } from "../data/nintendo/key_sales_indicators_nintendo";
 import { regionalHardwareSoftwareList } from "../data/nintendo/regional_hardware_software_nintendo";
@@ -49,50 +49,58 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
     let keySalesIndicatorsIndex = keySalesIndicatorsList?.[props.setIndex];
 
+    let fyMillionSellerTitlesIndex = fyMillionSellerTitlesList?.[props.setIndex];
+
+    let fyMillionSellerTitlesAllPlatformsHeaderPickedIndex = fyMillionSellerTitlesListAllHeaders?.[props.setIndex]; 
+
     let topSellingTitleIndex = topSellingTitlesList?.[props.setIndex];
 
     let topSellingTitlesAllPlatformsHeaderPickedIndex = topSellingTitlesListAllHeaders?.[props.setIndex];
 
-    function topSellingTitlesSearchFeatures(input: {
+    function platformSearchFeatures(input: {
         header: string;
         titleList: searchTitles[];
-    }[], allHeader: string
+        summary?: string,
+    }[], allHeader: string, filterContext: string, setContext: Set<string>, footnote?: string,
     ) {
         if (input === undefined) {
             return {
                 titlesLength: "",
                 table: undefined,
+                sectionTitle: filterContext,
             }
         }
 
-        let topSellingTitlesPlatformsCombined = input.flatMap(elem => elem.titleList);
+        let platformsCombined = input.flatMap(elem => elem.titleList);
 
-        let topSellingTitlesHeadersCombined = [{header: allHeader, platform: "All"}].concat(input.flatMap(elem => {
+        let headersCombined = [{header: allHeader, platform: "All", summary: ""}].concat(input.flatMap(elem => {
 
             return {
                 header: elem.header,
-                platform: elem.titleList[0].platforms
+                platform: elem.titleList[0].platforms,
+                summary: elem.summary ?? "",
             }
         }));
 
 
-        let TopSellingTitlesPlatformsFiltered = filterPlatforms<searchTitles>(topSellingTitlesPlatformsCombined);
+        let platformsFiltered = filterPlatforms<searchTitles>(platformsCombined);
 
-        let topSellingTitlesTitleFilter = filterTitles<searchTitles>(TopSellingTitlesPlatformsFiltered, titleValue);
+        let titlesTitleFilter = filterTitles<searchTitles>(platformsFiltered, titleValue);
         
-        topSellingTitlesPlatformsCombined.map(elem => platformListsTopSellingTitles.add(elem.platforms));
+        platformsCombined.map(elem => setContext.add(elem.platforms));
 
-        filterTextAddToSetCml(topSellingTitlesTitleFilter, value, "Top Selling Titles", titleValue, predictText)
+        filterTextAddToSetCml(titlesTitleFilter, value, filterContext, titleValue, predictText)
 
-        let topSellingTitlesReduce: string = topSellingTitlesTitleFilter.reduce((acc, next) => acc + next.table,"");
+        let titlesReduce: string = titlesTitleFilter.reduce((acc, next) => acc + next.table,"");
 
-        let [picked, empty] = topSellingTitlesHeadersCombined.filter(elem => elem.platform === platformValue)
+        let [picked, empty] = headersCombined.filter(elem => elem.platform === platformValue)
 
-        let completeTopSellingTitles = (picked?.header ?? "ERROR") + topSellingTitlesReduce;
+        let completeTable = (picked?.header ?? "ERROR") + titlesReduce + (picked?.summary ?? "ERROR") + (footnote ?? "");
 
         return {
-            titlesLength: topSellingTitlesTitleFilter,
-            table: completeTopSellingTitles,
+            titlesLength: titlesTitleFilter,
+            table: completeTable,
+            sectionTitle: filterContext,
         }
     }
 
@@ -120,9 +128,13 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
     let platformListsTopSellingTitles = new Set<string>();
 
+    let platformListsFYMillionSellers = new Set<string>();
+
     let predictText = new Set<string>();
 
-    let topSellingTitlesCall = topSellingTitlesSearchFeatures(topSellingTitleIndex, topSellingTitlesAllPlatformsHeaderPickedIndex);
+    let fyMillionSellerTitlesCall = platformSearchFeatures(fyMillionSellerTitlesIndex, fyMillionSellerTitlesAllPlatformsHeaderPickedIndex.header, "FY Million-Seller Titles", platformListsFYMillionSellers,fyMillionSellerTitlesAllPlatformsHeaderPickedIndex.footnote)
+
+    let topSellingTitlesCall = platformSearchFeatures(topSellingTitleIndex, topSellingTitlesAllPlatformsHeaderPickedIndex, "Top Selling Titles", platformListsTopSellingTitles);
 
     let consolidatedSalesInformationCall = titleSetSearchFeatures(consolidatedSalesInformationIndex, "Consolidated Sales Information");
 
@@ -131,7 +143,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
     
     const textInputValues = [
         {
-           value: "Top Selling Titles",
+           value: (value === topSellingTitlesCall.sectionTitle) ? topSellingTitlesCall.sectionTitle : fyMillionSellerTitlesCall.sectionTitle,
            placeholder: "Search specific titles",
            label: `Title Search - Number of Titles shown: ${titlesLength}`,
            description: "Clear field to show all titles of the selected platform", 
@@ -171,8 +183,26 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
     useEffect(() => {
 
         switch (value) {
-            case "Top Selling Titles":
+            case topSellingTitlesCall.sectionTitle:
                 setTitlesLength(topSellingTitlesCall.titlesLength?.length ?? 0)
+
+                let platformReset1 = [...platformListsTopSellingTitles].filter(elem => elem === platformValue)
+
+                if ((platformReset1?.length ?? 0) === 0) {
+                            setPlatformValue("All");
+                }
+
+                break;
+
+            case fyMillionSellerTitlesCall.sectionTitle:
+                setTitlesLength(fyMillionSellerTitlesCall.titlesLength?.length ?? 0)
+
+                let platformReset2 = [...platformListsFYMillionSellers].filter(elem => elem === platformValue)
+
+                if ((platformReset2?.length ?? 0) === 0) {
+                    setPlatformValue("All");
+                }
+
                 break;
 
             case consolidatedSalesInformationCall.sectionTitle:
@@ -187,14 +217,8 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                 break;
         }
 
-        let platformReset = [...platformListsTopSellingTitles].filter(elem => elem === platformValue)
 
-        if ((platformReset?.length ?? 0) === 0) {
-            setPlatformValue("All");
-        }
-
-
-    }, [value, titleValue, platformValue, regionValue, props.setIndex])
+    }, [value, titleValue, platformValue, regionValue, props.setIndex, platformListsFYMillionSellers, platformListsTopSellingTitles])
 
     const componentListNew = Array.from({length: props.yearLength}, (elem, index) => {
 
@@ -225,7 +249,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
             },
             {
                 name: "FY Million-Seller Titles",
-                value: fyMillionSellerTitlesList?.[index],
+                value: fyMillionSellerTitlesCall.table,
                 graph: <GRAPH_NINTENDO_FY_MILLION_SELLER_TITLES setData={fyMillionSellerTitlesGraphList[index]} /> 
             },
             {
@@ -293,11 +317,11 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                 (value === "Data Sources")
                     ? selectData(value)
                     : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {(value === "Top Selling Titles")
+                {(value === topSellingTitlesCall.sectionTitle || value === fyMillionSellerTitlesCall.sectionTitle)
                     ? <Select
                         data={[
                          "All",
-                     ].concat((value === "Top Selling Titles") ? [...platformListsTopSellingTitles] : ["Error"])}
+                     ].concat((value === topSellingTitlesCall.sectionTitle) ? [...platformListsTopSellingTitles] : [...platformListsFYMillionSellers])}
                     defaultValue={"All"} 
                     label="Select all or one platform:"
                     radius="xl"
@@ -306,7 +330,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                   /> 
                     : undefined
                 }
-                {(value === "Top Selling Titles" || value === "Consolidated Sales Information" || value === "Key Sales Indicators")
+                {(value === "Top Selling Titles" || value === "Consolidated Sales Information" || value === "Key Sales Indicators" || value === fyMillionSellerTitlesCall.sectionTitle)
                     ? <>
                     <TextInput
                     placeholder={textInputValues[0].placeholder}

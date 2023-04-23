@@ -8,6 +8,7 @@ import {
     printSummary,
     printSummaryHead,
 } from "../../utils/fy_million_seller_titles_logic";
+import type { searchTitles } from "../capcom/platinum_titles_Capcom";
 
 import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
 
@@ -174,7 +175,48 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
     return title
 };
 
-export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, array) => {
+export const fyMillionSellerTitlesListAllHeaders = collection.map((elem, index, array) => {
+
+    let header: Header = {
+        mainHeader: "Nintendo Fiscal Year Million-Seller Titles",
+        platformHeader: "All platforms",
+        secondHeader: "Title",
+        thirdHeader: "Platform and Rank",
+        fourthHeader: "Units",
+        areaHeader: "| Area         |    Japan | Overseas |",
+        globalHeader: "| Global       | Global FY|Global LTD|",
+        fiscalYear: elem.fiscalYear,
+        mainSummaryHeader: "placeholder",
+        secondSummaryHeader: "FY Million-Seller",
+        thirdSummaryHeader: "Titles Summary",
+        japanSummaryHeader: "Japan",
+        overseasSummaryHeader: "Overseas",
+        globalFYSummaryHeader: "Global FY",
+        globalLTDSummaryHeader: "Global LTD",
+    };
+
+    const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", elem?.currentQuarter ?? 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
+    let footnote = elem?.footnote ?? "";
+
+    let printOne = headerPrint([
+        header.mainHeader,
+        header.platformHeader,
+    ],44) + "\n" + headerPrint([
+        header.secondHeader,
+        header.thirdHeader,
+        header.fourthHeader
+    ],32) + "\n" + printDateLabel;
+
+    return {
+        header: printOne,
+        footnote: footnote,
+    }
+})
+
+export const fyMillionSellerTitlesList = collection.map((elem, index, array) => {
 
     let header: Header = {
         mainHeader: "Nintendo Fiscal Year Million-Seller Titles",
@@ -200,7 +242,7 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
 
     let prevFYTitles: titlesJSON[][] | undefined = array?.[index+1]?.titles;
 
-    function makeTitlesList(titleValues: titlesJSON[], prevFYTitlesLocal: titlesJSON[][] | undefined, headerValues: Header, currentQuarter: number): string {
+    function makeTitlesList(titleValues: titlesJSON[], prevFYTitlesLocal: titlesJSON[][] | undefined, headerValues: Header, currentQuarter: number) {
 
         let titlesList: Titles[][] = titleValues.map(value => titlesMake(value, prevFYTitlesLocal));
 
@@ -296,35 +338,58 @@ export const fyMillionSellerTitlesList: string[] = collection.map((elem, index, 
         }
 
         let printOne = headerPrint([
-            header.mainHeader,
-            header.platformHeader,
+            headerFixed.mainHeader,
+            headerFixed.platformHeader,
         ],44) + "\n" + headerPrint([
-            header.secondHeader,
-            header.thirdHeader,
-            header.fourthHeader
+            headerFixed.secondHeader,
+            headerFixed.thirdHeader,
+            headerFixed.fourthHeader
         ],32) + "\n" + printDateLabel;
 
         let printListedTitles = differenceTitles.map((elem, index) => {
-            return printTitles(headerFixed, elem, sortedTitles[index], currentQuarter)
-        }) as string[];
+            // return printTitles(headerFixed, elem, sortedTitles[index], currentQuarter)
+            return {
+               title: elem[0].title,
+               platforms: elem[0].platform,
+               table: printTitles(headerFixed, elem, sortedTitles[index], currentQuarter),  
+            } as searchTitles 
+        })
 
         let printSummaryOne = printSummaryHead(headerFixed, newCollection, recurringCollection)
 
         let printSummaryTwo = printSummary(headerFixed, newSummary, recurringSummary)
 
+        // let printFYMillionSellerTitles = (currentQuarter !== 4) // can't use !== 4 for one condition only or else it assumes condition is always true (this issue occurred with hardcoded currentQuarter)
+        //     ? [printOne, ...printListedTitles ].reduce((prev, next) => prev + "\n" + next )
+        //     : [printOne, ...printListedTitles, printSummaryOne, printSummaryTwo].reduce((prev, next) => prev + "\n" + next )
+
+        // return printFYMillionSellerTitles
+
         let printFYMillionSellerTitles = (currentQuarter !== 4) // can't use !== 4 for one condition only or else it assumes condition is always true (this issue occurred with hardcoded currentQuarter)
-            ? [printOne, ...printListedTitles ].reduce((prev, next) => prev + "\n" + next )
-            : [printOne, ...printListedTitles, printSummaryOne, printSummaryTwo].reduce((prev, next) => prev + "\n" + next )
+            ? {
+                header: printOne,
+                summary: "",
+                titleList: printListedTitles,
+            }
+            : {
+                header: printOne,
+                summary: printSummaryOne + "\n" + printSummaryTwo, 
+                titleList: printListedTitles,
+            } 
 
         return printFYMillionSellerTitles
     };
 
-    let footnote = elem?.footnote ?? "###";
+    // let footnote = elem?.footnote ?? "###";
 
     // now that it is a function, when I want to add titles of another platform, then I can reduce it
     // let platformList = makeTitlesList(elem.titles, header, elem.currentQuarter);
-    let platformList: string = elem.titles.map(value => makeTitlesList(value, prevFYTitles, header, elem.currentQuarter)
-    ).concat(footnote).reduce((prev,next) => prev + "\n" + next);
+    let platformList = elem.titles.map(value => makeTitlesList(value, prevFYTitles, header, elem.currentQuarter)
+    )
+    // .concat(footnote).reduce((prev,next) => prev + "\n" + next);
+
+    // console.log(platformList);
+    
 
     return platformList
 });
