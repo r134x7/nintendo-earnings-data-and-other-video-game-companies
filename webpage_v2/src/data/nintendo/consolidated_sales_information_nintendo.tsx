@@ -6,6 +6,8 @@ import {
     yearOnYearCalculation
 } from "../../utils/hardware_software_units_logic";
 
+import type { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
+
 import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
 
 import consolidatedSalesInfo2023 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2023.json";
@@ -126,7 +128,7 @@ export const platformSalesMake = (obj: undefined | platformSalesType): Section[]
     return unitSales 
 };
 
-export const consolidatedSalesInformationList: string[] = collection.map((elem, index, array) => {
+export const consolidatedSalesInformationList  = collection.map((elem, index, array) => {
 
     let currentQuarter: number = elem.currentQuarter;
     
@@ -210,7 +212,18 @@ export const consolidatedSalesInformationList: string[] = collection.map((elem, 
             }
         ]
 
-        return printSections(
+        // return printSections(
+        //     header, 
+        //     quarterlyPlatformSalesThisFY[i],
+        //     quarterlyPlatformUnitSalesYoY[i],
+        //     cmlPlatformUnitSalesThisFY[i],
+        //     platformUnitSalesYoY[i],
+        //     forecast,
+        //     currentQuarter
+        //     )
+        return {
+            title: quarterlyPlatformSalesThisFY[i][0].name,
+            table: printSections(
             header, 
             quarterlyPlatformSalesThisFY[i],
             quarterlyPlatformUnitSalesYoY[i],
@@ -218,12 +231,17 @@ export const consolidatedSalesInformationList: string[] = collection.map((elem, 
             platformUnitSalesYoY[i],
             forecast,
             currentQuarter
-            )
-    }).concat("###") as string[];
+            ),
+        } as titleSet 
+    })
+    // .concat("###") as string[];
+    // let printAll = [printOne].concat(printPlatformSales);
 
-    let printAll = [printOne].concat(printPlatformSales);
-
-    return printAll.reduce((prev, next) => prev + "\n" + next);
+    // return printAll.reduce((prev, next) => prev + "\n" + next);
+    return {
+        header: printOne,
+        titleList: printPlatformSales
+    }
 });
 
 export const consolidatedSalesInformationGraphList = collection.map((elem, index, array) => {

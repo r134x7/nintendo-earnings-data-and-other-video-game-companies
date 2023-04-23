@@ -9,7 +9,8 @@ import { keySalesIndicatorsList, keySalesIndicatorsGraphList } from "../data/nin
 import { regionalHardwareSoftwareList } from "../data/nintendo/regional_hardware_software_nintendo";
 import { topSellingTitlesListAllHeaders, topSellingTitlesList, topSellingTitlesGraphList } from "../data/nintendo/top_selling_titles_nintendo";
 import { consolidatedSalesInformationList, consolidatedSalesInformationGraphList } from "../data/nintendo/consolidated_sales_information_nintendo";
-import { searchTitles } from "../data/capcom/platinum_titles_Capcom";
+import type { searchTitles } from "../data/capcom/platinum_titles_Capcom";
+import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
 import { printTextBlock, liner, filterTextAddToSetCml } from "../utils/table_design_logic";
 
 import GRAPH_NINTENDO_KPI from "../data/nintendo/Graphs/GRAPH_NINTENDO_KPI";
@@ -44,9 +45,9 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
     }
 
     
-    // console.log(topSellingTitlesList);
+    let consolidatedSalesInformationIndex = consolidatedSalesInformationList?.[props.setIndex];
 
-    let topSellingTitlePickedIndex = topSellingTitlesList?.[props.setIndex];
+    let topSellingTitleIndex = topSellingTitlesList?.[props.setIndex];
 
     let topSellingTitlesAllPlatformsHeaderPickedIndex = topSellingTitlesListAllHeaders?.[props.setIndex];
 
@@ -93,46 +94,33 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
         }
     }
 
+    function consolidatedSalesInformationSearchFeatures(input: { header: string; titleList: titleSet[];}) {
+        if (input === undefined) {
+            return {
+                titlesLength: "",
+                table: undefined,
+            }
+        }
+
+        let titlesFilter = filterTitles<titleSet>(input.titleList,titleValue)
+
+        filterTextAddToSetCml(titlesFilter, value, "Consolidated Sales Information", titleValue, predictText)
+
+        let titlesReduce = titlesFilter.reduce((acc, next) => acc + next.table,"");
+
+        return {
+            titlesLength: titlesFilter,
+            table: titlesReduce,
+        }
+    }
+
     let platformListsTopSellingTitles = new Set<string>();
 
     let predictText = new Set<string>();
 
-    let topSellingTitlesCall = topSellingTitlesSearchFeatures(topSellingTitlePickedIndex, topSellingTitlesAllPlatformsHeaderPickedIndex)
-    // console.log(topSellingTitlesPlatformsCombined);
-    
-    // topSellingTitles
-    
-    
-    /**
-     * the shape... 
-     * [
-     * [header, titlelist],
-     * [header, titlelist],
-     * repeat
-     * ]
-     * so the shape is
-     * {header, titlelist[]}[][]
-     * which is correct
-     * this is more complicated than the capcom platinum titles
-     * because the platforms are separate
-     * I didn't know this creates notes for the variable below...
-    */
-    
-    // let TopSellingTitlesPlatformsFiltered = Array.from({length:topSellingTitlesList.length},(v,i) => {
-    //     return (i === props.setIndex)
-    //         ? topSellingTitlesList[i].map(elem => filterPlatforms<searchTitles>(elem.titleList))
-    //         // : topSellingTitlesList[i]
-    //         : []
-    // }).flat()
+    let topSellingTitlesCall = topSellingTitlesSearchFeatures(topSellingTitleIndex, topSellingTitlesAllPlatformsHeaderPickedIndex);
 
-
-
-    // topSellingTitlesList?.[props.setIndex]?.map(elem => elem.titleList.map(elemII => platformListsTopSellingTitles.add(elemII.platforms)));
-
-
-    // let topSellingTitlesTitleFilter = TopSellingTitlesPlatformsFiltered?.[0].map(elem => filterTitles<searchTitles>(elem, titleValue)))
-    // let topSellingTitlesTitleFilter = TopSellingTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem, titleValue));
-
+    let consolidatedSalesInformationCall = consolidatedSalesInformationSearchFeatures(consolidatedSalesInformationIndex);
 
     
     const textInputValues = [
@@ -141,6 +129,12 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
            placeholder: "Search specific titles",
            label: `Title Search - Number of Titles shown: ${titlesLength}`,
            description: "Clear field to show all titles of the selected platform", 
+        },
+        {
+           value: "Consolidated Sales Information",
+           placeholder: "Search specific platform",
+           label: `Platform Search - Sets of platforms shown: ${titlesLength}`,
+           description: "Clear field to show all platforms.", 
         },
         // {
         //    value: "FY Platinum Titles",
@@ -169,18 +163,9 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                 setTitlesLength(topSellingTitlesCall.titlesLength?.length ?? 0)
                 break;
 
-            // case "Software Platform Shipments":
-            //     // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
-            //     setTitlesLength(platformSoftwareShipmentsFilter?.[props.setIndex-1]?.length ?? 0)
-            //     break;
-
-            // case "FY Platinum Titles":
-            //     setTitlesLength(fyTitlesFilter?.[props.setIndex]?.length ?? 0)
-            //     break;
-
-            // case "All Platinum Titles":
-            //     setTitlesLength(allTitlesFilter?.[props.setIndex]?.length ?? 0)
-            //     break;
+            case "Consolidated Sales Information":
+                setTitlesLength(consolidatedSalesInformationCall.titlesLength?.length ?? 0)
+                break;
         
             default:
                 break;
@@ -209,7 +194,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
             },
             {
                 name: "Consolidated Sales Information",
-                value: consolidatedSalesInformationList?.[index],
+                value: consolidatedSalesInformationCall.table,
                 graph: <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={consolidatedSalesInformationGraphList[index]} />
             },
             {
@@ -305,7 +290,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                   /> 
                     : undefined
                 }
-                {(value === "Top Selling Titles")
+                {(value === "Top Selling Titles" || value === "Consolidated Sales Information")
                     ? <>
                     <TextInput
                     placeholder={textInputValues[0].placeholder}
