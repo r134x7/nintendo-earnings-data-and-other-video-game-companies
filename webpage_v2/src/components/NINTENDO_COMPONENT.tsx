@@ -47,6 +47,8 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
     
     let consolidatedSalesInformationIndex = consolidatedSalesInformationList?.[props.setIndex];
 
+    let keySalesIndicatorsIndex = keySalesIndicatorsList?.[props.setIndex];
+
     let topSellingTitleIndex = topSellingTitlesList?.[props.setIndex];
 
     let topSellingTitlesAllPlatformsHeaderPickedIndex = topSellingTitlesListAllHeaders?.[props.setIndex];
@@ -94,23 +96,25 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
         }
     }
 
-    function consolidatedSalesInformationSearchFeatures(input: { header: string; titleList: titleSet[];}) {
+    function titleSetSearchFeatures(input: { header: string; titleList: titleSet[];}, filterContext: string) {
         if (input === undefined) {
             return {
                 titlesLength: "",
                 table: undefined,
+                sectionTitle: filterContext,
             }
         }
 
         let titlesFilter = filterTitles<titleSet>(input.titleList,titleValue)
 
-        filterTextAddToSetCml(titlesFilter, value, "Consolidated Sales Information", titleValue, predictText)
+        filterTextAddToSetCml(titlesFilter, value, filterContext, titleValue, predictText)
 
         let titlesReduce = titlesFilter.reduce((acc, next) => acc + next.table,"");
 
         return {
             titlesLength: titlesFilter,
             table: titlesReduce,
+            sectionTitle: filterContext,
         }
     }
 
@@ -120,7 +124,9 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
     let topSellingTitlesCall = topSellingTitlesSearchFeatures(topSellingTitleIndex, topSellingTitlesAllPlatformsHeaderPickedIndex);
 
-    let consolidatedSalesInformationCall = consolidatedSalesInformationSearchFeatures(consolidatedSalesInformationIndex);
+    let consolidatedSalesInformationCall = titleSetSearchFeatures(consolidatedSalesInformationIndex, "Consolidated Sales Information");
+
+    let keySalesIndicatorsCall = titleSetSearchFeatures(keySalesIndicatorsIndex, "Key Sales Indicators")
 
     
     const textInputValues = [
@@ -131,10 +137,16 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
            description: "Clear field to show all titles of the selected platform", 
         },
         {
-           value: "Consolidated Sales Information",
+           value: consolidatedSalesInformationCall.sectionTitle,
            placeholder: "Search specific platform",
            label: `Platform Search - Sets of platforms shown: ${titlesLength}`,
            description: "Clear field to show all platforms.", 
+        },
+        {
+           value: keySalesIndicatorsCall.sectionTitle,
+           placeholder: "Search specific category",
+           label: `Category Search - Sets of categories shown: ${titlesLength}`,
+           description: "Clear field to show all categories.", 
         },
         // {
         //    value: "FY Platinum Titles",
@@ -163,17 +175,21 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                 setTitlesLength(topSellingTitlesCall.titlesLength?.length ?? 0)
                 break;
 
-            case "Consolidated Sales Information":
+            case consolidatedSalesInformationCall.sectionTitle:
                 setTitlesLength(consolidatedSalesInformationCall.titlesLength?.length ?? 0)
+                break;
+
+            case keySalesIndicatorsCall.sectionTitle:
+                setTitlesLength(keySalesIndicatorsCall.titlesLength?.length ?? 0)
                 break;
         
             default:
                 break;
         }
 
-        let x = [...platformListsTopSellingTitles].filter(elem => elem === platformValue)
+        let platformReset = [...platformListsTopSellingTitles].filter(elem => elem === platformValue)
 
-        if ((x?.length ?? 0) === 0) {
+        if ((platformReset?.length ?? 0) === 0) {
             setPlatformValue("All");
         }
 
@@ -204,7 +220,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
             },
             {
                 name: "Key Sales Indicators",
-                value: keySalesIndicatorsList?.[index],
+                value: keySalesIndicatorsCall.table,
                 graph: <GRAPH_NINTENDO_KPI setData={keySalesIndicatorsGraphList[index]} />
             },
             {
@@ -290,7 +306,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                   /> 
                     : undefined
                 }
-                {(value === "Top Selling Titles" || value === "Consolidated Sales Information")
+                {(value === "Top Selling Titles" || value === "Consolidated Sales Information" || value === "Key Sales Indicators")
                     ? <>
                     <TextInput
                     placeholder={textInputValues[0].placeholder}

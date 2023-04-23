@@ -7,6 +7,8 @@ import {
     printNewBody,
 } from "../../utils/kpi_logic";
 
+import type { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
+
 import { headerPrint, printTextBlock, border, liner, spacer, dateLabel } from "../../utils/table_design_logic";
 
 import keySalesIndicators2023 from "./Key_Sales_Indicators/ksi_fy3_2023.json";
@@ -364,7 +366,7 @@ const cmlValuesMake = (obj: undefined | {
     return cmlValues
 };
 
-export const keySalesIndicatorsList: string[] = collection.map((elem, index, array) => {
+export const keySalesIndicatorsList = collection.map((elem, index, array) => {
 
     let currentQuarter: number = elem.currentQuarter;
 
@@ -532,6 +534,7 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
             quarterYoY: qtrYearOnYearValues[i],
             cumulativeYoY: cmlYearOnYearValues[i],
             currentQuarter: currentQuarter,
+            title: qtrValuesThisFYPlus[i][0].name,
         }
     })
 
@@ -547,12 +550,21 @@ export const keySalesIndicatorsList: string[] = collection.map((elem, index, arr
     ],30) + "\n" + printDateLabel;
 
     let printSecondRest = inputNewArrays.map(elem => {
-        return printNewBody(elem.header, elem.footer, elem.quarterValuesProportion, elem.cumulativeValuesProportion,elem.quarterValuesSales, elem.cumulativeValuesSales, elem.quarterYoY, elem.cumulativeYoY, elem.currentQuarter)
-    }).concat(endLine);
+        // return printNewBody(elem.header, elem.footer, elem.quarterValuesProportion, elem.cumulativeValuesProportion,elem.quarterValuesSales, elem.cumulativeValuesSales, elem.quarterYoY, elem.cumulativeYoY, elem.currentQuarter)
 
-    let printAll = [printOne].concat(printSecondRest);  
+        return {
+            title: elem.title,
+            table: printNewBody(elem.header, elem.footer, elem.quarterValuesProportion, elem.cumulativeValuesProportion,elem.quarterValuesSales, elem.cumulativeValuesSales, elem.quarterYoY, elem.cumulativeYoY, elem.currentQuarter),
+        } as titleSet 
+    })
 
-    return printAll.reduce((prev, next) => prev + "\n" + next);
+    // let printAll = [printOne].concat(printSecondRest);  
+
+    // return printAll.reduce((prev, next) => prev + "\n" + next);
+    return {
+        header: printOne,
+        titleList: printSecondRest,
+    }
 });
 
 export const keySalesIndicatorsGraphList = collection.map((elem, index, array) => {
