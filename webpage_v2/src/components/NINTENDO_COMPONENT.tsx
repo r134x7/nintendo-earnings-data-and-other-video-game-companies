@@ -31,7 +31,6 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
     const [titleValue, setTitleValue] = useState("");
     const [titlesLength, setTitlesLength] = useState(0);
     const [platformValue, setPlatformValue] = useState<string | null>("All" ?? "All");
-    const [regionValue, setRegionValue] = useState<string | null>("All" ?? "All");
 
     function filterPlatforms<T extends searchTitles>(input: T[]) {
 
@@ -48,6 +47,8 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
     let consolidatedSalesInformationIndex = consolidatedSalesInformationList?.[props.setIndex];
 
     let keySalesIndicatorsIndex = keySalesIndicatorsList?.[props.setIndex];
+
+    let globalHardwareSoftwareIndex = globalHardwareSoftwareList?.[props.setIndex];
 
     let regionalHardwareSoftwareIndex = regionalHardwareSoftwareList?.[props.setIndex];
 
@@ -96,7 +97,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
         let titlesReduce: string = titlesTitleFilter.reduce((acc, next) => acc + next.table,"");
 
         let [picked, empty] = headersCombined.filter(elem => elem.platform === platformValue)
-
+        
         let completeTable = (picked?.header ?? "ERROR") + titlesReduce + (picked?.summary ?? "ERROR") + (footnote ?? "");
 
         return {
@@ -132,7 +133,11 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
     let platformListsFYMillionSellers = new Set<string>();
 
+    let platformListsGlobalHardwareSoftware = new Set<string>();
+
     let predictText = new Set<string>();
+
+    let globalHardwareSoftwareCall = platformSearchFeatures(globalHardwareSoftwareIndex, globalHardwareSoftwareIndex[0].header, "Global Hardware/Software Units", platformListsGlobalHardwareSoftware)
 
     let fyMillionSellerTitlesCall = platformSearchFeatures(fyMillionSellerTitlesIndex, fyMillionSellerTitlesAllPlatformsHeaderPickedIndex.header, "FY Million-Seller Titles", platformListsFYMillionSellers,fyMillionSellerTitlesAllPlatformsHeaderPickedIndex.footnote)
 
@@ -159,7 +164,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
            description: "Clear field to show all platforms.", 
         },
         {
-           value: keySalesIndicatorsCall.sectionTitle,
+           value: (value === keySalesIndicatorsCall.sectionTitle) ? keySalesIndicatorsCall.sectionTitle : globalHardwareSoftwareCall.sectionTitle,
            placeholder: "Search specific category",
            label: `Category Search - Sets of categories shown: ${titlesLength}`,
            description: "Clear field to show all categories.", 
@@ -191,6 +196,17 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
                 break;
 
+            case globalHardwareSoftwareCall.sectionTitle:
+                setTitlesLength(globalHardwareSoftwareCall.titlesLength?.length ?? 0)
+
+                let platformReset3 = [...platformListsGlobalHardwareSoftware].filter(elem => elem === platformValue)
+
+                if ((platformReset3?.length ?? 0) === 0) {
+                    setPlatformValue("All");
+                }
+
+                break;
+
             case consolidatedSalesInformationCall.sectionTitle:
                 setTitlesLength(consolidatedSalesInformationCall.titlesLength?.length ?? 0)
                 break;
@@ -208,7 +224,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
         }
 
 
-    }, [value, titleValue, platformValue, regionValue, props.setIndex, platformListsFYMillionSellers, platformListsTopSellingTitles])
+    }, [value, titleValue, platformValue, props.setIndex, platformListsFYMillionSellers, platformListsTopSellingTitles])
 
     const componentListNew = Array.from({length: props.yearLength}, (elem, index) => {
 
@@ -229,7 +245,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
             },
             {
                 name: "Global Hardware/Software Units",
-                value: globalHardwareSoftwareList?.[index],
+                value: globalHardwareSoftwareCall.table,
                 graph: <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={globalHardwareSoftwareGraphList[index]} />
             },
             {
@@ -307,20 +323,25 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                 (value === "Data Sources")
                     ? selectData(value)
                     : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {(value === topSellingTitlesCall.sectionTitle || value === fyMillionSellerTitlesCall.sectionTitle)
+                {(value === topSellingTitlesCall.sectionTitle || value === fyMillionSellerTitlesCall.sectionTitle || value === globalHardwareSoftwareCall.sectionTitle)
                     ? <Select
                         data={[
                          "All",
-                     ].concat((value === topSellingTitlesCall.sectionTitle) ? [...platformListsTopSellingTitles] : [...platformListsFYMillionSellers])}
+                     ].concat((value === topSellingTitlesCall.sectionTitle) 
+                        ? [...platformListsTopSellingTitles] 
+                        : (value === fyMillionSellerTitlesCall.sectionTitle)
+                            ? [...platformListsFYMillionSellers]
+                            : [...platformListsGlobalHardwareSoftware]
+                            )}
                     defaultValue={"All"} 
-                    label="Select all or one platform:"
+                    label={(value === globalHardwareSoftwareCall.sectionTitle) ? "Select all or one category:" : "Select all or one platform:"}
                     radius="xl"
                     value={platformValue}
                     onChange={setPlatformValue}
                   /> 
                     : undefined
                 }
-                {(value === "Top Selling Titles" || value === "Consolidated Sales Information" || value === "Key Sales Indicators" || value === fyMillionSellerTitlesCall.sectionTitle || value === regionalHardwareSoftwareCall.sectionTitle)
+                {(value === "Top Selling Titles" || value === "Consolidated Sales Information" || value === "Key Sales Indicators" || value === fyMillionSellerTitlesCall.sectionTitle || value === regionalHardwareSoftwareCall.sectionTitle || value === globalHardwareSoftwareCall.sectionTitle)
                     ? <>
                     <TextInput
                     placeholder={textInputValues[0].placeholder}

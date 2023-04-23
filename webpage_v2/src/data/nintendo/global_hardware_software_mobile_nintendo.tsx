@@ -7,6 +7,8 @@ import {
     yearOnYearCalculation
 } from "../../utils/hardware_software_units_logic";
 import { headerPrint, dateLabel, liner, border, spacer, valueLimit } from "../../utils/table_design_logic";
+import type { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
+import type { searchTitles } from "../capcom/platinum_titles_Capcom";
 
 import globalHardwareSoftwareMobile2023 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2023.json";
 import globalHardwareSoftwareMobile2022 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2022.json";
@@ -257,7 +259,7 @@ const platformForecastsMake = (obj: platformForecastSalesType): Section[] => {
     return forecasts
 };
 
-export const globalHardwareSoftwareList: string[] = collection.map((elem, index, array) => {
+export const globalHardwareSoftwareList = collection.map((elem, index, array) => {
 
     let currentQuarter: number = elem.currentQuarter;
     
@@ -334,7 +336,8 @@ export const globalHardwareSoftwareList: string[] = collection.map((elem, index,
 
     // "N/A" avoids crashing when no data...
     // Will look at refactoring this when a second platform occurs simultaneously with Switch
-    const printPlatformCmlSales: string[] = (platformSalesList[0][0].name === "N/A") ? [""] : Array.from({length: platformSalesList.length}, (v, i) => {
+    // const printPlatformCmlSales = (platformSalesList[0][0].name === "N/A") ? [""] : Array.from({length: platformSalesList.length}, (v, i) => {
+    const printPlatformCmlSales = (platformSalesList[0][0].name === "N/A") ? [{title: "###", platforms: "Sales Per Hardware Unit", table: "###\n"} as searchTitles] : Array.from({length: platformSalesList.length}, (v, i) => {
 
         let platformHardware: Section[] = platformUnitSalesThisFYList.flatMap((elem, index) => {
 
@@ -361,22 +364,46 @@ export const globalHardwareSoftwareList: string[] = collection.map((elem, index,
         //             }
         //         })
         
-        return printSalesHardware(
+        // return printSalesHardware(
+        //     header,
+        //     platformSalesList[i],
+        //     platformHardware,
+        //     currentQuarter
+        // ) 
+
+        return {
+            title: platformSalesList[i][0].name,
+            platforms: "Sales Per Hardware Unit",
+            table: printSalesHardware(
             header,
             platformSalesList[i],
             platformHardware,
             currentQuarter
-        ) 
-    })
+            ),
+        } as searchTitles
+    }) 
 
-    const printPlatformUnitSales: string[] = Array.from({length: platformUnitSalesThisFY.length}, (v, i) => {
+    const printPlatformUnitSales = Array.from({length: platformUnitSalesThisFY.length}, (v, i) => {
 
         let forecast: Section[] = platformForecastsList.map(value => 
             {
                 return value.filter(findName => findName.name === cmlPlatformUnitSalesThisFY[i][0].name) // should only find one match
             }).flat()
 
-        return printSections(
+        // return printSections(
+        //     header, 
+        //     quarterlyPlatformUnitSalesThisFY[i],
+        //     quarterlyPlatformUnitSalesYoY[i],
+        //     cmlPlatformUnitSalesThisFY[i],
+        //     platformUnitSalesYoY[i],
+        //     forecast,
+        //     currentQuarter
+        //     )
+
+        return {
+            title: quarterlyPlatformUnitSalesThisFY[i][0].name,
+            platforms: "Global Hardware/Software Units",
+            table: printSections(
             header, 
             quarterlyPlatformUnitSalesThisFY[i],
             quarterlyPlatformUnitSalesYoY[i],
@@ -384,12 +411,29 @@ export const globalHardwareSoftwareList: string[] = collection.map((elem, index,
             platformUnitSalesYoY[i],
             forecast,
             currentQuarter
-            )
-    }).concat("###");
+            ), 
+        } as searchTitles
+        
+    })//.concat("###");
 
-    let printAll: string[] = [printOne].concat(printPlatformCmlSales, printPlatformUnitSales);
+    // let printAll: string[] = [printOne].concat(printPlatformCmlSales, printPlatformUnitSales);
 
-    return printAll.reduce((prev, next) => prev + "\n" + next);
+    // return printAll.reduce((prev, next) => prev + "\n" + next);
+
+    // return {
+    //     header: printOne,
+    //     titleList: [printPlatformCmlSales, printPlatformUnitSales]
+    // }
+    return [
+        {
+            header: printOne,
+            titleList: printPlatformCmlSales ,
+        },
+        {
+            header: printOne,
+            titleList: printPlatformUnitSales,
+        }
+    ] 
 });
 
 export const globalHardwareSoftwareGraphList = collection.map((elem, index, array) => {
