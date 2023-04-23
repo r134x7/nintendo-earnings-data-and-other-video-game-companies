@@ -160,7 +160,7 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
                         radius="xl"
                         value={titleValue}
                         onChange={e => {
-                            setTitleValue(e.target.value)
+                            setTitleValue(e.target.value.toLocaleLowerCase())
                         }}
                         />  
                         {(predictText.size > 0 && titleValue !== predictText.values().next().value) ? liner(printTextBlock("Nearest single word search: (To use, click on a word)",40),"−","both",true,40) : undefined }

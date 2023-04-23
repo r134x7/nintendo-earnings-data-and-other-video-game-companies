@@ -200,7 +200,7 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
                         radius="xl"
                         value={titleValue}
                         onChange={e => {
-                            setTitleValue(e.target.value)
+                            setTitleValue(e.target.value.toLowerCase())
                         }}
                         />  
                         {(predictText.size > 0 && titleValue !== predictText.values().next().value) ? liner(printTextBlock("Nearest single word search: (To use, click on a word)",40),"−","both",true,40) : undefined }
