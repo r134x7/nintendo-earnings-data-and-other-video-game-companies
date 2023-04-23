@@ -5,6 +5,8 @@ import {
     printBody,
 } from "../../utils/top_selling_titles_logic";
 
+import type { searchTitles } from "../capcom/platinum_titles_Capcom";
+
 import topSellingTitles2023 from "./Top_Selling_Titles/top_selling_titles_fy3_2023.json";
 import topSellingTitles2022 from "./Top_Selling_Titles/top_selling_titles_fy3_2022.json";
 import topSellingTitles2021 from "./Top_Selling_Titles/top_selling_titles_fy3_2021.json";
@@ -108,7 +110,7 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
     return title
 };
 
-export const topSellingTitlesList: string[] = collection.map((elem, index, array) => {
+export const topSellingTitlesList = collection.map((elem, index, array) => {
 
     let currentQuarter: number = elem.currentQuarter;
 
@@ -132,7 +134,7 @@ export const topSellingTitlesList: string[] = collection.map((elem, index, array
             return secondIndex > index
         }).flatMap(value => value.titles);
 
-    function makeTitlesList(titleValues: titlesJSON[], prevFYTitlesLocal: titlesJSON[][] | undefined, headerValues: Header, currentQuarter: number): string {
+    function makeTitlesList(titleValues: titlesJSON[], prevFYTitlesLocal: titlesJSON[][] | undefined, headerValues: Header, currentQuarter: number, returnObject?: boolean) {
 
         let headerValuesFixed = {
             ...headerValues,
@@ -185,19 +187,45 @@ export const topSellingTitlesList: string[] = collection.map((elem, index, array
 
         let endLine: string = "###"; 
 
+        // let printRest = inputArrays.map(elem => {
+        //     return printBody(elem.quarter, elem.fiscalYearCml, elem.LTD, elem.header, elem.currentQuarter)
+        // }).concat(endLine);
+
         let printRest = inputArrays.map(elem => {
-            return printBody(elem.quarter, elem.fiscalYearCml, elem.LTD, elem.header, elem.currentQuarter)
-        }).concat(endLine);
+            return (!returnObject)
+                ? printBody(elem.quarter, elem.fiscalYearCml, elem.LTD, elem.header, elem.currentQuarter) as string
+                : {
+                    title: elem.quarter[0].title,
+                    platforms: elem.quarter[0].platform,
+                    table: printBody(elem.quarter, elem.fiscalYearCml, elem.LTD, elem.header, elem.currentQuarter),
+                } as searchTitles
+        })
 
-        let printAll = [printOne].concat(printRest);  
+        // console.log(printRest)
 
-        return printAll.reduce((prev, next) => prev + "\n" + next);
+        if (!returnObject) {
+            let printAll = [printOne].concat(printRest as string[]) as string[];  
+
+            return printAll.reduce((prev, next) => prev + "\n" + next);
+        } else {
+            return {
+                header: printOne,
+                titleList: printRest,
+            }
+        }
 
     };
 
-    let platformList: string = elem.titles.map(value => makeTitlesList(value, prevFYTitles, header, elem.currentQuarter)).reduce((prev,next) => prev + "\n" + next);
+    // let platformList: string = elem.titles.map(value => makeTitlesList(value, prevFYTitles, header, elem.currentQuarter)).reduce((prev,next) => prev + "\n" + next);
 
-    return platformList
+    let platformList = elem.titles.map(value => makeTitlesList(value, prevFYTitles, header, elem.currentQuarter, true));
+    // console.log(platformList);
+    
+
+    return platformList as {
+        header: string,
+        titleList: searchTitles[],
+    }[]
 
 });
 

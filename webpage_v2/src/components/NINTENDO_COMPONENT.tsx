@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Code, SegmentedControl } from "@mantine/core";
+import { useState, useEffect } from "react";
+import { Code, SegmentedControl, TextInput, Button, Select } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { nintendoLinks } from "../data/generalTables/data_sources_general";
 import { nintendoConsolidatedEarningsList, nintendoConsolidatedEarningsGraphList} from "../data/generalTables/consolidated_earnings_general";
@@ -9,6 +9,8 @@ import { keySalesIndicatorsList, keySalesIndicatorsGraphList } from "../data/nin
 import { regionalHardwareSoftwareList } from "../data/nintendo/regional_hardware_software_nintendo";
 import { topSellingTitlesList, topSellingTitlesGraphList } from "../data/nintendo/top_selling_titles_nintendo";
 import { consolidatedSalesInformationList, consolidatedSalesInformationGraphList } from "../data/nintendo/consolidated_sales_information_nintendo";
+import { searchTitles } from "../data/capcom/platinum_titles_Capcom";
+import { printTextBlock, liner } from "../utils/table_design_logic";
 
 import GRAPH_NINTENDO_KPI from "../data/nintendo/Graphs/GRAPH_NINTENDO_KPI";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES from "../data/nintendo/Graphs/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH";
@@ -17,12 +19,121 @@ import GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE from "../data/nintendo/Gra
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
 
 import {cite, citeCopy} from "../utils/copySetCitation";
+import { filterTextAddToSetFY, filterTitles } from "../utils/table_design_logic";
 
 export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
     const [value, setValue] = useState("");
 
     const state: any = useSelector(state => state);
+
+    const [titleValue, setTitleValue] = useState("");
+    const [titlesLength, setTitlesLength] = useState(0);
+    const [platformValue, setPlatformValue] = useState<string | null>("All" ?? "All");
+    const [regionValue, setRegionValue] = useState<string | null>("All" ?? "All");
+
+    function filterPlatforms<T extends searchTitles>(input: T[]) {
+
+        return input.filter(elem => {
+            if (platformValue === "All") {
+                return elem
+            } else if (platformValue === elem.platforms) {
+                return elem
+            }
+        })
+    }
+
+    /**
+     * the shape... 
+     * [
+     * [header, titlelist],
+     * [header, titlelist],
+     * repeat
+     * ]
+     * so the shape is
+     * {header, titlelist[]}[][]
+     * which is correct
+     * this is more complicated than the capcom platinum titles
+     * because the platforms are separate
+     * I didn't know this creates notes for the variable below...
+    */
+    
+    let TopSellingTitlesPlatformsFiltered = Array.from({length:topSellingTitlesList.length},(v,i) => {
+        return (i === props.setIndex)
+            ? topSellingTitlesList[i].map(elem => filterPlatforms<searchTitles>(elem.titleList))
+            // : topSellingTitlesList[i]
+            : []
+    }).flat()
+
+    let platformListsTopSellingTitles = new Set<string>();
+
+    // topSellingTitlesList?.[props.setIndex]?.map(elem => elem.titleList.map(elemII => platformListsTopSellingTitles.add(elemII.platforms)));
+    topSellingTitlesList?.[0]?.map(elem => elem.titleList.map(elemII => platformListsTopSellingTitles.add(elemII.platforms)));
+
+    // let topSellingTitlesTitleFilter = TopSellingTitlesPlatformsFiltered?.[0].map(elem => filterTitles<searchTitles>(elem, titleValue)))
+    let topSellingTitlesTitleFilter = TopSellingTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem, titleValue));
+
+    let predictText = new Set<string>();
+
+    filterTextAddToSetFY(topSellingTitlesTitleFilter, value, "Top Selling Titles", titleValue, false, props.setIndex, predictText)
+
+    let topSellingTitlesReduce: string[] = topSellingTitlesTitleFilter.map(elem => elem.reduce((acc, next) => acc + next.table,""));
+
+    let completeTopSellingTitles = topSellingTitlesReduce.map((elem, index) => topSellingTitlesList[index][0].header + elem)
+
+    const textInputValues = [
+        {
+           value: "Top Selling Titles",
+           placeholder: "Search specific titles",
+           label: `Title Search - Number of Titles shown: ${titlesLength}`,
+           description: "Clear field to show all titles of the selected platform", 
+        },
+        // {
+        //    value: "FY Platinum Titles",
+        //    placeholder: "Search specific titles",
+        //    label: `Title Search - Number of Titles shown: ${titlesLength}`,
+        //    description: "Clear field to show all titles of the selected platform", 
+        // },
+        // {
+        //    value: "FY Game Series",
+        //    placeholder: "Search specific series",
+        //    label: `Series Search - Number of game series shown: ${titlesLength}`,
+        //    description: "Clear field to show all game series listed.", 
+        // },
+        // {
+        //    value: "Software Platform Shipments",
+        //    placeholder: "Search specific platform",
+        //    label: `Platform Search - Sets of platforms shown: ${titlesLength}`,
+        //    description: "Clear field to show all platforms.", 
+        // }
+    ].filter(elem => elem.value === value);
+
+    useEffect(() => {
+
+        switch (value) {
+            case "Top Selling Titles":
+                // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
+                setTitlesLength(topSellingTitlesTitleFilter?.[props.setIndex]?.length ?? 0)
+                break;
+
+            // case "Software Platform Shipments":
+            //     // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
+            //     setTitlesLength(platformSoftwareShipmentsFilter?.[props.setIndex-1]?.length ?? 0)
+            //     break;
+
+            // case "FY Platinum Titles":
+            //     setTitlesLength(fyTitlesFilter?.[props.setIndex]?.length ?? 0)
+            //     break;
+
+            // case "All Platinum Titles":
+            //     setTitlesLength(allTitlesFilter?.[props.setIndex]?.length ?? 0)
+            //     break;
+        
+            default:
+                break;
+        }
+
+    }, [value, titleValue, platformValue, regionValue])
 
     const componentListNew = Array.from({length: props.yearLength}, (elem, index) => {
 
@@ -62,7 +173,8 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
             },
             {
                 name: "Top Selling Titles",
-                value: topSellingTitlesList?.[index],
+                // value: topSellingTitlesList?.[index],
+                value: completeTopSellingTitles?.[index],
                 graph: <GRAPH_NINTENDO_TOP_SELLING_TITLES setData={topSellingTitlesGraphList[index]} />
             },
         ].filter(elem => elem.value !== undefined);
@@ -119,7 +231,67 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
             {
                 (value === "Data Sources")
                     ? selectData(value)
-                    : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>{selectData(value)}</Code>
+                    : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {(value === "Top Selling Titles")
+                    ? <Select
+                        data={[
+                         "All",
+                     ].concat((value === "Top Selling Titles") ? [...platformListsTopSellingTitles] : ["Error"])}
+                    defaultValue={"All"} 
+                    label="Select all or one platform:"
+                    radius="xl"
+                    value={platformValue}
+                    onChange={setPlatformValue}
+                  /> 
+                    : undefined
+                }
+                {(value === "Top Selling Titles")
+                    ? <>
+                        <TextInput
+                        placeholder={textInputValues[0].placeholder}
+                        label={textInputValues[0].label}
+                        description={textInputValues[0].description}
+                        radius="xl"
+                        value={titleValue}
+                        onChange={e => {
+                            setTitleValue(e.target.value.toLowerCase())
+                        }}
+                        />  
+                        {(predictText.size > 0 && titleValue !== predictText.values().next().value) ? liner(printTextBlock("Nearest single word search: (To use, click on a word)",40),"−","both",true,40) : undefined }
+                        { (predictText.size > 0 && titleValue !== predictText.values().next().value)
+                        ? [...predictText].flatMap((elem, index) => {
+                            if (index > 3) {
+                                return []
+                            } else {
+                                return ( <Button 
+                                key={elem}
+                                onClick={() => setTitleValue(elem)}
+                                radius={"xl"}
+                                ml={"sm"} mb={"sm"} variant="subtle" compact>
+                                    <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                        {elem}
+                                    </Code>
+                                </Button>
+                                )
+                            }
+                            })
+                        : (titleValue === predictText.values().next().value || titlesLength === 0) 
+                            ? <Button 
+                                    onClick={() => setTitleValue("")}
+                                    radius={"xl"}
+                                    m={"sm"} variant="subtle" compact>
+                                        <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                            {"Clear Search"}
+                                        </Code>
+                                    </Button> 
+                            : undefined
+                        }
+                        <br/>
+                        </>  
+                    : undefined
+                }
+                        {selectData(value)}
+                        </Code>
             }
             {selectGraph(value)}
         </div>

@@ -184,7 +184,8 @@ export function filterTextAddToSetFY<T extends titleSet | searchTitles>(filtered
         filteredText.flatMap((elem, index) => {
             if (index === yearSet) {
                 elem.map(elemII => {
-                    [...elemII.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleCheck})\\w+`,"g"))].flat().map(elemIII => theSet.add(elemIII))
+                    // [...elemII.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleCheck})\\w+`,"g"))].flat().map(elemIII => theSet.add(elemIII))
+                    [...elemII.title.toLowerCase().matchAll(new RegExp(`(?=[\\w\é]*${titleCheck})[\\w\é]+`,"g"))].flat().map(elemIII => theSet.add(elemIII))
                 })
             } else {
                 return []
