@@ -110,6 +110,38 @@ export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined):
     return title
 };
 
+export const topSellingTitlesListAllHeaders = collection.map((elem, index, array) => {
+
+    let header: Header = {
+    mainHeader: "Top Selling Titles",
+    platformHeader: "||",
+    titles: "Title",
+    platform: "Platform",
+    units: "Units",
+    fiscalYear: elem.fiscalYear,
+    };
+
+    let headerValuesFixed = {
+        ...header,
+        platformHeader: "All platforms"
+    }
+
+    const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", elem?.currentQuarter ?? 4);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
+        let printOne = headerPrint([
+            headerValuesFixed.mainHeader,
+            headerValuesFixed.platformHeader,
+        ],32) + "\n" + headerPrint([
+            headerValuesFixed.titles,
+            headerValuesFixed.platform,
+            headerValuesFixed.units,
+        ],20) + "\n" + printDateLabel;
+
+    return printOne;
+})
+
 export const topSellingTitlesList = collection.map((elem, index, array) => {
 
     let currentQuarter: number = elem.currentQuarter;
