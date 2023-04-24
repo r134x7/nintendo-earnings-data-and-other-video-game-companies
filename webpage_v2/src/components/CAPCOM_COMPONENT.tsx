@@ -33,7 +33,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     let allPlatinumTitlesIndex = allPlatinumTitlesList?.[props.setIndex];
 
-    let allPlatinumTitlesObject = [{
+    let allPlatinumTitlesObject = (allPlatinumTitlesIndex === undefined) ? undefined : [{
         header: allPlatinumTitlesIndex.header,
         titleList: allPlatinumTitlesIndex.titleData,
         summary: allPlatinumTitlesIndex.fyNotes,
@@ -41,7 +41,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     let fyPlatinumTitlesIndex = fyPlatinumTitlesList?.[props.setIndex];
 
-    let fyPlatinumTitlesObject = [{
+    let fyPlatinumTitlesObject = (fyPlatinumTitlesIndex === undefined) ? undefined : [{
         header: fyPlatinumTitlesIndex.header,
         titleList: fyPlatinumTitlesIndex.titleData,
         summary: fyPlatinumTitlesIndex.fyNotes,
@@ -57,9 +57,9 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
     let predictText = new Set<string>();
 
     let allPlatinumTitlesCall = platformSearchFeatures(
-        allPlatinumTitlesObject, allPlatinumTitlesIndex.header, "All Platinum Titles", value, platformValue ?? "All", "Many", platformListsAll, titleValue, predictText, allPlatinumTitlesIndex.platformNotes);
+        allPlatinumTitlesObject, allPlatinumTitlesIndex?.header, "All Platinum Titles", value, platformValue ?? "All", "Multi", "Many", platformListsAll, titleValue, predictText, allPlatinumTitlesIndex?.platformNotes);
 
-    let fyPlatinumTitlesCall = platformSearchFeatures(fyPlatinumTitlesObject, fyPlatinumTitlesIndex.header, "FY Platinum Titles", value, platformValue ?? "All", "Many", platformListsFY, titleValue, predictText, fyPlatinumTitlesIndex.platformNotes);
+    let fyPlatinumTitlesCall = platformSearchFeatures(fyPlatinumTitlesObject, fyPlatinumTitlesIndex?.header, "FY Platinum Titles", value, platformValue ?? "All", "Multi", "Many", platformListsFY, titleValue, predictText, fyPlatinumTitlesIndex?.platformNotes);
 
     let gameSeriesCall = titleSetSearchFeatures(gameSeriesIndex, "FY Game Series", value, titleValue, predictText);
 

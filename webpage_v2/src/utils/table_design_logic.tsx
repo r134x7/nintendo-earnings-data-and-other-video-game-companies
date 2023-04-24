@@ -228,7 +228,7 @@ export function platformSearchFeatures(input: {
         header: string;
         titleList: searchTitles[];
         summary?: string,
-    }[], allHeader: string, sectionContext: string, sectionValue: string, platformValue: string, filterPlatformType: "Single" | "Many", platformSet: Set<string>, titleValue: string, textSet: Set<string>, footnote?: string,
+    }[] | undefined, allHeader: string, sectionContext: string, sectionValue: string, platformValue: string, platformType: "Single" | "Multi", filterPlatformType: "Single" | "Many", platformSet: Set<string>, titleValue: string, textSet: Set<string>, footnote?: string,
     ): { titlesLength: titleSet[] | string, table: string | undefined, sectionTitle: string } {
         if (input === undefined) {
             return {
@@ -240,11 +240,18 @@ export function platformSearchFeatures(input: {
 
         let platformsCombined = input.flatMap(elem => elem.titleList);
 
-        let headersCombined = [{header: allHeader, platform: "All", summary: ""}].concat(input.flatMap(elem => {
-
-            return {
+        let headersCombined = [{header: allHeader, platform: "All", summary: input.flatMap(elem => elem.summary ?? "").reduce((acc, next) => acc + next,"") }].concat(input.flatMap(elem => {
+            // nintendo lists has input arrays.length > 1
+            // capcom lists has input arrays.length === 1
+            return (input.length > 1) 
+            ? {
                 header: elem.header,
                 platform: elem.titleList[0].platforms,
+                summary: elem.summary ?? "",
+              }
+            : {
+                header: elem.header,
+                platform: "",
                 summary: elem.summary ?? "",
             }
         }));
@@ -254,13 +261,22 @@ export function platformSearchFeatures(input: {
 
         let titlesTitleFilter = filterTitles<searchTitles>(platformsFiltered, titleValue);
         
-        platformsCombined.map(elem => platformSet.add(elem.platforms));
+        if (platformType === "Single") {
+
+            platformsCombined.map(elem => platformSet.add(elem.platforms));
+
+        } else if (platformType === "Multi") {
+
+            platformsCombined.map(elem => [...elem?.platforms.matchAll(/\w+\s?\w+/g)].flat().map(setValue => platformSet.add(setValue ?? "")));
+        }
 
         filterTextAddToSet(titlesTitleFilter, sectionValue, sectionContext, titleValue, textSet)
 
         let titlesReduce: string = titlesTitleFilter.reduce((acc, next) => acc + next.table,"");
 
-        let [picked, empty] = headersCombined.filter(elem => elem.platform === platformValue)
+        let [picked, empty] = (input.length > 1) 
+            ? headersCombined.filter(elem => elem.platform === platformValue) 
+            : [headersCombined[0], "empty"]
         
         let completeTable = (picked?.header ?? "ERROR") + titlesReduce + (picked?.summary ?? "ERROR") + (footnote ?? "");
 
