@@ -5,8 +5,7 @@ import { softwareSalesList, softwareSalesGraphList } from "../data/bandaiNamco/s
 import { annualReportList } from "../data/bandaiNamco/annual_report_bandai_namco";
 import { bandaiNamcoConsolidatedEarningsList, bandaiNamcoConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { bandaiNamcoLinks } from "../data/generalTables/data_sources_general";
-import { filterTitles, printTextBlock, liner, filterTextAddToSet } from "../utils/table_design_logic";
-import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
+import { printTextBlock, liner, titleSetSearchFeatures } from "../utils/table_design_logic";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
@@ -25,35 +24,14 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
     let correctFyForAnnualReports = -1;
     
     let annualReportIndex = annualReportList?.[props.setIndex + correctFyForAnnualReports]
-    console.log(annualReportIndex);
-    
-
-    let annualReportTitlesFilter = annualReportList.map(elem => filterTitles<titleSet>(elem.titleList, titleValue));
 
     let predictText = new Set<string>();
 
-    if (titleValue.length !== 0 && value === "FY Series IP") {
-        annualReportTitlesFilter.flatMap((elem, index) => {
-            // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
-            if (index === props.setIndex-1) {
-                elem.map(elemII => {
-                    [...elemII.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(elemIII => predictText.add(elemIII))
-                })
-            } else {
-                return []
-            }
-        })
-    }
-
-    let annualReportReduce = annualReportTitlesFilter.map(elem => elem.reduce((acc,next) => acc + next.table,""));
-
-    let completeAnnualReportList = annualReportReduce.map((elem, index) => annualReportList[index].header + elem);
-
-    const annualReportListAltered = [""].concat(completeAnnualReportList); // to manage keeping the index values the same with softwareSalesList
+    let annualReportCall = titleSetSearchFeatures(annualReportIndex, "FY Series IP", value, titleValue, predictText);
 
     const textInputValues = [
         {
-           value: "FY Series IP",
+           value: annualReportCall.sectionTitle,
            placeholder: "Search specific series",
            label: `Series Search - Number of game series shown: ${titlesLength}`,
            description: "Clear field to show all game series listed.", 
@@ -62,16 +40,9 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
     
     useEffect(() => {
 
-        // console.log(dataList.filter(elem => elem === value));
-        
-        // if (dataList.filter(elem => elem === value).length === 0) {
-        //     setValue("Data Sources")
-        // }
-
         switch (value) {
-            case "FY Series IP":
-                // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
-                setTitlesLength(annualReportTitlesFilter?.[props.setIndex-1]?.length ?? 0)
+            case annualReportCall.sectionTitle:
+                setTitlesLength(annualReportCall.titlesLength.length)
                 break;
 
             default:
@@ -99,7 +70,8 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
             },
             {
                 name: "FY Series IP",
-                value: annualReportListAltered[index] ? annualReportListAltered[index] : undefined, // can't use optional chaining on falsy values i.e. ""
+                value: annualReportCall.table,
+                // value: annualReportListAltered[index] ? annualReportListAltered[index] : undefined, // can't use optional chaining on falsy values i.e. ""
             },
         ].filter(elem => elem.value !== undefined);
     })
@@ -157,7 +129,7 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
                 (value === "Data Sources")
                     ? selectData(value)
                     : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                        {(value === "FY Series IP")
+                        {(value === annualReportCall.sectionTitle)
                         ? <>
                         <TextInput
                         placeholder={textInputValues[0].placeholder}

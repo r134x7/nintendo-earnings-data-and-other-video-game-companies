@@ -6,7 +6,7 @@ import annualReport2021 from "./Annual_Report/annual_report_fy3_2021.json";
 import annualReport2020 from "./Annual_Report/annual_report_fy3_2020.json";
 import annualReport2019 from "./Annual_Report/annual_report_fy3_2019.json";
 
-import type { titleSet, titleSetHeader } from "../capcom/game_series_sales_capcom_cml_data";
+import type { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
 
 const collection = [
     annualReport2022,
@@ -44,7 +44,7 @@ export const seriesMake = (obj: {
     return series
 };
 
-export const annualReportList: titleSetHeader[] = collection.map((elem, index, array) => {
+export const annualReportList = collection.map((elem, index, array) => {
 
     let header: Header = {
         bandaiNamcoHeader: "Bandai Namco - IP Series Data",

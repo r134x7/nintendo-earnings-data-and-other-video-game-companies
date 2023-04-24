@@ -202,25 +202,24 @@ export function filterTextAddToSet<T extends titleSet | searchTitles>(filteredTe
     }
 } 
 
-export function titleSetSearchFeatures(input: { header: string; titleList: titleSet[];}, filterContext: string, sectionValue: string, titleValue: string, textSet: Set<string>) {
+export function titleSetSearchFeatures(input: { header: string; titleList: titleSet[];}, sectionContext: string, sectionValue: string, titleValue: string, textSet: Set<string>): { titlesLength: titleSet[] | string, table: string | undefined, sectionTitle: string } {
         if (input === undefined) {
             return {
                 titlesLength: "",
                 table: undefined,
-                sectionTitle: filterContext,
+                sectionTitle: sectionContext,
             }
         }
 
         let titlesFilter = filterTitles<titleSet>(input.titleList,titleValue)
 
-        filterTextAddToSet(titlesFilter, sectionValue, filterContext, titleValue, textSet)
+        filterTextAddToSet(titlesFilter, sectionValue, sectionContext, titleValue, textSet)
 
         let titlesReduce = titlesFilter.reduce((acc, next) => acc + next.table,"");
 
         return {
             titlesLength: titlesFilter,
             table: titlesReduce,
-            sectionTitle: filterContext,
+            sectionTitle: sectionContext,
         }
     }
-    
