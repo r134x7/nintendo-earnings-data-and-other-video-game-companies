@@ -55,9 +55,9 @@ export default function EVENTS_CALENDAR() {
         {
             id: 5,
             companyName: "Ubisoft",
-            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "February 16, 2023",
-            timeZone: "France, CET, UTC +1 Hours",
+            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
+            eventDate: "May 16, 2023",
+            timeZone: "France, CEST, UTC +2 Hours",
             irPage: "https://www.ubisoft.com/en-us/company/about-us/investors",
         },
         {
@@ -103,8 +103,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 11,
             companyName: "Square Enix",
-            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "February 3, 2023",
+            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
+            eventDate: "May 12, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.hd.square-enix.com/eng/ir/",
         },
@@ -135,17 +135,17 @@ export default function EVENTS_CALENDAR() {
         {
             id: 15,
             companyName: "Activision Blizzard",
-            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "February 6, 2023",
-            timeZone: "US, PST, UTC -8 Hours",
+            eventName: "1st Quarter Earnings Results, FY12/2023 (Fiscal Year ending December 2023)",
+            eventDate: "April 27, 2023",
+            timeZone: "US, PDT, UTC -7 Hours",
             irPage: "https://investor.activision.com/",
         },
         {
             id: 16,
             companyName: "Take-Two",
-            eventName: "3rd Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "February 7, 2022",
-            timeZone: "US, EST, UTC -5 Hours",
+            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
+            eventDate: "May 18, 2022",
+            timeZone: "US, EDT, UTC -4 Hours",
             irPage: "https://www.take2games.com/ir",
         },
         {
