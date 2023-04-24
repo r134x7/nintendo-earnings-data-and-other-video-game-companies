@@ -7,18 +7,13 @@ import { softwareSalesList, softwareSalesGraphList } from "../data/capcom/softwa
 import { platformSoftwareShipmentsList } from "../data/capcom/software_shipments_platform_Capcom";
 import { capcomConsolidatedEarningsList, capcomConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { capcomLinks } from "../data/generalTables/data_sources_general";
-import { filterTitles, printTextBlock, liner, filterTextAddToSetFY } from "../utils/table_design_logic";
+import { printTextBlock, liner, titleSetSearchFeatures, platformSearchFeatures } from "../utils/table_design_logic";
 import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
 
 import {cite, citeCopy} from "../utils/copySetCitation";
-
-// let titleListCheckAll = 0;
-// let titleListCheckFY = 0;
-// let seriesListCheck = 0;
-// let softwareShipmentsListCheck = 0;
 
 export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
@@ -30,121 +25,61 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
     const [titlesLength, setTitlesLength] = useState(0);
     const [platformValue, setPlatformValue] = useState<string | null>("All" ?? "All");
 
-    function filterPlatforms<T extends searchTitles>(input: T[]) {
-
-        return input.filter(elem => {
-
-            if (platformValue === "All") {
-                return elem
-            } else if (platformValue === elem.platforms) {
-                return elem
-            } else if ([...elem.platforms.matchAll(/\w+\s?\w+/g)].flat().filter(value => value === platformValue).length > 0) {
-                return elem
-            }
-
-        })
-    }
-
     /*
     steps: filter by platform => filter by title search => side effect: (mutate titles list length) => reduce titlesFilter => combine the headers, footers with the tables.
     */
 
-    // reducing computations by only filtering the selected year and not filtering the other years. 
-    let allPlatinumTitlesPlatformsFiltered = Array.from({length:allPlatinumTitlesList.length},(v,i) => {
-        return (i === props.setIndex)
-            ? filterPlatforms<searchTitles>(allPlatinumTitlesList[i].titleData)
-            : allPlatinumTitlesList[i].titleData
-    })
+    let correctFyForAnnualReports = -1;
 
-    let fyPlatinumTitlesPlatformsFiltered = Array.from({length:fyPlatinumTitlesList.length},(v,i) => {
-        return (i === props.setIndex)
-            ? filterPlatforms<searchTitles>(fyPlatinumTitlesList[i].titleData)
-            : fyPlatinumTitlesList[i].titleData
-    })
+    let allPlatinumTitlesIndex = allPlatinumTitlesList?.[props.setIndex];
+
+    let allPlatinumTitlesObject = [{
+        header: allPlatinumTitlesIndex.header,
+        titleList: allPlatinumTitlesIndex.titleData,
+        summary: allPlatinumTitlesIndex.fyNotes,
+    }];
+
+    let fyPlatinumTitlesIndex = fyPlatinumTitlesList?.[props.setIndex];
+
+    let fyPlatinumTitlesObject = [{
+        header: fyPlatinumTitlesIndex.header,
+        titleList: fyPlatinumTitlesIndex.titleData,
+        summary: fyPlatinumTitlesIndex.fyNotes,
+    }];
+
+    let gameSeriesIndex = gameSeriesList?.[props.setIndex + correctFyForAnnualReports];
+
+    let annualReportIndex = platformSoftwareShipmentsList?.[props.setIndex + correctFyForAnnualReports];
 
     let platformListsAll = new Set<string>();
     let platformListsFY = new Set<string>();
-    // only way I could think of making sure I got lists for each year.
-    // let platformLists = Array.from({length:allPlatinumTitlesList.length},(v,i) => {
-    //     return new Set<string>()
-    // })
-
-    // allPlatinumTitlesList.map((elem, index) => elem.titleData.map(value => [...value.platforms.matchAll(/\w+\s?\w+/g)].flat().map(setValue => platformLists[index].add(setValue))))
-
-    // more efficient method
-    allPlatinumTitlesList?.[props.setIndex]?.titleData.map(elem => [...elem?.platforms.matchAll(/\w+\s?\w+/g)].flat().map(setValue => platformListsAll.add(setValue ?? "")));
-
-    fyPlatinumTitlesList?.[props.setIndex]?.titleData.map(elem => [...elem?.platforms.matchAll(/\w+\s?\w+/g)].flat().map(setValue => platformListsFY.add(setValue ?? "")));
-
-    let allTitlesFilter = allPlatinumTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem,titleValue));
-
-    let fyTitlesFilter = fyPlatinumTitlesPlatformsFiltered.map(elem => filterTitles<searchTitles>(elem, titleValue));
-
-    let gameSeriesFilter = gameSeriesList.map(elem => filterTitles<titleSet>(elem.titleList, titleValue));
-
-    let platformSoftwareShipmentsFilter = platformSoftwareShipmentsList.map(elem => filterTitles<titleSet>(elem.titleList, titleValue));
 
     let predictText = new Set<string>();
 
-    filterTextAddToSetFY(allTitlesFilter, value, "All Platinum Titles", titleValue, false, props.setIndex, predictText);
+    let allPlatinumTitlesCall = platformSearchFeatures(
+        allPlatinumTitlesObject, allPlatinumTitlesIndex.header, "All Platinum Titles", value, platformValue ?? "All", "Many", platformListsAll, titleValue, predictText, allPlatinumTitlesIndex.platformNotes);
 
-    filterTextAddToSetFY(fyTitlesFilter, value, "FY Platinum Titles", titleValue, false, props.setIndex, predictText);
+    let fyPlatinumTitlesCall = platformSearchFeatures(fyPlatinumTitlesObject, fyPlatinumTitlesIndex.header, "FY Platinum Titles", value, platformValue ?? "All", "Many", platformListsFY, titleValue, predictText, fyPlatinumTitlesIndex.platformNotes);
 
-    filterTextAddToSetFY(gameSeriesFilter, value, "FY Game Series", titleValue, true, props.setIndex, predictText);
+    let gameSeriesCall = titleSetSearchFeatures(gameSeriesIndex, "FY Game Series", value, titleValue, predictText);
 
-    filterTextAddToSetFY(platformSoftwareShipmentsFilter, value, "Software Platform Shipments", titleValue, true, props.setIndex, predictText);
-
-    // // SIDE EFFECTS!!
-    // titleListCheckAll = allTitlesFilter?.[props.setIndex]?.length ?? 0;
-
-    // titleListCheckFY = fyTitlesFilter?.[props.setIndex]?.length ?? 0;
-
-    // // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
-    // seriesListCheck = gameSeriesFilter?.[props.setIndex-1]?.length ?? 0;
-    // // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
-    // softwareShipmentsListCheck = platformSoftwareShipmentsFilter?.[props.setIndex-1]?.length ?? 0;
-
-    let allTitlesReduce: string[] = allTitlesFilter.map(elem => elem.reduce((acc,next) => acc + next.table,"")); 
-
-    let fyTitlesReduce: string[] = fyTitlesFilter.map(elem => elem.reduce((acc, next) => acc + next.table,""));
-
-    let gameSeriesReduce: string[] = gameSeriesFilter.map(elem => elem.reduce((acc, next) => acc + next.table,"")); 
-
-    let platformSoftwareShipmentsReduce: string[] = platformSoftwareShipmentsFilter.map(elem => elem.reduce((acc, next) => acc + next.table,""));
-
-    let completeAllTitlesList = allTitlesReduce.map((elem, index) => allPlatinumTitlesList[index].header + elem + allPlatinumTitlesList[index].fyNotes + allPlatinumTitlesList[index].platformNotes);
-
-    let completeFYTitlesList = fyTitlesReduce.map((elem, index) => fyPlatinumTitlesList[index].header + elem + fyPlatinumTitlesList[index].fyNotes + fyPlatinumTitlesList[index].platformNotes);
-
-    let completeGameSeriesList = gameSeriesReduce.map((elem, index) => gameSeriesList[index].header + elem);
-
-    let completePlatformSoftwareShipmentsList = platformSoftwareShipmentsReduce.map((elem, index) => platformSoftwareShipmentsList[index].header + elem)
-
-    const annualReportListAltered = [""].concat(completePlatformSoftwareShipmentsList); // to manage keeping the index values the same with softwareSalesList
-
-    const gameSeriesListAltered = [""].concat(completeGameSeriesList); // to manage keeping the index values the same with softwareSalesList
+    let annualReportCall = titleSetSearchFeatures(annualReportIndex, "Software Platform Shipments", value, titleValue, predictText);
 
     const textInputValues = [
         {
-           value: "All Platinum Titles",
+           value: (value === allPlatinumTitlesCall.sectionTitle) ? allPlatinumTitlesCall.sectionTitle : fyPlatinumTitlesCall.sectionTitle,
            placeholder: "Search specific titles",
            label: `Title Search - Number of Titles shown: ${titlesLength}`,
            description: "Clear field to show all titles of the selected platform", 
         },
         {
-           value: "FY Platinum Titles",
-           placeholder: "Search specific titles",
-           label: `Title Search - Number of Titles shown: ${titlesLength}`,
-           description: "Clear field to show all titles of the selected platform", 
-        },
-        {
-           value: "FY Game Series",
+           value: gameSeriesCall.sectionTitle,
            placeholder: "Search specific series",
            label: `Series Search - Number of game series shown: ${titlesLength}`,
            description: "Clear field to show all game series listed.", 
         },
         {
-           value: "Software Platform Shipments",
+           value: annualReportCall.sectionTitle,
            placeholder: "Search specific platform",
            label: `Platform Search - Sets of platforms shown: ${titlesLength}`,
            description: "Clear field to show all platforms.", 
@@ -154,29 +89,41 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
     useEffect(() => {
 
         switch (value) {
-            case "FY Game Series":
-                // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
-                setTitlesLength(gameSeriesFilter?.[props.setIndex-1]?.length ?? 0)
+            case gameSeriesCall.sectionTitle:
+                setTitlesLength(gameSeriesCall.titlesLength.length)
                 break;
 
-            case "Software Platform Shipments":
-                // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
-                setTitlesLength(platformSoftwareShipmentsFilter?.[props.setIndex-1]?.length ?? 0)
+            case annualReportCall.sectionTitle:
+                setTitlesLength(annualReportCall.titlesLength.length)
                 break;
 
-            case "FY Platinum Titles":
-                setTitlesLength(fyTitlesFilter?.[props.setIndex]?.length ?? 0)
+            case fyPlatinumTitlesCall.sectionTitle:
+                setTitlesLength(fyPlatinumTitlesCall.titlesLength.length)
+
+                let platformReset1 = [...platformListsFY].filter(elem => elem === platformValue)
+
+                if ((platformReset1?.length ?? 0) === 0) {
+                            setPlatformValue("All");
+                }
+
                 break;
 
-            case "All Platinum Titles":
-                setTitlesLength(allTitlesFilter?.[props.setIndex]?.length ?? 0)
+            case allPlatinumTitlesCall.sectionTitle:
+                setTitlesLength(allPlatinumTitlesCall.titlesLength.length)
+
+                let platformReset2 = [...platformListsAll].filter(elem => elem === platformValue)
+
+                if ((platformReset2?.length ?? 0) === 0) {
+                    setPlatformValue("All");
+                }
+
                 break;
         
             default:
                 break;
         }
 
-    }, [value, titleValue, platformValue])
+    }, [value, titleValue, platformValue, props.setIndex, platformListsAll, platformListsFY])
 
     const componentListNew = Array.from({length: props.yearLength}, (elem, index) => {
 
@@ -197,21 +144,21 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
             },
             {
                 name: "Software Platform Shipments", 
-                value: annualReportListAltered[index] ? annualReportListAltered[index] : undefined, // can't use optional chaining on falsy values i.e. ""
+                value: annualReportCall.table
+                // value: annualReportListAltered[index] ? annualReportListAltered[index] : undefined, // can't use optional chaining on falsy values i.e. ""
             },
             {
                 name: "FY Platinum Titles", 
-                // value: fyPlatinumTitlesList?.[index],
-                value: completeFYTitlesList?.[index],
+                value: fyPlatinumTitlesCall.table
             },
             {
                 name: "All Platinum Titles", 
-                // value: allPlatinumTitlesList?.[index],
-                value: completeAllTitlesList?.[index],
+                value: allPlatinumTitlesCall.table
             },
             {
                 name: "FY Game Series", 
-                value: gameSeriesListAltered[index] ? gameSeriesListAltered[index] : undefined, // can't use optional chaining on falsy values i.e. ""
+                value: gameSeriesCall.table
+                // value: gameSeriesListAltered[index] ? gameSeriesListAltered[index] : undefined, // can't use optional chaining on falsy values i.e. ""
             },
         ].filter(elem => elem.value !== undefined);
     })
@@ -268,11 +215,11 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
                 (value === "Data Sources")
                     ? selectData(value)
                     : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {(value === "All Platinum Titles" || value === "FY Platinum Titles")
+                {(value === allPlatinumTitlesCall.sectionTitle || value === fyPlatinumTitlesCall.sectionTitle)
                     ? <Select
                         data={[
                          "All",
-                     ].concat((value === "All Platinum Titles") ? [...platformListsAll] : [...platformListsFY])}
+                     ].concat((value === allPlatinumTitlesCall.sectionTitle) ? [...platformListsAll] : [...platformListsFY])}
                     defaultValue={"All"} 
                     label="Select all or one platform:"
                     radius="xl"
@@ -281,7 +228,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
                   /> 
                     : undefined
                 }
-                {(value === "All Platinum Titles" || value === "FY Platinum Titles" || value === "FY Game Series" || value === "Software Platform Shipments")
+                {(value === allPlatinumTitlesCall.sectionTitle || value === fyPlatinumTitlesCall.sectionTitle || value === gameSeriesCall.sectionTitle || value === annualReportCall.sectionTitle)
                     ? <>
                         <TextInput
                         placeholder={textInputValues[0].placeholder}
