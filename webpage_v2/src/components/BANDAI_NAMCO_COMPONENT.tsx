@@ -5,7 +5,7 @@ import { softwareSalesList, softwareSalesGraphList } from "../data/bandaiNamco/s
 import { annualReportList } from "../data/bandaiNamco/annual_report_bandai_namco";
 import { bandaiNamcoConsolidatedEarningsList, bandaiNamcoConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { bandaiNamcoLinks } from "../data/generalTables/data_sources_general";
-import { filterTitles, printTextBlock, liner } from "../utils/table_design_logic";
+import { filterTitles, printTextBlock, liner, filterTextAddToSet } from "../utils/table_design_logic";
 import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
@@ -21,6 +21,12 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
 
     const [titleValue, setTitleValue] = useState("");
     const [titlesLength, setTitlesLength] = useState(0);
+
+    let correctFyForAnnualReports = -1;
+    
+    let annualReportIndex = annualReportList?.[props.setIndex + correctFyForAnnualReports]
+    console.log(annualReportIndex);
+    
 
     let annualReportTitlesFilter = annualReportList.map(elem => filterTitles<titleSet>(elem.titleList, titleValue));
 
