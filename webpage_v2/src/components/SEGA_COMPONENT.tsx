@@ -6,9 +6,7 @@ import { softwareSalesList, softwareSalesGraphList } from "../data/sega/software
 import { annualReportList } from "../data/sega/annual_report_sega";
 import { segaConsolidatedEarningsList, segaConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { segaLinks } from "../data/generalTables/data_sources_general";
-import { filterTitles, printTextBlock, liner, filterTextAddToSetFY } from "../utils/table_design_logic";
-import type { searchTitles } from "../data/capcom/platinum_titles_Capcom";
-import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
+import { printTextBlock, liner, platformSearchFeatures, titleSetSearchFeatures } from "../utils/table_design_logic";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
 import GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE from "../data/nintendo/Graphs/GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE";
@@ -26,51 +24,33 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
     const [titlesLength, setTitlesLength] = useState(0);
     const [platformValue, setPlatformValue] = useState<string | null>("All" ?? "All");
 
-    let annualReportListFiltered = Array.from({length:annualReportList.length},(v,i) => {
-    // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
-        return (i === props.setIndex-1)
-            ? annualReportList[i].titleData.filter(elem => {
-                if (platformValue === "All") {
-                    return elem
-                } else if (platformValue === elem.platforms) {
-                    return elem
-                }
-            })
-            : annualReportList[i].titleData
-    })
+    let correctFyForAnnualReports = -1;
+
+    let annualReportIndex = annualReportList?.[props.setIndex + correctFyForAnnualReports];
+
+    let annualReportInput = (annualReportIndex === undefined)
+        ? undefined
+        : [annualReportIndex]
+
+    let softwareUnitsIndex = segaSoftwareUnitsList?.[props.setIndex];
 
     let annualReportIPTypes = new Set<string>();
 
-    // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
-    annualReportList?.[props.setIndex-1]?.titleData.map(elem => annualReportIPTypes.add(elem.platforms));
-
-    let annualReportTitlesFilter = annualReportListFiltered.map(elem => filterTitles<searchTitles>(elem, titleValue))
-
     let predictText = new Set<string>();
 
-    filterTextAddToSetFY(annualReportTitlesFilter, value, "FY Series IP", titleValue, true, props.setIndex, predictText);
+    let annualReportCall = platformSearchFeatures(annualReportInput, annualReportIndex?.header, "FY Series IP", value, platformValue ?? "All", "Single", "Single", annualReportIPTypes, titleValue, predictText)
 
-    let annualReportReduce = annualReportTitlesFilter.map(elem => elem.reduce((acc,next) => acc + next.table,""));
-
-    let completeAnnualReportList = annualReportReduce.map((elem, index) => annualReportList[index].header + elem);
-
-    let softwareUnitsFilter = segaSoftwareUnitsList.map(elem => filterTitles<titleSet>(elem.titleList, titleValue));
-
-    let softwareUnitsReduce = softwareUnitsFilter.map(elem => elem.reduce((acc, next) => acc + next.table,""));
-
-    let completeSoftwareUnitsList = softwareUnitsReduce.map((elem, index) => segaSoftwareUnitsList[index].header + elem);
-
-    const annualReportListAltered = [""].concat(completeAnnualReportList); // to manage keeping the index values the same with softwareSalesList
+    let softwareUnitsCall = titleSetSearchFeatures(softwareUnitsIndex, "Software Units", value, titleValue, predictText)
 
     const textInputValues = [
         {
-           value: "Software Units",
+           value: softwareUnitsCall.sectionTitle,
            placeholder: "Search specific titles or game series",
            label: `Title/Series Search - Number of Titles/Series shown: ${titlesLength}`,
            description: "Clear field to show all titles of the selected platform", 
         },
         {
-           value: "FY Series IP",
+           value: annualReportCall.sectionTitle,
            placeholder: "Search specific series",
            label: `Series Search - Number of game series shown: ${titlesLength}`,
            description: "Clear field to show all game series listed.", 
@@ -80,20 +60,26 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
     useEffect(() => {
 
         switch (value) {
-            case "FY Series IP":
-                // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
-                setTitlesLength(annualReportTitlesFilter?.[props.setIndex-1]?.length ?? 0)
+            case annualReportCall.sectionTitle:
+                setTitlesLength(annualReportCall.titlesLength.length)
+
+                let platformReset1 = [...annualReportIPTypes].filter(elem => elem === platformValue)
+
+                if ((platformReset1?.length ?? 0) === 0) {
+                            setPlatformValue("All");
+                }
+
                 break;
 
-            case "Software Units":
-                setTitlesLength(softwareUnitsFilter?.[props.setIndex]?.length ?? 0)
+            case softwareUnitsCall.sectionTitle:
+                setTitlesLength(softwareUnitsCall.titlesLength.length)
                 break;
         
             default:
                 break;
         }
 
-    }, [value, titleValue, platformValue])
+    }, [value, titleValue, platformValue, props.setIndex, annualReportIPTypes])
 
     const componentListNew = Array.from({length: props.yearLength}, (elem, index) => {
 
@@ -114,13 +100,13 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
             },
             {
                 name: "Software Units",
-                // value: segaSoftwareUnitsList?.[index],
-                value: completeSoftwareUnitsList?.[index],
+                value: softwareUnitsCall.table,
                 graph: <GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE setData={segaSoftwareUnitsGraphList[index]} />
             },
             {
                 name: "FY Series IP",
-                value: annualReportListAltered[index] ? annualReportListAltered[index] : undefined, // can't use optional chaining on falsy values i.e. ""
+                value: annualReportCall.table
+                // value: annualReportListAltered[index] ? annualReportListAltered[index] : undefined, // can't use optional chaining on falsy values i.e. ""
             },
         ].filter(elem => elem.value !== undefined);
     })
@@ -178,7 +164,7 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
                 (value === "Data Sources")
                     ? selectData(value)
                     : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                        {(value === "FY Series IP")
+                        {(value === annualReportCall.sectionTitle)
                             ? <Select
                                 data={[
                                  "All",
@@ -191,7 +177,7 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
                           /> 
                             : undefined
                         }
-                        {(value === "FY Series IP" || value === "Software Units")
+                        {(value === annualReportCall.sectionTitle || value === softwareUnitsCall.sectionTitle)
                     ? <>
                         <TextInput
                         placeholder={textInputValues[0].placeholder}

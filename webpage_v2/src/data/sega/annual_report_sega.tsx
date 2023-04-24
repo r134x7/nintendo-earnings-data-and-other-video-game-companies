@@ -118,7 +118,7 @@ export const fullGameRatio = (ip: Series, fiscalYear: string, cumulative: boolea
         let calcPrint: string = liner(border([
             spacer(fiscalYear + " Full Game / IP Series %", 33, "left"),
             spacer(calc, 9, "right"),
-        ]),"=","both",true) + "###"
+        ]),"=","both",true) + "###\n"
 
         return (cumulative === true)
             ? calcRow 
@@ -126,7 +126,7 @@ export const fullGameRatio = (ip: Series, fiscalYear: string, cumulative: boolea
     };
 };
 
-export const annualReportList: filteringTitles[] = collection.map((elem, index, array) => {
+export const annualReportList = collection.map((elem, index, array) => {
 
     let fiscalYear = elem.fiscalYear;
 
@@ -194,8 +194,6 @@ export const annualReportList: filteringTitles[] = collection.map((elem, index, 
     // return printOne + "\n" + printedSeries
     return {
         header: printOne,
-        date: "",
-        titleData: printedSeries,
-        platformsNote: "",
+        titleList: printedSeries,
     }
 })
