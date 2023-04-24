@@ -9,8 +9,7 @@ import { keySalesIndicatorsList, keySalesIndicatorsGraphList } from "../data/nin
 import { regionalHardwareSoftwareList } from "../data/nintendo/regional_hardware_software_nintendo";
 import { topSellingTitlesListAllHeaders, topSellingTitlesList, topSellingTitlesGraphList } from "../data/nintendo/top_selling_titles_nintendo";
 import { consolidatedSalesInformationList, consolidatedSalesInformationGraphList } from "../data/nintendo/consolidated_sales_information_nintendo";
-import type { searchTitles } from "../data/capcom/platinum_titles_Capcom";
-import { printTextBlock, liner, filterTextAddToSet, titleSetSearchFeatures } from "../utils/table_design_logic";
+import { printTextBlock, liner, platformSearchFeatures, titleSetSearchFeatures } from "../utils/table_design_logic";
 
 import GRAPH_NINTENDO_KPI from "../data/nintendo/Graphs/GRAPH_NINTENDO_KPI";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES from "../data/nintendo/Graphs/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH";
@@ -19,7 +18,6 @@ import GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE from "../data/nintendo/Gra
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
 
 import {cite, citeCopy} from "../utils/copySetCitation";
-import { filterTitles } from "../utils/table_design_logic";
 
 export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength: number}) {
 
@@ -31,18 +29,6 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
     const [titlesLength, setTitlesLength] = useState(0);
     const [platformValue, setPlatformValue] = useState<string | null>("All" ?? "All");
 
-    function filterPlatforms<T extends searchTitles>(input: T[]) {
-
-        return input.filter(elem => {
-            if (platformValue === "All") {
-                return elem
-            } else if (platformValue === elem.platforms) {
-                return elem
-            }
-        })
-    }
-
-    
     let consolidatedSalesInformationIndex = consolidatedSalesInformationList?.[props.setIndex];
 
     let keySalesIndicatorsIndex = keySalesIndicatorsList?.[props.setIndex];
@@ -59,53 +45,6 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
     let topSellingTitlesAllPlatformsHeaderPickedIndex = topSellingTitlesListAllHeaders?.[props.setIndex];
 
-    function platformSearchFeatures(input: {
-        header: string;
-        titleList: searchTitles[];
-        summary?: string,
-    }[], allHeader: string, filterContext: string, setContext: Set<string>, footnote?: string,
-    ) {
-        if (input === undefined) {
-            return {
-                titlesLength: "",
-                table: undefined,
-                sectionTitle: filterContext,
-            }
-        }
-
-        let platformsCombined = input.flatMap(elem => elem.titleList);
-
-        let headersCombined = [{header: allHeader, platform: "All", summary: ""}].concat(input.flatMap(elem => {
-
-            return {
-                header: elem.header,
-                platform: elem.titleList[0].platforms,
-                summary: elem.summary ?? "",
-            }
-        }));
-
-
-        let platformsFiltered = filterPlatforms<searchTitles>(platformsCombined);
-
-        let titlesTitleFilter = filterTitles<searchTitles>(platformsFiltered, titleValue);
-        
-        platformsCombined.map(elem => setContext.add(elem.platforms));
-
-        filterTextAddToSet(titlesTitleFilter, value, filterContext, titleValue, predictText)
-
-        let titlesReduce: string = titlesTitleFilter.reduce((acc, next) => acc + next.table,"");
-
-        let [picked, empty] = headersCombined.filter(elem => elem.platform === platformValue)
-        
-        let completeTable = (picked?.header ?? "ERROR") + titlesReduce + (picked?.summary ?? "ERROR") + (footnote ?? "");
-
-        return {
-            titlesLength: titlesTitleFilter,
-            table: completeTable,
-            sectionTitle: filterContext,
-        }
-    }
-
     let platformListsTopSellingTitles = new Set<string>();
 
     let platformListsFYMillionSellers = new Set<string>();
@@ -114,11 +53,11 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
     let predictText = new Set<string>();
 
-    let globalHardwareSoftwareCall = platformSearchFeatures(globalHardwareSoftwareIndex, globalHardwareSoftwareIndex[0].header, "Global Hardware/Software Units", platformListsGlobalHardwareSoftware)
+    let globalHardwareSoftwareCall = platformSearchFeatures(globalHardwareSoftwareIndex, globalHardwareSoftwareIndex[0].header, "Global Hardware/Software Units", value, platformValue ?? "All", "Single", "Single", platformListsGlobalHardwareSoftware, titleValue, predictText)
 
-    let fyMillionSellerTitlesCall = platformSearchFeatures(fyMillionSellerTitlesIndex, fyMillionSellerTitlesAllPlatformsHeaderPickedIndex.header, "FY Million-Seller Titles", platformListsFYMillionSellers,fyMillionSellerTitlesAllPlatformsHeaderPickedIndex.footnote)
+    let fyMillionSellerTitlesCall = platformSearchFeatures(fyMillionSellerTitlesIndex, fyMillionSellerTitlesAllPlatformsHeaderPickedIndex?.header, "FY Million-Seller Titles", value, platformValue ?? "All", "Single", "Single", platformListsFYMillionSellers, titleValue, predictText, fyMillionSellerTitlesAllPlatformsHeaderPickedIndex?.footnote)
 
-    let topSellingTitlesCall = platformSearchFeatures(topSellingTitleIndex, topSellingTitlesAllPlatformsHeaderPickedIndex, "Top Selling Titles", platformListsTopSellingTitles);
+    let topSellingTitlesCall = platformSearchFeatures(topSellingTitleIndex, topSellingTitlesAllPlatformsHeaderPickedIndex, "Top Selling Titles", value, platformValue ?? "All", "Single", "Single", platformListsTopSellingTitles, titleValue, predictText);
 
     let regionalHardwareSoftwareCall = titleSetSearchFeatures(regionalHardwareSoftwareIndex, "Regional Hardware/Software Units", value, titleValue, predictText);
 

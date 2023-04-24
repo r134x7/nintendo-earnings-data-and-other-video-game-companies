@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { Code, SegmentedControl, Select, TextInput, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { allPlatinumTitlesList, fyPlatinumTitlesList, searchTitles } from "../data/capcom/platinum_titles_Capcom";
+import { allPlatinumTitlesList, fyPlatinumTitlesList } from "../data/capcom/platinum_titles_Capcom";
 import { gameSeriesList } from "../data/capcom/game_series_sales_Capcom";
 import { softwareSalesList, softwareSalesGraphList } from "../data/capcom/software_sales_Capcom";
 import { platformSoftwareShipmentsList } from "../data/capcom/software_shipments_platform_Capcom";
 import { capcomConsolidatedEarningsList, capcomConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { capcomLinks } from "../data/generalTables/data_sources_general";
 import { printTextBlock, liner, titleSetSearchFeatures, platformSearchFeatures } from "../utils/table_design_logic";
-import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
