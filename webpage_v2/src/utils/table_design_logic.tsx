@@ -215,7 +215,7 @@ export function titleSetSearchFeatures(input: { header: string; titleList: title
 
         filterTextAddToSet(titlesFilter, sectionValue, sectionContext, titleValue, textSet)
 
-        let titlesReduce = titlesFilter.reduce((acc, next) => acc + next.table,"");
+        let titlesReduce = input.header + titlesFilter.reduce((acc, next) => acc + next.table,"");
 
         return {
             titlesLength: titlesFilter,
