@@ -223,3 +223,82 @@ export function titleSetSearchFeatures(input: { header: string; titleList: title
             sectionTitle: sectionContext,
         }
     }
+
+export function platformSearchFeatures(input: {
+        header: string;
+        titleList: searchTitles[];
+        summary?: string,
+    }[], allHeader: string, sectionContext: string, sectionValue: string, platformValue: string, filterPlatformType: "Single" | "Many", platformSet: Set<string>, titleValue: string, textSet: Set<string>, footnote?: string,
+    ): { titlesLength: titleSet[] | string, table: string | undefined, sectionTitle: string } {
+        if (input === undefined) {
+            return {
+                titlesLength: "",
+                table: undefined,
+                sectionTitle: sectionContext,
+            }
+        }
+
+        let platformsCombined = input.flatMap(elem => elem.titleList);
+
+        let headersCombined = [{header: allHeader, platform: "All", summary: ""}].concat(input.flatMap(elem => {
+
+            return {
+                header: elem.header,
+                platform: elem.titleList[0].platforms,
+                summary: elem.summary ?? "",
+            }
+        }));
+
+
+        let platformsFiltered = filterPlatform<searchTitles>(platformsCombined, platformValue, filterPlatformType);
+
+        let titlesTitleFilter = filterTitles<searchTitles>(platformsFiltered, titleValue);
+        
+        platformsCombined.map(elem => platformSet.add(elem.platforms));
+
+        filterTextAddToSet(titlesTitleFilter, sectionValue, sectionContext, titleValue, textSet)
+
+        let titlesReduce: string = titlesTitleFilter.reduce((acc, next) => acc + next.table,"");
+
+        let [picked, empty] = headersCombined.filter(elem => elem.platform === platformValue)
+        
+        let completeTable = (picked?.header ?? "ERROR") + titlesReduce + (picked?.summary ?? "ERROR") + (footnote ?? "");
+
+        return {
+            titlesLength: titlesTitleFilter,
+            table: completeTable,
+            sectionTitle: sectionContext,
+        }
+    }
+
+export function filterPlatform<T extends searchTitles>(input: T[], platformValue: string, filterType: "Single" | "Many") {
+
+        switch (filterType) {
+            case "Single":
+                
+                return input.filter(elem => {
+                    if (platformValue === "All") {
+                        return elem
+                    } else if (platformValue === elem.platforms) {
+                        return elem
+                    }
+                })
+
+            case "Many":
+                
+                return input.filter(elem => {
+                    if (platformValue === "All") {
+                        return elem
+                    } else if (platformValue === elem.platforms) {
+                        return elem
+                    } else if ([...elem.platforms.matchAll(/\w+\s?\w+/g)].flat().filter(value => value === platformValue).length > 0) {
+                        return elem
+                    }
+                })
+        
+            default:
+                console.log("You did not match any filter type...");
+                
+                return input
+        }
+    }     
