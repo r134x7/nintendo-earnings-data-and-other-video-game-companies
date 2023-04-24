@@ -175,26 +175,26 @@ export function filterTitles<T extends searchTitles | titleSet>(input: T[], stat
         return input.filter(elem => (stateValue === "") ? elem : elem.title.toLowerCase().includes(stateValue.toLowerCase()))
     }
 
-export function filterTextAddToSetFY<T extends titleSet | searchTitles>(filteredText: T[][], categoryValue: string, categoryCheck: string, titleCheck: string, alteredList: boolean, yearSelect: number, theSet: Set<string>) {
+// export function filterTextAddToSetFY<T extends titleSet | searchTitles>(filteredText: T[][], categoryValue: string, categoryCheck: string, titleCheck: string, alteredList: boolean, yearSelect: number, theSet: Set<string>) {
 
-    let yearSet = (!alteredList) ? yearSelect : yearSelect-1
+//     let yearSet = (!alteredList) ? yearSelect : yearSelect-1
 
-    if (titleCheck.length !== 0 && categoryCheck === categoryValue) {
+//     if (titleCheck.length !== 0 && categoryCheck === categoryValue) {
 
-        filteredText.flatMap((elem, index) => {
-            if (index === yearSet) {
-                elem.map(elemII => {
-                    // [...elemII.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleCheck})\\w+`,"g"))].flat().map(elemIII => theSet.add(elemIII))
-                    [...elemII.title.toLowerCase().matchAll(new RegExp(`(?=[\\w\é]*${titleCheck})[\\w\é]+`,"g"))].flat().map(elemIII => theSet.add(elemIII))
-                })
-            } else {
-                return []
-            }
-        })
-    }
-} 
+//         filteredText.flatMap((elem, index) => {
+//             if (index === yearSet) {
+//                 elem.map(elemII => {
+//                     // [...elemII.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleCheck})\\w+`,"g"))].flat().map(elemIII => theSet.add(elemIII))
+//                     [...elemII.title.toLowerCase().matchAll(new RegExp(`(?=[\\w\é]*${titleCheck})[\\w\é]+`,"g"))].flat().map(elemIII => theSet.add(elemIII))
+//                 })
+//             } else {
+//                 return []
+//             }
+//         })
+//     }
+// } 
 
-export function filterTextAddToSetCml<T extends titleSet | searchTitles>(filteredText: T[], categoryValue: string, categoryCheck: string, titleCheck: string, theSet: Set<string>) {
+export function filterTextAddToSet<T extends titleSet | searchTitles>(filteredText: T[], categoryValue: string, categoryCheck: string, titleCheck: string, theSet: Set<string>) {
     
     if (titleCheck.length !== 0 && categoryCheck === categoryValue) {
         // filteredText.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleCheck})\\w+`,"g"))].flat().map(elemII => theSet.add(elemII)))

@@ -7,7 +7,7 @@ import { printGlobalHardwareSoftware, printGlobalSalesPerHardwareUnit } from "..
 import { printJapanHardwareSoftware, printAmericasHardwareSoftware, printEuropeHardwareSoftware, printOtherHardwareSoftware } from "../../data/nintendo/Nintendo_Cumulative_Data/regional_hardware_software_cml_data";
 import { printTopSellingTitles } from "../../data/nintendo/Nintendo_Cumulative_Data/top_selling_titles_cml_data";
 import { printConsolidatedSalesInfo } from "../../data/nintendo/Nintendo_Cumulative_Data/consolidated_sales_information_cml_data";
-import { filterTitles, printTextBlock, liner, filterTextAddToSetCml } from "../../utils/table_design_logic";
+import { filterTitles, printTextBlock, liner, filterTextAddToSet } from "../../utils/table_design_logic";
 import type { titleSet } from "../../data/capcom/game_series_sales_capcom_cml_data";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
@@ -108,13 +108,13 @@ export default function NINTENDO_CML() {
 
     let predictText = new Set<string>();
 
-    filterTextAddToSetCml(consolidatedSalesInformationFilter, value, "Nintendo Consolidated Sales Information - Cumulative", titleValue, predictText);
+    filterTextAddToSet(consolidatedSalesInformationFilter, value, "Nintendo Consolidated Sales Information - Cumulative", titleValue, predictText);
 
-    filterTextAddToSetCml(hardwareSoftwareTitleFilter, value, "Nintendo Hardware/Software - Cumulative", titleValue, predictText);
+    filterTextAddToSet(hardwareSoftwareTitleFilter, value, "Nintendo Hardware/Software - Cumulative", titleValue, predictText);
 
-    filterTextAddToSetCml(fyMillionSellersTitleFilter, value, "Nintendo FY Million-Seller Titles - Cumulative", titleValue, predictText);
+    filterTextAddToSet(fyMillionSellersTitleFilter, value, "Nintendo FY Million-Seller Titles - Cumulative", titleValue, predictText);
 
-    filterTextAddToSetCml(topSellingTitlesTitleFilter, value, "Nintendo Top Selling Titles - Cumulative", titleValue, predictText);
+    filterTextAddToSet(topSellingTitlesTitleFilter, value, "Nintendo Top Selling Titles - Cumulative", titleValue, predictText);
 
     let consolidatedSalesInformationReduce = consolidatedSalesInformationFilter.reduce((acc, next) => acc + next.table,"");
 

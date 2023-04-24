@@ -11,7 +11,7 @@ import { topSellingTitlesListAllHeaders, topSellingTitlesList, topSellingTitlesG
 import { consolidatedSalesInformationList, consolidatedSalesInformationGraphList } from "../data/nintendo/consolidated_sales_information_nintendo";
 import type { searchTitles } from "../data/capcom/platinum_titles_Capcom";
 import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
-import { printTextBlock, liner, filterTextAddToSetCml } from "../utils/table_design_logic";
+import { printTextBlock, liner, filterTextAddToSet } from "../utils/table_design_logic";
 
 import GRAPH_NINTENDO_KPI from "../data/nintendo/Graphs/GRAPH_NINTENDO_KPI";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES from "../data/nintendo/Graphs/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH";
@@ -92,7 +92,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
         
         platformsCombined.map(elem => setContext.add(elem.platforms));
 
-        filterTextAddToSetCml(titlesTitleFilter, value, filterContext, titleValue, predictText)
+        filterTextAddToSet(titlesTitleFilter, value, filterContext, titleValue, predictText)
 
         let titlesReduce: string = titlesTitleFilter.reduce((acc, next) => acc + next.table,"");
 
@@ -118,7 +118,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
         let titlesFilter = filterTitles<titleSet>(input.titleList,titleValue)
 
-        filterTextAddToSetCml(titlesFilter, value, filterContext, titleValue, predictText)
+        filterTextAddToSet(titlesFilter, value, filterContext, titleValue, predictText)
 
         let titlesReduce = titlesFilter.reduce((acc, next) => acc + next.table,"");
 
