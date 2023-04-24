@@ -5,8 +5,7 @@ import { softwareSalesList } from "../data/squareEnix/software_sales_square_enix
 import { annualReportList } from "../data/squareEnix/annual_report_square_enix";
 import { squareEnixConsolidatedEarningsList, squareEnixConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { squareEnixLinks } from "../data/generalTables/data_sources_general";
-import { filterTitles, printTextBlock, liner, filterTextAddToSetFY } from "../utils/table_design_logic";
-import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
+import { printTextBlock, liner, titleSetSearchFeatures } from "../utils/table_design_logic";
 
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
 
@@ -21,21 +20,26 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
     const [titleValue, setTitleValue] = useState("");
     const [titlesLength, setTitlesLength] = useState(0);
 
-    let annualReportTitlesFilter = annualReportList.map(elem => filterTitles<titleSet>(elem.titleData, titleValue));
 
     let predictText = new Set<string>();
 
-    filterTextAddToSetFY(annualReportTitlesFilter, value, "FY Series IP", titleValue, true, props.setIndex, predictText);
+    let correctFyForAnnualReports = -1;
 
-    let annualReportReduce = annualReportTitlesFilter.map(elem => elem.reduce((acc,next) => acc + next.table,""));
+    let annualReportIndex = annualReportList?.[props.setIndex + correctFyForAnnualReports];
 
-    let completeAnnualReportList = annualReportReduce.map((elem, index) => annualReportList[index].header + elem + annualReportList[index].fyNotes);
+    let annualReportObject = (annualReportIndex === undefined)
+        ? undefined
+        : {
+            header: annualReportIndex.header,
+            titleList: annualReportIndex.titleData,
+            summary: annualReportIndex.fyNotes
+        }
 
-    const annualReportListAltered = [""].concat(completeAnnualReportList); // to manage keeping the index values the same with softwareSalesList
+    let annualReportCall = titleSetSearchFeatures(annualReportObject, "FY Series IP", value, titleValue, predictText);
 
     const textInputValues = [
         {
-           value: "FY Series IP",
+           value: annualReportCall.sectionTitle,
            placeholder: "Search specific series",
            label: `Series Search - Number of game series shown: ${titlesLength}`,
            description: "Clear field to show all game series listed.", 
@@ -45,16 +49,15 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
     useEffect(() => {
 
         switch (value) {
-            case "FY Series IP":
-                // due to altering the list later, the list is offset by +1, apply props.setIndex-1 
-                setTitlesLength(annualReportTitlesFilter?.[props.setIndex-1]?.length ?? 0)
+            case annualReportCall.sectionTitle:
+                setTitlesLength(annualReportCall.titlesLength.length)
                 break;
 
             default:
                 break;
         }
 
-    }, [titleValue, value])
+    }, [titleValue, value, props.setIndex])
 
 
     const componentListNew = Array.from({length: props.yearLength}, (elem, index) => {
@@ -75,7 +78,8 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
             },
             {
                 name: "FY Series IP",
-                value: annualReportListAltered[index] ? annualReportListAltered[index] : undefined, // can't use optional chaining on falsy values i.e. ""
+                value: annualReportCall.table
+                // value: annualReportListAltered[index] ? annualReportListAltered[index] : undefined, // can't use optional chaining on falsy values i.e. ""
             },
         ].filter(elem => elem.value !== undefined);
     })
@@ -132,7 +136,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
                 (value === "Data Sources")
                     ? selectData(value)
                     : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                        {(value === "FY Series IP")
+                        {(value === annualReportCall.sectionTitle)
                     ? <>
                         <TextInput
                         placeholder={textInputValues[0].placeholder}
