@@ -20,7 +20,6 @@
   - Redux Toolkit: @reduxjs/toolkit, react-redux
   - TypeScript: typescript
   - Chart.js: chart.js, react-chartjs-2
-  - gh-pages
   - react-router-dom
   - React
   - tabler-icons-react
