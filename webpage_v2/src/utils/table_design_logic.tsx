@@ -201,3 +201,26 @@ export function filterTextAddToSet<T extends titleSet | searchTitles>(filteredTe
         filteredText.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=[\\w\é]*${titleCheck})[\\w\é]+`,"g"))].flat().map(elemII => theSet.add(elemII)))
     }
 } 
+
+export function titleSetSearchFeatures(input: { header: string; titleList: titleSet[];}, filterContext: string, sectionValue: string, titleValue: string, textSet: Set<string>) {
+        if (input === undefined) {
+            return {
+                titlesLength: "",
+                table: undefined,
+                sectionTitle: filterContext,
+            }
+        }
+
+        let titlesFilter = filterTitles<titleSet>(input.titleList,titleValue)
+
+        filterTextAddToSet(titlesFilter, sectionValue, filterContext, titleValue, textSet)
+
+        let titlesReduce = titlesFilter.reduce((acc, next) => acc + next.table,"");
+
+        return {
+            titlesLength: titlesFilter,
+            table: titlesReduce,
+            sectionTitle: filterContext,
+        }
+    }
+    
