@@ -15,7 +15,7 @@ const Home = () => {
 
     const bandaiNamcoStatus = liner(printTextBlock("Bandai Namco page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Title search feature and predictive single word search applied to FY Series IP, Bandai Namco FY Series IP - Cumulative.",40),"−","both",true,40);
 
-    const koeiTecmoStatus = liner(printTextBlock("Koei Tecmo page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: 3rd Quarter Earnings release data for FY3/2023 added.",40),"−","both",true,40);
+    const koeiTecmoStatus = liner(printTextBlock("Koei Tecmo page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: 4th Quarter Earnings release data for FY3/2023 and Special Page added.",40),"−","both",true,40);
 
     const squareEnixStatus = liner(printTextBlock("Square Enix page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Title search feature applied and predictive single word search to FY Series IP, Square Enix FY Series IP - Cumulative.",40),"−","both",true,40);
 
