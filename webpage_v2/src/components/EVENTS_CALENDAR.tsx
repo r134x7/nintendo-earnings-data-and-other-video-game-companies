@@ -199,18 +199,17 @@ export default function EVENTS_CALENDAR() {
     ]
 
     // until I get to use toSorted... so the array doesn't mutate...
-    const sortedDateArray = dateArray.map(elem => elem).sort((b,a) => {
-        return a.eventDate > b.eventDate
-            ? 1
-            : a.eventDate < b .eventDate
-                ? -1
-                : 0
-    })
+    // const sortedDateArray = dateArray.map(elem => elem).sort((b,a) => {
+    //     return a.eventDate > b.eventDate
+    //         ? 1
+    //         : a.eventDate < b .eventDate
+    //             ? -1
+    //             : 0
+    // })
 
     function selectEvent() { // for displaying data when clicking on the calendar
 
-        // return  dateArray.map((data: EventDate, index, array) => {
-        return  sortedDateArray.map((data: EventDate, index, array) => {
+        return  dateArray.map((data: EventDate) => {
               if (isSameDate(value || new Date(), new Date(data.eventDate))) {
                     let selectId = data.id;
                     let selectEventCompany = (data.companyName) ? `Company: ${data.companyName}` : " ";
@@ -222,14 +221,16 @@ export default function EVENTS_CALENDAR() {
 
                     let eventsCount = dateArray.filter(value => value.eventDate === data.eventDate).length;
 
-                    let eventsMessage = (array?.at(index-1)?.eventDate === data.eventDate)
-                        ? ""
-                        : liner(printTextBlock(`Number of events on this date: ${eventsCount}`,40),"=","both",true,40)
+                    // an issue occurred on production while selecting dates... not sorting the array then...
+                    // will look at updating to version 6 and go through breaking changes. 
+                    // let eventsMessage = (array?.at(index-1)?.eventDate === data.eventDate)
+                    //     ? ""
+                    //     : liner(printTextBlock(`Number of events on this date: ${eventsCount}`,40),"=","both",true,40)
                         
                 return (
                     <Stack key={selectId} align={"center"} mb={"sm"} >
                         <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                            {eventsMessage}
+                            {liner(printTextBlock(`Events total on this date: ${eventsCount}`,40),"=","both",true,40)}
                             {liner(printTextBlock(selectEventName,40),"=","top",true,40)}
                             {liner(printTextBlock(selectEventCompany,40),"=","top",true,40)}
                             {liner(printTextBlock(selectEventDate,40),"=","top",true,40)}
