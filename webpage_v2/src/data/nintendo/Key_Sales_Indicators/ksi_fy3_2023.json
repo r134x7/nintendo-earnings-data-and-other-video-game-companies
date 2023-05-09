@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "fiscalYear": "FY3/2023",
     "kpi": [
         {
@@ -8,10 +8,10 @@
             "Q1Value": 79.9,
             "Q2Value": 72.4,
             "Q3Value": 76.8,
-            "Q4Value": 0,
+            "Q4Value": 80.6,
             "Q2CmlValue": 75.9,
             "Q3CmlValue": 76.4,
-            "Q4CmlValue": 0,
+            "Q4CmlValue": 77.2,
             "footnote":"*Proportion of overseas (outside of Japan) sales to total sales"
 
         },
@@ -21,10 +21,10 @@
             "Q1Value": 43.8,
             "Q2Value": 39.8,
             "Q3Value": 50.9,
-            "Q4Value": 0,
+            "Q4Value": 42.7,
             "Q2CmlValue": 41.7,
             "Q3CmlValue": 46.2,
-            "Q4CmlValue": 0,
+            "Q4CmlValue": 45.6,
             "footnote": "*Proportion of hardware (including accessories) sales to total dedicated video game platform sales"
         },
         {
@@ -33,10 +33,10 @@
             "Q1Value": 76.3,
             "Q2Value": 72.7,
             "Q3Value": 85.0,
-            "Q4Value": 0,
+            "Q4Value": 77.9,
             "Q2CmlValue": 74.3,
             "Q3CmlValue": 79.4,
-            "Q4CmlValue": 0,
+            "Q4CmlValue": 79.1,
             "footnote": "*Proportion of first-party software sales to total dedicated video game platform software sales"
         },
         {
@@ -45,10 +45,10 @@
             "Q1Value": 88.0,
             "Q2Value": 99.7,
             "Q3Value": 122.1,
-            "Q4Value": 0,
+            "Q4Value": 95.2,
             "Q2CmlValue": 187.8,
             "Q3CmlValue": 310.0,
-            "Q4CmlValue": 0,
+            "Q4CmlValue": 405.2,
             "footnote":"*Digital sales include (a) downloadable version of packaged software (the downloadable version of software that is offered both physically and digitally), (b) download-only software, (c) add-on content and (d) Nintendo Switch Online, etc."
         },
         {
@@ -57,10 +57,10 @@
             "Q1Value": 53.0,
             "Q2Value": 49.3,
             "Q3Value": 40.1,
-            "Q4Value": 0,
+            "Q4Value": 56.7,
             "Q2CmlValue": 51.0,
             "Q3CmlValue": 46.0,
-            "Q4CmlValue": 0,
+            "Q4CmlValue": 48.2,
             "footnote":"*Proportion of digital sales to total dedicated video game software sales"
         },
         {
@@ -69,10 +69,10 @@
             "Q1Value": 52.1,
             "Q2Value": 52.3,
             "Q3Value": 65.3,
-            "Q4Value": 0,
+            "Q4Value": 52.2,
             "Q2CmlValue": 52.2,
             "Q3CmlValue": 57.4,
-            "Q4CmlValue": 0,
+            "Q4CmlValue": 56.1,
             "footnote":"*Proportion of downloadable versions of packaged software sales to total digital sales as indicated above: a/(a+b+c+d)"
         }
     ],
@@ -83,7 +83,7 @@
             "Q1Value": 307460,
             "Q2Value": 656974,
             "Q3Value": 1295178,
-            "Q4Value": 1295178
+            "Q4Value": 1601677
         },
         {
             "name": "Dedicated video game platform",
@@ -91,7 +91,7 @@
             "Q1Value": 295670,
             "Q2Value": 631412,
             "Q3Value": 1252174,
-            "Q4Value": 1252174
+            "Q4Value": 1544920
         }
     ]
 }
