@@ -39,7 +39,7 @@
             "forecastRevision1": 21000,
             "forecastRevision2": 20500,
             "forecastNextFY": 18000,
-            "footnote": "1. Software sales units include both packaged and downloadable versions of software, and do not include download-only software or add-on content. 2. The number of new titles is the number of packaged software. 3. Actual software sales units include the quantity bundled with hardware or other products. 4. Forecasted software sales units do not include the quantity to be bundled with hardware or other products"
+            "footnote": "Software sales units include both packaged and downloadable versions of software, and do not include download-only software or add-on content. The number of new titles is the number of packaged software. Actual software sales units include the quantity bundled with hardware or other products. Forecasted software sales units do not include the quantity to be bundled with hardware or other products"
         }
     ]
 }
