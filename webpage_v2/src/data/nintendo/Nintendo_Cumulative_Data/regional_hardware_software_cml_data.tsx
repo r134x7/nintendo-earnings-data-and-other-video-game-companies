@@ -7,7 +7,7 @@ import regionalHardwareSoftware2023 from "../Regional_Hardware_Software/regional
 import regionalHardwareSoftware2022 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2022.json";
 import regionalHardwareSoftware2021 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2021.json";
 import regionalHardwareSoftware2020 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2020.json";
-import regionalHardwareSoftware2019 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2019.json";
+import regionalHardwareSoftware2019 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2019_new.json";
 import regionalHardwareSoftware2018 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2018_new.json";
 import regionalHardwareSoftware2017 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2017_new.json";
 import regionalHardwareSoftware2016 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2016.json";
