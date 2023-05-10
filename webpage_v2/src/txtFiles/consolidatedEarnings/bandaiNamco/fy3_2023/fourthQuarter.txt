@@ -1,0 +1,9 @@
+Net Sales
+990089
+1000000
+Operating Income
+116472
+125000
+Net Income
+90345
+91000
