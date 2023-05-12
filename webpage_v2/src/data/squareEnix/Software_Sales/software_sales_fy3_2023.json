@@ -1,13 +1,13 @@
 {
     "fiscalYear": "FY3/2023",
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "hdGamesSales": {
         "name": "HD Games",
         "units": "currency",
         "Q1CmlValue": 12.0,
         "Q2CmlValue": 29.4,
         "Q3CmlValue": 58.1,
-        "Q4CmlValue": 58.1,
+        "Q4CmlValue": 78.5,
         "notes": "*Sales might include: - Downloadable content purchases" 
     },
     "mmoSales": {
@@ -16,7 +16,7 @@
         "Q1CmlValue": 14.1,
         "Q2CmlValue": 28.6,
         "Q3CmlValue": 40.5,
-        "Q4CmlValue": 40.5,
+        "Q4CmlValue": 53.3,
         "notes": "**MMO sales includes subscriptions" 
     },
     "hdGamesAndMMOUnits": {
@@ -25,6 +25,6 @@
         "Q1CmlValue": 4280,
         "Q2CmlValue": 9410,
         "Q3CmlValue": 16430,
-        "Q4CmlValue": 16430 
+        "Q4CmlValue": 22440
     }
 }
