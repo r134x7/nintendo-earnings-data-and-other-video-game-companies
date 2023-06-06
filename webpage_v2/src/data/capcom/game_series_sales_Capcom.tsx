@@ -1,5 +1,5 @@
 import { Header, Series, printSeriesOutput } from "../../utils/capcom_game_series_logic";
-import { spacer, border, liner, headerPrint, dateLabel } from "../../utils/table_design_logic";
+import { spacer, border, liner, headerPrint, dateLabel, printTextBlock } from "../../utils/table_design_logic";
 
 import gameSeries2023 from "./Game_Series/game_series_fy3_2023.json";
 import gameSeries2022 from "./Game_Series/game_series_fy3_2022.json";
@@ -107,8 +107,11 @@ export const gameSeriesList: titleSetHeader[] = collection.map((elem, index, arr
 
     // return printOne + "\n" + printedSeries
 
+    let summary = liner(printTextBlock("Game Series unit sales numbers are rounded down by 100k units when a series is less than 10M units or, unit sales numbers are rounded down by 1M units when a series is 10M units or greater.",42),"−","both",true,42)
+
     return {
         header: printOne,
         titleList: printedSeries,
+        summary: summary,
     }
 })

@@ -90,7 +90,7 @@ export default function CAPCOM_CML() {
 
     let fyTitlesReduce = gameSeriesFilter.reduce((acc, next) => acc + next.table, "")
 
-    let fyGameSeriesList = gameSeriesCapcom.header + fyTitlesReduce;
+    let fyGameSeriesList = gameSeriesCapcom.header + fyTitlesReduce + gameSeriesCapcom.summary;
 
     // let softwareShipmentsFilter = factBookCapcom.titleList.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()));
 

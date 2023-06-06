@@ -23,7 +23,8 @@ export type titleSet = {
 
 export type titleSetHeader = {
     header: string,
-    titleList: titleSet[]
+    titleList: titleSet[],
+    summary?: string,
 }
 
 type annualReport = {
@@ -173,6 +174,8 @@ function printTitles(header: string, titles: Series[][], returnObject?: boolean)
         ;
     })//.reduce((prev, next) => prev + next);
 
+    let summary = liner(printTextBlock("Game Series unit sales numbers are rounded down by 100k units when a series is less than 10M units or, unit sales numbers are rounded down by 1M units when a series is 10M units or greater.",42),"−","both",true,42)
+
     return (!returnObject)
         ? [
             header,
@@ -180,7 +183,8 @@ function printTitles(header: string, titles: Series[][], returnObject?: boolean)
             ].reduce((acc, next) => (typeof next === "string") ? acc + next : acc ,"")
         : {
             header,
-            titleList
+            titleList,
+            summary
         }
 };
 
