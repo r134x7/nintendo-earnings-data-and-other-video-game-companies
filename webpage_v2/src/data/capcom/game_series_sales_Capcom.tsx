@@ -1,6 +1,7 @@
 import { Header, Series, printSeriesOutput } from "../../utils/capcom_game_series_logic";
 import { spacer, border, liner, headerPrint, dateLabel } from "../../utils/table_design_logic";
 
+import gameSeries2023 from "./Game_Series/game_series_fy3_2023.json";
 import gameSeries2022 from "./Game_Series/game_series_fy3_2022.json";
 import gameSeries2021 from "./Game_Series/game_series_fy3_2021.json";
 import gameSeries2020 from "./Game_Series/game_series_fy3_2020.json";
@@ -18,6 +19,7 @@ import gameSeries2010 from "./Game_Series/game_series_fy3_2010.json";
 import type { titleSetHeader, titleSet } from "./game_series_sales_capcom_cml_data";
 
 const collection = [
+    gameSeries2023,
     gameSeries2022,
     gameSeries2021,
     gameSeries2020,

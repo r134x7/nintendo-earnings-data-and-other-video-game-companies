@@ -1,0 +1,157 @@
+{
+    "fiscalYear": "FY3/2023",
+    "series": [
+        {
+            "title": "1942",
+            "numberOfTitles": 3,
+            "releaseDate": "November 1984",
+            "value": 1.4,
+            "valueLastFY": 1.4,
+            "valueLastTwoFYs": 1.4
+        },
+        {
+            "title": "Commando",
+            "numberOfTitles": 2,
+            "releaseDate": "April 1985",
+            "value": 1.2,
+            "valueLastFY": 1.2,
+            "valueLastTwoFYs": 1.2
+        },
+        {
+            "title": "Ghosts’n Goblins",
+            "numberOfTitles": 18,
+            "releaseDate": "July 1985",
+            "value": 4.4,
+            "valueLastFY": 4.3,
+            "valueLastTwoFYs": 4.2
+        },
+        {
+            "title": "Mega Man",
+            "numberOfTitles": 158,
+            "releaseDate": "December 1987",
+            "value": 38.0,
+            "valueLastFY": 37.0,
+            "valueLastTwoFYs": 36.0
+        },
+        {
+            "title": "Street Fighter",
+            "numberOfTitles": 94,
+            "releaseDate": "August 1987",
+            "value": 49.0,
+            "valueLastFY": 47.0,
+            "valueLastTwoFYs": 46.0
+        },
+        {
+            "title": "Final Fight",
+            "numberOfTitles": 10,
+            "releaseDate": "November 1989",
+            "value": 3.2,
+            "valueLastFY": 3.2,
+            "valueLastTwoFYs": 3.2
+        },
+        {
+            "title": "Breath of Fire",
+            "numberOfTitles": 15,
+            "releaseDate": "April 1993",
+            "value": 3.3,
+            "valueLastFY": 3.2,
+            "valueLastTwoFYs": 3.2
+        },
+        {
+            "title": "Resident Evil",
+            "numberOfTitles": 168,
+            "releaseDate": "March 1996",
+            "value": 142.0,
+            "valueLastFY": 125.0,
+            "valueLastTwoFYs": 110.0
+        },
+        {
+            "title": "Dino Crisis",
+            "numberOfTitles": 13,
+            "releaseDate": "July 1999",
+            "value": 4.4,
+            "valueLastFY": 4.4,
+            "valueLastTwoFYs": 4.4
+        },
+        {
+            "title": "Onimusha",
+            "numberOfTitles": 16,
+            "releaseDate": "January 2001",
+            "value": 8.6,
+            "valueLastFY": 8.5,
+            "valueLastTwoFYs": 8.4
+        },
+        {
+            "title": "Devil May Cry",
+            "numberOfTitles": 35,
+            "releaseDate": "August 2001",
+            "value": 29.0,
+            "valueLastFY": 25.0,
+            "valueLastTwoFYs": 23.0
+        },
+        {
+            "title": "Ace Attorney",
+            "numberOfTitles": 33,
+            "releaseDate": "August 2001",
+            "value": 10.0,
+            "valueLastFY": 9.2,
+            "valueLastTwoFYs": 8.1
+        },
+        {
+            "title": "Monster Hunter",
+            "numberOfTitles": 59,
+            "releaseDate": "March 2004",
+            "value": 92.0,
+            "valueLastFY": 80.0,
+            "valueLastTwoFYs": 72.0
+        },
+        {
+            "title": "Sengoku Basara",
+            "numberOfTitles": 31,
+            "releaseDate": "July 2005",
+            "value": 4.1,
+            "valueLastFY": 4.0,
+            "valueLastTwoFYs": 4.0
+        },
+        {
+            "title": "Lost Planet",
+            "numberOfTitles": 17,
+            "releaseDate": "December 2006",
+            "value": 6.5,
+            "valueLastFY": 6.4,
+            "valueLastTwoFYs": 6.3
+        },
+        {
+            "title": "Dead Rising",
+            "numberOfTitles": 22,
+            "releaseDate": "August 2006",
+            "value": 15.0,
+            "valueLastFY": 14.0,
+            "valueLastTwoFYs": 13.0
+        },
+        {
+            "title": "Marvel vs. Capcom",
+            "numberOfTitles": 16,
+            "releaseDate": "January 1998",
+            "value": 10.0,
+            "valueLastFY": 9.9,
+            "valueLastTwoFYs": 9.4
+        },
+        {
+            "title": "Dragon’s Dogma",
+            "numberOfTitles": 13,
+            "releaseDate": "May 2012",
+            "value": 7.4,
+            "valueLastFY": 6.2,
+            "valueLastTwoFYs": 5.7
+        },
+        {
+            "title": "Okami",
+            "numberOfTitles": 11,
+            "releaseDate": "April 2006",
+            "value": 3.9,
+            "valueLastFY": 3.7,
+            "valueLastTwoFYs": 3.4
+        }
+    ]
+}

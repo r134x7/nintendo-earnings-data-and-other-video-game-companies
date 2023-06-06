@@ -14,6 +14,7 @@ import gameSeries2019 from "./Game_Series/game_series_fy3_2019.json";
 import gameSeries2020 from "./Game_Series/game_series_fy3_2020.json";
 import gameSeries2021 from "./Game_Series/game_series_fy3_2021.json";
 import gameSeries2022 from "./Game_Series/game_series_fy3_2022.json";
+import gameSeries2023 from "./Game_Series/game_series_fy3_2023.json";
 
 export type titleSet = {
     title: string,
@@ -51,6 +52,7 @@ const collectionCapcom: annualReport[] = [
     gameSeries2020,
     gameSeries2021,
     gameSeries2022,
+    gameSeries2023,
 ];
 
 const makeDateLabel = dateLabel(collectionCapcom.at(-1)?.fiscalYear ?? "N/A", 4);
