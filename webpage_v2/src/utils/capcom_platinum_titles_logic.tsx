@@ -253,28 +253,30 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
 // export function newTitleHighlight(header: Header, titleDifference: Titles[], titleCumulative: Titles[], currentQuarter: number, returnObject?: boolean) {
 export function newTitleHighlight(header: Header, title: Titles[], currentQuarter: number) {
     
-    /*
-    How I want this to work...
+    let boundary = 1;
 
-    title | release date | platforms | ltd | New title for that fiscal year...
-    */
+    let released = "Released: " + title[0].releaseDate;
 
-    // const filterNew = titleCumulative.filter(elem => elem.label === "New!")
-    // console.log(filterNew);
-    
-    let printTitleName: string = liner(printTextBlock(title[0].title, 34),"−","both",true,34);
+    let ltdLine = header.ltd + ":" + ` ${title[3].value}M Units`;
+    // let printTitleName: string = liner(printTextBlock(title[0].title, title[0].title.length + boundary),"−","both");
 
-    let printPlatforms: string = liner(printTextBlock(title[0].platforms, 34),"−","bottom",true,34);
+    let printTitle: string = liner(
+        border([
+            spacer(title[0].title, title[0].title.length + boundary, "left"),
+            spacer(title[0].platforms, title[0].platforms.length + boundary, "right"),
+            spacer(released, released.length + boundary,"left"),
+            spacer(ltdLine, ltdLine.length + boundary, "left"),
+        ]),"=","both",true);
 
-    let printReleaseDateAndRank: string = liner(printTextBlock("Released: " + title[0].releaseDate, 34),"−","bottom",true,34); 
+    // let printPlatforms: string = liner(printTextBlock(title[0].platforms, title[0].platforms.length + boundary),"−","both");
+
+    // let printReleaseDateAndRank: string = liner(printTextBlock("Released: " + title[0].releaseDate, 34),"−","bottom",true,34); 
 
     let printLTD = liner(border([
         spacer(header.ltd + " (Units)", 21, "left"),
         spacer(`${title[3].value}M`, 10,"right")
     ]),"=","bottom",true)
 
-    let printTitleNameFixed: string = printTitleName + printPlatforms + printReleaseDateAndRank + printLTD
-
-    return printTitleNameFixed
+    return printTitle
 
 }
