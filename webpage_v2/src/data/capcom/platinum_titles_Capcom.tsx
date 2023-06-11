@@ -7,6 +7,7 @@ import {
     printTitles,
     quarterlyCalculation,
     yearlyCalculation,
+    newTitleHighlight,
 } from "../../utils/capcom_platinum_titles_logic";
 
 import platinumTitles2023 from "./Platinum_Titles/platinum_titles_fy3_2023.json";
@@ -321,6 +322,16 @@ export const fyPlatinumTitlesList: filteringFyTitles[] = collection.map((elem, i
     let printListedTitlesFY = differenceFYTitles.map((elem, index) => {
         return printTitles(header, elem, sortedFYCollection[index], currentQuarter, true)
     }) as searchTitles[];
+
+    // testing function
+    // const printNewSummary = differenceFYTitles.map((elem, index) => {
+    //     return newTitleHighlight(header, elem, sortedFYCollection[index], currentQuarter, true)
+    // });
+
+    let newNewTitles = sortedFYCollection.map(elem => labelTitles(elem)).map(elem => elem.filter(nestedElem => nestedElem.label === "New!")).filter(elem => elem.length !== 0); // can't apply flat map as I need the nested arrays
+
+    console.log(newNewTitles);
+    
 
     let newTitles = sortedFYCollection.map((elem) => {
             return labelTitles(elem)

@@ -257,4 +257,10 @@ export function newTitleHighlight(header: Header, titleDifference: Titles[], tit
 
     title | release date | platforms | ltd | New title for that fiscal year...
     */
+
+
+    // const filterNew = titleCumulative.filter(elem => elem.label === "New!")
+    // console.log(filterNew);
+    console.log(titleCumulative);
+    
 }
