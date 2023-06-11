@@ -331,11 +331,10 @@ export const fyPlatinumTitlesList: filteringFyTitles[] = collection.map((elem, i
 
     let newNewTitles = sortedFYCollection.map(elem => labelTitles(elem)).map(elem => elem.filter(nestedElem => nestedElem.label === "New!")).filter(elem => elem.length !== 0); // can't apply flat map as I need the nested arrays
 
-    let useNewTitleHighlight = newNewTitles.map(elem => newTitleHighlight(header, elem, currentQuarter)).reduce((acc, next) => acc + next); 
-    
-    console.log(useNewTitleHighlight);
-    
+    let newNewTitlesCount= newNewTitles.flat().length;
 
+    let useNewTitleHighlight = newNewTitles.map(elem => newTitleHighlight(header, elem, newNewTitlesCount)).reduce((acc, next) => acc + next); 
+    
     let newTitles = sortedFYCollection.map((elem) => {
             return labelTitles(elem)
         }).map((elem) => {
@@ -392,6 +391,12 @@ export const fyPlatinumTitlesList: filteringFyTitles[] = collection.map((elem, i
 
     let printSummaryTwo = printSummary(header, newSum, recurringSum, sporadicSum) + "\n"
 
+    let newPlatinumTitlesHeader = liner(
+        border([
+            spacer("Capcom - New Platinum Titles", 29, "left"),
+            spacer(makeDateLabel, makeDateLabel.length + 1, "left")
+        ]),
+    "−","both",true);
     // let printListedTitlesFYFixed: string[] = printListedTitlesFY.concat(liner(printTextBlock(elem?.footnotes,40),"=","both",true,40)); 
 
     let fySpecficNotes = liner(printTextBlock(elem?.footnotes,40),"=","both",true,40);
@@ -408,14 +413,14 @@ export const fyPlatinumTitlesList: filteringFyTitles[] = collection.map((elem, i
             titleData: printListedTitlesFY,
             fyNotes: fySpecficNotes,
             platformNotes: printPlatformNotes,
-            newTitles: useNewTitleHighlight,
+            newTitles: newPlatinumTitlesHeader + useNewTitleHighlight,
         }
         : {
             header: printSummaryOne + printSummaryTwo + printOne,
             titleData: printListedTitlesFY,
             fyNotes: fySpecficNotes,
             platformNotes: printPlatformNotes,
-            newTitles: useNewTitleHighlight,
+            newTitles: newPlatinumTitlesHeader + useNewTitleHighlight,
         }
     
 

@@ -250,15 +250,24 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
           }
 };
 
-// export function newTitleHighlight(header: Header, titleDifference: Titles[], titleCumulative: Titles[], currentQuarter: number, returnObject?: boolean) {
-export function newTitleHighlight(header: Header, title: Titles[], currentQuarter: number) {
-    
+export function newTitleHighlight(header: Header, title: Titles[], titleCount: number) {
+
     let boundary = 1;
+
+    if (titleCount === 0) {
+
+        let message = "No new platinum titles have appeared yet."; 
+
+        return liner(
+        border([
+            spacer(message, message.length + boundary, "left"),
+        ]),"=","both",true);
+    }
+    
 
     let released = "Released: " + title[0].releaseDate;
 
     let ltdLine = header.ltd + ":" + ` ${title[3].value}M Units`;
-    // let printTitleName: string = liner(printTextBlock(title[0].title, title[0].title.length + boundary),"−","both");
 
     let printTitle: string = liner(
         border([
@@ -268,15 +277,5 @@ export function newTitleHighlight(header: Header, title: Titles[], currentQuarte
             spacer(ltdLine, ltdLine.length + boundary, "left"),
         ]),"=","both",true);
 
-    // let printPlatforms: string = liner(printTextBlock(title[0].platforms, title[0].platforms.length + boundary),"−","both");
-
-    // let printReleaseDateAndRank: string = liner(printTextBlock("Released: " + title[0].releaseDate, 34),"−","bottom",true,34); 
-
-    let printLTD = liner(border([
-        spacer(header.ltd + " (Units)", 21, "left"),
-        spacer(`${title[3].value}M`, 10,"right")
-    ]),"=","bottom",true)
-
     return printTitle
-
 }

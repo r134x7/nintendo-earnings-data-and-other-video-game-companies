@@ -157,7 +157,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
                 value: allPlatinumTitlesCall.table
             },
             {
-                name: "FY New Platinum Titles Highlight",
+                name: "FY New Platinum Titles Listed",
                 value: newTitlesIndex,
             },
             {
