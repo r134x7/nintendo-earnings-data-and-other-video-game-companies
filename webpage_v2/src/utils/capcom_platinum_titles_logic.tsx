@@ -250,7 +250,7 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
           }
 };
 
-export function newTitleHighlight(header: Header, title: Titles[], titleCount: number) {
+export function newTitleHighlight(header: Header, title: Titles[], titleCount: number): { printTitle: string, quarterAppeared: string} {
 
     let boundary = 1;
 
@@ -258,12 +258,18 @@ export function newTitleHighlight(header: Header, title: Titles[], titleCount: n
 
         let message = "No new platinum titles have appeared yet."; 
 
-        return liner(
+        let messageOutput = liner(
         border([
             spacer(message, message.length + boundary, "left"),
         ]),"=","both",true);
+
+        return {
+            printTitle: messageOutput,
+            quarterAppeared: "None",
+        }
     }
-    
+
+    let quarterAppearance = title.filter(elem => elem.value !== 0).at(0)?.period.toString() ?? "";
 
     let released = "Released: " + title[0].releaseDate;
 
@@ -275,7 +281,45 @@ export function newTitleHighlight(header: Header, title: Titles[], titleCount: n
             spacer(title[0].platforms, title[0].platforms.length + boundary, "right"),
             spacer(released, released.length + boundary,"left"),
             spacer(ltdLine, ltdLine.length + boundary, "left"),
-        ]),"=","both",true);
+        ]),"−","both",true);
 
-    return printTitle
+    // return printTitle
+    return {
+        printTitle: printTitle,
+        quarterAppeared: quarterAppearance
+    }
+}
+
+export function printNewTitleHighlight(titleArray: { printTitle: string, quarterAppeared: string }[], header: Header): string {
+
+    if (titleArray[0].quarterAppeared === "None") {
+        return titleArray[0].printTitle
+    }
+
+    let firstQuarterTitles = titleArray.filter(elem => elem.quarterAppeared === "1st Quarter");
+
+    let secondQuarterTitles = titleArray.filter(elem => elem.quarterAppeared === "2nd Quarter");
+
+    let thirdQuarterTitles = titleArray.filter(elem => elem.quarterAppeared === "3rd Quarter");
+
+    let fourthQuarterTitles = titleArray.filter(elem => elem.quarterAppeared === "4th Quarter");
+
+    function sectionPrint(filteredTitles: {
+        printTitle: string;
+        quarterAppeared: string;
+    }[], header: Header) {
+
+        return (filteredTitles.length !== 0) 
+            ? ` + First appeared on ${filteredTitles[0].quarterAppeared} for ${header.fiscalYear}:\n` + filteredTitles.reduce((acc, next) => acc + next.printTitle,"")
+            : ""
+    }
+
+    let quartersPrint = [
+        sectionPrint(firstQuarterTitles, header),
+        sectionPrint(secondQuarterTitles, header),
+        sectionPrint(thirdQuarterTitles, header),
+        sectionPrint(fourthQuarterTitles, header),
+    ].reduce((acc, next) => acc + next,"");
+
+    return quartersPrint
 }

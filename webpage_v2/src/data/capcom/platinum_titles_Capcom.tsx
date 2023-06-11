@@ -8,6 +8,7 @@ import {
     quarterlyCalculation,
     yearlyCalculation,
     newTitleHighlight,
+    printNewTitleHighlight,
 } from "../../utils/capcom_platinum_titles_logic";
 
 import platinumTitles2023 from "./Platinum_Titles/platinum_titles_fy3_2023.json";
@@ -333,7 +334,9 @@ export const fyPlatinumTitlesList: filteringFyTitles[] = collection.map((elem, i
 
     let newNewTitlesCount= newNewTitles.flat().length;
 
-    let useNewTitleHighlight = newNewTitles.map(elem => newTitleHighlight(header, elem, newNewTitlesCount)).reduce((acc, next) => acc + next); 
+    let useNewTitleHighlight = newNewTitles.map(elem => newTitleHighlight(header, elem, newNewTitlesCount));
+
+    let newTitleHighlightPrint = printNewTitleHighlight(useNewTitleHighlight, header);
     
     let newTitles = sortedFYCollection.map((elem) => {
             return labelTitles(elem)
@@ -413,14 +416,14 @@ export const fyPlatinumTitlesList: filteringFyTitles[] = collection.map((elem, i
             titleData: printListedTitlesFY,
             fyNotes: fySpecficNotes,
             platformNotes: printPlatformNotes,
-            newTitles: newPlatinumTitlesHeader + useNewTitleHighlight,
+            newTitles: newPlatinumTitlesHeader + newTitleHighlightPrint,
         }
         : {
             header: printSummaryOne + printSummaryTwo + printOne,
             titleData: printListedTitlesFY,
             fyNotes: fySpecficNotes,
             platformNotes: printPlatformNotes,
-            newTitles: newPlatinumTitlesHeader + useNewTitleHighlight,
+            newTitles: newPlatinumTitlesHeader + newTitleHighlightPrint,
         }
     
 
