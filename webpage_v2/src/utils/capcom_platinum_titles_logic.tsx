@@ -249,3 +249,12 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
             table: lastCheck
           }
 };
+
+export function newTitleHighlight(header: Header, titleDifference: Titles[], titleCumulative: Titles[], currentQuarter: number, returnObject?: boolean) {
+    
+    /*
+    How I want this to work...
+
+    title | release date | platforms | ltd | New title for that fiscal year...
+    */
+}
