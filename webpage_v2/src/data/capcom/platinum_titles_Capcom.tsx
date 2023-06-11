@@ -48,6 +48,7 @@ export type filteringFyTitles = {
     titleData: searchTitles[],
     fyNotes: string,
     platformNotes: string,
+    newTitles?: string
 }
 
 export type getTitles = {
@@ -330,7 +331,9 @@ export const fyPlatinumTitlesList: filteringFyTitles[] = collection.map((elem, i
 
     let newNewTitles = sortedFYCollection.map(elem => labelTitles(elem)).map(elem => elem.filter(nestedElem => nestedElem.label === "New!")).filter(elem => elem.length !== 0); // can't apply flat map as I need the nested arrays
 
-    console.log(newNewTitles);
+    let useNewTitleHighlight = newNewTitles.map(elem => newTitleHighlight(header, elem, currentQuarter)).reduce((acc, next) => acc + next); 
+    
+    console.log(useNewTitleHighlight);
     
 
     let newTitles = sortedFYCollection.map((elem) => {
@@ -404,13 +407,15 @@ export const fyPlatinumTitlesList: filteringFyTitles[] = collection.map((elem, i
             header: printOne,
             titleData: printListedTitlesFY,
             fyNotes: fySpecficNotes,
-            platformNotes: printPlatformNotes
+            platformNotes: printPlatformNotes,
+            newTitles: useNewTitleHighlight,
         }
         : {
             header: printSummaryOne + printSummaryTwo + printOne,
             titleData: printListedTitlesFY,
             fyNotes: fySpecficNotes,
-            platformNotes: printPlatformNotes
+            platformNotes: printPlatformNotes,
+            newTitles: useNewTitleHighlight,
         }
     
 

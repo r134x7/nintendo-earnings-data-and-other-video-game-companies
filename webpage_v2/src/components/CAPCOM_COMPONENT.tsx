@@ -40,6 +40,8 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     let fyPlatinumTitlesIndex = fyPlatinumTitlesList?.[props.setIndex];
 
+    let newTitlesIndex = fyPlatinumTitlesList?.[props.setIndex]?.newTitles;
+
     let fyPlatinumTitlesObject = (fyPlatinumTitlesIndex === undefined) ? undefined : [{
         header: fyPlatinumTitlesIndex.header,
         titleList: fyPlatinumTitlesIndex.titleData,
@@ -153,6 +155,10 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
             {
                 name: "All Platinum Titles", 
                 value: allPlatinumTitlesCall.table
+            },
+            {
+                name: "FY New Platinum Titles Highlight",
+                value: newTitlesIndex,
             },
             {
                 name: "FY Game Series", 

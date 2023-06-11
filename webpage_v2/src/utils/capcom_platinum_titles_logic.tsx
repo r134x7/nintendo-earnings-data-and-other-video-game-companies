@@ -250,7 +250,8 @@ export const printTitles = (header: Header, titleDifference: Titles[], titleCumu
           }
 };
 
-export function newTitleHighlight(header: Header, titleDifference: Titles[], titleCumulative: Titles[], currentQuarter: number, returnObject?: boolean) {
+// export function newTitleHighlight(header: Header, titleDifference: Titles[], titleCumulative: Titles[], currentQuarter: number, returnObject?: boolean) {
+export function newTitleHighlight(header: Header, title: Titles[], currentQuarter: number) {
     
     /*
     How I want this to work...
@@ -258,9 +259,22 @@ export function newTitleHighlight(header: Header, titleDifference: Titles[], tit
     title | release date | platforms | ltd | New title for that fiscal year...
     */
 
-
     // const filterNew = titleCumulative.filter(elem => elem.label === "New!")
     // console.log(filterNew);
-    console.log(titleCumulative);
     
+    let printTitleName: string = liner(printTextBlock(title[0].title, 34),"−","both",true,34);
+
+    let printPlatforms: string = liner(printTextBlock(title[0].platforms, 34),"−","bottom",true,34);
+
+    let printReleaseDateAndRank: string = liner(printTextBlock("Released: " + title[0].releaseDate, 34),"−","bottom",true,34); 
+
+    let printLTD = liner(border([
+        spacer(header.ltd + " (Units)", 21, "left"),
+        spacer(`${title[3].value}M`, 10,"right")
+    ]),"=","bottom",true)
+
+    let printTitleNameFixed: string = printTitleName + printPlatforms + printReleaseDateAndRank + printLTD
+
+    return printTitleNameFixed
+
 }
