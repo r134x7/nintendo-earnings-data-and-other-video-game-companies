@@ -10,6 +10,13 @@ export type Earnings = {
     footnotes?: string,
 };
 
+type Nothing = { kind:"Nothing" }
+type Just<T> = { kind:"Just", value: T }
+
+type Maybe<T> =
+    | Just<T>
+    | Nothing
+
 export type Header = {
     companyName: string,
     fiscalYear: string,
