@@ -17,6 +17,29 @@ type Maybe<T> =
     | Just<T>
     | Nothing
 
+type EarningsValue = 
+    | { kind:"Forecast", period:"Current FY FCST" | "FCST Revision 1" | "FCST Revision 2" | "FCST Revision 3" | "Next FY FCST", value: number}
+    | { kind:"Quarter", period:"1st Quarter" | "2nd Quarter" | "3rd Quarter" | "4th Quarter", value: number}
+    | { kind:"Cumulative", period:"1st Quarter" | "First Half" | "First Three Quarters" | "FY Cumulative", value: number}
+    | Nothing
+
+type ForecastValue = 
+    | {
+        kind: "Current FY FCST" | "FCST Revision 1" | "FCST Revision 2" | "FCST Revision 3" | "Next FY FCST", value: number}
+    | Nothing;
+
+type QuarterValue =
+    | { kind:"1st Quarter" | "2nd Quarter" | "3rd Quarter" | "4th Quarter", value: number}
+    | Nothing
+
+type CumulativeValue =
+    | { kind:"1st Quarter" | "First Half" | "First Three Quarters" | "FY Cumulative", value: number}
+    | Nothing
+
+type NewEarnings = {
+    name: string,
+}
+
 export type Header = {
     companyName: string,
     fiscalYear: string,
