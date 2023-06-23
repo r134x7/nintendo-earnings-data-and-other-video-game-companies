@@ -5,7 +5,7 @@
     "data": [
         {
             "name": "Net Sales",
-            "Q1CmlValue": 0,
+            "Q1CmlValue": "Nothing",
             "Q2CmlValue": 218873,
             "Q3CmlValue": 345396,
             "Q4CmlValue": 450829,
@@ -15,14 +15,14 @@
         },
         {
             "name": "Operating Income",
-            "Q1CmlValue": 0,
+            "Q1CmlValue": "Nothing",
             "Q2CmlValue": 17546,
             "Q3CmlValue": 35600,
             "Q4CmlValue": 35669
         },
         {
             "name": "Net Income",
-            "Q1CmlValue": 0,
+            "Q1CmlValue": "Nothing",
             "Q2CmlValue": 7834,
             "Q3CmlValue": 17711,
             "Q4CmlValue": 14149,
