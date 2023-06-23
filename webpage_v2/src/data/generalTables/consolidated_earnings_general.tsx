@@ -853,11 +853,25 @@ function consolidatedEarningsListV2Array(collection: EarningsJSONV2[], headerLen
                     printQuarterValuesV2(dataThisFY[i-1].Q4QtrValue, currentQuarter, 13),
                 ];
 
+                let quarterPercentages = [
+                    printQuarterValuesV2(percentagesThisFY[i-1].Q1QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(percentagesThisFY[i-1].Q2QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(percentagesThisFY[i-1].Q3QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(percentagesThisFY[i-1].Q4QtrValue, currentQuarter, 13),
+                ];
+
                 let cumulatives = [
                     printCumulativeValuesV2(dataThisFY[i-1].Q1CmlValue, currentQuarter, 13),
                     printCumulativeValuesV2(dataThisFY[i-1].Q2CmlValue, currentQuarter, 13),
                     printCumulativeValuesV2(dataThisFY[i-1].Q3CmlValue, currentQuarter, 13),
                     printCumulativeValuesV2(dataThisFY[i-1].Q4CmlValue, currentQuarter, 13),
+                ];
+
+                let cumulativePercentages = [
+                    printCumulativeValuesV2(percentagesThisFY[i-1].Q1CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(percentagesThisFY[i-1].Q2CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(percentagesThisFY[i-1].Q3CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(percentagesThisFY[i-1].Q4CmlValue, currentQuarter, 13),
                 ];
 
                 let forecasts = [
@@ -870,8 +884,8 @@ function consolidatedEarningsListV2Array(collection: EarningsJSONV2[], headerLen
 
                 let output = printReduceSection(
                     sectionHeader,
-                    qtrOrCmlOutput(quarters,[],false),
-                    qtrOrCmlOutput(cumulatives,[],false),
+                    qtrOrCmlOutput(quarters,quarterPercentages,false),
+                    qtrOrCmlOutput(cumulatives,cumulativePercentages,false),
                     forecastOutput(forecasts),
                 )
 
@@ -887,11 +901,25 @@ function consolidatedEarningsListV2Array(collection: EarningsJSONV2[], headerLen
                     printQuarterValuesV2(dataThisFY[i].Q4QtrValue, currentQuarter, 13),
                 ];
 
+                let quarterPercentages = [
+                    printQuarterValuesV2(percentagesThisFY[i].Q1QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(percentagesThisFY[i].Q2QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(percentagesThisFY[i].Q3QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(percentagesThisFY[i].Q4QtrValue, currentQuarter, 13),
+                ];
+
                 let cumulatives = [
                     printCumulativeValuesV2(dataThisFY[i].Q1CmlValue, currentQuarter, 13),
                     printCumulativeValuesV2(dataThisFY[i].Q2CmlValue, currentQuarter, 13),
                     printCumulativeValuesV2(dataThisFY[i].Q3CmlValue, currentQuarter, 13),
                     printCumulativeValuesV2(dataThisFY[i].Q4CmlValue, currentQuarter, 13),
+                ];
+
+                let cumulativePercentages = [
+                    printCumulativeValuesV2(percentagesThisFY[i].Q1CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(percentagesThisFY[i].Q2CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(percentagesThisFY[i].Q3CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(percentagesThisFY[i].Q4CmlValue, currentQuarter, 13),
                 ];
 
                 let forecasts = [
@@ -904,8 +932,8 @@ function consolidatedEarningsListV2Array(collection: EarningsJSONV2[], headerLen
 
                 let output = printReduceSection(
                     sectionHeader,
-                    qtrOrCmlOutput(quarters,[],false),
-                    qtrOrCmlOutput(cumulatives,[],false),
+                    qtrOrCmlOutput(quarters,quarterPercentages,false),
+                    qtrOrCmlOutput(cumulatives,cumulativePercentages,false),
                     forecastOutput(forecasts),
                 )
 
