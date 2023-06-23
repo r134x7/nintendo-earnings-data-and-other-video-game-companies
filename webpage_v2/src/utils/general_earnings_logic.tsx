@@ -338,6 +338,15 @@ const printSection = (valuesThisFY: Earnings[], yoyLength: number) => {
         : liner(printTextBlock(valuesThisFY[0].name,28) + yoyHeader,"−","both",true,40) 
 };
 
+function printSectionHeaderV2 (value: EarningsV2, useYoY: boolean): string {
+
+    let yoyHeader = spacer("YoY% |",12,"right");
+
+    return (useYoY)
+        ? liner(printTextBlock(value.name,28),"−","both",true)
+        : liner(printTextBlock(value.name,28) + yoyHeader,"−","both",true,40) 
+}
+
 export const printOpMargin = (header: Header, netSalesThisFY: Earnings[], operatingIncomeThisFY: Earnings[], netSalesForecast: Earnings[], operatingIncomeForecast: Earnings[], currentQuarter: number, valueLength: number): string => {
 
     let bandaiNamcoCheck = ((header.companyName === "Bandai Namco Holdings Inc." && header.fiscalYear === "FY3/2006")) ? true : false;
@@ -437,3 +446,44 @@ export const printAll = (header: Header, valuesThisFY: Earnings[], valuesLastFY:
 
     return printing
 }; 
+
+export function printAllV2() {
+
+    /*
+        steps through higher order functions
+        [
+            section header: string,
+            (printQuarterValues): string,
+            printYoY Quarters: string,
+            [[printQuarterValues, PrintYoY values], ...].flatMap(elem => )
+        ]
+    */ 
+
+}
+
+export function qtrOrCmlOutput(values: string[], yoyValues: string[]) {
+
+    return values.flatMap((elem, index, array) => {
+
+        if (elem.length === 0) {
+            return [];
+        } else {
+
+            let lineCheck = index === array.length-1; 
+
+            return liner(elem + yoyValues[index],(lineCheck) ? "=" : "−","bottom",true,(elem.length + yoyValues[index].length - 3)) 
+        }
+    }) 
+}
+
+export function forecastOutput(values: string[]) {
+
+    return values.flatMap((elem, index, array) => {
+
+        if (elem.length === 0) {
+            return [];
+        } else {
+            return liner(elem,"−",(index === array.length-1) ? "both" : "top" ,true);
+        }
+    })
+}
