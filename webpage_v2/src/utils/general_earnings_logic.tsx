@@ -338,14 +338,6 @@ const printSection = (valuesThisFY: Earnings[], yoyLength: number) => {
         : liner(printTextBlock(valuesThisFY[0].name,28) + yoyHeader,"−","both",true,40) 
 };
 
-function printSectionHeaderV2 (value: EarningsV2, useYoY: boolean): string {
-
-    let yoyHeader = spacer("YoY% |",12,"right");
-
-    return (useYoY)
-        ? liner(printTextBlock(value.name,28),"−","both",true)
-        : liner(printTextBlock(value.name,28) + yoyHeader,"−","both",true,40) 
-}
 
 export const printOpMargin = (header: Header, netSalesThisFY: Earnings[], operatingIncomeThisFY: Earnings[], netSalesForecast: Earnings[], operatingIncomeForecast: Earnings[], currentQuarter: number, valueLength: number): string => {
 
@@ -447,21 +439,16 @@ export const printAll = (header: Header, valuesThisFY: Earnings[], valuesLastFY:
     return printing
 }; 
 
-export function printAllV2() {
+function printSectionHeaderV2 (value: EarningsV2, useYoY: boolean): string {
 
-    /*
-        steps through higher order functions
-        [
-            section header: string,
-            (printQuarterValues): string,
-            printYoY Quarters: string,
-            [[printQuarterValues, PrintYoY values], ...].flatMap(elem => )
-        ]
-    */ 
+    let yoyHeader = spacer("YoY% |",12,"right");
 
+    return (useYoY)
+        ? liner(printTextBlock(value.name,28),"−","both",true)
+        : liner(printTextBlock(value.name,28) + yoyHeader,"−","both",true,40) 
 }
 
-export function qtrOrCmlOutput(values: string[], yoyValues: string[]) {
+export function qtrOrCmlOutput(values: string[], yoyValues: string[], opMargin: boolean) {
 
     return values.flatMap((elem, index, array) => {
 
@@ -471,7 +458,9 @@ export function qtrOrCmlOutput(values: string[], yoyValues: string[]) {
 
             let lineCheck = index === array.length-1; 
 
-            return liner(elem + yoyValues[index],(lineCheck) ? "=" : "−","bottom",true,(elem.length + yoyValues[index].length - 3)) 
+            return (!opMargin) 
+                ? liner(elem + yoyValues[index],(lineCheck) ? "=" : "−","bottom",true,(elem.length + yoyValues[index].length - 3)) 
+                : liner(elem,(index === array.length-1) ? "=" : "−", "bottom",true,elem.length-2)
         }
     }) 
 }
@@ -505,4 +494,3 @@ export function printReduceSection(
             return acc + next
         })
 }
-
