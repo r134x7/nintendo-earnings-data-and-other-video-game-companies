@@ -109,11 +109,13 @@ export function yearOnYearCalculationV2(valueThisFY: EarningsValue, valueLastFY:
         return (valueLastFY.value < 0)
             ? {
                 ...valueThisFY,
+                units: "percentage", 
                 value: Number((((
                     (valueThisFY.value / valueLastFY.value) -1)* -1) * 100).toFixed(2))
             }
             : {
                 ...valueThisFY,
+                units: "percentage",
                 value: Number(((
                     (valueThisFY.value / valueLastFY.value) -1) * 100).toFixed(2))
             } // .toFixed(2) to round the number by two decimal places. Number will output a string, string has to be wrapped in Number() typing.
@@ -145,6 +147,7 @@ export function operatingMarginCalculationV2(
 
         return {
             ...operatingIncomeThisFY,
+            units: "percentage",
             value: Number(((
                 (operatingIncomeThisFY.value / netSalesThisFY.value)) * 100).toFixed(2))
         }
@@ -205,7 +208,7 @@ function printCumulativeValues(cmlValues: Earnings[], fiscalYear: string, curren
         let cmlPeriod = [
             "1st Half",
             "1st 3/4",
-            `${fiscalYear} Cml.`
+            `${fiscalYear}`
         ];
         
         let cumulatives = cmlValues.filter((elem, index) => currentQuarter >= 2 && index < currentQuarter && index !== 0).map((elem, index) => {
@@ -227,13 +230,13 @@ function printCumulativeValues(cmlValues: Earnings[], fiscalYear: string, curren
 
 export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter: number, textLength: number): string {
 
-    if (cmlValue.kind === "Cumulative") {
+    if (cmlValue.kind === "Cumulative" && cmlValue.period !== "1st Quarter") {
 
         let cmlPeriod = (cmlValue.kind === "Cumulative" && cmlValue.period === "First Half") 
             ? "1st Half"
             : (cmlValue.kind === "Cumulative" && cmlValue.period === "First Three Quarters")
                 ? "1st 3/4" 
-                : `${cmlValue.kind === "Cumulative" ? cmlValue.thisFY : "Error"} Cml.`
+                : `${cmlValue.kind === "Cumulative" ? cmlValue.thisFY : "Error"}`
 
         let valueString = printValueQtrOrCml(cmlValue);
 

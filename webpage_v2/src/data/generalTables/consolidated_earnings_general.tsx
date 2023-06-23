@@ -167,15 +167,15 @@ type EarningsMake = {
 
 type EarningsMakeV2 = {
         name: string,
-        Q1CmlValue: number | "Nothing",
-        Q2CmlValue: number | "Nothing",
-        Q3CmlValue: number | "Nothing",
-        Q4CmlValue: number | "Nothing",
-        forecastThisFY?: number | null | "Nothing",
+        Q1CmlValue: number | string,
+        Q2CmlValue: number | string,
+        Q3CmlValue: number | string,
+        Q4CmlValue: number | string,
+        forecastThisFY?: number | null | string,
         forecastRevision1?: number | null,
         forecastRevision2?: number | null,
         forecastRevision3?: number | null,
-        forecastNextFY?: number | null | "Nothing", 
+        forecastNextFY?: number | null | string, 
 }; 
 
 function nothingCheck(
@@ -290,7 +290,7 @@ const collectionCapcom: EarningsJSON[] = [
     capcomEarnings2007,
     capcomEarnings2006,
     capcomEarnings2005,
-    capcomEarnings2004,
+    // capcomEarnings2004,
 ];
 
 const collectionCapcomV2: EarningsJSONV2[] = [
@@ -334,7 +334,7 @@ const collectionBandaiNamco: EarningsJSON[] = [
     bandaiNamco2009,
     bandaiNamco2008,
     bandaiNamco2007,
-    bandaiNamco2006,
+    // bandaiNamco2006,
 ];
 
 const collectionBandaiNamcoV2: EarningsJSONV2[] = [
@@ -377,7 +377,7 @@ const collectionSegaSammy: EarningsJSON[] = [
     sega2008,
     sega2007,
     sega2006,
-    sega2005,
+    // sega2005,
 ];
 
 const collectionSegaSammyV2: EarningsJSONV2[] = [
