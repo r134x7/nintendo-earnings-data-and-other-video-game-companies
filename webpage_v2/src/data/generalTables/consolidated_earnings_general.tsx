@@ -5,6 +5,16 @@ import {
     operatingMarginCalculation,
     quarterlyCalculation,
     printAll,
+    // new functions
+    EarningsV2,
+    forecastOutput,
+    operatingMarginCalculationV2,
+    printForecastValuesV2,
+    printQuarterValuesV2,
+    printReduceSection,
+    qtrOrCmlOutput,
+    quarterlyCalculationV2,
+    EarningsValue,
 } from "../../utils/general_earnings_logic";
 import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
 
@@ -145,6 +155,61 @@ type EarningsMake = {
         forecastNextFY?: number | null, 
 }; 
 
+type EarningsMakeV2 = {
+        name: string,
+        fiscalYear: string,
+        Q1CmlValue: number | "Nothing",
+        Q2CmlValue: number | "Nothing",
+        Q3CmlValue: number | "Nothing",
+        Q4CmlValue: number | "Nothing",
+        forecastThisFY?: number | null | "Nothing",
+        forecastRevision1?: number | null,
+        forecastRevision2?: number | null,
+        forecastRevision3?: number | null,
+        forecastNextFY?: number | null | "Nothing", 
+}; 
+
+function nothingCheck(
+    value: number | string | null | undefined, 
+    kind: "Quarter" | "Cumulative" | "Forecast",
+    units: "units" | "currency" | "percentage",
+    qtrPeriod: "1st Quarter" | "2nd Quarter" | "3rd Quarter" | "4th Quarter",
+    cmlPeriod: "1st Quarter" | "First Half" | "First Three Quarters" | "FY Cumulative", 
+    forecastPeriod: "Current FY FCST" | "FCST Revision 1" | "FCST Revision 2" | "FCST Revision 3" | "Next FY FCST", 
+    thisFY: string | undefined,
+    ): EarningsValue {
+
+    switch (typeof value) {
+        case ("number"):
+            
+            if (kind === "Cumulative") {
+                return {
+                    kind: "Cumulative",
+                    period: cmlPeriod, 
+                    thisFY: thisFY + " Cml.",
+                    units: units,
+                    value: value as number
+                } satisfies EarningsValue 
+            } else if (kind === "Forecast") {
+                return {
+                    kind: "Forecast",
+                    period: forecastPeriod,
+                    units: "currency",
+                    thisFY: thisFY + " Forecast",
+                    nextFY: thisFY?.slice(0,4) + (Number(thisFY?.slice(-4)) + 1).toString() + " Forecast",
+                    value: value as number
+                } satisfies EarningsValue
+            } else {
+                // not dealing with Quarter at this time.
+                return { kind: "Nothing" };
+            }
+            
+
+        default:
+            // all types that are not a number
+            return { kind: "Nothing" };
+    }
+}
 
 const collectionNintendo: EarningsJSON[] = [
     nintendoConsolidatedEarnings2023,
@@ -310,6 +375,28 @@ const valuesMake = (obj: undefined | EarningsMake): Earnings[] => {
 
     return values 
 };
+
+function valuesMakeV2(obj: undefined | EarningsMakeV2): EarningsV2 {
+
+    let values: EarningsV2 = {
+        name: obj?.name ?? "N/A",
+        Q1QtrValue: { kind: "Nothing"},
+        Q2QtrValue: { kind: "Nothing"},
+        Q3QtrValue: { kind: "Nothing"},
+        Q4QtrValue: { kind: "Nothing"},
+        Q1CmlValue: nothingCheck(obj?.Q1CmlValue, "Cumulative", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", obj?.fiscalYear),
+        Q2CmlValue: nothingCheck(obj?.Q2CmlValue, "Cumulative", "currency", "2nd Quarter", "First Half", "Current FY FCST", obj?.fiscalYear),
+        Q3CmlValue: nothingCheck(obj?.Q3CmlValue, "Cumulative", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", obj?.fiscalYear),
+        Q4CmlValue: nothingCheck(obj?.Q4CmlValue, "Cumulative", "currency", "4th Quarter", "FY Cumulative", "Current FY FCST", obj?.fiscalYear),
+        forecastThisFY: nothingCheck(obj?.forecastThisFY, "Forecast", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", obj?.fiscalYear),
+        forecastRevision1: nothingCheck(obj?.forecastRevision1, "Forecast", "currency", "1st Quarter", "1st Quarter", "FCST Revision 1", obj?.fiscalYear),
+        forecastRevision2: nothingCheck(obj?.forecastRevision2, "Forecast", "currency", "1st Quarter", "1st Quarter", "FCST Revision 2", obj?.fiscalYear),
+        forecastRevision3: nothingCheck(obj?.forecastRevision3, "Forecast", "currency", "1st Quarter", "1st Quarter", "FCST Revision 3", obj?.fiscalYear),
+        forecastNextFY: nothingCheck(obj?.forecastNextFY, "Forecast", "currency", "1st Quarter", "1st Quarter", "Next FY FCST", obj?.fiscalYear),
+    } 
+
+    return values
+}
 
 const forecastMake = (obj: EarningsMake, forecastLabelThisFY: string, forecastLabelNextFY: string): Earnings[] => {
 

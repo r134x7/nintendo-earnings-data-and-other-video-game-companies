@@ -35,7 +35,7 @@ type Maybe<T> =
     | Just<T>
     | Nothing
 
-type EarningsValue = 
+export type EarningsValue = 
     | { kind:"Forecast", 
         period:"Current FY FCST" | "FCST Revision 1" | "FCST Revision 2" | "FCST Revision 3" | "Next FY FCST", 
         units: "units" | "currency" | "percentage",
