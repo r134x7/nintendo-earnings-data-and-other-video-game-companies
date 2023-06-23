@@ -99,6 +99,26 @@ function yearOnYearCalculation(thisFY: Earnings[], lastFY: Earnings[]): Earnings
        return calc
     };
 
+function yearOnYearCalculationV2(valueThisFY: EarningsValue, valueLastFY: EarningsValue, kind: "Quarter" | "Cumulative" | "Forecast"): EarningsValue {
+
+    if ((valueThisFY.kind === kind && valueLastFY.kind === kind) && (valueThisFY.period === valueLastFY.period)) {
+
+        return (valueLastFY.value < 0)
+            ? {
+                ...valueThisFY,
+                value: Number((((
+                    (valueThisFY.value / valueLastFY.value) -1)* -1) * 100).toFixed(2))
+            }
+            : {
+                ...valueThisFY,
+                value: Number(((
+                    (valueThisFY.value / valueLastFY.value) -1) * 100).toFixed(2))
+            } // .toFixed(2) to round the number by two decimal places. Number will output a string, string has to be wrapped in Number() typing.
+    } else {
+        return { kind: "Nothing" }
+    }
+}
+
 export function operatingMarginCalculation(netSalesLocal: Earnings[], opIncomeLocal: Earnings[]) {
 
     const calc: Earnings[] = opIncomeLocal.map((elem, index) => {
