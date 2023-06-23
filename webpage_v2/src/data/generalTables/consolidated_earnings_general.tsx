@@ -14,6 +14,7 @@ import {
     printReduceSection,
     qtrOrCmlOutput,
     quarterlyCalculationV2,
+    yearOnYearCalculationV2,
     EarningsValue,
 } from "../../utils/general_earnings_logic";
 import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
@@ -626,6 +627,25 @@ function consolidatedEarningsListV2Array(collection: EarningsJSONV2[], headerLen
         const dataLastFY: EarningsV2[] = (!array[index+1]) 
             ? elem.data.map(value => valuesMakeV2(undefined)) 
             : array[index+1].data.map(value => valuesMakeV2(value));
+
+        const percentagesThisFY: EarningsV2[] = dataThisFY.map((elem, index) => {
+            return {
+                ...elem,
+                Q1QtrValue: yearOnYearCalculationV2(elem.Q1QtrValue, dataLastFY[index].Q1QtrValue, "Quarter"),
+                Q2QtrValue: yearOnYearCalculationV2(elem.Q2QtrValue, dataLastFY[index].Q2QtrValue, "Quarter"),
+                Q3QtrValue: yearOnYearCalculationV2(elem.Q3QtrValue, dataLastFY[index].Q3QtrValue, "Quarter"),
+                Q4QtrValue: yearOnYearCalculationV2(elem.Q4QtrValue, dataLastFY[index].Q4QtrValue, "Quarter"),
+                Q1CmlValue: yearOnYearCalculationV2(elem.Q1CmlValue, dataLastFY[index].Q1CmlValue, "Cumulative"),
+                Q2CmlValue: yearOnYearCalculationV2(elem.Q2CmlValue, dataLastFY[index].Q2CmlValue, "Cumulative"),
+                Q3CmlValue: yearOnYearCalculationV2(elem.Q3CmlValue, dataLastFY[index].Q3CmlValue, "Cumulative"),
+                Q4CmlValue: yearOnYearCalculationV2(elem.Q4CmlValue, dataLastFY[index].Q4CmlValue, "Cumulative"),
+                forecastThisFY: yearOnYearCalculationV2(elem.forecastThisFY, dataLastFY[index].forecastThisFY, "Forecast"),
+                forecastRevision1: yearOnYearCalculationV2(elem.forecastRevision1, dataLastFY[index].forecastRevision1, "Forecast"),
+                forecastRevision2: yearOnYearCalculationV2(elem.forecastRevision2, dataLastFY[index].forecastRevision2, "Forecast"),
+                forecastRevision3: yearOnYearCalculationV2(elem.forecastRevision3, dataLastFY[index].forecastRevision3, "Forecast"),
+                forecastNextFY: yearOnYearCalculationV2(elem.forecastNextFY, dataLastFY[index].forecastNextFY, "Forecast"),
+            } satisfies EarningsV2
+        })
 
         const printOne = headerPrint([
             header.companyName + " | " + header.fiscalYear,
