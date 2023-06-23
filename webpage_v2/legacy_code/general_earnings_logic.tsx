@@ -1,4 +1,4 @@
-import { liner, border, spacer, printTextBlock } from "./table_design_logic";
+import { liner, border, spacer, printTextBlock } from "../src/utils/table_design_logic";
 
 export type Earnings = {
     category: "quarter" | "cumulative" | "forecast",
@@ -9,50 +9,6 @@ export type Earnings = {
     forecastPeriod?: string,
     footnotes?: string,
 };
-
-export type NewEarnings = {
-    name: string,
-    Q1QtrValue: EarningsValue,
-    Q2QtrValue: EarningsValue,
-    Q3QtrValue: EarningsValue,
-    Q4QtrValue: EarningsValue,
-    Q1CmlValue: EarningsValue,
-    Q2CmlValue: EarningsValue,
-    Q3CmlValue: EarningsValue,
-    Q4CmlValue: EarningsValue,
-    forecastThisFY: EarningsValue,
-    forecastRevision1: EarningsValue,
-    forecastRevision2: EarningsValue,
-    forecastRevision3: EarningsValue,
-    forecastNextFY: EarningsValue,
-    footnotes?: string,
-}
-
-type Nothing = { kind:"Nothing" }
-type Just<T> = { kind:"Just", value: T }
-
-type Maybe<T> =
-    | Just<T>
-    | Nothing
-
-type EarningsValue = 
-    | { kind:"Forecast", period:"Current FY FCST" | "FCST Revision 1" | "FCST Revision 2" | "FCST Revision 3" | "Next FY FCST", units: "units" | "currency" | "percentage", value: number}
-    | { kind:"Quarter", period:"1st Quarter" | "2nd Quarter" | "3rd Quarter" | "4th Quarter", value: number}
-    | { kind:"Cumulative", period:"1st Quarter" | "First Half" | "First Three Quarters" | "FY Cumulative", value: number}
-    | Nothing
-
-type ForecastValue = 
-    | {
-        kind: "Current FY FCST" | "FCST Revision 1" | "FCST Revision 2" | "FCST Revision 3" | "Next FY FCST", value: number}
-    | Nothing;
-
-type QuarterValue =
-    | { kind:"1st Quarter" | "2nd Quarter" | "3rd Quarter" | "4th Quarter", value: number}
-    | Nothing
-
-type CumulativeValue =
-    | { kind:"1st Quarter" | "First Half" | "First Three Quarters" | "FY Cumulative", value: number}
-    | Nothing
 
 export type Header = {
     companyName: string,
