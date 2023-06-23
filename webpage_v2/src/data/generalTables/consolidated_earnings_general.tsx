@@ -142,6 +142,13 @@ export type EarningsJSON = {
     data: EarningsMake[],
 };
 
+export type EarningsJSONV2 = {
+    currentQuarter: number,
+    companyName: string,
+    fiscalYear: string,
+    data: EarningsMakeV2[],
+};
+
 type EarningsMake = {
         name: string,
         Q1CmlValue: number,
@@ -380,10 +387,19 @@ function valuesMakeV2(obj: undefined | EarningsMakeV2): EarningsV2 {
 
     let values: EarningsV2 = {
         name: obj?.name ?? "N/A",
-        Q1QtrValue: { kind: "Nothing"},
-        Q2QtrValue: { kind: "Nothing"},
-        Q3QtrValue: { kind: "Nothing"},
-        Q4QtrValue: { kind: "Nothing"},
+        Q1QtrValue: nothingCheck(obj?.Q1CmlValue, "Cumulative", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", obj?.fiscalYear),
+        Q2QtrValue: quarterlyCalculationV2(
+            nothingCheck(obj?.Q2CmlValue, "Cumulative", "currency", "2nd Quarter", "First Half", "Current FY FCST", obj?.fiscalYear),
+            nothingCheck(obj?.Q1CmlValue, "Cumulative", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", obj?.fiscalYear)
+        ),
+        Q3QtrValue: quarterlyCalculationV2(
+            nothingCheck(obj?.Q3CmlValue, "Cumulative", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", obj?.fiscalYear),
+            nothingCheck(obj?.Q2CmlValue, "Cumulative", "currency", "2nd Quarter", "First Half", "Current FY FCST", obj?.fiscalYear),
+        ),
+        Q4QtrValue: quarterlyCalculationV2(
+            nothingCheck(obj?.Q4CmlValue, "Cumulative", "currency", "4th Quarter", "FY Cumulative", "Current FY FCST", obj?.fiscalYear),
+            nothingCheck(obj?.Q3CmlValue, "Cumulative", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", obj?.fiscalYear),
+        ),
         Q1CmlValue: nothingCheck(obj?.Q1CmlValue, "Cumulative", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", obj?.fiscalYear),
         Q2CmlValue: nothingCheck(obj?.Q2CmlValue, "Cumulative", "currency", "2nd Quarter", "First Half", "Current FY FCST", obj?.fiscalYear),
         Q3CmlValue: nothingCheck(obj?.Q3CmlValue, "Cumulative", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", obj?.fiscalYear),
@@ -393,7 +409,7 @@ function valuesMakeV2(obj: undefined | EarningsMakeV2): EarningsV2 {
         forecastRevision2: nothingCheck(obj?.forecastRevision2, "Forecast", "currency", "1st Quarter", "1st Quarter", "FCST Revision 2", obj?.fiscalYear),
         forecastRevision3: nothingCheck(obj?.forecastRevision3, "Forecast", "currency", "1st Quarter", "1st Quarter", "FCST Revision 3", obj?.fiscalYear),
         forecastNextFY: nothingCheck(obj?.forecastNextFY, "Forecast", "currency", "1st Quarter", "1st Quarter", "Next FY FCST", obj?.fiscalYear),
-    } 
+    }
 
     return values
 }
@@ -579,3 +595,44 @@ export const segaConsolidatedEarningsGraphList = consolidatedEarningsGraphList(c
 export const squareEnixConsolidatedEarningsList = consolidatedEarningsList(collectionSquareEnix, 42);
 
 export const squareEnixConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionSquareEnix);
+
+// const 
+
+function consolidatedEarningsListV2Array(collection: EarningsJSONV2[], headerLength: number): string[] {
+
+    return collection.map((elem, index, array) => {
+
+        const currentQuarter = elem.currentQuarter;
+
+        const makeDateLabel = dateLabel(elem?.fiscalYear ?? "N/A", elem?.currentQuarter ?? 4);
+
+
+        const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
+
+        const header: Header = {
+            companyName: elem.companyName,
+            fiscalYear: elem.fiscalYear,
+            title: (elem.companyName === "CAPCOM Co., Ltd." || elem.companyName === "SQUARE ENIX HOLDINGS CO., LTD.") ? "Consolidated Financial Results" : "Consolidated Operating Results",
+        };
+
+
+        const dataThisFY: EarningsV2[] = elem.data.map(value => valuesMakeV2(value));
+
+        const dataLastFY: EarningsV2[] = (!array[index+1]) 
+            ? elem.data.map(value => valuesMakeV2(undefined)) 
+            : array[index+1].data.map(value => valuesMakeV2(value));
+
+        const printOne = headerPrint([
+            header.companyName + " | " + header.fiscalYear,
+            header.title
+        ],headerLength) + "\n" + printDateLabel;
+
+        const printEach = Array.from({length: dataThisFY.length + 1}, (v, i) => {
+
+            if (i === 2) {
+
+            }
+        })
+    })
+}
