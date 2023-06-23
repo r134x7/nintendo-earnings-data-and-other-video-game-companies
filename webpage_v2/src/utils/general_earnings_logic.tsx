@@ -175,11 +175,14 @@ function printQuarterValues(quarterValues: Earnings[],  currentQuarter: number, 
 };
 
 const printValueQtrOrCml = (value: EarningsValue): string => {
-    return ((value.kind === "Quarter" || value.kind === "Cumulative") && value.units === "currency")
+
+    if ((value.kind === "Quarter" || value.kind === "Cumulative" || value.kind === "Forecast")) {
+        return (value.units === "currency")
             ? `¥${value.value.toLocaleString("en")}M`
-            : ((value.kind === "Quarter" || value.kind === "Cumulative") && value.units === "percentage")
-                ? `${value.value}%`
-                : `NaN`;
+            : `${value.value}${value.units === "percentage" ? "%" : "M"}`
+    } else {
+        return "Error";
+    }
 }
 
 export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter: number, textLength: number): string {
@@ -304,6 +307,28 @@ function printForecastValues(forecastValues: Earnings[], forecastValueLength: nu
 
         return forecastPeriods
 };
+
+export function printForecastValuesV2(forecastValue: EarningsValue, textLength: number): string {
+
+    if (forecastValue.kind === "Forecast") {
+
+        let forecastString = printValueQtrOrCml(forecastValue);
+
+        let forecastPeriod = (forecastValue.period === "Current FY FCST")
+            ? forecastValue.thisFY
+            : (forecastValue.period === "Next FY FCST")
+                ? forecastValue.nextFY
+                : forecastValue.period
+
+
+        return border([
+            spacer(forecastPeriod, 16,"left"),
+            spacer(forecastString, textLength,"right")
+        ])
+    } else {
+        return "";
+    } 
+} 
 
 const printSection = (valuesThisFY: Earnings[], yoyLength: number) => {
     let yoyHeader = spacer("YoY% |",12,"right")
