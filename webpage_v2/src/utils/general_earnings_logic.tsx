@@ -44,9 +44,11 @@ type EarningsValue =
         value: number}
     | { kind:"Quarter", 
         period:"1st Quarter" | "2nd Quarter" | "3rd Quarter" | "4th Quarter", 
+        units: "units" | "currency" | "percentage",
         value: number}
     | { kind:"Cumulative", 
         period:"1st Quarter" | "First Half" | "First Three Quarters" | "FY Cumulative", 
+        units: "units" | "currency" | "percentage",
         thisFY: string,
         value: number}
     | Nothing
@@ -73,6 +75,7 @@ export function quarterlyCalculationV2(quarterThisFY: EarningsValue, quarterLast
     return (quarterThisFY.kind === "Quarter" && quarterLastFY.kind === "Quarter")
         ? {
             kind:"Quarter",
+            units: quarterThisFY.units,
             period: quarterThisFY.period,
             value: quarterThisFY.value - quarterLastFY.value
         }
@@ -170,6 +173,25 @@ function printQuarterValues(quarterValues: Earnings[],  currentQuarter: number, 
 
         return quarters
 };
+
+export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter: number, textLength: number): string {
+
+    if (quarterValue.kind === "Quarter") {
+
+        let valueString = (quarterValue.units === "currency")
+                ? `¥${quarterValue.value.toLocaleString("en")}M`
+                : (quarterValue.units === "percentage")
+                    ? `${quarterValue.value}%`
+                    : `NaN`;
+        
+        return border([
+            spacer(quarterValue.period,12, "left"),
+            spacer(valueString, textLength, "right")
+        ])
+    } else {
+        return "Nothing";
+    }
+}
 
 function printCumulativeValues(cmlValues: Earnings[], fiscalYear: string, currentQuarter: number, cmlValueLength: number): string[] {
 
