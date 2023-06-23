@@ -167,7 +167,6 @@ type EarningsMake = {
 
 type EarningsMakeV2 = {
         name: string,
-        fiscalYear: string,
         Q1CmlValue: number | "Nothing",
         Q2CmlValue: number | "Nothing",
         Q3CmlValue: number | "Nothing",
@@ -248,7 +247,53 @@ const collectionNintendo: EarningsJSON[] = [
     nintendoConsolidatedEarnings2004,
 ];
 
+const collectionNintendoV2: EarningsJSONV2[] = [
+    nintendoConsolidatedEarnings2023,
+    nintendoConsolidatedEarnings2022,
+    nintendoConsolidatedEarnings2021,
+    nintendoConsolidatedEarnings2020,
+    nintendoConsolidatedEarnings2019,
+    nintendoConsolidatedEarnings2018,
+    nintendoConsolidatedEarnings2017,
+    nintendoConsolidatedEarnings2016,
+    nintendoConsolidatedEarnings2015,
+    nintendoConsolidatedEarnings2014,
+    nintendoConsolidatedEarnings2013,
+    nintendoConsolidatedEarnings2012,
+    nintendoConsolidatedEarnings2011,
+    nintendoConsolidatedEarnings2010,
+    nintendoConsolidatedEarnings2009,
+    nintendoConsolidatedEarnings2008,
+    nintendoConsolidatedEarnings2007,
+    nintendoConsolidatedEarnings2006,
+    nintendoConsolidatedEarnings2005,
+    nintendoConsolidatedEarnings2004,
+];
+
 const collectionCapcom: EarningsJSON[] = [
+    capcomEarnings2023,
+    capcomEarnings2022,
+    capcomEarnings2021,
+    capcomEarnings2020,
+    capcomEarnings2019,
+    capcomEarnings2018,
+    capcomEarnings2017,
+    capcomEarnings2016,
+    capcomEarnings2015,
+    capcomEarnings2014,
+    capcomEarnings2013,
+    capcomEarnings2012,
+    capcomEarnings2011,
+    capcomEarnings2010,
+    capcomEarnings2009,
+    capcomEarnings2008,
+    capcomEarnings2007,
+    capcomEarnings2006,
+    capcomEarnings2005,
+    capcomEarnings2004,
+];
+
+const collectionCapcomV2: EarningsJSONV2[] = [
     capcomEarnings2023,
     capcomEarnings2022,
     capcomEarnings2021,
@@ -292,7 +337,50 @@ const collectionBandaiNamco: EarningsJSON[] = [
     bandaiNamco2006,
 ];
 
+const collectionBandaiNamcoV2: EarningsJSONV2[] = [
+    bandaiNamco2023,
+    bandaiNamco2022,
+    bandaiNamco2021,
+    bandaiNamco2020,
+    bandaiNamco2019,
+    bandaiNamco2018,
+    bandaiNamco2017,
+    bandaiNamco2016,
+    bandaiNamco2015,
+    bandaiNamco2014,
+    bandaiNamco2013,
+    bandaiNamco2012,
+    bandaiNamco2011,
+    bandaiNamco2010,
+    bandaiNamco2009,
+    bandaiNamco2008,
+    bandaiNamco2007,
+    bandaiNamco2006,
+];
+
 const collectionSegaSammy: EarningsJSON[] = [
+    sega2023,
+    sega2022,
+    sega2021,
+    sega2020,
+    sega2019,
+    sega2018,
+    sega2017,
+    sega2016,
+    sega2015,
+    sega2014,
+    sega2013,
+    sega2012,
+    sega2011,
+    sega2010,
+    sega2009,
+    sega2008,
+    sega2007,
+    sega2006,
+    sega2005,
+];
+
+const collectionSegaSammyV2: EarningsJSONV2[] = [
     sega2023,
     sega2022,
     sega2021,
@@ -331,7 +419,47 @@ const collectionKoeiTecmo: EarningsJSON[] = [
     koeiTecmo2010,
 ];
 
+const collectionKoeiTecmoV2: EarningsJSONV2[] = [
+    koeiTecmo2023,
+    koeiTecmo2022,
+    koeiTecmo2021,
+    koeiTecmo2020,
+    koeiTecmo2019,
+    koeiTecmo2018,
+    koeiTecmo2017,
+    koeiTecmo2016,
+    koeiTecmo2015,
+    koeiTecmo2014,
+    koeiTecmo2013,
+    koeiTecmo2012,
+    koeiTecmo2011,
+    koeiTecmo2010,
+];
+
 const collectionSquareEnix: EarningsJSON[] = [
+    squareEnix2023,
+    squareEnix2022,
+    squareEnix2021,
+    squareEnix2020,
+    squareEnix2019,
+    squareEnix2018,
+    squareEnix2017,
+    squareEnix2016,
+    squareEnix2015,
+    squareEnix2014,
+    squareEnix2013,
+    squareEnix2012,
+    squareEnix2011,
+    squareEnix2010,
+    squareEnix2009,
+    squareEnix2008,
+    squareEnix2007,
+    squareEnix2006,
+    squareEnix2005,
+    squareEnix2004,
+];
+
+const collectionSquareEnixV2: EarningsJSONV2[] = [
     squareEnix2023,
     squareEnix2022,
     squareEnix2021,
@@ -390,32 +518,32 @@ const valuesMake = (obj: undefined | EarningsMake): Earnings[] => {
     return values 
 };
 
-function valuesMakeV2(obj: undefined | EarningsMakeV2): EarningsV2 {
+function valuesMakeV2(obj: undefined | EarningsMakeV2, fiscalYear: string): EarningsV2 {
 
     let values: EarningsV2 = {
         name: obj?.name ?? "N/A",
-        Q1QtrValue: nothingCheck(obj?.Q1CmlValue, "Quarter", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", obj?.fiscalYear),
+        Q1QtrValue: nothingCheck(obj?.Q1CmlValue, "Quarter", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear),
         Q2QtrValue: quarterlyCalculationV2(
-            nothingCheck(obj?.Q2CmlValue, "Quarter", "currency", "2nd Quarter", "First Half", "Current FY FCST", obj?.fiscalYear),
-            nothingCheck(obj?.Q1CmlValue, "Quarter", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", obj?.fiscalYear)
+            nothingCheck(obj?.Q2CmlValue, "Quarter", "currency", "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
+            nothingCheck(obj?.Q1CmlValue, "Quarter", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear)
         ),
         Q3QtrValue: quarterlyCalculationV2(
-            nothingCheck(obj?.Q3CmlValue, "Quarter", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", obj?.fiscalYear),
-            nothingCheck(obj?.Q2CmlValue, "Quarter", "currency", "2nd Quarter", "First Half", "Current FY FCST", obj?.fiscalYear),
+            nothingCheck(obj?.Q3CmlValue, "Quarter", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
+            nothingCheck(obj?.Q2CmlValue, "Quarter", "currency", "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
         ),
         Q4QtrValue: quarterlyCalculationV2(
-            nothingCheck(obj?.Q4CmlValue, "Quarter", "currency", "4th Quarter", "FY Cumulative", "Current FY FCST", obj?.fiscalYear),
-            nothingCheck(obj?.Q3CmlValue, "Quarter", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", obj?.fiscalYear),
+            nothingCheck(obj?.Q4CmlValue, "Quarter", "currency", "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear),
+            nothingCheck(obj?.Q3CmlValue, "Quarter", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
         ),
-        Q1CmlValue: nothingCheck(obj?.Q1CmlValue, "Cumulative", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", obj?.fiscalYear),
-        Q2CmlValue: nothingCheck(obj?.Q2CmlValue, "Cumulative", "currency", "2nd Quarter", "First Half", "Current FY FCST", obj?.fiscalYear),
-        Q3CmlValue: nothingCheck(obj?.Q3CmlValue, "Cumulative", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", obj?.fiscalYear),
-        Q4CmlValue: nothingCheck(obj?.Q4CmlValue, "Cumulative", "currency", "4th Quarter", "FY Cumulative", "Current FY FCST", obj?.fiscalYear),
-        forecastThisFY: nothingCheck(obj?.forecastThisFY, "Forecast", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", obj?.fiscalYear),
-        forecastRevision1: nothingCheck(obj?.forecastRevision1, "Forecast", "currency", "1st Quarter", "1st Quarter", "FCST Revision 1", obj?.fiscalYear),
-        forecastRevision2: nothingCheck(obj?.forecastRevision2, "Forecast", "currency", "1st Quarter", "1st Quarter", "FCST Revision 2", obj?.fiscalYear),
-        forecastRevision3: nothingCheck(obj?.forecastRevision3, "Forecast", "currency", "1st Quarter", "1st Quarter", "FCST Revision 3", obj?.fiscalYear),
-        forecastNextFY: nothingCheck(obj?.forecastNextFY, "Forecast", "currency", "1st Quarter", "1st Quarter", "Next FY FCST", obj?.fiscalYear),
+        Q1CmlValue: nothingCheck(obj?.Q1CmlValue, "Cumulative", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear),
+        Q2CmlValue: nothingCheck(obj?.Q2CmlValue, "Cumulative", "currency", "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
+        Q3CmlValue: nothingCheck(obj?.Q3CmlValue, "Cumulative", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
+        Q4CmlValue: nothingCheck(obj?.Q4CmlValue, "Cumulative", "currency", "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear),
+        forecastThisFY: nothingCheck(obj?.forecastThisFY, "Forecast", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear),
+        forecastRevision1: nothingCheck(obj?.forecastRevision1, "Forecast", "currency", "1st Quarter", "1st Quarter", "FCST Revision 1", fiscalYear),
+        forecastRevision2: nothingCheck(obj?.forecastRevision2, "Forecast", "currency", "1st Quarter", "1st Quarter", "FCST Revision 2", fiscalYear),
+        forecastRevision3: nothingCheck(obj?.forecastRevision3, "Forecast", "currency", "1st Quarter", "1st Quarter", "FCST Revision 3", fiscalYear),
+        forecastNextFY: nothingCheck(obj?.forecastNextFY, "Forecast", "currency", "1st Quarter", "1st Quarter", "Next FY FCST", fiscalYear),
     }
 
     return values
@@ -579,27 +707,33 @@ return collection.map((elem, index, array) => {
     }).filter(elem => elem !== undefined)
 };
 
-export const nintendoConsolidatedEarningsList = consolidatedEarningsList(collectionNintendo, 35);
+// export const nintendoConsolidatedEarningsList = consolidatedEarningsList(collectionNintendo, 35);
+export const nintendoConsolidatedEarningsList = consolidatedEarningsListV2Array(collectionNintendoV2, 35);
 
 export const nintendoConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionNintendo);
 
-export const capcomConsolidatedEarningsList = consolidatedEarningsList(collectionCapcom, 35);
+// export const capcomConsolidatedEarningsList = consolidatedEarningsList(collectionCapcom, 35);
+export const capcomConsolidatedEarningsList = consolidatedEarningsListV2Array(collectionCapcomV2, 35);
 
 export const capcomConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionCapcom);
 
-export const bandaiNamcoConsolidatedEarningsList = consolidatedEarningsList(collectionBandaiNamco, 38);
+// export const bandaiNamcoConsolidatedEarningsList = consolidatedEarningsList(collectionBandaiNamco, 38);
+export const bandaiNamcoConsolidatedEarningsList = consolidatedEarningsListV2Array(collectionBandaiNamcoV2, 38);
 
 export const bandaiNamcoConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionBandaiNamco);
 
-export const koeiTecmoConsolidatedEarningsList = consolidatedEarningsList(collectionKoeiTecmo, 42);
+// export const koeiTecmoConsolidatedEarningsList = consolidatedEarningsList(collectionKoeiTecmo, 42);
+export const koeiTecmoConsolidatedEarningsList = consolidatedEarningsListV2Array(collectionKoeiTecmoV2, 42);
 
 export const koeiTecmoConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionKoeiTecmo);
 
-export const segaConsolidatedEarningsList = consolidatedEarningsList(collectionSegaSammy, 38);
+// export const segaConsolidatedEarningsList = consolidatedEarningsList(collectionSegaSammy, 38);
+export const segaConsolidatedEarningsList = consolidatedEarningsListV2Array(collectionSegaSammyV2, 38);
 
 export const segaConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionSegaSammy);
 
-export const squareEnixConsolidatedEarningsList = consolidatedEarningsList(collectionSquareEnix, 42);
+// export const squareEnixConsolidatedEarningsList = consolidatedEarningsList(collectionSquareEnix, 42);
+export const squareEnixConsolidatedEarningsList = consolidatedEarningsListV2Array(collectionSquareEnixV2, 42);
 
 export const squareEnixConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionSquareEnix);
 
@@ -624,11 +758,11 @@ function consolidatedEarningsListV2Array(collection: EarningsJSONV2[], headerLen
         };
 
 
-        const dataThisFY: EarningsV2[] = elem.data.map(value => valuesMakeV2(value));
+        const dataThisFY: EarningsV2[] = elem.data.map(value => valuesMakeV2(value, elem.fiscalYear));
 
         const dataLastFY: EarningsV2[] = (!array[index+1]) 
-            ? elem.data.map(value => valuesMakeV2(undefined)) 
-            : array[index+1].data.map(value => valuesMakeV2(value));
+            ? elem.data.map(value => valuesMakeV2(undefined, elem.fiscalYear)) 
+            : array[index+1].data.map(value => valuesMakeV2(value, elem.fiscalYear));
 
         const percentagesThisFY: EarningsV2[] = dataThisFY.map((elem, index) => {
             return {
