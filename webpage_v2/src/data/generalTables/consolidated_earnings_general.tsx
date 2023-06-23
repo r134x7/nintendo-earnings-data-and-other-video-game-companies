@@ -201,14 +201,18 @@ function nothingCheck(
                 return {
                     kind: "Forecast",
                     period: forecastPeriod,
-                    units: "currency",
+                    units: units,
                     thisFY: thisFY + " Forecast",
                     nextFY: thisFY?.slice(0,4) + (Number(thisFY?.slice(-4)) + 1).toString() + " Forecast",
                     value: value as number
                 } satisfies EarningsValue
             } else {
-                // not dealing with Quarter at this time.
-                return { kind: "Nothing" };
+                return {
+                    kind: "Quarter",
+                    period: qtrPeriod,
+                    units: units,
+                    value: value as number
+                } satisfies EarningsValue
             }
             
 
@@ -387,18 +391,18 @@ function valuesMakeV2(obj: undefined | EarningsMakeV2): EarningsV2 {
 
     let values: EarningsV2 = {
         name: obj?.name ?? "N/A",
-        Q1QtrValue: nothingCheck(obj?.Q1CmlValue, "Cumulative", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", obj?.fiscalYear),
+        Q1QtrValue: nothingCheck(obj?.Q1CmlValue, "Quarter", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", obj?.fiscalYear),
         Q2QtrValue: quarterlyCalculationV2(
-            nothingCheck(obj?.Q2CmlValue, "Cumulative", "currency", "2nd Quarter", "First Half", "Current FY FCST", obj?.fiscalYear),
-            nothingCheck(obj?.Q1CmlValue, "Cumulative", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", obj?.fiscalYear)
+            nothingCheck(obj?.Q2CmlValue, "Quarter", "currency", "2nd Quarter", "First Half", "Current FY FCST", obj?.fiscalYear),
+            nothingCheck(obj?.Q1CmlValue, "Quarter", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", obj?.fiscalYear)
         ),
         Q3QtrValue: quarterlyCalculationV2(
-            nothingCheck(obj?.Q3CmlValue, "Cumulative", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", obj?.fiscalYear),
-            nothingCheck(obj?.Q2CmlValue, "Cumulative", "currency", "2nd Quarter", "First Half", "Current FY FCST", obj?.fiscalYear),
+            nothingCheck(obj?.Q3CmlValue, "Quarter", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", obj?.fiscalYear),
+            nothingCheck(obj?.Q2CmlValue, "Quarter", "currency", "2nd Quarter", "First Half", "Current FY FCST", obj?.fiscalYear),
         ),
         Q4QtrValue: quarterlyCalculationV2(
-            nothingCheck(obj?.Q4CmlValue, "Cumulative", "currency", "4th Quarter", "FY Cumulative", "Current FY FCST", obj?.fiscalYear),
-            nothingCheck(obj?.Q3CmlValue, "Cumulative", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", obj?.fiscalYear),
+            nothingCheck(obj?.Q4CmlValue, "Quarter", "currency", "4th Quarter", "FY Cumulative", "Current FY FCST", obj?.fiscalYear),
+            nothingCheck(obj?.Q3CmlValue, "Quarter", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", obj?.fiscalYear),
         ),
         Q1CmlValue: nothingCheck(obj?.Q1CmlValue, "Cumulative", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", obj?.fiscalYear),
         Q2CmlValue: nothingCheck(obj?.Q2CmlValue, "Cumulative", "currency", "2nd Quarter", "First Half", "Current FY FCST", obj?.fiscalYear),
