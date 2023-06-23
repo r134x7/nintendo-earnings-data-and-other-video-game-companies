@@ -487,3 +487,22 @@ export function forecastOutput(values: string[]) {
         }
     })
 }
+
+export function printReduceSection(
+    sectionHeader: string, 
+    quarters: string[],
+    cumulatives: string[],
+    forecasts: string[],
+    ): string {
+
+        return [
+            sectionHeader,
+            ...quarters,
+            ...cumulatives,
+            ...forecasts,
+            "###"
+        ].reduce((acc, next) => {
+            return acc + next
+        })
+}
+
