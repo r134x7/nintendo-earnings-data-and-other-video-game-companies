@@ -10,7 +10,7 @@ export type Earnings = {
     footnotes?: string,
 };
 
-export type NewEarnings = {
+export type EarningsV2 = {
     name: string,
     Q1QtrValue: EarningsValue,
     Q2QtrValue: EarningsValue,
@@ -36,22 +36,19 @@ type Maybe<T> =
     | Nothing
 
 type EarningsValue = 
-    | { kind:"Forecast", period:"Current FY FCST" | "FCST Revision 1" | "FCST Revision 2" | "FCST Revision 3" | "Next FY FCST", units: "units" | "currency" | "percentage", value: number}
-    | { kind:"Quarter", period:"1st Quarter" | "2nd Quarter" | "3rd Quarter" | "4th Quarter", value: number}
-    | { kind:"Cumulative", period:"1st Quarter" | "First Half" | "First Three Quarters" | "FY Cumulative", value: number}
-    | Nothing
-
-type ForecastValue = 
-    | {
-        kind: "Current FY FCST" | "FCST Revision 1" | "FCST Revision 2" | "FCST Revision 3" | "Next FY FCST", value: number}
-    | Nothing;
-
-type QuarterValue =
-    | { kind:"1st Quarter" | "2nd Quarter" | "3rd Quarter" | "4th Quarter", value: number}
-    | Nothing
-
-type CumulativeValue =
-    | { kind:"1st Quarter" | "First Half" | "First Three Quarters" | "FY Cumulative", value: number}
+    | { kind:"Forecast", 
+        period:"Current FY FCST" | "FCST Revision 1" | "FCST Revision 2" | "FCST Revision 3" | "Next FY FCST", 
+        units: "units" | "currency" | "percentage",
+        thisFY: string,
+        nextFY: string,
+        value: number}
+    | { kind:"Quarter", 
+        period:"1st Quarter" | "2nd Quarter" | "3rd Quarter" | "4th Quarter", 
+        value: number}
+    | { kind:"Cumulative", 
+        period:"1st Quarter" | "First Half" | "First Three Quarters" | "FY Cumulative", 
+        thisFY: string,
+        value: number}
     | Nothing
 
 export type Header = {
@@ -70,6 +67,17 @@ export function quarterlyCalculation(quarters: Earnings[]): Earnings[] {
     
     return calc
 };
+
+export function quarterlyCalculationV2(quarterThisFY: EarningsValue, quarterLastFY: EarningsValue): EarningsValue {
+
+    return (quarterThisFY.kind === "Quarter" && quarterLastFY.kind === "Quarter")
+        ? {
+            kind:"Quarter",
+            period: quarterThisFY.period,
+            value: quarterThisFY.value - quarterLastFY.value
+        }
+        : quarterThisFY
+}
 
 function yearOnYearCalculation(thisFY: Earnings[], lastFY: Earnings[]): Earnings[] {
 
