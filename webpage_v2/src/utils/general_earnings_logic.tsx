@@ -269,6 +269,19 @@ function printYoY(valuesThisFY: Earnings[], valuesLastFY: Earnings[], currentQua
         return yoyValues 
 };
 
+function printYoYV2(percentageValues: EarningsValue, currentQuarter: number): string {
+
+    if (percentageValues.kind === "Quarter" || percentageValues.kind === "Cumulative") {
+
+        let yoyValue = `${percentageValues.value > 0 ? "+" : ""}${percentageValues.value}%` 
+
+        return spacer(yoyValue + " |",12,"right")
+
+    } else {
+        return ""
+    }
+}
+
 function printForecastValues(forecastValues: Earnings[], forecastValueLength: number): string[] {
 
         if (!forecastValues[0]) {
