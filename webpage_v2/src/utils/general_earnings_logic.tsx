@@ -132,6 +132,24 @@ export function operatingMarginCalculation(netSalesLocal: Earnings[], opIncomeLo
    return calc
 };
 
+export function operatingMarginCalculationV2(
+    netSalesThisFY: EarningsValue,
+    operatingIncomeThisFY: EarningsValue,
+    kind: "Quarter" | "Cumulative" | "Forecast"
+): EarningsValue {
+
+    if ((netSalesThisFY.kind === kind && operatingIncomeThisFY.kind === kind) && (netSalesThisFY.period === operatingIncomeThisFY.period)) {
+
+        return {
+            ...operatingIncomeThisFY,
+            value: Number(((
+                (operatingIncomeThisFY.value / netSalesThisFY.value)) * 100).toFixed(2))
+        }
+    } else {
+        return { kind: "Nothing" }
+    }
+}
+
 function printQuarterValues(quarterValues: Earnings[],  currentQuarter: number, quarterValueLength: number): string[] {
 
         let quartercalc = (quarterValues[0].name === "Operating Margin") ? quarterValues : quarterlyCalculation(quarterValues);
