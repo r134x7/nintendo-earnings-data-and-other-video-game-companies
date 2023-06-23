@@ -188,18 +188,16 @@ const printValueQtrOrCml = (value: EarningsValue): string => {
     }
 }
 
-export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter: number, textLength: number, singleColumn: boolean): string {
+export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter: number, textLength: number): string {
 
     if (quarterValue.kind === "Quarter") {
 
         let valueString = printValueQtrOrCml(quarterValue);
         
-        return (!singleColumn)
-            ? border([
+        return border([
             spacer(quarterValue.period,12, "left"),
             spacer(valueString, textLength, "right")
             ])
-            : spacer(valueString + " |", textLength, "right")
     } else {
         return "";
     }
@@ -230,7 +228,7 @@ function printCumulativeValues(cmlValues: Earnings[], fiscalYear: string, curren
         return cumulatives 
 };
 
-export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter: number, textLength: number, singleColumn: boolean): string {
+export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter: number, textLength: number): string {
 
     if (cmlValue.kind === "Cumulative" && cmlValue.period !== "1st Quarter") {
 
@@ -242,12 +240,10 @@ export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter:
 
         let valueString = printValueQtrOrCml(cmlValue);
 
-        return (!singleColumn)
-            ? border([
+        return border([
                 spacer(cmlPeriod, 12,"left"),
                 spacer(valueString, textLength,"right")
             ])
-            : spacer(valueString + " |", textLength, "right")
     } else {
         return "";
     }
@@ -279,13 +275,13 @@ function printYoY(valuesThisFY: Earnings[], valuesLastFY: Earnings[], currentQua
         return yoyValues 
 };
 
-function printYoYV2(percentageValues: EarningsValue, currentQuarter: number): string {
+export function printYoYV2(percentageValues: EarningsValue, currentQuarter: number, textLength: number): string {
 
-    if (percentageValues.kind === "Quarter" || percentageValues.kind === "Cumulative") {
+    if ((percentageValues.kind === "Quarter" || percentageValues.kind === "Cumulative") && percentageValues.units === "percentage") {
 
         let yoyValue = `${percentageValues.value > 0 ? "+" : ""}${percentageValues.value}%` 
 
-        return spacer(yoyValue + " |",12,"right")
+        return spacer(yoyValue + " |", textLength,"right")
 
     } else {
         return ""
