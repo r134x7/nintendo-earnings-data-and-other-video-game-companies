@@ -708,7 +708,77 @@ function consolidatedEarningsListV2Array(collection: EarningsJSONV2[], headerLen
                 )
 
                 return output
+            } else if (i > 2) {
+
+                let sectionHeader = printSectionHeaderV2(dataThisFY[i-1], true)
+
+                let quarters = [
+                    printQuarterValuesV2(dataThisFY[i-1].Q1QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(dataThisFY[i-1].Q2QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(dataThisFY[i-1].Q3QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(dataThisFY[i-1].Q4QtrValue, currentQuarter, 13),
+                ];
+
+                let cumulatives = [
+                    printCumulativeValuesV2(dataThisFY[i-1].Q1CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(dataThisFY[i-1].Q2CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(dataThisFY[i-1].Q3CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(dataThisFY[i-1].Q4CmlValue, currentQuarter, 13),
+                ];
+
+                let forecasts = [
+                    printForecastValuesV2(dataThisFY[i-1].forecastThisFY, 13),
+                    printForecastValuesV2(dataThisFY[i-1].forecastRevision1, 13),
+                    printForecastValuesV2(dataThisFY[i-1].forecastRevision2, 13),
+                    printForecastValuesV2(dataThisFY[i-1].forecastRevision3, 13),
+                    printForecastValuesV2(dataThisFY[i-1].forecastNextFY, 13),
+                ];
+
+                let output = printReduceSection(
+                    sectionHeader,
+                    qtrOrCmlOutput(quarters,[],false),
+                    qtrOrCmlOutput(cumulatives,[],false),
+                    forecastOutput(forecasts),
+                )
+
+                return output
+            } else {
+
+                let sectionHeader = printSectionHeaderV2(dataThisFY[i], true)
+
+                let quarters = [
+                    printQuarterValuesV2(dataThisFY[i].Q1QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(dataThisFY[i].Q2QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(dataThisFY[i].Q3QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(dataThisFY[i].Q4QtrValue, currentQuarter, 13),
+                ];
+
+                let cumulatives = [
+                    printCumulativeValuesV2(dataThisFY[i].Q1CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(dataThisFY[i].Q2CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(dataThisFY[i].Q3CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(dataThisFY[i].Q4CmlValue, currentQuarter, 13),
+                ];
+
+                let forecasts = [
+                    printForecastValuesV2(dataThisFY[i].forecastThisFY, 13),
+                    printForecastValuesV2(dataThisFY[i].forecastRevision1, 13),
+                    printForecastValuesV2(dataThisFY[i].forecastRevision2, 13),
+                    printForecastValuesV2(dataThisFY[i].forecastRevision3, 13),
+                    printForecastValuesV2(dataThisFY[i].forecastNextFY, 13),
+                ];
+
+                let output = printReduceSection(
+                    sectionHeader,
+                    qtrOrCmlOutput(quarters,[],false),
+                    qtrOrCmlOutput(cumulatives,[],false),
+                    forecastOutput(forecasts),
+                )
+
+                return output
             }
         })
+
+        return [printOne, ...printEach].reduce((acc, next) => acc + "\n" + next)
     })
 }

@@ -225,7 +225,7 @@ function printCumulativeValues(cmlValues: Earnings[], fiscalYear: string, curren
         return cumulatives 
 };
 
-function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter: number, textLength: number): string {
+export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter: number, textLength: number): string {
 
     if (cmlValue.kind === "Cumulative") {
 
