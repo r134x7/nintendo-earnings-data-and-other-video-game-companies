@@ -11,8 +11,10 @@ import {
     operatingMarginCalculationV2,
     printForecastValuesV2,
     printQuarterValuesV2,
+    printCumulativeValuesV2,
     printReduceSection,
     qtrOrCmlOutput,
+    printSectionHeaderV2,
     quarterlyCalculationV2,
     yearOnYearCalculationV2,
     EarningsValue,
@@ -656,6 +658,56 @@ function consolidatedEarningsListV2Array(collection: EarningsJSONV2[], headerLen
 
             if (i === 2) {
 
+                let toOpMargin = {
+                    ...dataThisFY[1],
+                    name: "Operating Margin",
+                    Q1QtrValue: operatingMarginCalculationV2(dataThisFY[0].Q1QtrValue, dataThisFY[1].Q1QtrValue, "Quarter"),
+                    Q2QtrValue: operatingMarginCalculationV2(dataThisFY[0].Q2QtrValue, dataThisFY[1].Q2QtrValue, "Quarter"),
+                    Q3QtrValue: operatingMarginCalculationV2(dataThisFY[0].Q3QtrValue, dataThisFY[1].Q3QtrValue, "Quarter"),
+                    Q4QtrValue: operatingMarginCalculationV2(dataThisFY[0].Q4QtrValue, dataThisFY[1].Q4QtrValue, "Quarter"),
+                    Q1CmlValue: operatingMarginCalculationV2(dataThisFY[0].Q1CmlValue, dataThisFY[1].Q1CmlValue, "Cumulative"),
+                    Q2CmlValue: operatingMarginCalculationV2(dataThisFY[0].Q2CmlValue, dataThisFY[1].Q2CmlValue, "Cumulative"),
+                    Q3CmlValue: operatingMarginCalculationV2(dataThisFY[0].Q3CmlValue, dataThisFY[1].Q3CmlValue, "Cumulative"),
+                    Q4CmlValue: operatingMarginCalculationV2(dataThisFY[0].Q4CmlValue, dataThisFY[1].Q4CmlValue, "Cumulative"),
+                    forecastThisFY: operatingMarginCalculationV2(dataThisFY[0].forecastThisFY, dataThisFY[1].forecastThisFY, "Forecast"), 
+                    forecastRevision1: operatingMarginCalculationV2(dataThisFY[0].forecastRevision1, dataThisFY[1].forecastRevision1, "Forecast"), 
+                    forecastRevision2: operatingMarginCalculationV2(dataThisFY[0].forecastRevision2, dataThisFY[1].forecastRevision2, "Forecast"), 
+                    forecastRevision3: operatingMarginCalculationV2(dataThisFY[0].forecastRevision3, dataThisFY[1].forecastRevision3, "Forecast"), 
+                    forecastNextFY: operatingMarginCalculationV2(dataThisFY[0].forecastNextFY, dataThisFY[1].forecastNextFY, "Forecast"), 
+                } satisfies EarningsV2
+
+                let sectionHeader = printSectionHeaderV2(toOpMargin, false);
+
+                let quarters = [
+                    printQuarterValuesV2(toOpMargin.Q1QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(toOpMargin.Q2QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(toOpMargin.Q3QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(toOpMargin.Q4QtrValue, currentQuarter, 13),
+                ];
+                
+                let cumulatives = [
+                    printCumulativeValuesV2(toOpMargin.Q1CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(toOpMargin.Q2CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(toOpMargin.Q3CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(toOpMargin.Q4CmlValue, currentQuarter, 13),
+                ];
+
+                let forecasts = [
+                    printForecastValuesV2(toOpMargin.forecastThisFY, 13),
+                    printForecastValuesV2(toOpMargin.forecastRevision1, 13),
+                    printForecastValuesV2(toOpMargin.forecastRevision2, 13),
+                    printForecastValuesV2(toOpMargin.forecastRevision3, 13),
+                    printForecastValuesV2(toOpMargin.forecastNextFY, 13),
+                ];
+
+                let output = printReduceSection(
+                    sectionHeader,
+                    qtrOrCmlOutput(quarters,[],true),
+                    qtrOrCmlOutput(cumulatives,[],true),
+                    forecastOutput(forecasts),
+                )
+
+                return output
             }
         })
     })

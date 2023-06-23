@@ -439,7 +439,7 @@ export const printAll = (header: Header, valuesThisFY: Earnings[], valuesLastFY:
     return printing
 }; 
 
-function printSectionHeaderV2 (value: EarningsV2, useYoY: boolean): string {
+export function printSectionHeaderV2 (value: EarningsV2, useYoY: boolean): string {
 
     let yoyHeader = spacer("YoY% |",12,"right");
 
