@@ -174,22 +174,26 @@ function printQuarterValues(quarterValues: Earnings[],  currentQuarter: number, 
         return quarters
 };
 
+const printValueQtrOrCml = (value: EarningsValue): string => {
+    return ((value.kind === "Quarter" || value.kind === "Cumulative") && value.units === "currency")
+            ? `¥${value.value.toLocaleString("en")}M`
+            : ((value.kind === "Quarter" || value.kind === "Cumulative") && value.units === "percentage")
+                ? `${value.value}%`
+                : `NaN`;
+}
+
 export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter: number, textLength: number): string {
 
     if (quarterValue.kind === "Quarter") {
 
-        let valueString = (quarterValue.units === "currency")
-                ? `¥${quarterValue.value.toLocaleString("en")}M`
-                : (quarterValue.units === "percentage")
-                    ? `${quarterValue.value}%`
-                    : `NaN`;
+        let valueString = printValueQtrOrCml(quarterValue);
         
         return border([
             spacer(quarterValue.period,12, "left"),
             spacer(valueString, textLength, "right")
         ])
     } else {
-        return "Nothing";
+        return "";
     }
 }
 
@@ -217,6 +221,27 @@ function printCumulativeValues(cmlValues: Earnings[], fiscalYear: string, curren
 
         return cumulatives 
 };
+
+function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter: number, textLength: number): string {
+
+    if (cmlValue.kind === "Cumulative") {
+
+        let cmlPeriod = (cmlValue.kind === "Cumulative" && cmlValue.period === "First Half") 
+            ? "1st Half"
+            : (cmlValue.kind === "Cumulative" && cmlValue.period === "First Three Quarters")
+                ? "1st 3/4" 
+                : `${cmlValue.kind === "Cumulative" ? cmlValue.thisFY : "Error"} Cml.`
+
+        let valueString = printValueQtrOrCml(cmlValue);
+
+        return border([
+            spacer(cmlPeriod, 12,"left"),
+            spacer(valueString, textLength,"right")
+        ])
+    } else {
+        return "";
+    }
+}
 
 function printYoY(valuesThisFY: Earnings[], valuesLastFY: Earnings[], currentQuarter: number): string[] {
 
