@@ -813,17 +813,17 @@ function consolidatedEarningsListV2Array(collection: EarningsJSONV2[], headerLen
                 let sectionHeader = printSectionHeaderV2(toOpMargin, false);
 
                 let quarters = [
-                    printQuarterValuesV2(toOpMargin.Q1QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(toOpMargin.Q2QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(toOpMargin.Q3QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(toOpMargin.Q4QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(toOpMargin.Q1QtrValue, currentQuarter, 13, false),
+                    printQuarterValuesV2(toOpMargin.Q2QtrValue, currentQuarter, 13, false),
+                    printQuarterValuesV2(toOpMargin.Q3QtrValue, currentQuarter, 13, false),
+                    printQuarterValuesV2(toOpMargin.Q4QtrValue, currentQuarter, 13, false),
                 ];
                 
                 let cumulatives = [
-                    printCumulativeValuesV2(toOpMargin.Q1CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(toOpMargin.Q2CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(toOpMargin.Q3CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(toOpMargin.Q4CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(toOpMargin.Q1CmlValue, currentQuarter, 13, false),
+                    printCumulativeValuesV2(toOpMargin.Q2CmlValue, currentQuarter, 13, false),
+                    printCumulativeValuesV2(toOpMargin.Q3CmlValue, currentQuarter, 13, false),
+                    printCumulativeValuesV2(toOpMargin.Q4CmlValue, currentQuarter, 13, false),
                 ];
 
                 let forecasts = [
@@ -847,31 +847,31 @@ function consolidatedEarningsListV2Array(collection: EarningsJSONV2[], headerLen
                 let sectionHeader = printSectionHeaderV2(dataThisFY[i-1], true)
 
                 let quarters = [
-                    printQuarterValuesV2(dataThisFY[i-1].Q1QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY[i-1].Q2QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY[i-1].Q3QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY[i-1].Q4QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(dataThisFY[i-1].Q1QtrValue, currentQuarter, 13, false),
+                    printQuarterValuesV2(dataThisFY[i-1].Q2QtrValue, currentQuarter, 13, false),
+                    printQuarterValuesV2(dataThisFY[i-1].Q3QtrValue, currentQuarter, 13, false),
+                    printQuarterValuesV2(dataThisFY[i-1].Q4QtrValue, currentQuarter, 13, false),
                 ];
 
                 let quarterPercentages = [
-                    printQuarterValuesV2(percentagesThisFY[i-1].Q1QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(percentagesThisFY[i-1].Q2QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(percentagesThisFY[i-1].Q3QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(percentagesThisFY[i-1].Q4QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(percentagesThisFY[i-1].Q1QtrValue, currentQuarter, 12, true),
+                    printQuarterValuesV2(percentagesThisFY[i-1].Q2QtrValue, currentQuarter, 12, true),
+                    printQuarterValuesV2(percentagesThisFY[i-1].Q3QtrValue, currentQuarter, 12, true),
+                    printQuarterValuesV2(percentagesThisFY[i-1].Q4QtrValue, currentQuarter, 12, true),
                 ];
 
                 let cumulatives = [
-                    printCumulativeValuesV2(dataThisFY[i-1].Q1CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY[i-1].Q2CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY[i-1].Q3CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY[i-1].Q4CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(dataThisFY[i-1].Q1CmlValue, currentQuarter, 13, false),
+                    printCumulativeValuesV2(dataThisFY[i-1].Q2CmlValue, currentQuarter, 13, false),
+                    printCumulativeValuesV2(dataThisFY[i-1].Q3CmlValue, currentQuarter, 13, false),
+                    printCumulativeValuesV2(dataThisFY[i-1].Q4CmlValue, currentQuarter, 13, false),
                 ];
 
                 let cumulativePercentages = [
-                    printCumulativeValuesV2(percentagesThisFY[i-1].Q1CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(percentagesThisFY[i-1].Q2CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(percentagesThisFY[i-1].Q3CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(percentagesThisFY[i-1].Q4CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(percentagesThisFY[i-1].Q1CmlValue, currentQuarter, 12, true),
+                    printCumulativeValuesV2(percentagesThisFY[i-1].Q2CmlValue, currentQuarter, 12, true),
+                    printCumulativeValuesV2(percentagesThisFY[i-1].Q3CmlValue, currentQuarter, 12, true),
+                    printCumulativeValuesV2(percentagesThisFY[i-1].Q4CmlValue, currentQuarter, 12, true),
                 ];
 
                 let forecasts = [
@@ -895,31 +895,31 @@ function consolidatedEarningsListV2Array(collection: EarningsJSONV2[], headerLen
                 let sectionHeader = printSectionHeaderV2(dataThisFY[i], true)
 
                 let quarters = [
-                    printQuarterValuesV2(dataThisFY[i].Q1QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY[i].Q2QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY[i].Q3QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY[i].Q4QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(dataThisFY[i].Q1QtrValue, currentQuarter, 13, false),
+                    printQuarterValuesV2(dataThisFY[i].Q2QtrValue, currentQuarter, 13, false),
+                    printQuarterValuesV2(dataThisFY[i].Q3QtrValue, currentQuarter, 13, false),
+                    printQuarterValuesV2(dataThisFY[i].Q4QtrValue, currentQuarter, 13, false),
                 ];
 
                 let quarterPercentages = [
-                    printQuarterValuesV2(percentagesThisFY[i].Q1QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(percentagesThisFY[i].Q2QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(percentagesThisFY[i].Q3QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(percentagesThisFY[i].Q4QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(percentagesThisFY[i].Q1QtrValue, currentQuarter, 12, true),
+                    printQuarterValuesV2(percentagesThisFY[i].Q2QtrValue, currentQuarter, 12, true),
+                    printQuarterValuesV2(percentagesThisFY[i].Q3QtrValue, currentQuarter, 12, true),
+                    printQuarterValuesV2(percentagesThisFY[i].Q4QtrValue, currentQuarter, 12, true),
                 ];
 
                 let cumulatives = [
-                    printCumulativeValuesV2(dataThisFY[i].Q1CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY[i].Q2CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY[i].Q3CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY[i].Q4CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(dataThisFY[i].Q1CmlValue, currentQuarter, 13, false),
+                    printCumulativeValuesV2(dataThisFY[i].Q2CmlValue, currentQuarter, 13, false),
+                    printCumulativeValuesV2(dataThisFY[i].Q3CmlValue, currentQuarter, 13, false),
+                    printCumulativeValuesV2(dataThisFY[i].Q4CmlValue, currentQuarter, 13, false),
                 ];
 
                 let cumulativePercentages = [
-                    printCumulativeValuesV2(percentagesThisFY[i].Q1CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(percentagesThisFY[i].Q2CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(percentagesThisFY[i].Q3CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(percentagesThisFY[i].Q4CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(percentagesThisFY[i].Q1CmlValue, currentQuarter, 12, true),
+                    printCumulativeValuesV2(percentagesThisFY[i].Q2CmlValue, currentQuarter, 12, true),
+                    printCumulativeValuesV2(percentagesThisFY[i].Q3CmlValue, currentQuarter, 12, true),
+                    printCumulativeValuesV2(percentagesThisFY[i].Q4CmlValue, currentQuarter, 12, true),
                 ];
 
                 let forecasts = [

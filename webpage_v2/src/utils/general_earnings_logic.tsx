@@ -188,16 +188,18 @@ const printValueQtrOrCml = (value: EarningsValue): string => {
     }
 }
 
-export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter: number, textLength: number): string {
+export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter: number, textLength: number, singleColumn: boolean): string {
 
     if (quarterValue.kind === "Quarter") {
 
         let valueString = printValueQtrOrCml(quarterValue);
         
-        return border([
+        return (!singleColumn)
+            ? border([
             spacer(quarterValue.period,12, "left"),
             spacer(valueString, textLength, "right")
-        ])
+            ])
+            : spacer(valueString + " |", textLength, "right")
     } else {
         return "";
     }
@@ -228,7 +230,7 @@ function printCumulativeValues(cmlValues: Earnings[], fiscalYear: string, curren
         return cumulatives 
 };
 
-export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter: number, textLength: number): string {
+export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter: number, textLength: number, singleColumn: boolean): string {
 
     if (cmlValue.kind === "Cumulative" && cmlValue.period !== "1st Quarter") {
 
@@ -240,10 +242,12 @@ export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter:
 
         let valueString = printValueQtrOrCml(cmlValue);
 
-        return border([
-            spacer(cmlPeriod, 12,"left"),
-            spacer(valueString, textLength,"right")
-        ])
+        return (!singleColumn)
+            ? border([
+                spacer(cmlPeriod, 12,"left"),
+                spacer(valueString, textLength,"right")
+            ])
+            : spacer(valueString + " |", textLength, "right")
     } else {
         return "";
     }
@@ -446,7 +450,7 @@ export function printSectionHeaderV2 (value: EarningsV2, useYoY: boolean): strin
 
     let yoyHeader = spacer("YoY% |",12,"right");
 
-    return (useYoY)
+    return (!useYoY)
         ? liner(printTextBlock(value.name,28),"−","both",true)
         : liner(printTextBlock(value.name,28) + yoyHeader,"−","both",true,40) 
 }
