@@ -271,6 +271,29 @@ const collectionNintendoV2: EarningsJSONV2[] = [
     nintendoConsolidatedEarnings2004,
 ];
 
+const collectionNintendoV3 = new Map<number, EarningsJSONV2>([
+    [0, nintendoConsolidatedEarnings2023],
+    [1, nintendoConsolidatedEarnings2022],
+    [2, nintendoConsolidatedEarnings2021],
+    [3, nintendoConsolidatedEarnings2020],
+    [4, nintendoConsolidatedEarnings2019],
+    [5, nintendoConsolidatedEarnings2018],
+    [6, nintendoConsolidatedEarnings2017],
+    [7, nintendoConsolidatedEarnings2016],
+    [8, nintendoConsolidatedEarnings2015],
+    [9, nintendoConsolidatedEarnings2014],
+    [10, nintendoConsolidatedEarnings2013],
+    [11, nintendoConsolidatedEarnings2012],
+    [12, nintendoConsolidatedEarnings2011],
+    [13, nintendoConsolidatedEarnings2010],
+    [14, nintendoConsolidatedEarnings2009],
+    [15, nintendoConsolidatedEarnings2008],
+    [16, nintendoConsolidatedEarnings2007],
+    [17, nintendoConsolidatedEarnings2006],
+    [18, nintendoConsolidatedEarnings2005],
+    [19, nintendoConsolidatedEarnings2004],
+])
+
 const collectionCapcom: EarningsJSON[] = [
     capcomEarnings2023,
     capcomEarnings2022,
@@ -957,21 +980,15 @@ function consolidatedEarningsListV2Array(collection: EarningsJSONV2[], headerLen
 }
 
 
-export const nintendoConsolidatedEarningsList = new Map<number, EarningsJSONV2 | string>()
+export const nintendoConsolidatedEarningsList = new Map<number, string>()
 
 let averageTimeMapOverObject = 0; 
 // for (let index = 0; index < 100; index++) {
     
 const a0 = performance.now();
 
-    for (let i = 0; i < collectionNintendoV2.length; i++) {
-        nintendoConsolidatedEarningsList.set(i, collectionNintendoV2[i])
-    }
-
-    // collectionNintendoV2.map((elem, index) => nintendoConsolidatedEarningsList.set(index, elem))
-
-nintendoConsolidatedEarningsList.forEach((value, key, map) => {
-    map.set(key,consolidatedEarningsListV2Map(value as EarningsJSONV2, map.get(key+1) as EarningsJSONV2,35))
+collectionNintendoV3.forEach((value, key, map) => {
+    nintendoConsolidatedEarningsList.set(key,consolidatedEarningsListV2Map(value, map.get(key+1),35))
 })
 const a1 = performance.now();
 averageTimeMapOverObject = averageTimeMapOverObject + (a1 - a0);
