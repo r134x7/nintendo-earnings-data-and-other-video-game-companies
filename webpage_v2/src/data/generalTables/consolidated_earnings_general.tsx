@@ -773,27 +773,31 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
 
                 let sectionHeader = printSectionHeaderV2(opMargin.get(0) as EarningsV2, false);
 
-                let quarters = [
-                    printQuarterValuesV2(opMargin.get(0)?.Q1QtrValue ?? none, currentQuarter, 13),
-                    printQuarterValuesV2(opMargin.get(0)?.Q2QtrValue ?? none, currentQuarter, 13),
-                    printQuarterValuesV2(opMargin.get(0)?.Q3QtrValue ?? none, currentQuarter, 13),
-                    printQuarterValuesV2(opMargin.get(0)?.Q4QtrValue ?? none, currentQuarter, 13),
-                ];
+                let quarters = printQuarterSection(
+                    opMargin.get(0)?.Q1QtrValue ?? none,
+                    opMargin.get(0)?.Q2QtrValue ?? none,
+                    opMargin.get(0)?.Q3QtrValue ?? none,
+                    opMargin.get(0)?.Q4QtrValue ?? none,
+                    currentQuarter,
+                    13
+                );
                 
-                let cumulatives = [
-                    printCumulativeValuesV2(opMargin.get(0)?.Q1CmlValue ?? none, currentQuarter, 13),
-                    printCumulativeValuesV2(opMargin.get(0)?.Q2CmlValue ?? none, currentQuarter, 13),
-                    printCumulativeValuesV2(opMargin.get(0)?.Q3CmlValue ?? none, currentQuarter, 13),
-                    printCumulativeValuesV2(opMargin.get(0)?.Q4CmlValue ?? none, currentQuarter, 13),
-                ];
+                let cumulatives = printCmlSection(
+                    opMargin.get(0)?.Q2CmlValue ?? none,
+                    opMargin.get(0)?.Q3CmlValue ?? none,
+                    opMargin.get(0)?.Q4CmlValue ?? none,
+                    currentQuarter, 
+                    13
+                );
 
-                let forecasts = [
-                    printForecastValuesV2(opMargin.get(0)?.forecastThisFY ?? none, 13),
-                    printForecastValuesV2(opMargin.get(0)?.forecastRevision1 ?? none, 13),
-                    printForecastValuesV2(opMargin.get(0)?.forecastRevision2 ?? none, 13),
-                    printForecastValuesV2(opMargin.get(0)?.forecastRevision3 ?? none, 13),
-                    printForecastValuesV2(opMargin.get(0)?.forecastNextFY ?? none, 13),
-                ];
+                let forecasts = printForecastSection(
+                    opMargin.get(0)?.forecastThisFY ?? none,
+                    opMargin.get(0)?.forecastRevision1 ?? none,
+                    opMargin.get(0)?.forecastRevision2 ?? none,
+                    opMargin.get(0)?.forecastRevision3 ?? none,
+                    opMargin.get(0)?.forecastNextFY ?? none,
+                    13
+                );
 
                 let output = printReduceSection(
                     sectionHeader,
@@ -807,41 +811,48 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
 
                 let sectionHeader = printSectionHeaderV2(dataThisFY.get(key-1) as EarningsV2, true)
 
-                let quarters = [
-                    printQuarterValuesV2(dataThisFY.get(key-1)?.Q1QtrValue ?? none, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY.get(key-1)?.Q2QtrValue ?? none, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY.get(key-1)?.Q3QtrValue ?? none, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY.get(key-1)?.Q4QtrValue ?? none, currentQuarter, 13),
-                ];
+                let quarters = printQuarterSection(
+                    dataThisFY.get(key-1)?.Q1QtrValue ?? none,
+                    dataThisFY.get(key-1)?.Q2QtrValue ?? none,
+                    dataThisFY.get(key-1)?.Q3QtrValue ?? none,
+                    dataThisFY.get(key-1)?.Q4QtrValue ?? none,
+                    currentQuarter, 
+                    13
+                );
 
-                let quarterPercentages = [
-                    printYoYV2(percentagesThisFY.get(key-1)?.Q1QtrValue ?? none, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY.get(key-1)?.Q2QtrValue ?? none, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY.get(key-1)?.Q3QtrValue ?? none, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY.get(key-1)?.Q4QtrValue ?? none, currentQuarter, 12),
-                ];
+                let quarterPercentages = printQuarterYoYSection(
+                    percentagesThisFY.get(key-1)?.Q1QtrValue ?? none,
+                    percentagesThisFY.get(key-1)?.Q2QtrValue ?? none,
+                    percentagesThisFY.get(key-1)?.Q3QtrValue ?? none,
+                    percentagesThisFY.get(key-1)?.Q4QtrValue ?? none,
+                    currentQuarter, 
+                    12
+                );
 
-                let cumulatives = [
-                    printCumulativeValuesV2(dataThisFY.get(key-1)?.Q1CmlValue ?? none, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY.get(key-1)?.Q2CmlValue ?? none, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY.get(key-1)?.Q3CmlValue ?? none, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY.get(key-1)?.Q4CmlValue ?? none, currentQuarter, 13),
-                ];
+                let cumulatives = printCmlSection(
+                    dataThisFY.get(key-1)?.Q2CmlValue ?? none,
+                    dataThisFY.get(key-1)?.Q3CmlValue ?? none,
+                    dataThisFY.get(key-1)?.Q4CmlValue ?? none,
+                    currentQuarter, 
+                    13
+                );
 
-                let cumulativePercentages = [
-                    printYoYV2(percentagesThisFY.get(key-1)?.Q1CmlValue ?? none, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY.get(key-1)?.Q2CmlValue ?? none, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY.get(key-1)?.Q3CmlValue ?? none, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY.get(key-1)?.Q4CmlValue ?? none, currentQuarter, 12),
-                ];
+                let cumulativePercentages = printCmlYoYSection(
+                    percentagesThisFY.get(key-1)?.Q2CmlValue ?? none,
+                    percentagesThisFY.get(key-1)?.Q3CmlValue ?? none,
+                    percentagesThisFY.get(key-1)?.Q4CmlValue ?? none,
+                    currentQuarter, 
+                    12
+                );
 
-                let forecasts = [
-                    printForecastValuesV2(dataThisFY.get(key-1)?.forecastThisFY ?? none, 13),
-                    printForecastValuesV2(dataThisFY.get(key-1)?.forecastRevision1 ?? none, 13),
-                    printForecastValuesV2(dataThisFY.get(key-1)?.forecastRevision2 ?? none, 13),
-                    printForecastValuesV2(dataThisFY.get(key-1)?.forecastRevision3 ?? none, 13),
-                    printForecastValuesV2(dataThisFY.get(key-1)?.forecastNextFY ?? none, 13),
-                ];
+                let forecasts = printForecastSection(
+                    dataThisFY.get(key-1)?.forecastThisFY ?? none,
+                    dataThisFY.get(key-1)?.forecastRevision1 ?? none,
+                    dataThisFY.get(key-1)?.forecastRevision2 ?? none,
+                    dataThisFY.get(key-1)?.forecastRevision3 ?? none,
+                    dataThisFY.get(key-1)?.forecastNextFY ?? none,
+                    13
+                );
 
                 let output = printReduceSection(
                     sectionHeader,
