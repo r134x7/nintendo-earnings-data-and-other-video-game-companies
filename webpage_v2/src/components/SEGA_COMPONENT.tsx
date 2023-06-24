@@ -91,7 +91,7 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
             {
                 name: "Consolidated Operating Results",
                 value: segaConsolidatedEarningsList.get(index),
-                graph: <GRAPH_CONSOLIDATED_EARNINGS setData={segaConsolidatedEarningsGraphList[index]} />
+                graph: <GRAPH_CONSOLIDATED_EARNINGS setData={segaConsolidatedEarningsGraphList.get(index)} />
             },
             {
                 name: "Software Sales",

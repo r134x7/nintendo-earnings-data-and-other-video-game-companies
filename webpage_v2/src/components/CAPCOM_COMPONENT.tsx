@@ -136,7 +136,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
             {
                 name: "Consolidated Financial Results",
                 value: capcomConsolidatedEarningsList.get(index),
-                graph: <GRAPH_CONSOLIDATED_EARNINGS setData={capcomConsolidatedEarningsGraphList[index]} />
+                graph: <GRAPH_CONSOLIDATED_EARNINGS setData={capcomConsolidatedEarningsGraphList.get(index)} />
             },
             {
                 name: "Software Sales",

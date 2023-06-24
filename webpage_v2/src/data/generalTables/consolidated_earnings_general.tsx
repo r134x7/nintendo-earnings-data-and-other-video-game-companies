@@ -816,41 +816,70 @@ function consolidatedEarningsGraphListV2(collection: EarningsJSONV2, lastFYColle
 
 export const nintendoConsolidatedEarningsList = new Map<number, string>();
 
-collectionNintendoV2.forEach((value, key, map) => nintendoConsolidatedEarningsList.set(key,consolidatedEarningsListV2Map(value, map.get(key+1),35)));
-
 export const nintendoConsolidatedEarningsGraphList = new Map();
 
-collectionNintendoV2.forEach((value, key, map) => nintendoConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1))))
+collectionNintendoV2.forEach((value, key, map) => {
+
+    nintendoConsolidatedEarningsList.set(key,consolidatedEarningsListV2Map(value, map.get(key+1),35))
+
+    nintendoConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1)))
+});
 
 export const capcomConsolidatedEarningsList = new Map<number, string>();
 
-collectionCapcomV2.forEach((value, key, map) => capcomConsolidatedEarningsList.set(key, consolidatedEarningsListV2Map(value, map.get(key+1), 35)))
+export const capcomConsolidatedEarningsGraphList = new Map();
 
-export const capcomConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionCapcom);
+collectionCapcomV2.forEach((value, key, map) => {
+
+    capcomConsolidatedEarningsList.set(key, consolidatedEarningsListV2Map(value, map.get(key+1), 35))
+
+    capcomConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1)))
+});
 
 export const bandaiNamcoConsolidatedEarningsList = new Map<number, string>();
 
-collectionBandaiNamcoV2.forEach((value, key, map) => bandaiNamcoConsolidatedEarningsList.set(key, consolidatedEarningsListV2Map(value, map.get(key+1), 38)))
+export const bandaiNamcoConsolidatedEarningsGraphList = new Map();
 
-export const bandaiNamcoConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionBandaiNamco);
+collectionBandaiNamcoV2.forEach((value, key, map) => {
+
+    bandaiNamcoConsolidatedEarningsList.set(key, consolidatedEarningsListV2Map(value, map.get(key+1), 38))
+
+    bandaiNamcoConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1)))
+})
+
 
 export const koeiTecmoConsolidatedEarningsList = new Map<number, string>();
 
-collectionKoeiTecmoV2.forEach((value, key, map) => koeiTecmoConsolidatedEarningsList.set(key, consolidatedEarningsListV2Map(value, map.get(key+1), 42)))
+export const koeiTecmoConsolidatedEarningsGraphList = new Map();
 
-export const koeiTecmoConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionKoeiTecmo);
+collectionKoeiTecmoV2.forEach((value, key, map) => {
+
+    koeiTecmoConsolidatedEarningsList.set(key, consolidatedEarningsListV2Map(value, map.get(key+1), 42))
+
+    koeiTecmoConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1)))
+})
 
 export const segaConsolidatedEarningsList = new Map<number, string>();
 
-collectionSegaSammyV2.forEach((value, key, map) => segaConsolidatedEarningsList.set(key, consolidatedEarningsListV2Map(value, map.get(key+1), 38)))
+export const segaConsolidatedEarningsGraphList = new Map();
 
-export const segaConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionSegaSammy);
+collectionSegaSammyV2.forEach((value, key, map) => {
+
+    segaConsolidatedEarningsList.set(key, consolidatedEarningsListV2Map(value, map.get(key+1), 38))
+
+    segaConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1)))
+})
 
 export const squareEnixConsolidatedEarningsList = new Map<number, string>();
 
-collectionSquareEnixV2.forEach((value, key, map) => squareEnixConsolidatedEarningsList.set(key, consolidatedEarningsListV2Map(value, map.get(key+1), 42)))
+export const squareEnixConsolidatedEarningsGraphList = new Map();
 
-export const squareEnixConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionSquareEnix);
+collectionSquareEnixV2.forEach((value, key, map) => {
+
+    squareEnixConsolidatedEarningsList.set(key, consolidatedEarningsListV2Map(value, map.get(key+1), 42))
+
+    squareEnixConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1)))
+})
 
 function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollection: EarningsJSONV2 | undefined, headerLength: number): string {
 

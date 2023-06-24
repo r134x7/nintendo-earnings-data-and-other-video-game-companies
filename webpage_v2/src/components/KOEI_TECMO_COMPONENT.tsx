@@ -26,7 +26,7 @@ export default function KOEI_TECMO_COMPONENT(props: {setIndex: number; yearLengt
             {
                 name: "Consolidated Operating Results",
                 value: koeiTecmoConsolidatedEarningsList.get(index),
-                graph: <GRAPH_CONSOLIDATED_EARNINGS setData={koeiTecmoConsolidatedEarningsGraphList[index]} />
+                graph: <GRAPH_CONSOLIDATED_EARNINGS setData={koeiTecmoConsolidatedEarningsGraphList.get(index)} />
             },
             {
                 name: "Software Sales",

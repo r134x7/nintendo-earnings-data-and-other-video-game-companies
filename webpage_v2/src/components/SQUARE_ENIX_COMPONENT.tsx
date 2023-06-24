@@ -70,7 +70,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
             {
                 name: "Consolidated Financial Results",
                 value: squareEnixConsolidatedEarningsList.get(index),
-                graph: <GRAPH_CONSOLIDATED_EARNINGS setData={squareEnixConsolidatedEarningsGraphList[index]} />
+                graph: <GRAPH_CONSOLIDATED_EARNINGS setData={squareEnixConsolidatedEarningsGraphList.get(index)} />
             },
             {
                 name: "Software Sales",
