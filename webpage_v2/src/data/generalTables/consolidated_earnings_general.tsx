@@ -816,7 +816,7 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
         return [printOne, ...printEach.values()].reduce((acc, next) => acc + "\n" + next)
 };
 
-function getData(dataCollectionThisFY: EarningsJSONV2 | undefined, dataThisFYLengthForLastFY: number): Map<number, EarningsV2> {
+export function getData(dataCollectionThisFY: EarningsJSONV2 | undefined, dataThisFYLengthForLastFY: number): Map<number, EarningsV2> {
 
     const dataMap = new Map<number, EarningsV2>();
 
