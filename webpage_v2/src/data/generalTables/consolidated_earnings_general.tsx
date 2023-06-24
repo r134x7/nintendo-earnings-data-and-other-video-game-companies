@@ -872,12 +872,13 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
                     12
                 );
 
-                let cumulatives = [
-                    printCumulativeValuesV2(dataThisFY.get(key)?.Q1CmlValue ?? none, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY.get(key)?.Q2CmlValue ?? none, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY.get(key)?.Q3CmlValue ?? none, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY.get(key)?.Q4CmlValue ?? none, currentQuarter, 13),
-                ];
+                let cumulatives = printCmlSection(
+                    dataThisFY.get(key)?.Q2CmlValue ?? none,
+                    dataThisFY.get(key)?.Q3CmlValue ?? none,
+                    dataThisFY.get(key)?.Q4CmlValue ?? none,
+                    currentQuarter,
+                    13
+                )
 
                 let cumulativePercentages = [
                     printYoYV2(percentagesThisFY.get(key)?.Q1CmlValue ?? none, currentQuarter, 12),
@@ -942,5 +943,14 @@ function printQuarterYoYSection(q1: EarningsValue, q2: EarningsValue, q3: Earnin
         printYoYV2(q2, currentQuarter, textLength),
         printYoYV2(q3, currentQuarter, textLength),
         printYoYV2(q4, currentQuarter, textLength),
+    ]
+}
+
+function printCmlSection(firstHalf: EarningsValue, firstThreeQuarters: EarningsValue, fyCumulative: EarningsValue, currentQuarter: number, textLength: number) {
+
+    return [
+        printCumulativeValuesV2(firstHalf, currentQuarter, textLength),
+        printCumulativeValuesV2(firstThreeQuarters, currentQuarter, textLength),
+        printCumulativeValuesV2(fyCumulative, currentQuarter, textLength),
     ]
 }
