@@ -1015,30 +1015,58 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
         };
 
 
-        const dataThisFY: EarningsV2[] = collection.data.map(value => valuesMakeV2(value, collection.fiscalYear));
+        // const dataThisFY: EarningsV2[] = collection.data.map(value => valuesMakeV2(value, collection.fiscalYear));
+        const dataThisFY = new Map<number, EarningsV2>();
+        collection.data.map((elem, index) => dataThisFY.set(index, valuesMakeV2(elem, collection.fiscalYear)))
 
-        const dataLastFY: EarningsV2[] = (!lastFYCollection) 
-            ? collection.data.map(value => valuesMakeV2(undefined, collection.fiscalYear)) 
-            : lastFYCollection.data.map(value => valuesMakeV2(value, lastFYCollection.fiscalYear));
+        // const dataLastFY: EarningsV2[] = (!lastFYCollection) 
+        //     ? collection.data.map(value => valuesMakeV2(undefined, collection.fiscalYear)) 
+        //     : lastFYCollection.data.map(value => valuesMakeV2(value, lastFYCollection.fiscalYear));
+        const dataLastFY = new Map<number, EarningsV2>();
+        if (!lastFYCollection) {
+            collection.data.map((elem, index) => dataLastFY.set(index, valuesMakeV2(undefined, collection.fiscalYear)));
+        } else {
+            lastFYCollection.data.map((elem, index) => dataLastFY.set(index, valuesMakeV2(elem, lastFYCollection.fiscalYear)))
+        }
 
-        const percentagesThisFY: EarningsV2[] = dataThisFY.map((elem, index) => {
+        // const percentagesThisFY: EarningsV2[] = dataThisFY.map((elem, index) => {
+        //     return {
+        //         ...elem,
+        //         Q1QtrValue: yearOnYearCalculationV2(elem.Q1QtrValue, dataLastFY[index].Q1QtrValue, "Quarter"),
+        //         Q2QtrValue: yearOnYearCalculationV2(elem.Q2QtrValue, dataLastFY[index].Q2QtrValue, "Quarter"),
+        //         Q3QtrValue: yearOnYearCalculationV2(elem.Q3QtrValue, dataLastFY[index].Q3QtrValue, "Quarter"),
+        //         Q4QtrValue: yearOnYearCalculationV2(elem.Q4QtrValue, dataLastFY[index].Q4QtrValue, "Quarter"),
+        //         Q1CmlValue: yearOnYearCalculationV2(elem.Q1CmlValue, dataLastFY[index].Q1CmlValue, "Cumulative"),
+        //         Q2CmlValue: yearOnYearCalculationV2(elem.Q2CmlValue, dataLastFY[index].Q2CmlValue, "Cumulative"),
+        //         Q3CmlValue: yearOnYearCalculationV2(elem.Q3CmlValue, dataLastFY[index].Q3CmlValue, "Cumulative"),
+        //         Q4CmlValue: yearOnYearCalculationV2(elem.Q4CmlValue, dataLastFY[index].Q4CmlValue, "Cumulative"),
+        //         forecastThisFY: yearOnYearCalculationV2(elem.forecastThisFY, dataLastFY[index].forecastThisFY, "Forecast"),
+        //         forecastRevision1: yearOnYearCalculationV2(elem.forecastRevision1, dataLastFY[index].forecastRevision1, "Forecast"),
+        //         forecastRevision2: yearOnYearCalculationV2(elem.forecastRevision2, dataLastFY[index].forecastRevision2, "Forecast"),
+        //         forecastRevision3: yearOnYearCalculationV2(elem.forecastRevision3, dataLastFY[index].forecastRevision3, "Forecast"),
+        //         forecastNextFY: yearOnYearCalculationV2(elem.forecastNextFY, dataLastFY[index].forecastNextFY, "Forecast"),
+        //     } satisfies EarningsV2
+        // })
+
+        const percentagesThisFY = new Map<number, EarningsV2>(); 
+        dataThisFY.forEach((value, key, map) => {
             return {
-                ...elem,
-                Q1QtrValue: yearOnYearCalculationV2(elem.Q1QtrValue, dataLastFY[index].Q1QtrValue, "Quarter"),
-                Q2QtrValue: yearOnYearCalculationV2(elem.Q2QtrValue, dataLastFY[index].Q2QtrValue, "Quarter"),
-                Q3QtrValue: yearOnYearCalculationV2(elem.Q3QtrValue, dataLastFY[index].Q3QtrValue, "Quarter"),
-                Q4QtrValue: yearOnYearCalculationV2(elem.Q4QtrValue, dataLastFY[index].Q4QtrValue, "Quarter"),
-                Q1CmlValue: yearOnYearCalculationV2(elem.Q1CmlValue, dataLastFY[index].Q1CmlValue, "Cumulative"),
-                Q2CmlValue: yearOnYearCalculationV2(elem.Q2CmlValue, dataLastFY[index].Q2CmlValue, "Cumulative"),
-                Q3CmlValue: yearOnYearCalculationV2(elem.Q3CmlValue, dataLastFY[index].Q3CmlValue, "Cumulative"),
-                Q4CmlValue: yearOnYearCalculationV2(elem.Q4CmlValue, dataLastFY[index].Q4CmlValue, "Cumulative"),
-                forecastThisFY: yearOnYearCalculationV2(elem.forecastThisFY, dataLastFY[index].forecastThisFY, "Forecast"),
-                forecastRevision1: yearOnYearCalculationV2(elem.forecastRevision1, dataLastFY[index].forecastRevision1, "Forecast"),
-                forecastRevision2: yearOnYearCalculationV2(elem.forecastRevision2, dataLastFY[index].forecastRevision2, "Forecast"),
-                forecastRevision3: yearOnYearCalculationV2(elem.forecastRevision3, dataLastFY[index].forecastRevision3, "Forecast"),
-                forecastNextFY: yearOnYearCalculationV2(elem.forecastNextFY, dataLastFY[index].forecastNextFY, "Forecast"),
+                ...value,
+                Q1QtrValue: yearOnYearCalculationV2(value.Q1QtrValue, dataLastFY.get(key)?.Q1QtrValue ?? { kind:"Nothing" }, "Quarter"),
+                Q2QtrValue: yearOnYearCalculationV2(value.Q2QtrValue, dataLastFY.get(key)?.Q2QtrValue ?? { kind:"Nothing" }, "Quarter"),
+                Q3QtrValue: yearOnYearCalculationV2(value.Q3QtrValue, dataLastFY.get(key)?.Q3QtrValue ?? { kind:"Nothing" }, "Quarter"),
+                Q4QtrValue: yearOnYearCalculationV2(value.Q4QtrValue, dataLastFY.get(key)?.Q4QtrValue ?? { kind:"Nothing" }, "Quarter"),
+                Q1CmlValue: yearOnYearCalculationV2(value.Q1CmlValue, dataLastFY.get(key)?.Q1CmlValue ?? { kind:"Nothing" }, "Cumulative"),
+                Q2CmlValue: yearOnYearCalculationV2(value.Q2CmlValue, dataLastFY.get(key)?.Q2CmlValue ?? { kind:"Nothing" }, "Cumulative"),
+                Q3CmlValue: yearOnYearCalculationV2(value.Q3CmlValue, dataLastFY.get(key)?.Q3CmlValue ?? { kind:"Nothing" }, "Cumulative"),
+                Q4CmlValue: yearOnYearCalculationV2(value.Q4CmlValue, dataLastFY.get(key)?.Q4CmlValue ?? { kind:"Nothing" }, "Cumulative"),
+                forecastThisFY: yearOnYearCalculationV2(value.forecastThisFY, dataLastFY.get(key)?.forecastThisFY ?? { kind:"Nothing" }, "Forecast"),
+                forecastRevision1: yearOnYearCalculationV2(value.forecastRevision1, dataLastFY.get(key)?.forecastRevision1 ?? { kind:"Nothing" }, "Forecast"),
+                forecastRevision2: yearOnYearCalculationV2(value.forecastRevision2, dataLastFY.get(key)?.forecastRevision2 ?? { kind:"Nothing" }, "Forecast"),
+                forecastRevision3: yearOnYearCalculationV2(value.forecastRevision3, dataLastFY.get(key)?.forecastRevision3 ?? { kind:"Nothing" }, "Forecast"),
+                forecastNextFY: yearOnYearCalculationV2(value.forecastNextFY, dataLastFY.get(key)?.forecastNextFY ?? { kind:"Nothing" }, "Forecast"),
             } satisfies EarningsV2
-        })
+        });
 
         const printOne = headerPrint([
             header.companyName + " | " + header.fiscalYear,

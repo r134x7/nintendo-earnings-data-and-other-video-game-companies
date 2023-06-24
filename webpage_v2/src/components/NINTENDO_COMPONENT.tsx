@@ -151,7 +151,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
             {
                 name: "Consolidated Operating Results",
                 // value: nintendoConsolidatedEarningsList?.[index],
-                value: nintendoConsolidatedEarningsList.get(index) as string,
+                value: nintendoConsolidatedEarningsList.get(index),
                 graph: <GRAPH_CONSOLIDATED_EARNINGS setData={nintendoConsolidatedEarningsGraphList[index]} />
             },
             {
