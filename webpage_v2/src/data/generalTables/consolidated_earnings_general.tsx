@@ -1,11 +1,5 @@
 import {
-    Earnings,
     Header,
-    printOpMargin,
-    operatingMarginCalculation,
-    quarterlyCalculation,
-    printAll,
-    // new functions
     EarningsV2,
     forecastOutput,
     operatingMarginCalculationV2,
@@ -139,13 +133,6 @@ import squareEnix2006 from "../squareEnix/Consolidated_Earnings/consolidated_ear
 import squareEnix2005 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2005.json";
 import squareEnix2004 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2004.json";
 
-export type EarningsJSON = {
-    currentQuarter: number,
-    companyName: string,
-    fiscalYear: string,
-    data: EarningsMake[],
-};
-
 export type EarningsJSONV2 = {
     currentQuarter: number,
     companyName: string,
@@ -153,20 +140,7 @@ export type EarningsJSONV2 = {
     data: EarningsMakeV2[],
 };
 
-type EarningsMake = {
-        name: string,
-        Q1CmlValue: number,
-        Q2CmlValue: number,
-        Q3CmlValue: number,
-        Q4CmlValue: number,
-        forecastThisFY?: number | null,
-        forecastRevision1?: number | null,
-        forecastRevision2?: number | null,
-        forecastRevision3?: number | null,
-        forecastNextFY?: number | null, 
-}; 
-
-type EarningsMakeV2 = {
+export type EarningsMakeV2 = {
         name: string,
         Q1CmlValue: number | string,
         Q2CmlValue: number | string,
@@ -179,7 +153,7 @@ type EarningsMakeV2 = {
         forecastNextFY?: number | null | string, 
 }; 
 
-function nothingCheck(
+export function nothingCheck(
     value: number | string | null | undefined, 
     kind: "Quarter" | "Cumulative" | "Forecast",
     units: "units" | "currency" | "percentage",
@@ -225,29 +199,6 @@ function nothingCheck(
     }
 }
 
-const collectionNintendo: EarningsJSON[] = [
-    nintendoConsolidatedEarnings2023,
-    nintendoConsolidatedEarnings2022,
-    nintendoConsolidatedEarnings2021,
-    nintendoConsolidatedEarnings2020,
-    nintendoConsolidatedEarnings2019,
-    nintendoConsolidatedEarnings2018,
-    nintendoConsolidatedEarnings2017,
-    nintendoConsolidatedEarnings2016,
-    nintendoConsolidatedEarnings2015,
-    nintendoConsolidatedEarnings2014,
-    nintendoConsolidatedEarnings2013,
-    nintendoConsolidatedEarnings2012,
-    nintendoConsolidatedEarnings2011,
-    nintendoConsolidatedEarnings2010,
-    nintendoConsolidatedEarnings2009,
-    nintendoConsolidatedEarnings2008,
-    nintendoConsolidatedEarnings2007,
-    nintendoConsolidatedEarnings2006,
-    nintendoConsolidatedEarnings2005,
-    nintendoConsolidatedEarnings2004,
-];
-
 const collectionNintendoV2 = new Map<number, EarningsJSONV2>([
     [0, nintendoConsolidatedEarnings2023],
     [1, nintendoConsolidatedEarnings2022],
@@ -270,29 +221,6 @@ const collectionNintendoV2 = new Map<number, EarningsJSONV2>([
     [18, nintendoConsolidatedEarnings2005],
     [19, nintendoConsolidatedEarnings2004],
 ]);
-
-const collectionCapcom: EarningsJSON[] = [
-    capcomEarnings2023,
-    capcomEarnings2022,
-    capcomEarnings2021,
-    capcomEarnings2020,
-    capcomEarnings2019,
-    capcomEarnings2018,
-    capcomEarnings2017,
-    capcomEarnings2016,
-    capcomEarnings2015,
-    capcomEarnings2014,
-    capcomEarnings2013,
-    capcomEarnings2012,
-    capcomEarnings2011,
-    capcomEarnings2010,
-    capcomEarnings2009,
-    capcomEarnings2008,
-    capcomEarnings2007,
-    capcomEarnings2006,
-    capcomEarnings2005,
-    // capcomEarnings2004,
-];
 
 const collectionCapcomV2 = new Map<number, EarningsJSONV2>([
     [0, capcomEarnings2023],
@@ -317,27 +245,6 @@ const collectionCapcomV2 = new Map<number, EarningsJSONV2>([
     [19, capcomEarnings2004],
 ]);
 
-const collectionBandaiNamco: EarningsJSON[] = [
-    bandaiNamco2023,
-    bandaiNamco2022,
-    bandaiNamco2021,
-    bandaiNamco2020,
-    bandaiNamco2019,
-    bandaiNamco2018,
-    bandaiNamco2017,
-    bandaiNamco2016,
-    bandaiNamco2015,
-    bandaiNamco2014,
-    bandaiNamco2013,
-    bandaiNamco2012,
-    bandaiNamco2011,
-    bandaiNamco2010,
-    bandaiNamco2009,
-    bandaiNamco2008,
-    bandaiNamco2007,
-    // bandaiNamco2006,
-];
-
 const collectionBandaiNamcoV2 = new Map<number, EarningsJSONV2>([
     [0, bandaiNamco2023],
     [1, bandaiNamco2022],
@@ -358,28 +265,6 @@ const collectionBandaiNamcoV2 = new Map<number, EarningsJSONV2>([
     [16, bandaiNamco2007],
     [17, bandaiNamco2006],
 ]);
-
-const collectionSegaSammy: EarningsJSON[] = [
-    sega2023,
-    sega2022,
-    sega2021,
-    sega2020,
-    sega2019,
-    sega2018,
-    sega2017,
-    sega2016,
-    sega2015,
-    sega2014,
-    sega2013,
-    sega2012,
-    sega2011,
-    sega2010,
-    sega2009,
-    sega2008,
-    sega2007,
-    sega2006,
-    // sega2005,
-];
 
 const collectionSegaSammyV2 = new Map<number, EarningsJSONV2>([
     [0, sega2023],
@@ -403,23 +288,6 @@ const collectionSegaSammyV2 = new Map<number, EarningsJSONV2>([
     [18, sega2005],
 ]);
 
-const collectionKoeiTecmo: EarningsJSON[] = [
-    koeiTecmo2023,
-    koeiTecmo2022,
-    koeiTecmo2021,
-    koeiTecmo2020,
-    koeiTecmo2019,
-    koeiTecmo2018,
-    koeiTecmo2017,
-    koeiTecmo2016,
-    koeiTecmo2015,
-    koeiTecmo2014,
-    koeiTecmo2013,
-    koeiTecmo2012,
-    koeiTecmo2011,
-    koeiTecmo2010,
-];
-
 const collectionKoeiTecmoV2 = new Map<number, EarningsJSONV2>([
     [0, koeiTecmo2023],
     [1, koeiTecmo2022],
@@ -436,29 +304,6 @@ const collectionKoeiTecmoV2 = new Map<number, EarningsJSONV2>([
     [12, koeiTecmo2011],
     [13, koeiTecmo2010],
 ]);
-
-const collectionSquareEnix: EarningsJSON[] = [
-    squareEnix2023,
-    squareEnix2022,
-    squareEnix2021,
-    squareEnix2020,
-    squareEnix2019,
-    squareEnix2018,
-    squareEnix2017,
-    squareEnix2016,
-    squareEnix2015,
-    squareEnix2014,
-    squareEnix2013,
-    squareEnix2012,
-    squareEnix2011,
-    squareEnix2010,
-    squareEnix2009,
-    squareEnix2008,
-    squareEnix2007,
-    squareEnix2006,
-    squareEnix2005,
-    squareEnix2004,
-];
 
 const collectionSquareEnixV2 = new Map<number, EarningsJSONV2>([
     [0, squareEnix2023],
@@ -482,42 +327,6 @@ const collectionSquareEnixV2 = new Map<number, EarningsJSONV2>([
     [18, squareEnix2005],
     [19, squareEnix2004],
 ]);
-
-const valuesMake = (obj: undefined | EarningsMake): Earnings[] => {
-
-    let values: Earnings[] = [
-        {
-            name: obj?.name ?? "N/A",
-            category: "cumulative",
-            units: "currency",
-            period: "1st Quarter",
-            value: obj?.Q1CmlValue ?? 0,
-        },
-        {
-            name: obj?.name ?? "N/A",
-            category: "cumulative",
-            units: "currency",
-            period: "2nd Quarter",
-            value: obj?.Q2CmlValue ?? 0, 
-        },
-        {
-            name: obj?.name ?? "N/A",
-            category: "cumulative",
-            units: "currency", 
-            period: "3rd Quarter",
-            value: obj?.Q3CmlValue ?? 0, 
-        },
-        {
-            name: obj?.name ?? "N/A",
-            category: "cumulative",
-            units: "currency", 
-            period: "4th Quarter",
-            value: obj?.Q4CmlValue ?? 0, 
-        },
-    ];
-
-    return values 
-};
 
 function valuesMakeV2(obj: undefined | EarningsMakeV2, fiscalYear: string): EarningsV2 {
 
@@ -549,110 +358,6 @@ function valuesMakeV2(obj: undefined | EarningsMakeV2, fiscalYear: string): Earn
 
     return values
 }
-
-const forecastMake = (obj: EarningsMake, forecastLabelThisFY: string, forecastLabelNextFY: string): Earnings[] => {
-
-    let forecasts: Earnings[] = [
-        {
-            name: obj.name,
-            forecastPeriod: forecastLabelThisFY,
-            value: obj?.forecastThisFY,
-        },
-        {
-            name: obj.name,
-            forecastPeriod: "FCST Revision 1",
-            value: obj?.forecastRevision1,
-        },
-        {
-            name: obj.name,
-            forecastPeriod: "FCST Revision 2",
-            value: obj?.forecastRevision2,
-        },
-        {
-            name: obj.name,
-            forecastPeriod: "FCST Revision 3",
-            value: obj?.forecastRevision3,
-        },
-        {
-            name: obj.name,
-            forecastPeriod: forecastLabelNextFY,
-            value: obj?.forecastNextFY,
-        },
-    ].flatMap(elem => {
-        if(elem.value === undefined || elem.value === null) {
-            return []
-        }
-
-        return elem;
-    }).map(elem => {
-
-        return {
-            category: "forecast",
-            units: "currency",
-            name: elem.name,
-            period: "1st Quarter",
-            forecastPeriod: elem.forecastPeriod, 
-            value: elem.value as number, // type assertion, filter has already removed undefined values.
-        };
-    });
-    
-    return forecasts
-};
-
-const consolidatedEarningsGraphList = (collection: EarningsJSON[]) => {
-    
-return collection.map((elem, index, array) => {
-
-    // if (index === array.length-1) {
-    //     return undefined
-    // }
-
-    let dataThisFY: Earnings[][] = elem.data.map(value => valuesMake(value));
-
-    let dataLastFY: Earnings[][] = (!array[index+1]) ? elem.data.map(value => valuesMake(undefined)) : array[index+1].data.map(value => valuesMake(value));
-
-    let quartersDataThisFY: Earnings[][] = dataThisFY.map(value => quarterlyCalculation(value));
-
-    let quartersDataLastFY: Earnings[][] = dataLastFY.map(value => quarterlyCalculation(value));
-
-    let quartersOpMarginsThisAndLastFY: Earnings[][] = [ operatingMarginCalculation(quartersDataThisFY[0], quartersDataThisFY[1]), operatingMarginCalculation(quartersDataLastFY[0], quartersDataLastFY[1])];
-    
-    let cumulativeOpMarginsThisAndLastFY: Earnings[][] = [
-        operatingMarginCalculation(dataThisFY[0], dataThisFY[1]), operatingMarginCalculation(dataLastFY[0], dataLastFY[1])
-    ];
-
-    let thisFY: string = elem.fiscalYear;
-    let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
-
-    let marchThisFY: string = "March " + thisFY.slice(4);
-    let marchLastFY: string = "March " + lastFY.slice(4);
-    // this will need a refactoring...
-    const graphMake = {
-        thisFY: thisFY,
-        lastFY: lastFY,
-        marchThisFY: marchThisFY,
-        marchLastFY: marchLastFY,
-        qtrNetSalesThisFY: quartersDataThisFY[0],
-        qtrOperatingIncomeThisFY: quartersDataThisFY[1],
-        qtrOpMarginThisFY: quartersOpMarginsThisAndLastFY[0],
-        qtrNetIncomeThisFY: quartersDataThisFY[2],
-        cmlNetSalesThisFY: dataThisFY[0],
-        cmlOperatingIncomeThisFY: dataThisFY[1],
-        cmlOpMarginThisFY: cumulativeOpMarginsThisAndLastFY[0],
-        cmlNetIncomeThisFY: dataThisFY[2],
-        qtrNetSalesLastFY: quartersDataLastFY[0],
-        qtrOperatingIncomeLastFY: quartersDataLastFY[1],
-        qtrOpMarginLastFY: quartersOpMarginsThisAndLastFY[1],
-        qtrNetIncomeLastFY: quartersDataLastFY[2],
-        cmlNetSalesLastFY: dataLastFY[0],
-        cmlOperatingIncomeLastFY: dataLastFY[1],
-        cmlOpMarginLastFY: cumulativeOpMarginsThisAndLastFY[1],
-        cmlNetIncomeLastFY: dataLastFY[2],
-    };
-
-    return graphMake
-    }).filter(elem => elem !== undefined)
-};
 
 function consolidatedEarningsGraphListV2(collection: EarningsJSONV2, lastFYCollection: EarningsJSONV2 | undefined) {
 
