@@ -1004,6 +1004,8 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
 
         const makeDateLabel = dateLabel(collection?.fiscalYear ?? "N/A", collection?.currentQuarter ?? 4);
 
+        const toFix: EarningsValue = { kind:"Nothing" };
+
 
         const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
 
@@ -1050,22 +1052,23 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
 
         const percentagesThisFY = new Map<number, EarningsV2>(); 
         dataThisFY.forEach((value, key, map) => {
-            return {
+            percentagesThisFY.set(key, {
                 ...value,
-                Q1QtrValue: yearOnYearCalculationV2(value.Q1QtrValue, dataLastFY.get(key)?.Q1QtrValue ?? { kind:"Nothing" }, "Quarter"),
-                Q2QtrValue: yearOnYearCalculationV2(value.Q2QtrValue, dataLastFY.get(key)?.Q2QtrValue ?? { kind:"Nothing" }, "Quarter"),
-                Q3QtrValue: yearOnYearCalculationV2(value.Q3QtrValue, dataLastFY.get(key)?.Q3QtrValue ?? { kind:"Nothing" }, "Quarter"),
-                Q4QtrValue: yearOnYearCalculationV2(value.Q4QtrValue, dataLastFY.get(key)?.Q4QtrValue ?? { kind:"Nothing" }, "Quarter"),
-                Q1CmlValue: yearOnYearCalculationV2(value.Q1CmlValue, dataLastFY.get(key)?.Q1CmlValue ?? { kind:"Nothing" }, "Cumulative"),
-                Q2CmlValue: yearOnYearCalculationV2(value.Q2CmlValue, dataLastFY.get(key)?.Q2CmlValue ?? { kind:"Nothing" }, "Cumulative"),
-                Q3CmlValue: yearOnYearCalculationV2(value.Q3CmlValue, dataLastFY.get(key)?.Q3CmlValue ?? { kind:"Nothing" }, "Cumulative"),
-                Q4CmlValue: yearOnYearCalculationV2(value.Q4CmlValue, dataLastFY.get(key)?.Q4CmlValue ?? { kind:"Nothing" }, "Cumulative"),
-                forecastThisFY: yearOnYearCalculationV2(value.forecastThisFY, dataLastFY.get(key)?.forecastThisFY ?? { kind:"Nothing" }, "Forecast"),
-                forecastRevision1: yearOnYearCalculationV2(value.forecastRevision1, dataLastFY.get(key)?.forecastRevision1 ?? { kind:"Nothing" }, "Forecast"),
-                forecastRevision2: yearOnYearCalculationV2(value.forecastRevision2, dataLastFY.get(key)?.forecastRevision2 ?? { kind:"Nothing" }, "Forecast"),
-                forecastRevision3: yearOnYearCalculationV2(value.forecastRevision3, dataLastFY.get(key)?.forecastRevision3 ?? { kind:"Nothing" }, "Forecast"),
-                forecastNextFY: yearOnYearCalculationV2(value.forecastNextFY, dataLastFY.get(key)?.forecastNextFY ?? { kind:"Nothing" }, "Forecast"),
+                Q1QtrValue: yearOnYearCalculationV2(value.Q1QtrValue, dataLastFY.get(key)?.Q1QtrValue ?? toFix, "Quarter"),
+                Q2QtrValue: yearOnYearCalculationV2(value.Q2QtrValue, dataLastFY.get(key)?.Q2QtrValue ?? toFix, "Quarter"),
+                Q3QtrValue: yearOnYearCalculationV2(value.Q3QtrValue, dataLastFY.get(key)?.Q3QtrValue ?? toFix, "Quarter"),
+                Q4QtrValue: yearOnYearCalculationV2(value.Q4QtrValue, dataLastFY.get(key)?.Q4QtrValue ?? toFix, "Quarter"),
+                Q1CmlValue: yearOnYearCalculationV2(value.Q1CmlValue, dataLastFY.get(key)?.Q1CmlValue ?? toFix, "Cumulative"),
+                Q2CmlValue: yearOnYearCalculationV2(value.Q2CmlValue, dataLastFY.get(key)?.Q2CmlValue ?? toFix, "Cumulative"),
+                Q3CmlValue: yearOnYearCalculationV2(value.Q3CmlValue, dataLastFY.get(key)?.Q3CmlValue ?? toFix, "Cumulative"),
+                Q4CmlValue: yearOnYearCalculationV2(value.Q4CmlValue, dataLastFY.get(key)?.Q4CmlValue ?? toFix, "Cumulative"),
+                forecastThisFY: yearOnYearCalculationV2(value.forecastThisFY, dataLastFY.get(key)?.forecastThisFY ?? toFix, "Forecast"),
+                forecastRevision1: yearOnYearCalculationV2(value.forecastRevision1, dataLastFY.get(key)?.forecastRevision1 ?? toFix, "Forecast"),
+                forecastRevision2: yearOnYearCalculationV2(value.forecastRevision2, dataLastFY.get(key)?.forecastRevision2 ?? toFix, "Forecast"),
+                forecastRevision3: yearOnYearCalculationV2(value.forecastRevision3, dataLastFY.get(key)?.forecastRevision3 ?? toFix, "Forecast"),
+                forecastNextFY: yearOnYearCalculationV2(value.forecastNextFY, dataLastFY.get(key)?.forecastNextFY ?? toFix, "Forecast"),
             } satisfies EarningsV2
+            )
         });
 
         const printOne = headerPrint([
@@ -1073,98 +1076,258 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
             header.title
         ],headerLength) + "\n" + printDateLabel;
 
-        const printEach = Array.from({length: dataThisFY.length + 1}, (v, i) => {
+        // const printEach = Array.from({length: dataThisFY.length + 1}, (v, i) => {
 
-            if (i === 2) {
+        //     if (i === 2) {
+
+        //         let toOpMargin = {
+        //             ...dataThisFY[1],
+        //             name: "Operating Margin",
+        //             Q1QtrValue: operatingMarginCalculationV2(dataThisFY[0].Q1QtrValue, dataThisFY[1].Q1QtrValue, "Quarter"),
+        //             Q2QtrValue: operatingMarginCalculationV2(dataThisFY[0].Q2QtrValue, dataThisFY[1].Q2QtrValue, "Quarter"),
+        //             Q3QtrValue: operatingMarginCalculationV2(dataThisFY[0].Q3QtrValue, dataThisFY[1].Q3QtrValue, "Quarter"),
+        //             Q4QtrValue: operatingMarginCalculationV2(dataThisFY[0].Q4QtrValue, dataThisFY[1].Q4QtrValue, "Quarter"),
+        //             Q1CmlValue: operatingMarginCalculationV2(dataThisFY[0].Q1CmlValue, dataThisFY[1].Q1CmlValue, "Cumulative"),
+        //             Q2CmlValue: operatingMarginCalculationV2(dataThisFY[0].Q2CmlValue, dataThisFY[1].Q2CmlValue, "Cumulative"),
+        //             Q3CmlValue: operatingMarginCalculationV2(dataThisFY[0].Q3CmlValue, dataThisFY[1].Q3CmlValue, "Cumulative"),
+        //             Q4CmlValue: operatingMarginCalculationV2(dataThisFY[0].Q4CmlValue, dataThisFY[1].Q4CmlValue, "Cumulative"),
+        //             forecastThisFY: operatingMarginCalculationV2(dataThisFY[0].forecastThisFY, dataThisFY[1].forecastThisFY, "Forecast"), 
+        //             forecastRevision1: operatingMarginCalculationV2(dataThisFY[0].forecastRevision1, dataThisFY[1].forecastRevision1, "Forecast"), 
+        //             forecastRevision2: operatingMarginCalculationV2(dataThisFY[0].forecastRevision2, dataThisFY[1].forecastRevision2, "Forecast"), 
+        //             forecastRevision3: operatingMarginCalculationV2(dataThisFY[0].forecastRevision3, dataThisFY[1].forecastRevision3, "Forecast"), 
+        //             forecastNextFY: operatingMarginCalculationV2(dataThisFY[0].forecastNextFY, dataThisFY[1].forecastNextFY, "Forecast"), 
+        //         } satisfies EarningsV2
+
+        //         let sectionHeader = printSectionHeaderV2(toOpMargin, false);
+
+        //         let quarters = [
+        //             printQuarterValuesV2(toOpMargin.Q1QtrValue, currentQuarter, 13),
+        //             printQuarterValuesV2(toOpMargin.Q2QtrValue, currentQuarter, 13),
+        //             printQuarterValuesV2(toOpMargin.Q3QtrValue, currentQuarter, 13),
+        //             printQuarterValuesV2(toOpMargin.Q4QtrValue, currentQuarter, 13),
+        //         ];
+                
+        //         let cumulatives = [
+        //             printCumulativeValuesV2(toOpMargin.Q1CmlValue, currentQuarter, 13),
+        //             printCumulativeValuesV2(toOpMargin.Q2CmlValue, currentQuarter, 13),
+        //             printCumulativeValuesV2(toOpMargin.Q3CmlValue, currentQuarter, 13),
+        //             printCumulativeValuesV2(toOpMargin.Q4CmlValue, currentQuarter, 13),
+        //         ];
+
+        //         let forecasts = [
+        //             printForecastValuesV2(toOpMargin.forecastThisFY, 13),
+        //             printForecastValuesV2(toOpMargin.forecastRevision1, 13),
+        //             printForecastValuesV2(toOpMargin.forecastRevision2, 13),
+        //             printForecastValuesV2(toOpMargin.forecastRevision3, 13),
+        //             printForecastValuesV2(toOpMargin.forecastNextFY, 13),
+        //         ];
+
+        //         let output = printReduceSection(
+        //             sectionHeader,
+        //             qtrOrCmlOutput(quarters,[],true),
+        //             qtrOrCmlOutput(cumulatives,[],true),
+        //             forecastOutput(forecasts),
+        //         )
+
+        //         return output
+        //     } else if (i > 2) {
+
+        //         let sectionHeader = printSectionHeaderV2(dataThisFY[i-1], true)
+
+        //         let quarters = [
+        //             printQuarterValuesV2(dataThisFY[i-1].Q1QtrValue, currentQuarter, 13),
+        //             printQuarterValuesV2(dataThisFY[i-1].Q2QtrValue, currentQuarter, 13),
+        //             printQuarterValuesV2(dataThisFY[i-1].Q3QtrValue, currentQuarter, 13),
+        //             printQuarterValuesV2(dataThisFY[i-1].Q4QtrValue, currentQuarter, 13),
+        //         ];
+
+        //         let quarterPercentages = [
+        //             printYoYV2(percentagesThisFY[i-1].Q1QtrValue, currentQuarter, 12),
+        //             printYoYV2(percentagesThisFY[i-1].Q2QtrValue, currentQuarter, 12),
+        //             printYoYV2(percentagesThisFY[i-1].Q3QtrValue, currentQuarter, 12),
+        //             printYoYV2(percentagesThisFY[i-1].Q4QtrValue, currentQuarter, 12),
+        //         ];
+
+        //         let cumulatives = [
+        //             printCumulativeValuesV2(dataThisFY[i-1].Q1CmlValue, currentQuarter, 13),
+        //             printCumulativeValuesV2(dataThisFY[i-1].Q2CmlValue, currentQuarter, 13),
+        //             printCumulativeValuesV2(dataThisFY[i-1].Q3CmlValue, currentQuarter, 13),
+        //             printCumulativeValuesV2(dataThisFY[i-1].Q4CmlValue, currentQuarter, 13),
+        //         ];
+
+        //         let cumulativePercentages = [
+        //             printYoYV2(percentagesThisFY[i-1].Q1CmlValue, currentQuarter, 12),
+        //             printYoYV2(percentagesThisFY[i-1].Q2CmlValue, currentQuarter, 12),
+        //             printYoYV2(percentagesThisFY[i-1].Q3CmlValue, currentQuarter, 12),
+        //             printYoYV2(percentagesThisFY[i-1].Q4CmlValue, currentQuarter, 12),
+        //         ];
+
+        //         let forecasts = [
+        //             printForecastValuesV2(dataThisFY[i-1].forecastThisFY, 13),
+        //             printForecastValuesV2(dataThisFY[i-1].forecastRevision1, 13),
+        //             printForecastValuesV2(dataThisFY[i-1].forecastRevision2, 13),
+        //             printForecastValuesV2(dataThisFY[i-1].forecastRevision3, 13),
+        //             printForecastValuesV2(dataThisFY[i-1].forecastNextFY, 13),
+        //         ];
+
+        //         let output = printReduceSection(
+        //             sectionHeader,
+        //             qtrOrCmlOutput(quarters,quarterPercentages,false),
+        //             qtrOrCmlOutput(cumulatives,cumulativePercentages,false),
+        //             forecastOutput(forecasts),
+        //         )
+
+        //         return output
+        //     } else {
+
+        //         let sectionHeader = printSectionHeaderV2(dataThisFY[i], true)
+
+        //         let quarters = [
+        //             printQuarterValuesV2(dataThisFY[i].Q1QtrValue, currentQuarter, 13),
+        //             printQuarterValuesV2(dataThisFY[i].Q2QtrValue, currentQuarter, 13),
+        //             printQuarterValuesV2(dataThisFY[i].Q3QtrValue, currentQuarter, 13),
+        //             printQuarterValuesV2(dataThisFY[i].Q4QtrValue, currentQuarter, 13),
+        //         ];
+
+        //         let quarterPercentages = [
+        //             printYoYV2(percentagesThisFY[i].Q1QtrValue, currentQuarter, 12),
+        //             printYoYV2(percentagesThisFY[i].Q2QtrValue, currentQuarter, 12),
+        //             printYoYV2(percentagesThisFY[i].Q3QtrValue, currentQuarter, 12),
+        //             printYoYV2(percentagesThisFY[i].Q4QtrValue, currentQuarter, 12),
+        //         ];
+
+        //         let cumulatives = [
+        //             printCumulativeValuesV2(dataThisFY[i].Q1CmlValue, currentQuarter, 13),
+        //             printCumulativeValuesV2(dataThisFY[i].Q2CmlValue, currentQuarter, 13),
+        //             printCumulativeValuesV2(dataThisFY[i].Q3CmlValue, currentQuarter, 13),
+        //             printCumulativeValuesV2(dataThisFY[i].Q4CmlValue, currentQuarter, 13),
+        //         ];
+
+        //         let cumulativePercentages = [
+        //             printYoYV2(percentagesThisFY[i].Q1CmlValue, currentQuarter, 12),
+        //             printYoYV2(percentagesThisFY[i].Q2CmlValue, currentQuarter, 12),
+        //             printYoYV2(percentagesThisFY[i].Q3CmlValue, currentQuarter, 12),
+        //             printYoYV2(percentagesThisFY[i].Q4CmlValue, currentQuarter, 12),
+        //         ];
+
+        //         let forecasts = [
+        //             printForecastValuesV2(dataThisFY[i].forecastThisFY, 13),
+        //             printForecastValuesV2(dataThisFY[i].forecastRevision1, 13),
+        //             printForecastValuesV2(dataThisFY[i].forecastRevision2, 13),
+        //             printForecastValuesV2(dataThisFY[i].forecastRevision3, 13),
+        //             printForecastValuesV2(dataThisFY[i].forecastNextFY, 13),
+        //         ];
+
+        //         let output = printReduceSection(
+        //             sectionHeader,
+        //             qtrOrCmlOutput(quarters,quarterPercentages,false),
+        //             qtrOrCmlOutput(cumulatives,cumulativePercentages,false),
+        //             forecastOutput(forecasts),
+        //         )
+
+        //         return output
+        //     }
+        // })
+
+        const printEach = new Map<number, string>([
+            [0, ""],
+            [1, ""],
+            [2, ""],
+            [3, ""],
+        ]);
+
+        printEach.forEach((value, key, map) => {
+
+            if (key === 2) {
 
                 let toOpMargin = {
-                    ...dataThisFY[1],
+                    ...dataThisFY.get(1),
                     name: "Operating Margin",
-                    Q1QtrValue: operatingMarginCalculationV2(dataThisFY[0].Q1QtrValue, dataThisFY[1].Q1QtrValue, "Quarter"),
-                    Q2QtrValue: operatingMarginCalculationV2(dataThisFY[0].Q2QtrValue, dataThisFY[1].Q2QtrValue, "Quarter"),
-                    Q3QtrValue: operatingMarginCalculationV2(dataThisFY[0].Q3QtrValue, dataThisFY[1].Q3QtrValue, "Quarter"),
-                    Q4QtrValue: operatingMarginCalculationV2(dataThisFY[0].Q4QtrValue, dataThisFY[1].Q4QtrValue, "Quarter"),
-                    Q1CmlValue: operatingMarginCalculationV2(dataThisFY[0].Q1CmlValue, dataThisFY[1].Q1CmlValue, "Cumulative"),
-                    Q2CmlValue: operatingMarginCalculationV2(dataThisFY[0].Q2CmlValue, dataThisFY[1].Q2CmlValue, "Cumulative"),
-                    Q3CmlValue: operatingMarginCalculationV2(dataThisFY[0].Q3CmlValue, dataThisFY[1].Q3CmlValue, "Cumulative"),
-                    Q4CmlValue: operatingMarginCalculationV2(dataThisFY[0].Q4CmlValue, dataThisFY[1].Q4CmlValue, "Cumulative"),
-                    forecastThisFY: operatingMarginCalculationV2(dataThisFY[0].forecastThisFY, dataThisFY[1].forecastThisFY, "Forecast"), 
-                    forecastRevision1: operatingMarginCalculationV2(dataThisFY[0].forecastRevision1, dataThisFY[1].forecastRevision1, "Forecast"), 
-                    forecastRevision2: operatingMarginCalculationV2(dataThisFY[0].forecastRevision2, dataThisFY[1].forecastRevision2, "Forecast"), 
-                    forecastRevision3: operatingMarginCalculationV2(dataThisFY[0].forecastRevision3, dataThisFY[1].forecastRevision3, "Forecast"), 
-                    forecastNextFY: operatingMarginCalculationV2(dataThisFY[0].forecastNextFY, dataThisFY[1].forecastNextFY, "Forecast"), 
+                    Q1QtrValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q1QtrValue ?? toFix, dataThisFY.get(1)?.Q1QtrValue ?? toFix, "Quarter"),
+                    Q2QtrValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q2QtrValue ?? toFix, dataThisFY.get(1)?.Q2QtrValue ?? toFix, "Quarter"),
+                    Q3QtrValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q3QtrValue ?? toFix, dataThisFY.get(1)?.Q3QtrValue ?? toFix, "Quarter"),
+                    Q4QtrValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q4QtrValue ?? toFix, dataThisFY.get(1)?.Q4QtrValue ?? toFix, "Quarter"),
+                    Q1CmlValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q1CmlValue ?? toFix, dataThisFY.get(1)?.Q1CmlValue ?? toFix, "Cumulative"),
+                    Q2CmlValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q2CmlValue ?? toFix, dataThisFY.get(1)?.Q2CmlValue ?? toFix, "Cumulative"),
+                    Q3CmlValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q3CmlValue ?? toFix, dataThisFY.get(1)?.Q3CmlValue ?? toFix, "Cumulative"),
+                    Q4CmlValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q4CmlValue ?? toFix, dataThisFY.get(1)?.Q4CmlValue ?? toFix, "Cumulative"),
+                    forecastThisFY: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastThisFY ?? toFix, dataThisFY.get(1)?.forecastThisFY ?? toFix, "Forecast"), 
+                    forecastRevision1: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastRevision1 ?? toFix, dataThisFY.get(1)?.forecastRevision1 ?? toFix, "Forecast"), 
+                    forecastRevision2: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastRevision2 ?? toFix, dataThisFY.get(1)?.forecastRevision2 ?? toFix, "Forecast"), 
+                    forecastRevision3: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastRevision3 ?? toFix, dataThisFY.get(1)?.forecastRevision3 ?? toFix, "Forecast"), 
+                    forecastNextFY: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastNextFY ?? toFix, dataThisFY.get(1)?.forecastNextFY ?? toFix, "Forecast"), 
                 } satisfies EarningsV2
 
                 let sectionHeader = printSectionHeaderV2(toOpMargin, false);
 
-                let quarters = [
-                    printQuarterValuesV2(toOpMargin.Q1QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(toOpMargin.Q2QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(toOpMargin.Q3QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(toOpMargin.Q4QtrValue, currentQuarter, 13),
-                ];
+                let quarters = new Map<number, string>([
+                    [0, printQuarterValuesV2(toOpMargin.Q1QtrValue, currentQuarter, 13)],
+                    [1, printQuarterValuesV2(toOpMargin.Q2QtrValue, currentQuarter, 13)],
+                    [2, printQuarterValuesV2(toOpMargin.Q3QtrValue, currentQuarter, 13)],
+                    [3, printQuarterValuesV2(toOpMargin.Q4QtrValue, currentQuarter, 13)],
+                ]);
                 
-                let cumulatives = [
-                    printCumulativeValuesV2(toOpMargin.Q1CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(toOpMargin.Q2CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(toOpMargin.Q3CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(toOpMargin.Q4CmlValue, currentQuarter, 13),
-                ];
+                let cumulatives = new Map<number, string>([
+                    [0, printCumulativeValuesV2(toOpMargin.Q1CmlValue, currentQuarter, 13)],
+                    [1, printCumulativeValuesV2(toOpMargin.Q2CmlValue, currentQuarter, 13)],
+                    [2, printCumulativeValuesV2(toOpMargin.Q3CmlValue, currentQuarter, 13)],
+                    [3, printCumulativeValuesV2(toOpMargin.Q4CmlValue, currentQuarter, 13)],
+                ]);
 
-                let forecasts = [
-                    printForecastValuesV2(toOpMargin.forecastThisFY, 13),
-                    printForecastValuesV2(toOpMargin.forecastRevision1, 13),
-                    printForecastValuesV2(toOpMargin.forecastRevision2, 13),
-                    printForecastValuesV2(toOpMargin.forecastRevision3, 13),
-                    printForecastValuesV2(toOpMargin.forecastNextFY, 13),
-                ];
+                let forecasts = new Map<number, string>([
+                    [0, printForecastValuesV2(toOpMargin.forecastThisFY, 13)],
+                    [1, printForecastValuesV2(toOpMargin.forecastRevision1, 13)],
+                    [2, printForecastValuesV2(toOpMargin.forecastRevision2, 13)],
+                    [3, printForecastValuesV2(toOpMargin.forecastRevision3, 13)],
+                    [4, printForecastValuesV2(toOpMargin.forecastNextFY, 13)],
+                ]);
 
                 let output = printReduceSection(
                     sectionHeader,
-                    qtrOrCmlOutput(quarters,[],true),
-                    qtrOrCmlOutput(cumulatives,[],true),
-                    forecastOutput(forecasts),
+                    qtrOrCmlOutput([...quarters.values()],[],true),
+                    qtrOrCmlOutput([...cumulatives.values()],[],true),
+                    forecastOutput([...forecasts.values()]),
                 )
 
-                return output
-            } else if (i > 2) {
+                map.set(key, output)
+            } else if (key > 2) {
 
-                let sectionHeader = printSectionHeaderV2(dataThisFY[i-1], true)
+                let sectionHeader = printSectionHeaderV2(dataThisFY.get(key-1) as EarningsV2, true)
 
                 let quarters = [
-                    printQuarterValuesV2(dataThisFY[i-1].Q1QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY[i-1].Q2QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY[i-1].Q3QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY[i-1].Q4QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(dataThisFY.get(key-1)?.Q1QtrValue ?? toFix, currentQuarter, 13),
+                    printQuarterValuesV2(dataThisFY.get(key-1)?.Q2QtrValue ?? toFix, currentQuarter, 13),
+                    printQuarterValuesV2(dataThisFY.get(key-1)?.Q3QtrValue ?? toFix, currentQuarter, 13),
+                    printQuarterValuesV2(dataThisFY.get(key-1)?.Q4QtrValue ?? toFix, currentQuarter, 13),
                 ];
 
                 let quarterPercentages = [
-                    printYoYV2(percentagesThisFY[i-1].Q1QtrValue, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY[i-1].Q2QtrValue, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY[i-1].Q3QtrValue, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY[i-1].Q4QtrValue, currentQuarter, 12),
+                    printYoYV2(percentagesThisFY.get(key-1)?.Q1QtrValue ?? toFix, currentQuarter, 12),
+                    printYoYV2(percentagesThisFY.get(key-1)?.Q2QtrValue ?? toFix, currentQuarter, 12),
+                    printYoYV2(percentagesThisFY.get(key-1)?.Q3QtrValue ?? toFix, currentQuarter, 12),
+                    printYoYV2(percentagesThisFY.get(key-1)?.Q4QtrValue ?? toFix, currentQuarter, 12),
                 ];
 
                 let cumulatives = [
-                    printCumulativeValuesV2(dataThisFY[i-1].Q1CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY[i-1].Q2CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY[i-1].Q3CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY[i-1].Q4CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(dataThisFY.get(key-1)?.Q1CmlValue ?? toFix, currentQuarter, 13),
+                    printCumulativeValuesV2(dataThisFY.get(key-1)?.Q2CmlValue ?? toFix, currentQuarter, 13),
+                    printCumulativeValuesV2(dataThisFY.get(key-1)?.Q3CmlValue ?? toFix, currentQuarter, 13),
+                    printCumulativeValuesV2(dataThisFY.get(key-1)?.Q4CmlValue ?? toFix, currentQuarter, 13),
                 ];
 
                 let cumulativePercentages = [
-                    printYoYV2(percentagesThisFY[i-1].Q1CmlValue, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY[i-1].Q2CmlValue, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY[i-1].Q3CmlValue, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY[i-1].Q4CmlValue, currentQuarter, 12),
+                    printYoYV2(percentagesThisFY.get(key-1)?.Q1CmlValue ?? toFix, currentQuarter, 12),
+                    printYoYV2(percentagesThisFY.get(key-1)?.Q2CmlValue ?? toFix, currentQuarter, 12),
+                    printYoYV2(percentagesThisFY.get(key-1)?.Q3CmlValue ?? toFix, currentQuarter, 12),
+                    printYoYV2(percentagesThisFY.get(key-1)?.Q4CmlValue ?? toFix, currentQuarter, 12),
                 ];
 
                 let forecasts = [
-                    printForecastValuesV2(dataThisFY[i-1].forecastThisFY, 13),
-                    printForecastValuesV2(dataThisFY[i-1].forecastRevision1, 13),
-                    printForecastValuesV2(dataThisFY[i-1].forecastRevision2, 13),
-                    printForecastValuesV2(dataThisFY[i-1].forecastRevision3, 13),
-                    printForecastValuesV2(dataThisFY[i-1].forecastNextFY, 13),
+                    printForecastValuesV2(dataThisFY.get(key-1)?.forecastThisFY ?? toFix, 13),
+                    printForecastValuesV2(dataThisFY.get(key-1)?.forecastRevision1 ?? toFix, 13),
+                    printForecastValuesV2(dataThisFY.get(key-1)?.forecastRevision2 ?? toFix, 13),
+                    printForecastValuesV2(dataThisFY.get(key-1)?.forecastRevision3 ?? toFix, 13),
+                    printForecastValuesV2(dataThisFY.get(key-1)?.forecastNextFY ?? toFix, 13),
                 ];
 
                 let output = printReduceSection(
@@ -1174,45 +1337,45 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
                     forecastOutput(forecasts),
                 )
 
-                return output
+                map.set(key, output)
             } else {
 
-                let sectionHeader = printSectionHeaderV2(dataThisFY[i], true)
+                let sectionHeader = printSectionHeaderV2(dataThisFY.get(key) as EarningsV2, true )
 
                 let quarters = [
-                    printQuarterValuesV2(dataThisFY[i].Q1QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY[i].Q2QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY[i].Q3QtrValue, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY[i].Q4QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(dataThisFY.get(key)?.Q1QtrValue ?? toFix, currentQuarter, 13),
+                    printQuarterValuesV2(dataThisFY.get(key)?.Q2QtrValue ?? toFix, currentQuarter, 13),
+                    printQuarterValuesV2(dataThisFY.get(key)?.Q3QtrValue ?? toFix, currentQuarter, 13),
+                    printQuarterValuesV2(dataThisFY.get(key)?.Q4QtrValue ?? toFix, currentQuarter, 13),
                 ];
 
                 let quarterPercentages = [
-                    printYoYV2(percentagesThisFY[i].Q1QtrValue, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY[i].Q2QtrValue, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY[i].Q3QtrValue, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY[i].Q4QtrValue, currentQuarter, 12),
+                    printYoYV2(percentagesThisFY.get(key)?.Q1QtrValue ?? toFix, currentQuarter, 12),
+                    printYoYV2(percentagesThisFY.get(key)?.Q2QtrValue ?? toFix, currentQuarter, 12),
+                    printYoYV2(percentagesThisFY.get(key)?.Q3QtrValue ?? toFix, currentQuarter, 12),
+                    printYoYV2(percentagesThisFY.get(key)?.Q4QtrValue ?? toFix, currentQuarter, 12),
                 ];
 
                 let cumulatives = [
-                    printCumulativeValuesV2(dataThisFY[i].Q1CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY[i].Q2CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY[i].Q3CmlValue, currentQuarter, 13),
-                    printCumulativeValuesV2(dataThisFY[i].Q4CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(dataThisFY.get(key)?.Q1CmlValue ?? toFix, currentQuarter, 13),
+                    printCumulativeValuesV2(dataThisFY.get(key)?.Q2CmlValue ?? toFix, currentQuarter, 13),
+                    printCumulativeValuesV2(dataThisFY.get(key)?.Q3CmlValue ?? toFix, currentQuarter, 13),
+                    printCumulativeValuesV2(dataThisFY.get(key)?.Q4CmlValue ?? toFix, currentQuarter, 13),
                 ];
 
                 let cumulativePercentages = [
-                    printYoYV2(percentagesThisFY[i].Q1CmlValue, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY[i].Q2CmlValue, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY[i].Q3CmlValue, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY[i].Q4CmlValue, currentQuarter, 12),
+                    printYoYV2(percentagesThisFY.get(key)?.Q1CmlValue ?? toFix, currentQuarter, 12),
+                    printYoYV2(percentagesThisFY.get(key)?.Q2CmlValue ?? toFix, currentQuarter, 12),
+                    printYoYV2(percentagesThisFY.get(key)?.Q3CmlValue ?? toFix, currentQuarter, 12),
+                    printYoYV2(percentagesThisFY.get(key)?.Q4CmlValue ?? toFix, currentQuarter, 12),
                 ];
 
                 let forecasts = [
-                    printForecastValuesV2(dataThisFY[i].forecastThisFY, 13),
-                    printForecastValuesV2(dataThisFY[i].forecastRevision1, 13),
-                    printForecastValuesV2(dataThisFY[i].forecastRevision2, 13),
-                    printForecastValuesV2(dataThisFY[i].forecastRevision3, 13),
-                    printForecastValuesV2(dataThisFY[i].forecastNextFY, 13),
+                    printForecastValuesV2(dataThisFY.get(key)?.forecastThisFY ?? toFix, 13),
+                    printForecastValuesV2(dataThisFY.get(key)?.forecastRevision1 ?? toFix, 13),
+                    printForecastValuesV2(dataThisFY.get(key)?.forecastRevision2 ?? toFix, 13),
+                    printForecastValuesV2(dataThisFY.get(key)?.forecastRevision3 ?? toFix, 13),
+                    printForecastValuesV2(dataThisFY.get(key)?.forecastNextFY ?? toFix, 13),
                 ];
 
                 let output = printReduceSection(
@@ -1222,9 +1385,9 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
                     forecastOutput(forecasts),
                 )
 
-                return output
+                map.set(key, output)
             }
         })
 
-        return [printOne, ...printEach].reduce((acc, next) => acc + "\n" + next)
+        return [printOne, ...printEach.values()].reduce((acc, next) => acc + "\n" + next)
 }
