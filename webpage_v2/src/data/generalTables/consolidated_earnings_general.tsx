@@ -708,25 +708,9 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
             title: (collection.companyName === "CAPCOM Co., Ltd." || collection.companyName === "SQUARE ENIX HOLDINGS CO., LTD.") ? "Consolidated Financial Results" : "Consolidated Operating Results",
         };
 
+        const dataThisFY = getData(collection, collection.data.length);
 
-        const dataThisFY = new Map<number, EarningsV2>();
-        // collection.data.map((elem, index) => dataThisFY.set(index, valuesMakeV2(elem, collection.fiscalYear)))
-        for (let index = 0; index < collection.data.length; index++) {
-            dataThisFY.set(index, valuesMakeV2(collection.data[index], collection.fiscalYear))
-        }
-
-        const dataLastFY = new Map<number, EarningsV2>();
-        if (!lastFYCollection) {
-            // collection.data.map((elem, index) => dataLastFY.set(index, valuesMakeV2(undefined, collection.fiscalYear)));
-            for (let index = 0; index < collection.data.length; index++) {
-                dataLastFY.set(index, valuesMakeV2(undefined, collection.fiscalYear))
-            }
-        } else {
-            // lastFYCollection.data.map((elem, index) => dataLastFY.set(index, valuesMakeV2(elem, lastFYCollection.fiscalYear)))
-            for (let index = 0; index < lastFYCollection.data.length; index++) {
-                dataLastFY.set(index, valuesMakeV2(lastFYCollection.data[index], lastFYCollection.fiscalYear))
-            }
-        }
+        const dataLastFY = getData(lastFYCollection, collection.data.length);
 
         const percentagesThisFY = new Map<number, EarningsV2>(); 
         dataThisFY.forEach((value, key, map) => {
@@ -920,3 +904,20 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
 
         return [printOne, ...printEach.values()].reduce((acc, next) => acc + "\n" + next)
 };
+
+function getData(dataCollectionThisFY: EarningsJSONV2 | undefined, dataThisFYLengthForLastFY: number) {
+
+    const dataMap = new Map<number, EarningsV2>();
+
+        if (!dataCollectionThisFY) {
+            for (let index = 0; index < dataThisFYLengthForLastFY; index++) {
+                dataMap.set(index, valuesMakeV2(undefined, ""))
+            }
+        } else {
+            for (let index = 0; index < dataCollectionThisFY.data.length; index++) {
+                dataMap.set(index, valuesMakeV2(dataCollectionThisFY.data[index], dataCollectionThisFY.fiscalYear))
+            }
+        }
+
+        return dataMap;
+}
