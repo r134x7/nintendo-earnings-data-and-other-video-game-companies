@@ -60,7 +60,7 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
             },
             {
                 name: "Consolidated Operating Results",
-                value: bandaiNamcoConsolidatedEarningsList?.[index],
+                value: bandaiNamcoConsolidatedEarningsList.get(index),
                 graph: <GRAPH_CONSOLIDATED_EARNINGS setData={bandaiNamcoConsolidatedEarningsGraphList[index]} />
             },
             {
