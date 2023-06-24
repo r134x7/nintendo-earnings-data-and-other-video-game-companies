@@ -654,6 +654,166 @@ return collection.map((elem, index, array) => {
     }).filter(elem => elem !== undefined)
 };
 
+function consolidatedEarningsGraphListV2(collection: EarningsJSONV2, lastFYCollection: EarningsJSONV2) {
+
+    const none: EarningsValue = { kind:"Nothing" };
+
+    let dataThisFY = getData(collection, collection.data.length);
+
+    let dataLastFY = getData(lastFYCollection, collection.data.length);
+
+    // opmargin
+        const opMargin = new Map<number, EarningsV2>([
+            [0,
+                {
+                    ...dataThisFY.get(1),
+                    name: "Operating Margin",
+                    Q1QtrValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q1QtrValue ?? none, dataThisFY.get(1)?.Q1QtrValue ?? none, "Quarter"),
+                    Q2QtrValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q2QtrValue ?? none, dataThisFY.get(1)?.Q2QtrValue ?? none, "Quarter"),
+                    Q3QtrValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q3QtrValue ?? none, dataThisFY.get(1)?.Q3QtrValue ?? none, "Quarter"),
+                    Q4QtrValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q4QtrValue ?? none, dataThisFY.get(1)?.Q4QtrValue ?? none, "Quarter"),
+                    Q1CmlValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q1CmlValue ?? none, dataThisFY.get(1)?.Q1CmlValue ?? none, "Cumulative"),
+                    Q2CmlValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q2CmlValue ?? none, dataThisFY.get(1)?.Q2CmlValue ?? none, "Cumulative"),
+                    Q3CmlValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q3CmlValue ?? none, dataThisFY.get(1)?.Q3CmlValue ?? none, "Cumulative"),
+                    Q4CmlValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q4CmlValue ?? none, dataThisFY.get(1)?.Q4CmlValue ?? none, "Cumulative"),
+                    forecastThisFY: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastThisFY ?? none, dataThisFY.get(1)?.forecastThisFY ?? none, "Forecast"), 
+                    forecastRevision1: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastRevision1 ?? none, dataThisFY.get(1)?.forecastRevision1 ?? none, "Forecast"), 
+                    forecastRevision2: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastRevision2 ?? none, dataThisFY.get(1)?.forecastRevision2 ?? none, "Forecast"), 
+                    forecastRevision3: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastRevision3 ?? none, dataThisFY.get(1)?.forecastRevision3 ?? none, "Forecast"), 
+                    forecastNextFY: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastNextFY ?? none, dataThisFY.get(1)?.forecastNextFY ?? none, "Forecast"), 
+                } satisfies EarningsV2
+            ],
+            [1,
+                {
+                    ...dataLastFY.get(1),
+                    name: "Operating Margin",
+                    Q1QtrValue: operatingMarginCalculationV2(dataLastFY.get(0)?.Q1QtrValue ?? none, dataLastFY.get(1)?.Q1QtrValue ?? none, "Quarter"),
+                    Q2QtrValue: operatingMarginCalculationV2(dataLastFY.get(0)?.Q2QtrValue ?? none, dataLastFY.get(1)?.Q2QtrValue ?? none, "Quarter"),
+                    Q3QtrValue: operatingMarginCalculationV2(dataLastFY.get(0)?.Q3QtrValue ?? none, dataLastFY.get(1)?.Q3QtrValue ?? none, "Quarter"),
+                    Q4QtrValue: operatingMarginCalculationV2(dataLastFY.get(0)?.Q4QtrValue ?? none, dataLastFY.get(1)?.Q4QtrValue ?? none, "Quarter"),
+                    Q1CmlValue: operatingMarginCalculationV2(dataLastFY.get(0)?.Q1CmlValue ?? none, dataLastFY.get(1)?.Q1CmlValue ?? none, "Cumulative"),
+                    Q2CmlValue: operatingMarginCalculationV2(dataLastFY.get(0)?.Q2CmlValue ?? none, dataLastFY.get(1)?.Q2CmlValue ?? none, "Cumulative"),
+                    Q3CmlValue: operatingMarginCalculationV2(dataLastFY.get(0)?.Q3CmlValue ?? none, dataLastFY.get(1)?.Q3CmlValue ?? none, "Cumulative"),
+                    Q4CmlValue: operatingMarginCalculationV2(dataLastFY.get(0)?.Q4CmlValue ?? none, dataLastFY.get(1)?.Q4CmlValue ?? none, "Cumulative"),
+                    forecastThisFY: operatingMarginCalculationV2(dataLastFY.get(0)?.forecastThisFY ?? none, dataLastFY.get(1)?.forecastThisFY ?? none, "Forecast"), 
+                    forecastRevision1: operatingMarginCalculationV2(dataLastFY.get(0)?.forecastRevision1 ?? none, dataLastFY.get(1)?.forecastRevision1 ?? none, "Forecast"), 
+                    forecastRevision2: operatingMarginCalculationV2(dataLastFY.get(0)?.forecastRevision2 ?? none, dataLastFY.get(1)?.forecastRevision2 ?? none, "Forecast"), 
+                    forecastRevision3: operatingMarginCalculationV2(dataLastFY.get(0)?.forecastRevision3 ?? none, dataLastFY.get(1)?.forecastRevision3 ?? none, "Forecast"), 
+                    forecastNextFY: operatingMarginCalculationV2(dataLastFY.get(0)?.forecastNextFY ?? none, dataLastFY.get(1)?.forecastNextFY ?? none, "Forecast"), 
+                } satisfies EarningsV2
+            ]
+        ]);
+
+    let thisFY: string = collection.fiscalYear;
+    let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
+
+    let marchThisFY: string = "March " + thisFY.slice(4);
+    let marchLastFY: string = "March " + lastFY.slice(4);
+
+    return {
+        thisFY: thisFY,
+        lastFY: lastFY,
+        marchThisFY: marchThisFY,
+        marchLastFY: marchLastFY,
+        qtrNetSalesThisFY: [
+            dataThisFY.get(0)?.Q1QtrValue,
+            dataThisFY.get(0)?.Q2QtrValue,
+            dataThisFY.get(0)?.Q3QtrValue,
+            dataThisFY.get(0)?.Q4QtrValue,
+        ],
+        qtrOperatingIncomeThisFY: [
+            dataThisFY.get(1)?.Q1QtrValue,
+            dataThisFY.get(1)?.Q2QtrValue,
+            dataThisFY.get(1)?.Q3QtrValue,
+            dataThisFY.get(1)?.Q4QtrValue,
+        ],
+        qtrOpMarginThisFY: [
+            opMargin.get(0)?.Q1QtrValue,
+            opMargin.get(0)?.Q2QtrValue,
+            opMargin.get(0)?.Q3QtrValue,
+            opMargin.get(0)?.Q4QtrValue,
+        ],
+        qtrNetIncomeThisFY: [
+            dataThisFY.get(2)?.Q1QtrValue,
+            dataThisFY.get(2)?.Q2QtrValue,
+            dataThisFY.get(2)?.Q3QtrValue,
+            dataThisFY.get(2)?.Q4QtrValue,
+        ],
+        cmlNetSalesThisFY: [
+            dataThisFY.get(0)?.Q1CmlValue,
+            dataThisFY.get(0)?.Q2CmlValue,
+            dataThisFY.get(0)?.Q3CmlValue,
+            dataThisFY.get(0)?.Q4CmlValue,
+        ],
+        cmlOperatingIncomeThisFY: [
+            dataThisFY.get(1)?.Q1CmlValue,
+            dataThisFY.get(1)?.Q2CmlValue,
+            dataThisFY.get(1)?.Q3CmlValue,
+            dataThisFY.get(1)?.Q4CmlValue,
+        ],
+        cmlOpMarginThisFY: [
+            opMargin.get(0)?.Q1CmlValue,
+            opMargin.get(0)?.Q2CmlValue,
+            opMargin.get(0)?.Q3CmlValue,
+            opMargin.get(0)?.Q4CmlValue,
+        ],
+        cmlNetIncomeThisFY: [
+            dataThisFY.get(2)?.Q1CmlValue,
+            dataThisFY.get(2)?.Q2CmlValue,
+            dataThisFY.get(2)?.Q3CmlValue,
+            dataThisFY.get(2)?.Q4CmlValue,
+        ],
+        qtrNetSalesLastFY: [
+            dataLastFY.get(0)?.Q1QtrValue,
+            dataLastFY.get(0)?.Q2QtrValue,
+            dataLastFY.get(0)?.Q3QtrValue,
+            dataLastFY.get(0)?.Q4QtrValue,
+        ],
+        qtrOperatingIncomeLastFY: [
+            dataLastFY.get(1)?.Q1QtrValue,
+            dataLastFY.get(1)?.Q2QtrValue,
+            dataLastFY.get(1)?.Q3QtrValue,
+            dataLastFY.get(1)?.Q4QtrValue,
+        ],
+        qtrOpMarginLastFY: [
+            opMargin.get(1)?.Q1QtrValue,
+            opMargin.get(1)?.Q2QtrValue,
+            opMargin.get(1)?.Q3QtrValue,
+            opMargin.get(1)?.Q4QtrValue,
+        ],
+        qtrNetIncomeLastFY: [
+            dataLastFY.get(2)?.Q1QtrValue,
+            dataLastFY.get(2)?.Q2QtrValue,
+            dataLastFY.get(2)?.Q3QtrValue,
+            dataLastFY.get(2)?.Q4QtrValue,
+        ],
+        cmlNetSalesLastFY: [
+            dataLastFY.get(0)?.Q1CmlValue,
+            dataLastFY.get(0)?.Q2CmlValue,
+            dataLastFY.get(0)?.Q3CmlValue,
+            dataLastFY.get(0)?.Q4CmlValue,
+        ],
+        cmlOperatingIncomeLastFY: [
+            dataLastFY.get(1)?.Q1CmlValue,
+            dataLastFY.get(1)?.Q2CmlValue,
+            dataLastFY.get(1)?.Q3CmlValue,
+            dataLastFY.get(1)?.Q4CmlValue,
+        ],
+        cmlOpMarginLastFY: [
+            opMargin.get(1)?.Q1CmlValue,
+            opMargin.get(1)?.Q2CmlValue,
+            opMargin.get(1)?.Q3CmlValue,
+            opMargin.get(1)?.Q4CmlValue,
+        ],
+        cmlNetIncomeLastFY: [
+            dataLastFY.get(2)?.Q1CmlValue,
+            dataLastFY.get(2)?.Q2CmlValue,
+            dataLastFY.get(2)?.Q3CmlValue,
+            dataLastFY.get(2)?.Q4CmlValue,
+        ],
+    };
+}
+
 export const nintendoConsolidatedEarningsList = new Map<number, string>();
 
 collectionNintendoV2.forEach((value, key, map) => {
