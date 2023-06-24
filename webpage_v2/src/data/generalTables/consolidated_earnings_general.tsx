@@ -855,12 +855,14 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
 
                 let sectionHeader = printSectionHeaderV2(dataThisFY.get(key) as EarningsV2, true )
 
-                let quarters = [
-                    printQuarterValuesV2(dataThisFY.get(key)?.Q1QtrValue ?? none, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY.get(key)?.Q2QtrValue ?? none, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY.get(key)?.Q3QtrValue ?? none, currentQuarter, 13),
-                    printQuarterValuesV2(dataThisFY.get(key)?.Q4QtrValue ?? none, currentQuarter, 13),
-                ];
+                let quarters = printQuarterSection(
+                    dataThisFY.get(key)?.Q1QtrValue ?? none,
+                    dataThisFY.get(key)?.Q2QtrValue ?? none,
+                    dataThisFY.get(key)?.Q3QtrValue ?? none,
+                    dataThisFY.get(key)?.Q4QtrValue ?? none,
+                    currentQuarter,
+                    13
+                ) 
 
                 let quarterPercentages = [
                     printYoYV2(percentagesThisFY.get(key)?.Q1QtrValue ?? none, currentQuarter, 12),
@@ -920,4 +922,14 @@ function getData(dataCollectionThisFY: EarningsJSONV2 | undefined, dataThisFYLen
         }
 
         return dataMap;
+}
+
+function printQuarterSection(q1: EarningsValue, q2: EarningsValue, q3: EarningsValue, q4: EarningsValue, currentQuarter: number, textLength: number): string[] {
+
+    return [
+        printQuarterValuesV2(q1, currentQuarter, textLength),
+        printQuarterValuesV2(q2, currentQuarter, textLength),
+        printQuarterValuesV2(q3, currentQuarter, textLength),
+        printQuarterValuesV2(q4, currentQuarter, textLength),
+    ]
 }
