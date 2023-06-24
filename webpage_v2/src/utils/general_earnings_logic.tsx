@@ -455,15 +455,14 @@ export function qtrOrCmlOutput(values: string[], yoyValues: string[], opMargin: 
 
     return values.flatMap((elem, index, array) => {
 
+        let lineCheck = index === array.length-1; 
+
         if (elem.length === 0) {
             return [];
+        } else if (opMargin === true) {
+            return liner(elem,(index === array.length-1) ? "=" : "−", "bottom",true,elem.length-2)
         } else {
-
-            let lineCheck = index === array.length-1; 
-
-            return (!opMargin) 
-                ? liner(elem + yoyValues[index],(lineCheck) ? "=" : "−","bottom",true,(elem.length + yoyValues[index].length - 3)) 
-                : liner(elem,(index === array.length-1) ? "=" : "−", "bottom",true,elem.length-2)
+            return liner(elem + yoyValues[index],(lineCheck) ? "=" : "−","bottom",true,((elem.length - 2) + ((yoyValues[index].length !== 0) ? yoyValues[index].length - 1 : 0)))
         }
     }) 
 }
