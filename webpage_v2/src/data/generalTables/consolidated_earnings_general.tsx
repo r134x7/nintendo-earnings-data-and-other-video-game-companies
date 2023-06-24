@@ -731,16 +731,16 @@ return collection.map((elem, index, array) => {
     }).filter(elem => elem !== undefined)
 };
 
+let testingLoop;
 // export const nintendoConsolidatedEarningsList = consolidatedEarningsList(collectionNintendo, 35);
 let averageTimeListOfObjects = 0;
 // for (let i = 0; i < 100; i++) {
    const t0 = performance.now(); 
-    const testingLoop = consolidatedEarningsListV2Array(collectionNintendoV2, 35);
+    testingLoop = consolidatedEarningsListV2Array(collectionNintendoV2, 35);
    const t1 = performance.now();
    averageTimeListOfObjects = averageTimeListOfObjects + (t1 - t0); 
 // }
-console.log("Array Object:");
-console.log(`Loops: ${0}, Time per loop: ${averageTimeListOfObjects / 100} milliseconds, Total Time: ${averageTimeListOfObjects / 1000} seconds.`)
+console.log(`[List Object] Loops: ${0}, Time per loop: ${averageTimeListOfObjects / 100} milliseconds, Total Time: ${averageTimeListOfObjects / 1000} seconds.`)
 
 // export const nintendoConsolidatedEarningsList = consolidatedEarningsListV2Array(collectionNintendoV2, 35);
 
@@ -994,8 +994,7 @@ const a1 = performance.now();
 averageTimeMapOverObject = averageTimeMapOverObject + (a1 - a0);
 // }
 
-console.log("Map():");
-console.log(`Loops: ${0}, Time per loop: ${averageTimeMapOverObject / 100} milliseconds, Total Time: ${averageTimeMapOverObject / 1000} seconds.`)
+console.log(`[Map()] Loops: ${0}, Time per loop: ${averageTimeMapOverObject / 100} milliseconds, Total Time: ${averageTimeMapOverObject / 1000} seconds.`)
 // export const nintendoConsolidatedEarningsList = consolidatedEarningsListV2Array(collectionNintendoV2, 35);
 
 function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollection: EarningsJSONV2 | undefined, headerLength: number): string {
@@ -1019,16 +1018,25 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
 
         // const dataThisFY: EarningsV2[] = collection.data.map(value => valuesMakeV2(value, collection.fiscalYear));
         const dataThisFY = new Map<number, EarningsV2>();
-        collection.data.map((elem, index) => dataThisFY.set(index, valuesMakeV2(elem, collection.fiscalYear)))
+        // collection.data.map((elem, index) => dataThisFY.set(index, valuesMakeV2(elem, collection.fiscalYear)))
+        for (let index = 0; index < collection.data.length; index++) {
+            dataThisFY.set(index, valuesMakeV2(collection.data[index], collection.fiscalYear))
+        }
 
         // const dataLastFY: EarningsV2[] = (!lastFYCollection) 
         //     ? collection.data.map(value => valuesMakeV2(undefined, collection.fiscalYear)) 
         //     : lastFYCollection.data.map(value => valuesMakeV2(value, lastFYCollection.fiscalYear));
         const dataLastFY = new Map<number, EarningsV2>();
         if (!lastFYCollection) {
-            collection.data.map((elem, index) => dataLastFY.set(index, valuesMakeV2(undefined, collection.fiscalYear)));
+            // collection.data.map((elem, index) => dataLastFY.set(index, valuesMakeV2(undefined, collection.fiscalYear)));
+            for (let index = 0; index < collection.data.length; index++) {
+                dataLastFY.set(index, valuesMakeV2(undefined, collection.fiscalYear))
+            }
         } else {
-            lastFYCollection.data.map((elem, index) => dataLastFY.set(index, valuesMakeV2(elem, lastFYCollection.fiscalYear)))
+            // lastFYCollection.data.map((elem, index) => dataLastFY.set(index, valuesMakeV2(elem, lastFYCollection.fiscalYear)))
+            for (let index = 0; index < lastFYCollection.data.length; index++) {
+                dataLastFY.set(index, valuesMakeV2(lastFYCollection.data[index], lastFYCollection.fiscalYear))
+            }
         }
 
         // const percentagesThisFY: EarningsV2[] = dataThisFY.map((elem, index) => {
@@ -1260,33 +1268,40 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
 
                 let sectionHeader = printSectionHeaderV2(toOpMargin, false);
 
-                let quarters = new Map<number, string>([
-                    [0, printQuarterValuesV2(toOpMargin.Q1QtrValue, currentQuarter, 13)],
-                    [1, printQuarterValuesV2(toOpMargin.Q2QtrValue, currentQuarter, 13)],
-                    [2, printQuarterValuesV2(toOpMargin.Q3QtrValue, currentQuarter, 13)],
-                    [3, printQuarterValuesV2(toOpMargin.Q4QtrValue, currentQuarter, 13)],
-                ]);
-                
-                let cumulatives = new Map<number, string>([
-                    [0, printCumulativeValuesV2(toOpMargin.Q1CmlValue, currentQuarter, 13)],
-                    [1, printCumulativeValuesV2(toOpMargin.Q2CmlValue, currentQuarter, 13)],
-                    [2, printCumulativeValuesV2(toOpMargin.Q3CmlValue, currentQuarter, 13)],
-                    [3, printCumulativeValuesV2(toOpMargin.Q4CmlValue, currentQuarter, 13)],
-                ]);
+                // let quarters = new Map<number, string>([
+                //     [0, printQuarterValuesV2(toOpMargin.Q1QtrValue, currentQuarter, 13)],
+                //     [1, printQuarterValuesV2(toOpMargin.Q2QtrValue, currentQuarter, 13)],
+                //     [2, printQuarterValuesV2(toOpMargin.Q3QtrValue, currentQuarter, 13)],
+                //     [3, printQuarterValuesV2(toOpMargin.Q4QtrValue, currentQuarter, 13)],
+                // ]);
 
-                let forecasts = new Map<number, string>([
-                    [0, printForecastValuesV2(toOpMargin.forecastThisFY, 13)],
-                    [1, printForecastValuesV2(toOpMargin.forecastRevision1, 13)],
-                    [2, printForecastValuesV2(toOpMargin.forecastRevision2, 13)],
-                    [3, printForecastValuesV2(toOpMargin.forecastRevision3, 13)],
-                    [4, printForecastValuesV2(toOpMargin.forecastNextFY, 13)],
-                ]);
+                let quarters = [
+                    printQuarterValuesV2(toOpMargin.Q1QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(toOpMargin.Q2QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(toOpMargin.Q3QtrValue, currentQuarter, 13),
+                    printQuarterValuesV2(toOpMargin.Q4QtrValue, currentQuarter, 13),
+                ];
+                
+                let cumulatives = [
+                    printCumulativeValuesV2(toOpMargin.Q1CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(toOpMargin.Q2CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(toOpMargin.Q3CmlValue, currentQuarter, 13),
+                    printCumulativeValuesV2(toOpMargin.Q4CmlValue, currentQuarter, 13),
+                ];
+
+                let forecasts = [
+                    printForecastValuesV2(toOpMargin.forecastThisFY, 13),
+                    printForecastValuesV2(toOpMargin.forecastRevision1, 13),
+                    printForecastValuesV2(toOpMargin.forecastRevision2, 13),
+                    printForecastValuesV2(toOpMargin.forecastRevision3, 13),
+                    printForecastValuesV2(toOpMargin.forecastNextFY, 13),
+                ];
 
                 let output = printReduceSection(
                     sectionHeader,
-                    qtrOrCmlOutput([...quarters.values()],[],true),
-                    qtrOrCmlOutput([...cumulatives.values()],[],true),
-                    forecastOutput([...forecasts.values()]),
+                    qtrOrCmlOutput(quarters,[],true),
+                    qtrOrCmlOutput(cumulatives,[],true),
+                    forecastOutput(forecasts),
                 )
 
                 map.set(key, output)
