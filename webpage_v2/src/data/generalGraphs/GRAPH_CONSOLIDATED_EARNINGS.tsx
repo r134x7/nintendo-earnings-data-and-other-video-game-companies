@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Pagination, Group, Switch } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { Earnings } from "../../utils/general_earnings_logic";
+import { EarningsValue } from "../../utils/general_earnings_logic";
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
@@ -13,22 +13,22 @@ export default function GRAPH_CONSOLIDATED_EARNINGS(props:
         lastFY: string;
         marchThisFY: string,
         marchLastFY: string,
-        qtrNetSalesThisFY: Earnings[],
-        qtrOperatingIncomeThisFY: Earnings[],
-        qtrOpMarginThisFY: Earnings[],
-        qtrNetIncomeThisFY: Earnings[],
-        cmlNetSalesThisFY: Earnings[],
-        cmlOperatingIncomeThisFY: Earnings[],
-        cmlOpMarginThisFY: Earnings[],
-        cmlNetIncomeThisFY: Earnings[],
-        qtrNetSalesLastFY: Earnings[],
-        qtrOperatingIncomeLastFY: Earnings[],
-        qtrOpMarginLastFY: Earnings[],
-        qtrNetIncomeLastFY: Earnings[],
-        cmlNetSalesLastFY: Earnings[],
-        cmlOperatingIncomeLastFY: Earnings[],
-        cmlOpMarginLastFY: Earnings[],
-        cmlNetIncomeLastFY: Earnings[],
+        qtrNetSalesThisFY: EarningsValue[] | undefined[],
+        qtrOperatingIncomeThisFY: EarningsValue[] | undefined[],
+        qtrOpMarginThisFY: EarningsValue[] | undefined[],
+        qtrNetIncomeThisFY: EarningsValue[] | undefined[],
+        cmlNetSalesThisFY: EarningsValue[] | undefined[],
+        cmlOperatingIncomeThisFY: EarningsValue[] | undefined[],
+        cmlOpMarginThisFY: EarningsValue[] | undefined[],
+        cmlNetIncomeThisFY: EarningsValue[] | undefined[],
+        qtrNetSalesLastFY: EarningsValue[] | undefined[],
+        qtrOperatingIncomeLastFY: EarningsValue[] | undefined[],
+        qtrOpMarginLastFY: EarningsValue[] | undefined[],
+        qtrNetIncomeLastFY: EarningsValue[] | undefined[],
+        cmlNetSalesLastFY: EarningsValue[] | undefined[],
+        cmlOperatingIncomeLastFY: EarningsValue[] | undefined[],
+        cmlOpMarginLastFY: EarningsValue[] | undefined[],
+        cmlNetIncomeLastFY: EarningsValue[] | undefined[],
     } 
     | undefined)
     }) {
@@ -68,58 +68,31 @@ export default function GRAPH_CONSOLIDATED_EARNINGS(props:
     ]
 
     const graphQuarters = [
-       props.setData?.qtrNetSalesThisFY.map((elem) => elem.value),
-       props.setData?.qtrOperatingIncomeThisFY.map((elem) => elem.value),
-       props.setData?.qtrOpMarginThisFY.map((elem) => elem.value),
-       props.setData?.qtrNetIncomeThisFY.map((elem) => elem.value),
+       props.setData?.qtrNetSalesThisFY.map((elem) => (elem?.kind === "Quarter") ? elem.value : -1),
+       props.setData?.qtrOperatingIncomeThisFY.map((elem) => (elem?.kind === "Quarter") ? elem.value : -1),
+       props.setData?.qtrOpMarginThisFY.map((elem) => (elem?.kind === "Quarter") ? elem.value : -1),
+       props.setData?.qtrNetIncomeThisFY.map((elem) => (elem?.kind === "Quarter") ? elem.value : -1),
     ]
 
     const graphQuartersLastFY = [
-       props.setData?.qtrNetSalesLastFY.map((elem) => elem.value),
-       props.setData?.qtrOperatingIncomeLastFY.map((elem) => elem.value),
-       props.setData?.qtrOpMarginLastFY.map((elem) => elem.value),
-       props.setData?.qtrNetIncomeLastFY.map((elem) => elem.value),
+       props.setData?.qtrNetSalesLastFY.map((elem) => (elem?.kind === "Quarter") ? elem.value : -1),
+       props.setData?.qtrOperatingIncomeLastFY.map((elem) => (elem?.kind === "Quarter") ? elem.value : -1),
+       props.setData?.qtrOpMarginLastFY.map((elem) => (elem?.kind === "Quarter") ? elem.value : -1),
+       props.setData?.qtrNetIncomeLastFY.map((elem) => (elem?.kind === "Quarter") ? elem.value : -1),
     ]
 
     const graphCumulative = [
-       props.setData?.cmlNetSalesThisFY.map((elem, index) => elem.value),
-       props.setData?.cmlOperatingIncomeThisFY.map((elem, index) => elem.value),
-        [
-            props.setData?.qtrOpMarginThisFY[0], 
-            props.setData?.cmlOpMarginThisFY[1],
-            props.setData?.cmlOpMarginThisFY[2],
-            props.setData?.cmlOpMarginThisFY[3],
-        ].map((elem, index) => {
-            // return elem.value
-            return (!elem?.value) ? 0 : elem?.value
-            // return (index === 0)
-            // ? 0
-            // : (elem.value > operatingMarginQuarters[index].value)
-            // ? elem.value - operatingMarginQuarters[index].value
-            // // : - elem.value + operatingMarginQuarters[index].value
-            // : - elem.value + operatingMarginQuarters[index].value // the least worst result to ensure accuracy
-        }),
-    //    props.setData?.cmlNetIncomeThisFY.map((elem, index) => elem.value - (props.setData?.qtrNetIncomeThisFY[index].value as number)),
-       props.setData?.cmlNetIncomeThisFY.map((elem, index) => elem.value),
+       props.setData?.cmlNetSalesThisFY.map((elem) => (elem?.kind === "Cumulative") ? elem.value : -1),
+       props.setData?.cmlOperatingIncomeThisFY.map((elem) => (elem?.kind === "Cumulative") ? elem.value : -1),
+       props.setData?.cmlOpMarginThisFY.map((elem) => (elem?.kind === "Cumulative") ? elem.value : -1), 
+       props.setData?.cmlNetIncomeThisFY.map((elem) => (elem?.kind === "Cumulative") ? elem.value : -1),
     ]
 
     const graphCumulativeLastFY = [
-       props.setData?.cmlNetSalesLastFY.map((elem, index) => elem.value),
-       props.setData?.cmlOperatingIncomeLastFY.map((elem, index) => elem.value),
-        [
-            props.setData?.qtrOpMarginLastFY[0], 
-            props.setData?.cmlOpMarginLastFY[1],
-            props.setData?.cmlOpMarginLastFY[2],
-            props.setData?.cmlOpMarginLastFY[3],
-        ].map((elem, index) => {
-            return (!elem?.value) ? 0 : elem?.value
-            // return (elem.value > operatingMarginQuartersLastFY[index].value)
-            // ? elem.value - operatingMarginQuartersLastFY[index].value
-            // // : - elem.value + operatingMarginQuarters[index].value
-            // : 0 // the least worst result to ensure accuracy
-        }),
-    //    props.setData?.cmlNetIncomeLastFY.map((elem, index) => elem.value - (props.setData?.qtrNetIncomeLastFY[index].value as number)),
-       props.setData?.cmlNetIncomeLastFY.map((elem, index) => elem.value),
+       props.setData?.cmlNetSalesLastFY.map((elem) => (elem?.kind === "Cumulative") ? elem.value : -1),
+       props.setData?.cmlOperatingIncomeLastFY.map((elem) => (elem?.kind === "Cumulative") ? elem.value : -1),
+       props.setData?.cmlOpMarginLastFY.map((elem) => (elem?.kind === "Cumulative") ? elem.value : -1), 
+       props.setData?.cmlNetIncomeLastFY.map((elem) => (elem?.kind === "Cumulative") ? elem.value : -1),
     ]
 
     const bothOff = (event: React.ChangeEvent<HTMLInputElement>) => {

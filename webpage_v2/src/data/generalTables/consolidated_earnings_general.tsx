@@ -654,7 +654,7 @@ return collection.map((elem, index, array) => {
     }).filter(elem => elem !== undefined)
 };
 
-function consolidatedEarningsGraphListV2(collection: EarningsJSONV2, lastFYCollection: EarningsJSONV2) {
+function consolidatedEarningsGraphListV2(collection: EarningsJSONV2, lastFYCollection: EarningsJSONV2 | undefined) {
 
     const none: EarningsValue = { kind:"Nothing" };
 
@@ -816,11 +816,11 @@ function consolidatedEarningsGraphListV2(collection: EarningsJSONV2, lastFYColle
 
 export const nintendoConsolidatedEarningsList = new Map<number, string>();
 
-collectionNintendoV2.forEach((value, key, map) => {
-    nintendoConsolidatedEarningsList.set(key,consolidatedEarningsListV2Map(value, map.get(key+1),35))
-});
+collectionNintendoV2.forEach((value, key, map) => nintendoConsolidatedEarningsList.set(key,consolidatedEarningsListV2Map(value, map.get(key+1),35)));
 
-export const nintendoConsolidatedEarningsGraphList = consolidatedEarningsGraphList(collectionNintendo);
+export const nintendoConsolidatedEarningsGraphList = new Map();
+
+collectionNintendoV2.forEach((value, key, map) => nintendoConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1))))
 
 export const capcomConsolidatedEarningsList = new Map<number, string>();
 
