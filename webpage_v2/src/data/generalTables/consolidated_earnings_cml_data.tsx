@@ -369,33 +369,32 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
 
     let toReturn = new Map<number, string[]>(); 
 
-    function valueMake(value: EarningsValue): string {
+    function valueMake(value: EarningsValue, fiscalYear: string): string {
+        
         return (value.kind === "Quarter" || value.kind === "Cumulative")
-            ? value.value.toString() + "\n"
+            ? border([
+                spacer(fiscalYear.slice(0, -4) + value.period,(10+value.period.length),"left"),
+                spacer(`¥${value.value.toLocaleString("en")}M`,12,"right")
+             ],true) 
             : ""
     }
 
     list.forEach((value, key, map) => {
 
+        let thisFY = (value.Q4CmlValue.kind === "Cumulative") ? value.Q4CmlValue.thisFY : "Error";
         // toReturn.set(0, (toReturn.get(0) ?? "") + valueMake(value.Q1QtrValue))
-        toReturn.set(0, (toReturn.get(0) ?? []).concat(valueMake(value.Q1QtrValue)))
-        toReturn.set(1, (toReturn.get(1) ?? []).concat(valueMake(value.Q2QtrValue)))
-        toReturn.set(2, (toReturn.get(2) ?? []).concat(valueMake(value.Q3QtrValue)))
-        toReturn.set(3, (toReturn.get(3) ?? []).concat(valueMake(value.Q4QtrValue)))
-        toReturn.set(4, (toReturn.get(4) ?? []).concat(valueMake(value.Q2CmlValue)))
-        toReturn.set(5, (toReturn.get(5) ?? []).concat(valueMake(value.Q3CmlValue)))
-        toReturn.set(6, (toReturn.get(6) ?? []).concat(valueMake(value.Q4CmlValue)))
+        toReturn.set(0, (toReturn.get(0) ?? []).concat(valueMake(value.Q1QtrValue, thisFY)))
+        toReturn.set(1, (toReturn.get(1) ?? []).concat(valueMake(value.Q2QtrValue, thisFY)))
+        toReturn.set(2, (toReturn.get(2) ?? []).concat(valueMake(value.Q3QtrValue, thisFY)))
+        toReturn.set(3, (toReturn.get(3) ?? []).concat(valueMake(value.Q4QtrValue, thisFY)))
+        toReturn.set(4, (toReturn.get(4) ?? []).concat(valueMake(value.Q2CmlValue, thisFY)))
+        toReturn.set(5, (toReturn.get(5) ?? []).concat(valueMake(value.Q3CmlValue, thisFY)))
+        toReturn.set(6, (toReturn.get(6) ?? []).concat(valueMake(value.Q4CmlValue, thisFY)))
 
     })
 
     console.log(toReturn);
     
-    // let printList = list.map(elem => {
-    //     return border([
-    //         spacer(elem.fiscalYear + " Cumulative",20,"left"),
-    //         spacer(`¥${elem.value.toLocaleString("en")}M`,12,"right")
-    //     ],true) 
-    // });
 }
 
 function operatingResultsMaker (collection: EarningsJSON[]): {
