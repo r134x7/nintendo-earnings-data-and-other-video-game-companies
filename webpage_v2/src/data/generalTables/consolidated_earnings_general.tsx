@@ -709,15 +709,15 @@ return collection.map((elem, index, array) => {
 };
 
 // export const nintendoConsolidatedEarningsList = consolidatedEarningsList(collectionNintendo, 35);
-let averageTimeMapOverObject = 0;
-for (let i = 0; i < 100; i++) {
+let averageTimeListOfObjects = 0;
+// for (let i = 0; i < 100; i++) {
    const t0 = performance.now(); 
     const testingLoop = consolidatedEarningsListV2Array(collectionNintendoV2, 35);
    const t1 = performance.now();
-   averageTimeMapOverObject = averageTimeMapOverObject + (t1 - t0); 
-}
+   averageTimeListOfObjects = averageTimeListOfObjects + (t1 - t0); 
+// }
 console.log("Array Object:");
-console.log(`Loops: ${100}, Time per loop: ${averageTimeMapOverObject / 100} milliseconds, Total Time: ${averageTimeMapOverObject / 1000} seconds.`)
+console.log(`Loops: ${0}, Time per loop: ${averageTimeListOfObjects / 100} milliseconds, Total Time: ${averageTimeListOfObjects / 1000} seconds.`)
 
 // export const nintendoConsolidatedEarningsList = consolidatedEarningsListV2Array(collectionNintendoV2, 35);
 
@@ -956,22 +956,29 @@ function consolidatedEarningsListV2Array(collection: EarningsJSONV2[], headerLen
     })
 }
 
+
 export const nintendoConsolidatedEarningsList = new Map<number, EarningsJSONV2 | string>()
 
-for (let i = 0; i < collectionNintendoV2.length; i++) {
-    nintendoConsolidatedEarningsList.set(i, collectionNintendoV2[i])
-}
+let averageTimeMapOverObject = 0; 
+// for (let index = 0; index < 100; index++) {
+    
+const a0 = performance.now();
 
-// collectionNintendoV2.map((elem, index) => nintendoMap.set(index, elem))
+    for (let i = 0; i < collectionNintendoV2.length; i++) {
+        nintendoConsolidatedEarningsList.set(i, collectionNintendoV2[i])
+    }
+
+    // collectionNintendoV2.map((elem, index) => nintendoConsolidatedEarningsList.set(index, elem))
 
 nintendoConsolidatedEarningsList.forEach((value, key, map) => {
-    map.set(key,consolidatedEarningsListV2Map(value as EarningsJSONV2, map.get(key+1) as EarningsJSONV2 | undefined,35))
+    map.set(key,consolidatedEarningsListV2Map(value as EarningsJSONV2, map.get(key+1) as EarningsJSONV2,35))
 })
+const a1 = performance.now();
+averageTimeMapOverObject = averageTimeMapOverObject + (a1 - a0);
+// }
 
-nintendoConsolidatedEarningsList.forEach((value, key, map) => {
-    console.log(value)
-})
-
+console.log("Map():");
+console.log(`Loops: ${0}, Time per loop: ${averageTimeMapOverObject / 100} milliseconds, Total Time: ${averageTimeMapOverObject / 1000} seconds.`)
 // export const nintendoConsolidatedEarningsList = consolidatedEarningsListV2Array(collectionNintendoV2, 35);
 
 function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollection: EarningsJSONV2 | undefined, headerLength: number): string {
