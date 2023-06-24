@@ -878,14 +878,15 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
                     dataThisFY.get(key)?.Q4CmlValue ?? none,
                     currentQuarter,
                     13
-                )
+                );
 
-                let cumulativePercentages = [
-                    printYoYV2(percentagesThisFY.get(key)?.Q1CmlValue ?? none, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY.get(key)?.Q2CmlValue ?? none, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY.get(key)?.Q3CmlValue ?? none, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY.get(key)?.Q4CmlValue ?? none, currentQuarter, 12),
-                ];
+                let cumulativePercentages = printCmlYoYSection(
+                    percentagesThisFY.get(key)?.Q2CmlValue ?? none,
+                    percentagesThisFY.get(key)?.Q3CmlValue ?? none,
+                    percentagesThisFY.get(key)?.Q4CmlValue ?? none,
+                    currentQuarter,
+                    12
+                ); 
 
                 let forecasts = [
                     printForecastValuesV2(dataThisFY.get(key)?.forecastThisFY ?? none, 13),
@@ -909,7 +910,7 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
         return [printOne, ...printEach.values()].reduce((acc, next) => acc + "\n" + next)
 };
 
-function getData(dataCollectionThisFY: EarningsJSONV2 | undefined, dataThisFYLengthForLastFY: number) {
+function getData(dataCollectionThisFY: EarningsJSONV2 | undefined, dataThisFYLengthForLastFY: number): Map<number, EarningsV2> {
 
     const dataMap = new Map<number, EarningsV2>();
 
@@ -946,11 +947,20 @@ function printQuarterYoYSection(q1: EarningsValue, q2: EarningsValue, q3: Earnin
     ]
 }
 
-function printCmlSection(firstHalf: EarningsValue, firstThreeQuarters: EarningsValue, fyCumulative: EarningsValue, currentQuarter: number, textLength: number) {
+function printCmlSection(firstHalf: EarningsValue, firstThreeQuarters: EarningsValue, fyCumulative: EarningsValue, currentQuarter: number, textLength: number): string[] {
 
     return [
         printCumulativeValuesV2(firstHalf, currentQuarter, textLength),
         printCumulativeValuesV2(firstThreeQuarters, currentQuarter, textLength),
         printCumulativeValuesV2(fyCumulative, currentQuarter, textLength),
+    ]
+}
+
+function printCmlYoYSection(firstHalf: EarningsValue, firstThreeQuarters: EarningsValue, fyCumulative: EarningsValue, currentQuarter: number, textLength: number): string[] {
+
+    return [
+        printYoYV2(firstHalf, currentQuarter, textLength),
+        printYoYV2(firstThreeQuarters, currentQuarter, textLength),
+        printYoYV2(fyCumulative, currentQuarter, textLength),
     ]
 }
