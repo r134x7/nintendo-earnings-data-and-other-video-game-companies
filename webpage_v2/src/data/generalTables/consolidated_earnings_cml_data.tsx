@@ -331,11 +331,25 @@ function headerMaker(collection: EarningsJSONV2): string {
     return headerMake
 }
 
-function operatingResultsMakerV2(collection: EarningsJSONV2) {
+// function operatingResultsMakerV2(collection: EarningsJSONV2) {
 
-    let header = headerMaker(collection);
+// }
+
+let x = operatingResultsMakerV2(totalCollectionNintendo);
+
+function operatingResultsMakerV2(completeCollection: Map<number, EarningsJSONV2>) {
 
 
+    const makeData = new Map<number, EarningsV2[]>();
+    completeCollection.forEach((value, key, map) => makeData.set(key, [...getData(value, value.data.length).values()]))
+
+    const netSales = new Map<number, EarningsV2>();
+
+    makeData.forEach((value, key, map) => {
+        netSales.set(key, value[0])
+    })
+    console.log(netSales);
+    
 }
 
 function operatingResultsMaker (collection: EarningsJSON[]): {
