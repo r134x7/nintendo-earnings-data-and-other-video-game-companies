@@ -888,13 +888,14 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
                     12
                 ); 
 
-                let forecasts = [
-                    printForecastValuesV2(dataThisFY.get(key)?.forecastThisFY ?? none, 13),
-                    printForecastValuesV2(dataThisFY.get(key)?.forecastRevision1 ?? none, 13),
-                    printForecastValuesV2(dataThisFY.get(key)?.forecastRevision2 ?? none, 13),
-                    printForecastValuesV2(dataThisFY.get(key)?.forecastRevision3 ?? none, 13),
-                    printForecastValuesV2(dataThisFY.get(key)?.forecastNextFY ?? none, 13),
-                ];
+                let forecasts = printForecastSection(
+                    dataThisFY.get(key)?.forecastThisFY ?? none,
+                    dataThisFY.get(key)?.forecastRevision1 ?? none,
+                    dataThisFY.get(key)?.forecastRevision2 ?? none,
+                    dataThisFY.get(key)?.forecastRevision3 ?? none,
+                    dataThisFY.get(key)?.forecastNextFY ?? none,
+                    13
+                );
 
                 let output = printReduceSection(
                     sectionHeader,
@@ -962,5 +963,16 @@ function printCmlYoYSection(firstHalf: EarningsValue, firstThreeQuarters: Earnin
         printYoYV2(firstHalf, currentQuarter, textLength),
         printYoYV2(firstThreeQuarters, currentQuarter, textLength),
         printYoYV2(fyCumulative, currentQuarter, textLength),
+    ]
+}
+
+function printForecastSection(thisFY: EarningsValue, revision1: EarningsValue, revision2: EarningsValue, revision3: EarningsValue, nextFY: EarningsValue, textLength: number): string[] {
+
+    return [
+        printForecastValuesV2(thisFY, textLength),
+        printForecastValuesV2(revision1, textLength),
+        printForecastValuesV2(revision2, textLength),
+        printForecastValuesV2(revision3, textLength),
+        printForecastValuesV2(nextFY, textLength),
     ]
 }
