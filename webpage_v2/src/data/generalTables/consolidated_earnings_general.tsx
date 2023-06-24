@@ -853,7 +853,7 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
                 map.set(key, output)
             } else {
 
-                let sectionHeader = printSectionHeaderV2(dataThisFY.get(key) as EarningsV2, true )
+                let sectionHeader = printSectionHeaderV2(dataThisFY.get(key) as EarningsV2, true);
 
                 let quarters = printQuarterSection(
                     dataThisFY.get(key)?.Q1QtrValue ?? none,
@@ -862,14 +862,15 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
                     dataThisFY.get(key)?.Q4QtrValue ?? none,
                     currentQuarter,
                     13
-                ) 
+                ); 
 
-                let quarterPercentages = [
-                    printYoYV2(percentagesThisFY.get(key)?.Q1QtrValue ?? none, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY.get(key)?.Q2QtrValue ?? none, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY.get(key)?.Q3QtrValue ?? none, currentQuarter, 12),
-                    printYoYV2(percentagesThisFY.get(key)?.Q4QtrValue ?? none, currentQuarter, 12),
-                ];
+                let quarterPercentages = printQuarterYoYSection(
+                    percentagesThisFY.get(key)?.Q1QtrValue ?? none,
+                    percentagesThisFY.get(key)?.Q2QtrValue ?? none,
+                    percentagesThisFY.get(key)?.Q3QtrValue ?? none,
+                    percentagesThisFY.get(key)?.Q4QtrValue ?? none, currentQuarter, 
+                    12
+                );
 
                 let cumulatives = [
                     printCumulativeValuesV2(dataThisFY.get(key)?.Q1CmlValue ?? none, currentQuarter, 13),
@@ -931,5 +932,15 @@ function printQuarterSection(q1: EarningsValue, q2: EarningsValue, q3: EarningsV
         printQuarterValuesV2(q2, currentQuarter, textLength),
         printQuarterValuesV2(q3, currentQuarter, textLength),
         printQuarterValuesV2(q4, currentQuarter, textLength),
+    ]
+}
+
+function printQuarterYoYSection(q1: EarningsValue, q2: EarningsValue, q3: EarningsValue, q4: EarningsValue, currentQuarter: number, textLength: number): string[] {
+
+    return [
+        printYoYV2(q1, currentQuarter, textLength),
+        printYoYV2(q2, currentQuarter, textLength),
+        printYoYV2(q3, currentQuarter, textLength),
+        printYoYV2(q4, currentQuarter, textLength),
     ]
 }
