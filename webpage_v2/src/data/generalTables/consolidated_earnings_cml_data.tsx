@@ -422,15 +422,19 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
     })
 
     toReturn.forEach((value, key, map) => {
+
+        let getTextLength = (offset: number) => (map.get(key)?.at(-2)?.length === undefined)
+            ? 0
+            : (map.get(key)?.at(-2)?.length as number) - offset 
         
         map.set(key, (toReturn.get(key) ?? []).concat(
             printStats(
-                printCount(getValues.get(key) ?? [0], map.get(key)?.at(-2)?.length-21 ?? 0).concat(
-                    printSum(getValues.get(key) ?? [0], map.get(key)?.at(-2)?.length-21 ?? 0),
-                    printAverage(getValues.get(key) ?? [0], map.get(key)?.at(-2)?.length-21 ?? 0),
-                    printMinMedianMax(getValues.get(key) ?? [0], map.get(key)?.at(-2)?.length-21 ?? 0),
+                printCount(getValues.get(key) ?? [0], getTextLength(21)).concat(
+                    printSum(getValues.get(key) ?? [0], getTextLength(21)),
+                    printAverage(getValues.get(key) ?? [0], getTextLength(21)),
+                    printMinMedianMax(getValues.get(key) ?? [0], getTextLength(21)),
                 )
-            , map.get(key)?.at(-2)?.length-3 ?? 0),
+            , getTextLength(3) ?? 0),
         ))
     })
 
