@@ -59,7 +59,7 @@ export default function SQUARE_ENIX_CML() {
                     setTimePeriod(4)
                 } else if (timePeriodValue === "First Three Quarters") {
                     setTimePeriod(5)
-                } else if (timePeriodValue === "First Three Quarters") {
+                } else if (timePeriodValue === "FY Cumulative") {
                     setTimePeriod(6)
                 } else {
                     setTimePeriod(6)

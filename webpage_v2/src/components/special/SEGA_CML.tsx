@@ -20,6 +20,9 @@ export default function SEGA_CML() {
     const [titlesLength, setTitlesLength] = useState(0)
     const [platformValue, setPlatformValue] = useState<string | null>("All" ?? "All");
 
+    const [timePeriod, setTimePeriod] = useState(6);
+    const [timePeriodValue, setTimePeriodValue] = useState<string | null>("FY Cumulative" ?? "FY Cumulative");
+
     const state: any = useSelector(state => state);
 
     let filteredIPType = fyTitlesSegaSammy.titleData.filter(elem => {
@@ -68,6 +71,26 @@ export default function SEGA_CML() {
     useEffect(() => {
 
         switch (value) {
+            case "Sega Sammy Consolidated Operating Results - Cumulative":
+                if (timePeriodValue === "1st Quarter") {
+                    setTimePeriod(0)
+                } else if (timePeriodValue === "2nd Quarter") {
+                    setTimePeriod(1)
+                } else if (timePeriodValue === "3rd Quarter") {
+                    setTimePeriod(2)
+                } else if (timePeriodValue === "4th Quarter") {
+                    setTimePeriod(3)
+                } else if (timePeriodValue === "First Half") {
+                    setTimePeriod(4)
+                } else if (timePeriodValue === "First Three Quarters") {
+                    setTimePeriod(5)
+                } else if (timePeriodValue === "FY Cumulative") {
+                    setTimePeriod(6)
+                } else {
+                    setTimePeriod(6)
+                }
+                break;
+
             case "Sega Sammy Software Units - Cumulative":
                 setTitlesLength(filterSoftwareCumulative.length)
                 break;
@@ -80,12 +103,12 @@ export default function SEGA_CML() {
                 break;
         }
 
-    }, [titleValue, value, platformValue])
+    }, [titleValue, value, platformValue, timePeriodValue])
 
     const componentList = [
         {
             name: "Sega Sammy Consolidated Operating Results - Cumulative",
-            value: cumulativeEarningsListSegaSammy
+            value: cumulativeEarningsListSegaSammy[timePeriod]
         },
         {
             name: "Sega Sammy Sales Per Software Unit - Cumulative",
@@ -127,6 +150,25 @@ export default function SEGA_CML() {
             />
             
             <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {(value === "Sega Sammy Consolidated Operating Results - Cumulative")
+                    ? <Select
+                        data={[
+                         "1st Quarter",
+                         "2nd Quarter",
+                         "3rd Quarter",
+                         "4th Quarter",
+                         "First Half",
+                         "First Three Quarters",
+                         "FY Cumulative",
+                     ]}
+                    defaultValue={"FY Cumulative"} 
+                    label="Select a time period:"
+                    radius="xl"
+                    value={timePeriodValue}
+                    onChange={setTimePeriodValue}
+                  /> 
+                    : undefined
+                }
                 {(value === "Sega Sammy FY Series IP - Cumulative")
                     ? <Select
                         data={[
