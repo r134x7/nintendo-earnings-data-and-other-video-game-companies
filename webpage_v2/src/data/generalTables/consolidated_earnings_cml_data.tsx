@@ -404,12 +404,26 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
     toReturn.forEach((value, key, map) => {
 
         map.set(key, (toReturn.get(key) ?? []).concat(
-            printCount(map.get(key) ?? ["Error"]),
-            printSum(map.get(key) ?? ["Error"]),
+            printStats(
+                printCount(map.get(key) ?? ["Error"]).concat(
+                    printSum(map.get(key) ?? ["Error"]),
+                    printAverage(map.get(key) ?? ["Error"]),
+                    printMinMedianMax(map.get(key) ?? ["Error"])
+                )
+            )            
         ))
     })
     console.log(toReturn);
     
+}
+
+function printStats(list: string[]): string[] {
+
+    let toPrint = list.reduce((acc, next) => acc + next,"")
+
+    let toLiner = liner(toPrint, "−", "both", true, 35)
+
+    return [toLiner]
 }
 
 function getCount(list: string[]): number {
@@ -459,6 +473,44 @@ function printAverage(list: string[]): string[] {
     ],true) 
 
     return [toPrint]
+}
+
+function printMinMedianMax(list: string[]): string[] {
+
+    const sortedList = list.filter(elem => elem.length !== 0).flatMap(elem => Number.isNaN(elem) ? [] : Number(elem)).sort((a, b) => 
+        a > b 
+        ? 1 
+        : b < a 
+            ? -1 
+            : 0)
+
+    const printMininum = border([
+        spacer("Minimum",17,"left"),
+        spacer(`¥${sortedList[0].toLocaleString("en")}M`,15,"right")
+    ],true);
+
+    const printMaximum = border([
+        spacer("Maximum",17,"left"),
+        spacer(`¥${sortedList[sortedList.length-1].toLocaleString("en")}M`,15,"right"),
+    ]);
+
+    let printMedian: string = ((sortedList.length % 2) !== 0) // odd number
+            // median formula source: https://en.wikipedia.org/wiki/Median
+            // odd number median(x) = x(n+1)/2 => index version => median(x) = (x(n+1)/2)-1
+            ? `¥${sortedList[((sortedList.length + 1)/2) -1].toLocaleString("en")}M`
+            // even number median(x) = (x(n/2) + x((n/2) + 1)) /2 => index version median(x) = (x((n/2)-1) + x((n/2))) /2
+            : `¥${Number(((sortedList[(sortedList.length/2) -1] + sortedList[(sortedList.length/2)])/2).toFixed(0)).toLocaleString("en")}M`;
+    
+    let printMedianFixed: string = border([
+        spacer("Median",17,"left"),
+        spacer(printMedian,15,"right")
+    ],true);
+
+    return [
+        printMedianFixed,
+        printMininum,
+        printMaximum,
+    ]
 }
 
 function operatingResultsMaker (collection: EarningsJSON[]): {
