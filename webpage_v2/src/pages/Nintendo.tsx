@@ -10,7 +10,9 @@ const currentYear = 2023;
 
 const yearsList = Array.from({length: 43}, (elem, index) => 
                     {
-                            return "FY3/" + (currentYear - index)
+                            return (currentYear - index <= 1989) 
+                                ? "FY8/" + (currentYear - index)
+                                : "FY3/" + (currentYear - index)
                     }) // FY3/2017 to FY3/2023 at length: 7
 
 // const coloursList = ["rgba(52, 58, 64, 0.2)", "#2C2E33"]
@@ -88,7 +90,7 @@ export default function Nintendo() {
                     mr="md"
                     placeholder="Select"
                     label={`Select a Fiscal Year from ${currentYear - (yearsList.length-1)} to ${currentYear}.`}
-                    description={`Fiscal Year ending March ${(Number(year?.slice(4,8))) ? year?.slice(4,8) : "" }.`}
+                    description={`Fiscal Year ending ${(Number(year?.slice(4,8))) <= 1989 ? "August" : "March"} ${(Number(year?.slice(4,8))) ? year?.slice(4,8) : "" }.`}
                     radius="xl"
                     size="md"
                     data={yearsList}
