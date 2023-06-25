@@ -403,26 +403,24 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
 
     toReturn.forEach((value, key, map) => {
 
-        map.set(key, (toReturn.get(key) ?? []).concat(printCount(map.get(key) ?? ["Error"])))
+        map.set(key, (toReturn.get(key) ?? []).concat(
+            printCount(map.get(key) ?? ["Error"]),
+            printSum(map.get(key) ?? ["Error"]),
+        ))
     })
     console.log(toReturn);
     
 }
 
-function printCount(list: string[]): string[] {
+function getCount(list: string[]): number {
 
     let toFilter = list.filter(elem => elem.length !== 0)
     let headerCount = 1;
 
-    let toPrint = border([
-        spacer("Count",17,"left"),
-        spacer(`${toFilter.length - headerCount}`,15,"right"),
-    ],true);
-
-    return [toPrint]
+    return (toFilter.length - headerCount)
 }
 
-function printSum(list: string[]): string[] {
+function getSum(list: string[]): number {
 
     let toReduce: number = list.reduce((acc, next) => {
         return (Number.isNaN(next) || next.length === 0)
@@ -430,9 +428,34 @@ function printSum(list: string[]): string[] {
             : acc + Number(next)
     }, 0)
 
+    return toReduce
+}
+
+function printCount(list: string[]): string[] {
+
+    let toPrint = border([
+        spacer("Count",17,"left"),
+        spacer(`${getCount(list)}`,15,"right"),
+    ],true);
+
+    return [toPrint]
+}
+
+function printSum(list: string[]): string[] {
+
     let toPrint: string = border([
         spacer("Sum",17,"left"),
-        spacer(`¥${toReduce.toLocaleString("en")}M`,15,"right"),
+        spacer(`¥${getSum(list).toLocaleString("en")}M`,15,"right"),
+    ],true) 
+
+    return [toPrint]
+}
+
+function printAverage(list: string[]): string[] {
+
+    let toPrint: string = border([
+        spacer("Average",17,"left"),
+        spacer(`¥${Number((getSum(list) / getCount(list)).toFixed(0)).toLocaleString("en")}M`,15,"right"),
     ],true) 
 
     return [toPrint]
