@@ -53,7 +53,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
     let predictText = new Set<string>();
 
-    let globalHardwareSoftwareCall = platformSearchFeatures(globalHardwareSoftwareIndex, globalHardwareSoftwareIndex[0].header, "Global Hardware/Software Units", value, platformValue ?? "All", "Single", "Single", platformListsGlobalHardwareSoftware, titleValue, predictText)
+    let globalHardwareSoftwareCall = platformSearchFeatures(globalHardwareSoftwareIndex, globalHardwareSoftwareIndex?.[0]?.header, "Global Hardware/Software Units", value, platformValue ?? "All", "Single", "Single", platformListsGlobalHardwareSoftware, titleValue, predictText)
 
     let fyMillionSellerTitlesCall = platformSearchFeatures(fyMillionSellerTitlesIndex, fyMillionSellerTitlesAllPlatformsHeaderPickedIndex?.header, "FY Million-Seller Titles", value, platformValue ?? "All", "Single", "Single", platformListsFYMillionSellers, titleValue, predictText, fyMillionSellerTitlesAllPlatformsHeaderPickedIndex?.footnote)
 
