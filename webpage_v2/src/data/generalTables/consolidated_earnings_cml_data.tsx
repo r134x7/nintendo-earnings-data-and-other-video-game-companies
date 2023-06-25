@@ -306,10 +306,6 @@ const totalCollectionSquareEnix = new Map<number, EarningsJSONV2>([
     [19, consolidatedEarningsSquareEnix2023],
 ]);
 
-const operatingResultsNintendoV2 = new Map<number, EarningsV2[]>();
-totalCollectionNintendo.forEach((value, key, map) => operatingResultsNintendoV2.set(key, [...getData(value, value.data.length).values()]))
-
-
 function labelMaker (collection: EarningsJSONV2): string {
 
     // const makeDateLabel = dateLabel(collection.at(-1)?.fiscalYear ?? "N/A", collection.at(-1)?.currentQuarter ?? 4);
@@ -331,14 +327,7 @@ function headerMaker(collection: EarningsJSONV2): string {
     return headerMake
 }
 
-// function operatingResultsMakerV2(collection: EarningsJSONV2) {
-
-// }
-
-let x = operatingResultsMakerV2(totalCollectionNintendo);
-
-function operatingResultsMakerV2(completeCollection: Map<number, EarningsJSONV2>) {
-
+function operatingResultsMakerV2(completeCollection: Map<number, EarningsJSONV2>): string[][] {
 
     const makeData = new Map<number, EarningsV2[]>();
     completeCollection.forEach((value, key, map) => makeData.set(key, [...getData(value, value.data.length).values()]))
@@ -352,33 +341,40 @@ function operatingResultsMakerV2(completeCollection: Map<number, EarningsJSONV2>
         operatingIncome.set(key, value[1])
         netIncome.set(key, value[2])
     })
-    // console.log(netSales);
-    console.log(netSales);
 
     let titleHeader = headerMaker(completeCollection.get(completeCollection.size -1) as EarningsJSONV2)
 
     let dateHeader = labelMaker(completeCollection.get(completeCollection.size -1) as EarningsJSONV2)
-    
-    let x = printAllValues(netSales, titleHeader, dateHeader)
-    console.log(x);
-    
 
+    let completeHeader = titleHeader + dateHeader;
+    
+    let get1 = printAllValues(netSales).map(elem => completeHeader + elem);
+
+    let get2 = printAllValues(operatingIncome).map(elem => completeHeader + elem);
+
+    let get3 = printAllValues(netIncome).map(elem => completeHeader + elem);
+
+    return [
+        get1,
+        get2,
+        get3,
+    ]
 }
 
-function printAllValues(list: Map<number, EarningsV2>, titleHeader: string, dateHeader: string): string[] {
+function printAllValues(list: Map<number, EarningsV2>): string[] {
 
     let sectionHeader = liner(border([
         spacer(list.get(0)?.name ?? "Error",34,"left"),
     ]),"−","both",true)
 
     let toReturn = new Map<number, string[]>([
-        [0, [titleHeader, dateHeader, sectionHeader]],
-        [1, [titleHeader, dateHeader, sectionHeader]],
-        [2, [titleHeader, dateHeader, sectionHeader]],
-        [3, [titleHeader, dateHeader, sectionHeader]],
-        [4, [titleHeader, dateHeader, sectionHeader]],
-        [5, [titleHeader, dateHeader, sectionHeader]],
-        [6, [titleHeader, dateHeader, sectionHeader]],
+        [0, [sectionHeader]],
+        [1, [sectionHeader]],
+        [2, [sectionHeader]],
+        [3, [sectionHeader]],
+        [4, [sectionHeader]],
+        [5, [sectionHeader]],
+        [6, [sectionHeader]],
     ]); 
 
     let getValues = new Map<number, number[]>([
@@ -432,10 +428,9 @@ function printAllValues(list: Map<number, EarningsV2>, titleHeader: string, date
                     printAverage(getValues.get(key) ?? [0]),
                     printMinMedianMax(getValues.get(key) ?? [0])
                 )
-            )            
+            ),
         ))
     })
-    console.log(toReturn);
 
     return [
         getConcat(toReturn.get(0)),
@@ -561,57 +556,57 @@ function printMinMedianMax(list: number[]): string[] {
     ]
 }
 
-function operatingResultsMaker (collection: EarningsJSON[]): {
-    header: string, netSales: string[], operatingIncome: string[], netIncome: string[]
-} {
+// function operatingResultsMaker (collection: EarningsJSON[]): {
+//     header: string, netSales: string[], operatingIncome: string[], netIncome: string[]
+// } {
 
-    let subHeader = (collection[0].companyName === "CAPCOM Co., Ltd." || collection[0].companyName === "SQUARE ENIX HOLDINGS CO., LTD.") ? "Consolidated Financial Results" : "Consolidated Operating Results";
+//     let subHeader = (collection[0].companyName === "CAPCOM Co., Ltd." || collection[0].companyName === "SQUARE ENIX HOLDINGS CO., LTD.") ? "Consolidated Financial Results" : "Consolidated Operating Results";
 
-    let headerMake = liner(border([
-        spacer(collection[0].companyName, collection[0].companyName.length+1, "left")
-        ]),"−","top",true) +
-        liner(border([
-            spacer(subHeader, subHeader.length+2, "left")
-        ]), "−", "both",true)
+//     let headerMake = liner(border([
+//         spacer(collection[0].companyName, collection[0].companyName.length+1, "left")
+//         ]),"−","top",true) +
+//         liner(border([
+//             spacer(subHeader, subHeader.length+2, "left")
+//         ]), "−", "both",true)
 
-    let netSalesSet = collection.map(elem => {
-        return {
-            fiscalYear: elem.fiscalYear,
-            value: elem.data[0].Q4CmlValue
-        };
-    });
+//     let netSalesSet = collection.map(elem => {
+//         return {
+//             fiscalYear: elem.fiscalYear,
+//             value: elem.data[0].Q4CmlValue
+//         };
+//     });
 
-    let operatingIncomeSet = collection.map(elem => {
-        return {
-            fiscalYear: elem.fiscalYear,
-            value: elem.data[1].Q4CmlValue
-        };
-    });
+//     let operatingIncomeSet = collection.map(elem => {
+//         return {
+//             fiscalYear: elem.fiscalYear,
+//             value: elem.data[1].Q4CmlValue
+//         };
+//     });
 
-    let netIncomeSet = collection.map(elem => {
-        return {
-            fiscalYear: elem.fiscalYear,
-            value: elem.data[2].Q4CmlValue
-        };
-    });
+//     let netIncomeSet = collection.map(elem => {
+//         return {
+//             fiscalYear: elem.fiscalYear,
+//             value: elem.data[2].Q4CmlValue
+//         };
+//     });
 
-    const sortedNetSales = sortList(netSalesSet);
-    const sortedOperatingIncome = sortList(operatingIncomeSet);
-    const sortedNetIncome = sortList(netIncomeSet);
+//     const sortedNetSales = sortList(netSalesSet);
+//     const sortedOperatingIncome = sortList(operatingIncomeSet);
+//     const sortedNetIncome = sortList(netIncomeSet);
 
-    const printNetSales = printCumulativeValues(netSalesSet, sortedNetSales, "Net Sales");
+//     const printNetSales = printCumulativeValues(netSalesSet, sortedNetSales, "Net Sales");
 
-    const printOperatingIncome = printCumulativeValues(operatingIncomeSet, sortedOperatingIncome, "Operating Income");
+//     const printOperatingIncome = printCumulativeValues(operatingIncomeSet, sortedOperatingIncome, "Operating Income");
 
-    const printNetIncome = printCumulativeValues(netIncomeSet, sortedNetIncome, "Net Income");
+//     const printNetIncome = printCumulativeValues(netIncomeSet, sortedNetIncome, "Net Income");
 
-    return {
-        header: headerMake,
-        netSales: printNetSales,
-        operatingIncome: printOperatingIncome,
-        netIncome: printNetIncome,
-    }
-};
+//     return {
+//         header: headerMake,
+//         netSales: printNetSales,
+//         operatingIncome: printOperatingIncome,
+//         netIncome: printNetIncome,
+//     }
+// };
 
 // let netSalesSet = totalCollectionNintendo.map(elem => {
 //     return {
@@ -634,85 +629,85 @@ function operatingResultsMaker (collection: EarningsJSON[]): {
 //     };
 // });
 
-function sortList(list: {fiscalYear: string, value: number}[]) {
+// function sortList(list: {fiscalYear: string, value: number}[]) {
 
-    const sortList = list.map((elem, index, array) => {
-            return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
-    }).sort((a, b) => { // (b,a) is descending order, (a,b) sorts in ascending order
-        return (a.value > b.value)
-            ? 1
-            : (a.value < b.value)
-            ? -1
-            : 0 
-    });
+//     const sortList = list.map((elem, index, array) => {
+//             return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
+//     }).sort((a, b) => { // (b,a) is descending order, (a,b) sorts in ascending order
+//         return (a.value > b.value)
+//             ? 1
+//             : (a.value < b.value)
+//             ? -1
+//             : 0 
+//     });
 
-    return sortList
-};
+//     return sortList
+// };
 
 // const sortedNetSales = sortList(netSalesSet);
 // const sortedOperatingIncome = sortList(operatingIncomeSet);
 // const sortedNetIncome = sortList(netIncomeSet);
 
 
-const printCumulativeValues = (list: {fiscalYear: string, value: number}[], sortedList: {fiscalYear: string, value: number}[], valueType: string): string[] => {
+// const printCumulativeValues = (list: {fiscalYear: string, value: number}[], sortedList: {fiscalYear: string, value: number}[], valueType: string): string[] => {
 
-    let header = liner(border([
-        spacer(valueType,34,"left"),
-    ]),"−","both",true)
+//     let header = liner(border([
+//         spacer(valueType,34,"left"),
+//     ]),"−","both",true)
 
-    let printList = list.map(elem => {
-        return border([
-            spacer(elem.fiscalYear + " Cumulative",20,"left"),
-            spacer(`¥${elem.value.toLocaleString("en")}M`,12,"right")
-        ],true) 
-    });
+//     let printList = list.map(elem => {
+//         return border([
+//             spacer(elem.fiscalYear + " Cumulative",20,"left"),
+//             spacer(`¥${elem.value.toLocaleString("en")}M`,12,"right")
+//         ],true) 
+//     });
 
-    let printCount: string = border([
-        spacer("Count",17,"left"),
-        spacer(`${sortedList.length}`,15,"right"),
-    ],true);
+//     let printCount: string = border([
+//         spacer("Count",17,"left"),
+//         spacer(`${sortedList.length}`,15,"right"),
+//     ],true);
 
-    let printSum: string = border([
-        spacer("Sum",17,"left"),
-        spacer(`¥${(sortedList.map(value => value.value).reduce((acc, next) => acc + next)).toLocaleString("en")}M`,15,"right"),
-    ],true) 
+//     let printSum: string = border([
+//         spacer("Sum",17,"left"),
+//         spacer(`¥${(sortedList.map(value => value.value).reduce((acc, next) => acc + next)).toLocaleString("en")}M`,15,"right"),
+//     ],true) 
      
-    let printAverage: string = border([
-        spacer("Average",17,"left"),
-        spacer(`¥${Number(((sortedList.map(value => value.value).reduce((acc, next) => acc + next)) / sortedList.length).toFixed(0)).toLocaleString("en")}M`,15,"right"),
-    ],true) 
+//     let printAverage: string = border([
+//         spacer("Average",17,"left"),
+//         spacer(`¥${Number(((sortedList.map(value => value.value).reduce((acc, next) => acc + next)) / sortedList.length).toFixed(0)).toLocaleString("en")}M`,15,"right"),
+//     ],true) 
 
-    let printMedian: string = ((sortedList.length % 2) !== 0) // odd number
-            // median formula source: https://en.wikipedia.org/wiki/Median
-            // odd number median(x) = x(n+1)/2 => index version => median(x) = (x(n+1)/2)-1
-            ? `¥${sortedList[((sortedList.length + 1)/2) -1].value.toLocaleString("en")}M`
-            // even number median(x) = (x(n/2) + x((n/2) + 1)) /2 => index version median(x) = (x((n/2)-1) + x((n/2))) /2
-            : `¥${Number(((sortedList[(sortedList.length/2) -1].value + sortedList[(sortedList.length/2)].value)/2).toFixed(0)).toLocaleString("en")}M`;
+//     let printMedian: string = ((sortedList.length % 2) !== 0) // odd number
+//             // median formula source: https://en.wikipedia.org/wiki/Median
+//             // odd number median(x) = x(n+1)/2 => index version => median(x) = (x(n+1)/2)-1
+//             ? `¥${sortedList[((sortedList.length + 1)/2) -1].value.toLocaleString("en")}M`
+//             // even number median(x) = (x(n/2) + x((n/2) + 1)) /2 => index version median(x) = (x((n/2)-1) + x((n/2))) /2
+//             : `¥${Number(((sortedList[(sortedList.length/2) -1].value + sortedList[(sortedList.length/2)].value)/2).toFixed(0)).toLocaleString("en")}M`;
 
-    let printMedianFixed: string = border([
-        spacer("Median",17,"left"),
-        spacer(printMedian,15,"right")
-    ],true);
+//     let printMedianFixed: string = border([
+//         spacer("Median",17,"left"),
+//         spacer(printMedian,15,"right")
+//     ],true);
 
-    let printMinimum: string = border([
-        spacer("Minimum",17,"left"),
-        spacer(`¥${sortedList[0].value.toLocaleString("en")}M`,15,"right")
-    ],true);
+//     let printMinimum: string = border([
+//         spacer("Minimum",17,"left"),
+//         spacer(`¥${sortedList[0].value.toLocaleString("en")}M`,15,"right")
+//     ],true);
 
-    let printMaximum: string = border([
-        spacer("Maximum",17,"left"),
-        spacer(`¥${sortedList[sortedList.length-1].value.toLocaleString("en")}M`,15,"right"),
-    ]);
+//     let printMaximum: string = border([
+//         spacer("Maximum",17,"left"),
+//         spacer(`¥${sortedList[sortedList.length-1].value.toLocaleString("en")}M`,15,"right"),
+//     ]);
 
-    let printStats = liner(
-        printCount + printSum + printAverage + printMedianFixed + printMinimum + printMaximum, "−", "both",true,35);
+//     let printStats = liner(
+//         printCount + printSum + printAverage + printMedianFixed + printMinimum + printMaximum, "−", "both",true,35);
      
-    return [
-        header, 
-        ...printList, 
-        printStats
-    ] 
-};
+//     return [
+//         header, 
+//         ...printList, 
+//         printStats
+//     ] 
+// };
 
 // const printNetSales = printCumulativeValues(netSalesSet, sortedNetSales, "Net Sales");
 
@@ -722,69 +717,82 @@ const printCumulativeValues = (list: {fiscalYear: string, value: number}[], sort
 
 let dataSourceNintendo = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_data/index.html"
 
-const operatingResultsNintendo = operatingResultsMaker(totalCollectionNintendo);
 
-const operatingResultsBandaiNamco = operatingResultsMaker(totalCollectionBandaiNamco);
+// const operatingResultsNintendo = operatingResultsMaker(totalCollectionNintendo);
 
-const operatingResultsSquareEnix = operatingResultsMaker(totalCollectionSquareEnix);
+// const operatingResultsBandaiNamco = operatingResultsMaker(totalCollectionBandaiNamco);
 
-const operatingResultsSegaSammy = operatingResultsMaker(totalCollectionSegaSammy);
+// const operatingResultsSquareEnix = operatingResultsMaker(totalCollectionSquareEnix);
 
-const operatingResultsCapcom = operatingResultsMaker(totalCollectionCapcom);
+// const operatingResultsSegaSammy = operatingResultsMaker(totalCollectionSegaSammy);
 
-const operatingResultsKoeiTecmo = operatingResultsMaker(totalCollectionKoeiTecmo);
+// const operatingResultsCapcom = operatingResultsMaker(totalCollectionCapcom);
 
-export const cumulativeEarningsListNintendo = [
-    operatingResultsNintendo.header,
-    labelMaker(totalCollectionNintendo),
-    ...operatingResultsNintendo.netSales,
-    ...operatingResultsNintendo.operatingIncome,
-    ...operatingResultsNintendo.netIncome,
-    "###\n",
-    dataSourceNintendo,
-].reduce((prev, next) => prev + next);
+// const operatingResultsKoeiTecmo = operatingResultsMaker(totalCollectionKoeiTecmo);
 
-export const cumulativeEarningsListBandaiNamco = [
-    operatingResultsBandaiNamco.header,
-    labelMaker(totalCollectionBandaiNamco),
-    ...operatingResultsBandaiNamco.netSales,
-    ...operatingResultsBandaiNamco.operatingIncome,
-    ...operatingResultsBandaiNamco.netIncome,
-    "###\n",
-].reduce((prev, next) => prev + next);
+// export const cumulativeEarningsListNintendo = [
+//     operatingResultsNintendo.header,
+//     labelMaker(totalCollectionNintendo),
+//     ...operatingResultsNintendo.netSales,
+//     ...operatingResultsNintendo.operatingIncome,
+//     ...operatingResultsNintendo.netIncome,
+//     "###\n",
+//     dataSourceNintendo,
+// ].reduce((prev, next) => prev + next);
 
-export const cumulativeEarningsListSquareEnix = [
-    operatingResultsSquareEnix.header,
-    labelMaker(totalCollectionSquareEnix),
-    ...operatingResultsSquareEnix.netSales,
-    ...operatingResultsSquareEnix.operatingIncome,
-    ...operatingResultsSquareEnix.netIncome,
-    "###\n",
-].reduce((prev, next) => prev + next);
+// export const cumulativeEarningsListBandaiNamco = [
+//     operatingResultsBandaiNamco.header,
+//     labelMaker(totalCollectionBandaiNamco),
+//     ...operatingResultsBandaiNamco.netSales,
+//     ...operatingResultsBandaiNamco.operatingIncome,
+//     ...operatingResultsBandaiNamco.netIncome,
+//     "###\n",
+// ].reduce((prev, next) => prev + next);
 
-export const cumulativeEarningsListSegaSammy = [
-    operatingResultsSegaSammy.header,
-    labelMaker(totalCollectionSegaSammy),
-    ...operatingResultsSegaSammy.netSales,
-    ...operatingResultsSegaSammy.operatingIncome,
-    ...operatingResultsSegaSammy.netIncome,
-    "###\n",
-].reduce((prev, next) => prev + next);
+// export const cumulativeEarningsListSquareEnix = [
+//     operatingResultsSquareEnix.header,
+//     labelMaker(totalCollectionSquareEnix),
+//     ...operatingResultsSquareEnix.netSales,
+//     ...operatingResultsSquareEnix.operatingIncome,
+//     ...operatingResultsSquareEnix.netIncome,
+//     "###\n",
+// ].reduce((prev, next) => prev + next);
 
-export const cumulativeEarningsListCapcom = [
-    operatingResultsCapcom.header,
-    labelMaker(totalCollectionCapcom),
-    ...operatingResultsCapcom.netSales,
-    ...operatingResultsCapcom.operatingIncome,
-    ...operatingResultsCapcom.netIncome,
-    "###\n",
-].reduce((prev, next) => prev + next);
+// export const cumulativeEarningsListSegaSammy = [
+//     operatingResultsSegaSammy.header,
+//     labelMaker(totalCollectionSegaSammy),
+//     ...operatingResultsSegaSammy.netSales,
+//     ...operatingResultsSegaSammy.operatingIncome,
+//     ...operatingResultsSegaSammy.netIncome,
+//     "###\n",
+// ].reduce((prev, next) => prev + next);
 
-export const cumulativeEarningsListKoeiTecmo = [
-    operatingResultsKoeiTecmo.header,
-    labelMaker(totalCollectionKoeiTecmo),
-    ...operatingResultsKoeiTecmo.netSales,
-    ...operatingResultsKoeiTecmo.operatingIncome,
-    ...operatingResultsKoeiTecmo.netIncome,
-    "###\n",
-].reduce((prev, next) => prev + next);
+// export const cumulativeEarningsListCapcom = [
+//     operatingResultsCapcom.header,
+//     labelMaker(totalCollectionCapcom),
+//     ...operatingResultsCapcom.netSales,
+//     ...operatingResultsCapcom.operatingIncome,
+//     ...operatingResultsCapcom.netIncome,
+//     "###\n",
+// ].reduce((prev, next) => prev + next);
+
+// export const cumulativeEarningsListKoeiTecmo = [
+//     operatingResultsKoeiTecmo.header,
+//     labelMaker(totalCollectionKoeiTecmo),
+//     ...operatingResultsKoeiTecmo.netSales,
+//     ...operatingResultsKoeiTecmo.operatingIncome,
+//     ...operatingResultsKoeiTecmo.netIncome,
+//     "###\n",
+// ].reduce((prev, next) => prev + next);
+
+export const cumulativeEarningsListNintendo = operatingResultsMakerV2(totalCollectionNintendo);
+
+export const cumulativeEarningsListBandaiNamco = operatingResultsMakerV2(totalCollectionBandaiNamco); 
+
+export const cumulativeEarningsListCapcom = operatingResultsMakerV2(totalCollectionCapcom); 
+
+export const cumulativeEarningsListKoeiTecmo = operatingResultsMakerV2(totalCollectionKoeiTecmo); 
+
+export const cumulativeEarningsListSegaSammy = operatingResultsMakerV2(totalCollectionSegaSammy);
+
+export const cumulativeEarningsListSquareEnix = operatingResultsMakerV2(totalCollectionSquareEnix)
