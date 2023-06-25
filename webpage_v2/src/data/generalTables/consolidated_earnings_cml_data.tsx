@@ -512,17 +512,10 @@ function printAverage(list: number[]): string[] {
 
 function printMinMedianMax(list: number[]): string[] {
 
-    // const sortedList = list.filter(elem => elem.length !== 0).flatMap(elem => Number.isNaN(elem) ? [] : Number(elem)).sort((a, b) => 
-    //     a > b 
-    //     ? 1 
-    //     : b < a 
-    //         ? -1 
-    //         : 0)
-
     const sortedList = list.sort((a, b) => {
         return a > b
             ? 1
-            : b < a
+            : a < b
                 ? -1
                 : 0
     })
