@@ -22,6 +22,9 @@ export default function NINTENDO_CML() {
     const [platformValue, setPlatformValue] = useState<string | null>("All" ?? "All");
     const [regionValue, setRegionValue] = useState<string | null>("All" ?? "All");
 
+    const [timePeriod, setTimePeriod] = useState(6);
+    const [timePeriodValue, setTimePeriodValue] = useState<string | null>("FY Cumulative" ?? "FY Cumulative");
+
     const state: any = useSelector(state => state);
 
     const allHardwareSoftwareHeader = "+−−−−−−−−−−−−−−−−−−−−+\n| Nintendo Co., Ltd. |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n| All Regions: Hardware & Software Units |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n";
@@ -165,6 +168,26 @@ export default function NINTENDO_CML() {
     useEffect(() => {
 
         switch (value) {
+            case "Nintendo Consolidated Operating Results - Cumulative":
+                if (timePeriodValue === "1st Quarter") {
+                    setTimePeriod(0)
+                } else if (timePeriodValue === "2nd Quarter") {
+                    setTimePeriod(1)
+                } else if (timePeriodValue === "3rd Quarter") {
+                    setTimePeriod(2)
+                } else if (timePeriodValue === "4th Quarter") {
+                    setTimePeriod(3)
+                } else if (timePeriodValue === "First Half") {
+                    setTimePeriod(4)
+                } else if (timePeriodValue === "First Three Quarters") {
+                    setTimePeriod(5)
+                } else if (timePeriodValue === "First Three Quarters") {
+                    setTimePeriod(6)
+                } else {
+                    setTimePeriod(6)
+                }
+                break;
+
             case "Nintendo Consolidated Sales Information - Cumulative":
                 setTitlesLength(consolidatedSalesInformationFilter.length)
                 break;
@@ -185,13 +208,13 @@ export default function NINTENDO_CML() {
                 break;
         }
 
-    }, [titleValue, value, platformValue, regionValue])
+    }, [titleValue, value, platformValue, regionValue, timePeriodValue])
 
 
     const componentList = [
         {
             name: "Nintendo Consolidated Operating Results - Cumulative",
-            value: cumulativeEarningsListNintendo
+            value: cumulativeEarningsListNintendo[timePeriod]
         },
         {
             name: "Nintendo Consolidated Sales Information - Cumulative",
@@ -295,6 +318,25 @@ export default function NINTENDO_CML() {
                     radius="xl"
                     value={platformValue}
                     onChange={setPlatformValue}
+                  /> 
+                    : undefined
+                }
+                {(value === "Nintendo Consolidated Operating Results - Cumulative")
+                    ? <Select
+                        data={[
+                         "1st Quarter",
+                         "2nd Quarter",
+                         "3rd Quarter",
+                         "4th Quarter",
+                         "First Half",
+                         "First Three Quarters",
+                         "FY Cumulative",
+                     ]}
+                    defaultValue={"FY Cumulative"} 
+                    label="Select a time period:"
+                    radius="xl"
+                    value={timePeriodValue}
+                    onChange={setTimePeriodValue}
                   /> 
                     : undefined
                 }

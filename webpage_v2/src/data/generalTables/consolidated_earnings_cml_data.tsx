@@ -327,7 +327,7 @@ function headerMaker(collection: EarningsJSONV2): string {
     return headerMake
 }
 
-function operatingResultsMakerV2(completeCollection: Map<number, EarningsJSONV2>): string[][] {
+function operatingResultsMakerV2(completeCollection: Map<number, EarningsJSONV2>): string[] {
 
     const makeData = new Map<number, EarningsV2[]>();
     completeCollection.forEach((value, key, map) => makeData.set(key, [...getData(value, value.data.length).values()]))
@@ -354,11 +354,9 @@ function operatingResultsMakerV2(completeCollection: Map<number, EarningsJSONV2>
 
     let get3 = printAllValues(netIncome);
 
-    return [
-        get1,
-        get2,
-        get3,
-    ]
+    let combine = get1.map((elem, index) => elem + get2[index] + get3[index])
+
+    return combine
 }
 
 function printAllValues(list: Map<number, EarningsV2>): string[] {
