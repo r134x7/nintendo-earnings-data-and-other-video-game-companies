@@ -367,7 +367,15 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
         spacer(list.get(0)?.name ?? "Error",34,"left"),
     ]),"−","both",true)
 
-    let toReturn = new Map<number, string[]>(); 
+    let toReturn = new Map<number, string[]>([
+        [0, [header]],
+        [1, [header]],
+        [2, [header]],
+        [3, [header]],
+        [4, [header]],
+        [5, [header]],
+        [6, [header]],
+    ]); 
 
     function valueMake(value: EarningsValue, fiscalYear: string): string {
         
@@ -393,8 +401,41 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
 
     })
 
+    toReturn.forEach((value, key, map) => {
+
+        map.set(key, (toReturn.get(key) ?? []).concat(printCount(map.get(key) ?? ["Error"])))
+    })
     console.log(toReturn);
     
+}
+
+function printCount(list: string[]): string[] {
+
+    let toFilter = list.filter(elem => elem.length !== 0)
+    let headerCount = 1;
+
+    let toPrint = border([
+        spacer("Count",17,"left"),
+        spacer(`${toFilter.length - headerCount}`,15,"right"),
+    ],true);
+
+    return [toPrint]
+}
+
+function printSum(list: string[]): string[] {
+
+    let toReduce: number = list.reduce((acc, next) => {
+        return (Number.isNaN(next) || next.length === 0)
+            ? acc
+            : acc + Number(next)
+    }, 0)
+
+    let toPrint: string = border([
+        spacer("Sum",17,"left"),
+        spacer(`¥${toReduce.toLocaleString("en")}M`,15,"right"),
+    ],true) 
+
+    return [toPrint]
 }
 
 function operatingResultsMaker (collection: EarningsJSON[]): {
