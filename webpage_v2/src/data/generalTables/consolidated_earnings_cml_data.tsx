@@ -377,6 +377,16 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
         [6, [header]],
     ]); 
 
+    let getValues = new Map<number, number[]>([
+        [0, []],
+        [1, []],
+        [2, []],
+        [3, []],
+        [4, []],
+        [5, []],
+        [6, []],
+    ])
+
     function valueMake(value: EarningsValue, fiscalYear: string): string {
         
         return (value.kind === "Quarter" || value.kind === "Cumulative")
@@ -399,16 +409,24 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
         toReturn.set(5, (toReturn.get(5) ?? []).concat(valueMake(value.Q3CmlValue, thisFY)))
         toReturn.set(6, (toReturn.get(6) ?? []).concat(valueMake(value.Q4CmlValue, thisFY)))
 
+        getValues.set(0, (getValues.get(0) ?? []).concat(value.Q1QtrValue.kind === "Quarter" ? value.Q1QtrValue.value : []))
+        getValues.set(1, (getValues.get(1) ?? []).concat(value.Q2QtrValue.kind === "Quarter" ? value.Q2QtrValue.value : []))
+        getValues.set(2, (getValues.get(2) ?? []).concat(value.Q3QtrValue.kind === "Quarter" ? value.Q3QtrValue.value : []))
+        getValues.set(3, (getValues.get(3) ?? []).concat(value.Q4QtrValue.kind === "Quarter" ? value.Q4QtrValue.value : []))
+        getValues.set(4, (getValues.get(4) ?? []).concat(value.Q2CmlValue.kind === "Cumulative" ? value.Q2CmlValue.value : []))
+        getValues.set(5, (getValues.get(5) ?? []).concat(value.Q3CmlValue.kind === "Cumulative" ? value.Q3CmlValue.value : []))
+        getValues.set(6, (getValues.get(6) ?? []).concat(value.Q4CmlValue.kind === "Cumulative" ? value.Q4CmlValue.value : []))
+
     })
 
     toReturn.forEach((value, key, map) => {
 
         map.set(key, (toReturn.get(key) ?? []).concat(
             printStats(
-                printCount(map.get(key) ?? ["Error"]).concat(
-                    printSum(map.get(key) ?? ["Error"]),
-                    printAverage(map.get(key) ?? ["Error"]),
-                    printMinMedianMax(map.get(key) ?? ["Error"])
+                printCount(getValues.get(key) ?? [0]).concat(
+                    printSum(getValues.get(key) ?? [0]),
+                    printAverage(getValues.get(key) ?? [0]),
+                    printMinMedianMax(getValues.get(key) ?? [0])
                 )
             )            
         ))
@@ -426,26 +444,28 @@ function printStats(list: string[]): string[] {
     return [toLiner]
 }
 
-function getCount(list: string[]): number {
+function getCount(list: number[]): number {
 
-    let toFilter = list.filter(elem => elem.length !== 0)
-    let headerCount = 1;
+    // let toFilter = list.filter(elem => elem.length !== 0)
+    // let headerCount = 1;
 
-    return (toFilter.length - headerCount)
+    return (list.length)
 }
 
-function getSum(list: string[]): number {
+function getSum(list: number[]): number {
 
-    let toReduce: number = list.reduce((acc, next) => {
-        return (Number.isNaN(next) || next.length === 0)
-            ? acc
-            : acc + Number(next)
-    }, 0)
+    // let toReduce: number = list.reduce((acc, next) => {
+    //     return (Number.isNaN(next) || next.length === 0)
+    //         ? acc
+    //         : acc + Number(next)
+    // }, 0)
 
+    let toReduce = list.reduce((acc, next) => acc + next, 0);
+    
     return toReduce
 }
 
-function printCount(list: string[]): string[] {
+function printCount(list: number[]): string[] {
 
     let toPrint = border([
         spacer("Count",17,"left"),
@@ -455,7 +475,7 @@ function printCount(list: string[]): string[] {
     return [toPrint]
 }
 
-function printSum(list: string[]): string[] {
+function printSum(list: number[]): string[] {
 
     let toPrint: string = border([
         spacer("Sum",17,"left"),
@@ -465,7 +485,7 @@ function printSum(list: string[]): string[] {
     return [toPrint]
 }
 
-function printAverage(list: string[]): string[] {
+function printAverage(list: number[]): string[] {
 
     let toPrint: string = border([
         spacer("Average",17,"left"),
@@ -475,14 +495,22 @@ function printAverage(list: string[]): string[] {
     return [toPrint]
 }
 
-function printMinMedianMax(list: string[]): string[] {
+function printMinMedianMax(list: number[]): string[] {
 
-    const sortedList = list.filter(elem => elem.length !== 0).flatMap(elem => Number.isNaN(elem) ? [] : Number(elem)).sort((a, b) => 
-        a > b 
-        ? 1 
-        : b < a 
-            ? -1 
-            : 0)
+    // const sortedList = list.filter(elem => elem.length !== 0).flatMap(elem => Number.isNaN(elem) ? [] : Number(elem)).sort((a, b) => 
+    //     a > b 
+    //     ? 1 
+    //     : b < a 
+    //         ? -1 
+    //         : 0)
+
+    const sortedList = list.sort((a, b) => {
+        return a > b
+            ? 1
+            : b < a
+                ? -1
+                : 0
+    })
 
     const printMininum = border([
         spacer("Minimum",17,"left"),
