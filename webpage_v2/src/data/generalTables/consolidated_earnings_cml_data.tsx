@@ -342,6 +342,9 @@ function operatingResultsMakerV2(completeCollection: Map<number, EarningsJSONV2>
         netIncome.set(key, value[2])
     })
 
+    console.log(netSales);
+    
+
     let titleHeader = headerMaker(completeCollection.get(completeCollection.size -1) as EarningsJSONV2)
 
     let dateHeader = labelMaker(completeCollection.get(completeCollection.size -1) as EarningsJSONV2)
@@ -350,9 +353,9 @@ function operatingResultsMakerV2(completeCollection: Map<number, EarningsJSONV2>
     
     let get1 = printAllValues(netSales).map(elem => completeHeader + elem);
 
-    let get2 = printAllValues(operatingIncome).map(elem => completeHeader + elem);
+    let get2 = printAllValues(operatingIncome);
 
-    let get3 = printAllValues(netIncome).map(elem => completeHeader + elem);
+    let get3 = printAllValues(netIncome);
 
     return [
         get1,
