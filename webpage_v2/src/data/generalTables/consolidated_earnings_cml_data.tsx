@@ -342,9 +342,6 @@ function operatingResultsMakerV2(completeCollection: Map<number, EarningsJSONV2>
         netIncome.set(key, value[2])
     })
 
-    console.log(netSales);
-    
-
     let titleHeader = headerMaker(completeCollection.get(completeCollection.size -1) as EarningsJSONV2)
 
     let dateHeader = labelMaker(completeCollection.get(completeCollection.size -1) as EarningsJSONV2)
@@ -366,18 +363,20 @@ function operatingResultsMakerV2(completeCollection: Map<number, EarningsJSONV2>
 
 function printAllValues(list: Map<number, EarningsV2>): string[] {
 
-    let sectionHeader = liner(border([
-        spacer(list.get(0)?.name ?? "Error",34,"left"),
+    function sectionHeader(name: string | undefined, textLength: number): string {
+        return liner(border([
+        spacer(name ?? "Error", textLength,"left"),
     ]),"−","both",true)
+    } 
 
     let toReturn = new Map<number, string[]>([
-        [0, [sectionHeader]],
-        [1, [sectionHeader]],
-        [2, [sectionHeader]],
-        [3, [sectionHeader]],
-        [4, [sectionHeader]],
-        [5, [sectionHeader]],
-        [6, [sectionHeader]],
+        [0, [sectionHeader(list.get(0)?.name, 35)]],
+        [1, [sectionHeader(list.get(0)?.name, 35)]],
+        [2, [sectionHeader(list.get(0)?.name, 35)]],
+        [3, [sectionHeader(list.get(0)?.name, 35)]],
+        [4, [sectionHeader(list.get(0)?.name, 34)]],
+        [5, [sectionHeader(list.get(0)?.name, 44)]],
+        [6, [sectionHeader(list.get(0)?.name, 37)]],
     ]); 
 
     let getValues = new Map<number, number[]>([
@@ -423,15 +422,15 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
     })
 
     toReturn.forEach((value, key, map) => {
-
+        
         map.set(key, (toReturn.get(key) ?? []).concat(
             printStats(
-                printCount(getValues.get(key) ?? [0]).concat(
-                    printSum(getValues.get(key) ?? [0]),
-                    printAverage(getValues.get(key) ?? [0]),
-                    printMinMedianMax(getValues.get(key) ?? [0])
+                printCount(getValues.get(key) ?? [0], map.get(key)?.at(-2)?.length-21 ?? 0).concat(
+                    printSum(getValues.get(key) ?? [0], map.get(key)?.at(-2)?.length-21 ?? 0),
+                    printAverage(getValues.get(key) ?? [0], map.get(key)?.at(-2)?.length-21 ?? 0),
+                    printMinMedianMax(getValues.get(key) ?? [0], map.get(key)?.at(-2)?.length-21 ?? 0),
                 )
-            ),
+            , map.get(key)?.at(-2)?.length-3 ?? 0),
         ))
     })
 
@@ -447,11 +446,11 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
     
 }
 
-function printStats(list: string[]): string[] {
+function printStats(list: string[], textLength: number): string[] {
 
     let toPrint = list.reduce((acc, next) => acc + next,"")
 
-    let toLiner = liner(toPrint, "−", "both", true, 35)
+    let toLiner = liner(toPrint, "−", "both", true, textLength)
 
     return [toLiner]
 }
@@ -483,37 +482,37 @@ function getSum(list: number[]): number {
     return toReduce
 }
 
-function printCount(list: number[]): string[] {
+function printCount(list: number[], textLength: number): string[] {
 
     let toPrint = border([
-        spacer("Count",17,"left"),
+        spacer("Count",textLength,"left"),
         spacer(`${getCount(list)}`,15,"right"),
     ],true);
 
     return [toPrint]
 }
 
-function printSum(list: number[]): string[] {
+function printSum(list: number[], textLength: number): string[] {
 
     let toPrint: string = border([
-        spacer("Sum",17,"left"),
+        spacer("Sum",textLength,"left"),
         spacer(`¥${getSum(list).toLocaleString("en")}M`,15,"right"),
     ],true) 
 
     return [toPrint]
 }
 
-function printAverage(list: number[]): string[] {
+function printAverage(list: number[], textLength: number): string[] {
 
     let toPrint: string = border([
-        spacer("Average",17,"left"),
+        spacer("Average",textLength,"left"),
         spacer(`¥${Number((getSum(list) / getCount(list)).toFixed(0)).toLocaleString("en")}M`,15,"right"),
     ],true) 
 
     return [toPrint]
 }
 
-function printMinMedianMax(list: number[]): string[] {
+function printMinMedianMax(list: number[], textLength: number): string[] {
 
     const sortedList = list.sort((a, b) => {
         return a > b
@@ -524,12 +523,12 @@ function printMinMedianMax(list: number[]): string[] {
     })
 
     const printMininum = border([
-        spacer("Minimum",17,"left"),
+        spacer("Minimum",textLength,"left"),
         spacer(`¥${sortedList[0].toLocaleString("en")}M`,15,"right")
     ],true);
 
     const printMaximum = border([
-        spacer("Maximum",17,"left"),
+        spacer("Maximum",textLength,"left"),
         spacer(`¥${sortedList[sortedList.length-1].toLocaleString("en")}M`,15,"right"),
     ]);
 
@@ -541,7 +540,7 @@ function printMinMedianMax(list: number[]): string[] {
             : `¥${Number(((sortedList[(sortedList.length/2) -1] + sortedList[(sortedList.length/2)])/2).toFixed(0)).toLocaleString("en")}M`;
     
     let printMedianFixed: string = border([
-        spacer("Median",17,"left"),
+        spacer("Median",textLength,"left"),
         spacer(printMedian,15,"right")
     ],true);
 
