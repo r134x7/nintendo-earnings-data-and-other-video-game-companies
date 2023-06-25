@@ -402,6 +402,7 @@ function valuesMakeV2(obj: undefined | EarningsMakeV2, fiscalYear: string): Earn
         Q4QtrValue: quarterlyCalculationV2(
             nothingCheck(obj?.Q4CmlValue, "Quarter", "currency", "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear),
             nothingCheck(obj?.Q3CmlValue, "Quarter", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
+            nothingCheck(obj?.Q2CmlValue, "Quarter", "currency", "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
         ),
         Q1CmlValue: nothingCheck(obj?.Q1CmlValue, "Cumulative", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear),
         Q2CmlValue: nothingCheck(obj?.Q2CmlValue, "Cumulative", "currency", "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),

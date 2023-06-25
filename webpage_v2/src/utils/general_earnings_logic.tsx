@@ -59,16 +59,23 @@ export type Header = {
     title: string,
 };
 
-export function quarterlyCalculationV2(quarterThisFY: EarningsValue, quarterLastFY: EarningsValue): EarningsValue {
-
-    return (quarterThisFY.kind === "Quarter" && quarterLastFY.kind === "Quarter")
+export function quarterlyCalculationV2(thisQuarterValue: EarningsValue, lastQuarterValue: EarningsValue, lastHalfValue?: EarningsValue): EarningsValue {
+    
+    return (thisQuarterValue.kind === "Quarter" && lastQuarterValue.kind === "Quarter")
         ? {
             kind:"Quarter",
-            units: quarterThisFY.units,
-            period: quarterThisFY.period,
-            value: quarterThisFY.value - quarterLastFY.value
-        }
-        : quarterThisFY
+            units: thisQuarterValue.units,
+            period: thisQuarterValue.period,
+            value: thisQuarterValue.value - lastQuarterValue.value
+        }  // explicit condition for half yearly calculation, lastHalfValue is only needed for Fourth Quarter
+        : (thisQuarterValue.kind === "Quarter" && lastQuarterValue.kind === "Nothing" && (lastHalfValue !== undefined && lastHalfValue.kind === "Quarter"))
+            ? {
+                kind:"Quarter",
+                units: thisQuarterValue.units,
+                period: thisQuarterValue.period,
+                value: thisQuarterValue.value - lastHalfValue.value 
+            }
+            : thisQuarterValue
 }
 
 export function yearOnYearCalculationV2(valueThisFY: EarningsValue, valueLastFY: EarningsValue, kind: "Quarter" | "Cumulative" | "Forecast"): EarningsValue {
