@@ -354,27 +354,31 @@ function operatingResultsMakerV2(completeCollection: Map<number, EarningsJSONV2>
     })
     // console.log(netSales);
     console.log(netSales);
+
+    let titleHeader = headerMaker(completeCollection.get(completeCollection.size -1) as EarningsJSONV2)
+
+    let dateHeader = labelMaker(completeCollection.get(completeCollection.size -1) as EarningsJSONV2)
     
-    let x = printAllValues(netSales)
+    let x = printAllValues(netSales, titleHeader, dateHeader)
     console.log(x);
     
 
 }
 
-function printAllValues(list: Map<number, EarningsV2>): string[] {
+function printAllValues(list: Map<number, EarningsV2>, titleHeader: string, dateHeader: string): string[] {
 
-    let header = liner(border([
+    let sectionHeader = liner(border([
         spacer(list.get(0)?.name ?? "Error",34,"left"),
     ]),"−","both",true)
 
     let toReturn = new Map<number, string[]>([
-        [0, [header]],
-        [1, [header]],
-        [2, [header]],
-        [3, [header]],
-        [4, [header]],
-        [5, [header]],
-        [6, [header]],
+        [0, [titleHeader, dateHeader, sectionHeader]],
+        [1, [titleHeader, dateHeader, sectionHeader]],
+        [2, [titleHeader, dateHeader, sectionHeader]],
+        [3, [titleHeader, dateHeader, sectionHeader]],
+        [4, [titleHeader, dateHeader, sectionHeader]],
+        [5, [titleHeader, dateHeader, sectionHeader]],
+        [6, [titleHeader, dateHeader, sectionHeader]],
     ]); 
 
     let getValues = new Map<number, number[]>([
@@ -432,6 +436,16 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
         ))
     })
     console.log(toReturn);
+
+    return [
+        getConcat(toReturn.get(0)),
+        getConcat(toReturn.get(1)),
+        getConcat(toReturn.get(2)),
+        getConcat(toReturn.get(3)),
+        getConcat(toReturn.get(4)),
+        getConcat(toReturn.get(5)),
+        getConcat(toReturn.get(6)),
+    ]
     
 }
 
@@ -450,6 +464,12 @@ function getCount(list: number[]): number {
     // let headerCount = 1;
 
     return (list.length)
+}
+
+function getConcat(list: string[] | undefined): string {
+    return (!list) 
+        ? ""
+        : list.reduce((acc, next) => acc + next, "");
 }
 
 function getSum(list: number[]): number {
