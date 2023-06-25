@@ -102,19 +102,54 @@ export const headerPrint = (headerArray: string[], blockLength: number) => {
     }).reduce((acc, next) => acc + next);
 };
 
-export const dateLabel = (latestFiscalYear: string, currentQuarter: number) => {
+export const dateLabel = (latestFiscalYear: string, currentQuarter: number): string => {
     
+    let fiscalYearPeriod = latestFiscalYear.slice(0, -4); 
     let fiscalYear = latestFiscalYear.slice(4);
     let lastYear = (Number(fiscalYear) - 1).toString();
 
-    let fyEndingMarchDates = [
-        `June 30th, ${lastYear}`,
-        `September 30th, ${lastYear}`,
-        `December 31st, ${lastYear}`,
-        `March 31st, ${fiscalYear}`,
-    ].filter((elem, index) => index === currentQuarter - 1);
+    let endOfMonth = {
+        January: "January 31st",
+        February: "February", // Not going to bother with leap years
+        March: "March 31st",
+        April: "April 30th",
+        May: "May 31st",
+        June: "June 30th",
+        July: "July 31st",
+        August: "August 31st",
+        September: "September 30th",
+        October: "October 31st",
+        November: "November 30th",
+        December: "December 31st",
+    }
 
-    return `Data as of ${fyEndingMarchDates}`
+    switch (fiscalYearPeriod) {
+        case "FY3/":
+
+            let fyEndingMarchDates = [
+                `${endOfMonth.June}, ${lastYear}`,
+                `${endOfMonth.September}, ${lastYear}`,
+                `${endOfMonth.December}, ${lastYear}`,
+                `${endOfMonth.March}, ${fiscalYear}`,
+            ].filter((elem, index) => index === currentQuarter - 1);
+        
+            return `Data as of ${fyEndingMarchDates}`
+        
+        case "FY8/":
+
+            let fyEndingAugustDates = [
+                `${endOfMonth.November}, ${lastYear}`,
+                `${endOfMonth.February}, ${fiscalYear}`,
+                `${endOfMonth.May}, ${fiscalYear}`,
+                `${endOfMonth.August}, ${fiscalYear}`,
+            ].filter((elem, index) => index === currentQuarter - 1);
+        
+            return `Data as of ${fyEndingAugustDates}`
+    
+        default:
+            return "ERROR"
+    }
+
 };
 
 export const valueLimit = (value: number | string | undefined): number => {
