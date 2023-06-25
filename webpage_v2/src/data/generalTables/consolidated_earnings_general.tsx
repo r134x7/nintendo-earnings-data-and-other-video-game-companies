@@ -36,6 +36,29 @@ import nintendoConsolidatedEarnings2007 from "../nintendo/Consolidated_Earnings/
 import nintendoConsolidatedEarnings2006 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2006.json";
 import nintendoConsolidatedEarnings2005 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2005.json";
 import nintendoConsolidatedEarnings2004 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2004.json";
+import nintendoConsolidatedEarnings2003 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2003.json";
+import nintendoConsolidatedEarnings2002 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2002.json";
+import nintendoConsolidatedEarnings2001 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2001.json";
+import nintendoConsolidatedEarnings2000 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2000.json";
+import nintendoConsolidatedEarnings1999 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1999.json";
+import nintendoConsolidatedEarnings1998 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1998.json";
+import nintendoConsolidatedEarnings1997 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1997.json";
+import nintendoConsolidatedEarnings1996 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1996.json";
+import nintendoConsolidatedEarnings1995 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1995.json";
+import nintendoConsolidatedEarnings1994 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1994.json";
+import nintendoConsolidatedEarnings1993 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1993.json";
+import nintendoConsolidatedEarnings1992 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1992.json";
+import nintendoConsolidatedEarnings1991 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1991.json";
+import nintendoConsolidatedEarnings1990 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_1990.json";
+import nintendoConsolidatedEarnings1989 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1989.json";
+import nintendoConsolidatedEarnings1988 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1988.json";
+import nintendoConsolidatedEarnings1987 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1987.json";
+import nintendoConsolidatedEarnings1986 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1986.json";
+import nintendoConsolidatedEarnings1985 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1985.json";
+import nintendoConsolidatedEarnings1984 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1984.json";
+import nintendoConsolidatedEarnings1983 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1983.json";
+import nintendoConsolidatedEarnings1982 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1982.json";
+import nintendoConsolidatedEarnings1981 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1981.json";
 
 import capcomEarnings2023 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2023.json";
 import capcomEarnings2022 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2022.json";
@@ -57,6 +80,12 @@ import capcomEarnings2007 from "../capcom/Consolidated_Earnings/consolidated_ear
 import capcomEarnings2006 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2006.json";
 import capcomEarnings2005 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2005.json";
 import capcomEarnings2004 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2004.json";
+import capcomEarnings2003 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2003.json";
+import capcomEarnings2002 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2002.json";
+import capcomEarnings2001 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2001.json";
+import capcomEarnings2000 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2000.json";
+import capcomEarnings1999 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_1999.json";
+import capcomEarnings1998 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_1998.json";
 
 import bandaiNamco2023 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2023.json";
 import bandaiNamco2022 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2022.json";
@@ -220,6 +249,29 @@ const collectionNintendoV2 = new Map<number, EarningsJSONV2>([
     [17, nintendoConsolidatedEarnings2006],
     [18, nintendoConsolidatedEarnings2005],
     [19, nintendoConsolidatedEarnings2004],
+    [20, nintendoConsolidatedEarnings2003],
+    [21, nintendoConsolidatedEarnings2002],
+    [22, nintendoConsolidatedEarnings2001],
+    [23, nintendoConsolidatedEarnings2000],
+    [24, nintendoConsolidatedEarnings1999],
+    [25, nintendoConsolidatedEarnings1998],
+    [26, nintendoConsolidatedEarnings1997],
+    [27, nintendoConsolidatedEarnings1996],
+    [28, nintendoConsolidatedEarnings1995],
+    [29, nintendoConsolidatedEarnings1994],
+    [30, nintendoConsolidatedEarnings1993],
+    [31, nintendoConsolidatedEarnings1992],
+    [32, nintendoConsolidatedEarnings1991],
+    [33, nintendoConsolidatedEarnings1990],
+    [34, nintendoConsolidatedEarnings1989],
+    [35, nintendoConsolidatedEarnings1988],
+    [36, nintendoConsolidatedEarnings1987],
+    [37, nintendoConsolidatedEarnings1986],
+    [38, nintendoConsolidatedEarnings1985],
+    [39, nintendoConsolidatedEarnings1984],
+    [40, nintendoConsolidatedEarnings1983],
+    [41, nintendoConsolidatedEarnings1982],
+    [42, nintendoConsolidatedEarnings1981],
 ]);
 
 const collectionCapcomV2 = new Map<number, EarningsJSONV2>([
@@ -243,6 +295,12 @@ const collectionCapcomV2 = new Map<number, EarningsJSONV2>([
     [17, capcomEarnings2006],
     [18, capcomEarnings2005],
     [19, capcomEarnings2004],
+    [20, capcomEarnings2003],
+    [21, capcomEarnings2002],
+    [22, capcomEarnings2001],
+    [23, capcomEarnings2000],
+    [24, capcomEarnings1999],
+    [25, capcomEarnings1998],
 ]);
 
 const collectionBandaiNamcoV2 = new Map<number, EarningsJSONV2>([
