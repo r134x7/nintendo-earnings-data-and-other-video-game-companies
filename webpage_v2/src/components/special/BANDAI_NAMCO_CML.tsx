@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Code, SegmentedControl, Space, TextInput, Button } from "@mantine/core";
+import { Code, SegmentedControl, Space, TextInput, Button, Select } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { bandaiNamcoSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListBandaiNamco } from "../../data/generalTables/consolidated_earnings_cml_data";
@@ -18,6 +18,9 @@ export default function BANDAI_NAMCO_CML() {
 
     const [titleValue, setTitleValue] = useState("");
     const [titlesLength, setTitlesLength] = useState(0)
+
+    const [timePeriod, setTimePeriod] = useState(6);
+    const [timePeriodValue, setTimePeriodValue] = useState<string | null>("FY Cumulative" ?? "FY Cumulative");
 
     let annualReportTitlesFilter = filterTitles<titleSet>(fyTitlesBandaiNamco.titleList,titleValue);
 
@@ -43,6 +46,26 @@ export default function BANDAI_NAMCO_CML() {
     useEffect(() => {
 
         switch (value) {
+            case "Bandai Namco Consolidated Operating Results - Cumulative":
+                if (timePeriodValue === "1st Quarter") {
+                    setTimePeriod(0)
+                } else if (timePeriodValue === "2nd Quarter") {
+                    setTimePeriod(1)
+                } else if (timePeriodValue === "3rd Quarter") {
+                    setTimePeriod(2)
+                } else if (timePeriodValue === "4th Quarter") {
+                    setTimePeriod(3)
+                } else if (timePeriodValue === "First Half") {
+                    setTimePeriod(4)
+                } else if (timePeriodValue === "First Three Quarters") {
+                    setTimePeriod(5)
+                } else if (timePeriodValue === "First Three Quarters") {
+                    setTimePeriod(6)
+                } else {
+                    setTimePeriod(6)
+                }
+                break;
+
             case "Bandai Namco FY Series IP - Cumulative":
                 setTitlesLength(annualReportTitlesFilter.length)
                 break;
@@ -51,13 +74,13 @@ export default function BANDAI_NAMCO_CML() {
                 break;
         }
 
-    }, [titleValue, value])
+    }, [titleValue, value, timePeriodValue])
 
 
     const componentList = [
         {
             name: "Bandai Namco Consolidated Operating Results - Cumulative",
-            value: cumulativeEarningsListBandaiNamco
+            value: cumulativeEarningsListBandaiNamco[timePeriod]
         },
         {
             name: "Bandai Namco Sales Per Software Unit - Cumulative",
@@ -93,6 +116,25 @@ export default function BANDAI_NAMCO_CML() {
             />
             
             <Code  onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                {(value === "Bandai Namco Consolidated Operating Results - Cumulative")
+                    ? <Select
+                        data={[
+                         "1st Quarter",
+                         "2nd Quarter",
+                         "3rd Quarter",
+                         "4th Quarter",
+                         "First Half",
+                         "First Three Quarters",
+                         "FY Cumulative",
+                     ]}
+                    defaultValue={"FY Cumulative"} 
+                    label="Select a time period:"
+                    radius="xl"
+                    value={timePeriodValue}
+                    onChange={setTimePeriodValue}
+                  /> 
+                    : undefined
+                }
                 {(value === "Bandai Namco FY Series IP - Cumulative")
                     ? <> 
                     <TextInput
