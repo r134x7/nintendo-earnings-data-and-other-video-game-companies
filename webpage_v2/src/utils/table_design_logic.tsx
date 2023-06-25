@@ -105,7 +105,7 @@ export const headerPrint = (headerArray: string[], blockLength: number) => {
 export const dateLabel = (latestFiscalYear: string, currentQuarter: number): string => {
     
     let fiscalYearPeriod = latestFiscalYear.slice(0, -4); 
-    let fiscalYear = latestFiscalYear.slice(4);
+    let fiscalYear = latestFiscalYear.slice(-4);
     let lastYear = (Number(fiscalYear) - 1).toString();
 
     let endOfMonth = {
