@@ -3,6 +3,20 @@ import { useState, useEffect } from "react";
 import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
 import type { searchTitles } from "../data/capcom/platinum_titles_Capcom";
 
+export type TitlesValue =
+    | { kind: "Titles and Platforms",
+        title: string,
+        platforms: string,
+        table: string}
+    | { kind: "Titles",
+        title: string,
+        table: string}
+    | { kind: "Nothing" }
+
+export type CumulativeTitlesValue =
+    | { kind: "Annual Report"} 
+    | { kind: "Nothing" }
+
 export const printTextBlock = (text: string | undefined, blockLength: number): string | undefined => {
     // to make liner work by not printing.
     if (text === undefined) {
@@ -229,7 +243,7 @@ export function filterTitles<T extends searchTitles | titleSet>(input: T[], stat
 //     }
 // } 
 
-export function filterTextAddToSet<T extends titleSet | searchTitles>(filteredText: T[], categoryValue: string, categoryCheck: string, titleCheck: string, theSet: Set<string>) {
+export function filterTextAddToSet<T extends titleSet | searchTitles>(filteredText: T[], categoryValue: string, categoryCheck: string, titleCheck: string, theSet: Set<string>): void {
     
     if (titleCheck.length !== 0 && categoryCheck === categoryValue) {
         // filteredText.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleCheck})\\w+`,"g"))].flat().map(elemII => theSet.add(elemII)))
@@ -239,7 +253,11 @@ export function filterTextAddToSet<T extends titleSet | searchTitles>(filteredTe
 
 export function titleSetSearchFeatures(
     input: { header: string; titleList: titleSet[]; summary?: string} | undefined, 
-    sectionContext: string, sectionValue: string, titleValue: string, textSet: Set<string>): { titlesLength: titleSet[] | string, table: string | undefined, sectionTitle: string } {
+    sectionContext: string, sectionValue: string, titleValue: string, textSet: Set<string>): { 
+        titlesLength: titleSet[] | string, 
+        table: string | undefined, 
+        sectionTitle: string } {
+
         if (input === undefined) {
             return {
                 titlesLength: "",

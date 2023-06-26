@@ -28,29 +28,36 @@ export type EarningsV2 = {
     footnotes?: string,
 }
 
-type Nothing = { kind:"Nothing" }
-type Just<T> = { kind:"Just", value: T }
+export type QuarterValue = { kind:"Quarter", 
+        period:"1st Quarter" | "2nd Quarter" | "3rd Quarter" | "4th Quarter", 
+        units: "units" | "currency" | "percentage",
+        value: number};
 
-type Maybe<T> =
-    | Just<T>
-    | Nothing
+export type CumulativeValue = { kind:"Cumulative", 
+        period:"1st Quarter" | "First Half" | "First Three Quarters" | "FY Cumulative", 
+        units: "units" | "currency" | "percentage",
+        thisFY: string,
+        value: number}; 
 
-export type EarningsValue = 
-    | { kind:"Forecast", 
+export type ForecastValue = { kind:"Forecast", 
         period:"Current FY FCST" | "FCST Revision 1" | "FCST Revision 2" | "FCST Revision 3" | "Next FY FCST", 
         units: "units" | "currency" | "percentage",
         thisFY: string,
         nextFY: string,
-        value: number}
-    | { kind:"Quarter", 
-        period:"1st Quarter" | "2nd Quarter" | "3rd Quarter" | "4th Quarter", 
-        units: "units" | "currency" | "percentage",
-        value: number}
-    | { kind:"Cumulative", 
-        period:"1st Quarter" | "First Half" | "First Three Quarters" | "FY Cumulative", 
-        units: "units" | "currency" | "percentage",
-        thisFY: string,
-        value: number}
+        value: number};
+
+export type Nothing = { kind:"Nothing" };
+
+export type EarningsValue = 
+    | ForecastValue
+    | QuarterValue
+    | CumulativeValue
+    | Nothing
+
+type Just<T> = { kind:"Just", value: T }
+
+type Maybe<T> =
+    | Just<T>
     | Nothing
 
 export type Header = {
