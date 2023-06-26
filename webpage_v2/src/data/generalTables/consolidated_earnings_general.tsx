@@ -346,21 +346,24 @@ const collectionSegaSammyV2 = new Map<number, EarningsJSONV2>([
     [18, sega2005],
 ]);
 
+const koeiYearRange = 2023 - 2010;
+const koeiKeys = Array.from({length: koeiYearRange + 1},(v, i) => koeiYearRange - i);
+
 const collectionKoeiTecmoV2 = new Map<number, EarningsJSONV2>([
-    [0, koeiTecmo2023],
-    [1, koeiTecmo2022],
-    [2, koeiTecmo2021],
-    [3, koeiTecmo2020],
-    [4, koeiTecmo2019],
-    [5, koeiTecmo2018],
-    [6, koeiTecmo2017],
-    [7, koeiTecmo2016],
-    [8, koeiTecmo2015],
-    [9, koeiTecmo2014],
-    [10, koeiTecmo2013],
-    [11, koeiTecmo2012],
-    [12, koeiTecmo2011],
-    [13, koeiTecmo2010],
+    [/*0*/ koeiKeys.pop() ?? 0, koeiTecmo2023],
+    [/*1*/ koeiKeys.pop() ?? 0, koeiTecmo2022],
+    [/*2*/ koeiKeys.pop() ?? 0, koeiTecmo2021],
+    [/*3*/ koeiKeys.pop() ?? 0, koeiTecmo2020],
+    [/*4*/ koeiKeys.pop() ?? 0, koeiTecmo2019],
+    [/*5*/ koeiKeys.pop() ?? 0, koeiTecmo2018],
+    [/*6*/ koeiKeys.pop() ?? 0, koeiTecmo2017],
+    [/*7*/ koeiKeys.pop() ?? 0, koeiTecmo2016],
+    [/*8*/ koeiKeys.pop() ?? 0, koeiTecmo2015],
+    [/*9*/ koeiKeys.pop() ?? 0, koeiTecmo2014],
+    [/*10*/koeiKeys.pop() ?? 0, koeiTecmo2013],
+    [/*11*/koeiKeys.pop() ?? 0, koeiTecmo2012],
+    [/*12*/koeiKeys.pop() ?? 0, koeiTecmo2011],
+    [/*13*/koeiKeys.pop() ?? 0, koeiTecmo2010],
 ]);
 
 const collectionSquareEnixV2 = new Map<number, EarningsJSONV2>([
@@ -589,6 +592,8 @@ collectionNintendoV2.forEach((value, key, map) => {
     nintendoConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1)))
 });
 
+collectionNintendoV2.clear();
+
 export const capcomConsolidatedEarningsList = new Map<number, string>();
 
 export const capcomConsolidatedEarningsGraphList = new Map();
@@ -599,6 +604,8 @@ collectionCapcomV2.forEach((value, key, map) => {
 
     capcomConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1)))
 });
+
+collectionCapcomV2.clear();
 
 export const bandaiNamcoConsolidatedEarningsList = new Map<number, string>();
 
@@ -611,6 +618,7 @@ collectionBandaiNamcoV2.forEach((value, key, map) => {
     bandaiNamcoConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1)))
 })
 
+collectionBandaiNamcoV2.clear();
 
 export const koeiTecmoConsolidatedEarningsList = new Map<number, string>();
 
@@ -623,6 +631,9 @@ collectionKoeiTecmoV2.forEach((value, key, map) => {
     koeiTecmoConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1)))
 })
 
+// must manually garbage collect Map() when keys/values no longer needed
+collectionKoeiTecmoV2.clear()
+
 export const segaConsolidatedEarningsList = new Map<number, string>();
 
 export const segaConsolidatedEarningsGraphList = new Map();
@@ -632,7 +643,9 @@ collectionSegaSammyV2.forEach((value, key, map) => {
     segaConsolidatedEarningsList.set(key, consolidatedEarningsListV2Map(value, map.get(key+1), 38))
 
     segaConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1)))
-})
+});
+
+collectionSegaSammyV2.clear();
 
 export const squareEnixConsolidatedEarningsList = new Map<number, string>();
 
@@ -643,7 +656,9 @@ collectionSquareEnixV2.forEach((value, key, map) => {
     squareEnixConsolidatedEarningsList.set(key, consolidatedEarningsListV2Map(value, map.get(key+1), 42))
 
     squareEnixConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1)))
-})
+});
+
+collectionSquareEnixV2.clear();
 
 function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollection: EarningsJSONV2 | undefined, headerLength: number): string {
 

@@ -7,8 +7,9 @@ import KOEI_TECMO_CML from "../components/special/KOEI_TECMO_CML";
 import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
 const currentYear = 2023;
+const yearRange = 2023 - 2010;
 
-const yearsList = Array.from({length: 14}, (elem, index) => 
+const yearsList = Array.from({length: yearRange + 1}, (elem, index) => 
                     {
                             return "FY3/" + (currentYear - index)
                     }) 
