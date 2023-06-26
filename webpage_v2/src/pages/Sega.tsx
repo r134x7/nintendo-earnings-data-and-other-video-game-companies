@@ -7,11 +7,9 @@ import SEGA_CML from "../components/special/SEGA_CML";
 import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
 const currentYear = 2023;
+const yearRange = 2023 - 2005;
 
-const yearsList = Array.from({length: 19}, (elem, index) => 
-                    {
-                            return "FY3/" + (currentYear - index)
-                    }) 
+const yearsList = Array.from({length: yearRange + 1}, (elem, index) => "FY3/" + (currentYear - index)) 
 
 export default function Sega() {
 

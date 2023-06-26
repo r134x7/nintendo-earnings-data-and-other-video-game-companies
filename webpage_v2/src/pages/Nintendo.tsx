@@ -7,8 +7,9 @@ import NINTENDO_COMPONENT from "../components/NINTENDO_COMPONENT";
 import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
 const currentYear = 2023;
+const yearRange = 2023 - 1981;
 
-const yearsList = Array.from({length: 43}, (elem, index) => 
+const yearsList = Array.from({length: yearRange + 1}, (elem, index) => 
                     {
                             return (currentYear - index <= 1989) 
                                 ? "FY8/" + (currentYear - index)

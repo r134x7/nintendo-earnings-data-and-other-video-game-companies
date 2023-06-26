@@ -9,10 +9,7 @@ import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_l
 const currentYear = 2023;
 const yearRange = 2023 - 2010;
 
-const yearsList = Array.from({length: yearRange + 1}, (elem, index) => 
-                    {
-                            return "FY3/" + (currentYear - index)
-                    }) 
+const yearsList = Array.from({length: yearRange + 1}, (elem, index) => "FY3/" + (currentYear - index)) 
 
 export default function KoeiTecmo() {
 

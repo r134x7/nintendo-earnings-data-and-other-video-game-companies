@@ -7,11 +7,9 @@ import BANDAI_NAMCO_CML from "../components/special/BANDAI_NAMCO_CML";
 import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
 const currentYear = 2023;
+const yearRange = 2023 - 2006;
 
-const yearsList = Array.from({length: 18}, (elem, index) => 
-                    {
-                            return "FY3/" + (currentYear - index)
-                    }) 
+const yearsList = Array.from({length: yearRange + 1}, (elem, index) => "FY3/" + (currentYear - index)) 
 
 export default function BandaiNamco() {
 
