@@ -137,6 +137,7 @@ function printQtrSalesAndYoY(
     textLength: number,
 ): string[] {
 
+    // will need to come back to this to apply liner correctly.
     return [
         printQuarterValuesV2(q1Sales, currentQuarter, textLength),
         printYoYV2(q1YoY, currentQuarter, textLength),
@@ -148,6 +149,30 @@ function printQtrSalesAndYoY(
         printYoYV2(q4YoY, currentQuarter, textLength),
     ]
 } 
+
+function millionFix(value: number, changeFrom: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand"): number {
+
+    switch (changeFrom) {
+        case "Billion":
+            return value * 1000
+
+        case "Million":
+            return value
+        
+        case "Hundred Thousand":
+            return value / 100
+
+        case "Ten Thousand":
+            return value / 1000
+    
+        default:
+            console.log("ERROR from: " + value)
+            return value
+    }    
+
+            // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
+            // let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (segmentUnits[index].value / 1000)).toFixed(0))
+}
 
 const printQtrSales = (segmentSales: Section[], segmentSalesLastFY: Section[], header: Header, currentQuarter: number): string[] => {
 
