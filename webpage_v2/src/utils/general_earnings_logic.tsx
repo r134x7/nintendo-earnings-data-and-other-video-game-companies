@@ -173,14 +173,18 @@ export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter:
     }
 }
 
-export function printYoYV2(percentageValues: EarningsValue, currentQuarter: number, textLength: number): string {
+export function printYoYV2(percentageValues: EarningsValue, currentQuarter: number, textLength: number, newRow?: boolean): string {
 
     if ((percentageValues.kind === "Quarter" || percentageValues.kind === "Cumulative") && percentageValues.units === "percentage") {
 
         let yoyValue = `${percentageValues.value > 0 ? "+" : ""}${percentageValues.value}%` 
 
-        return spacer(yoyValue + " |", textLength,"right")
-
+        return (!newRow)
+            ? spacer(yoyValue + " |", textLength,"right")
+            : border([
+                spacer("YoY%", 12,"right"),
+                spacer(yoyValue, textLength,"right")
+            ])
     } else {
         return ""
     }
