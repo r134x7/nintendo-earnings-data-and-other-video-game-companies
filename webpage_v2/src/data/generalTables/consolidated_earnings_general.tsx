@@ -180,6 +180,7 @@ export type EarningsMakeV2 = {
         forecastRevision2?: number | null,
         forecastRevision3?: number | null,
         forecastNextFY?: number | null | string, 
+        notes?: string,
 }; 
 
 export function nothingCheck(
@@ -404,33 +405,33 @@ const collectionSquareEnixV2 = new Map<number, EarningsJSONV2>([
     [squareEnixKeys.pop() ?? 0, squareEnix2004],
 ]);
 
-export function valuesMakeV2(obj: undefined | EarningsMakeV2, fiscalYear: string): EarningsV2 {
+export function valuesMakeV2(obj: undefined | EarningsMakeV2, fiscalYear: string, unitSet: "units" | "currency" | "percentage"): EarningsV2 {
 
     let values: EarningsV2 = {
         name: obj?.name ?? "N/A",
-        Q1QtrValue: nothingCheck(obj?.Q1CmlValue, "Quarter", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear),
+        Q1QtrValue: nothingCheck(obj?.Q1CmlValue, "Quarter", unitSet, "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear),
         Q2QtrValue: quarterlyCalculationV2(
-            nothingCheck(obj?.Q2CmlValue, "Quarter", "currency", "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
-            nothingCheck(obj?.Q1CmlValue, "Quarter", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear)
+            nothingCheck(obj?.Q2CmlValue, "Quarter", unitSet, "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
+            nothingCheck(obj?.Q1CmlValue, "Quarter", unitSet, "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear)
         ),
         Q3QtrValue: quarterlyCalculationV2(
-            nothingCheck(obj?.Q3CmlValue, "Quarter", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
-            nothingCheck(obj?.Q2CmlValue, "Quarter", "currency", "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
+            nothingCheck(obj?.Q3CmlValue, "Quarter", unitSet, "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
+            nothingCheck(obj?.Q2CmlValue, "Quarter", unitSet, "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
         ),
         Q4QtrValue: quarterlyCalculationV2(
-            nothingCheck(obj?.Q4CmlValue, "Quarter", "currency", "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear),
-            nothingCheck(obj?.Q3CmlValue, "Quarter", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
-            nothingCheck(obj?.Q2CmlValue, "Quarter", "currency", "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
+            nothingCheck(obj?.Q4CmlValue, "Quarter", unitSet, "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear),
+            nothingCheck(obj?.Q3CmlValue, "Quarter", unitSet, "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
+            nothingCheck(obj?.Q2CmlValue, "Quarter", unitSet, "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
         ),
-        Q1CmlValue: nothingCheck(obj?.Q1CmlValue, "Cumulative", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear),
-        Q2CmlValue: nothingCheck(obj?.Q2CmlValue, "Cumulative", "currency", "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
-        Q3CmlValue: nothingCheck(obj?.Q3CmlValue, "Cumulative", "currency", "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
-        Q4CmlValue: nothingCheck(obj?.Q4CmlValue, "Cumulative", "currency", "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear),
-        forecastThisFY: nothingCheck(obj?.forecastThisFY, "Forecast", "currency", "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear),
-        forecastRevision1: nothingCheck(obj?.forecastRevision1, "Forecast", "currency", "1st Quarter", "1st Quarter", "FCST Revision 1", fiscalYear),
-        forecastRevision2: nothingCheck(obj?.forecastRevision2, "Forecast", "currency", "1st Quarter", "1st Quarter", "FCST Revision 2", fiscalYear),
-        forecastRevision3: nothingCheck(obj?.forecastRevision3, "Forecast", "currency", "1st Quarter", "1st Quarter", "FCST Revision 3", fiscalYear),
-        forecastNextFY: nothingCheck(obj?.forecastNextFY, "Forecast", "currency", "1st Quarter", "1st Quarter", "Next FY FCST", fiscalYear),
+        Q1CmlValue: nothingCheck(obj?.Q1CmlValue, "Cumulative", unitSet, "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear),
+        Q2CmlValue: nothingCheck(obj?.Q2CmlValue, "Cumulative", unitSet, "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
+        Q3CmlValue: nothingCheck(obj?.Q3CmlValue, "Cumulative", unitSet, "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
+        Q4CmlValue: nothingCheck(obj?.Q4CmlValue, "Cumulative", unitSet, "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear),
+        forecastThisFY: nothingCheck(obj?.forecastThisFY, "Forecast", unitSet, "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear),
+        forecastRevision1: nothingCheck(obj?.forecastRevision1, "Forecast", unitSet, "1st Quarter", "1st Quarter", "FCST Revision 1", fiscalYear),
+        forecastRevision2: nothingCheck(obj?.forecastRevision2, "Forecast", unitSet, "1st Quarter", "1st Quarter", "FCST Revision 2", fiscalYear),
+        forecastRevision3: nothingCheck(obj?.forecastRevision3, "Forecast", unitSet, "1st Quarter", "1st Quarter", "FCST Revision 3", fiscalYear),
+        forecastNextFY: nothingCheck(obj?.forecastNextFY, "Forecast", unitSet, "1st Quarter", "1st Quarter", "Next FY FCST", fiscalYear),
     }
 
     return values
@@ -440,9 +441,9 @@ function consolidatedEarningsGraphListV2(collection: EarningsJSONV2, lastFYColle
 
     const none: EarningsValue = { kind:"Nothing" };
 
-    let dataThisFY = getData(collection, collection.data.length);
+    let dataThisFY = getData(collection, collection.data.length, "currency");
 
-    let dataLastFY = getData(lastFYCollection, collection.data.length);
+    let dataLastFY = getData(lastFYCollection, collection.data.length, "currency");
 
     // opmargin
         const opMargin = new Map<number, EarningsV2>([
@@ -691,9 +692,9 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
             title: (collection.companyName === "CAPCOM Co., Ltd." || collection.companyName === "SQUARE ENIX HOLDINGS CO., LTD.") ? "Consolidated Financial Results" : "Consolidated Operating Results",
         };
 
-        const dataThisFY = getData(collection, collection.data.length);
+        const dataThisFY = getData(collection, collection.data.length, "currency");
 
-        const dataLastFY = getData(lastFYCollection, collection.data.length);
+        const dataLastFY = getData(lastFYCollection, collection.data.length, "currency");
 
         const percentagesThisFY = new Map<number, EarningsV2>(); 
         dataThisFY.forEach((value, key, map) => {
@@ -905,17 +906,17 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
         return [printOne, ...printEach.values()].reduce((acc, next) => acc + "\n" + next)
 };
 
-export function getData(dataCollectionThisFY: EarningsJSONV2 | undefined, dataThisFYLengthForLastFY: number): Map<number, EarningsV2> {
+export function getData(dataCollectionThisFY: EarningsJSONV2 | undefined, dataThisFYLengthForLastFY: number, unitSet: "units" | "currency" | "percentage"): Map<number, EarningsV2> {
 
     const dataMap = new Map<number, EarningsV2>();
 
         if (!dataCollectionThisFY) {
             for (let index = 0; index < dataThisFYLengthForLastFY; index++) {
-                dataMap.set(index, valuesMakeV2(undefined, ""))
+                dataMap.set(index, valuesMakeV2(undefined, "", "currency"))
             }
         } else {
             for (let index = 0; index < dataCollectionThisFY.data.length; index++) {
-                dataMap.set(index, valuesMakeV2(dataCollectionThisFY.data[index], dataCollectionThisFY.fiscalYear))
+                dataMap.set(index, valuesMakeV2(dataCollectionThisFY.data[index], dataCollectionThisFY.fiscalYear, "currency"))
             }
         }
 
