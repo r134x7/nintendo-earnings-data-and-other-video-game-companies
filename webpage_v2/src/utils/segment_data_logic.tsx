@@ -150,7 +150,7 @@ function printQtrSalesAndYoY(
     ]
 } 
 
-function millionFix(value: number, changeFrom: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand"): number {
+function millionFix(value: number, changeFrom: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand"): number {
 
     switch (changeFrom) {
         case "Billion":
@@ -160,9 +160,12 @@ function millionFix(value: number, changeFrom: "Billion" | "Million" | "Hundred 
             return value
         
         case "Hundred Thousand":
-            return value / 100
+            return value / 10
 
         case "Ten Thousand":
+            return value / 100
+
+        case "One Thousand":
             return value / 1000
     
         default:
