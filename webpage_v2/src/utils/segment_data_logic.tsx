@@ -138,12 +138,11 @@ function printSalesAndYoY(
     textLength: number,
 ): string[] {
 
-    return quarterSales.map(elem => printQuarterValuesV2(elem, currentQuarter, textLength))
-        .concat(
-            quarterYoY.map(elem => printYoYV2(elem, currentQuarter, textLength)),
-            cumulativeSales.map(elem => printCumulativeValuesV2(elem, currentQuarter, textLength)),
-            cumulativeYoY.map(elem => printYoYV2(elem, currentQuarter, textLength)),
-    )
+    const quarters = quarterSales.map((elem, index) => printQuarterValuesV2(elem, currentQuarter, textLength).concat(printYoYV2(quarterYoY[index], currentQuarter, textLength)))
+
+    const cumulatives = cumulativeSales.map((elem, index) => printCumulativeValuesV2(elem, currentQuarter, textLength).concat(printYoYV2(cumulativeYoY[index], currentQuarter, textLength)))
+
+    return quarters.concat(cumulatives)
 }
 
 function millionFix(value: number, changeFrom: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand"): number {
