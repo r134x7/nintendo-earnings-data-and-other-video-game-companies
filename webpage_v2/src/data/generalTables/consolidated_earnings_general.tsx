@@ -404,7 +404,7 @@ const collectionSquareEnixV2 = new Map<number, EarningsJSONV2>([
     [squareEnixKeys.pop() ?? 0, squareEnix2004],
 ]);
 
-function valuesMakeV2(obj: undefined | EarningsMakeV2, fiscalYear: string): EarningsV2 {
+export function valuesMakeV2(obj: undefined | EarningsMakeV2, fiscalYear: string): EarningsV2 {
 
     let values: EarningsV2 = {
         name: obj?.name ?? "N/A",

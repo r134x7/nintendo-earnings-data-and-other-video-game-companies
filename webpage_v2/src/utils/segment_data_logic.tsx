@@ -1,5 +1,6 @@
-import { printTextBlock, border, liner, spacer, dateLabel } from "./table_design_logic";
-import type { EarningsV2 } from "./general_earnings_logic";
+import { printTextBlock, border, liner, spacer, dateLabel, headerPrint  } from "./table_design_logic";
+import { printQuarterValuesV2, printYoYV2, type EarningsV2, type EarningsValue } from "./general_earnings_logic";
+import { valuesMakeV2, nothingCheck } from "../data/generalTables/consolidated_earnings_general";
 
 export type Section = {
     region: "Group Total" | "Japan" | "Americas" | "Europe",
@@ -15,6 +16,12 @@ export type Section = {
 export type Header = {
     firstHeader: "| Bandai Namco   |" | "| Capcom         |" | "| Sega Sammy     |" | "| Koei Tecmo     |" | "| Square Enix    |",
     secondHeader: "| Segment Information |",
+    fiscalYear: string,
+}
+
+export type HeaderV2 = {
+    firstHeader: string,
+    secondHeader: string,
     fiscalYear: string,
 }
 
@@ -60,6 +67,12 @@ ${header.firstHeader} ${header.fiscalYear} |
 +${"−".repeat(27)}+
 ${header.secondHeader}
 +${"−".repeat(21)}+\n`;
+
+// check later
+// const printOne = headerPrint([
+//     header.companyName + " | " + header.fiscalYear,
+//     header.title
+// ],headerLength) + "\n" + printDateLabel;
 
 function quarterlyCalculation(quarters: Section[]) {
         
@@ -110,6 +123,31 @@ const squareEnixSalesHeader =
 `+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 |             |    Sales    |   YoY%   |
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
+
+function printQtrSalesAndYoY(
+    q1Sales: EarningsValue,
+    q1YoY: EarningsValue,
+    q2Sales: EarningsValue,
+    q2YoY: EarningsValue,
+    q3Sales: EarningsValue,
+    q3YoY: EarningsValue,
+    q4Sales: EarningsValue,
+    q4YoY: EarningsValue,
+    currentQuarter: number,
+    textLength: number,
+): string[] {
+
+    return [
+        printQuarterValuesV2(q1Sales, currentQuarter, textLength),
+        printYoYV2(q1YoY, currentQuarter, textLength),
+        printQuarterValuesV2(q2Sales, currentQuarter, textLength),
+        printYoYV2(q2YoY, currentQuarter, textLength),
+        printQuarterValuesV2(q3Sales, currentQuarter, textLength),
+        printYoYV2(q3YoY, currentQuarter, textLength),
+        printQuarterValuesV2(q4Sales, currentQuarter, textLength),
+        printYoYV2(q4YoY, currentQuarter, textLength),
+    ]
+} 
 
 const printQtrSales = (segmentSales: Section[], segmentSalesLastFY: Section[], header: Header, currentQuarter: number): string[] => {
 
