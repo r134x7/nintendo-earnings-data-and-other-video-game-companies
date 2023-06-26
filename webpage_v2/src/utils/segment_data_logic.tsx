@@ -1,5 +1,10 @@
 import { printTextBlock, border, liner, spacer, dateLabel, headerPrint  } from "./table_design_logic";
-import { printQuarterValuesV2, printYoYV2, type EarningsV2, type EarningsValue } from "./general_earnings_logic";
+import { printQuarterValuesV2, 
+    printYoYV2, 
+    printCumulativeValuesV2,
+    printForecastValuesV2,
+    type EarningsV2, 
+    type EarningsValue } from "./general_earnings_logic";
 import { valuesMakeV2, nothingCheck } from "../data/generalTables/consolidated_earnings_general";
 
 export type Section = {
@@ -124,31 +129,22 @@ const squareEnixSalesHeader =
 |             |    Sales    |   YoY%   |
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
 
-function printQtrSalesAndYoY(
-    q1Sales: EarningsValue,
-    q1YoY: EarningsValue,
-    q2Sales: EarningsValue,
-    q2YoY: EarningsValue,
-    q3Sales: EarningsValue,
-    q3YoY: EarningsValue,
-    q4Sales: EarningsValue,
-    q4YoY: EarningsValue,
+function printSalesAndYoY(
+    quarterSales: EarningsValue[],
+    quarterYoY: EarningsValue[],
+    cumulativeSales: EarningsValue[],
+    cumulativeYoY: EarningsValue[],
     currentQuarter: number,
     textLength: number,
 ): string[] {
 
-    // will need to come back to this to apply liner correctly.
-    return [
-        printQuarterValuesV2(q1Sales, currentQuarter, textLength),
-        printYoYV2(q1YoY, currentQuarter, textLength),
-        printQuarterValuesV2(q2Sales, currentQuarter, textLength),
-        printYoYV2(q2YoY, currentQuarter, textLength),
-        printQuarterValuesV2(q3Sales, currentQuarter, textLength),
-        printYoYV2(q3YoY, currentQuarter, textLength),
-        printQuarterValuesV2(q4Sales, currentQuarter, textLength),
-        printYoYV2(q4YoY, currentQuarter, textLength),
-    ]
-} 
+    return quarterSales.map(elem => printQuarterValuesV2(elem, currentQuarter, textLength))
+        .concat(
+            quarterYoY.map(elem => printYoYV2(elem, currentQuarter, textLength)),
+            cumulativeSales.map(elem => printCumulativeValuesV2(elem, currentQuarter, textLength)),
+            cumulativeYoY.map(elem => printYoYV2(elem, currentQuarter, textLength)),
+    )
+}
 
 function millionFix(value: number, changeFrom: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand"): number {
 
