@@ -117,6 +117,36 @@ const generalSalesHeader =
 |             |       Sales |    Units |      Unit |
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
 
+function generalSalesHeaderV2(
+    periodColumnLength: number,
+    salesColumnLength: number,
+    unitsColumnLength: number,
+    salesPerSoftwareUnitLength: number) {
+// 13 || 17, 13, 10, 11
+    return liner(
+        border([
+            spacer("",periodColumnLength,"right"),
+            spacer("",salesColumnLength,"right"),
+            spacer("",unitsColumnLength,"right"),
+            spacer("Sales Per",salesPerSoftwareUnitLength,"right"),
+        ], true).concat(
+            border([
+                spacer("",periodColumnLength,"right"),
+                spacer("",salesColumnLength,"right"),
+                spacer("Software",unitsColumnLength,"right"),
+                spacer("Software",salesPerSoftwareUnitLength,"right"),
+            ], true),
+            border([
+                spacer("",periodColumnLength,"right"),
+                spacer("Sales",salesColumnLength,"right"),
+                spacer("Units",unitsColumnLength,"right"),
+                spacer("Unit",salesPerSoftwareUnitLength,"right"),
+            ], true)
+        )
+    ,"−","both",true)
+
+}
+
 const forecastSalesHeader = 
 `+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 |                 |             |          | Sales Per |
@@ -138,9 +168,9 @@ function printSalesAndYoY(
     textLength: number,
 ): string[] {
 
-    const quarters = quarterSales.map((elem, index) => printQuarterValuesV2(elem, currentQuarter, textLength).concat(printYoYV2(quarterYoY[index], currentQuarter, textLength)))
+    const quarters = quarterSales.map((elem, index) => printQuarterValuesV2(elem, currentQuarter, textLength).concat(printYoYV2(quarterYoY[index], currentQuarter, textLength, true)))
 
-    const cumulatives = cumulativeSales.map((elem, index) => printCumulativeValuesV2(elem, currentQuarter, textLength).concat(printYoYV2(cumulativeYoY[index], currentQuarter, textLength)))
+    const cumulatives = cumulativeSales.map((elem, index) => printCumulativeValuesV2(elem, currentQuarter, textLength).concat(printYoYV2(cumulativeYoY[index], currentQuarter, textLength, true)))
 
     return quarters.concat(cumulatives)
 }
