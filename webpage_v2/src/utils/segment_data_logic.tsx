@@ -1,4 +1,5 @@
-import { printTextBlock, border, liner, spacer, dateLabel } from "./table_design_logic";;
+import { printTextBlock, border, liner, spacer, dateLabel } from "./table_design_logic";
+import type { EarningsV2 } from "./general_earnings_logic";
 
 export type Section = {
     region: "Group Total" | "Japan" | "Americas" | "Europe",
