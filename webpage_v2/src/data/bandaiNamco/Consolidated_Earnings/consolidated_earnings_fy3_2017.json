@@ -2,5 +2,5 @@
     "currentQuarter": 4,
     "companyName": "Bandai Namco Holdings Inc.",
     "fiscalYear": "FY3/2017",
-    "data": [{"name":"Net Sales","Q1CmlValue":144792,"Q2CmlValue":294569,"Q3CmlValue":459103,"Q4CmlValue":620061,"forecastThisFY":580000,"forecastRevision1":590000,"forecastNextFY":600000},{"name":"Operating Income","Q1CmlValue":23419,"Q2CmlValue":38904,"Q3CmlValue":60160,"Q4CmlValue":63238,"forecastThisFY":50000,"forecastRevision1":57000,"forecastNextFY":57000},{"name":"Net Income","Q1CmlValue":18502,"Q2CmlValue":30170,"Q3CmlValue":46503,"Q4CmlValue":44159,"forecastThisFY":35000,"forecastRevision1":39000,"forecastNextFY":40000}]
+    "data": [{"name":"Net Sales","units":"currency","Q1CmlValue":144792,"Q2CmlValue":294569,"Q3CmlValue":459103,"Q4CmlValue":620061,"forecastThisFY":580000,"forecastRevision1":590000,"forecastNextFY":600000},{"name":"Operating Income","units":"currency","Q1CmlValue":23419,"Q2CmlValue":38904,"Q3CmlValue":60160,"Q4CmlValue":63238,"forecastThisFY":50000,"forecastRevision1":57000,"forecastNextFY":57000},{"name":"Net Income","units":"currency","Q1CmlValue":18502,"Q2CmlValue":30170,"Q3CmlValue":46503,"Q4CmlValue":44159,"forecastThisFY":35000,"forecastRevision1":39000,"forecastNextFY":40000}]
 }

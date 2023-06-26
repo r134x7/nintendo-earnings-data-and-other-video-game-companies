@@ -5,6 +5,7 @@
     "data": [
         {
             "name": "Net Sales",
+            "units":"currency",
             "Q1CmlValue": "Nothing",
             "Q2CmlValue": 218873,
             "Q3CmlValue": 345396,
@@ -15,6 +16,7 @@
         },
         {
             "name": "Operating Income",
+            "units":"currency",
             "Q1CmlValue": "Nothing",
             "Q2CmlValue": 17546,
             "Q3CmlValue": 35600,
@@ -22,6 +24,7 @@
         },
         {
             "name": "Net Income",
+            "units":"currency",
             "Q1CmlValue": "Nothing",
             "Q2CmlValue": 7834,
             "Q3CmlValue": 17711,

@@ -2,5 +2,5 @@
     "currentQuarter": 4,
     "companyName": "KOEI TECMO HOLDINGS CO., LTD.",
     "fiscalYear": "FY3/2017",
-    "data": [{"name":"Net Sales","Q1CmlValue":7695,"Q2CmlValue":16576,"Q3CmlValue":24199,"Q4CmlValue":37034,"forecastThisFY":42000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":42000},{"name":"Operating Income","Q1CmlValue":1178,"Q2CmlValue":2748,"Q3CmlValue":3499,"Q4CmlValue":8781,"forecastThisFY":11500,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":11500},{"name":"Net Income","Q1CmlValue":1082,"Q2CmlValue":3786,"Q3CmlValue":5987,"Q4CmlValue":11624,"forecastThisFY":11000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":11700}] 
+    "data": [{"name":"Net Sales","units":"currency","Q1CmlValue":7695,"Q2CmlValue":16576,"Q3CmlValue":24199,"Q4CmlValue":37034,"forecastThisFY":42000,"forecastNextFY":42000},{"name":"Operating Income","units":"currency","Q1CmlValue":1178,"Q2CmlValue":2748,"Q3CmlValue":3499,"Q4CmlValue":8781,"forecastThisFY":11500,"forecastNextFY":11500},{"name":"Net Income","units":"currency","Q1CmlValue":1082,"Q2CmlValue":3786,"Q3CmlValue":5987,"Q4CmlValue":11624,"forecastThisFY":11000,"forecastNextFY":11700}] 
 }

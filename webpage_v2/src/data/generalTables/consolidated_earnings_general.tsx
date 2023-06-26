@@ -171,7 +171,7 @@ export type EarningsJSONV2 = {
 
 export type EarningsMakeV2 = {
         name: string,
-        units?: string,
+        units: string,
         Q1CmlValue: number | string,
         Q2CmlValue: number | string,
         Q3CmlValue: number | string,
@@ -181,7 +181,7 @@ export type EarningsMakeV2 = {
         forecastRevision2?: number | null,
         forecastRevision3?: number | null,
         forecastNextFY?: number | null | string, 
-        notes?: string,
+        footnotes?: string,
 }; 
 
 export function nothingCheck(

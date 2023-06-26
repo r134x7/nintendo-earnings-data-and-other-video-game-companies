@@ -2,5 +2,5 @@
     "currentQuarter": 4,
     "companyName": "SEGA SAMMY HOLDINGS INC.",
     "fiscalYear": "FY3/2010",
-    "data": [{"name":"Net Sales","Q1CmlValue":60461,"Q2CmlValue":154395,"Q3CmlValue":285336,"Q4CmlValue":384679,"forecastThisFY":420000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":400000},{"name":"Operating Income","Q1CmlValue":-7820,"Q2CmlValue":-318,"Q3CmlValue":28863,"Q4CmlValue":36712,"forecastThisFY":27000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":40000},{"name":"Net Income","Q1CmlValue":-10293,"Q2CmlValue":-6323,"Q3CmlValue":16945,"Q4CmlValue":20269,"forecastThisFY":15000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":22000}]
+    "data": [{"name":"Net Sales","units":"currency","Q1CmlValue":60461,"Q2CmlValue":154395,"Q3CmlValue":285336,"Q4CmlValue":384679,"forecastThisFY":420000,"forecastNextFY":400000},{"name":"Operating Income","units":"currency","Q1CmlValue":-7820,"Q2CmlValue":-318,"Q3CmlValue":28863,"Q4CmlValue":36712,"forecastThisFY":27000,"forecastNextFY":40000},{"name":"Net Income","units":"currency","Q1CmlValue":-10293,"Q2CmlValue":-6323,"Q3CmlValue":16945,"Q4CmlValue":20269,"forecastThisFY":15000,"forecastNextFY":22000}]
 }

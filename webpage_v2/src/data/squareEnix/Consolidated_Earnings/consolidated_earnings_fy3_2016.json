@@ -2,5 +2,5 @@
     "currentQuarter": 4,
     "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
     "fiscalYear": "FY3/2016",
-    "data": [{"name":"Net Sales","Q1CmlValue":42282,"Q2CmlValue":86360,"Q3CmlValue":152760,"Q4CmlValue":214101,"forecastThisFY":220000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":270000},{"name":"Operating Income","Q1CmlValue":7912,"Q2CmlValue":12583,"Q3CmlValue":23778,"Q4CmlValue":26018,"forecastThisFY":25000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":33000},{"name":"Net Income","Q1CmlValue":5999,"Q2CmlValue":7324,"Q3CmlValue":13538,"Q4CmlValue":19884,"forecastThisFY":18000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":21000}]
+    "data": [{"name":"Net Sales","units":"currency","Q1CmlValue":42282,"Q2CmlValue":86360,"Q3CmlValue":152760,"Q4CmlValue":214101,"forecastThisFY":220000,"forecastNextFY":270000},{"name":"Operating Income","units":"currency","Q1CmlValue":7912,"Q2CmlValue":12583,"Q3CmlValue":23778,"Q4CmlValue":26018,"forecastThisFY":25000,"forecastNextFY":33000},{"name":"Net Income","units":"currency","Q1CmlValue":5999,"Q2CmlValue":7324,"Q3CmlValue":13538,"Q4CmlValue":19884,"forecastThisFY":18000,"forecastNextFY":21000}]
 }

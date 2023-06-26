@@ -2,5 +2,5 @@
     "currentQuarter": 4,
     "companyName": "CAPCOM Co., Ltd.",
     "fiscalYear": "FY3/2012",
-    "data": [{"name":"Net Sales","Q1CmlValue":11953,"Q2CmlValue":29252,"Q3CmlValue":50270,"Q4CmlValue":82065,"forecastThisFY":86000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":105000},{"name":"Operating Income","Q1CmlValue":775,"Q2CmlValue":2782,"Q3CmlValue":6744,"Q4CmlValue":12318,"forecastThisFY":12100,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":15800},{"name":"Net Income","Q1CmlValue":338,"Q2CmlValue":906,"Q3CmlValue":3242,"Q4CmlValue":6723,"forecastThisFY":7000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":9800}]
+    "data": [{"name":"Net Sales","units":"currency","Q1CmlValue":11953,"Q2CmlValue":29252,"Q3CmlValue":50270,"Q4CmlValue":82065,"forecastThisFY":86000,"forecastNextFY":105000},{"name":"Operating Income","units":"currency","Q1CmlValue":775,"Q2CmlValue":2782,"Q3CmlValue":6744,"Q4CmlValue":12318,"forecastThisFY":12100,"forecastNextFY":15800},{"name":"Net Income","units":"currency","Q1CmlValue":338,"Q2CmlValue":906,"Q3CmlValue":3242,"Q4CmlValue":6723,"forecastThisFY":7000,"forecastNextFY":9800}]
 }

@@ -2,5 +2,5 @@
     "currentQuarter": 4,
     "companyName": "CAPCOM Co., Ltd.",
     "fiscalYear": "FY3/1999",
-    "data": [{"name":"Net Sales","Q1CmlValue":"Nothing","Q2CmlValue":"Nothing","Q3CmlValue":"Nothing","Q4CmlValue":38366,"forecastThisFY":null,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":45000},{"name":"Operating Income","Q1CmlValue":"Nothing","Q2CmlValue":"Nothing","Q3CmlValue":"Nothing","Q4CmlValue":3611,"forecastThisFY":null,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":null},{"name":"Net Income","Q1CmlValue":"Nothing","Q2CmlValue":"Nothing","Q3CmlValue":"Nothing","Q4CmlValue":1507,"forecastThisFY":null,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":4550}]
+    "data": [{"name":"Net Sales","units":"currency","Q1CmlValue":"Nothing","Q2CmlValue":"Nothing","Q3CmlValue":"Nothing","Q4CmlValue":38366,"forecastThisFY":null,"forecastNextFY":45000},{"name":"Operating Income","units":"currency","Q1CmlValue":"Nothing","Q2CmlValue":"Nothing","Q3CmlValue":"Nothing","Q4CmlValue":3611,"forecastThisFY":"Nothing","forecastNextFY":"Nothing"},{"name":"Net Income","units":"currency","Q1CmlValue":"Nothing","Q2CmlValue":"Nothing","Q3CmlValue":"Nothing","Q4CmlValue":1507,"forecastThisFY":null,"forecastNextFY":4550}]
 }
