@@ -224,6 +224,17 @@ function millionFix(value: EarningsValue, changeFrom: "Billion" | "Million" | "H
             // let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (segmentUnits[index].value / 1000)).toFixed(0))
 }
 
+function salesPerSoftwareUnitCalculation(sales: EarningsValue, units: EarningsValue) {
+    // sales and units have to be the same units e.g. M 
+
+    return (sales.kind !== "Nothing" && units.kind !== "Nothing")
+        ? {
+            ...sales,
+            value: Number((sales.value / units.value).toFixed(0))
+        } satisfies EarningsValue
+        : { kind: "Nothing" }
+}
+
 const printQtrSales = (segmentSales: Section[], segmentSalesLastFY: Section[], header: Header, currentQuarter: number): string[] => {
 
     const quarters = quarterlyCalculation(segmentSales);
@@ -543,6 +554,8 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
 
     const dataLastFY = getData(collectionLastFY, collectionThisFY.data.length);
 
+
+
     const percentagesThisFY = new Map<number, EarningsV2>();
 
         dataThisFY.forEach((value, key, map) => {
@@ -568,21 +581,39 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
 
         map.set(key, {
             ...value,
-            Q1QtrValue: millionFix(value.Q1QtrValue,(key === 0) ? "Billion" : "One Thousand"),
-            Q2QtrValue: millionFix(value.Q2QtrValue,(key === 0) ? "Billion" : "One Thousand"),
-            Q3QtrValue: millionFix(value.Q3QtrValue,(key === 0) ? "Billion" : "One Thousand"),
-            Q4QtrValue: millionFix(value.Q4QtrValue,(key === 0) ? "Billion" : "One Thousand"),
-            Q1CmlValue: millionFix(value.Q1CmlValue,(key === 0) ? "Billion" : "One Thousand"),
-            Q2CmlValue: millionFix(value.Q2CmlValue,(key === 0) ? "Billion" : "One Thousand"),
-            Q3CmlValue: millionFix(value.Q3CmlValue,(key === 0) ? "Billion" : "One Thousand"),
-            Q4CmlValue: millionFix(value.Q4CmlValue,(key === 0) ? "Billion" : "One Thousand"),
-            forecastThisFY: millionFix(value.Q4CmlValue,(key === 0) ? "Billion" : "One Thousand"),
-            forecastRevision1: millionFix(value.Q4CmlValue,(key === 0) ? "Billion" : "One Thousand"),
-            forecastRevision2: millionFix(value.Q4CmlValue,(key === 0) ? "Billion" : "One Thousand"),
-            forecastRevision3: millionFix(value.Q4CmlValue,(key === 0) ? "Billion" : "One Thousand"),
-            forecastNextFY: millionFix(value.Q4CmlValue,(key === 0) ? "Billion" : "One Thousand"),
+            Q1QtrValue: millionFix(value.Q1QtrValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q2QtrValue: millionFix(value.Q2QtrValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q3QtrValue: millionFix(value.Q3QtrValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q4QtrValue: millionFix(value.Q4QtrValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q1CmlValue: millionFix(value.Q1CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q2CmlValue: millionFix(value.Q2CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q3CmlValue: millionFix(value.Q3CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q4CmlValue: millionFix(value.Q4CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastThisFY: millionFix(value.Q4CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastRevision1: millionFix(value.Q4CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastRevision2: millionFix(value.Q4CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastRevision3: millionFix(value.Q4CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastNextFY: millionFix(value.Q4CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
         } satisfies EarningsV2)
     })
+
+    // Sales Per Software Unit data has to be made after millionFix
+    dataThisFY.set(dataThisFY.size, {
+        name: "Sales Per Software Unit",
+        Q1QtrValue: ,
+        Q2QtrValue: ,
+        Q3QtrValue: ,
+        Q4QtrValue: ,
+        Q1CmlValue: ,
+        Q2CmlValue: ,
+        Q3CmlValue: ,
+        Q4CmlValue: ,
+        forecastThisFY: ,
+        forecastRevision1: ,
+        forecastRevision2: ,
+        forecastRevision3: ,
+        forecastNextFY: ,
+    } satisfies EarningsV2)
 
 
     const salesHeader = generalSalesHeaderV2(13, 13, 10, 11);

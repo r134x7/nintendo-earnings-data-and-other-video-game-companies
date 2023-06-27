@@ -52,7 +52,7 @@ export const softwareSalesGraphList = new Map();
 
 collectionV2.forEach((value, key, map) => {
 
-    softwareSalesList.set(key, generalSalesPerSoftwareUnitListV2Map(value, map.get(key+1), 38))
+    softwareSalesList.set(key, generalSalesPerSoftwareUnitListV2Map(value, map.get(key+1), 38, "Billion", "One Thousand"))
 })
 
 collectionV2.clear();
