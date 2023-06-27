@@ -697,63 +697,46 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
     const salesHeader = nameHeader + generalSalesHeaderV2(12, 12, 9, 10, 7);
 
     // need millionFix
-    const printAll = new Map<number, string>();
+    const printQtrAndCml = new Map<number, string>();
+
+    const printForecasts = new Map<number, string>();
+
+    
 
     dataThisFY.forEach((value, key, map) => {
 
-        let getTextLength = (key === 0) ? 12 : (key === 1) ? 11 : 11;
+        const getTextLength = (key === 0) ? 12 : (key === 1) ? 11 : 11;
 
-        printAll.set(0, (printAll.get(0) ?? "") + printQuarterValuesV2(value.Q1QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
-        printAll.set(1, (printAll.get(1) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q1QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+        printQtrAndCml.set(0, (printQtrAndCml.get(0) ?? "") + printQuarterValuesV2(value.Q1QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
+        printQtrAndCml.set(1, (printQtrAndCml.get(1) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q1QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
 
-        printAll.set(2, (printAll.get(2) ?? "") + printQuarterValuesV2(value.Q2QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
-        printAll.set(3, (printAll.get(3) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q2QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+        printQtrAndCml.set(2, (printQtrAndCml.get(2) ?? "") + printQuarterValuesV2(value.Q2QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
+        printQtrAndCml.set(3, (printQtrAndCml.get(3) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q2QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
 
-        printAll.set(4, (printAll.get(4) ?? "") + printQuarterValuesV2(value.Q3QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
-        printAll.set(5, (printAll.get(5) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q3QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+        printQtrAndCml.set(4, (printQtrAndCml.get(4) ?? "") + printQuarterValuesV2(value.Q3QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
+        printQtrAndCml.set(5, (printQtrAndCml.get(5) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q3QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
 
-        printAll.set(6, (printAll.get(6) ?? "") + printQuarterValuesV2(value.Q4QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
-        printAll.set(7, (printAll.get(7) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q4QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+        printQtrAndCml.set(6, (printQtrAndCml.get(6) ?? "") + printQuarterValuesV2(value.Q4QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
+        printQtrAndCml.set(7, (printQtrAndCml.get(7) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q4QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
 
-        printAll.set(8, (printAll.get(8) ?? "") + printCumulativeValuesV2(value.Q2CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
-        printAll.set(9, (printAll.get(9) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q2CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+        printQtrAndCml.set(8, (printQtrAndCml.get(8) ?? "") + printCumulativeValuesV2(value.Q2CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
+        printQtrAndCml.set(9, (printQtrAndCml.get(9) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q2CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
 
-        printAll.set(10, (printAll.get(10) ?? "") + printCumulativeValuesV2(value.Q3CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
-        printAll.set(11, (printAll.get(11) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q3CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+        printQtrAndCml.set(10, (printQtrAndCml.get(10) ?? "") + printCumulativeValuesV2(value.Q3CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
+        printQtrAndCml.set(11, (printQtrAndCml.get(11) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q3CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
 
-        printAll.set(12, (printAll.get(12) ?? "") + printCumulativeValuesV2(value.Q4CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
-        printAll.set(13, (printAll.get(13) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q4CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
-        // printAll.set(key, printSalesAndYoY(
-        //     [
-        //         map.get(key)?.Q1QtrValue ?? none,
-        //         map.get(key)?.Q2QtrValue ?? none,
-        //         map.get(key)?.Q3QtrValue ?? none,
-        //         map.get(key)?.Q4QtrValue ?? none,
-        //     ],
-        //     [
-        //         percentagesThisFY.get(key)?.Q1QtrValue ?? none,
-        //         percentagesThisFY.get(key)?.Q2QtrValue ?? none,
-        //         percentagesThisFY.get(key)?.Q3QtrValue ?? none,
-        //         percentagesThisFY.get(key)?.Q4QtrValue ?? none,
-        //     ],
-        //     [
-        //         map.get(key)?.Q2CmlValue ?? none,
-        //         map.get(key)?.Q3CmlValue ?? none,
-        //         map.get(key)?.Q4CmlValue ?? none,
-        //     ],
-        //     [
-        //         percentagesThisFY.get(key)?.Q2CmlValue ?? none,
-        //         percentagesThisFY.get(key)?.Q3CmlValue ?? none,
-        //         percentagesThisFY.get(key)?.Q4CmlValue ?? none,
-        //     ],
-        //     currentQuarter,
-        //     (key === 0) ? 12 : (key === 1) ? 9 : 10,
-        //     (key === 0) ? false : true
-        // ))
+        printQtrAndCml.set(12, (printQtrAndCml.get(12) ?? "") + printCumulativeValuesV2(value.Q4CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
+        printQtrAndCml.set(13, (printQtrAndCml.get(13) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q4CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
         
+        printForecasts.set(0, (printForecasts.get(0) ?? "") + printForecastValuesV2(value.forecastThisFY,getTextLength))
+        printForecasts.set(1, (printForecasts.get(1) ?? "") + printForecastValuesV2(value.forecastRevision1,getTextLength))
+        printForecasts.set(2, (printForecasts.get(2) ?? "") + printForecastValuesV2(value.forecastRevision2,getTextLength))
+        printForecasts.set(3, (printForecasts.get(3) ?? "") + printForecastValuesV2(value.forecastRevision3,getTextLength))
+        printForecasts.set(4, (printForecasts.get(4) ?? "") + printForecastValuesV2(value.forecastNextFY,getTextLength))
+
     })
 
-    printAll.forEach((value, key, map) => {
+    printQtrAndCml.forEach((value, key, map) => {
 
         let doubleLine: "=" | "−" = (value.includes("Cml.") 
                 ? "=" 
@@ -770,15 +753,21 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
         }
     })
 
-    printAll.set(printAll.size*3,
+    printQtrAndCml.set(printQtrAndCml.size*3,
         liner(printTextBlock(dataThisFY.get(0)?.footnotes, 50),"−","bottom",true,50)
         )
     
+    printForecasts.forEach((value, key, map) => {
+
+        let doubleLine: "=" | "−" = (key === 4) ? "=" : "−";
+
+        map.set(key, liner(value,"−","bottom",true,50))
+    })
+
+    printForecasts.set(printForecasts.size,
+        liner(printTextBlock(dataThisFY.get(0)?.footnotes, 50),"−","bottom",true,50))
     
-    // console.log(...printAll.values());
-    
-    // console.log(printAll)
-    return [printOne, salesHeader, ...printAll.values()].reduce((acc, next) => acc + next);
+    return [printOne, salesHeader, ...printQtrAndCml.values(), ...printForecasts.values()].reduce((acc, next) => acc + next);
 
 }
 
