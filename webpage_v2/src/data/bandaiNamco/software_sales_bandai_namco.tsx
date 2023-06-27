@@ -1,10 +1,11 @@
-import { Header, Section, BandaiNamcoPrint, graphMake, salesPerSoftwareUnitForecast} from "../../utils/segment_data_logic";
+import { Header, Section, BandaiNamcoPrint, graphMake, salesPerSoftwareUnitForecast, generalSalesPerSoftwareUnitListV2Map} from "../../utils/segment_data_logic";
 import softwareSales2023 from "./Software_Sales/software_sales_fy3_2023.json"
 import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
 import softwareSales2020 from "./Software_Sales/software_sales_fy3_2020.json";
 import softwareSales2019 from "./Software_Sales/software_sales_fy3_2019.json";
 import undefinedData from "./Software_Sales/undefinedData.json";
+import { EarningsJSONV2 } from "../generalTables/consolidated_earnings_general";
 
 export type collectionJSON = {
     fiscalYear: string,
@@ -28,14 +29,36 @@ export type salesOrUnitsJSON = {
     notes?: string,
 }
 
-const collection: collectionJSON[] = [
-    softwareSales2023,
-    softwareSales2022,
-    softwareSales2021,
-    softwareSales2020,
-    softwareSales2019,
-    undefinedData,
-];
+// const collection: collectionJSON[] = [
+//     softwareSales2023,
+//     softwareSales2022,
+//     softwareSales2021,
+//     softwareSales2020,
+//     softwareSales2019,
+//     undefinedData,
+// ];
+
+const yearRange = 2023 - 2019;
+const keys = Array.from({length: yearRange + 1},(v, i) => yearRange - i);
+
+const collectionV2 = new Map<number, EarningsJSONV2>([
+    [keys.pop() ?? 0, softwareSales2023],
+    [keys.pop() ?? 0, softwareSales2022],
+    [keys.pop() ?? 0, softwareSales2021],
+    [keys.pop() ?? 0, softwareSales2020],
+    [keys.pop() ?? 0, softwareSales2019],
+]);
+
+export const softwareSalesList = new Map<number, string>();
+
+export const softwareSalesGraphList = new Map();
+
+collectionV2.forEach((value, key, map) => {
+
+    softwareSalesList.set(key, generalSalesPerSoftwareUnitListV2Map(value, map.get(key+1), 38))
+})
+
+collectionV2.clear();
 
 const forecastsMake = (obj: salesOrUnitsJSON, units: string): Section[] => {
 
@@ -181,38 +204,38 @@ export const unitsMake = (obj: {"softwareUnits": salesOrUnitsJSON }, forecast?: 
     return units 
 };
 
-export const softwareSalesList: string[] = collection.flatMap((elem, index, array) => {
-    if (array[index] === array.at(-1)) {
-        return [] // for undefinedData in collection only
-    }
+// export const softwareSalesList: string[] = collection.flatMap((elem, index, array) => {
+//     if (array[index] === array.at(-1)) {
+//         return [] // for undefinedData in collection only
+//     }
 
-    let header: Header = {
-        fiscalYear: elem.fiscalYear,
-        secondHeader: "| Segment Information |",
-        firstHeader: "| Bandai Namco   |",
-    };
+//     let header: Header = {
+//         fiscalYear: elem.fiscalYear,
+//         secondHeader: "| Segment Information |",
+//         firstHeader: "| Bandai Namco   |",
+//     };
 
-    let salesThisFY: Section[] = salesHomeVideoGameMake(elem);
-    let salesLastFY: Section[] = salesHomeVideoGameMake(array[index+1]);
-    let salesForecast: Section[] = salesHomeVideoGameMake(elem,true);
+//     let salesThisFY: Section[] = salesHomeVideoGameMake(elem);
+//     let salesLastFY: Section[] = salesHomeVideoGameMake(array[index+1]);
+//     let salesForecast: Section[] = salesHomeVideoGameMake(elem,true);
 
-    let unitsThisFY: Section[] = unitsMake(elem);
-    let unitsLastFY: Section[] = unitsMake(array[index+1]);
-    let unitsForecast: Section[] = unitsMake(elem,true);
+//     let unitsThisFY: Section[] = unitsMake(elem);
+//     let unitsLastFY: Section[] = unitsMake(array[index+1]);
+//     let unitsForecast: Section[] = unitsMake(elem,true);
 
-    return BandaiNamcoPrint(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter) + "\n" + salesPerSoftwareUnitForecast(salesForecast, unitsForecast, header, elem.currentQuarter)
-});
+//     return BandaiNamcoPrint(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter) + "\n" + salesPerSoftwareUnitForecast(salesForecast, unitsForecast, header, elem.currentQuarter)
+// });
 
-export const softwareSalesGraphList = collection.flatMap((elem, index, array) => {
-    if (array[index] === array.at(-1)) {
-        return [] // for undefinedData in collection only
-    }
+// export const softwareSalesGraphList = collection.flatMap((elem, index, array) => {
+//     if (array[index] === array.at(-1)) {
+//         return [] // for undefinedData in collection only
+//     }
 
-    let salesThisFY: Section[] = salesHomeVideoGameMake(elem);
-    let salesLastFY: Section[] = salesHomeVideoGameMake(array[index+1]);
+//     let salesThisFY: Section[] = salesHomeVideoGameMake(elem);
+//     let salesLastFY: Section[] = salesHomeVideoGameMake(array[index+1]);
 
-    let unitsThisFY: Section[] = unitsMake(elem);
-    let unitsLastFY: Section[] = unitsMake(array[index+1]);
+//     let unitsThisFY: Section[] = unitsMake(elem);
+//     let unitsLastFY: Section[] = unitsMake(array[index+1]);
 
-    return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.softwareSales.name, elem.fiscalYear, elem.currentQuarter)
-});
+//     return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.softwareSales.name, elem.fiscalYear, elem.currentQuarter)
+// });
