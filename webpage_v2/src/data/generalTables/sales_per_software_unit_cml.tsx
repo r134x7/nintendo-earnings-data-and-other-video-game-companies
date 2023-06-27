@@ -1,7 +1,7 @@
 import { printTextBlock, border, liner, spacer, dateLabel } from "../../utils/table_design_logic";
 import { Section } from "../../utils/segment_data_logic";
 
-import { unitsMake as bandaiNamcoUnitsMake, salesHomeVideoGameMake as bandaiNamcoSalesMake, collectionJSON as bandaiNamcoCollectionJSON} from "../bandaiNamco/software_sales_bandai_namco";
+// import { unitsMake as bandaiNamcoUnitsMake, salesHomeVideoGameMake as bandaiNamcoSalesMake, collectionJSON as bandaiNamcoCollectionJSON} from "../bandaiNamco/software_sales_bandai_namco";
 import { unitsMake as koeiTecmoUnitsMake, collectionJSON as koeiTecmoCollectionJSON, salesMake as koeiTecmoSalesMake, } from "../koeiTecmo/software_sales_koei_tecmo";
 import { unitsMake as segaUnitsMake, collectionJSON as segaCollectionJSON, salesMake as segaSalesMake } from "../sega/software_sales_sega";
 import { digitalContentsSalesMake, collectionJSON as capcomCollectionJSON, digitalContentsUnitsMake, digitalSalesMake, digitalUnitsMake, packageSalesMake, packageUnitsMake } from "../capcom/software_sales_Capcom";
@@ -45,13 +45,13 @@ function labelMaker <T extends Dates>(collection: T[]) {
     return liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "bottom",true)
 }
 
-const bandaiNamcoCollection: bandaiNamcoCollectionJSON[] = [
-    bandaiNamcoSoftwareSales2019,
-    bandaiNamcoSoftwareSales2020,
-    bandaiNamcoSoftwareSales2021,
-    bandaiNamcoSoftwareSales2022,
-    bandaiNamcoSoftwareSales2023,
-];
+// const bandaiNamcoCollection: bandaiNamcoCollectionJSON[] = [
+//     bandaiNamcoSoftwareSales2019,
+//     bandaiNamcoSoftwareSales2020,
+//     bandaiNamcoSoftwareSales2021,
+//     bandaiNamcoSoftwareSales2022,
+//     bandaiNamcoSoftwareSales2023,
+// ];
 
 const capcomCollection: capcomCollectionJSON[] = [
     capcomSoftwareSales2021,
@@ -88,9 +88,9 @@ const generalSalesHeader =
 |              |       Sales |    Units |      Unit |
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
 
-const bandaiNamcoSales: Section[] = setMaker(bandaiNamcoCollection, bandaiNamcoSalesMake);
+// const bandaiNamcoSales: Section[] = setMaker(bandaiNamcoCollection, bandaiNamcoSalesMake);
 
-const bandaiNamcoUnits: Section[] = setMaker(bandaiNamcoCollection, bandaiNamcoUnitsMake);
+// const bandaiNamcoUnits: Section[] = setMaker(bandaiNamcoCollection, bandaiNamcoUnitsMake);
 
 const capcomDigitalContentsSales: Section[] = setMaker(capcomCollection, digitalContentsSalesMake);
 
@@ -128,7 +128,7 @@ function headerMaker(companyName: string) {
 
 };
 
-function setMaker(collection: bandaiNamcoCollectionJSON[] | koeiTecmoCollectionJSON[] | capcomCollectionJSON[] | squareEnixCollectionJSON[] | segaCollectionJSON[], objectMaker: Function): Section[] {
+function setMaker(collection: koeiTecmoCollectionJSON[] | capcomCollectionJSON[] | squareEnixCollectionJSON[] | segaCollectionJSON[], objectMaker: Function): Section[] {
 
     return collection.map((elem) => {
 
@@ -321,11 +321,11 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
     ].flat().reduce((acc, next) => acc + "\n" + next);
 };
 
-export const bandaiNamcoSalesPerSoftwareUnitCml = [
-    headerMaker("Bandai Namco"),
-    labelMaker(bandaiNamcoCollection),
-    printSalesPerSoftwareUnitCumulative(bandaiNamcoSales, bandaiNamcoUnits)
-].reduce((acc, next) => acc + "\n" + next);
+// export const bandaiNamcoSalesPerSoftwareUnitCml = [
+//     headerMaker("Bandai Namco"),
+//     labelMaker(bandaiNamcoCollection),
+//     printSalesPerSoftwareUnitCumulative(bandaiNamcoSales, bandaiNamcoUnits)
+// ].reduce((acc, next) => acc + "\n" + next);
 
 export const CapcomSalesPerSoftwareUnitCml = [
     headerMaker("Capcom"),

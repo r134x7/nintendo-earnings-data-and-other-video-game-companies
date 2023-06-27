@@ -65,8 +65,8 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
             },
             {
                 name: "Software Sales",
-                value: softwareSalesList?.[index],
-                graph: <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} />
+                value: softwareSalesList.get(index),
+                // graph: <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} />
             },
             {
                 name: "FY Series IP",

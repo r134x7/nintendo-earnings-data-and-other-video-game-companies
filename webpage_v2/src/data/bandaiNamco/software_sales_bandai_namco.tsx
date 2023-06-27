@@ -57,149 +57,149 @@ collectionV2.forEach((value, key, map) => {
 
 collectionV2.clear();
 
-const forecastsMake = (obj: salesOrUnitsJSON, units: string): Section[] => {
+// const forecastsMake = (obj: salesOrUnitsJSON, units: string): Section[] => {
 
-    // had to use different type assertion due to issue with keys not being recognised...
-    let forecasts: Section[] = [
-        {
-            name: obj.name,
-            region: "Group Total",
-            units: (units === "units") ? "units" : "currency",
-            period: "Forecast", 
-            cmlPeriod: "1st Quarter",
-            value: obj?.forecastThisFY,
-            notes: obj?.notes,
-        } as Section,
-        {
-            name: obj.name,
-            region: "Group Total",
-            units: (units === "units") ? "units" : "currency",
-            period: "FCST Revision 1",
-            cmlPeriod: "First Half",
-            value: obj?.forecastRevision1,
-            notes: obj?.notes,
-        } as Section,
-        {
-            name: obj.name,
-            region: "Group Total",
-            units: (units === "units") ? "units" : "currency",
-            period: "FCST Revision 2",
-            cmlPeriod: "1st 3 Qtrs",
-            value: obj?.forecastRevision2,
-            notes: obj?.notes,
-        } as Section,
-        {
-            name: obj.name,
-            region: "Group Total",
-            units: (units === "units") ? "units" : "currency",
-            period: "FCST Revision 3",
-            cmlPeriod: "1st 3 Qtrs",
-            value: obj?.forecastRevision3,
-            notes: obj?.notes,
-        } as Section,
-        {
-            name: obj.name,
-            region: "Group Total",
-            units: (units === "units") ? "units" : "currency",
-            period: "Forecast",
-            cmlPeriod: "Cml.",
-            value: obj?.forecastNextFY,
-            notes: obj?.notes,
-        } as Section,
-    ].filter(elem => elem.value !== undefined)
+//     // had to use different type assertion due to issue with keys not being recognised...
+//     let forecasts: Section[] = [
+//         {
+//             name: obj.name,
+//             region: "Group Total",
+//             units: (units === "units") ? "units" : "currency",
+//             period: "Forecast", 
+//             cmlPeriod: "1st Quarter",
+//             value: obj?.forecastThisFY,
+//             notes: obj?.notes,
+//         } as Section,
+//         {
+//             name: obj.name,
+//             region: "Group Total",
+//             units: (units === "units") ? "units" : "currency",
+//             period: "FCST Revision 1",
+//             cmlPeriod: "First Half",
+//             value: obj?.forecastRevision1,
+//             notes: obj?.notes,
+//         } as Section,
+//         {
+//             name: obj.name,
+//             region: "Group Total",
+//             units: (units === "units") ? "units" : "currency",
+//             period: "FCST Revision 2",
+//             cmlPeriod: "1st 3 Qtrs",
+//             value: obj?.forecastRevision2,
+//             notes: obj?.notes,
+//         } as Section,
+//         {
+//             name: obj.name,
+//             region: "Group Total",
+//             units: (units === "units") ? "units" : "currency",
+//             period: "FCST Revision 3",
+//             cmlPeriod: "1st 3 Qtrs",
+//             value: obj?.forecastRevision3,
+//             notes: obj?.notes,
+//         } as Section,
+//         {
+//             name: obj.name,
+//             region: "Group Total",
+//             units: (units === "units") ? "units" : "currency",
+//             period: "Forecast",
+//             cmlPeriod: "Cml.",
+//             value: obj?.forecastNextFY,
+//             notes: obj?.notes,
+//         } as Section,
+//     ].filter(elem => elem.value !== undefined)
 
-    return forecasts
-};
+//     return forecasts
+// };
 
-export const salesHomeVideoGameMake = (obj: {"softwareSales": salesOrUnitsJSON }, forecast?: boolean): Section[] => {
-    if (forecast === true) {
-        return forecastsMake(obj.softwareSales,"currency")
-    }
+// export const salesHomeVideoGameMake = (obj: {"softwareSales": salesOrUnitsJSON }, forecast?: boolean): Section[] => {
+//     if (forecast === true) {
+//         return forecastsMake(obj.softwareSales,"currency")
+//     }
 
-    let salesHomeVideoGame: Section[] = [
-        {
-            name: obj.softwareSales.name,
-            region: "Group Total",
-            period: "1st Quarter",
-            cmlPeriod: "1st Quarter",
-            units: (obj.softwareSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.softwareSales.Q1CmlValue, // billion yen
-            notes: obj.softwareSales.notes
-        },
-        {
-            name: obj.softwareSales.name,
-            region: "Group Total",
-            period: "2nd Quarter",
-            cmlPeriod: "First Half",
-            units: (obj.softwareSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.softwareSales.Q2CmlValue, // billion yen
-            notes: obj.softwareSales.notes
-        },
-        {
-            name: obj.softwareSales.name,
-            region: "Group Total",
-            period: "3rd Quarter",
-            cmlPeriod: "1st 3 Qtrs",
-            units: (obj.softwareSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.softwareSales.Q3CmlValue, // billion yen
-            notes: obj.softwareSales.notes
-        },
-        {
-            name: obj.softwareSales.name,
-            region: "Group Total",
-            period: "4th Quarter",
-            cmlPeriod: "Cml.",
-            units: (obj.softwareSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.softwareSales.Q4CmlValue, // billion yen
-            notes: obj.softwareSales.notes
-        },
-    ];
+//     let salesHomeVideoGame: Section[] = [
+//         {
+//             name: obj.softwareSales.name,
+//             region: "Group Total",
+//             period: "1st Quarter",
+//             cmlPeriod: "1st Quarter",
+//             units: (obj.softwareSales.units === "NaN") ? "NaN" : "currency",
+//             value: obj.softwareSales.Q1CmlValue, // billion yen
+//             notes: obj.softwareSales.notes
+//         },
+//         {
+//             name: obj.softwareSales.name,
+//             region: "Group Total",
+//             period: "2nd Quarter",
+//             cmlPeriod: "First Half",
+//             units: (obj.softwareSales.units === "NaN") ? "NaN" : "currency",
+//             value: obj.softwareSales.Q2CmlValue, // billion yen
+//             notes: obj.softwareSales.notes
+//         },
+//         {
+//             name: obj.softwareSales.name,
+//             region: "Group Total",
+//             period: "3rd Quarter",
+//             cmlPeriod: "1st 3 Qtrs",
+//             units: (obj.softwareSales.units === "NaN") ? "NaN" : "currency",
+//             value: obj.softwareSales.Q3CmlValue, // billion yen
+//             notes: obj.softwareSales.notes
+//         },
+//         {
+//             name: obj.softwareSales.name,
+//             region: "Group Total",
+//             period: "4th Quarter",
+//             cmlPeriod: "Cml.",
+//             units: (obj.softwareSales.units === "NaN") ? "NaN" : "currency",
+//             value: obj.softwareSales.Q4CmlValue, // billion yen
+//             notes: obj.softwareSales.notes
+//         },
+//     ];
 
-    return salesHomeVideoGame
-};
+//     return salesHomeVideoGame
+// };
 
-export const unitsMake = (obj: {"softwareUnits": salesOrUnitsJSON }, forecast?: boolean): Section[] => {
-    if (forecast === true) {
-        return forecastsMake(obj.softwareUnits,"units")
-    }
+// export const unitsMake = (obj: {"softwareUnits": salesOrUnitsJSON }, forecast?: boolean): Section[] => {
+//     if (forecast === true) {
+//         return forecastsMake(obj.softwareUnits,"units")
+//     }
 
-    let units: Section[] = [
-        {
-            name: obj.softwareUnits.name,
-            region: "Group Total",
-            period: "1st Quarter",
-            cmlPeriod: "1st Quarter",
-            units: (obj.softwareUnits.units === "NaN") ? "NaN" : "units",
-            value: obj.softwareUnits.Q1CmlValue // billion yen
-        },
-        {
-            name: obj.softwareUnits.name,
-            region: "Group Total",
-            period: "2nd Quarter",
-            cmlPeriod: "First Half",
-            units: (obj.softwareUnits.units === "NaN") ? "NaN" : "units",
-            value: obj.softwareUnits.Q2CmlValue // billion yen
-        },
-        {
-            name: obj.softwareUnits.name,
-            region: "Group Total",
-            period: "3rd Quarter",
-            cmlPeriod: "1st 3 Qtrs",
-            units: (obj.softwareUnits.units === "NaN") ? "NaN" : "units",
-            value: obj.softwareUnits.Q3CmlValue // billion yen
-        },
-        {
-            name: obj.softwareUnits.name,
-            region: "Group Total",
-            period: "4th Quarter",
-            cmlPeriod: "Cml.",
-            units: (obj.softwareUnits.units === "NaN") ? "NaN" : "units",
-            value: obj.softwareUnits.Q4CmlValue // billion yen
-        },
-    ];
+//     let units: Section[] = [
+//         {
+//             name: obj.softwareUnits.name,
+//             region: "Group Total",
+//             period: "1st Quarter",
+//             cmlPeriod: "1st Quarter",
+//             units: (obj.softwareUnits.units === "NaN") ? "NaN" : "units",
+//             value: obj.softwareUnits.Q1CmlValue // billion yen
+//         },
+//         {
+//             name: obj.softwareUnits.name,
+//             region: "Group Total",
+//             period: "2nd Quarter",
+//             cmlPeriod: "First Half",
+//             units: (obj.softwareUnits.units === "NaN") ? "NaN" : "units",
+//             value: obj.softwareUnits.Q2CmlValue // billion yen
+//         },
+//         {
+//             name: obj.softwareUnits.name,
+//             region: "Group Total",
+//             period: "3rd Quarter",
+//             cmlPeriod: "1st 3 Qtrs",
+//             units: (obj.softwareUnits.units === "NaN") ? "NaN" : "units",
+//             value: obj.softwareUnits.Q3CmlValue // billion yen
+//         },
+//         {
+//             name: obj.softwareUnits.name,
+//             region: "Group Total",
+//             period: "4th Quarter",
+//             cmlPeriod: "Cml.",
+//             units: (obj.softwareUnits.units === "NaN") ? "NaN" : "units",
+//             value: obj.softwareUnits.Q4CmlValue // billion yen
+//         },
+//     ];
 
-    return units 
-};
+//     return units 
+// };
 
 // export const softwareSalesList: string[] = collection.flatMap((elem, index, array) => {
 //     if (array[index] === array.at(-1)) {
