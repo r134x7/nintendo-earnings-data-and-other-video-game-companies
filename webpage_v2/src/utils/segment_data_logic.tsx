@@ -118,7 +118,8 @@ function generalSalesHeaderV2(
     periodColumnLength: number,
     salesColumnLength: number,
     unitsColumnLength: number,
-    salesPerSoftwareUnitLength: number) {
+    salesPerSoftwareUnitLength: number,
+    linerOffset: number) {
 // 13 || 17, 13, 10, 11
     return liner(
         border([
@@ -138,9 +139,9 @@ function generalSalesHeaderV2(
                 spacer("Sales",salesColumnLength,"right"),
                 spacer("Units",unitsColumnLength,"right"),
                 spacer("Unit",salesPerSoftwareUnitLength,"right"),
-            ], true)
+            ])
         )
-    ,"−","both",true)
+    ,"−","both",true, periodColumnLength + salesColumnLength + unitsColumnLength + salesPerSoftwareUnitLength + linerOffset)
 
 }
 
@@ -163,13 +164,13 @@ function printSalesAndYoY(
     cumulativeYoY: EarningsValue[],
     currentQuarter: number,
     textLength: number,
-): string[] {
+): string {
 
     const quarters = quarterSales.map((elem, index) => printQuarterValuesV2(elem, currentQuarter, textLength).concat(printYoYV2(quarterYoY[index], currentQuarter, textLength, true)))
 
     const cumulatives = cumulativeSales.map((elem, index) => printCumulativeValuesV2(elem, currentQuarter, textLength).concat(printYoYV2(cumulativeYoY[index], currentQuarter, textLength, true)))
 
-    return quarters.concat(cumulatives);
+    return quarters.concat(cumulatives).reduce((acc, next) => acc + "\n" + next);
 }
 
 function millionFix(value: EarningsValue, changeFrom: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand"): EarningsValue {
@@ -676,10 +677,10 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
     } satisfies EarningsV2)
 
 
-    const salesHeader = generalSalesHeaderV2(13, 13, 10, 11);
+    const salesHeader = generalSalesHeaderV2(12, 12, 9, 10, 7);
 
     // need millionFix
-    const printAll = new Map<number, string[]>();
+    const printAll = new Map<number, string>();
 
     dataThisFY.forEach((value, key, map) => {
 
@@ -707,12 +708,16 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
                 percentagesThisFY.get(key)?.Q4CmlValue ?? none,
             ],
             currentQuarter,
-            13
+            (key === 0) ? 12 : (key === 1) ? 9 : 10
         ))
         
     })
 
-    console.log(printAll)
+    
+    // console.log(...printAll.values());
+    
+    // console.log(printAll)
+    return [printOne, salesHeader, ...printAll.values()].reduce((acc, next) => acc + next);
 
 }
 
