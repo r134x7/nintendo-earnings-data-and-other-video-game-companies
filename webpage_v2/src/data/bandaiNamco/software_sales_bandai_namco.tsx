@@ -38,16 +38,13 @@ export type salesOrUnitsJSON = {
 //     undefinedData,
 // ];
 
-const yearRange = 2023 - 2019;
-const keys = Array.from({length: yearRange + 1},(v, i) => yearRange - i);
+const collectionV2 = new Map<number, EarningsJSONV2>();
 
-const collectionV2 = new Map<number, EarningsJSONV2>([
-    [keys.pop() ?? 0, softwareSales2023],
-    [keys.pop() ?? 0, softwareSales2022],
-    [keys.pop() ?? 0, softwareSales2021],
-    [keys.pop() ?? 0, softwareSales2020],
-    [keys.pop() ?? 0, softwareSales2019],
-]);
+collectionV2.set(collectionV2.size, softwareSales2023)
+collectionV2.set(collectionV2.size, softwareSales2022)
+collectionV2.set(collectionV2.size, softwareSales2021)
+collectionV2.set(collectionV2.size, softwareSales2020)
+collectionV2.set(collectionV2.size, softwareSales2019)
 
 export const softwareSalesList = new Map<number, string>();
 
