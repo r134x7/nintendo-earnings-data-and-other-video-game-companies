@@ -679,14 +679,12 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
         forecastNextFY: yearOnYearCalculationV2(dataThisFY.get(dataThisFY.size-1)?.forecastNextFY ?? none, dataLastFY.get(dataLastFY.size-1)?.forecastNextFY ?? none, "Forecast"),
     } satisfies EarningsV2)
 
-    const salesHeader = generalSalesHeaderV2(12, 12, 9, 10, 7);
-
     const nameSalesHeader = liner(
             printTextBlock(dataThisFY.get(0)?.name, 50)
-        ,"−","top",true,50) + salesHeader;
+        ,"−","top",true,50) + generalSalesHeaderV2(12, 12, 9, 10, 7);
 
     const nameForecastHeader = liner(
-        printTextBlock(dataThisFY.get(0)?.name + " Forecast", 50), "−", "top", true, 50) + salesHeader;
+        printTextBlock(dataThisFY.get(0)?.name + " Forecast", 54), "−", "top", true, 54) + generalSalesHeaderV2(16, 12, 9, 10, 7);
 
     const printQtrAndCml = new Map<number, string>();
 
@@ -717,11 +715,11 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
         printQtrAndCml.set(12, (printQtrAndCml.get(12) ?? "") + printCumulativeValuesV2(value.Q4CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
         printQtrAndCml.set(13, (printQtrAndCml.get(13) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q4CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
         
-        printForecasts.set(0, (printForecasts.get(0) ?? "") + printForecastValuesV2(value.forecastThisFY,getTextLength))
-        printForecasts.set(1, (printForecasts.get(1) ?? "") + printForecastValuesV2(value.forecastRevision1,getTextLength))
-        printForecasts.set(2, (printForecasts.get(2) ?? "") + printForecastValuesV2(value.forecastRevision2,getTextLength))
-        printForecasts.set(3, (printForecasts.get(3) ?? "") + printForecastValuesV2(value.forecastRevision3,getTextLength))
-        printForecasts.set(4, (printForecasts.get(4) ?? "") + printForecastValuesV2(value.forecastNextFY,getTextLength))
+        printForecasts.set(0, (printForecasts.get(0) ?? "") + printForecastValuesV2(value.forecastThisFY,getTextLength, (key === 0) ? false : true))
+        printForecasts.set(1, (printForecasts.get(1) ?? "") + printForecastValuesV2(value.forecastRevision1,getTextLength, (key === 0) ? false : true))
+        printForecasts.set(2, (printForecasts.get(2) ?? "") + printForecastValuesV2(value.forecastRevision2,getTextLength, (key === 0) ? false : true))
+        printForecasts.set(3, (printForecasts.get(3) ?? "") + printForecastValuesV2(value.forecastRevision3,getTextLength, (key === 0) ? false : true))
+        printForecasts.set(4, (printForecasts.get(4) ?? "") + printForecastValuesV2(value.forecastNextFY,getTextLength, (key === 0) ? false : true))
 
     })
 
@@ -754,12 +752,12 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
             // map.delete(key);
             // easier to do nothing so that the set below (outside forEach) is set to a new key value without having to *3
         } else {
-            map.set(key, liner(value,doubleLine,"bottom",true,50))
+            map.set(key, liner(value,doubleLine,"bottom",true,54))
         }
     })
 
     printForecasts.set(printForecasts.size,
-        liner(printTextBlock(dataThisFY.get(0)?.footnotes, 50),"−","bottom",true,50))
+        liner(printTextBlock(dataThisFY.get(0)?.footnotes, 54),"−","bottom",true,54))
     
     return [
         printOne, 

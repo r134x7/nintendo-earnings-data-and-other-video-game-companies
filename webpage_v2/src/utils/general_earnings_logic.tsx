@@ -194,7 +194,7 @@ export function printYoYV2(percentageValues: EarningsValue, currentQuarter: numb
     }
 }
 
-export function printForecastValuesV2(forecastValue: EarningsValue, textLength: number): string {
+export function printForecastValuesV2(forecastValue: EarningsValue, textLength: number, singleColumn?: boolean): string {
 
     if (forecastValue.kind === "Forecast") {
 
@@ -207,10 +207,13 @@ export function printForecastValuesV2(forecastValue: EarningsValue, textLength: 
                 : forecastValue.period
 
 
-        return border([
-            spacer(forecastPeriod, 16,"left"),
-            spacer(forecastString, textLength,"right")
-        ])
+        return (!singleColumn)
+            ? border([
+                spacer(forecastPeriod, 16,"left"),
+                spacer(forecastString, textLength,"right")
+            ])
+            : spacer(forecastString + " |", textLength,"right")
+
     } else {
         return "";
     } 
