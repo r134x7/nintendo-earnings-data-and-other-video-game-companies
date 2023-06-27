@@ -224,7 +224,7 @@ function millionFix(value: EarningsValue, changeFrom: "Billion" | "Million" | "H
             // let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (segmentUnits[index].value / 1000)).toFixed(0))
 }
 
-function salesPerSoftwareUnitCalculation(sales: EarningsValue, units: EarningsValue) {
+function salesPerSoftwareUnitCalculation(sales: EarningsValue, units: EarningsValue): EarningsValue {
     // sales and units have to be the same units e.g. M 
 
     return (sales.kind !== "Nothing" && units.kind !== "Nothing")
@@ -554,8 +554,6 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
 
     const dataLastFY = getData(collectionLastFY, collectionThisFY.data.length);
 
-
-
     const percentagesThisFY = new Map<number, EarningsV2>();
 
         dataThisFY.forEach((value, key, map) => {
@@ -589,30 +587,92 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
             Q2CmlValue: millionFix(value.Q2CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
             Q3CmlValue: millionFix(value.Q3CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
             Q4CmlValue: millionFix(value.Q4CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-            forecastThisFY: millionFix(value.Q4CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-            forecastRevision1: millionFix(value.Q4CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-            forecastRevision2: millionFix(value.Q4CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-            forecastRevision3: millionFix(value.Q4CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-            forecastNextFY: millionFix(value.Q4CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastThisFY: millionFix(value.forecastThisFY,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastRevision1: millionFix(value.forecastRevision1,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastRevision2: millionFix(value.forecastRevision2,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastRevision3: millionFix(value.forecastRevision3,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastNextFY: millionFix(value.forecastNextFY,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+        } satisfies EarningsV2)
+
+        dataLastFY.set(key, {
+            name: dataLastFY.get(key)?.name ?? "Error",
+            Q1QtrValue: millionFix(dataLastFY.get(key)?.Q1QtrValue ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q2QtrValue: millionFix(dataLastFY.get(key)?.Q2QtrValue ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q3QtrValue: millionFix(dataLastFY.get(key)?.Q3QtrValue ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q4QtrValue: millionFix(dataLastFY.get(key)?.Q4QtrValue ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q1CmlValue: millionFix(dataLastFY.get(key)?.Q1CmlValue ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q2CmlValue: millionFix(dataLastFY.get(key)?.Q2CmlValue ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q3CmlValue: millionFix(dataLastFY.get(key)?.Q3CmlValue ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q4CmlValue: millionFix(dataLastFY.get(key)?.Q4CmlValue ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastThisFY: millionFix(dataLastFY.get(key)?.forecastThisFY ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastRevision1: millionFix(dataLastFY.get(key)?.forecastRevision1 ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastRevision2: millionFix(dataLastFY.get(key)?.forecastRevision2 ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastRevision3: millionFix(dataLastFY.get(key)?.forecastRevision3 ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastNextFY: millionFix(dataLastFY.get(key)?.forecastNextFY ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
         } satisfies EarningsV2)
     })
 
     // Sales Per Software Unit data has to be made after millionFix
     dataThisFY.set(dataThisFY.size, {
         name: "Sales Per Software Unit",
-        Q1QtrValue: ,
-        Q2QtrValue: ,
-        Q3QtrValue: ,
-        Q4QtrValue: ,
-        Q1CmlValue: ,
-        Q2CmlValue: ,
-        Q3CmlValue: ,
-        Q4CmlValue: ,
-        forecastThisFY: ,
-        forecastRevision1: ,
-        forecastRevision2: ,
-        forecastRevision3: ,
-        forecastNextFY: ,
+        Q1QtrValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q1QtrValue ?? none, dataThisFY.get(1)?.Q1QtrValue ?? none),
+        Q2QtrValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q2QtrValue ?? none, dataThisFY.get(1)?.Q2QtrValue ?? none),
+        Q3QtrValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q3QtrValue ?? none, dataThisFY.get(1)?.Q3QtrValue ?? none),
+        Q4QtrValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q4QtrValue ?? none, dataThisFY.get(1)?.Q4QtrValue ?? none),
+        Q1CmlValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q1CmlValue ?? none, dataThisFY.get(1)?.Q1CmlValue ?? none),
+        Q2CmlValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q2CmlValue ?? none, dataThisFY.get(1)?.Q2CmlValue ?? none),
+        Q3CmlValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q3CmlValue ?? none, dataThisFY.get(1)?.Q3CmlValue ?? none),
+        Q4CmlValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q4CmlValue ?? none, dataThisFY.get(1)?.Q4CmlValue ?? none),
+        forecastThisFY: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.forecastThisFY ?? none, dataThisFY.get(1)?.forecastThisFY ?? none),
+        forecastRevision1: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.forecastRevision1 ?? none, dataThisFY.get(1)?.forecastRevision1 ?? none),
+        forecastRevision2: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.forecastRevision2 ?? none, dataThisFY.get(1)?.forecastRevision2 ?? none),
+        forecastRevision3: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.forecastRevision3 ?? none, dataThisFY.get(1)?.forecastRevision3 ?? none),
+        forecastNextFY: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.forecastNextFY ?? none, dataThisFY.get(1)?.forecastNextFY ?? none),
+    } satisfies EarningsV2);
+
+    dataLastFY.set(dataLastFY.size, {
+        name: "Sales Per Software Unit",
+        Q1QtrValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q1QtrValue ?? none, dataLastFY.get(1)?.Q1QtrValue ?? none),
+        Q2QtrValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q2QtrValue ?? none, dataLastFY.get(1)?.Q2QtrValue ?? none),
+        Q3QtrValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q3QtrValue ?? none, dataLastFY.get(1)?.Q3QtrValue ?? none),
+        Q4QtrValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q4QtrValue ?? none, dataLastFY.get(1)?.Q4QtrValue ?? none),
+        Q1CmlValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q1CmlValue ?? none, dataLastFY.get(1)?.Q1CmlValue ?? none),
+        Q2CmlValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q2CmlValue ?? none, dataLastFY.get(1)?.Q2CmlValue ?? none),
+        Q3CmlValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q3CmlValue ?? none, dataLastFY.get(1)?.Q3CmlValue ?? none),
+        Q4CmlValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q4CmlValue ?? none, dataLastFY.get(1)?.Q4CmlValue ?? none),
+        forecastThisFY: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.forecastThisFY ?? none, dataLastFY.get(1)?.forecastThisFY ?? none),
+        forecastRevision1: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.forecastRevision1 ?? none, dataLastFY.get(1)?.forecastRevision1 ?? none),
+        forecastRevision2: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.forecastRevision2 ?? none, dataLastFY.get(1)?.forecastRevision2 ?? none),
+        forecastRevision3: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.forecastRevision3 ?? none, dataLastFY.get(1)?.forecastRevision3 ?? none),
+        forecastNextFY: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.forecastNextFY ?? none, dataLastFY.get(1)?.forecastNextFY ?? none),
+    } satisfies EarningsV2);
+
+    // console.log(dataThisFY);
+    // console.log(dataLastFY.get(0)?.Q1CmlValue);
+    // console.log(dataLastFY.get(1)?.Q1CmlValue);
+    // console.log(dataLastFY.get(2)?.Q1CmlValue);
+    // console.log("break");
+    // console.log(dataThisFY.get(0)?.Q1CmlValue);
+    // console.log(dataThisFY.get(1)?.Q1CmlValue);
+    // console.log(dataThisFY.get(2)?.Q1CmlValue);
+    
+    
+    
+    percentagesThisFY.set(percentagesThisFY.size, {
+        name: "Sales Per Software Unit",
+        Q1QtrValue: yearOnYearCalculationV2(dataThisFY.get(dataThisFY.size-1)?.Q1QtrValue ?? none, dataLastFY.get(dataLastFY.size-1)?.Q1QtrValue ?? none, "Quarter"),
+        Q2QtrValue: yearOnYearCalculationV2(dataThisFY.get(dataThisFY.size-1)?.Q2QtrValue ?? none, dataLastFY.get(dataLastFY.size-1)?.Q2QtrValue ?? none, "Quarter"),
+        Q3QtrValue: yearOnYearCalculationV2(dataThisFY.get(dataThisFY.size-1)?.Q3QtrValue ?? none, dataLastFY.get(dataLastFY.size-1)?.Q3QtrValue ?? none, "Quarter"),
+        Q4QtrValue: yearOnYearCalculationV2(dataThisFY.get(dataThisFY.size-1)?.Q4QtrValue ?? none, dataLastFY.get(dataLastFY.size-1)?.Q4QtrValue ?? none, "Quarter"),
+        Q1CmlValue: yearOnYearCalculationV2(dataThisFY.get(dataThisFY.size-1)?.Q1CmlValue ?? none, dataLastFY.get(dataLastFY.size-1)?.Q1CmlValue ?? none, "Cumulative"),
+        Q2CmlValue: yearOnYearCalculationV2(dataThisFY.get(dataThisFY.size-1)?.Q2CmlValue ?? none, dataLastFY.get(dataLastFY.size-1)?.Q2CmlValue ?? none, "Cumulative"),
+        Q3CmlValue: yearOnYearCalculationV2(dataThisFY.get(dataThisFY.size-1)?.Q3CmlValue ?? none, dataLastFY.get(dataLastFY.size-1)?.Q3CmlValue ?? none, "Cumulative"),
+        Q4CmlValue: yearOnYearCalculationV2(dataThisFY.get(dataThisFY.size-1)?.Q4CmlValue ?? none, dataLastFY.get(dataLastFY.size-1)?.Q4CmlValue ?? none, "Cumulative"),
+        forecastThisFY: yearOnYearCalculationV2(dataThisFY.get(dataThisFY.size-1)?.forecastThisFY ?? none, dataLastFY.get(dataLastFY.size-1)?.forecastThisFY ?? none, "Forecast"),
+        forecastRevision1: yearOnYearCalculationV2(dataThisFY.get(dataThisFY.size-1)?.forecastRevision1 ?? none, dataLastFY.get(dataLastFY.size-1)?.forecastRevision1 ?? none, "Forecast"),
+        forecastRevision2: yearOnYearCalculationV2(dataThisFY.get(dataThisFY.size-1)?.forecastRevision2 ?? none, dataLastFY.get(dataLastFY.size-1)?.forecastRevision2 ?? none, "Forecast"),
+        forecastRevision3: yearOnYearCalculationV2(dataThisFY.get(dataThisFY.size-1)?.forecastRevision3 ?? none, dataLastFY.get(dataLastFY.size-1)?.forecastRevision3 ?? none, "Forecast"),
+        forecastNextFY: yearOnYearCalculationV2(dataThisFY.get(dataThisFY.size-1)?.forecastNextFY ?? none, dataLastFY.get(dataLastFY.size-1)?.forecastNextFY ?? none, "Forecast"),
     } satisfies EarningsV2)
 
 
@@ -622,10 +682,6 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
     const printAll = new Map<number, string[]>();
 
     dataThisFY.forEach((value, key, map) => {
-
-        // map.set(key, {
-        //     ...map.get(key)
-        // })
 
         printAll.set(key, printSalesAndYoY(
             [
