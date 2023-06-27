@@ -126,22 +126,42 @@ export function operatingMarginCalculationV2(
     }
 }
 
-export function printValueQtrOrCml(value: EarningsValue): string {
+export function numberType(value: "Billion" | "Million" | "Thousand" | "None" | undefined): string {
+
+    switch (value) {
+        case "Billion":
+            return "B"        
+
+        case "Million":
+            return "M"
+
+        case "Thousand":
+            return "k"
+
+        case "None":
+            return ""
+    
+        default:
+            return "M"
+    }
+}
+
+export function printValueQtrOrCml(value: EarningsValue, numberTypeInput?: string): string {
 
     if ((value.kind === "Quarter" || value.kind === "Cumulative" || value.kind === "Forecast")) {
         return (value.units === "currency")
-            ? `¥${value.value.toLocaleString("en")}M`
-            : `${value.value}${value.units === "percentage" ? "%" : "M"}`
+            ? `¥${value.value.toLocaleString("en")}${numberTypeInput !== undefined ? numberTypeInput : "M"}`
+            : `${value.value}${value.units === "percentage" ? "%" : `${numberTypeInput !== undefined ? numberTypeInput : "M"}`}`
     } else {
         return "Error";
     }
 }
 
-export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter: number, textLength: number, singleColumn?: boolean): string {
+export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter: number, textLength: number, singleColumn?: boolean, numberTypeCall?: "Billion" | "Million" | "Thousand" | "None"): string {
 
     if (quarterValue.kind === "Quarter") {
 
-        let valueString = printValueQtrOrCml(quarterValue);
+        let valueString = printValueQtrOrCml(quarterValue,numberType(numberTypeCall));
         
         return (!singleColumn)
             ? border([
@@ -154,7 +174,7 @@ export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter
     }
 }
 
-export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter: number, textLength: number, singleColumn?: boolean): string {
+export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter: number, textLength: number, singleColumn?: boolean, numberTypeCall?: "Billion" | "Million" | "Thousand" | "None"): string {
 
     if (cmlValue.kind === "Cumulative" && cmlValue.period !== "1st Quarter") {
 
@@ -164,7 +184,7 @@ export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter:
                 ? "1st 3/4" 
                 : `${cmlValue.kind === "Cumulative" ? cmlValue.thisFY : "Error"}`
 
-        let valueString = printValueQtrOrCml(cmlValue);
+        let valueString = printValueQtrOrCml(cmlValue, numberType(numberTypeCall));
 
         return (!singleColumn) 
             ? border([
@@ -194,11 +214,11 @@ export function printYoYV2(percentageValues: EarningsValue, currentQuarter: numb
     }
 }
 
-export function printForecastValuesV2(forecastValue: EarningsValue, textLength: number, singleColumn?: boolean): string {
+export function printForecastValuesV2(forecastValue: EarningsValue, textLength: number, singleColumn?: boolean, numberTypeCall?: "Billion" | "Million" | "Thousand" | "None"): string {
 
     if (forecastValue.kind === "Forecast") {
 
-        let forecastString = printValueQtrOrCml(forecastValue);
+        let forecastString = printValueQtrOrCml(forecastValue, numberType(numberTypeCall));
 
         let forecastPeriod = (forecastValue.period === "Current FY FCST")
             ? forecastValue.thisFY
@@ -213,7 +233,6 @@ export function printForecastValuesV2(forecastValue: EarningsValue, textLength: 
                 spacer(forecastString, textLength,"right")
             ])
             : spacer(forecastString + " |", textLength,"right")
-
     } else {
         return "";
     } 

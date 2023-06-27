@@ -694,32 +694,32 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
 
         const getTextLength = (key === 0) ? 12 : (key === 1) ? 11 : 11;
 
-        printQtrAndCml.set(0, (printQtrAndCml.get(0) ?? "") + printQuarterValuesV2(value.Q1QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
-        printQtrAndCml.set(1, (printQtrAndCml.get(1) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q1QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+        printQtrAndCml.set(0, (printQtrAndCml.get(0) ?? "") + printQuarterValuesV2(value.Q1QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true, (key === 2 ? "None" : undefined)))
+            printQtrAndCml.set(1, (printQtrAndCml.get(1) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q1QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
 
-        printQtrAndCml.set(2, (printQtrAndCml.get(2) ?? "") + printQuarterValuesV2(value.Q2QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
-        printQtrAndCml.set(3, (printQtrAndCml.get(3) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q2QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+        printQtrAndCml.set(2, (printQtrAndCml.get(2) ?? "") + printQuarterValuesV2(value.Q2QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true, (key === 2 ? "None" : undefined)))
+            printQtrAndCml.set(3, (printQtrAndCml.get(3) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q2QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
 
-        printQtrAndCml.set(4, (printQtrAndCml.get(4) ?? "") + printQuarterValuesV2(value.Q3QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
-        printQtrAndCml.set(5, (printQtrAndCml.get(5) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q3QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+        printQtrAndCml.set(4, (printQtrAndCml.get(4) ?? "") + printQuarterValuesV2(value.Q3QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true, (key === 2 ? "None" : undefined)))
+            printQtrAndCml.set(5, (printQtrAndCml.get(5) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q3QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
 
-        printQtrAndCml.set(6, (printQtrAndCml.get(6) ?? "") + printQuarterValuesV2(value.Q4QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
-        printQtrAndCml.set(7, (printQtrAndCml.get(7) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q4QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+        printQtrAndCml.set(6, (printQtrAndCml.get(6) ?? "") + printQuarterValuesV2(value.Q4QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true, (key === 2 ? "None" : undefined)))
+            printQtrAndCml.set(7, (printQtrAndCml.get(7) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q4QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
 
-        printQtrAndCml.set(8, (printQtrAndCml.get(8) ?? "") + printCumulativeValuesV2(value.Q2CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
-        printQtrAndCml.set(9, (printQtrAndCml.get(9) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q2CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+        printQtrAndCml.set(8, (printQtrAndCml.get(8) ?? "") + printCumulativeValuesV2(value.Q2CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true, (key === 2 ? "None" : undefined)))
+            printQtrAndCml.set(9, (printQtrAndCml.get(9) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q2CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
 
-        printQtrAndCml.set(10, (printQtrAndCml.get(10) ?? "") + printCumulativeValuesV2(value.Q3CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
-        printQtrAndCml.set(11, (printQtrAndCml.get(11) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q3CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+        printQtrAndCml.set(10, (printQtrAndCml.get(10) ?? "") + printCumulativeValuesV2(value.Q3CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true, (key === 2 ? "None" : undefined)))
+            printQtrAndCml.set(11, (printQtrAndCml.get(11) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q3CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
 
-        printQtrAndCml.set(12, (printQtrAndCml.get(12) ?? "") + printCumulativeValuesV2(value.Q4CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
-        printQtrAndCml.set(13, (printQtrAndCml.get(13) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q4CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+        printQtrAndCml.set(12, (printQtrAndCml.get(12) ?? "") + printCumulativeValuesV2(value.Q4CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true, (key === 2 ? "None" : undefined)))
+            printQtrAndCml.set(13, (printQtrAndCml.get(13) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q4CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
         
-        printForecasts.set(0, (printForecasts.get(0) ?? "") + printForecastValuesV2(value.forecastThisFY,getTextLength, (key === 0) ? false : true))
-        printForecasts.set(1, (printForecasts.get(1) ?? "") + printForecastValuesV2(value.forecastRevision1,getTextLength, (key === 0) ? false : true))
-        printForecasts.set(2, (printForecasts.get(2) ?? "") + printForecastValuesV2(value.forecastRevision2,getTextLength, (key === 0) ? false : true))
-        printForecasts.set(3, (printForecasts.get(3) ?? "") + printForecastValuesV2(value.forecastRevision3,getTextLength, (key === 0) ? false : true))
-        printForecasts.set(4, (printForecasts.get(4) ?? "") + printForecastValuesV2(value.forecastNextFY,getTextLength, (key === 0) ? false : true))
+        printForecasts.set(0, (printForecasts.get(0) ?? "") + printForecastValuesV2(value.forecastThisFY,getTextLength, (key === 0) ? false : true, (key === 2 ? "None" : undefined)))
+        printForecasts.set(1, (printForecasts.get(1) ?? "") + printForecastValuesV2(value.forecastRevision1,getTextLength, (key === 0) ? false : true, (key === 2 ? "None" : undefined)))
+        printForecasts.set(2, (printForecasts.get(2) ?? "") + printForecastValuesV2(value.forecastRevision2,getTextLength, (key === 0) ? false : true, (key === 2 ? "None" : undefined)))
+        printForecasts.set(3, (printForecasts.get(3) ?? "") + printForecastValuesV2(value.forecastRevision3,getTextLength, (key === 0) ? false : true, (key === 2 ? "None" : undefined)))
+        printForecasts.set(4, (printForecasts.get(4) ?? "") + printForecastValuesV2(value.forecastNextFY,getTextLength, (key === 0) ? false : true, (key === 2 ? "None" : undefined)))
 
     })
 
