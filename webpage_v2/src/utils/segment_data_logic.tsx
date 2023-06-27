@@ -3,9 +3,10 @@ import { printQuarterValuesV2,
     printYoYV2, 
     printCumulativeValuesV2,
     printForecastValuesV2,
+    yearOnYearCalculationV2,
     type EarningsV2, 
     type EarningsValue } from "./general_earnings_logic";
-import { valuesMakeV2, nothingCheck } from "../data/generalTables/consolidated_earnings_general";
+import { valuesMakeV2, nothingCheck, EarningsMakeV2, EarningsJSONV2, getData } from "../data/generalTables/consolidated_earnings_general";
 
 export type Section = {
     region: "Group Total" | "Japan" | "Americas" | "Europe",
@@ -25,9 +26,9 @@ export type Header = {
 }
 
 export type HeaderV2 = {
-    firstHeader: string,
-    secondHeader: string,
-    fiscalYear: string,
+    companyName: string;
+    fiscalYear: string;
+    title: string;
 }
 
 export const undefinedData: Section[] = [
@@ -74,10 +75,6 @@ ${header.secondHeader}
 +${"−".repeat(21)}+\n`;
 
 // check later
-// const printOne = headerPrint([
-//     header.companyName + " | " + header.fiscalYear,
-//     header.title
-// ],headerLength) + "\n" + printDateLabel;
 
 function quarterlyCalculation(quarters: Section[]) {
         
@@ -194,7 +191,7 @@ function millionFix(value: number, changeFrom: "Billion" | "Million" | "Hundred 
             return value / 1000
     
         default:
-            console.log("ERROR from: " + value)
+            // console.log("ERROR from: " + value)
             return value
     }    
 
@@ -491,6 +488,95 @@ const printYoYSalesPerSoftwareUnit = (segmentSales: Section[], segmentSalesLastF
     }) 
 
     return printArray 
+}
+
+export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJSONV2, collectionLastFY: EarningsJSONV2 | undefined, headerLength: number): string {
+
+    const currentQuarter = collectionThisFY.currentQuarter;
+
+    const none: EarningsValue = { kind:"Nothing" };
+
+    const makeHeader: HeaderV2 = {
+        companyName: collectionThisFY.companyName,
+        fiscalYear: collectionThisFY.fiscalYear,
+        title: "Segment Information - Software Sales",
+    } 
+
+    const makeDateLabel = dateLabel(makeHeader.fiscalYear, currentQuarter);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
+    const printOne = headerPrint([
+        makeHeader.companyName + " | " + makeHeader.fiscalYear,
+        makeHeader.title
+    ],headerLength) + "\n" + printDateLabel;
+
+    const dataThisFY = getData(collectionThisFY, collectionThisFY.data.length);
+
+    const dataLastFY = getData(collectionLastFY, collectionThisFY.data.length);
+
+    const percentagesThisFY = new Map<number, EarningsV2>();
+
+        dataThisFY.forEach((value, key, map) => {
+            percentagesThisFY.set(key, {
+                ...value,
+                Q1QtrValue: yearOnYearCalculationV2(value.Q1QtrValue, dataLastFY.get(key)?.Q1QtrValue ?? none, "Quarter"),
+                Q2QtrValue: yearOnYearCalculationV2(value.Q2QtrValue, dataLastFY.get(key)?.Q2QtrValue ?? none, "Quarter"),
+                Q3QtrValue: yearOnYearCalculationV2(value.Q3QtrValue, dataLastFY.get(key)?.Q3QtrValue ?? none, "Quarter"),
+                Q4QtrValue: yearOnYearCalculationV2(value.Q4QtrValue, dataLastFY.get(key)?.Q4QtrValue ?? none, "Quarter"),
+                Q1CmlValue: yearOnYearCalculationV2(value.Q1CmlValue, dataLastFY.get(key)?.Q1CmlValue ?? none, "Cumulative"),
+                Q2CmlValue: yearOnYearCalculationV2(value.Q2CmlValue, dataLastFY.get(key)?.Q2CmlValue ?? none, "Cumulative"),
+                Q3CmlValue: yearOnYearCalculationV2(value.Q3CmlValue, dataLastFY.get(key)?.Q3CmlValue ?? none, "Cumulative"),
+                Q4CmlValue: yearOnYearCalculationV2(value.Q4CmlValue, dataLastFY.get(key)?.Q4CmlValue ?? none, "Cumulative"),
+                forecastThisFY: yearOnYearCalculationV2(value.forecastThisFY, dataLastFY.get(key)?.forecastThisFY ?? none, "Forecast"),
+                forecastRevision1: yearOnYearCalculationV2(value.forecastRevision1, dataLastFY.get(key)?.forecastRevision1 ?? none, "Forecast"),
+                forecastRevision2: yearOnYearCalculationV2(value.forecastRevision2, dataLastFY.get(key)?.forecastRevision2 ?? none, "Forecast"),
+                forecastRevision3: yearOnYearCalculationV2(value.forecastRevision3, dataLastFY.get(key)?.forecastRevision3 ?? none, "Forecast"),
+                forecastNextFY: yearOnYearCalculationV2(value.forecastNextFY, dataLastFY.get(key)?.forecastNextFY ?? none, "Forecast"),
+            } satisfies EarningsV2
+            )
+        });
+
+
+
+    const salesHeader = generalSalesHeaderV2(13, 13, 10, 11);
+
+    // need millionFix
+    const printAll = new Map<number, string[]>();
+
+    dataThisFY.forEach((value, key, map) => {
+
+        printAll.set(key, printSalesAndYoY(
+            [
+                map.get(0)?.Q1QtrValue ?? none,
+                map.get(0)?.Q2QtrValue ?? none,
+                map.get(0)?.Q3QtrValue ?? none,
+                map.get(0)?.Q4QtrValue ?? none,
+            ],
+            [
+                percentagesThisFY.get(0)?.Q1QtrValue ?? none,
+                percentagesThisFY.get(0)?.Q2QtrValue ?? none,
+                percentagesThisFY.get(0)?.Q3QtrValue ?? none,
+                percentagesThisFY.get(0)?.Q4QtrValue ?? none,
+            ],
+            [
+                map.get(0)?.Q2CmlValue ?? none,
+                map.get(0)?.Q3CmlValue ?? none,
+                map.get(0)?.Q4CmlValue ?? none,
+            ],
+            [
+                percentagesThisFY.get(0)?.Q2CmlValue ?? none,
+                percentagesThisFY.get(0)?.Q3CmlValue ?? none,
+                percentagesThisFY.get(0)?.Q4CmlValue ?? none,
+            ],
+            currentQuarter,
+            13
+        ))
+        
+    })
+
+    console.log(printAll)
+
 }
 
 export const SegaPrint = (salesData: Section[], salesDataLastFY: Section[], salesUnits: Section[], salesUnitsLastFY: Section[], header: Header, currentQuarter: number) => {

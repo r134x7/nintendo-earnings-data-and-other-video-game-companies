@@ -419,7 +419,7 @@ function typeReturn(typeValue: string | undefined): "units" | "currency" | "perc
             return "percentage"
     
         default:
-            console.log("ERROR");
+            // console.log("undefined typeValue");
             return "units"
     }
 }
