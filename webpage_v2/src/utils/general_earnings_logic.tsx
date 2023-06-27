@@ -148,9 +148,7 @@ export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter
             spacer(quarterValue.period,12, "left"),
             spacer(valueString, textLength, "right")
             ])
-            : border([
-            spacer(valueString, textLength, "right")
-            ])
+            : spacer(valueString + " |", textLength, "right")
     } else {
         return "";
     }
@@ -173,9 +171,7 @@ export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter:
                 spacer(cmlPeriod, 12,"left"),
                 spacer(valueString, textLength,"right")
             ])
-            : border([
-                spacer(valueString, textLength,"right")
-            ])
+            : spacer(valueString + " |", textLength,"right")
     } else {
         return "";
     }

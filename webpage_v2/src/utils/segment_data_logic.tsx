@@ -157,6 +157,8 @@ const squareEnixSalesHeader =
 |             |    Sales    |   YoY%   |
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
 
+
+// doesn't work correctly
 function printSalesAndYoY(
     quarterSales: EarningsValue[],
     quarterYoY: EarningsValue[],
@@ -173,9 +175,6 @@ function printSalesAndYoY(
     .concat("\n", printYoYV2(quarterYoY[index], currentQuarter, textLength, true))
     ,"−","bottom",undefined,50)
     );
-
-    console.log(quarters[0]);
-    
 
     const cumulatives = cumulativeSales.map((elem, index) => 
     liner(
@@ -698,33 +697,37 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
 
     dataThisFY.forEach((value, key, map) => {
 
-        printAll.set(key, printSalesAndYoY(
-            [
-                map.get(key)?.Q1QtrValue ?? none,
-                map.get(key)?.Q2QtrValue ?? none,
-                map.get(key)?.Q3QtrValue ?? none,
-                map.get(key)?.Q4QtrValue ?? none,
-            ],
-            [
-                percentagesThisFY.get(key)?.Q1QtrValue ?? none,
-                percentagesThisFY.get(key)?.Q2QtrValue ?? none,
-                percentagesThisFY.get(key)?.Q3QtrValue ?? none,
-                percentagesThisFY.get(key)?.Q4QtrValue ?? none,
-            ],
-            [
-                map.get(key)?.Q2CmlValue ?? none,
-                map.get(key)?.Q3CmlValue ?? none,
-                map.get(key)?.Q4CmlValue ?? none,
-            ],
-            [
-                percentagesThisFY.get(key)?.Q2CmlValue ?? none,
-                percentagesThisFY.get(key)?.Q3CmlValue ?? none,
-                percentagesThisFY.get(key)?.Q4CmlValue ?? none,
-            ],
-            currentQuarter,
-            (key === 0) ? 12 : (key === 1) ? 9 : 10,
-            (key === 0) ? false : true
-        ))
+        let getTextLength = (key === 0) ? 12 : (key === 1) ? 11 : 11;
+
+        printAll.set(0, (printAll.get(0) ?? "") + printQuarterValuesV2(value.Q1QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
+        printAll.set(1, (printAll.get(1) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q1QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+        // printAll.set(key, printSalesAndYoY(
+        //     [
+        //         map.get(key)?.Q1QtrValue ?? none,
+        //         map.get(key)?.Q2QtrValue ?? none,
+        //         map.get(key)?.Q3QtrValue ?? none,
+        //         map.get(key)?.Q4QtrValue ?? none,
+        //     ],
+        //     [
+        //         percentagesThisFY.get(key)?.Q1QtrValue ?? none,
+        //         percentagesThisFY.get(key)?.Q2QtrValue ?? none,
+        //         percentagesThisFY.get(key)?.Q3QtrValue ?? none,
+        //         percentagesThisFY.get(key)?.Q4QtrValue ?? none,
+        //     ],
+        //     [
+        //         map.get(key)?.Q2CmlValue ?? none,
+        //         map.get(key)?.Q3CmlValue ?? none,
+        //         map.get(key)?.Q4CmlValue ?? none,
+        //     ],
+        //     [
+        //         percentagesThisFY.get(key)?.Q2CmlValue ?? none,
+        //         percentagesThisFY.get(key)?.Q3CmlValue ?? none,
+        //         percentagesThisFY.get(key)?.Q4CmlValue ?? none,
+        //     ],
+        //     currentQuarter,
+        //     (key === 0) ? 12 : (key === 1) ? 9 : 10,
+        //     (key === 0) ? false : true
+        // ))
         
     })
 
