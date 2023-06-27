@@ -169,26 +169,51 @@ function printSalesAndYoY(
 
     const cumulatives = cumulativeSales.map((elem, index) => printCumulativeValuesV2(elem, currentQuarter, textLength).concat(printYoYV2(cumulativeYoY[index], currentQuarter, textLength, true)))
 
-    return quarters.concat(cumulatives)
+    return quarters.concat(cumulatives);
 }
 
-function millionFix(value: number, changeFrom: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand"): number {
+function millionFix(value: EarningsValue, changeFrom: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand"): EarningsValue {
 
     switch (changeFrom) {
         case "Billion":
-            return value * 1000
+            return (value.kind !== "Nothing")
+                ? {
+                    ...value,
+                    value: value.value * 1000
+                } satisfies EarningsValue
+                : value
 
         case "Million":
-            return value
+            return (value.kind !== "Nothing")
+                ? {
+                    ...value,
+                    value: value.value
+                } satisfies EarningsValue
+                : value
         
         case "Hundred Thousand":
-            return value / 10
+            return (value.kind !== "Nothing")
+                ? {
+                    ...value,
+                    value: value.value / 10
+                } satisfies EarningsValue
+                : value
 
         case "Ten Thousand":
-            return value / 100
+            return (value.kind !== "Nothing")
+                ? {
+                    ...value,
+                    value: value.value / 100
+                } satisfies EarningsValue
+                : value
 
         case "One Thousand":
-            return value / 1000
+            return (value.kind !== "Nothing")
+                ? {
+                    ...value,
+                    value: value.value / 1000
+                } satisfies EarningsValue
+                : value
     
         default:
             // console.log("ERROR from: " + value)
@@ -490,7 +515,10 @@ const printYoYSalesPerSoftwareUnit = (segmentSales: Section[], segmentSalesLastF
     return printArray 
 }
 
-export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJSONV2, collectionLastFY: EarningsJSONV2 | undefined, headerLength: number): string {
+export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJSONV2, collectionLastFY: EarningsJSONV2 | undefined, headerLength: number, 
+    salesRoundtoMillion: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand",
+    unitsRoundtoMillion: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand",
+    ): string {
 
     const currentQuarter = collectionThisFY.currentQuarter;
 
@@ -533,10 +561,28 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
                 forecastRevision2: yearOnYearCalculationV2(value.forecastRevision2, dataLastFY.get(key)?.forecastRevision2 ?? none, "Forecast"),
                 forecastRevision3: yearOnYearCalculationV2(value.forecastRevision3, dataLastFY.get(key)?.forecastRevision3 ?? none, "Forecast"),
                 forecastNextFY: yearOnYearCalculationV2(value.forecastNextFY, dataLastFY.get(key)?.forecastNextFY ?? none, "Forecast"),
-            } satisfies EarningsV2
-            )
+            } satisfies EarningsV2 );
         });
 
+    dataThisFY.forEach((value, key, map) => {
+
+        map.set(key, {
+            ...value,
+            Q1QtrValue: millionFix(value.Q1QtrValue,(key === 0) ? "Billion" : "One Thousand"),
+            Q2QtrValue: millionFix(value.Q2QtrValue,(key === 0) ? "Billion" : "One Thousand"),
+            Q3QtrValue: millionFix(value.Q3QtrValue,(key === 0) ? "Billion" : "One Thousand"),
+            Q4QtrValue: millionFix(value.Q4QtrValue,(key === 0) ? "Billion" : "One Thousand"),
+            Q1CmlValue: millionFix(value.Q1CmlValue,(key === 0) ? "Billion" : "One Thousand"),
+            Q2CmlValue: millionFix(value.Q2CmlValue,(key === 0) ? "Billion" : "One Thousand"),
+            Q3CmlValue: millionFix(value.Q3CmlValue,(key === 0) ? "Billion" : "One Thousand"),
+            Q4CmlValue: millionFix(value.Q4CmlValue,(key === 0) ? "Billion" : "One Thousand"),
+            forecastThisFY: millionFix(value.Q4CmlValue,(key === 0) ? "Billion" : "One Thousand"),
+            forecastRevision1: millionFix(value.Q4CmlValue,(key === 0) ? "Billion" : "One Thousand"),
+            forecastRevision2: millionFix(value.Q4CmlValue,(key === 0) ? "Billion" : "One Thousand"),
+            forecastRevision3: millionFix(value.Q4CmlValue,(key === 0) ? "Billion" : "One Thousand"),
+            forecastNextFY: millionFix(value.Q4CmlValue,(key === 0) ? "Billion" : "One Thousand"),
+        } satisfies EarningsV2)
+    })
 
 
     const salesHeader = generalSalesHeaderV2(13, 13, 10, 11);
@@ -546,28 +592,32 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
 
     dataThisFY.forEach((value, key, map) => {
 
+        // map.set(key, {
+        //     ...map.get(key)
+        // })
+
         printAll.set(key, printSalesAndYoY(
             [
-                map.get(0)?.Q1QtrValue ?? none,
-                map.get(0)?.Q2QtrValue ?? none,
-                map.get(0)?.Q3QtrValue ?? none,
-                map.get(0)?.Q4QtrValue ?? none,
+                map.get(key)?.Q1QtrValue ?? none,
+                map.get(key)?.Q2QtrValue ?? none,
+                map.get(key)?.Q3QtrValue ?? none,
+                map.get(key)?.Q4QtrValue ?? none,
             ],
             [
-                percentagesThisFY.get(0)?.Q1QtrValue ?? none,
-                percentagesThisFY.get(0)?.Q2QtrValue ?? none,
-                percentagesThisFY.get(0)?.Q3QtrValue ?? none,
-                percentagesThisFY.get(0)?.Q4QtrValue ?? none,
+                percentagesThisFY.get(key)?.Q1QtrValue ?? none,
+                percentagesThisFY.get(key)?.Q2QtrValue ?? none,
+                percentagesThisFY.get(key)?.Q3QtrValue ?? none,
+                percentagesThisFY.get(key)?.Q4QtrValue ?? none,
             ],
             [
-                map.get(0)?.Q2CmlValue ?? none,
-                map.get(0)?.Q3CmlValue ?? none,
-                map.get(0)?.Q4CmlValue ?? none,
+                map.get(key)?.Q2CmlValue ?? none,
+                map.get(key)?.Q3CmlValue ?? none,
+                map.get(key)?.Q4CmlValue ?? none,
             ],
             [
-                percentagesThisFY.get(0)?.Q2CmlValue ?? none,
-                percentagesThisFY.get(0)?.Q3CmlValue ?? none,
-                percentagesThisFY.get(0)?.Q4CmlValue ?? none,
+                percentagesThisFY.get(key)?.Q2CmlValue ?? none,
+                percentagesThisFY.get(key)?.Q3CmlValue ?? none,
+                percentagesThisFY.get(key)?.Q4CmlValue ?? none,
             ],
             currentQuarter,
             13
