@@ -2,27 +2,29 @@
     "fiscalYear": "FY3/2020",
     "companyName": "Bandai Namco Holdings Inc.",
     "currentQuarter": 4,
-    "softwareSales": {
-        "name": "Home video game",
-        "units": "currency",
-        "Q1CmlValue": 17.9,
-        "Q2CmlValue": 40.7,
-        "Q3CmlValue": 67.5,
-        "Q4CmlValue": 99.0,
-        "forecastThisFY": 96.0,
-        "forecastRevision1": 96.0,
-        "forecastNextFY": 100.0,
-        "notes": "*Sales might include: - Downloadable content purchases"
-    },
-    "softwareUnits": {
-        "name": "Home video game",
-        "units": "units",
-        "Q1CmlValue": 4347,
-        "Q2CmlValue": 10186,
-        "Q3CmlValue": 15536,
-        "Q4CmlValue": 24584,
-        "forecastThisFY": 26000,
-        "forecastRevision1": 22600,
-        "forecastNextFY": 28000
-    }
+    "data": [
+        {
+            "name": "Home video game",
+            "units": "currency",
+            "Q1CmlValue": 17.9,
+            "Q2CmlValue": 40.7,
+            "Q3CmlValue": 67.5,
+            "Q4CmlValue": 99.0,
+            "forecastThisFY": 96.0,
+            "forecastRevision1": 96.0,
+            "forecastNextFY": 100.0,
+            "footnotes": "*Sales might include: - Downloadable content purchases"
+        },
+        {
+            "name": "Home video game",
+            "units": "units",
+            "Q1CmlValue": 4347,
+            "Q2CmlValue": 10186,
+            "Q3CmlValue": 15536,
+            "Q4CmlValue": 24584,
+            "forecastThisFY": 26000,
+            "forecastRevision1": 22600,
+            "forecastNextFY": 28000
+        }
+    ] 
 }
