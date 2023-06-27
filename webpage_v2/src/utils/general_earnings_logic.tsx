@@ -137,14 +137,18 @@ export function printValueQtrOrCml(value: EarningsValue): string {
     }
 }
 
-export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter: number, textLength: number): string {
+export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter: number, textLength: number, singleColumn?: boolean): string {
 
     if (quarterValue.kind === "Quarter") {
 
         let valueString = printValueQtrOrCml(quarterValue);
         
-        return border([
+        return (!singleColumn)
+            ? border([
             spacer(quarterValue.period,12, "left"),
+            spacer(valueString, textLength, "right")
+            ])
+            : border([
             spacer(valueString, textLength, "right")
             ])
     } else {
@@ -152,7 +156,7 @@ export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter
     }
 }
 
-export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter: number, textLength: number): string {
+export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter: number, textLength: number, singleColumn?: boolean): string {
 
     if (cmlValue.kind === "Cumulative" && cmlValue.period !== "1st Quarter") {
 
@@ -164,8 +168,12 @@ export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter:
 
         let valueString = printValueQtrOrCml(cmlValue);
 
-        return border([
+        return (!singleColumn) 
+            ? border([
                 spacer(cmlPeriod, 12,"left"),
+                spacer(valueString, textLength,"right")
+            ])
+            : border([
                 spacer(valueString, textLength,"right")
             ])
     } else {

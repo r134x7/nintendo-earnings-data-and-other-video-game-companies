@@ -164,11 +164,25 @@ function printSalesAndYoY(
     cumulativeYoY: EarningsValue[],
     currentQuarter: number,
     textLength: number,
+    singleColumn: boolean
 ): string {
 
-    const quarters = quarterSales.map((elem, index) => printQuarterValuesV2(elem, currentQuarter, textLength).concat(printYoYV2(quarterYoY[index], currentQuarter, textLength, true)))
+    const quarters = quarterSales.map((elem, index) =>
+    liner( 
+    printQuarterValuesV2(elem, currentQuarter, textLength,singleColumn)
+    .concat("\n", printYoYV2(quarterYoY[index], currentQuarter, textLength, true))
+    ,"−","bottom",undefined,50)
+    );
 
-    const cumulatives = cumulativeSales.map((elem, index) => printCumulativeValuesV2(elem, currentQuarter, textLength).concat(printYoYV2(cumulativeYoY[index], currentQuarter, textLength, true)))
+    console.log(quarters[0]);
+    
+
+    const cumulatives = cumulativeSales.map((elem, index) => 
+    liner(
+    printCumulativeValuesV2(elem, currentQuarter, textLength, singleColumn)
+    .concat("\n",printYoYV2(cumulativeYoY[index], currentQuarter, textLength, true))
+    ,"−","bottom",undefined,50)
+    );
 
     return quarters.concat(cumulatives).reduce((acc, next) => acc + "\n" + next);
 }
@@ -708,7 +722,8 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
                 percentagesThisFY.get(key)?.Q4CmlValue ?? none,
             ],
             currentQuarter,
-            (key === 0) ? 12 : (key === 1) ? 9 : 10
+            (key === 0) ? 12 : (key === 1) ? 9 : 10,
+            (key === 0) ? false : true
         ))
         
     })
