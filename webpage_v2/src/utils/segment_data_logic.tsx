@@ -662,17 +662,6 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
         forecastNextFY: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.forecastNextFY ?? none, dataLastFY.get(1)?.forecastNextFY ?? none),
     } satisfies EarningsV2);
 
-    // console.log(dataThisFY);
-    // console.log(dataLastFY.get(0)?.Q1CmlValue);
-    // console.log(dataLastFY.get(1)?.Q1CmlValue);
-    // console.log(dataLastFY.get(2)?.Q1CmlValue);
-    // console.log("break");
-    // console.log(dataThisFY.get(0)?.Q1CmlValue);
-    // console.log(dataThisFY.get(1)?.Q1CmlValue);
-    // console.log(dataThisFY.get(2)?.Q1CmlValue);
-    
-    
-    
     percentagesThisFY.set(percentagesThisFY.size, {
         name: "Sales Per Software Unit",
         Q1QtrValue: yearOnYearCalculationV2(dataThisFY.get(dataThisFY.size-1)?.Q1QtrValue ?? none, dataLastFY.get(dataLastFY.size-1)?.Q1QtrValue ?? none, "Quarter"),
@@ -690,18 +679,18 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
         forecastNextFY: yearOnYearCalculationV2(dataThisFY.get(dataThisFY.size-1)?.forecastNextFY ?? none, dataLastFY.get(dataLastFY.size-1)?.forecastNextFY ?? none, "Forecast"),
     } satisfies EarningsV2)
 
+    const salesHeader = generalSalesHeaderV2(12, 12, 9, 10, 7);
 
-    const nameHeader = liner(
+    const nameSalesHeader = liner(
             printTextBlock(dataThisFY.get(0)?.name, 50)
-        ,"−","top",true,50)
-    const salesHeader = nameHeader + generalSalesHeaderV2(12, 12, 9, 10, 7);
+        ,"−","top",true,50) + salesHeader;
 
-    // need millionFix
+    const nameForecastHeader = liner(
+        printTextBlock(dataThisFY.get(0)?.name + " Forecast", 50), "−", "top", true, 50) + salesHeader;
+
     const printQtrAndCml = new Map<number, string>();
 
     const printForecasts = new Map<number, string>();
-
-    
 
     dataThisFY.forEach((value, key, map) => {
 
@@ -761,14 +750,24 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
 
         let doubleLine: "=" | "−" = (key === 4) ? "=" : "−";
 
-        map.set(key, liner(value,"−","bottom",true,50))
+        if (value.length === 0) {
+            // map.delete(key);
+            // easier to do nothing so that the set below (outside forEach) is set to a new key value without having to *3
+        } else {
+            map.set(key, liner(value,doubleLine,"bottom",true,50))
+        }
     })
 
     printForecasts.set(printForecasts.size,
         liner(printTextBlock(dataThisFY.get(0)?.footnotes, 50),"−","bottom",true,50))
     
-    return [printOne, salesHeader, ...printQtrAndCml.values(), ...printForecasts.values()].reduce((acc, next) => acc + next);
-
+    return [
+        printOne, 
+        nameSalesHeader, 
+        ...printQtrAndCml.values(), 
+        nameForecastHeader,
+        ...printForecasts.values(),
+    ].reduce((acc, next) => acc + next);
 }
 
 export const SegaPrint = (salesData: Section[], salesDataLastFY: Section[], salesUnits: Section[], salesUnitsLastFY: Section[], header: Header, currentQuarter: number) => {
