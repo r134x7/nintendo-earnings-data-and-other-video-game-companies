@@ -642,6 +642,7 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
         forecastRevision2: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.forecastRevision2 ?? none, dataThisFY.get(1)?.forecastRevision2 ?? none),
         forecastRevision3: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.forecastRevision3 ?? none, dataThisFY.get(1)?.forecastRevision3 ?? none),
         forecastNextFY: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.forecastNextFY ?? none, dataThisFY.get(1)?.forecastNextFY ?? none),
+        footnotes: dataThisFY.get(0)?.footnotes
     } satisfies EarningsV2);
 
     dataLastFY.set(dataLastFY.size, {
@@ -690,7 +691,12 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
     } satisfies EarningsV2)
 
 
-    const salesHeader = generalSalesHeaderV2(12, 12, 9, 10, 7);
+    const nameHeader = liner(
+        border([
+            spacer(dataThisFY.get(0)?.name ?? "ERROR", 49,"left")
+        ])
+        ,"−","top",true)
+    const salesHeader = nameHeader + generalSalesHeaderV2(12, 12, 9, 10, 7);
 
     // need millionFix
     const printAll = new Map<number, string>();
@@ -701,6 +707,27 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
 
         printAll.set(0, (printAll.get(0) ?? "") + printQuarterValuesV2(value.Q1QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
         printAll.set(1, (printAll.get(1) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q1QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+
+        printAll.set(2, (printAll.get(2) ?? "") + printQuarterValuesV2(value.Q2QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
+        printAll.set(3, (printAll.get(3) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q2QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+
+        printAll.set(4, (printAll.get(4) ?? "") + printQuarterValuesV2(value.Q3QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
+        printAll.set(5, (printAll.get(5) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q3QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+
+        printAll.set(6, (printAll.get(6) ?? "") + printQuarterValuesV2(value.Q4QtrValue,currentQuarter, getTextLength,(key === 0) ? false : true))
+        printAll.set(7, (printAll.get(7) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q4QtrValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+
+        printAll.set(8, (printAll.get(8) ?? "") + printCumulativeValuesV2(value.Q2CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
+        printAll.set(9, (printAll.get(9) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q2CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+
+        printAll.set(10, (printAll.get(10) ?? "") + printCumulativeValuesV2(value.Q3CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
+        printAll.set(11, (printAll.get(11) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q3CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+
+        printAll.set(12, (printAll.get(12) ?? "") + printCumulativeValuesV2(value.Q3CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
+        printAll.set(13, (printAll.get(13) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q3CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+
+        printAll.set(14, (printAll.get(14) ?? "") + printCumulativeValuesV2(value.Q4CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
+        printAll.set(15, (printAll.get(15) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q4CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
         // printAll.set(key, printSalesAndYoY(
         //     [
         //         map.get(key)?.Q1QtrValue ?? none,
@@ -731,6 +758,20 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
         
     })
 
+    printAll.forEach((value, key, map) => {
+        if (key % 2 === 0) {
+            map.set(key, liner(
+                value + "\n" + (map.get(key+1) ?? ""),"−","bottom",true,50
+            ))
+        } else {
+           map.delete(key)
+        }
+    })
+
+    printAll.set(printAll.size*3,
+        liner(printTextBlock(dataThisFY.get(0)?.footnotes, 50),"−","bottom",true,50)
+        )
+    
     
     // console.log(...printAll.values());
     
