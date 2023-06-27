@@ -692,10 +692,8 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
 
 
     const nameHeader = liner(
-        border([
-            spacer(dataThisFY.get(0)?.name ?? "ERROR", 49,"left")
-        ])
-        ,"−","top",true)
+            printTextBlock(dataThisFY.get(0)?.name, 50)
+        ,"−","top",true,50)
     const salesHeader = nameHeader + generalSalesHeaderV2(12, 12, 9, 10, 7);
 
     // need millionFix
@@ -723,11 +721,8 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
         printAll.set(10, (printAll.get(10) ?? "") + printCumulativeValuesV2(value.Q3CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
         printAll.set(11, (printAll.get(11) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q3CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
 
-        printAll.set(12, (printAll.get(12) ?? "") + printCumulativeValuesV2(value.Q3CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
-        printAll.set(13, (printAll.get(13) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q3CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
-
-        printAll.set(14, (printAll.get(14) ?? "") + printCumulativeValuesV2(value.Q4CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
-        printAll.set(15, (printAll.get(15) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q4CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
+        printAll.set(12, (printAll.get(12) ?? "") + printCumulativeValuesV2(value.Q4CmlValue,currentQuarter, getTextLength,(key === 0) ? false : true))
+        printAll.set(13, (printAll.get(13) ?? "") + printYoYV2(percentagesThisFY.get(key)?.Q4CmlValue ?? none,currentQuarter, getTextLength,(key === 0) ? true : false))
         // printAll.set(key, printSalesAndYoY(
         //     [
         //         map.get(key)?.Q1QtrValue ?? none,
@@ -759,9 +754,16 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
     })
 
     printAll.forEach((value, key, map) => {
+
+        let doubleLine: "=" | "−" = (value.includes("Cml.") 
+                ? "=" 
+                : value.includes("4th")
+                    ? "=" 
+                    : "−")
+
         if (key % 2 === 0) {
             map.set(key, liner(
-                value + "\n" + (map.get(key+1) ?? ""),"−","bottom",true,50
+                value + "\n" + (map.get(key+1) ?? ""), doubleLine,"bottom",true,50
             ))
         } else {
            map.delete(key)
