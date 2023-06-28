@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Code, SegmentedControl, Space, TextInput, Select, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { segaSammySalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
+// import { segaSammySalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListSegaSammy } from "../../data/generalTables/consolidated_earnings_cml_data";
 import { fyTitlesSegaSammy } from "../../data/sega/annual_report_cml_sega_data";
 import { softwareCumulativeSegaSammy } from "../../data/sega/software_units_sega_cml_data";
@@ -112,7 +112,8 @@ export default function SEGA_CML() {
         },
         {
             name: "Sega Sammy Sales Per Software Unit - Cumulative",
-            value: segaSammySalesPerSoftwareUnitCml 
+            // value: segaSammySalesPerSoftwareUnitCml 
+            value: "Nothing"
         },
         {
             name: "Sega Sammy Software Units - Cumulative",

@@ -3,8 +3,9 @@ import softwareSales2023 from "./Software_Sales/software_sales_fy3_2023.json"
 import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
 import softwareSales2020 from "./Software_Sales/software_sales_fy3_2020.json";
-import undefinedData from "./Software_Sales/undefinedData.json";
 import { salesOrUnitsJSON } from "../bandaiNamco/software_sales_bandai_namco";
+import type { EarningsJSONV2 } from "../generalTables/consolidated_earnings_general";
+import { generalSalesPerSoftwareUnitListV2Map } from "../../utils/segment_data_logic";
 
 export type collectionJSON = {
     fiscalYear: string,
@@ -13,13 +14,31 @@ export type collectionJSON = {
     fullGameUnits: salesOrUnitsJSON,
 };
 
-const collection: collectionJSON[] = [
-    softwareSales2023,
-    softwareSales2022,
-    softwareSales2021,
-    softwareSales2020,
-    undefinedData,
-];
+// const collection: collectionJSON[] = [
+//     softwareSales2023,
+//     softwareSales2022,
+//     softwareSales2021,
+//     softwareSales2020,
+//     undefinedData,
+// ];
+
+const collectionV2 = new Map<number, EarningsJSONV2>();
+
+collectionV2.set(collectionV2.size, softwareSales2023)
+collectionV2.set(collectionV2.size, softwareSales2022)
+collectionV2.set(collectionV2.size, softwareSales2021)
+collectionV2.set(collectionV2.size, softwareSales2020)
+
+export const softwareSalesList = new Map<number, string>();
+
+export const softwareSalesGraphList = new Map();
+
+collectionV2.forEach((value, key, map) => {
+
+    softwareSalesList.set(key, generalSalesPerSoftwareUnitListV2Map(value, map.get(key+1), 41, "Billion", "One Thousand"))
+})
+
+collectionV2.clear();
 
 const forecastsMake = (obj: salesOrUnitsJSON, units: string): Section[] => {
 
@@ -76,52 +95,52 @@ const forecastsMake = (obj: salesOrUnitsJSON, units: string): Section[] => {
 };
 
 
-export const salesMake = (obj: {"fullGameSales": salesOrUnitsJSON}, forecast?: boolean): Section[] => {
-    if (forecast === true) {
-        return forecastsMake(obj.fullGameSales,"currency")
-    }
+// export const salesMake = (obj: {"data":salesOrUnitsJSON}, forecast?: boolean): Section[] => {
+//     if (forecast === true) {
+//         return forecastsMake(obj.fullGameSales,"currency")
+//     }
 
-    let sales: Section[] = [
-        {
-            name: obj.fullGameSales.name,
-            region: "Group Total",
-            period: "1st Quarter",
-            cmlPeriod: "1st Quarter",
-            units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.fullGameSales.Q1CmlValue, // billion yen
-            notes: obj.fullGameSales.notes
-        },
-        {
-            name: obj.fullGameSales.name,
-            region: "Group Total",
-            period: "2nd Quarter",
-            cmlPeriod: "First Half",
-            units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.fullGameSales.Q2CmlValue, // billion yen
-            notes: obj.fullGameSales.notes
-        },
-        {
-            name: obj.fullGameSales.name,
-            region: "Group Total",
-            period: "3rd Quarter",
-            cmlPeriod: "1st 3 Qtrs",
-            units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.fullGameSales.Q3CmlValue, // billion yen
-            notes: obj.fullGameSales.notes
-        },
-        {
-            name: obj.fullGameSales.name,
-            region: "Group Total",
-            period: "4th Quarter",
-            cmlPeriod: "Cml.",
-            units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
-            value: obj.fullGameSales.Q4CmlValue, // billion yen
-            notes: obj.fullGameSales.notes
-        },
-    ];
+//     let sales: Section[] = [
+//         {
+//             name: obj.fullGameSales.name,
+//             region: "Group Total",
+//             period: "1st Quarter",
+//             cmlPeriod: "1st Quarter",
+//             units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
+//             value: obj.fullGameSales.Q1CmlValue, // billion yen
+//             notes: obj.fullGameSales.notes
+//         },
+//         {
+//             name: obj.fullGameSales.name,
+//             region: "Group Total",
+//             period: "2nd Quarter",
+//             cmlPeriod: "First Half",
+//             units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
+//             value: obj.fullGameSales.Q2CmlValue, // billion yen
+//             notes: obj.fullGameSales.notes
+//         },
+//         {
+//             name: obj.fullGameSales.name,
+//             region: "Group Total",
+//             period: "3rd Quarter",
+//             cmlPeriod: "1st 3 Qtrs",
+//             units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
+//             value: obj.fullGameSales.Q3CmlValue, // billion yen
+//             notes: obj.fullGameSales.notes
+//         },
+//         {
+//             name: obj.fullGameSales.name,
+//             region: "Group Total",
+//             period: "4th Quarter",
+//             cmlPeriod: "Cml.",
+//             units: (obj.fullGameSales.units === "NaN") ? "NaN" : "currency",
+//             value: obj.fullGameSales.Q4CmlValue, // billion yen
+//             notes: obj.fullGameSales.notes
+//         },
+//     ];
 
-    return sales
-};
+//     return sales
+// };
 
 export const unitsMake = (obj: {"fullGameUnits": salesOrUnitsJSON}, forecast?: true): Section[] => {
     if (forecast === true) {
@@ -166,44 +185,44 @@ export const unitsMake = (obj: {"fullGameUnits": salesOrUnitsJSON}, forecast?: t
     return units 
 };
 
-export const softwareSalesList: string[] = collection.flatMap((elem, index, array) => {
-    if (array[index] === array.at(-1)) {
-        return [] // for undefinedData in collection only
-    }
+// export const softwareSalesList: string[] = collection.flatMap((elem, index, array) => {
+//     if (array[index] === array.at(-1)) {
+//         return [] // for undefinedData in collection only
+//     }
 
-    let header: Header = {
-        fiscalYear: elem.fiscalYear,
-        secondHeader: "| Segment Information |",
-        firstHeader: "| Sega Sammy     |",
-    };
+//     let header: Header = {
+//         fiscalYear: elem.fiscalYear,
+//         secondHeader: "| Segment Information |",
+//         firstHeader: "| Sega Sammy     |",
+//     };
 
-    let salesThisFY: Section[] = salesMake(elem);
-    let salesLastFY: Section[] = salesMake(array[index+1]);
-    let salesForecast: Section[] = (elem.fullGameSales?.forecastThisFY === undefined) ? [] : salesMake(elem,true);
+//     let salesThisFY: Section[] = salesMake(elem);
+//     let salesLastFY: Section[] = salesMake(array[index+1]);
+//     let salesForecast: Section[] = (elem.fullGameSales?.forecastThisFY === undefined) ? [] : salesMake(elem,true);
 
-    let unitsThisFY: Section[] = unitsMake(elem);
-    let unitsLastFY: Section[] = unitsMake(array[index+1]);
-    let unitsForecast: Section[] = (elem.fullGameUnits?.forecastThisFY === undefined) ? [] : unitsMake(elem,true);
+//     let unitsThisFY: Section[] = unitsMake(elem);
+//     let unitsLastFY: Section[] = unitsMake(array[index+1]);
+//     let unitsForecast: Section[] = (elem.fullGameUnits?.forecastThisFY === undefined) ? [] : unitsMake(elem,true);
 
-    let printList = [
-        SegaPrint(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter),
-        (salesForecast.length === 0 && unitsForecast.length === 0) ? [] : salesPerSoftwareUnitForecast(salesForecast, unitsForecast, header, elem.currentQuarter),
-    ].flat().reduce((acc, next) => acc + "\n" + next);
+//     let printList = [
+//         SegaPrint(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter),
+//         (salesForecast.length === 0 && unitsForecast.length === 0) ? [] : salesPerSoftwareUnitForecast(salesForecast, unitsForecast, header, elem.currentQuarter),
+//     ].flat().reduce((acc, next) => acc + "\n" + next);
 
-    return printList
-});
+//     return printList
+// });
 
-export const softwareSalesGraphList = collection.flatMap((elem, index, array) => {
-    if (array[index] === array.at(-1)) {
-        return [] // for undefinedData in collection only
-    }
+// export const softwareSalesGraphList = collection.flatMap((elem, index, array) => {
+//     if (array[index] === array.at(-1)) {
+//         return [] // for undefinedData in collection only
+//     }
 
-    let salesThisFY: Section[] = salesMake(elem);
-    let salesLastFY: Section[] = salesMake(array[index+1]);
+//     let salesThisFY: Section[] = salesMake(elem);
+//     let salesLastFY: Section[] = salesMake(array[index+1]);
 
-    let unitsThisFY: Section[] = unitsMake(elem);
-    let unitsLastFY: Section[] = unitsMake(array[index+1]);
+//     let unitsThisFY: Section[] = unitsMake(elem);
+//     let unitsLastFY: Section[] = unitsMake(array[index+1]);
 
-    return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.fullGameSales.name, elem.fiscalYear, elem.currentQuarter)
-});
+//     return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.fullGameSales.name, elem.fiscalYear, elem.currentQuarter)
+// });
 

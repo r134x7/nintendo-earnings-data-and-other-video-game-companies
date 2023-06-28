@@ -11,7 +11,7 @@
         "Q4CmlValue": 83.3,
         "forecastThisFY": 73.3,
         "forecastNextFY": 91.4,
-        "notes": "*Sales includes: - Downloadable content purchases"
+        "footnotes": "*Sales includes: - Downloadable content purchases"
     },
     "digitalContentsUnits": {
         "name": "Digital Contents - Package & Digital",
@@ -52,7 +52,7 @@
         "Q4CmlValue": 53.3,
         "forecastThisFY": 51.5,
         "forecastNextFY": 73.4,
-        "notes": "*Sales includes: - Downloadable content purchases"
+        "footnotes": "*Sales includes: - Downloadable content purchases"
     },
     "digitalUnits": {
         "name": "Digital",

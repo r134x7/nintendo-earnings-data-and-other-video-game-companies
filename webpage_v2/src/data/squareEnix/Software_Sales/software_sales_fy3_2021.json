@@ -9,7 +9,7 @@
         "Q2CmlValue": 57.8,
         "Q3CmlValue": 76.6,
         "Q4CmlValue": 96.6,
-        "notes": "*Sales might include: - Downloadable content purchases" 
+        "footnotes": "*Sales might include: - Downloadable content purchases" 
     },
     "mmoSales": {
         "name": "MMO",
@@ -18,7 +18,7 @@
         "Q2CmlValue": 20.9,
         "Q3CmlValue": 29.5,
         "Q4CmlValue": 39.8,
-        "notes": "**MMO sales includes subscriptions" 
+        "footnotes": "**MMO sales includes subscriptions" 
     },
     "hdGamesAndMMOUnits": {
         "name": "HD Games & MMO",

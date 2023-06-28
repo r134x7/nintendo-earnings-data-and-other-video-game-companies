@@ -12,7 +12,7 @@
         "forecastThisFY": 91.4,
         "forecastRevision1": 95.1,
         "forecastNextFY": 103.4,
-        "notes": "*Sales includes: - Downloadable content purchases"
+        "footnotes": "*Sales includes: - Downloadable content purchases"
     },
     "digitalContentsUnits": {
         "name": "Digital Contents - Package & Digital",
@@ -57,7 +57,7 @@
         "forecastThisFY": 73.4,
         "forecastRevision1": 78.8,
         "forecastNextFY": 90.9,
-        "notes": "*Sales includes: - Downloadable content purchases"
+        "footnotes": "*Sales includes: - Downloadable content purchases"
     },
     "digitalUnits": {
         "name": "Digital",

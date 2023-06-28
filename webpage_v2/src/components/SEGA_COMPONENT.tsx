@@ -95,8 +95,8 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
             },
             {
                 name: "Software Sales",
-                value: softwareSalesList?.[index],
-                graph: <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} />
+                value: softwareSalesList.get(index),
+                // graph: <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} />
             },
             {
                 name: "Software Units",

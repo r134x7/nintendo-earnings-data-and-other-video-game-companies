@@ -3,7 +3,7 @@ import { Section } from "../../utils/segment_data_logic";
 
 // import { unitsMake as bandaiNamcoUnitsMake, salesHomeVideoGameMake as bandaiNamcoSalesMake, collectionJSON as bandaiNamcoCollectionJSON} from "../bandaiNamco/software_sales_bandai_namco";
 import { unitsMake as koeiTecmoUnitsMake, collectionJSON as koeiTecmoCollectionJSON, salesMake as koeiTecmoSalesMake, } from "../koeiTecmo/software_sales_koei_tecmo";
-import { unitsMake as segaUnitsMake, collectionJSON as segaCollectionJSON, salesMake as segaSalesMake } from "../sega/software_sales_sega";
+import { unitsMake as segaUnitsMake, collectionJSON as segaCollectionJSON } from "../sega/software_sales_sega";
 import { digitalContentsSalesMake, collectionJSON as capcomCollectionJSON, digitalContentsUnitsMake, digitalSalesMake, digitalUnitsMake, packageSalesMake, packageUnitsMake } from "../capcom/software_sales_Capcom";
 import { notes2021, collectionJSON as squareEnixCollectionJSON, salesHDandMMOmake, unitsMake as squareEnixUnitsMake} from "../squareEnix/software_sales_square_enix";
 
@@ -59,12 +59,12 @@ const capcomCollection: capcomCollectionJSON[] = [
     capcomSoftwareSales2023,
 ];
 
-const segaCollection: segaCollectionJSON[] = [
-    segaSammySoftwareSales2020,
-    segaSammySoftwareSales2021,
-    segaSammySoftwareSales2022,
-    segaSammySoftwareSales2023,
-];
+// const segaCollection: segaCollectionJSON[] = [
+//     segaSammySoftwareSales2020,
+//     segaSammySoftwareSales2021,
+//     segaSammySoftwareSales2022,
+//     segaSammySoftwareSales2023,
+// ];
 
 // const koeiTecmoCollection: koeiTecmoCollectionJSON[] = [
 //     koeiTecmoSoftwareSales2019,
@@ -104,9 +104,9 @@ const capcomDigitalSales: Section[] = setMaker(capcomCollection, digitalSalesMak
 
 const capcomDigitalUnits: Section[] = setMaker(capcomCollection, digitalUnitsMake);
 
-const segaSales: Section[] = setMaker(segaCollection, segaSalesMake);
+// const segaSales: Section[] = setMaker(segaCollection, segaSalesMake);
 
-const segaUnits: Section[] = setMaker(segaCollection, segaUnitsMake);
+// const segaUnits: Section[] = setMaker(segaCollection, segaUnitsMake);
 
 // const koeiTecmoSales: Section[] = setMaker(koeiTecmoCollection, koeiTecmoSalesMake);
 
@@ -335,11 +335,11 @@ export const CapcomSalesPerSoftwareUnitCml = [
     printSalesPerSoftwareUnitCumulative(capcomPhysicalSales, capcomPhysicalUnits),
 ].reduce((acc, next) => acc + "\n" + next);
 
-export const segaSammySalesPerSoftwareUnitCml = [
-    headerMaker("Sega Sammy"),
-    labelMaker(segaCollection),
-    printSalesPerSoftwareUnitCumulative(segaSales, segaUnits)
-].reduce((acc, next) => acc + "\n" + next);
+// export const segaSammySalesPerSoftwareUnitCml = [
+//     headerMaker("Sega Sammy"),
+//     labelMaker(segaCollection),
+//     printSalesPerSoftwareUnitCumulative(segaSales, segaUnits)
+// ].reduce((acc, next) => acc + "\n" + next);
 
 // export const koeiTecmoSalesPerSoftwareUnitCml = [
 //     headerMaker("Koei Tecmo"),
