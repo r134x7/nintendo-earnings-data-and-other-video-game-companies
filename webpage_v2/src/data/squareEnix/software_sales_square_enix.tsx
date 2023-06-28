@@ -30,6 +30,25 @@ collectionV2.set(collectionV2.size, softwareSales2022)
 collectionV2.set(collectionV2.size, softwareSales2021)
 collectionV2.set(collectionV2.size, softwareSales2020)
 
+export const notes2021 = "\n" +
+`+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
+| From Outline of Results Briefing held    | 
+| on May 13, 2021 (for FY3/2021):          |
+| We have also made a change to how we     |
+| disclose our units sold. Whereas the     |
+| download sales we disclosed previously   |
+| only included titles launched in the     |
+| past two years, we now include all sales |
+| made during the relevant fiscal year,    |
+| regardless of when a title may have been |
+| released.                                |
+|                                          |
+| This change was prompted primarily by    |
+| the fact that we are making many more    |
+| sales from our back catalog than we had  |
+| in the past.                             |
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
+
 export const softwareSalesList = new Map<number, string>();
 
 export const softwareSalesGraphList = new Map();
@@ -37,7 +56,7 @@ export const softwareSalesGraphList = new Map();
 collectionV2.forEach((value, key, map) => {
 
     for (let index = 0; index < value.data.length; index++) {
-        
+
         softwareSalesList.set(key,
         (softwareSalesList.get(key) ?? "") +
         generalSalesPerSoftwareUnitListV2Map(
@@ -74,7 +93,8 @@ collectionV2.forEach((value, key, map) => {
             "One Thousand",
             (index === 0) ? false : true,
             (index === 2) ? false : true,
-        ))
+        ) + (value.fiscalYear === "FY3/2021" && index === 2 ? notes2021 : "")
+        )
 
     }
 })
@@ -98,24 +118,6 @@ function combineData(sales: EarningsMakeV2[]): EarningsMakeV2 {
     } satisfies EarningsMakeV2 
 }
 
-export const notes2021 = "\n" +
-`+----------------------------------------+
-|From Outline of Results Briefing held   | 
-|on May 13, 2021 (for FY3/2021):         |
-|We have also made a change to how we    |
-|disclose our units sold. Whereas the    |
-|download sales we disclosed previously  |
-|only included titles launched in the    |
-|past two years, we now include all sales|
-|made during the relevant fiscal year,   |
-|regardless of when a title may have been|
-|released.                               |
-|                                        |
-|This change was prompted primarily by   |
-|the fact that we are making many more   |
-|sales from our back catalog than we had |
-|in the past.                            |
-+----------------------------------------+`;
 
 const salesHDmake = (obj: {"hdGamesSales": salesOrUnitsJSON}): Section[] => {
 
