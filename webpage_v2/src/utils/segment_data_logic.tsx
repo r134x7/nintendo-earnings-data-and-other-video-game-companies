@@ -735,7 +735,7 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
     }
 
     const mapAndReduceQtrCml: string = [...printQtrAndCml.values()]
-        .flatMap((elem, index, array) => (index % 2 === 0) ? elem + (array[index+1].length === 0 ? "" : "\n" + array[index+1]) : [])
+        .flatMap((elem, index, array) => (index % 2 === 0 && elem.length !== 0) ? elem + (array[index+1].length === 0 ? "" : "\n" + array[index+1]) : [])
         .concat(printTextBlock(dataThisFY.get(0)?.footnotes, 50) ?? [])
         .reduce((acc, next) => acc + liner(next,doubleLine(next),"bottom",true,50),"")
 
