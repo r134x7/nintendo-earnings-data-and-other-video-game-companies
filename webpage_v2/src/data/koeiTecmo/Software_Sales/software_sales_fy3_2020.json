@@ -2,21 +2,23 @@
     "fiscalYear": "FY3/2020",
     "companyName": "KOEI TECMO HOLDINGS CO., LTD.",
     "currentQuarter": 4,
-    "consolePackageAndDLSales": {
-        "name": "Console Package & DL",
-        "units": "currency",
-        "Q1CmlValue": 3.095,
-        "Q2CmlValue": 8.003,
-        "Q3CmlValue": 12.555,
-        "Q4CmlValue": 21.446,
-        "notes": "Package: Including sales for packages, royalty, commission fees (incl. %-of-completion basis), and down payment. DL (download) sales: sales for digital copies via PSN/XboxLive/Switch DL/Steam" 
-    },
-    "consolePackageAndDLUnits": {
-        "name": "Console Package & DL",
-        "units": "units",
-        "Q1CmlValue": 790,
-        "Q2CmlValue": 5275,
-        "Q3CmlValue": 6835,
-        "Q4CmlValue": 10560
-    }
+    "data": [
+        {
+            "name": "Console Package & DL",
+            "units": "currency",
+            "Q1CmlValue": 3.095,
+            "Q2CmlValue": 8.003,
+            "Q3CmlValue": 12.555,
+            "Q4CmlValue": 21.446,
+            "footnotes": "Package: Including sales for packages, royalty, commission fees (incl. %-of-completion basis), and down payment. DL (download) sales: sales for digital copies via PSN/XboxLive/Switch DL/Steam" 
+        },
+        {
+            "name": "Console Package & DL",
+            "units": "units",
+            "Q1CmlValue": 790,
+            "Q2CmlValue": 5275,
+            "Q3CmlValue": 6835,
+            "Q4CmlValue": 10560
+        }
+    ]
 }

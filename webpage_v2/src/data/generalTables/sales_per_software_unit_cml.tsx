@@ -66,13 +66,13 @@ const segaCollection: segaCollectionJSON[] = [
     segaSammySoftwareSales2023,
 ];
 
-const koeiTecmoCollection: koeiTecmoCollectionJSON[] = [
-    koeiTecmoSoftwareSales2019,
-    koeiTecmoSoftwareSales2020,
-    koeiTecmoSoftwareSales2021,
-    koeiTecmoSoftwareSales2022,
-    koeiTecmoSoftwareSales2023,
-];
+// const koeiTecmoCollection: koeiTecmoCollectionJSON[] = [
+//     koeiTecmoSoftwareSales2019,
+//     koeiTecmoSoftwareSales2020,
+//     koeiTecmoSoftwareSales2021,
+//     koeiTecmoSoftwareSales2022,
+//     koeiTecmoSoftwareSales2023,
+// ];
 
 const squareEnixCollection: squareEnixCollectionJSON[] = [
     squareEnixSoftwareSales2020,
@@ -108,9 +108,9 @@ const segaSales: Section[] = setMaker(segaCollection, segaSalesMake);
 
 const segaUnits: Section[] = setMaker(segaCollection, segaUnitsMake);
 
-const koeiTecmoSales: Section[] = setMaker(koeiTecmoCollection, koeiTecmoSalesMake);
+// const koeiTecmoSales: Section[] = setMaker(koeiTecmoCollection, koeiTecmoSalesMake);
 
-const koeiTecmoUnits: Section[] = setMaker(koeiTecmoCollection, koeiTecmoUnitsMake);
+// const koeiTecmoUnits: Section[] = setMaker(koeiTecmoCollection, koeiTecmoUnitsMake);
 
 const squareEnixSales: Section[] = setMaker(squareEnixCollection, salesHDandMMOmake);
 
@@ -341,11 +341,11 @@ export const segaSammySalesPerSoftwareUnitCml = [
     printSalesPerSoftwareUnitCumulative(segaSales, segaUnits)
 ].reduce((acc, next) => acc + "\n" + next);
 
-export const koeiTecmoSalesPerSoftwareUnitCml = [
-    headerMaker("Koei Tecmo"),
-    labelMaker(koeiTecmoCollection),
-    printSalesPerSoftwareUnitCumulative(koeiTecmoSales, koeiTecmoUnits)
-].reduce((acc, next) => acc + "\n" + next);
+// export const koeiTecmoSalesPerSoftwareUnitCml = [
+//     headerMaker("Koei Tecmo"),
+//     labelMaker(koeiTecmoCollection),
+//     printSalesPerSoftwareUnitCumulative(koeiTecmoSales, koeiTecmoUnits)
+// ].reduce((acc, next) => acc + "\n" + next);
 
 export const squareEnixSalesPerSoftwareUnitCml = [
     headerMaker("Square Enix"),

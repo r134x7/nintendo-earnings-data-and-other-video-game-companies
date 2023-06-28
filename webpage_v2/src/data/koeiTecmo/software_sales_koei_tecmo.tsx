@@ -6,6 +6,8 @@ import softwareSales2020 from "./Software_Sales/software_sales_fy3_2020.json";
 import softwareSales2019 from "./Software_Sales/software_sales_fy3_2019.json";
 import undefinedData from "./Software_Sales/undefinedData.json";
 import { salesOrUnitsJSON } from "../bandaiNamco/software_sales_bandai_namco";
+import { EarningsJSONV2 } from "../generalTables/consolidated_earnings_general";
+import { generalSalesPerSoftwareUnitListV2Map } from "../../utils/segment_data_logic";
 
 export type collectionJSON = {
     fiscalYear: string,
@@ -14,14 +16,33 @@ export type collectionJSON = {
     consolePackageAndDLUnits: salesOrUnitsJSON,
 };
 
-const collection: collectionJSON[] = [
-    softwareSales2023,
-    softwareSales2022,
-    softwareSales2021,
-    softwareSales2020,
-    softwareSales2019,
-    undefinedData,
-];
+// const collection: collectionJSON[] = [
+//     softwareSales2023,
+//     softwareSales2022,
+//     softwareSales2021,
+//     softwareSales2020,
+//     softwareSales2019,
+//     undefinedData,
+// ];
+
+const collectionV2 = new Map<number, EarningsJSONV2>();
+
+collectionV2.set(collectionV2.size, softwareSales2023)
+collectionV2.set(collectionV2.size, softwareSales2022)
+collectionV2.set(collectionV2.size, softwareSales2021)
+collectionV2.set(collectionV2.size, softwareSales2020)
+collectionV2.set(collectionV2.size, softwareSales2019)
+
+export const softwareSalesList = new Map<number, string>();
+
+export const softwareSalesGraphList = new Map();
+
+collectionV2.forEach((value, key, map) => {
+
+    softwareSalesList.set(key, generalSalesPerSoftwareUnitListV2Map(value, map.get(key+1), 41, "Billion", "One Thousand"))
+})
+
+collectionV2.clear();
 
 export const salesMake = (obj: {"consolePackageAndDLSales": salesOrUnitsJSON}): Section[] => {
 
@@ -107,36 +128,36 @@ export const unitsMake = (obj: {"consolePackageAndDLUnits": salesOrUnitsJSON}): 
     return units 
 };
 
-export const softwareSalesList: string[] = collection.flatMap((elem, index, array) => {
-    if (array[index] === array.at(-1)) {
-        return [] // for undefinedData in collection only
-    }
+// export const softwareSalesList: string[] = collection.flatMap((elem, index, array) => {
+//     if (array[index] === array.at(-1)) {
+//         return [] // for undefinedData in collection only
+//     }
 
-    let header: Header = {
-        fiscalYear: elem.fiscalYear,
-        secondHeader: "| Segment Information |",
-        firstHeader: "| Koei Tecmo     |",
-    };
+//     let header: Header = {
+//         fiscalYear: elem.fiscalYear,
+//         secondHeader: "| Segment Information |",
+//         firstHeader: "| Koei Tecmo     |",
+//     };
 
-    let salesThisFY: Section[] = salesMake(elem);
-    let salesLastFY: Section[] = salesMake(array[index+1]);
+//     let salesThisFY: Section[] = salesMake(elem);
+//     let salesLastFY: Section[] = salesMake(array[index+1]);
 
-    let unitsThisFY: Section[] = unitsMake(elem);
-    let unitsLastFY: Section[] = unitsMake(array[index+1]);
+//     let unitsThisFY: Section[] = unitsMake(elem);
+//     let unitsLastFY: Section[] = unitsMake(array[index+1]);
 
-    return KoeiTecmoPrint(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter)
-});
+//     return KoeiTecmoPrint(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, header, elem.currentQuarter)
+// });
 
-export const softwareSalesGraphList = collection.flatMap((elem, index, array) => {
-    if (array[index] === array.at(-1)) {
-        return [] // for undefinedData in collection only
-    }
+// export const softwareSalesGraphList = collection.flatMap((elem, index, array) => {
+//     if (array[index] === array.at(-1)) {
+//         return [] // for undefinedData in collection only
+//     }
 
-    let salesThisFY: Section[] = salesMake(elem);
-    let salesLastFY: Section[] = salesMake(array[index+1]);
+//     let salesThisFY: Section[] = salesMake(elem);
+//     let salesLastFY: Section[] = salesMake(array[index+1]);
 
-    let unitsThisFY: Section[] = unitsMake(elem);
-    let unitsLastFY: Section[] = unitsMake(array[index+1]);
+//     let unitsThisFY: Section[] = unitsMake(elem);
+//     let unitsLastFY: Section[] = unitsMake(array[index+1]);
 
-    return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.consolePackageAndDLSales.name, elem.fiscalYear, elem.currentQuarter)
-});
+//     return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.consolePackageAndDLSales.name, elem.fiscalYear, elem.currentQuarter)
+// });

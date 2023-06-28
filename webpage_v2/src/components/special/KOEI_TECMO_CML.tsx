@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Space, Select } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { koeiTecmoSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
+// import { koeiTecmoSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListKoeiTecmo } from "../../data/generalTables/consolidated_earnings_cml_data";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
@@ -51,7 +51,8 @@ export default function KOEI_TECMO_CML() {
         },
         {
             name: "Koei Tecmo Sales Per Software Unit - Cumulative",
-            value: koeiTecmoSalesPerSoftwareUnitCml 
+            // value: koeiTecmoSalesPerSoftwareUnitCml 
+            value: "Nothing"
         },
     ];
 
