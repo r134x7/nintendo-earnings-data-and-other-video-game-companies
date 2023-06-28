@@ -1,5 +1,10 @@
-import { printTextBlock, border, liner, spacer, dateLabel } from "../../utils/table_design_logic";
-import type { EarningsJSONV2, EarningsMakeV2 } from "./consolidated_earnings_general";
+import { printTextBlock, border, liner, spacer, dateLabel, headerPrint } from "../../utils/table_design_logic";
+import { 
+    type EarningsJSONV2, 
+    type EarningsMakeV2, 
+    getData, 
+} from "./consolidated_earnings_general";
+import { type EarningsV2, } from "../../utils/general_earnings_logic";
 
 import bandaiNamcoSoftwareSales2023 from "../bandaiNamco/Software_Sales/software_sales_fy3_2023.json";
 import bandaiNamcoSoftwareSales2022 from "../bandaiNamco/Software_Sales/software_sales_fy3_2022.json";
@@ -27,17 +32,17 @@ import squareEnixSoftwareSales2022 from "../squareEnix/Software_Sales/software_s
 import squareEnixSoftwareSales2021 from "../squareEnix/Software_Sales/software_sales_fy3_2021.json";
 import squareEnixSoftwareSales2020 from "../squareEnix/Software_Sales/software_sales_fy3_2020.json";
 
-type Dates = {
-    fiscalYear: string,
-    currentQuarter: number,
-};
-// finally made use of a generic to deal with a complex problem.
-function labelMaker <T extends Dates>(collection: T[]) {
+// type Dates = {
+//     fiscalYear: string,
+//     currentQuarter: number,
+// };
+// // finally made use of a generic to deal with a complex problem.
+// function labelMaker <T extends Dates>(collection: T[]) {
 
-    const makeDateLabel = dateLabel(collection.at(-1)?.fiscalYear ?? "N/A", collection.at(-1)?.currentQuarter ?? 4);
+//     const makeDateLabel = dateLabel(collection.at(-1)?.fiscalYear ?? "N/A", collection.at(-1)?.currentQuarter ?? 4);
 
-    return liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "bottom",true)
-}
+//     return liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "bottom",true)
+// }
 
 const bandaiNamcoCollection = new Map<number, EarningsJSONV2>();
     bandaiNamcoCollection.set(bandaiNamcoCollection.size,bandaiNamcoSoftwareSales2019);
@@ -70,12 +75,33 @@ const squareEnixCollection = new Map<number, EarningsJSONV2>();
     squareEnixCollection.set(squareEnixCollection.size, squareEnixSoftwareSales2022);
     squareEnixCollection.set(squareEnixCollection.size, squareEnixSoftwareSales2023);
 
+
 const generalSalesHeader = 
 `+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
 |              |             |          | Sales Per |
 |              |             | Software |  Software |
 |              |       Sales |    Units |      Unit |
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
+
+
+function setMakerV2(completeCollection: Map<number, EarningsJSONV2>, headerLength: number): string[] {
+
+    const currentQuarter = completeCollection.get(completeCollection.size-1)?.currentQuarter ?? 4;
+
+    const makeData = new Map<number, EarningsV2[]>();
+    completeCollection.forEach((value, key, map) => makeData.set(key, [...getData(value, value.data.length).values()]));
+
+    const makeDateLabel = dateLabel(completeCollection.get(completeCollection.size-1)?.fiscalYear ?? "ERROR", currentQuarter);
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
+    const printOne = headerPrint([
+            completeCollection.get(completeCollection.size-1)?.companyName ?? "ERROR",
+            "Segment Information - Software Sales"
+        ],headerLength) + "\n" + printDateLabel
+
+}
+
 
 // const bandaiNamcoSales: Section[] = setMaker(bandaiNamcoCollection, bandaiNamcoSalesMake);
 
