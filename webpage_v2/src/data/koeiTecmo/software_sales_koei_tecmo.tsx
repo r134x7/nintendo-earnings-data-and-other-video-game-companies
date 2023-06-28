@@ -4,7 +4,6 @@ import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
 import softwareSales2020 from "./Software_Sales/software_sales_fy3_2020.json";
 import softwareSales2019 from "./Software_Sales/software_sales_fy3_2019.json";
-import undefinedData from "./Software_Sales/undefinedData.json";
 import { salesOrUnitsJSON } from "../bandaiNamco/software_sales_bandai_namco";
 import { EarningsJSONV2 } from "../generalTables/consolidated_earnings_general";
 import { generalSalesPerSoftwareUnitListV2Map } from "../../utils/segment_data_logic";
