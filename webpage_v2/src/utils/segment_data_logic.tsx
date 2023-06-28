@@ -32,7 +32,7 @@ const generalSalesHeader =
 |             |       Sales |    Units |      Unit |
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
 
-function generalSalesHeaderV2(
+export function generalSalesHeaderV2(
     periodColumnLength: number,
     salesColumnLength: number,
     unitsColumnLength: number,
@@ -103,7 +103,7 @@ function printSalesColumnOnly(
     return quarters.concat(cumulatives).reduce((acc, next) => acc + "\n" + next);
 }
 
-function millionFix(value: EarningsValue, changeFrom: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand"): EarningsValue {
+export function millionFix(value: EarningsValue, changeFrom: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand"): EarningsValue {
 
     switch (changeFrom) {
         case "Billion":
@@ -155,7 +155,7 @@ function millionFix(value: EarningsValue, changeFrom: "Billion" | "Million" | "H
             // let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (segmentUnits[index].value / 1000)).toFixed(0))
 }
 
-function salesPerSoftwareUnitCalculation(sales: EarningsValue, units: EarningsValue): EarningsValue {
+export function salesPerSoftwareUnitCalculation(sales: EarningsValue, units: EarningsValue): EarningsValue {
     // sales and units have to be the same units e.g. M 
 
     return (sales.kind !== "Nothing" && units.kind !== "Nothing")

@@ -5,6 +5,7 @@ import {
     getData, 
 } from "./consolidated_earnings_general";
 import { type EarningsV2, } from "../../utils/general_earnings_logic";
+import { generalSalesHeaderV2, salesPerSoftwareUnitCalculation, millionFix } from "../../utils/segment_data_logic";
 
 import bandaiNamcoSoftwareSales2023 from "../bandaiNamco/Software_Sales/software_sales_fy3_2023.json";
 import bandaiNamcoSoftwareSales2022 from "../bandaiNamco/Software_Sales/software_sales_fy3_2022.json";
@@ -84,7 +85,12 @@ const generalSalesHeader =
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
 
 
-function setMakerV2(completeCollection: Map<number, EarningsJSONV2>, headerLength: number): string[] {
+function setMakerV2(
+    completeCollection: Map<number, EarningsJSONV2>, 
+    headerLength: number,
+    salesRoundtoMillion: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand",
+    unitsRoundtoMillion: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand",
+    ): string[] {
 
     const currentQuarter = completeCollection.get(completeCollection.size-1)?.currentQuarter ?? 4;
 
@@ -100,6 +106,38 @@ function setMakerV2(completeCollection: Map<number, EarningsJSONV2>, headerLengt
             "Segment Information - Software Sales"
         ],headerLength) + "\n" + printDateLabel
 
+    const millionFixData = new Map<number, EarningsV2[]>();
+
+    makeData.forEach((value, key, map) => {
+
+        for (let index = 0; index < value.length; index++) {
+            
+
+            millionFixData.set(key, 
+                (millionFixData.get(key) ?? [])
+                .concat(
+                    {
+                        ...value[index],
+                    Q1QtrValue: millionFix(value[index].Q1QtrValue,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    Q2QtrValue: millionFix(value[index].Q2QtrValue,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    Q3QtrValue: millionFix(value[index].Q3QtrValue,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    Q4QtrValue: millionFix(value[index].Q4QtrValue,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    Q1CmlValue: millionFix(value[index].Q1CmlValue,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    Q2CmlValue: millionFix(value[index].Q2CmlValue,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    Q3CmlValue: millionFix(value[index].Q3CmlValue,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    Q4CmlValue: millionFix(value[index].Q4CmlValue,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    forecastThisFY: millionFix(value[index].forecastThisFY,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    forecastRevision1: millionFix(value[index].forecastRevision1,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    forecastRevision2: millionFix(value[index].forecastRevision2,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    forecastRevision3: millionFix(value[index].forecastRevision3,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    forecastNextFY: millionFix(value[index].forecastNextFY,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    } satisfies EarningsV2
+                )
+            )
+        }
+    })
+
+    
 }
 
 
