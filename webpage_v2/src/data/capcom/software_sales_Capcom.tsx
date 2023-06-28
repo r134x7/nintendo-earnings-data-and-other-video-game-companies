@@ -38,27 +38,34 @@ collectionV2.forEach((value, key, map) => {
 
     // softwareSalesList.set(key, generalSalesPerSoftwareUnitListV2Map(value, map.get(key+1), 41, "Billion", "One Thousand"))
 
-    softwareSalesList.set(key, generalSalesPerSoftwareUnitListV2Map(
-        {
-            ...value,
-            data: [
-                map.get(key)?.data[0],
-                map.get(key)?.data[1],
-            ] as EarningsMakeV2[]
-        } satisfies EarningsJSONV2,
-        {
-            companyName: map.get(key+1)?.companyName ?? "Error",
-            currentQuarter: map.get(key+1)?.currentQuarter ?? 0,
-            fiscalYear: map.get(key+1)?.fiscalYear ?? "Error",
-            data: [
-                map.get(key+1)?.data[0],
-                map.get(key+1)?.data[1],
-            ] as EarningsMakeV2[]
-        } satisfies EarningsJSONV2,
-        41,
-        "Billion",
-        "One Thousand",
-    ))
+    for (let index = 0; index < value.data.length; index+= 2) {
+        
+        softwareSalesList.set(key,
+        (softwareSalesList.get(key) ?? "") +
+        generalSalesPerSoftwareUnitListV2Map(
+            {
+                ...value,
+                data: [
+                    map.get(key)?.data[index],
+                    map.get(key)?.data[index+1],
+                ] as EarningsMakeV2[]
+            } satisfies EarningsJSONV2,
+            {
+                companyName: map.get(key+1)?.companyName ?? "Error",
+                currentQuarter: map.get(key+1)?.currentQuarter ?? 0,
+                fiscalYear: map.get(key+1)?.fiscalYear ?? "Error",
+                data: [
+                    map.get(key+1)?.data[index],
+                    map.get(key+1)?.data[index+1],
+                ] as EarningsMakeV2[]
+            } satisfies EarningsJSONV2,
+            38,
+            "Billion",
+            "One Thousand",
+        ))
+
+    }
+
 })
 
 collectionV2.clear();
