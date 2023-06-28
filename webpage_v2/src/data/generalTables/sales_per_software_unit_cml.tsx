@@ -53,11 +53,11 @@ function labelMaker <T extends Dates>(collection: T[]) {
 //     bandaiNamcoSoftwareSales2023,
 // ];
 
-const capcomCollection: capcomCollectionJSON[] = [
-    capcomSoftwareSales2021,
-    capcomSoftwareSales2022,
-    capcomSoftwareSales2023,
-];
+// const capcomCollection: capcomCollectionJSON[] = [
+//     capcomSoftwareSales2021,
+//     capcomSoftwareSales2022,
+//     capcomSoftwareSales2023,
+// ];
 
 // const segaCollection: segaCollectionJSON[] = [
 //     segaSammySoftwareSales2020,
@@ -92,17 +92,17 @@ const generalSalesHeader =
 
 // const bandaiNamcoUnits: Section[] = setMaker(bandaiNamcoCollection, bandaiNamcoUnitsMake);
 
-const capcomDigitalContentsSales: Section[] = setMaker(capcomCollection, digitalContentsSalesMake);
+// const capcomDigitalContentsSales: Section[] = setMaker(capcomCollection, digitalContentsSalesMake);
 
-const capcomDigitalContentsUnits: Section[] = setMaker(capcomCollection, digitalContentsUnitsMake);
+// const capcomDigitalContentsUnits: Section[] = setMaker(capcomCollection, digitalContentsUnitsMake);
 
-const capcomPhysicalSales: Section[] = setMaker(capcomCollection, packageSalesMake);
+// const capcomPhysicalSales: Section[] = setMaker(capcomCollection, packageSalesMake);
 
-const capcomPhysicalUnits: Section[] = setMaker(capcomCollection, packageUnitsMake);
+// const capcomPhysicalUnits: Section[] = setMaker(capcomCollection, packageUnitsMake);
 
-const capcomDigitalSales: Section[] = setMaker(capcomCollection, digitalSalesMake);
+// const capcomDigitalSales: Section[] = setMaker(capcomCollection, digitalSalesMake);
 
-const capcomDigitalUnits: Section[] = setMaker(capcomCollection, digitalUnitsMake);
+// const capcomDigitalUnits: Section[] = setMaker(capcomCollection, digitalUnitsMake);
 
 // const segaSales: Section[] = setMaker(segaCollection, segaSalesMake);
 
@@ -327,13 +327,13 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
 //     printSalesPerSoftwareUnitCumulative(bandaiNamcoSales, bandaiNamcoUnits)
 // ].reduce((acc, next) => acc + "\n" + next);
 
-export const CapcomSalesPerSoftwareUnitCml = [
-    headerMaker("Capcom"),
-    labelMaker(capcomCollection),
-    printSalesPerSoftwareUnitCumulative(capcomDigitalContentsSales, capcomDigitalContentsUnits),
-    printSalesPerSoftwareUnitCumulative(capcomDigitalSales, capcomDigitalUnits),
-    printSalesPerSoftwareUnitCumulative(capcomPhysicalSales, capcomPhysicalUnits),
-].reduce((acc, next) => acc + "\n" + next);
+// export const CapcomSalesPerSoftwareUnitCml = [
+//     headerMaker("Capcom"),
+//     labelMaker(capcomCollection),
+//     printSalesPerSoftwareUnitCumulative(capcomDigitalContentsSales, capcomDigitalContentsUnits),
+//     printSalesPerSoftwareUnitCumulative(capcomDigitalSales, capcomDigitalUnits),
+//     printSalesPerSoftwareUnitCumulative(capcomPhysicalSales, capcomPhysicalUnits),
+// ].reduce((acc, next) => acc + "\n" + next);
 
 // export const segaSammySalesPerSoftwareUnitCml = [
 //     headerMaker("Sega Sammy"),

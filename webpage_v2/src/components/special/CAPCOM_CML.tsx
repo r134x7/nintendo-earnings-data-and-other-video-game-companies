@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Code, SegmentedControl, Space, TextInput, Select, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { platinumTitlesCML } from "../../data/capcom/platinum_titles_Capcom";
-import { CapcomSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
+// import { CapcomSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListCapcom } from "../../data/generalTables/consolidated_earnings_cml_data";
 import { gameSeriesCapcom } from "../../data/capcom/game_series_sales_capcom_cml_data";
 import { factBookCapcom } from "../../data/capcom/software_shipments_capcom_cml_data";
@@ -177,7 +177,8 @@ export default function CAPCOM_CML() {
         },
         {
             name: "Capcom Sales Per Software Unit - Cumulative",
-            value: CapcomSalesPerSoftwareUnitCml
+            // value: CapcomSalesPerSoftwareUnitCml
+            value: "Nothing"
         },
         {
             name: "Capcom Software Platform Shipments - Cumulative",

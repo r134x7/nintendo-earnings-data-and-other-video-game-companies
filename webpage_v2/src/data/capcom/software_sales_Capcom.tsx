@@ -2,8 +2,9 @@ import { Header, Section, CapcomPrint, salesPerSoftwareUnitForecast, CapcomPrint
 import softwareSales2023 from "./Software_Sales/software_sales_fy3_2023.json";
 import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
-import undefinedData from "./Software_Sales/undefinedData.json";
 import { salesOrUnitsJSON } from "../bandaiNamco/software_sales_bandai_namco";
+import { generalSalesPerSoftwareUnitListV2Map } from "../../utils/segment_data_logic";
+import type { EarningsJSONV2, EarningsMakeV2 } from "../generalTables/consolidated_earnings_general";
 
 export type collectionJSON = {
     fiscalYear: string,
@@ -16,12 +17,51 @@ export type collectionJSON = {
     digitalUnits: salesOrUnitsJSON,
 }
 
-const collection: collectionJSON[] = [
-    softwareSales2023,
-    softwareSales2022,
-    softwareSales2021,
-    undefinedData,
-];
+// const collection: collectionJSON[] = [
+//     softwareSales2023,
+//     softwareSales2022,
+//     softwareSales2021,
+//     undefinedData,
+// ];
+
+const collectionV2 = new Map<number, EarningsJSONV2>();
+
+collectionV2.set(collectionV2.size, softwareSales2023)
+collectionV2.set(collectionV2.size, softwareSales2022)
+collectionV2.set(collectionV2.size, softwareSales2021)
+
+export const softwareSalesList = new Map<number, string>();
+
+export const softwareSalesGraphList = new Map();
+
+collectionV2.forEach((value, key, map) => {
+
+    // softwareSalesList.set(key, generalSalesPerSoftwareUnitListV2Map(value, map.get(key+1), 41, "Billion", "One Thousand"))
+
+    softwareSalesList.set(key, generalSalesPerSoftwareUnitListV2Map(
+        {
+            ...value,
+            data: [
+                map.get(key)?.data[0],
+                map.get(key)?.data[1],
+            ] as EarningsMakeV2[]
+        } satisfies EarningsJSONV2,
+        {
+            companyName: map.get(key+1)?.companyName ?? "Error",
+            currentQuarter: map.get(key+1)?.currentQuarter ?? 0,
+            fiscalYear: map.get(key+1)?.fiscalYear ?? "Error",
+            data: [
+                map.get(key+1)?.data[0],
+                map.get(key+1)?.data[1],
+            ] as EarningsMakeV2[]
+        } satisfies EarningsJSONV2,
+        41,
+        "Billion",
+        "One Thousand",
+    ))
+})
+
+collectionV2.clear();
 
 const forecastsMake = (obj: salesOrUnitsJSON, units: string): Section[] => {
 
@@ -344,65 +384,65 @@ export const digitalUnitsMake = (obj: {"digitalUnits": salesOrUnitsJSON}, foreca
 };
 
 
-export const softwareSalesList: string[] = collection.flatMap((elem, index, array) => {
-    if (array[index] === array.at(-1)) {
-        return [] // for undefinedData in collection only
-    }
+// export const softwareSalesList: string[] = collection.flatMap((elem, index, array) => {
+//     if (array[index] === array.at(-1)) {
+//         return [] // for undefinedData in collection only
+//     }
 
-    let header: Header = {
-        fiscalYear: elem.fiscalYear,
-        secondHeader: "| Segment Information |",
-        firstHeader: "| Capcom         |",
-    };
+//     let header: Header = {
+//         fiscalYear: elem.fiscalYear,
+//         secondHeader: "| Segment Information |",
+//         firstHeader: "| Capcom         |",
+//     };
 
-    let digitalContentsSalesThisFY: Section[] = digitalContentsSalesMake(elem);
-    let digitalContentsSalesLastFY: Section[] = digitalContentsSalesMake(array[index+1]);
-    let digitalContentsSalesForecast: Section[] = digitalContentsSalesMake(elem,true);
+//     let digitalContentsSalesThisFY: Section[] = digitalContentsSalesMake(elem);
+//     let digitalContentsSalesLastFY: Section[] = digitalContentsSalesMake(array[index+1]);
+//     let digitalContentsSalesForecast: Section[] = digitalContentsSalesMake(elem,true);
 
-    let digitalContentsUnitsThisFY: Section[] = digitalContentsUnitsMake(elem);
-    let digitalContentsUnitsLastFY: Section[] = digitalContentsUnitsMake(array[index+1]);
-    let digitalContentsUnitsForecast: Section[] = digitalContentsUnitsMake(elem,true);
+//     let digitalContentsUnitsThisFY: Section[] = digitalContentsUnitsMake(elem);
+//     let digitalContentsUnitsLastFY: Section[] = digitalContentsUnitsMake(array[index+1]);
+//     let digitalContentsUnitsForecast: Section[] = digitalContentsUnitsMake(elem,true);
 
-    let packageSalesThisFY: Section[] = packageSalesMake(elem);
-    let packageSalesLastFY: Section[] = packageSalesMake(array[index+1]);
-    let packageSalesForecast: Section[] = packageSalesMake(elem,true);
+//     let packageSalesThisFY: Section[] = packageSalesMake(elem);
+//     let packageSalesLastFY: Section[] = packageSalesMake(array[index+1]);
+//     let packageSalesForecast: Section[] = packageSalesMake(elem,true);
 
-    let packageUnitsThisFY: Section[] = packageUnitsMake(elem);
-    let packageUnitsLastFY: Section[] = packageUnitsMake(array[index+1]);
-    let packageUnitsForecast: Section[] = packageUnitsMake(elem,true);
+//     let packageUnitsThisFY: Section[] = packageUnitsMake(elem);
+//     let packageUnitsLastFY: Section[] = packageUnitsMake(array[index+1]);
+//     let packageUnitsForecast: Section[] = packageUnitsMake(elem,true);
 
-    let digitalSalesThisFY: Section[] = digitalSalesMake(elem);
-    let digitalSalesLastFY: Section[] = digitalSalesMake(array[index+1]);
-    let digitalSalesForecast: Section[] = digitalSalesMake(elem,true);
+//     let digitalSalesThisFY: Section[] = digitalSalesMake(elem);
+//     let digitalSalesLastFY: Section[] = digitalSalesMake(array[index+1]);
+//     let digitalSalesForecast: Section[] = digitalSalesMake(elem,true);
 
-    let digitalUnitsThisFY: Section[] = digitalUnitsMake(elem);
-    let digitalUnitsLastFY: Section[] = digitalUnitsMake(array[index+1]);
-    let digitalUnitsForecast: Section[] = digitalUnitsMake(elem,true);
+//     let digitalUnitsThisFY: Section[] = digitalUnitsMake(elem);
+//     let digitalUnitsLastFY: Section[] = digitalUnitsMake(array[index+1]);
+//     let digitalUnitsForecast: Section[] = digitalUnitsMake(elem,true);
 
-    let capcomList: string = [
-        CapcomPrint(digitalContentsSalesThisFY, digitalContentsSalesLastFY, digitalContentsUnitsThisFY, digitalContentsUnitsLastFY, header, elem.currentQuarter),
-        salesPerSoftwareUnitForecast(digitalContentsSalesForecast, digitalContentsUnitsForecast, header, elem.currentQuarter),
-        CapcomPrintPhysical(packageSalesThisFY, packageSalesLastFY, packageUnitsThisFY, packageUnitsLastFY, header, elem.currentQuarter),
-        salesPerSoftwareUnitForecast(packageSalesForecast, packageUnitsForecast, header, elem.currentQuarter),
-        CapcomPrintDigital(digitalSalesThisFY, digitalSalesLastFY, digitalUnitsThisFY, digitalUnitsLastFY, header, elem.currentQuarter),
-        salesPerSoftwareUnitForecast(digitalSalesForecast, digitalUnitsForecast, header, elem.currentQuarter),
-    ].reduce((acc, next) => acc + "\n" + next);
+//     let capcomList: string = [
+//         CapcomPrint(digitalContentsSalesThisFY, digitalContentsSalesLastFY, digitalContentsUnitsThisFY, digitalContentsUnitsLastFY, header, elem.currentQuarter),
+//         salesPerSoftwareUnitForecast(digitalContentsSalesForecast, digitalContentsUnitsForecast, header, elem.currentQuarter),
+//         CapcomPrintPhysical(packageSalesThisFY, packageSalesLastFY, packageUnitsThisFY, packageUnitsLastFY, header, elem.currentQuarter),
+//         salesPerSoftwareUnitForecast(packageSalesForecast, packageUnitsForecast, header, elem.currentQuarter),
+//         CapcomPrintDigital(digitalSalesThisFY, digitalSalesLastFY, digitalUnitsThisFY, digitalUnitsLastFY, header, elem.currentQuarter),
+//         salesPerSoftwareUnitForecast(digitalSalesForecast, digitalUnitsForecast, header, elem.currentQuarter),
+//     ].reduce((acc, next) => acc + "\n" + next);
 
-    return capcomList
+//     return capcomList
 
-    // return CapcomPrint(digitalContentsSalesThisFY, digitalContentsSalesLastFY, digitalContentsUnitsThisFY, digitalContentsUnitsLastFY, header, elem.currentQuarter) + "\n" + CapcomPrintPhysical(packageSalesThisFY, packageSalesLastFY, packageUnitsThisFY, packageUnitsLastFY, header, elem.currentQuarter) + "\n" + CapcomPrintDigital(digitalSalesThisFY, digitalSalesLastFY, digitalUnitsThisFY, digitalUnitsLastFY, header, elem.currentQuarter)
-});
+//     // return CapcomPrint(digitalContentsSalesThisFY, digitalContentsSalesLastFY, digitalContentsUnitsThisFY, digitalContentsUnitsLastFY, header, elem.currentQuarter) + "\n" + CapcomPrintPhysical(packageSalesThisFY, packageSalesLastFY, packageUnitsThisFY, packageUnitsLastFY, header, elem.currentQuarter) + "\n" + CapcomPrintDigital(digitalSalesThisFY, digitalSalesLastFY, digitalUnitsThisFY, digitalUnitsLastFY, header, elem.currentQuarter)
+// });
 
-export const softwareSalesGraphList = collection.flatMap((elem, index, array) => {
-    if (array[index] === array.at(-1)) {
-        return [] // for undefinedData in collection only
-    }
+// export const softwareSalesGraphList = collection.flatMap((elem, index, array) => {
+//     if (array[index] === array.at(-1)) {
+//         return [] // for undefinedData in collection only
+//     }
 
-    let salesThisFY: Section[] = digitalContentsSalesMake(elem);
-    let salesLastFY: Section[] = digitalContentsSalesMake(array[index+1]);
+//     let salesThisFY: Section[] = digitalContentsSalesMake(elem);
+//     let salesLastFY: Section[] = digitalContentsSalesMake(array[index+1]);
 
-    let unitsThisFY: Section[] = digitalContentsUnitsMake(elem);
-    let unitsLastFY: Section[] = digitalContentsUnitsMake(array[index+1]);
+//     let unitsThisFY: Section[] = digitalContentsUnitsMake(elem);
+//     let unitsLastFY: Section[] = digitalContentsUnitsMake(array[index+1]);
 
-    return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.digitalContentsSales.name, elem.fiscalYear, elem.currentQuarter)
-});
+//     return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.digitalContentsSales.name, elem.fiscalYear, elem.currentQuarter)
+// });
