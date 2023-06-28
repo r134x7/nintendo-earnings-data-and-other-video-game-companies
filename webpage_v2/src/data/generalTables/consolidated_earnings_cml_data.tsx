@@ -148,163 +148,157 @@ import consolidatedEarningsSquareEnix2021 from "../squareEnix/Consolidated_Earni
 import consolidatedEarningsSquareEnix2022 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2022.json"
 import consolidatedEarningsSquareEnix2023 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2023.json"
 
-const totalCollectionNintendo = new Map<number, EarningsJSONV2>([
-    [0, consolidatedEarningsNintendo1981],
-    [1, consolidatedEarningsNintendo1982],
-    [2, consolidatedEarningsNintendo1983],
-    [3, consolidatedEarningsNintendo1984],
-    [4, consolidatedEarningsNintendo1985],
-    [5, consolidatedEarningsNintendo1986],
-    [6, consolidatedEarningsNintendo1987],
-    [7, consolidatedEarningsNintendo1988],
-    [8, consolidatedEarningsNintendo1989],
-    [9, consolidatedEarningsNintendo1990],
-    [10, consolidatedEarningsNintendo1991],
-    [11, consolidatedEarningsNintendo1992],
-    [12, consolidatedEarningsNintendo1993],
-    [13, consolidatedEarningsNintendo1994],
-    [14, consolidatedEarningsNintendo1995],
-    [15, consolidatedEarningsNintendo1996],
-    [16, consolidatedEarningsNintendo1997],
-    [17, consolidatedEarningsNintendo1998],
-    [18, consolidatedEarningsNintendo1999],
-    [19, consolidatedEarningsNintendo2000],
-    [20, consolidatedEarningsNintendo2001],
-    [21, consolidatedEarningsNintendo2002],
-    [22, consolidatedEarningsNintendo2003],
-    [23, consolidatedEarningsNintendo2004],
-    [24, consolidatedEarningsNintendo2005],
-    [25, consolidatedEarningsNintendo2006],
-    [26, consolidatedEarningsNintendo2007],
-    [27, consolidatedEarningsNintendo2008],
-    [28, consolidatedEarningsNintendo2009],
-    [29, consolidatedEarningsNintendo2010],
-    [30, consolidatedEarningsNintendo2011],
-    [31, consolidatedEarningsNintendo2012],
-    [32, consolidatedEarningsNintendo2013],
-    [33, consolidatedEarningsNintendo2014],
-    [34, consolidatedEarningsNintendo2015],
-    [35, consolidatedEarningsNintendo2016],
-    [36, consolidatedEarningsNintendo2017],
-    [37, consolidatedEarningsNintendo2018],
-    [38, consolidatedEarningsNintendo2019],
-    [39, consolidatedEarningsNintendo2020],
-    [40, consolidatedEarningsNintendo2021],
-    [41, consolidatedEarningsNintendo2022],
-    [42, consolidatedEarningsNintendo2023],
-]);
+const totalCollectionNintendo = new Map<number, EarningsJSONV2>();
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1981)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1982)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1983)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1984)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1985)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1986)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1987)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1988)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1989)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1990)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1991)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1992)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1993)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1994)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1995)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1996)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1997)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1998)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo1999)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2000)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2001)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2002)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2003)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2004)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2005)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2006)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2007)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2008)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2009)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2010)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2011)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2012)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2013)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2014)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2015)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2016)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2017)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2018)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2019)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2020)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2021)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2022)
+    totalCollectionNintendo.set(totalCollectionNintendo.size, consolidatedEarningsNintendo2023)
 
-const totalCollectionBandaiNamco = new Map<number, EarningsJSONV2>([
-    [0, consolidatedEarningsBandaiNamco2006],
-    [1, consolidatedEarningsBandaiNamco2007],
-    [2, consolidatedEarningsBandaiNamco2008],
-    [3, consolidatedEarningsBandaiNamco2009],
-    [4, consolidatedEarningsBandaiNamco2010],
-    [5, consolidatedEarningsBandaiNamco2011],
-    [6, consolidatedEarningsBandaiNamco2012],
-    [7, consolidatedEarningsBandaiNamco2013],
-    [8, consolidatedEarningsBandaiNamco2014],
-    [9, consolidatedEarningsBandaiNamco2015],
-    [10, consolidatedEarningsBandaiNamco2016],
-    [11, consolidatedEarningsBandaiNamco2017],
-    [12, consolidatedEarningsBandaiNamco2018],
-    [13, consolidatedEarningsBandaiNamco2019],
-    [14, consolidatedEarningsBandaiNamco2020],
-    [15, consolidatedEarningsBandaiNamco2021],
-    [16, consolidatedEarningsBandaiNamco2022],
-    [17, consolidatedEarningsBandaiNamco2023],
-]);
+const totalCollectionBandaiNamco = new Map<number, EarningsJSONV2>();
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2006)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2007)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2008)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2009)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2010)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2011)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2012)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2013)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2014)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2015)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2016)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2017)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2018)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2019)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2020)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2021)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2022)
+    totalCollectionBandaiNamco.set(totalCollectionBandaiNamco.size, consolidatedEarningsBandaiNamco2023)
 
-const totalCollectionCapcom = new Map<number, EarningsJSONV2>([
-    [0, consolidatedEarningsCapcom1998],
-    [1, consolidatedEarningsCapcom1999],
-    [2, consolidatedEarningsCapcom2000],
-    [3, consolidatedEarningsCapcom2001],
-    [4, consolidatedEarningsCapcom2002],
-    [5, consolidatedEarningsCapcom2003],
-    [6, consolidatedEarningsCapcom2004],
-    [7, consolidatedEarningsCapcom2005],
-    [8, consolidatedEarningsCapcom2006],
-    [9, consolidatedEarningsCapcom2007],
-    [10, consolidatedEarningsCapcom2008],
-    [11, consolidatedEarningsCapcom2009],
-    [12, consolidatedEarningsCapcom2010],
-    [13, consolidatedEarningsCapcom2011],
-    [14, consolidatedEarningsCapcom2012],
-    [15, consolidatedEarningsCapcom2013],
-    [16, consolidatedEarningsCapcom2014],
-    [17, consolidatedEarningsCapcom2015],
-    [18, consolidatedEarningsCapcom2016],
-    [19, consolidatedEarningsCapcom2017],
-    [20, consolidatedEarningsCapcom2018],
-    [21, consolidatedEarningsCapcom2019],
-    [22, consolidatedEarningsCapcom2020],
-    [23, consolidatedEarningsCapcom2021],
-    [24, consolidatedEarningsCapcom2022],
-    [25, consolidatedEarningsCapcom2023],
-]);
+const totalCollectionCapcom = new Map<number, EarningsJSONV2>();
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom1998)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom1999)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2000)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2001)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2002)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2003)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2004)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2005)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2006)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2007)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2008)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2009)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2010)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2011)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2012)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2013)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2014)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2015)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2016)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2017)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2018)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2019)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2020)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2021)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2022)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2023)
 
-const totalCollectionKoeiTecmo = new Map<number, EarningsJSONV2>([
-    [0, consolidatedEarningsKoeiTecmo2010],
-    [1, consolidatedEarningsKoeiTecmo2011],
-    [2, consolidatedEarningsKoeiTecmo2012],
-    [3, consolidatedEarningsKoeiTecmo2013],
-    [4, consolidatedEarningsKoeiTecmo2014],
-    [5, consolidatedEarningsKoeiTecmo2015],
-    [6, consolidatedEarningsKoeiTecmo2016],
-    [7, consolidatedEarningsKoeiTecmo2017],
-    [8, consolidatedEarningsKoeiTecmo2018],
-    [9, consolidatedEarningsKoeiTecmo2019],
-    [10, consolidatedEarningsKoeiTecmo2020],
-    [11, consolidatedEarningsKoeiTecmo2021],
-    [12, consolidatedEarningsKoeiTecmo2022],
-    [13, consolidatedEarningsKoeiTecmo2023],
-]);
+const totalCollectionKoeiTecmo = new Map<number, EarningsJSONV2>();
+    totalCollectionKoeiTecmo.set(totalCollectionKoeiTecmo.size, consolidatedEarningsKoeiTecmo2010)
+    totalCollectionKoeiTecmo.set(totalCollectionKoeiTecmo.size, consolidatedEarningsKoeiTecmo2011)
+    totalCollectionKoeiTecmo.set(totalCollectionKoeiTecmo.size, consolidatedEarningsKoeiTecmo2012)
+    totalCollectionKoeiTecmo.set(totalCollectionKoeiTecmo.size, consolidatedEarningsKoeiTecmo2013)
+    totalCollectionKoeiTecmo.set(totalCollectionKoeiTecmo.size, consolidatedEarningsKoeiTecmo2014)
+    totalCollectionKoeiTecmo.set(totalCollectionKoeiTecmo.size, consolidatedEarningsKoeiTecmo2015)
+    totalCollectionKoeiTecmo.set(totalCollectionKoeiTecmo.size, consolidatedEarningsKoeiTecmo2016)
+    totalCollectionKoeiTecmo.set(totalCollectionKoeiTecmo.size, consolidatedEarningsKoeiTecmo2017)
+    totalCollectionKoeiTecmo.set(totalCollectionKoeiTecmo.size, consolidatedEarningsKoeiTecmo2018)
+    totalCollectionKoeiTecmo.set(totalCollectionKoeiTecmo.size, consolidatedEarningsKoeiTecmo2019)
+    totalCollectionKoeiTecmo.set(totalCollectionKoeiTecmo.size, consolidatedEarningsKoeiTecmo2020)
+    totalCollectionKoeiTecmo.set(totalCollectionKoeiTecmo.size, consolidatedEarningsKoeiTecmo2021)
+    totalCollectionKoeiTecmo.set(totalCollectionKoeiTecmo.size, consolidatedEarningsKoeiTecmo2022)
+    totalCollectionKoeiTecmo.set(totalCollectionKoeiTecmo.size, consolidatedEarningsKoeiTecmo2023)
 
-const totalCollectionSegaSammy = new Map<number, EarningsJSONV2>([
-    [0, consolidatedEarningsSegaSammy2005],
-    [1, consolidatedEarningsSegaSammy2006],
-    [2, consolidatedEarningsSegaSammy2007],
-    [3, consolidatedEarningsSegaSammy2008],
-    [4, consolidatedEarningsSegaSammy2009],
-    [5, consolidatedEarningsSegaSammy2010],
-    [6, consolidatedEarningsSegaSammy2011],
-    [7, consolidatedEarningsSegaSammy2012],
-    [8, consolidatedEarningsSegaSammy2013],
-    [9, consolidatedEarningsSegaSammy2014],
-    [10, consolidatedEarningsSegaSammy2015],
-    [11, consolidatedEarningsSegaSammy2016],
-    [12, consolidatedEarningsSegaSammy2017],
-    [13, consolidatedEarningsSegaSammy2018],
-    [14, consolidatedEarningsSegaSammy2019],
-    [15, consolidatedEarningsSegaSammy2020],
-    [16, consolidatedEarningsSegaSammy2021],
-    [17, consolidatedEarningsSegaSammy2022],
-    [18, consolidatedEarningsSegaSammy2023],
-]);
+const totalCollectionSegaSammy = new Map<number, EarningsJSONV2>();
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2005)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2006)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2007)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2008)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2009)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2010)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2011)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2012)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2013)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2014)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2015)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2016)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2017)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2018)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2019)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2020)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2021)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2022)
+    totalCollectionSegaSammy.set(totalCollectionSegaSammy.size, consolidatedEarningsSegaSammy2023)
 
-const totalCollectionSquareEnix = new Map<number, EarningsJSONV2>([
-    [0, consolidatedEarningsSquareEnix2004],
-    [1, consolidatedEarningsSquareEnix2005],
-    [2, consolidatedEarningsSquareEnix2006],
-    [3, consolidatedEarningsSquareEnix2007],
-    [4, consolidatedEarningsSquareEnix2008],
-    [5, consolidatedEarningsSquareEnix2009],
-    [6, consolidatedEarningsSquareEnix2010],
-    [7, consolidatedEarningsSquareEnix2011],
-    [8, consolidatedEarningsSquareEnix2012],
-    [9, consolidatedEarningsSquareEnix2013],
-    [10, consolidatedEarningsSquareEnix2014],
-    [11, consolidatedEarningsSquareEnix2015],
-    [12, consolidatedEarningsSquareEnix2016],
-    [13, consolidatedEarningsSquareEnix2017],
-    [14, consolidatedEarningsSquareEnix2018],
-    [15, consolidatedEarningsSquareEnix2019],
-    [16, consolidatedEarningsSquareEnix2020],
-    [17, consolidatedEarningsSquareEnix2021],
-    [18, consolidatedEarningsSquareEnix2022],
-    [19, consolidatedEarningsSquareEnix2023],
-]);
+const totalCollectionSquareEnix = new Map<number, EarningsJSONV2>();
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2004)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2005)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2006)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2007)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2008)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2009)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2010)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2011)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2012)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2013)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2014)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2015)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2016)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2017)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2018)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2019)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2020)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2021)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2022)
+    totalCollectionSquareEnix.set(totalCollectionSquareEnix.size, consolidatedEarningsSquareEnix2023)
 
 function labelMaker (collection: EarningsJSONV2): string {
 
@@ -553,234 +547,8 @@ export function printMinMedianMax(list: number[], textLength: number): string[] 
     ]
 }
 
-// function operatingResultsMaker (collection: EarningsJSON[]): {
-//     header: string, netSales: string[], operatingIncome: string[], netIncome: string[]
-// } {
-
-//     let subHeader = (collection[0].companyName === "CAPCOM Co., Ltd." || collection[0].companyName === "SQUARE ENIX HOLDINGS CO., LTD.") ? "Consolidated Financial Results" : "Consolidated Operating Results";
-
-//     let headerMake = liner(border([
-//         spacer(collection[0].companyName, collection[0].companyName.length+1, "left")
-//         ]),"−","top",true) +
-//         liner(border([
-//             spacer(subHeader, subHeader.length+2, "left")
-//         ]), "−", "both",true)
-
-//     let netSalesSet = collection.map(elem => {
-//         return {
-//             fiscalYear: elem.fiscalYear,
-//             value: elem.data[0].Q4CmlValue
-//         };
-//     });
-
-//     let operatingIncomeSet = collection.map(elem => {
-//         return {
-//             fiscalYear: elem.fiscalYear,
-//             value: elem.data[1].Q4CmlValue
-//         };
-//     });
-
-//     let netIncomeSet = collection.map(elem => {
-//         return {
-//             fiscalYear: elem.fiscalYear,
-//             value: elem.data[2].Q4CmlValue
-//         };
-//     });
-
-//     const sortedNetSales = sortList(netSalesSet);
-//     const sortedOperatingIncome = sortList(operatingIncomeSet);
-//     const sortedNetIncome = sortList(netIncomeSet);
-
-//     const printNetSales = printCumulativeValues(netSalesSet, sortedNetSales, "Net Sales");
-
-//     const printOperatingIncome = printCumulativeValues(operatingIncomeSet, sortedOperatingIncome, "Operating Income");
-
-//     const printNetIncome = printCumulativeValues(netIncomeSet, sortedNetIncome, "Net Income");
-
-//     return {
-//         header: headerMake,
-//         netSales: printNetSales,
-//         operatingIncome: printOperatingIncome,
-//         netIncome: printNetIncome,
-//     }
-// };
-
-// let netSalesSet = totalCollectionNintendo.map(elem => {
-//     return {
-//         fiscalYear: elem.fiscalYear,
-//         value: elem.data[0].Q4CmlValue
-//     };
-// });
-
-// let operatingIncomeSet = totalCollectionNintendo.map(elem => {
-//     return {
-//         fiscalYear: elem.fiscalYear,
-//         value: elem.data[1].Q4CmlValue
-//     };
-// });
-
-// let netIncomeSet = totalCollectionNintendo.map(elem => {
-//     return {
-//         fiscalYear: elem.fiscalYear,
-//         value: elem.data[2].Q4CmlValue
-//     };
-// });
-
-// function sortList(list: {fiscalYear: string, value: number}[]) {
-
-//     const sortList = list.map((elem, index, array) => {
-//             return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
-//     }).sort((a, b) => { // (b,a) is descending order, (a,b) sorts in ascending order
-//         return (a.value > b.value)
-//             ? 1
-//             : (a.value < b.value)
-//             ? -1
-//             : 0 
-//     });
-
-//     return sortList
-// };
-
-// const sortedNetSales = sortList(netSalesSet);
-// const sortedOperatingIncome = sortList(operatingIncomeSet);
-// const sortedNetIncome = sortList(netIncomeSet);
-
-
-// const printCumulativeValues = (list: {fiscalYear: string, value: number}[], sortedList: {fiscalYear: string, value: number}[], valueType: string): string[] => {
-
-//     let header = liner(border([
-//         spacer(valueType,34,"left"),
-//     ]),"−","both",true)
-
-//     let printList = list.map(elem => {
-//         return border([
-//             spacer(elem.fiscalYear + " Cumulative",20,"left"),
-//             spacer(`¥${elem.value.toLocaleString("en")}M`,12,"right")
-//         ],true) 
-//     });
-
-//     let printCount: string = border([
-//         spacer("Count",17,"left"),
-//         spacer(`${sortedList.length}`,15,"right"),
-//     ],true);
-
-//     let printSum: string = border([
-//         spacer("Sum",17,"left"),
-//         spacer(`¥${(sortedList.map(value => value.value).reduce((acc, next) => acc + next)).toLocaleString("en")}M`,15,"right"),
-//     ],true) 
-     
-//     let printAverage: string = border([
-//         spacer("Average",17,"left"),
-//         spacer(`¥${Number(((sortedList.map(value => value.value).reduce((acc, next) => acc + next)) / sortedList.length).toFixed(0)).toLocaleString("en")}M`,15,"right"),
-//     ],true) 
-
-//     let printMedian: string = ((sortedList.length % 2) !== 0) // odd number
-//             // median formula source: https://en.wikipedia.org/wiki/Median
-//             // odd number median(x) = x(n+1)/2 => index version => median(x) = (x(n+1)/2)-1
-//             ? `¥${sortedList[((sortedList.length + 1)/2) -1].value.toLocaleString("en")}M`
-//             // even number median(x) = (x(n/2) + x((n/2) + 1)) /2 => index version median(x) = (x((n/2)-1) + x((n/2))) /2
-//             : `¥${Number(((sortedList[(sortedList.length/2) -1].value + sortedList[(sortedList.length/2)].value)/2).toFixed(0)).toLocaleString("en")}M`;
-
-//     let printMedianFixed: string = border([
-//         spacer("Median",17,"left"),
-//         spacer(printMedian,15,"right")
-//     ],true);
-
-//     let printMinimum: string = border([
-//         spacer("Minimum",17,"left"),
-//         spacer(`¥${sortedList[0].value.toLocaleString("en")}M`,15,"right")
-//     ],true);
-
-//     let printMaximum: string = border([
-//         spacer("Maximum",17,"left"),
-//         spacer(`¥${sortedList[sortedList.length-1].value.toLocaleString("en")}M`,15,"right"),
-//     ]);
-
-//     let printStats = liner(
-//         printCount + printSum + printAverage + printMedianFixed + printMinimum + printMaximum, "−", "both",true,35);
-     
-//     return [
-//         header, 
-//         ...printList, 
-//         printStats
-//     ] 
-// };
-
-// const printNetSales = printCumulativeValues(netSalesSet, sortedNetSales, "Net Sales");
-
-// const printOperatingIncome = printCumulativeValues(operatingIncomeSet, sortedOperatingIncome, "Operating Income");
-
-// const printNetIncome = printCumulativeValues(netIncomeSet, sortedNetIncome, "Net Income");
-
+// have to remember to put this in somehow... via footnotes most likely
 let dataSourceNintendo = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_data/index.html"
-
-
-// const operatingResultsNintendo = operatingResultsMaker(totalCollectionNintendo);
-
-// const operatingResultsBandaiNamco = operatingResultsMaker(totalCollectionBandaiNamco);
-
-// const operatingResultsSquareEnix = operatingResultsMaker(totalCollectionSquareEnix);
-
-// const operatingResultsSegaSammy = operatingResultsMaker(totalCollectionSegaSammy);
-
-// const operatingResultsCapcom = operatingResultsMaker(totalCollectionCapcom);
-
-// const operatingResultsKoeiTecmo = operatingResultsMaker(totalCollectionKoeiTecmo);
-
-// export const cumulativeEarningsListNintendo = [
-//     operatingResultsNintendo.header,
-//     labelMaker(totalCollectionNintendo),
-//     ...operatingResultsNintendo.netSales,
-//     ...operatingResultsNintendo.operatingIncome,
-//     ...operatingResultsNintendo.netIncome,
-//     "###\n",
-//     dataSourceNintendo,
-// ].reduce((prev, next) => prev + next);
-
-// export const cumulativeEarningsListBandaiNamco = [
-//     operatingResultsBandaiNamco.header,
-//     labelMaker(totalCollectionBandaiNamco),
-//     ...operatingResultsBandaiNamco.netSales,
-//     ...operatingResultsBandaiNamco.operatingIncome,
-//     ...operatingResultsBandaiNamco.netIncome,
-//     "###\n",
-// ].reduce((prev, next) => prev + next);
-
-// export const cumulativeEarningsListSquareEnix = [
-//     operatingResultsSquareEnix.header,
-//     labelMaker(totalCollectionSquareEnix),
-//     ...operatingResultsSquareEnix.netSales,
-//     ...operatingResultsSquareEnix.operatingIncome,
-//     ...operatingResultsSquareEnix.netIncome,
-//     "###\n",
-// ].reduce((prev, next) => prev + next);
-
-// export const cumulativeEarningsListSegaSammy = [
-//     operatingResultsSegaSammy.header,
-//     labelMaker(totalCollectionSegaSammy),
-//     ...operatingResultsSegaSammy.netSales,
-//     ...operatingResultsSegaSammy.operatingIncome,
-//     ...operatingResultsSegaSammy.netIncome,
-//     "###\n",
-// ].reduce((prev, next) => prev + next);
-
-// export const cumulativeEarningsListCapcom = [
-//     operatingResultsCapcom.header,
-//     labelMaker(totalCollectionCapcom),
-//     ...operatingResultsCapcom.netSales,
-//     ...operatingResultsCapcom.operatingIncome,
-//     ...operatingResultsCapcom.netIncome,
-//     "###\n",
-// ].reduce((prev, next) => prev + next);
-
-// export const cumulativeEarningsListKoeiTecmo = [
-//     operatingResultsKoeiTecmo.header,
-//     labelMaker(totalCollectionKoeiTecmo),
-//     ...operatingResultsKoeiTecmo.netSales,
-//     ...operatingResultsKoeiTecmo.operatingIncome,
-//     ...operatingResultsKoeiTecmo.netIncome,
-//     "###\n",
-// ].reduce((prev, next) => prev + next);
 
 export const cumulativeEarningsListNintendo = operatingResultsMakerV2(totalCollectionNintendo);
 
