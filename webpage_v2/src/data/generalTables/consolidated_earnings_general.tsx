@@ -230,181 +230,157 @@ export function nothingCheck(
     }
 }
 
-const nintendoYearRange = 2023 - 1981;
-const nintendoKeys = Array.from({length: nintendoYearRange + 1},(v, i) => nintendoYearRange - i);
+const collectionNintendoV2 = new Map<number, EarningsJSONV2>();
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2023)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2022)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2021)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2020)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2019)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2018)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2017)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2016)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2015)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2014)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2013)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2012)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2011)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2010)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2009)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2008)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2007)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2006)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2005)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2004)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2003)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2002)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2001)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings2000)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1999)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1998)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1997)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1996)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1995)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1994)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1993)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1992)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1991)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1990)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1989)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1988)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1987)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1986)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1985)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1984)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1983)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1982)
+    collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1981)
 
-const collectionNintendoV2 = new Map<number, EarningsJSONV2>([
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2023],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2022],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2021],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2020],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2019],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2018],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2017],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2016],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2015],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2014],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2013],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2012],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2011],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2010],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2009],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2008],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2007],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2006],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2005],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2004],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2003],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2002],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2001],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings2000],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1999],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1998],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1997],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1996],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1995],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1994],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1993],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1992],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1991],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1990],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1989],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1988],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1987],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1986],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1985],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1984],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1983],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1982],
-    [nintendoKeys.pop() ?? 0, nintendoConsolidatedEarnings1981],
-]);
+const collectionCapcomV2 = new Map<number, EarningsJSONV2>();
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2023)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2022)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2021)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2020)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2019)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2018)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2017)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2016)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2015)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2014)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2013)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2012)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2011)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2010)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2009)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2008)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2007)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2006)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2005)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2004)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2003)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2002)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2001)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2000)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings1999)
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings1998)
 
-const capcomYearRange = 2023 - 1998;
-const capcomKeys = Array.from({length: capcomYearRange + 1},(v, i) => capcomYearRange - i);
+const collectionBandaiNamcoV2 = new Map<number, EarningsJSONV2>();
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2023)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2022)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2021)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2020)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2019)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2018)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2017)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2016)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2015)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2014)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2013)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2012)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2011)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2010)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2009)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2008)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2007)
+    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2006)
 
-const collectionCapcomV2 = new Map<number, EarningsJSONV2>([
-    [capcomKeys.pop() ?? 0, capcomEarnings2023],
-    [capcomKeys.pop() ?? 0, capcomEarnings2022],
-    [capcomKeys.pop() ?? 0, capcomEarnings2021],
-    [capcomKeys.pop() ?? 0, capcomEarnings2020],
-    [capcomKeys.pop() ?? 0, capcomEarnings2019],
-    [capcomKeys.pop() ?? 0, capcomEarnings2018],
-    [capcomKeys.pop() ?? 0, capcomEarnings2017],
-    [capcomKeys.pop() ?? 0, capcomEarnings2016],
-    [capcomKeys.pop() ?? 0, capcomEarnings2015],
-    [capcomKeys.pop() ?? 0, capcomEarnings2014],
-    [capcomKeys.pop() ?? 0, capcomEarnings2013],
-    [capcomKeys.pop() ?? 0, capcomEarnings2012],
-    [capcomKeys.pop() ?? 0, capcomEarnings2011],
-    [capcomKeys.pop() ?? 0, capcomEarnings2010],
-    [capcomKeys.pop() ?? 0, capcomEarnings2009],
-    [capcomKeys.pop() ?? 0, capcomEarnings2008],
-    [capcomKeys.pop() ?? 0, capcomEarnings2007],
-    [capcomKeys.pop() ?? 0, capcomEarnings2006],
-    [capcomKeys.pop() ?? 0, capcomEarnings2005],
-    [capcomKeys.pop() ?? 0, capcomEarnings2004],
-    [capcomKeys.pop() ?? 0, capcomEarnings2003],
-    [capcomKeys.pop() ?? 0, capcomEarnings2002],
-    [capcomKeys.pop() ?? 0, capcomEarnings2001],
-    [capcomKeys.pop() ?? 0, capcomEarnings2000],
-    [capcomKeys.pop() ?? 0, capcomEarnings1999],
-    [capcomKeys.pop() ?? 0, capcomEarnings1998],
-]);
+const collectionSegaSammyV2 = new Map<number, EarningsJSONV2>();
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2023)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2022)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2021)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2020)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2019)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2018)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2017)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2016)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2015)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2014)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2013)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2012)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2011)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2010)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2009)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2008)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2007)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2006)
+    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2005)
 
-const bandaiNamcoYearRange = 2023 - 2006;
-const bandaiNamcoKeys = Array.from({length: bandaiNamcoYearRange + 1},(v, i) => bandaiNamcoYearRange - i);
+const collectionKoeiTecmoV2 = new Map<number, EarningsJSONV2>();
+    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2023)
+    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2022)
+    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2021)
+    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2020)
+    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2019)
+    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2018)
+    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2017)
+    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2016)
+    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2015)
+    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2014)
+    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2013)
+    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2012)
+    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2011)
+    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2010)
 
-const collectionBandaiNamcoV2 = new Map<number, EarningsJSONV2>([
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2023],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2022],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2021],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2020],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2019],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2018],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2017],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2016],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2015],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2014],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2013],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2012],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2011],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2010],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2009],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2008],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2007],
-    [bandaiNamcoKeys.pop() ?? 0, bandaiNamco2006],
-]);
-
-const segaYearRange = 2023 - 2005;
-const segaKeys = Array.from({length: segaYearRange + 1},(v, i) => segaYearRange - i);
-
-const collectionSegaSammyV2 = new Map<number, EarningsJSONV2>([
-    [segaKeys.pop() ?? 0, sega2023],
-    [segaKeys.pop() ?? 0, sega2022],
-    [segaKeys.pop() ?? 0, sega2021],
-    [segaKeys.pop() ?? 0, sega2020],
-    [segaKeys.pop() ?? 0, sega2019],
-    [segaKeys.pop() ?? 0, sega2018],
-    [segaKeys.pop() ?? 0, sega2017],
-    [segaKeys.pop() ?? 0, sega2016],
-    [segaKeys.pop() ?? 0, sega2015],
-    [segaKeys.pop() ?? 0, sega2014],
-    [segaKeys.pop() ?? 0, sega2013],
-    [segaKeys.pop() ?? 0, sega2012],
-    [segaKeys.pop() ?? 0, sega2011],
-    [segaKeys.pop() ?? 0, sega2010],
-    [segaKeys.pop() ?? 0, sega2009],
-    [segaKeys.pop() ?? 0, sega2008],
-    [segaKeys.pop() ?? 0, sega2007],
-    [segaKeys.pop() ?? 0, sega2006],
-    [segaKeys.pop() ?? 0, sega2005],
-]);
-
-const koeiYearRange = 2023 - 2010;
-const koeiKeys = Array.from({length: koeiYearRange + 1},(v, i) => koeiYearRange - i);
-
-const collectionKoeiTecmoV2 = new Map<number, EarningsJSONV2>([
-    [/*0*/ koeiKeys.pop() ?? 0, koeiTecmo2023],
-    [/*1*/ koeiKeys.pop() ?? 0, koeiTecmo2022],
-    [/*2*/ koeiKeys.pop() ?? 0, koeiTecmo2021],
-    [/*3*/ koeiKeys.pop() ?? 0, koeiTecmo2020],
-    [/*4*/ koeiKeys.pop() ?? 0, koeiTecmo2019],
-    [/*5*/ koeiKeys.pop() ?? 0, koeiTecmo2018],
-    [/*6*/ koeiKeys.pop() ?? 0, koeiTecmo2017],
-    [/*7*/ koeiKeys.pop() ?? 0, koeiTecmo2016],
-    [/*8*/ koeiKeys.pop() ?? 0, koeiTecmo2015],
-    [/*9*/ koeiKeys.pop() ?? 0, koeiTecmo2014],
-    [/*10*/koeiKeys.pop() ?? 0, koeiTecmo2013],
-    [/*11*/koeiKeys.pop() ?? 0, koeiTecmo2012],
-    [/*12*/koeiKeys.pop() ?? 0, koeiTecmo2011],
-    [/*13*/koeiKeys.pop() ?? 0, koeiTecmo2010],
-]);
-
-const squareEnixYearRange = 2023 - 2004;
-const squareEnixKeys = Array.from({length: squareEnixYearRange + 1},(v, i) => squareEnixYearRange - i);
-
-const collectionSquareEnixV2 = new Map<number, EarningsJSONV2>([
-    [squareEnixKeys.pop() ?? 0, squareEnix2023],
-    [squareEnixKeys.pop() ?? 0, squareEnix2022],
-    [squareEnixKeys.pop() ?? 0, squareEnix2021],
-    [squareEnixKeys.pop() ?? 0, squareEnix2020],
-    [squareEnixKeys.pop() ?? 0, squareEnix2019],
-    [squareEnixKeys.pop() ?? 0, squareEnix2018],
-    [squareEnixKeys.pop() ?? 0, squareEnix2017],
-    [squareEnixKeys.pop() ?? 0, squareEnix2016],
-    [squareEnixKeys.pop() ?? 0, squareEnix2015],
-    [squareEnixKeys.pop() ?? 0, squareEnix2014],
-    [squareEnixKeys.pop() ?? 0, squareEnix2013],
-    [squareEnixKeys.pop() ?? 0, squareEnix2012],
-    [squareEnixKeys.pop() ?? 0, squareEnix2011],
-    [squareEnixKeys.pop() ?? 0, squareEnix2010],
-    [squareEnixKeys.pop() ?? 0, squareEnix2009],
-    [squareEnixKeys.pop() ?? 0, squareEnix2008],
-    [squareEnixKeys.pop() ?? 0, squareEnix2007],
-    [squareEnixKeys.pop() ?? 0, squareEnix2006],
-    [squareEnixKeys.pop() ?? 0, squareEnix2005],
-    [squareEnixKeys.pop() ?? 0, squareEnix2004],
-]);
+const collectionSquareEnixV2 = new Map<number, EarningsJSONV2>();
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2023)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2022)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2021)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2020)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2019)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2018)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2017)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2016)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2015)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2014)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2013)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2012)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2011)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2010)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2009)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2008)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2007)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2006)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2005)
+    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2004)
 
 function typeReturn(typeValue: string | undefined): "units" | "currency" | "percentage" {
 
