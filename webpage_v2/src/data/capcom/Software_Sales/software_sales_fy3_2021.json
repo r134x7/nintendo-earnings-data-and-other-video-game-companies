@@ -2,72 +2,74 @@
     "fiscalYear": "FY3/2021",
     "companyName": "CAPCOM Co., Ltd.",
     "currentQuarter": 4,
-    "digitalContentsSales": {
-        "name": "Digital Contents - Package & Digital",
-        "units": "currency",
-        "Q1CmlValue": 20.3,
-        "Q2CmlValue": 32.1,
-        "Q3CmlValue": 44.2,
-        "Q4CmlValue": 68.8,
-        "forecastThisFY": 60.9,
-        "forecastRevision1": 65.5,
-        "forecastNextFY": 73.3,
-        "footnotes": "*Sales includes: - Downloadable content purchases"
-    },
-    "digitalContentsUnits": {
-        "name": "Digital Contents - Package & Digital",
-        "units": "units",
-        "Q1CmlValue": 9200,
-        "Q2CmlValue": 13800,
-        "Q3CmlValue": 19800,
-        "Q4CmlValue": 30100,
-        "forecastThisFY": 28000,
-        "forecastRevision1": 29000,
-        "forecastNextFY": 32000
-    },
-    "packageSales": {
-        "name": "Package",
-        "units": "currency",
-        "Q1CmlValue": 6.0,
-        "Q2CmlValue": 7.3,
-        "Q3CmlValue": 9.9,
-        "Q4CmlValue": 20.8,
-        "forecastThisFY": 15.9,
-        "forecastRevision1": 18.5,
-        "forecastNextFY": 21.8
-    },
-    "packageUnits": {
-        "name": "Package",
-        "units": "units",
-        "Q1CmlValue": 1850,
-        "Q2CmlValue": 2400,
-        "Q3CmlValue": 3600,
-        "Q4CmlValue": 6950,
-        "forecastThisFY": 4500,
-        "forecastRevision1": 6400,
-        "forecastNextFY": 5500
-    },
-    "digitalSales": {
-        "name": "Digital",
-        "units": "currency",
-        "Q1CmlValue": 14.3,
-        "Q2CmlValue": 24.8,
-        "Q3CmlValue": 34.3,
-        "Q4CmlValue": 48.0,
-        "forecastThisFY": 45.0,
-        "forecastRevision1": 47.0,
-        "forecastNextFY": 51.5,
-        "footnotes": "*Sales includes: - Downloadable content purchases"
-    },
-    "digitalUnits": {
-        "name": "Digital",
-        "units": "units",
-        "Q1CmlValue": 7350,
-        "Q2CmlValue": 11400,
-        "Q3CmlValue": 16200,
-        "Q4CmlValue": 23150,
-        "forecastThisFY": 23500,
-        "forecastRevision1": 22600,
-        "forecastNextFY": 26500
-    }
+    "data": [
+        {
+            "name": "Digital Contents - Package & Digital",
+            "units": "currency",
+            "Q1CmlValue": 20.3,
+            "Q2CmlValue": 32.1,
+            "Q3CmlValue": 44.2,
+            "Q4CmlValue": 68.8,
+            "forecastThisFY": 60.9,
+            "forecastRevision1": 65.5,
+            "forecastNextFY": 73.3,
+            "footnotes": "*Sales includes: - Downloadable content purchases"
+        },
+        {
+            "name": "Digital Contents - Package & Digital",
+            "units": "units",
+            "Q1CmlValue": 9200,
+            "Q2CmlValue": 13800,
+            "Q3CmlValue": 19800,
+            "Q4CmlValue": 30100,
+            "forecastThisFY": 28000,
+            "forecastRevision1": 29000,
+            "forecastNextFY": 32000
+        },
+        {
+            "name": "Package",
+            "units": "currency",
+            "Q1CmlValue": 6.0,
+            "Q2CmlValue": 7.3,
+            "Q3CmlValue": 9.9,
+            "Q4CmlValue": 20.8,
+            "forecastThisFY": 15.9,
+            "forecastRevision1": 18.5,
+            "forecastNextFY": 21.8
+        },
+        {
+            "name": "Package",
+            "units": "units",
+            "Q1CmlValue": 1850,
+            "Q2CmlValue": 2400,
+            "Q3CmlValue": 3600,
+            "Q4CmlValue": 6950,
+            "forecastThisFY": 4500,
+            "forecastRevision1": 6400,
+            "forecastNextFY": 5500
+        },
+        {
+            "name": "Digital",
+            "units": "currency",
+            "Q1CmlValue": 14.3,
+            "Q2CmlValue": 24.8,
+            "Q3CmlValue": 34.3,
+            "Q4CmlValue": 48.0,
+            "forecastThisFY": 45.0,
+            "forecastRevision1": 47.0,
+            "forecastNextFY": 51.5,
+            "footnotes": "*Sales includes: - Downloadable content purchases"
+        },
+        {
+            "name": "Digital",
+            "units": "units",
+            "Q1CmlValue": 7350,
+            "Q2CmlValue": 11400,
+            "Q3CmlValue": 16200,
+            "Q4CmlValue": 23150,
+            "forecastThisFY": 23500,
+            "forecastRevision1": 22600,
+            "forecastNextFY": 26500
+        }
+    ]
 }
