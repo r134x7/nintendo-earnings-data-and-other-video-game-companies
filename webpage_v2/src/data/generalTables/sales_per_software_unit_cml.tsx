@@ -137,7 +137,27 @@ function setMakerV2(
         }
     })
 
-    
+    millionFixData.forEach((value, key, map) => {
+
+        map.set(key, value.concat( {
+            name: "Sales Per Software Unit",
+            Q1QtrValue: salesPerSoftwareUnitCalculation(value[0].Q1QtrValue, value[1].Q1QtrValue),
+            Q2QtrValue: salesPerSoftwareUnitCalculation(value[0].Q2QtrValue, value[1].Q2QtrValue),
+            Q3QtrValue: salesPerSoftwareUnitCalculation(value[0].Q3QtrValue, value[1].Q3QtrValue),
+            Q4QtrValue: salesPerSoftwareUnitCalculation(value[0].Q4QtrValue, value[1].Q4QtrValue),
+            Q1CmlValue: salesPerSoftwareUnitCalculation(value[0].Q1CmlValue, value[1].Q1CmlValue),
+            Q2CmlValue: salesPerSoftwareUnitCalculation(value[0].Q2CmlValue, value[1].Q2CmlValue),
+            Q3CmlValue: salesPerSoftwareUnitCalculation(value[0].Q3CmlValue, value[1].Q3CmlValue),
+            Q4CmlValue: salesPerSoftwareUnitCalculation(value[0].Q4CmlValue, value[1].Q4CmlValue),
+            forecastThisFY: salesPerSoftwareUnitCalculation(value[0].forecastThisFY, value[1].forecastThisFY),
+            forecastRevision1: salesPerSoftwareUnitCalculation(value[0].forecastRevision1, value[1].forecastRevision1),
+            forecastRevision2: salesPerSoftwareUnitCalculation(value[0].forecastRevision2, value[1].forecastRevision2),
+            forecastRevision3: salesPerSoftwareUnitCalculation(value[0].forecastRevision3, value[1].forecastRevision3),
+            forecastNextFY: salesPerSoftwareUnitCalculation(value[0].forecastNextFY, value[1].forecastNextFY),
+            footnotes: value[0].footnotes
+        } satisfies EarningsV2));
+    })
+
 }
 
 
