@@ -448,7 +448,7 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
     
 }
 
-function printStats(list: string[], textLength: number): string[] {
+export function printStats(list: string[], textLength: number): string[] {
 
     let toPrint = list.reduce((acc, next) => acc + next,"")
 
@@ -457,7 +457,7 @@ function printStats(list: string[], textLength: number): string[] {
     return [toLiner]
 }
 
-function getCount(list: number[]): number {
+export function getCount(list: number[]): number {
 
     // let toFilter = list.filter(elem => elem.length !== 0)
     // let headerCount = 1;
@@ -465,13 +465,13 @@ function getCount(list: number[]): number {
     return (list.length)
 }
 
-function getConcat(list: string[] | undefined): string {
+export function getConcat(list: string[] | undefined): string {
     return (!list) 
         ? ""
         : list.reduce((acc, next) => acc + next, "");
 }
 
-function getSum(list: number[]): number {
+export function getSum(list: number[]): number {
 
     // let toReduce: number = list.reduce((acc, next) => {
     //     return (Number.isNaN(next) || next.length === 0)
@@ -484,7 +484,7 @@ function getSum(list: number[]): number {
     return toReduce
 }
 
-function printCount(list: number[], textLength: number): string[] {
+export function printCount(list: number[], textLength: number): string[] {
 
     let toPrint = border([
         spacer("Count",textLength,"left"),
@@ -494,7 +494,7 @@ function printCount(list: number[], textLength: number): string[] {
     return [toPrint]
 }
 
-function printSum(list: number[], textLength: number): string[] {
+export function printSum(list: number[], textLength: number): string[] {
 
     let toPrint: string = border([
         spacer("Sum",textLength,"left"),
@@ -504,7 +504,7 @@ function printSum(list: number[], textLength: number): string[] {
     return [toPrint]
 }
 
-function printAverage(list: number[], textLength: number): string[] {
+export function printAverage(list: number[], textLength: number): string[] {
 
     let toPrint: string = border([
         spacer("Average",textLength,"left"),
@@ -514,7 +514,7 @@ function printAverage(list: number[], textLength: number): string[] {
     return [toPrint]
 }
 
-function printMinMedianMax(list: number[], textLength: number): string[] {
+export function printMinMedianMax(list: number[], textLength: number): string[] {
 
     const sortedList = list.sort((a, b) => {
         return a > b
