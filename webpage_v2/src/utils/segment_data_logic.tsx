@@ -543,6 +543,7 @@ const printYoYSalesPerSoftwareUnit = (segmentSales: Section[], segmentSalesLastF
 export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJSONV2, collectionLastFY: EarningsJSONV2 | undefined, headerLength: number, 
     salesRoundtoMillion: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand",
     unitsRoundtoMillion: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand",
+    removeHeader?: boolean,
     ): string {
 
     const currentQuarter = collectionThisFY.currentQuarter;
@@ -559,10 +560,12 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
 
     const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
 
-    const printOne = headerPrint([
-        makeHeader.companyName + " | " + makeHeader.fiscalYear,
-        makeHeader.title
-    ],headerLength) + "\n" + printDateLabel;
+    const printOne = (!removeHeader)
+        ? headerPrint([
+            makeHeader.companyName + " | " + makeHeader.fiscalYear,
+            makeHeader.title
+        ],headerLength) + "\n" + printDateLabel
+        : ""
 
     const dataThisFY = getData(collectionThisFY, collectionThisFY.data.length);
 
@@ -756,6 +759,7 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
         nameSalesHeader, 
         mapAndReduceQtrCml,
         finalForecast,
+        "###\n"
     ].reduce((acc, next) => acc + next);
 }
 

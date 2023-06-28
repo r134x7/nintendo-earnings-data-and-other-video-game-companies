@@ -36,8 +36,6 @@ export const softwareSalesGraphList = new Map();
 
 collectionV2.forEach((value, key, map) => {
 
-    // softwareSalesList.set(key, generalSalesPerSoftwareUnitListV2Map(value, map.get(key+1), 41, "Billion", "One Thousand"))
-
     for (let index = 0; index < value.data.length; index+= 2) {
         
         softwareSalesList.set(key,
@@ -62,10 +60,10 @@ collectionV2.forEach((value, key, map) => {
             38,
             "Billion",
             "One Thousand",
+            (index === 0) ? false : true
         ))
 
     }
-
 })
 
 collectionV2.clear();
