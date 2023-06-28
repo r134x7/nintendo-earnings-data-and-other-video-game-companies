@@ -158,8 +158,7 @@ const squareEnixSalesHeader =
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
 
 
-// doesn't work correctly
-function printSalesAndYoY(
+function printSalesColumnOnly(
     quarterSales: EarningsValue[],
     quarterYoY: EarningsValue[],
     cumulativeSales: EarningsValue[],
@@ -544,6 +543,7 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
     salesRoundtoMillion: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand",
     unitsRoundtoMillion: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand",
     removeHeader?: boolean,
+    salesOnly?: boolean,
     ): string {
 
     const currentQuarter = collectionThisFY.currentQuarter;
@@ -738,8 +738,8 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
 
     const mapAndReduceQtrCml: string = [...printQtrAndCml.values()]
         .flatMap((elem, index, array) => (index % 2 === 0 && elem.length !== 0) ? elem + (array[index+1].length === 0 ? "" : "\n" + array[index+1]) : [])
-        .concat(printTextBlock(dataThisFY.get(0)?.footnotes, 50) ?? [])
-        .reduce((acc, next) => acc + liner(next,doubleLine(next),"bottom",true,50),"")
+        .concat(printTextBlock(dataThisFY.get(0)?.footnotes, (salesOnly) ? 27 : 50) ?? [])
+        .reduce((acc, next) => acc + liner(next,doubleLine(next),"bottom",true,(salesOnly) ? 27 : 50),"")
 
     const mapForecast: string[] = [...printForecasts.values()].flatMap((elem) => (elem.length !== 0) ? elem : []);
 

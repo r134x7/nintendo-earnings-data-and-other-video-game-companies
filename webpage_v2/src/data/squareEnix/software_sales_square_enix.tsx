@@ -43,25 +43,37 @@ collectionV2.forEach((value, key, map) => {
         generalSalesPerSoftwareUnitListV2Map(
             {
                 ...value,
-                data: [
-                    (index !== 2) ? 
-                    map.get(key)?.data[index],
-                    map.get(key)?.data[index+1],
-                ] as EarningsMakeV2[]
+                data: (index !== 2) 
+                        ? [map.get(key)?.data[index] as EarningsMakeV2] 
+                        : [ 
+                            combineData([
+                                map.get(key)?.data[0] as EarningsMakeV2, 
+                                map.get(key)?.data[1] as EarningsMakeV2, 
+                            ]), 
+                            map.get(key)?.data[index] as EarningsMakeV2,
+                        ] as EarningsMakeV2[]
             } satisfies EarningsJSONV2,
-            {
+            (map.get(key+1) === undefined)
+            ? undefined
+            : {
                 companyName: map.get(key+1)?.companyName ?? "Error",
                 currentQuarter: map.get(key+1)?.currentQuarter ?? 0,
                 fiscalYear: map.get(key+1)?.fiscalYear ?? "Error",
-                data: [
-                    map.get(key+1)?.data[index],
-                    map.get(key+1)?.data[index+1],
-                ] as EarningsMakeV2[]
+                data: (index !== 2) 
+                        ? [map.get(key+1)?.data[index] as EarningsMakeV2] 
+                        : [ 
+                            combineData([
+                                map.get(key+1)?.data[0] as EarningsMakeV2, 
+                                map.get(key+1)?.data[1] as EarningsMakeV2, 
+                            ]), 
+                            map.get(key+1)?.data[index] as EarningsMakeV2,
+                        ] as EarningsMakeV2[]
             } satisfies EarningsJSONV2,
-            38,
+            42,
             "Billion",
             "One Thousand",
-            (index === 0) ? false : true
+            (index === 0) ? false : true,
+            (index === 2) ? false : true,
         ))
 
     }
@@ -71,17 +83,17 @@ collectionV2.clear();
 
 function combineData(sales: EarningsMakeV2[]): EarningsMakeV2 {
     return {
-        name: sales.reduce((acc, next) => acc +  next.name + "&",""),
+        name: sales.reduce((acc, next, index, array) => acc + next.name + (array[index] === array.at(-1) ? "" : " & ") ,""),
         units: "currency",
-        Q1CmlValue: sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.Q1CmlValue))) ? 0 : Number(next.Q1CmlValue)), 0),
+        Q1CmlValue:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.Q1CmlValue))) ? 0 : Number(next.Q1CmlValue)), 0),
         Q2CmlValue:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.Q2CmlValue))) ? 0 : Number(next.Q2CmlValue)), 0),
         Q3CmlValue:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.Q3CmlValue))) ? 0 : Number(next.Q3CmlValue)), 0),
         Q4CmlValue:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.Q4CmlValue))) ? 0 : Number(next.Q4CmlValue)), 0),
-        forecastThisFY:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastThisFY))) ? 0 : Number(next.forecastThisFY)), 0),
-        forecastRevision1:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastRevision1))) ? 0 : Number(next.forecastRevision1)), 0),
-        forecastRevision2:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastRevision2))) ? 0 : Number(next.forecastRevision2)), 0),
-        forecastRevision3:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastRevision3))) ? 0 : Number(next.forecastRevision3)), 0),
-        forecastNextFY:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastNextFY))) ? 0 : Number(next.forecastNextFY)), 0),
+        // forecastThisFY:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastThisFY))) ? 0 : Number(next.forecastThisFY)), 0),
+        // forecastRevision1:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastRevision1))) ? 0 : Number(next.forecastRevision1)), 0),
+        // forecastRevision2:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastRevision2))) ? 0 : Number(next.forecastRevision2)), 0),
+        // forecastRevision3:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastRevision3))) ? 0 : Number(next.forecastRevision3)), 0),
+        // forecastNextFY:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastNextFY))) ? 0 : Number(next.forecastNextFY)), 0),
         footnotes: sales.reduce((acc, next) => acc + next.footnotes + " ", ""),
     } satisfies EarningsMakeV2 
 }
