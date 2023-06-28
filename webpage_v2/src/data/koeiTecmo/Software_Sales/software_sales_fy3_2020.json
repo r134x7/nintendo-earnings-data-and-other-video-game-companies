@@ -6,10 +6,10 @@
         {
             "name": "Console Package & DL",
             "units": "currency",
-            "Q1CmlValue": 3.095,
-            "Q2CmlValue": 8.003,
-            "Q3CmlValue": 12.555,
-            "Q4CmlValue": 21.446,
+            "Q1CmlValue": 3095,
+            "Q2CmlValue": 8003,
+            "Q3CmlValue": 12555,
+            "Q4CmlValue": 21446,
             "footnotes": "Package: Including sales for packages, royalty, commission fees (incl. %-of-completion basis), and down payment. DL (download) sales: sales for digital copies via PSN/XboxLive/Switch DL/Steam" 
         },
         {
