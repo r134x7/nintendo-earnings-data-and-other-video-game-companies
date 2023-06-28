@@ -74,7 +74,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
             },
             {
                 name: "Software Sales",
-                value: softwareSalesList?.[index],
+                value: softwareSalesList.get(index),
             },
             {
                 name: "FY Series IP",

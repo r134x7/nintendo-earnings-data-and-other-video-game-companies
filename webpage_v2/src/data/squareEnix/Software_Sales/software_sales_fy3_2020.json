@@ -2,30 +2,32 @@
     "fiscalYear": "FY3/2020",
     "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
     "currentQuarter": 4,
-    "hdGamesSales": {
-        "name": "HD Games",
-        "units": "currency",
-        "Q1CmlValue": 7.9,
-        "Q2CmlValue": 18.7,
-        "Q3CmlValue": 27.1,
-        "Q4CmlValue": 42.0,
-        "footnotes": "*Sales might include: - Downloadable content purchases" 
-    },
-    "mmoSales": {
-        "name": "MMO",
-        "units": "currency",
-        "Q1CmlValue": 8.8,
-        "Q2CmlValue": 22.4,
-        "Q3CmlValue": 31.0,
-        "Q4CmlValue": 40.1,
-        "footnotes": "**MMO sales includes subscriptions" 
-    },
-    "hdGamesAndMMOUnits": {
-        "name": "HD Games & MMO",
-        "units": "units",
-        "Q1CmlValue": 3250,
-        "Q2CmlValue": 8650,
-        "Q3CmlValue": 13620,
-        "Q4CmlValue": 18090
-    }
-}
+    "data": [
+        {
+            "name": "HD Games",
+            "units": "currency",
+            "Q1CmlValue": 7.9,
+            "Q2CmlValue": 18.7,
+            "Q3CmlValue": 27.1,
+            "Q4CmlValue": 42.0,
+            "footnotes": "*Sales might include: - Downloadable content purchases" 
+        },
+        {
+            "name": "MMO",
+            "units": "currency",
+            "Q1CmlValue": 8.8,
+            "Q2CmlValue": 22.4,
+            "Q3CmlValue": 31.0,
+            "Q4CmlValue": 40.1,
+            "footnotes": "**MMO sales includes subscriptions" 
+        },
+        {
+            "name": "HD Games & MMO",
+            "units": "units",
+            "Q1CmlValue": 3250,
+            "Q2CmlValue": 8650,
+            "Q3CmlValue": 13620,
+            "Q4CmlValue": 18090
+        }
+    ]
+}   

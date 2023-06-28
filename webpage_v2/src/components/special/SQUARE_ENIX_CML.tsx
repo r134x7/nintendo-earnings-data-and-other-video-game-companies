@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Space, TextInput, Button, Select } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { squareEnixSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
+// import { squareEnixSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListSquareEnix } from "../../data/generalTables/consolidated_earnings_cml_data";
 import { fyTitlesSquareEnix, squareEnixFootnotes } from "../../data/generalTables/annual_report_cml_data";
 import { printTextBlock, liner } from "../../utils/table_design_logic";
@@ -83,7 +83,8 @@ export default function SQUARE_ENIX_CML() {
         },
         {
             name: "Square Enix Sales Per Software Unit - Cumulative",
-            value: squareEnixSalesPerSoftwareUnitCml
+            // value: squareEnixSalesPerSoftwareUnitCml
+            value: "Nothing"
         },
         {
             name: "Square Enix FY Series IP - Cumulative",

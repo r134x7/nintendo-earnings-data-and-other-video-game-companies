@@ -74,12 +74,12 @@ function labelMaker <T extends Dates>(collection: T[]) {
 //     koeiTecmoSoftwareSales2023,
 // ];
 
-const squareEnixCollection: squareEnixCollectionJSON[] = [
-    squareEnixSoftwareSales2020,
-    squareEnixSoftwareSales2021,
-    squareEnixSoftwareSales2022,
-    squareEnixSoftwareSales2023,
-];
+// const squareEnixCollection: squareEnixCollectionJSON[] = [
+//     squareEnixSoftwareSales2020,
+//     squareEnixSoftwareSales2021,
+//     squareEnixSoftwareSales2022,
+//     squareEnixSoftwareSales2023,
+// ];
 
 const generalSalesHeader = 
 `+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
@@ -112,9 +112,9 @@ const generalSalesHeader =
 
 // const koeiTecmoUnits: Section[] = setMaker(koeiTecmoCollection, koeiTecmoUnitsMake);
 
-const squareEnixSales: Section[] = setMaker(squareEnixCollection, salesHDandMMOmake);
+// const squareEnixSales: Section[] = setMaker(squareEnixCollection, salesHDandMMOmake);
 
-const squareEnixUnits: Section[] = setMaker(squareEnixCollection, squareEnixUnitsMake);
+// const squareEnixUnits: Section[] = setMaker(squareEnixCollection, squareEnixUnitsMake);
 
 function headerMaker(companyName: string) {
 
@@ -347,10 +347,10 @@ const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArra
 //     printSalesPerSoftwareUnitCumulative(koeiTecmoSales, koeiTecmoUnits)
 // ].reduce((acc, next) => acc + "\n" + next);
 
-export const squareEnixSalesPerSoftwareUnitCml = [
-    headerMaker("Square Enix"),
-    labelMaker(squareEnixCollection),
-    printSalesPerSoftwareUnitCumulative(squareEnixSales, squareEnixUnits),
-    notes2021,
-    liner(border([spacer("See \"Data by Fiscal Year\" for HD Games and MMO sales splits", 60, "left")]),"−","both"),
-].reduce((acc, next) => acc + "\n" + next);
+// export const squareEnixSalesPerSoftwareUnitCml = [
+//     headerMaker("Square Enix"),
+//     labelMaker(squareEnixCollection),
+//     printSalesPerSoftwareUnitCumulative(squareEnixSales, squareEnixUnits),
+//     notes2021,
+//     liner(border([spacer("See \"Data by Fiscal Year\" for HD Games and MMO sales splits", 60, "left")]),"−","both"),
+// ].reduce((acc, next) => acc + "\n" + next);
