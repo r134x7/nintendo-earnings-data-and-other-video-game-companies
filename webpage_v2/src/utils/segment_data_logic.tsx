@@ -723,7 +723,6 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
 
     })
 
-
     function doubleLine(value: string) {
         let doubleLine: "=" | "−" = (value.includes("Cml.") 
             ? "=" 
@@ -739,57 +738,24 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
         .concat(printTextBlock(dataThisFY.get(0)?.footnotes, 50) ?? [])
         .reduce((acc, next) => acc + liner(next,doubleLine(next),"bottom",true,50),"")
 
-    // printQtrAndCml.forEach((value, key, map) => {
+    const mapForecast: string[] = [...printForecasts.values()].flatMap((elem) => (elem.length !== 0) ? elem : []);
 
-    //     let doubleLine: "=" | "−" = (value.includes("Cml.") 
-    //             ? "=" 
-    //             : value.includes("4th")
-    //                 ? "=" 
-    //                 : "−")
-        
-    //     let yoyCheck = (map.get(key+1)?.length ?? 0) === 0 ? "" : "\n" 
-
-    //     if (key % 2 === 0) {
-    //         map.set(key, liner(
-    //             value + yoyCheck + (map.get(key+1) ?? ""), doubleLine,"bottom",true,50
-    //         ))
-    //     } else {
-    //        map.delete(key)
-    //     }
-    // })
-
-    // printQtrAndCml.set(printQtrAndCml.size*3,
-    //     liner(printTextBlock(dataThisFY.get(0)?.footnotes, 50),"−","bottom",true,50)
-    //     )
-
-    const mapAndReduceForecast: string = [...printForecasts.values()]
-        .flatMap((elem) => (elem.length !== 0) ? elem : [])
-        .concat(printTextBlock(dataThisFY.get(0)?.footnotes, 54) ?? [])
+    const concatForecast = (mapForecast.length !== 0)
+        ? mapForecast.concat(printTextBlock(dataThisFY.get(0)?.footnotes, 54) ?? [])
+        : mapForecast
+    
+    const reduceForecast = concatForecast
         .reduce((acc, next, index, array) => acc + liner(next,(array[index] === array.at(-2) ? "=" : "−"),"bottom",true,54),"") 
-    
-    // printForecasts.forEach((value, key, map) => {
 
-    //     let doubleLine: "=" | "−" = (key === 4) ? "=" : "−";
+    const finalForecast = (mapForecast.length !== 0)
+        ? nameForecastHeader + reduceForecast
+        : reduceForecast
 
-    //     if (value.length === 0) {
-    //         // map.delete(key);
-    //         // easier to do nothing so that the set below (outside forEach) is set to a new key value without having to *3
-    //     } else {
-    //         map.set(key, liner(value,doubleLine,"bottom",true,54))
-    //     }
-    // })
-
-    // printForecasts.set(printForecasts.size,
-    //     liner(printTextBlock(dataThisFY.get(0)?.footnotes, 54),"−","bottom",true,54))
-    
     return [
         printOne, 
         nameSalesHeader, 
-        // ...printQtrAndCml.values(), 
         mapAndReduceQtrCml,
-        nameForecastHeader,
-        // ...printForecasts.values(),
-        mapAndReduceForecast,
+        finalForecast,
     ].reduce((acc, next) => acc + next);
 }
 
