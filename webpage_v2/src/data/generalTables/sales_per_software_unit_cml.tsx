@@ -9,6 +9,16 @@ import { type EarningsV2,
     printCumulativeValuesV2,
 } from "../../utils/general_earnings_logic";
 import { generalSalesHeaderV2, salesPerSoftwareUnitCalculation, millionFix } from "../../utils/segment_data_logic";
+import { 
+    getConcat,
+    getCount,
+    getSum,
+    printAverage,
+    printCount,
+    printMinMedianMax,
+    printStats,
+    printSum, 
+} from "./consolidated_earnings_cml_data";
 
 import bandaiNamcoSoftwareSales2023 from "../bandaiNamco/Software_Sales/software_sales_fy3_2023.json";
 import bandaiNamcoSoftwareSales2022 from "../bandaiNamco/Software_Sales/software_sales_fy3_2022.json";
@@ -164,13 +174,14 @@ function setMakerV2(
 
     const printQtrAndCml = new Map<number, string>();
 
-    const testFun = printAllValues(millionFixData);
-    console.log(testFun);
-    
-    console.log("test");
-    
+    // const testFun = printAllValues(millionFixData);
 
-    function printAllValues(list: Map<number, EarningsV2[]>): string[] {
+
+    return printAllValues(millionFixData);
+
+}
+
+function printAllValues(list: Map<number, EarningsV2[]>): string[] {
 
 
         function sectionHeader(name: string | undefined, textLength: number): string {
@@ -202,51 +213,101 @@ function setMakerV2(
 
         list.forEach((value, key, map) => {
 
-            const getTextLength = (key === 0) ? 12 : (key === 1) ? 11 : 11;
 
             for (let index = 0; index < value.length; index++) {
+
+                const getTextLength = (index === 0) ? 12 : (index === 1) ? 11 : 11;
                 
                 toReturn.set(0, (toReturn.get(0) ?? []).concat(
-                    printQuarterValuesV2(value[index].Q1QtrValue,currentQuarter, getTextLength,(index === 0) ? false : true, (index === 2 ? "None" : undefined)))
+                    printQuarterValuesV2(value[index].Q1QtrValue, 0, getTextLength,(index === 0) ? false : true, (index === 2 ? "None" : undefined)),
+                    (index === 2) ? "\n" : ""
+                    )
                 ) 
 
                 toReturn.set(1, (toReturn.get(1) ?? []).concat(
-                    printQuarterValuesV2(value[index].Q2QtrValue,currentQuarter, getTextLength,(index === 0) ? false : true, (index === 2 ? "None" : undefined)))
+                    printQuarterValuesV2(value[index].Q2QtrValue, 0, getTextLength,(index === 0) ? false : true, (index === 2 ? "None" : undefined)),
+                    (index === 2) ? "\n" : ""
+                    )
                 ) 
 
                 toReturn.set(2, (toReturn.get(2) ?? []).concat(
-                    printQuarterValuesV2(value[index].Q3QtrValue,currentQuarter, getTextLength,(index === 0) ? false : true, (index === 2 ? "None" : undefined)))
+                    printQuarterValuesV2(value[index].Q3QtrValue, 0, getTextLength,(index === 0) ? false : true, (index === 2 ? "None" : undefined)),
+                    (index === 2) ? "\n" : ""
+                    )
                 ) 
 
                 toReturn.set(3, (toReturn.get(3) ?? []).concat(
-                    printQuarterValuesV2(value[index].Q4QtrValue,currentQuarter, getTextLength,(index === 0) ? false : true, (index === 2 ? "None" : undefined)))
+                    printQuarterValuesV2(value[index].Q4QtrValue, 0, getTextLength,(index === 0) ? false : true, (index === 2 ? "None" : undefined)),
+                    (index === 2) ? "\n" : ""
+                    )
                 ) 
 
                 toReturn.set(4, (toReturn.get(4) ?? []).concat(
-                    printCumulativeValuesV2(value[index].Q2CmlValue,currentQuarter, getTextLength,(index === 0) ? false : true, (index === 2 ? "None" : undefined)))
+                    printCumulativeValuesV2(value[index].Q2CmlValue, 0, getTextLength,(index === 0) ? false : true, (index === 2 ? "None" : undefined)),
+                    (index === 2) ? "\n" : ""
+                    )
                 ) 
 
                 toReturn.set(5, (toReturn.get(5) ?? []).concat(
-                    printCumulativeValuesV2(value[index].Q3CmlValue,currentQuarter, getTextLength,(index === 0) ? false : true, (index === 2 ? "None" : undefined)))
+                    printCumulativeValuesV2(value[index].Q3CmlValue, 0, getTextLength,(index === 0) ? false : true, (index === 2 ? "None" : undefined)),
+                    (index === 2) ? "\n" : ""
+                    )
                 ) 
 
                 toReturn.set(6, (toReturn.get(6) ?? []).concat(
-                    printCumulativeValuesV2(value[index].Q4CmlValue,currentQuarter, getTextLength,(index === 0) ? false : true, (index === 2 ? "None" : undefined)))
+                    printCumulativeValuesV2(value[index].Q4CmlValue, 0, getTextLength,(index === 0) ? false : true, (index === 2 ? "None" : undefined)),
+                    (index === 2) ? "\n" : ""
+                    )
                 ) 
 
             }
 
         })
 
+        toReturn.forEach((value, key, map) => {
+            console.log(value.length);
+            
+            toReturn.set(key, [value.reduce((acc, next, index, array) => acc + next) + "\n"])
+        })
 
         console.log(toReturn);
         
+    // toReturn.forEach((value, key, map) => {
+    // list.forEach((value, key, map) => {
 
-    }
+        // let getTextLength = (offset: number) => (map.get(key)?.at(-2)?.length === undefined)
+        //     ? 0
+        //     : (map.get(key)?.at(-2)?.length as number) - offset 
+        
+        // let getTextLength = (x: number) => x
+        
+        
+        // for (let index = 0; index < value.length; index++) {
 
+        //     toReturn.set(key, (toReturn.get(key) ?? []).concat(
+        //         printStats(
+        //             printCount(getValues.get(key) ?? [0], getTextLength(21)).concat(
+        //                 printSum(getValues.get(key) ?? [0], getTextLength(21)),
+        //                 printAverage(getValues.get(key) ?? [0], getTextLength(21)),
+        //                 printMinMedianMax(getValues.get(key) ?? [0], getTextLength(21)),
+        //             )
+        //         , getTextLength(3) ?? 0),
+        //     ))
+            
+        // }
+    // })
+
+    return [
+        getConcat(toReturn.get(0)),
+        getConcat(toReturn.get(1)),
+        getConcat(toReturn.get(2)),
+        getConcat(toReturn.get(3)),
+        getConcat(toReturn.get(4)),
+        getConcat(toReturn.get(5)),
+        getConcat(toReturn.get(6)),
+    ]
 
 }
-
 
 // const bandaiNamcoSales: Section[] = setMaker(bandaiNamcoCollection, bandaiNamcoSalesMake);
 

@@ -65,6 +65,26 @@ export default function BANDAI_NAMCO_CML() {
                     setTimePeriod(6)
                 }
                 break;
+            
+            case "Bandai Namco Sales Per Software Unit - Cumulative":
+                if (timePeriodValue === "1st Quarter") {
+                    setTimePeriod(0)
+                } else if (timePeriodValue === "2nd Quarter") {
+                    setTimePeriod(1)
+                } else if (timePeriodValue === "3rd Quarter") {
+                    setTimePeriod(2)
+                } else if (timePeriodValue === "4th Quarter") {
+                    setTimePeriod(3)
+                } else if (timePeriodValue === "First Half") {
+                    setTimePeriod(4)
+                } else if (timePeriodValue === "First Three Quarters") {
+                    setTimePeriod(5)
+                } else if (timePeriodValue === "FY Cumulative") {
+                    setTimePeriod(6)
+                } else {
+                    setTimePeriod(6)
+                }
+                break;
 
             case "Bandai Namco FY Series IP - Cumulative":
                 setTitlesLength(annualReportTitlesFilter.length)
@@ -84,7 +104,7 @@ export default function BANDAI_NAMCO_CML() {
         },
         {
             name: "Bandai Namco Sales Per Software Unit - Cumulative",
-            value: bandaiNamcoSalesPerSoftwareUnitCml
+            value: bandaiNamcoSalesPerSoftwareUnitCml[timePeriod]
             // value: "Nothing"
         },
         {
@@ -117,7 +137,7 @@ export default function BANDAI_NAMCO_CML() {
             />
             
             <Code  onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {(value === "Bandai Namco Consolidated Operating Results - Cumulative")
+                {(value === "Bandai Namco Consolidated Operating Results - Cumulative" || value === "Bandai Namco Sales Per Software Unit - Cumulative")
                     ? <Select
                         data={[
                          "1st Quarter",
