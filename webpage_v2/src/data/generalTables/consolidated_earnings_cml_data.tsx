@@ -423,8 +423,8 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
             printStats(
                 printCount(getValues.get(key) ?? [0], getTextLength(21)).concat(
                     printSum(getValues.get(key) ?? [0], getTextLength(21),"Million","¥"),
-                    printAverage(getValues.get(key) ?? [0], getTextLength(21)),
-                    printMinMedianMax(getValues.get(key) ?? [0], getTextLength(21)),
+                    printAverage(getValues.get(key) ?? [0], getTextLength(21),"Million","¥",0),
+                    printMinMedianMax(getValues.get(key) ?? [0], getTextLength(21),"Million","¥",0),
                 )
             , getTextLength(3) ?? 0),
         ))
@@ -500,17 +500,23 @@ export function printSum(list: number[], textLength: number, getNumberType: "Bil
     return [toPrint]
 }
 
-export function printAverage(list: number[], textLength: number): string[] {
+export function printAverage(list: number[], textLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None", fixedLength: number): string[] {
+
+    const calculateAverage = getSum(list) / getCount(list);
+
+    const getRounding = Number(calculateAverage.toFixed(fixedLength));
+
+    const printValue = printValuePrimitive(getRounding,numberType(getNumberType), getUnitsType) 
 
     let toPrint: string = border([
         spacer("Average",textLength,"left"),
-        spacer(`¥${Number((getSum(list) / getCount(list)).toFixed(0)).toLocaleString("en")}M`,15,"right"),
+        spacer(printValue,15,"right"),
     ],true) 
 
     return [toPrint]
 }
 
-export function printMinMedianMax(list: number[], textLength: number): string[] {
+export function printMinMedianMax(list: number[], textLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None", fixedLength: number): string[] {
 
     const sortedList = list.sort((a, b) => {
         return a > b
@@ -520,23 +526,29 @@ export function printMinMedianMax(list: number[], textLength: number): string[] 
                 : 0
     })
 
+    const printValueMinimum = printValuePrimitive(sortedList[0],numberType(getNumberType), getUnitsType) 
+    
+    const printValueMax = printValuePrimitive(sortedList[sortedList.length-1],numberType(getNumberType), getUnitsType) 
+
     const printMininum = border([
         spacer("Minimum",textLength,"left"),
-        spacer(`¥${sortedList[0].toLocaleString("en")}M`,15,"right")
+        spacer(printValueMinimum,15,"right")
     ],true);
 
     const printMaximum = border([
         spacer("Maximum",textLength,"left"),
-        spacer(`¥${sortedList[sortedList.length-1].toLocaleString("en")}M`,15,"right"),
+        spacer(printValueMax,15,"right"),
     ]);
 
     let printMedian: string = ((sortedList.length % 2) !== 0) // odd number
             // median formula source: https://en.wikipedia.org/wiki/Median
             // odd number median(x) = x(n+1)/2 => index version => median(x) = (x(n+1)/2)-1
-            ? `¥${sortedList[((sortedList.length + 1)/2) -1].toLocaleString("en")}M`
+            ? printValuePrimitive(sortedList[((sortedList.length + 1)/2) -1],numberType(getNumberType), getUnitsType)
             // even number median(x) = (x(n/2) + x((n/2) + 1)) /2 => index version median(x) = (x((n/2)-1) + x((n/2))) /2
-            : `¥${Number(((sortedList[(sortedList.length/2) -1] + sortedList[(sortedList.length/2)])/2).toFixed(0)).toLocaleString("en")}M`;
-    
+            : printValuePrimitive(
+                Number(((sortedList[(sortedList.length/2) -1] + sortedList[(sortedList.length/2)])/2).toFixed(fixedLength))
+                ,numberType(getNumberType), getUnitsType) // not fixed to 0 can lead to .5 values if not using decimals 
+
     let printMedianFixed: string = border([
         spacer("Median",textLength,"left"),
         spacer(printMedian,15,"right")
