@@ -333,7 +333,7 @@ function printAllValues(list: Map<number, EarningsV2[]>): string[] {
             // console.log(index);
             
             toReturn.set(key, (toReturn.get(key) ?? []).concat(
-                printStats(
+                // printStats(
                     printCount(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)).concat(
                         printSum(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),
                         (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None" 
@@ -347,7 +347,7 @@ function printAllValues(list: Map<number, EarningsV2[]>): string[] {
                         (index !== 1) ? 0 : 2
                         ),
                     )
-                , getTextLength(3) ?? 0),
+                // , getTextLength(3) ?? 0),
             ))
             
             // console.log(

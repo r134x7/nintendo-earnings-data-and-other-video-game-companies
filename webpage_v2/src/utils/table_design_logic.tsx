@@ -73,7 +73,7 @@ export const spacer = (text: string, length: number, align: "left" | "right"): s
                 : " " + text + " ".repeat(length - text.length)
     };
 
-export const border = (textArray: string[], newLine?: true): string => {
+export const border = (textArray: string[], newLine?: boolean): string => {
         let setText = (textArray.length < 2)
             ? "|" + textArray[0] + "|"
             : textArray.reduce((acc, next, index) => {
@@ -82,7 +82,7 @@ export const border = (textArray: string[], newLine?: true): string => {
                 : acc + "|" + next 
         }, "")
 
-        return (newLine === undefined)
+        return (newLine === undefined || newLine === false)
             ? setText
             : setText + "\n";
     };

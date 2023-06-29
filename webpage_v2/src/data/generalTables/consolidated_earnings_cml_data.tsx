@@ -421,10 +421,10 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
         
         map.set(key, (toReturn.get(key) ?? []).concat(
             printStats(
-                printCount(getValues.get(key) ?? [0], getTextLength(21)).concat(
-                    printSum(getValues.get(key) ?? [0], getTextLength(21),"Million","¥"),
-                    printAverage(getValues.get(key) ?? [0], getTextLength(21),"Million","¥",0),
-                    printMinMedianMax(getValues.get(key) ?? [0], getTextLength(21),"Million","¥",0),
+                printCount(getValues.get(key) ?? [0], getTextLength(21),15,true).concat(
+                    printSum(getValues.get(key) ?? [0], getTextLength(21),15,"Million","¥",true),
+                    printAverage(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
+                    printMinMedianMax(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
                 )
             , getTextLength(3) ?? 0),
         ))
@@ -478,29 +478,38 @@ export function getSum(list: number[]): number {
     return toReduce
 }
 
-export function printCount(list: number[], textLength: number): string[] {
+export function printCount(list: number[], textLength: number, valueLength: number, newLine: boolean, singleColumn?: boolean): string[] {
 
-    let toPrint = border([
-        spacer("Count",textLength,"left"),
-        spacer(`${getCount(list)}`,15,"right"),
-    ],true);
+    let toPrint = (!singleColumn)
+        ? border([
+            spacer("Count",textLength,"left"),
+            spacer(`${getCount(list)}`,/*15*/valueLength,"right"),
+        ],newLine)
+        : border([
+            spacer(`${getCount(list)}`,/*15*/valueLength,"right"),
+        ],newLine)
+
 
     return [toPrint]
 }
 
-export function printSum(list: number[], textLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None"): string[] {
+export function printSum(list: number[], textLength: number, valueLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None", newLine: boolean, singleColumn?: boolean): string[] {
 
     const getValue = printValuePrimitive(getSum(list),numberType(getNumberType), getUnitsType) 
 
-    let toPrint: string = border([
+    let toPrint: string = (!singleColumn) 
+    ? border([
         spacer("Sum",textLength,"left"),
-        spacer(getValue,15,"right"),
-    ],true) 
+        spacer(getValue,valueLength,"right"),
+    ],newLine) 
+    : border([
+        spacer(getValue,/*15*/valueLength,"right"),
+    ],newLine)
 
     return [toPrint]
 }
 
-export function printAverage(list: number[], textLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None", fixedLength: number): string[] {
+export function printAverage(list: number[], textLength: number, valueLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None", fixedLength: number, newLine: boolean, singleColumn?: boolean): string[] {
 
     const calculateAverage = getSum(list) / getCount(list);
 
@@ -508,15 +517,19 @@ export function printAverage(list: number[], textLength: number, getNumberType: 
 
     const printValue = printValuePrimitive(getRounding,numberType(getNumberType), getUnitsType) 
 
-    let toPrint: string = border([
+    let toPrint: string = (!singleColumn)
+    ? border([
         spacer("Average",textLength,"left"),
-        spacer(printValue,15,"right"),
-    ],true) 
+        spacer(printValue,valueLength,"right"),
+    ],newLine) 
+    : border([
+        spacer(printValue,valueLength,"right"),
+    ],newLine)
 
     return [toPrint]
 }
 
-export function printMinMedianMax(list: number[], textLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None", fixedLength: number): string[] {
+export function printMinMedianMax(list: number[], textLength: number, valueLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None", fixedLength: number, newLine: boolean, singleColumn?: boolean): string[] {
 
     const sortedList = list.sort((a, b) => {
         return a > b
@@ -530,15 +543,23 @@ export function printMinMedianMax(list: number[], textLength: number, getNumberT
     
     const printValueMax = printValuePrimitive(sortedList[sortedList.length-1],numberType(getNumberType), getUnitsType) 
 
-    const printMininum = border([
+    const printMininum = (!singleColumn) 
+    ? border([
         spacer("Minimum",textLength,"left"),
-        spacer(printValueMinimum,15,"right")
-    ],true);
+        spacer(printValueMinimum, valueLength,"right")
+    ],newLine)
+    : border([
+        spacer(printValueMinimum, valueLength,"right")
+    ],newLine);
 
-    const printMaximum = border([
+    const printMaximum = (!singleColumn) 
+    ? border([
         spacer("Maximum",textLength,"left"),
-        spacer(printValueMax,15,"right"),
-    ]);
+        spacer(printValueMax, valueLength,"right"),
+    ])
+    : border([
+        spacer(printValueMax, valueLength,"right")
+    ],newLine);
 
     let printMedian: string = ((sortedList.length % 2) !== 0) // odd number
             // median formula source: https://en.wikipedia.org/wiki/Median
@@ -549,10 +570,14 @@ export function printMinMedianMax(list: number[], textLength: number, getNumberT
                 Number(((sortedList[(sortedList.length/2) -1] + sortedList[(sortedList.length/2)])/2).toFixed(fixedLength))
                 ,numberType(getNumberType), getUnitsType) // not fixed to 0 can lead to .5 values if not using decimals 
 
-    let printMedianFixed: string = border([
+    let printMedianFixed: string = (!singleColumn) 
+    ? border([
         spacer("Median",textLength,"left"),
-        spacer(printMedian,15,"right")
-    ],true);
+        spacer(printMedian,valueLength,"right")
+    ],newLine)
+    : border([
+        spacer(printMedian, valueLength,"right")
+    ],newLine);
 
     return [
         printMedianFixed,
