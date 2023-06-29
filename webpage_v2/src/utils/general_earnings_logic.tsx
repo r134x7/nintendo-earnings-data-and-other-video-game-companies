@@ -157,7 +157,7 @@ export function printValueQtrOrCml(value: EarningsValue, numberTypeInput?: strin
     }
 }
 
-export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter: number, textLength: number, singleColumn?: boolean, numberTypeCall?: "Billion" | "Million" | "Thousand" | "None"): string {
+export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter: number, textLength: number, singleColumn?: boolean, numberTypeCall?: "Billion" | "Million" | "Thousand" | "None", specialPagePeriod?: string): string {
 
     if (quarterValue.kind === "Quarter") {
 
@@ -165,7 +165,7 @@ export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter
         
         return (!singleColumn)
             ? border([
-            spacer(quarterValue.period,12, "left"),
+            spacer((!specialPagePeriod) ? quarterValue.period : specialPagePeriod + quarterValue.period, (!specialPagePeriod) ? 12 : specialPagePeriod.length + quarterValue.period.length + 1, "left"),
             spacer(valueString, textLength, "right")
             ])
             : spacer(valueString + " |", textLength, "right")
@@ -174,7 +174,7 @@ export function printQuarterValuesV2(quarterValue: EarningsValue, currentQuarter
     }
 }
 
-export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter: number, textLength: number, singleColumn?: boolean, numberTypeCall?: "Billion" | "Million" | "Thousand" | "None"): string {
+export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter: number, textLength: number, singleColumn?: boolean, numberTypeCall?: "Billion" | "Million" | "Thousand" | "None", specialPagePeriod?: string): string {
 
     if (cmlValue.kind === "Cumulative" && cmlValue.period !== "1st Quarter") {
 
@@ -182,13 +182,13 @@ export function printCumulativeValuesV2(cmlValue: EarningsValue, currentQuarter:
             ? "1st Half"
             : (cmlValue.kind === "Cumulative" && cmlValue.period === "First Three Quarters")
                 ? "1st 3/4" 
-                : `${cmlValue.kind === "Cumulative" ? cmlValue.thisFY : "Error"}`
+                : `${cmlValue.kind === "Cumulative" ? (!specialPagePeriod ? cmlValue.thisFY : "FY Cml.") : "Error"}`
 
         let valueString = printValueQtrOrCml(cmlValue, numberType(numberTypeCall));
 
         return (!singleColumn) 
             ? border([
-                spacer(cmlPeriod, 12,"left"),
+                spacer((!specialPagePeriod) ? cmlPeriod : specialPagePeriod + cmlPeriod, (!specialPagePeriod) ? 12 : specialPagePeriod.length + cmlPeriod.length + 1,"left"),
                 spacer(valueString, textLength,"right")
             ])
             : spacer(valueString + " |", textLength,"right")
