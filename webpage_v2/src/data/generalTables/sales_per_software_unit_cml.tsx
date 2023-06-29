@@ -335,9 +335,17 @@ function printAllValues(list: Map<number, EarningsV2[]>): string[] {
             toReturn.set(key, (toReturn.get(key) ?? []).concat(
                 printStats(
                     printCount(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)).concat(
-                        printSum(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)),
-                        printAverage(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)),
-                        printMinMedianMax(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)),
+                        printSum(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),
+                        (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None" 
+                        ),
+                        printAverage(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),
+                        (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None", 
+                        (index !== 1) ? 0 : 2
+                        ),
+                        printMinMedianMax(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),
+                        (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None", 
+                        (index !== 1) ? 0 : 2
+                        ),
                     )
                 , getTextLength(3) ?? 0),
             ))
