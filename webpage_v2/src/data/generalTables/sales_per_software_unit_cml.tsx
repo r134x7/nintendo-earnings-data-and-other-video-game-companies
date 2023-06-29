@@ -330,21 +330,22 @@ function printAllValues(list: Map<number, EarningsV2[]>): string[] {
         
         for (let index = 0; index < 3; index++) {
 
-            // console.log(index);
+            let indexCheck = (index !== 1) ? 11 : 12; 
+            let columnCheck = (index !== 0) ? true : false;
             
             toReturn.set(key, (toReturn.get(key) ?? []).concat(
                 // printStats(
-                    printCount(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)).concat(
-                        printSum(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),
-                        (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None" 
+                    printCount(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),indexCheck,false,columnCheck).concat(
+                        printSum(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),indexCheck,
+                        (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None",false,columnCheck 
                         ),
-                        printAverage(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),
+                        printAverage(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),indexCheck,
                         (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None", 
-                        (index !== 1) ? 0 : 2
+                        (index !== 1) ? 0 : 2,false,columnCheck
                         ),
-                        printMinMedianMax(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),
+                        printMinMedianMax(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),indexCheck,
                         (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None", 
-                        (index !== 1) ? 0 : 2
+                        (index !== 1) ? 0 : 2,false,columnCheck
                         ),
                     )
                 // , getTextLength(3) ?? 0),
