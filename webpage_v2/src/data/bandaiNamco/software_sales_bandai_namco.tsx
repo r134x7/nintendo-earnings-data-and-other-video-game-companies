@@ -1,4 +1,4 @@
-import { Header, Section, BandaiNamcoPrint, graphMake, salesPerSoftwareUnitForecast, generalSalesPerSoftwareUnitListV2Map} from "../../utils/segment_data_logic";
+import { generalSalesPerSoftwareUnitListV2Map } from "../../utils/segment_data_logic";
 import softwareSales2023 from "./Software_Sales/software_sales_fy3_2023.json"
 import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Space, TextInput, Button, Select } from "@mantine/core";
 import { useSelector } from "react-redux";
-// import { bandaiNamcoSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
+import { bandaiNamcoSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListBandaiNamco } from "../../data/generalTables/consolidated_earnings_cml_data";
 import { fyTitlesBandaiNamco } from "../../data/generalTables/annual_report_cml_data";
 import { printTextBlock, liner } from "../../utils/table_design_logic";
@@ -84,8 +84,8 @@ export default function BANDAI_NAMCO_CML() {
         },
         {
             name: "Bandai Namco Sales Per Software Unit - Cumulative",
-            // value: bandaiNamcoSalesPerSoftwareUnitCml
-            value: "Nothing"
+            value: bandaiNamcoSalesPerSoftwareUnitCml
+            // value: "Nothing"
         },
         {
             name: "Bandai Namco FY Series IP - Cumulative",

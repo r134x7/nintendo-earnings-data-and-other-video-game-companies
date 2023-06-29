@@ -87,6 +87,7 @@ const generalSalesHeader =
 |              |       Sales |    Units |      Unit |
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
 
+export const bandaiNamcoSalesPerSoftwareUnitCml = setMakerV2(bandaiNamcoCollection, 38,"Billion","One Thousand");
 
 function setMakerV2(
     completeCollection: Map<number, EarningsJSONV2>, 
@@ -163,6 +164,12 @@ function setMakerV2(
 
     const printQtrAndCml = new Map<number, string>();
 
+    const testFun = printAllValues(millionFixData);
+    console.log(testFun);
+    
+    console.log("test");
+    
+
     function printAllValues(list: Map<number, EarningsV2[]>): string[] {
 
 
@@ -231,6 +238,9 @@ function setMakerV2(
 
         })
 
+
+        console.log(toReturn);
+        
 
     }
 
