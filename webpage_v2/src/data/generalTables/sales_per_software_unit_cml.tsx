@@ -7,6 +7,7 @@ import {
 import { type EarningsV2, 
     printQuarterValuesV2, 
     printCumulativeValuesV2,
+    EarningsValue,
 } from "../../utils/general_earnings_logic";
 import { generalSalesHeaderV2, salesPerSoftwareUnitCalculation, millionFix } from "../../utils/segment_data_logic";
 import { 
@@ -46,6 +47,28 @@ import squareEnixSoftwareSales2022 from "../squareEnix/Software_Sales/software_s
 import squareEnixSoftwareSales2021 from "../squareEnix/Software_Sales/software_sales_fy3_2021.json";
 import squareEnixSoftwareSales2020 from "../squareEnix/Software_Sales/software_sales_fy3_2020.json";
 
+type forGetValue = {
+    sales: number[],
+    units: number[],
+    salesPerSoftwareUnit: number[]
+}
+
+function extractValue(value: EarningsValue): number {
+    switch (value.kind) {
+        case "Quarter":
+           return  value.value
+        
+        case "Cumulative":
+            return value.value
+        
+        case "Forecast":
+            return value.value
+    
+        default:
+            // not the best default
+            return 0
+    }
+}
 // type Dates = {
 //     fiscalYear: string,
 //     currentQuarter: number,
@@ -201,15 +224,14 @@ function printAllValues(list: Map<number, EarningsV2[]>): string[] {
         ])
 
         const getValues = new Map<number, number[]>([
-            [0, []],
-            [1, []],
-            [2, []],
-            [3, []],
-            [4, []],
-            [5, []],
-            [6, []],
-        ])
-
+           [0, []], 
+           [1, []], 
+           [2, []], 
+           [3, []], 
+           [4, []], 
+           [5, []], 
+           [6, []], 
+        ]);
 
         list.forEach((value, key, map) => {
 
@@ -268,42 +290,53 @@ function printAllValues(list: Map<number, EarningsV2[]>): string[] {
                     )
                 ) 
 
+                // sales, units, sales per software unit. key + (index * 7)
+                getValues.set(0 + (index * 7), (getValues.get(0 + (index * 7)) ?? []).concat(extractValue(value[index].Q1QtrValue)))
+                getValues.set(1 + (index * 7), (getValues.get(1 + (index * 7)) ?? []).concat(extractValue(value[index].Q2QtrValue)))
+                getValues.set(2 + (index * 7), (getValues.get(2 + (index * 7)) ?? []).concat(extractValue(value[index].Q3QtrValue)))
+                getValues.set(3 + (index * 7), (getValues.get(3 + (index * 7)) ?? []).concat(extractValue(value[index].Q4QtrValue)))
+                getValues.set(4 + (index * 7), (getValues.get(4 + (index * 7)) ?? []).concat(extractValue(value[index].Q2CmlValue)))
+                getValues.set(5 + (index * 7), (getValues.get(5 + (index * 7)) ?? []).concat(extractValue(value[index].Q3CmlValue)))
+                getValues.set(6 + (index * 7), (getValues.get(6 + (index * 7)) ?? []).concat(extractValue(value[index].Q4CmlValue)))
+
             }
 
         })
 
         toReturn.forEach((value, key, map) => {
-            console.log(value.length);
+            // console.log(value.length);
             
             toReturn.set(key, [value.reduce((acc, next, index, array) => acc + next) + "\n"])
         })
 
-        console.log(toReturn);
+        // console.log(toReturn);
+        console.log(getValues);
         
-    // toReturn.forEach((value, key, map) => {
+        
+    toReturn.forEach((value, key, map) => {
     // list.forEach((value, key, map) => {
 
-        // let getTextLength = (offset: number) => (map.get(key)?.at(-2)?.length === undefined)
-        //     ? 0
-        //     : (map.get(key)?.at(-2)?.length as number) - offset 
+        let getTextLength = (offset: number) => (map.get(key)?.at(-2)?.length === undefined)
+            ? 0
+            : (map.get(key)?.at(-2)?.length as number) - offset 
         
         // let getTextLength = (x: number) => x
         
         
-        // for (let index = 0; index < value.length; index++) {
+        for (let index = 0; index < value.length; index++) {
 
-        //     toReturn.set(key, (toReturn.get(key) ?? []).concat(
-        //         printStats(
-        //             printCount(getValues.get(key) ?? [0], getTextLength(21)).concat(
-        //                 printSum(getValues.get(key) ?? [0], getTextLength(21)),
-        //                 printAverage(getValues.get(key) ?? [0], getTextLength(21)),
-        //                 printMinMedianMax(getValues.get(key) ?? [0], getTextLength(21)),
-        //             )
-        //         , getTextLength(3) ?? 0),
-        //     ))
+            toReturn.set(key, (toReturn.get(key) ?? []).concat(
+                printStats(
+                    printCount(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)).concat(
+                        printSum(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)),
+                        printAverage(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)),
+                        printMinMedianMax(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)),
+                    )
+                , getTextLength(3) ?? 0),
+            ))
             
-        // }
-    // })
+        }
+    })
 
     return [
         getConcat(toReturn.get(0)),
