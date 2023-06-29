@@ -303,28 +303,35 @@ function printAllValues(list: Map<number, EarningsV2[]>): string[] {
 
         })
 
+        let toReturnTextLength: number | undefined = undefined; 
+
         toReturn.forEach((value, key, map) => {
-            // console.log(value.length);
+            console.log(value.length);
+            toReturnTextLength = value.length;
+            let nextLineCheck = (key === map.size -1) ? "" : "\n";
             
-            toReturn.set(key, [value.reduce((acc, next, index, array) => acc + next) + "\n"])
+            toReturn.set(key, [value.reduce((acc, next, index, array) => acc + next) + nextLineCheck])
         })
 
-        // console.log(toReturn);
-        console.log(getValues);
         
         
     toReturn.forEach((value, key, map) => {
     // list.forEach((value, key, map) => {
 
-        let getTextLength = (offset: number) => (map.get(key)?.at(-2)?.length === undefined)
+        // let getTextLength = (offset: number) => (map.get(key)?.at(-2)?.length === undefined)
+        let getTextLength = (offset: number) => (toReturnTextLength === undefined)
             ? 0
-            : (map.get(key)?.at(-2)?.length as number) - offset 
+            : (toReturnTextLength) - offset 
         
+            // console.log(map.get(key));
+            
         // let getTextLength = (x: number) => x
         
         
-        for (let index = 0; index < value.length; index++) {
+        for (let index = 0; index < 3; index++) {
 
+            // console.log(index);
+            
             toReturn.set(key, (toReturn.get(key) ?? []).concat(
                 printStats(
                     printCount(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)).concat(
@@ -335,8 +342,21 @@ function printAllValues(list: Map<number, EarningsV2[]>): string[] {
                 , getTextLength(3) ?? 0),
             ))
             
+            // console.log(
+            //     printStats(
+            //         printCount(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)).concat(
+            //             printSum(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)),
+            //             printAverage(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)),
+            //             printMinMedianMax(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)),
+            //         )
+            //     , getTextLength(3) ?? 0),
+            // );
+            
         }
     })
+
+    // console.log(toReturn);
+    
 
     return [
         getConcat(toReturn.get(0)),

@@ -1,5 +1,5 @@
 import { EarningsJSONV2, getData } from "./consolidated_earnings_general"
-import { EarningsValue, EarningsV2 } from "../../utils/general_earnings_logic"
+import { EarningsValue, EarningsV2, printValueQtrOrCml, numberType, printValuePrimitive } from "../../utils/general_earnings_logic"
 import { liner, spacer, border, dateLabel } from "../../utils/table_design_logic"
 
 import consolidatedEarningsNintendo1981 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1981.json" 
@@ -422,7 +422,7 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
         map.set(key, (toReturn.get(key) ?? []).concat(
             printStats(
                 printCount(getValues.get(key) ?? [0], getTextLength(21)).concat(
-                    printSum(getValues.get(key) ?? [0], getTextLength(21)),
+                    printSum(getValues.get(key) ?? [0], getTextLength(21),"Million","¥"),
                     printAverage(getValues.get(key) ?? [0], getTextLength(21)),
                     printMinMedianMax(getValues.get(key) ?? [0], getTextLength(21)),
                 )
@@ -488,11 +488,13 @@ export function printCount(list: number[], textLength: number): string[] {
     return [toPrint]
 }
 
-export function printSum(list: number[], textLength: number): string[] {
+export function printSum(list: number[], textLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None"): string[] {
+
+    const getValue = printValuePrimitive(getSum(list),numberType(getNumberType), getUnitsType) 
 
     let toPrint: string = border([
         spacer("Sum",textLength,"left"),
-        spacer(`¥${getSum(list).toLocaleString("en")}M`,15,"right"),
+        spacer(getValue,15,"right"),
     ],true) 
 
     return [toPrint]

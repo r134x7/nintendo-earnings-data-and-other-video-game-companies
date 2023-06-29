@@ -146,6 +146,15 @@ export function numberType(value: "Billion" | "Million" | "Thousand" | "None" | 
     }
 }
 
+export function printValuePrimitive(value: number, numberTypeInput: string, units: "¥" | "%" | "None" | undefined): string {
+
+    return (units === "%")
+        ? `${value}${units}`
+        : (units === "¥")
+            ? `${units}${value.toLocaleString("en")}${numberTypeInput}`
+            : `${value}${numberTypeInput}`
+}
+
 export function printValueQtrOrCml(value: EarningsValue, numberTypeInput?: string): string {
 
     if ((value.kind === "Quarter" || value.kind === "Cumulative" || value.kind === "Forecast")) {
