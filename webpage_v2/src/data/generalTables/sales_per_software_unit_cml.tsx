@@ -255,11 +255,11 @@ function setMakerV2(
     millionFixData.forEach((value, key, map) => {
        if (value.length > 3) {
 
-        let allValues = [...value.values()]
+        const allValues = [...value.values()];
         
-        let dataTypesCount = 3
+        const dataTypesCount = 3;
 
-        let n = allValues.length / dataTypesCount
+        const n = allValues.length / dataTypesCount;
 
         let xIncrement = 0;
 
@@ -271,7 +271,7 @@ function setMakerV2(
                     [allValues[index], allValues[index+1], allValues[(xIncrement + (2*n))]]
                 ))
             }
-            xIncrement++
+            xIncrement++;
         }
         
         /*
@@ -280,15 +280,10 @@ function setMakerV2(
         2x3 = 6
         extracting third piece of data needed
         increment x = 0
-        index 0, 1, (0+6) x++
-        index 2, 3, (1+6) x++
-        index 4, 5, (2+6) x++
-            0, 1, 6,    
-            2, 3, 7,    
-            4, 5, 8     
+        index 0, 1, (0+6) x++ -> 0, 1, 6,    
+        index 2, 3, (1+6) x++ -> 2, 3, 7,    
+        index 4, 5, (2+6) x++ -> 4, 5, 8     
         */
-        // map.set(key, )
-        
        } 
     })
     
@@ -299,6 +294,12 @@ function setMakerV2(
         }
     })
 
+    millionFixData.forEach((value, key, map) => {
+        if (value.length > 3) {
+            printAllValues()
+        }
+    })
+
     const mainBody = printAllValues(millionFixData);
 
     const mapBody = mainBody.map(elem => printOne + elem + printFootnotes);
@@ -306,8 +307,12 @@ function setMakerV2(
     return mapBody
 }
 
-function printAllValues(list: Map<number, EarningsV2[]>): string[] {
+// function printAllValues(list: Map<number, EarningsV2[]>): string[] {
+function printAllValues(list: EarningsV2[]): string[] {
 
+        const getList = new Map<number, EarningsV2[]>([
+            [0, list]
+        ]);
 
         function sectionHeader(name: string | undefined, textLength: number): string {
             return liner(border([
@@ -316,13 +321,13 @@ function printAllValues(list: Map<number, EarningsV2[]>): string[] {
         } 
 
         const toReturn = new Map<number, string[]>([
-            [0, [sectionHeader(list.get(0)?.[0]?.name, 35) + generalSalesHeaderV2(21,12,9,10,7)]],
-            [1, [sectionHeader(list.get(0)?.[0]?.name, 35) + generalSalesHeaderV2(21,12,9,10,7)]],
-            [2, [sectionHeader(list.get(0)?.[0]?.name, 35) + generalSalesHeaderV2(21,12,9,10,7)]],
-            [3, [sectionHeader(list.get(0)?.[0]?.name, 35) + generalSalesHeaderV2(21,12,9,10,7)]],
-            [4, [sectionHeader(list.get(0)?.[0]?.name, 34) + generalSalesHeaderV2(18,12,9,10,7)]],
-            [5, [sectionHeader(list.get(0)?.[0]?.name, 44) + generalSalesHeaderV2(17,12,9,10,7)]],
-            [6, [sectionHeader(list.get(0)?.[0]?.name, 37) + generalSalesHeaderV2(17,12,9,10,7)]],
+            [0, [sectionHeader(getList.get(0)?.[0]?.name, 35) + generalSalesHeaderV2(21,12,9,10,7)]],
+            [1, [sectionHeader(getList.get(0)?.[0]?.name, 35) + generalSalesHeaderV2(21,12,9,10,7)]],
+            [2, [sectionHeader(getList.get(0)?.[0]?.name, 35) + generalSalesHeaderV2(21,12,9,10,7)]],
+            [3, [sectionHeader(getList.get(0)?.[0]?.name, 35) + generalSalesHeaderV2(21,12,9,10,7)]],
+            [4, [sectionHeader(getList.get(0)?.[0]?.name, 34) + generalSalesHeaderV2(18,12,9,10,7)]],
+            [5, [sectionHeader(getList.get(0)?.[0]?.name, 44) + generalSalesHeaderV2(17,12,9,10,7)]],
+            [6, [sectionHeader(getList.get(0)?.[0]?.name, 37) + generalSalesHeaderV2(17,12,9,10,7)]],
         ])
 
         const totalTextLength = new Map<number, number>([
@@ -337,7 +342,7 @@ function printAllValues(list: Map<number, EarningsV2[]>): string[] {
 
         const getValues = new Map<number, number[]>();
 
-        list.forEach((value, key, map) => {
+        getList.forEach((value, key, map) => {
 
             const getFiscalYear = (value[0].Q4CmlValue.kind === "Cumulative") ? value[0].Q4CmlValue.thisFY.slice(0, -4) : "ERROR" 
 
