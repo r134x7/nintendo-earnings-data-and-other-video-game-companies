@@ -292,23 +292,14 @@ function setMakerV2(
     })
     
     const mainBody = printAllValues(millionFixData, multipleData);
-    console.log(mainBody);
-    
 
-    const mapBody = mainBody.map(elem => printOne + elem + printFootnotes);
+    const mapBody = mainBody.map(elem => printOne + elem);
 
     return mapBody
 }
 
 function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[] {
-// function printAllValues(list: EarningsV2[]): string[] {
 
-        // const getList = new Map<number, EarningsV2[]>([
-        //     [0, list]
-        // ]);
-        // console.log(getList);
-    
-    // const dataToReturn: string[][] = [];
     const dataToReturn = new Map<number, string[]>();
 
   for (let theta = 0; theta < loops; theta++) {
@@ -319,14 +310,16 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
             ]),"−","top", true);
         } 
 
+        const getFootnotes = liner(printTextBlock(list.get(0)?.[theta * 3].footnotes,54),"−","bottom",true,54);
+
         const toReturn = new Map<number, string[]>([
-            [0, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 35) + generalSalesHeaderV2(21,12,9,10,7)]],
-            [1, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 35) + generalSalesHeaderV2(21,12,9,10,7)]],
-            [2, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 35) + generalSalesHeaderV2(21,12,9,10,7)]],
-            [3, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 35) + generalSalesHeaderV2(21,12,9,10,7)]],
-            [4, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 34) + generalSalesHeaderV2(18,12,9,10,7)]],
-            [5, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 44) + generalSalesHeaderV2(17,12,9,10,7)]],
-            [6, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 37) + generalSalesHeaderV2(17,12,9,10,7)]],
+            [0, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)]],
+            [1, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)]],
+            [2, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)]],
+            [3, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)]],
+            [4, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 55) + generalSalesHeaderV2(18,12,9,10,7)]],
+            [5, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 54) + generalSalesHeaderV2(17,12,9,10,7)]],
+            [6, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 54) + generalSalesHeaderV2(17,12,9,10,7)]],
         ])
 
         const totalTextLength = new Map<number, number>([
@@ -494,6 +487,7 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
                     ].flat()
                 // , getTextLength(-24) ?? 0),
                 , totalTextLength.get(key) ?? 60),
+                getFootnotes
         ))
         
         
@@ -564,6 +558,7 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
     //     getConcat(toReturn.get(6)),
     // ]
     dataToReturn.forEach((value, key, map) => {
+        
         map.set(key, [value.reduce((acc, next) => acc + next)])
     })
     return [...dataToReturn.values()].flat()
