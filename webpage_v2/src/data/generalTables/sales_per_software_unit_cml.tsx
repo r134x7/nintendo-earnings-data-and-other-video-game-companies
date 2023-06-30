@@ -145,6 +145,8 @@ function setMakerV2(
             "Segment Information - Software Sales"
         ],headerLength) + "\n" + printDateLabel
 
+    const printFootnotes = liner(printTextBlock(completeCollection.get(completeCollection.size-1)?.data[0].footnotes,50),"−","bottom",true,50)
+
     const millionFixData = new Map<number, EarningsV2[]>();
 
     makeData.forEach((value, key, map) => {
@@ -197,13 +199,11 @@ function setMakerV2(
         } satisfies EarningsV2));
     })
 
-    const printQtrAndCml = new Map<number, string>();
+    const mainBody = printAllValues(millionFixData);
 
-    // const testFun = printAllValues(millionFixData);
+    const mapBody = mainBody.map(elem => printOne + elem + printFootnotes);
 
-
-    return printAllValues(millionFixData);
-
+    return mapBody
 }
 
 function printAllValues(list: Map<number, EarningsV2[]>): string[] {
