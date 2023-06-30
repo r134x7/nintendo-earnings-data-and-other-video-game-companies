@@ -213,12 +213,6 @@ function setMakerV2(
 
         for (let index = 0; index < value.length; index+= 2) {
 
-    //    if (value.length > 3) {
-    //     console.log(value);
-        
-    //    } 
-            
-            // map.set(key, value.concat( {
             map.set(key, (map.get(key) ?? []).concat( {
                 name: value[index].name + " Sales Per Software Unit",
                 Q1QtrValue: salesPerSoftwareUnitCalculation(value[index].Q1QtrValue, value[index+1].Q1QtrValue),
@@ -260,7 +254,47 @@ function setMakerV2(
     
     millionFixData.forEach((value, key, map) => {
        if (value.length > 3) {
-        console.log(value);
+
+        let x = [...value.values()]
+        /*
+            0, 1, 6,    1, 2, 7 
+            2, 3, 7,    3, 4, 8
+            4, 5, 8     5, 6, 9
+9 / 3 = 3
+0, 1, (2x3 + 1) = 
+            0 + 6
+            1 + 6 = 7
+            2 + 6 = 8
+            3 + 6 = 9
+            0, 1, 6,    2x3 = 6 - 0
+            2, 3, 7,    2x3 = 
+            4, 5, 8     5, 6, 9
+
+            0 + 8
+            1 + 8 = 9
+            2 + 8 = 10
+            3 + 8 = 11
+            2x4 = 8
+            0, 1, 8
+            2, 3, 9
+            4, 5, 10
+            6, 7, 11
+
+            length was 6
+            now it's 9
+            6 / 2 = 3
+
+            n, (n+1) = (n + (n+1)) * length
+            0 + 1 = 5
+            2 + 3 = 2
+            4 + 5 = -1
+
+            0, 1, 2
+
+            0, 1, 4,
+            2, 3, 5
+        */
+        // map.set(key, )
         
        } 
     })
