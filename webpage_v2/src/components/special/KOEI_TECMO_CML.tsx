@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Space, Select } from "@mantine/core";
 import { useSelector } from "react-redux";
-// import { koeiTecmoSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
+import { koeiTecmoSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListKoeiTecmo } from "../../data/generalTables/consolidated_earnings_cml_data";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
@@ -38,6 +38,26 @@ export default function KOEI_TECMO_CML() {
                 }
                 break;
 
+            case "Koei Tecmo Sales Per Software Unit - Cumulative":
+                if (timePeriodValue === "1st Quarter") {
+                    setTimePeriod(0)
+                } else if (timePeriodValue === "2nd Quarter") {
+                    setTimePeriod(1)
+                } else if (timePeriodValue === "3rd Quarter") {
+                    setTimePeriod(2)
+                } else if (timePeriodValue === "4th Quarter") {
+                    setTimePeriod(3)
+                } else if (timePeriodValue === "First Half") {
+                    setTimePeriod(4)
+                } else if (timePeriodValue === "First Three Quarters") {
+                    setTimePeriod(5)
+                } else if (timePeriodValue === "FY Cumulative") {
+                    setTimePeriod(6)
+                } else {
+                    setTimePeriod(6)
+                }
+                break;
+
             default:
                 break;
         }
@@ -51,8 +71,8 @@ export default function KOEI_TECMO_CML() {
         },
         {
             name: "Koei Tecmo Sales Per Software Unit - Cumulative",
-            // value: koeiTecmoSalesPerSoftwareUnitCml 
-            value: "Nothing"
+            value: koeiTecmoSalesPerSoftwareUnitCml[timePeriod] 
+            // value: "Nothing"
         },
     ];
 
@@ -80,7 +100,7 @@ export default function KOEI_TECMO_CML() {
             />
             
             <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                {(value === "Koei Tecmo Consolidated Operating Results - Cumulative")
+                {(value === "Koei Tecmo Consolidated Operating Results - Cumulative" || value === "Koei Tecmo Sales Per Software Unit - Cumulative")
                     ? <Select
                         data={[
                          "1st Quarter",
