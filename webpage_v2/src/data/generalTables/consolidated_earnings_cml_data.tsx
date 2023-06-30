@@ -424,7 +424,9 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
                 printCount(getValues.get(key) ?? [0], getTextLength(21),15,true).concat(
                     printSum(getValues.get(key) ?? [0], getTextLength(21),15,"Million","¥",true),
                     printAverage(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
-                    printMinMedianMax(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
+                    printMedian(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
+                    printMininum(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",true),
+                    printMaximum(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",true),
                 )
             , getTextLength(3) ?? 0),
         ))
@@ -529,7 +531,35 @@ export function printAverage(list: number[], textLength: number, valueLength: nu
     return [toPrint]
 }
 
-export function printMinMedianMax(list: number[], textLength: number, valueLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None", fixedLength: number, newLine: boolean, singleColumn?: boolean): string[] {
+export function printMininum(list: number[], textLength: number, valueLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None", newLine: boolean, singleColumn?: boolean): string[] {
+
+    const printValueMinimum = printValuePrimitive(Math.min(...list),numberType(getNumberType), getUnitsType) 
+
+    return (!singleColumn) 
+    ? [border([
+        spacer("Minimum",textLength,"left"),
+        spacer(printValueMinimum, valueLength,"right")
+    ],newLine)]
+    : [border([
+        spacer(printValueMinimum, valueLength,"right")
+    ],newLine)];
+}
+
+export function printMaximum(list: number[], textLength: number, valueLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None", newLine: boolean, singleColumn?: boolean): string[] {
+
+    const printValueMax = printValuePrimitive(Math.max(...list),numberType(getNumberType), getUnitsType) 
+
+    return (!singleColumn) 
+    ? [border([
+        spacer("Maximum",textLength,"left"),
+        spacer(printValueMax, valueLength,"right"),
+    ])]
+    : [border([
+        spacer(printValueMax, valueLength,"right")
+    ],newLine)];
+}
+
+export function printMedian(list: number[], textLength: number, valueLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None", fixedLength: number, newLine: boolean, singleColumn?: boolean): string[] {
 
     const sortedList = list.sort((a, b) => {
         return a > b
@@ -539,27 +569,27 @@ export function printMinMedianMax(list: number[], textLength: number, valueLengt
                 : 0
     })
 
-    const printValueMinimum = printValuePrimitive(sortedList[0],numberType(getNumberType), getUnitsType) 
+    // const printValueMinimum = printValuePrimitive(sortedList[0],numberType(getNumberType), getUnitsType) 
     
-    const printValueMax = printValuePrimitive(sortedList[sortedList.length-1],numberType(getNumberType), getUnitsType) 
+    // const printValueMax = printValuePrimitive(sortedList[sortedList.length-1],numberType(getNumberType), getUnitsType) 
 
-    const printMininum = (!singleColumn) 
-    ? border([
-        spacer("Minimum",textLength,"left"),
-        spacer(printValueMinimum, valueLength,"right")
-    ],newLine)
-    : border([
-        spacer(printValueMinimum, valueLength,"right")
-    ],newLine);
+    // const printMininum = (!singleColumn) 
+    // ? border([
+    //     spacer("Minimum",textLength,"left"),
+    //     spacer(printValueMinimum, valueLength,"right")
+    // ],newLine)
+    // : border([
+    //     spacer(printValueMinimum, valueLength,"right")
+    // ],newLine);
 
-    const printMaximum = (!singleColumn) 
-    ? border([
-        spacer("Maximum",textLength,"left"),
-        spacer(printValueMax, valueLength,"right"),
-    ])
-    : border([
-        spacer(printValueMax, valueLength,"right")
-    ],newLine);
+    // const printMaximum = (!singleColumn) 
+    // ? border([
+    //     spacer("Maximum",textLength,"left"),
+    //     spacer(printValueMax, valueLength,"right"),
+    // ])
+    // : border([
+    //     spacer(printValueMax, valueLength,"right")
+    // ],newLine);
 
     let printMedian: string = ((sortedList.length % 2) !== 0) // odd number
             // median formula source: https://en.wikipedia.org/wiki/Median
@@ -581,8 +611,8 @@ export function printMinMedianMax(list: number[], textLength: number, valueLengt
 
     return [
         printMedianFixed,
-        printMininum,
-        printMaximum,
+        // printMininum,
+        // printMaximum,
     ]
 }
 

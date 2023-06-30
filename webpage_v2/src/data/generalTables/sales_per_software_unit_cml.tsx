@@ -16,7 +16,7 @@ import {
     getSum,
     printAverage,
     printCount,
-    printMinMedianMax,
+    printMedian,
     printStats,
     printSum, 
 } from "./consolidated_earnings_cml_data";
@@ -326,30 +326,54 @@ function printAllValues(list: Map<number, EarningsV2[]>): string[] {
             // console.log(map.get(key));
             
         // let getTextLength = (x: number) => x
+        // const [sales, units, salesPerSoftwareUnit] = getValues.get(key) ?? [0, 0, 0];
+        // console.log(getValues.get(key));
+        // (key + (index * 7))
         
-        
-        for (let index = 0; index < 3; index++) {
 
-            let indexCheck = (index !== 1) ? 11 : 12; 
-            let columnCheck = (index !== 0) ? true : false;
-            
-            toReturn.set(key, (toReturn.get(key) ?? []).concat(
-                // printStats(
-                    printCount(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),indexCheck,false,columnCheck).concat(
-                        printSum(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),indexCheck,
-                        (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None",false,columnCheck 
-                        ),
-                        printAverage(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),indexCheck,
-                        (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None", 
-                        (index !== 1) ? 0 : 2,false,columnCheck
-                        ),
-                        printMinMedianMax(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),indexCheck,
-                        (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None", 
-                        (index !== 1) ? 0 : 2,false,columnCheck
-                        ),
-                    )
-                // , getTextLength(3) ?? 0),
-            ))
+        map.set(key, (map.get(key) ?? []).concat(
+                printStats(
+                    // [printCount([sales], getTextLength(21),12,false,false)]
+                    [
+                        printCount(getValues.get(key) ?? [0],getTextLength(21),12,false,false),
+                        printCount(getValues.get(key + (1 * 7)) ?? [0],getTextLength(21),11,false,true),
+                        printCount(getValues.get(key + (2 * 7)) ?? [0],getTextLength(21),12,true,true),
+                        printSum(getValues.get(key) ?? [0], getTextLength(21), 12,"Million","¥",false,false),
+                        printSum(getValues.get(key + (1 * 7)) ?? [0], getTextLength(21), 11,"Million","None",false,true),
+                        printSum(getValues.get(key + (2 * 7)) ?? [0], getTextLength(21), 12,"None","¥",true,true),
+                        printAverage(getValues.get(key) ?? [0], getTextLength(21),12,"Million","¥",0,false,false),
+                        printAverage(getValues.get(key + (1 * 7)) ?? [0], getTextLength(21),11,"Million","None",2,false,true),
+                        printAverage(getValues.get(key + (2 * 7)) ?? [0], getTextLength(21),12,"None","¥",0,true,true),
+                        printMedian(getValues.get(key) ?? [0], getTextLength(21),12,"Million","¥",0,false,false),
+                        printMedian(getValues.get(key + (1 * 7)) ?? [0], getTextLength(21),11,"Million","None",2,false,true),
+                        printMedian(getValues.get(key + (2 * 7)) ?? [0], getTextLength(21),12,"None","¥",0,true,true),
+                    ].flat()
+                , getTextLength(3) ?? 0),
+        ))
+        
+        
+        // for (let index = 0; index < 3; index++) {
+
+        //     let indexCheck = (index !== 1) ? 11 : 12; 
+        //     let columnCheck = (index !== 0) ? true : false;
+
+        //     toReturn.set(key, (toReturn.get(key) ?? []).concat(
+        //         // printStats(
+        //             printCount(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),indexCheck,false,columnCheck).concat(
+        //                 printSum(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),indexCheck,
+        //                 (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None",false,columnCheck 
+        //                 ),
+        //                 printAverage(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),indexCheck,
+        //                 (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None", 
+        //                 (index !== 1) ? 0 : 2,false,columnCheck
+        //                 ),
+        //                 printMinMedianMax(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),indexCheck,
+        //                 (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None", 
+        //                 (index !== 1) ? 0 : 2,false,columnCheck
+        //                 ),
+        //             )
+        //         // , getTextLength(3) ?? 0),
+        //     ))
             
             // console.log(
             //     printStats(
@@ -361,7 +385,7 @@ function printAllValues(list: Map<number, EarningsV2[]>): string[] {
             //     , getTextLength(3) ?? 0),
             // );
             
-        }
+        // }
     })
 
     // console.log(toReturn);
