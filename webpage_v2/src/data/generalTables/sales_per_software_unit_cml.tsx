@@ -127,10 +127,13 @@ export const koeiTecmoSalesPerSoftwareUnitCml = setMakerV2(koeiTecmoCollection, 
 
 export const CapcomSalesPerSoftwareUnitCml = setMakerV2(capcomCollection, 38, "Billion", "One Thousand");
 
+export const squareEnixSalesPerSoftwareUnitCml = setMakerV2(squareEnixCollection, 38, "Billion", "One Thousand");
+
 bandaiNamcoCollection.clear();
 segaCollection.clear();
 koeiTecmoCollection.clear();
 capcomCollection.clear();
+squareEnixCollection.clear();
 
 function setMakerV2(
     completeCollection: Map<number, EarningsJSONV2>, 

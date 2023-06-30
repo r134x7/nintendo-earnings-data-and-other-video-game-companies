@@ -54,49 +54,81 @@ export const softwareSalesGraphList = new Map();
 
 collectionV2.forEach((value, key, map) => {
 
-    for (let index = 0; index < value.data.length; index++) {
-
+    for (let index = 0; index < value.data.length; index+= 2) {
+        
         softwareSalesList.set(key,
         (softwareSalesList.get(key) ?? "") +
         generalSalesPerSoftwareUnitListV2Map(
             {
                 ...value,
-                data: (index !== 2) 
-                        ? [map.get(key)?.data[index] as EarningsMakeV2] 
-                        : [ 
-                            combineData([
-                                map.get(key)?.data[0] as EarningsMakeV2, 
-                                map.get(key)?.data[1] as EarningsMakeV2, 
-                            ]), 
-                            map.get(key)?.data[index] as EarningsMakeV2,
-                        ] as EarningsMakeV2[]
+                data: [
+                    map.get(key)?.data[index],
+                    map.get(key)?.data[index+1],
+                ] as EarningsMakeV2[]
             } satisfies EarningsJSONV2,
-            (map.get(key+1) === undefined)
-            ? undefined
-            : {
+            {
                 companyName: map.get(key+1)?.companyName ?? "Error",
                 currentQuarter: map.get(key+1)?.currentQuarter ?? 0,
                 fiscalYear: map.get(key+1)?.fiscalYear ?? "Error",
-                data: (index !== 2) 
-                        ? [map.get(key+1)?.data[index] as EarningsMakeV2] 
-                        : [ 
-                            combineData([
-                                map.get(key+1)?.data[0] as EarningsMakeV2, 
-                                map.get(key+1)?.data[1] as EarningsMakeV2, 
-                            ]), 
-                            map.get(key+1)?.data[index] as EarningsMakeV2,
-                        ] as EarningsMakeV2[]
+                data: [
+                    map.get(key+1)?.data[index],
+                    map.get(key+1)?.data[index+1],
+                ] as EarningsMakeV2[]
             } satisfies EarningsJSONV2,
             42,
             "Billion",
             "One Thousand",
-            (index === 0) ? false : true,
-            (index === 2) ? false : true,
-        ) + (value.fiscalYear === "FY3/2021" && index === 2 ? notes2021 : "")
-        )
+            (index === 0) ? false : true
+        ))
 
     }
 })
+
+// collectionV2.forEach((value, key, map) => {
+
+//     for (let index = 0; index < value.data.length; index++) {
+
+//         softwareSalesList.set(key,
+//         (softwareSalesList.get(key) ?? "") +
+//         generalSalesPerSoftwareUnitListV2Map(
+//             {
+//                 ...value,
+//                 data: (index !== 2) 
+//                         ? [map.get(key)?.data[index] as EarningsMakeV2] 
+//                         : [ 
+//                             combineData([
+//                                 map.get(key)?.data[0] as EarningsMakeV2, 
+//                                 map.get(key)?.data[1] as EarningsMakeV2, 
+//                             ]), 
+//                             map.get(key)?.data[index] as EarningsMakeV2,
+//                         ] as EarningsMakeV2[]
+//             } satisfies EarningsJSONV2,
+//             (map.get(key+1) === undefined)
+//             ? undefined
+//             : {
+//                 companyName: map.get(key+1)?.companyName ?? "Error",
+//                 currentQuarter: map.get(key+1)?.currentQuarter ?? 0,
+//                 fiscalYear: map.get(key+1)?.fiscalYear ?? "Error",
+//                 data: (index !== 2) 
+//                         ? [map.get(key+1)?.data[index] as EarningsMakeV2] 
+//                         : [ 
+//                             combineData([
+//                                 map.get(key+1)?.data[0] as EarningsMakeV2, 
+//                                 map.get(key+1)?.data[1] as EarningsMakeV2, 
+//                             ]), 
+//                             map.get(key+1)?.data[index] as EarningsMakeV2,
+//                         ] as EarningsMakeV2[]
+//             } satisfies EarningsJSONV2,
+//             42,
+//             "Billion",
+//             "One Thousand",
+//             (index === 0) ? false : true,
+//             (index === 2) ? false : true,
+//         ) + (value.fiscalYear === "FY3/2021" && index === 2 ? notes2021 : "")
+//         )
+
+//     }
+// })
 
 collectionV2.clear();
 

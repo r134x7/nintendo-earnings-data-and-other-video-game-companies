@@ -13,6 +13,14 @@
             "footnotes": "*Sales might include: - Downloadable content purchases" 
         },
         {
+            "name": "HD Games",
+            "units": "units",
+            "Q1CmlValue": "Nothing",
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": "Nothing",
+            "Q4CmlValue": "Nothing"
+        },
+        {
             "name": "MMO",
             "units": "currency",
             "Q1CmlValue": 10.1,
@@ -20,6 +28,23 @@
             "Q3CmlValue": 29.5,
             "Q4CmlValue": 39.8,
             "footnotes": "**MMO sales includes subscriptions" 
+        },
+        {
+            "name": "MMO",
+            "units": "units",
+            "Q1CmlValue": "Nothing",
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": "Nothing",
+            "Q4CmlValue": "Nothing"
+        },
+        {
+            "name": "HD Games && MMO",
+            "units": "currency",
+            "Q1CmlValue": 44.2,
+            "Q2CmlValue": 78.7,
+            "Q3CmlValue": 106.1,
+            "Q4CmlValue": 136.4,
+            "footnotes": "*Sales might include: - Downloadable content purchases **MMO sales includes subscriptions. ***From Outline of Results Briefing held on May 13, 2021 (for FY3/2021): We have also made a change to how we disclose our units sold. Whereas the download sales we disclosed previously only included titles launched in the past two years, we now include all sales made during the relevant fiscal year, regardless of when a title may have been released. This change was prompted primarily by the fact that we are making many more sales from our back catalog than we had in the past." 
         },
         {
             "name": "HD Games & MMO",

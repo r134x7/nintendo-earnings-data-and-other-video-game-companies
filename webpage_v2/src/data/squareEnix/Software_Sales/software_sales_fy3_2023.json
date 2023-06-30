@@ -13,6 +13,14 @@
             "footnotes": "*Sales might include: - Downloadable content purchases" 
         },
         {
+            "name": "HD Games",
+            "units": "units",
+            "Q1CmlValue": "Nothing",
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": "Nothing",
+            "Q4CmlValue": "Nothing"
+        },
+        {
             "name": "MMO",
             "units": "currency",
             "Q1CmlValue": 14.1,
@@ -20,6 +28,23 @@
             "Q3CmlValue": 40.5,
             "Q4CmlValue": 53.3,
             "footnotes": "**MMO sales includes subscriptions" 
+        },
+        {
+            "name": "MMO",
+            "units": "units",
+            "Q1CmlValue": "Nothing",
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": "Nothing",
+            "Q4CmlValue": "Nothing"
+        },
+        {
+            "name": "HD Games && MMO",
+            "units": "currency",
+            "Q1CmlValue": 26.1,
+            "Q2CmlValue": 58,
+            "Q3CmlValue": 98.6,
+            "Q4CmlValue": 131.8,
+            "footnotes": "*Sales might include: - Downloadable content purchases" 
         },
         {
             "name": "HD Games & MMO",
