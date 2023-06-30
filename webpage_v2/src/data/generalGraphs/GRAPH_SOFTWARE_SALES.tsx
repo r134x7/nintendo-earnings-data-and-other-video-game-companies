@@ -60,22 +60,9 @@ export default function GRAPH_SOFTWARE_SALES(props:
         props.setData?.dataLastFY.get(2)?.name + " Sales Per Software Unit " + labels.lastFY,
     ];
 
-    const getValues = new Map<number, number[][] | never[][]>();
-
-    props.setData?.dataThisFY.forEach((value, key, map) => {
-
-        getValues.set(0, [[0]].concat(
-            // extractValue(value.Q1QtrValue),
-            [[0]]
-            // extractValue(value.Q2QtrValue),
-            // extractValue(value.Q3QtrValue),
-            // extractValue(value.Q4QtrValue),
-        ))
-    })
-
     const dataThisFY = props.setData?.dataThisFY as Map<number, EarningsV2>
 
-    const dataLastFY = props.setData?.dataThisFY as Map<number, EarningsV2>
+    const dataLastFY = props.setData?.dataLastFY as Map<number, EarningsV2>
 
     const graphQuarters: number[][] = Array.from({length:3}, (v,i) => {
         // Number([]) returns 0......

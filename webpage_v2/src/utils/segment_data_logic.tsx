@@ -454,6 +454,22 @@ export function graphMakeV2 (collectionThisFY: EarningsJSONV2, collectionLastFY:
         footnotes: dataThisFY.get(0)?.footnotes
     } satisfies EarningsV2);
 
+    dataLastFY.set(dataLastFY.size, {
+        name: "Sales Per Software Unit",
+        Q1QtrValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q1QtrValue ?? none, dataLastFY.get(1)?.Q1QtrValue ?? none),
+        Q2QtrValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q2QtrValue ?? none, dataLastFY.get(1)?.Q2QtrValue ?? none),
+        Q3QtrValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q3QtrValue ?? none, dataLastFY.get(1)?.Q3QtrValue ?? none),
+        Q4QtrValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q4QtrValue ?? none, dataLastFY.get(1)?.Q4QtrValue ?? none),
+        Q1CmlValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q1CmlValue ?? none, dataLastFY.get(1)?.Q1CmlValue ?? none),
+        Q2CmlValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q2CmlValue ?? none, dataLastFY.get(1)?.Q2CmlValue ?? none),
+        Q3CmlValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q3CmlValue ?? none, dataLastFY.get(1)?.Q3CmlValue ?? none),
+        Q4CmlValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q4CmlValue ?? none, dataLastFY.get(1)?.Q4CmlValue ?? none),
+        forecastThisFY: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.forecastThisFY ?? none, dataLastFY.get(1)?.forecastThisFY ?? none),
+        forecastRevision1: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.forecastRevision1 ?? none, dataLastFY.get(1)?.forecastRevision1 ?? none),
+        forecastRevision2: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.forecastRevision2 ?? none, dataLastFY.get(1)?.forecastRevision2 ?? none),
+        forecastRevision3: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.forecastRevision3 ?? none, dataLastFY.get(1)?.forecastRevision3 ?? none),
+        forecastNextFY: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.forecastNextFY ?? none, dataLastFY.get(1)?.forecastNextFY ?? none),
+    } satisfies EarningsV2);
 
     let thisFY: string = collectionThisFY.fiscalYear;
     let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
