@@ -16,7 +16,9 @@ import {
     getSum,
     printAverage,
     printCount,
+    printMaximum,
     printMedian,
+    printMininum,
     printStats,
     printSum, 
 } from "./consolidated_earnings_cml_data";
@@ -303,14 +305,21 @@ function printAllValues(list: Map<number, EarningsV2[]>): string[] {
 
         })
 
-        let toReturnTextLength: number | undefined = undefined; 
+        const getTextLength = new Map<number, number>();
+        const totalTextLength = new Map<number, number>();
 
         toReturn.forEach((value, key, map) => {
-            console.log(value.length);
-            toReturnTextLength = value.length;
-            let nextLineCheck = (key === map.size -1) ? "" : "\n";
-            
-            toReturn.set(key, [value.reduce((acc, next, index, array) => acc + next) + nextLineCheck])
+            // console.log(value.length);
+            // toReturnTextLength = value.length;
+            // let nextLineCheck = (key === map.size -1) ? "" : "\n";
+            // console.log(value);
+            const keyCheck = -3
+
+            // getTextLength.set(key, value[1].length + value[3].length + value[5].length)
+            getTextLength.set(key, value[1].slice(0, -17).length)
+            totalTextLength.set(key, value[1].length + value[3].length + value[5].length + keyCheck);
+                       
+            toReturn.set(key, [value.reduce((acc, next, index, array) => acc + next) /*+ nextLineCheck*/])
         })
 
         
@@ -319,9 +328,9 @@ function printAllValues(list: Map<number, EarningsV2[]>): string[] {
     // list.forEach((value, key, map) => {
 
         // let getTextLength = (offset: number) => (map.get(key)?.at(-2)?.length === undefined)
-        let getTextLength = (offset: number) => (toReturnTextLength === undefined)
-            ? 0
-            : (toReturnTextLength) - offset 
+        // let getTextLength = (offset: number) => (toReturnTextLength === undefined)
+        //     ? 0
+        //     : (toReturnTextLength) - offset 
         
             // console.log(map.get(key));
             
@@ -330,25 +339,34 @@ function printAllValues(list: Map<number, EarningsV2[]>): string[] {
         // console.log(getValues.get(key));
         // (key + (index * 7))
         
+        // console.log(value.length);
+        // console.log([...value].length);
 
         map.set(key, (map.get(key) ?? []).concat(
                 printStats(
                     // [printCount([sales], getTextLength(21),12,false,false)]
                     [
-                        printCount(getValues.get(key) ?? [0],getTextLength(21),12,false,false),
-                        printCount(getValues.get(key + (1 * 7)) ?? [0],getTextLength(21),11,false,true),
-                        printCount(getValues.get(key + (2 * 7)) ?? [0],getTextLength(21),12,true,true),
-                        printSum(getValues.get(key) ?? [0], getTextLength(21), 12,"Million","¥",false,false),
-                        printSum(getValues.get(key + (1 * 7)) ?? [0], getTextLength(21), 11,"Million","None",false,true),
-                        printSum(getValues.get(key + (2 * 7)) ?? [0], getTextLength(21), 12,"None","¥",true,true),
-                        printAverage(getValues.get(key) ?? [0], getTextLength(21),12,"Million","¥",0,false,false),
-                        printAverage(getValues.get(key + (1 * 7)) ?? [0], getTextLength(21),11,"Million","None",2,false,true),
-                        printAverage(getValues.get(key + (2 * 7)) ?? [0], getTextLength(21),12,"None","¥",0,true,true),
-                        printMedian(getValues.get(key) ?? [0], getTextLength(21),12,"Million","¥",0,false,false),
-                        printMedian(getValues.get(key + (1 * 7)) ?? [0], getTextLength(21),11,"Million","None",2,false,true),
-                        printMedian(getValues.get(key + (2 * 7)) ?? [0], getTextLength(21),12,"None","¥",0,true,true),
+                        printCount(getValues.get(key) ?? [0], getTextLength.get(key) ?? 10,12,false,false),
+                        printCount(getValues.get(key + (1 * 7)) ?? [0], getTextLength.get(key) ?? 10,11,false,true),
+                        printCount(getValues.get(key + (2 * 7)) ?? [0], getTextLength.get(key) ?? 10,11,true,true),
+                        printSum(getValues.get(key) ?? [0],  getTextLength.get(key) ?? 10, 12,"Million","¥",0,false,false),
+                        printSum(getValues.get(key + (1 * 7)) ?? [0],  getTextLength.get(key) ?? 10, 11,"Million","None",2,false,true),
+                        printSum(getValues.get(key + (2 * 7)) ?? [0],  getTextLength.get(key) ?? 10, 11,"None","¥",0,true,true),
+                        printAverage(getValues.get(key) ?? [0],  getTextLength.get(key) ?? 10,12,"Million","¥",0,false,false),
+                        printAverage(getValues.get(key + (1 * 7)) ?? [0],  getTextLength.get(key) ?? 10,11,"Million","None",2,false,true),
+                        printAverage(getValues.get(key + (2 * 7)) ?? [0],  getTextLength.get(key) ?? 10,11,"None","¥",0,true,true),
+                        printMedian(getValues.get(key) ?? [0],  getTextLength.get(key) ?? 10,12,"Million","¥",0,false,false),
+                        printMedian(getValues.get(key + (1 * 7)) ?? [0],  getTextLength.get(key) ?? 10,11,"Million","None",2,false,true),
+                        printMedian(getValues.get(key + (2 * 7)) ?? [0],  getTextLength.get(key) ?? 10,11,"None","¥",0,true,true),
+                        printMininum(getValues.get(key) ?? [0],  getTextLength.get(key) ?? 10,12,"Million","¥",false,false),
+                        printMininum(getValues.get(key + (1 * 7)) ?? [0],  getTextLength.get(key) ?? 10,11,"Million","None",false,true),
+                        printMininum(getValues.get(key + (2 * 7)) ?? [0],  getTextLength.get(key) ?? 10,11,"None","¥",true,true),
+                        printMaximum(getValues.get(key) ?? [0],  getTextLength.get(key) ?? 10,12,"Million","¥",false,false),
+                        printMaximum(getValues.get(key + (1 * 7)) ?? [0],  getTextLength.get(key) ?? 10,11,"Million","None",false,true),
+                        printMaximum(getValues.get(key + (2 * 7)) ?? [0],  getTextLength.get(key) ?? 10,11,"None","¥",false,true),
                     ].flat()
-                , getTextLength(3) ?? 0),
+                // , getTextLength(-24) ?? 0),
+                , totalTextLength.get(key) ?? 10),
         ))
         
         

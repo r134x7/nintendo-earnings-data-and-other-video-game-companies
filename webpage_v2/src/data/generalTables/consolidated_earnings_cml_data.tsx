@@ -422,7 +422,7 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
         map.set(key, (toReturn.get(key) ?? []).concat(
             printStats(
                 printCount(getValues.get(key) ?? [0], getTextLength(21),15,true).concat(
-                    printSum(getValues.get(key) ?? [0], getTextLength(21),15,"Million","¥",true),
+                    printSum(getValues.get(key) ?? [0], getTextLength(21),15,"Million","¥",0,true),
                     printAverage(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
                     printMedian(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
                     printMininum(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",true),
@@ -467,7 +467,7 @@ export function getConcat(list: string[] | undefined): string {
         : list.reduce((acc, next) => acc + next, "");
 }
 
-export function getSum(list: number[]): number {
+export function getSum(list: number[], fixedLength: number): number {
 
     // let toReduce: number = list.reduce((acc, next) => {
     //     return (Number.isNaN(next) || next.length === 0)
@@ -477,7 +477,7 @@ export function getSum(list: number[]): number {
 
     let toReduce = list.reduce((acc, next) => acc + next, 0);
     
-    return toReduce
+    return Number((toReduce).toFixed(fixedLength));
 }
 
 export function printCount(list: number[], textLength: number, valueLength: number, newLine: boolean, singleColumn?: boolean): string[] {
@@ -487,33 +487,34 @@ export function printCount(list: number[], textLength: number, valueLength: numb
             spacer("Count",textLength,"left"),
             spacer(`${getCount(list)}`,/*15*/valueLength,"right"),
         ],newLine)
-        : border([
-            spacer(`${getCount(list)}`,/*15*/valueLength,"right"),
-        ],newLine)
-
+        : spacer(`${getCount(list)} |`,/*15*/valueLength,"right") + `${(!newLine) ? "" : "\n"}`;
+        // : border([
+        //     spacer(`${getCount(list)}`,/*15*/valueLength,"right"),
+        // ],newLine)
 
     return [toPrint]
 }
 
-export function printSum(list: number[], textLength: number, valueLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None", newLine: boolean, singleColumn?: boolean): string[] {
+export function printSum(list: number[], textLength: number, valueLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None", fixedLength: number, newLine: boolean, singleColumn?: boolean): string[] {
 
-    const getValue = printValuePrimitive(getSum(list),numberType(getNumberType), getUnitsType) 
+    const getValue = printValuePrimitive(getSum(list, fixedLength),numberType(getNumberType), getUnitsType) 
 
     let toPrint: string = (!singleColumn) 
     ? border([
         spacer("Sum",textLength,"left"),
         spacer(getValue,valueLength,"right"),
     ],newLine) 
-    : border([
-        spacer(getValue,/*15*/valueLength,"right"),
-    ],newLine)
+    : spacer(getValue + " |",valueLength,"right") + `${(!newLine) ? "" : "\n"}`;
+    // : border([
+    //     spacer(getValue,/*15*/valueLength,"right"),
+    // ],newLine)
 
     return [toPrint]
 }
 
 export function printAverage(list: number[], textLength: number, valueLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None", fixedLength: number, newLine: boolean, singleColumn?: boolean): string[] {
 
-    const calculateAverage = getSum(list) / getCount(list);
+    const calculateAverage = getSum(list, fixedLength) / getCount(list);
 
     const getRounding = Number(calculateAverage.toFixed(fixedLength));
 
@@ -524,9 +525,10 @@ export function printAverage(list: number[], textLength: number, valueLength: nu
         spacer("Average",textLength,"left"),
         spacer(printValue,valueLength,"right"),
     ],newLine) 
-    : border([
-        spacer(printValue,valueLength,"right"),
-    ],newLine)
+    : spacer(printValue + " |",valueLength,"right") + `${(!newLine) ? "" : "\n"}`;
+    // : border([
+    //     spacer(printValue,valueLength,"right"),
+    // ],newLine)
 
     return [toPrint]
 }
@@ -535,28 +537,34 @@ export function printMininum(list: number[], textLength: number, valueLength: nu
 
     const printValueMinimum = printValuePrimitive(Math.min(...list),numberType(getNumberType), getUnitsType) 
 
-    return (!singleColumn) 
-    ? [border([
+    let toPrint = (!singleColumn) 
+    ? border([
         spacer("Minimum",textLength,"left"),
         spacer(printValueMinimum, valueLength,"right")
-    ],newLine)]
-    : [border([
-        spacer(printValueMinimum, valueLength,"right")
-    ],newLine)];
+    ],newLine)
+    : spacer(printValueMinimum + " |", valueLength,"right") + `${(!newLine) ? "" : "\n"}`;
+    // : [border([
+    //     spacer(printValueMinimum, valueLength,"right")
+    // ],newLine)];
+
+    return [toPrint]
 }
 
 export function printMaximum(list: number[], textLength: number, valueLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None", newLine: boolean, singleColumn?: boolean): string[] {
 
     const printValueMax = printValuePrimitive(Math.max(...list),numberType(getNumberType), getUnitsType) 
 
-    return (!singleColumn) 
-    ? [border([
+    const toPrint = (!singleColumn) 
+    ? border([
         spacer("Maximum",textLength,"left"),
         spacer(printValueMax, valueLength,"right"),
-    ])]
-    : [border([
-        spacer(printValueMax, valueLength,"right")
-    ],newLine)];
+    ])
+    : spacer(printValueMax + " |", valueLength,"right") + `${(!newLine) ? "" : "\n"}`;
+    // : border([
+    //     spacer(printValueMax, valueLength,"right")
+    // ],newLine);
+
+    return [toPrint]
 }
 
 export function printMedian(list: number[], textLength: number, valueLength: number, getNumberType: "Billion" | "Million" | "Thousand" | "None", getUnitsType: "¥" | "%" | "None", fixedLength: number, newLine: boolean, singleColumn?: boolean): string[] {
@@ -605,9 +613,10 @@ export function printMedian(list: number[], textLength: number, valueLength: num
         spacer("Median",textLength,"left"),
         spacer(printMedian,valueLength,"right")
     ],newLine)
-    : border([
-        spacer(printMedian, valueLength,"right")
-    ],newLine);
+    : spacer(printMedian + " |", valueLength,"right") + `${(!newLine) ? "" : "\n"}`;
+    // : border([
+    //     spacer(printMedian, valueLength,"right")
+    // ],newLine);
 
     return [
         printMedianFixed,
