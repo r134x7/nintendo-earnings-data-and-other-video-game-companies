@@ -255,50 +255,49 @@ function setMakerV2(
     millionFixData.forEach((value, key, map) => {
        if (value.length > 3) {
 
-        let x = [...value.values()]
+        let allValues = [...value.values()]
+        
+        let dataTypesCount = 3
+
+        let n = allValues.length / dataTypesCount
+
+        let xIncrement = 0;
+
+        for (let index = 0; index < 2*n; index+= 2) {
+            if (index === 0) {
+                map.set(key, [allValues[index], allValues[index+1], allValues[(index + (2*n))]])
+            } else {
+                map.set(key, (map.get(key) ?? []).concat(
+                    [allValues[index], allValues[index+1], allValues[(xIncrement + (2*n))]]
+                ))
+            }
+            xIncrement++
+        }
+        
         /*
-            0, 1, 6,    1, 2, 7 
-            2, 3, 7,    3, 4, 8
-            4, 5, 8     5, 6, 9
-9 / 3 = 3
-0, 1, (2x3 + 1) = 
-            0 + 6
-            1 + 6 = 7
-            2 + 6 = 8
-            3 + 6 = 9
-            0, 1, 6,    2x3 = 6 - 0
-            2, 3, 7,    2x3 = 
-            4, 5, 8     5, 6, 9
-
-            0 + 8
-            1 + 8 = 9
-            2 + 8 = 10
-            3 + 8 = 11
-            2x4 = 8
-            0, 1, 8
-            2, 3, 9
-            4, 5, 10
-            6, 7, 11
-
-            length was 6
-            now it's 9
-            6 / 2 = 3
-
-            n, (n+1) = (n + (n+1)) * length
-            0 + 1 = 5
-            2 + 3 = 2
-            4 + 5 = -1
-
-            0, 1, 2
-
-            0, 1, 4,
-            2, 3, 5
+        (2 * n) = 2n
+        n = length of all data / 3 where 3 is [sales, units, salesPerSoftwareUnit]
+        2x3 = 6
+        extracting third piece of data needed
+        increment x = 0
+        index 0, 1, (0+6) x++
+        index 2, 3, (1+6) x++
+        index 4, 5, (2+6) x++
+            0, 1, 6,    
+            2, 3, 7,    
+            4, 5, 8     
         */
         // map.set(key, )
         
        } 
     })
     
+    millionFixData.forEach((value) => {
+        if (value.length > 3) {
+            console.log(value);
+            
+        }
+    })
 
     const mainBody = printAllValues(millionFixData);
 
