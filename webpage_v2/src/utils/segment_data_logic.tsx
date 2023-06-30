@@ -390,6 +390,86 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
     ].reduce((acc, next) => acc + next);
 }
 
+export function graphMakeV2 (collectionThisFY: EarningsJSONV2, collectionLastFY: EarningsJSONV2 | undefined, salesRoundtoMillion: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand", unitsRoundtoMillion: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand") {
+
+    const none: EarningsValue = { kind:"Nothing" };
+
+    const dataThisFY = getData(collectionThisFY, collectionThisFY.data.length);
+
+    const dataLastFY = getData(collectionLastFY, collectionThisFY.data.length);
+
+    dataThisFY.forEach((value, key, map) => {
+
+        map.set(key, {
+            ...value,
+            Q1QtrValue: millionFix(value.Q1QtrValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q2QtrValue: millionFix(value.Q2QtrValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q3QtrValue: millionFix(value.Q3QtrValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q4QtrValue: millionFix(value.Q4QtrValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q1CmlValue: millionFix(value.Q1CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q2CmlValue: millionFix(value.Q2CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q3CmlValue: millionFix(value.Q3CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q4CmlValue: millionFix(value.Q4CmlValue,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastThisFY: millionFix(value.forecastThisFY,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastRevision1: millionFix(value.forecastRevision1,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastRevision2: millionFix(value.forecastRevision2,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastRevision3: millionFix(value.forecastRevision3,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastNextFY: millionFix(value.forecastNextFY,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+        } satisfies EarningsV2)
+
+        dataLastFY.set(key, {
+            name: dataLastFY.get(key)?.name ?? "Error",
+            Q1QtrValue: millionFix(dataLastFY.get(key)?.Q1QtrValue ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q2QtrValue: millionFix(dataLastFY.get(key)?.Q2QtrValue ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q3QtrValue: millionFix(dataLastFY.get(key)?.Q3QtrValue ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q4QtrValue: millionFix(dataLastFY.get(key)?.Q4QtrValue ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q1CmlValue: millionFix(dataLastFY.get(key)?.Q1CmlValue ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q2CmlValue: millionFix(dataLastFY.get(key)?.Q2CmlValue ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q3CmlValue: millionFix(dataLastFY.get(key)?.Q3CmlValue ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            Q4CmlValue: millionFix(dataLastFY.get(key)?.Q4CmlValue ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastThisFY: millionFix(dataLastFY.get(key)?.forecastThisFY ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastRevision1: millionFix(dataLastFY.get(key)?.forecastRevision1 ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastRevision2: millionFix(dataLastFY.get(key)?.forecastRevision2 ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastRevision3: millionFix(dataLastFY.get(key)?.forecastRevision3 ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+            forecastNextFY: millionFix(dataLastFY.get(key)?.forecastNextFY ?? none,(key === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+        } satisfies EarningsV2)
+    })
+
+    dataThisFY.set(dataThisFY.size, {
+        name: "Sales Per Software Unit",
+        Q1QtrValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q1QtrValue ?? none, dataThisFY.get(1)?.Q1QtrValue ?? none),
+        Q2QtrValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q2QtrValue ?? none, dataThisFY.get(1)?.Q2QtrValue ?? none),
+        Q3QtrValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q3QtrValue ?? none, dataThisFY.get(1)?.Q3QtrValue ?? none),
+        Q4QtrValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q4QtrValue ?? none, dataThisFY.get(1)?.Q4QtrValue ?? none),
+        Q1CmlValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q1CmlValue ?? none, dataThisFY.get(1)?.Q1CmlValue ?? none),
+        Q2CmlValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q2CmlValue ?? none, dataThisFY.get(1)?.Q2CmlValue ?? none),
+        Q3CmlValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q3CmlValue ?? none, dataThisFY.get(1)?.Q3CmlValue ?? none),
+        Q4CmlValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q4CmlValue ?? none, dataThisFY.get(1)?.Q4CmlValue ?? none),
+        forecastThisFY: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.forecastThisFY ?? none, dataThisFY.get(1)?.forecastThisFY ?? none),
+        forecastRevision1: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.forecastRevision1 ?? none, dataThisFY.get(1)?.forecastRevision1 ?? none),
+        forecastRevision2: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.forecastRevision2 ?? none, dataThisFY.get(1)?.forecastRevision2 ?? none),
+        forecastRevision3: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.forecastRevision3 ?? none, dataThisFY.get(1)?.forecastRevision3 ?? none),
+        forecastNextFY: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.forecastNextFY ?? none, dataThisFY.get(1)?.forecastNextFY ?? none),
+        footnotes: dataThisFY.get(0)?.footnotes
+    } satisfies EarningsV2);
+
+
+    let thisFY: string = collectionThisFY.fiscalYear;
+    let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
+
+    let marchThisFY: string = "March " + thisFY.slice(4);
+    let marchLastFY: string = "March " + lastFY.slice(4);
+
+    return {
+        thisFY: thisFY,
+        lastFY: lastFY,
+        marchThisFY: marchThisFY,
+        marchLastFY: marchLastFY,
+        dataThisFY: dataThisFY,
+        dataLastFY: dataLastFY,
+    }
+}
+
 // export const graphMake = (salesDataThisFY: Section[], salesDataLastFY: Section[], salesUnitsThisFY: Section[], salesUnitsLastFY: Section[], segmentName: string, fiscalYear: string, currentQuarter: number) => {
 
 //     let quartersSalesThisFY = quarterlyCalculation(salesDataThisFY);
