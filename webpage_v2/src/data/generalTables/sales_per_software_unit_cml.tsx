@@ -125,11 +125,12 @@ export const segaSammySalesPerSoftwareUnitCml = setMakerV2(segaCollection, 38, "
 
 export const koeiTecmoSalesPerSoftwareUnitCml = setMakerV2(koeiTecmoCollection, 38, "Million","One Thousand");
 
-// export const CapcomSalesPerSoftwareUnitCml = setMakerV2(capcomCollection, 38, "Billion", "One Thousand")
+export const CapcomSalesPerSoftwareUnitCml = setMakerV2(capcomCollection, 38, "Billion", "One Thousand");
 
 bandaiNamcoCollection.clear();
 segaCollection.clear();
 koeiTecmoCollection.clear();
+capcomCollection.clear();
 
 function setMakerV2(
     completeCollection: Map<number, EarningsJSONV2>, 
@@ -141,7 +142,28 @@ function setMakerV2(
     const currentQuarter = completeCollection.get(completeCollection.size-1)?.currentQuarter ?? 4;
 
     const makeData = new Map<number, EarningsV2[]>();
-    completeCollection.forEach((value, key, map) => makeData.set(key, [...getData(value, value.data.length).values()]));
+    // completeCollection.forEach((value, key, map) => makeData.set(key, [...getData(value, value.data.length).values()]));
+
+    completeCollection.forEach((value, key, map) => {
+        if (value.data.length > 2) {
+            for (let index = 0; index < value.data.length; index+= 2) {
+                makeData.set(key, (makeData.get(key) ?? []).concat(
+                    [...getData(
+                        {
+                            ...value,
+                            data: [
+                                map.get(key)?.data[index],
+                                map.get(key)?.data[index+1],
+                            ] as EarningsMakeV2[]
+                        },
+                        0
+                    ).values()]
+                ))
+            }
+        } else {
+            makeData.set(key, [...getData(value, value.data.length).values()])
+        }
+    });
 
     const makeDateLabel = dateLabel(completeCollection.get(completeCollection.size-1)?.fiscalYear ?? "ERROR", currentQuarter);
 
@@ -160,25 +182,27 @@ function setMakerV2(
 
         for (let index = 0; index < value.length; index++) {
             
+            console.log(value.length);
+            
 
             millionFixData.set(key, 
                 (millionFixData.get(key) ?? [])
                 .concat(
                     {
                         ...value[index],
-                    Q1QtrValue: millionFix(value[index].Q1QtrValue,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-                    Q2QtrValue: millionFix(value[index].Q2QtrValue,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-                    Q3QtrValue: millionFix(value[index].Q3QtrValue,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-                    Q4QtrValue: millionFix(value[index].Q4QtrValue,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-                    Q1CmlValue: millionFix(value[index].Q1CmlValue,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-                    Q2CmlValue: millionFix(value[index].Q2CmlValue,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-                    Q3CmlValue: millionFix(value[index].Q3CmlValue,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-                    Q4CmlValue: millionFix(value[index].Q4CmlValue,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-                    forecastThisFY: millionFix(value[index].forecastThisFY,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-                    forecastRevision1: millionFix(value[index].forecastRevision1,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-                    forecastRevision2: millionFix(value[index].forecastRevision2,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-                    forecastRevision3: millionFix(value[index].forecastRevision3,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
-                    forecastNextFY: millionFix(value[index].forecastNextFY,(index === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    Q1QtrValue: millionFix(value[index].Q1QtrValue,(index % 2 === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    Q2QtrValue: millionFix(value[index].Q2QtrValue,(index % 2 === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    Q3QtrValue: millionFix(value[index].Q3QtrValue,(index % 2 === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    Q4QtrValue: millionFix(value[index].Q4QtrValue,(index % 2 === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    Q1CmlValue: millionFix(value[index].Q1CmlValue,(index % 2 === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    Q2CmlValue: millionFix(value[index].Q2CmlValue,(index % 2 === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    Q3CmlValue: millionFix(value[index].Q3CmlValue,(index % 2 === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    Q4CmlValue: millionFix(value[index].Q4CmlValue,(index % 2 === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    forecastThisFY: millionFix(value[index].forecastThisFY,(index % 2 === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    forecastRevision1: millionFix(value[index].forecastRevision1,(index % 2 === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    forecastRevision2: millionFix(value[index].forecastRevision2,(index % 2 === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    forecastRevision3: millionFix(value[index].forecastRevision3,(index % 2 === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
+                    forecastNextFY: millionFix(value[index].forecastNextFY,(index % 2 === 0) ? salesRoundtoMillion : unitsRoundtoMillion),
                     } satisfies EarningsV2
                 )
             )
@@ -187,24 +211,60 @@ function setMakerV2(
 
     millionFixData.forEach((value, key, map) => {
 
-        map.set(key, value.concat( {
-            name: "Sales Per Software Unit",
-            Q1QtrValue: salesPerSoftwareUnitCalculation(value[0].Q1QtrValue, value[1].Q1QtrValue),
-            Q2QtrValue: salesPerSoftwareUnitCalculation(value[0].Q2QtrValue, value[1].Q2QtrValue),
-            Q3QtrValue: salesPerSoftwareUnitCalculation(value[0].Q3QtrValue, value[1].Q3QtrValue),
-            Q4QtrValue: salesPerSoftwareUnitCalculation(value[0].Q4QtrValue, value[1].Q4QtrValue),
-            Q1CmlValue: salesPerSoftwareUnitCalculation(value[0].Q1CmlValue, value[1].Q1CmlValue),
-            Q2CmlValue: salesPerSoftwareUnitCalculation(value[0].Q2CmlValue, value[1].Q2CmlValue),
-            Q3CmlValue: salesPerSoftwareUnitCalculation(value[0].Q3CmlValue, value[1].Q3CmlValue),
-            Q4CmlValue: salesPerSoftwareUnitCalculation(value[0].Q4CmlValue, value[1].Q4CmlValue),
-            forecastThisFY: salesPerSoftwareUnitCalculation(value[0].forecastThisFY, value[1].forecastThisFY),
-            forecastRevision1: salesPerSoftwareUnitCalculation(value[0].forecastRevision1, value[1].forecastRevision1),
-            forecastRevision2: salesPerSoftwareUnitCalculation(value[0].forecastRevision2, value[1].forecastRevision2),
-            forecastRevision3: salesPerSoftwareUnitCalculation(value[0].forecastRevision3, value[1].forecastRevision3),
-            forecastNextFY: salesPerSoftwareUnitCalculation(value[0].forecastNextFY, value[1].forecastNextFY),
-            footnotes: value[0].footnotes
-        } satisfies EarningsV2));
+        for (let index = 0; index < value.length; index+= 2) {
+
+    //    if (value.length > 3) {
+    //     console.log(value);
+        
+    //    } 
+            
+            // map.set(key, value.concat( {
+            map.set(key, (map.get(key) ?? []).concat( {
+                name: value[index].name + " Sales Per Software Unit",
+                Q1QtrValue: salesPerSoftwareUnitCalculation(value[index].Q1QtrValue, value[index+1].Q1QtrValue),
+                Q2QtrValue: salesPerSoftwareUnitCalculation(value[index].Q2QtrValue, value[index+1].Q2QtrValue),
+                Q3QtrValue: salesPerSoftwareUnitCalculation(value[index].Q3QtrValue, value[index+1].Q3QtrValue),
+                Q4QtrValue: salesPerSoftwareUnitCalculation(value[index].Q4QtrValue, value[index+1].Q4QtrValue),
+                Q1CmlValue: salesPerSoftwareUnitCalculation(value[index].Q1CmlValue, value[index+1].Q1CmlValue),
+                Q2CmlValue: salesPerSoftwareUnitCalculation(value[index].Q2CmlValue, value[index+1].Q2CmlValue),
+                Q3CmlValue: salesPerSoftwareUnitCalculation(value[index].Q3CmlValue, value[index+1].Q3CmlValue),
+                Q4CmlValue: salesPerSoftwareUnitCalculation(value[index].Q4CmlValue, value[index+1].Q4CmlValue),
+                forecastThisFY: salesPerSoftwareUnitCalculation(value[index].forecastThisFY, value[index+1].forecastThisFY),
+                forecastRevision1: salesPerSoftwareUnitCalculation(value[index].forecastRevision1, value[index+1].forecastRevision1),
+                forecastRevision2: salesPerSoftwareUnitCalculation(value[index].forecastRevision2, value[index+1].forecastRevision2),
+                forecastRevision3: salesPerSoftwareUnitCalculation(value[index].forecastRevision3, value[index+1].forecastRevision3),
+                forecastNextFY: salesPerSoftwareUnitCalculation(value[index].forecastNextFY, value[index+1].forecastNextFY),
+                footnotes: value[index].footnotes
+            } satisfies EarningsV2));
+
+        }
+
+        // map.set(key, value.concat( {
+        //     name: "Sales Per Software Unit",
+        //     Q1QtrValue: salesPerSoftwareUnitCalculation(value[0].Q1QtrValue, value[1].Q1QtrValue),
+        //     Q2QtrValue: salesPerSoftwareUnitCalculation(value[0].Q2QtrValue, value[1].Q2QtrValue),
+        //     Q3QtrValue: salesPerSoftwareUnitCalculation(value[0].Q3QtrValue, value[1].Q3QtrValue),
+        //     Q4QtrValue: salesPerSoftwareUnitCalculation(value[0].Q4QtrValue, value[1].Q4QtrValue),
+        //     Q1CmlValue: salesPerSoftwareUnitCalculation(value[0].Q1CmlValue, value[1].Q1CmlValue),
+        //     Q2CmlValue: salesPerSoftwareUnitCalculation(value[0].Q2CmlValue, value[1].Q2CmlValue),
+        //     Q3CmlValue: salesPerSoftwareUnitCalculation(value[0].Q3CmlValue, value[1].Q3CmlValue),
+        //     Q4CmlValue: salesPerSoftwareUnitCalculation(value[0].Q4CmlValue, value[1].Q4CmlValue),
+        //     forecastThisFY: salesPerSoftwareUnitCalculation(value[0].forecastThisFY, value[1].forecastThisFY),
+        //     forecastRevision1: salesPerSoftwareUnitCalculation(value[0].forecastRevision1, value[1].forecastRevision1),
+        //     forecastRevision2: salesPerSoftwareUnitCalculation(value[0].forecastRevision2, value[1].forecastRevision2),
+        //     forecastRevision3: salesPerSoftwareUnitCalculation(value[0].forecastRevision3, value[1].forecastRevision3),
+        //     forecastNextFY: salesPerSoftwareUnitCalculation(value[0].forecastNextFY, value[1].forecastNextFY),
+        //     footnotes: value[0].footnotes
+        // } satisfies EarningsV2));
     })
+    
+    millionFixData.forEach((value, key, map) => {
+       if (value.length > 3) {
+        console.log(value);
+        
+       } 
+    })
+    
 
     const mainBody = printAllValues(millionFixData);
 
@@ -343,7 +403,7 @@ function printAllValues(list: Map<number, EarningsV2[]>): string[] {
             // getTextLength.set(key, value[1].length + value[3].length + value[5].length)
             // getTextLength.set(key, value[1].slice(0, -17).length)
             // totalTextLength.set(key, value[1].length + value[3].length + value[5].length + keyCheck);
-            console.log(value);
+            // console.log(value);
             
                        
             toReturn.set(key, [value.reduce((acc, next, index, array) => acc + next) /*+ nextLineCheck*/])
