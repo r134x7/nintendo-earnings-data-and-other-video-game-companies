@@ -1,24 +1,32 @@
 import { useState } from "react";
 import { Pagination, Group, Switch } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { Section } from "../../utils/segment_data_logic";
+import { EarningsV2, EarningsValue } from "../../utils/general_earnings_logic";
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
+import { extractValue } from "../generalTables/sales_per_software_unit_cml";
 Chart.register(...registerables); // to get the package working, source: https://www.chartjs.org/docs/next/getting-started/integration.html
 
 export default function GRAPH_SOFTWARE_SALES(props:
     {setData: undefined | ({
-        segmentName: string,
         thisFY: string,
         lastFY: string,
         marchThisFY: string,
         marchLastFY: string,
-        quarterValuesThisFY: Section[][],
-        quarterValuesLastFY: Section[][],
-        cumulativeValuesThisFY: Section[][],
-        cumulativeValuesLastFY: Section[][],
-    })}) {
+        dataThisFY: Map<number, EarningsV2>,
+        dataLastFY: Map<number, EarningsV2>,
+        // segmentName: string,
+        // thisFY: string,
+        // lastFY: string,
+        // marchThisFY: string,
+        // marchLastFY: string,
+        // quarterValuesThisFY: Section[][],
+        // quarterValuesLastFY: Section[][],
+        // cumulativeValuesThisFY: Section[][],
+        // cumulativeValuesLastFY: Section[][],
+    })
+    }) {
 
     const state: any = useSelector(state => state);
 
@@ -41,57 +49,114 @@ export default function GRAPH_SOFTWARE_SALES(props:
     }
 
     const headerLabels = [
-        props.setData?.segmentName + " Net Sales " + labels.currentFY,
-        props.setData?.segmentName + " Software Units " + labels.currentFY,
-        props.setData?.segmentName + " Sales Per Software Unit " + labels.currentFY,
+        props.setData?.dataThisFY.get(0)?.name + " Net Sales " + labels.currentFY,
+        props.setData?.dataThisFY.get(1)?.name + " Software Units " + labels.currentFY,
+        props.setData?.dataThisFY.get(2)?.name + " Sales Per Software Unit " + labels.currentFY,
     ];
 
     const headerLabelsLastFY = [
-        props.setData?.segmentName + " Net Sales " + labels.lastFY,
-        props.setData?.segmentName + " Software Units " + labels.lastFY,
-        props.setData?.segmentName + " Sales Per Software Unit " + labels.lastFY,
+        props.setData?.dataLastFY.get(0)?.name + " Net Sales " + labels.lastFY,
+        props.setData?.dataLastFY.get(1)?.name + " Software Units " + labels.lastFY,
+        props.setData?.dataLastFY.get(2)?.name + " Sales Per Software Unit " + labels.lastFY,
     ];
 
-    const graphQuarters = props.setData?.quarterValuesThisFY.map((elem) => {
-        return elem.map(value => {
-            return (value.units === "currency")
-                    ? value.value * 1000
-                    : (value.units === "units")
-                    ? value.value / 1000
-                    : value.value
-        })
-    }) as number[][];
+    const getValues = new Map<number, number[][] | never[][]>();
 
-    const graphQuartersLastFY = props.setData?.quarterValuesLastFY.map((elem) => {
-        return elem.map(value => {
-            return (value.units === "currency")
-                    ? value.value * 1000
-                    : (value.units === "units")
-                    ? value.value / 1000
-                    : value.value
-        })
-    }) as number[][];
+    props.setData?.dataThisFY.forEach((value, key, map) => {
+
+        getValues.set(0, [[0]].concat(
+            // extractValue(value.Q1QtrValue),
+            [[0]]
+            // extractValue(value.Q2QtrValue),
+            // extractValue(value.Q3QtrValue),
+            // extractValue(value.Q4QtrValue),
+        ))
+    })
+
+    const dataThisFY = props.setData?.dataThisFY as Map<number, EarningsV2>
+
+    const dataLastFY = props.setData?.dataThisFY as Map<number, EarningsV2>
+
+    const graphQuarters: number[][] = Array.from({length:3}, (v,i) => {
+        // Number([]) returns 0......
+        return [
+            Number(extractValue(dataThisFY.get(i)?.Q1QtrValue as EarningsValue)),
+            Number(extractValue(dataThisFY.get(i)?.Q2QtrValue as EarningsValue)),
+            Number(extractValue(dataThisFY.get(i)?.Q3QtrValue as EarningsValue)),
+            Number(extractValue(dataThisFY.get(i)?.Q4QtrValue as EarningsValue)),
+        ]
+    });
+
+    const graphQuartersLastFY: number[][] = Array.from({length:3}, (v,i) => {
+        // Number([]) returns 0......
+        return [
+            Number(extractValue(dataLastFY.get(i)?.Q1QtrValue as EarningsValue)),
+            Number(extractValue(dataLastFY.get(i)?.Q2QtrValue as EarningsValue)),
+            Number(extractValue(dataLastFY.get(i)?.Q3QtrValue as EarningsValue)),
+            Number(extractValue(dataLastFY.get(i)?.Q4QtrValue as EarningsValue)),
+        ]
+    });
+
+    const graphCumulative: number[][] = Array.from({length:3}, (v,i) => {
+        // Number([]) returns 0......
+        return [
+            Number(extractValue(dataThisFY.get(i)?.Q1CmlValue as EarningsValue)),
+            Number(extractValue(dataThisFY.get(i)?.Q2CmlValue as EarningsValue)),
+            Number(extractValue(dataThisFY.get(i)?.Q3CmlValue as EarningsValue)),
+            Number(extractValue(dataThisFY.get(i)?.Q4CmlValue as EarningsValue)),
+        ]
+    });
+
+    const graphCumulativeLastFY: number[][] = Array.from({length:3}, (v,i) => {
+        // Number([]) returns 0......
+        return [
+            Number(extractValue(dataLastFY.get(i)?.Q1CmlValue as EarningsValue)),
+            Number(extractValue(dataLastFY.get(i)?.Q2CmlValue as EarningsValue)),
+            Number(extractValue(dataLastFY.get(i)?.Q3CmlValue as EarningsValue)),
+            Number(extractValue(dataLastFY.get(i)?.Q4CmlValue as EarningsValue)),
+        ]
+    });
+
+    // const graphQuarters = props.setData?.quarterValuesThisFY.map((elem) => {
+    //     return elem.map(value => {
+    //         return (value.units === "currency")
+    //                 ? value.value * 1000
+    //                 : (value.units === "units")
+    //                 ? value.value / 1000
+    //                 : value.value
+    //     })
+    // }) as number[][];
+
+    // const graphQuartersLastFY = props.setData?.quarterValuesLastFY.map((elem) => {
+    //     return elem.map(value => {
+    //         return (value.units === "currency")
+    //                 ? value.value * 1000
+    //                 : (value.units === "units")
+    //                 ? value.value / 1000
+    //                 : value.value
+    //     })
+    // }) as number[][];
  
 
-    const graphCumulative = props.setData?.cumulativeValuesThisFY.map((elem) => {
-        return elem.map(value => {
-            return (value.units === "currency")
-                    ? value.value * 1000
-                    : (value.units === "units")
-                    ? value.value / 1000
-                    : value.value
-        })
-    }) as number[][];
+    // const graphCumulative = props.setData?.cumulativeValuesThisFY.map((elem) => {
+    //     return elem.map(value => {
+    //         return (value.units === "currency")
+    //                 ? value.value * 1000
+    //                 : (value.units === "units")
+    //                 ? value.value / 1000
+    //                 : value.value
+    //     })
+    // }) as number[][];
 
-    const graphCumulativeLastFY = props.setData?.cumulativeValuesLastFY.map((elem) => {
-        return elem.map(value => {
-            return (value.units === "currency")
-                    ? value.value * 1000
-                    : (value.units === "units")
-                    ? value.value / 1000
-                    : value.value
-        })
-    }) as number[][];
+    // const graphCumulativeLastFY = props.setData?.cumulativeValuesLastFY.map((elem) => {
+    //     return elem.map(value => {
+    //         return (value.units === "currency")
+    //                 ? value.value * 1000
+    //                 : (value.units === "units")
+    //                 ? value.value / 1000
+    //                 : value.value
+    //     })
+    // }) as number[][];
 
     const bothOff = (event: React.ChangeEvent<HTMLInputElement>) => {
 

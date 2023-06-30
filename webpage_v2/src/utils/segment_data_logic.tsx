@@ -7,6 +7,7 @@ import { printQuarterValuesV2,
     type EarningsV2, 
     type EarningsValue } from "./general_earnings_logic";
 import { valuesMakeV2, nothingCheck, type EarningsMakeV2, type EarningsJSONV2, getData } from "../data/generalTables/consolidated_earnings_general";
+import { extractValue } from "../data/generalTables/sales_per_software_unit_cml";
 
 export type Section = {
     region: "Group Total" | "Japan" | "Americas" | "Europe",

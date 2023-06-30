@@ -50,7 +50,7 @@ import squareEnixSoftwareSales2021 from "../squareEnix/Software_Sales/software_s
 import squareEnixSoftwareSales2020 from "../squareEnix/Software_Sales/software_sales_fy3_2020.json";
 import { notes2021 } from "../squareEnix/software_sales_square_enix";
 
-function extractValue(value: EarningsValue): number | never[] {
+export function extractValue(value: EarningsValue): number | never[] {
     switch (value.kind) {
         case "Quarter":
            return  value.value
