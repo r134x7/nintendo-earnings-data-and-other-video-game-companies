@@ -48,6 +48,7 @@ import squareEnixSoftwareSales2023 from "../squareEnix/Software_Sales/software_s
 import squareEnixSoftwareSales2022 from "../squareEnix/Software_Sales/software_sales_fy3_2022.json";
 import squareEnixSoftwareSales2021 from "../squareEnix/Software_Sales/software_sales_fy3_2021.json";
 import squareEnixSoftwareSales2020 from "../squareEnix/Software_Sales/software_sales_fy3_2020.json";
+import { notes2021 } from "../squareEnix/software_sales_square_enix";
 
 function extractValue(value: EarningsValue): number | never[] {
     switch (value.kind) {
@@ -127,7 +128,7 @@ export const koeiTecmoSalesPerSoftwareUnitCml = setMakerV2(koeiTecmoCollection, 
 
 export const CapcomSalesPerSoftwareUnitCml = setMakerV2(capcomCollection, 38, "Billion", "One Thousand");
 
-export const squareEnixSalesPerSoftwareUnitCml = setMakerV2(squareEnixCollection, 38, "Billion", "One Thousand");
+export const squareEnixSalesPerSoftwareUnitCml = setMakerV2(squareEnixCollection, 38, "Billion", "One Thousand").map(elem => elem + notes2021);
 
 bandaiNamcoCollection.clear();
 segaCollection.clear();
@@ -315,15 +316,19 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
 
         const getFootnotes = liner(printTextBlock(list.get(0)?.[theta * 3].footnotes,54),"−","bottom",true,54);
 
-        const toReturn = new Map<number, string[]>([
-            [0, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)]],
-            [1, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)]],
-            [2, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)]],
-            [3, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)]],
-            [4, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 55) + generalSalesHeaderV2(18,12,9,10,7)]],
-            [5, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 54) + generalSalesHeaderV2(17,12,9,10,7)]],
-            [6, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 54) + generalSalesHeaderV2(17,12,9,10,7)]],
-        ])
+        if (theta === 0) {
+
+            dataToReturn.set(0, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)])
+            dataToReturn.set(1, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)])
+            dataToReturn.set(2, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)])
+            dataToReturn.set(3, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)])
+            dataToReturn.set(4, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 55) + generalSalesHeaderV2(18,12,9,10,7)])
+            dataToReturn.set(5, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 54) + generalSalesHeaderV2(17,12,9,10,7)])
+            dataToReturn.set(6, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 54) + generalSalesHeaderV2(17,12,9,10,7)])
+
+        }
+
+        const toReturn = new Map<number, string[]>();
 
         const totalTextLength = new Map<number, number>([
             [0, 59],
@@ -348,6 +353,7 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
                 const getTextLength = (index % 3 === 0) ? 12 : (index % 3 === 1) ? 11 : 11;
 
                 const newLine = (index % 3 === 2) ? "\n" : ""
+                // const newLine = "\n"
 
                 toReturn.set(0, (toReturn.get(0) ?? []).concat(
                     (value[index].Q1QtrValue.kind === "Nothing")
@@ -358,50 +364,45 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
                         getTextLength,
                         (index % 3 === 0) ? false : true, 
                         (index % 3 === 2 ? "None" : undefined),
-                        getFiscalYear) + newLine
-                      )
+                        getFiscalYear),
+                    ).concat((index % 3 === 2 && (toReturn.get(0)?.length ?? -1) > 0) ? "\n" : []),
                 ) 
 
                 toReturn.set(1, (toReturn.get(1) ?? []).concat(
                     (value[index].Q2QtrValue.kind === "Nothing")
                     ? []
-                    : printQuarterValuesV2(value[index].Q2QtrValue, 0, getTextLength,(index % 3 === 0) ? false : true, (index % 3 === 2 ? "None" : undefined),getFiscalYear) + newLine
-                    )
+                    : printQuarterValuesV2(value[index].Q2QtrValue, 0, getTextLength,(index % 3 === 0) ? false : true, (index % 3 === 2 ? "None" : undefined),getFiscalYear)
+                    ).concat((index % 3 === 2 && (toReturn.get(1)?.length ?? -1) > 0) ? "\n" : [])
                 ) 
 
                 toReturn.set(2, (toReturn.get(2) ?? []).concat(
                     (value[index].Q3QtrValue.kind === "Nothing")
                     ? []
-                    : printQuarterValuesV2(value[index].Q3QtrValue, 0, getTextLength,(index % 3 === 0) ? false : true, (index % 3 === 2 ? "None" : undefined),getFiscalYear) + newLine
-                    )
+                    : printQuarterValuesV2(value[index].Q3QtrValue, 0, getTextLength,(index % 3 === 0) ? false : true, (index % 3 === 2 ? "None" : undefined),getFiscalYear)).concat((index % 3 === 2 && (toReturn.get(2)?.length ?? -1) > 0) ? "\n" : [])
                 ) 
 
                 toReturn.set(3, (toReturn.get(3) ?? []).concat(
                     (value[index].Q4QtrValue.kind === "Nothing")
                     ? []
-                    : printQuarterValuesV2(value[index].Q4QtrValue, 0, getTextLength,(index % 3 === 0) ? false : true, (index % 3 === 2 ? "None" : undefined),getFiscalYear) + newLine
-                    )
+                    : printQuarterValuesV2(value[index].Q4QtrValue, 0, getTextLength,(index % 3 === 0) ? false : true, (index % 3 === 2 ? "None" : undefined),getFiscalYear)).concat((index % 3 === 2 && (toReturn.get(3)?.length ?? -1) > 0) ? "\n" : [])
                 ) 
 
                 toReturn.set(4, (toReturn.get(4) ?? []).concat(
                     (value[index].Q2CmlValue.kind === "Nothing")
                     ? []
-                    : printCumulativeValuesV2(value[index].Q2CmlValue, 0, getTextLength,(index % 3 === 0) ? false : true, (index % 3 === 2 ? "None" : undefined),getFiscalYear) + newLine
-                    )
+                    : printCumulativeValuesV2(value[index].Q2CmlValue, 0, getTextLength,(index % 3 === 0) ? false : true, (index % 3 === 2 ? "None" : undefined),getFiscalYear)).concat((index % 3 === 2 && (toReturn.get(4)?.length ?? -1) > 0) ? "\n" : [])
                 ) 
 
                 toReturn.set(5, (toReturn.get(5) ?? []).concat(
                     (value[index].Q3CmlValue.kind === "Nothing")
                     ? []
-                    : printCumulativeValuesV2(value[index].Q3CmlValue, 0, getTextLength,(index % 3 === 0) ? false : true, (index % 3 === 2 ? "None" : undefined),getFiscalYear) + newLine
-                    )
+                    : printCumulativeValuesV2(value[index].Q3CmlValue, 0, getTextLength,(index % 3 === 0) ? false : true, (index % 3 === 2 ? "None" : undefined),getFiscalYear)).concat((index % 3 === 2 && (toReturn.get(5)?.length ?? -1) > 0) ? "\n" : [])
                 ) 
 
                 toReturn.set(6, (toReturn.get(6) ?? []).concat(
                     (value[index].Q4CmlValue.kind === "Nothing")
                     ? []
-                    : printCumulativeValuesV2(value[index].Q4CmlValue, 0, getTextLength,(index % 3 === 0) ? false : true, (index % 3 === 2 ? "None" : undefined),getFiscalYear) + newLine
-                    )
+                    : printCumulativeValuesV2(value[index].Q4CmlValue, 0, getTextLength,(index % 3 === 0) ? false : true, (index % 3 === 2 ? "None" : undefined),getFiscalYear)).concat((index % 3 === 2 && (toReturn.get(6)?.length ?? -1) > 0) ? "\n" : [])
                 ) 
 
                 let getCorrectIndex = index % 3;
