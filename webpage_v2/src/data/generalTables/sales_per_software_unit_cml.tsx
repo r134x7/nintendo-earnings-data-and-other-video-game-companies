@@ -252,7 +252,7 @@ function setMakerV2(
         // } satisfies EarningsV2));
     })
 
-    let multipleData = 0;
+    let multipleData = 1;
     
     millionFixData.forEach((value, key, map) => {
        if (value.length > 3) {
@@ -311,9 +311,8 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
     // const dataToReturn: string[][] = [];
     const dataToReturn = new Map<number, string[]>();
 
-  for (let theta = 0; theta < loops + 1; theta++) {
+  for (let theta = 0; theta < loops; theta++) {
             
-        
         function sectionHeader(name: string | undefined, textLength: number): string {
             return liner(border([
             spacer(name ?? "Error", textLength,"left"),
@@ -346,8 +345,9 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
 
             const getFiscalYear = (value[0].Q4CmlValue.kind === "Cumulative") ? value[0].Q4CmlValue.thisFY.slice(0, -4) : "ERROR" 
 
+            const valueConstraint = (theta * 3) + 3; 
             // for (let index = 0; index < value.length; index++) {
-            for (let index = theta*3; index < value.length; index++) {
+            for (let index = theta*3; index < valueConstraint; index++) {
 
                 const getTextLength = (index % 3 === 0) ? 12 : (index % 3 === 1) ? 11 : 11;
 
