@@ -408,14 +408,15 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
                     )
                 ) 
 
+                let getCorrectIndex = index % 3;
                 // sales, units, sales per software unit. key + (index * 7)
-                getValues.set(0 + (index * 7), (getValues.get(0 + (index * 7)) ?? []).concat(extractValue(value[index].Q1QtrValue)))
-                getValues.set(1 + (index * 7), (getValues.get(1 + (index * 7)) ?? []).concat(extractValue(value[index].Q2QtrValue)))
-                getValues.set(2 + (index * 7), (getValues.get(2 + (index * 7)) ?? []).concat(extractValue(value[index].Q3QtrValue)))
-                getValues.set(3 + (index * 7), (getValues.get(3 + (index * 7)) ?? []).concat(extractValue(value[index].Q4QtrValue)))
-                getValues.set(4 + (index * 7), (getValues.get(4 + (index * 7)) ?? []).concat(extractValue(value[index].Q2CmlValue)))
-                getValues.set(5 + (index * 7), (getValues.get(5 + (index * 7)) ?? []).concat(extractValue(value[index].Q3CmlValue)))
-                getValues.set(6 + (index * 7), (getValues.get(6 + (index * 7)) ?? []).concat(extractValue(value[index].Q4CmlValue)))
+                getValues.set(0 + (getCorrectIndex * 7), (getValues.get(0 + (getCorrectIndex * 7)) ?? []).concat(extractValue(value[index].Q1QtrValue)))
+                getValues.set(1 + (getCorrectIndex * 7), (getValues.get(1 + (getCorrectIndex * 7)) ?? []).concat(extractValue(value[index].Q2QtrValue)))
+                getValues.set(2 + (getCorrectIndex * 7), (getValues.get(2 + (getCorrectIndex * 7)) ?? []).concat(extractValue(value[index].Q3QtrValue)))
+                getValues.set(3 + (getCorrectIndex * 7), (getValues.get(3 + (getCorrectIndex * 7)) ?? []).concat(extractValue(value[index].Q4QtrValue)))
+                getValues.set(4 + (getCorrectIndex * 7), (getValues.get(4 + (getCorrectIndex * 7)) ?? []).concat(extractValue(value[index].Q2CmlValue)))
+                getValues.set(5 + (getCorrectIndex * 7), (getValues.get(5 + (getCorrectIndex * 7)) ?? []).concat(extractValue(value[index].Q3CmlValue)))
+                getValues.set(6 + (getCorrectIndex * 7), (getValues.get(6 + (getCorrectIndex * 7)) ?? []).concat(extractValue(value[index].Q4CmlValue)))
 
             }
 
@@ -452,7 +453,7 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
         
     toReturn.forEach((value, key, map) => {
     // list.forEach((value, key, map) => {
-
+        
         // let getTextLength = (offset: number) => (map.get(key)?.at(-2)?.length === undefined)
         // let getTextLength = (offset: number) => (toReturnTextLength === undefined)
         //     ? 0
