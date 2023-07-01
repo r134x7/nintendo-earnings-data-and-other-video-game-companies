@@ -14,14 +14,6 @@ export type collectionJSON = {
     hdGamesAndMMOUnits: salesOrUnitsJSON,
 };
 
-// const collection: collectionJSON[] = [
-//     softwareSales2023,
-//     softwareSales2022,
-//     softwareSales2021,
-//     softwareSales2020,
-//     undefinedData,
-// ];
-
 const collectionV2 = new Map<number, EarningsJSONV2>();
 
 collectionV2.set(collectionV2.size, softwareSales2023)
@@ -151,19 +143,19 @@ collectionV2.forEach((value, key, map) => {
 
 collectionV2.clear();
 
-function combineData(sales: EarningsMakeV2[]): EarningsMakeV2 {
-    return {
-        name: sales.reduce((acc, next, index, array) => acc + next.name + (array[index] === array.at(-1) ? "" : " & ") ,""),
-        units: "currency",
-        Q1CmlValue:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.Q1CmlValue))) ? 0 : Number(next.Q1CmlValue)), 0),
-        Q2CmlValue:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.Q2CmlValue))) ? 0 : Number(next.Q2CmlValue)), 0),
-        Q3CmlValue:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.Q3CmlValue))) ? 0 : Number(next.Q3CmlValue)), 0),
-        Q4CmlValue:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.Q4CmlValue))) ? 0 : Number(next.Q4CmlValue)), 0),
-        // forecastThisFY:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastThisFY))) ? 0 : Number(next.forecastThisFY)), 0),
-        // forecastRevision1:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastRevision1))) ? 0 : Number(next.forecastRevision1)), 0),
-        // forecastRevision2:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastRevision2))) ? 0 : Number(next.forecastRevision2)), 0),
-        // forecastRevision3:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastRevision3))) ? 0 : Number(next.forecastRevision3)), 0),
-        // forecastNextFY:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastNextFY))) ? 0 : Number(next.forecastNextFY)), 0),
-        footnotes: sales.reduce((acc, next) => acc + next.footnotes + " ", ""),
-    } satisfies EarningsMakeV2 
-}
+// function combineData(sales: EarningsMakeV2[]): EarningsMakeV2 {
+//     return {
+//         name: sales.reduce((acc, next, index, array) => acc + next.name + (array[index] === array.at(-1) ? "" : " & ") ,""),
+//         units: "currency",
+//         Q1CmlValue:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.Q1CmlValue))) ? 0 : Number(next.Q1CmlValue)), 0),
+//         Q2CmlValue:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.Q2CmlValue))) ? 0 : Number(next.Q2CmlValue)), 0),
+//         Q3CmlValue:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.Q3CmlValue))) ? 0 : Number(next.Q3CmlValue)), 0),
+//         Q4CmlValue:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.Q4CmlValue))) ? 0 : Number(next.Q4CmlValue)), 0),
+//         // forecastThisFY:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastThisFY))) ? 0 : Number(next.forecastThisFY)), 0),
+//         // forecastRevision1:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastRevision1))) ? 0 : Number(next.forecastRevision1)), 0),
+//         // forecastRevision2:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastRevision2))) ? 0 : Number(next.forecastRevision2)), 0),
+//         // forecastRevision3:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastRevision3))) ? 0 : Number(next.forecastRevision3)), 0),
+//         // forecastNextFY:sales.reduce((acc, next) => acc + ((Number.isNaN(Number(next.forecastNextFY))) ? 0 : Number(next.forecastNextFY)), 0),
+//         footnotes: sales.reduce((acc, next) => acc + next.footnotes + " ", ""),
+//     } satisfies EarningsMakeV2 
+// }

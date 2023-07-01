@@ -12,8 +12,6 @@ import { type EarningsV2,
 import { generalSalesHeaderV2, salesPerSoftwareUnitCalculation, millionFix } from "../../utils/segment_data_logic";
 import { 
     getConcat,
-    getCount,
-    getSum,
     printAverage,
     printCount,
     printMaximum,
@@ -69,17 +67,6 @@ export function extractValue(value: EarningsValue): number | never[] {
             return [] 
     }
 }
-// type Dates = {
-//     fiscalYear: string,
-//     currentQuarter: number,
-// };
-// // finally made use of a generic to deal with a complex problem.
-// function labelMaker <T extends Dates>(collection: T[]) {
-
-//     const makeDateLabel = dateLabel(collection.at(-1)?.fiscalYear ?? "N/A", collection.at(-1)?.currentQuarter ?? 4);
-
-//     return liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "bottom",true)
-// }
 
 const bandaiNamcoCollection = new Map<number, EarningsJSONV2>();
     bandaiNamcoCollection.set(bandaiNamcoCollection.size,bandaiNamcoSoftwareSales2019);
@@ -112,13 +99,6 @@ const squareEnixCollection = new Map<number, EarningsJSONV2>();
     squareEnixCollection.set(squareEnixCollection.size, squareEnixSoftwareSales2022);
     squareEnixCollection.set(squareEnixCollection.size, squareEnixSoftwareSales2023);
 
-
-const generalSalesHeader = 
-`+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
-|              |             |          | Sales Per |
-|              |             | Software |  Software |
-|              |       Sales |    Units |      Unit |
-+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+`;
 
 export const bandaiNamcoSalesPerSoftwareUnitCml = setMakerV2(bandaiNamcoCollection, 38,"Billion","One Thousand");
 
@@ -178,17 +158,12 @@ function setMakerV2(
             "Segment Information - Software Sales"
         ],headerLength) + "\n" + printDateLabel
 
-    const printFootnotes = liner(printTextBlock(completeCollection.get(completeCollection.size-1)?.data[0].footnotes,50),"−","bottom",true,50)
-
     const millionFixData = new Map<number, EarningsV2[]>();
 
     makeData.forEach((value, key, map) => {
 
         for (let index = 0; index < value.length; index++) {
             
-            console.log(value.length);
-            
-
             millionFixData.set(key, 
                 (millionFixData.get(key) ?? [])
                 .concat(
@@ -236,24 +211,6 @@ function setMakerV2(
             } satisfies EarningsV2));
 
         }
-
-        // map.set(key, value.concat( {
-        //     name: "Sales Per Software Unit",
-        //     Q1QtrValue: salesPerSoftwareUnitCalculation(value[0].Q1QtrValue, value[1].Q1QtrValue),
-        //     Q2QtrValue: salesPerSoftwareUnitCalculation(value[0].Q2QtrValue, value[1].Q2QtrValue),
-        //     Q3QtrValue: salesPerSoftwareUnitCalculation(value[0].Q3QtrValue, value[1].Q3QtrValue),
-        //     Q4QtrValue: salesPerSoftwareUnitCalculation(value[0].Q4QtrValue, value[1].Q4QtrValue),
-        //     Q1CmlValue: salesPerSoftwareUnitCalculation(value[0].Q1CmlValue, value[1].Q1CmlValue),
-        //     Q2CmlValue: salesPerSoftwareUnitCalculation(value[0].Q2CmlValue, value[1].Q2CmlValue),
-        //     Q3CmlValue: salesPerSoftwareUnitCalculation(value[0].Q3CmlValue, value[1].Q3CmlValue),
-        //     Q4CmlValue: salesPerSoftwareUnitCalculation(value[0].Q4CmlValue, value[1].Q4CmlValue),
-        //     forecastThisFY: salesPerSoftwareUnitCalculation(value[0].forecastThisFY, value[1].forecastThisFY),
-        //     forecastRevision1: salesPerSoftwareUnitCalculation(value[0].forecastRevision1, value[1].forecastRevision1),
-        //     forecastRevision2: salesPerSoftwareUnitCalculation(value[0].forecastRevision2, value[1].forecastRevision2),
-        //     forecastRevision3: salesPerSoftwareUnitCalculation(value[0].forecastRevision3, value[1].forecastRevision3),
-        //     forecastNextFY: salesPerSoftwareUnitCalculation(value[0].forecastNextFY, value[1].forecastNextFY),
-        //     footnotes: value[0].footnotes
-        // } satisfies EarningsV2));
     })
 
     let multipleData = 1;
@@ -316,8 +273,7 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
 
         const getFootnotes = liner(printTextBlock(list.get(0)?.[theta * 3].footnotes,54),"−","bottom",true,54);
 
-        // if (theta === 0) {
-
+            // sets the segment's header
             dataToReturn.set(0, (dataToReturn.get(0) ?? []).concat([sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)]))
             dataToReturn.set(1, (dataToReturn.get(1) ?? []).concat([sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)]))
             dataToReturn.set(2, (dataToReturn.get(2) ?? []).concat([sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)]))
@@ -325,8 +281,6 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
             dataToReturn.set(4, (dataToReturn.get(4) ?? []).concat([sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 55) + generalSalesHeaderV2(18,12,9,10,7)]))
             dataToReturn.set(5, (dataToReturn.get(5) ?? []).concat([sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 54) + generalSalesHeaderV2(17,12,9,10,7)]))
             dataToReturn.set(6, (dataToReturn.get(6) ?? []).concat([sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 54) + generalSalesHeaderV2(17,12,9,10,7)]))
-
-        // }
 
         const toReturn = new Map<number, string[]>();
 
@@ -347,13 +301,10 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
             const getFiscalYear = (value[0].Q4CmlValue.kind === "Cumulative") ? value[0].Q4CmlValue.thisFY.slice(0, -4) : "ERROR" 
 
             const valueConstraint = (theta * 3) + 3; 
-            // for (let index = 0; index < value.length; index++) {
+
             for (let index = theta*3; index < valueConstraint; index++) {
 
                 const getTextLength = (index % 3 === 0) ? 12 : (index % 3 === 1) ? 11 : 11;
-
-                const newLine = (index % 3 === 2) ? "\n" : ""
-                // const newLine = "\n"
 
                 toReturn.set(0, (toReturn.get(0) ?? []).concat(
                     (value[index].Q1QtrValue.kind === "Nothing")
@@ -430,45 +381,14 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
         ]);
 
         toReturn.forEach((value, key, map) => {
-            // console.log(value.length);
-            // toReturnTextLength = value.length;
-            // let nextLineCheck = (key === map.size -1) ? "" : "\n";
-            // console.log(value);
-            // const keyCheck = -3
-            // console.log(value);
-            
-            // getTextLength.set(key, value[1].length + value[3].length + value[5].length)
-            // getTextLength.set(key, value[1].slice(0, -17).length)
-            // totalTextLength.set(key, value[1].length + value[3].length + value[5].length + keyCheck);
-            // console.log(value);
-            
                        
-            toReturn.set(key, [value.reduce((acc, next, index, array) => acc + next) /*+ nextLineCheck*/])
+            toReturn.set(key, [value.reduce((acc, next, index, array) => acc + next)])
         })
 
-        
-        
     toReturn.forEach((value, key, map) => {
-    // list.forEach((value, key, map) => {
-        
-        // let getTextLength = (offset: number) => (map.get(key)?.at(-2)?.length === undefined)
-        // let getTextLength = (offset: number) => (toReturnTextLength === undefined)
-        //     ? 0
-        //     : (toReturnTextLength) - offset 
-        
-            // console.log(map.get(key));
-            
-        // let getTextLength = (x: number) => x
-        // const [sales, units, salesPerSoftwareUnit] = getValues.get(key) ?? [0, 0, 0];
-        // console.log(getValues.get(key));
-        // (key + (index * 7))
-        
-        // console.log(value.length);
-        // console.log([...value].length);
 
         map.set(key, (map.get(key) ?? []).concat(
                 printStats(
-                    // [printCount([sales], getTextLength(21),12,false,false)]
                     [
                      (getValues.get(key)?.length !== 0) ? printCount(getValues.get(key) ?? [0], getTextLength.get(key) ?? 10,12,false,false) : "",
                      (getValues.get(key + (1 * 7))?.length !== 0) ? printCount(getValues.get(key + (1 * 7)) ?? [0], getTextLength.get(key) ?? 10,11,false,true) : "",
@@ -489,60 +409,11 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
                      (getValues.get(key + (1 * 7))?.length !== 0) ? printMaximum(getValues.get(key + (1 * 7)) ?? [0],  getTextLength.get(key) ?? 10,11,"Million","None",false,true) : "",
                      (getValues.get(key + (2 * 7))?.length !== 0) ? printMaximum(getValues.get(key + (2 * 7)) ?? [0],  getTextLength.get(key) ?? 10,11,"None","¥",false,true) : "",
                     ].flat()
-                // , getTextLength(-24) ?? 0),
                 , totalTextLength.get(key) ?? 60),
                 getFootnotes
         ))
-        
-        
-        // for (let index = 0; index < 3; index++) {
-
-        //     let indexCheck = (index !== 1) ? 11 : 12; 
-        //     let columnCheck = (index !== 0) ? true : false;
-
-        //     toReturn.set(key, (toReturn.get(key) ?? []).concat(
-        //         // printStats(
-        //             printCount(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),indexCheck,false,columnCheck).concat(
-        //                 printSum(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),indexCheck,
-        //                 (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None",false,columnCheck 
-        //                 ),
-        //                 printAverage(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),indexCheck,
-        //                 (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None", 
-        //                 (index !== 1) ? 0 : 2,false,columnCheck
-        //                 ),
-        //                 printMinMedianMax(getValues.get(key + (index * 7)) ?? [0], getTextLength(21),indexCheck,
-        //                 (index !== 2) ? "Million" : "None", (index !== 1) ? "¥" : "None", 
-        //                 (index !== 1) ? 0 : 2,false,columnCheck
-        //                 ),
-        //             )
-        //         // , getTextLength(3) ?? 0),
-        //     ))
-            
-            // console.log(
-            //     printStats(
-            //         printCount(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)).concat(
-            //             printSum(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)),
-            //             printAverage(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)),
-            //             printMinMedianMax(getValues.get(key + (index * 7)) ?? [0], getTextLength(21)),
-            //         )
-            //     , getTextLength(3) ?? 0),
-            // );
-            
-        // }
     })
 
-    // console.log(toReturn);
-    // dataToReturn.push(
-    //     [
-    //         getConcat(toReturn.get(0)),
-    //         getConcat(toReturn.get(1)),
-    //         getConcat(toReturn.get(2)),
-    //         getConcat(toReturn.get(3)),
-    //         getConcat(toReturn.get(4)),
-    //         getConcat(toReturn.get(5)),
-    //         getConcat(toReturn.get(6)),
-    //     ]
-    // )
     dataToReturn.set(0, (dataToReturn.get(0) ?? []).concat(getConcat(toReturn.get(0))))
     dataToReturn.set(1, (dataToReturn.get(1) ?? []).concat(getConcat(toReturn.get(1))))
     dataToReturn.set(2, (dataToReturn.get(2) ?? []).concat(getConcat(toReturn.get(2))))
@@ -552,285 +423,10 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
     dataToReturn.set(6, (dataToReturn.get(6) ?? []).concat(getConcat(toReturn.get(6))))
 
   }
-    // return [
-    //     getConcat(toReturn.get(0)),
-    //     getConcat(toReturn.get(1)),
-    //     getConcat(toReturn.get(2)),
-    //     getConcat(toReturn.get(3)),
-    //     getConcat(toReturn.get(4)),
-    //     getConcat(toReturn.get(5)),
-    //     getConcat(toReturn.get(6)),
-    // ]
+
     dataToReturn.forEach((value, key, map) => {
         
         map.set(key, [value.reduce((acc, next) => acc + next)])
     })
     return [...dataToReturn.values()].flat()
 }
-
-// const bandaiNamcoSales: Section[] = setMaker(bandaiNamcoCollection, bandaiNamcoSalesMake);
-
-// const bandaiNamcoUnits: Section[] = setMaker(bandaiNamcoCollection, bandaiNamcoUnitsMake);
-
-// const capcomDigitalContentsSales: Section[] = setMaker(capcomCollection, digitalContentsSalesMake);
-
-// const capcomDigitalContentsUnits: Section[] = setMaker(capcomCollection, digitalContentsUnitsMake);
-
-// const capcomPhysicalSales: Section[] = setMaker(capcomCollection, packageSalesMake);
-
-// const capcomPhysicalUnits: Section[] = setMaker(capcomCollection, packageUnitsMake);
-
-// const capcomDigitalSales: Section[] = setMaker(capcomCollection, digitalSalesMake);
-
-// const capcomDigitalUnits: Section[] = setMaker(capcomCollection, digitalUnitsMake);
-
-// const segaSales: Section[] = setMaker(segaCollection, segaSalesMake);
-
-// const segaUnits: Section[] = setMaker(segaCollection, segaUnitsMake);
-
-// const koeiTecmoSales: Section[] = setMaker(koeiTecmoCollection, koeiTecmoSalesMake);
-
-// const koeiTecmoUnits: Section[] = setMaker(koeiTecmoCollection, koeiTecmoUnitsMake);
-
-// const squareEnixSales: Section[] = setMaker(squareEnixCollection, salesHDandMMOmake);
-
-// const squareEnixUnits: Section[] = setMaker(squareEnixCollection, squareEnixUnitsMake);
-
-// function headerMaker(companyName: string) {
-
-//     let company = liner(border([spacer(companyName, companyName.length+1, "left")]), "−", "top")
-
-//     let subHeaderName = "Segment Information - Cumulative"
-
-//     let subHeader = liner(border([spacer(subHeaderName, subHeaderName.length+1, "left")]), "−", "both");
-
-//     return [company, subHeader].reduce((acc, next) => acc + "\n" + next)
-
-// };
-
-// function setMaker(collection: koeiTecmoCollectionJSON[] | capcomCollectionJSON[] | squareEnixCollectionJSON[] | segaCollectionJSON[], objectMaker: Function): Section[] {
-
-//     return collection.map((elem) => {
-
-//         let list: Section[] = objectMaker(elem);
-
-//         return list.map(value => {
-//             return { ...value, fiscalYear: elem.fiscalYear}
-//         })
-//     }).flatMap(elem => elem.filter((value, valueIndex) => valueIndex > 2)); 
-// };
-
-// const printSalesPerSoftwareUnitCumulative = (salesArray: Section[], softwareArray: Section[]): string => {
-
-//     let printLine = (length: number) => `+${"−".repeat(length)}+`;
-
-//     let printName = printLine(salesArray[0].name.length+2) + "\n" + printTextBlock(salesArray[0].name, salesArray[0].name.length+2); 
-
-
-//     let salesPerSoftwareUnit = salesArray.map((elem, index, array) => {
-
-//         let printSales: string = `¥${(elem.value * 1000).toLocaleString("en")}M`;
-
-//         let printSalesFixed: string = (printSales.length >= 13)
-//             ? printSales
-//             : " ".repeat(13 - printSales.length) + printSales;
-        
-        
-//         let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (softwareArray[index].value / 1000)).toFixed(0));
-
-//         let printsegmentSalesPerSoftware: string = `¥${calculateSalesPerSoftware.toLocaleString("en")} `
-
-//         let printsegmentSalesPerSoftwareFixed: string = (printsegmentSalesPerSoftware.length >= 11)
-//                 ? printsegmentSalesPerSoftware
-//                 : " ".repeat(11 - printsegmentSalesPerSoftware.length) + printsegmentSalesPerSoftware;
-            
-//         let printSoftwareUnits: string = `${softwareArray[index].value / 1000}M`
-
-        
-//         let printSoftwareUnitsFixed: string = (printSoftwareUnits.length >= 10)
-//                 ? printSoftwareUnits
-//                 : " ".repeat(10 - printSoftwareUnits.length) + printSoftwareUnits;
-        
-//         return "| " + elem.fiscalYear + " Cml.|" + printSalesFixed + "|" + printSoftwareUnitsFixed + "|" + printsegmentSalesPerSoftwareFixed + "|"; 
-//     });
-
-//     function sortList(list: Section[]) {
-
-//         const sortList = list.map((elem, index, array) => {
-//                 return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
-//         }).sort((a, b) => { // (b,a) is descending order, (a,b) sorts in ascending order
-//             return (a.value > b.value)
-//                 ? 1
-//                 : (a.value < b.value)
-//                 ? -1
-//                 : 0 
-//         });
-
-//         return sortList
-//     };
-
-//     function sortValues(list: number[]) {
-
-//         const sortList = list.map((elem, index, array) => {
-//                 return elem // we need to create a new array that is identical to the original due to sort's mutating properties.
-//         }).sort((a, b) => { // (b,a) is descending order, (a,b) sorts in ascending order
-//             return (a > b)
-//                 ? 1
-//                 : (a < b)
-//                 ? -1
-//                 : 0 
-//         });
-
-//         return sortList
-//     };
-
-//     let sortedSales = sortList(salesArray);
-
-//     let sortedUnits = sortList(softwareArray);
-
-//     let sortedSalesSum = ((sortedSales.map(value => value.value).reduce((acc, next) => acc + next)) * 1000);
-
-//     let sortedUnitsSum = ((sortedUnits.map(value => value.value).reduce((acc, next) => acc + next)) / 1000);
-
-//     let salesPerSoftwareUnitUnsorted = salesArray.map((elem, index) => {
-//         return  Number(((elem.value * 1000) / (softwareArray[index].value / 1000)).toFixed(0));
-//     });
-
-//     let salesPerSoftwareUnitSorted = sortValues(salesPerSoftwareUnitUnsorted);
-
-//     let salesPerSoftwareUnitSum = salesPerSoftwareUnitUnsorted.reduce((acc, next) => acc + next); 
-
-//     let salesPerSoftwareUnitAverage = salesPerSoftwareUnitSum / salesArray.length;
-
-//     let printSalesSum: string = `¥${Number((sortedSalesSum).toFixed(0)).toLocaleString("en")}M`;
-
-//     let printUnitsSum: string = `${(sortedUnitsSum)}M`;
-    
-//     let printSalesPerSoftwareUnitSum = `¥${Number((salesPerSoftwareUnitSum).toFixed(0)).toLocaleString("en")}`;
-
-//     let printAverageSales: string = `¥${Number(( sortedSalesSum / sortedSales.length).toFixed(0)).toLocaleString("en")}M`;
-
-//     let printAverageUnits: string = `${( sortedUnitsSum / sortedUnits.length).toFixed(2)}M`; 
-
-//     let printAverageSalesPerSoftware: string = `¥${Number(( salesPerSoftwareUnitAverage).toFixed(0)).toLocaleString("en")}`; 
-
-//     let printMedianSales: string = ((sortedSales.length % 2) !== 0) // odd number
-//             // median formula source: https://en.wikipedia.org/wiki/Median
-//             // odd number median(x) = x(n+1)/2 => index version => median(x) = (x(n+1)/2)-1
-//             ? `¥${((sortedSales[((sortedSales.length + 1)/2) -1].value) * 1000).toLocaleString("en")}M`
-//             // even number median(x) = (x(n/2) + x((n/2) + 1)) /2 => index version median(x) = (x((n/2)-1) + x((n/2))) /2
-//             : `¥${Number((((sortedSales[(sortedSales.length/2) -1].value + sortedSales[(sortedSales.length/2)].value)/2) * 1000).toFixed(0)).toLocaleString("en")}M`;
-    
-    
-//     let printMedianUnits: string = ((sortedUnits.length % 2) !== 0) // odd number
-//             ? `${(sortedUnits[((sortedUnits.length + 1)/2) -1].value / 1000).toFixed(2)}M`
-//             : `${Number((((sortedUnits[(sortedUnits.length/2) -1].value + sortedUnits[(sortedUnits.length/2)].value)/2) / 1000).toFixed(2))}M`;
-
-//     let printMedianSalesPerSoftwareUnit: string = ((salesPerSoftwareUnitSorted.length % 2) !== 0) // odd number
-//             ? `¥${salesPerSoftwareUnitSorted[((salesPerSoftwareUnitSorted.length + 1)/2) -1].toLocaleString("en")}`
-//             : `¥${Number(((salesPerSoftwareUnitSorted[(salesPerSoftwareUnitSorted.length/2) -1] + salesPerSoftwareUnitSorted[(salesPerSoftwareUnitSorted.length/2)])/2).toFixed(0)).toLocaleString("en")}`;
-
-//     let printMinSales: string = `¥${(sortedSales[0].value * 1000).toLocaleString("en")}M`;
-
-//     let printMinUnits: string = `${(sortedUnits[0].value / 1000)}M`;
-
-//     let printMinSalesPerSoftwareUnit: string = `¥${(salesPerSoftwareUnitSorted[0]).toLocaleString("en")}`;
-
-//     let printMaxSales: string = `¥${(sortedSales[sortedSales.length-1].value * 1000).toLocaleString("en")}M`;
-
-//     let printMaxUnits: string = `${(sortedUnits[sortedUnits.length-1].value / 1000)}M`;
-
-//     let printMaxSalesPerSoftwareUnit: string = `¥${(salesPerSoftwareUnitSorted[salesPerSoftwareUnitSorted.length-1]).toLocaleString("en")}`;
-
-
-//     let printCountRow: string = border([
-//         spacer("Count", 13, "left"),
-//         spacer(`${salesArray.length}`, 12, "right"),
-//         spacer("", 9, "left"),
-//         spacer("", 10, "left"),
-//     ]);
-
-//     let printSumRow: string = border([
-//         spacer("Sum", 13, "left"),
-//         spacer(printSalesSum, 12, "right"),
-//         spacer(printUnitsSum, 9, "right"),
-//         spacer(printSalesPerSoftwareUnitSum, 10, "right"),
-//     ]);
-
-//     let printAverageRow: string = border([
-//         spacer("Average", 13, "left"),
-//         spacer(printAverageSales, 12, "right"),
-//         spacer(printAverageUnits, 9, "right"),
-//         spacer(printAverageSalesPerSoftware, 10, "right")
-//     ]);
-
-//     let printMedianRow: string = border([
-//         spacer("Median", 13, "left"),
-//         spacer(printMedianSales, 12, "right"),
-//         spacer(printMedianUnits, 9, "right"),
-//         spacer(printMedianSalesPerSoftwareUnit, 10, "right")
-//     ]);
-
-//     let printMinRow: string = border([
-//         spacer("Minimum", 13, "left"),
-//         spacer(printMinSales, 12, "right"),
-//         spacer(printMinUnits, 9, "right"),
-//         spacer(printMinSalesPerSoftwareUnit, 10, "right")
-//     ]);
-
-//     let printMaxRow: string = liner(border([
-//         spacer("Maximum", 13, "left"),
-//         spacer(printMaxSales, 12, "right"),
-//         spacer(printMaxUnits, 9, "right"),
-//         spacer(printMaxSalesPerSoftwareUnit, 10, "right")
-//     ]),"−", "bottom");
-
-
-//     return [
-//         printName,
-//         generalSalesHeader,
-//         ...salesPerSoftwareUnit, 
-//         printLine(51),
-//         printCountRow,
-//         printSumRow,
-//         printAverageRow,
-//         printMedianRow,
-//         printMinRow,
-//         printMaxRow,
-//         (salesArray[0].notes === undefined) ? [] : printTextBlock(salesArray[0].notes, 51) + "\n" + printLine(51),
-//     ].flat().reduce((acc, next) => acc + "\n" + next);
-// };
-
-// export const bandaiNamcoSalesPerSoftwareUnitCml = [
-//     headerMaker("Bandai Namco"),
-//     labelMaker(bandaiNamcoCollection),
-//     printSalesPerSoftwareUnitCumulative(bandaiNamcoSales, bandaiNamcoUnits)
-// ].reduce((acc, next) => acc + "\n" + next);
-
-// export const CapcomSalesPerSoftwareUnitCml = [
-//     headerMaker("Capcom"),
-//     labelMaker(capcomCollection),
-//     printSalesPerSoftwareUnitCumulative(capcomDigitalContentsSales, capcomDigitalContentsUnits),
-//     printSalesPerSoftwareUnitCumulative(capcomDigitalSales, capcomDigitalUnits),
-//     printSalesPerSoftwareUnitCumulative(capcomPhysicalSales, capcomPhysicalUnits),
-// ].reduce((acc, next) => acc + "\n" + next);
-
-// export const segaSammySalesPerSoftwareUnitCml = [
-//     headerMaker("Sega Sammy"),
-//     labelMaker(segaCollection),
-//     printSalesPerSoftwareUnitCumulative(segaSales, segaUnits)
-// ].reduce((acc, next) => acc + "\n" + next);
-
-// export const koeiTecmoSalesPerSoftwareUnitCml = [
-//     headerMaker("Koei Tecmo"),
-//     labelMaker(koeiTecmoCollection),
-//     printSalesPerSoftwareUnitCumulative(koeiTecmoSales, koeiTecmoUnits)
-// ].reduce((acc, next) => acc + "\n" + next);
-
-// export const squareEnixSalesPerSoftwareUnitCml = [
-//     headerMaker("Square Enix"),
-//     labelMaker(squareEnixCollection),
-//     printSalesPerSoftwareUnitCumulative(squareEnixSales, squareEnixUnits),
-//     notes2021,
-//     liner(border([spacer("See \"Data by Fiscal Year\" for HD Games and MMO sales splits", 60, "left")]),"−","both"),
-// ].reduce((acc, next) => acc + "\n" + next);

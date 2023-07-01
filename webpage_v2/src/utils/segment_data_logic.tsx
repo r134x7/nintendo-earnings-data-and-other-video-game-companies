@@ -6,8 +6,7 @@ import { printQuarterValuesV2,
     yearOnYearCalculationV2,
     type EarningsV2, 
     type EarningsValue } from "./general_earnings_logic";
-import { valuesMakeV2, nothingCheck, type EarningsMakeV2, type EarningsJSONV2, getData } from "../data/generalTables/consolidated_earnings_general";
-import { extractValue } from "../data/generalTables/sales_per_software_unit_cml";
+import { type EarningsJSONV2, getData } from "../data/generalTables/consolidated_earnings_general";
 
 export type Section = {
     region: "Group Total" | "Japan" | "Americas" | "Europe",
@@ -26,12 +25,12 @@ export type HeaderV2 = {
     title: string;
 }
 
-const generalSalesHeader = 
-`+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
-|             |             |          | Sales Per |
-|             |             | Software |  Software |
-|             |       Sales |    Units |      Unit |
-+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
+// const generalSalesHeader = 
+// `+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
+// |             |             |          | Sales Per |
+// |             |             | Software |  Software |
+// |             |       Sales |    Units |      Unit |
+// +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
 
 export function generalSalesHeaderV2(
     periodColumnLength: number,
@@ -77,32 +76,32 @@ const squareEnixSalesHeader =
 +−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n`;
 
 
-function printSalesColumnOnly(
-    quarterSales: EarningsValue[],
-    quarterYoY: EarningsValue[],
-    cumulativeSales: EarningsValue[],
-    cumulativeYoY: EarningsValue[],
-    currentQuarter: number,
-    textLength: number,
-    singleColumn: boolean
-): string {
+// function printSalesColumnOnly(
+//     quarterSales: EarningsValue[],
+//     quarterYoY: EarningsValue[],
+//     cumulativeSales: EarningsValue[],
+//     cumulativeYoY: EarningsValue[],
+//     currentQuarter: number,
+//     textLength: number,
+//     singleColumn: boolean
+// ): string {
 
-    const quarters = quarterSales.map((elem, index) =>
-    liner( 
-    printQuarterValuesV2(elem, currentQuarter, textLength,singleColumn)
-    .concat("\n", printYoYV2(quarterYoY[index], currentQuarter, textLength, true))
-    ,"−","bottom",undefined,50)
-    );
+//     const quarters = quarterSales.map((elem, index) =>
+//     liner( 
+//     printQuarterValuesV2(elem, currentQuarter, textLength,singleColumn)
+//     .concat("\n", printYoYV2(quarterYoY[index], currentQuarter, textLength, true))
+//     ,"−","bottom",undefined,50)
+//     );
 
-    const cumulatives = cumulativeSales.map((elem, index) => 
-    liner(
-    printCumulativeValuesV2(elem, currentQuarter, textLength, singleColumn)
-    .concat("\n",printYoYV2(cumulativeYoY[index], currentQuarter, textLength, true))
-    ,"−","bottom",undefined,50)
-    );
+//     const cumulatives = cumulativeSales.map((elem, index) => 
+//     liner(
+//     printCumulativeValuesV2(elem, currentQuarter, textLength, singleColumn)
+//     .concat("\n",printYoYV2(cumulativeYoY[index], currentQuarter, textLength, true))
+//     ,"−","bottom",undefined,50)
+//     );
 
-    return quarters.concat(cumulatives).reduce((acc, next) => acc + "\n" + next);
-}
+//     return quarters.concat(cumulatives).reduce((acc, next) => acc + "\n" + next);
+// }
 
 export function millionFix(value: EarningsValue, changeFrom: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand"): EarningsValue {
 
@@ -486,92 +485,3 @@ export function graphMakeV2 (collectionThisFY: EarningsJSONV2, collectionLastFY:
         dataLastFY: dataLastFY,
     }
 }
-
-// export const graphMake = (salesDataThisFY: Section[], salesDataLastFY: Section[], salesUnitsThisFY: Section[], salesUnitsLastFY: Section[], segmentName: string, fiscalYear: string, currentQuarter: number) => {
-
-//     let quartersSalesThisFY = quarterlyCalculation(salesDataThisFY);
-//     let quartersSalesLastFY = quarterlyCalculation(salesDataLastFY);
-
-//     let quartersUnitsThisFY = quarterlyCalculation(salesUnitsThisFY); 
-//     let quartersUnitsLastFY = quarterlyCalculation(salesUnitsLastFY);
-
-//     let quarterSalesPerSoftwareUnitThisFY: Section[] = quartersSalesThisFY.filter((elem, index, array) => {
-//             return index < currentQuarter 
-//         }).map((elem, index, array) => { 
-//             // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
-//             let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (quartersUnitsThisFY[index].value / 1000)).toFixed(0))
-
-//             return { ...elem, units: "salesPerSoftwareUnit", value: calculateSalesPerSoftware}
-//         })
-
-//     let quarterSalesPerSoftwareUnitLastFY: Section[] = quartersSalesLastFY.filter((elem, index, array) => {
-//             return index < currentQuarter 
-//         }).map((elem, index, array) => { 
-//             // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
-//             let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (quartersUnitsLastFY[index].value / 1000)).toFixed(0))
-
-//             return { ...elem, units: "salesPerSoftwareUnit", value: calculateSalesPerSoftware}
-//         })
-
-//     let cumulativeSalesPerSoftwareUnitThisFY: Section[] = salesDataThisFY.filter((elem, index, array) => {
-//             return index < currentQuarter 
-//         }).map((elem, index, array) => { 
-//             // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
-//             let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (salesUnitsThisFY[index].value / 1000)).toFixed(0))
-
-//             return { ...elem, units: "salesPerSoftwareUnit", value: calculateSalesPerSoftware}
-//         })
-
-//     let cumulativeSalesPerSoftwareUnitLastFY: Section[]= salesDataLastFY.filter((elem, index, array) => {
-//             return index < currentQuarter 
-//         }).map((elem, index, array) => { 
-//             // sales has to be converted from billion yen to million yen. units has to be converted from thousands to millions
-//             let calculateSalesPerSoftware: number = Number(((elem.value * 1000) / (salesUnitsLastFY[index].value / 1000)).toFixed(0))
-
-//             return { ...elem, units: "salesPerSoftwareUnit", value: calculateSalesPerSoftware}
-//         })
-
-//     let thisFY: string = fiscalYear;
-//     let lastFY: string = thisFY.slice(0, 4) + (Number(thisFY.slice(-4)) - 1).toString();
-
-//     let marchThisFY: string = "March " + thisFY.slice(4);
-//     let marchLastFY: string = "March " + lastFY.slice(4);
-
-//     let quarterValuesThisFYList = [
-//         quartersSalesThisFY,
-//         quartersUnitsThisFY,
-//         quarterSalesPerSoftwareUnitThisFY,
-//     ];
-
-//     let quarterValuesLastFYList = [
-//         quartersSalesLastFY,
-//         quartersUnitsLastFY,
-//         quarterSalesPerSoftwareUnitLastFY,
-//     ];
-
-//     let cmlValuesThisFYList = [
-//         salesDataThisFY,
-//         salesUnitsThisFY,
-//         cumulativeSalesPerSoftwareUnitThisFY,
-//     ];
-
-//     let cmlValuesLastFYList = [
-//         salesDataLastFY,
-//         salesUnitsLastFY,
-//         cumulativeSalesPerSoftwareUnitLastFY,
-//     ];
-
-//     let graphData = {
-//         segmentName: segmentName,
-//         thisFY: thisFY,
-//         lastFY: lastFY,
-//         marchThisFY: marchThisFY,
-//         marchLastFY: marchLastFY,
-//         quarterValuesThisFY: quarterValuesThisFYList,
-//         quarterValuesLastFY: quarterValuesLastFYList,
-//         cumulativeValuesThisFY: cmlValuesThisFYList,
-//         cumulativeValuesLastFY: cmlValuesLastFYList,
-//     } 
-
-//         return graphData
-// };

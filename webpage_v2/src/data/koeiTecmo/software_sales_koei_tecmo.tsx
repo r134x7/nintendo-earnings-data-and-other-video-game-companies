@@ -14,15 +14,6 @@ export type collectionJSON = {
     consolePackageAndDLUnits: salesOrUnitsJSON,
 };
 
-// const collection: collectionJSON[] = [
-//     softwareSales2023,
-//     softwareSales2022,
-//     softwareSales2021,
-//     softwareSales2020,
-//     softwareSales2019,
-//     undefinedData,
-// ];
-
 const collectionV2 = new Map<number, EarningsJSONV2>();
 
 collectionV2.set(collectionV2.size, softwareSales2023)
@@ -43,17 +34,3 @@ collectionV2.forEach((value, key, map) => {
 })
 
 collectionV2.clear();
-
-// export const softwareSalesGraphList = collection.flatMap((elem, index, array) => {
-//     if (array[index] === array.at(-1)) {
-//         return [] // for undefinedData in collection only
-//     }
-
-//     let salesThisFY: Section[] = salesMake(elem);
-//     let salesLastFY: Section[] = salesMake(array[index+1]);
-
-//     let unitsThisFY: Section[] = unitsMake(elem);
-//     let unitsLastFY: Section[] = unitsMake(array[index+1]);
-
-//     return graphMake(salesThisFY, salesLastFY, unitsThisFY, unitsLastFY, elem.consolePackageAndDLSales.name, elem.fiscalYear, elem.currentQuarter)
-// });

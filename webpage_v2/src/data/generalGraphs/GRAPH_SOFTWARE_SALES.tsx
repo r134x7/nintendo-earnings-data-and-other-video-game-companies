@@ -16,15 +16,6 @@ export default function GRAPH_SOFTWARE_SALES(props:
         marchLastFY: string,
         dataThisFY: Map<number, EarningsV2>,
         dataLastFY: Map<number, EarningsV2>,
-        // segmentName: string,
-        // thisFY: string,
-        // lastFY: string,
-        // marchThisFY: string,
-        // marchLastFY: string,
-        // quarterValuesThisFY: Section[][],
-        // quarterValuesLastFY: Section[][],
-        // cumulativeValuesThisFY: Section[][],
-        // cumulativeValuesLastFY: Section[][],
     })
     }) {
 
@@ -103,47 +94,6 @@ export default function GRAPH_SOFTWARE_SALES(props:
             Number(extractValue(dataLastFY.get(i)?.Q4CmlValue as EarningsValue)),
         ]
     });
-
-    // const graphQuarters = props.setData?.quarterValuesThisFY.map((elem) => {
-    //     return elem.map(value => {
-    //         return (value.units === "currency")
-    //                 ? value.value * 1000
-    //                 : (value.units === "units")
-    //                 ? value.value / 1000
-    //                 : value.value
-    //     })
-    // }) as number[][];
-
-    // const graphQuartersLastFY = props.setData?.quarterValuesLastFY.map((elem) => {
-    //     return elem.map(value => {
-    //         return (value.units === "currency")
-    //                 ? value.value * 1000
-    //                 : (value.units === "units")
-    //                 ? value.value / 1000
-    //                 : value.value
-    //     })
-    // }) as number[][];
- 
-
-    // const graphCumulative = props.setData?.cumulativeValuesThisFY.map((elem) => {
-    //     return elem.map(value => {
-    //         return (value.units === "currency")
-    //                 ? value.value * 1000
-    //                 : (value.units === "units")
-    //                 ? value.value / 1000
-    //                 : value.value
-    //     })
-    // }) as number[][];
-
-    // const graphCumulativeLastFY = props.setData?.cumulativeValuesLastFY.map((elem) => {
-    //     return elem.map(value => {
-    //         return (value.units === "currency")
-    //                 ? value.value * 1000
-    //                 : (value.units === "units")
-    //                 ? value.value / 1000
-    //                 : value.value
-    //     })
-    // }) as number[][];
 
     const bothOff = (event: React.ChangeEvent<HTMLInputElement>) => {
 
