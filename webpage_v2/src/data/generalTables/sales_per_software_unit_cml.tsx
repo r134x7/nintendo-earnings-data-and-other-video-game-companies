@@ -316,17 +316,17 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
 
         const getFootnotes = liner(printTextBlock(list.get(0)?.[theta * 3].footnotes,54),"−","bottom",true,54);
 
-        if (theta === 0) {
+        // if (theta === 0) {
 
-            dataToReturn.set(0, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)])
-            dataToReturn.set(1, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)])
-            dataToReturn.set(2, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)])
-            dataToReturn.set(3, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)])
-            dataToReturn.set(4, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 55) + generalSalesHeaderV2(18,12,9,10,7)])
-            dataToReturn.set(5, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 54) + generalSalesHeaderV2(17,12,9,10,7)])
-            dataToReturn.set(6, [sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 54) + generalSalesHeaderV2(17,12,9,10,7)])
+            dataToReturn.set(0, (dataToReturn.get(0) ?? []).concat([sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)]))
+            dataToReturn.set(1, (dataToReturn.get(1) ?? []).concat([sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)]))
+            dataToReturn.set(2, (dataToReturn.get(2) ?? []).concat([sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)]))
+            dataToReturn.set(3, (dataToReturn.get(3) ?? []).concat([sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 58) + generalSalesHeaderV2(21,12,9,10,7)]))
+            dataToReturn.set(4, (dataToReturn.get(4) ?? []).concat([sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 55) + generalSalesHeaderV2(18,12,9,10,7)]))
+            dataToReturn.set(5, (dataToReturn.get(5) ?? []).concat([sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 54) + generalSalesHeaderV2(17,12,9,10,7)]))
+            dataToReturn.set(6, (dataToReturn.get(6) ?? []).concat([sectionHeader(list.get(0)?.[/*0*/theta * 3]?.name, 54) + generalSalesHeaderV2(17,12,9,10,7)]))
 
-        }
+        // }
 
         const toReturn = new Map<number, string[]>();
 
