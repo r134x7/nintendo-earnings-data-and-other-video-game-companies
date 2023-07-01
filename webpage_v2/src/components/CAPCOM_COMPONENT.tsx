@@ -141,7 +141,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
             {
                 name: "Software Sales",
                 value: softwareSalesList.get(index),
-                // graph: <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList[index]} />
+                graph: <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList.get(index)} />
             },
             {
                 name: "Software Platform Shipments", 

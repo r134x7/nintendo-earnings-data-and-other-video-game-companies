@@ -437,7 +437,7 @@ export function graphMakeV2 (collectionThisFY: EarningsJSONV2, collectionLastFY:
     })
 
     dataThisFY.set(dataThisFY.size, {
-        name: "Sales Per Software Unit",
+        name: dataThisFY.get(0)?.name ?? "ERROR",
         Q1QtrValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q1QtrValue ?? none, dataThisFY.get(1)?.Q1QtrValue ?? none),
         Q2QtrValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q2QtrValue ?? none, dataThisFY.get(1)?.Q2QtrValue ?? none),
         Q3QtrValue: salesPerSoftwareUnitCalculation(dataThisFY.get(0)?.Q3QtrValue ?? none, dataThisFY.get(1)?.Q3QtrValue ?? none),
@@ -455,7 +455,7 @@ export function graphMakeV2 (collectionThisFY: EarningsJSONV2, collectionLastFY:
     } satisfies EarningsV2);
 
     dataLastFY.set(dataLastFY.size, {
-        name: "Sales Per Software Unit",
+        name: dataLastFY.get(0)?.name ?? "ERROR",
         Q1QtrValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q1QtrValue ?? none, dataLastFY.get(1)?.Q1QtrValue ?? none),
         Q2QtrValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q2QtrValue ?? none, dataLastFY.get(1)?.Q2QtrValue ?? none),
         Q3QtrValue: salesPerSoftwareUnitCalculation(dataLastFY.get(0)?.Q3QtrValue ?? none, dataLastFY.get(1)?.Q3QtrValue ?? none),

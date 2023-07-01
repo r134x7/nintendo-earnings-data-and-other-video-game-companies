@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { Code, SegmentedControl, TextInput, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
-import { softwareSalesList } from "../data/squareEnix/software_sales_square_enix";
+import { softwareSalesList, softwareSalesGraphList } from "../data/squareEnix/software_sales_square_enix";
 import { annualReportList } from "../data/squareEnix/annual_report_square_enix";
 import { squareEnixConsolidatedEarningsList, squareEnixConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { squareEnixLinks } from "../data/generalTables/data_sources_general";
 import { printTextBlock, liner, titleSetSearchFeatures } from "../utils/table_design_logic";
 
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
+import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
 
 import {cite, citeCopy} from "../utils/copySetCitation";
 
@@ -75,6 +76,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
             {
                 name: "Software Sales",
                 value: softwareSalesList.get(index),
+                graph: <GRAPH_SOFTWARE_SALES setData={softwareSalesGraphList.get(index)} />
             },
             {
                 name: "FY Series IP",

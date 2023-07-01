@@ -5,7 +5,7 @@ import softwareSales2020 from "./Software_Sales/software_sales_fy3_2020.json";
 import softwareSales2019 from "./Software_Sales/software_sales_fy3_2019.json";
 import { salesOrUnitsJSON } from "../bandaiNamco/software_sales_bandai_namco";
 import { EarningsJSONV2 } from "../generalTables/consolidated_earnings_general";
-import { generalSalesPerSoftwareUnitListV2Map } from "../../utils/segment_data_logic";
+import { generalSalesPerSoftwareUnitListV2Map, graphMakeV2 } from "../../utils/segment_data_logic";
 
 export type collectionJSON = {
     fiscalYear: string,
@@ -38,6 +38,8 @@ export const softwareSalesGraphList = new Map();
 collectionV2.forEach((value, key, map) => {
 
     softwareSalesList.set(key, generalSalesPerSoftwareUnitListV2Map(value, map.get(key+1), 41, "Million", "One Thousand"))
+
+    softwareSalesGraphList.set(key, graphMakeV2(value, map.get(key+1),"Million","One Thousand"))
 })
 
 collectionV2.clear();

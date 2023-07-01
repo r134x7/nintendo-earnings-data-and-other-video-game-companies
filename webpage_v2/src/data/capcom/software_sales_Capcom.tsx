@@ -2,7 +2,7 @@ import softwareSales2023 from "./Software_Sales/software_sales_fy3_2023.json";
 import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
 import { salesOrUnitsJSON } from "../bandaiNamco/software_sales_bandai_namco";
-import { generalSalesPerSoftwareUnitListV2Map } from "../../utils/segment_data_logic";
+import { generalSalesPerSoftwareUnitListV2Map, graphMakeV2 } from "../../utils/segment_data_logic";
 import type { EarningsJSONV2, EarningsMakeV2 } from "../generalTables/consolidated_earnings_general";
 
 export type collectionJSON = {
@@ -34,6 +34,25 @@ export const softwareSalesList = new Map<number, string>();
 export const softwareSalesGraphList = new Map();
 
 collectionV2.forEach((value, key, map) => {
+
+    softwareSalesGraphList.set(key, graphMakeV2(
+        {
+            ...value,
+            data: [
+                map.get(key)?.data[0],
+                map.get(key)?.data[1],
+            ] as EarningsMakeV2[]
+        } satisfies EarningsJSONV2,
+        {
+            ...value,
+            data: [
+                map.get(key+1)?.data[0],
+                map.get(key+1)?.data[1],
+            ] as EarningsMakeV2[]
+        } satisfies EarningsJSONV2,
+        "Billion",
+        "One Thousand"
+    ))
 
     for (let index = 0; index < value.data.length; index+= 2) {
         
