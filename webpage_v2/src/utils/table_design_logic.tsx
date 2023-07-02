@@ -13,10 +13,6 @@ export type TitlesValue =
         table: string}
     | { kind: "Nothing" }
 
-export type CumulativeTitlesValue =
-    | { kind: "Annual Report"} 
-    | { kind: "Nothing" }
-
 export const printTextBlock = (text: string | undefined, blockLength: number): string | undefined => {
     // to make liner work by not printing.
     if (text === undefined) {
