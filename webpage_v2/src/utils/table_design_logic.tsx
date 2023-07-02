@@ -87,6 +87,25 @@ export const border = (textArray: string[], newLine?: boolean): string => {
             : setText + "\n";
     };
 
+function borderV2(textArray: string[], borders: "both" | "right" | "left", newLine: "newLine" | "noNewLine"): string {
+
+    const leftBorder = (borders === "both" || borders === "left") ? "|" : "";
+
+    const rightBorder = (borders === "both" || borders === "right") ? "|" : "";
+
+    const setText = (textArray.length < 2)
+            ? leftBorder + textArray[0] + rightBorder 
+            : textArray.reduce((acc, next, index) => {
+            return (index === textArray.length-1)
+                ? acc + leftBorder + next + rightBorder 
+                : acc + leftBorder + next 
+        }, "")
+
+    return (newLine === "noNewLine")
+        ? setText
+        : setText + "\n";
+}
+
 export const liner = (text: string | undefined, lineStyle: "−" | "=" | "#", position: "top" | "bottom" | "both", newLine?: true, lineLengthCustom?: number): string => {
     // to make printTextBlock miscChecks simpler.
     if (text === undefined) {
