@@ -87,7 +87,7 @@ export const border = (textArray: string[], newLine?: boolean): string => {
             : setText + "\n";
     };
 
-function borderV2(textArray: string[], borders: "both" | "right" | "left", 
+export function borderV2(textArray: string[], borders: "both" | "right" | "left", 
 newLine: "newLine" | "noNewLine" | "newLineOnEachElement"): string {
 
     const leftBorder = (borders === "both" || borders === "left") ? "|" : "";
@@ -107,7 +107,7 @@ newLine: "newLine" | "noNewLine" | "newLineOnEachElement"): string {
         : setText + "\n";
 }
 
-export const liner = (text: string | undefined, lineStyle: "−" | "=" | "#", position: "top" | "bottom" | "both", newLine?: true, lineLengthCustom?: number): string => {
+export const liner = (text: string | undefined, lineStyle: "−" | "=" | "#", position: "top" | "bottom" | "both", newLine?: true | "newLine" | "noNewLine", lineLengthCustom?: number): string => {
     // to make printTextBlock miscChecks simpler.
     if (text === undefined) {
         return "";
@@ -122,7 +122,7 @@ export const liner = (text: string | undefined, lineStyle: "−" | "=" | "#", po
                 ? text + "\n" + line
                 : line + "\n" + text + "\n" + line;
 
-        return (newLine === undefined)
+        return (newLine === undefined || newLine === "noNewLine")
             ? setPosition
             : setPosition + "\n";
     };
