@@ -592,129 +592,15 @@ function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollect
 
             if (key === 2) {
 
-                let sectionHeader = printSectionHeaderV2(opMargin.get(0) as EarningsV2, false);
+                map.set(key, getPrintOpMarginOutput(opMargin, 0, false, currentQuarter))
 
-                let quarters = [
-                    opMargin.get(0)?.Q1QtrValue ?? none,
-                    opMargin.get(0)?.Q2QtrValue ?? none,
-                    opMargin.get(0)?.Q3QtrValue ?? none,
-                    opMargin.get(0)?.Q4QtrValue ?? none,
-                ].map(elem => printQuarterValuesV2(elem, currentQuarter, 13)); 
-                
-                let cumulatives = [
-                    opMargin.get(0)?.Q2CmlValue ?? none,
-                    opMargin.get(0)?.Q3CmlValue ?? none,
-                    opMargin.get(0)?.Q4CmlValue ?? none,
-                ].map(elem => printCumulativeValuesV2(elem, currentQuarter, 13));
-
-                let forecasts = [
-                    opMargin.get(0)?.forecastThisFY ?? none,
-                    opMargin.get(0)?.forecastRevision1 ?? none,
-                    opMargin.get(0)?.forecastRevision2 ?? none,
-                    opMargin.get(0)?.forecastRevision3 ?? none,
-                    opMargin.get(0)?.forecastNextFY ?? none,
-                ].map(elem => printForecastValuesV2(elem, 13))
-
-                let output = printReduceSection(
-                    sectionHeader,
-                    qtrOrCmlOutput(quarters,[],true),
-                    qtrOrCmlOutput(cumulatives,[],true),
-                    forecastOutput(forecasts),
-                )
-
-                map.set(key, output)
             } else if (key > 2) {
 
-                let sectionHeader = printSectionHeaderV2(dataThisFY.get(key-1) as EarningsV2, true)
+                map.set(key, getPrintOutput(dataThisFY, percentagesThisFY, key-1, true, currentQuarter))
 
-                let quarters = [
-                    dataThisFY.get(key-1)?.Q1QtrValue ?? none,
-                    dataThisFY.get(key-1)?.Q2QtrValue ?? none,
-                    dataThisFY.get(key-1)?.Q3QtrValue ?? none,
-                    dataThisFY.get(key-1)?.Q4QtrValue ?? none,
-                ].map(elem => printQuarterValuesV2(elem, currentQuarter, 13)); 
-
-                let quarterPercentages = [
-                    percentagesThisFY.get(key-1)?.Q1QtrValue ?? none,
-                    percentagesThisFY.get(key-1)?.Q2QtrValue ?? none,
-                    percentagesThisFY.get(key-1)?.Q3QtrValue ?? none,
-                    percentagesThisFY.get(key-1)?.Q4QtrValue ?? none,
-                ].map(elem => printYoYV2(elem, currentQuarter, 12)); 
-
-                let cumulatives = [
-                    dataThisFY.get(key-1)?.Q2CmlValue ?? none,
-                    dataThisFY.get(key-1)?.Q3CmlValue ?? none,
-                    dataThisFY.get(key-1)?.Q4CmlValue ?? none,
-                ].map(elem => printCumulativeValuesV2(elem, currentQuarter, 13));
-
-                let cumulativePercentages = [
-                    percentagesThisFY.get(key-1)?.Q2CmlValue ?? none,
-                    percentagesThisFY.get(key-1)?.Q3CmlValue ?? none,
-                    percentagesThisFY.get(key-1)?.Q4CmlValue ?? none,
-                ].map(elem => printYoYV2(elem, currentQuarter, 12));
-
-                let forecasts = [
-                    dataThisFY.get(key-1)?.forecastThisFY ?? none,
-                    dataThisFY.get(key-1)?.forecastRevision1 ?? none,
-                    dataThisFY.get(key-1)?.forecastRevision2 ?? none,
-                    dataThisFY.get(key-1)?.forecastRevision3 ?? none,
-                    dataThisFY.get(key-1)?.forecastNextFY ?? none,
-                ].map(elem => printForecastValuesV2(elem, 13)); 
-
-                let output = printReduceSection(
-                    sectionHeader,
-                    qtrOrCmlOutput(quarters,quarterPercentages,false),
-                    qtrOrCmlOutput(cumulatives,cumulativePercentages,false),
-                    forecastOutput(forecasts),
-                )
-
-                map.set(key, output)
             } else {
 
-                let sectionHeader = printSectionHeaderV2(dataThisFY.get(key) as EarningsV2, true);
-
-                let quarters = [
-                    dataThisFY.get(key)?.Q1QtrValue ?? none,
-                    dataThisFY.get(key)?.Q2QtrValue ?? none,
-                    dataThisFY.get(key)?.Q3QtrValue ?? none,
-                    dataThisFY.get(key)?.Q4QtrValue ?? none,
-                ].map(elem => printQuarterValuesV2(elem, currentQuarter, 13)); 
-
-                let quarterPercentages = [
-                    percentagesThisFY.get(key)?.Q1QtrValue ?? none,
-                    percentagesThisFY.get(key)?.Q2QtrValue ?? none,
-                    percentagesThisFY.get(key)?.Q3QtrValue ?? none,
-                    percentagesThisFY.get(key)?.Q4QtrValue ?? none, 
-                ].map(elem => printYoYV2(elem, currentQuarter, 12)); 
-
-                let cumulatives = [
-                    dataThisFY.get(key)?.Q2CmlValue ?? none,
-                    dataThisFY.get(key)?.Q3CmlValue ?? none,
-                    dataThisFY.get(key)?.Q4CmlValue ?? none,
-                ].map(elem => printCumulativeValuesV2(elem, currentQuarter, 13)); 
-
-                let cumulativePercentages = [
-                    percentagesThisFY.get(key)?.Q2CmlValue ?? none,
-                    percentagesThisFY.get(key)?.Q3CmlValue ?? none,
-                    percentagesThisFY.get(key)?.Q4CmlValue ?? none,
-                ].map(elem => printYoYV2(elem, currentQuarter, 12));
-
-                let forecasts = [
-                    dataThisFY.get(key)?.forecastThisFY ?? none,
-                    dataThisFY.get(key)?.forecastRevision1 ?? none,
-                    dataThisFY.get(key)?.forecastRevision2 ?? none,
-                    dataThisFY.get(key)?.forecastRevision3 ?? none,
-                    dataThisFY.get(key)?.forecastNextFY ?? none,
-                ].map(elem => printForecastValuesV2(elem, 13)); 
-
-                let output = printReduceSection(
-                    sectionHeader,
-                    qtrOrCmlOutput(quarters,quarterPercentages,false),
-                    qtrOrCmlOutput(cumulatives,cumulativePercentages,false),
-                    forecastOutput(forecasts),
-                )
-
-                map.set(key, output)
+                map.set(key, getPrintOutput(dataThisFY, percentagesThisFY, key, true, currentQuarter))
             }
         })
 
@@ -736,6 +622,89 @@ export function getData(dataCollectionThisFY: EarningsJSONV2 | undefined, dataTh
         }
 
         return dataMap;
+}
+
+function getPrintOutput(values: Map<number, EarningsV2>, yoyValues: Map<number, EarningsV2>, key: number, useYoYHeader: boolean, currentQuarter: number): string {
+
+    const none: EarningsValue = { kind:"Nothing" };
+
+    let sectionHeader = printSectionHeaderV2(values.get(key) as EarningsV2, useYoYHeader);
+
+    let quarters = [
+        values.get(key)?.Q1QtrValue ?? none,
+        values.get(key)?.Q2QtrValue ?? none,
+        values.get(key)?.Q3QtrValue ?? none,
+        values.get(key)?.Q4QtrValue ?? none,
+    ].map(elem => printQuarterValuesV2(elem, currentQuarter, 13)); 
+
+    let quarterPercentages = [
+        yoyValues.get(key)?.Q1QtrValue ?? none,
+        yoyValues.get(key)?.Q2QtrValue ?? none,
+        yoyValues.get(key)?.Q3QtrValue ?? none,
+        yoyValues.get(key)?.Q4QtrValue ?? none, 
+    ].map(elem => printYoYV2(elem, currentQuarter, 12)); 
+
+    let cumulatives = [
+        values.get(key)?.Q2CmlValue ?? none,
+        values.get(key)?.Q3CmlValue ?? none,
+        values.get(key)?.Q4CmlValue ?? none,
+    ].map(elem => printCumulativeValuesV2(elem, currentQuarter, 13)); 
+
+    let cumulativePercentages = [
+        yoyValues.get(key)?.Q2CmlValue ?? none,
+        yoyValues.get(key)?.Q3CmlValue ?? none,
+        yoyValues.get(key)?.Q4CmlValue ?? none,
+    ].map(elem => printYoYV2(elem, currentQuarter, 12));
+
+    let forecasts = [
+        values.get(key)?.forecastThisFY ?? none,
+        values.get(key)?.forecastRevision1 ?? none,
+        values.get(key)?.forecastRevision2 ?? none,
+        values.get(key)?.forecastRevision3 ?? none,
+        values.get(key)?.forecastNextFY ?? none,
+    ].map(elem => printForecastValuesV2(elem, 13)); 
+
+    return printReduceSection(
+        sectionHeader,
+        qtrOrCmlOutput(quarters,quarterPercentages,false),
+        qtrOrCmlOutput(cumulatives,cumulativePercentages,false),
+        forecastOutput(forecasts),
+    )
+}
+
+function getPrintOpMarginOutput(value: Map<number, EarningsV2>, key: number, useYoYHeader: boolean, currentQuarter: number): string {
+
+    const none: EarningsValue = { kind:"Nothing" };
+
+    let sectionHeader = printSectionHeaderV2(value.get(key) as EarningsV2, useYoYHeader);
+
+    let quarters = [
+        value.get(key)?.Q1QtrValue ?? none,
+        value.get(key)?.Q2QtrValue ?? none,
+        value.get(key)?.Q3QtrValue ?? none,
+        value.get(key)?.Q4QtrValue ?? none,
+    ].map(elem => printQuarterValuesV2(elem, currentQuarter, 13)); 
+                
+    let cumulatives = [
+        value.get(key)?.Q2CmlValue ?? none,
+        value.get(key)?.Q3CmlValue ?? none,
+        value.get(key)?.Q4CmlValue ?? none,
+    ].map(elem => printCumulativeValuesV2(elem, currentQuarter, 13));
+
+    let forecasts = [
+        value.get(key)?.forecastThisFY ?? none,
+        value.get(key)?.forecastRevision1 ?? none,
+        value.get(key)?.forecastRevision2 ?? none,
+        value.get(key)?.forecastRevision3 ?? none,
+        value.get(key)?.forecastNextFY ?? none,
+    ].map(elem => printForecastValuesV2(elem, 13))
+
+    return printReduceSection(
+        sectionHeader,
+        qtrOrCmlOutput(quarters,[],true),
+        qtrOrCmlOutput(cumulatives,[],true),
+        forecastOutput(forecasts),
+    )
 }
 
     // function takeMapGetValue(inputValue: Map<number, EarningsV2>): Map<number, EarningsV2> {
