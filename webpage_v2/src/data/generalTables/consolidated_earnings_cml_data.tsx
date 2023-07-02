@@ -628,7 +628,7 @@ export function printMedian(list: number[], textLength: number, valueLength: num
 // have to remember to put this in somehow... via footnotes most likely
 let dataSourceNintendo = "Source: https://www.nintendo.co.jp/ir/en/finance/historical_data/index.html"
 
-export const cumulativeEarningsListNintendo = operatingResultsMakerV2(totalCollectionNintendo);
+export const cumulativeEarningsListNintendo = operatingResultsMakerV2(totalCollectionNintendo).map(elem => elem + dataSourceNintendo);
 
 export const cumulativeEarningsListBandaiNamco = operatingResultsMakerV2(totalCollectionBandaiNamco); 
 
