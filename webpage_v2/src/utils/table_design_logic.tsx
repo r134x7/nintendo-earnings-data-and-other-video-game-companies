@@ -87,21 +87,22 @@ export const border = (textArray: string[], newLine?: boolean): string => {
             : setText + "\n";
     };
 
-function borderV2(textArray: string[], borders: "both" | "right" | "left", newLine: "newLine" | "noNewLine"): string {
+function borderV2(textArray: string[], borders: "both" | "right" | "left", 
+newLine: "newLine" | "noNewLine" | "newLineOnEachElement"): string {
 
     const leftBorder = (borders === "both" || borders === "left") ? "|" : "";
 
     const rightBorder = (borders === "both" || borders === "right") ? "|" : "";
 
-    const setText = (textArray.length < 2)
-            ? leftBorder + textArray[0] + rightBorder 
-            : textArray.reduce((acc, next, index) => {
-            return (index === textArray.length-1)
-                ? acc + leftBorder + next + rightBorder 
-                : acc + leftBorder + next 
-        }, "")
+    const makeNewLine = (newLine === "newLineOnEachElement") ? "\n" : "";
 
-    return (newLine === "noNewLine")
+    const setText = textArray.map((elem, index) => {
+      return (index !== 0 && borders === "both" && newLine !== "newLineOnEachElement") 
+          ? elem + rightBorder + makeNewLine 
+          : leftBorder + elem + rightBorder + makeNewLine
+    }).reduce((acc, next) => acc + next)
+
+    return (newLine === "noNewLine" || newLine === "newLineOnEachElement")
         ? setText
         : setText + "\n";
 }
