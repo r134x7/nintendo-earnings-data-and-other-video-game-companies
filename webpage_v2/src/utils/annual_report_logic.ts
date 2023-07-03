@@ -113,9 +113,21 @@ export function printCumulativeYoY(series: AnnualReportTitle, textLength: number
     ],"both","noNewLine")
 }
 
-function printSeriesName(series: AnnualReportTitle, textLength: number) {
+export function printSeriesName(series: AnnualReportTitle, textLength: number) {
 
     return liner(
         printTextBlock(series.title, textLength)
     ,"−","both","newLine") 
+}
+
+export function thisFYCalculation(thisFYLTD: AnnualReportValue, lastFYLTD: AnnualReportValue): AnnualReportValue {
+
+    return (thisFYLTD.kind === "Annual Report" && lastFYLTD.kind === "Annual Report")
+        ? {
+            kind: "Annual Report",
+            units: thisFYLTD.units,
+            fiscalYear: thisFYLTD.fiscalYear,
+            value: thisFYLTD.value - lastFYLTD.value,
+        }
+        : thisFYLTD;
 }

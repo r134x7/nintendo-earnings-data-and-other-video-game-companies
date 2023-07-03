@@ -27,4 +27,39 @@ const collectionBandaiNamco = new Map<number, SeriesJSON>();
     collectionBandaiNamco.set(collectionBandaiNamco.size, bandaiNamcoAnnualReport2020)
     collectionBandaiNamco.set(collectionBandaiNamco.size, bandaiNamcoAnnualReport2019)
 
+export function annualReportNothingCheck(
+    value: number| string | null | undefined,
+    units: "units" | "currency" | "percentage",
+    fiscalYear: string,
+): AnnualReportValue {
+
+    switch (typeof value) {
+        case "number":
+           
+            return {
+                kind: "Annual Report",
+                fiscalYear: fiscalYear,
+                units: units,
+                value: value,
+            }
     
+        default:
+            return { kind: "Nothing" };
+    }
+
+}
+
+export function annualReportValuesMake(obj: undefined | SeriesMake, fiscalYear: string, kind: "General" | "Sega"): AnnualReportTitle {
+
+    if (kind === "General") {
+
+        const values: AnnualReportTitle = {
+            kind: "General",
+            title: obj?.title ?? "ERROR",
+            releaseDate: obj?.releaseDate ?? "ERROR",
+            fyEndMonth: obj?.fyEndMonth ?? "ERROR",
+            footnotes: obj?.footnotes,
+            valueLTD
+        }
+    }
+}
