@@ -1,4 +1,4 @@
-import { printTextBlock, border, liner, spacer, borderV2} from "./table_design_logic";
+import { printTextBlock, liner, spacer, borderV2} from "./table_design_logic";
 import { printValuePrimitive, numberType, quickYoYCalculate } from "./general_earnings_logic";
 
 export type AnnualReportValue =
@@ -111,4 +111,11 @@ export function printCumulativeYoY(series: AnnualReportTitle, textLength: number
         spacer(getFY + " Cml. YoY%", textLength, "left"),
         spacer(getValue(series),valueLength,"right"),
     ],"both","noNewLine")
+}
+
+function printSeriesName(series: AnnualReportTitle, textLength: number) {
+
+    return liner(
+        printTextBlock(series.title, textLength)
+    ,"−","both","newLine") 
 }

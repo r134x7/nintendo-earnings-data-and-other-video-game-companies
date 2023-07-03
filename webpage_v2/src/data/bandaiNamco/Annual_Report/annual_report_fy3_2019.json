@@ -1,4 +1,5 @@
 {
+    "companyName": "Bandai Namco Holdings Inc.",
     "fiscalYear": "FY3/2019",
     "series": [
         {
@@ -41,7 +42,7 @@
             "value": 22.19,
             "valueLastFY": 0,
             "valueLastTwoFYs": 0,
-            "miscellaneous": "Note: Total for overseas sales for which BANDAI NAMCO Entertainment Inc. was the original seller (excluding domestic sales by FromSoftware, Inc.)"
+            "footnotes": "Note: Total for overseas sales for which BANDAI NAMCO Entertainment Inc. was the original seller (excluding domestic sales by FromSoftware, Inc.)"
         }
     ]
 }
