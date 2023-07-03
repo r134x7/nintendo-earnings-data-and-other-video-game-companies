@@ -1,5 +1,5 @@
 import { printTextBlock, border, liner, spacer, borderV2} from "./table_design_logic";
-import { printValuePrimitive, numberType } from "./general_earnings_logic";
+import { printValuePrimitive, numberType, quickYoYCalculate } from "./general_earnings_logic";
 
 export type AnnualReportValue =
     | { 
@@ -58,19 +58,57 @@ export function printRank(series: AnnualReportTitle, textLength: number) {
     ],"right","newLine")
 }
 
-export function printCumulativeValue(series: AnnualReportTitle, textLength: number): string {
+export function printAnnualReportValue(series: AnnualReportTitle, textLength: number, valueLength: number, kind: "Cumulative" | "LTD", newLine: "newLine" | "noNewLine" | "newLineOnEachElement" ): string {
 
-    if (series.valueThisFY.kind === "Annual Report") {
+    if (series.valueThisFY.kind === "Annual Report" && kind === "Cumulative") {
 
         const getFY = series.valueThisFY.fiscalYear + " Cumulative";
 
         const getFixed: number = Number(series.valueThisFY.value.toFixed(2))
 
-        return border([
-            spacer(getFY, getFY.length+1, "left"),
-            spacer(printValuePrimitive(getFixed,numberType("Million"),"None"), textLength, "right")
-        ]);
+        return borderV2([
+            spacer(getFY, textLength, "left"),
+            spacer(printValuePrimitive(getFixed,numberType("Million"),"None"), valueLength, "right")
+        ],"both",newLine);
+    } else if (series.valueLTD.kind === "Annual Report" && kind === "LTD") {
+
+        const getFixed: number = Number(series.valueLTD.value.toFixed(2));
+
+        return borderV2([
+            spacer("Life-To-Date", textLength, "left"),
+            spacer(printValuePrimitive(getFixed,numberType("Million"),"None"), valueLength, "right")
+        ], "both",newLine);
     } else {
         return "ERROR";
     }
+}
+
+export function printCumulativeYoY(series: AnnualReportTitle, textLength: number, valueLength: number) {
+
+    const getFY = (series.valueLTD.kind === "Annual Report") ? series.valueLTD.fiscalYear : "ERROR"
+
+    const getValue = (seriesLocal: AnnualReportTitle): string => {
+
+        if (seriesLocal.valueLTD.kind === "Annual Report" && seriesLocal.valueLastFY.kind === "Annual Report" && seriesLocal.valueLastTwoFYs.kind === "Annual Report") {
+
+            const firstNegate = seriesLocal.valueLTD.value - seriesLocal.valueLastFY.value;
+
+            const secondNegate = seriesLocal.valueLastFY.value - seriesLocal.valueLastTwoFYs.value;
+
+            return (firstNegate === 0 && secondNegate === 0)
+                ? "N/A"
+                : (firstNegate >= secondNegate)
+                    ? `+${quickYoYCalculate(firstNegate, secondNegate, 2)}%`
+                    : `${quickYoYCalculate(firstNegate, secondNegate, 2)}%`
+        } else if (series.valueLastFY.kind === "Nothing") {
+            return "New!"
+        } else {
+            return "ERROR"
+        }
+    }
+
+    return borderV2([
+        spacer(getFY + " Cml. YoY%", textLength, "left"),
+        spacer(getValue(series),valueLength,"right"),
+    ],"both","noNewLine")
 }

@@ -85,6 +85,15 @@ export function quarterlyCalculationV2(thisQuarterValue: EarningsValue, lastQuar
             : thisQuarterValue
 }
 
+export function quickYoYCalculate(numerator: number, divisor: number, fixedLength: number): number {
+
+    return (divisor < 0)
+        ? Number((((
+                    (numerator / divisor) -1)* -1) * 100).toFixed(fixedLength))
+        : Number(((
+                    (numerator / divisor) -1) * 100).toFixed(fixedLength))
+}
+
 export function yearOnYearCalculationV2(valueThisFY: EarningsValue, valueLastFY: EarningsValue, kind: "Quarter" | "Cumulative" | "Forecast"): EarningsValue {
 
     if ((valueThisFY.kind === kind && valueLastFY.kind === kind) && (valueThisFY.period === valueLastFY.period)) {
