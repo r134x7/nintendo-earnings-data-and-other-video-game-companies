@@ -1,5 +1,5 @@
-import { thisFYCalculation, type AnnualReportTitle, type AnnualReportValue } from "../../utils/annual_report_logic";
-import { dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
+import { thisFYCalculation, type AnnualReportTitle, type AnnualReportValue, printReleaseDate, printAnnualReportValue, printCumulativeYoY, printRank, printSeriesName } from "../../utils/annual_report_logic";
+import { dateLabel, liner, border, spacer, printTextBlock, headerPrint } from "../../utils/table_design_logic";
 import { HeaderV2 } from "../../utils/segment_data_logic";
 
 import bandaiNamcoAnnualReport2022 from "../bandaiNamco/Annual_Report/annual_report_fy3_2022.json";
@@ -189,11 +189,33 @@ function annualReportMap(collection: SeriesJSON, headerLength: number) {
     const printedSeries = new Map<number, titleSet[]>();
 
     sortedMap.forEach((value, key, map) => {
+
+        const printValue: string = [
+            printSeriesName(value, 42),
+            printReleaseDate(value, 30),
+            printRank(value, 9),
+            printTextBlock(value.footnotes, 42) ?? "",
+            printAnnualReportValue(value, 30, 12, "Cumulative", "noNewLine"),
+            printCumulativeYoY(value, 30, 12),
+            printAnnualReportValue(value, 30, 12, "LTD", "noNewLine"),
+        ].reduce((acc, next) => acc + next, ""); 
+
         printedSeries.set(0, (printedSeries.get(0) ?? []).concat(
             {
                 title: value.title,
-                table: "" // need to print output here or earlier
+                table: printValue,
             }
         ))
     })
+
+    const printOne = headerPrint([
+        header.companyName,
+        header.title,
+    ], 32) + "\n" + printDateLabel;
+
+    return {
+        header: printOne,
+        // titleList: printedSeries.get(0),
+        titleList: [...printedSeries.values()].flat()
+    }
 }
