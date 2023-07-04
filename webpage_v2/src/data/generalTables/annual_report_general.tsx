@@ -1,9 +1,12 @@
 import { thisFYCalculation, type AnnualReportTitle, type AnnualReportValue } from "../../utils/annual_report_logic";
+import { dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
+import { HeaderV2 } from "../../utils/segment_data_logic";
 
 import bandaiNamcoAnnualReport2022 from "../bandaiNamco/Annual_Report/annual_report_fy3_2022.json";
 import bandaiNamcoAnnualReport2021 from "../bandaiNamco/Annual_Report/annual_report_fy3_2021.json";
 import bandaiNamcoAnnualReport2020 from "../bandaiNamco/Annual_Report/annual_report_fy3_2020.json";
 import bandaiNamcoAnnualReport2019 from "../bandaiNamco/Annual_Report/annual_report_fy3_2019.json";
+import { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
 
 export type SeriesJSON = {
     companyName: string,
@@ -35,30 +38,6 @@ export type SeriesMake =
         valueLastTwoFYs: number | string | null,
         footnotes?: string,
     }
-
-
-export type SeriesMakeGeneral = {
-        title: string,
-        releaseDate: string,
-        fyEndMonth: string,
-        value: number,
-        valueLastFY: number | string | null,
-        valueLastTwoFYs: number | string | null,
-        footnotes?: string,
-    }
-
-export type SeriesMakeSega = {
-    title: string,
-    firstReleaseYear: number,
-    platforms: string,
-    totalEditions: number,
-    ipType: string,
-    units: string,
-    value: number,
-    valueLastFY: number,
-    valueLastTwoFYs: number,
-    footnotes?: string,
-}
 
 const collectionBandaiNamco = new Map<number, SeriesJSON>();
     collectionBandaiNamco.set(collectionBandaiNamco.size, bandaiNamcoAnnualReport2022)
@@ -167,4 +146,54 @@ export function annualReportValuesMake(obj: undefined | SeriesMake, fiscalYear: 
 
         return values
     }
+}
+
+function getAnnualReportData(dataCollectionThisFY: SeriesJSON, kind: "General" | "Sega"): Map<number, AnnualReportTitle> {
+
+    const dataMap = new Map<number, AnnualReportTitle>();
+
+    for (let index = 0; index < dataCollectionThisFY.series.length; index++) {
+       dataMap.set(index, annualReportValuesMake(dataCollectionThisFY.series[index], dataCollectionThisFY.fiscalYear, kind)) 
+    }
+
+    return dataMap;
+}
+
+function annualReportMap(collection: SeriesJSON, headerLength: number) {
+
+    const makeDateLabel = dateLabel(collection?.fiscalYear ?? "N/A", 4);
+
+    const none: AnnualReportValue = { kind:"Nothing" };
+
+    const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true);
+
+    const header: HeaderV2 = {
+        companyName: collection.companyName,
+        fiscalYear: collection.fiscalYear,
+        title: "IP Series Data",
+    };
+
+    const dataThisFY = getAnnualReportData(collection, "General");
+
+    const sortedList = [...dataThisFY.values()].sort((b,a) => (a.valueThisFY > b.valueThisFY) ? 1 : (a.valueThisFY < b.valueThisFY) ? -1 : 0)
+
+    const sortedMap = new Map<number, AnnualReportTitle>();
+
+    for (let index = 0; index < sortedList.length; index++) {
+       sortedMap.set(index, {
+            ...sortedList[index],
+            rank: index + 1,
+       }) 
+    }
+
+    const printedSeries = new Map<number, titleSet[]>();
+
+    sortedMap.forEach((value, key, map) => {
+        printedSeries.set(0, (printedSeries.get(0) ?? []).concat(
+            {
+                title: value.title,
+                table: "" // need to print output here or earlier
+            }
+        ))
+    })
 }
