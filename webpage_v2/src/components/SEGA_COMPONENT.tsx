@@ -3,7 +3,8 @@ import { Code, SegmentedControl, Select, TextInput, Button } from "@mantine/core
 import { useSelector } from "react-redux";
 import { segaSoftwareUnitsList, segaSoftwareUnitsGraphList } from "../data/sega/software_units_sega"
 import { softwareSalesList, softwareSalesGraphList } from "../data/sega/software_sales_sega";
-import { annualReportList } from "../data/sega/annual_report_sega";
+// import { annualReportList } from "../data/sega/annual_report_sega";
+import { segaAnnualReport } from "../data/generalTables/annual_report_general";
 import { segaConsolidatedEarningsList, segaConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { segaLinks } from "../data/generalTables/data_sources_general";
 import { printTextBlock, liner, platformSearchFeatures, titleSetSearchFeatures } from "../utils/table_design_logic";
@@ -26,7 +27,8 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
 
     let correctFyForAnnualReports = -1;
 
-    let annualReportIndex = annualReportList?.[props.setIndex + correctFyForAnnualReports];
+    // let annualReportIndex = annualReportList?.[props.setIndex + correctFyForAnnualReports];
+    let annualReportIndex = segaAnnualReport.get(props.setIndex + correctFyForAnnualReports);
 
     let annualReportInput = (annualReportIndex === undefined)
         ? undefined
@@ -38,7 +40,7 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
 
     let predictText = new Set<string>();
 
-    let annualReportCall = platformSearchFeatures(annualReportInput, annualReportIndex?.header, "FY Series IP", value, platformValue ?? "All", "Single", "Single", annualReportIPTypes, titleValue, predictText)
+    let annualReportCall = platformSearchFeatures(annualReportInput, annualReportIndex?.header ?? "ERROR", "FY Series IP", value, platformValue ?? "All", "Single", "Single", annualReportIPTypes, titleValue, predictText)
 
     let softwareUnitsCall = titleSetSearchFeatures(softwareUnitsIndex, "Software Units", value, titleValue, predictText)
 

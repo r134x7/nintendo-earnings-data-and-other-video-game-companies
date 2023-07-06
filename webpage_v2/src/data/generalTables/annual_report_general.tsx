@@ -22,6 +22,18 @@ import squareEnixAnnualReport2012 from "../squareEnix/Annual_Report/annual_repor
 import squareEnixAnnualReport2011 from "../squareEnix/Annual_Report/annual_report_fy3_2011.json";
 import squareEnixAnnualReport2010 from "../squareEnix/Annual_Report/annual_report_fy3_2010.json";
 
+import segaAnnualReport2022 from "../sega/Annual_Report/annual_report_fy3_2022.json";
+import segaAnnualReport2021 from "../sega/Annual_Report/annual_report_fy3_2021.json";
+import segaAnnualReport2020 from "../sega/Annual_Report/annual_report_fy3_2020.json";
+import segaAnnualReport2019 from "../sega/Annual_Report/annual_report_fy3_2019.json";
+import segaAnnualReport2018 from "../sega/Annual_Report/annual_report_fy3_2018.json";
+import segaAnnualReport2017 from "../sega/Annual_Report/annual_report_fy3_2017.json";
+import segaAnnualReport2016 from "../sega/Annual_Report/annual_report_fy3_2016.json";
+import segaAnnualReport2015 from "../sega/Annual_Report/annual_report_fy3_2015.json";
+import segaAnnualReport2014 from "../sega/Annual_Report/annual_report_fy3_2014.json";
+import segaAnnualReport2013 from "../sega/Annual_Report/annual_report_fy3_2013.json";
+import { searchTitles } from "../capcom/platinum_titles_Capcom";
+
 export type SeriesJSON = {
     companyName: string,
     fiscalYear: string,
@@ -54,6 +66,18 @@ export type SeriesMake =
         footnotes?: string,
     }
 
+type test1 = {
+    header: string;
+    titleList: titleSet[];
+    footnotes: string | undefined;
+}
+
+type test2 = {
+    header: string;
+    titleList: searchTitles[];
+    footnotes: string | undefined;
+}
+
 const collectionBandaiNamco = new Map<number, SeriesJSON>();
     collectionBandaiNamco.set(collectionBandaiNamco.size, bandaiNamcoAnnualReport2022)
     collectionBandaiNamco.set(collectionBandaiNamco.size, bandaiNamcoAnnualReport2021)
@@ -75,22 +99,42 @@ const collectionSquareEnix = new Map<number, SeriesJSON>();
     collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2011)
     collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2010)
 
+const collectionSega = new Map<number, SeriesJSON>();
+    collectionSega.set(collectionSega.size, segaAnnualReport2022)
+    collectionSega.set(collectionSega.size, segaAnnualReport2021)
+    collectionSega.set(collectionSega.size, segaAnnualReport2020)
+    collectionSega.set(collectionSega.size, segaAnnualReport2019)
+    collectionSega.set(collectionSega.size, segaAnnualReport2018)
+    collectionSega.set(collectionSega.size, segaAnnualReport2017)
+    collectionSega.set(collectionSega.size, segaAnnualReport2016)
+    collectionSega.set(collectionSega.size, segaAnnualReport2015)
+    collectionSega.set(collectionSega.size, segaAnnualReport2014)
+    collectionSega.set(collectionSega.size, segaAnnualReport2013)
+
 export const bandaiNamcoAnnualReport = new Map<number, { header: string, titleList: titleSet[]}>(); 
 
 collectionBandaiNamco.forEach((value, key, map) => {
 
-    bandaiNamcoAnnualReport.set(key, annualReportMap(value, 38))
+    bandaiNamcoAnnualReport.set(key, annualReportMap(value, 38, "General"))
 })
 
 export const squareEnixAnnualReport = new Map<number, { header: string, titleList: titleSet[], footnotes?: string}>();
 
 collectionSquareEnix.forEach((value, key, map) => {
 
-    squareEnixAnnualReport.set(key, annualReportMap(value, 42))
+    squareEnixAnnualReport.set(key, annualReportMap(value, 42, "General"))
+})
+
+export const segaAnnualReport = new Map<number, { header: string, titleList: searchTitles[]}>();
+
+collectionSega.forEach((value, key, map) => {
+
+    segaAnnualReport.set(key, annualReportMap(value, 38, "Sega") as test2)
 })
 
 collectionBandaiNamco.clear();
 collectionSquareEnix.clear();
+collectionSega.clear();
 
 export function annualReportNothingCheck(
     value: number| string | null | undefined,
@@ -174,6 +218,7 @@ export function annualReportValuesMake(obj: undefined | SeriesMake, fiscalYear: 
             platforms: getObject?.kind === "Sega" ? getObject?.platforms : "ERROR",
             releaseDate: getObject?.kind === "Sega" ? getObject?.firstReleaseYear : "ERROR",
             totalEditions: getObject?.kind === "Sega" ? getObject?.totalEditions : 0,
+            units: getObject?.kind === "Sega" ? getObject.units : "ERROR",
             footnotes: obj?.footnotes,
             valueLTD: annualReportNothingCheck(obj?.value, "units", fiscalYear),
             valueLastFY: annualReportNothingCheck(obj?.valueLastFY, "units", fiscalYear),
@@ -199,7 +244,7 @@ function getAnnualReportData(dataCollectionThisFY: SeriesJSON, kind: "General" |
     return dataMap;
 }
 
-function annualReportMap(collection: SeriesJSON, headerLength: number) {
+function annualReportMap(collection: SeriesJSON, headerLength: number, kind: "General" | "Sega"): test1 | test2 {
 
     const makeDateLabel = dateLabel(collection?.fiscalYear ?? "N/A", 4);
 
@@ -213,7 +258,7 @@ function annualReportMap(collection: SeriesJSON, headerLength: number) {
         title: "IP Series Data",
     };
 
-    const dataThisFY = getAnnualReportData(collection, "General");
+    const dataThisFY = getAnnualReportData(collection, kind);
 
     const sortedList = [...dataThisFY.values()].sort((prev, next) => {
 
@@ -240,14 +285,20 @@ function annualReportMap(collection: SeriesJSON, headerLength: number) {
        }) 
     }
 
-    const printedSeries = new Map<number, titleSet[]>();
+    const printedSeries = new Map<number, titleSet[]>()
 
     sortedMap.forEach((value, key, map) => {
 
         const printValue: string = [
             printSeriesName(value, 42),
+            liner(printTextBlock(value.kind === "Sega" ? "IP type: " + value.ipType : undefined,42),"−","bottom","newLine",42),
+            liner(printTextBlock(value.kind === "Sega" ? "Platforms: " + value.platforms : undefined,42),"−","bottom","newLine",42),
+            liner(printTextBlock(value.kind === "Sega" && value.totalEditions !== 0 ? "Total Editions: " + value.totalEditions.toString() : undefined,42),"−","bottom","newLine",42),
             liner(printReleaseDate(value, 30) + printRank(value, 9),"=","bottom","newLine"),
-            liner(printTextBlock(value.footnotes, 42),"=","bottom","newLine",42),
+            liner(printTextBlock(value.kind === "Sega" ? "Measure: " + value.units : undefined,42),"−","bottom","newLine",42),
+            liner(printTextBlock((value.kind === "Sega") 
+                ? "Consists of: " + value.footnotes
+                : value.footnotes, 42),"=","bottom","newLine",42),
             liner(
                 printAnnualReportValue(value, 27, 12, "Cumulative", "newLine") +
                 printCumulativeYoY(value, 27, 12, "newLine") +
@@ -255,12 +306,18 @@ function annualReportMap(collection: SeriesJSON, headerLength: number) {
             ,"−","bottom","newLine",42)
         ].reduce((acc, next) => acc + next, ""); 
 
-        printedSeries.set(0, (printedSeries.get(0) ?? []).concat(
-            {
+        const makeObject = (value.kind === "General")
+            ? {
                 title: value.title,
                 table: printValue,
+            } 
+            : {
+                title: value.title,
+                platforms: value.ipType,
+                table: printValue,
             }
-        ))
+
+        printedSeries.set(0, (printedSeries.get(0) ?? []).concat(makeObject))
     })
 
     const printOne = headerPrint([
@@ -271,7 +328,9 @@ function annualReportMap(collection: SeriesJSON, headerLength: number) {
     return {
         header: printOne,
         // titleList: printedSeries.get(0),
-        titleList: [...printedSeries.values()].flat(),
+        titleList: (kind === "General")
+            ? [...printedSeries.values()].flat() satisfies titleSet[]
+            : [...printedSeries.values()].flat() as searchTitles[],
         footnotes: collection?.footnotes === undefined ? undefined : liner(printTextBlock(collection?.footnotes,40),"=","both",true,40)
     }
 }

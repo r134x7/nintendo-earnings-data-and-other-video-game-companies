@@ -27,6 +27,7 @@ export type AnnualReportTitle =
         releaseDate: string,
         platforms: string,
         totalEditions: number,
+        units: string,
         valueLTD: AnnualReportValue,
         valueThisFY: AnnualReportValue,
         valueLastFY: AnnualReportValue,
