@@ -14,6 +14,29 @@ export type SeriesJSON = {
     series: SeriesMake[],
 }
 
+// export type GeneralSeriesMake = {
+//     title: string,
+//     releaseDate: string,
+//     fyEndMonth: string,
+//     value: number,
+//     valueLastFY: number | string | null,
+//     valueLastTwoFYs: number | string | null,
+//     footnotes?: string,
+// }
+
+// export type SegaSeriesMake = {
+//     title: string,
+//     firstReleaseYear: string,
+//     platforms: string,
+//     totalEditions: number,
+//     ipType: string,
+//     units: string,
+//     value: number,
+//     valueLastFY: number | string | null,
+//     valueLastTwoFYs: number | string | null,
+//     footnotes?: string,
+// }
+
 export type SeriesMake = 
     | {
         kind?: "General",
@@ -95,20 +118,18 @@ export function annualReportValuesMake(obj: undefined | SeriesMake, fiscalYear: 
 
     if (kind === "General") {
 
-        const getObject = (!obj)
-            ? undefined
-            : {
-                ...obj,
-                kind: "General",
-                fyEndMonth: obj.kind === "General" ? obj.fyEndMonth : "ERROR",
-                releaseDate: obj.kind === "General" ? obj.releaseDate : "ERROR",
-            } satisfies SeriesMake
+        const getObj = (!obj) ? undefined : {
+            ...obj,
+            kind: "General",
+        } as SeriesMake // the simplest way to deal with this issue
 
         const values: AnnualReportTitle = {
             kind: "General",
             title: obj?.title ?? "ERROR",
-            releaseDate: getObject?.releaseDate ?? "ERROR",
-            fyEndMonth: getObject?.fyEndMonth ?? "ERROR",
+            // releaseDate: getObject?.releaseDate ?? "ERROR",
+            releaseDate: getObj?.kind === "General" ? getObj.releaseDate : "ERROR", 
+            // fyEndMonth: getObject?.fyEndMonth ?? "ERROR",
+            fyEndMonth: (getObj?.kind === "General") ? getObj.fyEndMonth : "ERROR",
             footnotes: obj?.footnotes,
             valueLTD: annualReportNothingCheck(obj?.value, "units", fiscalYear),
             valueLastFY: annualReportNothingCheck(obj?.valueLastFY, "units", fiscalYear),
@@ -127,20 +148,15 @@ export function annualReportValuesMake(obj: undefined | SeriesMake, fiscalYear: 
             : {
                 ...obj,
                 kind: "Sega",
-                firstReleaseYear: obj.kind === "Sega" ? obj.firstReleaseYear : "ERROR",
-                ipType: obj.kind === "Sega" ? obj.ipType : "ERROR",
-                platforms: obj.kind === "Sega" ? obj.platforms : "ERROR",
-                totalEditions: obj.kind === "Sega" ? obj.totalEditions : 0,
-                units: obj.kind === "Sega" ? obj.units : "ERROR",
-            } satisfies SeriesMake
+            } as SeriesMake
 
         const values: AnnualReportTitle = {
             kind: "Sega",
             title: obj?.title ?? "ERROR",
-            ipType: getIPType(getObject?.ipType ?? "ERROR"),
-            platforms: getObject?.platforms ?? "ERROR",
-            releaseDate: getObject?.firstReleaseYear ?? "ERROR",
-            totalEditions: getObject?.totalEditions ?? 0,
+            ipType: getIPType(getObject?.kind === "Sega" ? getObject.ipType : "ERROR"),
+            platforms: getObject?.kind === "Sega" ? getObject?.platforms : "ERROR",
+            releaseDate: getObject?.kind === "Sega" ? getObject?.firstReleaseYear : "ERROR",
+            totalEditions: getObject?.kind === "Sega" ? getObject?.totalEditions : 0,
             footnotes: obj?.footnotes,
             valueLTD: annualReportNothingCheck(obj?.value, "units", fiscalYear),
             valueLastFY: annualReportNothingCheck(obj?.valueLastFY, "units", fiscalYear),
