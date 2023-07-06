@@ -1,4 +1,5 @@
 {
+    "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
     "fiscalYear": "FY3/2022",
     "series": [
         {
@@ -22,8 +23,8 @@
             "releaseDate": "March 2002",
             "fyEndMonth": "March 2022",
             "value": 36,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0 
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs": "Nothing" 
         },
         {
             "title": "Tomb Raider",
@@ -33,6 +34,5 @@
             "valueLastFY": 82,
             "valueLastTwoFYs": 77
         }
-    ],
-    "notes": ""
+    ]
 }

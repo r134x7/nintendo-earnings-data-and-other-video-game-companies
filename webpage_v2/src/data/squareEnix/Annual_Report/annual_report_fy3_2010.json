@@ -1,4 +1,5 @@
 {
+    "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
     "fiscalYear": "FY3/2010",
     "series": [
         {
@@ -6,25 +7,25 @@
             "releaseDate": "December 1987",
             "fyEndMonth": "March 2010*",
             "value": 97,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0 
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs": "Nothing" 
         },
         {
             "title": "Dragon Quest",
             "releaseDate": "May 1986",
             "fyEndMonth": "March 2010*",
             "value": 54,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Tomb Raider",
             "releaseDate": "October 1996",
             "fyEndMonth": "March 2010*",
             "value": 35,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         }
     ],
-    "notes": "*Annual Report 2010 gives no sales numbers. Data used here is taken from Q1 FY3/11 Press Release assuming data is as of March, 2010. Cannot verify whether it is accurate."
+    "footnotes": "*Annual Report 2010 gives no sales numbers. Data used here is taken from Q1 FY3/11 Press Release assuming data is as of March, 2010. Cannot verify whether it is accurate."
 }

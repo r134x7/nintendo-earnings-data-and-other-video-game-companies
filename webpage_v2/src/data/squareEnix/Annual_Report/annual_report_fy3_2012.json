@@ -1,4 +1,5 @@
 {
+    "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
     "fiscalYear": "FY3/2012",
     "series": [
         {
@@ -26,5 +27,5 @@
             "valueLastTwoFYs": 35 
         }
     ],
-    "notes": "*Annual Report 2012 gives no sales numbers. Data used here is taken from Q1 FY3/13 Press Release assuming data is as of March, 2012. Cannot verify whether it is accurate."
+    "footnotes": "*Annual Report 2012 gives no sales numbers. Data used here is taken from Q1 FY3/13 Press Release assuming data is as of March, 2012. Cannot verify whether it is accurate."
 }

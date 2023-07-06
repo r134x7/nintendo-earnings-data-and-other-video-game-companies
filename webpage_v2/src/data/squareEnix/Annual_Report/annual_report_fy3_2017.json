@@ -1,4 +1,5 @@
 {
+    "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
     "fiscalYear": "FY3/2017",
     "series": [
         {
@@ -26,5 +27,5 @@
             "valueLastTwoFYs": 42 
         }
     ],
-    "notes": "Annual Report 2017 gives sales numbers as of June, 2017. Data used here is taken from Q1 FY3/18 Press Release as most recent change in numbers before Annual Report for accuracy."
+    "footnotes": "Annual Report 2017 gives sales numbers as of June, 2017. Data used here is taken from Q1 FY3/18 Press Release as most recent change in numbers before Annual Report for accuracy."
 }

@@ -1,41 +1,33 @@
 import { thisFYCalculation, type AnnualReportTitle, type AnnualReportValue, printReleaseDate, printAnnualReportValue, printCumulativeYoY, printRank, printSeriesName } from "../../utils/annual_report_logic";
 import { dateLabel, liner, border, spacer, printTextBlock, headerPrint } from "../../utils/table_design_logic";
 import { HeaderV2 } from "../../utils/segment_data_logic";
+import { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
 
 import bandaiNamcoAnnualReport2022 from "../bandaiNamco/Annual_Report/annual_report_fy3_2022.json";
 import bandaiNamcoAnnualReport2021 from "../bandaiNamco/Annual_Report/annual_report_fy3_2021.json";
 import bandaiNamcoAnnualReport2020 from "../bandaiNamco/Annual_Report/annual_report_fy3_2020.json";
 import bandaiNamcoAnnualReport2019 from "../bandaiNamco/Annual_Report/annual_report_fy3_2019.json";
-import { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
+
+import squareEnixAnnualReport2022 from "../squareEnix/Annual_Report/annual_report_fy3_2022.json";
+import squareEnixAnnualReport2021 from "../squareEnix/Annual_Report/annual_report_fy3_2021.json";
+import squareEnixAnnualReport2020 from "../squareEnix/Annual_Report/annual_report_fy3_2020.json";
+import squareEnixAnnualReport2019 from "../squareEnix/Annual_Report/annual_report_fy3_2019.json";
+import squareEnixAnnualReport2018 from "../squareEnix/Annual_Report/annual_report_fy3_2018.json";
+import squareEnixAnnualReport2017 from "../squareEnix/Annual_Report/annual_report_fy3_2017.json";
+import squareEnixAnnualReport2016 from "../squareEnix/Annual_Report/annual_report_fy3_2016.json";
+import squareEnixAnnualReport2015 from "../squareEnix/Annual_Report/annual_report_fy3_2015.json";
+import squareEnixAnnualReport2014 from "../squareEnix/Annual_Report/annual_report_fy3_2014.json";
+import squareEnixAnnualReport2013 from "../squareEnix/Annual_Report/annual_report_fy3_2013.json";
+import squareEnixAnnualReport2012 from "../squareEnix/Annual_Report/annual_report_fy3_2012.json";
+import squareEnixAnnualReport2011 from "../squareEnix/Annual_Report/annual_report_fy3_2011.json";
+import squareEnixAnnualReport2010 from "../squareEnix/Annual_Report/annual_report_fy3_2010.json";
 
 export type SeriesJSON = {
     companyName: string,
     fiscalYear: string,
     series: SeriesMake[],
+    footnotes?: string,
 }
-
-// export type GeneralSeriesMake = {
-//     title: string,
-//     releaseDate: string,
-//     fyEndMonth: string,
-//     value: number,
-//     valueLastFY: number | string | null,
-//     valueLastTwoFYs: number | string | null,
-//     footnotes?: string,
-// }
-
-// export type SegaSeriesMake = {
-//     title: string,
-//     firstReleaseYear: string,
-//     platforms: string,
-//     totalEditions: number,
-//     ipType: string,
-//     units: string,
-//     value: number,
-//     valueLastFY: number | string | null,
-//     valueLastTwoFYs: number | string | null,
-//     footnotes?: string,
-// }
 
 export type SeriesMake = 
     | {
@@ -68,12 +60,37 @@ const collectionBandaiNamco = new Map<number, SeriesJSON>();
     collectionBandaiNamco.set(collectionBandaiNamco.size, bandaiNamcoAnnualReport2020)
     collectionBandaiNamco.set(collectionBandaiNamco.size, bandaiNamcoAnnualReport2019)
 
-export const bandaiNamcoAnnualReport = new Map<number, { header: string, titleList: titleSet[] }>(); 
+const collectionSquareEnix = new Map<number, SeriesJSON>();
+    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2022)
+    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2021)
+    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2020)
+    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2019)
+    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2018)
+    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2017)
+    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2016)
+    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2015)
+    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2014)
+    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2013)
+    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2012)
+    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2011)
+    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2010)
+
+export const bandaiNamcoAnnualReport = new Map<number, { header: string, titleList: titleSet[]}>(); 
 
 collectionBandaiNamco.forEach((value, key, map) => {
 
     bandaiNamcoAnnualReport.set(key, annualReportMap(value, 38))
 })
+
+export const squareEnixAnnualReport = new Map<number, { header: string, titleList: titleSet[], footnotes?: string}>();
+
+collectionSquareEnix.forEach((value, key, map) => {
+
+    squareEnixAnnualReport.set(key, annualReportMap(value, 42))
+})
+
+collectionBandaiNamco.clear();
+collectionSquareEnix.clear();
 
 export function annualReportNothingCheck(
     value: number| string | null | undefined,
@@ -249,11 +266,12 @@ function annualReportMap(collection: SeriesJSON, headerLength: number) {
     const printOne = headerPrint([
         header.companyName,
         header.title,
-    ], 32) + "\n" + printDateLabel;
+    ], headerLength) + "\n" + printDateLabel;
 
     return {
         header: printOne,
         // titleList: printedSeries.get(0),
-        titleList: [...printedSeries.values()].flat()
+        titleList: [...printedSeries.values()].flat(),
+        footnotes: collection?.footnotes === undefined ? undefined : liner(printTextBlock(collection?.footnotes,40),"=","both",true,40)
     }
 }

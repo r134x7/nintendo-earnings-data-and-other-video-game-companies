@@ -1,4 +1,5 @@
 {
+    "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
     "fiscalYear": "FY3/2018",
     "series": [
         {
@@ -30,17 +31,17 @@
             "releaseDate": "March 2002",
             "fyEndMonth": "June 2018*",
             "value": 25,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Just Cause",
             "releaseDate": "September 2006",
             "fyEndMonth": "June 2018*",
             "value": 15,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         }
     ],
-    "notes": "*Annual Report 2018 gives sales numbers as of June, 2018. Data where applicable taken from Q1 FY3/19 Press Release as most recent change in numbers before Annual Report for accuracy."
+    "footnotes": "*Annual Report 2018 gives sales numbers as of June, 2018. Data where applicable taken from Q1 FY3/19 Press Release as most recent change in numbers before Annual Report for accuracy."
 }

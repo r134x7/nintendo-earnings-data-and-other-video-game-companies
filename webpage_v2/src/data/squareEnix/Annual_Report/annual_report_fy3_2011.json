@@ -1,4 +1,5 @@
 {
+    "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
     "fiscalYear": "FY3/2011",
     "series": [
         {
@@ -7,7 +8,7 @@
             "fyEndMonth": "March 2011*",
             "value": 100,
             "valueLastFY": 97,
-            "valueLastTwoFYs": 0 
+            "valueLastTwoFYs": "Nothing" 
         },
         {
             "title": "Dragon Quest",
@@ -15,7 +16,7 @@
             "fyEndMonth": "March 2011*",
             "value": 58,
             "valueLastFY": 54,
-            "valueLastTwoFYs": 0
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Tomb Raider",
@@ -23,8 +24,8 @@
             "fyEndMonth": "March 2011*",
             "value": 35,
             "valueLastFY": 35,
-            "valueLastTwoFYs": 0
+            "valueLastTwoFYs": "Nothing" 
         }
     ],
-    "notes": "*Annual Report 2011 gives no sales numbers. Data used here is taken from Q1 FY3/12 Press Release assuming data is as of March, 2011. Cannot verify whether it is accurate."
+    "footnotes": "*Annual Report 2011 gives no sales numbers. Data used here is taken from Q1 FY3/12 Press Release assuming data is as of March, 2011. Cannot verify whether it is accurate."
 }
