@@ -198,7 +198,21 @@ function annualReportMap(collection: SeriesJSON, headerLength: number) {
 
     const dataThisFY = getAnnualReportData(collection, "General");
 
-    const sortedList = [...dataThisFY.values()].sort((b,a) => (a.valueThisFY > b.valueThisFY) ? 1 : (a.valueThisFY < b.valueThisFY) ? -1 : 0)
+    const sortedList = [...dataThisFY.values()].sort((prev, next) => {
+
+        if (prev.valueThisFY.kind === "Annual Report" && next.valueThisFY.kind === "Annual Report") {
+
+            // descending order
+            return (prev.valueThisFY.value < next.valueThisFY.value) 
+                ? 1 // sort prev after next
+                : (prev.valueThisFY.value > next.valueThisFY.value) 
+                    ? -1 // sort next after prev
+                    : 0
+
+        } else {
+            return 0 // no change
+        }
+    })
 
     const sortedMap = new Map<number, AnnualReportTitle>();
 
