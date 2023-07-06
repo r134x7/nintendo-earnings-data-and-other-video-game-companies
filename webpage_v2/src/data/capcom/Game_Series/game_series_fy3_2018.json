@@ -1,4 +1,5 @@
 {
+    "companyName": "CAPCOM Co., Ltd.",
     "fiscalYear": "FY3/2018",
     "series": [
         {
@@ -150,8 +151,8 @@
             "numberOfTitles": 10,
             "releaseDate": "April 2006",
             "value": 2.1,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         }
     ]
 }
