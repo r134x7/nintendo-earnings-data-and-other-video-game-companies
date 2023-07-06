@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { Code, SegmentedControl, TextInput, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { softwareSalesList, softwareSalesGraphList } from "../data/bandaiNamco/software_sales_bandai_namco";
-import { annualReportList } from "../data/bandaiNamco/annual_report_bandai_namco";
+// import { annualReportList } from "../data/bandaiNamco/annual_report_bandai_namco";
+import { bandaiNamcoAnnualReport } from "../data/generalTables/annual_report_general";
 import { bandaiNamcoConsolidatedEarningsList, bandaiNamcoConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { bandaiNamcoLinks } from "../data/generalTables/data_sources_general";
 import { printTextBlock, liner, titleSetSearchFeatures } from "../utils/table_design_logic";
@@ -23,7 +24,8 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
 
     let correctFyForAnnualReports = -1;
     
-    let annualReportIndex = annualReportList?.[props.setIndex + correctFyForAnnualReports]
+    // let annualReportIndex = annualReportList?.[props.setIndex + correctFyForAnnualReports]
+    let annualReportIndex = bandaiNamcoAnnualReport.get(props.setIndex + correctFyForAnnualReports);
 
     let predictText = new Set<string>();
 

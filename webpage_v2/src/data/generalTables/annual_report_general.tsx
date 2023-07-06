@@ -45,6 +45,13 @@ const collectionBandaiNamco = new Map<number, SeriesJSON>();
     collectionBandaiNamco.set(collectionBandaiNamco.size, bandaiNamcoAnnualReport2020)
     collectionBandaiNamco.set(collectionBandaiNamco.size, bandaiNamcoAnnualReport2019)
 
+export const bandaiNamcoAnnualReport = new Map<number, { header: string, titleList: titleSet[] }>(); 
+
+collectionBandaiNamco.forEach((value, key, map) => {
+
+    bandaiNamcoAnnualReport.set(key, annualReportMap(value, 38))
+})
+
 export function annualReportNothingCheck(
     value: number| string | null | undefined,
     units: "units" | "currency" | "percentage",
