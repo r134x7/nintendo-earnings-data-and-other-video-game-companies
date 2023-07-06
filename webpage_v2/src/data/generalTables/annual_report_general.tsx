@@ -2,6 +2,7 @@ import { thisFYCalculation, type AnnualReportTitle, type AnnualReportValue, prin
 import { dateLabel, liner, border, spacer, printTextBlock, headerPrint } from "../../utils/table_design_logic";
 import { HeaderV2 } from "../../utils/segment_data_logic";
 import { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
+import { searchTitles } from "../capcom/platinum_titles_Capcom";
 
 import bandaiNamcoAnnualReport2022 from "../bandaiNamco/Annual_Report/annual_report_fy3_2022.json";
 import bandaiNamcoAnnualReport2021 from "../bandaiNamco/Annual_Report/annual_report_fy3_2021.json";
@@ -32,7 +33,8 @@ import segaAnnualReport2016 from "../sega/Annual_Report/annual_report_fy3_2016.j
 import segaAnnualReport2015 from "../sega/Annual_Report/annual_report_fy3_2015.json";
 import segaAnnualReport2014 from "../sega/Annual_Report/annual_report_fy3_2014.json";
 import segaAnnualReport2013 from "../sega/Annual_Report/annual_report_fy3_2013.json";
-import { searchTitles } from "../capcom/platinum_titles_Capcom";
+
+import { collection as softwareUnitsCollection } from "../sega/software_units_sega";
 
 export type SeriesJSON = {
     companyName: string,
@@ -289,6 +291,10 @@ function annualReportMap(collection: SeriesJSON, headerLength: number, kind: "Ge
 
     sortedMap.forEach((value, key, map) => {
 
+        let getFullGameRatio = (value.kind === "Sega") 
+            ? fullGameRatio(value, collection.fiscalYear, "Year")
+            : "";
+
         const printValue: string = [
             printSeriesName(value, 42),
             liner(printTextBlock(value.kind === "Sega" ? "IP type: " + value.ipType : undefined,42),"−","bottom","newLine",42),
@@ -303,7 +309,8 @@ function annualReportMap(collection: SeriesJSON, headerLength: number, kind: "Ge
                 printAnnualReportValue(value, 27, 12, "Cumulative", "newLine") +
                 printCumulativeYoY(value, 27, 12, "newLine") +
                 printAnnualReportValue(value, 27, 12, "LTD", "noNewLine")
-            ,"−","bottom","newLine",42)
+            ,"−","bottom","newLine",42),
+            getFullGameRatio,
         ].reduce((acc, next) => acc + next, ""); 
 
         const makeObject = (value.kind === "General")
@@ -334,3 +341,41 @@ function annualReportMap(collection: SeriesJSON, headerLength: number, kind: "Ge
         footnotes: collection?.footnotes === undefined ? undefined : liner(printTextBlock(collection?.footnotes,40),"=","both",true,40)
     }
 }
+
+export function fullGameRatio(ip: AnnualReportTitle, fiscalYear: string, output: "Year" | "Cumulative"): string {
+
+    let nameSearch = softwareUnitsCollection.filter((elem) => {
+        // match by fiscalYear key
+        // then go to software units and get Q4CmlValue
+        // (full game units / ip series units ) * 100).toFixed(2)%
+        
+        return elem.fiscalYear === fiscalYear
+    }).map((elem, index, array) => {
+
+        let ipMatch = elem.softwareUnits.filter(value => value.ip === ip.title); // Should only have one match
+        
+        return ipMatch
+    }).flat();
+    
+    if (nameSearch.length === 0) {
+        // return undefined
+        return ""
+    } else {
+        
+        let calc: string = `${(((nameSearch[0].Q4CmlValue / 1000) / (ip.valueThisFY.kind === "Annual Report" ? ip.valueThisFY.value : 0)) * 100).toFixed(2)}%`
+
+        let calcRow: string = border([
+            spacer(fiscalYear + " Full Game / IP Series %", 33, "left"),
+            spacer(calc, 9, "right"),
+        ])
+
+        let calcPrint: string = liner(border([
+            spacer(fiscalYear + " Full Game / IP Series %", 33, "left"),
+            spacer(calc, 9, "right"),
+        ]),"=","both",true) + "###\n"
+
+        return (output === "Cumulative")
+            ? calcRow 
+            : calcPrint
+    };
+};
