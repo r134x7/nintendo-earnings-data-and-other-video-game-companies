@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Code, SegmentedControl, Select, TextInput, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { allPlatinumTitlesList, fyPlatinumTitlesList } from "../data/capcom/platinum_titles_Capcom";
-import { gameSeriesList } from "../data/capcom/game_series_sales_Capcom";
+// import { gameSeriesList } from "../data/capcom/game_series_sales_Capcom";
+import { capcomGameSeries } from "../data/generalTables/annual_report_general";
 import { softwareSalesList, softwareSalesGraphList } from "../data/capcom/software_sales_Capcom";
 import { platformSoftwareShipmentsList } from "../data/capcom/software_shipments_platform_Capcom";
 import { capcomConsolidatedEarningsList, capcomConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
@@ -48,7 +49,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
         summary: fyPlatinumTitlesIndex.fyNotes,
     }];
 
-    let gameSeriesIndex = gameSeriesList?.[props.setIndex];
+    let gameSeriesIndex = capcomGameSeries.get(props.setIndex);
 
     let annualReportIndex = platformSoftwareShipmentsList?.[props.setIndex + correctFyForAnnualReports];
 

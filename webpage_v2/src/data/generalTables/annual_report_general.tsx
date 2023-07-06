@@ -34,6 +34,21 @@ import segaAnnualReport2015 from "../sega/Annual_Report/annual_report_fy3_2015.j
 import segaAnnualReport2014 from "../sega/Annual_Report/annual_report_fy3_2014.json";
 import segaAnnualReport2013 from "../sega/Annual_Report/annual_report_fy3_2013.json";
 
+import capcomGameSeries2023 from "../capcom/Game_Series/game_series_fy3_2023.json";
+import capcomGameSeries2022 from "../capcom/Game_Series/game_series_fy3_2022.json";
+import capcomGameSeries2021 from "../capcom/Game_Series/game_series_fy3_2021.json";
+import capcomGameSeries2020 from "../capcom/Game_Series/game_series_fy3_2020.json";
+import capcomGameSeries2019 from "../capcom/Game_Series/game_series_fy3_2019.json";
+import capcomGameSeries2018 from "../capcom/Game_Series/game_series_fy3_2018.json";
+import capcomGameSeries2017 from "../capcom/Game_Series/game_series_fy3_2017.json";
+import capcomGameSeries2016 from "../capcom/Game_Series/game_series_fy3_2016.json";
+import capcomGameSeries2015 from "../capcom/Game_Series/game_series_fy3_2015.json";
+import capcomGameSeries2014 from "../capcom/Game_Series/game_series_fy3_2014.json";
+import capcomGameSeries2013 from "../capcom/Game_Series/game_series_fy3_2013.json";
+import capcomGameSeries2012 from "../capcom/Game_Series/game_series_fy3_2012.json";
+import capcomGameSeries2011 from "../capcom/Game_Series/game_series_fy3_2011.json";
+import capcomGameSeries2010 from "../capcom/Game_Series/game_series_fy3_2010.json";
+
 import { collection as softwareUnitsCollection } from "../sega/software_units_sega";
 
 export type SeriesJSON = {
@@ -62,6 +77,16 @@ export type SeriesMake =
         totalEditions: number, //
         ipType: string, //
         units: string, //
+        value: number,
+        valueLastFY: number | string | null,
+        valueLastTwoFYs: number | string | null,
+        footnotes?: string,
+    }
+    | {
+        kind?: "Capcom Game Series",
+        title: string,
+        numberOfTitles: number,
+        releaseDate: string,
         value: number,
         valueLastFY: number | string | null,
         valueLastTwoFYs: number | string | null,
@@ -113,6 +138,22 @@ const collectionSega = new Map<number, SeriesJSON>();
     collectionSega.set(collectionSega.size, segaAnnualReport2014)
     collectionSega.set(collectionSega.size, segaAnnualReport2013)
 
+const collectionCapcomGameSeries = new Map<number, SeriesJSON>();
+    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2023)
+    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2022)
+    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2021)
+    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2020)
+    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2019)
+    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2018)
+    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2017)
+    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2016)
+    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2015)
+    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2014)
+    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2013)
+    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2012)
+    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2011)
+    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2010)
+
 export const bandaiNamcoAnnualReport = new Map<number, { header: string, titleList: titleSet[]}>(); 
 
 collectionBandaiNamco.forEach((value, key, map) => {
@@ -134,9 +175,17 @@ collectionSega.forEach((value, key, map) => {
     segaAnnualReport.set(key, annualReportMap(value, 38, "Sega") as test2)
 })
 
+export const capcomGameSeries = new Map<number, { header: string, titleList: titleSet[], footnotes?: string}>();
+
+collectionCapcomGameSeries.forEach((value, key, map) => {
+
+    capcomGameSeries.set(key, annualReportMap(value, 28, "Capcom Game Series"))
+})
+
 collectionBandaiNamco.clear();
 collectionSquareEnix.clear();
 collectionSega.clear();
+collectionCapcomGameSeries.clear();
 
 export function annualReportNothingCheck(
     value: number| string | null | undefined,
@@ -177,7 +226,7 @@ export function getIPType(value: string): "Acquired IP" | "Developed in-house IP
     }
 }
 
-export function annualReportValuesMake(obj: undefined | SeriesMake, fiscalYear: string, kind: "General" | "Sega"): AnnualReportTitle {
+export function annualReportValuesMake(obj: undefined | SeriesMake, fiscalYear: string, kind: "General" | "Sega" | "Capcom Game Series"): AnnualReportTitle {
 
     if (kind === "General") {
 
@@ -204,7 +253,7 @@ export function annualReportValuesMake(obj: undefined | SeriesMake, fiscalYear: 
         }
 
         return values
-    } else {
+    } else if (kind === "Sega") {
 
         const getObject = (!obj)
             ? undefined
@@ -232,10 +281,33 @@ export function annualReportValuesMake(obj: undefined | SeriesMake, fiscalYear: 
         }
 
         return values
+    } else {
+
+        const getObj = (!obj) ? undefined : {
+            ...obj,
+            kind: "Capcom Game Series",
+        } as SeriesMake // the simplest way to deal with this issue
+
+        const values: AnnualReportTitle = {
+            kind: "Capcom Game Series",
+            title: obj?.title ?? "ERROR",
+            releaseDate: getObj?.kind === "Capcom Game Series" ? getObj.releaseDate : "ERROR", 
+            numberOfTitles: getObj?.kind === "Capcom Game Series" ? getObj.numberOfTitles : 0,
+            footnotes: obj?.footnotes,
+            valueLTD: annualReportNothingCheck(obj?.value, "units", fiscalYear),
+            valueLastFY: annualReportNothingCheck(obj?.valueLastFY, "units", fiscalYear),
+            valueLastTwoFYs: annualReportNothingCheck(obj?.valueLastTwoFYs, "units", fiscalYear),
+            valueThisFY: thisFYCalculation(
+                annualReportNothingCheck(obj?.value, "units", fiscalYear),
+                annualReportNothingCheck(obj?.valueLastFY, "units", fiscalYear),
+            )
+        }
+
+        return values
     }
 }
 
-function getAnnualReportData(dataCollectionThisFY: SeriesJSON, kind: "General" | "Sega"): Map<number, AnnualReportTitle> {
+function getAnnualReportData(dataCollectionThisFY: SeriesJSON, kind: "General" | "Sega" | "Capcom Game Series"): Map<number, AnnualReportTitle> {
 
     const dataMap = new Map<number, AnnualReportTitle>();
 
@@ -246,7 +318,7 @@ function getAnnualReportData(dataCollectionThisFY: SeriesJSON, kind: "General" |
     return dataMap;
 }
 
-function annualReportMap(collection: SeriesJSON, headerLength: number, kind: "General" | "Sega"): test1 | test2 {
+function annualReportMap(collection: SeriesJSON, headerLength: number, kind: "General" | "Sega" | "Capcom Game Series"): test1 | test2 {
 
     const makeDateLabel = dateLabel(collection?.fiscalYear ?? "N/A", 4);
 
@@ -297,6 +369,7 @@ function annualReportMap(collection: SeriesJSON, headerLength: number, kind: "Ge
 
         const printValue: string = [
             printSeriesName(value, 42),
+            liner(printTextBlock(value.kind === "Capcom Game Series" ? "Number of Titles: " + value.numberOfTitles.toString() : undefined, 42),"−","bottom","newLine",42),
             liner(printTextBlock(value.kind === "Sega" ? "IP type: " + value.ipType : undefined,42),"−","bottom","newLine",42),
             liner(printTextBlock(value.kind === "Sega" ? "Platforms: " + value.platforms : undefined,42),"−","bottom","newLine",42),
             liner(printTextBlock(value.kind === "Sega" && value.totalEditions !== 0 ? "Total Editions: " + value.totalEditions.toString() : undefined,42),"−","bottom","newLine",42),
@@ -313,7 +386,7 @@ function annualReportMap(collection: SeriesJSON, headerLength: number, kind: "Ge
             getFullGameRatio,
         ].reduce((acc, next) => acc + next, ""); 
 
-        const makeObject = (value.kind === "General")
+        const makeObject = (value.kind === "General" || value.kind === "Capcom Game Series")
             ? {
                 title: value.title,
                 table: printValue,

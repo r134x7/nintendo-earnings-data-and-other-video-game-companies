@@ -130,5 +130,6 @@
             "valueLastFY": 4.5,
             "valueLastTwoFYs": 4.5
         }
-   ]
+    ],
+    "footnotes": "Game Series unit sales numbers are rounded down by 100k units when a series is less than 10M units or, unit sales numbers are rounded down by 1M units when a series is 10M units or greater."
 }

@@ -36,6 +36,17 @@ export type AnnualReportTitle =
         rank?: number,
         footnotes?: string,
       }
+    | { kind: "Capcom Game Series",
+        title: string,
+        releaseDate: string,
+        numberOfTitles: number,
+        valueLTD: AnnualReportValue,
+        valueThisFY: AnnualReportValue,
+        valueLastFY: AnnualReportValue,
+        valueLastTwoFYs: AnnualReportValue,
+        rank?: number,
+        footnotes?: string,
+      }
 
 export function printReleaseDate(series: AnnualReportTitle, textLength: number) {
 
@@ -43,7 +54,9 @@ export function printReleaseDate(series: AnnualReportTitle, textLength: number) 
         ? series.releaseDate + " to " + series.fyEndMonth
         : series.kind === "Sega"
             ? "First Release Year: " + series.releaseDate
-            : ""
+            : series.kind === "Capcom Game Series"
+                ? "First Release: " + series.releaseDate
+                : ""
     
     return borderV2([
         spacer(releaseDate, textLength, "left")
