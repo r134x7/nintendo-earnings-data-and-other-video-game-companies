@@ -10,9 +10,9 @@
             "ipType": "Acquired IP",
             "units": "(units)",
             "value": 7.0,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0,
-            "miscellaneous1": "(packaged total)"
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs": "Nothing",
+            "footnotes": "(packaged total)"
         },
         {
             "title": "Persona",
@@ -22,9 +22,9 @@
             "ipType": "Acquired IP",
             "units": "(units)",
             "value": 6.2,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0,
-            "miscellaneous1": "(packaged total)"
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs": "Nothing",
+            "footnotes": "(packaged total)"
         },
         {
             "title": "Etrian Odyssey",
@@ -34,9 +34,9 @@
             "ipType": "Acquired IP",
             "units": "(units)",
             "value": 1.2,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0,
-            "miscellaneous1": "(packaged total)"
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs": "Nothing",
+            "footnotes": "(packaged total)"
         },
         {
             "title": "Sonic the Hedgehog",
@@ -47,8 +47,8 @@
             "units": "(Units and downloads)",
             "value": 150.0,
             "valueLastFY": 70.0,
-            "valueLastTwoFYs": 0,
-            "miscellaneous1": "(packaged and digital total)"
+            "valueLastTwoFYs": "Nothing",
+            "footnotes": "(packaged and digital total)"
         },
         {
             "title": "Puyo Puyo",
@@ -58,10 +58,9 @@
             "ipType": "Developed in-house IP",
             "units": "(Units and downloads)",
             "value": 13.5,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0,
-            "miscellaneous1": "(packaged and digital total)",
-            "miscellaneous2": "**SEGA CORPORATION acquired the rights in 1998. Figures for cumulative unit sales are the totals for titles that SEGA sold after acquiring the rights."
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs": "Nothing",
+            "footnotes": "(packaged and digital total). **SEGA CORPORATION acquired the rights in 1998. Figures for cumulative unit sales are the totals for titles that SEGA sold after acquiring the rights."
         },
         {
             "title": "Ryu ga Gotoku",
@@ -72,8 +71,8 @@
             "units": "(units and downloads)",
             "value": 7.8,
             "valueLastFY": 6.0,
-            "valueLastTwoFYs": 0,
-            "miscellaneous1": "(packaged and digital total)"
+            "valueLastTwoFYs": "Nothing",
+            "footnotes": "(packaged and digital total)"
         },
         {
             "title": "ALADDIN",
@@ -83,9 +82,9 @@
             "ipType": "Developed in-house IP",
             "units": "(units)",
             "value": 0.49,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0,
-            "miscellaneous1": "(pachislot and pachinko machines and amusement machines total)"
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs": "Nothing",
+            "footnotes": "(pachislot and pachinko machines and amusement machines total)"
         },
         {
             "title": "Beast King",
@@ -95,9 +94,9 @@
             "ipType": "Developed in-house IP",
             "units": "(units)",
             "value": 0.45,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0,
-            "miscellaneous1": "(pachislot and pachinko machines and amusement machines total)"
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs": "Nothing",
+            "footnotes": "(pachislot and pachinko machines and amusement machines total)"
         },
         {
             "title": "SEGA feat. Hatsune Miku Project",
@@ -107,9 +106,9 @@
             "ipType": "Licensed third party IP",
             "units": "(Units and downloads)",
             "value": 4.5,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0,
-            "miscellaneous1": "(packaged and digital total)"
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs": "Nothing",
+            "footnotes": "(packaged and digital total)"
         },
         {
             "title": "Hokuto No Ken",
@@ -119,9 +118,9 @@
             "ipType":  "Licensed third party IP",
             "units": "(units)",
             "value": 2.35,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0,
-            "miscellaneous1": "(pachislot and pachinko machines and amusement machines total)"
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs": "Nothing",
+            "footnotes": "(pachislot and pachinko machines and amusement machines total)"
         },
         {
             "title": "SOUTEN-NO-KEN",
@@ -131,9 +130,9 @@
             "ipType": "Licensed third party IP",
             "units": "(units)",
             "value": 0.39,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0,
-            "miscellaneous1": "(pachislot and pachinko machines total)"
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs": "Nothing",
+            "footnotes": "(pachislot and pachinko machines total)"
         }
     ]
 }

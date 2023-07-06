@@ -12,8 +12,7 @@
             "value": 17.7,
             "valueLastFY": 17.4,
             "valueLastTwoFYs": 17.4,
-            "miscellaneous1": "(Full games and F2P total)",
-            "miscellaneous2": "*Including downloads of free-to-play titles "
+            "footnotes": "(Full games and F2P total). *Including downloads of free-to-play titles "
         },
         {
             "title": "Persona",
@@ -58,8 +57,7 @@
             "value": 1380.0,
             "valueLastFY": 1140.0,
             "valueLastTwoFYs": 920.0,
-            "miscellaneous1": "(Full games and F2P total)",
-            "miscellaneous2": "*Including downloads of free-to-play titles "
+            "footnotes": "(Full games and F2P total). *Including downloads of free-to-play titles "
         },
         {
             "title": "Puyo Puyo",
@@ -71,8 +69,7 @@
             "value": 35.0,
             "valueLastFY": 32.0,
             "valueLastTwoFYs": 29.0,
-            "miscellaneous1": "*Including downloads of free-to-play titles",
-            "miscellaneous2": "(Full games and F2P, Amusement Machines-registered IDs total (Total for registrations after IP acquisition)), **SEGA CORPORATION acquired the rights in 1998. Figures for cumulative unit sales are the totals for titles that SEGA sold after acquiring the rights."
+            "footnotes": "*Including downloads of free-to-play titles (Full games and F2P, Amusement Machines-registered IDs total (Total for registrations after IP acquisition)). **SEGA CORPORATION acquired the rights in 1998. Figures for cumulative unit sales are the totals for titles that SEGA sold after acquiring the rights."
         },
         {
             "title": "Sakura Wars",
@@ -84,7 +81,7 @@
             "value": 5.7,
             "valueLastFY": 4.1,
             "valueLastTwoFYs": 3.8,
-            "miscellaneous1": "(Full games and F2P total)"
+            "footnotes": "(Full games and F2P total)"
         },
         {
             "title": "Ryu ga Gotoku",
@@ -96,7 +93,7 @@
             "value": 17.0,
             "valueLastFY": 14.0,
             "valueLastTwoFYs": 12.0,
-            "miscellaneous1": "(Full games total)"
+            "footnotes": "(Full games total)"
         },
         {
             "title": "Virtua Fighter",
@@ -108,7 +105,7 @@
             "value": 18.0,
             "valueLastFY": 0.0,
             "valueLastTwoFYs": 0.0,
-            "miscellaneous1": "(Full games and F2P total. Total number of IDs in Amusement Machines.)"
+            "footnotes": "(Full games and F2P total. Total number of IDs in Amusement Machines.)"
         },
         {
             "title": "ALADDIN",
@@ -120,7 +117,7 @@
             "value": 0.56,
             "valueLastFY": 0.56,
             "valueLastTwoFYs": 0.57,
-            "miscellaneous1": "(pachislot and pachinko machines and amusement machines total)"
+            "footnotes": "(pachislot and pachinko machines and amusement machines total)"
         },
         {
             "title": "Beast King",
@@ -132,7 +129,7 @@
             "value": 0.51,
             "valueLastFY": 0.51,
             "valueLastTwoFYs": 0.50,
-            "miscellaneous1": "(pachislot and pachinko machines and amusement machines total)"
+            "footnotes": "(pachislot and pachinko machines and amusement machines total)"
         },
         {
             "title": "Phantasy Star",
@@ -144,7 +141,7 @@
             "value": 9.0,
             "valueLastFY": 5.5,
             "valueLastTwoFYs": 5.5,
-            "miscellaneous1": "Total for domestic and overseas versions of PHANTASY STAR ONLINE 2 and PHANTASY STAR ONLINE 2 NEW GENESIS"
+            "footnotes": "Total for domestic and overseas versions of PHANTASY STAR ONLINE 2 and PHANTASY STAR ONLINE 2 NEW GENESIS"
         },
         {
             "title": "Chain Chronicle",
@@ -156,8 +153,7 @@
             "value": 25.0,
             "valueLastFY": 22.0,
             "valueLastTwoFYs": 19.0,
-            "miscellaneous1": "(Full games and F2P total)",
-            "miscellaneous2": "*Including downloads of free-to-play titles "
+            "footnotes": "(Full games and F2P total). *Including downloads of free-to-play titles "
         },
         {
             "title": "SEGA feat. Hatsune Miku Project",
@@ -169,8 +165,7 @@
             "value": 11.5,
             "valueLastFY": 6.4,
             "valueLastTwoFYs": 6.1,
-            "miscellaneous1": "(Full games and F2P total)",
-            "miscellaneous2": "*Including downloads of free-to-play titles "
+            "footnotes": "(Full games and F2P total). *Including downloads of free-to-play titles "
         },
         {
             "title": "Hokuto No Ken",
@@ -182,7 +177,7 @@
             "value": 2.99,
             "valueLastFY": 2.97,
             "valueLastTwoFYs": 2.88,
-            "miscellaneous1": "(pachislot and pachinko machines total)"
+            "footnotes": "(pachislot and pachinko machines total)"
         },
         {
             "title": "SOUTEN-NO-KEN",
@@ -194,7 +189,7 @@
             "value": 0.48,
             "valueLastFY": 0.48,
             "valueLastTwoFYs": 0.47,
-            "miscellaneous1": "(pachislot and pachinko machines total)"
+            "footnotes": "(pachislot and pachinko machines total)"
         }
     ]
 }

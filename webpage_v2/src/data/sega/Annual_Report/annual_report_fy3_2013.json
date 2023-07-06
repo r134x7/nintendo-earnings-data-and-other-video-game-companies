@@ -10,8 +10,8 @@
             "ipType": "Developed in-house IP",
             "units": "(units)",
             "value": 70.0,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Ryu ga Gotoku",
@@ -21,8 +21,8 @@
             "ipType": "Developed in-house IP",
             "units": "(units)",
             "value": 6.0,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Phantasy Star",
@@ -32,10 +32,9 @@
             "ipType": "Developed in-house IP",
             "units": "(users)",
             "value": 3.0,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0,
-            "miscellaneous1": "(cumulative total for registered IDs)",
-            "miscellaneous2": "Total for PHANTASY STAR ONLINE 2"
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs": "Nothing",
+            "footnotes": "(cumulative total for registered IDs). Total for PHANTASY STAR ONLINE 2"
         }
     ]
 }
