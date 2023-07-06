@@ -55,7 +55,7 @@ export function printRank(series: AnnualReportTitle, textLength: number) {
 
     return borderV2([
         spacer(ranking, textLength, "right")
-    ],"right","newLine")
+    ],"right","noNewLine")
 }
 
 export function printAnnualReportValue(series: AnnualReportTitle, textLength: number, valueLength: number, kind: "Cumulative" | "LTD", newLine: "newLine" | "noNewLine" | "newLineOnEachElement" ): string {
@@ -83,7 +83,7 @@ export function printAnnualReportValue(series: AnnualReportTitle, textLength: nu
     }
 }
 
-export function printCumulativeYoY(series: AnnualReportTitle, textLength: number, valueLength: number) {
+export function printCumulativeYoY(series: AnnualReportTitle, textLength: number, valueLength: number, newLine: "newLine" | "noNewLine") {
 
     const getFY = (series.valueLTD.kind === "Annual Report") ? series.valueLTD.fiscalYear : "ERROR"
 
@@ -110,7 +110,7 @@ export function printCumulativeYoY(series: AnnualReportTitle, textLength: number
     return borderV2([
         spacer(getFY + " Cml. YoY%", textLength, "left"),
         spacer(getValue(series),valueLength,"right"),
-    ],"both","noNewLine")
+    ],"both",newLine)
 }
 
 export function printSeriesName(series: AnnualReportTitle, textLength: number) {

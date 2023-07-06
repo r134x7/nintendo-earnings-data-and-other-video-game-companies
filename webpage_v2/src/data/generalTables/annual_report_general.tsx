@@ -229,12 +229,13 @@ function annualReportMap(collection: SeriesJSON, headerLength: number) {
 
         const printValue: string = [
             printSeriesName(value, 42),
-            printReleaseDate(value, 30),
-            printRank(value, 9),
-            printTextBlock(value.footnotes, 42) ?? "",
-            printAnnualReportValue(value, 30, 12, "Cumulative", "noNewLine"),
-            printCumulativeYoY(value, 30, 12),
-            printAnnualReportValue(value, 30, 12, "LTD", "noNewLine"),
+            liner(printReleaseDate(value, 30) + printRank(value, 9),"=","bottom","newLine"),
+            liner(printTextBlock(value.footnotes, 42),"=","bottom","newLine",42),
+            liner(
+                printAnnualReportValue(value, 27, 12, "Cumulative", "newLine") +
+                printCumulativeYoY(value, 27, 12, "newLine") +
+                printAnnualReportValue(value, 27, 12, "LTD", "noNewLine")
+            ,"−","bottom","newLine",42)
         ].reduce((acc, next) => acc + next, ""); 
 
         printedSeries.set(0, (printedSeries.get(0) ?? []).concat(
