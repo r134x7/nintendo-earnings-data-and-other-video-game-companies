@@ -378,7 +378,11 @@ function annualReportMap(collection: SeriesJSON, headerLength: number,
     const header: HeaderV2 = {
         companyName: collection.companyName,
         fiscalYear: collection.fiscalYear,
-        title: "IP Series Data",
+        title: (kind === "General" || kind == "Sega")
+            ? "IP Series Data"
+            : (kind === "Capcom Game Series")
+                ? "Game Series Data"
+                : " Fact Book: Units shipped by platform "
     };
 
     const dataThisFY = getAnnualReportData(collection, kind);
