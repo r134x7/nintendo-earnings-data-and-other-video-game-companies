@@ -47,6 +47,16 @@ export type AnnualReportTitle =
         rank?: number,
         footnotes?: string,
       }
+    | { kind: "Capcom Fact Book",
+        title: string,
+        skuNumber: number,
+        valueLTD: AnnualReportValue,
+        valueThisFY: AnnualReportValue,
+        valueLastFY: AnnualReportValue,
+        valueLastTwoFYs: AnnualReportValue,
+        rank?: number,
+        footnotes?: string,
+      }
 
 export function printReleaseDate(series: AnnualReportTitle, textLength: number) {
 
@@ -103,11 +113,13 @@ export function printCumulativeYoY(series: AnnualReportTitle, textLength: number
 
     const getValue = (seriesLocal: AnnualReportTitle): string => {
 
-        if (seriesLocal.valueLTD.kind === "Annual Report" && seriesLocal.valueLastFY.kind === "Annual Report") {
+        // if (seriesLocal.valueLTD.kind === "Annual Report" && seriesLocal.valueLastFY.kind === "Annual Report") {
+        if (seriesLocal.valueThisFY.kind === "Annual Report" && seriesLocal.valueLastFY.kind === "Annual Report") {
 
             const thirdNegate = (seriesLocal.valueLastTwoFYs.kind === "Annual Report") ? seriesLocal.valueLastTwoFYs.value : 0;
 
-            const firstNegate = seriesLocal.valueLTD.value - seriesLocal.valueLastFY.value;
+            // const firstNegate = seriesLocal.valueLTD.value - seriesLocal.valueLastFY.value;
+            const firstNegate = seriesLocal.valueThisFY.value;
 
             const secondNegate = seriesLocal.valueLastFY.value - thirdNegate;
 
@@ -133,7 +145,7 @@ export function printSeriesName(series: AnnualReportTitle, textLength: number) {
 
     return liner(
         printTextBlock(series.title, textLength)
-    ,"−","both","newLine") 
+    ,"−","both","newLine", textLength) 
 }
 
 export function thisFYCalculation(thisFYLTD: AnnualReportValue, lastFYLTD: AnnualReportValue): AnnualReportValue {

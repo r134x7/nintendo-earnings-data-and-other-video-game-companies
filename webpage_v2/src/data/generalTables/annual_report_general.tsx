@@ -49,6 +49,11 @@ import capcomGameSeries2012 from "../capcom/Game_Series/game_series_fy3_2012.jso
 import capcomGameSeries2011 from "../capcom/Game_Series/game_series_fy3_2011.json";
 import capcomGameSeries2010 from "../capcom/Game_Series/game_series_fy3_2010.json";
 
+import capcomSoftwareShipmentsPlatform2022 from "../capcom/Fact_Book/software_shipments_platform_fy3_2022.json";
+import capcomSoftwareShipmentsPlatform2021 from "../capcom/Fact_Book/software_shipments_platform_fy3_2021.json";
+import capcomSoftwareShipmentsPlatform2020 from "../capcom/Fact_Book/software_shipments_platform_fy3_2020.json";
+import capcomSoftwareShipmentsPlatform2019 from "../capcom/Fact_Book/software_shipments_platform_fy3_2019.json";
+
 import { collection as softwareUnitsCollection } from "../sega/software_units_sega";
 
 export type SeriesJSON = {
@@ -92,6 +97,15 @@ export type SeriesMake =
         valueLastTwoFYs: number | string | null,
         footnotes?: string,
     }
+    | { kind?: "Capcom Fact Book",
+        title: string,
+        skuNumber: number,
+        value: number,
+        valueLastFY: number | string | null,
+        valueLastTwoFYs?: null,
+        rank?: number,
+        footnotes?: string,
+      }
 
 type test1 = {
     header: string;
@@ -154,6 +168,12 @@ const collectionCapcomGameSeries = new Map<number, SeriesJSON>();
     collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2011)
     collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2010)
 
+const collectionCapcomFactBook = new Map<number, SeriesJSON>();
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2022)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2021)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2020)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2019)
+
 export const bandaiNamcoAnnualReport = new Map<number, { header: string, titleList: titleSet[]}>(); 
 
 collectionBandaiNamco.forEach((value, key, map) => {
@@ -182,10 +202,18 @@ collectionCapcomGameSeries.forEach((value, key, map) => {
     capcomGameSeries.set(key, annualReportMap(value, 28, "Capcom Game Series"))
 })
 
+export const capcomFactBook = new Map<number, { header: string, titleList: titleSet[], footnotes?: string}>();
+
+collectionCapcomFactBook.forEach((value, key, map) => {
+
+    capcomFactBook.set(key, annualReportMap(value, 28, "Capcom Fact Book"))
+})
+
 collectionBandaiNamco.clear();
 collectionSquareEnix.clear();
 collectionSega.clear();
 collectionCapcomGameSeries.clear();
+collectionCapcomFactBook.clear();
 
 export function annualReportNothingCheck(
     value: number| string | null | undefined,
@@ -226,7 +254,8 @@ export function getIPType(value: string): "Acquired IP" | "Developed in-house IP
     }
 }
 
-export function annualReportValuesMake(obj: undefined | SeriesMake, fiscalYear: string, kind: "General" | "Sega" | "Capcom Game Series"): AnnualReportTitle {
+export function annualReportValuesMake(obj: undefined | SeriesMake, fiscalYear: string, 
+    kind: "General" | "Sega" | "Capcom Game Series" | "Capcom Fact Book"): AnnualReportTitle {
 
     if (kind === "General") {
 
@@ -281,7 +310,7 @@ export function annualReportValuesMake(obj: undefined | SeriesMake, fiscalYear: 
         }
 
         return values
-    } else {
+    } else if (kind === "Capcom Game Series") {
 
         const getObj = (!obj) ? undefined : {
             ...obj,
@@ -304,10 +333,29 @@ export function annualReportValuesMake(obj: undefined | SeriesMake, fiscalYear: 
         }
 
         return values
+    } else {
+
+        const getObj = (!obj) ? undefined : {
+            ...obj,
+            kind: "Capcom Fact Book",
+        } as SeriesMake // the simplest way to deal with this issue
+
+        const values: AnnualReportTitle = {
+            kind: "Capcom Fact Book",
+            title: obj?.title ?? "ERROR",
+            skuNumber: getObj?.kind === "Capcom Fact Book" ? getObj.skuNumber : 0,
+            footnotes: obj?.footnotes,
+            valueLTD: annualReportNothingCheck(obj?.value, "units", fiscalYear),
+            valueLastFY: annualReportNothingCheck(obj?.valueLastFY, "units", fiscalYear),
+            valueLastTwoFYs: annualReportNothingCheck(obj?.valueLastTwoFYs, "units", fiscalYear),
+            valueThisFY: annualReportNothingCheck(obj?.value, "units", fiscalYear),
+        }
+
+        return values
     }
 }
 
-function getAnnualReportData(dataCollectionThisFY: SeriesJSON, kind: "General" | "Sega" | "Capcom Game Series"): Map<number, AnnualReportTitle> {
+function getAnnualReportData(dataCollectionThisFY: SeriesJSON, kind: "General" | "Sega" | "Capcom Game Series" | "Capcom Fact Book"): Map<number, AnnualReportTitle> {
 
     const dataMap = new Map<number, AnnualReportTitle>();
 
@@ -318,7 +366,8 @@ function getAnnualReportData(dataCollectionThisFY: SeriesJSON, kind: "General" |
     return dataMap;
 }
 
-function annualReportMap(collection: SeriesJSON, headerLength: number, kind: "General" | "Sega" | "Capcom Game Series"): test1 | test2 {
+function annualReportMap(collection: SeriesJSON, headerLength: number, 
+    kind: "General" | "Sega" | "Capcom Game Series" | "Capcom Fact Book"): test1 | test2 {
 
     const makeDateLabel = dateLabel(collection?.fiscalYear ?? "N/A", 4);
 
@@ -373,29 +422,36 @@ function annualReportMap(collection: SeriesJSON, headerLength: number, kind: "Ge
             liner(printTextBlock(value.kind === "Sega" ? "IP type: " + value.ipType : undefined,42),"−","bottom","newLine",42),
             liner(printTextBlock(value.kind === "Sega" ? "Platforms: " + value.platforms : undefined,42),"−","bottom","newLine",42),
             liner(printTextBlock(value.kind === "Sega" && value.totalEditions !== 0 ? "Total Editions: " + value.totalEditions.toString() : undefined,42),"−","bottom","newLine",42),
-            liner(printReleaseDate(value, 30) + printRank(value, 9),"=","bottom","newLine"),
+            liner(
+                (value.kind === "Capcom Fact Book")
+                ? printTextBlock(`SKU sum: ${value.skuNumber}`,31) + printRank(value, 9)
+                : printReleaseDate(value, 30) + printRank(value, 9)
+            ,"=","bottom","newLine"),
             liner(printTextBlock(value.kind === "Sega" ? "Measure: " + value.units : undefined,42),"−","bottom","newLine",42),
             liner(printTextBlock((value.kind === "Sega") 
                 ? "Consists of: " + value.footnotes
                 : value.footnotes, 42),"=","bottom","newLine",42),
             liner(
-                printAnnualReportValue(value, 27, 12, "Cumulative", "newLine") +
-                printCumulativeYoY(value, 27, 12, "newLine") +
-                printAnnualReportValue(value, 27, 12, "LTD", "noNewLine")
+                (value.kind === "Capcom Fact Book")
+                    ? printAnnualReportValue(value, 27, 12, "Cumulative", "newLine") +
+                    printCumulativeYoY(value, 27, 12, "noNewLine")
+                    : printAnnualReportValue(value, 27, 12, "Cumulative", "newLine") +
+                    printCumulativeYoY(value, 27, 12, "newLine") +
+                    printAnnualReportValue(value, 27, 12, "LTD", "noNewLine")
             ,"−","bottom","newLine",42),
             getFullGameRatio,
         ].reduce((acc, next) => acc + next, ""); 
 
-        const makeObject = (value.kind === "General" || value.kind === "Capcom Game Series")
+        const makeObject = (value.kind === "Sega")
             ? {
-                title: value.title,
-                table: printValue,
-            } 
-            : {
                 title: value.title,
                 platforms: value.ipType,
                 table: printValue,
             }
+            : {
+                title: value.title,
+                table: printValue,
+            } 
 
         printedSeries.set(0, (printedSeries.get(0) ?? []).concat(makeObject))
     })

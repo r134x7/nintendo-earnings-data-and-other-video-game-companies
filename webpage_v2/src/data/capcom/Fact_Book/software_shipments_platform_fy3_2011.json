@@ -1,7 +1,7 @@
 {
     "companyName": "CAPCOM Co., Ltd.",
     "fiscalYear":  "FY3/2011",
-    "platforms": [
+    "series": [
         {
             "title": "PlayStation 2",
             "skuNumber": 1,

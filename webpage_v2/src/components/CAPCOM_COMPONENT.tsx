@@ -5,7 +5,8 @@ import { allPlatinumTitlesList, fyPlatinumTitlesList } from "../data/capcom/plat
 // import { gameSeriesList } from "../data/capcom/game_series_sales_Capcom";
 import { capcomGameSeries } from "../data/generalTables/annual_report_general";
 import { softwareSalesList, softwareSalesGraphList } from "../data/capcom/software_sales_Capcom";
-import { platformSoftwareShipmentsList } from "../data/capcom/software_shipments_platform_Capcom";
+// import { platformSoftwareShipmentsList } from "../data/capcom/software_shipments_platform_Capcom";
+import { capcomFactBook } from "../data/generalTables/annual_report_general";
 import { capcomConsolidatedEarningsList, capcomConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { capcomLinks } from "../data/generalTables/data_sources_general";
 import { printTextBlock, liner, titleSetSearchFeatures, platformSearchFeatures } from "../utils/table_design_logic";
@@ -51,7 +52,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     let gameSeriesIndex = capcomGameSeries.get(props.setIndex);
 
-    let annualReportIndex = platformSoftwareShipmentsList?.[props.setIndex + correctFyForAnnualReports];
+    let annualReportIndex = capcomFactBook.get(props.setIndex + correctFyForAnnualReports);
 
     let platformListsAll = new Set<string>();
     let platformListsFY = new Set<string>();
