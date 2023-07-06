@@ -8,7 +8,7 @@
             "fyEndMonth": "March 2020",
             "value": 19.10,
             "valueLastFY": 18.77,
-            "valueLastTwoFYs": 0
+            "valueLastTwoFYs": "Nothing"
         },
         {
             "title": "Tekken",
@@ -16,7 +16,7 @@
             "fyEndMonth": "March 2020",
             "value": 50.52,
             "valueLastFY": 48.39,
-            "valueLastTwoFYs": 0
+            "valueLastTwoFYs": "Nothing"
         
         },
         {
@@ -25,7 +25,7 @@
             "fyEndMonth": "March 2020",
             "value": 23.86,
             "valueLastFY": 21.60,
-            "valueLastTwoFYs": 0
+            "valueLastTwoFYs": "Nothing" 
         },
         {
             "title": "Ultimate Ninja Storm",
@@ -33,7 +33,7 @@
             "fyEndMonth": "March 2020",
             "value": 15.66,
             "valueLastFY": 13.95,
-            "valueLastTwoFYs": 0
+            "valueLastTwoFYs": "Nothing"
         },
         {
             "title": "Dark Souls",
@@ -41,7 +41,7 @@
             "fyEndMonth": "March 2020",
             "value": 25.22,
             "valueLastFY": 22.19,
-            "valueLastTwoFYs": 0,
+            "valueLastTwoFYs": "Nothing",
             "footnotes": "Note: Total for overseas sales for which BANDAI NAMCO Entertainment Inc. was the original seller (excluding domestic sales by FromSoftware, Inc.)"
         }
     ]

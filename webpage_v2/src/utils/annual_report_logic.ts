@@ -89,11 +89,13 @@ export function printCumulativeYoY(series: AnnualReportTitle, textLength: number
 
     const getValue = (seriesLocal: AnnualReportTitle): string => {
 
-        if (seriesLocal.valueLTD.kind === "Annual Report" && seriesLocal.valueLastFY.kind === "Annual Report" && seriesLocal.valueLastTwoFYs.kind === "Annual Report") {
+        if (seriesLocal.valueLTD.kind === "Annual Report" && seriesLocal.valueLastFY.kind === "Annual Report") {
+
+            const thirdNegate = (seriesLocal.valueLastTwoFYs.kind === "Annual Report") ? seriesLocal.valueLastTwoFYs.value : 0;
 
             const firstNegate = seriesLocal.valueLTD.value - seriesLocal.valueLastFY.value;
 
-            const secondNegate = seriesLocal.valueLastFY.value - seriesLocal.valueLastTwoFYs.value;
+            const secondNegate = seriesLocal.valueLastFY.value - thirdNegate;
 
             return (firstNegate === 0 && secondNegate === 0)
                 ? "N/A"
