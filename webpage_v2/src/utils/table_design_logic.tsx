@@ -268,7 +268,7 @@ export function filterTextAddToSet<T extends titleSet | searchTitles>(filteredTe
 } 
 
 export function titleSetSearchFeatures(
-    input: { header: string; titleList: titleSet[]; summary?: string} | undefined, 
+    input: { header: string; titleList: titleSet[]; footnotes?: string} | undefined, 
     sectionContext: string, sectionValue: string, titleValue: string, textSet: Set<string>): { 
         titlesLength: titleSet[] | string, 
         table: string | undefined, 
@@ -286,7 +286,7 @@ export function titleSetSearchFeatures(
 
         filterTextAddToSet(titlesFilter, sectionValue, sectionContext, titleValue, textSet)
 
-        let titlesReduce = input.header + titlesFilter.reduce((acc, next) => acc + next.table,"") + (input.summary ?? "");
+        let titlesReduce = input.header + titlesFilter.reduce((acc, next) => acc + next.table,"") + (input.footnotes ?? "");
 
         return {
             titlesLength: titlesFilter,

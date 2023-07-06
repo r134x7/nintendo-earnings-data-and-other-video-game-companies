@@ -29,15 +29,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
 
     let annualReportIndex = squareEnixAnnualReport.get(props.setIndex + correctFyForAnnualReports);
 
-    let annualReportObject = (annualReportIndex === undefined)
-        ? undefined
-        : {
-            header: annualReportIndex.header,
-            titleList: annualReportIndex.titleList,
-            summary: annualReportIndex.footnotes
-        }
-
-    let annualReportCall = titleSetSearchFeatures(annualReportObject, "FY Series IP", value, titleValue, predictText);
+    let annualReportCall = titleSetSearchFeatures(annualReportIndex, "FY Series IP", value, titleValue, predictText);
 
     const textInputValues = [
         {
