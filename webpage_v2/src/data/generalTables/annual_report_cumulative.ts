@@ -145,7 +145,7 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
             makeData.set(key, [...getAnnualReportData(value, kind).values()])
         })
         // console.log(completeCollection);
-        // console.log(makeData);
+        console.log(makeData);
         
         
 
@@ -188,8 +188,6 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
                 // console.log(getPrev.valueLTD > getNext.valueLTD);
                 
                 
-                
-
                 return (getPrev.valueLTD.value < getNext.valueLTD.value)
                     ? 1 // sort prev after next
                     : (getPrev.valueLTD > getNext.valueLTD) 
