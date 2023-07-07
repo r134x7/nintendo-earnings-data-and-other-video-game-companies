@@ -111,7 +111,14 @@ const collectionCapcomFactBook = new Map<number, SeriesJSON>();
     collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2021)
     collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2022)
 
-export const bandaiNamcoAnnualReportCml = annualReportCumulative(collectionBandaiNamco, 28, "General"); 
+// const bandaiNamcoTitleChange = [{old: "Ultimate Ninja Storm", new: "Naruto-related"}]
+const bandaiNamcoTitleChange = new Map<string, string>([
+    // [old, new]
+    // ["Ultimate Ninja Storm", "Naruto-related"]
+    // [new, old]
+    ["Naruto-related", "Ultimate Ninja Storm"]
+])
+export const bandaiNamcoAnnualReportCml = annualReportCumulative(collectionBandaiNamco, 28, "General", bandaiNamcoTitleChange); 
 
 // collectionBandaiNamco.clear();
 collectionSquareEnix.clear();
@@ -120,7 +127,8 @@ collectionCapcomGameSeries.clear();
 collectionCapcomFactBook.clear();
 
 function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, headerLength: number, 
-    kind: "General" | "Sega" | "Capcom Game Series" | "Capcom Fact Book"
+    kind: "General" | "Sega" | "Capcom Game Series" | "Capcom Fact Book",
+    changeTitle?: Map<string, string>
     ) {
 
         const makeDateLabel = dateLabel(completeCollection.get(completeCollection.size-1)?.fiscalYear ?? "N/A", 4);
@@ -152,9 +160,23 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
         const setTitles = new Set<string>();
             [...makeData.values()].flat().map(elem => setTitles.add(elem.title));
 
-        const orderedData = new Map<number, AnnualReportTitle[]>();
-        // console.log(makeData);
+        if (changeTitle !== undefined) {
+            changeTitle.forEach((value, key, map) => {
+                if (setTitles.has(value)) {
+                    setTitles.delete(value)
+                }
+            })
+            // for (let index = 0; index < changeTitle.length; index++) {
+            //     if (setTitles.has(changeTitle[index].old)) {
+            //         setTitles.delete(changeTitle[index].old)
+            //     }
+            // }
+        }
+
+        console.log(setTitles);
         
+
+        const orderedData = new Map<number, AnnualReportTitle[]>();
 
         setTitles.forEach((value) => {
 
@@ -162,23 +184,42 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
 
             makeData.forEach((innerValue, key, map) => {
 
-                if (value === "Naruto-related" && innerValue.filter(elem => elem.title === value).length !== 0) {
-                    console.log("yes");
-                    console.log(innerValue.filter(elem => elem.title === value));
-                    
-                    orderedData.set(getIndex, innerValue.filter(elem => elem.title === value))
-                } else {
-
                 orderedData.set(getIndex, (orderedData.get(getIndex) ?? []).concat(
-                    innerValue.filter(elem => elem.title === value)
-                ))
+                    // innerValue.filter(elem => elem.title === value)
+                    innerValue.filter(elem => {
 
-                }
+                        if (changeTitle !== undefined && changeTitle.has(value)) {
+
+                            // return innerValue.filter(elem => elem.title === value || elem.title === changeTitle.get(value))
+                            return elem.title === value || elem.title === changeTitle.get(value)
+                        } else {
+                            return elem.title === value
+                        }
+                    })
+                ))
 
             })
         })
 
         console.log(orderedData);
+
+        // const testMAP = new Map<number, AnnualReportTitle[]>();
+
+        // orderedData.forEach((value, key, map) => {
+
+        //     console.log(value.length);
+        //     const toPop = value.pop();
+        //     console.log(toPop);
+        //     console.log(value.length);
+            
+
+        //     testMAP.set(key, value.concat(toPop as AnnualReportTitle))
+        // }) 
+
+        // console.log(orderedData);
+        // console.log(testMAP);
+        
+        
         
         // console.log([...orderedData.values()]);
         
@@ -213,28 +254,29 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
         
         // console.log(orderedData);
         // console.log(orderedData.get(5)?.pop());
+        // console.log(sortedLists);
         
 
-        const sortedMap = new Map<number, AnnualReportTitle[]>();
+        // const sortedMap = new Map<number, AnnualReportTitle[]>();
 
-        for (let index = 0; index < sortedLists.length; index++) {
+        // for (let index = 0; index < sortedLists.length; index++) {
 
-           const toList = sortedLists[index]; 
+        //    const toList = sortedLists[index]; 
 
-           const toPop = toList.pop();
+        //    const toPop = toList.pop();
 
-           const mutateLast = { ...toPop, rank: index + 1 } as AnnualReportTitle;
+        //    const mutateLast = { ...toPop, rank: index + 1 } as AnnualReportTitle;
 
-           sortedMap.set(index, 
-                toList.concat(mutateLast)
-           ) 
-        }
+        //    sortedMap.set(index, 
+        //         toList.concat(mutateLast)
+        //    ) 
+        // }
 
         // console.log(sortedMap);
         const printedSeries = new Map<number, titleSet[]>();
 
-        // orderedData.forEach((value, key, map) => {
-        sortedMap.forEach((value, key, map) => {
+        orderedData.forEach((value, key, map) => {
+        // sortedMap.forEach((value, key, map) => {
 
             const printValue = valuePrint(value, kind);
 
