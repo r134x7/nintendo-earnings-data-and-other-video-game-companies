@@ -162,15 +162,25 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
 
             makeData.forEach((innerValue, key, map) => {
 
+                if (value === "Naruto-related" && innerValue.filter(elem => elem.title === value).length !== 0) {
+                    console.log("yes");
+                    console.log(innerValue.filter(elem => elem.title === value));
+                    
+                    orderedData.set(getIndex, innerValue.filter(elem => elem.title === value))
+                } else {
+
                 orderedData.set(getIndex, (orderedData.get(getIndex) ?? []).concat(
-                    // innerValue.filter(elem => elem.title === value)
-                    innerValue.flatMap(elem => elem.title === value ? elem : [])
+                    innerValue.filter(elem => elem.title === value)
                 ))
+
+                }
 
             })
         })
 
         console.log(orderedData);
+        
+        // console.log([...orderedData.values()]);
         
         // sort collections here...
         // insert rank...
