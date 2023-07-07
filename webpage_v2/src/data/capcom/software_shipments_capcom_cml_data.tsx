@@ -182,6 +182,16 @@ function printShipments(header: string, titles: Series[][], returnObject?: boole
     }
 };
 
-const softwareShipmentsCapcom = shipmentsMaker(collectionCapcom, "Capcom", printDateLabel);
+// const softwareShipmentsCapcom = shipmentsMaker(collectionCapcom, "Capcom", printDateLabel);
 
-export const factBookCapcom = printShipments(softwareShipmentsCapcom.header, softwareShipmentsCapcom.titles, true) as titleSetHeader;
+// export const factBookCapcom = printShipments(softwareShipmentsCapcom.header, softwareShipmentsCapcom.titles, true) as titleSetHeader;
+
+export const factBookCapcom = {
+    header: "ERROR",
+    titleList: [
+        {
+            title: "ERROR",
+            table: "error"
+        } satisfies titleSet
+    ]
+} satisfies titleSetHeader
