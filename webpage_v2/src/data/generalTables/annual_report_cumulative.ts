@@ -165,10 +165,40 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
 
         // sort collections here...
         // insert rank...
+        const sortedLists = [...orderedData.values()].sort((prev, next) => {
+
+            return ((prev.at(-1)?.valueLTD ?? 0) < (next.at(-1)?.valueLTD ?? 0))
+                ? 1 // sort prev after next
+                : ((prev.at(-1)?.valueLTD ?? 0) > (next.at(-1)?.valueLTD ?? 0)) 
+                    ? -1 // sort next after prev
+                    : 0
+        })
+
+        const sortedMap = new Map<number, AnnualReportTitle[]>();
+
+        for (let index = 0; index < sortedLists.length; index++) {
+
+           const toList = sortedLists[index]; 
+
+           const toPop= toList.pop();
+
+           const mutateLast = { ...toPop, rank: index + 1 } as AnnualReportTitle;
+
+           sortedMap.set(index, 
+                // sortedLists[index].map((elem, index, array) => (elem === array.at(-1)) 
+                //     ? {
+                //     ...elem,
+                //     rank: index + 1,
+                //     } 
+                //     : elem)
+                toList.concat(mutateLast)
+           ) 
+        }
 
         const printedSeries = new Map<number, titleSet[]>();
 
-        orderedData.forEach((value, key, map) => {
+        // orderedData.forEach((value, key, map) => {
+        sortedMap.forEach((value, key, map) => {
 
             const printValue = valuePrint(value, kind);
 
