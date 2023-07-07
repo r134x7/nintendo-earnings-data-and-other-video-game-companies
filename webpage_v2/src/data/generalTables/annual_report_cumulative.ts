@@ -201,7 +201,7 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
             })
         })
 
-        console.log(orderedData);
+        // console.log(orderedData);
 
         // const testMAP = new Map<number, AnnualReportTitle[]>();
 
@@ -225,53 +225,67 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
         
         // sort collections here...
         // insert rank...
-        const sortedLists = [...orderedData.values()].sort((prev, next) => {
-
-            const getPrev = prev[prev.length-1]
-            const getNext = next[next.length-1]
-
-            if (getPrev.valueLTD.kind === "Annual Report" && getNext.valueLTD.kind === "Annual Report") {
-                // console.log(getPrev);
-                
-                // console.log(getPrev.valueLTD.value);
-                // console.log(getNext.valueLTD.value);
-                // console.log(getPrev.valueLTD.value < getNext.valueLTD.value);
-                // console.log(getPrev.valueLTD > getNext.valueLTD);
-                
-                
-                return (getPrev.valueLTD.value < getNext.valueLTD.value)
-                    ? 1 // sort prev after next
-                    : (getPrev.valueLTD > getNext.valueLTD) 
-                        ? -1 // sort next after prev
-                        : 0
+        const sortedLists = [...orderedData.values()].map(elem => elem.map(value => {
+            if (value.title === "Tekken") {
+                return value
             } else {
-                return 0
+
+            return {
+                ...value,
+                rank: 1
+            } satisfies AnnualReportTitle
             }
+        }) satisfies AnnualReportTitle[]
+        ) as AnnualReportTitle[][];
+        // const sortedLists = [...orderedData.values()].sort((prev, next) => {
 
-        })
+        //     const getPrev = prev[prev.length-1]
+        //     const getNext = next[next.length-1]
+
+        //     if (getPrev.valueLTD.kind === "Annual Report" && getNext.valueLTD.kind === "Annual Report") {
+        //         // console.log(getPrev);
+                
+        //         // console.log(getPrev.valueLTD.value);
+        //         // console.log(getNext.valueLTD.value);
+        //         // console.log(getPrev.valueLTD.value < getNext.valueLTD.value);
+        //         // console.log(getPrev.valueLTD > getNext.valueLTD);
+                
+                
+        //         return (getPrev.valueLTD.value < getNext.valueLTD.value)
+        //             ? 1 // sort prev after next
+        //             : (getPrev.valueLTD > getNext.valueLTD) 
+        //                 ? -1 // sort next after prev
+        //                 : 0
+        //     } else {
+        //         return 0
+        //     }
+
+        // })
 
         // console.log(sortedLists);
         
-        // console.log(orderedData);
+        console.log(orderedData);
         // console.log(orderedData.get(5)?.pop());
-        // console.log(sortedLists);
+        console.log(sortedLists);
         
 
-        // const sortedMap = new Map<number, AnnualReportTitle[]>();
+        const sortedMap = new Map<number, AnnualReportTitle[]>();
 
-        // for (let index = 0; index < sortedLists.length; index++) {
+        for (let index = 0; index < sortedLists.length; index++) {
 
-        //    const toList = sortedLists[index]; 
+           const toList = sortedLists[index]; 
 
-        //    const toPop = toList.pop();
+           const toPop = toList.pop();
 
-        //    const mutateLast = { ...toPop, rank: index + 1 } as AnnualReportTitle;
+           const mutateLast = { ...toPop, rank: index + 1 } as AnnualReportTitle;
 
-        //    sortedMap.set(index, 
-        //         toList.concat(mutateLast)
-        //    ) 
-        // }
+           sortedMap.set(index, 
+                toList.concat(mutateLast)
+           ) 
+        }
 
+        console.log(orderedData);
+        
         // console.log(sortedMap);
         const printedSeries = new Map<number, titleSet[]>();
 
