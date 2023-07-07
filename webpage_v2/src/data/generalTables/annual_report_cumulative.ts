@@ -187,6 +187,20 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
         printedSeries.set(0, (printedSeries.get(0) ?? []).concat(makeObject))
         })
 
+
+        const printOne = headerPrint([
+            header.companyName,
+            header.title,
+        ], headerLength) + "\n" + printDateLabel;
+
+    return {
+        header: printOne,
+        titleList: (kind === "Sega")
+            ? [...printedSeries.values()].flat() as searchTitles[]
+            : [...printedSeries.values()].flat() satisfies titleSet[],
+        // footnotes: collection?.footnotes === undefined ? undefined : liner(printTextBlock(collection?.footnotes,40),"=","both",true,40)
+        footnotes: undefined,
+    }
 }
 
 function extractIPType(value: AnnualReportTitle): "Acquired IP" | "Developed in-house IP" | "Licensed third party IP" | "Undefined" {

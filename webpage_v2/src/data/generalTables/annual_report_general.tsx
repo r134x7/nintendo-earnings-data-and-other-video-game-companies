@@ -468,9 +468,9 @@ function annualReportMap(collection: SeriesJSON, headerLength: number,
     return {
         header: printOne,
         // titleList: printedSeries.get(0),
-        titleList: (kind === "General")
-            ? [...printedSeries.values()].flat() satisfies titleSet[]
-            : [...printedSeries.values()].flat() as searchTitles[],
+        titleList: (kind === "Sega")
+            ? [...printedSeries.values()].flat() as searchTitles[]
+            : [...printedSeries.values()].flat() satisfies titleSet[],
         footnotes: collection?.footnotes === undefined ? undefined : liner(printTextBlock(collection?.footnotes,40),"=","both",true,40)
     }
 }
