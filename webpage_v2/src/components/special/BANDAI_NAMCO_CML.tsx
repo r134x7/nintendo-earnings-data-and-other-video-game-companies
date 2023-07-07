@@ -3,7 +3,8 @@ import { Code, SegmentedControl, Space, TextInput, Button, Select } from "@manti
 import { useSelector } from "react-redux";
 import { bandaiNamcoSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListBandaiNamco } from "../../data/generalTables/consolidated_earnings_cml_data";
-import { fyTitlesBandaiNamco } from "../../data/generalTables/annual_report_cml_data";
+// import { fyTitlesBandaiNamco } from "../../data/generalTables/annual_report_cml_data";
+import { bandaiNamcoAnnualReportCml } from "../../data/generalTables/annual_report_cumulative";
 import { printTextBlock, liner } from "../../utils/table_design_logic";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
@@ -22,7 +23,8 @@ export default function BANDAI_NAMCO_CML() {
     const [timePeriod, setTimePeriod] = useState(6);
     const [timePeriodValue, setTimePeriodValue] = useState<string | null>("FY Cumulative" ?? "FY Cumulative");
 
-    let annualReportTitlesFilter = filterTitles<titleSet>(fyTitlesBandaiNamco.titleList,titleValue);
+    // let annualReportTitlesFilter = filterTitles<titleSet>(fyTitlesBandaiNamco.titleList,titleValue);
+    let annualReportTitlesFilter = filterTitles<titleSet>(bandaiNamcoAnnualReportCml.titleList,titleValue);
 
     let predictText = new Set<string>();
 
@@ -32,7 +34,8 @@ export default function BANDAI_NAMCO_CML() {
 
     let annualReportTitlesReduce = annualReportTitlesFilter.reduce((acc, next) => acc + next.table,"");
 
-    let completeAnnualReportList = fyTitlesBandaiNamco.header + annualReportTitlesReduce;
+    // let completeAnnualReportList = fyTitlesBandaiNamco.header + annualReportTitlesReduce;
+    let completeAnnualReportList = bandaiNamcoAnnualReportCml.header + annualReportTitlesReduce;
 
     const textInputValues = [
         {

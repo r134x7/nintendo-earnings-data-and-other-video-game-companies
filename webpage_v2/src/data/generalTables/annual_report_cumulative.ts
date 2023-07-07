@@ -111,6 +111,13 @@ const collectionCapcomFactBook = new Map<number, SeriesJSON>();
     collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2021)
     collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2022)
 
+export const bandaiNamcoAnnualReportCml = annualReportCumulative(collectionBandaiNamco, 28, "General"); 
+
+collectionBandaiNamco.clear();
+collectionSquareEnix.clear();
+collectionSega.clear();
+collectionCapcomGameSeries.clear();
+collectionCapcomFactBook.clear();
 
 function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, headerLength: number, 
     kind: "General" | "Sega" | "Capcom Game Series" | "Capcom Fact Book"
@@ -126,10 +133,10 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
             companyName: completeCollection.get(completeCollection.size-1)?.companyName ?? "ERROR",
             fiscalYear: completeCollection.get(completeCollection.size-1)?.fiscalYear ?? "ERROR",
             title: (kind === "General" || kind == "Sega")
-                ? "IP Series Data"
+                ? "IP Series Data - Cumulative"
                 : (kind === "Capcom Game Series")
-                    ? "Game Series Data"
-                    : " Fact Book: Units shipped by platform "
+                    ? "Game Series Data - Cumulative"
+                    : " Fact Book: Units shipped by platform"
         };
 
         const makeData = new Map<number, AnnualReportTitle[]>();
@@ -163,15 +170,7 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
 
         orderedData.forEach((value, key, map) => {
 
-            const printValue = [
-                printSeriesName(value.at(-1) as AnnualReportTitle, 42),
-                liner(
-                    value.map(elem => printAnnualReportValue(elem, 27, 12, "Cumulative", "newLine")).reduce((acc, next) => acc + next)
-                , "−", "both", "newLine", 42),
-                liner(
-                printAnnualReportValue(value.at(-1) as AnnualReportTitle, 27, 12, "LTD","newLine")
-                , "−", "bottom", "newLine")
-            ].reduce((acc, next) => acc + next, "");
+            const printValue = valuePrint(value, kind);
 
             const makeObject = (value[value.length-1].kind === "Sega")
             ? {
@@ -200,6 +199,29 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
             : [...printedSeries.values()].flat() satisfies titleSet[],
         // footnotes: collection?.footnotes === undefined ? undefined : liner(printTextBlock(collection?.footnotes,40),"=","both",true,40)
         footnotes: undefined,
+    }
+}
+
+function valuePrint(value: AnnualReportTitle[], kind: "General" | "Sega" | "Capcom Game Series" | "Capcom Fact Book"): string {
+
+    switch (kind) {
+        case "General":
+
+            return [
+                printSeriesName(value.at(-1) as AnnualReportTitle, 42),
+                liner(
+                    printReleaseDate(value.at(-1) as AnnualReportTitle, 30) + printRank(value.at(-1) as AnnualReportTitle, 9)
+                ,"=","bottom","newLine"),
+                liner(
+                    value.map((elem, index, array) => printAnnualReportValue(elem, 27, 12, "Cumulative", (elem === array.at(-1)) ? "noNewLine" : "newLine")).reduce((acc, next) => acc + next)
+                , "−", "bottom", "newLine", 42),
+                liner(
+                printAnnualReportValue(value.at(-1) as AnnualReportTitle, 27, 12, "LTD","noNewLine")
+                , "−", "bottom", "newLine")
+            ].reduce((acc, next) => acc + next, "");
+    
+        default:
+            return ""
     }
 }
 
