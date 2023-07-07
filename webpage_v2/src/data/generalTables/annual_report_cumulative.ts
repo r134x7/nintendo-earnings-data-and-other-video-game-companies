@@ -113,7 +113,7 @@ const collectionCapcomFactBook = new Map<number, SeriesJSON>();
 
 export const bandaiNamcoAnnualReportCml = annualReportCumulative(collectionBandaiNamco, 28, "General"); 
 
-collectionBandaiNamco.clear();
+// collectionBandaiNamco.clear();
 collectionSquareEnix.clear();
 collectionSega.clear();
 collectionCapcomGameSeries.clear();
@@ -144,11 +144,17 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
         completeCollection.forEach((value, key, map) => {
             makeData.set(key, [...getAnnualReportData(value, kind).values()])
         })
+        // console.log(completeCollection);
+        // console.log(makeData);
+        
+        
 
         const setTitles = new Set<string>();
             [...makeData.values()].flat().map(elem => setTitles.add(elem.title));
 
         const orderedData = new Map<number, AnnualReportTitle[]>();
+        // console.log(makeData);
+        
 
         setTitles.forEach((value) => {
 
@@ -157,22 +163,49 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
             makeData.forEach((innerValue, key, map) => {
 
                 orderedData.set(getIndex, (orderedData.get(getIndex) ?? []).concat(
-                    innerValue.filter(elem => elem.title === value)
+                    // innerValue.filter(elem => elem.title === value)
+                    innerValue.flatMap(elem => elem.title === value ? elem : [])
                 ))
 
             })
         })
 
+        console.log(orderedData);
+        
         // sort collections here...
         // insert rank...
         const sortedLists = [...orderedData.values()].sort((prev, next) => {
 
-            return ((prev.at(-1)?.valueLTD ?? 0) < (next.at(-1)?.valueLTD ?? 0))
-                ? 1 // sort prev after next
-                : ((prev.at(-1)?.valueLTD ?? 0) > (next.at(-1)?.valueLTD ?? 0)) 
-                    ? -1 // sort next after prev
-                    : 0
+            const getPrev = prev[prev.length-1]
+            const getNext = next[next.length-1]
+
+            if (getPrev.valueLTD.kind === "Annual Report" && getNext.valueLTD.kind === "Annual Report") {
+                // console.log(getPrev);
+                
+                // console.log(getPrev.valueLTD.value);
+                // console.log(getNext.valueLTD.value);
+                // console.log(getPrev.valueLTD.value < getNext.valueLTD.value);
+                // console.log(getPrev.valueLTD > getNext.valueLTD);
+                
+                
+                
+
+                return (getPrev.valueLTD.value < getNext.valueLTD.value)
+                    ? 1 // sort prev after next
+                    : (getPrev.valueLTD > getNext.valueLTD) 
+                        ? -1 // sort next after prev
+                        : 0
+            } else {
+                return 0
+            }
+
         })
+
+        // console.log(sortedLists);
+        
+        // console.log(orderedData);
+        // console.log(orderedData.get(5)?.pop());
+        
 
         const sortedMap = new Map<number, AnnualReportTitle[]>();
 
@@ -180,21 +213,16 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
 
            const toList = sortedLists[index]; 
 
-           const toPop= toList.pop();
+           const toPop = toList.pop();
 
            const mutateLast = { ...toPop, rank: index + 1 } as AnnualReportTitle;
 
            sortedMap.set(index, 
-                // sortedLists[index].map((elem, index, array) => (elem === array.at(-1)) 
-                //     ? {
-                //     ...elem,
-                //     rank: index + 1,
-                //     } 
-                //     : elem)
                 toList.concat(mutateLast)
            ) 
         }
 
+        // console.log(sortedMap);
         const printedSeries = new Map<number, titleSet[]>();
 
         // orderedData.forEach((value, key, map) => {
