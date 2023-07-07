@@ -355,7 +355,7 @@ export function annualReportValuesMake(obj: undefined | SeriesMake, fiscalYear: 
     }
 }
 
-function getAnnualReportData(dataCollectionThisFY: SeriesJSON, kind: "General" | "Sega" | "Capcom Game Series" | "Capcom Fact Book"): Map<number, AnnualReportTitle> {
+export function getAnnualReportData(dataCollectionThisFY: SeriesJSON, kind: "General" | "Sega" | "Capcom Game Series" | "Capcom Fact Book"): Map<number, AnnualReportTitle> {
 
     const dataMap = new Map<number, AnnualReportTitle>();
 
