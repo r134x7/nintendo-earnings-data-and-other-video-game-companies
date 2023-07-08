@@ -107,13 +107,13 @@ export type SeriesMake =
         footnotes?: string,
       }
 
-type test1 = {
+export type TitleData = {
     header: string;
     titleList: titleSet[];
     footnotes: string | undefined;
 }
 
-type test2 = {
+export type TitlePlatformData = {
     header: string;
     titleList: searchTitles[];
     footnotes: string | undefined;
@@ -192,7 +192,7 @@ export const segaAnnualReport = new Map<number, { header: string, titleList: sea
 
 collectionSega.forEach((value, key, map) => {
 
-    segaAnnualReport.set(key, annualReportMap(value, 38, "Sega") as test2)
+    segaAnnualReport.set(key, annualReportMap(value, 38, "Sega") as TitlePlatformData)
 })
 
 export const capcomGameSeries = new Map<number, { header: string, titleList: titleSet[], footnotes?: string}>();
@@ -367,7 +367,7 @@ export function getAnnualReportData(dataCollectionThisFY: SeriesJSON, kind: "Gen
 }
 
 function annualReportMap(collection: SeriesJSON, headerLength: number, 
-    kind: "General" | "Sega" | "Capcom Game Series" | "Capcom Fact Book"): test1 | test2 {
+    kind: "General" | "Sega" | "Capcom Game Series" | "Capcom Fact Book"): TitleData | TitlePlatformData {
 
     const makeDateLabel = dateLabel(collection?.fiscalYear ?? "N/A", 4);
 
@@ -432,7 +432,7 @@ function annualReportMap(collection: SeriesJSON, headerLength: number,
                 : printReleaseDate(value, 30) + printRank(value, 9)
             ,"=","bottom","newLine"),
             liner(printTextBlock(value.kind === "Sega" ? "Measure: " + value.units : undefined,42),"−","bottom","newLine",42),
-            liner(printTextBlock((value.kind === "Sega") 
+            liner(printTextBlock((value.kind === "Sega" && value.footnotes !== undefined) 
                 ? "Consists of: " + value.footnotes
                 : value.footnotes, 42),"=","bottom","newLine",42),
             liner(

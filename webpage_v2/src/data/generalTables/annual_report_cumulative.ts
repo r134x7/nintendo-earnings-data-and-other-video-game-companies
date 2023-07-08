@@ -1,9 +1,9 @@
-import { thisFYCalculation, type AnnualReportTitle, type AnnualReportValue, printReleaseDate, printAnnualReportValue, printCumulativeYoY, printRank, printSeriesName } from "../../utils/annual_report_logic";
+import { thisFYCalculation, type AnnualReportTitle, type AnnualReportValue, printReleaseDate, printAnnualReportValue, printRank, printSeriesName } from "../../utils/annual_report_logic";
 import { dateLabel, liner, border, spacer, printTextBlock, headerPrint } from "../../utils/table_design_logic";
 import { HeaderV2 } from "../../utils/segment_data_logic";
 import { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
 import { searchTitles } from "../capcom/platinum_titles_Capcom";
-import { type SeriesJSON, type SeriesMake, getAnnualReportData, getIPType } from "./annual_report_general";
+import { type SeriesJSON, type SeriesMake, getAnnualReportData, getIPType, type TitleData, type TitlePlatformData } from "./annual_report_general";
 
 import bandaiNamcoAnnualReport2022 from "../bandaiNamco/Annual_Report/annual_report_fy3_2022.json";
 import bandaiNamcoAnnualReport2021 from "../bandaiNamco/Annual_Report/annual_report_fy3_2021.json";
@@ -117,6 +117,8 @@ const bandaiNamcoTitleChange = new Map<string, string>([
 ])
 export const bandaiNamcoAnnualReportCml = annualReportCumulative(collectionBandaiNamco, 28, "General", bandaiNamcoTitleChange); 
 
+export const segaAnnualReportCml = annualReportCumulative(collectionSega, 28, "Sega") as TitlePlatformData;
+
 collectionBandaiNamco.clear();
 bandaiNamcoTitleChange.clear();
 collectionSquareEnix.clear();
@@ -221,19 +223,20 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
 
         const printedSeries = new Map<number, titleSet[]>();
 
-        // orderedData.forEach((value, key, map) => {
         sortedMap.forEach((value, key, map) => {
 
             const printValue = valuePrint(value, kind);
 
+            const getLastValue = value.at(-1) as AnnualReportTitle;
+
             const makeObject = (value[value.length-1].kind === "Sega")
             ? {
-                title: value.at(-1)?.title ?? "ERROR",
-                platforms: extractIPType(value.at(-1) as AnnualReportTitle),
+                title: getLastValue.title,
+                platforms: getLastValue.kind === "Sega" ? getLastValue.ipType : "ERROR",
                 table: printValue,
             }
             : {
-                title: value.at(-1)?.title ?? "ERROR",
+                title: getLastValue.title,
                 table: printValue,
             } 
 
@@ -273,27 +276,32 @@ function valuePrint(value: AnnualReportTitle[], kind: "General" | "Sega" | "Capc
                 printAnnualReportValue(value.at(-1) as AnnualReportTitle, 27, 12, "LTD","noNewLine")
                 , "−", "bottom", "newLine")
             ].reduce((acc, next) => acc + next, "");
+
+        case "Sega":
+
+            // TypeScript doesn't handle lists well when trying to get a value from a list after using discriminated unions........
+            const getLastValue = value.at(-1) as AnnualReportTitle;
+
+            return [
+                printSeriesName(value.at(-1) as AnnualReportTitle, 42),
+                liner(printTextBlock(`IP type: ${getLastValue.kind === "Sega" ? getLastValue.ipType : "ERROR"}`,42),"−","bottom","newLine",42),
+                liner(printTextBlock(getLastValue.kind === "Sega" ? "Platforms: " + getLastValue.ipType : undefined,42),"−","bottom","newLine",42),
+                liner(printTextBlock(getLastValue.kind === "Sega" && getLastValue.totalEditions !== 0 ? "Total Editions: " + getLastValue.totalEditions.toString() : undefined,42),"−","bottom","newLine",42),
+                liner(printTextBlock(getLastValue.kind === "Sega" ? "Measure: " + getLastValue.units : undefined,42),"−","bottom","newLine",42),
+                liner(printTextBlock((getLastValue.kind === "Sega" && getLastValue.footnotes !== undefined) 
+                    ? "Consists of: " + getLastValue.footnotes
+                    : undefined, 42),"=","bottom","newLine",42),
+                liner(
+                    value.map((elem, index, array) => printAnnualReportValue(elem, 27, 12, "Cumulative", (elem === array.at(-1)) ? "noNewLine" : "newLine")).reduce((acc, next) => acc + next)
+                , "−", "bottom", "newLine", 42),
+                liner(
+                printAnnualReportValue(getLastValue, 27, 12, "LTD","noNewLine")
+                , "−", "bottom", "newLine")
+                // will need fullgameratio here
+            ].reduce((acc, next) => acc + next, "");
     
         default:
             return ""
     }
 }
 
-function extractIPType(value: AnnualReportTitle): "Acquired IP" | "Developed in-house IP" | "Licensed third party IP" | "Undefined" {
-
-    let getValue = value.kind === "Sega" ? value.ipType : "ERROR";
-
-    switch (getValue) {
-        case "Acquired IP":
-            return "Acquired IP" 
-    
-        case "Developed in-house IP":
-            return "Developed in-house IP"
-        
-        case "Licensed third party IP":
-            return "Licensed third party IP" 
-    
-        default:
-            return "Undefined"
-    }
-}

@@ -3,7 +3,8 @@ import { Code, SegmentedControl, Space, TextInput, Select, Button } from "@manti
 import { useSelector } from "react-redux";
 import { segaSammySalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListSegaSammy } from "../../data/generalTables/consolidated_earnings_cml_data";
-import { fyTitlesSegaSammy } from "../../data/sega/annual_report_cml_sega_data";
+// import { fyTitlesSegaSammy } from "../../data/sega/annual_report_cml_sega_data";
+import { segaAnnualReportCml } from "../../data/generalTables/annual_report_cumulative";
 import { softwareCumulativeSegaSammy } from "../../data/sega/software_units_sega_cml_data";
 import type { searchTitles } from "../../data/capcom/platinum_titles_Capcom";
 import type { titleSet } from "../../data/capcom/game_series_sales_capcom_cml_data";
@@ -25,7 +26,7 @@ export default function SEGA_CML() {
 
     const state: any = useSelector(state => state);
 
-    let filteredIPType = fyTitlesSegaSammy.titleData.filter(elem => {
+    let filteredIPType = segaAnnualReportCml.titleList.filter(elem => {
         if (platformValue === "All") {
             return elem
         } else if (platformValue === elem.platforms) {
@@ -51,7 +52,7 @@ export default function SEGA_CML() {
 
     let IPTypeReduce = filterIPTypeTitles.reduce((acc, next) => acc + next.table,"");
 
-    let IPTypeList = fyTitlesSegaSammy.header + IPTypeReduce;
+    let IPTypeList = segaAnnualReportCml.header + IPTypeReduce;
 
     const textInputValues = [
         {
