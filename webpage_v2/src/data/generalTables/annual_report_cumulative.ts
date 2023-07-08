@@ -294,7 +294,17 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
             header.title,
         ], headerLength) + "\n" + printDateLabel;
 
-        let getFootnotes = [...completeCollection.values()].reduce((acc, next) => acc + `${next.footnotes === undefined ? "" : next.footnotes}`, ""); 
+        let filterFootnotes = [...completeCollection.values()].flatMap((elem, index, array) => {
+            if (elem.footnotes === array[index+1]?.footnotes) {
+                return []
+            } else {
+                return elem.footnotes
+            }
+        }) 
+
+        // let getFootnotes = [...completeCollection.values()].reduce((acc, next) => acc + 
+        let getFootnotes = filterFootnotes.reduce((acc, next) => acc + 
+            `${liner(printTextBlock(next,40),"=","both",true,40)}`, ""); 
 
     return {
         header: printOne,
@@ -302,7 +312,7 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
             ? [...printedSeries.values()].flat() as searchTitles[]
             : [...printedSeries.values()].flat() satisfies titleSet[],
         // footnotes: collection?.footnotes === undefined ? undefined : liner(printTextBlock(collection?.footnotes,40),"=","both",true,40)
-        footnotes: liner(printTextBlock(getFootnotes,40),"=","both",true,40),
+        footnotes: getFootnotes
     }
 }
 
