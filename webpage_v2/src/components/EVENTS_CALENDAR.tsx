@@ -19,28 +19,36 @@ export default function EVENTS_CALENDAR() {
         irPage: string;
     }
 
+    function dateTemplate(quarter: "1st" | "2nd" | "3rd" | "4th", monthNumeral: number, month: string, fiscalYear: number) {
+
+        return `${quarter} Quarter Earnings Results, FY${monthNumeral}/${fiscalYear} (Fiscal Year ending ${month} ${fiscalYear})`
+    }
+
+    const currentYear = 2023;
+    const nextYear = 2024;
+
     const dateArray: EventDate[] = [
         {
             id: 1,
             companyName: "Capcom",
-            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "May 10, 2023",
+            eventName: dateTemplate("1st", 3, "March", nextYear),
+            eventDate: "July 26, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.capcom.co.jp/ir/english/",
         },
         {
             id: 2,
             companyName: "Nintendo",
-            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "May 9, 2023",
+            eventName: dateTemplate("1st", 3, "March", nextYear),
+            eventDate: "August 3, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.nintendo.co.jp/ir/en/",
         },
         {
             id: 3,
             companyName: "Sony",
-            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "April 28, 2023",
+            eventName: dateTemplate("1st", 3, "March", nextYear),
+            eventDate: "August 9, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.sony.com/en/SonyInfo/IR/",
         },
@@ -55,48 +63,48 @@ export default function EVENTS_CALENDAR() {
         {
             id: 5,
             companyName: "Ubisoft",
-            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "May 16, 2023",
+            eventName: dateTemplate("1st", 3, "March", nextYear),
+            eventDate: "July 20, 2023",
             timeZone: "France, CEST, UTC +2 Hours",
             irPage: "https://www.ubisoft.com/en-us/company/about-us/investors",
         },
         {
             id: 6,
             companyName: "DeNA",
-            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "May 10, 2023",
+            eventName: dateTemplate("1st", 3, "March", nextYear),
+            eventDate: "August 9, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://dena.com/intl/ir/",
         },
         {
             id: 7,
             companyName: "Koei Tecmo",
-            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "April 24, 2023",
+            eventName: dateTemplate("1st", 3, "March", nextYear),
+            eventDate: "July 31, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.koeitecmo.co.jp/e/ir/",
         },
         {
             id: 8,
             companyName: "EA",
-            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "May 9, 2023",
+            eventName: dateTemplate("1st", 3, "March", nextYear),
+            eventDate: "August 1, 2023",
             timeZone: "US, PDT, UTC -7 Hours",
             irPage: "https://ir.ea.com/home/default.aspx",
         },
         {
             id: 9,
             companyName: "CyberAgent",
-            eventName: "2nd Quarter Earnings Results, FY9/2023 (Fiscal Year ending September 2023)",
-            eventDate: "April 26, 2023",
+            eventName: dateTemplate("3rd", 9, "September", currentYear),
+            eventDate: "July 26, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.cyberagent.co.jp/en/ir/",
         },
         {
             id: 10,
             companyName: "GungHo",
-            eventName: "1st Quarter Earnings Results, FY12/2023 (Fiscal Year ending December 2023)",
-            eventDate: "May 11, 2023",
+            eventName: dateTemplate("2nd", 12, "December", currentYear),
+            eventDate: "August 9, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.gungho.co.jp/en/ir/",
         },
@@ -114,21 +122,21 @@ export default function EVENTS_CALENDAR() {
             eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
             eventDate: "April 28, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
-            irPage: "https://www.segasammy.co.jp/english/ir/",
+            irPage: "https://www.segasammy.co.jp/en/ir/",
         },
         {
             id: 13,
             companyName: "Konami",
-            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "May 11, 2023",
+            eventName: dateTemplate("1st", 3, "March", nextYear),
+            eventDate: "August 3, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.konami.com/ir/en/",
         },
         {
             id: 14,
             companyName: "Marvelous",
-            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "May 11, 2023",
+            eventName: dateTemplate("1st", 3, "March", nextYear),
+            eventDate: "July 31, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://corp.marv.jp/english/",
         },
@@ -151,8 +159,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 17,
             companyName: "GREE",
-            eventName: "3rd Quarter Earnings Results, FY6/2023 (Fiscal Year ending June 2023)",
-            eventDate: "May 11, 2023",
+            eventName: dateTemplate("4th", 6, "June", currentYear),
+            eventDate: "August 3, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "http://www.gree.co.jp/jp/en/ir/",
         },
@@ -167,8 +175,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 19,
             companyName: "Kadokawa",
-            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "May 11, 2023",
+            eventName: dateTemplate("1st", 3, "March", nextYear),
+            eventDate: "August 3, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://group.kadokawa.co.jp/global/ir/",
         },
@@ -191,8 +199,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 22,
             companyName: "Embracer Group",
-            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "May 24, 2023",
+            eventName: dateTemplate("1st", 3, "March", nextYear),
+            eventDate: "August 17, 2023",
             timeZone: "Sweden, CEST, UTC +2 Hour",
             irPage: "https://embracer.com/investors/",
         },
