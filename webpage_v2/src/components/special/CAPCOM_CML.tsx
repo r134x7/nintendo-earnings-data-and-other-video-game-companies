@@ -5,8 +5,8 @@ import { platinumTitlesCML } from "../../data/capcom/platinum_titles_Capcom";
 import { CapcomSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListCapcom } from "../../data/generalTables/consolidated_earnings_cml_data";
 // import { gameSeriesCapcom } from "../../data/capcom/game_series_sales_capcom_cml_data";
-import { capcomGameSeriesCml } from "../../data/generalTables/annual_report_cumulative";
-import { factBookCapcom } from "../../data/capcom/software_shipments_capcom_cml_data";
+import { capcomGameSeriesCml, capcomFactBookCml } from "../../data/generalTables/annual_report_cumulative";
+// import { factBookCapcom } from "../../data/capcom/software_shipments_capcom_cml_data";
 import { filterTitles, printTextBlock, liner } from "../../utils/table_design_logic";
 
 import type { searchTitles } from "../../data/capcom/platinum_titles_Capcom";
@@ -54,7 +54,7 @@ export default function CAPCOM_CML() {
 
     let gameSeriesFilter = filterTitles<titleSet>(capcomGameSeriesCml.titleList, titleValue)
 
-    let softwareShipmentsFilter = filterTitles<titleSet>(factBookCapcom.titleList, titleValue);
+    let softwareShipmentsFilter = filterTitles<titleSet>(capcomFactBookCml.titleList, titleValue);
     // console.log(filterPlatinumTitles.map(elem => elem.title));
 
     let predictText = new Set<string>();
@@ -102,7 +102,7 @@ export default function CAPCOM_CML() {
 
     let softwareShipmentsReduce = softwareShipmentsFilter.reduce((acc, next) => acc + next.table,"");
 
-    let softwareShipmentsList = factBookCapcom.header + softwareShipmentsReduce;
+    let softwareShipmentsList = capcomFactBookCml.header + softwareShipmentsReduce;
 
     const textInputValues = [
         {

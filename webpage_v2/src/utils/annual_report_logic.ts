@@ -82,7 +82,7 @@ export function printRank(series: AnnualReportTitle, textLength: number) {
     ],"right","noNewLine")
 }
 
-export function printAnnualReportValue(series: AnnualReportTitle, textLength: number, valueLength: number, kind: "Cumulative" | "LTD", newLine: "newLine" | "noNewLine" | "newLineOnEachElement" ): string {
+export function printAnnualReportValue(series: AnnualReportTitle, textLength: number, valueLength: number, kind: "Cumulative" | "LTD" | "LTD (units)" | "Sum (units)", newLine: "newLine" | "noNewLine" | "newLineOnEachElement" ): string {
 
     if (series.valueThisFY.kind === "Annual Report" && kind === "Cumulative") {
 
@@ -100,6 +100,22 @@ export function printAnnualReportValue(series: AnnualReportTitle, textLength: nu
 
         return borderV2([
             spacer("Life-To-Date", textLength, "left"),
+            spacer(printValuePrimitive(getFixed,numberType("Million"),"None"), valueLength, "right")
+        ], "both",newLine);
+    } else if (series.valueLTD.kind === "Annual Report" && kind === "LTD (units)") {
+
+        const getFixed: number = Number(series.valueLTD.value.toFixed(2));
+
+        return borderV2([
+            spacer("Life-To-Date (units)", textLength, "left"),
+            spacer(printValuePrimitive(getFixed,numberType("Million"),"None"), valueLength, "right")
+        ], "both",newLine);
+    } else if (series.valueThisFY.kind === "Annual Report" && kind === "Sum (units)") {
+
+        const getFixed: number = Number(series.valueThisFY.value.toFixed(2));
+
+        return borderV2([
+            spacer("Sum (units)", textLength, "left"),
             spacer(printValuePrimitive(getFixed,numberType("Million"),"None"), valueLength, "right")
         ], "both",newLine);
     } else {

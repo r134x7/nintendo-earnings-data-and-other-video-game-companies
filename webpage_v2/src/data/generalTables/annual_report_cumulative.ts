@@ -257,13 +257,15 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
             header.title,
         ], headerLength) + "\n" + printDateLabel;
 
+        let getFootnotes = [...completeCollection.values()].reduce((acc, next) => acc + `${next.footnotes === undefined ? "" : next.footnotes}`, ""); 
+
     return {
         header: printOne,
         titleList: (kind === "Sega")
             ? [...printedSeries.values()].flat() as searchTitles[]
             : [...printedSeries.values()].flat() satisfies titleSet[],
         // footnotes: collection?.footnotes === undefined ? undefined : liner(printTextBlock(collection?.footnotes,40),"=","both",true,40)
-        footnotes: undefined,
+        footnotes: liner(printTextBlock(getFootnotes,40),"=","both",true,40),
     }
 }
 
@@ -327,6 +329,34 @@ function valuePrint(value: AnnualReportTitle[], kind: "General" | "Sega" | "Capc
                 , "−", "bottom", "newLine")
             ].reduce((acc, next) => acc + next, "");
     
+        case "Capcom Fact Book":
+
+            const getCapcomFactBookLastValue = value.at(-1) as AnnualReportTitle;
+
+            const getSum = value.reduce((acc, next) => acc + (next.valueThisFY.kind === "Annual Report" ? next.valueThisFY.value : 0), 0); 
+
+            const createSum = {
+                ...getCapcomFactBookLastValue,
+                valueThisFY: {
+                    ...getCapcomFactBookLastValue.valueThisFY,
+                    kind: "Annual Report",
+                    value: getSum
+                } as AnnualReportValue
+            } satisfies AnnualReportTitle
+
+            return [
+                printSeriesName(getCapcomFactBookLastValue, 42),
+                liner(
+                    printTextBlock(`SKU sum: ${getCapcomFactBookLastValue.kind === "Capcom Fact Book" ? getCapcomFactBookLastValue.skuNumber : undefined}`,31) + printRank(getCapcomFactBookLastValue, 9)
+                ,"=","bottom","newLine"),
+                liner(
+                    value.map((elem, index, array) => printAnnualReportValue(elem, 27, 12, "Cumulative", (elem === array.at(-1)) ? "noNewLine" : "newLine")).reduce((acc, next) => acc + next)
+                , "−", "bottom", "newLine", 42),
+                liner(
+                printAnnualReportValue(createSum, 27, 12, "Sum (units)","noNewLine")
+                , "−", "bottom", "newLine")
+            ].reduce((acc, next) => acc + next, "");
+
         default:
             return ""
     }
