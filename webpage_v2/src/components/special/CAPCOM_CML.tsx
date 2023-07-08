@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 import { platinumTitlesCML } from "../../data/capcom/platinum_titles_Capcom";
 import { CapcomSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListCapcom } from "../../data/generalTables/consolidated_earnings_cml_data";
-import { gameSeriesCapcom } from "../../data/capcom/game_series_sales_capcom_cml_data";
+// import { gameSeriesCapcom } from "../../data/capcom/game_series_sales_capcom_cml_data";
+import { capcomGameSeriesCml } from "../../data/generalTables/annual_report_cumulative";
 import { factBookCapcom } from "../../data/capcom/software_shipments_capcom_cml_data";
 import { filterTitles, printTextBlock, liner } from "../../utils/table_design_logic";
 
@@ -51,7 +52,7 @@ export default function CAPCOM_CML() {
 
     let filterPlatinumTitles = filterTitles<searchTitles>(filteredPlatforms, titleValue);
 
-    let gameSeriesFilter = filterTitles<titleSet>(gameSeriesCapcom.titleList, titleValue)
+    let gameSeriesFilter = filterTitles<titleSet>(capcomGameSeriesCml.titleList, titleValue)
 
     let softwareShipmentsFilter = filterTitles<titleSet>(factBookCapcom.titleList, titleValue);
     // console.log(filterPlatinumTitles.map(elem => elem.title));
@@ -92,7 +93,7 @@ export default function CAPCOM_CML() {
 
     let fyTitlesReduce = gameSeriesFilter.reduce((acc, next) => acc + next.table, "")
 
-    let fyGameSeriesList = gameSeriesCapcom.header + fyTitlesReduce + gameSeriesCapcom.summary;
+    let fyGameSeriesList = capcomGameSeriesCml.header + fyTitlesReduce + capcomGameSeriesCml.footnotes;
 
     // let softwareShipmentsFilter = factBookCapcom.titleList.filter(elem => (titleValue === "") ? elem : elem.title.toLowerCase().includes(titleValue.toLowerCase()));
 

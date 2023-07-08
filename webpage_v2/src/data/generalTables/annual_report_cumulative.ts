@@ -122,10 +122,15 @@ const segaTitleChange = new Map<string, string>([
 ]);
 export const segaAnnualReportCml = annualReportCumulative(collectionSega, 28, "Sega", segaTitleChange) as TitlePlatformData;
 
+export const capcomGameSeriesCml = annualReportCumulative(collectionCapcomGameSeries, 38, "Capcom Game Series");
+
+export const capcomFactBookCml = annualReportCumulative(collectionCapcomFactBook, 38, "Capcom Fact Book");
+
 collectionBandaiNamco.clear();
 bandaiNamcoTitleChange.clear();
 collectionSquareEnix.clear();
 collectionSega.clear();
+segaTitleChange.clear();
 collectionCapcomGameSeries.clear();
 collectionCapcomFactBook.clear();
 
@@ -283,26 +288,43 @@ function valuePrint(value: AnnualReportTitle[], kind: "General" | "Sega" | "Capc
         case "Sega":
 
             // TypeScript doesn't handle lists well when trying to get a value from a list after using discriminated unions........
-            const getLastValue = value.at(-1) as AnnualReportTitle;
+            const getSegaLastValue = value.at(-1) as AnnualReportTitle;
 
             return [
                 printSeriesName(value.at(-1) as AnnualReportTitle, 42),
-                liner(printTextBlock(`IP type: ${getLastValue.kind === "Sega" ? getLastValue.ipType : "ERROR"}`,42),"−","bottom","newLine",42),
-                liner(printTextBlock(getLastValue.kind === "Sega" ? "Platforms: " + getLastValue.platforms : undefined,42),"−","bottom","newLine",42),
-                liner(printTextBlock(getLastValue.kind === "Sega" && getLastValue.totalEditions !== 0 ? "Total Editions: " + getLastValue.totalEditions.toString() : undefined,42),"−","bottom","newLine",42),
-                liner(printReleaseDate(getLastValue, 30) + printRank(getLastValue, 9)
+                liner(printTextBlock(`IP type: ${getSegaLastValue.kind === "Sega" ? getSegaLastValue.ipType : "ERROR"}`,42),"−","bottom","newLine",42),
+                liner(printTextBlock(getSegaLastValue.kind === "Sega" ? "Platforms: " + getSegaLastValue.platforms : undefined,42),"−","bottom","newLine",42),
+                liner(printTextBlock(getSegaLastValue.kind === "Sega" && getSegaLastValue.totalEditions !== 0 ? "Total Editions: " + getSegaLastValue.totalEditions.toString() : undefined,42),"−","bottom","newLine",42),
+                liner(printReleaseDate(getSegaLastValue, 30) + printRank(getSegaLastValue, 9)
                 ,"=","bottom","newLine"),
-                liner(printTextBlock(getLastValue.kind === "Sega" ? "Measure: " + getLastValue.units : undefined,42),"−","bottom","newLine",42),
-                liner(printTextBlock((getLastValue.kind === "Sega" && getLastValue.footnotes !== undefined) 
-                    ? "Consists of: " + getLastValue.footnotes
+                liner(printTextBlock(getSegaLastValue.kind === "Sega" ? "Measure: " + getSegaLastValue.units : undefined,42),"−","bottom","newLine",42),
+                liner(printTextBlock((getSegaLastValue.kind === "Sega" && getSegaLastValue.footnotes !== undefined) 
+                    ? "Consists of: " + getSegaLastValue.footnotes
                     : undefined, 42),"=","bottom","newLine",42),
                 liner(
                     value.map((elem, index, array) => printAnnualReportValue(elem, 27, 12, "Cumulative", (elem === array.at(-1)) ? "noNewLine" : "newLine")).reduce((acc, next) => acc + next)
                 , "−", "bottom", "newLine", 42),
                 liner(
-                printAnnualReportValue(getLastValue, 27, 12, "LTD","noNewLine")
+                printAnnualReportValue(getSegaLastValue, 27, 12, "LTD","noNewLine")
                 , "−", "bottom", "newLine")
                 // will need fullgameratio here
+            ].reduce((acc, next) => acc + next, "");
+        
+        case "Capcom Game Series":
+
+            const getCapcomGameSeriesLastValue = value.at(-1) as AnnualReportTitle;
+
+            return [
+                printSeriesName(getCapcomGameSeriesLastValue, 42),
+                liner(printTextBlock(getCapcomGameSeriesLastValue.kind === "Capcom Game Series" ? "Number of Titles: " + getCapcomGameSeriesLastValue.numberOfTitles.toString() : undefined, 42),"−","bottom","newLine",42),
+                liner(printReleaseDate(getCapcomGameSeriesLastValue, 30) + printRank(getCapcomGameSeriesLastValue, 9)
+                ,"=","bottom","newLine"),
+                liner(
+                    value.map((elem, index, array) => printAnnualReportValue(elem, 27, 12, "Cumulative", (elem === array.at(-1)) ? "noNewLine" : "newLine")).reduce((acc, next) => acc + next)
+                , "−", "bottom", "newLine", 42),
+                liner(
+                printAnnualReportValue(getCapcomGameSeriesLastValue, 27, 12, "LTD","noNewLine")
+                , "−", "bottom", "newLine")
             ].reduce((acc, next) => acc + next, "");
     
         default:
