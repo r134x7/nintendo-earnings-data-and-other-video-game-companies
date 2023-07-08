@@ -54,6 +54,14 @@ import capcomSoftwareShipmentsPlatform2022 from "../capcom/Fact_Book/software_sh
 import capcomSoftwareShipmentsPlatform2021 from "../capcom/Fact_Book/software_shipments_platform_fy3_2021.json";
 import capcomSoftwareShipmentsPlatform2020 from "../capcom/Fact_Book/software_shipments_platform_fy3_2020.json";
 import capcomSoftwareShipmentsPlatform2019 from "../capcom/Fact_Book/software_shipments_platform_fy3_2019.json";
+import capcomSoftwareShipmentsPlatform2018 from "../capcom/Fact_Book/software_shipments_platform_fy3_2018.json";
+import capcomSoftwareShipmentsPlatform2017 from "../capcom/Fact_Book/software_shipments_platform_fy3_2017.json";
+import capcomSoftwareShipmentsPlatform2016 from "../capcom/Fact_Book/software_shipments_platform_fy3_2016.json";
+import capcomSoftwareShipmentsPlatform2015 from "../capcom/Fact_Book/software_shipments_platform_fy3_2015.json";
+import capcomSoftwareShipmentsPlatform2014 from "../capcom/Fact_Book/software_shipments_platform_fy3_2014.json";
+import capcomSoftwareShipmentsPlatform2013 from "../capcom/Fact_Book/software_shipments_platform_fy3_2013.json";
+import capcomSoftwareShipmentsPlatform2012 from "../capcom/Fact_Book/software_shipments_platform_fy3_2012.json";
+import capcomSoftwareShipmentsPlatform2011 from "../capcom/Fact_Book/software_shipments_platform_fy3_2011.json";
 
 
 const collectionBandaiNamco = new Map<number, SeriesJSON>();
@@ -106,6 +114,14 @@ const collectionCapcomGameSeries = new Map<number, SeriesJSON>();
     collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2023)
 
 const collectionCapcomFactBook = new Map<number, SeriesJSON>();
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2011)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2012)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2013)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2014)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2015)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2016)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2017)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2018)
     collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2019)
     collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2020)
     collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2021)
@@ -152,7 +168,7 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
                 ? "IP Series Data - Cumulative"
                 : (kind === "Capcom Game Series")
                     ? "Game Series Data - Cumulative"
-                    : " Fact Book: Units shipped by platform"
+                    : "Fact Book: Units shipped by platform"
         };
 
         const makeData = new Map<number, AnnualReportTitle[]>();
@@ -198,19 +214,38 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
 
         const sortedLists = [...orderedData.values()].sort((next, prev) => {
             
-            const getPrev = prev[prev.length-1]
-            const getNext = next[next.length-1]
+            if (orderedData.get(0)?.at(0)?.kind === "Capcom Fact Book") {
 
-            if (getPrev.valueLTD.kind === "Annual Report" && getNext.valueLTD.kind === "Annual Report") {
+                const getPrev = prev.reduce((acc, two) => acc + (two.valueThisFY.kind === "Annual Report" ? two.valueThisFY.value : 0), 0);
+                const getNext = next.reduce((acc, two) => acc + (two.valueThisFY.kind === "Annual Report" ? two.valueThisFY.value : 0), 0);
+
+                console.log(getPrev);
+                console.log(getNext);
                 
-                return (getPrev.valueLTD.value < getNext.valueLTD.value)
-                    ? -1 
-                    : (getPrev.valueLTD > getNext.valueLTD) 
-                        ? 1 
-                        : 0
+                
+                    return (getPrev < getNext)
+                        ? -1 
+                        : (getPrev > getNext) 
+                            ? 1 
+                            : 0
             } else {
-                return 0
+
+                const getPrev = prev[prev.length-1]
+                const getNext = next[next.length-1]
+
+                if (getPrev.valueLTD.kind === "Annual Report" && getNext.valueLTD.kind === "Annual Report") {
+
+                    return (getPrev.valueLTD.value < getNext.valueLTD.value)
+                        ? -1 
+                        : (getPrev.valueLTD > getNext.valueLTD) 
+                            ? 1 
+                            : 0
+                } else {
+                    return 0
+                }
+
             }
+
 
         })
 
@@ -333,21 +368,25 @@ function valuePrint(value: AnnualReportTitle[], kind: "General" | "Sega" | "Capc
 
             const getCapcomFactBookLastValue = value.at(-1) as AnnualReportTitle;
 
-            const getSum = value.reduce((acc, next) => acc + (next.valueThisFY.kind === "Annual Report" ? next.valueThisFY.value : 0), 0); 
+            const getValueSum = value.reduce((acc, next) => acc + (next.valueThisFY.kind === "Annual Report" ? next.valueThisFY.value : 0), 0); 
+
+            const getSKUsum = value.reduce((acc, next) => acc + (next.kind === "Capcom Fact Book" ? next.skuNumber : 0), 0)
 
             const createSum = {
                 ...getCapcomFactBookLastValue,
+                kind: "Capcom Fact Book",
+                skuNumber: getSKUsum,
                 valueThisFY: {
                     ...getCapcomFactBookLastValue.valueThisFY,
                     kind: "Annual Report",
-                    value: getSum
+                    value: getValueSum
                 } as AnnualReportValue
             } satisfies AnnualReportTitle
 
             return [
                 printSeriesName(getCapcomFactBookLastValue, 42),
                 liner(
-                    printTextBlock(`SKU sum: ${getCapcomFactBookLastValue.kind === "Capcom Fact Book" ? getCapcomFactBookLastValue.skuNumber : undefined}`,31) + printRank(getCapcomFactBookLastValue, 9)
+                    printTextBlock(`SKU sum: ${createSum.skuNumber}`,31) + printRank(getCapcomFactBookLastValue, 9)
                 ,"=","bottom","newLine"),
                 liner(
                     value.map((elem, index, array) => printAnnualReportValue(elem, 27, 12, "Cumulative", (elem === array.at(-1)) ? "noNewLine" : "newLine")).reduce((acc, next) => acc + next)

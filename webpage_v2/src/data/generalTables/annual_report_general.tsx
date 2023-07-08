@@ -53,6 +53,14 @@ import capcomSoftwareShipmentsPlatform2022 from "../capcom/Fact_Book/software_sh
 import capcomSoftwareShipmentsPlatform2021 from "../capcom/Fact_Book/software_shipments_platform_fy3_2021.json";
 import capcomSoftwareShipmentsPlatform2020 from "../capcom/Fact_Book/software_shipments_platform_fy3_2020.json";
 import capcomSoftwareShipmentsPlatform2019 from "../capcom/Fact_Book/software_shipments_platform_fy3_2019.json";
+import capcomSoftwareShipmentsPlatform2018 from "../capcom/Fact_Book/software_shipments_platform_fy3_2018.json";
+import capcomSoftwareShipmentsPlatform2017 from "../capcom/Fact_Book/software_shipments_platform_fy3_2017.json";
+import capcomSoftwareShipmentsPlatform2016 from "../capcom/Fact_Book/software_shipments_platform_fy3_2016.json";
+import capcomSoftwareShipmentsPlatform2015 from "../capcom/Fact_Book/software_shipments_platform_fy3_2015.json";
+import capcomSoftwareShipmentsPlatform2014 from "../capcom/Fact_Book/software_shipments_platform_fy3_2014.json";
+import capcomSoftwareShipmentsPlatform2013 from "../capcom/Fact_Book/software_shipments_platform_fy3_2013.json";
+import capcomSoftwareShipmentsPlatform2012 from "../capcom/Fact_Book/software_shipments_platform_fy3_2012.json";
+import capcomSoftwareShipmentsPlatform2011 from "../capcom/Fact_Book/software_shipments_platform_fy3_2011.json";
 
 import { collection as softwareUnitsCollection } from "../sega/software_units_sega";
 
@@ -173,6 +181,14 @@ const collectionCapcomFactBook = new Map<number, SeriesJSON>();
     collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2021)
     collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2020)
     collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2019)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2018)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2017)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2016)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2015)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2014)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2013)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2012)
+    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2011)
 
 export const bandaiNamcoAnnualReport = new Map<number, { header: string, titleList: titleSet[]}>(); 
 
