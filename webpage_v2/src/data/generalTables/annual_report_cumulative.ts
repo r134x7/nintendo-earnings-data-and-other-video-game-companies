@@ -1,9 +1,9 @@
-import { thisFYCalculation, type AnnualReportTitle, type AnnualReportValue, printReleaseDate, printAnnualReportValue, printRank, printSeriesName } from "../../utils/annual_report_logic";
+import { type AnnualReportTitle, type AnnualReportValue, printReleaseDate, printAnnualReportValue, printRank, printSeriesName } from "../../utils/annual_report_logic";
 import { dateLabel, liner, border, spacer, printTextBlock, headerPrint } from "../../utils/table_design_logic";
 import { HeaderV2 } from "../../utils/segment_data_logic";
 import { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
 import { searchTitles } from "../capcom/platinum_titles_Capcom";
-import { type SeriesJSON, type SeriesMake, getAnnualReportData, getIPType, type TitleData, type TitlePlatformData } from "./annual_report_general";
+import { type SeriesJSON, getAnnualReportData, type TitlePlatformData, fullGameRatio } from "./annual_report_general";
 
 import bandaiNamcoAnnualReport2022 from "../bandaiNamco/Annual_Report/annual_report_fy3_2022.json";
 import bandaiNamcoAnnualReport2021 from "../bandaiNamco/Annual_Report/annual_report_fy3_2021.json";
@@ -63,6 +63,7 @@ import capcomSoftwareShipmentsPlatform2013 from "../capcom/Fact_Book/software_sh
 import capcomSoftwareShipmentsPlatform2012 from "../capcom/Fact_Book/software_shipments_platform_fy3_2012.json";
 import capcomSoftwareShipmentsPlatform2011 from "../capcom/Fact_Book/software_shipments_platform_fy3_2011.json";
 
+import { softwareUnitsCollection } from "../sega/software_units_sega";
 
 const collectionBandaiNamco = new Map<number, SeriesJSON>();
     collectionBandaiNamco.set(collectionBandaiNamco.size, bandaiNamcoAnnualReport2019)
@@ -339,6 +340,8 @@ function valuePrint(value: AnnualReportTitle[], kind: "General" | "Sega" | "Capc
             // TypeScript doesn't handle lists well when trying to get a value from a list after using discriminated unions........
             const getSegaLastValue = value.at(-1) as AnnualReportTitle;
 
+            const getFullGameRatios = value.map(elem => fullGameRatio(elem, softwareUnitsCollection, elem.valueLTD.kind === "Annual Report" ? elem.valueLTD.fiscalYear : "ERROR", "Cumulative")).filter(elem => elem.length !== 0).reduce((acc, next) => acc + (acc.length > 0 ? "\n" + next : next), "")
+
             return [
                 printSeriesName(value.at(-1) as AnnualReportTitle, 42),
                 liner(printTextBlock(`IP type: ${getSegaLastValue.kind === "Sega" ? getSegaLastValue.ipType : "ERROR"}`,42),"−","bottom","newLine",42),
@@ -355,8 +358,9 @@ function valuePrint(value: AnnualReportTitle[], kind: "General" | "Sega" | "Capc
                 , "−", "bottom", "newLine", 42),
                 liner(
                 printAnnualReportValue(getSegaLastValue, 27, 12, "LTD","noNewLine")
-                , "−", "bottom", "newLine")
-                // will need fullgameratio here
+                , "−", "bottom", "newLine"),
+                liner((getFullGameRatios.length === 0 ? undefined : getFullGameRatios),"=","both","noNewLine",45),
+                (getFullGameRatios.length === 0 ? "###\n" : "\n###\n"),
             ].reduce((acc, next) => acc + next, "");
         
         case "Capcom Game Series":

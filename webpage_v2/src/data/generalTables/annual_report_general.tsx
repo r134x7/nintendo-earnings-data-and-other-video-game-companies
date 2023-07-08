@@ -62,13 +62,27 @@ import capcomSoftwareShipmentsPlatform2013 from "../capcom/Fact_Book/software_sh
 import capcomSoftwareShipmentsPlatform2012 from "../capcom/Fact_Book/software_shipments_platform_fy3_2012.json";
 import capcomSoftwareShipmentsPlatform2011 from "../capcom/Fact_Book/software_shipments_platform_fy3_2011.json";
 
-import { collection as softwareUnitsCollection } from "../sega/software_units_sega";
+import { softwareUnitsCollection } from "../sega/software_units_sega";
 
 export type SeriesJSON = {
     companyName: string,
     fiscalYear: string,
     series: SeriesMake[],
     footnotes?: string,
+}
+
+export type segaSoftwareSales = {
+    fiscalYear: string,
+    currentQuarter: number,
+    softwareUnits: {
+        name: string,
+        ip: string,
+        Q1CmlValue: number,
+        Q2CmlValue: number,
+        Q3CmlValue: number,
+        Q4CmlValue: number,
+        miscellaneous?: string,
+    }[]
 }
 
 export type SeriesMake = 
@@ -433,7 +447,7 @@ function annualReportMap(collection: SeriesJSON, headerLength: number,
     sortedMap.forEach((value, key, map) => {
 
         let getFullGameRatio = (value.kind === "Sega") 
-            ? fullGameRatio(value, collection.fiscalYear, "Year")
+            ? fullGameRatio(value, softwareUnitsCollection, collection.fiscalYear, "Year")
             : "";
 
         const printValue: string = [
@@ -491,9 +505,9 @@ function annualReportMap(collection: SeriesJSON, headerLength: number,
     }
 }
 
-export function fullGameRatio(ip: AnnualReportTitle, fiscalYear: string, output: "Year" | "Cumulative"): string {
+export function fullGameRatio(ip: AnnualReportTitle, softwareSales: segaSoftwareSales[], fiscalYear: string, output: "Year" | "Cumulative"): string {
 
-    let nameSearch = softwareUnitsCollection.filter((elem) => {
+    let nameSearch = softwareSales.filter((elem) => {
         // match by fiscalYear key
         // then go to software units and get Q4CmlValue
         // (full game units / ip series units ) * 100).toFixed(2)%

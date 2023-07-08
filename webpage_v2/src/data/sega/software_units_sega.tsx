@@ -11,7 +11,15 @@ import seriesSoftwareUnits2022 from "./Software_Units/software_units_fy3_2022.js
 import seriesSoftwareUnits2021 from "./Software_Units/software_units_fy3_2021.json";
 import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
 
+import type { segaSoftwareSales } from "../generalTables/annual_report_general";
+
 import type { titleSet, titleSetHeader } from "../capcom/game_series_sales_capcom_cml_data";
+
+export const softwareUnitsCollection: segaSoftwareSales[] = [
+    seriesSoftwareUnits2023,
+    seriesSoftwareUnits2022,
+    seriesSoftwareUnits2021,
+];
 
 export const collection = [
     seriesSoftwareUnits2023,
