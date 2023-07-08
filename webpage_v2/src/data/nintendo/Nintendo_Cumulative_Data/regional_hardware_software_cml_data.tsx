@@ -1,7 +1,5 @@
 import { platformUnitsMake } from "../regional_hardware_software_nintendo";
-import { printTextBlock, border, liner, spacer, dateLabel, infiniteCheck } from "../../../utils/table_design_logic";
-
-import type { titleSet } from "../../capcom/game_series_sales_capcom_cml_data";
+import { printTextBlock, border, liner, spacer, dateLabel, infiniteCheck, type titleSet } from "../../../utils/table_design_logic";
 
 import regionalHardwareSoftware2023 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2023.json";
 import regionalHardwareSoftware2022 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2022.json";

@@ -1,7 +1,6 @@
 import { type AnnualReportTitle, type AnnualReportValue, printReleaseDate, printAnnualReportValue, printRank, printSeriesName } from "../../utils/annual_report_logic";
-import { dateLabel, liner, border, spacer, printTextBlock, headerPrint } from "../../utils/table_design_logic";
+import { dateLabel, liner, border, spacer, printTextBlock, headerPrint, type titleSet } from "../../utils/table_design_logic";
 import { HeaderV2 } from "../../utils/segment_data_logic";
-import { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
 import { searchTitles } from "../capcom/platinum_titles_Capcom";
 import { type SeriesJSON, getAnnualReportData, type TitlePlatformData, fullGameRatio } from "./annual_report_general";
 

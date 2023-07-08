@@ -5,11 +5,10 @@ import { squareEnixSalesPerSoftwareUnitCml } from "../../data/generalTables/sale
 import { cumulativeEarningsListSquareEnix } from "../../data/generalTables/consolidated_earnings_cml_data";
 // import { fyTitlesSquareEnix, squareEnixFootnotes } from "../../data/generalTables/annual_report_cml_data";
 import { squareEnixAnnualReportCml } from "../../data/generalTables/annual_report_cumulative";
-import { printTextBlock, liner } from "../../utils/table_design_logic";
+import { printTextBlock, liner, type titleSet } from "../../utils/table_design_logic";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 import { filterTitles } from "../../utils/table_design_logic";
-import type { titleSet } from "../../data/capcom/game_series_sales_capcom_cml_data";
 
 export default function SQUARE_ENIX_CML() {
 

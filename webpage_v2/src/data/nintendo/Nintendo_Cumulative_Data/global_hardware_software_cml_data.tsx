@@ -1,5 +1,5 @@
 import { platformUnitSalesMake, platformSalesMake } from "../global_hardware_software_mobile_nintendo";
-import { printTextBlock, border, liner, spacer, dateLabel, infiniteCheck } from "../../../utils/table_design_logic";
+import { printTextBlock, border, liner, spacer, dateLabel, infiniteCheck, type titleSet } from "../../../utils/table_design_logic";
 
 import globalHardwareSoftware2023 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2023.json";
 import globalHardwareSoftware2022 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2022.json";
@@ -31,7 +31,6 @@ import globalHardwareSoftware1997 from "./../Global_Hardware_Software_Mobile/glo
 
 // avoid having empty lists [] in your collections from preparing for the next earnings
 import { Section, Header } from "../../../utils/hardware_software_units_logic";
-import type { titleSet } from "../../capcom/game_series_sales_capcom_cml_data";
 
     const totalCollection = [
         globalHardwareSoftware1997,

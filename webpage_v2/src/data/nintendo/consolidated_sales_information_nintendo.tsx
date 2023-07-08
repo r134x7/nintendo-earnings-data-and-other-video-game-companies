@@ -6,9 +6,7 @@ import {
     yearOnYearCalculation
 } from "../../utils/hardware_software_units_logic";
 
-import type { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
-
-import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
+import { headerPrint, dateLabel, liner, border, spacer, type titleSet } from "../../utils/table_design_logic";
 
 import consolidatedSalesInfo2023 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2023.json";
 import consolidatedSalesInfo2022 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2022.json";

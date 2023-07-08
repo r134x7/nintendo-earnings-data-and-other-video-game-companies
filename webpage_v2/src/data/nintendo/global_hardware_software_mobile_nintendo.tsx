@@ -7,7 +7,6 @@ import {
     yearOnYearCalculation
 } from "../../utils/hardware_software_units_logic";
 import { headerPrint, dateLabel, liner, border, spacer, valueLimit } from "../../utils/table_design_logic";
-import type { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
 import type { searchTitles } from "../capcom/platinum_titles_Capcom";
 
 import globalHardwareSoftwareMobile2023 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2023.json";

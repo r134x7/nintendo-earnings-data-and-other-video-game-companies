@@ -1,7 +1,6 @@
 import { thisFYCalculation, type AnnualReportTitle, type AnnualReportValue, printReleaseDate, printAnnualReportValue, printCumulativeYoY, printRank, printSeriesName } from "../../utils/annual_report_logic";
-import { dateLabel, liner, border, spacer, printTextBlock, headerPrint } from "../../utils/table_design_logic";
+import { dateLabel, liner, border, spacer, printTextBlock, headerPrint, type titleSet } from "../../utils/table_design_logic";
 import { HeaderV2 } from "../../utils/segment_data_logic";
-import { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
 import { searchTitles } from "../capcom/platinum_titles_Capcom";
 
 import bandaiNamcoAnnualReport2022 from "../bandaiNamco/Annual_Report/annual_report_fy3_2022.json";

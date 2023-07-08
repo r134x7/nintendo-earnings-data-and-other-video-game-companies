@@ -1,7 +1,17 @@
 import { useInterval } from "@mantine/hooks";
 import { useState, useEffect } from "react";
-import type { titleSet } from "../data/capcom/game_series_sales_capcom_cml_data";
 import type { searchTitles } from "../data/capcom/platinum_titles_Capcom";
+
+export type titleSet = {
+    title: string,
+    table: string,
+}
+
+export type titleSetHeader = {
+    header: string,
+    titleList: titleSet[],
+    summary?: string,
+}
 
 export type TitlesValue =
     | { kind: "Titles and Platforms",

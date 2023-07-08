@@ -7,9 +7,7 @@ import {
     printNewBody,
 } from "../../utils/kpi_logic";
 
-import type { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
-
-import { headerPrint, printTextBlock, border, liner, spacer, dateLabel } from "../../utils/table_design_logic";
+import { headerPrint, printTextBlock, border, liner, spacer, dateLabel, type titleSet } from "../../utils/table_design_logic";
 
 import keySalesIndicators2023 from "./Key_Sales_Indicators/ksi_fy3_2023.json";
 import keySalesIndicators2022 from "./Key_Sales_Indicators/ksi_fy3_2022.json";

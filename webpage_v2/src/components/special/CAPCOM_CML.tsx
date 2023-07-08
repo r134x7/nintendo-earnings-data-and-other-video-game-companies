@@ -7,10 +7,9 @@ import { cumulativeEarningsListCapcom } from "../../data/generalTables/consolida
 // import { gameSeriesCapcom } from "../../data/capcom/game_series_sales_capcom_cml_data";
 import { capcomGameSeriesCml, capcomFactBookCml } from "../../data/generalTables/annual_report_cumulative";
 // import { factBookCapcom } from "../../data/capcom/software_shipments_capcom_cml_data";
-import { filterTitles, printTextBlock, liner } from "../../utils/table_design_logic";
+import { filterTitles, printTextBlock, liner, type titleSet } from "../../utils/table_design_logic";
 
 import type { searchTitles } from "../../data/capcom/platinum_titles_Capcom";
-import type { titleSet } from "../../data/capcom/game_series_sales_capcom_cml_data";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 

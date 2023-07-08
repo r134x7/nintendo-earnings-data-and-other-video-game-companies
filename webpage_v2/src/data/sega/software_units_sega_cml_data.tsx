@@ -1,8 +1,6 @@
 import { Section } from "../../utils/general_quarterly_software_units_logic";
 import { platformUnitSalesMake } from "./software_units_sega";
-import { liner, border, printTextBlock, spacer, dateLabel } from "../../utils/table_design_logic";
-
-import type { titleSetHeader } from "../capcom/game_series_sales_capcom_cml_data";
+import { liner, border, printTextBlock, spacer, dateLabel, type titleSetHeader } from "../../utils/table_design_logic";
 
 import softwareUnitsSegaSammy2021 from "./Software_Units/software_units_fy3_2021.json"
 import softwareUnitsSegaSammy2022 from "./Software_Units/software_units_fy3_2022.json"

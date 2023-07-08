@@ -5,11 +5,10 @@ import { bandaiNamcoSalesPerSoftwareUnitCml } from "../../data/generalTables/sal
 import { cumulativeEarningsListBandaiNamco } from "../../data/generalTables/consolidated_earnings_cml_data";
 // import { fyTitlesBandaiNamco } from "../../data/generalTables/annual_report_cml_data";
 import { bandaiNamcoAnnualReportCml } from "../../data/generalTables/annual_report_cumulative";
-import { printTextBlock, liner } from "../../utils/table_design_logic";
+import { printTextBlock, liner, type titleSet } from "../../utils/table_design_logic";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 import { filterTitles } from "../../utils/table_design_logic";
-import { titleSet } from "../../data/capcom/game_series_sales_capcom_cml_data";
 
 export default function BANDAI_NAMCO_CML() {
 

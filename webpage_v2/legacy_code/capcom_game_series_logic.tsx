@@ -1,4 +1,4 @@
-import { printTextBlock, liner, spacer, border } from "./table_design_logic";
+import { printTextBlock, liner, spacer, border } from "../src/utils/table_design_logic";
 
 export type Series = {
     title: string,

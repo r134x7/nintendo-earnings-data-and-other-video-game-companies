@@ -7,8 +7,7 @@ import { printGlobalHardwareSoftware, printGlobalSalesPerHardwareUnit } from "..
 import { printJapanHardwareSoftware, printAmericasHardwareSoftware, printEuropeHardwareSoftware, printOtherHardwareSoftware } from "../../data/nintendo/Nintendo_Cumulative_Data/regional_hardware_software_cml_data";
 import { printTopSellingTitles } from "../../data/nintendo/Nintendo_Cumulative_Data/top_selling_titles_cml_data";
 import { printConsolidatedSalesInfo } from "../../data/nintendo/Nintendo_Cumulative_Data/consolidated_sales_information_cml_data";
-import { filterTitles, printTextBlock, liner, filterTextAddToSet } from "../../utils/table_design_logic";
-import type { titleSet } from "../../data/capcom/game_series_sales_capcom_cml_data";
+import { filterTitles, printTextBlock, liner, filterTextAddToSet, type titleSet } from "../../utils/table_design_logic";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 import { searchTitles } from "../../data/capcom/platinum_titles_Capcom";

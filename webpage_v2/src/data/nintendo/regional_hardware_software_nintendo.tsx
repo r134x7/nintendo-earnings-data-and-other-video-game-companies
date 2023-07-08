@@ -5,9 +5,8 @@ import {
     quarterlyCalculation,
     yearOnYearCalculation,
 } from "../../utils/regional_hw_sw_logic";
-import type { titleSet } from "../capcom/game_series_sales_capcom_cml_data";
 
-import { headerPrint, dateLabel, liner, border, spacer, valueLimit } from "../../utils/table_design_logic";
+import { headerPrint, dateLabel, liner, border, spacer, valueLimit, type titleSet } from "../../utils/table_design_logic";
 
 import regionalHardwareSoftware2023 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2023.json";
 import regionalHardwareSoftware2022 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2022.json";
