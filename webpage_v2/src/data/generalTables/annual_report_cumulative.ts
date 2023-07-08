@@ -114,10 +114,13 @@ const collectionCapcomFactBook = new Map<number, SeriesJSON>();
 const bandaiNamcoTitleChange = new Map<string, string>([
     // [new, old]
     ["Naruto-related", "Ultimate Ninja Storm"]
-])
+]);
 export const bandaiNamcoAnnualReportCml = annualReportCumulative(collectionBandaiNamco, 28, "General", bandaiNamcoTitleChange); 
 
-export const segaAnnualReportCml = annualReportCumulative(collectionSega, 28, "Sega") as TitlePlatformData;
+const segaTitleChange = new Map<string, string>([
+    ["Shin Megami Tensei", "Megami Tensei"]
+]);
+export const segaAnnualReportCml = annualReportCumulative(collectionSega, 28, "Sega", segaTitleChange) as TitlePlatformData;
 
 collectionBandaiNamco.clear();
 bandaiNamcoTitleChange.clear();
@@ -285,8 +288,10 @@ function valuePrint(value: AnnualReportTitle[], kind: "General" | "Sega" | "Capc
             return [
                 printSeriesName(value.at(-1) as AnnualReportTitle, 42),
                 liner(printTextBlock(`IP type: ${getLastValue.kind === "Sega" ? getLastValue.ipType : "ERROR"}`,42),"−","bottom","newLine",42),
-                liner(printTextBlock(getLastValue.kind === "Sega" ? "Platforms: " + getLastValue.ipType : undefined,42),"−","bottom","newLine",42),
+                liner(printTextBlock(getLastValue.kind === "Sega" ? "Platforms: " + getLastValue.platforms : undefined,42),"−","bottom","newLine",42),
                 liner(printTextBlock(getLastValue.kind === "Sega" && getLastValue.totalEditions !== 0 ? "Total Editions: " + getLastValue.totalEditions.toString() : undefined,42),"−","bottom","newLine",42),
+                liner(printReleaseDate(getLastValue, 30) + printRank(getLastValue, 9)
+                ,"=","bottom","newLine"),
                 liner(printTextBlock(getLastValue.kind === "Sega" ? "Measure: " + getLastValue.units : undefined,42),"−","bottom","newLine",42),
                 liner(printTextBlock((getLastValue.kind === "Sega" && getLastValue.footnotes !== undefined) 
                     ? "Consists of: " + getLastValue.footnotes
