@@ -138,6 +138,8 @@ const segaTitleChange = new Map<string, string>([
 ]);
 export const segaAnnualReportCml = annualReportCumulative(collectionSega, 28, "Sega", segaTitleChange) as TitlePlatformData;
 
+export const squareEnixAnnualReportCml = annualReportCumulative(collectionSquareEnix, 38, "General");
+
 export const capcomGameSeriesCml = annualReportCumulative(collectionCapcomGameSeries, 38, "Capcom Game Series");
 
 export const capcomFactBookCml = annualReportCumulative(collectionCapcomFactBook, 38, "Capcom Fact Book");
@@ -318,7 +320,7 @@ function valuePrint(value: AnnualReportTitle[], kind: "General" | "Sega" | "Capc
                     value.map((elem, index, array) => printAnnualReportValue(elem, 27, 12, "Cumulative", (elem === array.at(-1)) ? "noNewLine" : "newLine")).reduce((acc, next) => acc + next)
                 , "−", "bottom", "newLine", 42),
                 liner(
-                printAnnualReportValue(value.at(-1) as AnnualReportTitle, 27, 12, "LTD","noNewLine")
+                printAnnualReportValue(value.at(-1) as AnnualReportTitle, 27, 12, "LTD (units)","noNewLine")
                 , "−", "bottom", "newLine")
             ].reduce((acc, next) => acc + next, "");
 
@@ -360,7 +362,7 @@ function valuePrint(value: AnnualReportTitle[], kind: "General" | "Sega" | "Capc
                     value.map((elem, index, array) => printAnnualReportValue(elem, 27, 12, "Cumulative", (elem === array.at(-1)) ? "noNewLine" : "newLine")).reduce((acc, next) => acc + next)
                 , "−", "bottom", "newLine", 42),
                 liner(
-                printAnnualReportValue(getCapcomGameSeriesLastValue, 27, 12, "LTD","noNewLine")
+                printAnnualReportValue(getCapcomGameSeriesLastValue, 27, 12, "LTD (units)","noNewLine")
                 , "−", "bottom", "newLine")
             ].reduce((acc, next) => acc + next, "");
     

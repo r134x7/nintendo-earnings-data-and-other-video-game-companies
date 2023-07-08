@@ -3,7 +3,8 @@ import { Code, SegmentedControl, Space, TextInput, Button, Select } from "@manti
 import { useSelector } from "react-redux";
 import { squareEnixSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListSquareEnix } from "../../data/generalTables/consolidated_earnings_cml_data";
-import { fyTitlesSquareEnix, squareEnixFootnotes } from "../../data/generalTables/annual_report_cml_data";
+// import { fyTitlesSquareEnix, squareEnixFootnotes } from "../../data/generalTables/annual_report_cml_data";
+import { squareEnixAnnualReportCml } from "../../data/generalTables/annual_report_cumulative";
 import { printTextBlock, liner } from "../../utils/table_design_logic";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
@@ -22,7 +23,7 @@ export default function SQUARE_ENIX_CML() {
     const [timePeriod, setTimePeriod] = useState(6);
     const [timePeriodValue, setTimePeriodValue] = useState<string | null>("FY Cumulative" ?? "FY Cumulative");
 
-    let filterAnnualReportTitles = filterTitles<titleSet>(fyTitlesSquareEnix.titleList, titleValue);
+    let filterAnnualReportTitles = filterTitles<titleSet>(squareEnixAnnualReportCml.titleList, titleValue);
 
     let predictText = new Set<string>();
 
@@ -32,7 +33,7 @@ export default function SQUARE_ENIX_CML() {
 
     let annualReportTitlesReduce = filterAnnualReportTitles.reduce((acc, next) => acc + next.table,"");
 
-    let completeAnnualReportList = fyTitlesSquareEnix.header + annualReportTitlesReduce + squareEnixFootnotes;
+    let completeAnnualReportList = squareEnixAnnualReportCml.header + annualReportTitlesReduce + squareEnixAnnualReportCml.footnotes;
 
     const textInputValues = [
         {
