@@ -55,8 +55,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 4,
             companyName: "Microsoft",
-            eventName: "3rd Quarter Earnings Results, FY6/2023 (Fiscal Year ending June 2023)",
-            eventDate: "April 25, 2023",
+            eventName: dateTemplate("4th", 6, "June", currentYear),
+            eventDate: "July 25, 2023",
             timeZone: "US, PDT, UTC -7 Hours",
             irPage: "https://www.microsoft.com/en-us/Investor",
         },
@@ -119,8 +119,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 12,
             companyName: "Sega Sammy",
-            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "April 28, 2023",
+            eventName: dateTemplate("1st", 3, "March", nextYear),
+            eventDate: "August 1, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.segasammy.co.jp/en/ir/",
         },
@@ -151,8 +151,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 16,
             companyName: "Take-Two",
-            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "May 18, 2022",
+            eventName: dateTemplate("1st", 3, "March", nextYear),
+            eventDate: "August 9, 2022",
             timeZone: "US, EDT, UTC -4 Hours",
             irPage: "https://www.take2games.com/ir",
         },
@@ -167,8 +167,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 18,
             companyName: "Bandai Namco",
-            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "May 10, 2023",
+            eventName: dateTemplate("1st", 3, "March", nextYear),
+            eventDate: "August 8, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.bandainamco.co.jp/en/ir/index.html",
         },
