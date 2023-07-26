@@ -24,6 +24,28 @@ const collectionV2 = new Map<number, EarningsJSONV2>();
 const currentFiscalYear = 2024
 const yearRange = currentFiscalYear - 2021;
 
+async function importJSON() {
+
+    return await Promise.all<EarningsJSONV2>(
+        Array.from({length: yearRange + 1}, (value, index) => {
+            return import(`./Software_Sales/software_sales_fy3_${currentFiscalYear - index}.json`)
+            // return softwareSales2024
+        })
+    // ).then((values) => values.forEach((elem) => collectionV2.set(collectionV2.size, elem)))
+    ).then((values) => {
+        values.forEach((elem) => {
+            console.log(collectionV2);
+
+            return collectionV2.set(collectionV2.size, {
+                companyName: elem.companyName,
+                currentQuarter: elem.currentQuarter,
+                data: elem.data,
+                fiscalYear: elem.fiscalYear
+            } satisfies EarningsJSONV2)
+        } )
+    } )
+}
+
 // const module = import(`./Consolidated_Earnings/consolidated_earnings_fy3_${currentFiscalYear}.json`).then((value) => value)
 // console.log(module);
 
@@ -33,20 +55,34 @@ const yearRange = currentFiscalYear - 2021;
 // })
 // console.log(unwrapModule);
 
-// Promise.all<EarningsJSONV2>(
-//     Array.from({length: yearRange + 1}, (value, index) => {
-//         return import(`./Software_Sales/software_sales_fy3_${currentFiscalYear - index}.json`)
-//         // return softwareSales2024
-//     })
-// ).then((values) => values.forEach((elem) => collectionV2.set(collectionV2.size, elem)))
-
-const testMods = import.meta.glob("./Software_Sales/*.json", { import: "default" })
-// console.log(testMods);
-for (const path in testMods) {
-    testMods[path]().then((mod) => {
-      console.log(path, mod)
+Promise.all<EarningsJSONV2>(
+    Array.from({length: yearRange + 1}, (value, index) => {
+        return import(`./Software_Sales/software_sales_fy3_${currentFiscalYear - index}.json`)
+        // return softwareSales2024
     })
-  }
+// ).then((values) => values.forEach((elem) => collectionV2.set(collectionV2.size, elem)))
+).then((values) => {
+    values.forEach((elem) => {
+        console.log(collectionV2);
+        
+        return collectionV2.set(collectionV2.size, {
+            companyName: elem.companyName,
+            currentQuarter: elem.currentQuarter,
+            data: elem.data,
+            fiscalYear: elem.fiscalYear
+        } satisfies EarningsJSONV2)
+    } )
+} )
+
+console.log(collectionV2);
+
+// const testMods = import.meta.glob("./Software_Sales/*.json", { import: "default" })
+// // console.log(testMods);
+// for (const path in testMods) {
+//     testMods[path]().then((mod) => {
+//         collectionV2.set(collectionV2.size, mod as EarningsJSONV2)
+//     })
+//   }
 
 // const testPROMISE = new Promise.all<EarningsJSONV2>(
 //     Array.from({length: yearRange + 1}, (value, index) => {
@@ -142,8 +178,10 @@ collectionV2.forEach((value, key, map) => {
 
 // collectionV2.clear();
 
-// console.log(softwareSalesList);
+console.log(softwareSalesList);
 
 // console.log(softwareSalesList.size);
-// console.log(collectionV2.size);
+console.log(collectionV2.size);
+console.log(collectionV2.get(0));
+
 
