@@ -221,8 +221,8 @@ function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, hea
                 const getPrev = prev.reduce((acc, two) => acc + (two.valueThisFY.kind === "Annual Report" ? two.valueThisFY.value : 0), 0);
                 const getNext = next.reduce((acc, two) => acc + (two.valueThisFY.kind === "Annual Report" ? two.valueThisFY.value : 0), 0);
 
-                console.log(getPrev);
-                console.log(getNext);
+                // console.log(getPrev);
+                // console.log(getNext);
                 
                 
                     return (getPrev < getNext)

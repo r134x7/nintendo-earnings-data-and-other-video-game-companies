@@ -282,15 +282,17 @@ export function qtrOrCmlOutput(values: string[], yoyValues: string[], opMargin: 
 }
 
 export function forecastOutput(values: string[]): string[] {
+    // this might result in an error...
+    return values.filter(elem => elem.length !== 0).map((elem, index, array) => liner(elem,"−",(index === array.length-1) ? "both" : "top" ,true))
 
-    return values.flatMap((elem, index, array) => {
+    // return values.flatMap((elem, index, array) => {
 
-        if (elem.length === 0) {
-            return [];
-        } else {
-            return liner(elem,"−",(index === array.length-1) ? "both" : "top" ,true);
-        }
-    })
+    //     if (elem.length === 0) {
+    //         return [];
+    //     } else {
+    //         return liner(elem,"−",(index === array.length-1) ? "both" : "top" ,true);
+    //     }
+    // })
 }
 
 export function printReduceSection(

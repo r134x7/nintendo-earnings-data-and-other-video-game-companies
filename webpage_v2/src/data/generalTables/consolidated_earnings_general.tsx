@@ -60,6 +60,7 @@ import nintendoConsolidatedEarnings1983 from "../nintendo/Consolidated_Earnings/
 import nintendoConsolidatedEarnings1982 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1982.json";
 import nintendoConsolidatedEarnings1981 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1981.json";
 
+import capcomEarnings2024 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2024.json";
 import capcomEarnings2023 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2023.json";
 import capcomEarnings2022 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2022.json";
 import capcomEarnings2021 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2021.json";
@@ -276,6 +277,7 @@ const collectionNintendoV2 = new Map<number, EarningsJSONV2>();
     collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1981)
 
 const collectionCapcomV2 = new Map<number, EarningsJSONV2>();
+    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2024)
     collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2023)
     collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2022)
     collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2021)

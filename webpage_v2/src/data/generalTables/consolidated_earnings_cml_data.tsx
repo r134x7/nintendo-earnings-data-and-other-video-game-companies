@@ -91,6 +91,7 @@ import consolidatedEarningsCapcom2020 from "../capcom/Consolidated_Earnings/cons
 import consolidatedEarningsCapcom2021 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2021.json"
 import consolidatedEarningsCapcom2022 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2022.json"
 import consolidatedEarningsCapcom2023 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2023.json"
+import consolidatedEarningsCapcom2024 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2024.json"
 
 import consolidatedEarningsKoeiTecmo2010 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2010.json"
 import consolidatedEarningsKoeiTecmo2011 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2011.json"
@@ -240,6 +241,7 @@ const totalCollectionCapcom = new Map<number, EarningsJSONV2>();
     totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2021)
     totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2022)
     totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2023)
+    totalCollectionCapcom.set(totalCollectionCapcom.size, consolidatedEarningsCapcom2024)
 
 const totalCollectionKoeiTecmo = new Map<number, EarningsJSONV2>();
     totalCollectionKoeiTecmo.set(totalCollectionKoeiTecmo.size, consolidatedEarningsKoeiTecmo2010)

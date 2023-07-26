@@ -41,6 +41,7 @@ import segaDataSources2007 from "../sega/Data_Sources/data_sources_fy3_2007.json
 import segaDataSources2006 from "../sega/Data_Sources/data_sources_fy3_2006.json";
 import segaDataSources2005 from "../sega/Data_Sources/data_sources_fy3_2005.json";
 
+import capcomDataSources2024 from "../capcom/Data_Sources/data_sources_fy3_2024.json";
 import capcomDataSources2023 from "../capcom/Data_Sources/data_sources_fy3_2023.json";
 import capcomDataSources2022 from "../capcom/Data_Sources/data_sources_fy3_2022.json";
 import capcomDataSources2021 from "../capcom/Data_Sources/data_sources_fy3_2021.json";
@@ -180,6 +181,7 @@ const segaDataSources: jsonData[] = [
 ];
 
 const capcomDataSources: jsonData[] = [
+    capcomDataSources2024,
     capcomDataSources2023,
     capcomDataSources2022,
     capcomDataSources2021,
