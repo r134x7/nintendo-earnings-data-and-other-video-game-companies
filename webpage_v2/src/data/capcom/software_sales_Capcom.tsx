@@ -1,62 +1,6 @@
 import { generalSalesPerSoftwareUnitListV2Map, graphMakeV2 } from "../../utils/segment_data_logic";
 import type { EarningsJSONV2, EarningsMakeV2 } from "../generalTables/consolidated_earnings_general";
-
-// export type collectionJSON = {
-//     fiscalYear: string,
-//     currentQuarter: number,
-//     digitalContentsSales: salesOrUnitsJSON,
-//     digitalContentsUnits: salesOrUnitsJSON,
-//     packageSales: salesOrUnitsJSON,
-//     packageUnits: salesOrUnitsJSON,
-//     digitalSales: salesOrUnitsJSON,
-//     digitalUnits: salesOrUnitsJSON,
-// }
-
-// const collectionV2 = new Map<number, EarningsJSONV2>();
-    // collectionV2.set(collectionV2.size, softwareSales2024)
-    // collectionV2.set(collectionV2.size, softwareSales2023)
-    // collectionV2.set(collectionV2.size, softwareSales2022)
-    // collectionV2.set(collectionV2.size, softwareSales2021)
-
-// const globImport: Record<string, EarningsJSONV2> = import.meta.glob("./Software_Sales/*.json", { import: "default", eager: true })
-
-// const descendingYears = [];
-
-// for (const key in globImport) {
-//     descendingYears.push(globImport[key])
-// }
-
-// descendingYears.reverse()
-// descendingYears.forEach(elem => collectionV2.set(collectionV2.size, elem))
-
-function globImport<T>(toMap: Map<number, T>, toImport: Record<string, T>, order: "Descending" | "Ascending"): Map<number, T> {
-
-    switch (order) {
-        case "Ascending":
-            
-            for (const key in toImport) {
-                toMap.set(toMap.size, toImport[key])
-            }
-
-            return toMap;
-
-        case "Descending":
-
-            const descendingYears: T[] = [];
-
-            for (const key in toImport) {
-                descendingYears.push(toImport[key])
-            }
-        
-            descendingYears.reverse()
-            descendingYears.forEach(elem => toMap.set(toMap.size, elem))
-        
-            return toMap;
-    
-        default:
-            return toMap;
-    }
-}
+import { globImport } from "../../utils/table_design_logic";
 
 const collectionV2 = globImport(new Map<number, EarningsJSONV2>, import.meta.glob("./Software_Sales/*.json", { import: "default", eager: true }), "Descending");
 

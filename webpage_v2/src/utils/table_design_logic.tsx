@@ -399,3 +399,32 @@ export function filterPlatform<T extends searchTitles>(input: T[], platformValue
                 return input
         }
     }     
+
+export function globImport<T>(toMap: Map<number, T>, toImport: Record<string, T>, order: "Descending" | "Ascending"): Map<number, T> {
+
+    switch (order) {
+        case "Ascending":
+            
+            for (const key in toImport) {
+                toMap.set(toMap.size, toImport[key])
+            }
+
+            return toMap;
+
+        case "Descending":
+
+            const descendingYears: T[] = [];
+
+            for (const key in toImport) {
+                descendingYears.push(toImport[key])
+            }
+        
+            descendingYears.reverse()
+            descendingYears.forEach(elem => toMap.set(toMap.size, elem))
+        
+            return toMap;
+    
+        default:
+            return toMap;
+    }
+}
