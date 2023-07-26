@@ -24,9 +24,11 @@ const collectionV2 = new Map<number, EarningsJSONV2>();
 const currentFiscalYear = 2024
 const yearRange = currentFiscalYear - 2021;
 
-async function importJSON() {
+async function importJSON(toMap: Map<number, EarningsJSONV2>, currentFiscalYear: number, firstFiscalYear: number) {
 
-    return await Promise.all<EarningsJSONV2>(
+    const yearRange = currentFiscalYear - firstFiscalYear;
+
+    await Promise.all<EarningsJSONV2>(
         Array.from({length: yearRange + 1}, (value, index) => {
             return import(`./Software_Sales/software_sales_fy3_${currentFiscalYear - index}.json`)
             // return softwareSales2024
@@ -34,9 +36,9 @@ async function importJSON() {
     // ).then((values) => values.forEach((elem) => collectionV2.set(collectionV2.size, elem)))
     ).then((values) => {
         values.forEach((elem) => {
-            console.log(collectionV2);
-
-            return collectionV2.set(collectionV2.size, {
+            console.log("well");
+            
+            return toMap.set(toMap.size, {
                 companyName: elem.companyName,
                 currentQuarter: elem.currentQuarter,
                 data: elem.data,
@@ -44,7 +46,16 @@ async function importJSON() {
             } satisfies EarningsJSONV2)
         } )
     } )
-}
+
+    return console.log("what");
+    
+};
+
+importJSON(collectionV2, 2024, 2021)
+
+console.log(collectionV2.size);
+
+console.log("test");
 
 // const module = import(`./Consolidated_Earnings/consolidated_earnings_fy3_${currentFiscalYear}.json`).then((value) => value)
 // console.log(module);
@@ -63,7 +74,9 @@ Promise.all<EarningsJSONV2>(
 // ).then((values) => values.forEach((elem) => collectionV2.set(collectionV2.size, elem)))
 ).then((values) => {
     values.forEach((elem) => {
-        console.log(collectionV2);
+        // console.log(collectionV2);
+        
+        console.log("that");
         
         return collectionV2.set(collectionV2.size, {
             companyName: elem.companyName,
@@ -74,7 +87,9 @@ Promise.all<EarningsJSONV2>(
     } )
 } )
 
-console.log(collectionV2);
+console.log("this");
+
+// console.log(collectionV2);
 
 // const testMods = import.meta.glob("./Software_Sales/*.json", { import: "default" })
 // // console.log(testMods);
