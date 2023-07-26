@@ -69,7 +69,7 @@ collectionV2.forEach((value, key, map) => {
                 ] as EarningsMakeV2[]
             } satisfies EarningsJSONV2,
             38,
-            "Billion",
+            "Hundred Million",
             "One Thousand",
             (index === 0) ? false : true
         ))

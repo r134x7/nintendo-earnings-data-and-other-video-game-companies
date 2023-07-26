@@ -6,13 +6,13 @@
         {
             "name": "Digital Contents - Package & Digital",
             "units": "currency",
-            "Q1CmlValue": 19.2,
-            "Q2CmlValue": 34.9,
-            "Q3CmlValue": 59.2,
-            "Q4CmlValue": 95.3,
-            "forecastThisFY": 91.4,
-            "forecastRevision1": 95.1,
-            "forecastNextFY": 103.4,
+            "Q1CmlValue": 192,
+            "Q2CmlValue": 349,
+            "Q3CmlValue": 592,
+            "Q4CmlValue": 953,
+            "forecastThisFY": 914,
+            "forecastRevision1": 951,
+            "forecastNextFY": 1034,
             "footnotes": "*Sales includes: - Downloadable content purchases"
         },
         {
@@ -29,13 +29,13 @@
         {
             "name": "Package",
             "units": "currency",
-            "Q1CmlValue": 2.9,
-            "Q2CmlValue": 4.3,
-            "Q3CmlValue": 10.2,
-            "Q4CmlValue": 18.0, 
-            "forecastThisFY": 18.0, 
-            "forecastRevision1": 16.3, 
-            "forecastNextFY": 12.5
+            "Q1CmlValue": 29,
+            "Q2CmlValue": 43,
+            "Q3CmlValue": 102,
+            "Q4CmlValue": 180, 
+            "forecastThisFY": 180, 
+            "forecastRevision1": 163, 
+            "forecastNextFY": 125
         },
         {
             "name": "Package",
@@ -51,13 +51,13 @@
         {
             "name": "Digital",
             "units": "currency",
-            "Q1CmlValue": 16.3,
-            "Q2CmlValue": 30.6,
-            "Q3CmlValue": 49.0,
-            "Q4CmlValue": 77.3,
-            "forecastThisFY": 73.4,
-            "forecastRevision1": 78.8,
-            "forecastNextFY": 90.9,
+            "Q1CmlValue": 163,
+            "Q2CmlValue": 306,
+            "Q3CmlValue": 490,
+            "Q4CmlValue": 773,
+            "forecastThisFY": 734,
+            "forecastRevision1": 788,
+            "forecastNextFY": 909,
             "footnotes": "*Sales includes: - Downloadable content purchases"
         },
         {

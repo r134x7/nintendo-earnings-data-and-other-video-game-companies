@@ -1,0 +1,69 @@
+{
+    "fiscalYear": "FY3/2024",
+    "companyName": "CAPCOM Co., Ltd.",
+    "currentQuarter": 1,
+    "data": [
+        {
+            "name": "Digital Contents - Package & Digital",
+            "units": "currency",
+            "Q1CmlValue": 374,
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": "Nothing",
+            "Q4CmlValue": "Nothing",
+            "forecastThisFY": 103.4,
+            "forecastNextFY": "Nothing",
+            "footnotes": "*Sales includes: - Downloadable content purchases"
+        },
+        {
+            "name": "Digital Contents - Package & Digital",
+            "units": "units",
+            "Q1CmlValue": 13500,
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": "Nothing",
+            "Q4CmlValue": "Nothing",
+            "forecastThisFY": 45000,
+            "forecastNextFY": "Nothing" 
+        },
+        {
+            "name": "Package",
+            "units": "currency",
+            "Q1CmlValue": 89,
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": "Nothing",
+            "Q4CmlValue": "Nothing", 
+            "forecastThisFY": 12.5, 
+            "forecastNextFY": "Nothing" 
+        },
+        {
+            "name": "Package",
+            "units": "units",
+            "Q1CmlValue": 1900,
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": "Nothing",
+            "Q4CmlValue": "Nothing", 
+            "forecastThisFY": 2500,
+            "forecastNextFY":"Nothing" 
+        },
+        {
+            "name": "Digital",
+            "units": "currency",
+            "Q1CmlValue": 285,
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": "Nothing",
+            "Q4CmlValue": "Nothing",
+            "forecastThisFY": 909,
+            "forecastNextFY": "Nothing",
+            "footnotes": "*Sales includes: - Downloadable content purchases"
+        },
+        {
+            "name": "Digital",
+            "units": "units",
+            "Q1CmlValue": 11600,
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": "Nothing",
+            "Q4CmlValue": "Nothing", 
+            "forecastThisFY": 42500,
+            "forecastNextFY":"Nothing" 
+        }
+    ] 
+}   

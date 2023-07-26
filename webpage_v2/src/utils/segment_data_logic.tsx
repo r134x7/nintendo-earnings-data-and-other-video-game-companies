@@ -103,7 +103,7 @@ const squareEnixSalesHeader =
 //     return quarters.concat(cumulatives).reduce((acc, next) => acc + "\n" + next);
 // }
 
-export function millionFix(value: EarningsValue, changeFrom: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand"): EarningsValue {
+export function millionFix(value: EarningsValue, changeFrom: "Billion" | "Hundred Million" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand"): EarningsValue {
 
     switch (changeFrom) {
         case "Billion":
@@ -111,6 +111,14 @@ export function millionFix(value: EarningsValue, changeFrom: "Billion" | "Millio
                 ? {
                     ...value,
                     value: value.value * 1000
+                } satisfies EarningsValue
+                : value
+
+        case "Hundred Million":
+            return (value.kind !== "Nothing")
+                ? {
+                    ...value,
+                    value: value.value * 100
                 } satisfies EarningsValue
                 : value
 
@@ -167,8 +175,8 @@ export function salesPerSoftwareUnitCalculation(sales: EarningsValue, units: Ear
 }
 
 export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJSONV2, collectionLastFY: EarningsJSONV2 | undefined, headerLength: number, 
-    salesRoundtoMillion: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand",
-    unitsRoundtoMillion: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand",
+    salesRoundtoMillion: "Billion" | "Hundred Million" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand",
+    unitsRoundtoMillion: "Billion" | "Hundred Million" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand",
     removeHeader?: boolean,
     salesOnly?: boolean,
     ): string {
