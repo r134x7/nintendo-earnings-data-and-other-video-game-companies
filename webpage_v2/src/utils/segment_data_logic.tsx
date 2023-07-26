@@ -398,7 +398,7 @@ export function generalSalesPerSoftwareUnitListV2Map(collectionThisFY: EarningsJ
     ].reduce((acc, next) => acc + next);
 }
 
-export function graphMakeV2 (collectionThisFY: EarningsJSONV2, collectionLastFY: EarningsJSONV2 | undefined, salesRoundtoMillion: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand", unitsRoundtoMillion: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand") {
+export function graphMakeV2 (collectionThisFY: EarningsJSONV2, collectionLastFY: EarningsJSONV2 | undefined, salesRoundtoMillion: "Billion" | "Hundred Million" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand", unitsRoundtoMillion: "Billion" | "Hundred Million" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand") {
 
     const none: EarningsValue = { kind:"Nothing" };
 

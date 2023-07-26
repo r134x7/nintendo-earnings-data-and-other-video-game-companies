@@ -32,7 +32,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     let correctFyForAnnualReports = -1;
 
-    let allPlatinumTitlesIndex = allPlatinumTitlesList?.[props.setIndex];
+    let allPlatinumTitlesIndex = allPlatinumTitlesList?.[props.setIndex + correctFyForAnnualReports];
 
     let allPlatinumTitlesObject = (allPlatinumTitlesIndex === undefined) ? undefined : [{
         header: allPlatinumTitlesIndex.header,
@@ -40,9 +40,10 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
         summary: allPlatinumTitlesIndex.fyNotes,
     }];
 
-    let fyPlatinumTitlesIndex = fyPlatinumTitlesList?.[props.setIndex];
+    // remember to remove after data has come in
+    let fyPlatinumTitlesIndex = fyPlatinumTitlesList?.[props.setIndex + correctFyForAnnualReports];
 
-    let newTitlesIndex = fyPlatinumTitlesList?.[props.setIndex]?.newTitles;
+    let newTitlesIndex = fyPlatinumTitlesList?.[props.setIndex + correctFyForAnnualReports]?.newTitles;
 
     let fyPlatinumTitlesObject = (fyPlatinumTitlesIndex === undefined) ? undefined : [{
         header: fyPlatinumTitlesIndex.header,
@@ -50,7 +51,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
         summary: fyPlatinumTitlesIndex.fyNotes,
     }];
 
-    let gameSeriesIndex = capcomGameSeries.get(props.setIndex);
+    let gameSeriesIndex = capcomGameSeries.get(props.setIndex + correctFyForAnnualReports);
 
     let annualReportIndex = capcomFactBook.get(props.setIndex + correctFyForAnnualReports);
 

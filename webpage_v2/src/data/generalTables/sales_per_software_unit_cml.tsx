@@ -27,6 +27,7 @@ import bandaiNamcoSoftwareSales2021 from "../bandaiNamco/Software_Sales/software
 import bandaiNamcoSoftwareSales2020 from "../bandaiNamco/Software_Sales/software_sales_fy3_2020.json";
 import bandaiNamcoSoftwareSales2019 from "../bandaiNamco/Software_Sales/software_sales_fy3_2019.json";
 
+import capcomSoftwareSales2024 from "../capcom/Software_Sales/software_sales_fy3_2024.json";
 import capcomSoftwareSales2023 from "../capcom/Software_Sales/software_sales_fy3_2023.json";
 import capcomSoftwareSales2022 from "../capcom/Software_Sales/software_sales_fy3_2022.json";
 import capcomSoftwareSales2021 from "../capcom/Software_Sales/software_sales_fy3_2021.json";
@@ -79,6 +80,7 @@ const capcomCollection = new Map<number, EarningsJSONV2>();
     capcomCollection.set(capcomCollection.size,capcomSoftwareSales2021);
     capcomCollection.set(capcomCollection.size,capcomSoftwareSales2022);
     capcomCollection.set(capcomCollection.size,capcomSoftwareSales2023);
+    capcomCollection.set(capcomCollection.size,capcomSoftwareSales2024);
 
 const segaCollection = new Map<number, EarningsJSONV2>();
     segaCollection.set(segaCollection.size, segaSammySoftwareSales2020);
@@ -106,7 +108,7 @@ export const segaSammySalesPerSoftwareUnitCml = setMakerV2(segaCollection, 38, "
 
 export const koeiTecmoSalesPerSoftwareUnitCml = setMakerV2(koeiTecmoCollection, 38, "Million","One Thousand");
 
-export const CapcomSalesPerSoftwareUnitCml = setMakerV2(capcomCollection, 38, "Billion", "One Thousand");
+export const CapcomSalesPerSoftwareUnitCml = setMakerV2(capcomCollection, 38, "Hundred Million", "One Thousand");
 
 export const squareEnixSalesPerSoftwareUnitCml = setMakerV2(squareEnixCollection, 38, "Billion", "One Thousand").map(elem => elem + notes2021);
 
@@ -119,8 +121,8 @@ squareEnixCollection.clear();
 function setMakerV2(
     completeCollection: Map<number, EarningsJSONV2>, 
     headerLength: number,
-    salesRoundtoMillion: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand",
-    unitsRoundtoMillion: "Billion" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand",
+    salesRoundtoMillion: "Billion" | "Hundred Million" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand",
+    unitsRoundtoMillion: "Billion" | "Hundred Million" | "Million" | "Hundred Thousand" | "Ten Thousand" | "One Thousand",
     ): string[] {
 
     const currentQuarter = completeCollection.get(completeCollection.size-1)?.currentQuarter ?? 4;
