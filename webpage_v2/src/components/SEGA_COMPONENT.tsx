@@ -88,7 +88,7 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
         return [
             { 
                 name: "Data Sources",
-                value: segaLinks?.[index],
+                value: segaLinks.get(index),
             },
             {
                 name: "Consolidated Operating Results",

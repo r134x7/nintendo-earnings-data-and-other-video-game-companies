@@ -58,7 +58,7 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
         return [
             { 
                 name: "Data Sources",
-                value: bandaiNamcoLinks?.[index],
+                value: bandaiNamcoLinks.get(index),
             },
             {
                 name: "Consolidated Operating Results",

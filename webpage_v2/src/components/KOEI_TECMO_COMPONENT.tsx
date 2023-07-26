@@ -21,7 +21,7 @@ export default function KOEI_TECMO_COMPONENT(props: {setIndex: number; yearLengt
         return [
             { 
                 name: "Data Sources",
-                value: koeiTecmoLinks?.[index],
+                value: koeiTecmoLinks.get(index),
             },
             {
                 name: "Consolidated Operating Results",

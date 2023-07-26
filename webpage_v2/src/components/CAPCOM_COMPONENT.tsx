@@ -134,7 +134,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
         return [
             { 
                 name: "Data Sources",
-                value: capcomLinks?.[index],
+                value: capcomLinks.get(index),
             },
             {
                 name: "Consolidated Financial Results",

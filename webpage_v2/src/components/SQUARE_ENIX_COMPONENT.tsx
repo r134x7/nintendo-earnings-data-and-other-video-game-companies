@@ -59,7 +59,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
         return [
             { 
                 name: "Data Sources",
-                value: squareEnixLinks?.[index],
+                value: squareEnixLinks.get(index),
             },
             {
                 name: "Consolidated Financial Results",
