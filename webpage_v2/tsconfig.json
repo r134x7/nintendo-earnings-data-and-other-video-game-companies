@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2015",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
@@ -18,6 +18,6 @@
     "jsxImportSource": "@emotion/react"
   },
   "include": ["src"],
-  "exclude": ["src/__tests__", "src/htmlFiles", "src/txtFiles", "legacy_code"],
+  "exclude": ["src/__tests__", "src/htmlFiles", "src/txtFiles", "legacy_code", "potential_code"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
