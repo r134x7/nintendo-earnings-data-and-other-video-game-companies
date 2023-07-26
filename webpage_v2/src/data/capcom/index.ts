@@ -1,9 +1,6 @@
 import type { EarningsJSONV2 } from "../generalTables/consolidated_earnings_general";
 
-// IIFE
-export const softwareSalesCollectionCapcom = (async () => {
-    return await importJSON(new Map<number, EarningsJSONV2>(), 2024, 2021);
-})(); 
+export const softwareSalesCollectionCapcom = await importJSON(new Map<number, EarningsJSONV2>(), 2024, 2021);
 
 async function importJSON<T>(toMap: Map<number, T> , currentFiscalYear: number, firstFiscalYear: number) {
 
