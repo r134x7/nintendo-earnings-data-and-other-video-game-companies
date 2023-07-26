@@ -24,12 +24,29 @@ const collectionV2 = new Map<number, EarningsJSONV2>();
 const currentFiscalYear = 2024
 const yearRange = currentFiscalYear - 2021;
 
+// const module = import(`./Consolidated_Earnings/consolidated_earnings_fy3_${currentFiscalYear}.json`).then((value) => value)
+// console.log(module);
+
+// const unwrapModule = module.then(value => {
+//     console.log(value);
+//     return value
+// })
+// console.log(unwrapModule);
+
 // Promise.all<EarningsJSONV2>(
 //     Array.from({length: yearRange + 1}, (value, index) => {
-//         // return import(`./Software_Sales/software_sales_fy3_${currentFiscalYear - index}.json`)
-//         return softwareSales2021
+//         return import(`./Software_Sales/software_sales_fy3_${currentFiscalYear - index}.json`)
+//         // return softwareSales2024
 //     })
 // ).then((values) => values.forEach((elem) => collectionV2.set(collectionV2.size, elem)))
+
+const testMods = import.meta.glob("./Software_Sales/*.json", { import: "default" })
+// console.log(testMods);
+for (const path in testMods) {
+    testMods[path]().then((mod) => {
+      console.log(path, mod)
+    })
+  }
 
 // const testPROMISE = new Promise.all<EarningsJSONV2>(
 //     Array.from({length: yearRange + 1}, (value, index) => {
@@ -44,11 +61,11 @@ const yearRange = currentFiscalYear - 2021;
 
 
 
-console.log(collectionV2);
-console.log(collectionV2.get(0));
-console.log(collectionV2.size);
+// console.log(collectionV2);
+// console.log(collectionV2.get(0));
+// console.log(collectionV2.size);
 
-console.log(collectionV2.get(0));
+// console.log(collectionV2.get(0));
 
 // async function importJSON<T>(toMap: Map<number, EarningsJSONV2>, currentFiscalYear: number, firstFiscalYear: number): Map<number, EarningsJSONV2> {
 
@@ -61,10 +78,10 @@ console.log(collectionV2.get(0));
 
 //     return toMap
 // }
-    collectionV2.set(collectionV2.size, softwareSales2024)
-    collectionV2.set(collectionV2.size, softwareSales2023)
-    collectionV2.set(collectionV2.size, softwareSales2022)
-    collectionV2.set(collectionV2.size, softwareSales2021)
+    // collectionV2.set(collectionV2.size, softwareSales2024)
+    // collectionV2.set(collectionV2.size, softwareSales2023)
+    // collectionV2.set(collectionV2.size, softwareSales2022)
+    // collectionV2.set(collectionV2.size, softwareSales2021)
 
 export const softwareSalesList = new Map<number, string>();
 
@@ -72,6 +89,8 @@ export const softwareSalesGraphList = new Map();
 
 collectionV2.forEach((value, key, map) => {
 
+    console.log(value);
+    
     softwareSalesGraphList.set(key, graphMakeV2(
         {
             ...value,
@@ -123,8 +142,8 @@ collectionV2.forEach((value, key, map) => {
 
 // collectionV2.clear();
 
-console.log(softwareSalesList);
+// console.log(softwareSalesList);
 
-console.log(softwareSalesList.size);
-console.log(collectionV2.size);
+// console.log(softwareSalesList.size);
+// console.log(collectionV2.size);
 
