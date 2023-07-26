@@ -2,6 +2,7 @@ import softwareSales2024 from "./Software_Sales/software_sales_fy3_2024.json";
 import softwareSales2023 from "./Software_Sales/software_sales_fy3_2023.json";
 import softwareSales2022 from "./Software_Sales/software_sales_fy3_2022.json";
 import softwareSales2021 from "./Software_Sales/software_sales_fy3_2021.json";
+import { softwareSalesCollectionCapcom } from ".";
 
 import { salesOrUnitsJSON } from "../bandaiNamco/software_sales_bandai_namco";
 import { generalSalesPerSoftwareUnitListV2Map, graphMakeV2 } from "../../utils/segment_data_logic";
@@ -21,41 +22,43 @@ export type collectionJSON = {
 const collectionV2 = new Map<number, EarningsJSONV2>();
 // const collectionV2 = importJSON(new Map<number, EarningsJSONV2>, 2024, 2021).then(values => values)
 
+console.log(softwareSalesCollectionCapcom.then(values => values));
+
 const currentFiscalYear = 2024
 const yearRange = currentFiscalYear - 2021;
 
-async function importJSON(toMap: Map<number, EarningsJSONV2>, currentFiscalYear: number, firstFiscalYear: number) {
+// async function importJSON(toMap: Map<number, EarningsJSONV2>, currentFiscalYear: number, firstFiscalYear: number) {
 
-    const yearRange = currentFiscalYear - firstFiscalYear;
+//     const yearRange = currentFiscalYear - firstFiscalYear;
 
-    await Promise.all<EarningsJSONV2>(
-        Array.from({length: yearRange + 1}, (value, index) => {
-            return import(`./Software_Sales/software_sales_fy3_${currentFiscalYear - index}.json`)
-            // return softwareSales2024
-        })
-    // ).then((values) => values.forEach((elem) => collectionV2.set(collectionV2.size, elem)))
-    ).then((values) => {
-        values.forEach((elem) => {
-            console.log("well");
+//     await Promise.all<EarningsJSONV2>(
+//         Array.from({length: yearRange + 1}, (value, index) => {
+//             return import(`./Software_Sales/software_sales_fy3_${currentFiscalYear - index}.json`)
+//             // return softwareSales2024
+//         })
+//     // ).then((values) => values.forEach((elem) => collectionV2.set(collectionV2.size, elem)))
+//     ).then((values) => {
+//         values.forEach((elem) => {
+//             console.log("well");
             
-            return toMap.set(toMap.size, {
-                companyName: elem.companyName,
-                currentQuarter: elem.currentQuarter,
-                data: elem.data,
-                fiscalYear: elem.fiscalYear
-            } satisfies EarningsJSONV2)
-        } )
-    } )
+//             return toMap.set(toMap.size, {
+//                 companyName: elem.companyName,
+//                 currentQuarter: elem.currentQuarter,
+//                 data: elem.data,
+//                 fiscalYear: elem.fiscalYear
+//             } satisfies EarningsJSONV2)
+//         } )
+//     } )
 
-    return console.log("what");
+//     return console.log("what");
     
-};
+// };
 
-importJSON(collectionV2, 2024, 2021)
+// importJSON(collectionV2, 2024, 2021)
 
-console.log(collectionV2.size);
+// console.log(collectionV2.size);
 
-console.log("test");
+// console.log("test");
 
 // const module = import(`./Consolidated_Earnings/consolidated_earnings_fy3_${currentFiscalYear}.json`).then((value) => value)
 // console.log(module);
@@ -66,28 +69,28 @@ console.log("test");
 // })
 // console.log(unwrapModule);
 
-Promise.all<EarningsJSONV2>(
-    Array.from({length: yearRange + 1}, (value, index) => {
-        return import(`./Software_Sales/software_sales_fy3_${currentFiscalYear - index}.json`)
-        // return softwareSales2024
-    })
-// ).then((values) => values.forEach((elem) => collectionV2.set(collectionV2.size, elem)))
-).then((values) => {
-    values.forEach((elem) => {
-        // console.log(collectionV2);
+// Promise.all<EarningsJSONV2>(
+//     Array.from({length: yearRange + 1}, (value, index) => {
+//         return import(`./Software_Sales/software_sales_fy3_${currentFiscalYear - index}.json`)
+//         // return softwareSales2024
+//     })
+// // ).then((values) => values.forEach((elem) => collectionV2.set(collectionV2.size, elem)))
+// ).then((values) => {
+//     values.forEach((elem) => {
+//         // console.log(collectionV2);
         
-        console.log("that");
+//         console.log("that");
         
-        return collectionV2.set(collectionV2.size, {
-            companyName: elem.companyName,
-            currentQuarter: elem.currentQuarter,
-            data: elem.data,
-            fiscalYear: elem.fiscalYear
-        } satisfies EarningsJSONV2)
-    } )
-} )
+//         return collectionV2.set(collectionV2.size, {
+//             companyName: elem.companyName,
+//             currentQuarter: elem.currentQuarter,
+//             data: elem.data,
+//             fiscalYear: elem.fiscalYear
+//         } satisfies EarningsJSONV2)
+//     } )
+// } )
 
-console.log("this");
+// console.log("this");
 
 // console.log(collectionV2);
 
@@ -133,6 +136,14 @@ console.log("this");
     // collectionV2.set(collectionV2.size, softwareSales2023)
     // collectionV2.set(collectionV2.size, softwareSales2022)
     // collectionV2.set(collectionV2.size, softwareSales2021)
+
+// const modulesTest: Record<string, EarningsJSONV2> = import.meta.glob("./Software_Sales/*.json", { import: "default", eager: true })
+// // console.log(modulesTest);
+
+// for (const key in modulesTest) {
+//     collectionV2.set(collectionV2.size, modulesTest[key])
+// }
+
 
 export const softwareSalesList = new Map<number, string>();
 
@@ -195,8 +206,8 @@ collectionV2.forEach((value, key, map) => {
 
 console.log(softwareSalesList);
 
-// console.log(softwareSalesList.size);
+console.log(softwareSalesList.size);
 console.log(collectionV2.size);
-console.log(collectionV2.get(0));
+console.log(collectionV2);
 
 
