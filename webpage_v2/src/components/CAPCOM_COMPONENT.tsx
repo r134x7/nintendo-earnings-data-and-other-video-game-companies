@@ -31,6 +31,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
     */
 
     let correctFyForAnnualReports = -1;
+    let correctFyForFactBook = -2;
 
     let allPlatinumTitlesIndex = allPlatinumTitlesList?.[props.setIndex + correctFyForAnnualReports];
 
@@ -53,7 +54,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     let gameSeriesIndex = capcomGameSeries.get(props.setIndex + correctFyForAnnualReports);
 
-    let annualReportIndex = capcomFactBook.get(props.setIndex + correctFyForAnnualReports);
+    let annualReportIndex = capcomFactBook.get(props.setIndex + correctFyForFactBook);
 
     let platformListsAll = new Set<string>();
     let platformListsFY = new Set<string>();

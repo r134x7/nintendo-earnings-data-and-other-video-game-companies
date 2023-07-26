@@ -1,65 +1,7 @@
 import { thisFYCalculation, type AnnualReportTitle, type AnnualReportValue, printReleaseDate, printAnnualReportValue, printCumulativeYoY, printRank, printSeriesName } from "../../utils/annual_report_logic";
-import { dateLabel, liner, border, spacer, printTextBlock, headerPrint, type titleSet } from "../../utils/table_design_logic";
+import { dateLabel, liner, border, spacer, printTextBlock, headerPrint, type titleSet, globImport } from "../../utils/table_design_logic";
 import { HeaderV2 } from "../../utils/segment_data_logic";
 import { searchTitles } from "../capcom/platinum_titles_Capcom";
-
-import bandaiNamcoAnnualReport2022 from "../bandaiNamco/Annual_Report/annual_report_fy3_2022.json";
-import bandaiNamcoAnnualReport2021 from "../bandaiNamco/Annual_Report/annual_report_fy3_2021.json";
-import bandaiNamcoAnnualReport2020 from "../bandaiNamco/Annual_Report/annual_report_fy3_2020.json";
-import bandaiNamcoAnnualReport2019 from "../bandaiNamco/Annual_Report/annual_report_fy3_2019.json";
-
-import squareEnixAnnualReport2022 from "../squareEnix/Annual_Report/annual_report_fy3_2022.json";
-import squareEnixAnnualReport2021 from "../squareEnix/Annual_Report/annual_report_fy3_2021.json";
-import squareEnixAnnualReport2020 from "../squareEnix/Annual_Report/annual_report_fy3_2020.json";
-import squareEnixAnnualReport2019 from "../squareEnix/Annual_Report/annual_report_fy3_2019.json";
-import squareEnixAnnualReport2018 from "../squareEnix/Annual_Report/annual_report_fy3_2018.json";
-import squareEnixAnnualReport2017 from "../squareEnix/Annual_Report/annual_report_fy3_2017.json";
-import squareEnixAnnualReport2016 from "../squareEnix/Annual_Report/annual_report_fy3_2016.json";
-import squareEnixAnnualReport2015 from "../squareEnix/Annual_Report/annual_report_fy3_2015.json";
-import squareEnixAnnualReport2014 from "../squareEnix/Annual_Report/annual_report_fy3_2014.json";
-import squareEnixAnnualReport2013 from "../squareEnix/Annual_Report/annual_report_fy3_2013.json";
-import squareEnixAnnualReport2012 from "../squareEnix/Annual_Report/annual_report_fy3_2012.json";
-import squareEnixAnnualReport2011 from "../squareEnix/Annual_Report/annual_report_fy3_2011.json";
-import squareEnixAnnualReport2010 from "../squareEnix/Annual_Report/annual_report_fy3_2010.json";
-
-import segaAnnualReport2022 from "../sega/Annual_Report/annual_report_fy3_2022.json";
-import segaAnnualReport2021 from "../sega/Annual_Report/annual_report_fy3_2021.json";
-import segaAnnualReport2020 from "../sega/Annual_Report/annual_report_fy3_2020.json";
-import segaAnnualReport2019 from "../sega/Annual_Report/annual_report_fy3_2019.json";
-import segaAnnualReport2018 from "../sega/Annual_Report/annual_report_fy3_2018.json";
-import segaAnnualReport2017 from "../sega/Annual_Report/annual_report_fy3_2017.json";
-import segaAnnualReport2016 from "../sega/Annual_Report/annual_report_fy3_2016.json";
-import segaAnnualReport2015 from "../sega/Annual_Report/annual_report_fy3_2015.json";
-import segaAnnualReport2014 from "../sega/Annual_Report/annual_report_fy3_2014.json";
-import segaAnnualReport2013 from "../sega/Annual_Report/annual_report_fy3_2013.json";
-
-import capcomGameSeries2023 from "../capcom/Game_Series/game_series_fy3_2023.json";
-import capcomGameSeries2022 from "../capcom/Game_Series/game_series_fy3_2022.json";
-import capcomGameSeries2021 from "../capcom/Game_Series/game_series_fy3_2021.json";
-import capcomGameSeries2020 from "../capcom/Game_Series/game_series_fy3_2020.json";
-import capcomGameSeries2019 from "../capcom/Game_Series/game_series_fy3_2019.json";
-import capcomGameSeries2018 from "../capcom/Game_Series/game_series_fy3_2018.json";
-import capcomGameSeries2017 from "../capcom/Game_Series/game_series_fy3_2017.json";
-import capcomGameSeries2016 from "../capcom/Game_Series/game_series_fy3_2016.json";
-import capcomGameSeries2015 from "../capcom/Game_Series/game_series_fy3_2015.json";
-import capcomGameSeries2014 from "../capcom/Game_Series/game_series_fy3_2014.json";
-import capcomGameSeries2013 from "../capcom/Game_Series/game_series_fy3_2013.json";
-import capcomGameSeries2012 from "../capcom/Game_Series/game_series_fy3_2012.json";
-import capcomGameSeries2011 from "../capcom/Game_Series/game_series_fy3_2011.json";
-import capcomGameSeries2010 from "../capcom/Game_Series/game_series_fy3_2010.json";
-
-import capcomSoftwareShipmentsPlatform2022 from "../capcom/Fact_Book/software_shipments_platform_fy3_2022.json";
-import capcomSoftwareShipmentsPlatform2021 from "../capcom/Fact_Book/software_shipments_platform_fy3_2021.json";
-import capcomSoftwareShipmentsPlatform2020 from "../capcom/Fact_Book/software_shipments_platform_fy3_2020.json";
-import capcomSoftwareShipmentsPlatform2019 from "../capcom/Fact_Book/software_shipments_platform_fy3_2019.json";
-import capcomSoftwareShipmentsPlatform2018 from "../capcom/Fact_Book/software_shipments_platform_fy3_2018.json";
-import capcomSoftwareShipmentsPlatform2017 from "../capcom/Fact_Book/software_shipments_platform_fy3_2017.json";
-import capcomSoftwareShipmentsPlatform2016 from "../capcom/Fact_Book/software_shipments_platform_fy3_2016.json";
-import capcomSoftwareShipmentsPlatform2015 from "../capcom/Fact_Book/software_shipments_platform_fy3_2015.json";
-import capcomSoftwareShipmentsPlatform2014 from "../capcom/Fact_Book/software_shipments_platform_fy3_2014.json";
-import capcomSoftwareShipmentsPlatform2013 from "../capcom/Fact_Book/software_shipments_platform_fy3_2013.json";
-import capcomSoftwareShipmentsPlatform2012 from "../capcom/Fact_Book/software_shipments_platform_fy3_2012.json";
-import capcomSoftwareShipmentsPlatform2011 from "../capcom/Fact_Book/software_shipments_platform_fy3_2011.json";
 
 import { softwareUnitsCollection } from "../sega/software_units_sega";
 
@@ -140,68 +82,15 @@ export type TitlePlatformData = {
     footnotes: string | undefined;
 }
 
-const collectionBandaiNamco = new Map<number, SeriesJSON>();
-    collectionBandaiNamco.set(collectionBandaiNamco.size, bandaiNamcoAnnualReport2022)
-    collectionBandaiNamco.set(collectionBandaiNamco.size, bandaiNamcoAnnualReport2021)
-    collectionBandaiNamco.set(collectionBandaiNamco.size, bandaiNamcoAnnualReport2020)
-    collectionBandaiNamco.set(collectionBandaiNamco.size, bandaiNamcoAnnualReport2019)
+const collectionBandaiNamco = globImport(new Map<number, SeriesJSON>, import.meta.glob("../bandaiNamco/Annual_Report/*.json", { import: "default", eager: true }), "Descending");
+ 
+const collectionSquareEnix = globImport(new Map<number, SeriesJSON>, import.meta.glob("../squareEnix/Annual_Report/*.json", { import: "default", eager: true }), "Descending");
 
-const collectionSquareEnix = new Map<number, SeriesJSON>();
-    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2022)
-    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2021)
-    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2020)
-    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2019)
-    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2018)
-    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2017)
-    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2016)
-    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2015)
-    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2014)
-    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2013)
-    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2012)
-    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2011)
-    collectionSquareEnix.set(collectionSquareEnix.size, squareEnixAnnualReport2010)
+const collectionSega = globImport(new Map<number, SeriesJSON>, import.meta.glob("../sega/Annual_Report/*.json", { import: "default", eager: true }), "Descending");
 
-const collectionSega = new Map<number, SeriesJSON>();
-    collectionSega.set(collectionSega.size, segaAnnualReport2022)
-    collectionSega.set(collectionSega.size, segaAnnualReport2021)
-    collectionSega.set(collectionSega.size, segaAnnualReport2020)
-    collectionSega.set(collectionSega.size, segaAnnualReport2019)
-    collectionSega.set(collectionSega.size, segaAnnualReport2018)
-    collectionSega.set(collectionSega.size, segaAnnualReport2017)
-    collectionSega.set(collectionSega.size, segaAnnualReport2016)
-    collectionSega.set(collectionSega.size, segaAnnualReport2015)
-    collectionSega.set(collectionSega.size, segaAnnualReport2014)
-    collectionSega.set(collectionSega.size, segaAnnualReport2013)
+const collectionCapcomGameSeries = globImport(new Map<number, SeriesJSON>, import.meta.glob("../capcom/Game_Series/*.json", { import: "default", eager: true }), "Descending");
 
-const collectionCapcomGameSeries = new Map<number, SeriesJSON>();
-    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2023)
-    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2022)
-    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2021)
-    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2020)
-    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2019)
-    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2018)
-    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2017)
-    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2016)
-    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2015)
-    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2014)
-    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2013)
-    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2012)
-    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2011)
-    collectionCapcomGameSeries.set(collectionCapcomGameSeries.size, capcomGameSeries2010)
-
-const collectionCapcomFactBook = new Map<number, SeriesJSON>();
-    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2022)
-    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2021)
-    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2020)
-    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2019)
-    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2018)
-    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2017)
-    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2016)
-    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2015)
-    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2014)
-    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2013)
-    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2012)
-    collectionCapcomFactBook.set(collectionCapcomFactBook.size, capcomSoftwareShipmentsPlatform2011)
+const collectionCapcomFactBook = globImport(new Map<number, SeriesJSON>, import.meta.glob("../capcom/Fact_Book/*.json", { import: "default", eager: true }), "Descending");
 
 export const bandaiNamcoAnnualReport = new Map<number, { header: string, titleList: titleSet[]}>(); 
 
