@@ -19,10 +19,10 @@ export type collectionJSON = {
     digitalUnits: salesOrUnitsJSON,
 }
 
-const collectionV2 = new Map<number, EarningsJSONV2>();
+// const collectionV2 = new Map<number, EarningsJSONV2>();
 // const collectionV2 = importJSON(new Map<number, EarningsJSONV2>, 2024, 2021).then(values => values)
 
-console.log(softwareSalesCollectionCapcom.then(values => values));
+const collectionV2 = softwareSalesCollectionCapcom;
 
 const currentFiscalYear = 2024
 const yearRange = currentFiscalYear - 2021;

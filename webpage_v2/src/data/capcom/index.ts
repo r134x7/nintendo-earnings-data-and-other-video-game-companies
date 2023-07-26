@@ -1,6 +1,6 @@
 import type { EarningsJSONV2 } from "../generalTables/consolidated_earnings_general";
 
-export const softwareSalesCollectionCapcom = importJSON(2024, 2021).then(values => values);
+export const softwareSalesCollectionCapcom = await importJSON(2024, 2021).then(values => values);
 
 async function importJSON(currentFiscalYear: number, firstFiscalYear: number): Promise<Map<any, any>> {
 
