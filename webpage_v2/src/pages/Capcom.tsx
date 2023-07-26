@@ -6,10 +6,10 @@ import CAPCOM_CML from "../components/special/CAPCOM_CML";
 
 import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
-const currentYear = 2023
-const yearRange = 2023 - 1998;
+const currentFiscalYear = 2024
+const yearRange = currentFiscalYear - 1998;
 
-const yearsList = Array.from({length: yearRange + 1}, (elem, index) => "FY3/" + (currentYear - index)) 
+const yearsList = Array.from({length: yearRange + 1}, (elem, index) => "FY3/" + (currentFiscalYear - index)) 
 
 export default function Capcom() {
 
@@ -83,7 +83,7 @@ export default function Capcom() {
                     mb="sm"
                     mr="md"
                     placeholder="Select"
-                    label={`Select a Fiscal Year from ${currentYear - (yearsList.length-1)} to ${currentYear}.`}
+                    label={`Select a Fiscal Year from ${currentFiscalYear - (yearsList.length-1)} to ${currentFiscalYear}.`}
                     description={`Fiscal Year ending March ${(Number(year?.slice(4,8))) ? year?.slice(4,8) : "" }.`}
                     radius="xl"
                     size="md"

@@ -1,0 +1,6 @@
+{
+    "currentQuarter": 4,
+    "companyName": "CAPCOM Co., Ltd.",
+    "fiscalYear": "FY3/2024",
+    "data": [{"name":"Net Sales","Q1CmlValue":43858,"Q2CmlValue":"Nothing","Q3CmlValue":"Nothing","Q4CmlValue":"Nothing","forecastThisFY":140000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":null},{"name":"Operating Income","Q1CmlValue":24047,"Q2CmlValue":"Nothing","Q3CmlValue":"Nothing","Q4CmlValue":"Nothing","forecastThisFY":56000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":null},{"name":"Net Income","Q1CmlValue":18163,"Q2CmlValue":"Nothing","Q3CmlValue":"Nothing","Q4CmlValue":"Nothing","forecastThisFY":40000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":null}]
+}
