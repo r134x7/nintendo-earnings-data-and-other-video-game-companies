@@ -19,6 +19,48 @@ export type collectionJSON = {
 }
 
 const collectionV2 = new Map<number, EarningsJSONV2>();
+// const collectionV2 = importJSON(new Map<number, EarningsJSONV2>, 2024, 2021).then(values => values)
+
+const currentFiscalYear = 2024
+const yearRange = currentFiscalYear - 2021;
+
+// Promise.all<EarningsJSONV2>(
+//     Array.from({length: yearRange + 1}, (value, index) => {
+//         // return import(`./Software_Sales/software_sales_fy3_${currentFiscalYear - index}.json`)
+//         return softwareSales2021
+//     })
+// ).then((values) => values.forEach((elem) => collectionV2.set(collectionV2.size, elem)))
+
+// const testPROMISE = new Promise.all<EarningsJSONV2>(
+//     Array.from({length: yearRange + 1}, (value, index) => {
+//         return import(`./Software_Sales/software_sales_fy3_${currentFiscalYear - index}.json`)
+//     })
+// ).then((values) => {
+//     console.log(values);
+//     return values
+// }).catch((error) => error)
+// console.log(testPROMISE);
+// console.log(typeof testPROMISE);
+
+
+
+console.log(collectionV2);
+console.log(collectionV2.get(0));
+console.log(collectionV2.size);
+
+console.log(collectionV2.get(0));
+
+// async function importJSON<T>(toMap: Map<number, EarningsJSONV2>, currentFiscalYear: number, firstFiscalYear: number): Map<number, EarningsJSONV2> {
+
+//     const yearRange = currentFiscalYear - firstFiscalYear
+
+//     for (let index = 0; index < yearRange + 1; index++) {
+//     //    toMap.set(toMap.size, await import(`./Software_Sales/software_sales_fy3_${currentFiscalYear - index}.json`)) 
+//        toMap.set(toMap.size, await import(`./Software_Sales/software_sales_fy3_2024.json`)) 
+//     }
+
+//     return toMap
+// }
     collectionV2.set(collectionV2.size, softwareSales2024)
     collectionV2.set(collectionV2.size, softwareSales2023)
     collectionV2.set(collectionV2.size, softwareSales2022)
@@ -79,4 +121,10 @@ collectionV2.forEach((value, key, map) => {
     }
 })
 
-collectionV2.clear();
+// collectionV2.clear();
+
+console.log(softwareSalesList);
+
+console.log(softwareSalesList.size);
+console.log(collectionV2.size);
+
