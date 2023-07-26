@@ -300,7 +300,11 @@ function printAllValues(list: Map<number, EarningsV2[]>, loops: number): string[
 
         list.forEach((value, key, map) => {
 
-            const getFiscalYear = (value[0].Q4CmlValue.kind === "Cumulative") ? value[0].Q4CmlValue.thisFY.slice(0, -4) : "ERROR" 
+            const getFiscalYear = (value[0].Q4CmlValue.kind === "Cumulative") 
+                ? value[0].Q4CmlValue.thisFY.slice(0, -4) 
+                : (value[0].Q1CmlValue.kind === "Cumulative")
+                    ? value[0].Q1CmlValue.thisFY.slice(0, -4)
+                    : "Error: getFiscalYear did not get year from Q4 or Q1 CmlValue because it is not there." 
 
             const valueConstraint = (theta * 3) + 3; 
 
