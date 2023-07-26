@@ -123,6 +123,7 @@ import squareEnixDataSources2007 from "../squareEnix/Data_Sources/data_sources_f
 import squareEnixDataSources2006 from "../squareEnix/Data_Sources/data_sources_fy3_2006.json";
 import squareEnixDataSources2005 from "../squareEnix/Data_Sources/data_sources_fy3_2005.json";
 import squareEnixDataSources2004 from "../squareEnix/Data_Sources/data_sources_fy3_2004.json";
+import { globImport } from "../../utils/table_design_logic";
 
 
 type jsonData = {
@@ -135,28 +136,7 @@ type linkData = {
     link: string,
 };
 
-const nintendoDataSources: jsonData[] = [
-    nintendoDataSources2023,
-    nintendoDataSources2022,
-    nintendoDataSources2021,
-    nintendoDataSources2020,
-    nintendoDataSources2019,
-    nintendoDataSources2018,
-    nintendoDataSources2017,
-    nintendoDataSources2016,
-    nintendoDataSources2015,
-    nintendoDataSources2014,
-    nintendoDataSources2013,
-    nintendoDataSources2012,
-    nintendoDataSources2011,
-    nintendoDataSources2010,
-    nintendoDataSources2009,
-    nintendoDataSources2008,
-    nintendoDataSources2007,
-    nintendoDataSources2006,
-    nintendoDataSources2005,
-    nintendoDataSources2004,
-];
+const nintendoDataSources = globImport(new Map<number, jsonData>, import.meta.glob("../nintendo/Data_Sources/*.json", { import: "default", eager: true }), "Descending") 
 
 const segaDataSources: jsonData[] = [
     segaDataSources2023,
@@ -301,7 +281,10 @@ const dataSourcesLogic = (dataLocal: linkData[]): JSX.Element => {
     //     )
 };
 
-export const nintendoLinks = nintendoDataSources.map(elem => dataSourcesLogic(elem.data));
+// export const nintendoLinks = nintendoDataSources.map(elem => dataSourcesLogic(elem.data));
+export const nintendoLinks = new Map<number, JSX.Element>(); 
+
+nintendoDataSources.forEach((value, key, map) => nintendoLinks.set(nintendoLinks.size, dataSourcesLogic(value.data)));
 
 export const segaLinks = segaDataSources.map(elem => dataSourcesLogic(elem.data));
 
@@ -312,3 +295,5 @@ export const bandaiNamcoLinks = bandaiNamcoDataSources.map(elem => dataSourcesLo
 export const koeiTecmoLinks = koeiTecmoDataSources.map(elem => dataSourcesLogic(elem.data));
 
 export const squareEnixLinks = squareEnixDataSources.map(elem => dataSourcesLogic(elem.data));
+
+nintendoDataSources.clear();

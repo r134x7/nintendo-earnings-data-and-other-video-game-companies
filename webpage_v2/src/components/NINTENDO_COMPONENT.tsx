@@ -146,7 +146,8 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
         return [
             { 
                 name: "Data Sources",
-                value: nintendoLinks?.[index],
+                // value: nintendoLinks?.[index],
+                value: nintendoLinks.get(index),
             },
             {
                 name: "Consolidated Operating Results",
