@@ -1,4 +1,12 @@
-import { printTextBlock, border, liner, spacer, dateLabel, headerPrint } from "../../utils/table_design_logic";
+import { 
+    printTextBlock, 
+    border, 
+    liner, 
+    spacer, 
+    dateLabel, 
+    headerPrint, 
+    globImport,
+} from "../../utils/table_design_logic";
 import { 
     type EarningsJSONV2, 
     type EarningsMakeV2, 
@@ -21,32 +29,6 @@ import {
     printSum, 
 } from "./consolidated_earnings_cml_data";
 
-import bandaiNamcoSoftwareSales2023 from "../bandaiNamco/Software_Sales/software_sales_fy3_2023.json";
-import bandaiNamcoSoftwareSales2022 from "../bandaiNamco/Software_Sales/software_sales_fy3_2022.json";
-import bandaiNamcoSoftwareSales2021 from "../bandaiNamco/Software_Sales/software_sales_fy3_2021.json";
-import bandaiNamcoSoftwareSales2020 from "../bandaiNamco/Software_Sales/software_sales_fy3_2020.json";
-import bandaiNamcoSoftwareSales2019 from "../bandaiNamco/Software_Sales/software_sales_fy3_2019.json";
-
-import capcomSoftwareSales2024 from "../capcom/Software_Sales/software_sales_fy3_2024.json";
-import capcomSoftwareSales2023 from "../capcom/Software_Sales/software_sales_fy3_2023.json";
-import capcomSoftwareSales2022 from "../capcom/Software_Sales/software_sales_fy3_2022.json";
-import capcomSoftwareSales2021 from "../capcom/Software_Sales/software_sales_fy3_2021.json";
-
-import segaSammySoftwareSales2023 from "../sega/Software_Sales/software_sales_fy3_2023.json";
-import segaSammySoftwareSales2022 from "../sega/Software_Sales/software_sales_fy3_2022.json";
-import segaSammySoftwareSales2021 from "../sega/Software_Sales/software_sales_fy3_2021.json";
-import segaSammySoftwareSales2020 from "../sega/Software_Sales/software_sales_fy3_2020.json";
-
-import koeiTecmoSoftwareSales2023 from "../koeiTecmo/Software_Sales/software_sales_fy3_2023.json";
-import koeiTecmoSoftwareSales2022 from "../koeiTecmo/Software_Sales/software_sales_fy3_2022.json";
-import koeiTecmoSoftwareSales2021 from "../koeiTecmo/Software_Sales/software_sales_fy3_2021.json";
-import koeiTecmoSoftwareSales2020 from "../koeiTecmo/Software_Sales/software_sales_fy3_2020.json";
-import koeiTecmoSoftwareSales2019 from "../koeiTecmo/Software_Sales/software_sales_fy3_2019.json";
-
-import squareEnixSoftwareSales2023 from "../squareEnix/Software_Sales/software_sales_fy3_2023.json";
-import squareEnixSoftwareSales2022 from "../squareEnix/Software_Sales/software_sales_fy3_2022.json";
-import squareEnixSoftwareSales2021 from "../squareEnix/Software_Sales/software_sales_fy3_2021.json";
-import squareEnixSoftwareSales2020 from "../squareEnix/Software_Sales/software_sales_fy3_2020.json";
 import { notes2021 } from "../squareEnix/software_sales_square_enix";
 
 export function extractValue(value: EarningsValue): number | never[] {
@@ -69,38 +51,15 @@ export function extractValue(value: EarningsValue): number | never[] {
     }
 }
 
-const bandaiNamcoCollection = new Map<number, EarningsJSONV2>();
-    bandaiNamcoCollection.set(bandaiNamcoCollection.size,bandaiNamcoSoftwareSales2019);
-    bandaiNamcoCollection.set(bandaiNamcoCollection.size,bandaiNamcoSoftwareSales2020);
-    bandaiNamcoCollection.set(bandaiNamcoCollection.size,bandaiNamcoSoftwareSales2021);
-    bandaiNamcoCollection.set(bandaiNamcoCollection.size,bandaiNamcoSoftwareSales2022);
-    bandaiNamcoCollection.set(bandaiNamcoCollection.size,bandaiNamcoSoftwareSales2023);
+const bandaiNamcoCollection = globImport(new Map<number, EarningsJSONV2>, import.meta.glob("../bandaiNamco/Software_Sales/*.json", { import: "default", eager: true }), "Ascending");
 
-const capcomCollection = new Map<number, EarningsJSONV2>();
-    capcomCollection.set(capcomCollection.size,capcomSoftwareSales2021);
-    capcomCollection.set(capcomCollection.size,capcomSoftwareSales2022);
-    capcomCollection.set(capcomCollection.size,capcomSoftwareSales2023);
-    capcomCollection.set(capcomCollection.size,capcomSoftwareSales2024);
+const capcomCollection = globImport(new Map<number, EarningsJSONV2>, import.meta.glob("../capcom/Software_Sales/*.json", { import: "default", eager: true }), "Ascending");
 
-const segaCollection = new Map<number, EarningsJSONV2>();
-    segaCollection.set(segaCollection.size, segaSammySoftwareSales2020);
-    segaCollection.set(segaCollection.size, segaSammySoftwareSales2021);
-    segaCollection.set(segaCollection.size, segaSammySoftwareSales2022);
-    segaCollection.set(segaCollection.size, segaSammySoftwareSales2023);
+const segaCollection = globImport(new Map<number, EarningsJSONV2>, import.meta.glob("../sega/Software_Sales/*.json", { import: "default", eager: true }), "Ascending");
 
-const koeiTecmoCollection = new Map<number, EarningsJSONV2>();
-    koeiTecmoCollection.set(koeiTecmoCollection.size, koeiTecmoSoftwareSales2019);
-    koeiTecmoCollection.set(koeiTecmoCollection.size, koeiTecmoSoftwareSales2020);
-    koeiTecmoCollection.set(koeiTecmoCollection.size, koeiTecmoSoftwareSales2021);
-    koeiTecmoCollection.set(koeiTecmoCollection.size, koeiTecmoSoftwareSales2022);
-    koeiTecmoCollection.set(koeiTecmoCollection.size, koeiTecmoSoftwareSales2023);
+const koeiTecmoCollection = globImport(new Map<number, EarningsJSONV2>, import.meta.glob("../koeiTecmo/Software_Sales/*.json", { import: "default", eager: true }), "Ascending");
 
-const squareEnixCollection = new Map<number, EarningsJSONV2>();
-    squareEnixCollection.set(squareEnixCollection.size, squareEnixSoftwareSales2020);
-    squareEnixCollection.set(squareEnixCollection.size, squareEnixSoftwareSales2021);
-    squareEnixCollection.set(squareEnixCollection.size, squareEnixSoftwareSales2022);
-    squareEnixCollection.set(squareEnixCollection.size, squareEnixSoftwareSales2023);
-
+const squareEnixCollection = globImport(new Map<number, EarningsJSONV2>, import.meta.glob("../squareEnix/Software_Sales/*.json", { import: "default", eager: true }), "Ascending");
 
 export const bandaiNamcoSalesPerSoftwareUnitCml = setMakerV2(bandaiNamcoCollection, 38,"Billion","One Thousand");
 
