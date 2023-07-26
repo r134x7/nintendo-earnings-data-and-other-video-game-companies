@@ -1,6 +1,7 @@
 import { useInterval } from "@mantine/hooks";
 import { useState, useEffect } from "react";
 import type { searchTitles } from "../data/capcom/platinum_titles_Capcom";
+import { EarningsJSONV2 } from "../data/generalTables/consolidated_earnings_general";
 
 export type titleSet = {
     title: string,
@@ -400,7 +401,7 @@ export function filterPlatform<T extends searchTitles>(input: T[], platformValue
         }
     }     
 
-export function globImport<T>(toMap: Map<number, T>, toImport: Record<string, T>, order: "Descending" | "Ascending"): Map<number, T> {
+export function globImport<T extends EarningsJSONV2>(toMap: Map<number, T>, toImport: Record<string, T>, order: "Descending" | "Ascending" | "YearAsceSort" | "YearDescSort"): Map<number, T> {
 
     switch (order) {
         case "Ascending":
@@ -421,6 +422,54 @@ export function globImport<T>(toMap: Map<number, T>, toImport: Record<string, T>
         
             descendingYears.reverse()
             descendingYears.forEach(elem => toMap.set(toMap.size, elem))
+        
+            return toMap;
+
+        case "YearAsceSort":
+
+            const toSort: T[] = [];
+
+            for (const key in toImport) {
+                toSort.push(toImport[key]);
+            }
+        
+            toSort.sort((a, b) => {
+
+                if (Object.hasOwn(a, "fiscalYear")) {
+                    return a.fiscalYear.slice(-4) > b.fiscalYear.slice(-4)
+                        ? 1
+                        : a.fiscalYear.slice(-4) < b.fiscalYear.slice(-4)
+                            ? -1
+                            : 0
+                } else {
+                    return 0
+                }
+            });
+            toSort.forEach(elem => toMap.set(toMap.size, elem));
+        
+            return toMap;
+
+        case "YearDescSort":
+
+            const descSort: T[] = [];
+
+            for (const key in toImport) {
+                descSort.push(toImport[key]);
+            }
+        
+            descSort.sort((a, b) => {
+
+                if (Object.hasOwn(a, "fiscalYear")) {
+                    return a.fiscalYear.slice(-4) > b.fiscalYear.slice(-4)
+                        ? -1
+                        : a.fiscalYear.slice(-4) < b.fiscalYear.slice(-4)
+                            ? 1
+                            : 0
+                } else {
+                    return 0
+                }
+            });
+            descSort.forEach(elem => toMap.set(toMap.size, elem));
         
             return toMap;
     
