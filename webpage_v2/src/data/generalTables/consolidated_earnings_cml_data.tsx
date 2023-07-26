@@ -394,8 +394,12 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
     }
 
     list.forEach((value, key, map) => {
-
-        let thisFY = (value.Q4CmlValue.kind === "Cumulative") ? value.Q4CmlValue.thisFY : "Error";
+        // needed to cover the beginning of a new FY and the end FY
+        let thisFY = (value.Q4CmlValue.kind === "Cumulative") 
+            ? value.Q4CmlValue.thisFY 
+            : (value.Q1CmlValue.kind === "Cumulative")
+                ? value.Q1CmlValue.thisFY
+                : "Error: thisFY did not get year from Q4 or Q1 CmlValue because it is not there.";
         // toReturn.set(0, (toReturn.get(0) ?? "") + valueMake(value.Q1QtrValue))
         toReturn.set(0, (toReturn.get(0) ?? []).concat(valueMake(value.Q1QtrValue, thisFY)))
         toReturn.set(1, (toReturn.get(1) ?? []).concat(valueMake(value.Q2QtrValue, thisFY)))
