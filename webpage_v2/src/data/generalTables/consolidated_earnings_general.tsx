@@ -14,7 +14,7 @@ import {
     yearOnYearCalculationV2,
     EarningsValue,
 } from "../../utils/general_earnings_logic";
-import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
+import { headerPrint, dateLabel, liner, border, spacer, globImport } from "../../utils/table_design_logic";
 
 import nintendoConsolidatedEarnings2023 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2023.json";
 import nintendoConsolidatedEarnings2022 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy3_2022.json";
@@ -59,109 +59,6 @@ import nintendoConsolidatedEarnings1984 from "../nintendo/Consolidated_Earnings/
 import nintendoConsolidatedEarnings1983 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1983.json";
 import nintendoConsolidatedEarnings1982 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1982.json";
 import nintendoConsolidatedEarnings1981 from "../nintendo/Consolidated_Earnings/consolidated_earnings_fy8_1981.json";
-
-import capcomEarnings2024 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2024.json";
-import capcomEarnings2023 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2023.json";
-import capcomEarnings2022 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2022.json";
-import capcomEarnings2021 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2021.json";
-import capcomEarnings2020 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2020.json";
-import capcomEarnings2019 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2019.json";
-import capcomEarnings2018 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2018.json";
-import capcomEarnings2017 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2017.json";
-import capcomEarnings2016 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2016.json";
-import capcomEarnings2015 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2015.json";
-import capcomEarnings2014 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2014.json";
-import capcomEarnings2013 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2013.json";
-import capcomEarnings2012 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2012.json";
-import capcomEarnings2011 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2011.json";
-import capcomEarnings2010 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2010.json";
-import capcomEarnings2009 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2009.json";
-import capcomEarnings2008 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2008.json";
-import capcomEarnings2007 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2007.json";
-import capcomEarnings2006 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2006.json";
-import capcomEarnings2005 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2005.json";
-import capcomEarnings2004 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2004.json";
-import capcomEarnings2003 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2003.json";
-import capcomEarnings2002 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2002.json";
-import capcomEarnings2001 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2001.json";
-import capcomEarnings2000 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_2000.json";
-import capcomEarnings1999 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_1999.json";
-import capcomEarnings1998 from "../capcom/Consolidated_Earnings/consolidated_earnings_fy3_1998.json";
-
-import bandaiNamco2023 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2023.json";
-import bandaiNamco2022 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2022.json";
-import bandaiNamco2021 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2021.json";
-import bandaiNamco2020 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2020.json";
-import bandaiNamco2019 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2019.json";
-import bandaiNamco2018 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2018.json";
-import bandaiNamco2017 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2017.json";
-import bandaiNamco2016 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2016.json";
-import bandaiNamco2015 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2015.json";
-import bandaiNamco2014 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2014.json";
-import bandaiNamco2013 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2013.json";
-import bandaiNamco2012 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2012.json";
-import bandaiNamco2011 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2011.json";
-import bandaiNamco2010 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2010.json";
-import bandaiNamco2009 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2009.json";
-import bandaiNamco2008 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2008.json";
-import bandaiNamco2007 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2007.json";
-import bandaiNamco2006 from "../bandaiNamco/Consolidated_Earnings/consolidated_earnings_fy3_2006.json";
-
-import sega2023 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2023.json";
-import sega2022 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2022.json";
-import sega2021 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2021.json";
-import sega2020 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2020.json";
-import sega2019 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2019.json";
-import sega2018 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2018.json";
-import sega2017 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2017.json";
-import sega2016 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2016.json";
-import sega2015 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2015.json";
-import sega2014 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2014.json";
-import sega2013 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2013.json";
-import sega2012 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2012.json";
-import sega2011 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2011.json";
-import sega2010 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2010.json";
-import sega2009 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2009.json";
-import sega2008 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2008.json";
-import sega2007 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2007.json";
-import sega2006 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2006.json";
-import sega2005 from "../sega/Consolidated_Earnings/consolidated_earnings_fy3_2005.json";
-
-import koeiTecmo2023 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2023.json";
-import koeiTecmo2022 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2022.json";
-import koeiTecmo2021 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2021.json";
-import koeiTecmo2020 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2020.json";
-import koeiTecmo2019 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2019.json";
-import koeiTecmo2018 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2018.json";
-import koeiTecmo2017 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2017.json";
-import koeiTecmo2016 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2016.json";
-import koeiTecmo2015 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2015.json";
-import koeiTecmo2014 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2014.json";
-import koeiTecmo2013 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2013.json";
-import koeiTecmo2012 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2012.json";
-import koeiTecmo2011 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2011.json";
-import koeiTecmo2010 from "../koeiTecmo/Consolidated_Earnings/consolidated_earnings_fy3_2010.json";
-
-import squareEnix2023 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2023.json";
-import squareEnix2022 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2022.json";
-import squareEnix2021 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2021.json";
-import squareEnix2020 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2020.json";
-import squareEnix2019 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2019.json";
-import squareEnix2018 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2018.json";
-import squareEnix2017 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2017.json";
-import squareEnix2016 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2016.json";
-import squareEnix2015 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2015.json";
-import squareEnix2014 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2014.json";
-import squareEnix2013 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2013.json";
-import squareEnix2012 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2012.json";
-import squareEnix2011 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2011.json";
-import squareEnix2010 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2010.json";
-import squareEnix2009 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2009.json";
-import squareEnix2008 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2008.json";
-import squareEnix2007 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2007.json";
-import squareEnix2006 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2006.json";
-import squareEnix2005 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2005.json";
-import squareEnix2004 from "../squareEnix/Consolidated_Earnings/consolidated_earnings_fy3_2004.json";
 
 export type EarningsJSONV2 = {
     currentQuarter: number,
@@ -276,113 +173,15 @@ const collectionNintendoV2 = new Map<number, EarningsJSONV2>();
     collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1982)
     collectionNintendoV2.set(collectionNintendoV2.size, nintendoConsolidatedEarnings1981)
 
-const collectionCapcomV2 = new Map<number, EarningsJSONV2>();
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2024)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2023)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2022)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2021)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2020)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2019)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2018)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2017)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2016)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2015)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2014)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2013)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2012)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2011)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2010)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2009)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2008)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2007)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2006)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2005)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2004)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2003)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2002)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2001)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings2000)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings1999)
-    collectionCapcomV2.set(collectionCapcomV2.size, capcomEarnings1998)
+const collectionCapcomV2 = globImport(new Map<number, EarningsJSONV2>(), import.meta.glob("../capcom/Consolidated_Earnings/*.json", { import: "default", eager: true }), "Descending");
 
-const collectionBandaiNamcoV2 = new Map<number, EarningsJSONV2>();
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2023)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2022)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2021)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2020)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2019)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2018)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2017)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2016)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2015)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2014)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2013)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2012)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2011)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2010)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2009)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2008)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2007)
-    collectionBandaiNamcoV2.set(collectionBandaiNamcoV2.size, bandaiNamco2006)
+const collectionBandaiNamcoV2 = globImport(new Map<number, EarningsJSONV2>(), import.meta.glob("../bandaiNamco/Consolidated_Earnings/*.json", { import: "default", eager: true }), "Descending");
 
-const collectionSegaSammyV2 = new Map<number, EarningsJSONV2>();
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2023)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2022)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2021)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2020)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2019)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2018)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2017)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2016)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2015)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2014)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2013)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2012)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2011)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2010)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2009)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2008)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2007)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2006)
-    collectionSegaSammyV2.set(collectionSegaSammyV2.size, sega2005)
+const collectionSegaSammyV2 = globImport(new Map<number, EarningsJSONV2>(), import.meta.glob("../sega/Consolidated_Earnings/*.json", { import: "default", eager: true }), "Descending");
 
-const collectionKoeiTecmoV2 = new Map<number, EarningsJSONV2>();
-    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2023)
-    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2022)
-    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2021)
-    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2020)
-    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2019)
-    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2018)
-    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2017)
-    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2016)
-    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2015)
-    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2014)
-    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2013)
-    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2012)
-    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2011)
-    collectionKoeiTecmoV2.set(collectionKoeiTecmoV2.size, koeiTecmo2010)
+const collectionKoeiTecmoV2 = globImport(new Map<number, EarningsJSONV2>(), import.meta.glob("../koeiTecmo/Consolidated_Earnings/*.json", { import: "default", eager: true }), "Descending");
 
-const collectionSquareEnixV2 = new Map<number, EarningsJSONV2>();
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2023)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2022)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2021)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2020)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2019)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2018)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2017)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2016)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2015)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2014)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2013)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2012)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2011)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2010)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2009)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2008)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2007)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2006)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2005)
-    collectionSquareEnixV2.set(collectionSquareEnixV2.size, squareEnix2004)
+const collectionSquareEnixV2 = globImport(new Map<number, EarningsJSONV2>(), import.meta.glob("../squareEnix/Consolidated_Earnings/*.json", { import: "default", eager: true }), "Descending");
 
 export function typeReturn(typeValue: string | undefined): "units" | "currency" | "percentage" {
 
