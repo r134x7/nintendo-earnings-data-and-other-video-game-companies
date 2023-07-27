@@ -143,8 +143,9 @@ export default function EVENTS_CALENDAR() {
         {
             id: 15,
             companyName: "Activision Blizzard",
-            eventName: "1st Quarter Earnings Results, FY12/2023 (Fiscal Year ending December 2023)",
-            eventDate: "April 27, 2023",
+            eventName: dateTemplate("2nd", 12, "December", currentYear),
+            // eventName: "1st Quarter Earnings Results, FY12/2023 (Fiscal Year ending December 2023)",
+            eventDate: "July 19, 2023",
             timeZone: "US, PDT, UTC -7 Hours",
             irPage: "https://investor.activision.com/",
         },
