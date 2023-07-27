@@ -1,66 +1,10 @@
-import { platformUnitsMake } from "../regional_hardware_software_nintendo";
-import { printTextBlock, border, liner, spacer, dateLabel, infiniteCheck, type titleSet } from "../../../utils/table_design_logic";
-
-import regionalHardwareSoftware2023 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2023.json";
-import regionalHardwareSoftware2022 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2022.json";
-import regionalHardwareSoftware2021 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2021.json";
-import regionalHardwareSoftware2020 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2020.json";
-import regionalHardwareSoftware2019 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2019_new.json";
-import regionalHardwareSoftware2018 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2018_new.json";
-import regionalHardwareSoftware2017 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2017_new.json";
-import regionalHardwareSoftware2016 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2016.json";
-import regionalHardwareSoftware2015 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2015.json";
-import regionalHardwareSoftware2014 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2014.json";
-import regionalHardwareSoftware2013 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2013.json";
-import regionalHardwareSoftware2012 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2012.json";
-import regionalHardwareSoftware2011 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2011.json";
-import regionalHardwareSoftware2010 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2010.json";
-import regionalHardwareSoftware2009 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2009.json";
-import regionalHardwareSoftware2008 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2008.json";
-import regionalHardwareSoftware2007 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2007.json";
-import regionalHardwareSoftware2006 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2006.json";
-import regionalHardwareSoftware2005 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2005.json";
-import regionalHardwareSoftware2004 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2004.json";
-import regionalHardwareSoftware2003 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2003.json";
-import regionalHardwareSoftware2002 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2002.json";
-import regionalHardwareSoftware2001 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2001.json";
-import regionalHardwareSoftware2000 from "../Regional_Hardware_Software/regional_hw_sw_fy3_2000.json";
-import regionalHardwareSoftware1999 from "../Regional_Hardware_Software/regional_hw_sw_fy3_1999.json";
-import regionalHardwareSoftware1998 from "../Regional_Hardware_Software/regional_hw_sw_fy3_1998.json";
-import regionalHardwareSoftware1997 from "../Regional_Hardware_Software/regional_hw_sw_fy3_1997.json";
+import { platformUnitsMake, jsonData } from "../regional_hardware_software_nintendo";
+import { printTextBlock, border, liner, spacer, dateLabel, infiniteCheck, type titleSet, globImport } from "../../../utils/table_design_logic";
 
 // avoid having empty lists [] in your collections from preparing for the next earnings
 import { Section } from "../../../utils/regional_hw_sw_logic";
 
-    const totalCollection = [
-        regionalHardwareSoftware1997,
-        regionalHardwareSoftware1998,
-        regionalHardwareSoftware1999,
-        regionalHardwareSoftware2000,
-        regionalHardwareSoftware2001,
-        regionalHardwareSoftware2002,
-        regionalHardwareSoftware2003,
-        regionalHardwareSoftware2004,
-        regionalHardwareSoftware2005,
-        regionalHardwareSoftware2006,
-        regionalHardwareSoftware2007,
-        regionalHardwareSoftware2008,
-        regionalHardwareSoftware2009,
-        regionalHardwareSoftware2010,
-        regionalHardwareSoftware2011,
-        regionalHardwareSoftware2012,
-        regionalHardwareSoftware2013,
-        regionalHardwareSoftware2014,
-        regionalHardwareSoftware2015,
-        regionalHardwareSoftware2016,
-        regionalHardwareSoftware2017,
-        regionalHardwareSoftware2018,
-        regionalHardwareSoftware2019,
-        regionalHardwareSoftware2020,
-        regionalHardwareSoftware2021,
-        regionalHardwareSoftware2022,
-        regionalHardwareSoftware2023,
-    ]
+const totalCollection: jsonData[] = [...globImport(new Map<number, jsonData>, import.meta.glob("../Regional_Hardware_Software/*.json", { import: "default", eager: true }), "Ascending").values()]
 
 const valueCheck = (value: number) => {
     return (value === Infinity)

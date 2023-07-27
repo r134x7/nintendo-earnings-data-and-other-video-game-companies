@@ -1,66 +1,10 @@
-import { platformUnitSalesMake, platformSalesMake } from "../global_hardware_software_mobile_nintendo";
-import { printTextBlock, border, liner, spacer, dateLabel, infiniteCheck, type titleSet } from "../../../utils/table_design_logic";
-
-import globalHardwareSoftware2023 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2023.json";
-import globalHardwareSoftware2022 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2022.json";
-import globalHardwareSoftware2021 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2021.json";
-import globalHardwareSoftware2020 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2020.json";
-import globalHardwareSoftware2019 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2019.json";
-import globalHardwareSoftware2018 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2018.json";
-import globalHardwareSoftware2017 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2017.json";
-import globalHardwareSoftware2016 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2016.json";
-import globalHardwareSoftware2015 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2015.json";
-import globalHardwareSoftware2014 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2014.json";
-import globalHardwareSoftware2013 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2013.json";
-import globalHardwareSoftware2012 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2012.json";
-import globalHardwareSoftware2011 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2011.json";
-import globalHardwareSoftware2010 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2010.json";
-import globalHardwareSoftware2009 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2009.json";
-import globalHardwareSoftware2008 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2008.json";
-import globalHardwareSoftware2007 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2007.json";
-import globalHardwareSoftware2006 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2006.json";
-import globalHardwareSoftware2005 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2005.json";
-import globalHardwareSoftware2004 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2004.json";
-import globalHardwareSoftware2003 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2003.json";
-import globalHardwareSoftware2002 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2002.json";
-import globalHardwareSoftware2001 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2001.json";
-import globalHardwareSoftware2000 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2000.json";
-import globalHardwareSoftware1999 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_1999.json";
-import globalHardwareSoftware1998 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_1998.json";
-import globalHardwareSoftware1997 from "./../Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_1997.json";
+import { platformUnitSalesMake, platformSalesMake, collectionJSON } from "../global_hardware_software_mobile_nintendo";
+import { printTextBlock, border, liner, spacer, dateLabel, infiniteCheck, type titleSet, globImport } from "../../../utils/table_design_logic";
 
 // avoid having empty lists [] in your collections from preparing for the next earnings
 import { Section, Header } from "../../../utils/hardware_software_units_logic";
 
-    const totalCollection = [
-        globalHardwareSoftware1997,
-        globalHardwareSoftware1998,
-        globalHardwareSoftware1999,
-        globalHardwareSoftware2000,
-        globalHardwareSoftware2001,
-        globalHardwareSoftware2002,
-        globalHardwareSoftware2003,
-        globalHardwareSoftware2004,
-        globalHardwareSoftware2005,
-        globalHardwareSoftware2006,
-        globalHardwareSoftware2007,
-        globalHardwareSoftware2008,
-        globalHardwareSoftware2009,
-        globalHardwareSoftware2010,
-        globalHardwareSoftware2011,
-        globalHardwareSoftware2012,
-        globalHardwareSoftware2013,
-        globalHardwareSoftware2014,
-        globalHardwareSoftware2015,
-        globalHardwareSoftware2016,
-        globalHardwareSoftware2017,
-        globalHardwareSoftware2018,
-        globalHardwareSoftware2019,
-        globalHardwareSoftware2020,
-        globalHardwareSoftware2021,
-        globalHardwareSoftware2022,
-        globalHardwareSoftware2023,
-    ]
+const totalCollection: collectionJSON[] = [...globImport(new Map<number, collectionJSON>, import.meta.glob("../Global_Hardware_Software_Mobile/*.json", { import: "default", eager: true }), "Ascending").values()]
     
     let totalCollectionSet: Section[][][] = totalCollection.map(elem => {
 

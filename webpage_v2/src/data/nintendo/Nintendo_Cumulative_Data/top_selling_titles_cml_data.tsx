@@ -1,37 +1,11 @@
 import { collectionJSON, titlesMake } from "../top_selling_titles_nintendo";
-import { printTextBlock, border, liner, spacer, headerPrint, dateLabel } from "../../../utils/table_design_logic";
+import { printTextBlock, border, liner, spacer, headerPrint, dateLabel, globImport } from "../../../utils/table_design_logic";
 import type { searchTitles } from "../../capcom/platinum_titles_Capcom";
-
-import topSellingTitles2023 from "../Top_Selling_Titles/top_selling_titles_fy3_2023.json";
-import topSellingTitles2022 from "../Top_Selling_Titles/top_selling_titles_fy3_2022.json";
-import topSellingTitles2021 from "../Top_Selling_Titles/top_selling_titles_fy3_2021.json";
-import topSellingTitles2020 from "../Top_Selling_Titles/top_selling_titles_fy3_2020.json";
-import topSellingTitles2019 from "../Top_Selling_Titles/top_selling_titles_fy3_2019.json";
-import topSellingTitles2018 from "../Top_Selling_Titles/top_selling_titles_fy3_2018.json";
-import topSellingTitles2017 from "../Top_Selling_Titles/top_selling_titles_fy3_2017.json";
-import topSellingTitles2016 from "../Top_Selling_Titles/top_selling_titles_fy3_2016.json";
-import topSellingTitles2015 from "../Top_Selling_Titles/top_selling_titles_fy3_2015.json";
-import topSellingTitles2014 from "../Top_Selling_Titles/top_selling_titles_fy3_2014.json";
-import topSellingTitles2013 from "../Top_Selling_Titles/top_selling_titles_fy3_2013.json";
-import topSellingTitles2012 from "../Top_Selling_Titles/top_selling_titles_fy3_2012.json";
 
 // avoid having empty lists [] in your collections from preparing for the next earnings
 import { Titles, Header } from "../../../utils/top_selling_titles_logic";
 
-    const totalCollection: collectionJSON[] = [
-        topSellingTitles2012,
-        topSellingTitles2013,
-        topSellingTitles2014,
-        topSellingTitles2015,
-        topSellingTitles2016,
-        topSellingTitles2017,
-        topSellingTitles2018,
-        topSellingTitles2019,
-        topSellingTitles2020,
-        topSellingTitles2021,
-        topSellingTitles2022,
-        topSellingTitles2023,
-    ]
+const totalCollection: collectionJSON[] = [...globImport(new Map<number, collectionJSON>, import.meta.glob("../Top_Selling_Titles/*.json", { import: "default", eager: true }), "Ascending").values()]
     
     let totalCollectionSet: Titles[][][] = totalCollection.map(elem => {
 
