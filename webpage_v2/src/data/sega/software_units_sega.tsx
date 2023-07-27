@@ -6,24 +6,11 @@ import {
     yearOnYearCalculation,
 } from "../../utils/general_quarterly_software_units_logic";
 
-import seriesSoftwareUnits2023 from "./Software_Units/software_units_fy3_2023.json";
-import seriesSoftwareUnits2022 from "./Software_Units/software_units_fy3_2022.json";
-import seriesSoftwareUnits2021 from "./Software_Units/software_units_fy3_2021.json";
-import { headerPrint, dateLabel, liner, border, spacer, type titleSet, type titleSetHeader } from "../../utils/table_design_logic";
+import { headerPrint, dateLabel, liner, border, spacer, type titleSet, type titleSetHeader, globImport } from "../../utils/table_design_logic";
 
 import type { segaSoftwareSales } from "../generalTables/annual_report_general";
 
-export const softwareUnitsCollection: segaSoftwareSales[] = [
-    seriesSoftwareUnits2023,
-    seriesSoftwareUnits2022,
-    seriesSoftwareUnits2021,
-];
-
-export const collection = [
-    seriesSoftwareUnits2023,
-    seriesSoftwareUnits2022,
-    seriesSoftwareUnits2021,
-] as const;
+export const softwareUnitsCollection: segaSoftwareSales[] = [...globImport(new Map<number, segaSoftwareSales>, import.meta.glob("./Software_Units/*.json", { import: "default", eager: true }), "Descending").values()];
 
 export const platformUnitSalesMake = (obj: undefined | {
     name: string,
@@ -81,7 +68,7 @@ export const platformUnitSalesMake = (obj: undefined | {
     return unitSales 
 };
 
-export const segaSoftwareUnitsList: titleSetHeader[] = collection.map((elem, index, array) => {
+export const segaSoftwareUnitsList: titleSetHeader[] = softwareUnitsCollection.map((elem, index, array) => {
 
     let currentQuarter: number = elem.currentQuarter;
 
@@ -173,7 +160,7 @@ export const segaSoftwareUnitsList: titleSetHeader[] = collection.map((elem, ind
     }
 });
 
-export const segaSoftwareUnitsGraphList = collection.map((elem, index, array) => {
+export const segaSoftwareUnitsGraphList = softwareUnitsCollection.map((elem, index, array) => {
 
     let platformUnitSalesThisFYList: Section[][] = elem.softwareUnits.map(value => platformUnitSalesMake(value)); 
 

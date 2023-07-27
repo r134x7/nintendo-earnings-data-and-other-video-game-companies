@@ -1,10 +1,7 @@
 import { Section } from "../../utils/general_quarterly_software_units_logic";
 import { platformUnitSalesMake } from "./software_units_sega";
-import { liner, border, printTextBlock, spacer, dateLabel, type titleSetHeader } from "../../utils/table_design_logic";
-
-import softwareUnitsSegaSammy2021 from "./Software_Units/software_units_fy3_2021.json"
-import softwareUnitsSegaSammy2022 from "./Software_Units/software_units_fy3_2022.json"
-import softwareUnitsSegaSammy2023 from "./Software_Units/software_units_fy3_2023.json"
+import { liner, border, printTextBlock, spacer, dateLabel, type titleSetHeader, globImport } from "../../utils/table_design_logic";
+import type { segaSoftwareSales } from "../generalTables/annual_report_general";
 
 type softwareUnits = {
     fiscalYear: string,
@@ -20,11 +17,7 @@ type softwareUnits = {
         }[],
 };
 
-const collectionSegaSammy: softwareUnits[] = [
-    softwareUnitsSegaSammy2021,
-    softwareUnitsSegaSammy2022,
-    softwareUnitsSegaSammy2023,
-];
+const collectionSegaSammy: segaSoftwareSales[] = [...globImport(new Map<number, segaSoftwareSales>, import.meta.glob("./Software_Units/*.json", { import: "default", eager: true }), "Ascending").values()];
 
     const makeDateLabel = dateLabel(collectionSegaSammy.at(-1)?.fiscalYear ?? "N/A", collectionSegaSammy.at(-1)?.currentQuarter ?? 4);
 
