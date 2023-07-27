@@ -6,28 +6,7 @@ import {
     yearOnYearCalculation
 } from "../../utils/hardware_software_units_logic";
 
-import { headerPrint, dateLabel, liner, border, spacer, type titleSet } from "../../utils/table_design_logic";
-
-import consolidatedSalesInfo2023 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2023.json";
-import consolidatedSalesInfo2022 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2022.json";
-import consolidatedSalesInfo2021 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2021.json";
-import consolidatedSalesInfo2020 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2020.json";
-import consolidatedSalesInfo2019 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2019.json";
-import consolidatedSalesInfo2018 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2018.json";
-import consolidatedSalesInfo2017 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2017.json";
-import consolidatedSalesInfo2016 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2016.json";
-import consolidatedSalesInfo2015 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2015.json";
-import consolidatedSalesInfo2014 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2014.json";
-import consolidatedSalesInfo2013 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2013.json";
-import consolidatedSalesInfo2012 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2012.json";
-import consolidatedSalesInfo2011 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2011.json";
-import consolidatedSalesInfo2010 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2010.json";
-import consolidatedSalesInfo2009 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2009.json";
-import consolidatedSalesInfo2008 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2008.json";
-import consolidatedSalesInfo2007 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2007.json";
-import consolidatedSalesInfo2006 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2006.json";
-import consolidatedSalesInfo2005 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2005.json";
-import consolidatedSalesInfo2004 from "./Consolidated_Sales_Information/consolidated_sales_information_fy3_2004.json";
+import { headerPrint, dateLabel, liner, border, spacer, type titleSet, globImport } from "../../utils/table_design_logic";
 
 export type collectionJSON = {
     currentQuarter: number,
@@ -45,28 +24,8 @@ export type platformSalesType = {
     footnote?: string,
 };
 
-const collection: collectionJSON[] = [
-    consolidatedSalesInfo2023,
-    consolidatedSalesInfo2022,
-    consolidatedSalesInfo2021,
-    consolidatedSalesInfo2020,
-    consolidatedSalesInfo2019,
-    consolidatedSalesInfo2018,
-    consolidatedSalesInfo2017,
-    consolidatedSalesInfo2016,
-    consolidatedSalesInfo2015,
-    consolidatedSalesInfo2014,
-    consolidatedSalesInfo2013,
-    consolidatedSalesInfo2012,
-    consolidatedSalesInfo2011,
-    consolidatedSalesInfo2010,
-    consolidatedSalesInfo2009,
-    consolidatedSalesInfo2008,
-    consolidatedSalesInfo2007,
-    consolidatedSalesInfo2006,
-    consolidatedSalesInfo2005,
-    consolidatedSalesInfo2004,
-];
+
+const collection: collectionJSON[] = [...globImport(new Map<number, collectionJSON>, import.meta.glob("./Consolidated_Sales_Information/*.json", { import: "default", eager: true }), "Descending").values()];
 
 export const platformSalesMake = (obj: undefined | platformSalesType): Section[] => {
 

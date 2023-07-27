@@ -6,28 +6,7 @@ import {
     yearOnYearCalculation,
 } from "../../utils/regional_hw_sw_logic";
 
-import { headerPrint, dateLabel, liner, border, spacer, valueLimit, type titleSet } from "../../utils/table_design_logic";
-
-import regionalHardwareSoftware2023 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2023.json";
-import regionalHardwareSoftware2022 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2022.json";
-import regionalHardwareSoftware2021 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2021.json";
-import regionalHardwareSoftware2020 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2020.json";
-import regionalHardwareSoftware2019 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2019.json";
-import regionalHardwareSoftware2018 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2018.json";
-import regionalHardwareSoftware2017 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2017.json";
-import regionalHardwareSoftware2016 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2016.json";
-import regionalHardwareSoftware2015 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2015.json";
-import regionalHardwareSoftware2014 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2014.json";
-import regionalHardwareSoftware2013 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2013.json";
-import regionalHardwareSoftware2012 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2012.json";
-import regionalHardwareSoftware2011 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2011.json";
-import regionalHardwareSoftware2010 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2010.json";
-import regionalHardwareSoftware2009 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2009.json";
-import regionalHardwareSoftware2008 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2008.json";
-import regionalHardwareSoftware2007 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2007.json";
-import regionalHardwareSoftware2006 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2006.json";
-import regionalHardwareSoftware2005 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2005.json";
-import regionalHardwareSoftware2004 from "./Regional_Hardware_Software/regional_hw_sw_fy3_2004.json";
+import { headerPrint, dateLabel, liner, border, spacer, valueLimit, type titleSet, globImport } from "../../utils/table_design_logic";
 
 export type jsonData = {
     currentQuarter: number,
@@ -72,28 +51,7 @@ export type regionData = {
     dataShift?: boolean, 
 }
 
-const collection: jsonData[] = [
-    regionalHardwareSoftware2023,
-    regionalHardwareSoftware2022,
-    regionalHardwareSoftware2021,
-    regionalHardwareSoftware2020,
-    regionalHardwareSoftware2019,
-    regionalHardwareSoftware2018,
-    regionalHardwareSoftware2017,
-    regionalHardwareSoftware2016,
-    regionalHardwareSoftware2015,
-    regionalHardwareSoftware2014,
-    regionalHardwareSoftware2013,
-    regionalHardwareSoftware2012,
-    regionalHardwareSoftware2011,
-    regionalHardwareSoftware2010,
-    regionalHardwareSoftware2009,
-    regionalHardwareSoftware2008,
-    regionalHardwareSoftware2007,
-    regionalHardwareSoftware2006,
-    regionalHardwareSoftware2005,
-    regionalHardwareSoftware2004,
-];
+const collection: jsonData[] = [...globImport(new Map<number, jsonData>, import.meta.glob("./Regional_Hardware_Software/*.json", { import: "default", eager: true }), "Descending").values()]
 
 export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
 

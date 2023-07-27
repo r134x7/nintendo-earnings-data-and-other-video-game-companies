@@ -10,28 +10,7 @@ import {
 } from "../../utils/fy_million_seller_titles_logic";
 import type { searchTitles } from "../capcom/platinum_titles_Capcom";
 
-import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
-
-import fyMillionSellerTitles2023 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2023.json";
-import fyMillionSellerTitles2022 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2022.json";
-import fyMillionSellerTitles2021 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2021.json";
-import fyMillionSellerTitles2020 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2020.json";
-import fyMillionSellerTitles2019 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2019.json";
-import fyMillionSellerTitles2018 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2018.json";
-import fyMillionSellerTitles2017 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2017.json";
-import fyMillionSellerTitles2016 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2016.json";
-import fyMillionSellerTitles2015 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2015.json";
-import fyMillionSellerTitles2014 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2014.json";
-import fyMillionSellerTitles2013 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2013.json";
-import fyMillionSellerTitles2012 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2012.json";
-import fyMillionSellerTitles2011 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2011.json";
-import fyMillionSellerTitles2010 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2010.json";
-import fyMillionSellerTitles2009 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2009.json";
-import fyMillionSellerTitles2008 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2008.json";
-import fyMillionSellerTitles2007 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2007.json";
-import fyMillionSellerTitles2006 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2006.json";
-import fyMillionSellerTitles2005 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2005.json";
-import fyMillionSellerTitles2004 from "./FY_Million_Seller_Titles/million_seller_titles_fy3_2004.json";
+import { headerPrint, dateLabel, liner, border, spacer, globImport } from "../../utils/table_design_logic";
 
 export type collectionJSON = {
     currentQuarter: number,
@@ -70,28 +49,7 @@ export type titlesJSON = {
     miscellaneous?: string,
 };
 
-const collection: collectionJSON[] = [
-    fyMillionSellerTitles2023,
-    fyMillionSellerTitles2022,
-    fyMillionSellerTitles2021,
-    fyMillionSellerTitles2020,
-    fyMillionSellerTitles2019,
-    fyMillionSellerTitles2018,
-    fyMillionSellerTitles2017,
-    fyMillionSellerTitles2016,
-    fyMillionSellerTitles2015,
-    fyMillionSellerTitles2014,
-    fyMillionSellerTitles2013,
-    fyMillionSellerTitles2012,
-    fyMillionSellerTitles2011,
-    fyMillionSellerTitles2010,
-    fyMillionSellerTitles2009,
-    fyMillionSellerTitles2008,
-    fyMillionSellerTitles2007,
-    fyMillionSellerTitles2006,
-    fyMillionSellerTitles2005,
-    fyMillionSellerTitles2004,
-] //as const;
+const collection: collectionJSON[] = [...globImport(new Map<number, collectionJSON>, import.meta.glob("./FY_Million_Seller_Titles/*.json", { import: "default", eager: true }), "Descending").values()]
 
 export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined): Titles[] => {
 

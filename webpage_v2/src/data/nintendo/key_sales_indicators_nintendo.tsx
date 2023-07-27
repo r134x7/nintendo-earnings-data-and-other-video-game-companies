@@ -7,15 +7,7 @@ import {
     printNewBody,
 } from "../../utils/kpi_logic";
 
-import { headerPrint, printTextBlock, border, liner, spacer, dateLabel, type titleSet } from "../../utils/table_design_logic";
-
-import keySalesIndicators2023 from "./Key_Sales_Indicators/ksi_fy3_2023.json";
-import keySalesIndicators2022 from "./Key_Sales_Indicators/ksi_fy3_2022.json";
-import keySalesIndicators2021 from "./Key_Sales_Indicators/ksi_fy3_2021.json";
-import keySalesIndicators2020 from "./Key_Sales_Indicators/ksi_fy3_2020.json";
-import keySalesIndicators2019 from "./Key_Sales_Indicators/ksi_fy3_2019.json";
-import keySalesIndicators2018 from "./Key_Sales_Indicators/ksi_fy3_2018.json";
-import keySalesIndicators2017 from "./Key_Sales_Indicators/ksi_fy3_2017.json";
+import { headerPrint, printTextBlock, border, liner, spacer, dateLabel, type titleSet, globImport } from "../../utils/table_design_logic";
 
 type keySalesIndicatorsCollection = {
     currentQuarter: number,
@@ -42,15 +34,7 @@ type keySalesIndicatorsCollection = {
     }[]
 }
 
-const collection: keySalesIndicatorsCollection[] = [
-    keySalesIndicators2023,
-    keySalesIndicators2022,
-    keySalesIndicators2021,
-    keySalesIndicators2020,
-    keySalesIndicators2019,
-    keySalesIndicators2018,
-    keySalesIndicators2017,
-];
+const collection: keySalesIndicatorsCollection[] = [...globImport(new Map<number, keySalesIndicatorsCollection>, import.meta.glob("./Key_Sales_Indicators/*.json", { import: "default", eager: true }), "Descending").values()]
 
 const softwareProportionMake = (proportions:  KPDIndicators[][], cmlName: string) => {
 

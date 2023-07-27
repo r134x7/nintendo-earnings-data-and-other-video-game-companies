@@ -6,29 +6,8 @@ import {
     quarterlyCalculation,
     yearOnYearCalculation
 } from "../../utils/hardware_software_units_logic";
-import { headerPrint, dateLabel, liner, border, spacer, valueLimit } from "../../utils/table_design_logic";
+import { headerPrint, dateLabel, liner, border, spacer, valueLimit, globImport } from "../../utils/table_design_logic";
 import type { searchTitles } from "../capcom/platinum_titles_Capcom";
-
-import globalHardwareSoftwareMobile2023 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2023.json";
-import globalHardwareSoftwareMobile2022 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2022.json";
-import globalHardwareSoftwareMobile2021 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2021.json";
-import globalHardwareSoftwareMobile2020 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2020.json";
-import globalHardwareSoftwareMobile2019 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2019.json";
-import globalHardwareSoftwareMobile2018 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2018.json";
-import globalHardwareSoftwareMobile2017 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2017.json";
-import globalHardwareSoftwareMobile2016 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2016.json";
-import globalHardwareSoftwareMobile2015 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2015.json";
-import globalHardwareSoftwareMobile2014 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2014.json";
-import globalHardwareSoftwareMobile2013 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2013.json";
-import globalHardwareSoftwareMobile2012 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2012.json";
-import globalHardwareSoftwareMobile2011 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2011.json";
-import globalHardwareSoftwareMobile2010 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2010.json";
-import globalHardwareSoftwareMobile2009 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2009.json";
-import globalHardwareSoftwareMobile2008 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2008.json";
-import globalHardwareSoftwareMobile2007 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2007.json";
-import globalHardwareSoftwareMobile2006 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2006.json";
-import globalHardwareSoftwareMobile2005 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2005.json";
-import globalHardwareSoftwareMobile2004 from "./Global_Hardware_Software_Mobile/global_hardware_software_mobile_fy3_2004.json";
 
 export type collectionJSON = {
     currentQuarter: number,
@@ -70,28 +49,7 @@ type platformForecastSalesType = {
     footnote?: string,
 };
 
-const collection: collectionJSON[] = [
-    globalHardwareSoftwareMobile2023,
-    globalHardwareSoftwareMobile2022,
-    globalHardwareSoftwareMobile2021,
-    globalHardwareSoftwareMobile2020,
-    globalHardwareSoftwareMobile2019,
-    globalHardwareSoftwareMobile2018,
-    globalHardwareSoftwareMobile2017,
-    globalHardwareSoftwareMobile2016,
-    globalHardwareSoftwareMobile2015,
-    globalHardwareSoftwareMobile2014,
-    globalHardwareSoftwareMobile2013,
-    globalHardwareSoftwareMobile2012,
-    globalHardwareSoftwareMobile2011,
-    globalHardwareSoftwareMobile2010,
-    globalHardwareSoftwareMobile2009,
-    globalHardwareSoftwareMobile2008,
-    globalHardwareSoftwareMobile2007,
-    globalHardwareSoftwareMobile2006,
-    globalHardwareSoftwareMobile2005,
-    globalHardwareSoftwareMobile2004,
-];
+const collection: collectionJSON[] = [...globImport(new Map<number, collectionJSON>, import.meta.glob("./Global_Hardware_Software_Mobile/*.json", { import: "default", eager: true }), "Descending").values()]
 
 export const platformSalesMake = (obj: undefined | platformCumulativeSalesType ): Section[] => {
 

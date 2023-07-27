@@ -7,19 +7,7 @@ import {
 
 import type { searchTitles } from "../capcom/platinum_titles_Capcom";
 
-import topSellingTitles2023 from "./Top_Selling_Titles/top_selling_titles_fy3_2023.json";
-import topSellingTitles2022 from "./Top_Selling_Titles/top_selling_titles_fy3_2022.json";
-import topSellingTitles2021 from "./Top_Selling_Titles/top_selling_titles_fy3_2021.json";
-import topSellingTitles2020 from "./Top_Selling_Titles/top_selling_titles_fy3_2020.json";
-import topSellingTitles2019 from "./Top_Selling_Titles/top_selling_titles_fy3_2019.json";
-import topSellingTitles2018 from "./Top_Selling_Titles/top_selling_titles_fy3_2018.json";
-import topSellingTitles2017 from "./Top_Selling_Titles/top_selling_titles_fy3_2017.json";
-import topSellingTitles2016 from "./Top_Selling_Titles/top_selling_titles_fy3_2016.json";
-import topSellingTitles2015 from "./Top_Selling_Titles/top_selling_titles_fy3_2015.json";
-import topSellingTitles2014 from "./Top_Selling_Titles/top_selling_titles_fy3_2014.json";
-import topSellingTitles2013 from "./Top_Selling_Titles/top_selling_titles_fy3_2013.json";
-import topSellingTitles2012 from "./Top_Selling_Titles/top_selling_titles_fy3_2012.json";
-import { headerPrint, dateLabel, liner, border, spacer } from "../../utils/table_design_logic";
+import { headerPrint, dateLabel, liner, border, spacer, globImport } from "../../utils/table_design_logic";
 
 export type collectionJSON = {
     currentQuarter: number,
@@ -38,20 +26,7 @@ export type titlesJSON = {
     miscellaneous?: string, 
 };
 
-const collection: collectionJSON[] = [
-    topSellingTitles2023,
-    topSellingTitles2022,
-    topSellingTitles2021,
-    topSellingTitles2020,
-    topSellingTitles2019,
-    topSellingTitles2018,
-    topSellingTitles2017,
-    topSellingTitles2016,
-    topSellingTitles2015,
-    topSellingTitles2014,
-    topSellingTitles2013,
-    topSellingTitles2012,
-];
+const collection: collectionJSON[] = [...globImport(new Map<number, collectionJSON>, import.meta.glob("./Top_Selling_Titles/*.json", { import: "default", eager: true }), "Descending").values()]
 
 export const titlesMake = (obj: titlesJSON, prevFY: titlesJSON[][] | undefined): Titles[] => {
     // will find the first instance of the title and platform which by year is in descending order
