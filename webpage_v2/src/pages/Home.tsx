@@ -15,7 +15,7 @@ const Home = () => {
 
     const bandaiNamcoStatus = liner(printTextBlock("Bandai Namco page status",32),"=","top",true,32) + liner(printTextBlock("Consolidated Operating Results in Special Page has been updated with data from all quarters.",40),"−","both",true,40);
 
-    const koeiTecmoStatus = liner(printTextBlock("Koei Tecmo page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Consolidated Operating Results in Special Page has been updated with data from all quarters.",40),"−","both",true,40);
+    const koeiTecmoStatus = liner(printTextBlock("Koei Tecmo page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 1st Quarter earnings data for FY3/2024.",40),"−","both",true,40);
 
     const squareEnixStatus = liner(printTextBlock("Square Enix page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Consolidated Operating Results in Special Page has been updated with data from all quarters.",40),"−","both",true,40);
 
