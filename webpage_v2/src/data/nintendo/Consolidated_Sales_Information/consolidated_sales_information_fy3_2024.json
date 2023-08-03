@@ -1,0 +1,60 @@
+{
+    "currentQuarter": 1,
+    "fiscalYear": "FY3/2024",
+    "platformSales": [
+            {
+                "name": "Mobile, IP related income, etc.",
+                "units": "currency",
+                "Q1CmlValue": 31857,
+                "Q2CmlValue": 31857,
+                "Q3CmlValue": 31857,
+                "Q4CmlValue": 31857,
+                "footnote": "Includes income from smart-device content and royalty income." 
+            },
+            {
+                "name": "Playing cards, etc.",
+                "units": "currency",
+                "Q1CmlValue": 1996,
+                "Q2CmlValue": 1996,
+                "Q3CmlValue": 1996,
+                "Q4CmlValue": 1996 
+            },
+            {
+                "name": "Dedicated video game platform",
+                "units": "currency",
+                "Q1CmlValue": 427486,
+                "Q2CmlValue": 427486,
+                "Q3CmlValue": 427486,
+                "Q4CmlValue": 427486,
+                "footnote": "Includes Nintendo Switch platform and other dedicated video game platforms." 
+            },
+            {
+                "name": "Digital Sales in dedicated video game platform",
+                "units": "currency",
+                "Q1CmlValue": 119600,
+                "Q2CmlValue": 119600,
+                "Q3CmlValue": 119600,
+                "Q4CmlValue": 119600,
+                "footnote": "Includes downloadable versions of packaged software, download-only software, add-on content and Nintendo Switch Online." 
+            },
+            {
+                "name": "Nintendo Switch platform",
+                "units": "currency",
+                "Q1CmlValue": 420961,
+                "Q2CmlValue": 420961,
+                "Q3CmlValue": 420961,
+                "Q4CmlValue": 420961,
+                "cmlValueLastFY": 7889956,
+                "footnote": "Nintendo Switch platform includes hardware, software (including downloadable versions of packaged software, download-only software, add-on content and Nintendo Switch Online) and accessories" 
+            },
+            {
+                "name": "Other dedicated video game platforms",
+                "units": "currency",
+                "Q1CmlValue": 6525,
+                "Q2CmlValue": 6525,
+                "Q3CmlValue": 6525,
+                "Q4CmlValue": 6525,
+                "footnote": "Includes platforms other than Nintendo Switch and also amiibo." 
+            }
+    ]
+}
