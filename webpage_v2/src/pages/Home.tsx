@@ -7,7 +7,7 @@ const Home = () => {
 
     const state: any = useSelector(state => state);
 
-    const nintendoStatus = liner(printTextBlock("Nintendo page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Consolidated Operating Results in Special Page has been updated with data from all quarters. Consolidated Operating Results from 1981 to 2023 is now in the Date By Fiscal Year section.",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
+    const nintendoStatus = liner(printTextBlock("Nintendo page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 1st Quarter earnings data for FY3/2024",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
 
     const capcomStatus = liner(printTextBlock("Capcom page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 1st Quarter earnings data for FY3/2024.",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
 
