@@ -1,0 +1,30 @@
+{
+    "currentQuarter": 1,
+    "fiscalYear": "FY3/2024",
+    "platformCmlSales": [
+        {
+            "name": "Nintendo Switch platform",
+            "units": "currency",
+            "Q1CmlValue": 420961,
+            "Q2CmlValue": 420961,
+            "Q3CmlValue": 420961,
+            "Q4CmlValue": 420961,
+            "cmlValueLastFY": 7889956,
+            "hardwareReference": [
+                "Nintendo Switch Hardware Total" 
+            ]
+        }
+    ],
+    "platformUnitSales": [{"name":"Nintendo Switch Hardware Total","units":"units","Q1CmlValue":391,"Q2CmlValue":391,"Q3CmlValue":391,"Q4CmlValue":391,"cmlValueLastFY":12562},{"name":"Nintendo Switch","units":"units","Q1CmlValue":64,"Q2CmlValue":64,"Q3CmlValue":64,"Q4CmlValue":64,"cmlValueLastFY":8959},{"name":"Nintendo Switch OLED Model","units":"units","Q1CmlValue":283,"Q2CmlValue":283,"Q3CmlValue":283,"Q4CmlValue":283,"cmlValueLastFY":1502},{"name":"Nintendo Switch Lite","units":"units","Q1CmlValue":43,"Q2CmlValue":43,"Q3CmlValue":43,"Q4CmlValue":43,"cmlValueLastFY":2102},{"name":"Nintendo Switch Software Total","units":"units","Q1CmlValue":5221,"Q2CmlValue":5221,"Q3CmlValue":5221,"Q4CmlValue":5221,"cmlValueLastFY":103614}],
+    "platformForecastSales": [
+        {
+            "name": "Nintendo Switch Hardware Total",
+            "forecastThisFY": 1500
+        },
+        {
+            "name": "Nintendo Switch Software Total",
+            "forecastThisFY": 18000,
+            "footnote": "Software sales units include both packaged and downloadable versions of software, and do not include download-only software or add-on content. The number of new titles is the number of packaged software. Actual software sales units include the quantity bundled with hardware or other products. Forecasted software sales units do not include the quantity to be bundled with hardware or other products"
+        }
+    ]
+}

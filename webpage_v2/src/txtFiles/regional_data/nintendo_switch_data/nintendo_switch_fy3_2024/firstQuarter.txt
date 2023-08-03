@@ -1,0 +1,25 @@
+Nintendo Switch Hardware Total Japan 120 3,079
+The Americas 118 5,018
+Europe 94 3,353
+Other 58 1,502
+Total 391 12,953
+Nintendo Switch Japan 16 1,989
+The Americas 15 3,491
+Europe 21 2,447
+Other 13 1,096
+Total 64 9,023
+Nintendo Switch OLED Model Japan 88 533
+The Americas 88 570
+Europe 66 416
+Other 41 266
+Total 283 1,785
+Nintendo Switch Lite Japan 16 557
+The Americas 33 15 958
+Europe 12 7 489
+Other 4 4 140
+Total 59 43 2,145
+Nintendo Switch Software Total Japan 807 902 20,918
+The Americas 1,714 2,271 47,897
+Europe 1,152 1,332 31,423
+Other 467 716 8,597
+Total 4,141 5,221 108,835
