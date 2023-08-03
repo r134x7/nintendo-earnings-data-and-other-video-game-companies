@@ -33,7 +33,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
     let correctFyForAnnualReports = -1;
     let correctFyForFactBook = -2;
 
-    let allPlatinumTitlesIndex = allPlatinumTitlesList?.[props.setIndex + correctFyForAnnualReports];
+    let allPlatinumTitlesIndex = allPlatinumTitlesList?.[props.setIndex];
 
     let allPlatinumTitlesObject = (allPlatinumTitlesIndex === undefined) ? undefined : [{
         header: allPlatinumTitlesIndex.header,
@@ -42,9 +42,9 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
     }];
 
     // remember to remove after data has come in
-    let fyPlatinumTitlesIndex = fyPlatinumTitlesList?.[props.setIndex + correctFyForAnnualReports];
+    let fyPlatinumTitlesIndex = fyPlatinumTitlesList?.[props.setIndex];
 
-    let newTitlesIndex = fyPlatinumTitlesList?.[props.setIndex + correctFyForAnnualReports]?.newTitles;
+    let newTitlesIndex = fyPlatinumTitlesList?.[props.setIndex]?.newTitles;
 
     let fyPlatinumTitlesObject = (fyPlatinumTitlesIndex === undefined) ? undefined : [{
         header: fyPlatinumTitlesIndex.header,
