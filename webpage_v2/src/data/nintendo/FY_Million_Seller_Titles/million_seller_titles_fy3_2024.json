@@ -1,0 +1,7 @@
+{
+    "currentQuarter": 1,
+    "fiscalYear": "FY3/2024",
+    "titles": [
+        [{"name":"The Legend of Zelda: Tears of the Kingdom","platform":"Nintendo Switch","regionA":"Japan","Q1CmlValueA":326,"Q2CmlValueA":326,"Q3CmlValueA":326,"Q4CmlValueA":326,"regionB":"Overseas","Q1CmlValueB":1526,"Q2CmlValueB":1526,"Q3CmlValueB":1526,"Q4CmlValueB":1526,"regionC":"WW FY","Q1CmlValueC":1851,"Q2CmlValueC":1851,"Q3CmlValueC":1851,"Q4CmlValueC":1851,"regionD":"WW LTD","Q1CmlValueD":1851,"Q2CmlValueD":1851,"Q3CmlValueD":1851,"Q4CmlValueD":1851},{"name":"Mario Kart 8 Deluxe","platform":"Nintendo Switch","regionA":"Japan","Q1CmlValueA":19,"Q2CmlValueA":19,"Q3CmlValueA":19,"Q4CmlValueA":19,"regionB":"Overseas","Q1CmlValueB":148,"Q2CmlValueB":148,"Q3CmlValueB":148,"Q4CmlValueB":148,"regionC":"WW FY","Q1CmlValueC":167,"Q2CmlValueC":167,"Q3CmlValueC":167,"Q4CmlValueC":167,"regionD":"WW LTD","Q1CmlValueD":5546,"Q2CmlValueD":5546,"Q3CmlValueD":5546,"Q4CmlValueD":5546}]
+    ]
+}
