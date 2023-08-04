@@ -111,8 +111,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 11,
             companyName: "Square Enix",
-            eventName: "4th Quarter Earnings Results, FY3/2023 (Fiscal Year ending March 2023)",
-            eventDate: "May 12, 2023",
+            eventName: dateTemplate("1st", 3, "March", nextYear),
+            eventDate: "August 4, 2023",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.hd.square-enix.com/eng/ir/",
         },
