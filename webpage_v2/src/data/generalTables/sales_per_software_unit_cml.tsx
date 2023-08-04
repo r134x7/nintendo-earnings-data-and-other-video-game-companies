@@ -69,7 +69,7 @@ export const koeiTecmoSalesPerSoftwareUnitCml = setMakerV2(koeiTecmoCollection, 
 
 export const CapcomSalesPerSoftwareUnitCml = setMakerV2(capcomCollection, 38, "Hundred Million", "One Thousand");
 
-export const squareEnixSalesPerSoftwareUnitCml = setMakerV2(squareEnixCollection, 38, "Billion", "One Thousand").map(elem => elem + notes2021);
+export const squareEnixSalesPerSoftwareUnitCml = setMakerV2(squareEnixCollection, 38, "Billion", "Million").map(elem => elem + notes2021);
 
 bandaiNamcoCollection.clear();
 segaCollection.clear();
