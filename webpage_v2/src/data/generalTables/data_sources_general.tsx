@@ -75,7 +75,7 @@ koeiTecmoDataSources.forEach((value, key, map) => koeiTecmoLinks.set(koeiTecmoLi
 
 export const squareEnixLinks = new Map<number, JSX.Element>(); 
 
-squareEnixDataSources.forEach((value, key, map) => koeiTecmoLinks.set(koeiTecmoLinks.size, dataSourcesLogic(value.data)));
+squareEnixDataSources.forEach((value, key, map) => squareEnixLinks.set(squareEnixLinks.size, dataSourcesLogic(value.data)));
 
 nintendoDataSources.clear();
 capcomDataSources.clear();
