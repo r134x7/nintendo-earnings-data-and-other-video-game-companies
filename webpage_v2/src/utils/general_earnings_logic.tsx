@@ -73,14 +73,18 @@ export function quarterlyCalculationV2(thisQuarterValue: EarningsValue, lastQuar
             kind:"Quarter",
             units: thisQuarterValue.units,
             period: thisQuarterValue.period,
-            value: thisQuarterValue.value - lastQuarterValue.value
+            value: (Number.isInteger(thisQuarterValue.value - lastQuarterValue.value))
+                ? thisQuarterValue.value - lastQuarterValue.value
+                : Number((thisQuarterValue.value - lastQuarterValue.value).toFixed(2))
         }  // explicit condition for half yearly calculation, lastHalfValue is only needed for Fourth Quarter
         : (thisQuarterValue.kind === "Quarter" && lastQuarterValue.kind === "Nothing" && (lastHalfValue !== undefined && lastHalfValue.kind === "Quarter"))
             ? {
                 kind:"Quarter",
                 units: thisQuarterValue.units,
                 period: thisQuarterValue.period,
-                value: thisQuarterValue.value - lastHalfValue.value 
+                value: (Number.isInteger(thisQuarterValue.value - lastHalfValue.value)) 
+                    ? thisQuarterValue.value - lastHalfValue.value 
+                    : Number((thisQuarterValue.value - lastHalfValue.value).toFixed(2))
             }
             : thisQuarterValue
 }
