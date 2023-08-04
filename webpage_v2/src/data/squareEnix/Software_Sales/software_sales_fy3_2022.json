@@ -49,10 +49,10 @@
         {
             "name": "HD Games & MMO",
             "units": "units",
-            "Q1CmlValue": 9880,
-            "Q2CmlValue": 17220,
-            "Q3CmlValue": 29450,
-            "Q4CmlValue": 39130
+            "Q1CmlValue": 9.88,
+            "Q2CmlValue": 17.22,
+            "Q3CmlValue": 29.45,
+            "Q4CmlValue": 39.13
         }
     ]
 }
