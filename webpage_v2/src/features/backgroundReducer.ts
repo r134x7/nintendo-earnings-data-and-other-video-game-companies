@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export type BackgroundColours = {
+    colour: string;
+    fontColor: string;
+}
+
 const initialState = {
     colour: "",
     fontColor: "",

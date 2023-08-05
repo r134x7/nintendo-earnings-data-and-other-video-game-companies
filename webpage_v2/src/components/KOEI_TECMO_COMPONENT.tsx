@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { softwareSalesList, softwareSalesGraphList } from "../data/koeiTecmo/software_sales_koei_tecmo";
 import { koeiTecmoConsolidatedEarningsList, koeiTecmoConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { koeiTecmoLinks } from "../data/generalTables/data_sources_general";
+import type { BackgroundColours } from "../features/backgroundReducer";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
@@ -14,7 +15,7 @@ export default function KOEI_TECMO_COMPONENT(props: {setIndex: number; yearLengt
 
     const [value, setValue] = useState("");
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const componentListNew = Array.from({length: props.yearLength}, (elem, index) => {
 
