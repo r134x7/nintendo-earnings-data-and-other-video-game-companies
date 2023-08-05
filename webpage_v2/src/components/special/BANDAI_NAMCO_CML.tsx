@@ -15,7 +15,8 @@ export default function BANDAI_NAMCO_CML() {
 
     const [value, setValue] = useState("");
 
-    const state = useSelector((state: BackgroundColours) => state);
+    const stateColour = useSelector((state: BackgroundColours) => state.colour);
+    const stateFontColor = useSelector((state: BackgroundColours) => state.fontColor);
 
     const [titleValue, setTitleValue] = useState("");
     const [titlesLength, setTitlesLength] = useState(0)
@@ -139,7 +140,7 @@ export default function BANDAI_NAMCO_CML() {
                     data={dataList}
             />
             
-            <Code  onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+            <Code  onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
                 {(value === "Bandai Namco Consolidated Operating Results - Cumulative" || value === "Bandai Namco Sales Per Software Unit - Cumulative")
                     ? <Select
                         data={[
@@ -182,7 +183,7 @@ export default function BANDAI_NAMCO_CML() {
                             onClick={() => setTitleValue(elem)}
                             radius={"xl"}
                             ml={"sm"} mb={"sm"} variant="subtle" compact>
-                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} >
                                     {elem}
                                 </Code>
                             </Button>
@@ -193,7 +194,7 @@ export default function BANDAI_NAMCO_CML() {
                             onClick={() => setTitleValue("")}
                             radius={"xl"}
                             m={"sm"} variant="subtle" compact>
-                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} >
                                     {"Clear Search"}
                                 </Code>
                             </Button> 

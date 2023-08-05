@@ -7,7 +7,8 @@ import type { BackgroundColours } from "../features/backgroundReducer";
 
 export default function EVENTS_CALENDAR() {
 
-    const state = useSelector((state: BackgroundColours) => state);
+    const stateColour = useSelector((state: BackgroundColours) => state.colour);
+    const stateFontColor = useSelector((state: BackgroundColours) => state.fontColor);
 
     const [value, setValue] = useState<Date | null>(null); 
     
@@ -239,14 +240,14 @@ export default function EVENTS_CALENDAR() {
                         
                 return (
                     <Stack key={selectId} align={"center"} mb={"sm"} >
-                        <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                        <Code style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
                             {liner(printTextBlock(`Events total on this date: ${eventsCount}`,40),"=","both",true,40)}
                             {liner(printTextBlock(selectEventName,40),"=","top",true,40)}
                             {liner(printTextBlock(selectEventCompany,40),"=","top",true,40)}
                             {liner(printTextBlock(selectEventDate,40),"=","top",true,40)}
                             {liner(printTextBlock(selectTimeZone,40),"=","top",true,40)}
                            <Anchor href={anchorLink} target="_blank">
-                                <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000", padding:0, margin:0}} block>
+                                <Code style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000", padding:0, margin:0}} block>
                                     {liner(printTextBlock(selectIRPage,40),"=","both",true,40)}
                                 </Code>
                            </Anchor>
@@ -285,13 +286,13 @@ export default function EVENTS_CALENDAR() {
             <Grid.Col
                 span={6} 
             >
-                <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000", padding:0, margin:0}} block>
+                <Code style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000", padding:0, margin:0}} block>
                         <Stack align={"center"}>
                             {liner(printTextBlock("Select a marked date to view upcoming events. Calendar is usually updated every three months.",40),"=","both",true,40)}
                         </Stack>
                     <Calendar 
                         styles={(theme) => ({
-                            weekday: {color:(state.fontColor === "dark") ? "#fff" : "#000000", border: `1px solid`},
+                            weekday: {color:(stateFontColor === "dark") ? "#fff" : "#000000", border: `1px solid`},
                             cell: {
                                 border: `1px solid`,
                             }
@@ -327,7 +328,7 @@ export default function EVENTS_CALENDAR() {
                             const day = date.getDate();
                             const fullDate = date.toString();
                             return (
-                              <Indicator size={8} color={(state.fontColor === "dark") ? "#fff" : "#000000"} offset={8} 
+                              <Indicator size={8} color={(stateFontColor === "dark") ? "#fff" : "#000000"} offset={8} 
                                 disabled={
                                 fullDate !== new Date(dateArray[0].eventDate).toString()
                                 && fullDate !== new Date(dateArray[1].eventDate).toString() 

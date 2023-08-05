@@ -19,7 +19,8 @@ export default function GRAPH_NINTENDO_FY_MILLION_SELLER_TITLES(props:
     })}) {
 
 
-        const state = useSelector((state: BackgroundColours) => state);
+        const stateColour = useSelector((state: BackgroundColours) => state.colour);
+    const stateFontColor = useSelector((state: BackgroundColours) => state.fontColor);
 
     const [activePage, setPage] = useState(1);
     const [secondDataRef, setSecondDataRef] = useState(2);
@@ -83,12 +84,12 @@ export default function GRAPH_NINTENDO_FY_MILLION_SELLER_TITLES(props:
                             {
                             data: graphQuartersRegionA[activePage-1],
                             label: `${headerLabels[activePage-1]}[Japan]`,
-                            borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                            borderColor: stateColour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + "1)"
                                         : acc + curr;
                                 }),
-                            backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                            backgroundColor: stateColour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                     return (curr === ".")
                                             ? acc + "1)"
                                             : acc + curr;
@@ -100,12 +101,12 @@ export default function GRAPH_NINTENDO_FY_MILLION_SELLER_TITLES(props:
                             {
                             data: graphQuartersRegionB[activePage-1],
                             label: `${headerLabels[activePage-1]}[Overseas]`,
-                            borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                            borderColor: stateColour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".3)"
                                         : acc + curr;
                                 }),
-                            backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                            backgroundColor: stateColour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                     return (curr === ".")
                                             ? acc + ".3)"
                                             : acc + curr;
@@ -219,7 +220,7 @@ export default function GRAPH_NINTENDO_FY_MILLION_SELLER_TITLES(props:
                             {
                             data: graphQuartersRegionA[activePage-1],
                             label: `${headerLabels[activePage-1]}[Japan]`,
-                            backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                            backgroundColor: stateColour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".80)"
                                         : acc + curr;
@@ -230,7 +231,7 @@ export default function GRAPH_NINTENDO_FY_MILLION_SELLER_TITLES(props:
                             {
                             data: graphQuartersRegionB[activePage-1],
                             label: `${headerLabels[activePage-1]}[Overseas]`,
-                            backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                            backgroundColor: stateColour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".20)"
                                         : acc + curr;

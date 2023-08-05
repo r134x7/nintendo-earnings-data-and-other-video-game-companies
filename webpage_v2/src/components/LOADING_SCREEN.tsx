@@ -9,12 +9,13 @@ export default function LOADING_SCREEN() {
 
     const loadingText = useSingleMessage("Loading...",40, "=", 80, true);
 
-    const state = useSelector((state: BackgroundColours) => state);
+    const stateColour = useSelector((state: BackgroundColours) => state.colour);
+    const stateFontColor = useSelector((state: BackgroundColours) => state.fontColor);
 
     return (
         <>
             <Stack align="center" justify="center" style={{minHeight:"80vh"}}>
-                <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                <Code style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
                     {loadingText}
                 </Code>
             </Stack>

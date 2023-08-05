@@ -24,7 +24,8 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
     const [value, setValue] = useState("");
 
-    const state = useSelector((state: BackgroundColours) => state);
+    const stateColour = useSelector((state: BackgroundColours) => state.colour);
+    const stateFontColor = useSelector((state: BackgroundColours) => state.fontColor);
 
     const [titleValue, setTitleValue] = useState("");
     const [titlesLength, setTitlesLength] = useState(0);
@@ -240,7 +241,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
             {
                 (value === "Data Sources")
                     ? selectData(value)
-                    : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                    : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
                 {(value === topSellingTitlesCall.sectionTitle || value === fyMillionSellerTitlesCall.sectionTitle || value === globalHardwareSoftwareCall.sectionTitle)
                     ? <Select
                         data={[
@@ -282,7 +283,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                             onClick={() => setTitleValue(elem)}
                             radius={"xl"}
                             ml={"sm"} mb={"sm"} variant="subtle" compact>
-                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} >
                                     {elem}
                                 </Code>
                             </Button>
@@ -293,7 +294,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
                             onClick={() => setTitleValue("")}
                             radius={"xl"}
                             m={"sm"} variant="subtle" compact>
-                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} >
                                     {"Clear Search"}
                                 </Code>
                             </Button> 

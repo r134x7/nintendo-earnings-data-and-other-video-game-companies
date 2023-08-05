@@ -34,7 +34,8 @@ export default function CAPCOM_CML() {
     const [timePeriod, setTimePeriod] = useState(6);
     const [timePeriodValue, setTimePeriodValue] = useState<string | null>("FY Cumulative" ?? "FY Cumulative");
 
-    const state = useSelector((state: BackgroundColours) => state);
+    const stateColour = useSelector((state: BackgroundColours) => state.colour);
+    const stateFontColor = useSelector((state: BackgroundColours) => state.fontColor);
 
     // single word regex \w+, 
     // two word spaced regex \w+\s?\w+
@@ -236,7 +237,7 @@ export default function CAPCOM_CML() {
                     data={dataList}
             />
             
-            <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+            <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
                 {(value === "Capcom Consolidated Financial Results - Cumulative" || value === "Capcom Sales Per Software Unit - Cumulative")
                     ? <Select
                         data={[
@@ -314,7 +315,7 @@ export default function CAPCOM_CML() {
                             onClick={() => setTitleValue(elem)}
                             radius={"xl"}
                             ml={"sm"} mb={"sm"} variant="subtle" compact>
-                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} >
                                     {elem}
                                 </Code>
                             </Button>
@@ -325,7 +326,7 @@ export default function CAPCOM_CML() {
                             onClick={() => setTitleValue("")}
                             radius={"xl"}
                             m={"sm"} variant="subtle" compact>
-                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} >
+                                <Code style={{border:"solid", borderWidth:"1px", borderRadius:"16px", backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} >
                                     {"Clear Search"}
                                 </Code>
                             </Button> 

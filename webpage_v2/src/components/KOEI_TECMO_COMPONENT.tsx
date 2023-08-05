@@ -15,7 +15,8 @@ export default function KOEI_TECMO_COMPONENT(props: {setIndex: number; yearLengt
 
     const [value, setValue] = useState("");
 
-    const state = useSelector((state: BackgroundColours) => state);
+    const stateColour = useSelector((state: BackgroundColours) => state.colour);
+    const stateFontColor = useSelector((state: BackgroundColours) => state.fontColor);
 
     const componentListNew = Array.from({length: props.yearLength}, (elem, index) => {
 
@@ -89,7 +90,7 @@ export default function KOEI_TECMO_COMPONENT(props: {setIndex: number; yearLengt
             {
                 (value === "Data Sources")
                     ? selectData(value)
-                    : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>{selectData(value)}</Code>
+                    : <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>{selectData(value)}</Code>
             }
             {selectGraph(value)}
         </div>

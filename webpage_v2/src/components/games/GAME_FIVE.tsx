@@ -17,7 +17,8 @@ const stageTwo =
 
 export default function GAME_FIVE() {
 
-    const state = useSelector((state: BackgroundColours) => state);
+    const stateColour = useSelector((state: BackgroundColours) => state.colour);
+    const stateFontColor = useSelector((state: BackgroundColours) => state.fontColor);
 
     // const [line, setLine] = useState(0);
 
@@ -73,7 +74,7 @@ export default function GAME_FIVE() {
 
     return (
         <div>
-            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+            <Code style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
             {/* {messageBox}
             {contextBox} */}
             {(stage.seconds >= 6000) ? gameOverOne : (stage.koCount === 3) ? gameOverTwo : stage.field + "\n"}

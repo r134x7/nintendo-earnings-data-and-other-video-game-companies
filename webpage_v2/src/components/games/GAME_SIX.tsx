@@ -51,7 +51,8 @@ let backgroundLayer3: string = " //   /   //  /   //  /   //  /  //   / "
 
 export default function GAME_SIX() {
     
-    const state = useSelector((state: BackgroundColours) => state);
+    const stateColour = useSelector((state: BackgroundColours) => state.colour);
+    const stateFontColor = useSelector((state: BackgroundColours) => state.fontColor);
 
     const stageSet = useTimedStageGameSix(stage.get(0) ?? "ERROR",17);
 
@@ -66,7 +67,7 @@ export default function GAME_SIX() {
 
     return (
         <div>
-            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+            <Code style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
                 {(stageSet.seconds >= 6000 && stageSet.score < 500) 
                     ? gameOverOne 
                     : (stageSet.seconds >= 6000 && stageSet.score >= 500)

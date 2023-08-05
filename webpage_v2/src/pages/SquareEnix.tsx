@@ -23,7 +23,8 @@ export default function SquareEnix() {
     const [year, setYear] = useState<string | null>("");
     const [value, setValue] = useState("Data by Fiscal Year");
 
-    const state = useSelector((state: BackgroundColours) => state);
+    const stateColour = useSelector((state: BackgroundColours) => state.colour);
+    const stateFontColor = useSelector((state: BackgroundColours) => state.fontColor);
 
     const selectYearComponentNew = (yearsList: string[]) => 
     (yearUsed: string): JSX.Element | null => {
@@ -45,16 +46,16 @@ export default function SquareEnix() {
 
         <div>
             <Stack mb="md" align="center">
-            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+            <Code style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
                 {makeText}
             </Code>
             </Stack>
 
             <Stack mb="md" align="center">
-            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+            <Code style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
                 {linkOther}
                 <Anchor className="fade" style={{textAlign: "center"}} mb="sm" href="https://www.installbaseforum.com/" target="_blank" >
-                    <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                    <Code style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
                         {liner(printTextBlock("https://www.installbaseforum.com/",36),"−","both",true,36)}
                     </Code>
                 </Anchor>

@@ -13,7 +13,8 @@ import type { BackgroundColours } from "../features/backgroundReducer";
 
 export default function Games() {
 
-    const state = useSelector((state: BackgroundColours) => state);
+    const stateColour = useSelector((state: BackgroundColours) => state.colour);
+    const stateFontColor = useSelector((state: BackgroundColours) => state.fontColor);
 
     const [openGame, setOpenGame] = useState(999);
 
@@ -43,7 +44,7 @@ export default function Games() {
         ?
         <div>
             <Stack mb="md" align="center">
-            <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+            <Code style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
                 {makeTextOne}
                 {makeTextTwo}
                 {makeTextThree}

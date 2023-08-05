@@ -34,7 +34,8 @@ export default function GRAPH_CONSOLIDATED_EARNINGS(props:
     | undefined)
     }) {
 
-        const state = useSelector((state: BackgroundColours) => state);
+    const stateColour = useSelector((state: BackgroundColours) => state.colour);
+    const stateFontColor = useSelector((state: BackgroundColours) => state.fontColor);
 
     const [activePage, setPage] = useState(1);
     const [checked, setChecked] = useState(false);
@@ -119,12 +120,12 @@ export default function GRAPH_CONSOLIDATED_EARNINGS(props:
                             {
                             data: graphQuarters[activePage-1],
                             label: `${consolidatedOperatingResultsLabels[activePage-1]}[Quarter]`,
-                            borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                            borderColor: stateColour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + "1)"
                                         : acc + curr;
                                 }),
-                            backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                            backgroundColor: stateColour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                     return (curr === ".")
                                             ? acc + "1)"
                                             : acc + curr;
@@ -136,12 +137,12 @@ export default function GRAPH_CONSOLIDATED_EARNINGS(props:
                             {
                             data: graphCumulative[activePage-1],
                             label: `${consolidatedOperatingResultsLabels[activePage-1]}[Cumulative]`,
-                            borderColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                            borderColor: stateColour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".3)"
                                         : acc + curr;
                                 }),
-                            backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                            backgroundColor: stateColour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                     return (curr === ".")
                                             ? acc + ".3)"
                                             : acc + curr;
@@ -265,7 +266,7 @@ export default function GRAPH_CONSOLIDATED_EARNINGS(props:
                             {
                             data: graphQuarters[activePage-1],
                             label: `${consolidatedOperatingResultsLabels[activePage-1]}[Quarter]`,
-                            backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                            backgroundColor: stateColour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".80)"
                                         : acc + curr;
@@ -276,7 +277,7 @@ export default function GRAPH_CONSOLIDATED_EARNINGS(props:
                             {
                             data: graphCumulative[activePage-1],
                             label: `${consolidatedOperatingResultsLabels[activePage-1]}[Cumulative]`,
-                            backgroundColor: state.colour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
+                            backgroundColor: stateColour.split("").slice(0, -3).reduce((acc: string, curr: string) => {
                                 return (curr === ".")
                                         ? acc + ".20)"
                                         : acc + curr;

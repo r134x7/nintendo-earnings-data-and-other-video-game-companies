@@ -14,7 +14,8 @@ export default function KOEI_TECMO_CML() {
     const [timePeriod, setTimePeriod] = useState(6);
     const [timePeriodValue, setTimePeriodValue] = useState<string | null>("FY Cumulative" ?? "FY Cumulative");
 
-    const state = useSelector((state: BackgroundColours) => state);
+    const stateColour = useSelector((state: BackgroundColours) => state.colour);
+    const stateFontColor = useSelector((state: BackgroundColours) => state.fontColor);
 
     useEffect(() => {
 
@@ -100,7 +101,7 @@ export default function KOEI_TECMO_CML() {
                     data={dataList}
             />
             
-            <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+            <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
                 {(value === "Koei Tecmo Consolidated Operating Results - Cumulative" || value === "Koei Tecmo Sales Per Software Unit - Cumulative")
                     ? <Select
                         data={[
