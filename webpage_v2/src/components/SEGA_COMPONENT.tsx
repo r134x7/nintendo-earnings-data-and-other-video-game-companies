@@ -8,6 +8,7 @@ import { segaAnnualReport } from "../data/generalTables/annual_report_general";
 import { segaConsolidatedEarningsList, segaConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { segaLinks } from "../data/generalTables/data_sources_general";
 import { printTextBlock, liner, platformSearchFeatures, titleSetSearchFeatures } from "../utils/table_design_logic";
+import type { BackgroundColours } from "../features/backgroundReducer";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
 import GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE from "../data/nintendo/Graphs/GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE";
@@ -19,7 +20,7 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
 
     const [value, setValue] = useState("");
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const [titleValue, setTitleValue] = useState("");
     const [titlesLength, setTitlesLength] = useState(0);

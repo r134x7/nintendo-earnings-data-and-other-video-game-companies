@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useInterval, useHotkeys } from "@mantine/hooks";
 import { spacer, printTextBlock, liner } from "../../utils/table_design_logic";
 import { UnitTypeTwo } from "../../classes/UnitsTypeTwo";
+import type { BackgroundColours } from "../../features/backgroundReducer";
 
 const player = new Map<number, UnitTypeTwo>([
     [0, new UnitTypeTwo("player","x",0,0,10,3)]
@@ -50,7 +51,7 @@ let backgroundLayer3: string = " //   /   //  /   //  /   //  /  //   / "
 
 export default function GAME_SIX() {
     
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const stageSet = useTimedStageGameSix(stage.get(0) ?? "ERROR",17);
 

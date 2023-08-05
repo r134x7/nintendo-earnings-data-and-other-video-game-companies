@@ -3,6 +3,7 @@ import { Code, SegmentedControl, Space, Select } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { koeiTecmoSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListKoeiTecmo } from "../../data/generalTables/consolidated_earnings_cml_data";
+import type { BackgroundColours } from "../../features/backgroundReducer";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 
@@ -13,7 +14,7 @@ export default function KOEI_TECMO_CML() {
     const [timePeriod, setTimePeriod] = useState(6);
     const [timePeriodValue, setTimePeriodValue] = useState<string | null>("FY Cumulative" ?? "FY Cumulative");
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     useEffect(() => {
 

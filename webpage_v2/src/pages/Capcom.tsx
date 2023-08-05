@@ -3,6 +3,7 @@ import { Group, SegmentedControl, Anchor, Stack, Code, Select } from "@mantine/c
 import { useSelector } from "react-redux";
 import CAPCOM_COMPONENT from "../components/CAPCOM_COMPONENT";
 import CAPCOM_CML from "../components/special/CAPCOM_CML";
+import type { BackgroundColours } from "../features/backgroundReducer";
 
 import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
@@ -22,7 +23,7 @@ export default function Capcom() {
     const [value, setValue] = useState("Data by Fiscal Year");
     const [year, setYear] = useState<string | null>("");
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const selectYearComponentNew = (yearsList: string[]) => 
     (yearUsed: string): JSX.Element | null => {

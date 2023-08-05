@@ -3,6 +3,7 @@ import { Group, SegmentedControl, Select, Anchor, Stack, Code } from "@mantine/c
 import { useSelector } from "react-redux";
 import KOEI_TECMO_COMPONENT from "../components/KOEI_TECMO_COMPONENT";
 import KOEI_TECMO_CML from "../components/special/KOEI_TECMO_CML";
+import type { BackgroundColours } from "../features/backgroundReducer";
 
 import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
@@ -22,7 +23,7 @@ export default function KoeiTecmo() {
     const [year, setYear] = useState<string | null>("");
     const [value, setValue] = useState("Data by Fiscal Year");
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const selectYearComponentNew = (yearsList: string[]) => 
     (yearUsed: string): JSX.Element | null => {

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Pagination, Group, Switch } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { Titles } from "../../../utils/top_selling_titles_logic";
+import type { BackgroundColours } from "../../../features/backgroundReducer";
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
@@ -17,7 +18,7 @@ export default function GRAPH_NINTENDO_TOP_SELLING_TITLES(props:
         cumulativeTitleValuesThisFY: Titles[][];
     })}) {
 
-    const state: any = useSelector(state => state);
+        const state = useSelector((state: BackgroundColours) => state);
 
     const [activePage, setPage] = useState(1);
     const [secondDataRef, setSecondDataRef] = useState(2);

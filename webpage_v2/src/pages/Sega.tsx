@@ -3,6 +3,7 @@ import { Group, SegmentedControl, Select, Anchor, Stack, Code } from "@mantine/c
 import { useSelector } from "react-redux";
 import SEGA_COMPONENT from "../components/SEGA_COMPONENT";
 import SEGA_CML from "../components/special/SEGA_CML";
+import type { BackgroundColours } from "../features/backgroundReducer";
 
 import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
@@ -22,7 +23,7 @@ export default function Sega() {
     const [year, setYear] = useState<string | null>("");
     const [value, setValue] = useState("Data by Fiscal Year");
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const selectYearComponentNew = (yearsList: string[]) => 
     (yearUsed: string): JSX.Element | null => {

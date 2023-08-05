@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Pagination, Group, Switch } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { Section } from "../../../utils/hardware_software_units_logic";
+import type { BackgroundColours } from "../../../features/backgroundReducer";
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
@@ -19,7 +20,7 @@ export default function GRAPH_NINTENDO_GLOBAL_HARDWARE_SOFTWARE_MOBILE(props:
         cumulativeValuesLastFY: Section[][];
     })}) {
 
-    const state: any = useSelector(state => state);
+        const state = useSelector((state: BackgroundColours) => state);
 
     const [activePage, setPage] = useState(1);
     const [checked, setChecked] = useState(false);

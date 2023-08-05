@@ -9,10 +9,11 @@ import { useState } from "react"
 import { useSingleMessage } from "../utils/table_design_logic";
 import { Stack, Code } from "@mantine/core";
 import { useSelector } from "react-redux";
+import type { BackgroundColours } from "../features/backgroundReducer";
 
 export default function Games() {
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const [openGame, setOpenGame] = useState(999);
 

@@ -1,11 +1,12 @@
 import { Anchor, Stack, Code } from '@mantine/core';
 import { useSelector } from "react-redux";
+import type { BackgroundColours } from '../features/backgroundReducer';
 
 import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
 const Home = () => {
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const nintendoStatus = liner(printTextBlock("Nintendo page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 1st Quarter earnings data for FY3/2024",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
 

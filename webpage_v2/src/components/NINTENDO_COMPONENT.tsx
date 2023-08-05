@@ -10,6 +10,7 @@ import { regionalHardwareSoftwareList } from "../data/nintendo/regional_hardware
 import { topSellingTitlesListAllHeaders, topSellingTitlesList, topSellingTitlesGraphList } from "../data/nintendo/top_selling_titles_nintendo";
 import { consolidatedSalesInformationList, consolidatedSalesInformationGraphList } from "../data/nintendo/consolidated_sales_information_nintendo";
 import { printTextBlock, liner, platformSearchFeatures, titleSetSearchFeatures } from "../utils/table_design_logic";
+import type { BackgroundColours } from "../features/backgroundReducer";
 
 import GRAPH_NINTENDO_KPI from "../data/nintendo/Graphs/GRAPH_NINTENDO_KPI";
 import GRAPH_NINTENDO_TOP_SELLING_TITLES from "../data/nintendo/Graphs/GRAPH_NINTENDO_TOP_SELLING_TITLES_SWITCH";
@@ -23,7 +24,7 @@ export default function NINTENDO_COMPONENT(props: {setIndex: number; yearLength:
 
     const [value, setValue] = useState("");
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const [titleValue, setTitleValue] = useState("");
     const [titlesLength, setTitlesLength] = useState(0);

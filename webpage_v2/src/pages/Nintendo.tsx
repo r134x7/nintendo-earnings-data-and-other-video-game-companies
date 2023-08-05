@@ -3,6 +3,7 @@ import { Group, SegmentedControl, Select, Anchor, Stack, Code } from "@mantine/c
 import { useSelector } from "react-redux";
 import NINTENDO_CML from "../components/special/NINTENDO_CML";
 import NINTENDO_COMPONENT from "../components/NINTENDO_COMPONENT";
+import type { BackgroundColours } from "../features/backgroundReducer";
 
 import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
@@ -29,7 +30,7 @@ export default function Nintendo() {
     const [value, setValue] = useState("Data by Fiscal Year");
     const [year, setYear] = useState<string | null>("");
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
     
     const selectYearComponentNew = (yearsList: string[]) => 
     (yearUsed: string): JSX.Element | null => {

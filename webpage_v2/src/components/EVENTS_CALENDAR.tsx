@@ -3,10 +3,11 @@ import { Grid, Stack, Indicator, Anchor, Code } from "@mantine/core";
 import { Calendar, isSameDate } from "@mantine/dates";
 import { liner, printTextBlock } from "../utils/table_design_logic";
 import { useSelector } from "react-redux";
+import type { BackgroundColours } from "../features/backgroundReducer";
 
 export default function EVENTS_CALENDAR() {
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const [value, setValue] = useState<Date | null>(null); 
     

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Pagination, Group, Switch } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { Titles } from "../../../utils/fy_million_seller_titles_logic";
+import type { BackgroundColours } from "../../../features/backgroundReducer";
 
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js'; // required to actually get chart.js with react-chartjs-2 to work
@@ -18,7 +19,7 @@ export default function GRAPH_NINTENDO_FY_MILLION_SELLER_TITLES(props:
     })}) {
 
 
-    const state: any = useSelector(state => state);
+        const state = useSelector((state: BackgroundColours) => state);
 
     const [activePage, setPage] = useState(1);
     const [secondDataRef, setSecondDataRef] = useState(2);

@@ -6,6 +6,7 @@ import { cumulativeEarningsListSquareEnix } from "../../data/generalTables/conso
 // import { fyTitlesSquareEnix, squareEnixFootnotes } from "../../data/generalTables/annual_report_cml_data";
 import { squareEnixAnnualReportCml } from "../../data/generalTables/annual_report_cumulative";
 import { printTextBlock, liner, type titleSet } from "../../utils/table_design_logic";
+import type { BackgroundColours } from "../../features/backgroundReducer";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 import { filterTitles } from "../../utils/table_design_logic";
@@ -14,7 +15,7 @@ export default function SQUARE_ENIX_CML() {
 
     const [value, setValue] = useState("");
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const [titleValue, setTitleValue] = useState("");
     const [titlesLength, setTitlesLength] = useState(0)

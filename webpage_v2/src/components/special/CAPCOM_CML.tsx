@@ -8,6 +8,7 @@ import { cumulativeEarningsListCapcom } from "../../data/generalTables/consolida
 import { capcomGameSeriesCml, capcomFactBookCml } from "../../data/generalTables/annual_report_cumulative";
 // import { factBookCapcom } from "../../data/capcom/software_shipments_capcom_cml_data";
 import { filterTitles, printTextBlock, liner, type titleSet } from "../../utils/table_design_logic";
+import type { BackgroundColours } from "../../features/backgroundReducer";
 
 import type { searchTitles } from "../../data/capcom/platinum_titles_Capcom";
 
@@ -33,7 +34,7 @@ export default function CAPCOM_CML() {
     const [timePeriod, setTimePeriod] = useState(6);
     const [timePeriodValue, setTimePeriodValue] = useState<string | null>("FY Cumulative" ?? "FY Cumulative");
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     // single word regex \w+, 
     // two word spaced regex \w+\s?\w+

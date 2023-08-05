@@ -10,6 +10,7 @@ import { capcomFactBook } from "../data/generalTables/annual_report_general";
 import { capcomConsolidatedEarningsList, capcomConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { capcomLinks } from "../data/generalTables/data_sources_general";
 import { printTextBlock, liner, titleSetSearchFeatures, platformSearchFeatures } from "../utils/table_design_logic";
+import type { BackgroundColours } from "../features/backgroundReducer";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
@@ -20,7 +21,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     const [value, setValue] = useState("");
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const [titleValue, setTitleValue] = useState("");
     const [titlesLength, setTitlesLength] = useState(0);

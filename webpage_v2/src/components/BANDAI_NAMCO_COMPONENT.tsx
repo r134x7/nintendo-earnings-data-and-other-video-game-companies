@@ -7,6 +7,7 @@ import { bandaiNamcoAnnualReport } from "../data/generalTables/annual_report_gen
 import { bandaiNamcoConsolidatedEarningsList, bandaiNamcoConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { bandaiNamcoLinks } from "../data/generalTables/data_sources_general";
 import { printTextBlock, liner, titleSetSearchFeatures } from "../utils/table_design_logic";
+import type { BackgroundColours } from "../features/backgroundReducer";
 
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
@@ -17,7 +18,7 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
 
     const [value, setValue] = useState("");
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const [titleValue, setTitleValue] = useState("");
     const [titlesLength, setTitlesLength] = useState(0);

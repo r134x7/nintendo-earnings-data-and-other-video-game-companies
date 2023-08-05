@@ -9,6 +9,7 @@ import { softwareCumulativeSegaSammy } from "../../data/sega/software_units_sega
 import type { searchTitles } from "../../data/capcom/platinum_titles_Capcom";
 import { filterTitles } from "../../utils/table_design_logic";
 import { printTextBlock, liner, type titleSet } from "../../utils/table_design_logic";
+import type { BackgroundColours } from "../../features/backgroundReducer";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 
@@ -23,7 +24,7 @@ export default function SEGA_CML() {
     const [timePeriod, setTimePeriod] = useState(6);
     const [timePeriodValue, setTimePeriodValue] = useState<string | null>("FY Cumulative" ?? "FY Cumulative");
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     let filteredIPType = segaAnnualReportCml.titleList.filter(elem => {
         if (platformValue === "All") {

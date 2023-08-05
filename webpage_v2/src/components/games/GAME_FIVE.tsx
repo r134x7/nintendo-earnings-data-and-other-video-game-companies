@@ -2,6 +2,7 @@ import { Code, SimpleGrid } from "@mantine/core";
 import { useSingleMessage } from "../../utils/table_design_logic";
 import { useTimedStage, usePrompt } from "../../utils/game_design_logic";
 import { useSelector } from "react-redux";
+import type { BackgroundColours } from "../../features/backgroundReducer";
 
 const stageOne = "-------------------|---------------------======|=====|=====|==|===|====|===|===================||||||===||||||========================="
 // need to create walls and put in the logic for them...
@@ -16,7 +17,7 @@ const stageTwo =
 
 export default function GAME_FIVE() {
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     // const [line, setLine] = useState(0);
 

@@ -1,12 +1,13 @@
 import { Anchor, Stack, Code } from '@mantine/core';
 import { useSelector } from "react-redux";
 import EVENTS_CALENDAR from "../components/EVENTS_CALENDAR";
+import type { BackgroundColours } from '../features/backgroundReducer';
 
 import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
 const Home = () => {
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const linkOther = liner(printTextBlock("You'll want to head to Install Base, where events such as Earnings Results are discussed. Link:",40),"=","top",true,40);
 

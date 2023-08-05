@@ -1,6 +1,7 @@
 // creating a custom loading screen for lazy loading
-import { Code, Stack, Center } from "@mantine/core";
+import { Code, Stack } from "@mantine/core";
 import { useSelector } from "react-redux";
+import type { BackgroundColours } from "../features/backgroundReducer";
 
 import { useSingleMessage } from "../utils/table_design_logic";
 
@@ -8,7 +9,7 @@ export default function LOADING_SCREEN() {
 
     const loadingText = useSingleMessage("Loading...",40, "=", 80, true);
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     return (
         <>

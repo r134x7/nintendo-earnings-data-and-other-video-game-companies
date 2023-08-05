@@ -8,6 +8,7 @@ import { printJapanHardwareSoftware, printAmericasHardwareSoftware, printEuropeH
 import { printTopSellingTitles } from "../../data/nintendo/Nintendo_Cumulative_Data/top_selling_titles_cml_data";
 import { printConsolidatedSalesInfo } from "../../data/nintendo/Nintendo_Cumulative_Data/consolidated_sales_information_cml_data";
 import { filterTitles, printTextBlock, liner, filterTextAddToSet, type titleSet } from "../../utils/table_design_logic";
+import type { BackgroundColours } from "../../features/backgroundReducer";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 import { searchTitles } from "../../data/capcom/platinum_titles_Capcom";
@@ -24,7 +25,7 @@ export default function NINTENDO_CML() {
     const [timePeriod, setTimePeriod] = useState(6);
     const [timePeriodValue, setTimePeriodValue] = useState<string | null>("FY Cumulative" ?? "FY Cumulative");
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const allHardwareSoftwareHeader = "+−−−−−−−−−−−−−−−−−−−−+\n| Nintendo Co., Ltd. |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n| All Regions: Hardware & Software Units |\n+−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+\n";
 

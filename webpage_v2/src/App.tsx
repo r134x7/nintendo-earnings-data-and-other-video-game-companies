@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Outlet, NavLink } from 'react-router-dom'; // changed from BrowserRouter to HashRouter to solve client-side issue of refreshing causing 404 error due to GitHub Pages, source: https://create-react-app.dev/docs/deployment/#notes-on-client-side-routing
 
-import { ADD_BACKGROUND_COLOUR } from "./features/backgroundReducer";
+import { ADD_BACKGROUND_COLOUR, type BackgroundColours } from "./features/backgroundReducer";
 import { useSelector, useDispatch } from "react-redux";
 import {
   AppShell,
@@ -36,7 +36,7 @@ function App() {
   const [openDraw, setOpenDraw] = useState(false);
 
   const [colour, setColour] = useState("rgb(0, 255, 255)")
-  const state: any = useSelector(state => state);
+  const state = useSelector((state: BackgroundColours) => state);
 
   const [colorScheme, setColorScheme] = useState<ColorScheme>('dark'); // when pressing a specific icon it toggles the light/dark mode
   const toggleColorScheme = (value?: ColorScheme) =>

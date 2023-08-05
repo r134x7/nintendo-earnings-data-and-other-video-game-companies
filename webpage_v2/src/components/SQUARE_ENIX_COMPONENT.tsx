@@ -7,6 +7,7 @@ import { squareEnixAnnualReport } from "../data/generalTables/annual_report_gene
 import { squareEnixConsolidatedEarningsList, squareEnixConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { squareEnixLinks } from "../data/generalTables/data_sources_general";
 import { printTextBlock, liner, titleSetSearchFeatures } from "../utils/table_design_logic";
+import type { BackgroundColours } from "../features/backgroundReducer";
 
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
 import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
@@ -17,7 +18,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
 
     const [value, setValue] = useState("");
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const [titleValue, setTitleValue] = useState("");
     const [titlesLength, setTitlesLength] = useState(0);

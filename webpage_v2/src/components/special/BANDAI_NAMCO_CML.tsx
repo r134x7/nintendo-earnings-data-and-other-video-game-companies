@@ -6,6 +6,7 @@ import { cumulativeEarningsListBandaiNamco } from "../../data/generalTables/cons
 // import { fyTitlesBandaiNamco } from "../../data/generalTables/annual_report_cml_data";
 import { bandaiNamcoAnnualReportCml } from "../../data/generalTables/annual_report_cumulative";
 import { printTextBlock, liner, type titleSet } from "../../utils/table_design_logic";
+import type { BackgroundColours } from "../../features/backgroundReducer";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 import { filterTitles } from "../../utils/table_design_logic";
@@ -14,7 +15,7 @@ export default function BANDAI_NAMCO_CML() {
 
     const [value, setValue] = useState("");
 
-    const state: any = useSelector(state => state);
+    const state = useSelector((state: BackgroundColours) => state);
 
     const [titleValue, setTitleValue] = useState("");
     const [titlesLength, setTitlesLength] = useState(0)
