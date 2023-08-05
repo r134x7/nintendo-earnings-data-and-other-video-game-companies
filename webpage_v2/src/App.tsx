@@ -36,7 +36,9 @@ function App() {
   const [openDraw, setOpenDraw] = useState(false);
 
   const [colour, setColour] = useState("rgb(0, 255, 255)")
-  const state = useSelector((state: BackgroundColours) => state);
+
+  const stateColour = useSelector((state: BackgroundColours) => state.colour);
+  const stateFontColor = useSelector((state: BackgroundColours) => state.fontColor);
 
   const [colorScheme, setColorScheme] = useState<ColorScheme>('dark'); // when pressing a specific icon it toggles the light/dark mode
   const toggleColorScheme = (value?: ColorScheme) =>
@@ -120,12 +122,12 @@ function App() {
                 />
               </MediaQuery>
               <MediaQuery largerThan="sm" styles={{ display: "none"}}>
-                  <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000", padding:"1em", margin:0}}>
+                  <Code style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000", padding:"1em", margin:0}}>
                     ggx2ac + archives
                   </Code>
               </MediaQuery>
               <MediaQuery smallerThan={"sm"} styles={{ display: "none"}}>
-                  <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000", padding:"1em", margin:0}}>
+                  <Code style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000", padding:"1em", margin:0}}>
                     ggx2ac + archives: Nintendo earnings data and other video game companies
                   </Code>
               </MediaQuery>
@@ -142,13 +144,13 @@ function App() {
                     {colorScheme === "dark" ? "Light" : "Dark"}
                   </Button>
 
-                  <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
+                  <Code style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
                     {liner(printTextBlock("Set background theme to light or dark mode. Changing colour affects data background and single dataset charts where applicable.",38),"−","both",true,38)
                   }</Code>
 
                   <Paper mt={'xl'} p="xs" radius="xl" withBorder>
-                    <Code style={{backgroundColor:`${state.colour}`, color:(state.fontColor === "dark") ? "#fff" : "#000000"}} block>
-                      {liner(printTextBlock(`Colour: ${state.colour}`,34),"−","both",true,34)}</Code>
+                    <Code style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
+                      {liner(printTextBlock(`Colour: ${stateColour}`,34),"−","both",true,34)}</Code>
                   <ColorPicker 
                         withPicker={false}
                         size="lg"
