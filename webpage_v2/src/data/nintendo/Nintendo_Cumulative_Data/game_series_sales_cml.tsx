@@ -152,9 +152,12 @@ function gameSeriesSalesMaker(completeCollection: Map<number, collectionJSON>) {
         value.map((elem, index, array) => makeTitleSet.add(elem.title))
     })
 
-    console.log(makeTitleSet);
+    // console.log(makeTitleSet);
     
 }
 
-export const testData = gameSeriesSalesMaker(totalCollection)
+// export const testData = gameSeriesSalesMaker(totalCollection)
 
+/*
+    Postponing this until I can get data that accurately reflects series numbers.
+*/
