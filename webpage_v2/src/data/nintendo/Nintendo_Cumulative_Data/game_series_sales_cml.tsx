@@ -144,7 +144,17 @@ function gameSeriesSalesMaker(completeCollection: Map<number, collectionJSON>) {
 
     completeCollection.forEach((value, key, map) => makeData.set(key, fyTitlesMake(value)))
 
-    makeData.forEach((value) => console.log(value))
+    // makeData.forEach((value) => console.log(value))
+
+    const makeTitleSet = new Set<string>();
+
+    makeData.forEach((value, key, map) => {
+        value.map((elem, index, array) => makeTitleSet.add(elem.title))
+    })
+
+    console.log(makeTitleSet);
+    
 }
 
-const testData = gameSeriesSalesMaker(totalCollection)
+export const testData = gameSeriesSalesMaker(totalCollection)
+

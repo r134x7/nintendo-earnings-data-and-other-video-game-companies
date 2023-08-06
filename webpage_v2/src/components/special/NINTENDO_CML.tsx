@@ -12,6 +12,9 @@ import type { BackgroundColours } from "../../features/backgroundReducer";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 import { searchTitles } from "../../data/capcom/platinum_titles_Capcom";
+import { testData } from "../../data/nintendo/Nintendo_Cumulative_Data/game_series_sales_cml";
+console.log(testData);
+
 
 export default function NINTENDO_CML() {
 
