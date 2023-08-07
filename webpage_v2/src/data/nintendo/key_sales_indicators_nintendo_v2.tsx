@@ -9,21 +9,23 @@ import {
 
 import { headerPrint, printTextBlock, border, liner, spacer, dateLabel, type titleSet, globImport } from "../../utils/table_design_logic";
 
+export type KeySalesIndicator = {
+    name: string,
+    units: string,
+    Q1Value: number | string | null,
+    Q2Value: number | string | null,
+    Q3Value: number | string | null,
+    Q4Value: number | string | null,
+    Q2CmlValue: number | string | null,
+    Q3CmlValue: number | string | null,
+    Q4CmlValue: number | string | null,
+    footnote?: string,
+}
+
 export type KeySalesIndicatorsCollectionV2 = {
     currentQuarter: number,
     fiscalYear: string,
-    kpi: {
-            name: string,
-            units: string,
-            Q1Value: number | string | null,
-            Q2Value: number | string | null,
-            Q3Value: number | string | null,
-            Q4Value: number | string | null,
-            Q2CmlValue: number | string | null,
-            Q3CmlValue: number | string | null,
-            Q4CmlValue: number | string | null,
-            footnote?: string,
-    }[],
+    kpi: KeySalesIndicator[],
     consolidatedSales: {
             name: string,
             units: string,

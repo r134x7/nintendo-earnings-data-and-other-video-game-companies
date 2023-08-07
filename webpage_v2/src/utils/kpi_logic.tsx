@@ -1,8 +1,8 @@
 import { liner, border, spacer, printTextBlock, headerPrint, dateLabel } from "./table_design_logic"
 import { EarningsJSONV2, EarningsMakeV2, getData, nothingCheck, typeReturn } from "../data/generalTables/consolidated_earnings_general";
 
-import { type EarningsValue, type EarningsV2,  } from "./general_earnings_logic";
-import { type KeySalesIndicatorsCollectionV2 } from "../data/nintendo/key_sales_indicators_nintendo_v2";
+import { type EarningsValue, type EarningsV2, quarterlyCalculationV2 } from "./general_earnings_logic";
+import { type KeySalesIndicatorsCollectionV2, type KeySalesIndicator } from "../data/nintendo/key_sales_indicators_nintendo_v2";
 
 export type KPDIndicators = {
     name: string,
@@ -247,9 +247,9 @@ function printIndicators(collectionThisFY: KeySalesIndicatorsCollectionV2, colle
     //     ],headerLength) + "\n" + printDateLabel
     //     : ""
 
-    const dataThisFY = getData(collectionThisFY, collectionThisFY.data.length);
+    const dataThisFY = getDataV2(collectionThisFY, collectionThisFY.kpi.length);
 
-    const dataLastFY = getData(collectionLastFY, collectionThisFY.data.length);
+    const dataLastFY = getDataV2(collectionLastFY, collectionThisFY.kpi.length);
 }
 
 export function getDataV2<T extends EarningsJSONV2 | KeySalesIndicatorsCollectionV2>(dataCollectionThisFY: T | undefined, dataThisFYLengthForLastFY: number): Map<number, EarningsV2> {
@@ -267,7 +267,7 @@ export function getDataV2<T extends EarningsJSONV2 | KeySalesIndicatorsCollectio
                 const { kpi } = dataCollectionThisFY as KeySalesIndicatorsCollectionV2;
 
                 for (let index = 0; index < kpi.length; index++) {
-                    // dataMap.set(index, valuesMakeV3(kpi[index], dataCollectionThisFY.fiscalYear))
+                    dataMap.set(index, valuesMakeV3(kpi[index], dataCollectionThisFY.fiscalYear))
                 }
 
             } else if (Object.hasOwn(dataCollectionThisFY, "data")) {
@@ -284,11 +284,15 @@ export function getDataV2<T extends EarningsJSONV2 | KeySalesIndicatorsCollectio
         return dataMap;
 }
 
-export function valuesMakeV3<T extends EarningsMakeV2>(obj: T | undefined, fiscalYear: string): EarningsV2 {
+export function valuesMakeV3<T extends EarningsMakeV2 | KeySalesIndicator>(obj: T | undefined, fiscalYear: string): EarningsV2 {
 
-    let values: EarningsV2 = {
+    const { Q1CmlValue } = (!obj)
+        ? { Q1CmlValue: undefined }
+        : obj as EarningsMakeV2
+
+    const values: EarningsV2 = {
         name: obj?.name ?? "N/A",
-        Q1QtrValue: nothingCheck(obj?.Q1CmlValue, "Quarter", typeReturn(obj?.units), "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear),
+        Q1QtrValue: nothingCheck(Q1CmlValue, "Quarter", typeReturn(obj?.units), "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear),
         Q2QtrValue: quarterlyCalculationV2(
             nothingCheck(obj?.Q2CmlValue, "Quarter", typeReturn(obj?.units), "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
             nothingCheck(obj?.Q1CmlValue, "Quarter", typeReturn(obj?.units), "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear)
@@ -315,6 +319,7 @@ export function valuesMakeV3<T extends EarningsMakeV2>(obj: T | undefined, fisca
     }
 
     return values
+
 }
 
 /*
