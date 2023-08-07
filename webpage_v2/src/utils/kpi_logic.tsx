@@ -1,4 +1,7 @@
 import { liner, border, spacer, printTextBlock } from "./table_design_logic"
+
+import { type EarningsValue, type EarningsV2 } from "./general_earnings_logic";
+
 export type KPDIndicators = {
     name: string,
     category: "quarterly" | "cumulative", 
@@ -215,3 +218,38 @@ export const printNewBody = (header: Header, footer: Footer, quarterProportion: 
 
     return header.section + text + quarterOne + footer.section
 };
+
+// reusing EarningsV2 types should result in a lot of reusable functions.
+
+function printIndicators(proportion: EarningsV2, sales: EarningsV2, yearOnYearValues: EarningsV2): string {
+
+
+}
+
+/*
+
+print textblock
+liner border spacer
+find function that lets you print multiple columns
+printQuarterValuesV2
+printCumulativeValuesV2
+printYoYV2
+
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
+| Proportion of Overseas Sales                     |
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
+|              Proportion |       Sales |     YoY% |
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
+| 1st Quarter   |   79.9% |   ¥245,661M |   -2.26% |
+| 2nd Quarter   |   72.4% |   ¥253,048M |    +6.6% |
+| 3rd Quarter   |   76.8% |   ¥490,141M |  -11.52% |
+| 4th Quarter   |   80.6% |   ¥247,038M |  -15.79% |
++==================================================+
+| 1st Half      |   75.9% |   ¥498,643M |   +2.01% |
+| 1st 3/4       |   76.4% |   ¥989,516M |   -5.13% |
+| FY3/2023 Cml. |   77.2% | ¥1,236,495M |   -7.44% |
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
+| *Proportion of overseas (outside of Japan) sales |
+| to total sales                                   |
++−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−+
+*/
