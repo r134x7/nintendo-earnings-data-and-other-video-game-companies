@@ -1,6 +1,8 @@
-import { liner, border, spacer, printTextBlock } from "./table_design_logic"
+import { liner, border, spacer, printTextBlock, headerPrint, dateLabel } from "./table_design_logic"
+import { EarningsJSONV2, EarningsMakeV2, getData, nothingCheck, typeReturn } from "../data/generalTables/consolidated_earnings_general";
 
-import { type EarningsValue, type EarningsV2 } from "./general_earnings_logic";
+import { type EarningsValue, type EarningsV2,  } from "./general_earnings_logic";
+import { type KeySalesIndicatorsCollectionV2 } from "../data/nintendo/key_sales_indicators_nintendo_v2";
 
 export type KPDIndicators = {
     name: string,
@@ -221,9 +223,98 @@ export const printNewBody = (header: Header, footer: Footer, quarterProportion: 
 
 // reusing EarningsV2 types should result in a lot of reusable functions.
 
-function printIndicators(proportion: EarningsV2, sales: EarningsV2, yearOnYearValues: EarningsV2): string {
+function printIndicators(collectionThisFY: KeySalesIndicatorsCollectionV2, collectionLastFY: KeySalesIndicatorsCollectionV2 | undefined, headerLength: number,): string {
 
 
+    const currentQuarter = collectionThisFY.currentQuarter;
+
+    const none: EarningsValue = { kind:"Nothing" };
+
+    // const makeHeader: HeaderV2 = {
+    //     companyName: collectionThisFY.companyName,
+    //     fiscalYear: collectionThisFY.fiscalYear,
+    //     title: "Segment Information - Software Sales",
+    // } 
+
+    // const makeDateLabel = dateLabel(makeHeader.fiscalYear, currentQuarter);
+
+    // const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
+    // const printOne = (!removeHeader)
+    //     ? headerPrint([
+    //         makeHeader.companyName + " | " + makeHeader.fiscalYear,
+    //         makeHeader.title
+    //     ],headerLength) + "\n" + printDateLabel
+    //     : ""
+
+    const dataThisFY = getData(collectionThisFY, collectionThisFY.data.length);
+
+    const dataLastFY = getData(collectionLastFY, collectionThisFY.data.length);
+}
+
+export function getDataV2<T extends EarningsJSONV2 | KeySalesIndicatorsCollectionV2>(dataCollectionThisFY: T | undefined, dataThisFYLengthForLastFY: number): Map<number, EarningsV2> {
+
+    const dataMap = new Map<number, EarningsV2>();
+
+        if (!dataCollectionThisFY) {
+            for (let index = 0; index < dataThisFYLengthForLastFY; index++) {
+                dataMap.set(index, valuesMakeV3(undefined, ""))
+            }
+        } else {
+
+            if (Object.hasOwn(dataCollectionThisFY, "kpi")) {
+
+                const { kpi } = dataCollectionThisFY as KeySalesIndicatorsCollectionV2;
+
+                for (let index = 0; index < kpi.length; index++) {
+                    // dataMap.set(index, valuesMakeV3(kpi[index], dataCollectionThisFY.fiscalYear))
+                }
+
+            } else if (Object.hasOwn(dataCollectionThisFY, "data")) {
+
+                const { data } = dataCollectionThisFY as EarningsJSONV2;
+
+                for (let index = 0; index < data.length; index++) {
+                    dataMap.set(index, valuesMakeV3(data[index], dataCollectionThisFY.fiscalYear))
+                }
+            }
+
+        }
+
+        return dataMap;
+}
+
+export function valuesMakeV3<T extends EarningsMakeV2>(obj: T | undefined, fiscalYear: string): EarningsV2 {
+
+    let values: EarningsV2 = {
+        name: obj?.name ?? "N/A",
+        Q1QtrValue: nothingCheck(obj?.Q1CmlValue, "Quarter", typeReturn(obj?.units), "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear),
+        Q2QtrValue: quarterlyCalculationV2(
+            nothingCheck(obj?.Q2CmlValue, "Quarter", typeReturn(obj?.units), "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
+            nothingCheck(obj?.Q1CmlValue, "Quarter", typeReturn(obj?.units), "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear)
+        ),
+        Q3QtrValue: quarterlyCalculationV2(
+            nothingCheck(obj?.Q3CmlValue, "Quarter", typeReturn(obj?.units), "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
+            nothingCheck(obj?.Q2CmlValue, "Quarter", typeReturn(obj?.units), "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
+        ),
+        Q4QtrValue: quarterlyCalculationV2(
+            nothingCheck(obj?.Q4CmlValue, "Quarter", typeReturn(obj?.units), "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear),
+            nothingCheck(obj?.Q3CmlValue, "Quarter", typeReturn(obj?.units), "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
+            nothingCheck(obj?.Q2CmlValue, "Quarter", typeReturn(obj?.units), "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
+        ),
+        Q1CmlValue: nothingCheck(obj?.Q1CmlValue, "Cumulative", typeReturn(obj?.units), "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear),
+        Q2CmlValue: nothingCheck(obj?.Q2CmlValue, "Cumulative", typeReturn(obj?.units), "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
+        Q3CmlValue: nothingCheck(obj?.Q3CmlValue, "Cumulative", typeReturn(obj?.units), "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
+        Q4CmlValue: nothingCheck(obj?.Q4CmlValue, "Cumulative", typeReturn(obj?.units), "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear),
+        forecastThisFY: nothingCheck(obj?.forecastThisFY, "Forecast", typeReturn(obj?.units), "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear),
+        forecastRevision1: nothingCheck(obj?.forecastRevision1, "Forecast", typeReturn(obj?.units), "1st Quarter", "1st Quarter", "FCST Revision 1", fiscalYear),
+        forecastRevision2: nothingCheck(obj?.forecastRevision2, "Forecast", typeReturn(obj?.units), "1st Quarter", "1st Quarter", "FCST Revision 2", fiscalYear),
+        forecastRevision3: nothingCheck(obj?.forecastRevision3, "Forecast", typeReturn(obj?.units), "1st Quarter", "1st Quarter", "FCST Revision 3", fiscalYear),
+        forecastNextFY: nothingCheck(obj?.forecastNextFY, "Forecast", typeReturn(obj?.units), "1st Quarter", "1st Quarter", "Next FY FCST", fiscalYear),
+        footnotes: obj?.footnotes,
+    }
+
+    return values
 }
 
 /*
