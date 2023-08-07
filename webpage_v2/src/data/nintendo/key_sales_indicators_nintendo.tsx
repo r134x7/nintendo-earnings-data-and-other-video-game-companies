@@ -129,7 +129,7 @@ const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndic
     let indicatorsMake: KPDIndicators[][] = indicators.map((elem, index) => {
         return elem.map((value, indexValue) => {
 
-            return (value.name === "Proportion of Overseas Sales")
+            return (value.name === "Proportion of Overseas Sales" || value.name === "Proportion of Sales Outside of Japan")
                 ? {
                     ...value,
                     units: "currency",
@@ -153,7 +153,7 @@ const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndic
                     units: "currency",
                     value: Number(((value.value / 100) * softwareSalesMake[0][indexValue].value).toFixed(0)) // total digital sales 
                 }
-                : (value.name === "Proportion of Download version of Packaged Software")
+                : (value.name === "Proportion of Downloadable Versions of Packaged Software Sales")
                 ? {
                     ...value,
                     units: "currency",
