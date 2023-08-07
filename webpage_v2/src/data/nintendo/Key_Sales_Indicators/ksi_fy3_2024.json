@@ -80,18 +80,18 @@
         {
             "name": "Total Sales",
             "units": "currency",
-            "Q1Value": 307460,
-            "Q2Value": 656974,
-            "Q3Value": 1295178,
-            "Q4Value": 1601677
+            "Q1Value": 461341,
+            "Q2Value": 461341,
+            "Q3Value": 461341,
+            "Q4Value": 461341
         },
         {
             "name": "Dedicated video game platform",
             "units": "currency",
-            "Q1Value": 295670,
-            "Q2Value": 631412,
-            "Q3Value": 1252174,
-            "Q4Value": 1544920
+            "Q1Value": 427486,
+            "Q2Value": 427486,
+            "Q3Value": 427486,
+            "Q4Value": 427486
         }
     ]
 }
