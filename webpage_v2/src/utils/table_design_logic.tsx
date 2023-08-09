@@ -25,6 +25,35 @@ export type TitlesValue =
         table: string}
     | { kind: "Nothing" }
 
+function printTextBlockV2(getText: string, getLineLength: number): string {
+
+    const numberMap = new Map<number, string>();
+
+    getText.split(" ").map((elem, index, array) => {
+
+        let getSize = numberMap.size;
+
+        if (getSize === 0) {
+            numberMap.set(numberMap.size, elem)
+        } else if ((numberMap.get(numberMap.size-1) + " " + elem).length < getLineLength) {
+            numberMap.set(numberMap.size -1, numberMap.get(numberMap.size-1) + " " + elem)
+        } else {
+            numberMap.set(numberMap.size, elem)
+        }      
+    })
+        
+    numberMap.forEach((value, key, map) => {
+
+        if (key === numberMap.size-1) {
+            map.set(key, "|" + value + " ".repeat(getLineLength - value.length) + "|")
+        } else {
+            map.set(key, "|" + value + " ".repeat(getLineLength - value.length) + "|\n")
+        }
+    })
+
+    return [...numberMap.values()].join("") + "\n";
+}
+
 export const printTextBlock = (text: string | undefined, blockLength: number): string | undefined => {
     // to make liner work by not printing.
     if (text === undefined) {
