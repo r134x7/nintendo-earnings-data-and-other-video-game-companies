@@ -669,7 +669,8 @@ export function consolidatedEarningsMapDataForAnimation(collection: EarningsJSON
         header: header,
         dataThisFY: dataThisFY,
         dataLastFY: dataLastFY,
-        opMargin: opMargin
+        opMargin: opMargin,
+        percentagesThisFY: percentagesThisFY,
     }
     // return [
     //     makeDateLabel,
