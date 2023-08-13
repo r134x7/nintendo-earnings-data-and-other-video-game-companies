@@ -86,7 +86,7 @@ export function nothingCheck(
 
 const collectionNintendoV2 = globImport(new Map<number, EarningsJSONV2>(), import.meta.glob("../nintendo/Consolidated_Earnings/*.json", { import: "default", eager: true }), "YearDescSort");
 
-const collectionCapcomV2 = globImport(new Map<number, EarningsJSONV2>(), import.meta.glob("../capcom/Consolidated_Earnings/*.json", { import: "default", eager: true }), "Descending");
+export const collectionCapcomV2 = globImport(new Map<number, EarningsJSONV2>(), import.meta.glob("../capcom/Consolidated_Earnings/*.json", { import: "default", eager: true }), "Descending");
 
 const collectionBandaiNamcoV2 = globImport(new Map<number, EarningsJSONV2>(), import.meta.glob("../bandaiNamco/Consolidated_Earnings/*.json", { import: "default", eager: true }), "Descending");
 
@@ -594,3 +594,81 @@ function consolidatedEarningsGraphListV2(collection: EarningsJSONV2, lastFYColle
         ],
     };
 }
+
+export function consolidatedEarningsMapDataForAnimation(collection: EarningsJSONV2, lastFYCollection: EarningsJSONV2 | undefined): (string | Map<number, EarningsV2> | Header)[] {
+
+    // const currentQuarter = collection.currentQuarter;
+
+    const makeDateLabel = dateLabel(collection?.fiscalYear ?? "N/A", collection?.currentQuarter ?? 4);
+
+    const none: EarningsValue = { kind:"Nothing" };
+
+    // const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
+    const header: Header = {
+        companyName: collection.companyName,
+        fiscalYear: collection.fiscalYear,
+        title: (collection.companyName === "CAPCOM Co., Ltd." || collection.companyName === "SQUARE ENIX HOLDINGS CO., LTD.") ? "Consolidated Financial Results" : "Consolidated Operating Results",
+    };
+
+    const dataThisFY = getData(collection, collection.data.length);
+
+    const dataLastFY = getData(lastFYCollection, collection.data.length);
+
+    const percentagesThisFY = new Map<number, EarningsV2>(); 
+    dataThisFY.forEach((value, key, map) => {
+        percentagesThisFY.set(key, {
+            ...value,
+            Q1QtrValue: yearOnYearCalculationV2(value.Q1QtrValue, dataLastFY.get(key)?.Q1QtrValue ?? none, "Quarter"),
+            Q2QtrValue: yearOnYearCalculationV2(value.Q2QtrValue, dataLastFY.get(key)?.Q2QtrValue ?? none, "Quarter"),
+            Q3QtrValue: yearOnYearCalculationV2(value.Q3QtrValue, dataLastFY.get(key)?.Q3QtrValue ?? none, "Quarter"),
+            Q4QtrValue: yearOnYearCalculationV2(value.Q4QtrValue, dataLastFY.get(key)?.Q4QtrValue ?? none, "Quarter"),
+            Q1CmlValue: yearOnYearCalculationV2(value.Q1CmlValue, dataLastFY.get(key)?.Q1CmlValue ?? none, "Cumulative"),
+            Q2CmlValue: yearOnYearCalculationV2(value.Q2CmlValue, dataLastFY.get(key)?.Q2CmlValue ?? none, "Cumulative"),
+            Q3CmlValue: yearOnYearCalculationV2(value.Q3CmlValue, dataLastFY.get(key)?.Q3CmlValue ?? none, "Cumulative"),
+            Q4CmlValue: yearOnYearCalculationV2(value.Q4CmlValue, dataLastFY.get(key)?.Q4CmlValue ?? none, "Cumulative"),
+            forecastThisFY: yearOnYearCalculationV2(value.forecastThisFY, dataLastFY.get(key)?.forecastThisFY ?? none, "Forecast"),
+            forecastRevision1: yearOnYearCalculationV2(value.forecastRevision1, dataLastFY.get(key)?.forecastRevision1 ?? none, "Forecast"),
+            forecastRevision2: yearOnYearCalculationV2(value.forecastRevision2, dataLastFY.get(key)?.forecastRevision2 ?? none, "Forecast"),
+            forecastRevision3: yearOnYearCalculationV2(value.forecastRevision3, dataLastFY.get(key)?.forecastRevision3 ?? none, "Forecast"),
+            forecastNextFY: yearOnYearCalculationV2(value.forecastNextFY, dataLastFY.get(key)?.forecastNextFY ?? none, "Forecast"),
+        } satisfies EarningsV2
+        )
+    });
+
+    // const printOne = headerPrint([
+    //     header.companyName + " | " + header.fiscalYear,
+    //     header.title
+    // ],headerLength) + "\n" + printDateLabel;
+
+    const opMargin = new Map<number, EarningsV2>([
+        [0,
+            {
+                ...dataThisFY.get(1),
+                name: "Operating Margin",
+                Q1QtrValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q1QtrValue ?? none, dataThisFY.get(1)?.Q1QtrValue ?? none, "Quarter"),
+                Q2QtrValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q2QtrValue ?? none, dataThisFY.get(1)?.Q2QtrValue ?? none, "Quarter"),
+                Q3QtrValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q3QtrValue ?? none, dataThisFY.get(1)?.Q3QtrValue ?? none, "Quarter"),
+                Q4QtrValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q4QtrValue ?? none, dataThisFY.get(1)?.Q4QtrValue ?? none, "Quarter"),
+                Q1CmlValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q1CmlValue ?? none, dataThisFY.get(1)?.Q1CmlValue ?? none, "Cumulative"),
+                Q2CmlValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q2CmlValue ?? none, dataThisFY.get(1)?.Q2CmlValue ?? none, "Cumulative"),
+                Q3CmlValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q3CmlValue ?? none, dataThisFY.get(1)?.Q3CmlValue ?? none, "Cumulative"),
+                Q4CmlValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q4CmlValue ?? none, dataThisFY.get(1)?.Q4CmlValue ?? none, "Cumulative"),
+                forecastThisFY: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastThisFY ?? none, dataThisFY.get(1)?.forecastThisFY ?? none, "Forecast"), 
+                forecastRevision1: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastRevision1 ?? none, dataThisFY.get(1)?.forecastRevision1 ?? none, "Forecast"), 
+                forecastRevision2: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastRevision2 ?? none, dataThisFY.get(1)?.forecastRevision2 ?? none, "Forecast"), 
+                forecastRevision3: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastRevision3 ?? none, dataThisFY.get(1)?.forecastRevision3 ?? none, "Forecast"), 
+                forecastNextFY: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastNextFY ?? none, dataThisFY.get(1)?.forecastNextFY ?? none, "Forecast"), 
+            } satisfies EarningsV2
+        ]
+    ]);
+
+
+    return [
+        makeDateLabel,
+        header,
+        dataThisFY,
+        dataLastFY,
+        opMargin
+    ]
+};
