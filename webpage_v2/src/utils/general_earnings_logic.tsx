@@ -159,10 +159,12 @@ export function numberType(value: "Billion" | "Million" | "Thousand" | "None" | 
     }
 }
 
-export function printValuePrimitive(value: number, numberTypeInput: string, units: "¥" | "%" | "None" | undefined): string {
+export function printValuePrimitive(value: number, numberTypeInput: string, units: "¥" | "%" | "+%" | "None" | undefined): string {
 
     return (units === "%")
         ? `${value}${units}`
+        : (units === "+%")
+        ? `${value > 0 ? `+${value}` : value}%`
         : (units === "¥")
             ? `${units}${value.toLocaleString("en")}${numberTypeInput}`
             : `${value}${numberTypeInput}`
