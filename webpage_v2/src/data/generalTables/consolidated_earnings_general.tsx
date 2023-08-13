@@ -595,7 +595,7 @@ function consolidatedEarningsGraphListV2(collection: EarningsJSONV2, lastFYColle
     };
 }
 
-export function consolidatedEarningsMapDataForAnimation(collection: EarningsJSONV2, lastFYCollection: EarningsJSONV2 | undefined): (string | Map<number, EarningsV2> | Header)[] {
+export function consolidatedEarningsMapDataForAnimation(collection: EarningsJSONV2, lastFYCollection: EarningsJSONV2 | undefined) {
 
     // const currentQuarter = collection.currentQuarter;
 
@@ -664,11 +664,18 @@ export function consolidatedEarningsMapDataForAnimation(collection: EarningsJSON
     ]);
 
 
-    return [
-        makeDateLabel,
-        header,
-        dataThisFY,
-        dataLastFY,
-        opMargin
-    ]
+    return {
+        date: makeDateLabel,
+        header: header,
+        dataThisFY: dataThisFY,
+        dataLastFY: dataLastFY,
+        opMargin: opMargin
+    }
+    // return [
+    //     makeDateLabel,
+    //     header,
+    //     dataThisFY,
+    //     dataLastFY,
+    //     opMargin
+    // ]
 };
