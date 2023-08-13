@@ -98,6 +98,11 @@ export function quickYoYCalculate(numerator: number, divisor: number, fixedLengt
                     (numerator / divisor) -1) * 100).toFixed(fixedLength))
 }
 
+export function quickPercentage(numerator: number, divisor: number, fixedLength: number): number {
+
+    return Number(((numerator / divisor) * 100).toFixed(fixedLength))
+}
+
 export function yearOnYearCalculationV2(valueThisFY: EarningsValue, valueLastFY: EarningsValue, kind: "Quarter" | "Cumulative" | "Forecast"): EarningsValue {
 
     if ((valueThisFY.kind === kind && valueLastFY.kind === kind) && (valueThisFY.period === valueLastFY.period)) {
