@@ -172,7 +172,8 @@ collectionCapcomV2.forEach((value, key, map) => {
     capcomConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1)))
 });
 
-collectionCapcomV2.clear();
+// will need to make a function to not clear Map when exporting data to animation
+// collectionCapcomV2.clear();
 
 export const bandaiNamcoConsolidatedEarningsList = new Map<number, string>();
 
