@@ -2,7 +2,7 @@ import { generalSalesPerSoftwareUnitListV2Map, graphMakeV2 } from "../../utils/s
 import type { EarningsJSONV2, EarningsMakeV2 } from "../generalTables/consolidated_earnings_general";
 import { globImport } from "../../utils/table_design_logic";
 
-const collectionV2 = globImport(new Map<number, EarningsJSONV2>, import.meta.glob("./Software_Sales/*.json", { import: "default", eager: true }), "Descending");
+export const collectionV2 = globImport(new Map<number, EarningsJSONV2>, import.meta.glob("./Software_Sales/*.json", { import: "default", eager: true }), "Descending");
 
 export const softwareSalesList = new Map<number, string>();
 
