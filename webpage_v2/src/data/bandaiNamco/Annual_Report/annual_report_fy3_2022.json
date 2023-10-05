@@ -49,8 +49,8 @@
             "releaseDate": "February 2022",
             "fyEndMonth": "March 2022",
             "value": 13.4,
-            "valueLastFY": 0,
-            "valueLastTwoFYs": 0
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs": "Nothing" 
         }
     ]
 }

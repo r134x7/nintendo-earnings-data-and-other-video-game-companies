@@ -47,10 +47,10 @@
         {
             "title": "Elden Ring",
             "releaseDate": "February 2022",
-            "fyEndMonth": "February 2023",
+            "fyEndMonth": "FEB 2023",
             "value": 20.0,
             "valueLastFY": 13.4,
-            "valueLastTwoFYs": 0,
+            "valueLastTwoFYs": "Nothing",
             "footnotes": "Note: Sales up to February 2023 according to History section in Fact Book."
         }
     ]
