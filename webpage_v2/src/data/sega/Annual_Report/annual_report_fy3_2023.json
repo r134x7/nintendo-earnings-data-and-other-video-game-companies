@@ -5,7 +5,7 @@
         {
             "title": "Shin Megami Tensei",
             "firstReleaseYear": "1992",
-            "platforms": "Pachislot and Pachinko Machines, Consumer Games, Movies, Toys, etc.",
+            "platforms": "Pachislot and Pachinko Machines, Video Games, Movies, Toys, etc.",
             "totalEditions": 0,
             "ipType": "Acquired IP",
             "units": "(Units and downloads*)",
@@ -17,7 +17,7 @@
         {
             "title": "Persona",
             "firstReleaseYear": "1996",
-            "platforms": "Pachislot and Pachinko Machines, Consumer Games, Movies, Toys, etc.",
+            "platforms": "Pachislot and Pachinko Machines, Video Games, Movies, Toys, etc.",
             "totalEditions": 0,
             "ipType": "Acquired IP",
             "units": "(Units and downloads)",
@@ -29,7 +29,7 @@
         {
             "title": "Total War",
             "firstReleaseYear": "2000",
-            "platforms": "Consumer Games",
+            "platforms": "Video Games",
             "totalEditions": 0,
             "ipType": "Acquired IP",
             "units": "(Units and downloads)",
@@ -40,7 +40,7 @@
         {
             "title": "Football Manager",
             "firstReleaseYear": "2004",
-            "platforms": "Consumer Games",
+            "platforms": "Video Games",
             "totalEditions": 0,
             "ipType": "Acquired IP",
             "units": "(Units and downloads)",
@@ -51,7 +51,7 @@
         {
             "title": "Sonic the Hedgehog",
             "firstReleaseYear": "1991",
-            "platforms": "Pachislot and Pachinko Machines, Consumer Games, Movies, Amusement Machines, Toys, etc.",
+            "platforms": "Pachislot and Pachinko Machines, Video Games, Movies, Amusement Machines, Toys, etc.",
             "totalEditions": 0,
             "ipType": "Developed in-house IP",
             "units": "(Units and downloads*)",
@@ -63,7 +63,7 @@
         {
             "title": "Puyo Puyo",
             "firstReleaseYear": "1991**",
-            "platforms": "Pachislot and Pachinko Machines, Consumer Games, Movies, Amusement Machines, Toys, etc.",
+            "platforms": "Pachislot and Pachinko Machines, Video Games, Movies, Amusement Machines, Toys, etc.",
             "totalEditions": 0,
             "ipType": "Developed in-house IP",
             "units": "(Units and downloads*/IDs/users)",
@@ -75,7 +75,7 @@
         {
             "title": "Sakura Wars",
             "firstReleaseYear": "1996",
-            "platforms": "Pachislot and Pachinko Machines, Consumer Games, Movies, Amusement Machines",
+            "platforms": "Pachislot and Pachinko Machines, Video Games, Movies, Amusement Machines",
             "totalEditions": 0,
             "ipType": "Developed in-house IP",
             "units": "(Units and downloads)",
@@ -87,7 +87,7 @@
         {
             "title": "Ryu ga Gotoku",
             "firstReleaseYear": "2005",
-            "platforms": "Pachislot and Pachinko Machines, Consumer Games, Movies, Toys, etc.",
+            "platforms": "Pachislot and Pachinko Machines, Video Games, Movies, Toys, etc.",
             "totalEditions": 0,
             "ipType": "Developed in-house IP",
             "units": "(units)",
@@ -99,7 +99,7 @@
         {
             "title": "Virtua Fighter",
             "firstReleaseYear": "1993",
-            "platforms": "Pachislot and Pachinko Machines, Consumer Games, Movies, Amusement Machines, Toys, etc.",
+            "platforms": "Pachislot and Pachinko Machines, Video Games, Movies, Amusement Machines, Toys, etc.",
             "totalEditions": 0,
             "ipType": "Developed in-house IP",
             "units": "(Units and downloads/IDs)",
@@ -111,7 +111,7 @@
         {
             "title": "ALADDIN",
             "firstReleaseYear": "1989",
-            "platforms": "Pachislot and Pachinko Machines, Consumer Games, Toys, etc.",
+            "platforms": "Pachislot and Pachinko Machines, Video Games, Toys, etc.",
             "totalEditions": 0,
             "ipType": "Developed in-house IP",
             "units": "(units)",
@@ -123,7 +123,7 @@
         {
             "title": "Beast King",
             "firstReleaseYear": "2001",
-            "platforms": "Pachislot and Pachinko Machines, Consumer Games, Toys, etc.",
+            "platforms": "Pachislot and Pachinko Machines, Video Games, Toys, etc.",
             "totalEditions": 0,
             "ipType": "Developed in-house IP",
             "units": "(units)",
@@ -135,7 +135,7 @@
         {
             "title": "Phantasy Star",
             "firstReleaseYear": "1987",
-            "platforms": "Pachislot and Pachinko Machines, Consumer Games, Movies, Toys, etc.",
+            "platforms": "Pachislot and Pachinko Machines, Video Games, Movies, Toys, etc.",
             "totalEditions": 0,
             "ipType": "Developed in-house IP",
             "units": "(users)",
@@ -147,7 +147,7 @@
         {
             "title": "Chain Chronicle",
             "firstReleaseYear": "2013",
-            "platforms": "Pachislot and Pachinko Machines, Movies, Consumer Games",
+            "platforms": "Pachislot and Pachinko Machines, Movies, Video Games",
             "totalEditions": 0,
             "ipType": "Developed in-house IP",
             "units": "(Units and downloads*)",
@@ -159,7 +159,7 @@
         {
             "title": "SEGA feat. Hatsune Miku Project",
             "firstReleaseYear": "2009",
-            "platforms": "Consumer Games, Amusement Machines, Toys, etc.",
+            "platforms": "Video Games, Amusement Machines, Toys, etc.",
             "totalEditions": 0,
             "ipType": "Licensed third party IP",
             "units": "(Units and downloads*)",
@@ -171,7 +171,7 @@
         {
             "title": "Hokuto No Ken",
             "firstReleaseYear": "2002",
-            "platforms": "Pachislot and Pachinko Machines, Consumer Games, Movies, Amusement Machines, Toys, etc.",
+            "platforms": "Pachislot and Pachinko Machines, Video Games, Movies, Amusement Machines, Toys, etc.",
             "totalEditions": 0,
             "ipType":  "Licensed third party IP",
             "units": "(Units and downloads)",
@@ -183,7 +183,7 @@
         {
             "title": "SOUTEN-NO-KEN",
             "firstReleaseYear": "2009",
-            "platforms": "Pachislot and Pachinko Machines, Consumer Games, Toys, etc.",
+            "platforms": "Pachislot and Pachinko Machines, Video Games, Toys, etc.",
             "totalEditions": 0,
             "ipType": "Licensed third party IP",
             "units": "(units)",
