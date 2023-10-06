@@ -55,9 +55,9 @@
             "totalEditions": 0,
             "ipType": "Developed in-house IP",
             "units": "(Units and downloads*)",
-            "value": 1510.0,
-            "valueLastFY": 1380.0, 
-            "valueLastTwoFYs": 1140.0, 
+            "value": 1660.0,
+            "valueLastFY": 1510.0,
+            "valueLastTwoFYs": 1380.0, 
             "footnotes": "(Full games and F2P total). *Including downloads of free-to-play titles "
         },
         {
@@ -67,9 +67,9 @@
             "totalEditions": 0,
             "ipType": "Developed in-house IP",
             "units": "(Units and downloads*/IDs/users)",
-            "value": 37.7,
-            "valueLastFY": 35.0,
-            "valueLastTwoFYs": 32.0,
+            "value": 39.0,
+            "valueLastFY": 37.7,
+            "valueLastTwoFYs": 35.0,
             "footnotes": "*Including downloads of free-to-play titles (Full games and F2P, Amusement Machines-registered IDs total (Total for registrations after IP acquisition)). **SEGA CORPORATION acquired the rights in 1998. Figures for cumulative unit sales are the totals for titles that SEGA sold after acquiring the rights."
         },
         {
@@ -80,8 +80,8 @@
             "ipType": "Developed in-house IP",
             "units": "(Units and downloads)",
             "value": 5.8,
-            "valueLastFY": 5.7,
-            "valueLastTwoFYs": 4.1,
+            "valueLastFY": 5.8,
+            "valueLastTwoFYs": 5.7,
             "footnotes": "(Full games and F2P total)"
         },
         {
@@ -91,9 +91,9 @@
             "totalEditions": 0,
             "ipType": "Developed in-house IP",
             "units": "(units)",
-            "value": 19.8,
-            "valueLastFY": 17.0,
-            "valueLastTwoFYs": 14.0,
+            "value": 21.3,
+            "valueLastFY": 19.8,
+            "valueLastTwoFYs": 17.0,
             "footnotes": "(Full games total)"
         },
         {
@@ -104,8 +104,8 @@
             "ipType": "Developed in-house IP",
             "units": "(Units and downloads/IDs)",
             "value": 18.8,
-            "valueLastFY": 18.0,
-            "valueLastTwoFYs": 0.0,
+            "valueLastFY": 18.8,
+            "valueLastTwoFYs": 18.0,
             "footnotes": "(Full games and F2P total. Total number of IDs in Amusement Machines.)"
         },
         {
@@ -116,7 +116,7 @@
             "ipType": "Developed in-house IP",
             "units": "(units)",
             "value": 0.58,
-            "valueLastFY": 0.56,
+            "valueLastFY": 0.58,
             "valueLastTwoFYs": 0.56,
             "footnotes": "(pachislot and pachinko machines total)"
         },
@@ -139,9 +139,9 @@
             "totalEditions": 0,
             "ipType": "Developed in-house IP",
             "units": "(users)",
-            "value": 9.0,
+            "value": 10.0,
             "valueLastFY": 9.0,
-            "valueLastTwoFYs": 5.5,
+            "valueLastTwoFYs": 9.0,
             "footnotes": "Total for domestic and overseas versions of PHANTASY STAR ONLINE 2 and PHANTASY STAR ONLINE 2 NEW GENESIS"
         },
         {
@@ -151,9 +151,9 @@
             "totalEditions": 0,
             "ipType": "Developed in-house IP",
             "units": "(Units and downloads*)",
-            "value": 25.0,
+            "value": 26.0,
             "valueLastFY": 25.0,
-            "valueLastTwoFYs": 22.0,
+            "valueLastTwoFYs": 25.0,
             "footnotes": "(Full games and F2P total). *Including downloads of free-to-play titles "
         },
         {
