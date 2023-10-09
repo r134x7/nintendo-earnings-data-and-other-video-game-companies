@@ -173,7 +173,7 @@ collectionCapcomV2.forEach((value, key, map) => {
 });
 
 // will need to make a function to not clear Map when exporting data to animation
-// collectionCapcomV2.clear();
+collectionCapcomV2.clear();
 
 export const bandaiNamcoConsolidatedEarningsList = new Map<number, string>();
 

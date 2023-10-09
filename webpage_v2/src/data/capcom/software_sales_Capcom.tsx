@@ -59,4 +59,5 @@ collectionV2.forEach((value, key, map) => {
     }
 })
 
-// collectionV2.clear();
+// was commented out for exporting data to other project
+collectionV2.clear();
