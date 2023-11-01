@@ -33,7 +33,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
     */
 
     let correctFyForAnnualReports = -1;
-    let correctFyForFactBook = -2;
+    let correctFyForFactBook = -1;
 
     let allPlatinumTitlesIndex = allPlatinumTitlesList?.[props.setIndex];
 
