@@ -1,26 +1,28 @@
 {
     "fiscalYear": "FY3/2024",
     "companyName": "Bandai Namco Holdings Inc.",
-    "currentQuarter": 1,
+    "currentQuarter": 2,
     "data": [
         {
             "name": "Home video game",
             "units": "currency",
             "Q1CmlValue": 22.5,
-            "Q2CmlValue": "Nothing",
+            "Q2CmlValue": 65.5,
             "Q3CmlValue": "Nothing",
             "Q4CmlValue": "Nothing",
             "forecastThisFY": 170.0,
+            "forecastRevision1": 145.0,
             "footnotes": "*Sales might include: - Downloadable content purchases"
         },
         {
             "name": "Home video game",
             "units": "units",
             "Q1CmlValue": 7780,
-            "Q2CmlValue": "Nothing",
+            "Q2CmlValue": 18153,
             "Q3CmlValue": "Nothing",
             "Q4CmlValue": "Nothing",
-            "forecastThisFY": 48000
+            "forecastThisFY": 48000,
+            "forecastRevision1": 41500
         }
     ] 
 }
