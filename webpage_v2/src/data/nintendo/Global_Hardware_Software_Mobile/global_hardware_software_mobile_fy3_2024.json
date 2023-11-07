@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 1,
+    "currentQuarter": 2,
     "fiscalYear": "FY3/2024",
     "platformCmlSales": [
         {
@@ -15,15 +15,17 @@
             ]
         }
     ],
-    "platformUnitSales": [{"name":"Nintendo Switch Hardware Total","units":"units","Q1CmlValue":391,"Q2CmlValue":391,"Q3CmlValue":391,"Q4CmlValue":391,"cmlValueLastFY":12562},{"name":"Nintendo Switch","units":"units","Q1CmlValue":64,"Q2CmlValue":64,"Q3CmlValue":64,"Q4CmlValue":64,"cmlValueLastFY":8959},{"name":"Nintendo Switch OLED Model","units":"units","Q1CmlValue":283,"Q2CmlValue":283,"Q3CmlValue":283,"Q4CmlValue":283,"cmlValueLastFY":1502},{"name":"Nintendo Switch Lite","units":"units","Q1CmlValue":43,"Q2CmlValue":43,"Q3CmlValue":43,"Q4CmlValue":43,"cmlValueLastFY":2102},{"name":"Nintendo Switch Software Total","units":"units","Q1CmlValue":5221,"Q2CmlValue":5221,"Q3CmlValue":5221,"Q4CmlValue":5221,"cmlValueLastFY":103614}],
+    "platformUnitSales": [{"name":"Nintendo Switch Hardware Total","units":"units","Q1CmlValue":391,"Q2CmlValue":684,"Q3CmlValue":684,"Q4CmlValue":684,"cmlValueLastFY":12562},{"name":"Nintendo Switch","units":"units","Q1CmlValue":64,"Q2CmlValue":125,"Q3CmlValue":125,"Q4CmlValue":125,"cmlValueLastFY":8958},{"name":"Nintendo Switch OLED Model","units":"units","Q1CmlValue":283,"Q2CmlValue":469,"Q3CmlValue":469,"Q4CmlValue":469,"cmlValueLastFY":1502},{"name":"Nintendo Switch Lite","units":"units","Q1CmlValue":43,"Q2CmlValue":90,"Q3CmlValue":90,"Q4CmlValue":90,"cmlValueLastFY":2102},{"name":"Nintendo Switch Software Total","units":"units","Q1CmlValue":5221,"Q2CmlValue":9708,"Q3CmlValue":9708,"Q4CmlValue":9708,"cmlValueLastFY":103615}],
     "platformForecastSales": [
         {
             "name": "Nintendo Switch Hardware Total",
-            "forecastThisFY": 1500
+            "forecastThisFY": 1500,
+            "forecastRevision1": 1500
         },
         {
             "name": "Nintendo Switch Software Total",
             "forecastThisFY": 18000,
+            "forecastRevision1": 18500,
             "footnote": "Software sales units include both packaged and downloadable versions of software, and do not include download-only software or add-on content. The number of new titles is the number of packaged software. Actual software sales units include the quantity bundled with hardware or other products. Forecasted software sales units do not include the quantity to be bundled with hardware or other products"
         }
     ]
