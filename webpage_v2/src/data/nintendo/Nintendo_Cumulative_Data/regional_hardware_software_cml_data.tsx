@@ -14,7 +14,7 @@ const valueCheck = (value: number) => {
                         : `${value}M`;
 }
     
-    let totalCollectionSet: Section[][][] = totalCollection.map(elem => {
+    let totalCollectionSet: Section[][][] = totalCollection.filter(value => value.duplicateYearDataType !== "FY").map(elem => {
 
         let flatList = elem.regions.flat();
         
