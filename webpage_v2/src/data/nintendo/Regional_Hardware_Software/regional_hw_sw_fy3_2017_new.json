@@ -1,6 +1,7 @@
 {
     "currentQuarter": 4,
     "fiscalYear": "FY3/2017",
+    "duplicateYearDataType": "Special", 
     "regions": [
         {
             "name": "Nintendo Switch Hardware Total",

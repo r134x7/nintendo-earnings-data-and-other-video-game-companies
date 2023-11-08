@@ -1,6 +1,7 @@
 {
     "currentQuarter": 4,
     "fiscalYear": "FY3/2019",
+    "duplicateYearDataType": "Special",
     "regions": [
         {
             "name":"Nintendo Switch Hardware Total","regionA":"Global","Q1CmlValueA":188,"Q2CmlValueA":507,"Q3CmlValueA":1449,"Q4CmlValueA":1695,"valueALastFY":1779,"regionB":"Japan","Q1CmlValueB":50,"Q2CmlValueB":114,"Q3CmlValueB":336,"Q4CmlValueB":385,"valueBLastFY":438,"regionC":"The Americas","Q1CmlValueC":67,"Q2CmlValueC":200,"Q3CmlValueC":580,"Q4CmlValueC":688,"valueCLastFY":713,"regionD": "Europe",

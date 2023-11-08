@@ -11,7 +11,8 @@ import { headerPrint, dateLabel, liner, border, spacer, valueLimit, type titleSe
 export type jsonData = {
     currentQuarter: number,
     fiscalYear: string,
-    regions: regionData[]
+    regions: regionData[],
+    duplicateWithExtraData?: boolean,
 }
 
 export type RoundedZero = number | string; 
@@ -52,6 +53,8 @@ export type regionData = {
 }
 
 const collection: jsonData[] = [...globImport(new Map<number, jsonData>, import.meta.glob("./Regional_Hardware_Software/*.json", { import: "default", eager: true }), "Descending").values()]
+
+collection.filter((value, index, array) => value.duplicateWithExtraData === false ?? undefined)
 
 export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
 
