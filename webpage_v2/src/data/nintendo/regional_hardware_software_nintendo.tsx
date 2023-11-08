@@ -12,7 +12,7 @@ export type jsonData = {
     currentQuarter: number,
     fiscalYear: string,
     regions: regionData[],
-    duplicateWithExtraData?: boolean,
+    duplicateYearDataType?: string,
 }
 
 export type RoundedZero = number | string; 
@@ -53,8 +53,6 @@ export type regionData = {
 }
 
 const collection: jsonData[] = [...globImport(new Map<number, jsonData>, import.meta.glob("./Regional_Hardware_Software/*.json", { import: "default", eager: true }), "Descending").values()]
-
-collection.filter((value, index, array) => value.duplicateWithExtraData === false ?? undefined)
 
 export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
 
@@ -145,7 +143,9 @@ export const platformUnitsMake = (obj: undefined | regionData ): Section[] => {
     return sales
 };
 
-export const regionalHardwareSoftwareList = collection.map((elem, index, array) => {
+export const regionalHardwareSoftwareList = collection.filter(value => value.duplicateYearDataType !== "Special").map((elem, index, array) => {
+
+// export const regionalHardwareSoftwareList = collection.map((elem, index, array) => {
 
     let currentQuarter: number = elem.currentQuarter;
 
