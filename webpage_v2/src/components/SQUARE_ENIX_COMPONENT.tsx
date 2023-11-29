@@ -27,7 +27,7 @@ export default function SQUARE_ENIX_COMPONENT(props: {setIndex: number; yearLeng
 
     let predictText = new Set<string>();
 
-    let correctFyForAnnualReports = -2;
+    let correctFyForAnnualReports = -1;
 
     let annualReportIndex = squareEnixAnnualReport.get(props.setIndex + correctFyForAnnualReports);
 
