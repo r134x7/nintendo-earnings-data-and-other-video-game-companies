@@ -1,114 +1,101 @@
-Pokémon Scarlet/ Pokémon Violet
-2061
-694
-1367
-2061
-
-Pokémon Legends: Arceus
-199
-16
-183
-1463
-
-Splatoon 3
-1013
-632
-380
-1013
-
-Xenoblade Chronicles 3
-181
-50
-131
-181
-
-Nintendo Switch Sports
-861
-159
-702
-861
-
-SUPER MARIO ODYSSEY
-162
-19
-143
-2512
-
-Mario Kart 8 Deluxe
-666
-95
-571
-5200
-
-New Super Mario Bros. U Deluxe
-145
-13
-132
-1475
-
-Kirby and the Forgotten Land
-347
-77
-270
-612
-
-Super Mario 3D World + Bowser’s Fury
-139
-17
-122
-1082
-
-Animal Crossing: New Horizons
-295
-43
-252
-4159
-
-Ring Fit Adventure
-113
-33
-80
-1522
+The Legend of Zelda: Tears of the Kingdom
+2028
+364
+1664
+2028
 
 Mario Party Superstars
-250
+214
 34
-216
-938
+180
+1231
 
-Bayonetta 3
-104
-15
-88
-104
+Super Mario Bros. Wonder
+1196
+254
+943
+1196
 
-Mario Strikers: Battle League
-247
-17
-230
-247
+SUPER MARIO ODYSSEY
+190
+20
+170
+2765
 
-Luigi’s Mansion 3
-102
-13
-89
-1244
+Mario Kart 8 Deluxe
+679
+77
+603
+6058
 
 The Legend of Zelda: Breath of the Wild
-243
-34
-209
-2900
+180
+30
+150
+3161
+
+Pikmin 4
+333
+182
+151
+333
+
+Super Mario 3D World + Bowser’s Fury
+179
+15
+164
+1317
+
+Super Mario RPG
+314
+84
+230
+314
+
+New Super Mario Bros. U Deluxe
+178
+15
+163
+1720
+
+Nintendo Switch Sports
+288
+28
+260
+1248
 
 Super Mario Party
-101
-13
-88
-1879
+120
+18
+102
+2034
+
+Animal Crossing: New Horizons
+258
+49
+209
+4479
+
+Luigi’s Mansion 3
+115
+14
+102
+1398
 
 Super Smash Bros. Ultimate
-227
-48
-179
-3044
+257
+52
+206
+3367
 
+Splatoon 3
+104
+45
+60
+1171
+
+Pokémon Scarlet/ Pokémon Violet
+226
+69
+156
+2436
