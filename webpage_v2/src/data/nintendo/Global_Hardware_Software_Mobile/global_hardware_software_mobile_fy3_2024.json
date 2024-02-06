@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 2,
+    "currentQuarter": 3,
     "fiscalYear": "FY3/2024",
     "platformCmlSales": [
         {
@@ -7,26 +7,28 @@
             "units": "currency",
             "Q1CmlValue": 420961,
             "Q2CmlValue": 723369,
-            "Q3CmlValue": 723369,
-            "Q4CmlValue": 723369,
+            "Q3CmlValue": 1286406,
+            "Q4CmlValue": 1286406,
             "cmlValueLastFY": 7889956,
             "hardwareReference": [
                 "Nintendo Switch Hardware Total" 
             ]
         }
     ],
-    "platformUnitSales": [{"name":"Nintendo Switch Hardware Total","units":"units","Q1CmlValue":391,"Q2CmlValue":684,"Q3CmlValue":684,"Q4CmlValue":684,"cmlValueLastFY":12562},{"name":"Nintendo Switch","units":"units","Q1CmlValue":64,"Q2CmlValue":125,"Q3CmlValue":125,"Q4CmlValue":125,"cmlValueLastFY":8958},{"name":"Nintendo Switch OLED Model","units":"units","Q1CmlValue":283,"Q2CmlValue":469,"Q3CmlValue":469,"Q4CmlValue":469,"cmlValueLastFY":1502},{"name":"Nintendo Switch Lite","units":"units","Q1CmlValue":43,"Q2CmlValue":90,"Q3CmlValue":90,"Q4CmlValue":90,"cmlValueLastFY":2102},{"name":"Nintendo Switch Software Total","units":"units","Q1CmlValue":5221,"Q2CmlValue":9708,"Q3CmlValue":9708,"Q4CmlValue":9708,"cmlValueLastFY":103615}],
+    "platformUnitSales": [{"name":"Nintendo Switch Hardware Total","units":"units","Q1CmlValue":391,"Q2CmlValue":684,"Q3CmlValue":1374,"Q4CmlValue":1374,"cmlValueLastFY":12562},{"name":"Nintendo Switch","units":"units","Q1CmlValue":64,"Q2CmlValue":125,"Q3CmlValue":340,"Q4CmlValue":340,"cmlValueLastFY":8958},{"name":"Nintendo Switch OLED Model","units":"units","Q1CmlValue":283,"Q2CmlValue":469,"Q3CmlValue":817,"Q4CmlValue":817,"cmlValueLastFY":1501},{"name":"Nintendo Switch Lite","units":"units","Q1CmlValue":43,"Q2CmlValue":90,"Q3CmlValue":218,"Q4CmlValue":218,"cmlValueLastFY":2102},{"name":"Nintendo Switch Software Total","units":"units","Q1CmlValue":5221,"Q2CmlValue":9708,"Q3CmlValue":16395,"Q4CmlValue":16395,"cmlValueLastFY":103615}],
     "platformForecastSales": [
         {
             "name": "Nintendo Switch Hardware Total",
             "forecastThisFY": 1500,
-            "forecastRevision1": 1500
+            "forecastRevision1": 1500,
+            "forecastRevision2": 1550
         },
         {
             "name": "Nintendo Switch Software Total",
             "forecastThisFY": 18000,
             "forecastRevision1": 18500,
-            "footnote": "Software sales units include both packaged and downloadable versions of software, and do not include download-only software or add-on content. The number of new titles is the number of packaged software. Actual software sales units include the quantity bundled with hardware or other products. While forecasted software sales units include the quantity bundled with hardware or other products for six months ended September 30, 2023, they do not include the quantity to be bundled with hardware or other products on and after October 1, 2023."
+            "forecastRevision2": 19000,
+            "footnote": "Software sales units include both packaged and downloadable versions of software, and do not include download-only software or add-on content. The number of new titles is the number of packaged software. Actual software sales units include the quantity bundled with hardware or other products. While forecasted software sales units include the quantity bundled with hardware or other products for nine months ended December 31, 2023, they do not include the quantity to be bundled with hardware or other products on and after January 1, 2024."
         }
     ]
 }
