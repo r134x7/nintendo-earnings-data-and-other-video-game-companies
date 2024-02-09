@@ -1,38 +1,38 @@
 {
     "fiscalYear": "FY3/2024",
-    "currentQuarter": 2,
+    "currentQuarter": 3,
     "softwareUnits": [
         {
             "name": "Sonic series",
             "ip": "Sonic the Hedgehog",
             "Q1CmlValue": 1220,
             "Q2CmlValue": 2710,
-            "Q3CmlValue": 2710,
-            "Q4CmlValue": 2710 
+            "Q3CmlValue": 5050,
+            "Q4CmlValue": 5050 
         },
         {
             "name": "Total War series",
             "ip": "Total War",
             "Q1CmlValue": 310,
             "Q2CmlValue": 870,
-            "Q3CmlValue": 870,
-            "Q4CmlValue": 870 
+            "Q3CmlValue": 1490,
+            "Q4CmlValue": 1490 
         },
         {
             "name": "Persona series",
             "ip": "Persona",
             "Q1CmlValue": 630,
             "Q2CmlValue": 1380,
-            "Q3CmlValue": 1380,
-            "Q4CmlValue": 1380 
+            "Q3CmlValue": 2670,
+            "Q4CmlValue": 2670 
         },
         {
             "name": "Like a Dragon series",
             "ip": "Ryu ga Gotoku",
             "Q1CmlValue": 510,
             "Q2CmlValue": 1190,
-            "Q3CmlValue": 1190,
-            "Q4CmlValue": 1190, 
+            "Q3CmlValue": 2710,
+            "Q4CmlValue": 2710, 
             "miscellaneous": "*Like a Dragon series includes the Judgment series" 
         }
     ]
