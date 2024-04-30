@@ -1,6 +1,6 @@
 {
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "companyName": "KOEI TECMO HOLDINGS CO., LTD.",
     "fiscalYear": "FY3/2024",
-    "data":[{"name":"Net Sales","units":"currency","Q1CmlValue":18297,"Q2CmlValue":39722,"Q3CmlValue":61136,"Q4CmlValue":"Nothing","forecastThisFY":95000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":null},{"name":"Operating Income","units":"currency","Q1CmlValue":7506,"Q2CmlValue":13855,"Q3CmlValue":20316,"Q4CmlValue":"Nothing","forecastThisFY":37500,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":null},{"name":"Net Income","units":"currency","Q1CmlValue":10552,"Q2CmlValue":16795,"Q3CmlValue":24283,"Q4CmlValue":"Nothing","forecastThisFY":31000,"forecastRevision1":null,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":null}] 
+    "data":[{"name":"Net Sales","units":"currency","Q1CmlValue":18297,"Q2CmlValue":39722,"Q3CmlValue":61136,"Q4CmlValue":84584,"forecastThisFY":95000,"forecastRevision1":84000,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":90000},{"name":"Operating Income","units":"currency","Q1CmlValue":7506,"Q2CmlValue":13855,"Q3CmlValue":20316,"Q4CmlValue":28494,"forecastThisFY":37500,"forecastRevision1":27000,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":30000},{"name":"Net Income","units":"currency","Q1CmlValue":10552,"Q2CmlValue":16795,"Q3CmlValue":24283,"Q4CmlValue":33792,"forecastThisFY":31000,"forecastRevision1":32000,"forecastRevision2":null,"forecastRevision3":null,"forecastNextFY":30000}] 
 }
