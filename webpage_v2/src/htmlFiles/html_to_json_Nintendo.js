@@ -6,9 +6,9 @@ let currentQuarter = Number(process.argv[2]);
 
 let platformInput = process.argv[3];
 
-let filePathRead = "nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2024/nintendo_switch/"
+// let filePathRead = "nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2024/nintendo_switch/"
 // let filePathRead = "nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2024/wii_u/"
-// let filePathRead = "nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2024/nintendo_3ds/"
+let filePathRead = "nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2024/nintendo_3ds/"
 
 function platformMake (platformInputLocal) {
 
