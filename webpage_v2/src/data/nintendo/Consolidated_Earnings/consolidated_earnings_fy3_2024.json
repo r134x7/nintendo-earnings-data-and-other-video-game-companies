@@ -1,6 +1,6 @@
 {
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "companyName": "Nintendo Co., Ltd.",
     "fiscalYear": "FY3/2024",
-    "data": [{"name":"Net Sales","units":"currency","Q1CmlValue":461341,"Q2CmlValue":796237,"Q3CmlValue":1394796,"Q4CmlValue":"Nothing","forecastThisFY":1450000,"forecastRevision1":1580000,"forecastRevision2":1630000,"forecastRevision3":null,"forecastNextFY":null},{"name":"Operating Income","units":"currency","Q1CmlValue":185441,"Q2CmlValue":279910,"Q3CmlValue":464410,"Q4CmlValue":"Nothing","forecastThisFY":450000,"forecastRevision1":500000,"forecastRevision2":510000,"forecastRevision3":null,"forecastNextFY":null},{"name":"Net Income","units":"currency","Q1CmlValue":181019,"Q2CmlValue":271298,"Q3CmlValue":408041,"Q4CmlValue":"Nothing","forecastThisFY":340000,"forecastRevision1":420000,"forecastRevision2":440000,"forecastRevision3":null,"forecastNextFY":null}]
+    "data": [{"name":"Net Sales","units":"currency","Q1CmlValue":461341,"Q2CmlValue":796237,"Q3CmlValue":1394796,"Q4CmlValue":1671865,"forecastThisFY":1450000,"forecastRevision1":1580000,"forecastRevision2":1630000,"forecastRevision3":null,"forecastNextFY":1350000},{"name":"Operating Income","units":"currency","Q1CmlValue":185441,"Q2CmlValue":279910,"Q3CmlValue":464410,"Q4CmlValue":528941,"forecastThisFY":450000,"forecastRevision1":500000,"forecastRevision2":510000,"forecastRevision3":null,"forecastNextFY":400000},{"name":"Net Income","units":"currency","Q1CmlValue":181019,"Q2CmlValue":271298,"Q3CmlValue":408041,"Q4CmlValue":490602,"forecastThisFY":340000,"forecastRevision1":420000,"forecastRevision2":440000,"forecastRevision3":null,"forecastNextFY":300000}]
 }
