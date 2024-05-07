@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "fiscalYear": "FY3/2024",
     "platformSales": [
             {
@@ -8,8 +8,8 @@
                 "Q1CmlValue": 31857,
                 "Q2CmlValue": 55010,
                 "Q3CmlValue": 75248,
-                "Q4CmlValue": 75248,
-                "footnote": "Includes income from smart-device content and royalty income." 
+                "Q4CmlValue": 92748,
+                "footnote": "Includes income from visual content, smart-device content and royalties." 
             },
             {
                 "name": "Playing cards, etc.",
@@ -17,7 +17,8 @@
                 "Q1CmlValue": 1996,
                 "Q2CmlValue": 4459,
                 "Q3CmlValue": 8561,
-                "Q4CmlValue": 8561 
+                "Q4CmlValue": 11293,
+                "footnote": "Includes merchandise sales at official stores such as Nintendo TOKYO as well as playing cards."
             },
             {
                 "name": "Dedicated video game platform",
@@ -25,7 +26,7 @@
                 "Q1CmlValue": 427486,
                 "Q2CmlValue": 736767,
                 "Q3CmlValue": 1310987,
-                "Q4CmlValue": 1310987,
+                "Q4CmlValue": 1567824,
                 "footnote": "Includes Nintendo Switch platform and other dedicated video game platforms." 
             },
             {
@@ -34,7 +35,7 @@
                 "Q1CmlValue": 119600,
                 "Q2CmlValue": 217500,
                 "Q3CmlValue": 346400,
-                "Q4CmlValue": 346400,
+                "Q4CmlValue": 443300,
                 "footnote": "Includes downloadable versions of packaged software, download-only software, add-on content and Nintendo Switch Online." 
             },
             {
@@ -43,7 +44,7 @@
                 "Q1CmlValue": 420961,
                 "Q2CmlValue": 723369,
                 "Q3CmlValue": 1286406,
-                "Q4CmlValue": 1286406,
+                "Q4CmlValue": 1532438,
                 "cmlValueLastFY": 7889956,
                 "footnote": "Nintendo Switch platform includes hardware, software (including downloadable versions of packaged software, download-only software, add-on content and Nintendo Switch Online) and accessories" 
             },
@@ -53,7 +54,7 @@
                 "Q1CmlValue": 6525,
                 "Q2CmlValue": 13398,
                 "Q3CmlValue": 24580,
-                "Q4CmlValue": 24580,
+                "Q4CmlValue": 35386,
                 "footnote": "Includes platforms other than Nintendo Switch and also amiibo." 
             }
     ]
