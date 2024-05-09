@@ -4,27 +4,21 @@
     "series": [
         {
             "title": "PC units (digital)",
-            "releaseDate": "April 2023",
-            "fyEndMonth": "March 2024",
+            "skuNumber": 0,
             "value": 21.604,
-            "valueLastFY": 17.75,
-            "valueLastTwoFYs": 10.9   
+            "valueLastFY": 17.75
         },
         {
             "title": "Console units (digital)",
-            "releaseDate": "April 2023",
-            "fyEndMonth": "March 2024",
+            "skuNumber": 0,
             "value": 19.748,
-            "valueLastFY": 19.55,
-            "valueLastTwoFYs": 13.7
+            "valueLastFY": 19.55
         },
         {
             "title": "Package units",
-            "releaseDate": "April 2023",
-            "fyEndMonth": "March 2024",
+            "skuNumber": 0,
             "value": 4.541,
-            "valueLastFY": 4.4,
-            "valueLastTwoFYs": 8.0 
+            "valueLastFY": 4.4
         }
     ]
 }

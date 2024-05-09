@@ -3,10 +3,9 @@ import { Code, SegmentedControl, Select, TextInput, Button } from "@mantine/core
 import { useSelector } from "react-redux";
 import { allPlatinumTitlesList, fyPlatinumTitlesList } from "../data/capcom/platinum_titles_Capcom";
 // import { gameSeriesList } from "../data/capcom/game_series_sales_Capcom";
-import { capcomGameSeries } from "../data/generalTables/annual_report_general";
+import { capcomGameSeries, capcomFactBook, capcomUnitsHardware } from "../data/generalTables/annual_report_general";
 import { softwareSalesList, softwareSalesGraphList } from "../data/capcom/software_sales_Capcom";
 // import { platformSoftwareShipmentsList } from "../data/capcom/software_shipments_platform_Capcom";
-import { capcomFactBook } from "../data/generalTables/annual_report_general";
 import { capcomConsolidatedEarningsList, capcomConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { capcomLinks } from "../data/generalTables/data_sources_general";
 import { printTextBlock, liner, titleSetSearchFeatures, platformSearchFeatures } from "../utils/table_design_logic";
@@ -58,6 +57,8 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     let annualReportIndex = capcomFactBook.get(props.setIndex + correctFyForFactBook);
 
+    let unitsByHardwareIndex = capcomUnitsHardware.get(props.setIndex);
+
     let platformListsAll = new Set<string>();
     let platformListsFY = new Set<string>();
 
@@ -71,6 +72,8 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
     let gameSeriesCall = titleSetSearchFeatures(gameSeriesIndex, "FY Game Series", value, titleValue, predictText);
 
     let annualReportCall = titleSetSearchFeatures(annualReportIndex, "Software Platform Shipments", value, titleValue, predictText);
+
+    let unitsByHardwareCall = titleSetSearchFeatures(unitsByHardwareIndex, "Software Units By Hardware", value, titleValue, predictText)
 
     const textInputValues = [
         {
@@ -87,6 +90,12 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
         },
         {
            value: annualReportCall.sectionTitle,
+           placeholder: "Search specific platform",
+           label: `Platform Search - Sets of platforms shown: ${titlesLength}`,
+           description: "Clear field to show all platforms.", 
+        },
+        {
+           value: unitsByHardwareCall.sectionTitle,
            placeholder: "Search specific platform",
            label: `Platform Search - Sets of platforms shown: ${titlesLength}`,
            description: "Clear field to show all platforms.", 
@@ -143,6 +152,10 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
                 name: "Consolidated Financial Results",
                 value: capcomConsolidatedEarningsList.get(index),
                 graph: <GRAPH_CONSOLIDATED_EARNINGS setData={capcomConsolidatedEarningsGraphList.get(index)} />
+            },
+            {
+                name: "Software Units By Hardware",
+                value: unitsByHardwareCall.table,
             },
             {
                 name: "Software Sales",

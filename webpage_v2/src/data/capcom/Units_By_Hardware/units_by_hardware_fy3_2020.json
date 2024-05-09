@@ -4,27 +4,21 @@
     "series": [
         {
             "title": "PC units (digital)",
-            "releaseDate": "April 2019",
-            "fyEndMonth": "March 2020",
+            "skuNumber": 0,
             "value": 8.65,
-            "valueLastFY": "Nothing",
-            "valueLastTwoFYs": "Nothing" 
+            "valueLastFY": "Nothing"
         },
         {
             "title": "Console units (digital)",
-            "releaseDate": "April 2019",
-            "fyEndMonth": "March 2020",
+            "skuNumber": 0,
             "value": 11.9,
-            "valueLastFY": "Nothing",
-            "valueLastTwoFYs": "Nothing" 
+            "valueLastFY": "Nothing"
         },
         {
             "title": "Package units",
-            "releaseDate": "April 2019",
-            "fyEndMonth": "March 2020",
+            "skuNumber": 0,
             "value": 4.95,
-            "valueLastFY": "Nothing",
-            "valueLastTwoFYs": "Nothing" 
+            "valueLastFY": "Nothing"
         }
     ]
 }
