@@ -1,0 +1,30 @@
+{
+    "companyName": "CAPCOM Co., Ltd.",
+    "fiscalYear": "FY3/2022",
+    "series": [
+        {
+            "title": "PC units (digital)",
+            "releaseDate": "April 2021",
+            "fyEndMonth": "March 2022",
+            "value": 10.9,
+            "valueLastFY": 8.0,
+            "valueLastTwoFYs": 8.65 
+        },
+        {
+            "title": "Console units (digital)",
+            "releaseDate": "April 2021",
+            "fyEndMonth": "March 2022",
+            "value": 13.7,
+            "valueLastFY": 15.15,
+            "valueLastTwoFYs": 11.9 
+        },
+        {
+            "title": "Package units",
+            "releaseDate": "April 2021",
+            "fyEndMonth": "March 2022",
+            "value": 8.0,
+            "valueLastFY": 6.95,
+            "valueLastTwoFYs": 4.95 
+        }
+    ]
+}

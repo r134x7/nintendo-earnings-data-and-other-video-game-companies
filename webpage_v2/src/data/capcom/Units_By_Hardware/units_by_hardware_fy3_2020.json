@@ -1,0 +1,30 @@
+{
+    "companyName": "CAPCOM Co., Ltd.",
+    "fiscalYear": "FY3/2020",
+    "series": [
+        {
+            "title": "PC units (digital)",
+            "releaseDate": "April 2019",
+            "fyEndMonth": "March 2020",
+            "value": 8.65,
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs": "Nothing" 
+        },
+        {
+            "title": "Console units (digital)",
+            "releaseDate": "April 2019",
+            "fyEndMonth": "March 2020",
+            "value": 11.9,
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs": "Nothing" 
+        },
+        {
+            "title": "Package units",
+            "releaseDate": "April 2019",
+            "fyEndMonth": "March 2020",
+            "value": 4.95,
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs": "Nothing" 
+        }
+    ]
+}
