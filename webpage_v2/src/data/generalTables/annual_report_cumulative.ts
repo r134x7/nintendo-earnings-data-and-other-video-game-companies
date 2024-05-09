@@ -16,6 +16,8 @@ const collectionCapcomGameSeries = globImport(new Map<number, SeriesJSON>, impor
 
 const collectionCapcomFactBook = globImport(new Map<number, SeriesJSON>, import.meta.glob("../capcom/Fact_Book/*.json", { import: "default", eager: true }), "Ascending");
 
+const collectionCapcomUnitsHardware= globImport(new Map<number, SeriesJSON>, import.meta.glob("../capcom/Units_By_Hardware/*.json", { import: "default", eager: true }), "Ascending");
+
 const bandaiNamcoTitleChange = new Map<string, string>([
     // [new, old]
     ["Naruto-related", "Ultimate Ninja Storm"]
@@ -33,6 +35,8 @@ export const capcomGameSeriesCml = annualReportCumulative(collectionCapcomGameSe
 
 export const capcomFactBookCml = annualReportCumulative(collectionCapcomFactBook, 38, "Capcom Fact Book");
 
+export const capcomUnitsHardwareCml = annualReportCumulative(collectionCapcomUnitsHardware, 38, "Capcom Fact Book");
+
 collectionBandaiNamco.clear();
 bandaiNamcoTitleChange.clear();
 collectionSquareEnix.clear();
@@ -40,6 +44,7 @@ collectionSega.clear();
 segaTitleChange.clear();
 collectionCapcomGameSeries.clear();
 collectionCapcomFactBook.clear();
+collectionCapcomUnitsHardware.clear();
 
 function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, headerLength: number, 
     kind: "General" | "Sega" | "Capcom Game Series" | "Capcom Fact Book",

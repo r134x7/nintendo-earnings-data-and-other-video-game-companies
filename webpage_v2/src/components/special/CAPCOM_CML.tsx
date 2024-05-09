@@ -5,7 +5,7 @@ import { platinumTitlesCML } from "../../data/capcom/platinum_titles_Capcom";
 import { CapcomSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListCapcom } from "../../data/generalTables/consolidated_earnings_cml_data";
 // import { gameSeriesCapcom } from "../../data/capcom/game_series_sales_capcom_cml_data";
-import { capcomGameSeriesCml, capcomFactBookCml } from "../../data/generalTables/annual_report_cumulative";
+import { capcomGameSeriesCml, capcomFactBookCml, capcomUnitsHardwareCml } from "../../data/generalTables/annual_report_cumulative";
 // import { factBookCapcom } from "../../data/capcom/software_shipments_capcom_cml_data";
 import { filterTitles, printTextBlock, liner, type titleSet } from "../../utils/table_design_logic";
 import type { BackgroundColours } from "../../features/backgroundReducer";
@@ -58,6 +58,8 @@ export default function CAPCOM_CML() {
     let softwareShipmentsFilter = filterTitles<titleSet>(capcomFactBookCml.titleList, titleValue);
     // console.log(filterPlatinumTitles.map(elem => elem.title));
 
+    let unitsHardwareFilter = filterTitles<titleSet>(capcomUnitsHardwareCml.titleList, titleValue);
+
     let predictText = new Set<string>();
 
     // regex pattern needed to match a whole word... requires RegExp constructor to enable dynamic input
@@ -67,6 +69,8 @@ export default function CAPCOM_CML() {
         gameSeriesFilter.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(setValue => predictText.add(setValue)))
     } else if (titleValue.length !== 0 && value === "Capcom Software Platform Shipments - Cumulative") {
         softwareShipmentsFilter.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(setValue => predictText.add(setValue)))
+    } else if (titleValue.length !== 0 && value === "Capcom Software Units By Hardware - Cumulative") {
+        unitsHardwareFilter.map(elem => [...elem.title.toLowerCase().matchAll(new RegExp(`(?=\\w*${titleValue})\\w+`,"g"))].flat().map(setValue => predictText.add(setValue)))
     }
 
     // let textBox: string[] = [];
@@ -105,6 +109,10 @@ export default function CAPCOM_CML() {
 
     let softwareShipmentsList = capcomFactBookCml.header + softwareShipmentsReduce;
 
+    let unitsHardwareReduce = unitsHardwareFilter.reduce((acc, next) => acc + next.table,"");
+
+    let unitsHardwareList = capcomUnitsHardwareCml.header + unitsHardwareReduce;
+
     const textInputValues = [
         {
            value: "Capcom Platinum Titles - Cumulative",
@@ -120,6 +128,12 @@ export default function CAPCOM_CML() {
         },
         {
            value: "Capcom Software Platform Shipments - Cumulative",
+           placeholder: "Search specific platform",
+           label: `Platform Search - Sets of platforms shown: ${titlesLength}`,
+           description: "Clear field to show all platforms.", 
+        },
+        {
+           value: "Capcom Software Units By Hardware - Cumulative",
            placeholder: "Search specific platform",
            label: `Platform Search - Sets of platforms shown: ${titlesLength}`,
            description: "Clear field to show all platforms.", 
@@ -181,6 +195,10 @@ export default function CAPCOM_CML() {
                 setTitlesLength(softwareShipmentsFilter.length)
                 break;
 
+            case "Capcom Software Units By Hardware - Cumulative":
+                setTitlesLength(unitsHardwareFilter.length)
+                break;
+
             default:
                 break;
         }
@@ -206,6 +224,11 @@ export default function CAPCOM_CML() {
             name: "Capcom Software Platform Shipments - Cumulative",
             // value: factBookCapcom 
             value: softwareShipmentsList
+        },
+        {
+            name: "Capcom Software Units By Hardware - Cumulative",
+            // value: factBookCapcom 
+            value: unitsHardwareList 
         },
         {
             name: "Capcom FY Game Series - Cumulative",
@@ -292,7 +315,7 @@ export default function CAPCOM_CML() {
                   /> 
                     : undefined
                 }
-                {(value === "Capcom Platinum Titles - Cumulative" || value === "Capcom FY Game Series - Cumulative" || value === "Capcom Software Platform Shipments - Cumulative")
+                {(value === "Capcom Platinum Titles - Cumulative" || value === "Capcom FY Game Series - Cumulative" || value === "Capcom Software Platform Shipments - Cumulative" || value === "Capcom Software Units By Hardware - Cumulative")
                     ? <>
                     <TextInput
                     placeholder={textInputValues[0].placeholder}
