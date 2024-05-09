@@ -1,7 +1,7 @@
 {
     "fiscalYear": "FY3/2024",
     "companyName": "CAPCOM Co., Ltd.",
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "data": [
         {
             "name": "Digital Contents - Package & Digital",
@@ -9,9 +9,9 @@
             "Q1CmlValue": 374,
             "Q2CmlValue": 597,
             "Q3CmlValue": 790,
-            "Q4CmlValue": "Nothing",
+            "Q4CmlValue": 1162,
             "forecastThisFY": 1034,
-            "forecastNextFY": "Nothing",
+            "forecastNextFY": 1211,
             "footnotes": "*Sales includes: - Downloadable content purchases"
         },
         {
@@ -20,9 +20,9 @@
             "Q1CmlValue": 13500,
             "Q2CmlValue": 22600,
             "Q3CmlValue": 32600,
-            "Q4CmlValue": "Nothing",
+            "Q4CmlValue": 45893,
             "forecastThisFY": 45000,
-            "forecastNextFY": "Nothing" 
+            "forecastNextFY": 50000 
         },
         {
             "name": "Package",
@@ -30,9 +30,9 @@
             "Q1CmlValue": 89,
             "Q2CmlValue": 120,
             "Q3CmlValue": 141,
-            "Q4CmlValue": "Nothing", 
+            "Q4CmlValue": 193, 
             "forecastThisFY": 125, 
-            "forecastNextFY": "Nothing" 
+            "forecastNextFY": 144 
         },
         {
             "name": "Package",
@@ -40,9 +40,9 @@
             "Q1CmlValue": 1900,
             "Q2CmlValue": 2600,
             "Q3CmlValue": 3300,
-            "Q4CmlValue": "Nothing", 
+            "Q4CmlValue": 4541, 
             "forecastThisFY": 2500,
-            "forecastNextFY":"Nothing" 
+            "forecastNextFY": 3400
         },
         {
             "name": "Digital",
@@ -50,9 +50,9 @@
             "Q1CmlValue": 285,
             "Q2CmlValue": 476,
             "Q3CmlValue": 648,
-            "Q4CmlValue": "Nothing",
+            "Q4CmlValue": 969,
             "forecastThisFY": 909,
-            "forecastNextFY": "Nothing",
+            "forecastNextFY": 1066,
             "footnotes": "*Sales includes: - Downloadable content purchases"
         },
         {
@@ -61,9 +61,9 @@
             "Q1CmlValue": 11600,
             "Q2CmlValue": 20000,
             "Q3CmlValue": 29300,
-            "Q4CmlValue": "Nothing", 
+            "Q4CmlValue": 41352, 
             "forecastThisFY": 42500,
-            "forecastNextFY":"Nothing" 
+            "forecastNextFY": 46600
         }
     ] 
 }   
