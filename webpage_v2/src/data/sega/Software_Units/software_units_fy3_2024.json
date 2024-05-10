@@ -1,6 +1,6 @@
 {
     "fiscalYear": "FY3/2024",
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "softwareUnits": [
         {
             "name": "Sonic series",
@@ -8,7 +8,7 @@
             "Q1CmlValue": 1220,
             "Q2CmlValue": 2710,
             "Q3CmlValue": 5050,
-            "Q4CmlValue": 5050 
+            "Q4CmlValue": 5920
         },
         {
             "name": "Total War series",
@@ -16,7 +16,7 @@
             "Q1CmlValue": 310,
             "Q2CmlValue": 870,
             "Q3CmlValue": 1490,
-            "Q4CmlValue": 1490 
+            "Q4CmlValue": 1910
         },
         {
             "name": "Persona series",
@@ -24,7 +24,7 @@
             "Q1CmlValue": 630,
             "Q2CmlValue": 1380,
             "Q3CmlValue": 2670,
-            "Q4CmlValue": 2670 
+            "Q4CmlValue": 5060
         },
         {
             "name": "Like a Dragon series",
@@ -32,8 +32,35 @@
             "Q1CmlValue": 510,
             "Q2CmlValue": 1190,
             "Q3CmlValue": 2710,
-            "Q4CmlValue": 2710, 
+            "Q4CmlValue": 5360, 
             "miscellaneous": "*Like a Dragon series includes the Judgment series" 
+        },
+        {
+            "name": "Like a Dragon: Infinite ∞ Wealth",
+            "ip": "N/A",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 1000, 
+            "miscellaneous": "Sales in first week after launch. *Calculated by SEGA internally. The unit sales are the total number of physical units shipped to retailers and downloadable units sold to consumers, across sales on all platforms"
+        },
+        {
+            "name": "Persona 3 Reload",
+            "ip": "N/A",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 1000, 
+            "miscellaneous": "Sales in first week after launch. *The total number of physical units shipped to retailers and downloadable units sold worldwide"
+        },
+        {
+            "name": "Unicorn Overlord",
+            "ip": "N/A",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 500, 
+            "miscellaneous": "*The total number of physical units shipped to retailers and downloadable units sold worldwide"
         }
     ]
 }
