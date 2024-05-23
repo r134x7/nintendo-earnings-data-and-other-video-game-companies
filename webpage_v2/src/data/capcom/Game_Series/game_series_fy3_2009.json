@@ -1,134 +1,126 @@
 {
     "companyName": "CAPCOM Co., Ltd.",
-    "fiscalYear": "FY3/2011",
+    "fiscalYear": "FY3/2009",
     "series": [
         {
             "title": "1942",
             "numberOfTitles": 3,
             "releaseDate": "November 1984",
             "value": 1.2,
-            "valueLastFY": 1.2,
-            "valueLastTwoFYs": 1.2
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Commando",
             "numberOfTitles": 2,
             "releaseDate": "April 1985",
             "value": 1.2,
-            "valueLastFY": 1.2,
-            "valueLastTwoFYs": 1.2 
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Ghosts’n Goblins",
             "numberOfTitles": 14,
             "releaseDate": "July 1985",
             "value": 4.1,
-            "valueLastFY": 4.1,
-            "valueLastTwoFYs": 4.1
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Mega Man",
-            "numberOfTitles": 129,
+            "numberOfTitles": 124,
             "releaseDate": "December 1987",
             "value": 28.0,
-            "valueLastFY": 28.0,
-            "valueLastTwoFYs": 28.0 
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Street Fighter",
-            "numberOfTitles": 68,
+            "numberOfTitles": 62,
             "releaseDate": "August 1987",
-            "value": 31.0,
-            "valueLastFY": 31.0,
-            "valueLastTwoFYs": 27.0 
+            "value": 27.0,
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Final Fight",
             "numberOfTitles": 10,
             "releaseDate": "November 1989",
             "value": 3.2,
-            "valueLastFY": 3.2,
-            "valueLastTwoFYs": 3.2
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Breath of Fire",
             "numberOfTitles": 15,
             "releaseDate": "April 1993",
             "value": 3.0,
-            "valueLastFY": 3.0,
-            "valueLastTwoFYs": 3.0
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Resident Evil",
-            "numberOfTitles": 66,
+            "numberOfTitles": 56,
             "releaseDate": "March 1996",
-            "value": 46.0,
-            "valueLastFY": 46.0,
-            "valueLastTwoFYs": 40.0
+            "value": 40.0,
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Dino Crisis",
             "numberOfTitles": 13,
             "releaseDate": "July 1999",
             "value": 4.4,
-            "valueLastFY": 4.4,
-            "valueLastTwoFYs": 4.4
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Onimusha",
             "numberOfTitles": 12,
             "releaseDate": "January 2001",
-            "value": 7.9,
-            "valueLastFY": 7.9,
-            "valueLastTwoFYs": 7.8
+            "value": 7.8,
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Devil May Cry",
-            "numberOfTitles": 13,
+            "numberOfTitles": 11,
             "releaseDate": "August 2001",
             "value": 10.0,
-            "valueLastFY": 10.0,
-            "valueLastTwoFYs": 10.0
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Ace Attorney",
-            "numberOfTitles": 15,
+            "numberOfTitles": 12,
             "releaseDate": "August 2001",
-            "value": 4.2,
-            "valueLastFY": 4.2,
-            "valueLastTwoFYs": 3.2
+            "value": 3.2,
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Monster Hunter",
-            "numberOfTitles": 17,
+            "numberOfTitles": 11,
             "releaseDate": "March 2004",
-            "value": 18.0,
-            "valueLastFY": 18.0,
-            "valueLastTwoFYs": 8.5
+            "value": 8.5,
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Sengoku Basara",
-            "numberOfTitles": 17,
+            "numberOfTitles": 10,
             "releaseDate": "July 2005",
-            "value": 2.5,
-            "valueLastFY": 2.5,
-            "valueLastTwoFYs": 1.2
+            "value": 1.2,
+            "valueLastFY": "Nothing",
+            "valueLastTwoFYs":"Nothing" 
         },
         {
             "title": "Lost Planet",
-            "numberOfTitles": 13,
+            "numberOfTitles": 7,
             "releaseDate": "December 2006",
-            "value": 4.7,
-            "valueLastFY": 4.7,
-            "valueLastTwoFYs": 2.7
-        },
-        {
-            "title": "Dead Rising",
-            "numberOfTitles": 6,
-            "releaseDate": "August 2006",
-            "value": 4.5,
+            "value": 2.7,
             "valueLastFY": "Nothing",
-            "valueLastTwoFYs":"Nothing"
+            "valueLastTwoFYs":"Nothing" 
         }
     ],
     "footnotes": "Game Series unit sales numbers are rounded down by 100k units when a series is less than 10M units or, unit sales numbers are rounded down by 1M units when a series is 10M units or greater."

@@ -7,7 +7,7 @@
             "numberOfTitles": 3,
             "releaseDate": "November 1984",
             "value": 1.2,
-            "valueLastFY": "Nothing",
+            "valueLastFY": 1.2,
             "valueLastTwoFYs":"Nothing" 
         },
         {
@@ -15,7 +15,7 @@
             "numberOfTitles": 2,
             "releaseDate": "April 1985",
             "value": 1.2,
-            "valueLastFY": "Nothing",
+            "valueLastFY": 1.2,
             "valueLastTwoFYs":"Nothing" 
         },
         {
@@ -23,7 +23,7 @@
             "numberOfTitles": 14,
             "releaseDate": "July 1985",
             "value": 4.1,
-            "valueLastFY": "Nothing",
+            "valueLastFY": 4.1,
             "valueLastTwoFYs":"Nothing" 
         },
         {
@@ -31,7 +31,7 @@
             "numberOfTitles": 129,
             "releaseDate": "December 1987",
             "value": 28.0,
-            "valueLastFY": "Nothing",
+            "valueLastFY": 28.0,
             "valueLastTwoFYs":"Nothing" 
         },
         {
@@ -39,7 +39,7 @@
             "numberOfTitles": 68,
             "releaseDate": "August 1987",
             "value": 31.0,
-            "valueLastFY": "Nothing",
+            "valueLastFY": 27.0,
             "valueLastTwoFYs":"Nothing" 
         },
         {
@@ -47,7 +47,7 @@
             "numberOfTitles": 10,
             "releaseDate": "November 1989",
             "value": 3.2,
-            "valueLastFY": "Nothing",
+            "valueLastFY": 3.2,
             "valueLastTwoFYs":"Nothing" 
         },
         {
@@ -55,7 +55,7 @@
             "numberOfTitles": 15,
             "releaseDate": "April 1993",
             "value": 3.0,
-            "valueLastFY": "Nothing",
+            "valueLastFY": 3.0,
             "valueLastTwoFYs":"Nothing" 
         },
         {
@@ -63,7 +63,7 @@
             "numberOfTitles": 66,
             "releaseDate": "March 1996",
             "value": 46.0,
-            "valueLastFY": "Nothing",
+            "valueLastFY": 40.0,
             "valueLastTwoFYs":"Nothing" 
         },
         {
@@ -71,7 +71,7 @@
             "numberOfTitles": 13,
             "releaseDate": "July 1999",
             "value": 4.4,
-            "valueLastFY": "Nothing",
+            "valueLastFY": 4.4,
             "valueLastTwoFYs":"Nothing" 
         },
         {
@@ -79,7 +79,7 @@
             "numberOfTitles": 12,
             "releaseDate": "January 2001",
             "value": 7.9,
-            "valueLastFY": "Nothing",
+            "valueLastFY": 7.8,
             "valueLastTwoFYs":"Nothing" 
         },
         {
@@ -87,7 +87,7 @@
             "numberOfTitles": 13,
             "releaseDate": "August 2001",
             "value": 10.0,
-            "valueLastFY": "Nothing",
+            "valueLastFY": 10.0,
             "valueLastTwoFYs":"Nothing" 
         },
         {
@@ -95,7 +95,7 @@
             "numberOfTitles": 15,
             "releaseDate": "August 2001",
             "value": 4.2,
-            "valueLastFY": "Nothing",
+            "valueLastFY": 3.2,
             "valueLastTwoFYs":"Nothing" 
         },
         {
@@ -103,7 +103,7 @@
             "numberOfTitles": 17,
             "releaseDate": "March 2004",
             "value": 18.0,
-            "valueLastFY": "Nothing",
+            "valueLastFY": 8.5,
             "valueLastTwoFYs":"Nothing" 
         },
         {
@@ -111,7 +111,7 @@
             "numberOfTitles": 17,
             "releaseDate": "July 2005",
             "value": 2.5,
-            "valueLastFY": "Nothing",
+            "valueLastFY": 1.2,
             "valueLastTwoFYs":"Nothing" 
         },
         {
@@ -119,7 +119,7 @@
             "numberOfTitles": 13,
             "releaseDate": "December 2006",
             "value": 4.7,
-            "valueLastFY": "Nothing",
+            "valueLastFY": 2.7,
             "valueLastTwoFYs":"Nothing" 
         }
     ],
