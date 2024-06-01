@@ -23,7 +23,23 @@ function labelMaker (collection: EarningsJSONV2): string {
 }
 
 function headerMaker(collection: EarningsJSONV2): string {
-    let subHeader = (collection.companyName === "CAPCOM Co., Ltd." || collection.companyName === "SQUARE ENIX HOLDINGS CO., LTD.") ? "Consolidated Financial Results" : "Consolidated Operating Results";
+    // let subHeader = (collection.companyName === "CAPCOM Co., Ltd." || collection.companyName === "SQUARE ENIX HOLDINGS CO., LTD.") ? "Consolidated Financial Results" : "Consolidated Operating Results";
+
+    let subHeader = "";
+
+    switch (collection.companyName) {
+        case "CAPCOM Co., Ltd.":
+            subHeader = "Consolidated Financial Results";
+            break;
+
+        case "SQUARE ENIX HOLDINGS CO., LTD.":
+            subHeader = "Consolidated Financial Results";
+            break;
+    
+        default:
+            subHeader = "Consolidated Operating Results";
+            break;
+    }
 
     let headerMake = liner(border([
         spacer(collection.companyName, collection.companyName.length+1, "left")
