@@ -9,6 +9,8 @@ import {
 
 import { headerPrint, printTextBlock, border, liner, spacer, dateLabel, type titleSet, globImport } from "../../utils/table_design_logic";
 
+import { nothingCheck, typeReturn } from "../generalTables/consolidated_earnings_general";
+
 export type KeySalesIndicator = {
     name: string,
     units: string,
@@ -61,7 +63,9 @@ type keySalesIndicatorsCollection = {
     }[]
 }
 
-const collection: keySalesIndicatorsCollection[] = [...globImport(new Map<number, keySalesIndicatorsCollection>, import.meta.glob("./Key_Sales_Indicators/*.json", { import: "default", eager: true }), "Descending").values()]
+// const collection: keySalesIndicatorsCollection[] = [...globImport(new Map<number, keySalesIndicatorsCollection>, import.meta.glob("./Key_Sales_Indicators/*.json", { import: "default", eager: true }), "Descending").values()]
+
+const collection: KeySalesIndicatorsCollectionV2[] = [...globImport(new Map<number, keySalesIndicatorsCollection>, import.meta.glob("./Key_Sales_Indicators/*.json", { import: "default", eager: true }), "Descending").values()]
 
 const softwareProportionMake = (proportions:  KPDIndicators[][], cmlName: string) => {
 
@@ -202,12 +206,20 @@ const keySalesMake = (indicators: KPDIndicators[][], consolidatedSales: KPDIndic
     return indicatorsMake.concat(softwareSalesMake, physicalSoftwareSalesMake)
 };
 
+// const consolidatedSalesQuartersMake = (obj: undefined | {
+//     name: string,
+//     Q1Value: number,
+//     Q2Value: number,
+//     Q3Value: number,
+//     Q4Value: number, 
+//     footnote?: string,
+// }): KPDIndicators[] => {
 const consolidatedSalesQuartersMake = (obj: undefined | {
     name: string,
-    Q1Value: number,
-    Q2Value: number,
-    Q3Value: number,
-    Q4Value: number, 
+    Q1Value: number | string | null,
+    Q2Value: number | string | null,
+    Q3Value: number | string | null,
+    Q4Value: number | string | null, 
     footnote?: string,
 }): KPDIndicators[] => {
     // values are cumulative and need to go through quarterly calc
@@ -217,7 +229,8 @@ const consolidatedSalesQuartersMake = (obj: undefined | {
             category: "quarterly",
             units: (!obj) ? "NaN" : "currency",
             quarter: "1st Quarter",
-            value: obj?.Q1Value ?? 0,
+            // value: obj?.Q1Value ?? 0,
+            value: (typeof obj?.Q1Value === "number") ? obj.Q1Value : 0,
             footnote: obj?.footnote,
         },
         {
@@ -225,7 +238,7 @@ const consolidatedSalesQuartersMake = (obj: undefined | {
             category: "quarterly",
             units: (!obj) ? "NaN" : "currency",
             quarter: "2nd Quarter",
-            value: obj?.Q2Value ?? 0,
+            value: (typeof obj?.Q2Value === "number") ? obj.Q2Value : 0,
             footnote: obj?.footnote,
         },
         {
@@ -233,7 +246,7 @@ const consolidatedSalesQuartersMake = (obj: undefined | {
             category: "quarterly",
             units: (!obj) ? "NaN" : "currency",
             quarter: "3rd Quarter",
-            value: obj?.Q3Value ?? 0,
+            value: (typeof obj?.Q3Value === "number") ? obj.Q3Value : 0,
             footnote: obj?.footnote,
         },
         {
@@ -241,7 +254,7 @@ const consolidatedSalesQuartersMake = (obj: undefined | {
             category: "quarterly",
             units: (!obj) ? "NaN" : "currency",
             quarter: "4th Quarter",
-            value: obj?.Q4Value ?? 0,
+            value: (typeof obj?.Q4Value === "number") ? obj.Q4Value : 0,
             footnote: obj?.footnote,
         },
     ];
@@ -251,12 +264,20 @@ const consolidatedSalesQuartersMake = (obj: undefined | {
     return quarterValues
 };
 
+// const consolidatedSalesCmlMake = (obj: undefined | {
+//     name: string,
+//     Q1Value: number,
+//     Q2Value: number,
+//     Q3Value: number,
+//     Q4Value: number, 
+//     footnote?: string,
+// }, cmlName: string): KPDIndicators[] => {
 const consolidatedSalesCmlMake = (obj: undefined | {
     name: string,
-    Q1Value: number,
-    Q2Value: number,
-    Q3Value: number,
-    Q4Value: number, 
+    Q1Value: number | string | null,
+    Q2Value: number | string | null,
+    Q3Value: number | string | null,
+    Q4Value: number | string | null, 
     footnote?: string,
 }, cmlName: string): KPDIndicators[] => {
     // values are cumulative and need to go through quarterly calc
@@ -266,7 +287,8 @@ const consolidatedSalesCmlMake = (obj: undefined | {
             category: "cumulative",
             units: (!obj) ? "NaN" : "currency",
             quarter: "1st Half",
-            value: obj?.Q2Value ?? 0,
+            // value: obj?.Q2Value ?? 0,
+            value: (typeof obj?.Q2Value === "number") ? obj.Q2Value : 0,
             footnote: obj?.footnote,
         },
         {
@@ -274,7 +296,7 @@ const consolidatedSalesCmlMake = (obj: undefined | {
             category: "cumulative",
             units: (!obj) ? "NaN" : "currency",
             quarter: "1st 3/4",
-            value: obj?.Q3Value ?? 0,
+            value: (typeof obj?.Q3Value === "number") ? obj.Q3Value : 0,
             footnote: obj?.footnote,
         },
         {
@@ -282,7 +304,7 @@ const consolidatedSalesCmlMake = (obj: undefined | {
             category: "cumulative",
             units: (!obj) ? "NaN" : "currency",
             quarter: cmlName,
-            value: obj?.Q4Value ?? 0,
+            value: (typeof obj?.Q4Value === "number") ? obj.Q4Value : 0,
             footnote: obj?.footnote,
         },
     ];
@@ -290,17 +312,18 @@ const consolidatedSalesCmlMake = (obj: undefined | {
     return cmlValues
 };
 
-const quarterValuesMake = (obj: undefined | {
-    name: string,
-    units: string,
-    Q1Value: number,
-    Q2Value: number,
-    Q3Value: number,
-    Q4Value: number,
-    Q2CmlValue: number,
-    Q3CmlValue: number,
-    Q4CmlValue: number,
-}): KPDIndicators[] => {
+// const quarterValuesMake = (obj: undefined | {
+//     name: string,
+//     units: string,
+//     Q1Value: number,
+//     Q2Value: number,
+//     Q3Value: number,
+//     Q4Value: number,
+//     Q2CmlValue: number,
+//     Q3CmlValue: number,
+//     Q4CmlValue: number,
+// }): KPDIndicators[] => {
+const quarterValuesMake = (obj: undefined | KeySalesIndicator): KPDIndicators[] => {
 
     let quarterValues: KPDIndicators[] = [
         {
@@ -308,45 +331,47 @@ const quarterValuesMake = (obj: undefined | {
             category: "quarterly",
             units: (obj?.units === "currency") ? "currency" : "percentage",
             quarter: "1st Quarter",
-            value: obj?.Q1Value ?? 0,
+            value: (typeof obj?.Q1Value === "number") ? obj.Q1Value : 0,
         },
         {
             name: obj?.name ?? "N/A",
             category: "quarterly",
             units: (obj?.units === "currency") ? "currency" : "percentage",
             quarter: "2nd Quarter",
-            value: obj?.Q2Value ?? 0,
+            // value: obj?.Q2Value ?? 0,
+            value: (typeof obj?.Q2Value === "number") ? obj.Q2Value : 0,
         },
         {
             name: obj?.name ?? "N/A",
             category: "quarterly",
             units: (obj?.units === "currency") ? "currency" : "percentage",
             quarter: "3rd Quarter",
-            value: obj?.Q3Value ?? 0,
+            value: (typeof obj?.Q3Value === "number") ? obj.Q3Value : 0,
         },
         {
             name: obj?.name ?? "N/A",
             category: "quarterly",
             units: (obj?.units === "currency") ? "currency" : "percentage",
             quarter: "4th Quarter",
-            value: obj?.Q4Value ?? 0,
+            value: (typeof obj?.Q4Value === "number") ? obj.Q4Value : 0,
         },
     ]
 
     return quarterValues
 };
 
-const cmlValuesMake = (obj: undefined | {
-    name: string,
-    units: string,
-    Q1Value: number,
-    Q2Value: number,
-    Q3Value: number,
-    Q4Value: number,
-    Q2CmlValue: number,
-    Q3CmlValue: number,
-    Q4CmlValue: number,
-}, cmlName: string): KPDIndicators[] => {
+// const cmlValuesMake = (obj: undefined | {
+//     name: string,
+//     units: string,
+//     Q1Value: number,
+//     Q2Value: number,
+//     Q3Value: number,
+//     Q4Value: number,
+//     Q2CmlValue: number,
+//     Q3CmlValue: number,
+//     Q4CmlValue: number,
+// }, cmlName: string): KPDIndicators[] => {
+const cmlValuesMake = (obj: undefined | KeySalesIndicator, cmlName: string): KPDIndicators[] => {
 
     let cmlValues: KPDIndicators[] = [
         {
@@ -354,21 +379,22 @@ const cmlValuesMake = (obj: undefined | {
             category: "cumulative",
             units: (obj?.units === "currency") ? "currency" : "percentage",
             quarter: "1st Half",
-            value: obj?.Q2CmlValue ?? 0,
+            // value: obj?.Q2CmlValue ?? 0,
+            value: (typeof obj?.Q2CmlValue === "number") ? obj.Q2CmlValue : 0,
         },
         {
             name: obj?.name ?? "N/A",
             category: "cumulative",
             units: (obj?.units === "currency") ? "currency" : "percentage",
             quarter: "1st 3/4",
-            value: obj?.Q3CmlValue ?? 0,
+            value: (typeof obj?.Q3CmlValue === "number") ? obj.Q3CmlValue : 0,
         },
         {
             name: obj?.name ?? "N/A",
             category: "cumulative",
             units: (obj?.units === "currency") ? "currency" : "percentage",
             quarter: cmlName,
-            value: obj?.Q4CmlValue ?? 0,
+            value: (typeof obj?.Q4CmlValue === "number") ? obj.Q4CmlValue : 0,
         },
     ];
 
