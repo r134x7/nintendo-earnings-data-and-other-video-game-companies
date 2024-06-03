@@ -659,3 +659,204 @@ export const keySalesIndicatorsGraphList = collection.map((elem, index, array) =
 
     return graphMake
 })
+
+export const keySalesIndicatorsListCml = collection.map((elem, index, array) => {
+
+    let currentQuarter: number = elem.currentQuarter;
+
+    let cmlName: string = elem.fiscalYear + " Cml.";
+
+    let headerOne: Header = {
+        companyName: "Nintendo Co., Ltd.",
+        section: " Proportion |       Sales |    YoY%  |",
+        fiscalYear: elem.fiscalYear,
+        title: "Key Sales Indicators",
+    };
+
+    let otherHeaders: Header[] = [
+        {
+            ...headerOne,
+            section: liner(printTextBlock("Proportion of software sales",50),"−","both",true,50) + liner(border([
+                spacer("Proportion", 24,"right"),
+                spacer("Sales", 12,"right"),
+                spacer("YoY%", 9,"right"),
+            ]),"−","bottom",true,50),
+        },
+        {
+            ...headerOne,
+            section: liner(printTextBlock("Proportion of physical software sales",50),"−","both",true,50) + liner(border([
+                spacer("Proportion", 24,"right"),
+                spacer("Sales", 12,"right"),
+                spacer("YoY%", 9,"right"),
+            ]),"−","bottom",true,50),
+        },
+    ]
+  
+    let headers: Header[] = elem.kpi.map((value => {
+        return {
+            ...headerOne,
+            section: liner(printTextBlock(value.name,50),"−","both",true,50) + liner(border([
+                spacer((value.units === "currency") ? "Sales" : "Proportion", 24,"right"),
+                spacer("Sales", 12,"right"),
+                spacer("YoY%", 9,"right"),
+            ]),"−","bottom",true,50),
+        }
+    })).concat(otherHeaders)
+
+    let otherFooters: Footer[] = [
+        {
+            section: liner(printTextBlock("*Proportion of software (including digital sales) sales to total dedicated video game platform sales",50),"−","both",true,50) 
+        },
+        {
+            section: liner(printTextBlock("*Proportion of physical software sales to total dedicated video game platform software sales",50),"−","both",true,50) 
+        }
+    ]
+
+    let footers: Footer[] = elem.kpi.map((value => {
+
+        let footnoteCheck = value?.footnote ?? "N/A";
+
+        return {
+            section: liner(printTextBlock(footnoteCheck,50),"−","both",true,50) 
+        }
+    })).concat(otherFooters) 
+
+    let qtrValuesThisFY: KPDIndicators[][] = elem.kpi.map(elem => quarterValuesMake(elem))
+
+    let qtrValuesThisFYPlus: KPDIndicators[][] = qtrValuesThisFY.concat(softwareProportionMake(qtrValuesThisFY, cmlName), (physicalSoftwareProportionMake(qtrValuesThisFY, cmlName)));
+
+    let qtrValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
+        ? elem.kpi.map(value => quarterValuesMake(undefined)) 
+        : (array[index+1].kpi.length !== elem.kpi.length)
+        ? elem.kpi.map((value, indexValue) => {
+            
+            let nameSearchThisFY: string = value.name
+            let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
+            
+            return (nameSearchThisFY === nameSearchLastFY)
+                ? quarterValuesMake(array[index+1].kpi[indexValue])
+                : quarterValuesMake(undefined)
+
+            })
+        : array[index+1].kpi.map(value => quarterValuesMake(value))
+
+    // assuming this is not used because it's the percentages...
+    // let qtrValuesLastFYPlus: KPDIndicators[][] = qtrValuesLastFY.concat(softwareProportionMake(qtrValuesLastFY, cmlName), (physicalSoftwareProportionMake(qtrValuesLastFY, cmlName)));
+
+    let cmlValuesThisFY: KPDIndicators[][] = elem.kpi.map(elem => cmlValuesMake(elem, cmlName));
+    
+    let cmlValuesThisFYPlus: KPDIndicators[][] = cmlValuesThisFY.concat(softwareProportionMake(cmlValuesThisFY, cmlName), (physicalSoftwareProportionMake(cmlValuesThisFY, cmlName)));
+
+    let cmlValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
+        ? elem.kpi.map(value => cmlValuesMake(undefined, cmlName)) 
+        : (array[index+1].kpi.length !== elem.kpi.length)
+        ? elem.kpi.map((value, indexValue) => {
+            
+            let nameSearchThisFY = value.name
+            let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
+
+            return (nameSearchThisFY === nameSearchLastFY)
+                ? cmlValuesMake(array[index+1].kpi[indexValue], cmlName)
+                : cmlValuesMake(undefined, cmlName)
+
+            })
+        : array[index+1].kpi.map(value => cmlValuesMake(value, cmlName))
+
+    // assuming this is not used because it's the percentages...
+    // let cmlValuesLastFYPlus: KPDIndicators[][] = cmlValuesLastFY.concat(softwareProportionMake(cmlValuesLastFY, cmlName), (physicalSoftwareProportionMake(cmlValuesLastFY, cmlName)));
+
+    let qtrSalesValuesThisFY: KPDIndicators[][] = elem.consolidatedSales.map(elem => consolidatedSalesQuartersMake(elem));
+
+    let qtrSalesValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
+        ? elem.consolidatedSales.map(value => consolidatedSalesQuartersMake(undefined)) 
+        : (array[index+1].consolidatedSales.length !== elem.consolidatedSales.length)
+        ? elem.consolidatedSales.map((value, indexValue) => {
+            
+            let nameSearchThisFY: string = value.name;
+            let nameSearchLastFY = array[index+1].consolidatedSales[indexValue]? array[index+1].consolidatedSales[indexValue].name : undefined;
+
+            return (nameSearchThisFY === nameSearchLastFY)
+                ? consolidatedSalesQuartersMake(array[index+1].consolidatedSales[indexValue])
+                : consolidatedSalesQuartersMake(undefined)
+
+            })
+        : array[index+1].consolidatedSales.map(value => consolidatedSalesQuartersMake(value))
+
+    let cmlSalesValuesThisFY: KPDIndicators[][] = elem.consolidatedSales.map(elem => consolidatedSalesCmlMake(elem, cmlName))
+
+    let cmlSalesValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
+        ? elem.consolidatedSales.map(value => consolidatedSalesCmlMake(undefined, cmlName)) 
+        : (array[index+1].consolidatedSales.length !== elem.consolidatedSales.length)
+        ? elem.consolidatedSales.map((value, indexValue) => {
+            
+            let nameSearchThisFY = value.name
+            let nameSearchLastFY = array[index+1].consolidatedSales[indexValue]? array[index+1].consolidatedSales[indexValue].name : undefined;
+
+            return (nameSearchThisFY === nameSearchLastFY)
+                ? consolidatedSalesCmlMake(array[index+1].consolidatedSales[indexValue], cmlName)
+                : consolidatedSalesCmlMake(undefined, cmlName)
+
+            })
+        : array[index+1].consolidatedSales.map(value => consolidatedSalesCmlMake(value, cmlName))
+
+    // thisFY values and lastFY values are retrieved.
+    // will need to make new maker that multiplies the values
+
+    let qtrKeySalesValuesThisFY: KPDIndicators[][] = keySalesMake(qtrValuesThisFY, qtrSalesValuesThisFY, cmlName);
+    let cmlKeySalesValuesThisFY: KPDIndicators[][] = keySalesMake(cmlValuesThisFY, cmlSalesValuesThisFY, cmlName);
+
+    let qtrKeySalesValuesLastFY: KPDIndicators[][] = keySalesMake(qtrValuesLastFY, qtrSalesValuesLastFY, cmlName);
+    let cmlKeySalesValuesLastFY: KPDIndicators[][] = keySalesMake(cmlValuesLastFY, cmlSalesValuesLastFY, cmlName);
+
+    let qtrYearOnYearValues: KPDIndicators[][] = qtrKeySalesValuesThisFY.map((elem, index, array) => {
+        return yearOnYearCalculation(elem, qtrKeySalesValuesLastFY[index])
+    });
+
+    let cmlYearOnYearValues: KPDIndicators[][] = cmlKeySalesValuesThisFY.map((elem, index, array) => {
+        return yearOnYearCalculation(elem, cmlKeySalesValuesLastFY[index])
+    });
+
+    let inputNewArrays = Array.from({length: qtrKeySalesValuesThisFY.length}, (v, i) => { 
+
+        return {
+            header: headers[i],
+            footer: footers[i],
+            quarterValuesProportion: qtrValuesThisFYPlus[i],
+            cumulativeValuesProportion: cmlValuesThisFYPlus[i],
+            quarterValuesSales: qtrKeySalesValuesThisFY[i],
+            cumulativeValuesSales: cmlKeySalesValuesThisFY[i],
+            currentQuarter: currentQuarter,
+            title: qtrValuesThisFYPlus[i][0].name,
+        }
+    })
+    
+    return inputNewArrays
+
+    // let endLine: string = "###"; 
+
+    // const makeDateLabel = dateLabel(elem.fiscalYear ?? "N/A", elem?.currentQuarter ?? 4);
+
+    // const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
+    // let printOne = headerPrint([
+    //     headerOne.companyName + " | " + headerOne.fiscalYear,
+    //     headerOne.title,
+    // ],30) + "\n" + printDateLabel;
+
+    // let printSecondRest = inputNewArrays.map(elem => {
+    //     // return printNewBody(elem.header, elem.footer, elem.quarterValuesProportion, elem.cumulativeValuesProportion,elem.quarterValuesSales, elem.cumulativeValuesSales, elem.quarterYoY, elem.cumulativeYoY, elem.currentQuarter)
+
+    //     return {
+    //         title: elem.title,
+    //         table: printNewBody(elem.header, elem.footer, elem.quarterValuesProportion, elem.cumulativeValuesProportion,elem.quarterValuesSales, elem.cumulativeValuesSales, elem.quarterYoY, elem.cumulativeYoY, elem.currentQuarter),
+    //     } as titleSet 
+    // })
+
+    // // let printAll = [printOne].concat(printSecondRest);  
+
+    // // return printAll.reduce((prev, next) => prev + "\n" + next);
+    // return {
+    //     header: printOne,
+    //     titleList: printSecondRest,
+    // }
+});

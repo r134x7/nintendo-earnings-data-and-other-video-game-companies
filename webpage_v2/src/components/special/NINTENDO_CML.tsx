@@ -9,6 +9,9 @@ import { printTopSellingTitles } from "../../data/nintendo/Nintendo_Cumulative_D
 import { printConsolidatedSalesInfo } from "../../data/nintendo/Nintendo_Cumulative_Data/consolidated_sales_information_cml_data";
 import { filterTitles, printTextBlock, liner, filterTextAddToSet, type titleSet } from "../../utils/table_design_logic";
 import type { BackgroundColours } from "../../features/backgroundReducer";
+import { x } from "../../data/nintendo/Nintendo_Cumulative_Data/key_sales_indicators_cml_data";
+console.log(x)
+// console.log(x1)
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 import { searchTitles } from "../../data/capcom/platinum_titles_Capcom";

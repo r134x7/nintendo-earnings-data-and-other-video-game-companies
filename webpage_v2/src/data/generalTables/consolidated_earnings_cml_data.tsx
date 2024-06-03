@@ -91,6 +91,7 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
     ]),"−","both",true)
     } 
 
+    // Q1, Q2, Q3, Q4, First Half, 1st 3 Quarters, FY Cml
     let toReturn = new Map<number, string[]>([
         [0, [sectionHeader(list.get(0)?.name, 35)]],
         [1, [sectionHeader(list.get(0)?.name, 35)]],
