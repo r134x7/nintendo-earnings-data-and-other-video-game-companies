@@ -102,6 +102,7 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
         [6, [sectionHeader(list.get(0)?.name, 37)]],
     ]); 
 
+    // to do statistics calculations
     let getValues = new Map<number, number[]>([
         [0, []],
         [1, []],

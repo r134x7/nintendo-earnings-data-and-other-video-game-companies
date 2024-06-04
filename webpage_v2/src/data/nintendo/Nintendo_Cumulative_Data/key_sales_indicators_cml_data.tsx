@@ -1,5 +1,7 @@
 import { keySalesIndicatorsListCml } from "../key_sales_indicators_nintendo";
 
+import { dateLabel, liner, spacer, border } from "../../../utils/table_design_logic";
+
 import {
     Header,
     Footer,
@@ -30,6 +32,15 @@ type KeySalesIndicatorValues = {
     currentQuarter: number,
     title: string,
 }
+
+const printOneWW = 
+`+−−−−−−−−−−−−−−−−−−−−+
+| Nintendo Co., Ltd. |
++−−−−−−−−−−−−−−−−−−−−−−−+
+| Key Sales Indicators |
++−−−−−−−−−−−−−−−−−−−−−−−+\n`;
+
+const makeDateLabel = dateLabel(keySalesIndicatorsListCml[0][0].header.fiscalYear ?? "N/A", keySalesIndicatorsListCml[0][0].currentQuarter ?? 4);
 
 // export const getLengthLatestData = keySalesIndicatorsListCml[0].length; // assuming its the longest length
 const getLengthLatestData = keySalesIndicatorsListCml[0].map((elem) => elem.quarterValuesProportion[0].ID); // assuming its the longest length
@@ -138,28 +149,10 @@ function periodSetter(data: KeySalesIndicatorOutput[], quarter: "None" | "1" | "
 
 }
 
-// sortPeriod.forEach((value, key, map) => {
-
-    // loops through each year
-    sortCategories.forEach((v, k, m) => {
-
-        // inverting loop again
-        // sortPeriod.set(key, (sortPeriod.get(key) ?? []).concat(ascendingList[index][key]))
+// loops through each year
+sortCategories.forEach((v, k, m) => {
 
         let setFilter = sortCategories.get(k) as KeySalesIndicatorOutput[];
-
-        // console.log(setFilter)
-        // let q1: KeySalesIndicatorValues[] = setFilter?.map((elem, index, array) => {
-
-        //     return {
-        //         currentQuarter: elem.currentQuarter,
-        //         footer: elem.footer,
-        //         header: elem.header,
-        //         title: elem.title,
-        //         proportion: elem.quarterValuesProportion[0],
-        //         sales: elem.quarterValuesSales[0],
-        //     }
-        // })
 
         sortPeriod.set(0, (sortPeriod.get(0) ?? []).concat( periodSetter(setFilter, "1", "None")))
         // sortPeriod.set(0, (sortPeriod.get(0) ?? []).concat(sortCategories.get()))
@@ -169,9 +162,88 @@ function periodSetter(data: KeySalesIndicatorOutput[], quarter: "None" | "1" | "
         sortPeriod.set(4, (sortPeriod.get(4) ?? []).concat( periodSetter(setFilter, "None", "first half")))
         sortPeriod.set(5, (sortPeriod.get(5) ?? []).concat( periodSetter(setFilter, "None", "1st 3 Quarters")))
         sortPeriod.set(6, (sortPeriod.get(6) ?? []).concat( periodSetter(setFilter, "None", "FY Cumulative")))
-    })
+})
 // })
 
+const combineCategories = new Map<number, KeySalesIndicatorValues[][]>();
+// now to concat the categories again
+sortPeriod.forEach((value, key, map) => {
+
+    let toFilter = Array.from({length: getLengthLatestData.length}, (v,i) => {
+
+        let getValues = sortPeriod.get(key) as KeySalesIndicatorValues[];
+
+        return getValues.filter((elem) => elem.proportion.ID === getLengthLatestData[i])
+    }) 
+
+    combineCategories.set(key, toFilter)
+})
+
+function printAllValues(list: Map<number, KeySalesIndicatorValues[][]>): string[] {
+
+    function sectionHeader(name: string | undefined, textLength: number): string {
+        return liner(border([
+        spacer(name ?? "Error", textLength,"left"),
+    ]),"−","both",true)
+    } 
+
+    // Q1, Q2, Q3, Q4, First Half, 1st 3 Quarters, FY Cml
+    let toReturn = new Map<number, string[]>([
+        [0, []],
+        [1, []],
+        [2, []],
+        [3, []],
+        [4, []],
+        [5, []],
+        [6, []],
+    ]); 
+
+    let getValues = new Map<number, number[]>([
+        [0, []],
+        [1, []],
+        [2, []],
+        [3, []],
+        [4, []],
+        [5, []],
+        [6, []],
+    ])
+
+    function valueMake(value: KPDIndicators, fiscalYear: string, type: "%" | "¥"): string {
+        
+        return (type === "¥")
+            ? //border([
+                // spacer(fiscalYear.slice(0, -4) + value.quarter,(10+value.quarter.length),"left"),
+                spacer(`¥${value.value.toLocaleString("en")}M`,12,"right") + "\n"
+             //],true) 
+            : border([
+                spacer(fiscalYear/*.slice(0, -4)*/ + " " + value.quarter,(10+value.quarter.length),"left"),
+                spacer(`${value.value}%`,8,"right")
+             ], undefined)
+    }
+
+    list.forEach((value, key, map) => {
+
+        // need to get the header and then the data
+        // each loop is a quarter/period
+        
+        let x = value.map((elem, index, array) => elem.map((elem2, index2, array2) => {
+
+            if (index2 === 0) {
+                return sectionHeader(elem2.proportion.name, 50) + valueMake(elem2.proportion, elem2.header.fiscalYear, "%") + (valueMake(elem2.sales, elem2.header.fiscalYear, "¥"))
+            } else {
+                return valueMake(elem2.proportion, elem2.header.fiscalYear, "%") + (valueMake(elem2.sales, elem2.header.fiscalYear, "¥"))
+            }
+
+        }).reduce((acc, next) => acc + next))
+
+        console.log(x)
+
+        // toReturn.set()
+    })
+}
+
+printAllValues(combineCategories)
 // export const x = console.log("");
 export const x = console.log(sortPeriod);
+// console.log(combineCategories)
 
