@@ -33,17 +33,14 @@ type KeySalesIndicatorValues = {
     title: string,
 }
 
-const printOneWW = 
-`+−−−−−−−−−−−−−−−−−−−−+
-| Nintendo Co., Ltd. |
-+−−−−−−−−−−−−−−−−−−−−−−−+
-| Key Sales Indicators |
-+−−−−−−−−−−−−−−−−−−−−−−−+\n`;
+const makeDateLabel = dateLabel(keySalesIndicatorsListCml[0].at(-1)?.header.fiscalYear ?? "N/A", keySalesIndicatorsListCml[0].at(-1)?.currentQuarter ?? 4);
 
-const makeDateLabel = dateLabel(keySalesIndicatorsListCml[0][0].header.fiscalYear ?? "N/A", keySalesIndicatorsListCml[0][0].currentQuarter ?? 4);
+const printTitle = liner(border([spacer("Nintendo Co., Ltd.", 25, "left")]), "−", "top", "newLine") + liner(border([spacer("Key Sales Indicators", 25, "left")]), "−", "top", "newLine")
 
+const combinedTitle = printTitle + liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]), "−", "both", "newLine") + "\n";
 // export const getLengthLatestData = keySalesIndicatorsListCml[0].length; // assuming its the longest length
-const getLengthLatestData = keySalesIndicatorsListCml[0].map((elem) => elem.quarterValuesProportion[0].ID); // assuming its the longest length
+const getLengthLatestData = keySalesIndicatorsListCml[0].map((elem) => elem.quarterValuesProportion[0].ID).filter((elem) => elem !== "4");; // assuming its the longest length and, removed digital sales as it is already given in proportion of digital sales
+
 
 // export const x = console.log(keySalesIndicatorsListCml.length);
 // export const x = keySalesIndicatorsListCml.map((elem, index, array) => elem[0]).reverse();
@@ -63,11 +60,12 @@ for (let index = 0; index < getLengthLatestData.length; index++) {
 
 console.log(ascendingList.length)
 console.log(sortCategories.size)
+console.log(getLengthLatestData)
 // data now sorted by category
 sortCategories.forEach((value, key, map) => {
 
     // yMap.set(key, (yMap.get(key) ?? []).concat(value))
-    for (let index = 0; index < sortCategories.size; index++) {
+    for (let index = 0; index < ascendingList.length /*sortCategories.size*/; index++) {
         
         let x = ascendingList[index].filter((elem) => elem.quarterValuesProportion[0].ID === key)
         // sortCategories.set(key, (sortCategories.get(key) ?? []).concat(ascendingList[index][key]))
@@ -215,11 +213,11 @@ function printAllValues(list: Map<number, KeySalesIndicatorValues[][]>): string[
                 // spacer(fiscalYear.slice(0, -4) + value.quarter,(10+value.quarter.length),"left"),
                 borderV2([
                     spacer(`¥${value.value.toLocaleString("en")}M`,12,"right")
-                ], "right", "newLine")
+                ], "right", "noNewLine")
              //],true) 
             : border([
-                spacer(fiscalYear/*.slice(0, -4)*/ + " " + value.quarter,(10+value.quarter.length),"left"),
-                spacer(`${value.value.toFixed(1)}%`,8,"right")
+                spacer(fiscalYear/*.slice(0, -4)*/ + " " + (value.quarter.includes("Cml.") ? "FY Cumulative" : value.quarter),(10+value.quarter.length),"left"),
+                spacer(`${value.value}%`,8,"right")
              ], undefined)
     }
 
@@ -230,29 +228,37 @@ function printAllValues(list: Map<number, KeySalesIndicatorValues[][]>): string[
         
         let x = value.map((elem, index, array) => elem.map((elem2, index2, array2) => {
 
+            // array2 is retrieving the newest title header for sectionHeader
             if (index2 === 0) {
-                return sectionHeader(elem2.proportion.name, 50) + valueMake(elem2.proportion, elem2.header.fiscalYear, "%") + (valueMake(elem2.sales, elem2.header.fiscalYear, "¥"))
+                return sectionHeader(array2[array2.length-1].proportion.name, 47) + valueMake(elem2.proportion, elem2.header.fiscalYear, "%") + (valueMake(elem2.sales, elem2.header.fiscalYear, "¥")) + "\n"
+            } else if (index2 === array2.length-1) {
+                
+                let checkFootnote = (elem2.footer.section)
+
+                // return liner(valueMake(elem2.proportion, elem2.header.fiscalYear, "%") + (valueMake(elem2.sales, elem2.header.fiscalYear, "¥")), "−", "bottom", "noNewLine") + checkFootnote
+
+                return valueMake(elem2.proportion, elem2.header.fiscalYear, "%") + (valueMake(elem2.sales, elem2.header.fiscalYear, "¥")) + "\n" + checkFootnote
             } else {
-                return valueMake(elem2.proportion, elem2.header.fiscalYear, "%") + (valueMake(elem2.sales, elem2.header.fiscalYear, "¥"))
+                return valueMake(elem2.proportion, elem2.header.fiscalYear, "%") + (valueMake(elem2.sales, elem2.header.fiscalYear, "¥")) + "\n"
             }
 
         }).reduce((acc, next) => acc + next))
 
         // console.log(x)
-        toReturn.set(key, x.reduce((acc, next) => acc + next))
+        toReturn.set(key, x.reduce((acc, next) => acc + "\n" + next))
 
     })
 
     let toReturnValues = [...toReturn.values()]
 
         return [
-            toReturnValues[0],
-            toReturnValues[1],
-            toReturnValues[2],
-            toReturnValues[3],
-            toReturnValues[4],
-            toReturnValues[5],
-            toReturnValues[6],
+            combinedTitle + toReturnValues[0],
+            combinedTitle + toReturnValues[1],
+            combinedTitle + toReturnValues[2],
+            combinedTitle + toReturnValues[3],
+            combinedTitle + toReturnValues[4],
+            combinedTitle + toReturnValues[5],
+            combinedTitle + toReturnValues[6],
             // toReturn.get(0),
             // toReturn.get(1),
             // toReturn.get(2),
@@ -264,7 +270,4 @@ function printAllValues(list: Map<number, KeySalesIndicatorValues[][]>): string[
 }
 
 
-// export const x = console.log("");
 export const keySalesIndicatorsCml = printAllValues(combineCategories);
-// console.log(combineCategories)
-
