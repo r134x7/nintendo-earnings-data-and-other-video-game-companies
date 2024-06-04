@@ -31,7 +31,9 @@ type KeySalesIndicatorValues = {
     title: string,
 }
 
-export const getLengthLatestData = keySalesIndicatorsListCml[0].length;
+// export const getLengthLatestData = keySalesIndicatorsListCml[0].length; // assuming its the longest length
+const getLengthLatestData = keySalesIndicatorsListCml[0].map((elem) => elem.quarterValuesProportion[0].ID); // assuming its the longest length
+
 // export const x = console.log(keySalesIndicatorsListCml.length);
 // export const x = keySalesIndicatorsListCml.map((elem, index, array) => elem[0]).reverse();
 
@@ -41,24 +43,29 @@ const ascendingList = keySalesIndicatorsListCml.reverse(); // careful, reverse i
 
 console.log(ascendingList)
 
-const sortCategories = new Map<number, KeySalesIndicatorOutput[]>();
+const sortCategories = new Map<string, KeySalesIndicatorOutput[]>();
 
-for (let index = 0; index < getLengthLatestData; index++) {
+for (let index = 0; index < getLengthLatestData.length; index++) {
     
-    sortCategories.set(sortCategories.size, []);
+    sortCategories.set(getLengthLatestData[index], []);
 }
 
+console.log(ascendingList.length)
+console.log(sortCategories.size)
 // data now sorted by category
 sortCategories.forEach((value, key, map) => {
 
     // yMap.set(key, (yMap.get(key) ?? []).concat(value))
     for (let index = 0; index < sortCategories.size; index++) {
         
-        sortCategories.set(key, (sortCategories.get(key) ?? []).concat(ascendingList[index][key]))
+        let x = ascendingList[index].filter((elem) => elem.quarterValuesProportion[0].ID === key)
+        // sortCategories.set(key, (sortCategories.get(key) ?? []).concat(ascendingList[index][key]))
+        sortCategories.set(key, (sortCategories.get(key) ?? []).concat(x))
     }
     // yMap.set(key, (yMap.get(key) ?? []).concat(ascendingList[key][key]))
 })
 
+console.log(sortCategories)
 //data sorted by period, each index will contain all the data for one period of one category
 const sortPeriod = new Map<number, KeySalesIndicatorValues[]>([
     [0, []],
@@ -70,92 +77,92 @@ const sortPeriod = new Map<number, KeySalesIndicatorValues[]>([
     [6, []],
 ])
 
-function periodSetter(data: KeySalesIndicatorOutput[], quarter: "None" | "1" | "2" | "3" | "4", cumulative: "None" | "first half" | "1st 3 Quarters" | "FY Cumulative"): KeySalesIndicatorValues[] {
+// function periodSetter(data: KeySalesIndicatorOutput[], quarter: "None" | "1" | "2" | "3" | "4", cumulative: "None" | "first half" | "1st 3 Quarters" | "FY Cumulative"): KeySalesIndicatorValues[] {
 
-    if (quarter === "None" && cumulative === "None") {
-        return [{
-            currentQuarter: 0,
-            footer: {section: "None"},
-            header: {companyName: "None", fiscalYear: "None", section: "None", title: "None"},
-            title: "None",
-            proportion: {category: "cumulative", ID: "N/A", name: "None", quarter: "0", units: "NaN", value: 0},
-            sales: {category: "cumulative", ID: "N/A", name: "None", quarter: "0", units:"NaN", value: 0},
-        }]
-    }
+//     if (quarter === "None" && cumulative === "None") {
+//         return [{
+//             currentQuarter: 0,
+//             footer: {section: "None"},
+//             header: {companyName: "None", fiscalYear: "None", section: "None", title: "None"},
+//             title: "None",
+//             proportion: {category: "cumulative", ID: "N/A", name: "None", quarter: "0", units: "NaN", value: 0},
+//             sales: {category: "cumulative", ID: "N/A", name: "None", quarter: "0", units:"NaN", value: 0},
+//         }]
+//     }
 
-    if (Number.isNaN(Number(quarter)) === false) {
+//     if (Number.isNaN(Number(quarter)) === false) {
 
-        let q1: KeySalesIndicatorValues[] = data.map((elem, index, array) => {
-            return {
-                currentQuarter: elem.currentQuarter,
-                footer: elem.footer,
-                header: elem.header,
-                title: elem.title,
-                proportion: elem.quarterValuesProportion[Number(quarter)],
-                sales: elem.quarterValuesSales[Number(quarter)],
-            }
-        })
+//         let q1: KeySalesIndicatorValues[] = data.map((elem, index, array) => {
+//             return {
+//                 currentQuarter: elem.currentQuarter,
+//                 footer: elem.footer,
+//                 header: elem.header,
+//                 title: elem.title,
+//                 proportion: elem.quarterValuesProportion[Number(quarter)],
+//                 sales: elem.quarterValuesSales[Number(quarter)],
+//             }
+//         })
 
-        return q1
-    } else //if (cumulative !== "None") 
-        {
+//         return q1
+//     } else //if (cumulative !== "None") 
+//         {
 
-        let period = (cumulative === "first half")
-            ? 0
-            : (cumulative === "1st 3 Quarters")
-                ? 1
-                : 2
+//         let period = (cumulative === "first half")
+//             ? 0
+//             : (cumulative === "1st 3 Quarters")
+//                 ? 1
+//                 : 2
 
-        let c1: KeySalesIndicatorValues[] = data.map((elem, index, array) => {
-            return {
-                currentQuarter: elem.currentQuarter,
-                footer: elem.footer,
-                header: elem.header,
-                title: elem.title,
-                proportion: elem.quarterValuesProportion[period],
-                sales: elem.quarterValuesSales[period],
-            }
-        })
+//         let c1: KeySalesIndicatorValues[] = data.map((elem, index, array) => {
+//             return {
+//                 currentQuarter: elem.currentQuarter,
+//                 footer: elem.footer,
+//                 header: elem.header,
+//                 title: elem.title,
+//                 proportion: elem.quarterValuesProportion[period],
+//                 sales: elem.quarterValuesSales[period],
+//             }
+//         })
 
-        return c1
-    }
+//         return c1
+//     }
 
-}
+// }
 
-// sortPeriod.forEach((value, key, map) => {
+// // sortPeriod.forEach((value, key, map) => {
 
-    // loops through each year
-    sortCategories.forEach((v, k, m) => {
+//     // loops through each year
+//     sortCategories.forEach((v, k, m) => {
 
-        // inverting loop again
-        // sortPeriod.set(key, (sortPeriod.get(key) ?? []).concat(ascendingList[index][key]))
+//         // inverting loop again
+//         // sortPeriod.set(key, (sortPeriod.get(key) ?? []).concat(ascendingList[index][key]))
 
-        let setFilter = sortCategories.get(k)?.filter((elem) => elem !== undefined) as KeySalesIndicatorOutput[];
+//         let setFilter = sortCategories.get(k)?.filter((elem) => elem !== undefined) as KeySalesIndicatorOutput[];
 
-        console.log(setFilter)
-        // let q1: KeySalesIndicatorValues[] = setFilter?.map((elem, index, array) => {
+//         // console.log(setFilter)
+//         // let q1: KeySalesIndicatorValues[] = setFilter?.map((elem, index, array) => {
 
-        //     return {
-        //         currentQuarter: elem.currentQuarter,
-        //         footer: elem.footer,
-        //         header: elem.header,
-        //         title: elem.title,
-        //         proportion: elem.quarterValuesProportion[0],
-        //         sales: elem.quarterValuesSales[0],
-        //     }
-        // })
+//         //     return {
+//         //         currentQuarter: elem.currentQuarter,
+//         //         footer: elem.footer,
+//         //         header: elem.header,
+//         //         title: elem.title,
+//         //         proportion: elem.quarterValuesProportion[0],
+//         //         sales: elem.quarterValuesSales[0],
+//         //     }
+//         // })
 
-        sortPeriod.set(0, periodSetter(setFilter, "1", "None"))
-        // sortPeriod.set(0, (sortPeriod.get(0) ?? []).concat(sortCategories.get()))
-        sortPeriod.set(1, periodSetter(setFilter, "2", "None"))
-        sortPeriod.set(2, periodSetter(setFilter, "3", "None"))
-        sortPeriod.set(3, periodSetter(setFilter, "4", "None"))
-        sortPeriod.set(4, periodSetter(setFilter, "None", "first half"))
-        sortPeriod.set(5, periodSetter(setFilter, "None", "1st 3 Quarters"))
-        sortPeriod.set(6, periodSetter(setFilter, "None", "FY Cumulative"))
-    })
-// })
+//         sortPeriod.set(0, periodSetter(setFilter, "1", "None"))
+//         // sortPeriod.set(0, (sortPeriod.get(0) ?? []).concat(sortCategories.get()))
+//         sortPeriod.set(1, periodSetter(setFilter, "2", "None"))
+//         sortPeriod.set(2, periodSetter(setFilter, "3", "None"))
+//         sortPeriod.set(3, periodSetter(setFilter, "4", "None"))
+//         sortPeriod.set(4, periodSetter(setFilter, "None", "first half"))
+//         sortPeriod.set(5, periodSetter(setFilter, "None", "1st 3 Quarters"))
+//         sortPeriod.set(6, periodSetter(setFilter, "None", "FY Cumulative"))
+//     })
+// // })
 
-export const x = console.log(sortCategories);
+export const x = console.log("");
 // export const x = console.log(sortPeriod);
 
