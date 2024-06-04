@@ -78,8 +78,8 @@ function periodSetter(data: KeySalesIndicatorOutput[], quarter: "None" | "1" | "
             footer: {section: "None"},
             header: {companyName: "None", fiscalYear: "None", section: "None", title: "None"},
             title: "None",
-            proportion: {category: "cumulative", name: "None", quarter: "0", units: "NaN", value: 0},
-            sales: {category: "cumulative", name: "None", quarter: "0", units:"NaN", value: 0},
+            proportion: {category: "cumulative", ID: "N/A", name: "None", quarter: "0", units: "NaN", value: 0},
+            sales: {category: "cumulative", ID: "N/A", name: "None", quarter: "0", units:"NaN", value: 0},
         }]
     }
 
@@ -156,6 +156,6 @@ function periodSetter(data: KeySalesIndicatorOutput[], quarter: "None" | "1" | "
     })
 // })
 
-// export const x = console.log(sortCategories);
-export const x = console.log(sortPeriod);
+export const x = console.log(sortCategories);
+// export const x = console.log(sortPeriod);
 

@@ -6,6 +6,7 @@ import { type KeySalesIndicatorsCollectionV2, type KeySalesIndicator } from "../
 
 export type KPDIndicators = {
     name: string,
+    ID: string,
     category: "quarterly" | "cumulative", 
     units: "percentage" | "currency" | "NaN",
     quarter: string,
