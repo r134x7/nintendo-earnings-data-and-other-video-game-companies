@@ -9,9 +9,7 @@ import { printTopSellingTitles } from "../../data/nintendo/Nintendo_Cumulative_D
 import { printConsolidatedSalesInfo } from "../../data/nintendo/Nintendo_Cumulative_Data/consolidated_sales_information_cml_data";
 import { filterTitles, printTextBlock, liner, filterTextAddToSet, type titleSet } from "../../utils/table_design_logic";
 import type { BackgroundColours } from "../../features/backgroundReducer";
-import { x } from "../../data/nintendo/Nintendo_Cumulative_Data/key_sales_indicators_cml_data";
-console.log(x)
-// console.log(x1)
+import { keySalesIndicatorsCml } from "../../data/nintendo/Nintendo_Cumulative_Data/key_sales_indicators_cml_data";
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 import { searchTitles } from "../../data/capcom/platinum_titles_Capcom";
@@ -192,6 +190,26 @@ export default function NINTENDO_CML() {
                 }
                 break;
 
+            case "Nintendo Key Sales Indicators - Cumulative":
+                if (timePeriodValue === "1st Quarter") {
+                    setTimePeriod(0)
+                } else if (timePeriodValue === "2nd Quarter") {
+                    setTimePeriod(1)
+                } else if (timePeriodValue === "3rd Quarter") {
+                    setTimePeriod(2)
+                } else if (timePeriodValue === "4th Quarter") {
+                    setTimePeriod(3)
+                } else if (timePeriodValue === "First Half") {
+                    setTimePeriod(4)
+                } else if (timePeriodValue === "First Three Quarters") {
+                    setTimePeriod(5)
+                } else if (timePeriodValue === "FY Cumulative") {
+                    setTimePeriod(6)
+                } else {
+                    setTimePeriod(6)
+                }
+                break;
+
             case "Nintendo Consolidated Sales Information - Cumulative":
                 setTitlesLength(consolidatedSalesInformationFilter.length)
                 break;
@@ -223,6 +241,10 @@ export default function NINTENDO_CML() {
         {
             name: "Nintendo Consolidated Sales Information - Cumulative",
             value: completeConsolidatedSalesInformation
+        },
+        {
+            name: "Nintendo Key Sales Indicators - Cumulative",
+            value: keySalesIndicatorsCml[timePeriod]
         },
         {
             name: "Nintendo Sales Per Hardware Unit - Cumulative",
@@ -325,7 +347,7 @@ export default function NINTENDO_CML() {
                   /> 
                     : undefined
                 }
-                {(value === "Nintendo Consolidated Operating Results - Cumulative")
+                {(value === "Nintendo Consolidated Operating Results - Cumulative" || value === "Nintendo Key Sales Indicators - Cumulative")
                     ? <Select
                         data={[
                          "1st Quarter",

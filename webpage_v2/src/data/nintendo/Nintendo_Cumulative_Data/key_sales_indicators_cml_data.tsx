@@ -1,6 +1,6 @@
 import { keySalesIndicatorsListCml } from "../key_sales_indicators_nintendo";
 
-import { dateLabel, liner, spacer, border } from "../../../utils/table_design_logic";
+import { dateLabel, liner, spacer, border, borderV2 } from "../../../utils/table_design_logic";
 
 import {
     Header,
@@ -188,14 +188,14 @@ function printAllValues(list: Map<number, KeySalesIndicatorValues[][]>): string[
     } 
 
     // Q1, Q2, Q3, Q4, First Half, 1st 3 Quarters, FY Cml
-    let toReturn = new Map<number, string[]>([
-        [0, []],
-        [1, []],
-        [2, []],
-        [3, []],
-        [4, []],
-        [5, []],
-        [6, []],
+    let toReturn = new Map<number, string>([
+        [0, ""],
+        [1, ""],
+        [2, ""],
+        [3, ""],
+        [4, ""],
+        [5, ""],
+        [6, ""],
     ]); 
 
     let getValues = new Map<number, number[]>([
@@ -213,11 +213,13 @@ function printAllValues(list: Map<number, KeySalesIndicatorValues[][]>): string[
         return (type === "¥")
             ? //border([
                 // spacer(fiscalYear.slice(0, -4) + value.quarter,(10+value.quarter.length),"left"),
-                spacer(`¥${value.value.toLocaleString("en")}M`,12,"right") + "\n"
+                borderV2([
+                    spacer(`¥${value.value.toLocaleString("en")}M`,12,"right")
+                ], "right", "newLine")
              //],true) 
             : border([
                 spacer(fiscalYear/*.slice(0, -4)*/ + " " + value.quarter,(10+value.quarter.length),"left"),
-                spacer(`${value.value}%`,8,"right")
+                spacer(`${value.value.toFixed(1)}%`,8,"right")
              ], undefined)
     }
 
@@ -236,14 +238,33 @@ function printAllValues(list: Map<number, KeySalesIndicatorValues[][]>): string[
 
         }).reduce((acc, next) => acc + next))
 
-        console.log(x)
+        // console.log(x)
+        toReturn.set(key, x.reduce((acc, next) => acc + next))
 
-        // toReturn.set()
     })
+
+    let toReturnValues = [...toReturn.values()]
+
+        return [
+            toReturnValues[0],
+            toReturnValues[1],
+            toReturnValues[2],
+            toReturnValues[3],
+            toReturnValues[4],
+            toReturnValues[5],
+            toReturnValues[6],
+            // toReturn.get(0),
+            // toReturn.get(1),
+            // toReturn.get(2),
+            // toReturn.get(3),
+            // toReturn.get(4),
+            // toReturn.get(5),
+            // toReturn.get(6),
+        ]
 }
 
-printAllValues(combineCategories)
+
 // export const x = console.log("");
-export const x = console.log(sortPeriod);
+export const keySalesIndicatorsCml = printAllValues(combineCategories);
 // console.log(combineCategories)
 
