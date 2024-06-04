@@ -15,6 +15,7 @@ type keySalesIndicatorsCollection = {
     kpi: {
             name: string,
             units: string,
+            ID: string,
             Q1Value: number,
             Q2Value: number,
             Q3Value: number,
