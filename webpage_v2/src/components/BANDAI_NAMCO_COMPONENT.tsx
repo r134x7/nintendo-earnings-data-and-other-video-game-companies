@@ -5,6 +5,7 @@ import { softwareSalesList, softwareSalesGraphList } from "../data/bandaiNamco/s
 // import { annualReportList } from "../data/bandaiNamco/annual_report_bandai_namco";
 import { bandaiNamcoAnnualReport } from "../data/generalTables/annual_report_general";
 import { bandaiNamcoConsolidatedEarningsList, bandaiNamcoConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
+import { bandaiNamcoSegmentEarningsList } from "../data/generalTables/segment_earnings_general";
 import { bandaiNamcoLinks } from "../data/generalTables/data_sources_general";
 import { printTextBlock, liner, titleSetSearchFeatures } from "../utils/table_design_logic";
 import type { BackgroundColours } from "../features/backgroundReducer";
@@ -66,6 +67,10 @@ export default function BANDAI_NAMCO_COMPONENT(props: {setIndex: number; yearLen
                 name: "Consolidated Operating Results",
                 value: bandaiNamcoConsolidatedEarningsList.get(index),
                 graph: <GRAPH_CONSOLIDATED_EARNINGS setData={bandaiNamcoConsolidatedEarningsGraphList.get(index)} />
+            },
+            {
+                name: "Segment Information",
+                value: bandaiNamcoSegmentEarningsList.get(index),
             },
             {
                 name: "Software Sales",

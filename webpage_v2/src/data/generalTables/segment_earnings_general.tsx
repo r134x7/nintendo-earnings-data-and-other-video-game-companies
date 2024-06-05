@@ -9,7 +9,6 @@ import {
     printReduceSection,
     printYoYV2,
     qtrOrCmlOutput,
-    printSectionHeaderV2,
     quarterlyCalculationV2,
     yearOnYearCalculationV2,
     EarningsValue,
@@ -17,7 +16,7 @@ import {
 
 import { nothingCheck, typeReturn } from "./consolidated_earnings_general";
 
-import { headerPrint, dateLabel, liner, border, spacer, globImport } from "../../utils/table_design_logic";
+import { headerPrint, dateLabel, liner, border, spacer, globImport, printTextBlock } from "../../utils/table_design_logic";
 
 export type SegmentJSON = {
     currentQuarter: number,
@@ -289,6 +288,12 @@ function segmentListMap(collection: SegmentJSON, lastFYCollection: SegmentJSON |
             title: "Segment Information",
         };
 
+        const salesType = (header.companyName.includes("Something"))
+            ? "Revenue"
+            : (header.companyName.includes("Else"))
+             ? "Sales"
+             : "Net Sales"
+
         const dataThisFY = getSegmentData(collection, collection.data.length);
 
         const dataLastFY = getSegmentData(lastFYCollection, collection.data.length);
@@ -373,7 +378,12 @@ function segmentListMap(collection: SegmentJSON, lastFYCollection: SegmentJSON |
 
         const printEach = new Map<number, string>();
 
-        printEach.forEach((value, key, map) => {
+        console.log(dataThisFY);
+        console.log(dataLastFY);
+        console.log(percentagesThisFY);
+        
+        // printEach.forEach((value, key, map) => {
+        dataThisFY.forEach((value, key, map) => {
 
             // if (key === 2) {
 
@@ -385,22 +395,38 @@ function segmentListMap(collection: SegmentJSON, lastFYCollection: SegmentJSON |
 
             // } else {
 
-            map.set(key, getSegmentPrintOutput(dataThisFY, percentagesThisFY, key, true, currentQuarter, "netSales"))
-
-            map.set(key, getSegmentPrintOutput(dataThisFY, percentagesThisFY, key, true, currentQuarter, "operatingIncome"))
-
-            map.set(key, getSegmentPrintOutput(dataThisFY, percentagesThisFY, key, true, currentQuarter, "operatingMargin"))
+            printEach.set(key, getSegmentPrintOutput(dataThisFY, percentagesThisFY, key, true, currentQuarter, "netSales", salesType)
+            + getSegmentPrintOutput(dataThisFY, percentagesThisFY, key, true, currentQuarter, "operatingIncome") 
+            + getSegmentPrintOutput(dataThisFY, percentagesThisFY, key, false, currentQuarter, "operatingMargin")
+            )
             // }
         })
 
         return [printOne, ...printEach.values()].reduce((acc, next) => acc + "\n" + next)
 };
 
-function getSegmentPrintOutput(values: Map<number, SegmentValue>, yoyValues: Map<number, SegmentValue>, key: number, useYoYHeader: boolean, currentQuarter: number, salesKey: "netSales" | "operatingIncome" | "operatingMargin"): string {
+function printSegmentHeader (value: EarningsV2 | SegmentValue, useYoY: boolean): string {
+
+    let yoyHeader = spacer("YoY% |",12,"right");
+
+    return (!useYoY)
+        ? liner(printTextBlock(value.name,28),"−","both",true, 28)
+        : liner(printTextBlock(value.name,28) + yoyHeader,"−","both",true,40) 
+}
+
+function getSegmentPrintOutput(values: Map<number, SegmentValue>, yoyValues: Map<number, SegmentValue>, key: number, useYoYHeader: boolean, currentQuarter: number, salesKey: "netSales" | "operatingIncome" | "operatingMargin", salesTitle?: string): string {
 
     const none: EarningsValue = { kind:"Nothing" };
 
-    let sectionHeader = printSectionHeaderV2(values.get(key) as SegmentValue, useYoYHeader);
+    let salesType = liner(printTextBlock((salesKey === "netSales")
+        ? salesTitle
+        : (salesKey === "operatingIncome")
+            ? "Operating Income"
+            : "Operating Margin"
+    , (useYoYHeader) ? 40 : 28), "−", "top", "newLine")
+
+    // let sectionHeader = printSegmentHeader(values.get(key) as SegmentValue, useYoYHeader);
+    let sectionHeader = salesType + printSegmentHeader(values.get(key) as SegmentValue, useYoYHeader);
 
     let quarters = [
         values.get(key)?.Q1QtrValue[salesKey] ?? none,
@@ -441,5 +467,5 @@ function getSegmentPrintOutput(values: Map<number, SegmentValue>, yoyValues: Map
         qtrOrCmlOutput(quarters,quarterPercentages,false),
         qtrOrCmlOutput(cumulatives,cumulativePercentages,false),
         forecastOutput(forecasts),
-    )
+    ) + "\n"
 }
