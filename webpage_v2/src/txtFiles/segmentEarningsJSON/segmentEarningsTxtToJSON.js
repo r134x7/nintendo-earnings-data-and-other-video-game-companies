@@ -75,6 +75,15 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
                     ? {netSales: 0, operatingIncome: 0} 
                     : {netSales: Number(newQuarterLocal[(i*5)+1]), operatingIncome: Number(newQuarterLocal[(i*5)+3])},
                 Q4CmlValue: {netSales: Number(newQuarterLocal[(i*5)+1]), operatingIncome: Number(newQuarterLocal[(i*5)+3])},
+                forecastThisFY: (currentQuarterLocal === 4) 
+                    ? {netSales: null, operatingIncome: null} 
+                    : {netSales: Number(newQuarterLocal[(i*3)+2]), operatingIncome: Number(newQuarterLocal[(i*3)+4])},
+                forecastRevision1: {netSales: null, operatingIncome: null},
+                forecastRevision2: {netSales: null, operatingIncome: null},
+                forecastRevision3: {netSales: null, operatingIncome: null},
+                forecastNextFY: (currentQuarterLocal !== 4) 
+                    ? {netSales: null, operatingIncome: null} 
+                    : {netSales: Number(newQuarterLocal[(i*3)+2]), operatingIncome: Number(newQuarterLocal[(i*3)+4])},
             }
             : {
                 name: newQuarterLocal[(i*5)],
