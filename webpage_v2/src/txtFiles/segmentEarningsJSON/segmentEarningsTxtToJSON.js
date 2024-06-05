@@ -31,22 +31,76 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
         {
             name: string, // segment name
             units: string, // because of YoY calculations and may include operating margin
-            type: "Net Sales" | "Operating Profit",
+            type: "Net Sales" | "Operating Profit", // maybe
             ID: string, // segment name can change so it would be easier tying to ID than to name which has become problematic in some other data
-            Q1CmlValue: number | string, // nothing type
-            Q2CmlValue: number | string,
-            Q3CmlValue: number | string,
-            Q4CmlValue: number | string,
-            forecastThisFY?: number | null | string,
-            forecastRevision1?: number | null,
-            forecastRevision2?: number | null,
-            forecastRevision3?: number | null,
-            forecastNextFY?: number | null | string, 
+            Q1CmlValue: {} number | string, // nothing type
+            Q2CmlValue: {} number | string,
+            Q3CmlValue: {} number | string,
+            Q4CmlValue: {} number | string,
+            forecastThisFY?: {} number | null | string,
+            forecastRevision1?: {} number | null,
+            forecastRevision2?: {} number | null,
+            forecastRevision3?: {} number | null,
+            forecastNextFY?: {} number | null | string, 
             footnotes?: string,
         }
     */
 
+    /*
+        example txt for a quarter
+        name
+        net sales
+        net sales forecast
+        operating profit
+        operating profit forecast
+    */
 
+    // /5 is referring to the above 
+    return Array.from({length: newQuarterLocal.length/5}, (v, i) => {
+
+        let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem,index,array) => (elem.name === newQuarterLocal[(i*5)])); // searching by name
+
+        return (!searchTitle[0])
+            ? {
+                name: newQuarterLocal[(i*5)],
+                units: "currency",
+                ID: (i+1).toString(),
+                Q1CmlValue: (currentQuarterLocal > 1) 
+                    ? {netSales: 0, operatingIncome: 0} 
+                    : {netSales: Number(newQuarterLocal[(i*5)+1]), operatingIncome: Number(newQuarterLocal[(i*5)+3])},
+                Q2CmlValue: (currentQuarterLocal > 2) 
+                    ? {netSales: 0, operatingIncome: 0} 
+                    : {netSales: Number(newQuarterLocal[(i*5)+1]), operatingIncome: Number(newQuarterLocal[(i*5)+3])},
+                Q3CmlValue: (currentQuarterLocal > 3) 
+                    ? {netSales: 0, operatingIncome: 0} 
+                    : {netSales: Number(newQuarterLocal[(i*5)+1]), operatingIncome: Number(newQuarterLocal[(i*5)+3])},
+                Q4CmlValue: {netSales: Number(newQuarterLocal[(i*5)+1]), operatingIncome: Number(newQuarterLocal[(i*5)+3])},
+            }
+            : {
+                name: newQuarterLocal[(i*5)],
+                platform: platformLocal,
+                regionA: "Japan",
+                Q1CmlValueA: searchTitle[0].Q1CmlValueA,
+                Q2CmlValueA: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*5)+2]) : searchTitle[0].Q2CmlValueA,
+                Q3CmlValueA: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*5)+2]) : searchTitle[0].Q3CmlValueA,
+                Q4CmlValueA: Number(newQuarterLocal[(i*5)+2]),
+                regionB: "Overseas",
+                Q1CmlValueB: searchTitle[0].Q1CmlValueB,
+                Q2CmlValueB: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*5)+3]) : searchTitle[0].Q2CmlValueB,
+                Q3CmlValueB: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*5)+3]) : searchTitle[0].Q3CmlValueB,
+                Q4CmlValueB: Number(newQuarterLocal[(i*5)+3]),
+                regionC: "WW FY",
+                Q1CmlValueC: searchTitle[0].Q1CmlValueC,
+                Q2CmlValueC: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*5)+1]) : searchTitle[0].Q2CmlValueC,
+                Q3CmlValueC: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*5)+1]) : searchTitle[0].Q3CmlValueC,
+                Q4CmlValueC: Number(newQuarterLocal[(i*5)+1]),
+                regionD: "WW LTD",
+                Q1CmlValueD: searchTitle[0].Q1CmlValueD,
+                Q2CmlValueD: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*5)+4]) : searchTitle[0].Q2CmlValueD,
+                Q3CmlValueD: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*5)+4]) : searchTitle[0].Q3CmlValueD,
+                Q4CmlValueD: Number(newQuarterLocal[(i*5)+4]),
+            }
+    })
 }
 
 
