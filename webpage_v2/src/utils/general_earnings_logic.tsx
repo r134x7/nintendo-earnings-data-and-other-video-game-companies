@@ -1,3 +1,4 @@
+import { SegmentValue } from "../data/generalTables/segment_earnings_general";
 import { liner, border, spacer, printTextBlock } from "./table_design_logic";
 
 export type Earnings = {
@@ -267,7 +268,7 @@ export function printForecastValuesV2(forecastValue: EarningsValue, textLength: 
     } 
 } 
 
-export function printSectionHeaderV2 (value: EarningsV2, useYoY: boolean): string {
+export function printSectionHeaderV2 (value: EarningsV2 | SegmentValue, useYoY: boolean): string {
 
     let yoyHeader = spacer("YoY% |",12,"right");
 
