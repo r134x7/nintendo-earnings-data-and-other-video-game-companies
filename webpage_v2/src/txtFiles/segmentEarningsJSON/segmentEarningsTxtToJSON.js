@@ -58,7 +58,7 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
     // /5 is referring to the above 
     return Array.from({length: newQuarterLocal.length/5}, (v, i) => {
 
-        let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem,index,array) => (elem.name === newQuarterLocal[(i*5)])); // searching by name
+        let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem) => (elem.name === newQuarterLocal[(i*5)])); // searching by name
 
         let getLatestForecasts = {
             netSales: (Number.isNaN(Number(newQuarterLocal[(i*5)+2])) === true) 
@@ -123,7 +123,7 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
             : {
                 name: newQuarterLocal[(i*5)].trim(),
                 units: "currency",
-                ID: (i+1).toString(),
+                ID: searchTitle[i].ID,
                 Q1CmlValue: searchTitle[i].Q1CmlValue, 
                 Q2CmlValue: (currentQuarterLocal === 2) 
                     ? {netSales: Number(newQuarterLocal[(i*5)+1]), operatingIncome: Number(newQuarterLocal[(i*5)+3])} 
