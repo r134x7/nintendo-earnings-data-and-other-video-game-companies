@@ -79,7 +79,7 @@ function segmentResultsMaker(completeCollection: Map<number, SegmentJSON>): stri
         }
     })
 
-    console.log(segmentList)
+    // console.log(segmentList)
 
     let titleHeader = headerMaker(completeCollection.get(completeCollection.size -1) as SegmentJSON)
 
@@ -90,7 +90,16 @@ function segmentResultsMaker(completeCollection: Map<number, SegmentJSON>): stri
     let printSegments = segmentList.map(elem => printAllValues(elem))
 
     console.log(printSegments)
-    
+
+    // printSegments is length of 13 with quarters in each index,
+    // need to sort so that there is a list of length 7 holding the 13 categories
+
+    let sortPrints = Array.from({length: 7}, (v, i) => {
+
+        return printSegments.map((elem, index, array) => elem[i])
+    }).map(elem => elem.reduce((acc, next) => acc + next))    
+
+    console.log(sortPrints)
     // let get1 = printAllValues(netSales).map(elem => completeHeader + elem);
 
     // let get2 = printAllValues(operatingIncome);
@@ -99,7 +108,7 @@ function segmentResultsMaker(completeCollection: Map<number, SegmentJSON>): stri
 
     // let combine = get1.map((elem, index) => elem + get2[index] + get3[index])
 
-    return ["test"]
+    return sortPrints
 }
 
 function printAllValues(list: Map<number, SegmentValue>): string[] {
@@ -113,7 +122,7 @@ function printAllValues(list: Map<number, SegmentValue>): string[] {
     // have to repeat toReturn and getValues for netSales and operatingIncome
 
     // Q1, Q2, Q3, Q4, First Half, 1st 3 Quarters, FY Cml
-    let toReturn = new Map<number, string[]>([
+    let toReturnNetSales = new Map<number, string[]>([
         [0, [sectionHeader(list.get(0)?.name, 35)]],
         [1, [sectionHeader(list.get(0)?.name, 35)]],
         [2, [sectionHeader(list.get(0)?.name, 35)]],
@@ -124,7 +133,29 @@ function printAllValues(list: Map<number, SegmentValue>): string[] {
     ]); 
 
     // to do statistics calculations
-    let getValues = new Map<number, number[]>([
+    let getValuesNetSales = new Map<number, number[]>([
+        [0, []],
+        [1, []],
+        [2, []],
+        [3, []],
+        [4, []],
+        [5, []],
+        [6, []],
+    ])
+
+    // Q1, Q2, Q3, Q4, First Half, 1st 3 Quarters, FY Cml
+    let toReturnOperatingIncome = new Map<number, string[]>([
+        [0, [sectionHeader(list.get(0)?.name, 35)]],
+        [1, [sectionHeader(list.get(0)?.name, 35)]],
+        [2, [sectionHeader(list.get(0)?.name, 35)]],
+        [3, [sectionHeader(list.get(0)?.name, 35)]],
+        [4, [sectionHeader(list.get(0)?.name, 34)]],
+        [5, [sectionHeader(list.get(0)?.name, 44)]],
+        [6, [sectionHeader(list.get(0)?.name, 37)]],
+    ]); 
+
+    // to do statistics calculations
+    let getValuesOperatingIncome = new Map<number, number[]>([
         [0, []],
         [1, []],
         [2, []],
@@ -146,57 +177,91 @@ function printAllValues(list: Map<number, SegmentValue>): string[] {
 
     list.forEach((value, key, map) => {
         // needed to cover the beginning of a new FY and the end FY
-        let thisFY = (value.Q4CmlValue.kind === "Cumulative") 
-            ? value.Q4CmlValue.thisFY 
-            : (value.Q1CmlValue.kind === "Cumulative")
-                ? value.Q1CmlValue.thisFY
+        let thisFY = (value.Q4CmlValue.netSales.kind === "Cumulative") 
+            ? value.Q4CmlValue.netSales.thisFY
+            : (value.Q1CmlValue.netSales.kind === "Cumulative")
+                ? value.Q1CmlValue.netSales.thisFY
                 : "Error: thisFY did not get year from Q4 or Q1 CmlValue because it is not there.";
         // toReturn.set(0, (toReturn.get(0) ?? "") + valueMake(value.Q1QtrValue))
-        toReturn.set(0, (toReturn.get(0) ?? []).concat(valueMake(value.Q1QtrValue, thisFY)))
-        toReturn.set(1, (toReturn.get(1) ?? []).concat(valueMake(value.Q2QtrValue, thisFY)))
-        toReturn.set(2, (toReturn.get(2) ?? []).concat(valueMake(value.Q3QtrValue, thisFY)))
-        toReturn.set(3, (toReturn.get(3) ?? []).concat(valueMake(value.Q4QtrValue, thisFY)))
-        toReturn.set(4, (toReturn.get(4) ?? []).concat(valueMake(value.Q2CmlValue, thisFY)))
-        toReturn.set(5, (toReturn.get(5) ?? []).concat(valueMake(value.Q3CmlValue, thisFY)))
-        toReturn.set(6, (toReturn.get(6) ?? []).concat(valueMake(value.Q4CmlValue, thisFY)))
+        toReturnNetSales.set(0, (toReturnNetSales.get(0) ?? []).concat(valueMake(value.Q1QtrValue.netSales, thisFY)))
+        toReturnNetSales.set(1, (toReturnNetSales.get(1) ?? []).concat(valueMake(value.Q2QtrValue.netSales, thisFY)))
+        toReturnNetSales.set(2, (toReturnNetSales.get(2) ?? []).concat(valueMake(value.Q3QtrValue.netSales, thisFY)))
+        toReturnNetSales.set(3, (toReturnNetSales.get(3) ?? []).concat(valueMake(value.Q4QtrValue.netSales, thisFY)))
+        toReturnNetSales.set(4, (toReturnNetSales.get(4) ?? []).concat(valueMake(value.Q2CmlValue.netSales, thisFY)))
+        toReturnNetSales.set(5, (toReturnNetSales.get(5) ?? []).concat(valueMake(value.Q3CmlValue.netSales, thisFY)))
+        toReturnNetSales.set(6, (toReturnNetSales.get(6) ?? []).concat(valueMake(value.Q4CmlValue.netSales, thisFY)))
 
-        getValues.set(0, (getValues.get(0) ?? []).concat(value.Q1QtrValue.kind === "Quarter" ? value.Q1QtrValue.value : []))
-        getValues.set(1, (getValues.get(1) ?? []).concat(value.Q2QtrValue.kind === "Quarter" ? value.Q2QtrValue.value : []))
-        getValues.set(2, (getValues.get(2) ?? []).concat(value.Q3QtrValue.kind === "Quarter" ? value.Q3QtrValue.value : []))
-        getValues.set(3, (getValues.get(3) ?? []).concat(value.Q4QtrValue.kind === "Quarter" ? value.Q4QtrValue.value : []))
-        getValues.set(4, (getValues.get(4) ?? []).concat(value.Q2CmlValue.kind === "Cumulative" ? value.Q2CmlValue.value : []))
-        getValues.set(5, (getValues.get(5) ?? []).concat(value.Q3CmlValue.kind === "Cumulative" ? value.Q3CmlValue.value : []))
-        getValues.set(6, (getValues.get(6) ?? []).concat(value.Q4CmlValue.kind === "Cumulative" ? value.Q4CmlValue.value : []))
+        getValuesNetSales.set(0, (getValuesNetSales.get(0) ?? []).concat(value.Q1QtrValue.netSales.kind === "Quarter" ? value.Q1QtrValue.netSales.value : []))
+        getValuesNetSales.set(1, (getValuesNetSales.get(1) ?? []).concat(value.Q2QtrValue.netSales.kind === "Quarter" ? value.Q2QtrValue.netSales.value : []))
+        getValuesNetSales.set(2, (getValuesNetSales.get(2) ?? []).concat(value.Q3QtrValue.netSales.kind === "Quarter" ? value.Q3QtrValue.netSales.value : []))
+        getValuesNetSales.set(3, (getValuesNetSales.get(3) ?? []).concat(value.Q4QtrValue.netSales.kind === "Quarter" ? value.Q4QtrValue.netSales.value : []))
+        getValuesNetSales.set(4, (getValuesNetSales.get(4) ?? []).concat(value.Q2CmlValue.netSales.kind === "Cumulative" ? value.Q2CmlValue.netSales.value : []))
+        getValuesNetSales.set(5, (getValuesNetSales.get(5) ?? []).concat(value.Q3CmlValue.netSales.kind === "Cumulative" ? value.Q3CmlValue.netSales.value : []))
+        getValuesNetSales.set(6, (getValuesNetSales.get(6) ?? []).concat(value.Q4CmlValue.netSales.kind === "Cumulative" ? value.Q4CmlValue.netSales.value : []))
 
+        toReturnOperatingIncome.set(0, (toReturnOperatingIncome.get(0) ?? []).concat(valueMake(value.Q1QtrValue.operatingIncome, thisFY)))
+        toReturnOperatingIncome.set(1, (toReturnOperatingIncome.get(1) ?? []).concat(valueMake(value.Q2QtrValue.operatingIncome, thisFY)))
+        toReturnOperatingIncome.set(2, (toReturnOperatingIncome.get(2) ?? []).concat(valueMake(value.Q3QtrValue.operatingIncome, thisFY)))
+        toReturnOperatingIncome.set(3, (toReturnOperatingIncome.get(3) ?? []).concat(valueMake(value.Q4QtrValue.operatingIncome, thisFY)))
+        toReturnOperatingIncome.set(4, (toReturnOperatingIncome.get(4) ?? []).concat(valueMake(value.Q2CmlValue.operatingIncome, thisFY)))
+        toReturnOperatingIncome.set(5, (toReturnOperatingIncome.get(5) ?? []).concat(valueMake(value.Q3CmlValue.operatingIncome, thisFY)))
+        toReturnOperatingIncome.set(6, (toReturnOperatingIncome.get(6) ?? []).concat(valueMake(value.Q4CmlValue.operatingIncome, thisFY)))
+
+        getValuesOperatingIncome.set(0, (getValuesOperatingIncome.get(0) ?? []).concat(value.Q1QtrValue.operatingIncome.kind === "Quarter" ? value.Q1QtrValue.operatingIncome.value : []))
+        getValuesOperatingIncome.set(1, (getValuesOperatingIncome.get(1) ?? []).concat(value.Q2QtrValue.operatingIncome.kind === "Quarter" ? value.Q2QtrValue.operatingIncome.value : []))
+        getValuesOperatingIncome.set(2, (getValuesOperatingIncome.get(2) ?? []).concat(value.Q3QtrValue.operatingIncome.kind === "Quarter" ? value.Q3QtrValue.operatingIncome.value : []))
+        getValuesOperatingIncome.set(3, (getValuesOperatingIncome.get(3) ?? []).concat(value.Q4QtrValue.operatingIncome.kind === "Quarter" ? value.Q4QtrValue.operatingIncome.value : []))
+        getValuesOperatingIncome.set(4, (getValuesOperatingIncome.get(4) ?? []).concat(value.Q2CmlValue.operatingIncome.kind === "Cumulative" ? value.Q2CmlValue.operatingIncome.value : []))
+        getValuesOperatingIncome.set(5, (getValuesOperatingIncome.get(5) ?? []).concat(value.Q3CmlValue.operatingIncome.kind === "Cumulative" ? value.Q3CmlValue.operatingIncome.value : []))
+        getValuesOperatingIncome.set(6, (getValuesOperatingIncome.get(6) ?? []).concat(value.Q4CmlValue.operatingIncome.kind === "Cumulative" ? value.Q4CmlValue.operatingIncome.value : []))
     })
 
-    toReturn.forEach((value, key, map) => {
+    toReturnNetSales.forEach((value, key, map) => {
 
         let getTextLength = (offset: number) => (map.get(key)?.at(-2)?.length === undefined)
             ? 0
             : (map.get(key)?.at(-2)?.length as number) - offset 
         
-        map.set(key, (toReturn.get(key) ?? []).concat(
+        map.set(key, (toReturnNetSales.get(key) ?? []).concat(
             printStats(
-                printCount(getValues.get(key) ?? [0], getTextLength(21),15,true).concat(
-                    printSum(getValues.get(key) ?? [0], getTextLength(21),15,"Million","¥",0,true),
-                    printAverage(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
-                    printMedian(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
-                    printMininum(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",true),
-                    printMaximum(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",true),
+                printCount(getValuesNetSales.get(key) ?? [0], getTextLength(21),15,true).concat(
+                    printSum(getValuesNetSales.get(key) ?? [0], getTextLength(21),15,"Million","¥",0,true),
+                    printAverage(getValuesNetSales.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
+                    printMedian(getValuesNetSales.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
+                    printMininum(getValuesNetSales.get(key) ?? [0], getTextLength(21), 15,"Million","¥",true),
+                    printMaximum(getValuesNetSales.get(key) ?? [0], getTextLength(21), 15,"Million","¥",true),
+                )
+            , getTextLength(3) ?? 0),
+        ))
+    })
+
+    toReturnOperatingIncome.forEach((value, key, map) => {
+
+        let getTextLength = (offset: number) => (map.get(key)?.at(-2)?.length === undefined)
+            ? 0
+            : (map.get(key)?.at(-2)?.length as number) - offset 
+        
+        map.set(key, (toReturnOperatingIncome.get(key) ?? []).concat(
+            printStats(
+                printCount(getValuesOperatingIncome.get(key) ?? [0], getTextLength(21),15,true).concat(
+                    printSum(getValuesOperatingIncome.get(key) ?? [0], getTextLength(21),15,"Million","¥",0,true),
+                    printAverage(getValuesOperatingIncome.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
+                    printMedian(getValuesOperatingIncome.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
+                    printMininum(getValuesOperatingIncome.get(key) ?? [0], getTextLength(21), 15,"Million","¥",true),
+                    printMaximum(getValuesOperatingIncome.get(key) ?? [0], getTextLength(21), 15,"Million","¥",true),
                 )
             , getTextLength(3) ?? 0),
         ))
     })
 
     return [
-        getConcat(toReturn.get(0)),
-        getConcat(toReturn.get(1)),
-        getConcat(toReturn.get(2)),
-        getConcat(toReturn.get(3)),
-        getConcat(toReturn.get(4)),
-        getConcat(toReturn.get(5)),
-        getConcat(toReturn.get(6)),
+        getConcat(toReturnNetSales.get(0)) + getConcat(toReturnOperatingIncome.get(0)),
+        getConcat(toReturnNetSales.get(1)) + getConcat(toReturnOperatingIncome.get(1)),
+        getConcat(toReturnNetSales.get(2)) + getConcat(toReturnOperatingIncome.get(2)),
+        getConcat(toReturnNetSales.get(3)) + getConcat(toReturnOperatingIncome.get(3)),
+        getConcat(toReturnNetSales.get(4)) + getConcat(toReturnOperatingIncome.get(4)),
+        getConcat(toReturnNetSales.get(5)) + getConcat(toReturnOperatingIncome.get(5)),
+        getConcat(toReturnNetSales.get(6)) + getConcat(toReturnOperatingIncome.get(6)),
     ]
     
 }
@@ -204,8 +269,11 @@ function printAllValues(list: Map<number, SegmentValue>): string[] {
 export function printStats(list: string[], textLength: number): string[] {
 
     let toPrint = list.reduce((acc, next) => acc + next,"")
+    // console.log(toPrint)
+    // console.log(textLength);
+    
 
-    let toLiner = liner(toPrint, "−", "both", true, textLength)
+    let toLiner = liner(toPrint, "−", "both", true, Math.abs(textLength))
 
     return [toLiner]
 }
