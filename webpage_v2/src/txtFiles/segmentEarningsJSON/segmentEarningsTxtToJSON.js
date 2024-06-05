@@ -67,8 +67,9 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
     // /5 is referring to the above 
     return Array.from({length: newQuarterLocal.length/5}, (v, i) => {
 
+        // be careful with duplicate names as it will find the first duplicate
         // output expected: [data] (length = 1)
-        let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem) => (elem.name === newQuarterLocal[(i*5)])); // searching by name
+        let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem) => (elem.name === newQuarterLocal[(i*5)].trim())); // searching by name, trimming to make sure no errors
         // console.log(searchTitle);
 
         let getLatestForecasts = {
