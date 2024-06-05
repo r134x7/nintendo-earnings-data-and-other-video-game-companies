@@ -30,9 +30,11 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
     function minusCheck(value) {
         // checks negative values using () as -
         if (value.includes("(") || value.includes(")")) {
-            return "-" + value.trim().slice(1,-1)
+            return Number("-" + value.trim().slice(1,-1))
+        } else if (value === "-") {
+            return "Nothing"
         } else {
-            return value
+            return Number(value)
         }
     }
 
@@ -56,7 +58,7 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
     */
 
     /*
-        example txt for a quarter
+        example txt for a quarter:
         name
         net sales
         net sales forecast
@@ -73,12 +75,12 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
         // console.log(searchTitle);
 
         let getLatestForecasts = {
-            netSales: (Number.isNaN(Number(minusCheck(newQuarterLocal[(i*5)+2]))) === true) 
+            netSales: (Number.isNaN(minusCheck(newQuarterLocal[(i*5)+2])) === true) 
                 ? null  
-                : Number(minusCheck(newQuarterLocal[(i*5)+2])), 
-            operatingIncome: (Number.isNaN(Number(minusCheck(newQuarterLocal[(i*5)+4]))) === true) 
+                : minusCheck(newQuarterLocal[(i*5)+2]), 
+            operatingIncome: (Number.isNaN(minusCheck(newQuarterLocal[(i*5)+4])) === true) 
                 ? null  
-                : Number(minusCheck(newQuarterLocal[(i*5)+4])), 
+                : minusCheck(newQuarterLocal[(i*5)+4]), 
         };
 
         let searchForecasts = (!searchTitle || currentQuarterLocal > 3)  
@@ -133,23 +135,23 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
                 ID: (i+1).toString(),
                 Q1CmlValue: (currentQuarterLocal > 1) 
                     ? {netSales: 0, operatingIncome: 0} 
-                    : {netSales: Number(minusCheck(newQuarterLocal[(i*5)+1])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+3]))},
+                    : {netSales: minusCheck(newQuarterLocal[(i*5)+1]), operatingIncome: minusCheck(newQuarterLocal[(i*5)+3])},
                 Q2CmlValue: (currentQuarterLocal > 2) 
                     ? {netSales: 0, operatingIncome: 0} 
-                    : {netSales: Number(minusCheck(newQuarterLocal[(i*5)+1])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+3]))},
+                    : {netSales: minusCheck(newQuarterLocal[(i*5)+1]), operatingIncome: minusCheck(newQuarterLocal[(i*5)+3])},
                 Q3CmlValue: (currentQuarterLocal > 3) 
                     ? {netSales: 0, operatingIncome: 0} 
-                    : {netSales: Number(minusCheck(newQuarterLocal[(i*5)+1])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+3]))},
-                Q4CmlValue: {netSales: Number(minusCheck(newQuarterLocal[(i*5)+1])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+3]))},
+                    : {netSales: minusCheck(newQuarterLocal[(i*5)+1]), operatingIncome: minusCheck(newQuarterLocal[(i*5)+3])},
+                Q4CmlValue: {netSales: minusCheck(newQuarterLocal[(i*5)+1]), operatingIncome: minusCheck(newQuarterLocal[(i*5)+3])},
                 forecastThisFY: (currentQuarterLocal === 4) 
                     ? {netSales: null, operatingIncome: null} 
-                    : {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))},
+                    : {netSales: minusCheck(newQuarterLocal[(i*5)+2]), operatingIncome: minusCheck(newQuarterLocal[(i*5)+4])},
                 forecastRevision1: {netSales: null, operatingIncome: null},
                 forecastRevision2: {netSales: null, operatingIncome: null},
                 forecastRevision3: {netSales: null, operatingIncome: null},
                 forecastNextFY: (currentQuarterLocal !== 4) 
                     ? {netSales: null, operatingIncome: null} 
-                    : {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))},
+                    : {netSales: minusCheck(newQuarterLocal[(i*5)+2]), operatingIncome: minusCheck(newQuarterLocal[(i*5)+4])},
             }
             : {
                 name: newQuarterLocal[(i*5)].trim(),
@@ -157,32 +159,32 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
                 ID: searchTitle[0].ID,
                 Q1CmlValue: searchTitle[0].Q1CmlValue, 
                 Q2CmlValue: (currentQuarterLocal === 2) 
-                    ? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+1])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+3]))} 
+                    ? {netSales: minusCheck(newQuarterLocal[(i*5)+1]), operatingIncome: minusCheck(newQuarterLocal[(i*5)+3])} 
                     : searchTitle[0].Q2CmlValue,
                 Q3CmlValue: (currentQuarterLocal === 2 || currentQuarterLocal === 3) 
-                    ? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+1])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+3]))} 
+                    ? {netSales: minusCheck(newQuarterLocal[(i*5)+1]), operatingIncome: minusCheck(newQuarterLocal[(i*5)+3])} 
                     : searchTitle[0].Q3CmlValue,
-                Q4CmlValue: {netSales: Number(minusCheck(newQuarterLocal[(i*5)+1])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+3]))},
+                Q4CmlValue: {netSales: minusCheck(newQuarterLocal[(i*5)+1]), operatingIncome: minusCheck(newQuarterLocal[(i*5)+3])},
                 forecastThisFY: (Number.isFinite(searchTitle?.[0]?.forecastThisFY.netSales) && Number.isFinite(searchTitle?.[0]?.forecastThisFY.operatingIncome)) 
                     ? searchTitle?.[0]?.forecastThisFY
-                    : {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))},
+                    : {netSales: minusCheck(newQuarterLocal[(i*5)+2]), operatingIncome: minusCheck(newQuarterLocal[(i*5)+4])},
                 forecastRevision1: (Number.isFinite(searchTitle?.[0]?.forecastRevision1.netSales) && Number.isFinite(searchTitle?.[0]?.forecastRevision1.operatingIncome)) 
                     ? searchTitle[0].forecastRevision1
                     : (searchForecasts?.[0] === false && searchForecasts?.[1] === true)
-                        ? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))}
+                        ? {netSales: minusCheck(newQuarterLocal[(i*5)+2]), operatingIncome: minusCheck(newQuarterLocal[(i*5)+4])}
                         : {netSales: null, operatingIncome: null},
                 forecastRevision2: (Number.isFinite(searchTitle?.[0]?.forecastRevision2.netSales) && Number.isFinite(searchTitle?.[0]?.forecastRevision2.operatingIncome))
                     ? searchTitle[0].forecastRevision2
                     : (searchForecasts?.[0] === false && searchForecasts?.[1] === false && searchForecasts?.[2] === true)
-                        ? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))}
+                        ? {netSales: minusCheck(newQuarterLocal[(i*5)+2]), operatingIncome: minusCheck(newQuarterLocal[(i*5)+4])}
                         : {netSales: null, operatingIncome: null},
                 forecastRevision3: (Number.isFinite(searchTitle?.[0]?.forecastRevision3.netSales) && Number.isFinite(searchTitle?.[0]?.forecastRevision3.operatingIncome))
                     ? searchTitle[0].forecastRevision3
                     : (searchForecasts?.[0] === false && searchForecasts?.[1] === false && searchForecasts?.[2] === false && searchForecasts?.[3 === true])
-                        ? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))}
+                        ? {netSales: minusCheck(newQuarterLocal[(i*5)+2]), operatingIncome: minusCheck(newQuarterLocal[(i*5)+4])}
                         : {netSales: null, operatingIncome: null},
                 forecastNextFY: (currentQuarterLocal === 4) 
-                    ? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))}
+                    ? {netSales: minusCheck(newQuarterLocal[(i*5)+2]), operatingIncome: minusCheck(newQuarterLocal[(i*5)+4])}
                     : {netSales: null, operatingIncome: null},
             };
     });
