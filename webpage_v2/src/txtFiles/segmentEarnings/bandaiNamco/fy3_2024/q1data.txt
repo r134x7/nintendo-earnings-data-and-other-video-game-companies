@@ -1,0 +1,66 @@
+Entertainment (Digital) 
+68040
+390000
+2661
+58000
+Entertainment (Toys and Hobby)
+120372
+450000
+23629 
+63000
+IP Production
+14992 
+83000
+1058
+11000 
+Amusement
+28240
+110000
+3157
+5000
+Other
+8098
+31000
+481
+1000
+Elimination and Corporate
+(14932)
+(64000)
+(3000)
+(13000)
+Total
+224812
+1000000
+27989
+125000
+
+Japan
+168188
+712000
+29267
+115000
+Americas
+15632
+99500
+692
+9500
+Europe
+17693
+93500
+(177)
+4000
+Asia
+23300
+95000
+2835 
+9500
+Elimination and Corporate (Region)
+-
+-
+(4627)
+(13000)
+Global
+224812
+1000000
+27989
+125000
