@@ -67,7 +67,9 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
     // /5 is referring to the above 
     return Array.from({length: newQuarterLocal.length/5}, (v, i) => {
 
+        // output expected: [data] (length = 1)
         let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem) => (elem.name === newQuarterLocal[(i*5)])); // searching by name
+        // console.log(searchTitle);
 
         let getLatestForecasts = {
             netSales: (Number.isNaN(Number(minusCheck(newQuarterLocal[(i*5)+2]))) === true) 
@@ -75,7 +77,7 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
                 : Number(minusCheck(newQuarterLocal[(i*5)+2])), 
             operatingIncome: (Number.isNaN(Number(minusCheck(newQuarterLocal[(i*5)+4]))) === true) 
                 ? null  
-                : Number(minusCheck(newQuarterLocal[(i*5)+2])), 
+                : Number(minusCheck(newQuarterLocal[(i*5)+4])), 
         };
 
         let searchForecasts = (!currentDataLocal || currentQuarterLocal > 3)  
@@ -103,8 +105,9 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
                     return true
                 }
             })
+            // console.log(searchForecasts);
 
-        return (!searchTitle[i])
+        return (!searchTitle[0])
             ? {
                 name: newQuarterLocal[(i*5)].trim(),
                 units: "currency",
@@ -132,28 +135,28 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
             : {
                 name: newQuarterLocal[(i*5)].trim(),
                 units: "currency",
-                ID: searchTitle[i].ID,
-                Q1CmlValue: searchTitle[i].Q1CmlValue, 
+                ID: searchTitle[0].ID,
+                Q1CmlValue: searchTitle[0].Q1CmlValue, 
                 Q2CmlValue: (currentQuarterLocal === 2) 
                     ? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+1])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+3]))} 
-                    : searchTitle[i].Q2CmlValue,
+                    : searchTitle[0].Q2CmlValue,
                 Q3CmlValue: (currentQuarterLocal === 2 || currentQuarterLocal === 3) 
                     ? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+1])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+3]))} 
-                    : searchTitle[i].Q3CmlValue,
+                    : searchTitle[0].Q3CmlValue,
                 Q4CmlValue: {netSales: Number(minusCheck(newQuarterLocal[(i*5)+1])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+3]))},
-                forecastThisFY: searchTitle?.[i]?.forecastThisFY ?? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))},
-                forecastRevision1: (searchTitle?.[i]?.forecastRevision1) 
-                    ? searchTitle[i].forecastRevision1
+                forecastThisFY: searchTitle?.[0]?.forecastThisFY ?? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))},
+                forecastRevision1: (searchTitle?.[0]?.forecastRevision1) 
+                    ? searchTitle[0].forecastRevision1
                     : (searchForecasts?.at(-1) === true)
                         ? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))}
                         : null,
-                forecastRevision2: (searchTitle?.[i]?.forecastRevision2)
-                    ? searchTitle[i].forecastRevision2
+                forecastRevision2: (searchTitle?.[0]?.forecastRevision2)
+                    ? searchTitle[0].forecastRevision2
                     : (searchForecasts?.at(-1) === true)
                         ? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))}
                         : null,
-                forecastRevision3: (searchTitle?.[i]?.forecastRevision3)
-                    ? searchTitle[i].forecastRevision3
+                forecastRevision3: (searchTitle?.[0]?.forecastRevision3)
+                    ? searchTitle[0].forecastRevision3
                     : (searchForecasts?.at(-1) === true)
                         ? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))}
                         : null,
@@ -182,6 +185,7 @@ let parseCurrentData = (!getCurrentData) ? undefined : JSON.parse(getCurrentData
 let newArray = makeArray(extractNQ, parseCurrentData, currentQuarter);
 
 let newArrayStringify = JSON.stringify(newArray, undefined, 4); // convert the object to JSON, space: 4 prevents JSON being on one line
+// console.log(newArrayStringify);
 
 writeFile("data_output.json", newArrayStringify, (err) =>
   err ? console.error(err) : console.log('json? JSSSOOONNNNNN!')
