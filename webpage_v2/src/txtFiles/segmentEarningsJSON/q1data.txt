@@ -59,7 +59,7 @@ Elimination and Corporate
 0
 (4627)
 (13000)
-Total
+Global
 224812
 1000000
 27989
