@@ -49,7 +49,7 @@ const getLengthLatestData = keySalesIndicatorsListCml[0].map((elem) => elem.quar
 
 const ascendingList = keySalesIndicatorsListCml.reverse(); // careful, reverse isn't making a copy so it's referencing the same memory...
 
-console.log(ascendingList)
+// console.log(ascendingList)
 
 const sortCategories = new Map<string, KeySalesIndicatorOutput[]>();
 
@@ -58,9 +58,9 @@ for (let index = 0; index < getLengthLatestData.length; index++) {
     sortCategories.set(getLengthLatestData[index], []);
 }
 
-console.log(ascendingList.length)
-console.log(sortCategories.size)
-console.log(getLengthLatestData)
+// console.log(ascendingList.length)
+// console.log(sortCategories.size)
+// console.log(getLengthLatestData)
 // data now sorted by category
 sortCategories.forEach((value, key, map) => {
 
@@ -74,7 +74,7 @@ sortCategories.forEach((value, key, map) => {
     // yMap.set(key, (yMap.get(key) ?? []).concat(ascendingList[key][key]))
 })
 
-console.log(sortCategories)
+// console.log(sortCategories)
 //data sorted by period, each index will contain all the data for one period of one category
 const sortPeriod = new Map<number, KeySalesIndicatorValues[]>([
     [0, []],
@@ -271,3 +271,7 @@ function printAllValues(list: Map<number, KeySalesIndicatorValues[][]>): string[
 
 
 export const keySalesIndicatorsCml = printAllValues(combineCategories);
+
+sortCategories.clear();
+sortPeriod.clear();
+// combineCategories.clear();
