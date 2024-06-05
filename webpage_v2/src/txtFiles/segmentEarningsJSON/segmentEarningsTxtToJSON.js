@@ -22,9 +22,32 @@ const checkMatch = (readingQuarter) => {
 };
 
 
+const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
+    if (newQuarterLocal === null) {
+        return null
+    };
+
+    /* object structure:
+        {
+            name: string, // segment name
+            units: string, // because of YoY calculations and may include operating margin
+            type: "Net Sales" | "Operating Profit",
+            ID: string, // segment name can change so it would be easier tying to ID than to name which has become problematic in some other data
+            Q1CmlValue: number | string, // nothing type
+            Q2CmlValue: number | string,
+            Q3CmlValue: number | string,
+            Q4CmlValue: number | string,
+            forecastThisFY?: number | null | string,
+            forecastRevision1?: number | null,
+            forecastRevision2?: number | null,
+            forecastRevision3?: number | null,
+            forecastNextFY?: number | null | string, 
+            footnotes?: string,
+        }
+    */
 
 
-
+}
 
 
 
