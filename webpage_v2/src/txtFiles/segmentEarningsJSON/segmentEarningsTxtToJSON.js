@@ -72,14 +72,14 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
         let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem) => (elem.name === newQuarterLocal[(i*5)].trim())); // searching by name, trimming to make sure no errors
         // console.log(searchTitle);
 
-        let getLatestForecasts = {
-            netSales: (Number.isNaN(Number(minusCheck(newQuarterLocal[(i*5)+2]))) === true) 
-                ? null  
-                : Number(minusCheck(newQuarterLocal[(i*5)+2])), 
-            operatingIncome: (Number.isNaN(Number(minusCheck(newQuarterLocal[(i*5)+4]))) === true) 
-                ? null  
-                : Number(minusCheck(newQuarterLocal[(i*5)+4])), 
-        };
+        // let getLatestForecasts = {
+        //     netSales: (Number.isNaN(Number(minusCheck(newQuarterLocal[(i*5)+2]))) === true) 
+        //         ? null  
+        //         : Number(minusCheck(newQuarterLocal[(i*5)+2])), 
+        //     operatingIncome: (Number.isNaN(Number(minusCheck(newQuarterLocal[(i*5)+4]))) === true) 
+        //         ? null  
+        //         : Number(minusCheck(newQuarterLocal[(i*5)+4])), 
+        // };
 
         let searchForecasts = (!searchTitle || currentQuarterLocal > 3)  
             ? [undefined]
@@ -96,16 +96,23 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
                     netSales: searchTitle?.[0]?.forecastRevision2.netSales,
                     operatingIncome: searchTitle?.[0]?.forecastRevision2.operatingIncome,
                 },
-            ].filter((elem) => elem?.netSales && elem?.operatingIncome).flatMap((elem, index, array) => {
-                // if all values were true, we don't need to look at the oldest values, hence we remove them.
-                if (index !== array.length-1) {
-                    return []
-                } else if (elem.netSales === getLatestForecasts.netSales && elem.operatingIncome === getLatestForecasts.operatingIncome) {
+            ].map((elem) => {
+                if (elem.netSales && elem.operatingIncome) {
                     return false
                 } else {
                     return true
                 }
             })
+            // .filter((elem) => elem?.netSales && elem?.operatingIncome).flatMap((elem, index, array) => {
+                // if all values were true, we don't need to look at the oldest values, hence we remove them.
+            //     if (index !== array.length-1) {
+            //         return []
+            //     } else if (elem.netSales === getLatestForecasts.netSales && elem.operatingIncome === getLatestForecasts.operatingIncome) {
+            //         return false
+            //     } else {
+            //         return true
+            //     }
+            // })
             // console.log(searchForecasts);
 
                 let test = (searchTitle?.[0]?.forecastRevision1.net) 
@@ -159,20 +166,22 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
                     ? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+1])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+3]))} 
                     : searchTitle[0].Q3CmlValue,
                 Q4CmlValue: {netSales: Number(minusCheck(newQuarterLocal[(i*5)+1])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+3]))},
-                forecastThisFY: searchTitle?.[0]?.forecastThisFY ?? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))},
+                forecastThisFY: (searchTitle?.[0]?.forecastThisFY.netSales && searchTitle?.[0]?.forecastThisFY.operatingIncome) 
+                    ? searchTitle?.[0]?.forecastThisFY
+                    : {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))},
                 forecastRevision1: (searchTitle?.[0]?.forecastRevision1.netSales && searchTitle?.[0]?.forecastRevision1.operatingIncome) 
                     ? searchTitle[0].forecastRevision1
-                    : (searchForecasts?.at(-1) === true)
+                    : (searchForecasts[0] === false && searchForecasts[1] === true)
                         ? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))}
                         : {netSales: null, operatingIncome: null},
                 forecastRevision2: (searchTitle?.[0]?.forecastRevision2.netSales && searchTitle?.[0]?.forecastRevision2.operatingIncome)
                     ? searchTitle[0].forecastRevision2
-                    : (searchForecasts?.at(-1) === true)
+                    : (searchForecasts[0] === false && searchForecasts[1] === false && searchForecasts[2] === true)
                         ? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))}
                         : {netSales: null, operatingIncome: null},
                 forecastRevision3: (searchTitle?.[0]?.forecastRevision3.netSales && searchTitle?.[0]?.forecastRevision3.operatingIncome)
                     ? searchTitle[0].forecastRevision3
-                    : (searchForecasts?.at(-1) === true)
+                    : (searchForecasts[0] === false && searchForecasts[1] === false && searchForecasts[2] === false)
                         ? {netSales: Number(minusCheck(newQuarterLocal[(i*5)+2])), operatingIncome: Number(minusCheck(newQuarterLocal[(i*5)+4]))}
                         : {netSales: null, operatingIncome: null},
                 forecastNextFY: (currentQuarterLocal === 4) 
