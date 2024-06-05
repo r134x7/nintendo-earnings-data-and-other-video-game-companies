@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { Code, SegmentedControl, Space, TextInput, Button, Select } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { bandaiNamcoSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
+import { cumulativeSegmentListBandaiNamco } from "../../data/generalTables/segment_earnings_general_cml_data";
 import { cumulativeEarningsListBandaiNamco } from "../../data/generalTables/consolidated_earnings_cml_data";
 // import { fyTitlesBandaiNamco } from "../../data/generalTables/annual_report_cml_data";
 import { bandaiNamcoAnnualReportCml } from "../../data/generalTables/annual_report_cumulative";
 import { printTextBlock, liner, type titleSet } from "../../utils/table_design_logic";
 import type { BackgroundColours } from "../../features/backgroundReducer";
+console.log(cumulativeSegmentListBandaiNamco)
 
 import {cite, citeCopy} from "../../utils/copySetCitation";
 import { filterTitles } from "../../utils/table_design_logic";

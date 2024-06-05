@@ -378,9 +378,9 @@ function segmentListMap(collection: SegmentJSON, lastFYCollection: SegmentJSON |
 
         const printEach = new Map<number, string>();
 
-        console.log(dataThisFY);
-        console.log(dataLastFY);
-        console.log(percentagesThisFY);
+        // console.log(dataThisFY);
+        // console.log(dataLastFY);
+        // console.log(percentagesThisFY);
         
         // printEach.forEach((value, key, map) => {
         dataThisFY.forEach((value, key, map) => {
