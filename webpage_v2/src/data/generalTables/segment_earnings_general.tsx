@@ -205,3 +205,156 @@ export function segmentValuesMake(obj: undefined | SegmentData, fiscalYear: stri
 
     return values
 }
+
+export function getSegmentData(dataCollectionThisFY: SegmentJSON | undefined, dataThisFYLengthForLastFY: number): Map<number, SegmentValue> {
+
+    const dataMap = new Map<number, SegmentValue>();
+
+        if (!dataCollectionThisFY) {
+            for (let index = 0; index < dataThisFYLengthForLastFY; index++) {
+                dataMap.set(index, segmentValuesMake(undefined, ""))
+            }
+        } else {
+            for (let index = 0; index < dataCollectionThisFY.data.length; index++) {
+                dataMap.set(index, segmentValuesMake(dataCollectionThisFY.data[index], dataCollectionThisFY.fiscalYear))
+            }
+        }
+
+        return dataMap;
+}
+
+
+export const bandaiNamcoSegmentEarningsList = new Map<number, string>();
+
+function consolidatedEarningsListV2Map(collection: SegmentJSON, lastFYCollection: SegmentJSON | undefined, headerLength: number): string {
+
+        const currentQuarter = collection.currentQuarter;
+
+        const makeDateLabel = dateLabel(collection?.fiscalYear ?? "N/A", collection?.currentQuarter ?? 4);
+
+        const none: EarningsValue = { kind:"Nothing" };
+
+        const printDateLabel = liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "both",true)
+
+        const header: Header = {
+            companyName: collection.companyName,
+            fiscalYear: collection.fiscalYear,
+            title: "Segment Information",
+        };
+
+        const dataThisFY = getSegmentData(collection, collection.data.length);
+
+        const dataLastFY = getSegmentData(lastFYCollection, collection.data.length);
+
+        const percentagesThisFY = new Map<number, SegmentValue>(); 
+        dataThisFY.forEach((value, key, map) => {
+            percentagesThisFY.set(key, {
+                ...value,
+                Q1QtrValue: {
+                    netSales: yearOnYearCalculationV2(value.Q1QtrValue.netSales, dataLastFY.get(key)?.Q1QtrValue?.netSales ?? none, "Quarter"),
+                    operatingIncome: yearOnYearCalculationV2(value.Q1QtrValue.operatingIncome, dataLastFY.get(key)?.Q1QtrValue.operatingIncome ?? none, "Quarter"),
+                },
+                Q2QtrValue: {
+                    netSales: yearOnYearCalculationV2(value.Q2QtrValue.netSales, dataLastFY.get(key)?.Q2QtrValue.netSales ?? none, "Quarter"),
+                    operatingIncome: yearOnYearCalculationV2(value.Q2QtrValue.operatingIncome, dataLastFY.get(key)?.Q2QtrValue.operatingIncome ?? none, "Quarter"),
+                },
+                Q3QtrValue: {
+                    netSales: yearOnYearCalculationV2(value.Q3QtrValue.netSales, dataLastFY.get(key)?.Q3QtrValue.netSales ?? none, "Quarter"),
+                    operatingIncome: yearOnYearCalculationV2(value.Q3QtrValue.operatingIncome, dataLastFY.get(key)?.Q3QtrValue.operatingIncome ?? none, "Quarter"),
+                }, 
+                Q4QtrValue: {
+                    netSales: yearOnYearCalculationV2(value.Q4QtrValue.netSales, dataLastFY.get(key)?.Q4QtrValue.netSales ?? none, "Quarter"),
+                    operatingIncome: yearOnYearCalculationV2(value.Q4QtrValue.operatingIncome, dataLastFY.get(key)?.Q4QtrValue.operatingIncome ?? none, "Quarter"),
+                },
+                Q1CmlValue: {
+                    netSales: yearOnYearCalculationV2(value.Q1CmlValue.netSales, dataLastFY.get(key)?.Q1CmlValue.netSales ?? none, "Cumulative"),
+                    operatingIncome: yearOnYearCalculationV2(value.Q1CmlValue.operatingIncome, dataLastFY.get(key)?.Q1CmlValue.operatingIncome ?? none, "Cumulative"),
+                },
+                Q2CmlValue: {
+                    netSales: yearOnYearCalculationV2(value.Q2CmlValue.netSales, dataLastFY.get(key)?.Q2CmlValue.netSales ?? none, "Cumulative"),
+                    operatingIncome: yearOnYearCalculationV2(value.Q2CmlValue.operatingIncome, dataLastFY.get(key)?.Q2CmlValue.operatingIncome ?? none, "Cumulative"),
+                },
+                Q3CmlValue: {
+                    netSales: yearOnYearCalculationV2(value.Q3CmlValue.netSales, dataLastFY.get(key)?.Q3CmlValue.netSales ?? none, "Cumulative"),
+                    operatingIncome: yearOnYearCalculationV2(value.Q3CmlValue.operatingIncome, dataLastFY.get(key)?.Q3CmlValue.operatingIncome ?? none, "Cumulative"),
+                },
+                Q4CmlValue: {
+                    netSales: yearOnYearCalculationV2(value.Q4CmlValue.netSales, dataLastFY.get(key)?.Q4CmlValue.netSales ?? none, "Cumulative"),
+                    operatingIncome: yearOnYearCalculationV2(value.Q4CmlValue.operatingIncome, dataLastFY.get(key)?.Q4CmlValue.operatingIncome ?? none, "Cumulative"),
+                },
+                forecastThisFY: {
+                    netSales: yearOnYearCalculationV2(value.forecastThisFY?.netSales ?? none, dataLastFY.get(key)?.forecastThisFY?.netSales ?? none, "Forecast"),
+                    operatingIncome: yearOnYearCalculationV2(value.forecastThisFY?.operatingIncome ?? none, dataLastFY.get(key)?.forecastThisFY?.operatingIncome ?? none, "Forecast"),
+                },
+                forecastRevision1: {
+                    netSales: yearOnYearCalculationV2(value.forecastRevision1?.netSales ?? none, dataLastFY.get(key)?.forecastRevision1?.netSales ?? none, "Forecast"),
+                    operatingIncome: yearOnYearCalculationV2(value.forecastRevision1?.operatingIncome ?? none, dataLastFY.get(key)?.forecastRevision1?.operatingIncome ?? none, "Forecast"),
+                },
+                forecastRevision2: {
+                    netSales: yearOnYearCalculationV2(value.forecastRevision2?.netSales ?? none, dataLastFY.get(key)?.forecastRevision2?.netSales ?? none, "Forecast"),
+                    operatingIncome: yearOnYearCalculationV2(value.forecastRevision2?.operatingIncome ?? none, dataLastFY.get(key)?.forecastRevision2?.operatingIncome ?? none, "Forecast"),
+                },
+                forecastRevision3: {
+                    netSales: yearOnYearCalculationV2(value.forecastRevision3?.netSales ?? none, dataLastFY.get(key)?.forecastRevision3?.netSales?? none, "Forecast"),
+                    operatingIncome: yearOnYearCalculationV2(value.forecastRevision3?.netSales ?? none, dataLastFY.get(key)?.forecastRevision3?.operatingIncome ?? none, "Forecast"),
+                },
+                forecastNextFY: {
+                    netSales: yearOnYearCalculationV2(value.forecastNextFY?.netSales ?? none, dataLastFY.get(key)?.forecastNextFY?.netSales ?? none, "Forecast"),
+                    operatingIncome: yearOnYearCalculationV2(value.forecastNextFY?.operatingIncome ?? none, dataLastFY.get(key)?.forecastNextFY?.operatingIncome ?? none, "Forecast"),
+                } 
+            } //satisfies SegmentValue 
+            )
+        });
+
+        const printOne = headerPrint([
+            header.companyName + " | " + header.fiscalYear,
+            header.title
+        ],headerLength) + "\n" + printDateLabel;
+
+        const opMargin = new Map<number, EarningsV2>([
+            [0,
+                {
+                    ...dataThisFY.get(1),
+                    name: "Operating Margin",
+                    Q1QtrValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q1QtrValue ?? none, dataThisFY.get(1)?.Q1QtrValue ?? none, "Quarter"),
+                    Q2QtrValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q2QtrValue ?? none, dataThisFY.get(1)?.Q2QtrValue ?? none, "Quarter"),
+                    Q3QtrValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q3QtrValue ?? none, dataThisFY.get(1)?.Q3QtrValue ?? none, "Quarter"),
+                    Q4QtrValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q4QtrValue ?? none, dataThisFY.get(1)?.Q4QtrValue ?? none, "Quarter"),
+                    Q1CmlValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q1CmlValue ?? none, dataThisFY.get(1)?.Q1CmlValue ?? none, "Cumulative"),
+                    Q2CmlValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q2CmlValue ?? none, dataThisFY.get(1)?.Q2CmlValue ?? none, "Cumulative"),
+                    Q3CmlValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q3CmlValue ?? none, dataThisFY.get(1)?.Q3CmlValue ?? none, "Cumulative"),
+                    Q4CmlValue: operatingMarginCalculationV2(dataThisFY.get(0)?.Q4CmlValue ?? none, dataThisFY.get(1)?.Q4CmlValue ?? none, "Cumulative"),
+                    forecastThisFY: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastThisFY ?? none, dataThisFY.get(1)?.forecastThisFY ?? none, "Forecast"), 
+                    forecastRevision1: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastRevision1 ?? none, dataThisFY.get(1)?.forecastRevision1 ?? none, "Forecast"), 
+                    forecastRevision2: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastRevision2 ?? none, dataThisFY.get(1)?.forecastRevision2 ?? none, "Forecast"), 
+                    forecastRevision3: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastRevision3 ?? none, dataThisFY.get(1)?.forecastRevision3 ?? none, "Forecast"), 
+                    forecastNextFY: operatingMarginCalculationV2(dataThisFY.get(0)?.forecastNextFY ?? none, dataThisFY.get(1)?.forecastNextFY ?? none, "Forecast"), 
+                } satisfies EarningsV2
+            ]
+        ]);
+
+        const printEach = new Map<number, string>([
+            [0, ""],
+            [1, ""],
+            [2, ""],
+            [3, ""],
+        ]);
+
+        printEach.forEach((value, key, map) => {
+
+            if (key === 2) {
+
+                map.set(key, getPrintOpMarginOutput(opMargin, 0, false, currentQuarter))
+
+            } else if (key > 2) {
+
+                map.set(key, getPrintOutput(dataThisFY, percentagesThisFY, key-1, true, currentQuarter))
+
+            } else {
+
+                map.set(key, getPrintOutput(dataThisFY, percentagesThisFY, key, true, currentQuarter))
+            }
+        })
+
+        return [printOne, ...printEach.values()].reduce((acc, next) => acc + "\n" + next)
+};
