@@ -96,6 +96,8 @@ const collectionKoeiTecmoV2 = globImport(new Map<number, EarningsJSONV2>(), impo
 
 const collectionSquareEnixV2 = globImport(new Map<number, EarningsJSONV2>(), import.meta.glob("../squareEnix/Consolidated_Earnings/*.json", { import: "default", eager: true }), "Descending");
 
+const collectionKonamiV2 = globImport(new Map<number, EarningsJSONV2>(), import.meta.glob("../konami/Consolidated_Earnings/*.json", { import: "default", eager: true }), "Descending");
+
 export function typeReturn(typeValue: string | undefined): "units" | "currency" | "percentage" {
 
     switch (typeValue) {
@@ -227,6 +229,19 @@ collectionSquareEnixV2.forEach((value, key, map) => {
 });
 
 collectionSquareEnixV2.clear();
+
+export const konamiConsolidatedEarningsList = new Map<number, string>();
+
+export const konamiConsolidatedEarningsGraphList = new Map();
+
+collectionKonamiV2.forEach((value, key, map) => {
+
+    konamiConsolidatedEarningsList.set(key, consolidatedEarningsListV2Map(value, map.get(key+1), 42))
+
+    konamiConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1)))
+});
+
+collectionKonamiV2.clear();
 
 function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollection: EarningsJSONV2 | undefined, headerLength: number): string {
 

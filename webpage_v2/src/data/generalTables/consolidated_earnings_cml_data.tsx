@@ -14,6 +14,8 @@ const totalCollectionSegaSammy = globImport(new Map<number, EarningsJSONV2>(), i
 
 const totalCollectionSquareEnix = globImport(new Map<number, EarningsJSONV2>(), import.meta.glob("../squareEnix/Consolidated_Earnings/*.json", { import: "default", eager: true }), "Ascending");
 
+const totalCollectionKonami = globImport(new Map<number, EarningsJSONV2>(), import.meta.glob("../konami/Consolidated_Earnings/*.json", { import: "default", eager: true }), "Ascending");
+
 function labelMaker (collection: EarningsJSONV2): string {
 
     // const makeDateLabel = dateLabel(collection.at(-1)?.fiscalYear ?? "N/A", collection.at(-1)?.currentQuarter ?? 4);
@@ -375,3 +377,5 @@ export const cumulativeEarningsListKoeiTecmo = operatingResultsMakerV2(totalColl
 export const cumulativeEarningsListSegaSammy = operatingResultsMakerV2(totalCollectionSegaSammy);
 
 export const cumulativeEarningsListSquareEnix = operatingResultsMakerV2(totalCollectionSquareEnix)
+
+export const cumulativeEarningsListKonami = operatingResultsMakerV2(totalCollectionKonami)

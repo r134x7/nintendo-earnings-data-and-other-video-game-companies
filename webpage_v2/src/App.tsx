@@ -21,6 +21,7 @@ import {
   Paper,
   Group,
   Code,
+  ScrollArea,
 } from '@mantine/core';
 
 
@@ -73,6 +74,7 @@ function App() {
           navbarOffsetBreakpoint="sm"
         navbar={
           <Navbar sx={(theme) => ({ backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[1] })} p="xl" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 175, lg: 175 }}>
+            <ScrollArea type="scroll" scrollbarSize={8}>
             <Stack spacing="lg">
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/" end>
                   <Button aria-label='Home Page' leftIcon={<DeviceNintendo size={24} strokeWidth={2} color={'#40bfb2'}/>} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Home</Button>
@@ -95,8 +97,12 @@ function App() {
                       <Text>Koei Tecmo</Text></Button>
               </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/square-enix">
-                    <Button aria-label='Koei Tecmo data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">
+                    <Button aria-label='Square Enix data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">
                       <Text>Square Enix</Text></Button>
+              </NavLink>
+              <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/konami">
+                    <Button aria-label='Konami data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">
+                      <Text>Konami</Text></Button>
               </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/events">
                     <Button aria-label='Upcoming events page' leftIcon={<Calendar size={24} strokeWidth={2} color={'#40bfb2'}/>} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Events</Button>
@@ -106,6 +112,7 @@ function App() {
               </NavLink>
               {/* <FAQModal /> */}
             </Stack>
+            </ScrollArea>
           </Navbar>
         }
         header={

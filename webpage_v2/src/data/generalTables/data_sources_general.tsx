@@ -23,6 +23,8 @@ const koeiTecmoDataSources = globImport(new Map<number, jsonData>, import.meta.g
 
 const squareEnixDataSources = globImport(new Map<number, jsonData>, import.meta.glob("../squareEnix/Data_Sources/*.json", { import: "default", eager: true }), "Descending");
 
+const konamiDataSources = globImport(new Map<number, jsonData>, import.meta.glob("../konami/Data_Sources/*.json", { import: "default", eager: true }), "Descending");
+
 const dataSourcesLogic = (dataLocal: linkData[]): JSX.Element => {
 
     let links = dataLocal.map((elem, index) => {
@@ -77,9 +79,14 @@ export const squareEnixLinks = new Map<number, JSX.Element>();
 
 squareEnixDataSources.forEach((value, key, map) => squareEnixLinks.set(squareEnixLinks.size, dataSourcesLogic(value.data)));
 
+export const konamiLinks = new Map<number, JSX.Element>(); 
+
+konamiDataSources.forEach((value, key, map) => konamiLinks.set(konamiLinks.size, dataSourcesLogic(value.data)));
+
 nintendoDataSources.clear();
 capcomDataSources.clear();
 segaDataSources.clear();
 bandaiNamcoDataSources.clear();
 koeiTecmoDataSources.clear()
 squareEnixDataSources.clear();
+konamiDataSources.clear();

@@ -21,6 +21,8 @@ const Home = () => {
 
     const squareEnixStatus = liner(printTextBlock("Square Enix page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 4th Quarter earnings data for FY3/2024.",40),"−","both",true,40);
 
+    const konamiStatus = liner(printTextBlock("Konami page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 4th Quarter earnings data for FY3/2024.",40),"−","both",true,40); 
+
     const eventsStatus = liner(printTextBlock("Events page status",32),"=","top",true,32) + liner(printTextBlock("Page update: Updated calendar for 19 of 21 companies from April to May 2024.",40),"−","both",true,40);
 
     const gamesStatus = liner(printTextBlock("Games page status",32),"=","top",true,32) + liner(printTextBlock("Game Three Plus and Game Four is now playable.",40),"−","both",true,40);
@@ -59,6 +61,7 @@ const Home = () => {
                     {bandaiNamcoStatus}
                     {koeiTecmoStatus}
                     {squareEnixStatus}
+                    {konamiStatus}
                     {eventsStatus}
                     {gamesStatus}
                 </Code>
