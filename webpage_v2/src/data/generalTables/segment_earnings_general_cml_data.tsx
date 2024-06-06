@@ -96,13 +96,15 @@ function printAllValues(list: Map<number, SegmentValue>, company: string): strin
     } 
 
     // have to repeat toReturn and getValues for netSales and operatingIncome
-    const salesType = (company.includes("Something"))
+    const salesType = (company.includes("KONAMI"))
             ? "Revenue"
             : (company.includes("Else"))
                 ? "Sales"
                 : "Net Sales"
 
-    // const salesTitle = ;
+    const profitType = (company.includes("KONAMI"))
+            ? "Business Profit"
+            : "Operating Income"
 
     // Q1, Q2, Q3, Q4, First Half, 1st 3 Quarters, FY Cml
     let toReturnNetSales = new Map<number, string[]>([
@@ -128,13 +130,13 @@ function printAllValues(list: Map<number, SegmentValue>, company: string): strin
 
     // Q1, Q2, Q3, Q4, First Half, 1st 3 Quarters, FY Cml
     let toReturnOperatingIncome = new Map<number, string[]>([
-        [0, [liner(printTextBlock("Operating Income", 36), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 35)]],
-        [1, [liner(printTextBlock("Operating Income", 36), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 35)]],
-        [2, [liner(printTextBlock("Operating Income", 36), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 35)]],
-        [3, [liner(printTextBlock("Operating Income", 36), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 35)]],
-        [4, [liner(printTextBlock("Operating Income", 35), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 34)]],
-        [5, [liner(printTextBlock("Operating Income", 45), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 44)]],
-        [6, [liner(printTextBlock("Operating Income", 38), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 37)]],
+        [0, [liner(printTextBlock(profitType, 36), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 35)]],
+        [1, [liner(printTextBlock(profitType, 36), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 35)]],
+        [2, [liner(printTextBlock(profitType, 36), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 35)]],
+        [3, [liner(printTextBlock(profitType, 36), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 35)]],
+        [4, [liner(printTextBlock(profitType, 35), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 34)]],
+        [5, [liner(printTextBlock(profitType, 45), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 44)]],
+        [6, [liner(printTextBlock(profitType, 38), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 37)]],
     ]); 
 
     // to do statistics calculations
