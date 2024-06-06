@@ -1,4 +1,4 @@
-Net Sales
+Revenue
 253096
 343000
 Operating Income
