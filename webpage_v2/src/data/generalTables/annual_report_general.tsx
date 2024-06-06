@@ -94,6 +94,8 @@ const collectionCapcomFactBook = globImport(new Map<number, SeriesJSON>, import.
 
 const collectionCapcomUnitsHardware = globImport(new Map<number, SeriesJSON>, import.meta.glob("../capcom/Units_By_Hardware/*.json", { import: "default", eager: true }), "Descending");;
 
+const collectionKonami = globImport(new Map<number, SeriesJSON>, import.meta.glob("../konami/Annual_Report/*.json", { import: "default", eager: true }), "Descending");
+
 export const bandaiNamcoAnnualReport = new Map<number, { header: string, titleList: titleSet[]}>(); 
 
 collectionBandaiNamco.forEach((value, key, map) => {
@@ -136,12 +138,20 @@ collectionCapcomUnitsHardware.forEach((value, key, map) => {
    capcomUnitsHardware.set(key, annualReportMap(value, 28, "Capcom Fact Book"))
 })
 
+export const konamiAnnualReport = new Map<number, { header: string, titleList: titleSet[]}>(); 
+
+collectionKonami.forEach((value, key, map) => {
+
+    konamiAnnualReport.set(key, annualReportMap(value, 38, "General"))
+})
+
 collectionBandaiNamco.clear();
 collectionSquareEnix.clear();
 collectionSega.clear();
 collectionCapcomGameSeries.clear();
 collectionCapcomFactBook.clear();
 collectionCapcomUnitsHardware.clear();
+collectionKonami.clear();
 
 export function annualReportNothingCheck(
     value: number| string | null | undefined,
