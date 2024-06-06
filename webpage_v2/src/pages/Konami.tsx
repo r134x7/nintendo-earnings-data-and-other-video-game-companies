@@ -16,7 +16,7 @@ export default function KoeiTecmo() {
 
     const linkOther = liner(printTextBlock("Also, visit Install Base. It's a place to discuss and elaborate on the business side of the video game industry.",40),"=","top",true,40);
 
-    const message = `Koei Tecmo (They publish Hyrule Warriors), this is where you can find archived data.`;
+    const message = `Konami (They publish Metal Gear Solid), this is where you can find archived data.`;
 
     const makeText = useSingleMessage(message,40,"−",80)
 

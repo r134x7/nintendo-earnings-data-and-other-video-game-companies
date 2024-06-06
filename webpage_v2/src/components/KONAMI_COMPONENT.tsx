@@ -5,7 +5,6 @@ import { konamiConsolidatedEarningsList, konamiConsolidatedEarningsGraphList} fr
 import { konamiLinks } from "../data/generalTables/data_sources_general";
 import type { BackgroundColours } from "../features/backgroundReducer";
 
-import GRAPH_SOFTWARE_SALES from "../data/generalGraphs/GRAPH_SOFTWARE_SALES";
 import GRAPH_CONSOLIDATED_EARNINGS from "../data/generalGraphs/GRAPH_CONSOLIDATED_EARNINGS";
 
 import {cite, citeCopy} from "../utils/copySetCitation";
