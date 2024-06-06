@@ -23,16 +23,34 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
         return null
     };
 
+
+    function minusCheck(value) {
+        // checks negative values using () as -
+        if (value.includes("(") || value.includes(")")) {
+            return Number("-" + value.trim().slice(1,-1))
+        } else if (value === "-") {
+            return "Nothing"
+        } else {
+            return Number(value)
+        }
+    }
+
     return Array.from({length:(newQuarterLocal.length/3)}, (v,i) => {
 
         // through each iteration of Array.from, it will find Net Sales, then Operating Income and then Net Income hence the array will only have a length of 1.
-        let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem,index,array) => (elem.name.trim() === newQuarterLocal[(i*3)].trim()));
+        let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem) => (elem.name.trim() === newQuarterLocal[(i*3)].trim()));
 
-        console.log(searchTitle?.[0]?.forecastRevision1);
+        // console.log(searchTitle?.[0]?.forecastRevision1);
         let latestForecasts = {
-            netSalesForecast: (Number.isNaN(Number(newQuarterLocal[2])) === true) ? null : Number(newQuarterLocal[2]),
-            operatingIncomeForecast: (Number.isNaN(Number(newQuarterLocal[5])) === true) ? null : Number(newQuarterLocal[5]),
-            netIncomeForecast: (Number.isNaN(Number(newQuarterLocal[8])) === true) ? null : Number(newQuarterLocal[8]),
+            netSalesForecast: (Number.isNaN(minusCheck(newQuarterLocal[2])) === true) 
+                ? null 
+                : minusCheck(newQuarterLocal[2]),
+            operatingIncomeForecast: (Number.isNaN(minusCheck(newQuarterLocal[5])) === true) 
+                ? null 
+                : minusCheck(newQuarterLocal[5]),
+            netIncomeForecast: (Number.isNaN(minusCheck(newQuarterLocal[8])) === true) 
+                ? null 
+                : minusCheck(newQuarterLocal[8]),
         };
 
         let searchForecasts = (!currentDataLocal || currentQuarterLocal > 3)  
@@ -69,41 +87,41 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
             ? {
                 name: newQuarterLocal[(i*3)].trim(),
                 units:"currency",
-                Q1CmlValue: (currentQuarterLocal > 1) ? 0 : Number(newQuarterLocal[(i*3)+1]),
-                Q2CmlValue: (currentQuarterLocal > 2) ? 0 : Number(newQuarterLocal[(i*3)+1]),
-                Q3CmlValue: (currentQuarterLocal > 3) ? 0 : Number(newQuarterLocal[(i*3)+1]),
-                Q4CmlValue: Number(newQuarterLocal[(i*3)+1]),
-                forecastThisFY: (currentQuarterLocal === 4) ? null : Number(newQuarterLocal[(i*3)+2]),
+                Q1CmlValue: (currentQuarterLocal > 1) ? 0 : minusCheck(newQuarterLocal[(i*3)+1]),
+                Q2CmlValue: (currentQuarterLocal > 2) ? 0 : minusCheck(newQuarterLocal[(i*3)+1]),
+                Q3CmlValue: (currentQuarterLocal > 3) ? 0 : minusCheck(newQuarterLocal[(i*3)+1]),
+                Q4CmlValue: minusCheck(newQuarterLocal[(i*3)+1]),
+                forecastThisFY: (currentQuarterLocal === 4) ? null : minusCheck(newQuarterLocal[(i*3)+2]),
                 forecastRevision1: null,
                 forecastRevision2: null,
                 forecastRevision3: null,
-                forecastNextFY: (currentQuarterLocal !== 4) ? null : Number(newQuarterLocal[(i*3)+2]),
+                forecastNextFY: (currentQuarterLocal !== 4) ? null : minusCheck(newQuarterLocal[(i*3)+2]),
             } 
             : {
                 name: newQuarterLocal[(i*3)].trim(),
                 units:"currency",
                 Q1CmlValue: searchTitle[0].Q1CmlValue,
-                Q2CmlValue: (currentQuarterLocal === 2) ? Number(newQuarterLocal[(i*3)+1]) : searchTitle[0].Q2CmlValue,
-                Q3CmlValue: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? Number(newQuarterLocal[(i*3)+1]) : searchTitle[0].Q3CmlValue,
-                Q4CmlValue: Number(newQuarterLocal[(i*3)+1]),
-                forecastThisFY: searchTitle?.[0]?.forecastThisFY ?? Number(newQuarterLocal[(i*3)+2]),
+                Q2CmlValue: (currentQuarterLocal === 2) ? minusCheck(newQuarterLocal[(i*3)+1]) : searchTitle[0].Q2CmlValue,
+                Q3CmlValue: (currentQuarterLocal === 2 || currentQuarterLocal === 3) ? minusCheck(newQuarterLocal[(i*3)+1]) : searchTitle[0].Q3CmlValue,
+                Q4CmlValue: minusCheck(newQuarterLocal[(i*3)+1]),
+                forecastThisFY: searchTitle?.[0]?.forecastThisFY ?? minusCheck(newQuarterLocal[(i*3)+2]),
                 // cannot chain ?. ?? with ternary operator because ternary operator is not chainable and will override ?? operators.
                 forecastRevision1: (searchTitle?.[0]?.forecastRevision1) 
                         ? searchTitle[0].forecastRevision1
                         : (searchForecasts?.at(-1) === true)
-                            ? Number(newQuarterLocal[(i*3)+2])
+                            ? minusCheck(newQuarterLocal[(i*3)+2])
                             : null,
                 forecastRevision2: (searchTitle?.[0]?.forecastRevision2) 
                         ? searchTitle[0].forecastRevision2
                         : (searchForecasts?.at(-1) === true && searchTitle?.[0]?.forecastRevision1)
-                            ? Number(newQuarterLocal[(i*3)+2])
+                            ? minusCheck(newQuarterLocal[(i*3)+2])
                             : null,
                 forecastRevision3: (searchTitle?.[0]?.forecastRevision3) 
                         ? searchTitle[0].forecastRevision3
                         : (searchForecasts?.at(-1) === true && searchTitle?.[0]?.forecastRevision2)
-                            ? Number(newQuarterLocal[(i*3)+2])
+                            ? minusCheck(newQuarterLocal[(i*3)+2])
                             : null,
-                forecastNextFY: (currentQuarterLocal === 4) ? Number(newQuarterLocal[(i*3)+2]) : null,
+                forecastNextFY: (currentQuarterLocal === 4) ? minusCheck(newQuarterLocal[(i*3)+2]) : null,
             };
     });
 };
