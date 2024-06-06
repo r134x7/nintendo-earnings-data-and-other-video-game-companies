@@ -21,6 +21,8 @@ import { SegmentJSON, SegmentValue, getSegmentData } from "./segment_earnings_ge
 
 const collectionBandaiNamcoCml = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../bandaiNamco/Segment_Earnings/*.json", { import: "default", eager: true }), "Ascending");
 
+const collectionKonamiCml = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../konami/Segment_Earnings/*.json", { import: "default", eager: true }), "Ascending");
+
 function labelMaker (collection: SegmentJSON): string {
 
     // const makeDateLabel = dateLabel(collection.at(-1)?.fiscalYear ?? "N/A", collection.at(-1)?.currentQuarter ?? 4);
@@ -254,6 +256,8 @@ function printAllValues(list: Map<number, SegmentValue>, company: string): strin
 }
 
 export const cumulativeSegmentListBandaiNamco = segmentResultsMaker(collectionBandaiNamcoCml); 
+
+export const cumulativeSegmentListKonami = segmentResultsMaker(collectionKonamiCml); 
 
 // export const cumulativeSegmentListCapcom = operatingResultsMakerV2(totalCollectionCapcom); 
 

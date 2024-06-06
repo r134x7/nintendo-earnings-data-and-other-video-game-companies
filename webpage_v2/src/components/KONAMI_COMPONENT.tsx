@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Code, SegmentedControl } from "@mantine/core";
 import { useSelector } from "react-redux";
+import { konamiSegmentEarningsList } from "../data/generalTables/segment_earnings_general";
 import { konamiConsolidatedEarningsList, konamiConsolidatedEarningsGraphList} from "../data/generalTables/consolidated_earnings_general";
 import { konamiLinks } from "../data/generalTables/data_sources_general";
 import type { BackgroundColours } from "../features/backgroundReducer";
@@ -27,6 +28,10 @@ export default function KONAMI_COMPONENT(props: {setIndex: number; yearLength: n
                 name: "Consolidated Operating Results",
                 value: konamiConsolidatedEarningsList.get(index),
                 graph: <GRAPH_CONSOLIDATED_EARNINGS setData={konamiConsolidatedEarningsGraphList.get(index)} />
+            },
+            {
+                name: "Segment Information",
+                value: konamiSegmentEarningsList.get(index),
             },
         ].filter(elem => elem.value !== undefined);
     })

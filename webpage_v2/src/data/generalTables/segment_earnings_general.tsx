@@ -141,6 +141,8 @@ export type SegmentValue = {
 
 const collectionBandaiNamco = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../bandaiNamco/Segment_Earnings/*.json", { import: "default", eager: true }), "Descending");
 
+const collectionKonami = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../konami/Segment_Earnings/*.json", { import: "default", eager: true }), "Descending");
+
 export function segmentValuesMake(obj: undefined | SegmentData, fiscalYear: string): SegmentValue {
 
     let values: SegmentValue = {
@@ -265,12 +267,21 @@ export function getSegmentData(dataCollectionThisFY: SegmentJSON | undefined, da
 
 export const bandaiNamcoSegmentEarningsList = new Map<number, string>();
 
+export const konamiSegmentEarningsList = new Map<number, string>();
+
 collectionBandaiNamco.forEach((value, key, map) => {
 
     bandaiNamcoSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
 })
 
 collectionBandaiNamco.clear();
+
+collectionKonami.forEach((value, key, map) => {
+
+    konamiSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
+})
+
+collectionKonami.clear();
 
 function segmentListMap(collection: SegmentJSON, lastFYCollection: SegmentJSON | undefined, headerLength: number): string {
 
@@ -288,12 +299,20 @@ function segmentListMap(collection: SegmentJSON, lastFYCollection: SegmentJSON |
             title: "Segment Information",
         };
 
-        const salesType = (header.companyName.includes("Something"))
+        const salesType = (header.companyName.includes("KONAMI"))
             ? "Revenue"
             : (header.companyName.includes("Else"))
              ? "Sales"
              : "Net Sales"
 
+        const profitType = (header.companyName.includes("KONAMI"))
+            ? "Business Profit"
+            : "Operating Income"
+
+        const marginType = (header.companyName.includes("KONAMI"))
+            ? "Business Margin"
+            : "Operating Margin"
+             
         const dataThisFY = getSegmentData(collection, collection.data.length);
 
         const dataLastFY = getSegmentData(lastFYCollection, collection.data.length);
@@ -396,8 +415,8 @@ function segmentListMap(collection: SegmentJSON, lastFYCollection: SegmentJSON |
             // } else {
 
             printEach.set(key, getSegmentPrintOutput(dataThisFY, percentagesThisFY, key, true, currentQuarter, "netSales", salesType)
-            + getSegmentPrintOutput(dataThisFY, percentagesThisFY, key, true, currentQuarter, "operatingIncome") 
-            + getSegmentPrintOutput(dataThisFY, percentagesThisFY, key, false, currentQuarter, "operatingMargin")
+            + getSegmentPrintOutput(dataThisFY, percentagesThisFY, key, true, currentQuarter, "operatingIncome", profitType) 
+            + getSegmentPrintOutput(dataThisFY, percentagesThisFY, key, false, currentQuarter, "operatingMargin", marginType)
             )
             // }
         })
@@ -418,11 +437,12 @@ function getSegmentPrintOutput(values: Map<number, SegmentValue>, yoyValues: Map
 
     const none: EarningsValue = { kind:"Nothing" };
 
-    let salesType = liner(printTextBlock((salesKey === "netSales")
-        ? salesTitle
-        : (salesKey === "operatingIncome")
-            ? "Operating Income"
-            : "Operating Margin"
+    let salesType = liner(printTextBlock(salesTitle
+        // (salesKey === "netSales")
+        // ? salesTitle
+        // : (salesKey === "operatingIncome")
+        //     ? "Operating Income"
+        //     : "Operating Margin"
     , (useYoYHeader) ? 40 : 28), "−", "top", "newLine")
 
     // let sectionHeader = printSegmentHeader(values.get(key) as SegmentValue, useYoYHeader);
