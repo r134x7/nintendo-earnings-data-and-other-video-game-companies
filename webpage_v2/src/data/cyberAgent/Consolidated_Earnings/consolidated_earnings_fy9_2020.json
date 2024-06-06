@@ -1,0 +1,46 @@
+{
+    "currentQuarter": 4,
+    "companyName": "CyberAgent, Inc.",
+    "fiscalYear": "FY9/2020",
+    "data": [
+        {
+            "name": "Net Sales",
+            "units": "currency",
+            "Q1CmlValue": 115681,
+            "Q2CmlValue": 244853,
+            "Q3CmlValue": 357708,
+            "Q4CmlValue": 478566,
+            "forecastThisFY": 465000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": 500000
+        },
+        {
+            "name": "Operating Income",
+            "units": "currency",
+            "Q1CmlValue": 7733,
+            "Q2CmlValue": 20231,
+            "Q3CmlValue": 28511,
+            "Q4CmlValue": 33880,
+            "forecastThisFY": 28000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": 30000
+        },
+        {
+            "name": "Net Income",
+            "units": "currency",
+            "Q1CmlValue": 1456,
+            "Q2CmlValue": 4760,
+            "Q3CmlValue": 5879,
+            "Q4CmlValue": 6608,
+            "forecastThisFY": 8000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": 8000
+        }
+    ]
+}
