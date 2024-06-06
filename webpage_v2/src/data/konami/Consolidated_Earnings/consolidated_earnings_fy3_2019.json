@@ -1,0 +1,46 @@
+{
+    "currentQuarter": 4,
+    "companyName": "KONAMI GROUP CORPORATION",
+    "fiscalYear": "FY3/2019",
+    "data": [
+        {
+            "name": "Revenue",
+            "units": "currency",
+            "Q1CmlValue": 58457,
+            "Q2CmlValue": 122168,
+            "Q3CmlValue": 192631,
+            "Q4CmlValue": 262549,
+            "forecastThisFY": 250000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": 270000
+        },
+        {
+            "name": "Operating Income",
+            "units": "currency",
+            "Q1CmlValue": 11814,
+            "Q2CmlValue": 25027,
+            "Q3CmlValue": 39440,
+            "Q4CmlValue": 50522,
+            "forecastThisFY": 50000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": 47000
+        },
+        {
+            "name": "Net Income",
+            "units": "currency",
+            "Q1CmlValue": 8274,
+            "Q2CmlValue": 17196,
+            "Q3CmlValue": 27215,
+            "Q4CmlValue": 34196,
+            "forecastThisFY": 32000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": 30000
+        }
+    ] 
+}
