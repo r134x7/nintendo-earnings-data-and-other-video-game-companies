@@ -445,7 +445,7 @@ export const keySalesIndicatorsList = collection.map((elem, index, array) => {
             // let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
             let nameSearchLastFY = array[index+1].kpi.filter((elem) => nameSearchThisFY === elem.ID); // ID is supposed to be unique, therefore only one result
             
-            return (nameSearchThisFY === nameSearchLastFY[0].ID)
+            return (nameSearchThisFY === nameSearchLastFY[0]?.ID)
                 // ? quarterValuesMake(array[index+1].kpi[indexValue])
                 ? quarterValuesMake(nameSearchLastFY[0])
                 : quarterValuesMake(undefined)
@@ -471,7 +471,7 @@ export const keySalesIndicatorsList = collection.map((elem, index, array) => {
             // let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].ID : undefined;
             let nameSearchLastFY = array[index+1].kpi.filter((elem) => nameSearchThisFY === elem.ID); // ID is supposed to be unique, therefore only one result
 
-            return (nameSearchThisFY === nameSearchLastFY[0].ID)
+            return (nameSearchThisFY === nameSearchLastFY[0]?.ID)
                 // ? cmlValuesMake(array[index+1].kpi[indexValue], cmlName)
                 ? cmlValuesMake(nameSearchLastFY[0], cmlName)
                 : cmlValuesMake(undefined, cmlName)
@@ -605,7 +605,7 @@ export const keySalesIndicatorsGraphList = collection.map((elem, index, array) =
             let nameSearchLastFY = array[index+1].kpi.filter((elem) => nameSearchThisFY === elem.ID); // ID is supposed to be unique, therefore only one result
             
             // return (nameSearchThisFY === nameSearchLastFY)
-            return (nameSearchThisFY === nameSearchLastFY[0].ID)
+            return (nameSearchThisFY === nameSearchLastFY[0]?.ID)
                 // ? quarterValuesMake(array[index+1].kpi[indexValue])
                 ? quarterValuesMake(nameSearchLastFY[0])
                 : quarterValuesMake(undefined)
@@ -627,7 +627,7 @@ export const keySalesIndicatorsGraphList = collection.map((elem, index, array) =
             let nameSearchLastFY = array[index+1].kpi.filter((elem) => nameSearchThisFY === elem.ID); // ID is supposed to be unique, therefore only one result
 
             // return (nameSearchThisFY === nameSearchLastFY)
-            return (nameSearchThisFY === nameSearchLastFY[0].ID)
+            return (nameSearchThisFY === nameSearchLastFY[0]?.ID)
                 // ? cmlValuesMake(array[index+1].kpi[indexValue], cmlName)
                 ? cmlValuesMake(nameSearchLastFY[0], cmlName)
                 : cmlValuesMake(undefined, cmlName)
@@ -774,7 +774,7 @@ export const keySalesIndicatorsListCml = collection.map((elem, index, array) => 
             // let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
             let nameSearchLastFY = array[index+1].kpi.filter((elem) => nameSearchThisFY === elem.ID); // ID is supposed to be unique, therefore only one result
             
-            return (nameSearchThisFY === nameSearchLastFY[0].ID)
+            return (nameSearchThisFY === nameSearchLastFY[0]?.ID)
                 ? quarterValuesMake(nameSearchLastFY[0])
                 : quarterValuesMake(undefined)
 
@@ -798,7 +798,7 @@ export const keySalesIndicatorsListCml = collection.map((elem, index, array) => 
             // let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
             let nameSearchLastFY = array[index+1].kpi.filter((elem) => nameSearchThisFY === elem.ID); // ID is supposed to be unique, therefore only one result
 
-            return (nameSearchThisFY === nameSearchLastFY[0].ID)
+            return (nameSearchThisFY === nameSearchLastFY[0]?.ID)
                 ? cmlValuesMake(nameSearchLastFY[0], cmlName)
                 : cmlValuesMake(undefined, cmlName)
 
