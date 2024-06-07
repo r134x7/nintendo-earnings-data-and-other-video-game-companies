@@ -25,6 +25,10 @@ const squareEnixDataSources = globImport(new Map<number, jsonData>, import.meta.
 
 const konamiDataSources = globImport(new Map<number, jsonData>, import.meta.glob("../konami/Data_Sources/*.json", { import: "default", eager: true }), "Descending");
 
+const cyberAgentDataSources = globImport(new Map<number, jsonData>, import.meta.glob("../cyberAgent/Data_Sources/*.json", { import: "default", eager: true }), "Descending");
+
+const kadokawaDataSources = globImport(new Map<number, jsonData>, import.meta.glob("../kadokawa/Data_Sources/*.json", { import: "default", eager: true }), "Descending");
+
 const dataSourcesLogic = (dataLocal: linkData[]): JSX.Element => {
 
     let links = dataLocal.map((elem, index) => {
@@ -83,6 +87,14 @@ export const konamiLinks = new Map<number, JSX.Element>();
 
 konamiDataSources.forEach((value, key, map) => konamiLinks.set(konamiLinks.size, dataSourcesLogic(value.data)));
 
+export const cyberAgentLinks = new Map<number, JSX.Element>(); 
+
+cyberAgentDataSources.forEach((value, key, map) => cyberAgentLinks.set(cyberAgentLinks.size, dataSourcesLogic(value.data)));
+
+export const kadokawaLinks = new Map<number, JSX.Element>(); 
+
+kadokawaDataSources.forEach((value, key, map) => kadokawaLinks.set(kadokawaLinks.size, dataSourcesLogic(value.data)));
+
 nintendoDataSources.clear();
 capcomDataSources.clear();
 segaDataSources.clear();
@@ -90,3 +102,5 @@ bandaiNamcoDataSources.clear();
 koeiTecmoDataSources.clear()
 squareEnixDataSources.clear();
 konamiDataSources.clear();
+cyberAgentDataSources.clear();
+kadokawaDataSources.clear();

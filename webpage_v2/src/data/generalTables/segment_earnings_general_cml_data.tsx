@@ -2,8 +2,6 @@ import {
     type EarningsValue,
 } from "../../utils/general_earnings_logic";
 
-import { nothingCheck, typeReturn } from "./consolidated_earnings_general";
-
 import { 
     printStats, 
     getConcat, 
@@ -15,13 +13,17 @@ import {
     printSum
 } from "./consolidated_earnings_cml_data";
 
-import { headerPrint, dateLabel, liner, border, spacer, globImport, printTextBlock } from "../../utils/table_design_logic";
+import { dateLabel, liner, border, spacer, globImport, printTextBlock } from "../../utils/table_design_logic";
 
 import { SegmentJSON, SegmentValue, getSegmentData } from "./segment_earnings_general";
 
 const collectionBandaiNamcoCml = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../bandaiNamco/Segment_Earnings/*.json", { import: "default", eager: true }), "Ascending");
 
 const collectionKonamiCml = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../konami/Segment_Earnings/*.json", { import: "default", eager: true }), "Ascending");
+
+const collectionCyberAgentCml = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../cyberAgent/Segment_Earnings/*.json", { import: "default", eager: true }), "Ascending");
+
+const collectionKadokawaCml = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../kadokawa/Segment_Earnings/*.json", { import: "default", eager: true }), "Ascending");
 
 function labelMaker (collection: SegmentJSON): string {
 
@@ -261,10 +263,6 @@ export const cumulativeSegmentListBandaiNamco = segmentResultsMaker(collectionBa
 
 export const cumulativeSegmentListKonami = segmentResultsMaker(collectionKonamiCml); 
 
-// export const cumulativeSegmentListCapcom = operatingResultsMakerV2(totalCollectionCapcom); 
+export const cumulativeSegmentListCyberAgent = segmentResultsMaker(collectionCyberAgentCml); 
 
-// export const cumulativeSegmentListKoeiTecmo = operatingResultsMakerV2(totalCollectionKoeiTecmo); 
-
-// export const cumulativeSegmentListSegaSammy = operatingResultsMakerV2(totalCollectionSegaSammy);
-
-// export const cumulativeSegmentListSquareEnix = operatingResultsMakerV2(totalCollectionSquareEnix)
+export const cumulativeSegmentListKadokawa = segmentResultsMaker(collectionKadokawaCml); 

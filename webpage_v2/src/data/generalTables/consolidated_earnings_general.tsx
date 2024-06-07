@@ -98,6 +98,10 @@ const collectionSquareEnixV2 = globImport(new Map<number, EarningsJSONV2>(), imp
 
 const collectionKonamiV2 = globImport(new Map<number, EarningsJSONV2>(), import.meta.glob("../konami/Consolidated_Earnings/*.json", { import: "default", eager: true }), "Descending");
 
+const collectionCyberAgentV2 = globImport(new Map<number, EarningsJSONV2>(), import.meta.glob("../cyberAgent/Consolidated_Earnings/*.json", { import: "default", eager: true }), "Descending");
+
+const collectionKadokawaV2 = globImport(new Map<number, EarningsJSONV2>(), import.meta.glob("../kadokawa/Consolidated_Earnings/*.json", { import: "default", eager: true }), "Descending");
+
 export function typeReturn(typeValue: string | undefined): "units" | "currency" | "percentage" {
 
     switch (typeValue) {
@@ -242,6 +246,32 @@ collectionKonamiV2.forEach((value, key, map) => {
 });
 
 collectionKonamiV2.clear();
+
+export const cyberAgentConsolidatedEarningsList = new Map<number, string>();
+
+export const cyberAgentConsolidatedEarningsGraphList = new Map();
+
+collectionCyberAgentV2.forEach((value, key, map) => {
+
+    cyberAgentConsolidatedEarningsList.set(key, consolidatedEarningsListV2Map(value, map.get(key+1), 42))
+
+    cyberAgentConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1)))
+});
+
+collectionCyberAgentV2.clear();
+
+export const kadokawaConsolidatedEarningsList = new Map<number, string>();
+
+export const kadokawaConsolidatedEarningsGraphList = new Map();
+
+collectionKadokawaV2.forEach((value, key, map) => {
+
+    kadokawaConsolidatedEarningsList.set(key, consolidatedEarningsListV2Map(value, map.get(key+1), 42))
+
+    kadokawaConsolidatedEarningsGraphList.set(key, consolidatedEarningsGraphListV2(value, map.get(key+1)))
+});
+
+collectionKadokawaV2.clear();
 
 function consolidatedEarningsListV2Map(collection: EarningsJSONV2, lastFYCollection: EarningsJSONV2 | undefined, headerLength: number): string {
 
