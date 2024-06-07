@@ -96,7 +96,7 @@ function segmentResultsMaker(completeCollection: Map<number, SegmentJSON>): stri
         }
     })
 
-    console.log(segmentList) // the segments are not being grouped correctly being they need to match ID before being grouped.
+    // console.log(segmentList) // the segments are not being grouped correctly being they need to match ID before being grouped.
 
     let titleHeader = headerMaker(completeCollection.get(completeCollection.size -1) as SegmentJSON)
 
@@ -139,15 +139,19 @@ function printAllValues(list: Map<number, SegmentValue>, company: string): strin
             ? "Business Profit"
             : "Operating Income"
 
+    const finalName = [...list.keys()].at(-1) ?? 0; // getting the last key in the list
+
     // Q1, Q2, Q3, Q4, First Half, 1st 3 Quarters, FY Cml
+    // I forgot that this is based off the consolidated sales data which has fixed names, error is occurring because
+    // I am not accessing the correct key
     let toReturnNetSales = new Map<number, string[]>([
-        [0, [liner(printTextBlock(salesType, 36), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 35)]],
-        [1, [liner(printTextBlock(salesType, 36), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 35)]],
-        [2, [liner(printTextBlock(salesType, 36), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 35)]],
-        [3, [liner(printTextBlock(salesType, 36), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 35)]],
-        [4, [liner(printTextBlock(salesType, 35), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 34)]],
-        [5, [liner(printTextBlock(salesType, 45), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 44)]],
-        [6, [liner(printTextBlock(salesType, 38), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 37)]],
+        [0, [liner(printTextBlock(salesType, 36), "−", "top", "newLine") + sectionHeader(list.get(finalName)?.name, 35)]],
+        [1, [liner(printTextBlock(salesType, 36), "−", "top", "newLine") + sectionHeader(list.get(finalName)?.name, 35)]],
+        [2, [liner(printTextBlock(salesType, 36), "−", "top", "newLine") + sectionHeader(list.get(finalName)?.name, 35)]],
+        [3, [liner(printTextBlock(salesType, 36), "−", "top", "newLine") + sectionHeader(list.get(finalName)?.name, 35)]],
+        [4, [liner(printTextBlock(salesType, 35), "−", "top", "newLine") + sectionHeader(list.get(finalName)?.name, 34)]],
+        [5, [liner(printTextBlock(salesType, 45), "−", "top", "newLine") + sectionHeader(list.get(finalName)?.name, 44)]],
+        [6, [liner(printTextBlock(salesType, 38), "−", "top", "newLine") + sectionHeader(list.get(finalName)?.name, 37)]],
     ]); 
 
     // to do statistics calculations
@@ -163,13 +167,13 @@ function printAllValues(list: Map<number, SegmentValue>, company: string): strin
 
     // Q1, Q2, Q3, Q4, First Half, 1st 3 Quarters, FY Cml
     let toReturnOperatingIncome = new Map<number, string[]>([
-        [0, [liner(printTextBlock(profitType, 36), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 35)]],
-        [1, [liner(printTextBlock(profitType, 36), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 35)]],
-        [2, [liner(printTextBlock(profitType, 36), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 35)]],
-        [3, [liner(printTextBlock(profitType, 36), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 35)]],
-        [4, [liner(printTextBlock(profitType, 35), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 34)]],
-        [5, [liner(printTextBlock(profitType, 45), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 44)]],
-        [6, [liner(printTextBlock(profitType, 38), "−", "top", "newLine") + sectionHeader(list.get(0)?.name, 37)]],
+        [0, [liner(printTextBlock(profitType, 36), "−", "top", "newLine") + sectionHeader(list.get(finalName)?.name, 35)]],
+        [1, [liner(printTextBlock(profitType, 36), "−", "top", "newLine") + sectionHeader(list.get(finalName)?.name, 35)]],
+        [2, [liner(printTextBlock(profitType, 36), "−", "top", "newLine") + sectionHeader(list.get(finalName)?.name, 35)]],
+        [3, [liner(printTextBlock(profitType, 36), "−", "top", "newLine") + sectionHeader(list.get(finalName)?.name, 35)]],
+        [4, [liner(printTextBlock(profitType, 35), "−", "top", "newLine") + sectionHeader(list.get(finalName)?.name, 34)]],
+        [5, [liner(printTextBlock(profitType, 45), "−", "top", "newLine") + sectionHeader(list.get(finalName)?.name, 44)]],
+        [6, [liner(printTextBlock(profitType, 38), "−", "top", "newLine") + sectionHeader(list.get(finalName)?.name, 37)]],
     ]); 
 
     // to do statistics calculations
