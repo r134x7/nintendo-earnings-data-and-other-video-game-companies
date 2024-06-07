@@ -1,9 +1,9 @@
 Net Sales
-666,460
+666460
 -
 Operating Income
-104,381
+104381
 -
 Net Income
-41,553
+41553
 -
