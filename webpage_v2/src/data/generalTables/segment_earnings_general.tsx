@@ -206,19 +206,19 @@ export function segmentValuesMake(obj: undefined | SegmentData, fiscalYear: stri
             operatingMargin: operatingMarginCalculationV2(nothingCheck(obj?.Q1CmlValue.netSales, "Cumulative", typeReturn(obj?.units), "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear), nothingCheck(obj?.Q1CmlValue.operatingIncome, "Cumulative", typeReturn(obj?.units), "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear), "Cumulative")
         }, 
         Q2CmlValue: {
-            netSales: nothingCheck(obj?.Q2CmlValue.netSales, "Cumulative", typeReturn(obj?.units), "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
-            operatingIncome: nothingCheck(obj?.Q2CmlValue.operatingIncome, "Cumulative", typeReturn(obj?.units), "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
-            operatingMargin: operatingMarginCalculationV2(nothingCheck(obj?.Q2CmlValue.netSales, "Cumulative", typeReturn(obj?.units), "2nd Quarter", "First Half", "Current FY FCST", fiscalYear), nothingCheck(obj?.Q2CmlValue.operatingIncome, "Cumulative", typeReturn(obj?.units), "2nd Quarter", "First Half", "Current FY FCST", fiscalYear), "Cumulative")
+            netSales: nothingCheck((currentQuarter < 2) ? undefined : obj?.Q2CmlValue.netSales, "Cumulative", typeReturn(obj?.units), "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
+            operatingIncome: nothingCheck((currentQuarter < 2) ? undefined : obj?.Q2CmlValue.operatingIncome, "Cumulative", typeReturn(obj?.units), "2nd Quarter", "First Half", "Current FY FCST", fiscalYear),
+            operatingMargin: operatingMarginCalculationV2(nothingCheck((currentQuarter < 2) ? undefined : obj?.Q2CmlValue.netSales, "Cumulative", typeReturn(obj?.units), "2nd Quarter", "First Half", "Current FY FCST", fiscalYear), nothingCheck((currentQuarter < 2) ? undefined : obj?.Q2CmlValue.operatingIncome, "Cumulative", typeReturn(obj?.units), "2nd Quarter", "First Half", "Current FY FCST", fiscalYear), "Cumulative")
         },
         Q3CmlValue: {
-            netSales: nothingCheck(obj?.Q3CmlValue.netSales, "Cumulative", typeReturn(obj?.units), "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
-            operatingIncome: nothingCheck(obj?.Q3CmlValue.operatingIncome, "Cumulative", typeReturn(obj?.units), "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
-            operatingMargin: operatingMarginCalculationV2(nothingCheck(obj?.Q3CmlValue.netSales, "Cumulative", typeReturn(obj?.units), "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear), nothingCheck(obj?.Q3CmlValue.operatingIncome, "Cumulative", typeReturn(obj?.units), "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear), "Cumulative")
+            netSales: nothingCheck((currentQuarter < 3) ? undefined : obj?.Q3CmlValue.netSales, "Cumulative", typeReturn(obj?.units), "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
+            operatingIncome: nothingCheck((currentQuarter < 3) ? undefined : obj?.Q3CmlValue.operatingIncome, "Cumulative", typeReturn(obj?.units), "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear),
+            operatingMargin: operatingMarginCalculationV2(nothingCheck((currentQuarter < 3) ? undefined : obj?.Q3CmlValue.netSales, "Cumulative", typeReturn(obj?.units), "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear), nothingCheck((currentQuarter < 3) ? undefined : obj?.Q3CmlValue.operatingIncome, "Cumulative", typeReturn(obj?.units), "3rd Quarter", "First Three Quarters", "Current FY FCST", fiscalYear), "Cumulative")
         },
         Q4CmlValue: {
-            netSales: nothingCheck(obj?.Q4CmlValue.netSales, "Cumulative", typeReturn(obj?.units), "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear),
-            operatingIncome: nothingCheck(obj?.Q4CmlValue.operatingIncome, "Cumulative", typeReturn(obj?.units), "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear),
-            operatingMargin: operatingMarginCalculationV2(nothingCheck(obj?.Q4CmlValue.netSales, "Cumulative", typeReturn(obj?.units), "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear), nothingCheck(obj?.Q4CmlValue.operatingIncome, "Cumulative", typeReturn(obj?.units), "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear), "Cumulative")
+            netSales: nothingCheck((currentQuarter < 4) ? undefined : obj?.Q4CmlValue.netSales, "Cumulative", typeReturn(obj?.units), "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear),
+            operatingIncome: nothingCheck((currentQuarter < 4) ? undefined : obj?.Q4CmlValue.operatingIncome, "Cumulative", typeReturn(obj?.units), "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear),
+            operatingMargin: operatingMarginCalculationV2(nothingCheck((currentQuarter < 4) ? undefined : obj?.Q4CmlValue.netSales, "Cumulative", typeReturn(obj?.units), "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear), nothingCheck((currentQuarter < 4) ? undefined : obj?.Q4CmlValue.operatingIncome, "Cumulative", typeReturn(obj?.units), "4th Quarter", "FY Cumulative", "Current FY FCST", fiscalYear), "Cumulative")
         },
         forecastThisFY: {
             netSales: nothingCheck(obj?.forecastThisFY?.netSales, "Forecast", typeReturn(obj?.units), "1st Quarter", "1st Quarter", "Current FY FCST", fiscalYear),
