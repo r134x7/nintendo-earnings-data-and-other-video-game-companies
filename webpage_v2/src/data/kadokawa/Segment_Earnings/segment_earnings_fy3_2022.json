@@ -170,7 +170,7 @@
         {
             "name": "Others",
             "units": "currency",
-            "ID": "5",
+            "ID": "6",
             "Q1CmlValue": {
                 "netSales": 5455,
                 "operatingIncome": -491
@@ -211,7 +211,7 @@
         {
             "name": "Eliminations/Corporate",
             "units": "currency",
-            "ID": "6",
+            "ID": "7",
             "Q1CmlValue": {
                 "netSales": -1707,
                 "operatingIncome": -547
