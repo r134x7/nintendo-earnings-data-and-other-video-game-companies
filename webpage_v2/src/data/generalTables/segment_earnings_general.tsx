@@ -341,71 +341,82 @@ function segmentListMap(collection: SegmentJSON, lastFYCollection: SegmentJSON |
 
         const percentagesThisFY = new Map<number, SegmentValue>(); 
         dataThisFY.forEach((value, key, map) => {
+
+            // because this was made using data that was in order and unchanging, it doesn't work when the order of data changes
+            // in dataLastFY each value is a category of data, and there's less than 20 values
+            // it won't take long to get the values by the Map Key and then run a filter to match the ID
+            // turn the dataLastFY into a list to filter by ID
+            // then you can match the ID with the value.ID
+            
+            let getLastFYDataByID = [...dataLastFY.values()].filter(elem => elem.ID === value.ID); // IDs are unique, either the list is empty or length: 1.
+            // console.log(getLastFYDataByID);
+            
+
             percentagesThisFY.set(key, {
                 ...value,
                 Q1QtrValue: {
-                    netSales: yearOnYearCalculationV2(value.Q1QtrValue.netSales, dataLastFY.get(key)?.Q1QtrValue?.netSales ?? none, "Quarter"),
-                    operatingIncome: yearOnYearCalculationV2(value.Q1QtrValue.operatingIncome, dataLastFY.get(key)?.Q1QtrValue.operatingIncome ?? none, "Quarter"),
+                    netSales: yearOnYearCalculationV2(value.Q1QtrValue.netSales, getLastFYDataByID[0]?.Q1QtrValue?.netSales ?? none, "Quarter"),
+                    operatingIncome: yearOnYearCalculationV2(value.Q1QtrValue.operatingIncome, getLastFYDataByID[0]?.Q1QtrValue.operatingIncome ?? none, "Quarter"),
                     operatingMargin: none,
                 },
                 Q2QtrValue: {
-                    netSales: yearOnYearCalculationV2(value.Q2QtrValue.netSales, dataLastFY.get(key)?.Q2QtrValue.netSales ?? none, "Quarter"),
-                    operatingIncome: yearOnYearCalculationV2(value.Q2QtrValue.operatingIncome, dataLastFY.get(key)?.Q2QtrValue.operatingIncome ?? none, "Quarter"),
+                    netSales: yearOnYearCalculationV2(value.Q2QtrValue.netSales, getLastFYDataByID[0]?.Q2QtrValue.netSales ?? none, "Quarter"),
+                    operatingIncome: yearOnYearCalculationV2(value.Q2QtrValue.operatingIncome, getLastFYDataByID[0]?.Q2QtrValue.operatingIncome ?? none, "Quarter"),
                     operatingMargin: none,
                 },
                 Q3QtrValue: {
-                    netSales: yearOnYearCalculationV2(value.Q3QtrValue.netSales, dataLastFY.get(key)?.Q3QtrValue.netSales ?? none, "Quarter"),
-                    operatingIncome: yearOnYearCalculationV2(value.Q3QtrValue.operatingIncome, dataLastFY.get(key)?.Q3QtrValue.operatingIncome ?? none, "Quarter"),
+                    netSales: yearOnYearCalculationV2(value.Q3QtrValue.netSales, getLastFYDataByID[0]?.Q3QtrValue.netSales ?? none, "Quarter"),
+                    operatingIncome: yearOnYearCalculationV2(value.Q3QtrValue.operatingIncome, getLastFYDataByID[0]?.Q3QtrValue.operatingIncome ?? none, "Quarter"),
                     operatingMargin: none,
                 }, 
                 Q4QtrValue: {
-                    netSales: yearOnYearCalculationV2(value.Q4QtrValue.netSales, dataLastFY.get(key)?.Q4QtrValue.netSales ?? none, "Quarter"),
-                    operatingIncome: yearOnYearCalculationV2(value.Q4QtrValue.operatingIncome, dataLastFY.get(key)?.Q4QtrValue.operatingIncome ?? none, "Quarter"),
+                    netSales: yearOnYearCalculationV2(value.Q4QtrValue.netSales, getLastFYDataByID[0]?.Q4QtrValue.netSales ?? none, "Quarter"),
+                    operatingIncome: yearOnYearCalculationV2(value.Q4QtrValue.operatingIncome, getLastFYDataByID[0]?.Q4QtrValue.operatingIncome ?? none, "Quarter"),
                     operatingMargin: none,
                 },
                 Q1CmlValue: {
-                    netSales: yearOnYearCalculationV2(value.Q1CmlValue.netSales, dataLastFY.get(key)?.Q1CmlValue.netSales ?? none, "Cumulative"),
-                    operatingIncome: yearOnYearCalculationV2(value.Q1CmlValue.operatingIncome, dataLastFY.get(key)?.Q1CmlValue.operatingIncome ?? none, "Cumulative"),
+                    netSales: yearOnYearCalculationV2(value.Q1CmlValue.netSales, getLastFYDataByID[0]?.Q1CmlValue.netSales ?? none, "Cumulative"),
+                    operatingIncome: yearOnYearCalculationV2(value.Q1CmlValue.operatingIncome, getLastFYDataByID[0]?.Q1CmlValue.operatingIncome ?? none, "Cumulative"),
                     operatingMargin: none,
                 },
                 Q2CmlValue: {
-                    netSales: yearOnYearCalculationV2(value.Q2CmlValue.netSales, dataLastFY.get(key)?.Q2CmlValue.netSales ?? none, "Cumulative"),
-                    operatingIncome: yearOnYearCalculationV2(value.Q2CmlValue.operatingIncome, dataLastFY.get(key)?.Q2CmlValue.operatingIncome ?? none, "Cumulative"),
+                    netSales: yearOnYearCalculationV2(value.Q2CmlValue.netSales, getLastFYDataByID[0]?.Q2CmlValue.netSales ?? none, "Cumulative"),
+                    operatingIncome: yearOnYearCalculationV2(value.Q2CmlValue.operatingIncome, getLastFYDataByID[0]?.Q2CmlValue.operatingIncome ?? none, "Cumulative"),
                     operatingMargin: none,
                 },
                 Q3CmlValue: {
-                    netSales: yearOnYearCalculationV2(value.Q3CmlValue.netSales, dataLastFY.get(key)?.Q3CmlValue.netSales ?? none, "Cumulative"),
-                    operatingIncome: yearOnYearCalculationV2(value.Q3CmlValue.operatingIncome, dataLastFY.get(key)?.Q3CmlValue.operatingIncome ?? none, "Cumulative"),
+                    netSales: yearOnYearCalculationV2(value.Q3CmlValue.netSales, getLastFYDataByID[0]?.Q3CmlValue.netSales ?? none, "Cumulative"),
+                    operatingIncome: yearOnYearCalculationV2(value.Q3CmlValue.operatingIncome, getLastFYDataByID[0]?.Q3CmlValue.operatingIncome ?? none, "Cumulative"),
                     operatingMargin: none,
                 },
                 Q4CmlValue: {
-                    netSales: yearOnYearCalculationV2(value.Q4CmlValue.netSales, dataLastFY.get(key)?.Q4CmlValue.netSales ?? none, "Cumulative"),
-                    operatingIncome: yearOnYearCalculationV2(value.Q4CmlValue.operatingIncome, dataLastFY.get(key)?.Q4CmlValue.operatingIncome ?? none, "Cumulative"),
+                    netSales: yearOnYearCalculationV2(value.Q4CmlValue.netSales, getLastFYDataByID[0]?.Q4CmlValue.netSales ?? none, "Cumulative"),
+                    operatingIncome: yearOnYearCalculationV2(value.Q4CmlValue.operatingIncome, getLastFYDataByID[0]?.Q4CmlValue.operatingIncome ?? none, "Cumulative"),
                     operatingMargin: none,
                 },
                 forecastThisFY: {
-                    netSales: yearOnYearCalculationV2(value.forecastThisFY?.netSales ?? none, dataLastFY.get(key)?.forecastThisFY?.netSales ?? none, "Forecast"),
-                    operatingIncome: yearOnYearCalculationV2(value.forecastThisFY?.operatingIncome ?? none, dataLastFY.get(key)?.forecastThisFY?.operatingIncome ?? none, "Forecast"),
+                    netSales: yearOnYearCalculationV2(value.forecastThisFY?.netSales ?? none, getLastFYDataByID[0]?.forecastThisFY?.netSales ?? none, "Forecast"),
+                    operatingIncome: yearOnYearCalculationV2(value.forecastThisFY?.operatingIncome ?? none, getLastFYDataByID[0]?.forecastThisFY?.operatingIncome ?? none, "Forecast"),
                     operatingMargin: none,
                 },
                 forecastRevision1: {
-                    netSales: yearOnYearCalculationV2(value.forecastRevision1?.netSales ?? none, dataLastFY.get(key)?.forecastRevision1?.netSales ?? none, "Forecast"),
-                    operatingIncome: yearOnYearCalculationV2(value.forecastRevision1?.operatingIncome ?? none, dataLastFY.get(key)?.forecastRevision1?.operatingIncome ?? none, "Forecast"),
+                    netSales: yearOnYearCalculationV2(value.forecastRevision1?.netSales ?? none, getLastFYDataByID[0]?.forecastRevision1?.netSales ?? none, "Forecast"),
+                    operatingIncome: yearOnYearCalculationV2(value.forecastRevision1?.operatingIncome ?? none, getLastFYDataByID[0]?.forecastRevision1?.operatingIncome ?? none, "Forecast"),
                     operatingMargin: none,
                 },
                 forecastRevision2: {
-                    netSales: yearOnYearCalculationV2(value.forecastRevision2?.netSales ?? none, dataLastFY.get(key)?.forecastRevision2?.netSales ?? none, "Forecast"),
-                    operatingIncome: yearOnYearCalculationV2(value.forecastRevision2?.operatingIncome ?? none, dataLastFY.get(key)?.forecastRevision2?.operatingIncome ?? none, "Forecast"),
+                    netSales: yearOnYearCalculationV2(value.forecastRevision2?.netSales ?? none, getLastFYDataByID[0]?.forecastRevision2?.netSales ?? none, "Forecast"),
+                    operatingIncome: yearOnYearCalculationV2(value.forecastRevision2?.operatingIncome ?? none, getLastFYDataByID[0]?.forecastRevision2?.operatingIncome ?? none, "Forecast"),
                     operatingMargin: none,
                 },
                 forecastRevision3: {
-                    netSales: yearOnYearCalculationV2(value.forecastRevision3?.netSales ?? none, dataLastFY.get(key)?.forecastRevision3?.netSales?? none, "Forecast"),
-                    operatingIncome: yearOnYearCalculationV2(value.forecastRevision3?.netSales ?? none, dataLastFY.get(key)?.forecastRevision3?.operatingIncome ?? none, "Forecast"),
+                    netSales: yearOnYearCalculationV2(value.forecastRevision3?.netSales ?? none, getLastFYDataByID[0]?.forecastRevision3?.netSales?? none, "Forecast"),
+                    operatingIncome: yearOnYearCalculationV2(value.forecastRevision3?.netSales ?? none, getLastFYDataByID[0]?.forecastRevision3?.operatingIncome ?? none, "Forecast"),
                     operatingMargin: none,
                 },
                 forecastNextFY: {
-                    netSales: yearOnYearCalculationV2(value.forecastNextFY?.netSales ?? none, dataLastFY.get(key)?.forecastNextFY?.netSales ?? none, "Forecast"),
-                    operatingIncome: yearOnYearCalculationV2(value.forecastNextFY?.operatingIncome ?? none, dataLastFY.get(key)?.forecastNextFY?.operatingIncome ?? none, "Forecast"),
+                    netSales: yearOnYearCalculationV2(value.forecastNextFY?.netSales ?? none, getLastFYDataByID[0]?.forecastNextFY?.netSales ?? none, "Forecast"),
+                    operatingIncome: yearOnYearCalculationV2(value.forecastNextFY?.operatingIncome ?? none, getLastFYDataByID[0]?.forecastNextFY?.operatingIncome ?? none, "Forecast"),
                     operatingMargin: none,
                 } 
             } //satisfies SegmentValue 
