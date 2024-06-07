@@ -104,6 +104,14 @@ function App() {
                     <Button aria-label='Konami data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">
                       <Text>Konami</Text></Button>
               </NavLink>
+              <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/cyberAgent">
+                    <Button aria-label='CyberAgent data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">
+                      <Text>CyberAgent</Text></Button>
+              </NavLink>
+              <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/kadokawa">
+                    <Button aria-label='Kadokawa data page' radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">
+                      <Text>Kadokawa</Text></Button>
+              </NavLink>
               <NavLink className={({isActive}) => (isActive ? "active" : "inactive")} to="/events">
                     <Button aria-label='Upcoming events page' leftIcon={<Calendar size={24} strokeWidth={2} color={'#40bfb2'}/>} radius="lg" fullWidth onClick={() => (opened === true) ? setOpened((o) => !o) : null} variant="outline" color="cyan">Events</Button>
               </NavLink>

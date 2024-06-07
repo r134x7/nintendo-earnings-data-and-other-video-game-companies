@@ -26,6 +26,8 @@ const LazyBandaiNamco = React.lazy(() => import("./pages/BandaiNamco"));
 const LazyKoeiTecmo = React.lazy(() => import("./pages/KoeiTecmo"));
 const LazySquareEnix = React.lazy(() => import("./pages/SquareEnix"));
 const LazyKonami = React.lazy(() => import("./pages/Konami"));
+const LazyCyberAgent = React.lazy(() => import("./pages/CyberAgent"));
+const LazyKadokawa = React.lazy(() => import("./pages/Kadokawa"));
 const LazyEvents = React.lazy(() => import("./pages/Events"));
 const LazyGames = React.lazy(() => import("./pages/Games"));
 
@@ -50,6 +52,8 @@ const router = createHashRouter([
       // {path:"/square-enix", element:<SquareEnix />},
       {path:"/square-enix", element:<LazySquareEnix />},
       {path:"/konami", element:<LazyKonami />},
+      {path:"/cyberAgent", element:<LazyCyberAgent />},
+      {path:"/kadokawa", element:<LazyKadokawa />},
       // {path:"/events", element:<Events />},
       {path:"/events", element:<LazyEvents />},
       // {path:"/games", element:<Games />},

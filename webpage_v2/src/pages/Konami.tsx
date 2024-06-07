@@ -8,7 +8,7 @@ import type { BackgroundColours } from "../features/backgroundReducer";
 import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
 const currentYear = 2024;
-const yearRange = currentYear - 2010;
+const yearRange = currentYear - 2019;
 
 const yearsList = Array.from({length: yearRange + 1}, (elem, index) => "FY3/" + (currentYear - index)) 
 

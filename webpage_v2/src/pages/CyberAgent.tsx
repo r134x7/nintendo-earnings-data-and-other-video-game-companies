@@ -8,7 +8,7 @@ import type { BackgroundColours } from "../features/backgroundReducer";
 import { liner, printTextBlock, useSingleMessage } from "../utils/table_design_logic";
 
 const currentYear = 2024;
-const yearRange = currentYear - 2010;
+const yearRange = currentYear - 2020;
 
 const yearsList = Array.from({length: yearRange + 1}, (elem, index) => "FY9/" + (currentYear - index)) 
 
@@ -86,7 +86,7 @@ export default function KoeiTecmo() {
                     mr="md"
                     placeholder="Select"
                     label={`Select a Fiscal Year from ${currentYear - (yearsList.length-1)} to ${currentYear}.`}
-                    description={`Fiscal Year ending March ${(Number(year?.slice(4,8))) ? year?.slice(4,8) : "" }.`}
+                    description={`Fiscal Year ending September ${(Number(year?.slice(4,8))) ? year?.slice(4,8) : "" }.`}
                     radius="xl"
                     size="md"
                     data={yearsList}
