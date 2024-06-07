@@ -436,18 +436,22 @@ export const keySalesIndicatorsList = collection.map((elem, index, array) => {
 
     let qtrValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
         ? elem.kpi.map(value => quarterValuesMake(undefined)) 
-        : (array[index+1].kpi.length !== elem.kpi.length)
-        ? elem.kpi.map((value, indexValue) => {
+        // : (array[index+1].kpi.length !== elem.kpi.length)
+        // ? elem.kpi.map((value, indexValue) => {
+        : elem.kpi.map((value, indexValue) => {
             
-            let nameSearchThisFY: string = value.name
-            let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
+            // let nameSearchThisFY: string = value.name
+            let nameSearchThisFY: string = value.ID // should search correctly when name changes over time 
+            // let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
+            let nameSearchLastFY = array[index+1].kpi.filter((elem) => nameSearchThisFY === elem.ID); // ID is supposed to be unique, therefore only one result
             
-            return (nameSearchThisFY === nameSearchLastFY)
-                ? quarterValuesMake(array[index+1].kpi[indexValue])
+            return (nameSearchThisFY === nameSearchLastFY[0].ID)
+                // ? quarterValuesMake(array[index+1].kpi[indexValue])
+                ? quarterValuesMake(nameSearchLastFY[0])
                 : quarterValuesMake(undefined)
 
             })
-        : array[index+1].kpi.map(value => quarterValuesMake(value))
+        // : array[index+1].kpi.map(value => quarterValuesMake(value))
 
     // assuming this is not used because it's the percentages...
     // let qtrValuesLastFYPlus: KPDIndicators[][] = qtrValuesLastFY.concat(softwareProportionMake(qtrValuesLastFY, cmlName), (physicalSoftwareProportionMake(qtrValuesLastFY, cmlName)));
@@ -458,18 +462,22 @@ export const keySalesIndicatorsList = collection.map((elem, index, array) => {
 
     let cmlValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
         ? elem.kpi.map(value => cmlValuesMake(undefined, cmlName)) 
-        : (array[index+1].kpi.length !== elem.kpi.length)
-        ? elem.kpi.map((value, indexValue) => {
+        // : (array[index+1].kpi.length !== elem.kpi.length)
+        // ? elem.kpi.map((value, indexValue) => {
+        : elem.kpi.map((value, indexValue) => {
             
-            let nameSearchThisFY = value.name
-            let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
+            // let nameSearchThisFY: string = value.name
+            let nameSearchThisFY: string = value.ID // should search correctly when name changes over time 
+            // let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].ID : undefined;
+            let nameSearchLastFY = array[index+1].kpi.filter((elem) => nameSearchThisFY === elem.ID); // ID is supposed to be unique, therefore only one result
 
-            return (nameSearchThisFY === nameSearchLastFY)
-                ? cmlValuesMake(array[index+1].kpi[indexValue], cmlName)
+            return (nameSearchThisFY === nameSearchLastFY[0].ID)
+                // ? cmlValuesMake(array[index+1].kpi[indexValue], cmlName)
+                ? cmlValuesMake(nameSearchLastFY[0], cmlName)
                 : cmlValuesMake(undefined, cmlName)
 
             })
-        : array[index+1].kpi.map(value => cmlValuesMake(value, cmlName))
+        // : array[index+1].kpi.map(value => cmlValuesMake(value, cmlName))
 
     // assuming this is not used because it's the percentages...
     // let cmlValuesLastFYPlus: KPDIndicators[][] = cmlValuesLastFY.concat(softwareProportionMake(cmlValuesLastFY, cmlName), (physicalSoftwareProportionMake(cmlValuesLastFY, cmlName)));
@@ -481,6 +489,7 @@ export const keySalesIndicatorsList = collection.map((elem, index, array) => {
         : (array[index+1].consolidatedSales.length !== elem.consolidatedSales.length)
         ? elem.consolidatedSales.map((value, indexValue) => {
             
+            // consider implementing IDs on consolidatedSales key in case the names on the category changes and data becomes out of order
             let nameSearchThisFY: string = value.name;
             let nameSearchLastFY = array[index+1].consolidatedSales[indexValue]? array[index+1].consolidatedSales[indexValue].name : undefined;
 
@@ -586,36 +595,45 @@ export const keySalesIndicatorsGraphList = collection.map((elem, index, array) =
 
     let qtrValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
         ? elem.kpi.map(value => quarterValuesMake(undefined)) 
-        : (array[index+1].kpi.length !== elem.kpi.length)
-        ? elem.kpi.map((value, indexValue) => {
+        // : (array[index+1].kpi.length !== elem.kpi.length)
+        // ? elem.kpi.map((value, indexValue) => {
+        : elem.kpi.map((value, indexValue) => {
             
-            let nameSearchThisFY = value.name
-            let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
+            // let nameSearchThisFY: string = value.name
+            let nameSearchThisFY: string = value.ID // should search correctly when name changes over time 
+            // let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
+            let nameSearchLastFY = array[index+1].kpi.filter((elem) => nameSearchThisFY === elem.ID); // ID is supposed to be unique, therefore only one result
             
-            return (nameSearchThisFY === nameSearchLastFY)
-                ? quarterValuesMake(array[index+1].kpi[indexValue])
+            // return (nameSearchThisFY === nameSearchLastFY)
+            return (nameSearchThisFY === nameSearchLastFY[0].ID)
+                // ? quarterValuesMake(array[index+1].kpi[indexValue])
+                ? quarterValuesMake(nameSearchLastFY[0])
                 : quarterValuesMake(undefined)
 
             })
-        : array[index+1].kpi.map(value => quarterValuesMake(value))
+        // : array[index+1].kpi.map(value => quarterValuesMake(value)) // I don't think this is needed any more now
 
     // assuming this is not used because it's the percentages...
     // let qtrValuesLastFYPlus: KPDIndicators[][] = qtrValuesLastFY.concat(softwareProportionMake(qtrValuesLastFY, cmlName), (physicalSoftwareProportionMake(qtrValuesLastFY, cmlName)));
 
     let cmlValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
         ? elem.kpi.map(value => cmlValuesMake(undefined, cmlName)) 
-        : (array[index+1].kpi.length !== elem.kpi.length)
-        ? elem.kpi.map((value, indexValue) => {
+        // : (array[index+1].kpi.length !== elem.kpi.length)
+        : elem.kpi.map((value, indexValue) => {
             
-            let nameSearchThisFY = value.name
-            let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
+            // let nameSearchThisFY: string = value.name
+            let nameSearchThisFY: string = value.ID // should search correctly when name changes over time 
+            // let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
+            let nameSearchLastFY = array[index+1].kpi.filter((elem) => nameSearchThisFY === elem.ID); // ID is supposed to be unique, therefore only one result
 
-            return (nameSearchThisFY === nameSearchLastFY)
-                ? cmlValuesMake(array[index+1].kpi[indexValue], cmlName)
+            // return (nameSearchThisFY === nameSearchLastFY)
+            return (nameSearchThisFY === nameSearchLastFY[0].ID)
+                // ? cmlValuesMake(array[index+1].kpi[indexValue], cmlName)
+                ? cmlValuesMake(nameSearchLastFY[0], cmlName)
                 : cmlValuesMake(undefined, cmlName)
 
             })
-        : array[index+1].kpi.map(value => cmlValuesMake(value, cmlName))
+        // : array[index+1].kpi.map(value => cmlValuesMake(value, cmlName))
 
     // assuming this is not used because it's the percentages...
     // let cmlValuesLastFYPlus: KPDIndicators[][] = cmlValuesLastFY.concat(softwareProportionMake(cmlValuesLastFY, cmlName), (physicalSoftwareProportionMake(cmlValuesLastFY, cmlName)));
@@ -748,18 +766,20 @@ export const keySalesIndicatorsListCml = collection.map((elem, index, array) => 
 
     let qtrValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
         ? elem.kpi.map(value => quarterValuesMake(undefined)) 
-        : (array[index+1].kpi.length !== elem.kpi.length)
-        ? elem.kpi.map((value, indexValue) => {
+        // : (array[index+1].kpi.length !== elem.kpi.length)
+        : elem.kpi.map((value, indexValue) => {
             
-            let nameSearchThisFY: string = value.name
-            let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
+            // let nameSearchThisFY: string = value.name
+            let nameSearchThisFY: string = value.ID // should search correctly when name changes over time 
+            // let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
+            let nameSearchLastFY = array[index+1].kpi.filter((elem) => nameSearchThisFY === elem.ID); // ID is supposed to be unique, therefore only one result
             
-            return (nameSearchThisFY === nameSearchLastFY)
-                ? quarterValuesMake(array[index+1].kpi[indexValue])
+            return (nameSearchThisFY === nameSearchLastFY[0].ID)
+                ? quarterValuesMake(nameSearchLastFY[0])
                 : quarterValuesMake(undefined)
 
             })
-        : array[index+1].kpi.map(value => quarterValuesMake(value))
+        // : array[index+1].kpi.map(value => quarterValuesMake(value))
 
     // assuming this is not used because it's the percentages...
     // let qtrValuesLastFYPlus: KPDIndicators[][] = qtrValuesLastFY.concat(softwareProportionMake(qtrValuesLastFY, cmlName), (physicalSoftwareProportionMake(qtrValuesLastFY, cmlName)));
@@ -770,18 +790,20 @@ export const keySalesIndicatorsListCml = collection.map((elem, index, array) => 
 
     let cmlValuesLastFY: KPDIndicators[][] = (!array[index+1]) 
         ? elem.kpi.map(value => cmlValuesMake(undefined, cmlName)) 
-        : (array[index+1].kpi.length !== elem.kpi.length)
-        ? elem.kpi.map((value, indexValue) => {
+        // : (array[index+1].kpi.length !== elem.kpi.length)
+        : elem.kpi.map((value, indexValue) => {
             
-            let nameSearchThisFY = value.name
-            let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
+            // let nameSearchThisFY: string = value.name
+            let nameSearchThisFY: string = value.ID // should search correctly when name changes over time 
+            // let nameSearchLastFY = array[index+1].kpi[indexValue]? array[index+1].kpi[indexValue].name : undefined;
+            let nameSearchLastFY = array[index+1].kpi.filter((elem) => nameSearchThisFY === elem.ID); // ID is supposed to be unique, therefore only one result
 
-            return (nameSearchThisFY === nameSearchLastFY)
-                ? cmlValuesMake(array[index+1].kpi[indexValue], cmlName)
+            return (nameSearchThisFY === nameSearchLastFY[0].ID)
+                ? cmlValuesMake(nameSearchLastFY[0], cmlName)
                 : cmlValuesMake(undefined, cmlName)
 
             })
-        : array[index+1].kpi.map(value => cmlValuesMake(value, cmlName))
+        // : array[index+1].kpi.map(value => cmlValuesMake(value, cmlName))
 
     // assuming this is not used because it's the percentages...
     // let cmlValuesLastFYPlus: KPDIndicators[][] = cmlValuesLastFY.concat(softwareProportionMake(cmlValuesLastFY, cmlName), (physicalSoftwareProportionMake(cmlValuesLastFY, cmlName)));
