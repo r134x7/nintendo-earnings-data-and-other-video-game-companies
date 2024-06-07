@@ -1,56 +1,56 @@
 Digital Entertainment
-96975
+116366
 -
-13272
+21163
 -
 Pachislot & Pachinko Machines
-14691
+5398
 -
-322
+1166
 -
 Gaming & Systems
-33825
+24984
 -
-6329
+5606
 -
 Health & Fitness
-73340
+79866
 -
-(913)
+3014
 -
 Intersegment Eliminations
-(674)
+(649)
 -
-(4559)
+(6742)
 -
 Total
-218157
+225995
 -
-14451
+21875
 -
 
 Japan 
-161976
+171057
 -
 -
 -
 United States 
-39844
+36631
 -
 -
 -
 Europe 
-9427
+12703
 -
 -
 -
 Asia/Oceania 
-6910
+5604
 -
 -
 -
 Global 
-218157
+225995
 -
 -
 -
