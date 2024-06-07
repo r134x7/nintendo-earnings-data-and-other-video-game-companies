@@ -49,23 +49,54 @@ function headerMaker(collection: SegmentJSON): string {
 
 // collectionBandaiNamco.clear();
 
+export function maxLengthMAP<T>(mapData: Map<number, T[]>): number {
+    let max = 0;
+    mapData.forEach((value) => {
+        if (value.length > max) {
+            max = value.length
+        }
+    })
+    return max
+};
+
 function segmentResultsMaker(completeCollection: Map<number, SegmentJSON>): string[] {
 
     const makeData = new Map<number, SegmentValue[]>();
     completeCollection.forEach((value, key, map) => makeData.set(key, [...getSegmentData(value, value.data.length).values()]))
 
-    const segmentCount = makeData.get(makeData.size-1)?.length;
+    // it assumes the latest data has the longest length, it would be better to just search for the list with the longest length
+    // in case a consolidation of segments occurs
+    // const segmentCount = makeData.get(makeData.size-1)?.length; 
 
-    const segmentList = Array.from({length: segmentCount ?? 0}, (v,i) => new Map<number, SegmentValue>())
+    const getIDs = new Set<string>();
+
+    makeData.forEach((value) => value.map(elem => getIDs.add(elem.ID)))
+
+    // console.log(getIDs);
+
+    let IDlist = [...getIDs.values()]
+
+    const segmentList = Array.from({length: maxLengthMAP(makeData) ?? 0}, (v,i) => new Map<number, SegmentValue>())
+
+    // console.log(getIDs.size)
+    // console.log(segmentList.length)
+    // the segmentList and getIDs are the same size
 
     makeData.forEach((value, key, map) => {
-
+        // console.log(value);
+        
+        // looping through the year of data containing the categories
+        // they're being placed by index when they should only be placed by ID
+        // now that the IDs are listed, we now filter by ID
         for (let index = 0; index < value.length; index++) {
-           segmentList[index].set(key, value[index]); 
+
+            let filterID = value.filter(elem => elem.ID === IDlist[index]) // unique ID, index is either empty or one index
+
+            segmentList[index].set(key, filterID[0]); 
         }
     })
 
-    // console.log(segmentList)
+    console.log(segmentList) // the segments are not being grouped correctly being they need to match ID before being grouped.
 
     let titleHeader = headerMaker(completeCollection.get(completeCollection.size -1) as SegmentJSON)
 
