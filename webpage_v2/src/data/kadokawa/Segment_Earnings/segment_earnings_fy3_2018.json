@@ -1,0 +1,212 @@
+{
+    "currentQuarter": 4,
+    "companyName": "KADOKAWA CORPORATION",
+    "fiscalYear": "FY3/2018",
+    "data": [
+        {
+            "name": "Publication",
+            "units": "currency",
+            "ID": "1",
+            "Q1CmlValue": {
+                "netSales": 27013,
+                "operatingIncome": 1094
+            },
+            "Q2CmlValue": {
+                "netSales": 54399,
+                "operatingIncome": 2399
+            },
+            "Q3CmlValue": {
+                "netSales": 82996,
+                "operatingIncome": 3801
+            },
+            "Q4CmlValue": {
+                "netSales": 112691,
+                "operatingIncome": 6000
+            },
+            "forecastThisFY": {
+                "netSales": "Nothing",
+                "operatingIncome": "Nothing"
+            },
+            "forecastRevision1": {
+                "netSales": null,
+                "operatingIncome": null
+            },
+            "forecastRevision2": {
+                "netSales": null,
+                "operatingIncome": null
+            },
+            "forecastRevision3": {
+                "netSales": null,
+                "operatingIncome": null
+            },
+            "forecastNextFY": {
+                "netSales": "Nothing",
+                "operatingIncome": "Nothing"
+            }
+        },
+        {
+            "name": "Video",
+            "units": "currency",
+            "ID": "2",
+            "Q1CmlValue": {
+                "netSales": 7302,
+                "operatingIncome": 39
+            },
+            "Q2CmlValue": {
+                "netSales": 15785,
+                "operatingIncome": 843
+            },
+            "Q3CmlValue": {
+                "netSales": 22814,
+                "operatingIncome": 633
+            },
+            "Q4CmlValue": {
+                "netSales": 32554,
+                "operatingIncome": 1438
+            },
+            "forecastThisFY": {
+                "netSales": "Nothing",
+                "operatingIncome": "Nothing"
+            },
+            "forecastRevision1": {
+                "netSales": null,
+                "operatingIncome": null
+            },
+            "forecastRevision2": {
+                "netSales": null,
+                "operatingIncome": null
+            },
+            "forecastRevision3": {
+                "netSales": null,
+                "operatingIncome": null
+            },
+            "forecastNextFY": {
+                "netSales": "Nothing",
+                "operatingIncome": "Nothing"
+            }
+        },
+        {
+            "name": "Game",
+            "units": "currency",
+            "ID": "3",
+            "Q1CmlValue": {
+                "netSales": 3467,
+                "operatingIncome": 603
+            },
+            "Q2CmlValue": {
+                "netSales": 7333,
+                "operatingIncome": 1044
+            },
+            "Q3CmlValue": {
+                "netSales": 11418,
+                "operatingIncome": 1351
+            },
+            "Q4CmlValue": {
+                "netSales": 15026,
+                "operatingIncome": 1436
+            },
+            "forecastThisFY": {
+                "netSales": "Nothing",
+                "operatingIncome": "Nothing"
+            },
+            "forecastRevision1": {
+                "netSales": null,
+                "operatingIncome": null
+            },
+            "forecastRevision2": {
+                "netSales": null,
+                "operatingIncome": null
+            },
+            "forecastRevision3": {
+                "netSales": null,
+                "operatingIncome": null
+            },
+            "forecastNextFY": {
+                "netSales": "Nothing",
+                "operatingIncome": "Nothing"
+            }
+        },
+        {
+            "name": "Web services",
+            "units": "currency",
+            "ID": "4",
+            "Q1CmlValue": {
+                "netSales": 7608,
+                "operatingIncome": -72
+            },
+            "Q2CmlValue": {
+                "netSales": 15405,
+                "operatingIncome": 393
+            },
+            "Q3CmlValue": {
+                "netSales": 22319,
+                "operatingIncome": -139
+            },
+            "Q4CmlValue": {
+                "netSales": 29023,
+                "operatingIncome": -1067
+            },
+            "forecastThisFY": {
+                "netSales": "Nothing",
+                "operatingIncome": "Nothing"
+            },
+            "forecastRevision1": {
+                "netSales": null,
+                "operatingIncome": null
+            },
+            "forecastRevision2": {
+                "netSales": null,
+                "operatingIncome": null
+            },
+            "forecastRevision3": {
+                "netSales": null,
+                "operatingIncome": null
+            },
+            "forecastNextFY": {
+                "netSales": "Nothing",
+                "operatingIncome": "Nothing"
+            }
+        },
+        {
+            "name": "Others",
+            "units": "currency",
+            "ID": "5",
+            "Q1CmlValue": {
+                "netSales": 5371,
+                "operatingIncome": -85
+            },
+            "Q2CmlValue": {
+                "netSales": 10139,
+                "operatingIncome": -212
+            },
+            "Q3CmlValue": {
+                "netSales": 14881,
+                "operatingIncome": -461
+            },
+            "Q4CmlValue": {
+                "netSales": 20821,
+                "operatingIncome": -1356
+            },
+            "forecastThisFY": {
+                "netSales": "Nothing",
+                "operatingIncome": "Nothing"
+            },
+            "forecastRevision1": {
+                "netSales": null,
+                "operatingIncome": null
+            },
+            "forecastRevision2": {
+                "netSales": null,
+                "operatingIncome": null
+            },
+            "forecastRevision3": {
+                "netSales": null,
+                "operatingIncome": null
+            },
+            "forecastNextFY": {
+                "netSales": "Nothing",
+                "operatingIncome": "Nothing"
+            }
+        }
+    ] 
+}
