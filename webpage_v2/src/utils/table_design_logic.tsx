@@ -216,6 +216,17 @@ export const dateLabel = (latestFiscalYear: string, currentQuarter: number): str
             ].filter((elem, index) => index === currentQuarter - 1);
         
             return `Data as of ${fyEndingAugustDates}`
+
+        case "FY9/":
+
+            let fyEndingSeptemberDates = [
+                `${endOfMonth.December}, ${lastYear}`,
+                `${endOfMonth.March}, ${fiscalYear}`,
+                `${endOfMonth.June}, ${fiscalYear}`,
+                `${endOfMonth.September}, ${fiscalYear}`,
+            ].filter((elem, index) => index === currentQuarter - 1);
+        
+            return `Data as of ${fyEndingSeptemberDates}`
     
         default:
             return "ERROR"
