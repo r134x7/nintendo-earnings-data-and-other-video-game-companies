@@ -312,12 +312,14 @@ export function printReduceSection(
     quarters: string[],
     cumulatives: string[],
     forecasts: string[],
+    footnotes?: string[]
     ): string {
 
         return [
             sectionHeader,
             ...quarters,
             ...cumulatives,
+            ...footnotes ?? "",
             ...forecasts,
             "###"
         ].reduce((acc, next) => {

@@ -279,14 +279,14 @@ export const kadokawaSegmentEarningsList = new Map<number, string>();
 
 collectionBandaiNamco.forEach((value, key, map) => {
 
-    bandaiNamcoSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
+    // bandaiNamcoSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
 })
 
 collectionBandaiNamco.clear();
 
 collectionKonami.forEach((value, key, map) => {
 
-    konamiSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
+    // konamiSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
 })
 
 collectionKonami.clear();
@@ -300,7 +300,7 @@ collectionCyberAgent.clear();
 
 collectionKadokawa.forEach((value, key, map) => {
 
-    kadokawaSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
+    // kadokawaSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
 })
 
 collectionKadokawa.clear();
@@ -432,10 +432,6 @@ function segmentListMap(collection: SegmentJSON, lastFYCollection: SegmentJSON |
 
         const printEach = new Map<number, string>();
 
-        // console.log(dataThisFY);
-        // console.log(dataLastFY);
-        // console.log(percentagesThisFY);
-        
         // printEach.forEach((value, key, map) => {
         dataThisFY.forEach((value, key, map) => {
 
@@ -522,5 +518,6 @@ function getSegmentPrintOutput(values: Map<number, SegmentValue>, yoyValues: Map
         qtrOrCmlOutput(quarters,quarterPercentages,false),
         qtrOrCmlOutput(cumulatives,cumulativePercentages,false),
         forecastOutput(forecasts),
+        [liner(printTextBlock(values.get(key)?.footnotes, 40), "−", "both", "newLine", 40) ?? ""],
     ) + "\n"
 }
