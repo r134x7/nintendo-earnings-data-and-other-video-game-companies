@@ -279,14 +279,14 @@ export const kadokawaSegmentEarningsList = new Map<number, string>();
 
 collectionBandaiNamco.forEach((value, key, map) => {
 
-    // bandaiNamcoSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
+    bandaiNamcoSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
 })
 
 collectionBandaiNamco.clear();
 
 collectionKonami.forEach((value, key, map) => {
 
-    // konamiSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
+    konamiSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
 })
 
 collectionKonami.clear();
@@ -300,7 +300,7 @@ collectionCyberAgent.clear();
 
 collectionKadokawa.forEach((value, key, map) => {
 
-    // kadokawaSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
+    kadokawaSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
 })
 
 collectionKadokawa.clear();
