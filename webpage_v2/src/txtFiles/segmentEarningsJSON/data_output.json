@@ -4,20 +4,20 @@
         "units": "currency",
         "ID": "1",
         "Q1CmlValue": {
-            "netSales": 7233,
-            "operatingIncome": 22
+            "netSales": "Nothing",
+            "operatingIncome":"Nothing" 
         },
         "Q2CmlValue": {
-            "netSales": 16293,
-            "operatingIncome": 1326
+            "netSales": "Nothing",
+            "operatingIncome":"Nothing" 
         },
         "Q3CmlValue": {
-            "netSales": 24622,
-            "operatingIncome": 1545
+            "netSales": 19506,
+            "operatingIncome": -7205
         },
         "Q4CmlValue": {
-            "netSales": 34011,
-            "operatingIncome": 2287
+            "netSales": 27560,
+            "operatingIncome": -8250
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -45,20 +45,20 @@
         "units": "currency",
         "ID": "2",
         "Q1CmlValue": {
-            "netSales": 24449,
-            "operatingIncome": 2072
+            "netSales": "Nothing",
+            "operatingIncome":"Nothing" 
         },
         "Q2CmlValue": {
-            "netSales": 54417,
-            "operatingIncome": 5093
+            "netSales": "Nothing",
+            "operatingIncome":"Nothing" 
         },
         "Q3CmlValue": {
-            "netSales": 82951,
-            "operatingIncome": 7397
+            "netSales": 59635,
+            "operatingIncome": 6097
         },
         "Q4CmlValue": {
-            "netSales": 113866,
-            "operatingIncome": 9129
+            "netSales": 82265,
+            "operatingIncome": 8285
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -82,24 +82,24 @@
         }
     },
     {
-        "name": "Game",
+        "name": "Game and Other Media",
         "units": "currency",
         "ID": "3",
         "Q1CmlValue": {
-            "netSales": 11421,
-            "operatingIncome": 2057
+            "netSales": "Nothing",
+            "operatingIncome":"Nothing" 
         },
         "Q2CmlValue": {
-            "netSales": 24409,
-            "operatingIncome": 4366
+            "netSales": "Nothing",
+            "operatingIncome":"Nothing" 
         },
         "Q3CmlValue": {
-            "netSales": 37012,
-            "operatingIncome": 5844
+            "netSales": 45711,
+            "operatingIncome": 5977
         },
         "Q4CmlValue": {
-            "netSales": 50799,
-            "operatingIncome": 8478
+            "netSales": 60069,
+            "operatingIncome": 8465
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -127,20 +127,20 @@
         "units": "currency",
         "ID": "4",
         "Q1CmlValue": {
-            "netSales": 345,
-            "operatingIncome": 56
+            "netSales": "Nothing",
+            "operatingIncome":"Nothing" 
         },
         "Q2CmlValue": {
-            "netSales": 431,
-            "operatingIncome": -106
+            "netSales": "Nothing",
+            "operatingIncome":"Nothing" 
         },
         "Q3CmlValue": {
-            "netSales": 1164,
-            "operatingIncome": 148
+            "netSales": 1560,
+            "operatingIncome": 680
         },
         "Q4CmlValue": {
-            "netSales": 4346,
-            "operatingIncome": 2783
+            "netSales": 1801,
+            "operatingIncome": 700
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -164,24 +164,24 @@
         }
     },
     {
-        "name": "Media and Other",
+        "name": "FX",
         "units": "currency",
-        "ID": "5",
+        "ID": "901",
         "Q1CmlValue": {
-            "netSales": 3387,
-            "operatingIncome": 76
+            "netSales": "Nothing",
+            "operatingIncome":"Nothing" 
         },
         "Q2CmlValue": {
-            "netSales": 7197,
-            "operatingIncome": 198
+            "netSales": "Nothing",
+            "operatingIncome":"Nothing" 
         },
         "Q3CmlValue": {
-            "netSales": 11056,
-            "operatingIncome": 352
+            "netSales": 2916,
+            "operatingIncome": 1686
         },
         "Q4CmlValue": {
-            "netSales": 15191,
-            "operatingIncome": 199
+            "netSales": 2916,
+            "operatingIncome": 1686
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -209,20 +209,20 @@
         "units": "currency",
         "ID": "6",
         "Q1CmlValue": {
-            "netSales": -3121,
-            "operatingIncome": -22
+            "netSales": "Nothing",
+            "operatingIncome":"Nothing" 
         },
         "Q2CmlValue": {
-            "netSales": -6587,
-            "operatingIncome": -64
+            "netSales": "Nothing",
+            "operatingIncome":"Nothing" 
         },
         "Q3CmlValue": {
-            "netSales": -9354,
-            "operatingIncome": -414
+            "netSales": -9076,
+            "operatingIncome": -417
         },
         "Q4CmlValue": {
-            "netSales": -12981,
-            "operatingIncome": -657
+            "netSales": -12119,
+            "operatingIncome": -568
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -250,20 +250,20 @@
         "units": "currency",
         "ID": "7",
         "Q1CmlValue": {
-            "netSales": 43715,
-            "operatingIncome": 4263
+            "netSales": "Nothing",
+            "operatingIncome":"Nothing" 
         },
         "Q2CmlValue": {
-            "netSales": 96162,
-            "operatingIncome": 10813
+            "netSales": "Nothing",
+            "operatingIncome":"Nothing" 
         },
         "Q3CmlValue": {
-            "netSales": 147452,
-            "operatingIncome": 14874
+            "netSales": 120254,
+            "operatingIncome": 6818
         },
         "Q4CmlValue": {
-            "netSales": 205234,
-            "operatingIncome": 22220
+            "netSales": 162493,
+            "operatingIncome": 10318
         },
         "forecastThisFY": {
             "netSales": "Nothing",

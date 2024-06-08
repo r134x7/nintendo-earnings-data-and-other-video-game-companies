@@ -1,0 +1,46 @@
+{
+    "currentQuarter": 4,
+    "companyName": "CyberAgent, Inc.",
+    "fiscalYear": "FY9/2013",
+    "data": [
+        {
+            "name": "Net Sales",
+            "units": "currency",
+            "Q1CmlValue": "Nothing",
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": 120254,
+            "Q4CmlValue": 162493,
+            "forecastThisFY": "Nothing",
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": "Nothing"
+        },
+        {
+            "name": "Operating Income",
+            "units": "currency",
+            "Q1CmlValue": "Nothing",
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": 6818,
+            "Q4CmlValue": 10318,
+            "forecastThisFY": "Nothing",
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": "Nothing"
+        },
+        {
+            "name": "Net Income",
+            "units": "currency",
+            "Q1CmlValue": "Nothing",
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": 9688,
+            "Q4CmlValue": 10504,
+            "forecastThisFY": "Nothing",
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": "Nothing"
+        }
+    ]
+}
