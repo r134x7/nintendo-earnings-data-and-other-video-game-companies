@@ -1,0 +1,46 @@
+{
+    "currentQuarter": 4,
+    "companyName": "KADOKAWA CORPORATION",
+    "fiscalYear": "FY3/2015",
+    "data": [
+        {
+            "name": "Net Sales",
+            "units": "currency",
+            "Q1CmlValue": "Nothing",
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": 49715,
+            "Q4CmlValue": 100566,
+            "forecastThisFY": "Nothing",
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": 200500
+        },
+        {
+            "name": "Operating Income",
+            "units": "currency",
+            "Q1CmlValue": "Nothing",
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": 1851,
+            "Q4CmlValue": 1391,
+            "forecastThisFY": "Nothing",
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": 7000
+        },
+        {
+            "name": "Net Income",
+            "units": "currency",
+            "Q1CmlValue": "Nothing",
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": 26078,
+            "Q4CmlValue": 14055,
+            "forecastThisFY": "Nothing",
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": 4000
+        }
+    ]
+}
