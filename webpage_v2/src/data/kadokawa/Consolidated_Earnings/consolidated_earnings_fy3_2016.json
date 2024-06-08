@@ -1,46 +1,46 @@
 {
     "currentQuarter": 4,
     "companyName": "KADOKAWA CORPORATION",
-    "fiscalYear": "FY3/2015",
+    "fiscalYear": "FY3/2016",
     "data": [
         {
             "name": "Net Sales",
             "units": "currency",
-            "Q1CmlValue": 49715,
-            "Q2CmlValue": "Nothing",
-            "Q3CmlValue": "Nothing",
-            "Q4CmlValue": 100566,
-            "forecastThisFY": "Nothing",
+            "Q1CmlValue": 46906,
+            "Q2CmlValue": 93926,
+            "Q3CmlValue": 146038,
+            "Q4CmlValue": 200945,
+            "forecastThisFY": 200500,
             "forecastRevision1": null,
             "forecastRevision2": null,
             "forecastRevision3": null,
-            "forecastNextFY": 200500
+            "forecastNextFY": 200000
         },
         {
             "name": "Operating Income",
             "units": "currency",
-            "Q1CmlValue": 1851,
-            "Q2CmlValue": "Nothing",
-            "Q3CmlValue": "Nothing",
-            "Q4CmlValue": 1391,
-            "forecastThisFY": "Nothing",
+            "Q1CmlValue": 1145,
+            "Q2CmlValue": 3505,
+            "Q3CmlValue": 6290,
+            "Q4CmlValue": 9124,
+            "forecastThisFY": 7000,
             "forecastRevision1": null,
             "forecastRevision2": null,
             "forecastRevision3": null,
-            "forecastNextFY": 7000
+            "forecastNextFY": 3100
         },
         {
             "name": "Net Income",
             "units": "currency",
-            "Q1CmlValue": 26078,
-            "Q2CmlValue": "Nothing",
-            "Q3CmlValue": "Nothing",
-            "Q4CmlValue": 14055,
-            "forecastThisFY": "Nothing",
+            "Q1CmlValue": -220,
+            "Q2CmlValue": 1914,
+            "Q3CmlValue": 5324,
+            "Q4CmlValue": 6845,
+            "forecastThisFY": 4000,
             "forecastRevision1": null,
             "forecastRevision2": null,
             "forecastRevision3": null,
-            "forecastNextFY": 4000
+            "forecastNextFY": 1750
         }
     ]
 }

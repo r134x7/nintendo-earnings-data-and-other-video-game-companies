@@ -2,40 +2,40 @@
     {
         "name": "Net Sales",
         "units": "currency",
-        "Q1CmlValue": 49631,
-        "Q2CmlValue": 102129,
-        "Q3CmlValue": 152102,
-        "Q4CmlValue": 208605,
-        "forecastThisFY": 231000,
-        "forecastRevision1": 207000,
+        "Q1CmlValue": 46906,
+        "Q2CmlValue": 93926,
+        "Q3CmlValue": 146038,
+        "Q4CmlValue": 200945,
+        "forecastThisFY": 200500,
+        "forecastRevision1": null,
         "forecastRevision2": null,
         "forecastRevision3": null,
-        "forecastNextFY": 217000
+        "forecastNextFY": 200000
     },
     {
         "name": "Operating Income",
         "units": "currency",
-        "Q1CmlValue": 399,
-        "Q2CmlValue": 2864,
-        "Q3CmlValue": 3183,
-        "Q4CmlValue": 2707,
-        "forecastThisFY": 8000,
-        "forecastRevision1": 1900,
+        "Q1CmlValue": 1145,
+        "Q2CmlValue": 3505,
+        "Q3CmlValue": 6290,
+        "Q4CmlValue": 9124,
+        "forecastThisFY": 7000,
+        "forecastRevision1": null,
         "forecastRevision2": null,
         "forecastRevision3": null,
-        "forecastNextFY": 5400
+        "forecastNextFY": 3100
     },
     {
         "name": "Net Income",
         "units": "currency",
-        "Q1CmlValue": 368,
-        "Q2CmlValue": 2119,
-        "Q3CmlValue": -2169,
-        "Q4CmlValue": -4085,
-        "forecastThisFY": 5400,
-        "forecastRevision1": -4300,
+        "Q1CmlValue": -220,
+        "Q2CmlValue": 1914,
+        "Q3CmlValue": 5324,
+        "Q4CmlValue": 6845,
+        "forecastThisFY": 4000,
+        "forecastRevision1": null,
         "forecastRevision2": null,
         "forecastRevision3": null,
-        "forecastNextFY": 3800
+        "forecastNextFY": 1750
     }
 ]
