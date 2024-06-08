@@ -92,7 +92,11 @@ function segmentResultsMaker(completeCollection: Map<number, SegmentJSON>): stri
 
             let filterID = value.filter(elem => elem.ID === IDlist[index]) // unique ID, index is either empty or one index
 
-            segmentList[index].set(key, filterID[0]); 
+            // undefined values slipped through from the loop condition
+            // the fix is either the below or to stop the loop
+            if (filterID[0] !== undefined) {
+                segmentList[index].set(key, filterID[0]); 
+            }
         }
     })
 
@@ -137,7 +141,9 @@ function printAllValues(list: Map<number, SegmentValue>, company: string): strin
 
     const profitType = (company.includes("KONAMI"))
             ? "Business Profit"
-            : "Operating Income"
+            : (company.includes("CyberAgent"))
+                ? "Segment Income"
+                : "Operating Income"
 
     const finalName = [...list.keys()].at(-1) ?? 0; // getting the last key in the list
 
@@ -198,6 +204,8 @@ function printAllValues(list: Map<number, SegmentValue>, company: string): strin
     }
 
     list.forEach((value, key, map) => {
+        // console.log(value); // an undefined value slipped through
+        
         // needed to cover the beginning of a new FY and the end FY
         let thisFY = (value.Q4CmlValue.netSales.kind === "Cumulative") 
             ? value.Q4CmlValue.netSales.thisFY
@@ -246,7 +254,9 @@ function printAllValues(list: Map<number, SegmentValue>, company: string): strin
             ? 0
             : (map.get(key)?.at(-2)?.length as number) - offset 
         
-        if (getValuesNetSales.get(key)?.length ?? 0 > 0) {
+        let getLength = getValuesNetSales.get(key)?.length ?? 0; // you cannot put an optional chain with nullish operator inside an if condition. you have to store the result in a variable first and then put the variable in an if condition. 
+            
+        if (getLength > 1) {
             map.set(key, (toReturnNetSales.get(key) ?? []).concat(
                 printStats(
                     printCount(getValuesNetSales.get(key) ?? [0], getTextLength(21),15,true).concat(
@@ -267,7 +277,9 @@ function printAllValues(list: Map<number, SegmentValue>, company: string): strin
             ? 0
             : (map.get(key)?.at(-2)?.length as number) - offset 
         
-        if (getValuesOperatingIncome.get(key)?.length ?? 0 > 0) {
+        let getLength = getValuesOperatingIncome.get(key)?.length ?? 0; // you cannot put an optional chain with nullish operator inside an if condition. you have to store the result in a variable first and then put the variable in an if condition. 
+            
+        if (getLength > 1) {
             map.set(key, (toReturnOperatingIncome.get(key) ?? []).concat(
                 printStats(
                     printCount(getValuesOperatingIncome.get(key) ?? [0], getTextLength(21),15,true).concat(
@@ -294,10 +306,10 @@ function printAllValues(list: Map<number, SegmentValue>, company: string): strin
     
 }
 
-export const cumulativeSegmentListBandaiNamco = segmentResultsMaker(collectionBandaiNamcoCml); 
+// export const cumulativeSegmentListBandaiNamco = segmentResultsMaker(collectionBandaiNamcoCml); 
 
-export const cumulativeSegmentListKonami = segmentResultsMaker(collectionKonamiCml); 
+// export const cumulativeSegmentListKonami = segmentResultsMaker(collectionKonamiCml); 
 
 export const cumulativeSegmentListCyberAgent = segmentResultsMaker(collectionCyberAgentCml); 
 
-export const cumulativeSegmentListKadokawa = segmentResultsMaker(collectionKadokawaCml); 
+// export const cumulativeSegmentListKadokawa = segmentResultsMaker(collectionKadokawaCml); 

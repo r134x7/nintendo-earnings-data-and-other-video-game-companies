@@ -329,7 +329,9 @@ function segmentListMap(collection: SegmentJSON, lastFYCollection: SegmentJSON |
 
         const profitType = (header.companyName.includes("KONAMI"))
             ? "Business Profit"
-            : "Operating Income"
+            : (header.companyName.includes("CyberAgent"))
+                ? "Segment Income"
+                : "Operating Income"
 
         const marginType = (header.companyName.includes("KONAMI"))
             ? "Business Margin"

@@ -161,17 +161,22 @@ function printAllValues(list: Map<number, EarningsV2>): string[] {
             ? 0
             : (map.get(key)?.at(-2)?.length as number) - offset 
         
-        map.set(key, (toReturn.get(key) ?? []).concat(
-            printStats(
-                printCount(getValues.get(key) ?? [0], getTextLength(21),15,true).concat(
-                    printSum(getValues.get(key) ?? [0], getTextLength(21),15,"Million","¥",0,true),
-                    printAverage(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
-                    printMedian(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
-                    printMininum(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",true),
-                    printMaximum(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",true),
-                )
-            , getTextLength(3) ?? 0),
-        ))
+
+        let getLength = getValues.get(key)?.length ?? 0; // you cannot put an optional chain with nullish operator inside an if condition. you have to store the result in a variable first and then put the variable in an if condition. 
+            
+        if (getLength > 1) {
+            map.set(key, (toReturn.get(key) ?? []).concat(
+                printStats(
+                    printCount(getValues.get(key) ?? [0], getTextLength(21),15,true).concat(
+                        printSum(getValues.get(key) ?? [0], getTextLength(21),15,"Million","¥",0,true),
+                        printAverage(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
+                        printMedian(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",0,true),
+                        printMininum(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",true),
+                        printMaximum(getValues.get(key) ?? [0], getTextLength(21), 15,"Million","¥",true),
+                    )
+                , getTextLength(3) ?? 0),
+            ))
+        }
     })
 
     return [

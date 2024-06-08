@@ -206,7 +206,8 @@
             "forecastNextFY": {
                 "netSales": "Nothing",
                 "operatingIncome": "Nothing"
-            }
+            },
+            "footnote": "CyberAgent: January 31, 2013, we sold all shares of the CyberAgent FX, Inc. that belonged to the “FX business” and it was excluded from the scope of consolidation starting from the second quarter (as of February 1, 2013). As a result, there is no asset in the “FX business” segment."
         },
         {
             "name": "Adjustment",
@@ -247,8 +248,7 @@
             "forecastNextFY": {
                 "netSales": "Nothing",
                 "operatingIncome": "Nothing"
-            },
-            "footnote": "CyberAgent: January 31, 2013, we sold all shares of the CyberAgent FX, Inc. that belonged to the “FX business” and it was excluded from the scope of consolidation starting from the second quarter (as of February 1, 2013). As a result, there is no asset in the “FX business” segment."
+            }
         },
         {
             "name": "Total",
