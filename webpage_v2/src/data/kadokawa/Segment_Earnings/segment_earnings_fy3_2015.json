@@ -8,16 +8,16 @@
             "units": "currency",
             "ID": "1",
             "Q1CmlValue": {
-                "netSales": "Nothing",
-                "operatingIncome":"Nothing" 
+                "netSales": 27440,
+                "operatingIncome": 1268
             },
             "Q2CmlValue": {
                 "netSales": "Nothing",
                 "operatingIncome":"Nothing" 
             },
             "Q3CmlValue": {
-                "netSales": 27440,
-                "operatingIncome": 1268
+                "netSales": "Nothing",
+                "operatingIncome":"Nothing" 
             },
             "Q4CmlValue": {
                 "netSales": 54296,
@@ -49,16 +49,16 @@
             "units": "currency",
             "ID": "2",
             "Q1CmlValue": {
-                "netSales": "Nothing",
-                "operatingIncome":"Nothing" 
+                "netSales": 12260,
+                "operatingIncome": 1057
             },
             "Q2CmlValue": {
                 "netSales": "Nothing",
                 "operatingIncome":"Nothing" 
             },
             "Q3CmlValue": {
-                "netSales": 12260,
-                "operatingIncome": 1057
+                "netSales": "Nothing",
+                "operatingIncome":"Nothing" 
             },
             "Q4CmlValue": {
                 "netSales": 23035,
@@ -90,16 +90,16 @@
             "units": "currency",
             "ID": "4",
             "Q1CmlValue": {
-                "netSales": "Nothing",
-                "operatingIncome":"Nothing" 
+                "netSales": 7842,
+                "operatingIncome": 1449
             },
             "Q2CmlValue": {
                 "netSales": "Nothing",
                 "operatingIncome":"Nothing" 
             },
             "Q3CmlValue": {
-                "netSales": 7842,
-                "operatingIncome": 1449
+                "netSales": "Nothing",
+                "operatingIncome":"Nothing" 
             },
             "Q4CmlValue": {
                 "netSales": 15722,
@@ -131,16 +131,16 @@
             "units": "currency",
             "ID": "5",
             "Q1CmlValue": {
-                "netSales": "Nothing",
-                "operatingIncome":"Nothing" 
+                "netSales": 3447,
+                "operatingIncome": -163
             },
             "Q2CmlValue": {
                 "netSales": "Nothing",
                 "operatingIncome":"Nothing" 
             },
             "Q3CmlValue": {
-                "netSales": 3447,
-                "operatingIncome": -163
+                "netSales": "Nothing",
+                "operatingIncome":"Nothing" 
             },
             "Q4CmlValue": {
                 "netSales": 9620,
