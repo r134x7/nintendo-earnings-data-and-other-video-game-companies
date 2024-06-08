@@ -294,22 +294,24 @@ function printAllValues(list: Map<number, SegmentValue>, company: string): strin
         }
     })
 
+    let getFootnote = [liner(printTextBlock(list.get(0)?.footnotes, 40), "−", "both", "newLine", 40)];
+
     return [
-        getConcat(toReturnNetSales.get(0)) + getConcat(toReturnOperatingIncome.get(0)),
-        getConcat(toReturnNetSales.get(1)) + getConcat(toReturnOperatingIncome.get(1)),
-        getConcat(toReturnNetSales.get(2)) + getConcat(toReturnOperatingIncome.get(2)),
-        getConcat(toReturnNetSales.get(3)) + getConcat(toReturnOperatingIncome.get(3)),
-        getConcat(toReturnNetSales.get(4)) + getConcat(toReturnOperatingIncome.get(4)),
-        getConcat(toReturnNetSales.get(5)) + getConcat(toReturnOperatingIncome.get(5)),
-        getConcat(toReturnNetSales.get(6)) + getConcat(toReturnOperatingIncome.get(6)),
+        getConcat(toReturnNetSales.get(0)) + getConcat(toReturnOperatingIncome.get(0)) + getConcat(getFootnote),
+        getConcat(toReturnNetSales.get(1)) + getConcat(toReturnOperatingIncome.get(1)) + getConcat(getFootnote),
+        getConcat(toReturnNetSales.get(2)) + getConcat(toReturnOperatingIncome.get(2)) + getConcat(getFootnote),
+        getConcat(toReturnNetSales.get(3)) + getConcat(toReturnOperatingIncome.get(3)) + getConcat(getFootnote),
+        getConcat(toReturnNetSales.get(4)) + getConcat(toReturnOperatingIncome.get(4)) + getConcat(getFootnote),
+        getConcat(toReturnNetSales.get(5)) + getConcat(toReturnOperatingIncome.get(5)) + getConcat(getFootnote),
+        getConcat(toReturnNetSales.get(6)) + getConcat(toReturnOperatingIncome.get(6)) + getConcat(getFootnote),
     ]
     
 }
 
-// export const cumulativeSegmentListBandaiNamco = segmentResultsMaker(collectionBandaiNamcoCml); 
+export const cumulativeSegmentListBandaiNamco = segmentResultsMaker(collectionBandaiNamcoCml); 
 
-// export const cumulativeSegmentListKonami = segmentResultsMaker(collectionKonamiCml); 
+export const cumulativeSegmentListKonami = segmentResultsMaker(collectionKonamiCml); 
 
 export const cumulativeSegmentListCyberAgent = segmentResultsMaker(collectionCyberAgentCml); 
 
-// export const cumulativeSegmentListKadokawa = segmentResultsMaker(collectionKadokawaCml); 
+export const cumulativeSegmentListKadokawa = segmentResultsMaker(collectionKadokawaCml); 
