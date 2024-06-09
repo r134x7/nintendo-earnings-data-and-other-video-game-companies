@@ -147,6 +147,8 @@ const collectionCyberAgent = globImport(new Map<number, SegmentJSON>(), import.m
 
 const collectionKadokawa = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../kadokawa/Segment_Earnings/*.json", { import: "default", eager: true }), "Descending");
 
+const collectionKoeiTecmo = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../koeiTecmo/Segment_Earnings/*.json", { import: "default", eager: true }), "Descending");
+
 export function segmentValuesMake(obj: undefined | SegmentData, fiscalYear: string, currentQuarter: number): SegmentValue {
 
     let values: SegmentValue = {
@@ -277,6 +279,8 @@ export const cyberAgentSegmentEarningsList = new Map<number, string>();
 
 export const kadokawaSegmentEarningsList = new Map<number, string>();
 
+export const koeiTecmoSegmentEarningsList = new Map<number, string>();
+
 collectionBandaiNamco.forEach((value, key, map) => {
 
     bandaiNamcoSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
@@ -304,6 +308,13 @@ collectionKadokawa.forEach((value, key, map) => {
 })
 
 collectionKadokawa.clear();
+
+collectionKoeiTecmo.forEach((value, key, map) => {
+
+    koeiTecmoSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
+})
+
+collectionKoeiTecmo.clear();
 
 function segmentListMap(collection: SegmentJSON, lastFYCollection: SegmentJSON | undefined, headerLength: number): string {
 

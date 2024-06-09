@@ -86,47 +86,6 @@
             }
         },
         {
-            "name": "N/A",
-            "units": "currency",
-            "ID": "3",
-            "Q1CmlValue": {
-                "netSales": "Nothing",
-                "operatingIncome": "Nothing"
-            },
-            "Q2CmlValue": {
-                "netSales": "Nothing",
-                "operatingIncome": "Nothing"
-            },
-            "Q3CmlValue": {
-                "netSales": "Nothing",
-                "operatingIncome": "Nothing"
-            },
-            "Q4CmlValue": {
-                "netSales": "Nothing",
-                "operatingIncome": "Nothing"
-            },
-            "forecastThisFY": {
-                "netSales": "Nothing",
-                "operatingIncome": "Nothing"
-            },
-            "forecastRevision1": {
-                "netSales": null,
-                "operatingIncome": null
-            },
-            "forecastRevision2": {
-                "netSales": null,
-                "operatingIncome": null
-            },
-            "forecastRevision3": {
-                "netSales": null,
-                "operatingIncome": null
-            },
-            "forecastNextFY": {
-                "netSales": "Nothing",
-                "operatingIncome": "Nothing"
-            }
-        },
-        {
             "name": "Others",
             "units": "currency",
             "ID": "4",

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Code, SegmentedControl } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { softwareSalesList, softwareSalesGraphList } from "../data/koeiTecmo/software_sales_koei_tecmo";
+import { koeiTecmoSegmentEarningsList } from "../data/generalTables/segment_earnings_general";
 import { koeiTecmoConsolidatedEarningsList, koeiTecmoConsolidatedEarningsGraphList } from "../data/generalTables/consolidated_earnings_general";
 import { koeiTecmoLinks } from "../data/generalTables/data_sources_general";
 import type { BackgroundColours } from "../features/backgroundReducer";
@@ -29,6 +30,10 @@ export default function KOEI_TECMO_COMPONENT(props: {setIndex: number; yearLengt
                 name: "Consolidated Operating Results",
                 value: koeiTecmoConsolidatedEarningsList.get(index),
                 graph: <GRAPH_CONSOLIDATED_EARNINGS setData={koeiTecmoConsolidatedEarningsGraphList.get(index)} />
+            },
+            {
+                name: "Segment Information",
+                value: koeiTecmoSegmentEarningsList.get(index),
             },
             {
                 name: "Software Sales",
