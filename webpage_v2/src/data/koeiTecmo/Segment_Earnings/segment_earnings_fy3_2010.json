@@ -131,7 +131,7 @@
             "units": "currency",
             "ID": "5",
             "Q1CmlValue": {
-                "netSales": null,
+                "netSales": -21,
                 "operatingIncome": "Nothing"
             },
             "Q2CmlValue": {
