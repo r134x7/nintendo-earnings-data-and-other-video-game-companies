@@ -27,6 +27,8 @@ const collectionKadokawaCml = globImport(new Map<number, SegmentJSON>(), import.
 
 const collectionKoeiTecmoCml = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../koeiTecmo/Segment_Earnings/*.json", { import: "default", eager: true }), "Ascending");
 
+const collectionSquareEnixCml = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../squareEnix/Segment_Earnings/*.json", { import: "default", eager: true }), "Ascending");
+
 function labelMaker (collection: SegmentJSON): string {
 
     // const makeDateLabel = dateLabel(collection.at(-1)?.fiscalYear ?? "N/A", collection.at(-1)?.currentQuarter ?? 4);
@@ -76,9 +78,14 @@ function segmentResultsMaker(completeCollection: Map<number, SegmentJSON>): stri
 
     // console.log(getIDs);
 
-    let IDlist = [...getIDs.values()]
+    let IDlist = [...getIDs.values()].sort((a, b) => Number(a) - Number(b)); // have to convert the output to Number so that sort is sorting by numeric value and not alphabetical order
 
-    const segmentList = Array.from({length: maxLengthMAP(makeData) ?? 0}, (v,i) => new Map<number, SegmentValue>())
+    // console.log(IDlist)
+    // bad idea to go with which year had the most segments when there can be more segments than listed in a year.
+    // const segmentList = Array.from({length: maxLengthMAP(makeData) ?? 0}, (v,i) => new Map<number, SegmentValue>())
+
+    // The correct way to solve this is to use the IDlist
+    const segmentList = Array.from({length: IDlist.length}, (v,i) => new Map<number, SegmentValue>())
 
     // console.log(getIDs.size)
     // console.log(segmentList.length)
@@ -90,8 +97,14 @@ function segmentResultsMaker(completeCollection: Map<number, SegmentJSON>): stri
         // looping through the year of data containing the categories
         // they're being placed by index when they should only be placed by ID
         // now that the IDs are listed, we now filter by ID
-        for (let index = 0; index < value.length; index++) {
+        for (let index = 0; index < IDlist.length; index++) {
 
+            // console.log(value.length);
+            // console.log(IDlist.length);
+
+            // value.length !== IDlist.length, if value length is 4 and idlist is 6, elem id matching IDlist in 6 will never happen
+            // simplest solution has been found, the for loop shouldn't be conditioned by value length as value changes which affects the index range. The condition should be the IDlist.length.
+            // no changes need to be made to the filter, the mistake was the for loop condition.
             let filterID = value.filter(elem => elem.ID === IDlist[index]) // unique ID, index is either empty or one index
 
             // undefined values slipped through from the loop condition
@@ -319,3 +332,5 @@ export const cumulativeSegmentListCyberAgent = segmentResultsMaker(collectionCyb
 export const cumulativeSegmentListKadokawa = segmentResultsMaker(collectionKadokawaCml); 
 
 export const cumulativeSegmentListKoeiTecmo = segmentResultsMaker(collectionKoeiTecmoCml); 
+
+export const cumulativeSegmentListSquareEnix = segmentResultsMaker(collectionSquareEnixCml); 

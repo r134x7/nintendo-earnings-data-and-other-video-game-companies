@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { squareEnixSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListSquareEnix } from "../../data/generalTables/consolidated_earnings_cml_data";
 // import { fyTitlesSquareEnix, squareEnixFootnotes } from "../../data/generalTables/annual_report_cml_data";
+import { cumulativeSegmentListSquareEnix } from "../../data/generalTables/segment_earnings_general_cml_data";
 import { squareEnixAnnualReportCml } from "../../data/generalTables/annual_report_cumulative";
 import { printTextBlock, liner, type titleSet } from "../../utils/table_design_logic";
 import type { BackgroundColours } from "../../features/backgroundReducer";
@@ -68,6 +69,27 @@ export default function SQUARE_ENIX_CML() {
                 }
                 break;
 
+            case "Square Enix Segment Information - Cumulative":
+                if (timePeriodValue === "1st Quarter") {
+                    setTimePeriod(0)
+                } else if (timePeriodValue === "2nd Quarter") {
+                    setTimePeriod(1)
+                } else if (timePeriodValue === "3rd Quarter") {
+                    setTimePeriod(2)
+                } else if (timePeriodValue === "4th Quarter") {
+                    setTimePeriod(3)
+                } else if (timePeriodValue === "First Half") {
+                    setTimePeriod(4)
+                } else if (timePeriodValue === "First Three Quarters") {
+                    setTimePeriod(5)
+                } else if (timePeriodValue === "FY Cumulative") {
+                    setTimePeriod(6)
+                } else {
+                    setTimePeriod(6)
+                }
+                break;
+
+
             case "Square Enix Sales Per Software Unit - Cumulative":
                 if (timePeriodValue === "1st Quarter") {
                     setTimePeriod(0)
@@ -104,6 +126,10 @@ export default function SQUARE_ENIX_CML() {
             value: cumulativeEarningsListSquareEnix[timePeriod] 
         },
         {
+            name: "Square Enix Segment Information - Cumulative",
+            value: cumulativeSegmentListSquareEnix[timePeriod] 
+        },
+        {
             name: "Square Enix Sales Per Software Unit - Cumulative",
             value: squareEnixSalesPerSoftwareUnitCml[timePeriod]
             // value: "Nothing"
@@ -138,7 +164,7 @@ export default function SQUARE_ENIX_CML() {
             />
             
             <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
-                {(value === "Square Enix Consolidated Financial Results - Cumulative" || value === "Square Enix Sales Per Software Unit - Cumulative")
+                {(value === "Square Enix Consolidated Financial Results - Cumulative" || value === "Square Enix Segment Information - Cumulative" || value === "Square Enix Sales Per Software Unit - Cumulative")
                     ? <Select
                         data={[
                          "1st Quarter",
