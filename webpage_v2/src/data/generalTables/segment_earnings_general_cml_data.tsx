@@ -29,6 +29,8 @@ const collectionKoeiTecmoCml = globImport(new Map<number, SegmentJSON>(), import
 
 const collectionSquareEnixCml = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../squareEnix/Segment_Earnings/*.json", { import: "default", eager: true }), "Ascending");
 
+const collectionSegaSammyCml = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../sega/Segment_Earnings/*.json", { import: "default", eager: true }), "Ascending");
+
 function labelMaker (collection: SegmentJSON): string {
 
     // const makeDateLabel = dateLabel(collection.at(-1)?.fiscalYear ?? "N/A", collection.at(-1)?.currentQuarter ?? 4);
@@ -334,3 +336,5 @@ export const cumulativeSegmentListKadokawa = segmentResultsMaker(collectionKadok
 export const cumulativeSegmentListKoeiTecmo = segmentResultsMaker(collectionKoeiTecmoCml); 
 
 export const cumulativeSegmentListSquareEnix = segmentResultsMaker(collectionSquareEnixCml); 
+
+export const cumulativeSegmentListSegaSammy = segmentResultsMaker(collectionSegaSammyCml); 

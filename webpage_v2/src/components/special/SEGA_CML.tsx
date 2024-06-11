@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Code, SegmentedControl, Space, TextInput, Select, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
+import { cumulativeSegmentListSegaSammy } from "../../data/generalTables/segment_earnings_general_cml_data";
 import { segaSammySalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListSegaSammy } from "../../data/generalTables/consolidated_earnings_cml_data";
 // import { fyTitlesSegaSammy } from "../../data/sega/annual_report_cml_sega_data";
@@ -92,6 +93,26 @@ export default function SEGA_CML() {
                     setTimePeriod(6)
                 }
                 break;
+
+            case "Sega Sammy Segment Information - Cumulative":
+                if (timePeriodValue === "1st Quarter") {
+                    setTimePeriod(0)
+                } else if (timePeriodValue === "2nd Quarter") {
+                    setTimePeriod(1)
+                } else if (timePeriodValue === "3rd Quarter") {
+                    setTimePeriod(2)
+                } else if (timePeriodValue === "4th Quarter") {
+                    setTimePeriod(3)
+                } else if (timePeriodValue === "First Half") {
+                    setTimePeriod(4)
+                } else if (timePeriodValue === "First Three Quarters") {
+                    setTimePeriod(5)
+                } else if (timePeriodValue === "FY Cumulative") {
+                    setTimePeriod(6)
+                } else {
+                    setTimePeriod(6)
+                }
+                break;
             
             case "Sega Sammy Sales Per Software Unit - Cumulative":
                 if (timePeriodValue === "1st Quarter") {
@@ -131,6 +152,10 @@ export default function SEGA_CML() {
         {
             name: "Sega Sammy Consolidated Operating Results - Cumulative",
             value: cumulativeEarningsListSegaSammy[timePeriod]
+        },
+        {
+            name: "Sega Sammy Segment Information - Cumulative",
+            value: cumulativeSegmentListSegaSammy[timePeriod]
         },
         {
             name: "Sega Sammy Sales Per Software Unit - Cumulative",
@@ -173,7 +198,7 @@ export default function SEGA_CML() {
             />
             
             <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
-                {(value === "Sega Sammy Consolidated Operating Results - Cumulative" || value === "Sega Sammy Sales Per Software Unit - Cumulative")
+                {(value === "Sega Sammy Consolidated Operating Results - Cumulative" || value === "Sega Sammy Segment Information - Cumulative" || value === "Sega Sammy Sales Per Software Unit - Cumulative")
                     ? <Select
                         data={[
                          "1st Quarter",

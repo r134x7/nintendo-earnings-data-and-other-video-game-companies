@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Code, SegmentedControl, Select, TextInput, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
+import { segaSammySegmentEarningsList } from "../data/generalTables/segment_earnings_general";
 import { segaSoftwareUnitsList, segaSoftwareUnitsGraphList } from "../data/sega/software_units_sega"
 import { softwareSalesList, softwareSalesGraphList } from "../data/sega/software_sales_sega";
 // import { annualReportList } from "../data/sega/annual_report_sega";
@@ -96,6 +97,10 @@ export default function SEGA_COMPONENT(props: {setIndex: number; yearLength: num
                 name: "Consolidated Operating Results",
                 value: segaConsolidatedEarningsList.get(index),
                 graph: <GRAPH_CONSOLIDATED_EARNINGS setData={segaConsolidatedEarningsGraphList.get(index)} />
+            },
+            {
+                name: "Segment Information",
+                value: segaSammySegmentEarningsList.get(index),
             },
             {
                 name: "Software Sales",
