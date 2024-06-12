@@ -3,6 +3,7 @@ import { Code, SegmentedControl, Select, TextInput, Button } from "@mantine/core
 import { useSelector } from "react-redux";
 import { allPlatinumTitlesList, fyPlatinumTitlesList } from "../data/capcom/platinum_titles_Capcom";
 // import { gameSeriesList } from "../data/capcom/game_series_sales_Capcom";
+import { capcomSegmentEarningsList } from "../data/generalTables/segment_earnings_general";
 import { capcomGameSeries, capcomFactBook, capcomUnitsHardware } from "../data/generalTables/annual_report_general";
 import { softwareSalesList, softwareSalesGraphList } from "../data/capcom/software_sales_Capcom";
 // import { platformSoftwareShipmentsList } from "../data/capcom/software_shipments_platform_Capcom";
@@ -152,6 +153,10 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
                 name: "Consolidated Financial Results",
                 value: capcomConsolidatedEarningsList.get(index),
                 graph: <GRAPH_CONSOLIDATED_EARNINGS setData={capcomConsolidatedEarningsGraphList.get(index)} />
+            },
+            {
+                name: "Segment Information",
+                value: capcomSegmentEarningsList.get(index),
             },
             {
                 name: "Software Units By Hardware",

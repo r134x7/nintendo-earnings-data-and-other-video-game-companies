@@ -31,6 +31,8 @@ const collectionSquareEnixCml = globImport(new Map<number, SegmentJSON>(), impor
 
 const collectionSegaSammyCml = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../sega/Segment_Earnings/*.json", { import: "default", eager: true }), "Ascending");
 
+const collectionCapcomCml = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../capcom/Segment_Earnings/*.json", { import: "default", eager: true }), "Ascending");
+
 function labelMaker (collection: SegmentJSON): string {
 
     // const makeDateLabel = dateLabel(collection.at(-1)?.fiscalYear ?? "N/A", collection.at(-1)?.currentQuarter ?? 4);
@@ -39,15 +41,15 @@ function labelMaker (collection: SegmentJSON): string {
     return liner(border([spacer(makeDateLabel, makeDateLabel.length+1, "left")]),"−", "bottom",true)
 }
 
-function headerMaker(collection: SegmentJSON): string {
+function headerMaker(collection: SegmentJSON, length: number): string {
 
     let subHeader = "Segment Information";
 
     let headerMake = liner(border([
-        spacer(collection.companyName, collection.companyName.length+6, "left")
+        spacer(collection.companyName, length, "left")
         ]),"−","top",true) +
         liner(border([
-            spacer(subHeader, collection.companyName.length+6, "left")
+            spacer(subHeader, length, "left")
         ]), "−", "both",true)
 
     return headerMake
@@ -119,7 +121,7 @@ function segmentResultsMaker(completeCollection: Map<number, SegmentJSON>): stri
 
     // console.log(segmentList) // the segments are not being grouped correctly being they need to match ID before being grouped.
 
-    let titleHeader = headerMaker(completeCollection.get(completeCollection.size -1) as SegmentJSON)
+    let titleHeader = headerMaker(completeCollection.get(completeCollection.size -1) as SegmentJSON, 38)
 
     let dateHeader = labelMaker(completeCollection.get(completeCollection.size -1) as SegmentJSON)
 
@@ -338,3 +340,5 @@ export const cumulativeSegmentListKoeiTecmo = segmentResultsMaker(collectionKoei
 export const cumulativeSegmentListSquareEnix = segmentResultsMaker(collectionSquareEnixCml); 
 
 export const cumulativeSegmentListSegaSammy = segmentResultsMaker(collectionSegaSammyCml); 
+
+export const cumulativeSegmentListCapcom = segmentResultsMaker(collectionCapcomCml); 

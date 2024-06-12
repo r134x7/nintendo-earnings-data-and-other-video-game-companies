@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Code, SegmentedControl, Space, TextInput, Select, Button } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { platinumTitlesCML } from "../../data/capcom/platinum_titles_Capcom";
+import { cumulativeSegmentListCapcom } from "../../data/generalTables/segment_earnings_general_cml_data";
 import { CapcomSalesPerSoftwareUnitCml } from "../../data/generalTables/sales_per_software_unit_cml";
 import { cumulativeEarningsListCapcom } from "../../data/generalTables/consolidated_earnings_cml_data";
 // import { gameSeriesCapcom } from "../../data/capcom/game_series_sales_capcom_cml_data";
@@ -163,6 +164,26 @@ export default function CAPCOM_CML() {
                 }
                 break;
 
+            case "Capcom Segment Information - Cumulative":
+                if (timePeriodValue === "1st Quarter") {
+                    setTimePeriod(0)
+                } else if (timePeriodValue === "2nd Quarter") {
+                    setTimePeriod(1)
+                } else if (timePeriodValue === "3rd Quarter") {
+                    setTimePeriod(2)
+                } else if (timePeriodValue === "4th Quarter") {
+                    setTimePeriod(3)
+                } else if (timePeriodValue === "First Half") {
+                    setTimePeriod(4)
+                } else if (timePeriodValue === "First Three Quarters") {
+                    setTimePeriod(5)
+                } else if (timePeriodValue === "FY Cumulative") {
+                    setTimePeriod(6)
+                } else {
+                    setTimePeriod(6)
+                }
+                break;
+
             case "Capcom Sales Per Software Unit - Cumulative":
                 if (timePeriodValue === "1st Quarter") {
                     setTimePeriod(0)
@@ -209,6 +230,10 @@ export default function CAPCOM_CML() {
         {
             name: "Capcom Consolidated Financial Results - Cumulative",
             value: cumulativeEarningsListCapcom[timePeriod]
+        },
+        {
+            name: "Capcom Segment Information - Cumulative",
+            value: cumulativeSegmentListCapcom[timePeriod]
         },
         {
             name: "Capcom Platinum Titles - Cumulative",
@@ -261,7 +286,7 @@ export default function CAPCOM_CML() {
             />
             
             <Code onCopy={e => citeCopy(e, cite)} style={{backgroundColor:`${stateColour}`, color:(stateFontColor === "dark") ? "#fff" : "#000000"}} block>
-                {(value === "Capcom Consolidated Financial Results - Cumulative" || value === "Capcom Sales Per Software Unit - Cumulative")
+                {(value === "Capcom Consolidated Financial Results - Cumulative" || value === "Capcom Segment Information - Cumulative" || value === "Capcom Sales Per Software Unit - Cumulative")
                     ? <Select
                         data={[
                          "1st Quarter",

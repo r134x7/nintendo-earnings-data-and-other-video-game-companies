@@ -153,6 +153,8 @@ const collectionSquareEnix = globImport(new Map<number, SegmentJSON>(), import.m
 
 const collectionSegaSammy = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../sega/Segment_Earnings/*.json", { import: "default", eager: true }), "Descending");
 
+const collectionCapcom = globImport(new Map<number, SegmentJSON>(), import.meta.glob("../capcom/Segment_Earnings/*.json", { import: "default", eager: true }), "Descending");
+
 export function segmentValuesMake(obj: undefined | SegmentData, fiscalYear: string, currentQuarter: number): SegmentValue {
 
     let values: SegmentValue = {
@@ -289,6 +291,8 @@ export const squareEnixSegmentEarningsList = new Map<number, string>();
 
 export const segaSammySegmentEarningsList = new Map<number, string>();
 
+export const capcomSegmentEarningsList = new Map<number, string>();
+
 collectionBandaiNamco.forEach((value, key, map) => {
 
     bandaiNamcoSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
@@ -298,35 +302,35 @@ collectionBandaiNamco.clear();
 
 collectionKonami.forEach((value, key, map) => {
 
-    konamiSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
+    konamiSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 36))
 })
 
 collectionKonami.clear();
 
 collectionCyberAgent.forEach((value, key, map) => {
 
-    cyberAgentSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
+    cyberAgentSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 30))
 })
 
 collectionCyberAgent.clear();
 
 collectionKadokawa.forEach((value, key, map) => {
 
-    kadokawaSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
+    kadokawaSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 32))
 })
 
 collectionKadokawa.clear();
 
 collectionKoeiTecmo.forEach((value, key, map) => {
 
-    koeiTecmoSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
+    koeiTecmoSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 42))
 })
 
 collectionKoeiTecmo.clear();
 
 collectionSquareEnix.forEach((value, key, map) => {
 
-    squareEnixSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 38))
+    squareEnixSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 42))
 })
 
 collectionSquareEnix.clear();
@@ -337,6 +341,13 @@ collectionSegaSammy.forEach((value, key, map) => {
 })
 
 collectionSegaSammy.clear();
+
+collectionCapcom.forEach((value, key, map) => {
+
+    capcomSegmentEarningsList.set(key, segmentListMap(value, map.get(key+1), 32))
+})
+
+collectionCapcom.clear();
 
 function segmentListMap(collection: SegmentJSON, lastFYCollection: SegmentJSON | undefined, headerLength: number): string {
 
