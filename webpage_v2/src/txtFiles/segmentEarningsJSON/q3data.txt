@@ -1,30 +1,30 @@
 Digital Contents
-81436 
+61242 
 -
-47361 
+34619 
 -
 Arcade Operations
-13847 
+11357 
 -
-1547 
+1013 
 -
 Amusement Equipments
-8020 
+3699
 -
-4560 
+2068
 -
 Other
-2875
+3371
 -
-642
+1219
 -
 Adjustment
 -
 -
-(6406) 
+(5588) 
 -
 Total
-106179
+79671
 -
-47704
+33332
 -
