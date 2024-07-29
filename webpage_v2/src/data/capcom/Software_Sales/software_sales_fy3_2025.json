@@ -1,69 +1,69 @@
 {
-    "fiscalYear": "FY3/2024",
+    "fiscalYear": "FY3/2025",
     "companyName": "CAPCOM Co., Ltd.",
-    "currentQuarter": 4,
+    "currentQuarter": 1,
     "data": [
         {
             "name": "Digital Contents - Package & Digital",
             "units": "currency",
-            "Q1CmlValue": 374,
-            "Q2CmlValue": 597,
-            "Q3CmlValue": 790,
-            "Q4CmlValue": 1162,
-            "forecastThisFY": 1034,
-            "forecastNextFY": 1211,
+            "Q1CmlValue": 203,
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": "Nothing",
+            "Q4CmlValue": "Nothing",
+            "forecastThisFY": 1210,
+            "forecastNextFY": "Nothing",
             "footnotes": "*Sales includes: - Downloadable content purchases"
         },
         {
             "name": "Digital Contents - Package & Digital",
             "units": "units",
-            "Q1CmlValue": 13500,
-            "Q2CmlValue": 22600,
-            "Q3CmlValue": 32600,
-            "Q4CmlValue": 45893,
-            "forecastThisFY": 45000,
-            "forecastNextFY": 50000 
+            "Q1CmlValue": 9534,
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": "Nothing",
+            "Q4CmlValue": "Nothing",
+            "forecastThisFY": 50000,
+            "forecastNextFY": "Nothing" 
         },
         {
             "name": "Package",
             "units": "currency",
-            "Q1CmlValue": 89,
-            "Q2CmlValue": 120,
-            "Q3CmlValue": 141,
-            "Q4CmlValue": 193, 
-            "forecastThisFY": 125, 
-            "forecastNextFY": 144 
+            "Q1CmlValue": 24,
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": "Nothing",
+            "Q4CmlValue": "Nothing", 
+            "forecastThisFY": 144, 
+            "forecastNextFY": "Nothing"
         },
         {
             "name": "Package",
             "units": "units",
-            "Q1CmlValue": 1900,
-            "Q2CmlValue": 2600,
-            "Q3CmlValue": 3300,
-            "Q4CmlValue": 4541, 
+            "Q1CmlValue": 708,
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": "Nothing",
+            "Q4CmlValue": "Nothing", 
             "forecastThisFY": 2500,
-            "forecastNextFY": 3400
+            "forecastNextFY": "Nothing" 
         },
         {
             "name": "Digital",
             "units": "currency",
-            "Q1CmlValue": 285,
-            "Q2CmlValue": 476,
-            "Q3CmlValue": 648,
-            "Q4CmlValue": 969,
-            "forecastThisFY": 909,
-            "forecastNextFY": 1066,
+            "Q1CmlValue": 178,
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": "Nothing",
+            "Q4CmlValue": "Nothing",
+            "forecastThisFY": 1066,
+            "forecastNextFY": "Nothing",
             "footnotes": "*Sales includes: - Downloadable content purchases"
         },
         {
             "name": "Digital",
             "units": "units",
-            "Q1CmlValue": 11600,
-            "Q2CmlValue": 20000,
-            "Q3CmlValue": 29300,
-            "Q4CmlValue": 41352, 
-            "forecastThisFY": 42500,
-            "forecastNextFY": 46600
+            "Q1CmlValue": 8826,
+            "Q2CmlValue": "Nothing",
+            "Q3CmlValue": "Nothing",
+            "Q4CmlValue": "Nothing", 
+            "forecastThisFY": 46600,
+            "forecastNextFY": "Nothing"
         }
     ] 
 }   
