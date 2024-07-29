@@ -1,0 +1,46 @@
+{
+    "currentQuarter": 1,
+    "companyName": "KOEI TECMO HOLDINGS CO., LTD.",
+    "fiscalYear": "FY3/2025",
+    "data": [
+        {
+            "name": "Net Sales",
+            "units": "currency",
+            "Q1CmlValue": 17607,
+            "Q2CmlValue": 17607,
+            "Q3CmlValue": 17607,
+            "Q4CmlValue": 17607,
+            "forecastThisFY": 90000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": null
+        },
+        {
+            "name": "Operating Income",
+            "units": "currency",
+            "Q1CmlValue": 5723,
+            "Q2CmlValue": 5723,
+            "Q3CmlValue": 5723,
+            "Q4CmlValue": 5723,
+            "forecastThisFY": 30000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": null
+        },
+        {
+            "name": "Net Income",
+            "units": "currency",
+            "Q1CmlValue": 13638,
+            "Q2CmlValue": 13638,
+            "Q3CmlValue": 13638,
+            "Q4CmlValue": 13638,
+            "forecastThisFY": 30000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": null
+        }
+    ]
+}

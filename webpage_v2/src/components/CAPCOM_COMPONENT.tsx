@@ -58,7 +58,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
 
     let annualReportIndex = capcomFactBook.get(props.setIndex + correctFyForFactBook);
 
-    let unitsByHardwareIndex = capcomUnitsHardware.get(props.setIndex);
+    let unitsByHardwareIndex = capcomUnitsHardware.get(props.setIndex + correctFyForFactBook);
 
     let platformListsAll = new Set<string>();
     let platformListsFY = new Set<string>();
