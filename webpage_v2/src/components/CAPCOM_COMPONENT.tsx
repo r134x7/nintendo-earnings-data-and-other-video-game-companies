@@ -32,7 +32,7 @@ export default function CAPCOM_COMPONENT(props: {setIndex: number; yearLength: n
     steps: filter by platform => filter by title search => side effect: (mutate titles list length) => reduce titlesFilter => combine the headers, footers with the tables.
     */
 
-    let correctFyForAnnualReports = 0;
+    let correctFyForAnnualReports = -1; // FY Game Series sales
     let correctFyForFactBook = -1;
 
     let allPlatinumTitlesIndex = allPlatinumTitlesList?.[props.setIndex];

@@ -1,0 +1,46 @@
+{
+    "currentQuarter": 1,
+    "companyName": "CAPCOM Co., Ltd.",
+    "fiscalYear": "FY3/2025",
+    "data": [
+        {
+            "name": "Net Sales",
+            "units": "currency",
+            "Q1CmlValue": 29597,
+            "Q2CmlValue": 29597,
+            "Q3CmlValue": 29597,
+            "Q4CmlValue": 29597,
+            "forecastThisFY": 165000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": null
+        },
+        {
+            "name": "Operating Income",
+            "units": "currency",
+            "Q1CmlValue": 12889,
+            "Q2CmlValue": 12889,
+            "Q3CmlValue": 12889,
+            "Q4CmlValue": 12889,
+            "forecastThisFY": 64000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": null
+        },
+        {
+            "name": "Net Income",
+            "units": "currency",
+            "Q1CmlValue": 9975,
+            "Q2CmlValue": 9975,
+            "Q3CmlValue": 9975,
+            "Q4CmlValue": 9975,
+            "forecastThisFY": 46000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": null
+        }
+    ]
+}
