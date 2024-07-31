@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 2,
+    "currentQuarter": 3,
     "companyName": "CyberAgent, Inc.",
     "fiscalYear": "FY9/2024",
     "data": [
@@ -8,10 +8,10 @@
             "units": "currency",
             "Q1CmlValue": 193075,
             "Q2CmlValue": 408205,
-            "Q3CmlValue": 408205,
-            "Q4CmlValue": 408205,
+            "Q3CmlValue": 598584,
+            "Q4CmlValue": 598584,
             "forecastThisFY": 750000,
-            "forecastRevision1": null,
+            "forecastRevision1": 790000,
             "forecastRevision2": null,
             "forecastRevision3": null,
             "forecastNextFY": null
@@ -21,10 +21,10 @@
             "units": "currency",
             "Q1CmlValue": 6284,
             "Q2CmlValue": 27355,
-            "Q3CmlValue": 27355,
-            "Q4CmlValue": 27355,
+            "Q3CmlValue": 35932,
+            "Q4CmlValue": 35932,
             "forecastThisFY": 30000,
-            "forecastRevision1": null,
+            "forecastRevision1": 41000,
             "forecastRevision2": null,
             "forecastRevision3": null,
             "forecastNextFY": null
@@ -34,10 +34,10 @@
             "units": "currency",
             "Q1CmlValue": -472,
             "Q2CmlValue": 9866,
-            "Q3CmlValue": 9866,
-            "Q4CmlValue": 9866,
+            "Q3CmlValue": 15825,
+            "Q4CmlValue": 15825,
             "forecastThisFY": 8000,
-            "forecastRevision1": null,
+            "forecastRevision1": 16500,
             "forecastRevision2": null,
             "forecastRevision3": null,
             "forecastNextFY": null

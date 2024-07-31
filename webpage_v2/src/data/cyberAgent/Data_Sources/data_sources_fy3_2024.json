@@ -1,37 +1,13 @@
 {
-    "fiscalYear": "FY3/2024",
+    "fiscalYear": "FY9/2024",
     "data": [
         {
-            "text": "1st Quarter Earnings Release:",
-            "link": ""
-        },
-        {
-            "text": "1st Quarter Financial Highlights:",
-            "link": ""
-        },
-        {
-            "text": "2nd Quarter Earnings Release:",
-            "link": ""
-        },
-        {
-            "text": "2nd Quarter Financial Highlights:",
-            "link": ""
-        },
-        {
             "text": "3rd Quarter Earnings Release:",
-            "link": ""
+            "link": "https://pdf.cyberagent.co.jp/C4751/EyBn/RLOs/aaQz.pdf"
         },
         {
-            "text": "3rd Quarter Financial Highlights:",
-            "link": ""
-        },
-        {
-            "text": "4th Quarter Earnings Release:",
-            "link": ""
-        },
-        {
-            "text": "4th Quarter Financial Highlights:",
-            "link": ""
+            "text": "3rd Quarter Presentation Slides:",
+            "link": "https://pdf.cyberagent.co.jp/C4751/EyBn/Zh8q/PvgE.pdf"
         }
     ]
 }
