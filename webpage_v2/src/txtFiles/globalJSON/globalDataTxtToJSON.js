@@ -68,7 +68,8 @@ let parseCurrentData = (!getCurrentData) ? undefined : JSON.parse(getCurrentData
 
 let newArray = makeArray(extractNQ, parseCurrentData, currentQuarter);
 
-let newArrayStringify = JSON.stringify(newArray);
+// let newArrayStringify = JSON.stringify(newArray);
+let newArrayStringify = JSON.stringify(newArray, undefined, 4);
 
 writeFile("global_data_test.json", newArrayStringify, (err) =>
   err ? console.error(err) : console.log('totals done')

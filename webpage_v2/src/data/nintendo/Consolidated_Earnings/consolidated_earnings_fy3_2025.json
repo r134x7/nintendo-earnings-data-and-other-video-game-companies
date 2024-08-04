@@ -1,0 +1,46 @@
+{
+    "currentQuarter": 1,
+    "companyName": "Nintendo Co., Ltd.",
+    "fiscalYear": "FY3/2025",
+    "data": [
+        {
+            "name": "Net Sales",
+            "units": "currency",
+            "Q1CmlValue": 246638,
+            "Q2CmlValue": 246638,
+            "Q3CmlValue": 246638,
+            "Q4CmlValue": 246638,
+            "forecastThisFY": 1350000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": null
+        },
+        {
+            "name": "Operating Income",
+            "units": "currency",
+            "Q1CmlValue": 54510,
+            "Q2CmlValue": 54510,
+            "Q3CmlValue": 54510,
+            "Q4CmlValue": 54510,
+            "forecastThisFY": 400000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": null
+        },
+        {
+            "name": "Net Income",
+            "units": "currency",
+            "Q1CmlValue": 80954,
+            "Q2CmlValue": 80954,
+            "Q3CmlValue": 80954,
+            "Q4CmlValue": 80954,
+            "forecastThisFY": 300000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": null
+        }
+    ]
+}
