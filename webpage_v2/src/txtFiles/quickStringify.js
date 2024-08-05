@@ -4,10 +4,10 @@ let getFileName = process.argv[2];
 
 const getFile = readFileSync(getFileName, "utf-8");
 
-let newJSONStringify = JSON.stringify(getFile, undefined, 4);
+let toParse = JSON.parse(getFile);
 
-let toParse = JSON.parse(newJSONStringify);
+let newJSONStringify = JSON.stringify(toParse, undefined, 4);
 
-writeFile(getFileName, toParse, (err) =>
+writeFile(getFileName, newJSONStringify, (err) =>
   err ? console.error(err) : console.log('json? JSSSOOONNNNNN!')
 );
