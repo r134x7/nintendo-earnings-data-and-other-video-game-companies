@@ -11,20 +11,120 @@
             "Q4CmlValue": 1509202,
             "cmlValueLastFY": 6380754,
             "hardwareReference": [
-                "Nintendo Switch Hardware Total" 
+                "Nintendo Switch Hardware Total"
             ]
         }
     ],
     "platformUnitSales": [
-        {"name":"Nintendo Switch Hardware Total","units":"units","Q1CmlValue":343,"Q2CmlValue":668,"Q3CmlValue":1491,"Q4CmlValue":1797,"cmlValueLastFY":10765},{"name":"Nintendo Switch","units":"units","Q1CmlValue":132,"Q2CmlValue":223,"Q3CmlValue":522,"Q4CmlValue":614,"cmlValueLastFY":8344},{"name":"Nintendo Switch OLED Model","units":"units","Q1CmlValue":152,"Q2CmlValue":353,"Q3CmlValue":769,"Q4CmlValue":922,"cmlValueLastFY":580},{"name":"Nintendo Switch Lite","units":"units","Q1CmlValue":59,"Q2CmlValue":92,"Q3CmlValue":200,"Q4CmlValue":262,"cmlValueLastFY":1840},{"name":"Nintendo Switch Software Total","units":"units","Q1CmlValue":4141,"Q2CmlValue":9541,"Q3CmlValue":17211,"Q4CmlValue":21396,"cmlValueLastFY":82219},
-        {"name":"Wii Hardware Total" ,"units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":"+0","cmlValueLastFY":10163},
-        {"name":"Nintendo 3DS Hardware Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":"+0","cmlValueLastFY":7594},
-        {"name":"New Nintendo 3DS XL","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":"+0","cmlValueLastFY":1226},
-        {"name":"New Nintendo 2DS XL","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":"+0","cmlValueLastFY":480},
-        {"name":"Nintendo 3DS Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":283,"cmlValueLastFY":38855},
-        {"name":"Wii U Hardware Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":"+0","cmlValueLastFY":1356},
-        {"name":"Wii U Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":12,"cmlValueLastFY":10348}
-],
+        {
+            "name": "Nintendo Switch Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 343,
+            "Q2CmlValue": 668,
+            "Q3CmlValue": 1491,
+            "Q4CmlValue": 1797,
+            "cmlValueLastFY": 10765
+        },
+        {
+            "name": "Nintendo Switch",
+            "units": "units",
+            "Q1CmlValue": 132,
+            "Q2CmlValue": 223,
+            "Q3CmlValue": 522,
+            "Q4CmlValue": 614,
+            "cmlValueLastFY": 8344
+        },
+        {
+            "name": "Nintendo Switch OLED Model",
+            "units": "units",
+            "Q1CmlValue": 152,
+            "Q2CmlValue": 353,
+            "Q3CmlValue": 769,
+            "Q4CmlValue": 922,
+            "cmlValueLastFY": 580
+        },
+        {
+            "name": "Nintendo Switch Lite",
+            "units": "units",
+            "Q1CmlValue": 59,
+            "Q2CmlValue": 92,
+            "Q3CmlValue": 200,
+            "Q4CmlValue": 262,
+            "cmlValueLastFY": 1840
+        },
+        {
+            "name": "Nintendo Switch Software Total",
+            "units": "units",
+            "Q1CmlValue": 4141,
+            "Q2CmlValue": 9541,
+            "Q3CmlValue": 17211,
+            "Q4CmlValue": 21396,
+            "cmlValueLastFY": 82219
+        },
+        {
+            "name": "Wii Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": "+0",
+            "cmlValueLastFY": 10163
+        },
+        {
+            "name": "Nintendo 3DS Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": "+0",
+            "cmlValueLastFY": 7594
+        },
+        {
+            "name": "New Nintendo 3DS XL",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": "+0",
+            "cmlValueLastFY": 1226
+        },
+        {
+            "name": "New Nintendo 2DS XL",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": "+0",
+            "cmlValueLastFY": 480
+        },
+        {
+            "name": "Nintendo 3DS Software Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 283,
+            "cmlValueLastFY": 38855
+        },
+        {
+            "name": "Wii U Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": "+0",
+            "cmlValueLastFY": 1356
+        },
+        {
+            "name": "Wii U Software Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 12,
+            "cmlValueLastFY": 10348
+        }
+    ],
     "platformForecastSales": [
         {
             "name": "Nintendo Switch Hardware Total",

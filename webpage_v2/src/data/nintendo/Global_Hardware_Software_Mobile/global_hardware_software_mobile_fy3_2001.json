@@ -9,15 +9,91 @@
             "Q2CmlValue": 0,
             "Q3CmlValue": 0,
             "Q4CmlValue": 0,
-            "cmlValueLastFY": 0 
+            "cmlValueLastFY": 0
         }
     ],
     "platformUnitSales": [
-        {"name":"Nintendo 64 Hardware Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":285,"cmlValueLastFY":2957},{"name":"Nintendo 64 Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":3595,"cmlValueLastFY":18061},
-        {"name":"Game Boy Advance Hardware Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":107,"cmlValueLastFY":0},{"name":"Game Boy Advance Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":273,"cmlValueLastFY":0},
-        {"name":"Super Family Computer/SNES Hardware Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":9,"cmlValueLastFY":4898},{"name":"Super Family Computer/SNES Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":15,"cmlValueLastFY":37888},
-        {"name":"Family Computer/NES Hardware Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":5,"cmlValueLastFY":6171},
-        {"name":"Game Boy Hardware Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":1886,"cmlValueLastFY":9486},{"name":"Game Boy Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":7619,"cmlValueLastFY":37749}
+        {
+            "name": "Nintendo 64 Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 285,
+            "cmlValueLastFY": 2957
+        },
+        {
+            "name": "Nintendo 64 Software Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 3595,
+            "cmlValueLastFY": 18061
+        },
+        {
+            "name": "Game Boy Advance Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 107,
+            "cmlValueLastFY": 0
+        },
+        {
+            "name": "Game Boy Advance Software Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 273,
+            "cmlValueLastFY": 0
+        },
+        {
+            "name": "Super Family Computer/SNES Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 9,
+            "cmlValueLastFY": 4898
+        },
+        {
+            "name": "Super Family Computer/SNES Software Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 15,
+            "cmlValueLastFY": 37888
+        },
+        {
+            "name": "Family Computer/NES Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 5,
+            "cmlValueLastFY": 6171
+        },
+        {
+            "name": "Game Boy Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 1886,
+            "cmlValueLastFY": 9486
+        },
+        {
+            "name": "Game Boy Software Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 7619,
+            "cmlValueLastFY": 37749
+        }
     ],
     "platformForecastSales": [
         {

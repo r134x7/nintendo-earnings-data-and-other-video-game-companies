@@ -9,13 +9,138 @@
             "Q2CmlValue": 0,
             "Q3CmlValue": 0,
             "Q4CmlValue": 0,
-            "cmlValueLastFY": 0 
+            "cmlValueLastFY": 0
         }
     ],
     "platformUnitSales": [
-        {"name":"Nintendo DS Hardware Total","units":"units","Q1CmlValue":597,"Q2CmlValue":1170,"Q3CmlValue":2335,"Q4CmlValue":2711,"cmlValueLastFY":10178},{"name":"Nintendo DS Lite","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":1025,"cmlValueLastFY":7994},{"name":"Nintendo DSi","units":"units","Q1CmlValue":365,"Q2CmlValue":715,"Q3CmlValue":1341,"Q4CmlValue":1480,"cmlValueLastFY":302},{"name":"Nintendo DSi XL","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":70,"Q4CmlValue":208,"cmlValueLastFY":0},{"name":"Nintendo DS Software Total","units":"units","Q1CmlValue":2909,"Q2CmlValue":7115,"Q3CmlValue":12138,"Q4CmlValue":15159,"cmlValueLastFY":56691,"footnote":"Sales units, number of new titles figures for Nintendo DS do not include quantity of the Nintendo DSiWare titles. Actual sales units of software include quantity bundled with hardware."},
-        {"name":"Wii Hardware Total" ,"units":"units","Q1CmlValue":223,"Q2CmlValue":575,"Q3CmlValue":1705,"Q4CmlValue":2053,"cmlValueLastFY":5040},{"name":"Wii Software Total" ,"units":"units","Q1CmlValue":3107,"Q2CmlValue":7621,"Q3CmlValue":15664,"Q4CmlValue":19181,"cmlValueLastFY":35302,"footnote":"Sales units, number of new titles figures for Wii do not include quantity of the Virtual Console and the WiiWare titles. Actual sales units of software include quantity bundled with hardware."},
-        {"name":"Game Boy Advance Hardware","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":4,"cmlValueLastFY":8147},{"name":"Game Boy Advance SP","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":4,"cmlValueLastFY":4353},{"name":"Game Boy Advance Software","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":10,"cmlValueLastFY":37728},{"name":"Game Boy Hardware Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":"-0","cmlValueLastFY":11869},{"name":"Game Boy Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":"-0","cmlValueLastFY":50111},{"name":"Nintendo GameCube Hardware Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":"-0","cmlValueLastFY":2174},{"name":"Nintendo GameCube Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":"+0","cmlValueLastFY":20857}
+        {
+            "name": "Nintendo DS Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 597,
+            "Q2CmlValue": 1170,
+            "Q3CmlValue": 2335,
+            "Q4CmlValue": 2711,
+            "cmlValueLastFY": 10178
+        },
+        {
+            "name": "Nintendo DS Lite",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 1025,
+            "cmlValueLastFY": 7994
+        },
+        {
+            "name": "Nintendo DSi",
+            "units": "units",
+            "Q1CmlValue": 365,
+            "Q2CmlValue": 715,
+            "Q3CmlValue": 1341,
+            "Q4CmlValue": 1480,
+            "cmlValueLastFY": 302
+        },
+        {
+            "name": "Nintendo DSi XL",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 70,
+            "Q4CmlValue": 208,
+            "cmlValueLastFY": 0
+        },
+        {
+            "name": "Nintendo DS Software Total",
+            "units": "units",
+            "Q1CmlValue": 2909,
+            "Q2CmlValue": 7115,
+            "Q3CmlValue": 12138,
+            "Q4CmlValue": 15159,
+            "cmlValueLastFY": 56691,
+            "footnote": "Sales units, number of new titles figures for Nintendo DS do not include quantity of the Nintendo DSiWare titles. Actual sales units of software include quantity bundled with hardware."
+        },
+        {
+            "name": "Wii Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 223,
+            "Q2CmlValue": 575,
+            "Q3CmlValue": 1705,
+            "Q4CmlValue": 2053,
+            "cmlValueLastFY": 5040
+        },
+        {
+            "name": "Wii Software Total",
+            "units": "units",
+            "Q1CmlValue": 3107,
+            "Q2CmlValue": 7621,
+            "Q3CmlValue": 15664,
+            "Q4CmlValue": 19181,
+            "cmlValueLastFY": 35302,
+            "footnote": "Sales units, number of new titles figures for Wii do not include quantity of the Virtual Console and the WiiWare titles. Actual sales units of software include quantity bundled with hardware."
+        },
+        {
+            "name": "Game Boy Advance Hardware",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 4,
+            "cmlValueLastFY": 8147
+        },
+        {
+            "name": "Game Boy Advance SP",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 4,
+            "cmlValueLastFY": 4353
+        },
+        {
+            "name": "Game Boy Advance Software",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 10,
+            "cmlValueLastFY": 37728
+        },
+        {
+            "name": "Game Boy Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": "-0",
+            "cmlValueLastFY": 11869
+        },
+        {
+            "name": "Game Boy Software Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": "-0",
+            "cmlValueLastFY": 50111
+        },
+        {
+            "name": "Nintendo GameCube Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": "-0",
+            "cmlValueLastFY": 2174
+        },
+        {
+            "name": "Nintendo GameCube Software Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": "+0",
+            "cmlValueLastFY": 20857
+        }
     ],
     "platformForecastSales": [
         {
@@ -23,14 +148,14 @@
             "forecastThisFY": 3000,
             "forecastRevision1": 3000,
             "forecastNextFY": 3000,
-            "footnote":"Hardware and software unit forecast figures for Nintendo DS include forecast units for Nintendo 3DS (Temp.)."
+            "footnote": "Hardware and software unit forecast figures for Nintendo DS include forecast units for Nintendo 3DS (Temp.)."
         },
         {
             "name": "Nintendo DS Software Total",
-            "forecastThisFY": 18000, 
+            "forecastThisFY": 18000,
             "forecastRevision1": 15000,
             "forecastNextFY": 15000,
-            "footnote":"Hardware and software unit forecast figures for Nintendo DS include forecast units for Nintendo 3DS (Temp.). Software forecast figures do not include quantity bundled with hardware."
+            "footnote": "Hardware and software unit forecast figures for Nintendo DS include forecast units for Nintendo 3DS (Temp.). Software forecast figures do not include quantity bundled with hardware."
         },
         {
             "name": "Wii Hardware Total",
@@ -45,7 +170,7 @@
             "forecastRevision1": 18000,
             "forecastRevision2": 19200,
             "forecastNextFY": 16500,
-            "footnote":"Software forecast figures do not include quantity bundled with hardware."
+            "footnote": "Software forecast figures do not include quantity bundled with hardware."
         }
     ]
 }

@@ -9,14 +9,141 @@
             "Q2CmlValue": 0,
             "Q3CmlValue": 0,
             "Q4CmlValue": 0,
-            "cmlValueLastFY": 0 
+            "cmlValueLastFY": 0
         }
     ],
     "platformUnitSales": [
-        {"name":"Nintendo DS Hardware Total","units":"units","Q1CmlValue":6,"Q2CmlValue":10,"Q3CmlValue":11,"Q4CmlValue":13,"cmlValueLastFY":15386,"footnote":"Nintendo DS means Nintendo DS, Nintendo DS Lite, Nintendo DSi and Nintendo DSi XL."},{"name":"Nintendo DSi","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":11,"cmlValueLastFY":2832},{"name":"Nintendo DSi XL","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":1,"cmlValueLastFY":1291},{"name":"Nintendo DS Lite","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":"+0","cmlValueLastFY":9385},{"name":"Nintendo DS Software Total","units":"units","Q1CmlValue":215,"Q2CmlValue":525,"Q3CmlValue":863,"Q4CmlValue":1029,"cmlValueLastFY":93369,"footnote":"Software sales units and the number of new titles for Nintendo DS do not include those of Nintendo DSiWare. Actual software sales units include the quantity bundled with hardware."},
-        {"name":"Nintendo 3DS Hardware Total","units":"units","Q1CmlValue":140,"Q2CmlValue":389,"Q3CmlValue":1165,"Q4CmlValue":1224,"cmlValueLastFY":3109},{"name":"Nintendo 3DS XL","units":"units","Q1CmlValue":99,"Q2CmlValue":288,"Q3CmlValue":743,"Q4CmlValue":787,"cmlValueLastFY":778},{"name":"Nintendo 2DS","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":211,"Q4CmlValue":220,"cmlValueLastFY":0},{"name":"Nintendo 3DS Software Total","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":5725,"Q4CmlValue":6789,"cmlValueLastFY":9503,"footnote":"Software sales units and the number of new titles for Nintendo 3DS are those of Nintendo 3DS card software (packaged and downloadable versions). Actual software sales units include the quantity bundled with hardware."},
-        {"name":"Wii Hardware Total" ,"units":"units","Q1CmlValue":21,"Q2CmlValue":47,"Q3CmlValue":107,"Q4CmlValue":122,"cmlValueLastFY":9984},{"name":"Wii Software Total" ,"units":"units","Q1CmlValue":367,"Q2CmlValue":1490,"Q3CmlValue":2327,"Q4CmlValue":2616,"cmlValueLastFY":86906,"footnote":"Software sales units and the number of new titles for Wii do not include those of Virtual Console and WiiWare. Actual software sales units include the quantity bundled with hardware."},
-        {"name":"Wii U Hardware Total","units":"units","Q1CmlValue":16,"Q2CmlValue":46,"Q3CmlValue":241,"Q4CmlValue":272,"cmlValueLastFY":345},{"name":"Wii U Software Total","units":"units","Q1CmlValue":103,"Q2CmlValue":630,"Q3CmlValue":1596,"Q4CmlValue":1886,"cmlValueLastFY":1342,"footnote":"Software sales units and the number of new titles for Wii U are those of Wii U disc software (packaged and downloadable versions). Actual software sales units include the quantity bundled with hardware."},{"name":"Game Boy Advance Software","units":"units","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":"+0","cmlValueLastFY":37742}
+        {
+            "name": "Nintendo DS Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 6,
+            "Q2CmlValue": 10,
+            "Q3CmlValue": 11,
+            "Q4CmlValue": 13,
+            "cmlValueLastFY": 15386,
+            "footnote": "Nintendo DS means Nintendo DS, Nintendo DS Lite, Nintendo DSi and Nintendo DSi XL."
+        },
+        {
+            "name": "Nintendo DSi",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 11,
+            "cmlValueLastFY": 2832
+        },
+        {
+            "name": "Nintendo DSi XL",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 1,
+            "cmlValueLastFY": 1291
+        },
+        {
+            "name": "Nintendo DS Lite",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": "+0",
+            "cmlValueLastFY": 9385
+        },
+        {
+            "name": "Nintendo DS Software Total",
+            "units": "units",
+            "Q1CmlValue": 215,
+            "Q2CmlValue": 525,
+            "Q3CmlValue": 863,
+            "Q4CmlValue": 1029,
+            "cmlValueLastFY": 93369,
+            "footnote": "Software sales units and the number of new titles for Nintendo DS do not include those of Nintendo DSiWare. Actual software sales units include the quantity bundled with hardware."
+        },
+        {
+            "name": "Nintendo 3DS Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 140,
+            "Q2CmlValue": 389,
+            "Q3CmlValue": 1165,
+            "Q4CmlValue": 1224,
+            "cmlValueLastFY": 3109
+        },
+        {
+            "name": "Nintendo 3DS XL",
+            "units": "units",
+            "Q1CmlValue": 99,
+            "Q2CmlValue": 288,
+            "Q3CmlValue": 743,
+            "Q4CmlValue": 787,
+            "cmlValueLastFY": 778
+        },
+        {
+            "name": "Nintendo 2DS",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 211,
+            "Q4CmlValue": 220,
+            "cmlValueLastFY": 0
+        },
+        {
+            "name": "Nintendo 3DS Software Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 5725,
+            "Q4CmlValue": 6789,
+            "cmlValueLastFY": 9503,
+            "footnote": "Software sales units and the number of new titles for Nintendo 3DS are those of Nintendo 3DS card software (packaged and downloadable versions). Actual software sales units include the quantity bundled with hardware."
+        },
+        {
+            "name": "Wii Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 21,
+            "Q2CmlValue": 47,
+            "Q3CmlValue": 107,
+            "Q4CmlValue": 122,
+            "cmlValueLastFY": 9984
+        },
+        {
+            "name": "Wii Software Total",
+            "units": "units",
+            "Q1CmlValue": 367,
+            "Q2CmlValue": 1490,
+            "Q3CmlValue": 2327,
+            "Q4CmlValue": 2616,
+            "cmlValueLastFY": 86906,
+            "footnote": "Software sales units and the number of new titles for Wii do not include those of Virtual Console and WiiWare. Actual software sales units include the quantity bundled with hardware."
+        },
+        {
+            "name": "Wii U Hardware Total",
+            "units": "units",
+            "Q1CmlValue": 16,
+            "Q2CmlValue": 46,
+            "Q3CmlValue": 241,
+            "Q4CmlValue": 272,
+            "cmlValueLastFY": 345
+        },
+        {
+            "name": "Wii U Software Total",
+            "units": "units",
+            "Q1CmlValue": 103,
+            "Q2CmlValue": 630,
+            "Q3CmlValue": 1596,
+            "Q4CmlValue": 1886,
+            "cmlValueLastFY": 1342,
+            "footnote": "Software sales units and the number of new titles for Wii U are those of Wii U disc software (packaged and downloadable versions). Actual software sales units include the quantity bundled with hardware."
+        },
+        {
+            "name": "Game Boy Advance Software",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": "+0",
+            "cmlValueLastFY": 37742
+        }
     ],
     "platformForecastSales": [
         {
@@ -38,7 +165,7 @@
             "forecastThisFY": 8000,
             "forecastRevision1": 6600,
             "forecastNextFY": 6700,
-            "footnote":"Forecasted software sales units do not include the quantity bundled with hardware."
+            "footnote": "Forecasted software sales units do not include the quantity bundled with hardware."
         },
         {
             "name": "Wii Hardware Total",
@@ -51,20 +178,20 @@
             "forecastThisFY": 2000,
             "forecastRevision1": 2600,
             "forecastNextFY": 900,
-            "footnote":"Forecasted software sales units do not include the quantity bundled with hardware."
+            "footnote": "Forecasted software sales units do not include the quantity bundled with hardware."
         },
         {
             "name": "Wii U Hardware Total",
             "forecastThisFY": 900,
             "forecastRevision1": 280,
-            "forecastNextFY": 360 
+            "forecastNextFY": 360
         },
         {
             "name": "Wii U Software Total",
             "forecastThisFY": 3800,
             "forecastRevision1": 1900,
             "forecastNextFY": 2000,
-            "footnote":"Forecasted software sales units do not include the quantity bundled with hardware."
+            "footnote": "Forecasted software sales units do not include the quantity bundled with hardware."
         }
     ]
 }
