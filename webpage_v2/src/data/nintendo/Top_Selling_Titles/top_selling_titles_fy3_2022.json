@@ -1,109 +1,223 @@
 {
     "currentQuarter": 4,
     "fiscalYear": "FY3/2022",
-    "titles": [ 
-    [
-        {
-            "name": "Mario Kart 8 Deluxe",
-            "platform": "Nintendo Switch",
-            "Q1CmlValue": 37.08,
-            "Q2CmlValue": 38.74,
-            "Q3CmlValue": 43.35,
-            "Q4CmlValue": 45.33,
-            "valueLastFY": 35.39
-        },
-        {
-            "name": "Super Mario Odyssey",
-            "platform": "Nintendo Switch",
-            "Q1CmlValue": 21.40, 
-            "Q2CmlValue": 21.95, 
-            "Q3CmlValue": 23.02, 
-            "Q4CmlValue": 23.50, 
-            "valueLastFY": 20.83
-        },
-        {
-            "name": "The Legend of Zelda: Breath of the Wild",
-            "platform": "Nintendo Switch",
-            "Q1CmlValue": 23.20, 
-            "Q2CmlValue": 24.13, 
-            "Q3CmlValue": 25.80, 
-            "Q4CmlValue": 26.55, 
-            "valueLastFY": 22.28
-        },
-        {
-            "name": "Pokémon Brilliant Diamond / Pokémon Shining Pearl",
-            "platform": "Nintendo Switch",
-            "Q1CmlValue":  0,
-            "Q2CmlValue":  0,
-            "Q3CmlValue":  13.97,
-            "Q4CmlValue":  14.65,
-            "valueLastFY": 0
-        },
-        {
-            "name": "Animal Crossing: New Horizons",
-            "platform": "Nintendo Switch",
-            "Q1CmlValue": 33.89, 
-            "Q2CmlValue": 34.85, 
-            "Q3CmlValue": 37.62, 
-            "Q4CmlValue": 38.64, 
-            "valueLastFY": 32.63
-        },
-        {
-            "name": "Pokémon Sword/Pokémon Shield",
-            "platform": "Nintendo Switch",
-            "Q1CmlValue": 21.85, 
-            "Q2CmlValue": 22.64, 
-            "Q3CmlValue": 23.90, 
-            "Q4CmlValue": 24.27, 
-            "valueLastFY": 21.10 
-        },
-        {
-            "name": "Pokémon: Let's Go, Pikachu!/ Pokémon: Let's Go, Eevee!",
-            "platform": "Nintendo Switch",
-            "Q1CmlValue": 13.57, 
-            "Q2CmlValue": 13.83, 
-            "Q3CmlValue": 14.33, 
-            "Q4CmlValue": 14.65, 
-            "valueLastFY": 13.28
-        },
-        {
-            "name": "Ring Fit Adventure",
-            "platform": "Nintendo Switch",
-            "Q1CmlValue": 11.26, 
-            "Q2CmlValue": 12.21, 
-            "Q3CmlValue": 13.53, 
-            "Q4CmlValue": 14.09, 
-            "valueLastFY": 10.11
-        },
-        {
-            "name": "Super Mario Party",
-            "platform": "Nintendo Switch",
-            "Q1CmlValue": 15.72, 
-            "Q2CmlValue": 16.48, 
-            "Q3CmlValue": 17.39, 
-            "Q4CmlValue": 17.78, 
-            "valueLastFY": 14.79
-        },
-        {
-            "name": "Super Smash Bros. Ultimate",
-            "platform": "Nintendo Switch",
-            "Q1CmlValue": 24.77, 
-            "Q2CmlValue": 25.71, 
-            "Q3CmlValue": 27.40, 
-            "Q4CmlValue": 28.17, 
-            "valueLastFY": 23.84
-        },
-        {
-            "name": "Splatoon 2",
-            "platform": "Nintendo Switch",
-            "Q1CmlValue": 12.45, 
-            "Q2CmlValue": 12.68, 
-            "Q3CmlValue": 12.68, 
-            "Q4CmlValue": 12.68, 
-            "valueLastFY": 12.21
-        }
-    ],
-    [{"name":"Mario Kart 8","platform":"Wii U","Q1CmlValue":8.45,"Q2CmlValue":8.46,"Q3CmlValue":8.46,"Q4CmlValue":8.46},{"name":"Super Mario 3D World","platform":"Wii U","Q1CmlValue":0,"Q2CmlValue":5.88,"Q3CmlValue":5.88,"Q4CmlValue":5.88},{"name":"New Super Mario Bros. U","platform":"Wii U","Q1CmlValue":0,"Q2CmlValue":5.81,"Q3CmlValue":5.81,"Q4CmlValue":5.82},{"name":"Nintendo Land","platform":"Wii U","Q1CmlValue":0,"Q2CmlValue":5.2,"Q3CmlValue":5.2,"Q4CmlValue":5.21}],
-    [{"name":"Mario Kart 7","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":18.95,"Q3CmlValue":18.95,"Q4CmlValue":18.97},{"name":"Pokémon X/Pokémon Y","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":16.58,"Q3CmlValue":16.58,"Q4CmlValue":16.62},{"name":"Pokémon Sun/Pokémon Moon","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":16.27,"Q3CmlValue":16.27,"Q4CmlValue":16.28},{"name":"Pokémon Omega Ruby/Pokémon Alpha Sapphire","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":14.46,"Q3CmlValue":14.46,"Q4CmlValue":14.5},{"name":"New Super Mario Bros. 2","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":13.39,"Q3CmlValue":13.39,"Q4CmlValue":13.4},{"name":"Animal Crossing: New Leaf","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":12.97,"Q3CmlValue":12.97,"Q4CmlValue":13.01},{"name":"SUPER MARIO 3D LAND","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":12.84,"Q3CmlValue":12.84,"Q4CmlValue":12.85},{"name":"Super Smash Bros. for Nintendo 3DS","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":9.63,"Q3CmlValue":9.63,"Q4CmlValue":9.63},{"name":"Pokémon Ultra Sun/Pokémon Ultra Moon","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":9.04,"Q3CmlValue":9.04,"Q4CmlValue":9.09},{"name":"Tomodachi Life","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":6.68,"Q3CmlValue":6.68,"Q4CmlValue":6.69}]
+    "titles": [
+        [
+            {
+                "name": "Mario Kart 8 Deluxe",
+                "platform": "Nintendo Switch",
+                "Q1CmlValue": 37.08,
+                "Q2CmlValue": 38.74,
+                "Q3CmlValue": 43.35,
+                "Q4CmlValue": 45.33,
+                "valueLastFY": 35.39
+            },
+            {
+                "name": "Super Mario Odyssey",
+                "platform": "Nintendo Switch",
+                "Q1CmlValue": 21.4,
+                "Q2CmlValue": 21.95,
+                "Q3CmlValue": 23.02,
+                "Q4CmlValue": 23.5,
+                "valueLastFY": 20.83
+            },
+            {
+                "name": "The Legend of Zelda: Breath of the Wild",
+                "platform": "Nintendo Switch",
+                "Q1CmlValue": 23.2,
+                "Q2CmlValue": 24.13,
+                "Q3CmlValue": 25.8,
+                "Q4CmlValue": 26.55,
+                "valueLastFY": 22.28
+            },
+            {
+                "name": "Pokémon Brilliant Diamond / Pokémon Shining Pearl",
+                "platform": "Nintendo Switch",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 13.97,
+                "Q4CmlValue": 14.65,
+                "valueLastFY": 0
+            },
+            {
+                "name": "Animal Crossing: New Horizons",
+                "platform": "Nintendo Switch",
+                "Q1CmlValue": 33.89,
+                "Q2CmlValue": 34.85,
+                "Q3CmlValue": 37.62,
+                "Q4CmlValue": 38.64,
+                "valueLastFY": 32.63
+            },
+            {
+                "name": "Pokémon Sword/Pokémon Shield",
+                "platform": "Nintendo Switch",
+                "Q1CmlValue": 21.85,
+                "Q2CmlValue": 22.64,
+                "Q3CmlValue": 23.9,
+                "Q4CmlValue": 24.27,
+                "valueLastFY": 21.1
+            },
+            {
+                "name": "Pokémon: Let's Go, Pikachu!/ Pokémon: Let's Go, Eevee!",
+                "platform": "Nintendo Switch",
+                "Q1CmlValue": 13.57,
+                "Q2CmlValue": 13.83,
+                "Q3CmlValue": 14.33,
+                "Q4CmlValue": 14.65,
+                "valueLastFY": 13.28
+            },
+            {
+                "name": "Ring Fit Adventure",
+                "platform": "Nintendo Switch",
+                "Q1CmlValue": 11.26,
+                "Q2CmlValue": 12.21,
+                "Q3CmlValue": 13.53,
+                "Q4CmlValue": 14.09,
+                "valueLastFY": 10.11
+            },
+            {
+                "name": "Super Mario Party",
+                "platform": "Nintendo Switch",
+                "Q1CmlValue": 15.72,
+                "Q2CmlValue": 16.48,
+                "Q3CmlValue": 17.39,
+                "Q4CmlValue": 17.78,
+                "valueLastFY": 14.79
+            },
+            {
+                "name": "Super Smash Bros. Ultimate",
+                "platform": "Nintendo Switch",
+                "Q1CmlValue": 24.77,
+                "Q2CmlValue": 25.71,
+                "Q3CmlValue": 27.4,
+                "Q4CmlValue": 28.17,
+                "valueLastFY": 23.84
+            },
+            {
+                "name": "Splatoon 2",
+                "platform": "Nintendo Switch",
+                "Q1CmlValue": 12.45,
+                "Q2CmlValue": 12.68,
+                "Q3CmlValue": 12.68,
+                "Q4CmlValue": 12.68,
+                "valueLastFY": 12.21
+            }
+        ],
+        [
+            {
+                "name": "Mario Kart 8",
+                "platform": "Wii U",
+                "Q1CmlValue": 8.45,
+                "Q2CmlValue": 8.46,
+                "Q3CmlValue": 8.46,
+                "Q4CmlValue": 8.46
+            },
+            {
+                "name": "Super Mario 3D World",
+                "platform": "Wii U",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 5.88,
+                "Q3CmlValue": 5.88,
+                "Q4CmlValue": 5.88
+            },
+            {
+                "name": "New Super Mario Bros. U",
+                "platform": "Wii U",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 5.81,
+                "Q3CmlValue": 5.81,
+                "Q4CmlValue": 5.82
+            },
+            {
+                "name": "Nintendo Land",
+                "platform": "Wii U",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 5.2,
+                "Q3CmlValue": 5.2,
+                "Q4CmlValue": 5.21
+            }
+        ],
+        [
+            {
+                "name": "Mario Kart 7",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 18.95,
+                "Q3CmlValue": 18.95,
+                "Q4CmlValue": 18.97
+            },
+            {
+                "name": "Pokémon X/Pokémon Y",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 16.58,
+                "Q3CmlValue": 16.58,
+                "Q4CmlValue": 16.62
+            },
+            {
+                "name": "Pokémon Sun/Pokémon Moon",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 16.27,
+                "Q3CmlValue": 16.27,
+                "Q4CmlValue": 16.28
+            },
+            {
+                "name": "Pokémon Omega Ruby/Pokémon Alpha Sapphire",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 14.46,
+                "Q3CmlValue": 14.46,
+                "Q4CmlValue": 14.5
+            },
+            {
+                "name": "New Super Mario Bros. 2",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 13.39,
+                "Q3CmlValue": 13.39,
+                "Q4CmlValue": 13.4
+            },
+            {
+                "name": "Animal Crossing: New Leaf",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 12.97,
+                "Q3CmlValue": 12.97,
+                "Q4CmlValue": 13.01
+            },
+            {
+                "name": "SUPER MARIO 3D LAND",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 12.84,
+                "Q3CmlValue": 12.84,
+                "Q4CmlValue": 12.85
+            },
+            {
+                "name": "Super Smash Bros. for Nintendo 3DS",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 9.63,
+                "Q3CmlValue": 9.63,
+                "Q4CmlValue": 9.63
+            },
+            {
+                "name": "Pokémon Ultra Sun/Pokémon Ultra Moon",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 9.04,
+                "Q3CmlValue": 9.04,
+                "Q4CmlValue": 9.09
+            },
+            {
+                "name": "Tomodachi Life",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 6.68,
+                "Q3CmlValue": 6.68,
+                "Q4CmlValue": 6.69
+            }
+        ]
     ]
 }

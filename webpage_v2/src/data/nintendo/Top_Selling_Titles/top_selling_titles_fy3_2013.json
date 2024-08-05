@@ -2,8 +2,171 @@
     "currentQuarter": 4,
     "fiscalYear": "FY3/2013",
     "titles": [
-        [{"name":"New Super Mario Bros. U","platform":"Wii U","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":2.15},{"name":"Nintendo Land","platform":"Wii U","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":2.6}],
-        [{"name":"Mario Kart 7","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":8.08},{"name":"SUPER MARIO 3D LAND","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":8.29},{"name":"New Super Mario Bros. 2","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":6.42},{"name":"Animal Crossing: New Leaf","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":3.86},{"name":"Luigi's Mansion: Dark Moon","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":1.22},{"name":"Pokémon Rumble Blast","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":1.29},{"name":"The Legend of Zelda: Ocarina of Time 3D","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":2.95},{"name":"nintendogs + cats","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":3.28},{"name":"Paper Mario: Sticker Star","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":1.97},{"name":"Kid Icarus: Uprising","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":1.18},{"name":"Mario Tennis Open","platform":"Nintendo 3DS","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":1.11}],
-        [{"name":"Wii Sports","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":81.99},{"name":"Mario Kart Wii","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":34.26},{"name":"Wii Sports Resort","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":31.89},{"name":"New Super Mario Bros. Wii","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":27.88},{"name":"Wii Fit Plus","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":20.86},{"name":"Super Mario Galaxy","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":11.72},{"name":"Super Smash Bros. Brawl","platform":"Wii","Q1CmlValue":0,"Q2CmlValue":0,"Q3CmlValue":0,"Q4CmlValue":11.49}]
+        [
+            {
+                "name": "New Super Mario Bros. U",
+                "platform": "Wii U",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 2.15
+            },
+            {
+                "name": "Nintendo Land",
+                "platform": "Wii U",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 2.6
+            }
+        ],
+        [
+            {
+                "name": "Mario Kart 7",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 8.08
+            },
+            {
+                "name": "SUPER MARIO 3D LAND",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 8.29
+            },
+            {
+                "name": "New Super Mario Bros. 2",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 6.42
+            },
+            {
+                "name": "Animal Crossing: New Leaf",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 3.86
+            },
+            {
+                "name": "Luigi's Mansion: Dark Moon",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 1.22
+            },
+            {
+                "name": "Pokémon Rumble Blast",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 1.29
+            },
+            {
+                "name": "The Legend of Zelda: Ocarina of Time 3D",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 2.95
+            },
+            {
+                "name": "nintendogs + cats",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 3.28
+            },
+            {
+                "name": "Paper Mario: Sticker Star",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 1.97
+            },
+            {
+                "name": "Kid Icarus: Uprising",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 1.18
+            },
+            {
+                "name": "Mario Tennis Open",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 1.11
+            }
+        ],
+        [
+            {
+                "name": "Wii Sports",
+                "platform": "Wii",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 81.99
+            },
+            {
+                "name": "Mario Kart Wii",
+                "platform": "Wii",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 34.26
+            },
+            {
+                "name": "Wii Sports Resort",
+                "platform": "Wii",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 31.89
+            },
+            {
+                "name": "New Super Mario Bros. Wii",
+                "platform": "Wii",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 27.88
+            },
+            {
+                "name": "Wii Fit Plus",
+                "platform": "Wii",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 20.86
+            },
+            {
+                "name": "Super Mario Galaxy",
+                "platform": "Wii",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 11.72
+            },
+            {
+                "name": "Super Smash Bros. Brawl",
+                "platform": "Wii",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 0,
+                "Q3CmlValue": 0,
+                "Q4CmlValue": 11.49
+            }
+        ]
     ]
 }
