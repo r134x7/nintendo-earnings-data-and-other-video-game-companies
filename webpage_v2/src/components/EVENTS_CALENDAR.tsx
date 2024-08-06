@@ -113,8 +113,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 11,
             companyName: "Square Enix",
-            eventName: dateTemplate("4th", 3, "March", nextYear),
-            eventDate: "May 13, 2024",
+            eventName: dateTemplate("1st", 3, "March", nextYear),
+            eventDate: "August 6, 2024",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.hd.square-enix.com/eng/ir/",
         },

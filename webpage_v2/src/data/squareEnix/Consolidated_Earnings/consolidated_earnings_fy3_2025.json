@@ -1,0 +1,46 @@
+{
+    "currentQuarter": 1,
+    "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
+    "fiscalYear": "FY3/2025",
+    "data": [
+        {
+            "name": "Net Sales",
+            "units": "currency",
+            "Q1CmlValue": 69915,
+            "Q2CmlValue": 69915,
+            "Q3CmlValue": 69915,
+            "Q4CmlValue": 69915,
+            "forecastThisFY": 310000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": null
+        },
+        {
+            "name": "Operating Income",
+            "units": "currency",
+            "Q1CmlValue": 10844,
+            "Q2CmlValue": 10844,
+            "Q3CmlValue": 10844,
+            "Q4CmlValue": 10844,
+            "forecastThisFY": 40000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": null
+        },
+        {
+            "name": "Net Income",
+            "units": "currency",
+            "Q1CmlValue": 10620,
+            "Q2CmlValue": 10620,
+            "Q3CmlValue": 10620,
+            "Q4CmlValue": 10620,
+            "forecastThisFY": 28000,
+            "forecastRevision1": null,
+            "forecastRevision2": null,
+            "forecastRevision3": null,
+            "forecastNextFY": null
+        }
+    ]
+}
