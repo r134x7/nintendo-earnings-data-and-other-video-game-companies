@@ -126,7 +126,8 @@ const getCurrentData = getJSON("nintendo_titles_test.json", currentQuarter);
 const parseCurrentData = (!getCurrentData) ? undefined : JSON.parse(getCurrentData);
 
 const newArray = makeArray(extractNQ, parseCurrentData, currentQuarter, currentPlatform);
-const newArrayStringify = JSON.stringify(newArray);
+// const newArrayStringify = JSON.stringify(newArray);
+let newArrayStringify = JSON.stringify(newArray, undefined, 4); // convert the object to JSON, space: 4 prevents JSON being on one line
 
 writeFile("nintendo_titles_test.json", newArrayStringify, (err) => {
     return err ? console.error(err) : console.log("something!");
