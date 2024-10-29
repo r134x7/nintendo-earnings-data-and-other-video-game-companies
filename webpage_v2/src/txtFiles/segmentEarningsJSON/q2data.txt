@@ -1,56 +1,30 @@
-Entertainment
-32761
+Digital Contents
+39775 
 -
-10371
+20640 
 -
-Amusement
-2083
+Arcade Operations
+10991 
 -
-252
+1667 
 -
-Real Estate
-600
+Amusement Equipments
+3176 
 -
-145
+1587 
 -
-Others
-153
+Other
+2459
 -
-(118)
+1195
 -
-Corporate & Elimination
-(402)
+Adjustment
 -
 -
+(4364) 
 -
 Total
-35197
+56402
 -
-10651
--
-
-Japan
-20792
--
--
--
-North America
-4255
--
--
--
-Europe
-1403
--
--
--
-Asia
-8747
--
--
--
-Global
-35197
--
--
+20726
 -
