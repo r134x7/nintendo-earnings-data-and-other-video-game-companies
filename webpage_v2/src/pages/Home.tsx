@@ -23,7 +23,7 @@ const Home = () => {
 
     const konamiStatus = liner(printTextBlock("Konami page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 1st Quarter earnings data for FY3/2025.",40),"−","both",true,40);
 
-    const cyberAgentStatus = liner(printTextBlock("CyberAgent page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 3rd Quarter earnings data for FY9/2024.",40),"−","both",true,40); 
+    const cyberAgentStatus = liner(printTextBlock("CyberAgent page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 4th Quarter earnings data for FY9/2024.",40),"−","both",true,40); 
 
     const kadokawaStatus = liner(printTextBlock("Kadokawa page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 1st Quarter earnings data for FY3/2025.",40),"−","both",true,40); 
 
