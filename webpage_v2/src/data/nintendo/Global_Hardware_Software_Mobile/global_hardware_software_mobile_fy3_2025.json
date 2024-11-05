@@ -66,17 +66,13 @@
         {
             "name": "Nintendo Switch Hardware Total",
             "forecastThisFY": 1350,
-            "forecastRevision1": 1250,
-            "forecastRevision2": "Nothing",
-            "forecastNextFY": "Nothing" 
+            "forecastRevision1": 1250
         },
         {
             "name": "Nintendo Switch Software Total",
             "forecastThisFY": 16500,
             "forecastRevision1": 16000,
-            "forecastRevision2": "Nothing",
-            "forecastNextFY": "Nothing",
-            "footnote": "・Software sales units include both packaged and downloadable versions of software, and do not include download-only software or add-on content.・Actual software sales units include the quantity bundled with hardware or other products.・Forecasted software sales units includes software bundled with other products during the six months ended September 30, 2024 but does not included softwre to be bundled with other products October 1, 2024 onwards."
+            "footnote": "Software sales units include both packaged and downloadable versions of software, and do not include download-only software or add-on content. Actual software sales units include the quantity bundled with hardware or other products. Forecasted software sales units includes software bundled with other products during the six months ended September 30, 2024 but does not included softwre to be bundled with other products October 1, 2024 onwards."
         }
     ]
 }
