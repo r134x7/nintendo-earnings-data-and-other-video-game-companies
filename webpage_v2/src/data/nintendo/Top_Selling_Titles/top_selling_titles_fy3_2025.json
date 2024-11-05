@@ -83,6 +83,88 @@
                 "Q3CmlValue": 17.77,
                 "Q4CmlValue": 17.77
             }
+        ],
+        [
+            {
+                "name": "Mario Kart 7",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 18.99,
+                "Q3CmlValue": 18.99,
+                "Q4CmlValue": 18.99
+            },
+            {
+                "name": "Pokémon X/Pokémon Y",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 16.76,
+                "Q3CmlValue": 16.76,
+                "Q4CmlValue": 16.76
+            },
+            {
+                "name": "Pokémon Sun/Pokémon Moon",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 16.33,
+                "Q3CmlValue": 16.33,
+                "Q4CmlValue": 16.33
+            },
+            {
+                "name": "Pokémon Omega Ruby/Pokémon Alpha Sapphire",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 14.63,
+                "Q3CmlValue": 14.63,
+                "Q4CmlValue": 14.63
+            },
+            {
+                "name": "New Super Mario Bros. 2",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 13.42,
+                "Q3CmlValue": 13.42,
+                "Q4CmlValue": 13.42
+            },
+            {
+                "name": "Animal Crossing: New Leaf",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 13.06,
+                "Q3CmlValue": 13.06,
+                "Q4CmlValue": 13.06
+            },
+            {
+                "name": "SUPER MARIO 3D LAND",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 12.88,
+                "Q3CmlValue": 12.88,
+                "Q4CmlValue": 12.88
+            },
+            {
+                "name": "Super Smash Bros. for Nintendo 3DS",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 9.65,
+                "Q3CmlValue": 9.65,
+                "Q4CmlValue": 9.65
+            },
+            {
+                "name": "Pokémon Ultra Sun/Pokémon Ultra Moon",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 9.23,
+                "Q3CmlValue": 9.23,
+                "Q4CmlValue": 9.23
+            },
+            {
+                "name": "Tomodachi Life",
+                "platform": "Nintendo 3DS",
+                "Q1CmlValue": 0,
+                "Q2CmlValue": 6.72,
+                "Q3CmlValue": 6.72,
+                "Q4CmlValue": 6.72
+            }
         ]
     ]
 }
