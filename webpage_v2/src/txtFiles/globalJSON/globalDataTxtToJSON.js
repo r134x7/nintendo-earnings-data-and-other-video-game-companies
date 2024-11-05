@@ -28,7 +28,7 @@ const makeArray = (newQuarterLocal, currentDataLocal, currentQuarterLocal) => {
 
     return Array.from({length:(newQuarterLocal.length/4)}, (v,i) => {
 
-        let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem,index,array) => (elem.name === newQuarterLocal[(i*4)].trim())); // searching by name
+        let searchTitle = (!currentDataLocal) ? [undefined] : currentDataLocal.filter((elem,index,array) => ((elem.name).trim() === newQuarterLocal[(i*4)].trim())); // searching by name
 
         return (!searchTitle[0])
             ? {

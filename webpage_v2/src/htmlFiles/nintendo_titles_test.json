@@ -1,1 +1,82 @@
-[{"name":"Mario Kart 8 Deluxe","platform":"Nintendo Switch","Q1CmlValue":62.9,"Q2CmlValue":62.9,"Q3CmlValue":62.9,"Q4CmlValue":62.9},{"name":"Animal Crossing: New Horizons","platform":"Nintendo Switch","Q1CmlValue":45.85,"Q2CmlValue":45.85,"Q3CmlValue":45.85,"Q4CmlValue":45.85},{"name":"Super Smash Bros. Ultimate","platform":"Nintendo Switch","Q1CmlValue":34.66,"Q2CmlValue":34.66,"Q3CmlValue":34.66,"Q4CmlValue":34.66},{"name":"The Legend of Zelda: Breath of the Wild","platform":"Nintendo Switch","Q1CmlValue":32.05,"Q2CmlValue":32.05,"Q3CmlValue":32.05,"Q4CmlValue":32.05},{"name":"Super Mario Odyssey","platform":"Nintendo Switch","Q1CmlValue":28.21,"Q2CmlValue":28.21,"Q3CmlValue":28.21,"Q4CmlValue":28.21},{"name":"Pokémon Sword/Pokémon Shield","platform":"Nintendo Switch","Q1CmlValue":26.35,"Q2CmlValue":26.35,"Q3CmlValue":26.35,"Q4CmlValue":26.35},{"name":"Pokémon Scarlet/Pokémon Violet","platform":"Nintendo Switch","Q1CmlValue":25.29,"Q2CmlValue":25.29,"Q3CmlValue":25.29,"Q4CmlValue":25.29},{"name":"Super Mario Party","platform":"Nintendo Switch","Q1CmlValue":20.84,"Q2CmlValue":20.84,"Q3CmlValue":20.84,"Q4CmlValue":20.84},{"name":"The Legend of Zelda: Tears of the Kingdom","platform":"Nintendo Switch","Q1CmlValue":20.8,"Q2CmlValue":20.8,"Q3CmlValue":20.8,"Q4CmlValue":20.8},{"name":"New Super Mario Bros. U Deluxe","platform":"Nintendo Switch","Q1CmlValue":17.61,"Q2CmlValue":17.61,"Q3CmlValue":17.61,"Q4CmlValue":17.61}]
+[
+    {
+        "name": "Mario Kart 8 Deluxe",
+        "platform": "Nintendo Switch",
+        "Q1CmlValue": 62.9,
+        "Q2CmlValue": 64.27,
+        "Q3CmlValue": 64.27,
+        "Q4CmlValue": 64.27
+    },
+    {
+        "name": "Animal Crossing: New Horizons",
+        "platform": "Nintendo Switch",
+        "Q1CmlValue": 45.85,
+        "Q2CmlValue": 46.45,
+        "Q3CmlValue": 46.45,
+        "Q4CmlValue": 46.45
+    },
+    {
+        "name": "Super Smash Bros. Ultimate",
+        "platform": "Nintendo Switch",
+        "Q1CmlValue": 34.66,
+        "Q2CmlValue": 35.14,
+        "Q3CmlValue": 35.14,
+        "Q4CmlValue": 35.14
+    },
+    {
+        "name": "The Legend of Zelda: Breath of the Wild",
+        "platform": "Nintendo Switch",
+        "Q1CmlValue": 32.05,
+        "Q2CmlValue": 32.29,
+        "Q3CmlValue": 32.29,
+        "Q4CmlValue": 32.29
+    },
+    {
+        "name": "Super Mario Odyssey",
+        "platform": "Nintendo Switch",
+        "Q1CmlValue": 28.21,
+        "Q2CmlValue": 28.5,
+        "Q3CmlValue": 28.5,
+        "Q4CmlValue": 28.5
+    },
+    {
+        "name": "Pokémon Sword/Pokémon Shield",
+        "platform": "Nintendo Switch",
+        "Q1CmlValue": 26.35,
+        "Q2CmlValue": 26.44,
+        "Q3CmlValue": 26.44,
+        "Q4CmlValue": 26.44
+    },
+    {
+        "name": "Pokémon Scarlet/Pokémon Violet",
+        "platform": "Nintendo Switch",
+        "Q1CmlValue": 25.29,
+        "Q2CmlValue": 25.69,
+        "Q3CmlValue": 25.69,
+        "Q4CmlValue": 25.69
+    },
+    {
+        "name": "The Legend of Zelda: Tears of the Kingdom",
+        "platform": "Nintendo Switch",
+        "Q1CmlValue": 20.8,
+        "Q2CmlValue": 21.04,
+        "Q3CmlValue": 21.04,
+        "Q4CmlValue": 21.04
+    },
+    {
+        "name": "Super Mario Party",
+        "platform": "Nintendo Switch",
+        "Q1CmlValue": 20.84,
+        "Q2CmlValue": 20.98,
+        "Q3CmlValue": 20.98,
+        "Q4CmlValue": 20.98
+    },
+    {
+        "name": "New Super Mario Bros. U Deluxe",
+        "platform": "Nintendo Switch",
+        "Q1CmlValue": 17.61,
+        "Q2CmlValue": 17.77,
+        "Q3CmlValue": 17.77,
+        "Q4CmlValue": 17.77
+    }
+]
