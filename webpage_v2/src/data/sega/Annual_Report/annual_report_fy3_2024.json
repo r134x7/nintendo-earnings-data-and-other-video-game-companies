@@ -1,0 +1,54 @@
+{
+    "companyName": "SEGA SAMMY HOLDINGS INC.",
+    "fiscalYear": "FY3/2024",
+    "series": [
+        {
+            "title": "Persona",
+            "firstReleaseYear": "1996",
+            "platforms": "Pachislot and Pachinko Machines, Video Games, Movies, Toys, etc.",
+            "totalEditions": 0,
+            "ipType": "Acquired IP",
+            "units": "(Units and downloads)",
+            "value": 23.5,
+            "valueLastFY": 17.7,
+            "valueLastTwoFYs": 15.5, 
+            "footnotes": "(Full games and F2P total)"
+        },
+        {
+            "title": "Sonic the Hedgehog",
+            "firstReleaseYear": "1991",
+            "platforms": "Pachislot and Pachinko Machines, Video Games, Movies, Amusement Machines, Toys, etc.",
+            "totalEditions": 0,
+            "ipType": "Developed in-house IP",
+            "units": "(Units and downloads*)",
+            "value": 1770.0,
+            "valueLastFY": 1660.0,
+            "valueLastTwoFYs": 1510.0, 
+            "footnotes": "(Full games and F2P total). *Including downloads of free-to-play titles "
+        },
+        {
+            "title": "Ryu ga Gotoku",
+            "firstReleaseYear": "2005",
+            "platforms": "Pachislot and Pachinko Machines, Video Games, Movies, Toys, etc.",
+            "totalEditions": 0,
+            "ipType": "Developed in-house IP",
+            "units": "(units)",
+            "value": 27.70,
+            "valueLastFY": 21.3, 
+            "valueLastTwoFYs": 19.8,
+            "footnotes": "(Full games total)"
+        },
+        {
+            "title": "Hokuto No Ken",
+            "firstReleaseYear": "2002",
+            "platforms": "Pachislot and Pachinko Machines, Video Games, Movies, Amusement Machines, Toys, etc.",
+            "totalEditions": 0,
+            "ipType":  "Licensed third party IP",
+            "units": "(Units and downloads)",
+            "value": 8.95,
+            "valueLastFY": 8.54,
+            "valueLastTwoFYs": 7.84,
+            "footnotes": "(pachislot and pachinko machines, full games and F2P, and Amusement machines total) Pachislot and Pachinko: 3.15M units. Full Games, F2P and Amusement Machines: 5.8M units/downloads."
+        }
+    ]
+}
