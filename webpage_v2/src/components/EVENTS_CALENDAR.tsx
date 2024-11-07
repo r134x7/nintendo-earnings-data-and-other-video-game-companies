@@ -169,8 +169,8 @@ export default function EVENTS_CALENDAR() {
         {
             id: 19,
             companyName: "Kadokawa",
-            eventName: dateTemplate("1st", 3, "March", nextYear),
-            eventDate: "August 14, 2024",
+            eventName: dateTemplate("2nd", 3, "March", nextYear),
+            eventDate: "November 7, 2024",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://group.kadokawa.co.jp/global/ir/",
         },
