@@ -1,0 +1,48 @@
+{
+    "companyName": "CAPCOM Co., Ltd.",
+    "fiscalYear": "FY3/2024",
+    "series": [
+        {
+            "title": "PlayStation 3, PlayStation 4, PlayStation 5",
+            "skuNumber": 7,
+            "value": 3.078,
+            "valueLastFY": 2.35
+        },
+        {
+            "title": "Wii, Wii U, Nintendo Switch",
+            "skuNumber": 2,
+            "value": 1.210,
+            "valueLastFY": 1.75
+        },
+        {
+            "title": "Xbox 360, Xbox One, Xbox Series X|S",
+            "skuNumber": 2,
+            "value": 0.206,
+            "valueLastFY": 0.25
+        },
+        {
+            "title": "PC Other",
+            "skuNumber": 0,
+            "value": 0.044,
+            "valueLastFY": 0.05
+        },
+        {
+            "title": "Package Total",
+            "skuNumber": 11,
+            "value": 4.541,
+            "valueLastFY": 4.4
+        },
+        {
+            "title": "Full-game download",
+            "skuNumber": 24,
+            "value": 41.352,
+            "valueLastFY": 37.3
+        },
+        {
+            "title": "Total",
+            "skuNumber": 35,
+            "value": 45.893,
+            "valueLastFY": 41.7
+        }
+    ] 
+}
