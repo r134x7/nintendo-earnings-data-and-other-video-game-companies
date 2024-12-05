@@ -1,0 +1,31 @@
+{
+    "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
+    "fiscalYear": "FY3/2024",
+    "series": [
+        {
+            "title": "Final Fantasy",
+            "releaseDate": "December 1987",
+            "fyEndMonth": "March 2024",
+            "value": 185,
+            "valueLastFY": 180,
+            "valueLastTwoFYs": 173
+        },
+        {
+            "title": "Dragon Quest",
+            "releaseDate": "May 1986",
+            "fyEndMonth": "March 2024",
+            "value": 88,
+            "valueLastFY": 88,
+            "valueLastTwoFYs": 85
+        },
+        {
+            "title": "Kingdom Hearts",
+            "releaseDate": "March 2002",
+            "fyEndMonth": "March 2024",
+            "value": 37,
+            "valueLastFY": 36,
+            "valueLastTwoFYs": 36 
+        }
+    ],
+    "footnotes": "*Annual Report 2024 gives sales numbers as of June, 2024. Data where applicable taken from Q1 FY3/2025 Press Release as most recent change in numbers before Annual Report for accuracy."
+}
