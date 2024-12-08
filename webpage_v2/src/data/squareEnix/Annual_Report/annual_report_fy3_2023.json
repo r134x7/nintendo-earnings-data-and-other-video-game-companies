@@ -5,15 +5,15 @@
         {
             "title": "Final Fantasy",
             "releaseDate": "December 1987",
-            "fyEndMonth": "March 2023",
-            "value": 180,
+            "fyEndMonth": "June 2023",
+            "value": 185,
             "valueLastFY": 173,
             "valueLastTwoFYs": 164
         },
         {
             "title": "Dragon Quest",
             "releaseDate": "May 1986",
-            "fyEndMonth": "March 2023",
+            "fyEndMonth": "June 2023",
             "value": 88,
             "valueLastFY": 85,
             "valueLastTwoFYs": 83
@@ -21,11 +21,11 @@
         {
             "title": "Kingdom Hearts",
             "releaseDate": "March 2002",
-            "fyEndMonth": "March 2023",
+            "fyEndMonth": "June 2023",
             "value": 36,
             "valueLastFY": 36,
             "valueLastTwoFYs": "Nothing" 
         }
     ],
-    "footnotes": "*Annual Report 2023 gives sales numbers as of June, 2023. Data where applicable taken from Q1 FY3/2024 Press Release as most recent change in numbers before Annual Report for accuracy."
+    "footnotes": "*Annual Report 2023 gives sales numbers as of June, 2023."
 }
