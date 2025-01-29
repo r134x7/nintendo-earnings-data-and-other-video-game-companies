@@ -1,14 +1,14 @@
 {
+    "currentQuarter": 3,
     "fiscalYear": "FY3/2025",
     "companyName": "CAPCOM Co., Ltd.",
-    "currentQuarter": 2,
     "data": [
         {
             "name": "Digital Contents - Package & Digital",
             "units": "currency",
             "Q1CmlValue": 203,
             "Q2CmlValue": 377,
-            "Q3CmlValue": "Nothing",
+            "Q3CmlValue": 557,
             "Q4CmlValue": "Nothing",
             "forecastThisFY": 1211,
             "forecastNextFY": "Nothing",
@@ -19,7 +19,7 @@
             "units": "units",
             "Q1CmlValue": 9534,
             "Q2CmlValue": 20025,
-            "Q3CmlValue": "Nothing",
+            "Q3CmlValue": 30531,
             "Q4CmlValue": "Nothing",
             "forecastThisFY": 50000,
             "forecastNextFY": "Nothing" 
@@ -29,7 +29,7 @@
             "units": "currency",
             "Q1CmlValue": 24,
             "Q2CmlValue": 38,
-            "Q3CmlValue": "Nothing",
+            "Q3CmlValue": 83,
             "Q4CmlValue": "Nothing", 
             "forecastThisFY": 144, 
             "forecastNextFY": "Nothing"
@@ -39,7 +39,7 @@
             "units": "units",
             "Q1CmlValue": 708,
             "Q2CmlValue": 1264,
-            "Q3CmlValue": "Nothing",
+            "Q3CmlValue": 2693,
             "Q4CmlValue": "Nothing", 
             "forecastThisFY": 2500,
             "forecastNextFY": "Nothing" 
@@ -49,7 +49,7 @@
             "units": "currency",
             "Q1CmlValue": 178,
             "Q2CmlValue": 338,
-            "Q3CmlValue": "Nothing",
+            "Q3CmlValue": 473,
             "Q4CmlValue": "Nothing",
             "forecastThisFY": 1066,
             "forecastNextFY": "Nothing",
@@ -60,7 +60,7 @@
             "units": "units",
             "Q1CmlValue": 8826,
             "Q2CmlValue": 18761,
-            "Q3CmlValue": "Nothing",
+            "Q3CmlValue": 27838,
             "Q4CmlValue": "Nothing", 
             "forecastThisFY": 46600,
             "forecastNextFY": "Nothing"

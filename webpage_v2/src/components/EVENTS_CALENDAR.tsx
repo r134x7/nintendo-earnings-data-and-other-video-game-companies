@@ -82,7 +82,7 @@ export default function EVENTS_CALENDAR() {
             id: 7,
             companyName: "Koei Tecmo",
             eventName: dateTemplate("3rd", 3, "March", nextYear),
-            eventDate: "January 28, 2025",
+            eventDate: "January 27, 2025",
             timeZone: "Japan, JST, UTC +9 Hours",
             irPage: "https://www.koeitecmo.co.jp/e/ir/",
         },
