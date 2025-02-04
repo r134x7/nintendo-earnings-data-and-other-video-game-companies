@@ -18,6 +18,8 @@ const getTotals = (readQuarterLocal) => {
 
     let getMatch = readQuarterLocal.match(/.+(?=\r\nJapan)|Total|(?<=Total\r\n)\d+|(?<=Total\r\n\d+\r\n)\d+/g) // had to construct like this to avoid making one long match with escape characters e.g. Total\r\n111\r\n222
 
+    // there is a problem where if there is whitespace after a number, this screws up the whole matching,
+    // you have to make sure there is no white space on the lines you are matching.
     return getMatch
 };
 

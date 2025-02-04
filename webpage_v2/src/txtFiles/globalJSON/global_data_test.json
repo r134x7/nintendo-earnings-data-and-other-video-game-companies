@@ -4,8 +4,8 @@
         "units": "units",
         "Q1CmlValue": 210,
         "Q2CmlValue": 472,
-        "Q3CmlValue": 472,
-        "Q4CmlValue": 472,
+        "Q3CmlValue": 954,
+        "Q4CmlValue": 954,
         "cmlValueLastFY": 14132
     },
     {
@@ -13,8 +13,8 @@
         "units": "units",
         "Q1CmlValue": 53,
         "Q2CmlValue": 126,
-        "Q3CmlValue": 126,
-        "Q4CmlValue": 126,
+        "Q3CmlValue": 274,
+        "Q4CmlValue": 274,
         "cmlValueLastFY": 9344
     },
     {
@@ -22,17 +22,17 @@
         "units": "units",
         "Q1CmlValue": 124,
         "Q2CmlValue": 250,
-        "Q3CmlValue": 250,
-        "Q4CmlValue": 250,
-        "cmlValueLastFY": 2433
+        "Q3CmlValue": 507,
+        "Q4CmlValue": 507,
+        "cmlValueLastFY": 2434
     },
     {
         "name": "Nintendo Switch Lite",
         "units": "units",
         "Q1CmlValue": 33,
         "Q2CmlValue": 97,
-        "Q3CmlValue": 97,
-        "Q4CmlValue": 97,
+        "Q3CmlValue": 173,
+        "Q4CmlValue": 173,
         "cmlValueLastFY": 2354
     },
     {
@@ -40,8 +40,8 @@
         "units": "units",
         "Q1CmlValue": 3064,
         "Q2CmlValue": 7028,
-        "Q3CmlValue": 7028,
-        "Q4CmlValue": 7028,
+        "Q3CmlValue": 12398,
+        "Q4CmlValue": 12398,
         "cmlValueLastFY": 123582
     }
 ]

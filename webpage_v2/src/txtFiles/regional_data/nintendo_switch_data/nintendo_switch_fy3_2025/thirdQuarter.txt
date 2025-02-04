@@ -1,4 +1,4 @@
-Nintendo Switch Hardware Total
+Nintendo Switch Hardware Total 
 Japan
 281
 3682
@@ -19,7 +19,7 @@ Total
 954
 15086
 
-Nintendo Switch
+Nintendo Switch 
 Japan
 49 
 2083
@@ -37,8 +37,9 @@ Other
 1118
 
 Total
-274
-9618
+274 
+9618 
+
 
 Nintendo Switch OLED Model
 Japan
@@ -58,7 +59,7 @@ Other
 445
 
 Total
-507
+507 
 2941
 
 Nintendo Switch Lite
@@ -79,8 +80,9 @@ Other
 159
 
 Total
-173
+173 
 2527
+
 
 Nintendo Switch Software Total
 Japan
@@ -100,5 +102,5 @@ Other
 10603
 
 Total
-12398
+12398 
 135980

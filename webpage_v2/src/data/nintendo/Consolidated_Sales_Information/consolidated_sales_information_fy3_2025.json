@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 2,
+    "currentQuarter": 3,
     "fiscalYear": "FY3/2025",
     "platformSales": [
             {
@@ -7,8 +7,8 @@
                 "units": "currency",
                 "Q1CmlValue": 14709,
                 "Q2CmlValue": 31217,
-                "Q3CmlValue": 31217,
-                "Q4CmlValue": 31217,
+                "Q3CmlValue": 49772,
+                "Q4CmlValue": 49772,
                 "footnote": "Includes income from visual content, smart-device content and royalties." 
             },
             {
@@ -16,8 +16,8 @@
                 "units": "currency",
                 "Q1CmlValue": 2851,
                 "Q2CmlValue": 6864,
-                "Q3CmlValue": 6864,
-                "Q4CmlValue": 6864,
+                "Q3CmlValue": 10921,
+                "Q4CmlValue": 10921,
                 "footnote": "Includes merchandise sales at official stores such as Nintendo TOKYO as well as playing cards."
             },
             {
@@ -25,8 +25,8 @@
                 "units": "currency",
                 "Q1CmlValue": 229077,
                 "Q2CmlValue": 485217,
-                "Q3CmlValue": 485217,
-                "Q4CmlValue": 485217,
+                "Q3CmlValue": 895523,
+                "Q4CmlValue": 895523,
                 "footnote": "Includes Nintendo Switch platform and other dedicated video game platforms." 
             },
             {
@@ -34,8 +34,8 @@
                 "units": "currency",
                 "Q1CmlValue": 80700,
                 "Q2CmlValue": 159900,
-                "Q3CmlValue": 159900,
-                "Q4CmlValue": 159900,
+                "Q3CmlValue": 245800,
+                "Q4CmlValue": 245800,
                 "footnote": "Includes downloadable versions of packaged software, download-only software, add-on content and Nintendo Switch Online." 
             },
             {
@@ -43,8 +43,8 @@
                 "units": "currency",
                 "Q1CmlValue": 222824,
                 "Q2CmlValue": 470216,
-                "Q3CmlValue": 470216,
-                "Q4CmlValue": 470216,
+                "Q3CmlValue": 871613,
+                "Q4CmlValue": 871613,
                 "cmlValueLastFY": 9422394,
                 "footnote": "Nintendo Switch platform includes hardware, software (including downloadable versions of packaged software, download-only software, add-on content and Nintendo Switch Online) and accessories" 
             },
@@ -53,8 +53,8 @@
                 "units": "currency",
                 "Q1CmlValue": 6252,
                 "Q2CmlValue": 15000,
-                "Q3CmlValue": 15000,
-                "Q4CmlValue": 15000,
+                "Q3CmlValue": 23910,
+                "Q4CmlValue": 23910,
                 "footnote": "Includes platforms other than Nintendo Switch and also amiibo." 
             }
     ]
