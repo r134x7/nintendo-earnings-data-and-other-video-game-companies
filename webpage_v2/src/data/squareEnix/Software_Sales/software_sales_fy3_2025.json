@@ -1,14 +1,14 @@
 {
+    "currentQuarter": 3,
     "fiscalYear": "FY3/2025",
     "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
-    "currentQuarter": 2,
     "data": [
         {
             "name": "HD Games",
             "units": "currency",
             "Q1CmlValue": 12.3,
             "Q2CmlValue": 27.5,
-            "Q3CmlValue": "Nothing",
+            "Q3CmlValue": 60.0,
             "Q4CmlValue": "Nothing",
             "footnotes": "*Sales might include: - Downloadable content purchases" 
         },
@@ -25,7 +25,7 @@
             "units": "currency",
             "Q1CmlValue": 12.5,
             "Q2CmlValue": 32.4,
-            "Q3CmlValue": "Nothing",
+            "Q3CmlValue": 44.0,
             "Q4CmlValue": "Nothing",
             "footnotes": "**MMO sales includes subscriptions" 
         },
@@ -42,7 +42,7 @@
             "units": "currency",
             "Q1CmlValue": 24.8,
             "Q2CmlValue": 38.2,
-            "Q3CmlValue": "Nothing",
+            "Q3CmlValue": 104.0,
             "Q4CmlValue": "Nothing",
             "footnotes": "*Sales might include: - Downloadable content purchases" 
         },
@@ -51,7 +51,7 @@
             "units": "units",
             "Q1CmlValue": 4.39,
             "Q2CmlValue": 10.69,
-            "Q3CmlValue": "Nothing",
+            "Q3CmlValue": 20.01,
             "Q4CmlValue": "Nothing" 
         }
     ]
