@@ -30,27 +30,27 @@ Total
 -
 
 Japan
-20792
+29783
 -
 -
 -
 North America
-4255
+7252
 -
 -
 -
 Europe
-1403
+2082
 -
 -
 -
 Asia
-8747
+13458
 -
 -
 -
 Global
-35197
+52576
 -
 -
 -
