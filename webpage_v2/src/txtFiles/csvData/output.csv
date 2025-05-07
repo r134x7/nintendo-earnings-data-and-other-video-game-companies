@@ -1,0 +1,54 @@
+[
+ [
+  "name",
+  "units",
+  "Q1CmlValue",
+  "Q2CmlValue",
+  "Q3CmlValue",
+  "Q4CmlValue",
+  "forecastThisFY",
+  "forecastRevision1",
+  "forecastRevision2",
+  "forecastRevision3",
+  "forecastNextFY"
+ ],
+ [
+  "Net Sales",
+  "currency",
+  "17607",
+  "35197",
+  "52570",
+  "83150",
+  "90000",
+  "null",
+  "null",
+  "null",
+  "92000"
+ ],
+ [
+  "Operating Income",
+  "currency",
+  "5723",
+  "10651",
+  "15075",
+  "32119",
+  "30000",
+  "null",
+  "null",
+  "null",
+  "31000"
+ ],
+ [
+  "Net Income",
+  "currency",
+  "13638",
+  "15975",
+  "25161",
+  "37628",
+  "30000",
+  "null",
+  "null",
+  "null",
+  "27000"
+ ]
+]
