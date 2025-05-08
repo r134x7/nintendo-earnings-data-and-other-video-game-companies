@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "companyName": "KADOKAWA CORPORATION",
     "fiscalYear": "FY3/2025",
     "data": [
@@ -9,12 +9,12 @@
             "Q1CmlValue": 65860,
             "Q2CmlValue": 136320,
             "Q3CmlValue": 206587,
-            "Q4CmlValue": 206587,
+            "Q4CmlValue": 277915,
             "forecastThisFY": 271300,
             "forecastRevision1": 271700,
             "forecastRevision2": null,
             "forecastRevision3": null,
-            "forecastNextFY": null
+            "forecastNextFY": 291900
         },
         {
             "name": "Operating Income",
@@ -22,12 +22,12 @@
             "Q1CmlValue": 6029,
             "Q2CmlValue": 10626,
             "Q3CmlValue": 15838,
-            "Q4CmlValue": 15838,
+            "Q4CmlValue": 16651,
             "forecastThisFY": 15600,
             "forecastRevision1": 16300,
             "forecastRevision2": null,
             "forecastRevision3": null,
-            "forecastNextFY": null
+            "forecastNextFY": 16700
         },
         {
             "name": "Net Income",
@@ -35,12 +35,12 @@
             "Q1CmlValue": 3454,
             "Q2CmlValue": 3096,
             "Q3CmlValue": 7366,
-            "Q4CmlValue": 7366,
+            "Q4CmlValue": 7392,
             "forecastThisFY": 9700,
             "forecastRevision1": 9000,
             "forecastRevision2": null,
             "forecastRevision3": null,
-            "forecastNextFY": null
+            "forecastNextFY": 11400
         }
     ]
 }
