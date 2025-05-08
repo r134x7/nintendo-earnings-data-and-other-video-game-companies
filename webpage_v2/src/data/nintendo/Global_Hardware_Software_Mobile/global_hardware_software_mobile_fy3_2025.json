@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "fiscalYear": "FY3/2025",
     "platformCmlSales": [
         {
@@ -8,7 +8,7 @@
             "Q1CmlValue": 222824,
             "Q2CmlValue": 470216,
             "Q3CmlValue": 871613,
-            "Q4CmlValue": 871613,
+            "Q4CmlValue": 1050296,
             "cmlValueLastFY": 9422394,
             "hardwareReference": [
                 "Nintendo Switch Hardware Total" 
@@ -22,7 +22,7 @@
             "Q1CmlValue": 210,
             "Q2CmlValue": 472,
             "Q3CmlValue": 954,
-            "Q4CmlValue": 954,
+            "Q4CmlValue": 1080,
             "cmlValueLastFY": 14132
         },
         {
@@ -31,7 +31,7 @@
             "Q1CmlValue": 53,
             "Q2CmlValue": 126,
             "Q3CmlValue": 274,
-            "Q4CmlValue": 274,
+            "Q4CmlValue": 300,
             "cmlValueLastFY": 9344
         },
         {
@@ -40,8 +40,8 @@
             "Q1CmlValue": 124,
             "Q2CmlValue": 250,
             "Q3CmlValue": 507,
-            "Q4CmlValue": 507,
-            "cmlValueLastFY": 2434
+            "Q4CmlValue": 586,
+            "cmlValueLastFY": 2433
         },
         {
             "name": "Nintendo Switch Lite",
@@ -49,7 +49,7 @@
             "Q1CmlValue": 33,
             "Q2CmlValue": 97,
             "Q3CmlValue": 173,
-            "Q4CmlValue": 173,
+            "Q4CmlValue": 195,
             "cmlValueLastFY": 2354
         },
         {
@@ -58,8 +58,26 @@
             "Q1CmlValue": 3064,
             "Q2CmlValue": 7028,
             "Q3CmlValue": 12398,
-            "Q4CmlValue": 12398,
+            "Q4CmlValue": 15541,
             "cmlValueLastFY": 123582
+        },
+        {
+            "name": "Nintendo 3DS Software Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 27,
+            "cmlValueLastFY": 39196 
+        },
+        {
+            "name": "Wii U Software Total",
+            "units": "units",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": "+0",
+            "cmlValueLastFY": 10360
         }
     ],
     "platformForecastSales": [
@@ -67,14 +85,25 @@
             "name": "Nintendo Switch Hardware Total",
             "forecastThisFY": 1350,
             "forecastRevision1": 1250,
-            "forecastRevision2": 1100
+            "forecastRevision2": 1100,
+            "forecastNextFY": 450
         },
         {
             "name": "Nintendo Switch Software Total",
             "forecastThisFY": 16500,
             "forecastRevision1": 16000,
             "forecastRevision2": 15000,
-            "footnote": "Software sales units include both packaged and downloadable versions of software, and do not include download-only software or add-on content. Actual software sales units include the quantity bundled with hardware or other products. Forecasted software sales units includes software bundled with other products during the nine months ended December 31, 2024 but does not include software to be bundled with other products January 1, 2025 onwards."
+            "forecastNextFY": 10500,
+            "footnote": "Software sales units include both packaged and downloadable versions of software, and do not include download-only software or add-on content. Actual software sales units include the quantity bundled with hardware or other products. Forecasted software sales units includes software bundled with other products. Packaged versions of Nintendo Switch 2 Edition software are included in Nintendo Switch 2 software sales units, and downloadable versions are included in Nintendo Switch software sales units. Sales of upgrade packs are not included in software. Nintendo Switch 2 Hardware Total Forecast FY3/2026: 15M, Nintendo Switch 2 Software Total Forecast FY3/2026: 45M"
+        },
+        {
+            "name": "Nintendo Switch 2 Hardware Total",
+            "forecastNextFY": 1500 
+        },
+        {
+            "name": "Nintendo Switch 2 Software Total",
+            "forecastNextFY": 4500,
+            "footnote": "Software sales units include both packaged and downloadable versions of software, and do not include download-only software or add-on content. Actual software sales units include the quantity bundled with hardware or other products. Forecasted software sales units includes software bundled with other products. Packaged versions of Nintendo Switch 2 Edition software are included in Nintendo Switch 2 software sales units, and downloadable versions are included in Nintendo Switch software sales units. Sales of upgrade packs are not included in software"
         }
     ]
 }

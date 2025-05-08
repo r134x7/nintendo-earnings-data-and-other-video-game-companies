@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "fiscalYear": "FY3/2025",
     "titles": [
         [
@@ -9,7 +9,7 @@
                 "Q1CmlValue": 62.9,
                 "Q2CmlValue": 64.27,
                 "Q3CmlValue": 67.35,
-                "Q4CmlValue": 67.35
+                "Q4CmlValue": 68.2
             },
             {
                 "name": "Animal Crossing: New Horizons",
@@ -17,7 +17,7 @@
                 "Q1CmlValue": 45.85,
                 "Q2CmlValue": 46.45,
                 "Q3CmlValue": 47.44,
-                "Q4CmlValue": 47.44
+                "Q4CmlValue": 47.82
             },
             {
                 "name": "Super Smash Bros. Ultimate",
@@ -25,7 +25,7 @@
                 "Q1CmlValue": 34.66,
                 "Q2CmlValue": 35.14,
                 "Q3CmlValue": 35.88,
-                "Q4CmlValue": 35.88
+                "Q4CmlValue": 36.24
             },
             {
                 "name": "The Legend of Zelda: Breath of the Wild",
@@ -33,7 +33,7 @@
                 "Q1CmlValue": 32.05,
                 "Q2CmlValue": 32.29,
                 "Q3CmlValue": 32.62,
-                "Q4CmlValue": 32.62
+                "Q4CmlValue": 32.81
             },
             {
                 "name": "Super Mario Odyssey",
@@ -41,15 +41,7 @@
                 "Q1CmlValue": 28.21,
                 "Q2CmlValue": 28.5,
                 "Q3CmlValue": 29.04,
-                "Q4CmlValue": 29.04
-            },
-            {
-                "name": "Pokémon Sword/Pokémon Shield",
-                "platform": "Nintendo Switch",
-                "Q1CmlValue": 26.35,
-                "Q2CmlValue": 26.44,
-                "Q3CmlValue": 26.6,
-                "Q4CmlValue": 26.6
+                "Q4CmlValue": 29.28
             },
             {
                 "name": "Pokémon Scarlet/Pokémon Violet",
@@ -57,7 +49,15 @@
                 "Q1CmlValue": 25.29,
                 "Q2CmlValue": 25.69,
                 "Q3CmlValue": 26.38,
-                "Q4CmlValue": 26.38
+                "Q4CmlValue": 26.79
+            },
+            {
+                "name": "Pokémon Sword/Pokémon Shield",
+                "platform": "Nintendo Switch",
+                "Q1CmlValue": 26.35,
+                "Q2CmlValue": 26.44,
+                "Q3CmlValue": 26.6,
+                "Q4CmlValue": 26.72
             },
             {
                 "name": "The Legend of Zelda: Tears of the Kingdom",
@@ -65,7 +65,7 @@
                 "Q1CmlValue": 20.8,
                 "Q2CmlValue": 21.04,
                 "Q3CmlValue": 21.55,
-                "Q4CmlValue": 21.55
+                "Q4CmlValue": 21.73
             },
             {
                 "name": "Super Mario Party",
@@ -73,7 +73,7 @@
                 "Q1CmlValue": 20.84,
                 "Q2CmlValue": 20.98,
                 "Q3CmlValue": 21.1,
-                "Q4CmlValue": 21.1
+                "Q4CmlValue": 21.16
             },
             {
                 "name": "New Super Mario Bros. U Deluxe",
@@ -81,7 +81,7 @@
                 "Q1CmlValue": 17.61,
                 "Q2CmlValue": 17.77,
                 "Q3CmlValue": 18.06,
-                "Q4CmlValue": 18.06
+                "Q4CmlValue": 18.25
             }
         ],
         [
@@ -99,7 +99,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 16.76,
                 "Q3CmlValue": 16.76,
-                "Q4CmlValue": 16.76
+                "Q4CmlValue": 16.78
             },
             {
                 "name": "Pokémon Sun/Pokémon Moon",
@@ -115,7 +115,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 14.63,
                 "Q3CmlValue": 14.63,
-                "Q4CmlValue": 14.63
+                "Q4CmlValue": 14.67
             },
             {
                 "name": "New Super Mario Bros. 2",
@@ -139,7 +139,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 12.88,
                 "Q3CmlValue": 12.88,
-                "Q4CmlValue": 12.88
+                "Q4CmlValue": 12.89
             },
             {
                 "name": "Super Smash Bros. for Nintendo 3DS",
@@ -155,7 +155,7 @@
                 "Q1CmlValue": 0,
                 "Q2CmlValue": 9.23,
                 "Q3CmlValue": 9.23,
-                "Q4CmlValue": 9.23
+                "Q4CmlValue": 9.26
             },
             {
                 "name": "Tomodachi Life",

@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "companyName": "Nintendo Co., Ltd.",
     "fiscalYear": "FY3/2025",
     "data": [
@@ -9,12 +9,12 @@
             "Q1CmlValue": 246638,
             "Q2CmlValue": 523299,
             "Q3CmlValue": 956218,
-            "Q4CmlValue": 956218,
+            "Q4CmlValue": 1164922,
             "forecastThisFY": 1350000,
             "forecastRevision1": 1280000,
             "forecastRevision2": 1190000,
             "forecastRevision3": null,
-            "forecastNextFY": null
+            "forecastNextFY": 1900000
         },
         {
             "name": "Operating Income",
@@ -22,12 +22,12 @@
             "Q1CmlValue": 54510,
             "Q2CmlValue": 121513,
             "Q3CmlValue": 247597,
-            "Q4CmlValue": 247597,
+            "Q4CmlValue": 282553,
             "forecastThisFY": 400000,
             "forecastRevision1": 360000,
             "forecastRevision2": 280000,
             "forecastRevision3": null,
-            "forecastNextFY": null
+            "forecastNextFY": 320000
         },
         {
             "name": "Net Income",
@@ -35,12 +35,12 @@
             "Q1CmlValue": 80954,
             "Q2CmlValue": 108658,
             "Q3CmlValue": 237189,
-            "Q4CmlValue": 237189,
+            "Q4CmlValue": 278806,
             "forecastThisFY": 300000,
             "forecastRevision1": 300000,
             "forecastRevision2": 270000,
             "forecastRevision3": null,
-            "forecastNextFY": null
+            "forecastNextFY": 300000
         }
     ]
 }
