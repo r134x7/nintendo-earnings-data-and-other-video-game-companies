@@ -18,6 +18,8 @@ const collectionCapcomFactBook = globImport(new Map<number, SeriesJSON>, import.
 
 const collectionCapcomUnitsHardware= globImport(new Map<number, SeriesJSON>, import.meta.glob("../capcom/Units_By_Hardware/*.json", { import: "default", eager: true }), "Ascending");
 
+const collectionKonami = globImport(new Map<number, SeriesJSON>, import.meta.glob("../konami/Annual_Report/*.json", { import: "default", eager: true }), "Ascending");
+
 const bandaiNamcoTitleChange = new Map<string, string>([
     // [new, old]
     ["Naruto-related", "Ultimate Ninja Storm"]
@@ -37,6 +39,8 @@ export const capcomFactBookCml = annualReportCumulative(collectionCapcomFactBook
 
 export const capcomUnitsHardwareCml = annualReportCumulative(collectionCapcomUnitsHardware, 38, "Capcom Fact Book");
 
+export const konamiAnnualReportCml = annualReportCumulative(collectionKonami, 38, "General");
+
 collectionBandaiNamco.clear();
 bandaiNamcoTitleChange.clear();
 collectionSquareEnix.clear();
@@ -45,6 +49,7 @@ segaTitleChange.clear();
 collectionCapcomGameSeries.clear();
 collectionCapcomFactBook.clear();
 collectionCapcomUnitsHardware.clear();
+collectionKonami.clear();
 
 function annualReportCumulative(completeCollection: Map<number, SeriesJSON>, headerLength: number, 
     kind: "General" | "Sega" | "Capcom Game Series" | "Capcom Fact Book",
@@ -225,7 +230,8 @@ function valuePrint(value: AnnualReportTitle[], kind: "General" | "Sega" | "Capc
                 , "−", "bottom", "newLine", 42),
                 liner(
                 printAnnualReportValue(value.at(-1) as AnnualReportTitle, 27, 12, "LTD (units)","noNewLine")
-                , "−", "bottom", "newLine")
+                , "−", "bottom", "newLine"),
+                liner(printTextBlock(value.at(-1)?.footnotes, 42),"=","bottom","newLine", 42) ?? "",
             ].reduce((acc, next) => acc + next, "");
 
         case "Sega":
