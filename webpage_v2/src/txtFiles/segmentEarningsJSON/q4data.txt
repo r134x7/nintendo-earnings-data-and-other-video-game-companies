@@ -1,56 +1,66 @@
-Digital Entertainment
-305187 
-310000
-98935 
-103000
+Entertainment (Digital)
+455633
+390000
+68527
+40000
+Entertainment (Toys and Hobby)
+596933
+600000
+102202
+105000
+IP Production 
+90738
+90000
+11778
+10500
 Amusement
-27634 
-31000
-5938 
-8000
-Gaming & Systems
-42669 
-43000
-7359 
-7500
-Sports
-48543 
-49000
-2231 
-3000
-Intersegment Eliminations
-(2431) 
-(3000)
-(5346) 
-(7500)
+141485
+150000
+8438
+9500
+Other
+36224
+38000
+1671
+1500
+Elimination and Corporate
+(79502)
+(68000)
+(12390)
+(21500)
 Total
-421602
-380000
-109117
-114000
+1241513
+1200000
+180229
+145000
 
-Japan 
-298945
+Japan
+867065
+836500
+160806
+135500
+Americas
+140531
+128500
+13827
+11000
+Europe
+125784
+126000
+5539
+7000
+Asia
+108133
+109000
+14508
+13000 
+Elimination and Corporate (Region)
 -
 -
--
-United States 
-76047
--
--
--
-Europe 
-27871
--
--
--
-Asia/Oceania 
-18739
--
--
--
-Global 
-421602
--
--
--
+(14450)
+(21500) 
+Global
+1241513
+1200000
+180229 
+145000 
