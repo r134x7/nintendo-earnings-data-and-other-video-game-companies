@@ -1,23 +1,23 @@
 [
     {
-        "name": "Entertainment Contents",
+        "name": "Digital Contents",
         "units": "currency",
         "ID": "1",
         "Q1CmlValue": {
-            "netSales": 72733,
-            "operatingIncome": 12509
+            "netSales": 21416,
+            "operatingIncome": 12821
         },
         "Q2CmlValue": {
-            "netSales": 142060,
-            "operatingIncome": 18348
+            "netSales": 39775,
+            "operatingIncome": 20640
         },
         "Q3CmlValue": {
-            "netSales": 239050,
-            "operatingIncome": 37564
+            "netSales": 58534,
+            "operatingIncome": 29247
         },
         "Q4CmlValue": {
-            "netSales": 322145,
-            "operatingIncome": 41886
+            "netSales": 125128,
+            "operatingIncome": 65172
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -41,24 +41,24 @@
         }
     },
     {
-        "name": "Pachislot & Pachinko",
+        "name": "Arcade Operations",
         "units": "currency",
         "ID": "2",
         "Q1CmlValue": {
-            "netSales": 28907,
-            "operatingIncome": 10715
+            "netSales": 4864,
+            "operatingIncome": 516
         },
         "Q2CmlValue": {
-            "netSales": 64776,
-            "operatingIncome": 21588
+            "netSales": 10991,
+            "operatingIncome": 1667
         },
         "Q3CmlValue": {
-            "netSales": 76522,
-            "operatingIncome": 19756
+            "netSales": 16552,
+            "operatingIncome": 2258
         },
         "Q4CmlValue": {
-            "netSales": 97226,
-            "operatingIncome": 20977
+            "netSales": 22750,
+            "operatingIncome": 2432
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -82,24 +82,24 @@
         }
     },
     {
-        "name": "Gaming",
+        "name": "Amusement Equipments",
         "units": "currency",
         "ID": "3",
         "Q1CmlValue": {
-            "netSales": 686,
-            "operatingIncome": 917
+            "netSales": 2220,
+            "operatingIncome": 1083
         },
         "Q2CmlValue": {
-            "netSales": 1813,
-            "operatingIncome": -283
+            "netSales": 3176,
+            "operatingIncome": 1587
         },
         "Q3CmlValue": {
-            "netSales": 3118,
-            "operatingIncome": 954
+            "netSales": 10242,
+            "operatingIncome": 5083
         },
         "Q4CmlValue": {
-            "netSales": 5471,
-            "operatingIncome": 2186
+            "netSales": 15613,
+            "operatingIncome": 6701
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -123,24 +123,65 @@
         }
     },
     {
-        "name": "Other / Elimination",
+        "name": "Other",
         "units": "currency",
         "ID": "4",
         "Q1CmlValue": {
-            "netSales": 2429,
-            "operatingIncome": -2312
+            "netSales": 1097,
+            "operatingIncome": 664
         },
         "Q2CmlValue": {
-            "netSales": 3012,
-            "operatingIncome": -6558
+            "netSales": 2459,
+            "operatingIncome": 1195
         },
         "Q3CmlValue": {
-            "netSales": 3624,
-            "operatingIncome": -8865
+            "netSales": 3524,
+            "operatingIncome": 1250
         },
         "Q4CmlValue": {
-            "netSales": 4105,
-            "operatingIncome": -11935
+            "netSales": 6111,
+            "operatingIncome": 2484
+        },
+        "forecastThisFY": {
+            "netSales": "Nothing",
+            "operatingIncome": "Nothing"
+        },
+        "forecastRevision1": {
+            "netSales": null,
+            "operatingIncome": null
+        },
+        "forecastRevision2": {
+            "netSales": null,
+            "operatingIncome": null
+        },
+        "forecastRevision3": {
+            "netSales": null,
+            "operatingIncome": null
+        },
+        "forecastNextFY": {
+            "netSales": "Nothing",
+            "operatingIncome": "Nothing"
+        }
+    },
+    {
+        "name": "Adjustment",
+        "units": "currency",
+        "ID": "5",
+        "Q1CmlValue": {
+            "netSales": "Nothing",
+            "operatingIncome": -2196
+        },
+        "Q2CmlValue": {
+            "netSales": "Nothing",
+            "operatingIncome": -4364
+        },
+        "Q3CmlValue": {
+            "netSales": "Nothing",
+            "operatingIncome": -6818
+        },
+        "Q4CmlValue": {
+            "netSales": "Nothing",
+            "operatingIncome": -11013
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -166,22 +207,22 @@
     {
         "name": "Total",
         "units": "currency",
-        "ID": "5",
+        "ID": "6",
         "Q1CmlValue": {
-            "netSales": 104755,
-            "operatingIncome": 21830
+            "netSales": 29597,
+            "operatingIncome": 12889
         },
         "Q2CmlValue": {
-            "netSales": 211663,
-            "operatingIncome": 33095
+            "netSales": 56402,
+            "operatingIncome": 20726
         },
         "Q3CmlValue": {
-            "netSales": 322316,
-            "operatingIncome": 49410
+            "netSales": 88853,
+            "operatingIncome": 31020
         },
         "Q4CmlValue": {
-            "netSales": 428948,
-            "operatingIncome": 53114
+            "netSales": 169604,
+            "operatingIncome": 65777
         },
         "forecastThisFY": {
             "netSales": "Nothing",
