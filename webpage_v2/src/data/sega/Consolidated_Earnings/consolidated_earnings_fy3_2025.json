@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "companyName": "SEGA SAMMY HOLDINGS INC.",
     "fiscalYear": "FY3/2025",
     "data": [
@@ -9,12 +9,12 @@
             "Q1CmlValue": 104755,
             "Q2CmlValue": 211663,
             "Q3CmlValue": 322316,
-            "Q4CmlValue": 322316,
+            "Q4CmlValue": 428948,
             "forecastThisFY": 445000,
             "forecastRevision1": 425000,
             "forecastRevision2": null,
             "forecastRevision3": null,
-            "forecastNextFY": null
+            "forecastNextFY": 475000
         },
         {
             "name": "Operating Income",
@@ -22,12 +22,12 @@
             "Q1CmlValue": 19341,
             "Q2CmlValue": 32816,
             "Q3CmlValue": 43706,
-            "Q4CmlValue": 43706,
+            "Q4CmlValue": 48124,
             "forecastThisFY": 45000,
             "forecastRevision1": 46000,
             "forecastRevision2": null,
             "forecastRevision3": null,
-            "forecastNextFY": null
+            "forecastNextFY": 53000
         },
         {
             "name": "Net Income",
@@ -35,12 +35,12 @@
             "Q1CmlValue": 24525,
             "Q2CmlValue": 30385,
             "Q3CmlValue": 41756,
-            "Q4CmlValue": 41756,
+            "Q4CmlValue": 45051,
             "forecastThisFY": 39000,
             "forecastRevision1": 37500,
             "forecastRevision2": null,
             "forecastRevision3": null,
-            "forecastNextFY": null
+            "forecastNextFY": 37500
         }
     ]
 }
