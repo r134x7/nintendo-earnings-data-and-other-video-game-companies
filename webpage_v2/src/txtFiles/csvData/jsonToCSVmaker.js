@@ -11,6 +11,10 @@ function dataMake(dataInputLocal) {
             console.log("consolidated earnings");
             return "consolidated earnings";
         }
+        case "2": {
+            console.log("top selling titles nintendo");
+            return "top selling titles nintendo"
+        }
         default: {
         let currentData = "N/A";
         console.log(currentData);
@@ -28,7 +32,8 @@ const getJSON = (jsonLocal) => {
         : readFileSync(jsonLocal, "utf-8")
 }
 
-let getCurrentData = getJSON("test.json");
+// let getCurrentData = getJSON("test.json");
+let getCurrentData = getJSON("../../data/nintendo/Top_Selling_Titles/top_selling_titles_fy3_2017.json");
 
 let parseCurrentData = (!getCurrentData) ? undefined : JSON.parse(getCurrentData); // converts JSON to an object because JSON and JS objects don't work the same... e.g. JSON only uses null and not undefined when undefined is normally used in JS
 
@@ -43,11 +48,20 @@ if (currentDataType == "consolidated earnings") {
     writeCSV(dataOutput)
 }
 
+if (currentDataType == "top selling titles nintendo") {
+    const dataOutput = topSellingTitlesNintendoFY(parseCurrentData)
+    console.log(dataOutput);
+    
+    writeCSV(dataOutput)
+}
+
 function consolidatedEarningsRows(data) {
 
     const headers = [Object.keys(data.data[0]).toString()] // [] to avoid nested rows
     
     const getRows = data.data.map((value, index, array) => {
+        console.log(value);
+        
         return Object.values(value).toString()
     })
 
@@ -64,21 +78,36 @@ function consolidatedEarningsRows(data) {
     
 }
 
+function topSellingTitlesNintendoFY(data) {
+    const headers = [["name", data["fiscalYear"]]]
+
+    const filterRows = data.titles.flat().filter(value => value.platform == "Nintendo Switch")
+
+    const getRows = filterRows.map(value => {
+        return [value.name, value.Q4CmlValue.toString()]
+    })
+
+    const columnsRows = headers.concat(getRows)
+
+    return columnsRows
+}
 
 function writeCSV(finishedData) {
 
     // let formatData = finishedData.map((elem) => {
 
     // })
+    // console.log(finishedData);
+    
 
     let newArrayStringify = JSON.stringify(finishedData, undefined)
 
-    console.log(newArrayStringify);
+    // console.log(newArrayStringify);
     
 
 
-    // writeFile("output.csv", newArrayStringify, "utf8", (err) =>
-    //   err ? console.error(err) : console.log('json? JSSSOOONNNNNN!')
-    // );
+    writeFile("output.csv", newArrayStringify, "utf8", (err) =>
+      err ? console.error(err) : console.log('json? JSSSOOONNNNNN!')
+    );
 }
 
