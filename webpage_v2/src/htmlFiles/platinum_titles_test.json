@@ -6,7 +6,7 @@
         "Q1CmlValue": 20.5,
         "Q2CmlValue": 20.9,
         "Q3CmlValue": 21.3,
-        "Q4CmlValue": 21.3
+        "Q4CmlValue": 21.5
     },
     {
         "title": "Monster Hunter Rise",
@@ -15,7 +15,7 @@
         "Q1CmlValue": 15.4,
         "Q2CmlValue": 16,
         "Q3CmlValue": 16.7,
-        "Q4CmlValue": 16.7
+        "Q4CmlValue": 17.1
     },
     {
         "title": "Resident Evil 2",
@@ -24,7 +24,7 @@
         "Q1CmlValue": 14.2,
         "Q2CmlValue": 14.5,
         "Q3CmlValue": 15,
-        "Q4CmlValue": 15
+        "Q4CmlValue": 15.4
     },
     {
         "title": "Monster Hunter World: Iceborne",
@@ -33,7 +33,7 @@
         "Q1CmlValue": 13.4,
         "Q2CmlValue": 14,
         "Q3CmlValue": 14.9,
-        "Q4CmlValue": 14.9
+        "Q4CmlValue": 15.2
     },
     {
         "title": "RESIDENT EVIL 7 biohazard",
@@ -42,7 +42,7 @@
         "Q1CmlValue": 13.7,
         "Q2CmlValue": 14,
         "Q3CmlValue": 14.4,
-        "Q4CmlValue": 14.4
+        "Q4CmlValue": 14.7
     },
     {
         "title": "Resident Evil Village",
@@ -51,43 +51,16 @@
         "Q1CmlValue": 10.1,
         "Q2CmlValue": 10.5,
         "Q3CmlValue": 10.9,
-        "Q4CmlValue": 10.9
+        "Q4CmlValue": 11.3
     },
     {
-        "title": "Resident Evil 3",
-        "releaseDate": "Apr 2020",
-        "platforms": "PS4, PS5, Xbox One, XSX, NSW, PC, DL",
-        "Q1CmlValue": 9,
-        "Q2CmlValue": 9.2,
-        "Q3CmlValue": 9.6,
-        "Q4CmlValue": 9.6
-    },
-    {
-        "title": "Resident Evil 5",
-        "releaseDate": "Mar 2009",
-        "platforms": "PS3, Xbox 360, DL",
-        "Q1CmlValue": 9.2,
-        "Q2CmlValue": 9.4,
-        "Q3CmlValue": 9.5,
-        "Q4CmlValue": 9.5
-    },
-    {
-        "title": "Resident Evil 6",
-        "releaseDate": "Oct 2012",
-        "platforms": "PS3, Xbox 360, DL",
-        "Q1CmlValue": 9.2,
-        "Q2CmlValue": 9.3,
-        "Q3CmlValue": 9.5,
-        "Q4CmlValue": 9.5
-    },
-    {
-        "title": "Monster Hunter Rise: Sunbreak",
-        "releaseDate": "Jun 2022",
-        "platforms": "NSW, PS4, PS5, Xbox One, XSX, PC, DL",
-        "Q1CmlValue": 8.4,
-        "Q2CmlValue": 8.8,
-        "Q3CmlValue": 9.4,
-        "Q4CmlValue": 9.4
+        "title": "Monster Hunter Wilds",
+        "releaseDate": "Feb 2025",
+        "platforms": "PS5, XSX, PC, DL",
+        "Q1CmlValue": 0,
+        "Q2CmlValue": 0,
+        "Q3CmlValue": 0,
+        "Q4CmlValue": 10.1
     },
     {
         "title": "Resident Evil 4",
@@ -96,7 +69,43 @@
         "Q1CmlValue": 7.6,
         "Q2CmlValue": 8,
         "Q3CmlValue": 9.2,
-        "Q4CmlValue": 9.2
+        "Q4CmlValue": 9.9
+    },
+    {
+        "title": "Resident Evil 3",
+        "releaseDate": "Apr 2020",
+        "platforms": "PS4, PS5, Xbox One, XSX, NSW, PC, DL",
+        "Q1CmlValue": 9,
+        "Q2CmlValue": 9.2,
+        "Q3CmlValue": 9.6,
+        "Q4CmlValue": 9.9
+    },
+    {
+        "title": "Monster Hunter Rise: Sunbreak",
+        "releaseDate": "Jun 2022",
+        "platforms": "NSW, PS4, PS5, Xbox One, XSX, PC, DL",
+        "Q1CmlValue": 8.4,
+        "Q2CmlValue": 8.8,
+        "Q3CmlValue": 9.4,
+        "Q4CmlValue": 9.8
+    },
+    {
+        "title": "Resident Evil 5",
+        "releaseDate": "Mar 2009",
+        "platforms": "PS3, Xbox 360, DL",
+        "Q1CmlValue": 9.2,
+        "Q2CmlValue": 9.4,
+        "Q3CmlValue": 9.5,
+        "Q4CmlValue": 9.6
+    },
+    {
+        "title": "Resident Evil 6",
+        "releaseDate": "Oct 2012",
+        "platforms": "PS3, Xbox 360, DL",
+        "Q1CmlValue": 9.2,
+        "Q2CmlValue": 9.3,
+        "Q3CmlValue": 9.5,
+        "Q4CmlValue": 9.6
     },
     {
         "title": "Devil May Cry 5",
@@ -105,7 +114,7 @@
         "Q1CmlValue": 8.4,
         "Q2CmlValue": 8.7,
         "Q3CmlValue": 8.9,
-        "Q4CmlValue": 8.9
+        "Q4CmlValue": 9.1
     },
     {
         "title": "Street Fighter V",
@@ -114,7 +123,7 @@
         "Q1CmlValue": 7.6,
         "Q2CmlValue": 7.7,
         "Q3CmlValue": 7.7,
-        "Q4CmlValue": 7.7
+        "Q4CmlValue": 7.8
     },
     {
         "title": "Street Fighter II",
@@ -126,6 +135,15 @@
         "Q4CmlValue": 6.3
     },
     {
+        "title": "Monster Hunter Generations Ultimate",
+        "releaseDate": "Mar 2017",
+        "platforms": "3DS, NSW, DL",
+        "Q1CmlValue": 4.8,
+        "Q2CmlValue": 4.9,
+        "Q3CmlValue": 4.9,
+        "Q4CmlValue": 5
+    },
+    {
         "title": "Resident Evil 2",
         "releaseDate": "Jan 1998",
         "platforms": "PS",
@@ -133,15 +151,6 @@
         "Q2CmlValue": 4.96,
         "Q3CmlValue": 4.96,
         "Q4CmlValue": 4.96
-    },
-    {
-        "title": "Monster Hunter Generations Ultimate",
-        "releaseDate": "Mar 2017",
-        "platforms": "3DS, NSW, DL",
-        "Q1CmlValue": 4.8,
-        "Q2CmlValue": 4.9,
-        "Q3CmlValue": 4.9,
-        "Q4CmlValue": 4.9
     },
     {
         "title": "Monster Hunter Freedom 3",
@@ -159,6 +168,15 @@
         "Q1CmlValue": 4.3,
         "Q2CmlValue": 4.5,
         "Q3CmlValue": 4.6,
+        "Q4CmlValue": 4.7
+    },
+    {
+        "title": "Street Fighter 6",
+        "releaseDate": "Jun 2023",
+        "platforms": "PS4, PS5, XSX, PC, DL",
+        "Q1CmlValue": 3.7,
+        "Q2CmlValue": 4.1,
+        "Q3CmlValue": 4.4,
         "Q4CmlValue": 4.6
     },
     {
@@ -168,16 +186,7 @@
         "Q1CmlValue": 4.2,
         "Q2CmlValue": 4.4,
         "Q3CmlValue": 4.5,
-        "Q4CmlValue": 4.5
-    },
-    {
-        "title": "Street Fighter 6",
-        "releaseDate": "Jun 2023",
-        "platforms": "PS4, PS5, XSX, PC, DL",
-        "Q1CmlValue": 3.7,
-        "Q2CmlValue": 4.1,
-        "Q3CmlValue": 4.4,
-        "Q4CmlValue": 4.4
+        "Q4CmlValue": 4.6
     },
     {
         "title": "Monster Hunter Generations",
@@ -196,6 +205,15 @@
         "Q2CmlValue": 4.2,
         "Q3CmlValue": 4.2,
         "Q4CmlValue": 4.2
+    },
+    {
+        "title": "Phoenix Wright: Ace Attorney Trilogy",
+        "releaseDate": "Feb 2019",
+        "platforms": "PS4, NSW, DL",
+        "Q1CmlValue": 3.5,
+        "Q2CmlValue": 3.8,
+        "Q3CmlValue": 4,
+        "Q4CmlValue": 4.1
     },
     {
         "title": "Dragon’s Dogma: Dark Arisen",
@@ -225,12 +243,12 @@
         "Q4CmlValue": 4.1
     },
     {
-        "title": "Phoenix Wright: Ace Attorney Trilogy",
-        "releaseDate": "Feb 2019",
-        "platforms": "PS4, NSW, DL",
-        "Q1CmlValue": 3.5,
-        "Q2CmlValue": 3.8,
-        "Q3CmlValue": 4,
+        "title": "Resident Evil 6",
+        "releaseDate": "Mar 2016",
+        "platforms": "PS4, Xbox One, DL",
+        "Q1CmlValue": 3.2,
+        "Q2CmlValue": 3.5,
+        "Q3CmlValue": 3.7,
         "Q4CmlValue": 4
     },
     {
@@ -240,7 +258,7 @@
         "Q1CmlValue": 3.6,
         "Q2CmlValue": 3.8,
         "Q3CmlValue": 3.8,
-        "Q4CmlValue": 3.8
+        "Q4CmlValue": 3.9
     },
     {
         "title": "Monster Hunter Freedom Unite",
@@ -252,21 +270,21 @@
         "Q4CmlValue": 3.8
     },
     {
-        "title": "Resident Evil 6",
-        "releaseDate": "Mar 2016",
-        "platforms": "PS4, Xbox One, DL",
-        "Q1CmlValue": 3.2,
-        "Q2CmlValue": 3.5,
-        "Q3CmlValue": 3.7,
-        "Q4CmlValue": 3.7
-    },
-    {
         "title": "Resident Evil Revelations 2",
         "releaseDate": "Mar 2015",
         "platforms": "PS3, PS4, Xbox 360, Xbox One, PC, DL",
         "Q1CmlValue": 3.5,
         "Q2CmlValue": 3.6,
         "Q3CmlValue": 3.7,
+        "Q4CmlValue": 3.7
+    },
+    {
+        "title": "Dragon’s Dogma 2",
+        "releaseDate": "Mar 2024",
+        "platforms": "PS5, XSX, DL",
+        "Q1CmlValue": 3,
+        "Q2CmlValue": 3.3,
+        "Q3CmlValue": 3.5,
         "Q4CmlValue": 3.7
     },
     {
@@ -279,12 +297,21 @@
         "Q4CmlValue": 3.6
     },
     {
-        "title": "Dragon’s Dogma 2",
-        "releaseDate": "Mar 2024",
-        "platforms": "PS5, XSX, DL",
-        "Q1CmlValue": 3,
+        "title": "Resident Evil 5",
+        "releaseDate": "Jun 2016",
+        "platforms": "PS4, Xbox One, DL",
+        "Q1CmlValue": 3.2,
         "Q2CmlValue": 3.3,
-        "Q3CmlValue": 3.5,
+        "Q3CmlValue": 3.4,
+        "Q4CmlValue": 3.5
+    },
+    {
+        "title": "Street Fighter 30th Anniversary Collection",
+        "releaseDate": "May 2018",
+        "platforms": "PS4, Xbox One, NSW, PC, DL",
+        "Q1CmlValue": 3.2,
+        "Q2CmlValue": 3.4,
+        "Q3CmlValue": 3.4,
         "Q4CmlValue": 3.5
     },
     {
@@ -297,31 +324,13 @@
         "Q4CmlValue": 3.5
     },
     {
-        "title": "Resident Evil 5",
-        "releaseDate": "Jun 2016",
-        "platforms": "PS4, Xbox One, DL",
-        "Q1CmlValue": 3.2,
-        "Q2CmlValue": 3.3,
-        "Q3CmlValue": 3.4,
-        "Q4CmlValue": 3.4
-    },
-    {
-        "title": "Street Fighter 30th Anniversary Collection",
-        "releaseDate": "May 2018",
-        "platforms": "PS4, Xbox One, NSW, PC, DL",
-        "Q1CmlValue": 3.2,
-        "Q2CmlValue": 3.4,
-        "Q3CmlValue": 3.4,
-        "Q4CmlValue": 3.4
-    },
-    {
         "title": "Resident Evil 4",
         "releaseDate": "Aug 2016",
         "platforms": "PS4, Xbox One, DL",
         "Q1CmlValue": 3.2,
         "Q2CmlValue": 3.3,
         "Q3CmlValue": 3.3,
-        "Q4CmlValue": 3.3
+        "Q4CmlValue": 3.4
     },
     {
         "title": "Dead Rising 2",
@@ -360,22 +369,22 @@
         "Q4CmlValue": 3
     },
     {
-        "title": "Devil May Cry 4 Special Edition",
-        "releaseDate": "Jun 2015",
-        "platforms": "PS4, Xbox One, DL",
-        "Q1CmlValue": 2.8,
-        "Q2CmlValue": 2.8,
-        "Q3CmlValue": 2.9,
-        "Q4CmlValue": 2.9
-    },
-    {
         "title": "Okami HD",
         "releaseDate": "Dec 2017",
         "platforms": "PS4, Xbox One, NSW, DL",
         "Q1CmlValue": 2.5,
         "Q2CmlValue": 2.5,
         "Q3CmlValue": 2.9,
-        "Q4CmlValue": 2.9
+        "Q4CmlValue": 3
+    },
+    {
+        "title": "Devil May Cry 4 Special Edition",
+        "releaseDate": "Jun 2015",
+        "platforms": "PS4, Xbox One, DL",
+        "Q1CmlValue": 2.8,
+        "Q2CmlValue": 2.8,
+        "Q3CmlValue": 2.9,
+        "Q4CmlValue": 3
     },
     {
         "title": "Resident Evil Revelations",
@@ -384,6 +393,15 @@
         "Q1CmlValue": 2.6,
         "Q2CmlValue": 2.7,
         "Q3CmlValue": 2.8,
+        "Q4CmlValue": 2.8
+    },
+    {
+        "title": "Resident Evil: Operation Raccoon City",
+        "releaseDate": "Mar 2012",
+        "platforms": "PS3, Xbox 360, DL",
+        "Q1CmlValue": 2.7,
+        "Q2CmlValue": 2.7,
+        "Q3CmlValue": 2.7,
         "Q4CmlValue": 2.8
     },
     {
@@ -396,29 +414,11 @@
         "Q4CmlValue": 2.75
     },
     {
-        "title": "Resident Evil: Operation Raccoon City",
-        "releaseDate": "Mar 2012",
-        "platforms": "PS3, Xbox 360, DL",
-        "Q1CmlValue": 2.7,
-        "Q2CmlValue": 2.7,
-        "Q3CmlValue": 2.7,
-        "Q4CmlValue": 2.7
-    },
-    {
         "title": "Monster Hunter 3 Ultimate",
         "releaseDate": "Dec 2011",
         "platforms": "3DS, DL",
         "Q1CmlValue": 2.6,
         "Q2CmlValue": 2.6,
-        "Q3CmlValue": 2.6,
-        "Q4CmlValue": 2.6
-    },
-    {
-        "title": "Capcom Arcade Stadium",
-        "releaseDate": "Feb 2021",
-        "platforms": "DL (PS4, Xbox One, NSW, PC)",
-        "Q1CmlValue": 2.2,
-        "Q2CmlValue": 2.4,
         "Q3CmlValue": 2.6,
         "Q4CmlValue": 2.6
     },
@@ -429,7 +429,7 @@
         "Q1CmlValue": 2.5,
         "Q2CmlValue": 2.5,
         "Q3CmlValue": 2.5,
-        "Q4CmlValue": 2.5
+        "Q4CmlValue": 2.6
     },
     {
         "title": "Marvel vs. Capcom: Infinite",
@@ -468,6 +468,15 @@
         "Q4CmlValue": 2.4
     },
     {
+        "title": "Ultra Street Fighter IV",
+        "releaseDate": "Aug 2014",
+        "platforms": "PS3, Xbox 360, PC, DL",
+        "Q1CmlValue": 2.2,
+        "Q2CmlValue": 2.2,
+        "Q3CmlValue": 2.2,
+        "Q4CmlValue": 2.3
+    },
+    {
         "title": "Resident Evil 4",
         "releaseDate": "Dec 2005",
         "platforms": "PS2",
@@ -475,15 +484,6 @@
         "Q2CmlValue": 2.3,
         "Q3CmlValue": 2.3,
         "Q4CmlValue": 2.3
-    },
-    {
-        "title": "Ultra Street Fighter IV",
-        "releaseDate": "Aug 2014",
-        "platforms": "PS3, Xbox 360, PC, DL",
-        "Q1CmlValue": 2.2,
-        "Q2CmlValue": 2.2,
-        "Q3CmlValue": 2.2,
-        "Q4CmlValue": 2.2
     },
     {
         "title": "Lost Planet 2",
@@ -513,6 +513,15 @@
         "Q4CmlValue": 2.16
     },
     {
+        "title": "Monster Hunter Stories 2: Wings of Ruin",
+        "releaseDate": "Jul 2021",
+        "platforms": "NSW, PS4, PC, DL",
+        "Q1CmlValue": 2,
+        "Q2CmlValue": 2,
+        "Q3CmlValue": 2.1,
+        "Q4CmlValue": 2.1
+    },
+    {
         "title": "Onimusha 2: Samurai’s Destiny",
         "releaseDate": "Mar 2002",
         "platforms": "PS2",
@@ -522,12 +531,12 @@
         "Q4CmlValue": 2.1
     },
     {
-        "title": "Monster Hunter Stories 2: Wings of Ruin",
-        "releaseDate": "Jul 2021",
-        "platforms": "NSW, PS4, PC, DL",
-        "Q1CmlValue": 2,
+        "title": "Devil May Cry HD Collection",
+        "releaseDate": "Mar 2018",
+        "platforms": "PS4, Xbox One, DL",
+        "Q1CmlValue": 1.9,
         "Q2CmlValue": 2,
-        "Q3CmlValue": 2.1,
+        "Q3CmlValue": 2,
         "Q4CmlValue": 2.1
     },
     {
@@ -549,29 +558,11 @@
         "Q4CmlValue": 2.02
     },
     {
-        "title": "Devil May Cry HD Collection",
-        "releaseDate": "Mar 2018",
-        "platforms": "PS4, Xbox One, DL",
-        "Q1CmlValue": 1.9,
-        "Q2CmlValue": 2,
-        "Q3CmlValue": 2,
-        "Q4CmlValue": 2
-    },
-    {
         "title": "Resident Evil 4 Wii edition",
         "releaseDate": "May 2007",
         "platforms": "Wii, DL",
         "Q1CmlValue": 2,
         "Q2CmlValue": 2,
-        "Q3CmlValue": 2,
-        "Q4CmlValue": 2
-    },
-    {
-        "title": "Capcom Arcade 2nd Stadium",
-        "releaseDate": "Jul 2022",
-        "platforms": "DL (PS4, Xbox One, NSW, PC) ",
-        "Q1CmlValue": 1.7,
-        "Q2CmlValue": 1.8,
         "Q3CmlValue": 2,
         "Q4CmlValue": 2
     },
@@ -630,18 +621,18 @@
         "Q4CmlValue": 1.8
     },
     {
-        "title": "Lost Planet Extreme Condition",
-        "releaseDate": "Dec 2006",
-        "platforms": "Xbox 360, DL",
+        "title": "DuckTales: Remastered",
+        "releaseDate": "Nov 2013",
+        "platforms": "PS3, Xbox 360, Wii U, DL",
         "Q1CmlValue": 1.7,
         "Q2CmlValue": 1.7,
         "Q3CmlValue": 1.7,
         "Q4CmlValue": 1.7
     },
     {
-        "title": "DuckTales: Remastered",
-        "releaseDate": "Nov 2013",
-        "platforms": "PS3, Xbox 360, Wii U, DL",
+        "title": "Lost Planet Extreme Condition",
+        "releaseDate": "Dec 2006",
+        "platforms": "Xbox 360, DL",
         "Q1CmlValue": 1.7,
         "Q2CmlValue": 1.7,
         "Q3CmlValue": 1.7,
@@ -654,6 +645,15 @@
         "Q1CmlValue": 1.7,
         "Q2CmlValue": 1.7,
         "Q3CmlValue": 1.7,
+        "Q4CmlValue": 1.7
+    },
+    {
+        "title": "Mega Man Legacy Collection",
+        "releaseDate": "Aug 2015",
+        "platforms": "PS4, Xbox One, DL",
+        "Q1CmlValue": 1.6,
+        "Q2CmlValue": 1.6,
+        "Q3CmlValue": 1.6,
         "Q4CmlValue": 1.7
     },
     {
@@ -675,28 +675,10 @@
         "Q4CmlValue": 1.64
     },
     {
-        "title": "Mega Man Legacy Collection",
-        "releaseDate": "Aug 2015",
-        "platforms": "PS4, Xbox One, DL",
-        "Q1CmlValue": 1.6,
-        "Q2CmlValue": 1.6,
-        "Q3CmlValue": 1.6,
-        "Q4CmlValue": 1.6
-    },
-    {
         "title": "Dead Rising 4",
         "releaseDate": "Dec 2016",
         "platforms": "Xbox One, PC, DL",
         "Q1CmlValue": 1.5,
-        "Q2CmlValue": 1.6,
-        "Q3CmlValue": 1.6,
-        "Q4CmlValue": 1.6
-    },
-    {
-        "title": "Resident Evil 4",
-        "releaseDate": "Jan 2005",
-        "platforms": "GC",
-        "Q1CmlValue": 1.6,
         "Q2CmlValue": 1.6,
         "Q3CmlValue": 1.6,
         "Q4CmlValue": 1.6
@@ -707,6 +689,15 @@
         "platforms": "PS4, Xbox One, DL",
         "Q1CmlValue": 1.5,
         "Q2CmlValue": 1.5,
+        "Q3CmlValue": 1.6,
+        "Q4CmlValue": 1.6
+    },
+    {
+        "title": "Resident Evil 4",
+        "releaseDate": "Jan 2005",
+        "platforms": "GC",
+        "Q1CmlValue": 1.6,
+        "Q2CmlValue": 1.6,
         "Q3CmlValue": 1.6,
         "Q4CmlValue": 1.6
     },
@@ -801,18 +792,18 @@
         "Q4CmlValue": 1.4
     },
     {
-        "title": "Resident Evil Code: Veronica X",
-        "releaseDate": "Mar 2001",
-        "platforms": "PS2, DC",
+        "title": "DmC Devil May Cry Definitive Edition",
+        "releaseDate": "Mar 2015",
+        "platforms": "PS4, Xbox One, DL",
         "Q1CmlValue": 1.4,
         "Q2CmlValue": 1.4,
         "Q3CmlValue": 1.4,
         "Q4CmlValue": 1.4
     },
     {
-        "title": "DmC Devil May Cry Definitive Edition",
-        "releaseDate": "Mar 2015",
-        "platforms": "PS4, Xbox One, DL",
+        "title": "Resident Evil Code: Veronica X",
+        "releaseDate": "Mar 2001",
+        "platforms": "PS2, DC",
         "Q1CmlValue": 1.4,
         "Q2CmlValue": 1.4,
         "Q3CmlValue": 1.4,
@@ -918,19 +909,19 @@
         "Q4CmlValue": 1.25
     },
     {
-        "title": "Super Street Fighter IV Arcade Edition",
-        "releaseDate": "Jun 2011",
-        "platforms": "PS3, Xbox 360, DL",
-        "Q1CmlValue": 1.2,
+        "title": "Dead Rising 2 Off The Record",
+        "releaseDate": "Sep 2016",
+        "platforms": "PS4, Xbox One, DL",
+        "Q1CmlValue": 1,
         "Q2CmlValue": 1.2,
         "Q3CmlValue": 1.2,
         "Q4CmlValue": 1.2
     },
     {
-        "title": "Dead Rising 2 Off The Record",
-        "releaseDate": "Sep 2016",
-        "platforms": "PS4, Xbox One, DL",
-        "Q1CmlValue": 1,
+        "title": "Super Street Fighter IV Arcade Edition",
+        "releaseDate": "Jun 2011",
+        "platforms": "PS3, Xbox 360, DL",
+        "Q1CmlValue": 1.2,
         "Q2CmlValue": 1.2,
         "Q3CmlValue": 1.2,
         "Q4CmlValue": 1.2
@@ -941,6 +932,15 @@
         "platforms": "NSW, DL",
         "Q1CmlValue": 1.1,
         "Q2CmlValue": 1.2,
+        "Q3CmlValue": 1.2,
+        "Q4CmlValue": 1.2
+    },
+    {
+        "title": "Resident Evil Revelations",
+        "releaseDate": "Aug 2017",
+        "platforms": "PS4, Xbox One, DL",
+        "Q1CmlValue": 1.1,
+        "Q2CmlValue": 1.1,
         "Q3CmlValue": 1.2,
         "Q4CmlValue": 1.2
     },
@@ -972,12 +972,12 @@
         "Q4CmlValue": 1.2
     },
     {
-        "title": "Resident Evil Revelations",
-        "releaseDate": "Aug 2017",
-        "platforms": "PS4, Xbox One, DL",
-        "Q1CmlValue": 1.1,
+        "title": "The Great Ace Attorney Chronicles",
+        "releaseDate": "Jul 2021",
+        "platforms": "PS4, NSW, DL",
+        "Q1CmlValue": 1,
         "Q2CmlValue": 1.1,
-        "Q3CmlValue": 1.2,
+        "Q3CmlValue": 1.1,
         "Q4CmlValue": 1.2
     },
     {
@@ -1026,15 +1026,6 @@
         "Q4CmlValue": 1.13
     },
     {
-        "title": "The Great Ace Attorney Chronicles",
-        "releaseDate": "Jul 2021",
-        "platforms": "PS4, NSW, DL",
-        "Q1CmlValue": 1,
-        "Q2CmlValue": 1.1,
-        "Q3CmlValue": 1.1,
-        "Q4CmlValue": 1.1
-    },
-    {
         "title": "Resident Evil 6",
         "releaseDate": "Oct 2019",
         "platforms": "DL (NSW)",
@@ -1071,6 +1062,15 @@
         "Q4CmlValue": 1.03
     },
     {
+        "title": "Devil May Cry 5 Special Edition",
+        "releaseDate": "Nov 2020",
+        "platforms": "PS5, XSX, DL",
+        "Q1CmlValue": 0,
+        "Q2CmlValue": 0,
+        "Q3CmlValue": 1,
+        "Q4CmlValue": 1
+    },
+    {
         "title": "Megaman X Anniversary Collection 2",
         "releaseDate": "Jul 2018",
         "platforms": "PS4, Xbox One, NSW,  DL",
@@ -1089,12 +1089,12 @@
         "Q4CmlValue": 1
     },
     {
-        "title": "Devil May Cry 5 Special Edition",
-        "releaseDate": "Nov 2020",
-        "platforms": "PS5, XSX, DL",
+        "title": "Resident Evil 4",
+        "releaseDate": "May 2019",
+        "platforms": "DL (NSW)",
         "Q1CmlValue": 0,
         "Q2CmlValue": 0,
-        "Q3CmlValue": 1,
+        "Q3CmlValue": 0,
         "Q4CmlValue": 1
     },
     {
