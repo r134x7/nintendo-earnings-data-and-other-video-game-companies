@@ -1,4 +1,8 @@
-[
+{
+    "currentQuarter": 1,
+    "companyName": "KOEI TECMO HOLDINGS CO., LTD.",
+    "fiscalYear": "FY3/2026",
+    "data": [
     {
         "name": "Net Sales",
         "units": "currency",
@@ -39,3 +43,4 @@
         "forecastNextFY": null
     }
 ]
+}
