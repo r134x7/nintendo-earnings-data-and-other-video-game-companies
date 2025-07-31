@@ -1,4 +1,8 @@
-[
+{
+    "currentQuarter": 1,
+    "companyName": "CAPCOM Co., Ltd.",
+    "fiscalYear": "FY3/2026",
+    "data": [
     {
         "name": "Digital Contents",
         "units": "currency",
@@ -246,3 +250,4 @@
         }
     }
 ]
+}
