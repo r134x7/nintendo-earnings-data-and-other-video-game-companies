@@ -1,4 +1,8 @@
-[
+{
+    "currentQuarter": 1,
+    "companyName": "KONAMI GROUP CORPORATION",
+    "fiscalYear": "FY3/2026",
+    "data": [
     {
         "name": "Revenue",
         "units": "currency",
@@ -39,3 +43,4 @@
         "forecastNextFY": null
     }
 ]
+}

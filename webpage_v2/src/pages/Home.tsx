@@ -11,7 +11,7 @@ const Home = () => {
 
     const nintendoStatus = liner(printTextBlock("Nintendo page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 4th Quarter earnings data for FY3/2025.",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
 
-    const capcomStatus = liner(printTextBlock("Capcom page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 4th Quarter earnings data for FY3/2025, added FY3/2025 platinum titles and game series data.",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
+    const capcomStatus = liner(printTextBlock("Capcom page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 1st Quarter earnings data for FY3/2026, added FY3/2025 platinum titles.",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
 
     const segaStatus = liner(printTextBlock("Sega page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 4th Quarter earnings data for FY3/2025, and Annual Report 2024.",40),"−","both",true,40) + liner(printTextBlock("Future update planned: Notes section.",40),"−","bottom",true,40);
 
@@ -21,7 +21,7 @@ const Home = () => {
 
     const squareEnixStatus = liner(printTextBlock("Square Enix page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 4th Quarter earnings data for FY3/2025, added annual report 2024.",40),"−","both",true,40);
 
-    const konamiStatus = liner(printTextBlock("Konami page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 4th Quarter earnings data for FY3/2025.",40),"−","both",true,40);
+    const konamiStatus = liner(printTextBlock("Konami page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 1st Quarter earnings data for FY3/2026.",40),"−","both",true,40);
 
     const cyberAgentStatus = liner(printTextBlock("CyberAgent page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 2nd Quarter earnings data for FY9/2025.",40),"−","both",true,40); 
 
