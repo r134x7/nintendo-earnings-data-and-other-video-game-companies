@@ -6,13 +6,18 @@ let currentQuarter = Number(process.argv[2]);
 
 let platformInput = process.argv[3];
 
-// let filePathRead = "nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2025/nintendo_switch/"
-// let filePathRead = "nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2025/wii_u/"
-let filePathRead = "nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2025/nintendo_3ds/"
+// let filePathRead = "nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2026/nintendo_switch_2/"
+let filePathRead = "nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2026/nintendo_switch/"
+// let filePathRead = "nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2026/wii_u/"
+// let filePathRead = "nintendo_top_selling_titles_data/nintendo_top_selling_titles_fy3_2026/nintendo_3ds/"
 
 function platformMake (platformInputLocal) {
 
     switch (platformInputLocal) {
+        case "ns2": {
+            console.log("Nintendo Switch 2");
+            return "Nintendo Switch 2";
+        }
         case "nsw": {
             console.log("Nintendo Switch");
             return "Nintendo Switch";

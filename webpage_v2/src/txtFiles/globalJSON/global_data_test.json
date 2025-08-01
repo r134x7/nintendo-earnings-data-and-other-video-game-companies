@@ -1,47 +1,20 @@
 [
     {
-        "name": "Nintendo Switch Hardware Total",
+        "name": "Nintendo Switch 2 Hardware Total",
         "units": "units",
-        "Q1CmlValue": 210,
-        "Q2CmlValue": 472,
-        "Q3CmlValue": 954,
-        "Q4CmlValue": 1080,
-        "cmlValueLastFY": 14132
+        "Q1CmlValue": 582,
+        "Q2CmlValue": 582,
+        "Q3CmlValue": 582,
+        "Q4CmlValue": 582,
+        "cmlValueLastFY": 0
     },
     {
-        "name": "Nintendo Switch",
+        "name": "Nintendo Switch 2 Software Total",
         "units": "units",
-        "Q1CmlValue": 53,
-        "Q2CmlValue": 126,
-        "Q3CmlValue": 274,
-        "Q4CmlValue": 300,
-        "cmlValueLastFY": 9344
-    },
-    {
-        "name": "Nintendo Switch OLED Model",
-        "units": "units",
-        "Q1CmlValue": 124,
-        "Q2CmlValue": 250,
-        "Q3CmlValue": 507,
-        "Q4CmlValue": 586,
-        "cmlValueLastFY": 2433
-    },
-    {
-        "name": "Nintendo Switch Lite",
-        "units": "units",
-        "Q1CmlValue": 33,
-        "Q2CmlValue": 97,
-        "Q3CmlValue": 173,
-        "Q4CmlValue": 195,
-        "cmlValueLastFY": 2354
-    },
-    {
-        "name": "Nintendo Switch Software Total",
-        "units": "units",
-        "Q1CmlValue": 3064,
-        "Q2CmlValue": 7028,
-        "Q3CmlValue": 12398,
-        "Q4CmlValue": 15541,
-        "cmlValueLastFY": 123582
+        "Q1CmlValue": 867,
+        "Q2CmlValue": 867,
+        "Q3CmlValue": 867,
+        "Q4CmlValue": 867,
+        "cmlValueLastFY": 0
     }
 ]

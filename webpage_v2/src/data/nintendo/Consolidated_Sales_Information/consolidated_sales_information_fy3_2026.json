@@ -1,0 +1,24 @@
+{
+    "currentQuarter": 1,
+    "fiscalYear": "FY3/2026",
+    "platformSales": [
+            {
+                "name": "Mobile, IP related income, etc.",
+                "units": "currency",
+                "Q1CmlValue": 16782,
+                "Q2CmlValue": 16782,
+                "Q3CmlValue": 16782,
+                "Q4CmlValue": 16782,
+                "footnote": "Includes income from visual content, smart-device content, royalties,and merchandise sales at official stores." 
+            },
+            {
+                "name": "Dedicated video game platform",
+                "units": "currency",
+                "Q1CmlValue": 555581,
+                "Q2CmlValue": 555581,
+                "Q3CmlValue": 555581,
+                "Q4CmlValue": 555581,
+                "footnote": "Includes hardware (including accessories and amiibo) and, software (including downloadable versions of packaged software, download-only software, add-on content and Nintendo Switch Online)" 
+            }
+    ]
+}

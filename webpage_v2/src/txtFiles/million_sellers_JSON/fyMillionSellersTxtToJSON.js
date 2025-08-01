@@ -8,6 +8,10 @@ let platformInput = process.argv[3];
 function platformMake (platformInputLocal) {
 
     switch (platformInputLocal) {
+        case "ns2": {
+            console.log("Nintendo Switch 2");
+            return "Nintendo Switch 2";
+        }
         case "nsw": {
             console.log("Nintendo Switch");
             return "Nintendo Switch";

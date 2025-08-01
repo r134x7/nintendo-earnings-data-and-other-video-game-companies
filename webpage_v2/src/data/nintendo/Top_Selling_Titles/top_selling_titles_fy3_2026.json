@@ -1,4 +1,18 @@
-[
+{
+    "currentQuarter": 1,
+    "fiscalYear": "FY3/2026",
+    "titles": [
+        [
+    {
+        "name": "Mario Kart World",
+        "platform": "Nintendo Switch 2",
+        "Q1CmlValue": 5.63,
+        "Q2CmlValue": 5.63,
+        "Q3CmlValue": 5.63,
+        "Q4CmlValue": 5.63
+   }
+],
+        [
     {
         "name": "Mario Kart 8 Deluxe",
         "platform": "Nintendo Switch",
@@ -80,3 +94,5 @@
         "Q4CmlValue": 18.36
     }
 ]
+    ]
+}
