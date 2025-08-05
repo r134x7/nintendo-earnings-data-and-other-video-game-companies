@@ -1,4 +1,8 @@
-[
+{
+    "currentQuarter": 1,
+    "companyName": "Bandai Namco Holdings Inc.",
+    "fiscalYear": "FY3/2026",
+    "data": [
     {
         "name": "Entertainment (Digital)",
         "units": "currency",
@@ -533,3 +537,4 @@
         }
     }
 ]
+}
