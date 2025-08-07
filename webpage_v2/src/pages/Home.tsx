@@ -25,7 +25,7 @@ const Home = () => {
 
     const cyberAgentStatus = liner(printTextBlock("CyberAgent page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 2nd Quarter earnings data for FY9/2025.",40),"−","both",true,40); 
 
-    const kadokawaStatus = liner(printTextBlock("Kadokawa page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 4th Quarter earnings data for FY3/2025.",40),"−","both",true,40); 
+    const kadokawaStatus = liner(printTextBlock("Kadokawa page status",32),"=","top",true,32) + liner(printTextBlock("Latest update: Added 1st Quarter earnings data for FY3/2026.",40),"−","both",true,40); 
 
     const eventsStatus = liner(printTextBlock("Events page status",32),"=","top",true,32) + liner(printTextBlock("Page update: Updated calendar for 19 of 22 companies from July to August 2025.",40),"−","both",true,40);
 

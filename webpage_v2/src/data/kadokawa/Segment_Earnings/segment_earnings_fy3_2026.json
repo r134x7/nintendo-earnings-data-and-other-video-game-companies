@@ -1,4 +1,8 @@
-[
+{
+    "currentQuarter": 1,
+    "companyName": "KADOKAWA CORPORATION",
+    "fiscalYear": "FY3/2026",
+    "data": [
     {
         "name": "Publication/IP Creation",
         "units": "currency",
@@ -287,3 +291,4 @@
         }
     }
 ]
+}
