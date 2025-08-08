@@ -1,4 +1,8 @@
-[
+{
+    "currentQuarter": 1,
+    "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
+    "fiscalYear": "FY3/2026",
+    "data": [
     {
         "name": "Digital Entertainment",
         "units": "currency",
@@ -245,4 +249,5 @@
             "operatingIncome": null
         }
     }
-]
+] 
+}
