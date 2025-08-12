@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 2,
+    "currentQuarter": 3,
     "companyName": "CyberAgent, Inc.",
     "fiscalYear": "FY9/2025",
     "data": [
@@ -16,12 +16,12 @@
             "operatingIncome": 4729
         },
         "Q3CmlValue": {
-            "netSales": 112721,
-            "operatingIncome": 4729
+            "netSales": 168913,
+            "operatingIncome": 7008
         },
         "Q4CmlValue": {
-            "netSales": 112721,
-            "operatingIncome": 4729
+            "netSales": 168913,
+            "operatingIncome": 7008
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -42,8 +42,7 @@
         "forecastNextFY": {
             "netSales": null,
             "operatingIncome": null
-        },
-        "footnotes": "Effective from the first half of the current fiscal year, the Company integrated the \"Other Businesses\" segment into the \"Media Business\" segment in accordance with a new structure to strengthen group synergies around \"ABEMA\", a new TV of the future. Accordingly, \"Media Business\" has been renamed \"Media & IP Business\" with the aim of expanding animation and other IP businesses."
+        }
     },
     {
         "name": "Internet Advertisement",
@@ -58,12 +57,12 @@
             "operatingIncome": 12065
         },
         "Q3CmlValue": {
-            "netSales": 235356,
-            "operatingIncome": 12065
+            "netSales": 346748,
+            "operatingIncome": 15697
         },
         "Q4CmlValue": {
-            "netSales": 235356,
-            "operatingIncome": 12065
+            "netSales": 346748,
+            "operatingIncome": 15697
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -99,12 +98,12 @@
             "operatingIncome": 18707
         },
         "Q3CmlValue": {
-            "netSales": 89713,
-            "operatingIncome": 18707
+            "netSales": 140364,
+            "operatingIncome": 35162
         },
         "Q4CmlValue": {
-            "netSales": 89713,
-            "operatingIncome": 18707
+            "netSales": 140364,
+            "operatingIncome": 35162
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -140,12 +139,12 @@
             "operatingIncome": -749
         },
         "Q3CmlValue": {
-            "netSales": 628,
-            "operatingIncome": -749
+            "netSales": 1435,
+            "operatingIncome": -860
         },
         "Q4CmlValue": {
-            "netSales": 628,
-            "operatingIncome": -749
+            "netSales": 1435,
+            "operatingIncome": -860
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -181,12 +180,12 @@
             "operatingIncome": -5583
         },
         "Q3CmlValue": {
-            "netSales": -17204,
-            "operatingIncome": -5583
+            "netSales": -25467,
+            "operatingIncome": -8209
         },
         "Q4CmlValue": {
-            "netSales": -17204,
-            "operatingIncome": -5583
+            "netSales": -25467,
+            "operatingIncome": -8209
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -222,12 +221,12 @@
             "operatingIncome": 29169
         },
         "Q3CmlValue": {
-            "netSales": 421214,
-            "operatingIncome": 29169
+            "netSales": 631993,
+            "operatingIncome": 48798
         },
         "Q4CmlValue": {
-            "netSales": 421214,
-            "operatingIncome": 29169
+            "netSales": 631993,
+            "operatingIncome": 48798
         },
         "forecastThisFY": {
             "netSales": "Nothing",
