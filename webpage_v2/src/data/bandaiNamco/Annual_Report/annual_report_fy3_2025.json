@@ -1,0 +1,57 @@
+{
+    "companyName": "Bandai Namco Holdings Inc.",
+    "fiscalYear": "FY3/2025",
+    "series": [
+        {
+            "title": "Super Robot Wars",
+            "releaseDate": "April 1991",
+            "fyEndMonth": "March 2025",
+            "value": 20.80, 
+            "valueLastFY": 20.47, 
+            "valueLastTwoFYs": 20.24 
+        },
+        {
+            "title": "Tekken",
+            "releaseDate": "March 1995",
+            "fyEndMonth": "March 2025",
+            "value": 61.0,
+            "valueLastFY": 57.0, 
+            "valueLastTwoFYs": 55.0 
+        
+        },
+        {
+            "title": "Tales of...",
+            "releaseDate": "December 1995",
+            "fyEndMonth": "March 2025",
+            "value": 31.21,
+            "valueLastFY": 30.25, 
+            "valueLastTwoFYs": 29.29 
+        },
+        {
+            "title": "Naruto-related",
+            "releaseDate": "January 2009",
+            "fyEndMonth": "March 2025",
+            "value": 37.86,
+            "valueLastFY": 35.47, 
+            "valueLastTwoFYs": 32.52 
+        },
+        {
+            "title": "Dark Souls",
+            "releaseDate": "September 2011",
+            "fyEndMonth": "March 2025",
+            "value": 39.71,
+            "valueLastFY": 37.33, 
+            "valueLastTwoFYs": 35.18, 
+            "footnotes": "Note: Total for overseas sales for which BANDAI NAMCO Entertainment Inc. was the original seller (excluding domestic sales by FromSoftware, Inc.)"
+        },
+        {
+            "title": "Elden Ring",
+            "releaseDate": "February 2022",
+            "fyEndMonth": "April 2025",
+            "value": 30.0,
+            "valueLastFY": 23.0, 
+            "valueLastTwoFYs": 20.0, 
+            "footnotes": "Note: Sales up to February 2023 is according to History section in Fact Book. Rest of data is from press release statements."
+        }
+    ]
+}
