@@ -25,7 +25,7 @@ Intersegment Eliminations
 (7500)
 Total
 96964
-380000
+430000
 27647
 114000
 

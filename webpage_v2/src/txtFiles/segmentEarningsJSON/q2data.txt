@@ -1,30 +1,56 @@
-Digital Contents
-49852 
--
-31378 
--
-Arcade Operations
-12450 
--
-2019 
--
-Amusement Equipments
-15191 
--
-9078 
--
-Other
-3657 
--
-2080 
--
-Adjustment
--
--
-(5223)
--
+Digital Entertainment
+168777 
+310000
+61378 
+103000
+Amusement
+14466 
+31000
+3233 
+8000
+Gaming & Systems
+17768 
+43000
+949 
+7500
+Sports
+24904 
+49000
+1773 
+3000
+Intersegment Eliminations
+(1076) 
+(3000)
+(2247) 
+(7500)
 Total
-81152 
+224839
+430000
+65086
+114000
+
+Japan 
+159002
 -
-39333
+-
+-
+United States 
+39962
+-
+-
+-
+Europe 
+16806
+-
+-
+-
+Asia/Oceania 
+9069
+-
+-
+-
+Global 
+224839
+-
+-
 -
