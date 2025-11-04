@@ -1,82 +1,18 @@
 [
     {
-        "name": "Mario Kart 8 Deluxe",
-        "platform": "Nintendo Switch",
-        "Q1CmlValue": 68.86,
-        "Q2CmlValue": 68.86,
-        "Q3CmlValue": 68.86,
-        "Q4CmlValue": 68.86
+        "name": "Mario Kart World",
+        "platform": "Nintendo Switch 2",
+        "Q1CmlValue": 5.63,
+        "Q2CmlValue": 9.57,
+        "Q3CmlValue": 9.57,
+        "Q4CmlValue": 9.57
     },
     {
-        "name": "Animal Crossing: New Horizons",
-        "platform": "Nintendo Switch",
-        "Q1CmlValue": 48.19,
-        "Q2CmlValue": 48.19,
-        "Q3CmlValue": 48.19,
-        "Q4CmlValue": 48.19
-    },
-    {
-        "name": "Super Smash Bros. Ultimate",
-        "platform": "Nintendo Switch",
-        "Q1CmlValue": 36.55,
-        "Q2CmlValue": 36.55,
-        "Q3CmlValue": 36.55,
-        "Q4CmlValue": 36.55
-    },
-    {
-        "name": "The Legend of Zelda: Breath of the Wild",
-        "platform": "Nintendo Switch",
-        "Q1CmlValue": 33.04,
-        "Q2CmlValue": 33.04,
-        "Q3CmlValue": 33.04,
-        "Q4CmlValue": 33.04
-    },
-    {
-        "name": "Super Mario Odyssey",
-        "platform": "Nintendo Switch",
-        "Q1CmlValue": 29.5,
-        "Q2CmlValue": 29.5,
-        "Q3CmlValue": 29.5,
-        "Q4CmlValue": 29.5
-    },
-    {
-        "name": "Pokémon Scarlet/Pokémon Violet",
-        "platform": "Nintendo Switch",
-        "Q1CmlValue": 27.15,
-        "Q2CmlValue": 27.15,
-        "Q3CmlValue": 27.15,
-        "Q4CmlValue": 27.15
-    },
-    {
-        "name": "Pokémon Sword/Pokémon Shield",
-        "platform": "Nintendo Switch",
-        "Q1CmlValue": 26.84,
-        "Q2CmlValue": 26.84,
-        "Q3CmlValue": 26.84,
-        "Q4CmlValue": 26.84
-    },
-    {
-        "name": "The Legend of Zelda: Tears of the Kingdom",
-        "platform": "Nintendo Switch",
-        "Q1CmlValue": 21.93,
-        "Q2CmlValue": 21.93,
-        "Q3CmlValue": 21.93,
-        "Q4CmlValue": 21.93
-    },
-    {
-        "name": "Super Mario Party",
-        "platform": "Nintendo Switch",
-        "Q1CmlValue": 21.19,
-        "Q2CmlValue": 21.19,
-        "Q3CmlValue": 21.19,
-        "Q4CmlValue": 21.19
-    },
-    {
-        "name": "New Super Mario Bros. U Deluxe",
-        "platform": "Nintendo Switch",
-        "Q1CmlValue": 18.36,
-        "Q2CmlValue": 18.36,
-        "Q3CmlValue": 18.36,
-        "Q4CmlValue": 18.36
+        "name": "Donkey Kong Bananza",
+        "platform": "Nintendo Switch 2",
+        "Q1CmlValue": 0,
+        "Q2CmlValue": 3.49,
+        "Q3CmlValue": 3.49,
+        "Q4CmlValue": 3.49
     }
 ]
