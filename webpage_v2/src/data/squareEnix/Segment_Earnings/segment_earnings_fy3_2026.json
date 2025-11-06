@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 1,
+    "currentQuarter": 2,
     "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
     "fiscalYear": "FY3/2026",
     "data": [
@@ -12,16 +12,16 @@
             "operatingIncome": 8126
         },
         "Q2CmlValue": {
-            "netSales": 32918,
-            "operatingIncome": 8126
+            "netSales": 73058,
+            "operatingIncome": 20090
         },
         "Q3CmlValue": {
-            "netSales": 32918,
-            "operatingIncome": 8126
+            "netSales": 73058,
+            "operatingIncome": 20090
         },
         "Q4CmlValue": {
-            "netSales": 32918,
-            "operatingIncome": 8126
+            "netSales": 73058,
+            "operatingIncome": 20090
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -53,16 +53,16 @@
             "operatingIncome": 1775
         },
         "Q2CmlValue": {
-            "netSales": 16461,
-            "operatingIncome": 1775
+            "netSales": 34578,
+            "operatingIncome": 4217
         },
         "Q3CmlValue": {
-            "netSales": 16461,
-            "operatingIncome": 1775
+            "netSales": 34578,
+            "operatingIncome": 4217
         },
         "Q4CmlValue": {
-            "netSales": 16461,
-            "operatingIncome": 1775
+            "netSales": 34578,
+            "operatingIncome": 4217
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -94,16 +94,16 @@
             "operatingIncome": 2131
         },
         "Q2CmlValue": {
-            "netSales": 6544,
-            "operatingIncome": 2131
+            "netSales": 14420,
+            "operatingIncome": 4786
         },
         "Q3CmlValue": {
-            "netSales": 6544,
-            "operatingIncome": 2131
+            "netSales": 14420,
+            "operatingIncome": 4786
         },
         "Q4CmlValue": {
-            "netSales": 6544,
-            "operatingIncome": 2131
+            "netSales": 14420,
+            "operatingIncome": 4786
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -135,16 +135,16 @@
             "operatingIncome": 1211
         },
         "Q2CmlValue": {
-            "netSales": 3771,
-            "operatingIncome": 1211
+            "netSales": 12707,
+            "operatingIncome": 6793
         },
         "Q3CmlValue": {
-            "netSales": 3771,
-            "operatingIncome": 1211
+            "netSales": 12707,
+            "operatingIncome": 6793
         },
         "Q4CmlValue": {
-            "netSales": 3771,
-            "operatingIncome": 1211
+            "netSales": 12707,
+            "operatingIncome": 6793
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -176,16 +176,16 @@
             "operatingIncome": -4225
         },
         "Q2CmlValue": {
-            "netSales": -420,
-            "operatingIncome": -4225
+            "netSales": -868,
+            "operatingIncome": -8609
         },
         "Q3CmlValue": {
-            "netSales": -420,
-            "operatingIncome": -4225
+            "netSales": -868,
+            "operatingIncome": -8609
         },
         "Q4CmlValue": {
-            "netSales": -420,
-            "operatingIncome": -4225
+            "netSales": -868,
+            "operatingIncome": -8609
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -217,16 +217,16 @@
             "operatingIncome": 9018
         },
         "Q2CmlValue": {
-            "netSales": 59275,
-            "operatingIncome": 9018
+            "netSales": 133895,
+            "operatingIncome": 27278
         },
         "Q3CmlValue": {
-            "netSales": 59275,
-            "operatingIncome": 9018
+            "netSales": 133895,
+            "operatingIncome": 27278
         },
         "Q4CmlValue": {
-            "netSales": 59275,
-            "operatingIncome": 9018
+            "netSales": 133895,
+            "operatingIncome": 27278
         },
         "forecastThisFY": {
             "netSales": "Nothing",

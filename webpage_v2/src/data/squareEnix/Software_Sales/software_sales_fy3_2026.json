@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 1,
+    "currentQuarter": 2,
     "fiscalYear": "FY3/2026",
     "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
     "data": [
@@ -7,9 +7,9 @@
             "name": "HD Games",
             "units": "currency",
             "Q1CmlValue": 8.9,
-            "Q2CmlValue": 8.9,
-            "Q3CmlValue": 8.9,
-            "Q4CmlValue": 8.9,
+            "Q2CmlValue": 24.0,
+            "Q3CmlValue": 24.0,
+            "Q4CmlValue": 24.0,
             "footnotes": "*Sales might include: - Downloadable content purchases" 
         },
         {
@@ -24,9 +24,9 @@
             "name": "MMO",
             "units": "currency",
             "Q1CmlValue": 9.6,
-            "Q2CmlValue": 9.6,
-            "Q3CmlValue": 9.6,
-            "Q4CmlValue": 9.6,
+            "Q2CmlValue": 19.9,
+            "Q3CmlValue": 19.9,
+            "Q4CmlValue": 19.9,
             "footnotes": "**MMO sales includes subscriptions" 
         },
         {
@@ -41,18 +41,18 @@
             "name": "HD Games & MMO",
             "units": "currency",
             "Q1CmlValue": 18.5,
-            "Q2CmlValue": 18.5,
-            "Q3CmlValue": 18.5,
-            "Q4CmlValue": 18.5,
+            "Q2CmlValue": 38.4,
+            "Q3CmlValue": 38.4,
+            "Q4CmlValue": 38.4,
             "footnotes": "*Sales might include: - Downloadable content purchases" 
         },
         {
             "name": "HD Games & MMO",
             "units": "units",
             "Q1CmlValue": 4.01,
-            "Q2CmlValue": 4.01,
-            "Q3CmlValue": 4.01,
-            "Q4CmlValue": 4.01 
+            "Q2CmlValue": 9.93,
+            "Q3CmlValue": 9.93,
+            "Q4CmlValue": 9.93 
         }
     ]
 }
