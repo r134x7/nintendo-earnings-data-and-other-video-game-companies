@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 1,
+    "currentQuarter": 2,
     "fiscalYear": "FY3/2026",
     "companyName": "SEGA SAMMY HOLDINGS INC.",
     "data": [
@@ -7,9 +7,9 @@
             "name": "Full Games",
             "units": "currency",
             "Q1CmlValue": 11.5,
-            "Q2CmlValue": 11.5,
-            "Q3CmlValue": 11.5,
-            "Q4CmlValue": 11.5, 
+            "Q2CmlValue": 26.8,
+            "Q3CmlValue": 26.8,
+            "Q4CmlValue": 26.8, 
             "forecastThisFY": 78.1,
             "forecastRevision1": "Nothing",
             "forecastNextFY": "Nothing",
@@ -19,9 +19,9 @@
             "name": "Full Games",
             "units": "units",
             "Q1CmlValue": 4940,
-            "Q2CmlValue": 4940,
-            "Q3CmlValue": 4940,
-            "Q4CmlValue": 4940,
+            "Q2CmlValue": 10840,
+            "Q3CmlValue": 10840,
+            "Q4CmlValue": 10840,
             "forecastThisFY": 30090,
             "forecastRevision1": "Nothing",
             "forecastNextFY": "Nothing"

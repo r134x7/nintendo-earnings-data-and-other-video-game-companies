@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 1,
+    "currentQuarter": 2,
     "companyName": "SEGA SAMMY HOLDINGS INC.",
     "fiscalYear": "FY3/2026",
     "data": [
@@ -12,16 +12,16 @@
             "operatingIncome": 5022
         },
         "Q2CmlValue": {
-            "netSales": 67870,
-            "operatingIncome": 5022
+            "netSales": 149166,
+            "operatingIncome": 15557
         },
         "Q3CmlValue": {
-            "netSales": 67870,
-            "operatingIncome": 5022
+            "netSales": 149166,
+            "operatingIncome": 15557
         },
         "Q4CmlValue": {
-            "netSales": 67870,
-            "operatingIncome": 5022
+            "netSales": 149166,
+            "operatingIncome": 15557
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -53,16 +53,16 @@
             "operatingIncome": -3632
         },
         "Q2CmlValue": {
-            "netSales": 11076,
-            "operatingIncome": -3632
+            "netSales": 41957,
+            "operatingIncome": 3575
         },
         "Q3CmlValue": {
-            "netSales": 11076,
-            "operatingIncome": -3632
+            "netSales": 41957,
+            "operatingIncome": 3575
         },
         "Q4CmlValue": {
-            "netSales": 11076,
-            "operatingIncome": -3632
+            "netSales": 41957,
+            "operatingIncome": 3575
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -94,16 +94,16 @@
             "operatingIncome": 180
         },
         "Q2CmlValue": {
-            "netSales": 1358,
-            "operatingIncome": 180
+            "netSales": 8561,
+            "operatingIncome": -723
         },
         "Q3CmlValue": {
-            "netSales": 1358,
-            "operatingIncome": 180
+            "netSales": 8561,
+            "operatingIncome": -723
         },
         "Q4CmlValue": {
-            "netSales": 1358,
-            "operatingIncome": 180
+            "netSales": 8561,
+            "operatingIncome": -723
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -135,16 +135,16 @@
             "operatingIncome": -3695
         },
         "Q2CmlValue": {
-            "netSales": 720,
-            "operatingIncome": -3695
+            "netSales": 1422,
+            "operatingIncome": -7587
         },
         "Q3CmlValue": {
-            "netSales": 720,
-            "operatingIncome": -3695
+            "netSales": 1422,
+            "operatingIncome": -7587
         },
         "Q4CmlValue": {
-            "netSales": 720,
-            "operatingIncome": -3695
+            "netSales": 1422,
+            "operatingIncome": -7587
         },
         "forecastThisFY": {
             "netSales": "Nothing",
@@ -176,16 +176,16 @@
             "operatingIncome": -2124
         },
         "Q2CmlValue": {
-            "netSales": 81026,
-            "operatingIncome": -2124
+            "netSales": 201108,
+            "operatingIncome": 10821
         },
         "Q3CmlValue": {
-            "netSales": 81026,
-            "operatingIncome": -2124
+            "netSales": 201108,
+            "operatingIncome": 10821
         },
         "Q4CmlValue": {
-            "netSales": 81026,
-            "operatingIncome": -2124
+            "netSales": 201108,
+            "operatingIncome": 10821
         },
         "forecastThisFY": {
             "netSales": "Nothing",
