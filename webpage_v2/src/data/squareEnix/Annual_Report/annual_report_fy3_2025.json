@@ -1,0 +1,31 @@
+{
+    "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
+    "fiscalYear": "FY3/2025",
+    "series": [
+        {
+            "title": "Final Fantasy",
+            "releaseDate": "December 1987",
+            "fyEndMonth": "June 2025",
+            "value": 204,
+            "valueLastFY": 195,
+            "valueLastTwoFYs": 185 
+        },
+        {
+            "title": "Dragon Quest",
+            "releaseDate": "May 1986",
+            "fyEndMonth": "June 2025",
+            "value": 95,
+            "valueLastFY": 91,
+            "valueLastTwoFYs": 88 
+        },
+        {
+            "title": "Kingdom Hearts",
+            "releaseDate": "March 2002",
+            "fyEndMonth": "June 2025",
+            "value": 38,
+            "valueLastFY": 37,
+            "valueLastTwoFYs": 36 
+        }
+    ],
+    "footnotes": "*Annual Report 2025 gives sales numbers as of end of June, 2025."
+}
