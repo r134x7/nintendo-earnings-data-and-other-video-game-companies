@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 2,
+    "currentQuarter": 3,
     "companyName": "KONAMI GROUP CORPORATION",
     "fiscalYear": "FY3/2026",
     "data": [
@@ -8,10 +8,10 @@
         "units": "currency",
         "Q1CmlValue": 96964,
         "Q2CmlValue": 224839,
-        "Q3CmlValue": 224839,
-        "Q4CmlValue": 224839,
+        "Q3CmlValue": 353020,
+        "Q4CmlValue": 353020,
         "forecastThisFY": 430000,
-        "forecastRevision1": null,
+        "forecastRevision1": 468000,
         "forecastRevision2": null,
         "forecastRevision3": null,
         "forecastNextFY": null
@@ -21,10 +21,10 @@
         "units": "currency",
         "Q1CmlValue": 27732,
         "Q2CmlValue": 64268,
-        "Q3CmlValue": 64268,
-        "Q4CmlValue": 64268,
+        "Q3CmlValue": 101788,
+        "Q4CmlValue": 101788,
         "forecastThisFY": 106000,
-        "forecastRevision1": null,
+        "forecastRevision1": 123000,
         "forecastRevision2": null,
         "forecastRevision3": null,
         "forecastNextFY": null
@@ -34,10 +34,10 @@
         "units": "currency",
         "Q1CmlValue": 19834,
         "Q2CmlValue": 46486,
-        "Q3CmlValue": 46486,
-        "Q4CmlValue": 46486,
+        "Q3CmlValue": 174347,
+        "Q4CmlValue": 174347,
         "forecastThisFY": 75000,
-        "forecastRevision1": null,
+        "forecastRevision1": 86000,
         "forecastRevision2": null,
         "forecastRevision3": null,
         "forecastNextFY": null
