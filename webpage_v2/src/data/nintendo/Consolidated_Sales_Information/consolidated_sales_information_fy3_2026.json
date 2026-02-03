@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 2,
+    "currentQuarter": 3,
     "fiscalYear": "FY3/2026",
     "platformSales": [
             {
@@ -7,8 +7,8 @@
                 "units": "currency",
                 "Q1CmlValue": 16782,
                 "Q2CmlValue": 33365,
-                "Q3CmlValue": 33365,
-                "Q4CmlValue": 33365,
+                "Q3CmlValue": 54558,
+                "Q4CmlValue": 54558,
                 "footnote": "Includes income from visual content, smart-device content, royalties,and merchandise sales at official stores." 
             },
             {
@@ -16,8 +16,8 @@
                 "units": "currency",
                 "Q1CmlValue": 555581,
                 "Q2CmlValue": 1066199,
-                "Q3CmlValue": 1066199,
-                "Q4CmlValue": 1066199,
+                "Q3CmlValue": 1851324,
+                "Q4CmlValue": 1851324,
                 "footnote": "Includes hardware (including accessories and amiibo) and, software (including downloadable versions of packaged software, download-only software, add-on content and Nintendo Switch Online)" 
             }
     ]
