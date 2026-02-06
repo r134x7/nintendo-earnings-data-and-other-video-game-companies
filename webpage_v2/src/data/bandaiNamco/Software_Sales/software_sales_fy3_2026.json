@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 2,
+    "currentQuarter": 3,
     "fiscalYear": "FY3/2026",
     "companyName": "Bandai Namco Holdings Inc.",
     "data": [
@@ -8,11 +8,11 @@
             "units": "currency",
             "Q1CmlValue": 42.7,
             "Q2CmlValue": 92.7,
-            "Q3CmlValue": 92.7,
-            "Q4CmlValue": 92.7,
+            "Q3CmlValue": 156.2,
+            "Q4CmlValue": 156.2,
             "forecastThisFY": 179.0,
             "forecastRevision1": 155.0,
-            "forecastRevision2": "Nothing",
+            "forecastRevision2": 193.0,
             "forecastNextFY": "Nothing",
             "footnotes": "*Sales might include: - Downloadable content purchases"
         },
@@ -21,11 +21,11 @@
             "units": "units",
             "Q1CmlValue": 10762,
             "Q2CmlValue": 22942,
-            "Q3CmlValue": 22942,
+            "Q3CmlValue": 35753,
             "Q4CmlValue": 22942,
             "forecastThisFY": 46000,
             "forecastRevision1": 39500,
-            "forecastRevision2": "Nothing",
+            "forecastRevision2": 44500,
             "forecastNextFY": "Nothing"
         }
     ] 

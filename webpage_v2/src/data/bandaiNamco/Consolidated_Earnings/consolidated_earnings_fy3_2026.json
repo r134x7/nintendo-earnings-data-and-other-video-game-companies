@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 2,
+    "currentQuarter": 3,
     "companyName": "Bandai Namco Holdings Inc.",
     "fiscalYear": "FY3/2026",
     "data": [
@@ -8,11 +8,11 @@
         "units": "currency",
         "Q1CmlValue": 300430,
         "Q2CmlValue": 643816,
-        "Q3CmlValue": 643816,
-        "Q4CmlValue": 643816,
+        "Q3CmlValue": 1002243,
+        "Q4CmlValue": 1002243,
         "forecastThisFY": 1200000,
         "forecastRevision1": 1250000,
-        "forecastRevision2": null,
+        "forecastRevision2": 1300000,
         "forecastRevision3": null,
         "forecastNextFY": null
     },
@@ -21,11 +21,11 @@
         "units": "currency",
         "Q1CmlValue": 51921,
         "Q2CmlValue": 105481,
-        "Q3CmlValue": 105481,
-        "Q4CmlValue": 105481,
+        "Q3CmlValue": 157395,
+        "Q4CmlValue": 157395,
         "forecastThisFY": 145000,
         "forecastRevision1": 165000,
-        "forecastRevision2": null,
+        "forecastRevision2": 181000,
         "forecastRevision3": null,
         "forecastNextFY": null
     },
@@ -34,11 +34,11 @@
         "units": "currency",
         "Q1CmlValue": 38329,
         "Q2CmlValue": 78909,
-        "Q3CmlValue": 78909,
-        "Q4CmlValue": 78909,
+        "Q3CmlValue": 115044,
+        "Q4CmlValue": 115044,
         "forecastThisFY": 100000,
         "forecastRevision1": 120000,
-        "forecastRevision2": null,
+        "forecastRevision2": 130000,
         "forecastRevision3": null,
         "forecastNextFY": null
     }
