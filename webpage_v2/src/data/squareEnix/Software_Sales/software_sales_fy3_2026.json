@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 2,
+    "currentQuarter": 3,
     "fiscalYear": "FY3/2026",
     "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
     "data": [
@@ -8,8 +8,8 @@
             "units": "currency",
             "Q1CmlValue": 8.9,
             "Q2CmlValue": 24.0,
-            "Q3CmlValue": 24.0,
-            "Q4CmlValue": 24.0,
+            "Q3CmlValue": 51.0,
+            "Q4CmlValue": 51.0,
             "footnotes": "*Sales might include: - Downloadable content purchases" 
         },
         {
@@ -25,8 +25,8 @@
             "units": "currency",
             "Q1CmlValue": 9.6,
             "Q2CmlValue": 19.9,
-            "Q3CmlValue": 19.9,
-            "Q4CmlValue": 19.9,
+            "Q3CmlValue": 30.4,
+            "Q4CmlValue": 30.4,
             "footnotes": "**MMO sales includes subscriptions" 
         },
         {
@@ -42,8 +42,8 @@
             "units": "currency",
             "Q1CmlValue": 18.5,
             "Q2CmlValue": 38.4,
-            "Q3CmlValue": 38.4,
-            "Q4CmlValue": 38.4,
+            "Q3CmlValue": 81.4,
+            "Q4CmlValue": 81.4,
             "footnotes": "*Sales might include: - Downloadable content purchases" 
         },
         {
@@ -51,8 +51,8 @@
             "units": "units",
             "Q1CmlValue": 4.01,
             "Q2CmlValue": 9.93,
-            "Q3CmlValue": 9.93,
-            "Q4CmlValue": 9.93 
+            "Q3CmlValue": 18.02,
+            "Q4CmlValue": 18.02 
         }
     ]
 }
