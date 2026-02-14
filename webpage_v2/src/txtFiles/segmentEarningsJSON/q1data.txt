@@ -1,56 +1,30 @@
-Digital Entertainment
-73315 
-310000
-27868 
-103000
-Amusement
-4554 
-31000
-547 
-8000
-Gaming & Systems
-7513 
-43000
--166 
-7500
-Sports
-12079 
-49000
-426 
-3000
-Intersegment Eliminations
-(497) 
-(3000)
-(1028) 
-(7500)
+Media & IP
+62617 
+-
+4900 
+-
+Internet Advertisement
+114642 
+-
+4379 
+-
+Game
+64722 
+-
+17675 
+-
+Investment Development 
+209 
+-
+(552) 
+-
+Adjustment
+(9813) 
+-
+(3008) 
+-
 Total
-96964
-380000
-27647
-114000
-
-Japan 
-71211
+232377
 -
--
--
-United States 
-15904
--
--
--
-Europe 
-5845
--
--
--
-Asia/Oceania 
-4004
--
--
--
-Global 
-96964
--
--
+23395
 -
