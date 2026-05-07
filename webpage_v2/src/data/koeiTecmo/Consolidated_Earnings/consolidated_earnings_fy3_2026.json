@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "companyName": "KOEI TECMO HOLDINGS CO., LTD.",
     "fiscalYear": "FY3/2026",
     "data": [
@@ -9,12 +9,12 @@
         "Q1CmlValue": 14800,
         "Q2CmlValue": 31268,
         "Q3CmlValue": 51729,
-        "Q4CmlValue": 51729,
+        "Q4CmlValue": 88393,
         "forecastThisFY": 92000,
         "forecastRevision1": null,
         "forecastRevision2": null,
         "forecastRevision3": null,
-        "forecastNextFY": null
+        "forecastNextFY": 90000
     },
     {
         "name": "Operating Income",
@@ -22,12 +22,12 @@
         "Q1CmlValue": 3574,
         "Q2CmlValue": 7964,
         "Q3CmlValue": 14571,
-        "Q4CmlValue": 14571,
+        "Q4CmlValue": 37168,
         "forecastThisFY": 31000,
         "forecastRevision1": null,
         "forecastRevision2": null,
         "forecastRevision3": null,
-        "forecastNextFY": null
+        "forecastNextFY": 32000
     },
     {
         "name": "Net Income",
@@ -35,12 +35,12 @@
         "Q1CmlValue": 6072,
         "Q2CmlValue": 13465,
         "Q3CmlValue": 23780,
-        "Q4CmlValue": 23780,
+        "Q4CmlValue": 42830,
         "forecastThisFY": 27000,
         "forecastRevision1": null,
         "forecastRevision2": null,
         "forecastRevision3": null,
-        "forecastNextFY": null
+        "forecastNextFY": 31000
     }
 ]
 }
