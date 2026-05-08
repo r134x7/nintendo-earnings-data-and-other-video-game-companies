@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "fiscalYear": "FY3/2026",
     "titles": [
         [
@@ -9,7 +9,7 @@
         "Q1CmlValue": 5.63,
         "Q2CmlValue": 9.57,
         "Q3CmlValue": 14.03,
-        "Q4CmlValue": 14.03
+        "Q4CmlValue": 14.7
     },
     {
         "name": "Donkey Kong Bananza",
@@ -17,7 +17,7 @@
         "Q1CmlValue": 0,
         "Q2CmlValue": 3.49,
         "Q3CmlValue": 4.25,
-        "Q4CmlValue": 4.25
+        "Q4CmlValue": 4.52
     },
     {
         "name": "Pokémon Legends: Z-A – Nintendo Switch 2 Edition",
@@ -25,7 +25,16 @@
         "Q1CmlValue": 0,
         "Q2CmlValue": 0,
         "Q3CmlValue": 3.89,
-        "Q4CmlValue": 3.89
+        "Q4CmlValue": 3.94
+    },
+    {
+        "name": "Pokémon Pokopia",
+        "platform": "Nintendo Switch 2",
+        "Q1CmlValue": 0,
+        "Q2CmlValue": 0,
+        "Q3CmlValue": 0,
+        "Q4CmlValue": 2.41,
+        "miscellaneous": "*This title is published by The Pokémon Company in Japan, and by Nintendo outside of Japan."
     },
     {
         "name": "Kirby Air Riders",
@@ -33,17 +42,17 @@
         "Q1CmlValue": 0,
         "Q2CmlValue": 0,
         "Q3CmlValue": 1.76,
-        "Q4CmlValue": 1.76
+        "Q4CmlValue": 1.87
     }
 ],
-       [
+[
     {
         "name": "Mario Kart 8 Deluxe",
         "platform": "Nintendo Switch",
         "Q1CmlValue": 68.86,
         "Q2CmlValue": 69.56,
         "Q3CmlValue": 70.59,
-        "Q4CmlValue": 70.59
+        "Q4CmlValue": 71.08
     },
     {
         "name": "Animal Crossing: New Horizons",
@@ -51,7 +60,7 @@
         "Q1CmlValue": 48.19,
         "Q2CmlValue": 48.62,
         "Q3CmlValue": 49.32,
-        "Q4CmlValue": 49.32
+        "Q4CmlValue": 49.91
     },
     {
         "name": "Super Smash Bros. Ultimate",
@@ -59,7 +68,7 @@
         "Q1CmlValue": 36.55,
         "Q2CmlValue": 36.93,
         "Q3CmlValue": 37.44,
-        "Q4CmlValue": 37.44
+        "Q4CmlValue": 37.76
     },
     {
         "name": "The Legend of Zelda: Breath of the Wild",
@@ -67,7 +76,7 @@
         "Q1CmlValue": 33.04,
         "Q2CmlValue": 33.34,
         "Q3CmlValue": 33.64,
-        "Q4CmlValue": 33.64
+        "Q4CmlValue": 33.84
     },
     {
         "name": "Super Mario Odyssey",
@@ -75,7 +84,7 @@
         "Q1CmlValue": 29.5,
         "Q2CmlValue": 29.84,
         "Q3CmlValue": 30.27,
-        "Q4CmlValue": 30.27
+        "Q4CmlValue": 30.5
     },
     {
         "name": "Pokémon Scarlet/Pokémon Violet",
@@ -83,7 +92,7 @@
         "Q1CmlValue": 27.15,
         "Q2CmlValue": 27.61,
         "Q3CmlValue": 28.08,
-        "Q4CmlValue": 28.08
+        "Q4CmlValue": 28.28
     },
     {
         "name": "Pokémon Sword/Pokémon Shield",
@@ -91,7 +100,7 @@
         "Q1CmlValue": 26.84,
         "Q2CmlValue": 26.96,
         "Q3CmlValue": 27.08,
-        "Q4CmlValue": 27.08
+        "Q4CmlValue": 27.16
     },
     {
         "name": "The Legend of Zelda: Tears of the Kingdom",
@@ -99,7 +108,7 @@
         "Q1CmlValue": 21.93,
         "Q2CmlValue": 22.15,
         "Q3CmlValue": 22.4,
-        "Q4CmlValue": 22.4
+        "Q4CmlValue": 22.56
     },
     {
         "name": "Super Mario Party",
@@ -107,7 +116,7 @@
         "Q1CmlValue": 21.19,
         "Q2CmlValue": 21.23,
         "Q3CmlValue": 21.28,
-        "Q4CmlValue": 21.28
+        "Q4CmlValue": 21.32
     },
     {
         "name": "New Super Mario Bros. U Deluxe",
@@ -115,7 +124,7 @@
         "Q1CmlValue": 18.36,
         "Q2CmlValue": 18.53,
         "Q3CmlValue": 18.8,
-        "Q4CmlValue": 18.8
+        "Q4CmlValue": 18.96
     }
 ]
     ]
