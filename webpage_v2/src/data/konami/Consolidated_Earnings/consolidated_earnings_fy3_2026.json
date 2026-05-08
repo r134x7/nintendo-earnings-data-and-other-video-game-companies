@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "companyName": "KONAMI GROUP CORPORATION",
     "fiscalYear": "FY3/2026",
     "data": [
@@ -9,12 +9,12 @@
         "Q1CmlValue": 96964,
         "Q2CmlValue": 224839,
         "Q3CmlValue": 353020,
-        "Q4CmlValue": 353020,
+        "Q4CmlValue": 493677,
         "forecastThisFY": 430000,
         "forecastRevision1": 468000,
         "forecastRevision2": null,
         "forecastRevision3": null,
-        "forecastNextFY": null
+        "forecastNextFY": 505000
     },
     {
         "name": "Operating Income",
@@ -22,12 +22,12 @@
         "Q1CmlValue": 27732,
         "Q2CmlValue": 64268,
         "Q3CmlValue": 101788,
-        "Q4CmlValue": 101788,
+        "Q4CmlValue": 135891,
         "forecastThisFY": 106000,
         "forecastRevision1": 123000,
         "forecastRevision2": null,
         "forecastRevision3": null,
-        "forecastNextFY": null
+        "forecastNextFY": 143000
     },
     {
         "name": "Net Income",
@@ -35,12 +35,12 @@
         "Q1CmlValue": 19834,
         "Q2CmlValue": 46486,
         "Q3CmlValue": 174347,
-        "Q4CmlValue": 174347,
+        "Q4CmlValue": 100013,
         "forecastThisFY": 75000,
         "forecastRevision1": 86000,
         "forecastRevision2": null,
         "forecastRevision3": null,
-        "forecastNextFY": null
+        "forecastNextFY": 101000
     }
 ]
 }
