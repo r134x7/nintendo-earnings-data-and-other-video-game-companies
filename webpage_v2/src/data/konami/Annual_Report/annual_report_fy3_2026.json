@@ -1,0 +1,94 @@
+{
+    "companyName": "KONAMI GROUP CORPORATION",
+    "fiscalYear": "FY3/2026",
+    "series": [
+        {
+            "title": "METAL GEAR series",
+            "releaseDate": "July 1987",
+            "fyEndMonth": "March 2026",
+            "value": 66.1,
+            "valueLastFY": 62.9,
+            "valueLastTwoFYs": 61.5 
+        },
+        {
+            "title": "PAWAFURU PUROYAKYU series",
+            "releaseDate": "March 1994",
+            "fyEndMonth": "March 2026",
+            "value": 26.3,
+            "valueLastFY": 26.1, 
+            "valueLastTwoFYs": 25.2 
+        },
+        {
+            "title": "JIKKYOU PAWAFURU PUROYAKYU",
+            "releaseDate": "December 2014",
+            "fyEndMonth": "March 2026",
+            "value": 53.0,
+            "valueLastFY": 52.0,
+            "valueLastTwoFYs": 50.0,
+            "footnotes": "Note: Mobile game downloads. Data as of November 2025."
+        },
+        {
+            "title": "PROFESSIONAL BASEBALL SPIRITS A (Ace)",
+            "releaseDate": "October 2015",
+            "fyEndMonth": "March 2026",
+            "value": 72.0,
+            "valueLastFY": 62.0,
+            "valueLastTwoFYs": 52.0,
+            "footnotes": "Note: Mobile game downloads. Data as of April 2025."
+        },
+        {
+            "title": "eFootball™ series (Console and Mobile)",
+            "releaseDate": "July 1995",
+            "fyEndMonth": "March 2026",
+            "value": 1000,
+            "valueLastFY": "Nothing", 
+            "valueLastTwoFYs": "Nothing", 
+            "footnotes": "Data as of April 2026."
+        },
+        {
+            "title": "Yu-Gi-Oh! DUEL LINKS",
+            "releaseDate": "November 2016",
+            "fyEndMonth": "March 2026",
+            "value": 150,
+            "valueLastFY": 150, 
+            "valueLastTwoFYs": 150, 
+            "footnotes": "Note: Downloads. Data as of March 2022."
+        },
+        {
+            "title": "Yu-Gi-Oh! MASTER DUEL",
+            "releaseDate": "January 2022",
+            "fyEndMonth": "March 2026",
+            "value": 90,
+            "valueLastFY": 80, 
+            "valueLastTwoFYs": 60, 
+            "footnotes": "Note: Downloads. Data as of September 2025."
+        },
+        {
+            "title": "Yu-Gi-Oh! series",
+            "releaseDate": "December 1998",
+            "fyEndMonth": "March 2026",
+            "value": 32.5,
+            "valueLastFY": 32.3,
+            "valueLastTwoFYs": "Nothing", 
+            "footnotes": "Note: Console games."
+        },
+        {
+            "title": "Momotaro Dentetsu series",
+            "releaseDate": "December 1988",
+            "fyEndMonth": "March 2026",
+            "value": 20.1,
+            "valueLastFY": 18.9,
+            "valueLastTwoFYs": "Nothing", 
+            "footnotes": "Note: Console games."
+        },
+        {
+            "title": "SILENT HILL series",
+            "releaseDate": "March 1999",
+            "fyEndMonth": "March 2026",
+            "value": 17.1,
+            "valueLastFY": 11.5,
+            "valueLastTwoFYs": "Nothing", 
+            "footnotes": "Note: Console games. *Includes units shipped, store downloads and subscription services"
+        }
+    ]
+}
