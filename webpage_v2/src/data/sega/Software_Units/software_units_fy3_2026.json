@@ -1,39 +1,42 @@
 {
     "fiscalYear": "FY3/2026",
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "softwareUnits": [
         {
             "name": "Sonic series",
             "ip": "Sonic the Hedgehog",
-            "Q1CmlValue": 770,
-            "Q2CmlValue": 2240,
-            "Q3CmlValue": 4000,
-            "Q4CmlValue": 4000 
+            "Q1CmlValue": 760,
+            "Q2CmlValue": 2210,
+            "Q3CmlValue": 3880,
+            "Q4CmlValue": 4870,
+            "miscellaneous": "From appendix: Due to a calculation error, we have revised the historical figures for Q1 through Q3, FY2026/3"  
         },
         {
             "name": "Total War series",
             "ip": "Total War",
-            "Q1CmlValue": 910,
-            "Q2CmlValue": 1780,
-            "Q3CmlValue": 3160,
-            "Q4CmlValue": 3160 
+            "Q1CmlValue": 450,
+            "Q2CmlValue": 940,
+            "Q3CmlValue": 1710,
+            "Q4CmlValue": 2340,
+            "miscellaneous": "From appendix: Due to a calculation error, we have revised the historical figures for Q1 through Q3, FY2026/3" 
         },
         {
             "name": "Persona series",
             "ip": "Persona",
-            "Q1CmlValue": 1000,
-            "Q2CmlValue": 1430,
-            "Q3CmlValue": 2410,
-            "Q4CmlValue": 2410 
+            "Q1CmlValue": 630,
+            "Q2CmlValue": 1380,
+            "Q3CmlValue": 2340,
+            "Q4CmlValue": 3220,
+            "miscellaneous": "From appendix: Due to a calculation error, we have revised the historical figures for Q1 through Q3, FY2026/3" 
         },
         {
             "name": "Like a Dragon series",
             "ip": "Ryu ga Gotoku",
-            "Q1CmlValue": 690,
-            "Q2CmlValue": 1270,
-            "Q3CmlValue": 2500,
-            "Q4CmlValue": 2500, 
-            "miscellaneous": "*Like a Dragon series includes the Judgment series" 
+            "Q1CmlValue": 660,
+            "Q2CmlValue": 1210,
+            "Q3CmlValue": 2420,
+            "Q4CmlValue": 3800, 
+            "miscellaneous": "*Like a Dragon series includes the Judgment series. From appendix: Due to a calculation error, we have revised the historical figures for Q1 through Q3, FY2026/3" 
         }
     ]
 }
