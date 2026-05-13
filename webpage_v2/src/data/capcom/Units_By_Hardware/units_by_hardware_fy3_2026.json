@@ -1,0 +1,24 @@
+{
+    "companyName": "CAPCOM Co., Ltd.",
+    "fiscalYear": "FY3/2026",
+    "series": [
+        {
+            "title": "PC units (digital)",
+            "skuNumber": 0,
+            "value": 32.17,
+            "valueLastFY": 28.211
+        },
+        {
+            "title": "Console units (digital)",
+            "skuNumber": 0,
+            "value": 22.76,
+            "valueLastFY": 18.517
+        },
+        {
+            "title": "Package units",
+            "skuNumber": 0,
+            "value": 4.13,
+            "valueLastFY": 5.146
+        }
+    ]
+}

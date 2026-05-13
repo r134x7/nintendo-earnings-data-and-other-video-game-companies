@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "fiscalYear": "FY3/2026",
     "companyName": "CAPCOM Co., Ltd.",
     "data": [
@@ -9,9 +9,9 @@
             "Q1CmlValue": 292,
             "Q2CmlValue": 487,
             "Q3CmlValue": 716,
-            "Q4CmlValue": 716,
+            "Q4CmlValue": 1419,
             "forecastThisFY": 1368,
-            "forecastNextFY": "Nothing",
+            "forecastNextFY": 1490,
             "footnotes": "*Sales includes: - Downloadable content purchases"
         },
         {
@@ -20,9 +20,9 @@
             "Q1CmlValue": 14167,
             "Q2CmlValue": 23852,
             "Q3CmlValue": 34644,
-            "Q4CmlValue": 34644,
+            "Q4CmlValue": 59070,
             "forecastThisFY": 54000,
-            "forecastNextFY": "Nothing"
+            "forecastNextFY": 65000
         },
         {
             "name": "Package",
@@ -30,9 +30,9 @@
             "Q1CmlValue": 28,
             "Q2CmlValue": 52,
             "Q3CmlValue": 72,
-            "Q4CmlValue": 72,
+            "Q4CmlValue": 162,
             "forecastThisFY": 177, 
-            "forecastNextFY": "Nothing"
+            "forecastNextFY": 123
         },
         {
             "name": "Package",
@@ -40,9 +40,9 @@
             "Q1CmlValue": 685,
             "Q2CmlValue": 1441,
             "Q3CmlValue": 2037,
-            "Q4CmlValue": 2037, 
+            "Q4CmlValue": 4130, 
             "forecastThisFY": 3300,
-            "forecastNextFY": "Nothing"
+            "forecastNextFY": 3000
         },
         {
             "name": "Digital",
@@ -50,9 +50,9 @@
             "Q1CmlValue": 264,
             "Q2CmlValue": 435,
             "Q3CmlValue": 643,
-            "Q4CmlValue": 643,
+            "Q4CmlValue": 1256,
             "forecastThisFY": 1191,
-            "forecastNextFY": "Nothing",
+            "forecastNextFY": 1367,
             "footnotes": "*Sales includes: - Downloadable content purchases"
         },
         {
@@ -61,9 +61,9 @@
             "Q1CmlValue": 13482,
             "Q2CmlValue": 22410,
             "Q3CmlValue": 32607,
-            "Q4CmlValue": 32607, 
+            "Q4CmlValue": 54930, 
             "forecastThisFY": 50700,
-            "forecastNextFY": "Nothing"
+            "forecastNextFY": 62000
         }
     ]
 }   
