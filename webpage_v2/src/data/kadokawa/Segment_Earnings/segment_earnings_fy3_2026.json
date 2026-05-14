@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "companyName": "KADOKAWA CORPORATION",
     "fiscalYear": "FY3/2026",
     "data": [
@@ -20,8 +20,8 @@
             "operatingIncome": 623
         },
         "Q4CmlValue": {
-            "netSales": 111681,
-            "operatingIncome": 623
+            "netSales": 155634,
+            "operatingIncome": 4054
         },
         "forecastThisFY": {
             "netSales": 167900,
@@ -40,8 +40,8 @@
             "operatingIncome": null
         },
         "forecastNextFY": {
-            "netSales": null,
-            "operatingIncome": null
+            "netSales": 159300,
+            "operatingIncome": 6800
         }
     },
     {
@@ -61,8 +61,8 @@
             "operatingIncome": -904
         },
         "Q4CmlValue": {
-            "netSales": 31632,
-            "operatingIncome": -904
+            "netSales": 48256,
+            "operatingIncome": -465
         },
         "forecastThisFY": {
             "netSales": 55400,
@@ -81,8 +81,8 @@
             "operatingIncome": null
         },
         "forecastNextFY": {
-            "netSales": null,
-            "operatingIncome": null
+            "netSales": 58600,
+            "operatingIncome": 500
         }
     },
     {
@@ -102,8 +102,8 @@
             "operatingIncome": 8050
         },
         "Q4CmlValue": {
-            "netSales": 23381,
-            "operatingIncome": 8050
+            "netSales": 29781,
+            "operatingIncome": 7541
         },
         "forecastThisFY": {
             "netSales": 26000,
@@ -122,8 +122,8 @@
             "operatingIncome": null
         },
         "forecastNextFY": {
-            "netSales": null,
-            "operatingIncome": null
+            "netSales": 31200,
+            "operatingIncome": 4500
         }
     },
     {
@@ -143,8 +143,8 @@
             "operatingIncome": 2187
         },
         "Q4CmlValue": {
-            "netSales": 16249,
-            "operatingIncome": 2187
+            "netSales": 20515,
+            "operatingIncome": 2117
         },
         "forecastThisFY": {
             "netSales": 20800,
@@ -163,8 +163,8 @@
             "operatingIncome": null
         },
         "forecastNextFY": {
-            "netSales": null,
-            "operatingIncome": null
+            "netSales": 20400,
+            "operatingIncome": 2000
         }
     },
     {
@@ -184,8 +184,8 @@
             "operatingIncome": 2510
         },
         "Q4CmlValue": {
-            "netSales": 12837,
-            "operatingIncome": 2510
+            "netSales": 17166,
+            "operatingIncome": 2844
         },
         "forecastThisFY": {
             "netSales": 17600,
@@ -204,8 +204,8 @@
             "operatingIncome": null
         },
         "forecastNextFY": {
-            "netSales": null,
-            "operatingIncome": null
+            "netSales": 19600,
+            "operatingIncome": 3200
         }
     },
     {
@@ -225,8 +225,8 @@
             "operatingIncome": -3128
         },
         "Q4CmlValue": {
-            "netSales": 10949,
-            "operatingIncome": -3128
+            "netSales": 17031,
+            "operatingIncome": -3966
         },
         "forecastThisFY": {
             "netSales": 16800,
@@ -245,8 +245,8 @@
             "operatingIncome": null
         },
         "forecastNextFY": {
-            "netSales": null,
-            "operatingIncome": null
+            "netSales": 17200,
+            "operatingIncome": -2800
         }
     },
     {
@@ -266,8 +266,8 @@
             "operatingIncome": -2961
         },
         "Q4CmlValue": {
-            "netSales": -3740,
-            "operatingIncome": -2961
+            "netSales": -5476,
+            "operatingIncome": -4024
         },
         "forecastThisFY": {
             "netSales": -12600,
@@ -286,8 +286,8 @@
             "operatingIncome": null
         },
         "forecastNextFY": {
-            "netSales": null,
-            "operatingIncome": null
+            "netSales": -6000,
+            "operatingIncome": -4100
         }
     }
 ]

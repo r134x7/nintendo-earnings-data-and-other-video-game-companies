@@ -1,20 +1,20 @@
 {
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "companyName": "KADOKAWA CORPORATION",
     "fiscalYear": "FY3/2026",
     "data": [
-      {
+    {
         "name": "Net Sales",
         "units": "currency",
         "Q1CmlValue": 64844,
         "Q2CmlValue": 133933,
         "Q3CmlValue": 202991,
-        "Q4CmlValue": 202991,
+        "Q4CmlValue": 282908,
         "forecastThisFY": 291900,
         "forecastRevision1": 278200,
         "forecastRevision2": null,
         "forecastRevision3": null,
-        "forecastNextFY": null
+        "forecastNextFY": 300300
     },
     {
         "name": "Operating Income",
@@ -22,12 +22,12 @@
         "Q1CmlValue": 2318,
         "Q2CmlValue": 5550,
         "Q3CmlValue": 6377,
-        "Q4CmlValue": 6377,
+        "Q4CmlValue": 8102,
         "forecastThisFY": 16700,
         "forecastRevision1": 10300,
         "forecastRevision2": null,
         "forecastRevision3": null,
-        "forecastNextFY": null
+        "forecastNextFY": 10100
     },
     {
         "name": "Net Income",
@@ -35,12 +35,12 @@
         "Q1CmlValue": 2858,
         "Q2CmlValue": 1491,
         "Q3CmlValue": 2211,
-        "Q4CmlValue": 2211,
+        "Q4CmlValue": 1278,
         "forecastThisFY": 11400,
         "forecastRevision1": 4900,
         "forecastRevision2": null,
         "forecastRevision3": null,
-        "forecastNextFY": null
+        "forecastNextFY": 5800
     }
 ]
 }
