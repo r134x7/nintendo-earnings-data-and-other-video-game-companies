@@ -1,20 +1,20 @@
 {
-    "currentQuarter": 3,
+    "currentQuarter": 4,
     "companyName": "SQUARE ENIX HOLDINGS CO., LTD.",
     "fiscalYear": "FY3/2026",
     "data": [
-     {
+    {
         "name": "Net Sales",
         "units": "currency",
         "Q1CmlValue": 59275,
         "Q2CmlValue": 133895,
         "Q3CmlValue": 215455,
-        "Q4CmlValue": 215455,
+        "Q4CmlValue": 297661,
         "forecastThisFY": 280000,
         "forecastRevision1": 280000,
         "forecastRevision2": 280000,
         "forecastRevision3": null,
-        "forecastNextFY": null
+        "forecastNextFY": 298000
     },
     {
         "name": "Operating Income",
@@ -22,12 +22,12 @@
         "Q1CmlValue": 9018,
         "Q2CmlValue": 27278,
         "Q3CmlValue": 46387,
-        "Q4CmlValue": 46387,
+        "Q4CmlValue": 54736,
         "forecastThisFY": 41000,
         "forecastRevision1": 41000,
         "forecastRevision2": 49000,
         "forecastRevision3": null,
-        "forecastNextFY": null
+        "forecastNextFY": 49000
     },
     {
         "name": "Net Income",
@@ -35,12 +35,12 @@
         "Q1CmlValue": 4804,
         "Q2CmlValue": 10052,
         "Q3CmlValue": 25607,
-        "Q4CmlValue": 25607,
+        "Q4CmlValue": 29616,
         "forecastThisFY": 28700,
         "forecastRevision1": 16900,
         "forecastRevision2": 27000,
         "forecastRevision3": null,
-        "forecastNextFY": null
+        "forecastNextFY": 31000
     }
 ]
 }
