@@ -1,4 +1,8 @@
-[
+{
+    "currentQuarter": 1,
+    "companyName": "KONAMI GROUP CORPORATION",
+    "fiscalYear": "FY3/2027",
+    "data": [
     {
         "name": "Digital Entertainment",
         "units": "currency",
@@ -492,3 +496,4 @@
         }
     }
 ]
+}
