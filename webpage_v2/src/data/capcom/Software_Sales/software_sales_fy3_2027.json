@@ -1,0 +1,69 @@
+{
+    "currentQuarter": 1,
+    "fiscalYear": "FY3/2027",
+    "companyName": "CAPCOM Co., Ltd.",
+    "data": [
+        {
+            "name": "Digital Contents - Package & Digital",
+            "units": "currency",
+            "Q1CmlValue": 539,
+            "Q2CmlValue": 539,
+            "Q3CmlValue": 539,
+            "Q4CmlValue": 539,
+            "forecastThisFY": 1490,
+            "forecastNextFY": "Nothing",
+            "footnotes": "*Sales includes: - Downloadable content purchases"
+        },
+        {
+            "name": "Digital Contents - Package & Digital",
+            "units": "units",
+            "Q1CmlValue": 23810,
+            "Q2CmlValue": 23810,
+            "Q3CmlValue": 23810,
+            "Q4CmlValue": 23810,
+            "forecastThisFY": 65000,
+            "forecastNextFY": "Nothing"
+        },
+        {
+            "name": "Package",
+            "units": "currency",
+            "Q1CmlValue": 72,
+            "Q2CmlValue": 72,
+            "Q3CmlValue": 72,
+            "Q4CmlValue": 72,
+            "forecastThisFY": 123, 
+            "forecastNextFY": "Nothing"
+        },
+        {
+            "name": "Package",
+            "units": "units",
+            "Q1CmlValue": 1590,
+            "Q2CmlValue": 1590,
+            "Q3CmlValue": 1590,
+            "Q4CmlValue": 1590,
+            "forecastThisFY": 3000,
+            "forecastNextFY": "Nothing"
+        },
+        {
+            "name": "Digital",
+            "units": "currency",
+            "Q1CmlValue": 467,
+            "Q2CmlValue": 467,
+            "Q3CmlValue": 467,
+            "Q4CmlValue": 467,
+            "forecastThisFY": 1367,
+            "forecastNextFY": "Nothing",
+            "footnotes": "*Sales includes: - Downloadable content purchases"
+        },
+        {
+            "name": "Digital",
+            "units": "units",
+            "Q1CmlValue": 22220,
+            "Q2CmlValue": 22220,
+            "Q3CmlValue": 22220,
+            "Q4CmlValue": 22220, 
+            "forecastThisFY": 62000,
+            "forecastNextFY": "Nothing"
+        }
+    ]
+}   
