@@ -1,0 +1,100 @@
+{
+    "currentQuarter": 1,
+    "fiscalYear": "FY3/2027",
+    "platformCmlSales": [
+        {
+            "name": "N/A",
+            "units": "currency",
+            "Q1CmlValue": 0,
+            "Q2CmlValue": 0,
+            "Q3CmlValue": 0,
+            "Q4CmlValue": 0,
+            "cmlValueLastFY": 0
+        }
+    ],
+    "platformUnitSales": [
+    {
+        "name": "Nintendo Switch 2 Hardware Total",
+        "units": "units",
+        "Q1CmlValue": 382,
+        "Q2CmlValue": 382,
+        "Q3CmlValue": 382,
+        "Q4CmlValue": 382,
+        "cmlValueLastFY": 1986
+    },
+    {
+        "name": "Nintendo Switch 2 Software Total",
+        "units": "units",
+        "Q1CmlValue": 946,
+        "Q2CmlValue": 946,
+        "Q3CmlValue": 946,
+        "Q4CmlValue": 946,
+        "cmlValueLastFY": 4871
+    },
+    {
+        "name": "Nintendo Switch Hardware Total",
+        "units": "units",
+        "Q1CmlValue": 66,
+        "Q2CmlValue": 66,
+        "Q3CmlValue": 66,
+        "Q4CmlValue": 66,
+        "cmlValueLastFY": 15593
+    },
+    {
+        "name": "Nintendo Switch",
+        "units": "units",
+        "Q1CmlValue": 16,
+        "Q2CmlValue": 16,
+        "Q3CmlValue": 16,
+        "Q4CmlValue": 16,
+        "cmlValueLastFY": 9759
+    },
+    {
+        "name": "Nintendo Switch OLED Model",
+        "units": "units",
+        "Q1CmlValue": 33,
+        "Q2CmlValue": 33,
+        "Q3CmlValue": 33,
+        "Q4CmlValue": 33,
+        "cmlValueLastFY": 3190
+    },
+    {
+        "name": "Nintendo Switch Lite",
+        "units": "units",
+        "Q1CmlValue": 18,
+        "Q2CmlValue": 18,
+        "Q3CmlValue": 18,
+        "Q4CmlValue": 18,
+        "cmlValueLastFY": 2643
+    },
+    {
+        "name": "Nintendo Switch Software Total",
+        "units": "units",
+        "Q1CmlValue": 3381,
+        "Q2CmlValue": 3381,
+        "Q3CmlValue": 3381,
+        "Q4CmlValue": 3381,
+        "cmlValueLastFY": 152814
+    }
+],
+    "platformForecastSales": [
+        {
+            "name": "Nintendo Switch Hardware Total",
+            "forecastThisFY": 200
+        },
+        {
+            "name": "Nintendo Switch Software Total",
+            "forecastThisFY": 10500,
+            "footnote": "・Software sales units include both packaged and downloadable versions of software, and do not include download-only software or add-on content.・Actual software sales units include the quantity bundled with hardware or other products.・Forecasted software sales units do not include the quantity to be bundled with hardware or other products.・Packaged versions of Nintendo Switch 2 Edition software are included in Nintendo Switch 2 software sales units, and downloadable versions are included in Nintendo Switch software sales units. Sales of upgrade packs are not included in software sales"
+        },
+        {
+            "name": "Nintendo Switch 2 Hardware Total",
+            "forecastThisFY": 1650
+        },
+        {
+            "name": "Nintendo Switch 2 Software Total",
+            "forecastThisFY": 6000,
+            "footnote": "・Software sales units include both packaged and downloadable versions of software, and do not include download-only software or add-on content.・Actual software sales units include the quantity bundled with hardware or other products.・Forecasted software sales units do not include the quantity to be bundled with hardware or other products.・Packaged versions of Nintendo Switch 2 Edition software are included in Nintendo Switch 2 software sales units, and downloadable versions are included in Nintendo Switch software sales units. Sales of upgrade packs are not included in software sales"
+        }
+    ]
+}

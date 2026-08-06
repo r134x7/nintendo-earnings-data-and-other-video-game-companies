@@ -1,0 +1,60 @@
+{
+    "currentQuarter": 1,
+    "fiscalYear": "FY3/2027",
+    "titles": [
+        [
+    {
+        "name": "Pokémon Pokopia",
+        "platform": "Nintendo Switch 2",
+        "regionA": "Japan",
+        "Q1CmlValueA": 0,
+        "Q2CmlValueA": 0,
+        "Q3CmlValueA": 0,
+        "Q4CmlValueA": 0,
+        "regionB": "Overseas",
+        "Q1CmlValueB": 127,
+        "Q2CmlValueB": 127,
+        "Q3CmlValueB": 127,
+        "Q4CmlValueB": 127,
+        "regionC": "WW FY",
+        "Q1CmlValueC": 127,
+        "Q2CmlValueC": 127,
+        "Q3CmlValueC": 127,
+        "Q4CmlValueC": 127,
+        "regionD": "WW LTD",
+        "Q1CmlValueD": 368,
+        "Q2CmlValueD": 368,
+        "Q3CmlValueD": 368,
+        "Q4CmlValueD": 368,
+        "miscellaneous": "*This title is published by The Pokémon Company in Japan, and by Nintendo outside of Japan."
+    }
+],
+[
+    {
+        "name": "Tomodachi Life: Living the Dream",
+        "platform": "Nintendo Switch",
+        "regionA": "Japan",
+        "Q1CmlValueA": 255,
+        "Q2CmlValueA": 255,
+        "Q3CmlValueA": 255,
+        "Q4CmlValueA": 255,
+        "regionB": "Overseas",
+        "Q1CmlValueB": 539,
+        "Q2CmlValueB": 539,
+        "Q3CmlValueB": 539,
+        "Q4CmlValueB": 539,
+        "regionC": "WW FY",
+        "Q1CmlValueC": 794,
+        "Q2CmlValueC": 794,
+        "Q3CmlValueC": 794,
+        "Q4CmlValueC": 794,
+        "regionD": "WW LTD",
+        "Q1CmlValueD": 796,
+        "Q2CmlValueD": 796,
+        "Q3CmlValueD": 796,
+        "Q4CmlValueD": 796,
+        "miscellaneous": "*This title was released during the current fiscal year, however a portion of sell-in shipments made ahead of release was recorded in the previous fiscal year."
+    }
+]
+    ]
+}

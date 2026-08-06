@@ -1,0 +1,108 @@
+Nintendo Switch Hardware Total
+Japan
+21
+3855
+
+The Americas
+20
+5980
+
+Europe
+11
+4014
+
+Other
+15
+1809
+
+Total
+66
+15659
+
+
+Nintendo Switch
+Japan
+4
+2114
+
+The Americas
+6
+3843
+
+Europe
+6
+2696
+
+Other
+1
+1122
+
+Total
+16
+9775
+
+
+Nintendo Switch OLED Model
+Japan
+8
+1010
+
+The Americas
+9
+958
+
+Europe
+3
+734
+
+Other
+12
+522
+
+Total
+33
+3223
+
+
+Nintendo Switch Lite
+Japan
+9
+732
+
+The Americas
+5
+1179
+
+Europe
+3
+584
+
+Other
+1
+165
+
+Total
+18
+2661
+
+
+Nintendo Switch Software Total
+Japan
+855
+31055
+
+The Americas
+1424
+67643
+
+Europe
+791
+45178
+
+Other
+312
+12319
+
+Total
+3381
+156195

@@ -1,3 +1,58 @@
+{
+    "currentQuarter": 1,
+    "fiscalYear": "FY3/2027",
+    "titles": [
+[
+    {
+        "name": "Mario Kart World",
+        "platform": "Nintendo Switch 2",
+        "Q1CmlValue": 15.39,
+        "Q2CmlValue": 15.39,
+        "Q3CmlValue": 15.39,
+        "Q4CmlValue": 15.39
+    },
+    {
+        "name": "Donkey Kong Bananza",
+        "platform": "Nintendo Switch 2",
+        "Q1CmlValue": 4.78,
+        "Q2CmlValue": 4.78,
+        "Q3CmlValue": 4.78,
+        "Q4CmlValue": 4.78
+    },
+    {
+        "name": "Pokémon Legends: Z-A – Nintendo Switch 2 Edition",
+        "platform": "Nintendo Switch 2",
+        "Q1CmlValue": 3.99,
+        "Q2CmlValue": 3.99,
+        "Q3CmlValue": 3.99,
+        "Q4CmlValue": 3.99
+    },
+    {
+        "name": "Pokémon Pokopia",
+        "platform": "Nintendo Switch 2",
+        "Q1CmlValue": 3.68,
+        "Q2CmlValue": 3.68,
+        "Q3CmlValue": 3.68,
+        "Q4CmlValue": 3.68,
+        "miscellaneous": "*This title is published by The Pokémon Company in Japan, and by Nintendo outside of Japan."
+    },
+    {
+        "name": "Kirby Air Riders",
+        "platform": "Nintendo Switch 2",
+        "Q1CmlValue": 1.9,
+        "Q2CmlValue": 1.9,
+        "Q3CmlValue": 1.9,
+        "Q4CmlValue": 1.9
+    },
+    {
+        "name": "Super Mario Party Jamboree – Nintendo Switch 2 Edition",
+        "platform": "Nintendo Switch 2",
+        "Q1CmlValue": 1.15,
+        "Q2CmlValue": 1.15,
+        "Q3CmlValue": 1.15,
+        "Q4CmlValue": 1.15
+    }
+],
 [
     {
         "name": "Mario Kart 8 Deluxe",
@@ -80,3 +135,5 @@
         "Q4CmlValue": 19.1
     }
 ]
+    ]
+}
