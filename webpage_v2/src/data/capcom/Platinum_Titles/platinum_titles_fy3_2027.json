@@ -1,4 +1,7 @@
-[
+{
+    "currentQuarter": 1,
+    "fiscalYear": "FY3/2027",
+    "titles": [
     {
         "title": "Monster Hunter: World",
         "releaseDate": "Jan 2018",
@@ -6,7 +9,8 @@
         "Q1CmlValue": 22.4,
         "Q2CmlValue": 22.4,
         "Q3CmlValue": 22.4,
-        "Q4CmlValue": 22.4
+        "Q4CmlValue": 22.4,
+        "miscellaneous": "*Excludes shipments of Monster Hunter World: Iceborne Master Edition"
     },
     {
         "title": "Resident Evil 2",
@@ -1151,4 +1155,75 @@
         "Q3CmlValue": 1,
         "Q4CmlValue": 1
     }
-]
+],
+    "delistedTitles": [
+        {
+            "title": "Aladdin",
+            "releaseDate": "Nov 1993",
+            "platforms": "SNES",
+            "Q1CmlValue": 1.75,
+            "Q2CmlValue": 1.75,
+            "Q3CmlValue": 1.75,
+            "Q4CmlValue": 1.75,
+            "valueLastFY": 1.75,
+            "valueLastTwoFYs": 1.75
+        },
+        {
+            "title": "Duck Tales",
+            "releaseDate": "Jan 1990",
+            "platforms": "NES",
+            "Q1CmlValue": 1.67,
+            "Q2CmlValue": 1.67,
+            "Q3CmlValue": 1.67,
+            "Q4CmlValue": 1.67,
+            "valueLastFY": 1.67,
+            "valueLastTwoFYs": 1.67
+        },
+        {
+            "title": "Duck Tales",
+            "releaseDate": "Sep 1990",
+            "platforms": "GB",
+            "Q1CmlValue": 1.43,
+            "Q2CmlValue": 1.43,
+            "Q3CmlValue": 1.43,
+            "Q4CmlValue": 1.43,
+            "valueLastFY": 1.43,
+            "valueLastTwoFYs": 1.43
+        },
+        {
+            "title": "Magical Quest Starring Mickey",
+            "releaseDate": "Nov 1992",
+            "platforms": "SNES",
+            "Q1CmlValue": 1.21,
+            "Q2CmlValue": 1.21,
+            "Q3CmlValue": 1.21,
+            "Q4CmlValue": 1.21,
+            "valueLastFY": 1.21,
+            "valueLastTwoFYs": 1.21
+        },
+        {
+            "title": "Chip'n Dale Rescue Rangers",
+            "releaseDate": "Jun 1990",
+            "platforms": "NES",
+            "Q1CmlValue": 1.2,
+            "Q2CmlValue": 1.2,
+            "Q3CmlValue": 1.2,
+            "Q4CmlValue": 1.2,
+            "valueLastFY": 1.2,
+            "valueLastTwoFYs": 1.2
+        },
+        {
+            "title": "Monster Hunter: World + Monster Hunter: World Iceborne Master Edition",
+            "releaseDate": "Jan 2018",
+            "platforms": "PS4, Xbox One, PC, DL",
+            "Q1CmlValue": 30.4,
+            "Q2CmlValue": 30.4,
+            "Q3CmlValue": 30.4,
+            "Q4CmlValue": 30.4,
+            "valueLastFY": 29.6,
+            "valueLastTwoFYs": 28.5,
+            "miscellaneous": "(* Includes shipments of Monster Hunter World: Iceborne Master Edition, Monster Hunter: World Iceborne Master Edition release date: Sep 2019). Unit sales of Monster Hunter: World including Monster Hunter World: Iceborne Master Edition: 30.4 million units as of June 30, 2026."
+        }
+    ],
+    "platformNotes": "NES: Nintendo Entertainment System, SNES: Super Nintendo Entertainment System, GB: Game Boy, GBA: Game Boy Advance, 3DS: Nintendo 3DS, GC: Nintendo GameCube, MD: Mega Drive/Genesis, DC: DreamCast, PS: PlayStation®, PS2: PlayStation®2, PS3: PlayStation®3, PS4: PlayStation®4, PS5: PlayStation®5, PSP: PSP® (PlayStation®Portable), DL: Full-game download, NSW: Nintendo Switch, NSW2: Nintendo Switch 2, XSX: Xbox Series X|S. DL (Full-game download) includes all digital download units for each platform."
+}
