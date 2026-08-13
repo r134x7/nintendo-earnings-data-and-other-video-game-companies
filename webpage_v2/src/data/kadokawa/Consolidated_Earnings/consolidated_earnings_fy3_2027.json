@@ -1,4 +1,8 @@
-[
+{
+    "currentQuarter": 1,
+    "companyName": "KADOKAWA CORPORATION",
+    "fiscalYear": "FY3/2027",
+    "data": [
     {
         "name": "Net Sales",
         "units": "currency",
@@ -7,7 +11,7 @@
         "Q3CmlValue": 68252,
         "Q4CmlValue": 68252,
         "forecastThisFY": 300300,
-        "forecastRevision1": null,
+        "forecastRevision1": 300300,
         "forecastRevision2": null,
         "forecastRevision3": null,
         "forecastNextFY": null
@@ -20,7 +24,7 @@
         "Q3CmlValue": 1264,
         "Q4CmlValue": 1264,
         "forecastThisFY": 10100,
-        "forecastRevision1": null,
+        "forecastRevision1": 10100,
         "forecastRevision2": null,
         "forecastRevision3": null,
         "forecastNextFY": null
@@ -33,9 +37,10 @@
         "Q3CmlValue": -4540,
         "Q4CmlValue": -4540,
         "forecastThisFY": 5800,
-        "forecastRevision1": null,
+        "forecastRevision1": 1000,
         "forecastRevision2": null,
         "forecastRevision3": null,
         "forecastNextFY": null
     }
 ]
+}
