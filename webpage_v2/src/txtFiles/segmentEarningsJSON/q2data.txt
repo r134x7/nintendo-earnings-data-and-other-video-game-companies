@@ -1,30 +1,56 @@
-Media & IP
-124812 
+Entertainment
+34209
 -
-10396 
+11467
 -
-Internet Advertisement
-242349 
+Amusement
+2446
 -
-11275 
+386
 -
-Game
-132227 
+Real Estate
+691
 -
-38596 
+160
 -
-Investment Development 
-235 
+Others
+179
 -
-(764) 
+(270)
 -
-Adjustment
-(21039)  
+Corporate & Elimination
+(199)
 -
-(7045) 
+-
 -
 Total
-478584
+37327
 -
-52459 
+11743
+-
+
+Japan
+20922
+-
+-
+-
+North America
+5034
+-
+-
+-
+Europe
+2231
+-
+-
+-
+Asia
+9141
+-
+-
+-
+Global
+37327
+-
+-
 -
