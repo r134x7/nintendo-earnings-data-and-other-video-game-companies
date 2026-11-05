@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 1,
+    "currentQuarter": 2,
     "fiscalYear": "FY3/2027",
     "kpi": [
         {
@@ -7,10 +7,10 @@
             "units": "percentage",
             "ID": "1",
             "Q1Value": 77.9,
-            "Q2Value": 77.9,
-            "Q3Value": 77.9,
-            "Q4Value": 77.9,
-            "Q2CmlValue": 0,
+            "Q2Value": 80.1,
+            "Q3Value": 80.1,
+            "Q4Value": 80.1,
+            "Q2CmlValue": 78.9,
             "Q3CmlValue": 0,
             "Q4CmlValue": 0,
             "footnote":"*Proportion of sales outside of Japan to total sales"
@@ -21,10 +21,10 @@
             "units": "percentage",
             "ID": "2",
             "Q1Value": 55.3,
-            "Q2Value": 55.3,
-            "Q3Value": 55.3,
-            "Q4Value": 55.3,
-            "Q2CmlValue": 0,
+            "Q2Value": 53.5,
+            "Q3Value": 53.5,
+            "Q4Value": 53.5,
+            "Q2CmlValue": 54.5,
             "Q3CmlValue": 0,
             "Q4CmlValue": 0,
             "footnote": "*Proportion of hardware (including accessories) sales to total dedicated video game platform sales"
@@ -34,10 +34,10 @@
             "units": "percentage",
             "ID": "3",
             "Q1Value": 82.6,
-            "Q2Value": 82.6,
-            "Q3Value": 82.6,
-            "Q4Value": 82.6,
-            "Q2CmlValue": 0,
+            "Q2Value": 69.7,
+            "Q3Value": 69.7,
+            "Q4Value": 69.7,
+            "Q2CmlValue": 76.6,
             "Q3CmlValue": 0,
             "Q4CmlValue": 0,
             "footnote": "*Proportion of first-party software sales to total dedicated video game platform software sales"
@@ -47,10 +47,10 @@
             "units": "currency",
             "ID": "4",
             "Q1Value": 132.7,
-            "Q2Value": 132.7,
-            "Q3Value": 132.7,
-            "Q4Value": 132.7,
-            "Q2CmlValue": 0,
+            "Q2Value": 116.9,
+            "Q3Value": 116.9,
+            "Q4Value": 116.9,
+            "Q2CmlValue": 249.6,
             "Q3CmlValue": 0,
             "Q4CmlValue": 0,
             "footnote":"*Digital sales include (a) downloadable version of packaged software (the downloadable version of software that is offered both physically and digitally), (b) download-only software, (c) add-on content and (d) Nintendo Switch Online, etc."
@@ -60,10 +60,10 @@
             "units": "percentage",
             "ID": "5",
             "Q1Value": 61.5,
-            "Q2Value": 61.5,
-            "Q3Value": 61.5,
-            "Q4Value": 61.5,
-            "Q2CmlValue": 0,
+            "Q2Value": 59.8,
+            "Q3Value": 59.8,
+            "Q4Value": 59.8,
+            "Q2CmlValue": 60.7,
             "Q3CmlValue": 0,
             "Q4CmlValue": 0,
             "footnote":"*Proportion of digital sales to total dedicated video game software sales. Digital sales include (a) downloadable version of packaged software (the downloadable version of software that is offered both physically and digitally), (b) download-only software, (c) add-on content and (d) Nintendo Switch Online, etc. "
@@ -73,10 +73,10 @@
             "units": "percentage",
             "ID": "6",
             "Q1Value": 63.3,
-            "Q2Value": 63.3,
-            "Q3Value": 63.3,
-            "Q4Value": 63.3,
-            "Q2CmlValue": 0,
+            "Q2Value": 54.5,
+            "Q3Value": 54.5,
+            "Q4Value": 54.5,
+            "Q2CmlValue": 59.2,
             "Q3CmlValue": 0,
             "Q4CmlValue": 0,
             "footnote":"*Proportion of downloadable versions of packaged software sales to total digital sales as indicated above: a/(a+b+c+d)"
@@ -87,17 +87,17 @@
             "name": "Total Sales",
             "units": "currency",
             "Q1Value": 517813,
-            "Q2Value": 517813,
-            "Q3Value": 517813,
-            "Q4Value": 517813 
+            "Q2Value": 966041,
+            "Q3Value": 966041,
+            "Q4Value": 966041 
         },
         {
             "name": "Dedicated video game platform",
             "units": "currency",
             "Q1Value": 483009,
-            "Q2Value": 483009,
-            "Q3Value": 483009,
-            "Q4Value": 483009 
+            "Q2Value": 903333,
+            "Q3Value": 903333,
+            "Q4Value": 903333 
         }
     ]
 }
