@@ -1,0 +1,66 @@
+{
+    "companyName": "Bandai Namco Holdings Inc.",
+    "fiscalYear": "FY3/2026",
+    "series": [
+        {
+            "title": "Super Robot Wars",
+            "releaseDate": "April 1991",
+            "fyEndMonth": "March 2026",
+            "value": 21.33, 
+            "valueLastFY": 20.80, 
+            "valueLastTwoFYs": 20.47 
+        },
+        {
+            "title": "Tekken",
+            "releaseDate": "March 1995",
+            "fyEndMonth": "March 2026",
+            "value": 62.7,
+            "valueLastFY": 61.0, 
+            "valueLastTwoFYs": 57.0 
+        
+        },
+        {
+            "title": "Tales of...",
+            "releaseDate": "December 1995",
+            "fyEndMonth": "March 2026",
+            "value": 32.13,
+            "valueLastFY": 31.21, 
+            "valueLastTwoFYs": 30.25 
+        },
+        {
+            "title": "Naruto-related",
+            "releaseDate": "January 2009",
+            "fyEndMonth": "March 2026",
+            "value": 46.58,
+            "valueLastFY": 37.86, 
+            "valueLastTwoFYs": 35.47 
+        },
+        {
+            "title": "Dark Souls",
+            "releaseDate": "September 2011",
+            "fyEndMonth": "March 2026",
+            "value": 41.8,
+            "valueLastFY": 39.71, 
+            "valueLastTwoFYs": 37.33, 
+            "footnotes": "Note: Total for overseas sales for which BANDAI NAMCO Entertainment Inc. was the original seller (excluding domestic sales by FromSoftware, Inc.)"
+        },
+        {
+            "title": "Elden Ring",
+            "releaseDate": "February 2022",
+            "fyEndMonth": "March 2026",
+            "value": 35.0,
+            "valueLastFY": 30.0, 
+            "valueLastTwoFYs": 23.0, 
+            "footnotes": "Note: Sales up to February 2023 is according to History section in Fact Book. Rest of data is from press release statements, includes other titles in the series."
+        },
+        {
+            "title": "Little Nightmares",
+            "releaseDate": "April 2017",
+            "fyEndMonth": "March 2026",
+            "value": 24.54,
+            "valueLastFY": "Nothing", 
+            "valueLastTwoFYs": "Nothing", 
+            "footnotes": "Note: Includes Network contents."
+        }
+    ]
+}
