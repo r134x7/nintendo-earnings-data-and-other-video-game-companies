@@ -1,5 +1,5 @@
 {
-    "currentQuarter": 1,
+    "currentQuarter": 2,
     "fiscalYear": "FY3/2027",
     "companyName": "SEGA SAMMY HOLDINGS INC.",
     "data": [
@@ -7,9 +7,9 @@
             "name": "Full Games",
             "units": "currency",
             "Q1CmlValue": 9.8,
-            "Q2CmlValue": 9.8,
-            "Q3CmlValue": 9.8,
-            "Q4CmlValue": 9.8, 
+            "Q2CmlValue": 20.5,
+            "Q3CmlValue": 20.5,
+            "Q4CmlValue": 20.5, 
             "forecastThisFY": 95.3,
             "footnotes": "\"*Full Game = Mainly physical sales and download sales of full game for home video game consoles and PCs. (Additional download content sales are not included.)\" **Software Units: \"Unit sales don’t include the figure for free download\""
         },
@@ -17,9 +17,9 @@
             "name": "Full Games",
             "units": "units",
             "Q1CmlValue": 5070,
-            "Q2CmlValue": 5070,
-            "Q3CmlValue": 5070,
-            "Q4CmlValue": 5070,
+            "Q2CmlValue": 10600,
+            "Q3CmlValue": 10600,
+            "Q4CmlValue": 10600,
             "forecastThisFY": 25060
         }
     ] 
